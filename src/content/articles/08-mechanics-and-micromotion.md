@@ -46,8 +46,14 @@ Many prototypes aim for perfect geometry in a static picture. Chronic systems wi
 
 If a device only works when everything is aligned perfectly, it will fail in the body.
 
-## References (starter)
+## References (starter → expanding)
 
-- Micromotion overview + pointers: https://en.wikipedia.org/wiki/Foreign_body_response
+General overview:
+- Foreign body response (related context): https://en.wikipedia.org/wiki/Foreign_body_response
 
-*(We’ll add canonical micromotion / chronic implant mechanics references next, with cortex vs nerve comparisons.)*
+Mechanics/micromotion and chronic performance links:
+- *The role of flexible polymer interconnects in chronic tissue response induced by intracortical microelectrodes— a modeling and an in vivo study.* https://pubmed.ncbi.nlm.nih.gov/17947041/
+- *Finite element model predicts micromotion-induced strain profiles that correlate with the functional performance of Utah arrays in humans and non-human primates.* https://pubmed.ncbi.nlm.nih.gov/41191976/
+- *Ultra-miniature ultra-compliant neural probes with dissolvable delivery needles: design, fabrication and characterization.* https://pubmed.ncbi.nlm.nih.gov/27778225/
+- *A self-stiffening compliant intracortical microprobe.* https://pubmed.ncbi.nlm.nih.gov/38345721/
+- *Amorphous silicon carbide probe mechanics for insertion in the cerebral cortex of rats, pigs, and macaques.* https://pubmed.ncbi.nlm.nih.gov/40398441/

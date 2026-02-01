@@ -65,9 +65,14 @@ When evaluating a material choice, ask:
 - What is the **packaging strategy** (hermetic or not)?
 - What can actually be **manufactured** reliably?
 
-## References (starter)
+## References (starter → expanding)
 
+Electrodes and interface basics:
 - S. F. Cogan (2008). *Neural stimulation and recording electrodes.* Annual Review of Biomedical Engineering. https://www.annualreviews.org/doi/10.1146/annurev.bioeng.10.061807.160518
-- Electrode basics + pointers: https://en.wikipedia.org/wiki/Neural_implant
+- Neural implant overview: https://en.wikipedia.org/wiki/Neural_implant
 
-*(We’ll expand this reference list heavily with coatings, polymers used in implants, and long-term failure studies. I’m also collecting a per-article reading list.)*
+Flexible polymers, fabrication, and interphases:
+- *Flexible, Penetrating Brain Probes Enabled by Advances in Polymer Microfabrication.* (review) https://pubmed.ncbi.nlm.nih.gov/30404353/
+- *PEDOT:PSS as a Bio-Solid Electrolyte Interphase for Neural Interfaces: From Molecular Design to Interfacial Intelligence.* https://pubmed.ncbi.nlm.nih.gov/41516803/
+
+Notes: I’m building these into heavier bibliographies (≈15–30 refs per chapter) as the next pass.

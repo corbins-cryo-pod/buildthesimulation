@@ -39,8 +39,15 @@ You do not fully control biology, but you can change the regime:
 - minimizing injury during implantation,
 - stable packaging to avoid corrosion products.
 
-## References (starter)
+## References (starter → expanding)
 
-- Overview + pointers (FBR): https://en.wikipedia.org/wiki/Foreign_body_response
+General overview:
+- Foreign body response: https://en.wikipedia.org/wiki/Foreign_body_response
 
-*(We’ll expand with implant-specific reviews and cortex vs peripheral nerve comparisons.)*
+Core neural-implant reviews and mechanistic perspectives:
+- V. S. Polikov, P. A. Tresco, W. M. Reichert (2005). *Response of brain tissue to chronically implanted neural electrodes.* J Neurosci Methods. https://pubmed.ncbi.nlm.nih.gov/16198003/
+- *Understanding the Role of Innate Immunity in the Response to Intracortical Microelectrodes.* (review) https://pubmed.ncbi.nlm.nih.gov/30806249/
+- *Advancing the interfacing performances of chronically implantable neural probes in the era of CMOS neuroelectronics.* (review) https://pubmed.ncbi.nlm.nih.gov/38027514/
+- *Neural Interfaces for Intracortical Recording: Requirements, Fabrication Methods, and Characteristics.* (review) https://pubmed.ncbi.nlm.nih.gov/29270103/
+
+Notes: I’m building these reference lists up to a heavier baseline across all Phase 2 chapters next.
