@@ -4,8 +4,8 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout
   pageTitle="Simulation"
-  subtitle="Peripheral nerve cross-section sandbox (v0). Real-ish scale, pulse visualization, and zoom." 
-  description="Interactive peripheral nerve cross-section sandbox for exploring electrode geometry and stimulation strategies."
+  subtitle="Peripheral nerve cross-section sandbox (v0). Grid axons + stimulation + recording."
+  description="Interactive peripheral nerve cross-section sandbox for exploring electrode geometry, stimulation, and simple recording readouts."
 >
   <section class="simShell">
     <aside class="panel" aria-label="Controls">
@@ -21,38 +21,59 @@ import Layout from "../layouts/Layout.astro";
       </div>
 
       <div class="panelSection">
-        <div class="panelTitle">Scale (approx.)</div>
+        <div class="panelTitle">Geometry</div>
+
         <label class="lab">
-          Nerve diameter (mm)
-          <input id="nerveDia" type="range" min="1" max="10" value="3" />
+          Axon sites (count)
+          <div class="rangeRow">
+            <input id="axonCount" type="range" min="0" max="6000" value="2200" />
+            <div class="rangeMeta">
+              <span id="axonCountVal"></span>
+              <span class="rangeMinMax">min <span id="axonCountMin"></span> / max <span id="axonCountMax"></span></span>
+            </div>
+          </div>
         </label>
-        <label class="lab">
-          Axons (count)
-          <input id="axonCount" type="range" min="0" max="2500" value="800" />
-        </label>
-        <label class="lab">
-          Axon diameter range (µm)
-          <input id="axonMin" type="range" min="0.2" max="6" step="0.2" value="0.6" />
-          <input id="axonMax" type="range" min="2" max="20" step="1" value="8" />
-        </label>
+
         <p class="muted">
-          Axons are drawn with visual exaggeration so you can see them. Values are still shown/used as µm ranges.
+          Nerve diameter is fixed at <b>2.0 mm</b>. Axons are rendered as non-overlapping grid “sites”
+          (conceptually ~10 µm each, visually exaggerated).
         </p>
       </div>
 
       <div class="panelSection">
         <div class="panelTitle">Stimulation</div>
+
         <label class="lab">
           Stim amplitude (a.u.)
-          <input id="stimAmp" type="range" min="0" max="100" value="40" />
+          <div class="rangeRow">
+            <input id="stimAmp" type="range" min="0" max="100" value="40" />
+            <div class="rangeMeta">
+              <span id="stimAmpVal"></span>
+              <span class="rangeMinMax">min <span id="stimAmpMin"></span> / max <span id="stimAmpMax"></span></span>
+            </div>
+          </div>
         </label>
+
         <label class="lab">
           Field falloff
-          <input id="falloff" type="range" min="5" max="60" value="24" />
+          <div class="rangeRow">
+            <input id="falloff" type="range" min="5" max="60" value="24" />
+            <div class="rangeMeta">
+              <span id="falloffVal"></span>
+              <span class="rangeMinMax">min <span id="falloffMin"></span> / max <span id="falloffMax"></span></span>
+            </div>
+          </div>
         </label>
+
         <label class="lab">
           Threshold (proxy)
-          <input id="thresh" type="range" min="0" max="200" value="55" />
+          <div class="rangeRow">
+            <input id="thresh" type="range" min="0" max="200" value="55" />
+            <div class="rangeMeta">
+              <span id="threshVal"></span>
+              <span class="rangeMinMax">min <span id="threshMin"></span> / max <span id="threshMax"></span></span>
+            </div>
+          </div>
         </label>
 
         <div class="row">
@@ -71,17 +92,35 @@ import Layout from "../layouts/Layout.astro";
 
         <label class="lab">
           Frequency (Hz)
-          <input id="freq" type="range" min="1" max="200" value="20" />
+          <div class="rangeRow">
+            <input id="freq" type="range" min="1" max="200" value="20" />
+            <div class="rangeMeta">
+              <span id="freqVal"></span>
+              <span class="rangeMinMax">min <span id="freqMin"></span> / max <span id="freqMax"></span></span>
+            </div>
+          </div>
         </label>
 
         <label class="lab">
           Pulse width (ms)
-          <input id="pw" type="range" min="1" max="25" value="5" />
+          <div class="rangeRow">
+            <input id="pw" type="range" min="1" max="25" value="5" />
+            <div class="rangeMeta">
+              <span id="pwVal"></span>
+              <span class="rangeMinMax">min <span id="pwMin"></span> / max <span id="pwMax"></span></span>
+            </div>
+          </div>
         </label>
 
         <label class="lab">
           Train duration (ms)
-          <input id="dur" type="range" min="50" max="1500" value="450" />
+          <div class="rangeRow">
+            <input id="dur" type="range" min="50" max="1500" value="450" />
+            <div class="rangeMeta">
+              <span id="durVal"></span>
+              <span class="rangeMinMax">min <span id="durMin"></span> / max <span id="durMax"></span></span>
+            </div>
+          </div>
         </label>
       </div>
 
@@ -111,18 +150,28 @@ import Layout from "../layouts/Layout.astro";
       <details class="panelSection" open>
         <summary class="panelTitle">Notes</summary>
         <p class="muted">
-          This is still v0 physics: a fast field-intensity proxy + a simple thresholded “axon lights up” visualization.
-          The goal is intuition and iteration speed.
+          Recording is a simplified distance-weighted spike detector. Axons “flicker” as slow Poisson noise
+          and stimulation forces axons ON inside the thresholded field.
         </p>
       </details>
     </aside>
 
     <main class="stage" aria-label="Simulation canvas">
       <div class="stageBar">
-        <div class="stageTitle">Peripheral nerve cross‑section</div>
-        <div class="stageHint">Zoom/pan + pulse train visualization</div>
+        <div class="stageTitle">Peripheral nerve cross-section</div>
+        <div class="stageHint">Zoom/pan + stimulation + recording (10 s window)</div>
       </div>
-      <canvas id="cnv" width="980" height="640"></canvas>
+
+      <div class="stageBody">
+        <canvas id="cnv" width="980" height="520"></canvas>
+
+        <div class="recBar">
+          <div class="recTitle">Recording</div>
+          <div class="recHint">t=0 at 75% width • 10 s window • spikes weighted by distance to electrode</div>
+        </div>
+        <canvas id="rec" width="980" height="160"></canvas>
+      </div>
+
       <div class="toast" id="toast" hidden></div>
     </main>
   </section>
@@ -148,6 +197,9 @@ import Layout from "../layouts/Layout.astro";
   const cnv = $("cnv");
   const ctx = cnv.getContext("2d");
 
+  const rec = $("rec");
+  const rctx = rec.getContext("2d");
+
   const ui = {
     addCuff: $("addCuff"),
     addIntra: $("addIntra"),
@@ -166,10 +218,7 @@ import Layout from "../layouts/Layout.astro";
     pw: $("pw"),
     dur: $("dur"),
 
-    nerveDia: $("nerveDia"),
     axonCount: $("axonCount"),
-    axonMin: $("axonMin"),
-    axonMax: $("axonMax"),
 
     viewReset: $("viewReset"),
 
@@ -186,6 +235,27 @@ import Layout from "../layouts/Layout.astro";
     toast: $("toast"),
   };
 
+  // value labels
+  const valIds = [
+    ["axonCount", "axonCountVal", "axonCountMin", "axonCountMax"],
+    ["stimAmp", "stimAmpVal", "stimAmpMin", "stimAmpMax"],
+    ["falloff", "falloffVal", "falloffMin", "falloffMax"],
+    ["thresh", "threshVal", "threshMin", "threshMax"],
+    ["freq", "freqVal", "freqMin", "freqMax"],
+    ["pw", "pwVal", "pwMin", "pwMax"],
+    ["dur", "durVal", "durMin", "durMax"],
+  ];
+
+  function syncRangeMeta() {
+    for (const [rid, vid, minId, maxId] of valIds) {
+      const el = $(rid);
+      if (!el) continue;
+      $(vid).textContent = el.value;
+      $(minId).textContent = el.min;
+      $(maxId).textContent = el.max;
+    }
+  }
+
   function toast(msg) {
     ui.toast.textContent = msg;
     ui.toast.hidden = false;
@@ -196,11 +266,32 @@ import Layout from "../layouts/Layout.astro";
   function mkId() {
     return Math.random().toString(16).slice(2, 8);
   }
-
   function rand() {
     return Math.random();
   }
 
+  // --- Constants / scale ---
+  const NERVE_DIAMETER_MM = 2.0; // fixed
+  const NERVE_DIAMETER_UM = NERVE_DIAMETER_MM * 1000;
+
+  // Conceptual “axon site” size (~10 µm). We render as a square pixel (visually exaggerated).
+  const AXON_SITE_UM = 10;
+
+  // Noise firing (Poisson) — NOTE: using 100ms mean ISI to keep browser sane.
+  // If you *really* want 100µs: set MEAN_ISI_S = 0.0001 (expect performance death).
+  const MEAN_ISI_S = 0.10;
+  const ON_DWELL_S = 0.030; // how long an axon stays black after a “fire” (visual)
+  const STIM_DWELL_S = 0.10; // how long stimulation forces on (minimum)
+
+  // Recording window: 10s total, with "now" at 75% width (7.5s past, 2.5s future)
+  const REC_WINDOW_S = 10.0;
+  const REC_NOW_X = 0.75; // 75%
+
+  // Recording pickup distance model
+  const PICKUP_STRONG_UM = 50;
+  const PICKUP_ZERO_UM = 200;
+
+  // --- Geometry helpers ---
   function randomInCircle(cx, cy, r) {
     const t = 2 * Math.PI * rand();
     const u = rand() + rand();
@@ -209,27 +300,31 @@ import Layout from "../layouts/Layout.astro";
   }
 
   function buildFascicles(nerve) {
-    // 4 fascicles, non-overlapping, slightly bigger, arranged in a stable diamond
+    // Large fascicles that occupy most of the nerve, clover-like.
+    // We intentionally oversize then gently push/clip.
     const { cx, cy, r } = nerve;
-    const fr = r * 0.18; // larger than before
-    const d = r * 0.22;
+
+    const fr = r * 0.43;
+    const d = r * 0.38;
+
     const fasc = [
-      { x: cx - d, y: cy - d * 0.55, r: fr },
-      { x: cx + d, y: cy - d * 0.55, r: fr * 0.92 },
-      { x: cx - d * 0.45, y: cy + d, r: fr * 0.98 },
-      { x: cx + d * 0.55, y: cy + d * 0.92, r: fr * 0.85 },
+      { x: cx - d, y: cy - d * 0.25, r: fr },
+      { x: cx + d, y: cy - d * 0.25, r: fr * 0.97 },
+      { x: cx - d * 0.10, y: cy + d * 0.95, r: fr * 0.96 },
+      { x: cx + d * 0.20, y: cy + d * 0.95, r: fr * 0.93 },
     ];
 
     // push apart if needed
-    for (let iter = 0; iter < 40; iter++) {
+    for (let iter = 0; iter < 80; iter++) {
       let moved = false;
+
       for (let i = 0; i < fasc.length; i++) {
         for (let j = i + 1; j < fasc.length; j++) {
           const a = fasc[i], b = fasc[j];
           const dx = b.x - a.x;
           const dy = b.y - a.y;
           const dist = Math.hypot(dx, dy) || 1;
-          const minDist = a.r + b.r + 6;
+          const minDist = a.r + b.r + 10;
           if (dist < minDist) {
             const push = (minDist - dist) / 2;
             const ux = dx / dist;
@@ -248,43 +343,80 @@ import Layout from "../layouts/Layout.astro";
         const dx = f.x - cx;
         const dy = f.y - cy;
         const dist = Math.hypot(dx, dy) || 1;
-        const maxDist = r - f.r - 8;
+        const maxDist = r - f.r - 10;
         if (dist > maxDist) {
           f.x = cx + (dx / dist) * maxDist;
           f.y = cy + (dy / dist) * maxDist;
           moved = true;
         }
       }
+
       if (!moved) break;
     }
 
     return fasc;
   }
 
-  function buildAxons(fascicles, count, diaMinUm, diaMaxUm) {
-    const axons = [];
-    if (!count) return axons;
+  // --- Axon sites (grid, non-overlapping) ---
+  function buildAxonSites(nerve, fascicles, targetCount) {
+    const { cx, cy, r } = nerve;
 
-    const weights = fascicles.map((f) => f.r * f.r);
-    const sumW = weights.reduce((a, b) => a + b, 0);
+    // Grid spacing in world px: choose something readable
+    // (this is visual; real units handled separately via umPerPx)
+    const gridStepPx = 3; // smaller = denser
 
-    function pickFascicle() {
-      let x = rand() * sumW;
-      for (let i = 0; i < fascicles.length; i++) {
-        x -= weights[i];
-        if (x <= 0) return fascicles[i];
+    // generate candidate grid points inside fascicles
+    const candidates = [];
+    const minX = Math.floor((cx - r) / gridStepPx) * gridStepPx;
+    const maxX = Math.ceil((cx + r) / gridStepPx) * gridStepPx;
+    const minY = Math.floor((cy - r) / gridStepPx) * gridStepPx;
+    const maxY = Math.ceil((cy + r) / gridStepPx) * gridStepPx;
+
+    for (let y = minY; y <= maxY; y += gridStepPx) {
+      for (let x = minX; x <= maxX; x += gridStepPx) {
+        // inside nerve
+        if (Math.hypot(x - cx, y - cy) > r - 2) continue;
+
+        // inside any fascicle
+        let fid = -1;
+        for (let i = 0; i < fascicles.length; i++) {
+          const f = fascicles[i];
+          if (Math.hypot(x - f.x, y - f.y) <= f.r - 2) {
+            fid = i;
+            break;
+          }
+        }
+        if (fid < 0) continue;
+
+        candidates.push({ x, y, fascicleId: fid });
       }
-      return fascicles[fascicles.length - 1];
     }
 
-    const lnMin = Math.log(diaMinUm);
-    const lnMax = Math.log(diaMaxUm);
+    // Shuffle candidates (Fisher–Yates)
+    for (let i = candidates.length - 1; i > 0; i--) {
+      const j = Math.floor(rand() * (i + 1));
+      [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
+    }
+
+    const count = Math.min(targetCount, candidates.length);
+    const axons = [];
+    const now = performance.now() / 1000;
+
+    function expSample(mean) {
+      // exponential distribution
+      return -Math.log(1 - rand()) * mean;
+    }
 
     for (let i = 0; i < count; i++) {
-      const f = pickFascicle();
-      const p = randomInCircle(f.x, f.y, f.r * 0.92);
-      const dUm = Math.exp(lnMin + rand() * (lnMax - lnMin));
-      axons.push({ x: p.x, y: p.y, dUm, fascicleId: fascicles.indexOf(f) });
+      const c = candidates[i];
+      axons.push({
+        x: c.x,
+        y: c.y,
+        fascicleId: c.fascicleId,
+        onUntil: 0,
+        stimUntil: 0,
+        nextFire: now + expSample(MEAN_ISI_S),
+      });
     }
 
     return axons;
@@ -293,21 +425,21 @@ import Layout from "../layouts/Layout.astro";
   function defaultModel() {
     const W = cnv.width;
     const H = cnv.height;
+
     const nerve = {
       cx: W * 0.58,
       cy: H * 0.52,
-      r: Math.min(W, H) * 0.32,
-    };
-
-    const scale = {
-      nerveDiameterMm: 3,
-      axonCount: 800,
-      axonDiaMinUm: 0.6,
-      axonDiaMaxUm: 8,
+      r: Math.min(W, H) * 0.33,
     };
 
     const fascicles = buildFascicles(nerve);
-    const axons = buildAxons(fascicles, scale.axonCount, scale.axonDiaMinUm, scale.axonDiaMaxUm);
+
+    const scale = {
+      nerveDiameterMm: NERVE_DIAMETER_MM,
+      axonCount: 2200,
+    };
+
+    const axons = buildAxonSites(nerve, fascicles, scale.axonCount);
 
     return {
       nerve,
@@ -317,13 +449,24 @@ import Layout from "../layouts/Layout.astro";
       stim: { amp: 40, falloff: 24, thresh: 55 },
       wave: { kind: "monophasic", freqHz: 20, pwMs: 5, durMs: 450 },
       pulse: { active: false, t0: 0 },
-      scale,
+
+      // view
       view: { s: 1, ox: 0, oy: 0 },
+
       selectedId: null,
+
+      // recording events: {t, amp}
+      recEvents: [],
+      recLastUpdate: performance.now() / 1000,
     };
   }
 
   let model = defaultModel();
+
+  function umPerPx() {
+    // nerve diameter in px is 2r
+    return NERVE_DIAMETER_UM / (model.nerve.r * 2);
+  }
 
   function worldFromScreen(evt) {
     const rect = cnv.getBoundingClientRect();
@@ -372,7 +515,7 @@ import Layout from "../layouts/Layout.astro";
   }
 
   function stimMultiplier(nowMs) {
-    if (!model.pulse.active) return 1; // "static" stimulation proxy
+    if (!model.pulse.active) return 1;
     const t = (nowMs - model.pulse.t0) / 1000;
     const dur = model.wave.durMs / 1000;
     if (t < 0 || t > dur) return 0;
@@ -386,13 +529,11 @@ import Layout from "../layouts/Layout.astro";
     }
 
     if (model.wave.kind === "biphasic") {
-      // biphasic: + then - within each cycle, each pw
       const on1 = phase < pw * f;
       const on2 = phase >= 0.5 && phase < 0.5 + pw * f;
       return on1 ? 1 : on2 ? -1 : 0;
     }
 
-    // monophasic square
     return phase < pw * f ? 1 : 0;
   }
 
@@ -420,11 +561,160 @@ import Layout from "../layouts/Layout.astro";
     return v;
   }
 
+  function pickupWeight(distanceUm) {
+    if (distanceUm <= PICKUP_STRONG_UM) return 1;
+    if (distanceUm >= PICKUP_ZERO_UM) return 0;
+    const t = (distanceUm - PICKUP_STRONG_UM) / (PICKUP_ZERO_UM - PICKUP_STRONG_UM);
+    return 1 - t;
+  }
+
+  function activeRecordingElectrode() {
+    // Prefer selected intra electrode; else first intra.
+    const selected = model.electrodes.find((e) => e.id === model.selectedId && e.type === "intra");
+    if (selected) return selected;
+    return model.electrodes.find((e) => e.type === "intra") ?? null;
+  }
+
+  function pushRecEvent(t, amp) {
+    model.recEvents.push({ t, amp: Math.max(0, Math.min(1, amp)) });
+
+    // cleanup old events (keep a little extra padding)
+    const start = t - 12;
+    while (model.recEvents.length && model.recEvents[0].t < start) {
+      model.recEvents.shift();
+    }
+  }
+
+  function stepNoiseAndRecording(nowS) {
+    const eRec = activeRecordingElectrode();
+    const uPerPx = umPerPx();
+
+    // Poisson noise firing for each axon
+    // (This is the only O(N) part; keep N in a few thousand.)
+    for (const a of model.axons) {
+      if (nowS >= a.nextFire) {
+        a.onUntil = Math.max(a.onUntil, nowS + ON_DWELL_S);
+
+        // schedule next fire
+        const exp = -Math.log(1 - rand()) * MEAN_ISI_S;
+        a.nextFire = nowS + exp;
+
+        // recording spike event if electrode exists
+        if (eRec) {
+          const dUm = Math.hypot(a.x - eRec.x, a.y - eRec.y) * uPerPx;
+          const w = pickupWeight(dUm);
+          if (w > 0) {
+            // spikes are lines; amplitude is distance-weighted
+            // Keep spikes sparse-ish by also gating small weights
+            const amp = w * 0.9;
+            pushRecEvent(nowS, amp);
+          }
+        }
+      }
+    }
+  }
+
+  function applyStimToAxons(nowMs) {
+    // When pulsing, axons inside threshold are forced ON.
+    const thr = Number(model.stim.thresh);
+    const mult = stimMultiplier(nowMs);
+
+    if (!model.pulse.active || mult === 0 || model.electrodes.length === 0) return;
+
+    const nowS = nowMs / 1000;
+    const stimHold = Math.max(STIM_DWELL_S, model.wave.durMs / 1000);
+
+    for (const a of model.axons) {
+      const v = Math.abs(fieldAt(a.x, a.y, mult));
+      if (v >= thr) {
+        a.stimUntil = Math.max(a.stimUntil, nowS + stimHold);
+        a.onUntil = Math.max(a.onUntil, nowS + stimHold);
+      }
+    }
+
+    // Big recording “event” for stimulation onset, if recording electrode exists
+    if (activeRecordingElectrode()) {
+      // Put a stronger spike at t0-ish (a visible marker)
+      const tNow = nowS;
+      pushRecEvent(tNow, 1.0);
+    }
+  }
+
+  function drawRecording(nowS) {
+    const W = rec.width;
+    const H = rec.height;
+
+    rctx.clearRect(0, 0, W, H);
+
+    // background
+    rctx.fillStyle = "rgba(255,255,255,0.10)";
+    rctx.fillRect(0, 0, W, H);
+
+    // axes / grid
+    rctx.strokeStyle = "rgba(10,10,12,0.10)";
+    rctx.lineWidth = 1;
+    for (let i = 1; i < 6; i++) {
+      const y = (i / 6) * H;
+      rctx.beginPath();
+      rctx.moveTo(0, y);
+      rctx.lineTo(W, y);
+      rctx.stroke();
+    }
+
+    const nowX = Math.floor(W * REC_NOW_X);
+
+    // window start/end so that "now" sits at 75% width
+    const pastS = REC_WINDOW_S * REC_NOW_X;
+    const futureS = REC_WINDOW_S - pastS;
+
+    const tStart = nowS - pastS;
+    const tEnd = nowS + futureS;
+
+    function tx(t) {
+      return ((t - tStart) / (tEnd - tStart)) * W;
+    }
+
+    // baseline
+    const mid = Math.floor(H * 0.65);
+    rctx.strokeStyle = "rgba(10,10,12,0.25)";
+    rctx.beginPath();
+    rctx.moveTo(0, mid);
+    rctx.lineTo(W, mid);
+    rctx.stroke();
+
+    // spikes
+    rctx.strokeStyle = "rgba(10,10,12,0.85)";
+    rctx.lineWidth = 2;
+
+    for (const ev of model.recEvents) {
+      if (ev.t < tStart || ev.t > tEnd) continue;
+      const x = tx(ev.t);
+      const ampPx = ev.amp * (H * 0.55);
+      rctx.beginPath();
+      rctx.moveTo(x, mid);
+      rctx.lineTo(x, mid - ampPx);
+      rctx.stroke();
+    }
+
+    // "now" marker at 75%
+    rctx.strokeStyle = "rgba(0,0,0,0.35)";
+    rctx.lineWidth = 2;
+    rctx.beginPath();
+    rctx.moveTo(nowX, 0);
+    rctx.lineTo(nowX, H);
+    rctx.stroke();
+
+    rctx.fillStyle = "rgba(10,10,12,0.55)";
+    rctx.font = "12px ui-sans-serif, system-ui";
+    rctx.fillText("t = 0", nowX + 6, 14);
+    rctx.fillText("10 s window", 10, 14);
+  }
+
   function draw(nowMs = performance.now()) {
     const { cx, cy, r } = model.nerve;
     ctx.clearRect(0, 0, cnv.width, cnv.height);
 
-    // paper-ish canvas background
+    // paper-ish background
     ctx.fillStyle = "rgba(255,255,255,0.10)";
     ctx.fillRect(0, 0, cnv.width, cnv.height);
 
@@ -437,22 +727,20 @@ import Layout from "../layouts/Layout.astro";
 
     // field heatmap
     if (model.electrodes.length && mult !== 0) {
-      const step = 16;
+      const step = 18;
       let maxV = 0;
       const vals = [];
       for (let y = 0; y < cnv.height; y += step) {
         for (let x = 0; x < cnv.width; x += step) {
-          const wx = x;
-          const wy = y;
-          const inside = Math.hypot(wx - cx, wy - cy) <= r;
-          const v = inside ? Math.abs(fieldAt(wx, wy, mult)) : 0;
-          vals.push({ x: wx, y: wy, v, inside });
+          const inside = Math.hypot(x - cx, y - cy) <= r;
+          const v = inside ? Math.abs(fieldAt(x, y, mult)) : 0;
+          vals.push({ x, y, v, inside });
           if (v > maxV) maxV = v;
         }
       }
       for (const p of vals) {
         if (!p.inside) continue;
-        const a = maxV ? Math.min(0.20, (p.v / maxV) * 0.20) : 0;
+        const a = maxV ? Math.min(0.22, (p.v / maxV) * 0.22) : 0;
         ctx.fillStyle = `rgba(20,20,22,${a})`;
         ctx.fillRect(p.x, p.y, step, step);
       }
@@ -461,7 +749,7 @@ import Layout from "../layouts/Layout.astro";
     // nerve boundary
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
-    ctx.strokeStyle = "rgba(10,10,12,0.55)";
+    ctx.strokeStyle = "rgba(10,10,12,0.60)";
     ctx.lineWidth = 2;
     ctx.stroke();
 
@@ -469,25 +757,22 @@ import Layout from "../layouts/Layout.astro";
     for (const f of model.fascicles) {
       ctx.beginPath();
       ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(255,255,255,0.16)";
+      ctx.fillStyle = "rgba(255,255,255,0.14)";
       ctx.fill();
-      ctx.strokeStyle = "rgba(10,10,12,0.22)";
+      ctx.strokeStyle = "rgba(10,10,12,0.20)";
       ctx.lineWidth = 1;
       ctx.stroke();
     }
 
-    // axons
-    const thr = Number(model.stim.thresh);
-    if (model.axons?.length) {
-      for (const a of model.axons) {
-        const px = Math.max(0.6, Math.min(2.6, a.dUm * 0.18));
-        const v = model.electrodes.length ? Math.abs(fieldAt(a.x, a.y, mult)) : 0;
-        const on = model.pulse.active ? v >= thr : false;
-        ctx.beginPath();
-        ctx.arc(a.x, a.y, px, 0, Math.PI * 2);
-        ctx.fillStyle = on ? "rgba(10,10,12,0.75)" : "rgba(10,10,12,0.16)";
-        ctx.fill();
-      }
+    // axon sites as squares
+    const nowS = nowMs / 1000;
+    const cell = 2.2; // size of square pixel site (visual)
+    const half = cell / 2;
+
+    for (const a of model.axons) {
+      const on = (a.onUntil > nowS) || (a.stimUntil > nowS);
+      ctx.fillStyle = on ? "rgba(10,10,12,0.78)" : "rgba(10,10,12,0.12)";
+      ctx.fillRect(a.x - half, a.y - half, cell, cell);
     }
 
     // electrodes
@@ -496,24 +781,24 @@ import Layout from "../layouts/Layout.astro";
       if (e.type === "cuff") {
         ctx.beginPath();
         ctx.arc(cx, cy, e.r, 0, Math.PI * 2);
-        ctx.strokeStyle = selected ? "rgba(10,10,12,0.95)" : "rgba(10,10,12,0.65)";
+        ctx.strokeStyle = selected ? "rgba(10,10,12,0.95)" : "rgba(10,10,12,0.70)";
         ctx.lineWidth = selected ? 4 : 3;
         ctx.stroke();
 
-        // contacts
         const n = e.contacts ?? 8;
         for (let i = 0; i < n; i++) {
           const t = (i / n) * Math.PI * 2;
           const x = cx + Math.cos(t) * e.r;
           const y = cy + Math.sin(t) * e.r;
           const glow = model.pulse.active ? Math.min(0.9, Math.abs(mult)) : 0;
+
           ctx.beginPath();
           ctx.arc(x, y, 3.4, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(10,10,12,${0.65 + glow * 0.3})`;
           ctx.fill();
           if (glow) {
             ctx.beginPath();
-            ctx.arc(x, y, 10, 0, Math.PI * 2);
+            ctx.arc(x, y, 11, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(10,10,12,${0.06 * glow})`;
             ctx.fill();
           }
@@ -521,11 +806,11 @@ import Layout from "../layouts/Layout.astro";
       } else {
         ctx.beginPath();
         ctx.arc(e.x, e.y, 6, 0, Math.PI * 2);
-        ctx.fillStyle = selected ? "rgba(10,10,12,0.95)" : "rgba(10,10,12,0.75)";
+        ctx.fillStyle = selected ? "rgba(10,10,12,0.95)" : "rgba(10,10,12,0.78)";
         ctx.fill();
         ctx.beginPath();
         ctx.arc(e.x, e.y, 10, 0, Math.PI * 2);
-        ctx.strokeStyle = "rgba(10,10,12,0.28)";
+        ctx.strokeStyle = "rgba(10,10,12,0.24)";
         ctx.lineWidth = 1;
         ctx.stroke();
       }
@@ -538,10 +823,9 @@ import Layout from "../layouts/Layout.astro";
 
     ctx.restore();
 
-    // scale bar (screen space)
-    const mm = model.scale?.nerveDiameterMm ?? 3;
-    const pxPerMm = ((model.nerve.r * 2) * model.view.s) / mm;
-    const barMm = mm >= 6 ? 2 : 1;
+    // scale bar (screen space) — based on fixed 2mm
+    const pxPerMm = ((model.nerve.r * 2) * model.view.s) / NERVE_DIAMETER_MM;
+    const barMm = 1;
     const barPx = barMm * pxPerMm;
 
     const x0 = 18;
@@ -557,27 +841,16 @@ import Layout from "../layouts/Layout.astro";
     ctx.font = "14px Times New Roman";
     ctx.fillText(`${barMm} mm`, x0, y0 - 6);
 
+    // draw recording every frame
+    drawRecording(nowS);
+
     // animation loop
-    if (model.pulse.active) {
-      requestAnimationFrame(draw);
-    }
+    requestAnimationFrame(draw);
   }
 
   function rebuildAxonsFromUI() {
-    const dia = Number(ui.nerveDia.value);
     const count = Math.round(Number(ui.axonCount.value));
-    const amin = Number(ui.axonMin.value);
-    const amax = Number(ui.axonMax.value);
-
-    const minUm = Math.max(0.2, Math.min(amin, amax - 0.2));
-    const maxUm = Math.max(minUm + 0.2, amax);
-
-    model.scale.nerveDiameterMm = dia;
-    model.scale.axonCount = count;
-    model.scale.axonDiaMinUm = minUm;
-    model.scale.axonDiaMaxUm = maxUm;
-
-    model.axons = buildAxons(model.fascicles, count, minUm, maxUm);
+    model.axons = buildAxonSites(model.nerve, model.fascicles, count);
     draw();
   }
 
@@ -585,7 +858,6 @@ import Layout from "../layouts/Layout.astro";
     model.stim.amp = Number(ui.stimAmp.value);
     model.stim.falloff = Number(ui.falloff.value);
     model.stim.thresh = Number(ui.thresh.value);
-    draw();
   }
 
   function syncWave() {
@@ -612,11 +884,9 @@ import Layout from "../layouts/Layout.astro";
         dragOff.x = p.x - hit.x;
         dragOff.y = p.y - hit.y;
       }
-      draw();
       return;
     }
 
-    // pan on empty space
     setSelected(null);
     panning = true;
     pan0 = { x: evt.clientX, y: evt.clientY, ox: model.view.ox, oy: model.view.oy };
@@ -629,7 +899,6 @@ import Layout from "../layouts/Layout.astro";
       dragging.y = p.y - dragOff.y;
       clampToNerve(dragging);
       setSelected(dragging.id);
-      draw();
       return;
     }
 
@@ -638,7 +907,6 @@ import Layout from "../layouts/Layout.astro";
       const dy = evt.clientY - pan0.y;
       model.view.ox = pan0.ox + dx;
       model.view.oy = pan0.oy + dy;
-      draw();
     }
   });
 
@@ -661,14 +929,12 @@ import Layout from "../layouts/Layout.astro";
       const newS = Math.max(0.6, Math.min(4, oldS * factor));
       if (newS === oldS) return;
 
-      // zoom about cursor
       const wx = (sx - model.view.ox) / oldS;
       const wy = (sy - model.view.oy) / oldS;
 
       model.view.s = newS;
       model.view.ox = sx - wx * newS;
       model.view.oy = sy - wy * newS;
-      draw();
     },
     { passive: false }
   );
@@ -678,7 +944,6 @@ import Layout from "../layouts/Layout.astro";
     const e = { id: mkId(), type: "cuff", r: model.nerve.r * 1.02, contacts: 8 };
     model.electrodes.push(e);
     setSelected(e.id);
-    draw();
     toast("Added cuff");
   });
 
@@ -686,20 +951,18 @@ import Layout from "../layouts/Layout.astro";
     const e = { id: mkId(), type: "intra", x: model.nerve.cx + model.nerve.r * 0.12, y: model.nerve.cy };
     model.electrodes.push(e);
     setSelected(e.id);
-    draw();
-    toast("Added intrafascicular");
+    toast("Added intrafascicular (recording+stim)");
   });
 
   ui.reset.addEventListener("click", () => {
     model = defaultModel();
     syncUIFromModel();
-    draw();
+    syncRangeMeta();
     toast("Reset");
   });
 
   ui.viewReset.addEventListener("click", () => {
     model.view = { s: 1, ox: 0, oy: 0 };
-    draw();
   });
 
   ui.pulse.addEventListener("click", () => {
@@ -711,31 +974,23 @@ import Layout from "../layouts/Layout.astro";
     model.pulse.active = true;
     model.pulse.t0 = performance.now();
     toast("Pulsing");
-    requestAnimationFrame(draw);
-
-    // auto-stop
-    clearTimeout(model.pulse._t);
-    model.pulse._t = setTimeout(() => {
-      model.pulse.active = false;
-      draw();
-    }, model.wave.durMs + 60);
   });
 
   ui.stop.addEventListener("click", () => {
     model.pulse.active = false;
-    draw();
+    toast("Stopped");
   });
 
-  // Export/import
+  // Export/import (kept minimal; axons regenerated from sliders)
   function exportModel() {
     const payload = {
       nerve: model.nerve,
       fascicles: model.fascicles,
       electrodes: model.electrodes,
       stim: model.stim,
-      scale: model.scale,
       wave: model.wave,
       view: model.view,
+      scale: { nerveDiameterMm: NERVE_DIAMETER_MM, axonCount: model.axons.length },
     };
     return JSON.stringify(payload, null, 2);
   }
@@ -748,16 +1003,19 @@ import Layout from "../layouts/Layout.astro";
     model.fascicles = obj.fascicles;
     model.electrodes = obj.electrodes;
     model.stim = obj.stim ?? model.stim;
-    model.scale = obj.scale ?? model.scale;
     model.wave = obj.wave ?? model.wave;
     model.view = obj.view ?? model.view;
-    model.axons = buildAxons(model.fascicles, model.scale.axonCount ?? 0, model.scale.axonDiaMinUm ?? 0.6, model.scale.axonDiaMaxUm ?? 8);
+
+    const count = obj?.scale?.axonCount ?? Number(ui.axonCount.value);
+    model.axons = buildAxonSites(model.nerve, model.fascicles, count);
+
     model.selectedId = null;
     model.pulse.active = false;
+    model.recEvents = [];
 
     syncUIFromModel();
+    syncRangeMeta();
     setSelected(null);
-    draw();
   }
 
   function openDialog(mode) {
@@ -785,35 +1043,29 @@ import Layout from "../layouts/Layout.astro";
       importModel(ui.dlgText.value);
       ui.dlg.close();
       toast("Imported");
-    } catch (err) {
+    } catch {
       toast("Import failed");
     }
   });
 
   // Wire inputs
-  ui.nerveDia.addEventListener("input", rebuildAxonsFromUI);
-  ui.axonCount.addEventListener("input", rebuildAxonsFromUI);
-  ui.axonMin.addEventListener("input", rebuildAxonsFromUI);
-  ui.axonMax.addEventListener("input", rebuildAxonsFromUI);
+  ui.axonCount.addEventListener("input", () => { rebuildAxonsFromUI(); syncRangeMeta(); });
 
-  ui.stimAmp.addEventListener("input", syncStim);
-  ui.falloff.addEventListener("input", syncStim);
-  ui.thresh.addEventListener("input", syncStim);
+  ui.stimAmp.addEventListener("input", () => { syncStim(); syncRangeMeta(); });
+  ui.falloff.addEventListener("input", () => { syncStim(); syncRangeMeta(); });
+  ui.thresh.addEventListener("input", () => { syncStim(); syncRangeMeta(); });
 
   ui.wave.addEventListener("change", syncWave);
-  ui.freq.addEventListener("input", syncWave);
-  ui.pw.addEventListener("input", syncWave);
-  ui.dur.addEventListener("input", syncWave);
+  ui.freq.addEventListener("input", () => { syncWave(); syncRangeMeta(); });
+  ui.pw.addEventListener("input", () => { syncWave(); syncRangeMeta(); });
+  ui.dur.addEventListener("input", () => { syncWave(); syncRangeMeta(); });
 
   function syncUIFromModel() {
     ui.stimAmp.value = String(model.stim.amp);
     ui.falloff.value = String(model.stim.falloff);
     ui.thresh.value = String(model.stim.thresh ?? 55);
 
-    ui.nerveDia.value = String(model.scale.nerveDiameterMm);
-    ui.axonCount.value = String(model.scale.axonCount);
-    ui.axonMin.value = String(model.scale.axonDiaMinUm);
-    ui.axonMax.value = String(model.scale.axonDiaMaxUm);
+    ui.axonCount.value = String(model.axons.length);
 
     ui.wave.value = model.wave.kind;
     ui.freq.value = String(model.wave.freqHz);
@@ -821,10 +1073,30 @@ import Layout from "../layouts/Layout.astro";
     ui.dur.value = String(model.wave.durMs);
   }
 
+  // --- Main loop: update noise + stim effects + draw ---
+  function loop() {
+    const nowMs = performance.now();
+    const nowS = nowMs / 1000;
+
+    // update noise
+    stepNoiseAndRecording(nowS);
+
+    // apply stim forcing
+    applyStimToAxons(nowMs);
+
+    requestAnimationFrame(loop);
+  }
+
   // init
   syncUIFromModel();
+  syncRangeMeta();
+  syncStim();
+  syncWave();
   setSelected(null);
-  draw();
+
+  // Start rendering + simulation
+  requestAnimationFrame(draw);
+  requestAnimationFrame(loop);
 </script>
 
 <style>
@@ -848,10 +1120,7 @@ import Layout from "../layouts/Layout.astro";
     padding: 10px 8px;
     border-bottom: 1px solid rgba(10, 10, 12, 0.12);
   }
-
-  .panelSection:last-child {
-    border-bottom: none;
-  }
+  .panelSection:last-child { border-bottom: none; }
 
   .panelTitle {
     font-weight: 700;
@@ -863,9 +1132,7 @@ import Layout from "../layouts/Layout.astro";
   details.panelSection > summary.panelTitle {
     list-style: none;
   }
-  details.panelSection > summary.panelTitle::-webkit-details-marker {
-    display: none;
-  }
+  details.panelSection > summary.panelTitle::-webkit-details-marker { display: none; }
 
   .row {
     display: flex;
@@ -882,16 +1149,12 @@ import Layout from "../layouts/Layout.astro";
     font-size: 0.95em;
     cursor: pointer;
   }
-
   .btn:hover {
     border-color: rgba(10, 10, 12, 0.32);
     background: rgba(255, 255, 255, 0.5);
     transform: translateY(-1px);
   }
-
-  .btn.ghost {
-    background: transparent;
-  }
+  .btn.ghost { background: transparent; }
 
   .kv {
     display: flex;
@@ -909,6 +1172,23 @@ import Layout from "../layouts/Layout.astro";
     font-size: 0.95em;
   }
 
+  .rangeRow {
+    display: grid;
+    gap: 6px;
+  }
+
+  .rangeMeta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.88em;
+    opacity: 0.78;
+  }
+
+  .rangeMinMax {
+    opacity: 0.8;
+  }
+
   select {
     border: 1px solid rgba(10, 10, 12, 0.18);
     border-radius: 12px;
@@ -917,9 +1197,7 @@ import Layout from "../layouts/Layout.astro";
     font-family: inherit;
   }
 
-  input[type="range"] {
-    width: 100%;
-  }
+  input[type="range"] { width: 100%; }
 
   .muted {
     opacity: 0.74;
@@ -944,14 +1222,11 @@ import Layout from "../layouts/Layout.astro";
     border-bottom: 1px solid rgba(10, 10, 12, 0.12);
     background: rgba(255, 255, 255, 0.10);
   }
+  .stageTitle { font-weight: 700; }
+  .stageHint { opacity: 0.7; font-size: 0.9em; }
 
-  .stageTitle {
-    font-weight: 700;
-  }
-
-  .stageHint {
-    opacity: 0.7;
-    font-size: 0.9em;
+  .stageBody {
+    padding-bottom: 10px;
   }
 
   canvas {
@@ -960,10 +1235,20 @@ import Layout from "../layouts/Layout.astro";
     display: block;
     cursor: grab;
   }
+  canvas:active { cursor: grabbing; }
 
-  canvas:active {
-    cursor: grabbing;
+  .recBar {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: baseline;
+    padding: 10px 14px;
+    border-top: 1px solid rgba(10, 10, 12, 0.10);
+    border-bottom: 1px solid rgba(10, 10, 12, 0.10);
+    background: rgba(255, 255, 255, 0.08);
   }
+  .recTitle { font-weight: 700; }
+  .recHint { opacity: 0.7; font-size: 0.88em; }
 
   .toast {
     position: absolute;
@@ -984,14 +1269,8 @@ import Layout from "../layouts/Layout.astro";
     color: inherit;
     width: min(900px, 92vw);
   }
-
-  .dlg::backdrop {
-    background: rgba(10, 10, 12, 0.35);
-  }
-
-  .dlgInner {
-    padding: 14px;
-  }
+  .dlg::backdrop { background: rgba(10, 10, 12, 0.35); }
+  .dlgInner { padding: 14px; }
 
   .dlgHead {
     display: flex;
@@ -1000,11 +1279,7 @@ import Layout from "../layouts/Layout.astro";
     gap: 12px;
     margin-bottom: 10px;
   }
-
-  .dlgTitle {
-    font-weight: 700;
-    font-size: 1.05em;
-  }
+  .dlgTitle { font-weight: 700; font-size: 1.05em; }
 
   textarea {
     width: 100%;
@@ -1027,12 +1302,7 @@ import Layout from "../layouts/Layout.astro";
   }
 
   @media (max-width: 980px) {
-    .simShell {
-      grid-template-columns: 1fr;
-    }
-    .panel {
-      position: relative;
-      top: 0;
-    }
+    .simShell { grid-template-columns: 1fr; }
+    .panel { position: relative; top: 0; }
   }
 </style>
