@@ -371,6 +371,7 @@ import Layout from "../layouts/Layout.astro";
         onUntil: 0,
         stimUntil: 0,
         nextFire: nowS + phase,
+        color: randColor(rand()),
       });
     }
 
@@ -405,7 +406,7 @@ import Layout from "../layouts/Layout.astro";
       wave: { freqHz: 20, durMs: 450 },
       pulse: { active: false, t0: 0 },
 
-      colorMode: "mono", // "mono" | "distance"
+      colorMode: "mono", // "mono" | "axon"
 
       view: { s: 1, ox: 0, oy: 0 },
       selectedId: null,
@@ -469,10 +470,12 @@ import Layout from "../layouts/Layout.astro";
     return `rgb(${r},${g},${b})`;
   }
 
-  function colorForDistanceUm(dUm) {
-    // near = red, far = purple
-    const t = Math.max(0, Math.min(1, dUm / PICKUP_ZERO_UM));
-    return lerpColor([255, 50, 50], [120, 55, 255], t);
+  function randColor(seed = Math.random()) {
+    // deterministic-ish given seed; returns vivid HSL
+    const h = Math.floor(seed * 360);
+    const s = 78;
+    const l = 48;
+    return `hsl(${h} ${s}% ${l}%)`;
   }
 
   function renderRecPanels() {
@@ -783,7 +786,7 @@ import Layout from "../layouts/Layout.astro";
             const dUm = Math.hypot(a.x - e.x, a.y - e.y) * uPerPx;
             const w = pickupWeight(dUm);
             if (w <= 0) continue;
-            const color = model.colorMode === "distance" ? colorForDistanceUm(dUm) : null;
+            const color = model.colorMode === "axon" ? a.color : null;
             pushRecEvent(e.id, nowS, w * 0.9, color);
           }
         }
@@ -874,7 +877,6 @@ import Layout from "../layouts/Layout.astro";
     const cell = 2.2;
     const half = cell / 2;
 
-    const intra = getIntraElectrodes();
     for (const a of model.axons) {
       const on = (a.onUntil > nowS) || (a.stimUntil > nowS);
 
@@ -884,17 +886,12 @@ import Layout from "../layouts/Layout.astro";
         continue;
       }
 
-      if (model.colorMode === "distance" && intra.length) {
-        // color the axon by distance to the nearest intrafascicular electrode
-        let best = Infinity;
-        for (const e of intra) {
-          const d = Math.hypot(a.x - e.x, a.y - e.y) * uPerPx;
-          if (d < best) best = d;
-        }
-        ctx.fillStyle = colorForDistanceUm(best);
+      if (model.colorMode === "axon") {
+        ctx.fillStyle = a.color;
       } else {
         ctx.fillStyle = "rgba(10,10,12,0.78)";
       }
+
       ctx.fillRect(a.x - half, a.y - half, cell, cell);
     }
 
@@ -999,7 +996,7 @@ import Layout from "../layouts/Layout.astro";
     ui.freq.value = String(model.wave.freqHz);
     ui.dur.value = String(model.wave.durMs);
 
-    ui.colorMode.textContent = model.colorMode === "distance" ? "Spike colors: distance" : "Spike colors: mono";
+    ui.colorMode.textContent = model.colorMode === "axon" ? "Spike colors: axon" : "Spike colors: mono";
   }
 
   // --- Interaction ---
@@ -1217,8 +1214,8 @@ import Layout from "../layouts/Layout.astro";
   ui.dur.addEventListener("input", () => { syncWave(); syncRangeMeta(); drawAll(); });
 
   ui.colorMode.addEventListener("click", () => {
-    model.colorMode = model.colorMode === "mono" ? "distance" : "mono";
-    ui.colorMode.textContent = model.colorMode === "distance" ? "Spike colors: distance" : "Spike colors: mono";
+    model.colorMode = model.colorMode === "mono" ? "axon" : "mono";
+    ui.colorMode.textContent = model.colorMode === "axon" ? "Spike colors: axon" : "Spike colors: mono";
     drawAll();
   });
 
