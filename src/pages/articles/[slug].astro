@@ -29,24 +29,36 @@ const subtitle = entry.data.description ?? "A guided sequence from fundamentals 
 
 <style>
   .post {
-    padding: 18px;
-    border-radius: 18px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(10px);
+    padding: 26px 26px;
+    border-radius: 16px;
+    border: 1px solid rgba(10, 10, 12, 0.14);
+    background: rgba(255, 255, 255, 0.22);
+    max-width: 860px;
+  }
+
+  /* keep long-form text centered and readable */
+  :global(main.wrap) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  :global(main.wrap) .post {
+    align-self: center;
+    width: 100%;
   }
 
   .kicker {
     opacity: 0.7;
     font-size: 12px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
   }
 
   .title {
     margin: 6px 0 0;
-    font-size: 22px;
-    letter-spacing: -0.01em;
+    font-size: 26px;
+    letter-spacing: -0.005em;
+    line-height: 1.15;
   }
 
   .meta {
@@ -56,8 +68,14 @@ const subtitle = entry.data.description ?? "A guided sequence from fundamentals 
   }
 
   .content :global(p) {
-    line-height: 1.8;
-    margin: 0.9em 0;
+    line-height: 1.85;
+    margin: 0.95em 0;
+  }
+
+  /* lede paragraph */
+  .content :global(p:first-of-type) {
+    font-size: 1.08em;
+    line-height: 1.75;
   }
 
   /* Textbook-ish headings: bold, only slightly larger than body */
