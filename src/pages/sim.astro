@@ -21,6 +21,26 @@ import Layout from "../layouts/Layout.astro";
       </div>
 
       <div class="panelSection">
+        <div class="panelTitle">Scale (approx.)</div>
+        <label class="lab">
+          Nerve diameter (mm)
+          <input id="nerveDia" type="range" min="1" max="10" value="3" />
+        </label>
+        <label class="lab">
+          Axons (count)
+          <input id="axonCount" type="range" min="0" max="2500" value="800" />
+        </label>
+        <label class="lab">
+          Axon diameter range (µm)
+          <input id="axonMin" type="range" min="0.2" max="6" step="0.2" value="0.6" />
+          <input id="axonMax" type="range" min="2" max="20" step="1" value="8" />
+        </label>
+        <p class="muted">
+          These are order-of-magnitude defaults (human peripheral nerves span ~1–10 mm; axons ~0.2–20 µm).
+        </p>
+      </div>
+
+      <div class="panelSection">
         <div class="panelTitle">Selection</div>
         <div class="kv"><span>Type</span><span id="selType">—</span></div>
         <div class="kv"><span>ID</span><span id="selId">—</span></div>
@@ -89,6 +109,12 @@ import Layout from "../layouts/Layout.astro";
     import: $("import"),
     stimAmp: $("stimAmp"),
     falloff: $("falloff"),
+
+    nerveDia: $("nerveDia"),
+    axonCount: $("axonCount"),
+    axonMin: $("axonMin"),
+    axonMax: $("axonMax"),
+
     selType: $("selType"),
     selId: $("selId"),
     selX: $("selX"),
@@ -113,6 +139,50 @@ import Layout from "../layouts/Layout.astro";
     return Math.random().toString(16).slice(2, 8);
   }
 
+  function rand() {
+    // deterministic-ish seedless RNG is fine for now
+    return Math.random();
+  }
+
+  function randomInCircle(cx, cy, r) {
+    // uniform area sampling
+    const t = 2 * Math.PI * rand();
+    const u = rand() + rand();
+    const rr = u > 1 ? 2 - u : u;
+    return { x: cx + Math.cos(t) * rr * r, y: cy + Math.sin(t) * rr * r };
+  }
+
+  function buildAxons(fascicles, count, diaMinUm, diaMaxUm) {
+    const axons = [];
+    if (!count) return axons;
+
+    // Weighted fascicle selection proportional to area
+    const weights = fascicles.map((f) => f.r * f.r);
+    const sumW = weights.reduce((a, b) => a + b, 0);
+
+    function pickFascicle() {
+      let x = rand() * sumW;
+      for (let i = 0; i < fascicles.length; i++) {
+        x -= weights[i];
+        if (x <= 0) return fascicles[i];
+      }
+      return fascicles[fascicles.length - 1];
+    }
+
+    // Simple log-uniform diameter distribution between min/max
+    const lnMin = Math.log(diaMinUm);
+    const lnMax = Math.log(diaMaxUm);
+
+    for (let i = 0; i < count; i++) {
+      const f = pickFascicle();
+      const p = randomInCircle(f.x, f.y, f.r * 0.92);
+      const dUm = Math.exp(lnMin + rand() * (lnMax - lnMin));
+      axons.push({ x: p.x, y: p.y, dUm });
+    }
+
+    return axons;
+  }
+
   function defaultModel() {
     const W = cnv.width;
     const H = cnv.height;
@@ -128,11 +198,22 @@ import Layout from "../layouts/Layout.astro";
       { x: cx + r * 0.18, y: cy + r * 0.18, r: r * 0.12 },
     ];
 
+    const scale = {
+      nerveDiameterMm: 3,
+      axonCount: 800,
+      axonDiaMinUm: 0.6,
+      axonDiaMaxUm: 8,
+    };
+
+    const axons = buildAxons(fascicles, scale.axonCount, scale.axonDiaMinUm, scale.axonDiaMaxUm);
+
     return {
       nerve: { cx, cy, r },
       fascicles,
+      axons,
       electrodes: [],
       stim: { amp: 40, falloff: 24 },
+      scale,
       selectedId: null,
     };
   }
@@ -258,6 +339,18 @@ import Layout from "../layouts/Layout.astro";
       ctx.stroke();
     }
 
+    // axons (visual proxy; scaled to be visible)
+    if (model.axons?.length) {
+      for (const a of model.axons) {
+        // Convert µm to visible pixels with a gentle exaggeration
+        const px = Math.max(0.6, Math.min(2.4, a.dUm * 0.18));
+        ctx.beginPath();
+        ctx.arc(a.x, a.y, px, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(10,10,12,0.18)";
+        ctx.fill();
+      }
+    }
+
     // electrodes
     for (const e of model.electrodes) {
       const selected = e.id === model.selectedId;
@@ -267,6 +360,18 @@ import Layout from "../layouts/Layout.astro";
         ctx.strokeStyle = selected ? "rgba(10,10,12,0.95)" : "rgba(10,10,12,0.65)";
         ctx.lineWidth = selected ? 4 : 3;
         ctx.stroke();
+
+        // show contact points (stim sites)
+        const n = e.contacts ?? 8;
+        for (let i = 0; i < n; i++) {
+          const t = (i / n) * Math.PI * 2;
+          const x = cx + Math.cos(t) * e.r;
+          const y = cy + Math.sin(t) * e.r;
+          ctx.beginPath();
+          ctx.arc(x, y, 3.2, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(10,10,12,0.8)";
+          ctx.fill();
+        }
       } else {
         ctx.beginPath();
         ctx.arc(e.x, e.y, 6, 0, Math.PI * 2);
@@ -280,10 +385,29 @@ import Layout from "../layouts/Layout.astro";
       }
     }
 
-    // labels
+    // labels + scale bar
     ctx.fillStyle = "rgba(10,10,12,0.6)";
     ctx.font = "16px Times New Roman";
     ctx.fillText("nerve", cx - 18, cy - r - 10);
+
+    // simple scale: map nerve diameter to circle diameter
+    const mm = model.scale?.nerveDiameterMm ?? 3;
+    const pxPerMm = (r * 2) / mm;
+    const barMm = mm >= 6 ? 2 : 1;
+    const barPx = barMm * pxPerMm;
+
+    const x0 = 18;
+    const y0 = cnv.height - 18;
+    ctx.strokeStyle = "rgba(10,10,12,0.55)";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(x0, y0);
+    ctx.lineTo(x0 + barPx, y0);
+    ctx.stroke();
+
+    ctx.fillStyle = "rgba(10,10,12,0.65)";
+    ctx.font = "14px Times New Roman";
+    ctx.fillText(`${barMm} mm`, x0, y0 - 6);
   }
 
   function syncStim() {
@@ -338,7 +462,7 @@ import Layout from "../layouts/Layout.astro";
 
   // --- Buttons ---
   ui.addCuff.addEventListener("click", () => {
-    const e = { id: mkId(), type: "cuff", r: model.nerve.r * 1.02 };
+    const e = { id: mkId(), type: "cuff", r: model.nerve.r * 1.02, contacts: 8 };
     model.electrodes.push(e);
     setSelected(e.id);
     draw();
@@ -362,6 +486,10 @@ import Layout from "../layouts/Layout.astro";
     model = defaultModel();
     ui.stimAmp.value = String(model.stim.amp);
     ui.falloff.value = String(model.stim.falloff);
+    ui.nerveDia.value = String(model.scale.nerveDiameterMm);
+    ui.axonCount.value = String(model.scale.axonCount);
+    ui.axonMin.value = String(model.scale.axonDiaMinUm);
+    ui.axonMax.value = String(model.scale.axonDiaMaxUm);
     setSelected(null);
     draw();
     toast("Reset");
@@ -376,6 +504,7 @@ import Layout from "../layouts/Layout.astro";
       fascicles: model.fascicles,
       electrodes: model.electrodes,
       stim: model.stim,
+      scale: model.scale,
     };
     return JSON.stringify(payload, null, 2);
   }
@@ -387,9 +516,18 @@ import Layout from "../layouts/Layout.astro";
     model.fascicles = obj.fascicles;
     model.electrodes = obj.electrodes;
     model.stim = obj.stim ?? model.stim;
+    model.scale = obj.scale ?? model.scale;
+    model.axons = buildAxons(model.fascicles, model.scale.axonCount ?? 0, model.scale.axonDiaMinUm ?? 0.6, model.scale.axonDiaMaxUm ?? 8);
     model.selectedId = null;
+
     ui.stimAmp.value = String(model.stim.amp ?? 40);
     ui.falloff.value = String(model.stim.falloff ?? 24);
+
+    ui.nerveDia.value = String(model.scale.nerveDiameterMm ?? 3);
+    ui.axonCount.value = String(model.scale.axonCount ?? 800);
+    ui.axonMin.value = String(model.scale.axonDiaMinUm ?? 0.6);
+    ui.axonMax.value = String(model.scale.axonDiaMaxUm ?? 8);
+
     setSelected(null);
     draw();
   }
@@ -424,9 +562,38 @@ import Layout from "../layouts/Layout.astro";
     }
   });
 
+  function rebuildAxonsFromUI() {
+    const dia = Number(ui.nerveDia.value);
+    const count = Math.round(Number(ui.axonCount.value));
+    const amin = Number(ui.axonMin.value);
+    const amax = Number(ui.axonMax.value);
+
+    // keep constraints sane
+    const minUm = Math.max(0.2, Math.min(amin, amax - 0.2));
+    const maxUm = Math.max(minUm + 0.2, amax);
+
+    model.scale.nerveDiameterMm = dia;
+    model.scale.axonCount = count;
+    model.scale.axonDiaMinUm = minUm;
+    model.scale.axonDiaMaxUm = maxUm;
+
+    model.axons = buildAxons(model.fascicles, count, minUm, maxUm);
+    draw();
+  }
+
+  ui.nerveDia.addEventListener("input", rebuildAxonsFromUI);
+  ui.axonCount.addEventListener("input", rebuildAxonsFromUI);
+  ui.axonMin.addEventListener("input", rebuildAxonsFromUI);
+  ui.axonMax.addEventListener("input", rebuildAxonsFromUI);
+
   // init
   ui.stimAmp.value = String(model.stim.amp);
   ui.falloff.value = String(model.stim.falloff);
+  ui.nerveDia.value = String(model.scale.nerveDiameterMm);
+  ui.axonCount.value = String(model.scale.axonCount);
+  ui.axonMin.value = String(model.scale.axonDiaMinUm);
+  ui.axonMax.value = String(model.scale.axonDiaMaxUm);
+
   setSelected(null);
   draw();
 </script>
