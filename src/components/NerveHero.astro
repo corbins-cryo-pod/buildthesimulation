@@ -1,0 +1,235 @@
+---
+/**
+ * NerveHero.astro
+ * Procedural "nerve bundle" with traveling pulses.
+ * No external assets. Runs in-browser with Three.js.
+ */
+---
+
+<div class="hero3d" aria-hidden="true">
+  <canvas id="nerve-canvas"></canvas>
+  <div class="fade"></div>
+</div>
+
+<style>
+  .hero3d {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  #nerve-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* Soft fade so text stays readable */
+  .fade {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(900px 700px at 30% 20%, rgba(255,255,255,0.0), rgba(255,255,255,0.25) 60%),
+      radial-gradient(900px 700px at 70% 30%, rgba(255,255,255,0.0), rgba(255,255,255,0.20) 65%),
+      linear-gradient(to bottom, rgba(255,255,255,0.0), rgba(255,255,255,0.45) 70%, rgba(255,255,255,0.60));
+  }
+</style>
+
+<script type="module">
+  import * as THREE from "three";
+
+  const canvas = document.getElementById("nerve-canvas");
+  if (!(canvas instanceof HTMLCanvasElement)) {
+    throw new Error("Canvas not found");
+  }
+
+  // --- Renderer
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
+    alpha: true,
+    powerPreference: "high-performance",
+  });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  // Helps ensure the scene isn't "invisible" against a bright page
+  renderer.setClearColor(0x0b0b10, 0.06);
+
+  // --- Scene / Camera
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  camera.position.set(0.0, 0.15, 3.4);
+
+  // --- Lights (simple + clean)
+  const key = new THREE.DirectionalLight(0xffffff, 1.1);
+  key.position.set(2, 2, 2);
+  scene.add(key);
+
+  const fill = new THREE.DirectionalLight(0xffffff, 0.6);
+  fill.position.set(-2, 1, 1);
+  scene.add(fill);
+
+  const amb = new THREE.AmbientLight(0xffffff, 0.35);
+  scene.add(amb);
+
+  // --- Group for the nerve bundle
+  const bundle = new THREE.Group();
+  scene.add(bundle);
+
+  // Axon parameters
+  const AXON_COUNT = 44;     // keep modest for perf
+  const AXON_RADIUS = 0.02;
+  const AXON_LENGTH = 6.0;   // along Z
+  const BUNDLE_RADIUS = 0.45;
+
+  // Cylinder is Y-up by default; rotate so it runs along Z.
+  const axonGeo = new THREE.CylinderGeometry(
+    AXON_RADIUS,
+    AXON_RADIUS,
+    AXON_LENGTH,
+    18,
+    1,
+    true
+  );
+  axonGeo.rotateX(Math.PI / 2);
+
+  // A slightly translucent material (looks like tissue-ish fibers)
+  const axonMat = new THREE.MeshPhysicalMaterial({
+    color: new THREE.Color(0x7b6cff), // purple nerve fibers
+    roughness: 0.4,
+    metalness: 0.0,
+    transmission: 0.1,
+    thickness: 0.4,
+    transparent: true,
+    opacity: 0.9,
+    clearcoat: 0.15,
+  });
+
+  // Create axons in a circular bundle
+  const axons = [];
+  const rng = (min, max) => min + Math.random() * (max - min);
+
+  for (let i = 0; i < AXON_COUNT; i++) {
+    // sample points inside a circle (rejection sampling)
+    let x = 0, y = 0;
+    for (;;) {
+      x = rng(-BUNDLE_RADIUS, BUNDLE_RADIUS);
+      y = rng(-BUNDLE_RADIUS, BUNDLE_RADIUS);
+      if (x * x + y * y <= BUNDLE_RADIUS * BUNDLE_RADIUS) break;
+    }
+
+    const m = new THREE.Mesh(axonGeo, axonMat);
+    m.position.set(x, y, 0);
+
+    // subtle per-axon tilt
+    m.rotation.z = rng(-0.12, 0.12);
+    m.rotation.y = rng(-0.12, 0.12);
+
+    bundle.add(m);
+    axons.push({ mesh: m, x, y, phase: rng(0, Math.PI * 2) });
+  }
+
+  // Outer "epineurium" ring hint (thin torus)
+  const ringGeo = new THREE.TorusGeometry(BUNDLE_RADIUS * 1.03, 0.007, 10, 120);
+  const ringMat = new THREE.MeshStandardMaterial({
+    color: 0xffffff,
+    transparent: true,
+    opacity: 0.30,
+    roughness: 0.6,
+  });
+  const ring = new THREE.Mesh(ringGeo, ringMat);
+  ring.rotation.x = Math.PI / 2;
+  bundle.add(ring);
+
+  // --- Pulses (action potentials)
+  const PULSE_COUNT = 26;
+  const pulseGeo = new THREE.SphereGeometry(0.016, 18, 18);
+  const pulseMat = new THREE.MeshStandardMaterial({
+    color: 0xffffff,
+    emissive: new THREE.Color(0xff3bd5),
+    emissiveIntensity: 2.5,
+    transparent: true,
+    opacity: 1.0,
+  });
+
+  const pulses = [];
+  for (let i = 0; i < PULSE_COUNT; i++) {
+    const p = new THREE.Mesh(pulseGeo, pulseMat);
+    scene.add(p);
+
+    const ax = axons[Math.floor(Math.random() * axons.length)];
+    pulses.push({
+      mesh: p,
+      axon: ax,
+      z: rng(-AXON_LENGTH / 2, AXON_LENGTH / 2),
+      speed: rng(0.6, 1.4),
+      blink: rng(0, Math.PI * 2),
+    });
+  }
+
+  // --- Resize
+  function resize() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  // --- Animation loop
+  let raf = 0;
+  const clock = new THREE.Clock();
+
+  function tick() {
+    const t = clock.getElapsedTime();
+    const dt = clock.getDelta();
+
+    // slow “breathing” micro-motion
+    bundle.rotation.z = Math.sin(t * 0.18) * 0.06;
+    bundle.rotation.x = Math.sin(t * 0.14) * 0.05;
+    bundle.rotation.y = Math.cos(t * 0.16) * 0.05;
+
+    // slight axon shimmer (subtle)
+    for (const a of axons) {
+      a.mesh.position.x = a.x + Math.sin(t * 0.55 + a.phase) * 0.004;
+      a.mesh.position.y = a.y + Math.cos(t * 0.55 + a.phase) * 0.004;
+    }
+
+    // move pulses along Z, wrap around
+    for (const p of pulses) {
+      p.z += p.speed * dt;
+      if (p.z > AXON_LENGTH / 2) p.z = -AXON_LENGTH / 2;
+
+      // ride its chosen axon centerline
+      p.mesh.position.set(
+        p.axon.mesh.position.x,
+        p.axon.mesh.position.y,
+        p.z
+      );
+
+      // gentle blink
+      const b = 0.75 + 0.25 * Math.sin(t * 3.0 + p.blink);
+      p.mesh.material.opacity = b;
+      p.mesh.scale.setScalar(0.9 + 0.15 * b);
+    }
+
+    renderer.render(scene, camera);
+    raf = requestAnimationFrame(tick);
+  }
+  tick();
+
+  // --- Cleanup
+  window.addEventListener("beforeunload", () => {
+    cancelAnimationFrame(raf);
+    window.removeEventListener("resize", resize);
+    renderer.dispose();
+    axonGeo.dispose();
+    axonMat.dispose();
+    ringGeo.dispose();
+    ringMat.dispose();
+    pulseGeo.dispose();
+    pulseMat.dispose();
+  });
+</script>
