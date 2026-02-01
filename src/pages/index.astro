@@ -1,6 +1,7 @@
 
 ---
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
 const tiles = [
   {
@@ -35,6 +36,11 @@ const tiles = [
     external: true,
   },
 ];
+
+const latestNews = (await getCollection("news"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 ---
 
 <Layout withHero={true}>
@@ -48,6 +54,31 @@ const tiles = [
         <b>The sandbox:</b> a physics-based environment for exploring electrode designs and stimulation strategies.
       </li>
     </ul>
+  </section>
+
+  <section class="card">
+    <div class="row">
+      <h2>Latest news</h2>
+      <a class="smallLink" href="/news">All news →</a>
+    </div>
+
+    {latestNews.length === 0 ? (
+      <p class="muted">No published posts yet (drafts exist in the repo).</p>
+    ) : (
+      <div class="newsGrid">
+        {latestNews.map((p) => (
+          <a class="newsItem" href={`/news/${p.slug}/`}>
+            <div class="newsTop">
+              <div class="newsTitle">{p.data.title}</div>
+              <time datetime={p.data.pubDate.toISOString()}>
+                {p.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+              </time>
+            </div>
+            {p.data.description ? <div class="muted">{p.data.description}</div> : null}
+          </a>
+        ))}
+      </div>
+    )}
   </section>
 
   <section class="grid">
@@ -70,6 +101,29 @@ const tiles = [
     backdrop-filter: blur(10px);
   }
 
+  .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  .smallLink {
+    font-size: 13px;
+    opacity: 0.75;
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .smallLink:hover {
+    opacity: 0.95;
+  }
+
+  .muted {
+    opacity: 0.7;
+  }
+
   .card h2 {
     margin: 0 0 10px;
     font-size: 18px;
@@ -79,6 +133,45 @@ const tiles = [
     margin: 0;
     padding-left: 18px;
     line-height: 1.65;
+  }
+
+  .newsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .newsItem {
+    display: block;
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .newsItem:hover {
+    border-color: rgba(0, 0, 0, 0.22);
+    transform: translateY(-1px);
+  }
+
+  .newsTop {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+
+  .newsTitle {
+    font-weight: 600;
+  }
+
+  time {
+    font-size: 12px;
+    opacity: 0.65;
+    white-space: nowrap;
   }
 
   .grid {
@@ -112,6 +205,12 @@ const tiles = [
     margin: 0;
     opacity: 0.78;
     line-height: 1.45;
+  }
+
+  @media (max-width: 860px) {
+    .newsGrid {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 680px) {

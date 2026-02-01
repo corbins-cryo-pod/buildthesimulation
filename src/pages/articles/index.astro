@@ -1,0 +1,103 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const all = await getCollection("articles");
+const posts = all
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout pageTitle="Articles" subtitle="A guided sequence from fundamentals → future biohybrid peripheral nerve interfaces." description="A sequenced set of articles on brain-computer interfaces, peripheral regenerative nerve interfaces, and biohybrid neuroengineering.">
+  <section class="card">
+    <p class="muted">
+      This is a sequence. Early articles cover existing tech and fundamentals; later ones build toward future biohybrid peripheral nerve interfaces.
+    </p>
+  </section>
+
+  <section class="list">
+    {posts.length === 0 ? (
+      <p class="muted">No published articles yet. (Drafts exist in the repo.)</p>
+    ) : (
+      posts.map((p) => (
+        <a class="item" href={`/articles/${p.slug}/`}>
+          <div class="top">
+            <h2>{p.data.order.toString().padStart(2, "0")} — {p.data.title.replace(/^\d+\s*—\s*/, "")}</h2>
+          </div>
+          {p.data.description ? <p class="desc">{p.data.description}</p> : null}
+          {p.data.tags?.length ? (
+            <div class="tags">
+              {p.data.tags.map((t) => (
+                <span class="tag">{t}</span>
+              ))}
+            </div>
+          ) : null}
+        </a>
+      ))
+    )}
+  </section>
+</Layout>
+
+<style>
+  .card {
+    padding: 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(10px);
+    margin-bottom: 14px;
+  }
+
+  .muted {
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .item {
+    display: block;
+    padding: 16px;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(10px);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .item:hover {
+    border-color: rgba(0, 0, 0, 0.22);
+    transform: translateY(-1px);
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .desc {
+    margin: 8px 0 0;
+    opacity: 0.82;
+    line-height: 1.5;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .tag {
+    font-size: 12px;
+    opacity: 0.72;
+    padding: 4px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.5);
+  }
+</style>

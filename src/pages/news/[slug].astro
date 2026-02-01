@@ -1,0 +1,122 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("news");
+  return posts.filter((p) => !p.data.draft).map((p) => ({ params: { slug: p.slug }, props: { entry: p } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const subtitle = entry.data.description ?? "Weekly BCI + neurotech updates (with commentary).";
+---
+
+<Layout pageTitle="News" subtitle={subtitle} description={entry.data.description}>
+  <article class="post">
+    <header class="postHead">
+      <h2 class="title">{entry.data.title}</h2>
+      <div class="meta">
+        <time datetime={entry.data.pubDate.toISOString()}>
+          {entry.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
+        </time>
+        {entry.data.tags?.length ? <span class="dot">·</span> : null}
+        {entry.data.tags?.length ? (
+          <span class="tags">{entry.data.tags.join(", ")}</span>
+        ) : null}
+      </div>
+    </header>
+
+    {entry.data.links?.length ? (
+      <section class="links">
+        <h3>Links</h3>
+        <ul>
+          {entry.data.links.map((l) => (
+            <li>
+              <a href={l.url} target="_blank" rel="noreferrer">{l.title}</a>
+              {l.note ? <span class="note"> — {l.note}</span> : null}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ) : null}
+
+    <section class="content">
+      <Content />
+    </section>
+  </article>
+</Layout>
+
+<style>
+  .post {
+    padding: 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(10px);
+  }
+
+  .postHead {
+    margin-bottom: 12px;
+  }
+
+  .title {
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+
+  .meta {
+    margin-top: 6px;
+    opacity: 0.72;
+    font-size: 13px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .dot {
+    opacity: 0.6;
+  }
+
+  .links {
+    margin: 14px 0 10px;
+    padding: 12px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .links h3 {
+    margin: 0 0 8px;
+    font-size: 14px;
+  }
+
+  .links ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+
+  .links li {
+    line-height: 1.6;
+    margin: 4px 0;
+  }
+
+  .note {
+    opacity: 0.75;
+  }
+
+  .content :global(p) {
+    line-height: 1.75;
+  }
+
+  .content :global(h2) {
+    margin-top: 18px;
+  }
+
+  .content :global(a) {
+    color: inherit;
+  }
+</style>
