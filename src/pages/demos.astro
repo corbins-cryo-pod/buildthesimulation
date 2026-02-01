@@ -1,7 +1,21 @@
 ---
+import Layout from "../layouts/Layout.astro";
 ---
-<html><body style="font-family: system-ui; padding: 24px;">
-  <h1>Demos</h1>
-  <p>Interactive models and experiments. Coming soon.</p>
-  <p><a href="/">← Home</a></p>
-</body></html>
+
+<Layout pageTitle="Demos" subtitle="Interactive models and experiments. Coming soon.">
+  <section class="card">
+    <p>
+      Interactive models: fields, fibers, decoding/control toy problems, and materials visualizations.
+    </p>
+  </section>
+</Layout>
+
+<style>
+  .card {
+    padding: 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(10px);
+  }
+</style>
