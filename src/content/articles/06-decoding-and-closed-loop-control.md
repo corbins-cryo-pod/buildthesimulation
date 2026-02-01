@@ -55,6 +55,10 @@ If you build a peripheral nerve interface that is mechanically robust but the de
 
 Biohybrid and regenerative strategies may, in the long run, improve stability by using biology to enforce geometry and coupling. But until that is proven, decoding must be designed to tolerate drift.
 
+## Where we’re going next
+
+Phase 2 shifts from “what is the signal?” to “what survives chronic implantation?” We’ll go deeper into biomaterials, mechanics, and the foreign body response, because those are often the real limiting factors for long-lived interfaces (cortex or nerve).
+
 ## References (starter)
 
 - Translation challenges and practical constraints (review):

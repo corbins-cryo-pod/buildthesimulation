@@ -6,98 +6,149 @@ const all = await getCollection("articles");
 const posts = all
   .filter((p) => !p.data.draft)
   .sort((a, b) => a.data.order - b.data.order);
+
+const phase1 = posts.filter((p) => p.data.order >= 1 && p.data.order <= 6);
+const phase2 = posts.filter((p) => p.data.order >= 7 && p.data.order <= 10);
+const phase3 = posts.filter((p) => p.data.order >= 11 && p.data.order <= 14);
+const phase4 = posts.filter((p) => p.data.order >= 15);
+
+function titleWithoutPrefix(title) {
+  return title.replace(/^\d+\s*—\s*/, "");
+}
 ---
 
-<Layout pageTitle="Articles" subtitle="A guided sequence from fundamentals → future biohybrid peripheral nerve interfaces." description="A sequenced set of articles on brain-computer interfaces, peripheral regenerative nerve interfaces, and biohybrid neuroengineering.">
+<Layout
+  pageTitle="Articles"
+  subtitle="A guided sequence from fundamentals → existing tech → future biohybrid peripheral nerve interfaces."
+  description="A sequenced set of articles on brain-computer interfaces, peripheral regenerative nerve interfaces, and biohybrid neuroengineering."
+>
   <section class="card">
     <p class="muted">
-      This is a sequence. Early articles cover existing tech and fundamentals; later ones build toward future biohybrid peripheral nerve interfaces.
+      This is meant to read like an evolving textbook: rigorous definitions + citations, but also practical engineering heuristics.
     </p>
   </section>
 
-  <section class="list">
-    {posts.length === 0 ? (
-      <p class="muted">No published articles yet. (Drafts exist in the repo.)</p>
-    ) : (
-      posts.map((p) => (
+  <section class="card">
+    <h2>Phase 1 — Foundations + existing tech (complete)</h2>
+    <div class="list">
+      {phase1.map((p) => (
         <a class="item" href={`/articles/${p.slug}/`}>
           <div class="top">
-            <h2>{p.data.order.toString().padStart(2, "0")} — {p.data.title.replace(/^\d+\s*—\s*/, "")}</h2>
+            <h3>
+              {String(p.data.order).padStart(2, "0")} — {titleWithoutPrefix(p.data.title)}
+            </h3>
           </div>
           {p.data.description ? <p class="desc">{p.data.description}</p> : null}
-          {p.data.tags?.length ? (
-            <div class="tags">
-              {p.data.tags.map((t) => (
-                <span class="tag">{t}</span>
-              ))}
-            </div>
-          ) : null}
         </a>
-      ))
-    )}
+      ))}
+    </div>
   </section>
+
+  {phase2.length ? (
+    <section class="card">
+      <h2>Phase 2 — Materials, mechanics, and biology of chronic implants</h2>
+      <div class="list">
+        {phase2.map((p) => (
+          <a class="item" href={`/articles/${p.slug}/`}>
+            <div class="top">
+              <h3>
+                {String(p.data.order).padStart(2, "0")} — {titleWithoutPrefix(p.data.title)}
+              </h3>
+            </div>
+            {p.data.description ? <p class="desc">{p.data.description}</p> : null}
+          </a>
+        ))}
+      </div>
+    </section>
+  ) : null}
+
+  {phase3.length ? (
+    <section class="card">
+      <h2>Phase 3 — Biohybrid peripheral regenerative interfaces (open exploration)</h2>
+      <div class="list">
+        {phase3.map((p) => (
+          <a class="item" href={`/articles/${p.slug}/`}>
+            <div class="top">
+              <h3>
+                {String(p.data.order).padStart(2, "0")} — {titleWithoutPrefix(p.data.title)}
+              </h3>
+            </div>
+            {p.data.description ? <p class="desc">{p.data.description}</p> : null}
+          </a>
+        ))}
+      </div>
+    </section>
+  ) : null}
+
+  {phase4.length ? (
+    <section class="card">
+      <h2>Phase 4 — Simulation-led design</h2>
+      <div class="list">
+        {phase4.map((p) => (
+          <a class="item" href={`/articles/${p.slug}/`}>
+            <div class="top">
+              <h3>
+                {String(p.data.order).padStart(2, "0")} — {titleWithoutPrefix(p.data.title)}
+              </h3>
+            </div>
+            {p.data.description ? <p class="desc">{p.data.description}</p> : null}
+          </a>
+        ))}
+      </div>
+    </section>
+  ) : null}
 </Layout>
 
 <style>
   .card {
-    padding: 18px;
-    border-radius: 18px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(10px);
-    margin-bottom: 14px;
+    margin-top: 14px;
+    padding: 22px 22px;
+    border-radius: 16px;
+    border: 1px solid rgba(10, 10, 12, 0.14);
+    background: rgba(255, 255, 255, 0.22);
   }
 
   .muted {
-    opacity: 0.7;
+    opacity: 0.72;
     margin: 0;
+  }
+
+  h2 {
+    margin: 0 0 12px;
+    font-size: 1.15em;
+    font-weight: 700;
   }
 
   .list {
     display: grid;
-    gap: 12px;
+    gap: 10px;
   }
 
   .item {
     display: block;
-    padding: 16px;
-    border-radius: 18px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(10px);
+    padding: 14px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(10, 10, 12, 0.14);
+    background: rgba(255, 255, 255, 0.16);
     color: inherit;
     text-decoration: none;
   }
 
   .item:hover {
-    border-color: rgba(0, 0, 0, 0.22);
+    border-color: rgba(10, 10, 12, 0.28);
     transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.24);
   }
 
-  h2 {
+  h3 {
     margin: 0;
-    font-size: 18px;
+    font-size: 1.05em;
+    font-weight: 700;
   }
 
   .desc {
     margin: 8px 0 0;
-    opacity: 0.82;
-    line-height: 1.5;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 10px;
-  }
-
-  .tag {
-    font-size: 12px;
-    opacity: 0.72;
-    padding: 4px 8px;
-    border-radius: 999px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.5);
+    opacity: 0.78;
+    line-height: 1.7;
   }
 </style>
