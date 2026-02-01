@@ -12,7 +12,6 @@ import Layout from "../layouts/Layout.astro";
       <div class="panelSection">
         <div class="panelTitle">Library</div>
         <div class="row">
-          <button class="btn" id="addCuff">Add cuff</button>
           <button class="btn" id="addIntra">Add intrafascicular</button>
         </div>
         <div class="row">
@@ -25,6 +24,10 @@ import Layout from "../layouts/Layout.astro";
 
         <label class="lab">
           Axon sites (count)
+          <details class="def">
+            <summary>What is this?</summary>
+            <div class="defBody">How many axon “sites” are rendered inside the fascicle. These are visual points (not a biophysical axon model). More sites = denser firing + heavier CPU.</div>
+          </details>
           <div class="rangeRow">
             <input id="axonCount" type="range" min="0" max="4000" value="1000" />
             <div class="rangeMeta">
@@ -45,6 +48,10 @@ import Layout from "../layouts/Layout.astro";
 
         <label class="lab">
           Stim amplitude (a.u.)
+          <details class="def">
+            <summary>What is this?</summary>
+            <div class="defBody">A proxy “current amplitude” used to compute a simple exponential field around each intrafascicular electrode. Higher = more axons cross threshold.</div>
+          </details>
           <div class="rangeRow">
             <input id="stimAmp" type="range" min="0" max="100" value="40" />
             <div class="rangeMeta">
@@ -56,6 +63,10 @@ import Layout from "../layouts/Layout.astro";
 
         <label class="lab">
           Field falloff
+          <details class="def">
+            <summary>What is this?</summary>
+            <div class="defBody">Sets how quickly the proxy field decays with distance. Larger values spread stimulation farther; smaller values make it more localized.</div>
+          </details>
           <div class="rangeRow">
             <input id="falloff" type="range" min="5" max="60" value="24" />
             <div class="rangeMeta">
@@ -67,6 +78,10 @@ import Layout from "../layouts/Layout.astro";
 
         <label class="lab">
           Threshold (proxy)
+          <details class="def">
+            <summary>What is this?</summary>
+            <div class="defBody">Proxy activation threshold. During a pulse, axons with |field| ≥ threshold are forced “on” for a short dwell time.</div>
+          </details>
           <div class="rangeRow">
             <input id="thresh" type="range" min="0" max="200" value="55" />
             <div class="rangeMeta">
@@ -81,17 +96,16 @@ import Layout from "../layouts/Layout.astro";
           <button class="btn ghost" id="stop">Stop</button>
         </div>
 
-        <label class="lab">
-          Waveform
-          <select id="wave">
-            <option value="monophasic">Monophasic square</option>
-            <option value="biphasic">Biphasic square</option>
-            <option value="sine">Sine</option>
-          </select>
-        </label>
+        <div class="row">
+          <button class="btn ghost" id="colorMode">Spike colors: mono</button>
+        </div>
 
         <label class="lab">
           Frequency (Hz)
+          <details class="def">
+            <summary>What is this?</summary>
+            <div class="defBody">Frequency of the sine-wave stimulation during the train. (We’re keeping sine-only for now.)</div>
+          </details>
           <div class="rangeRow">
             <input id="freq" type="range" min="1" max="200" value="20" />
             <div class="rangeMeta">
@@ -102,18 +116,19 @@ import Layout from "../layouts/Layout.astro";
         </label>
 
         <label class="lab">
-          Pulse width (ms)
+          Train duration (ms)
+          <details class="def">
+            <summary>What is this?</summary>
+            <div class="defBody">How long the sine-wave stimulation train runs when you click <b>Pulse</b>. Axons above the proxy threshold will be forced to fire during the train.</div>
+          </details>
           <div class="rangeRow">
-            <input id="pw" type="range" min="1" max="25" value="5" />
+            <input id="dur" type="range" min="50" max="1500" value="450" />
             <div class="rangeMeta">
-              <span id="pwVal"></span>
-              <span class="rangeMinMax">min <span id="pwMin"></span> / max <span id="pwMax"></span></span>
+              <span id="durVal"></span>
+              <span class="rangeMinMax">min <span id="durMin"></span> / max <span id="durMax"></span></span>
             </div>
           </div>
         </label>
-
-        <label class="lab">
-          Train duration (ms)
           <div class="rangeRow">
             <input id="dur" type="range" min="50" max="1500" value="450" />
             <div class="rangeMeta">
@@ -151,7 +166,7 @@ import Layout from "../layouts/Layout.astro";
         <summary class="panelTitle">Notes</summary>
         <p class="muted">
           Simplified model. Axon firing uses randomized per-axon timing with a <b>minimum 200 ms</b> refractory interval.
-          Recording is distance-weighted spikes per intrafascicular electrode (up to 2 graphs).
+          Recording is distance-weighted spikes per intrafascicular electrode (up to <b>10</b> graphs, auto-generated).
         </p>
       </details>
     </aside>
@@ -175,23 +190,7 @@ import Layout from "../layouts/Layout.astro";
           </section>
         </div>
 
-        <div class="miniRow">
-          <section class="mini">
-            <div class="miniBar">
-              <div class="miniTitle">Recording A</div>
-              <div class="miniHint">first intrafascicular electrode</div>
-            </div>
-            <canvas id="recA" width="980" height="150"></canvas>
-          </section>
-
-          <section class="mini">
-            <div class="miniBar">
-              <div class="miniTitle">Recording B</div>
-              <div class="miniHint">second intrafascicular electrode</div>
-            </div>
-            <canvas id="recB" width="980" height="150"></canvas>
-          </section>
-        </div>
+        <div class="miniRow" id="recList"></div>
 
       </div>
 
@@ -223,13 +222,10 @@ import Layout from "../layouts/Layout.astro";
   const stimC = $("stim");
   const sctx = stimC.getContext("2d");
 
-  const recA = $("recA");
-  const recB = $("recB");
-  const rctxA = recA.getContext("2d");
-  const rctxB = recB.getContext("2d");
+  const recListEl = $("recList");
+  const recCanvases = new Map(); // electrodeId -> { canvas, ctx }
 
   const ui = {
-    addCuff: $("addCuff"),
     addIntra: $("addIntra"),
     reset: $("reset"),
     export: $("export"),
@@ -241,9 +237,8 @@ import Layout from "../layouts/Layout.astro";
 
     pulse: $("pulse"),
     stop: $("stop"),
-    wave: $("wave"),
+    colorMode: $("colorMode"),
     freq: $("freq"),
-    pw: $("pw"),
     dur: $("dur"),
 
     axonCount: $("axonCount"),
@@ -269,7 +264,6 @@ import Layout from "../layouts/Layout.astro";
     ["falloff", "falloffVal", "falloffMin", "falloffMax"],
     ["thresh", "threshVal", "threshMin", "threshMax"],
     ["freq", "freqVal", "freqMin", "freqMax"],
-    ["pw", "pwVal", "pwMin", "pwMax"],
     ["dur", "durVal", "durMin", "durMax"],
   ];
 
@@ -408,8 +402,10 @@ import Layout from "../layouts/Layout.astro";
       axons,
       electrodes: [],
       stim: { amp: 40, falloff: 24, thresh: 55 },
-      wave: { kind: "monophasic", freqHz: 20, pwMs: 5, durMs: 450 },
+      wave: { freqHz: 20, durMs: 450 },
       pulse: { active: false, t0: 0 },
+
+      colorMode: "mono", // "mono" | "distance"
 
       view: { s: 1, ox: 0, oy: 0 },
       selectedId: null,
@@ -432,16 +428,10 @@ import Layout from "../layouts/Layout.astro";
   function hitTest(x, y) {
     for (let i = model.electrodes.length - 1; i >= 0; i--) {
       const e = model.electrodes[i];
-      if (e.type === "cuff") {
-        const dx = x - model.nerve.cx;
-        const dy = y - model.nerve.cy;
-        const d = Math.hypot(dx, dy);
-        if (Math.abs(d - e.r) < 10) return e;
-      } else {
-        const dx = x - e.x;
-        const dy = y - e.y;
-        if (Math.hypot(dx, dy) < 10) return e;
-      }
+      if (e.type !== "intra") continue;
+      const dx = x - e.x;
+      const dy = y - e.y;
+      if (Math.hypot(dx, dy) < 10) return e;
     }
     return null;
   }
@@ -449,7 +439,7 @@ import Layout from "../layouts/Layout.astro";
   function setSelected(id) {
     model.selectedId = id;
     const e = model.electrodes.find((q) => q.id === id);
-    ui.selType.textContent = e ? e.type : "—";
+    ui.selType.textContent = e ? (e.type === "intra" ? "intrafascicular" : e.type) : "—";
     ui.selId.textContent = e ? e.id : "—";
     ui.selX.textContent = e ? Math.round(e.x ?? model.nerve.cx) : "—";
     ui.selY.textContent = e ? Math.round(e.y ?? model.nerve.cy) : "—";
@@ -467,48 +457,123 @@ import Layout from "../layouts/Layout.astro";
     }
   }
 
+  function lerp(a, b, t) {
+    return a + (b - a) * t;
+  }
+
+  function lerpColor(c1, c2, t01) {
+    const t = Math.max(0, Math.min(1, t01));
+    const r = Math.round(lerp(c1[0], c2[0], t));
+    const g = Math.round(lerp(c1[1], c2[1], t));
+    const b = Math.round(lerp(c1[2], c2[2], t));
+    return `rgb(${r},${g},${b})`;
+  }
+
+  function colorForDistanceUm(dUm) {
+    // near = red, far = purple
+    const t = Math.max(0, Math.min(1, dUm / PICKUP_ZERO_UM));
+    return lerpColor([255, 50, 50], [120, 55, 255], t);
+  }
+
+  function renderRecPanels() {
+    // Show up to 10 intrafascicular channels, stacked.
+    const intra = getIntraElectrodes().slice(0, 10);
+
+    // clear placeholder if present
+    if (recListEl?.dataset?.placeholder === "1" && intra.length) {
+      recListEl.innerHTML = "";
+      recListEl.dataset.placeholder = "0";
+    }
+
+    // remove canvases that no longer exist
+    for (const [id, v] of recCanvases.entries()) {
+      if (!intra.find((e) => e.id === id)) {
+        v.canvas.closest('section')?.remove();
+        recCanvases.delete(id);
+      }
+    }
+
+    // ensure DOM order matches intra order
+    const existingIds = new Set(recCanvases.keys());
+
+    for (let i = 0; i < intra.length; i++) {
+      const e = intra[i];
+      if (!existingIds.has(e.id)) {
+        const section = document.createElement('section');
+        section.className = 'mini';
+
+        const bar = document.createElement('div');
+        bar.className = 'miniBar';
+
+        const title = document.createElement('div');
+        title.className = 'miniTitle';
+        title.textContent = `Recording ${i + 1}`;
+
+        const hint = document.createElement('div');
+        hint.className = 'miniHint';
+        hint.textContent = `intrafascicular electrode ${e.id}`;
+
+        bar.appendChild(title);
+        bar.appendChild(hint);
+        section.appendChild(bar);
+
+        const c = document.createElement('canvas');
+        c.width = 980;
+        c.height = 150;
+        section.appendChild(c);
+
+        recListEl.appendChild(section);
+        recCanvases.set(e.id, { canvas: c, ctx: c.getContext('2d') });
+      }
+    }
+
+    // reorder
+    const sections = Array.from(recListEl.querySelectorAll('section.mini'));
+    const desiredOrder = intra.map((e) => e.id);
+    sections.sort((a, b) => {
+      const ca = a.querySelector('canvas');
+      const ida = [...recCanvases.entries()].find(([, v]) => v.canvas === ca)?.[0];
+      const cb = b.querySelector('canvas');
+      const idb = [...recCanvases.entries()].find(([, v]) => v.canvas === cb)?.[0];
+      return desiredOrder.indexOf(ida) - desiredOrder.indexOf(idb);
+    });
+    for (const s of sections) recListEl.appendChild(s);
+
+    // update titles (1..N)
+    for (let i = 0; i < intra.length; i++) {
+      const id = intra[i].id;
+      const entry = recCanvases.get(id);
+      const section = entry?.canvas.closest('section');
+      if (!section) continue;
+      const t = section.querySelector('.miniTitle');
+      const h = section.querySelector('.miniHint');
+      if (t) t.textContent = `Recording ${i + 1}`;
+      if (h) h.textContent = `intrafascicular electrode ${id}`;
+    }
+  }
+
+
   function stimMultiplier(nowMs) {
+    // Sine-only stimulation for now
     if (!model.pulse.active) return 0;
     const t = (nowMs - model.pulse.t0) / 1000;
     const dur = model.wave.durMs / 1000;
     if (t < 0 || t > dur) return 0;
 
     const f = model.wave.freqHz;
-    const pw = model.wave.pwMs / 1000;
-    const phase = (t * f) % 1;
-
-    if (model.wave.kind === "sine") {
-      return Math.sin(2 * Math.PI * f * t);
-    }
-
-    if (model.wave.kind === "biphasic") {
-      const on1 = phase < pw * f;
-      const on2 = phase >= 0.5 && phase < 0.5 + pw * f;
-      return on1 ? 1 : on2 ? -1 : 0;
-    }
-
-    return phase < pw * f ? 1 : 0;
+    return Math.sin(2 * Math.PI * f * t);
   }
 
   function fieldAt(x, y, mult = 1) {
+    // Intrafascicular-only field (sum of exponentials)
     const fall = Number(model.stim.falloff);
     const amp = Number(model.stim.amp) * mult;
     let v = 0;
 
     for (const e of model.electrodes) {
-      if (e.type === "cuff") {
-        const n = e.contacts ?? 8;
-        for (let i = 0; i < n; i++) {
-          const t = (i / n) * Math.PI * 2;
-          const ex = model.nerve.cx + Math.cos(t) * e.r;
-          const ey = model.nerve.cy + Math.sin(t) * e.r;
-          const d = Math.hypot(x - ex, y - ey);
-          v += amp * Math.exp(-d / fall);
-        }
-      } else {
-        const d = Math.hypot(x - e.x, y - e.y);
-        v += amp * Math.exp(-d / fall);
-      }
+      if (e.type !== "intra") continue;
+      const d = Math.hypot(x - e.x, y - e.y);
+      v += amp * Math.exp(-d / fall);
     }
 
     return v;
@@ -530,9 +595,13 @@ import Layout from "../layouts/Layout.astro";
     return model.recEvents.get(id);
   }
 
-  function pushRecEvent(eid, tS, amp01) {
+  function pushRecEvent(eid, tS, amp01, color = null) {
     const list = ensureRecList(eid);
-    list.push({ t: tS, amp: Math.max(0, Math.min(1, amp01)) });
+    list.push({
+      t: tS,
+      amp: Math.max(0, Math.min(1, amp01)),
+      color,
+    });
 
     const cutoff = tS - 12;
     while (list.length && list[0].t < cutoff) list.shift();
@@ -578,13 +647,13 @@ import Layout from "../layouts/Layout.astro";
     ctx2d.stroke();
 
     // spikes
-    ctx2d.strokeStyle = "rgba(10,10,12,0.85)";
     ctx2d.lineWidth = 2;
 
     for (const ev of events) {
       if (ev.t < tStart || ev.t > tEnd) continue;
       const x = tx(ev.t);
       const ampPx = ev.amp * (H * 0.60);
+      ctx2d.strokeStyle = ev.color ?? "rgba(10,10,12,0.85)";
       ctx2d.beginPath();
       ctx2d.moveTo(x, mid);
       ctx2d.lineTo(x, mid - ampPx);
@@ -708,13 +777,14 @@ import Layout from "../layouts/Layout.astro";
         const isi = MIN_ISI_S + expSample(JITTER_MEAN_S);
         a.nextFire = a.nextFire + isi;
 
-        // record on all intra electrodes (up to 2 graphs shown, but we can still compute all)
+        // record on all intra electrodes (we can display up to 10)
         if (intra.length) {
           for (const e of intra) {
             const dUm = Math.hypot(a.x - e.x, a.y - e.y) * uPerPx;
             const w = pickupWeight(dUm);
             if (w <= 0) continue;
-            pushRecEvent(e.id, nowS, w * 0.9);
+            const color = model.colorMode === "distance" ? colorForDistanceUm(dUm) : null;
+            pushRecEvent(e.id, nowS, w * 0.9, color);
           }
         }
       }
@@ -743,7 +813,7 @@ import Layout from "../layouts/Layout.astro";
 
     // big event marker on each intra electrode
     for (const e of getIntraElectrodes()) {
-      pushRecEvent(e.id, nowS, 1.0);
+      pushRecEvent(e.id, nowS, 1.0, null);
     }
   }
 
@@ -762,7 +832,7 @@ import Layout from "../layouts/Layout.astro";
     ctx.scale(model.view.s, model.view.s);
 
     // field heatmap (only when pulsing)
-    if (model.electrodes.length && mult !== 0) {
+    if (getIntraElectrodes().length && mult !== 0) {
       const step = 18;
       let maxV = 0;
       const vals = [];
@@ -804,33 +874,44 @@ import Layout from "../layouts/Layout.astro";
     const cell = 2.2;
     const half = cell / 2;
 
+    const intra = getIntraElectrodes();
     for (const a of model.axons) {
       const on = (a.onUntil > nowS) || (a.stimUntil > nowS);
-      ctx.fillStyle = on ? "rgba(10,10,12,0.78)" : "rgba(10,10,12,0.12)";
+
+      if (!on) {
+        ctx.fillStyle = "rgba(10,10,12,0.12)";
+        ctx.fillRect(a.x - half, a.y - half, cell, cell);
+        continue;
+      }
+
+      if (model.colorMode === "distance" && intra.length) {
+        // color the axon by distance to the nearest intrafascicular electrode
+        let best = Infinity;
+        for (const e of intra) {
+          const d = Math.hypot(a.x - e.x, a.y - e.y) * uPerPx;
+          if (d < best) best = d;
+        }
+        ctx.fillStyle = colorForDistanceUm(best);
+      } else {
+        ctx.fillStyle = "rgba(10,10,12,0.78)";
+      }
       ctx.fillRect(a.x - half, a.y - half, cell, cell);
     }
 
-    // electrodes
+    // electrodes (intrafascicular only)
     for (const e of model.electrodes) {
+      if (e.type !== "intra") continue;
       const selected = e.id === model.selectedId;
 
-      if (e.type === "cuff") {
-        ctx.beginPath();
-        ctx.arc(cx, cy, e.r, 0, Math.PI * 2);
-        ctx.strokeStyle = selected ? "rgba(10,10,12,0.95)" : "rgba(10,10,12,0.70)";
-        ctx.lineWidth = selected ? 4 : 3;
-        ctx.stroke();
-      } else {
-        ctx.beginPath();
-        ctx.arc(e.x, e.y, 6, 0, Math.PI * 2);
-        ctx.fillStyle = selected ? "rgba(10,10,12,0.95)" : "rgba(10,10,12,0.78)";
-        ctx.fill();
-        ctx.beginPath();
-        ctx.arc(e.x, e.y, 10, 0, Math.PI * 2);
-        ctx.strokeStyle = "rgba(10,10,12,0.24)";
-        ctx.lineWidth = 1;
-        ctx.stroke();
-      }
+      ctx.beginPath();
+      ctx.arc(e.x, e.y, 6, 0, Math.PI * 2);
+      ctx.fillStyle = selected ? "rgba(10,10,12,0.95)" : "rgba(10,10,12,0.78)";
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(e.x, e.y, 10, 0, Math.PI * 2);
+      ctx.strokeStyle = "rgba(10,10,12,0.24)";
+      ctx.lineWidth = 1;
+      ctx.stroke();
     }
 
     // label
@@ -865,17 +946,29 @@ import Layout from "../layouts/Layout.astro";
     drawMain(nowMs);
     drawStimWave(nowMs);
 
-    const intra = getIntraElectrodes();
-    const eA = intra[0];
-    const eB = intra[1];
+    renderRecPanels();
 
-    // draw A
-    const eventsA = eA ? (model.recEvents.get(eA.id) ?? []) : [];
-    drawStrip(rctxA, nowS, eventsA, eA ? `A: ${eA.id}` : "A: (add intrafascicular)");
+    const intra = getIntraElectrodes().slice(0, 10);
+    for (const e of intra) {
+      const entry = recCanvases.get(e.id);
+      if (!entry) continue;
+      const events = model.recEvents.get(e.id) ?? [];
+      drawStrip(entry.ctx, nowS, events, `${e.id}`);
+    }
 
-    // draw B
-    const eventsB = eB ? (model.recEvents.get(eB.id) ?? []) : [];
-    drawStrip(rctxB, nowS, eventsB, eB ? `B: ${eB.id}` : "B: (add 2nd intrafascicular)");
+    if (!intra.length) {
+      // show a placeholder panel if none exist
+      recListEl.dataset.placeholder = "1";
+      recListEl.innerHTML = `
+        <section class="mini">
+          <div class="miniBar">
+            <div class="miniTitle">Recording</div>
+            <div class="miniHint">add an intrafascicular electrode (max 10 displayed)</div>
+          </div>
+          <canvas width="980" height="150"></canvas>
+        </section>
+      `;
+    }
   }
 
   // --- UI sync ---
@@ -892,9 +985,7 @@ import Layout from "../layouts/Layout.astro";
   }
 
   function syncWave() {
-    model.wave.kind = ui.wave.value;
     model.wave.freqHz = Number(ui.freq.value);
-    model.wave.pwMs = Number(ui.pw.value);
     model.wave.durMs = Number(ui.dur.value);
   }
 
@@ -905,10 +996,10 @@ import Layout from "../layouts/Layout.astro";
 
     ui.axonCount.value = String(model.axons.length);
 
-    ui.wave.value = model.wave.kind;
     ui.freq.value = String(model.wave.freqHz);
-    ui.pw.value = String(model.wave.pwMs);
     ui.dur.value = String(model.wave.durMs);
+
+    ui.colorMode.textContent = model.colorMode === "distance" ? "Spike colors: distance" : "Spike colors: mono";
   }
 
   // --- Interaction ---
@@ -988,16 +1079,23 @@ import Layout from "../layouts/Layout.astro";
   );
 
   // --- Buttons ---
-  ui.addCuff.addEventListener("click", () => {
-    const e = { id: mkId(), type: "cuff", r: model.nerve.r * 1.02, contacts: 8 };
-    model.electrodes.push(e);
-    setSelected(e.id);
-    drawAll();
-    toast("Added cuff");
-  });
-
   ui.addIntra.addEventListener("click", () => {
-    const e = { id: mkId(), type: "intra", x: model.nerve.cx + model.nerve.r * 0.12, y: model.nerve.cy };
+    const intraCount = getIntraElectrodes().length;
+    if (intraCount >= 10) {
+      toast("Max 10 intrafascicular electrodes");
+      return;
+    }
+
+    // stagger new electrodes a bit so they don't stack perfectly
+    const ang = (intraCount / 10) * Math.PI * 2;
+    const rr = model.nerve.r * 0.12;
+    const e = {
+      id: mkId(),
+      type: "intra",
+      x: model.nerve.cx + Math.cos(ang) * rr,
+      y: model.nerve.cy + Math.sin(ang) * rr,
+    };
+
     model.electrodes.push(e);
     ensureRecList(e.id);
     setSelected(e.id);
@@ -1019,8 +1117,8 @@ import Layout from "../layouts/Layout.astro";
   });
 
   ui.pulse.addEventListener("click", () => {
-    if (!model.electrodes.length) {
-      toast("Add an electrode first");
+    if (!getIntraElectrodes().length) {
+      toast("Add an intrafascicular electrode first");
       return;
     }
     syncWave();
@@ -1054,7 +1152,7 @@ import Layout from "../layouts/Layout.astro";
 
     model.nerve = obj.nerve;
     model.fascicles = obj.fascicles;
-    model.electrodes = obj.electrodes;
+    model.electrodes = (obj.electrodes ?? []).filter((e) => e.type === "intra");
     model.stim = obj.stim ?? model.stim;
     model.wave = obj.wave ?? model.wave;
     model.view = obj.view ?? model.view;
@@ -1115,10 +1213,14 @@ import Layout from "../layouts/Layout.astro";
   ui.falloff.addEventListener("input", () => { syncStim(); syncRangeMeta(); drawAll(); });
   ui.thresh.addEventListener("input", () => { syncStim(); syncRangeMeta(); drawAll(); });
 
-  ui.wave.addEventListener("change", () => { syncWave(); drawAll(); });
   ui.freq.addEventListener("input", () => { syncWave(); syncRangeMeta(); drawAll(); });
-  ui.pw.addEventListener("input", () => { syncWave(); syncRangeMeta(); drawAll(); });
   ui.dur.addEventListener("input", () => { syncWave(); syncRangeMeta(); drawAll(); });
+
+  ui.colorMode.addEventListener("click", () => {
+    model.colorMode = model.colorMode === "mono" ? "distance" : "mono";
+    ui.colorMode.textContent = model.colorMode === "distance" ? "Spike colors: distance" : "Spike colors: mono";
+    drawAll();
+  });
 
   // --- Main loop ---
   function loop() {
@@ -1268,8 +1370,9 @@ import Layout from "../layouts/Layout.astro";
     padding: 10px 12px 0;
   }
 
-  .miniRow:nth-child(3) {
-    grid-template-columns: 1fr 1fr;
+  /* recordings are stacked; the DOM dynamically adds up to 10 */
+  #recList {
+    grid-template-columns: 1fr;
   }
 
   .mini {
