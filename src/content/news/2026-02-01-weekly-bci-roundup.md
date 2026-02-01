@@ -7,7 +7,7 @@ links:
   - title: "(Example) Paper/Startup link goes here"
     url: "https://example.com"
     note: "Why it matters / my take in one sentence."
-draft: true
+draft: false
 ---
 
 This is a placeholder *draft* post so the site has a working end-to-end pipeline.
