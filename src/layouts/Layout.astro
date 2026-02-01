@@ -14,6 +14,9 @@ const fullTitle = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
 
 const pathname = Astro.url?.pathname ?? "/";
 
+// Display title can be different from <title>
+const displayTitle = pathname === "/" ? "HOW TO BUILD THE SIMULATION" : siteTitle;
+
 const links = [
   { href: "/", label: "Home" },
   { href: "/news", label: "News" },
@@ -44,7 +47,7 @@ const links = [
         <div class="brand">
           <a class="mark" aria-label="Home" href="/"></a>
           <div class="titleblock">
-            {pageTitle ? <h1 class="pageTitle">{pageTitle}</h1> : <h1>{siteTitle}</h1>}
+            {pageTitle ? <h1 class="pageTitle">{pageTitle}</h1> : <h1>{displayTitle}</h1>}
             <p class="sub">
               {subtitle ??
                 "A living blueprint for simulating neural systems — and designing the interfaces that connect to them."}
@@ -75,21 +78,17 @@ const links = [
   :global(body) {
     margin: 0;
     font-family: "Times New Roman", Times, serif;
-    color: #0b0b10;
-    background:
-      radial-gradient(1000px 600px at 25% 10%, rgba(160, 120, 255, 0.18), transparent 60%),
-      radial-gradient(800px 500px at 75% 15%, rgba(255, 120, 170, 0.14), transparent 55%),
-      radial-gradient(900px 650px at 50% 90%, rgba(120, 200, 255, 0.12), transparent 60%),
-      #ffffff;
+    color: rgba(10, 10, 12, 0.88);
+    background: #f6f1e6; /* paper */
   }
 
   /* keep UI above the 3D canvas */
   .wrap {
     position: relative;
     z-index: 1;
-    max-width: 980px;
+    max-width: 1040px;
     margin: 0 auto;
-    padding: 48px 20px 28px;
+    padding: 54px 22px 40px;
   }
 
   .hero {
@@ -109,28 +108,28 @@ const links = [
     width: 44px;
     height: 44px;
     border-radius: 14px;
-    background: linear-gradient(135deg, rgba(160, 120, 255, 0.9), rgba(255, 120, 170, 0.85));
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    background: linear-gradient(135deg, rgba(20, 20, 22, 0.9), rgba(20, 20, 22, 0.6));
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
     display: inline-block;
     flex: 0 0 auto;
   }
 
   h1 {
     margin: 0;
-    font-size: 44px;
-    letter-spacing: -0.02em;
-    line-height: 1.05;
+    font-size: 52px;
+    letter-spacing: -0.01em;
+    line-height: 1.02;
   }
 
   .pageTitle {
-    font-size: 38px;
+    font-size: 44px;
   }
 
   .sub {
-    margin: 6px 0 0;
-    font-size: 16px;
-    opacity: 0.75;
-    max-width: 70ch;
+    margin: 10px 0 0;
+    font-size: 19px;
+    opacity: 0.78;
+    max-width: 74ch;
   }
 
   .nav {
@@ -141,24 +140,24 @@ const links = [
 
   .pill {
     display: inline-flex;
-    padding: 9px 12px;
+    padding: 10px 13px;
     border-radius: 999px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(10, 10, 12, 0.14);
     text-decoration: none;
     color: inherit;
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.35);
     transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
   }
 
   .pill:hover {
-    border-color: rgba(0, 0, 0, 0.24);
+    border-color: rgba(10, 10, 12, 0.28);
     transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.5);
   }
 
   .pill.active {
-    border-color: rgba(0, 0, 0, 0.28);
-    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(10, 10, 12, 0.35);
+    background: rgba(255, 255, 255, 0.65);
   }
 
   /* Expandable definition pills (use <details class="def"> in Markdown) */
