@@ -1,11 +1,229 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const links = [
+  { href: "/news", label: "News" },
+  { href: "/articles", label: "Articles" },
+  { href: "/ideas", label: "Ideas" },
+  { href: "/demos", label: "Demos" },
+  { href: "/sim", label: "Simulation" },
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Build the Simulation</title>
+    <meta
+      name="description"
+      content="A living blueprint for building interactive simulations of neural systems — from peripheral nerve to cortex."
+    />
+  </head>
+
+  <body>
+    <main class="wrap">
+      <header class="hero">
+        <div class="brand">
+          <div class="mark" aria-hidden="true"></div>
+          <div class="titleblock">
+            <h1>Build the Simulation</h1>
+            <p class="sub">
+              A living blueprint for simulating neural systems — and designing the interfaces that connect to them.
+            </p>
+          </div>
+        </div>
+
+        <nav class="nav">
+          {links.map((l) => (
+            <a class="pill" href={l.href}>{l.label}</a>
+          ))}
+        </nav>
+      </header>
+
+      <section class="card">
+        <h2>What this is</h2>
+        <ul>
+          <li><b>Weekly signal:</b> curated BCI + neurotech news with commentary.</li>
+          <li><b>Deep articles:</b> neuroscience → interfaces → fabrication → future systems.</li>
+          <li><b>Interactive demos:</b> models and simulations you can manipulate in-browser.</li>
+          <li><b>The sandbox:</b> a physics-based environment for exploring electrode designs and stimulation strategies.</li>
+        </ul>
+      </section>
+
+      <section class="grid">
+        <a class="tile" href="/news">
+          <h3>News</h3>
+          <p>Weekly BCI updates, startups, papers, and my take.</p>
+        </a>
+
+        <a class="tile" href="/articles">
+          <h3>Articles</h3>
+          <p>A guided sequence from fundamentals to future biohybrid interfaces.</p>
+        </a>
+
+        <a class="tile" href="/ideas">
+          <h3>Ideas</h3>
+          <p>Working notes, hypotheses, design sketches, and open questions.</p>
+        </a>
+
+        <a class="tile" href="/demos">
+          <h3>Demos</h3>
+          <p>Interactive models: fields, fibers, decoding, control, materials.</p>
+        </a>
+
+        <a class="tile" href="/sim">
+          <h3>Simulation</h3>
+          <p>The long-term sandbox: nerve + cortex cross-sections, implants, stimulation.</p>
+        </a>
+
+        <a class="tile" href="https://github.com/corbins-cryo-pod/buildthesimulation" target="_blank">
+          <h3>Repository</h3>
+          <p>Source code and roadmap.</p>
+        </a>
+      </section>
+
+      <footer class="foot">
+        <span>© {new Date().getFullYear()} buildthesimulation.com</span>
+      </footer>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+      "Segoe UI Emoji";
+    color: #0b0b10;
+    background: radial-gradient(1000px 600px at 25% 10%, rgba(160, 120, 255, 0.18), transparent 60%),
+      radial-gradient(800px 500px at 75% 15%, rgba(255, 120, 170, 0.14), transparent 55%),
+      radial-gradient(900px 650px at 50% 90%, rgba(120, 200, 255, 0.12), transparent 60%),
+      #ffffff;
+  }
+
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 48px 20px 28px;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+
+  .brand {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .mark {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(160, 120, 255, 0.9), rgba(255, 120, 170, 0.85));
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 44px;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  .sub {
+    margin: 6px 0 0;
+    font-size: 16px;
+    opacity: 0.75;
+    max-width: 60ch;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .pill {
+    display: inline-flex;
+    padding: 9px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: inherit;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+  }
+
+  .pill:hover {
+    border-color: rgba(0, 0, 0, 0.22);
+  }
+
+  .card {
+    margin-top: 10px;
+    padding: 18px 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(10px);
+  }
+
+  .card h2 {
+    margin: 0 0 10px;
+    font-size: 18px;
+  }
+
+  .card ul {
+    margin: 0;
+    padding-left: 18px;
+    line-height: 1.65;
+  }
+
+  .grid {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .tile {
+    padding: 16px;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(10px);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .tile:hover {
+    border-color: rgba(0, 0, 0, 0.22);
+    transform: translateY(-1px);
+  }
+
+  .tile h3 {
+    margin: 0 0 6px;
+    font-size: 16px;
+  }
+
+  .tile p {
+    margin: 0;
+    opacity: 0.78;
+    line-height: 1.45;
+  }
+
+  .foot {
+    margin-top: 22px;
+    padding-top: 14px;
+    opacity: 0.65;
+    font-size: 13px;
+  }
+
+  @media (max-width: 680px) {
+    h1 { font-size: 34px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
