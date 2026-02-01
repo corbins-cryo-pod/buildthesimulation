@@ -1,6 +1,21 @@
 ---
-// Thin wrapper so /sim can remain as a legacy alias while we grow multiple sims.
-import Sim from "../../sim.astro";
+import Layout from "../../../layouts/Layout.astro";
 ---
 
-<Sim />
+<Layout pageTitle="Simulations" subtitle="Peripheral nerve cross-section" description="Redirect to current nerve cross-section sim.">
+  <section class="card">
+    <p>
+      The nerve cross-section simulator currently lives at <a href="/sim">/sim</a>.
+    </p>
+  </section>
+</Layout>
+
+<style>
+  .card {
+    margin-top: 14px;
+    padding: 22px 22px;
+    border-radius: 16px;
+    border: 1px solid rgba(10, 10, 12, 0.14);
+    background: rgba(255, 255, 255, 0.22);
+  }
+</style>
