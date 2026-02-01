@@ -3,7 +3,7 @@ title: "03 — Recording & stimulation physics (fields, SNR, artifacts, charge)"
 order: 3
 description: "The minimum physics you need to reason about electrodes, fields, artifacts, and safe stimulation."
 tags: ["physics", "stimulation", "recording", "electrodes"]
-draft: true
+draft: false
 ---
 
 > **Reader promise:** You’ll be able to explain what an electrode is measuring, why geometry dominates, how to reason about stimulation safety, and how to design around artifacts instead of hoping they go away.
@@ -120,10 +120,42 @@ Peripheral nerve vs cortex changes the dominant terms:
 
 Same physics, different operating regime.
 
-## References
+## Definitions you can expand
 
-Inline links will be added as we build the reading list:
+<details class="def">
+  <summary>Charge per phase vs charge density (why both matter)</summary>
+  <div class="defBody">
+    <p>
+      <b>Charge per phase</b> (Q) is current × pulse width. It’s a convenient way to compare waveforms.
+      <b>Charge density</b> is Q divided by electrode geometric (or effective) area and is often closer to what matters for electrode
+      damage and irreversible electrochemistry.
+    </p>
+    <p>
+      In practice, you care about both: Q relates to neural recruitment thresholds; charge density relates to safety bounds.
+    </p>
+  </div>
+</details>
 
-- Electrode–tissue interface and stimulation safety reviews
-- Classic charge injection and polarization literature
-- Practical amplifier/recording system references
+<details class="def">
+  <summary>Compliance voltage</summary>
+  <div class="defBody">
+    A current source can only push the requested current if it has enough voltage headroom to overcome the load (electrode impedance +
+    tissue). If you run out of compliance, the delivered current clips, which can silently break both stimulation dose and artifact
+    expectations.
+  </div>
+</details>
+
+## References (starter, reputable)
+
+- Practical overview of extracellular recording (neurons + electrodes):
+  - Extracellular recording (overview + pointers): https://en.wikipedia.org/wiki/Extracellular_recording
+
+- Electrical stimulation safety / mechanisms (review-style anchors):
+  - D. R. Merrill, M. Bikson, J. G. R. Jefferys (2005). *Electrical stimulation of excitable tissue: design of efficacious and safe protocols.* Journal of Neuroscience Methods. (Publisher)
+    - https://www.sciencedirect.com/science/article/pii/S0165027005002536
+
+- Neural stimulation electrode materials and charge injection (materials-focused review):
+  - S. F. Cogan (2008). *Neural stimulation and recording electrodes.* Annual Review of Biomedical Engineering. (Publisher)
+    - https://www.annualreviews.org/doi/10.1146/annurev.bioeng.10.061807.160518
+
+*(As we get more specific—cuffs vs intrafascicular vs cortical arrays—we’ll add modality-specific references and DOI links.)*
