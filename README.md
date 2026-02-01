@@ -1,51 +1,67 @@
-<<<<<<< HEAD
-# buildthesimulation
-A public platform for building, simulating, and understanding biohybrid neural systems and brain–computer interfaces.
-=======
-# Astro Starter Kit: Basics
+# Build the Simulation
 
-```sh
-npm create astro@latest -- --template basics
+A public platform for building, simulating, and understanding brain–computer interfaces (BCIs) — with a special focus on **biohybrid peripheral nerve interfaces**, regenerative strategies, and practical neuroengineering.
+
+- Live site: https://buildthesimulation.com
+- Preview (Cloudflare Pages): https://buildthesimulation.pages.dev
+
+## What this is
+
+This project has three pillars:
+
+1) **News (weekly):** curated BCI + neurotech links with commentary.
+2) **Articles (sequenced):** deeper posts that build from fundamentals → existing tech → future biohybrid peripheral nerve interfaces.
+3) **Simulation (long-term):** an interactive sandbox for exploring electrode designs, implantation strategies, and stimulation modalities.
+
+The tone is intentionally **50/50**:
+- rigorous definitions + citations (inline links), and
+- practical engineering heuristics (“here’s how to think about it”).
+
+## Tech
+
+- **Astro** (static site)
+- **Three.js** (interactive visuals / simulation front-end)
+- **Astro Content Collections** (Markdown-driven News + Articles)
+
+## Writing & publishing
+
+Content lives here:
+- News posts: `src/content/news/*.md`
+- Articles: `src/content/articles/*.md`
+
+Draft control:
+- `draft: true` → not shown on the site
+- `draft: false` → published
+
+Templates:
+- `templates/news-template.md`
+- `templates/article-template.md`
+
+More detail:
+- `docs/HOW_TO_POST.md`
+- `docs/CONTENT_PLAN.md`
+
+RSS:
+- `/rss.xml`
+
+## Local development
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+Build check:
+```bash
+npm run build
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Contributing / workflow
 
-## 🧞 Commands
+Issues and PRs welcome.
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
->>>>>>> 48352d0 (Initial Astro site)
+If you’re proposing simulation changes, please describe:
+- which biological target (peripheral nerve vs cortex)
+- which modality (recording/stimulation, electrical/optical/etc.)
+- what you’re assuming (geometry, tissue model, constraints)
+- what the success metrics are (selectivity proxy, stability proxy, safety bounds)
