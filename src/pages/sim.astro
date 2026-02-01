@@ -2,20 +2,628 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout pageTitle="Simulation" subtitle="The long-term sandbox: nerve + cortex cross-sections, implants, stimulation. Coming soon.">
-  <section class="card">
-    <p>
-      The sandbox will eventually host implant geometry, tissue models, stimulation strategies, and optimization loops.
-    </p>
+<Layout
+  pageTitle="Simulation"
+  subtitle="Peripheral nerve cross-section sandbox (v0). Place electrodes, tweak settings, export/import."
+  description="Interactive peripheral nerve cross-section sandbox for exploring electrode geometry and stimulation strategies."
+>
+  <section class="simShell">
+    <aside class="panel" aria-label="Controls">
+      <div class="panelSection">
+        <div class="panelTitle">Library</div>
+        <div class="row">
+          <button class="btn" id="addCuff">Add cuff</button>
+          <button class="btn" id="addIntra">Add intrafascicular</button>
+        </div>
+        <div class="row">
+          <button class="btn ghost" id="reset">Reset</button>
+        </div>
+      </div>
+
+      <div class="panelSection">
+        <div class="panelTitle">Selection</div>
+        <div class="kv"><span>Type</span><span id="selType">—</span></div>
+        <div class="kv"><span>ID</span><span id="selId">—</span></div>
+        <div class="kv"><span>X</span><span id="selX">—</span></div>
+        <div class="kv"><span>Y</span><span id="selY">—</span></div>
+
+        <label class="lab">
+          Stim amplitude (a.u.)
+          <input id="stimAmp" type="range" min="0" max="100" value="40" />
+        </label>
+        <label class="lab">
+          Field falloff
+          <input id="falloff" type="range" min="5" max="60" value="24" />
+        </label>
+
+        <div class="row">
+          <button class="btn" id="export">Export JSON</button>
+          <button class="btn" id="import">Import JSON</button>
+        </div>
+      </div>
+
+      <details class="panelSection" open>
+        <summary class="panelTitle">Notes</summary>
+        <p class="muted">
+          This is v0: geometry + interaction + simple “field intensity” proxy. It’s meant to be intuitive and fast.
+        </p>
+      </details>
+    </aside>
+
+    <main class="stage" aria-label="Simulation canvas">
+      <div class="stageBar">
+        <div class="stageTitle">Peripheral nerve cross‑section</div>
+        <div class="stageHint">Drag electrodes. Click to select.</div>
+      </div>
+      <canvas id="cnv" width="980" height="640"></canvas>
+      <div class="toast" id="toast" hidden></div>
+    </main>
   </section>
+
+  <dialog id="dlg" class="dlg">
+    <form method="dialog" class="dlgInner">
+      <div class="dlgHead">
+        <div class="dlgTitle" id="dlgTitle">Export</div>
+        <button class="btn ghost" value="cancel">Close</button>
+      </div>
+      <textarea id="dlgText" spellcheck="false"></textarea>
+      <menu class="dlgActions">
+        <button class="btn" id="dlgCopy" value="copy">Copy</button>
+        <button class="btn" id="dlgApply" value="apply">Apply</button>
+      </menu>
+    </form>
+  </dialog>
 </Layout>
 
+<script is:inline>
+  const $ = (id) => document.getElementById(id);
+
+  const cnv = $("cnv");
+  const ctx = cnv.getContext("2d");
+
+  const ui = {
+    addCuff: $("addCuff"),
+    addIntra: $("addIntra"),
+    reset: $("reset"),
+    export: $("export"),
+    import: $("import"),
+    stimAmp: $("stimAmp"),
+    falloff: $("falloff"),
+    selType: $("selType"),
+    selId: $("selId"),
+    selX: $("selX"),
+    selY: $("selY"),
+    dlg: $("dlg"),
+    dlgTitle: $("dlgTitle"),
+    dlgText: $("dlgText"),
+    dlgCopy: $("dlgCopy"),
+    dlgApply: $("dlgApply"),
+    toast: $("toast"),
+  };
+
+  function toast(msg) {
+    ui.toast.textContent = msg;
+    ui.toast.hidden = false;
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => (ui.toast.hidden = true), 1200);
+  }
+
+  // --- Model ---
+  function mkId() {
+    return Math.random().toString(16).slice(2, 8);
+  }
+
+  function defaultModel() {
+    const W = cnv.width;
+    const H = cnv.height;
+    const cx = W * 0.58;
+    const cy = H * 0.52;
+    const r = Math.min(W, H) * 0.32;
+
+    // simple fascicle layout (fixed seeds)
+    const fascicles = [
+      { x: cx - r * 0.18, y: cy - r * 0.12, r: r * 0.18 },
+      { x: cx + r * 0.22, y: cy - r * 0.05, r: r * 0.14 },
+      { x: cx - r * 0.05, y: cy + r * 0.22, r: r * 0.16 },
+      { x: cx + r * 0.18, y: cy + r * 0.18, r: r * 0.12 },
+    ];
+
+    return {
+      nerve: { cx, cy, r },
+      fascicles,
+      electrodes: [],
+      stim: { amp: 40, falloff: 24 },
+      selectedId: null,
+    };
+  }
+
+  let model = defaultModel();
+
+  // --- Helpers ---
+  function hitTest(x, y) {
+    // electrodes first
+    for (let i = model.electrodes.length - 1; i >= 0; i--) {
+      const e = model.electrodes[i];
+      if (e.type === "cuff") {
+        // ring hit: near nerve boundary
+        const dx = x - model.nerve.cx;
+        const dy = y - model.nerve.cy;
+        const d = Math.hypot(dx, dy);
+        if (Math.abs(d - e.r) < 10) return e;
+      } else {
+        const dx = x - e.x;
+        const dy = y - e.y;
+        if (Math.hypot(dx, dy) < 10) return e;
+      }
+    }
+    return null;
+  }
+
+  function setSelected(id) {
+    model.selectedId = id;
+    const e = model.electrodes.find((q) => q.id === id);
+    ui.selType.textContent = e ? e.type : "—";
+    ui.selId.textContent = e ? e.id : "—";
+    ui.selX.textContent = e ? Math.round(e.x ?? model.nerve.cx) : "—";
+    ui.selY.textContent = e ? Math.round(e.y ?? model.nerve.cy) : "—";
+  }
+
+  function clampToNerve(e) {
+    if (e.type === "intra") {
+      const dx = e.x - model.nerve.cx;
+      const dy = e.y - model.nerve.cy;
+      const d = Math.hypot(dx, dy);
+      const maxD = model.nerve.r * 0.92;
+      if (d > maxD) {
+        e.x = model.nerve.cx + (dx / d) * maxD;
+        e.y = model.nerve.cy + (dy / d) * maxD;
+      }
+    }
+  }
+
+  function fieldAt(x, y) {
+    // simple proxy: sum of amp * exp(-dist/falloff)
+    const fall = Number(model.stim.falloff);
+    const amp = Number(model.stim.amp);
+    let v = 0;
+    for (const e of model.electrodes) {
+      let ex, ey;
+      if (e.type === "cuff") {
+        // treat cuff as a few points around ring
+        const pts = 12;
+        for (let i = 0; i < pts; i++) {
+          const t = (i / pts) * Math.PI * 2;
+          ex = model.nerve.cx + Math.cos(t) * e.r;
+          ey = model.nerve.cy + Math.sin(t) * e.r;
+          const d = Math.hypot(x - ex, y - ey);
+          v += amp * Math.exp(-d / fall);
+        }
+      } else {
+        ex = e.x;
+        ey = e.y;
+        const d = Math.hypot(x - ex, y - ey);
+        v += amp * Math.exp(-d / fall);
+      }
+    }
+    return v;
+  }
+
+  // --- Rendering ---
+  function draw() {
+    const { cx, cy, r } = model.nerve;
+    ctx.clearRect(0, 0, cnv.width, cnv.height);
+
+    // paper-ish canvas background
+    ctx.fillStyle = "rgba(255,255,255,0.12)";
+    ctx.fillRect(0, 0, cnv.width, cnv.height);
+
+    // field heatmap (cheap grid)
+    if (model.electrodes.length) {
+      const step = 14;
+      let maxV = 0;
+      const vals = [];
+      for (let y = 0; y < cnv.height; y += step) {
+        for (let x = 0; x < cnv.width; x += step) {
+          const dx = x - cx;
+          const dy = y - cy;
+          const inside = Math.hypot(dx, dy) <= r;
+          const v = inside ? fieldAt(x, y) : 0;
+          vals.push({ x, y, v, inside });
+          if (v > maxV) maxV = v;
+        }
+      }
+      for (const p of vals) {
+        if (!p.inside) continue;
+        const a = maxV ? Math.min(0.22, (p.v / maxV) * 0.22) : 0;
+        ctx.fillStyle = `rgba(20,20,22,${a})`;
+        ctx.fillRect(p.x, p.y, step, step);
+      }
+    }
+
+    // nerve boundary
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.strokeStyle = "rgba(10,10,12,0.55)";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // fascicles
+    for (const f of model.fascicles) {
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(255,255,255,0.18)";
+      ctx.fill();
+      ctx.strokeStyle = "rgba(10,10,12,0.25)";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    // electrodes
+    for (const e of model.electrodes) {
+      const selected = e.id === model.selectedId;
+      if (e.type === "cuff") {
+        ctx.beginPath();
+        ctx.arc(cx, cy, e.r, 0, Math.PI * 2);
+        ctx.strokeStyle = selected ? "rgba(10,10,12,0.95)" : "rgba(10,10,12,0.65)";
+        ctx.lineWidth = selected ? 4 : 3;
+        ctx.stroke();
+      } else {
+        ctx.beginPath();
+        ctx.arc(e.x, e.y, 6, 0, Math.PI * 2);
+        ctx.fillStyle = selected ? "rgba(10,10,12,0.95)" : "rgba(10,10,12,0.75)";
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(e.x, e.y, 10, 0, Math.PI * 2);
+        ctx.strokeStyle = "rgba(10,10,12,0.28)";
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+
+    // labels
+    ctx.fillStyle = "rgba(10,10,12,0.6)";
+    ctx.font = "16px Times New Roman";
+    ctx.fillText("nerve", cx - 18, cy - r - 10);
+  }
+
+  function syncStim() {
+    model.stim.amp = Number(ui.stimAmp.value);
+    model.stim.falloff = Number(ui.falloff.value);
+    draw();
+  }
+
+  // --- Interaction ---
+  let dragging = null;
+  let dragOff = { x: 0, y: 0 };
+
+  function canvasPos(evt) {
+    const rect = cnv.getBoundingClientRect();
+    const x = ((evt.clientX - rect.left) / rect.width) * cnv.width;
+    const y = ((evt.clientY - rect.top) / rect.height) * cnv.height;
+    return { x, y };
+  }
+
+  cnv.addEventListener("mousedown", (evt) => {
+    const { x, y } = canvasPos(evt);
+    const hit = hitTest(x, y);
+    if (hit) {
+      setSelected(hit.id);
+      dragging = hit;
+      if (hit.type === "intra") {
+        dragOff.x = x - hit.x;
+        dragOff.y = y - hit.y;
+      }
+      draw();
+    } else {
+      setSelected(null);
+      draw();
+    }
+  });
+
+  window.addEventListener("mousemove", (evt) => {
+    if (!dragging) return;
+    const { x, y } = canvasPos(evt);
+    if (dragging.type === "intra") {
+      dragging.x = x - dragOff.x;
+      dragging.y = y - dragOff.y;
+      clampToNerve(dragging);
+      setSelected(dragging.id);
+      draw();
+    }
+  });
+
+  window.addEventListener("mouseup", () => {
+    dragging = null;
+  });
+
+  // --- Buttons ---
+  ui.addCuff.addEventListener("click", () => {
+    const e = { id: mkId(), type: "cuff", r: model.nerve.r * 1.02 };
+    model.electrodes.push(e);
+    setSelected(e.id);
+    draw();
+    toast("Added cuff");
+  });
+
+  ui.addIntra.addEventListener("click", () => {
+    const e = {
+      id: mkId(),
+      type: "intra",
+      x: model.nerve.cx + model.nerve.r * 0.15,
+      y: model.nerve.cy,
+    };
+    model.electrodes.push(e);
+    setSelected(e.id);
+    draw();
+    toast("Added intrafascicular");
+  });
+
+  ui.reset.addEventListener("click", () => {
+    model = defaultModel();
+    ui.stimAmp.value = String(model.stim.amp);
+    ui.falloff.value = String(model.stim.falloff);
+    setSelected(null);
+    draw();
+    toast("Reset");
+  });
+
+  ui.stimAmp.addEventListener("input", syncStim);
+  ui.falloff.addEventListener("input", syncStim);
+
+  function exportModel() {
+    const payload = {
+      nerve: model.nerve,
+      fascicles: model.fascicles,
+      electrodes: model.electrodes,
+      stim: model.stim,
+    };
+    return JSON.stringify(payload, null, 2);
+  }
+
+  function importModel(txt) {
+    const obj = JSON.parse(txt);
+    if (!obj?.nerve || !obj?.fascicles || !obj?.electrodes) throw new Error("Invalid schema");
+    model.nerve = obj.nerve;
+    model.fascicles = obj.fascicles;
+    model.electrodes = obj.electrodes;
+    model.stim = obj.stim ?? model.stim;
+    model.selectedId = null;
+    ui.stimAmp.value = String(model.stim.amp ?? 40);
+    ui.falloff.value = String(model.stim.falloff ?? 24);
+    setSelected(null);
+    draw();
+  }
+
+  function openDialog(mode) {
+    ui.dlgTitle.textContent = mode === "export" ? "Export JSON" : "Import JSON";
+    ui.dlgText.value = mode === "export" ? exportModel() : "";
+    ui.dlgApply.style.display = mode === "import" ? "inline-flex" : "none";
+    ui.dlgCopy.style.display = mode === "export" ? "inline-flex" : "none";
+    ui.dlg.showModal();
+    ui.dlgText.focus();
+    ui.dlgText.select();
+  }
+
+  ui.export.addEventListener("click", () => openDialog("export"));
+  ui.import.addEventListener("click", () => openDialog("import"));
+
+  ui.dlgCopy.addEventListener("click", async (e) => {
+    e.preventDefault();
+    await navigator.clipboard.writeText(ui.dlgText.value);
+    toast("Copied");
+  });
+
+  ui.dlgApply.addEventListener("click", (e) => {
+    e.preventDefault();
+    try {
+      importModel(ui.dlgText.value);
+      ui.dlg.close();
+      toast("Imported");
+    } catch (err) {
+      toast("Import failed");
+    }
+  });
+
+  // init
+  ui.stimAmp.value = String(model.stim.amp);
+  ui.falloff.value = String(model.stim.falloff);
+  setSelected(null);
+  draw();
+</script>
+
 <style>
-  .card {
-    padding: 18px;
-    border-radius: 18px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(10px);
+  .simShell {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .panel {
+    border: 1px solid rgba(10, 10, 12, 0.14);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.18);
+    padding: 14px;
+    position: sticky;
+    top: 16px;
+  }
+
+  .panelSection {
+    padding: 10px 8px;
+    border-bottom: 1px solid rgba(10, 10, 12, 0.12);
+  }
+
+  .panelSection:last-child {
+    border-bottom: none;
+  }
+
+  .panelTitle {
+    font-weight: 700;
+    font-size: 1.02em;
+    margin-bottom: 10px;
+    cursor: default;
+  }
+
+  details.panelSection > summary.panelTitle {
+    list-style: none;
+  }
+  details.panelSection > summary.panelTitle::-webkit-details-marker {
+    display: none;
+  }
+
+  .row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    border: 1px solid rgba(10, 10, 12, 0.18);
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    padding: 9px 12px;
+    font-family: inherit;
+    font-size: 0.95em;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    border-color: rgba(10, 10, 12, 0.32);
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateY(-1px);
+  }
+
+  .btn.ghost {
+    background: transparent;
+  }
+
+  .kv {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    opacity: 0.9;
+    margin: 6px 0;
+    font-size: 0.95em;
+  }
+
+  .lab {
+    display: grid;
+    gap: 6px;
+    margin-top: 10px;
+    font-size: 0.95em;
+  }
+
+  input[type="range"] {
+    width: 100%;
+  }
+
+  .muted {
+    opacity: 0.74;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .stage {
+    border: 1px solid rgba(10, 10, 12, 0.14);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.12);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .stageBar {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: baseline;
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(10, 10, 12, 0.12);
+    background: rgba(255, 255, 255, 0.10);
+  }
+
+  .stageTitle {
+    font-weight: 700;
+  }
+
+  .stageHint {
+    opacity: 0.7;
+    font-size: 0.9em;
+  }
+
+  canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .toast {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(10, 10, 12, 0.18);
+    background: rgba(255, 255, 255, 0.6);
+    font-size: 0.95em;
+  }
+
+  .dlg {
+    border: 1px solid rgba(10, 10, 12, 0.24);
+    border-radius: 16px;
+    padding: 0;
+    background: rgba(246, 241, 230, 0.98);
+    color: inherit;
+    width: min(900px, 92vw);
+  }
+
+  .dlg::backdrop {
+    background: rgba(10, 10, 12, 0.35);
+  }
+
+  .dlgInner {
+    padding: 14px;
+  }
+
+  .dlgHead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .dlgTitle {
+    font-weight: 700;
+    font-size: 1.05em;
+  }
+
+  textarea {
+    width: 100%;
+    height: 320px;
+    resize: vertical;
+    border-radius: 12px;
+    border: 1px solid rgba(10, 10, 12, 0.18);
+    padding: 12px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 13px;
+    background: rgba(255, 255, 255, 0.55);
+    color: rgba(10, 10, 12, 0.86);
+  }
+
+  .dlgActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 980px) {
+    .simShell {
+      grid-template-columns: 1fr;
+    }
+    .panel {
+      position: relative;
+      top: 0;
+    }
   }
 </style>
