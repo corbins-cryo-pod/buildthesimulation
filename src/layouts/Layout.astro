@@ -192,9 +192,16 @@ function stripPrefix(title) {
                 });
               }
 
-              // Hover-open dropdowns (so menus appear on hover and close on hover-out).
-              // Also keeps menus open while hovering the menu area.
               const drops = Array.from(document.querySelectorAll("details.navDrop"));
+              const isTouchLike = window.matchMedia && window.matchMedia("(hover: none)").matches;
+
+              const closeAll = (except = null) => {
+                for (const d of drops) {
+                  if (except && d === except) continue;
+                  d.open = false;
+                }
+              };
+
               for (const d of drops) {
                 let closeTimer = null;
 
@@ -213,13 +220,61 @@ function stripPrefix(title) {
                   }, 140);
                 };
 
-                d.addEventListener("mouseenter", open);
-                d.addEventListener("mouseleave", closeSoon);
+                // Desktop/hover behavior
+                d.addEventListener("mouseenter", () => {
+                  if (isTouchLike) return;
+                  closeAll(d);
+                  open();
+                });
+                d.addEventListener("mouseleave", () => {
+                  if (isTouchLike) return;
+                  closeSoon();
+                });
 
                 // Keyboard accessibility: keep it open while focused inside.
-                d.addEventListener("focusin", open);
-                d.addEventListener("focusout", closeSoon);
+                d.addEventListener("focusin", () => {
+                  closeAll(d);
+                  open();
+                });
+                d.addEventListener("focusout", () => {
+                  if (isTouchLike) return;
+                  closeSoon();
+                });
+
+                // Touch/mobile behavior: tap to toggle, tap outside to close.
+                const summary = d.querySelector("summary");
+                if (summary) {
+                  summary.addEventListener("click", (e) => {
+                    if (!isTouchLike) return; // allow native click on desktop
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const next = !d.open;
+                    closeAll(d);
+                    d.open = next;
+                  });
+                }
+
+                // When a menu item is tapped, close all dropdowns.
+                d.addEventListener("click", (e) => {
+                  if (!isTouchLike) return;
+                  const t = e.target;
+                  if (t && t.closest && t.closest(".menuItem")) {
+                    closeAll();
+                  }
+                });
               }
+
+              // Tap/click outside closes all (use capture so it runs early).
+              document.addEventListener(
+                "click",
+                (e) => {
+                  if (!isTouchLike) return;
+                  const t = e.target;
+                  if (t && t.closest && t.closest("details.navDrop")) return;
+                  closeAll();
+                },
+                true
+              );
             } catch {}
           })();
         </script>
