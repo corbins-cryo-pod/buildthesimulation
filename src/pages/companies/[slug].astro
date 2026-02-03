@@ -11,15 +11,31 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 
 const subtitle = entry.data.description ?? "Company / lab brief.";
+
+const titleNoPrefix = entry.data.title.replace(/^\d+\s*—\s*/, "");
 ---
 
-<Layout pageTitle="Companies" subtitle={subtitle} description={entry.data.description}>
+<Layout pageTitle="BCI Atlas" subtitle={subtitle} description={entry.data.description}>
   <article class="post">
     <header class="postHead">
       <div class="kicker">
         {entry.data.kind} — {entry.data.region}
       </div>
-      <h2 class="title">{entry.data.title.replace(/^\d+\s*—\s*/, "")}</h2>
+      <h2 class="title">{titleNoPrefix}</h2>
+
+      {entry.data.website ? (
+        <p class="siteLink">
+          <a class="siteBtn" href={entry.data.website} target="_blank" rel="noopener noreferrer">
+            Official site →
+          </a>
+          {entry.data.location ? <span class="siteLoc">{entry.data.location}</span> : null}
+        </p>
+      ) : entry.data.location ? (
+        <p class="siteLink">
+          <span class="siteLoc">{entry.data.location}</span>
+        </p>
+      ) : null}
+
       {entry.data.tags?.length ? <div class="meta">{entry.data.tags.join(" · ")}</div> : null}
     </header>
 
@@ -60,6 +76,37 @@ const subtitle = entry.data.description ?? "Company / lab brief.";
     font-size: 26px;
     letter-spacing: -0.005em;
     line-height: 1.15;
+  }
+
+  .siteLink {
+    margin: 12px 0 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .siteBtn {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--panelStrong);
+    color: inherit;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+
+  .siteBtn:hover {
+    border-color: var(--borderStrong);
+    background: var(--panelHover);
+    transform: translateY(-1px);
+  }
+
+  .siteLoc {
+    opacity: 0.70;
+    font-size: 13px;
   }
 
   .meta {

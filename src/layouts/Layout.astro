@@ -112,9 +112,10 @@ function stripPrefix(title) {
           </details>
 
           <details class={`navDrop ${pathname.startsWith("/companies") ? "active" : ""}`}>
-            <summary class="pill">Companies</summary>
+            <summary class="pill">BCI Atlas</summary>
             <div class="menu" role="menu">
-              <a class="menuItem" href="/companies">All companies →</a>
+              <a class="menuItem" href="/companies">Directory →</a>
+              <a class="menuItem" href="/companies/map/">Atlas map →</a>
               <div class="menuSep"></div>
               {companies.map((p) => (
                 <a class="menuItem" href={`/companies/${p.slug}/`}>
