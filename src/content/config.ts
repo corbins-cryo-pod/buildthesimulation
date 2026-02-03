@@ -84,7 +84,7 @@ const designs = defineCollection({
     interface_class: z
       .enum(["intracortical", "ecog", "seeg", "endovascular", "pni", "dbs", "scs", "other"])
       .default("other"),
-    status: z.enum(["human", "preclinical", "theoretical"]).default("theoretical"),
+    status: z.enum(["human", "preclinical", "research", "theoretical"]).default("theoretical"),
     last_updated: z.coerce.date().optional(),
 
     // Design class/type (high-level; we can refine later)
