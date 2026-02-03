@@ -70,4 +70,22 @@ const companies = defineCollection({
   }),
 });
 
-export const collections = { news, articles, ideas, companies };
+const designs = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    order: z.number().int().min(1),
+    pubDate: z.coerce.date().optional(),
+    updatedDate: z.coerce.date().optional(),
+    description: z.string().optional(),
+    // Design class/type (high-level; we can refine later)
+    modality: z
+      .enum(["Intracortical", "Cortical surface", "Endovascular", "Peripheral nerve", "Noninvasive", "Other"])
+      .default("Other"),
+    website: z.string().url().optional(),
+    tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { news, articles, ideas, companies, designs };

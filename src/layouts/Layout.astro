@@ -27,6 +27,10 @@ const companies = (await getCollection("companies"))
   .filter((p) => !p.data.draft)
   .sort((a, b) => a.data.order - b.data.order);
 
+const designs = (await getCollection("designs"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
+
 const news = (await getCollection("news"))
   .filter((p) => !p.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -125,6 +129,19 @@ function stripPrefix(title) {
             </div>
           </details>
 
+          <details class={`navDrop ${pathname.startsWith("/designs") ? "active" : ""}`}>
+            <summary class="pill">Designs</summary>
+            <div class="menu" role="menu">
+              <a class="menuItem" href="/designs">All designs →</a>
+              <div class="menuSep"></div>
+              {designs.map((p) => (
+                <a class="menuItem" href={`/designs/${p.slug}/`}>
+                  {String(p.data.order).padStart(2, "0")} — {stripPrefix(p.data.title)}
+                </a>
+              ))}
+            </div>
+          </details>
+
           <details class={`navDrop ${pathname.startsWith("/ideas") ? "active" : ""}`}>
             <summary class="pill">Ideas</summary>
             <div class="menu" role="menu">
@@ -153,26 +170,56 @@ function stripPrefix(title) {
         </nav>
 
         <script>
-          // Wire up theme toggle after markup exists.
+          // Wire up theme toggle + hoverable nav dropdowns after markup exists.
           (() => {
             try {
+              // Theme toggle
               const btn = document.getElementById("themeToggle");
-              if (!btn) return;
+              if (btn) {
+                const setLabel = (theme) => {
+                  btn.textContent = theme === "dark" ? "Light" : "Dark";
+                  btn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+                };
 
-              const setLabel = (theme) => {
-                btn.textContent = theme === "dark" ? "Light" : "Dark";
-                btn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
-              };
+                const getTheme = () => document.documentElement.dataset.theme || "light";
+                setLabel(getTheme());
 
-              const getTheme = () => document.documentElement.dataset.theme || "light";
-              setLabel(getTheme());
+                btn.addEventListener("click", () => {
+                  const next = getTheme() === "dark" ? "light" : "dark";
+                  document.documentElement.dataset.theme = next;
+                  localStorage.setItem("bts_theme", next);
+                  setLabel(next);
+                });
+              }
 
-              btn.addEventListener("click", () => {
-                const next = getTheme() === "dark" ? "light" : "dark";
-                document.documentElement.dataset.theme = next;
-                localStorage.setItem("bts_theme", next);
-                setLabel(next);
-              });
+              // Hover-open dropdowns (so menus appear on hover and close on hover-out).
+              // Also keeps menus open while hovering the menu area.
+              const drops = Array.from(document.querySelectorAll("details.navDrop"));
+              for (const d of drops) {
+                let closeTimer = null;
+
+                const open = () => {
+                  if (closeTimer) {
+                    clearTimeout(closeTimer);
+                    closeTimer = null;
+                  }
+                  d.open = true;
+                };
+
+                const closeSoon = () => {
+                  if (closeTimer) clearTimeout(closeTimer);
+                  closeTimer = setTimeout(() => {
+                    d.open = false;
+                  }, 140);
+                };
+
+                d.addEventListener("mouseenter", open);
+                d.addEventListener("mouseleave", closeSoon);
+
+                // Keyboard accessibility: keep it open while focused inside.
+                d.addEventListener("focusin", open);
+                d.addEventListener("focusout", closeSoon);
+              }
             } catch {}
           })();
         </script>
