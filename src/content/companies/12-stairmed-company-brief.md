@@ -8,7 +8,7 @@ region: "Chinese"
 kind: "Company"
 website: "https://english.shanghai.gov.cn/en-Latest-WhatsNew/20250513/f335be254e5c4dd5b00f3a26a04ab3cc.html"
 tags: ["BCI", "implant", "China", "StairMed", "motor decoding"]
-draft: true
+draft: false
 ---
 
 StairMed is a Shanghai-based medical technology company reported to be running invasive BMI/BCI trials with **ultra-flexible electrodes** connected to a **coin-sized implant** embedded in the skull.

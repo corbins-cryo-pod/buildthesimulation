@@ -8,7 +8,7 @@ region: "American"
 kind: "Company"
 website: "https://axoft.us/"
 tags: ["BCI", "materials", "soft electronics", "implant", "Axoft"]
-draft: true
+draft: false
 ---
 
 Axoft is pursuing a materials-first approach to invasive BCIs: make the implant **extremely soft** (closer to brain tissue mechanics) so the interface causes less chronic irritation, scarring, and drift.

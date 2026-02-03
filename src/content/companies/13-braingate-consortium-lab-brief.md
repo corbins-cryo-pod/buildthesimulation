@@ -8,7 +8,7 @@ region: "American"
 kind: "Lab"
 website: "https://www.braingate.org/"
 tags: ["BCI", "lab", "intracortical", "BrainGate", "handwriting decoding"]
-draft: true
+draft: false
 ---
 
 BrainGate is one of the most important long-running invasive BCI clinical research efforts. Public-facing descriptions emphasize restoring **communication, mobility, and independence** for people with paralysis.

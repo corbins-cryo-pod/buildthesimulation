@@ -8,7 +8,7 @@ region: "Chinese"
 kind: "Company"
 website: "https://www.wired.com/story/china-is-getting-serious-about-brain-computer-interfaces/"
 tags: ["BCI", "implant", "China", "NeuCyber", "Beinao-1"]
-draft: true
+draft: false
 ---
 
 NeuCyber NeuroTech is reported as a spinoff linked to the Chinese Institute for Brain Research (CIBR, Beijing), with an implant called **Beinao‑1**.

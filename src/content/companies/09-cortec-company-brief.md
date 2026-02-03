@@ -8,7 +8,7 @@ region: "European"
 kind: "Company"
 website: "https://cortec-neuro.com/"
 tags: ["BCI", "implant", "closed-loop", "neuromodulation", "CorTec", "Brain Interchange"]
-draft: true
+draft: false
 ---
 
 CorTec (Germany) is developing the **Brain Interchange System**, a platform positioned for **implantable, wireless, closed-loop** neurotechnology research and (eventually) therapies.

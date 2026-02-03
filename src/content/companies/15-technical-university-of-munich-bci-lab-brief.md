@@ -8,7 +8,7 @@ region: "European"
 kind: "Lab"
 website: "https://www.mri.tum.de/"
 tags: ["BCI", "lab", "Europe", "TUM", "microelectrodes", "robotic arm control"]
-draft: true
+draft: false
 ---
 
 A team at **Technical University of Munich (TUM) University Hospital** reported an invasive BCI implantation in a patient with quadriplegia.
