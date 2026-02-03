@@ -1,10 +1,13 @@
 ---
 title: "Science Corporation (company brief)"
-order: 24
+order: 6
 pubDate: 2026-02-02
 updatedDate: 2026-02-02
 description: "Science Corporation’s BCI work with an emphasis on its biohybrid neural interface concept (neurons-as-the-interface), plus its PRIMA retinal prosthesis program."
-tags: ["companies", "BCI", "biohybrid", "neural interface", "Science Corporation", "PRIMA", "retinal prosthesis"]
+region: "American"
+kind: "Company"
+website: "https://science.xyz/"
+tags: ["BCI", "biohybrid", "neural interface", "Science Corporation", "PRIMA", "retinal prosthesis"]
 draft: false
 ---
 

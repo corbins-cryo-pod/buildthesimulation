@@ -1,5 +1,6 @@
 ---
 import NerveHero from "../components/NerveHero.astro";
+import { getCollection } from "astro:content";
 
 const {
   pageTitle,
@@ -17,13 +18,26 @@ const pathname = Astro.url?.pathname ?? "/";
 // Display title can be different from <title>
 const displayTitle = pathname === "/" ? "HOW TO BUILD THE SIMULATION" : siteTitle;
 
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/news", label: "News" },
-  { href: "/articles", label: "Articles" },
-  { href: "/ideas", label: "Ideas" },
-  { href: "/simulations", label: "Simulations" },
-];
+// Build dropdown menus (a mini table of contents) for quick navigation.
+const articles = (await getCollection("articles"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const companies = (await getCollection("companies"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const news = (await getCollection("news"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const ideas = (await getCollection("ideas"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+function stripPrefix(title) {
+  return title.replace(/^\d+\s*—\s*/, "");
+}
 ---
 
 <!doctype html>
@@ -58,12 +72,66 @@ const links = [
         </div>
 
         <nav class="nav" aria-label="Primary">
-          {links.map((l) => {
-            const active = l.href === "/" ? pathname === "/" : pathname.startsWith(l.href);
-            return (
-              <a class={`pill ${active ? "active" : ""}`} href={l.href}>{l.label}</a>
-            );
-          })}
+          <a class={`pill ${pathname === "/" ? "active" : ""}`} href="/">Home</a>
+
+          <details class={`navDrop ${pathname.startsWith("/news") ? "active" : ""}`}>
+            <summary class="pill">News</summary>
+            <div class="menu" role="menu">
+              <a class="menuItem" href="/news">All news →</a>
+              <div class="menuSep"></div>
+              {news.slice(0, 30).map((p) => (
+                <a class="menuItem" href={`/news/${p.slug}/`}>{p.data.title}</a>
+              ))}
+            </div>
+          </details>
+
+          <details class={`navDrop ${pathname.startsWith("/articles") ? "active" : ""}`}>
+            <summary class="pill">Articles</summary>
+            <div class="menu" role="menu">
+              <a class="menuItem" href="/articles">All articles →</a>
+              <div class="menuSep"></div>
+              {articles.map((p) => (
+                <a class="menuItem" href={`/articles/${p.slug}/`}>
+                  {String(p.data.order).padStart(2, "0")} — {stripPrefix(p.data.title)}
+                </a>
+              ))}
+            </div>
+          </details>
+
+          <details class={`navDrop ${pathname.startsWith("/companies") ? "active" : ""}`}>
+            <summary class="pill">Companies</summary>
+            <div class="menu" role="menu">
+              <a class="menuItem" href="/companies">All companies →</a>
+              <div class="menuSep"></div>
+              {companies.map((p) => (
+                <a class="menuItem" href={`/companies/${p.slug}/`}>
+                  {String(p.data.order).padStart(2, "0")} — {stripPrefix(p.data.title)}
+                </a>
+              ))}
+            </div>
+          </details>
+
+          <details class={`navDrop ${pathname.startsWith("/ideas") ? "active" : ""}`}>
+            <summary class="pill">Ideas</summary>
+            <div class="menu" role="menu">
+              <a class="menuItem" href="/ideas">All ideas →</a>
+              <div class="menuSep"></div>
+              {ideas.slice(0, 30).map((p) => (
+                <a class="menuItem" href={`/ideas/${p.slug}/`}>
+                  {p.data.title}
+                </a>
+              ))}
+            </div>
+          </details>
+
+          <details class={`navDrop ${pathname.startsWith("/sim") || pathname.startsWith("/simulations") ? "active" : ""}`}>
+            <summary class="pill">Simulations</summary>
+            <div class="menu" role="menu">
+              <a class="menuItem" href="/simulations">All simulations →</a>
+              <div class="menuSep"></div>
+              <a class="menuItem" href="/sim">Nerve cross-section sandbox</a>
+            </div>
+          </details>
         </nav>
       </header>
 
@@ -174,6 +242,7 @@ const links = [
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    align-items: center;
   }
 
   .pill {
@@ -185,6 +254,7 @@ const links = [
     color: inherit;
     background: rgba(255, 255, 255, 0.18);
     transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+    user-select: none;
   }
 
   .pill:hover {
@@ -196,6 +266,71 @@ const links = [
   .pill.active {
     border-color: rgba(10, 10, 12, 0.35);
     background: rgba(255, 255, 255, 0.65);
+  }
+
+  /* Nav dropdowns (mini table-of-contents) */
+  .navDrop {
+    position: relative;
+    margin: 0;
+  }
+
+  .navDrop summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .navDrop summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .navDrop.active > summary {
+    border-color: rgba(10, 10, 12, 0.35);
+    background: rgba(255, 255, 255, 0.65);
+  }
+
+  .navDrop:not([open]) .menu {
+    display: none;
+  }
+
+  .menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 320px;
+    max-width: 520px;
+    max-height: min(60vh, 520px);
+    overflow: auto;
+    padding: 10px;
+    border-radius: 14px;
+    border: 1px solid rgba(10, 10, 12, 0.18);
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+    z-index: 10;
+  }
+
+  .menuItem {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    line-height: 1.25;
+  }
+
+  .menuItem:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .menuSep {
+    height: 1px;
+    margin: 8px 4px;
+    background: rgba(10, 10, 12, 0.12);
+  }
+
+  @media (hover: hover) {
+    .navDrop:hover > .menu {
+      display: block;
+    }
   }
 
   /* Expandable definition pills (use <details class="def"> in Markdown) */

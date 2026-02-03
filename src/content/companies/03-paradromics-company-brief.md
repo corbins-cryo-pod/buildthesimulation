@@ -1,10 +1,13 @@
 ---
 title: "Paradromics (company brief)"
-order: 21
+order: 3
 pubDate: 2026-02-02
 updatedDate: 2026-02-02
 description: "Paradromics’ Connexus BCI: high-channel-count intracortical recording aimed at restoring speech and computer control, plus what’s known publicly about the company."
-tags: ["companies", "BCI", "implant", "intracortical", "speech", "Paradromics", "Connexus"]
+region: "American"
+kind: "Company"
+website: "https://www.paradromics.com/"
+tags: ["BCI", "implant", "intracortical", "speech", "Paradromics", "Connexus"]
 draft: false
 ---
 

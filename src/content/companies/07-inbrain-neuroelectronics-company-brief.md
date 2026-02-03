@@ -1,10 +1,13 @@
 ---
 title: "INBRAIN Neuroelectronics (company brief)"
-order: 25
+order: 7
 pubDate: 2026-02-02
 updatedDate: 2026-02-02
 description: "INBRAIN’s graphene-based, high-density cortical interfaces aimed at precision neurology: high-resolution sensing + stimulation with a path toward closed-loop therapy (e.g., Parkinson’s)."
-tags: ["companies", "BCI", "graphene", "cortical interface", "neuromodulation", "INBRAIN"]
+region: "European"
+kind: "Company"
+website: "https://inbrain-neuroelectronics.com/"
+tags: ["BCI", "graphene", "cortical interface", "neuromodulation", "INBRAIN"]
 draft: false
 ---
 

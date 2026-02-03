@@ -1,0 +1,110 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("companies");
+  return posts.filter((p) => !p.data.draft).map((p) => ({ params: { slug: p.slug }, props: { entry: p } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const subtitle = entry.data.description ?? "Company / lab brief.";
+---
+
+<Layout pageTitle="Companies" subtitle={subtitle} description={entry.data.description}>
+  <article class="post">
+    <header class="postHead">
+      <div class="kicker">
+        {entry.data.kind} — {entry.data.region}
+      </div>
+      <h2 class="title">{entry.data.title.replace(/^\d+\s*—\s*/, "")}</h2>
+      {entry.data.tags?.length ? <div class="meta">{entry.data.tags.join(" · ")}</div> : null}
+    </header>
+
+    <section class="content">
+      <Content />
+    </section>
+  </article>
+</Layout>
+
+<style>
+  .post {
+    padding: 26px 26px;
+    border-radius: 16px;
+    border: 1px solid rgba(10, 10, 12, 0.14);
+    background: rgba(255, 255, 255, 0.22);
+    max-width: 860px;
+  }
+
+  :global(main.wrap) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  :global(main.wrap) .post {
+    align-self: center;
+    width: 100%;
+  }
+
+  .kicker {
+    opacity: 0.7;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .title {
+    margin: 6px 0 0;
+    font-size: 26px;
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+  }
+
+  .meta {
+    margin-top: 8px;
+    opacity: 0.72;
+    font-size: 13px;
+  }
+
+  .content :global(p) {
+    line-height: 1.85;
+    margin: 0.95em 0;
+  }
+
+  .content :global(p:first-of-type) {
+    font-size: 1.08em;
+    line-height: 1.75;
+  }
+
+  .content :global(h2) {
+    margin: 1.2em 0 0.2em;
+    font-size: 1.15em;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .content :global(h3) {
+    margin: 1.0em 0 0.2em;
+    font-size: 1.05em;
+    font-weight: 700;
+  }
+
+  .content :global(ul),
+  .content :global(ol) {
+    margin: 0.6em 0 0.9em;
+    padding-left: 1.2em;
+  }
+
+  .content :global(li) {
+    margin: 0.25em 0;
+    line-height: 1.7;
+  }
+
+  .content :global(a) {
+    color: inherit;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+</style>

@@ -1,10 +1,13 @@
 ---
 title: "Precision Neuroscience (company brief)"
-order: 23
+order: 5
 pubDate: 2026-02-02
 updatedDate: 2026-02-02
 description: "Precision Neuroscience’s Layer 7 Cortical Interface: a high-density, thin-film cortical surface array aimed at minimally invasive, removable, high-bandwidth BCI."
-tags: ["companies", "BCI", "implant", "cortical surface", "ECoG", "Precision Neuroscience", "Layer 7"]
+region: "American"
+kind: "Company"
+website: "https://precisionneuro.io/"
+tags: ["BCI", "implant", "cortical surface", "ECoG", "Precision Neuroscience", "Layer 7"]
 draft: false
 ---
 

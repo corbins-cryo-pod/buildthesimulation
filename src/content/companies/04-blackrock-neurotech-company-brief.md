@@ -1,10 +1,13 @@
 ---
 title: "Blackrock Neurotech (company brief)"
-order: 22
+order: 4
 pubDate: 2026-02-02
 updatedDate: 2026-02-02
 description: "Blackrock Neurotech’s Utah Array / NeuroPort ecosystem and clinical ambitions (MoveAgain): what it is, why it matters, and what’s public about the company."
-tags: ["companies", "BCI", "implant", "intracortical", "Utah Array", "Blackrock Neurotech"]
+region: "American"
+kind: "Company"
+website: "https://blackrockneurotech.com/"
+tags: ["BCI", "implant", "intracortical", "Utah Array", "Blackrock Neurotech"]
 draft: false
 ---
 

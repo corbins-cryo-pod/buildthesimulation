@@ -1,10 +1,13 @@
 ---
 title: "Neuralink (company brief)"
-order: 19
+order: 1
 pubDate: 2026-02-02
 updatedDate: 2026-02-02
 description: "A grounded snapshot of Neuralink: what it is building, where it is, how big it is, and what is publicly known from primary sources."
-tags: ["companies", "BCI", "invasive", "intracortical", "Neuralink"]
+region: "American"
+kind: "Company"
+website: "https://neuralink.com/"
+tags: ["BCI", "invasive", "intracortical", "Neuralink"]
 draft: false
 ---
 

@@ -1,10 +1,13 @@
 ---
 title: "Synchron (company brief)"
-order: 20
+order: 2
 pubDate: 2026-02-02
 updatedDate: 2026-02-02
 description: "Synchron’s endovascular BCI (Stentrode): what it is, how it works, what human data exists, and what to watch next."
-tags: ["companies", "BCI", "implant", "endovascular", "Stentrode", "Synchron"]
+region: "American"
+kind: "Company"
+website: "https://synchron.com/"
+tags: ["BCI", "implant", "endovascular", "Stentrode", "Synchron"]
 draft: false
 ---
 

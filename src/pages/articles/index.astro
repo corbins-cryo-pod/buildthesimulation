@@ -10,11 +10,7 @@ const posts = all
 const phase1 = posts.filter((p) => p.data.order >= 1 && p.data.order <= 6);
 const phase2 = posts.filter((p) => p.data.order >= 7 && p.data.order <= 10);
 const phase3 = posts.filter((p) => p.data.order >= 11 && p.data.order <= 14);
-
-// Keep the simulation-led pieces together, and split company briefs into their own phase
-// so they don't get buried at the bottom of the long list.
-const phase4 = posts.filter((p) => p.data.order >= 15 && p.data.order <= 18);
-const phase5 = posts.filter((p) => p.data.order >= 19);
+const phase4 = posts.filter((p) => p.data.order >= 15);
 
 function titleWithoutPrefix(title) {
   return title.replace(/^\d+\s*—\s*/, "");
@@ -84,30 +80,9 @@ function titleWithoutPrefix(title) {
     </section>
   ) : null}
 
-  {phase5.length ? (
-    <section class="card">
-      <h2>Phase 4 — BCI company briefs (ongoing)</h2>
-      <p class="muted" style="margin-top:-4px; margin-bottom:12px;">
-        Quick, tech-first snapshots of key companies. (Moved into their own phase so they’re easy to find.)
-      </p>
-      <div class="list">
-        {phase5.map((p) => (
-          <a class="item" href={`/articles/${p.slug}/`}>
-            <div class="top">
-              <h3>
-                {String(p.data.order).padStart(2, "0")} — {titleWithoutPrefix(p.data.title)}
-              </h3>
-            </div>
-            {p.data.description ? <p class="desc">{p.data.description}</p> : null}
-          </a>
-        ))}
-      </div>
-    </section>
-  ) : null}
-
   {phase4.length ? (
     <section class="card">
-      <h2>Phase 5 — Simulation-led design</h2>
+      <h2>Phase 4 — Simulation-led design</h2>
       <div class="list">
         {phase4.map((p) => (
           <a class="item" href={`/articles/${p.slug}/`}>
