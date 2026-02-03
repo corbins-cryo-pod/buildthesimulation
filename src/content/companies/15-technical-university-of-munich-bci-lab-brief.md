@@ -7,10 +7,12 @@ description: "TUM University Hospital implanted a 256‑microelectrode BCI in a 
 region: "European"
 kind: "Lab"
 website: "https://www.mri.tum.de/"
+location: "Munich, Germany"
+lat: 48.1351
+lon: 11.582
 tags: ["BCI", "lab", "Europe", "TUM", "microelectrodes", "robotic arm control"]
 draft: false
 ---
-
 A team at **Technical University of Munich (TUM) University Hospital** reported an invasive BCI implantation in a patient with quadriplegia.
 
 ## Reported details

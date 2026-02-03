@@ -7,10 +7,12 @@ description: "Synchron’s endovascular BCI (Stentrode): what it is, how it work
 region: "American"
 kind: "Company"
 website: "https://synchron.com/"
+location: "Brooklyn, NY, USA"
+lat: 40.6782
+lon: -73.9442
 tags: ["BCI", "implant", "endovascular", "Stentrode", "Synchron"]
 draft: false
 ---
-
 Synchron is developing a brain–computer interface (BCI) that is **implanted through the blood vessels** (endovascular) rather than via open-craniotomy placement of cortical arrays. Their core device concept is the **Stentrode**: a stent-mounted electrode array deployed into a cerebral venous sinus, paired with an implanted telemetry unit that transmits signals wirelessly.
 
 This brief leans hard on **peer‑reviewed clinical data** and other primary sources.

@@ -7,10 +7,12 @@ description: "NeuroXess (Shanghai): a Chinese implantable BCI company cited in r
 region: "Chinese"
 kind: "Company"
 website: "https://www.wired.com/story/china-is-getting-serious-about-brain-computer-interfaces/"
+location: "Shanghai, China"
+lat: 31.2304
+lon: 121.4737
 tags: ["BCI", "implant", "China", "NeuroXess", "speech decoding"]
 draft: false
 ---
-
 NeuroXess is a Shanghai-based BCI company mentioned in reporting about China’s push to build an implantable BCI industry.
 
 ## Reported status (Wired)

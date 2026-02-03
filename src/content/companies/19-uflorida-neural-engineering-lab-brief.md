@@ -7,10 +7,12 @@ description: "UF has an active biomedical engineering program with coursework/ev
 region: "American"
 kind: "Lab"
 website: "https://bme.ufl.edu/"
+location: "Gainesville, FL, USA"
+lat: 29.6516
+lon: -82.3248
 tags: ["BCI", "lab", "neural engineering", "UF", "decoding"]
 draft: false
 ---
-
 The University of Florida (UF) has an active biomedical engineering department and a broader ecosystem that includes neural engineering research and training.
 
 - UF Biomedical Engineering home: <https://bme.ufl.edu/>

@@ -7,10 +7,12 @@ description: "CorTec’s Brain Interchange: a fully implantable, wireless, close
 region: "European"
 kind: "Company"
 website: "https://cortec-neuro.com/"
+location: "Freiburg im Breisgau, Germany"
+lat: 47.999
+lon: 7.8421
 tags: ["BCI", "implant", "closed-loop", "neuromodulation", "CorTec", "Brain Interchange"]
 draft: false
 ---
-
 CorTec (Germany) is developing the **Brain Interchange System**, a platform positioned for **implantable, wireless, closed-loop** neurotechnology research and (eventually) therapies.
 
 ## What they’re building

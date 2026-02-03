@@ -7,10 +7,12 @@ description: "Paradromics’ Connexus BCI: high-channel-count intracortical reco
 region: "American"
 kind: "Company"
 website: "https://www.paradromics.com/"
+location: "Austin, TX, USA"
+lat: 30.2672
+lon: -97.7431
 tags: ["BCI", "implant", "intracortical", "speech", "Paradromics", "Connexus"]
 draft: false
 ---
-
 Paradromics is building an **implantable, high data‑rate brain–computer interface (BCI)** designed to record activity at (or near) the **single‑neuron** level and translate it into **speech/text and computer control**. Their flagship clinical product is the **Connexus® BCI**, aimed first at restoring communication for people with severe motor impairment (e.g., ALS, spinal cord injury, stroke).
 
 This brief focuses on the **technology**, **clinical path**, and **company facts** we can support with public sources.

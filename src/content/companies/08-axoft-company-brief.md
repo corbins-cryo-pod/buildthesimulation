@@ -7,10 +7,12 @@ description: "Axoft’s ultra-soft ‘brain-like’ implant materials: the bet t
 region: "American"
 kind: "Company"
 website: "https://axoft.us/"
+location: "Detroit, MI, USA"
+lat: 42.3314
+lon: -83.0458
 tags: ["BCI", "materials", "soft electronics", "implant", "Axoft"]
 draft: false
 ---
-
 Axoft is pursuing a materials-first approach to invasive BCIs: make the implant **extremely soft** (closer to brain tissue mechanics) so the interface causes less chronic irritation, scarring, and drift.
 
 The core claim is straightforward:

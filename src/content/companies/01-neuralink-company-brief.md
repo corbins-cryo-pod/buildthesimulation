@@ -7,10 +7,12 @@ description: "A grounded snapshot of Neuralink: what it is building, where it is
 region: "American"
 kind: "Company"
 website: "https://neuralink.com/"
+location: "Fremont, CA, USA"
+lat: 37.5483
+lon: -121.9886
 tags: ["BCI", "invasive", "intracortical", "Neuralink"]
 draft: false
 ---
-
 Neuralink is one of the highest-profile brain–computer interface (BCI) companies. It is building an **implantable, wireless intracortical recording system** and a **surgical robot** intended to place fine electrode “threads” into cortex. The company’s stated early medical focus is helping people with severe paralysis control digital devices.
 
 This is a **company brief**: what can be supported by public sources, what is uncertain, and what to watch.

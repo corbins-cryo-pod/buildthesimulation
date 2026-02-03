@@ -7,10 +7,12 @@ description: "UPenn’s Cullen Lab focuses on neural tissue engineering and repa
 region: "American"
 kind: "Lab"
 website: "https://www.med.upenn.edu/cullenlab/"
+location: "Philadelphia, PA, USA"
+lat: 39.9526
+lon: -75.1652
 tags: ["BCI", "lab", "biohybrid", "tissue engineering", "UPenn", "living electrodes"]
 draft: false
 ---
-
 UPenn has multiple groups in neuroengineering; one particularly relevant to *biohybrid interface concepts* is the **Cullen Lab**, which focuses on neural injury mechanisms and neural tissue engineering treatments.
 
 - Cullen Lab overview: <https://www.med.upenn.edu/cullenlab/>

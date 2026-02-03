@@ -7,10 +7,12 @@ description: "Blackrock Neurotech’s Utah Array / NeuroPort ecosystem and clini
 region: "American"
 kind: "Company"
 website: "https://blackrockneurotech.com/"
+location: "Salt Lake City, UT, USA"
+lat: 40.7608
+lon: -111.891
 tags: ["BCI", "implant", "intracortical", "Utah Array", "Blackrock Neurotech"]
 draft: false
 ---
-
 Blackrock Neurotech is one of the longest-running infrastructure companies in invasive BCI: it supplies **implantable electrode arrays** and a **recording ecosystem** that has been used across a large fraction of academic human BCI work. Their core legacy technology is the **Utah Array** (also called the **NeuroPort Electrode**) and a family of headstages, amplifiers, and software.
 
 This brief emphasizes the tech stack and what’s been demonstrated in peer‑reviewed literature, while being careful about private-company “stats.”

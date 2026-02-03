@@ -7,10 +7,12 @@ description: "Science Corporation’s BCI work with an emphasis on its biohybrid
 region: "American"
 kind: "Company"
 website: "https://science.xyz/"
+location: "Alameda, CA, USA"
+lat: 37.7652
+lon: -122.2416
 tags: ["BCI", "biohybrid", "neural interface", "Science Corporation", "PRIMA", "retinal prosthesis"]
 draft: false
 ---
-
 Science Corporation is building neurotechnology with an unusually explicit thesis: **if electrodes don’t scale because they damage tissue, try scaling with biology**.
 
 They are best known publicly for two efforts:

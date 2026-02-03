@@ -7,10 +7,12 @@ description: "Precision Neuroscience’s Layer 7 Cortical Interface: a high-dens
 region: "American"
 kind: "Company"
 website: "https://precisionneuro.io/"
+location: "New York, NY, USA"
+lat: 40.7128
+lon: -74.006
 tags: ["BCI", "implant", "cortical surface", "ECoG", "Precision Neuroscience", "Layer 7"]
 draft: false
 ---
-
 Precision Neuroscience is pursuing a distinct engineering point in the BCI design space: **high-channel-count cortical surface sensing** with a **thin, conformal film** that can be **placed on the brain surface** rather than penetrating into cortex.
 
 Their core device is the **Layer 7 Cortical Interface** — a high-density electrode array embedded in a flexible film intended for recording/monitoring (and, per their regulatory clearance/press coverage, stimulation) of cortical activity.

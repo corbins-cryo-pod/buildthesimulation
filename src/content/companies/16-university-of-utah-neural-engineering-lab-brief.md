@@ -7,10 +7,12 @@ description: "Utah has deep historical roots in neural engineering (e.g., microe
 region: "American"
 kind: "Lab"
 website: "https://www.bme.utah.edu/"
+location: "Salt Lake City, UT, USA"
+lat: 40.7608
+lon: -111.891
 tags: ["BCI", "lab", "neural engineering", "Utah", "microelectrodes"]
 draft: false
 ---
-
 The University of Utah is one of the historically important institutions in neural engineering and neurotechnology, with ongoing work spanning **neural interfaces**, **biomaterials**, **implantable devices**, and translation through clinical partners.
 
 This entry is intentionally a **hub**: we can later break it into specific labs (e.g., electrode development, visual prostheses, biohybrid interfaces) as we build out the directory.

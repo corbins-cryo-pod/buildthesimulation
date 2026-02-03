@@ -7,10 +7,12 @@ description: "Grenoble’s CEA‑Clinatec work on brain-controlled exoskeletons 
 region: "European"
 kind: "Lab"
 website: "https://clinatec.fr/"
+location: "Grenoble, France"
+lat: 45.1885
+lon: 5.7245
 tags: ["BCI", "lab", "ECoG", "wireless", "exoskeleton", "CEA", "Clinatec", "WIMAGINE"]
 draft: false
 ---
-
 CEA‑Clinatec (Grenoble, France) is widely cited for an eye-catching demonstration: a person with tetraplegia controlling a heavy exoskeleton via implanted brain interfaces.
 
 ## Reported demonstration (media coverage)

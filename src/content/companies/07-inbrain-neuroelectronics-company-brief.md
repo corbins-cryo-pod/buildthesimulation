@@ -7,10 +7,12 @@ description: "INBRAIN’s graphene-based, high-density cortical interfaces aimed
 region: "European"
 kind: "Company"
 website: "https://inbrain-neuroelectronics.com/"
+location: "Barcelona, Spain"
+lat: 41.3851
+lon: 2.1734
 tags: ["BCI", "graphene", "cortical interface", "neuromodulation", "INBRAIN"]
 draft: false
 ---
-
 INBRAIN Neuroelectronics is a neurotechnology company pushing a very specific materials-driven bet: **graphene electrodes**, fabricated with semiconductor-style processes, as a path to **higher-resolution sensing and safer, more stable stimulation** than traditional metal electrodes.
 
 Unlike many BCI companies whose public narrative is dominated by cursor control or typing demos, INBRAIN frames its core product as **BCI-Tx (therapeutic BCI)**: decoding biomarkers and then modulating circuits with **micrometer-scale** targeting.

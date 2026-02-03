@@ -7,10 +7,12 @@ description: "NeuCyber (CIBR spinoff, Beijing): Beinao-1 coin-sized implant repo
 region: "Chinese"
 kind: "Company"
 website: "https://www.wired.com/story/china-is-getting-serious-about-brain-computer-interfaces/"
+location: "Beijing, China"
+lat: 39.9042
+lon: 116.4074
 tags: ["BCI", "implant", "China", "NeuCyber", "Beinao-1"]
 draft: false
 ---
-
 NeuCyber NeuroTech is reported as a spinoff linked to the Chinese Institute for Brain Research (CIBR, Beijing), with an implant called **Beinao‑1**.
 
 ## Reported status (Wired)

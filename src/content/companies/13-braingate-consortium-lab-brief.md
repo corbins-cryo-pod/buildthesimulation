@@ -7,10 +7,12 @@ description: "BrainGate is a long-running multi-institution intracortical BCI ef
 region: "American"
 kind: "Lab"
 website: "https://www.braingate.org/"
+location: "Providence, RI, USA"
+lat: 41.824
+lon: -71.4128
 tags: ["BCI", "lab", "intracortical", "BrainGate", "handwriting decoding"]
 draft: false
 ---
-
 BrainGate is one of the most important long-running invasive BCI clinical research efforts. Public-facing descriptions emphasize restoring **communication, mobility, and independence** for people with paralysis.
 
 - BrainGate site: <https://www.braingate.org/>

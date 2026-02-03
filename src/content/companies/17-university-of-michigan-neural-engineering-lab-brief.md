@@ -7,10 +7,12 @@ description: "Michigan is a major US hub for biomedical/neural engineering; this
 region: "American"
 kind: "Lab"
 website: "https://en.wikipedia.org/wiki/University_of_Michigan"
+location: "Ann Arbor, MI, USA"
+lat: 42.2808
+lon: -83.743
 tags: ["BCI", "lab", "neural engineering", "Michigan"]
 draft: false
 ---
-
 The University of Michigan is a major center for engineering and biomedical research, including work relevant to neural interfaces and neuroengineering.
 
 Right now this is a **placeholder hub page** because several UMich sites are behind anti-bot protections that make automated citation harvesting flaky. We’ll still list it so we remember to expand it.
