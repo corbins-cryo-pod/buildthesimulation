@@ -69,6 +69,12 @@ const missingCount = posts.length - points.length;
     border: 1px solid var(--border);
     background: var(--panelStrong);
     overflow: hidden;
+
+    /* Always show a map-like background, even before JS loads */
+    background-image: url("/atlas-world.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   @media (max-width: 720px) {

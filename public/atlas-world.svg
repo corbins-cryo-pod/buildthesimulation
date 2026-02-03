@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="World map (stylized)">
+  <defs>
+    <linearGradient id="paper" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#f6f1e6"/>
+      <stop offset="1" stop-color="#efe6d6"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(10,10,12,0.10)" stroke-width="1"/>
+    </pattern>
+    <style>
+      .ocean { fill: url(#paper); }
+      .grid { fill: url(#grid); }
+      .land { fill: rgba(10,10,12,0.20); stroke: rgba(10,10,12,0.24); stroke-width: 2; }
+      .coast { fill: none; stroke: rgba(10,10,12,0.30); stroke-width: 2; }
+    </style>
+  </defs>
+
+  <!-- ocean + subtle grid -->
+  <rect class="ocean" x="0" y="0" width="1200" height="600"/>
+  <rect class="grid" x="0" y="0" width="1200" height="600" opacity="0.45"/>
+
+  <!-- Very simple stylized continents (not to scale; just a placeholder visual) -->
+  <!-- North America -->
+  <path class="land" d="M140,150 C170,110 230,85 300,95 C350,102 395,128 420,160 C445,192 435,235 410,260 C372,299 320,312 275,298 C235,287 210,300 175,286 C145,273 120,235 130,205 C136,183 125,172 140,150 Z"/>
+  <!-- South America -->
+  <path class="land" d="M330,310 C365,300 392,318 405,345 C420,377 414,424 390,455 C365,488 345,520 320,515 C297,510 298,478 305,450 C314,414 295,392 304,365 C310,345 313,318 330,310 Z"/>
+  <!-- Europe -->
+  <path class="land" d="M560,170 C585,155 618,150 642,158 C665,166 688,162 710,170 C732,178 736,200 720,214 C700,232 678,232 657,222 C640,214 624,220 608,214 C586,207 560,196 556,182 C554,176 556,173 560,170 Z"/>
+  <!-- Africa -->
+  <path class="land" d="M610,240 C650,230 694,244 718,274 C744,308 750,360 730,404 C712,442 690,498 646,500 C606,501 594,450 580,412 C566,376 540,352 552,318 C563,287 582,262 610,240 Z"/>
+  <!-- Asia -->
+  <path class="land" d="M720,170 C772,130 845,120 920,138 C985,154 1050,190 1090,238 C1130,286 1098,338 1040,352 C982,366 948,342 902,336 C864,331 820,350 784,340 C748,330 720,302 720,270 C720,240 700,200 720,170 Z"/>
+  <!-- Australia -->
+  <path class="land" d="M920,430 C955,412 995,415 1030,435 C1065,455 1072,490 1042,515 C1012,540 960,545 920,525 C885,508 880,462 920,430 Z"/>
+
+  <!-- frame -->
+  <rect x="6" y="6" width="1188" height="588" rx="16" ry="16" fill="none" stroke="rgba(10,10,12,0.18)" stroke-width="4"/>
+</svg>
