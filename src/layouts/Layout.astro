@@ -129,13 +129,13 @@ function stripPrefix(title) {
             </div>
           </details>
 
-          <details class={`navDrop ${pathname.startsWith("/designs") ? "active" : ""}`}>
-            <summary class="pill">Designs</summary>
+          <details class={`navDrop ${pathname.startsWith("/designs") || pathname.startsWith("/devices") ? "active" : ""}`}>
+            <summary class="pill">Devices</summary>
             <div class="menu" role="menu">
-              <a class="menuItem" href="/designs">All designs →</a>
+              <a class="menuItem" href="/devices">All devices →</a>
               <div class="menuSep"></div>
               {designs.map((p) => (
-                <a class="menuItem" href={`/designs/${p.slug}/`}>
+                <a class="menuItem" href={`/devices/${p.slug}/`}>
                   {String(p.data.order).padStart(2, "0")} — {stripPrefix(p.data.title)}
                 </a>
               ))}

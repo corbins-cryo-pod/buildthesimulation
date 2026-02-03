@@ -10,14 +10,14 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
-const subtitle = entry.data.description ?? "BCI design entry.";
+const subtitle = entry.data.description ?? "BCI device entry.";
 const titleNoPrefix = entry.data.title.replace(/^\d+\s*—\s*/, "");
 ---
 
 <Layout pageTitle="Devices" subtitle={subtitle} description={entry.data.description}>
   <article class="post">
     <header class="postHead">
-      <div class="kicker">Design — {entry.data.modality}</div>
+      <div class="kicker">Device — {entry.data.modality}</div>
       <h2 class="title">{titleNoPrefix}</h2>
 
       {entry.data.website ? (

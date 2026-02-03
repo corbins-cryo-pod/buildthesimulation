@@ -14,21 +14,21 @@ function stripPrefix(title) {
 <Layout
   pageTitle="Devices"
   subtitle="A catalog of brain–computer interface devices: architectures, modality classes, and what got built."
-  description="BCI Devices: a catalog of architectures and devices (infrastructure in progress)."
+  description="BCI Devices: a catalog of architectures and devices."
 >
   <section class="card">
     <p class="muted">
-      This section is the long-term catalog: not companies, but the actual <em>designs</em> (arrays, films, stents,
-      noninvasive stacks, packaging approaches). For now, this is just infrastructure.
+      This is the long-term catalog: not companies, but the actual <em>devices</em> (arrays, films, stents,
+      noninvasive stacks, packaging approaches).
     </p>
   </section>
 
   {posts.length ? (
     <section class="card">
-      <h2>All designs</h2>
+      <h2>All devices</h2>
       <div class="list">
         {posts.map((p) => (
-          <a class="item" href={`/designs/${p.slug}/`}>
+          <a class="item" href={`/devices/${p.slug}/`}>
             <h3>
               {String(p.data.order).padStart(2, "0")} — {stripPrefix(p.data.title)}
             </h3>
@@ -42,8 +42,8 @@ function stripPrefix(title) {
     </section>
   ) : (
     <section class="card">
-      <h2>All designs</h2>
-      <p class="muted">No entries yet. Next: seed with a handful of canonical designs (Utah array, ECoG grid, Stentrode…).</p>
+      <h2>All devices</h2>
+      <p class="muted">No entries yet.</p>
     </section>
   )}
 </Layout>
