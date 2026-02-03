@@ -78,10 +78,20 @@ const designs = defineCollection({
     pubDate: z.coerce.date().optional(),
     updatedDate: z.coerce.date().optional(),
     description: z.string().optional(),
+
+    // Device metadata (matches the DEVICE_TEMPLATE.md). Optional for now.
+    device_id: z.string().optional(), // e.g., "BTSD-0002"
+    interface_class: z
+      .enum(["intracortical", "ecog", "seeg", "endovascular", "pni", "dbs", "scs", "other"])
+      .default("other"),
+    status: z.enum(["human", "preclinical", "theoretical"]).default("theoretical"),
+    last_updated: z.coerce.date().optional(),
+
     // Design class/type (high-level; we can refine later)
     modality: z
       .enum(["Intracortical", "Cortical surface", "Endovascular", "Peripheral nerve", "Noninvasive", "Other"])
       .default("Other"),
+
     website: z.string().url().optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
