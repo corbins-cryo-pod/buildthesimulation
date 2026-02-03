@@ -34,7 +34,7 @@ draft: false
 
 ## Spec Card Grid
 
-### 🧬 Identity
+### Identity
 - **Device name:** Neuralink N1
 - **Canonical ID:** BTSD-0002
 - **Inventor / key authors:** Neuralink team (public descriptions are company-level; specific authors vary by publication)
@@ -48,7 +48,7 @@ draft: false
 
 ---
 
-### 📐 Geometry & Architecture
+### Geometry & Architecture
 - **Interface type:** intracortical
 - **Penetrating?:** yes
 - **Form factor:** flexible polymer threads
@@ -65,7 +65,7 @@ draft: false
 
 ---
 
-### ⚡ Electrode & Channel Physics
+### Electrode & Channel Physics
 - **Channel count:** ~1,024
 - **Electrode material:** not consistently disclosed in a single canonical public spec (varies by how sources describe it)
 - **Site area (µm²):** unknown (avoid guessing)
@@ -76,7 +76,7 @@ draft: false
 
 ---
 
-### 🧠 Tissue Interface & Bioresponse
+### Tissue Interface & Bioresponse
 - **Target tissue:** cortex
 - **BBB disruption:** unknown (depends on insertion + vessel avoidance; needs data)
 - **Vascular disruption risk:** reduced by vision-guided placement (claimed), but not “zero” (no implant is)
@@ -86,7 +86,7 @@ draft: false
 
 ---
 
-### 🖥️ System Architecture
+### System Architecture
 - **Onboard electronics:** yes (amplification/ADC + stim drivers implied by system capabilities)
 - **Data path:** fully implanted wireless telemetry
 - **Telemetry bandwidth:** not publicly disclosed as a single number
@@ -98,7 +98,7 @@ draft: false
 
 ---
 
-### 📈 Performance Envelope
+### Performance Envelope
 - **Typical yield (acute):** not publicly quantified in a standardized way
 - **Typical yield (chronic):** unknown
 - **Stability over time:** unknown (human implants are recent; peer-reviewed chronic datasets not public)
@@ -107,7 +107,7 @@ draft: false
 
 ---
 
-### 🏥 Clinical / Preclinical Evidence
+### Clinical / Preclinical Evidence
 - **N implanted subjects / animals:** human count has been reported in news; treat exact counts as time-sensitive
 - **Follow-up duration:** limited (publicly)
 - **Indications:** severe paralysis (initial narrative)
