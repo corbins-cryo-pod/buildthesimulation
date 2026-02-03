@@ -51,6 +51,19 @@ function stripPrefix(title) {
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
+
+    <script>
+      // Theme: default to system preference, allow manual override via localStorage.
+      (() => {
+        try {
+          const saved = localStorage.getItem("bts_theme");
+          const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+          const theme = saved === "light" || saved === "dark" ? saved : prefersDark ? "dark" : "light";
+          document.documentElement.dataset.theme = theme;
+        } catch {}
+      })();
+    </script>
+
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
   </head>
@@ -132,7 +145,36 @@ function stripPrefix(title) {
               <a class="menuItem" href="/sim">Nerve cross-section sandbox</a>
             </div>
           </details>
+
+          <button id="themeToggle" class="pill" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+            Theme
+          </button>
         </nav>
+
+        <script>
+          // Wire up theme toggle after markup exists.
+          (() => {
+            try {
+              const btn = document.getElementById("themeToggle");
+              if (!btn) return;
+
+              const setLabel = (theme) => {
+                btn.textContent = theme === "dark" ? "Light" : "Dark";
+                btn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+              };
+
+              const getTheme = () => document.documentElement.dataset.theme || "light";
+              setLabel(getTheme());
+
+              btn.addEventListener("click", () => {
+                const next = getTheme() === "dark" ? "light" : "dark";
+                document.documentElement.dataset.theme = next;
+                localStorage.setItem("bts_theme", next);
+                setLabel(next);
+              });
+            } catch {}
+          })();
+        </script>
       </header>
 
       <slot />
@@ -145,12 +187,52 @@ function stripPrefix(title) {
 </html>
 
 <style>
+  :global(:root) {
+    /* Light theme (default) */
+    --bg: #f6f1e6; /* paper */
+    --text: rgba(10, 10, 12, 0.86);
+    --muted: rgba(10, 10, 12, 0.72);
+
+    --panel: rgba(255, 255, 255, 0.22);
+    --panelStrong: rgba(255, 255, 255, 0.65);
+    --panelHover: rgba(255, 255, 255, 0.50);
+
+    --border: rgba(10, 10, 12, 0.14);
+    --borderStrong: rgba(10, 10, 12, 0.28);
+
+    --shadow: rgba(0, 0, 0, 0.14);
+    --menuBg: rgba(255, 255, 255, 0.92);
+
+    --grainOpacity: 0.045;
+    --grainBlend: multiply;
+  }
+
+  :global(html[data-theme="dark"]) {
+    /* Dark theme */
+    --bg: #0f1114;
+    --text: rgba(245, 242, 236, 0.88);
+    --muted: rgba(245, 242, 236, 0.68);
+
+    --panel: rgba(255, 255, 255, 0.06);
+    --panelStrong: rgba(255, 255, 255, 0.10);
+    --panelHover: rgba(255, 255, 255, 0.12);
+
+    --border: rgba(245, 242, 236, 0.14);
+    --borderStrong: rgba(245, 242, 236, 0.26);
+
+    --shadow: rgba(0, 0, 0, 0.45);
+    --menuBg: rgba(18, 20, 24, 0.96);
+
+    --grainOpacity: 0.06;
+    --grainBlend: screen;
+  }
+
   :global(body) {
     margin: 0;
     font-family: "Times New Roman", Times, serif;
     font-size: 20px;
-    color: rgba(10, 10, 12, 0.86);
-    background: #f6f1e6; /* paper */
+    color: var(--text);
+    background: var(--bg);
   }
 
   /* subtle paper grain */
@@ -159,8 +241,8 @@ function stripPrefix(title) {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    opacity: 0.045;
-    mix-blend-mode: multiply;
+    opacity: var(--grainOpacity);
+    mix-blend-mode: var(--grainBlend);
     background-image:
       repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.35) 0px, rgba(0, 0, 0, 0.35) 1px, transparent 1px, transparent 3px),
       repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.25) 0px, rgba(0, 0, 0, 0.25) 1px, transparent 1px, transparent 4px);
@@ -183,7 +265,7 @@ function stripPrefix(title) {
     gap: 18px;
     margin-bottom: 18px;
     padding-bottom: 18px;
-    border-bottom: 1px solid rgba(10, 10, 12, 0.14);
+    border-bottom: 1px solid var(--border);
   }
 
   .brand {
@@ -249,23 +331,23 @@ function stripPrefix(title) {
     display: inline-flex;
     padding: 10px 14px;
     border-radius: 999px;
-    border: 1px solid rgba(10, 10, 12, 0.16);
+    border: 1px solid var(--border);
     text-decoration: none;
     color: inherit;
-    background: rgba(255, 255, 255, 0.18);
+    background: var(--panel);
     transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
     user-select: none;
   }
 
   .pill:hover {
-    border-color: rgba(10, 10, 12, 0.28);
+    border-color: var(--borderStrong);
     transform: translateY(-1px);
-    background: rgba(255, 255, 255, 0.5);
+    background: var(--panelHover);
   }
 
   .pill.active {
-    border-color: rgba(10, 10, 12, 0.35);
-    background: rgba(255, 255, 255, 0.65);
+    border-color: var(--borderStrong);
+    background: var(--panelStrong);
   }
 
   /* Nav dropdowns (mini table-of-contents) */
@@ -284,8 +366,8 @@ function stripPrefix(title) {
   }
 
   .navDrop.active > summary {
-    border-color: rgba(10, 10, 12, 0.35);
-    background: rgba(255, 255, 255, 0.65);
+    border-color: var(--borderStrong);
+    background: var(--panelStrong);
   }
 
   .navDrop:not([open]) .menu {
@@ -302,9 +384,9 @@ function stripPrefix(title) {
     overflow: auto;
     padding: 10px;
     border-radius: 14px;
-    border: 1px solid rgba(10, 10, 12, 0.18);
-    background: rgba(255, 255, 255, 0.92);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+    border: 1px solid var(--border);
+    background: var(--menuBg);
+    box-shadow: 0 12px 30px var(--shadow);
     z-index: 10;
   }
 
@@ -365,7 +447,7 @@ function stripPrefix(title) {
     padding-top: 16px;
     opacity: 0.62;
     font-size: 14px;
-    border-top: 1px solid rgba(10, 10, 12, 0.14);
+    border-top: 1px solid var(--border);
   }
 
   @media (max-width: 680px) {
