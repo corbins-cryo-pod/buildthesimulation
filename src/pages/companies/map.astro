@@ -44,17 +44,16 @@ const missingCount = posts.length - points.length;
       <div class="viewport" id="mapViewport">
         <img class="mapImg" id="mapImg" src="/atlas-world.svg" alt="World map" draggable="false" />
 
-        <!-- Test pin requested: New York City → Wikipedia -->
-        <a
-          class="pin"
-          data-lat="40.7128"
-          data-lon="-74.0060"
-          href="https://en.wikipedia.org/wiki/New_York_City"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="New York City"
-          aria-label="New York City"
-        ></a>
+        {points.map((p) => (
+          <a
+            class="pin"
+            data-lat={String(p.lat)}
+            data-lon={String(p.lon)}
+            href={`/companies/${p.slug}/`}
+            title={`${p.title} (${p.location ?? ""})`}
+            aria-label={p.title}
+          ></a>
+        ))}
       </div>
     </div>
 
