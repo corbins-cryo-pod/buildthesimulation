@@ -201,7 +201,9 @@ const missingCount = posts.length - points.length;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    /* IMPORTANT: use fill so we don't crop the equirectangular map.
+       Cropping (object-fit: cover) shifts pins relative to geography. */
+    object-fit: fill;
     pointer-events: none;
   }
 
