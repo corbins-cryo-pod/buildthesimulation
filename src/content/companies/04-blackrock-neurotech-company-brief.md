@@ -66,7 +66,6 @@ A well-known demonstration of decoding attempted speech used cortical recordings
 
 - Moses et al., *New England Journal of Medicine* (2021): “Neuroprosthesis for Decoding Speech in a Paralyzed Person with Anarthria.”
   - PubMed: <https://pubmed.ncbi.nlm.nih.gov/34260835/>
-  - DOI: <https://doi.org/10.1056/NEJMoa2027540>
   - PMCID (free full text): <https://pmc.ncbi.nlm.nih.gov/articles/PMC8972947/>
 
 ### High-bandwidth wireless intracortical recording used at home (Brown, 2021)

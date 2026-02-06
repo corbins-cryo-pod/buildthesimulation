@@ -153,5 +153,5 @@ draft: false
 ---
 
 ## References
-- Raspopovic S, et al. “Restoring Natural Sensory Feedback in Real-Time Bidirectional Hand Prostheses.” *Science Translational Medicine* (2014). DOI: <https://doi.org/10.1126/scitranslmed.3006820>
+- Raspopovic S, et al. “Restoring Natural Sensory Feedback in Real-Time Bidirectional Hand Prostheses.” *Science Translational Medicine* (2014). PubMed search: <https://pubmed.ncbi.nlm.nih.gov/?term=Restoring%20Natural%20Sensory%20Feedback%20in%20Real-Time%20Bidirectional%20Hand%20Prostheses>
 - (Add: Oddo et al., PNAS; Micera review in Nature Reviews Materials; and TIME-specific chronic stability papers)

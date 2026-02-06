@@ -84,4 +84,4 @@ In cortex, micromotion and foreign body response often dominate chronic unit yie
 
 - Overview + pointers: https://en.wikipedia.org/wiki/Electrophysiology
 - D. R. Merrill, M. Bikson, J. G. R. Jefferys (2005). *Electrical stimulation of excitable tissue: design of efficacious and safe protocols.* Journal of Neuroscience Methods. https://pubmed.ncbi.nlm.nih.gov/15661300/
-- S. F. Cogan (2008). *Neural stimulation and recording electrodes.* Annual Review of Biomedical Engineering. https://www.annualreviews.org/doi/10.1146/annurev.bioeng.10.061807.160518
+- S. F. Cogan (2008). *Neural stimulation and recording electrodes.* Annual Review of Biomedical Engineering. https://pubmed.ncbi.nlm.nih.gov/18429704/ (mirror PDF: https://microprobes.com/files/pdf/publications/gen-knowledge/cogan_2008_neural_stimulation.pdf)

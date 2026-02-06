@@ -34,6 +34,7 @@ One representative paper in this thread:
 
 ### 3) Computational NeuroEngineering Laboratory (CNEL) — BMI signal processing & brain interfacing
 - Lab: <https://www.cnel.ufl.edu/>
+- UF ECE lab tours entry (CNEL mention): <https://www.ece.ufl.edu/admissions/graduate/lab-tours/>
 
 ### 4) Schmidt Lab (Christine Schmidt) — biomaterials for regeneration and neural interfacing
 - Lab: <https://faculty.eng.ufl.edu/schmidt/>

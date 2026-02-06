@@ -30,7 +30,7 @@ The **University of Michigan (UMich)** is best understood less as a single “fl
 
 **Official pages:**
 - Willsey Lab: <https://www.willseylab.org/>
-- UMich BCI Clinic: <https://www.uofmhealth.org/our-care/specialties-services/brain-computer-interface-bci-clinic>
+- UMich BCI Clinic (Michigan Medicine news release): <https://www.michiganmedicine.org/news-release/university-michigan-health-opens-brain-computer-interface-clinic-among-first-nation>
 
 **What they do (high-level):** Implantable intracortical BCIs aimed at restoring **speech and motor function**, with emphasis on robustness and clinical translation.
 

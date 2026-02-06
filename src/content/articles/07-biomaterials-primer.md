@@ -68,7 +68,7 @@ When evaluating a material choice, ask:
 ## References (starter → expanding)
 
 Electrodes and interface basics:
-- S. F. Cogan (2008). *Neural stimulation and recording electrodes.* Annual Review of Biomedical Engineering. https://www.annualreviews.org/doi/10.1146/annurev.bioeng.10.061807.160518
+- S. F. Cogan (2008). *Neural stimulation and recording electrodes.* Annual Review of Biomedical Engineering. https://pubmed.ncbi.nlm.nih.gov/18429704/ (mirror PDF: https://microprobes.com/files/pdf/publications/gen-knowledge/cogan_2008_neural_stimulation.pdf)
 - Neural implant overview: https://en.wikipedia.org/wiki/Neural_implant
 
 Flexible polymers, fabrication, and interphases:

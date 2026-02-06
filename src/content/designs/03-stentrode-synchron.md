@@ -145,5 +145,5 @@ draft: false
 
 ## References
 - Yoo PE, et al. “Motor neuroprosthesis implanted with neurointerventional surgery improves capacity for activities of daily living tasks in severe paralysis: first in-human experience.” *J NeuroInterv Surg* (Epub 2020 Oct 28; 2021 Feb). DOI: 10.1136/neurintsurg-2020-016862. PubMed: <https://pubmed.ncbi.nlm.nih.gov/33115813/>
-- Mitchell P, et al. “Assessment of Safety of a Fully Implanted Endovascular Brain-Computer Interface for Severe Paralysis in 4 Patients: The Stentrode With Thought-Controlled Digital Switch (SWITCH) Study.” *JAMA Neurology* (2023). DOI: <https://doi.org/10.1001/jamaneurol.2022.4847> (PMC full text: <https://pmc.ncbi.nlm.nih.gov/articles/PMC9857731/>)
+- Mitchell P, et al. “Assessment of Safety of a Fully Implanted Endovascular Brain-Computer Interface for Severe Paralysis in 4 Patients: The Stentrode With Thought-Controlled Digital Switch (SWITCH) Study.” *JAMA Neurology* (2023). PMC full text: <https://pmc.ncbi.nlm.nih.gov/articles/PMC9857731/>
 - Synchron overview: <https://synchron.com/>

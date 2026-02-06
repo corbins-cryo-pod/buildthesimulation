@@ -56,14 +56,14 @@ Compared with intracortical arrays:
 A key human dataset is the **SWITCH study** (“Stentrode With Thought‑Controlled Digital Switch”). The publication reports safety outcomes in **4 patients** with severe paralysis using a fully implanted endovascular BCI.
 
 - Mitchell et al., *JAMA Neurology* (2023): “Assessment of Safety of a Fully Implanted Endovascular Brain‑Computer Interface for Severe Paralysis in 4 Patients: The Stentrode With Thought‑Controlled Digital Switch (SWITCH) Study.”
-  - DOI: <https://doi.org/10.1001/jamaneurol.2022.4847>
+  - (DOI omitted; see PMC full text)
   - PMC full text: <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9857731/>
 
 ### Earlier first‑in‑human experience (Journal of NeuroInterventional Surgery, 2020)
 An earlier report describes first‑in‑human experience in severe paralysis and discusses activities-of-daily-living type outcomes.
 
 - Oxley & Yoo, *Journal of NeuroInterventional Surgery* (2020): “Motor neuroprosthesis implanted with neurointerventional surgery improves capacity for activities of daily living tasks in severe paralysis: first in human experience.”
-  - DOI: <https://doi.org/10.1136/neurintsurg-2020-016862>
+  - (DOI omitted; see PMC full text)
   - PMC: <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7848062/>
 
 ### Preclinical foundation (Nature Biomedical Engineering, 2018)
