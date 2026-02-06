@@ -23,7 +23,7 @@ This brief leans hard on **peer‑reviewed clinical data** and other primary sou
 - **Procedure (company description):** Synchron describes a *minimally-invasive endovascular procedure* “similar to the placement of stents” that avoids open brain surgery. (Synchron homepage)
   - <https://synchron.com/>
 - **Contact / location (company site footer):** the site lists **Brooklyn, NY** along with contact emails. (Synchron contact/footer page)
-  - <https://synchron.com/contact/>
+  - <https://synchron.com/>
 
 > Private-company note: public sources rarely give reliable revenue/profit data for private neurotech startups. If we can’t support a number with a solid source, we don’t claim it.
 

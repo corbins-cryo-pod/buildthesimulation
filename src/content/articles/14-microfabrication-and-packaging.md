@@ -27,6 +27,6 @@ Microfabrication can produce exquisite geometry, but repeatability and yield mat
 
 ## References (starter)
 
-- Implantable device packaging overview: https://en.wikipedia.org/wiki/Implantable_medical_device
+- Implantable device packaging overview: https://en.wikipedia.org/wiki/Neural_implant
 
 *(We’ll add implant packaging reviews and hermeticity standards references next.)*
