@@ -1,0 +1,87 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout
+  pageTitle="Simulation guide"
+  subtitle="Peripheral nerve cross-section sandbox"
+  description="How to use the peripheral nerve cross-section simulation: what the controls mean and what to try first."
+>
+  <section class="card">
+    <p class="muted">
+      The simulator lives at <a href="/sim">/sim</a>. This page is a short guide for people who haven’t used it before.
+    </p>
+
+    <hr class="rule" />
+
+    <h2>What this simulation is (and isn’t)</h2>
+    <p>
+      This is a geometry-first sandbox for exploring electrode placement in a simplified peripheral nerve cross-section.
+      The “axon sites” are visual sampling points and the stimulation field is a proxy model.
+      The goal is intuition and experimentation, not a validated biophysical model.
+    </p>
+
+    <h2>Quick start (2 minutes)</h2>
+    <ol>
+      <li>Open <a href="/sim">/sim</a>.</li>
+      <li>Click <b>Add intrafascicular</b> to place an electrode.</li>
+      <li>Drag the electrode to move it inside the fascicle.</li>
+      <li>Adjust <b>Stim amplitude</b>, <b>Field falloff</b>, and <b>Threshold</b> and watch recruitment change.</li>
+      <li>Use <b>Reset</b> if things get messy.</li>
+    </ol>
+
+    <h2>Controls glossary</h2>
+    <ul>
+      <li><b>Axon sites</b>: number of sampling points drawn inside the fascicle (more sites = heavier CPU).</li>
+      <li><b>Stim amplitude</b>: proxy strength used to compute a simple distance-decaying field.</li>
+      <li><b>Field falloff</b>: how quickly the field decays with distance (higher = spreads farther).</li>
+      <li><b>Threshold</b>: proxy cutoff for whether a site is considered “recruited.”</li>
+    </ul>
+
+    <h2>What to try</h2>
+    <ul>
+      <li>Move an electrode from center → edge and see how recruitment changes.</li>
+      <li>Hold amplitude fixed and sweep falloff; compare “local” vs “diffuse” activation.</li>
+      <li>Increase axon sites until the display starts to slow; note the performance tradeoff.</li>
+    </ul>
+
+    <h2>Where to go next</h2>
+    <ul>
+      <li>Devices catalog: <a href="/devices/">/devices/</a></li>
+      <li>BCI Atlas (companies/labs): <a href="/companies/">/companies/</a></li>
+      <li>Nerve cross-section landing page: <a href="/simulations/nerve-cross-section/">/simulations/nerve-cross-section/</a></li>
+    </ul>
+  </section>
+</Layout>
+
+<style>
+  .card {
+    margin-top: 14px;
+    padding: 22px 22px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+  }
+
+  .muted {
+    opacity: 0.72;
+    margin: 0;
+  }
+
+  .rule {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 16px 0;
+  }
+
+  h2 {
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-size: 1.12rem;
+    font-weight: 700;
+  }
+
+  ol, ul {
+    margin-top: 8px;
+  }
+</style>
