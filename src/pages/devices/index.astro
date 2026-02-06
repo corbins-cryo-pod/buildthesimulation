@@ -5,7 +5,7 @@ import DevicesDirectory from "../../components/DevicesDirectory";
 
 const entries = (await getCollection("designs"))
   .filter((p) => !p.data.draft)
-  .sort((a, b) => a.data.order - b.data.order);
+  .sort((a, b) => stripPrefix(a.data.title).localeCompare(stripPrefix(b.data.title)));
 
 function stripPrefix(title) {
   return title.replace(/^\d+\s*—\s*/, "");

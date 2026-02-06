@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 
 const posts = (await getCollection("designs"))
   .filter((p) => !p.data.draft)
-  .sort((a, b) => a.data.order - b.data.order);
+  .sort((a, b) => stripPrefix(a.data.title).localeCompare(stripPrefix(b.data.title)));
 
 function stripPrefix(title) {
   return title.replace(/^\d+\s*—\s*/, "");
@@ -30,7 +30,7 @@ function stripPrefix(title) {
         {posts.map((p) => (
           <a class="item" href={`/designs/${p.slug}/`}>
             <h3>
-              {String(p.data.order).padStart(2, "0")} — {stripPrefix(p.data.title)}
+              {stripPrefix(p.data.title)}
             </h3>
             <p class="desc">
               <span class="k">{p.data.modality}</span>

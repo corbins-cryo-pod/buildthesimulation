@@ -253,9 +253,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
           <div class="grid">
             {filtered.map((e: any) => (
               <a class="item" href={`/devices/${e.slug}/`}>
-                <h3 class="itemTitle">
-                  {String(e.order).padStart(2, "0")} — {e.title}
-                </h3>
+                <h3 class="itemTitle">{e.title}</h3>
                 <p class="desc">{e.description}</p>
 
                 <div class="badges">

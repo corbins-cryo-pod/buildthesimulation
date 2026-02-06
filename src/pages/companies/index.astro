@@ -3,19 +3,30 @@ import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 const all = await getCollection("companies");
-const posts = all
-  .filter((p) => !p.data.draft)
-  .sort((a, b) => a.data.order - b.data.order);
-
-const american = posts.filter((p) => p.data.kind === "Company" && p.data.region === "American");
-const european = posts.filter((p) => p.data.kind === "Company" && p.data.region === "European");
-const chinese = posts.filter((p) => p.data.kind === "Company" && p.data.region === "Chinese");
-const other = posts.filter((p) => p.data.kind === "Company" && p.data.region === "Other");
-const labs = posts.filter((p) => p.data.kind === "Lab");
+const posts = all.filter((p) => !p.data.draft);
 
 function titleWithoutPrefix(title) {
   return title.replace(/^\d+\s*—\s*/, "");
 }
+
+function sortByTitle(a, b) {
+  return titleWithoutPrefix(a.data.title).localeCompare(titleWithoutPrefix(b.data.title));
+}
+
+const american = posts
+  .filter((p) => p.data.kind === "Company" && p.data.region === "American")
+  .sort(sortByTitle);
+const european = posts
+  .filter((p) => p.data.kind === "Company" && p.data.region === "European")
+  .sort(sortByTitle);
+const chinese = posts
+  .filter((p) => p.data.kind === "Company" && p.data.region === "Chinese")
+  .sort(sortByTitle);
+const other = posts
+  .filter((p) => p.data.kind === "Company" && p.data.region === "Other")
+  .sort(sortByTitle);
+const labs = posts.filter((p) => p.data.kind === "Lab").sort(sortByTitle);
+
 ---
 
 <Layout
@@ -39,9 +50,7 @@ function titleWithoutPrefix(title) {
       <div class="list">
         {american.map((p) => (
           <a class="item" href={`/companies/${p.slug}/`}>
-            <h3>
-              {String(p.data.order).padStart(2, "0")} — {titleWithoutPrefix(p.data.title)}
-            </h3>
+            <h3>{titleWithoutPrefix(p.data.title)}</h3>
             {p.data.description ? <p class="desc">{p.data.description}</p> : null}
           </a>
         ))}
@@ -55,9 +64,7 @@ function titleWithoutPrefix(title) {
       <div class="list">
         {european.map((p) => (
           <a class="item" href={`/companies/${p.slug}/`}>
-            <h3>
-              {String(p.data.order).padStart(2, "0")} — {titleWithoutPrefix(p.data.title)}
-            </h3>
+            <h3>{titleWithoutPrefix(p.data.title)}</h3>
             {p.data.description ? <p class="desc">{p.data.description}</p> : null}
           </a>
         ))}
@@ -71,9 +78,7 @@ function titleWithoutPrefix(title) {
       <div class="list">
         {chinese.map((p) => (
           <a class="item" href={`/companies/${p.slug}/`}>
-            <h3>
-              {String(p.data.order).padStart(2, "0")} — {titleWithoutPrefix(p.data.title)}
-            </h3>
+            <h3>{titleWithoutPrefix(p.data.title)}</h3>
             {p.data.description ? <p class="desc">{p.data.description}</p> : null}
           </a>
         ))}
@@ -87,9 +92,7 @@ function titleWithoutPrefix(title) {
       <div class="list">
         {other.map((p) => (
           <a class="item" href={`/companies/${p.slug}/`}>
-            <h3>
-              {String(p.data.order).padStart(2, "0")} — {titleWithoutPrefix(p.data.title)}
-            </h3>
+            <h3>{titleWithoutPrefix(p.data.title)}</h3>
             {p.data.description ? <p class="desc">{p.data.description}</p> : null}
           </a>
         ))}
@@ -103,9 +106,7 @@ function titleWithoutPrefix(title) {
       <div class="list">
         {labs.map((p) => (
           <a class="item" href={`/companies/${p.slug}/`}>
-            <h3>
-              {String(p.data.order).padStart(2, "0")} — {titleWithoutPrefix(p.data.title)}
-            </h3>
+            <h3>{titleWithoutPrefix(p.data.title)}</h3>
             {p.data.description ? <p class="desc">{p.data.description}</p> : null}
           </a>
         ))}
