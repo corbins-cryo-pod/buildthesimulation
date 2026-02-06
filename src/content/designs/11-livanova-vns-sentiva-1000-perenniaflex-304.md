@@ -3,7 +3,7 @@ title: "LivaNova VNS Therapy System (SenTiva Model 1000 + PerenniaFLEX Model 304
 order: 11
 pubDate: 2026-02-06
 updatedDate: 2026-02-06
-device_id: "BTSD-PNI-0004"
+device_id: "BTSD-PNI-0006"
 interface_class: "pni"
 status: "human"
 last_updated: 2026-02-06
@@ -36,7 +36,7 @@ draft: false
 
 ### Identity
 - **Device name:** LivaNova VNS Therapy System — SenTiva Model 1000 generator + PerenniaFLEX Model 304 lead
-- **Canonical ID:** BTSD-PNI-0004
+- **Canonical ID:** BTSD-PNI-0006
 - **Org / manufacturer:** LivaNova (and predecessor lineage)
 - **First demonstrated (year):** therapy lineage established in the 1990s; SenTiva generation described in modern regulatory/clinical materials
 - **First implanted (year):** 1990s era (therapy lineage)
