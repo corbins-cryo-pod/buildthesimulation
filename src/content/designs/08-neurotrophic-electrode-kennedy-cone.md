@@ -10,7 +10,7 @@ last_updated: 2026-02-06
 description: "A biologically integrated intracortical electrode (hollow cone with microwires) designed to encourage neurite ingrowth for long-term single-unit recording in humans."
 modality: "Intracortical"
 website: "https://pubmed.ncbi.nlm.nih.gov/9665587/"
-tags: ["BCI", "intracortical", "single-unit", "neurotrophic", "cone electrode", "Kennedy"]
+tags: ["BCI", "intracortical", "single-unit", "neurotrophic", "cone electrode", "Kennedy", "cortex", "recording", "regenerative", "array"]
 draft: false
 ---
 

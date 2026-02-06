@@ -10,7 +10,7 @@ last_updated: 2026-02-06
 description: "Paradromics’ Connexus intracortical BCI platform, validated in a short intraoperative first-in-human recording and positioned to scale into a chronic, fully implantable communication/speech system."
 modality: "Intracortical"
 website: "https://www.paradromics.com/news/paradromics-completes-first-in-human-recording-with-the-connexus-brain-computer-interface"
-tags: ["BCI", "intracortical", "Paradromics", "Connexus", "acute", "intraoperative", "speech restoration"]
+tags: ["BCI", "intracortical", "Paradromics", "Connexus", "acute", "intraoperative", "speech restoration", "cortex", "recording", "array"]
 draft: false
 ---
 

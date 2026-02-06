@@ -10,7 +10,7 @@ last_updated: 2026-02-06
 description: "A research-grade self-sizing spiral cuff electrode implementation used in chronic human peripheral nerve stimulation studies, including sensory stimulation in upper-limb amputees."
 modality: "Peripheral nerve"
 website: "https://pubmed.ncbi.nlm.nih.gov/28693584/"
-tags: ["PNI", "spiral cuff", "self-sizing", "CWRU", "sensory feedback", "amputation", "stimulation"]
+tags: ["PNI", "spiral cuff", "self-sizing", "CWRU", "sensory feedback", "amputation", "stimulation", "peripheral nerve", "cuff"]
 draft: false
 ---
 

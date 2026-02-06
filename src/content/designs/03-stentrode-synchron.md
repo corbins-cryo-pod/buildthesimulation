@@ -10,7 +10,7 @@ last_updated: 2026-02-03
 description: "A fully implanted endovascular BCI: a stent-electrode array in the superior sagittal sinus recording ECoG-like signals, trading spikes for catheter-based deployment."
 modality: "Endovascular"
 website: "https://synchron.com/"
-tags: ["BCI", "endovascular", "Stentrode", "Synchron", "ECoG-like", "minimally invasive"]
+tags: ["BCI", "endovascular", "Stentrode", "Synchron", "ECoG-like", "minimally invasive", "cortex", "recording", "array"]
 draft: false
 ---
 

@@ -10,7 +10,7 @@ last_updated: 2026-02-06
 description: "A hyperflexible regenerative sieve electrode designed to promote neurovascular integration across a transected peripheral nerve interface (rat sciatic model)."
 modality: "Peripheral nerve"
 website: "https://pubmed.ncbi.nlm.nih.gov/34147716/"
-tags: ["PNI", "regenerative", "sieve electrode", "mesh", "preclinical", "nerve transection", "neurovascular"]
+tags: ["PNI", "regenerative", "sieve electrode", "mesh", "preclinical", "nerve transection", "neurovascular", "peripheral nerve", "stimulation"]
 draft: false
 ---
 

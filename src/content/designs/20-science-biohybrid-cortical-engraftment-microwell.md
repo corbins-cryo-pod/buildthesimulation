@@ -10,7 +10,7 @@ last_updated: 2026-02-06
 description: "A surface cortical biohybrid implant: optogenetically enabled neurons seeded in a microwell scaffold on cortex, with neurites integrating into the brain to transmit information via optical stimulation."
 modality: "Cortical surface"
 website: "https://www.biorxiv.org/content/10.1101/2024.11.22.624907v1"
-tags: ["biohybrid", "optogenetics", "cortical surface", "microwell", "preclinical", "Science Corporation"]
+tags: ["biohybrid", "optogenetics", "cortical surface", "microwell", "preclinical", "Science Corporation", "cortex", "ecog", "recording", "stimulation", "bidirectional"]
 draft: false
 ---
 

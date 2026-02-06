@@ -10,7 +10,7 @@ last_updated: 2026-02-06
 description: "A chronically implanted macro-sieve electrode with large transit zones enabling robust axon regeneration and selective stimulation in a rat sciatic nerve transection model."
 modality: "Peripheral nerve"
 website: "https://pubmed.ncbi.nlm.nih.gov/28008303/"
-tags: ["PNI", "regenerative", "macro-sieve", "transit zones", "preclinical", "stimulation", "nerve transection"]
+tags: ["PNI", "regenerative", "macro-sieve", "transit zones", "preclinical", "stimulation", "nerve transection", "peripheral nerve"]
 draft: false
 ---
 
