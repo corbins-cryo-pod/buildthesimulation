@@ -24,37 +24,69 @@ function splitCsv(s: string | null) {
     .filter(Boolean);
 }
 
-function setEq(a: Set<string>, b: Set<string>) {
-  if (a.size !== b.size) return false;
-  for (const v of a) if (!b.has(v)) return false;
-  return true;
+function toTitleCase(s: string) {
+  // Minimal “display” helper; keep words as-is for multiword labels.
+  if (!s) return s;
+  return s
+    .split(" ")
+    .map((w) => (w.length ? w[0].toUpperCase() + w.slice(1) : w))
+    .join(" ");
 }
 
-export default function DevicesDirectory(props: {
-  entries: DeviceEntry[];
-  allTags: string[];
-}) {
-  const axisPills = [
-    { label: "All", tag: "" },
-    { label: "Cortex", tag: "cortex" },
-    { label: "Peripheral nerve", tag: "peripheral nerve" },
-    { label: "Spinal cord", tag: "spinal cord" },
-  ];
+const FACETS = {
+  axis: [
+    { label: "Any", value: "" },
+    { label: "Cortex", value: "cortex" },
+    { label: "Peripheral nerve", value: "peripheral nerve" },
+    { label: "Spinal cord", value: "spinal cord" },
+  ],
+  interfaceType: [
+    { label: "Any", value: "" },
+    { label: "Intracortical", value: "intracortical" },
+    { label: "ECoG", value: "ecog" },
+    { label: "sEEG", value: "seeg" },
+    { label: "Endovascular", value: "endovascular" },
+    { label: "PNI", value: "pni" },
+    { label: "DBS", value: "dbs" },
+    { label: "SCS", value: "scs" },
+  ],
+  directionality: [
+    { label: "Recording", value: "recording" },
+    { label: "Stimulation", value: "stimulation" },
+    { label: "Bidirectional", value: "bidirectional" },
+  ],
+  formFactor: [
+    { label: "Any", value: "" },
+    { label: "Array", value: "array" },
+    { label: "Cuff", value: "cuff" },
+    { label: "Intrafascicular", value: "intrafascicular" },
+    { label: "Regenerative", value: "regenerative" },
+    { label: "Microelectrode", value: "microelectrode" },
+    { label: "Thin film", value: "film" },
+  ],
+} as const;
 
+export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
   const [query, setQuery] = useState("");
-  const [axisTag, setAxisTag] = useState<string>("");
-  const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
+  const [axis, setAxis] = useState("");
+  const [iface, setIface] = useState("");
+  const [form, setForm] = useState("");
+  const [dir, setDir] = useState<Set<string>>(new Set());
 
   // Load initial state from URL once.
   useEffect(() => {
     const url = new URL(window.location.href);
     const q = url.searchParams.get("q") ?? "";
-    const axis = url.searchParams.get("axis") ?? "";
-    const tags = splitCsv(url.searchParams.get("tags"));
+    const axis0 = url.searchParams.get("axis") ?? "";
+    const iface0 = url.searchParams.get("iface") ?? "";
+    const form0 = url.searchParams.get("form") ?? "";
+    const dir0 = splitCsv(url.searchParams.get("dir"));
 
     setQuery(q);
-    setAxisTag(axis);
-    setSelectedTags(new Set(tags.map(norm).filter(Boolean)));
+    setAxis(norm(axis0));
+    setIface(norm(iface0));
+    setForm(norm(form0));
+    setDir(new Set(dir0.map(norm).filter(Boolean)));
   }, []);
 
   // Keep URL in sync (shareable filters) without full navigation.
@@ -65,230 +97,285 @@ export default function DevicesDirectory(props: {
     if (q) url.searchParams.set("q", q);
     else url.searchParams.delete("q");
 
-    const axis = axisTag.trim();
     if (axis) url.searchParams.set("axis", axis);
     else url.searchParams.delete("axis");
 
-    const tags = [...selectedTags].filter(Boolean).sort();
-    if (tags.length) url.searchParams.set("tags", tags.join(","));
-    else url.searchParams.delete("tags");
+    if (iface) url.searchParams.set("iface", iface);
+    else url.searchParams.delete("iface");
+
+    if (form) url.searchParams.set("form", form);
+    else url.searchParams.delete("form");
+
+    const dirList = [...dir].filter(Boolean).sort();
+    if (dirList.length) url.searchParams.set("dir", dirList.join(","));
+    else url.searchParams.delete("dir");
 
     window.history.replaceState({}, "", url);
-  }, [query, axisTag, selectedTags]);
+  }, [query, axis, iface, form, dir]);
 
   const normalizedEntries = useMemo(() => {
     return props.entries.map((e) => {
       const tags = (e.tags ?? []).map(norm).filter(Boolean);
+      const tagSet = new Set(tags);
+
+      // Make search match also include common facet fields.
+      const haystack = norm(
+        [
+          e.title,
+          e.description,
+          e.device_id,
+          e.interface_class,
+          e.status,
+          e.modality,
+          ...(e.tags ?? []),
+        ].join(" \n")
+      );
+
+      const axisHit = FACETS.axis.map((x) => x.value).find((v) => v && tagSet.has(v)) ?? "";
+      const ifaceHit =
+        FACETS.interfaceType.map((x) => x.value).find((v) => v && tagSet.has(v)) ?? norm(e.interface_class ?? "");
+      const formHit = FACETS.formFactor.map((x) => x.value).find((v) => v && tagSet.has(v)) ?? "";
+
+      const dirHits: string[] = [];
+      for (const d of FACETS.directionality) {
+        if (tagSet.has(d.value)) dirHits.push(d.value);
+      }
+
       return {
         ...e,
-        _tagsNorm: new Set(tags),
-        _haystack: norm(
-          [
-            e.title,
-            e.description,
-            e.device_id,
-            e.interface_class,
-            e.status,
-            e.modality,
-            ...(e.tags ?? []),
-          ].join(" \n")
-        ),
+        _tags: tagSet,
+        _haystack: haystack,
+        _axis: axisHit,
+        _iface: ifaceHit,
+        _form: formHit,
+        _dir: new Set(dirHits),
       };
     });
   }, [props.entries]);
 
   const filtered = useMemo(() => {
     const q = norm(query);
-    const axis = norm(axisTag);
-
     return normalizedEntries.filter((e: any) => {
-      if (axis && !e._tagsNorm.has(axis)) return false;
+      if (axis && !e._tags.has(axis)) return false;
+      if (iface && !e._tags.has(iface)) return false;
+      if (form && !e._tags.has(form)) return false;
 
-      // AND semantics for selected tags (narrowing is usually what you want).
-      for (const t of selectedTags) {
-        const tn = norm(t);
-        if (!tn) continue;
-        if (!e._tagsNorm.has(tn)) return false;
+      // Directionality is multi-select AND.
+      for (const d of dir) {
+        const dn = norm(d);
+        if (!dn) continue;
+        if (!e._tags.has(dn)) return false;
       }
 
       if (q && !e._haystack.includes(q)) return false;
       return true;
     });
-  }, [normalizedEntries, query, axisTag, selectedTags]);
+  }, [normalizedEntries, query, axis, iface, form, dir]);
 
-  const tagCounts = useMemo(() => {
-    const m = new Map<string, number>();
-    for (const e of filtered as any[]) {
-      for (const t of e._tagsNorm as Set<string>) {
-        m.set(t, (m.get(t) ?? 0) + 1);
-      }
-    }
-    return m;
-  }, [filtered]);
+  const hasFilters = query.trim() || axis || iface || form || dir.size;
 
-  const sortedTags = useMemo(() => {
-    // Sort tags by count desc, then alpha.
-    const tags = props.allTags.map(norm).filter(Boolean);
-    const uniq = [...new Set(tags)];
-    return uniq.sort((a, b) => {
-      const ca = tagCounts.get(a) ?? 0;
-      const cb = tagCounts.get(b) ?? 0;
-      if (cb !== ca) return cb - ca;
-      return a.localeCompare(b);
-    });
-  }, [props.allTags, tagCounts]);
+  function clearAll() {
+    setQuery("");
+    setAxis("");
+    setIface("");
+    setForm("");
+    setDir(new Set());
+  }
 
-  function toggleTag(t: string) {
-    const tn = norm(t);
-    setSelectedTags((prev) => {
+  function toggleDir(v: string) {
+    const vn = norm(v);
+    setDir((prev) => {
       const next = new Set(prev);
-      if (next.has(tn)) next.delete(tn);
-      else next.add(tn);
+      if (next.has(vn)) next.delete(vn);
+      else next.add(vn);
       return next;
     });
   }
 
-  function clearAll() {
-    setQuery("");
-    setAxisTag("");
-    setSelectedTags(new Set());
-  }
-
-  const hasFilters = query.trim() || axisTag.trim() || selectedTags.size;
-
   return (
     <section class="card">
-      <div class="topRow">
-        <div>
-          <h2 class="h">Directory</h2>
-          <p class="muted">Search + filter the device catalog.</p>
-        </div>
-        <div class="count">{filtered.length} result(s)</div>
-      </div>
-
-      <div class="controls">
+      <div class="top">
         <label class="search">
           <span class="srOnly">Search devices</span>
           <input
             value={query}
             onInput={(e) => setQuery((e.target as HTMLInputElement).value)}
-            placeholder="Search title, description, ID, tags…"
+            placeholder="Search devices, interfaces, or descriptions…"
             spellcheck={false}
           />
         </label>
 
-        <div class="axis">
-          <div class="axisLabel">Axis</div>
-          <div class="pills">
-            {axisPills.map((p) => {
-              const active = norm(axisTag) === norm(p.tag);
-              return (
-                <button
-                  type="button"
-                  class={"pill" + (active ? " active" : "")}
-                  onClick={() => setAxisTag(p.tag)}
-                >
-                  {p.label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div class="tags">
-          <div class="axisLabel">Tags</div>
-          <div class="chips">
-            {sortedTags.map((t) => {
-              const active = selectedTags.has(t);
-              const c = tagCounts.get(t) ?? 0;
-              // Hide tags that aren't present in the filtered set (keeps UI relevant).
-              if (c === 0) return null;
-              return (
-                <button
-                  type="button"
-                  class={"chip" + (active ? " active" : "")}
-                  onClick={() => toggleTag(t)}
-                  title={`Filter by “${t}”`}
-                >
-                  <span class="chipText">{t}</span>
-                  <span class="chipCount">{c}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {hasFilters ? (
-          <div class="actions">
+        <div class="topRight">
+          <div class="count">{filtered.length} result(s)</div>
+          {hasFilters ? (
             <button type="button" class="clear" onClick={clearAll}>
               Clear
             </button>
-          </div>
-        ) : null}
+          ) : null}
+        </div>
       </div>
 
-      <div class="list">
-        {filtered.map((e: any) => (
-          <a class="item" href={`/devices/${e.slug}/`}>
-            <h3 class="itemTitle">
-              {String(e.order).padStart(2, "0")} — {e.title}
-            </h3>
-            <p class="desc">
-              {e.modality ? <span class="k">{e.modality}</span> : null}
-              {e.description ? (e.modality ? ` — ${e.description}` : e.description) : ""}
-            </p>
-            <div class="miniTags">
-              {(e.tags ?? [])
-                .map(norm)
-                .filter(Boolean)
-                .slice(0, 8)
-                .map((t: string) => (
-                  <span class="miniTag">{t}</span>
-                ))}
-            </div>
-          </a>
-        ))}
+      <div class="body">
+        <aside class="sidebar">
+          <FacetRadio
+            title="Axis"
+            name="axis"
+            value={axis}
+            options={FACETS.axis}
+            onChange={(v) => setAxis(norm(v))}
+          />
 
-        {!filtered.length ? <p class="muted" style={{ margin: "10px 0 0" }}>No matching devices.</p> : null}
+          <FacetRadio
+            title="Interface type"
+            name="iface"
+            value={iface}
+            options={FACETS.interfaceType}
+            onChange={(v) => setIface(norm(v))}
+          />
+
+          <FacetMulti
+            title="Directionality"
+            values={dir}
+            options={FACETS.directionality}
+            onToggle={(v) => toggleDir(v)}
+          />
+
+          <FacetRadio
+            title="Form factor"
+            name="form"
+            value={form}
+            options={FACETS.formFactor}
+            onChange={(v) => setForm(norm(v))}
+          />
+        </aside>
+
+        <main class="results">
+          <div class="grid">
+            {filtered.map((e: any) => (
+              <a class="item" href={`/devices/${e.slug}/`}>
+                <h3 class="itemTitle">
+                  {String(e.order).padStart(2, "0")} — {e.title}
+                </h3>
+                <p class="desc">{e.description}</p>
+
+                <div class="badges">
+                  {e._axis ? <span class="badge">{toTitleCase(e._axis)}</span> : null}
+                  {e._iface ? <span class="badge">{toTitleCase(e._iface)}</span> : null}
+                  {e._form ? <span class="badge">{toTitleCase(e._form)}</span> : null}
+                  {[...e._dir].map((d) => (
+                    <span class="badge">{toTitleCase(d)}</span>
+                  ))}
+                </div>
+              </a>
+            ))}
+
+            {!filtered.length ? <p class="muted">No matching devices.</p> : null}
+          </div>
+        </main>
       </div>
 
       <style>{`
         .card{margin-top:14px;padding:22px 22px;border-radius:16px;border:1px solid var(--border);background:var(--panel)}
-        .topRow{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
-        .h{margin:0 0 6px;font-size:1.15em;font-weight:700}
-        .muted{opacity:.72;margin:0;line-height:1.7}
-        .count{opacity:.72;font-size:13px;padding-top:2px}
 
-        .controls{margin-top:14px;display:grid;gap:14px}
+        .top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+        .search{flex:1;min-width:260px}
         .search input{width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:var(--panelStrong);color:inherit;font-size:14px}
         .search input:focus{outline:none;border-color:var(--borderStrong)}
 
-        .axisLabel{opacity:.72;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
-
-        .pills,.chips{display:flex;flex-wrap:wrap;gap:8px}
-        .pill,.chip{cursor:pointer;border-radius:999px;border:1px solid var(--border);background:var(--panelStrong);color:inherit}
-        .pill{padding:8px 12px;font-size:13px}
-        .chip{display:flex;gap:8px;align-items:center;padding:7px 10px;font-size:13px}
-        .pill:hover,.chip:hover{border-color:var(--borderStrong);background:var(--panelHover)}
-        .pill.active,.chip.active{border-color:var(--borderStrong);background:var(--panelHover)}
-        .chipCount{opacity:.7;font-size:12px;border-left:1px solid var(--border);padding-left:8px}
-
-        .actions{display:flex;justify-content:flex-end}
+        .topRight{display:flex;gap:10px;align-items:center}
+        .count{opacity:.72;font-size:13px}
         .clear{cursor:pointer;border-radius:999px;border:1px solid var(--border);background:transparent;color:inherit;padding:8px 12px;font-size:13px;opacity:.9}
         .clear:hover{border-color:var(--borderStrong);background:var(--panelHover)}
 
-        .list{margin-top:14px;display:grid;gap:10px}
+        .body{margin-top:16px;display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:start}
+        @media (max-width: 900px){.body{grid-template-columns:1fr}.sidebar{position:relative}}
+
+        .sidebar{padding:14px 14px;border-radius:14px;border:1px solid var(--border);background:var(--panelStrong)}
+
+        .results{min-width:0}
+        .grid{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:10px}
+        @media (max-width: 900px){.grid{grid-template-columns:1fr}}
+
         .item{display:block;padding:14px 14px;border-radius:14px;border:1px solid var(--border);background:var(--panel);color:inherit;text-decoration:none}
         .item:hover{border-color:var(--borderStrong);transform:translateY(-1px);background:var(--panelHover)}
-        .itemTitle{margin:0;font-size:1.05em;font-weight:700}
+        .itemTitle{margin:0;font-size:1.02em;font-weight:700;line-height:1.25}
         .desc{margin:8px 0 0;opacity:.78;line-height:1.7}
-        .k{opacity:.9;font-weight:700}
 
-        .miniTags{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
-        .miniTag{opacity:.75;font-size:12px;border:1px solid var(--border);border-radius:999px;padding:4px 8px;background:var(--panelStrong)}
+        .badges{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+        .badge{opacity:.78;font-size:12px;border:1px solid var(--border);border-radius:999px;padding:4px 8px;background:var(--panelStrong)}
 
+        .muted{opacity:.72;margin:0;line-height:1.7}
         .srOnly{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
       `}</style>
     </section>
   );
 }
+
+function FacetRadio(props: {
+  title: string;
+  name: string;
+  value: string;
+  options: Array<{ label: string; value: string }>;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <fieldset class="facet">
+      <legend class="facetTitle">{props.title}</legend>
+      <div class="facetList">
+        {props.options.map((opt) => {
+          const id = `${props.name}-${opt.value || "any"}`;
+          const checked = norm(props.value) === norm(opt.value);
+          return (
+            <label class="row" htmlFor={id}>
+              <input
+                id={id}
+                type="radio"
+                name={props.name}
+                checked={checked}
+                onChange={() => props.onChange(opt.value)}
+              />
+              <span class="lbl">{opt.label}</span>
+            </label>
+          );
+        })}
+      </div>
+
+      <style>{facetCss}</style>
+    </fieldset>
+  );
+}
+
+function FacetMulti(props: {
+  title: string;
+  values: Set<string>;
+  options: Array<{ label: string; value: string }>;
+  onToggle: (v: string) => void;
+}) {
+  return (
+    <fieldset class="facet">
+      <legend class="facetTitle">{props.title}</legend>
+      <div class="facetList">
+        {props.options.map((opt) => {
+          const id = `${opt.value}`;
+          const checked = props.values.has(norm(opt.value));
+          return (
+            <label class="row" htmlFor={id}>
+              <input id={id} type="checkbox" checked={checked} onChange={() => props.onToggle(opt.value)} />
+              <span class="lbl">{opt.label}</span>
+            </label>
+          );
+        })}
+      </div>
+      <style>{facetCss}</style>
+    </fieldset>
+  );
+}
+
+const facetCss = `
+  .facet{margin:0 0 14px;padding:0;border:0}
+  .facetTitle{opacity:.72;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 8px}
+  .facetList{display:grid;gap:8px}
+  .row{display:flex;gap:10px;align-items:flex-start;cursor:pointer;user-select:none}
+  .row input{margin-top:2px}
+  .lbl{font-size:13px;line-height:1.35}
+`;

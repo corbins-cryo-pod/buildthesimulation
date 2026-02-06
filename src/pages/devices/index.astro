@@ -22,23 +22,21 @@ const normalized = entries.map((p) => ({
   modality: p.data.modality,
   tags: p.data.tags ?? [],
 }));
-
-const allTags = normalized.flatMap((e) => e.tags ?? []);
 ---
 
 <Layout
   pageTitle="Devices"
-  subtitle="A directory of brain–computer interface devices and related neural interface systems."
-  description="BCI Devices: a directory of architectures and devices, with search and tag filtering."
+  subtitle="A facet-driven directory of neural interface devices."
+  description="BCI Devices: a searchable directory with curated facets (axis, interface type, directionality, form factor)."
 >
   <section class="card">
     <p class="muted">
       This is the long-term catalog: not companies, but the actual <em>devices</em> (arrays, films, cuffs, stents,
-      packaging approaches).
+      packaging approaches). The UI is facet-driven: only a small set of high-signal filters are exposed.
     </p>
   </section>
 
-  <DevicesDirectory client:load entries={normalized} allTags={allTags} />
+  <DevicesDirectory client:load entries={normalized} />
 </Layout>
 
 <style>
