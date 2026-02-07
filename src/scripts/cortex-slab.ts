@@ -67,7 +67,11 @@ if (!canvas || !raster || !traces) {
   );
 
   const slabGeo = new THREE.BoxGeometry(slabSize.x, slabSize.y, slabSize.z);
-  const slabMat = new THREE.MeshPhongMaterial({ color: 0xffffff, transparent: true, opacity: 0.07 });
+  const slabMat = new THREE.MeshPhongMaterial({
+    color: prefersDark ? 0xefe9de : 0xffffff,
+    transparent: true,
+    opacity: prefersDark ? 0.10 : 0.07,
+  });
   const slab = new THREE.Mesh(slabGeo, slabMat);
   slab.position.set(
     umToMm((slabMin[0] + slabMax[0]) / 2),
@@ -78,10 +82,18 @@ if (!canvas || !raster || !traces) {
 
   const slabWire = new THREE.LineSegments(
     new THREE.EdgesGeometry(slabGeo),
-    new THREE.LineBasicMaterial({ color: 0x3b3b45, transparent: true, opacity: 0.45 })
+    new THREE.LineBasicMaterial({
+      color: prefersDark ? 0xbcb6ac : 0x3b3b45,
+      transparent: true,
+      opacity: prefersDark ? 0.65 : 0.45,
+    })
   );
   slabWire.position.copy(slab.position);
   scene.add(slabWire);
+
+  const prefersDark =
+    document.documentElement?.dataset?.theme === "dark" ||
+    (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
 
   // Neuron point cloud
   const neuronGeo = new THREE.BufferGeometry();
@@ -94,7 +106,15 @@ if (!canvas || !raster || !traces) {
     pos[i * 3 + 1] = umToMm(n.posUm[1]);
     pos[i * 3 + 2] = umToMm(n.posUm[2]);
 
-    const c = n.type === "exc" ? new THREE.Color("#2a2a2f") : new THREE.Color("#6b2b2b");
+    // Use high-contrast colors in dark mode.
+    const c = prefersDark
+      ? n.type === "exc"
+        ? new THREE.Color("#e7e1d7")
+        : new THREE.Color("#ffb4b4")
+      : n.type === "exc"
+        ? new THREE.Color("#2a2a2f")
+        : new THREE.Color("#6b2b2b");
+
     col[i * 3 + 0] = c.r;
     col[i * 3 + 1] = c.g;
     col[i * 3 + 2] = c.b;
@@ -103,13 +123,22 @@ if (!canvas || !raster || !traces) {
   neuronGeo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
   neuronGeo.setAttribute("color", new THREE.BufferAttribute(col, 3));
 
-  const neuronMat = new THREE.PointsMaterial({ size: 0.02, vertexColors: true, transparent: true, opacity: 0.9 });
+  const neuronMat = new THREE.PointsMaterial({
+    size: prefersDark ? 0.024 : 0.02,
+    vertexColors: true,
+    transparent: true,
+    opacity: prefersDark ? 0.95 : 0.9,
+  });
   const neurons = new THREE.Points(neuronGeo, neuronMat);
   scene.add(neurons);
 
   // Utah electrodes (render just tips as spheres for now)
   const eGeo = new THREE.SphereGeometry(0.02, 10, 10);
-  const eMat = new THREE.MeshStandardMaterial({ color: 0x111119, roughness: 0.3, metalness: 0.1 });
+  const eMat = new THREE.MeshStandardMaterial({
+    color: prefersDark ? 0x0e0e12 : 0x111119,
+    roughness: 0.3,
+    metalness: 0.1,
+  });
   const eGroup = new THREE.Group();
   scene.add(eGroup);
 
