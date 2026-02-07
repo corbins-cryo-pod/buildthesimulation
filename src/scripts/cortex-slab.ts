@@ -21,9 +21,17 @@ if (!canvas || !raster || !traces) {
     nShow: $("nShow") as HTMLInputElement | null,
     depth: $("depth") as HTMLInputElement | null,
     pitch: $("pitch") as HTMLInputElement | null,
+    pitchVal: $("pitchVal") as HTMLElement | null,
+    depthVal: $("depthVal") as HTMLElement | null,
   };
 
   const traceElectrodes = ["e4-4", "e4-5", "e5-4", "e5-5"]; // center 2x2
+
+  function syncMeta() {
+    if (ui.pitchVal && ui.pitch) ui.pitchVal.textContent = `${Number(ui.pitch.value)} µm`;
+    if (ui.depthVal && ui.depth) ui.depthVal.textContent = `${Number(ui.depth.value)} µm`;
+  }
+  syncMeta();
 
   // --- THREE setup ---
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
@@ -103,12 +111,19 @@ if (!canvas || !raster || !traces) {
   const eGeo = new THREE.SphereGeometry(0.02, 10, 10);
   const eMat = new THREE.MeshStandardMaterial({ color: 0x111119, roughness: 0.3, metalness: 0.1 });
   const eGroup = new THREE.Group();
-  for (const e of cfg.implant.electrodes) {
-    const m = new THREE.Mesh(eGeo, eMat);
-    m.position.set(umToMm(e.posUm[0]), umToMm(e.posUm[1]), umToMm(e.posUm[2]));
-    eGroup.add(m);
-  }
   scene.add(eGroup);
+
+  function rebuildElectrodeMeshes() {
+    // clear
+    while (eGroup.children.length) eGroup.remove(eGroup.children[0]);
+
+    for (const e of cfg.implant.electrodes) {
+      const m = new THREE.Mesh(eGeo, eMat);
+      m.position.set(umToMm(e.posUm[0]), umToMm(e.posUm[1]), umToMm(e.posUm[2]));
+      eGroup.add(m);
+    }
+  }
+  rebuildElectrodeMeshes();
 
   // Camera controls (minimal orbit)
   let dragging = false;
@@ -259,8 +274,39 @@ if (!canvas || !raster || !traces) {
 
   // Sync Utah pitch + depth from sliders (rebuild electrode group)
   function rebuildImplant() {
-    // noop for v0: we keep presets for now (UI fields are informational)
+    const pitchUm = Math.max(120, Number(ui.pitch?.value ?? 400));
+    const insertionDepthUm = Math.max(0, Number(ui.depth?.value ?? 900));
+
+    // Update implant model in-place
+    cfg.implant.electrodes = [];
+    const rows = 10;
+    const cols = 10;
+    const w = (cols - 1) * pitchUm;
+    const h = (rows - 1) * pitchUm;
+
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const x = (c * pitchUm - w / 2);
+        const y = (r * pitchUm - h / 2);
+        const z = insertionDepthUm;
+        cfg.implant.electrodes.push({ id: `e${r}-${c}`, posUm: [x, y, z], radiusUm: 18, recEnabled: true });
+      }
+    }
+
+    cfg.implant.shankLengthUm = Math.max(cfg.implant.shankLengthUm ?? insertionDepthUm, insertionDepthUm);
+
+    rebuildElectrodeMeshes();
   }
+
+  ui.pitch?.addEventListener("input", () => {
+    syncMeta();
+    rebuildImplant();
+  });
+
+  ui.depth?.addEventListener("input", () => {
+    syncMeta();
+    rebuildImplant();
+  });
 
   function loop() {
     const paused = ui.paused?.checked ?? false;

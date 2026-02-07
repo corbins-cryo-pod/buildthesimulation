@@ -38,6 +38,32 @@ import scriptUrl from "../../../scripts/cortex-slab.ts?url";
       </div>
 
       <div class="panelSection">
+        <div class="panelTitle">Implant</div>
+
+        <label class="lab">
+          Utah pitch (µm)
+          <div class="rangeRow">
+            <input id="pitch" type="range" min="200" max="600" value="400" step="10" />
+            <div class="rangeMeta">
+              <span id="pitchVal" class="muted"></span>
+              <span class="muted">200 to 600</span>
+            </div>
+          </div>
+        </label>
+
+        <label class="lab">
+          Insertion depth (µm)
+          <div class="rangeRow">
+            <input id="depth" type="range" min="200" max="1400" value="900" step="10" />
+            <div class="rangeMeta">
+              <span id="depthVal" class="muted"></span>
+              <span class="muted">200 to 1400</span>
+            </div>
+          </div>
+        </label>
+      </div>
+
+      <div class="panelSection">
         <div class="panelTitle">Display</div>
 
         <label class="lab">
