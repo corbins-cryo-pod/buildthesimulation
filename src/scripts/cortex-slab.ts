@@ -1,0 +1,292 @@
+import * as THREE from "three";
+import { presetCortexSlabUtah } from "../lib/sim/cortex/presets";
+import { initSim, stepSim } from "../lib/sim/cortex/sim";
+
+const $ = (id: string) => document.getElementById(id);
+
+const canvas = $("cortex3d") as HTMLCanvasElement | null;
+const raster = $("raster") as HTMLCanvasElement | null;
+const traces = $("traces") as HTMLCanvasElement | null;
+
+if (!canvas || !raster || !traces) {
+  // page not present
+} else {
+  // --- Config ---
+  const cfg = presetCortexSlabUtah(1337);
+  let state = initSim(cfg);
+
+  const ui = {
+    paused: $("paused") as HTMLInputElement | null,
+    speed: $("speed") as HTMLInputElement | null,
+    nShow: $("nShow") as HTMLInputElement | null,
+    depth: $("depth") as HTMLInputElement | null,
+    pitch: $("pitch") as HTMLInputElement | null,
+  };
+
+  const traceElectrodes = ["e4-4", "e4-5", "e5-4", "e5-5"]; // center 2x2
+
+  // --- THREE setup ---
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+
+  const scene = new THREE.Scene();
+  scene.background = null;
+
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+  camera.position.set(0.9, -2.2, 1.5);
+  camera.lookAt(0, 0, 0.7);
+
+  const light = new THREE.DirectionalLight(0xffffff, 1.15);
+  light.position.set(2, -2, 4);
+  scene.add(light);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.25));
+
+  const grid = new THREE.GridHelper(4, 16, 0x2b2b33, 0x2b2b33);
+  // put grid at z=0 (pia plane-ish)
+  (grid.material as THREE.Material).transparent = true;
+  (grid.material as THREE.Material).opacity = 0.25;
+  scene.add(grid);
+
+  // Slab box (um -> scene units where 1 unit = 1 mm)
+  const umToMm = (v: number) => v / 1000;
+
+  const slabMin = cfg.tissue.volume.boundsUm.min;
+  const slabMax = cfg.tissue.volume.boundsUm.max;
+  const slabSize = new THREE.Vector3(
+    umToMm(slabMax[0] - slabMin[0]),
+    umToMm(slabMax[1] - slabMin[1]),
+    umToMm(slabMax[2] - slabMin[2])
+  );
+
+  const slabGeo = new THREE.BoxGeometry(slabSize.x, slabSize.y, slabSize.z);
+  const slabMat = new THREE.MeshPhongMaterial({ color: 0xffffff, transparent: true, opacity: 0.07 });
+  const slab = new THREE.Mesh(slabGeo, slabMat);
+  slab.position.set(
+    umToMm((slabMin[0] + slabMax[0]) / 2),
+    umToMm((slabMin[1] + slabMax[1]) / 2),
+    umToMm((slabMin[2] + slabMax[2]) / 2)
+  );
+  scene.add(slab);
+
+  const slabWire = new THREE.LineSegments(
+    new THREE.EdgesGeometry(slabGeo),
+    new THREE.LineBasicMaterial({ color: 0x3b3b45, transparent: true, opacity: 0.45 })
+  );
+  slabWire.position.copy(slab.position);
+  scene.add(slabWire);
+
+  // Neuron point cloud
+  const neuronGeo = new THREE.BufferGeometry();
+  const pos = new Float32Array(cfg.tissue.neurons.length * 3);
+  const col = new Float32Array(cfg.tissue.neurons.length * 3);
+
+  for (let i = 0; i < cfg.tissue.neurons.length; i++) {
+    const n = cfg.tissue.neurons[i];
+    pos[i * 3 + 0] = umToMm(n.posUm[0]);
+    pos[i * 3 + 1] = umToMm(n.posUm[1]);
+    pos[i * 3 + 2] = umToMm(n.posUm[2]);
+
+    const c = n.type === "exc" ? new THREE.Color("#2a2a2f") : new THREE.Color("#6b2b2b");
+    col[i * 3 + 0] = c.r;
+    col[i * 3 + 1] = c.g;
+    col[i * 3 + 2] = c.b;
+  }
+
+  neuronGeo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+  neuronGeo.setAttribute("color", new THREE.BufferAttribute(col, 3));
+
+  const neuronMat = new THREE.PointsMaterial({ size: 0.02, vertexColors: true, transparent: true, opacity: 0.9 });
+  const neurons = new THREE.Points(neuronGeo, neuronMat);
+  scene.add(neurons);
+
+  // Utah electrodes (render just tips as spheres for now)
+  const eGeo = new THREE.SphereGeometry(0.02, 10, 10);
+  const eMat = new THREE.MeshStandardMaterial({ color: 0x111119, roughness: 0.3, metalness: 0.1 });
+  const eGroup = new THREE.Group();
+  for (const e of cfg.implant.electrodes) {
+    const m = new THREE.Mesh(eGeo, eMat);
+    m.position.set(umToMm(e.posUm[0]), umToMm(e.posUm[1]), umToMm(e.posUm[2]));
+    eGroup.add(m);
+  }
+  scene.add(eGroup);
+
+  // Camera controls (minimal orbit)
+  let dragging = false;
+  let lastX = 0;
+  let lastY = 0;
+  let yaw = 0;
+  let pitch = 0;
+  let dist = 3.0;
+  let target = new THREE.Vector3(0, 0, 0.7);
+
+  function updateCamera() {
+    const cp = Math.cos(pitch);
+    const sp = Math.sin(pitch);
+    const cy = Math.cos(yaw);
+    const sy = Math.sin(yaw);
+    const x = target.x + dist * cp * cy;
+    const y = target.y + dist * cp * sy;
+    const z = target.z + dist * sp;
+    camera.position.set(x, y, z);
+    camera.lookAt(target);
+  }
+  updateCamera();
+
+  canvas.addEventListener("mousedown", (ev) => {
+    dragging = true;
+    lastX = ev.clientX;
+    lastY = ev.clientY;
+  });
+  window.addEventListener("mouseup", () => (dragging = false));
+  window.addEventListener("mousemove", (ev) => {
+    if (!dragging) return;
+    const dx = ev.clientX - lastX;
+    const dy = ev.clientY - lastY;
+    lastX = ev.clientX;
+    lastY = ev.clientY;
+
+    const rot = 0.005;
+    yaw += dx * rot;
+    pitch += -dy * rot;
+    pitch = Math.max(-1.2, Math.min(1.2, pitch));
+    updateCamera();
+  });
+  canvas.addEventListener(
+    "wheel",
+    (ev) => {
+      ev.preventDefault();
+      const s = Math.sign(ev.deltaY);
+      dist *= s > 0 ? 1.08 : 0.92;
+      dist = Math.max(1.2, Math.min(10, dist));
+      updateCamera();
+    },
+    { passive: false }
+  );
+
+  function resize() {
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    if (!w || !h) return;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+
+    raster.width = Math.floor(w);
+    traces.width = Math.floor(w);
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  // 2D plots
+  const rctx = raster.getContext("2d")!;
+  const tctx = traces.getContext("2d")!;
+
+  function drawRaster(nowMs: number) {
+    const W = raster.width;
+    const H = raster.height;
+    rctx.clearRect(0, 0, W, H);
+    rctx.fillStyle = "rgba(255,255,255,0.06)";
+    rctx.fillRect(0, 0, W, H);
+
+    const winS = 1.8;
+    const t0 = nowMs - winS * 1000;
+
+    const nShow = Math.max(50, Math.min(cfg.tissue.neurons.length, Number(ui.nShow?.value ?? 250)));
+    const yStep = H / nShow;
+
+    rctx.fillStyle = "rgba(10,10,12,0.75)";
+    for (const sp of state.spikes) {
+      if (sp.tMs < t0) continue;
+      const idx = Number(sp.neuronId.slice(1));
+      if (idx >= nShow) continue;
+      const x = ((sp.tMs - t0) / (winS * 1000)) * W;
+      const y = idx * yStep;
+      rctx.fillRect(x, y, 2, Math.max(1, yStep * 0.55));
+    }
+
+    rctx.fillStyle = "rgba(10,10,12,0.55)";
+    rctx.font = "12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+    rctx.fillText(`Spike raster (last ${winS.toFixed(1)} s)`, 10, 18);
+  }
+
+  function drawTraces() {
+    const W = traces.width;
+    const H = traces.height;
+    tctx.clearRect(0, 0, W, H);
+    tctx.fillStyle = "rgba(255,255,255,0.06)";
+    tctx.fillRect(0, 0, W, H);
+
+    const rows = traceElectrodes.length;
+    const rowH = H / rows;
+
+    for (let i = 0; i < rows; i++) {
+      const eid = traceElectrodes[i];
+      const tr = state.tracesUv[eid];
+      if (!tr || tr.length < 2) continue;
+
+      const y0 = i * rowH;
+      // baseline
+      tctx.strokeStyle = "rgba(10,10,12,0.12)";
+      tctx.beginPath();
+      tctx.moveTo(0, y0 + rowH / 2);
+      tctx.lineTo(W, y0 + rowH / 2);
+      tctx.stroke();
+
+      // trace
+      tctx.strokeStyle = "rgba(10,10,12,0.75)";
+      tctx.lineWidth = 1;
+      tctx.beginPath();
+
+      const maxUv = 30; // display scaling
+      for (let x = 0; x < W; x++) {
+        const j = Math.floor((x / (W - 1)) * (tr.length - 1));
+        const v = Math.max(-maxUv, Math.min(maxUv, tr[j]));
+        const yy = y0 + rowH / 2 - (v / maxUv) * (rowH * 0.35);
+        if (x === 0) tctx.moveTo(x, yy);
+        else tctx.lineTo(x, yy);
+      }
+      tctx.stroke();
+
+      tctx.fillStyle = "rgba(10,10,12,0.60)";
+      tctx.font = "12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+      tctx.fillText(eid, 10, y0 + 18);
+    }
+
+    tctx.fillStyle = "rgba(10,10,12,0.55)";
+    tctx.font = "12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+    tctx.fillText("Electrode traces (toy forward model)", 10, 18);
+  }
+
+  // Sync Utah pitch + depth from sliders (rebuild electrode group)
+  function rebuildImplant() {
+    // noop for v0: we keep presets for now (UI fields are informational)
+  }
+
+  function loop() {
+    const paused = ui.paused?.checked ?? false;
+    const speed = Number(ui.speed?.value ?? 1);
+
+    if (!paused) {
+      // Run N steps per frame based on speed.
+      const steps = Math.max(1, Math.min(8, Math.round(speed)));
+      for (let i = 0; i < steps; i++) {
+        state = stepSim({
+          cfg,
+          state,
+          traceWindowS: 1.8,
+          spikeWindowS: 1.8,
+          traceElectrodes,
+        });
+      }
+    }
+
+    renderer.render(scene, camera);
+    drawRaster(state.tMs);
+    drawTraces();
+
+    requestAnimationFrame(loop);
+  }
+
+  rebuildImplant();
+  requestAnimationFrame(loop);
+}
