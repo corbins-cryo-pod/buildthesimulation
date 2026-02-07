@@ -162,6 +162,17 @@ import Layout from "../layouts/Layout.astro";
         <div class="kv"><span>X</span><span id="selX">—</span></div>
         <div class="kv"><span>Y</span><span id="selY">—</span></div>
 
+        <label class="lab" style="margin-top:10px;">
+          <span style="display:flex;align-items:center;gap:10px;">
+            <input id="selRec" type="checkbox" />
+            Recording enabled
+          </span>
+        </label>
+
+        <div class="row">
+          <button class="btn ghost" id="deleteSel">Delete selected</button>
+        </div>
+
         <div class="row">
           <button class="btn" id="export">Export JSON</button>
           <button class="btn" id="import">Import JSON</button>
@@ -255,6 +266,8 @@ import Layout from "../layouts/Layout.astro";
     selId: $("selId"),
     selX: $("selX"),
     selY: $("selY"),
+    selRec: $("selRec"),
+    deleteSel: $("deleteSel"),
 
     dlg: $("dlg"),
     dlgTitle: $("dlgTitle"),
@@ -450,6 +463,16 @@ import Layout from "../layouts/Layout.astro";
     ui.selId.textContent = e ? e.id : "—";
     ui.selX.textContent = e ? Math.round(e.x ?? model.nerve.cx) : "—";
     ui.selY.textContent = e ? Math.round(e.y ?? model.nerve.cy) : "—";
+
+    if (ui.selRec) {
+      const enabled = e ? e.recEnabled !== false : false;
+      ui.selRec.checked = enabled;
+      ui.selRec.disabled = !e;
+    }
+
+    if (ui.deleteSel) {
+      ui.deleteSel.disabled = !e;
+    }
   }
 
   function clampToNerve(e) {
@@ -486,7 +509,7 @@ import Layout from "../layouts/Layout.astro";
 
   function renderRecPanels() {
     // Show up to 10 intrafascicular channels, stacked.
-    const intra = getIntraElectrodes().slice(0, 10);
+    const intra = getRecElectrodes().slice(0, 10);
 
     // clear placeholder if present
     if (recListEl?.dataset?.placeholder === "1" && intra.length) {
@@ -599,12 +622,19 @@ import Layout from "../layouts/Layout.astro";
     return model.electrodes.filter((e) => e.type === "intra");
   }
 
+  function getRecElectrodes() {
+    return getIntraElectrodes().filter((e) => e.recEnabled !== false);
+  }
+
   function ensureRecList(id) {
     if (!model.recEvents.has(id)) model.recEvents.set(id, []);
     return model.recEvents.get(id);
   }
 
   function pushRecEvent(eid, tS, amp01, color = null) {
+    const e = model.electrodes.find((q) => q.id === eid);
+    if (!e || e.recEnabled === false) return;
+
     const list = ensureRecList(eid);
     list.push({
       t: tS,
@@ -1097,6 +1127,7 @@ import Layout from "../layouts/Layout.astro";
       type: "intra",
       x: model.nerve.cx + Math.cos(ang) * rr,
       y: model.nerve.cy + Math.sin(ang) * rr,
+      recEnabled: true,
     };
 
     model.electrodes.push(e);
@@ -1135,6 +1166,43 @@ import Layout from "../layouts/Layout.astro";
     toast("Stopped");
   });
 
+  ui.selRec?.addEventListener("change", () => {
+    const id = model.selectedId;
+    if (!id) return;
+    const e = model.electrodes.find((q) => q.id === id);
+    if (!e) return;
+
+    e.recEnabled = !!ui.selRec.checked;
+
+    // If disabling, drop its panel and events.
+    if (e.recEnabled === false) {
+      model.recEvents.delete(e.id);
+      recCanvases.delete(e.id);
+    }
+
+    renderRecPanels();
+    drawAll();
+  });
+
+  ui.deleteSel?.addEventListener("click", () => {
+    const id = model.selectedId;
+    if (!id) return;
+
+    const idx = model.electrodes.findIndex((q) => q.id === id);
+    if (idx < 0) return;
+
+    const e = model.electrodes[idx];
+    model.electrodes.splice(idx, 1);
+
+    model.recEvents.delete(e.id);
+    recCanvases.delete(e.id);
+
+    setSelected(null);
+    renderRecPanels();
+    drawAll();
+    toast("Deleted electrode");
+  });
+
   // --- Export / Import ---
   function exportModel() {
     const payload = {
@@ -1155,7 +1223,9 @@ import Layout from "../layouts/Layout.astro";
 
     model.nerve = obj.nerve;
     model.fascicles = obj.fascicles;
-    model.electrodes = (obj.electrodes ?? []).filter((e) => e.type === "intra");
+    model.electrodes = (obj.electrodes ?? [])
+      .filter((e) => e.type === "intra")
+      .map((e) => ({ ...e, recEnabled: e.recEnabled !== false }));
     model.stim = obj.stim ?? model.stim;
     model.wave = obj.wave ?? model.wave;
     model.view = obj.view ?? model.view;
