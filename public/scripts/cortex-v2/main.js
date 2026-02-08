@@ -84,6 +84,13 @@ const updateTraceGainLabel = () => {
 ui.traceGain?.addEventListener("input", updateTraceGainLabel);
 
 const DISPLAY_WINDOW_MS = 2000;
+let playheadNorm = null;
+
+function setPlayheadFromPointer(targetCanvas, ev) {
+  const rect = targetCanvas.getBoundingClientRect();
+  const x = ev.clientX - rect.left;
+  playheadNorm = Math.max(0, Math.min(1, x / rect.width));
+}
 
 function drawRaster() {
   const w = raster.width, h = raster.height;
@@ -120,6 +127,24 @@ function drawRaster() {
     const x = ((s.tMs - t0) / DISPLAY_WINDOW_MS) * w;
     const y = ((row + 0.5) / nRows) * h;
     rasterCtx.fillRect(x, y, 2, 2);
+  }
+
+  rasterCtx.fillStyle = "rgba(255,255,255,0.78)";
+  rasterCtx.font = "11px Times New Roman";
+  rasterCtx.fillText(`Selected electrode: E${selected + 1} · units: ${ids.length}`, 10, 14);
+
+  if (playheadNorm != null) {
+    const px = playheadNorm * w;
+    rasterCtx.strokeStyle = "rgba(255,226,130,0.95)";
+    rasterCtx.lineWidth = 1;
+    rasterCtx.beginPath();
+    rasterCtx.moveTo(px, 0);
+    rasterCtx.lineTo(px, h);
+    rasterCtx.stroke();
+
+    const dtMs = (playheadNorm - 1) * DISPLAY_WINDOW_MS;
+    rasterCtx.fillStyle = "rgba(255,226,130,0.95)";
+    rasterCtx.fillText(`${dtMs.toFixed(0)} ms`, Math.min(w - 56, px + 6), h - 8);
   }
 }
 
@@ -216,6 +241,16 @@ function drawTracePanels() {
       traceCtx.stroke();
     }
   }
+
+  if (playheadNorm != null) {
+    const px = playheadNorm * w;
+    traceCtx.strokeStyle = "rgba(255,226,130,0.95)";
+    traceCtx.lineWidth = 1;
+    traceCtx.beginPath();
+    traceCtx.moveTo(px, 0);
+    traceCtx.lineTo(px, h);
+    traceCtx.stroke();
+  }
 }
 
 function resize() { scene.resize(); }
@@ -224,6 +259,11 @@ resize();
 refreshUI();
 updateSpeedLabel();
 updateTraceGainLabel();
+
+raster.addEventListener("mousemove", (ev) => setPlayheadFromPointer(raster, ev));
+traces.addEventListener("mousemove", (ev) => setPlayheadFromPointer(traces, ev));
+raster.addEventListener("mouseleave", () => { playheadNorm = null; });
+traces.addEventListener("mouseleave", () => { playheadNorm = null; });
 
 canvas.addEventListener("click", (ev) => {
   const hit = scene.pickOnSlab(ev.clientX, ev.clientY);
