@@ -8,7 +8,7 @@ const traces = $("traces");
 if (!canvas || !raster || !traces) throw new Error("Cortex v2: missing required canvas elements");
 
 const ui = {
-  paused: $("paused"), speed: $("speed"), speedLabel: $("speedLabel"), nShow: $("nShow"), elecMeta: $("elecMeta"),
+  paused: $("paused"), speed: $("speed"), speedLabel: $("speedLabel"), elecMeta: $("elecMeta"),
   elecAdd: $("elecAdd"), elecRemove: $("elecRemove"), elecPrev: $("elecPrev"), elecNext: $("elecNext"),
   elecX: $("elecX"), elecY: $("elecY"), elecZ: $("elecZ"), elecXRange: $("elecXRange"), elecYRange: $("elecYRange"), elecZRange: $("elecZRange"),
   viewReset: $("viewReset"), viewTop: $("viewTop"), viewSide: $("viewSide"),
@@ -89,7 +89,8 @@ function drawRaster() {
   const w = raster.width, h = raster.height;
   rasterCtx.clearRect(0, 0, w, h);
   rasterCtx.fillStyle = "#0f0f14"; rasterCtx.fillRect(0, 0, w, h);
-  const nShow = Number(ui.nShow.value), t0 = engine.state.tMs - DISPLAY_WINDOW_MS;
+  const t0 = engine.state.tMs - DISPLAY_WINDOW_MS;
+  const visible = engine.state.detectedSpikes.filter((s) => s.tMs >= t0);
 
   rasterCtx.strokeStyle = "rgba(255,255,255,0.08)";
   rasterCtx.beginPath();
@@ -107,10 +108,17 @@ function drawRaster() {
   rasterCtx.stroke();
   rasterCtx.setLineDash([]);
 
+  // Show all neurons currently detected by selected electrode within the window.
+  const ids = [...new Set(visible.map((s) => s.idx))].sort((a, b) => a - b);
+  const rowIndex = new Map(ids.map((id, i) => [id, i]));
+  const nRows = Math.max(1, ids.length);
+
   rasterCtx.fillStyle = "#a9bcff";
-  for (const s of engine.state.detectedSpikes) {
-    if (s.idx >= nShow || s.tMs < t0) continue;
-    const x = ((s.tMs - t0) / DISPLAY_WINDOW_MS) * w, y = ((s.idx + 0.5) / nShow) * h;
+  for (const s of visible) {
+    const row = rowIndex.get(s.idx);
+    if (row == null) continue;
+    const x = ((s.tMs - t0) / DISPLAY_WINDOW_MS) * w;
+    const y = ((row + 0.5) / nRows) * h;
     rasterCtx.fillRect(x, y, 2, 2);
   }
 }

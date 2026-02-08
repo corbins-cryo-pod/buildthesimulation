@@ -80,15 +80,6 @@ import Layout from "../../../layouts/Layout.astro";
 
       <div class="panelSection">
         <div class="panelTitle">Display</div>
-        <label class="lab">
-          Raster neurons shown
-          <div class="rangeRow">
-            <input id="nShow" type="range" min="50" max="600" value="250" />
-            <div class="rangeMeta">
-              <span class="muted">50 to 600</span>
-            </div>
-          </div>
-        </label>
 
         <div class="panelTitle" style="margin-top:12px;">Trace controls</div>
         <label class="lab">
@@ -106,10 +97,10 @@ import Layout from "../../../layouts/Layout.astro";
         <label class="lab">
           Gain scale
           <div class="rangeRow">
-            <input id="traceGain" type="range" min="0.5" max="3" step="0.05" value="1" />
+            <input id="traceGain" type="range" min="0.5" max="8" step="0.1" value="2" />
             <div class="rangeMeta">
-              <span class="muted">0.5× to 3×</span>
-              <span id="traceGainLabel" class="muted">1.00×</span>
+              <span class="muted">0.5× to 8×</span>
+              <span id="traceGainLabel" class="muted">2.00×</span>
             </div>
           </div>
         </label>
