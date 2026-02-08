@@ -97,7 +97,7 @@ function drawRaster() {
   rasterCtx.clearRect(0, 0, w, h);
   rasterCtx.fillStyle = "#0f0f14"; rasterCtx.fillRect(0, 0, w, h);
   const t0 = engine.state.tMs - DISPLAY_WINDOW_MS;
-  const visible = engine.state.detectedSpikes.filter((s) => s.tMs >= t0);
+  const visible = engine.state.detectedSpikes.filter((s) => (s.tMs + (s.alignMs ?? 0)) >= t0);
 
   rasterCtx.strokeStyle = "rgba(255,255,255,0.08)";
   rasterCtx.beginPath();
@@ -115,8 +115,17 @@ function drawRaster() {
   rasterCtx.stroke();
   rasterCtx.setLineDash([]);
 
-  // Show all neurons currently detected by selected electrode within the window.
-  const ids = [...new Set(visible.map((s) => s.idx))].sort((a, b) => a - b);
+  // Stable rows: all neurons in-range for selected electrode (not just currently firing).
+  const e = current();
+  const allNeurons = engine.state.neurons;
+  const ampScale = engine.state.neuronAmpScale;
+  const ids = [];
+  for (let i = 0; i < allNeurons.length; i++) {
+    const n = allNeurons[i];
+    const r = Math.hypot(n.pos[0] - e.x, n.pos[1] - e.y, n.pos[2] - e.z);
+    const gain = (config.baseUv * ampScale[i]) / (r + config.r0Um);
+    if (gain > 0.22) ids.push(i);
+  }
   const rowIndex = new Map(ids.map((id, i) => [id, i]));
   const nRows = Math.max(1, ids.length);
 
@@ -124,7 +133,7 @@ function drawRaster() {
   for (const s of visible) {
     const row = rowIndex.get(s.idx);
     if (row == null) continue;
-    const x = ((s.tMs - t0) / DISPLAY_WINDOW_MS) * w;
+    const x = (((s.tMs + (s.alignMs ?? 0)) - t0) / DISPLAY_WINDOW_MS) * w;
     const y = ((row + 0.5) / nRows) * h;
     rasterCtx.fillRect(x, y, 2, 2);
   }

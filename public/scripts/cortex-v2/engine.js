@@ -80,12 +80,13 @@ export function createEngine(cfg) {
         const r = Math.hypot(n.pos[0] - e.x, n.pos[1] - e.y, n.pos[2] - e.z);
         const gain = (cfg.baseUv * state.neuronAmpScale[s.idx]) / (r + cfg.r0Um);
 
+        const delaySamples = Math.floor((r / 600) * (cfg.sampleRateHz / 1000));
+        const alignMs = (delaySamples / cfg.sampleRateHz) * 1000 + 0.55;
+
         if (ei === selectedIndex) {
           const detectProb = Math.max(0, Math.min(1, (gain - 0.22) / 0.95));
-          if (rand() < detectProb) detected.push(s);
+          if (rand() < detectProb) detected.push({ ...s, alignMs });
         }
-
-        const delaySamples = Math.floor((r / 600) * (cfg.sampleRateHz / 1000));
         const block = blocks[ei];
         for (let k = 0; k < kernel.length; k++) {
           const j = i0 + delaySamples + k;
