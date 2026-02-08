@@ -1,6 +1,6 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
-import scriptUrl from "../../../scripts/cortex-slab.mjs?url";
+import scriptUrl from "../../../scripts/cortex-slab.ts";
 ---
 
 <Layout
@@ -119,7 +119,7 @@ import scriptUrl from "../../../scripts/cortex-slab.mjs?url";
     </main>
   </section>
 
-  <script type="module" src={scriptUrl}></script>
+  <script type="module" src="/scripts/cortex-slab.js"></script>
 </Layout>
 
 <style>
@@ -259,3 +259,4 @@ import scriptUrl from "../../../scripts/cortex-slab.mjs?url";
     }
   }
 </style>
+
