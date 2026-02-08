@@ -49,16 +49,16 @@ export function createScene(canvas, bounds, neurons) {
     pts[i * 3] = umToMm(neurons[i].pos[0]);
     pts[i * 3 + 1] = umToMm(neurons[i].pos[1]);
     pts[i * 3 + 2] = umToMm(neurons[i].pos[2]);
-    colors[i * 3] = 0.47;
-    colors[i * 3 + 1] = 0.50;
-    colors[i * 3 + 2] = 0.56;
+    colors[i * 3] = 0.28;
+    colors[i * 3 + 1] = 0.30;
+    colors[i * 3 + 2] = 0.34;
   }
   const nGeo = new THREE.BufferGeometry();
   nGeo.setAttribute("position", new THREE.BufferAttribute(pts, 3));
   nGeo.setAttribute("color", new THREE.BufferAttribute(colors, 3));
   const nCloud = new THREE.Points(
     nGeo,
-    new THREE.PointsMaterial({ vertexColors: true, size: 0.013, transparent: true, opacity: 0.88, depthTest: false })
+    new THREE.PointsMaterial({ vertexColors: true, size: 0.018, transparent: true, opacity: 0.96, depthTest: false })
   );
   scene.add(nCloud);
 
@@ -108,9 +108,9 @@ export function createScene(canvas, bounds, neurons) {
     const c = nGeo.getAttribute("color");
     for (let i = 0; i < activity.length; i++) {
       const a = Math.max(0, Math.min(1, activity[i]));
-      const r = 0.47 + a * (0.53 - 0.47);
-      const g = 0.50 + a * (0.78 - 0.50);
-      const b = 0.56 + a * (1.00 - 0.56);
+      const r = 0.28 + a * (0.80 - 0.28);
+      const g = 0.30 + a * (0.95 - 0.30);
+      const b = 0.34 + a * (1.00 - 0.34);
       c.setXYZ(i, r, g, b);
     }
     c.needsUpdate = true;
@@ -123,3 +123,4 @@ export function createScene(canvas, bounds, neurons) {
 
   return { drawElectrodes, setView, resize, render, pickOnSlab, updateNeuronActivity };
 }
+
