@@ -104,6 +104,16 @@ window.addEventListener("resize", resize);
 resize();
 refreshUI();
 
+canvas.addEventListener("click", (ev) => {
+  const hit = scene.pickOnSlab(ev.clientX, ev.clientY);
+  if (!hit) return;
+  const e = current();
+  e.x = clamp(hit.xUm, -1000, 1000);
+  e.y = clamp(hit.yUm, -1000, 1000);
+  if (ev.shiftKey) e.z = clamp(hit.zUm, 50, 1450);
+  refreshUI();
+});
+
 let last = performance.now();
 function loop(now) {
   const elapsed = Math.min(50, now - last);

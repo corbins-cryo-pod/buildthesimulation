@@ -37,6 +37,9 @@ export function createScene(canvas, bounds, neurons) {
   slab.position.set(0, 0, umToMm((bounds.max[2] + bounds.min[2]) * 0.5));
   scene.add(slab);
 
+  const raycaster = new THREE.Raycaster();
+  const pointer = new THREE.Vector2();
+
   const pts = new Float32Array(neurons.length * 3);
   for (let i = 0; i < neurons.length; i++) {
     pts[i * 3] = umToMm(neurons[i].pos[0]);
@@ -79,10 +82,22 @@ export function createScene(canvas, bounds, neurons) {
     camera.updateProjectionMatrix();
   }
 
+  function pickOnSlab(clientX, clientY) {
+    const rect = canvas.getBoundingClientRect();
+    if (!rect.width || !rect.height) return null;
+    pointer.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+    pointer.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+    raycaster.setFromCamera(pointer, camera);
+    const hits = raycaster.intersectObject(slab, false);
+    if (!hits.length) return null;
+    const p = hits[0].point;
+    return { xUm: p.x * 1000, yUm: p.y * 1000, zUm: p.z * 1000 };
+  }
+
   function render() {
     controls.update();
     renderer.render(scene, camera);
   }
 
-  return { drawElectrodes, setView, resize, render };
+  return { drawElectrodes, setView, resize, render, pickOnSlab };
 }
