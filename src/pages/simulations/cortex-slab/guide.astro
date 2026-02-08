@@ -1,0 +1,90 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout
+  pageTitle="Simulation guide"
+  subtitle="Cortex slab (single-electrode mode)"
+  description="How to use the cortex slab simulation: controls, interpretation, and suggested experiments."
+>
+  <section class="card">
+    <p class="muted">
+      The simulator lives at <a href="/simulations/cortex-slab/">/simulations/cortex-slab/</a>. This page is a short
+      guide for first-time use.
+    </p>
+
+    <hr class="rule" />
+
+    <h2>What this simulation is (and isn’t)</h2>
+    <p>
+      This is a geometry-first, intuition-building sandbox for cortical recording concepts. It uses a toy spiking model
+      and a toy distance-based electrode signal model. It is useful for understanding interactions between position,
+      depth, and signal shape, but it is not a validated biophysical model.
+    </p>
+
+    <h2>Quick start (2 minutes)</h2>
+    <ol>
+      <li>Open <a href="/simulations/cortex-slab/">/simulations/cortex-slab/</a>.</li>
+      <li>Leave <b>Speed</b> at 1× and uncheck <b>Pause</b> if needed.</li>
+      <li>Move the electrode with <b>X</b>, <b>Y</b>, and <b>Z/depth</b> controls.</li>
+      <li>Watch how the single-channel trace amplitude and shape change as you move.</li>
+      <li>Use <b>Reset view</b>, <b>Top view</b>, or <b>Side view</b> if camera orientation gets confusing.</li>
+    </ol>
+
+    <h2>Controls glossary</h2>
+    <ul>
+      <li><b>Pause</b>: stops time stepping (useful for positioning).</li>
+      <li><b>Speed</b>: multiplies the simulation stepping rate.</li>
+      <li><b>X/Y/Z</b>: electrode position in µm. Z is insertion depth into the slab.</li>
+      <li><b>Raster neurons shown</b>: number of neurons displayed in the raster panel.</li>
+      <li><b>Reset / Top / Side view</b>: camera helpers for easier 3D navigation.</li>
+    </ul>
+
+    <h2>What to try</h2>
+    <ul>
+      <li>Hold Z fixed and sweep X or Y to see lateral sensitivity.</li>
+      <li>Hold X/Y fixed and sweep Z to see depth dependence.</li>
+      <li>Use Top view to test lateral movement, then Side view for depth movement.</li>
+      <li>Pause and reposition quickly, then resume and compare traces.</li>
+    </ul>
+
+    <h2>Where to go next</h2>
+    <ul>
+      <li>Simulations index: <a href="/simulations/">/simulations/</a></li>
+      <li>Peripheral nerve sandbox guide: <a href="/simulations/nerve-cross-section/guide/">/simulations/nerve-cross-section/guide/</a></li>
+      <li>BCI Atlas: <a href="/companies/">/companies/</a></li>
+    </ul>
+  </section>
+</Layout>
+
+<style>
+  .card {
+    margin-top: 14px;
+    padding: 22px 22px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+  }
+
+  .muted {
+    opacity: 0.72;
+    margin: 0;
+  }
+
+  .rule {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 16px 0;
+  }
+
+  h2 {
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-size: 1.12rem;
+    font-weight: 700;
+  }
+
+  ol, ul {
+    margin-top: 8px;
+  }
+</style>
