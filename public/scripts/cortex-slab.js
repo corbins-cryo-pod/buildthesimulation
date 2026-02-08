@@ -6,14 +6,17 @@ const $ = (id) => document.getElementById(id);
 const canvas = $("cortex3d");
 const raster = $("raster");
 const traces = $("traces");
-if (!canvas || !raster || !traces) {
-  throw new Error("Cortex sim: missing canvas elements");
-}
+if (!canvas || !raster || !traces) throw new Error("Cortex sim: missing canvas elements");
 
 const ui = {
   paused: $("paused"),
   speed: $("speed"),
   nShow: $("nShow"),
+  elecMeta: $("elecMeta"),
+  elecAdd: $("elecAdd"),
+  elecRemove: $("elecRemove"),
+  elecPrev: $("elecPrev"),
+  elecNext: $("elecNext"),
   elecX: $("elecX"),
   elecY: $("elecY"),
   elecZ: $("elecZ"),
@@ -51,13 +54,9 @@ const neurons = Array.from({ length: cfg.nNeurons }, (_, i) => {
   return { id: i, pos: [x, y, z], hz: 0.6 + rand() * 7.5 };
 });
 
-// ---------- 3D ----------
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
-
 const scene = new THREE.Scene();
-scene.background = null;
-
 const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
 camera.position.set(2.3, -2.0, 1.6);
 
@@ -82,13 +81,8 @@ scene.add(grid);
 
 const umToMm = (v) => v / 1000;
 const b = cfg.bounds;
-const slabSize = new THREE.Vector3(
-  umToMm(b.max[0] - b.min[0]),
-  umToMm(b.max[1] - b.min[1]),
-  umToMm(b.max[2] - b.min[2])
-);
 const slab = new THREE.Mesh(
-  new THREE.BoxGeometry(slabSize.x, slabSize.y, slabSize.z),
+  new THREE.BoxGeometry(umToMm(b.max[0] - b.min[0]), umToMm(b.max[1] - b.min[1]), umToMm(b.max[2] - b.min[2])),
   new THREE.MeshPhongMaterial({ color: 0xf4efe9, transparent: true, opacity: 0.14 })
 );
 slab.position.set(0, 0, umToMm((b.max[2] + b.min[2]) * 0.5));
@@ -96,73 +90,95 @@ scene.add(slab);
 
 const pts = new Float32Array(neurons.length * 3);
 for (let i = 0; i < neurons.length; i++) {
-  pts[i * 3 + 0] = umToMm(neurons[i].pos[0]);
+  pts[i * 3] = umToMm(neurons[i].pos[0]);
   pts[i * 3 + 1] = umToMm(neurons[i].pos[1]);
   pts[i * 3 + 2] = umToMm(neurons[i].pos[2]);
 }
-const nGeo = new THREE.BufferGeometry();
-nGeo.setAttribute("position", new THREE.BufferAttribute(pts, 3));
-const nMat = new THREE.PointsMaterial({ color: 0xb7c9ff, size: 0.012, transparent: true, opacity: 0.6 });
-const nCloud = new THREE.Points(nGeo, nMat);
+const nCloud = new THREE.Points(
+  new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(pts, 3)),
+  new THREE.PointsMaterial({ color: 0xb7c9ff, size: 0.012, transparent: true, opacity: 0.6 })
+);
 scene.add(nCloud);
 
 const electrodeGroup = new THREE.Group();
 scene.add(electrodeGroup);
-const shaft = new THREE.Mesh(
-  new THREE.CylinderGeometry(0.008, 0.008, 1.2, 16),
-  new THREE.MeshPhongMaterial({ color: 0x6f7786, shininess: 90 })
-);
-const tip = new THREE.Mesh(
-  new THREE.SphereGeometry(0.018, 20, 20),
-  new THREE.MeshPhongMaterial({ color: 0xe04444, shininess: 120 })
-);
-electrodeGroup.add(shaft);
-electrodeGroup.add(tip);
+let electrodes = [{ x: 0, y: 0, z: 900 }];
+let selected = 0;
 
-function electrodePosUm() {
-  return [Number(ui.elecX.value), Number(ui.elecY.value), Number(ui.elecZ.value)];
+function syncPair(a, b) { if (b.value !== a.value) b.value = a.value; }
+function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+function selectedElectrode() { return electrodes[selected]; }
+
+function syncUiFromSelected() {
+  const e = selectedElectrode();
+  ui.elecX.value = String(Math.round(e.x));
+  ui.elecY.value = String(Math.round(e.y));
+  ui.elecZ.value = String(Math.round(e.z));
+  ui.elecXRange.value = ui.elecX.value;
+  ui.elecYRange.value = ui.elecY.value;
+  ui.elecZRange.value = ui.elecZ.value;
+  if (ui.elecMeta) ui.elecMeta.textContent = `${electrodes.length} electrode${electrodes.length > 1 ? "s" : ""} · selected E${selected + 1}`;
 }
 
-function syncPair(a, b) {
-  const v = a.value;
-  if (b.value !== v) b.value = v;
+function redrawElectrodes() {
+  electrodeGroup.clear();
+  electrodes.forEach((e, idx) => {
+    const isSel = idx === selected;
+    const mesh = new THREE.Mesh(
+      new THREE.SphereGeometry(isSel ? 0.022 : 0.016, 20, 20),
+      new THREE.MeshPhongMaterial({ color: isSel ? 0xff5d5d : 0xc73535, shininess: 120 })
+    );
+    mesh.position.set(umToMm(e.x), umToMm(e.y), umToMm(e.z));
+    electrodeGroup.add(mesh);
+  });
 }
 
-function updateElectrodeMesh() {
-  const [x, y, z] = electrodePosUm();
-  const mx = umToMm(x);
-  const my = umToMm(y);
-  const mz = umToMm(z);
-  const topZ = umToMm(cfg.bounds.max[2] + 120);
-  tip.position.set(mx, my, mz);
-  shaft.position.set(mx, my, (topZ + mz) * 0.5);
-  shaft.scale.set(1, Math.max(0.05, topZ - mz), 1);
+function updateSelectedFromInputs() {
+  const e = selectedElectrode();
+  e.x = clamp(Number(ui.elecX.value), -1000, 1000);
+  e.y = clamp(Number(ui.elecY.value), -1000, 1000);
+  e.z = clamp(Number(ui.elecZ.value), 50, 1450);
+  syncUiFromSelected();
+  redrawElectrodes();
 }
 
 for (const [n, r] of [[ui.elecX, ui.elecXRange], [ui.elecY, ui.elecYRange], [ui.elecZ, ui.elecZRange]]) {
-  n.addEventListener("input", () => {
-    syncPair(n, r);
-    updateElectrodeMesh();
-  });
-  r.addEventListener("input", () => {
-    syncPair(r, n);
-    updateElectrodeMesh();
-  });
+  n?.addEventListener("input", () => { syncPair(n, r); updateSelectedFromInputs(); });
+  r?.addEventListener("input", () => { syncPair(r, n); updateSelectedFromInputs(); });
 }
 
+ui.elecAdd?.addEventListener("click", () => {
+  const e = selectedElectrode();
+  electrodes.push({ x: e.x + 60, y: e.y + 60, z: e.z });
+  selected = electrodes.length - 1;
+  syncUiFromSelected();
+  redrawElectrodes();
+});
+
+ui.elecRemove?.addEventListener("click", () => {
+  if (electrodes.length <= 1) return;
+  electrodes.splice(selected, 1);
+  selected = Math.max(0, Math.min(selected, electrodes.length - 1));
+  syncUiFromSelected();
+  redrawElectrodes();
+});
+
+ui.elecPrev?.addEventListener("click", () => {
+  selected = (selected - 1 + electrodes.length) % electrodes.length;
+  syncUiFromSelected();
+  redrawElectrodes();
+});
+ui.elecNext?.addEventListener("click", () => {
+  selected = (selected + 1) % electrodes.length;
+  syncUiFromSelected();
+  redrawElectrodes();
+});
+
 function setView(mode) {
-  if (mode === "reset") {
-    camera.position.set(2.3, -2.0, 1.6);
-    controls.target.set(0, 0, 0.75);
-  }
-  if (mode === "top") {
-    camera.position.set(0.001, 0.001, 4.2);
-    controls.target.set(0, 0, 0.75);
-  }
-  if (mode === "side") {
-    camera.position.set(4.2, 0.001, 0.95);
-    controls.target.set(0, 0, 0.75);
-  }
+  if (mode === "reset") { camera.position.set(2.3, -2.0, 1.6); controls.target.set(0, 0, 0.75); }
+  if (mode === "top") { camera.position.set(0.001, 0.001, 4.2); controls.target.set(0, 0, 0.75); }
+  if (mode === "side") { camera.position.set(4.2, 0.001, 0.95); controls.target.set(0, 0, 0.75); }
   controls.update();
 }
 ui.viewReset?.addEventListener("click", () => setView("reset"));
@@ -178,16 +194,15 @@ function resize3D() {
 }
 window.addEventListener("resize", resize3D);
 resize3D();
-updateElectrodeMesh();
+syncUiFromSelected();
+redrawElectrodes();
 
-// ---------- Signal model ----------
 const rasterCtx = raster.getContext("2d");
 const traceCtx = traces.getContext("2d");
-const traceWindowS = 2;
-const traceN = traceWindowS * cfg.sampleRate;
+const traceN = 2 * cfg.sampleRate;
 let trace = new Float32Array(traceN);
 let tMs = 0;
-let recentSpikes = []; // {tMs, idx}
+let recentSpikes = [];
 
 function spikeKernel(len = 24) {
   const out = new Float32Array(len);
@@ -202,25 +217,17 @@ const kernel = spikeKernel();
 function stepModel(stepMs) {
   const dtS = stepMs / 1000;
   const newSpikes = [];
-  for (let i = 0; i < neurons.length; i++) {
-    if (rand() < neurons[i].hz * dtS) {
-      newSpikes.push({ tMs: tMs + rand() * stepMs, idx: i });
-    }
-  }
+  for (let i = 0; i < neurons.length; i++) if (rand() < neurons[i].hz * dtS) newSpikes.push({ tMs: tMs + rand() * stepMs, idx: i });
   recentSpikes = recentSpikes.concat(newSpikes).filter((s) => s.tMs > tMs - 2000);
 
   const addSamp = Math.max(1, Math.floor((stepMs / 1000) * cfg.sampleRate));
   const block = new Float32Array(addSamp);
-  const e = electrodePosUm();
-  const baseUv = 90;
+  const e = selectedElectrode();
 
   for (const s of newSpikes) {
     const n = neurons[s.idx];
-    const dx = n.pos[0] - e[0];
-    const dy = n.pos[1] - e[1];
-    const dz = n.pos[2] - e[2];
-    const r = Math.hypot(dx, dy, dz);
-    const gain = baseUv / (r + 45);
+    const r = Math.hypot(n.pos[0] - e.x, n.pos[1] - e.y, n.pos[2] - e.z);
+    const gain = 90 / (r + 45);
     const i0 = Math.floor(((s.tMs - tMs) / 1000) * cfg.sampleRate);
     for (let k = 0; k < kernel.length; k++) {
       const j = i0 + k;
@@ -233,77 +240,46 @@ function stepModel(stepMs) {
   if (keep > 0) merged.set(trace.subarray(trace.length - keep), 0);
   merged.set(block.subarray(Math.max(0, block.length - traceN)), Math.max(0, keep));
   trace = merged;
-
   tMs += stepMs;
 }
 
 function drawRaster() {
-  const ctx = rasterCtx;
-  const w = raster.width;
-  const h = raster.height;
-  ctx.clearRect(0, 0, w, h);
-  ctx.fillStyle = "#0f0f14";
-  ctx.fillRect(0, 0, w, h);
-
-  const nShow = Number(ui.nShow.value);
-  const now = tMs;
-  const t0 = now - 2000;
-
-  ctx.strokeStyle = "rgba(255,255,255,0.08)";
-  ctx.beginPath();
-  for (let i = 0; i <= 4; i++) {
-    const y = (h * i) / 4;
-    ctx.moveTo(0, y);
-    ctx.lineTo(w, y);
-  }
-  ctx.stroke();
-
-  ctx.fillStyle = "#a9bcff";
+  const w = raster.width, h = raster.height;
+  rasterCtx.clearRect(0, 0, w, h);
+  rasterCtx.fillStyle = "#0f0f14"; rasterCtx.fillRect(0, 0, w, h);
+  const nShow = Number(ui.nShow.value), t0 = tMs - 2000;
+  rasterCtx.strokeStyle = "rgba(255,255,255,0.08)"; rasterCtx.beginPath();
+  for (let i = 0; i <= 4; i++) { const y = (h * i) / 4; rasterCtx.moveTo(0, y); rasterCtx.lineTo(w, y); }
+  rasterCtx.stroke();
+  rasterCtx.fillStyle = "#a9bcff";
   for (const s of recentSpikes) {
     if (s.idx >= nShow || s.tMs < t0) continue;
-    const x = ((s.tMs - t0) / 2000) * w;
-    const y = ((s.idx + 0.5) / nShow) * h;
-    ctx.fillRect(x, y, 2, 2);
+    const x = ((s.tMs - t0) / 2000) * w, y = ((s.idx + 0.5) / nShow) * h;
+    rasterCtx.fillRect(x, y, 2, 2);
   }
 }
 
 function drawTrace() {
-  const ctx = traceCtx;
-  const w = traces.width;
-  const h = traces.height;
-  ctx.clearRect(0, 0, w, h);
-  ctx.fillStyle = "#0f0f14";
-  ctx.fillRect(0, 0, w, h);
-
-  ctx.strokeStyle = "rgba(255,255,255,0.10)";
-  ctx.beginPath();
-  ctx.moveTo(0, h * 0.5);
-  ctx.lineTo(w, h * 0.5);
-  ctx.stroke();
-
-  ctx.strokeStyle = "#ff7272";
-  ctx.lineWidth = 1.4;
-  ctx.beginPath();
+  const w = traces.width, h = traces.height;
+  traceCtx.clearRect(0, 0, w, h);
+  traceCtx.fillStyle = "#0f0f14"; traceCtx.fillRect(0, 0, w, h);
+  traceCtx.strokeStyle = "rgba(255,255,255,0.10)"; traceCtx.beginPath(); traceCtx.moveTo(0, h * 0.5); traceCtx.lineTo(w, h * 0.5); traceCtx.stroke();
+  traceCtx.strokeStyle = "#ff7272"; traceCtx.lineWidth = 1.4; traceCtx.beginPath();
   for (let i = 0; i < trace.length; i++) {
-    const x = (i / (trace.length - 1)) * w;
-    const y = h * 0.5 - trace[i] * 0.55;
-    if (i === 0) ctx.moveTo(x, y);
-    else ctx.lineTo(x, y);
+    const x = (i / (trace.length - 1)) * w, y = h * 0.5 - trace[i] * 0.55;
+    if (i === 0) traceCtx.moveTo(x, y); else traceCtx.lineTo(x, y);
   }
-  ctx.stroke();
+  traceCtx.stroke();
 }
 
 let last = performance.now();
 function loop(now) {
-  const elapsed = Math.min(50, now - last);
-  last = now;
-
+  const elapsed = Math.min(50, now - last); last = now;
   if (!ui.paused.checked) {
     const speed = Number(ui.speed.value || 1);
     const steps = Math.max(1, Math.round(speed));
     for (let i = 0; i < steps; i++) stepModel((elapsed / steps) * speed);
   }
-
   controls.update();
   renderer.render(scene, camera);
   drawRaster();

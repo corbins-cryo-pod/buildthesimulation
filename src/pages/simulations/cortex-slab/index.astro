@@ -38,7 +38,15 @@ import Layout from "../../../layouts/Layout.astro";
       </div>
 
       <div class="panelSection">
-        <div class="panelTitle">Electrode position (µm)</div>
+        <div class="panelTitle">Electrodes (point mode)</div>
+        <p id="elecMeta" class="muted" style="margin:0 0 10px;">1 electrode · selected E1</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+          <button id="elecAdd" type="button">Add point</button>
+          <button id="elecRemove" type="button">Remove point</button>
+          <button id="elecPrev" type="button">Prev</button>
+          <button id="elecNext" type="button">Next</button>
+        </div>
 
         <label class="lab">
           X
