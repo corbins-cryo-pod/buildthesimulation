@@ -21,6 +21,50 @@ export function makeKernel(sampleRateHz, len = 48) {
   return k;
 }
 
+function buildNeighborhood(neurons, radiusUm = 180, maxNeighbors = 20) {
+  const cell = Math.max(40, radiusUm);
+  const bins = new Map();
+  const key = (ix, iy, iz) => `${ix}|${iy}|${iz}`;
+
+  for (let i = 0; i < neurons.length; i++) {
+    const p = neurons[i].pos;
+    const ix = Math.floor(p[0] / cell), iy = Math.floor(p[1] / cell), iz = Math.floor(p[2] / cell);
+    const k = key(ix, iy, iz);
+    if (!bins.has(k)) bins.set(k, []);
+    bins.get(k).push(i);
+  }
+
+  const r2 = radiusUm * radiusUm;
+  const neigh = Array.from({ length: neurons.length }, () => []);
+
+  for (let i = 0; i < neurons.length; i++) {
+    const p = neurons[i].pos;
+    const ix = Math.floor(p[0] / cell), iy = Math.floor(p[1] / cell), iz = Math.floor(p[2] / cell);
+    const cands = [];
+
+    for (let dx = -1; dx <= 1; dx++) {
+      for (let dy = -1; dy <= 1; dy++) {
+        for (let dz = -1; dz <= 1; dz++) {
+          const list = bins.get(key(ix + dx, iy + dy, iz + dz));
+          if (!list) continue;
+          for (const j of list) {
+            if (j === i) continue;
+            const q = neurons[j].pos;
+            const ddx = p[0] - q[0], ddy = p[1] - q[1], ddz = p[2] - q[2];
+            const d2 = ddx * ddx + ddy * ddy + ddz * ddz;
+            if (d2 <= r2) cands.push({ j, d: Math.sqrt(d2) });
+          }
+        }
+      }
+    }
+
+    cands.sort((a, b) => a.d - b.d);
+    neigh[i] = cands.slice(0, maxNeighbors);
+  }
+
+  return neigh;
+}
+
 export function createEngine(cfg) {
   const rand = createRng(cfg.seed ?? 1337);
   const neurons = Array.from({ length: cfg.nNeurons }, (_, i) => {
@@ -35,6 +79,9 @@ export function createEngine(cfg) {
   const kernel = makeKernel(cfg.sampleRateHz, 56);
 
   const neuronAmpScale = Float32Array.from({ length: neurons.length }, () => 0.75 + rand() * 0.6);
+  const burstBoost = new Float32Array(neurons.length);
+  const neighbors = buildNeighborhood(neurons, cfg.recruitRadiusUm ?? 180, cfg.recruitMaxNeighbors ?? 20);
+
   const state = {
     tMs: 0,
     recentSpikes: [],
@@ -44,6 +91,7 @@ export function createEngine(cfg) {
     noiseByElectrode: [0],
     neurons,
     neuronAmpScale,
+    networkMod: 0,
   };
 
   function ensureTraceCount(n) {
@@ -61,9 +109,38 @@ export function createEngine(cfg) {
     const decay = Math.exp(-stepMs / 140);
     for (let i = 0; i < state.neuronActivity.length; i++) state.neuronActivity[i] *= decay;
 
+    // Slow global up/down modulation (OU-like) for more natural nonstationary firing.
+    const modTauS = cfg.modTauS ?? 1.7;
+    const modSigma = cfg.modSigma ?? 0.18;
+    state.networkMod += (-state.networkMod / modTauS) * dtS + (rand() - 0.5) * 2 * modSigma * Math.sqrt(dtS);
+
+    // Local burst/recruitment state decays over tens of milliseconds.
+    const burstTauMs = cfg.burstTauMs ?? 45;
+    const burstDecay = Math.exp(-stepMs / burstTauMs);
+    for (let i = 0; i < burstBoost.length; i++) burstBoost[i] *= burstDecay;
+
+    const modStrength = cfg.modStrength ?? 0.9;
+
     for (let i = 0; i < neurons.length; i++) {
-      if (rand() < neurons[i].hz * dtS) newSpikes.push({ tMs: state.tMs + rand() * stepMs, idx: i });
+      const base = neurons[i].hz;
+      const modRate = base * Math.exp(modStrength * state.networkMod + burstBoost[i]);
+      const p = 1 - Math.exp(-Math.max(0, modRate) * dtS);
+      if (rand() < p) {
+        const tMs = state.tMs + rand() * stepMs;
+        newSpikes.push({ tMs, idx: i });
+
+        // Sparse local burst seeding recruits nearby neurons briefly.
+        if (rand() < (cfg.burstSeedProb ?? 0.04)) {
+          const amp = cfg.recruitAmp ?? 0.45;
+          const radius = cfg.recruitRadiusUm ?? 180;
+          for (const nb of neighbors[i]) {
+            const w = Math.exp(-nb.d / radius);
+            burstBoost[nb.j] += amp * w;
+          }
+        }
+      }
     }
+
     state.recentSpikes = state.recentSpikes.concat(newSpikes).filter((s) => s.tMs > state.tMs - 2000);
 
     const addSamp = Math.max(1, Math.floor((stepMs / 1000) * cfg.sampleRateHz));
@@ -87,6 +164,7 @@ export function createEngine(cfg) {
           const detectProb = Math.max(0, Math.min(1, (gain - 0.22) / 0.95));
           if (rand() < detectProb) detected.push({ ...s, alignMs });
         }
+
         const block = blocks[ei];
         for (let k = 0; k < kernel.length; k++) {
           const j = i0 + delaySamples + k;
