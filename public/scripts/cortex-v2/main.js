@@ -30,6 +30,7 @@ const config = {
   burstSeedProb: 0.08,
   recruitRadiusUm: 180,
   modStrength: 1.3,
+  closeDipBoost: 1.45,
 };
 
 const engine = createEngine(config);

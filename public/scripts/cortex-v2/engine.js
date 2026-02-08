@@ -174,9 +174,15 @@ export function createEngine(cfg) {
         }
 
         const block = blocks[ei];
+        const nearFrac = Math.max(0, Math.min(1, (gain - 0.35) / 0.95));
+        const closeDipBoost = 1 + nearFrac * (cfg.closeDipBoost ?? 1.35);
         for (let k = 0; k < kernel.length; k++) {
           const j = i0 + delaySamples + k;
-          if (j >= 0 && j < block.length) block[j] += gain * kernel[k];
+          if (j < 0 || j >= block.length) continue;
+
+          // Slightly amplify negative trough for close/high-amplitude units.
+          const kv = kernel[k] < 0 ? kernel[k] * closeDipBoost : kernel[k];
+          block[j] += gain * kv;
         }
       }
     }
