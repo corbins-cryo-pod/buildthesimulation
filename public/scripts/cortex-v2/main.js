@@ -142,17 +142,19 @@ function drawRaster() {
   rasterCtx.stroke();
   rasterCtx.setLineDash([]);
 
-  // Stable rows: all neurons in-range for selected electrode (not just currently firing).
+  // Stable rows: all neurons in-range for selected electrode, strongest expected signal at top.
   const e = current();
   const allNeurons = engine.state.neurons;
   const ampScale = engine.state.neuronAmpScale;
-  const ids = [];
+  const withGain = [];
   for (let i = 0; i < allNeurons.length; i++) {
     const n = allNeurons[i];
     const r = Math.hypot(n.pos[0] - e.x, n.pos[1] - e.y, n.pos[2] - e.z);
     const gain = (config.baseUv * ampScale[i]) / (r + config.r0Um);
-    if (gain > 0.22) ids.push(i);
+    if (gain > 0.22) withGain.push({ id: i, gain });
   }
+  withGain.sort((a, b) => b.gain - a.gain);
+  const ids = withGain.map((x) => x.id);
   const rowIndex = new Map(ids.map((id, i) => [id, i]));
   const nRows = Math.max(1, ids.length);
 
@@ -185,20 +187,31 @@ function drawRaster() {
 }
 
 function spikeBandFilter(input, sampleRateHz) {
-  // Lightweight display filter: high-pass then low-pass (~300-3000 Hz).
-  const out = new Float32Array(input.length);
+  // Zero-phase-ish display filter: forward + backward pass to reduce lag.
   const hpA = Math.exp(-2 * Math.PI * 300 / sampleRateHz);
   const lpA = Math.exp(-2 * Math.PI * 3000 / sampleRateHz);
-  let hpY = 0;
-  let hpXPrev = input[0] || 0;
-  let lpY = 0;
-  for (let i = 0; i < input.length; i++) {
-    const x = input[i];
-    hpY = hpA * (hpY + x - hpXPrev);
-    hpXPrev = x;
-    lpY = lpY + (1 - lpA) * (hpY - lpY);
-    out[i] = lpY;
-  }
+
+  const pass = (src) => {
+    const out = new Float32Array(src.length);
+    let hpY = 0;
+    let hpXPrev = src[0] || 0;
+    let lpY = 0;
+    for (let i = 0; i < src.length; i++) {
+      const x = src[i];
+      hpY = hpA * (hpY + x - hpXPrev);
+      hpXPrev = x;
+      lpY = lpY + (1 - lpA) * (hpY - lpY);
+      out[i] = lpY;
+    }
+    return out;
+  };
+
+  const fwd = pass(input);
+  const revIn = new Float32Array(fwd.length);
+  for (let i = 0; i < fwd.length; i++) revIn[i] = fwd[fwd.length - 1 - i];
+  const revOut = pass(revIn);
+  const out = new Float32Array(revOut.length);
+  for (let i = 0; i < revOut.length; i++) out[i] = revOut[revOut.length - 1 - i];
   return out;
 }
 
