@@ -18,9 +18,11 @@ const latestNews = news.slice(0, 3);
 const latestArticles = articles.slice(0, 3);
 const latestCompanies = companies.slice(0, 3);
 
-const lastUpdated = [news[0]?.data.pubDate, articles[0]?.data.pubDate, companies[0]?.data.pubDate]
-  .filter(Boolean)
-  .sort((a, b) => b.valueOf() - a.valueOf())[0];
+const lastUpdatedCandidates = [news[0]?.data.pubDate, articles[0]?.data.pubDate, companies[0]?.data.pubDate]
+  .filter((d) => d instanceof Date);
+const lastUpdated = lastUpdatedCandidates.length
+  ? new Date(Math.max(...lastUpdatedCandidates.map((d) => d.getTime())))
+  : undefined;
 ---
 
 <Layout withHero={true}>
