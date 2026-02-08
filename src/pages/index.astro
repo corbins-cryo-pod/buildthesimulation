@@ -2,17 +2,19 @@
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
+const dateMs = (v) => (v instanceof Date ? v.getTime() : 0);
+
 const news = (await getCollection("news"))
   .filter((p) => !p.data.draft)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  .sort((a, b) => dateMs(b.data.pubDate) - dateMs(a.data.pubDate));
 
 const articles = (await getCollection("articles"))
   .filter((p) => !p.data.draft)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  .sort((a, b) => dateMs(b.data.pubDate) - dateMs(a.data.pubDate));
 
 const companies = (await getCollection("companies"))
   .filter((p) => !p.data.draft)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  .sort((a, b) => dateMs(b.data.pubDate) - dateMs(a.data.pubDate));
 
 const latestNews = news.slice(0, 3);
 const latestArticles = articles.slice(0, 3);
@@ -100,8 +102,10 @@ const lastUpdated = lastUpdatedCandidates.length
         {latestNews.map((p) => (
           <a class="item" href={`/news/${p.slug}/`}>
             <div class="title">{p.data.title}</div>
-            <time datetime={p.data.pubDate.toISOString()}>
-              {p.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+            <time datetime={p.data.pubDate instanceof Date ? p.data.pubDate.toISOString() : ""}>
+              {p.data.pubDate instanceof Date
+                ? p.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+                : "Undated"}
             </time>
           </a>
         ))}
