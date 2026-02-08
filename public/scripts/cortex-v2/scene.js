@@ -105,9 +105,9 @@ export function createScene(canvas, bounds, neurons) {
     const c = nGeo.getAttribute("color");
     for (let i = 0; i < activity.length; i++) {
       const a = Math.max(0, Math.min(1, activity[i]));
-      const r = 0.15 + a * (1.00 - 0.15);
-      const g = 0.17 + a * (0.98 - 0.17);
-      const b = 0.22 + a * (0.35 - 0.22);
+      const r = 0.12 + a * (0.58 - 0.12);
+      const g = 0.16 + a * (0.85 - 0.16);
+      const b = 0.24 + a * (1.00 - 0.24);
       c.setXYZ(i, r, g, b);
     }
     c.needsUpdate = true;

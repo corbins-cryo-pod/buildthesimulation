@@ -13,6 +13,9 @@ const ui = {
   elecX: $("elecX"), elecY: $("elecY"), elecZ: $("elecZ"), elecXRange: $("elecXRange"), elecYRange: $("elecYRange"), elecZRange: $("elecZRange"),
   viewReset: $("viewReset"), viewTop: $("viewTop"), viewSide: $("viewSide"),
   spikeBandOn: $("spikeBandOn"), thrUv: $("thrUv"), traceGain: $("traceGain"), traceGainLabel: $("traceGainLabel"),
+  burstSeedProb: $("burstSeedProb"), burstSeedProbLabel: $("burstSeedProbLabel"),
+  recruitRadiusUm: $("recruitRadiusUm"), recruitRadiusUmLabel: $("recruitRadiusUmLabel"),
+  modStrength: $("modStrength"), modStrengthLabel: $("modStrengthLabel"),
 };
 
 const config = {
@@ -24,6 +27,9 @@ const config = {
   baseUv: 92,
   r0Um: 45,
   noiseUv: 4.2,
+  burstSeedProb: 0.04,
+  recruitRadiusUm: 180,
+  modStrength: 0.9,
 };
 
 const engine = createEngine(config);
@@ -82,6 +88,27 @@ const updateTraceGainLabel = () => {
   ui.traceGainLabel.textContent = `${Number(ui.traceGain.value).toFixed(2)}×`;
 };
 ui.traceGain?.addEventListener("input", updateTraceGainLabel);
+
+const updateDynamicsLabels = () => {
+  if (ui.burstSeedProb && ui.burstSeedProbLabel) {
+    const v = Number(ui.burstSeedProb.value);
+    ui.burstSeedProbLabel.textContent = v.toFixed(3);
+    config.burstSeedProb = v;
+  }
+  if (ui.recruitRadiusUm && ui.recruitRadiusUmLabel) {
+    const v = Number(ui.recruitRadiusUm.value);
+    ui.recruitRadiusUmLabel.textContent = `${Math.round(v)} µm`;
+    config.recruitRadiusUm = v;
+  }
+  if (ui.modStrength && ui.modStrengthLabel) {
+    const v = Number(ui.modStrength.value);
+    ui.modStrengthLabel.textContent = v.toFixed(2);
+    config.modStrength = v;
+  }
+};
+ui.burstSeedProb?.addEventListener("input", updateDynamicsLabels);
+ui.recruitRadiusUm?.addEventListener("input", updateDynamicsLabels);
+ui.modStrength?.addEventListener("input", updateDynamicsLabels);
 
 const DISPLAY_WINDOW_MS = 2000;
 let playheadNorm = null;
@@ -268,6 +295,7 @@ resize();
 refreshUI();
 updateSpeedLabel();
 updateTraceGainLabel();
+updateDynamicsLabels();
 
 raster.addEventListener("mousemove", (ev) => setPlayheadFromPointer(raster, ev));
 traces.addEventListener("mousemove", (ev) => setPlayheadFromPointer(traces, ev));

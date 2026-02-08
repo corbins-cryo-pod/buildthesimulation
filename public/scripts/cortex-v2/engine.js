@@ -80,7 +80,8 @@ export function createEngine(cfg) {
 
   const neuronAmpScale = Float32Array.from({ length: neurons.length }, () => 0.75 + rand() * 0.6);
   const burstBoost = new Float32Array(neurons.length);
-  const neighbors = buildNeighborhood(neurons, cfg.recruitRadiusUm ?? 180, cfg.recruitMaxNeighbors ?? 20);
+  let lastRecruitRadius = cfg.recruitRadiusUm ?? 180;
+  let neighbors = buildNeighborhood(neurons, lastRecruitRadius, cfg.recruitMaxNeighbors ?? 20);
 
   const state = {
     tMs: 0,
@@ -103,6 +104,12 @@ export function createEngine(cfg) {
 
   function step(stepMs, electrodes, selectedIndex = 0) {
     ensureTraceCount(electrodes.length);
+
+    const rr = cfg.recruitRadiusUm ?? 180;
+    if (Math.abs(rr - lastRecruitRadius) > 1) {
+      neighbors = buildNeighborhood(neurons, rr, cfg.recruitMaxNeighbors ?? 20);
+      lastRecruitRadius = rr;
+    }
 
     const dtS = stepMs / 1000;
     const newSpikes = [];
