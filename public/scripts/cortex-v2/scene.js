@@ -46,9 +46,9 @@ export function createScene(canvas, bounds, neurons) {
     pts[i * 3] = umToMm(neurons[i].pos[0]);
     pts[i * 3 + 1] = umToMm(neurons[i].pos[1]);
     pts[i * 3 + 2] = umToMm(neurons[i].pos[2]);
-    colors[i * 3] = 0.15;
-    colors[i * 3 + 1] = 0.17;
-    colors[i * 3 + 2] = 0.22;
+    colors[i * 3] = 0.04;
+    colors[i * 3 + 1] = 0.05;
+    colors[i * 3 + 2] = 0.08;
   }
   const nGeo = new THREE.BufferGeometry();
   nGeo.setAttribute("position", new THREE.BufferAttribute(pts, 3));
@@ -105,9 +105,9 @@ export function createScene(canvas, bounds, neurons) {
     const c = nGeo.getAttribute("color");
     for (let i = 0; i < activity.length; i++) {
       const a = Math.max(0, Math.min(1, activity[i]));
-      const r = 0.12 + a * (0.58 - 0.12);
-      const g = 0.16 + a * (0.85 - 0.16);
-      const b = 0.24 + a * (1.00 - 0.24);
+      const r = 0.04 + a * (0.58 - 0.04);
+      const g = 0.05 + a * (0.85 - 0.05);
+      const b = 0.08 + a * (1.00 - 0.08);
       c.setXYZ(i, r, g, b);
     }
     c.needsUpdate = true;
