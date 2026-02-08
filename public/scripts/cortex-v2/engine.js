@@ -113,16 +113,16 @@ export function createEngine(cfg) {
 
     const dtS = stepMs / 1000;
     const newSpikes = [];
-    const decay = Math.exp(-stepMs / 140);
+    const decay = Math.exp(-stepMs / 90);
     for (let i = 0; i < state.neuronActivity.length; i++) state.neuronActivity[i] *= decay;
 
     // Slow global up/down modulation (OU-like) for more natural nonstationary firing.
     const modTauS = cfg.modTauS ?? 1.7;
-    const modSigma = cfg.modSigma ?? 0.18;
+    const modSigma = cfg.modSigma ?? 0.26;
     state.networkMod += (-state.networkMod / modTauS) * dtS + (rand() - 0.5) * 2 * modSigma * Math.sqrt(dtS);
 
     // Local burst/recruitment state decays over tens of milliseconds.
-    const burstTauMs = cfg.burstTauMs ?? 45;
+    const burstTauMs = cfg.burstTauMs ?? 70;
     const burstDecay = Math.exp(-stepMs / burstTauMs);
     for (let i = 0; i < burstBoost.length; i++) burstBoost[i] *= burstDecay;
 
@@ -137,8 +137,9 @@ export function createEngine(cfg) {
         newSpikes.push({ tMs, idx: i });
 
         // Sparse local burst seeding recruits nearby neurons briefly.
-        if (rand() < (cfg.burstSeedProb ?? 0.04)) {
-          const amp = cfg.recruitAmp ?? 0.45;
+        if (rand() < Math.min(0.5, (cfg.burstSeedProb ?? 0.04))) {
+          const baseBurst = cfg.burstSeedProb ?? 0.04;
+          const amp = cfg.recruitAmp ?? (0.55 + 3.2 * baseBurst);
           const radius = cfg.recruitRadiusUm ?? 180;
           for (const nb of neighbors[i]) {
             const w = Math.exp(-nb.d / radius);

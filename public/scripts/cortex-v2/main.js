@@ -27,9 +27,9 @@ const config = {
   baseUv: 92,
   r0Um: 45,
   noiseUv: 4.2,
-  burstSeedProb: 0.04,
+  burstSeedProb: 0.08,
   recruitRadiusUm: 180,
-  modStrength: 0.9,
+  modStrength: 1.3,
 };
 
 const engine = createEngine(config);
