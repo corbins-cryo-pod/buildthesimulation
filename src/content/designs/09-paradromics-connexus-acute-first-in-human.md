@@ -107,8 +107,8 @@ draft: false
 - **Typical yield (chronic):** not yet publicly reported (as of this entry)
 - **Stability over time:** not yet publicly reported (as of this entry)
 - **Longevity (median / max):** not yet publicly reported (as of this entry)
-- **Revision / explant:** acute explant demonstrated; chronic revision experience TBD
-- **Adverse events (high-level):** acute procedure reported as successful; chronic safety data TBD
+- **Revision / explant:** acute explant demonstrated; chronic revision experience not yet publicly detailed
+- **Adverse events (high-level):** acute procedure reported as successful; chronic safety outcomes not yet publicly detailed
 - **Notable demos / tasks:** acute human neural recording during epilepsy surgery
 
 ---

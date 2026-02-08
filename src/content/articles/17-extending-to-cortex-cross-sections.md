@@ -22,7 +22,7 @@ Early versions should support:
 
 - surface grids (ECoG-like)
 - depth electrodes (SEEG-like)
-- penetrating array placeholders
+- penetrating arrays (Utah-like)
 
 …and visualization of sampling/recruitment proxies.
 
