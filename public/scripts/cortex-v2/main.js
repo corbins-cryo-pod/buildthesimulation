@@ -85,18 +85,50 @@ function drawRaster() {
   }
 }
 
-function drawTrace() {
+function drawTracePanels() {
   const w = traces.width, h = traces.height;
   traceCtx.clearRect(0, 0, w, h);
-  traceCtx.fillStyle = "#0f0f14"; traceCtx.fillRect(0, 0, w, h);
-  traceCtx.strokeStyle = "rgba(255,255,255,0.10)"; traceCtx.beginPath(); traceCtx.moveTo(0, h * 0.5); traceCtx.lineTo(w, h * 0.5); traceCtx.stroke();
-  traceCtx.strokeStyle = "#ff7272"; traceCtx.lineWidth = 1.4; traceCtx.beginPath();
-  const t = engine.state.trace;
-  for (let i = 0; i < t.length; i++) {
-    const x = (i / (t.length - 1)) * w, y = h * 0.5 - t[i] * 0.55;
-    if (i === 0) traceCtx.moveTo(x, y); else traceCtx.lineTo(x, y);
+  traceCtx.fillStyle = "#0f0f14";
+  traceCtx.fillRect(0, 0, w, h);
+
+  const tracesByEl = engine.state.tracesByElectrode;
+  const n = Math.max(1, Math.min(tracesByEl.length, 6));
+  const rowH = h / n;
+
+  for (let i = 0; i < n; i++) {
+    const y0 = i * rowH;
+    const yc = y0 + rowH * 0.5;
+
+    traceCtx.strokeStyle = "rgba(255,255,255,0.08)";
+    traceCtx.beginPath();
+    traceCtx.moveTo(0, yc);
+    traceCtx.lineTo(w, yc);
+    traceCtx.stroke();
+
+    traceCtx.fillStyle = i === selected ? "#ffd6d6" : "rgba(255,255,255,0.72)";
+    traceCtx.font = "11px Times New Roman";
+    traceCtx.fillText(`E${i + 1}`, 8, y0 + 14);
+
+    const t = tracesByEl[i];
+    traceCtx.strokeStyle = i === selected ? "#ff7f7f" : "#8fb3ff";
+    traceCtx.lineWidth = 1.2;
+    traceCtx.beginPath();
+    for (let j = 0; j < t.length; j++) {
+      const x = (j / (t.length - 1)) * w;
+      const y = yc - t[j] * 0.33;
+      if (j === 0) traceCtx.moveTo(x, y);
+      else traceCtx.lineTo(x, y);
+    }
+    traceCtx.stroke();
+
+    if (i < n - 1) {
+      traceCtx.strokeStyle = "rgba(255,255,255,0.06)";
+      traceCtx.beginPath();
+      traceCtx.moveTo(0, y0 + rowH);
+      traceCtx.lineTo(w, y0 + rowH);
+      traceCtx.stroke();
+    }
   }
-  traceCtx.stroke();
 }
 
 function resize() { scene.resize(); }
@@ -121,12 +153,12 @@ function loop(now) {
   if (!ui.paused.checked) {
     const speed = Number(ui.speed.value || 1);
     const steps = Math.max(1, Math.round(speed));
-    for (let i = 0; i < steps; i++) engine.step((elapsed / steps) * speed, current());
+    for (let i = 0; i < steps; i++) engine.step((elapsed / steps) * speed, electrodes, selected);
   }
   scene.updateNeuronActivity(engine.state.neuronActivity);
   scene.render();
   drawRaster();
-  drawTrace();
+  drawTracePanels();
   requestAnimationFrame(loop);
 }
 requestAnimationFrame(loop);

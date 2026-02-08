@@ -34,13 +34,20 @@ export function createEngine(cfg) {
   const state = {
     tMs: 0,
     recentSpikes: [],
-    detectedSpikes: [],
+    detectedSpikes: [], // detected by selected electrode for raster display
     neuronActivity: new Float32Array(neurons.length),
-    trace: new Float32Array(traceN),
+    tracesByElectrode: [new Float32Array(traceN)],
     neurons,
   };
 
-  function step(stepMs, electrode) {
+  function ensureTraceCount(n) {
+    while (state.tracesByElectrode.length < n) state.tracesByElectrode.push(new Float32Array(traceN));
+    if (state.tracesByElectrode.length > n) state.tracesByElectrode = state.tracesByElectrode.slice(0, n);
+  }
+
+  function step(stepMs, electrodes, selectedIndex = 0) {
+    ensureTraceCount(electrodes.length);
+
     const dtS = stepMs / 1000;
     const newSpikes = [];
     const decay = Math.exp(-stepMs / 140);
@@ -52,32 +59,44 @@ export function createEngine(cfg) {
     state.recentSpikes = state.recentSpikes.concat(newSpikes).filter((s) => s.tMs > state.tMs - 2000);
 
     const addSamp = Math.max(1, Math.floor((stepMs / 1000) * cfg.sampleRateHz));
-    const block = new Float32Array(addSamp);
+    const blocks = electrodes.map(() => new Float32Array(addSamp));
     const detected = [];
 
     for (const s of newSpikes) {
       state.neuronActivity[s.idx] = 1;
       const n = neurons[s.idx];
-      const r = Math.hypot(n.pos[0] - electrode.x, n.pos[1] - electrode.y, n.pos[2] - electrode.z);
-      const gain = cfg.baseUv / (r + cfg.r0Um);
-
-      const detectProb = Math.max(0, Math.min(1, (gain - 0.10) / 0.70));
-      if (rand() < detectProb) detected.push(s);
-
       const i0 = Math.floor(((s.tMs - state.tMs) / 1000) * cfg.sampleRateHz);
-      for (let k = 0; k < kernel.length; k++) {
-        const j = i0 + k;
-        if (j >= 0 && j < block.length) block[j] += gain * kernel[k];
+
+      for (let ei = 0; ei < electrodes.length; ei++) {
+        const e = electrodes[ei];
+        const r = Math.hypot(n.pos[0] - e.x, n.pos[1] - e.y, n.pos[2] - e.z);
+        const gain = cfg.baseUv / (r + cfg.r0Um);
+
+        if (ei === selectedIndex) {
+          const detectProb = Math.max(0, Math.min(1, (gain - 0.10) / 0.70));
+          if (rand() < detectProb) detected.push(s);
+        }
+
+        const block = blocks[ei];
+        for (let k = 0; k < kernel.length; k++) {
+          const j = i0 + k;
+          if (j >= 0 && j < block.length) block[j] += gain * kernel[k];
+        }
       }
     }
 
     state.detectedSpikes = state.detectedSpikes.concat(detected).filter((s) => s.tMs > state.tMs - 2000);
 
-    const merged = new Float32Array(traceN);
-    const keep = traceN - block.length;
-    if (keep > 0) merged.set(state.trace.subarray(state.trace.length - keep), 0);
-    merged.set(block.subarray(Math.max(0, block.length - traceN)), Math.max(0, keep));
-    state.trace = merged;
+    for (let ei = 0; ei < electrodes.length; ei++) {
+      const merged = new Float32Array(traceN);
+      const prev = state.tracesByElectrode[ei];
+      const block = blocks[ei];
+      const keep = traceN - block.length;
+      if (keep > 0) merged.set(prev.subarray(prev.length - keep), 0);
+      merged.set(block.subarray(Math.max(0, block.length - traceN)), Math.max(0, keep));
+      state.tracesByElectrode[ei] = merged;
+    }
+
     state.tMs += stepMs;
   }
 
