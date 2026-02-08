@@ -20,7 +20,7 @@ const config = {
   bounds: { min: [-1000, -1000, 0], max: [1000, 1000, 1500] },
   nNeurons: 1600,
   sampleRateHz: 8000,
-  traceWindowS: 1.2,
+  traceWindowS: 2,
   baseUv: 92,
   r0Um: 45,
   noiseUv: 4.2,
@@ -83,18 +83,34 @@ const updateTraceGainLabel = () => {
 };
 ui.traceGain?.addEventListener("input", updateTraceGainLabel);
 
+const DISPLAY_WINDOW_MS = 2000;
+
 function drawRaster() {
   const w = raster.width, h = raster.height;
   rasterCtx.clearRect(0, 0, w, h);
   rasterCtx.fillStyle = "#0f0f14"; rasterCtx.fillRect(0, 0, w, h);
-  const nShow = Number(ui.nShow.value), t0 = engine.state.tMs - 2000;
-  rasterCtx.strokeStyle = "rgba(255,255,255,0.08)"; rasterCtx.beginPath();
+  const nShow = Number(ui.nShow.value), t0 = engine.state.tMs - DISPLAY_WINDOW_MS;
+
+  rasterCtx.strokeStyle = "rgba(255,255,255,0.08)";
+  rasterCtx.beginPath();
   for (let i = 0; i <= 4; i++) { const y = (h * i) / 4; rasterCtx.moveTo(0, y); rasterCtx.lineTo(w, y); }
   rasterCtx.stroke();
+
+  rasterCtx.strokeStyle = "rgba(255,255,255,0.10)";
+  rasterCtx.setLineDash([4, 4]);
+  rasterCtx.beginPath();
+  for (let i = 0; i <= 4; i++) {
+    const x = (i / 4) * w;
+    rasterCtx.moveTo(x, 0);
+    rasterCtx.lineTo(x, h);
+  }
+  rasterCtx.stroke();
+  rasterCtx.setLineDash([]);
+
   rasterCtx.fillStyle = "#a9bcff";
   for (const s of engine.state.detectedSpikes) {
     if (s.idx >= nShow || s.tMs < t0) continue;
-    const x = ((s.tMs - t0) / 2000) * w, y = ((s.idx + 0.5) / nShow) * h;
+    const x = ((s.tMs - t0) / DISPLAY_WINDOW_MS) * w, y = ((s.idx + 0.5) / nShow) * h;
     rasterCtx.fillRect(x, y, 2, 2);
   }
 }
@@ -139,6 +155,17 @@ function drawTracePanels() {
     traceCtx.moveTo(0, yc);
     traceCtx.lineTo(w, yc);
     traceCtx.stroke();
+
+    traceCtx.strokeStyle = "rgba(255,255,255,0.10)";
+    traceCtx.setLineDash([4, 4]);
+    traceCtx.beginPath();
+    for (let gx = 0; gx <= 4; gx++) {
+      const x = (gx / 4) * w;
+      traceCtx.moveTo(x, y0);
+      traceCtx.lineTo(x, y0 + rowH);
+    }
+    traceCtx.stroke();
+    traceCtx.setLineDash([]);
 
     traceCtx.fillStyle = i === selected ? "#ffd6d6" : "rgba(255,255,255,0.72)";
     traceCtx.font = "11px Times New Roman";
