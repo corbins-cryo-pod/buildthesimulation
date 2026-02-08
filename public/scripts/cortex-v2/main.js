@@ -18,10 +18,11 @@ const config = {
   seed: 1337,
   bounds: { min: [-1000, -1000, 0], max: [1000, 1000, 1500] },
   nNeurons: 1600,
-  sampleRateHz: 1000,
-  traceWindowS: 2,
-  baseUv: 90,
+  sampleRateHz: 8000,
+  traceWindowS: 1.2,
+  baseUv: 92,
   r0Um: 45,
+  noiseUv: 4.2,
 };
 
 const engine = createEngine(config);
@@ -110,14 +111,31 @@ function drawTracePanels() {
     traceCtx.fillText(`E${i + 1}`, 8, y0 + 14);
 
     const t = tracesByEl[i];
+    const scale = 0.33;
+    const thrUv = -18;
+    const yThr = yc - thrUv * scale;
+
+    traceCtx.strokeStyle = "rgba(255,120,120,0.30)";
+    traceCtx.beginPath();
+    traceCtx.moveTo(0, yThr);
+    traceCtx.lineTo(w, yThr);
+    traceCtx.stroke();
+
     traceCtx.strokeStyle = i === selected ? "#ff7f7f" : "#8fb3ff";
     traceCtx.lineWidth = 1.2;
     traceCtx.beginPath();
+    let prev = t[0];
     for (let j = 0; j < t.length; j++) {
       const x = (j / (t.length - 1)) * w;
-      const y = yc - t[j] * 0.33;
+      const y = yc - t[j] * scale;
       if (j === 0) traceCtx.moveTo(x, y);
       else traceCtx.lineTo(x, y);
+
+      if (j > 0 && prev > thrUv && t[j] <= thrUv) {
+        traceCtx.fillStyle = "rgba(255,170,120,0.95)";
+        traceCtx.fillRect(x - 1, y0 + 2, 2, 6);
+      }
+      prev = t[j];
     }
     traceCtx.stroke();
 
