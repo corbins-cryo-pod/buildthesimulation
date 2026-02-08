@@ -1,59 +1,89 @@
-
 ---
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
-const tiles = [
-  {
-    href: "/news",
-    title: "News",
-    desc: "Weekly BCI updates, startups, papers, and my take.",
-  },
-  {
-    href: "/articles",
-    title: "Articles",
-    desc: "A guided sequence from fundamentals to future biohybrid interfaces.",
-  },
-  {
-    href: "/companies",
-    title: "Companies",
-    desc: "BCI companies by region (American / European / Chinese) + labs.",
-  },
-  {
-    href: "/ideas",
-    title: "Ideas",
-    desc: "Weekly lab notes: what I built, what I learned, and what’s next.",
-  },
-  {
-    href: "/simulations",
-    title: "Simulations",
-    desc: "Interactive sandboxes: bite-sized tools + the long-term nerve/cortex platform.",
-  },
-  {
-    href: "https://github.com/corbins-cryo-pod/buildthesimulation",
-    title: "Repository",
-    desc: "Source code and roadmap.",
-    external: true,
-  },
-];
-
-const latestNews = (await getCollection("news"))
+const news = (await getCollection("news"))
   .filter((p) => !p.data.draft)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const articles = (await getCollection("articles"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const companies = (await getCollection("companies"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const latestNews = news.slice(0, 3);
+const latestArticles = articles.slice(0, 3);
+const latestCompanies = companies.slice(0, 3);
+
+const lastUpdated = [news[0]?.data.pubDate, articles[0]?.data.pubDate, companies[0]?.data.pubDate]
+  .filter(Boolean)
+  .sort((a, b) => b.valueOf() - a.valueOf())[0];
 ---
 
 <Layout withHero={true}>
+  <section class="hero card">
+    <p class="eyebrow">Build The Simulation</p>
+    <h1>Understand brain interfaces by reading, exploring, and running simulations.</h1>
+    <p class="lede">
+      A practical neurotech learning platform: curated articles, BCI Atlas company/lab mapping, and interactive
+      cortex/peripheral sandboxes you can tune in-browser.
+    </p>
+    <div class="ctaRow">
+      <a class="btn primary" href="/simulations/">Explore simulations</a>
+      <a class="btn" href="/companies/map/">Open BCI Atlas</a>
+      <a class="btn" href="/articles/">Start reading</a>
+    </div>
+  </section>
+
   <section class="card">
-    <h2>What this is</h2>
-    <ul>
-      <li><b>Weekly signal:</b> curated BCI + neurotech news with commentary.</li>
-      <li><b>Deep articles:</b> neuroscience → interfaces → fabrication → future systems.</li>
-      <li><b>Interactive demos:</b> models and simulations you can manipulate in-browser.</li>
-      <li>
-        <b>The sandbox:</b> a physics-based environment for exploring electrode designs and stimulation strategies.
-      </li>
-    </ul>
+    <div class="row"><h2>Start here</h2></div>
+    <div class="pathGrid">
+      <a class="path" href="/articles/">
+        <h3>Learn the fundamentals</h3>
+        <p>Go from neuroscience basics to recording, stimulation, materials, and design tradeoffs.</p>
+      </a>
+      <a class="path" href="/companies/map/">
+        <h3>Explore companies and labs</h3>
+        <p>Use the atlas to scan the ecosystem and jump into company/lab briefs.</p>
+      </a>
+      <a class="path" href="/simulations/">
+        <h3>Run interactive simulations</h3>
+        <p>Manipulate electrode placement, thresholds, and dynamics to build intuition quickly.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="row"><h2>Platform snapshot</h2></div>
+    <div class="stats">
+      <div class="stat"><div class="num">{articles.length}</div><div class="label">Articles</div></div>
+      <div class="stat"><div class="num">{companies.length}</div><div class="label">Companies / labs</div></div>
+      <div class="stat"><div class="num">{news.length}</div><div class="label">News posts</div></div>
+      <div class="stat">
+        <div class="num">{lastUpdated ? lastUpdated.toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "—"}</div>
+        <div class="label">Last updated</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="row">
+      <h2>Featured simulations</h2>
+      <a class="smallLink" href="/simulations/">All simulations →</a>
+    </div>
+    <div class="featureGrid">
+      <a class="feature" href="/simulations/cortex-slab/">
+        <h3>Cortex slab</h3>
+        <p>Point-electrode placement, detected spikes, raster/trace alignment, and network dynamics controls.</p>
+      </a>
+      <a class="feature" href="/simulations/nerve-cross-section/">
+        <h3>Peripheral nerve cross-section</h3>
+        <p>Explore fascicle-level geometry and interface behavior in a compact in-browser sandbox.</p>
+      </a>
+    </div>
   </section>
 
   <section class="card">
@@ -61,162 +91,79 @@ const latestNews = (await getCollection("news"))
       <h2>Latest news</h2>
       <a class="smallLink" href="/news">All news →</a>
     </div>
-
     {latestNews.length === 0 ? (
-      <p class="muted">No published posts yet (drafts exist in the repo).</p>
+      <p class="muted">No published posts yet.</p>
     ) : (
-      <div class="newsGrid">
+      <div class="listGrid">
         {latestNews.map((p) => (
-          <a class="newsItem" href={`/news/${p.slug}/`}>
-            <div class="newsTop">
-              <div class="newsTitle">{p.data.title}</div>
-              <time datetime={p.data.pubDate.toISOString()}>
-                {p.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-              </time>
-            </div>
-            {p.data.description ? <div class="muted">{p.data.description}</div> : null}
+          <a class="item" href={`/news/${p.slug}/`}>
+            <div class="title">{p.data.title}</div>
+            <time datetime={p.data.pubDate.toISOString()}>
+              {p.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+            </time>
           </a>
         ))}
       </div>
     )}
   </section>
 
-  <section class="grid">
-    {tiles.map((t) => (
-      <a class="tile" href={t.href} target={t.external ? "_blank" : undefined}>
-        <h3>{t.title}</h3>
-        <p>{t.desc}</p>
-      </a>
-    ))}
+  <section class="card split">
+    <div>
+      <div class="row"><h2>Recent articles</h2><a class="smallLink" href="/articles">All articles →</a></div>
+      <div class="listGrid compact">
+        {latestArticles.map((p) => (
+          <a class="item" href={`/articles/${p.slug}/`}><div class="title">{p.data.title}</div></a>
+        ))}
+      </div>
+    </div>
+    <div>
+      <div class="row"><h2>Recent companies / labs</h2><a class="smallLink" href="/companies">All briefs →</a></div>
+      <div class="listGrid compact">
+        {latestCompanies.map((p) => (
+          <a class="item" href={`/companies/${p.slug}/`}><div class="title">{p.data.name ?? p.data.title ?? p.slug}</div></a>
+        ))}
+      </div>
+    </div>
   </section>
 </Layout>
 
 <style>
-  .card {
-    margin-top: 14px;
-    padding: 22px 22px;
-    border-radius: 16px;
-    border: 1px solid var(--border);
-    background: var(--panel);
-  }
+  .card { margin-top: 14px; padding: 22px; border-radius: 16px; border: 1px solid var(--border); background: var(--panel); }
+  .hero h1 { margin: 4px 0 10px; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
+  .eyebrow { margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.72; }
+  .lede { margin: 0; opacity: 0.82; max-width: 78ch; line-height: 1.55; }
+  .ctaRow { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { border: 1px solid var(--border); border-radius: 12px; padding: 8px 12px; text-decoration: none; color: inherit; background: var(--panelStrong); }
+  .btn.primary { border-color: var(--borderStrong); background: var(--panelHover); }
 
-  .row {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    align-items: baseline;
-  }
+  .row { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+  h2 { margin: 0 0 10px; font-size: 18px; }
+  .smallLink { font-size: 13px; opacity: 0.75; color: inherit; text-decoration: none; white-space: nowrap; }
+  .smallLink:hover { opacity: 1; }
+  .muted { opacity: 0.7; }
 
-  .smallLink {
-    font-size: 13px;
-    opacity: 0.75;
-    color: inherit;
-    text-decoration: none;
-    white-space: nowrap;
-  }
+  .pathGrid, .featureGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .featureGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .path, .feature, .item { display: block; text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 14px; background: var(--panelStrong); }
+  .path, .feature { padding: 14px; }
+  .path:hover, .feature:hover, .item:hover { border-color: var(--borderStrong); background: var(--panelHover); transform: translateY(-1px); }
+  .path h3, .feature h3 { margin: 0 0 6px; font-size: 16px; }
+  .path p, .feature p { margin: 0; opacity: 0.8; line-height: 1.45; }
 
-  .smallLink:hover {
-    opacity: 0.95;
-  }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .stat { padding: 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--panelStrong); }
+  .num { font-size: 22px; font-weight: 700; line-height: 1; }
+  .label { margin-top: 6px; font-size: 12px; opacity: 0.72; }
 
-  .muted {
-    opacity: 0.7;
-  }
+  .listGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .listGrid.compact { grid-template-columns: 1fr; }
+  .item { padding: 12px; }
+  .title { font-weight: 600; margin-bottom: 6px; }
+  time { font-size: 12px; opacity: 0.65; }
 
-  .card h2 {
-    margin: 0 0 10px;
-    font-size: 18px;
-  }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
-  .card ul {
-    margin: 0;
-    padding-left: 18px;
-    line-height: 1.65;
-  }
-
-  .newsGrid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .newsItem {
-    display: block;
-    padding: 12px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    background: var(--panelStrong);
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .newsItem:hover {
-    border-color: var(--borderStrong);
-    transform: translateY(-1px);
-    background: var(--panelHover);
-  }
-
-  .newsTop {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    align-items: baseline;
-    margin-bottom: 6px;
-  }
-
-  .newsTitle {
-    font-weight: 600;
-  }
-
-  time {
-    font-size: 12px;
-    opacity: 0.65;
-    white-space: nowrap;
-  }
-
-  .grid {
-    margin-top: 18px;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .tile {
-    padding: 16px;
-    border-radius: 18px;
-    border: 1px solid var(--border);
-    background: var(--panelStrong);
-    backdrop-filter: blur(10px);
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .tile:hover {
-    border-color: var(--borderStrong);
-    transform: translateY(-1px);
-    background: var(--panelHover);
-  }
-
-  .tile h3 {
-    margin: 0 0 6px;
-    font-size: 16px;
-  }
-
-  .tile p {
-    margin: 0;
-    opacity: 0.78;
-    line-height: 1.45;
-  }
-
-  @media (max-width: 860px) {
-    .newsGrid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  @media (max-width: 680px) {
-    .grid {
-      grid-template-columns: 1fr;
-    }
+  @media (max-width: 980px) {
+    .pathGrid, .featureGrid, .listGrid, .stats, .split { grid-template-columns: 1fr; }
   }
 </style>
