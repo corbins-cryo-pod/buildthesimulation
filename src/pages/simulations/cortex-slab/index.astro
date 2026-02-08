@@ -89,6 +89,30 @@ import Layout from "../../../layouts/Layout.astro";
             </div>
           </div>
         </label>
+
+        <div class="panelTitle" style="margin-top:12px;">Trace controls</div>
+        <label class="lab">
+          <span style="display:flex;align-items:center;gap:10px;">
+            <input id="spikeBandOn" type="checkbox" />
+            Spike-band filter (display)
+          </span>
+        </label>
+
+        <label class="lab">
+          Threshold (µV)
+          <input id="thrUv" type="number" min="-120" max="-2" step="1" value="-18" />
+        </label>
+
+        <label class="lab">
+          Gain scale
+          <div class="rangeRow">
+            <input id="traceGain" type="range" min="0.5" max="3" step="0.05" value="1" />
+            <div class="rangeMeta">
+              <span class="muted">0.5× to 3×</span>
+              <span id="traceGainLabel" class="muted">1.00×</span>
+            </div>
+          </div>
+        </label>
       </div>
     </aside>
 

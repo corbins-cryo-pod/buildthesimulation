@@ -12,6 +12,7 @@ const ui = {
   elecAdd: $("elecAdd"), elecRemove: $("elecRemove"), elecPrev: $("elecPrev"), elecNext: $("elecNext"),
   elecX: $("elecX"), elecY: $("elecY"), elecZ: $("elecZ"), elecXRange: $("elecXRange"), elecYRange: $("elecYRange"), elecZRange: $("elecZRange"),
   viewReset: $("viewReset"), viewTop: $("viewTop"), viewSide: $("viewSide"),
+  spikeBandOn: $("spikeBandOn"), thrUv: $("thrUv"), traceGain: $("traceGain"), traceGainLabel: $("traceGainLabel"),
 };
 
 const config = {
@@ -76,6 +77,12 @@ const updateSpeedLabel = () => {
 };
 ui.speed?.addEventListener("input", updateSpeedLabel);
 
+const updateTraceGainLabel = () => {
+  if (!ui.traceGainLabel || !ui.traceGain) return;
+  ui.traceGainLabel.textContent = `${Number(ui.traceGain.value).toFixed(2)}×`;
+};
+ui.traceGain?.addEventListener("input", updateTraceGainLabel);
+
 function drawRaster() {
   const w = raster.width, h = raster.height;
   rasterCtx.clearRect(0, 0, w, h);
@@ -92,6 +99,24 @@ function drawRaster() {
   }
 }
 
+function spikeBandFilter(input, sampleRateHz) {
+  // Lightweight display filter: high-pass then low-pass (~300-3000 Hz).
+  const out = new Float32Array(input.length);
+  const hpA = Math.exp(-2 * Math.PI * 300 / sampleRateHz);
+  const lpA = Math.exp(-2 * Math.PI * 3000 / sampleRateHz);
+  let hpY = 0;
+  let hpXPrev = input[0] || 0;
+  let lpY = 0;
+  for (let i = 0; i < input.length; i++) {
+    const x = input[i];
+    hpY = hpA * (hpY + x - hpXPrev);
+    hpXPrev = x;
+    lpY = lpY + (1 - lpA) * (hpY - lpY);
+    out[i] = lpY;
+  }
+  return out;
+}
+
 function drawTracePanels() {
   const w = traces.width, h = traces.height;
   traceCtx.clearRect(0, 0, w, h);
@@ -101,6 +126,9 @@ function drawTracePanels() {
   const tracesByEl = engine.state.tracesByElectrode;
   const n = Math.max(1, Math.min(tracesByEl.length, 6));
   const rowH = h / n;
+  const thrUv = Number(ui.thrUv?.value ?? -18);
+  const gainScale = Number(ui.traceGain?.value ?? 1);
+  const useSpikeBand = !!ui.spikeBandOn?.checked;
 
   for (let i = 0; i < n; i++) {
     const y0 = i * rowH;
@@ -116,9 +144,9 @@ function drawTracePanels() {
     traceCtx.font = "11px Times New Roman";
     traceCtx.fillText(`E${i + 1}`, 8, y0 + 14);
 
-    const t = tracesByEl[i];
-    const scale = 0.33;
-    const thrUv = -18;
+    const raw = tracesByEl[i];
+    const t = useSpikeBand ? spikeBandFilter(raw, config.sampleRateHz) : raw;
+    const scale = 0.33 * gainScale;
     const yThr = yc - thrUv * scale;
 
     traceCtx.strokeStyle = "rgba(255,120,120,0.30)";
@@ -160,6 +188,7 @@ window.addEventListener("resize", resize);
 resize();
 refreshUI();
 updateSpeedLabel();
+updateTraceGainLabel();
 
 canvas.addEventListener("click", (ev) => {
   const hit = scene.pickOnSlab(ev.clientX, ev.clientY);
