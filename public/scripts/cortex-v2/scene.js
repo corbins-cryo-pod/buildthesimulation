@@ -94,10 +94,14 @@ export function createScene(canvas, bounds, neurons) {
     return { xUm: p.x * 1000, yUm: p.y * 1000, zUm: p.z * 1000 };
   }
 
+  function setDragging(active) {
+    controls.enabled = !active;
+  }
+
   function render() {
     controls.update();
     renderer.render(scene, camera);
   }
 
-  return { drawElectrodes, setView, resize, render, pickOnSlab };
+  return { drawElectrodes, setView, resize, render, pickOnSlab, setDragging };
 }

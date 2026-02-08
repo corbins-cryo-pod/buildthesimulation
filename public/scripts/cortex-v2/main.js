@@ -104,7 +104,49 @@ window.addEventListener("resize", resize);
 resize();
 refreshUI();
 
+let dragging = false;
+let dragMoved = false;
+
+canvas.addEventListener("pointerdown", (ev) => {
+  if (ev.button !== 0) return;
+  const hit = scene.pickOnSlab(ev.clientX, ev.clientY);
+  if (!hit) return;
+  dragging = true;
+  dragMoved = false;
+  scene.setDragging(true);
+  canvas.setPointerCapture?.(ev.pointerId);
+  const e = current();
+  e.x = clamp(hit.xUm, -1000, 1000);
+  e.y = clamp(hit.yUm, -1000, 1000);
+  if (ev.shiftKey) e.z = clamp(hit.zUm, 50, 1450);
+  refreshUI();
+});
+
+canvas.addEventListener("pointermove", (ev) => {
+  if (!dragging) return;
+  const hit = scene.pickOnSlab(ev.clientX, ev.clientY);
+  if (!hit) return;
+  dragMoved = true;
+  const e = current();
+  e.x = clamp(hit.xUm, -1000, 1000);
+  e.y = clamp(hit.yUm, -1000, 1000);
+  if (ev.shiftKey) e.z = clamp(hit.zUm, 50, 1450);
+  refreshUI();
+});
+
+function stopDrag(ev) {
+  if (!dragging) return;
+  dragging = false;
+  scene.setDragging(false);
+  if (ev && canvas.releasePointerCapture) {
+    try { canvas.releasePointerCapture(ev.pointerId); } catch {}
+  }
+}
+canvas.addEventListener("pointerup", stopDrag);
+canvas.addEventListener("pointercancel", stopDrag);
+
 canvas.addEventListener("click", (ev) => {
+  if (dragMoved) { dragMoved = false; return; }
   const hit = scene.pickOnSlab(ev.clientX, ev.clientY);
   if (!hit) return;
   const e = current();
