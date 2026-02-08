@@ -18,6 +18,9 @@ export function createScene(canvas, bounds, neurons) {
   controls.minDistance = 1.2;
   controls.maxDistance = 7;
   controls.maxPolarAngle = Math.PI * 0.495;
+  controls.mouseButtons.LEFT = THREE.MOUSE.PAN;
+  controls.mouseButtons.MIDDLE = THREE.MOUSE.ROTATE;
+  controls.mouseButtons.RIGHT = THREE.MOUSE.PAN;
   controls.update();
 
   scene.add(new THREE.AmbientLight(0xffffff, 0.42));
@@ -32,7 +35,7 @@ export function createScene(canvas, bounds, neurons) {
 
   const slab = new THREE.Mesh(
     new THREE.BoxGeometry(umToMm(bounds.max[0] - bounds.min[0]), umToMm(bounds.max[1] - bounds.min[1]), umToMm(bounds.max[2] - bounds.min[2])),
-    new THREE.MeshPhongMaterial({ color: 0xf4efe9, transparent: true, opacity: 0.14 })
+    new THREE.MeshPhongMaterial({ color: 0xf4efe9, transparent: true, opacity: 0.12, depthWrite: false, side: THREE.DoubleSide })
   );
   slab.position.set(0, 0, umToMm((bounds.max[2] + bounds.min[2]) * 0.5));
   scene.add(slab);
@@ -48,7 +51,7 @@ export function createScene(canvas, bounds, neurons) {
   }
   const nCloud = new THREE.Points(
     new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(pts, 3)),
-    new THREE.PointsMaterial({ color: 0xb7c9ff, size: 0.012, transparent: true, opacity: 0.6 })
+    new THREE.PointsMaterial({ color: 0xb7c9ff, size: 0.013, transparent: true, opacity: 0.75, depthTest: false })
   );
   scene.add(nCloud);
 
