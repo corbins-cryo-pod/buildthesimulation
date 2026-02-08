@@ -8,7 +8,7 @@ const traces = $("traces");
 if (!canvas || !raster || !traces) throw new Error("Cortex v2: missing required canvas elements");
 
 const ui = {
-  paused: $("paused"), speed: $("speed"), nShow: $("nShow"), elecMeta: $("elecMeta"),
+  paused: $("paused"), speed: $("speed"), speedLabel: $("speedLabel"), nShow: $("nShow"), elecMeta: $("elecMeta"),
   elecAdd: $("elecAdd"), elecRemove: $("elecRemove"), elecPrev: $("elecPrev"), elecNext: $("elecNext"),
   elecX: $("elecX"), elecY: $("elecY"), elecZ: $("elecZ"), elecXRange: $("elecXRange"), elecYRange: $("elecYRange"), elecZRange: $("elecZRange"),
   viewReset: $("viewReset"), viewTop: $("viewTop"), viewSide: $("viewSide"),
@@ -69,6 +69,12 @@ ui.elecNext?.addEventListener("click", () => { selected = (selected + 1) % elect
 ui.viewReset?.addEventListener("click", () => scene.setView("reset"));
 ui.viewTop?.addEventListener("click", () => scene.setView("top"));
 ui.viewSide?.addEventListener("click", () => scene.setView("side"));
+
+const updateSpeedLabel = () => {
+  if (!ui.speedLabel || !ui.speed) return;
+  ui.speedLabel.textContent = `${Number(ui.speed.value).toFixed(2)}×`;
+};
+ui.speed?.addEventListener("input", updateSpeedLabel);
 
 function drawRaster() {
   const w = raster.width, h = raster.height;
@@ -153,6 +159,7 @@ function resize() { scene.resize(); }
 window.addEventListener("resize", resize);
 resize();
 refreshUI();
+updateSpeedLabel();
 
 canvas.addEventListener("click", (ev) => {
   const hit = scene.pickOnSlab(ev.clientX, ev.clientY);
@@ -170,8 +177,9 @@ function loop(now) {
   last = now;
   if (!ui.paused.checked) {
     const speed = Number(ui.speed.value || 1);
-    const steps = Math.max(1, Math.round(speed));
-    for (let i = 0; i < steps; i++) engine.step((elapsed / steps) * speed, electrodes, selected);
+    const simMs = elapsed * speed;
+    const steps = Math.max(1, Math.ceil(simMs / 16));
+    for (let i = 0; i < steps; i++) engine.step(simMs / steps, electrodes, selected);
   }
   scene.updateNeuronActivity(engine.state.neuronActivity);
   scene.render();
