@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import atlasScriptUrl from "../../scripts/atlas-map.ts?url";
+import atlasScriptUrl from "../../scripts/atlas-map.mjs?url";
 
 const all = await getCollection("companies");
 const posts = all.filter((p) => !p.data.draft);
