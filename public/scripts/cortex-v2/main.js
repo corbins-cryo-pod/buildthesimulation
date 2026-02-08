@@ -211,7 +211,7 @@ function drawTracePanels() {
   const tracesByEl = engine.state.tracesByElectrode;
   const n = Math.max(1, Math.min(tracesByEl.length, 6));
   const rowH = h / n;
-  const thrUv = Number(ui.thrUv?.value ?? -18);
+  const thrUv = Number(ui.thrUv?.value ?? -9);
   const gainScale = Number(ui.traceGain?.value ?? 1);
   const useSpikeBand = !!ui.spikeBandOn?.checked;
 
