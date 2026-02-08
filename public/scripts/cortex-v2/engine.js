@@ -34,6 +34,8 @@ export function createEngine(cfg) {
   const state = {
     tMs: 0,
     recentSpikes: [],
+    detectedSpikes: [],
+    neuronActivity: new Float32Array(neurons.length),
     trace: new Float32Array(traceN),
     neurons,
   };
@@ -41,6 +43,9 @@ export function createEngine(cfg) {
   function step(stepMs, electrode) {
     const dtS = stepMs / 1000;
     const newSpikes = [];
+    const decay = Math.exp(-stepMs / 140);
+    for (let i = 0; i < state.neuronActivity.length; i++) state.neuronActivity[i] *= decay;
+
     for (let i = 0; i < neurons.length; i++) {
       if (rand() < neurons[i].hz * dtS) newSpikes.push({ tMs: state.tMs + rand() * stepMs, idx: i });
     }
@@ -48,17 +53,25 @@ export function createEngine(cfg) {
 
     const addSamp = Math.max(1, Math.floor((stepMs / 1000) * cfg.sampleRateHz));
     const block = new Float32Array(addSamp);
+    const detected = [];
 
     for (const s of newSpikes) {
+      state.neuronActivity[s.idx] = 1;
       const n = neurons[s.idx];
       const r = Math.hypot(n.pos[0] - electrode.x, n.pos[1] - electrode.y, n.pos[2] - electrode.z);
       const gain = cfg.baseUv / (r + cfg.r0Um);
+
+      const detectProb = Math.max(0, Math.min(1, (gain - 0.10) / 0.70));
+      if (rand() < detectProb) detected.push(s);
+
       const i0 = Math.floor(((s.tMs - state.tMs) / 1000) * cfg.sampleRateHz);
       for (let k = 0; k < kernel.length; k++) {
         const j = i0 + k;
         if (j >= 0 && j < block.length) block[j] += gain * kernel[k];
       }
     }
+
+    state.detectedSpikes = state.detectedSpikes.concat(detected).filter((s) => s.tMs > state.tMs - 2000);
 
     const merged = new Float32Array(traceN);
     const keep = traceN - block.length;

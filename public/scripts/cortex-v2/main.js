@@ -78,7 +78,7 @@ function drawRaster() {
   for (let i = 0; i <= 4; i++) { const y = (h * i) / 4; rasterCtx.moveTo(0, y); rasterCtx.lineTo(w, y); }
   rasterCtx.stroke();
   rasterCtx.fillStyle = "#a9bcff";
-  for (const s of engine.state.recentSpikes) {
+  for (const s of engine.state.detectedSpikes) {
     if (s.idx >= nShow || s.tMs < t0) continue;
     const x = ((s.tMs - t0) / 2000) * w, y = ((s.idx + 0.5) / nShow) * h;
     rasterCtx.fillRect(x, y, 2, 2);
@@ -123,6 +123,7 @@ function loop(now) {
     const steps = Math.max(1, Math.round(speed));
     for (let i = 0; i < steps; i++) engine.step((elapsed / steps) * speed, current());
   }
+  scene.updateNeuronActivity(engine.state.neuronActivity);
   scene.render();
   drawRaster();
   drawTrace();
