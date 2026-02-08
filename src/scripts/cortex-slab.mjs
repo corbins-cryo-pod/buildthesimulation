@@ -1,6 +1,161 @@
 import * as THREE from "three";
-import { presetCortexSlabUtah } from "../lib/sim/cortex/presets";
-import { initSim, stepSim } from "../lib/sim/cortex/sim";
+
+function mulberry32(seed) {
+  let a = seed >>> 0;
+  return function rand() {
+    a |= 0;
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function makeCorticalSlab({ boundsUm, nNeurons, seed, conductivitySPerM = 0.3 }) {
+  const rand = mulberry32(seed);
+  const { min, max } = boundsUm;
+  const neurons = [];
+  for (let i = 0; i < nNeurons; i++) {
+    const x = min[0] + rand() * (max[0] - min[0]);
+    const y = min[1] + rand() * (max[1] - min[1]);
+    const tz = rand();
+    const z = min[2] + tz * tz * (max[2] - min[2]);
+    const type = rand() < 0.8 ? "exc" : "inh";
+    const baselineHz = type === "exc" ? 0.5 + rand() * 4 : 1 + rand() * 8;
+    neurons.push({ id: `n${i}`, posUm: [x, y, z], type, baselineHz });
+  }
+  return { id: "cortex-slab", volume: { kind: "slab", boundsUm }, neurons, conductivitySPerM };
+}
+
+function makeUtahArray({ rows = 10, cols = 10, pitchUm = 400, insertionDepthUm = 900 }) {
+  const electrodes = [];
+  const w = (cols - 1) * pitchUm;
+  const h = (rows - 1) * pitchUm;
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const x = c * pitchUm - w / 2;
+      const y = r * pitchUm - h / 2;
+      const z = insertionDepthUm;
+      electrodes.push({ id: `e${r}-${c}`, posUm: [x, y, z], radiusUm: 18, recEnabled: true });
+    }
+  }
+  return { id: "utah-array", kind: "utah-array", electrodes, shankLengthUm: 1500 };
+}
+
+function buildSpikeKernel(sampleRateHz) {
+  const dt = 1 / sampleRateHz;
+  const n = Math.max(8, Math.floor(0.02 * sampleRateHz));
+  const k = new Float32Array(n);
+  const tau1 = 0.0007;
+  const tau2 = 0.0025;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const a = Math.exp(-t / tau1);
+    const b = Math.exp(-t / tau2);
+    k[i] = b - a;
+  }
+  let m = 1e-9;
+  for (let i = 0; i < n; i++) m = Math.max(m, Math.abs(k[i]));
+  for (let i = 0; i < n; i++) k[i] /= m;
+  return k;
+}
+
+function computePotentials({ tissue, implant, spikes, tStartMs, tEndMs, sampleRateHz }) {
+  const dtMs = 1000 / sampleRateHz;
+  const nSamp = Math.max(1, Math.floor((tEndMs - tStartMs) / dtMs));
+  const tracesUv = {};
+  const kernel = buildSpikeKernel(sampleRateHz);
+  const neuronById = new Map(tissue.neurons.map((n) => [n.id, n]));
+  const baseAmpUv = 80;
+  const r0Um = 40;
+
+  for (const e of implant.electrodes) {
+    if (e.recEnabled === false) continue;
+    tracesUv[e.id] = new Float32Array(nSamp);
+  }
+
+  for (const sp of spikes) {
+    if (sp.tMs < tStartMs || sp.tMs >= tEndMs) continue;
+    const n = neuronById.get(sp.neuronId);
+    if (!n) continue;
+    const s0 = Math.floor((sp.tMs - tStartMs) / dtMs);
+    for (const e of implant.electrodes) {
+      if (e.recEnabled === false) continue;
+      const dx = n.posUm[0] - e.posUm[0];
+      const dy = n.posUm[1] - e.posUm[1];
+      const dz = n.posUm[2] - e.posUm[2];
+      const r = Math.hypot(dx, dy, dz);
+      const gain = baseAmpUv / (r + r0Um);
+      const tr = tracesUv[e.id];
+      for (let k = 0; k < kernel.length; k++) {
+        const si = s0 + k;
+        if (si < 0 || si >= tr.length) break;
+        tr[si] += gain * kernel[k];
+      }
+    }
+  }
+
+  return tracesUv;
+}
+
+function presetCortexSlabUtah(seed = 1337) {
+  return {
+    seed,
+    dtMs: 10,
+    sampleRateHz: 1000,
+    tissue: makeCorticalSlab({
+      seed,
+      nNeurons: 1800,
+      boundsUm: { min: [-1000, -1000, 0], max: [1000, 1000, 1500] },
+    }),
+    implant: makeUtahArray({ rows: 10, cols: 10, pitchUm: 400, insertionDepthUm: 900 }),
+  };
+}
+
+function initSim(cfg) {
+  const tracesUv = {};
+  for (const e of cfg.implant.electrodes) tracesUv[e.id] = new Float32Array(0);
+  return { tMs: 0, spikes: [], tracesUv };
+}
+
+function stepSim({ cfg, state, traceWindowS, spikeWindowS, traceElectrodes }) {
+  const rand = mulberry32((cfg.seed ^ Math.floor(state.tMs)) >>> 0);
+  const t0 = state.tMs;
+  const t1 = t0 + cfg.dtMs;
+  const dtS = cfg.dtMs / 1000;
+
+  const spikesNew = [];
+  for (const n of cfg.tissue.neurons) {
+    if (rand() < Math.max(0, n.baselineHz * dtS)) spikesNew.push({ tMs: t0 + rand() * cfg.dtMs, neuronId: n.id });
+  }
+
+  const spikes = state.spikes.concat(spikesNew);
+  const cutoffSpike = t1 - spikeWindowS * 1000;
+  while (spikes.length && spikes[0].tMs < cutoffSpike) spikes.shift();
+
+  const implant = {
+    ...cfg.implant,
+    electrodes: cfg.implant.electrodes.filter((e) => traceElectrodes.includes(e.id)).map((e) => ({ ...e, recEnabled: true })),
+  };
+
+  const block = computePotentials({ tissue: cfg.tissue, implant, spikes: spikesNew, tStartMs: t0, tEndMs: t1, sampleRateHz: cfg.sampleRateHz });
+
+  const nKeep = Math.max(10, Math.floor(traceWindowS * cfg.sampleRateHz));
+  const tracesUv = { ...state.tracesUv };
+
+  for (const eid of traceElectrodes) {
+    const prev = tracesUv[eid] ?? new Float32Array(0);
+    const add = block[eid] ?? new Float32Array(Math.max(1, Math.floor((cfg.dtMs / 1000) * cfg.sampleRateHz)));
+    const next = new Float32Array(Math.min(nKeep, prev.length + add.length));
+    const takePrev = Math.max(0, next.length - add.length);
+    const prevStart = Math.max(0, prev.length - takePrev);
+    if (takePrev) next.set(prev.subarray(prevStart), 0);
+    next.set(add.subarray(Math.max(0, add.length - (next.length - takePrev))), takePrev);
+    tracesUv[eid] = next;
+  }
+
+  return { tMs: t1, spikes, tracesUv };
+}
 
 const $ = (id) => document.getElementById(id);
 
