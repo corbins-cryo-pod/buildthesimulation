@@ -344,6 +344,13 @@ function stripPrefix(title) {
     --grainBlend: multiply;
 
     --compressed-size: 22px;
+    --title-hero: clamp(46px, 5.2vw, 88px);
+    --title-page: clamp(56px, 6vw, 96px);
+    --title-post: clamp(32px, 4.2vw, 46px);
+    --title-section: 22px;
+    --title-card: 22px;
+    --text-meta: 13px;
+    --text-kicker: 12px;
   }
 
   :global(html[data-theme="dark"]) {
@@ -487,7 +494,7 @@ function stripPrefix(title) {
 
   .homeTitle {
     font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
-    font-size: clamp(46px, 5.2vw, 88px);
+    font-size: var(--title-hero);
     line-height: 0.92;
     letter-spacing: 0.008em;
     white-space: nowrap;
@@ -495,7 +502,7 @@ function stripPrefix(title) {
   }
 
   .pageTitle {
-    font-size: clamp(56px, 6vw, 96px);
+    font-size: var(--title-page);
     font-weight: 400;
     line-height: 0.94;
   }

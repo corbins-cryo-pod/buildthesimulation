@@ -296,7 +296,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
 
         .item{display:block;padding:14px 14px;border-radius:14px;border:1px solid var(--border);background:var(--panel);color:inherit;text-decoration:none}
         .item:hover{border-color:var(--borderStrong);transform:translateY(-1px);background:var(--panelHover)}
-        .itemTitle{margin:0;font-size:1em;font-weight:400;line-height:1.12}
+        .itemTitle{margin:0;font-size:var(--title-card);font-weight:400;line-height:1.08}
         .desc{margin:8px 0 0;opacity:.78;line-height:1.7}
 
         .badges{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
