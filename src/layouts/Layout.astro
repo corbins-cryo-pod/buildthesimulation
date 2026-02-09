@@ -17,6 +17,8 @@ const pathname = Astro.url?.pathname ?? "/";
 
 // Display title can be different from <title>
 const displayTitle = pathname === "/" ? "HOW TO ENTER THE SIMULATION" : siteTitle;
+const isSimulationPath = pathname.startsWith("/sim") || pathname.startsWith("/simulations");
+const bodyClass = pathname === "/" ? "home" : isSimulationPath ? "sim-no-compressed" : undefined;
 
 // Build dropdown menus (a mini table of contents) for quick navigation.
 const articles = (await getCollection("articles"))
@@ -72,7 +74,7 @@ function stripPrefix(title) {
     <meta name="description" content={description} />
   </head>
 
-  <body class={pathname === "/" ? "home" : undefined}>
+  <body class={bodyClass}>
     {withHero ? <NerveHero /> : null}
 
     <main class="wrap">
@@ -384,12 +386,11 @@ function stripPrefix(title) {
 
   :global(strong),
   :global(b) {
-    font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
-    font-style: normal;
+    font-family: "Bodoni MT", "Times New Roman", serif;
+    font-style: italic;
     font-weight: 400;
     text-transform: none;
     letter-spacing: 0;
-    font-size: var(--compressed-size);
   }
 
   :global(h1),
@@ -413,6 +414,18 @@ function stripPrefix(title) {
   :global(p),
   :global(li) {
     line-height: 1.38;
+  }
+
+  :global(body.sim-no-compressed h1),
+  :global(body.sim-no-compressed h2),
+  :global(body.sim-no-compressed h3),
+  :global(body.sim-no-compressed h4),
+  :global(body.sim-no-compressed h5),
+  :global(body.sim-no-compressed h6),
+  :global(body.sim-no-compressed .panelTitle),
+  :global(body.sim-no-compressed .stageTitle),
+  :global(body.sim-no-compressed .miniTitle) {
+    font-family: "Bodoni MT", "Times New Roman", serif;
   }
 
   /* subtle paper grain */
