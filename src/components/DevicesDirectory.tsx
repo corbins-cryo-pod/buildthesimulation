@@ -296,7 +296,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
 
         .item{display:block;padding:14px 14px;border-radius:14px;border:1px solid var(--border);background:var(--panel);color:inherit;text-decoration:none}
         .item:hover{border-color:var(--borderStrong);transform:translateY(-1px);background:var(--panelHover)}
-        .itemTitle{margin:0;font-size:1.02em;font-weight:700;line-height:1.25}
+        .itemTitle{margin:0;font-size:1.16em;font-weight:400;line-height:1.12}
         .desc{margin:8px 0 0;opacity:.78;line-height:1.7}
 
         .badges{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
@@ -371,7 +371,7 @@ function FacetMulti(props: {
 
 const facetCss = `
   .facet{margin:0 0 14px;padding:0;border:0}
-  .facetTitle{opacity:.72;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 8px}
+  .facetTitle{opacity:.72;font-size:12px;letter-spacing:.12em;text-transform:none;margin:0 0 8px}
   .facetList{display:grid;gap:8px}
   .row{display:flex;gap:10px;align-items:flex-start;cursor:pointer;user-select:none}
   .row input{margin-top:2px}

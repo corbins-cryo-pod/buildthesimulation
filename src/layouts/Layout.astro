@@ -429,11 +429,7 @@ function stripPrefix(title) {
     padding: 60px 24px 44px;
   }
 
-  :global(body.home) .wrap {
-    max-width: min(98vw, 1800px);
-    padding-left: 18px;
-    padding-right: 18px;
-  }
+  /* home width reset to global .wrap */
 
   .hero {
     display: flex;
@@ -496,8 +492,9 @@ function stripPrefix(title) {
   }
 
   .pageTitle {
-    font-size: 58px;
+    font-size: clamp(56px, 6vw, 96px);
     font-weight: 400;
+    line-height: 0.94;
   }
 
   .sub {
@@ -640,7 +637,7 @@ function stripPrefix(title) {
   @media (max-width: 680px) {
     :global(body) { font-size: 20px; }
     h1 { font-size: 46px; }
-    .pageTitle { font-size: 40px; }
+    .pageTitle { font-size: 54px; }
     .homeTitle {
       white-space: normal;
       font-size: clamp(52px, 14vw, 74px);
