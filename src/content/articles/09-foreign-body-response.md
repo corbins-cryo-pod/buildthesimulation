@@ -10,7 +10,7 @@ The foreign body response (FBR) is not a side effect; it is the environment in w
 
 For neural interfaces, the consequence is that the “electrical interface” is time-dependent. Encapsulation changes distance, impedance, and mechanical coupling.
 
-## The qualitative timeline
+### The qualitative timeline
 
 While details vary by tissue and device, a useful high-level model is:
 
@@ -21,7 +21,7 @@ While details vary by tissue and device, a useful high-level model is:
 
 In brain, glial responses are central. In peripheral nerve, fibrosis and mechanical compression risk can be central.
 
-## Why it matters for signals
+### Why it matters for signals
 
 Encapsulation often behaves like a chronic filter:
 
@@ -30,7 +30,7 @@ Encapsulation often behaves like a chronic filter:
 - it changes stimulation thresholds,
 - and it can increase micromotion by altering mechanical coupling.
 
-## Design levers
+### Design levers
 
 You do not fully control biology, but you can change the regime:
 
@@ -39,7 +39,7 @@ You do not fully control biology, but you can change the regime:
 - minimizing injury during implantation,
 - stable packaging to avoid corrosion products.
 
-## References (starter → expanding)
+### References (starter → expanding)
 
 General overview:
 - Foreign body response: https://en.wikipedia.org/wiki/Foreign_body_response
@@ -51,3 +51,4 @@ Core neural-implant reviews and mechanistic perspectives:
 - *Neural Interfaces for Intracortical Recording: Requirements, Fabrication Methods, and Characteristics.* (review) https://pubmed.ncbi.nlm.nih.gov/29270103/
 
 Notes: I’m building these reference lists up to a heavier baseline across all Phase 2 chapters next.
+

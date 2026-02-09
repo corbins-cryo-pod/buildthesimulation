@@ -28,31 +28,31 @@ links:
 draft: false
 ---
 
-Here’s what moved in **brain–computer interfaces (BCIs)** during **Jan 26–31, 2026** — focused on concrete, dated developments (clinical, company, research, and governance/ethics), not generic trend pieces.
+Here’s what moved in *brain–computer interfaces (BCIs)* during *Jan 26–31, 2026* — focused on concrete, dated developments (clinical, company, research, and governance/ethics), not generic trend pieces.
 
-## 1) Neuralink: trial scale-up + UK site maturity
+### 1) Neuralink: trial scale-up + UK site maturity
 
-Two signals here: **more implanted participants** and **more sites doing repeatable clinical work**.
+Two signals here: *more implanted participants* and *more sites doing repeatable clinical work*.
 
-- Reuters reports Neuralink has **21 total participants** enrolled worldwide (up from 12 reported in Sept 2025), and highlights the company’s focus on learning participant-to-participant variability. (Jan 28)  
+- Reuters reports Neuralink has *21 total participants* enrolled worldwide (up from 12 reported in Sept 2025), and highlights the company’s focus on learning participant-to-participant variability. (Jan 28)  
   <https://www.reuters.com/legal/litigation/elon-musks-neuralink-says-it-has-21-participants-enrolled-trials-2026-01-28/>
 
-- UCLH reports **seven GB‑PRIME patients** participated, with surgeries at the National Hospital for Neurology and Neurosurgery between Oct–Dec 2025; the update includes a clear summary of the N1 system (threads + >1,000 electrodes; R1 robot) and regulatory approvals in the UK. (Jan 29)  
+- UCLH reports *seven GB‑PRIME patients* participated, with surgeries at the National Hospital for Neurology and Neurosurgery between Oct–Dec 2025; the update includes a clear summary of the N1 system (threads + >1,000 electrodes; R1 robot) and regulatory approvals in the UK. (Jan 29)  
   <https://www.uclh.nhs.uk/news/seven-gb-prime-patients-now-participating-neuralink-trial>
 
-**Why it matters:** this week wasn’t “new capability.” It was **scale + operations** — the stuff that determines whether implantable BCIs become a real medical category.
+*Why it matters:* this week wasn’t “new capability.” It was *scale + operations* — the stuff that determines whether implantable BCIs become a real medical category.
 
-## 2) China: Gestala’s ultrasound BCI bet (no implant)
+### 2) China: Gestala’s ultrasound BCI bet (no implant)
 
-WIRED profiled **Gestala**, newly founded in Chengdu with offices in Shanghai and Hong Kong, aiming to use **focused ultrasound** for brain stimulation first — and eventually for reading brain states.
+WIRED profiled *Gestala*, newly founded in Chengdu with offices in Shanghai and Hong Kong, aiming to use *focused ultrasound* for brain stimulation first — and eventually for reading brain states.
 
 - WIRED: <https://www.wired.com/story/this-chinese-startup-wants-to-build-a-new-brain-computer-interface-no-implant-required-gestalta/>
 
 The piece also includes the obvious skepticism: ultrasound signal distortion through the skull, and that an ultrasound “read” often correlates to blood-flow dynamics rather than direct electrical activity.
 
-**Why it matters:** the competitive frontier isn’t just implant vs implant; it’s increasingly **implantable electrical recording vs noninvasive modalities**.
+*Why it matters:* the competitive frontier isn’t just implant vs implant; it’s increasingly *implantable electrical recording vs noninvasive modalities*.
 
-## 3) Ecosystem signal: Precision-hosted student hackathon (tooling matters)
+### 3) Ecosystem signal: Precision-hosted student hackathon (tooling matters)
 
 Boston.com covered a two-day BCI hackathon hosted by Precision Neuroscience, with students working on:
 - signal decoding models
@@ -63,29 +63,30 @@ They also note teams worked with real animal neural data.
 
 - Boston.com: <https://www.boston.com/news/technology/2026/01/27/students-hack-their-way-into-the-future-of-brain-computer-interfaces/>
 
-**Why it matters:** developer workflows and data pipelines are becoming first-class bottlenecks — not just electrodes.
+*Why it matters:* developer workflows and data pipelines are becoming first-class bottlenecks — not just electrodes.
 
-## 4) Ethics / continuity-of-care: what happens when trials end?
+### 4) Ethics / continuity-of-care: what happens when trials end?
 
 Medtech Insight highlighted a problem that becomes non-optional as implant counts rise: if a BCI program winds down, participants may have limited support options.
 
 - Medtech Insight / Citeline: <https://insights.citeline.com/medtech-insight/device-area/neurology/when-brain-computer-interfaces-fail-human-trial-participants-have-few-options-4L44UJCEHZFZLEFAN6WGWUKY6I/>
 
-**Why it matters:** as soon as implants leave the “rare research demo” stage, the field inherits normal med-device obligations: support, upgrades, explant pathways, warranties, and long-term responsibility.
+*Why it matters:* as soon as implants leave the “rare research demo” stage, the field inherits normal med-device obligations: support, upgrades, explant pathways, warranties, and long-term responsibility.
 
-## Research signals published in that same window
+### Research signals published in that same window
 
 Not big newsroom headlines, but real literature landing around this week:
 
-- **Graphene / hybrid stimulation + recording**: a paper dated Jan 30, 2026 describes a noninvasive graphene BCI integrating EEG recording and “acoustic-optical stimulation.”  
+- *Graphene / hybrid stimulation + recording*: a paper dated Jan 30, 2026 describes a noninvasive graphene BCI integrating EEG recording and “acoustic-optical stimulation.”  
   PubMed: <https://pubmed.ncbi.nlm.nih.gov/41618548/>
 
-- **Rehab integration**: an Annals of Neurology pilot RCT (online Jan 2, 2026) evaluates BCI-controlled exoskeleton training for lower-limb rehab after spinal cord injury.  
+- *Rehab integration*: an Annals of Neurology pilot RCT (online Jan 2, 2026) evaluates BCI-controlled exoskeleton training for lower-limb rehab after spinal cord injury.  
   PubMed: <https://pubmed.ncbi.nlm.nih.gov/41480666/>
 
-## Thread that ties the week together
+### Thread that ties the week together
 
 Late January 2026 was mostly about:
-- **Scaling implant trials** (participants, sites, geography)
-- **New competitive vectors** (ultrasound noninvasive bets)
-- **Ecosystem maturation** (tooling/dev talent + lifecycle ethics)
+- *Scaling implant trials* (participants, sites, geography)
+- *New competitive vectors* (ultrasound noninvasive bets)
+- *Ecosystem maturation* (tooling/dev talent + lifecycle ethics)
+

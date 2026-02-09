@@ -10,7 +10,7 @@ Device design and implantation strategy are inseparable. Two identical devices c
 
 This chapter is about “implantation as engineering”: geometry, workflow, failure modes, and why complex implantation methods are not just surgical bravado—they are sometimes required to satisfy mechanical constraints.
 
-## Geometry is not optional
+### Geometry is not optional
 
 In peripheral nerve, the nerve moves. In cortex, tissue moves relative to skull-fixed anchors. In both cases, if you don’t control geometry, biology will.
 
@@ -21,7 +21,7 @@ Implantation strategy is how you decide:
 - where strain accumulates,
 - and how the system behaves during everyday motion.
 
-## Complex implantation methods: why they might be necessary
+### Complex implantation methods: why they might be necessary
 
 Complexity may be justified if it reduces chronic risk:
 
@@ -30,7 +30,7 @@ Complexity may be justified if it reduces chronic risk:
 - routing leads to minimize fatigue,
 - improving repeatability and alignment.
 
-## Workflow is a constraint
+### Workflow is a constraint
 
 If a device requires an unrealistic workflow, it will not translate. A good implantation plan is:
 
@@ -38,8 +38,9 @@ If a device requires an unrealistic workflow, it will not translate. A good impl
 - tolerant to anatomical variability,
 - and compatible with real surgical time and tools.
 
-## References (starter)
+### References (starter)
 
 - Surgical workflow context (general implant concepts): https://en.wikipedia.org/wiki/Implant_(medicine)
 
 *(We’ll add peripheral nerve implant technique reviews and chronic failure analyses next.)*
+

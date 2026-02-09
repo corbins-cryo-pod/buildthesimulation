@@ -10,7 +10,7 @@ Regeneration is where the peripheral nerve story becomes fundamentally different
 
 This chapter frames regeneration in a way that is useful for engineering regenerative and biohybrid interfaces.
 
-## What counts as “regeneration”
+### What counts as “regeneration”
 
 Regeneration is not a single thing. Depending on context, success might mean:
 
@@ -22,7 +22,7 @@ Regeneration is not a single thing. Depending on context, success might mean:
 
 For a regenerative neural interface, the last point is often the hard one: can you create a geometry that stays useful?
 
-## Guidance: geometry is biology
+### Guidance: geometry is biology
 
 Guidance channels, conduits, and scaffolds are attempts to impose geometry on regrowing axons.
 
@@ -34,7 +34,7 @@ From an interface perspective, guidance is attractive because it may allow:
 
 But it also adds validation complexity: you now have a time-dependent biological system, and your device performance is coupled to healing.
 
-## Engineering constraints
+### Engineering constraints
 
 Regenerative strategies are constrained by:
 
@@ -43,8 +43,9 @@ Regenerative strategies are constrained by:
 - mechanical robustness under motion,
 - manufacturability and sterilization.
 
-## References (starter)
+### References (starter)
 
 - Overview + pointers (peripheral nerve injury/regeneration): https://en.wikipedia.org/wiki/Peripheral_nerve_injury
 
 *(We’ll add review papers on conduits/scaffolds and regenerative peripheral nerve interfaces next.)*
+

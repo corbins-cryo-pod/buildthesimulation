@@ -14,11 +14,11 @@ tags: ["BCI", "iBCI", "neural decoding", "neuroprosthetics", "clinical translati
 draft: false
 ---
 
-Stanford is one of the clearest examples of a **full-stack intracortical BCI ecosystem**: deep basic science + decoder engineering + **human clinical translation** through an organized translational program, plus adjacent implantable neurotechnology work that reinforces real-world “translation muscle.”
+Stanford is one of the clearest examples of a *full-stack intracortical BCI ecosystem*: deep basic science + decoder engineering + *human clinical translation* through an organized translational program, plus adjacent implantable neurotechnology work that reinforces real-world “translation muscle.”
 
-A useful way to map Stanford is: **(1) clinic-facing intracortical BCIs, (2) decoder foundations, (3) closed-loop implant neurotech adjacent to BCI.**
+A useful way to map Stanford is: *(1) clinic-facing intracortical BCIs, (2) decoder foundations, (3) closed-loop implant neurotech adjacent to BCI.*
 
-## Featured groups (starting set)
+### Featured groups (starting set)
 
 ### 1) Neural Prosthetics Translational Laboratory (NPTL) — human intracortical BCIs
 - NPTL: <https://nptl.stanford.edu/>
@@ -35,7 +35,7 @@ Representative publications:
 ### 2) Neural Prosthetic Systems Lab (Shenoy) — decoder foundations feeding translation
 - Shenoy faculty page: <https://bioengineering.stanford.edu/people/krishna-shenoy>
 
-## Adjacent closed-loop implant neurotechnology (BCI-adjacent)
+### Adjacent closed-loop implant neurotechnology (BCI-adjacent)
 
 ### Brain Interfacing Laboratory (Bronte-Stewart) — sensing neurostimulators and adaptive DBS
 - Lab page: <https://med.stanford.edu/bronte-stewart-lab.html>
@@ -43,5 +43,6 @@ Representative publications:
 
 Even when the end goal is not “cursor control,” the core pattern is the same: implant → sense → decode state → act in a closed loop.
 
-## Institutional signal
+### Institutional signal
 - Stanford Wu Tsai “Brain-Computer Interfaces” news hub: <https://neuroscience.stanford.edu/news/brain-computer-interfaces>
+

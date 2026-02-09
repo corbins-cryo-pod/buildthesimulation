@@ -14,12 +14,12 @@ tags: ["BCI", "lab", "neural engineering", "UF", "decoding", "neuromodulation", 
 draft: false
 ---
 
-The **University of Florida (UF)** has an ecosystem-level footprint in BCI/neurotechnology spanning:
-1) **neural decoding** (including MEG-based speech/phoneme decoding work),
-2) **clinical neurotech + neuromodulation / brain mapping**, and
-3) **interface biology / biomaterials**.
+The *University of Florida (UF)* has an ecosystem-level footprint in BCI/neurotechnology spanning:
+1) *neural decoding* (including MEG-based speech/phoneme decoding work),
+2) *clinical neurotech + neuromodulation / brain mapping*, and
+3) *interface biology / biomaterials*.
 
-## Featured groups (starting set)
+### Featured groups (starting set)
 
 ### 1) UF Neurology iBRAIN Lab — noninvasive speech/BCI decoding (MEG + deep learning)
 - Lab: <https://neurology.ufl.edu/ibrain-lab/>
@@ -39,10 +39,11 @@ One representative paper in this thread:
 ### 4) Schmidt Lab (Christine Schmidt) — biomaterials for regeneration and neural interfacing
 - Lab: <https://faculty.eng.ufl.edu/schmidt/>
 
-## Evidence of structured neural engineering training
+### Evidence of structured neural engineering training
 - UF BME home: <https://bme.ufl.edu/>
 - Neural engineering course syllabus (example): <https://bme.ufl.edu/wp-content/uploads/sites/69/2025/11/Spring-2024_BME-6360-Neural-Engineering-Syllabus.pdf>
 
-## Clean claims you can make (with sources)
+### Clean claims you can make (with sources)
 1) UF Neurology publicly describes BCI work aimed at synthesizing speech from neural activity using MEG and deep learning. <https://neurology.ufl.edu/ibrain-lab/research-2/bci/>
-2) UF BME explicitly organizes **Neural Engineering** as a faculty/research area. <https://bme.ufl.edu/people/faculty/cat/primary-faculty/neural-engineering/>
+2) UF BME explicitly organizes *Neural Engineering* as a faculty/research area. <https://bme.ufl.edu/people/faculty/cat/primary-faculty/neural-engineering/>
+

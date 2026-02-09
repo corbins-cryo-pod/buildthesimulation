@@ -28,31 +28,31 @@ links:
 draft: false
 ---
 
-Here’s what moved in **brain–computer interfaces (BCIs)** during **Jan 1–7, 2026** — grouped into the themes that actually shifted the field.
+Here’s what moved in *brain–computer interfaces (BCIs)* during *Jan 1–7, 2026* — grouped into the themes that actually shifted the field.
 
-## 1) Implantable / clinical BCIs: Neuralink signals “production mode”
+### 1) Implantable / clinical BCIs: Neuralink signals “production mode”
 
 Neuralink didn’t publish a new clinical performance dataset this week, but it did send an operations signal.
 
-- Reuters reports Musk said Neuralink would start **“high-volume production”** of BCI devices and move to an **entirely automated surgical procedure** in 2026. (Reuters timestamped Dec 31, 2025 / Jan 1, 2026)  
+- Reuters reports Musk said Neuralink would start *“high-volume production”* of BCI devices and move to an *entirely automated surgical procedure* in 2026. (Reuters timestamped Dec 31, 2025 / Jan 1, 2026)  
   <https://www.reuters.com/business/healthcare-pharmaceuticals/musk-says-neuralink-start-high-volume-production-interface-devices-by-2026-2026-01-01/>
 
-**Why it mattered:** the storyline is shifting from “first-in-human demos” to **manufacturing + procedure throughput** — which determines whether implants stay boutique or become a real medical platform.
+*Why it mattered:* the storyline is shifting from “first-in-human demos” to *manufacturing + procedure throughput* — which determines whether implants stay boutique or become a real medical platform.
 
-## 2) Regulation and standards: China’s BCI terminology standard takes effect
+### 2) Regulation and standards: China’s BCI terminology standard takes effect
 
-A TechNode report notes China’s NMPA approved and released an industry standard for **BCI medical-device terminology**, effective **Jan 1, 2026**.
+A TechNode report notes China’s NMPA approved and released an industry standard for *BCI medical-device terminology*, effective *Jan 1, 2026*.
 
 - TechNode: <https://technode.com/2025/09/17/china-issues-first-industry-standard-for-brain-computer-interface-medical-devices/>
 
-**Why it mattered:** standards sound boring, but they’re prerequisite infrastructure for:
+*Why it mattered:* standards sound boring, but they’re prerequisite infrastructure for:
 - consistent regulatory review
 - procurement/hospital adoption
 - component ecosystems that interoperate
 
-## 3) CES week: consumer “BCI-adjacent” neurotech steps forward
+### 3) CES week: consumer “BCI-adjacent” neurotech steps forward
 
-This week overlaps with **CES 2026 (Jan 6–9)**. The BCI story at CES wasn’t “telepathy” — it was **noninvasive sensing + hands-free control**.
+This week overlaps with *CES 2026 (Jan 6–9)*. The BCI story at CES wasn’t “telepathy” — it was *noninvasive sensing + hands-free control*.
 
 ### Neurable × HyperX: brain-sensing gaming headset prototype
 
@@ -62,7 +62,7 @@ This week overlaps with **CES 2026 (Jan 6–9)**. The BCI story at CES wasn’t 
 - TechRadar did hands-on coverage describing EEG sensors + a biofeedback “priming” workflow for improving focus consistency.  
   <https://www.techradar.com/gaming/gaming-accessories/hyperx-is-working-with-brain-scanning-company-neurable-on-a-gaming-headset-that-aims-to-offer-prevention-of-tilt-and-good-practice-not-crap-practice>
 
-**Why it mattered:** whether these should be called “BCIs” is debatable, but the consumer push can drive:
+*Why it mattered:* whether these should be called “BCIs” is debatable, but the consumer push can drive:
 - better dry electrodes
 - better on-device signal processing
 - better UX expectations
@@ -75,17 +75,18 @@ This week overlaps with **CES 2026 (Jan 6–9)**. The BCI story at CES wasn’t 
 - LA Times CES coverage highlighted Naqi as an accessibility standout.  
   <https://www.latimes.com/b2b/ai-technology/story/2026-01-06/ces-2026-physical-ai-robotics-quantum-computing-trends>
 
-## 4) Narrative shift: “medical device reality vs sci‑fi framing”
+### 4) Narrative shift: “medical device reality vs sci‑fi framing”
 
 STAT ran a piece on the tension between brain implants as regulated medical devices versus transhumanist / AI-symbiosis rhetoric. It’s paywalled beyond the intro, but it still signals where public narrative friction is building.
 
 - STAT: <https://www.statnews.com/2026/01/05/neuralink-brain-computer-interface-medical-device-vs-transhumanism/>
 
-**Why it mattered:** early January is when investors, editors, and conferences set “the story of the year.” That affects regulators, clinical partners, and public tolerance for risk.
+*Why it mattered:* early January is when investors, editors, and conferences set “the story of the year.” That affects regulators, clinical partners, and public tolerance for risk.
 
-## Thread that ties the week together
+### Thread that ties the week together
 
 Week 1 of 2026 was mostly:
-- **Implants moving toward scale** (manufacturing + automated procedure goals)
-- **China laying standards groundwork**
-- **Consumer neurotech showing up at CES** as “hands-free control” and “focus coaching” products
+- *Implants moving toward scale* (manufacturing + automated procedure goals)
+- *China laying standards groundwork*
+- *Consumer neurotech showing up at CES* as “hands-free control” and “focus coaching” products
+

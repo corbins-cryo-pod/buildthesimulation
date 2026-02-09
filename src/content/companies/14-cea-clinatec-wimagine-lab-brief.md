@@ -15,7 +15,7 @@ draft: false
 ---
 CEA‑Clinatec (Grenoble, France) is widely cited for an eye-catching demonstration: a person with tetraplegia controlling a heavy exoskeleton via implanted brain interfaces.
 
-## Reported demonstration (media coverage)
+### Reported demonstration (media coverage)
 
 A summary writeup (with links out to more coverage) describes:
 - electrode grids implanted over sensorimotor cortex
@@ -28,20 +28,21 @@ A summary writeup (with links out to more coverage) describes:
 
 (That page links to BBC coverage.)
 
-## Why it matters
+### Why it matters
 
 Even if the system is not a near-term product, it demonstrates:
 - feasibility of high-level whole-body assistive control
 - the importance of decoder training + interface design
 - the practical realities (weight, balance, safety harness) that separate demos from products
 
-## What to watch
+### What to watch
 
-1) **Peer-reviewed publications** describing the implanted system and decoding pipeline
-2) **Transition from lab prototype → usable assistive device**
-3) **Long-term signal stability** with implanted ECoG
+1) *Peer-reviewed publications* describing the implanted system and decoding pipeline
+2) *Transition from lab prototype → usable assistive device*
+3) *Long-term signal stability* with implanted ECoG
 
 ---
 
 ### Notes on sourcing
 Draft. This entry is currently anchored in a secondary summary article; we should replace/add primary publications and institutional pages for WIMAGINE/Clinatec.
+

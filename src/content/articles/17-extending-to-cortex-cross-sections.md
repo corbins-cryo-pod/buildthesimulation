@@ -10,13 +10,13 @@ A cortex sandbox should not just be “the nerve simulator but in brain.” Cort
 
 If the nerve sandbox is about fascicles and motion, the cortex sandbox is often about layers, vasculature constraints, and chronic stability under micromotion.
 
-## What changes when you move to cortex
+### What changes when you move to cortex
 
 - target signals: fields vs units depending on modality
 - tissue structure: layered organization and local circuits
 - constraints: surgical access, vasculature, micromotion
 
-## What the model should enable
+### What the model should enable
 
 Early versions should support:
 
@@ -26,7 +26,8 @@ Early versions should support:
 
 …and visualization of sampling/recruitment proxies.
 
-## References (starter)
+### References (starter)
 
 - Cortex overview: https://en.wikipedia.org/wiki/Cerebral_cortex
 - Electrocorticography overview: https://en.wikipedia.org/wiki/Electrocorticography
+

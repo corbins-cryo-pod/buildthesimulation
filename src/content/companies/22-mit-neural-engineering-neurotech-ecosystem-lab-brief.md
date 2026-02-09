@@ -14,9 +14,9 @@ tags: ["BCI", "neural interfaces", "neurotechnology", "bioelectronics", "decodin
 draft: false
 ---
 
-MIT’s BCI footprint is best understood as an **enabling-technology powerhouse**: rather than being dominated by one flagship clinical intracortical BCI program, MIT produces a dense set of labs pushing core layers BCIs depend on — **interfaces (materials/devices), sensing + stimulation/modulation modalities, and decoding/analysis infrastructure** — plus training programs explicitly aimed at neurotechnology.
+MIT’s BCI footprint is best understood as an *enabling-technology powerhouse*: rather than being dominated by one flagship clinical intracortical BCI program, MIT produces a dense set of labs pushing core layers BCIs depend on — *interfaces (materials/devices), sensing + stimulation/modulation modalities, and decoding/analysis infrastructure* — plus training programs explicitly aimed at neurotechnology.
 
-## Ecosystem hub / training
+### Ecosystem hub / training
 
 ### Center for Neurobiological Engineering (CNBE)
 - About: <https://web.mit.edu/cnbe/about.html>
@@ -25,7 +25,7 @@ MIT’s BCI footprint is best understood as an **enabling-technology powerhouse*
 
 CNBE is a clean justification for “MIT as a BCI school” even when individual labs aren’t branded as “BCI labs”: it is explicitly built to accelerate neurotechnology creation, adoption, and training.
 
-## Featured labs (starting set)
+### Featured labs (starting set)
 
 ### Polina Anikeeva — Bioelectronics Group (interfaces + minimally invasive modulation)
 - Faculty page: <https://dmse.mit.edu/people/faculty/polina-anikeeva/>
@@ -43,5 +43,6 @@ Representative sources:
 ### Picower Institute — neurotechnology toolbox layer (sensors, recording, imaging, analysis)
 - Neurotechnology page: <https://picower.mit.edu/research/neurotechnology>
 
-## Translation-relevant neurotech (example)
+### Translation-relevant neurotech (example)
 - MIT News (implant concept coverage): <https://news.mit.edu/2025/new-therapeutic-brain-implants-defy-surgery-need-1105>
+

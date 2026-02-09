@@ -14,14 +14,14 @@ tags: ["BCI", "iBCI", "neuroengineering", "neurosurgery", "decoding", "biohybrid
 draft: false
 ---
 
-The **University of Pennsylvania (Penn / UPenn)** is one of the stronger “full-stack” BCI ecosystems in the U.S., with credible depth across:
-- **implantable / clinical-facing brain–machine interface (BMI) work** (neurosurgery + neurology + engineering),
-- **neural decoding + machine learning** (methods that generalize beyond a single dataset), and
-- **interface biology + biohybrid constructs** (the “living electrode” direction).
+The *University of Pennsylvania (Penn / UPenn)* is one of the stronger “full-stack” BCI ecosystems in the U.S., with credible depth across:
+- *implantable / clinical-facing brain–machine interface (BMI) work* (neurosurgery + neurology + engineering),
+- *neural decoding + machine learning* (methods that generalize beyond a single dataset), and
+- *interface biology + biohybrid constructs* (the “living electrode” direction).
 
-A useful way to map Penn is: **(1) clinical neuroengineering & implantable systems, (2) decoding/methods, (3) tissue-engineered interfaces.**
+A useful way to map Penn is: *(1) clinical neuroengineering & implantable systems, (2) decoding/methods, (3) tissue-engineered interfaces.*
 
-## Featured groups (starting set)
+### Featured groups (starting set)
 
 ### 1) Richardson Lab (Neurosurgery) — clinic-facing brain–machine interfaces
 - Lab site: <https://www.med.upenn.edu/richardsonlab/>
@@ -37,7 +37,7 @@ Penn’s neurosurgery-facing BMI work matters because it is forced to care about
 - Penn Neurology “Translational Centers of Excellence” page (mentions CNT): <https://www.med.upenn.edu/neurology/tce.html>
 - Litt Lab: <https://littlab.seas.upenn.edu/>
 
-CNT/Litt is a Penn signature: **device + data + clinical workflow** under one umbrella.
+CNT/Litt is a Penn signature: *device + data + clinical workflow* under one umbrella.
 
 ### 4) Kording Lab — decoding and ML methods (BCI-enabling infrastructure)
 - Lab: <https://kordinglab.com/>
@@ -50,7 +50,8 @@ A lot of usable BCI progress is methods progress: robustness, generalization, ca
 Penn’s “interface biology” thread is a real differentiator. One representative, directly relevant paper on engineered axonal tracts as “living electrodes”:
 - Serruya MD, et al. *Engineered Axonal Tracts as “Living Electrodes” for Synaptic-Based Modulation of Neural Circuitry.* PubMed: <https://pubmed.ncbi.nlm.nih.gov/34045935/>
 
-## Clean claims you can make (with sources)
-1) Penn has multiple labs explicitly describing **brain–machine interface / BCI** research aims (e.g., Richardson, Pesaran).
-2) Penn has an institutional translation push via **CNT**, bridging Perelman School of Medicine and Penn Engineering. <https://www.med.upenn.edu/neurology/tce.html>
-3) Penn has a serious **biohybrid / living electrode** thread targeting chronic interface biology constraints. <https://pubmed.ncbi.nlm.nih.gov/34045935/>
+### Clean claims you can make (with sources)
+1) Penn has multiple labs explicitly describing *brain–machine interface / BCI* research aims (e.g., Richardson, Pesaran).
+2) Penn has an institutional translation push via *CNT*, bridging Perelman School of Medicine and Penn Engineering. <https://www.med.upenn.edu/neurology/tce.html>
+3) Penn has a serious *biohybrid / living electrode* thread targeting chronic interface biology constraints. <https://pubmed.ncbi.nlm.nih.gov/34045935/>
+

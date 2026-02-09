@@ -10,7 +10,7 @@ If you only look at neural interfaces electrically, you will repeatedly be surpr
 
 The goal of this chapter is to give you the mechanical intuition that guides good interface design: what loads exist, how failure accumulates, and why the same device can perform differently depending on where and how it is implanted.
 
-## Mechanical mismatch is the default
+### Mechanical mismatch is the default
 
 Brain tissue is soft and viscoelastic. Peripheral nerves glide and stretch with limb motion. Devices are typically stiffer and have different fatigue behavior.
 
@@ -21,17 +21,17 @@ This mismatch creates relative motion at the interface. Over time, relative moti
 - crack initiation and trace fracture,
 - and migration or rotation of devices.
 
-## Cortex: soft tissue with skull-fixed hardware
+### Cortex: soft tissue with skull-fixed hardware
 
 In cortical systems, a classic failure mode is the mismatch between tissue motion and skull-fixed anchoring. Even small micromotions can matter when you are trying to record from micron-scale sources.
 
-## Peripheral nerve: glide, stretch, compression
+### Peripheral nerve: glide, stretch, compression
 
 Peripheral nerve interfaces are often exposed to large cyclic motion. A nerve can translate, elongate, and change cross-sectional shape. This turns selectivity into a moving target.
 
 It also creates strict safety constraints: chronic compression can injure nerve, and repeated shear can damage tissue or leads.
 
-## Strain relief and tethering strategy
+### Strain relief and tethering strategy
 
 A durable design usually has an explicit plan for how mechanical loads are handled:
 
@@ -40,13 +40,13 @@ A durable design usually has an explicit plan for how mechanical loads are handl
 - How does the lead route avoid concentrated bending?
 - What happens during extreme joint angles?
 
-## Design heuristic: robustness beats perfection
+### Design heuristic: robustness beats perfection
 
 Many prototypes aim for perfect geometry in a static picture. Chronic systems win by being robust across motion.
 
 If a device only works when everything is aligned perfectly, it will fail in the body.
 
-## References (starter → expanding)
+### References (starter → expanding)
 
 General overview:
 - Foreign body response (related context): https://en.wikipedia.org/wiki/Foreign_body_response
@@ -57,3 +57,4 @@ Mechanics/micromotion and chronic performance links:
 - *Ultra-miniature ultra-compliant neural probes with dissolvable delivery needles: design, fabrication and characterization.* https://pubmed.ncbi.nlm.nih.gov/27778225/
 - *A self-stiffening compliant intracortical microprobe.* https://pubmed.ncbi.nlm.nih.gov/38345721/
 - *Amorphous silicon carbide probe mechanics for insertion in the cerebral cortex of rats, pigs, and macaques.* https://pubmed.ncbi.nlm.nih.gov/40398441/
+

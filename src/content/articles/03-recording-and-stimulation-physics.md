@@ -8,15 +8,15 @@ draft: false
 
 This article is the “minimum viable physics” for interfaces: enough to reason about why one design wins over another *for a specific goal*, and why so many projects fail for reasons that aren’t glamorous (geometry, impedance drift, packaging, artifacts).
 
-The main theme is simple: **geometry dominates**. If you remember that, you can usually debug the rest.
+The main theme is simple: *geometry dominates*. If you remember that, you can usually debug the rest.
 
-## A usable mental model
+### A usable mental model
 
-Electrodes don’t “read neurons.” They measure **extracellular potentials** shaped by distance, conductivity, referencing, and filtering. Likewise, stimulation doesn’t “activate a neuron” directly; it creates an electric field that biases membrane potential, and you recruit whichever fibers cross threshold under that field.
+Electrodes don’t “read neurons.” They measure *extracellular potentials* shaped by distance, conductivity, referencing, and filtering. Likewise, stimulation doesn’t “activate a neuron” directly; it creates an electric field that biases membrane potential, and you recruit whichever fibers cross threshold under that field.
 
 In both cases, you are working in an analog, messy medium: tissue moves, impedance changes, and your electronics have limits.
 
-## Recording: what you’re actually measuring
+### Recording: what you’re actually measuring
 
 Extracellular voltages are often small (tens to hundreds of microvolts for many signals). That makes you sensitive to things that look like afterthoughts:
 
@@ -27,13 +27,13 @@ Extracellular voltages are often small (tens to hundreds of microvolts for many 
 
 A practical diagnostic habit is to keep a way to view wideband raw signals and to track impedance over time (when your hardware allows it). If you can’t measure it, you can’t improve it.
 
-## Noise and drift (the chronic reality)
+### Noise and drift (the chronic reality)
 
 Noise is not just electronic; it is often mechanical and biological. Motion artifact can dominate when interfaces flex, slip, or experience microfractures. Drift happens when the geometry changes (micromotion), when tissue encapsulates the electrode, or when the electrode surface changes.
 
 If you plan to do closed-loop work, you should treat drift as a design requirement, not a surprise.
 
-## Stimulation: dosing with constraints
+### Stimulation: dosing with constraints
 
 Stimulation is ultimately constrained by electrochemistry and heating. Engineers tend to think in terms of waveform parameters; biology forces you to think in terms of safety bounds.
 
@@ -62,7 +62,7 @@ Current-controlled stimulation is common because it makes delivered charge more 
 
 A safe default philosophy is charge-balanced biphasic pulses with conservative charge density, then iterative tuning with explicit monitoring.
 
-## Artifacts: co-design, not cleanup
+### Artifacts: co-design, not cleanup
 
 If you stimulate and record, artifacts will often be larger than your signals by orders of magnitude. Pretending you can “filter it out later” is how you end up with blind windows that break control loops.
 
@@ -74,14 +74,15 @@ Artifact mitigation usually requires co-design across:
 - synchronized blanking and timing,
 - grounding/shielding/reference strategy.
 
-## Peripheral nerve vs cortex: same physics, different operating regime
+### Peripheral nerve vs cortex: same physics, different operating regime
 
 Cortex and peripheral nerve share the same core physics, but different terms dominate.
 
 In cortex, micromotion and foreign body response often dominate chronic unit yield and stability. In peripheral nerve, anatomy and biomechanics (fascicles, connective tissue layers, glide/stretch/compression) often dominate selectivity and long-term reliability. The consequence is that “clever decoding” cannot rescue a fragile mechanical design in either location.
 
-## References (starter)
+### References (starter)
 
 - Overview + pointers: https://en.wikipedia.org/wiki/Electrophysiology
 - D. R. Merrill, M. Bikson, J. G. R. Jefferys (2005). *Electrical stimulation of excitable tissue: design of efficacious and safe protocols.* Journal of Neuroscience Methods. https://pubmed.ncbi.nlm.nih.gov/15661300/
 - S. F. Cogan (2008). *Neural stimulation and recording electrodes.* Annual Review of Biomedical Engineering. https://pubmed.ncbi.nlm.nih.gov/18429704/ (mirror PDF: https://microprobes.com/files/pdf/publications/gen-knowledge/cogan_2008_neural_stimulation.pdf)
+

@@ -10,7 +10,7 @@ Electrical stimulation is the workhorse of neurotechnology because it works with
 
 This chapter compares modalities with an engineer’s lens: what you get, what you pay, and what constraints dominate.
 
-## Electrical stimulation
+### Electrical stimulation
 
 Electrical stimulation is constrained primarily by:
 
@@ -21,7 +21,7 @@ Electrical stimulation is constrained primarily by:
 
 It is clinically proven in many contexts (e.g., DBS, peripheral stimulation).
 
-## Optogenetics (conceptual power, practical complexity)
+### Optogenetics (conceptual power, practical complexity)
 
 Optogenetics can provide a different kind of selectivity, but it requires:
 
@@ -32,13 +32,14 @@ Optogenetics can provide a different kind of selectivity, but it requires:
 
 In many real-world settings, the biological preparation and regulatory burden dominate.
 
-## How to choose (a practical stance)
+### How to choose (a practical stance)
 
 If your goal is near-term translation, electrical stimulation is usually the default. If your goal is to explore future capabilities and you can tolerate biological complexity, optogenetics becomes interesting.
 
-## References (starter)
+### References (starter)
 
 - Optogenetics overview: https://en.wikipedia.org/wiki/Optogenetics
 - D. R. Merrill, M. Bikson, J. G. R. Jefferys (2005). *Electrical stimulation of excitable tissue: design of efficacious and safe protocols.* Journal of Neuroscience Methods. https://pubmed.ncbi.nlm.nih.gov/15661300/
 
 *(We’ll add modality-specific reviews for peripheral nerve optogenetics and optical propagation in tissue next.)*
+

@@ -8,7 +8,7 @@ draft: false
 
 A 2D cross-section model is the highest-leverage starting point for the simulation roadmap. It is simple enough to run in the browser and intuitive enough to teach. It also captures the first-order truth: in many regimes, selectivity and recruitment are geometry problems.
 
-## What the sandbox should let you do
+### What the sandbox should let you do
 
 At minimum:
 
@@ -18,7 +18,7 @@ At minimum:
 - see field/recruitment proxies,
 - export/import settings.
 
-## What we can measure (early proxies)
+### What we can measure (early proxies)
 
 We won’t claim perfect biophysics at v1. But we can compute useful proxies:
 
@@ -27,10 +27,11 @@ We won’t claim perfect biophysics at v1. But we can compute useful proxies:
 - threshold-like contours (relative, not absolute),
 - safety bounds (charge per phase and charge density estimates).
 
-## Why 2D is not “fake”
+### Why 2D is not “fake”
 
 2D cross-sections are a legitimate way to build intuition and to test design strategies quickly. As we add complexity later, the 2D sandbox becomes the conceptual map.
 
-## References (starter)
+### References (starter)
 
 - Basic nerve anatomy overview: https://en.wikipedia.org/wiki/Peripheral_nervous_system
+

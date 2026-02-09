@@ -14,30 +14,31 @@ tags: ["visual prosthesis", "retinal implant", "Argus II", "historical", "FDA HD
 draft: false
 ---
 
-Second Sight Medical Products is a historically important U.S. neurotechnology company best known for the **Argus II retinal prosthesis system**, which received U.S. FDA **Humanitarian Device Exemption (HDE)** authorization in 2013.
+Second Sight Medical Products is a historically important U.S. neurotechnology company best known for the *Argus II retinal prosthesis system*, which received U.S. FDA *Humanitarian Device Exemption (HDE)* authorization in 2013.
 
-The company later shifted focus toward cortical visual prosthesis development (Orion program) and eventually wound down core operations. The technology/business lineage continued under **Cortigent**.
+The company later shifted focus toward cortical visual prosthesis development (Orion program) and eventually wound down core operations. The technology/business lineage continued under *Cortigent*.
 
-## At a glance
-- **Historical flagship:** Argus II Retinal Prosthesis System
-- **Regulatory milestone:** FDA HDE approval (2013)
-- **Program shift:** retina-focused commercialization → cortical visual prosthesis R&D
-- **Status:** historical/discontinued as an operating company; successor lineage continues under Cortigent
+### At a glance
+- *Historical flagship:* Argus II Retinal Prosthesis System
+- *Regulatory milestone:* FDA HDE approval (2013)
+- *Program shift:* retina-focused commercialization → cortical visual prosthesis R&D
+- *Status:* historical/discontinued as an operating company; successor lineage continues under Cortigent
 
-## What they were building (technical)
+### What they were building (technical)
 Argus II used a camera-processing-implant chain to generate patterned retinal stimulation for people with profound blindness (not normal vision restoration, but limited functional visual perception in select tasks).
 
 The later Orion concept moved stimulation upstream to visual cortex.
 
-## Why this company matters in the atlas
+### Why this company matters in the atlas
 Second Sight is a core case study in the difference between:
 - getting an implant approved, and
 - sustaining long-term support for implanted patients.
 
 It remains foundational context for visual neuroprosthetics and service-lifecycle risk in implant companies.
 
-## Sources (starting set)
+### Sources (starting set)
 - FDA HDE (Argus II): <https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfhde/hde.cfm?id=h110002>
 - 5-year Argus II safety/performance follow-up: <https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/>
 - Patient/support discontinuation reporting: <https://spectrum.ieee.org/bionic-eye-obsolete>
 - Program continuity / merger context: <https://www.fightingblindness.org/news/second-sight-agrees-to-merger-to-maintain-retinal-and-cortical-prostheses-programs-830>
+

@@ -10,7 +10,7 @@ Once a sandbox can evaluate a design (even with proxies), you can start searchin
 
 Optimization in this context is not just “run an optimizer.” It is deciding what objective matters, what constraints are real, and what uncertainty you can tolerate.
 
-## The loop
+### The loop
 
 A practical design loop looks like:
 
@@ -21,13 +21,14 @@ A practical design loop looks like:
 - inspect failure cases,
 - iterate the model.
 
-## Don’t optimize lies
+### Don’t optimize lies
 
 If your metric is poorly aligned with reality, optimization will exploit it.
 
 A healthy workflow is to keep a human-in-the-loop and to validate against known regimes before trusting results.
 
-## References (starter)
+### References (starter)
 
 - Bayesian optimization overview: https://en.wikipedia.org/wiki/Bayesian_optimization
 - Genetic algorithm overview: https://en.wikipedia.org/wiki/Genetic_algorithm
+

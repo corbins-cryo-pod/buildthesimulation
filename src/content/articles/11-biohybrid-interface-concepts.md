@@ -10,18 +10,18 @@ A biohybrid interface is an attempt to use biology as an asset rather than a nui
 
 This is an exciting direction, but it’s also where hype can get out of hand. The goal of this chapter is to define the space clearly and keep the exploration open: biohybrid may be *a* path, not *the* path.
 
-## What “biohybrid” can mean
+### What “biohybrid” can mean
 
 Biohybrid is not one technology. It can mean:
 
-- **living coatings or cell-laden scaffolds** that modulate tissue response,
-- **engineered tissues** that interface with axons and provide structured geometry,
-- **conductive biological composites** (hydrogels, ECM-like scaffolds with conductive elements),
-- **regenerative interfaces** where axons grow through a designed structure.
+- *living coatings or cell-laden scaffolds* that modulate tissue response,
+- *engineered tissues* that interface with axons and provide structured geometry,
+- *conductive biological composites* (hydrogels, ECM-like scaffolds with conductive elements),
+- *regenerative interfaces* where axons grow through a designed structure.
 
 These ideas differ drastically in feasibility and validation burden.
 
-## Why biohybrid is attractive
+### Why biohybrid is attractive
 
 Biohybrid approaches are attractive because they target the chronic constraints directly:
 
@@ -32,7 +32,7 @@ Biohybrid approaches are attractive because they target the chronic constraints 
 
 The dream is a stable, structured interface that behaves more like tissue than like a foreign object.
 
-## The hard part: metrics and time
+### The hard part: metrics and time
 
 Biohybrid approaches are slow to validate because biology is slow. A design that looks great at 2 weeks may fail at 6 months.
 
@@ -44,7 +44,7 @@ If you want to stay grounded, define success metrics early:
 - absence of pain and adverse remodeling,
 - manufacturable repeatability.
 
-## Keeping the exploration open
+### Keeping the exploration open
 
 It’s worth explicitly exploring non-biohybrid approaches in parallel:
 
@@ -54,9 +54,10 @@ It’s worth explicitly exploring non-biohybrid approaches in parallel:
 
 Biohybrid doesn’t need to win by being “cool.” It needs to win by being stable, safe, and manufacturable.
 
-## References (starter)
+### References (starter)
 
 - Background on tissue engineering concepts: https://en.wikipedia.org/wiki/Tissue_engineering
 - Peripheral nerve injury/regeneration overview: https://en.wikipedia.org/wiki/Peripheral_nerve_injury
 
 *(We’ll add dedicated biohybrid/regenerative interface reviews next as I compile the reading list.)*
+
