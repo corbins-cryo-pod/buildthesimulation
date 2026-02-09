@@ -300,6 +300,14 @@ function stripPrefix(title) {
     font-display: swap;
   }
 
+  @font-face {
+    font-family: "Bodoni MT Compressed";
+    src: url("/fonts/bodoni/BodoniMT-Compressed.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
   :global(:root) {
     /* Light theme (default) */
     --bg: #f6f1e6; /* paper */
@@ -342,7 +350,7 @@ function stripPrefix(title) {
 
   :global(body) {
     margin: 0;
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
     font-size: 22px;
     line-height: 1.34;
     color: var(--text);
@@ -425,7 +433,7 @@ function stripPrefix(title) {
   /* simple print-stamp monogram */
   .mark::after {
     content: "BTS";
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
     font-weight: 700;
     font-size: 12px;
     letter-spacing: 0.18em;
