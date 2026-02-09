@@ -342,6 +342,8 @@ function stripPrefix(title) {
 
     --grainOpacity: 0.045;
     --grainBlend: multiply;
+
+    --compressed-size: 22px;
   }
 
   :global(html[data-theme="dark"]) {
@@ -380,7 +382,7 @@ function stripPrefix(title) {
     font-weight: 400;
     text-transform: none;
     letter-spacing: 0;
-    font-size: 1em;
+    font-size: var(--compressed-size);
   }
 
   :global(h1),
