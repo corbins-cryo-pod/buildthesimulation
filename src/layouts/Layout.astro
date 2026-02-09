@@ -18,7 +18,13 @@ const pathname = Astro.url?.pathname ?? "/";
 // Display title can be different from <title>
 const displayTitle = pathname === "/" ? "HOW TO ENTER THE SIMULATION" : siteTitle;
 const isSimulationPath = pathname.startsWith("/sim") || pathname.startsWith("/simulations");
-const bodyClass = pathname === "/" ? "home" : isSimulationPath ? "sim-no-compressed" : undefined;
+const isDirectoryIndexPath = /^\/(news|articles|companies|devices|designs|ideas|simulations)\/?$/.test(pathname);
+const bodyClasses = [
+  pathname === "/" ? "home" : undefined,
+  isSimulationPath ? "sim-no-compressed" : undefined,
+  isDirectoryIndexPath ? "dir-index" : undefined,
+].filter(Boolean);
+const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
 
 // Build dropdown menus (a mini table of contents) for quick navigation.
 const articles = (await getCollection("articles"))
@@ -80,7 +86,6 @@ function stripPrefix(title) {
     <main class="wrap">
       <header class="hero">
         <div class="brand">
-          <a class="mark" aria-label="Home" href="/"></a>
           <div class="titleblock">
             {pageTitle ? <h1 class="pageTitle">{pageTitle}</h1> : <h1 class={pathname === "/" ? "homeTitle" : undefined}>{displayTitle}</h1>}
             <p class="sub">
@@ -411,6 +416,12 @@ function stripPrefix(title) {
     font-size: clamp(1.75rem, 3vw, 2.2rem);
   }
 
+  :global(body.dir-index h2),
+  :global(body.dir-index h3) {
+    font-size: 46px;
+    line-height: 1.02;
+  }
+
   :global(p),
   :global(li) {
     line-height: 1.38;
@@ -469,33 +480,6 @@ function stripPrefix(title) {
     align-items: center;
   }
 
-  .mark {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background: rgba(20, 20, 22, 0.9);
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
-    display: inline-grid;
-    place-items: center;
-    flex: 0 0 auto;
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* simple print-stamp monogram */
-  .mark::after {
-    content: "BTS";
-    font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.18em;
-    color: rgba(246, 241, 230, 0.95);
-    transform: translateX(0.09em);
-  }
-
-  .mark:hover {
-    filter: brightness(1.05);
-  }
 
   h1 {
     margin: 0;
@@ -507,7 +491,7 @@ function stripPrefix(title) {
 
   .homeTitle {
     font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
-    font-size: var(--title-hero);
+    font-size: 100px;
     line-height: 0.92;
     letter-spacing: 0.008em;
     white-space: nowrap;
