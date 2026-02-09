@@ -113,7 +113,7 @@ export function createEngine(cfg) {
 
     const dtS = stepMs / 1000;
     const newSpikes = [];
-    const decay = Math.exp(-stepMs / 90);
+    const decay = Math.exp(-stepMs / 125);
     for (let i = 0; i < state.neuronActivity.length; i++) state.neuronActivity[i] *= decay;
 
     // Slow global up/down modulation (OU-like) for more natural nonstationary firing.

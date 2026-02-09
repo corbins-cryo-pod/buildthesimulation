@@ -55,7 +55,7 @@ export function createScene(canvas, bounds, neurons) {
   nGeo.setAttribute("color", new THREE.BufferAttribute(colors, 3));
   const nCloud = new THREE.Points(
     nGeo,
-    new THREE.PointsMaterial({ vertexColors: true, size: 0.024, transparent: true, opacity: 1.0, depthTest: false })
+    new THREE.PointsMaterial({ vertexColors: true, size: 0.03, transparent: true, opacity: 1.0, depthTest: false })
   );
   scene.add(nCloud);
 
@@ -105,9 +105,9 @@ export function createScene(canvas, bounds, neurons) {
     const c = nGeo.getAttribute("color");
     for (let i = 0; i < activity.length; i++) {
       const a = Math.max(0, Math.min(1, activity[i]));
-      const r = 0.04 + a * (0.58 - 0.04);
-      const g = 0.05 + a * (0.85 - 0.05);
-      const b = 0.08 + a * (1.00 - 0.08);
+      const r = 0.01 + a * (0.56 - 0.01);
+      const g = 0.015 + a * (0.90 - 0.015);
+      const b = 0.03 + a * (1.00 - 0.03);
       c.setXYZ(i, r, g, b);
     }
     c.needsUpdate = true;
