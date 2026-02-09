@@ -80,7 +80,7 @@ function stripPrefix(title) {
         <div class="brand">
           <a class="mark" aria-label="Home" href="/"></a>
           <div class="titleblock">
-            {pageTitle ? <h1 class="pageTitle">{pageTitle}</h1> : <h1>{displayTitle}</h1>}
+            {pageTitle ? <h1 class="pageTitle">{pageTitle}</h1> : <h1 class={pathname === "/" ? "homeTitle" : undefined}>{displayTitle}</h1>}
             <p class="sub">
               {subtitle ??
                 "A living blueprint for simulating neural systems — and designing the interfaces that connect to them."}
@@ -342,7 +342,7 @@ function stripPrefix(title) {
 
   :global(body) {
     margin: 0;
-    font-family: "Newston", "Times New Roman", Times, serif;
+    font-family: "Times New Roman", Times, serif;
     font-size: 22px;
     line-height: 1.34;
     color: var(--text);
@@ -425,7 +425,7 @@ function stripPrefix(title) {
   /* simple print-stamp monogram */
   .mark::after {
     content: "BTS";
-    font-family: "Newston", "Times New Roman", Times, serif;
+    font-family: "Times New Roman", Times, serif;
     font-weight: 700;
     font-size: 12px;
     letter-spacing: 0.18em;
@@ -443,6 +443,10 @@ function stripPrefix(title) {
     font-weight: 400;
     letter-spacing: -0.005em;
     line-height: 1.02;
+  }
+
+  .homeTitle {
+    font-family: "Newston", "Times New Roman", Times, serif;
   }
 
   .pageTitle {
