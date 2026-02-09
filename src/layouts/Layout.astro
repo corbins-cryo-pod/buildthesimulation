@@ -343,9 +343,31 @@ function stripPrefix(title) {
   :global(body) {
     margin: 0;
     font-family: "Newston", "Times New Roman", Times, serif;
-    font-size: 20px;
+    font-size: 22px;
+    line-height: 1.34;
     color: var(--text);
     background: var(--bg);
+  }
+
+  :global(strong),
+  :global(b) {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  :global(h1),
+  :global(h2),
+  :global(h3),
+  :global(h4),
+  :global(h5),
+  :global(h6) {
+    font-weight: 400;
+  }
+
+  :global(p),
+  :global(li) {
+    line-height: 1.38;
   }
 
   /* subtle paper grain */
@@ -418,12 +440,14 @@ function stripPrefix(title) {
   h1 {
     margin: 0;
     font-size: 54px;
+    font-weight: 400;
     letter-spacing: -0.005em;
     line-height: 1.02;
   }
 
   .pageTitle {
     font-size: 46px;
+    font-weight: 400;
   }
 
   .sub {
@@ -564,7 +588,7 @@ function stripPrefix(title) {
   }
 
   @media (max-width: 680px) {
-    :global(body) { font-size: 18px; }
+    :global(body) { font-size: 20px; }
     h1 { font-size: 38px; }
     .pageTitle { font-size: 32px; }
   }
