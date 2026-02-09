@@ -67,8 +67,8 @@ function init() {
     const safeLoc = p.location ? escapeHtml(String(p.location)) : "";
 
     const html = `
-      <div style="font-family: 'Bodoni MT Compressed', 'Bodoni MT', 'Times New Roman', serif;">
-        <div style="font-weight:700; margin-bottom:6px;">${safeTitle}</div>
+      <div style="font-family: 'Bodoni MT', 'Times New Roman', serif;">
+        <div style="font-style:italic; font-weight:400; margin-bottom:6px;">${safeTitle}</div>
         <div style="opacity:0.75; margin-bottom:8px; font-size:12px; letter-spacing:0.06em; text-transform:uppercase;">
           ${escapeHtml(p.kind)} — ${escapeHtml(p.region)}
         </div>

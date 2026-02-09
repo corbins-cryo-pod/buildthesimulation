@@ -16,7 +16,7 @@ const fullTitle = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
 const pathname = Astro.url?.pathname ?? "/";
 
 // Display title can be different from <title>
-const displayTitle = pathname === "/" ? "HOW TO BUILD THE SIMULATION" : siteTitle;
+const displayTitle = pathname === "/" ? "HOW TO ENTER THE SIMULATION" : siteTitle;
 
 // Build dropdown menus (a mini table of contents) for quick navigation.
 const articles = (await getCollection("articles"))
@@ -72,7 +72,7 @@ function stripPrefix(title) {
     <meta name="description" content={description} />
   </head>
 
-  <body>
+  <body class={pathname === "/" ? "home" : undefined}>
     {withHero ? <NerveHero /> : null}
 
     <main class="wrap">
@@ -301,6 +301,22 @@ function stripPrefix(title) {
   }
 
   @font-face {
+    font-family: "Bodoni MT";
+    src: url("/fonts/bodoni/BodoniMT-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Bodoni MT";
+    src: url("/fonts/bodoni/BodoniMT-Italic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
     font-family: "Bodoni MT Compressed";
     src: url("/fonts/bodoni/BodoniMT-Compressed.ttf") format("truetype");
     font-weight: 400;
@@ -350,7 +366,7 @@ function stripPrefix(title) {
 
   :global(body) {
     margin: 0;
-    font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
+    font-family: "Bodoni MT", "Times New Roman", serif;
     font-size: 22px;
     line-height: 1.34;
     color: var(--text);
@@ -359,9 +375,11 @@ function stripPrefix(title) {
 
   :global(strong),
   :global(b) {
+    font-family: "Bodoni MT", "Times New Roman", serif;
+    font-style: italic;
     font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
+    text-transform: none;
+    letter-spacing: 0;
   }
 
   :global(h1),
@@ -370,7 +388,16 @@ function stripPrefix(title) {
   :global(h4),
   :global(h5),
   :global(h6) {
+    font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
     font-weight: 400;
+  }
+
+  :global(h2) {
+    font-size: clamp(2.05rem, 3.7vw, 2.65rem);
+  }
+
+  :global(h3) {
+    font-size: clamp(1.75rem, 3vw, 2.2rem);
   }
 
   :global(p),
@@ -400,6 +427,12 @@ function stripPrefix(title) {
     max-width: 1120px;
     margin: 0 auto;
     padding: 60px 24px 44px;
+  }
+
+  :global(body.home) .wrap {
+    max-width: min(98vw, 1800px);
+    padding-left: 18px;
+    padding-right: 18px;
   }
 
   .hero {
@@ -447,18 +480,23 @@ function stripPrefix(title) {
 
   h1 {
     margin: 0;
-    font-size: 54px;
+    font-size: 66px;
     font-weight: 400;
     letter-spacing: -0.005em;
     line-height: 1.02;
   }
 
   .homeTitle {
-    font-family: "Newston", "Times New Roman", Times, serif;
+    font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
+    font-size: clamp(64px, 8.2vw, 154px);
+    line-height: 0.9;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    width: 100%;
   }
 
   .pageTitle {
-    font-size: 46px;
+    font-size: 58px;
     font-weight: 400;
   }
 
@@ -601,7 +639,12 @@ function stripPrefix(title) {
 
   @media (max-width: 680px) {
     :global(body) { font-size: 20px; }
-    h1 { font-size: 38px; }
-    .pageTitle { font-size: 32px; }
+    h1 { font-size: 46px; }
+    .pageTitle { font-size: 40px; }
+    .homeTitle {
+      white-space: normal;
+      font-size: clamp(52px, 14vw, 74px);
+      line-height: 0.95;
+    }
   }
 </style>
