@@ -291,6 +291,15 @@ function stripPrefix(title) {
 </html>
 
 <style>
+  @font-face {
+    font-family: "Newston";
+    src: url("/fonts/newston/Newston-Regular.ttf") format("truetype"),
+         url("/fonts/newston/Newston-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
   :global(:root) {
     /* Light theme (default) */
     --bg: #f6f1e6; /* paper */
@@ -333,7 +342,7 @@ function stripPrefix(title) {
 
   :global(body) {
     margin: 0;
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Newston", "Times New Roman", Times, serif;
     font-size: 20px;
     color: var(--text);
     background: var(--bg);
@@ -394,7 +403,7 @@ function stripPrefix(title) {
   /* simple print-stamp monogram */
   .mark::after {
     content: "BTS";
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Newston", "Times New Roman", Times, serif;
     font-weight: 700;
     font-size: 12px;
     letter-spacing: 0.18em;
