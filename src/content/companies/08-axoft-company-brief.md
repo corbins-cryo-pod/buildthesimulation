@@ -54,7 +54,3 @@ If Axoft’s mechanical matching actually translates into:
 4) *Actual clinical indication path* (what’s the first medical use case, and how does it win vs existing implants?)
 
 ---
-
-### Source notes (internal)
-This is a draft brief. Current citations are mostly company statements + press/trade reporting about early feasibility testing; I should strengthen with peer-reviewed publications from the underlying academic work and any registry/clinical readouts when available.
-

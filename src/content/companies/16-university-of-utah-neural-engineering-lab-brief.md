@@ -62,4 +62,3 @@ This lab helps keep the hub from being “Utah = electrodes only,” by showing 
 
 ### References / official pages
 - Utah Neural Engineering ecosystem entry point: <https://neuralengineering.coe.utah.edu/>
-

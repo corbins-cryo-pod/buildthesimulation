@@ -89,4 +89,3 @@ Week 1 of 2026 was mostly:
 - *Implants moving toward scale* (manufacturing + automated procedure goals)
 - *China laying standards groundwork*
 - *Consumer neurotech showing up at CES* as “hands-free control” and “focus coaching” products
-

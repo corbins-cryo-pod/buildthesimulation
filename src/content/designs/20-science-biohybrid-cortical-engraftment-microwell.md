@@ -113,4 +113,3 @@ draft: false
 
 ### References
 - Brown J, Zappitelli KM, Dawson PM, et al. *Optogenetic stimulation of a cortical biohybrid implant guides goal directed behavior.* bioRxiv. 2024. doi: 10.1101/2024.11.22.624907. <https://www.biorxiv.org/content/10.1101/2024.11.22.624907v1>
-

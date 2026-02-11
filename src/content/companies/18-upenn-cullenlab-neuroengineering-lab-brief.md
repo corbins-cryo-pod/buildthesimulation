@@ -54,4 +54,3 @@ Penn’s “interface biology” thread is a real differentiator. One representa
 1) Penn has multiple labs explicitly describing *brain–machine interface / BCI* research aims (e.g., Richardson, Pesaran).
 2) Penn has an institutional translation push via *CNT*, bridging Perelman School of Medicine and Penn Engineering. <https://www.med.upenn.edu/neurology/tce.html>
 3) Penn has a serious *biohybrid / living electrode* thread targeting chronic interface biology constraints. <https://pubmed.ncbi.nlm.nih.gov/34045935/>
-

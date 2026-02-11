@@ -41,7 +41,3 @@ Peer-reviewed outcomes or trial registries.
 Who manufactures, who implants, how training and home use is supported.
 
 ---
-
-### Source notes (internal)
-Internal draft. Current citations are primarily a Wired feature; I should upgrade with primary technical documentation as it becomes available.
-

@@ -48,4 +48,3 @@ Regenerative strategies are constrained by:
 - Overview + pointers (peripheral nerve injury/regeneration): https://en.wikipedia.org/wiki/Peripheral_nerve_injury
 
 *(We’ll add review papers on conduits/scaffolds and regenerative peripheral nerve interfaces next.)*
-

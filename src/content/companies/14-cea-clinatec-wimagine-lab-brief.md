@@ -42,7 +42,3 @@ Even if the system is not a near-term product, it demonstrates:
 3) *Long-term signal stability* with implanted ECoG
 
 ---
-
-### Source notes (internal)
-Internal draft. This entry is currently anchored in a secondary summary article; I should replace/add primary publications and institutional pages for WIMAGINE/Clinatec.
-

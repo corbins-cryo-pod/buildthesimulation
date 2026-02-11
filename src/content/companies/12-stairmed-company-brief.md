@@ -46,7 +46,3 @@ StairMed is part of a broader Chinese push to build an invasive BCI pipeline (ha
 3) *Hardware evolution* (channels, packaging, recharge, longevity)
 
 ---
-
-### Source notes (internal)
-Internal draft. Current citations are mainly government/media reporting and should be strengthened with primary technical publications and trial registry entries.
-

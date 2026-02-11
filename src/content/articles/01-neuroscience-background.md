@@ -57,4 +57,3 @@ When you read a new paper or startup claim, it’s worth asking—in plain langu
 - Introductory action potential chapter (open textbook): https://nba.uth.tmc.edu/neuroscience/s1/chapter01.html
 - Propagation of action potentials (open textbook): https://nba.uth.tmc.edu/neuroscience/s1/chapter03.html
 - Overview + pointers (BCI): https://en.wikipedia.org/wiki/Brain%E2%80%93computer_interface
-

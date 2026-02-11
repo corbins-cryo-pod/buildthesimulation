@@ -31,4 +31,3 @@ A healthy workflow is to keep a human-in-the-loop and to validate against known 
 
 - Bayesian optimization overview: https://en.wikipedia.org/wiki/Bayesian_optimization
 - Genetic algorithm overview: https://en.wikipedia.org/wiki/Genetic_algorithm
-

@@ -88,4 +88,3 @@ If this hub stays useful as the atlas grows, the next step is to fork into subpa
 ### References / official pages
 - UMich BME Neural Engineering overview: <https://bme.umich.edu/research/research-strengths/neural-engineering/>
 - Michigan Medicine BCI clinic announcement: <https://www.michiganmedicine.org/news-release/university-michigan-health-opens-brain-computer-interface-clinic-among-first-nation>
-

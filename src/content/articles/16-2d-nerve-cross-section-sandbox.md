@@ -34,4 +34,3 @@ We won’t claim perfect biophysics at v1. But we can compute useful proxies:
 ### References (starter)
 
 - Basic nerve anatomy overview: https://en.wikipedia.org/wiki/Peripheral_nervous_system
-

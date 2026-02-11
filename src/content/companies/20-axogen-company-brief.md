@@ -50,4 +50,3 @@ Axogen is best thought of as a *peripheral nerve “infrastructure” company*: 
 ### Sources (starting set)
 - Axogen corporate site: <https://www.axogeninc.com/>
 - (Add) SEC filings (10-K / 10-Q) for specific revenue/employees-by-year numbers (best handled as point-in-time facts)
-

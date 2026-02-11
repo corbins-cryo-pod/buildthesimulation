@@ -30,4 +30,3 @@ Early versions should support:
 
 - Cortex overview: https://en.wikipedia.org/wiki/Cerebral_cortex
 - Electrocorticography overview: https://en.wikipedia.org/wiki/Electrocorticography
-

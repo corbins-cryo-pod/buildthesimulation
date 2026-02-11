@@ -42,4 +42,3 @@ If your goal is near-term translation, electrical stimulation is usually the def
 - D. R. Merrill, M. Bikson, J. G. R. Jefferys (2005). *Electrical stimulation of excitable tissue: design of efficacious and safe protocols.* Journal of Neuroscience Methods. https://pubmed.ncbi.nlm.nih.gov/15661300/
 
 *(We’ll add modality-specific reviews for peripheral nerve optogenetics and optical propagation in tissue next.)*
-

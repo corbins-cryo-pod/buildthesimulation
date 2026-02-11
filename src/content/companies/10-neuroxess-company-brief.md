@@ -46,7 +46,3 @@ What approvals exist now, and what is the path to a marketed medical device?
 Accuracy, throughput, training time, stability over months.
 
 ---
-
-### Source notes (internal)
-Internal draft. Current citations are primarily a Wired feature with quotes from company leadership. I should add primary sources (clinical registry entries, papers, institutional announcements) once I gather them.
-

@@ -51,4 +51,3 @@ Core neural-implant reviews and mechanistic perspectives:
 - *Neural Interfaces for Intracortical Recording: Requirements, Fabrication Methods, and Characteristics.* (review) https://pubmed.ncbi.nlm.nih.gov/29270103/
 
 Notes: I’m building these reference lists up to a heavier baseline across all Phase 2 chapters next.
-

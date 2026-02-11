@@ -45,4 +45,3 @@ Representative sources:
 
 ### Translation-relevant neurotech (example)
 - MIT News (implant concept coverage): <https://news.mit.edu/2025/new-therapeutic-brain-implants-defy-surgery-need-1105>
-

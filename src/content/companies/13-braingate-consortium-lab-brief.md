@@ -48,7 +48,3 @@ What hardware stack they use and how signal quality evolves.
 How/when these systems become actual products.
 
 ---
-
-### Source notes (internal)
-Internal draft. I should add additional peer-reviewed BrainGate papers and (if needed) ClinicalTrials.gov identifiers for the relevant trials.
-

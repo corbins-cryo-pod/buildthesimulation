@@ -148,4 +148,3 @@ draft: false
 - Paradromics (press release). *Paradromics Completes First-In-Human Recording with the Connexus® Brain-Computer Interface.* <https://www.paradromics.com/news/paradromics-completes-first-in-human-recording-with-the-connexus-brain-computer-interface>
 - UPI. *Paradromics implants brain-computer interface into first human patient.* (June 2, 2025). <https://www.upi.com/Health_News/2025/06/02/paradromics-brain-computer-interface-implanted-human/4661748897835/>
 - New Atlas. *Speech-restoring brain chip gets FDA approval for human trial.* (Nov 2025; summarizes IDE/Connect-One claims). <https://newatlas.com/medical-devices/human-trial-experimental-brain-chip-connexus/>
-

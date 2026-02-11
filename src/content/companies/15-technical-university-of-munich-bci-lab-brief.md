@@ -40,7 +40,3 @@ This is a concrete example of Europe pushing back into invasive BCI with a tight
 3) *Scaling and repeatability* (more participants, longer follow-up)
 
 ---
-
-### Source notes (internal)
-Internal draft. Currently anchored in trade reporting; I should add institutional releases and peer-reviewed publications as they become available.
-

@@ -68,4 +68,3 @@ Phase 2 shifts from “what is the signal?” to “what survives chronic implan
   - H. Ito, S. Fujiki, Y. Mori, K. Kansaku (2020). *Self-reorganization of neuronal activation patterns in the cortex under brain-machine interface and neural operant conditioning.* Neurosci Res. https://pubmed.ncbi.nlm.nih.gov/32243900/
 
 - Overview + pointers (decoder basics): https://en.wikipedia.org/wiki/Brain%E2%80%93computer_interface
-

@@ -119,4 +119,3 @@ draft: false
 
 ### References
 - Veith A, et al. *Optimized design of a hyperflexible sieve electrode to enhance neurovascular regeneration for a peripheral neural interface.* Biomaterials. 2021;275:120924. doi: 10.1016/j.biomaterials.2021.120924. PubMed: <https://pubmed.ncbi.nlm.nih.gov/34147716/>
-

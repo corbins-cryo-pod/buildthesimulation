@@ -156,4 +156,3 @@ draft: false
 - Kennedy PR, Bakay RAE. *Restoration of neural output from a paralyzed patient by a direct brain connection.* NeuroReport. 1998;9(8):1707–1711. doi: 10.1097/00001756-199806010-00007. PubMed: <https://pubmed.ncbi.nlm.nih.gov/9665587/>
 - Bartels J, Andreasen D, Ehirim P, et al. *Neurotrophic electrode: method of assembly and implantation into human motor speech cortex.* J Neurosci Methods. 2008. PubMed: <https://pubmed.ncbi.nlm.nih.gov/18672003/>
 - Kennedy PR, et al. *Histological confirmation of myelinated neural filaments within the tip of the neurotrophic electrode after a decade of neural recordings.* Front Hum Neurosci. 2020;14:111. doi: 10.3389/fnhum.2020.00111. (Open access copies vary.)
-

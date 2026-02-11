@@ -76,4 +76,3 @@ Flexible polymers, fabrication, and interphases:
 - *PEDOT:PSS as a Bio-Solid Electrolyte Interphase for Neural Interfaces: From Molecular Design to Interfacial Intelligence.* https://pubmed.ncbi.nlm.nih.gov/41516803/
 
 Notes: I’m building these into heavier bibliographies (≈15–30 refs per chapter) as the next pass.
-

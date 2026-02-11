@@ -57,4 +57,3 @@ Mechanics/micromotion and chronic performance links:
 - *Ultra-miniature ultra-compliant neural probes with dissolvable delivery needles: design, fabrication and characterization.* https://pubmed.ncbi.nlm.nih.gov/27778225/
 - *A self-stiffening compliant intracortical microprobe.* https://pubmed.ncbi.nlm.nih.gov/38345721/
 - *Amorphous silicon carbide probe mechanics for insertion in the cerebral cortex of rats, pigs, and macaques.* https://pubmed.ncbi.nlm.nih.gov/40398441/
-

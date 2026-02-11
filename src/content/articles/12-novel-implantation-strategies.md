@@ -43,4 +43,3 @@ If a device requires an unrealistic workflow, it will not translate. A good impl
 - Surgical workflow context (general implant concepts): https://en.wikipedia.org/wiki/Implant_(medicine)
 
 *(We’ll add peripheral nerve implant technique reviews and chronic failure analyses next.)*
-

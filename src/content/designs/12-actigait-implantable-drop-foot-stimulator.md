@@ -120,4 +120,3 @@ draft: false
 
 ### References
 - Martin KD, et al. *Restoration of ankle movements with the ActiGait implantable drop foot stimulator: a safe and reliable treatment option for permanent central leg palsy.* J Neurosurg. 2016;124(1):70–76. doi: 10.3171/2014.12.JNS142110. PubMed: <https://pubmed.ncbi.nlm.nih.gov/26207599/>
-

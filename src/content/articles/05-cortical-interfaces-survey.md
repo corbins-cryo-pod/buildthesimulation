@@ -62,4 +62,3 @@ If there is a unifying principle across cortex and nerve, it is this: the interf
 - Q. Rabbani, G. Milsap, N. E. Crone (2019). *The Potential for a Speech Brain-Computer Interface Using Chronic Electrocorticography.* Neurotherapeutics. https://pubmed.ncbi.nlm.nih.gov/30617653/
 - Overview + pointers (ECoG): https://en.wikipedia.org/wiki/Electrocorticography
 - Overview + pointers (SEEG): https://en.wikipedia.org/wiki/Stereoelectroencephalography
-

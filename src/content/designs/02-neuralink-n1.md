@@ -153,4 +153,3 @@ draft: false
 - Neuralink updates and public materials: <https://neuralink.com/>
 - Reuters (Jan 1, 2026): production/automation goals mention (context for “scale” posture): <https://www.reuters.com/business/healthcare-pharmaceuticals/musk-says-neuralink-start-high-volume-production-interface-devices-by-2026-2026-01-01/>
 - Reuters (Jan 28, 2026): participant counts statement (time-sensitive): <https://www.reuters.com/legal/litigation/elon-musks-neuralink-says-it-has-21-participants-enrolled-trials-2026-01-28/>
-

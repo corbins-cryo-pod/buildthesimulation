@@ -41,4 +41,3 @@ NeuroNexus generally is *not* positioned as a direct end-user BCI product compan
 - Electrode arrays overview: <https://www.neuronexus.com/products/electrode-arrays/>
 - Product catalog entry point: <https://www.neuronexus.com/products/>
 - X-Series product page: <https://www.neuronexus.com/products/x-series-intan-compatible-probes/>
-

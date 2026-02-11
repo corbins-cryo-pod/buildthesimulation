@@ -153,4 +153,3 @@ draft: false
 - Wendelken S, et al. “Restoration of motor control and proprioceptive and cutaneous sensation in humans with prior upper-limb amputation via multiple Utah Slanted Electrode Arrays (USEAs) implanted in residual peripheral arm nerves.” *J NeuroEngineering Rehabil* (2017). PubMed: <https://pubmed.ncbi.nlm.nih.gov/29178940/> (DOI: 10.1186/s12984-017-0320-4)
 - George JA, et al. “Intuitive neuromyoelectric control of a dexterous bionic arm using a modified Kalman filter.” *J Neurosci Methods* (2020). PubMed: <https://pubmed.ncbi.nlm.nih.gov/31711883/>
 - (Add: Dhillon et al., J Neural Eng; DARPA HAPTIX program docs)
-

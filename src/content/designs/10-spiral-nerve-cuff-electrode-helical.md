@@ -151,4 +151,3 @@ This keeps the index clean while still giving you a canonical place to link the 
 - Naples GG, Mortimer JT, Scheiner A, Sweeney JD. *A spiral nerve cuff electrode for peripheral nerve stimulation.* IEEE Trans Biomed Eng. 1988;35(11):905–916. doi: 10.1109/10.8670. PubMed: <https://pubmed.ncbi.nlm.nih.gov/3198136/>
 - Christie BP, Freeberg M, Memberg WD, et al. *Long-term stability of stimulating spiral nerve cuff electrodes on human peripheral nerves.* J Neuroeng Rehabil. 2017;14:70. doi: 10.1186/s12984-017-0285-3. PubMed: <https://pubmed.ncbi.nlm.nih.gov/28693584/> (Open access: <https://pmc.ncbi.nlm.nih.gov/articles/PMC5504677/>)
 - Polasek KH, Hoyen HA, Keith MW, Tyler DJ. *Intraoperative evaluation of the spiral nerve cuff electrode on the femoral nerve trunk.* J Neural Eng. 2009. PubMed: <https://pubmed.ncbi.nlm.nih.gov/19901448/>
-

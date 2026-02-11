@@ -46,4 +46,3 @@ One representative paper in this thread:
 ### Clean claims you can make (with sources)
 1) UF Neurology publicly describes BCI work aimed at synthesizing speech from neural activity using MEG and deep learning. <https://neurology.ufl.edu/ibrain-lab/research-2/bci/>
 2) UF BME explicitly organizes *Neural Engineering* as a faculty/research area. <https://bme.ufl.edu/people/faculty/cat/primary-faculty/neural-engineering/>
-

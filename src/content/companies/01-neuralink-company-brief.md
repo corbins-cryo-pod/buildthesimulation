@@ -92,7 +92,3 @@ Neuralink is best thought of as:
 - Longer-term claims (speech, vision, broader neurological conditions) need careful evidence.
 
 ---
-
-### Source notes (internal)
-I’m intentionally favoring primary/major reporting sources (e.g., Reuters) and official pages over scraped “startup list” aggregators. For private-company stats (employees, location), public directories and LinkedIn are imperfect but often the best available signals.
-

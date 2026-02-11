@@ -47,7 +47,3 @@ How are biomarkers defined, detected, and used to control stimulation in real ti
 Implant size, longevity, recharge strategy, reliability, and surgical burden.
 
 ---
-
-### Source notes (internal)
-Internal draft. Current sources are a short BioWorld report and CorTec’s public-facing site. I should add primary clinical-trial registry entries and peer-reviewed publications as I collect them.
-

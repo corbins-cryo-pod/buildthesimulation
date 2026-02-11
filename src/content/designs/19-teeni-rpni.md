@@ -122,4 +122,3 @@ draft: false
 ### References
 - Vu PP, Vaskov AK, Lee C, et al. *Long-term upper-extremity prosthetic control using regenerative peripheral nerve interfaces and implanted EMG electrodes.* J Neural Eng. 2023;20(2):026039. doi: 10.1088/1741-2552/accb0c. PubMed: <https://pubmed.ncbi.nlm.nih.gov/37023743/>
 - Frost CM, et al. *Regenerative peripheral nerve interfaces for real-time, proportional control of a neuroprosthetic hand.* J Neuroeng Rehabil. 2018;15(1):108. doi: 10.1186/s12984-018-0452-1. PubMed: <https://pubmed.ncbi.nlm.nih.gov/30458876/>
-

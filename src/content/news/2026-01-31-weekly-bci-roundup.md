@@ -89,4 +89,3 @@ Late January 2026 was mostly about:
 - *Scaling implant trials* (participants, sites, geography)
 - *New competitive vectors* (ultrasound noninvasive bets)
 - *Ecosystem maturation* (tooling/dev talent + lifecycle ethics)
-

@@ -126,4 +126,3 @@ draft: false
 - Afra P, Adamolekun B, Aydemir S, Watson GDR. *Evolution of the Vagus Nerve Stimulation (VNS) Therapy System Technology for Drug-Resistant Epilepsy.* Front Med Technol. 2021. doi: 10.3389/fmedt.2021.696543. PubMed: <https://pubmed.ncbi.nlm.nih.gov/35047938/>
 - LivaNova (product/therapy overview): <https://www.livanova.com/epilepsy-vnstherapy/en-us>
 - FDA PMA family (VNS Therapy System): P970003 (add specific SSED/Supplement links when pinned)
-

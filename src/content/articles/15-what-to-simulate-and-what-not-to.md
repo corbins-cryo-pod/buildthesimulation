@@ -49,4 +49,3 @@ Avoid early commitments that slow iteration:
 
 - Finite element method overview: https://en.wikipedia.org/wiki/Finite_element_method
 - Volume conductor model overview: https://en.wikipedia.org/wiki/Bioelectromagnetism
-

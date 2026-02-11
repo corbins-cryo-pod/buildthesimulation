@@ -41,4 +41,3 @@ Cortigent should be treated as a *clinical-stage / investigational* company in t
 - Orion trial registry entry: <https://clinicaltrials.gov/study/NCT03344848>
 - Parent/company update context: <https://investors.vivani.com/investors/news-events/press-releases/detail/163/vivani-medical-subsidiary-cortigent-to-present-orion>
 - Additional company update (6-year EFS presentation): <https://investors.vivani.com/investors/news-events/press-releases/detail/212/vivani-subsidiary-cortigent-presents-promising-6-year-early>
-

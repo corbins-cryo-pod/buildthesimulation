@@ -41,4 +41,3 @@ It remains foundational context for visual neuroprosthetics and service-lifecycl
 - 5-year Argus II safety/performance follow-up: <https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/>
 - Patient/support discontinuation reporting: <https://spectrum.ieee.org/bionic-eye-obsolete>
 - Program continuity / merger context: <https://www.fightingblindness.org/news/second-sight-agrees-to-merger-to-maintain-retinal-and-cortical-prostheses-programs-830>
-

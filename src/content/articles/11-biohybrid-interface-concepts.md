@@ -60,4 +60,3 @@ Biohybrid doesn’t need to win by being “cool.” It needs to win by being st
 - Peripheral nerve injury/regeneration overview: https://en.wikipedia.org/wiki/Peripheral_nerve_injury
 
 *(We’ll add dedicated biohybrid/regenerative interface reviews next as I compile the reading list.)*
-

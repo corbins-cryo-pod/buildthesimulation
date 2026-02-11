@@ -154,4 +154,3 @@ draft: false
 
 ### References
 - (Add primary Normann + chronic response + BrainGate methods papers here)
-

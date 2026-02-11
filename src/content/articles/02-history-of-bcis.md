@@ -80,4 +80,3 @@ For something to be meaningfully new, it should demonstrate at least one of:
 - J. R. Wolpaw et al. (2002). *Brain–computer interfaces for communication and control.* Clinical Neurophysiology. https://www.sciencedirect.com/science/article/pii/S1388245702000573
 - L. R. Hochberg et al. (2006). *Neuronal ensemble control of prosthetic devices by a human with tetraplegia.* Nature. https://www.nature.com/articles/nature04970
 - Overview + pointers: https://en.wikipedia.org/wiki/Brain%E2%80%93computer_interface
-

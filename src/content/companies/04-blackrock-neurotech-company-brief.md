@@ -106,8 +106,3 @@ Utah Array classically means ~100 electrodes per array. The path to richer contr
 The hardest step is turning research performance into a product: training burden, calibration drift, support model, and regulatory requirements.
 
 ---
-
-### Source notes (internal)
-- Company metrics (HQ, employee counts) are taken from LinkedIn and treated as approximate.
-- For technical credibility, I cited peer‑reviewed examples and university reporting, rather than only company marketing.
-

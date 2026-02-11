@@ -113,4 +113,3 @@ draft: false
 - Naples GG, Mortimer JT, Scheiner A, Sweeney JD. *A spiral nerve cuff electrode for peripheral nerve stimulation.* IEEE Trans Biomed Eng. 1988;35(11):905–916. doi: 10.1109/10.8670. PubMed: <https://pubmed.ncbi.nlm.nih.gov/3198136/>
 - Christie BP, Freeberg M, Memberg WD, et al. *Long-term stability of stimulating spiral nerve cuff electrodes on human peripheral nerves.* J Neuroeng Rehabil. 2017;14:70. doi: 10.1186/s12984-017-0285-3. PubMed: <https://pubmed.ncbi.nlm.nih.gov/28693584/> (OA: <https://pmc.ncbi.nlm.nih.gov/articles/PMC5504677/>)
 - Tan DW, Schiefer MA, Keith MW, Anderson JR, Tyler DJ. *Stability and selectivity of a chronic, multi-contact cuff electrode for sensory stimulation in human amputees.* J Neural Eng. 2015;12(2):026002. doi: 10.1088/1741-2560/12/2/026002. PubMed: <https://pubmed.ncbi.nlm.nih.gov/25627310/>
-

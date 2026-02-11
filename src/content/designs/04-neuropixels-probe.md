@@ -157,4 +157,3 @@ draft: false
 - Jun JJ, et al. “Fully integrated silicon probes for high-density recording of neural activity.” *Nature* (2017). <https://www.nature.com/articles/nature24636>
 - Steinmetz NA, et al. “Neuropixels 2.0: A miniaturized high-density probe for stable, long-term brain recordings.” *Science* (2021). PMC: <https://pmc.ncbi.nlm.nih.gov/articles/PMC8244810/>
 - Neuropixels program site: <https://www.neuropixels.org/>
-

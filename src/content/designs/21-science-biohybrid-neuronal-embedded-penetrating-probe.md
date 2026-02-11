@@ -92,4 +92,3 @@ draft: false
 
 ### References
 - Brown J, et al. bioRxiv preprint (surface biohybrid demonstration): <https://www.biorxiv.org/content/10.1101/2024.11.22.624907v1>
-

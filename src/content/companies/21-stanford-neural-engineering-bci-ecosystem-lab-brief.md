@@ -45,4 +45,3 @@ Even when the end goal is not “cursor control,” the core pattern is the same
 
 ### Institutional signal
 - Stanford Wu Tsai “Brain-Computer Interfaces” news hub: <https://neuroscience.stanford.edu/news/brain-computer-interfaces>
-

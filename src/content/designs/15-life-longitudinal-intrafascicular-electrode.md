@@ -148,4 +148,3 @@ draft: false
 - Dhillon GS, Horch KW. *Direct neural sensory feedback and control of a prosthetic arm.* IEEE Trans Neural Syst Rehabil Eng. 2005;13(4):468–472. doi: 10.1109/TNSRE.2005.856072. PubMed: <https://pubmed.ncbi.nlm.nih.gov/16425828/>
 - Thota AK, Kuntaegowdanahalli S, Starosciak AK, Abbas JJ, Orbay J, Horch KW, Jung R. *A system and method to interface with multiple groups of axons in several fascicles of peripheral nerves.* J Neurosci Methods. 2015. PubMed: <https://pubmed.ncbi.nlm.nih.gov/25092497/>
 - Pena AE, Kuntaegowdanahalli SS, Abbas JJ, Patrick J, Horch KW, Jung R. *Mechanical fatigue resistance of an implantable branched lead system for a distributed set of longitudinal intrafascicular electrodes.* J Neural Eng. 2017. PubMed: <https://pubmed.ncbi.nlm.nih.gov/29131813/>
-

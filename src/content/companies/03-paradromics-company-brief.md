@@ -109,9 +109,3 @@ Paradromics looks like a classic “high‑bandwidth intracortical” bet:
 - Power budget, heat, data link reliability, and robust decoding under realistic conditions.
 
 ---
-
-### Source notes (internal)
-- I prioritized Paradromics’ own pages for claims about device architecture and study plans.
-- For funding/BD designation, I included both the company announcement and third‑party coverage.
-- If needed employee count / headcount estimates, I can add LinkedIn data when it’s reliably accessible in our tooling.
-

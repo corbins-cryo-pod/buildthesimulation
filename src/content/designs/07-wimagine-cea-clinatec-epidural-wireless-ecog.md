@@ -156,4 +156,3 @@ draft: false
 - ClinicalTrials.gov: NCT02550522 (record access varies by site; link by ID): <https://clinicaltrials.gov/study/NCT02550522>
 - (Add) Benabid AL et al., *Lancet Neurology* (2019) — to link precisely once we pick the exact article/DOI.
 - CEA‑Clinatec: <https://clinatec.fr/>
-

@@ -107,8 +107,3 @@ If needed *recent milestones* (e.g., participant counts, regulatory designations
 - Next: richer multi-DOF control, speech interfaces, or combined stimulation/recording applications.
 
 ---
-
-### Source notes (internal)
-- For *technology + human data*, I prioritized peer‑reviewed papers (JAMA Neurology; JNIS) and trial registry.
-- Wikipedia is used only as a navigation hub to primary sources (and should be treated as secondary).
-

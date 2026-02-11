@@ -85,4 +85,3 @@ A few reputable anchors to start building a real reading list:
   - https://en.wikipedia.org/wiki/Neural_implant
 
 *(Next: we’ll add specific device exemplars for cuffs, FINE-like reshaping, intrafascicular families, and regenerative scaffolds.)*
-
