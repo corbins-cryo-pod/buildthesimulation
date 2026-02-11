@@ -43,6 +43,6 @@ Even if the system is not a near-term product, it demonstrates:
 
 ---
 
-### Notes on sourcing
-Draft. This entry is currently anchored in a secondary summary article; we should replace/add primary publications and institutional pages for WIMAGINE/Clinatec.
+### Source notes (internal)
+Internal draft. This entry is currently anchored in a secondary summary article; I should replace/add primary publications and institutional pages for WIMAGINE/Clinatec.
 

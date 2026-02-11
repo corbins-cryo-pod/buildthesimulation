@@ -89,7 +89,7 @@ Precision’s own history highlights:
 
 ---
 
-### Notes on sourcing
+### Source notes (internal)
 - For the core “what is it” and “why this design,” I rely on Precision’s own About page.
 - For regulatory status and numerical claims (electrode count, 30-day clearance window), I cite secondary coverage plus the primary FDA 510(k) PDF.
 

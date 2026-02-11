@@ -19,7 +19,6 @@ They are best known publicly for two efforts:
 1) *PRIMA*, a subretinal photovoltaic visual prosthesis program in clinical studies.
 2) A *biohybrid brain interface* concept where *living neurons* are embedded in a device and then *engrafted* so that *their axons/dendrites grow into the brain*, potentially creating enormous connection density without “putting wires into a brain.”
 
-Corbin asked for extra emphasis on the biohybrid work, so that’s the center of this brief.
 
 ### At a glance
 
@@ -108,7 +107,8 @@ But the credibility hinge is the same as always: can they make it *reliable, saf
 
 ---
 
-### Notes on sourcing
+### Source notes (internal)
 - Biohybrid concept details are anchored primarily in Science’s own technical writeups and their bioRxiv preprint, with IEEE Spectrum as independent synthesis.
 - Company location/footprint is taken from Science’s company page.
+
 

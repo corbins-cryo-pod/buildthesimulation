@@ -79,11 +79,11 @@ The intraoperative/tumor-resection context is a pragmatic first step, but the re
 High-density recordings can be impressive; the question is whether they translate into better outcomes (better resection margins, fewer deficits, or better control/therapy in movement disorders).
 
 3) *Regulatory clarity*
-They mention Breakthrough Device Designation for Parkinson’s. The most defensible version is to cite an FDA listing or a primary press release once we can fetch it reliably (some presswire endpoints are flaky).
+They mention Breakthrough Device Designation for Parkinson’s. The most defensible version is to cite an FDA listing or a primary press release once I can fetch it reliably (some presswire endpoints are flaky).
 
 ---
 
-### Notes on sourcing
+### Source notes (internal)
 - This brief leans on INBRAIN’s own platform description and on institutional reporting (Manchester + ICN2) for the first-in-human/tumor-resection context.
 - Technical rationale for graphene vs metal is anchored via IEEE Spectrum’s interview-style writeup.
 

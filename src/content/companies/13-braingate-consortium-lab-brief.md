@@ -29,7 +29,7 @@ A readable overview with some performance numbers:
 
 ### Why BrainGate matters
 
-If you want to understand what intracortical arrays can do at the “high performance” end, BrainGate is one of the strongest evidence bases.
+If needed to understand what intracortical arrays can do at the “high performance” end, BrainGate is one of the strongest evidence bases.
 
 It’s also a good example of a translational pipeline:
 - carefully run clinical research
@@ -49,6 +49,6 @@ How/when these systems become actual products.
 
 ---
 
-### Notes on sourcing
-Draft. We should add additional peer-reviewed BrainGate papers and (if needed) ClinicalTrials.gov identifiers for the relevant trials.
+### Source notes (internal)
+Internal draft. I should add additional peer-reviewed BrainGate papers and (if needed) ClinicalTrials.gov identifiers for the relevant trials.
 

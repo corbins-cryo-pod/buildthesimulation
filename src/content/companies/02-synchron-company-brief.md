@@ -25,7 +25,7 @@ This brief leans hard on *peer‑reviewed clinical data* and other primary sourc
 - *Contact / location (company site footer):* the site lists *Brooklyn, NY* along with contact emails. (Synchron contact/footer page)
   - <https://synchron.com/>
 
-> Private-company note: public sources rarely give reliable revenue/profit data for private neurotech startups. If we can’t support a number with a solid source, we don’t claim it.
+> Private-company note: public sources rarely give reliable revenue/profit data for private neurotech startups. If I can’t support a number with a solid source, we don’t claim it.
 
 ### The technology (what makes Synchron different)
 
@@ -85,7 +85,7 @@ Synchron positions its BCI as an at‑home system aimed at autonomy and social c
 
 - Company framing (Synchron homepage): <https://synchron.com/>
 
-If you want *recent milestones* (e.g., participant counts, regulatory designations, notable demos), we should base them on:
+If needed *recent milestones* (e.g., participant counts, regulatory designations, notable demos), I should base them on:
 - peer‑reviewed publications,
 - trial registry updates,
 - regulator announcements,
@@ -108,7 +108,7 @@ If you want *recent milestones* (e.g., participant counts, regulatory designatio
 
 ---
 
-### Notes on sourcing
+### Source notes (internal)
 - For *technology + human data*, I prioritized peer‑reviewed papers (JAMA Neurology; JNIS) and trial registry.
 - Wikipedia is used only as a navigation hub to primary sources (and should be treated as secondary).
 

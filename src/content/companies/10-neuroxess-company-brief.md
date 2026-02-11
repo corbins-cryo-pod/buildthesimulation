@@ -47,6 +47,6 @@ Accuracy, throughput, training time, stability over months.
 
 ---
 
-### Notes on sourcing
-Draft. Current citations are primarily a Wired feature with quotes from company leadership. We should add primary sources (clinical registry entries, papers, institutional announcements) once we gather them.
+### Source notes (internal)
+Internal draft. Current citations are primarily a Wired feature with quotes from company leadership. I should add primary sources (clinical registry entries, papers, institutional announcements) once I gather them.
 

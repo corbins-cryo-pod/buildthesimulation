@@ -55,6 +55,6 @@ If Axoft’s mechanical matching actually translates into:
 
 ---
 
-### Notes on sourcing
-This is a draft brief. Current citations are mostly company statements + press/trade reporting about early feasibility testing; we should strengthen with peer-reviewed publications from the underlying academic work and any registry/clinical readouts when available.
+### Source notes (internal)
+This is a draft brief. Current citations are mostly company statements + press/trade reporting about early feasibility testing; I should strengthen with peer-reviewed publications from the underlying academic work and any registry/clinical readouts when available.
 

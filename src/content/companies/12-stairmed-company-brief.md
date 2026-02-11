@@ -47,6 +47,6 @@ StairMed is part of a broader Chinese push to build an invasive BCI pipeline (ha
 
 ---
 
-### Notes on sourcing
-Draft. Current citations are mainly government/media reporting and should be strengthened with primary technical publications and trial registry entries.
+### Source notes (internal)
+Internal draft. Current citations are mainly government/media reporting and should be strengthened with primary technical publications and trial registry entries.
 

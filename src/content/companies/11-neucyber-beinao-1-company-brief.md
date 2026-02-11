@@ -42,6 +42,6 @@ Who manufactures, who implants, how training and home use is supported.
 
 ---
 
-### Notes on sourcing
-Draft. Current citations are primarily a Wired feature; we should upgrade with primary technical documentation as it becomes available.
+### Source notes (internal)
+Internal draft. Current citations are primarily a Wired feature; I should upgrade with primary technical documentation as it becomes available.
 

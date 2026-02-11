@@ -48,6 +48,6 @@ Implant size, longevity, recharge strategy, reliability, and surgical burden.
 
 ---
 
-### Notes on sourcing
-Draft. Current sources are a short BioWorld report and CorTec’s public-facing site. We should add primary clinical-trial registry entries and peer-reviewed publications as we collect them.
+### Source notes (internal)
+Internal draft. Current sources are a short BioWorld report and CorTec’s public-facing site. I should add primary clinical-trial registry entries and peer-reviewed publications as I collect them.
 

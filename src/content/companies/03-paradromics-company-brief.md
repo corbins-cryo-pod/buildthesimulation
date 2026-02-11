@@ -15,7 +15,7 @@ draft: false
 ---
 Paradromics is building an *implantable, high data‑rate brain–computer interface (BCI)* designed to record activity at (or near) the *single‑neuron* level and translate it into *speech/text and computer control*. Their flagship clinical product is the *Connexus® BCI*, aimed first at restoring communication for people with severe motor impairment (e.g., ALS, spinal cord injury, stroke).
 
-This brief focuses on the *technology*, *clinical path*, and *company facts* we can support with public sources.
+This brief focuses on the *technology*, *clinical path*, and *company facts* I can support with public sources.
 
 ### At a glance
 
@@ -87,7 +87,7 @@ From Paradromics’ own announcements:
 - Earlier: *Breakthrough Device Designation* for Connexus and a *$33M raise* to support first‑in‑human trials:
   - <https://www.paradromics.com/news/paradromics-raises-33-million-in-funding-achieves-breakthrough-medical-device-designation-from-fda>
 
-### How Paradromics fits in the BCI landscape (my framing)
+### How Paradromics fits in the BCI landscape (framing)
 
 Paradromics looks like a classic “high‑bandwidth intracortical” bet:
 - maximize information throughput by recording as close to neurons as possible,
@@ -110,8 +110,8 @@ Paradromics looks like a classic “high‑bandwidth intracortical” bet:
 
 ---
 
-### Notes on sourcing
+### Source notes (internal)
 - I prioritized Paradromics’ own pages for claims about device architecture and study plans.
 - For funding/BD designation, I included both the company announcement and third‑party coverage.
-- If you want employee count / headcount estimates, we can add LinkedIn data when it’s reliably accessible in our tooling.
+- If needed employee count / headcount estimates, I can add LinkedIn data when it’s reliably accessible in our tooling.
 

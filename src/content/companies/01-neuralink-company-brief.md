@@ -60,7 +60,7 @@ Reuters reporting in mid‑2025 states Neuralink had begun clinical trials acros
 - Reuters (Dec 2025 / Jan 2026): reports Musk stated Neuralink would start “high‑volume production” of BCI devices and move to an “entirely automated surgical procedure” in 2026.
   - <https://www.reuters.com/business/healthcare-pharmaceuticals/musk-says-neuralink-start-high-volume-production-interface-devices-by-2026-2026-01-01/>
 
-### Money: revenue vs funding (what we can and can’t say)
+### Money: revenue vs funding (what I can and can’t say)
 
 ### Revenue
 Neuralink is privately held; *revenue is not publicly disclosed* in a reliable, audited way. If you see revenue figures online, they are usually estimates.
@@ -69,7 +69,7 @@ Neuralink is privately held; *revenue is not publicly disclosed* in a reliable, 
 - Reuters (June 2025): Neuralink said it raised *$650 million* in a funding round (with named participating investors).
   - <https://www.reuters.com/business/healthcare-pharmaceuticals/musks-neuralink-raises-650-million-latest-funding-round-2025-06-02/>
 
-### Where Neuralink sits in the BCI landscape (my framing)
+### Where Neuralink sits in the BCI landscape (framing)
 
 Neuralink is best thought of as:
 - *high-channel-count intracortical recording* (aspirationally “high bandwidth”),
@@ -93,6 +93,6 @@ Neuralink is best thought of as:
 
 ---
 
-### Notes on sourcing
+### Source notes (internal)
 I’m intentionally favoring primary/major reporting sources (e.g., Reuters) and official pages over scraped “startup list” aggregators. For private-company stats (employees, location), public directories and LinkedIn are imperfect but often the best available signals.
 

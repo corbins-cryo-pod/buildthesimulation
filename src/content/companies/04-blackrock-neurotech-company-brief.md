@@ -55,7 +55,7 @@ Blackrock presents *MoveAgain* as its first device designed for clinical use.
 - Blackrock homepage (MoveAgain mention): <https://blackrockneurotech.com/>
 - Blackrock “Our Tech” (MoveAgain + FDA Breakthrough Designation claim): <https://blackrockneurotech.com/our-tech/>
 
-(For “Breakthrough Device” details, we should later link the FDA database entry if we want to state it with maximum rigor; the company page is a start.)
+(For “Breakthrough Device” details, I should later link the FDA database entry if we want to state it with maximum rigor; the company page is a start.)
 
 ### What has been demonstrated (peer‑reviewed examples that intersect Blackrock’s platform)
 
@@ -107,7 +107,7 @@ The hardest step is turning research performance into a product: training burden
 
 ---
 
-### Notes on sourcing
+### Source notes (internal)
 - Company metrics (HQ, employee counts) are taken from LinkedIn and treated as approximate.
 - For technical credibility, I cited peer‑reviewed examples and university reporting, rather than only company marketing.
 
