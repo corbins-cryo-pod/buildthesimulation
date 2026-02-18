@@ -118,13 +118,6 @@ draft: false
 
 ---
 
-### Simulation Hooks (for BuildTheSimulation)
-- *Minimal model to reproduce:* multi-fascicle nerve cross-section + cuff-induced deformation (round → oblong) + extracellular stimulation field
-- *Parameters to expose as sliders:* flattening ratio, contact count/placement, encapsulation thickness/conductivity, bipolar vs multipolar drive patterns
-- *What outputs to visualize:* fascicle recruitment/selectivity maps vs flattening; “selectivity gain” vs round cuff baseline; threshold drift proxy vs encapsulation
-
----
-
 ### References
 - Tyler DJ, Durand DM. *Functionally selective peripheral nerve stimulation with a flat interface nerve electrode.* IEEE Trans Neural Syst Rehabil Eng. 2002;10(4):294–303. doi: 10.1109/TNSRE.2002.806840. PubMed: <https://pubmed.ncbi.nlm.nih.gov/12611367/>
 - Tyler DJ, Durand DM. *Chronic response of the rat sciatic nerve to the flat interface nerve electrode.* Ann Biomed Eng. 2003;31(6):633–642. doi: 10.1114/1.1569263. PubMed: <https://pubmed.ncbi.nlm.nih.gov/12797612/>

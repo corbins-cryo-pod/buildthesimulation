@@ -137,13 +137,6 @@ draft: false
 
 ---
 
-### Simulation Hooks (for BuildTheSimulation)
-- *Minimal model to reproduce:* high-density intracortical recording array with spike yield vs insertion depth and tissue coupling
-- *Parameters to expose as sliders:* insertion depth, micromotion amplitude, encapsulation thickness, noise floor, yield fraction
-- *What outputs to visualize:* expected unit yield distribution; decoding proxy vs channel count; stability vs encapsulation
-
----
-
 ### References
 - Paradromics (press release). *Paradromics Completes First-In-Human Recording with the Connexus® Brain-Computer Interface.* <https://www.paradromics.com/news/paradromics-completes-first-in-human-recording-with-the-connexus-brain-computer-interface>
 - UPI. *Paradromics implants brain-computer interface into first human patient.* (June 2, 2025). <https://www.upi.com/Health_News/2025/06/02/paradromics-brain-computer-interface-implanted-human/4661748897835/>

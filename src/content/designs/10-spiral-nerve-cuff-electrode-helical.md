@@ -140,13 +140,6 @@ This keeps the index clean while still giving you a canonical place to link the 
 
 ---
 
-### Simulation Hooks (for BuildTheSimulation)
-- *Minimal model to reproduce:* cuff-on-nerve volume conductor + recruitment curves vs contact geometry
-- *Parameters to expose as sliders:* cuff inner diameter vs nerve diameter (compression proxy), contact count and placement, encapsulation thickness/conductivity, bipolar vs tripolar patterns
-- *What outputs to visualize:* selectivity vs contact geometry, threshold drift vs encapsulation, fascicle activation heatmaps in a toy nerve cross-section
-
----
-
 ### References
 - Naples GG, Mortimer JT, Scheiner A, Sweeney JD. *A spiral nerve cuff electrode for peripheral nerve stimulation.* IEEE Trans Biomed Eng. 1988;35(11):905–916. doi: 10.1109/10.8670. PubMed: <https://pubmed.ncbi.nlm.nih.gov/3198136/>
 - Christie BP, Freeberg M, Memberg WD, et al. *Long-term stability of stimulating spiral nerve cuff electrodes on human peripheral nerves.* J Neuroeng Rehabil. 2017;14:70. doi: 10.1186/s12984-017-0285-3. PubMed: <https://pubmed.ncbi.nlm.nih.gov/28693584/> (Open access: <https://pmc.ncbi.nlm.nih.gov/articles/PMC5504677/>)

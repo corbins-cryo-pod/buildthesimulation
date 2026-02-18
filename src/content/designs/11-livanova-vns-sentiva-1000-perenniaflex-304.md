@@ -115,13 +115,6 @@ draft: false
 
 ---
 
-### Simulation Hooks (for BuildTheSimulation)
-- *Minimal model to reproduce:* cervical vagus as multi-fascicle cable + extraneural bipolar cuff recruitment model
-- *Parameters to expose as sliders:* cuff inner diameter, electrode spacing, encapsulation thickness, pulse width/amplitude/frequency
-- *What outputs to visualize:* fiber recruitment curves by diameter and distance; off-target recruitment proxy
-
----
-
 ### References
 - Afra P, Adamolekun B, Aydemir S, Watson GDR. *Evolution of the Vagus Nerve Stimulation (VNS) Therapy System Technology for Drug-Resistant Epilepsy.* Front Med Technol. 2021. doi: 10.3389/fmedt.2021.696543. PubMed: <https://pubmed.ncbi.nlm.nih.gov/35047938/>
 - LivaNova (product/therapy overview): <https://www.livanova.com/epilepsy-vnstherapy/en-us>

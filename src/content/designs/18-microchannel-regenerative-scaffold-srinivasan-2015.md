@@ -107,12 +107,5 @@ draft: false
 
 ---
 
-### Simulation Hooks (for BuildTheSimulation)
-- microchannel size vs signal amplitude proxy
-- channel separation vs selectivity
-- fibrosis vs channel patency over time
-
----
-
 ### References
 - Srinivasan A, et al. *Microchannel-based regenerative scaffold for chronic peripheral nerve interfacing in amputees.* Biomaterials. 2015;41:151–165. doi: 10.1016/j.biomaterials.2014.11.035. PubMed: <https://pubmed.ncbi.nlm.nih.gov/25522974/>

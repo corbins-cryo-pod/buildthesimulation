@@ -146,13 +146,6 @@ draft: false
 
 ---
 
-### Simulation Hooks (for BuildTheSimulation)
-- *Minimal model to reproduce:* dense electrode column in cortical tissue with spike propagation + distance-dependent attenuation
-- *Parameters to expose as sliders:* site spacing, shank thickness, noise floor, tissue damage zone / encapsulation thickness
-- *What outputs to visualize:* spike yield proxy, neuron count proxy, SNR proxy, stability vs time proxy
-
----
-
 ### References
 - Jun JJ, et al. “Fully integrated silicon probes for high-density recording of neural activity.” *Nature* (2017). <https://www.nature.com/articles/nature24636>
 - Steinmetz NA, et al. “Neuropixels 2.0: A miniaturized high-density probe for stable, long-term brain recordings.” *Science* (2021). PMC: <https://pmc.ncbi.nlm.nih.gov/articles/PMC8244810/>

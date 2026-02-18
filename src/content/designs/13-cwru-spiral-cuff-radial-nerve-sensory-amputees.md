@@ -102,13 +102,6 @@ draft: false
 
 ---
 
-### Simulation Hooks (for BuildTheSimulation)
-- *Minimal model to reproduce:* spiral cuff with circumferential contacts on a multi-fascicle nerve; recruitment overlap/selectivity metrics
-- *Parameters to expose as sliders:* cuff diameter vs nerve diameter (fit), contact count/positions, encapsulation thickness
-- *What outputs to visualize:* recruitment curves per contact; overlap/selectivity matrix; threshold drift proxy
-
----
-
 ### References
 - Naples GG, Mortimer JT, Scheiner A, Sweeney JD. *A spiral nerve cuff electrode for peripheral nerve stimulation.* IEEE Trans Biomed Eng. 1988;35(11):905–916. doi: 10.1109/10.8670. PubMed: <https://pubmed.ncbi.nlm.nih.gov/3198136/>
 - Christie BP, Freeberg M, Memberg WD, et al. *Long-term stability of stimulating spiral nerve cuff electrodes on human peripheral nerves.* J Neuroeng Rehabil. 2017;14:70. doi: 10.1186/s12984-017-0285-3. PubMed: <https://pubmed.ncbi.nlm.nih.gov/28693584/> (OA: <https://pmc.ncbi.nlm.nih.gov/articles/PMC5504677/>)

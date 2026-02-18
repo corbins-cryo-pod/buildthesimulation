@@ -136,13 +136,6 @@ draft: false
 
 ---
 
-### Simulation Hooks (for BuildTheSimulation)
-- *Minimal model to reproduce:* stent electrode inside a compliant venous tube adjacent to cortex; coupling transfer function from cortical sources → vessel wall → electrode
-- *Parameters to expose as sliders:* stent diameter/oversizing proxy, electrode spacing/count, vessel-wall thickness/neointimal growth (attenuation), source depth/orientation
-- *What outputs to visualize:* bandwidth/SNR proxy vs anatomy, long‑term attenuation vs neointimal thickness, patency risk proxy vs oversizing
-
----
-
 ### References
 - Yoo PE, et al. “Motor neuroprosthesis implanted with neurointerventional surgery improves capacity for activities of daily living tasks in severe paralysis: first in-human experience.” *J NeuroInterv Surg* (Epub 2020 Oct 28; 2021 Feb). DOI: 10.1136/neurintsurg-2020-016862. PubMed: <https://pubmed.ncbi.nlm.nih.gov/33115813/>
 - Mitchell P, et al. “Assessment of Safety of a Fully Implanted Endovascular Brain-Computer Interface for Severe Paralysis in 4 Patients: The Stentrode With Thought-Controlled Digital Switch (SWITCH) Study.” *JAMA Neurology* (2023). PMC full text: <https://pmc.ncbi.nlm.nih.gov/articles/PMC9857731/>

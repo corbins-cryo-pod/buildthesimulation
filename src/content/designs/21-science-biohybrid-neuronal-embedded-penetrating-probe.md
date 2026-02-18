@@ -83,12 +83,5 @@ draft: false
 
 ---
 
-### Simulation Hooks (for BuildTheSimulation)
-- neurite outgrowth + synapse formation vs effective coupling/bandwidth proxy
-- immune rejection pressure vs survival curve
-- optical drive vs heating/phototoxicity proxy
-
----
-
 ### References
 - Brown J, et al. bioRxiv preprint (surface biohybrid demonstration): <https://www.biorxiv.org/content/10.1101/2024.11.22.624907v1>

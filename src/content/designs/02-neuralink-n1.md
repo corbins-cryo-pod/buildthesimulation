@@ -141,13 +141,6 @@ draft: false
 
 ---
 
-### Simulation Hooks (for BuildTheSimulation)
-- *Minimal model to reproduce:* flexible penetrators in viscoelastic tissue + per-site coupling + a time-varying encapsulation layer
-- *Parameters to expose as sliders:* thread stiffness, insertion depth, encapsulation thickness, channel count
-- *What outputs to visualize:* yield vs time, SNR vs time, spatial drift sensitivity, thermal budget proxy
-
----
-
 ### References
 
 - Neuralink updates and public materials: <https://neuralink.com/>

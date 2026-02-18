@@ -145,13 +145,6 @@ draft: false
 
 ---
 
-### Simulation Hooks (for BuildTheSimulation)
-- *Minimal model to reproduce:* neurite ingrowth into a hollow cone with spike generation at an internal microwire
-- *Parameters to expose as sliders:* ingrowth success probability, neurite density, micromotion amplitude, spike SNR
-- *What outputs to visualize:* unit stability over time, failure probability vs integration parameters
-
----
-
 ### References
 - Kennedy PR, Bakay RAE. *Restoration of neural output from a paralyzed patient by a direct brain connection.* NeuroReport. 1998;9(8):1707–1711. doi: 10.1097/00001756-199806010-00007. PubMed: <https://pubmed.ncbi.nlm.nih.gov/9665587/>
 - Bartels J, Andreasen D, Ehirim P, et al. *Neurotrophic electrode: method of assembly and implantation into human motor speech cortex.* J Neurosci Methods. 2008. PubMed: <https://pubmed.ncbi.nlm.nih.gov/18672003/>

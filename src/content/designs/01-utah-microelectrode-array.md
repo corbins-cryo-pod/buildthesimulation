@@ -145,12 +145,5 @@ draft: false
 
 ---
 
-### Simulation Hooks (for BuildTheSimulation)
-- *Minimal model to reproduce:* rigid shank array in tissue with a time-varying gliosis/encapsulation layer
-- *Parameters to expose as sliders:* insertion depth, neuron density, encapsulation thickness, impedance drift
-- *What outputs to visualize:* spike yield, SNR proxy, channel survival vs time
-
----
-
 ### References
 - (Add primary Normann + chronic response + BrainGate methods papers here)

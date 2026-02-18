@@ -137,13 +137,6 @@ draft: false
 
 ---
 
-### Simulation Hooks (for BuildTheSimulation)
-- *Minimal model to reproduce:* intrafascicular wire inside a fascicle with an encapsulation layer and longitudinal current spread
-- *Parameters to expose as sliders:* wire diameter, distance to axons, encapsulation thickness, micromotion amplitude
-- *What outputs to visualize:* CAP amplitude vs time proxy; selectivity vs fibrosis; threshold drift curves
-
----
-
 ### References
 - Dhillon GS, Horch KW. *Direct neural sensory feedback and control of a prosthetic arm.* IEEE Trans Neural Syst Rehabil Eng. 2005;13(4):468–472. doi: 10.1109/TNSRE.2005.856072. PubMed: <https://pubmed.ncbi.nlm.nih.gov/16425828/>
 - Thota AK, Kuntaegowdanahalli S, Starosciak AK, Abbas JJ, Orbay J, Horch KW, Jung R. *A system and method to interface with multiple groups of axons in several fascicles of peripheral nerves.* J Neurosci Methods. 2015. PubMed: <https://pubmed.ncbi.nlm.nih.gov/25092497/>

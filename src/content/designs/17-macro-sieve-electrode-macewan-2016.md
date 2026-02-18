@@ -105,12 +105,5 @@ draft: false
 
 ---
 
-### Simulation Hooks (for BuildTheSimulation)
-- transit-zone size vs axon caliber preservation
-- electrode spacing vs recruitment selectivity across zones
-- regeneration delay vs “time to stimulation”
-
----
-
 ### References
 - MacEwan MR, et al. *Regenerated Sciatic Nerve Axons Stimulated through a Chronically Implanted Macro-Sieve Electrode.* Front Neurosci. 2016;10:557. doi: 10.3389/fnins.2016.00557. PubMed: <https://pubmed.ncbi.nlm.nih.gov/28008303/>

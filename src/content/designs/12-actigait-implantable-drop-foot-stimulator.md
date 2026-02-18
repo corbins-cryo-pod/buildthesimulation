@@ -111,12 +111,5 @@ draft: false
 
 ---
 
-### Simulation Hooks (for BuildTheSimulation)
-- *Minimal model to reproduce:* peroneal nerve cross-section + circumferential cuff recruitment + gait-phase timing
-- *Parameters to expose as sliders:* channel angular positions, encapsulation thickness, amplitude/pulse width per channel, trigger jitter
-- *What outputs to visualize:* dorsiflexion torque proxy vs channel pattern; fascicle recruitment map per channel
-
----
-
 ### References
 - Martin KD, et al. *Restoration of ankle movements with the ActiGait implantable drop foot stimulator: a safe and reliable treatment option for permanent central leg palsy.* J Neurosurg. 2016;124(1):70–76. doi: 10.3171/2014.12.JNS142110. PubMed: <https://pubmed.ncbi.nlm.nih.gov/26207599/>

@@ -104,12 +104,5 @@ draft: false
 
 ---
 
-### Simulation Hooks (for BuildTheSimulation)
-- neurite ingrowth depth/distribution vs coupling strength proxy
-- engrafted neuron survival fraction vs information transfer reliability
-- optical stimulation amplitude/duty cycle vs safety proxy (heating/phototoxicity)
-
----
-
 ### References
 - Brown J, Zappitelli KM, Dawson PM, et al. *Optogenetic stimulation of a cortical biohybrid implant guides goal directed behavior.* bioRxiv. 2024. doi: 10.1101/2024.11.22.624907. <https://www.biorxiv.org/content/10.1101/2024.11.22.624907v1>

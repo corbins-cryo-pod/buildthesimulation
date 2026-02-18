@@ -145,13 +145,6 @@ draft: false
 
 ---
 
-### Simulation Hooks (for BuildTheSimulation)
-- *Minimal model to reproduce:* epidural ECoG grid over layered cortex with volume conduction
-- *Parameters to expose as sliders:* electrode size, dura thickness, cortical synchrony, noise floor
-- *What outputs to visualize:* spatial smoothing, decoding proxy vs electrode density
-
----
-
 ### References
 - ClinicalTrials.gov: NCT02550522 (record access varies by site; link by ID): <https://clinicaltrials.gov/study/NCT02550522>
 - (Add) Benabid AL et al., *Lancet Neurology* (2019) — to link precisely once we pick the exact article/DOI.
