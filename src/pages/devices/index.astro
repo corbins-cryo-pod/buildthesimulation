@@ -3,13 +3,42 @@ import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import DevicesDirectory from "../../components/DevicesDirectory";
 
-const entries = (await getCollection("designs"))
-  .filter((p) => !p.data.draft)
-  .sort((a, b) => stripPrefix(a.data.title).localeCompare(stripPrefix(b.data.title)));
+const deviceSuccessRank = {
+  "11-livanova-vns-sentiva-1000-perenniaflex-304": 1,
+  "01-utah-microelectrode-array": 2,
+  "03-stentrode-synchron": 3,
+  "02-neuralink-n1": 4,
+  "04-neuropixels-probe": 5,
+  "10-spiral-nerve-cuff-electrode-helical": 6,
+  "05-utah-slanted-electrode-array-usea": 7,
+  "14-fine-flat-interface-nerve-electrode": 8,
+  "12-actigait-implantable-drop-foot-stimulator": 9,
+  "06-time-transverse-intrafascicular-multichannel-electrode": 10,
+  "15-life-longitudinal-intrafascicular-electrode": 11,
+  "13-cwru-spiral-cuff-radial-nerve-sensory-amputees": 12,
+  "08-neurotrophic-electrode-kennedy-cone": 13,
+  "07-wimagine-cea-clinatec-epidural-wireless-ecog": 14,
+  "09-paradromics-connexus-acute-first-in-human": 15,
+  "19-teeni-rpni": 16,
+  "16-hyperflexible-regenerative-sieve-electrode-veith-2021": 17,
+  "17-macro-sieve-electrode-macewan-2016": 18,
+  "18-microchannel-regenerative-scaffold-srinivasan-2015": 19,
+  "20-science-biohybrid-cortical-engraftment-microwell": 20,
+  "21-science-biohybrid-neuronal-embedded-penetrating-probe": 21,
+} as const;
 
 function stripPrefix(title) {
-  return title.replace(/^\d+\s*—\s*/, "");
+  return title.replace(/^\d+\s*[-—]\s*/, "");
 }
+
+const entries = (await getCollection("designs"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => {
+    const ar = deviceSuccessRank[a.slug] ?? Number.POSITIVE_INFINITY;
+    const br = deviceSuccessRank[b.slug] ?? Number.POSITIVE_INFINITY;
+    if (ar !== br) return ar - br;
+    return stripPrefix(a.data.title).localeCompare(stripPrefix(b.data.title));
+  });
 
 const normalized = entries.map((p) => ({
   title: stripPrefix(p.data.title),

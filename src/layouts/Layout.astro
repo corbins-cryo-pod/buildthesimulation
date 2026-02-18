@@ -31,13 +31,75 @@ const articles = (await getCollection("articles"))
   .filter((p) => !p.data.draft)
   .sort((a, b) => a.data.order - b.data.order);
 
+const companySizeRank = {
+  "01-neuralink-company-brief": 1,
+  "04-blackrock-neurotech-company-brief": 2,
+  "02-synchron-company-brief": 3,
+  "05-precision-neuroscience-company-brief": 4,
+  "03-paradromics-company-brief": 5,
+  "06-science-corporation-company-brief": 6,
+  "09-cortec-company-brief": 7,
+  "20-axogen-company-brief": 8,
+  "24-cortigent-company-brief": 9,
+  "25-neuronexus-technologies-company-brief": 10,
+  "07-inbrain-neuroelectronics-company-brief": 11,
+  "08-axoft-company-brief": 12,
+  "10-neuroxess-company-brief": 13,
+  "11-neucyber-beinao-1-company-brief": 14,
+  "12-stairmed-company-brief": 15,
+
+  "22-mit-neural-engineering-neurotech-ecosystem-lab-brief": 101,
+  "21-stanford-neural-engineering-bci-ecosystem-lab-brief": 102,
+  "17-university-of-michigan-neural-engineering-lab-brief": 103,
+  "18-upenn-cullenlab-neuroengineering-lab-brief": 104,
+  "16-university-of-utah-neural-engineering-lab-brief": 105,
+  "15-technical-university-of-munich-bci-lab-brief": 106,
+  "19-uflorida-neural-engineering-lab-brief": 107,
+  "13-braingate-consortium-lab-brief": 108,
+  "14-cea-clinatec-wimagine-lab-brief": 109,
+} as const;
+
+const deviceSuccessRank = {
+  "11-livanova-vns-sentiva-1000-perenniaflex-304": 1,
+  "01-utah-microelectrode-array": 2,
+  "03-stentrode-synchron": 3,
+  "02-neuralink-n1": 4,
+  "04-neuropixels-probe": 5,
+  "10-spiral-nerve-cuff-electrode-helical": 6,
+  "05-utah-slanted-electrode-array-usea": 7,
+  "14-fine-flat-interface-nerve-electrode": 8,
+  "12-actigait-implantable-drop-foot-stimulator": 9,
+  "06-time-transverse-intrafascicular-multichannel-electrode": 10,
+  "15-life-longitudinal-intrafascicular-electrode": 11,
+  "13-cwru-spiral-cuff-radial-nerve-sensory-amputees": 12,
+  "08-neurotrophic-electrode-kennedy-cone": 13,
+  "07-wimagine-cea-clinatec-epidural-wireless-ecog": 14,
+  "09-paradromics-connexus-acute-first-in-human": 15,
+  "19-teeni-rpni": 16,
+  "16-hyperflexible-regenerative-sieve-electrode-veith-2021": 17,
+  "17-macro-sieve-electrode-macewan-2016": 18,
+  "18-microchannel-regenerative-scaffold-srinivasan-2015": 19,
+  "20-science-biohybrid-cortical-engraftment-microwell": 20,
+  "21-science-biohybrid-neuronal-embedded-penetrating-probe": 21,
+} as const;
+
 const companies = (await getCollection("companies"))
   .filter((p) => !p.data.draft)
-  .sort((a, b) => a.data.order - b.data.order);
+  .sort((a, b) => {
+    const ar = companySizeRank[a.slug] ?? Number.POSITIVE_INFINITY;
+    const br = companySizeRank[b.slug] ?? Number.POSITIVE_INFINITY;
+    if (ar !== br) return ar - br;
+    return stripPrefix(a.data.title).localeCompare(stripPrefix(b.data.title));
+  });
 
 const designs = (await getCollection("designs"))
   .filter((p) => !p.data.draft)
-  .sort((a, b) => a.data.order - b.data.order);
+  .sort((a, b) => {
+    const ar = deviceSuccessRank[a.slug] ?? Number.POSITIVE_INFINITY;
+    const br = deviceSuccessRank[b.slug] ?? Number.POSITIVE_INFINITY;
+    if (ar !== br) return ar - br;
+    return stripPrefix(a.data.title).localeCompare(stripPrefix(b.data.title));
+  });
 
 const news = (await getCollection("news"))
   .filter((p) => !p.data.draft)
@@ -48,7 +110,7 @@ const ideas = (await getCollection("ideas"))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 function stripPrefix(title) {
-  return title.replace(/^\d+\s*—\s*/, "");
+  return title.replace(/^\d+\s*[-—]\s*/, "");
 }
 ---
 
@@ -130,7 +192,7 @@ function stripPrefix(title) {
               <div class="menuSep"></div>
               {companies.map((p) => (
                 <a class="menuItem" href={`/companies/${p.slug}/`}>
-                  {String(p.data.order).padStart(2, "0")} — {stripPrefix(p.data.title)}
+                  {stripPrefix(p.data.title)}
                 </a>
               ))}
             </div>
@@ -143,7 +205,7 @@ function stripPrefix(title) {
               <div class="menuSep"></div>
               {designs.map((p) => (
                 <a class="menuItem" href={`/devices/${p.slug}/`}>
-                  {String(p.data.order).padStart(2, "0")} — {stripPrefix(p.data.title)}
+                  {stripPrefix(p.data.title)}
                 </a>
               ))}
             </div>

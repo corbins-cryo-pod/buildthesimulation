@@ -6,26 +6,57 @@ const all = await getCollection("companies");
 const posts = all.filter((p) => !p.data.draft);
 
 function titleWithoutPrefix(title) {
-  return title.replace(/^\d+\s*—\s*/, "");
+  return title.replace(/^\d+\s*[-—]\s*/, "");
 }
 
-function sortByTitle(a, b) {
+const companySizeRank = {
+  "01-neuralink-company-brief": 1,
+  "04-blackrock-neurotech-company-brief": 2,
+  "02-synchron-company-brief": 3,
+  "05-precision-neuroscience-company-brief": 4,
+  "03-paradromics-company-brief": 5,
+  "06-science-corporation-company-brief": 6,
+  "09-cortec-company-brief": 7,
+  "20-axogen-company-brief": 8,
+  "24-cortigent-company-brief": 9,
+  "25-neuronexus-technologies-company-brief": 10,
+  "07-inbrain-neuroelectronics-company-brief": 11,
+  "08-axoft-company-brief": 12,
+  "10-neuroxess-company-brief": 13,
+  "11-neucyber-beinao-1-company-brief": 14,
+  "12-stairmed-company-brief": 15,
+
+  "22-mit-neural-engineering-neurotech-ecosystem-lab-brief": 101,
+  "21-stanford-neural-engineering-bci-ecosystem-lab-brief": 102,
+  "17-university-of-michigan-neural-engineering-lab-brief": 103,
+  "18-upenn-cullenlab-neuroengineering-lab-brief": 104,
+  "16-university-of-utah-neural-engineering-lab-brief": 105,
+  "15-technical-university-of-munich-bci-lab-brief": 106,
+  "19-uflorida-neural-engineering-lab-brief": 107,
+  "13-braingate-consortium-lab-brief": 108,
+  "14-cea-clinatec-wimagine-lab-brief": 109,
+} as const;
+
+function sortBySizeThenTitle(a, b) {
+  const ar = companySizeRank[a.slug] ?? Number.POSITIVE_INFINITY;
+  const br = companySizeRank[b.slug] ?? Number.POSITIVE_INFINITY;
+  if (ar !== br) return ar - br;
   return titleWithoutPrefix(a.data.title).localeCompare(titleWithoutPrefix(b.data.title));
 }
 
 const american = posts
   .filter((p) => p.data.kind === "Company" && p.data.region === "American")
-  .sort(sortByTitle);
+  .sort(sortBySizeThenTitle);
 const european = posts
   .filter((p) => p.data.kind === "Company" && p.data.region === "European")
-  .sort(sortByTitle);
+  .sort(sortBySizeThenTitle);
 const chinese = posts
   .filter((p) => p.data.kind === "Company" && p.data.region === "Chinese")
-  .sort(sortByTitle);
+  .sort(sortBySizeThenTitle);
 const other = posts
   .filter((p) => p.data.kind === "Company" && p.data.region === "Other")
-  .sort(sortByTitle);
-const labs = posts.filter((p) => p.data.kind === "Lab").sort(sortByTitle);
+  .sort(sortBySizeThenTitle);
+const labs = posts.filter((p) => p.data.kind === "Lab").sort(sortBySizeThenTitle);
 
 ---
 
