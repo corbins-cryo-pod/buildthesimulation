@@ -10,7 +10,7 @@ const points = posts
   .filter((p) => typeof p.data.lat === "number" && typeof p.data.lon === "number")
   .map((p) => ({
     slug: p.slug,
-    title: p.data.title.replace(/^\d+\s*—\s*/, ""),
+    title: p.data.title.replace(/^\d+\s*[-—]\s*/, "").replace(/\s*\((company|lab) brief\)$/i, ""),
     kind: p.data.kind,
     region: p.data.region,
     website: p.data.website ?? null,

@@ -60,6 +60,10 @@ const ideas = (await getCollection("ideas"))
 function stripPrefix(title) {
   return title.replace(/^\d+\s*[-—]\s*/, "");
 }
+
+function stripAtlasLabel(title) {
+  return stripPrefix(title).replace(/\s*\((company|lab) brief\)$/i, "");
+}
 ---
 
 <!doctype html>
@@ -140,7 +144,7 @@ function stripPrefix(title) {
               <div class="menuSep"></div>
               {companies.map((p) => (
                 <a class="menuItem" href={`/companies/${p.slug}/`}>
-                  {stripPrefix(p.data.title)}
+                  {stripAtlasLabel(p.data.title)}
                 </a>
               ))}
             </div>

@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
@@ -6,14 +6,18 @@ const all = await getCollection("companies");
 const posts = all.filter((p) => !p.data.draft);
 
 function titleWithoutPrefix(title) {
-  return title.replace(/^\d+\s*[-—]\s*/, "");
+  return title.replace(/^\d+\s*[-â€”]\s*/, "");
+}
+
+function atlasTitle(title) {
+  return titleWithoutPrefix(title).replace(/\s*\((company|lab) brief\)$/i, "");
 }
 
 function sortBySizeThenTitle(a, b) {
   const ar = a.data.sizeRank ?? Number.POSITIVE_INFINITY;
   const br = b.data.sizeRank ?? Number.POSITIVE_INFINITY;
   if (ar !== br) return ar - br;
-  return titleWithoutPrefix(a.data.title).localeCompare(titleWithoutPrefix(b.data.title));
+  return atlasTitle(a.data.title).localeCompare(atlasTitle(b.data.title));
 }
 
 const american = posts
@@ -42,7 +46,7 @@ const labs = posts.filter((p) => p.data.kind === "Lab").sort(sortBySizeThenTitle
       This page lists organizations in the BCI ecosystem and links to their detailed briefs.
     </p>
     <p class="muted" style="margin-top:10px;">
-      Want the geography view? → <a href="/companies/map/">Open the atlas map</a>
+      Want the geography view? â†’ <a href="/companies/map/">Open the atlas map</a>
     </p>
   </section>
 
@@ -52,7 +56,7 @@ const labs = posts.filter((p) => p.data.kind === "Lab").sort(sortBySizeThenTitle
       <div class="list">
         {american.map((p) => (
           <a class="item" href={`/companies/${p.slug}/`}>
-            <h3>{titleWithoutPrefix(p.data.title)}</h3>
+            <h3>{atlasTitle(p.data.title)}</h3>
             {p.data.description ? <p class="desc">{p.data.description}</p> : null}
           </a>
         ))}
@@ -66,7 +70,7 @@ const labs = posts.filter((p) => p.data.kind === "Lab").sort(sortBySizeThenTitle
       <div class="list">
         {european.map((p) => (
           <a class="item" href={`/companies/${p.slug}/`}>
-            <h3>{titleWithoutPrefix(p.data.title)}</h3>
+            <h3>{atlasTitle(p.data.title)}</h3>
             {p.data.description ? <p class="desc">{p.data.description}</p> : null}
           </a>
         ))}
@@ -80,7 +84,7 @@ const labs = posts.filter((p) => p.data.kind === "Lab").sort(sortBySizeThenTitle
       <div class="list">
         {chinese.map((p) => (
           <a class="item" href={`/companies/${p.slug}/`}>
-            <h3>{titleWithoutPrefix(p.data.title)}</h3>
+            <h3>{atlasTitle(p.data.title)}</h3>
             {p.data.description ? <p class="desc">{p.data.description}</p> : null}
           </a>
         ))}
@@ -94,7 +98,7 @@ const labs = posts.filter((p) => p.data.kind === "Lab").sort(sortBySizeThenTitle
       <div class="list">
         {other.map((p) => (
           <a class="item" href={`/companies/${p.slug}/`}>
-            <h3>{titleWithoutPrefix(p.data.title)}</h3>
+            <h3>{atlasTitle(p.data.title)}</h3>
             {p.data.description ? <p class="desc">{p.data.description}</p> : null}
           </a>
         ))}
@@ -108,7 +112,7 @@ const labs = posts.filter((p) => p.data.kind === "Lab").sort(sortBySizeThenTitle
       <div class="list">
         {labs.map((p) => (
           <a class="item" href={`/companies/${p.slug}/`}>
-            <h3>{titleWithoutPrefix(p.data.title)}</h3>
+            <h3>{atlasTitle(p.data.title)}</h3>
             {p.data.description ? <p class="desc">{p.data.description}</p> : null}
           </a>
         ))}
@@ -172,3 +176,4 @@ const labs = posts.filter((p) => p.data.kind === "Lab").sort(sortBySizeThenTitle
     line-height: 1.7;
   }
 </style>
+

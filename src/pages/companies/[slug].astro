@@ -12,7 +12,9 @@ const { Content } = await render(entry);
 
 const subtitle = entry.data.description ?? "Company / lab brief.";
 
-const titleNoPrefix = entry.data.title.replace(/^\d+\s*—\s*/, "");
+const titleNoPrefix = entry.data.title
+  .replace(/^\d+\s*[-—]\s*/, "")
+  .replace(/\s*\((company|lab) brief\)$/i, "");
 ---
 
 <Layout pageTitle="BCI Atlas" subtitle={subtitle} description={entry.data.description}>
