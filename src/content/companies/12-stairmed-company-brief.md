@@ -6,7 +6,7 @@ updatedDate: 2026-02-02
 description: "StairMed (Shanghai): invasive BMI reported in 2025 first-in-man trials enabling amputee computer/game control via a coin-sized implant and ultra-thin electrodes."
 region: "Chinese"
 kind: "Company"
-website: "https://english.shanghai.gov.cn/en-Latest-WhatsNew/20250513/f335be254e5c4dd5b00f3a26a04ab3cc.html"
+website: "https://www.stairmed.com/"
 location: "Shanghai, China"
 lat: 31.2304
 lon: 121.4737

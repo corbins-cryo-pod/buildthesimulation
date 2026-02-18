@@ -6,7 +6,7 @@ updatedDate: 2026-02-07
 description: "Second Sight developed the Argus II retinal prosthesis (FDA HDE, 2013) and later shifted toward cortical vision concepts before winding down operations; its lineage continues under Cortigent."
 region: "American"
 kind: "Company"
-website: "https://www.fightingblindness.org/news/second-sight-agrees-to-merger-to-maintain-retinal-and-cortical-prostheses-programs-830"
+website: "https://www.cortigent.com/"
 location: "Sylmar, CA, USA"
 lat: 34.3078
 lon: -118.4501

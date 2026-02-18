@@ -6,7 +6,7 @@ updatedDate: 2026-02-06
 description: "UMich is a major neural engineering hub spanning intracortical iBCI translation, noninvasive clinical BCIs, and foundational neural probe hardware (the ‘Michigan probe’ lineage)."
 region: "American"
 kind: "Lab"
-website: "https://bme.umich.edu/research/research-strengths/neural-engineering/"
+website: "https://bme.umich.edu/"
 location: "Ann Arbor, MI, USA"
 lat: 42.2808
 lon: -83.743

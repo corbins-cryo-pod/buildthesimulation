@@ -6,7 +6,7 @@ updatedDate: 2026-02-06
 description: "Penn is a full-stack BCI ecosystem spanning clinic-facing implantable systems, decoding/methods, and biohybrid interface biology (including ‘living electrode’ concepts)."
 region: "American"
 kind: "Lab"
-website: "https://www.med.upenn.edu/"
+website: "https://www.med.upenn.edu/cullenlab/"
 location: "Philadelphia, PA, USA"
 lat: 39.9526
 lon: -75.1652
