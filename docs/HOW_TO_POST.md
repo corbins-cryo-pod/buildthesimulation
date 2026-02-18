@@ -13,7 +13,7 @@ Each file has `draft: true|false`.
 
 ## News: create a new weekly post
 1. Copy the template:
-   - `templates/news-template.md`
+   - `workbench/notes-templates/templates/news-template.md`
 2. Name it like:
    - `src/content/news/YYYY-MM-DD-weekly-bci-roundup.md`
 3. Fill in frontmatter + content.
@@ -22,7 +22,7 @@ Each file has `draft: true|false`.
 
 ## Articles: add to the sequence
 1. Copy the template:
-   - `templates/article-template.md`
+   - `workbench/notes-templates/templates/article-template.md`
 2. Name it like:
    - `src/content/articles/02-history-of-bcis.md`
 3. Set `order: 2` (and increment for each article).

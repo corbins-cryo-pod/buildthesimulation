@@ -34,8 +34,8 @@ Draft control:
 - `draft: false` → published
 
 Templates:
-- `templates/news-template.md`
-- `templates/article-template.md`
+- `workbench/notes-templates/templates/news-template.md`
+- `workbench/notes-templates/templates/article-template.md`
 
 More detail:
 - `docs/HOW_TO_POST.md`
