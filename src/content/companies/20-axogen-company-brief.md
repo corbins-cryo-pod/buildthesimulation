@@ -6,6 +6,7 @@ updatedDate: 2026-02-06
 description: "Axogen is a publicly traded U.S. med-tech company focused on peripheral nerve repair and regeneration (adjacent to long-term peripheral nerve interface readiness)."
 region: "American"
 kind: "Company"
+sizeRank: 8
 website: "https://www.axogeninc.com/"
 location: "Alachua, FL, USA"
 lat: 29.7516

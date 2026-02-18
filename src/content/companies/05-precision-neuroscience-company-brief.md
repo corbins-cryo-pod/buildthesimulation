@@ -6,6 +6,7 @@ updatedDate: 2026-02-02
 description: "Precision Neuroscience’s Layer 7 Cortical Interface: a high-density, thin-film cortical surface array aimed at minimally invasive, removable, high-bandwidth BCI."
 region: "American"
 kind: "Company"
+sizeRank: 4
 website: "https://precisionneuro.io/"
 location: "New York, NY, USA"
 lat: 40.7128

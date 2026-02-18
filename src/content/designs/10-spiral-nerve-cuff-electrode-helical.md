@@ -9,6 +9,7 @@ status: "human"
 last_updated: 2026-02-06
 description: "A foundational, non-penetrating, self-sizing peripheral nerve cuff electrode design family (spiral/helical cuff) widely used for chronic stimulation and sometimes low-SNR recording."
 modality: "Peripheral nerve"
+successRank: 6
 website: "https://pubmed.ncbi.nlm.nih.gov/3198136/"
 tags: ["PNI", "cuff", "spiral cuff", "helical cuff", "self-sizing", "stimulation", "recording", "peripheral nerve", "bidirectional"]
 draft: false

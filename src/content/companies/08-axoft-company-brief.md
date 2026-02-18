@@ -6,6 +6,7 @@ updatedDate: 2026-02-02
 description: "Axoft’s ultra-soft ‘brain-like’ implant materials: the bet that mechanical matching reduces scarring/drift and stabilizes chronic neural recordings."
 region: "American"
 kind: "Company"
+sizeRank: 12
 website: "https://axoft.us/"
 location: "Detroit, MI, USA"
 lat: 42.3314

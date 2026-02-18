@@ -9,6 +9,7 @@ status: "human"
 last_updated: 2026-02-06
 description: "A fully implanted, wireless epidural ECoG system developed by CEA‑Clinatec for human motor BCI research, emphasizing clinical robustness and long-term stability over single-unit precision."
 modality: "Cortical surface"
+successRank: 14
 website: "https://clinatec.fr/"
 tags: ["BCI", "ECoG", "epidural", "wireless", "CEA", "Clinatec", "WIMAGINE", "motor decoding", "cortex", "recording"]
 draft: false

@@ -6,6 +6,7 @@ updatedDate: 2026-02-02
 description: "BrainGate is a long-running multi-institution intracortical BCI effort (Brown/Stanford/MGH/VA etc.), known for high-performance cursor control and brain-to-text via handwriting."
 region: "American"
 kind: "Lab"
+sizeRank: 108
 website: "https://www.braingate.org/"
 location: "Providence, RI, USA"
 lat: 41.824

@@ -9,6 +9,7 @@ status: "research"
 last_updated: 2026-02-06
 description: "A regenerative microchannel scaffold interface that guides axon regeneration into parallel channels and supports chronic recording/stimulation concepts (rat sciatic amputee model)."
 modality: "Peripheral nerve"
+successRank: 19
 website: "https://pubmed.ncbi.nlm.nih.gov/25522974/"
 tags: ["PNI", "regenerative", "microchannel", "scaffold", "preclinical", "recording", "stimulation", "peripheral nerve", "bidirectional"]
 draft: false

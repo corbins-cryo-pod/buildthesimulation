@@ -6,6 +6,7 @@ updatedDate: 2026-02-06
 description: "MIT’s BCI footprint is best understood as an enabling-technology powerhouse: neuroengineering hubs and labs advancing interfaces, bioelectronics, sensing/modulation, and neural data methods."
 region: "American"
 kind: "Lab"
+sizeRank: 101
 website: "https://web.mit.edu/cnbe/"
 location: "Cambridge, MA, USA"
 lat: 42.3736

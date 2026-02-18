@@ -6,6 +6,7 @@ updatedDate: 2026-02-02
 description: "INBRAIN’s graphene-based, high-density cortical interfaces aimed at precision neurology: high-resolution sensing + stimulation with a path toward closed-loop therapy (e.g., Parkinson’s)."
 region: "European"
 kind: "Company"
+sizeRank: 11
 website: "https://inbrain-neuroelectronics.com/"
 location: "Barcelona, Spain"
 lat: 41.3851

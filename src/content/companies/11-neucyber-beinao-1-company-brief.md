@@ -6,6 +6,7 @@ updatedDate: 2026-02-02
 description: "NeuCyber (CIBR spinoff, Beijing): Beinao-1 coin-sized implant reported in Wired as implanted in multiple patients for cursor/smartphone control."
 region: "Chinese"
 kind: "Company"
+sizeRank: 14
 website: "https://www.neucyber.com/"
 location: "Beijing, China"
 lat: 39.9042

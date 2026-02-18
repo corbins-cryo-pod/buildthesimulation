@@ -65,6 +65,9 @@ const companies = defineCollection({
     lat: z.number().min(-90).max(90).optional(),
     lon: z.number().min(-180).max(180).optional(),
 
+    // Optional ranking signal for directory sorting (lower = appears earlier).
+    sizeRank: z.number().int().positive().optional(),
+
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
   }),
@@ -93,6 +96,10 @@ const designs = defineCollection({
       .default("Other"),
 
     website: z.string().url().optional(),
+
+    // Optional ranking signal for directory sorting (lower = appears earlier).
+    successRank: z.number().int().positive().optional(),
+
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
   }),

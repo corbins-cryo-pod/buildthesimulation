@@ -9,6 +9,7 @@ status: "human"
 last_updated: 2026-02-06
 description: "A hybrid implanted-plus-external functional electrical stimulation (FES) system using a multi-contact cuff on the common peroneal nerve to restore ankle dorsiflexion during gait."
 modality: "Peripheral nerve"
+successRank: 9
 website: "https://pubmed.ncbi.nlm.nih.gov/26207599/"
 tags: ["PNI", "FES", "drop foot", "peroneal nerve", "cuff", "gait", "peripheral nerve", "stimulation"]
 draft: false

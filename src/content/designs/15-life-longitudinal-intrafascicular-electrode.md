@@ -9,6 +9,7 @@ status: "human"
 last_updated: 2026-02-06
 description: "A classic fine-wire intrafascicular peripheral nerve interface placed longitudinally within a fascicle for selective stimulation and compound action potential (CAP) recording."
 modality: "Peripheral nerve"
+successRank: 11
 website: "https://pubmed.ncbi.nlm.nih.gov/16425828/"
 tags: ["PNI", "intrafascicular", "LIFE", "stimulation", "recording", "CAP", "neuroprosthetics", "peripheral nerve", "bidirectional", "cuff", "film"]
 draft: false

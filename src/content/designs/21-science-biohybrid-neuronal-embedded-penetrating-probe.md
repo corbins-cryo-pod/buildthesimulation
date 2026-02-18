@@ -9,6 +9,7 @@ status: "theoretical"
 last_updated: 2026-02-06
 description: "A conceptual biohybrid intracortical probe where embedded neurons form the tissue-facing interface; microLEDs and electrodes interact with those neurons while neurites/synapses provide coupling to brain tissue."
 modality: "Intracortical"
+successRank: 21
 website: "https://www.biorxiv.org/content/10.1101/2024.11.22.624907v1"
 tags: ["biohybrid", "intracortical", "concept", "optogenetics", "Science Corporation", "cortex", "recording", "stimulation", "bidirectional"]
 draft: false

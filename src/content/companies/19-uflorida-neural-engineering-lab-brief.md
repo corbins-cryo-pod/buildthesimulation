@@ -6,6 +6,7 @@ updatedDate: 2026-02-06
 description: "UF has an ecosystem-level footprint in neural engineering spanning noninvasive decoding (MEG), neuromodulation/brain mapping, and interface biology/biomaterials, with structured training inside UF BME."
 region: "American"
 kind: "Lab"
+sizeRank: 107
 website: "https://bme.ufl.edu/"
 location: "Gainesville, FL, USA"
 lat: 29.6516

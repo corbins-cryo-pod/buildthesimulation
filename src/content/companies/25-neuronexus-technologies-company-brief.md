@@ -6,6 +6,7 @@ updatedDate: 2026-02-07
 description: "NeuroNexus is an American neural-interface hardware company focused on silicon probes, electrode arrays, and electrophysiology systems for research and translational workflows."
 region: "American"
 kind: "Company"
+sizeRank: 10
 website: "https://www.neuronexus.com/"
 location: "Ann Arbor, MI, USA"
 lat: 42.2808

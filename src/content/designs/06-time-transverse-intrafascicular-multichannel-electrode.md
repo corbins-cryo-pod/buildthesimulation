@@ -9,6 +9,7 @@ status: "human"
 last_updated: 2026-02-03
 description: "A flexible thin‑film intrafascicular peripheral nerve interface inserted transversely through a nerve to access multiple fascicles, trading surgical complexity for selectivity."
 modality: "Peripheral nerve"
+successRank: 10
 tags: ["BCI", "PNI", "intrafascicular", "stimulation", "recording", "prosthetics", "sensory feedback", "TIME", "peripheral nerve", "bidirectional", "regenerative", "film"]
 draft: false
 ---

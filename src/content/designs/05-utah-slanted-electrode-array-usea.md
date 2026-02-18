@@ -9,6 +9,7 @@ status: "human"
 last_updated: 2026-02-03
 description: "A penetrating intrafascicular peripheral-nerve array with 100 slanted silicon shanks for high selectivity; enables bi-directional recording/stimulation in human amputees, but with chronic tissue response and percutaneous burden."
 modality: "Peripheral nerve"
+successRank: 7
 tags: ["BCI", "PNI", "intrafascicular", "USEA", "stimulation", "recording", "prosthetics", "sensory feedback", "peripheral nerve", "bidirectional", "regenerative", "array", "microelectrode"]
 draft: false
 ---

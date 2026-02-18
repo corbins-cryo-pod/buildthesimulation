@@ -6,6 +6,7 @@ updatedDate: 2026-02-02
 description: "Grenoble’s CEA‑Clinatec work on brain-controlled exoskeletons using implanted wireless ECoG (WIMAGINE) as a proof-of-concept for whole-body assistive control."
 region: "European"
 kind: "Lab"
+sizeRank: 109
 website: "https://clinatec.fr/"
 location: "Grenoble, France"
 lat: 45.1885

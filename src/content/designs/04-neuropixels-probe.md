@@ -9,6 +9,7 @@ status: "research"
 last_updated: 2026-02-03
 description: "A CMOS silicon intracortical probe family (Neuropixels v1/v2): extremely high-density, low-noise spike recording for animal research; not a chronic human implant."
 modality: "Intracortical"
+successRank: 5
 website: "https://www.neuropixels.org/"
 tags: ["BCI", "intracortical", "Neuropixels", "recording", "CMOS", "IMEC", "UCL", "Allen Institute", "cortex", "stimulation", "bidirectional", "microelectrode"]
 draft: false

@@ -6,6 +6,7 @@ updatedDate: 2026-02-02
 description: "Blackrock Neurotech’s Utah Array / NeuroPort ecosystem and clinical ambitions (MoveAgain): what it is, why it matters, and what’s public about the company."
 region: "American"
 kind: "Company"
+sizeRank: 2
 website: "https://blackrockneurotech.com/"
 location: "Salt Lake City, UT, USA"
 lat: 40.7608

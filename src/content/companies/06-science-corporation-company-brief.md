@@ -6,6 +6,7 @@ updatedDate: 2026-02-02
 description: "Science Corporation’s BCI work with an emphasis on its biohybrid neural interface concept (neurons-as-the-interface), plus its PRIMA retinal prosthesis program."
 region: "American"
 kind: "Company"
+sizeRank: 6
 website: "https://science.xyz/"
 location: "Alameda, CA, USA"
 lat: 37.7652

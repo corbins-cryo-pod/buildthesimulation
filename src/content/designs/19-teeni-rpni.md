@@ -9,6 +9,7 @@ status: "human"
 last_updated: 2026-02-06
 description: "A muscle-mediated peripheral nerve interface (RPNI) used as a biological signal amplifier: reinnervated muscle grafts generate stable, high-SNR EMG for long-term prosthetic control without chronic intraneural electrodes."
 modality: "Peripheral nerve"
+successRank: 16
 website: "https://pubmed.ncbi.nlm.nih.gov/37023743/"
 tags: ["PNI", "RPNI", "TEENI", "biohybrid", "EMG", "amputation", "prosthetic control", "neuroma prevention", "peripheral nerve", "recording", "stimulation", "bidirectional", "regenerative"]
 draft: false

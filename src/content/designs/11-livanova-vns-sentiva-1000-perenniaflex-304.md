@@ -9,6 +9,7 @@ status: "human"
 last_updated: 2026-02-06
 description: "An FDA PMA-approved, fully implanted cervical vagus nerve stimulation system using a two-contact helical cuff lead for long-term neuromodulation therapy."
 modality: "Peripheral nerve"
+successRank: 1
 website: "https://www.livanova.com/epilepsy-vnstherapy/en-us"
 tags: ["PNI", "VNS", "vagus nerve", "helical cuff", "stimulation", "neuromodulation", "epilepsy", "peripheral nerve", "cuff"]
 draft: false

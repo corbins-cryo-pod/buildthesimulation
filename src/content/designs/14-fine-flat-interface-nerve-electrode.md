@@ -9,6 +9,7 @@ status: "human"
 last_updated: 2026-02-06
 description: "An extraneural cuff electrode that intentionally flattens/reshapes a peripheral nerve to bring fascicles closer to contacts, improving functional selectivity without penetrating the nerve."
 modality: "Peripheral nerve"
+successRank: 8
 website: "https://pubmed.ncbi.nlm.nih.gov/12611367/"
 tags: ["PNI", "cuff", "FINE", "flat interface", "selective stimulation", "extraneural", "peripheral nerve", "recording", "stimulation", "bidirectional"]
 draft: false

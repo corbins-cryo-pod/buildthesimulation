@@ -6,6 +6,7 @@ updatedDate: 2026-02-02
 description: "CorTec’s Brain Interchange: a fully implantable, wireless, closed-loop neurotechnology platform moving into first-in-human use in Europe."
 region: "European"
 kind: "Company"
+sizeRank: 7
 website: "https://cortec-neuro.com/"
 location: "Freiburg im Breisgau, Germany"
 lat: 47.999

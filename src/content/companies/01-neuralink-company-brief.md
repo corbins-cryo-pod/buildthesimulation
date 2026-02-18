@@ -6,6 +6,7 @@ updatedDate: 2026-02-02
 description: "A grounded snapshot of Neuralink: what it is building, where it is, how big it is, and what is publicly known from primary sources."
 region: "American"
 kind: "Company"
+sizeRank: 1
 website: "https://neuralink.com/"
 location: "Fremont, CA, USA"
 lat: 37.5483

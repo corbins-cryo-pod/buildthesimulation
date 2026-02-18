@@ -6,6 +6,7 @@ updatedDate: 2026-02-06
 description: "Stanford is a full-stack intracortical BCI ecosystem with sustained human translation through NPTL, plus adjacent closed-loop implant neurotechnology."
 region: "American"
 kind: "Lab"
+sizeRank: 102
 website: "https://nptl.stanford.edu/"
 location: "Stanford, CA, USA"
 lat: 37.4275

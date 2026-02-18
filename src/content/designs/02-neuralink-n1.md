@@ -9,6 +9,7 @@ status: "human"
 last_updated: 2026-02-03
 description: "Neuralink’s fully implanted, wireless, flexible-thread intracortical system: a high-channel bet on surgical robotics + packaging, with chronic stability still an open question."
 modality: "Intracortical"
+successRank: 4
 website: "https://neuralink.com/"
 tags: ["BCI", "intracortical", "penetrating", "Neuralink", "wireless", "robotic surgery", "cortex", "recording", "stimulation", "bidirectional", "microelectrode"]
 draft: false

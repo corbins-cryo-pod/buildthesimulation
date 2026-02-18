@@ -9,6 +9,7 @@ status: "human"
 last_updated: 2026-02-03
 description: "A 10×10 silicon intracortical microelectrode array (typically 96 wired channels): excellent spikes early, but challenging chronic stability."
 modality: "Intracortical"
+successRank: 2
 website: "https://blackrockneurotech.com/"
 tags: ["BCI", "intracortical", "penetrating", "microelectrode array", "Utah Array", "UEA", "cortex", "recording", "stimulation", "bidirectional", "array", "microelectrode"]
 draft: false

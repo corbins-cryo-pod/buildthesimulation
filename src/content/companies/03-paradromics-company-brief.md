@@ -6,6 +6,7 @@ updatedDate: 2026-02-02
 description: "Paradromics’ Connexus BCI: high-channel-count intracortical recording aimed at restoring speech and computer control, plus what’s known publicly about the company."
 region: "American"
 kind: "Company"
+sizeRank: 5
 website: "https://www.paradromics.com/"
 location: "Austin, TX, USA"
 lat: 30.2672

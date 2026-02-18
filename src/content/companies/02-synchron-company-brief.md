@@ -6,6 +6,7 @@ updatedDate: 2026-02-02
 description: "Synchron’s endovascular BCI (Stentrode): what it is, how it works, what human data exists, and what to watch next."
 region: "American"
 kind: "Company"
+sizeRank: 3
 website: "https://synchron.com/"
 location: "Brooklyn, NY, USA"
 lat: 40.6782

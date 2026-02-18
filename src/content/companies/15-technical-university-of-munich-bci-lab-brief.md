@@ -6,6 +6,7 @@ updatedDate: 2026-02-02
 description: "TUM University Hospital implanted a 256‑microelectrode BCI in a quadriplegic patient (reported as Europe’s first such procedure), aiming at smartphone and robotic-arm control."
 region: "European"
 kind: "Lab"
+sizeRank: 106
 website: "https://mri.tum.de/en"
 location: "Munich, Germany"
 lat: 48.1351

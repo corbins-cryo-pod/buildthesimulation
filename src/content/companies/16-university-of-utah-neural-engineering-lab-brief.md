@@ -6,6 +6,7 @@ updatedDate: 2026-02-06
 description: "Utah is historically central to implantable microelectrode arrays (Utah Electrode Array lineage) and remains active in neuroprosthetics, closed-loop systems, and human translation (e.g., cortical visual prostheses)."
 region: "American"
 kind: "Lab"
+sizeRank: 105
 website: "https://neuralengineering.coe.utah.edu/"
 location: "Salt Lake City, UT, USA"
 lat: 40.7608

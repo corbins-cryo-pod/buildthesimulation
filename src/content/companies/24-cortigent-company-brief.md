@@ -6,6 +6,7 @@ updatedDate: 2026-02-07
 description: "Cortigent is an American neurostimulation company developing the investigational Orion visual cortical prosthesis, continuing the Second Sight lineage under Vivani ownership."
 region: "American"
 kind: "Company"
+sizeRank: 9
 website: "https://www.cortigent.com/"
 location: "Valencia, CA, USA"
 lat: 34.4138
