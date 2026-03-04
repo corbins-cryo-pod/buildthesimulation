@@ -1,5 +1,95 @@
 ---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
 export async function getStaticPaths() {
-  return [];
+  const posts = await getCollection("articles");
+  return posts
+    .filter((p) => !p.data.draft && p.slug === "01-the-system-at-hand")
+    .map((p) => ({ params: { slug: p.slug }, props: { entry: p } }));
 }
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const subtitle = entry.data.description ?? "";
 ---
+
+<Layout pageTitle="Articles" subtitle={subtitle} description={entry.data.description}>
+  <article class="post">
+    <header class="postHead">
+      <div class="kicker">Article {String(entry.data.order).padStart(2, "0")}</div>
+      <h2 class="title">{entry.data.title}</h2>
+      {entry.data.tags?.length ? <div class="meta">{entry.data.tags.join(" · ")}</div> : null}
+    </header>
+
+    <section class="content">
+      <Content />
+    </section>
+  </article>
+</Layout>
+
+<style>
+  .post {
+    padding: 26px 26px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    max-width: 860px;
+  }
+
+  :global(main.wrap) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  :global(main.wrap) .post {
+    align-self: center;
+    width: 100%;
+  }
+
+  .kicker {
+    opacity: 0.7;
+    font-size: var(--text-kicker);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .title {
+    margin: 6px 0 0;
+    font-size: var(--title-post);
+    letter-spacing: -0.005em;
+    line-height: 1.08;
+  }
+
+  .meta {
+    margin-top: 8px;
+    opacity: 0.72;
+    font-size: var(--text-meta);
+  }
+
+  .content :global(p) {
+    line-height: 1.85;
+    margin: 0.95em 0;
+  }
+
+  .content :global(.quoteBlock) {
+    max-width: 840px;
+    margin: 34px auto;
+    text-align: center;
+  }
+
+  .content :global(.quoteText) {
+    margin: 0;
+    font-style: italic;
+    font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+    line-height: 1.5;
+  }
+
+  .content :global(.quoteBy) {
+    margin-top: 8px;
+    text-align: right;
+    opacity: 0.8;
+    font-size: 0.95em;
+  }
+</style>
