@@ -1,64 +1,72 @@
 ---
 title: "Weekly BCI roundup — Week of 2026-02-14"
-pubDate: 2026-03-04
-description: "A shift toward real infrastructure: clinical stacks, publishable decoding results, and device platforms built for trials."
-tags: ["bci", "neurotech"]
+pubDate: 2026-02-14
+description: "Early February’s strongest implantable-BCI signals were clinical repeatability and design-for-chronicity: second-in-human execution, insertion mechanics, and flexible-material evidence."
+tags: ["BCI", "weekly", "implantable", "CorTec", "FDA", "materials", "preprints"]
 links:
-  - title: "Science Corp. and Neurosoft Bioelectronics Announce BCI Ecosystem Partnership"
-    url: "https://www.businesswire.com/news/home/20260220875211/en/Science-Corp.-and-Neurosoft-Bioelectronics-Announce-Novel-BCI-Ecosystem-Partnership"
-    note: "A push toward shared clinical-grade BCI stacks instead of every startup rebuilding hardware and software from scratch."
-  - title: "Smart Dura: a functional artificial dura for multi-modal neural recording and modulation"
-    url: "https://www.nature.com/articles/s41378-026-01166-8"
-    note: "Large-area transparent cortical interface integrating µECoG recording and stimulation."
-  - title: "Initial experience with the Precision Neuroscience Layer 7 µECoG interface"
-    url: "https://pubmed.ncbi.nlm.nih.gov/41621103/"
-    note: "Intraoperative human decoding results using high-density cortical surface arrays."
-draft: true
+  - title: "CorTec announces successful second human implantation of Brain Interchange"
+    url: "https://cortec-neuro.com/successful-second-human-implantation-bci-system/"
+    note: "Company announcement (Feb 10, 2026): second implantation in an FDA IDE stroke study at Harborview/UW Medicine."
+  - title: "FDA Quality Management System Regulation (QMSR) final rule"
+    url: "https://www.federalregister.gov/documents/2024/02/02/2024-01711/medical-devices-quality-system-regulation-amendments"
+    note: "Regulatory context: QMSR effective Feb 2, 2026."
+  - title: "A Surgical Planning Pipeline for Human Implantable Brain-Computer Interfaces"
+    url: "https://www.medrxiv.org/content/10.64898/2026.02.01.26345325v1.full.pdf"
+    note: "medRxiv preprint (posted Feb 3, 2026): workflow standardization for planning and localization."
+  - title: "Friend, not Foe: Lowered Tissue Reactivity to Long-Term Polyimide Implants"
+    url: "https://www.biorxiv.org/content/10.64898/2026.02.06.703281v1"
+    note: "bioRxiv preprint (Feb 9 window): flexible polyimide vs stiff silicon, with lower lesion/reactivity signals for polyimide."
+  - title: "Multi-Layer Brain-Mimicking Phantom for Replicating Dura and Pia Membrane Dimpling and Rupture Properties"
+    url: "https://www.biorxiv.org/content/10.64898/2026.02.05.704082v1"
+    note: "bioRxiv preprint: tunable benchtop insertion-mechanics model (agarose + pre-stretched PVC dura analog)."
+  - title: "Polymer-based flexible multi-shank probes for simultaneous intracortical microstimulation and two-photon calcium imaging"
+    url: "https://www.biorxiv.org/content/10.64898/2026.02.09.704741v1"
+    note: "bioRxiv preprint: flexible multi-shank stimulation with current-steering directionality gains."
+  - title: "ONWARD enrolls first participant in Empower BP pivotal study (ARC-IM)"
+    url: "https://www.globenewswire.com/news-release/2026/02/04/3231754/0/en/ONWARD-Medical-Announces-First-Participant-Enrolled-in-Global-Pivotal-Study-Evaluating-ARC-IM-System-to-Address-Blood-Pressure-Instability-After-Spinal-Cord-Injury.html"
+    note: "Adjacent implantable-neurotech signal for clinical and regulatory execution infrastructure."
+draft: false
 ---
 
-Theme of the week: Implantable BCIs are beginning to look less like bespoke experiments and more like clinical platforms — reusable hardware stacks, publishable decoding metrics, and device architectures designed to survive regulatory scrutiny.
+Here’s what moved in *implantable BCIs* during *Feb 1–14, 2026*.
 
-## The week in links
+The most meaningful updates were not flashy demos. They were:
+- clinical repeatability in humans, and
+- design science that isolates what drives chronic failure (especially mechanics + material mismatch).
 
-### 1. Science Corp. and Neurosoft Bioelectronics Announce BCI Ecosystem Partnership
-https://www.businesswire.com/news/home/20260220875211/en/Science-Corp.-and-Neurosoft-Bioelectronics-Announce-Novel-BCI-Ecosystem-Partnership
+### 1) CorTec: second-in-human is a real milestone
 
-Science Corporation is proposing a shared infrastructure model for implantable BCIs. Their “BCI Ecosystem” aims to provide clinical-grade recording electronics, software, and data tooling that partner companies can build on instead of developing everything themselves.
+CorTec reported a second successful implantation of its Brain Interchange platform in an FDA IDE stroke study at Harborview/UW Medicine.
 
-The key claim: developing a full clinical BCI stack traditionally costs $75–100M, but a shared platform could enable first-in-human studies for under $5M. If that estimate holds even partially true, it could dramatically lower the barrier for new implantable interface companies.
+That matters because many programs can do a first case; fewer can show repeatable workflow across additional participants. “Second-in-human” is often where teams prove the procedure can be operationalized, not just demonstrated.
 
-### 2. Smart Dura: a functional artificial dura for multi-modal neural recording and modulation
-https://www.nature.com/articles/s41378-026-01166-8
+### 2) Regulation is tightening around execution quality
 
-This paper describes a transparent artificial dura integrating a 256-channel µECoG array capable of recording and stimulation while maintaining optical access to cortex.
+FDA’s QMSR effective date (Feb 2, 2026) reinforces a broader trend: implantable, connected systems are expected to show mature quality systems and lifecycle discipline early, not after scale.
 
-That combination matters. Many chronic neural interfaces force a trade-off between electrical recording and optical imaging. Smart Dura shows a path toward large-area cortical interfaces that remain compatible with optical neuroscience methods — potentially useful for both translational research and future clinical systems.
+For implantable BCIs, this raises the floor for design controls, verification/validation traceability, and post-market readiness.
 
-### 3. Initial experience with the Precision Neuroscience Layer 7 µECoG interface
-https://pubmed.ncbi.nlm.nih.gov/41621103/
+### 3) Preprints converged on one message: mechanics dominate chronic outcomes
 
-Precision Neuroscience reports intraoperative human decoding experiments using their high-density cortical surface array. In awake craniotomy patients the system demonstrated:
+Three early-February preprints point in the same direction:
 
-- ~77% accuracy for 4-word speech classification
-- ~78–84% accuracy for 4-direction motor classification
+- **Polyimide vs silicon chronic response:** flexible polyimide showed lower tissue reactivity/lesion burden than stiff silicon in long-term settings.
+- **Insertion mechanics phantom:** a layered brain-mimicking phantom reproduced dimpling/rupture characteristics with lower variance, supporting faster bench screening before animal runs.
+- **Flexible multi-shank stimulation:** polymer probes paired microstimulation with two-photon imaging and showed better spatial control using bipolar/current-steering paradigms.
 
-These are acute recordings, not chronic implants, but they provide something the field increasingly needs: publishable human decoding metrics using clinically compatible hardware.
+Taken together, these are practical signals for implant design priorities: reduce mismatch, control insertion injury, and shape electric fields more selectively.
 
-## Deep take
+### 4) Adjacent signal: clinical infrastructure is expanding beyond cortical implants
 
-The interesting shift this week is not a single breakthrough device. It’s the emergence of platform thinking in implantable BCI development.
+ONWARD’s first participant in a pivotal ARC-IM study is not a brain implant milestone directly, but it reflects a useful ecosystem pattern: implantable neurotech teams are getting better at multicenter clinical execution and regulatory cadence.
 
-Historically, every neurotech startup built its own complete stack: electrodes, electronics, software, surgical workflow, and decoding pipeline. That approach works for research but scales poorly into regulated medical devices.
+That infrastructure tends to transfer across adjacent neuromodulation/BCI programs.
 
-Science Corp.’s ecosystem proposal suggests the industry may move toward something closer to semiconductor foundries or biotech CROs — shared infrastructure that multiple companies can build on.
+### Thread that ties the week together
 
-The real bottleneck now isn’t recording neural signals. That problem is largely solved in acute settings. The harder problems are:
+Early February 2026 looked like an “engineering maturity” window for implantable BCIs:
+- more repeatable human execution,
+- more controlled evidence on chronic design choices,
+- and stronger regulatory/process expectations around how these systems are built and maintained.
 
-- long-term reliability
-- regulatory trial design
-- clinically meaningful endpoints
-- scalable manufacturing
-
-Evidence that the ecosystem approach works would look like multiple independent devices launching clinical trials using the same core infrastructure.
-
-If that happens, implantable BCIs could move from artisanal lab systems to something closer to a true medical device industry.
+That is exactly the substrate the field needs before headline-grabbing capabilities can matter at scale.
