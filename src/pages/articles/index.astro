@@ -1,10 +1,48 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("articles"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <Layout
   pageTitle="Articles"
-  subtitle=""
-  description=""
+  subtitle="Core essays and reference notes."
+  description="Build the Simulation article library."
 >
+  <section class="card">
+    <div class="list">
+      {posts.map((p) => (
+        <a class="item" href={`/articles/${p.slug}/`}>
+          <h3>{String(p.data.order).padStart(2, "0")} — {p.data.title}</h3>
+          {p.data.description ? <p class="desc">{p.data.description}</p> : null}
+        </a>
+      ))}
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .card {
+    margin-top: 14px;
+    padding: 22px 22px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+  }
+  .list { display: grid; gap: 10px; }
+  .item {
+    display: block;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: inherit;
+    text-decoration: none;
+  }
+  .item:hover { border-color: var(--borderStrong); background: var(--panelHover); }
+  h3 { margin: 0; font-size: var(--title-card); font-weight: 400; line-height: 1.08; }
+  .desc { margin: 8px 0 0; opacity: 0.78; line-height: 1.6; }
+</style>
