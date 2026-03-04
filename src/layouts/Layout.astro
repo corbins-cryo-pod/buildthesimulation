@@ -27,10 +27,6 @@ const bodyClasses = [
 const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
 
 // Build dropdown menus (a mini table of contents) for quick navigation.
-const articles = (await getCollection("articles"))
-  .filter((p) => !p.data.draft)
-  .sort((a, b) => a.data.order - b.data.order);
-
 const companies = (await getCollection("companies"))
   .filter((p) => !p.data.draft)
   .sort((a, b) => {
@@ -123,18 +119,7 @@ function stripAtlasLabel(title) {
             </div>
           </details>
 
-          <details class={`navDrop ${pathname.startsWith("/articles") ? "active" : ""}`}>
-            <summary class="pill">Articles</summary>
-            <div class="menu" role="menu">
-              <a class="menuItem" href="/articles">All articles →</a>
-              <div class="menuSep"></div>
-              {articles.map((p) => (
-                <a class="menuItem" href={`/articles/${p.slug}/`}>
-                  {String(p.data.order).padStart(2, "0")} — {stripPrefix(p.data.title)}
-                </a>
-              ))}
-            </div>
-          </details>
+          <a class={`pill ${pathname.startsWith("/articles") ? "active" : ""}`} href="/articles">Articles</a>
 
           <details class={`navDrop ${pathname.startsWith("/companies") ? "active" : ""}`}>
             <summary class="pill">BCI Atlas</summary>
