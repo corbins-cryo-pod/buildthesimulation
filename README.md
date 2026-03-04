@@ -38,8 +38,8 @@ Templates:
 - `workbench/notes-templates/templates/article-template.md`
 
 More detail:
-- `docs/HOW_TO_POST.md`
-- `docs/CONTENT_PLAN.md`
+- `workbench/HOW_TO_POST.md`
+- `workbench/CONTENT_PLAN.md`
 
 RSS:
 - `/rss.xml`
