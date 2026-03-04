@@ -13,7 +13,7 @@ links:
   - title: "Initial experience with the Precision Neuroscience Layer 7 µECoG interface"
     url: "https://pubmed.ncbi.nlm.nih.gov/41621103/"
     note: "Intraoperative human decoding results using high-density cortical surface arrays."
-draft: true
+draft: false
 ---
 
 Theme of the week: Implantable BCIs are beginning to look less like bespoke experiments and more like clinical platforms — reusable hardware stacks, publishable decoding metrics, and device architectures designed to survive regulatory scrutiny.
