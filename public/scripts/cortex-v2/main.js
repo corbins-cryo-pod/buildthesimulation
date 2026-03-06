@@ -172,7 +172,7 @@ function drawRaster() {
 
   rasterCtx.fillStyle = "rgba(255,255,255,0.78)";
   rasterCtx.font = "11px Times New Roman";
-  rasterCtx.fillText(`E${selected + 1} · units: ${ids.length} · spikes(2s) gen:${generated2s} det:${detected2s}`, 10, 14);
+  rasterCtx.fillText(`E${selected + 1} · units: ${ids.length} · spikes(2s) gen:${generated2s} det:${detected2s} · t:${Math.round(engine.state.tMs)}ms`, 10, 14);
 
   if (detected2s === 0) {
     rasterCtx.fillStyle = "rgba(255,180,120,0.92)";
@@ -313,6 +313,11 @@ function drawTracePanels() {
 function resize() { scene.resize(); }
 window.addEventListener("resize", resize);
 resize();
+
+// Force clean startup state (avoid browser form-state persistence causing paused sim).
+if (ui.paused) ui.paused.checked = false;
+if (ui.speed) ui.speed.value = "1";
+
 refreshUI();
 updateSpeedLabel();
 updateTraceGainLabel();
