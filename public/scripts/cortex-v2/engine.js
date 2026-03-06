@@ -113,7 +113,7 @@ export function createEngine(cfg) {
 
     const dtS = stepMs / 1000;
     const newSpikes = [];
-    const decay = Math.exp(-stepMs / 240);
+    const decay = Math.exp(-stepMs / 125);
     for (let i = 0; i < state.neuronActivity.length; i++) state.neuronActivity[i] *= decay;
 
     // Slow global up/down modulation (OU-like) for more natural nonstationary firing.
@@ -169,8 +169,8 @@ export function createEngine(cfg) {
         const alignMs = (delaySamples / cfg.sampleRateHz) * 1000 + 0.55;
 
         if (ei === selectedIndex) {
-          // Deterministic detect gate for raster stability (avoid "empty raster" runs).
-          if (gain >= 0.20) detected.push({ ...s, alignMs });
+          const detectProb = Math.max(0, Math.min(1, (gain - 0.22) / 0.95));
+          if (rand() < detectProb) detected.push({ ...s, alignMs });
         }
 
         const block = blocks[ei];
