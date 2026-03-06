@@ -169,8 +169,8 @@ export function createEngine(cfg) {
         const alignMs = (delaySamples / cfg.sampleRateHz) * 1000 + 0.55;
 
         if (ei === selectedIndex) {
-          // Deterministic detection for raster stability (prevents "trace alive, raster empty").
-          if (gain >= 0.16) detected.push({ ...s, alignMs });
+          // Deterministic detection for raster stability (desktop-safe, no random dropout).
+          if (gain >= 0.08) detected.push({ ...s, alignMs });
         }
 
         const block = blocks[ei];

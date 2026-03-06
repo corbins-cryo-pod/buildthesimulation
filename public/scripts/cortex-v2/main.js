@@ -126,6 +126,8 @@ function drawRaster() {
   rasterCtx.fillStyle = "#0f0f14"; rasterCtx.fillRect(0, 0, w, h);
   const t0 = engine.state.tMs - DISPLAY_WINDOW_MS;
   const visible = engine.state.detectedSpikes.filter((s) => (s.tMs + (s.alignMs ?? 0)) >= t0);
+  const generated2s = engine.state.recentSpikes.length;
+  const detected2s = visible.length;
 
   rasterCtx.strokeStyle = "rgba(255,255,255,0.08)";
   rasterCtx.beginPath();
@@ -170,7 +172,12 @@ function drawRaster() {
 
   rasterCtx.fillStyle = "rgba(255,255,255,0.78)";
   rasterCtx.font = "11px Times New Roman";
-  rasterCtx.fillText(`Selected electrode: E${selected + 1} · units: ${ids.length}`, 10, 14);
+  rasterCtx.fillText(`E${selected + 1} · units: ${ids.length} · spikes(2s) gen:${generated2s} det:${detected2s}`, 10, 14);
+
+  if (detected2s === 0) {
+    rasterCtx.fillStyle = "rgba(255,180,120,0.92)";
+    rasterCtx.fillText("No detected spikes in current 2s window", 10, h - 10);
+  }
 
   if (playheadNorm != null) {
     const px = playheadNorm * w;
