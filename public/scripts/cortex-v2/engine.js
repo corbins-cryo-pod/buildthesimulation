@@ -178,7 +178,7 @@ export function createEngine(cfg) {
 
         if (ei === selectedIndex) {
           // Deterministic detection for raster stability (desktop-safe, no random dropout).
-          if (gain >= 0.08) detected.push({ ...s, alignMs });
+          if (gain >= 0.16) detected.push({ ...s, alignMs });
         }
 
         const block = blocks[ei];
