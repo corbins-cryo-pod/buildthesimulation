@@ -130,8 +130,16 @@ export function createEngine(cfg) {
 
     for (let i = 0; i < neurons.length; i++) {
       const base = neurons[i].hz;
-      const modRate = base * Math.exp(modStrength * state.networkMod + burstBoost[i]);
-      const p = 1 - Math.exp(-Math.max(0, modRate) * dtS);
+      const expo = modStrength * state.networkMod + burstBoost[i];
+      const modFactor = Number.isFinite(expo) ? Math.exp(expo) : 1;
+      const modRate = Math.max(0, base * modFactor);
+
+      let p = 1 - Math.exp(-modRate * dtS);
+      if (!Number.isFinite(p)) {
+        // Desktop/browser safety fallback: retain baseline firing if modulation goes invalid.
+        p = Math.min(0.25, Math.max(0, base * dtS));
+      }
+
       if (rand() < p) {
         const tMs = state.tMs + rand() * stepMs;
         newSpikes.push({ tMs, idx: i });
