@@ -177,8 +177,8 @@ export function createEngine(cfg) {
         const alignMs = (delaySamples / cfg.sampleRateHz) * 1000 + 0.55;
 
         if (ei === selectedIndex) {
-          // Smaller detection field (~half range): require stronger coupling.
-          if (gain >= 0.32) detected.push({ ...s, alignMs });
+          // Deterministic detection for raster stability (desktop-safe, no random dropout).
+          if (gain >= 0.16) detected.push({ ...s, alignMs });
         }
 
         const block = blocks[ei];
