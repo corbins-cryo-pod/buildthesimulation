@@ -42,10 +42,19 @@ let electrodes = [{ x: 0, y: 0, z: 900 }];
 let selected = 0;
 
 const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+
+function syncTraceCanvasHeight() {
+  // Grow trace window as electrodes are added (up to visible panel cap in drawTracePanels).
+  const visiblePanels = Math.max(1, Math.min(electrodes.length, 6));
+  const perPanelPx = 120;
+  const nextH = Math.max(220, visiblePanels * perPanelPx);
+  if (traces.height !== nextH) traces.height = nextH;
+}
 const current = () => electrodes[selected];
 const syncPair = (a, b) => { if (b.value !== a.value) b.value = a.value; };
 
 function refreshUI() {
+  syncTraceCanvasHeight();
   const e = current();
   ui.elecX.value = String(Math.round(e.x));
   ui.elecY.value = String(Math.round(e.y));
