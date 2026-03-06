@@ -34,32 +34,7 @@ const config = {
 };
 
 const engine = createEngine(config);
-
-function showCanvasNotice(msg) {
-  const ctx = canvas.getContext("2d");
-  if (!ctx) return;
-  const w = Math.max(320, canvas.clientWidth || canvas.width || 320);
-  const h = Math.max(220, canvas.clientHeight || canvas.height || 220);
-  canvas.width = w;
-  canvas.height = h;
-  ctx.fillStyle = "#0f0f14";
-  ctx.fillRect(0, 0, w, h);
-  ctx.fillStyle = "rgba(255,255,255,0.82)";
-  ctx.font = "16px Times New Roman";
-  ctx.fillText("3D display unavailable", 18, 36);
-  ctx.fillStyle = "rgba(255,255,255,0.62)";
-  ctx.font = "13px Times New Roman";
-  ctx.fillText(msg, 18, 58);
-}
-
-let scene = null;
-try {
-  scene = createScene(canvas, config.bounds, engine.state.neurons);
-} catch (err) {
-  console.error("Cortex slab: failed to initialize 3D scene", err);
-  showCanvasNotice("Your browser/GPU may not support this WebGL context.");
-}
-
+const scene = createScene(canvas, config.bounds, engine.state.neurons);
 const rasterCtx = raster.getContext("2d");
 const traceCtx = traces.getContext("2d");
 
@@ -79,7 +54,7 @@ function refreshUI() {
   ui.elecYRange.value = ui.elecY.value;
   ui.elecZRange.value = ui.elecZ.value;
   if (ui.elecMeta) ui.elecMeta.textContent = `${electrodes.length} electrode${electrodes.length > 1 ? "s" : ""} · selected E${selected + 1}`;
-  scene?.drawElectrodes(electrodes, selected);
+  scene.drawElectrodes(electrodes, selected);
 }
 
 function updateFromInputs() {
@@ -99,9 +74,9 @@ ui.elecRemove?.addEventListener("click", () => { if (electrodes.length <= 1) ret
 ui.elecPrev?.addEventListener("click", () => { selected = (selected - 1 + electrodes.length) % electrodes.length; refreshUI(); });
 ui.elecNext?.addEventListener("click", () => { selected = (selected + 1) % electrodes.length; refreshUI(); });
 
-ui.viewReset?.addEventListener("click", () => scene?.setView("reset"));
-ui.viewTop?.addEventListener("click", () => scene?.setView("top"));
-ui.viewSide?.addEventListener("click", () => scene?.setView("side"));
+ui.viewReset?.addEventListener("click", () => scene.setView("reset"));
+ui.viewTop?.addEventListener("click", () => scene.setView("top"));
+ui.viewSide?.addEventListener("click", () => scene.setView("side"));
 
 const updateSpeedLabel = () => {
   if (!ui.speedLabel || !ui.speed) return;
@@ -328,7 +303,7 @@ function drawTracePanels() {
   }
 }
 
-function resize() { scene?.resize(); }
+function resize() { scene.resize(); }
 window.addEventListener("resize", resize);
 resize();
 refreshUI();
@@ -342,7 +317,6 @@ raster.addEventListener("mouseleave", () => { playheadNorm = null; });
 traces.addEventListener("mouseleave", () => { playheadNorm = null; });
 
 canvas.addEventListener("click", (ev) => {
-  if (!scene) return;
   const hit = scene.pickOnSlab(ev.clientX, ev.clientY);
   if (!hit) return;
   const e = current();
@@ -362,8 +336,8 @@ function loop(now) {
     const steps = Math.max(1, Math.ceil(simMs / 16));
     for (let i = 0; i < steps; i++) engine.step(simMs / steps, electrodes, selected);
   }
-  scene?.updateNeuronActivity(engine.state.neuronActivity);
-  scene?.render();
+  scene.updateNeuronActivity(engine.state.neuronActivity);
+  scene.render();
   drawRaster();
   drawTracePanels();
   requestAnimationFrame(loop);
