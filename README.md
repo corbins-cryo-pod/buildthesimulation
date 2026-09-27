@@ -1,48 +1,19 @@
 # Build the Simulation
 
-A public platform for building, simulating, and understanding brain–computer interfaces (BCIs) — with a special focus on **biohybrid peripheral nerve interfaces**, regenerative strategies, and practical neuroengineering.
+An interactive neuroengineering site focused on the BCI Atlas, neural interface devices, and simulations of cortex and peripheral nerves.
 
 - Live site: https://buildthesimulation.com
 - Preview (Cloudflare Pages): https://buildthesimulation.pages.dev
 
-## What this is
+## Current sections
 
-This project has three pillars:
+- **BCI Atlas:** company and lab directory and map.
+- **Devices:** neural interface designs and technical briefs.
+- **Simulations:** interactive cortex and peripheral nerve sandboxes.
 
-1) **News (weekly):** curated BCI + neurotech links with commentary.
-2) **Articles (sequenced):** deeper posts that build from fundamentals → existing tech → future biohybrid peripheral nerve interfaces.
-3) **Simulation (long-term):** an interactive sandbox for exploring electrode designs, implantation strategies, and stimulation modalities.
+## Archived writing
 
-The tone is intentionally **50/50**:
-- rigorous definitions + citations (inline links), and
-- practical engineering heuristics (“here’s how to think about it”).
-
-## Tech
-
-- **Astro** (static site)
-- **Three.js** (interactive visuals / simulation front-end)
-- **Astro Content Collections** (Markdown-driven News + Articles)
-
-## Writing & publishing
-
-Content lives here:
-- News posts: `src/content/news/*.md`
-- Articles: `src/content/articles/*.md`
-
-Draft control:
-- `draft: true` → not shown on the site
-- `draft: false` → published
-
-Templates:
-- `workbench/notes-templates/templates/news-template.md`
-- `workbench/notes-templates/templates/article-template.md`
-
-More detail:
-- `workbench/HOW_TO_POST.md`
-- `workbench/CONTENT_PLAN.md`
-
-RSS:
-- `/rss.xml`
+The previous News, Articles, and Ideas sections are offline. Their original Markdown is preserved in `workbench/archive/news/`, `workbench/archive/articles/`, and `workbench/archive/ideas/` for reference or a future rewrite. Writing plans and templates remain in `workbench/`. These archive files are not site routes or Astro content collections.
 
 ## Local development
 
@@ -51,17 +22,4 @@ npm install
 npm run dev
 ```
 
-Build check:
-```bash
-npm run build
-```
-
-## Contributing / workflow
-
-Issues and PRs welcome.
-
-If you’re proposing simulation changes, please describe:
-- which biological target (peripheral nerve vs cortex)
-- which modality (recording/stimulation, electrical/optical/etc.)
-- what you’re assuming (geometry, tissue model, constraints)
-- what the success metrics are (selectivity proxy, stability proxy, safety bounds)
+Build check: `npm run build`. The site uses Astro, Preact, and Three.js.

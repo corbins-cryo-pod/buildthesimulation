@@ -4,23 +4,13 @@ import { getCollection } from "astro:content";
 
 const dateMs = (v) => (v instanceof Date ? v.getTime() : 0);
 
-const news = (await getCollection("news"))
-  .filter((p) => !p.data.draft)
-  .sort((a, b) => dateMs(b.data.pubDate) - dateMs(a.data.pubDate));
-
-const articles = (await getCollection("articles"))
-  .filter((p) => !p.data.draft)
-  .sort((a, b) => dateMs(b.data.pubDate) - dateMs(a.data.pubDate));
-
 const companies = (await getCollection("companies"))
   .filter((p) => !p.data.draft)
   .sort((a, b) => dateMs(b.data.pubDate) - dateMs(a.data.pubDate));
 
-const latestNews = news.slice(0, 3);
-const latestArticles = articles.slice(0, 3);
 const latestCompanies = companies.slice(0, 3);
 
-const lastUpdatedCandidates = [news[0]?.data.pubDate, articles[0]?.data.pubDate, companies[0]?.data.pubDate]
+const lastUpdatedCandidates = [companies[0]?.data.pubDate]
   .filter((d) => d instanceof Date);
 const lastUpdated = lastUpdatedCandidates.length
   ? new Date(Math.max(...lastUpdatedCandidates.map((d) => d.getTime())))
@@ -30,25 +20,20 @@ const lastUpdated = lastUpdatedCandidates.length
 <Layout withHero={true}>
   <section class="hero card">
     <p class="eyebrow">Build The Simulation</p>
-    <h1>Understand brain interfaces by reading, exploring, and running simulations.</h1>
+    <h1>Explore brain interfaces through devices, labs, and simulations.</h1>
     <p class="lede">
-      A practical neurotech learning platform: curated articles, BCI Atlas company/lab mapping, and interactive
-      cortex/peripheral sandboxes you can tune in-browser.
+      Explore the BCI Atlas, compare neural interface designs, and experiment with interactive
+      cortex and peripheral nerve simulations.
     </p>
     <div class="ctaRow">
       <a class="btn primary" href="/simulations/">Explore simulations</a>
       <a class="btn" href="/companies/map/">Open BCI Atlas</a>
-      <a class="btn" href="/articles/">Start reading</a>
     </div>
   </section>
 
   <section class="card">
     <div class="row"><h2>Start here</h2></div>
     <div class="pathGrid">
-      <a class="path" href="/articles/">
-        <h3>Learn the fundamentals</h3>
-        <p>Go from neuroscience basics to recording, stimulation, materials, and design tradeoffs.</p>
-      </a>
       <a class="path" href="/companies/map/">
         <h3>Explore companies and labs</h3>
         <p>Use the atlas to scan the ecosystem and jump into company/lab briefs.</p>
@@ -63,9 +48,7 @@ const lastUpdated = lastUpdatedCandidates.length
   <section class="card">
     <div class="row"><h2>Platform snapshot</h2></div>
     <div class="stats">
-      <div class="stat"><div class="num">{articles.length}</div><div class="label">Articles</div></div>
       <div class="stat"><div class="num">{companies.length}</div><div class="label">Companies / labs</div></div>
-      <div class="stat"><div class="num">{news.length}</div><div class="label">News posts</div></div>
       <div class="stat">
         <div class="num">{lastUpdated ? lastUpdated.toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "—"}</div>
         <div class="label">Last updated</div>
@@ -91,37 +74,6 @@ const lastUpdated = lastUpdatedCandidates.length
   </section>
 
   <section class="card">
-    <div class="row">
-      <h2>Latest news</h2>
-      <a class="smallLink" href="/news">All news →</a>
-    </div>
-    {latestNews.length === 0 ? (
-      <p class="muted">No published posts yet.</p>
-    ) : (
-      <div class="listGrid">
-        {latestNews.map((p) => (
-          <a class="item" href={`/news/${p.slug}/`}>
-            <div class="title">{p.data.title}</div>
-            <time datetime={p.data.pubDate instanceof Date ? p.data.pubDate.toISOString() : ""}>
-              {p.data.pubDate instanceof Date
-                ? p.data.pubDate.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
-                : "Undated"}
-            </time>
-          </a>
-        ))}
-      </div>
-    )}
-  </section>
-
-  <section class="card split">
-    <div>
-      <div class="row"><h2>Recent articles</h2><a class="smallLink" href="/articles">All articles →</a></div>
-      <div class="listGrid compact">
-        {latestArticles.map((p) => (
-          <a class="item" href={`/articles/${p.slug}/`}><div class="title">{p.data.title}</div></a>
-        ))}
-      </div>
-    </div>
     <div>
       <div class="row"><h2>Recent companies / labs</h2><a class="smallLink" href="/companies">All briefs →</a></div>
       <div class="listGrid compact">
@@ -148,7 +100,7 @@ const lastUpdated = lastUpdatedCandidates.length
   .smallLink:hover { opacity: 1; }
   .muted { opacity: 0.7; }
 
-  .pathGrid, .featureGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .pathGrid, .featureGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .featureGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .path, .feature, .item { display: block; text-decoration: none; color: inherit; border: 1px solid var(--border); border-radius: 14px; background: var(--panelStrong); }
   .path, .feature { padding: 14px; }
@@ -156,7 +108,7 @@ const lastUpdated = lastUpdatedCandidates.length
   .path h3, .feature h3 { margin: 0 0 6px; font-size: 32px; }
   .path p, .feature p { margin: 0; opacity: 0.8; line-height: 1.45; }
 
-  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .stat { padding: 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--panelStrong); }
   .num { font-size: 22px; font-weight: 400; line-height: 1; }
   .label { margin-top: 6px; font-size: 12px; opacity: 0.72; }
