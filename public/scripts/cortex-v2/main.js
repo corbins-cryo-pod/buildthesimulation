@@ -1,4 +1,4 @@
-import { createEngine } from "./engine.js";
+import { createEngine, makeKernel } from "./engine.js";
 import { createScene } from "./scene.js";
 
 const $ = (id) => document.getElementById(id);
@@ -24,17 +24,20 @@ const config = {
   nNeurons: 1600,
   sampleRateHz: 8000,
   traceWindowS: 2,
-  baseUv: 92,
+  baseUv: 1800,
   r0Um: 45,
-  noiseUv: 4.2,
+  noiseUv: 1.2,
+  rasterPeakUv: 6,
   burstSeedProb: 0.08,
   recruitRadiusUm: 180,
   modStrength: 1.3,
   closeDipBoost: 1.45,
 };
 
-const engine = createEngine(config);
-const scene = createScene(canvas, config.bounds, engine.state.neurons);
+const negativeKernelPeak = -Math.min(...makeKernel(config.sampleRateHz,56));
+let engine = createEngine(config);
+let scene;
+try { scene = createScene(canvas, config.bounds, engine.state.neurons); } catch(error) { $("webglError").hidden=false; throw error; }
 const rasterCtx = raster.getContext("2d");
 const traceCtx = traces.getContext("2d");
 
@@ -63,14 +66,17 @@ function refreshUI() {
   ui.elecYRange.value = ui.elecY.value;
   ui.elecZRange.value = ui.elecZ.value;
   if (ui.elecMeta) ui.elecMeta.textContent = `${electrodes.length} electrode${electrodes.length > 1 ? "s" : ""} · selected E${selected + 1}`;
+  ui.elecAdd.disabled = electrodes.length >= 6;
+  ui.elecRemove.disabled = electrodes.length <= 1;
   scene.drawElectrodes(electrodes, selected);
 }
 
 function updateFromInputs() {
   const e = current();
-  e.x = clamp(Number(ui.elecX.value), -1000, 1000);
-  e.y = clamp(Number(ui.elecY.value), -1000, 1000);
-  e.z = clamp(Number(ui.elecZ.value), 50, 1450);
+  e.x = clamp(Number(ui.elecX.value) || 0, -1000, 1000);
+  e.y = clamp(Number(ui.elecY.value) || 0, -1000, 1000);
+  e.z = clamp(Number(ui.elecZ.value) || 50, 50, 1450);
+  engine.clearRecording();
   refreshUI();
 }
 
@@ -78,8 +84,8 @@ for (const [n, r] of [[ui.elecX, ui.elecXRange], [ui.elecY, ui.elecYRange], [ui.
   n?.addEventListener("input", () => { syncPair(n, r); updateFromInputs(); });
   r?.addEventListener("input", () => { syncPair(r, n); updateFromInputs(); });
 }
-ui.elecAdd?.addEventListener("click", () => { const e = current(); electrodes.push({ x: e.x + 60, y: e.y + 60, z: e.z }); selected = electrodes.length - 1; refreshUI(); });
-ui.elecRemove?.addEventListener("click", () => { if (electrodes.length <= 1) return; electrodes.splice(selected, 1); selected = Math.max(0, Math.min(selected, electrodes.length - 1)); refreshUI(); });
+ui.elecAdd?.addEventListener("click", () => { if(electrodes.length >= 6) return; const e = current(); electrodes.push({ x: clamp(e.x + 60,-1000,1000), y: clamp(e.y + 60,-1000,1000), z: e.z }); engine.clearRecording(); selected = electrodes.length - 1; refreshUI(); });
+ui.elecRemove?.addEventListener("click", () => { if (electrodes.length <= 1) return; electrodes.splice(selected, 1); engine.clearRecording(); selected = Math.max(0, Math.min(selected, electrodes.length - 1)); refreshUI(); });
 ui.elecPrev?.addEventListener("click", () => { selected = (selected - 1 + electrodes.length) % electrodes.length; refreshUI(); });
 ui.elecNext?.addEventListener("click", () => { selected = (selected + 1) % electrodes.length; refreshUI(); });
 
@@ -134,7 +140,7 @@ function drawRaster() {
   rasterCtx.clearRect(0, 0, w, h);
   rasterCtx.fillStyle = "#0f0f14"; rasterCtx.fillRect(0, 0, w, h);
   const t0 = engine.state.tMs - DISPLAY_WINDOW_MS;
-  const visible = engine.state.detectedSpikes.filter((s) => (s.tMs + (s.alignMs ?? 0)) >= t0);
+  const visible = engine.state.detectedSpikes.filter((s) => s.electrodeIndex === selected && (s.tMs + (s.alignMs ?? 0)) >= t0);
 
   rasterCtx.strokeStyle = "rgba(255,255,255,0.08)";
   rasterCtx.beginPath();
@@ -161,7 +167,8 @@ function drawRaster() {
     const n = allNeurons[i];
     const r = Math.hypot(n.pos[0] - e.x, n.pos[1] - e.y, n.pos[2] - e.z);
     const gain = (config.baseUv * ampScale[i]) / (r + config.r0Um);
-    if (gain > 0.22) withGain.push({ id: i, gain });
+    const peak = gain * (1 + Math.max(0,Math.min(1,(gain-.35)/.95))*config.closeDipBoost);
+    if (peak * negativeKernelPeak >= config.rasterPeakUv) withGain.push({ id: i, gain });
   }
   withGain.sort((a, b) => b.gain - a.gain);
   const ids = withGain.map((x) => x.id);
@@ -330,30 +337,56 @@ traces.addEventListener("mousemove", (ev) => setPlayheadFromPointer(traces, ev))
 raster.addEventListener("mouseleave", () => { playheadNorm = null; });
 traces.addEventListener("mouseleave", () => { playheadNorm = null; });
 
+let pointerStart = null;
+canvas.addEventListener('pointerdown', ev => { pointerStart = [ev.clientX,ev.clientY]; });
 canvas.addEventListener("click", (ev) => {
+  if (!pointerStart || Math.hypot(ev.clientX-pointerStart[0],ev.clientY-pointerStart[1]) > 5) return;
   const hit = scene.pickOnSlab(ev.clientX, ev.clientY);
   if (!hit) return;
   const e = current();
   e.x = clamp(hit.xUm, -1000, 1000);
   e.y = clamp(hit.yUm, -1000, 1000);
   if (ev.shiftKey) e.z = clamp(hit.zUm, 50, 1450);
+  engine.clearRecording();
   refreshUI();
 });
 
-let last = performance.now();
+let last = performance.now(), accumulatedMs = 0, lastDraw = 0;
 function loop(now) {
   const elapsed = Math.min(50, now - last);
   last = now;
   if (!ui.paused.checked) {
     const speed = Number(ui.speed.value || 1);
-    const simMs = elapsed * speed;
-    const steps = Math.max(1, Math.ceil(simMs / 16));
-    for (let i = 0; i < steps; i++) engine.step(simMs / steps, electrodes, selected);
+    accumulatedMs += elapsed * speed;
+    while (accumulatedMs >= 4) { engine.step(4, electrodes, selected); accumulatedMs -= 4; }
   }
-  scene.updateNeuronActivity(engine.state.neuronActivity);
+  if (!ui.paused.checked && now-lastDraw>65) scene.updateNeuronActivity(engine.state.neuronActivity);
   scene.render();
-  drawRaster();
-  drawTracePanels();
+  if(now-lastDraw>65) {
+    drawRaster(); drawTracePanels(); lastDraw=now;
+    const buffer=engine.state.tracesByElectrode[selected] || [];
+    let sum=0;for(const v of buffer)sum+=v*v;
+    $('cortexTime').textContent=(engine.state.tMs/1000).toFixed(1)+' s';
+    $('cortexRms').textContent=(buffer.length?Math.sqrt(sum/buffer.length):0).toFixed(2)+' µV';
+    $('cortexUnits').textContent=String(new Set(engine.state.detectedSpikes.filter(s=>s.electrodeIndex===selected).map(s=>s.idx)).size);
+  }
   requestAnimationFrame(loop);
 }
 requestAnimationFrame(loop);
+
+$('cortexReset').onclick=()=>{engine=createEngine(config);accumulatedMs=0;refreshUI();};
+for(const b of document.querySelectorAll('[data-cortex-preset]')) b.onclick=()=>{
+  const p=b.dataset.cortexPreset;
+  electrodes=p==='depth'?[250,650,1050,1400].map(z=>({x:0,y:0,z})):p==='grid'?[-200,200].flatMap(x=>[-200,200].map(y=>({x,y,z:650}))):[{x:0,y:0,z:900}];
+  selected=0;engine=createEngine(config);accumulatedMs=0;refreshUI();
+};
+$('noiseUv').oninput=()=>{config.noiseUv=Number($('noiseUv').value);$('noiseLabel').textContent=config.noiseUv.toFixed(1)+' µV';};
+$('cortexExport').onclick=()=>{
+  const buffers=engine.state.tracesByElectrode;if(!buffers.length)return;
+  const rows=['time_s,'+electrodes.map((_,i)=>`E${i+1}_uV`).join(',')];
+  for(let i=0;i<buffers[0].length;i++){
+    const t=engine.state.tMs/1000-(buffers[0].length-i)/config.sampleRateHz;
+    if(t<0)continue;rows.push([t.toFixed(6),...buffers.map(b=>b[i].toFixed(6))].join(','));
+  }
+  const blob=new Blob([rows.join('\n')],{type:'text/csv'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='cortex-raw-traces.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+};

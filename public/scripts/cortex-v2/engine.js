@@ -78,11 +78,14 @@ export function createEngine(cfg) {
   const traceN = Math.floor(cfg.traceWindowS * cfg.sampleRateHz);
   const kernel = makeKernel(cfg.sampleRateHz, 56);
 
+  const negativeKernelPeak = -Math.min(...kernel);
   const neuronAmpScale = Float32Array.from({ length: neurons.length }, () => 0.75 + rand() * 0.6);
   const burstBoost = new Float32Array(neurons.length);
   let lastRecruitRadius = cfg.recruitRadiusUm ?? 180;
   let neighbors = buildNeighborhood(neurons, lastRecruitRadius, cfg.recruitMaxNeighbors ?? 20);
 
+  const lastSpikeMs = new Float64Array(neurons.length).fill(-Infinity);
+  let pending = [];
   const state = {
     tMs: 0,
     recentSpikes: [],
@@ -111,6 +114,7 @@ export function createEngine(cfg) {
       lastRecruitRadius = rr;
     }
 
+    if (!Number.isFinite(stepMs) || stepMs <= 0) return;
     const dtS = stepMs / 1000;
     const newSpikes = [];
     const decay = Math.exp(-stepMs / 125);
@@ -131,7 +135,7 @@ export function createEngine(cfg) {
     for (let i = 0; i < neurons.length; i++) {
       const base = neurons[i].hz;
       const expo = modStrength * state.networkMod + burstBoost[i];
-      const modFactor = Number.isFinite(expo) ? Math.exp(expo) : 1;
+      const modFactor = Number.isFinite(expo) ? Math.exp(Math.min(4, expo)) : 1;
       const modRate = Math.max(0, base * modFactor);
 
       let p = 1 - Math.exp(-modRate * dtS);
@@ -140,8 +144,9 @@ export function createEngine(cfg) {
         p = Math.min(0.25, Math.max(0, base * dtS));
       }
 
-      if (rand() < p) {
+      if (state.tMs - lastSpikeMs[i] >= 2 && rand() < p) {
         const tMs = state.tMs + rand() * stepMs;
+        lastSpikeMs[i] = tMs;
         newSpikes.push({ tMs, idx: i });
 
         // Sparse local burst seeding recruits nearby neurons briefly.
@@ -160,7 +165,12 @@ export function createEngine(cfg) {
     state.recentSpikes = state.recentSpikes.concat(newSpikes).filter((s) => s.tMs > state.tMs - 2000);
 
     const addSamp = Math.max(1, Math.floor((stepMs / 1000) * cfg.sampleRateHz));
-    const blocks = electrodes.map(() => new Float32Array(addSamp));
+    const tailN = kernel.length + 64;
+    const blocks = electrodes.map((_,ei) => {
+      const block = new Float32Array(addSamp + tailN);
+      if (pending[ei]) block.set(pending[ei].subarray(0, block.length));
+      return block;
+    });
     const detected = [];
 
     for (const s of newSpikes) {
@@ -176,10 +186,8 @@ export function createEngine(cfg) {
         const delaySamples = Math.floor((r / 600) * (cfg.sampleRateHz / 1000));
         const alignMs = (delaySamples / cfg.sampleRateHz) * 1000 + 0.55;
 
-        if (ei === selectedIndex) {
-          // Deterministic detection for raster stability (desktop-safe, no random dropout).
-          if (gain >= 0.16) detected.push({ ...s, alignMs });
-        }
+        const peakGain = gain * (1 + Math.max(0, Math.min(1, (gain - 0.35) / 0.95)) * (cfg.closeDipBoost ?? 1.35));
+        if (peakGain * negativeKernelPeak >= (cfg.rasterPeakUv ?? 6)) detected.push({ ...s, alignMs, electrodeIndex: ei });
 
         const block = blocks[ei];
         const nearFrac = Math.max(0, Math.min(1, (gain - 0.35) / 0.95));
@@ -200,7 +208,8 @@ export function createEngine(cfg) {
     for (let ei = 0; ei < electrodes.length; ei++) {
       const merged = new Float32Array(traceN);
       const prev = state.tracesByElectrode[ei];
-      const block = blocks[ei];
+      pending[ei] = blocks[ei].slice(addSamp);
+      const block = blocks[ei].subarray(0, addSamp);
 
       // Add colored-ish background noise (AR(1)-like) so traces look electrode-like.
       let nz = state.noiseByElectrode[ei] || 0;
@@ -220,5 +229,11 @@ export function createEngine(cfg) {
     state.tMs += stepMs;
   }
 
-  return { cfg, state, step };
+  function clearRecording() {
+    pending = [];
+    state.tracesByElectrode = [];
+    state.noiseByElectrode = [];
+    state.detectedSpikes = [];
+  }
+  return { cfg, state, step, clearRecording };
 }

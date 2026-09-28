@@ -4,11 +4,14 @@ import { OrbitControls } from "/vendor/three/OrbitControls.js";
 const umToMm = (v) => v / 1000;
 
 export function createScene(canvas, bounds, neurons) {
+  let dirty = true;
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
 
   const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0a121c);
   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  camera.up.set(0,0,1);
   camera.position.set(2.3, -2.0, 1.6);
 
   const controls = new OrbitControls(camera, canvas);
@@ -18,7 +21,7 @@ export function createScene(canvas, bounds, neurons) {
   controls.minDistance = 1.2;
   controls.maxDistance = 7;
   controls.maxPolarAngle = Math.PI * 0.495;
-  controls.mouseButtons.LEFT = THREE.MOUSE.PAN;
+  controls.mouseButtons.LEFT = THREE.MOUSE.ROTATE;
   controls.mouseButtons.MIDDLE = THREE.MOUSE.ROTATE;
   controls.mouseButtons.RIGHT = THREE.MOUSE.PAN;
   controls.update();
@@ -36,6 +39,10 @@ export function createScene(canvas, bounds, neurons) {
   );
   slab.position.set(0, 0, umToMm((bounds.max[2] + bounds.min[2]) * 0.5));
   scene.add(slab);
+  scene.add(new THREE.BoxHelper(slab, 0x55748a));
+  const grid = new THREE.GridHelper(2,10,0x365166,0x243a4c);
+  grid.rotation.x=Math.PI/2;
+  scene.add(grid);
 
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
@@ -63,6 +70,8 @@ export function createScene(canvas, bounds, neurons) {
   scene.add(electrodeGroup);
 
   function drawElectrodes(electrodes, selected) {
+    dirty = true;
+    for (const child of electrodeGroup.children) { child.geometry.dispose(); child.material.dispose(); }
     electrodeGroup.clear();
     electrodes.forEach((e, idx) => {
       const mesh = new THREE.Mesh(
@@ -71,10 +80,15 @@ export function createScene(canvas, bounds, neurons) {
       );
       mesh.position.set(umToMm(e.x), umToMm(e.y), umToMm(e.z));
       electrodeGroup.add(mesh);
+      const shaft = new THREE.Line(new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(umToMm(e.x),umToMm(e.y),0), mesh.position.clone()
+      ]),new THREE.LineBasicMaterial({color:idx===selected?0xffca7c:0x8ca4ba,transparent:true,opacity:.65}));
+      electrodeGroup.add(shaft);
     });
   }
 
   function setView(mode) {
+    dirty = true;
     if (mode === "reset") { camera.position.set(2.3, -2.0, 1.6); controls.target.set(0, 0, 0.75); }
     if (mode === "top") { camera.position.set(0.001, 0.001, 4.2); controls.target.set(0, 0, 0.75); }
     if (mode === "side") { camera.position.set(4.2, 0.001, 0.95); controls.target.set(0, 0, 0.75); }
@@ -82,6 +96,7 @@ export function createScene(canvas, bounds, neurons) {
   }
 
   function resize() {
+    dirty = true;
     const w = Math.max(320, canvas.clientWidth);
     const h = Math.max(280, canvas.clientHeight);
     renderer.setSize(w, h, false);
@@ -102,20 +117,22 @@ export function createScene(canvas, bounds, neurons) {
   }
 
   function updateNeuronActivity(activity) {
+    dirty = true;
     const c = nGeo.getAttribute("color");
     for (let i = 0; i < activity.length; i++) {
       const a = Math.max(0, Math.min(1, activity[i]));
-      const r = 0.01 + a * (0.56 - 0.01);
-      const g = 0.015 + a * (0.90 - 0.015);
-      const b = 0.03 + a * (1.00 - 0.03);
+      const r = 0.22 + a * (0.56 - 0.22);
+      const g = 0.32 + a * (0.90 - 0.32);
+      const b = 0.44 + a * (1.00 - 0.44);
       c.setXYZ(i, r, g, b);
     }
     c.needsUpdate = true;
   }
 
   function render() {
-    controls.update();
-    renderer.render(scene, camera);
+    const changed = controls.update();
+    if(dirty || changed) renderer.render(scene, camera);
+    dirty = false;
   }
 
   return { drawElectrodes, setView, resize, render, pickOnSlab, updateNeuronActivity };
