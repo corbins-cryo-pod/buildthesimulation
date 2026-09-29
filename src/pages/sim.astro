@@ -1,4 +1,1528 @@
 ---
-import NerveLab from '../components/NerveLab.astro';
+import Layout from "../layouts/Layout.astro";
 ---
-<NerveLab />
+
+<Layout
+  pageTitle="Simulation"
+  subtitle="Peripheral nerve cross-section simulation for stimulation and recording tests."
+  description="Interactive peripheral nerve cross-section sandbox for exploring electrode geometry, stimulation, and simple recording readouts."
+>
+  <section class="card" style="margin-top:14px;">
+    <p class="muted" style="margin:0;">
+      New here? Read the quick guide → <a href="/simulations/nerve-cross-section/guide/">How to use this simulation</a>
+    </p>
+  </section>
+
+  <section class="simShell">
+    <aside class="panel" aria-label="Controls">
+      <div class="panelSection">
+        <div class="panelTitle">Library</div>
+        <div class="row">
+          <button class="btn" id="addIntra">Add intrafascicular</button>
+        </div>
+        <div class="row">
+          <button class="btn ghost" id="reset">Reset</button>
+        </div>
+      </div>
+
+      <div class="panelSection">
+        <div class="panelTitle">Geometry</div>
+
+        <label class="lab">
+          Axon sites (count)
+          <details class="def">
+            <summary>What is this?</summary>
+            <div class="defBody">How many axon "sites" are rendered inside the fascicle. These are visual points (not a biophysical axon model). More sites = denser firing + heavier CPU.</div>
+          </details>
+          <div class="rangeRow">
+            <input id="axonCount" type="range" min="0" max="4000" value="1000" />
+            <div class="rangeMeta">
+              <span id="axonCountVal"></span>
+              <span class="rangeMinMax">min <span id="axonCountMin"></span> / max <span id="axonCountMax"></span></span>
+            </div>
+          </div>
+        </label>
+
+        <p class="muted">
+          Nerve diameter is fixed at <b>2.0 mm</b>. Single fascicle (simplified).
+          Axons are non-overlapping grid sites (visual exaggeration).
+        </p>
+      </div>
+
+      <div class="panelSection">
+        <div class="panelTitle">Stimulation</div>
+
+        <label class="lab">
+          Stim amplitude (a.u.)
+          <details class="def">
+            <summary>What is this?</summary>
+            <div class="defBody">A proxy "current amplitude" used to compute a simple exponential field around each intrafascicular electrode. Higher = more axons cross threshold.</div>
+          </details>
+          <div class="rangeRow">
+            <input id="stimAmp" type="range" min="0" max="100" value="40" />
+            <div class="rangeMeta">
+              <span id="stimAmpVal"></span>
+              <span class="rangeMinMax">min <span id="stimAmpMin"></span> / max <span id="stimAmpMax"></span></span>
+            </div>
+          </div>
+        </label>
+
+        <label class="lab">
+          Field falloff
+          <details class="def">
+            <summary>What is this?</summary>
+            <div class="defBody">Sets how quickly the proxy field decays with distance. Larger values spread stimulation farther; smaller values make it more localized.</div>
+          </details>
+          <div class="rangeRow">
+            <input id="falloff" type="range" min="5" max="60" value="24" />
+            <div class="rangeMeta">
+              <span id="falloffVal"></span>
+              <span class="rangeMinMax">min <span id="falloffMin"></span> / max <span id="falloffMax"></span></span>
+            </div>
+          </div>
+        </label>
+
+        <label class="lab">
+          Threshold (proxy)
+          <details class="def">
+            <summary>What is this?</summary>
+            <div class="defBody">Proxy activation threshold. During a pulse, axons with |field| ≥ threshold are forced "on" for a short dwell time.</div>
+          </details>
+          <div class="rangeRow">
+            <input id="thresh" type="range" min="0" max="200" value="55" />
+            <div class="rangeMeta">
+              <span id="threshVal"></span>
+              <span class="rangeMinMax">min <span id="threshMin"></span> / max <span id="threshMax"></span></span>
+            </div>
+          </div>
+        </label>
+
+        <div class="row">
+          <button class="btn" id="pulse">Pulse</button>
+          <button class="btn ghost" id="stop">Stop</button>
+        </div>
+
+        <div class="row">
+          <button class="btn ghost" id="colorMode">Spike colors: mono</button>
+        </div>
+
+        <label class="lab">
+          Frequency (Hz)
+          <details class="def">
+            <summary>What is this?</summary>
+            <div class="defBody">Frequency of the sine-wave stimulation during the train.</div>
+          </details>
+          <div class="rangeRow">
+            <input id="freq" type="range" min="1" max="200" value="20" />
+            <div class="rangeMeta">
+              <span id="freqVal"></span>
+              <span class="rangeMinMax">min <span id="freqMin"></span> / max <span id="freqMax"></span></span>
+            </div>
+          </div>
+        </label>
+
+        <label class="lab">
+          Train duration (ms)
+          <details class="def">
+            <summary>What is this?</summary>
+            <div class="defBody">How long the sine-wave stimulation train runs when you click <b>Pulse</b>. Axons above the proxy threshold will be forced to fire during the train.</div>
+          </details>
+          <div class="rangeRow">
+            <input id="dur" type="range" min="50" max="1500" value="450" />
+            <div class="rangeMeta">
+              <span id="durVal"></span>
+              <span class="rangeMinMax">min <span id="durMin"></span> / max <span id="durMax"></span></span>
+            </div>
+          </div>
+        </label>
+          <div class="rangeRow">
+            <input id="dur" type="range" min="50" max="1500" value="450" />
+            <div class="rangeMeta">
+              <span id="durVal"></span>
+              <span class="rangeMinMax">min <span id="durMin"></span> / max <span id="durMax"></span></span>
+            </div>
+          </div>
+        </label>
+      </div>
+
+      <div class="panelSection">
+        <div class="panelTitle">View</div>
+        <div class="row">
+          <button class="btn ghost" id="viewReset">Reset view</button>
+        </div>
+        <p class="muted">
+          Scroll to zoom. Drag empty space to pan. Drag electrodes to move them.
+        </p>
+      </div>
+
+      <div class="panelSection">
+        <div class="panelTitle">Selection</div>
+        <div class="kv"><span>Type</span><span id="selType">-</span></div>
+        <div class="kv"><span>ID</span><span id="selId">-</span></div>
+        <div class="kv"><span>X</span><span id="selX">-</span></div>
+        <div class="kv"><span>Y</span><span id="selY">-</span></div>
+
+        <label class="lab" style="margin-top:10px;">
+          <span style="display:flex;align-items:center;gap:10px;">
+            <input id="selRec" type="checkbox" />
+            Recording enabled
+          </span>
+        </label>
+
+        <div class="row">
+          <button class="btn ghost" id="deleteSel">Delete selected</button>
+        </div>
+
+        <div class="row">
+          <button class="btn" id="export">Export JSON</button>
+          <button class="btn" id="import">Import JSON</button>
+        </div>
+      </div>
+
+      <details class="panelSection" open>
+        <summary class="panelTitle">Notes</summary>
+        <p class="muted">
+          Simplified model. Axon firing uses randomized per-axon timing with a <b>minimum 200 ms</b> refractory interval.
+          Recording is distance-weighted spikes per intrafascicular electrode (up to <b>10</b> graphs, auto-generated).
+        </p>
+      </details>
+    </aside>
+
+    <main class="stage" aria-label="Simulation canvas">
+      <div class="stageBar">
+        <div class="stageTitle">Peripheral nerve cross-section</div>
+        <div class="stageHint">Zoom/pan + stimulation + recording</div>
+      </div>
+
+      <div class="stageBody">
+        <canvas id="cnv" width="980" height="520"></canvas>
+
+        <div class="miniRow">
+          <section class="mini">
+            <div class="miniBar">
+              <div class="miniTitle">Stim waveform (proxy)</div>
+              <div class="miniHint">t=0 at 75% width • shows injected current proxy</div>
+            </div>
+            <canvas id="stim" width="980" height="150"></canvas>
+          </section>
+        </div>
+
+        <div class="miniRow" id="recList"></div>
+
+      </div>
+
+      <div class="toast" id="toast" hidden></div>
+    </main>
+  </section>
+
+  <dialog id="dlg" class="dlg">
+    <form method="dialog" class="dlgInner">
+      <div class="dlgHead">
+        <div class="dlgTitle" id="dlgTitle">Export</div>
+        <button class="btn ghost" value="cancel">Close</button>
+      </div>
+      <textarea id="dlgText" spellcheck="false"></textarea>
+      <menu class="dlgActions">
+        <button class="btn" id="dlgCopy" value="copy">Copy</button>
+        <button class="btn" id="dlgApply" value="apply">Apply</button>
+      </menu>
+    </form>
+  </dialog>
+</Layout>
+
+<script is:inline>
+  const $ = (id) => document.getElementById(id);
+
+  const cnv = $("cnv");
+  const ctx = cnv.getContext("2d");
+
+  const stimC = $("stim");
+  const sctx = stimC.getContext("2d");
+
+  const recListEl = $("recList");
+  const recCanvases = new Map(); // electrodeId -> { canvas, ctx }
+
+  const ui = {
+    addIntra: $("addIntra"),
+    reset: $("reset"),
+    export: $("export"),
+    import: $("import"),
+
+    stimAmp: $("stimAmp"),
+    falloff: $("falloff"),
+    thresh: $("thresh"),
+
+    pulse: $("pulse"),
+    stop: $("stop"),
+    colorMode: $("colorMode"),
+    freq: $("freq"),
+    dur: $("dur"),
+
+    axonCount: $("axonCount"),
+
+    viewReset: $("viewReset"),
+
+    selType: $("selType"),
+    selId: $("selId"),
+    selX: $("selX"),
+    selY: $("selY"),
+    selRec: $("selRec"),
+    deleteSel: $("deleteSel"),
+
+    dlg: $("dlg"),
+    dlgTitle: $("dlgTitle"),
+    dlgText: $("dlgText"),
+    dlgCopy: $("dlgCopy"),
+    dlgApply: $("dlgApply"),
+    toast: $("toast"),
+  };
+
+  const valIds = [
+    ["axonCount", "axonCountVal", "axonCountMin", "axonCountMax"],
+    ["stimAmp", "stimAmpVal", "stimAmpMin", "stimAmpMax"],
+    ["falloff", "falloffVal", "falloffMin", "falloffMax"],
+    ["thresh", "threshVal", "threshMin", "threshMax"],
+    ["freq", "freqVal", "freqMin", "freqMax"],
+    ["dur", "durVal", "durMin", "durMax"],
+  ];
+
+  function syncRangeMeta() {
+    for (const [rid, vid, minId, maxId] of valIds) {
+      const el = $(rid);
+      if (!el) continue;
+      $(vid).textContent = el.value;
+      $(minId).textContent = el.min;
+      $(maxId).textContent = el.max;
+    }
+  }
+
+  function toast(msg) {
+    ui.toast.textContent = msg;
+    ui.toast.hidden = false;
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => (ui.toast.hidden = true), 1200);
+  }
+
+  function mkId() {
+    return Math.random().toString(16).slice(2, 8);
+  }
+  function rand() {
+    return Math.random();
+  }
+
+  // --- Constants / scale ---
+  const NERVE_DIAMETER_MM = 2.0; // fixed
+  const NERVE_DIAMETER_UM = NERVE_DIAMETER_MM * 1000;
+
+  // Firing timing:
+  // "Maximum frequency once every 200 ms" => minimum interval is 0.2s
+  const MIN_ISI_S = 0.20;
+  // Additional random jitter so it doesn't look clocked.
+  // Mean extra spacing ~0.25s => typical intervals ~0.2-0.8s.
+  const JITTER_MEAN_S = 0.25;
+
+  const ON_DWELL_S = 0.040;  // how long a spontaneous fire shows as ON (visual)
+  const STIM_DWELL_S = 0.12; // how long stimulation forces on (minimum)
+
+  // Graph windows
+  const REC_WINDOW_S = 10.0;
+  const NOW_X = 0.75; // t=0 marker at 75% width
+
+  // Recording pickup distance model (µm)
+  const PICKUP_STRONG_UM = 50;
+  const PICKUP_ZERO_UM = 200;
+
+  function umPerPx() {
+    return NERVE_DIAMETER_UM / (model.nerve.r * 2);
+  }
+
+  // --- Geometry ---
+  function buildFascicles(nerve) {
+    // Single fascicle: large and centered, takes most of the nerve.
+    const { cx, cy, r } = nerve;
+    return [{ x: cx, y: cy, r: r * 0.88 }];
+  }
+
+  function buildAxonSites(nerve, fascicles, targetCount) {
+    const { cx, cy, r } = nerve;
+
+    const gridStepPx = 3; // visual density
+
+    const candidates = [];
+    const minX = Math.floor((cx - r) / gridStepPx) * gridStepPx;
+    const maxX = Math.ceil((cx + r) / gridStepPx) * gridStepPx;
+    const minY = Math.floor((cy - r) / gridStepPx) * gridStepPx;
+    const maxY = Math.ceil((cy + r) / gridStepPx) * gridStepPx;
+
+    const f = fascicles[0];
+
+    for (let y = minY; y <= maxY; y += gridStepPx) {
+      for (let x = minX; x <= maxX; x += gridStepPx) {
+        if (Math.hypot(x - cx, y - cy) > r - 2) continue;        // inside nerve
+        if (Math.hypot(x - f.x, y - f.y) > f.r - 2) continue;    // inside fascicle
+        candidates.push({ x, y, fascicleId: 0 });
+      }
+    }
+
+    // Shuffle candidates
+    for (let i = candidates.length - 1; i > 0; i--) {
+      const j = Math.floor(rand() * (i + 1));
+      [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
+    }
+
+    const count = Math.min(targetCount, candidates.length);
+    const axons = [];
+    const nowS = performance.now() / 1000;
+
+    function expSample(mean) {
+      return -Math.log(1 - rand()) * mean;
+    }
+
+    // Randomize phases strongly so we don't get unison firing.
+    // We schedule each axon somewhere within the next ~2 seconds.
+    for (let i = 0; i < count; i++) {
+      const c = candidates[i];
+      const phase = rand() * 2.0; // seconds
+      axons.push({
+        x: c.x,
+        y: c.y,
+        fascicleId: c.fascicleId,
+        onUntil: 0,
+        stimUntil: 0,
+        nextFire: nowS + phase,
+        color: randColor(rand()),
+      });
+    }
+
+    return axons;
+  }
+
+  function defaultModel() {
+    const W = cnv.width;
+    const H = cnv.height;
+
+    const nerve = {
+      cx: W * 0.58,
+      cy: H * 0.52,
+      r: Math.min(W, H) * 0.33,
+    };
+
+    const fascicles = buildFascicles(nerve);
+
+    const scale = {
+      nerveDiameterMm: NERVE_DIAMETER_MM,
+      axonCount: 1000,
+    };
+
+    const axons = buildAxonSites(nerve, fascicles, scale.axonCount);
+
+    return {
+      nerve,
+      fascicles,
+      axons,
+      electrodes: [],
+      stim: { amp: 40, falloff: 24, thresh: 55 },
+      wave: { freqHz: 20, durMs: 450 },
+      pulse: { active: false, t0: 0 },
+
+      colorMode: "mono", // "mono" | "axon"
+
+      view: { s: 1, ox: 0, oy: 0 },
+      selectedId: null,
+
+      // recording events per electrode id
+      recEvents: new Map(),
+    };
+  }
+
+  let model = defaultModel();
+
+  function worldFromScreen(evt) {
+    const rect = cnv.getBoundingClientRect();
+    const sx = ((evt.clientX - rect.left) / rect.width) * cnv.width;
+    const sy = ((evt.clientY - rect.top) / rect.height) * cnv.height;
+    const { s, ox, oy } = model.view;
+    return { x: (sx - ox) / s, y: (sy - oy) / s };
+  }
+
+  function hitTest(x, y) {
+    for (let i = model.electrodes.length - 1; i >= 0; i--) {
+      const e = model.electrodes[i];
+      if (e.type !== "intra") continue;
+      const dx = x - e.x;
+      const dy = y - e.y;
+      if (Math.hypot(dx, dy) < 10) return e;
+    }
+    return null;
+  }
+
+  function setSelected(id) {
+    model.selectedId = id;
+    const e = model.electrodes.find((q) => q.id === id);
+    ui.selType.textContent = e ? (e.type === "intra" ? "intrafascicular" : e.type) : "-";
+    ui.selId.textContent = e ? e.id : "-";
+    ui.selX.textContent = e ? Math.round(e.x ?? model.nerve.cx) : "-";
+    ui.selY.textContent = e ? Math.round(e.y ?? model.nerve.cy) : "-";
+
+    if (ui.selRec) {
+      const enabled = e ? e.recEnabled !== false : false;
+      ui.selRec.checked = enabled;
+      ui.selRec.disabled = !e;
+    }
+
+    if (ui.deleteSel) {
+      ui.deleteSel.disabled = !e;
+    }
+  }
+
+  function clampToNerve(e) {
+    if (e.type !== "intra") return;
+    const dx = e.x - model.nerve.cx;
+    const dy = e.y - model.nerve.cy;
+    const d = Math.hypot(dx, dy) || 1;
+    const maxD = model.nerve.r * 0.92;
+    if (d > maxD) {
+      e.x = model.nerve.cx + (dx / d) * maxD;
+      e.y = model.nerve.cy + (dy / d) * maxD;
+    }
+  }
+
+  function lerp(a, b, t) {
+    return a + (b - a) * t;
+  }
+
+  function lerpColor(c1, c2, t01) {
+    const t = Math.max(0, Math.min(1, t01));
+    const r = Math.round(lerp(c1[0], c2[0], t));
+    const g = Math.round(lerp(c1[1], c2[1], t));
+    const b = Math.round(lerp(c1[2], c2[2], t));
+    return `rgb(${r},${g},${b})`;
+  }
+
+  function randColor(seed = Math.random()) {
+    // deterministic-ish given seed; returns vivid HSL
+    const h = Math.floor(seed * 360);
+    const s = 78;
+    const l = 48;
+    return `hsl(${h} ${s}% ${l}%)`;
+  }
+
+  function renderRecPanels() {
+    // Show up to 10 intrafascicular channels, stacked.
+    const intra = getRecElectrodes().slice(0, 10);
+
+    // clear placeholder if present
+    if (recListEl?.dataset?.placeholder === "1" && intra.length) {
+      recListEl.innerHTML = "";
+      recListEl.dataset.placeholder = "0";
+    }
+
+    // remove canvases that no longer exist
+    for (const [id, v] of recCanvases.entries()) {
+      if (!intra.find((e) => e.id === id)) {
+        v.canvas.closest('section')?.remove();
+        recCanvases.delete(id);
+      }
+    }
+
+    // ensure DOM order matches intra order
+    const existingIds = new Set(recCanvases.keys());
+
+    for (let i = 0; i < intra.length; i++) {
+      const e = intra[i];
+      if (!existingIds.has(e.id)) {
+        const section = document.createElement('section');
+        section.className = 'mini';
+
+        const bar = document.createElement('div');
+        bar.className = 'miniBar';
+
+        const title = document.createElement('div');
+        title.className = 'miniTitle';
+        title.textContent = `Recording ${i + 1}`;
+
+        const hint = document.createElement('div');
+        hint.className = 'miniHint';
+        hint.textContent = `intrafascicular electrode ${e.id}`;
+
+        bar.appendChild(title);
+        bar.appendChild(hint);
+        section.appendChild(bar);
+
+        const c = document.createElement('canvas');
+        c.width = 980;
+        c.height = 150;
+        section.appendChild(c);
+
+        recListEl.appendChild(section);
+        recCanvases.set(e.id, { canvas: c, ctx: c.getContext('2d') });
+      }
+    }
+
+    // reorder
+    const sections = Array.from(recListEl.querySelectorAll('section.mini'));
+    const desiredOrder = intra.map((e) => e.id);
+    sections.sort((a, b) => {
+      const ca = a.querySelector('canvas');
+      const ida = [...recCanvases.entries()].find(([, v]) => v.canvas === ca)?.[0];
+      const cb = b.querySelector('canvas');
+      const idb = [...recCanvases.entries()].find(([, v]) => v.canvas === cb)?.[0];
+      return desiredOrder.indexOf(ida) - desiredOrder.indexOf(idb);
+    });
+    for (const s of sections) recListEl.appendChild(s);
+
+    // update titles (1..N)
+    for (let i = 0; i < intra.length; i++) {
+      const id = intra[i].id;
+      const entry = recCanvases.get(id);
+      const section = entry?.canvas.closest('section');
+      if (!section) continue;
+      const t = section.querySelector('.miniTitle');
+      const h = section.querySelector('.miniHint');
+      if (t) t.textContent = `Recording ${i + 1}`;
+      if (h) h.textContent = `intrafascicular electrode ${id}`;
+    }
+  }
+
+
+  function stimMultiplier(nowMs) {
+    // Sine-only stimulation for now
+    if (!model.pulse.active) return 0;
+    const t = (nowMs - model.pulse.t0) / 1000;
+    const dur = model.wave.durMs / 1000;
+    if (t < 0 || t > dur) return 0;
+
+    const f = model.wave.freqHz;
+    return Math.sin(2 * Math.PI * f * t);
+  }
+
+  function fieldAt(x, y, mult = 1) {
+    // Intrafascicular-only field (sum of exponentials)
+    const fall = Number(model.stim.falloff);
+    const amp = Number(model.stim.amp) * mult;
+    let v = 0;
+
+    for (const e of model.electrodes) {
+      if (e.type !== "intra") continue;
+      const d = Math.hypot(x - e.x, y - e.y);
+      v += amp * Math.exp(-d / fall);
+    }
+
+    return v;
+  }
+
+  function pickupWeight(distanceUm) {
+    if (distanceUm <= PICKUP_STRONG_UM) return 1;
+    if (distanceUm >= PICKUP_ZERO_UM) return 0;
+    const t = (distanceUm - PICKUP_STRONG_UM) / (PICKUP_ZERO_UM - PICKUP_STRONG_UM);
+    return 1 - t;
+  }
+
+  function getIntraElectrodes() {
+    return model.electrodes.filter((e) => e.type === "intra");
+  }
+
+  function getRecElectrodes() {
+    return getIntraElectrodes().filter((e) => e.recEnabled !== false);
+  }
+
+  function ensureRecList(id) {
+    if (!model.recEvents.has(id)) model.recEvents.set(id, []);
+    return model.recEvents.get(id);
+  }
+
+  function pushRecEvent(eid, tS, amp01, color = null) {
+    const e = model.electrodes.find((q) => q.id === eid);
+    if (!e || e.recEnabled === false) return;
+
+    const list = ensureRecList(eid);
+    list.push({
+      t: tS,
+      amp: Math.max(0, Math.min(1, amp01)),
+      color,
+    });
+
+    const cutoff = tS - 12;
+    while (list.length && list[0].t < cutoff) list.shift();
+  }
+
+  function drawStrip(ctx2d, nowS, events, titleLeft) {
+    const W = ctx2d.canvas.width;
+    const H = ctx2d.canvas.height;
+
+    ctx2d.clearRect(0, 0, W, H);
+    ctx2d.fillStyle = "rgba(255,255,255,0.10)";
+    ctx2d.fillRect(0, 0, W, H);
+
+    // grid lines
+    ctx2d.strokeStyle = "rgba(10,10,12,0.10)";
+    ctx2d.lineWidth = 1;
+    for (let i = 1; i < 6; i++) {
+      const y = (i / 6) * H;
+      ctx2d.beginPath();
+      ctx2d.moveTo(0, y);
+      ctx2d.lineTo(W, y);
+      ctx2d.stroke();
+    }
+
+    const nowX = Math.floor(W * NOW_X);
+
+    const pastS = REC_WINDOW_S * NOW_X;
+    const futureS = REC_WINDOW_S - pastS;
+
+    const tStart = nowS - pastS;
+    const tEnd = nowS + futureS;
+
+    function tx(t) {
+      return ((t - tStart) / (tEnd - tStart)) * W;
+    }
+
+    // baseline
+    const mid = Math.floor(H * 0.70);
+    ctx2d.strokeStyle = "rgba(10,10,12,0.25)";
+    ctx2d.beginPath();
+    ctx2d.moveTo(0, mid);
+    ctx2d.lineTo(W, mid);
+    ctx2d.stroke();
+
+    // spikes
+    ctx2d.lineWidth = 2;
+
+    for (const ev of events) {
+      if (ev.t < tStart || ev.t > tEnd) continue;
+      const x = tx(ev.t);
+      const ampPx = ev.amp * (H * 0.60);
+      ctx2d.strokeStyle = ev.color ?? "rgba(10,10,12,0.85)";
+      ctx2d.beginPath();
+      ctx2d.moveTo(x, mid);
+      ctx2d.lineTo(x, mid - ampPx);
+      ctx2d.stroke();
+    }
+
+    // now marker
+    ctx2d.strokeStyle = "rgba(0,0,0,0.35)";
+    ctx2d.lineWidth = 2;
+    ctx2d.beginPath();
+    ctx2d.moveTo(nowX, 0);
+    ctx2d.lineTo(nowX, H);
+    ctx2d.stroke();
+
+    ctx2d.fillStyle = "rgba(10,10,12,0.60)";
+    ctx2d.font = "12px ui-sans-serif, system-ui";
+    ctx2d.fillText(titleLeft, 10, 14);
+    ctx2d.fillText("t = 0", nowX + 6, 14);
+  }
+
+  function drawStimWave(nowMs) {
+    const W = sctx.canvas.width;
+    const H = sctx.canvas.height;
+
+    sctx.clearRect(0, 0, W, H);
+    sctx.fillStyle = "rgba(255,255,255,0.10)";
+    sctx.fillRect(0, 0, W, H);
+
+    const nowS = nowMs / 1000;
+    const nowX = Math.floor(W * NOW_X);
+
+    const pastS = REC_WINDOW_S * NOW_X;
+    const futureS = REC_WINDOW_S - pastS;
+    const tStart = nowS - pastS;
+    const tEnd = nowS + futureS;
+
+    function tx(t) {
+      return ((t - tStart) / (tEnd - tStart)) * W;
+    }
+
+    // axis: left y-axis + baseline
+    const mid = Math.floor(H * 0.60);
+
+    sctx.strokeStyle = "rgba(10,10,12,0.28)";
+    sctx.lineWidth = 1.5;
+    sctx.beginPath();
+    sctx.moveTo(36, 10);
+    sctx.lineTo(36, H - 12);
+    sctx.stroke();
+
+    sctx.beginPath();
+    sctx.moveTo(36, mid);
+    sctx.lineTo(W, mid);
+    sctx.stroke();
+
+    // label (proxy units)
+    sctx.fillStyle = "rgba(10,10,12,0.60)";
+    sctx.font = "12px ui-sans-serif, system-ui";
+    sctx.fillText("current (a.u.)", 8, 14);
+
+    // draw waveform
+    const amp = Number(model.stim.amp);
+    const scaleY = (H * 0.40) / Math.max(1, amp);
+
+    sctx.strokeStyle = "rgba(10,10,12,0.85)";
+    sctx.lineWidth = 2;
+
+    sctx.beginPath();
+    let started = false;
+
+    // sample across pixels
+    for (let x = 36; x < W; x++) {
+      const t = tStart + ((x / W) * (tEnd - tStart));
+      // emulate stim at that time relative to model.pulse.t0
+      let mult = 0;
+      if (model.pulse.active) {
+        const relMs = t * 1000;
+        mult = stimMultiplier(relMs);
+      }
+      const y = mid - (mult * amp) * scaleY;
+
+      if (!started) {
+        sctx.moveTo(x, y);
+        started = true;
+      } else {
+        sctx.lineTo(x, y);
+      }
+    }
+    sctx.stroke();
+
+    // now marker
+    sctx.strokeStyle = "rgba(0,0,0,0.35)";
+    sctx.lineWidth = 2;
+    sctx.beginPath();
+    sctx.moveTo(nowX, 0);
+    sctx.lineTo(nowX, H);
+    sctx.stroke();
+
+    sctx.fillStyle = "rgba(10,10,12,0.60)";
+    sctx.font = "12px ui-sans-serif, system-ui";
+    sctx.fillText("t = 0", nowX + 6, 14);
+  }
+
+  function stepNoiseAndRecording(nowS) {
+    const uPerPx = umPerPx();
+    const intra = getIntraElectrodes();
+
+    // if no intra electrodes, we still update axon visuals but skip recording
+    function expSample(mean) {
+      return -Math.log(1 - rand()) * mean;
+    }
+
+    for (const a of model.axons) {
+      if (nowS >= a.nextFire) {
+        // fire
+        a.onUntil = Math.max(a.onUntil, nowS + ON_DWELL_S);
+
+        // schedule next:
+        // IMPORTANT: advance from previous nextFire (not from now),
+        // to avoid "locking" to the render loop.
+        const isi = MIN_ISI_S + expSample(JITTER_MEAN_S);
+        a.nextFire = a.nextFire + isi;
+
+        // record on all intra electrodes (we can display up to 10)
+        if (intra.length) {
+          for (const e of intra) {
+            const dUm = Math.hypot(a.x - e.x, a.y - e.y) * uPerPx;
+            const w = pickupWeight(dUm);
+            if (w <= 0) continue;
+            const color = model.colorMode === "axon" ? a.color : null;
+            pushRecEvent(e.id, nowS, w * 0.9, color);
+          }
+        }
+      }
+    }
+  }
+
+  function applyStimToAxons(nowMs) {
+    if (!model.pulse.active) return;
+    const mult = stimMultiplier(nowMs);
+    if (mult === 0) return;
+
+    const thr = Number(model.stim.thresh);
+    const nowS = nowMs / 1000;
+
+    // keep them on for at least STIM_DWELL_S
+    const stimHold = Math.max(STIM_DWELL_S, model.wave.durMs / 1000);
+
+    // force on when above threshold
+    for (const a of model.axons) {
+      const v = Math.abs(fieldAt(a.x, a.y, mult));
+      if (v >= thr) {
+        a.stimUntil = Math.max(a.stimUntil, nowS + stimHold);
+        a.onUntil = Math.max(a.onUntil, nowS + stimHold);
+      }
+    }
+
+    // big event marker on each intra electrode
+    for (const e of getIntraElectrodes()) {
+      pushRecEvent(e.id, nowS, 1.0, null);
+    }
+  }
+
+  function drawMain(nowMs = performance.now()) {
+    const { cx, cy, r } = model.nerve;
+    ctx.clearRect(0, 0, cnv.width, cnv.height);
+
+    ctx.fillStyle = "rgba(255,255,255,0.10)";
+    ctx.fillRect(0, 0, cnv.width, cnv.height);
+
+    const mult = model.pulse.active ? stimMultiplier(nowMs) : 0;
+
+    // world transform
+    ctx.save();
+    ctx.translate(model.view.ox, model.view.oy);
+    ctx.scale(model.view.s, model.view.s);
+
+    // field heatmap (only when pulsing)
+    if (getIntraElectrodes().length && mult !== 0) {
+      const step = 18;
+      let maxV = 0;
+      const vals = [];
+      for (let y = 0; y < cnv.height; y += step) {
+        for (let x = 0; x < cnv.width; x += step) {
+          const inside = Math.hypot(x - cx, y - cy) <= r;
+          const v = inside ? Math.abs(fieldAt(x, y, mult)) : 0;
+          vals.push({ x, y, v, inside });
+          if (v > maxV) maxV = v;
+        }
+      }
+      for (const p of vals) {
+        if (!p.inside) continue;
+        const a = maxV ? Math.min(0.22, (p.v / maxV) * 0.22) : 0;
+        ctx.fillStyle = `rgba(20,20,22,${a})`;
+        ctx.fillRect(p.x, p.y, step, step);
+      }
+    }
+
+    // nerve boundary
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.strokeStyle = "rgba(10,10,12,0.60)";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // fascicle
+    const f = model.fascicles[0];
+    ctx.beginPath();
+    ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(255,255,255,0.14)";
+    ctx.fill();
+    ctx.strokeStyle = "rgba(10,10,12,0.20)";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // axons as squares
+    const nowS = nowMs / 1000;
+    const cell = 2.2;
+    const half = cell / 2;
+
+    for (const a of model.axons) {
+      const on = (a.onUntil > nowS) || (a.stimUntil > nowS);
+
+      if (!on) {
+        ctx.fillStyle = "rgba(10,10,12,0.12)";
+        ctx.fillRect(a.x - half, a.y - half, cell, cell);
+        continue;
+      }
+
+      if (model.colorMode === "axon") {
+        ctx.fillStyle = a.color;
+      } else {
+        ctx.fillStyle = "rgba(10,10,12,0.78)";
+      }
+
+      ctx.fillRect(a.x - half, a.y - half, cell, cell);
+    }
+
+    // electrodes (intrafascicular only)
+    for (const e of model.electrodes) {
+      if (e.type !== "intra") continue;
+      const selected = e.id === model.selectedId;
+
+      ctx.beginPath();
+      ctx.arc(e.x, e.y, 6, 0, Math.PI * 2);
+      ctx.fillStyle = selected ? "rgba(10,10,12,0.95)" : "rgba(10,10,12,0.78)";
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(e.x, e.y, 10, 0, Math.PI * 2);
+      ctx.strokeStyle = "rgba(10,10,12,0.24)";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    // label
+    ctx.fillStyle = "rgba(10,10,12,0.62)";
+    ctx.font = "16px Times New Roman";
+    ctx.fillText("nerve", cx - 18, cy - r - 10);
+
+    ctx.restore();
+
+    // scale bar
+    const pxPerMm = ((model.nerve.r * 2) * model.view.s) / NERVE_DIAMETER_MM;
+    const barMm = 1;
+    const barPx = barMm * pxPerMm;
+
+    const x0 = 18;
+    const y0 = cnv.height - 18;
+    ctx.strokeStyle = "rgba(10,10,12,0.55)";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(x0, y0);
+    ctx.lineTo(x0 + barPx, y0);
+    ctx.stroke();
+
+    ctx.fillStyle = "rgba(10,10,12,0.65)";
+    ctx.font = "14px Times New Roman";
+    ctx.fillText(`${barMm} mm`, x0, y0 - 6);
+  }
+
+  function drawAll(nowMs = performance.now()) {
+    const nowS = nowMs / 1000;
+
+    drawMain(nowMs);
+    drawStimWave(nowMs);
+
+    renderRecPanels();
+
+    const intra = getIntraElectrodes().slice(0, 10);
+    for (const e of intra) {
+      const entry = recCanvases.get(e.id);
+      if (!entry) continue;
+      const events = model.recEvents.get(e.id) ?? [];
+      drawStrip(entry.ctx, nowS, events, `${e.id}`);
+    }
+
+    if (!intra.length) {
+      // show a placeholder panel if none exist
+      recListEl.dataset.placeholder = "1";
+      recListEl.innerHTML = `
+        <section class="mini">
+          <div class="miniBar">
+            <div class="miniTitle">Recording</div>
+            <div class="miniHint">add an intrafascicular electrode (max 10 displayed)</div>
+          </div>
+          <canvas width="980" height="150"></canvas>
+        </section>
+      `;
+    }
+  }
+
+  // --- UI sync ---
+  function rebuildAxonsFromUI() {
+    const count = Math.round(Number(ui.axonCount.value));
+    model.axons = buildAxonSites(model.nerve, model.fascicles, count);
+    drawAll();
+  }
+
+  function syncStim() {
+    model.stim.amp = Number(ui.stimAmp.value);
+    model.stim.falloff = Number(ui.falloff.value);
+    model.stim.thresh = Number(ui.thresh.value);
+  }
+
+  function syncWave() {
+    model.wave.freqHz = Number(ui.freq.value);
+    model.wave.durMs = Number(ui.dur.value);
+  }
+
+  function syncUIFromModel() {
+    ui.stimAmp.value = String(model.stim.amp);
+    ui.falloff.value = String(model.stim.falloff);
+    ui.thresh.value = String(model.stim.thresh ?? 55);
+
+    ui.axonCount.value = String(model.axons.length);
+
+    ui.freq.value = String(model.wave.freqHz);
+    ui.dur.value = String(model.wave.durMs);
+
+    ui.colorMode.textContent = model.colorMode === "axon" ? "Spike colors: axon" : "Spike colors: mono";
+  }
+
+  // --- Interaction ---
+  let dragging = null;
+  let panning = false;
+  let dragOff = { x: 0, y: 0 };
+  let pan0 = { x: 0, y: 0, ox: 0, oy: 0 };
+
+  cnv.addEventListener("mousedown", (evt) => {
+    const p = worldFromScreen(evt);
+    const hit = hitTest(p.x, p.y);
+
+    if (hit) {
+      setSelected(hit.id);
+      dragging = hit;
+      if (hit.type === "intra") {
+        dragOff.x = p.x - hit.x;
+        dragOff.y = p.y - hit.y;
+      }
+      drawAll();
+      return;
+    }
+
+    setSelected(null);
+    panning = true;
+    pan0 = { x: evt.clientX, y: evt.clientY, ox: model.view.ox, oy: model.view.oy };
+  });
+
+  window.addEventListener("mousemove", (evt) => {
+    if (dragging && dragging.type === "intra") {
+      const p = worldFromScreen(evt);
+      dragging.x = p.x - dragOff.x;
+      dragging.y = p.y - dragOff.y;
+      clampToNerve(dragging);
+      setSelected(dragging.id);
+      drawAll();
+      return;
+    }
+
+    if (panning) {
+      const dx = evt.clientX - pan0.x;
+      const dy = evt.clientY - pan0.y;
+      model.view.ox = pan0.ox + dx;
+      model.view.oy = pan0.oy + dy;
+      drawAll();
+    }
+  });
+
+  window.addEventListener("mouseup", () => {
+    dragging = null;
+    panning = false;
+  });
+
+  cnv.addEventListener(
+    "wheel",
+    (evt) => {
+      evt.preventDefault();
+      const rect = cnv.getBoundingClientRect();
+      const sx = ((evt.clientX - rect.left) / rect.width) * cnv.width;
+      const sy = ((evt.clientY - rect.top) / rect.height) * cnv.height;
+
+      const oldS = model.view.s;
+      const dir = Math.sign(evt.deltaY);
+      const factor = dir > 0 ? 0.92 : 1.08;
+      const newS = Math.max(0.6, Math.min(4, oldS * factor));
+      if (newS === oldS) return;
+
+      const wx = (sx - model.view.ox) / oldS;
+      const wy = (sy - model.view.oy) / oldS;
+
+      model.view.s = newS;
+      model.view.ox = sx - wx * newS;
+      model.view.oy = sy - wy * newS;
+      drawAll();
+    },
+    { passive: false }
+  );
+
+  // --- Buttons ---
+  ui.addIntra.addEventListener("click", () => {
+    const intraCount = getIntraElectrodes().length;
+    if (intraCount >= 10) {
+      toast("Max 10 intrafascicular electrodes");
+      return;
+    }
+
+    // stagger new electrodes a bit so they don't stack perfectly
+    const ang = (intraCount / 10) * Math.PI * 2;
+    const rr = model.nerve.r * 0.12;
+    const e = {
+      id: mkId(),
+      type: "intra",
+      x: model.nerve.cx + Math.cos(ang) * rr,
+      y: model.nerve.cy + Math.sin(ang) * rr,
+      recEnabled: true,
+    };
+
+    model.electrodes.push(e);
+    ensureRecList(e.id);
+    setSelected(e.id);
+    drawAll();
+    toast("Added intrafascicular");
+  });
+
+  ui.reset.addEventListener("click", () => {
+    model = defaultModel();
+    syncUIFromModel();
+    syncRangeMeta();
+    drawAll();
+    toast("Reset");
+  });
+
+  ui.viewReset.addEventListener("click", () => {
+    model.view = { s: 1, ox: 0, oy: 0 };
+    drawAll();
+  });
+
+  ui.pulse.addEventListener("click", () => {
+    if (!getIntraElectrodes().length) {
+      toast("Add an intrafascicular electrode first");
+      return;
+    }
+    syncWave();
+    model.pulse.active = true;
+    model.pulse.t0 = performance.now();
+    toast("Pulsing");
+  });
+
+  ui.stop.addEventListener("click", () => {
+    model.pulse.active = false;
+    toast("Stopped");
+  });
+
+  ui.selRec?.addEventListener("change", () => {
+    const id = model.selectedId;
+    if (!id) return;
+    const e = model.electrodes.find((q) => q.id === id);
+    if (!e) return;
+
+    e.recEnabled = !!ui.selRec.checked;
+
+    // If disabling, drop its panel and events.
+    if (e.recEnabled === false) {
+      model.recEvents.delete(e.id);
+      recCanvases.delete(e.id);
+    }
+
+    renderRecPanels();
+    drawAll();
+  });
+
+  ui.deleteSel?.addEventListener("click", () => {
+    const id = model.selectedId;
+    if (!id) return;
+
+    const idx = model.electrodes.findIndex((q) => q.id === id);
+    if (idx < 0) return;
+
+    const e = model.electrodes[idx];
+    model.electrodes.splice(idx, 1);
+
+    model.recEvents.delete(e.id);
+    recCanvases.delete(e.id);
+
+    setSelected(null);
+    renderRecPanels();
+    drawAll();
+    toast("Deleted electrode");
+  });
+
+  // --- Export / Import ---
+  function exportModel() {
+    const payload = {
+      nerve: model.nerve,
+      fascicles: model.fascicles,
+      electrodes: model.electrodes,
+      stim: model.stim,
+      wave: model.wave,
+      view: model.view,
+      scale: { nerveDiameterMm: NERVE_DIAMETER_MM, axonCount: model.axons.length },
+    };
+    return JSON.stringify(payload, null, 2);
+  }
+
+  function importModel(txt) {
+    const obj = JSON.parse(txt);
+    if (!obj?.nerve || !obj?.fascicles || !obj?.electrodes) throw new Error("Invalid schema");
+
+    model.nerve = obj.nerve;
+    model.fascicles = obj.fascicles;
+    model.electrodes = (obj.electrodes ?? [])
+      .filter((e) => e.type === "intra")
+      .map((e) => ({ ...e, recEnabled: e.recEnabled !== false }));
+    model.stim = obj.stim ?? model.stim;
+    model.wave = obj.wave ?? model.wave;
+    model.view = obj.view ?? model.view;
+
+    // rebuild axons from slider or schema
+    const count = obj?.scale?.axonCount ?? Number(ui.axonCount.value);
+    model.axons = buildAxonSites(model.nerve, model.fascicles, count);
+
+    // reset recordings
+    model.recEvents = new Map();
+    for (const e of model.electrodes) {
+      if (e.type === "intra") ensureRecList(e.id);
+    }
+
+    model.selectedId = null;
+    model.pulse.active = false;
+
+    syncUIFromModel();
+    syncRangeMeta();
+    setSelected(null);
+    drawAll();
+  }
+
+  function openDialog(mode) {
+    ui.dlgTitle.textContent = mode === "export" ? "Export JSON" : "Import JSON";
+    ui.dlgText.value = mode === "export" ? exportModel() : "";
+    ui.dlgApply.style.display = mode === "import" ? "inline-flex" : "none";
+    ui.dlgCopy.style.display = mode === "export" ? "inline-flex" : "none";
+    ui.dlg.showModal();
+    ui.dlgText.focus();
+    ui.dlgText.select();
+  }
+
+  ui.export.addEventListener("click", () => openDialog("export"));
+  ui.import.addEventListener("click", () => openDialog("import"));
+
+  ui.dlgCopy.addEventListener("click", async (e) => {
+    e.preventDefault();
+    await navigator.clipboard.writeText(ui.dlgText.value);
+    toast("Copied");
+  });
+
+  ui.dlgApply.addEventListener("click", (e) => {
+    e.preventDefault();
+    try {
+      importModel(ui.dlgText.value);
+      ui.dlg.close();
+      toast("Imported");
+    } catch {
+      toast("Import failed");
+    }
+  });
+
+  // --- Inputs ---
+  ui.axonCount.addEventListener("input", () => { rebuildAxonsFromUI(); syncRangeMeta(); });
+
+  ui.stimAmp.addEventListener("input", () => { syncStim(); syncRangeMeta(); drawAll(); });
+  ui.falloff.addEventListener("input", () => { syncStim(); syncRangeMeta(); drawAll(); });
+  ui.thresh.addEventListener("input", () => { syncStim(); syncRangeMeta(); drawAll(); });
+
+  ui.freq.addEventListener("input", () => { syncWave(); syncRangeMeta(); drawAll(); });
+  ui.dur.addEventListener("input", () => { syncWave(); syncRangeMeta(); drawAll(); });
+
+  ui.colorMode.addEventListener("click", () => {
+    model.colorMode = model.colorMode === "mono" ? "axon" : "mono";
+    ui.colorMode.textContent = model.colorMode === "axon" ? "Spike colors: axon" : "Spike colors: mono";
+    drawAll();
+  });
+
+  // --- Main loop ---
+  function loop() {
+    const nowMs = performance.now();
+    const nowS = nowMs / 1000;
+
+    stepNoiseAndRecording(nowS);
+    applyStimToAxons(nowMs);
+    drawAll(nowMs);
+
+    requestAnimationFrame(loop);
+  }
+
+  // init
+  syncUIFromModel();
+  syncRangeMeta();
+  syncStim();
+  syncWave();
+  setSelected(null);
+  drawAll();
+  requestAnimationFrame(loop);
+</script>
+
+<style>
+  .simShell {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .panel {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--panel);
+    padding: 14px;
+    position: sticky;
+    top: 16px;
+  }
+
+  .panelSection {
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .panelSection:last-child { border-bottom: none; }
+
+  .panelTitle {
+    font-weight: 700;
+    font-size: 1.02em;
+    margin-bottom: 10px;
+    cursor: default;
+  }
+
+  details.panelSection > summary.panelTitle { list-style: none; }
+  details.panelSection > summary.panelTitle::-webkit-details-marker { display: none; }
+
+  .row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .btn {
+    border: 1px solid var(--border);
+    background: var(--panelStrong);
+    border-radius: 999px;
+    padding: 9px 12px;
+    font-family: inherit;
+    font-size: 0.95em;
+    cursor: pointer;
+    color: inherit;
+  }
+  .btn:hover {
+    border-color: var(--borderStrong);
+    background: var(--panelHover);
+    transform: translateY(-1px);
+  }
+  .btn.ghost { background: transparent; }
+
+  .kv {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    opacity: 0.9;
+    margin: 6px 0;
+    font-size: 0.95em;
+  }
+
+  .lab {
+    display: grid;
+    gap: 6px;
+    margin-top: 10px;
+    font-size: 0.95em;
+  }
+
+  .rangeRow { display: grid; gap: 6px; }
+  .rangeMeta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.88em;
+    opacity: 0.78;
+  }
+
+  select {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--panelStrong);
+    padding: 8px 10px;
+    font-family: inherit;
+    color: inherit;
+  }
+
+  input[type="range"] { width: 100%; }
+
+  .muted { opacity: 0.74; line-height: 1.7; margin: 0; }
+
+  .stage {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--panel);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .stageBar {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: baseline;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    background: var(--panel);
+  }
+
+  .stageTitle { font-weight: 700; }
+  .stageHint { opacity: 0.7; font-size: 0.9em; }
+
+  .stageBody { padding-bottom: 12px; }
+
+  canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: grab;
+  }
+  canvas:active { cursor: grabbing; }
+
+  .miniRow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 10px 12px 0;
+  }
+
+  /* recordings are stacked; the DOM dynamically adds up to 10 */
+  #recList {
+    grid-template-columns: 1fr;
+  }
+
+  .mini {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--panel);
+  }
+
+  .miniBar {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: baseline;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .miniTitle { font-weight: 700; }
+  .miniHint { opacity: 0.7; font-size: 0.88em; }
+
+  .toast {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--panelStrong);
+    font-size: 0.95em;
+  }
+
+  .dlg {
+    border: 1px solid var(--borderStrong);
+    border-radius: 16px;
+    padding: 0;
+    background: var(--bg);
+    color: inherit;
+    width: min(900px, 92vw);
+  }
+  .dlg::backdrop { background: rgba(0, 0, 0, 0.55); }
+  .dlgInner { padding: 14px; }
+
+  .dlgHead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .dlgTitle { font-weight: 700; font-size: 1.05em; }
+
+  textarea {
+    width: 100%;
+    height: 320px;
+    resize: vertical;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 12px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 13px;
+    background: var(--panelStrong);
+    color: inherit;
+  }
+
+  .dlgActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 980px) {
+    .simShell { grid-template-columns: 1fr; }
+    .panel { position: relative; top: 0; }
+    .miniRow:nth-child(3) { grid-template-columns: 1fr; }
+  }
+</style>

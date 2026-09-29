@@ -1,4 +1,24 @@
 ---
-import NerveLab from '../../../components/NerveLab.astro';
+import Layout from "../../../layouts/Layout.astro";
 ---
-<NerveLab />
+
+<Layout pageTitle="Simulations" subtitle="Peripheral nerve cross-section" description="Run the nerve cross-section sim and find the quick-start guide.">
+  <section class="card">
+    <p>
+      Run the nerve cross-section simulator → <a href="/sim">/sim</a>
+    </p>
+    <p style="margin-top:10px;">
+      How to use it (quick guide) → <a href="/simulations/nerve-cross-section/guide/">/simulations/nerve-cross-section/guide/</a>
+    </p>
+  </section>
+</Layout>
+
+<style>
+  .card {
+    margin-top: 14px;
+    padding: 22px 22px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+  }
+</style>
