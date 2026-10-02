@@ -10,33 +10,29 @@ const companies = (await getCollection("companies"))
 
 const latestCompanies = companies.slice(0, 3);
 
-const lastUpdatedCandidates = [companies[0]?.data.pubDate]
-  .filter((d) => d instanceof Date);
-const lastUpdated = lastUpdatedCandidates.length
-  ? new Date(Math.max(...lastUpdatedCandidates.map((d) => d.getTime())))
-  : undefined;
+const devices = (await getCollection("designs")).filter((p) => !p.data.draft);
 ---
 
 <Layout withHero={true}>
   <section class="hero card">
     <p class="eyebrow">Build The Simulation</p>
-    <h1>Explore brain interfaces through devices, labs, and simulations.</h1>
+    <h1>A catalog of brain-computer interface companies and technologies.</h1>
     <p class="lede">
-      Explore the BCI Atlas, compare neural interface designs, and experiment with interactive
-      cortex and peripheral nerve simulations.
+      Find companies and labs, read about their work, and compare the technologies they use.
+      Explore device briefs and interactive simulations alongside the catalog.
     </p>
     <div class="ctaRow">
-      <a class="btn primary" href="/simulations/">Explore simulations</a>
-      <a class="btn" href="/companies/map/">Open BCI Atlas</a>
+      <a class="btn primary" href="/companies/">Explore BCI Atlas</a>
+      <a class="btn" href="/simulations/">Explore simulations</a>
     </div>
   </section>
 
   <section class="card">
     <div class="row"><h2>Start here</h2></div>
     <div class="pathGrid">
-      <a class="path" href="/companies/map/">
+      <a class="path" href="/companies/">
         <h3>Explore companies and labs</h3>
-        <p>Use the atlas to scan the ecosystem and jump into company/lab briefs.</p>
+        <p>Browse the catalog for company and lab briefs, technologies, and sources.</p>
       </a>
       <a class="path" href="/simulations/">
         <h3>Run interactive simulations</h3>
@@ -50,8 +46,8 @@ const lastUpdated = lastUpdatedCandidates.length
     <div class="stats">
       <div class="stat"><div class="num">{companies.length}</div><div class="label">Companies / labs</div></div>
       <div class="stat">
-        <div class="num">{lastUpdated ? lastUpdated.toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "—"}</div>
-        <div class="label">Last updated</div>
+        <div class="num">{devices.length}</div>
+        <div class="label">Devices</div>
       </div>
     </div>
   </section>

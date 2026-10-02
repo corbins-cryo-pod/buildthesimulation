@@ -16,7 +16,7 @@ draft: false
 ---
 Paradromics is building an *implantable, high data‑rate brain–computer interface (BCI)* designed to record activity at (or near) the *single‑neuron* level and translate it into *speech/text and computer control*. Their flagship clinical product is the *Connexus® BCI*, aimed first at restoring communication for people with severe motor impairment (e.g., ALS, spinal cord injury, stroke).
 
-This brief focuses on the *technology*, *clinical path*, and *company facts* I can support with public sources.
+This brief covers the *technology*, *clinical path*, and *company facts* documented in public sources.
 
 ### At a glance
 

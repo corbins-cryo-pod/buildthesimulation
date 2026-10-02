@@ -26,7 +26,7 @@ This brief leans hard on *peer‑reviewed clinical data* and other primary sourc
 - *Contact / location (company site footer):* the site lists *Brooklyn, NY* along with contact emails. (Synchron contact/footer page)
   - <https://synchron.com/>
 
-> Private-company note: public sources rarely give reliable revenue/profit data for private neurotech startups. If I can’t support a number with a solid source, we don’t claim it.
+> Private-company note: revenue and profit figures for private neurotech startups are often unavailable or unverified. Funding figures are not revenue.
 
 ### The technology (what makes Synchron different)
 
@@ -85,12 +85,6 @@ ClinicalTrials.gov has entries relevant to early feasibility testing of the Sten
 Synchron positions its BCI as an at‑home system aimed at autonomy and social connection.
 
 - Company framing (Synchron homepage): <https://synchron.com/>
-
-If needed *recent milestones* (e.g., participant counts, regulatory designations, notable demos), I should base them on:
-- peer‑reviewed publications,
-- trial registry updates,
-- regulator announcements,
-- or major outlets (Reuters, etc.).
 
 ### What to watch next (technical + translational)
 

@@ -61,7 +61,7 @@ Reuters reporting in mid‑2025 states Neuralink had begun clinical trials acros
 - Reuters (Dec 2025 / Jan 2026): reports Musk stated Neuralink would start “high‑volume production” of BCI devices and move to an “entirely automated surgical procedure” in 2026.
   - <https://www.reuters.com/business/healthcare-pharmaceuticals/musk-says-neuralink-start-high-volume-production-interface-devices-by-2026-2026-01-01/>
 
-### Money: revenue vs funding (what I can and can’t say)
+### Revenue and funding
 
 ### Revenue
 Neuralink is privately held; *revenue is not publicly disclosed* in a reliable, audited way. If you see revenue figures online, they are usually estimates.
