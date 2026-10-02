@@ -80,6 +80,6 @@ The intraoperative/tumor-resection context is a pragmatic first step, but the re
 High-density recordings can be impressive; the question is whether they translate into better outcomes (better resection margins, fewer deficits, or better control/therapy in movement disorders).
 
 3) *Regulatory clarity*
-They mention Breakthrough Device Designation for Parkinson’s. The most defensible version is to cite an FDA listing or a primary press release once I can fetch it reliably (some presswire endpoints are flaky).
+The reported Breakthrough Device Designation for Parkinson’s needs confirmation against an FDA listing or a primary company announcement.
 
 ---
