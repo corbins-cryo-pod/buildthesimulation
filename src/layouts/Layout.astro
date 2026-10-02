@@ -6,7 +6,7 @@ const {
   pageTitle,
   subtitle,
   description =
-    "A living blueprint for building interactive simulations of neural systems — from peripheral nerve to cortex.",
+    "A catalog of brain-computer interface companies, their work, and their technologies, with device briefs and interactive simulations.",
   withHero = false,
 } = Astro.props;
 
@@ -16,7 +16,7 @@ const fullTitle = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
 const pathname = Astro.url?.pathname ?? "/";
 
 // Display title can be different from <title>
-const displayTitle = pathname === "/" ? "HOW TO ENTER THE SIMULATION" : siteTitle;
+const displayTitle = siteTitle;
 const isSimulationPath = pathname.startsWith("/sim") || pathname.startsWith("/simulations");
 const isDirectoryIndexPath = /^\/(companies|devices|designs|simulations)\/?$/.test(pathname);
 const bodyClasses = [
@@ -92,7 +92,7 @@ function stripAtlasLabel(title) {
             {pageTitle ? <h1 class="pageTitle">{pageTitle}</h1> : <h1 class={pathname === "/" ? "homeTitle" : undefined}>{displayTitle}</h1>}
             <p class="sub">
               {subtitle ??
-                "A living blueprint for simulating neural systems — and designing the interfaces that connect to them."}
+                "Brain-computer interface companies, their work, and their technologies."}
             </p>
           </div>
         </div>
