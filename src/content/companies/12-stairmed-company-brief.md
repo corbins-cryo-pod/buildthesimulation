@@ -2,7 +2,8 @@
 title: "StairMed (company brief)"
 order: 12
 pubDate: 2026-02-02
-updatedDate: 2026-02-02
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "StairMed (Shanghai): invasive BMI reported in 2025 first-in-man trials enabling amputee computer/game control via a coin-sized implant and ultra-thin electrodes."
 region: "Chinese"
 kind: "Company"
@@ -47,3 +48,8 @@ StairMed is part of a broader Chinese push to build an invasive BCI pipeline (ha
 3) *Hardware evolution* (channels, packaging, recharge, longevity)
 
 ---
+
+### 2026 update (reviewed Oct 4, 2026)
+
+- *Funding (reported, Mar-Apr 2026):* StairMed announced an *RMB 500M* (about $73M) financing led by Alibaba, with Tencent among existing investors participating, and plans for larger registration trials. Sources: <https://www.prnewswire.com/news-releases/stairmed-secures-rmb-500-million-financing-led-by-alibaba-joined-by-tencent-302732525.html> and <https://kr-asia.com/alibaba-leads-rmb-500-million-investment-in-bci-startup-stairmed>
+- Funding amounts for Chinese firms in this directory are reported by media or the companies and are not independently audited.
