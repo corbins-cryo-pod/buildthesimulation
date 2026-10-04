@@ -2,7 +2,8 @@
 title: "University of Pennsylvania — BCI & neurotechnology ecosystem (lab brief)"
 order: 18
 pubDate: 2026-02-02
-updatedDate: 2026-02-06
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "Penn is a full-stack BCI ecosystem spanning clinic-facing implantable systems, decoding/methods, and biohybrid interface biology (including ‘living electrode’ concepts)."
 region: "American"
 kind: "Lab"
