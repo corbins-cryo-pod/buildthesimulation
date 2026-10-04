@@ -3,6 +3,11 @@ import Layout from "../../layouts/Layout.astro";
 
 const sims = [
   {
+    href: "/devices/models/",
+    title: "Device geometry explorer",
+    desc: "Inspect three reference models at true scale. Export electrode coordinates and GLB meshes for simulation development.",
+  },
+  {
     href: "/sim/",
     title: "Peripheral nerve cross-section",
     desc: "Original sandbox with electrodes, pulse visualization, zoom/pan, and experiment export/import.",
@@ -17,7 +22,7 @@ const sims = [
 
 <Layout pageTitle="Simulations" subtitle="Interactive simulation tools for neural interface exploration." description="Simulation launcher for buildthesimulation.">
   <section class="card">
-    <p class="muted">Two hands-on experiments in neural interface geometry. Start with a preset, change one variable, and compare the result. Both use simplified, explicitly described models.</p>
+    <p class="muted">Explore device geometry and two hands-on neural interface experiments. Start with a preset, change one variable, and compare the result. The simulations use simplified, explicitly described models.</p>
   </section>
 
   <section class="grid">

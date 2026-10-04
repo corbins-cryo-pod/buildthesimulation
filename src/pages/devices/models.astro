@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { deviceModels } from '../../lib/devices/catalog.js';
+---
+<Layout pageTitle="Device models" subtitle="From physical electrodes to simulation geometry." description="Explore source-documented 3D models of Utah, Utah Slanted and Neuropixels electrode structures.">
+  <section class="intro">
+    <p>Rotate, inspect and download electrode structures from the implant catalog. This first collection covers three reference configurations, with published dimensions and visible approximation notes.</p>
+    <p>Gold marks electrode surfaces. The models preserve physical scale; leads, headstages and packaging are outside this first pass. Geometry exports provide a foundation for simulation integration, not a prediction of device performance.</p>
+  </section>
+  <div class="models">
+    {Object.values(deviceModels).map(model => <a class="model-card" href={`/devices/${model.slug}/#model-3d`}>
+      <span class="eyebrow">{model.kind === 'utah' ? 'PENETRATING ARRAY' : 'CMOS RECORDING SHANK'}</span>
+      <h2>{model.name}</h2>
+      <p>{model.specs[0][1]} · {model.kind === 'utah' ? '400 µm pitch' : '12 × 12 µm contacts'}</p>
+      <span>Open interactive 3D model →</span>
+    </a>)}
+  </div>
+  <p><a href="/devices/">← All devices</a></p>
+</Layout>
+<style>
+  .intro{max-width:800px;line-height:1.8}.intro p{opacity:.8}
+  .models{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;margin:28px 0}
+  .model-card{padding:24px;border:1px solid var(--border);border-radius:16px;background:var(--panel);text-decoration:none;color:inherit}
+  .model-card:hover{background:var(--panelHover);border-color:var(--borderStrong)}
+  .model-card h2{font-size:1.7rem;line-height:1.15;margin:14px 0}.model-card p{line-height:1.7;opacity:.75}.model-card>span:last-child{font-size:13px}
+  .eyebrow{font-size:10px;letter-spacing:.15em;opacity:.7}
+</style>

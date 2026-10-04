@@ -11,7 +11,7 @@ description: "A CMOS silicon intracortical probe family (Neuropixels v1/v2): ext
 modality: "Intracortical"
 successRank: 5
 website: "https://www.neuropixels.org/"
-tags: ["BCI", "intracortical", "Neuropixels", "recording", "CMOS", "IMEC", "UCL", "Allen Institute", "cortex", "stimulation", "bidirectional", "microelectrode"]
+tags: ["BCI", "intracortical", "Neuropixels", "recording", "CMOS", "IMEC", "UCL", "Allen Institute", "cortex", "microelectrode"]
 draft: false
 ---
 
@@ -54,7 +54,7 @@ draft: false
 - *Penetrating?:* yes
 - *Form factor:* single thin silicon shank
 - *Shank width (µm):* ~70 (generation-dependent)
-- *Shank thickness (µm):* ~20 (generation-dependent)
+- *Shank thickness (µm):* 24 for the Neuropixels 1.0 model shown above; other variants differ.
 - *Shank length (mm):* ~10 (common)
 - *Site spacing (µm):* ~20 (common)
 - *Array layout:* linear column(s) along the shank
@@ -68,7 +68,7 @@ draft: false
 - *Total sites:* ~960–1280 (generation-dependent)
 - *Simultaneous channels:* ~384–768 (generation-dependent)
 - *Electrode material:* titanium nitride (common)
-- *Site area (µm²):* small (often reported on the order of ~10 µm²; varies by generation)
+- *Site area (µm²):* 144 for Neuropixels 1.0 (12 × 12 µm); specify the generation when comparing.
 - *Impedance @ 1 kHz:* often reported around ~100–200 kΩ (varies)
 - *Noise floor / SNR:* low-noise, often reported around a few µV RMS (varies by setup)
 - *Recording modality:* single-unit spikes + LFP
