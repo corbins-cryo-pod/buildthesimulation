@@ -2,7 +2,8 @@
 title: "University of Utah — Neural engineering & neurotechnology ecosystem (lab brief)"
 order: 16
 pubDate: 2026-02-02
-updatedDate: 2026-02-06
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "Utah is historically central to implantable microelectrode arrays (Utah Electrode Array lineage) and remains active in neuroprosthetics, closed-loop systems, and human translation (e.g., cortical visual prostheses)."
 region: "American"
 kind: "Lab"
