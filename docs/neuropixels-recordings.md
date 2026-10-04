@@ -3,7 +3,7 @@
 One probe from the International Brain Laboratory (IBL) Brainwide Map public release, shown on the Neuropixels device page (`BTSD-0004`).
 
 - Session: https://openalyx.internationalbrainlab.org/sessions/ebce500b-c530-47de-8cb1-963c552703ea (mouse MFD_09, Churchland lab, 2023-10-19, `_iblrig_tasks_ephysChoiceWorld`), probe00, Neuropixels 1.0 (IBL model 3B2), pykilosort spike sorting.
-- Paper: https://doi.org/10.1101/2023.07.04.547681 . Data license: CC BY 4.0 (IBL public release).
+- Paper: https://doi.org/10.1101/2023.07.04.547681 . Data license: CC BY 4.0 (IBL public release; see https://registry.opendata.aws/ibl-brain-wide-map/ ).
 - Chosen because the insertion has QC PASS, resolved histology alignment, and the standard ephysChoiceWorld task. It is one session among hundreds; the choice is illustrative, not representative of every IBL recording.
 
 ## Reproduce
