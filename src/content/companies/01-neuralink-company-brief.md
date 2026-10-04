@@ -2,7 +2,8 @@
 title: "Neuralink (company brief)"
 order: 1
 pubDate: 2026-02-02
-updatedDate: 2026-02-02
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "A grounded snapshot of Neuralink: what it is building, where it is, how big it is, and what is publicly known from primary sources."
 region: "American"
 kind: "Company"
@@ -93,3 +94,9 @@ Neuralink is best thought of as:
 - Longer-term claims (speech, vision, broader neurological conditions) need careful evidence.
 
 ---
+
+### 2026 update (reviewed Oct 4, 2026)
+
+- *Participants:* about *21 trial participants* across several countries were reported in Jan 2026 (the "five patients" figure above is from mid-2025). Source: <https://www.technology.org/2026/01/29/neuralink-brain-chips-connect-21-minds-to-machines/> (secondary; confirm against Neuralink's own updates: <https://neuralink.com/updates/>).
+- *Valuation:* the last priced round (June 2025, $650M) was at roughly $9B. Secondary-market trades of $29-42B were reported in July 2026; this is not a priced round. Source: <https://www.businessinsider.com/investors-valuing-elon-musks-neuralink-at-42-billion-2026-7>
+- *Not verified here:* recent Blindsight enrollment and first-perception claims come from third-party sites only, so they are not included.
