@@ -2,7 +2,8 @@
 title: "Synchron (company brief)"
 order: 2
 pubDate: 2026-02-02
-updatedDate: 2026-02-02
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "Synchron’s endovascular BCI (Stentrode): what it is, how it works, what human data exists, and what to watch next."
 region: "American"
 kind: "Company"
@@ -102,3 +103,9 @@ Synchron positions its BCI as an at‑home system aimed at autonomy and social c
 - Next: richer multi-DOF control, speech interfaces, or combined stimulation/recording applications.
 
 ---
+
+### 2026 update (reviewed Oct 4, 2026)
+
+- *Funding:* Synchron announced a *$200M Series D* (reported as closed in Nov 2025) to accelerate commercialization of its first-generation Stentrode and a next-generation system. Source: <https://www.neurofounders.co/press-releases/synchron-raises-200-million-series-d-to-advance-brain-computer-interface-technology>
+- *Trials:* a next-generation Stentrode study (FOCUS-AU) was scheduled to begin in Melbourne in April 2026. Source (Inside BCI, secondary): <https://insidebci.com/news/2026-03-25-synchron-returns-to-melbourne-for-first-trial-of-next-generation-stentrode/>
+- *Not verified here:* a reported later Series E; wait for a primary Synchron announcement.

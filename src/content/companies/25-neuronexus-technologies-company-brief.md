@@ -2,7 +2,8 @@
 title: "NeuroNexus Technologies (company brief)"
 order: 25
 pubDate: 2026-02-07
-updatedDate: 2026-02-07
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "NeuroNexus is an American neural-interface hardware company focused on silicon probes, electrode arrays, and electrophysiology systems for research and translational workflows."
 region: "American"
 kind: "Company"

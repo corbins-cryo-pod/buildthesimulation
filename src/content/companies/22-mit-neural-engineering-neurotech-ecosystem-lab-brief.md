@@ -2,7 +2,8 @@
 title: "MIT — Neural engineering & neurotechnology ecosystem (lab brief)"
 order: 22
 pubDate: 2026-02-06
-updatedDate: 2026-02-06
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "MIT’s BCI footprint is best understood as an enabling-technology powerhouse: neuroengineering hubs and labs advancing interfaces, bioelectronics, sensing/modulation, and neural data methods."
 region: "American"
 kind: "Lab"

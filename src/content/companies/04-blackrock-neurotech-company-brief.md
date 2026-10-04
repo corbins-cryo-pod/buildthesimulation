@@ -2,7 +2,8 @@
 title: "Blackrock Neurotech (company brief)"
 order: 4
 pubDate: 2026-02-02
-updatedDate: 2026-02-02
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "Blackrock Neurotech’s Utah Array / NeuroPort ecosystem and clinical ambitions (MoveAgain): what it is, why it matters, and what’s public about the company."
 region: "American"
 kind: "Company"
@@ -107,3 +108,9 @@ Utah Array classically means ~100 electrodes per array. The path to richer contr
 The hardest step is turning research performance into a product: training burden, calibration drift, support model, and regulatory requirements.
 
 ---
+
+### 2026 update (reviewed Oct 4, 2026)
+
+- *Ownership:* Tether invested $200M in Apr 2024 and became the majority stakeholder. Source: <https://blackrockneurotech.com/insights/tether-invested-200m-in-blackrock-neurotech-accelerating-development-and-commercialization-of-implantable-bci-technology/>
+- *Leadership:* Marcus Gerhardt is CEO; in an Aug 2026 interview he said Blackrock has implanted 56 people (secondary: <https://amelica.org/35beaf44DAh4c08CAFJxFzc>).
+- The employee count above is a point-in-time LinkedIn figure and may be out of date.

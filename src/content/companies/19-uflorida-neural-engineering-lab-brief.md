@@ -2,7 +2,8 @@
 title: "University of Florida — Neural engineering & BCI ecosystem (lab brief)"
 order: 19
 pubDate: 2026-02-02
-updatedDate: 2026-02-06
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "UF has an ecosystem-level footprint in neural engineering spanning noninvasive decoding (MEG), neuromodulation/brain mapping, and interface biology/biomaterials, with structured training inside UF BME."
 region: "American"
 kind: "Lab"

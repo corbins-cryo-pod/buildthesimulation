@@ -2,7 +2,8 @@
 title: "Technical University of Munich (TUM) invasive BCI project (lab brief)"
 order: 15
 pubDate: 2026-02-02
-updatedDate: 2026-02-02
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "TUM University Hospital implanted a 256‑microelectrode BCI in a quadriplegic patient (reported as Europe’s first such procedure), aiming at smartphone and robotic-arm control."
 region: "European"
 kind: "Lab"
@@ -41,3 +42,7 @@ This is a concrete example of Europe pushing back into invasive BCI with a tight
 3) *Scaling and repeatability* (more participants, longer follow-up)
 
 ---
+
+### 2026 update (reviewed Oct 4, 2026)
+
+- *Recent:* TUM published a press release (Apr 27, 2026) on its intracortical BCI work with a participant who is paralyzed from the neck down, and has posted a tenure-track professorship in implantable BCIs. Sources: <https://www.tum.de/en/news-and-events/all-news/press-releases/details/the-power-of-the-mind> and <https://portal.mytum.de/jobs/professuren/NewsArticle_20260629_120822>

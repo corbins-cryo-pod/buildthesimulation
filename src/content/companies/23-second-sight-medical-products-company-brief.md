@@ -2,7 +2,8 @@
 title: "Second Sight Medical Products (historical company brief)"
 order: 23
 pubDate: 2026-02-07
-updatedDate: 2026-02-07
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "Second Sight developed the Argus II retinal prosthesis (FDA HDE, 2013) and later shifted toward cortical vision concepts before winding down operations; its lineage continues under Cortigent."
 region: "American"
 kind: "Company"
@@ -41,3 +42,7 @@ It remains foundational context for visual neuroprosthetics and service-lifecycl
 - 5-year Argus II safety/performance follow-up: <https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/>
 - Patient/support discontinuation reporting: <https://spectrum.ieee.org/bionic-eye-obsolete>
 - Program continuity / merger context: <https://www.fightingblindness.org/news/second-sight-agrees-to-merger-to-maintain-retinal-and-cortical-prostheses-programs-830>
+
+### 2026 update (reviewed Oct 4, 2026)
+
+- *Lineage update:* the Orion program continues under Cortigent, which announced a planned merger with ClearOne in Jul 2026 (see the Cortigent brief). Source: <https://www.globenewswire.com/news-release/2026/07/02/3321264/0/en/Vivani-Announces-Entry-into-Merger-Agreement-Between-Wholly-Owned-Subsidiary-Cortigent-Inc-and-Nasdaq-listed-ClearOne-Inc.html>

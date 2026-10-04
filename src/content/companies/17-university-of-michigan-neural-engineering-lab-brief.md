@@ -2,7 +2,8 @@
 title: "University of Michigan — Neural engineering & BCI ecosystem (lab brief)"
 order: 17
 pubDate: 2026-02-02
-updatedDate: 2026-02-06
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "UMich is a major neural engineering hub spanning intracortical iBCI translation, noninvasive clinical BCIs, and foundational neural probe hardware (the ‘Michigan probe’ lineage)."
 region: "American"
 kind: "Lab"
@@ -89,3 +90,7 @@ If this hub stays useful as the atlas grows, the next step is to fork into subpa
 ### References / official pages
 - UMich BME Neural Engineering overview: <https://bme.umich.edu/research/research-strengths/neural-engineering/>
 - Michigan Medicine BCI clinic announcement: <https://www.michiganmedicine.org/news-release/university-michigan-health-opens-brain-computer-interface-clinic-among-first-nation>
+
+### 2026 update (reviewed Oct 4, 2026)
+
+- *Recent:* Michigan neurosurgeon Matthew Willsey performed the first implant of Paradromics' Connexus in the Connect-One study (Jun 17, 2026). Source: <https://paradromics.com/news/paradromics-completes-first-human-brain-computer-interface-bci-implantation/>

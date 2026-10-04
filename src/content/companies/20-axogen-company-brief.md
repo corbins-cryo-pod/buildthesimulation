@@ -2,7 +2,8 @@
 title: "Axogen (company brief)"
 order: 20
 pubDate: 2026-02-06
-updatedDate: 2026-02-06
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "Axogen is a publicly traded U.S. med-tech company focused on peripheral nerve repair and regeneration (adjacent to long-term peripheral nerve interface readiness)."
 region: "American"
 kind: "Company"
@@ -51,3 +52,7 @@ Axogen is best thought of as a *peripheral nerve “infrastructure” company*: 
 ### Sources (starting set)
 - Axogen corporate site: <https://www.axogeninc.com/>
 - (Add) SEC filings (10-K / 10-Q) for specific revenue/employees-by-year numbers (best handled as point-in-time facts)
+
+### 2026 update (reviewed Oct 4, 2026)
+
+- *FDA approval (Dec 3, 2025):* the FDA approved Axogen's Avance Nerve Graft (acellular nerve allograft-arwx) under a Biologics License Application. Sources: <https://ir.axogeninc.com/news-events/press-releases/detail/1019/axogen-inc-reports-fourth-quarter-and-full-year-2025-financial-results> and <https://www.drugs.com/pro/avance-nerve-graft.html>

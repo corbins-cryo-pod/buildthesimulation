@@ -2,7 +2,8 @@
 title: "Science Corporation (company brief)"
 order: 6
 pubDate: 2026-02-02
-updatedDate: 2026-02-02
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "Science Corporation’s BCI work with an emphasis on its biohybrid neural interface concept (neurons-as-the-interface), plus its PRIMA retinal prosthesis program."
 region: "American"
 kind: "Company"
@@ -106,3 +107,9 @@ Science’s biohybrid pitch is one of the few that feels like it’s attacking t
 But the credibility hinge is the same as always: can they make it *reliable, safe, manufacturable*, and ultimately *clinically supportable*?
 
 ---
+
+### 2026 update (reviewed Oct 4, 2026)
+
+- *PRIMA in Europe (Jul 22, 2026):* PRIMA received a CE mark and Science announced its European commercial launch for geographic atrophy from age-related macular degeneration; US FDA approval process is underway and PRIMA holds two FDA Humanitarian Use Device designations. Sources: <https://science.xyz/news/ce-mark/> and <https://science.xyz/news/hud-designation/>
+- *Leadership (Sep 17, 2026):* Darius Shahida, previously Chief Strategy Officer, was named President. Source: <https://investor.wedbush.com/wedbush/article/bizwire-2026-9-17-science-corporation-names-darius-shahida-as-president>
+- Pixium Vision, mentioned in older coverage, is now part of Science (per Science press materials).
