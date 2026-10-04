@@ -2,16 +2,16 @@
 import Layout from '../../layouts/Layout.astro';
 import { deviceModels } from '../../lib/devices/catalog.js';
 ---
-<Layout pageTitle="Device models" subtitle="From physical electrodes to simulation geometry." description="Explore source-documented 3D models of Utah, Utah Slanted and Neuropixels electrode structures.">
+<Layout pageTitle="Device models" subtitle="From physical electrodes to simulation geometry." description="Explore source-documented 3D models of Utah, Utah Slanted, Neuropixels and Stentrode electrode structures.">
   <section class="intro">
-    <p>Rotate, inspect and download electrode structures from the implant catalog. This first collection covers three reference configurations, with published dimensions and visible approximation notes.</p>
+    <p>Rotate, inspect and download electrode structures from the implant catalog. This first collection covers four reference configurations, with published dimensions and visible approximation notes.</p>
     <p>Gold marks electrode surfaces. The models preserve physical scale; leads, headstages and packaging are outside this first pass. Geometry exports provide a foundation for simulation integration, not a prediction of device performance.</p>
   </section>
   <div class="models">
     {Object.values(deviceModels).map(model => <a class="model-card" href={`/devices/${model.slug}/#model-3d`}>
-      <span class="eyebrow">{model.kind === 'utah' ? 'PENETRATING ARRAY' : 'CMOS RECORDING SHANK'}</span>
+      <span class="eyebrow">{model.kind === 'stentrode' ? 'ENDOVASCULAR STENT ARRAY' : model.kind === 'utah' ? 'PENETRATING ARRAY' : 'CMOS RECORDING SHANK'}</span>
       <h2>{model.name}</h2>
-      <p>{model.specs[0][1]} · {model.kind === 'utah' ? '400 µm pitch' : '12 × 12 µm contacts'}</p>
+      <p>{model.specs[0][1]} · {model.kind === 'stentrode' ? '40 × 8 mm scaffold' : model.kind === 'utah' ? '400 µm pitch' : '12 × 12 µm contacts'}</p>
       <span>Open interactive 3D model →</span>
     </a>)}
   </div>

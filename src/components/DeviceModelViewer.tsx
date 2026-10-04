@@ -39,12 +39,12 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       scene.add(new THREE.HemisphereLight(0xe2f3ff, 0x596479, 3));
       const key = new THREE.DirectionalLight(0xffffff, 4); key.position.set(-4, -7, 10); scene.add(key);
       const fill = new THREE.DirectionalLight(0x78bfff, 2); fill.position.set(5, 5, 2); scene.add(fill);
-      const extent = model.kind === 'utah' ? 4.5 : 10;
+      const extent = model.kind === 'utah' ? 4.5 : model.length;
       const camera = new THREE.PerspectiveCamera(38, 1, 0.0001, 500);
       camera.up.set(0, 0, 1);
       const controls = new OrbitControls(camera, renderer.domElement);
-      controls.enableDamping = false; controls.minDistance = 0.04; controls.maxDistance = 80;
-      const grid = new THREE.GridHelper(12, 12, 0x516071, 0x293645);
+      controls.enableDamping = false; controls.minDistance = 0.04; controls.maxDistance = extent * 10;
+      const grid = new THREE.GridHelper(model.kind === 'stentrode' ? 60 : 12, model.kind === 'stentrode' ? 60 : 12, 0x516071, 0x293645);
       grid.rotation.x = Math.PI / 2; grid.position.z = -0.22;
       scene.add(grid);
       const render = () => renderer.render(scene, camera);
@@ -52,10 +52,10 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       const setView = (next: string) => {
         view = next;
         const isTip = next === 'tip';
-        const target = new THREE.Vector3(0, 0, isTip ? 9.65 : (model.kind === 'utah' ? 0.5 : 5));
+        const target = new THREE.Vector3(0, 0, isTip ? 9.65 : (model.kind === 'utah' ? 0.5 : model.length / 2));
         // Fit the long axis even on a narrow screen.
-        const distance = isTip ? 0.9 : extent / (2 * Math.tan(19 * Math.PI / 180)) * 1.4 / Math.min(camera.aspect, 1);
-        const direction = next === 'front' || isTip ? new THREE.Vector3(0, -1, 0) : next === 'side' ? new THREE.Vector3(1, 0, 0) : new THREE.Vector3(0.8, -1.3, 0.85).normalize();
+        const distance = next === 'end' ? model.length / 2 + model.diameter * 2 / Math.min(camera.aspect, 1) : isTip ? 0.9 : extent / (2 * Math.tan(19 * Math.PI / 180)) * 1.4 / Math.min(camera.aspect, 1);
+        const direction = next === 'end' ? new THREE.Vector3(0, -0.0001, 1).normalize() : next === 'front' || isTip ? new THREE.Vector3(0, -1, 0) : next === 'side' ? new THREE.Vector3(1, 0, 0) : new THREE.Vector3(0.8, -1.3, 0.85).normalize();
         camera.position.copy(target).addScaledVector(direction, distance);
         controls.target.copy(target); controls.update(); render();
       };
@@ -99,6 +99,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       <button disabled={!ready} onClick={() => api.current?.setView('oblique')}>Reset view</button>
       <button disabled={!ready} onClick={() => api.current?.setView('front')}>Front</button>
       <button disabled={!ready} onClick={() => api.current?.setView('side')}>Side</button>
+      {model.kind === 'stentrode' && <button disabled={!ready} onClick={() => api.current?.setView('end')}>End-on</button>}
       {model.kind === 'neuropixels' && <button disabled={!ready} onClick={() => api.current?.setView('tip')}>Tip detail</button>}
       <button disabled={!ready} onClick={() => api.current?.zoom(0.7)} aria-label="Zoom in">Zoom +</button>
       <button disabled={!ready} onClick={() => api.current?.zoom(1.4)} aria-label="Zoom out">Zoom −</button>

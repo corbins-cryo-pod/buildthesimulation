@@ -3,6 +3,23 @@
 const utahSource = { label: 'Blackrock — Utah Array specifications and photographs', url: 'https://blackrockneurotech.com/products/utah-array/' };
 const slantSource = { label: 'Blackrock — Slant Array specifications and side view', url: 'https://blackrockneurotech.com/products/slant-array/' };
 export const deviceModels = {
+  'BTSD-0003': {
+    id: 'stentrode-16-500um-reference', revision: 1, deviceId: 'BTSD-0003', kind: 'stentrode',
+    name: 'Synchron Stentrode · 16-contact reference', slug: '03-stentrode-synchron',
+    physicalSites: 16, simultaneousChannels: 16,
+    length: 40, diameter: 8, electrodeDiameter: 0.5,
+    latticeRows: 20, latticeColumns: 6, strutRadius: 0.04,
+    contactThickness: 0.05, firstContactRow: 2,
+    specs: [['Physical contacts', '16 platinum electrodes'], ['Reference scaffold', '40 mm long × 8 mm diameter'], ['Contact diameter', '500 µm — Kacker et al. (2025)'], ['Published spacing', 'Approximately 3 mm; exact map unavailable'], ['Modeled layout', 'Illustrative staggered strip on cylindrical lattice'], ['State', 'Nominal expanded reference; no vessel deformation']],
+    notes: 'Named reference configuration from Kacker et al. (2025), not a universal or current production specification. Lattice topology, 80 µm strut diameter, 50 µm contact thickness and exact contact positions are illustrative. Deployed diameter depends on vessel constraint. The 500 µm disks have a derived face area of 0.196 mm²; this is not the 0.3 mm² area reported separately by SWITCH, or the 300 µm diameter in a later preprint. Leads, insulation, delivery system and chest telemetry are omitted. Gold highlights contacts, not their real material color.',
+    sources: [
+      { label: 'Kacker et al. (2025) — device dimensions, section 2.2 and Figure 1', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11956166/' },
+      { label: 'University of Melbourne — full paper PDF', url: 'https://minerva-access.unimelb.edu.au/server/api/core/bitstreams/57a1e343-1a2d-4651-9380-1957524f0a05/content' },
+      { label: 'SWITCH study (2023) — separately reported contact area', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9857731/' },
+      { label: 'Schone et al. (2025 preprint) — separately reported 300 µm contacts', url: 'https://www.medrxiv.org/content/10.1101/2025.09.19.25335875v1.full' },
+    ],
+    references: [{ label: 'Synchron — electrode close-up and research library', url: 'https://synchron.com/research' }],
+  },
   'BTSD-0001': {
     id: 'utah-10x10-1p5', revision: 1, deviceId: 'BTSD-0001', kind: 'utah',
     name: 'Utah Array · 10 × 10 · 1.5 mm',
@@ -71,13 +88,24 @@ export function getContactGeometry(model) {
         ], channel: null, contactAreaMm2: model.siteSize ** 2, positionMeaning: 'contact center' });
       }
     }
+  } else if (model.kind === 'stentrode') {
+    for (let i = 0; i < model.physicalSites; i++) {
+      const row = model.firstContactRow + i;
+      const angle = (row % 2) * Math.PI / model.latticeColumns;
+      const normal = [Math.cos(angle), Math.sin(angle), 0];
+      const radius = model.diameter / 2 + model.strutRadius + model.contactThickness;
+      sites.push({ id: `site-${i}`, positionMm: [radius * normal[0], radius * normal[1], row * model.length / model.latticeRows],
+        normal, channel: null, contactAreaMm2: Math.PI * (model.electrodeDiameter / 2) ** 2,
+        areaMeaning: 'derived circular face area, not measured electrochemical area',
+        positionMeaning: 'illustrative outward-facing disk center; not a manufacturer contact map' });
+    }
   } else throw new Error(`Unsupported model kind: ${model.kind}`);
   return sites;
 }
 
 export function exportGeometry(model) {
-  return { schemaVersion: 1, units: 'mm', coordinateSystem: 'right-handed; insertion +Z; see origin',
-    origin: model.kind === 'utah' ? 'center of tissue-facing substrate surface' : 'center of shank base',
+  return { schemaVersion: 1, units: 'mm', coordinateSystem: model.kind === 'stentrode' ? 'right-handed; scaffold longitudinal axis +Z; radial outward normals' : 'right-handed; insertion +Z; see origin',
+    origin: model.kind === 'stentrode' ? 'center of proximal scaffold end; scaffold extends from Z=0 to length' : model.kind === 'utah' ? 'center of tissue-facing substrate surface' : 'center of shank base',
     model, sites: getContactGeometry(model),
     simulationNote: 'Geometric reference only. Assign channels, transform to tissue coordinates and supply a validated electrical model before simulation. Null area/channel values are unknown, not zero.' };
 }
