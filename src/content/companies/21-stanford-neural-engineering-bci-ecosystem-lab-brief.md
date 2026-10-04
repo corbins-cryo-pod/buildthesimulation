@@ -2,7 +2,8 @@
 title: "Stanford University — Neural engineering & brain–computer interfaces ecosystem (lab brief)"
 order: 21
 pubDate: 2026-02-06
-updatedDate: 2026-02-06
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "Stanford is a full-stack intracortical BCI ecosystem with sustained human translation through NPTL, plus adjacent closed-loop implant neurotechnology."
 region: "American"
 kind: "Lab"
