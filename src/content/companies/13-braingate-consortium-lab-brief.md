@@ -2,7 +2,8 @@
 title: "BrainGate Consortium (lab brief)"
 order: 13
 pubDate: 2026-02-02
-updatedDate: 2026-02-02
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "BrainGate is a long-running multi-institution intracortical BCI effort (Brown/Stanford/MGH/VA etc.), known for high-performance cursor control and brain-to-text via handwriting."
 region: "American"
 kind: "Lab"
@@ -49,3 +50,7 @@ What hardware stack they use and how signal quality evolves.
 How/when these systems become actual products.
 
 ---
+
+### 2026 update (reviewed Oct 4, 2026)
+
+- *Recent:* Rice University and Baylor College of Medicine joined the BrainGate consortium (May 2026). Source: <https://news.rice.edu/news/2026/clinical-trial-seeks-advance-intuitive-assistive-robotics-people-paralysis> A rapid-communication study with two participants was reported Mar 2026: <https://www.brown.edu/news/2026-03-16/braingate-rapid-communication>
