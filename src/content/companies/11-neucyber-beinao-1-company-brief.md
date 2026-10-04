@@ -2,7 +2,8 @@
 title: "NeuCyber NeuroTech / Beinao-1 (company brief)"
 order: 11
 pubDate: 2026-02-02
-updatedDate: 2026-02-02
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "NeuCyber (CIBR spinoff, Beijing): Beinao-1 coin-sized implant reported in Wired as implanted in multiple patients for cursor/smartphone control."
 region: "Chinese"
 kind: "Company"
@@ -42,3 +43,8 @@ Peer-reviewed outcomes or trial registries.
 Who manufactures, who implants, how training and home use is supported.
 
 ---
+
+### 2026 update (reviewed Oct 4, 2026)
+
+- *Status (reported):* Beinao-1 advanced to GCP clinical trials on Mar 31, 2026 (CIBR). Source: <https://en.cibr.ac.cn/detail/cibrNewsnews/c0370bcc7cb94c4a8c980f38f9bf16c0>
+- *Implants (reported):* Chinese Academy of Sciences reported 16 implantations and planned nationwide hospital pilots in 2027 (Jul 2026). Source: <https://english.ad.cas.cn/newsroom/ma/202607/t20260706_1176268.html> The "five people" figure above is from earlier Wired reporting.
