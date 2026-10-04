@@ -10,6 +10,10 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
+const lastVerified = entry.data.lastVerified
+  ? entry.data.lastVerified.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" })
+  : null;
+
 const subtitle = entry.data.description ?? "Company / lab brief.";
 
 const titleNoPrefix = entry.data.title
@@ -39,6 +43,7 @@ const titleNoPrefix = entry.data.title
       ) : null}
 
       {entry.data.tags?.length ? <div class="meta">{entry.data.tags.join(" · ")}</div> : null}
+      {lastVerified ? <div class="meta verified">Last reviewed against public sources: {lastVerified}</div> : null}
     </header>
 
     <section class="content">
