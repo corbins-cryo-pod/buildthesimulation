@@ -2,7 +2,8 @@
 title: "CEA‑Clinatec / WIMAGINE (lab brief)"
 order: 14
 pubDate: 2026-02-02
-updatedDate: 2026-02-02
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "Grenoble’s CEA‑Clinatec work on brain-controlled exoskeletons using implanted wireless ECoG (WIMAGINE) as a proof-of-concept for whole-body assistive control."
 region: "European"
 kind: "Lab"
@@ -43,3 +44,7 @@ Even if the system is not a near-term product, it demonstrates:
 3) *Long-term signal stability* with implanted ECoG
 
 ---
+
+### 2026 update (reviewed Oct 4, 2026)
+
+- *Recent:* CEA-Leti opened a new trial taking its WIMAGINE implant into post-stroke rehabilitation (BCI4Stroke, Jun 2026). Source: <https://insidebci.com/news/2026-06-03-cea-leti-bci4stroke-wimagine-post-stroke-rehabilitation/> (secondary); CEA page: <https://www.leti-cea.com/cea-tech/leti/english/Pages/What's-On/News/AVC-Brain-Computer-Interface.aspx>
