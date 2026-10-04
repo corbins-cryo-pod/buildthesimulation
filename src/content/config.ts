@@ -7,6 +7,8 @@ const companies = defineCollection({
     order: z.number().int().min(1),
     pubDate: z.coerce.date().optional(),
     updatedDate: z.coerce.date().optional(),
+    // Date a human/agent last checked this brief against current public sources.
+    lastVerified: z.coerce.date().optional(),
     description: z.string().optional(),
     // Where the org is primarily based (best-effort).
     region: z.enum(["American", "European", "Chinese", "Other"]).default("Other"),
