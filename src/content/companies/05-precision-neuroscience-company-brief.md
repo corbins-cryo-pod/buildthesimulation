@@ -2,7 +2,8 @@
 title: "Precision Neuroscience (company brief)"
 order: 5
 pubDate: 2026-02-02
-updatedDate: 2026-02-02
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "Precision Neuroscience’s Layer 7 Cortical Interface: a high-density, thin-film cortical surface array aimed at minimally invasive, removable, high-bandwidth BCI."
 region: "American"
 kind: "Company"
@@ -89,3 +90,7 @@ Precision’s own history highlights:
 - Precision “About”: <https://precisionneuro.io/about>
 
 ---
+
+### 2026 update (reviewed Oct 4, 2026)
+
+- *Funding (Sep 24, 2026):* Precision closed an oversubscribed *$250M Series D* co-led by Pershing Square and the Ackman Oxman Institute, bringing total capital raised to *$430M*, and reports more than 100 patient procedures across 18 medical institutions. Source: <https://www.globenewswire.com/news-release/2026/09/24/3368254/0/en/precision-neuroscience-closes-oversubscribed-250m-series-d-led-by-pershing-square-inc-the-ackman-oxman-institute-and-a-leading-life-sciences-investment-fund.html>
