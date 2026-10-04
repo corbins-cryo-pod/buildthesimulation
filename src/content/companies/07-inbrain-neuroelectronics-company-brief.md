@@ -2,7 +2,8 @@
 title: "INBRAIN Neuroelectronics (company brief)"
 order: 7
 pubDate: 2026-02-02
-updatedDate: 2026-02-02
+updatedDate: 2026-10-04
+lastVerified: 2026-10-04
 description: "INBRAIN’s graphene-based, high-density cortical interfaces aimed at precision neurology: high-resolution sensing + stimulation with a path toward closed-loop therapy (e.g., Parkinson’s)."
 region: "European"
 kind: "Company"
@@ -83,3 +84,8 @@ High-density recordings can be impressive; the question is whether they translat
 The reported Breakthrough Device Designation for Parkinson’s needs confirmation against an FDA listing or a primary company announcement.
 
 ---
+
+### 2026 update (reviewed Oct 4, 2026)
+
+- *Funding (2026):* INBRAIN announced a *$50M Series B*. Source: <https://www.neurofounders.co/press-releases/inbrain-neuroelectronics-raises-50m-series-b-to-advance-graphene-based-brain-computer-interface-technology>
+- *Clinical:* the company announced completion of patient recruitment in its first-in-human graphene study on Apr 20, 2026. Source: <https://www.businesswire.com/news/home/20260420000990/en/INBRAIN-Neuroelectronics-Completes-Enrolment-of-Worlds-First-in-Human-Study-of-Graphene-Neural-Interfaces-for-Brain-Decoding-Mapping>
