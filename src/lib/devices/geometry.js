@@ -47,7 +47,10 @@ export function buildDeviceMesh(model) {
   }
   if (model.kind === 'stentrode') {
     // Diamond lattice on a cylindrical surface: a visual reference, not a CAD replica.
-    const scaffold = new THREE.MeshStandardMaterial({ color: 0xaab9c9, metalness: 0.8, roughness: 0.3 });
+    // Contrast comes from material response, never inflated strut/contact dimensions.
+    const scaffold = new THREE.MeshStandardMaterial({ color: 0xd9e4ee, metalness: 0.25, roughness: 0.55, emissive: 0x667788, emissiveIntensity: 0.22 });
+    metal.metalness = 0.25; metal.roughness = 0.5;
+    metal.emissive.setHex(0xdcc18a); metal.emissiveIntensity = 0.35;
     const radius = model.diameter / 2;
     for (let row = 0; row < model.latticeRows; row++) {
       for (let col = 0; col < model.latticeColumns; col++) {
