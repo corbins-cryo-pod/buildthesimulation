@@ -48,16 +48,20 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       grid.rotation.x = Math.PI / 2; grid.position.z = -0.22;
       scene.add(grid);
       const render = () => renderer.render(scene, camera);
-      let view = 'oblique';
+      // Detail is a camera crop, not an enlarged or distorted shank.
+      const defaultView = model.kind === 'neuropixels' ? 'tip' : 'oblique';
+      let view = defaultView;
       const setView = (next: string) => {
+        if (next === 'default') next = defaultView;
         view = next;
         const isTip = next === 'tip';
-        const target = new THREE.Vector3(0, 0, isTip ? 9.65 : (model.kind === 'utah' ? 0.5 : model.length / 2));
+        const target = new THREE.Vector3(0, 0, isTip ? model.length - 0.28 : (model.kind === 'utah' ? 0.5 : model.length / 2));
         // Fit the long axis even on a narrow screen.
-        const distance = next === 'end' ? model.length / 2 + model.diameter * 2 / Math.min(camera.aspect, 1) : isTip ? 0.9 : extent / (2 * Math.tan(19 * Math.PI / 180)) * 1.4 / Math.min(camera.aspect, 1);
-        const direction = next === 'end' ? new THREE.Vector3(0, -0.0001, 1).normalize() : next === 'front' || isTip ? new THREE.Vector3(0, -1, 0) : next === 'side' ? new THREE.Vector3(1, 0, 0) : new THREE.Vector3(0.8, -1.3, 0.85).normalize();
+        const distance = next === 'end' ? model.length / 2 + model.diameter * 2 / Math.min(camera.aspect, 1) : isTip ? 0.9 : extent / (2 * Math.tan(19 * Math.PI / 180)) * (model.kind === 'stentrode' ? 1.15 : 1.4) / Math.min(camera.aspect, 1);
+        const direction = next === 'end' ? new THREE.Vector3(0, -0.0001, 1).normalize() : next === 'front' || isTip ? (model.kind === 'stentrode' ? new THREE.Vector3(1, 0.27, 0).normalize() : new THREE.Vector3(0, -1, 0)) : next === 'side' ? new THREE.Vector3(1, 0, 0) : (model.kind === 'stentrode' ? new THREE.Vector3(1, 0.27, 0.18) : new THREE.Vector3(0.8, -1.3, 0.85)).normalize();
         camera.position.copy(target).addScaledVector(direction, distance);
         controls.target.copy(target); controls.update(); render();
+        setStatus(isTip ? 'Tip detail · camera zoom only; physical proportions unchanged · drag to rotate' : 'Drag to rotate · scroll or pinch to zoom · grid spacing 1 mm');
       };
       const resize = () => {
         const width = host.clientWidth, height = host.clientHeight;
@@ -82,7 +86,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
         renderer.domElement.removeEventListener('webglcontextlost', contextLost);
         disposeDeviceMesh(group); disposeDeviceMesh(grid); renderer.dispose(); renderer.domElement.remove();
       };
-      resize(); setReady(true); setStatus('Drag to rotate · scroll or pinch to zoom · grid spacing 1 mm');
+      resize(); setReady(true);
     })().catch(() => {
       cleanup();
       if (!cancelled) { setReady(false); setStatus('3D is unavailable in this browser. Published dimensions, reference links and geometry JSON are still available.'); }
@@ -96,10 +100,11 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
     <div ref={mount} class="model-canvas" />
     <p class="model-status" role="status">{status}</p>
     <div class="model-controls" aria-label="Model controls">
-      <button disabled={!ready} onClick={() => api.current?.setView('oblique')}>Reset view</button>
+      <button disabled={!ready} onClick={() => api.current?.setView('default')}>Reset view</button>
       <button disabled={!ready} onClick={() => api.current?.setView('front')}>Front</button>
       <button disabled={!ready} onClick={() => api.current?.setView('side')}>Side</button>
       {model.kind === 'stentrode' && <button disabled={!ready} onClick={() => api.current?.setView('end')}>End-on</button>}
+      {model.kind === 'neuropixels' && <button disabled={!ready} onClick={() => api.current?.setView('oblique')}>Full shank</button>}
       {model.kind === 'neuropixels' && <button disabled={!ready} onClick={() => api.current?.setView('tip')}>Tip detail</button>}
       <button disabled={!ready} onClick={() => api.current?.zoom(0.7)} aria-label="Zoom in">Zoom +</button>
       <button disabled={!ready} onClick={() => api.current?.zoom(1.4)} aria-label="Zoom out">Zoom −</button>
