@@ -2,11 +2,11 @@
 title: "Stentrode (Synchron)"
 order: 3
 pubDate: 2026-02-03
-updatedDate: 2026-02-03
+updatedDate: 2026-10-04
 device_id: "BTSD-0003"
 interface_class: "endovascular"
 status: "human"
-last_updated: 2026-02-03
+last_updated: 2026-10-04
 description: "A fully implanted endovascular BCI: a stent-electrode array in the superior sagittal sinus recording ECoG-like signals, trading spikes for catheter-based deployment."
 modality: "Endovascular"
 successRank: 3
@@ -53,10 +53,10 @@ draft: false
 - *Interface type:* Endovascular cortical interface (venous)
 - *Penetrating?:* no (does not penetrate cortex; sits in a blood vessel)
 - *Form factor:* self‑expanding nitinol stent with mounted electrodes
-- *Array layout:* linear distribution along the stent body (functional “strip” along the sinus)
-- *Scaffold size:* 8 × 40 mm (reported)
+- *Array layout:* electrodes distributed on a cylindrical stent; exact manufacturer contact coordinates are not provided here. The 3D contact map is illustrative.
+- *Scaffold size:* nominal 8 mm diameter × 40 mm length in Kacker et al. (2025); implanted shape depends on vessel constraint.
 - *Electrode count:* 16
-- *Site spacing (µm):* ~3000 (reported as ~3 mm)
+- *Site spacing (µm):* approximately 3000 reported by Kacker et al. (2025); not an exact axial pitch or complete 3D contact map.
 - *Insertion method:* transvenous catheter delivery via internal jugular vein → superior sagittal sinus deployment
 - *Anchoring method:* stent apposition + endothelialization over time
 - *Packaging location:* lead tunneled subcutaneously to a chest (subclavicular) telemetry implant pocket
@@ -67,8 +67,8 @@ draft: false
 - *Channel count:* 16
 - *Active sites used (vs total):* typically all 16 are available; actual use can depend on signal quality
 - *Electrode material:* platinum electrodes on nitinol scaffold (reported)
-- *Site area (µm²):* not consistently reported in open summaries
-- *Electrode size:* 500 µm diameter (reported)
+- *Site area (µm²):* a 500 µm circular face gives approximately 196,350 geometrically. SWITCH (2023) separately reports 300,000; these values are not treated as equivalent.
+- *Electrode size:* 500 µm diameter in the selected Kacker et al. (2025) configuration. A separate Schone et al. (2025) preprint reports 300 µm; do not mix specifications.
 - *Impedance @ 1 kHz / noise floor:* not consistently reported in open clinical summaries (mark unknown)
 - *Recording modality:* vascular ECoG‑like signals; spectral motor intent features reported
 - *Stimulation capability:* unknown for this catalog unless tied to a primary device‑specific stimulation report
@@ -141,3 +141,6 @@ draft: false
 - Yoo PE, et al. “Motor neuroprosthesis implanted with neurointerventional surgery improves capacity for activities of daily living tasks in severe paralysis: first in-human experience.” *J NeuroInterv Surg* (Epub 2020 Oct 28; 2021 Feb). DOI: 10.1136/neurintsurg-2020-016862. PubMed: <https://pubmed.ncbi.nlm.nih.gov/33115813/>
 - Mitchell P, et al. “Assessment of Safety of a Fully Implanted Endovascular Brain-Computer Interface for Severe Paralysis in 4 Patients: The Stentrode With Thought-Controlled Digital Switch (SWITCH) Study.” *JAMA Neurology* (2023). PMC full text: <https://pmc.ncbi.nlm.nih.gov/articles/PMC9857731/>
 - Synchron overview: <https://synchron.com/>
+
+- Kacker K, et al. “Motor activity in gamma and high gamma bands recorded with a Stentrode from the human motor cortex in two people with ALS.” *J Neural Eng* (2025), section 2.2 and Figure 1. <https://pmc.ncbi.nlm.nih.gov/articles/PMC11956166/>
+- Schone HR, et al. “Motor Cortex Coverage Predicts Signal Strength of a Stentrode Endovascular Brain-Computer Interface.” *medRxiv* (2025 preprint). <https://www.medrxiv.org/content/10.1101/2025.09.19.25335875v1.full>

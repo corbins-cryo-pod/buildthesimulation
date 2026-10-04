@@ -28,7 +28,7 @@ export function buildDeviceMesh(model) {
       tip.name = site.id;
       contacts.add(tip);
     }
-  } else {
+  } else if (model.kind === 'neuropixels') {
     const shape = new THREE.Shape();
     shape.moveTo(-model.width / 2, 0); shape.lineTo(model.width / 2, 0);
     shape.lineTo(model.width / 2, model.length - 0.12);
@@ -44,6 +44,35 @@ export function buildDeviceMesh(model) {
       pad.position.fromArray(site.positionMm); pad.position.y -= 0.00005;
       pad.name = site.id; contacts.add(pad);
     }
+  }
+  if (model.kind === 'stentrode') {
+    // Diamond lattice on a cylindrical surface: a visual reference, not a CAD replica.
+    const scaffold = new THREE.MeshStandardMaterial({ color: 0xaab9c9, metalness: 0.8, roughness: 0.3 });
+    const radius = model.diameter / 2;
+    for (let row = 0; row < model.latticeRows; row++) {
+      for (let col = 0; col < model.latticeColumns; col++) {
+        const theta = (col * 2 + row % 2) * Math.PI / model.latticeColumns;
+        for (const sign of [-1, 1]) {
+          const points = [];
+          for (let step = 0; step <= 8; step++) {
+            const t = step / 8, angle = theta + sign * t * Math.PI / model.latticeColumns;
+            points.push(new THREE.Vector3(radius * Math.cos(angle), radius * Math.sin(angle), (row + t) * model.length / model.latticeRows));
+          }
+          const curve = new THREE.CatmullRomCurve3(points);
+          bodies.add(new THREE.Mesh(new THREE.TubeGeometry(curve, 8, model.strutRadius, 6, false), scaffold));
+        }
+      }
+    }
+    const diskGeometry = new THREE.CylinderGeometry(model.electrodeDiameter / 2, model.electrodeDiameter / 2, model.contactThickness, 24);
+    for (const site of sites) {
+      const normal = new THREE.Vector3(...site.normal);
+      const disk = new THREE.Mesh(diskGeometry, metal);
+      disk.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), normal);
+      disk.position.fromArray(site.positionMm).addScaledVector(normal, -model.contactThickness / 2);
+      disk.name = site.id; contacts.add(disk);
+    }
+    // These materials are unused for the stent family.
+    silicon.dispose();
   }
   return { group, bodies, contacts };
 }

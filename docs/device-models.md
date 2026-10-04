@@ -61,3 +61,38 @@ For additional devices, add a named variant with cited dimensions and uncertaint
 then implement its geometry family and tests. Keep unknown dimensions explicit.
 Prioritize documented ECoG grids and cuffs before flexible threads, endovascular
 stents or proprietary packaging with incomplete geometry.
+
+
+## Stentrode addition (2026-10-04)
+
+Selected configuration: Kacker et al., J Neural Eng 22 (2025) 026036,
+section 2.2: 16 platinum contacts, 500 µm diameter, nominal 8 × 40 mm
+nitinol scaffold, approximately 3 mm interelectrode spacing.
+https://pmc.ncbi.nlm.nih.gov/articles/PMC11956166/
+The full author manuscript was read from the University of Melbourne repository:
+https://minerva-access.unimelb.edu.au/server/api/core/bitstreams/57a1e343-1a2d-4651-9380-1957524f0a05/content
+Figure 1 and Synchron's electrode close-up at https://synchron.com/research
+were visually inspected. The latter shows a circular contact at a scaffold junction;
+neither supplies a manufacturing drawing or an exact 16-contact coordinate map.
+
+The mesh uses a cylindrical diamond lattice with 20 axial intervals and six
+nodes per circumference, alternating by 30 degrees. The illustrative 16-site
+strip follows successive nodes from Z=4 to Z=34 mm, alternating azimuths 0/30
+degrees. Its face centers are approximately 2.91 mm apart; this is an
+illustration of the reported spacing, not reverse-engineered contact placement.
+80 µm round struts and 50 µm contact thickness are explicitly assumed. Real
+strut cross sections, junctions, wiring, insulation, lead and chest telemetry
+are not reproduced. The nominal scaffold is not a patient-specific deployed shape.
+Coordinates use proximal-end center origin and longitudinal +Z, with outward
+radial normals. JSON contact area is a derived circular face area, not measured
+electrochemical area; electrical channel maps remain null.
+
+Do not merge inconsistent reports: SWITCH (2023) gives 0.3 mm² surface area;
+a 500 µm disk gives ~0.196 mm². Schone et al.'s 2025 medRxiv preprint reports
+300 µm diameter instead. Each is linked in the viewer; this model specifically
+uses the Kacker configuration and is not asserted to represent current production.
+
+The viewer fits the 40 mm structure, expands its zoom range and adds an end-on
+view. Checks cover 16 contacts, cylindrical extent, radial normals, disk face
+centers, assumed spacing, contact area and complete GLB/JSON export. Browser
+visual verification remains unavailable in this environment.

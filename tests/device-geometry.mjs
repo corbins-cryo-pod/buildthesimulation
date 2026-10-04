@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { Box3 } from 'three';
+import { Box3, Vector3 } from 'three';
 import { deviceModels, getContactGeometry, exportGeometry } from '../src/lib/devices/catalog.js';
 import { buildDeviceMesh, disposeDeviceMesh } from '../src/lib/devices/geometry.js';
 import { exportDeviceGlb } from '../src/lib/devices/export.js';
@@ -23,7 +23,7 @@ for (const model of Object.values(deviceModels)) {
     close(Math.max(...sites.map(s=>s.positionMm[2])), model.maxLength);
     close(bounds.min.x, -2); close(bounds.max.x, 2);
     close(bounds.min.z, -.2); close(bounds.max.z, model.maxLength);
-  } else {
+  } else if (model.kind === 'neuropixels') {
     close(sites[0].positionMm[2] - sites[2].positionMm[2], .02);
     close(sites[1].positionMm[0] - sites[0].positionMm[0], .032);
     close(sites[2].positionMm[0] - sites[0].positionMm[0], .016);
@@ -32,6 +32,28 @@ for (const model of Object.values(deviceModels)) {
       assert(Math.abs(site.positionMm[0]) + model.siteSize / 2 < model.width / 2);
       assert(site.positionMm[2] > 0 && site.positionMm[2] < 10);
       close(site.contactAreaMm2, .000144);
+    }
+  }
+  if (model.kind === 'stentrode') {
+    assert.equal(sites.length, 16);
+    assert(bounds.min.z >= -.05 && bounds.max.z <= 40.05);
+    assert(bounds.max.x - bounds.min.x > 8 && bounds.max.x - bounds.min.x < 8.3);
+    assert.equal(group.children[0].children.length, 240);
+    for (const [i, site] of sites.entries()) {
+      close(Math.hypot(...site.normal), 1);
+      close(Math.hypot(site.positionMm[0], site.positionMm[1]), 4.09);
+      close(site.contactAreaMm2, Math.PI * .25 ** 2);
+      assert(site.positionMm[2] > 0 && site.positionMm[2] < 40);
+      // Disk's local +Y must point outward; exported coordinates identify its outer face.
+      const disk = contacts.children[i];
+      const normal = new Vector3(0,1,0).applyQuaternion(disk.quaternion);
+      close(normal.dot(new Vector3(...site.normal)), 1);
+      const face = disk.position.clone().addScaledVector(normal, model.contactThickness / 2);
+      close(face.distanceTo(new Vector3(...site.positionMm)), 0);
+      if(i) {
+        const spacing = new Vector3(...site.positionMm).distanceTo(new Vector3(...sites[i-1].positionMm));
+        assert(spacing > 2.8 && spacing < 3.1);
+      }
     }
   }
   const exported = JSON.parse(JSON.stringify(exportGeometry(model)));
