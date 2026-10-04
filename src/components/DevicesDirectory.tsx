@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from "preact/hooks";
 
+import { getDeviceModel } from "../lib/devices/catalog.js";
+
 type DeviceEntry = {
   title: string;
   slug: string;
@@ -257,6 +259,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
                 <p class="desc">{e.description}</p>
 
                 <div class="badges">
+                  {getDeviceModel(e.device_id) && <span class="badge">3D model available</span>}
                   {e._axis ? <span class="badge">{toTitleCase(e._axis)}</span> : null}
                   {e._iface ? <span class="badge">{toTitleCase(e._iface)}</span> : null}
                   {e._form ? <span class="badge">{toTitleCase(e._form)}</span> : null}

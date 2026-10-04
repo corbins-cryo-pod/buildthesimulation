@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
+import DeviceModelViewer from "../../components/DeviceModelViewer";
+import { getDeviceModel } from "../../lib/devices/catalog.js";
 
 export async function getStaticPaths() {
   const posts = await getCollection("designs");
@@ -28,6 +30,8 @@ const titleNoPrefix = entry.data.title.replace(/^\d+\s*—\s*/, "");
 
       {entry.data.tags?.length ? <div class="meta">{entry.data.tags.join(" · ")}</div> : null}
     </header>
+
+    {getDeviceModel(entry.data.device_id) && <DeviceModelViewer deviceId={entry.data.device_id} client:visible />}
 
     <section class="content">
       <Content />
