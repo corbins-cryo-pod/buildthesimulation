@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
 import RealRecordingExplorer from "../../components/RealRecordingExplorer";
+import NeuropixelsExplorer from "../../components/NeuropixelsExplorer";
 import DeviceModelViewer from "../../components/DeviceModelViewer";
 import { getDeviceModel } from "../../lib/devices/catalog.js";
 
@@ -35,6 +36,7 @@ const titleNoPrefix = entry.data.title.replace(/^\d+\s*—\s*/, "");
     {getDeviceModel(entry.data.device_id) && <DeviceModelViewer deviceId={entry.data.device_id} client:visible />}
 
     {entry.data.device_id === "BTSD-0001" && <RealRecordingExplorer client:visible />}
+    {entry.data.device_id === "BTSD-0004" && <NeuropixelsExplorer client:visible />}
 
     <section class="content">
       <Content />
