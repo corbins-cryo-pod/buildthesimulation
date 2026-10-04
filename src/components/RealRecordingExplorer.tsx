@@ -34,7 +34,9 @@ export default function RealRecordingExplorer() {
 
   useEffect(() => {
     if (!trial) return;
-    counts.current = Uint8Array.from(atob(trial.counts), c => c.charCodeAt(0));
+    const packed = Uint8Array.from(atob(trial.counts), c => c.charCodeAt(0));
+    counts.current = new Uint8Array(packed.length * 2);
+    packed.forEach((byte, i) => { counts.current[i * 2] = byte & 15; counts.current[i * 2 + 1] = byte >> 4; });
     setStart(0); setPlaying(false);
   }, [trial]);
 
