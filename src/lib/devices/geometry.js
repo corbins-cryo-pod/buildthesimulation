@@ -75,11 +75,11 @@ export function buildDeviceMesh(model) {
       pad.name = site.id; contacts.add(pad);
     }
   } else if (model.kind === 'connexus') {
-    const ceramic = new THREE.MeshStandardMaterial({ color: 0xd8d9d3, roughness: 0.7 });
+    const ceramic = new THREE.MeshStandardMaterial({ color: 0xb4b6af, roughness: 0.75 });
     const housing = new THREE.MeshStandardMaterial({ color: 0xa5acb2, metalness: 0.65, roughness: 0.33 });
     const wire = new THREE.MeshStandardMaterial({ color: 0xaeb6c0, metalness: 0.35, roughness: 0.45 });
     bodies.add(cylinder(model.diameter / 2, model.bodyThickness - 0.01, housing, -(model.bodyThickness + 0.01) / 2));
-    bodies.add(cylinder(model.ceramicDiameter / 2, 0.08, ceramic, -0.04));
+    bodies.add(cylinder(model.ceramicDiameter / 2, 0.08, ceramic, -0.045));
     // Tip length/shape are schematic; the point coordinates identify the apex.
     const shaftGeometry = new THREE.CylinderGeometry(model.shaftDiameter / 2, model.shaftDiameter / 2, model.length - model.tipLength, 10);
     const tipGeometry = new THREE.ConeGeometry(model.shaftDiameter / 2, model.tipLength, 10);
@@ -94,11 +94,22 @@ export function buildDeviceMesh(model) {
     }
     silicon.dispose();
   } else if (model.kind === 'neuralink') {
-    const housing = new THREE.MeshStandardMaterial({ color: 0xd9dce0, metalness: 0.25, roughness: 0.48 });
+    const housing = new THREE.MeshStandardMaterial({ color: 0xa7b0b8, metalness: 0.6, roughness: 0.42 });
     const polymer = new THREE.MeshStandardMaterial({ color: 0xa8c7ce, metalness: 0.15, roughness: 0.48, side: THREE.DoubleSide });
-    bodies.add(cylinder(model.diameter / 2, model.bodyThickness - 0.8, housing, -model.bodyThickness / 2));
-    bodies.add(cylinder(model.diameter / 2 - 0.3, 0.4, silicon, -0.2));
-    bodies.add(cylinder(model.diameter / 2 - 0.3, 0.4, housing, -model.bodyThickness + 0.2));
+    // Rounded disc body (lathe profile, axis +Z) so the rim catches light like the real enclosure.
+    const R = model.diameter / 2, T = model.bodyThickness, f = 1.1;
+    const profile = [new THREE.Vector2(0, -T)];
+    for (let i = 0; i <= 8; i++) { const a = -Math.PI / 2 + i * Math.PI / 16; profile.push(new THREE.Vector2(R - f + f * Math.cos(a), -T + f + f * Math.sin(a))); }
+    for (let i = 0; i <= 8; i++) { const a = i * Math.PI / 16; profile.push(new THREE.Vector2(R - f + f * Math.cos(a), -f + f * Math.sin(a))); }
+    profile.push(new THREE.Vector2(0, 0));
+    const body = new THREE.Mesh(new THREE.LatheGeometry(profile, 128), housing);
+    body.rotation.x = Math.PI / 2; bodies.add(body);
+    // Dark inlay ring and centre disc sit 30 um proud of the face: no coplanar surfaces.
+    const inlay = new THREE.MeshStandardMaterial({ color: 0x2b333d, metalness: 0.5, roughness: 0.45 });
+    const ring = new THREE.Mesh(new THREE.RingGeometry(R - 3.0, R - 2.2, 128), inlay); ring.position.z = 0.03; ring.material.side = THREE.DoubleSide; bodies.add(ring);
+    const centre = new THREE.Mesh(new THREE.CircleGeometry(R - 5.5, 128), new THREE.MeshStandardMaterial({ color: 0x5d6873, metalness: 0.4, roughness: 0.6, side: THREE.DoubleSide })); centre.position.z = 0.03; bodies.add(centre);
+    // Strain-relief tab where the thread cable leaves the enclosure (illustrative).
+    const tab = new THREE.Mesh(new THREE.BoxGeometry(3.4, 1.6, 0.5), polymer); tab.position.set(0, R - 0.5, -0.3); bodies.add(tab);
     for (let thread = 0; thread < model.threadCount; thread++) {
       const { entryX, exitX } = getNeuralinkThread(model, thread);
       const curve = new THREE.CubicBezierCurve3(
