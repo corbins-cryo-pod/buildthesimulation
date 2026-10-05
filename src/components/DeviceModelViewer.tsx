@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { getDeviceModel, exportGeometry } from '../lib/devices/catalog.js';
+import { getDeviceModel, getContactGeometry, exportGeometry } from '../lib/devices/catalog.js';
 
 function download(data: BlobPart, name: string, type: string) {
   const url = URL.createObjectURL(new Blob([data], { type }));
@@ -39,13 +39,17 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       scene.add(new THREE.HemisphereLight(0xe2f3ff, 0x596479, 3));
       const key = new THREE.DirectionalLight(0xffffff, 4); key.position.set(-4, -7, 10); scene.add(key);
       const fill = new THREE.DirectionalLight(0x78bfff, 2); fill.position.set(5, 5, 2); scene.add(fill);
-      const extent = model.kind === 'utah' ? 4.5 : model.length;
+      const bounds = new THREE.Box3().setFromObject(group);
+      const center = bounds.getCenter(new THREE.Vector3());
+      const extent = bounds.getSize(new THREE.Vector3()).length();
+      const sites = getContactGeometry(model);
       const camera = new THREE.PerspectiveCamera(38, 1, 0.0001, 500);
       camera.up.set(0, 0, 1);
       const controls = new OrbitControls(camera, renderer.domElement);
       controls.enableDamping = false; controls.minDistance = 0.04; controls.maxDistance = extent * 10;
-      const grid = new THREE.GridHelper(model.kind === 'stentrode' ? 60 : 12, model.kind === 'stentrode' ? 60 : 12, 0x516071, 0x293645);
-      grid.rotation.x = Math.PI / 2; grid.position.z = -0.22;
+      const gridSize = ['stentrode', 'neuralink'].includes(model.kind) ? 60 : 12;
+      const grid = new THREE.GridHelper(gridSize, gridSize, 0x516071, 0x293645);
+      grid.rotation.x = Math.PI / 2; grid.position.z = bounds.min.z - 0.02;
       scene.add(grid);
       const render = () => renderer.render(scene, camera);
       // Detail is a camera crop, not an enlarged or distorted shank.
@@ -54,14 +58,33 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       const setView = (next: string) => {
         if (next === 'default') next = defaultView;
         view = next;
-        const isTip = next === 'tip';
-        const target = new THREE.Vector3(0, 0, isTip ? model.length - 0.28 : (model.kind === 'utah' ? 0.5 : model.length / 2));
-        // Fit the long axis even on a narrow screen.
-        const distance = next === 'end' ? model.length / 2 + model.diameter * 2 / Math.min(camera.aspect, 1) : isTip ? 0.9 : extent / (2 * Math.tan(19 * Math.PI / 180)) * (model.kind === 'stentrode' ? 1.15 : 1.4) / Math.min(camera.aspect, 1);
-        const direction = next === 'end' ? new THREE.Vector3(0, -0.0001, 1).normalize() : next === 'front' || isTip ? (model.kind === 'stentrode' ? new THREE.Vector3(1, 0.27, 0).normalize() : new THREE.Vector3(0, -1, 0)) : next === 'side' ? new THREE.Vector3(1, 0, 0) : (model.kind === 'stentrode' ? new THREE.Vector3(1, 0.27, 0.18) : new THREE.Vector3(0.8, -1.3, 0.85)).normalize();
+        const isTip = next === 'tip', isDetail = ['tip', 'detail', 'thread'].includes(next);
+        const target = center.clone();
+        let distance = extent / (2 * Math.tan(19 * Math.PI / 180)) * 1.12;
+        let direction = new THREE.Vector3(0.8, -1.3, 0.85).normalize();
+        if (model.kind === 'stentrode') direction.set(1, 0.27, 0.18).normalize();
+        if (model.kind === 'neuralink') direction.set(0.6, 1.2, 1.4).normalize();
+        if (next === 'front') direction.set(0, -1, 0);
+        if (next === 'side') direction.set(1, 0, 0);
+        if (next === 'end') {
+          direction.set(0, -0.0001, 1).normalize();
+          if (model.kind === 'stentrode') distance = Math.max(model.diameter * 1.7, bounds.max.z - center.z + model.diameter);
+        }
+        if (isTip) { target.set(0, 0, model.length - 0.28); distance = 0.9; direction.set(0, -1, 0); }
+        if (next === 'detail' && model.kind === 'connexus') { target.set(0, 0, 1.15); distance = 2.8; }
+        if (next === 'detail' && model.kind === 'stentrode') {
+          const site = sites[8]; target.fromArray(site.positionMm);
+          direction.fromArray(site.normal); distance = 2.8;
+        }
+        if (model.kind === 'neuralink' && (next === 'thread' || next === 'detail')) {
+          const site = sites[model.sitesPerThread * Math.floor(model.threadCount / 2) + 7];
+          target.fromArray(site.positionMm); direction.set(0, -0.0001, 1).normalize();
+          distance = next === 'thread' ? 5.5 : 0.38;
+        }
+        distance /= Math.min(camera.aspect, 1);
         camera.position.copy(target).addScaledVector(direction, distance);
         controls.target.copy(target); controls.update(); render();
-        setStatus(isTip ? 'Tip detail · camera zoom only; physical proportions unchanged · drag to rotate' : 'Drag to rotate · scroll or pinch to zoom · grid spacing 1 mm');
+        setStatus(isDetail ? 'Detail view · camera crop only; physical dimensions unchanged · drag to rotate' : `Drag to rotate · scroll or pinch to zoom · grid spacing 1 mm${model.kind === 'neuralink' ? ' · unfurled display pose' : ''}`);
       };
       const resize = () => {
         const width = host.clientWidth, height = host.clientHeight;
@@ -104,6 +127,9 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       <button disabled={!ready} onClick={() => api.current?.setView('front')}>Front</button>
       <button disabled={!ready} onClick={() => api.current?.setView('side')}>Side</button>
       {model.kind === 'stentrode' && <button disabled={!ready} onClick={() => api.current?.setView('end')}>End-on</button>}
+      {['connexus', 'neuralink'].includes(model.kind) && <button disabled={!ready} onClick={() => api.current?.setView('end')}>{model.kind === 'connexus' ? 'Electrode face' : 'Top view'}</button>}
+      {model.kind === 'neuralink' && <button disabled={!ready} onClick={() => api.current?.setView('thread')}>Thread detail</button>}
+      {['connexus', 'neuralink', 'stentrode'].includes(model.kind) && <button disabled={!ready} onClick={() => api.current?.setView('detail')}>{model.kind === 'connexus' ? 'Microwire detail' : 'Contact detail'}</button>}
       {model.kind === 'neuropixels' && <button disabled={!ready} onClick={() => api.current?.setView('oblique')}>Full shank</button>}
       {model.kind === 'neuropixels' && <button disabled={!ready} onClick={() => api.current?.setView('tip')}>Tip detail</button>}
       <button disabled={!ready} onClick={() => api.current?.zoom(0.7)} aria-label="Zoom in">Zoom +</button>

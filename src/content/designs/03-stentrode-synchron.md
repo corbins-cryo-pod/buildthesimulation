@@ -2,11 +2,11 @@
 title: "Stentrode (Synchron)"
 order: 3
 pubDate: 2026-02-03
-updatedDate: 2026-10-04
+updatedDate: 2026-10-05
 device_id: "BTSD-0003"
 interface_class: "endovascular"
 status: "human"
-last_updated: 2026-10-04
+last_updated: 2026-10-05
 description: "A fully implanted endovascular BCI: a stent-electrode array in the superior sagittal sinus recording ECoG-like signals, trading spikes for catheter-based deployment."
 modality: "Endovascular"
 successRank: 3
@@ -63,9 +63,19 @@ draft: false
 
 ---
 
+### 3D reference, revision 2
+
+The revised model uses curved flat struts and annular electrode mounts guided by [Synchron’s close-up photograph](https://synchron.com/research), with a schematic proximal lead segment. **Contact detail** shows the mounted disk at physical scale. The selected published configuration remains 16 contacts, 500 µm diameter and a nominal 8 × 40 mm scaffold.
+
+Strut cross section (80 × 40 µm), mount diameter (680 µm), contact thickness (50 µm), lattice topology and the 12 mm × 0.5 mm lead stub are illustrative. The lead is a short visual envelope, not the actual implanted cable length or conductor routing. The staggered contact strip is reconstructed; it does not replace a manufacturer channel map. The model represents a nominal expanded scaffold, not vessel deformation or a delivery state.
+
+JSON preserves revision metadata, approximation notes and outward-facing site normals. GLB exports the complete assembly in meters. The exact clinical revision and its validated electrical parameters must be established before using this geometry in a physiological simulation.
+
+---
+
 ### Electrode & Channel Physics
-- *Channel count:* 16
-- *Active sites used (vs total):* typically all 16 are available; actual use can depend on signal quality
+- *Physical electrodes:* 16; Kacker et al. designate one as the common reference for the other 15. The model leaves the assignment unknown.
+- *Analysis channels:* 12 for participant 1 and 8 for participant 2 in Kacker et al. (2025); physical count, reference assignment and channels retained for analysis are distinct.
 - *Electrode material:* platinum electrodes on nitinol scaffold (reported)
 - *Site area (µm²):* a 500 µm circular face gives approximately 196,350 geometrically. SWITCH (2023) separately reports 300,000; these values are not treated as equivalent.
 - *Electrode size:* 500 µm diameter in the selected Kacker et al. (2025) configuration. A separate Schone et al. (2025) preprint reports 300 µm; do not mix specifications.

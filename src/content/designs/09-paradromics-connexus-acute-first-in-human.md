@@ -1,144 +1,63 @@
 ---
-title: "Paradromics Connexus (acute first-in-human recording)"
+title: "Paradromics Connexus (cortical module)"
 order: 9
 pubDate: 2026-02-06
-updatedDate: 2026-02-06
+updatedDate: 2026-10-05
 device_id: "BTSD-IMBCI-0010"
 interface_class: "intracortical"
 status: "human"
-last_updated: 2026-02-06
-description: "Paradromics’ Connexus intracortical BCI platform, validated in a short intraoperative first-in-human recording and positioned to scale into a chronic, fully implantable communication/speech system."
+last_updated: 2026-10-05
+description: "Paradromics’ 421-electrode intracortical module, with a source-documented 3D reference model and updated Connect-One early feasibility study context."
 modality: "Intracortical"
 successRank: 15
-website: "https://www.paradromics.com/news/paradromics-completes-first-in-human-recording-with-the-connexus-brain-computer-interface"
-tags: ["BCI", "intracortical", "Paradromics", "Connexus", "acute", "intraoperative", "speech restoration", "cortex", "recording", "array"]
+website: "https://paradromics.com/connexus/"
+tags: ["BCI", "intracortical", "Paradromics", "Connexus", "microwire", "speech restoration", "cortex", "recording", "array"]
 draft: false
 ---
 
-# Paradromics Connexus (acute first-in-human recording)
+# Paradromics Connexus cortical module
 
-> *One-line verdict:* A high-channel-count intracortical implant platform validated in a short intraoperative human recording, designed to scale into chronic, fully implantable speech/communication BCIs.
+Connexus combines a penetrating microwire array with implanted electronics, a flexible lead and a chest transceiver. Its intended applications include speech and computer control for people with severe motor impairment. It remains an investigational device. [1]
 
-*Quick tags:* Recording · Intracortical · Acute intraoperative validation · Species: Human · First in-human recording: 2025
+### Geometry and evidence
 
----
+| Parameter | Public description | Treatment in the 3D model |
+| --- | --- | --- |
+| Electrode count | 421 per module [1] | 421 physical microwires |
+| Electrode spacing | 300 µm [2] | 300 µm square lattice |
+| Insertion depth | 1.5 mm [1, 2] | All tips at Z = 1.5 mm |
+| Circular package | Approximately 1 cm diameter [3] | Nominal 10 mm envelope |
+| Wire diameter | Older technical slides report <40 µm PtIr wires [4] | 40 µm visualization bound; current exact diameter unknown |
+| Exact contact map | No coordinate map in the reviewed sources | Circularly cropped lattice is reconstructed |
+| Housing thickness / tip exposure | Not established by the reviewed sources | Explicit illustrative dimensions; exposed area stays unknown |
 
-### Overview
+The manufacturer’s 2024 photograph shows the circular module used as this model’s visual reference. The 2023 technical slides show a **different square package** with a 9 mm dimension. That older package dimension is not applied to this model. Photographs guide appearance; they do not supply measured dimensions.
 
-*What it is:* Connexus is Paradromics’ intracortical BCI implant platform. In a first-in-human milestone, the device was temporarily implanted during an epilepsy resection surgery to verify that it can be safely implanted, record human neural signals, and be removed intact in a short intraoperative window.
+### What the model represents
 
-*Why it matters:* This is a canonical example of the modern “acute intraoperative validation → chronic feasibility study” pathway for high-density intracortical BCIs: de-risk the mechanics of implantation/explant and basic signal acquisition before committing to chronic implants.
+The interactive model includes the module envelope, ceramic face and 421 penetrating wires. Gold marks illustrative tip regions. The **Microwire detail** button zooms the camera without changing the geometry.
 
-*Most comparable devices:* Neuralink N1 (intracortical), BrainGate Utah-array systems (intracortical), high-density surface systems (contrast).
+The circular array boundary, 1.5 mm housing thickness, face construction and tip shape are approximations. The deterministic lattice is a simulation reference, not a manufacturer fabrication drawing. Lead routing and ASIC internals are omitted.
 
----
+Geometry JSON uses millimeters, with the origin at the center of the tissue-facing substrate surface and insertion along +Z. Each site identifies a wire apex; exposed-contact centroids, areas and acquisition channel assignments remain unknown. GLB exports use meters. An electrical model and tissue-coordinate transform are still required for recording or stimulation simulation.
 
-### Spec Card Grid
+### Electrodes and system architecture
 
-### Identity
-- *Device name:* Connexus
-- *Canonical ID:* BTSD-IMBCI-0010
-- *Org / manufacturer:* Paradromics (Austin, TX, USA)
-- *First demonstrated (year):* 2025 (first in-human recording announced)
-- *First implanted (year):* 2025 (acute intraoperative placement)
-- *Species:* human (acute intraoperative)
-- *Regulatory / trial status:* acute intraoperative test reported (2025); chronic feasibility efforts/IDE announcements reported subsequently
-- *Primary use:* recording
-- *Primary target:* cortex (case-specific; intraoperative epilepsy surgery context)
+Paradromics describes platinum–iridium electrodes and metal/ceramic construction. [3, 4] The current system is fully internalized: a flexible lead connects the cortical interface to an implanted chest transceiver; data crosses the skin optically and power is supplied inductively. [1]
 
----
+Physical electrode count should not be confused with an analysis channel count. The SfN report analyzes 420 electrodes, while the product page specifies 421 physical microelectrodes. The model does not infer which site is a reference or assign channels. [1, 2]
 
-### Geometry & Architecture
-- *Interface type:* intracortical microelectrode array (penetrating)
-- *Penetrating?:* yes
-- *Form factor:* “cortical module” (described publicly as smaller than a dime)
-- *Array layout:* dense multi-electrode implant (exact geometry not fully specified in public sources)
-- *Footprint (mm):* ~dime-scale module (reported)
-- *Insertion depth (mm):* ~1–2 mm class reported in secondary sources for similar implants (treat as estimate until a primary technical source is cited)
-- *Shank / lead dimensions:* not publicly standardized in a peer-reviewed technical spec
-- *Site spacing (µm):* not publicly standardized
-- *Tip geometry:* microelectrode tips (intracortical)
-- *Insertion method:* surgical intracortical placement (intraoperative)
-- *Anchoring method:* system-dependent
-- *Packaging location:* marketed as a fully implantable platform at the system level (implant + leads/transceivers)
+### Human evidence and status
 
----
+The temporary intraoperative recording announced in June 2025 established an acute human milestone. [5] It is no longer the only announced human implantation: on June 17, 2026, Paradromics announced the first implantation in the Connect-One Early Feasibility Study at the University of Michigan, following the November 2025 IDE authorization. [6]
 
-### Electrode & Channel Physics
-- *Channel / electrode count (single implant, reported):* ~420–421 electrodes (reported across outlets)
-- *Scalability (company claim):* multi-implant linking to reach higher channel counts (exact numbers vary by statement)
-- *Electrode material:* platinum–iridium electrodes reported in secondary sources
-- *Site area (µm²):* not disclosed
-- *Impedance @ 1 kHz:* not disclosed
-- *Noise floor / SNR:* not disclosed
-- *Recording modality:* spikes / single-neuron activity emphasized in public reporting
-- *Stimulation capability:* not described as primary in public first-in-human reporting (treat as recording-focused)
-- *Charge injection limit / safe stim range:* N/A
+Study authorization is distinct from commercial approval. The geometry model does not establish long-term safety, recording yield or durability, and company design goals should not be read as demonstrated lifetime performance.
 
----
+### Sources
 
-### Tissue Interface & Bioresponse
-- *Target tissue:* cortical gray matter
-- *BBB disruption:* moderate–high (penetrating)
-- *Vascular disruption risk:* moderate (implant-dependent)
-- *Micromotion sensitivity:* potentially significant (general issue for intracortical arrays)
-- *Gliosis / encapsulation:* expected over chronic timescales for penetrating interfaces; chronic data not yet publicly characterized for Connexus
-- *Neuron loss (if reported):* not disclosed
-- *Foreign-body response mitigation:* not disclosed
-- *Typical failure mode:* chronic stability/yield limitations typical of intracortical interfaces; hardware/connector/lead failures; infection risk if any percutaneous elements are used (goal is full implantation)
-
----
-
-### System Architecture
-- *Onboard electronics:* not fully specified in first-in-human reporting
-- *Data path (acute test):* intraoperative recording with external equipment implied
-- *Telemetry (chronic concept):* described as a fully implantable system with implanted transceiver(s) and external link in secondary sources
-- *Sampling rate:* not disclosed
-- *Power:* not disclosed
-- *Thermal management:* not disclosed
-- *Hermeticity:* not disclosed
-- *MRI compatibility:* unknown/conditional
-- *Surgical complexity:* intracortical placement during open cranial surgery
-- *Implant/removal time (reported):* removed intact in <20 minutes (press release)
-
----
-
-### Performance Envelope
-- *Typical yield (acute):* not disclosed quantitatively
-- *Typical yield (chronic):* not yet publicly reported (as of this entry)
-- *Stability over time:* not yet publicly reported (as of this entry)
-- *Longevity (median / max):* not yet publicly reported (as of this entry)
-- *Revision / explant:* acute explant demonstrated; chronic revision experience not yet publicly detailed
-- *Adverse events (high-level):* acute procedure reported as successful; chronic safety outcomes not yet publicly detailed
-- *Notable demos / tasks:* acute human neural recording during epilepsy surgery
-
----
-
-### Clinical / Preclinical Evidence
-- *First-in-human context:* temporary implant during epilepsy surgery; device implanted, recorded, and removed intact within minutes
-- *N implanted subjects:* at least one reported for acute test
-- *Follow-up duration:* acute only (minutes)
-- *Indications (intended, chronic program):* severe motor impairment / speech restoration (reported)
-- *Trial registry links:* not pinned here (ID not confirmed in-session)
-- *Primary outcomes (acute):* surgical feasibility, ability to record human neural signals, intact explant
-- *Key limitations of evidence:* acute-only public evidence; chronic performance and long-term safety require peer-reviewed and/or registry documentation
-
----
-
-### Engineering Verdict
-
-*Strengths:*
-- high electrode count per implant (reported ~420–421)
-- demonstrated rapid implant + intact explant intraoperatively
-- clear translational pathway toward chronic, fully implantable communication systems
-
-*Limitations / failure modes:*
-- acute-only human data disclosed so far; chronic stability/yield not yet published
-- detailed technical specs (geometry, impedances, yields) not yet available in a single primary technical paper
-
----
-
-### References
-- Paradromics (press release). *Paradromics Completes First-In-Human Recording with the Connexus® Brain-Computer Interface.* <https://www.paradromics.com/news/paradromics-completes-first-in-human-recording-with-the-connexus-brain-computer-interface>
-- UPI. *Paradromics implants brain-computer interface into first human patient.* (June 2, 2025). <https://www.upi.com/Health_News/2025/06/02/paradromics-brain-computer-interface-implanted-human/4661748897835/>
-- New Atlas. *Speech-restoring brain chip gets FDA approval for human trial.* (Nov 2025; summarizes IDE/Connect-One claims). <https://newatlas.com/medical-devices/human-trial-experimental-brain-chip-connexus/>
+1. [Paradromics — Connexus product and system description](https://paradromics.com/connexus/).
+2. [Paradromics — SfN 2025, Part 2; published January 21, 2026](https://paradromics.com/blog/paradromics-sfn-part-2/).
+3. [Paradromics — Neurotech That Lasts; May 14, 2024](https://paradromics.com/blog/neurotech-that-lasts/). Includes the circular module photograph.
+4. [Paradromics technical presentation at BIS, 2023; slide 71](https://www.bis.gov/media/documents/brain-computer-interface-export-controls-bci-day-1-.pdf). Historical package revision.
+5. [Paradromics — first temporary human recording; June 2, 2025](https://paradromics.com/news/paradromics-completes-first-in-human-recording-with-the-connexus-brain-computer-interface/).
+6. [Paradromics and University of Michigan — first Connect-One implantation; June 17, 2026](https://paradromics.com/news/paradromics-completes-first-human-brain-computer-interface-bci-implantation/).

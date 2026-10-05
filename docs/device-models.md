@@ -1,7 +1,8 @@
-# Device model collection, revision 1
+# Device model collection
 
-First pass: Utah 10 × 10 / 1.5 mm, USEA 10 × 10 / 0.5–1.5 mm,
-and the Neuropixels 1.0 recording shank. Catalog and legacy design URLs use
+Models: Utah 10 × 10 / 1.5 mm, USEA 10 × 10 / 0.5–1.5 mm,
+Neuropixels 1.0, Synchron Stentrode, Paradromics Connexus and Neuralink N1.
+Each definition carries its own revision. Catalog and legacy design URLs use
 the same viewer. `/devices/models/` indexes the models.
 
 ## Source and geometry contracts
@@ -17,7 +18,8 @@ unknown exposed-contact centroid. No electrical channel assignments are invented
 
 JSON exports preserve unknown area/channel values as null. GLB exports scale the
 millimeter mesh by 0.001 to glTF-standard meters, omit the viewer grid and lights,
-and include the complete model even when Contacts only is selected. Models have
+and include the complete model even when Contacts only is selected. GLB metadata
+includes device ID, revision, site count, fidelity notes and source URLs. Models have
 no electrical or tissue-response semantics. Existing cortex and peripheral
 simulation behavior is unchanged; future adapters must transform coordinates,
 select actual channels and supply validated contact/electrical parameters.
@@ -94,5 +96,67 @@ uses the Kacker configuration and is not asserted to represent current productio
 
 The viewer fits the 40 mm structure, expands its zoom range and adds an end-on
 view. Checks cover 16 contacts, cylindrical extent, radial normals, disk face
-centers, assumed spacing, contact area and complete GLB/JSON export. Browser
-visual verification remains unavailable in this environment.
+centers, assumed spacing, contact area and complete GLB/JSON export.
+
+## Connexus, N1 and Stentrode revision 2 (2026-10-05)
+
+Primary references and image URLs are stored with each model and shown in the
+viewer. Catalog briefs document the selected revisions and preserve existing URLs.
+
+### Paradromics Connexus
+
+The product page gives 421 wires at 1.5 mm insertion depth; the January 2026 SfN
+blog gives 300 µm spacing. The 2024 durability article describes a roughly 1 cm
+circular package, corroborated by its photograph. The 2023 company presentation
+in the BIS slide deck (slide 71, visually inspected) describes <40 µm PtIr wires
+but shows a DIFFERENT square package labeled 9 mm. Do not treat that old package
+dimension as the diameter of the later circular module.
+
+The reconstructed square lattice includes integer points x²+y² <= 130 (421
+points), scaled by 0.3 mm. This gives a deterministic, centered circular boundary;
+it is not a released manufacturer contact map. All apices are at Z=1.5 mm.
+Nominal package diameter 10 mm, illustrative thickness 1.5 mm, ceramic-face
+diameter 8 mm, 40 µm shaft visualization bound and 80 µm tip highlights are
+explicitly separated from the reported count/pitch/depth. Exposed areas stay null.
+The brief also replaces obsolete acute-only language with the June 2026
+Connect-One implantation announcement and retains investigational status.
+
+### Neuralink N1, 2024 64 × 16 reference
+
+The April 2024 PRIME update and its exploded illustration establish the selected
+revision. DJ Seo's first-person engineering interview in Lex Fridman #438 provides
+200 µm site pitch (02:03:33), quarter-sized / approximately 9 mm enclosure
+(02:07:03), 16–84 µm thread widths (02:08:58) and a 2 + 0.4 + 2 µm stack
+(02:12:48). The modeled thickness is the derived 4.4 µm sum. UCLH's July 2025
+description instead gives 128 × 8; the model never presents 64 × 16 as universal.
+
+The fan is a display pose. Each thread follows a smooth curve from the housing
+to a straight distal section, with 16 sites at 0.2 mm pitch (3 mm center span).
+Fan spacing, length, bends and taper progression are illustrative. Housing
+diameter is a nominal 24 mm interpretation of the coin comparison. The 12 × 20 µm
+gold rectangles are visualization markers, not measured electrode dimensions;
+contactAreaMm2 remains null. JSON supplies thread/contact indices and normals,
+and explicitly says these are not implanted coordinates. No internal traces,
+microfabricated insertion loops or package internals are fabricated as fact.
+
+### Synchron revision 2
+
+Revisited Kacker section 2.2 and Figure 1, plus Synchron's full-resolution
+contact close-up. Flat, curved struts and annular contact mounts replace the
+round-wire scaffold. The 80 × 40 µm strut section, 680 µm mount diameter,
+50 µm contact thickness and short 12 × 0.5 mm proximal lead remain illustrative.
+The nominal scaffold remains 8 × 40 mm. The lead extends beyond that scaffold;
+its length is not a claim about the clinical cable. The original reconstructed
+staggered map remains explicit; outward disk centers now account for half the
+flat strut thickness. Kacker's 16 physical sites include one common reference,
+leaving 15 referenced signals; the exact assignment is unknown.
+
+### Viewer and validation
+
+All six models use the same lazy-loaded viewer and complete JSON/GLB exports.
+Camera fitting derives from mesh bounds, including lead stubs and enclosures.
+New face, microwire, thread and contact views are camera crops only. Shared mesh
+resources keep dense arrays small; all materials and geometries are disposed.
+Checks cover exact counts, pitch, centered Connexus footprint, N1 thread grouping,
+null unknown areas, finite mesh attributes, scaffold versus lead extents, JSON
+round trips and complete meter-scaled GLB export while bodies are hidden.

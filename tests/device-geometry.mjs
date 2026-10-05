@@ -36,12 +36,17 @@ for (const model of Object.values(deviceModels)) {
   }
   if (model.kind === 'stentrode') {
     assert.equal(sites.length, 16);
-    assert(bounds.min.z >= -.05 && bounds.max.z <= 40.05);
+    assert(Math.abs(bounds.min.z + 12) < 1e-4); assert(bounds.max.z <= 40.05);
     assert(bounds.max.x - bounds.min.x > 8 && bounds.max.x - bounds.min.x < 8.3);
-    assert.equal(group.children[0].children.length, 240);
+    assert.equal(group.children[0].children.filter(m=>m.name === 'scaffold-strut').length, 240);
+    assert.equal(group.children[0].children.filter(m=>m.name === 'contact-mount').length, 16);
+    assert(group.getObjectByName('schematic-lead-stub'));
+    const scaffoldBounds = new Box3();
+    group.children[0].children.filter(m=>m.name === 'scaffold-strut').forEach(m=>scaffoldBounds.expandByObject(m));
+    assert(scaffoldBounds.min.z > -.05 && scaffoldBounds.max.z < 40.05);
     for (const [i, site] of sites.entries()) {
       close(Math.hypot(...site.normal), 1);
-      close(Math.hypot(site.positionMm[0], site.positionMm[1]), 4.09);
+      close(Math.hypot(site.positionMm[0], site.positionMm[1]), 4.07);
       close(site.contactAreaMm2, Math.PI * .25 ** 2);
       assert(site.positionMm[2] > 0 && site.positionMm[2] < 40);
       // Disk's local +Y must point outward; exported coordinates identify its outer face.
@@ -56,6 +61,44 @@ for (const model of Object.values(deviceModels)) {
       }
     }
   }
+  if (model.kind === 'connexus') {
+    assert.equal(sites.length, 421);
+    close(bounds.min.x, -5); close(bounds.max.x, 5);
+    close(bounds.min.z, -1.5); close(bounds.max.z, 1.5);
+    const points = new Set(sites.map(s=>s.latticeIndex.join(',')));
+    for (const site of sites) {
+      close(site.positionMm[2], 1.5);
+      assert.equal(site.contactAreaMm2, null);
+      assert(points.has(site.latticeIndex.map(n=>-n).join(',')), 'Reconstructed footprint must be centered');
+      const nearest = Math.min(...sites.filter(s=>s!==site).map(s=>new Vector3(...site.positionMm).distanceTo(new Vector3(...s.positionMm))));
+      close(nearest, .3);
+      assert(Math.hypot(site.positionMm[0], site.positionMm[1]) + model.shaftDiameter / 2 < model.ceramicDiameter / 2);
+    }
+  }
+  if (model.kind === 'neuralink') {
+    assert.equal(sites.length, 1024);
+    assert.equal(group.children[0].children.filter(m=>m.name.startsWith('thread-')).length, 64);
+    close(bounds.min.z, -9); close(bounds.min.x, -12); close(bounds.max.x, 12);
+    for (let thread=0; thread<64; thread++) {
+      const threadSites = sites.filter(s=>s.threadIndex === thread);
+      assert.equal(threadSites.length, 16);
+      close(threadSites.at(-1).positionMm[1] - threadSites[0].positionMm[1], 3);
+      for (let i=0; i<threadSites.length; i++) {
+        const site = threadSites[i];
+        assert.equal(site.contactAreaMm2, null, 'Visual markers must not imply a known exposed area');
+        close(site.positionMm[2], 1.5022);
+        if(i) close(new Vector3(...site.positionMm).distanceTo(new Vector3(...threadSites[i-1].positionMm)), .2);
+        const contactBounds = new Box3().setFromObject(contacts.children[thread*16+i]);
+        close(contactBounds.max.x-contactBounds.min.x, .012);
+        close(contactBounds.max.y-contactBounds.min.y, .02);
+      }
+    }
+    assert.match(exportGeometry(model).coordinateSystem, /not an implanted pose/);
+  }
+  group.traverse(object => {
+    if (!object.geometry) return;
+    for (const key of ['position', 'normal']) assert([...object.geometry.attributes[key].array].every(Number.isFinite), `${model.id}: finite ${key}`);
+  });
   const exported = JSON.parse(JSON.stringify(exportGeometry(model)));
   assert.equal(exported.units,'mm'); assert.deepEqual(exported.sites,sites);
   group.children[0].visible = false;
