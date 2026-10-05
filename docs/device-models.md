@@ -157,6 +157,10 @@ All six models use the same lazy-loaded viewer and complete JSON/GLB exports.
 Camera fitting derives from mesh bounds, including lead stubs and enclosures.
 New face, microwire, thread and contact views are camera crops only. Shared mesh
 resources keep dense arrays small; all materials and geometries are disposed.
+If WebGL initialization fails, the viewer dynamically loads Three.js SVGRenderer
+and projects the same mesh with software shading. Rotation, view buttons, site
+visibility and full GLB export remain available. SVG overdraw is disabled to
+avoid enlarging thin structures in screen space. The status identifies this mode.
 Checks cover exact counts, pitch, centered Connexus footprint, N1 thread grouping,
 null unknown areas, finite mesh attributes, scaffold versus lead extents, JSON
 round trips and complete meter-scaled GLB export while bodies are hidden.
