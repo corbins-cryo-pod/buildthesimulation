@@ -66,7 +66,12 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
         gridMaterials.forEach(material => { material.vertexColors = false; material.color.setHex(0x293645); });
       }
       scene.add(grid);
-      const render = () => renderer.render(scene, camera);
+      const render = () => {
+        // Depth precision: tie near/far to the orbit distance so coplanar-looking surfaces (sub-mm offsets) do not z-fight.
+        const dist = camera.position.distanceTo(controls.target);
+        camera.near = Math.max(0.0005, dist * 0.01); camera.far = dist + extent * 4;
+        camera.updateProjectionMatrix(); renderer.render(scene, camera);
+      };
       // Detail is a camera crop, not an enlarged or distorted shank.
       const defaultView = model.kind === 'neuropixels' ? 'tip' : 'oblique';
       let view = defaultView;

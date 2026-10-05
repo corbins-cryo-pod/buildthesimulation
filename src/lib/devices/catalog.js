@@ -27,7 +27,7 @@ export const deviceModels = {
     threadCount: 64, sitesPerThread: 16, sitePitch: 0.2,
     threadMinWidth: 0.016, threadMaxWidth: 0.084, threadThickness: 0.0044,
     diameter: 24, bodyThickness: 9,
-    fanPitch: 0.22, entryPitch: 0.085, threadStartY: 8, contactStartY: 20, threadEndY: 23.6, threadEndZ: 1.5,
+    fanPitch: 0.22, entryPitch: 0.085, threadStartY: 11.9, contactStartY: 20, threadEndY: 23.6, threadEndZ: 1.5,
     firstSiteOffset: 0.2, visualContactWidth: 0.012, visualContactLength: 0.02,
     specs: [['Physical sites', '1,024 · 64 threads × 16 sites'], ['Along-thread pitch', '200 µm — 2024 engineering interview'], ['Thread width / thickness', '16–84 µm / 4.4 µm stack described in interview'], ['Enclosure', 'Quarter-sized, about 9 mm thick; modeled at 24 × 9 mm'], ['Display pose', 'Unfurled fan; illustrative routing and thread spacing'], ['Contact shape / exposed area', '12 × 20 µm visual markers; actual area unknown']],
     notes: 'Named 64-thread configuration described in 2024, not every N1 generation. UCLH later describes 128 threads × 8 sites. The fan is an unimplanted display pose, not a cortical placement map. 24 mm diameter approximates the quarter-sized enclosure; rim details, fan length, taper progression, spacing and 12 × 20 µm gold site markers are illustrative. The 4.4 µm thickness is the sum of the interview’s 2 µm polymer + 0.4 µm metal + 2 µm polymer layers. Actual contact shape/area, insertion loops, individual metal traces and internal electronics are unresolved. Camera detail views retain physical scale. Site IDs are geometric labels, not acquisition channel assignments.',
