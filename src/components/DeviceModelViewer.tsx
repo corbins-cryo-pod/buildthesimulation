@@ -27,7 +27,16 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       ]);
       if (cancelled || !mount.current) return;
       const host = mount.current;
-      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+      let renderer: any, software = false;
+      try {
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+      } catch {
+        // Preserve inspection and exports on browsers with GPU rendering disabled.
+        const { SVGRenderer } = await import('three/addons/renderers/SVGRenderer.js');
+        if (cancelled || !mount.current) return;
+        renderer = new SVGRenderer(); renderer.overdraw = 0; renderer.setPrecision(3);
+        software = true;
+      }
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.setClearColor(0x101925); renderer.outputColorSpace = THREE.SRGBColorSpace;
       renderer.domElement.setAttribute('aria-label', `${model.name}. Interactive 3D model; use the view buttons for keyboard navigation.`);
@@ -36,9 +45,9 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       const scene = new THREE.Scene();
       const { group, bodies } = buildDeviceMesh(model);
       scene.add(group);
-      scene.add(new THREE.HemisphereLight(0xe2f3ff, 0x596479, 3));
-      const key = new THREE.DirectionalLight(0xffffff, 4); key.position.set(-4, -7, 10); scene.add(key);
-      const fill = new THREE.DirectionalLight(0x78bfff, 2); fill.position.set(5, 5, 2); scene.add(fill);
+      scene.add(software ? new THREE.AmbientLight(0xffffff, 0.55) : new THREE.HemisphereLight(0xe2f3ff, 0x596479, 3));
+      const key = new THREE.DirectionalLight(0xffffff, software ? 0.9 : 4); key.position.set(-4, -7, 10); scene.add(key);
+      const fill = new THREE.DirectionalLight(0x78bfff, software ? 0.4 : 2); fill.position.set(5, 5, 2); scene.add(fill);
       const bounds = new THREE.Box3().setFromObject(group);
       const center = bounds.getCenter(new THREE.Vector3());
       const extent = bounds.getSize(new THREE.Vector3()).length();
@@ -84,7 +93,8 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
         distance /= Math.min(camera.aspect, 1);
         camera.position.copy(target).addScaledVector(direction, distance);
         controls.target.copy(target); controls.update(); render();
-        setStatus(isDetail ? 'Detail view · camera crop only; physical dimensions unchanged · drag to rotate' : `Drag to rotate · scroll or pinch to zoom · grid spacing 1 mm${model.kind === 'neuralink' ? ' · unfurled display pose' : ''}`);
+        const hint = isDetail ? 'Detail view · camera crop only; physical dimensions unchanged · drag to rotate' : `Drag to rotate · scroll or pinch to zoom · grid spacing 1 mm${model.kind === 'neuralink' ? ' · unfurled display pose' : ''}`;
+        setStatus(`${software ? 'Software rendering · ' : ''}${hint}`);
       };
       const resize = () => {
         const width = host.clientWidth, height = host.clientHeight;
@@ -107,7 +117,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       cleanup = () => {
         api.current = null; observer.disconnect(); controls.dispose();
         renderer.domElement.removeEventListener('webglcontextlost', contextLost);
-        disposeDeviceMesh(group); disposeDeviceMesh(grid); renderer.dispose(); renderer.domElement.remove();
+        disposeDeviceMesh(group); disposeDeviceMesh(grid); renderer.dispose?.(); renderer.domElement.remove();
       };
       resize(); setReady(true);
     })().catch(() => {
@@ -150,7 +160,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
     <style>{`
       .device-model{margin:24px 0;padding:20px;border:1px solid var(--border);border-radius:16px;background:var(--panelStrong);overflow:hidden}
       .model-heading h3{font-size:1.45rem;margin:8px 0}.model-heading p{opacity:.75;margin:0 0 16px}.model-kicker{font-size:11px;letter-spacing:.14em;opacity:.7}
-      .model-canvas{height:400px;width:100%;border-radius:10px;overflow:hidden;background:#101925;touch-action:none}.model-canvas canvas{display:block;width:100%;height:100%}
+      .model-canvas{height:400px;width:100%;border-radius:10px;overflow:hidden;background:#101925;touch-action:none}.model-canvas canvas,.model-canvas svg{display:block;width:100%;height:100%}
       .model-status{font-size:12px;opacity:.8;min-height:2em}.model-controls{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
       .model-controls button{font:inherit;font-size:13px;color:inherit;background:var(--panel);border:1px solid var(--border);padding:9px 12px;border-radius:9px;cursor:pointer}.model-controls button:disabled{opacity:.45;cursor:default}
       .model-controls button[aria-pressed=true]{border-color:currentColor}.model-controls button:focus-visible,.model-sources summary:focus-visible{outline:2px solid currentColor;outline-offset:3px}
