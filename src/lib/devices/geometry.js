@@ -115,7 +115,11 @@ export function buildDeviceMesh(model) {
     metal.polygonOffset = true; metal.polygonOffsetFactor = -1; metal.polygonOffsetUnits = -1;
     for (const site of sites) {
       const pad = new THREE.Mesh(padGeometry, metal); pad.name = site.id;
-      pad.position.fromArray(site.positionMm); contacts.add(pad);
+      pad.position.fromArray(site.positionMm);
+      // 10 nm display lift avoids coplanar triangle occlusion in SVG's painter
+      // ordering. JSON retains the nominal surface; markers are illustrative.
+      pad.position.z += 0.00001; pad.userData = { visualizationOffsetMm: 0.00001 };
+      contacts.add(pad);
     }
   } else if (model.kind === 'stentrode') {
     // Curved, flat struts follow the manufacturer's visual reference. Dimensions

@@ -45,7 +45,8 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       const scene = new THREE.Scene();
       const { group, bodies } = buildDeviceMesh(model);
       scene.add(group);
-      scene.add(software ? new THREE.AmbientLight(0xffffff, 0.55) : new THREE.HemisphereLight(0xe2f3ff, 0x596479, 3));
+      // SVGRenderer uses ambient color directly rather than ambient intensity.
+      scene.add(software ? new THREE.AmbientLight(0x888888) : new THREE.HemisphereLight(0xe2f3ff, 0x596479, 3));
       const key = new THREE.DirectionalLight(0xffffff, software ? 0.9 : 4); key.position.set(-4, -7, 10); scene.add(key);
       const fill = new THREE.DirectionalLight(0x78bfff, software ? 0.4 : 2); fill.position.set(5, 5, 2); scene.add(fill);
       const bounds = new THREE.Box3().setFromObject(group);
@@ -59,6 +60,11 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       const gridSize = ['stentrode', 'neuralink'].includes(model.kind) ? 60 : 12;
       const grid = new THREE.GridHelper(gridSize, gridSize, 0x516071, 0x293645);
       grid.rotation.x = Math.PI / 2; grid.position.z = bounds.min.z - 0.02;
+      if (software) {
+        // SVG line rendering does not apply the helper's per-vertex colors.
+        const gridMaterials = Array.isArray(grid.material) ? grid.material : [grid.material];
+        gridMaterials.forEach(material => { material.vertexColors = false; material.color.setHex(0x293645); });
+      }
       scene.add(grid);
       const render = () => renderer.render(scene, camera);
       // Detail is a camera crop, not an enlarged or distorted shank.
@@ -68,6 +74,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
         if (next === 'default') next = defaultView;
         view = next;
         const isTip = next === 'tip', isDetail = ['tip', 'detail', 'thread'].includes(next);
+        grid.visible = !isDetail;
         const target = center.clone();
         let distance = extent / (2 * Math.tan(19 * Math.PI / 180)) * 1.12;
         let direction = new THREE.Vector3(0.8, -1.3, 0.85).normalize();

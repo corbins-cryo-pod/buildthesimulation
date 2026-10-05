@@ -138,6 +138,9 @@ gold rectangles are visualization markers, not measured electrode dimensions;
 contactAreaMm2 remains null. JSON supplies thread/contact indices and normals,
 and explicitly says these are not implanted coordinates. No internal traces,
 microfabricated insertion loops or package internals are fabricated as fact.
+Visual pad meshes have a 10 nm normal offset to avoid coplanar surface artifacts
+in the software renderer; JSON coordinates remain on the nominal thread surface.
+The mesh records this display offset in its metadata.
 
 ### Synchron revision 2
 
