@@ -37,9 +37,9 @@ const exits = [
   </article>
 </Layout>
 <style>
-  .guide { margin-top: 14px; padding: 22px; border-radius: 16px; border: 1px solid var(--border); background: var(--panel); max-width: 960px; font: 16px/1.7 system-ui, -apple-system, sans-serif; }
-  .guide h2 { font-size: 26px; font-weight: 400; margin: 0 0 12px; line-height: 1.2; }
-  .guide h3 { font: 600 16px/1.4 system-ui, sans-serif; margin: 6px 0 8px; }
+  .guide { margin-top: 14px; padding: 22px; border-radius: 16px; border: 1px solid var(--border); background: var(--panel); max-width: 960px; font-size: 19px; line-height: 1.7; }
+  .guide.guide h2 { font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif; font-size: 26px; font-weight: 400; margin: 0 0 12px; line-height: 1.2; }
+  .guide.guide h3 { font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif; font-size: 24px; font-weight: 400; line-height: 1.4; margin: 6px 0 8px; }
   .guide a { color: inherit; text-underline-offset: 3px; }
   .guide p, .guide li { line-height: 1.7; }
   .guide section { scroll-margin-top: 24px; padding: 26px 0; border-top: 1px solid var(--border); }
@@ -51,10 +51,10 @@ const exits = [
   .table-scroll { overflow-x: auto; }
   .guide table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 540px; }
   .guide td, .guide th { text-align: left; vertical-align: top; border: 1px solid var(--border); padding: 10px 12px; }
-  .guide th { background: var(--panelStrong); font-weight: 600; }
+  .guide th { background: var(--panelStrong); font-weight: 400; font-style: italic; }
   .guide td:first-child { width: 23%; }
   .source { padding: 16px 0; border-top: 1px solid var(--border); scroll-margin-top: 24px; }
   .source p { margin: 0; font-size: 14px; opacity: 0.85; }
   .source-meta, .reviewed { font-size: 13px; opacity: 0.7; }
-  @media (max-width: 680px) { .guide { padding: 16px; } .guide h2 { font-size: 22px; } }
+  @media (max-width: 680px) { .guide { padding: 16px; } .guide.guide h2 { font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif; font-size: 22px; } }
 </style>
