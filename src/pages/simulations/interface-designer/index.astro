@@ -1,0 +1,19 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import NeuralInterfaceDesigner from '../../../components/NeuralInterfaceDesigner.jsx';
+---
+<Layout pageTitle="Neural interface designer" subtitle="Design the contacts. Shape the leads. Explore the stack." description="A micrometer-scale neural electrode layout designer with circle, square and ring contacts, bulk arrays, automatic lead routing, fabrication concept layers and physical-scale exports.">
+  <div class="intro"><p>A workspace for planar, thin-film neural interfaces. Build a pattern, customize individual contacts and compare lead arrangements with explicit geometry checks.</p><a href="/simulations/interface-designer/guide/">Research & design guide ↗</a></div>
+  <NeuralInterfaceDesigner client:load />
+  <noscript><p>The interactive designer requires JavaScript. The <a href="/simulations/interface-designer/guide/">research and design guide</a> is available without it.</p></noscript>
+</Layout>
+<style>
+  :global(body:has(.nd) .wrap){max-width:1540px;padding-top:30px}
+  :global(body:has(.nd) .pageTitle){font-size:clamp(36px,4.8vw,62px);line-height:1.08}
+  :global(body:has(.nd) .hero){gap:14px;margin-bottom:14px}
+  :global(body:has(.nd) .sub){font-size:18px;margin-top:8px}
+  :global(body:has(.nd) .pill){font-size:17px;padding:7px 12px}
+  .intro{display:flex;justify-content:space-between;gap:20px;align-items:center;margin:0 0 15px;font:13px/1.6 system-ui,sans-serif}
+  .intro p{margin:0;max-width:85ch}.intro a{color:inherit;white-space:nowrap;font-size:12px}
+  @media(max-width:720px){:global(body:has(.nd) .wrap){padding:22px 12px}.intro{display:block}.intro a{display:inline-block;margin-top:9px}}
+</style>
