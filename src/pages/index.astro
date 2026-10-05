@@ -16,23 +16,23 @@ const devices = (await getCollection("designs")).filter((p) => !p.data.draft);
 <Layout withHero={true}>
   <section class="hero card">
     <p class="eyebrow">Build The Simulation</p>
-    <h1>A catalog of brain-computer interface companies and technologies.</h1>
+    <h1>Design neural interfaces. Explore the technologies behind them.</h1>
     <p class="lede">
-      Find companies and labs, read about their work, and compare the technologies they use.
-      Explore device briefs and interactive simulations alongside the catalog.
+      Build electrode arrays, customize contacts and route individual leads in the neural interface designer.
+      Explore commercial implants, research labs and interactive simulations alongside your designs.
     </p>
     <div class="ctaRow">
-      <a class="btn primary" href="/companies/">Explore BCI Atlas</a>
-      <a class="btn" href="/simulations/">Explore simulations</a>
+      <a class="btn primary" href="/simulations/interface-designer/">Open neural interface designer</a>
+      <a class="btn" href="/companies/">Explore BCI Atlas</a>
     </div>
   </section>
 
   <section class="card">
     <div class="row"><h2>Start here</h2></div>
     <div class="pathGrid">
-      <a class="path" href="/companies/">
-        <h3>Explore companies and labs</h3>
-        <p>Browse the catalog for company and lab briefs, technologies, and sources.</p>
+      <a class="path" href="/simulations/interface-designer/">
+        <h3>Design a neural interface</h3>
+        <p>Build grids, circles and custom arrays. Shape the contacts, compare lead arrangements and export your geometry.</p>
       </a>
       <a class="path" href="/simulations/">
         <h3>Run interactive simulations</h3>
@@ -58,6 +58,10 @@ const devices = (await getCollection("designs")).filter((p) => !p.data.draft);
       <a class="smallLink" href="/simulations/">All simulations →</a>
     </div>
     <div class="featureGrid">
+      <a class="feature" href="/simulations/interface-designer/">
+        <h3>Neural interface designer</h3>
+        <p>Micrometer-scale contact layouts, automatic multilayer routing and fabrication concept exports.</p>
+      </a>
       <a class="feature" href="/simulations/cortex-slab/">
         <h3>Cortical recording lab</h3>
         <p>Compare contact arrays, inspect synthetic recordings, and export raw traces.</p>
