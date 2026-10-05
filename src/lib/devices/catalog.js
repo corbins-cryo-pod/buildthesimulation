@@ -3,22 +3,57 @@
 const utahSource = { label: 'Blackrock — Utah Array specifications and photographs', url: 'https://blackrockneurotech.com/products/utah-array/' };
 const slantSource = { label: 'Blackrock — Slant Array specifications and side view', url: 'https://blackrockneurotech.com/products/slant-array/' };
 export const deviceModels = {
+  'BTSD-IMBCI-0010': {
+    id: 'connexus-421-cortical-reference', revision: 1, deviceId: 'BTSD-IMBCI-0010', kind: 'connexus',
+    name: 'Paradromics Connexus · 421-site reference', slug: '09-paradromics-connexus-acute-first-in-human',
+    physicalSites: 421, simultaneousChannels: null,
+    diameter: 10, bodyThickness: 1.5, ceramicDiameter: 8,
+    pitch: 0.3, length: 1.5, shaftDiameter: 0.04, tipLength: 0.08,
+    latticeRadiusSquared: 130,
+    specs: [['Physical electrodes', '421 microwires'], ['Pitch / insertion depth', '300 µm / 1.5 mm — manufacturer reported'], ['Module diameter', 'Approximately 10 mm — nominal envelope'], ['Wire diameter', '40 µm visualization bound; older source reports <40 µm'], ['Reconstructed details', 'Array boundary, 1.5 mm housing thickness and tip shape'], ['Electrical contact area / channel map', 'Unknown; exported as null']],
+    notes: 'Circular module reference guided by the 2024 manufacturer photograph. Count, pitch and depth follow public descriptions; the 421-point circularly cropped square lattice is a reconstruction, not a released contact map. A 10 mm envelope represents “about a centimeter”; housing thickness, ceramic face and 80 µm highlighted tip regions are illustrative. The 40 µm shafts use an upper-bound reference from older technical slides (<40 µm), not a measured current diameter. Those 2023 slides show a different, square package; its 9 mm dimension is not applied to this circular model. Exposed tip area, channel mapping, lead and internal electronics are not modeled.',
+    sources: [
+      { label: 'Paradromics — Connexus: 421 electrodes and 1.5 mm depth', url: 'https://paradromics.com/connexus/' },
+      { label: 'Paradromics (2026) — 300 µm electrode spacing', url: 'https://paradromics.com/blog/paradromics-sfn-part-2/' },
+      { label: 'Paradromics (2024) — circular, approximately 1 cm cortical module', url: 'https://paradromics.com/blog/neurotech-that-lasts/' },
+      { label: 'Paradromics technical slides (2023), slide 71 — older package and <40 µm PtIr wires', url: 'https://www.bis.gov/media/documents/brain-computer-interface-export-controls-bci-day-1-.pdf' },
+    ],
+    references: [{ label: 'Paradromics — circular cortical module photograph (2024)', url: 'https://paradromics.com/wp-content/uploads/2024/05/Cortical-Module-Close-Up_Paradromics_2-copy.jpg' }],
+  },
+  'BTSD-0002': {
+    id: 'neuralink-n1-64x16-2024-reference', revision: 1, deviceId: 'BTSD-0002', kind: 'neuralink',
+    name: 'Neuralink N1 · 64 × 16 · 2024 reference', slug: '02-neuralink-n1',
+    physicalSites: 1024, simultaneousChannels: 1024,
+    threadCount: 64, sitesPerThread: 16, sitePitch: 0.2,
+    threadMinWidth: 0.016, threadMaxWidth: 0.084, threadThickness: 0.0044,
+    diameter: 24, bodyThickness: 9,
+    fanPitch: 0.22, entryPitch: 0.085, threadStartY: 8, contactStartY: 20, threadEndY: 23.6, threadEndZ: 1.5,
+    firstSiteOffset: 0.2, visualContactWidth: 0.012, visualContactLength: 0.02,
+    specs: [['Physical sites', '1,024 · 64 threads × 16 sites'], ['Along-thread pitch', '200 µm — 2024 engineering interview'], ['Thread width / thickness', '16–84 µm / 4.4 µm stack described in interview'], ['Enclosure', 'Quarter-sized, about 9 mm thick; modeled at 24 × 9 mm'], ['Display pose', 'Unfurled fan; illustrative routing and thread spacing'], ['Contact shape / exposed area', '12 × 20 µm visual markers; actual area unknown']],
+    notes: 'Named 64-thread configuration described in 2024, not every N1 generation. UCLH later describes 128 threads × 8 sites. The fan is an unimplanted display pose, not a cortical placement map. 24 mm diameter approximates the quarter-sized enclosure; rim details, fan length, taper progression, spacing and 12 × 20 µm gold site markers are illustrative. The 4.4 µm thickness is the sum of the interview’s 2 µm polymer + 0.4 µm metal + 2 µm polymer layers. Actual contact shape/area, insertion loops, individual metal traces and internal electronics are unresolved. Camera detail views retain physical scale. Site IDs are geometric labels, not acquisition channel assignments.',
+    sources: [
+      { label: 'Neuralink — PRIME Study Progress Update (April 2024): 64 threads, 1,024 electrodes', url: 'https://neuralink.com/updates/prime-study-progress-update/' },
+      { label: 'DJ Seo, Neuralink engineering interview (2024), 02:03–02:15 — pitch, thread stack and enclosure', url: 'https://lexfridman.com/elon-musk-and-neuralink-team-transcript/' },
+      { label: 'UCLH (2025) — separately described 128 × 8 trial configuration', url: 'https://www.uclh.nhs.uk/news/uclh-evaluate-safety-and-functionality-neuralinks-brain-computer-interface-bci-technology' },
+    ],
+    references: [{ label: 'Neuralink — N1 exploded view from the 2024 PRIME update', url: 'https://cdn.buttercms.com/HsyAIkHURhOFMwmjO16q' }],
+  },
   'BTSD-0003': {
-    id: 'stentrode-16-500um-reference', revision: 1, deviceId: 'BTSD-0003', kind: 'stentrode',
+    id: 'stentrode-16-500um-reference', revision: 2, deviceId: 'BTSD-0003', kind: 'stentrode',
     name: 'Synchron Stentrode · 16-contact reference', slug: '03-stentrode-synchron',
-    physicalSites: 16, simultaneousChannels: 16,
+    physicalSites: 16, simultaneousChannels: 15,
     length: 40, diameter: 8, electrodeDiameter: 0.5,
-    latticeRows: 20, latticeColumns: 6, strutRadius: 0.04,
-    contactThickness: 0.05, firstContactRow: 2,
-    specs: [['Physical contacts', '16 platinum electrodes'], ['Reference scaffold', '40 mm long × 8 mm diameter'], ['Contact diameter', '500 µm — Kacker et al. (2025)'], ['Published spacing', 'Approximately 3 mm; exact map unavailable'], ['Modeled layout', 'Illustrative staggered strip on cylindrical lattice'], ['State', 'Nominal expanded reference; no vessel deformation']],
-    notes: 'Named reference configuration from Kacker et al. (2025), not a universal or current production specification. Lattice topology, 80 µm strut diameter, 50 µm contact thickness and exact contact positions are illustrative. Deployed diameter depends on vessel constraint. The 500 µm disks have a derived face area of 0.196 mm²; this is not the 0.3 mm² area reported separately by SWITCH, or the 300 µm diameter in a later preprint. Leads, insulation, delivery system and chest telemetry are omitted. Gold highlights contacts, not their real material color.',
+    latticeRows: 20, latticeColumns: 6, strutWidth: 0.08, strutThickness: 0.04,
+    contactThickness: 0.05, contactMountDiameter: 0.68, firstContactRow: 2, leadLength: 12, leadDiameter: 0.5,
+    specs: [['Physical contacts', '16 platinum electrodes · one used as reference in the study'], ['Reference scaffold', '40 mm long × 8 mm diameter'], ['Contact diameter', '500 µm — Kacker et al. (2025)'], ['Published spacing', 'Approximately 3 mm; exact map unavailable'], ['Revision 2', 'Curved flat struts, contact mounts and schematic lead stub'], ['State', 'Nominal expanded reference; no vessel deformation']],
+    notes: 'Named Kacker et al. (2025) reference, with 15 recording signals and one reference electrode; channel assignments remain unknown. Revision 2 uses curved flat struts and annular contact mounts guided by the manufacturer close-up. Lattice topology, 80 × 40 µm strut section, 680 µm mounts, 50 µm contact thickness and the 12 mm × 0.5 mm lead stub are illustrative. The staggered contact map is reconstructed. Nominal diameter is not a vessel-constrained deployment. The derived 0.196 mm² face area differs from SWITCH’s separately reported 0.3 mm² and a later preprint’s 300 µm disks. Internal wiring, delivery system and chest telemetry are omitted. Gold highlights electrodes.',
     sources: [
       { label: 'Kacker et al. (2025) — device dimensions, section 2.2 and Figure 1', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11956166/' },
       { label: 'University of Melbourne — full paper PDF', url: 'https://minerva-access.unimelb.edu.au/server/api/core/bitstreams/57a1e343-1a2d-4651-9380-1957524f0a05/content' },
       { label: 'SWITCH study (2023) — separately reported contact area', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9857731/' },
       { label: 'Schone et al. (2025 preprint) — separately reported 300 µm contacts', url: 'https://www.medrxiv.org/content/10.1101/2025.09.19.25335875v1.full' },
     ],
-    references: [{ label: 'Synchron — electrode close-up and research library', url: 'https://synchron.com/research' }],
+    references: [{ label: 'Synchron — electrode close-up and research library', url: 'https://synchron.com/research' }, { label: 'Synchron — contact mount and curved strut photograph', url: 'https://cdn.sanity.io/images/e828r2sn/production/5cfebc7a8c391f90bfffba4ffd35cc02d654c82a-2400x1600.jpg' }],
   },
   'BTSD-0001': {
     id: 'utah-10x10-1p5', revision: 1, deviceId: 'BTSD-0001', kind: 'utah',
@@ -64,6 +99,12 @@ export const deviceModels = {
 
 export function getDeviceModel(deviceId) { return deviceModels[deviceId] ?? null; }
 
+// A presentation pose, never a patient-specific implantation trajectory.
+export function getNeuralinkThread(model, thread) {
+  const index = thread - (model.threadCount - 1) / 2;
+  return { entryX: index * model.entryPitch, exitX: index * model.fanPitch };
+}
+
 // Right-handed local coordinates: substrate/tip plane is XY; insertion is +Z.
 // Utah origin: center of substrate tissue-facing surface. NP origin: shank base.
 export function getContactGeometry(model) {
@@ -88,12 +129,32 @@ export function getContactGeometry(model) {
         ], channel: null, contactAreaMm2: model.siteSize ** 2, positionMeaning: 'contact center' });
       }
     }
+  } else if (model.kind === 'connexus') {
+    const limit = Math.floor(Math.sqrt(model.latticeRadiusSquared));
+    for (let row = -limit; row <= limit; row++) {
+      for (let col = -limit; col <= limit; col++) {
+        if (row * row + col * col > model.latticeRadiusSquared) continue;
+        sites.push({ id: `site-${sites.length}`, latticeIndex: [col, row], positionMm: [col * model.pitch, row * model.pitch, model.length],
+          channel: null, contactAreaMm2: null, positionMeaning: 'microwire apex in reconstructed circular lattice; exposed-region centroid unknown' });
+      }
+    }
+  } else if (model.kind === 'neuralink') {
+    for (let thread = 0; thread < model.threadCount; thread++) {
+      const { exitX } = getNeuralinkThread(model, thread);
+      for (let contact = 0; contact < model.sitesPerThread; contact++) {
+        sites.push({ id: `site-${thread * model.sitesPerThread + contact}`, threadIndex: thread, contactIndex: contact,
+          positionMm: [exitX, model.contactStartY + model.firstSiteOffset + contact * model.sitePitch, model.threadEndZ + model.threadThickness / 2],
+          normal: [0, 0, 1], channel: null, contactAreaMm2: null,
+          visualizationSizeMm: [model.visualContactWidth, model.visualContactLength],
+          positionMeaning: 'illustrative pad center in unfurled display pose; not a cortical implantation coordinate' });
+      }
+    }
   } else if (model.kind === 'stentrode') {
     for (let i = 0; i < model.physicalSites; i++) {
       const row = model.firstContactRow + i;
       const angle = (row % 2) * Math.PI / model.latticeColumns;
       const normal = [Math.cos(angle), Math.sin(angle), 0];
-      const radius = model.diameter / 2 + model.strutRadius + model.contactThickness;
+      const radius = model.diameter / 2 + model.strutThickness / 2 + model.contactThickness;
       sites.push({ id: `site-${i}`, positionMm: [radius * normal[0], radius * normal[1], row * model.length / model.latticeRows],
         normal, channel: null, contactAreaMm2: Math.PI * (model.electrodeDiameter / 2) ** 2,
         areaMeaning: 'derived circular face area, not measured electrochemical area',
@@ -104,8 +165,8 @@ export function getContactGeometry(model) {
 }
 
 export function exportGeometry(model) {
-  return { schemaVersion: 1, units: 'mm', coordinateSystem: model.kind === 'stentrode' ? 'right-handed; scaffold longitudinal axis +Z; radial outward normals' : 'right-handed; insertion +Z; see origin',
-    origin: model.kind === 'stentrode' ? 'center of proximal scaffold end; scaffold extends from Z=0 to length' : model.kind === 'utah' ? 'center of tissue-facing substrate surface' : 'center of shank base',
+  return { schemaVersion: 1, units: 'mm', coordinateSystem: model.kind === 'stentrode' ? 'right-handed; scaffold longitudinal axis +Z; radial outward normals' : model.kind === 'neuralink' ? 'right-handed; display fan extends +Y; pad normals +Z; not an implanted pose' : 'right-handed; insertion +Z; see origin',
+    origin: model.kind === 'stentrode' ? 'center of proximal scaffold end; scaffold Z=0 to length; illustrative lead extends into negative Z' : ['utah', 'connexus'].includes(model.kind) ? 'center of tissue-facing substrate surface' : model.kind === 'neuralink' ? 'center of thread-facing enclosure surface; enclosure occupies negative Z' : 'center of shank base',
     model, sites: getContactGeometry(model),
     simulationNote: 'Geometric reference only. Assign channels, transform to tissue coordinates and supply a validated electrical model before simulation. Null area/channel values are unknown, not zero.' };
 }
