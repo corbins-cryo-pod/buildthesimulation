@@ -78,7 +78,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       const setView = (next: string) => {
         if (next === 'default') next = defaultView;
         view = next;
-        const isTip = next === 'tip', isDetail = ['tip', 'detail', 'thread'].includes(next);
+        const isTip = next === 'tip', isDetail = ['tip', 'detail', 'thread'].includes(next) || (model.kind === 'neuropixels' && ['front', 'side'].includes(next));
         grid.visible = !isDetail;
         const target = center.clone();
         let distance = extent / (2 * Math.tan(19 * Math.PI / 180)) * 1.12;
@@ -91,6 +91,8 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
           direction.set(0, -0.0001, 1).normalize();
           if (model.kind === 'stentrode') distance = Math.max(model.diameter * 1.7, bounds.max.z - center.z + model.diameter);
         }
+        // The Neuropixels shank is 70 µm wide and 10 mm long, so whole-shank orthogonal views are a hairline. Crop to the lowest 1.4 mm instead.
+        if (model.kind === 'neuropixels' && (next === 'front' || next === 'side')) { target.set(0, 0, 0.75); distance = 1.6; }
         if (isTip) { target.set(0, 0, model.length - 0.28); distance = 0.9; direction.set(0, -1, 0); }
         if (next === 'detail' && model.kind === 'connexus') { target.set(0, 0, 1.15); distance = 2.8; }
         if (next === 'detail' && model.kind === 'stentrode') {
@@ -117,7 +119,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       controls.addEventListener('change', render);
       const contextLost = (event: Event) => { event.preventDefault(); setReady(false); setStatus('3D graphics were interrupted. Reload to retry; dimensions and JSON export remain available.'); };
       renderer.domElement.addEventListener('webglcontextlost', contextLost);
-      api.current = { setView, contacts: (value: boolean) => { bodies.visible = !value; render(); }, zoom: (factor: number) => {
+      api.current = { setView, contacts: (value: boolean) => { bodies.visible = !value; if (value && model.kind === 'neuropixels' && view !== 'tip') setView('tip'); else render(); }, zoom: (factor: number) => {
         const delta = camera.position.clone().sub(controls.target).multiplyScalar(factor);
         delta.clampLength(controls.minDistance, controls.maxDistance);
         camera.position.copy(controls.target).add(delta); controls.update(); render();

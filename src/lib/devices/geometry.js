@@ -66,7 +66,9 @@ export function buildDeviceMesh(model) {
     const geom = new THREE.ExtrudeGeometry(shape, { depth: model.thickness, bevelEnabled: false });
     // shape X/Y -> model X/Z, extrusion -> negative Y.
     geom.rotateX(Math.PI / 2); geom.translate(0, model.thickness / 2, 0);
-    bodies.add(new THREE.Mesh(geom, silicon));
+    // Lighter than the shared silicon tone so the 70 µm shank reads against the dark canvas.
+    const shankMaterial = new THREE.MeshStandardMaterial({ color: 0x8b98aa, metalness: 0.2, roughness: 0.55 });
+    bodies.add(new THREE.Mesh(geom, shankMaterial));
     const contactShape = new THREE.PlaneGeometry(model.siteSize, model.siteSize);
     contactShape.rotateX(Math.PI / 2);
     for (const site of sites) {
