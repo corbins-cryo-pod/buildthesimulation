@@ -22,7 +22,7 @@ draft: false
 ### Device entries
 
 - [E-dura, electronic dura mater](/devices/28-e-dura-electronic-dura-mater/): soft implant carrying electrodes and drug channels. Cortical recording in free-moving animals and spinal stimulation that restored walking after paralysis, preclinical.
-- A separate entry covers a Europe-based human brain-spine interface: [Lorach 2023](/devices/48-brain-spine-interface-lorach-2023/). This brief does not claim EPFL as the home of that study.
+- A separate entry covers a Europe-based human brain-spine interface: [Lorach 2023](/applications/48-brain-spine-interface-lorach-2023/). This brief does not claim EPFL as the home of that study.
 
 ### Limits
 
