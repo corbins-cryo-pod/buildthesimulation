@@ -195,7 +195,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
   }
 
   return (
-    <section class="card">
+    <section class="card device-directory">
       <div class="top">
         <label class="search">
           <span class="srOnly">Search devices</span>
@@ -251,7 +251,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
           />
         </aside>
 
-        <main class="results">
+        <div class="results">
           <div class="grid">
             {filtered.map((e: any) => (
               <a class="item" href={`/devices/${e.slug}/`}>
@@ -272,41 +272,41 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
 
             {!filtered.length ? <p class="muted">No matching devices.</p> : null}
           </div>
-        </main>
+        </div>
       </div>
 
       <style>{`
-        .card{margin-top:14px;padding:22px 22px;border-radius:16px;border:1px solid var(--border);background:var(--panel)}
+        .device-directory{margin-top:14px;padding:22px 22px;border-radius:16px;border:1px solid var(--border);background:var(--panel)}
 
-        .top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-        .search{flex:1;min-width:260px}
-        .search input{width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:var(--panelStrong);color:inherit;font-size:14px}
-        .search input:focus{outline:none;border-color:var(--borderStrong)}
+        .device-directory .top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+        .device-directory .search{flex:1;min-width:min(260px,100%)}
+        .device-directory .search input{width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:var(--panelStrong);color:inherit;font-size:16px}
+        .device-directory .search input:focus{border-color:var(--borderStrong)}
 
-        .topRight{display:flex;gap:10px;align-items:center}
-        .count{opacity:.72;font-size:13px}
-        .clear{cursor:pointer;border-radius:999px;border:1px solid var(--border);background:transparent;color:inherit;padding:8px 12px;font-size:13px;opacity:.9}
-        .clear:hover{border-color:var(--borderStrong);background:var(--panelHover)}
+        .device-directory .topRight{display:flex;gap:10px;align-items:center}
+        .device-directory .count{opacity:.72;font-size:16px}
+        .device-directory .clear{cursor:pointer;border-radius:999px;border:1px solid var(--border);background:transparent;color:inherit;padding:8px 12px;font-size:16px;opacity:.9}
+        .device-directory .clear:hover{border-color:var(--borderStrong);background:var(--panelHover)}
 
-        .body{margin-top:16px;display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:start}
-        @media (max-width: 900px){.body{grid-template-columns:1fr}.sidebar{position:relative}}
+        .device-directory .body{margin-top:16px;display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:start}
+        @media (max-width: 900px){.device-directory .body{grid-template-columns:1fr}.device-directory .sidebar{position:relative}}
 
-        .sidebar{padding:14px 14px;border-radius:14px;border:1px solid var(--border);background:var(--panelStrong)}
+        .device-directory .sidebar{padding:14px 14px;border-radius:14px;border:1px solid var(--border);background:var(--panelStrong)}
 
-        .results{min-width:0}
-        .grid{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:10px}
-        @media (max-width: 900px){.grid{grid-template-columns:1fr}}
+        .device-directory .results{min-width:0}
+        .device-directory .grid{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:10px}
+        @media (max-width: 900px){.device-directory .grid{grid-template-columns:1fr}}
 
-        .item{display:block;padding:14px 14px;border-radius:14px;border:1px solid var(--border);background:var(--panel);color:inherit;text-decoration:none}
-        .item:hover{border-color:var(--borderStrong);transform:translateY(-1px);background:var(--panelHover)}
-        .itemTitle{margin:0;font-size:var(--title-card);font-weight:400;line-height:1.08}
-        .desc{margin:8px 0 0;opacity:.78;line-height:1.7}
+        .device-directory .item{display:block;padding:14px 14px;border-radius:14px;border:1px solid var(--border);background:var(--panel);color:inherit;text-decoration:none}
+        .device-directory .item:hover{border-color:var(--borderStrong);transform:translateY(-1px);background:var(--panelHover)}
+        .device-directory .itemTitle{margin:0;font-size:var(--title-card);font-weight:400;line-height:1.08}
+        .device-directory .desc{margin:8px 0 0;opacity:.78;line-height:1.5}
 
-        .badges{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
-        .badge{opacity:.78;font-size:12px;border:1px solid var(--border);border-radius:999px;padding:4px 8px;background:var(--panelStrong)}
+        .device-directory .badges{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
+        .device-directory .badge{opacity:.78;font-size:14px;border:1px solid var(--border);border-radius:999px;padding:4px 8px;background:var(--panelStrong)}
 
-        .muted{opacity:.72;margin:0;line-height:1.7}
-        .srOnly{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+        .device-directory .muted{opacity:.72;margin:0;line-height:1.5}
+        .device-directory .srOnly{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
       `}</style>
     </section>
   );
@@ -373,10 +373,10 @@ function FacetMulti(props: {
 }
 
 const facetCss = `
-  .facet{margin:0 0 14px;padding:0;border:0}
-  .facetTitle{opacity:.72;font-size:12px;letter-spacing:.12em;text-transform:none;margin:0 0 8px}
-  .facetList{display:grid;gap:8px}
-  .row{display:flex;gap:10px;align-items:flex-start;cursor:pointer;user-select:none}
-  .row input{margin-top:2px}
-  .lbl{font-size:13px;line-height:1.35}
+  .device-directory .facet{margin:0 0 14px;padding:0;border:0}
+  .device-directory .facetTitle{opacity:.72;font-size:16px;font-style:italic;letter-spacing:.02em;text-transform:none;margin:0 0 8px}
+  .device-directory .facetList{display:grid;gap:8px}
+  .device-directory .row{display:flex;gap:10px;align-items:flex-start;cursor:pointer;user-select:none}
+  .device-directory .row input{margin-top:2px}
+  .device-directory .lbl{font-size:16px;line-height:1.35}
 `;

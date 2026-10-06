@@ -173,14 +173,14 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
     </details>
     <style>{`
       .device-model{margin:24px 0;padding:20px;border:1px solid var(--border);border-radius:16px;background:var(--panelStrong);overflow:hidden}
-      .model-heading h3{font-size:1.45rem;margin:8px 0}.model-heading p{opacity:.75;margin:0 0 16px}.model-kicker{font-size:11px;letter-spacing:.14em;opacity:.7}
+      .model-heading h3{font-size:var(--title-card);margin:8px 0}.model-heading p{opacity:.75;margin:0 0 16px}.model-kicker{font-size:11px;letter-spacing:.14em;opacity:.7}
       .model-canvas{height:400px;width:100%;border-radius:10px;overflow:hidden;background:#101925;touch-action:none}.model-canvas canvas,.model-canvas svg{display:block;width:100%;height:100%}
       .model-status{font-size:12px;opacity:.8;min-height:2em}.model-controls{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
       .model-controls button{font:inherit;font-size:13px;color:inherit;background:var(--panel);border:1px solid var(--border);padding:9px 12px;border-radius:9px;cursor:pointer}.model-controls button:disabled{opacity:.45;cursor:default}
       .model-controls button[aria-pressed=true]{border-color:currentColor}.model-controls button:focus-visible,.model-sources summary:focus-visible{outline:2px solid currentColor;outline-offset:3px}
       .model-specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:18px 0}
-      .model-specs>div{padding:12px;background:var(--panel)}.model-specs span{display:block;font-size:12px;opacity:.72;margin-bottom:6px}.model-specs strong{font-size:14px;font-weight:500}
-      .model-note,.model-sources{font-size:13px;line-height:1.65}.model-note{opacity:.85}.model-sources{margin-top:18px}.model-sources summary{cursor:pointer}.model-sources a{color:inherit;text-decoration:underline}.model-sources li{margin:7px 0}
+      .model-specs>div{padding:12px;background:var(--panel)}.model-specs span{display:block;font-size:12px;opacity:.72;margin-bottom:6px}.model-specs strong{font-size:16px;font-weight:400}
+      .model-note,.model-sources{font-size:16px;line-height:1.65}.model-note{opacity:.85}.model-sources{margin-top:18px}.model-sources summary{cursor:pointer}.model-sources a{color:inherit;text-decoration:underline}.model-sources li{margin:7px 0}
       @media(max-width:600px){.device-model{padding:12px}.model-canvas{height:320px}.model-specs{grid-template-columns:1fr}}
     `}</style>
   </section>;

@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import DevicesDirectory from "../../components/DevicesDirectory";
+import { deviceModels } from "../../lib/devices/catalog.js";
 
 function stripPrefix(title) {
   return title.replace(/^\d+\s*[-—]\s*/, "");
@@ -31,31 +32,37 @@ const normalized = entries.map((p) => ({
 
 <Layout
   pageTitle="Devices"
-  subtitle="A searchable directory of neural interface devices and designs."
+  subtitle="Explore neural interfaces, inspect 3D models and design your own electrodes."
   description="BCI Devices: a searchable directory with curated facets (axis, interface type, directionality, form factor)."
 >
-  <section class="card">
-    <p class="muted">
-      This page catalogs devices and research designs, with filters for interface type, anatomy, and use case.
-    </p>
-    <p><a href="/devices/models/">Explore the 3D model collection →</a></p>
+  <section class="tools" aria-label="Device tools">
+    <a class="tool" href="/devices/models/">
+      <span class="eyebrow">{Object.keys(deviceModels).length} reference models</span>
+      <h2>3D model finder</h2>
+      <p>Explore implant geometry, inspect electrode details and download models with published dimensions and source notes.</p>
+      <span class="tool-link">Find a device model →</span>
+    </a>
+    <a class="tool" href="/devices/designer/">
+      <span class="eyebrow">Design workspace</span>
+      <h2>Neural interface designer</h2>
+      <p>Create electrode arrays, customize contact shapes and route leads. Export your layout at physical scale.</p>
+      <span class="tool-link">Open the designer →</span>
+    </a>
   </section>
-
+  <h2 class="catalog-title">Device catalog</h2>
+  <p class="muted">Browse {entries.length} devices and research designs by interface type, anatomy and use case.</p>
   <DevicesDirectory client:load entries={normalized} />
 </Layout>
 
 <style>
-  .card {
-    margin-top: 14px;
-    padding: 22px 22px;
-    border-radius: 16px;
-    border: 1px solid var(--border);
-    background: var(--panel);
-  }
-
-  .muted {
-    opacity: 0.72;
-    margin: 0;
-    line-height: 1.7;
-  }
+  .tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .tool { display: flex; flex-direction: column; padding: 22px; border: 1px solid var(--border); border-radius: 16px; background: var(--panel); text-decoration: none; color: inherit; }
+  .tool:hover { border-color: var(--borderStrong); background: var(--panelHover); }
+  .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; opacity: .72; }
+  .tool h2 { font-size: var(--title-card); margin: 10px 0 6px; }
+  .tool p { margin: 0 0 18px; line-height: 1.5; opacity: .82; }
+  .tool-link { margin-top: auto; font-size: 18px; font-style: italic; }
+  .catalog-title { font-size: var(--title-section); margin: 26px 0 8px; }
+  .muted { opacity: .72; margin: 0; line-height: 1.5; }
+  @media (max-width: 680px) { .tools { grid-template-columns: 1fr; } .tool { padding: 18px; } }
 </style>

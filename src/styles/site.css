@@ -1,0 +1,21 @@
+/* Shared editorial typography and controls, anchored to the homepage. */
+*, *::before, *::after { box-sizing: border-box; }
+a { color: inherit; text-underline-offset: 3px; }
+button, input, select, textarea { font-family: var(--font-body); }
+button { font-size: inherit; }
+button, summary, input, select { accent-color: #12756c; }
+:is(a, button, input, select, textarea, summary):focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+:is(.panelTitle, .stageTitle, .miniTitle, .dlgTitle) { font-family: var(--font-heading); font-weight: 400; }
+:is(.sub, .lede, .model-heading > p, .stageHint, .miniHint, .facetTitle) { font-style: italic; }
+:is(.content, .guide) table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; font-size: 17px; }
+:is(.content, .guide) :is(th, td) { padding: 10px 12px; border: 1px solid var(--border); text-align: left; vertical-align: top; }
+:is(.content, .guide) th { font-weight: 400; font-style: italic; background: var(--panelStrong); }
+.content pre { max-width: 100%; overflow-x: auto; }
+.content img { max-width: 100%; height: auto; }
+.content :is(p, li, a) { overflow-wrap: anywhere; }
+.leaflet-container, .leaflet-popup-content { font-family: var(--font-body); }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--menuBg); color: var(--text); }
+@media (max-width: 680px) {
+  main.wrap { padding: 32px 18px; }
+  main.wrap > .post { padding: 18px; min-width: 0; }
+}
