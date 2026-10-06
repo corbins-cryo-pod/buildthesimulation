@@ -12,7 +12,7 @@ modality: "Intracortical"
 successRank: 53
 website: "https://elifesciences.org/articles/18554"
 tags: ["typing", "point and click", "intracortical", "BrainGate2", "ALS", "tetraplegia", "decoder", "academic", "human"]
-devices: []
+devices: ["01-utah-microelectrode-array"]
 orgs: ["13-braingate-consortium-lab-brief"]
 draft: false
 ---
@@ -51,9 +51,12 @@ draft: false
 - *Versus earlier iBCIs:* typing rate 1.4 to 4.2 times, throughput 2.2 to 4.0 times
 
 ### Evidence and limits
-- *Not covered here:* array model and channel counts; no 3D model yet
+- *Array:* for participants T6 and T7 the paper gives a 96-channel intracortical silicon microelectrode array with 1.0 mm electrodes, Blackrock Microsystems
+- *Device link:* Blackrock's press release on this study says the team implanted the Utah Array
+- *Not covered here:* the third participant's array; no 3D model of this setup
 
 ---
 
 ### References
 - Pandarinath C, Nuyujukian P, Blabe CH, et al. *High performance communication by people with paralysis using an intracortical brain-computer interface.* eLife. 2017. <https://elifesciences.org/articles/18554>. PubMed: <https://pubmed.ncbi.nlm.nih.gov/28220753/>
+- Blackrock Microsystems press release, 21 February 2017. <https://blackrockneurotech.com/insights/blackrock-microsystems-powers-experimental-system-that-enabled-patients-with-paralysis-to-type-fast-and-accurately-in-a-clinical-trial/>
