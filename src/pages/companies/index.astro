@@ -6,7 +6,7 @@ const all = await getCollection("companies");
 const posts = all.filter((p) => !p.data.draft);
 
 function titleWithoutPrefix(title) {
-  return title.replace(/^\d+\s*[-â€”]\s*/, "");
+  return title.replace(/^\d+\s*[-—]\s*/, "");
 }
 
 function atlasTitle(title) {
@@ -46,7 +46,7 @@ const labs = posts.filter((p) => p.data.kind === "Lab").sort(sortBySizeThenTitle
       This page lists organizations in the BCI ecosystem and links to their detailed briefs.
     </p>
     <p class="muted" style="margin-top:10px;">
-      Want the geography view? â†’ <a href="/companies/map/">Open the atlas map</a>
+      Want the geography view? → <a href="/companies/map/">Open the atlas map</a>
     </p>
   </section>
 
