@@ -8,6 +8,13 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
+const apps = (await getCollection("applications"))
+  .filter((a) => !a.data.draft && a.data.orgs.includes(entry.slug))
+  .sort((a, b) => a.data.order - b.data.order);
+const allDevices = await getCollection("designs");
+const stripNum = (s) => s.replace(/^\d+\s*[-—]\s*/, "");
+const deviceSlugs = [...new Set(apps.flatMap((a) => a.data.devices))];
+const devices = deviceSlugs.map((s) => allDevices.find((d) => d.slug === s)).filter(Boolean);
 const { Content } = await render(entry);
 
 const lastVerified = entry.data.lastVerified
@@ -45,6 +52,23 @@ const titleNoPrefix = entry.data.title
       {entry.data.tags?.length ? <div class="meta">{entry.data.tags.join(" · ")}</div> : null}
       {lastVerified ? <div class="meta verified">Last reviewed against public sources: {lastVerified}</div> : null}
     </header>
+
+    {apps.length ? (
+      <section class="appList" aria-label="Applications">
+        <h3>Applications</h3>
+        <ul>
+          {apps.map((a) => <li><a href={`/applications/${a.slug}/`}>{stripNum(a.data.title)}</a></li>)}
+        </ul>
+        {devices.length ? (
+          <>
+            <h3>Devices used</h3>
+            <ul>
+              {devices.map((d) => <li><a href={`/devices/${d.slug}/`}>{stripNum(d.data.title)}</a></li>)}
+            </ul>
+          </>
+        ) : null}
+      </section>
+    ) : null}
 
     <section class="content">
       <Content />
@@ -165,4 +189,25 @@ const titleNoPrefix = entry.data.title
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
   }
+
+  .appList {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--panelStrong);
+  }
+
+  .appList h3 {
+    margin: 0 0 6px;
+    font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.12;
+  }
+
+  .appList h3:not(:first-child) { margin-top: 12px; }
+  .appList ul { margin: 0; padding-left: 1.1em; }
+  .appList li { margin: 0.25em 0; }
+  .appList a { color: inherit; }
 </style>

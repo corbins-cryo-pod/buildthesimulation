@@ -12,6 +12,10 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
+const apps = (await getCollection("applications"))
+  .filter((a) => !a.data.draft && a.data.devices.includes(entry.slug))
+  .sort((a, b) => a.data.order - b.data.order);
+const stripNum = (s) => s.replace(/^\d+\s*[-—]\s*/, "");
 const { Content } = await render(entry);
 
 const subtitle = entry.data.description ?? "BCI device entry.";
@@ -37,6 +41,15 @@ const titleNoPrefix = entry.data.title.replace(/^\d+\s*—\s*/, "");
 
     {entry.data.device_id === "BTSD-0001" && <RealRecordingExplorer client:visible />}
     {entry.data.device_id === "BTSD-0004" && <NeuropixelsExplorer client:visible />}
+
+    {apps.length ? (
+      <section class="appList" aria-label="Applications of this device">
+        <h3>Applications</h3>
+        <ul>
+          {apps.map((a) => <li><a href={`/applications/${a.slug}/`}>{stripNum(a.data.title)}</a></li>)}
+        </ul>
+      </section>
+    ) : null}
 
     <section class="content">
       <Content />
@@ -139,4 +152,24 @@ const titleNoPrefix = entry.data.title.replace(/^\d+\s*—\s*/, "");
     font-weight: 400;
     line-height: 1.12;
   }
+
+  .appList {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--panelStrong);
+  }
+
+  .appList h3 {
+    margin: 0 0 6px;
+    font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.12;
+  }
+
+  .appList ul { margin: 0; padding-left: 1.1em; }
+  .appList li { margin: 0.25em 0; }
+  .appList a { color: inherit; }
 </style>
