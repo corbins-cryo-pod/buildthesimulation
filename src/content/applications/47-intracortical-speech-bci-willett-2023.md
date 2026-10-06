@@ -57,10 +57,12 @@ draft: false
 - *Rate:* 62 words per minute
 
 ### Evidence and limits
-- *Not covered here:* channel count per array and array model; no 3D model yet
+- *Arrays (preprint methods):* four 64-channel, 1.5 mm silicon microelectrode arrays coated with sputtered iridium oxide, Blackrock Microsystems. This is a 64-channel build, so it is not linked to the 96-channel Utah array entry
+- *Not covered here:* the published Nature methods were not read for this entry; no 3D model yet
 - *Compare with:* the surface-array [UCSF speech work](/applications/46-ucsf-speech-neuroprosthesis-2023/)
 
 ---
 
 ### References
 - Willett FR, Kunz EM, Fan C, et al. *A high-performance speech neuroprosthesis.* Nature, 23 Aug 2023. <https://www.nature.com/articles/s41586-023-06377-x>
+- Willett FR, et al. *A high-performance speech neuroprosthesis.* bioRxiv preprint, methods section. <https://www.biorxiv.org/content/10.1101/2023.01.21.524489v2.full>

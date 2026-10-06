@@ -12,7 +12,7 @@ modality: "Cortical surface"
 successRank: 51
 website: "https://www.nejm.org/doi/full/10.1056/NEJMoa2027540"
 tags: ["speech", "ECoG", "anarthria", "brainstem stroke", "percutaneous connector", "128 electrodes", "academic", "human"]
-devices: []
+devices: ["63-pmt-high-density-ecog-array-percutaneous-connector"]
 orgs: ["29-ucsf-chang-lab-lab-brief"]
 draft: false
 ---
@@ -46,7 +46,7 @@ draft: false
 - *Participant:* one person with brainstem stroke
 
 ### Architecture
-- *Array:* 128 electrodes, 6.7 cm by 3.5 cm by 0.51 mm, subdural, made by PMT
+- *Array:* 128 electrodes in a 16-by-8 lattice, 4 mm center to center, 6.7 cm by 3.5 cm by 0.51 mm, subdural, made by PMT
 - *Connector:* percutaneous, Blackrock Microsystems
 - *Vocabulary:* 50 words
 
@@ -55,10 +55,11 @@ draft: false
 - *Stability:* signals stable across the 81-week study period
 
 ### Evidence and limits
-- *Not covered here:* electrode diameter and pitch; no 3D model yet
+- *Not covered here:* no 3D model yet
 - *Related:* the [2023 surface-array speech neuroprosthesis](/applications/46-ucsf-speech-neuroprosthesis-2023/) entry
 
 ---
 
 ### References
 - Moses DA, Metzger SL, Liu JR, et al. *Neuroprosthesis for decoding speech in a paralyzed person with anarthria.* N Engl J Med. 2021;385:217-227. <https://www.nejm.org/doi/full/10.1056/NEJMoa2027540>
+

@@ -12,7 +12,7 @@ modality: "Intracortical"
 successRank: 54
 website: "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(12)61816-9/abstract"
 tags: ["robotic arm", "7D control", "intracortical", "tetraplegia", "Modular Prosthetic Limb", "academic", "human"]
-devices: []
+devices: ["01-utah-microelectrode-array"]
 orgs: ["38-pitt-rehab-neural-engineering-labs-lab-brief", "39-jhu-apl-modular-prosthetic-limb-lab-brief"]
 draft: false
 ---
@@ -54,10 +54,13 @@ draft: false
 - *Success rate:* 91.6% vs 6.2% chance
 
 ### Evidence and limits
-- *Not covered here:* array dimensions; no 3D model yet
+- *Arrays:* two intracortical microelectrode arrays, 4 x 4 mm, Blackrock Microsystems, each with 96 electrode shanks 1.5 mm long, per the paper
+- *Device link:* the Pittsburgh explant paper (Frontiers in Bioengineering and Biotechnology, 2021) names the arrays implanted under NCT01364480 and NCT01894802 as Utah arrays
+- *Not covered here:* no 3D model of this setup
 
 ---
 
 ### References
 - Collinger JL, et al. *High-performance neuroprosthetic control by an individual with tetraplegia.* The Lancet. 2013. <https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(12)61816-9/abstract>
 - Author manuscript: *7 degree-of-freedom neuroprosthetic control by an individual with tetraplegia.* <https://pmc.ncbi.nlm.nih.gov/articles/PMC3641862/>
+- Explant analysis of Utah electrode arrays implanted in human cortex for brain-computer interfaces. Frontiers in Bioengineering and Biotechnology, 2021. <https://www.frontiersin.org/journals/bioengineering-and-biotechnology/articles/10.3389/fbioe.2021.759711/full>

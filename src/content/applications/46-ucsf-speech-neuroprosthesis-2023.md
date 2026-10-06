@@ -12,7 +12,7 @@ modality: "Cortical surface"
 successRank: 46
 website: "https://www.nature.com/articles/s41586-023-06443-4"
 tags: ["speech", "ECoG", "neuroprosthesis", "avatar", "deep learning", "paralysis", "UCSF", "academic", "human"]
-devices: []
+devices: ["63-pmt-high-density-ecog-array-percutaneous-connector"]
 orgs: ["29-ucsf-chang-lab-lab-brief"]
 draft: false
 ---
@@ -36,7 +36,7 @@ draft: false
 - Avatar: virtual orofacial movements for speech and non-speech communicative gestures.
 - The decoders reached high performance with less than two weeks of training.
 
-*Limits:* One participant. The abstract does not give the electrode count or array geometry, so none is stated here. An Author Correction was published on 4 July 2024.
+*Limits:* One participant. An Author Correction was published on 4 July 2024.
 
 ---
 
@@ -53,10 +53,12 @@ draft: false
 - *Outputs:* text, speech audio, facial avatar
 
 ### Evidence and limits
-- *Not covered here:* array dimensions and channel count; no 3D model yet
+- *Array:* 253-channel high-density ECoG array (PMT) with a percutaneous pedestal connector (Blackrock Microsystems), 3 mm center-to-center spacing, 1 mm recording contact and 2 mm overall diameter, per the paper's methods
+- *Not covered here:* overall array dimensions; no 3D model yet
 - *Compare with:* intracortical speech work such as the [Paradromics trial](/applications/40-paradromics-connect-one-study/)
 
 ---
 
 ### References
 - *A high-performance neuroprosthesis for speech decoding and avatar control.* Nature, 23 Aug 2023; Author Correction 4 Jul 2024. <https://www.nature.com/articles/s41586-023-06443-4>
+
