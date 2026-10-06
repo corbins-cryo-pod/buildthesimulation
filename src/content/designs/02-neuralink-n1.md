@@ -39,7 +39,7 @@ This is the **64-thread, 16-sites-per-thread configuration described in 2024**, 
 
 The model shows the enclosure envelope and all 64 flexible ribbons in a schematic unfurled pose. **Thread detail** shows a terminal recording section; **Contact detail** reveals the tiny site markers. Both change the camera only. Gold is a visual highlight, not a claim about the exposed contact’s actual appearance.
 
-Fan length, thread-to-thread spacing, bends, taper progression and enclosure trim are reconstruction choices. Internal chips, charging coil, surgical insertion loops and individual metal traces are omitted. No patient-specific trajectory or cortical insertion depth is encoded in this display pose.
+Fan length, thread-to-thread spacing, bends, taper progression and enclosure trim are reconstruction choices. Internal chips, the charging coil, surgical insertion loops and individual metal traces are omitted. ClinicalTrials.gov describes the N1 as a skull-mounted, wireless, rechargeable implant [4], so a coil exists, but no cited source gives its size or position and none is drawn. No patient-specific trajectory or cortical insertion depth is encoded in this display pose.
 
 JSON exports use millimeters and identify both thread and site index. Each physical site has a unique geometric ID; acquisition channel assignments and contact areas stay null. GLB uses meters and includes the full assembly even when viewing contacts only. Transforming the display fan into an implanted configuration requires independently specified trajectories and a validated electrical model.
 
@@ -54,3 +54,4 @@ Inductive charging and wireless data allow the implant to operate without a perc
 1. [Neuralink — PRIME Study Progress Update; April 12, 2024](https://neuralink.com/updates/prime-study-progress-update/). Includes the manufacturer’s [exploded N1 reference image](https://cdn.buttercms.com/HsyAIkHURhOFMwmjO16q).
 2. [DJ Seo — Neuralink engineering interview, Lex Fridman podcast #438 (2024)](https://lexfridman.com/elon-musk-and-neuralink-team-transcript/). See 02:03:33 for electrode layout, 02:07:03 for enclosure, 02:08:58 for width and 02:12:48 for the layer stack. These are public engineering descriptions, not released fabrication drawings.
 3. [UCLH — GB-PRIME study description; July 31, 2025](https://www.uclh.nhs.uk/news/uclh-evaluate-safety-and-functionality-neuralinks-brain-computer-interface-bci-technology). Documents a separate 128 × 8 arrangement and investigational study status.
+4. [ClinicalTrials.gov NCT06429735 — PRIME study](https://clinicaltrials.gov/study/NCT06429735). Describes the N1 Implant as skull-mounted, wireless and rechargeable.
