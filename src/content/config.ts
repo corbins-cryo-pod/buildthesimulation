@@ -63,4 +63,34 @@ const designs = defineCollection({
   }),
 });
 
-export const collections = { companies, designs };
+// An application is a device used for something: a study, a paradigm or a
+// clinical program. It points at the device(s) and the organizations involved.
+const applications = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    order: z.number().int().min(1),
+    pubDate: z.coerce.date().optional(),
+    updatedDate: z.coerce.date().optional(),
+    description: z.string().optional(),
+    application_id: z.string().optional(),
+    interface_class: z
+      .enum(["intracortical", "ecog", "seeg", "endovascular", "pni", "dbs", "scs", "other"])
+      .default("other"),
+    status: z.enum(["human", "preclinical", "research", "theoretical"]).default("theoretical"),
+    last_updated: z.coerce.date().optional(),
+    modality: z
+      .enum(["Intracortical", "Cortical surface", "Endovascular", "Peripheral nerve", "Noninvasive", "Other"])
+      .default("Other"),
+    website: z.string().url().optional(),
+    successRank: z.number().int().positive().optional(),
+    // Slugs of entries in the designs (device) collection.
+    devices: z.array(z.string()).default([]),
+    // Slugs of entries in the companies (atlas) collection.
+    orgs: z.array(z.string()).default([]),
+    tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { companies, designs, applications };
