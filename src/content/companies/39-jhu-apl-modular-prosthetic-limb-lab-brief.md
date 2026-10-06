@@ -22,7 +22,7 @@ The *Johns Hopkins University Applied Physics Laboratory (APL)* in Laurel, Maryl
 
 ### Device entries
 
-- [7 degree-of-freedom neuroprosthetic arm (Collinger, 2013)](/devices/54-seven-dof-arm-collinger-2013/): the participant controlled the MPL with two 96-channel intracortical arrays. The 2013 paper names the limb as the Modular Prosthetic Limb from Johns Hopkins University Applied Physics Laboratory.
+- [7 degree-of-freedom neuroprosthetic arm (Collinger, 2013)](/applications/54-seven-dof-arm-collinger-2013/): the participant controlled the MPL with two 96-channel intracortical arrays. The 2013 paper names the limb as the Modular Prosthetic Limb from Johns Hopkins University Applied Physics Laboratory.
 
 ### Related brief
 
