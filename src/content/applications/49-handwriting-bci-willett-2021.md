@@ -12,7 +12,7 @@ modality: "Intracortical"
 successRank: 49
 website: "https://www.nature.com/articles/s41586-021-03506-2"
 tags: ["handwriting", "intracortical", "motor cortex", "typing speed", "recurrent neural network", "spinal cord injury", "academic", "human"]
-devices: []
+devices: ["01-utah-microelectrode-array"]
 orgs: ["21-stanford-neural-engineering-bci-ecosystem-lab-brief"]
 draft: false
 ---
@@ -51,10 +51,13 @@ draft: false
 - *Prior intracortical typing record:* 39 correct characters per minute
 
 ### Evidence and limits
-- *Not covered here:* array model, channel count and placement; no 3D model
+- *Arrays:* two 96-channel microelectrode arrays in the hand knob area of precentral gyrus
+- *Device link:* the authors' data record on Zenodo calls them Utah arrays
+- *Not covered here:* the paper text read here does not name the array model; no 3D model
 - *Related:* the [2023 intracortical speech BCI](/applications/47-intracortical-speech-bci-willett-2023/) entry
 
 ---
 
 ### References
 - *High-performance brain-to-text communication via handwriting.* Nature, 12 May 2021. <https://www.nature.com/articles/s41586-021-03506-2>
+- Data from: High-performance brain-to-text communication via handwriting. Zenodo. <https://zenodo.org/records/4695519>
