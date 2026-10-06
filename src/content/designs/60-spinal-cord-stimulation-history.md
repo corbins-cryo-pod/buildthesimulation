@@ -25,7 +25,7 @@ draft: false
 
 ### Overview
 
-*What it is:* Electrical pulses delivered to the dorsal columns of the spinal cord to modulate pain pathways. For the epidural spinal cord interface used with a brain implant to restore walking, see the [brain-spine interface entry](/devices/48-brain-spine-interface-lorach-2023/).
+*What it is:* Electrical pulses delivered to the dorsal columns of the spinal cord to modulate pain pathways. For the epidural spinal cord interface used with a brain implant to restore walking, see the [brain-spine interface entry](/applications/48-brain-spine-interface-lorach-2023/).
 
 *History (as reported):*
 - 1965: Melzack and Wall proposed the gate control theory of pain. In this model, activation of large-diameter A-beta fibers suppresses nociceptive C-fiber input through inhibitory interneurons in the dorsal horn.
