@@ -1,4 +1,6 @@
 ---
+import DeviceSectionNav from "../components/DeviceSectionNav.astro";
+import "../styles/site.css";
 import NerveHero from "../components/NerveHero.astro";
 import { getCollection } from "astro:content";
 
@@ -17,11 +19,10 @@ const pathname = Astro.url?.pathname ?? "/";
 
 // Display title can be different from <title>
 const displayTitle = siteTitle;
-const isSimulationPath = pathname.startsWith("/sim") || pathname.startsWith("/simulations");
+const isDevicePath = pathname.startsWith("/devices") || pathname.startsWith("/designs");
 const isDirectoryIndexPath = /^\/(companies|devices|designs|simulations)\/?$/.test(pathname);
 const bodyClasses = [
   pathname === "/" ? "home" : undefined,
-  isSimulationPath ? "sim-no-compressed" : undefined,
   isDirectoryIndexPath ? "dir-index" : undefined,
 ].filter(Boolean);
 const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
@@ -99,7 +100,6 @@ function stripAtlasLabel(title) {
 
         <nav class="nav" aria-label="Primary">
           <a class={`pill ${pathname === "/" ? "active" : ""}`} href="/">Home</a>
-          <a class={`pill ${pathname.startsWith("/simulations/interface-designer") ? "active" : ""}`} href="/simulations/interface-designer/">Designer</a>
 
           <details class={`navDrop ${pathname.startsWith("/companies") ? "active" : ""}`}>
             <summary class="pill">BCI Atlas</summary>
@@ -118,7 +118,9 @@ function stripAtlasLabel(title) {
           <details class={`navDrop ${pathname.startsWith("/designs") || pathname.startsWith("/devices") ? "active" : ""}`}>
             <summary class="pill">Devices</summary>
             <div class="menu" role="menu">
-              <a class="menuItem" href="/devices">All devices →</a>
+              <a class="menuItem" href="/devices/">Device catalog →</a>
+              <a class="menuItem" href="/devices/models/">3D model finder →</a>
+              <a class="menuItem" href="/devices/designer/">Neural interface designer →</a>
               <div class="menuSep"></div>
               {designs.map((p) => (
                 <a class="menuItem" href={`/devices/${p.slug}/`}>
@@ -132,7 +134,6 @@ function stripAtlasLabel(title) {
             <summary class="pill">Simulations</summary>
             <div class="menu" role="menu">
               <a class="menuItem" href="/simulations">All simulations →</a>
-              <a class="menuItem" href="/simulations/interface-designer/">Neural interface designer</a>
               <div class="menuSep"></div>
               <a class="menuItem" href="/sim">Nerve cross-section sandbox</a>
               <a class="menuItem" href="/simulations/cortex-slab/">Cortical recording lab</a>
@@ -255,6 +256,8 @@ function stripAtlasLabel(title) {
         </script>
       </header>
 
+      {isDevicePath && <DeviceSectionNav pathname={pathname} />}
+
       <slot />
 
       <footer class="foot">
@@ -321,8 +324,10 @@ function stripAtlasLabel(title) {
     --title-hero: clamp(46px, 5.2vw, 88px);
     --title-page: clamp(56px, 6vw, 96px);
     --title-post: clamp(32px, 4.2vw, 46px);
-    --title-section: 22px;
-    --title-card: 22px;
+    --font-body: "Bodoni MT", "Times New Roman", serif;
+    --font-heading: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
+    --title-section: 32px;
+    --title-card: 32px;
     --text-meta: 13px;
     --text-kicker: 12px;
   }
@@ -349,7 +354,7 @@ function stripAtlasLabel(title) {
 
   :global(body) {
     margin: 0;
-    font-family: "Bodoni MT", "Times New Roman", serif;
+    font-family: var(--font-body);
     font-size: 22px;
     line-height: 1.34;
     color: var(--text);
@@ -358,7 +363,7 @@ function stripAtlasLabel(title) {
 
   :global(strong),
   :global(b) {
-    font-family: "Bodoni MT", "Times New Roman", serif;
+    font-family: var(--font-body);
     font-style: italic;
     font-weight: 400;
     text-transform: none;
@@ -371,7 +376,7 @@ function stripAtlasLabel(title) {
   :global(h4),
   :global(h5),
   :global(h6) {
-    font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
+    font-family: var(--font-heading);
     font-weight: 400;
   }
 
@@ -392,18 +397,6 @@ function stripAtlasLabel(title) {
   :global(p),
   :global(li) {
     line-height: 1.38;
-  }
-
-  :global(body.sim-no-compressed h1),
-  :global(body.sim-no-compressed h2),
-  :global(body.sim-no-compressed h3),
-  :global(body.sim-no-compressed h4),
-  :global(body.sim-no-compressed h5),
-  :global(body.sim-no-compressed h6),
-  :global(body.sim-no-compressed .panelTitle),
-  :global(body.sim-no-compressed .stageTitle),
-  :global(body.sim-no-compressed .miniTitle) {
-    font-family: "Bodoni MT", "Times New Roman", serif;
   }
 
   /* subtle paper grain */
@@ -457,8 +450,8 @@ function stripAtlasLabel(title) {
   }
 
   .homeTitle {
-    font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
-    font-size: 120px;
+    font-family: var(--font-heading);
+    font-size: clamp(74px, 9vw, 120px);
     line-height: 0.92;
     letter-spacing: 0.008em;
     white-space: nowrap;
@@ -536,8 +529,8 @@ function stripAtlasLabel(title) {
     position: absolute;
     top: calc(100% + 8px);
     left: 0;
-    min-width: 320px;
-    max-width: 520px;
+    min-width: min(320px, calc(100vw - 64px));
+    max-width: min(520px, calc(100vw - 64px));
     max-height: min(60vh, 520px);
     overflow: auto;
     padding: 10px;
@@ -558,13 +551,13 @@ function stripAtlasLabel(title) {
   }
 
   .menuItem:hover {
-    background: rgba(0, 0, 0, 0.05);
+    background: var(--panelHover);
   }
 
   .menuSep {
     height: 1px;
     margin: 8px 4px;
-    background: rgba(10, 10, 12, 0.12);
+    background: var(--border);
   }
 
   @media (hover: hover) {
@@ -577,8 +570,8 @@ function stripAtlasLabel(title) {
   :global(details.def) {
     margin: 12px 0;
     border-radius: 14px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid var(--border);
+    background: var(--panelStrong);
     backdrop-filter: blur(10px);
     overflow: hidden;
   }
@@ -587,7 +580,8 @@ function stripAtlasLabel(title) {
     cursor: pointer;
     list-style: none;
     padding: 10px 12px;
-    font-weight: 600;
+    font-weight: 400;
+    font-style: italic;
   }
 
   :global(details.def summary::-webkit-details-marker) {
@@ -609,6 +603,9 @@ function stripAtlasLabel(title) {
   }
 
   @media (max-width: 680px) {
+    .nav { position: relative; }
+    .navDrop { position: static; }
+    .menu { left: 0; right: 0; min-width: 0; max-width: none; width: 100%; }
     :global(body) { font-size: 20px; }
     h1 { font-size: 46px; }
     .pageTitle { font-size: 54px; }

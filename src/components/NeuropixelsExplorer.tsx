@@ -170,11 +170,11 @@ export default function NeuropixelsExplorer() {
     <noscript>Enable JavaScript to explore the recording. The source and license links above remain available.</noscript>
     <style>{`
       .np-recordings{margin:24px 0;padding:20px;border:1px solid var(--border);border-radius:16px;background:var(--panelStrong);overflow:hidden}
-      .np-kicker{font-size:11px;letter-spacing:.14em;opacity:.75}.np-recordings h3{font-size:1.45rem;margin:8px 0}.np-intro{line-height:1.65;font-size:14px;opacity:.85}
+      .np-kicker{font-size:11px;letter-spacing:.14em;opacity:.75}.np-recordings h3{font-size:var(--title-card);margin:8px 0}.np-intro{line-height:1.65;font-size:16px;opacity:.85}
       .np-controls{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0}.np-controls label{display:flex;flex-direction:column;gap:6px;font-size:12px;flex:1;min-width:140px}
-      .np-controls select,.np-transport button{font:inherit;color:inherit;background:var(--panel);border:1px solid var(--border);padding:10px;border-radius:9px;min-height:44px}.np-controls option{background:#101925;color:#edf3fb}.np-transport button{cursor:pointer}
+      .np-controls select,.np-transport button{font:inherit;color:inherit;background:var(--panel);border:1px solid var(--border);padding:10px;border-radius:9px;min-height:44px}.np-controls option{background:var(--menuBg);color:var(--text)}.np-transport button{cursor:pointer}
       .np-canvas{display:block;width:100%;height:500px;border-radius:10px;background:#101925;cursor:crosshair}.np-transport{display:flex;gap:8px;align-items:center;margin:12px 0;flex-wrap:wrap}.np-transport output{font-size:13px;margin-left:auto;font-variant-numeric:tabular-nums}
-      .np-scrub{display:block;font-size:12px}.np-scrub input{display:block;width:100%;min-height:44px;accent-color:#6edae6}.np-meta{font-size:12px;opacity:.75;line-height:1.6}.np-note,.np-sources{font-size:13px;line-height:1.65}.np-note{opacity:.85}.np-sources{margin-top:20px}.np-sources summary{cursor:pointer}.np-recordings a{color:inherit;text-decoration:underline}.np-download{font-size:13px}
+      .np-scrub{display:block;font-size:12px}.np-scrub input{display:block;width:100%;min-height:44px;accent-color:#6edae6}.np-meta{font-size:12px;opacity:.75;line-height:1.6}.np-note,.np-sources{font-size:16px;line-height:1.65}.np-note{opacity:.85}.np-sources{margin-top:20px}.np-sources summary{cursor:pointer}.np-recordings a{color:inherit;text-decoration:underline}.np-download{font-size:13px}
       .np-recordings button:focus-visible,.np-recordings select:focus-visible,.np-recordings input:focus-visible,.np-recordings summary:focus-visible,.np-recordings a:focus-visible{outline:2px solid #6edae6;outline-offset:3px}
       @media(max-width:600px){.np-recordings{padding:12px}.np-controls{gap:8px}.np-transport output{font-size:12px}}
     `}</style>

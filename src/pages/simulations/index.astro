@@ -3,16 +3,6 @@ import Layout from "../../layouts/Layout.astro";
 
 const sims = [
   {
-    href: "/simulations/interface-designer/",
-    title: "Neural interface designer",
-    desc: "Lay out up to 4,096 circle, square, ring and custom contacts. Compare lead exits, route across metal planes, and export physical-scale geometry and netlists.",
-  },
-  {
-    href: "/devices/models/",
-    title: "Device geometry explorer",
-    desc: "Explore Paradromics, Neuralink, Synchron, Utah and Neuropixels geometry. Inspect contacts at physical scale and export electrode coordinates and GLB meshes.",
-  },
-  {
     href: "/sim/",
     title: "Peripheral nerve cross-section",
     desc: "Original sandbox with electrodes, pulse visualization, zoom/pan, and experiment export/import.",
@@ -27,7 +17,7 @@ const sims = [
 
 <Layout pageTitle="Simulations" subtitle="Interactive simulation tools for neural interface exploration." description="Simulation launcher for buildthesimulation.">
   <section class="card">
-    <p class="muted">Start with the designer to lay out your own electrodes, then try the reference devices and recording experiments. All models are simplified, and each page says how.</p>
+    <p class="muted">Explore neural activity, electrode placement and synthetic recordings. Each experiment explains its assumptions and simplifications.</p>
   </section>
 
   <section class="grid">
@@ -79,14 +69,14 @@ const sims = [
 
   h2 {
     margin: 0 0 8px;
-    font-size: 1.05em;
-    font-weight: 700;
+    font-size: var(--title-card);
+    font-weight: 400;
   }
 
   p {
     margin: 0;
     opacity: 0.82;
-    line-height: 1.7;
+    line-height: 1.5;
   }
 
   @media (max-width: 680px) {

@@ -22,7 +22,8 @@ const devices = (await getCollection("designs")).filter((p) => !p.data.draft);
       Explore commercial implants, research labs and interactive simulations alongside your designs.
     </p>
     <div class="ctaRow">
-      <a class="btn primary" href="/simulations/interface-designer/">Open neural interface designer</a>
+      <a class="btn primary" href="/devices/designer/">Open neural interface designer</a>
+      <a class="btn" href="/devices/">Explore Devices</a>
       <a class="btn" href="/companies/">Explore BCI Atlas</a>
     </div>
   </section>
@@ -30,7 +31,11 @@ const devices = (await getCollection("designs")).filter((p) => !p.data.draft);
   <section class="card">
     <div class="row"><h2>Start here</h2></div>
     <div class="pathGrid">
-      <a class="path" href="/simulations/interface-designer/">
+      <a class="path" href="/devices/models/">
+        <h3>Find a 3D device model</h3>
+        <p>Inspect implant geometry, compare published dimensions and download models from the device collection.</p>
+      </a>
+      <a class="path" href="/devices/designer/">
         <h3>Design a neural interface</h3>
         <p>Build grids, circles and custom arrays. Shape the contacts, compare lead arrangements and export your geometry.</p>
       </a>
@@ -58,15 +63,11 @@ const devices = (await getCollection("designs")).filter((p) => !p.data.draft);
       <a class="smallLink" href="/simulations/">All simulations →</a>
     </div>
     <div class="featureGrid">
-      <a class="feature" href="/simulations/interface-designer/">
-        <h3>Neural interface designer</h3>
-        <p>Micrometer-scale contact layouts, automatic multilayer routing and fabrication concept exports.</p>
-      </a>
       <a class="feature" href="/simulations/cortex-slab/">
         <h3>Cortical recording lab</h3>
         <p>Compare contact arrays, inspect synthetic recordings, and export raw traces.</p>
       </a>
-      <a class="feature" href="/simulations/nerve-cross-section/">
+      <a class="feature" href="/sim/">
         <h3>Peripheral nerve cross-section</h3>
         <p>Explore fascicle-level geometry and interface behavior in a compact in-browser sandbox.</p>
       </a>

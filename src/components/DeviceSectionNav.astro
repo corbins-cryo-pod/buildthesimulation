@@ -1,0 +1,17 @@
+---
+const { pathname } = Astro.props;
+const sections = [
+  { href: '/devices/', label: 'Device catalog', active: !pathname.startsWith('/devices/models') && !pathname.startsWith('/devices/designer') },
+  { href: '/devices/models/', label: '3D model finder', active: pathname.startsWith('/devices/models') },
+  { href: '/devices/designer/', label: 'Interface designer', active: pathname.startsWith('/devices/designer') },
+];
+---
+<nav class="device-nav" aria-label="Devices">
+  {sections.map(section => <a href={section.href} aria-current={section.active ? 'page' : undefined}>{section.label}</a>)}
+</nav>
+<style>
+  .device-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; padding-bottom: 18px; border-bottom: 1px solid var(--border); }
+  a { display: block; padding: 8px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--panel); color: inherit; text-decoration: none; font-size: 18px; }
+  a:hover, a[aria-current] { background: var(--panelStrong); border-color: var(--borderStrong); }
+  a[aria-current] { font-style: italic; }
+</style>
