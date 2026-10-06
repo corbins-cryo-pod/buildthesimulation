@@ -12,7 +12,7 @@ modality: "Intracortical"
 successRank: 52
 website: "https://www.science.org/doi/10.1126/science.abd0380"
 tags: ["bidirectional BCI", "intracortical microstimulation", "somatosensory cortex", "tactile feedback", "robotic arm", "tetraplegia", "academic", "human"]
-devices: []
+devices: ["01-utah-microelectrode-array"]
 orgs: ["38-pitt-rehab-neural-engineering-labs-lab-brief"]
 draft: false
 ---
@@ -52,9 +52,11 @@ draft: false
 - *Median trial time:* 20.9 s to 10.2 s
 
 ### Evidence and limits
-- *Not covered here:* array model and dimensions; no 3D model yet
+- *Device link:* the Pittsburgh explant paper (Frontiers in Bioengineering and Biotechnology, 2021) names the arrays implanted under NCT01894802 as Utah arrays
+- *Not covered here:* array dimensions for this study; no 3D model of this setup
 
 ---
 
 ### References
 - Flesher SN, et al. *A brain-computer interface that evokes tactile sensations improves robotic arm control.* Science. 2021;372(6544):831-836. <https://www.science.org/doi/10.1126/science.abd0380>. Open copy: <https://pmc.ncbi.nlm.nih.gov/articles/PMC8715714/>
+- Explant analysis of Utah electrode arrays implanted in human cortex for brain-computer interfaces. Frontiers in Bioengineering and Biotechnology, 2021. <https://www.frontiersin.org/journals/bioengineering-and-biotechnology/articles/10.3389/fbioe.2021.759711/full>
