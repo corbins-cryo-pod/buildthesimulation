@@ -119,7 +119,7 @@ function stripAtlasLabel(title) {
             </div>
           </details>
 
-          <details class={`navDrop ${pathname.startsWith("/designs") || pathname.startsWith("/devices") ? "active" : ""}`}>
+          <details class={`navDrop ${pathname.startsWith("/designs") || (pathname.startsWith("/devices") && !pathname.startsWith("/devices/designer")) ? "active" : ""}`}>
             <summary class="pill">Devices</summary>
             <div class="menu" role="menu">
               <a class="menuItem" href="/devices/">Device catalog →</a>
@@ -133,6 +133,8 @@ function stripAtlasLabel(title) {
               ))}
             </div>
           </details>
+
+          <a class={`pill ${pathname.startsWith("/devices/designer") ? "active" : ""}`} href="/devices/designer/">Designer</a>
 
           <details class={`navDrop ${pathname.startsWith("/applications") ? "active" : ""}`}>
             <summary class="pill">Applications</summary>
