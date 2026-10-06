@@ -3,7 +3,7 @@ title: "Intracortical speech BCI (Willett, 2023)"
 order: 47
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
-device_id: "BTSD-ACAD-0026"
+application_id: "BTSD-ACAD-0026"
 interface_class: "intracortical"
 status: "human"
 last_updated: 2026-10-06
@@ -12,6 +12,8 @@ modality: "Intracortical"
 successRank: 47
 website: "https://www.nature.com/articles/s41586-023-06377-x"
 tags: ["speech", "intracortical", "ALS", "BrainGate2", "large vocabulary", "microelectrode array", "academic", "human"]
+devices: []
+orgs: ["13-braingate-consortium-lab-brief"]
 draft: false
 ---
 
@@ -56,7 +58,7 @@ draft: false
 
 ### Evidence and limits
 - *Not covered here:* channel count per array and array model; no 3D model yet
-- *Compare with:* the surface-array [UCSF speech work](/devices/46-ucsf-speech-neuroprosthesis-2023/)
+- *Compare with:* the surface-array [UCSF speech work](/applications/46-ucsf-speech-neuroprosthesis-2023/)
 
 ---
 

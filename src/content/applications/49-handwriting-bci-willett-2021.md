@@ -3,7 +3,7 @@ title: "Handwriting BCI (Willett, 2021)"
 order: 49
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
-device_id: "BTSD-ACAD-0028"
+application_id: "BTSD-ACAD-0028"
 interface_class: "intracortical"
 status: "human"
 last_updated: 2026-10-06
@@ -12,6 +12,8 @@ modality: "Intracortical"
 successRank: 49
 website: "https://www.nature.com/articles/s41586-021-03506-2"
 tags: ["handwriting", "intracortical", "motor cortex", "typing speed", "recurrent neural network", "spinal cord injury", "academic", "human"]
+devices: []
+orgs: ["21-stanford-neural-engineering-bci-ecosystem-lab-brief"]
 draft: false
 ---
 
@@ -50,7 +52,7 @@ draft: false
 
 ### Evidence and limits
 - *Not covered here:* array model, channel count and placement; no 3D model
-- *Related:* the [2023 intracortical speech BCI](/devices/47-intracortical-speech-bci-willett-2023/) entry
+- *Related:* the [2023 intracortical speech BCI](/applications/47-intracortical-speech-bci-willett-2023/) entry
 
 ---
 

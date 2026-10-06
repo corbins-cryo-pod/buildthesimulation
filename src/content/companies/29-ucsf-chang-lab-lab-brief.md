@@ -21,8 +21,8 @@ The *Chang Lab* at UCSF describes its speech work as the *BRAVO* clinical trial 
 
 ### Device entries
 
-- [UCSF speech neuroprosthesis, 2023](/devices/46-ucsf-speech-neuroprosthesis-2023/)
-- [Moses 2021 speech neuroprosthesis](/devices/51-moses-speech-neuroprosthesis-anarthria-2021/)
+- [UCSF speech neuroprosthesis, 2023](/applications/46-ucsf-speech-neuroprosthesis-2023/)
+- [Moses 2021 speech neuroprosthesis](/applications/51-moses-speech-neuroprosthesis-anarthria-2021/)
 
 ### Limits
 

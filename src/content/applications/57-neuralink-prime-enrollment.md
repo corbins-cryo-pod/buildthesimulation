@@ -3,7 +3,7 @@ title: "Neuralink PRIME study enrollment (2026)"
 order: 57
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
-device_id: "BTSD-ACAD-0036"
+application_id: "BTSD-ACAD-0036"
 interface_class: "intracortical"
 status: "human"
 last_updated: 2026-10-06
@@ -12,6 +12,8 @@ modality: "Intracortical"
 successRank: 57
 website: "https://clinicaltrials.gov/study/NCT06429735"
 tags: ["Neuralink", "N1", "PRIME", "enrollment", "clinical trial", "tracking", "human"]
+devices: ["02-neuralink-n1"]
+orgs: ["01-neuralink-company-brief"]
 draft: false
 ---
 

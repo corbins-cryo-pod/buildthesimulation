@@ -3,7 +3,7 @@ title: "Neurally controlled robotic arm, reach and grasp (2012)"
 order: 50
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
-device_id: "BTSD-ACAD-0029"
+application_id: "BTSD-ACAD-0029"
 interface_class: "intracortical"
 status: "human"
 last_updated: 2026-10-06
@@ -12,6 +12,8 @@ modality: "Intracortical"
 successRank: 50
 website: "https://www.nature.com/articles/nature11076"
 tags: ["robotic arm", "reach and grasp", "96-channel array", "motor cortex", "tetraplegia", "academic", "human"]
+devices: []
+orgs: ["13-braingate-consortium-lab-brief"]
 draft: false
 ---
 
@@ -33,7 +35,7 @@ draft: false
 
 *Limits stated by the authors:* The robotic reach and grasp actions were not as fast or accurate as those of an able-bodied person. The result demonstrates feasibility of recreating useful multidimensional control of complex devices from a small sample of neural signals, years after injury.
 
-*Earlier work:* The authors say they previously showed that people with long-standing tetraplegia can use a neural interface system to move and click a computer cursor and to control physical devices, and note that able-bodied monkeys had used one to control a robotic arm. The [BrainGate 2006 pilot](/devices/37-braingate-pilot-2006/) entry covers an earlier 96-microelectrode human study.
+*Earlier work:* The authors say they previously showed that people with long-standing tetraplegia can use a neural interface system to move and click a computer cursor and to control physical devices, and note that able-bodied monkeys had used one to control a robotic arm. The [BrainGate 2006 pilot](/applications/37-braingate-pilot-2006/) entry covers an earlier 96-microelectrode human study.
 
 ---
 

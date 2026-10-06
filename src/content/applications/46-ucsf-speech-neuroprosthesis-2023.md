@@ -3,7 +3,7 @@ title: "UCSF speech neuroprosthesis (Metzger, 2023)"
 order: 46
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
-device_id: "BTSD-ACAD-0025"
+application_id: "BTSD-ACAD-0025"
 interface_class: "ecog"
 status: "human"
 last_updated: 2026-10-06
@@ -12,6 +12,8 @@ modality: "Cortical surface"
 successRank: 46
 website: "https://www.nature.com/articles/s41586-023-06443-4"
 tags: ["speech", "ECoG", "neuroprosthesis", "avatar", "deep learning", "paralysis", "UCSF", "academic", "human"]
+devices: []
+orgs: ["29-ucsf-chang-lab-lab-brief"]
 draft: false
 ---
 
@@ -52,7 +54,7 @@ draft: false
 
 ### Evidence and limits
 - *Not covered here:* array dimensions and channel count; no 3D model yet
-- *Compare with:* intracortical speech work such as the [Paradromics trial](/devices/40-paradromics-connect-one-study/)
+- *Compare with:* intracortical speech work such as the [Paradromics trial](/applications/40-paradromics-connect-one-study/)
 
 ---
 

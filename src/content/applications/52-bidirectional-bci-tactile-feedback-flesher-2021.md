@@ -3,7 +3,7 @@ title: "Bidirectional BCI with tactile feedback (Flesher, 2021)"
 order: 52
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
-device_id: "BTSD-ACAD-0031"
+application_id: "BTSD-ACAD-0031"
 interface_class: "intracortical"
 status: "human"
 last_updated: 2026-10-06
@@ -12,6 +12,8 @@ modality: "Intracortical"
 successRank: 52
 website: "https://www.science.org/doi/10.1126/science.abd0380"
 tags: ["bidirectional BCI", "intracortical microstimulation", "somatosensory cortex", "tactile feedback", "robotic arm", "tetraplegia", "academic", "human"]
+devices: []
+orgs: ["38-pitt-rehab-neural-engineering-labs-lab-brief"]
 draft: false
 ---
 

@@ -3,7 +3,7 @@ title: "7 degree-of-freedom neuroprosthetic arm (Collinger, 2013)"
 order: 54
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
-device_id: "BTSD-ACAD-0033"
+application_id: "BTSD-ACAD-0033"
 interface_class: "intracortical"
 status: "human"
 last_updated: 2026-10-06
@@ -12,6 +12,8 @@ modality: "Intracortical"
 successRank: 54
 website: "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(12)61816-9/abstract"
 tags: ["robotic arm", "7D control", "intracortical", "tetraplegia", "Modular Prosthetic Limb", "academic", "human"]
+devices: []
+orgs: ["38-pitt-rehab-neural-engineering-labs-lab-brief", "39-jhu-apl-modular-prosthetic-limb-lab-brief"]
 draft: false
 ---
 

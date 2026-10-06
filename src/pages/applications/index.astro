@@ -1,0 +1,56 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const strip = (t) => t.replace(/^\d+\s*[-—]\s*/, "");
+const posts = (await getCollection("applications"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
+const devices = await getCollection("designs");
+const deviceName = (s) => {
+  const d = devices.find((x) => x.slug === s);
+  return d ? strip(d.data.title) : null;
+};
+---
+
+<Layout
+  pageTitle="Applications"
+  subtitle="Studies, paradigms and clinical programs that use a device."
+  description="BCI applications: studies and clinical programs, each linked to its device and the lab or organization behind it."
+>
+  <section class="card">
+    <p class="muted">
+      A device is the hardware. An application is a device used for something: a study, a decoding paradigm or a clinical program. Each entry links to its device where the catalog has one, and to the lab or organization in the atlas.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Applications</h2>
+    <p class="muted count">{posts.length} entries</p>
+    <div class="list">
+      {posts.map((p) => {
+        const names = p.data.devices.map(deviceName).filter(Boolean);
+        return (
+          <a class="item" href={`/applications/${p.slug}/`}>
+            <h3>{strip(p.data.title)}</h3>
+            {names.length ? <p class="on">Device: {names.join(", ")}</p> : null}
+            {p.data.description ? <p class="desc">{p.data.description}</p> : null}
+          </a>
+        );
+      })}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .card { margin-top: 14px; padding: 22px 22px; border-radius: 16px; border: 1px solid var(--border); background: var(--panel); }
+  .muted { opacity: 0.72; margin: 0; line-height: 1.5; }
+  .count { margin-bottom: 12px; }
+  h2 { margin: 0 0 8px; font-size: var(--title-section); font-weight: 400; line-height: 1.06; }
+  .list { display: grid; gap: 10px; }
+  .item { display: block; padding: 14px 14px; border-radius: 14px; border: 1px solid var(--border); background: var(--panel); color: inherit; text-decoration: none; }
+  .item:hover { border-color: var(--borderStrong); transform: translateY(-1px); background: var(--panelHover); }
+  h3 { margin: 0; font-size: var(--title-card); font-weight: 400; line-height: 1.08; }
+  .on { margin: 8px 0 0; opacity: 0.72; font-size: var(--text-meta); }
+  .desc { margin: 8px 0 0; opacity: 0.78; line-height: 1.7; }
+</style>

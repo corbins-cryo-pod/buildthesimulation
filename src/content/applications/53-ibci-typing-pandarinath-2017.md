@@ -3,7 +3,7 @@ title: "Intracortical typing BCI (Pandarinath, 2017)"
 order: 53
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
-device_id: "BTSD-ACAD-0032"
+application_id: "BTSD-ACAD-0032"
 interface_class: "intracortical"
 status: "human"
 last_updated: 2026-10-06
@@ -12,6 +12,8 @@ modality: "Intracortical"
 successRank: 53
 website: "https://elifesciences.org/articles/18554"
 tags: ["typing", "point and click", "intracortical", "BrainGate2", "ALS", "tetraplegia", "decoder", "academic", "human"]
+devices: []
+orgs: ["13-braingate-consortium-lab-brief"]
 draft: false
 ---
 
@@ -29,7 +31,7 @@ draft: false
 
 *Results (as reported):* For all three participants, typing rate exceeded earlier intracortical BCIs by a factor of 1.4 to 4.2, and information throughput by a factor of 2.2 to 4.0. Average copy-typing rates were 31.6 correct characters per minute (6.3 words per minute) for T6, 39.2 (7.8 wpm) for T5, and 13.5 (2.7 wpm) for T7. T6, who has ALS, averaged 23.9 correct characters per minute on a QWERTY keyboard and 31.6 on the OPTI-II layout, 1.3 times faster.
 
-*Why it matters:* It set the intracortical typing benchmark. The 2021 handwriting paper cites T5's 39 correct characters per minute from this work as the prior record. See the [handwriting BCI entry](/devices/49-handwriting-bci-willett-2021/).
+*Why it matters:* It set the intracortical typing benchmark. The 2021 handwriting paper cites T5's 39 correct characters per minute from this work as the prior record. See the [handwriting BCI entry](/applications/49-handwriting-bci-willett-2021/).
 
 *Limits:* Three participants, with a wide spread between them. The sources read here do not describe the array hardware.
 

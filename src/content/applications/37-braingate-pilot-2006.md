@@ -3,7 +3,7 @@ title: "BrainGate pilot, first human results (2006)"
 order: 37
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
-device_id: "BTSD-ACAD-0016"
+application_id: "BTSD-ACAD-0016"
 interface_class: "intracortical"
 status: "human"
 last_updated: 2026-10-06
@@ -12,6 +12,8 @@ modality: "Intracortical"
 successRank: 37
 website: "https://www.nature.com/articles/nature04970"
 tags: ["BrainGate", "Utah array", "motor cortex", "tetraplegia", "neural cursor", "historical", "academic", "human"]
+devices: ["01-utah-microelectrode-array"]
+orgs: ["13-braingate-consortium-lab-brief"]
 draft: false
 ---
 

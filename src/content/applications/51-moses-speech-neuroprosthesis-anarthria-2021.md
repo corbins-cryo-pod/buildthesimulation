@@ -3,7 +3,7 @@ title: "Speech neuroprosthesis for anarthria (Moses, 2021)"
 order: 51
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
-device_id: "BTSD-ACAD-0030"
+application_id: "BTSD-ACAD-0030"
 interface_class: "ecog"
 status: "human"
 last_updated: 2026-10-06
@@ -12,6 +12,8 @@ modality: "Cortical surface"
 successRank: 51
 website: "https://www.nejm.org/doi/full/10.1056/NEJMoa2027540"
 tags: ["speech", "ECoG", "anarthria", "brainstem stroke", "percutaneous connector", "128 electrodes", "academic", "human"]
+devices: []
+orgs: ["29-ucsf-chang-lab-lab-brief"]
 draft: false
 ---
 
@@ -54,7 +56,7 @@ draft: false
 
 ### Evidence and limits
 - *Not covered here:* electrode diameter and pitch; no 3D model yet
-- *Related:* the [2023 surface-array speech neuroprosthesis](/devices/46-ucsf-speech-neuroprosthesis-2023/) entry
+- *Related:* the [2023 surface-array speech neuroprosthesis](/applications/46-ucsf-speech-neuroprosthesis-2023/) entry
 
 ---
 

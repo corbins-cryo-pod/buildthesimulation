@@ -20,7 +20,7 @@ const pathname = Astro.url?.pathname ?? "/";
 // Display title can be different from <title>
 const displayTitle = siteTitle;
 const isDevicePath = pathname.startsWith("/devices") || pathname.startsWith("/designs");
-const isDirectoryIndexPath = /^\/(companies|devices|designs|simulations)\/?$/.test(pathname);
+const isDirectoryIndexPath = /^\/(companies|devices|designs|applications|simulations)\/?$/.test(pathname);
 const bodyClasses = [
   pathname === "/" ? "home" : undefined,
   isDirectoryIndexPath ? "dir-index" : undefined,
@@ -45,6 +45,10 @@ const designs = (await getCollection("designs"))
     if (ar !== br) return ar - br;
     return stripPrefix(a.data.title).localeCompare(stripPrefix(b.data.title));
   });
+
+const applications = (await getCollection("applications"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => a.data.order - b.data.order);
 
 function stripPrefix(title) {
   return title.replace(/^\d+\s*[-—]\s*/, "");
@@ -124,6 +128,19 @@ function stripAtlasLabel(title) {
               <div class="menuSep"></div>
               {designs.map((p) => (
                 <a class="menuItem" href={`/devices/${p.slug}/`}>
+                  {stripPrefix(p.data.title)}
+                </a>
+              ))}
+            </div>
+          </details>
+
+          <details class={`navDrop ${pathname.startsWith("/applications") ? "active" : ""}`}>
+            <summary class="pill">Applications</summary>
+            <div class="menu" role="menu">
+              <a class="menuItem" href="/applications/">All applications →</a>
+              <div class="menuSep"></div>
+              {applications.map((p) => (
+                <a class="menuItem" href={`/applications/${p.slug}/`}>
                   {stripPrefix(p.data.title)}
                 </a>
               ))}

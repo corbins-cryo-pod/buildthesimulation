@@ -3,7 +3,7 @@ title: "Brain-spine interface (Lorach, 2023)"
 order: 48
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
-device_id: "BTSD-ACAD-0027"
+application_id: "BTSD-ACAD-0027"
 interface_class: "other"
 status: "human"
 last_updated: 2026-10-06
@@ -12,6 +12,8 @@ modality: "Cortical surface"
 successRank: 48
 website: "https://www.nature.com/articles/s41586-023-06094-5"
 tags: ["brain-spine interface", "WIMAGINE", "epidural stimulation", "spinal cord injury", "walking", "closed loop", "Europe", "academic", "human"]
+devices: ["07-wimagine-cea-clinatec-epidural-wireless-ecog"]
+orgs: ["34-epfl-neuroprosthetics-lab-brief", "14-cea-clinatec-wimagine-lab-brief"]
 draft: false
 ---
 

@@ -3,7 +3,7 @@ title: "Stentrode SWITCH study (first in human)"
 order: 62
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
-device_id: "BTSD-ACAD-0041"
+application_id: "BTSD-ACAD-0041"
 interface_class: "endovascular"
 status: "human"
 last_updated: 2026-10-06
@@ -12,6 +12,8 @@ modality: "Endovascular"
 successRank: 62
 website: "https://jamanetwork.com/journals/jamaneurology/fullarticle/2799839"
 tags: ["Stentrode", "SWITCH", "endovascular", "ALS", "superior sagittal sinus", "Synchron", "clinical trial", "academic", "human"]
+devices: ["03-stentrode-synchron"]
+orgs: ["02-synchron-company-brief"]
 draft: false
 ---
 
@@ -25,7 +27,7 @@ draft: false
 
 ### Overview
 
-*What it is:* The Stentrode With Thought-Controlled Digital Switch (SWITCH) study, a single-center, prospective, open-label first in-human study at the Royal Melbourne Hospital in Parkville, Australia. Five patients with severe bilateral upper-limb paralysis were enrolled: four with amyotrophic lateral sclerosis and one with primary lateral sclerosis. One was withdrawn because preimplant MRI showed isolated transverse sinus drainage. Four received the implant, delivered by a neurointerventional procedure into the superior sagittal sinus. The study started on 27 May 2019 and final follow-up was completed on 9 January 2022. For the later US trial, see the [Synchron COMMAND entry](/devices/44-synchron-command-study/).
+*What it is:* The Stentrode With Thought-Controlled Digital Switch (SWITCH) study, a single-center, prospective, open-label first in-human study at the Royal Melbourne Hospital in Parkville, Australia. Five patients with severe bilateral upper-limb paralysis were enrolled: four with amyotrophic lateral sclerosis and one with primary lateral sclerosis. One was withdrawn because preimplant MRI showed isolated transverse sinus drainage. Four received the implant, delivered by a neurointerventional procedure into the superior sagittal sinus. The study started on 27 May 2019 and final follow-up was completed on 9 January 2022. For the later US trial, see the [Synchron COMMAND entry](/applications/44-synchron-command-study/).
 
 *Earlier report:* A 2021 Journal of NeuroInterventional Surgery paper described two participants with ALS. It reported unsupervised home use from day 86 for participant 1 and day 71 for participant 2, and typing at 13.81 and 20.10 correct characters per minute with an eye tracker for cursor navigation, with predictive text disabled.
 

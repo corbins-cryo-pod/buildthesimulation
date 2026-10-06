@@ -3,7 +3,7 @@ title: "Synchron COMMAND study results"
 order: 44
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
-device_id: "BTSD-ACAD-0023"
+application_id: "BTSD-ACAD-0023"
 interface_class: "endovascular"
 status: "human"
 last_updated: 2026-10-06
@@ -12,6 +12,8 @@ modality: "Endovascular"
 successRank: 44
 website: "https://journals.lww.com/neurosurgery/pdf/10.1227/neu.0000000000003360_47238~47238results-of-the-command-trial-an-early-feasibility-study"
 tags: ["Synchron", "Stentrode", "COMMAND", "endovascular", "early feasibility study", "FDA IDE", "human"]
+devices: ["03-stentrode-synchron"]
+orgs: ["02-synchron-company-brief"]
 draft: false
 ---
 

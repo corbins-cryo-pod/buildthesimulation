@@ -27,8 +27,8 @@ The *Rehab Neural Engineering Labs* (the Rehabilitation and Neural Engineering L
 
 ### Device entries
 
-- [7 degree-of-freedom neuroprosthetic arm (Collinger, 2013)](/devices/54-seven-dof-arm-collinger-2013/)
-- [Bidirectional BCI with tactile feedback (Flesher, 2021)](/devices/52-bidirectional-bci-tactile-feedback-flesher-2021/)
+- [7 degree-of-freedom neuroprosthetic arm (Collinger, 2013)](/applications/54-seven-dof-arm-collinger-2013/)
+- [Bidirectional BCI with tactile feedback (Flesher, 2021)](/applications/52-bidirectional-bci-tactile-feedback-flesher-2021/)
 
 ### Limits
 

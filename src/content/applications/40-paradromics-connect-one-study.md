@@ -3,7 +3,7 @@ title: "Paradromics Connexus, Connect-One study"
 order: 40
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
-device_id: "BTSD-ACAD-0019"
+application_id: "BTSD-ACAD-0019"
 interface_class: "intracortical"
 status: "human"
 last_updated: 2026-10-06
@@ -12,6 +12,8 @@ modality: "Intracortical"
 successRank: 40
 website: "https://paradromics.com/news/paradromics-completes-first-human-brain-computer-interface-bci-implantation/"
 tags: ["Paradromics", "Connexus", "speech", "early feasibility study", "IDE", "wireless", "human", "company"]
+devices: ["09-paradromics-connexus-acute-first-in-human"]
+orgs: ["03-paradromics-company-brief"]
 draft: false
 ---
 
