@@ -1,5 +1,5 @@
 ---
-title: "UC Berkeley, neural dust (lab brief)"
+title: "University of California, Berkeley (lab brief)"
 order: 32
 pubDate: 2026-10-06
 updatedDate: 2026-10-07
