@@ -16,6 +16,12 @@ for (const model of Object.values(deviceModels)) {
   const {group,contacts} = buildDeviceMesh(model);
   assert.equal(contacts.children.length, model.physicalSites);
   const bounds = new Box3().setFromObject(group);
+  if (model.kind === 'surface-grid') {
+    close(sites[1].positionMm[0] - sites[0].positionMm[0], .03);
+    close(sites[16].positionMm[1] - sites[0].positionMm[1], .03);
+    close(bounds.max.x - bounds.min.x, .48); close(bounds.max.z - bounds.min.z, .004);
+    assert(sites.every(s => s.positionMm[2] === 0 && Math.abs(s.contactAreaMm2 - .0001) < 1e-9));
+  }
   if (model.kind === 'utah') {
     close(sites[1].positionMm[0] - sites[0].positionMm[0], .4);
     close(sites[10].positionMm[1] - sites[0].positionMm[1], .4);
@@ -112,7 +118,7 @@ for (const model of Object.values(deviceModels)) {
   close(root.matrix[0],.001); close(root.matrix[5],.001); close(root.matrix[10],.001);
   assert.equal(root.extras.units,'meters');
   assert(json.nodes.some(n=>n.name==='substrate-and-shanks'));
-  assert.equal(json.nodes.filter(n=>n.name?.startsWith(model.kind==='utah'?'r':'site-') && n.mesh !== undefined).length,model.physicalSites);
+  assert.equal(json.nodes.filter(n=>n.name?.startsWith(['utah','surface-grid'].includes(model.kind)?'r':'site-') && n.mesh !== undefined).length,model.physicalSites);
   assert.equal(group.children[0].visible,false, 'Export must not mutate the viewer');
   disposeDeviceMesh(group);
 }
