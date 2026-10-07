@@ -17,136 +17,115 @@ draft: false
 
 # Neurotrophic Electrode (Kennedy cone electrode)
 
-> *One-line verdict:* A biologically integrated intracortical electrode that encourages neurite ingrowth for long-term single-unit recording, trading channel count and scalability for potential stability.
+The tables use the same field framework as the other implant-device sheets. Values belong to the named study or configuration. Unreported means the reviewed sources do not establish a value, not that the device lacks that property.
 
-*Quick tags:* Recording · Intracortical · Neurotrophic · Species: Human · First implanted: 1990s (reported)
+## Identity
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Device | Neurotrophic electrode, Kennedy cone family |
+| Manufacturer | Neural Signals research program; 2008 assembly report |
+| Interface class | Intracortical neurite-ingrowth electrode |
+| Origin | Kennedy and collaborators; historical human recording program |
+| First demonstrated | Unreported in reviewed sources |
+| First human implant | A human restoration report was published in 1998; earliest implantation date not established by this audit |
+| Species studied | Human in reviewed 2008 and 2020 reports |
+| Regulatory status | 2020 study reports FDA IDE G960032; not general commercial approval |
+| Function | Recording for communication research |
+| Target tissue | Motor speech cortex in the reviewed subject |
 
-### Overview
+## Geometry and architecture
 
-*What it is:* The Neurotrophic Electrode (NTE), also known as the cone electrode, is an intracortical neural interface designed to promote neurite growth into a hollow cone containing recording microwires. Rather than relying purely on mechanical compliance or coatings to reduce tissue response, it aims for biological integration (ingrowth) to stabilize the recording interface.
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Penetrating intracortical glass cone with ingrown neuropil |
+| Array layout | Hollow glass cone containing gold wires |
+| Electrode count | Three gold wires and two recording channels in 2020 subject 5; 2008 abstract describes a four-wire version, not one universal count |
+| Pitch | Configuration dependent; wires offset inside cone, no uniform grid pitch |
+| Electrode lengths | Cone length 1.5-2 mm, 2020 Methods |
+| Shank width and thickness | Cone openings: 50 µm at deep end and 200-300 µm at upper end, 2020 Methods; wall thickness unreported |
+| Tip and exposed site geometry | Hollow tip; closest wire end about 500 µm from deep opening in subject 5, 2020 |
+| Contact coating | 99.9% gold wire, 2020 Methods; separate coating unreported |
+| Insulation | Teflon-insulated 2 mil gold wires, glass cone and acrylic assembly, 2020 Methods |
+| Insertion method | Surgical insertion into cortex; depth and angle not generalized across versions |
+| Anchoring and fixation | Neurite ingrowth through cone; coiled flexible leads reduce strain, 2020 Methods |
 
-*Why it matters:* The NTE represents a distinct philosophy from many modern intracortical arrays: invite neurons in rather than repeatedly penetrating tissue with many shanks. It contributed early demonstrations of long-term human single-unit recording and BCI control using very low channel counts.
+## Electrode and channel physics
 
-*Most comparable devices:* early microwire approaches (signal class), Utah array (contrast in scaling/channel count), regenerative PNI interfaces (conceptual similarity: ingrowth/integration).
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in reviewed sources |
+| Electrode material | 99.9% gold wires inside glass cone, 2020 Methods |
+| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Noise floor or SNR | 2020 subject 5: neural amplitude 12-80 µV peak-to-peak, system noise reported as 10 µV without a standardized RMS bandwidth qualification |
+| Recording modality | Single-unit and continuous neural recordings, 2020 Methods |
+| Sampling rate | Unreported as a single hardware sampling rate; 2020 describes digital filtering and approximately 1 ms spike windows |
+| Stimulation capability | Not used for stimulation in 2020 configuration |
+| Charge injection limit | Not applicable to reviewed recording configuration |
+| Reference and ground | Three wires feed two differential recording channels in 2020; pin-level reference assignment unreported |
 
----
+## Tissue interface and bioresponse
 
-### Spec Card Grid
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Motor speech cortex |
+| Insertion trauma and BBB disruption | Penetrating cortical placement; quantitative BBB injury unreported |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Coiled leads intended to reduce strain at tip, 2020; quantified micromotion unreported |
+| Gliosis and encapsulation | 2020 single-subject tip histology reports neurofilaments and absence of gliosis inside tip after 13 years; not a whole-cortex or cohort claim |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Unreported in reviewed sources |
+| Typical failure modes | 2020: handling-related trauma required three electronics replacements; electrode itself did not need replacement |
 
-### Identity
-- *Device name:* Neurotrophic Electrode (NTE)
-- *Canonical ID:* BTSD-IMBCI-0009
-- *Inventor / key authors:* Philip R. Kennedy; Roy A. E. Bakay
-- *Org / manufacturer:* academic / historical research program
-- *First demonstrated (year):* ~1990 (reported)
-- *First implanted (year):* 1990s (reported)
-- *Species:* human
-- *Regulatory / trial status:* human research (historical)
-- *Primary use:* recording
-- *Primary target:* motor cortex (reported; motor and speech motor areas appear in literature)
+## System architecture
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Subcutaneous skull-mounted differential amplifiers and FM transmitters, 2008/2020; not a percutaneous tether in this configuration |
+| Data path | Cone wires to subcutaneous electronics, FM transmission through scalp to external receiver |
+| Telemetry bandwidth | FM carrier 42 ± 8 MHz and amplifier bandpass 5-5,000 Hz in 2020; carrier range is not digital throughput |
+| Sampling rate | Configuration dependent; exact rate unreported in reviewed Methods |
+| Power | External induction coil powers implanted receiver coil; no battery in 2020 configuration |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | Elvax internal and Silastic external protection, 2020; hermetic qualification unreported |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Cortical insertion plus subcutaneous electronics fixed to skull with acrylic, 2020 |
+| Output connectors | Internal miniature connector in 2008 assembly; external receiver captures FM signal |
 
-### Geometry & Architecture
-- *Interface type:* intracortical neurotrophic (ingrowth)
-- *Penetrating?:* yes
-- *Form factor:* hollow cone with internal microwires
-- *Array layout:* single cone per implant site (very low channel count)
-- *Footprint (mm):* sub-mm cone tip (typical)
-- *Insertion depth (mm):* intracortical (depth varies by implant)
-- *Shank / lead dimensions:* cone-shaped; wire leads exit posteriorly
-- *Site spacing (µm):* N/A (single site)
-- *Tip geometry:* hollow cone opening
-- *Insertion method:* surgical cortical insertion
-- *Anchoring method:* biological integration via neurite ingrowth
-- *Packaging location:* historically percutaneous connector/tether (program-dependent)
+## Performance envelope
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Unreported in reviewed sources |
+| Chronic yield | Unreported in reviewed sources |
+| Stability over time | Functional neural activity at year nine, 2020 subject 5 report |
+| Longevity | Recordings through 10 years in subject 5; histology after 13 years implanted. Implant duration is not recording duration |
+| Revision and explant experience | Three electronics replacements due to handling trauma; electrode recovered postmortem, 2020 |
+| Adverse events | Subject became too ill to record after year 10 owing to stroke progression; no device adverse-event rate established |
+| Notable demonstrations | Functional single-unit conditioning at year nine; prior communication experiments cited in 2020 report |
 
-### Electrode & Channel Physics
-- *Channel count:* ~1–2 channels per electrode (typical)
-- *Active sites used (vs total):* all
-- *Electrode material:* glass cone + metal microwires (reported)
-- *Site area (µm²):* very small (single-unit regime)
-- *Impedance @ 1 kHz:* high (single-unit recording regime; exact varies)
-- *Noise floor / SNR:* potentially high SNR when stable units are present
-- *Recording modality:* spikes (primary), LFP (secondary)
-- *Stimulation capability:* no (recording-focused)
-- *Charge injection limit / safe stim range:* N/A
+## Clinical and preclinical evidence
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | 2020 histology: one locked-in subject, designated subject 5; designation is not an audited cohort size |
+| Preclinical cohort | Unreported in reviewed sources |
+| Follow-up duration | Unreported in reviewed sources |
+| Indications | Locked-in syndrome after brainstem stroke; experimental communication |
+| Trials and registries | FDA IDE G960032 reported in 2020; modern registry record unreported |
+| Primary outcomes | Histological confirmation of myelinated filaments in cone and relation to decade-long recordings |
+| Key limitations | Single-subject histology, hand-built version differences, few recording channels; not comparative lifetime evidence |
 
-### Tissue Interface & Bioresponse
-- *Target tissue:* cortical neurons
-- *BBB disruption:* moderate–high (penetrating)
-- *Vascular disruption risk:* moderate (implant-dependent)
-- *Micromotion sensitivity:* reduced after successful ingrowth (hypothesis/goal)
-- *Gliosis / encapsulation:* reported as different from typical rigid arrays; varies with biological response
-- *Neuron loss (if reported):* not clearly quantified in a single canonical source
-- *Foreign-body response mitigation:* neurotrophic/ingrowth concept
-- *Typical failure mode:* unsuccessful/limited ingrowth, loss of viable units, infection risk from percutaneous components
+## Engineering tradeoffs
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Single-subject decade-long recording with postmortem ingrowth confirmation |
+| Limitations | Few channels, hand assembly, and repeated electronics repair in reviewed case |
+| Scaling constraints | Each cone requires implantation and wire routing; high-channel scaling unreported |
 
-### System Architecture
-- *Onboard electronics:* none (historical configurations)
-- *Data path:* percutaneous wired tether (historical)
-- *Telemetry bandwidth:* low (few channels)
-- *Sampling rate:* spike-capable (kHz range; system-dependent)
-- *Power:* external
-- *Thermal management:* N/A
-- *Hermeticity:* none (percutaneous systems)
-- *MRI compatibility:* generally no (system-dependent)
-- *Surgical complexity:* moderate; biologically delicate placement
+## References
 
----
-
-### Performance Envelope
-- *Typical yield (acute):* low–moderate (very few channels)
-- *Typical yield (chronic):* variable; can be stable for long durations when integration succeeds
-- *Stability over time:* high when stable units persist (reported in case-series)
-- *Longevity (median / max):* multi-year recordings reported
-- *Revision / explant:* difficult
-- *Adverse events (high-level):* infection risk from percutaneous leads/connectors
-- *Notable demos / tasks:* early BCI control and communication demonstrations using low channel count
-
----
-
-### Clinical / Preclinical Evidence
-- *N implanted subjects:* very small (case reports / small series)
-- *Follow-up duration:* months to years
-- *Indications:* paralysis / locked-in syndrome (experimental)
-- *Trial registry:* not applicable (pre-modern registry era)
-- *Primary outcomes:* feasibility of long-term single-unit human recording and control
-- *Key limitations of evidence:* extremely low channel count; surgical/biological variability; heterogeneous reporting
-
----
-
-### Engineering Verdict
-
-*Strengths:*
-- conceptually “regenerative” intracortical interface (biological integration)
-- potential for long-term single-unit stability when successful
-
-*Limitations / failure modes:*
-- very low information bandwidth (few channels)
-- percutaneous infection risk in historical implementations
-- integration/ingrowth success may be variable
-
-*Scaling constraints:*
-- scaling channel count is non-trivial
-- surgical complexity and device routing scale poorly
-
-*What newer designs try to fix:*
-- combine regeneration concepts with higher channel counts
-- fully implantable packaging
-- improve reliability of tissue–electrode coupling without sacrificing density
-
----
-
-### References
-- Kennedy PR, Bakay RAE. *Restoration of neural output from a paralyzed patient by a direct brain connection.* NeuroReport. 1998;9(8):1707–1711. doi: 10.1097/00001756-199806010-00007. PubMed: <https://pubmed.ncbi.nlm.nih.gov/9665587/>
-- Bartels J, Andreasen D, Ehirim P, et al. *Neurotrophic electrode: method of assembly and implantation into human motor speech cortex.* J Neurosci Methods. 2008. PubMed: <https://pubmed.ncbi.nlm.nih.gov/18672003/>
-- Kennedy PR, et al. *Histological confirmation of myelinated neural filaments within the tip of the neurotrophic electrode after a decade of neural recordings.* Front Hum Neurosci. 2020;14:111. doi: 10.3389/fnhum.2020.00111. (Open access copies vary.)
+- Bartels et al. 2008. [Neurotrophic electrode: method of assembly and implantation into human motor speech cortex](https://europepmc.org/articles/PMC2574508). Assembly abstract; four-wire configuration.
+- Kennedy et al. 2020. [Histological Confirmation of Myelinated Neural Filaments Within the Tip of the Neurotrophic Electrode After a Decade of Neural Recordings](https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2020.00111/full). Subject 5 Methods and histology.
+- Kennedy and Bakay 1998. [Restoration of neural output from a paralyzed patient by a direct brain connection](https://pubmed.ncbi.nlm.nih.gov/9665587/). Historical report; not used to infer earliest implant date.
