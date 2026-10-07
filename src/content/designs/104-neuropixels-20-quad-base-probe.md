@@ -33,6 +33,8 @@ This is distinct hardware from the [384-channel 2.0 alpha probe](/devices/88-neu
 
 Two probes supply 3,072 channels in the [mouse recording application](/applications/105-neuropixels-quad-base-mouse-sequences-2026/). That is two probes and eight shanks, not the capacity of one device. Nor are all 5,120 physical sites sampled at once on one probe.
 
+The manufacturer datasheet specifies a 70 × 24 µm shank cross-section, 12 × 12 µm TiN contacts and a two-row layout with 15 µm column pitch and 32 µm row pitch. Its listed package mass is 0.51-0.55 g, not the entire cable/acquisition setup.
+
 ## Noise and excluded channels
 
 The preprint describes noise and gain as comparable with standard 2.0's 6.8 µV RMS specification. Its actual Supplementary Figure S1 table reports mean noise of 7.83, 7.88 and 8.03 µV for three Quad Base probes. Figure 1's measurement band is 300-10,000 Hz. A comparator specification should not replace the measured Quad Base values.
@@ -45,11 +47,16 @@ Neuropixels Central's current technology page says Quad Base has been available 
 
 The same source describes NXT prototypes as 1,536-channel four-shank devices with up to 912 channels mapped to one shank and expected purchase availability in 2027. Its August 2026 access announcement calls NXT the development name and NP 3.0 the planned purchase name. Those mapping and schedule claims belong to NXT, not Quad Base.
 
+The manufacturer labels these probes research-use-only in non-human subjects: not manufactured or approved for human or clinical use. Animal results and availability for purchase do not override that restriction.
+
 ## Model boundary
 
 No full model is supplied. The primary manuscript gives base width and headstage plan dimensions but not full enclosure heights, connector geometry, exact site-field origins or a complete fabrication/package model. Existing 2.0 shank reference geometry does not define the larger Quad Base assembly.
 
 ## Primary sources
+
+- [Manufacturer Quad Base datasheet, including research-use restriction](https://www.neuropixels.org/_files/ugd/328966_4e39ab2e46424dc9b3efa446d286ab0f.pdf).
+- [Manufacturer Quad Base user manual](https://www.neuropixels.org/_files/ugd/328966_ae4bf1dc4ccd4be6bc55faa19dc02631.pdf).
 
 - [July 27, 2026 preprint full text](https://www.biorxiv.org/content/10.64898/2026.07.23.740388v1.full).
 - [Preprint PDF, Figure 1, Supplementary Figure S1 and methods](https://www.biorxiv.org/content/10.64898/2026.07.23.740388v1.full.pdf).
