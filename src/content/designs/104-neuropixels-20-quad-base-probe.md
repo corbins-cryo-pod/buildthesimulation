@@ -35,7 +35,7 @@ Two probes supply 3,072 channels in the [mouse recording application](/applicati
 
 ## Noise and excluded channels
 
-The preprint describes noise and gain as comparable with standard 2.0's 6.8 µV RMS specification. Its actual Supplementary FigureS 1 table reports mean noise of 7.83, 7.88 and 8.03 µV for three Quad Base probes. Figure 1's measurement band is 300-10,000 Hz. A comparator specification should not replace the measured Quad Base values.
+The preprint describes noise and gain as comparable with standard 2.0's 6.8 µV RMS specification. Its actual Supplementary Figure S1 table reports mean noise of 7.83, 7.88 and 8.03 µV for three Quad Base probes. Figure 1's measurement band is 300-10,000 Hz. A comparator specification should not replace the measured Quad Base values.
 
 Channels with less than 50% of average gain were excluded from other measurements. Reported low-gain fractions were 0.26%, 0.85% and 0.13% for probes A-C; fractions above 10 µV noise were 2.08%, 1.30% and 2.41%. This is a characterized array with imperfect channels, not an assertion that every channel met identical performance.
 
@@ -52,6 +52,6 @@ No full model is supplied. The primary manuscript gives base width and headstage
 ## Primary sources
 
 - [July 27, 2026 preprint full text](https://www.biorxiv.org/content/10.64898/2026.07.23.740388v1.full).
-- [Preprint PDF, Figure 1, Supplementary FigureS 1 and methods](https://www.biorxiv.org/content/10.64898/2026.07.23.740388v1.full.pdf).
+- [Preprint PDF, Figure 1, Supplementary Figure S1 and methods](https://www.biorxiv.org/content/10.64898/2026.07.23.740388v1.full.pdf).
 - [Neuropixels Central technology page](https://www.neuropixelscentral.org/technology).
 - [Official NXT/NP 3.0 access announcement](https://www.neuropixelscentral.org/post/neuropixels-nxt-3-0-probe-access-challenge-pac).
