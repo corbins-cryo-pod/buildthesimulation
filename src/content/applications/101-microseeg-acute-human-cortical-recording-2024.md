@@ -12,6 +12,7 @@ modality: "Intracortical"
 website: "https://www.nature.com/articles/s41467-023-43727-9"
 tags: ["µSEEG", "MGH", "human", "acute", "cortical recording", "auditory", "PEDOT:PSS"]
 devices: ["100-microseeg-flexible-stylet-depth-electrode"]
+orgs: ["41-ucsd-integrated-electronics-biointerfaces-lab"]
 draft: false
 ---
 
