@@ -17,93 +17,114 @@ draft: false
 
 # CWRU self-sizing spiral nerve cuff (upper-limb sensory stimulation research deployments)
 
-> *One-line verdict:* A research-grade, non-penetrating self-sizing spiral cuff implementation that achieves durable peripheral nerve stimulation (and measurable selectivity) with relatively low surgical risk, at the cost of limited channel density.
+Every field follows the shared implant-device template. Values belong to a named configuration or study; unreported means the reviewed sources do not establish the value. Family-wide and deployment-specific evidence are kept separate.
 
-*Quick tags:* Stimulation · Channels: multi-contact (configuration varies) · Species: Human
+## Identity
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Device | CWRU self-sizing spiral cuff, human research configurations |
+| Manufacturer | CWRU design; Tan 2015 implanted components manufactured by Ardiem Medical. Not one universal vendor SKU |
+| Interface class | Extraneural peripheral nerve stimulation cuff |
+| Origin | Naples, Mortimer, Scheiner and Sweeney design; cited in Christie 2017 |
+| First demonstrated | 1988 design publication cited in Christie 2017; earliest implant date not established here |
+| First human implant | Human implants since 2005 in Christie 2017 cohort; not claimed as first-ever human implantation |
+| Species studied | Human in Christie 2017 and Tan 2015; earlier animal evidence cited, not re-audited here |
+| Regulatory status | Research implants; Tan 2015 reports FDA Investigational Device Exemption, not commercial approval |
+| Function | Motor and sensory peripheral nerve stimulation |
+| Target tissue | Peripheral nerve surface outside epineurium |
 
-### Overview
+## Geometry and architecture
 
-*What it is:* A self-curling polymer spiral cuff electrode (rooted in the Naples/Mortimer spiral cuff design family) that wraps around a peripheral nerve and provides extraneural stimulation through multiple contacts. This entry focuses on well-documented human research deployments associated with CWRU/Cleveland VA programs, including chronic multi-contact cuff stimulation for sensory feedback in upper-limb amputees.
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Non-penetrating self-curling spiral cuff |
+| Array layout | Self-curling polymer sheath wraps nerve twice, Christie 2017; contacts distributed around circumference |
+| Electrode count | One to four independent stimulation contacts per cuff in Christie 2017; monopolar versions connect four contacts in series |
+| Pitch | Configuration dependent; no universal pitch in reviewed sources |
+| Electrode lengths | Not applicable to penetrating shanks; cuff axial length unreported in audited descriptions |
+| Shank width and thickness | Not applicable; cuff diameter selected intraoperatively from 2-10 mm inventory, Christie 2017 |
+| Tip and exposed site geometry | Configuration dependent; Tan 2015 radial spiral: four contacts, 4 mm cuff diameter; exposed area unreported |
+| Contact coating | Unreported in reviewed sources |
+| Insulation | Self-curling polymer sheath, Christie 2017; composition and thickness not established in audited Methods |
+| Insertion method | Surgical nerve exposure and wrapping around nerve, without epineurial penetration |
+| Anchoring and fixation | Self-sizing wrap can secure without sutures, Christie 2017; redundant lead length matters for strain relief |
 
-*Why it matters:* It is one of the best-documented long-duration human extraneural cuff implementations, with multi-year stability data (contact functionality and threshold stability) and functional neuroprosthesis outcomes.
+## Electrode and channel physics
 
-*Most comparable devices:* split-cylinder cuffs; FINE/C-FINE (more selectivity); intraneural LIFE/USEA (more selectivity, more invasiveness).
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in reviewed sources |
+| Electrode material | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Tan 2015 radial spiral in subject 1: 2.91 ± 0.22 kΩ. Derived from voltage drop with 0.3 mA, 50 µs pulses at 20/100 Hz, not 1 kHz spectroscopy |
+| Noise floor or SNR | Unreported in reviewed sources |
+| Recording modality | Recording capability unreported in reviewed deployments; these are stimulation studies |
+| Sampling rate | Not applicable to passive cuff stimulation; controller acquisition is system-specific |
+| Stimulation capability | Constant-current charge-balanced biphasic stimulation in Christie 2017. IST supports 1-255 µs and 0.1-20 mA, but study generally limits current to 2.1 mA or less; not a cuff safety rating |
+| Charge injection limit | Unreported as material injection limit; study stimulus settings are not a charge-injection limit |
+| Reference and ground | Christie 2017: titanium implanted stimulator case is common return. Tan 2015 uses external UECU and percutaneous leads; do not conflate assemblies |
 
----
+## Tissue interface and bioresponse
 
-### Spec Card Grid
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Extraneural peripheral nerve surface |
+| Insertion trauma and BBB disruption | BBB: not applicable; cuff does not breach epineurium, Christie 2017. Quantitative surgical nerve injury unreported |
+| Vascular disruption risk | Quantitative risk unreported; proper fit and accommodation of nerve size are design concerns, not a validated low-risk rating |
+| Micromotion sensitivity | Lead tension implicated in one cuff pulling off thoracodorsal nerve, Christie 2017 |
+| Gliosis and encapsulation | Peripheral nerve, not CNS gliosis; quantitative fibrosis histology unreported in reviewed human studies |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Self-sizing construction accommodates differing nerve sizes; no quantitative mitigation efficacy established |
+| Typical failure modes | Christie 2017: one cuff pulled off nerve, attributed to possible lead tension; one contact in active cohort nonfunctional |
 
-### Identity
-- *Device name:* CWRU self-sizing spiral nerve cuff electrode (research implementation)
-- *Canonical ID:* BTSD-PNI-0003
-- *Org / manufacturer:* research implementations (CWRU / Cleveland VA programs; not a single commercial SKU)
-- *First demonstrated (year):* 1988 (spiral cuff family)
-- *First implanted (year):* chronic human implants reported in mid-2000s onward (study-dependent)
-- *Species:* human
-- *Regulatory / trial status:* research implants (IRB/IDE context varies)
-- *Primary use:* stimulation (motor and sensory neuroprostheses)
-- *Primary target:* peripheral nerves; includes upper-limb nerves (median/ulnar/radial) in amputee sensory studies
+## System architecture
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | None in cuff; separate implanted stimulator-telemeter in Christie 2017 |
+| Data path | Cuff lead to implanted IST in Christie 2017; Tan 2015 sensory system instead uses percutaneous leads to external UECU |
+| Telemetry bandwidth | Unreported in reviewed sources |
+| Sampling rate | Configuration dependent; not an electrode-only specification |
+| Power | Christie 2017 IST receives external inductive radiofrequency power/control. Tan 2015 uses external stimulator |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | Passive cuff plus separately packaged stimulator; hermetic qualification unreported in audited descriptions |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Peripheral nerve exposure, cuff sizing and lead routing; controller placement depends on system |
+| Output connectors | Tan 2015: spring-sleeve connectors to open-helix percutaneous leads. Christie IST connector dimensions unreported |
 
-### Geometry & Architecture
-- *Interface type:* peripheral nerve cuff (spiral, self-sizing)
-- *Penetrating?:* no
-- *Form factor:* spiral cuff wraps around nerve (self-curling sheath)
-- *Array layout:* circumferentially spaced contacts; contact count varies by study/nerve
-- *Insertion method:* surgical exposure; place cuff around nerve; route leads to implanted or percutaneous connectors depending on study system
-- *Anchoring method:* mechanical conformity + lead strain relief
+## Performance envelope
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Unreported as uniform acute yield across configurations |
+| Chronic yield | Christie 2017: 44 of 45 contacts functional in eight actively participating recipients; not 44/45 of all implanted contacts |
+| Stability over time | Christie 2017: most thresholds stable; 20/27 monitored contacts increased by less than 5 nC/year |
+| Longevity | Christie 2017 reports functional cuffs 2-11 years implanted; mean time since implant 6.7 ± 3.1 years. Not maximum rated lifetime |
+| Revision and explant experience | Christie 2017: one IST explanted for perioperative infection after three months; cuffs remained implanted and operational at testing but inaccessible afterward |
+| Adverse events | Christie 2017: one cuff pulled off nerve; perioperative infection involved IST, not cuffs. Tan 2015: no infection in reviewed period |
+| Notable demonstrations | Femoral cuffs produced knee-extension moment sufficient for standing after 2-4.5 years; sensory feedback via radial spiral in one Tan 2015 participant |
 
-### Electrode & Channel Physics
-- *Channel count:* multi-contact (varies)
-- *Electrode material:* not pinned here (varies)
-- *Recording modality:* typically stimulation-focused; cuffs can record CAP/LFP in some setups
-- *Stimulation capability:* yes
+## Clinical and preclinical evidence
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | Christie 2017: 14 people, 50 cuffs on 10 nerves; 13 SCI and one transradial amputee. Tan 2015 spiral is only the radial cuff in subject 1, not all cuffs in its two-person study |
+| Preclinical cohort | Unreported in this human-deployment audit |
+| Follow-up duration | Christie: up to 11 years implanted, thresholds measured over up to 10.4 years. Tan: mixed cuff follow-up 1-2 years; do not assign all FINE outcomes to spiral |
+| Indications | SCI motor restoration and limb-loss sensory restoration research |
+| Trials and registries | Tan 2015 FDA IDE study; registry number unreported in audited Methods |
+| Primary outcomes | Charge thresholds, recruitment curves, motor-unit overlap and sensory percept stability |
+| Key limitations | Selected active participants, heterogeneous systems and nerves; contact-level denominator differs from total implanted cuffs |
 
-### Tissue Interface & Bioresponse
-- *Target tissue:* extraneural cuff on peripheral nerve epineurium
-- *Encapsulation:* fibrotic encapsulation expected; long-term studies report stable function despite encapsulation changes
-- *Typical failure mode:* lead strain/pull-off or connector issues; infection risk higher if percutaneous connectors used
+## Engineering tradeoffs
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Human multi-year stimulation evidence without penetrating nerve fascicles |
+| Limitations | Surface contacts preferentially access nearby fascicles; deep populations harder to isolate, Christie 2017 |
+| Scaling constraints | Available nerve circumference, independently wired contacts and controller channels; no numerical ceiling established |
 
-### System Architecture
-- *Onboard electronics:* none in cuff
-- *Data path:* lead to implanted stimulator or external stim (study-dependent)
+## References
 
----
-
-### Performance Envelope
-- *Stability over time:* multi-year stability of contact functionality and thresholds reported in human cohorts
-- *Longevity:* cohort-dependent; multi-year mean and up-to ~10-year-class follow-up reported for stimulating spiral cuffs
-
----
-
-### Clinical / Preclinical Evidence
-- *Evidence base:* chronic human studies of spiral cuff stimulation; upper-limb amputee sensory stimulation studies using multi-contact cuffs
-- *Key limitations of evidence:* heterogeneous nerves, tasks, and system architectures
-
----
-
-### Engineering Verdict
-
-*Strengths:*
-- long-term human evidence for durability and stable stimulation performance
-- lower invasiveness than intraneural arrays
-
-*Limitations / failure modes:*
-- lower channel density/selectivity than higher-density cuff variants (e.g., FINE) or intraneural interfaces
-- lead routing and connector choice drives a lot of real-world reliability
-
----
-
-### References
-- Naples GG, Mortimer JT, Scheiner A, Sweeney JD. *A spiral nerve cuff electrode for peripheral nerve stimulation.* IEEE Trans Biomed Eng. 1988;35(11):905–916. doi: 10.1109/10.8670. PubMed: <https://pubmed.ncbi.nlm.nih.gov/3198136/>
-- Christie BP, Freeberg M, Memberg WD, et al. *Long-term stability of stimulating spiral nerve cuff electrodes on human peripheral nerves.* J Neuroeng Rehabil. 2017;14:70. doi: 10.1186/s12984-017-0285-3. PubMed: <https://pubmed.ncbi.nlm.nih.gov/28693584/> (OA: <https://pmc.ncbi.nlm.nih.gov/articles/PMC5504677/>)
-- Tan DW, Schiefer MA, Keith MW, Anderson JR, Tyler DJ. *Stability and selectivity of a chronic, multi-contact cuff electrode for sensory stimulation in human amputees.* J Neural Eng. 2015;12(2):026002. doi: 10.1088/1741-2560/12/2/026002. PubMed: <https://pubmed.ncbi.nlm.nih.gov/25627310/>
+- Christie et al. 2017. [Long-term stability of stimulating spiral nerve cuff electrodes on human peripheral nerves](https://link.springer.com/article/10.1186/s12984-017-0285-3). Full Methods and Results.
+- Tan et al. 2015. [Stability and selectivity of a chronic, multi-contact cuff electrode for sensory stimulation in human amputees](https://pmc.ncbi.nlm.nih.gov/articles/PMC5517311/). Spiral cuff distinguished from FINE.
