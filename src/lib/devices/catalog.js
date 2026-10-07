@@ -3,9 +3,9 @@
 const utahSource = { label: 'Blackrock — Utah Array specifications and photographs', url: 'https://blackrockneurotech.com/products/utah-array/' };
 const slantSource = { label: 'Blackrock — Slant Array specifications and side view', url: 'https://blackrockneurotech.com/products/slant-array/' };
 export const deviceModels = {
-  'BTSD-ACAD-0083': {
-    id: 'neuropixels-opto-electrical-window', revision: 1, deviceId: 'BTSD-ACAD-0083', kind: 'surface-grid',
-    name: 'Neuropixels Opto · electrical recording window', slug: '140-neuropixels-opto-prototype-2026',
+  'BTSD-ACAD-0068': {
+    id: 'neuropixels-opto-electrical-window', revision: 1, deviceId: 'BTSD-ACAD-0068', kind: 'surface-grid',
+    name: 'Neuropixels Opto · electrical recording window', slug: '107-neuropixels-opto-photonic-prototype',
     physicalSites: 960, simultaneousChannels: 384, rows: 480, columns: 2,
     rowPitch: 0.02, columnPitch: 0.048, pitch: 0.02, siteSize: 0.012,
     thickness: 0.033, width: 0.07, length: 9.6,
