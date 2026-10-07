@@ -8,8 +8,6 @@ const companies = (await getCollection("companies"))
   .filter((p) => !p.data.draft)
   .sort((a, b) => dateMs(b.data.pubDate) - dateMs(a.data.pubDate));
 
-const latestCompanies = companies.slice(0, 3);
-
 const devices = (await getCollection("designs")).filter((p) => !p.data.draft);
 ---
 
@@ -54,34 +52,6 @@ const devices = (await getCollection("designs")).filter((p) => !p.data.draft);
       <div class="stat">
         <div class="num">{devices.length}</div>
         <div class="label">Devices</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="card">
-    <div class="row">
-      <h2>Featured simulations</h2>
-      <a class="smallLink" href="/simulations/">All simulations →</a>
-    </div>
-    <div class="featureGrid">
-      <a class="feature" href="/simulations/cortex-slab/">
-        <h3>Cortical recording lab</h3>
-        <p>Compare contact arrays, inspect synthetic recordings, and export raw traces.</p>
-      </a>
-      <a class="feature" href="/sim/">
-        <h3>Peripheral nerve cross-section</h3>
-        <p>Explore fascicle-level geometry and interface behavior in a compact in-browser sandbox.</p>
-      </a>
-    </div>
-  </section>
-
-  <section class="card">
-    <div>
-      <div class="row"><h2>Recent companies / labs</h2><a class="smallLink" href="/companies">All briefs →</a></div>
-      <div class="listGrid compact">
-        {latestCompanies.map((p) => (
-          <a class="item" href={`/companies/${p.slug}/`}><div class="title">{p.data.name ?? p.data.title ?? p.slug}</div></a>
-        ))}
       </div>
     </div>
   </section>
