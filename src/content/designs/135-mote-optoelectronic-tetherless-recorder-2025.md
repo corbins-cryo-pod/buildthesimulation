@@ -18,7 +18,7 @@ draft: false
 
 Lee and colleagues report the microscale optoelectronic tetherless electrode (MOTE) in Nature Electronics on November 3, 2025. It records extracellular voltage electrically, then communicates optically. It is not an optogenetic stimulator or a fluorescent activity reporter.
 
-The [Cornell-linked collaboration](/companies/44-cornell-mote-neurotechnology-collaboration/) includes NTU, KAIST, Boston University and University of Arizona affiliations in the primary paper. Its [mouse cortical application](/applications/136-mote-mouse-cortical-recording-2025/) retains both successes and failed devices.
+The [Cornell University, Molnar lab](/companies/44-cornell-mote-neurotechnology-collaboration/) and [Cornell University, Xu group](/companies/49-cornell-xu-group/) includes NTU, KAIST, Boston University and University of Arizona affiliations in the primary paper. Its [mouse cortical application](/applications/136-mote-mouse-cortical-recording-2025/) retains both successes and failed devices.
 
 ## Hardware
 
