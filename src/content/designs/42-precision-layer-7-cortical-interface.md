@@ -2,12 +2,12 @@
 title: "Precision Layer 7 Cortical Interface"
 order: 42
 pubDate: 2026-10-06
-updatedDate: 2026-10-06
+updatedDate: 2026-10-07
 device_id: "BTSD-ACAD-0021"
 interface_class: "ecog"
 status: "human"
-last_updated: 2026-10-06
-description: "A thin-film cortical electrode array with 1,024 electrodes from Precision Neuroscience. FDA 510(k) clearance announced 17 April 2025 for implantation up to 30 days, as a component of a wireless BCI still in development."
+last_updated: 2026-10-07
+description: "Precision's thin-film cortical array. The 2025 paper reports a 1,024-channel version with 977 recording, 42 stimulation-optimized and five reference electrodes; FDA Layer 7-T clearance is separate from the future wireless BCI."
 modality: "Cortical surface"
 successRank: 42
 website: "https://www.precisionneuro.io/articles/company-news/precision-neuroscience-receives-fda-clearance-for-high-resolution-cortical-electrode-array"
@@ -17,43 +17,40 @@ draft: false
 
 # Precision Layer 7 Cortical Interface
 
-> *One-line verdict:* A surface array with penetrating-array channel counts. It is cleared for temporary use now, and the permanent wireless system it belongs to is not yet in the clinic.
+A thin-film cortical-surface electrode interface from Precision Neuroscience. The device family has both research configurations and a cleared temporary-use product. A permanent wireless BCI is a separate system, not an outcome established by the array's clearance.
 
-*Quick tags:* Recording and stimulation · Cortical surface · Human · Announced April 2025
+## Hardware in the 2025 paper
 
----
+Hettick and colleagues describe two thin-film versions, with platinum as the tissue-contacting electrode material.
 
-### Overview
+| Version | Electrode sizes and roles | Uniform pitch |
+| --- | --- | --- |
+| 529-channel research array | Groups with 20, 50, 100 and 200 µm electrode diameters | 300 µm |
+| 1,024-channel research array | 977 recording electrodes, 50 µm; 42 stimulation-optimized electrodes, 380 µm; five reference electrodes, 500 µm | 400 µm |
 
-*What it is:* The Layer 7 Cortical Interface, a high-resolution cortical electrode array for recording, monitoring and stimulating electrical activity on the surface of the brain. Trade and device name on the FDA record is Layer 7-T.
+The paper says electrodes can be used for recording or stimulation; the listed roles describe optimization, not a claim that only the 42 larger sites can stimulate. The 1,024-channel total includes reference electrodes and is not 1,024 identical 50 µm recording sites.
 
-*Form:* MassDevice reports a thin-film design with 1,024 electrodes embedded in a flexible film that conforms to the brain surface, at one-fifth the thickness of a human hair.
+The initial 529-channel fabrication uses two approximately 10 µm polyimide layers around a Ti/Pt/Ti metal stack. The later 1,024-channel process is similar but adds gold to the trace stack while retaining platinum at the tissue interface. A separate polyimide pocket holds a removable insertion stylet. The layer figures do not, by themselves, fix the complete pocket, connector or final assembly thickness.
 
-*Regulatory status:* Precision announced 510(k) clearance on 17 April 2025. The company says the array is authorized for commercial use with implantation durations of up to 30 days, and that it is a core component of a fully implantable, wireless BCI system still in development. The FDA lists it as a Class II cortical electrode (510(k) K242618, regulation 21 CFR 882.1310).
+## Placement and evidence
 
-*What it is not yet:* A permanent implant. The 30-day limit applies to the cleared array, not to the future wireless system.
+The paper reports subdural delivery through narrow cranial slits in pigs and human cadaver heads. A stylet is withdrawn after the array is placed. Human intraoperative recordings in five patients are reported separately from the animal and cadaver delivery experiments. The paper does not demonstrate the cranial-slit route as a chronic implantation procedure in living human patients.
 
----
+See the [2025 feasibility study](/applications/72-precision-cortical-array-feasibility-2025/) for the pig/cadaver work, five-patient pilot and their limits.
 
-### Spec Card Grid
+## Cleared product versus research system
 
-### Identity
-- *Company:* Precision Neuroscience Corporation
-- *FDA record:* K242618, Layer 7-T, Class II, product code GYC
-- *Announced:* 17 April 2025
+The FDA record names Layer 7-T, K242618, a cortical electrode under 21 CFR 882.1310, with a substantially equivalent decision dated 30 March 2025. Precision announced the clearance on 17 April 2025 and says it covers recording, monitoring and stimulation for implantation up to 30 days.
 
-### Architecture
-- *Electrodes:* 1,024, thin film
-- *Placement:* brain surface
-- *Cleared implantation duration:* up to 30 days
-- *Film thickness and area:* only the one-fifth-of-a-hair comparison is published in the sources used here
+The company's announcement describes the cleared array as a component of a fully implantable wireless BCI still in development. Its report of 37 patients tested by April 2025 is a company-wide clinical-program figure, not the number of patients in the five-patient paper. Neither that figure nor the 30-day authorization establishes chronic wireless clinical performance.
 
-### Evidence and limits
-- *No 3D model yet:* array area and electrode pitch are not in the sources used here
+## Model limits
 
----
+No full model is added from a uniform pitch alone. The heterogeneous site sizes, reference-site positions, full film outline, insertion pocket and interposer require configuration-specific geometry. Research versions in the paper are not assumed to be identical to every cleared Layer 7-T assembly.
 
-### References
-- Precision Neuroscience. *Receives FDA clearance for high-resolution cortical electrode array.* 17 Apr 2025. <https://www.precisionneuro.io/articles/company-news/precision-neuroscience-receives-fda-clearance-for-high-resolution-cortical-electrode-array>
-- FDA. *510(k) K242618, Layer 7-T.* <https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K242618>
-- MassDevice. *Precision Neuroscience FDA clearance, BCI interface.* <https://www.massdevice.com/precision-neuroscience-fda-clearance-bci-interface/>
+## Sources
+
+- Hettick M, Ho E, et al. [Minimally invasive implantation of scalable high-density cortical microelectrode arrays for multimodal neural decoding and stimulation](https://www.nature.com/articles/s41551-025-01501-w). Published online 2 October 2025. System overview, fabrication methods and human pilot.
+- [Publisher PDF](https://www.nature.com/articles/s41551-025-01501-w.pdf). Primary affiliation and hardware record.
+- Precision Neuroscience. [Clearance announcement](https://www.precisionneuro.io/articles/company-news/precision-neuroscience-receives-fda-clearance-for-high-resolution-cortical-electrode-array), 17 April 2025.
+- FDA. [K242618, Layer 7-T](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K242618).
