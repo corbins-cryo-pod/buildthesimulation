@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { deviceModels } from '../../lib/devices/catalog.js';
 ---
-<Layout pageTitle="3D model finder" subtitle="From physical electrodes to simulation geometry." description="Explore source-documented 3D reference models of Paradromics Connexus, Neuralink N1, Synchron Stentrode, Utah, Utah Slanted and Neuropixels.">
+<Layout pageTitle="3D model finder" subtitle="From physical electrodes to simulation geometry." description="Explore source-documented 3D reference models of Paradromics Connexus, Neuralink N1, Synchron Stentrode, Utah, Utah Slanted, Neuropixels and NeuroGrid.">
   <section class="intro">
     <p>Rotate, inspect and download {Object.keys(deviceModels).length} reference configurations from the implant catalog. Each model includes published dimensions, reference images and explicit reconstruction notes.</p>
     <p>Gold highlights electrode sites. Detail views zoom the camera while preserving scale. Housing and lead envelopes are included where described; their assumptions travel with the geometry exports. These are geometric references for simulation development, without electrical or tissue-response predictions.</p>
@@ -13,9 +13,9 @@ import { deviceModels } from '../../lib/devices/catalog.js';
   </div>
   <div class="models">
     {Object.values(deviceModels).map(model => <a class="model-card" href={`/devices/${model.slug}/#model-3d`}>
-      <span class="eyebrow">{model.kind === 'stentrode' ? 'ENDOVASCULAR STENT ARRAY' : model.kind === 'connexus' ? 'CORTICAL MICROWIRE MODULE' : model.kind === 'neuralink' ? 'FLEXIBLE THREAD IMPLANT' : model.kind === 'utah' ? 'PENETRATING ARRAY' : 'CMOS RECORDING SHANK'}</span>
+      <span class="eyebrow">{model.kind === 'surface-grid' ? 'CORTICAL SURFACE RECORDING PATCH' : model.kind === 'stentrode' ? 'ENDOVASCULAR STENT ARRAY' : model.kind === 'connexus' ? 'CORTICAL MICROWIRE MODULE' : model.kind === 'neuralink' ? 'FLEXIBLE THREAD IMPLANT' : model.kind === 'utah' ? 'PENETRATING ARRAY' : 'CMOS RECORDING SHANK'}</span>
       <h2>{model.name}</h2>
-      <p>{model.specs[0][1]} · {model.kind === 'stentrode' ? '40 × 8 mm scaffold' : model.kind === 'connexus' ? '300 µm pitch' : model.kind === 'neuralink' ? '200 µm along-thread pitch' : model.kind === 'utah' ? '400 µm pitch' : '12 × 12 µm contacts'}</p>
+      <p>{model.specs[0][1]} · {model.kind === 'surface-grid' ? '10 × 10 µm contacts' : model.kind === 'stentrode' ? '40 × 8 mm scaffold' : model.kind === 'connexus' ? '300 µm pitch' : model.kind === 'neuralink' ? '200 µm along-thread pitch' : model.kind === 'utah' ? '400 µm pitch' : '12 × 12 µm contacts'}</p>
       <span>Open interactive 3D model →</span>
     </a>)}
   </div>

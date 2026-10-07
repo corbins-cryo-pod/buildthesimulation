@@ -42,7 +42,14 @@ export function buildDeviceMesh(model) {
   const contacts = new THREE.Group(); contacts.name = 'contact-surfaces';
   group.add(bodies, contacts);
   const sites = getContactGeometry(model);
-  if (model.kind === 'utah') {
+  if (model.kind === 'surface-grid') {
+    const film = new THREE.Mesh(new THREE.BoxGeometry(model.width, model.length, model.thickness), new THREE.MeshStandardMaterial({ color: 0x748c94, roughness: 0.65 }));
+    film.position.z = -model.thickness / 2; bodies.add(film);
+    const padGeometry = new THREE.PlaneGeometry(model.siteSize, model.siteSize);
+    for (const site of sites) {
+      const pad = new THREE.Mesh(padGeometry, metal); pad.position.fromArray(site.positionMm); pad.name = site.id; contacts.add(pad);
+    }
+  } else if (model.kind === 'utah') {
     const base = new THREE.Mesh(new THREE.BoxGeometry(model.baseWidth, model.baseWidth, model.baseThickness), silicon);
     base.position.z = -model.baseThickness / 2;
     bodies.add(base);
