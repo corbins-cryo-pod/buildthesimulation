@@ -53,7 +53,7 @@ const normalized = entries.map((p) => ({
   </section>
   <p class="muted">Studies and clinical programs that use these devices are listed under <a href="/applications/">Applications</a>.</p>
   <h2 class="catalog-title">Device catalog</h2>
-  <p class="muted">Browse {entries.length} devices and research designs by interface type, anatomy and use case. Export results CSV downloads the current filtered list, including stable IDs, source links and review dates. Evidence stage is not regulatory approval.</p>
+  <p class="muted">Browse {entries.length} catalog records, grouped by documented device family, by interface type, anatomy and use case. The highlighted sheet is the latest documented generation or configuration in this catalog, not a claim of current availability. Parallel branches and older versions remain accessible inside each family card. Export results CSV downloads the current filtered list, including stable IDs, source links and review dates. Evidence stage is not regulatory approval.</p>
   <DevicesDirectory client:load entries={normalized} />
 </Layout>
 
