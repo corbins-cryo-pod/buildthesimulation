@@ -14,19 +14,6 @@ const devices = (await getCollection("designs")).filter((p) => !p.data.draft);
 ---
 
 <Layout withHero={true}>
-  <section class="hero card">
-    <h1>Design neural interfaces. Explore the technologies behind them.</h1>
-    <p class="lede">
-      Build electrode arrays, customize contacts and route individual leads in the neural interface designer.
-      Explore commercial implants, research labs and interactive simulations alongside your designs.
-    </p>
-    <div class="ctaRow">
-      <a class="btn primary" href="/devices/designer/">Open neural interface designer</a>
-      <a class="btn" href="/devices/">Explore Devices</a>
-      <a class="btn" href="/companies/">Explore BCI Atlas</a>
-    </div>
-  </section>
-
   <section class="card">
     <div class="row"><h2>Start here</h2></div>
     <div class="pathGrid">
@@ -102,13 +89,6 @@ const devices = (await getCollection("designs")).filter((p) => !p.data.draft);
 
 <style>
   .card { margin-top: 14px; padding: 22px; border-radius: 16px; border: 1px solid var(--border); background: var(--panel); }
-  .hero h1 { margin: 4px 0 10px; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
-  .eyebrow { margin: 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.72; }
-  .lede { margin: 0; opacity: 0.82; max-width: 78ch; line-height: 1.55; }
-  .ctaRow { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 10px; }
-  .btn { border: 1px solid var(--border); border-radius: 12px; padding: 8px 12px; text-decoration: none; color: inherit; background: var(--panelStrong); }
-  .btn.primary { border-color: var(--borderStrong); background: var(--panelHover); }
-
   .row { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
   h2 { margin: 0 0 10px; font-size: 32px; }
   .smallLink { font-size: 13px; opacity: 0.75; color: inherit; text-decoration: none; white-space: nowrap; }
