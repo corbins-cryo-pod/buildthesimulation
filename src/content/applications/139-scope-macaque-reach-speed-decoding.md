@@ -40,7 +40,7 @@ Table S6 lists recordings 0-43 across dark, reaching, baseline and arm-restraine
 
 This is off-line feature decoding of performed movements. No closed-loop cursor, prosthesis control, human participant, long-term buried wireless operation or generalized speed decoder across subjects is demonstrated. The imager's implantable thickness, virally delivered reporter and wired controller have distinct translation barriers.
 
-The [paper-grounded collaboration brief](/companies/45-columbia-shepard-optical-and-electrical-interfaces/) links the participating organizations.
+The [Columbia University, Shepard lab](/companies/45-columbia-shepard-optical-and-electrical-interfaces/) links the participating organizations.
 
 ## Sources and version boundary
 

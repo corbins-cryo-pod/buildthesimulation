@@ -18,7 +18,7 @@ draft: false
 
 The 2020 IEEE Transactions on Biomedical Circuits and Systems paper reports MagNI, a magnetoelectrically powered and controlled stimulation implant. Primary affiliations include Rice and Baylor. Its [Hydra application](/applications/127-magni-hydra-muscle-stimulation-2020/) is excitable-tissue evidence, not a spinal-cord pain-treatment result.
 
-This is a current-controlled design with a 1.5-mm² die. It is distinct from the later [0.8-mm² PUF-addressed voltage stimulator](/devices/124-puf-addressed-magnetoelectric-multisite-stimulator/) and endovascular ME-BIT configuration. The [Rice lab brief](/companies/43-rice-magnetoelectric-bioelectronics-labs/) links the laboratories.
+This is a current-controlled design with a 1.5-mm² die. It is distinct from the later [0.8-mm² PUF-addressed voltage stimulator](/devices/124-puf-addressed-magnetoelectric-multisite-stimulator/) and endovascular ME-BIT configuration. The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectronics-labs/) links the laboratories.
 
 ## Published configuration
 

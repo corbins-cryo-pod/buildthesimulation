@@ -18,7 +18,7 @@ draft: false
 
 The Nature Materials paper published online in October 2023, with a January 2024 issue date, describes magnetoelectric nonlinear metamaterials (MNMs). Semiconductor layers rectify the high-frequency ME response into a bias voltage capable of stimulating nerves. This is a functional material interface, not the ME-BIT ASIC or the DOT microcontroller-based implant.
 
-The primary affiliations include Rice and Baylor. The [Rice lab brief](/companies/43-rice-magnetoelectric-bioelectronics-labs/) gives institutional context. The [rat application](/applications/123-mnm-rat-reflex-severed-nerve-study/) separates reflex triggering, a severed-nerve bridge and closed-wound stimulation.
+The primary affiliations include Rice and Baylor. The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectronics-labs/) gives institutional context. The [rat application](/applications/123-mnm-rat-reflex-severed-nerve-study/) separates reflex triggering, a severed-nerve bridge and closed-wound stimulation.
 
 ## Published variants
 

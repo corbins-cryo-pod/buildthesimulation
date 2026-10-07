@@ -18,7 +18,7 @@ draft: false
 
 A mechanically flexible micro-ECoG chip that combines electrodes, signal processing, wireless data telemetry and wireless power on one CMOS substrate. Jung and colleagues' Nature Electronics paper was published on 8 December 2025. The primary affiliations include Columbia University's electrical engineering and computer science departments, with other US collaborators.
 
-The [Columbia neural-interface collaboration brief](/companies/45-columbia-shepard-optical-and-electrical-interfaces/) links BISC and the distinct SCOPe optical family. Wireless electrical recording here does not establish a wireless optical SCOPe configuration.
+The [Columbia University, Shepard lab](/companies/45-columbia-shepard-optical-and-electrical-interfaces/) links BISC and the distinct SCOPe optical family. Wireless electrical recording here does not establish a wireless optical SCOPe configuration.
 
 ## Physical sites versus channels
 

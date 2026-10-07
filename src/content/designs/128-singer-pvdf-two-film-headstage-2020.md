@@ -18,7 +18,7 @@ draft: false
 
 Singer and colleagues report two discrete-component ME configurations in Neuron in 2020. This entry is the head-mounted PVDF/Metglas version used in the [hemi-Parkinsonian rotation study](/applications/130-singer-stn-parkinsonian-rat-rotation-2020/). The separate [PZT version](/devices/129-singer-pzt-fully-implanted-stimulator-2020/) is fully implanted for medial-forebrain-bundle place preference. Neither is the later single-film MagNI ASIC implant.
 
-Primary affiliations include Rice and UTHealth Houston. The [Rice lab brief](/companies/43-rice-magnetoelectric-bioelectronics-labs/) links the later ME platforms separately.
+Primary affiliations include Rice and UTHealth Houston. The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectronics-labs/) links the later ME platforms separately.
 
 ## Hardware and magnetic drive
 

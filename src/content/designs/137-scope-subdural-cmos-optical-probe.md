@@ -18,7 +18,7 @@ draft: false
 
 SCOPe combines fluorescence imaging with optogenetic stimulation on a thin CMOS assembly. The published 2024 abstract reports mouse optical tests and NHP reach-speed decoding. Detailed evidence is drawn from the separately accessible published supplement and full 2023 preprint, with their boundaries retained.
 
-The [Columbia collaboration brief](/companies/45-columbia-shepard-optical-and-electrical-interfaces/) links this optical interface separately from electrical BISC. Applications cover [mouse bidirectional tests](/applications/138-scope-mouse-bidirectional-optical-tests/) and [macaque movement-speed decoding](/applications/139-scope-macaque-reach-speed-decoding/).
+The [Columbia University, Shepard lab](/companies/45-columbia-shepard-optical-and-electrical-interfaces/) links this optical interface separately from electrical BISC. Applications cover [mouse bidirectional tests](/applications/138-scope-mouse-bidirectional-optical-tests/) and [macaque movement-speed decoding](/applications/139-scope-macaque-reach-speed-decoding/).
 
 ## Hardware configuration
 

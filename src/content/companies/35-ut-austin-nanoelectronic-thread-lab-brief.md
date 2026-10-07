@@ -25,4 +25,4 @@ The *University of Texas at Austin* Department of Biomedical Engineering publish
 
 ### Limits
 
-The current [Rice neural interface brief](/companies/40-rice-ultraflexible-neural-interface-labs/) covers the later Luan and Xie laboratories. Rice's [Xie faculty profile](https://profiles.rice.edu/faculty/chong-xie) records his UT Austin appointment in2014-2019 and subsequent Rice affiliation. This historical brief does not imply that he currently leads a UT Austin lab.
+The current [Rice University, Luan lab](/companies/40-rice-ultraflexible-neural-interface-labs/) covers the later Luan lab, and the [Rice University, Xie lab](/companies/47-rice-xie-lab/) is separate. Rice's [Xie faculty profile](https://profiles.rice.edu/faculty/chong-xie) records his UT Austin appointment in2014-2019 and subsequent Rice affiliation. This historical brief does not imply that he currently leads a UT Austin lab.

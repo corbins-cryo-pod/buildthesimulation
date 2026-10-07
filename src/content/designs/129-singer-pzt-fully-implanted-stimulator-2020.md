@@ -18,7 +18,7 @@ draft: false
 
 The 2020 Neuron paper miniaturizes its discrete two-film circuit for [rat medial-forebrain-bundle place preference](/applications/131-singer-mfb-rat-place-preference-2020/). This PZT/Metglas configuration replaces the [PVDF head-mounted version](/devices/128-singer-pvdf-two-film-headstage-2020/) used for Parkinsonian rotations. It is not evidence that the fully implanted package treated Parkinson's disease.
 
-The [Rice lab brief](/companies/43-rice-magnetoelectric-bioelectronics-labs/) links the later ASIC-based ME devices separately.
+The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectronics-labs/) links the later ASIC-based ME devices separately.
 
 ## Package and output
 
