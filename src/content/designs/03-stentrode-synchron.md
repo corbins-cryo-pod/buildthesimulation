@@ -17,140 +17,125 @@ draft: false
 
 # Stentrode (Synchron)
 
-> *One-line verdict:* A fully implanted endovascular BCI that records ECoG‑like signals from inside the superior sagittal sinus using a stent‑electrode array—trading intracortical spike fidelity for a catheter-based, no‑craniotomy implantation path.
+The tables use the same field framework as the other implant-device sheets. Values belong to the named study or configuration. Unreported means the reviewed sources do not establish a value, not that the device lacks that property.
 
-*Quick tags:* Recording · Stimulation: unknown/limited · Channels: 16 · Species: Human + sheep · First implanted: 2019–2020 era
+## Identity
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Device | Stentrode stent-electrode array |
+| Manufacturer | Synchron, Kacker 2025 |
+| Interface class | Endovascular cortical recording interface |
+| Origin | SWITCH study at Royal Melbourne Hospital, Australia; not a claim about invention priority |
+| First demonstrated | Unreported in reviewed sources |
+| First human implant | SWITCH study began May 2019; exact first implantation date is not pinned here |
+| Species studied | Human in SWITCH 2023 and Kacker 2025; this audit does not enumerate earlier animal cohorts |
+| Regulatory status | Investigational feasibility study; commercial authorization not established by these papers |
+| Function | Motor-intent recording for computer control |
+| Target tissue | Superior sagittal sinus adjacent to motor cortex |
 
-### Overview
+## Geometry and architecture
 
-*What it is:* A self‑expanding nitinol stent with integrated electrodes deployed transvenously into the superior sagittal sinus adjacent to motor cortex, connected by a lead to a subcutaneous implant that relays data to an external unit.
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Endovascular, without cortical penetration |
+| Array layout | Contacts on a self-expanding nitinol scaffold; Kacker 2025 nominal scaffold 8 x 40 mm. Exact contact map is unreported |
+| Electrode count | 16 physical contacts, Kacker 2025; 12 and 8 retained for analysis in its two participants |
+| Pitch | Approximately 3 mm interelectrode spacing; not a complete 3D map, Kacker 2025 |
+| Electrode lengths | Not applicable to cortical shanks; scaffold length 40 mm in Kacker 2025 |
+| Shank width and thickness | Not applicable; strut dimensions unreported in reviewed sources |
+| Tip and exposed site geometry | 500 µm contact diameter, Kacker 2025. Schone 2025 preprint separately reports 300 µm; configurations are not equated |
+| Contact coating | Platinum contacts, Kacker 2025 |
+| Insulation | Unreported in reviewed sources |
+| Insertion method | Jugular-vein catheter delivery into superior sagittal sinus, Kacker 2025 |
+| Anchoring and fixation | Expanded scaffold apposed to sinus wall, verified by angiography in Kacker 2025 |
 
-*Why it matters:* It’s the flagship example that you can get chronic, useful motor intent signals without penetrating cortex and without a craniotomy.
+## Electrode and channel physics
 
-*Most comparable devices:* Subdural ECoG grids (signal class), intracortical arrays (intent use‑case), other endovascular BCIs (design family).
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | SWITCH 2023: 0.3 mm². A 500 µm circular face in Kacker 2025 gives about 196,350 µm² geometrically, not an independently measured exposed area; discrepancy retained |
+| Electrode material | Platinum contacts on nitinol scaffold, Kacker 2025 |
+| Impedance (with measurement frequency) | SWITCH 2023: mean (SD) 37 (11) kΩ, frequency unstated in device description. Kacker 2025: measured at 100 Hz with 10 nA, channel-level values in Tables 1 and 2; not a 1 kHz rating |
+| Noise floor or SNR | Kacker 2025 Tables 1 and 2 report per-channel low- and high-gamma task SNR; not one device noise-floor specification |
+| Recording modality | Field potentials with gamma/high-gamma motor modulation, Kacker 2025 |
+| Sampling rate | 2,000 Hz, Kacker 2025 |
+| Stimulation capability | Unreported in reviewed sources; clinical papers reviewed here concern recording |
+| Charge injection limit | Unreported in reviewed sources |
+| Reference and ground | Kacker 2025: one Stentrode channel used as common reference. SWITCH 2023 instead describes a reference on the receiver-transmitter unit; source-specific descriptions retained |
 
----
+## Tissue interface and bioresponse
 
-### Spec Card Grid
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Venous wall adjacent to cortex, not intracortical placement |
+| Insertion trauma and BBB disruption | No cortical penetration in the described procedure; quantitative BBB injury unreported |
+| Vascular disruption risk | SWITCH monitored patency, migration and thrombosis; no occlusion or migration in four implanted participants at 12 months. Not a general risk estimate |
+| Micromotion sensitivity | Unreported in reviewed sources |
+| Gliosis and encapsulation | Cortical gliosis measurements unreported in these human studies |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Unreported in reviewed sources |
+| Typical failure modes | No device-related serious failure in the four-person 12-month SWITCH cohort; longer-term failure rates unreported |
 
-### Identity
-- *Device name:* Stentrode (stent‑electrode array)
-- *Canonical ID:* BTSD-0003
-- *Inventor / key authors:* Thomas Oxley et al. (clinical translation)
-- *Org / manufacturer:* Synchron
-- *First demonstrated (year):* preclinical large‑animal work preceded first‑in‑human (dates vary by paper)
-- *First implanted (year):* first‑in‑human experience published online Oct 28, 2020 (implantation occurred prior)
-- *Species:* Human; large‑animal (ovine) model used heavily
-- *Regulatory / trial status:* Human clinical studies (e.g., first‑in‑human; SWITCH)
-- *Primary use:* Recording (motor intent → digital control)
-- *Primary target:* Motor cortex adjacency via superior sagittal sinus
+## System architecture
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Lead-connected implantable receiver-transmitter in infraclavicular subcutaneous pocket, SWITCH 2023 |
+| Data path | Stent contacts to implanted receiver-transmitter to external telemetry unit to computer, Kacker 2025 |
+| Telemetry bandwidth | Unreported in reviewed sources |
+| Sampling rate | 2,000 Hz, Kacker 2025 |
+| Power | Unreported in reviewed sources |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | Fully implanted sensing device, lead and receiver-transmitter; hermetic qualification unreported |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Neurointerventional transvenous delivery and chest pocket; no cortical craniotomy in described procedure |
+| Output connectors | Internal lead plus wireless external receiver; connector specification unreported |
 
-### Geometry & Architecture
-- *Interface type:* Endovascular cortical interface (venous)
-- *Penetrating?:* no (does not penetrate cortex; sits in a blood vessel)
-- *Form factor:* self‑expanding nitinol stent with mounted electrodes
-- *Array layout:* electrodes distributed on a cylindrical stent; exact manufacturer contact coordinates are not provided here. The 3D contact map is illustrative.
-- *Scaffold size:* nominal 8 mm diameter × 40 mm length in Kacker et al. (2025); implanted shape depends on vessel constraint.
-- *Electrode count:* 16
-- *Site spacing (µm):* approximately 3000 reported by Kacker et al. (2025); not an exact axial pitch or complete 3D contact map.
-- *Insertion method:* transvenous catheter delivery via internal jugular vein → superior sagittal sinus deployment
-- *Anchoring method:* stent apposition + endothelialization over time
-- *Packaging location:* lead tunneled subcutaneously to a chest (subclavicular) telemetry implant pocket
+## Performance envelope
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Unreported in reviewed sources |
+| Chronic yield | Unreported in reviewed sources |
+| Stability over time | SWITCH: mean signal bandwidth 233 (16) Hz stable across 12 months in four participants |
+| Longevity | 12-month SWITCH follow-up; not a maximum lifetime |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | SWITCH: no serious adverse events, vessel occlusion or migration in four implanted participants; eight mild device effects resolved without intervention |
+| Notable demonstrations | All four SWITCH participants controlled a computer; Kacker 2025 maps motor modulation in two people with ALS |
 
-### 3D reference, revision 2
+## Clinical and preclinical evidence
 
-The revised model uses curved flat struts and annular electrode mounts guided by [Synchron’s close-up photograph](https://synchron.com/research), with a schematic proximal lead segment. **Contact detail** shows the mounted disk at physical scale. The selected published configuration remains 16 contacts, 500 µm diameter and a nominal 8 × 40 mm scaffold.
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | SWITCH: five enrolled, four implanted and analyzed; Kacker 2025: two participants. Do not sum as unique people |
+| Preclinical cohort | Unreported in reviewed sources |
+| Follow-up duration | Unreported in reviewed sources |
+| Indications | Severe upper-limb paralysis; ALS or primary lateral sclerosis in SWITCH |
+| Trials and registries | SWITCH prospective first-in-human study; registry ID unreported in this audit |
+| Primary outcomes | Safety, venous patency and computer-control feasibility |
+| Key limitations | Small selected cohorts, variable decoding strategies, limited follow-up, source-specific geometry and reference descriptions |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Computer control demonstrated without penetrating cortex; fully implanted system in reviewed cohorts |
+| Limitations | Population field potentials rather than single-unit recording; evidence limited to small cohorts |
+| Scaling constraints | Contact placement must fit venous anatomy; no quantitative scaling ceiling established in reviewed sources |
+
+## 3D reference, revision 2
+
+The revised model uses curved flat struts and annular electrode mounts guided by [Synchron's close-up photograph](https://synchron.com/research), with a schematic proximal lead segment. **Contact detail** shows the mounted disk at physical scale. The selected published configuration remains 16 contacts, 500 µm diameter and a nominal 8 × 40 mm scaffold.
 
 Strut cross section (80 × 40 µm), mount diameter (680 µm), contact thickness (50 µm), lattice topology and the 12 mm × 0.5 mm lead stub are illustrative. The lead is a short visual envelope, not the actual implanted cable length or conductor routing. The staggered contact strip is reconstructed; it does not replace a manufacturer channel map. The model represents a nominal expanded scaffold, not vessel deformation or a delivery state.
 
 JSON preserves revision metadata, approximation notes and outward-facing site normals. GLB exports the complete assembly in meters. The exact clinical revision and its validated electrical parameters must be established before using this geometry in a physiological simulation.
 
----
+## References
 
-### Electrode & Channel Physics
-- *Physical electrodes:* 16; Kacker et al. designate one as the common reference for the other 15. The model leaves the assignment unknown.
-- *Analysis channels:* 12 for participant 1 and 8 for participant 2 in Kacker et al. (2025); physical count, reference assignment and channels retained for analysis are distinct.
-- *Electrode material:* platinum electrodes on nitinol scaffold (reported)
-- *Site area (µm²):* a 500 µm circular face gives approximately 196,350 geometrically. SWITCH (2023) separately reports 300,000; these values are not treated as equivalent.
-- *Electrode size:* 500 µm diameter in the selected Kacker et al. (2025) configuration. A separate Schone et al. (2025) preprint reports 300 µm; do not mix specifications.
-- *Impedance @ 1 kHz / noise floor:* not consistently reported in open clinical summaries (mark unknown)
-- *Recording modality:* vascular ECoG‑like signals; spectral motor intent features reported
-- *Stimulation capability:* unknown for this catalog unless tied to a primary device‑specific stimulation report
-- *Charge injection limit / safe stim range:* not publicly disclosed
+- Yoo PE, et al. "Motor neuroprosthesis implanted with neurointerventional surgery improves capacity for activities of daily living tasks in severe paralysis: first in-human experience." *J NeuroInterv Surg* (Epub 2020 Oct 28; 2021 Feb). DOI: 10.1136/neurintsurg-2020-016862. PubMed: <https://pubmed.ncbi.nlm.nih.gov/33115813/>
+- Mitchell P, et al. "Assessment of Safety of a Fully Implanted Endovascular Brain-Computer Interface for Severe Paralysis in 4 Patients: The Stentrode With Thought-Controlled Digital Switch (SWITCH) Study." *JAMA Neurology* (2023). PMC full text: <https://pmc.ncbi.nlm.nih.gov/articles/PMC9857731/>
 
----
-
-### Tissue Interface & Bioresponse
-- *Target tissue:* cortex adjacency via venous wall
-- *BBB disruption:* likely lower than penetrating arrays (non‑penetrating placement), but treat as low–moderate unless quantified
-- *Vascular disruption risk:* thrombosis/stenosis/migration are the dominant device-class risks and are monitored in studies
-- *Micromotion sensitivity:* different from shanks; vessel pulsatility introduces motion but tissue penetration is avoided
-- *Gliosis / encapsulation:* not the same failure mode as penetrating shanks; coupling can change with vessel wall remodeling
-- *Typical failure mode:* venous remodeling affecting coupling, system-level lead/telemetry issues, decoder drift
-
----
-
-### System Architecture
-- *Onboard electronics:* implanted telemetry unit connected to the stent via a lead
-- *Data path:* implanted internal hardware + external telemetry + computer interface chain (no percutaneous skull pedestal)
-- *Telemetry method:* reported as infrared optical transmission between external/internal telemetry units in early descriptions
-- *Power:* external unit inductively powers the implanted telemetry unit (reported)
-- *Hermeticity:* implantable package (details vary by generation)
-- *MRI compatibility:* unknown/conditional pending manufacturer documentation
-- *Surgical complexity:* neurointerventional catheter procedure (angiography suite), no craniotomy
-
----
-
-### Performance Envelope
-- *What it enables:* click/switch-like command control + OS interaction using motor intent; assistive stacks often include eye tracking
-- *Signal class:* best for robust spectral features (including gamma/high‑gamma), not single‑unit spikes
-- *Longevity:* follow‑up reported to 12 months in early cohorts; broader longevity still emerging
-
----
-
-### Clinical / Preclinical Evidence
-- *Early feasibility (human):* first‑in‑human home use described in severe paralysis cohorts
-- *N implanted subjects / animals:* small cohorts in early human reports; ovine model used preclinically
-- *Trial registry links:* to add (SWITCH / related studies)
-- *Primary outcomes:* feasibility of computer control for activities of daily living tasks
-- *Key limitations of evidence:* small N, heterogeneous assistive stacks, limited open hardware-spec reporting
-
----
-
-### Engineering Verdict
-
-*Strengths:*
-- catheter-based deployment (no craniotomy)
-- non‑penetrating cortical tissue interface class
-- avoids percutaneous skull connectors
-
-*Limitations / failure modes:*
-- lower spatial resolution than intracortical spikes (16 macroelectrodes)
-- signal coupling depends on vascular wall + remodeling
-- channel count scaling constrained by venous anatomy + safe stent geometry
-
-*Scaling constraints:*
-- venous patency/thrombosis risk envelope
-- electrode density limited by stent mechanics + hemodynamics
-- telemetry/power pipeline must stay within implant heat and regulatory limits
-
-*What it’s trying to fix vs Utah / N1:*
-- surgical invasiveness
-- percutaneous infection risk
-- micromotion damage from rigid penetrating shanks
-
----
-
-### References
-- Yoo PE, et al. “Motor neuroprosthesis implanted with neurointerventional surgery improves capacity for activities of daily living tasks in severe paralysis: first in-human experience.” *J NeuroInterv Surg* (Epub 2020 Oct 28; 2021 Feb). DOI: 10.1136/neurintsurg-2020-016862. PubMed: <https://pubmed.ncbi.nlm.nih.gov/33115813/>
-- Mitchell P, et al. “Assessment of Safety of a Fully Implanted Endovascular Brain-Computer Interface for Severe Paralysis in 4 Patients: The Stentrode With Thought-Controlled Digital Switch (SWITCH) Study.” *JAMA Neurology* (2023). PMC full text: <https://pmc.ncbi.nlm.nih.gov/articles/PMC9857731/>
-- Synchron overview: <https://synchron.com/>
-
-- Kacker K, et al. “Motor activity in gamma and high gamma bands recorded with a Stentrode from the human motor cortex in two people with ALS.” *J Neural Eng* (2025), section 2.2 and Figure 1. <https://pmc.ncbi.nlm.nih.gov/articles/PMC11956166/>
-- Schone HR, et al. “Motor Cortex Coverage Predicts Signal Strength of a Stentrode Endovascular Brain-Computer Interface.” *medRxiv* (2025 preprint). <https://www.medrxiv.org/content/10.1101/2025.09.19.25335875v1.full>
+- Kacker K, et al. "Motor activity in gamma and high gamma bands recorded with a Stentrode from the human motor cortex in two people with ALS." *J Neural Eng* (2025), section 2.2 and Figure 1. <https://pmc.ncbi.nlm.nih.gov/articles/PMC11956166/>
+- Schone HR, et al. "Motor Cortex Coverage Predicts Signal Strength of a Stentrode Endovascular Brain-Computer Interface." *medRxiv* (2025 preprint). <https://www.medrxiv.org/content/10.1101/2025.09.19.25335875v1.full>
