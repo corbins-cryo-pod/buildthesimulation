@@ -4,6 +4,7 @@ import { getCollection, render } from "astro:content";
 import RealRecordingExplorer from "../../components/RealRecordingExplorer";
 import NeuropixelsExplorer from "../../components/NeuropixelsExplorer";
 import DeviceModelViewer from "../../components/DeviceModelViewer";
+import { getDeviceFamily } from "../../lib/device-families.js";
 import { getDeviceModel } from "../../lib/devices/catalog.js";
 
 export async function getStaticPaths() {
@@ -16,7 +17,12 @@ const apps = (await getCollection("applications"))
   .filter((a) => !a.data.draft && a.data.devices.includes(entry.slug))
   .sort((a, b) => a.data.order - b.data.order);
 const stripNum = (s) => s.replace(/^\d+\s*[-—]\s*/, "");
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
+const family = getDeviceFamily(entry.data.order);
+const allDevices = (await getCollection("designs")).filter(p => !p.data.draft);
+const familyEntries = family ? family.members.map(order => allDevices.find(p => p.data.order === order)).filter(Boolean) : [];
+const featured = familyEntries.find(p => p.data.order === family?.featured);
+const outline = headings.filter(h => h.depth === 2 || h.depth === 3);
 
 const subtitle = entry.data.description ?? "BCI device entry.";
 const titleNoPrefix = entry.data.title.replace(/^\d+\s*—\s*/, "");
@@ -25,22 +31,54 @@ const titleNoPrefix = entry.data.title.replace(/^\d+\s*—\s*/, "");
 <Layout pageTitle="Devices" subtitle={subtitle} description={entry.data.description}>
   <article class="post">
     <header class="postHead">
-      <div class="kicker">Device — {entry.data.modality}</div>
+      <div class="kicker">Catalog specification sheet - {entry.data.modality}</div>
       <h2 class="title">{titleNoPrefix}</h2>
 
       {entry.data.website ? (
         <p class="siteLink">
-          <a class="siteBtn" href={entry.data.website} target="_blank" rel="noopener noreferrer">Official site →</a>
+          <a class="siteBtn" href={entry.data.website} target="_blank" rel="noopener noreferrer">Primary source →</a>
         </p>
       ) : null}
 
-      {entry.data.tags?.length ? <div class="meta">{entry.data.tags.join(" · ")}</div> : null}
     </header>
 
+    <section class="sheetControl" aria-label="Document control and evidence">
+      <dl>
+        <div><dt>Record ID</dt><dd>{entry.data.device_id}</dd></div>
+        <div><dt>Reviewed</dt><dd>{entry.data.last_updated?.toISOString().slice(0,10) ?? "Not recorded"}</dd></div>
+        <div><dt>Interface</dt><dd>{entry.data.interface_class}</dd></div>
+        <div><dt>Evidence stage</dt><dd>{entry.data.status}</dd></div>
+      </dl>
+      <p>Independent, source-linked catalog sheet. Not a manufacturer-issued datasheet, regulatory decision or instructions for clinical use. Human evidence does not establish approval. Source-specific restrictions, conflicts and missing specifications are retained below.</p>
+    </section>
+
+    {family && <section class="familyPanel" aria-label="Device family and version history">
+      <div class="sheetLabel">{family.kind}</div>
+      <h3>{family.title}</h3>
+      <p>{family.summary}</p>
+      {featured && featured.slug !== entry.slug && <p class="featuredLink"><a href={`/devices/${featured.slug}/`}>Highlighted family sheet: {stripNum(featured.data.title)} →</a></p>}
+      <details open={featured?.slug !== entry.slug}>
+        <summary>Version history and parallel configurations ({familyEntries.length})</summary>
+        <ul>{familyEntries.map(p => <li>
+          <a href={`/devices/${p.slug}/`} aria-current={p.slug === entry.slug ? "page" : undefined}>{stripNum(p.data.title)}</a>
+          <span>{family.changes[p.data.order]}</span>
+        </li>)}</ul>
+      </details>
+    </section>}
+
+    {outline.length > 0 && <nav class="sheetOutline" aria-label="Specification sheet sections">
+      {outline.map(h => <a href={`#${h.slug}`}>{h.text.replaceAll("—", "-")}</a>)}
+    </nav>}
+
+    <section class="content"><Content /></section>
+
+    {(getDeviceModel(entry.data.device_id) || ["BTSD-0001","BTSD-0004"].includes(entry.data.device_id)) && <details class="supplement"><summary>Models and reference visualizations</summary>
     {getDeviceModel(entry.data.device_id) && <DeviceModelViewer deviceId={entry.data.device_id} client:visible />}
 
     {entry.data.device_id === "BTSD-0001" && <RealRecordingExplorer client:visible />}
     {entry.data.device_id === "BTSD-0004" && <NeuropixelsExplorer client:visible />}
+
+    </details>}
 
     {apps.length ? (
       <section class="appList" aria-label="Applications of this device">
@@ -51,13 +89,34 @@ const titleNoPrefix = entry.data.title.replace(/^\d+\s*—\s*/, "");
       </section>
     ) : null}
 
-    <section class="content">
-      <Content />
-    </section>
+
   </article>
 </Layout>
 
 <style>
+  .sheetControl { margin: 20px 0; border-block: 1px solid var(--border); padding: 14px 0; }
+  .sheetControl dl { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin: 0; }
+  .sheetControl dt, .sheetLabel { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; opacity: .65; }
+  .sheetControl dd { margin: 5px 0 0; font-size: 16px; overflow-wrap: anywhere; }
+  .sheetControl p { font-size: 13px; line-height: 1.6; opacity: .75; margin: 16px 0 0; }
+  .familyPanel { padding: 18px; border: 1px solid var(--border); background: var(--panelStrong); border-radius: 12px; margin-bottom: 20px; }
+  .familyPanel h3 { margin: 8px 0; font-weight: 400; font-size: 28px; }
+  .familyPanel p { line-height: 1.55; margin: 8px 0 16px; }
+  .familyPanel details, .supplement { border-top: 1px solid var(--border); padding-top: 12px; }
+  summary { cursor: pointer; line-height: 1.5; }
+  .familyPanel ul { list-style: none; padding: 0; margin: 12px 0 0; }
+  .familyPanel li { padding: 10px 0; border-top: 1px solid var(--border); }
+  .familyPanel li span { display: block; margin-top: 5px; font-size: 14px; line-height: 1.6; opacity: .75; }
+  .familyPanel [aria-current=page] { font-weight: bold; }
+  .sheetOutline { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 24px; }
+  .sheetOutline a { padding: 5px 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 13px; text-decoration: none; color: inherit; }
+  .content :global(table) { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; margin: 18px 0; font-size: 14px; line-height: 1.5; }
+  .content :global(th), .content :global(td) { padding: 10px 12px; text-align: left; border: 1px solid var(--border); min-width: 110px; }
+  .content :global(th) { background: var(--panelStrong); font-weight: 500; }
+  .content :global(h2), .content :global(h3) { scroll-margin-top: 20px; }
+  .supplement { margin-top: 24px; }
+  @media(max-width: 680px) { .post { padding: 18px !important; } .sheetControl dl { gap: 12px; } .familyPanel { padding: 14px; } }
+
   .post {
     padding: 26px 26px;
     border-radius: 16px;
