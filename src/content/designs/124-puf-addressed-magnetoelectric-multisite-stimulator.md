@@ -51,7 +51,7 @@ PUF IDs select a device; the accessible paper does not turn an eight-bit address
 
 The [application](/applications/125-puf-me-hydra-rat-stimulation-study/) separates synchronized Hydra contractions from acute rat sciatic stimulation. Proposed spinal cord stimulation and cardiac pacing appear as target applications, not demonstrated pig/human therapies in this paper. Chronic packaging, long-term tissue response and full model geometry are not established here.
 
-No full model is supplied. Die/film dimensions and total volume do not locate every component, contact, encapsulation boundary or animal-specific stereotrode. The [Rice lab brief](/companies/43-rice-magnetoelectric-bioelectronics-labs/) links the research groups.
+No full model is supplied. Die/film dimensions and total volume do not locate every component, contact, encapsulation boundary or animal-specific stereotrode. The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectronics-labs/) links the research groups.
 
 ## Primary source
 

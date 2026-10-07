@@ -51,6 +51,8 @@ Blackrock claims:
 Background reference (device class overview):
 - Microelectrode arrays / Utah array discussion: <https://en.wikipedia.org/wiki/Utah_array>
 
+Catalog hardware: [Utah Microelectrode Array](/devices/01-utah-microelectrode-array/).
+
 ### 2) Research-to-clinic bridge: MoveAgain
 Blackrock presents *MoveAgain* as its first device designed for clinical use.
 

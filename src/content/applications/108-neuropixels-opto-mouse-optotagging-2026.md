@@ -10,7 +10,7 @@ last_updated: 2026-10-07
 description: "Published mouse experiments: acute cortical activation, circuit-mediated suppression and 261 optotagged units across 40 sessions in 26 mice. Cohorts and quality criteria are separated; no chronic assistive BCI claim."
 modality: "Intracortical"
 website: "https://www.nature.com/articles/s41592-026-03076-z"
-orgs: ["46-allen-ucl-neuropixels-opto-collaboration"]
+orgs: ["46-allen-ucl-neuropixels-opto-collaboration", "50-ucl-carandini-lab", "51-imec"]
 devices: ["107-neuropixels-opto-photonic-prototype"]
 tags: ["Neuropixels", "Opto", "mouse", "optotagging", "optogenetics", "Allen", "Washington", "UCL", "preclinical"]
 draft: false
@@ -20,7 +20,7 @@ draft: false
 
 The June 2026 published paper uses [Neuropixels Opto](/devices/107-neuropixels-opto-photonic-prototype/) to record neural activity while delivering spatially addressed red and blue light. It tests laboratory circuit manipulation and identification of genetically defined cell classes. It is not a human assistive-control trial.
 
-This is the paper-level overview, not an additional animal cohort. The [cortical activation and circuit-inhibition entry](/applications/141-neuropixels-opto-cortical-activation-inhibition/) and [parallel-optotagging entry](/applications/142-neuropixels-opto-parallel-optotagging/) provide narrower experimental views of these same results. The [collaboration brief](/companies/46-allen-ucl-neuropixels-opto-collaboration/) links the paper-grounded team.
+This is the paper-level overview, not an additional animal cohort. The [cortical activation and circuit-inhibition entry](/applications/141-neuropixels-opto-cortical-activation-inhibition/) and [parallel-optotagging entry](/applications/142-neuropixels-opto-parallel-optotagging/) provide narrower experimental views of these same results. The [Allen Institute](/companies/46-allen-ucl-neuropixels-opto-collaboration/) links the paper-grounded team.
 
 ## Distinct experiments
 

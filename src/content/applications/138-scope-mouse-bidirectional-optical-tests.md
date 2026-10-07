@@ -40,7 +40,7 @@ Fluorescence increases follow repeated optical stimulation cycles, but the spati
 
 The accessible sources describe individual preparations without a clear total enrolled-mouse denominator for all assays. No cohort count is inferred from plotted traces, LED count or the number of experiment labels. These are anesthetized acute proof-of-concept tests, not chronic behavioral therapy or a human trial. Bench thermal measurements and light thresholds are retained within their tested conditions.
 
-The [paper-grounded collaboration brief](/companies/45-columbia-shepard-optical-and-electrical-interfaces/) links the participating organizations.
+The [Columbia University, Shepard lab](/companies/45-columbia-shepard-optical-and-electrical-interfaces/) links the participating organizations.
 
 ## Sources and version boundary
 

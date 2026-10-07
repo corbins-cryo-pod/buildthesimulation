@@ -1,5 +1,5 @@
 ---
-title: "Harvard Lieber group, mesh electronics (lab brief)"
+title: "Harvard University, Lieber group (lab brief)"
 order: 27
 pubDate: 2026-10-06
 updatedDate: 2026-10-06

@@ -16,7 +16,7 @@ draft: false
 
 # DOT epidural cortical stimulator
 
-The April 2024 Science Advances paper reports a Digitally programmable Over-brain Therapeutic (DOT) for externally powered cortical stimulation. The primary affiliations include Rice, Motif Neurotech, UTHealth and Baylor. It links to the [Rice magnetoelectric laboratory brief](/companies/43-rice-magnetoelectric-bioelectronics-labs/).
+The April 2024 Science Advances paper reports a Digitally programmable Over-brain Therapeutic (DOT) for externally powered cortical stimulation. The primary affiliations include Rice, Motif Neurotech, UTHealth and Baylor. It links to the [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectronics-labs/).
 
 This entry describes the published research device, not a specification for a later commercial product. It is separate from endovascular ME-BIT and the 2025 distributed spinal IPGs. Its [acute human tests](/applications/118-dot-acute-human-motor-stimulation-2024/) and [chronic pig study](/applications/119-dot-chronic-pig-cortical-stimulation-2024/) are separate applications.
 

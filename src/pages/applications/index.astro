@@ -23,14 +23,7 @@ const deviceName = (s) => {
   subtitle="Studies, paradigms and clinical programs that use a device."
   description="BCI applications: studies and clinical programs, each linked to its device and the lab or organization behind it."
 >
-  <section class="card">
-    <p class="muted">
-      A device is the hardware. An application is a device used for something: a study, a decoding paradigm or a clinical program. Each entry links to its device where the catalog has one, and to the lab or organization in the atlas. Evidence stage describes the reported study, not regulatory approval or readiness for clinical use.
-    </p>
-  </section>
-
   <p class="history-link"><a href="/applications/ecog-history/">Explore ECoG history →</a></p>
-
   <section class="card">
     <h2>Applications</h2>
     <div class="filters" aria-label="Application filters">
@@ -90,7 +83,6 @@ const deviceName = (s) => {
 </Layout>
 
 <style>
-  .history-link { font-style: italic; margin: 18px 0; }
   .filters { display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto auto;gap:12px;align-items:end;margin:18px 0; }
   .filters label { font-size:16px;min-width:0; }
   .filters :is(input,select) { display:block;width:100%;min-width:0;margin-top:6px;padding:10px;border:1px solid var(--border);border-radius:10px;color:inherit;background:var(--panelStrong);font-size:16px; }

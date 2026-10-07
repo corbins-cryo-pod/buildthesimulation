@@ -40,7 +40,7 @@ That benchtop D-wave or EEG evidence is not a demonstration that the wireless im
 
 The preprint demonstrates human cadaver navigation from cervical access; living human MRI measurements characterize anatomy, not implantation or treatment. Sheep lumbar navigation follows a separate procedure. Access to ventricles can involve traversing the floor of the third ventricle, so "no skull opening" does not mean no tissue traversal or no risk.
 
-The [sheep application](/applications/121-endocisternal-sheep-stimulation-recording-study/) separates acute, survival and explantation evidence. The [Rice lab brief](/companies/43-rice-magnetoelectric-bioelectronics-labs/) provides institutional context without claiming sole ownership of the collaboration.
+The [sheep application](/applications/121-endocisternal-sheep-stimulation-recording-study/) separates acute, survival and explantation evidence. The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectronics-labs/) provides institutional context without claiming sole ownership of the collaboration.
 
 No full model is supplied: flexible in-body catheter trajectories, contact construction, lead routing, circuit geometry and final package are not fully specified in the accessible sources. Rehabilitative therapy, epilepsy monitoring, multichannel arrays and closed-loop systems remain proposed uses rather than demonstrated patient outcomes.
 

@@ -1,10 +1,10 @@
 ---
-title: "Rice University, magnetoelectric bioelectronics labs"
+title: "Rice University, Robinson lab"
 order: 43
 pubDate: 2026-10-07
 updatedDate: 2026-10-07
 lastVerified: 2026-10-07
-description: "Rice's Robinson and Yang laboratories: magnetoelectric wireless power, implant circuits and distributed stimulation. Published animal evidence stays separate from clinical goals."
+description: "Jacob Robinson's Rice laboratory: magnetoelectric wireless power, miniature stimulators and distributed implant networks. Published animal evidence stays separate from clinical goals."
 region: "American"
 kind: "Lab"
 website: "https://www.robinsonlab.com/research"
@@ -13,18 +13,16 @@ tags: ["Rice", "Robinson", "Yang", "SIMS", "magnetoelectric", "ME-BIT", "wireles
 draft: false
 ---
 
-# Rice magnetoelectric bioelectronics
+# Rice University, Robinson lab
 
-Rice's current faculty profiles identify Jacob T. Robinson as Professor of Electrical and Computer Engineering and Bioengineering, and Kaiyuan Yang as Associate Professor of Electrical and Computer Engineering. Yang leads the Secure and Intelligent Micro-Systems (SIMS) Lab. These are distinct laboratories with overlapping bioelectronics work, not one combined lab.
+Rice's current faculty profile identifies Jacob T. Robinson as Professor of Electrical and Computer Engineering and Bioengineering. The lab describes magnetoelectric materials for wireless power and communication, miniature brain stimulators and distributed implant networks. Research directions are not proof that every listed device has all these functions.
 
-The Robinson lab describes magnetoelectric materials for wireless power and communication, miniature brain stimulators and distributed implant networks. The SIMS project page describes low-power implant electronics and magnetoelectric or optical power/data transfer, and lists the 2022 endovascular ME-BIT paper. Research directions are not proof that every listed device has all these functions.
-
-This brief is separate from Rice's [Luan and Xie ultraflexible interface labs](/companies/40-rice-ultraflexible-neural-interface-labs/). A shared university does not assign one group's hardware or animal results to another.
+The [Rice University, Yang lab](/companies/48-rice-yang-lab/) is a separate group with overlapping bioelectronics work; the 2022 ME-BIT paper lists both faculty. This entry is also separate from Rice's [Luan lab](/companies/40-rice-ultraflexible-neural-interface-labs/) and [Xie lab](/companies/47-rice-xie-lab/).
 
 ## Cataloged work
 
-- [ME-BIT nerve stimulator, 2022](/devices/113-mebit-magnetoelectric-endovascular-stimulator/) and its [rat/pig application](/applications/114-mebit-rat-pig-nerve-stimulation-2022/). Both faculty appear in the primary paper. Direct contact, vascular leads and separate delivery demonstrations are not one experiment. The catalog preserves conflicting animal counts and pulse-width descriptions.
-- [Distributed ME spinal IPGs, 2025](/devices/115-magnetoelectric-network-spinal-stimulators-2025/) and the [two-minipig spinal application](/applications/116-magnetoelectric-network-pig-spinal-stimulation-2025/). Robinson appears in the primary paper. This link does not assign the paper to Yang or make either lab the sole owner of the collaboration. Two then four implanted devices are distinct from six bench IPGs, 12 LED nodes and power-transfer experiments.
+- [ME-BIT nerve stimulator, 2022](/devices/113-mebit-magnetoelectric-endovascular-stimulator/) and its [rat/pig application](/applications/114-mebit-rat-pig-nerve-stimulation-2022/). Both Robinson and Yang appear in the primary paper. Direct contact, vascular leads and separate delivery demonstrations are not one experiment. The catalog preserves conflicting animal counts and pulse-width descriptions.
+- [Distributed ME spinal IPGs, 2025](/devices/115-magnetoelectric-network-spinal-stimulators-2025/) and the [two-minipig spinal application](/applications/116-magnetoelectric-network-pig-spinal-stimulation-2025/). Robinson appears in the primary paper. This link does not make either lab the sole owner of the collaboration. Two then four implanted devices are distinct from six bench IPGs, 12 LED nodes and power-transfer experiments.
 
 - [Published DOT cortical stimulator, 2024](/devices/117-dot-magnetoelectric-epidural-stimulator-2024/), with [two acute human tests](/applications/118-dot-acute-human-motor-stimulation-2024/) and a separate [chronic pig application](/applications/119-dot-chronic-pig-cortical-stimulation-2024/). Primary affiliations include Rice and Motif. Direct cortex and dura-covered human placements are kept distinct.
 
@@ -47,9 +45,7 @@ Map coordinates are omitted; university addresses do not establish a precise lab
 ## Primary sources
 
 - [Rice faculty profile: Jacob T. Robinson](https://profiles.rice.edu/faculty/jacob-t-robinson).
-- [Rice faculty profile: Kaiyuan Yang](https://profiles.rice.edu/faculty/kaiyuan-yang).
 - [Robinson lab research](https://www.robinsonlab.com/research).
-- [SIMS battery-less implant project](https://vlsi.rice.edu/project/bio_implants/).
 - [2022 ME-BIT primary paper](https://www.nature.com/articles/s41551-022-00873-7).
 - [2025 network primary manuscript](https://pmc.ncbi.nlm.nih.gov/articles/PMC12557647/).
 

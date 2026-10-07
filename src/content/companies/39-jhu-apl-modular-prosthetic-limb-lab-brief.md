@@ -1,5 +1,5 @@
 ---
-title: "Johns Hopkins APL, Modular Prosthetic Limb (lab brief)"
+title: "Johns Hopkins University Applied Physics Laboratory (lab brief)"
 order: 39
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
