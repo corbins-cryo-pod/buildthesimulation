@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { compareDeviceEntries } from "../../lib/device-order.js";
 import DevicesDirectory from "../../components/DevicesDirectory";
 import { deviceModels } from "../../lib/devices/catalog.js";
 
@@ -10,12 +11,7 @@ function stripPrefix(title) {
 
 const entries = (await getCollection("designs"))
   .filter((p) => !p.data.draft)
-  .sort((a, b) => {
-    const ar = a.data.successRank ?? Number.POSITIVE_INFINITY;
-    const br = b.data.successRank ?? Number.POSITIVE_INFINITY;
-    if (ar !== br) return ar - br;
-    return stripPrefix(a.data.title).localeCompare(stripPrefix(b.data.title));
-  });
+  .sort(compareDeviceEntries);
 
 const normalized = entries.map((p) => ({
   title: stripPrefix(p.data.title),
@@ -44,28 +40,24 @@ const normalized = entries.map((p) => ({
       <p>Explore implant geometry, inspect electrode details and download models with published dimensions and source notes.</p>
       <span class="tool-link">Find a device model →</span>
     </a>
-    <a class="tool" href="/devices/designer/">
-      <span class="eyebrow">Design workspace</span>
-      <h2>Neural interface designer</h2>
-      <p>Create electrode arrays, customize contact shapes and route leads. Export your layout at physical scale.</p>
-      <span class="tool-link">Open the designer →</span>
-    </a>
   </section>
   <p class="muted">Studies and clinical programs that use these devices are listed under <a href="/applications/">Applications</a>.</p>
   <h2 class="catalog-title">Device catalog</h2>
-  <p class="muted">Browse {entries.length} catalog records, grouped by documented device family, by interface type, anatomy and use case. The highlighted sheet is the latest documented generation or configuration in this catalog, not a claim of current availability. Parallel branches and older versions remain accessible inside each family card. Export results CSV downloads the current filtered list, including stable IDs, source links and review dates. Evidence stage is not regulatory approval.</p>
+  <p class="muted">Browse {entries.length} catalog records, grouped by documented device family, by interface type, anatomy and use case. Family cards highlight a documented reference configuration, not a claim of current availability or clinical superiority. Parallel branches and older versions remain accessible inside each family card. Export results CSV downloads the current filtered list, including stable IDs, source links and review dates. Evidence stage is not regulatory approval.</p>
+  <p class="catalog-order">Featured order: Utah arrays, Neuralink and Neuropixels first, followed by selected implants and research interfaces.</p>
   <DevicesDirectory client:load entries={normalized} />
 </Layout>
 
 <style>
-  .tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .tools { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .tool { display: flex; flex-direction: column; padding: 22px; border: 1px solid var(--border); border-radius: 16px; background: var(--panel); text-decoration: none; color: inherit; }
   .tool:hover { border-color: var(--borderStrong); background: var(--panelHover); }
-  .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; opacity: .72; }
+  .eyebrow { font-size: var(--text-kicker); font-style: italic; opacity: .72; }
   .tool h2 { font-size: var(--title-card); margin: 10px 0 6px; }
   .tool p { margin: 0 0 18px; line-height: 1.5; opacity: .82; }
   .tool-link { margin-top: auto; font-size: 18px; font-style: italic; }
   .catalog-title { font-size: var(--title-section); margin: 26px 0 8px; }
+  .catalog-order { margin: 12px 0 0; font-size: var(--text-meta); font-style: italic; opacity: .72; }
   .muted { opacity: .72; margin: 0; line-height: 1.5; }
   @media (max-width: 680px) { .tools { grid-template-columns: 1fr; } .tool { padding: 18px; } }
 </style>

@@ -10,7 +10,7 @@ export const deviceFamilies = [
     88: '2.0 alpha: aligned dense sites, one/four-shank options and 384 channels per probe.',
     4: '1.0 baseline: 960 selectable sites and 384 simultaneous channels.'
   } },
-  { id: 'utah', title: 'Utah arrays', featured: 5, members: [5,1], kind: 'Parallel structural variants', summary: 'The slanted array targets different depths in peripheral nerves. It does not supersede the standard cortical Utah array.', changes: {
+  { id: 'utah', title: 'Utah arrays', featured: 1, members: [1,5], kind: 'Parallel structural variants', summary: 'The slanted array targets different depths in peripheral nerves. It does not supersede the standard cortical Utah array.', changes: {
     5: 'Unequal shank lengths sample nerve fascicles at different depths.',
     1: 'Standard silicon-array family for cortical recording and stimulation.'
   } },

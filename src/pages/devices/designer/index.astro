@@ -2,8 +2,8 @@
 import Layout from '../../../layouts/Layout.astro';
 import NeuralInterfaceDesigner from '../../../components/NeuralInterfaceDesigner.jsx';
 ---
-<Layout pageTitle="Neural interface designer" subtitle="Lay out electrode contacts, route leads across metal planes and export physical-scale geometry." description="Micrometer-scale electrode layout designer with circle, square and ring contacts, array generators, automatic lead routing, multilayer concept stacks and physical-scale exports.">
-  <p class="intro">A layout tool for planar thin-film neural interfaces. Build an array, edit individual contacts and compare lead arrangements against explicit geometry checks. <a href="/devices/designer/guide/">Read the guide →</a></p>
+<Layout pageTitle="Neural interface designer" subtitle="" description="Micrometer-scale electrode layout designer with circle, square and ring contacts, array generators, automatic lead routing, multilayer concept stacks and physical-scale exports.">
+  <p class="intro">Read the guide for this tool <a href="/devices/designer/guide/">here →</a></p>
   <NeuralInterfaceDesigner client:load />
   <noscript><p class="intro">The designer needs JavaScript. The <a href="/devices/designer/guide/">guide</a> works without it.</p></noscript>
 </Layout>
