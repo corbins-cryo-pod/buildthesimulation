@@ -18,7 +18,7 @@ draft: true
 
 Lakunina, Socha, Ladd and colleagues combine electrical recording with dual-color photonic stimulation in a Nature Methods paper published June 1, 2026. Neuropixels Opto is a distinct hardware configuration, not a renamed [Neuropixels 2.0 probe](/devices/36-neuropixels-2-0/). Its recording backend derives from Neuropixels 1.0, while the optical routing and two-column site layout have separate specifications.
 
-The [Allen/UCL collaboration](/companies/46-allen-ucl-neuropixels-opto-collaboration/) links US recording teams with UK and Belgian development partners. Applications separate [cortical activation and synaptic inhibition](/applications/141-neuropixels-opto-cortical-activation-inhibition/) from [parallel cell-type optotagging](/applications/142-neuropixels-opto-parallel-optotagging/).
+The [Allen Institute](/companies/46-allen-ucl-neuropixels-opto-collaboration/) links US recording teams with UK and Belgian development partners. Applications separate [cortical activation and synaptic inhibition](/applications/141-neuropixels-opto-cortical-activation-inhibition/) from [parallel cell-type optotagging](/applications/142-neuropixels-opto-parallel-optotagging/).
 
 ## Sites, channels and emitters
 
