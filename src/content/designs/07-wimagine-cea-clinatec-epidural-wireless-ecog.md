@@ -1,5 +1,5 @@
 ---
-title: "WIMAGINE (CEA‑Clinatec) epidural wireless ECoG implant"
+title: "WIMAGINE (CEA-Clinatec) epidural wireless ECoG implant"
 order: 7
 pubDate: 2026-02-06
 updatedDate: 2026-02-06
@@ -7,7 +7,7 @@ device_id: "BTSD-IMBCI-0004"
 interface_class: "ecog"
 status: "human"
 last_updated: 2026-02-06
-description: "A fully implanted, wireless epidural ECoG system developed by CEA‑Clinatec for human motor BCI research, emphasizing clinical robustness and long-term stability over single-unit precision."
+description: "A fully implanted, wireless epidural ECoG system developed by CEA-Clinatec for human motor BCI research, emphasizing clinical robustness and long-term stability over single-unit precision."
 modality: "Cortical surface"
 successRank: 14
 website: "https://clinatec.fr/"
@@ -15,138 +15,118 @@ tags: ["BCI", "ECoG", "epidural", "wireless", "CEA", "Clinatec", "WIMAGINE", "mo
 draft: false
 ---
 
-# WIMAGINE (CEA‑Clinatec) epidural wireless ECoG implant
+# WIMAGINE (CEA-Clinatec) epidural wireless ECoG implant
 
-> *One-line verdict:* A fully implanted, wireless epidural ECoG system that trades spatial precision and single-unit access for a safer surgical interface class and clinically robust long‑term recordings for human motor BCIs.
+The tables use the same field framework as the other implant-device sheets. Values belong to the named study or configuration. Unreported means the reviewed sources do not establish a value, not that the device lacks that property.
 
-*Quick tags:* Recording · Closed-loop capable (system-dependent) · Species: Human · First implanted: ~2016
+## Identity
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Device | WIMAGINE |
+| Manufacturer | CEA-Clinatec, France; Sauter-Starace 2019 and 2015 development report |
+| Interface class | Fully implanted wireless epidural ECoG recorder |
+| Origin | CEA development; primary design published before the reviewed 2019 sheep study |
+| First demonstrated | 2013 device conference report cited by the development literature; not a first implantation date |
+| First human implant | June 2017 and November 2019 for the two patients in the 2021 stability study |
+| Species studied | Sheep in 2019; humans in 2021 |
+| Regulatory status | Research clinical protocol; conformity testing is not a claim of general market authorization |
+| Function | Recording for motor BCI |
+| Target tissue | Epidural surface above sensorimotor cortex |
 
-### Overview
+## Geometry and architecture
 
-*What it is:* WIMAGINE is a fully implanted, wireless epidural ECoG brain–computer interface developed by CEA‑Clinatec for human motor restoration research. It records population-level cortical signals over motor cortex without penetrating brain tissue and transmits data wirelessly to external decoding systems.
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Non-penetrating epidural ECoG |
+| Array layout | 64 electrodes fixed beneath titanium cranial housing, 2019 Methods |
+| Electrode count | 64 recording electrodes per implant, 2019 Methods |
+| Pitch | 4 mm lateral and 4.5 mm anteroposterior, 2019 Methods |
+| Electrode lengths | Not applicable; surface contacts |
+| Shank width and thickness | Not applicable; implant fits a 50 mm craniotomy with 90 mm upper-surface curvature, 2019 Methods |
+| Tip and exposed site geometry | 2.3 mm diameter contacts, 2019 Methods |
+| Contact coating | Platinum-iridium 90/10 contact material, 2019 Methods |
+| Insulation | Unreported in reviewed sources |
+| Insertion method | 50 mm craniotomy; contacts above intact dura, implant replaces removed bone, 2019 Methods |
+| Anchoring and fixation | Four titanium wings protect against pressure or shocks, 2019 Methods; fixation details beyond these unreported |
 
-*Why it matters:* WIMAGINE is a concrete demonstration that stable, long-term motor decoding is possible in humans using a non‑penetrating, fully implanted neural interface class — enabling high-profile demonstrations (e.g., exoskeleton control) while reducing biological risk relative to penetrating arrays.
+## Electrode and channel physics
 
-*Most comparable devices:* subdural/epidural ECoG systems (signal class), other fully implanted wireless cortical surface interfaces.
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in reviewed sources |
+| Electrode material | Platinum-iridium 90/10, 2019 Methods |
+| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Noise floor or SNR | 2015 development abstract: less than 0.7 µV RMS input-referred noise over 0.5-300 Hz; not a chronic in-vivo SNR |
+| Recording modality | ECoG population field potentials |
+| Sampling rate | 976 Hz, 12-bit ADC in 2019 sheep protocol; contacts recorded in successive 16-contact phases |
+| Stimulation capability | Recording device; no therapeutic stimulation capability established in reviewed sources |
+| Charge injection limit | Not applicable to the reviewed recording use |
+| Reference and ground | Reference electrodes shown in 2019 Figure 9; electrical topology unreported in this audit |
 
----
+## Tissue interface and bioresponse
 
-### Spec Card Grid
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Dura over sensorimotor cortex |
+| Insertion trauma and BBB disruption | Epidural placement without cortical penetration; quantitative BBB disruption unreported |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Unreported in reviewed sources |
+| Gliosis and encapsulation | 2019 sheep histology: increased GFAP reactivity in glia limitans and layer I under implant; do not describe as no gliosis |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Unreported in reviewed sources |
+| Typical failure modes | General failure rates unreported; 2021 measures signal stability, not lifetime reliability |
 
-### Identity
-- *Device name:* WIMAGINE
-- *Canonical ID:* BTSD-IMBCI-0004
-- *Inventor / key authors:* Alim‑Louis Benabid et al.
-- *Org / manufacturer:* CEA‑Clinatec (France)
-- *First demonstrated (year):* ~2016 (reported)
-- *First implanted (year):* ~2016 (reported)
-- *Species:* human
-- *Regulatory / trial status:* human research trial
-- *Primary use:* recording
-- *Primary target:* motor cortex (epidural over M1)
+## System architecture
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Amplification and digitization beneath titanium housing, 2019/2015 descriptions |
+| Data path | Wireless implant to external base station and laptop |
+| Telemetry bandwidth | About 250 kb/s in 2-FSK mode, 2019 sheep protocol; MICS band 402-405 MHz |
+| Sampling rate | 976 Hz in 2019 sheep protocol; 16 contacts at a time |
+| Power | Remote inductive power at 13.56 MHz, 2019 Methods; not a rechargeable implanted battery claim |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | Hermetic titanium housing in 2015 development abstract |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | 50 mm cranial opening and epidural module placement, 2019 Methods |
+| Output connectors | Wireless base station to computer; no percutaneous electrode connector in described system |
 
-### Geometry & Architecture
-- *Interface type:* epidural ECoG
-- *Penetrating?:* no
-- *Form factor:* flexible electrode array
-- *Array layout:* multi-contact ECoG grid
-- *Footprint (mm):* cm-scale cortical coverage (reported)
-- *Insertion depth (mm):* epidural (no cortical penetration)
-- *Shank / lead dimensions:* N/A
-- *Site spacing (µm):* mm-scale
-- *Tip geometry:* flat contacts
-- *Insertion method:* craniotomy with epidural placement
-- *Anchoring method:* skull fixation
-- *Packaging location:* fully implanted cranial module with wireless telemetry
+## Performance envelope
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Unreported in reviewed sources |
+| Chronic yield | No single yield percentage; two sheep retained relatively stable ECoG and SSEP over 10 months, 2019 |
+| Stability over time | 2021 two-patient study: limited decline in RMS, band power and SNR; effective bandwidth and spectral edge frequency stable |
+| Longevity | 32 and 14 months observed in two patients, 2021; not a maximum service life |
+| Revision and explant experience | Postmortem explant and histology in two sheep, 2019; human revision rate unreported |
+| Adverse events | Human adverse-event rate unreported in reviewed stability abstract; no generic safety claim |
+| Notable demonstrations | Task-related motor imagery discrimination maintained beyond two years in 2021 study |
 
-### Electrode & Channel Physics
-- *Channel count:* ~64 (reported; configurations vary)
-- *Active sites used (vs total):* majority active (reported)
-- *Electrode material:* platinum-based contacts (reported)
-- *Site area (µm²):* large surface contacts (ECoG-scale)
-- *Impedance @ 1 kHz:* low (typical for ECoG; exact values vary)
-- *Noise floor / SNR:* moderate; population-level signals
-- *Recording modality:* ECoG (LFP-dominant)
-- *Stimulation capability:* no (recording-focused)
-- *Charge injection limit / safe stim range:* N/A
+## Clinical and preclinical evidence
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | Two bilaterally implanted quadriplegic patients, 2021 stability study |
+| Preclinical cohort | Two sheep, 2019 study |
+| Follow-up duration | Unreported in reviewed sources |
+| Indications | Motor BCI for paralysis research |
+| Trials and registries | NCT02550522 is retained as the linked protocol record; current recruitment status not asserted |
+| Primary outcomes | Longitudinal ECoG stability, effective bandwidth and evoked responses |
+| Key limitations | Small cohorts, species-specific skull/contact geometry, 16-contact phased acquisition in sheep protocol |
 
-### Tissue Interface & Bioresponse
-- *Target tissue:* dura-adjacent cortical surface
-- *BBB disruption:* low
-- *Vascular disruption risk:* low
-- *Micromotion sensitivity:* low
-- *Gliosis / encapsulation:* generally lower than penetrating arrays; long-term encapsulation can still affect coupling
-- *Neuron loss (if reported):* none reported (in summary sources)
-- *Foreign-body response mitigation:* non-penetrating geometry
-- *Typical failure mode:* coupling changes (encapsulation), hardware aging, telemetry/power issues
+## Engineering tradeoffs
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Wireless fully implanted epidural acquisition with chronic human signal evidence |
+| Limitations | Population recording, not single-unit access; histological reaction still documented in sheep |
+| Scaling constraints | Wireless throughput, power and cranial footprint; no quantitative maximum channel count established beyond reviewed configuration |
 
-### System Architecture
-- *Onboard electronics:* amplification + digitization
-- *Data path:* fully implanted wireless telemetry
-- *Telemetry bandwidth:* sufficient for ECoG decoding (exact figures vary)
-- *Sampling rate:* ECoG-appropriate (often hundreds of Hz to kHz in practice; exact varies)
-- *Power:* implanted power module (inductive recharge reported)
-- *Thermal management:* within safe cranial limits (reported)
-- *Hermeticity:* medical-grade sealed implant
-- *MRI compatibility:* unknown/conditional (device- and protocol-dependent)
-- *Surgical complexity:* moderate craniotomy, low cortical risk (relative to penetrating arrays)
+## References
 
----
-
-### Performance Envelope
-- *Typical yield (acute):* high
-- *Typical yield (chronic):* stable multi-month recordings (reported)
-- *Stability over time:* good
-- *Longevity (median / max):* multi-year implants reported in this program
-- *Revision / explant:* feasible
-- *Adverse events (high-level):* none major reported in summary sources
-- *Notable demos / tasks:* robotic exoskeleton control; motor intention decoding in tetraplegia
-
----
-
-### Clinical / Preclinical Evidence
-- *N implanted subjects:* small human cohort
-- *Follow-up duration:* months to years
-- *Indications:* motor paralysis / tetraplegia
-- *Trial registry links:* NCT02550522
-- *Primary outcomes:* feasibility of wireless epidural motor BCI
-- *Key limitations of evidence:* limited spatial resolution; small sample sizes; device specs not uniformly reported
-
----
-
-### Engineering Verdict
-
-*Strengths:*
-- strong safety profile relative to penetrating arrays
-- fully implanted, wireless human system
-- clinically realistic surgical burden
-
-*Limitations / failure modes:*
-- limited spatial and single-unit resolution
-- decoding ceiling for surface/population signals
-
-*Scaling constraints:*
-- information density per unit area
-- telemetry/power budget
-- long-term coupling changes (encapsulation)
-
-*What newer designs try to fix:*
-- higher channel counts
-- improved spatial specificity without penetrating tissue
-
----
-
-### References
-- ClinicalTrials.gov: NCT02550522 (record access varies by site; link by ID): <https://clinicaltrials.gov/study/NCT02550522>
-- (Add) Benabid AL et al., *Lancet Neurology* (2019) — to link precisely once we pick the exact article/DOI.
-- CEA‑Clinatec: <https://clinatec.fr/>
+- Sauter-Starace et al. 2019. [Long-Term Sheep Implantation of WIMAGINE, a Wireless 64-Channel Electrocorticogram Recorder](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2019.00847/full).
+- [Long-term stability of the chronic epidural wireless recorder WIMAGINE in tetraplegic patients](https://iopscience.iop.org/article/10.1088/1741-2552/ac2003). 2021.
+- [WIMAGINE development report](https://www.frontiersin.org/10.3389/conf.fnhum.2015.218.00028/event_abstract). 2015 conference abstract, used only for explicitly scoped hardware descriptions.
+- [Clinical protocol NCT02550522](https://clinicaltrials.gov/study/NCT02550522). No current recruitment status asserted.
