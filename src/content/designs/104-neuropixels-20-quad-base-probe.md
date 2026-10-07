@@ -16,49 +16,118 @@ draft: false
 
 # Neuropixels 2.0 Quad Base
 
-Quad Base keeps the four-shank Neuropixels 2.0 recording geometry while expanding the electronics to 1,536 simultaneous channels. The July 27, 2026 primary manuscript is a preprint, not peer-reviewed evidence. Its affiliations include Johns Hopkins University, HHMI Janelia and imec.
+Quad Base keeps the four-shank Neuropixels 2.0 recording geometry while expanding the electronics to 1,536 simultaneous channels. The July 27, 2026 manuscript is a preprint, not peer-reviewed evidence. Unreported means not established by the reviewed sources: the manufacturer datasheet and manual, the preprint and Neuropixels Central.
 
-This is distinct hardware from the [384-channel 2.0 alpha probe](/devices/88-neuropixels-20-alpha-probe/). It is also not NXT/NP 3.0: equal advertised channel counts do not make the base architecture or channel mapping identical.
+## Identity
 
-## Geometry and capacity
-
-| Feature | Source-reported value |
+| Field | Value and source scope |
 | --- | --- |
-| Shanks / shank length | Four / 10 mm |
-| Total physical sites | 5,120 low-impedance titanium-nitride sites |
-| Simultaneous channels | 1,536 |
-| Assignment per shank | 384 channels selectable from 1,280 sites, per Neuropixels Central |
-| Probe-base width | 10.2 mm, compared with 3.5 mm for standard 2.0 in the preprint |
-| Headstage | 14 ×18 mm, compared with 10 ×14 mm for standard 2.0 in the preprint |
+| Device | Neuropixels 2.0 Quad Base, four-shank, 1,536-channel probe |
+| Manufacturer | Manufacturer datasheet from the Neuropixels program with imec; preprint affiliations include Johns Hopkins University, HHMI Janelia and imec |
+| Interface class | Penetrating silicon CMOS recording probe |
+| Origin | Johns Hopkins, Janelia and imec; July 27, 2026 bioRxiv preprint |
+| First demonstrated | Preprint dated July 27, 2026. Neuropixels Central states purchase availability since August 2025, a source-reported statement not verified as stock or delivery |
+| First human implant | Unreported. Research-use-only in non-human subjects; not manufactured or approved for human or clinical use |
+| Species studied | Mouse recordings in the preprint; two probes (eight shanks) gave 3,072 channels in the mouse application |
+| Regulatory status | Research use only, non-human subjects. No clinical clearance |
+| Function | High-channel extracellular recording across four shanks |
+| Target tissue | Rodent brain; targets per preprint experiments |
 
-Two probes supply 3,072 channels in the [mouse recording application](/applications/105-neuropixels-quad-base-mouse-sequences-2026/). That is two probes and eight shanks, not the capacity of one device. Nor are all 5,120 physical sites sampled at once on one probe.
+## Geometry and architecture
 
-The manufacturer datasheet specifies a 70 × 24 µm shank cross-section, 12 × 12 µm TiN contacts and a two-row layout with 15 µm column pitch and 32 µm row pitch. Its listed package mass is 0.51-0.55 g, not the entire cable/acquisition setup.
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Four-shank silicon CMOS probe with enlarged base and headstage |
+| Array layout | Four shanks, two-column site layout per the manufacturer datasheet; 384 channels selectable from 1,280 sites per shank |
+| Electrode count | 5,120 physical TiN sites (1,280 per shank); 1,536 simultaneous channels per probe, 384 per shank |
+| Pitch | 15 µm column pitch and 32 µm row pitch per the manufacturer datasheet |
+| Electrode lengths | 10 mm per shank |
+| Shank width and thickness | Shank cross-section 70 x 24 µm. Probe base 10.2 mm wide versus 3.5 mm for standard 2.0 in the preprint. Headstage 14 x 18 mm versus 10 x 14 mm for standard 2.0 |
+| Tip and exposed site geometry | Tip geometry unreported in the reviewed sources |
+| Contact coating | Titanium nitride |
+| Insulation | Unreported |
+| Insertion method | Unreported in the reviewed sources beyond rodent implantation methods in the preprint |
+| Anchoring and fixation | Unreported |
 
-## Noise and excluded channels
+## Electrode and channel physics
 
-The preprint describes noise and gain as comparable with standard 2.0's 6.8 µV RMS specification. Its actual Supplementary Figure S1 table reports mean noise of 7.83, 7.88 and 8.03 µV for three Quad Base probes. Figure 1's measurement band is 300-10,000 Hz. A comparator specification should not replace the measured Quad Base values.
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | 12 x 12 µm (144 µm2) per site, geometric, per the manufacturer datasheet |
+| Electrode material | Titanium nitride on silicon |
+| Impedance (with measurement frequency) | Unreported as a Quad Base impedance in the reviewed sources |
+| Noise floor or SNR | Preprint Supplementary Figure S1: mean noise 7.83, 7.88 and 8.03 µV for three probes, 300 to 10,000 Hz band. Standard 2.0 comparator specification 6.8 µV RMS is not a Quad Base value. Channels under 50% of average gain excluded; low-gain fractions 0.26%, 0.85% and 0.13% for probes A to C; above 10 µV noise 2.08%, 1.30%, 2.41% |
+| Recording modality | Extracellular spikes and local signals |
+| Sampling rate | Unreported in the reviewed sources |
+| Stimulation capability | Recording only |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported in the reviewed sources |
 
-Channels with less than 50% of average gain were excluded from other measurements. Reported low-gain fractions were 0.26%, 0.85% and 0.13% for probes A-C; fractions above 10 µV noise were 2.08%, 1.30% and 2.41%. This is a characterized array with imperfect channels, not an assertion that every channel met identical performance.
+## Tissue interface and bioresponse
 
-## Availability and generation boundary
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Rodent brain |
+| Insertion trauma and BBB disruption | Rigid four-shank insertion; injury and blood-brain barrier disruption unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Low-gain and high-noise channels (see noise row) remain in the array; no failure analysis beyond that |
 
-Neuropixels Central's current technology page says Quad Base has been available for purchase since August 2025. This is a source-reported availability statement, not a verified stock, price or delivery quote.
+## System architecture
 
-The same source describes NXT prototypes as 1,536-channel four-shank devices with up to 912 channels mapped to one shank and expected purchase availability in 2027. Its August 2026 access announcement calls NXT the development name and NP 3.0 the planned purchase name. Those mapping and schedule claims belong to NXT, not Quad Base.
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | CMOS probe base with 1,536 readout channels |
+| Data path | Probe to headstage to acquisition system; details beyond headstage dimensions unreported |
+| Telemetry bandwidth | Not applicable: wired |
+| Sampling rate | Unreported in the reviewed sources |
+| Power | Unreported. Datasheet lists package mass 0.51 to 0.55 g, which excludes cable and acquisition |
+| Thermal management | Unreported |
+| Packaging and hermeticity | Silicon-spacer or metal-cap package alternatives exist per the manufacturer; they are not one universal enclosure |
+| MRI compatibility | Unreported |
+| Surgical complexity | Rodent craniotomy and four-shank insertion; human surgery not applicable |
+| Output connectors | Unreported |
 
-The manufacturer labels these probes research-use-only in non-human subjects: not manufactured or approved for human or clinical use. Animal results and availability for purchase do not override that restriction.
+## Performance envelope
 
-## Model boundary
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Two probes gave 3,072 channels in mouse sequence recordings per the application page; per-probe yield unreported here |
+| Chronic yield | Unreported |
+| Stability over time | Unreported |
+| Longevity | Unreported |
+| Revision and explant experience | Not applicable |
+| Adverse events | Unreported |
+| Notable demonstrations | Large-scale simultaneous mouse recording with 3,072 channels from two probes (preprint, not peer reviewed) |
 
-No full model is supplied. The manufacturer adds silicon-spacer/metal-cap package dimensions, but those alternatives are not one universal enclosure. Exact site-field origins, full connector geometry and a complete fabrication model remain outside this catalog pass. Existing 2.0 shank reference geometry does not by itself define the larger Quad Base assembly.
+## Clinical and preclinical evidence
 
-## Primary sources
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None |
+| Preclinical cohort | Mouse cohort in the preprint; size not itemized in this sheet |
+| Follow-up duration | Unreported |
+| Indications | Research recording, not a clinical indication |
+| Trials and registries | None |
+| Primary outcomes | Characterization of noise and gain on three probes and mouse recordings |
+| Key limitations | Preprint, not peer reviewed; noise comparisons use a spec for the standard 2.0 and measured values for Quad Base; channels with defects remain |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Four shanks and 1,536 simultaneous channels from one probe |
+| Limitations | Larger base and headstage (10.2 mm base, 14 x 18 mm headstage); excluded channels |
+| Scaling constraints | Larger base limits packing and implantation space; channel count does not equal 5,120 simultaneous sites |
+
+## References
 
 - [Manufacturer Quad Base datasheet, including research-use restriction](https://www.neuropixels.org/_files/ugd/328966_4e39ab2e46424dc9b3efa446d286ab0f.pdf).
 - [Manufacturer Quad Base user manual](https://www.neuropixels.org/_files/ugd/328966_ae4bf1dc4ccd4be6bc55faa19dc02631.pdf).
+- [July 27, 2026 preprint full text](https://www.biorxiv.org/content/10.64898/2026.07.23.740388v1.full) and [PDF with Figure 1 and Supplementary Figure S1](https://www.biorxiv.org/content/10.64898/2026.07.23.740388v1.full.pdf).
+- [Neuropixels Central technology page](https://www.neuropixelscentral.org/technology) and [NXT/NP 3.0 access announcement](https://www.neuropixelscentral.org/post/neuropixels-nxt-3-0-probe-access-challenge-pac).
 
-- [July 27, 2026 preprint full text](https://www.biorxiv.org/content/10.64898/2026.07.23.740388v1.full).
-- [Preprint PDF, Figure 1, Supplementary Figure S1 and methods](https://www.biorxiv.org/content/10.64898/2026.07.23.740388v1.full.pdf).
-- [Neuropixels Central technology page](https://www.neuropixelscentral.org/technology).
-- [Official NXT/NP 3.0 access announcement](https://www.neuropixelscentral.org/post/neuropixels-nxt-3-0-probe-access-challenge-pac).
+Boundaries: distinct from the [384-channel 2.0 alpha probe](/devices/88-neuropixels-20-alpha-probe/) and from NXT/NP 3.0, whose mapping of up to 912 channels to one shank is a different capability. Related: [mouse recording application](/applications/105-neuropixels-quad-base-mouse-sequences-2026/). No full 3D model is supplied.
