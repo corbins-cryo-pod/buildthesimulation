@@ -44,6 +44,7 @@ const FACETS = {
   ],
   interfaceType: [
     { label: "Any", value: "" },
+    { label: "Other / chemical", value: "other" },
     { label: "Intracortical", value: "intracortical" },
     { label: "ECoG", value: "ecog" },
     { label: "sEEG", value: "seeg" },
@@ -69,6 +70,8 @@ const FACETS = {
 } as const;
 
 export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
+  const [stage, setStage] = useState("");
+  const [modelsOnly, setModelsOnly] = useState(false);
   const [initialized, setInitialized] = useState(false);
   const [query, setQuery] = useState("");
   const [axis, setAxis] = useState("");
@@ -85,6 +88,8 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
     const form0 = url.searchParams.get("form") ?? "";
     const dir0 = splitCsv(url.searchParams.get("dir"));
 
+    setStage(norm(url.searchParams.get("stage") ?? ""));
+    setModelsOnly(url.searchParams.get("models") === "1");
     setQuery(q);
     setAxis(norm(axis0));
     setIface(norm(iface0));
@@ -98,6 +103,8 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
     if (!initialized) return;
     const url = new URL(window.location.href);
 
+    if (stage) url.searchParams.set("stage", stage); else url.searchParams.delete("stage");
+    if (modelsOnly) url.searchParams.set("models", "1"); else url.searchParams.delete("models");
     const q = query.trim();
     if (q) url.searchParams.set("q", q);
     else url.searchParams.delete("q");
@@ -116,7 +123,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
     else url.searchParams.delete("dir");
 
     window.history.replaceState({}, "", url);
-  }, [query, axis, iface, form, dir, initialized]);
+  }, [query, axis, iface, form, dir, initialized, stage, modelsOnly]);
 
   const normalizedEntries = useMemo(() => {
     return props.entries.map((e) => {
@@ -161,6 +168,8 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
   const filtered = useMemo(() => {
     const q = norm(query);
     return normalizedEntries.filter((e: any) => {
+      if (stage && norm(e.status ?? "") !== stage) return false;
+      if (modelsOnly && !getDeviceModel(e.device_id)) return false;
       if (axis && e._axis !== axis && !e._tags.has(axis)) return false;
       if (iface && e._iface !== iface && !e._tags.has(iface)) return false;
       if (form && e._form !== form && !e._tags.has(form)) return false;
@@ -175,11 +184,12 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
       if (q && !e._haystack.includes(q)) return false;
       return true;
     });
-  }, [normalizedEntries, query, axis, iface, form, dir]);
+  }, [normalizedEntries, query, axis, iface, form, dir, stage, modelsOnly]);
 
-  const hasFilters = query.trim() || axis || iface || form || dir.size;
+  const hasFilters = query.trim() || axis || iface || form || dir.size || stage || modelsOnly;
 
   function clearAll() {
+    setStage(""); setModelsOnly(false);
     setQuery("");
     setAxis("");
     setIface("");
@@ -222,6 +232,18 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
 
       <div class="body">
         <aside class="sidebar">
+          <label class="stage">Evidence stage
+            <select value={stage} onChange={(e) => setStage((e.target as HTMLSelectElement).value)}>
+              <option value="">All stages</option>
+              <option value="human">Human</option>
+              <option value="preclinical">Preclinical</option>
+              <option value="research">Research</option>
+              <option value="theoretical">Theoretical</option>
+            </select>
+          </label>
+          <label class="model-filter"><input type="checkbox" checked={modelsOnly} onChange={(e) => setModelsOnly((e.target as HTMLInputElement).checked)} /> Has a 3D reference model</label>
+          <p class="stage-note">Stage describes the catalog's evidence category, not approval or clinical readiness.</p>
+
           <FacetRadio
             title="Axis"
             name="axis"
@@ -296,6 +318,8 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
 
         .device-directory .sidebar{padding:14px 14px;border-radius:14px;border:1px solid var(--border);background:var(--panelStrong)}
 
+        .stage{display:block;font-size:16px}.stage select{display:block;width:100%;margin:7px 0 12px;padding:8px;border:1px solid var(--border);border-radius:8px;color:inherit;background:var(--panelStrong);font:inherit}
+        .model-filter{display:flex;gap:8px;align-items:center;font-size:14px}.stage-note{font-size:12px;line-height:1.6;opacity:.72;margin:12px 0 18px}
         .device-directory .results{min-width:0}
         .device-directory .grid{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:10px}
         @media (max-width: 900px){.device-directory .grid{grid-template-columns:1fr}}
