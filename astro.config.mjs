@@ -7,6 +7,7 @@ export default defineConfig({
   site: "https://buildthesimulation.com",
   integrations: [preact()],
   redirects: {
+    '/devices/36-neuropixels-2-0': '/devices/88-neuropixels-20-alpha-probe/',
     '/devices/37-braingate-pilot-2006': '/applications/37-braingate-pilot-2006/',
     '/devices/40-paradromics-connect-one-study': '/applications/40-paradromics-connect-one-study/',
     '/devices/44-synchron-command-study': '/applications/44-synchron-command-study/',
