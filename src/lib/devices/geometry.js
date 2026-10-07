@@ -53,11 +53,31 @@ export function buildDeviceMesh(model) {
       pad.position.fromArray(site.positionMm); pad.name = site.id; contacts.add(pad);
     }
   } else if (model.kind === 'surface-grid') {
-    const film = new THREE.Mesh(new THREE.BoxGeometry(model.width, model.length, model.thickness), new THREE.MeshStandardMaterial({ color: 0x748c94, roughness: 0.65 }));
-    film.position.z = -model.thickness / 2; bodies.add(film);
+    const filmMaterial = new THREE.MeshStandardMaterial({ color: 0x748c94, roughness: 0.65 });
+    if (model.siteDepth) {
+      // A perforated film surface lets recessed contact faces remain visible.
+      // Local well sidewalls are schematic; no nanorod or perfusion-hole mask is inferred.
+      const shape = new THREE.Shape();
+      shape.moveTo(-model.width / 2, -model.length / 2);
+      shape.lineTo(model.width / 2, -model.length / 2);
+      shape.lineTo(model.width / 2, model.length / 2);
+      shape.lineTo(-model.width / 2, model.length / 2); shape.closePath();
+      for (const site of sites) {
+        const hole = new THREE.Path();
+        hole.absarc(site.positionMm[0], site.positionMm[1], model.siteSize / 2, 0, Math.PI * 2, true);
+        shape.holes.push(hole);
+      }
+      const top = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, { depth: model.siteDepth, bevelEnabled: false, curveSegments: 8 }), filmMaterial);
+      top.position.z = -model.siteDepth; bodies.add(top);
+      const lower = new THREE.Mesh(new THREE.BoxGeometry(model.width, model.length, model.thickness - model.siteDepth), filmMaterial);
+      lower.position.z = -(model.thickness + model.siteDepth) / 2; bodies.add(lower);
+    } else {
+      const film = new THREE.Mesh(new THREE.BoxGeometry(model.width, model.length, model.thickness), filmMaterial);
+      film.position.z = -model.thickness / 2; bodies.add(film);
+    }
     // Depth bias is a rendering setting, not an added physical layer.
     const surfaceMetal = metal.clone(); surfaceMetal.polygonOffset = true; surfaceMetal.polygonOffsetFactor = -1; surfaceMetal.polygonOffsetUnits = -1;
-    const padGeometry = new THREE.PlaneGeometry(model.siteSize, model.siteSize);
+    const padGeometry = model.siteShape === 'circle' ? new THREE.CircleGeometry(model.siteSize / 2, 24) : new THREE.PlaneGeometry(model.siteSize, model.siteSize);
     for (const site of sites) {
       const pad = new THREE.Mesh(padGeometry, surfaceMetal); pad.position.fromArray(site.positionMm); pad.name = site.id; contacts.add(pad);
     }

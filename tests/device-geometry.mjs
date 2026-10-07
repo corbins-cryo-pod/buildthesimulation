@@ -29,7 +29,9 @@ for (const model of Object.values(deviceModels)) {
     close(sites[1].positionMm[0] - sites[0].positionMm[0], model.pitch);
     close(sites[model.columns].positionMm[1] - sites[0].positionMm[1], model.pitch);
     close(bounds.max.x - bounds.min.x, model.width); close(bounds.max.z - bounds.min.z, model.thickness);
-    assert(sites.every(s => s.positionMm[2] === 0 && Math.abs(s.contactAreaMm2 - model.siteSize ** 2) < 1e-9));
+    const area = model.siteShape === 'circle' ? Math.PI * (model.siteSize / 2) ** 2 : model.siteSize ** 2;
+    assert(sites.every(s => s.positionMm[2] === (model.siteDepth ? -model.siteDepth : 0) && Math.abs(s.contactAreaMm2 - area) < 1e-9));
+    if (model.siteDepth) { close(model.siteDepth, .002); close(model.thickness, .0066); assert.equal(sites.length, 1024); }
   }
   if (model.kind === 'utah') {
     close(sites[1].positionMm[0] - sites[0].positionMm[0], .4);
