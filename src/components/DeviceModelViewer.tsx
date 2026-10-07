@@ -57,7 +57,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       camera.up.set(0, 0, 1);
       const controls = new OrbitControls(camera, renderer.domElement);
       controls.enableDamping = false; controls.minDistance = 0.04; controls.maxDistance = extent * 10;
-      const gridSize = ['stentrode', 'neuralink'].includes(model.kind) ? 60 : 12;
+      const gridSize = ['stentrode', 'neuralink'].includes(model.kind) ? 60 : Math.ceil(Math.max(model.width ?? 0, model.length ?? 0, 12));
       const grid = new THREE.GridHelper(gridSize, gridSize, 0x516071, 0x293645);
       grid.rotation.x = Math.PI / 2; grid.position.z = bounds.min.z - 0.02;
       if (software) {
@@ -94,6 +94,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
         // The Neuropixels shank is 70 µm wide and 10 mm long, so whole-shank orthogonal views are a hairline. Crop to the lowest 1.4 mm instead.
         if (model.kind === 'neuropixels' && (next === 'front' || next === 'side')) { target.set(0, 0, 0.75); distance = 1.6; }
         if (isTip) { target.set(0, 0, model.length - 0.28); distance = 0.9; direction.set(0, -1, 0); }
+        if (next === 'detail' && model.kind === 'surface-grid') { target.fromArray(sites[Math.floor(sites.length / 2)].positionMm); direction.set(0, -0.35, 1).normalize(); distance = Math.max(model.siteSize * 4, 0.08); }
         if (next === 'detail' && model.kind === 'carbon-row') { target.fromArray(sites[4].positionMm); direction.set(0, -0.35, 1).normalize(); distance = 0.08; }
         if (next === 'detail' && model.kind === 'connexus') { target.set(0, 0, 1.15); distance = 2.8; }
         if (next === 'detail' && model.kind === 'stentrode') {
@@ -154,7 +155,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       {model.kind === 'stentrode' && <button disabled={!ready} onClick={() => api.current?.setView('end')}>End-on</button>}
       {['connexus', 'neuralink'].includes(model.kind) && <button disabled={!ready} onClick={() => api.current?.setView('end')}>{model.kind === 'connexus' ? 'Electrode face' : 'Top view'}</button>}
       {model.kind === 'neuralink' && <button disabled={!ready} onClick={() => api.current?.setView('thread')}>Thread detail</button>}
-      {['connexus', 'neuralink', 'stentrode', 'carbon-row'].includes(model.kind) && <button disabled={!ready} onClick={() => api.current?.setView('detail')}>{model.kind === 'connexus' ? 'Microwire detail' : 'Contact detail'}</button>}
+      {['connexus', 'neuralink', 'stentrode', 'carbon-row', 'surface-grid'].includes(model.kind) && <button disabled={!ready} onClick={() => api.current?.setView('detail')}>{model.kind === 'connexus' ? 'Microwire detail' : 'Contact detail'}</button>}
       {model.kind === 'neuropixels' && <button disabled={!ready} onClick={() => api.current?.setView('oblique')}>Full shank</button>}
       {model.kind === 'neuropixels' && <button disabled={!ready} onClick={() => api.current?.setView('tip')}>Tip detail</button>}
       <button disabled={!ready} onClick={() => api.current?.zoom(0.7)} aria-label="Zoom in">Zoom +</button>
