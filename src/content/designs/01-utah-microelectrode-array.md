@@ -44,7 +44,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 
 | Field | Value and source scope |
 | --- | --- |
-| Device family | Utah Microelectrode Array research family; NeuroPort is the human clinical configuration |
+| Device | Utah Microelectrode Array research family; NeuroPort is the human clinical configuration |
 | Manufacturer | Blackrock Neurotech (formerly Blackrock Microsystems) |
 | Interface class | Intracortical, penetrating silicon microelectrode array |
 | Origin | University of Utah; see [Utah array origins](/devices/59-utah-array-origins/) |
@@ -69,7 +69,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Contact coating | Platinum or sputtered iridium oxide (SIROF) |
 | Insulation | Parylene-C, Utah options table |
 | Insertion method | Configuration-dependent tooling; specifics unreported in reviewed sources |
-| Anchoring / fixation | Percutaneous pedestal or connector; array fixation detail unreported in reviewed sources |
+| Anchoring and fixation | Percutaneous pedestal or connector; array fixation detail unreported in reviewed sources |
 
 ## Electrode and channel physics
 
@@ -77,7 +77,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | --- | --- |
 | Exposed site area | Unreported in reviewed manufacturer sources |
 | Electrode material | Silicon shank with platinum or SIROF contact metallization |
-| Impedance | NeuroPort page: platinum 100-800 kΩ, SIROF at most 50 kΩ at 1 kHz; Utah table: platinum 20-800 kΩ, SIROF/IrOx 1-80 kΩ with frequency unstated; 2022 IFU: 100-800 kΩ platinum, 1-80 kΩ iridium oxide. Source-specific figures kept, not merged |
+| Impedance (with measurement frequency) | NeuroPort page: platinum 100-800 kΩ, SIROF at most 50 kΩ at 1 kHz; Utah table: platinum 20-800 kΩ, SIROF/IrOx 1-80 kΩ with frequency unstated; 2022 IFU: 100-800 kΩ platinum, 1-80 kΩ iridium oxide. Source-specific figures kept, not merged |
 | Noise floor | Unreported; acquisition-system dependent |
 | Recording modality | Single- and multi-unit spiking and local field potentials in published use |
 | Sampling rate | Configuration dependent; set by the external acquisition system |
@@ -93,7 +93,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Insertion trauma / BBB disruption | Inherent to penetrating insertion; no quantitative value in reviewed sources |
 | Vascular disruption risk | Qualitative risk of penetrating placement; unreported quantitatively |
 | Micromotion sensitivity | Rigid silicon array in soft tissue; qualitative concern, no reviewed quantitative source |
-| Gliosis / encapsulation | Meningeal reactions and insulation degradation documented in the 2013 macaque failure cohort |
+| Gliosis and encapsulation | Meningeal reactions and insulation degradation documented in the 2013 macaque failure cohort |
 | Neuron loss near sites | Unreported in the reviewed sources |
 | Foreign-body response mitigation | Unreported in reviewed sources |
 | Typical failure modes | Connector failures, meningeal reactions, insulation degradation and gradual channel loss in the 2013 cohort |
@@ -108,7 +108,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Sampling rate | Configuration dependent |
 | Power | External |
 | Thermal management | External |
-| Packaging / hermeticity | Not a hermetically sealed implant; percutaneous connector |
+| Packaging and hermeticity | Not a hermetically sealed implant; percutaneous connector |
 | MRI compatibility | Unreported in reviewed sources |
 | Surgical complexity | Craniotomy, array insertion and percutaneous pedestal placement |
 | Output connectors | Omnetics, CerePort pedestal 128/256, custom (Utah options) |
@@ -121,7 +121,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Chronic yield | 2013 macaque cohort: recording durations 0-2,104 days, median 182 days; 62 of 78 arrays failed completely |
 | Stability over time | Variable across the cohort; see Long-term evidence and failures |
 | Longevity | Manufacturer claims more than eight years in one patient; a single-patient marketing claim, not a cohort result |
-| Revision / explant experience | Unreported in reviewed sources |
+| Revision and explant experience | Unreported in reviewed sources |
 | Adverse events | Percutaneous infection risk is noted qualitatively; no rate in reviewed sources |
 | Notable demonstrations | BrainGate human cursor and device control ([BrainGate pilot](/applications/37-braingate-pilot-2006/)) |
 
@@ -129,11 +129,11 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 
 | Field | Value and source scope |
 | --- | --- |
-| Human use | Documented in the BrainGate pilot and subsequent programs; a single audited participant count is not pinned here |
+| Human subjects | Documented in the BrainGate pilot and subsequent programs; a single audited participant count is not pinned here |
 | Preclinical cohort | 78 arrays in 27 rhesus macaques, 2013 failure analysis |
 | Follow-up duration | Up to 2,104 days in the macaque cohort; human durations vary by program |
 | Indications | Research use for paralysis and motor impairment |
-| Trials / registries | BrainGate pilot entry; registry identifiers not pinned in this sheet |
+| Trials and registries | BrainGate pilot entry; registry identifiers not pinned in this sheet |
 | Primary outcomes | Cursor, communication and device control in published studies |
 | Key limitations | Heterogeneous configurations, variable chronic performance, and manufacturer-versus-study figure conflicts that are preserved rather than merged |
 
