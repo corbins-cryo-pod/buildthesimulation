@@ -55,6 +55,10 @@ An implanted thread cannot conveniently be advanced later to another brain regio
 
 Four-month stability warrants longer studies; it does not establish years of service. This entry does not call the project a dead end. Full thread outline, contact pitch and routing geometry are not reconstructed into a 3D model from photographs.
 
+## Later hardware
+
+The [2022 modular NET platform](/devices/71-modular-net-high-density-arrays/) uses 128-channel modules and shows larger rodent cortical recordings. Its scale and follow-up belong to that later hardware, not to the 2017 probes.
+
 ## Sources
 
 - Luan L, Wei X, Zhao Z, et al. [Ultraflexible nanoelectronic probes form reliable, glial scar-free neural integration](https://www.science.org/doi/10.1126/sciadv.1601966). Science Advances 3:e1601966, 15 February 2017.
