@@ -12,7 +12,7 @@ modality: "Intracortical"
 website: "https://www.nature.com/articles/s41467-021-23802-9"
 tags: ["mouse", "hydrogel", "optogenetics", "hippocampus", "chronic recording", "academic", "preclinical"]
 devices: ["79-hydrogel-hybrid-multifunctional-fiber-probe"]
-orgs: []
+orgs: ["22-mit-neural-engineering-neurotech-ecosystem-lab-brief"]
 draft: false
 ---
 

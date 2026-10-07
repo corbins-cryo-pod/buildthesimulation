@@ -12,7 +12,7 @@ modality: "Intracortical"
 website: "https://www.nature.com/articles/s41593-025-01976-5"
 tags: ["Neuropixels", "macaque", "multi-area", "acute", "academic", "preclinical"]
 devices: ["85-neuropixels-10-nhp-long-shank"]
-orgs: []
+orgs: ["21-stanford-neural-engineering-bci-ecosystem-lab-brief"]
 draft: false
 ---
 

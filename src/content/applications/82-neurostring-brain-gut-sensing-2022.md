@@ -12,7 +12,7 @@ modality: "Other"
 website: "https://www.nature.com/articles/s41586-022-04615-2"
 tags: ["NeuroString", "mouse", "neurochemical", "gut", "reward learning", "academic", "preclinical"]
 devices: ["81-neurostring-neurochemical-sensor"]
-orgs: []
+orgs: ["21-stanford-neural-engineering-bci-ecosystem-lab-brief"]
 draft: false
 ---
 
