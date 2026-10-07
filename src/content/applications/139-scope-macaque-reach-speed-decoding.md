@@ -10,6 +10,7 @@ last_updated: 2026-10-07
 modality: "Other"
 description: "One macaque in the 2023 preprint supplies head-fixed motor-cortex calcium imaging and off-line speed decoding. Published supplement defines the decoder; no closed-loop prosthesis is shown."
 website: "https://www.nature.com/articles/s41928-024-01209-w"
+orgs: ["45-columbia-shepard-optical-and-electrical-interfaces"]
 devices: ["137-scope-subdural-cmos-optical-probe"]
 tags: ["SCOPe", "Columbia", "CMOS", "SPAD", "optical", "preclinical"]
 draft: false
@@ -38,6 +39,8 @@ Table S6 lists recordings 0-43 across dark, reaching, baseline and arm-restraine
 ## Limits
 
 This is off-line feature decoding of performed movements. No closed-loop cursor, prosthesis control, human participant, long-term buried wireless operation or generalized speed decoder across subjects is demonstrated. The imager's implantable thickness, virally delivered reporter and wired controller have distinct translation barriers.
+
+The [paper-grounded collaboration brief](/companies/45-columbia-shepard-optical-and-electrical-interfaces/) links the participating organizations.
 
 ## Sources and version boundary
 
