@@ -73,7 +73,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
         camera.updateProjectionMatrix(); renderer.render(scene, camera);
       };
       // Detail is a camera crop, not an enlarged or distorted shank.
-      const defaultView = model.kind === 'neuropixels' ? 'tip' : 'oblique';
+      const defaultView = model.kind === 'neuropixels' ? 'tip' : model.id === 'neuropixels-opto-electrical-window' ? 'detail' : 'oblique';
       let view = defaultView;
       const setView = (next: string) => {
         if (next === 'default') next = defaultView;
@@ -87,6 +87,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
         if (model.kind === 'neuralink') direction.set(0.6, 1.2, 1.4).normalize();
         if (next === 'front') direction.set(0, -1, 0);
         if (next === 'side') direction.set(1, 0, 0);
+        if (model.id === 'neuropixels-opto-electrical-window' && next === 'front') direction.set(0, 0, 1);
         if (next === 'end') {
           direction.set(0, -0.0001, 1).normalize();
           if (model.kind === 'stentrode') distance = Math.max(model.diameter * 1.7, bounds.max.z - center.z + model.diameter);
@@ -95,6 +96,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
         if (model.kind === 'neuropixels' && (next === 'front' || next === 'side')) { target.set(0, 0, 0.75); distance = 1.6; }
         if (isTip) { target.set(0, 0, model.length - 0.28); distance = 0.9; direction.set(0, -1, 0); }
         if (next === 'detail' && model.kind === 'surface-grid') { target.fromArray(sites[Math.floor(sites.length / 2)].positionMm); direction.set(0, -0.35, 1).normalize(); distance = Math.max(model.siteSize * 4, 0.08); }
+        if (next === 'detail' && model.id === 'neuropixels-opto-electrical-window') { target.set(0, 0, 0); direction.set(0, -0.2, 1).normalize(); distance = 0.2; }
         if (next === 'detail' && model.kind === 'carbon-row') { target.fromArray(sites[4].positionMm); direction.set(0, -0.35, 1).normalize(); distance = 0.08; }
         if (next === 'detail' && model.kind === 'connexus') { target.set(0, 0, 1.15); distance = 2.8; }
         if (next === 'detail' && model.kind === 'stentrode') {
@@ -145,7 +147,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
 
   if (!model) return null;
   return <section class="device-model" id="model-3d" aria-label="3D device geometry">
-    <div class="model-heading"><span class="model-kicker">3D GEOMETRY · REFERENCE MODEL</span><h3>{model.name}</h3><p>{model.kind === 'chip-envelope' ? 'Package envelope only' : 'Electrode-bearing structure'} · dimensions in millimeters</p></div>
+    <div class="model-heading"><span class="model-kicker">3D GEOMETRY · REFERENCE MODEL</span><h3>{model.name}</h3><p>{model.kind === 'chip-envelope' ? 'Package envelope only' : model.id === 'neuropixels-opto-electrical-window' ? 'Electrical crop only; optics omitted' : 'Electrode-bearing structure'} · dimensions in millimeters</p></div>
     <div ref={mount} class="model-canvas" />
     <p class="model-status" role="status">{status}</p>
     <div class="model-controls" aria-label="Model controls">
