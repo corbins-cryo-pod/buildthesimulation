@@ -19,6 +19,25 @@ draft: false
 
 Distributed, individually addressed silicon microchips powered by an external RF system. The 2021 work demonstrates an acute rat cortical recording ensemble and a separate stimulation-chip configuration. Recording, stimulation and networking test chips share RF circuitry, but are not a single universally dual-function implant.
 
+## Core interface specifications
+
+The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values remain unreported; inapplicable fields are marked. Configuration-specific details and limits follow below.
+
+| Field | Specification and source scope |
+| --- | --- |
+| Electrode Pitch | No universal regular-array pitch: distributed chip placement; contact spacing not assigned here |
+| Channel Count | One differential input per recording chip; 48-chip acute ensemble, clear low-noise signals from a fraction (12 illustrated) |
+| Output Connectors | Wireless RF backscatter; no wired implant output connector. External SDR, power amplifier and duplexer are separate components |
+| Output Conn. dimensions L x W x H | Not applicable to chip output connector; full external hub connector dimensions not reported here |
+| Standard Electrode Lengths | Recording chip: no penetrating shank. Separate stimulation variant has optional intracortical tungsten microwires; length not assigned here |
+| Impedance | No universal electrode impedance assigned from reviewed text; noise quality and impedance are separate fields |
+| Array Dimensions | One Figure 1 chiplet 650 × 650 × 250 µm. Distributed ensemble area is not the footprint of one chip |
+| Multi-Port Options | Not applicable as a multi-port order option; TDMA estimates 425/588/770 are scoped network-capacity calculations |
+| Metalization | Recording interface: two gold electrodes. Stimulation variant: intracortical tungsten electrodes, not substituted for recording contacts |
+| Wire Bundle Length | No implant-to-hub bundle. Optional stimulation microwires are tissue contacts, not a data cable |
+| Reference and Ground | Recording differential between two on-chip electrodes; no distal wired reference required for that configuration |
+| Insulation | PDMS encapsulation in acute assembly; ALD hermetic-packaging discussion is distinct and not proof of chronic operation |
+
 ## Identity and configuration
 
 | Property | Published configuration |
