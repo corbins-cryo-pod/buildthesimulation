@@ -1,153 +1,55 @@
 ---
-title: "Neuropixels Probe"
+title: "Neuropixels 1.0 recording probe"
 order: 4
 pubDate: 2026-02-03
-updatedDate: 2026-02-03
+updatedDate: 2026-10-07
 device_id: "BTSD-0004"
 interface_class: "intracortical"
 status: "research"
-last_updated: 2026-02-03
-description: "A CMOS silicon intracortical probe family (Neuropixels v1/v2): extremely high-density, low-noise spike recording for animal research; not a chronic human implant."
+last_updated: 2026-10-07
+description: "Single-shank Neuropixels 1.0: 960 selectable recording sites and 384 simultaneous channels. The manufacturer specification and 2017 prototype geometry are distinguished."
 modality: "Intracortical"
 successRank: 5
-website: "https://www.neuropixels.org/"
-tags: ["BCI", "intracortical", "Neuropixels", "recording", "CMOS", "IMEC", "UCL", "Allen Institute", "cortex", "microelectrode"]
+website: "https://www.neuropixels.org/probe1-0"
+tags: ["intracortical", "Neuropixels", "recording", "CMOS", "imec", "UCL", "Allen Institute", "Janelia", "research"]
 draft: false
 ---
 
-# Neuropixels Probe (IMEC / UCL / Allen Institute)
+# Neuropixels 1.0 recording probe
 
-> *One-line verdict:* Neuropixels is the highest-density, lowest-noise intracortical recording platform widely used in neuroscience, defining an upper bound on spike-recording throughput — but it is a research tool, not a chronic human implant.
+This entry is the single-shank Neuropixels 1.0 recording probe, not every member of the family. [Ultra](/devices/83-neuropixels-ultra-high-density-probe/) and [NHP](/devices/85-neuropixels-10-nhp-long-shank/) have separate hardware entries. Neuropixels 2.0 has different site geometry and single/four-shank configurations; its counts must not be assigned to 1.0.
 
-*Quick tags:* Recording · Stimulation: no · Channels: 384–960 (generation-dependent) · Species: rodent + NHP · First demonstrated: 2017
+## Manufacturer specification
 
----
+| Feature | Neuropixels 1.0 datasheet |
+| --- | --- |
+| Available recording sites | 960 |
+| Simultaneous recording channels | 384 |
+| Shank | 10 mm long, 70 µm wide, 24 µm thick |
+| Recording contacts | 12 × 12 µm titanium nitride |
+| Contact arrangement | Checkerboard, four column positions; two sites per row |
+| Pitch | 16 µm across column positions, 20 µm between rows |
+| Bands | Action potential and local field potential |
+| AP / LFP sample rates | 30 kHz / 2.5 kHz |
 
-### Overview
+A site is a physical electrode. A channel is a signal-processing and readout path. Selecting 384 sites does not turn the other 576 sites into simultaneous channels. The external wired headstage and acquisition system remain part of the setup.
 
-*What it is:* A silicon CMOS-based neural probe with hundreds of recording sites densely packed along a thin shank, multiplexed into on-chip amplifiers/ADCs and streamed out through a wired headstage.
+## Original paper versus later datasheet
 
-*Why it matters:* It sets a practical ceiling for channel density and signal quality in vivo, and it has become a benchmark substrate for spike-sorting and large-scale systems neuroscience.
+Jun and colleagues' 2017 paper reports a 10 mm shank with **70 × 20 µm** cross-section. The manufacturer datasheet gives **70 × 24 µm**. Both figures are retained as source-specific descriptions, not averaged or silently treated as interchangeable.
 
-*Most comparable devices:* Utah microelectrode arrays (human intracortical baseline), flexible-thread intracortical systems (e.g., Neuralink-style architecture, different goals), other CMOS shank probes.
+The viewer uses the datasheet's 24 µm shank thickness, 960 sites, 12 µm square contacts and checkerboard pitch. Its tip outline and 200 µm first-row offset are approximations. It omits base electronics, headstage and acquisition mapping; contact IDs are geometric labels, not actual channel assignments.
 
----
+## Recording circuitry
 
-### Spec Card Grid
+The original development compared passive, active, switched and active-switched designs. The preferred design was passive switched. The paper's on-base signal conditioning, amplification, multiplexing and digitization must not be simplified to a universal claim that every 1.0 electrode has an on-site amplifier.
 
-### Identity
-- *Device name:* Neuropixels (v1, v2.x family)
-- *Canonical ID:* BTSD-0004
-- *Inventor / key authors:* IMEC / UCL / Allen Institute teams (collaborative platform)
-- *Org / manufacturer:* IMEC (platform)
-- *First demonstrated (year):* 2017
-- *First implanted (year):* N/A (research tool; not a chronic human implant)
-- *Species:* rodent, NHP
-- *Regulatory / trial status:* research only
-- *Primary use:* recording
-- *Primary target:* cortex, hippocampus, thalamus (and other deep targets depending on placement)
+## Demonstrated recordings and failures
 
----
+The [2017 rodent study and durability limits](/applications/87-neuropixels-2017-rodent-recordings-limits/) separate two-probe population recordings from chronic event-rate results. The paper reports failures as well as stable recordings. These experiments do not establish a permanent human implant or clinical BCI indication.
 
-### Geometry & Architecture
-- *Interface type:* intracortical
-- *Penetrating?:* yes
-- *Form factor:* single thin silicon shank
-- *Shank width (µm):* ~70 (generation-dependent)
-- *Shank thickness (µm):* 24 for the Neuropixels 1.0 model shown above; other variants differ.
-- *Shank length (mm):* ~10 (common)
-- *Site spacing (µm):* ~20 (common)
-- *Array layout:* linear column(s) along the shank
-- *Insertion method:* micromanipulator
-- *Anchoring method:* rigid shank + skull fixation (typical acute/semichronic prep)
-- *Packaging location:* external headstage
+## Primary sources
 
----
-
-### Electrode & Channel Physics
-- *Total sites:* ~960–1280 (generation-dependent)
-- *Simultaneous channels:* ~384–768 (generation-dependent)
-- *Electrode material:* titanium nitride (common)
-- *Site area (µm²):* 144 for Neuropixels 1.0 (12 × 12 µm); specify the generation when comparing.
-- *Impedance @ 1 kHz:* often reported around ~100–200 kΩ (varies)
-- *Noise floor / SNR:* low-noise, often reported around a few µV RMS (varies by setup)
-- *Recording modality:* single-unit spikes + LFP
-- *Stimulation capability:* no
-- *Charge injection limit / safe stim range:* N/A
-
----
-
-### Tissue Interface & Bioresponse
-- *Target tissue:* gray + white matter (depending on trajectory)
-- *BBB disruption:* high (penetrating)
-- *Vascular disruption risk:* moderate–high (placement dependent)
-- *Micromotion sensitivity:* high (rigid silicon in moving brain)
-- *Gliosis / encapsulation:* major constraint for chronic use
-- *Neuron loss (if reported):* can be significant near shank in chronic contexts
-- *Foreign-body response mitigation:* not the core design goal; platform optimized for research recording
-- *Typical failure mode:* tissue response + micromotion → drift/instability; not designed for long-term human implantation
-
----
-
-### System Architecture
-- *Onboard electronics:* on-shank amplification + multiplexing/ADC (platform feature)
-- *Data path:* high-speed wired headstage
-- *Telemetry bandwidth:* wired (lab system; varies)
-- *Sampling rate:* often ~30 kHz per channel (common in practice)
-- *Power:* external
-- *Thermal management:* low but nonzero dissipation; setup-dependent
-- *Hermeticity:* none (lab device)
-- *MRI compatibility:* no/unknown (assume no)
-- *Surgical complexity:* high-precision placement (research surgery)
-
----
-
-### Performance Envelope
-- *Spike yield:* extremely high (relative to most other single-probe technologies)
-- *Neuron count per probe:* often thousands (analysis-dependent)
-- *Stability over time:* hours to days/weeks (prep-dependent); not a chronic implant platform
-- *Longevity (median / max):* not intended for chronic implant lifetimes
-- *Revision / explant:* remove and replace
-- *Notable demos / tasks:* large-scale circuit mapping; decoding benchmarks; whole-brain-scale recordings in animals
-
----
-
-### Clinical / Preclinical Evidence
-- *N implanted subjects / animals:* very large adoption across labs (animal research)
-- *Follow-up duration:* acute / short-term / semichronic
-- *Indications:* none (research)
-- *Trial registry links:* N/A
-- *Primary outcomes:* research recordings
-- *Key limitations of evidence:* not a clinical device; chronic human translation would require different packaging/biocompatibility strategy
-
----
-
-### Engineering Verdict
-
-*Strengths:*
-- unmatched channel density (in a single shank)
-- excellent noise performance
-- on-chip multiplexing enables scale
-- strong benchmarking ecosystem (software + datasets)
-
-*Limitations / failure modes:*
-- rigid silicon + penetrating geometry
-- external tether / headstage
-- chronic tissue response and micromotion sensitivity
-
-*Scaling constraints:*
-- mechanical mismatch with brain
-- wiring/bandwidth and connector complexity
-- thermal + packaging constraints if translated
-
-*What next-gen tries to fix:*
-- softer mechanics (compliance matching)
-- implantable packaging and hermeticity
-- long-term stability
-
----
-
-### References
-- Jun JJ, et al. “Fully integrated silicon probes for high-density recording of neural activity.” *Nature* (2017). <https://www.nature.com/articles/nature24636>
-- Steinmetz NA, et al. “Neuropixels 2.0: A miniaturized high-density probe for stable, long-term brain recordings.” *Science* (2021). PMC: <https://pmc.ncbi.nlm.nih.gov/articles/PMC8244810/>
-- Neuropixels program site: <https://www.neuropixels.org/>
+- [Manufacturer 1.0 datasheet](https://www.neuropixels.org/_files/ugd/832f20_4a14406ba1204e60ae8534b09e201b49.pdf).
+- [Jun et al. 2017, full primary report](https://pmc.ncbi.nlm.nih.gov/articles/PMC5955206/).
+- [Publisher article](https://www.nature.com/articles/nature24636).
