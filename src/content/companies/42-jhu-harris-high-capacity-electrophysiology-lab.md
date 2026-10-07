@@ -1,5 +1,5 @@
 ---
-title: "Johns Hopkins, Harris high-capacity electrophysiology lab"
+title: "Johns Hopkins University, Harris lab"
 order: 42
 pubDate: 2026-10-07
 updatedDate: 2026-10-07
