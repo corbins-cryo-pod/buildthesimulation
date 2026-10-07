@@ -10,6 +10,7 @@ last_updated: 2026-10-07
 modality: "Other"
 description: "Separate mouse assays test electrical stimulation with fluorescence imaging, blue optogenetics with electrode recording, and red stimulation with GCaMP imaging. Cohort size is not inferred."
 website: "https://www.nature.com/articles/s41928-024-01209-w"
+orgs: ["45-columbia-shepard-optical-and-electrical-interfaces"]
 devices: ["137-scope-subdural-cmos-optical-probe"]
 tags: ["SCOPe", "Columbia", "CMOS", "SPAD", "optical", "preclinical"]
 draft: false
@@ -38,6 +39,8 @@ Fluorescence increases follow repeated optical stimulation cycles, but the spati
 ## Evidence boundary
 
 The accessible sources describe individual preparations without a clear total enrolled-mouse denominator for all assays. No cohort count is inferred from plotted traces, LED count or the number of experiment labels. These are anesthetized acute proof-of-concept tests, not chronic behavioral therapy or a human trial. Bench thermal measurements and light thresholds are retained within their tested conditions.
+
+The [paper-grounded collaboration brief](/companies/45-columbia-shepard-optical-and-electrical-interfaces/) links the participating organizations.
 
 ## Sources and version boundary
 
