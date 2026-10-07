@@ -21,6 +21,25 @@ A silicon array of penetrating electrodes for recording cortical neural activity
 
 For the early manufacturing geometry and commercial lineage, see [Utah array origins](/devices/59-utah-array-origins/). The [BrainGate pilot](/applications/37-braingate-pilot-2006/) used a 96-microelectrode sensor for a human neural cursor and device control.
 
+## Core interface specifications
+
+The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values remain unreported; inapplicable fields are marked. Configuration-specific details and limits follow below.
+
+| Field | Specification and source scope |
+| --- | --- |
+| Electrode Pitch | 400 µm; current Utah manufacturer page |
+| Channel Count | 16-1024 in the current system/options table; not one array. Overview says up to 96 per array, FAQ 96-128. NeuroPort IFU: 100 physical, 96 connected |
+| Output Connectors | Utah options: Omnetics, CerePort pedestal 128/256, Custom |
+| Output Conn. dimensions L x W x H | Utah page: Omnetics 7 × 37 × 9 mm; CerePort 128 16.5 × 12 × 19 mm and 256 16.5 × 10.7 × 19 mm (height × neck diameter × base diameter). Research IFU instead gives Omnetics 9 mm height, 7 mm base length, 13 mm base width; conflict retained |
+| Standard Electrode Lengths | Utah: 0.5-1.5 mm research; 1.0-1.5 mm clinical. NeuroPort configuration: 1.0 or 1.5 mm |
+| Impedance | Utah page: platinum 20-800 kΩ; SIROF/IrOx 1-80 kΩ; frequency not stated. NeuroPort values and IFU differences retained below |
+| Array Dimensions | Utah table literally says "Customizable from 2 - 12" with no unit. FAQ: 4 × 4 mm footprint, 0.2 mm substrate; not a universal customized layout |
+| Multi-Port Options | 1, 2, 3, 4, Utah options table; not equivalent to the electrode count |
+| Metalization | Platinum or sputtered iridium oxide (SIROF). Utah page repeats impedance ranges in this row; those are not material dimensions |
+| Wire Bundle Length | Utah options: customizable 20-130 mm. NeuroPort page: 13 cm long, 0.55 mm wide |
+| Reference and Ground | Utah page: "Ground Source and Selectable Reference Wires". Assembly pin mapping is configuration-specific, not inferred from a connector name |
+| Insulation | Parylene-C, Utah options table; not a lifetime or MR-safety qualification |
+
 ## Published geometry
 
 | Field | Source and configuration |
@@ -60,3 +79,5 @@ The site's Utah model is a reference array geometry, not a reconstruction of eve
 - Blackrock Neurotech. [NeuroPort Electrode 96, current product page](https://blackrockneurotech.com/products/neuroport-electrode/). Read 7 October 2026.
 - Blackrock Microsystems. [NeuroPort Electrode IFU, revision 3.00, April 2022](https://blackrockneurotech.com/wp-content/uploads/2023/04/LB-0612_NeuroPort_Array_IFU.pdf).
 - Barrese JC et al. [Failure mode analysis of silicon-based intracortical microelectrode arrays in non-human primates](https://pubmed.ncbi.nlm.nih.gov/24216311/). Journal of Neural Engineering, 2013.
+
+- Blackrock Microsystems. [Research Arrays IFU, LB-0514 revision 5.00](https://blackrockneurotech.com/wp-content/uploads/2023/04/LB-0514_Blackrock_Research_Arrays_IFU.pdf), November 2020; connector dimensions differ from the current web table.
