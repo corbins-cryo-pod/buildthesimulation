@@ -17,99 +17,113 @@ draft: false
 
 # Hyperflexible regenerative sieve electrode (Veith et al., 2021)
 
-> *One-line verdict:* A hyperflexible regenerative sieve electrode that targets the classic failure mode of rigid sieves (mechanical mismatch) and aims to enhance neurovascular integration across a transected nerve interface.
+All rows follow the shared implant-device template. Measurements belong to the named study or configuration. Unreported means the reviewed sources do not establish a value. Proposed use, terminal assays and continuously functioning implants are not treated as equivalent.
 
-*Quick tags:* Regenerative interface · Stimulation (demonstrated as an interface concept) · Species: rat · Status: preclinical
+## Identity
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Device | Veith 2021 hyperflexible sieve; initial square mesh and redesigned mixed-porosity mesh distinguished |
+| Manufacturer | Academic device fabrication in Veith et al. 2021; commercial manufacturer unreported |
+| Interface class | Regenerative peripheral nerve mesh electrode |
+| Origin | Veith, Li, Modi, Abbaspour, Luan, Xie and Baker research team |
+| First demonstrated | 2021 report reviewed here; not a claim of earliest family demonstration |
+| First human implant | Unreported; reviewed study is rat preclinical research |
+| Species studied | Adult male Sprague-Dawley rats |
+| Regulatory status | Preclinical animal research; clinical authorization unreported |
+| Function | Regenerative neurovascular scaffold with fabricated electrical contacts; study tests tissue integration, not chronic mesh neural recording |
+| Target tissue | Transected sciatic nerve bridging a 3 mm gap |
 
-### Overview
+## Geometry and architecture
 
-*What it is:* A regenerative “sieve” interface placed between transected nerve stumps, where axons regenerate through openings in a mesh-like substrate that also contains patterned conductors/electrode sites.
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Regenerative sieve between nerve stumps |
+| Array layout | Initial 60 µm square pore mesh (SM); redesigned mixed-porosity mesh (MPM) has 80 µm circular pores and four 280 µm holes |
+| Electrode count | 100 initial SM contacts; 84 redesigned MPM contacts, Veith 2021. Not demonstrated simultaneously active neural channels |
+| Pitch | Unreported as contact pitch; pore diameters are not pitch |
+| Electrode lengths | Not applicable to penetrating shanks; implanted assembly crosses 3 mm nerve gap |
+| Shank width and thickness | Mesh total thickness 800 nm-1 µm; interconnect between two 400-500 nm SU-8 layers, Results |
+| Tip and exposed site geometry | Contact exposure through top SU-8 openings; numerical exposed area unreported |
+| Contact coating | Gold electrode/contact layers; nickel/gold pad layers, Methods |
+| Insulation | SU-8 mesh layers; silicone conduit 1.5 mm inner diameter, Figure 3 |
+| Insertion method | Sciatic nerve transection with proximal/distal stumps inserted into silicone conduit around mesh |
+| Anchoring and fixation | Mesh fixed between silicone cuffs with silicone adhesive; nerve ends sutured to conduit with 10-0 nylon, Methods |
 
-*Why it matters:* Classic sieve electrodes can fail because the implant is mechanically mismatched to soft tissue, driving inflammation, fibrosis, and poor regeneration. This work focuses on pushing the mechanical compliance far enough that the interface supports neurovascular invasion and a more stable tissue–device boundary.
+## Electrode and channel physics
 
-*Most comparable devices:* other regenerative sieves (micro- and macro-sieve electrodes), microchannel regenerative scaffolds, nerve guidance conduits with embedded electrodes.
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in reviewed sources |
+| Electrode material | Gold contacts and interconnects; nickel/gold pad layers, Methods |
+| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Noise floor or SNR | Unreported in reviewed sources |
+| Recording modality | Mesh neural recording unreported; CMAP readout uses separate gastrocnemius needle and nerve hook electrodes |
+| Sampling rate | Unreported for mesh; Powerlab/LabChart external CMAP acquisition is separate |
+| Stimulation capability | Stimulation through mesh contacts unreported in audited study; CMAP induced by custom hook electrode |
+| Charge injection limit | Unreported in reviewed sources |
+| Reference and ground | Mesh reference/ground unreported; Achilles tendon needle reference belongs to CMAP assay, not mesh pin map |
 
----
+## Tissue interface and bioresponse
 
-### Spec Card Grid
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Regenerating sciatic nerve and vasculature |
+| Insertion trauma and BBB disruption | BBB: not applicable; model intentionally transects sciatic nerve |
+| Vascular disruption risk | Square mesh fractured and impeded regrowth; mixed pores aim to permit vascular invasion. Quantitative surgical vascular injury rate unreported |
+| Micromotion sensitivity | Mesh fracture during regeneration documented; not a quantified motion-transfer measurement |
+| Gliosis and encapsulation | Initial SM increased CD68 macrophage response; redesigned growth-factor MPM reduced macrophage response at three months. Peripheral, not CNS gliosis |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Mixed pore geometry plus distal 0.5% alginate carrying NGFβ, VEGF-A and FGF-2 at 100 ng/ml each, Methods |
+| Typical failure modes | All tested initial SM devices destroyed by 14 days; six-month initial experiment had limited regeneration in two of five nerves and fractured devices |
 
-### Identity
-- *Device name:* Hyperflexible regenerative sieve electrode
-- *Canonical ID:* BTSD-PNI-0009-01
-- *Key authors:* Veith et al.
-- *Org / manufacturer:* academic research build
-- *First demonstrated (year):* 2021
-- *Species:* rat
-- *Regulatory / trial status:* preclinical
-- *Primary use:* regenerative interface with electrical access (stimulation/recording potential)
-- *Primary target:* transected peripheral nerve (sciatic nerve model)
+## System architecture
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | No active onboard electronics described; passive fabricated mesh |
+| Data path | Future electronic interfacing via contact pads; chronic connected mesh acquisition not demonstrated in reviewed study |
+| Telemetry bandwidth | Not applicable to unconnected passive mesh in tissue-integration experiments |
+| Sampling rate | Unreported in reviewed sources |
+| Power | Not applicable to passive mesh in these experiments; separate assay electronics external |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | SU-8 mesh immobilized in silicone conduit; no hermetic electronics qualification |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Nerve transection, conduit placement and microsuturing; invasive regenerative model |
+| Output connectors | Contact pads fabricated; connected implanted-output connector specification unreported |
 
-### Geometry & Architecture
-- *Interface type:* regenerative sieve (mesh)
-- *Penetrating?:* yes (axons regenerate through openings)
-- *Overall geometry:* flat mesh between proximal/distal stumps (with conduit/cuff stabilization)
-- *Pore / opening geometry:* reported as micro-scale openings; exact values vary with design iteration
-- *Substrate thickness:* hyperflexible thin-film (sub-micron class reported)
-- *Anchoring method:* used with nerve guidance structures (e.g., silicone conduit/cuffs) to align stumps
-- *Insertion method:* nerve transection → mesh placement → alignment of proximal/distal segments
+## Performance envelope
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Electrical channel yield unreported; SEM continuity inspection is not functional neural recording yield |
+| Chronic yield | Chronic electrical yield unreported; device integrity assessed by microCT/histology |
+| Stability over time | Redesigned MPM with growth factors more intact at 14 days and three months; not chronic recording stability |
+| Longevity | Initial SM studied at six months but fractured; redesigned MPM studied through three months. Do not equate durations |
+| Revision and explant experience | Terminal tissue/mesh harvest for imaging and histology; no human revision experience |
+| Adverse events | Initial mesh fracture, aggravated macrophage response and impaired regeneration; not omitted as a successful-only study |
+| Notable demonstrations | Directionally delivered growth factors improved early neurovascular integration and later CMAP recovery in rat gap model |
 
-### Electrode & Channel Physics
-- *Channel count:* patterned conductors and multiple sites are reported; exact site count is design-specific
-- *Conductor/electrode material:* gold traces reported in the paper
-- *Insulation:* thin-film polymer insulation reported (study-specific)
-- *Recording modality:* interface is compatible with CAP-scale recording in principle; paper focus is tissue integration
-- *Stimulation capability:* compatible with stimulation as an interface concept (paper emphasizes interface design and integration)
-- *Charge injection limit / safe stim range:* not treated as a single canonical value here (build- and waveform-dependent)
+## Clinical and preclinical evidence
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | Not applicable to reviewed preclinical study |
+| Preclinical cohort | Multiple rat experiments; initial SM includes five nerves. Three-month Figure 6 imaging groups: n=6 conduit, n=6 MPM+alginate, n=5 MPM+alginate+growth factors; not total study count |
+| Follow-up duration | 14 days, two-month morphology, three-month redesigned device assays and six-month initial SM study |
+| Indications | Preclinical regenerative peripheral interface after nerve injury |
+| Trials and registries | Animal ethics approval; human trial registry not applicable |
+| Primary outcomes | Vascularity, device integrity, axon regeneration, macrophage response and CMAP |
+| Key limitations | Tissue integration evidence, not connected mesh recording; redesigned geometry and growth-factor interventions differ from initial failed mesh |
 
-### Tissue Interface & Bioresponse
-- *Target tissue:* regenerating axons and supporting cells
-- *Biological strategy:* neurovascular integration; growth factor delivery is discussed/used in the study
-- *Encapsulation / inflammation:* goal is reduced tissue reaction relative to stiffer sieve implementations
-- *Typical failure mode addressed:* regeneration blockade and chronic interface instability due to mechanical mismatch
+## Engineering tradeoffs
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Thin mesh and mixed pores support neurovascular integration in redesigned rat configuration |
+| Limitations | Requires transection; initial design failed; connected chronic electrical interface remains unshown |
+| Scaling constraints | Larger vascular holes reduce contacts 100 to 84; mechanical integrity and regrowth compete with density |
 
-### System Architecture
-- *Onboard electronics:* none
-- *Data path:* wired external instrumentation (animal study context)
-- *Packaging:* non-hermetic research packaging
+## References
 
----
-
-### Performance Envelope
-- *Regeneration across interface:* demonstrated histologically in the animal model
-- *Longevity:* bounded by study duration (weeks–months class)
-- *Key limitation:* requires nerve transection for deployment
-
----
-
-### Clinical / Preclinical Evidence
-- *Model:* rat sciatic nerve transection
-- *Key endpoints:* tissue response + neurovascular invasion + regeneration metrics
-- *Key limitations:* no human data; surgical transection requirement; electrical performance is not the only/primary endpoint
-
----
-
-### Engineering Verdict
-
-*Strengths:*
-- directly targets mechanical mismatch, a core bottleneck in rigid regenerative sieves
-- integrates neurovascular considerations into interface design
-
-*Limitations / failure modes:*
-- requires nerve transection
-- manufacturing/handling complexity for ultra-thin structures
-- long-term electrical stability and chronic packaging remain open questions
-
----
-
-### References
-- Veith A, et al. *Optimized design of a hyperflexible sieve electrode to enhance neurovascular regeneration for a peripheral neural interface.* Biomaterials. 2021;275:120924. doi: 10.1016/j.biomaterials.2021.120924. PubMed: <https://pubmed.ncbi.nlm.nih.gov/34147716/>
+- Veith et al. 2021. [Optimized Design of a Hyperflexible Sieve Electrode to Enhance Neurovascular Regeneration for a Peripheral Neural Interface](https://pmc.ncbi.nlm.nih.gov/articles/PMC9939235/). Initial failure and redesigned geometry/interventions are kept separate.
