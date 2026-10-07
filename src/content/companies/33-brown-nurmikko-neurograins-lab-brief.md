@@ -1,5 +1,5 @@
 ---
-title: "Brown University, Neurograins (lab brief)"
+title: "Brown University, N3 Lab (lab brief)"
 order: 33
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
