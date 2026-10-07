@@ -1,5 +1,5 @@
 ---
-title: "EPFL, soft neural interfaces (lab brief)"
+title: "EPFL (lab brief)"
 order: 34
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
