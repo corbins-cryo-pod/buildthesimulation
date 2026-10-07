@@ -54,3 +54,7 @@ The paper's online publication is September 30, 2025; its issue date is December
 - [Primary full text and author affiliations](https://pmc.ncbi.nlm.nih.gov/articles/PMC12981004/).
 - [Publisher article](https://www.cell.com/neuron/fulltext/S0896-6273(25)00665-8).
 - [Author-hosted publisher PDF, inspected for design and methods](https://www.yezhiwen.com/assets/pdf/ye2025_neuropixels_ultra.pdf).
+
+## Dense-window reference model
+
+The viewer shows a cropped 48 × 8 dense recording window: 384 contact faces at 6 µm center pitch, each 5 × 5 µm. It is not the entire 6,144-site probe. The 48 × 288 µm crop includes half-pitch margins; actual contact-face outer extents are 47 × 287 µm. Silicon thickness follows the [NP 1.0 manufacturer datasheet](https://www.neuropixels.org/_files/ugd/832f20_4a14406ba1204e60ae8534b09e201b49.pdf), because the Ultra paper explicitly reports identical shank form. Full shank, tip origin, switch groups, channel map and electronics are omitted. Exported site IDs are geometry labels.
