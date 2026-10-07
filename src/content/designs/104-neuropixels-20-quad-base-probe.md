@@ -51,7 +51,7 @@ The manufacturer labels these probes research-use-only in non-human subjects: no
 
 ## Model boundary
 
-No full model is supplied. The primary manuscript gives base width and headstage plan dimensions but not full enclosure heights, connector geometry, exact site-field origins or a complete fabrication/package model. Existing 2.0 shank reference geometry does not define the larger Quad Base assembly.
+No full model is supplied. The manufacturer adds silicon-spacer/metal-cap package dimensions, but those alternatives are not one universal enclosure. Exact site-field origins, full connector geometry and a complete fabrication model remain outside this catalog pass. Existing 2.0 shank reference geometry does not by itself define the larger Quad Base assembly.
 
 ## Primary sources
 
