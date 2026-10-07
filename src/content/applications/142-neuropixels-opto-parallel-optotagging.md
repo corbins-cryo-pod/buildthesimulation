@@ -11,14 +11,16 @@ modality: "Intracortical"
 description: "261 tagged units across 40 sessions in 26 mice, using distinct blue/red opsin strategies. Count denominators, dual-color cross-sensitivity and unit-quality thresholds remain explicit."
 website: "https://www.nature.com/articles/s41592-026-03076-z"
 orgs: ["46-allen-ucl-neuropixels-opto-collaboration"]
-devices: ["140-neuropixels-opto-prototype-2026"]
+devices: ["107-neuropixels-opto-photonic-prototype"]
 tags: ["Neuropixels Opto", "photonics", "optogenetics", "Allen Institute", "UCL", "IMEC", "prototype"]
 draft: false
 ---
 
 # Parallel cell-type optotagging
 
-The [Neuropixels Opto probe](/devices/140-neuropixels-opto-prototype-2026/) records neural spikes electrically while laser-fed emitters test optogenetic responses. The 2026 paper tags 261 units over 40 sessions in 26 mice. The method identifies cells meeting a response rule; it does not classify every neuron from electrical waveform alone.
+The [Neuropixels Opto probe](/devices/107-neuropixels-opto-photonic-prototype/) records neural spikes electrically while laser-fed emitters test optogenetic responses. The 2026 paper tags 261 units over 40 sessions in 26 mice. The method identifies cells meeting a response rule; it does not classify every neuron from electrical waveform alone.
+
+This is a component-study view of the [paper-level overview](/applications/108-neuropixels-opto-mouse-optotagging-2026/), not an additional cohort or independent replication.
 
 ## Genetic strategy and readout
 

@@ -11,7 +11,7 @@ modality: "Intracortical"
 description: "960-site, 384-channel electrical probe with two sets of 14 laser-fed photonic emitters. Prototype blue-light leakage and tethered operation remain explicit."
 website: "https://www.nature.com/articles/s41592-026-03076-z"
 tags: ["cortex", "recording", "stimulation", "bidirectional", "microelectrode", "Neuropixels Opto", "photonics", "optogenetics", "Allen Institute", "UCL", "IMEC", "prototype"]
-draft: false
+draft: true
 ---
 
 # Neuropixels Opto prototype
@@ -68,3 +68,7 @@ No optical emitters, waveguides, tip, package base, internal layer arrangement, 
 - [2026 peer-reviewed full paper](https://www.nature.com/articles/s41592-026-03076-z): methods, recording/illumination architecture and animal results. Published June 1, 2026. This is used instead of carrying forward the 2025 preprint as a separate device.
 - [Published supplement](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41592-026-03076-z/MediaObjects/41592_2026_3076_MOESM1_ESM.pdf): Tables 1-2 and additional control/field-potential data. Table 2 distinguishes 2019 design targets from 2023 prototype results.
 - [Reporting summary](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41592-026-03076-z/MediaObjects/41592_2026_3076_MOESM2_ESM.pdf): randomized stimulus conditions, no blinding and no planned sample-size calculation; it says no data were excluded, while the paper still applies unit-quality and optotagging criteria.
+
+## Catalog consolidation
+
+This duplicate is archived. The canonical [Neuropixels Opto hardware](/devices/107-neuropixels-opto-photonic-prototype/) preserves the original device identity and contains the electrical-window model.

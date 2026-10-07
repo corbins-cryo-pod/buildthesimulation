@@ -11,14 +11,16 @@ modality: "Intracortical"
 description: "Separate mouse preparations test local excitatory activation and circuit-mediated inhibition. The opsin drives inhibitory neurons; it does not directly hyperpolarize every silenced cell."
 website: "https://www.nature.com/articles/s41592-026-03076-z"
 orgs: ["46-allen-ucl-neuropixels-opto-collaboration"]
-devices: ["140-neuropixels-opto-prototype-2026"]
+devices: ["107-neuropixels-opto-photonic-prototype"]
 tags: ["Neuropixels Opto", "photonics", "optogenetics", "Allen Institute", "UCL", "IMEC", "prototype"]
 draft: false
 ---
 
 # Local cortical activation and synaptic inhibition
 
-The [Neuropixels Opto prototype](/devices/140-neuropixels-opto-prototype-2026/) combines selectable electrical recording with spatially addressed red-light stimulation. The 2026 paper reports two separate cortical experiments. They are not pooled as one mouse cohort or interpreted as the same opsin directly activating and silencing all cells.
+The [Neuropixels Opto prototype](/devices/107-neuropixels-opto-photonic-prototype/) combines selectable electrical recording with spatially addressed red-light stimulation. The 2026 paper reports two separate cortical experiments. They are not pooled as one mouse cohort or interpreted as the same opsin directly activating and silencing all cells.
+
+This is a component-study view of the [paper-level overview](/applications/108-neuropixels-opto-mouse-optotagging-2026/), not an additional cohort or independent replication.
 
 ## Activating excitatory populations
 
