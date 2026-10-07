@@ -3,6 +3,16 @@
 const utahSource = { label: 'Blackrock — Utah Array specifications and photographs', url: 'https://blackrockneurotech.com/products/utah-array/' };
 const slantSource = { label: 'Blackrock — Slant Array specifications and side view', url: 'https://blackrockneurotech.com/products/slant-array/' };
 export const deviceModels = {
+  'BTSD-ACAD-0003': {
+    id: 'neurogrid-256-recording-patch', revision: 1, deviceId: 'BTSD-ACAD-0003', kind: 'surface-grid',
+    name: 'NeuroGrid · 256-site recording patch', slug: '24-neurogrid-pedot-pss-surface-array',
+    physicalSites: 256, simultaneousChannels: null, rows: 16, columns: 16,
+    pitch: 0.03, siteSize: 0.01, thickness: 0.004, width: 0.48, length: 0.48,
+    specs: [['Physical electrodes', '256-site version in Figure 1'], ['Site size', '10 × 10 µm'], ['Inter-electrode spacing', '30 µm, modeled as center pitch'], ['Film thickness', '4 µm'], ['Reconstructed patch', '16 × 16 sites; 480 × 480 µm cropped film'], ['Not modeled', 'Interconnects, bonding pads and full film outline']],
+    notes: 'Recording patch only, laid flat. Published site size, spacing and film thickness are preserved. The 16 × 16 layout is reconstructed from the 256-site figure, not a recovered fabrication mask. The 480 µm square film boundary is a crop with a half-pitch margin, not the device outline. Interconnects, bonding pads, connector and curved cortical pose are omitted. Contact layer thickness and electrical channel map are unknown. No electrical or tissue-response model is supplied.',
+    sources: [{ label: 'Khodagholy et al. (2015), Figure 1 and NeuroGrid design', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4308485/' }],
+    references: [{ label: 'Published NeuroGrid photograph and 256-site micrograph', url: 'https://cdn.ncbi.nlm.nih.gov/pmc/blobs/c8a2/4308485/03ccdbc32c21/nihms-645113-f0001.jpg' }],
+  },
   'BTSD-IMBCI-0010': {
     id: 'connexus-421-cortical-reference', revision: 1, deviceId: 'BTSD-IMBCI-0010', kind: 'connexus',
     name: 'Paradromics Connexus · 421-site reference', slug: '09-paradromics-connexus-acute-first-in-human',
@@ -110,7 +120,11 @@ export function getNeuralinkThread(model, thread) {
 // Utah origin: center of substrate tissue-facing surface. NP origin: shank base.
 export function getContactGeometry(model) {
   const sites = [];
-  if (model.kind === 'utah') {
+  if (model.kind === 'surface-grid') {
+    for (let row = 0; row < model.rows; row++) for (let col = 0; col < model.columns; col++) {
+      sites.push({ id: `r${row}-c${col}`, positionMm: [(col - (model.columns - 1) / 2) * model.pitch, (row - (model.rows - 1) / 2) * model.pitch, 0], normal: [0, 0, 1], channel: null, contactAreaMm2: model.siteSize ** 2, positionMeaning: 'contact center in reconstructed flat recording patch' });
+    }
+  } else if (model.kind === 'utah') {
     for (let row = 0; row < model.rows; row++) {
       for (let col = 0; col < model.columns; col++) {
         sites.push({ id: `r${row}-c${col}`, positionMm: [
@@ -167,7 +181,7 @@ export function getContactGeometry(model) {
 
 export function exportGeometry(model) {
   return { schemaVersion: 1, units: 'mm', coordinateSystem: model.kind === 'stentrode' ? 'right-handed; scaffold longitudinal axis +Z; radial outward normals' : model.kind === 'neuralink' ? 'right-handed; display fan extends +Y; pad normals +Z; not an implanted pose' : 'right-handed; insertion +Z; see origin',
-    origin: model.kind === 'stentrode' ? 'center of proximal scaffold end; scaffold Z=0 to length; illustrative lead extends into negative Z' : ['utah', 'connexus'].includes(model.kind) ? 'center of tissue-facing substrate surface' : model.kind === 'neuralink' ? 'center of thread-facing enclosure surface; enclosure occupies negative Z' : 'center of shank base',
+    origin: model.kind === 'surface-grid' ? 'center of flat recording face; film occupies negative Z' : model.kind === 'stentrode' ? 'center of proximal scaffold end; scaffold Z=0 to length; illustrative lead extends into negative Z' : ['utah', 'connexus'].includes(model.kind) ? 'center of tissue-facing substrate surface' : model.kind === 'neuralink' ? 'center of thread-facing enclosure surface; enclosure occupies negative Z' : 'center of shank base',
     model, sites: getContactGeometry(model),
     simulationNote: 'Geometric reference only. Assign channels, transform to tissue coordinates and supply a validated electrical model before simulation. Null area/channel values are unknown, not zero.' };
 }
