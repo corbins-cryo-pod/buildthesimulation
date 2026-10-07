@@ -58,3 +58,11 @@ assert(visibleDevices.some(r => r.slug === '88-neuropixels-20-alpha-probe'), 'Ca
 assert(fs.readFileSync('astro.config.mjs', 'utf8').includes("'/devices/36-neuropixels-2-0': '/devices/88-neuropixels-20-alpha-probe/'"), 'Archived Neuropixels 2.0 route must redirect');
 console.log(`Visible hardware catalog: ${visibleDevices.length} devices; archived duplicate excluded.`);
 console.log(`Content integrity: ${records.designs.length} devices, ${records.applications.length} applications and ${records.companies.length} atlas briefs; IDs, orders, relationships and catalog links verified.`);
+
+const optoCanonical = records.designs.find(r=>r.slug === '107-neuropixels-opto-photonic-prototype');
+const optoDuplicate = records.designs.find(r=>r.slug === '140-neuropixels-opto-prototype-2026');
+assert.equal(field(optoCanonical,'device_id'),'BTSD-ACAD-0068');
+assert.equal(field(optoCanonical,'draft'),'false');
+assert.equal(field(optoDuplicate,'draft'),'true');
+assert.equal(visibleDevices.filter(r=>field(r,'website') === 'https://www.nature.com/articles/s41592-026-03076-z').length,1,'One hardware identity per published Opto prototype');
+assert(fs.readFileSync('astro.config.mjs','utf8').includes("'/devices/140-neuropixels-opto-prototype-2026': '/devices/107-neuropixels-opto-photonic-prototype/'"));
