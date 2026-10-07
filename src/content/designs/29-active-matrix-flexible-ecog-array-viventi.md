@@ -19,6 +19,25 @@ draft: false
 
 A flexible cortical-surface recording array with a buffer and multiplexing transistor at each electrode. Active multiplexing reduces the number of external wires relative to a passive array. This is the 2011 research configuration, not the later 196-site auditory array or a clinically qualified chronic implant.
 
+## Core interface specifications
+
+The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values remain unreported; inapplicable fields are marked. Configuration-specific details and limits follow below.
+
+| Field | Specification and source scope |
+| --- | --- |
+| Electrode Pitch | 500 µm contact spacing, 2011 primary paper |
+| Channel Count | 360 recording sites; 720 transistors are two per site, not 720 channels |
+| Output Connectors | Shared wired active-matrix acquisition. Connector model not reported in this sheet's reviewed source text |
+| Output Conn. dimensions L x W x H | Not reported in reviewed source text; no current commercial connector dimensions substituted |
+| Standard Electrode Lengths | Not applicable: non-penetrating surface contacts, 300 × 300 µm; no shank |
+| Impedance | Approximately 20 kΩ at 1 kHz for the reported platinum-treated contacts |
+| Array Dimensions | 10 × 9 mm sampled cortical region in the primary Discussion; full substrate/cable outline not fixed by this area |
+| Multi-Port Options | Not reported as a manufacturer order option; a research prototype, not a configurable Utah assembly |
+| Metalization | Approximately 50 nm platinum deposited on surface electrodes |
+| Wire Bundle Length | Not reported in reviewed source text; shared output wires do not establish cable length |
+| Reference and Ground | Not extracted in this sheet; do not assign Utah reference/ground wiring to this active-matrix circuit |
+| Insulation | Approximately 1.2 µm polyimide interlayer insulation; additional approximately 1.2 µm polyimide and 4 µm epoxy encapsulation |
+
 ## Identity and configuration
 
 | Property | Published configuration |
