@@ -18,6 +18,8 @@ draft: false
 
 A mechanically flexible micro-ECoG chip that combines electrodes, signal processing, wireless data telemetry and wireless power on one CMOS substrate. Jung and colleagues' Nature Electronics paper was published on 8 December 2025. The primary affiliations include Columbia University's electrical engineering and computer science departments, with other US collaborators.
 
+The [Columbia neural-interface collaboration brief](/companies/45-columbia-shepard-optical-and-electrical-interfaces/) links BISC and the distinct SCOPe optical family. Wireless electrical recording here does not establish a wireless optical SCOPe configuration.
+
 ## Physical sites versus channels
 
 The chip has a 256 x 256 array: 65,536 recording electrodes. It can simultaneously record a selectable subset of up to 1,024 channels. These are different counts. The device does not stream all 65,536 sites at once in the reported configuration.
