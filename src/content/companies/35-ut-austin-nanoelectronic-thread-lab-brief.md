@@ -1,5 +1,5 @@
 ---
-title: "UT Austin, nanoelectronic thread probes (lab brief)"
+title: "University of Texas at Austin, Department of Biomedical Engineering (lab brief)"
 order: 35
 pubDate: 2026-10-06
 updatedDate: 2026-10-07
