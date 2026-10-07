@@ -16,59 +16,120 @@ draft: false
 
 # Neuropixels Opto prototype
 
-Lakunina, Socha, Ladd and colleagues combine electrical recording with dual-color photonic stimulation in a Nature Methods paper published June 1, 2026. Neuropixels Opto is a distinct hardware configuration, not a renamed [Neuropixels 2.0 probe](/devices/36-neuropixels-2-0/). The [paper-level application overview](/applications/108-neuropixels-opto-mouse-optotagging-2026/) retains the study family, with the narrower application pages separating the experiments. Its recording backend derives from Neuropixels 1.0, while the optical routing and two-column site layout have separate specifications.
+Lakunina, Socha, Ladd and colleagues combine electrical recording with dual-color photonic stimulation in a Nature Methods paper published June 1, 2026. Values are scoped to the prototype in that paper and its supplement. Unreported means not established by the reviewed sources.
 
-The [Allen/UCL collaboration](/companies/46-allen-ucl-neuropixels-opto-collaboration/) links US recording teams with UK and Belgian development partners. Applications separate [cortical activation and synaptic inhibition](/applications/141-neuropixels-opto-cortical-activation-inhibition/) from [parallel cell-type optotagging](/applications/142-neuropixels-opto-parallel-optotagging/).
+## Identity
 
-## Sites, channels and emitters
-
-| Part | Published prototype value |
+| Field | Value and source scope |
 | --- | --- |
-| Shank | 10 mm long, 70 µm wide, 33 µm thick |
-| Recording sites | 960 TiN sites, each 12 × 12 µm, in two columns of 480 |
-| Site pitch | 20 µm along the shank, 48 µm between columns |
-| Simultaneous channels | 384 selectable electrical sites |
-| Optical emitters | 14 blue and 14 red, spaced 100 µm along the distal region |
-| Input light | External 450-nm and 638-nm lasers, coupled by fibers |
-| Waveguides | 150-nm SiN layer integrated with the 130-nm SOI CMOS backend |
-| AP recording | 0.3-10-kHz band, 30-kHz digitization |
-| LFP recording | Below 1 kHz, 2.5-kHz digitization |
-| Silicon base | Supplement Table 2: 9.6 × 10.2 mm; package base thickness 1.1 mm |
+| Device | Neuropixels Opto prototype: silicon CMOS recording probe with integrated dual-color photonic emitters |
+| Manufacturer | Allen/UCL collaboration with UK and Belgian development partners; recording backend derives from Neuropixels 1.0. Prototype, not a commercial product |
+| Interface class | Penetrating silicon probe with integrated optical waveguides and electrical recording |
+| Origin | Lakunina, Socha, Ladd and colleagues; Nature Methods, June 1, 2026 |
+| First demonstrated | 2026 peer-reviewed paper; supplement Table 2 distinguishes 2019 design targets from 2023 prototype results |
+| First human implant | Unreported. No human implant |
+| Species studied | Mouse optotagging and cortical activation and inhibition experiments; cohort sizes are in the application pages |
+| Regulatory status | Research prototype. No clearance. UCL expects community availability in 2028, a forecast |
+| Function | Electrical recording plus blue and red light delivery for optotagging and photostimulation |
+| Target tissue | Mouse brain |
 
-960 physical sites are not 960 simultaneous electrical channels. Two optical sets do not mean 28 independent electrical channels or 28 emitters illuminated at once. The prototype addresses one emitter per color at a time through two four-level thermo-optic switching trees. Future combinations are proposed, not demonstrated hardware behavior.
+## Geometry and architecture
 
-Results describe 16-25-µm² emitter areas. Supplement Table 2 gives blue 0.45 × 32 µm and red 0.60 × 42 µm, so the blue listed dimensions multiply to 14.4 µm² rather than the stated lower area bound. Both descriptions are retained. The introduction names a 1.4-mm illumination span, while Results describe emitters covering 1.5 mm from the tip; these reference descriptions are not substituted for a precise tip coordinate.
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Silicon shank with TiN recording sites, SiN waveguides and thermo-optic switching |
+| Array layout | Two columns of 480 recording sites; 14 blue and 14 red emitters along the distal region; two four-level thermo-optic switching trees |
+| Electrode count | 960 physical TiN sites; 384 selectable electrical channels; 14 blue plus 14 red emitters, one emitter per color addressed at a time |
+| Pitch | 20 µm along the shank, 48 µm between columns; emitters spaced 100 µm |
+| Electrode lengths | 10 mm long shank |
+| Shank width and thickness | 70 µm wide, 33 µm thick. Silicon base 9.6 x 10.2 mm with package base thickness 1.1 mm |
+| Tip and exposed site geometry | Emitter areas described as 16 to 25 µm2; Table 2 gives blue 0.45 x 32 µm and red 0.60 x 42 µm. Emitters span about 1.4 mm (introduction) or 1.5 mm from the tip (Results) |
+| Contact coating | TiN recording sites; 150 nm SiN waveguide layer |
+| Insulation | Unreported |
+| Insertion method | Inserted into mouse brain for acute and tethered recording; tip-deflection specification is reported inconsistently (200 µm in Results versus below plus or minus 200 nm in Methods) |
+| Anchoring and fixation | Unreported in the reviewed sources |
 
-## Tethered lasers and electrical data
+## Electrode and channel physics
 
-The integrated device guides externally generated light, rather than generating light with implanted microLEDs. Fibers connect the probe to a laser PXI module. A flex cable connects the recording device to a headstage and data cable. Another PXI module handles acquisition; SpikeGLX and Open Ephys control the system.
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | 12 x 12 µm (144 µm2) per recording site |
+| Electrode material | Titanium nitride |
+| Impedance (with measurement frequency) | Unreported in the reviewed sources |
+| Noise floor or SNR | Mean AP/LFP noise 5.45/5.33 µV RMS across tested sites. Red-onset electrical artifact about 30 µV, reduced by common-average referencing and tapered pulses |
+| Recording modality | Extracellular spikes (0.3 to 10 kHz AP band) and LFP below 1 kHz |
+| Sampling rate | AP 30 kHz; LFP 2.5 kHz |
+| Stimulation capability | Optical stimulation, not electrical. Red or blue light pulses to individual emitters |
+| Charge injection limit | Not applicable: light delivery, not electrical stimulation |
+| Reference and ground | Unreported in the reviewed sources |
 
-The optical switch's approximately 12-µs physical transition in Table 2 is not user-visible real-time feedback. The supplement says software control takes multiple milliseconds. No wireless link or closed-loop controller is inferred.
+## Tissue interface and bioresponse
 
-## Reported tip-deflection conflict
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Mouse brain |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Blue light limited in power; red used for higher-intensity precise addressing. Tapered pulses reduce artifact |
+| Typical failure modes | High-intensity blue light produces material instability and leaks from unintended emitters. Blue 0.24% and red 2.07% of fiber input; about 5 mW red or 40 mW blue input to deliver 100 µW at an emitter. Tip-deflection spec conflict unresolved |
 
-Results and Extended Data Figure 1 give a 200-µm tip-deflection specification. Methods instead says below ±200 nm. The units differ by a factor of 1,000; the conflict remains unresolved. No modeled tip or bend is inferred from either number.
+## System architecture
 
-## Loss, leakage and artifact correction
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | 130 nm SOI CMOS backend with 150 nm SiN waveguides, thermo-optic switching trees |
+| Data path | External 450 nm and 638 nm lasers coupled by fibers to a laser PXI module; flex cable to headstage and data cable; another PXI module for acquisition; SpikeGLX and Open Ephys |
+| Telemetry bandwidth | Not applicable: tethered with fibers |
+| Sampling rate | Same 30 kHz AP and 2.5 kHz LFP |
+| Power | External lasers and PXI systems; no implanted power |
+| Thermal management | Table 2 reports below 1 degree C probe-tissue temperature difference in prototype tests |
+| Packaging and hermeticity | Unreported |
+| MRI compatibility | Unreported |
+| Surgical complexity | Craniotomy and tethered fiber plus cable in mice. About 740 processing steps in fabrication |
+| Output connectors | Fiber coupling and flex cable to headstage; connector model unreported |
 
-Electrical characterization reports mean AP/LFP noise of 5.45/5.33 µV rms across tested sites. Optical characterization gives 2.07% red and 0.24% blue output relative to fiber input. Delivering 100 µW at an emitter takes roughly 5 mW red or 40 mW blue input. Those losses do not represent conversion efficiency for an implanted LED.
+## Performance envelope
 
-High-intensity blue light produces material instability and leaks from unintended emitters. The authors limit blue power and use red for higher-intensity, precise-addressing experiments. Recalibration and revised photonic layers are future improvements, not a completed fix in these prototypes.
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Optical and electrical activation of cortical neurons in mice; optotagging of cell types in parallel |
+| Chronic yield | Unreported |
+| Stability over time | Unreported |
+| Longevity | Unreported |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
+| Notable demonstrations | Parallel dual-color optotagging and cortical activation and inhibition in mice |
 
-Sharp red-light onsets leave an approximately 30-µV electrical artifact, much smaller than surface illumination artifacts but not zero. Common-average referencing and tapered pulses reduce it. The manuscript's statement that signals are unaffected is read in the context of this preprocessing, not as raw artifact-free recording.
+## Clinical and preclinical evidence
 
-Supplement Table 2 reports below 1°C probe/tissue temperature difference in its prototype tests. Genetic expression, light scattering, neural processes and local tissue conditions still limit selectivity. Illumination footprint is not identical to the set of directly activated neurons.
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None |
+| Preclinical cohort | Mouse; sizes in the linked application pages |
+| Follow-up duration | Unreported |
+| Indications | Preclinical research, not a clinical indication |
+| Trials and registries | Reporting summary: randomized stimulus conditions, no blinding, no planned sample-size calculation; no data excluded per the form while the paper applies unit-quality criteria |
+| Primary outcomes | Integrated optotagging with recording; characterization of loss, leakage and artifact |
+| Key limitations | Prototype with leakage and loss; blue power limited; about 740 processing steps; mass production needs more fabrication and testing; no chronic or human data |
 
-## Prototype and geometry boundary
+## Engineering tradeoffs
 
-The paper describes about 740 processing steps, compared with roughly 400 for earlier Neuropixels platforms. It explicitly says mass production requires more fabrication and testing. [UCL's program page](https://www.ucl.ac.uk/brain-sciences/neuropixels/neuropixels-opto) expects community availability in 2028; that is a forecast, not an in-stock product or delivery guarantee.
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Combined electrical and optical function on one 70 µm shank |
+| Limitations | Optical loss, leakage, tethering, fabrication complexity (about 740 steps versus about 400 for earlier platforms) and one emitter per color at a time |
+| Scaling constraints | Only one emitter per color addressable at a time; more combinations proposed but not demonstrated |
 
-The interactive 3D reference models only the electrical recording window: 960 contacts in two columns, 20-µm along-shank pitch, 48-µm column spacing, 12 × 12-µm contacts and 33-µm thickness. The 9.6-mm length is a half-pitch-margin crop, not the full 10-mm probe. Its coordinate origin is the crop center, not the unknown tip origin.
+## References
 
-No optical emitters, waveguides, tip, package base, internal layer arrangement, fibers or cables are modeled. Gold means electrical contacts only. A complete model would conceal the remaining geometry gaps. No human implant, chronic optical-device lifetime or therapy outcome is established here.
+- [2026 peer-reviewed paper](https://www.nature.com/articles/s41592-026-03076-z), Nature Methods, June 1, 2026.
+- [Published supplement with Tables 1 and 2](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41592-026-03076-z/MediaObjects/41592_2026_3076_MOESM1_ESM.pdf).
+- [Reporting summary](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41592-026-03076-z/MediaObjects/41592_2026_3076_MOESM2_ESM.pdf).
+- [UCL program page](https://www.ucl.ac.uk/brain-sciences/neuropixels/neuropixels-opto).
 
-## Primary sources
+Related: [paper-level application overview](/applications/108-neuropixels-opto-mouse-optotagging-2026/), [cortical activation and inhibition](/applications/141-neuropixels-opto-cortical-activation-inhibition/), [parallel optotagging](/applications/142-neuropixels-opto-parallel-optotagging/), [Allen/UCL collaboration](/companies/46-allen-ucl-neuropixels-opto-collaboration/).
 
-- [2026 peer-reviewed full paper](https://www.nature.com/articles/s41592-026-03076-z): methods, recording/illumination architecture and animal results. Published June 1, 2026. This is used instead of carrying forward the 2025 preprint as a separate device.
-- [Published supplement](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41592-026-03076-z/MediaObjects/41592_2026_3076_MOESM1_ESM.pdf): Tables 1-2 and additional control/field-potential data. Table 2 distinguishes 2019 design targets from 2023 prototype results.
-- [Reporting summary](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41592-026-03076-z/MediaObjects/41592_2026_3076_MOESM2_ESM.pdf): randomized stimulus conditions, no blinding and no planned sample-size calculation; it says no data were excluded, while the paper still applies unit-quality and optotagging criteria.
+The interactive 3D model covers only the electrical recording window: 960 contacts, 20 µm along-shank pitch, 48 µm column spacing, 12 x 12 µm contacts and 33 µm thickness; the 9.6 mm length is a half-pitch-margin crop with the origin at the crop center. No optical emitters, waveguides, tip, package base, fibers or cables are modeled. No human implant, chronic lifetime or therapy outcome is established.
