@@ -3,6 +3,17 @@
 const utahSource = { label: 'Blackrock — Utah Array specifications and photographs', url: 'https://blackrockneurotech.com/products/utah-array/' };
 const slantSource = { label: 'Blackrock — Slant Array specifications and side view', url: 'https://blackrockneurotech.com/products/slant-array/' };
 export const deviceModels = {
+  'BTSD-ACAD-0056': {
+    id: 'neuropixels-ultra-dense-window', revision: 1, deviceId: 'BTSD-ACAD-0056', kind: 'surface-grid',
+    name: 'Neuropixels Ultra · 384-site dense window', slug: '83-neuropixels-ultra-high-density-probe',
+    physicalSites: 384, simultaneousChannels: 384, rows: 48, columns: 8,
+    pitch: 0.006, siteSize: 0.005, thickness: 0.024, width: 0.048, length: 0.288,
+    specs: [['Modeled crop', '48 × 8 dense window; 384 contact faces'], ['Complete device', '6,144 available sites; 384 simultaneous channels'], ['Contact size / pitch', '5 × 5 µm / 6 µm centers'], ['Crop envelope', '48 × 288 µm with half-pitch margins'], ['Silicon thickness', '24 µm from NP 1.0 datasheet; Ultra reports identical shank form'], ['Not modeled', 'Full shank, tip, base, traces and switch/channel map']],
+    notes: 'A flat cropped dense recording window, not the complete 6,144-site probe. The primary paper specifies 5 × 5 µm contacts at 6 µm center pitch and a 48 × 8 simultaneous dense configuration. Half-pitch margins define the 48 × 288 µm crop; contact-face outer extents are 47 × 287 µm. The silicon thickness is 24 µm from the NP 1.0 datasheet, which Ultra explicitly says has identical shank form. No tip position or probe-base origin is inferred. Full 768 × 8 site array, 10 mm shank, reference pad, switch groups, acquisition map, headstage and TiN surface texture are omitted. Exported IDs identify only geometric contact centers in this crop; they are not acquisition channel IDs. This model does not implement neural recording or electrical field simulation.',
+    sources: [{ label: 'Ye et al. (2025), NP Ultra geometry and dense configuration', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12981004/' }, { label: 'Neuropixels 1.0 datasheet, thickness; Ultra reports identical shank form', url: 'https://www.neuropixels.org/_files/ugd/832f20_4a14406ba1204e60ae8534b09e201b49.pdf' }],
+    references: [],
+  },
+
   'BTSD-ACAD-0051': {
     id: 'ptnrgrid-1024-recording-patch', revision: 1, deviceId: 'BTSD-ACAD-0051', kind: 'surface-grid',
     name: 'PtNRGrid · 1,024-site recording patch', slug: '74-ptnrgrid-platinum-nanorod-surface-arrays',
