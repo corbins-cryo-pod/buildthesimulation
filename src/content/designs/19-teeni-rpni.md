@@ -1,5 +1,5 @@
 ---
-title: "TEENI-RPNI (tissue-engineered electronic nerve interface – regenerative peripheral nerve interface)"
+title: "RPNI with implanted bipolar EMG electrodes (Vu 2023 configuration)"
 order: 19
 pubDate: 2026-02-06
 updatedDate: 2026-02-06
@@ -11,108 +11,121 @@ description: "A muscle-mediated peripheral nerve interface (RPNI) used as a biol
 modality: "Peripheral nerve"
 successRank: 16
 website: "https://pubmed.ncbi.nlm.nih.gov/37023743/"
-tags: ["PNI", "RPNI", "TEENI", "biohybrid", "EMG", "amputation", "prosthetic control", "neuroma prevention", "peripheral nerve", "recording", "stimulation", "bidirectional", "regenerative"]
+tags: ["PNI", "RPNI", "biohybrid", "EMG", "amputation", "prosthetic control", "neuroma prevention", "peripheral nerve", "recording", "stimulation", "bidirectional", "regenerative"]
 draft: false
 ---
 
-# TEENI-RPNI (tissue-engineered electronic nerve interface – regenerative peripheral nerve interface)
+# RPNI with implanted bipolar EMG electrodes (Vu 2023 configuration)
 
-> *One-line verdict:* A biological neural amplifier that converts peripheral nerve efferent activity into stable, high-SNR EMG by reinnervating a free muscle graft, enabling long-term control without chronic intraneural electrodes.
+All rows follow the shared implant-device template. Measurements belong to the named study or configuration. Unreported means the reviewed sources do not establish a value. Proposed architectures, optical behavior and validated electronic recording systems are kept separate.
 
-*Quick tags:* Recording (EMG) · Stimulation (not primary) · Species: Human · Status: early translation / research
+## Identity
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Device | RPNI muscle graft plus implanted bipolar EMG electrodes, Vu 2023 configuration. Not TEENI |
+| Manufacturer | University of Michigan research system; electrode manufacturer not specified in reviewed 2023 Methods |
+| Interface class | Regenerative muscle-mediated peripheral interface |
+| Origin | University of Michigan RPNI program |
+| First demonstrated | Earlier RPNI studies cited by Vu 2023; earliest demonstration not independently established here |
+| First human implant | Not dated by reviewed 2023 Methods; electrodes implanted one year after RPNI surgery in two participants |
+| Species studied | Two human participants with transradial amputations, Vu 2023 |
+| Regulatory status | University of Michigan IRB HUM00124839 research approval; not general clinical device authorization |
+| Function | Record muscle EMG to decode prosthetic movements; RPNI graft biologically amplifies efferent nerve signals |
+| Target tissue | Reinnervated skeletal muscle grafts plus residual innervated muscles |
 
-### Overview
+## Geometry and architecture
 
-*What it is:* A regenerative peripheral nerve interface (RPNI) is a bio-hybrid construct where a transected peripheral nerve end is implanted into a free (devascularized) muscle graft. The graft revascularizes and becomes reinnervated, producing EMG signals that can be recorded with standard intramuscular or epimysial electrodes.
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Intramuscular bipolar recording electrodes in reinnervated muscle, not intrafascicular nerve electrodes |
+| Array layout | P1: median and ulnar RPNIs plus six residual muscles; P2: median and two divided-ulnar RPNIs plus five residual muscles |
+| Electrode count | Eight indwelling bipolar electrodes per participant, distributed between RPNIs and residual muscles. Not eight RPNIs |
+| Pitch | No fixed array pitch; grafts and muscle electrodes individually placed |
+| Electrode lengths | Unreported in reviewed sources |
+| Shank width and thickness | Unreported in reviewed sources |
+| Tip and exposed site geometry | Bipolar intramuscular electrode; contact geometry not specified in reviewed 2023 Methods |
+| Contact coating | Unreported in reviewed sources |
+| Insulation | Unreported in reviewed sources |
+| Insertion method | RPNI surgery for neuroma/phantom pain followed one year later by muscle electrode implantation |
+| Anchoring and fixation | Intramuscular implantation with percutaneous connectors; exact lead fixation not specified in reviewed 2023 Methods |
 
-*Why it matters:* Instead of putting an electrode at the nerve (and fighting micromotion, fibrosis, and chronic stability), an RPNI uses biology to do the transduction and amplification. EMG is large-amplitude and robust relative to CAP-scale nerve recordings, making it attractive for long-term prosthetic control.
+## Electrode and channel physics
 
-*Most comparable devices:* intraneural electrodes (LIFE/TIME/USEA) for higher selectivity but harder chronic stability; extraneural cuffs (spiral/FINE) for lower risk but lower selectivity; targeted muscle reinnervation (TMR) as another signal acquisition pathway.
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in reviewed sources |
+| Electrode material | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Noise floor or SNR | RPNI SNR 15-250 across sessions. Median (IQR): P1 47.61 (103.89), P2 24.49 (18.53). RMS voluntary EMG divided by RMS resting noise, Vu 2023 |
+| Recording modality | EMG from RPNI and residual muscles, not direct neural spikes |
+| Sampling rate | NeuroPort acquisition 30 ksps; decoded after downsampling to 1 kSps, Vu 2023 |
+| Stimulation capability | Not demonstrated by this motor-control recording study |
+| Charge injection limit | Not applicable to demonstrated recording task; stimulation limit unreported |
+| Reference and ground | Bipolar electrode recordings; separate reference/ground details not given in reviewed 2023 Methods |
 
----
+## Tissue interface and bioresponse
 
-### Spec Card Grid
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Muscle grafts revascularized and reinnervated by transected nerves; electrodes in muscle |
+| Insertion trauma and BBB disruption | BBB: not applicable. Peripheral surgery neurotizes free muscle graft and later implants muscle electrodes |
+| Vascular disruption risk | Free graft initially devascularized, then revascularizes; quantitative surgical complication rate unreported here |
+| Micromotion sensitivity | Day-to-day EMG variation observed; paper does not find substantial cluster centroid shifts across arm positions. Not a mechanical motion measurement |
+| Gliosis and encapsulation | Peripheral muscle interface; CNS gliosis not applicable. Electrode-muscle fibrosis not quantified in reviewed 2023 report |
+| Neuron loss near sites | Not quantified; interface records muscle rather than placing contacts among CNS neurons |
+| Foreign-body response mitigation | Biological amplification avoids a direct nerve-contact recording interface; not proof that electrode-muscle foreign-body response is absent |
+| Typical failure modes | Session-to-session EMG amplitude variation and degraded nine-movement decoding without recalibration reported; hardware failure rates unreported |
 
-### Identity
-- *Device name:* TEENI-RPNI
-- *Canonical ID:* BTSD-PNI-0010
-- *Key lineage:* RPNI program (Cederna / Kung / Urbanchek and collaborators)
-- *Org / manufacturer:* academic translational programs (construct + electrode system are program-dependent)
-- *First demonstrated (year):* preclinical demonstrations in the 2010s; ongoing human translation through the 2020s
-- *First implanted (year):* human RPNI surgeries reported in the 2010s–2020s (program-dependent)
-- *Species:* human
-- *Regulatory / trial status:* research / early translation (study-dependent)
-- *Primary use:* recording (EMG for control)
-- *Primary target:* transected peripheral motor nerves (amputation context)
+## System architecture
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Implanted electrodes wired to external acquisition; active implanted processor not reported |
+| Data path | Percutaneous connectors to Blackrock NeuroPort; Matlab target xPC decodes movements |
+| Telemetry bandwidth | Not applicable to wired research configuration |
+| Sampling rate | 30 ksps raw, 1 kSps decoder input; raw 3-7000 Hz filter, decoder 100-500 Hz filter |
+| Power | External acquisition, computer and prosthesis; implant power draw unreported |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | Percutaneous research electrode system; hermetic lifetime qualification unreported |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | RPNI muscle graft surgery followed by separate indwelling electrode surgery; graft number/targets differ between participants |
+| Output connectors | Percutaneous connectors to external NeuroPort; exact connector part unreported in 2023 Methods |
 
-### Geometry & Architecture
-- *Interface type:* regenerative, muscle-mediated PNI
-- *Penetrating neural tissue:* no (electrode interfaces with muscle; nerve is implanted into graft)
-- *Surgical construct:* free muscle graft (size varies by target anatomy and program)
-- *Electrode placement:* intramuscular or epimysial electrodes embedded in/over the graft
-- *Anchoring method:* biological integration (revascularization + reinnervation) + lead strain relief
-- *Mechanical compliance:* native tissue compliance (high)
+## Performance envelope
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Per-contact acute manufacturing/implant yield unreported |
+| Chronic yield | RPNI SNR at least 15 across sampled sessions through 276 d (P1) and 1054 d (P2); not a contact-survival percentage |
+| Stability over time | Monthly recordings interrupted by COVID-19 pauses. P2 four-grip performance above 94% across 604 d without recalibration; nine-movement offline performance often declined |
+| Longevity | 1054 d post-electrode implantation signal observation in P2; not continuous acquisition or maximum service life |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | Quantitative adverse-event accounting unreported in reviewed 2023 Methods/Results; not evidence of zero complications |
+| Notable demonstrations | P2 coffee-making sequence 99% accuracy over 611 d without decoder recalibration; uses RPNI plus residual-muscle channels |
 
-### Electrode & Channel Physics
-- *Neural transduction:* nerve action potentials → motor unit activation → EMG
-- *Channel count:* 1–multiple EMG channels per RPNI (depends on electrode placement); multiple RPNIs can be implanted
-- *Signal type:* EMG (high amplitude, low impedance relative to nerve microelectrodes)
-- *SNR:* high in reported human work (see references)
-- *Stimulation capability:* possible but not the core purpose in most RPNI control work
+## Clinical and preclinical evidence
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | Two transradial-amputation participants: P1 two RPNIs; P2 three RPNIs |
+| Preclinical cohort | Not applicable to the audited 2023 human study |
+| Follow-up duration | Signal quality: 12 sessions over one year for P1, 27 over three years for P2; last signal recordings 276 and 1054 d after electrode implantation |
+| Indications | Experimental upper-limb prosthetic motor control; RPNI surgeries initially for neuroma and phantom pain |
+| Trials and registries | IRB HUM00124839 given; trial registry identifier unreported in reviewed report |
+| Primary outcomes | EMG SNR, movement decoding, arm-position robustness and physical coffee-making task |
+| Key limitations | Small cohort; physical/prolonged decoder tasks in P2 only. Mixed RPNI/residual-muscle signals, not RPNI-only accuracy. TEENI is a different hydrogel-thread platform |
 
-### Tissue Interface & Bioresponse
-- *Target tissue for electrodes:* skeletal muscle (reinnervated)
-- *Foreign-body response:* occurs primarily at electrode–muscle interface, not at a chronic nerve–electrode boundary
-- *Micromotion sensitivity:* lower than intraneural electrodes (muscle is mechanically forgiving)
-- *Nerve health considerations:* RPNI is also used as a strategy to mitigate neuroma formation and post-amputation pain (program-dependent)
-- *Failure modes:* muscle atrophy or poor reinnervation; lead/electrode failures; infection (system-dependent)
+## Engineering tradeoffs
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Large muscle-amplified signals and multi-year sampled signal follow-up |
+| Limitations | Graft and electrode surgery, percutaneous leads, small cohort and session variability |
+| Scaling constraints | More independent graft/muscle channels require surgery and lead routing; nine-movement results do not inherit four-grip accuracy |
 
-### System Architecture
-- *Electronics location:* external or implanted (system-dependent)
-- *Data path:* EMG → amplifier → decoder → prosthetic control
-- *Telemetry:* optional (system-dependent)
-- *Hermeticity:* not required at the nerve interface itself; depends on any implanted electronics
+## References
 
----
-
-### Performance Envelope
-- *Signal stability:* multi-year-class stability reported in human participants in the literature
-- *Control fidelity:* supports multi-DOF prosthetic control in published work
-- *Latency:* physiologic motor-unit timescale
-- *Scaling constraints:* surgical footprint (multiple grafts take space) and complexity scale with channel count
-
----
-
-### Clinical / Preclinical Evidence
-- *Human evidence:* implanted EMG electrodes in RPNIs used for long-term upper-extremity prosthetic control in humans (see references)
-- *Key limitations:* heterogeneous implementations (graft size, electrode type, decoding pipeline) mean performance should be tied to specific studies
-
----
-
-### Engineering Verdict
-
-*Strengths:*
-- avoids chronic nerve-electrode failure modes
-- high-SNR signals without intraneural penetration
-- biologically self-maintaining interface when reinnervation is successful
-
-*Limitations / failure modes:*
-- requires transection/amputation context for typical deployment
-- bandwidth is EMG-limited (not single-unit)
-- less direct for pure sensory afferent recording
-
----
-
-### References
-- Vu PP, Vaskov AK, Lee C, et al. *Long-term upper-extremity prosthetic control using regenerative peripheral nerve interfaces and implanted EMG electrodes.* J Neural Eng. 2023;20(2):026039. doi: 10.1088/1741-2552/accb0c. PubMed: <https://pubmed.ncbi.nlm.nih.gov/37023743/>
-- Frost CM, et al. *Regenerative peripheral nerve interfaces for real-time, proportional control of a neuroprosthetic hand.* J Neuroeng Rehabil. 2018;15(1):108. doi: 10.1186/s12984-018-0452-1. PubMed: <https://pubmed.ncbi.nlm.nih.gov/30458876/>
+- Vu et al. 2023. [Long-term upper-extremity prosthetic control using regenerative peripheral nerve interfaces and implanted EMG electrodes](https://beta.iopscience.iop.org/article/10.1088/1741-2552/accb0c). Methods and Results; RPNI plus residual-muscle channels.
+- Spearman et al. 2020. [Integration of Flexible Polyimide Arrays into Soft Extracellular Matrix-based Hydrogel Materials for a Tissue-Engineered Electronic Nerve Interface](https://pmc.ncbi.nlm.nih.gov/articles/PMC8086190/). TEENI is a separate hydrogel/polyimide-thread device, not a name for RPNI.
+- [University of Florida TEENI project](https://www.eng.ufl.edu/nimet/research/projects/the-tissue-engineered-electronic-nerve-interface-teeni/). Institutional context for the separate platform.
