@@ -2,11 +2,11 @@
 title: "Implantable wireless neural interface (Brown, 2013)"
 order: 32
 pubDate: 2026-10-06
-updatedDate: 2026-10-06
+updatedDate: 2026-10-07
 device_id: "BTSD-ACAD-0011"
 interface_class: "intracortical"
 status: "preclinical"
-last_updated: 2026-10-06
+last_updated: 2026-10-07
 description: "A subcutaneous titanium-housed system that streams 100 channels of broadband cortical data wirelessly and charges through the skin. Brown University, tested in moving primates, 2013."
 modality: "Intracortical"
 successRank: 32
