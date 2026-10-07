@@ -17,128 +17,114 @@ draft: false
 
 # LIFE (Longitudinal Intrafascicular Electrode)
 
-> *One-line verdict:* A fine-wire, penetrating peripheral nerve electrode placed within a single fascicle to achieve high selectivity for stimulation and CAP recording, at the cost of invasiveness and chronic stability challenges.
+All rows follow the shared implant-device template. Measurements belong to the named study or configuration. Unreported means the reviewed sources do not establish a value. Proposed use, terminal assays and continuously functioning implants are not treated as equivalent.
 
-*Quick tags:* Recording · Stimulation · Channels: 1 per wire (multi-wire implants possible) · Species: Human · First implanted: 1990s (reported)
+## Identity
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Device | LIFE fine-wire family; 2015 DIME lead is a named multi-LIFE configuration |
+| Manufacturer | Academic research fabrication, Thota 2015; not one vendor SKU |
+| Interface class | Longitudinal intrafascicular peripheral nerve electrode |
+| Origin | Fine-wire LIFE literature; DIME system developed by Thota and collaborators |
+| First demonstrated | Earlier LIFE reports cited in Thota 2015; earliest demonstration not independently established in this audit |
+| First human implant | Human functional study published by Dhillon and Horch in 2005; not a first implantation date |
+| Species studied | Human amputees in Dhillon 2005; cadaver arm and acute rodents in Thota 2015 |
+| Regulatory status | Research; authorization for general clinical use unreported |
+| Function | Peripheral neural recording and stimulation |
+| Target tissue | Axon groups inside peripheral nerve fascicles |
 
-### Overview
+## Geometry and architecture
 
-*What it is:* The Longitudinal Intrafascicular Electrode (LIFE) is a thin, flexible wire electrode inserted longitudinally inside a peripheral nerve fascicle (endoneurial space). Compared with extraneural cuff electrodes, LIFE can access a more restricted population of axons, enabling higher selectivity for stimulation and, in some cases, compound action potential (CAP) recording.
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Longitudinal fine-wire intrafascicular interface |
+| Array layout | Individual LIFE active segments distributed among fascicles; Thota DIME bundles six wires per lead |
+| Electrode count | One active segment per LIFE; 2015 prototype has three six-wire DIME leads plus separate ground. Recording configuration can use five LIFEs and one extrafascicular reference per lead |
+| Pitch | Configuration dependent; individually deployed wires have no fixed array pitch |
+| Electrode lengths | Approximately 1 mm de-insulated active segment, Thota 2015 |
+| Shank width and thickness | 2015 DIME: 25 µm Pt/Ir core, 6 µm PTFE coating, 37 µm insulated diameter. Same paper describes earlier LIFE literature as 27.5 µm wire; not identical configurations |
+| Tip and exposed site geometry | Approximately 1 mm exposed wire segment, not a point tip; exact exposure perimeter unreported |
+| Contact coating | Pt/Ir wire; no added surface film established in audited Methods |
+| Insulation | PTFE-coated wire, silicone bundled lead; protective polyimide deployment sheaths, Thota 2015 |
+| Insertion method | Tungsten needle attached to distal wire used to thread longitudinally into fascicle, Thota 2015 |
+| Anchoring and fixation | Deployment and anchoring depend on wire routing; DIME coiled wires and silicone sheath provide strain relief |
 
-*Why it matters:* LIFE is a foundational intrafascicular interface in peripheral nerve engineering. It helped establish the core tradeoff that still structures the field: *more selectivity* through penetration, paid for with *more surgical/biological risk* and harder chronic stability.
+## Electrode and channel physics
 
-*Most comparable devices:* TIME (transverse intrafascicular), tfLIFE (thin-film variant), USEA (higher channel count intraneural), FINE/C‑FINE (selectivity without penetration).
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported as measured area; 25 µm core and approximately 1 mm exposure specified for DIME, not converted to an exact exposed area |
+| Electrode material | Pt/Ir wire in Thota 2015 |
+| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Noise floor or SNR | Unreported in reviewed sources |
+| Recording modality | Peripheral neural activity from axon groups; acute afferent recording in 2015 and motor intent control in 2005 human study |
+| Sampling rate | Configuration dependent; external recording system, exact rate unreported in audited Methods |
+| Stimulation capability | Selective sensory and motor stimulation in published use; 2015 acute rodent ankle movements and 2005 human feedback |
+| Charge injection limit | Unreported in reviewed sources |
+| Reference and ground | 2015 recording: one wire extrafascicular within nerve as differential reference; separate ball ground in prototype assembly |
 
----
+## Tissue interface and bioresponse
 
-### Spec Card Grid
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Within peripheral nerve fascicles |
+| Insertion trauma and BBB disruption | BBB: not applicable; needle insertion breaches peripheral fascicle, quantitative injury unreported in reviewed system paper |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Fine wires risk entanglement and breakage under mechanical stress; coiled DIME bundle and sheaths are intended to reduce that risk, 2015 |
+| Gliosis and encapsulation | Peripheral interface, not CNS gliosis; chronic tissue-response rate unreported in audited sources |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Small wire diameter and flexible routing are design choices; chronic effectiveness not quantified here |
+| Typical failure modes | Wire entanglement and stress-related breakage identified as design risks, Thota 2015; not measured cohort failure rates |
 
-### Identity
-- *Device name:* LIFE (Longitudinal Intrafascicular Electrode)
-- *Canonical ID:* BTSD-PNI-0004
-- *Inventor / key authors:* literature spans multiple groups; commonly associated with intrafascicular neuroprosthetics work in the 1990s–2000s; Horch and colleagues appear in later LIFE systems work; Dhillon et al. demonstrate human use in an amputee neuroprosthesis context
-- *Org / manufacturer:* academic research builds (no single commercial manufacturer)
-- *First demonstrated (year):* 1990s–early 2000s (reported; study-dependent)
-- *First implanted (year):* 1990s (reported)
-- *Species:* human (research) + extensive animal work
-- *Regulatory / trial status:* research implants (IRB/IDE context varies)
-- *Primary use:* hybrid (stimulation + recording)
-- *Primary target:* peripheral nerve fascicles (median/ulnar/tibial/peroneal/etc.; application-dependent)
+## System architecture
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | None in LIFE; external recording/stimulation in reviewed prototype |
+| Data path | 2015 percutaneous DIME leads to external connector and electronics; fully implanted electronics stated as long-term objective, not achieved in that prototype |
+| Telemetry bandwidth | Not applicable to wired LIFE prototype |
+| Sampling rate | Configuration dependent, external acquisition |
+| Power | External electronics for audited prototype |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | 2015: silicone-protected bundle and epoxy-insulated connector; percutaneous system, no hermetic lifetime qualification |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Nerve/fascicle exposure, multiple needle insertions and lead routing; tested in human cadaver arm, 2015 |
+| Output connectors | 2015 custom PCB with Hirose LX multi-channel connector; silicone assembly approximately 6 mm high |
 
-### Geometry & Architecture
-- *Interface type:* intrafascicular penetrating electrode
-- *Penetrating?:* yes
-- *Form factor:* fine insulated microwire with an exposed recording/stimulation segment
-- *Array layout:* 1 wire per channel; multiple LIFE wires can be implanted in one nerve
-- *Footprint (mm):* intrafascicular length is study-dependent (often cm-scale)
-- *Insertion depth (mm):* within a fascicle, longitudinal trajectory
-- *Shank / lead dimensions:* wire diameter and insulation thickness vary across studies and materials
-- *Site spacing (µm):* typically an elongated exposed segment rather than discrete pads
-- *Tip geometry:* insertion tip and exposed segment geometry vary by build
-- *Insertion method:* microsurgical placement, typically using a needle/guide to pass the wire through the fascicle
-- *Anchoring method:* tissue friction + lead strain relief; no rigid anchoring at the site
-- *Packaging location:* percutaneous leads in some historical systems; implanted routing in others (study-dependent)
+## Performance envelope
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Cadaver prototype routed without visually observed mechanical damage; acute rodent functional stimulation/recording, 2015. Not a numerical electrical yield |
+| Chronic yield | Unreported in reviewed sources |
+| Stability over time | Chronic stability not established by the 2015 cadaver and acute rodent system study |
+| Longevity | Proposed weeks-to-months studies are not observed device lifetime |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | Clinical adverse-event rate unreported in audited sources; cadaver routing is not a safety trial |
+| Notable demonstrations | Dhillon 2005 amputees judged and set prosthetic grip force/joint position without visual input; 2015 demonstrates multi-fascicle deployment |
 
-### Electrode & Channel Physics
-- *Channel count:* 1 channel per LIFE wire
-- *Active sites used (vs total):* 1/1 per wire
-- *Electrode material:* study-dependent (metal microwires; exact alloy varies)
-- *Site area (µm²):* elongated exposed region (not standardized)
-- *Impedance @ 1 kHz:* variable (strongly build- and tissue-dependent)
-- *Noise floor / SNR:* suitable for CAP-scale signals; long-term single-unit spike stability is not the usual operating regime
-- *Recording modality:* CAPs; multi-unit activity in some cases
-- *Stimulation capability:* yes
-- *Charge injection limit / safe stim range:* constrained by small surface area; should be treated as build-specific and conservative
+## Clinical and preclinical evidence
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | Amputees in Dhillon 2005; exact audited participant count not pinned here. 2015 prototype study includes human cadaver, not a living clinical cohort |
+| Preclinical cohort | Acute rodents in Thota 2015; cohort count unreported in audited text |
+| Follow-up duration | Cadaver/acute deployment in 2015; generic chronic duration not asserted |
+| Indications | Experimental prosthetic sensory feedback and motor control |
+| Trials and registries | Unreported in reviewed sources |
+| Primary outcomes | Feasibility of direct neural feedback/control and multi-LIFE surgical management |
+| Key limitations | LIFE family differs from DIME packaging; acute/cadaver deployment does not establish chronic clinical durability |
 
-### Tissue Interface & Bioresponse
-- *Target tissue:* endoneurial space within a peripheral nerve fascicle
-- *Vascular disruption risk:* moderate (penetration risk)
-- *Micromotion sensitivity:* high (relative motion between wire and axons)
-- *Encapsulation / fibrosis:* endoneurial fibrosis and interface remodeling are expected contributors to threshold drift and signal loss
-- *Foreign-body response mitigation:* flexibility of the wire relative to rigid shanks
-- *Typical failure mode:* signal degradation, wire migration/breakage; infection risk is dominated by packaging choice (percutaneous vs fully implanted)
+## Engineering tradeoffs
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Fine-wire access to distinct axon populations and human bidirectional functional demonstration |
+| Limitations | Fascicle penetration, fragile wires, deployment and lead routing burden |
+| Scaling constraints | DIME groups wires to manage multiple insertion sites; each LIFE still requires individual placement |
 
-### System Architecture
-- *Onboard electronics:* none at the electrode
-- *Data path:* tethered leads to external stim/record hardware (common in research)
-- *Sampling rate:* system-dependent; CAP recording typically uses kHz-range sampling
-- *Power:* external stimulator / recording system
-- *Hermeticity:* none at electrode; depends on connector/implant packaging
-- *MRI compatibility:* generally not compatible in percutaneous wired research configurations
-- *Surgical complexity:* high microsurgical skill; fascicle-level manipulation
+## References
 
----
-
-### Performance Envelope
-- *Typical yield (acute):* high selectivity for stimulation within the targeted fascicle; CAP recordings feasible
-- *Typical yield (chronic):* performance often degrades over time (degree and timeline are study-dependent)
-- *Stability over time:* limited compared to extraneural cuffs; micromotion and fibrosis dominate
-- *Longevity (median / max):* highly variable across studies; do not treat as a single canonical number for LIFE
-- *Revision / explant:* possible but delicate
-- *Adverse events (high-level):* fascicular injury risk; neuropathic pain risk; infection risk depends on packaging
-
----
-
-### Clinical / Preclinical Evidence
-- *Human evidence:* small cohorts and case-series in neuroprosthetics/sensory feedback contexts
-- *Follow-up duration:* study-dependent; often shorter than cuff-based chronic therapy devices
-- *Primary outcomes:* selectivity, thresholds, percept stability (sensory), CAP fidelity
-- *Key limitations of evidence:* heterogeneous builds and surgical techniques; packaging varies; small N
-
----
-
-### Engineering Verdict
-
-*Strengths:*
-- exceptional selectivity compared to extraneural cuffs
-- direct access to intrafascicular signals (CAPs)
-
-*Limitations / failure modes:*
-- chronic instability driven by micromotion and fibrosis
-- higher surgical risk at the fascicle level
-
-*Scaling constraints:*
-- wiring/packaging burden grows linearly with channel count
-- long-term implants are difficult to stabilize biologically
-
-*What newer designs try to fix:*
-- tfLIFE (thin-film) for mechanical compliance and multi-site layouts
-- TIME for transverse multi-contact access
-- flat/reshaping cuffs (FINE/C‑FINE) to regain selectivity without penetration
-
----
-
-### References
-- Dhillon GS, Horch KW. *Direct neural sensory feedback and control of a prosthetic arm.* IEEE Trans Neural Syst Rehabil Eng. 2005;13(4):468–472. doi: 10.1109/TNSRE.2005.856072. PubMed: <https://pubmed.ncbi.nlm.nih.gov/16425828/>
-- Thota AK, Kuntaegowdanahalli S, Starosciak AK, Abbas JJ, Orbay J, Horch KW, Jung R. *A system and method to interface with multiple groups of axons in several fascicles of peripheral nerves.* J Neurosci Methods. 2015. PubMed: <https://pubmed.ncbi.nlm.nih.gov/25092497/>
-- Pena AE, Kuntaegowdanahalli SS, Abbas JJ, Patrick J, Horch KW, Jung R. *Mechanical fatigue resistance of an implantable branched lead system for a distributed set of longitudinal intrafascicular electrodes.* J Neural Eng. 2017. PubMed: <https://pubmed.ncbi.nlm.nih.gov/29131813/>
+- Thota et al. 2015. [A system and method to interface with multiple groups of axons in several fascicles of peripheral nerves](https://pmc.ncbi.nlm.nih.gov/articles/PMC4312748/). Full DIME Methods; distinguishes earlier LIFE wire geometry.
+- Dhillon and Horch 2005. [Direct neural sensory feedback and control of a prosthetic arm](https://pubmed.ncbi.nlm.nih.gov/16425828/). Human functional report. [Institutional copy](https://collections.lib.utah.edu/details?id=704067).
