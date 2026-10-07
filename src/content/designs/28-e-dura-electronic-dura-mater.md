@@ -7,7 +7,7 @@ device_id: "BTSD-ACAD-0007"
 interface_class: "ecog"
 status: "preclinical"
 last_updated: 2026-10-06
-description: "A soft implant with the shape and elasticity of the dura that carries electrodes and drug channels. EPFL, 2015: cortical recording in free-moving animals and spinal stimulation that restored walking after paralysis."
+description: "A soft implant with the shape and elasticity of the dura that carries electrodes and drug channels. EPFL, 2015: cortical recording in free-moving rats and supported stepping after paralysis with spinal electrical stimulation, drug delivery and rehabilitation."
 modality: "Cortical surface"
 successRank: 28
 website: "https://www.science.org/doi/10.1126/science.1260318"
