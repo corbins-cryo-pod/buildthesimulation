@@ -49,74 +49,80 @@ The engineering interview describes a polyimide-insulated thin-film metal stack 
 
 Inductive charging and wireless data allow the implant to operate without a percutaneous connector. [1] The relevant human programs are investigational studies. UCLH describes the GB-PRIME study as evaluating safety and functionality, with an initial study period and longer follow-up. [3]
 
-### Identity
+## Identity
 
 | Field | Value and source scope |
 | --- | --- |
 | Device | N1 implant, flexible-thread intracortical BCI |
 | Manufacturer | Neuralink |
 | Interface class | Intracortical, penetrating flexible threads |
+| Origin | Neuralink; first human participant reported in company updates from 2024 [1] |
+| First demonstrated | 2024 company update for the 64-thread, 16-site description [1, 2]; the July 2025 UCLH description gives 128 threads of 8 electrodes [3] |
 | First human implant | First PRIME participant reported in company updates beginning 2024 [1] |
 | Species studied | Human (investigational) and preclinical animals; preclinical detail unreported here |
 | Regulatory status | Investigational: PRIME (NCT06429735) [4] and GB-PRIME [3]; not commercially approved |
 | Function | Recording; stimulation capability discussed in the engineering interview [2] |
 | Target tissue | Motor cortex in the reported human program |
 
-### Geometry and architecture
+## Geometry and architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Interface type | Penetrating flexible polymer threads |
-| Configuration modeled | 64 threads x 16 sites (2024 description) [1, 2]; the 128 x 8 variant is documented separately [3] |
-| Site pitch along thread | 200 µm [2] |
-| Thread width / thickness | 16-84 µm width; 4.4 µm thickness derived from the described layer stack [2] |
-| Enclosure | Approximately quarter-sized, 9 mm thick [2]; nominal 24 mm diameter in the model |
-| Contact shape and area | Unreported; visual markers are illustrative |
-| Insertion method | R1 surgical robot [1] |
-| Anchoring / fixation | Skull-mounted enclosure [1, 4] |
+| Interface type | Penetrating flexible polymer threads with a skull-mounted enclosure |
+| Array layout | 64 threads x 16 sites (2024 description) [1, 2]; the 128 x 8 variant is documented separately [3] |
+| Electrode count | 1,024 physical sites in both descriptions [1, 3]; simultaneous channel count unreported |
+| Pitch | 200 µm along the thread, per the 2024 interview [2] |
+| Electrode lengths | Unreported in reviewed sources; thread reach and insertion depth are patient-specific and not published |
+| Shank width and thickness | 16-84 µm width; thickness about 4.4 µm derived from two 2 µm polymer layers and a 0.4 µm metal stack [2] |
+| Tip and exposed site geometry | Contact shape and exposed area unreported; model markers are illustrative |
+| Contact coating | Iridium oxide recording sites on a thin-film metal stack [2] |
 | Insulation | Polyimide over a thin-film metal stack [2] |
+| Insertion method | R1 surgical robot with a needle that grasps, inserts and releases threads [1]; company page describes five cameras and an OCT system |
+| Anchoring and fixation | Skull-mounted enclosure [1, 4]; thread anchoring in tissue unreported |
 
-### Electrode and channel physics
+## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
 | Exposed site area | Unreported; exported as unknown |
 | Electrode material | Iridium-oxide recording sites on a thin-film metal stack [2] |
-| Impedance | Unreported in reviewed sources |
-| Noise floor | Unreported in reviewed sources |
-| Recording modality / bands | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Noise floor or SNR | Unreported in reviewed sources |
+| Recording modality | Recording of neural activity near neurons to detect action potentials per the company page; bands unreported |
 | Sampling rate | Unreported in reviewed sources |
 | Stimulation capability | Discussed publicly [2]; parameters and limits unreported |
 | Charge injection limit | Unreported |
 | Reference and ground | Unreported in reviewed sources |
 
-### Tissue interface and bioresponse
+## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Cerebral cortex |
-| Insertion trauma / vascular disruption | Threads are placed to avoid vasculature per company descriptions [1]; quantitative trauma data unreported |
+| Insertion trauma and BBB disruption | Threads are placed to avoid vasculature per company descriptions [1]; quantitative trauma data unreported |
+| Vascular disruption risk | Threads placed to avoid vasculature per company descriptions [1]; quantitative data unreported |
 | Micromotion sensitivity | Flexible threads are designed to move with tissue [1]; independent quantitative data unreported |
-| Gliosis / encapsulation | Unreported in reviewed sources |
+| Gliosis and encapsulation | Unreported in reviewed sources |
 | Neuron loss near sites | Unreported in reviewed sources |
 | Foreign-body response mitigation | Thread flexibility and small cross-section are the design approach; measured outcomes unreported |
 | Typical failure modes | Thread retraction after implantation was reported for the first participant in company updates [1] |
 
-### System architecture
+## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Enclosure contains electronics for recording, processing and wireless telemetry [1] |
-| Data path | Wireless; no percutaneous connector [1] |
+| Onboard electronics | Enclosure contains electronics for recording, processing and wireless telemetry; custom low-power chips per the company page [1] |
+| Data path | Wireless to the Neuralink Application, which decodes the data stream into actions; no percutaneous connector [1] |
 | Telemetry bandwidth | Unreported in reviewed sources |
 | Sampling rate | Unreported in reviewed sources |
-| Power | Rechargeable battery, inductive charging [1, 4] |
+| Power | Small rechargeable battery charged wirelessly with an inductive charger [1, 4] |
 | Thermal management | Unreported in reviewed sources |
-| Packaging / hermeticity | Sealed skull-mounted enclosure; hermeticity specifications unreported |
+| Packaging and hermeticity | Hermetically sealed biocompatible enclosure per the company page; hermeticity specifications unreported |
 | MRI compatibility | Unreported in reviewed sources |
 | Surgical complexity | R1 robot insertion with skull-mounted enclosure placement [1] |
+| Output connectors | No percutaneous connector [1]; wireless link details unreported |
 
-### Performance envelope
+## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
@@ -124,32 +130,35 @@ Inductive charging and wireless data allow the implant to operate without a perc
 | Chronic yield | Company reports cursor and device control in study participants [1]; independent datasets unreported |
 | Stability over time | Thread retraction affected early recordings in the first participant [1]; long-term stability unreported |
 | Longevity | Unreported; battery and packaging lifetime not publicly specified |
-| Revision / explant experience | Unreported in reviewed sources |
+| Revision and explant experience | Unreported in reviewed sources |
 | Adverse events | No independently audited rates in reviewed sources |
 | Notable demonstrations | Company-reported cursor control and computer use by study participants [1] |
 
-### Clinical and preclinical evidence
+## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | PRIME and GB-PRIME investigational studies; company-reported participant counts change over time and are not pinned here |
+| Preclinical cohort | Preclinical cohort details unreported here |
 | Follow-up duration | Initial study period with longer follow-up per UCLH [3] |
 | Indications | Severe motor impairment and paralysis |
-| Trials / registries | NCT06429735 (PRIME) [4]; GB-PRIME [3] |
+| Trials and registries | NCT06429735 (PRIME) [4]; GB-PRIME [3] |
 | Primary outcomes | Safety and functionality [3, 4] |
 | Key limitations | Evidence is largely company statements and interviews; peer-reviewed human data remain sparse |
 
-### Engineering tradeoffs
+## Engineering tradeoffs
 
-| Aspect | Assessment |
+| Field | Value and source scope |
 | --- | --- |
 | Strengths | High site count, fully implanted wireless operation, flexible threads, robotic insertion, no percutaneous connector |
 | Limitations | Sparse peer-reviewed data, reported thread retraction, dependence on a novel surgical robot, unpublished longevity |
 | Scaling constraints | Surgical throughput, hermetic packaging, telemetry bandwidth, power and heat, chronic tissue response |
 
-### Sources and images
+## References
 
 1. [Neuralink — PRIME Study Progress Update; April 12, 2024](https://neuralink.com/updates/prime-study-progress-update/). Includes the manufacturer’s [exploded N1 reference image](https://cdn.buttercms.com/HsyAIkHURhOFMwmjO16q).
 2. [DJ Seo — Neuralink engineering interview, Lex Fridman podcast #438 (2024)](https://lexfridman.com/elon-musk-and-neuralink-team-transcript/). See 02:03:33 for electrode layout, 02:07:03 for enclosure, 02:08:58 for width and 02:12:48 for the layer stack. These are public engineering descriptions, not released fabrication drawings.
 3. [UCLH — GB-PRIME study description; July 31, 2025](https://www.uclh.nhs.uk/news/uclh-evaluate-safety-and-functionality-neuralinks-brain-computer-interface-bci-technology). Documents a separate 128 × 8 arrangement and investigational study status.
 4. [ClinicalTrials.gov NCT06429735 — PRIME study](https://clinicaltrials.gov/study/NCT06429735). Describes the N1 Implant as skull-mounted, wireless and rechargeable.
+
+The company technology page ([neuralink.com/technology](https://neuralink.com/technology/)) describes a hermetically sealed biocompatible enclosure, a battery charged wirelessly by an inductive charger, custom low-power chips, and a surgical robot with five camera systems, an optical coherence tomography system and a needle that grasps, inserts and releases threads. Third-party device databases give figures such as a coin-sized 23 x 18 x 2 mm body and 200 Mbps raw data; those are not confirmed by Neuralink in the reviewed sources and are not used here.
