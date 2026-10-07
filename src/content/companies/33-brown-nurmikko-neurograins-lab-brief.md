@@ -1,5 +1,5 @@
 ---
-title: "Brown University, Neurograins (lab brief)"
+title: "Brown University, N3 Lab (lab brief)"
 order: 33
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
@@ -17,6 +17,7 @@ draft: false
 *Brown University* led the Neurograins project, with Baylor University, UC San Diego and Qualcomm. Brown's news release quotes senior author Arto Nurmikko describing today's BCIs as "little beds of needles."
 
 - Brown News, 12 August 2021: <https://www.brown.edu/news/2021-08-12/neurograins>
+- Lab site (N3 Lab, Arto Nurmikko): <https://nurmikko.engin.brown.edu/>
 
 ### Device entries
 

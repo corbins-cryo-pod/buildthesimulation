@@ -1,5 +1,5 @@
 ---
-title: "Technical University of Munich (TUM) invasive BCI project (lab brief)"
+title: "Technical University of Munich (TUM) University Hospital (lab brief)"
 order: 15
 pubDate: 2026-02-02
 updatedDate: 2026-10-04

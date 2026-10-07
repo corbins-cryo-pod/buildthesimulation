@@ -1,5 +1,5 @@
 ---
-title: "CEA‑Clinatec / WIMAGINE (lab brief)"
+title: "CEA‑Clinatec (lab brief)"
 order: 14
 pubDate: 2026-02-02
 updatedDate: 2026-10-04
