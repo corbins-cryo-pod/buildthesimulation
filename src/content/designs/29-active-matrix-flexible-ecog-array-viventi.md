@@ -2,11 +2,11 @@
 title: "Active-matrix flexible ECoG array (Viventi, 2011)"
 order: 29
 pubDate: 2026-10-06
-updatedDate: 2026-10-06
+updatedDate: 2026-10-07
 device_id: "BTSD-ACAD-0008"
 interface_class: "ecog"
 status: "research"
-last_updated: 2026-10-06
+last_updated: 2026-10-07
 description: "A flexible, foldable surface array with a silicon transistor at each electrode so hundreds of sites share a few wires. 360 channels at 500 µm spacing, Penn, Illinois and collaborators, 2011."
 modality: "Cortical surface"
 successRank: 29
