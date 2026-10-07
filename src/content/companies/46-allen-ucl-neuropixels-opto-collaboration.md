@@ -16,7 +16,7 @@ draft: false
 
 # Neuropixels Opto collaboration
 
-The [2026 Neuropixels Opto prototype](/devices/140-neuropixels-opto-prototype-2026/) brings electrical recording and photonic stimulation into one probe. Its [cortical circuit application](/applications/141-neuropixels-opto-cortical-activation-inhibition/) and [parallel optotagging application](/applications/142-neuropixels-opto-parallel-optotagging/) use separate preparations and denominators.
+The [2026 Neuropixels Opto prototype](/devices/107-neuropixels-opto-photonic-prototype/) brings electrical recording and photonic stimulation into one probe. Its [cortical circuit application](/applications/141-neuropixels-opto-cortical-activation-inhibition/) and [parallel optotagging application](/applications/142-neuropixels-opto-parallel-optotagging/) use separate preparations and denominators.
 
 ## Primary-paper team
 
