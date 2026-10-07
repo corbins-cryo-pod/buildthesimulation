@@ -26,6 +26,8 @@ const normalized = entries.map((p) => ({
   interface_class: p.data.interface_class,
   status: p.data.status,
   modality: p.data.modality,
+  website: p.data.website ?? "",
+  last_updated: p.data.last_updated?.toISOString().slice(0,10) ?? "",
   tags: p.data.tags ?? [],
 }));
 ---
@@ -51,7 +53,7 @@ const normalized = entries.map((p) => ({
   </section>
   <p class="muted">Studies and clinical programs that use these devices are listed under <a href="/applications/">Applications</a>.</p>
   <h2 class="catalog-title">Device catalog</h2>
-  <p class="muted">Browse {entries.length} devices and research designs by interface type, anatomy and use case.</p>
+  <p class="muted">Browse {entries.length} devices and research designs by interface type, anatomy and use case. Export results CSV downloads the current filtered list, including stable IDs, source links and review dates. Evidence stage is not regulatory approval.</p>
   <DevicesDirectory client:load entries={normalized} />
 </Layout>
 
