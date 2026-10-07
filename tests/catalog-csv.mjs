@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {csvCell,catalogCsv} from '../src/lib/catalog-csv.js';
+assert.equal(csvCell('a,"b"'), '"a,""b"""');
+assert.equal(csvCell(null), '""');
+for(const text of ['=cmd()','+SUM(1)','-1+2','@x',' =cmd()','\tfoo','\nbar']) assert(csvCell(text).startsWith('"\''));
+assert.equal(csvCell('source-grounded'), '"source-grounded"');
+assert.equal(csvCell(960),'"960"');
+const csv=catalogCsv(['Name','Source'],[['SCOPe','https://example.org'],['two\nlines','"quoted"']]);
+assert(csv.startsWith('\uFEFF'));assert(csv.endsWith('\r\n'));assert(csv.includes('"two\nlines"'));assert(csv.includes('""quoted""'));
+console.log('Catalog CSV: quotes, Unicode marker, multiline fields and spreadsheet formula escaping verified.');

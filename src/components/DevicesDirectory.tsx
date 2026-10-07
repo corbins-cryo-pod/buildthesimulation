@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from "preact/hooks";
 
+import { downloadCatalogCsv } from "../lib/catalog-csv.js";
+
 import { getDeviceModel } from "../lib/devices/catalog.js";
 
 type DeviceEntry = {
@@ -11,6 +13,8 @@ type DeviceEntry = {
   interface_class?: string;
   status?: string;
   modality?: string;
+  website?: string;
+  last_updated?: string;
   tags: string[];
 };
 
@@ -221,6 +225,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
         </label>
 
         <div class="topRight">
+          <button type="button" class="clear" onClick={() => downloadCatalogCsv('device-catalog.csv', ['Device ID','Title','Evidence stage','Interface class','Modality','Model available','Last reviewed','Catalog URL','Primary source','Description'], filtered.map(e=>[e.device_id,e.title,e.status,e.interface_class,e.modality,getDeviceModel(e.device_id)?'yes':'no',e.last_updated,new URL(`/devices/${e.slug}/`,window.location.origin).href,e.website,e.description]))}>Export results CSV</button>
           <div class="count">{filtered.length} result(s)</div>
           {hasFilters ? (
             <button type="button" class="clear" onClick={clearAll}>

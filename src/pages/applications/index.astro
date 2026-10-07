@@ -36,14 +36,16 @@ const deviceName = (s) => {
       <label>Interface<select id="app-modality"><option value="">All interfaces</option>{modalities.map(m => <option value={m}>{m}</option>)}</select></label>
       <label>Lab or organization<select id="app-org"><option value="">All organizations</option>{usedOrgs.map(o => <option value={o.slug}>{strip(o.data.title)}</option>)}</select></label>
       <label>Evidence stage<select id="app-stage"><option value="">All stages</option>{stages.map(s => <option value={s}>{stageLabels[s] ?? s}</option>)}</select></label>
+      <button id="app-export" type="button">Export results CSV</button>
       <button id="app-clear" type="button">Clear filters</button>
     </div>
+    <p class="muted">Export results CSV downloads only matching application pages. Overviews and component studies can describe the same cohort; the file is not a count of independent experiments.</p>
     <p class="muted count" id="app-count" aria-live="polite">{posts.length} entries</p>
     <div class="list">
       {posts.map((p) => {
         const names = p.data.devices.map(deviceName).filter(Boolean);
         return (
-          <a class="item" data-stage={p.data.status} data-modality={p.data.modality} data-orgs={p.data.orgs.join(" ")} href={`/applications/${p.slug}/`}>
+          <a class="item" data-id={p.data.application_id} data-source={p.data.website ?? ""} data-reviewed={p.data.last_updated?.toISOString().slice(0,10) ?? ""} data-devices={p.data.devices.join("; ")} data-org-names={p.data.orgs.map(slug=>strip(orgs.find(o=>o.slug===slug)?.data.title ?? slug)).join("; ")} data-stage={p.data.status} data-modality={p.data.modality} data-orgs={p.data.orgs.join(" ")} href={`/applications/${p.slug}/`}>
             <h3>{strip(p.data.title)}</h3>
             <p class="on">{stageLabels[p.data.status] ?? p.data.status}</p>
             {names.length ? <p class="on">Device: {names.join(", ")}</p> : null}
@@ -55,11 +57,13 @@ const deviceName = (s) => {
     <p class="muted" id="app-empty" hidden>No matching applications. Clear the filters or try another search.</p>
   </section>
   <script>
+    import { downloadCatalogCsv } from "../../lib/catalog-csv.js";
     const search = document.querySelector<HTMLInputElement>('#app-search')!;
     const modality = document.querySelector<HTMLSelectElement>('#app-modality')!;
     const org = document.querySelector<HTMLSelectElement>('#app-org')!;
     const stage = document.querySelector<HTMLSelectElement>('#app-stage')!;
     const items = Array.from(document.querySelectorAll<HTMLAnchorElement>('.item'));
+    document.querySelector('#app-export')!.addEventListener('click',()=>downloadCatalogCsv('application-catalog.csv',['Application ID','Title','Evidence stage','Modality','Device slugs','Organizations','Last reviewed','Catalog URL','Primary source','Description'],items.filter(item=>!item.hidden).map(item=>[item.dataset.id,item.querySelector('h3')?.textContent,item.dataset.stage,item.dataset.modality,item.dataset.devices,item.dataset.orgNames,item.dataset.reviewed,item.href,item.dataset.source,item.querySelector('.desc')?.textContent])));
     function filter() {
       const query = search.value.trim().toLocaleLowerCase();
       let count = 0;
@@ -84,7 +88,7 @@ const deviceName = (s) => {
 </Layout>
 
 <style>
-  .filters { display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:12px;align-items:end;margin:18px 0; }
+  .filters { display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto auto;gap:12px;align-items:end;margin:18px 0; }
   .filters label { font-size:16px;min-width:0; }
   .filters :is(input,select) { display:block;width:100%;min-width:0;margin-top:6px;padding:10px;border:1px solid var(--border);border-radius:10px;color:inherit;background:var(--panelStrong);font-size:16px; }
   .filters button { padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--panel);color:inherit;font-size:16px;cursor:pointer; }
