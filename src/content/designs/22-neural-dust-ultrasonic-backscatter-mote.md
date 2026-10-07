@@ -2,12 +2,12 @@
 title: "Neural dust (ultrasonic backscatter mote)"
 order: 22
 pubDate: 2026-10-06
-updatedDate: 2026-10-06
+updatedDate: 2026-10-07
 device_id: "BTSD-ACAD-0001"
 interface_class: "pni"
 status: "preclinical"
-last_updated: 2026-10-06
-description: "A battery-free, 3 mm sensor that is powered and read out by ultrasound. Demonstrated in 2016 on rat sciatic nerve and muscle at UC Berkeley."
+last_updated: 2026-10-07
+description: "Ultrasonic recording mote: primary2016 assemblies about0.8×3×1mm, one differential channel, 1.85-MHz interrogation and10-kHz reconstructed signals. Rat nerve/muscle evidence; separate1-mm-cube institutional claim."
 modality: "Peripheral nerve"
 successRank: 22
 website: "https://www.cell.com/neuron/fulltext/S0896-6273%2816%2930344-0"
@@ -17,58 +17,68 @@ draft: false
 
 # Neural dust (ultrasonic backscatter mote)
 
-> *One-line verdict:* The first demonstration that a battery-free sensor the size of a grain of sand can be powered and read out by ultrasound alone, shown in rat nerve and muscle and not yet in a brain implant.
+A battery-free recording mote powered and interrogated by ultrasound. The 2016 paper demonstrates peripheral nerve and muscle signals in anesthetized rats, not a chronic brain implant. The implanted mote contains a piezocrystal, a transistor and a pair of recording contacts; an external transceiver supplies the acoustic link.
 
-*Quick tags:* Recording · Peripheral nerve · Species: Rat · Demonstrated: 2016
+## Identity and configuration
 
----
+| Property | Published configuration |
+| --- | --- |
+| Primary authors | Dongjin Seo, Ryan Neely, Konlin Shen and colleagues |
+| Institution | University of California, Berkeley |
+| Primary paper | Neuron, 2016 |
+| Function | One differential recording channel per mote |
+| Biological targets | Sciatic nerve ENG and gastrocnemius muscle EMG in rats |
+| Power/data mechanism | Ultrasonic energy and analog backscatter modulation |
+| Stimulation | Not an integrated stimulator in this recording mote; [StimDust](/devices/111-stimdust-ultrasonic-nerve-stimulator/) is separate hardware |
 
-### Overview
+## Geometry and contacts
 
-*What it is:* A mote with a piezoelectric crystal, one transistor and a pair of recording electrodes. An external ultrasound transducer sends pulses that power the crystal. A voltage spike at the nerve or muscle changes the circuit, which changes the echo that returns to the transducer. That change in the echo (backscatter) carries the signal.
+| Property | Primary paper specification |
+| --- | --- |
+| Assembled mote | Approximately 0.8 × 3 × 1 mm |
+| Flexible PCB | 50-µm polyimide |
+| Piezocrystal | 0.75 × 0.75 × 0.75 mm |
+| Custom transistor die | 0.5 × 0.45 mm |
+| Tissue contacts | Two exposed gold pads, each 0.2 × 0.2 mm |
+| Contact separation | 1.8 mm |
+| Interconnect | Aluminum wirebonds, gold traces and microvias |
+| Encapsulation | Medical-grade UV-curable epoxy |
+| Optional test lead | 0.35 mm wide and 25 mm long; not a required wireless link |
 
-*Why it matters:* It removes the battery, the lead and the radio from an implant. Ultrasound passes through tissue where radio-frequency links lose power, so the concept points at motes deep in the body and, in the authors' longer-term view, in the brain.
+Berkeley's institutional article says the team had already reduced sensors to a 1-mm cube. The primary paper's presented assemblies are about 0.8 × 3 × 1 mm and discuss approximately 1-mm³ future assemblies enabled by different packaging. Those scopes are not collapsed into a single demonstrated implant geometry. Epoxy protection does not establish a multi-year hermetic package.
 
-*Status:* Academic demonstration. The sources cited here report rat experiments only, in peripheral nerve (ENG) and muscle (EMG), under anesthesia. No human implant is reported in them.
+## Electrical and system specifications
 
----
+| Property | Published specification and condition |
+| --- | --- |
+| Carrier | 1.85 MHz in the reported pulse sequence |
+| Interrogation | Six 540-ns pulses every 100 µs |
+| Reconstructed waveform sampling | 10 kHz |
+| Table noise floor | 180 µV RMS, measured in a water tank |
+| Minimum detected ENG/EMG signal | Approximately 0.25 mV in the described rat experiments |
+| Energy store/battery | No implanted battery |
+| External system | Ultrasound transducer, transmit/receive electronics, digitization and reconstruction |
+| Signal path | Tissue voltage changes transistor load and reflected acoustic amplitude |
 
-### Spec Card Grid
+The input signal is recovered from backscatter, not a neural-data radio transmitter inside the mote. The paper's water-tank noise and biological detection threshold are different measurements. ADC figures on the external reconstruction equipment are not an implanted digital-recording chip specification.
 
-### Identity
-- *Device name:* Neural dust mote
-- *Inventors / key authors:* Dongjin Seo, Ryan M. Neely, Konlin Shen, Jan M. Rabaey, Jose M. Carmena, Michel M. Maharbiz (and co-authors)
-- *Org:* University of California, Berkeley
-- *Published:* Neuron, August 2016
-- *Species:* rat
-- *Primary use:* recording (stimulation is discussed as a future use)
+## Tissue interface and reliability
 
-### Geometry & Architecture
-- *Mote size (demonstrated):* 3 mm long, 1 × 1 mm cross-section, attached to a nerve fiber
-- *Mote size (reported follow-up):* shrunk to a 1 mm cube, per Berkeley's release
-- *Power and data link:* ultrasound, both directions, no battery
-- *Interrogation:* six 540 ns ultrasound pulses every 100 µs in the reported experiment
+The mote is placed on the nerve or muscle in the described experiments. Acoustic coupling, alignment and propagation path matter. Bone and gas can obstruct the link, so peripheral demonstrations cannot be silently generalized to every deep-brain location.
 
-### Tissue Interface
-- *Targets:* sciatic nerve and muscle in anesthetized rats
-- *Penetrating?:* not described as penetrating in the sources cited here
+Chronic implanted lifetime, long-term package stability and human tissue response are not established by the cited work. Institutional discussion of thin-film encapsulation intended to last years is development intent, not an observed decade of operation.
 
-### Evidence and limits
-- *Evidence:* rat recordings of nerve and muscle activity read out wirelessly; the signal is a change in echo amplitude, so readout quality depends on mote alignment with the transducer.
-- *Not shown in the cited sources:* chronic implantation, brain recording, human use.
+## Evidence and regulatory boundary
 
----
+The study demonstrates rat peripheral ENG and EMG recordings, with wired measurements used for comparison. Wireless EMG reconstruction was sampled at 10 kHz while the wired comparison was at 100 kHz. Correlation and errors are reported for particular stimulation/recording protocols, not universal mote accuracy.
 
-### Engineering Verdict
+The mote senses evoked biological signals; that does not mean it generates the stimulation used in the experiment. No chronic brain recording, implanted human use or regulatory clearance is established here. The related [Neurograins network](/devices/25-neurograins-wireless-microimplant-network/) uses RF instead of ultrasound and is not a later version of this circuit.
 
-*Strengths:* no battery, no lead, no RF antenna; scales conceptually to many motes read by one transducer.
+## Model and missing specifications
 
-*Limitations:* depends on ultrasound reaching the mote, so bone and gas block the link; mote and transducer alignment sets signal quality; only acute rat data in the cited work.
+No full model is supplied. Component boxes do not fix the contact exposure, piezocrystal orientation, film outline, wirebond loops or acoustic pose. Missing chronic and clinical specifications remain unknown.
 
-*What it feeds into:* later wireless microimplant work such as [Neurograins](/devices/25-neurograins-wireless-microimplant-network/) uses radio-frequency links instead of ultrasound.
+## Primary sources
 
----
-
-### References
-- Seo D, Neely RM, Shen K, et al. *Wireless Recording in the Peripheral Nervous System with Ultrasonic Neural Dust.* Neuron. 2016. <https://www.cell.com/neuron/fulltext/S0896-6273%2816%2930344-0>
-- Sanders R. *Sprinkling of neural dust opens door to electroceuticals.* Berkeley News, 3 August 2016. <https://news.berkeley.edu/2016/08/03/sprinkling-of-neural-dust-opens-door-to-electroceuticals/>
+- Seo D et al. [Wireless Recording in the Peripheral Nervous System with Ultrasonic Neural Dust, full primary paper](https://www.cell.com/neuron/fulltext/S0896-6273%2816%2930344-0), 2016.
+- Berkeley News. [Institutional report and separate miniaturization claim](https://news.berkeley.edu/2016/08/03/sprinkling-of-neural-dust-opens-door-to-electroceuticals/), 3 August 2016.
