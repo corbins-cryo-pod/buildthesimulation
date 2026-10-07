@@ -7,7 +7,7 @@ device_id: "BTSD-ACAD-0056"
 interface_class: "intracortical"
 status: "preclinical"
 last_updated: 2026-10-07
-description: "6,144-site silicon probe with 5 × 5 µm TiN contacts at 6 µm pitch and 384 simultaneous channels. Dense sampling trades recording span for waveform detail; channel selections and study results are kept separate."
+description: "6,144-site silicon probe with 5 x 5 µm TiN contacts at 6 µm pitch and 384 simultaneous channels. Dense sampling trades recording span for waveform detail; channel selections and study results are kept separate."
 modality: "Intracortical"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12981004/"
 tags: ["Neuropixels Ultra", "intracortical", "recording", "silicon", "TiN", "University of Washington", "Allen Institute", "imec", "academic", "preclinical"]
@@ -16,45 +16,119 @@ draft: false
 
 # Neuropixels Ultra
 
-Ye and colleagues' 2025 paper describes Neuropixels Ultra, a silicon probe designed for much denser extracellular sampling than earlier Neuropixels probes. The primary author affiliations include University of Washington, Allen Institute, Columbia, Janelia and imec, alongside other international collaborators. It is a distinct hardware configuration, not a software resolution upgrade to a standard probe.
+Ye and colleagues' 2025 Neuron paper describes Neuropixels Ultra (NP Ultra), a silicon probe with much denser sites than earlier Neuropixels probes. Each value is scoped to NP Ultra or to the named experiment. Unreported means not established by the reviewed primary paper.
 
-## Published site layout
+## Identity
 
-| Feature | Reported specification |
+| Field | Value and source scope |
 | --- | --- |
-| Physical sites | 6,144, on a 768 × 8 grid |
-| Recording-site material and size | Titanium nitride, 5 × 5 µm |
-| Gap / center pitch | 1 µm gap; 6 µm center-to-center spacing |
-| Total dense site span | Approximately 4.6 mm × 48 µm |
-| Simultaneous readout | 384 channels selected from the available sites |
-| Dense readout configuration | 48 × 8 sites |
-| Longer configurations | 96 × 4, 192 × 2 and 384 × 1 |
-| Mechanical form factor | Paper states shank dimensions and base match Neuropixels 1.0 |
+| Device | Neuropixels Ultra (NP Ultra), 6,144-site dense silicon probe |
+| Manufacturer | Developed with imec; authors from University of Washington, Allen Institute, Columbia, Janelia and others. Not a commercial release specification |
+| Interface class | Penetrating silicon CMOS recording probe |
+| Origin | Ye and colleagues; Neuron, online September 30, 2025, issue December 3, 2025. Preprint on bioRxiv April 10, 2024 |
+| First demonstrated | 2025 paper |
+| First human implant | Unreported. The paper's references to human Neuropixels recordings concern other work, not NP Ultra |
+| Species studied | Mouse (acute head-fixed), macaque monkey, lizard and electric fish recordings. No chronic implants reported in the reviewed text |
+| Regulatory status | Preclinical research tool. No human clearance established |
+| Function | Extracellular recording with dense sampling for yield, small-footprint waveforms and interneuron classification |
+| Target tissue | Mouse visual cortex plus diverse mouse regions (cortex, striatum, thalamus, midbrain, cerebellum, medulla), monkey visual cortex, lizard medial cortex and electric fish cerebellum |
 
-The available physical sites are not 6,144 simultaneous channels. Site selection uses grouped switching because multiple sites share switch memory. Different configurations can be placed at different positions along the total span.
+## Geometry and architecture
 
-## Density versus coverage
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Penetrating silicon shank with dense TiN site field, switchable to 384 channels |
+| Array layout | 768 x 8 grid of sites with 6 µm center pitch; readout configurations 48 x 8, 96 x 4, 192 x 2 and 384 x 1 |
+| Electrode count | 6,144 physical sites; 384 simultaneously recorded channels selected from them |
+| Pitch | 6 µm center to center with 1 µm gap between 5 x 5 µm sites |
+| Electrode lengths | Unreported in the reviewed text. Paper states the form factor (shank dimensions and base) is identical to NP 1.0 |
+| Shank width and thickness | Identical to NP 1.0 per the paper; dimensions not restated. Dense site field about 4.6 mm x 48 µm |
+| Tip and exposed site geometry | Unreported beyond identical-to-NP 1.0 form factor. The 384 x 1 configuration spans 3,840 µm while the dense 48 x 8 configuration spans 288 µm vertically |
+| Contact coating | Titanium nitride (TiN) |
+| Insulation | Unreported in the reviewed text |
+| Insertion method | Inserted through craniotomy; mouse recordings used 1-2 mm or 2 mm craniotomies, monkey craniotomy plus durotomy, lizard 3 x 2 mm craniotomy with probe implanted 500 µm deep at about 100 µm/s |
+| Anchoring and fixation | Acute head-fixed mice with titanium headpost and cement chamber. Lizard probe lowered by up to 280 µm per day; fixation for lizard otherwise unreported |
 
-The densest 384-channel configuration covers approximately 288 µm vertically, compared with approximately 3,840 µm for the paper's Neuropixels 1.0 comparison. Selecting fewer columns allows a longer span at reduced density. The 4.6 mm total site field is not the length of every simultaneously sampled region.
+## Electrode and channel physics
 
-The paper reports higher per-site impedance and somewhat higher noise than Neuropixels 1.0. Dense sampling nevertheless improves measured waveform amplitude, spatial localization and sorting in the tested conditions. That is a trade-off, not a claim that smaller contacts always improve every recording.
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | 5 x 5 µm (25 µm2) per site, versus 144 µm2 for NP 1.0/2.0 sites |
+| Electrode material | TiN sites on silicon CMOS |
+| Impedance (with measurement frequency) | About 500 kΩ estimated from test structures for the 25 µm2 sites versus about 100 kΩ for NP 1.0/2.0 sites. Measurement frequency not stated in the reviewed text |
+| Noise floor or SNR | Saline noise slightly higher than NP 1.0 (small but significant RMS difference). In vivo median-absolute-deviation noise 20% ± 2% higher than NP 1.0. Modeled electrode noise about doubles but total recording noise rises 23% in saline and 32% in brain tissue; NP 1.0 amplifier noise 5.4 µV RMS |
+| Recording modality | Extracellular spikes including small-footprint (under 20 µm) waveforms, axonal and dendritic signals |
+| Sampling rate | Unreported in the reviewed excerpt; uses the Neuropixels 1.0 acquisition chain via SpikeGLX |
+| Stimulation capability | Not demonstrated. Photo-artifact and light sensitivity were tested using a 200 µm core fiber in saline |
+| Charge injection limit | Unreported |
+| Reference and ground | Self-referenced single-ended configuration with ground and reference tied together. Either an external Ag wire above the skull in a Ringer's or cortex-buffer bath, or the tip reference site. Lizard used a silver wire in CSF |
 
-## Demonstrated use
+## Tissue interface and bioresponse
 
-The linked [animal recording and classification study](/applications/84-neuropixels-ultra-animal-recordings-2025/) reports mouse visual-cortex yield, small-footprint signals across regions and species, and optotagged interneuron classification. These are research results, not clinical qualification or demonstrated assistive-device control.
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Mouse, monkey, lizard and electric fish neural tissue, region-specific |
+| Insertion trauma and BBB disruption | Craniotomy required. Insertion-related injury is not quantified for NP Ultra in the reviewed text |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Acute head-fixed recordings with imposed probe motion as ground truth; chronic micromotion not tested |
+| Gliosis and encapsulation | Not assessed |
+| Neuron loss near sites | Not assessed. Muscimol control confirmed identities of small-footprint waveforms |
+| Foreign-body response mitigation | None described |
+| Typical failure modes | Higher noise from smaller sites; narrow span of 288 µm in the densest configuration; unit drift under motion; no chronic failure data |
 
-## Geometry and evidence limits
+## System architecture
 
-The contact lattice is well specified, but a complete model would also require the exact site-field origin, tip, shank and package definitions. No complete 3D model is inferred from the statement that its form factor matches Neuropixels 1.0. The contact configurations do not supply a universal acquisition channel map.
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Same CMOS base as Neuropixels 1.0 with switch memory shared among grouped sites |
+| Data path | Same acquisition path as Neuropixels 1.0 using SpikeGLX; reviewed text gives no probe-specific link rate |
+| Telemetry bandwidth | Not applicable: wired |
+| Sampling rate | Unreported in the reviewed excerpt |
+| Power | Unreported |
+| Thermal management | Unreported |
+| Packaging and hermeticity | Identical to NP 1.0 form factor; construction details unreported |
+| MRI compatibility | Unreported |
+| Surgical complexity | Craniotomy and acute head-fixed insertion; animal surgery with headplate. Human workflow not applicable |
+| Output connectors | Identical to NP 1.0 base and cable per the paper; connector specifics unreported |
 
-The paper's online publication is September 30, 2025; its issue date is December 3, 2025. These are publication dates, not separate hardware generations.
+## Performance envelope
 
-## Primary sources
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Mouse V1 visually responsive neuron yield more than 2-fold versus NP 1.0-like resampling; 1.7 times higher yield of well-isolated neurons than NP 1.0-like on average |
+| Chronic yield | Not demonstrated. Sessions lasted about 1.5 to 2 h, repeated across up to three consecutive days per animal |
+| Stability over time | Stability ratio measured under imposed slow probe motion during visual fingerprint sessions; not chronic stability |
+| Longevity | Not demonstrated. Daily sessions of about 2 h and at most three consecutive days per animal in acute studies |
+| Revision and explant experience | Not applicable: no chronic explant reported |
+| Adverse events | Unreported |
+| Notable demonstrations | Dense sampling raised amplitude, SNR and localization; small-footprint waveforms (under 20 µm) found in all four species, about 10% in mouse V1 (36/359) and monkey V1 (13/124); optotagged PV, SST and VIP interneuron classification (89%, 82%, 83% correct with balanced sampling) |
 
-- [Primary full text and author affiliations](https://pmc.ncbi.nlm.nih.gov/articles/PMC12981004/).
-- [Publisher article](https://www.cell.com/neuron/fulltext/S0896-6273(25)00665-8).
-- [Author-hosted publisher PDF, inspected for design and methods](https://www.yezhiwen.com/assets/pdf/ye2025_neuropixels_ultra.pdf).
+## Clinical and preclinical evidence
 
-## Dense-window reference model
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None |
+| Preclinical cohort | Mouse cohorts included three VGAT-ChR2-EYFP male mice aged 6 months for acute head-fixed recordings; 175 units in 3 mice and 6 sessions for muscimol footprint test; plus monkey, lizard and electric fish animals |
+| Follow-up duration | Acute sessions only; at most three consecutive days per animal |
+| Indications | Preclinical neuroscience recording, not a clinical indication |
+| Trials and registries | Animal ethics approvals per laboratory; no human registry |
+| Primary outcomes | Higher neuron yield, small-footprint detection and cell-type classification |
+| Key limitations | Smaller recording span, higher noise, acute rodent and animal data only, resampling-based comparisons for part of the yield result |
 
-The viewer shows a cropped 48 × 8 dense recording window: 384 contact faces at 6 µm center pitch, each 5 × 5 µm. It is not the entire 6,144-site probe. The 48 × 288 µm crop includes half-pitch margins; actual contact-face outer extents are 47 × 287 µm. Silicon thickness follows the [NP 1.0 manufacturer datasheet](https://www.neuropixels.org/_files/ugd/832f20_4a14406ba1204e60ae8534b09e201b49.pdf), because the Ultra paper explicitly reports identical shank form. Full shank, tip origin, switch groups, channel map and electronics are omitted. Exported site IDs are geometry labels.
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Dense 1.3 sites per µm; very high site density with one probe |
+| Limitations | Only 384 of 6,144 sites record at once, with 288 µm coverage in the densest layout; higher site impedance and noise |
+| Scaling constraints | Grouped switching shares switch memory, so not every site pattern is selectable; coverage trades directly against density |
+
+## References
+
+- Ye Z et al. [Ultra-high density electrodes improve detection, yield, and cell type identification in neuronal recordings](https://pmc.ncbi.nlm.nih.gov/articles/PMC12981004/). Neuron 2025. Publisher: [Cell Press](https://www.cell.com/neuron/fulltext/S0896-6273(25)00665-8).
+- [Author-hosted publisher PDF](https://www.yezhiwen.com/assets/pdf/ye2025_neuropixels_ultra.pdf).
+- [NP 1.0 manufacturer datasheet](https://www.neuropixels.org/_files/ugd/832f20_4a14406ba1204e60ae8534b09e201b49.pdf), used for the reference model silicon thickness only.
+
+Related: [animal recording and classification study](/applications/84-neuropixels-ultra-animal-recordings-2025/).
+
+The viewer model is a cropped 48 x 8 dense window: 384 contact faces at 6 µm center pitch, each 5 x 5 µm. It is not the whole 6,144-site probe. Full shank, tip origin, switch groups, channel map and electronics are omitted.
