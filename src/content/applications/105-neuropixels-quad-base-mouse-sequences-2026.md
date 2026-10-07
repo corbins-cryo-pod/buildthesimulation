@@ -12,6 +12,7 @@ modality: "Intracortical"
 website: "https://www.biorxiv.org/content/10.64898/2026.07.23.740388v1.full"
 tags: ["Neuropixels", "Quad Base", "mouse", "decoding", "JHU", "preprint", "preclinical"]
 devices: ["104-neuropixels-20-quad-base-probe"]
+orgs: ["42-jhu-harris-high-capacity-electrophysiology-lab"]
 draft: false
 ---
 
