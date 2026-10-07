@@ -51,4 +51,10 @@ for (const record of records.applications) {
     for (const slug of refs) assert(records[collection].some(r => r.slug === slug), `${record.file}: missing ${name} target ${slug}`);
   }
 }
+const visibleDevices = records.designs.filter(r => field(r, 'draft') !== 'true');
+const archivedNp2 = records.designs.find(r => r.slug === '36-neuropixels-2-0');
+assert.equal(field(archivedNp2, 'draft'), 'true', 'Original Neuropixels 2.0 summary must not duplicate the detailed alpha hardware in the visible catalog');
+assert(visibleDevices.some(r => r.slug === '88-neuropixels-20-alpha-probe'), 'Canonical Neuropixels 2.0 hardware must remain visible');
+assert(fs.readFileSync('astro.config.mjs', 'utf8').includes("'/devices/36-neuropixels-2-0': '/devices/88-neuropixels-20-alpha-probe/'"), 'Archived Neuropixels 2.0 route must redirect');
+console.log(`Visible hardware catalog: ${visibleDevices.length} devices; archived duplicate excluded.`);
 console.log(`Content integrity: ${records.designs.length} devices, ${records.applications.length} applications and ${records.companies.length} atlas briefs; IDs, orders, relationships and catalog links verified.`);
