@@ -30,6 +30,8 @@ This brief is separate from Rice's [Luan and Xie ultraflexible interface labs](/
 
 - [Endocisternal catheter/ME interface](/devices/120-endocisternal-catheter-me-interface/) and its [sheep study](/applications/121-endocisternal-sheep-stimulation-recording-study/). The accessible 2023 preprint details are distinguished from the 2024 published abstract and supplement.
 
+- [Self-rectifying ME metamaterial](/devices/122-self-rectifying-magnetoelectric-metamaterial/) and [rat reflex/nerve-bridge application](/applications/123-mnm-rat-reflex-severed-nerve-study/). A material-based rectifier is distinct from the microcontroller-based DOT and endocisternal platforms.
+
 ## Evidence boundary
 
 The cataloged studies demonstrate stimulation and delivery under their reported experimental conditions. Acute human motor activation is not a clinical treatment. The studies do not establish a human clinical treatment, chronic rehabilitation, a complete distributed neural-recording decoder or regulatory approval. The lab website's pain-treatment and cardiac-pacing goals remain goals unless a specific primary study supports the result.
