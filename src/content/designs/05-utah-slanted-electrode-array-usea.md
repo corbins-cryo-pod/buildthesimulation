@@ -2,12 +2,12 @@
 title: "Utah Slanted Electrode Array (USEA)"
 order: 5
 pubDate: 2026-02-03
-updatedDate: 2026-02-03
+updatedDate: 2026-10-07
 device_id: "BTSD-0005"
 interface_class: "pni"
 status: "human"
-last_updated: 2026-02-03
-description: "A penetrating intrafascicular peripheral-nerve array with 100 slanted silicon shanks for high selectivity; enables bi-directional recording/stimulation in human amputees, but with chronic tissue response and percutaneous burden."
+last_updated: 2026-10-07
+description: "Slanted silicon peripheral-nerve arrays: 100 physical needles with 96 recording/stimulation electrodes in the 2017 human study; current manufacturer options and investigational-use limits remain separate."
 modality: "Peripheral nerve"
 successRank: 7
 tags: ["BCI", "PNI", "intrafascicular", "USEA", "stimulation", "recording", "prosthetics", "sensory feedback", "peripheral nerve", "bidirectional", "regenerative", "array", "microelectrode"]
@@ -16,134 +16,70 @@ draft: false
 
 # Utah Slanted Electrode Array (USEA)
 
-> *One-line verdict:* A penetrating intrafascicular peripheral-nerve array that can achieve extremely high spatial selectivity in human nerves for both motor decoding and sensory feedback, but pays for it with insertion trauma, micromotion/fibrosis, and (in many deployments) percutaneous connector burden.
+A penetrating silicon array with unequal electrode lengths for peripheral-nerve recording and stimulation. This sheet separates current manufacturer options from the particular arrays implanted in the 2017 human study. A physical needle, a connected channel and a usable recording channel are not the same count.
 
-*Quick tags:* Recording · Stimulation · Closed-loop · Channels: 100 · Species: Human/NHP/rodent · First implanted: ~2010–2012
+## Identity and configuration
 
----
+| Property | Specification and evidence boundary |
+| --- | --- |
+| Hardware | Utah Slant / USEA silicon-array family |
+| Manufacturer | Blackrock Neurotech; the 2017 paper names Blackrock Microsystems |
+| Tissue interface | Intrafascicular peripheral nerve; penetrating |
+| Functions | Recording and electrical stimulation |
+| Published human configuration | 2017 median/ulnar-nerve research arrays, not every current order option |
+| Current labeling claim | Manufacturer describes human research under IDE; this is not general commercial approval |
 
-### Overview
+## Geometry and contacts
 
-*What it is:* A 10×10 silicon microelectrode array with *slanted* shanks of varying lengths designed to penetrate into a peripheral nerve and access signals from multiple fascicles in 3D (e.g., median/ulnar/sciatic targets in different programs).
+| Property | 2017 study hardware | Current manufacturer page |
+| --- | --- | --- |
+| Physical electrodes | 100 in a 10 × 10 grid | Overview says 100 electrodes |
+| Recording/stimulation paths | 96; four corner electrodes used as references | Specification table: 16-96 channels; overview also advertises up to 1,024 channels across multiple configurations |
+| Base | 4 × 4 mm | Customizable; no single footprint substituted here |
+| Pitch | 400 µm | 400 µm |
+| Electrode length | Approximately 0.75-1.5 mm | Overview: 0.5-1.5 mm linear grading; specification table: custom 0.75-1.5 mm |
+| Contact coatings | Do not infer one coating from generic Utah-family figures | Platinum or sputtered iridium oxide (SIROF/IrOx) |
+| Insulation | Study-specific fabrication details not extracted here | Parylene-C |
 
-*Why it matters:* USEA is one of the most clinically demonstrated high-selectivity intrafascicular PNIs and has been used to evoke large sets of finger-related percepts and to decode intended movements for prosthetic control in human amputees.
+The abstract calls the arrays "100-channel"; Methods explicitly allocates 96 electrodes for recording/stimulation and four for on-array reference. Both descriptions are preserved. The manufacturer's 100-needle overview, 16-96-channel table and up-to-1,024-channel system wording are different scopes, not one 1,024-site implant. Electrode area, exposed tip dimensions and one universal noise floor are not established by the sources inspected here.
 
-*Most comparable devices:* TIME, LIFE/tfLIFE, regenerative sieve electrodes, multi-contact cuffs.
+## Electrical and system specifications
 
----
+| Property | Specification and condition |
+| --- | --- |
+| Platinum impedance | Manufacturer: 20-800 kΩ; measurement frequency not stated on this page |
+| SIROF/IrOx impedance | Manufacturer: 1-80 kΩ; frequency not stated on this page |
+| Study impedance check | 1 kHz; electrodes at or above 500 kΩ were classified as failed for this analysis |
+| Study connection | Percutaneous wires to a custom PCB and ZIF-Clip-96 recording/stimulation connection |
+| Current connector options | Omnetics, CerePort 128/256 and custom, per manufacturer |
+| Current lead options | Manufacturer: 20-130 mm wire bundle |
+| Power and acquisition | External recording/stimulation hardware, not an autonomous wireless implant |
+| MRI labeling | Not established here; no compatibility assertion |
 
-### Spec Card Grid
+A study's failure threshold is not the manufacturer's acceptable impedance range or a universal clinical safety threshold. Connector model names do not determine electrode count. Safe charge limits, waveform limits and tissue-current density require configuration-specific instructions and evidence; none is inferred from the generic array name.
 
-### Identity
-- *Device name:* Utah Slanted Electrode Array (USEA)
-- *Canonical ID:* BTSD-0005
-- *Inventor / key authors:* Utah neuroengineering ecosystem (slanted variant of the Utah array concept); clinical translation often associated with Clark Lab / DARPA programs
-- *Org / manufacturer:* Blackrock Neurotech (commercial manufacturing for Utah-array family hardware)
-- *First demonstrated (year):* ~2005 era (varies by paper)
-- *First implanted (year):* ~2010–2012 (varies by program)
-- *Species:* human, NHP, rodent
-- *Regulatory / trial status:* human research
-- *Primary use:* recording + stimulation
-- *Primary target:* peripheral nerve fascicles (e.g., median/ulnar)
+## Tissue interface and reliability
 
----
+Nerve penetration, lead motion and the percutaneous connection are separate engineering concerns. The 2017 study tracked working channels during four/five-week implants and found different channel-loss trends across arrays. These bounded observations do not establish a standard multi-year lifetime.
 
-### Geometry & Architecture
-- *Interface type:* peripheral nerve (intrafascicular)
-- *Penetrating?:* yes
-- *Form factor:* 10×10 slanted silicon shanks
-- *Needle/shank count:* 100
-- *Needle length (mm):* ~0.5–1.5 (slanted gradient; reported ranges vary)
-- *Site spacing (µm):* 400
-- *Tip geometry:* sharpened silicon
-- *Insertion method:* pneumatic impactor
-- *Anchoring method:* nerve tissue (mechanical stability depends on local anatomy + lead management)
-- *Packaging location:* commonly percutaneous connector in classic research stacks (program-dependent)
+The current manufacturer reports more than ten years of recording in primates and six years in humans. Those are manufacturer claims about its broader experience, not the follow-up of the two-subject 2017 paper. This sheet does not convert them into a warranty or independently audited cohort result.
 
----
+## Evidence and regulatory boundary
 
-### Electrode & Channel Physics
-- *Channel count:* 100
-- *Active sites used (vs total):* often many/all; functional yield varies by placement + chronic response
-- *Electrode material:* platinum / iridium (device-family typical)
-- *Site area (µm²):* ~200–400 (typical Utah-array class numbers; varies)
-- *Impedance @ 1 kHz:* ~100–500 kΩ (varies)
-- *Noise floor / SNR:* system-dependent
-- *Recording modality:* peripheral neural signals (CAPs and other features); some work reports finer unit-like activity depending on conditions
-- *Stimulation capability:* yes
-- *Charge injection limit / safe stim range:* not standardized in a single public spec (material + waveform dependent)
+Two subjects each received two arrays, one in the median nerve and one in the ulnar nerve. Implant duration was four weeks for S3 and five weeks for S4. The study demonstrated virtual-hand control and evoked proprioceptive/cutaneous sensations, with a one-degree-of-freedom closed-loop task in one subject. Up to 12 degrees of freedom in informal freeform decoding, five independent real-time degrees of freedom and four proportional degrees of freedom describe different tasks.
 
----
+The paper reports no observed long-term functional deficits from the implants, but the short implanted observation window does not establish long-term electrical reliability or general safety. Its abstract's up-to-131 percepts belong to the study, not a specification guaranteeing 131 percepts per implant.
 
-### Tissue Interface & Bioresponse
-- *Target tissue:* peripheral nerve fascicles
-- *BBB disruption:* N/A
-- *Vascular disruption risk:* moderate (nerve microvasculature + insertion trauma)
-- *Micromotion sensitivity:* high (nerve motion + lead forces)
-- *Gliosis / encapsulation:* fibrosis/encapsulation is a major chronic constraint
-- *Axon loss (if reported):* progressive near shanks can occur over time
-- *Foreign-body response mitigation:* limited by rigid silicon geometry; careful surgical technique and lead routing help
-- *Typical failure mode:* fibrosis/encapsulation → signal loss, shank fracture, connector/lead issues, infection risk with percutaneous components
+The manufacturer's IDE wording describes investigational human use and says teams need IDE/IRB support. No general clearance for arbitrary implantation is inferred. First-implant year, patient-wide lifetime statistics and one universal tissue-risk grade are not supplied by this sheet.
 
----
+## Model and missing specifications
 
-### System Architecture
-- *Onboard electronics:* none (electrode only)
-- *Data path:* wired
-- *Connector:* commonly percutaneous pedestal (program-dependent)
-- *Power:* external
-- *Telemetry bandwidth:* N/A
-- *Hermeticity:* system-dependent
-- *MRI compatibility:* unknown/conditional (assume no unless explicitly documented)
-- *Surgical complexity:* microsurgery + nerve dissection + impact insertion
+The site's 100-needle reference geometry is not a reconstruction of every current USEA option or the complete 2017 assembly. Exact exposed contacts, wire routing, insulation geometry and connector packaging remain outside that model. Unknown dimensions, charge limits and MRI conditions remain unknown rather than being filled with generic Utah-array numbers.
 
----
+## Primary sources
 
-### Performance Envelope
-- *Motor decoding:* finger-/DOF-level features demonstrated in some programs (task dependent)
-- *Sensory restoration:* multi-site/finger-related percept sets reported in humans
-- *Selectivity:* very high (relative to cuffs; among the highest in PNIs)
-- *Longevity (median / max):* months to years (variable; program-dependent)
-- *Stability over time:* variable; often declines with encapsulation and micromotion
-- *Revision / explant:* possible; outcomes depend on fibrosis and lead routing
-
----
-
-### Clinical / Preclinical Evidence
-- *Human subjects:* reported across multiple amputee studies/programs (counts vary)
-- *Follow-up duration:* weeks to months in some studies; longer in others (program-dependent)
-- *Indications:* prosthetic control, sensory feedback
-- *Programs:* DARPA efforts have supported some clinical translation work
-- *Primary outcomes:* decoded control + evoked percept sets
-- *Key limitations of evidence:* heterogeneous systems and reporting; many deployments are short-to-medium term and involve percutaneous hardware
-
----
-
-### Engineering Verdict
-
-*Strengths:*
-- extremely high selectivity in peripheral nerve
-- supports bi-directional interfaces (recording + stimulation)
-- strong human demonstration literature (relative to many PNIs)
-
-*Limitations / failure modes:*
-- penetrating rigid shanks → tissue disruption and chronic fibrosis
-- percutaneous connector burden in many systems
-- mechanical fragility + lead forces
-
-*Scaling constraints:*
-- nerve injury risk envelope
-- wiring/connector complexity
-- surgical complexity and repeatability
-
-*What newer designs try to fix:*
-- move to flexible intrafascicular thin-film designs (e.g., TIME)
-- cuff-based strategies for lower risk (lower selectivity)
-- regenerative scaffolds/sieves for longer-term integration
-
----
-
-### References
-- Wendelken S, et al. “Restoration of motor control and proprioceptive and cutaneous sensation in humans with prior upper-limb amputation via multiple Utah Slanted Electrode Arrays (USEAs) implanted in residual peripheral arm nerves.” *J NeuroEngineering Rehabil* (2017). PubMed: <https://pubmed.ncbi.nlm.nih.gov/29178940/> (DOI: 10.1186/s12984-017-0320-4)
-- George JA, et al. “Intuitive neuromyoelectric control of a dexterous bionic arm using a modified Kalman filter.” *J Neurosci Methods* (2020). PubMed: <https://pubmed.ncbi.nlm.nih.gov/31711883/>
-- (Add: Dhillon et al., J Neural Eng; DARPA HAPTIX program docs)
+- Blackrock Neurotech. [Utah Slant Array, current manufacturer specification and research-use descriptions](https://blackrockneurotech.com/products/slant-array/), checked 7 October 2026.
+- Wendelken S et al. [2017 human study, full primary Methods and results](https://jneuroengrehab.biomedcentral.com/articles/10.1186/s12984-017-0320-4).
+- [Same primary manuscript in PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC5702130/).
+- [Primary indexed abstract](https://pubmed.ncbi.nlm.nih.gov/29178940/).
+- George JA et al. [2020 decoding study cited in the earlier sheet](https://pubmed.ncbi.nlm.nih.gov/31711883/). Its different protocol is not used to fill the 2017 hardware configuration.
