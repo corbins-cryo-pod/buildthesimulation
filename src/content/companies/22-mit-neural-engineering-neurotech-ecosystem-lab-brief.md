@@ -51,3 +51,7 @@ Representative sources:
 ### MEND material interface, 2024
 
 The [magnetoelectric nanodisc interface](/devices/132-mend-magnetoelectric-nanodiscs-2024/) is a primary-paper-grounded MIT-linked entry, with separate [VTA reward/optical studies](/applications/133-mend-vta-reward-and-photometry-2024/) and [STN rotational behavior](/applications/134-mend-stn-mouse-rotation-2024/). It is injected material without an ASIC or neural-recording radio. Modulation and behavior do not need transgenes; optical verification uses AAV-GCaMP6s. [Primary paper](https://www.nature.com/articles/s41565-024-01798-9) grounds the authors and MIT affiliations, with Friedrich-Alexander University collaborators listed separately.
+
+### Thermally drawn neural fibers, 2015
+
+Canales, Jia and colleagues reported distinct [all-polymer multimodal fibers](/devices/143-mit-drawn-multimodal-polymer-fiber-2015/) and [tin multielectrode fibers](/devices/144-mit-drawn-tin-multielectrode-fiber-2015/). The [mouse study overview](/applications/145-mit-fiber-mouse-recording-optogenetics-2015/) separates two-month integrated function from three-month histology. [Publisher paper](https://www.nature.com/articles/nbt.3093) and its supplement identify MIT materials science, RLE and Simons Center affiliations. These are not the later hydrogel-hybrid assembly.
