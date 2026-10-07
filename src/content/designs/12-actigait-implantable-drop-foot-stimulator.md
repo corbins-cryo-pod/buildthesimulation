@@ -17,100 +17,114 @@ draft: false
 
 # ActiGait implanted drop-foot stimulator (common peroneal nerve multi-contact cuff)
 
-> *One-line verdict:* A hybrid implanted-plus-external FES system that uses a multi-contact cuff on the common peroneal nerve to selectively restore ankle dorsiflexion during gait.
+Every field follows the shared implant-device template. Values belong to a named configuration or study; unreported means the reviewed sources do not establish the value. Family-wide and deployment-specific evidence are kept separate.
 
-*Quick tags:* Stimulation · Channels: multi-contact cuff (often described as 4-channel control) · Species: Human
+## Identity
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Device | ActiGait partly implantable drop-foot stimulation system |
+| Manufacturer | ActiGait brand in Martin clinical studies; historical manufacturer not inferred from current ownership |
+| Interface class | Extraneural peroneal nerve cuff with implanted stimulator and external gait control |
+| Origin | Reviewed clinical studies in Dresden; not an invention-priority claim |
+| First demonstrated | Unreported in reviewed sources |
+| First human implant | Unreported in reviewed sources |
+| Species studied | Human stroke and multiple sclerosis cohorts, Martin 2016/36-month study |
+| Regulatory status | Clinical study evidence; present market availability and current authorization unreported |
+| Function | Gait-triggered stimulation for dorsiflexion |
+| Target tissue | Common peroneal nerve motor branch |
 
-### Overview
+## Geometry and architecture
 
-*What it is:* ActiGait is a partly implantable peroneal nerve stimulation system: an implanted stimulator body connected to a nerve cuff electrode wrapped around the common peroneal nerve, plus external components used to trigger stimulation patterns across gait phases.
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Non-penetrating peripheral nerve cuff |
+| Array layout | Four stimulation channels positioned at 90° around circumference, 36-month study |
+| Electrode count | Four stimulation channels, 36-month study; physical contact construction not separately reported |
+| Pitch | 90° angular channel arrangement; linear pitch unreported |
+| Electrode lengths | Not applicable to cortical shanks; cuff length unreported |
+| Shank width and thickness | Not applicable; cuff wall dimensions unreported |
+| Tip and exposed site geometry | Unreported in reviewed sources |
+| Contact coating | Unreported in reviewed sources |
+| Insulation | Unreported in reviewed sources |
+| Insertion method | Two-incision surgery under general anesthesia; nerve exposed for 4 cm above tibial plateau, cuff placed around motor branch, 36-month study |
+| Anchoring and fixation | Stimulator sutured to thigh muscle fascia, lead tunneled subcutaneously over biceps tendon; cuff closed around nerve, 36-month study |
 
-*Why it matters:* It is a concrete, real-world example where cuff contact geometry + multi-channel programming yields functional selectivity (recruitment shaping) in a packaged clinical neuroprosthesis.
+## Electrode and channel physics
 
-*Most comparable devices:* surface FES drop-foot systems (non-implant); other implantable peroneal nerve stimulators.
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in reviewed sources |
+| Electrode material | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Noise floor or SNR | Unreported in reviewed sources |
+| Recording modality | Not applicable to described stimulation-only use |
+| Sampling rate | Not applicable to passive cuff; heel-switch control is separate |
+| Stimulation capability | Four selectable stimulation channels; patient-specific settings in Table 1 of 36-month study, not a universal safety envelope |
+| Charge injection limit | Unreported in reviewed sources |
+| Reference and ground | Unreported in reviewed sources |
 
----
+## Tissue interface and bioresponse
 
-### Spec Card Grid
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Peroneal nerve surface |
+| Insertion trauma and BBB disruption | BBB: not applicable; nerve surgically exposed and cuffed. Martin 2016 reports nerve injury in two patients |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Unreported in reviewed sources |
+| Gliosis and encapsulation | Peripheral interface; quantitative fibrosis/histology unreported in audited studies |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Unreported in reviewed sources |
+| Typical failure modes | Martin 2016: nerve injury requiring cuff repositioning and infection requiring system removal; later study also notes heel-switch malfunction |
 
-### Identity
-- *Device name:* ActiGait implanted drop-foot stimulator
-- *Canonical ID:* BTSD-PNI-0002
-- *Org / manufacturer:* ActiGait is a commercial system (manufacturer/branding varies by era and region in publications and clinical materials)
-- *First demonstrated (year):* clinical studies published in the 2000s–2010s
-- *First implanted (year):* mid-2000s era (reported)
-- *Species:* human
-- *Regulatory / trial status:* used clinically in Europe in multiple cohorts; evidence includes prospective studies
-- *Primary use:* stimulation (FES)
-- *Primary target:* common peroneal (fibular) nerve, proximal to bifurcation
+## System architecture
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Implanted stimulator body in thigh connected by cable to cuff |
+| Data path | External heel switch sends radiofrequency signal to external control unit; antenna sends power/control to implanted stimulator, 36-month study |
+| Telemetry bandwidth | Unreported in reviewed sources |
+| Sampling rate | Not applicable to described neural recording; stimulation timing patient-specific |
+| Power | External control unit transfers energy via external antenna to implant; 36-month study |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | Subcutaneous stimulator and lead; hermetic qualification unreported |
+| MRI compatibility | Unreported in reviewed sources; preoperative MRI is not evidence of post-implant MR safety |
+| Surgical complexity | General anesthesia, two incisions, nerve dissection and thigh stimulator placement |
+| Output connectors | Internal electrode cable; external wireless heel-switch/control chain, connector dimensions unreported |
 
-### Geometry & Architecture
-- *Interface type:* peripheral nerve cuff (multi-contact, multi-channel stimulation)
-- *Penetrating?:* no
-- *Form factor:* implanted stimulator body + cable + cuff electrode; plus external trigger/controller
-- *Array layout:* multi-contact cuff enabling multiple stimulation “channels” around the nerve (exact grouping is implementation-specific)
-- *Footprint (mm):* not consistently reported in open clinical outcomes papers
-- *Insertion method:* surgical placement of cuff around common peroneal nerve proximal to bifurcation; implant body placement in thigh
-- *Anchoring method:* cuff placement + cable routing/strain relief
-- *Packaging location:* hybrid (implanted stimulator + cuff; external controller/trigger)
+## Performance envelope
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Unreported in reviewed sources |
+| Chronic yield | Unreported in reviewed sources |
+| Stability over time | 36-month study reports maintained gait benefit; not channel-yield or hardware reliability rate |
+| Longevity | 36 months follow-up in later study; not maximum service life |
+| Revision and explant experience | Martin 2016: two cuff repositionings for nerve injury and one system removal for wound infection among 27 patients |
+| Adverse events | Martin 2016 also reports one delayed wound healing; later study notes heel-switch malfunction |
+| Notable demonstrations | Martin 2016: 20 m walk time 33.9 to 17.9 seconds, six-minute distance 196 to 401 m; cohort averages, not guaranteed benefit |
 
-### Electrode & Channel Physics
-- *Channel count:* reported as multi-channel; often described as 4-channel functional control (implementation-dependent)
-- *Active sites used (vs total):* multi-contact cuff (some reports describe ~12 contacts; confirm per specific publication)
-- *Electrode material:* not pinned here
-- *Recording modality:* N/A
-- *Stimulation capability:* yes
+## Clinical and preclinical evidence
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | 2016: 27 stroke patients; later study: 33 total, 27 stroke and six MS. Cohorts overlap, do not add as unique people |
+| Preclinical cohort | Unreported in reviewed sources |
+| Follow-up duration | Later study evaluates baseline and 36 months |
+| Indications | Central drop foot after stroke or MS with response to surface stimulation |
+| Trials and registries | Prospective clinical studies; registry identifier unreported in audited sources |
+| Primary outcomes | Gait speed, endurance, timed up-and-go and quality of life |
+| Key limitations | Selected surface-stimulation responders; small uncontrolled cohorts; current product status not established |
 
-### Tissue Interface & Bioresponse
-- *Target tissue:* extraneural cuff on peroneal nerve trunk
-- *Vascular disruption risk:* low–moderate (surgical dissection; compression risk if misfit)
-- *Micromotion sensitivity:* low–moderate (strain relief important)
-- *Encapsulation:* expected; long-term cohorts exist
-- *Typical failure mode:* hardware issues, infection, threshold drift/selectivity changes, revision
+## Engineering tradeoffs
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Selective gait-timed peroneal nerve stimulation with human follow-up |
+| Limitations | Implant surgery and external heel-switch/antenna burden; revision and infection documented |
+| Scaling constraints | Four-channel gait-focused system; no high-density scaling claim in reviewed studies |
 
-### System Architecture
-- *Onboard electronics:* stimulation in implanted body; none in cuff
-- *Control path:* external trigger/controller coordinates stimulation timing (gait-phase)
-- *Power:* hybrid architecture (model-dependent)
-- *MRI compatibility:* model-specific
+## References
 
----
-
-### Performance Envelope
-- *Typical yield (acute):* selective dorsiflexion recruitment via programming
-- *Typical yield (chronic):* long-term gait improvements reported across cohorts
-- *Revision / explant:* occurs in real-world cohorts (rates vary)
-
----
-
-### Clinical / Preclinical Evidence
-- *Evidence base:* prospective cohort data in central drop foot (e.g., post-stroke)
-- *Primary outcomes:* gait speed/endurance, functional dorsiflexion, usability
-- *Key limitations of evidence:* mixed etiologies and heterogeneous rehab protocols
-
----
-
-### Engineering Verdict
-
-*Strengths:*
-- multi-contact cuff enables functional selectivity for gait
-- reduces daily placement burden vs surface FES
-
-*Limitations / failure modes:*
-- requires surgery and implanted hardware maintenance
-- selectivity depends on nerve anatomy + cuff placement
-
----
-
-### References
-- Martin KD, et al. *Restoration of ankle movements with the ActiGait implantable drop foot stimulator: a safe and reliable treatment option for permanent central leg palsy.* J Neurosurg. 2016;124(1):70–76. doi: 10.3171/2014.12.JNS142110. PubMed: <https://pubmed.ncbi.nlm.nih.gov/26207599/>
+- Martin et al. 2016. [Restoration of ankle movements with the ActiGait implantable drop foot stimulator](https://pubmed.ncbi.nlm.nih.gov/26207599/). Clinical abstract, 27-patient cohort.
+- [ActiGait 36-month clinical follow-up](https://pmc.ncbi.nlm.nih.gov/articles/PMC7790182/). Full device description, surgery and overlapping 33-patient cohort.
