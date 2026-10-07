@@ -2,149 +2,61 @@
 title: "Utah Microelectrode Array (UEA)"
 order: 1
 pubDate: 2026-02-03
-updatedDate: 2026-02-03
+updatedDate: 2026-10-07
 device_id: "BTSD-0001"
 interface_class: "intracortical"
 status: "human"
-last_updated: 2026-02-03
-description: "A 10×10 silicon intracortical microelectrode array (typically 96 wired channels): excellent spikes early, but challenging chronic stability."
+last_updated: 2026-10-07
+description: "Silicon penetrating arrays with 400 µm electrode pitch. Separates the Utah research family from the 100-electrode, 96-connected NeuroPort configuration and records conflicting manufacturer counts."
 modality: "Intracortical"
 successRank: 2
-website: "https://blackrockneurotech.com/"
-tags: ["BCI", "intracortical", "penetrating", "microelectrode array", "Utah Array", "UEA", "cortex", "recording", "stimulation", "bidirectional", "array", "microelectrode"]
+website: "https://blackrockneurotech.com/products/utah-array/"
+tags: ["BCI", "intracortical", "Utah array", "UEA", "NeuroPort", "silicon", "recording", "stimulation", "human"]
 draft: false
 ---
 
 # Utah Microelectrode Array (UEA)
 
-> *One-line verdict:* A rigid silicon intracortical microelectrode array that delivers high-quality spikes early, but pays a chronic penalty from penetration trauma, micromotion mismatch, and gliosis-driven signal loss.
+A silicon array of penetrating electrodes for recording cortical neural activity. The Utah research family and the NeuroPort clinical product share an array architecture, but their configurations, labeling and permitted uses are not interchangeable.
 
-*Quick tags:* Recording · Stimulation · Closed-loop (system-dependent) · Channels: 96–128 · Species: Human/NHP/rodent · First implanted: ~1998
+For the early manufacturing geometry and commercial lineage, see [Utah array origins](/devices/59-utah-array-origins/). The [BrainGate pilot](/applications/37-braingate-pilot-2006/) used a 96-microelectrode sensor for a human neural cursor and device control.
 
----
+## Published geometry
 
-### Overview
+| Field | Source and configuration |
+| --- | --- |
+| Electrode pitch | 400 µm, current Utah and NeuroPort product pages |
+| Utah research lengths | 0.5 to 1.5 mm, current product page |
+| NeuroPort lengths | 1.0 or 1.5 mm, current product page and April 2022 IFU |
+| NeuroPort layout | 10 x 10, current product page |
+| NeuroPort electrode count | 100 physical electrodes, 96 connected to the percutaneous connector, April 2022 IFU |
+| Utah substrate | 4 x 4 mm footprint and 0.2 mm thickness, current Utah FAQ |
+| Tip coatings | Platinum or sputtered iridium oxide film (SIROF), current product pages |
+| NeuroPort wire bundle | 13 cm long, 0.55 mm wide, current product page |
 
-*What it is:* The Utah array is a 10×10 bed of silicon shanks inserted into cortex (often motor cortex). It is typically wired out to external amplifiers/recorders via a percutaneous connector in many classic research deployments.
+The manufacturer does not give one consistent electrode count for the whole Utah family. Its current overview says "up to 96 electrodes per array"; the FAQ says "up to 128", "100 - 128" microneedles and "96 - 128" electrodes. Those figures are preserved rather than treated as the same configuration. Connector names such as CerePort 128 do not, by themselves, establish the number of connected recording sites.
 
-*Why it matters:* It is the workhorse design behind a large fraction of landmark intracortical human BCI results (cursor control, typing, robotic arm control), and it defines the “spike-first” performance baseline.
+The [1991 manufacturing geometry](/devices/59-utah-array-origins/) describes a 4.2 mm substrate. That is historical geometry, not a replacement for the current manufacturer's 4 mm FAQ figure.
 
-*Most comparable devices:* microwire bundles, other penetrating intracortical arrays, flexible thread-based intracortical systems.
+## Recording and stimulation
 
----
+The Utah research page describes recording and stimulation. NeuroPort labeling needs its own distinction: the April 2022 NeuroPort Electrode IFU lists temporary recording and monitoring for less than 30 days, and says this recording device should not be used in applications involving stimulation. The current NeuroPort marketing page describes recording and stimulation. This entry does not erase that conflict or treat a marketing page as clinical authorization. Long-term research use and individual clinical protocols are separate from the IFU's labeled use.
 
-### Spec Card Grid
+The NeuroPort product page lists platinum impedance of 100 to 800 kΩ and SIROF impedance of at most 50 kΩ at 1 kHz. The 2022 IFU lists 100 to 800 kΩ for its platinum configurations and 1 to 80 kΩ for its iridium-oxide configurations. These are source- and configuration-specific figures, not one generic Utah impedance range.
 
-### Identity
-- *Device name:* Utah Microelectrode Array (UEA)
-- *Canonical ID:* BTSD-0001
-- *Inventor / key authors:* Richard Normann (University of Utah)
-- *Org / manufacturer:* Blackrock Neurotech (modern manufacturing)
-- *First demonstrated (year):* ~1992 (prototype)
-- *First implanted (year):* ~1998 (human)
-- *Species:* Human, NHP, rodent
-- *Regulatory / trial status:* Human research (IDE)
-- *Primary use:* Recording + stimulation
-- *Primary target:* Motor cortex (common), other cortical targets
+## Long-term evidence and failures
 
----
+The [2013 retrospective failure study](/applications/70-utah-array-failure-analysis-barrese-2013/) followed 78 arrays in 27 rhesus macaques. Recording duration ranged from 0 to 2,104 days, with a median of 182 days across all arrays. Sixty-two failed completely; nine experiments ended electively and seven were still active at study close. Connector failures, meningeal reactions and insulation degradation were important findings. These are cohort results, not a service-life warranty or a direct estimate of modern human implant survival.
 
-### Geometry & Architecture
-- *Interface type:* Intracortical
-- *Penetrating?:* yes
-- *Form factor:* shank array (silicon)
-- *Array layout:* 10×10 needle bed
-- *Footprint (mm):* ~4 × 4
-- *Insertion depth (mm):* ~1.0–1.5 (typical human motor cortex)
-- *Shank / lead dimensions:* shank width ~80 µm (length above)
-- *Site spacing (µm):* 400
-- *Tip geometry:* sharpened silicon
-- *Insertion method:* pneumatic impactor
-- *Anchoring method:* percutaneous pedestal / skull-mounted connector (system-dependent)
-- *Packaging location:* often percutaneous in classic research stacks
+The current NeuroPort page claims recording and stimulation for more than eight years in one patient. That manufacturer claim is not the same evidence as the historical macaque cohort. The older study's approximately eight-year complete-signal-loss estimate was a prediction from trends, not an observed eight-year survival result.
 
----
+## Model limits
 
-### Electrode & Channel Physics
-- *Channel count:* 96–128 (typical wired)
-- *Active sites used (vs total):* typically 96 recording channels in many deployed arrays
-- *Electrode material:* platinum / iridium
-- *Site area (µm²):* ~200–400
-- *Impedance @ 1 kHz:* ~100–500 kΩ
-- *Noise floor / SNR:* varies by system; spikes are often strong acutely
-- *Recording modality:* spikes + LFP
-- *Stimulation capability:* yes
-- *Charge injection limit / safe stim range:* system- and electrode-dependent (often not reported uniformly)
+The site's Utah model is a reference array geometry, not a reconstruction of every sold configuration or a clinical implant assembly. The sources above do not specify a complete current shank profile, tip exposure geometry or every packaging component. No new geometry is inferred here.
 
----
+## Sources
 
-### Tissue Interface & Bioresponse
-- *Target tissue:* cortex
-- *BBB disruption:* high (penetrating)
-- *Vascular disruption risk:* moderate–high (depends on placement)
-- *Micromotion sensitivity:* high (rigid silicon vs soft brain)
-- *Gliosis / encapsulation:* commonly observed in chronic implants
-- *Neuron loss (if reported):* often reported as substantial within ~100 µm over time
-- *Foreign-body response mitigation:* coatings/material variants exist, but core rigidity remains
-- *Typical failure mode:* gradual channel loss / encapsulation, infections related to percutaneous components, connector issues
-
----
-
-### System Architecture
-- *Onboard electronics:* none on the array (classic)
-- *Data path:* tethered / percutaneous in many research systems
-- *Telemetry bandwidth:* N/A (tethered)
-- *Sampling rate:* system-dependent
-- *Power:* external
-- *Thermal management:* external (classic)
-- *Hermeticity:* percutaneous connector systems vary
-- *MRI compatibility:* generally no/unknown unless explicitly specified for a given configuration
-- *Surgical complexity:* craniotomy + insertion tooling
-
----
-
-### Performance Envelope
-- *Typical yield (acute):* high (spike yield commonly strong early)
-- *Typical yield (chronic):* variable; declines over months
-- *Stability over time:* often 6–36 months of “good signals” reported in many programs (context-dependent)
-- *Longevity (median / max):* variable (context-dependent)
-- *Revision / explant:* explantable; revision surgeries not uncommon in long studies
-- *Adverse events (high-level):* depends on protocol; percutaneous infection risk exists
-- *Notable demos / tasks:* cursor control, typing, robotic arm control
-
----
-
-### Clinical / Preclinical Evidence
-- *N implanted subjects / animals:* >30 humans reported across programs (order-of-magnitude)
-- *Follow-up duration:* months to years in research cohorts
-- *Indications:* paralysis, ALS, stroke (research)
-- *Trial registry links:* varies by program (to add)
-- *Primary outcomes:* communication/control task performance
-- *Key limitations of evidence:* heterogeneous hardware stacks and reporting; chronic performance varies widely
-
----
-
-### Engineering Verdict
-
-*Strengths:*
-- strong spike recordings early
-- mature ecosystem across decades of research
-
-*Limitations / failure modes:*
-- rigid penetrating shanks + micromotion drive chronic signal loss
-- percutaneous connectors introduce infection/maintenance burden
-
-*Scaling constraints:*
-- wiring/connector complexity
-- chronic biology (gliosis/encapsulation)
-- surgery time and placement constraints
-
-*What newer designs try to fix:*
-- mechanical mismatch + micromotion
-- percutaneous connector infection route
-- high-channel wiring burden
-
----
-
-### References
-- (Add primary Normann + chronic response + BrainGate methods papers here)
+- Blackrock Neurotech. [Utah Array, current product page](https://blackrockneurotech.com/products/utah-array/). Read 7 October 2026.
+- Blackrock Neurotech. [NeuroPort Electrode 96, current product page](https://blackrockneurotech.com/products/neuroport-electrode/). Read 7 October 2026.
+- Blackrock Microsystems. [NeuroPort Electrode IFU, revision 3.00, April 2022](https://blackrockneurotech.com/wp-content/uploads/2023/04/LB-0612_NeuroPort_Array_IFU.pdf).
+- Barrese JC et al. [Failure mode analysis of silicon-based intracortical microelectrode arrays in non-human primates](https://pubmed.ncbi.nlm.nih.gov/24216311/). Journal of Neural Engineering, 2013.
