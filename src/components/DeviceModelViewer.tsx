@@ -94,6 +94,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
         // The Neuropixels shank is 70 µm wide and 10 mm long, so whole-shank orthogonal views are a hairline. Crop to the lowest 1.4 mm instead.
         if (model.kind === 'neuropixels' && (next === 'front' || next === 'side')) { target.set(0, 0, 0.75); distance = 1.6; }
         if (isTip) { target.set(0, 0, model.length - 0.28); distance = 0.9; direction.set(0, -1, 0); }
+        if (next === 'detail' && model.kind === 'carbon-row') { target.fromArray(sites[4].positionMm); direction.set(0, -0.35, 1).normalize(); distance = 0.08; }
         if (next === 'detail' && model.kind === 'connexus') { target.set(0, 0, 1.15); distance = 2.8; }
         if (next === 'detail' && model.kind === 'stentrode') {
           const site = sites[8]; target.fromArray(site.positionMm);
@@ -143,7 +144,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
 
   if (!model) return null;
   return <section class="device-model" id="model-3d" aria-label="3D device geometry">
-    <div class="model-heading"><span class="model-kicker">3D GEOMETRY · REFERENCE MODEL</span><h3>{model.name}</h3><p>Electrode-bearing structure · dimensions in millimeters</p></div>
+    <div class="model-heading"><span class="model-kicker">3D GEOMETRY · REFERENCE MODEL</span><h3>{model.name}</h3><p>{model.kind === 'chip-envelope' ? 'Package envelope only' : 'Electrode-bearing structure'} · dimensions in millimeters</p></div>
     <div ref={mount} class="model-canvas" />
     <p class="model-status" role="status">{status}</p>
     <div class="model-controls" aria-label="Model controls">
@@ -153,12 +154,12 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       {model.kind === 'stentrode' && <button disabled={!ready} onClick={() => api.current?.setView('end')}>End-on</button>}
       {['connexus', 'neuralink'].includes(model.kind) && <button disabled={!ready} onClick={() => api.current?.setView('end')}>{model.kind === 'connexus' ? 'Electrode face' : 'Top view'}</button>}
       {model.kind === 'neuralink' && <button disabled={!ready} onClick={() => api.current?.setView('thread')}>Thread detail</button>}
-      {['connexus', 'neuralink', 'stentrode'].includes(model.kind) && <button disabled={!ready} onClick={() => api.current?.setView('detail')}>{model.kind === 'connexus' ? 'Microwire detail' : 'Contact detail'}</button>}
+      {['connexus', 'neuralink', 'stentrode', 'carbon-row'].includes(model.kind) && <button disabled={!ready} onClick={() => api.current?.setView('detail')}>{model.kind === 'connexus' ? 'Microwire detail' : 'Contact detail'}</button>}
       {model.kind === 'neuropixels' && <button disabled={!ready} onClick={() => api.current?.setView('oblique')}>Full shank</button>}
       {model.kind === 'neuropixels' && <button disabled={!ready} onClick={() => api.current?.setView('tip')}>Tip detail</button>}
       <button disabled={!ready} onClick={() => api.current?.zoom(0.7)} aria-label="Zoom in">Zoom +</button>
       <button disabled={!ready} onClick={() => api.current?.zoom(1.4)} aria-label="Zoom out">Zoom −</button>
-      <button disabled={!ready} aria-pressed={onlyContacts} onClick={() => { const value = !onlyContacts; setOnlyContacts(value); api.current?.contacts(value); }}>Contacts only</button>
+      <button disabled={!ready || model.physicalSites === 0} aria-pressed={onlyContacts} onClick={() => { const value = !onlyContacts; setOnlyContacts(value); api.current?.contacts(value); }}>Contacts only</button>
     </div>
     <div class="model-specs">{model.specs.map(([label, value]) => <div key={label}><span>{label}</span><strong>{value}</strong></div>)}</div>
     <p class="model-note"><strong>Model fidelity.</strong> {model.notes}</p>
