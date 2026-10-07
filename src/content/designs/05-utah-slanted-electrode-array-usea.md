@@ -2,11 +2,11 @@
 title: "Utah Slanted Electrode Array (USEA)"
 order: 5
 pubDate: 2026-02-03
-updatedDate: 2026-02-03
+updatedDate: 2026-10-07
 device_id: "BTSD-0005"
 interface_class: "pni"
 status: "human"
-last_updated: 2026-02-03
+last_updated: 2026-10-07
 description: "Slanted silicon peripheral-nerve arrays: 100 physical needles with 96 recording/stimulation electrodes in the 2017 human study; current manufacturer options and investigational-use limits remain separate."
 modality: "Peripheral nerve"
 successRank: 7
