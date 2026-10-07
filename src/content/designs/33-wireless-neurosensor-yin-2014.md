@@ -19,6 +19,25 @@ draft: false
 
 An external, head-mounted recording transmitter connected to implanted electrodes. It frees the animal from a cable to the acquisition equipment, but the transmitter itself is not a fully implanted package. The paper explicitly distinguishes this platform from the [2013 subcutaneous Brown implant](/devices/32-brown-implantable-wireless-neural-interface-borton/).
 
+## Core interface specifications
+
+The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values remain unreported; inapplicable fields are marked. Configuration-specific details and limits follow below.
+
+| Field | Specification and source scope |
+| --- | --- |
+| Electrode Pitch | Connected electrode-array pitch not extracted for this system; no current Utah geometry assigned backward |
+| Channel Count | 100 amplifier inputs allocated to 96 neural inputs, three accelerometer axes and one calibration reference |
+| Output Connectors | Screw-on pedestal interconnect; amplifier PCB land-grid pads matched to MEA pedestal through anisotropic conductive polymer |
+| Output Conn. dimensions L x W x H | Complete connector envelope not assigned. Interface polymer 0.3 mm thick, 15 mm diameter; whole headstage 52 × 44 × 30 mm is separate |
+| Standard Electrode Lengths | Connected electrode shank lengths not assigned from reviewed source; headstage dimensions are not shank lengths |
+| Impedance | No electrode impedance range assigned here; 2.83 µV RMS is amplifier input-referred noise, not electrode impedance |
+| Array Dimensions | Connected array footprint not assigned; external headstage 52 × 44 × 30 mm |
+| Multi-Port Options | Not a manufacturer multi-port option. Spatially distributed receivers extend wireless coverage, not intracortical electrode count |
+| Metalization | Paper discusses platinum-coated electrode safety; pedestal-interface copper LGA pads are a different component |
+| Wire Bundle Length | Electrode-to-pedestal bundle length not assigned here; wireless headstage-to-receiver link does not eliminate intracranial wires |
+| Reference and Ground | One amplifier input tied to reference for calibration; input protection references a low-impedance ground electrode. Full array reference routing not reconstructed |
+| Insulation | Static-dissipative carbon-fiber-reinforced PEEK enclosure and anisotropic conductive polymer interface; no full electrode insulation stack assigned |
+
 ## Identity and configuration
 
 | Property | Published configuration |

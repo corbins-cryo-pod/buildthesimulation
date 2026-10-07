@@ -1,9 +1,10 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
 test('normalized legacy sheets contain explicit source-specific property groups',()=>{
- for(const file of ['05-utah-slanted-electrode-array-usea','29-active-matrix-flexible-ecog-array-viventi','32-brown-implantable-wireless-neural-interface-borton']){
+ const headings={'05-utah-slanted-electrode-array-usea':['Identity','Geometry and architecture','Electrode and channel physics','Tissue interface and bioresponse','Clinical and preclinical evidence','Model limits','Primary sources'],'29-active-matrix-flexible-ecog-array-viventi':['Identity and configuration','Electrical and system specifications','Tissue interface and reliability','Evidence and regulatory boundary','Model and missing specifications','Primary sources'],'32-brown-implantable-wireless-neural-interface-borton':['Identity and configuration','Electrical and system specifications','Tissue interface and reliability','Evidence and regulatory boundary','Model and missing specifications','Primary sources']};
+ for(const [file,heads] of Object.entries(headings)){
  const text=fs.readFileSync(`src/content/designs/${file}.md`,'utf8');
- for(const heading of ['Identity and configuration','Electrical and system specifications','Tissue interface and reliability','Evidence and regulatory boundary','Model and missing specifications','Primary sources'])assert(text.includes('## '+heading),`${file}: ${heading}`);
- assert(!text.includes('Spec Card Grid'));assert(/\| Property \|/.test(text));
+ for(const heading of heads)assert(text.includes('## '+heading),`${file}: ${heading}`);
+ assert(!text.includes('Spec Card Grid'));assert(/\| Property \||\| Field \|/.test(text));
  }
 });
 test('USEA distinguishes physical needles from available recording paths',()=>{

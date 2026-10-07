@@ -48,6 +48,100 @@ The original development compared passive, active, switched and active-switched 
 
 The [2017 rodent study and durability limits](/applications/87-neuropixels-2017-rodent-recordings-limits/) separate two-probe population recordings from chronic event-rate results. The paper reports failures as well as stable recordings. These experiments do not establish a permanent human implant or clinical BCI indication.
 
+## Identity
+
+| Field | Value and source scope |
+| --- | --- |
+| Device | Neuropixels 1.0, single-shank recording probe |
+| Developer / manufacturer | imec with HHMI Janelia, Allen Institute and UCL collaboration; 2017 paper |
+| Interface class | Intracortical, penetrating silicon shank |
+| First demonstrated | 2017 publication (Jun et al.) |
+| Species studied | Rodent and other research animals; research-only device |
+| Regulatory status | Research tool; no clinical approval claimed |
+| Function | Recording only |
+| Target tissue | Cortical and deep brain structures along the shank |
+
+## Geometry and architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Penetrating single shank |
+| Shank dimensions | 10 mm long, 70 µm wide; 20 µm thick in the 2017 paper, 24 µm in the later datasheet; both retained |
+| Recording sites | 960 physical sites, 384 simultaneous channels |
+| Contact geometry | 12 x 12 µm titanium nitride, checkerboard; 16 µm column pitch, 20 µm row pitch |
+| Tip geometry | Model tip outline and 200 µm first-row offset are approximations, not manufacturer drawings |
+| Insertion method | Stereotaxic placement in research surgery |
+| Anchoring / fixation | Skull or headstage fixation in chronic preparations; configuration dependent |
+
+## Electrode and channel physics
+
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | 144 µm² nominal from 12 x 12 µm contacts |
+| Electrode material | Titanium nitride contacts |
+| Impedance | Unreported in the reviewed sources; earlier mixed-generation values were removed |
+| Noise floor | Unreported as a single figure here; the 2017 paper reports low-noise performance |
+| Recording bands | Action potential and local field potential |
+| Sampling rate | 30 kHz AP / 2.5 kHz LFP, datasheet |
+| Stimulation capability | Not applicable; recording-only probe |
+| Charge injection limit | Not applicable |
+| Reference and ground | Configuration dependent on the headstage setup |
+
+## Tissue interface and bioresponse
+
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Brain parenchyma along the insertion track |
+| Insertion trauma | Inherent to penetrating silicon shanks; quantitative values unreported in reviewed sources |
+| Micromotion sensitivity | Rigid shank; qualitative concern, quantitative data not extracted here |
+| Gliosis / encapsulation | Not extracted in this sheet |
+| Neuron loss near sites | Not extracted in this sheet |
+| Typical failure modes | Recording failures documented in the 2017 study; see the linked application entry |
+
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | On-base signal conditioning, amplification, multiplexing and digitization; the preferred design was passive switched, not one amplifier per site |
+| Data path | Wired external headstage |
+| Telemetry bandwidth | Wired; configuration dependent |
+| Sampling rate | 30 kHz AP / 2.5 kHz LFP, datasheet |
+| Power | External |
+| Thermal management | Low dissipation; specifics unreported here |
+| Packaging / hermeticity | Non-hermetic research probe |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Stereotaxic research surgery |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Large simultaneous neuronal populations reported in the 2017 paper; see the application entry |
+| Chronic yield | Durability limits and failures documented in the linked 2017 study entry |
+| Stability over time | Weeks-scale research recordings; not a lifetime implant |
+| Longevity | Not specified as an implant-lifetime figure |
+| Revision / explant experience | Not applicable to research use |
+| Adverse events | Not applicable as a clinical device |
+| Notable demonstrations | Two-probe population recordings in the 2017 study |
+
+## Clinical and preclinical evidence
+
+| Field | Value and source scope |
+| --- | --- |
+| Human use | None; research-only device |
+| Preclinical evidence | 2017 rodent study and follow-on literature |
+| Indications | Neuroscience research |
+| Trials / registries | None |
+| Key limitations | Research-only; chronic durability limited per the linked study |
+
+## Engineering tradeoffs
+
+| Aspect | Assessment |
+| --- | --- |
+| Strengths | Very high site density on one shank, on-probe conditioning and digitization, mature research ecosystem |
+| Limitations | 384 simultaneous channels against 960 sites, rigid tethered shank, research-only packaging |
+| Scaling constraints | Multiplexing and readout bandwidth, shank cross-section versus tissue displacement, chronic packaging |
+
 ## Primary sources
 
 - [Manufacturer 1.0 datasheet](https://www.neuropixels.org/_files/ugd/832f20_4a14406ba1204e60ae8534b09e201b49.pdf).

@@ -19,6 +19,25 @@ draft: false
 
 An implanted cortical-recording electronics package in a hermetic titanium enclosure, connected to a silicon microelectrode array. This is the 2013 subcutaneous, rechargeable device. It is not the later external head-mounted neurosensor.
 
+## Core interface specifications
+
+The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values remain unreported; inapplicable fields are marked. Configuration-specific details and limits follow below.
+
+| Field | Specification and source scope |
+| --- | --- |
+| Electrode Pitch | Not explicitly extracted for this connected MEA; do not substitute generic current Utah pitch |
+| Channel Count | 100 cortical sites/100-element MEA in this 2013 system |
+| Output Connectors | Custom hermetic feedthrough: 104 Pt/Ir pins, 100 connected to MEA, two reference leads, two open |
+| Output Conn. dimensions L x W x H | Feedthrough overall dimensions not reported here. Separate electronics enclosure: 56 × 42 × 9 mm, not an electrode connector footprint |
+| Standard Electrode Lengths | Paper reports 1.5 mm insertion in macaques; that surgical depth is not a complete manufacturer shank-length option list |
+| Impedance | 100-800 kΩ, manufacturer-verified at 1 kHz for the attached study MEA |
+| Array Dimensions | 10 × 10 element layout; full physical MEA footprint not assigned here |
+| Multi-Port Options | No demonstrated multi-port order option. Future flexible sensor integration is design intent |
+| Metalization | Contact-tip material not explicitly assigned here; Pt/Ir feedthrough pins and gold interconnect wires are different components |
+| Wire Bundle Length | Specific length described as matching clinical-trial assemblies, but no number given here; individual gold wires 25 µm diameter |
+| Reference and Ground | Two 25 µm diameter Pt/Ir reference wires attached to feedthrough pins; no independent ground wiring inferred |
+| Insulation | Individually insulated gold wires; Kapton interconnect overmolded in biocompatible silicone (MED-4211). No unreported shank insulation assigned |
+
 ## Identity and configuration
 
 | Property | Published configuration |
@@ -67,6 +86,8 @@ A proposed extension to 16-hour operation is development work, not achieved batt
 ## Tissue interface and reliability
 
 The implanted hermetic package removes the external percutaneous electronics connection used in other array systems, but introduces charging and enclosure constraints. The paper observed heating during charging and used active skin cooling on animals. That mitigation matters; wireless charging is not presented as automatically thermally safe.
+
+The two initial macaque experiments did not fully close the skin over the enclosure: the MEA, bundle and feedthrough were in tissue, while most of the titanium can was embedded in PMMA and left partially exposed. Fully subcutaneous swine implantation must not be turned into a claim that every reported animal had a fully enclosed implant.
 
 Four neural interfaces were implanted in the Figure 5 animals: two Yorkshire pigs and two rhesus macaques. The abstract reports stable operation during over one year of testing. This does not establish identical uninterrupted signal lifetime for every channel, animal or package.
 

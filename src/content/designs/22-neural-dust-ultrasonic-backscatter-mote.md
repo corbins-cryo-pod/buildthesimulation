@@ -19,6 +19,25 @@ draft: false
 
 A battery-free recording mote powered and interrogated by ultrasound. The 2016 paper demonstrates peripheral nerve and muscle signals in anesthetized rats, not a chronic brain implant. The implanted mote contains a piezocrystal, a transistor and a pair of recording contacts; an external transceiver supplies the acoustic link.
 
+## Core interface specifications
+
+The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values remain unreported; inapplicable fields are marked. Configuration-specific details and limits follow below.
+
+| Field | Specification and source scope |
+| --- | --- |
+| Electrode Pitch | Not a regular array pitch; two recording pads separated by 1.8 mm |
+| Channel Count | One differential recording channel per mote; two contacts are not two channels |
+| Output Connectors | No implanted wired output connector in the untethered configuration; ultrasonic backscatter to external transceiver |
+| Output Conn. dimensions L x W x H | Not applicable to implanted output connector; external transceiver connector dimensions not catalogued |
+| Standard Electrode Lengths | Not applicable: no penetrating recording shank in the 2016 peripheral mote |
+| Impedance | Electrode impedance not assigned from reviewed source; 180 µV RMS is water-tank noise, not impedance |
+| Array Dimensions | Not a planar electrode array; assembled mote approximately 0.8 × 3 × 1 mm, two 0.2 × 0.2 mm pads |
+| Multi-Port Options | Not applicable as a manufacturer multi-port option; no network capacity assigned to this single-mote demonstration |
+| Metalization | Exposed gold recording pads; gold traces and aluminum wirebonds are separate interconnect components |
+| Wire Bundle Length | No implant-to-hub bundle. Optional test lead 0.35 mm wide, 25 mm long, not a required wireless connection |
+| Reference and Ground | Differential sensing between two gold pads; no separate implanted ground/reference wire specified here |
+| Insulation | 50 µm polyimide PCB with medical-grade UV-curable epoxy protection; not a demonstrated multi-year hermetic lifetime |
+
 ## Identity and configuration
 
 | Property | Published configuration |
