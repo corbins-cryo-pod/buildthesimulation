@@ -29,7 +29,7 @@ The abstract describes recordings across more than 20 brain regions. Figure 1 d 
 
 The paper reports mean Kilosort-good yield of 1,139 ± 94 units per session, compared with 285 ±9 in an NP 2.0-like dataset. The latter is created by computationally subsampling Quad Base recordings. It is not an independently implanted, randomized standard 2.0 control cohort.
 
-Supplementary FigureS 1 distinguishes raw Kilosort units, Kilosort-good units and a stricter customized-quality group. Customized filters require more than 80% session presence, SNR greater than 1.5, mean amplitude greater than 50 µV, amplitude cutoff below 0.1 and an ISI-violation false-positive criterion. The headline Kilosort-good count should not be relabeled as the count passing every customized filter.
+Supplementary Figure S1 distinguishes raw Kilosort units, Kilosort-good units and a stricter customized-quality group. Customized filters require more than 80% session presence, SNR greater than 1.5, mean amplitude greater than 50 µV, amplitude cutoff below 0.1 and an ISI-violation false-positive criterion. The headline Kilosort-good count should not be relabeled as the count passing every customized filter.
 
 ## Task and analysis
 
@@ -44,4 +44,4 @@ Two Quad Base probes and dense sampling reduce undersampling in these preparatio
 ## Primary sources
 
 - [Primary preprint full text](https://www.biorxiv.org/content/10.64898/2026.07.23.740388v1.full).
-- [PDF, Figures 1-5, Supplementary FigureS 1 and STAR Methods](https://www.biorxiv.org/content/10.64898/2026.07.23.740388v1.full.pdf).
+- [PDF, Figures 1-5, Supplementary Figure S1 and STAR Methods](https://www.biorxiv.org/content/10.64898/2026.07.23.740388v1.full.pdf).
