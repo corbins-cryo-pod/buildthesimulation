@@ -54,3 +54,7 @@ Map coordinates are omitted; university addresses do not establish a precise lab
 - [2025 network primary manuscript](https://pmc.ncbi.nlm.nih.gov/articles/PMC12557647/).
 
 - [2024 DOT primary paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC11014439/).
+
+## Discrete two-film predecessors
+
+The [2020 PVDF headstage](/devices/128-singer-pvdf-two-film-headstage-2020/) and [fully implanted PZT package](/devices/129-singer-pzt-fully-implanted-stimulator-2020/) precede the single-film ASIC platforms. Their respective applications are [STN Parkinsonian rat rotations](/applications/130-singer-stn-parkinsonian-rat-rotation-2020/) and [MFB place preference](/applications/131-singer-mfb-rat-place-preference-2020/), with separate three-rat cohorts. [Primary paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC7818389/) grounds the Rice and UTHealth affiliations; the hardware configurations and behavioral outcomes are not merged.
