@@ -37,7 +37,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Reference and Ground | 2017: four on-array corner references plus two looped platinum wires as off-array reference and ground. Current page: "Ground Source and Selectable Reference Wires" |
 | Insulation | Current manufacturer: Parylene-C; study-specific coating stack not extracted here |
 
-## Identity and configuration
+## Identity
 
 | Property | Specification and evidence boundary |
 | --- | --- |
@@ -48,7 +48,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Published human configuration | 2017 median/ulnar-nerve research arrays, not every current order option |
 | Current labeling claim | Manufacturer describes human research under IDE; this is not general commercial approval |
 
-## Geometry and contacts
+## Geometry and architecture
 
 | Property | 2017 study hardware | Current manufacturer page |
 | --- | --- | --- |
@@ -59,10 +59,12 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Electrode length | Approximately 0.75-1.5 mm | Overview: 0.5-1.5 mm linear grading; specification table: custom 0.75-1.5 mm |
 | Contact coatings | Do not infer one coating from generic Utah-family figures | Platinum or sputtered iridium oxide (SIROF/IrOx) |
 | Insulation | Study-specific fabrication details not extracted here | Parylene-C |
+| Insertion method | Pneumatic impactor after epineurium dissection, 2017 study Methods | Configuration-dependent tooling; specifics unreported |
+| Anchoring / fixation | Wire bundle, ground and reference wires sutured to epineurium; collagen wrap secured with vascular clips, 2017 study Methods | Unreported in reviewed sources |
 
 The abstract calls the arrays "100-channel"; Methods explicitly allocates 96 electrodes for recording/stimulation and four for on-array reference. Both descriptions are preserved. The manufacturer's 100-needle overview, 16-96-channel table and up-to-1,024-channel system wording are different scopes, not one 1,024-site implant. Electrode area, exposed tip dimensions and one universal noise floor are not established by the sources inspected here.
 
-## Electrical and system specifications
+## Electrode and channel physics
 
 | Property | Specification and condition |
 | --- | --- |
@@ -73,17 +75,49 @@ The abstract calls the arrays "100-channel"; Methods explicitly allocates 96 ele
 | Current connector options | Omnetics, CerePort 128/256 and custom, per manufacturer |
 | Current lead options | Manufacturer: 20-130 mm wire bundle |
 | Power and acquisition | External recording/stimulation hardware, not an autonomous wireless implant |
+| Exposed site area | Unreported in reviewed sources; older generic ~200-400 µm² figures were removed |
+| Noise floor / SNR | System-dependent; no array-level noise specification in reviewed sources |
+| Recording modality | Intrafascicular peripheral-nerve recording; single-fiber and multi-unit selectivity claims are study-specific |
+| Stimulation capability | Yes; 2017 study used biphasic stimulation; configuration-specific waveform limits not inferred here |
+| Charge injection limit | No universal material charge limit assigned; requires configuration-specific instructions and evidence |
+| Tip geometry | Sharpened silicon; exact exposure not specified in reviewed sources |
 | MRI labeling | Not established here; no compatibility assertion |
 
 A study's failure threshold is not the manufacturer's acceptable impedance range or a universal clinical safety threshold. Connector model names do not determine electrode count. Safe charge limits, waveform limits and tissue-current density require configuration-specific instructions and evidence; none is inferred from the generic array name.
 
-## Tissue interface and reliability
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | None on the array; passive electrodes routed through percutaneous wires |
+| Data path | Percutaneous wires to a custom PCB and ZIF-Clip-96 connection, 2017 study |
+| Telemetry bandwidth | Not applicable; wired |
+| Sampling rate | Set by the external recording/stimulation system; configuration dependent |
+| Power | External |
+| Thermal management | External |
+| Packaging / hermeticity | Percutaneous research assembly, not a hermetic implant |
+| MRI compatibility | Not established; no compatibility assertion in reviewed sources |
+| Surgical complexity | Microsurgery with nerve dissection and pneumatic impact insertion, 2017 study Methods |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | 96 recording/stimulation paths per implanted array in the 2017 study configuration |
+| Chronic yield | Working channels tracked over the implants; different channel-loss trends across arrays in the two subjects |
+| Stability over time | Four-week (S3) and five-week (S4) windows in the 2017 study; no standard multi-year lifetime established |
+| Longevity | Manufacturer reports more than ten years recording in primates and six years in humans across its broader experience; not the follow-up of this study's cohort |
+| Revision / explant experience | Unreported in the reviewed sources |
+| Adverse events | No observed long-term functional deficits reported in the 2017 study window; long-term safety not established by it |
+| Notable demonstrations | Virtual-hand control and evoked proprioceptive/cutaneous sensations, 2017 human study |
+
+## Tissue interface and bioresponse
 
 Nerve penetration, lead motion and the percutaneous connection are separate engineering concerns. The 2017 study tracked working channels during four/five-week implants and found different channel-loss trends across arrays. These bounded observations do not establish a standard multi-year lifetime.
 
 The current manufacturer reports more than ten years of recording in primates and six years in humans. Those are manufacturer claims about its broader experience, not the follow-up of the two-subject 2017 paper. This sheet does not convert them into a warranty or independently audited cohort result.
 
-## Evidence and regulatory boundary
+## Clinical and preclinical evidence
 
 Two subjects each received two arrays, one in the median nerve and one in the ulnar nerve. Implant duration was four weeks for S3 and five weeks for S4. The study demonstrated virtual-hand control and evoked proprioceptive/cutaneous sensations, with a one-degree-of-freedom closed-loop task in one subject. Up to 12 degrees of freedom in informal freeform decoding, five independent real-time degrees of freedom and four proportional degrees of freedom describe different tasks.
 
@@ -91,7 +125,15 @@ The paper reports no observed long-term functional deficits from the implants, b
 
 The manufacturer's IDE wording describes investigational human use and says teams need IDE/IRB support. No general clearance for arbitrary implantation is inferred. First-implant year, patient-wide lifetime statistics and one universal tissue-risk grade are not supplied by this sheet.
 
-## Model and missing specifications
+## Engineering tradeoffs
+
+| Aspect | Assessment |
+| --- | --- |
+| Strengths | Very high intrafascicular selectivity, bidirectional recording and stimulation, demonstrated human motor decoding and sensory feedback |
+| Limitations | Insertion trauma, micromotion and fibrosis around rigid silicon needles, percutaneous connector burden, mechanical fragility under lead forces |
+| Scaling constraints | Per-channel wiring and connector complexity, nerve geometry limits on array placement, chronic tissue response |
+
+## Model limits
 
 The site's 100-needle reference geometry is not a reconstruction of every current USEA option or the complete 2017 assembly. Exact exposed contacts, wire routing, insulation geometry and connector packaging remain outside that model. Unknown dimensions, charge limits and MRI conditions remain unknown rather than being filled with generic Utah-array numbers.
 
