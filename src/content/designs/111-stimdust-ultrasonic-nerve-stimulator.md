@@ -38,7 +38,7 @@ The published reporting summary records rare erroneous decoding in identifying c
 
 The supplement's charge-balance analysis uses fitted circuit simulations as well as empirical electrode measurements. Table S2 shows that modeled peak discharge current can exceed the commanded stimulation current. Passive charge balance is not evidence of zero transient current or automatic safety as electrode area shrinks.
 
-The updated preprint also reports tissue discoloration following an erroneously long pulse in an early animal pilot. That safety signal is attributed to the preprint; the accessible published reporting summary confirms timing errors but does not describe that injury.
+The updated preprint also reports tissue discoloration following an erroneously long pulse in an animal experiment. That safety signal is attributed to the preprint; the accessible published reporting summary confirms timing errors but does not describe that injury.
 
 No chronic implanted lifetime, hermetic-package qualification or clinical efficacy is established here. The external acoustic path, available power, orientation, cuff/electrode behavior and waveform details matter.
 
