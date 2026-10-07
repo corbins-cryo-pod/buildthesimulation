@@ -25,15 +25,15 @@ The broader wire-to-chip approach overlaps with the [Stanford 2020 bundle interf
 | Component | Primary paper description |
 | --- | --- |
 | Recording wire | Gold core with glass sheath; 22-25 µm outer diameter and 1-7 µm core in the reported recordings |
-| Fabricated bundles | 100-1, 000 wires; Figure 2 shows a 1, 000-wire fabrication example |
+| Fabricated bundles | 100-1,000 wires; Figure 2 shows a 1,000-wire fabrication example |
 | Insertion tests | 200-500 wires, about 100 µm average spacing |
 | Chip-side contact | Electroplated gold bumps, about 10 µm, pressed onto conductive CMOS pixels |
 | Tissue-side preparation | 30-degree sharpening; gold/iridium-oxide electrodeposition |
 | Released wire length | Results describes the last 2 mm; Methods describes approximately 2-5 mm free. Configurations are not collapsed into one value |
-| MEA1k readout | 1, 024 selected channels from 26, 400 pixels |
-| Cheetah640CL readout | 640 × 512 pixel grid, 327, 680 amplifier inputs; full-frame rate 1.7 kHz versus up to 200 kHz for the smallest window |
+| MEA1k readout | 1,024 selected channels from 26,400 pixels |
+| Cheetah640CL readout | 640 × 512 pixel grid, 327,680 amplifier inputs; full-frame rate 1.7 kHz versus up to 200 kHz for the smallest window |
 
-One wire may contact multiple pixels. Pixel capacity is not the count of implanted wires, independent signals or neurons. Figure 3's 200-electrode connection example is not a 327, 680-electrode brain recording. Mechanical presses, reference-voltage electronics and acquisition equipment remain part of the head-fixed setup.
+One wire may contact multiple pixels. Pixel capacity is not the count of implanted wires, independent signals or neurons. Figure 3's 200-electrode connection example is not a 327,680-electrode brain recording. Mechanical presses, reference-voltage electronics and acquisition equipment remain part of the head-fixed setup.
 
 ## Noise and saturation
 
