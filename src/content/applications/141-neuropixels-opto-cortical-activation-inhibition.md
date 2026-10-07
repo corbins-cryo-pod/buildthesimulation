@@ -10,7 +10,7 @@ last_updated: 2026-10-07
 modality: "Intracortical"
 description: "Separate mouse preparations test local excitatory activation and circuit-mediated inhibition. The opsin drives inhibitory neurons; it does not directly hyperpolarize every silenced cell."
 website: "https://www.nature.com/articles/s41592-026-03076-z"
-orgs: ["46-allen-ucl-neuropixels-opto-collaboration"]
+orgs: ["46-allen-ucl-neuropixels-opto-collaboration", "50-ucl-carandini-lab", "51-imec"]
 devices: ["107-neuropixels-opto-photonic-prototype"]
 tags: ["Neuropixels Opto", "photonics", "optogenetics", "Allen Institute", "UCL", "IMEC", "prototype"]
 draft: false
@@ -44,7 +44,7 @@ ChrimsonR depolarizes cells that express it. The reduction in other cells' activ
 
 Both assays rely on genetic targeting, head fixation, preprocessing and insertion-based electrical recording. Light scatters and opsins extend into neural processes, so the emitter's outline does not isolate a single cell. Sharp light artifacts are corrected rather than denied. These local circuit results do not establish a full closed-loop nervous-system simulation or a durable clinical implant.
 
-The [paper-grounded collaboration brief](/companies/46-allen-ucl-neuropixels-opto-collaboration/) links the participating organizations without assigning each circuit or experiment to an inferred owner.
+The [Allen Institute](/companies/46-allen-ucl-neuropixels-opto-collaboration/) links the participating organizations without assigning each circuit or experiment to an inferred owner.
 
 ## Primary sources
 
