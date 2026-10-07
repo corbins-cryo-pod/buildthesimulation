@@ -2,7 +2,6 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import DevicesDirectory from "../../components/DevicesDirectory";
-import { deviceModels } from "../../lib/devices/catalog.js";
 
 function stripPrefix(title) {
   return title.replace(/^\d+\s*[-—]\s*/, "");
@@ -37,23 +36,6 @@ const normalized = entries.map((p) => ({
   subtitle="Explore neural interfaces, inspect 3D models and design your own electrodes."
   description="BCI Devices: a searchable directory with curated facets (axis, interface type, directionality, form factor)."
 >
-  <section class="tools" aria-label="Device tools">
-    <a class="tool" href="/devices/models/">
-      <span class="eyebrow">{Object.keys(deviceModels).length} reference models</span>
-      <h2>3D model finder</h2>
-      <p>Explore implant geometry, inspect electrode details and download models with published dimensions and source notes.</p>
-      <span class="tool-link">Find a device model →</span>
-    </a>
-    <a class="tool" href="/devices/designer/">
-      <span class="eyebrow">Design workspace</span>
-      <h2>Neural interface designer</h2>
-      <p>Create electrode arrays, customize contact shapes and route leads. Export your layout at physical scale.</p>
-      <span class="tool-link">Open the designer →</span>
-    </a>
-  </section>
-  <p class="muted">Studies and clinical programs that use these devices are listed under <a href="/applications/">Applications</a>.</p>
-  <h2 class="catalog-title">Device catalog</h2>
-  <p class="muted">Browse {entries.length} catalog records, grouped by documented device family, by interface type, anatomy and use case. The highlighted sheet is the latest documented generation or configuration in this catalog, not a claim of current availability. Parallel branches and older versions remain accessible inside each family card. Export results CSV downloads the current filtered list, including stable IDs, source links and review dates. Evidence stage is not regulatory approval.</p>
   <DevicesDirectory client:load entries={normalized} />
 </Layout>
 
