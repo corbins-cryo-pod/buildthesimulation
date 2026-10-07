@@ -1,5 +1,5 @@
 ---
-title: "University of Pittsburgh Rehab Neural Engineering Labs (lab brief)"
+title: "University of Pittsburgh, Rehab Neural Engineering Labs (lab brief)"
 order: 38
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
