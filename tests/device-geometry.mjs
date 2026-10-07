@@ -156,3 +156,11 @@ console.log('Device geometry: counts, pitch, stagger, extents, area, JSON and bi
 
 // Surface-grid is a rendering primitive, not an anatomical classification.
 assert((await import('node:fs')).readFileSync('src/pages/devices/models.astro','utf8').includes("model.id.startsWith('neuropixels-')"), 'Neuropixels recording windows must not be labeled cortical surface patches');
+
+for (const model of Object.values(deviceModels).filter(m=>m.kind === 'surface-grid')) {
+  const exported = exportGeometry(model);
+  assert.match(exported.coordinateSystem, /rows \+Y, columns \+X, face normal \+Z/);
+  assert.match(exported.coordinateSystem, /not a shank insertion axis/);
+  assert.match(exported.origin, /substrate occupies negative Z/);
+  assert(!exported.sites.some(site=>site.positionMeaning.includes('film')));
+}
