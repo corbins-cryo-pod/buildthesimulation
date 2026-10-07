@@ -89,7 +89,7 @@ export default function AtlasExplorer({ entries }) {
       const {default: L} = await import('leaflet');
       if (cancelled || !mapHost.current) return;
       const host = mapHost.current;
-      const map = L.map(host, {zoomControl: false, minZoom: 2, maxZoom: 16, scrollWheelZoom: false, worldCopyJump: true, attributionControl: false});
+      const map = L.map(host, {zoomControl: false, minZoom: 0, maxZoom: 16, scrollWheelZoom: false, worldCopyJump: true, attributionControl: false});
       mapApi.current = map;
       L.control.zoom({position: 'topright'}).addTo(map);
       L.control.attribution({position: 'bottomright', prefix: false}).addTo(map);
