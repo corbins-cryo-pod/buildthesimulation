@@ -17,7 +17,7 @@ draft: false
 
 # Acute CHIME mouse recordings
 
-The 2020 paper uses [CHIME glass-gold microwires](/devices/109-chime-glass-gold-microwire-cmos/) for olfactory-bulb recordings in anesthetized C 57BL/6 mice of both sexes, 4-6 weeks old. It tests MEA1k and a modified Cheetah camera CMOS readout. This is not an awake assistive-control or chronic-implant study.
+The 2020 paper uses [CHIME glass-gold microwires](/devices/109-chime-glass-gold-microwire-cmos/) for olfactory-bulb recordings in anesthetized C57BL/6 mice of both sexes, 4-6 weeks old. It tests MEA1k and a modified Cheetah camera CMOS readout. This is not an awake assistive-control or chronic-implant study.
 
 ## Reported recording scope
 
@@ -25,7 +25,7 @@ With 200-wire bundles on MEA1k, the paper reports 156 ± 36 connected pixels wit
 
 Sessions began immediately after implantation and lasted 23 minutes to 2 hours, averaging 63 minutes. Measurements at different locations lasted 10-40 minutes. The reported stable amplitudes/waveforms over 40 minutes do not establish weeks of stable implantation.
 
-Figure 6E shows spike events on 86 channels during an example odor presentation lasting 1 second. This example is separate from the mean connected-pixel statistic and from the camera's 327, 680-pixel capacity.
+Figure 6E shows spike events on 86 channels during an example odor presentation lasting 1 second. This example is separate from the mean connected-pixel statistic and from the camera's 327,680-pixel capacity.
 
 ## Readout tradeoffs
 
