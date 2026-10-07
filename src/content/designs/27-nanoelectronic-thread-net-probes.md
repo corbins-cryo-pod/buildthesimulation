@@ -2,57 +2,61 @@
 title: "Nanoelectronic thread (NET) probes"
 order: 27
 pubDate: 2026-10-06
-updatedDate: 2026-10-06
+updatedDate: 2026-10-07
 device_id: "BTSD-ACAD-0006"
 interface_class: "intracortical"
 status: "preclinical"
-last_updated: 2026-10-06
-description: "Ultraflexible brain electrodes with subcellular dimensions that the authors report integrate without a glial scar and track single units for months. UT Austin, 2017."
+last_updated: 2026-10-07
+description: "NET-50 and NET-10 ultraflexible electrodes: 50 x 1 µm and 10 x 1.5 µm cross sections, eight or four contacts. Four-month mouse recordings, fabrication losses and shuttle-delivery limits from the 2017 paper."
 modality: "Intracortical"
 successRank: 27
 website: "https://www.science.org/doi/10.1126/sciadv.1601966"
-tags: ["ultraflexible", "nanoelectronic thread", "chronic", "glial scar", "UT Austin", "Xie", "academic", "preclinical"]
+tags: ["ultraflexible", "nanoelectronic thread", "NET", "chronic", "glial scar", "UT Austin", "Xie", "academic", "preclinical"]
 draft: false
 ---
 
 # Nanoelectronic thread (NET) probes
 
-> *One-line verdict:* An argument that a thread small and soft enough stops the brain from walling it off, with months of stable single-unit recording in animals.
+Two ultraflexible, multilayer recording probes from the University of Texas at Austin. Luan and colleagues' 2017 paper reports mouse recordings and tissue imaging, not human implantation or a finished assistive device.
 
-*Quick tags:* Recording · Intracortical · Published: 2017 (Science Advances)
+## Published hardware
 
----
+| Field | NET-50 | NET-10 |
+| --- | --- | --- |
+| Width | 50 µm average | 10 µm |
+| Total thickness | 1 µm | 1.5 µm |
+| Layer layout | Four layers | Seven layers |
+| Contacts per probe | Eight, in a linear array | Four, on two opposite surfaces |
+| Electrode size | 30 x 30 µm | 10 x 20 µm |
 
-### Overview
+The methods describe SU-8 insulating layers, platinum or gold electrodes and interconnects with 100 nm metal thickness, and about 500 nm dielectric thickness for the tested geometry. A 33-pin flexible-flat connector was mounted to contact pads on the silicon carrier. These are fabrication details, not a claim that all 33 connector pins are recording channels.
 
-*What it is:* Nanoelectronic thread (NET) electrodes with subcellular dimensions, ultraflexibility and what the authors call a cellular surgical footprint.
+The paper's PDF visibly uses micrometres for the probe and electrode sizes. Text extraction can lose the Greek mu and display "mm"; the dimensions above were checked against the rendered paper, including Figures 1 and the methods.
 
-*What was shown:* According to the abstract, NET electrodes form reliable, glial-scar-free neural integration. They detected and tracked individual units for months, with impedance, noise level, single-unit recording yield and signal amplitude remaining stable during that time.
+## Delivery
 
-*Why it matters:* Most chronic implants lose signal as scar tissue forms. This work is one of the clearest arguments that size and stiffness, not just materials, drive that response.
+The probes are too flexible to penetrate brain tissue by themselves. A temporary carbon-fiber or tungsten-wire shuttle carries a micromilled post that engages a hole in the probe. After delivery, the shuttle retracts and leaves the thread in tissue. Shuttle diameters were as small as 7 µm, and the authors report an overall insertion footprint as small as about 10 µm.
 
----
+The experiments used a craniotomy with dura removal. The flexible segment connected the probe to bonding pads on a silicon carrier fixed to the skull. This is not a free-floating or fully wireless implant.
 
-### Spec Card Grid
+## Four-month evidence
 
-### Identity
-- *Authors:* Lan Luan, Xiaoling Wei, Zhengtuo Zhao, Jennifer J. Siegel, Ojas Potnis, Catherine A. Tuppen, Shengqing Lin, Shams Kazmi, Robert A. Fowler, Stewart Holloway, Andrew K. Dunn, Raymond A. Chitwood, Chong Xie
-- *Org:* University of Texas at Austin
-- *Published:* Science Advances 3(2):e1601966, February 2017
+Sixteen probes were implanted in the somatosensory and visual cortices of seven mice. The study included 80 electrodes from 96 connected electrodes, reported as 83.3% fabrication yield. Electrical recordings were taken under anesthesia twice a month for four months, not continuously throughout that period.
 
-### Evidence and limits
-- *Reported:* stable impedance, noise, unit yield and amplitude over months; glial scar-free integration
-- *Not reproduced here:* thread width, thickness, site layout and species numbers, which are in the paper but not in the abstract text this entry was built from
+Recording performance improved over the first 1.5 months, then stayed stable for at least another 2.5 months until the experiment ended. Nineteen electrodes supplied sortable action potentials whose average amplitude and signal-to-noise ratio stayed stable across the four-month period. That is not a claim that all 80 electrodes tracked the same neuron.
 
----
+In vivo two-photon imaging and postmortem histology supported the authors' report of glial-scar-free integration and recovered local vasculature in the studied mouse tissue. These observations do not establish that tissue response is absent in every species, depth or implantation duration.
 
-### Engineering Verdict
+## Failure and scale limits
 
-*Strengths:* very small insertion footprint; stable chronic units reported.
+The authors attribute fabrication losses mainly to defects. Seven manual photolithography steps and three metal depositions made particles and scratches hard to avoid; 2 to 3 µm interconnects routed over 5 mm were vulnerable to microdefects. Automated photolithography was proposed as an improvement, not demonstrated here.
 
-*Limitations:* delivery of an ultraflexible thread into tissue and the connection to external electronics, which the abstract does not address.
+An implanted thread cannot conveniently be advanced later to another brain region like a movable rigid probe. The authors report about three minutes per delivery, closest achieved interprobe spacing around 200 µm and initial positioning uncertainty up to 30 µm. Their estimate of 12 probes within 40 minutes is a scaling estimate, not an observed 12-probe timed procedure.
 
----
+Four-month stability warrants longer studies; it does not establish years of service. This entry does not call the project a dead end. Full thread outline, contact pitch and routing geometry are not reconstructed into a 3D model from photographs.
 
-### References
-- Luan L, Wei X, Zhao Z, et al. *Ultraflexible nanoelectronic probes form reliable, glial scar-free neural integration.* Sci Adv. 2017;3(2):e1601966. doi: 10.1126/sciadv.1601966. PubMed: <https://pubmed.ncbi.nlm.nih.gov/28246640/>
+## Sources
+
+- Luan L, Wei X, Zhao Z, et al. [Ultraflexible nanoelectronic probes form reliable, glial scar-free neural integration](https://www.science.org/doi/10.1126/sciadv.1601966). Science Advances 3:e1601966, 15 February 2017.
+- [Full paper hosted by UT Austin's Functional Optical Imaging Laboratory](https://foil.bme.utexas.edu/publication/luan-2017/luan-2017.pdf). Hardware: Results, Figure 1 and methods; cohort: Results; fabrication and delivery limits: Discussion. PDF pages 1, 2, 6 and 7 inspected visually.
+- [Primary abstract and affiliations](https://pubmed.ncbi.nlm.nih.gov/28246640/).
