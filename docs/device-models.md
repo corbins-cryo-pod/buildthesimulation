@@ -1,7 +1,8 @@
 # Device model collection
 
 Models: Utah 10 × 10 / 1.5 mm, USEA 10 × 10 / 0.5–1.5 mm,
-Neuropixels 1.0, Synchron Stentrode, Paradromics Connexus and Neuralink N1.
+Neuropixels 1.0, Synchron Stentrode, Paradromics Connexus Neuralink N1, NeuroGrid, an eight-fiber carbon row, a Neurograin package envelope
+and the 196-site active micro-ECoG recording patch.
 Each definition carries its own revision. Catalog and legacy design URLs use
 the same viewer. `/devices/models/` indexes the models.
 
@@ -156,7 +157,7 @@ leaving 15 referenced signals; the exact assignment is unknown.
 
 ### Viewer and validation
 
-All six models use the same lazy-loaded viewer and complete JSON/GLB exports.
+All ten reference configurations use the same lazy-loaded viewer and complete JSON/GLB exports.
 Camera fitting derives from mesh bounds, including lead stubs and enclosures.
 New face, microwire, thread and contact views are camera crops only. Shared mesh
 resources keep dense arrays small; all materials and geometries are disposed.
@@ -167,3 +168,31 @@ avoid enlarging thin structures in screen space. The status identifies this mode
 Checks cover exact counts, pitch, centered Connexus footprint, N1 thread grouping,
 null unknown areas, finite mesh attributes, scaffold versus lead extents, JSON
 round trips and complete meter-scaled GLB export while bodies are hidden.
+
+
+## Surface patches and partial structures (2026-10-07)
+
+- NeuroGrid: 256-site figure reconstructed as a flat 16 × 16 patch. Published
+  10 × 10 µm sites, 30 µm spacing and 4 µm film are preserved. The 480 µm square
+  boundary is an explicit half-pitch-margin crop, not the full film outline.
+  Source: https://pmc.ncbi.nlm.nih.gov/articles/PMC4308485/
+- Carbon fiber: one eight-fiber row, not the whole dual-sided PCB array. Uses
+  measured 153.7 µm mean pitch, an 8.4 µm coated diameter and 6.8 µm core.
+  The 4.5 mm length is nominal within the reported 4-5 mm chronic-array range.
+  Opposite-row spacing, board, supports and PEDOT topography are omitted.
+  Source: https://pmc.ncbi.nlm.nih.gov/articles/PMC4789140/
+- Neurograin: a 650 × 650 × 250 µm packaged envelope from Figure 1. Figure 2
+  separately reports a 500 × 500 µm bare stimulating ASIC. Do not substitute
+  one for the other. No contact geometry is reconstructed, so exported sites
+  are empty and Contacts only is disabled. This is not a complete electrode model.
+  Sources: https://www.nature.com/articles/s41928-021-00631-8/figures/1
+  and https://www.nature.com/articles/s41928-021-00631-8/figures/2
+- Active micro-ECoG: 196 sites in a 14 × 14 matrix, 200 µm contacts at 250 µm
+  center pitch, 25 µm multilayer thickness and an approximate 3.5 mm recording
+  area crop. Internal switching layers and cable are omitted.
+  Source: https://pmc.ncbi.nlm.nih.gov/articles/PMC4137255/
+
+Surface contact meshes share a face plane with the film. A material depth bias
+prevents display depth fighting without changing exported positions or thickness.
+The tests cover each model's own dimensions, counts, pitch and unknown areas.
+Carbon Contact detail is a camera crop, not increased electrode size.
