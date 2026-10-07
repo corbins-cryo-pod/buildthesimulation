@@ -34,6 +34,8 @@ This brief is separate from Rice's [Luan and Xie ultraflexible interface labs](/
 
 - [PUF-addressed ME ASIC configuration, 2021-2022](/devices/124-puf-addressed-magnetoelectric-multisite-stimulator/) and [Hydra/rat tests](/applications/125-puf-me-hydra-rat-stimulation-study/). Shared-transmitter synchronization is distinct from demonstrated therapeutic cardiac or spinal use.
 
+- [MagNI current-controlled implant, 2020](/devices/126-magni-current-controlled-magnetoelectric-implant/) and [Hydra activation](/applications/127-magni-hydra-muscle-stimulation-2020/). Spinal pain relief is a proposed target, not a result of the Hydra or saline tests.
+
 ## Evidence boundary
 
 The cataloged studies demonstrate stimulation and delivery under their reported experimental conditions. Acute human motor activation is not a clinical treatment. The studies do not establish a human clinical treatment, chronic rehabilitation, a complete distributed neural-recording decoder or regulatory approval. The lab website's pain-treatment and cardiac-pacing goals remain goals unless a specific primary study supports the result.
