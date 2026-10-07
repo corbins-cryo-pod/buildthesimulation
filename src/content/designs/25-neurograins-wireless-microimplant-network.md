@@ -17,7 +17,112 @@ draft: false
 
 # Neurograins (wireless microimplant network)
 
-Distributed, individually addressed silicon microchips powered by an external RF system. The 2021 work demonstrates an acute rat cortical recording ensemble and a separate stimulation-chip configuration. Recording, stimulation and networking test chips share RF circuitry, but are not a single universally dual-function implant.
+All rows follow the shared implant-device template. Measurements belong to the named configuration or experiment. Unreported means the reviewed sources do not establish a value; acute recordings, radio activation and later stimulation hardware are not treated as equivalent.
+
+## Identity
+
+| Field | Value and source scope |
+| --- | --- |
+| Device | 2021 neurograin recording network, with separate stimulation ASIC variant |
+| Manufacturer | Academic research fabrication; not a commercial SKU |
+| Interface class | Epicortical recording chiplets; stimulation variant may add intracortical microwires |
+| Origin | Lee and colleagues; Brown, Baylor, Seoul National University, UC San Diego and Qualcomm affiliations in supplement |
+| First demonstrated | 2021 Nature Electronics report; 2020 preprint precedes journal publication |
+| First human implant | Unreported; rat study |
+| Species studied | Anesthetized rat acute cortical experiments |
+| Regulatory status | Preclinical research; RF SAR comparison is not clinical clearance |
+| Function | RF-powered addressed recording or stimulation chiplets; separate circuits, not universal dual-function implants |
+| Target tissue | Cortical surface for ECoG; added microwires for stimulation |
+
+## Geometry and architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Distributed surface chips, optional post-process penetrating stimulation microwires |
+| Array layout | Spatially distributed chiplets with relay coil on polyimide carrier, not one monolithic electrode array |
+| Electrode count | One differential recording input between two gold electrodes per recording chip; 48-chip acute ensemble. Separate stimulation ASIC/assemblies |
+| Pitch | No universal array pitch; chip placement/contact spacing not assigned from reviewed sources |
+| Electrode lengths | Recording chips have no shanks; optional tungsten stimulation wire length unreported here |
+| Shank width and thickness | Figure 1 chiplet 650 x 650 x 250 µm; Figure 2 stimulating ASIC 500 x 500 µm is a different scope |
+| Tip and exposed site geometry | Two on-chip gold contacts; numerical pad shape/area unreported here. Microwires not reconstructed from package envelope |
+| Contact coating | Gold recording electrodes; tungsten stimulation electrodes in separate variant |
+| Insulation | PDMS around chips/relay-coil assembly for acute in vivo use; ALD discussion concerns separate packaging work |
+| Insertion method | Cortical placement following craniotomy; separate intracortical stimulation template |
+| Anchoring and fixation | Polyimide carrier and PDMS-encapsulated chips/relay coil; specific long-term fixation unreported |
+
+## Electrode and channel physics
+
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in reviewed sources |
+| Electrode material | Gold recording contacts; tungsten microwire in separate stimulation variant |
+| Impedance (with measurement frequency) | Standard electrode impedance unreported in reviewed figure/supplement text |
+| Noise floor or SNR | No universal noise rating assigned; supplement states low-noise activity came from a fraction of 48 channels, showing 12 |
+| Recording modality | Epicortical ECoG, including low-frequency oscillations and evoked responses; not broadband single-neuron acquisition |
+| Sampling rate | 1 kHz, 8-bit ADC per recording chip |
+| Stimulation capability | Separate biphasic current-source chips; Figure 4 protocol up to 25 µA/device, Figure 2 100/200/400 µs phases into 20 kΩ load |
+| Charge injection limit | Validated charge-density limit unreported; example waveform/current is not a safety rating |
+| Reference and ground | Recording differential between two on-chip electrodes; no distal wired reference required for this configuration |
+
+## Tissue interface and bioresponse
+
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Epicortical tissue for recording; intracortical microwires for separate stimulation experiments |
+| Insertion trauma and BBB disruption | Large craniotomy required; supplement says skin and skull not replaced during surgery for large stimulation construct. Closed-tissue attenuation simulation is not closed-skull demonstration |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Poor electrode-tissue contact/practical placement identified among reasons for noisy channels; quantified chronic motion tolerance unreported |
+| Gliosis and encapsulation | Chronic histological response not established for 2021 acute configuration |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Miniature distributed form factor and encapsulation are design features, not observed absence of foreign-body response |
+| Typical failure modes | Higher-noise channels linked to imperfect tissue contact, cortical activity and ensemble placement limits; chronic hardware failure rates unreported |
+
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Recording ASIC: low-power amplifier, 8-bit ADC, address/state-machine/RF circuits and integrated coil. Stimulation ASIC has current-source circuit |
+| Data path | Battery-free RF harvest; BPSK backscatter uplink with PUF chip addresses and TDMA; external SDR/power amplifier/duplexer and relay coil |
+| Telemetry bandwidth | 10 Mbit/s uplink packet rate in timing budget; 8 kbit/s neural payload per recording chip. Not 10 Mbit/s neural content per chip |
+| Sampling rate | 1 kHz per recording chip; 100 samples buffered as 800 bits/100 ms |
+| Power | Less than 30 µW per chip budget in supplement; external transmitter power is separate. Approximately 1 GHz carrier, 915 MHz design selection |
+| Thermal management | RF SAR simulations reported; measured chronic tissue heating unreported. Modeled exposures do not establish clinical safety |
+| Packaging and hermeticity | Acute PDMS assembly; conformal ALD/thinned 0.01 mm³ earlier work is not the demonstrated 650 x 650 x 250 µm configuration or a multi-year recording lifetime |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Craniotomy, distributed-chip placement, relay-coil/carrier positioning and optional intracortical wires; closed-skin/skull modeled link not assumed surgically demonstrated |
+| Output connectors | No wired chip output to hub; wireless backscatter. External benchtop SDR/amplifier/duplexer connectors are not implanted chip connectors |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | All 48 recording chips activated/transmitted in PUF analysis; clear low-noise brain signals from only a fraction, 12 illustrated. Radio activation is not useful neural-channel yield |
+| Chronic yield | Not established for 2021 recording ASIC; 2024 three-month stimulation branch is separate |
+| Stability over time | Acute recordings; standardized chronic recording stability unreported |
+| Longevity | Acute 2021 configuration, maximum implanted recording service life unreported |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | No clinical adverse-event series or standardized chronic tissue safety assessment for 2021 configuration |
+| Notable demonstrations | 48-chip acute rat recording; 64 autonomous TDMA chips and 32 call-and-response chips in distinct bench tests; 69-chip two-coil power/network demonstration is not 69 neural recording sites |
+
+## Clinical and preclinical evidence
+
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None in reviewed 2021 study |
+| Preclinical cohort | Acute rat cortical recording and separate stimulation experiments; unique animal count unreported in reviewed figures/supplement |
+| Follow-up duration | Acute anesthetized recordings, not a chronic cohort |
+| Indications | Preclinical distributed neural recording/stimulation platform |
+| Trials and registries | Human registry not applicable to reported study |
+| Primary outcomes | Individually addressed wireless ECoG, separate electrical microstimulation, RF powering/network scalability |
+| Key limitations | Main body access-restricted in this audit; figures and full supplement reviewed. 425/588/770 are timing-budget estimates, not implanted animal counts; primate closed-tissue model is not primate recording |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Distributed placement, battery-free RF power and chip-level addressing |
+| Limitations | Contact quality reduces usable-channel yield; external RF hardware and relay coil, acute packaging and unknown chronic recording lifetime |
+| Scaling constraints | Timing, packet overhead, power uniformity, coil geometry and anatomy constrain network. 770-node optimized estimate is not measured 770-node in vivo system |
 
 ## Core interface specifications
 
@@ -43,7 +148,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Property | Published configuration |
 | --- | --- |
 | Primary authors | Jihun Lee, Vincent Leung, Ah-Hyoung Lee and colleagues; senior author Arto Nurmikko |
-| Institutions | Brown University, Baylor University, UC San Diego and Qualcomm |
+| Institutions | Brown University, Baylor University, Seoul National University, UC San Diego and Qualcomm |
 | Primary paper | Nature Electronics 4:604-614, 2021 |
 | Recording interface | Differential signal between two on-chip gold electrodes on the cortical surface |
 | Stimulation interface | Separate current-source chips, with post-process tungsten microwires for intracortical access |
@@ -115,7 +220,9 @@ The linked model is one 650 × 650 × 250 µm package envelope from Figure 1. It
 
 Contact area and spacing, full packaged electrode geometry, standardized chronic noise/impedance, complete external-system mass and clinical lifetime are not supplied here. The 2024 branch is not modeled by this 2021 cuboid.
 
-## Primary sources
+## References
+
+### Primary sources
 
 - Lee J et al. [Neural recording and stimulation using wireless networks of microimplants](https://www.nature.com/articles/s41928-021-00631-8), Nature Electronics, 2021. Abstract and Figures [1](https://www.nature.com/articles/s41928-021-00631-8/figures/1), [2](https://www.nature.com/articles/s41928-021-00631-8/figures/2), [3](https://www.nature.com/articles/s41928-021-00631-8/figures/3), [4](https://www.nature.com/articles/s41928-021-00631-8/figures/4), [5](https://www.nature.com/articles/s41928-021-00631-8/figures/5).
 - Lee J et al. [2021 Supplementary Information](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41928-021-00631-8/MediaObjects/41928_2021_631_MOESM1_ESM.pdf), circuit variants, TDMA budget, chip power, recording-channel limitations and link models. The main article body is access-restricted; the figures and full supplement were reviewed directly.

@@ -7,7 +7,7 @@ device_id: "BTSD-ACAD-0001"
 interface_class: "pni"
 status: "preclinical"
 last_updated: 2026-10-07
-description: "Ultrasonic recording mote: primary2016 assemblies about0.8×3×1mm, one differential channel, 1.85-MHz interrogation and10-kHz reconstructed signals. Rat nerve/muscle evidence; separate1-mm-cube institutional claim."
+description: "Ultrasonic recording mote: primary 2016 assemblies about 0.8 × 3 × 1 mm, one differential channel, 1.85-MHz interrogation and 10-kHz reconstructed signals. Rat nerve/muscle evidence; separate 1-mm-cube institutional claim."
 modality: "Peripheral nerve"
 successRank: 22
 website: "https://www.cell.com/neuron/fulltext/S0896-6273%2816%2930344-0"
@@ -17,7 +17,112 @@ draft: false
 
 # Neural dust (ultrasonic backscatter mote)
 
-A battery-free recording mote powered and interrogated by ultrasound. The 2016 paper demonstrates peripheral nerve and muscle signals in anesthetized rats, not a chronic brain implant. The implanted mote contains a piezocrystal, a transistor and a pair of recording contacts; an external transceiver supplies the acoustic link.
+All rows follow the shared implant-device template. Measurements belong to the named configuration or experiment. Unreported means the reviewed sources do not establish a value; acute recordings, radio activation and later stimulation hardware are not treated as equivalent.
+
+## Identity
+
+| Field | Value and source scope |
+| --- | --- |
+| Device | Seo 2016 ultrasonic neural dust recording mote |
+| Manufacturer | University of California, Berkeley research fabrication |
+| Interface class | Peripheral nerve/muscle surface recording interface |
+| Origin | Seo, Neely, Shen and colleagues, UC Berkeley |
+| First demonstrated | 2016 in vivo recording study; 2013 concept cited by paper is not the same hardware demonstration |
+| First human implant | Unreported; rat study |
+| Species studied | Adult Long-Evans rats under anesthesia |
+| Regulatory status | Preclinical research; comparison to diagnostic ultrasound limits is not device clearance |
+| Function | One differential channel, ultrasonic powering and analog backscatter recording |
+| Target tissue | Sciatic nerve epineurium and gastrocnemius muscle |
+
+## Geometry and architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Surface recording mote, no penetrating recording shank |
+| Array layout | Two bottom PCB pads per mote; piezocrystal and transistor on top |
+| Electrode count | Two physical pads form one differential recording channel |
+| Pitch | 1.8 mm pad separation, not regular-array pitch |
+| Electrode lengths | No penetrating shank; assembled mote approximately 3 mm long |
+| Shank width and thickness | No shank. Assembly approximately 0.8 x 3 x 1 mm; PCB 50 µm polyimide, crystal 0.75 mm cube, transistor die 0.5 x 0.45 mm |
+| Tip and exposed site geometry | Two exposed gold pads, each 0.2 x 0.2 mm |
+| Contact coating | Exposed gold recording pads |
+| Insulation | Polyimide PCB and medical-grade UV-curable epoxy protecting assembly/wirebonds |
+| Insertion method | Surgical exposure, surface placement on muscle or nerve; muscle wound closed after placement |
+| Anchoring and fixation | Nerve mote sutured to nerve with contacts on epineurium; exact long-term fixation not established |
+
+## Electrode and channel physics
+
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | 0.04 mm² nominal planar area per 0.2 x 0.2 mm pad, calculated from paper dimensions; not electrochemical effective area |
+| Electrode material | Gold pads; aluminum wirebonds and gold interconnect traces are separate components |
+| Impedance (with measurement frequency) | Electrode impedance unreported here; water acoustic impedance is not electrode impedance |
+| Noise floor or SNR | 180 µV RMS in water tank. Minimum detected biological response approximately 0.25 mV; measurements not interchangeable |
+| Recording modality | Evoked ENG from epineurium and EMG from muscle surface |
+| Sampling rate | 10 kHz reconstructed wireless waveforms; wired comparison 100 kHz |
+| Stimulation capability | None integrated in recording mote; separate hook/foot electrodes produce evoked signals. StimDust is different hardware |
+| Charge injection limit | Not applicable to recording-only mote; electrode stimulation rating unreported |
+| Reference and ground | Differential tissue sensing between two pads. Backscatter from nonresponsive interfaces separately normalizes acoustic artifacts; not electrical ground |
+
+## Tissue interface and bioresponse
+
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Peripheral nerve epineurium and muscle surface |
+| Insertion trauma and BBB disruption | BBB not applicable; surgical exposure and fixation still required |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Water-tank test: 0.7 mm lateral misalignment doubled noise floor in five devices. Beam alignment is a measured link limitation, not chronic tissue-motion tolerance |
+| Gliosis and encapsulation | Peripheral, not CNS gliosis; chronic tissue encapsulation unreported |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Small wireless package avoids required data cable; epoxy insulation does not prove chronic biocompatibility |
+| Typical failure modes | Acoustic misalignment degrades signal quality; chronic hardware/tissue failure rate unreported |
+
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Piezocrystal and custom transistor; tissue voltage modulates load/backscatter, no implanted ADC |
+| Data path | External ultrasound transceiver receives backscatter, filters/rectifies and reconstructs waveform |
+| Telemetry bandwidth | 1.85 MHz acoustic carrier; six 540 ns pulses each 100 µs. Carrier is not neural payload bit rate |
+| Sampling rate | 10 kHz reconstructed waveform |
+| Power | Battery-free acoustic harvesting; approximately 25% acoustic-to-electrical load conversion on axis in tank. External system supplies ultrasound |
+| Thermal management | Measured MI 0.01, derated ISPPA 6.37 mW/cm² and ISPTA 0.21 mW/cm² at reported 5 V peak-to-peak drive. Temperature rise unreported; comparison to limits is not safety approval |
+| Packaging and hermeticity | Epoxy-protected polyimide assembly; multi-year hermetic qualification unreported |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Peripheral exposure/placement plus alignment/coupling of external transducer approximately 8.9 mm from implant |
+| Output connectors | No required wired implant output; optional 0.35 mm wide, 25 mm long test lead used for ground-truth/voltage measurements |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Functional rat responses; numerical assembled-device pass rate unreported |
+| Chronic yield | Not established by acute anesthetized experiments |
+| Stability over time | No appreciable EMG quality degradation after 30 min; t=0 versus 30 min waveform correlation R=0.901 in Figure 4, not chronic lifetime |
+| Longevity | Acute recording observation; maximum service life unreported |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | No quantitative chronic/clinical adverse-event series |
+| Notable demonstrations | At saturating evoked stimulation: EMG wireless/wired R=0.795 with differences within ±0.4 mV; ENG R=0.886, differences within ±0.2 mV. Protocol-specific |
+
+## Clinical and preclinical evidence
+
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None in reviewed study |
+| Preclinical cohort | EMG and ENG recruitment plots each report uncertainty from two rats and ten samples per stimulation amplitude; unique total across experiments not established. Five devices in tank alignment test |
+| Follow-up duration | Acute anesthetized study, with 30 min comparison; no chronic cohort |
+| Indications | Experimental peripheral recording; future bioelectronic medicine/BCI applications are goals |
+| Trials and registries | Human registry not applicable to reported rat study |
+| Primary outcomes | Wireless reconstruction of evoked nerve/muscle waveforms, link efficiency and alignment sensitivity |
+| Key limitations | Single-mote peripheral experiment does not establish deep-brain or many-node operation. Primary assembly and institutional 1 mm cube miniaturization claim kept separate |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Wireless battery-free power/data link and acute biological waveform reconstruction |
+| Limitations | Approximately 180 µV tank noise, alignment-sensitive acoustic link and unknown chronic package/tissue behavior |
+| Scaling constraints | Smaller packaging and beam-steering/network operation require separate demonstrations; bone/gas propagation cannot be assumed equivalent to peripheral path |
 
 ## Core interface specifications
 
@@ -97,7 +202,9 @@ The mote senses evoked biological signals; that does not mean it generates the s
 
 No full model is supplied. Component boxes do not fix the contact exposure, piezocrystal orientation, film outline, wirebond loops or acoustic pose. Missing chronic and clinical specifications remain unknown.
 
-## Primary sources
+## References
+
+### Primary sources
 
 - Seo D et al. [Wireless Recording in the Peripheral Nervous System with Ultrasonic Neural Dust, full primary paper](https://www.cell.com/neuron/fulltext/S0896-6273%2816%2930344-0), 2016.
 - Berkeley News. [Institutional report and separate miniaturization claim](https://news.berkeley.edu/2016/08/03/sprinkling-of-neural-dust-opens-door-to-electroceuticals/), 3 August 2016.
