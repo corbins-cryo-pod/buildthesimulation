@@ -1,7 +1,8 @@
 ---
 const { pathname } = Astro.props;
 const sections = [
-  { href: '/devices/', label: 'Device catalog', active: !pathname.startsWith('/devices/models') && !pathname.startsWith('/devices/designer') },
+  { href: '/devices/ecog-history/', label: 'ECoG history', active: pathname.startsWith('/devices/ecog-history') },
+  { href: '/devices/', label: 'Device catalog', active: !pathname.startsWith('/devices/models') && !pathname.startsWith('/devices/designer') && !pathname.startsWith('/devices/ecog-history') },
   { href: '/devices/models/', label: '3D model finder', active: pathname.startsWith('/devices/models') },
   { href: '/devices/designer/', label: 'Interface designer', active: pathname.startsWith('/devices/designer') },
 ];
