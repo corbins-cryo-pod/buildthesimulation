@@ -18,6 +18,25 @@ draft: false
 
 A penetrating silicon array with unequal electrode lengths for peripheral-nerve recording and stimulation. This sheet separates current manufacturer options from the particular arrays implanted in the 2017 human study. A physical needle, a connected channel and a usable recording channel are not the same count.
 
+## Core interface specifications
+
+The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values remain unreported; inapplicable fields are marked. Configuration-specific details and limits follow below.
+
+| Field | Specification and source scope |
+| --- | --- |
+| Electrode Pitch | 400 µm, 2017 study and current manufacturer |
+| Channel Count | 2017: 100 physical needles, 96 recording/stimulation paths plus four on-array reference electrodes. Current options: 16-96; 1024 wording is multi-configuration system scope |
+| Output Connectors | 2017: custom PCB with ZIF-Clip-96. Current manufacturer: Omnetics, CerePort pedestal 128/256, Custom |
+| Output Conn. dimensions L x W x H | Current page: Omnetics 7 × 37 × 9 mm; CerePort 128 16.5 × 12 × 19 mm, 256 16.5 × 10.7 × 19 mm (height × neck diameter × base diameter). Not the 2017 PCB dimensions; those are not reported here |
+| Standard Electrode Lengths | 2017 approximately 0.75-1.5 mm. Current table custom 0.75-1.5 mm; overview has 0.5-1.5 mm grading |
+| Impedance | Current manufacturer: platinum 20-800 kΩ; SIROF/IrOx 1-80 kΩ, frequency not stated. Study checks at 1 kHz; ≥500 kΩ is that analysis's failed-channel threshold |
+| Array Dimensions | 2017: 10 × 10 needles on a 4 × 4 mm base. Current table: "Customizable from 2 - 12", no unit printed |
+| Multi-Port Options | Current options: 1, 2, 3, 4. Not a claim of the 2017 study assembly |
+| Metalization | Current platinum or sputtered iridium oxide (SIROF); no generic coating assigned to the particular 2017 study from options alone |
+| Wire Bundle Length | Current customizable 20-130 mm; specific 2017 lead length not reported here |
+| Reference and Ground | 2017: four on-array corner references plus two looped platinum wires as off-array reference and ground. Current page: "Ground Source and Selectable Reference Wires" |
+| Insulation | Current manufacturer: Parylene-C; study-specific coating stack not extracted here |
+
 ## Identity and configuration
 
 | Property | Specification and evidence boundary |
