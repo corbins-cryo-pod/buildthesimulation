@@ -28,6 +28,8 @@ This brief is separate from Rice's [Luan and Xie ultraflexible interface labs](/
 
 - [Published DOT cortical stimulator, 2024](/devices/117-dot-magnetoelectric-epidural-stimulator-2024/), with [two acute human tests](/applications/118-dot-acute-human-motor-stimulation-2024/) and a separate [chronic pig application](/applications/119-dot-chronic-pig-cortical-stimulation-2024/). Primary affiliations include Rice and Motif. Direct cortex and dura-covered human placements are kept distinct.
 
+- [Endocisternal catheter/ME interface](/devices/120-endocisternal-catheter-me-interface/) and its [sheep study](/applications/121-endocisternal-sheep-stimulation-recording-study/). The accessible 2023 preprint details are distinguished from the 2024 published abstract and supplement.
+
 ## Evidence boundary
 
 The cataloged studies demonstrate stimulation and delivery under their reported experimental conditions. Acute human motor activation is not a clinical treatment. The studies do not establish a human clinical treatment, chronic rehabilitation, a complete distributed neural-recording decoder or regulatory approval. The lab website's pain-treatment and cardiac-pacing goals remain goals unless a specific primary study supports the result.
