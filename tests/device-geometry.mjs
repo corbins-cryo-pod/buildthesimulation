@@ -33,6 +33,14 @@ for (const model of Object.values(deviceModels)) {
     assert(sites.every(s => s.positionMm[2] === (model.siteDepth ? -model.siteDepth : 0) && Math.abs(s.contactAreaMm2 - area) < 1e-9));
     if (model.siteDepth) { close(model.siteDepth, .002); close(model.thickness, .0066); assert.equal(sites.length, 1024); }
   }
+  if (model.id === 'neuropixels-ultra-dense-window') {
+    assert.equal(sites.length, 384); assert.equal(model.simultaneousChannels, 384);
+    close(model.pitch, .006); close(model.siteSize, .005);
+    close(bounds.max.x - bounds.min.x, .048); close(bounds.max.y - bounds.min.y, .288);
+    close(bounds.max.z - bounds.min.z, .024);
+    close(Math.max(...sites.map(s=>s.positionMm[0])) - Math.min(...sites.map(s=>s.positionMm[0])) + model.siteSize, .047);
+    assert(sites.every(s=>s.channel === null));
+  }
   if (model.kind === 'utah') {
     close(sites[1].positionMm[0] - sites[0].positionMm[0], .4);
     close(sites[10].positionMm[1] - sites[0].positionMm[1], .4);
