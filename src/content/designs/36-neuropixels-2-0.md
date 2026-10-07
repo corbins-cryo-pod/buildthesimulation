@@ -12,10 +12,12 @@ modality: "Intracortical"
 successRank: 36
 website: "https://www.science.org/doi/10.1126/science.abf4588"
 tags: ["Neuropixels", "silicon probe", "high density", "chronic", "freely moving", "research tool", "academic"]
-draft: false
+draft: true
 ---
 
 # Neuropixels 2.0
+
+Archived duplicate: the 2021 alpha hardware is now cataloged at [the detailed single/four-shank entry](/devices/88-neuropixels-20-alpha-probe/). This source record is excluded from the visible hardware catalog; its old route redirects to that entry.
 
 > *One-line verdict:* A smaller, denser successor to the Neuropixels 1.0 probe that is meant to stay in place for weeks and months in mice and rats, with software to follow the same neurons as the brain shifts.
 
