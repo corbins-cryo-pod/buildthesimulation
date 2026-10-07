@@ -38,6 +38,111 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Reference and Ground | Two 25 µm diameter Pt/Ir reference wires attached to feedthrough pins; no independent ground wiring inferred |
 | Insulation | Individually insulated gold wires; Kapton interconnect overmolded in biocompatible silicone (MED-4211). No unreported shank insulation assigned |
 
+## Identity
+
+| Field | Value and source scope |
+| --- | --- |
+| Device | Implantable wireless neural interface, subcutaneous rechargeable system, 2013 [1, 2] |
+| Manufacturer | Brown University research system; authors David Borton, Ming Yin, Juan Aceros and Arto Nurmikko [1] |
+| Interface class | Penetrating cortical silicon array with subcutaneous electronics, wireless |
+| Origin | Brown University, Journal of Neural Engineering 2013;10:026010 [1] |
+| First demonstrated | 2013 paper; swine and rhesus macaque implants [1, 2] |
+| First human implant | No human implantation of the complete system established by the paper [1] |
+| Species studied | Swine and rhesus macaques; four interfaces implanted in two Yorkshire pigs and two rhesus macaques in the Figure 5 animals [2] |
+| Regulatory status | Paper calls the connected silicon array "510k-approved", a component statement, not retrieved FDA clearance evidence for the complete Brown package [1] |
+| Function | Broadband neural recording [1] |
+| Target tissue | Cerebral cortex [1] |
+
+## Geometry and architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Penetrating cortical silicon array with subcutaneous hermetic titanium electronics [1] |
+| Array layout | 10 × 10 element layout; physical footprint not assigned here [1] |
+| Electrode count | 100-element silicon microelectrode array [1] |
+| Pitch | Not explicitly extracted for this connected array; no generic Utah pitch substituted |
+| Electrode lengths | 1.5 mm insertion in macaques; not a complete shank-length option list [2] |
+| Shank width and thickness | Unreported in the reviewed sources |
+| Tip and exposed site geometry | Unreported in the reviewed sources |
+| Contact coating | Contact-tip material not explicitly assigned here |
+| Insulation | Individually insulated gold wires; Kapton interconnect overmolded in biocompatible silicone (MED-4211) [2] |
+| Insertion method | Unreported in the reviewed sources |
+| Anchoring and fixation | In the two initial macaque experiments the titanium can was mostly embedded in PMMA and partly exposed; fully subcutaneous placement was in swine [2] |
+
+## Electrode and channel physics
+
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in the reviewed sources |
+| Electrode material | Silicon array; Pt/Ir feedthrough pins and 25 µm gold interconnect wires are separate components [2] |
+| Impedance (with measurement frequency) | 100-800 kΩ, manufacturer-verified at 1 kHz for the attached study array [2] |
+| Noise floor or SNR | Unreported in the reviewed sources |
+| Recording modality | Action potentials, field potentials and lower-frequency rhythms in freely moving animals [1, 2] |
+| Sampling rate | 20 kS/s per preamplifier channel [2] |
+| Stimulation capability | Not established as a function of this recording system [2] |
+| Charge injection limit | Unreported in the reviewed sources |
+| Reference and ground | Two 25 µm Pt/Ir reference wires attached to feedthrough pins; no independent ground wiring inferred [2] |
+
+## Tissue interface and bioresponse
+
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Cerebral cortex [1] |
+| Insertion trauma and BBB disruption | Unreported in the reviewed sources |
+| Vascular disruption risk | Unreported in the reviewed sources |
+| Micromotion sensitivity | Unreported in the reviewed sources |
+| Gliosis and encapsulation | Unreported in the reviewed sources |
+| Neuron loss near sites | Unreported in the reviewed sources |
+| Foreign-body response mitigation | Unreported in the reviewed sources |
+| Typical failure modes | Heating during charging, handled with active skin cooling in animals; incomplete skin closure over the enclosure in the two initial macaque experiments [2] |
+
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Preamplifier band 0.1 Hz-7.8 kHz, gain 200; two 12-bit SAR ADCs, one per multiplexed group; PCBs and components 6.5 g [2] |
+| Data path | Wireless FSK link using 3.2 and 3.8 GHz; 1 m point-to-point design, with more than 1 m operation reported in the system section [2] |
+| Telemetry bandwidth | 24 Mbit/s neural-data link [2] |
+| Sampling rate | 20 kS/s per preamplifier channel [2] |
+| Power | Embedded medical-grade rechargeable Li-ion, 200 mAh; 90.6 mW normal power; seven hours of continuous operation per charge; inductive transcutaneous recharge at 2 MHz. A proposed extension to 16-hour operation is development work, not achieved battery life [2] |
+| Thermal management | Heating observed during charging; active skin cooling used in animals [2] |
+| Packaging and hermeticity | Hermetically sealed titanium enclosure with sapphire window; whole neural interface 44.5 g (battery 7.4 g, titanium package 30.6 g, PCBs and components 6.5 g) [2] |
+| MRI compatibility | Unreported in the reviewed sources |
+| Surgical complexity | Unreported in the reviewed sources |
+| Output connectors | Custom hermetic feedthrough: 104 Pt/Ir pins, 100 connected to the array, two reference leads, two open [2] |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Unreported in the reviewed sources |
+| Chronic yield | Unreported in the reviewed sources |
+| Stability over time | Abstract reports stable operation during over one year of testing; not identical uninterrupted lifetime for every channel, animal or package [2] |
+| Longevity | Over one year of testing reported in the abstract; seven hours per battery charge [1, 2] |
+| Revision and explant experience | Unreported in the reviewed sources |
+| Adverse events | Unreported in the reviewed sources |
+| Notable demonstrations | Wireless recording in moving swine and rhesus macaques [1, 2] |
+
+## Clinical and preclinical evidence
+
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None for this complete system [1] |
+| Preclinical cohort | Swine and rhesus macaques; four interfaces in the Figure 5 animals [2] |
+| Follow-up duration | Over one year of testing per the abstract [1] |
+| Indications | Neural recording research; clinical use was a design goal, not a human result [1] |
+| Trials and registries | Unreported in the reviewed sources |
+| Primary outcomes | Stable wireless recording of cortical dynamics in moving primates and swine [1] |
+| Key limitations | Component regulatory status is not whole-system approval; heating during charging; incomplete skin closure in two initial macaques [1, 2] |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Fully subcutaneous hermetic package removes the external percutaneous electronics connection; transcutaneous charging [2] |
+| Limitations | Charging and enclosure constraints, heating during charging, seven hours per charge [2] |
+| Scaling constraints | Battery life, charging heat and the single-array connection [2] |
+
 ## Identity and configuration
 
 | Property | Published configuration |
