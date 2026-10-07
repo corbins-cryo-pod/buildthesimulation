@@ -69,6 +69,7 @@ const FACETS = {
 } as const;
 
 export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
+  const [initialized, setInitialized] = useState(false);
   const [query, setQuery] = useState("");
   const [axis, setAxis] = useState("");
   const [iface, setIface] = useState("");
@@ -89,10 +90,12 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
     setIface(norm(iface0));
     setForm(norm(form0));
     setDir(new Set(dir0.map(norm).filter(Boolean)));
+    setInitialized(true);
   }, []);
 
   // Keep URL in sync (shareable filters) without full navigation.
   useEffect(() => {
+    if (!initialized) return;
     const url = new URL(window.location.href);
 
     const q = query.trim();
@@ -113,7 +116,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
     else url.searchParams.delete("dir");
 
     window.history.replaceState({}, "", url);
-  }, [query, axis, iface, form, dir]);
+  }, [query, axis, iface, form, dir, initialized]);
 
   const normalizedEntries = useMemo(() => {
     return props.entries.map((e) => {
@@ -158,9 +161,9 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
   const filtered = useMemo(() => {
     const q = norm(query);
     return normalizedEntries.filter((e: any) => {
-      if (axis && !e._tags.has(axis)) return false;
-      if (iface && !e._tags.has(iface)) return false;
-      if (form && !e._tags.has(form)) return false;
+      if (axis && e._axis !== axis && !e._tags.has(axis)) return false;
+      if (iface && e._iface !== iface && !e._tags.has(iface)) return false;
+      if (form && e._form !== form && !e._tags.has(form)) return false;
 
       // Directionality is multi-select AND.
       for (const d of dir) {
