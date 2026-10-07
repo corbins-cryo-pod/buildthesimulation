@@ -26,6 +26,13 @@ for (const collection of collections) {
     assert(order && !orders.has(order), `${collection}/${record.file}: missing or duplicate order ${order}`);
     orders.add(order);
     const id = field(record, collection === 'designs' ? 'device_id' : 'application_id');
+    if (collection !== 'companies') {
+      assert(id, `${collection}/${record.file}: identifying ID missing`);
+      assert(['intracortical','ecog','seeg','endovascular','pni','dbs','scs','other'].includes(field(record, 'interface_class')), `${record.file}: interface class missing or invalid`);
+      assert(['human','preclinical','research','theoretical'].includes(field(record, 'status')), `${record.file}: evidence stage missing or invalid`);
+      const updated = field(record, 'last_updated');
+      assert(updated && /^\d{4}-\d{2}-\d{2}$/.test(updated) && Number.isFinite(Date.parse(updated)), `${record.file}: review date missing or invalid`);
+    }
     if (id) { assert(!ids.has(id), `${collection}/${record.file}: duplicate ID ${id}`); ids.add(id); }
     for (const link of record.text.matchAll(/\]\((\/(?:devices|applications|companies)\/[^\s)]+)\)/g)) {
       const pathname = link[1].split(/[?#]/)[0];
