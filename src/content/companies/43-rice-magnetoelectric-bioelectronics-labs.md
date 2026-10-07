@@ -26,9 +26,11 @@ This brief is separate from Rice's [Luan and Xie ultraflexible interface labs](/
 - [ME-BIT nerve stimulator, 2022](/devices/113-mebit-magnetoelectric-endovascular-stimulator/) and its [rat/pig application](/applications/114-mebit-rat-pig-nerve-stimulation-2022/). Both faculty appear in the primary paper. Direct contact, vascular leads and separate delivery demonstrations are not one experiment. The catalog preserves conflicting animal counts and pulse-width descriptions.
 - [Distributed ME spinal IPGs, 2025](/devices/115-magnetoelectric-network-spinal-stimulators-2025/) and the [two-minipig spinal application](/applications/116-magnetoelectric-network-pig-spinal-stimulation-2025/). Robinson appears in the primary paper. This link does not assign the paper to Yang or make either lab the sole owner of the collaboration. Two then four implanted devices are distinct from six bench IPGs, 12 LED nodes and power-transfer experiments.
 
+- [Published DOT cortical stimulator, 2024](/devices/117-dot-magnetoelectric-epidural-stimulator-2024/), with [two acute human tests](/applications/118-dot-acute-human-motor-stimulation-2024/) and a separate [chronic pig application](/applications/119-dot-chronic-pig-cortical-stimulation-2024/). Primary affiliations include Rice and Motif. Direct cortex and dura-covered human placements are kept distinct.
+
 ## Evidence boundary
 
-The cataloged studies demonstrate stimulation and delivery under their reported experimental conditions. They do not establish a human clinical treatment, chronic rehabilitation, a complete distributed neural-recording decoder or regulatory approval. The lab website's pain-treatment and cardiac-pacing goals remain goals unless a specific primary study supports the result.
+The cataloged studies demonstrate stimulation and delivery under their reported experimental conditions. Acute human motor activation is not a clinical treatment. The studies do not establish a human clinical treatment, chronic rehabilitation, a complete distributed neural-recording decoder or regulatory approval. The lab website's pain-treatment and cardiac-pacing goals remain goals unless a specific primary study supports the result.
 
 Long-term packaging, transmitter burden, placement sensitivity and exposure-standard limits remain device-specific. The 2025 acute spinal configuration cannot borrow chronic survival from earlier glass-packaged hardware. A general lab claim about bidirectional communication does not create a recording uplink in that spinal experiment.
 
@@ -42,3 +44,5 @@ Map coordinates are omitted; university addresses do not establish a precise lab
 - [SIMS battery-less implant project](https://vlsi.rice.edu/project/bio_implants/).
 - [2022 ME-BIT primary paper](https://www.nature.com/articles/s41551-022-00873-7).
 - [2025 network primary manuscript](https://pmc.ncbi.nlm.nih.gov/articles/PMC12557647/).
+
+- [2024 DOT primary paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC11014439/).
