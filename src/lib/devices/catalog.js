@@ -3,6 +3,17 @@
 const utahSource = { label: 'Blackrock — Utah Array specifications and photographs', url: 'https://blackrockneurotech.com/products/utah-array/' };
 const slantSource = { label: 'Blackrock — Slant Array specifications and side view', url: 'https://blackrockneurotech.com/products/slant-array/' };
 export const deviceModels = {
+  'BTSD-ACAD-0051': {
+    id: 'ptnrgrid-1024-recording-patch', revision: 1, deviceId: 'BTSD-ACAD-0051', kind: 'surface-grid',
+    name: 'PtNRGrid · 1,024-site recording patch', slug: '74-ptnrgrid-platinum-nanorod-surface-arrays',
+    physicalSites: 1024, simultaneousChannels: null, rows: 32, columns: 32,
+    pitch: 1, siteSize: 0.03, siteShape: 'circle', siteDepth: 0.002,
+    thickness: 0.0066, width: 32, length: 32,
+    specs: [['Modeled layout', '32 × 32 contacts, Figure 1C'], ['Contact diameter / pitch', '30 µm / 1 mm'], ['Parylene film / contact recess', '6.6 µm / approximately 2 µm'], ['Recording coverage', '32 × 32 mm cropped patch'], ['Not modeled', 'Perfusion holes, trace routes, cable, PCB and nanorod texture']],
+    notes: 'Flat recording-patch reference for the 1,024-channel, 1 mm-pitch layout in Figure 1C. The 32 × 32 arrangement is stated in the figure; the 32 mm square uses the reported sensing coverage as a crop, not a recovered full outline. Circular contact faces are 30 µm across and recessed approximately 2 µm below the 6.6 µm film surface. The local circular wells are schematic openings at the contact diameter, not a recovered sidewall profile. Perfusion holes, gold interconnects, nanorod texture, cable, PCB, connector and cortical curvature are omitted. All contact coordinates are reconstructed from the regular layout; no acquisition map is inferred.',
+    sources: [{ label: 'Tchoe et al. (2022), fabrication and Figure 1C', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9650779/' }],
+    references: [{ label: 'Published PtNRGrid layouts, Figure 1', url: 'https://cdn.ncbi.nlm.nih.gov/pmc/blobs/2cf8/9650779/8e2a080ff0ff/nihms-1843201-f0001.jpg' }],
+  },
   'BTSD-ACAD-0044': {
     id: 'active-microecog-196-recording-patch', revision: 1, deviceId: 'BTSD-ACAD-0044', kind: 'surface-grid',
     name: 'Active micro-ECoG · 196-site recording patch', slug: '65-active-microecog-auditory-cortex-array',
@@ -151,7 +162,7 @@ export function getContactGeometry(model) {
     for (let i = 0; i < model.physicalSites; i++) sites.push({ id: `site-${i}`, positionMm: [(i - (model.physicalSites - 1) / 2) * model.pitch, 0, model.length], normal: [0, 0, 1], channel: null, contactAreaMm2: null, positionMeaning: 'nominal cut tip center; coating geometry unknown' });
   } else if (model.kind === 'surface-grid') {
     for (let row = 0; row < model.rows; row++) for (let col = 0; col < model.columns; col++) {
-      sites.push({ id: `r${row}-c${col}`, positionMm: [(col - (model.columns - 1) / 2) * model.pitch, (row - (model.rows - 1) / 2) * model.pitch, 0], normal: [0, 0, 1], channel: null, contactAreaMm2: model.siteSize ** 2, positionMeaning: 'contact center in reconstructed flat recording patch' });
+      sites.push({ id: `r${row}-c${col}`, positionMm: [(col - (model.columns - 1) / 2) * model.pitch, (row - (model.rows - 1) / 2) * model.pitch, model.siteDepth ? -model.siteDepth : 0], normal: [0, 0, 1], channel: null, contactAreaMm2: model.siteShape === 'circle' ? Math.PI * (model.siteSize / 2) ** 2 : model.siteSize ** 2, positionMeaning: 'contact center in reconstructed flat recording patch; depth relative to film surface' });
     }
   } else if (model.kind === 'utah') {
     for (let row = 0; row < model.rows; row++) {
