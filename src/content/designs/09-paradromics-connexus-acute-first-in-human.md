@@ -53,64 +53,65 @@ The temporary intraoperative recording announced in June 2025 established an acu
 
 Study authorization is distinct from commercial approval. The geometry model does not establish long-term safety, recording yield or durability, and company design goals should not be read as demonstrated lifetime performance.
 
-### Identity
+## Identity
 
 | Field | Value and source scope |
 | --- | --- |
 | Device | Connexus cortical module and fully internalized system |
 | Manufacturer | Paradromics |
 | Interface class | Intracortical, penetrating microwire array |
+| Origin | Paradromics; Connect-One study with the University of Michigan [6] |
 | First demonstrated | Temporary intraoperative human recording announced June 2, 2025 [5] |
-| First implanted | Acute recording June 2025 [5]; first Connect-One chronic implant announced June 17, 2026 [6] |
+| First human implant | Acute recording June 2025 [5]; first Connect-One chronic implant announced June 17, 2026 [6] |
 | Species studied | Human (investigational); preclinical animal work referenced by the manufacturer but not detailed in reviewed sources |
 | Regulatory status | Investigational: IDE authorized November 2025; Connect-One Early Feasibility Study. Not commercial approval [6] |
 | Function | Recording for intended speech and computer-control applications [1] |
 | Target tissue | Cortex; severe motor impairment population intended [1] |
 
-### Geometry and architecture
+## Geometry and architecture
 
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Penetrating microwire array |
+| Array layout | Circular module with penetrating wires on a 300 µm square lattice [2]; no coordinate map in the reviewed sources, so the model lattice is reconstructed |
 | Electrode count | 421 physical microwires per module [1]; 420 analyzed in the SfN report [2] |
-| Pitch / spacing | 300 µm square lattice [2] |
-| Insertion depth | 1.5 mm [1, 2] |
-| Package | Approximately 1 cm circular module [3]; the 2023 slides show an older square package kept separate [4] |
-| Wire diameter | Older technical slides report <40 µm PtIr wires [4]; current exact diameter unreported |
-| Tip / exposed site geometry | Unreported; exposed area stays unknown |
-| Electrode material | Platinum-iridium [3, 4] |
+| Pitch | 300 µm square lattice [2] |
+| Electrode lengths | 1.5 mm insertion depth [1, 2]; wire lengths beyond that unreported |
+| Shank width and thickness | Older technical slides report wires under 40 µm diameter [4]; current exact diameter unreported. Module about 1 cm circular [3]; the 2023 slides show an older, different square package of 9 mm [4] |
+| Tip and exposed site geometry | Unreported; exposed area stays unknown |
+| Contact coating | Platinum-iridium electrodes [3, 4]; any additional coating unreported |
 | Insulation | Unreported in reviewed sources |
 | Insertion method | Unreported in reviewed sources |
-| Anchoring / fixation | Module on cortex with flexible lead to the chest transceiver [1]; fixation detail unreported |
+| Anchoring and fixation | Module on cortex with a flexible lead to the chest transceiver [1]; fixation detail unreported |
 
-### Electrode and channel physics
+## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
 | Exposed site area | Unreported in reviewed sources |
 | Electrode material | Platinum-iridium [3, 4] |
-| Impedance | Unreported in reviewed sources |
-| Noise floor / SNR | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Noise floor or SNR | Unreported in reviewed sources |
 | Recording modality | Intracortical neural signals; specific bands not specified in reviewed sources |
 | Sampling rate | Unreported in reviewed sources |
 | Stimulation capability | Unreported for this system in reviewed sources |
 | Charge injection limit | Unreported |
 | Reference and ground | Unreported in reviewed sources |
 
-### Tissue interface and bioresponse
+## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Cerebral cortex, penetrating microwires, 1.5 mm insertion depth [1, 2] |
-| Insertion trauma / BBB disruption | Inherent to penetrating wires; quantitative data unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Inherent to penetrating wires; quantitative data unreported in reviewed sources |
 | Vascular disruption risk | Placement-dependent; not quantified in reviewed sources |
 | Micromotion sensitivity | Rigid microwires in soft tissue; comparative data unreported |
-| Gliosis / encapsulation | Chronic histology unreported in reviewed public sources |
+| Gliosis and encapsulation | Chronic histology unreported in reviewed public sources |
 | Neuron loss near sites | Unreported in reviewed sources |
 | Foreign-body response mitigation | Unreported in reviewed sources |
 | Typical failure modes | Chronic stability and yield limits typical of intracortical interfaces; no device-specific failure data published in reviewed sources |
 
-### System architecture
+## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
@@ -120,11 +121,12 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | Sampling rate | Unreported in reviewed sources |
 | Power | Inductive power to the implanted transceiver [1] |
 | Thermal management | Unreported in reviewed sources |
-| Packaging / hermeticity | Fully internalized system [1]; packaging-stack detail unreported |
+| Packaging and hermeticity | Fully internalized system [1]; packaging-stack detail unreported |
 | MRI compatibility | Unreported in reviewed sources |
 | Surgical complexity | Open cranial surgery for module placement plus chest transceiver implantation; procedural detail limited in reviewed sources |
+| Output connectors | Flexible lead from module to chest transceiver [1]; connector detail unreported |
 
-### Performance envelope
+## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
@@ -132,30 +134,31 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | Chronic yield | Unreported publicly |
 | Stability over time | Unreported publicly |
 | Longevity | Company design goals exist; demonstrated lifetime unreported |
-| Revision / explant experience | Acute intact explant demonstrated, removed in under 20 minutes per the announcement [5]; chronic revision experience unreported |
+| Revision and explant experience | Acute intact explant demonstrated, removed in under 20 minutes per the announcement [5]; chronic revision experience unreported |
 | Adverse events | Acute procedure reported as successful [5]; no chronic safety dataset public |
 | Notable demonstrations | First temporary human recording June 2025 [5]; first Connect-One chronic implant June 2026 [6] |
 
-### Clinical and preclinical evidence
+## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | At least one acute recording participant [5] and the first Connect-One implant recipient [6]; full enrollment not pinned here |
+| Preclinical cohort | Preclinical cohort details are not detailed in the reviewed sources |
 | Follow-up duration | Acute (minutes) for the 2025 test; chronic follow-up beginning with the 2026 EFS implant [5, 6] |
 | Indications | Severe motor impairment; speech restoration intended [1, 6] |
-| Trials / registries | Connect-One Early Feasibility Study; registry identifier not pinned in this sheet |
+| Trials and registries | Connect-One Early Feasibility Study; registry identifier not pinned in this sheet |
 | Primary outcomes | Acute: surgical feasibility, signal recording, intact explant [5]; chronic outcomes pending |
 | Key limitations | Acute-first public evidence; chronic performance and safety require peer-reviewed reporting |
 
-### Engineering tradeoffs
+## Engineering tradeoffs
 
-| Aspect | Assessment |
+| Field | Value and source scope |
 | --- | --- |
 | Strengths | High per-module electrode count, demonstrated rapid intraoperative implant and explant, fully internalized chronic system architecture |
 | Limitations | Acute-first public evidence, sparse primary technical disclosure, unproven chronic yield and durability |
 | Scaling constraints | Surgical workflow, packaging and feedthrough reliability, bandwidth, power and chronic interface biology |
 
-### Sources
+## References
 
 1. [Paradromics — Connexus product and system description](https://paradromics.com/connexus/).
 2. [Paradromics — SfN 2025, Part 2; published January 21, 2026](https://paradromics.com/blog/paradromics-sfn-part-2/).
