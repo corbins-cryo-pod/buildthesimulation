@@ -47,3 +47,7 @@ Representative sources:
 
 ### Translation-relevant neurotech (example)
 - MIT News (implant concept coverage): <https://news.mit.edu/2025/new-therapeutic-brain-implants-defy-surgery-need-1105>
+
+### MEND material interface, 2024
+
+The [magnetoelectric nanodisc interface](/devices/132-mend-magnetoelectric-nanodiscs-2024/) is a primary-paper-grounded MIT-linked entry, with separate [VTA reward/optical studies](/applications/133-mend-vta-reward-and-photometry-2024/) and [STN rotational behavior](/applications/134-mend-stn-mouse-rotation-2024/). It is injected material without an ASIC or neural-recording radio. Modulation and behavior do not need transgenes; optical verification uses AAV-GCaMP6s. [Primary paper](https://www.nature.com/articles/s41565-024-01798-9) grounds the authors and MIT affiliations, with Friedrich-Alexander University collaborators listed separately.
