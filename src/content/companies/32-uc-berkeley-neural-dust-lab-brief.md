@@ -2,8 +2,8 @@
 title: "UC Berkeley, neural dust (lab brief)"
 order: 32
 pubDate: 2026-10-06
-updatedDate: 2026-10-06
-lastVerified: 2026-10-06
+updatedDate: 2026-10-07
+lastVerified: 2026-10-07
 description: "The Berkeley team behind ultrasonic neural dust: a battery-free 3 mm mote powered and read by ultrasound, shown in rat nerve and muscle in 2016."
 region: "American"
 kind: "Lab"
@@ -25,3 +25,8 @@ The neural dust work comes from the *University of California, Berkeley*. The 20
 ### Limits
 
 No single lab or principal investigator is named here because the sources read did not tie the project to one. Preclinical.
+
+### Later stimulation hardware
+
+- [StimDust ultrasonic nerve stimulator](/devices/111-stimdust-ultrasonic-nerve-stimulator/) and [acute rat stimulation](/applications/112-stimdust-acute-rat-sciatic-stimulation-2020/): the 2020 published affiliations include Berkeley/UCSF bioengineering, Berkeley EECS, Boise State and Biohub. This is not the 2016 recording mote or a single-lab attribution. The published reporting summary identifies six twitch-confirmed animals and three quantitative subjects, with timing errors and analysis exclusions retained.
+- Primary: <https://www.nature.com/articles/s41551-020-0518-9>.
