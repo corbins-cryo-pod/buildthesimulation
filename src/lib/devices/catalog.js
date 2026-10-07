@@ -3,6 +3,22 @@
 const utahSource = { label: 'Blackrock — Utah Array specifications and photographs', url: 'https://blackrockneurotech.com/products/utah-array/' };
 const slantSource = { label: 'Blackrock — Slant Array specifications and side view', url: 'https://blackrockneurotech.com/products/slant-array/' };
 export const deviceModels = {
+  'BTSD-ACAD-0004': {
+    id: 'neurograin-packaged-envelope', revision: 1, deviceId: 'BTSD-ACAD-0004', kind: 'chip-envelope',
+    name: 'Neurograin · packaged chip envelope', slug: '25-neurograins-wireless-microimplant-network',
+    physicalSites: 0, simultaneousChannels: null, width: 0.65, length: 0.65, thickness: 0.25,
+    specs: [['Modeled structure', 'One packaged chiplet; no electrode geometry'], ['Packaged dimensions', '650 × 650 × 250 µm, Figure 1'], ['Bare stimulating ASIC', '500 × 500 µm, Figure 2; thickness not given'], ['Not modeled', 'Contact pads, coil, microwire, hub and network placement']],
+    notes: 'A dimensioned package envelope, not a complete electrode model. Figure 1 gives 650 × 650 × 250 µm chiplets; Figure 2 gives a 500 × 500 µm stimulating ASIC. These are different reported structures, not interchangeable sizes. The plain cuboid preserves only the packaged dimensions. Contact pad geometry, internal coil, surface topography, optional stimulation microwire and hub are omitted. Zero exported sites means no site coordinates have been reconstructed, not that the device has no electrodes.',
+    sources: [{ label: 'Lee et al. (2021), packaged chiplets in Figure 1', url: 'https://www.nature.com/articles/s41928-021-00631-8/figures/1' }, { label: 'Lee et al. (2021), stimulating ASIC in Figure 2', url: 'https://www.nature.com/articles/s41928-021-00631-8/figures/2' }], references: [],
+  },
+  'BTSD-ACAD-0005': {
+    id: 'carbon-fiber-eight-fiber-row', revision: 1, deviceId: 'BTSD-ACAD-0005', kind: 'carbon-row',
+    name: 'Carbon fiber · eight-fiber row', slug: '26-carbon-fiber-electrode-arrays-michigan',
+    physicalSites: 8, simultaneousChannels: null, pitch: 0.1537, diameter: 0.0084, coreDiameter: 0.0068, length: 4.5,
+    specs: [['Modeled structure', 'One eight-fiber row, not the full dual-sided board'], ['Coated / bare diameter', '8.4 / 6.8 µm'], ['Pitch', '153.7 ± 1 µm measured; 152.4 µm board design'], ['Fiber length', '4.5 mm nominal within reported 4-5 mm range'], ['Tip interface', 'Cut carbon face; PEDOT:pTS thickness unknown'], ['Not modeled', 'PCB, second row, PEG and silicon supports']],
+    notes: 'One straight eight-fiber row at the measured mean pitch. The paper describes eight board traces per side, a 6.8 µm carbon core and 800 nm radial parylene-C coating, yielding an 8.4 µm outer diameter. Length is a nominal 4.5 mm within the 4-5 mm chronic-array range, not a measured individual probe. Flat cut tips are shown at the core diameter; PEDOT:pTS topography and electrochemical area are unknown. Board geometry, opposite row spacing, PEG insertion coating, silicon supports, wire connections and implanted pose are omitted. Contact area is exported as unknown.',
+    sources: [{ label: 'Patel et al. (2015), fabrication and chronic-array methods', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4789140/' }], references: [],
+  },
   'BTSD-ACAD-0003': {
     id: 'neurogrid-256-recording-patch', revision: 1, deviceId: 'BTSD-ACAD-0003', kind: 'surface-grid',
     name: 'NeuroGrid · 256-site recording patch', slug: '24-neurogrid-pedot-pss-surface-array',
@@ -120,7 +136,11 @@ export function getNeuralinkThread(model, thread) {
 // Utah origin: center of substrate tissue-facing surface. NP origin: shank base.
 export function getContactGeometry(model) {
   const sites = [];
-  if (model.kind === 'surface-grid') {
+  if (model.kind === 'chip-envelope') {
+    // No contact geometry has been recovered from the package dimensions.
+  } else if (model.kind === 'carbon-row') {
+    for (let i = 0; i < model.physicalSites; i++) sites.push({ id: `site-${i}`, positionMm: [(i - (model.physicalSites - 1) / 2) * model.pitch, 0, model.length], normal: [0, 0, 1], channel: null, contactAreaMm2: null, positionMeaning: 'nominal cut tip center; coating geometry unknown' });
+  } else if (model.kind === 'surface-grid') {
     for (let row = 0; row < model.rows; row++) for (let col = 0; col < model.columns; col++) {
       sites.push({ id: `r${row}-c${col}`, positionMm: [(col - (model.columns - 1) / 2) * model.pitch, (row - (model.rows - 1) / 2) * model.pitch, 0], normal: [0, 0, 1], channel: null, contactAreaMm2: model.siteSize ** 2, positionMeaning: 'contact center in reconstructed flat recording patch' });
     }
@@ -181,7 +201,7 @@ export function getContactGeometry(model) {
 
 export function exportGeometry(model) {
   return { schemaVersion: 1, units: 'mm', coordinateSystem: model.kind === 'stentrode' ? 'right-handed; scaffold longitudinal axis +Z; radial outward normals' : model.kind === 'neuralink' ? 'right-handed; display fan extends +Y; pad normals +Z; not an implanted pose' : 'right-handed; insertion +Z; see origin',
-    origin: model.kind === 'surface-grid' ? 'center of flat recording face; film occupies negative Z' : model.kind === 'stentrode' ? 'center of proximal scaffold end; scaffold Z=0 to length; illustrative lead extends into negative Z' : ['utah', 'connexus'].includes(model.kind) ? 'center of tissue-facing substrate surface' : model.kind === 'neuralink' ? 'center of thread-facing enclosure surface; enclosure occupies negative Z' : 'center of shank base',
+    origin: model.kind === 'chip-envelope' ? 'center of package; no implant pose or electrode coordinates' : model.kind === 'carbon-row' ? 'center of row at fiber roots; straight fibers extend +Z' : model.kind === 'surface-grid' ? 'center of flat recording face; film occupies negative Z' : model.kind === 'stentrode' ? 'center of proximal scaffold end; scaffold Z=0 to length; illustrative lead extends into negative Z' : ['utah', 'connexus'].includes(model.kind) ? 'center of tissue-facing substrate surface' : model.kind === 'neuralink' ? 'center of thread-facing enclosure surface; enclosure occupies negative Z' : 'center of shank base',
     model, sites: getContactGeometry(model),
     simulationNote: 'Geometric reference only. Assign channels, transform to tissue coordinates and supply a validated electrical model before simulation. Null area/channel values are unknown, not zero.' };
 }
