@@ -9,6 +9,8 @@ const posts = (await getCollection("applications"))
 const devices = await getCollection("designs");
 const orgs = await getCollection("companies");
 const usedOrgs = orgs.filter(o => posts.some(p => p.data.orgs.includes(o.slug))).sort((a,b) => a.data.title.localeCompare(b.data.title));
+const stages = [...new Set(posts.map(p => p.data.status))].sort();
+const stageLabels: Record<string, string> = {human: "Human evidence", preclinical: "Preclinical", research: "Research", theoretical: "Theoretical"};
 const modalities = [...new Set(posts.map(p => p.data.modality))].sort();
 const deviceName = (s) => {
   const d = devices.find((x) => x.slug === s);
@@ -23,7 +25,7 @@ const deviceName = (s) => {
 >
   <section class="card">
     <p class="muted">
-      A device is the hardware. An application is a device used for something: a study, a decoding paradigm or a clinical program. Each entry links to its device where the catalog has one, and to the lab or organization in the atlas.
+      A device is the hardware. An application is a device used for something: a study, a decoding paradigm or a clinical program. Each entry links to its device where the catalog has one, and to the lab or organization in the atlas. Evidence stage describes the reported study, not regulatory approval or readiness for clinical use.
     </p>
   </section>
 
@@ -33,6 +35,7 @@ const deviceName = (s) => {
       <label>Search<input id="app-search" type="search" placeholder="Study, device or result" /></label>
       <label>Interface<select id="app-modality"><option value="">All interfaces</option>{modalities.map(m => <option value={m}>{m}</option>)}</select></label>
       <label>Lab or organization<select id="app-org"><option value="">All organizations</option>{usedOrgs.map(o => <option value={o.slug}>{strip(o.data.title)}</option>)}</select></label>
+      <label>Evidence stage<select id="app-stage"><option value="">All stages</option>{stages.map(s => <option value={s}>{stageLabels[s] ?? s}</option>)}</select></label>
       <button id="app-clear" type="button">Clear filters</button>
     </div>
     <p class="muted count" id="app-count" aria-live="polite">{posts.length} entries</p>
@@ -40,8 +43,9 @@ const deviceName = (s) => {
       {posts.map((p) => {
         const names = p.data.devices.map(deviceName).filter(Boolean);
         return (
-          <a class="item" data-modality={p.data.modality} data-orgs={p.data.orgs.join(" ")} href={`/applications/${p.slug}/`}>
+          <a class="item" data-stage={p.data.status} data-modality={p.data.modality} data-orgs={p.data.orgs.join(" ")} href={`/applications/${p.slug}/`}>
             <h3>{strip(p.data.title)}</h3>
+            <p class="on">{stageLabels[p.data.status] ?? p.data.status}</p>
             {names.length ? <p class="on">Device: {names.join(", ")}</p> : null}
             {p.data.description ? <p class="desc">{p.data.description}</p> : null}
           </a>
@@ -54,32 +58,33 @@ const deviceName = (s) => {
     const search = document.querySelector<HTMLInputElement>('#app-search')!;
     const modality = document.querySelector<HTMLSelectElement>('#app-modality')!;
     const org = document.querySelector<HTMLSelectElement>('#app-org')!;
+    const stage = document.querySelector<HTMLSelectElement>('#app-stage')!;
     const items = Array.from(document.querySelectorAll<HTMLAnchorElement>('.item'));
     function filter() {
       const query = search.value.trim().toLocaleLowerCase();
       let count = 0;
       for (const item of items) {
-        item.hidden = !((item.textContent ?? '').toLocaleLowerCase().includes(query) && (!modality.value || item.dataset.modality === modality.value) && (!org.value || (item.dataset.orgs ?? '').split(' ').includes(org.value)));
+        item.hidden = !((item.textContent ?? '').toLocaleLowerCase().includes(query) && (!modality.value || item.dataset.modality === modality.value) && (!stage.value || item.dataset.stage === stage.value) && (!org.value || (item.dataset.orgs ?? '').split(' ').includes(org.value)));
         if (!item.hidden) count++;
       }
       document.querySelector('#app-count')!.textContent = `${count} of ${items.length} entries`;
       (document.querySelector('#app-empty') as HTMLElement).hidden = count !== 0;
       const url = new URL(location.href);
-      for (const [key,value] of [['q',search.value],['interface',modality.value],['org',org.value]]) {
+      for (const [key,value] of [['q',search.value],['interface',modality.value],['org',org.value],['stage',stage.value]]) {
         if (value) url.searchParams.set(key,value); else url.searchParams.delete(key);
       }
       history.replaceState(null,'',url);
     }
     const params = new URLSearchParams(location.search);
-    search.value = params.get('q') ?? ''; modality.value = params.get('interface') ?? ''; org.value = params.get('org') ?? '';
-    search.addEventListener('input',filter); modality.addEventListener('change',filter); org.addEventListener('change',filter);
-    document.querySelector('#app-clear')!.addEventListener('click',() => { search.value = ''; modality.value = ''; org.value = ''; filter(); search.focus(); });
+    search.value = params.get('q') ?? ''; modality.value = params.get('interface') ?? ''; org.value = params.get('org') ?? ''; stage.value = params.get('stage') ?? '';
+    search.addEventListener('input',filter); modality.addEventListener('change',filter); org.addEventListener('change',filter); stage.addEventListener('change',filter);
+    document.querySelector('#app-clear')!.addEventListener('click',() => { search.value = ''; modality.value = ''; org.value = ''; stage.value = ''; filter(); search.focus(); });
     filter();
   </script>
 </Layout>
 
 <style>
-  .filters { display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:12px;align-items:end;margin:18px 0; }
+  .filters { display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:12px;align-items:end;margin:18px 0; }
   .filters label { font-size:16px;min-width:0; }
   .filters :is(input,select) { display:block;width:100%;min-width:0;margin-top:6px;padding:10px;border:1px solid var(--border);border-radius:10px;color:inherit;background:var(--panelStrong);font-size:16px; }
   .filters button { padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--panel);color:inherit;font-size:16px;cursor:pointer; }
