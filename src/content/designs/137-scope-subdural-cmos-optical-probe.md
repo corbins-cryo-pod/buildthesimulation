@@ -10,7 +10,7 @@ last_updated: 2026-10-07
 modality: "Other"
 description: "Wired CMOS fluorescence imager and microLED stimulator with lensless reconstruction. Published abstract, supplement and 2023 preprint are distinguished; no wireless or single-cell claim."
 website: "https://www.nature.com/articles/s41928-024-01209-w"
-tags: ["SCOPe", "Columbia", "CMOS", "SPAD", "optical", "preclinical"]
+tags: ["cortex", "recording", "stimulation", "bidirectional", "SCOPe", "Columbia", "CMOS", "SPAD", "optical", "preclinical"]
 draft: false
 ---
 

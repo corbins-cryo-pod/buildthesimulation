@@ -10,7 +10,7 @@ last_updated: 2026-10-07
 modality: "Intracortical"
 description: "960-site, 384-channel electrical probe with two sets of 14 laser-fed photonic emitters. Prototype blue-light leakage and tethered operation remain explicit."
 website: "https://www.nature.com/articles/s41592-026-03076-z"
-tags: ["Neuropixels Opto", "photonics", "optogenetics", "Allen Institute", "UCL", "IMEC", "prototype"]
+tags: ["cortex", "recording", "stimulation", "bidirectional", "microelectrode", "Neuropixels Opto", "photonics", "optogenetics", "Allen Institute", "UCL", "IMEC", "prototype"]
 draft: false
 ---
 

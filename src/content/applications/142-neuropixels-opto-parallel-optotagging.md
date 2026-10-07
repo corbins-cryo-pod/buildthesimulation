@@ -10,6 +10,7 @@ last_updated: 2026-10-07
 modality: "Intracortical"
 description: "261 tagged units across 40 sessions in 26 mice, using distinct blue/red opsin strategies. Count denominators, dual-color cross-sensitivity and unit-quality thresholds remain explicit."
 website: "https://www.nature.com/articles/s41592-026-03076-z"
+orgs: ["46-allen-ucl-neuropixels-opto-collaboration"]
 devices: ["140-neuropixels-opto-prototype-2026"]
 tags: ["Neuropixels Opto", "photonics", "optogenetics", "Allen Institute", "UCL", "IMEC", "prototype"]
 draft: false
@@ -42,6 +43,8 @@ The relative-position analysis finds no gap in tagging coverage at the tested 10
 Some blue-light responses occur from distant emitters. The authors describe leaked light and the need for recalibration as a possible cause. Optical selectivity therefore remains constrained by the prototype's blue material instability, scattering and opsin distribution.
 
 The reporting summary says no data were excluded, but explicit spike-quality and response filters still determine the analyzed unit set. Tagging 261 units is not 261 command channels, closed-loop behavioral control or a human trial.
+
+The [paper-grounded collaboration brief](/companies/46-allen-ucl-neuropixels-opto-collaboration/) links the participating organizations without assigning each circuit or experiment to an inferred owner.
 
 ## Primary sources
 
