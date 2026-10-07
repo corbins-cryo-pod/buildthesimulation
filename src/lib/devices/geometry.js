@@ -42,7 +42,17 @@ export function buildDeviceMesh(model) {
   const contacts = new THREE.Group(); contacts.name = 'contact-surfaces';
   group.add(bodies, contacts);
   const sites = getContactGeometry(model);
-  if (model.kind === 'surface-grid') {
+  if (model.kind === 'chip-envelope') {
+    bodies.add(new THREE.Mesh(new THREE.BoxGeometry(model.width, model.length, model.thickness), silicon));
+  } else if (model.kind === 'carbon-row') {
+    const fiberMaterial = new THREE.MeshStandardMaterial({ color: 0x9ba6b2, roughness: 0.55 });
+    for (const site of sites) {
+      const shaft = cylinder(model.diameter / 2, model.length, fiberMaterial, model.length / 2);
+      shaft.position.x = site.positionMm[0]; bodies.add(shaft);
+      const pad = new THREE.Mesh(new THREE.CircleGeometry(model.coreDiameter / 2, 24), metal);
+      pad.position.fromArray(site.positionMm); pad.name = site.id; contacts.add(pad);
+    }
+  } else if (model.kind === 'surface-grid') {
     const film = new THREE.Mesh(new THREE.BoxGeometry(model.width, model.length, model.thickness), new THREE.MeshStandardMaterial({ color: 0x748c94, roughness: 0.65 }));
     film.position.z = -model.thickness / 2; bodies.add(film);
     const padGeometry = new THREE.PlaneGeometry(model.siteSize, model.siteSize);

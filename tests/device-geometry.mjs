@@ -16,6 +16,15 @@ for (const model of Object.values(deviceModels)) {
   const {group,contacts} = buildDeviceMesh(model);
   assert.equal(contacts.children.length, model.physicalSites);
   const bounds = new Box3().setFromObject(group);
+  if (model.kind === 'chip-envelope') {
+    close(bounds.max.x - bounds.min.x, .65); close(bounds.max.y - bounds.min.y, .65); close(bounds.max.z - bounds.min.z, .25);
+    assert.equal(sites.length, 0);
+  }
+  if (model.kind === 'carbon-row') {
+    close(sites[1].positionMm[0] - sites[0].positionMm[0], .1537); close(bounds.max.z, 4.5);
+    close(bounds.max.x - bounds.min.x, 7 * .1537 + .0084);
+    assert(sites.every(s => s.contactAreaMm2 === null));
+  }
   if (model.kind === 'surface-grid') {
     close(sites[1].positionMm[0] - sites[0].positionMm[0], .03);
     close(sites[16].positionMm[1] - sites[0].positionMm[1], .03);
