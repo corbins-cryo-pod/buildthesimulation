@@ -1,0 +1,61 @@
+---
+title: "MEND magnetoelectric nanodiscs, 2024"
+order: 132
+pubDate: 2026-10-07
+updatedDate: 2026-10-07
+device_id: "BTSD-ACAD-0080"
+interface_class: "other"
+status: "preclinical"
+last_updated: 2026-10-07
+description: "Injected Fe3O4-CoFe2O4-BaTiO3 nanodiscs mediate magnetic neuromodulation in mice. No ASIC, lead, recording uplink or stimulation transgene; optical verification uses a separate reporter."
+modality: "Other"
+website: "https://www.nature.com/articles/s41565-024-01798-9"
+tags: ["MEND", "nanodiscs", "magnetoelectric", "MIT", "neuromodulation", "preclinical"]
+draft: false
+---
+
+# MEND magnetoelectric nanodiscs
+
+Kim and colleagues report magnetoelectric nanodiscs (MENDs) in Nature Nanotechnology, published October 11, 2024. This is an injected material interface, not a packaged battery-free microelectronic implant. Primary affiliations include [MIT](/companies/22-mit-neural-engineering-neurotech-ecosystem-lab-brief/) and Friedrich-Alexander University of Erlangen-Nuremberg.
+
+Separate applications cover [VTA reward and longitudinal optical measurements](/applications/133-mend-vta-reward-and-photometry-2024/) and [STN-driven mouse rotations](/applications/134-mend-stn-mouse-rotation-2024/). No human therapeutic result is reported.
+
+## Material interface
+
+| Layer or property | Published detail |
+| --- | --- |
+| Core | Magnetite, Fe₃O₄ |
+| Magnetostrictive shell | CoFe₂O₄ |
+| Piezoelectric outer shell | BaTiO₃ |
+| Shape | Hexagonal core-double-shell nanodiscs |
+| Nominal size | Abstract: 250-nm diameter, 50-nm thickness |
+| Measured final diameter | 250 ± 41 nm, an ensemble statistic rather than identical particles |
+| Peak measured ME coefficient | 150 mV mT⁻¹ cm⁻¹ at 220-mT offset and 10-mT, 150-Hz alternating field |
+| Single-particle potential | Supplementary Note 1 calculates 37.5 µV for these conditions |
+| Circuitry | No ASIC, battery, rectifier board, neural-data radio or individually addressed digital node |
+
+The external magnetic setup supplies both a strong static offset field and an alternating field. Reporting only the 10-mT alternating component would hide most of the exposure. The disc diameter is not an implantation-cannula diameter or the size of the injected bolus.
+
+## Mechanism is partly a model
+
+The measured ME coefficient is about four times that of the isotropic comparator. A greater-than-1,000-fold simulated strain enhancement is a different quantity, not a measured 1,000-fold neural benefit. The calculated single-particle voltage is far below the roughly 15-30-mV excitation threshold discussed in the supplement.
+
+The authors propose spatial and temporal summation of repeated subthreshold depolarization. They explicitly call the model qualitative and note missing current-injection, ion-channel, geometry and surrounding-ion effects. Observed calcium responses and behavior support material-mediated modulation; they do not prove every part of the proposed mechanism or millisecond single-neuron control.
+
+## Operating window and adverse effects
+
+In culture, 1 µg/mm² and three ten-second 1-kHz field epochs reduced viability and diminished responses, attributed to possible excitotoxicity. Reducing density to 0.75 µg/mm² avoided a measured viability difference in that assay. Frequencies above 150 Hz silenced neurons during exposure with rebound responses after the field stopped; subsequent experiments use 100 or 150 Hz. A larger ME coefficient at higher frequency is therefore not automatically a better stimulation condition.
+
+The abstract summarizes in-vivo injections as 1 mg/ml. Surgical methods use 1.5 mg/ml for most assays and an additional 0.5 mg/ml c-Fos condition. These are distinct reported doses, not silently normalized into one. Particle injections still require a craniotomy and brain injection. Transgene-free means no genetic sensitization is required for modulation or behavior; fibre-photometry validation uses AAV-delivered GCaMP6s and implanted optical fibres.
+
+Longitudinal optical responses persist to three months but decline. The paper suggests diffusion and cellular uptake, supported by approximately 500-µm spread and endocytosis images. It does not establish reversibility of material delivery, lifetime clearance, cell-type selectivity or chronic human safety. Immune-marker comparisons with PBS and a microwire are not a blanket biocompatibility certificate. MRI contrast in isolated brains is not full MRI-use qualification.
+
+## Geometry boundary
+
+No 3D model is added. Figure 1 shows the hexagonal core-shell morphology, but ensemble diameter and nominal thickness do not define exact per-layer geometry, the injected distribution, surface coating or neuronal contact. A perfect three-layer hexagonal solid would imply more precision than the primary images and measurements provide.
+
+## Primary sources
+
+- [Published paper](https://www.nature.com/articles/s41565-024-01798-9): Figures 1-5, material characterization, surgical methods and Conclusion.
+- [Supplementary Information](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41565-024-01798-9/MediaObjects/41565_2024_1798_MOESM1_ESM.pdf): single-particle potential and material/longitudinal controls.
+- [Reporting Summary](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41565-024-01798-9/MediaObjects/41565_2024_1798_MOESM2_ESM.pdf): design and exclusions.
