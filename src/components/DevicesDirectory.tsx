@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "preact/hooks";
 
+import { groupDeviceEntries } from "../lib/device-families.js";
 import { downloadCatalogCsv } from "../lib/catalog-csv.js";
 
 import { getDeviceModel } from "../lib/devices/catalog.js";
@@ -190,6 +191,8 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
     });
   }, [normalizedEntries, query, axis, iface, form, dir, stage, modelsOnly]);
 
+  const grouped = useMemo(() => groupDeviceEntries(filtered), [filtered]);
+
   const hasFilters = query.trim() || axis || iface || form || dir.size || stage || modelsOnly;
 
   function clearAll() {
@@ -226,7 +229,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
 
         <div class="topRight">
           <button type="button" class="clear" onClick={() => downloadCatalogCsv('device-catalog.csv', ['Device ID','Title','Evidence stage','Interface class','Modality','Model available','Last reviewed','Catalog URL','Primary source','Description'], filtered.map(e=>[e.device_id,e.title,e.status,e.interface_class,e.modality,getDeviceModel(e.device_id)?'yes':'no',e.last_updated,new URL(`/devices/${e.slug}/`,window.location.origin).href,e.website,e.description]))}>Export results CSV</button>
-          <div class="count">{filtered.length} result(s)</div>
+          <div class="count">{filtered.length} records / {grouped.length} cards</div>
           {hasFilters ? (
             <button type="button" class="clear" onClick={clearAll}>
               Clear
@@ -283,21 +286,27 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
 
         <div class="results">
           <div class="grid">
-            {filtered.map((e: any) => (
-              <a class="item" href={`/devices/${e.slug}/`}>
-                <h3 class="itemTitle">{e.title}</h3>
-                <p class="desc">{e.description}</p>
-
+            {grouped.map(({family, entries, representative: e}: any) => (
+              <article class="item familyCard">
+                {family && <div class="familyLabel">{family.title} - {family.kind}</div>}
+                <a class="primaryEntry" href={`/devices/${e.slug}/`}>
+                  <h3 class="itemTitle">{e.title}</h3>
+                  <p class="desc">{e.description}</p>
+                </a>
+                {family && <p class="familyNote">{family.summary}</p>}
                 <div class="badges">
                   {getDeviceModel(e.device_id) && <span class="badge">3D model available</span>}
-                  {e._axis ? <span class="badge">{toTitleCase(e._axis)}</span> : null}
-                  {e._iface ? <span class="badge">{toTitleCase(e._iface)}</span> : null}
-                  {e._form ? <span class="badge">{toTitleCase(e._form)}</span> : null}
-                  {[...e._dir].map((d) => (
-                    <span class="badge">{toTitleCase(d)}</span>
-                  ))}
+                  {e._iface && <span class="badge">{toTitleCase(e._iface)}</span>}
+                  {e.status && <span class="badge">{toTitleCase(e.status)} evidence</span>}
                 </div>
-              </a>
+                {family && entries.length > 1 && <details class="familyHistory">
+                  <summary>Past versions and parallel branches ({entries.length - 1})</summary>
+                  <ul>{entries.filter((p:any) => p.slug !== e.slug).map((p:any) => <li>
+                    <a href={`/devices/${p.slug}/`}>{p.title}</a>
+                    <span>{family.changes[p.order]}</span>
+                  </li>)}</ul>
+                </details>}
+              </article>
             ))}
 
             {!filtered.length ? <p class="muted">No matching devices.</p> : null}
@@ -331,6 +340,11 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
 
         .device-directory .item{display:block;padding:14px 14px;border-radius:14px;border:1px solid var(--border);background:var(--panel);color:inherit;text-decoration:none}
         .device-directory .item:hover{border-color:var(--borderStrong);transform:translateY(-1px);background:var(--panelHover)}
+        .familyLabel{font-size:12px;text-transform:uppercase;letter-spacing:.05em;opacity:.65;margin-bottom:10px;line-height:1.5}
+        .primaryEntry{color:inherit;text-decoration:none}.primaryEntry:hover h3{text-decoration:underline}
+        .familyNote{font-size:13px;opacity:.75;line-height:1.6;margin:12px 0}
+        .familyHistory{border-top:1px solid var(--border);padding-top:12px;margin-top:14px}.familyHistory summary{cursor:pointer;line-height:1.5;font-size:14px}
+        .familyHistory ul{list-style:none;padding:0;margin:10px 0 0}.familyHistory li{border-top:1px solid var(--border);padding:10px 0}.familyHistory span{display:block;font-size:13px;line-height:1.6;opacity:.75;margin-top:5px}.familyHistory a{color:inherit}
         .device-directory .itemTitle{margin:0;font-size:var(--title-card);font-weight:400;line-height:1.08}
         .device-directory .desc{margin:8px 0 0;opacity:.78;line-height:1.5}
 
