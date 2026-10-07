@@ -25,17 +25,17 @@ This is not Stentrode recording hardware, an ultrasound-powered StimDust mote or
 | Component | Published specification |
 | --- | --- |
 | ME transducer | 1.75 × 5 × 0.3 mm laminated Metglas/PZT film |
-| ASIC | 1 × 0.8 mm,180-nm CMOS |
+| ASIC | 1 × 0.8 mm, 180-nm CMOS |
 | System | External field transmitter, ME film, ASIC, energy-storage capacitor, electrodes/lead |
 | Encapsulated form | Introduction:3 × 2.15 × 14.8 mm; PLA capsule with nonconductive epoxy |
-| Direct rat configuration | 6.2 mm³,30 mg; two 1 × 1-mm gold pads spaced 2 mm apart |
+| Direct rat configuration | 6.2 mm³, 30 mg; two 1 × 1-mm gold pads spaced 2 mm apart |
 | Catheter descriptions | Packageable within 11 Fr in design text; demonstrated 9 Fr sheath delivery later in paper |
 
 The rodent volume is not substituted for the longer encapsulated endovascular package. The 9/11 Fr passages describe different packaging/delivery scopes and do not supply one universal catheter requirement.
 
 ## Commands and stimulation
 
-The transmitter uses 345 kHz resonance,350 kHz for the lower-amplitude data state and 400 kHz for phase-change notches. The paper reports 4.6 kbps digital data and an 18-bit stimulation payload, with a stated maximum 1-kHz stimulation rate under its timing scheme.
+The transmitter uses 345 kHz resonance, 350 kHz for the lower-amplitude data state and 400 kHz for phase-change notches. The paper reports 4.6 kbps digital data and an 18-bit stimulation payload, with a stated maximum 1-kHz stimulation rate under its timing scheme.
 
 Voltage-controlled stimulation is programmable from 0.3-3.3 V at 4-bit resolution, with monophasic/biphasic options. The ASIC paragraph lists 0.05-1.2-ms pulse widths at 3-bit resolution, while animal protocols repeatedly report 1.5-ms pulses. That pulse-width discrepancy is preserved rather than corrected by assumption.
 
