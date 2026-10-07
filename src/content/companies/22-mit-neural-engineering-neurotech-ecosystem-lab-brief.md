@@ -55,3 +55,7 @@ The [magnetoelectric nanodisc interface](/devices/132-mend-magnetoelectric-nanod
 ### Thermally drawn neural fibers, 2015
 
 Canales, Jia and colleagues reported distinct [all-polymer multimodal fibers](/devices/143-mit-drawn-multimodal-polymer-fiber-2015/) and [tin multielectrode fibers](/devices/144-mit-drawn-tin-multielectrode-fiber-2015/). The [mouse study overview](/applications/145-mit-fiber-mouse-recording-optogenetics-2015/) separates two-month integrated function from three-month histology. [Publisher paper](https://www.nature.com/articles/nbt.3093) and its supplement identify MIT materials science, RLE and Simons Center affiliations. These are not the later hydrogel-hybrid assembly.
+
+### Graphite-polymer fibers, 2017
+
+The [2017 multifunctional fiber](/devices/146-mit-graphite-polymer-multifunctional-fiber-2017/) changes the conductive composite and integrates six electrodes, a waveguide and two fluidic channels. Its [mouse study overview](/applications/147-mit-fiber-projection-mapping-mouse-2017/) includes viral delivery, projection mapping, behavior and twelve-week recording examples, with source conflicts retained. [Full primary author manuscript](https://pmc.ncbi.nlm.nih.gov/articles/PMC5374019/) grounds MIT affiliations alongside Tohoku and Virginia Tech collaborators.
