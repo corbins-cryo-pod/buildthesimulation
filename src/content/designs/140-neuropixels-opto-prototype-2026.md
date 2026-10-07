@@ -59,7 +59,9 @@ Supplement Table 2 reports below 1°C probe/tissue temperature difference in its
 
 The paper describes about 740 processing steps, compared with roughly 400 for earlier Neuropixels platforms. It explicitly says mass production requires more fabrication and testing. [UCL's program page](https://www.ucl.ac.uk/brain-sciences/neuropixels/neuropixels-opto) expects community availability in 2028; that is a forecast, not an in-stock product or delivery guarantee.
 
-No complete 3D model is added. Dimensions, contacts and pitch are available, but tip coordinates, exact emitter locations relative to contacts, package outline and internal layer placement are not all fixed by the inspected sources. A complete-looking rectangle would conceal the remaining geometry gaps. No human implant, chronic optical-device lifetime or therapy outcome is established here.
+The interactive 3D reference models only the electrical recording window: 960 contacts in two columns, 20-µm along-shank pitch, 48-µm column spacing, 12 × 12-µm contacts and 33-µm thickness. The 9.6-mm length is a half-pitch-margin crop, not the full 10-mm probe. Its coordinate origin is the crop center, not the unknown tip origin.
+
+No optical emitters, waveguides, tip, package base, internal layer arrangement, fibers or cables are modeled. Gold means electrical contacts only. A complete model would conceal the remaining geometry gaps. No human implant, chronic optical-device lifetime or therapy outcome is established here.
 
 ## Primary sources
 

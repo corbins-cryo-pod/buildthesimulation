@@ -26,12 +26,23 @@ for (const model of Object.values(deviceModels)) {
     assert(sites.every(s => s.contactAreaMm2 === null));
   }
   if (model.kind === 'surface-grid') {
-    close(sites[1].positionMm[0] - sites[0].positionMm[0], model.pitch);
-    close(sites[model.columns].positionMm[1] - sites[0].positionMm[1], model.pitch);
+    close(sites[1].positionMm[0] - sites[0].positionMm[0], (model.columnPitch ?? model.pitch));
+    close(sites[model.columns].positionMm[1] - sites[0].positionMm[1], (model.rowPitch ?? model.pitch));
     close(bounds.max.x - bounds.min.x, model.width); close(bounds.max.z - bounds.min.z, model.thickness);
     const area = model.siteShape === 'circle' ? Math.PI * (model.siteSize / 2) ** 2 : model.siteSize ** 2;
     assert(sites.every(s => s.positionMm[2] === (model.siteDepth ? -model.siteDepth : 0) && Math.abs(s.contactAreaMm2 - area) < 1e-9));
     if (model.siteDepth) { close(model.siteDepth, .002); close(model.thickness, .0066); assert.equal(sites.length, 1024); }
+  }
+  if (model.id === 'neuropixels-opto-electrical-window') {
+    assert.equal(sites.length, 960); assert.equal(model.simultaneousChannels, 384);
+    close(sites[1].positionMm[0] - sites[0].positionMm[0], .048);
+    close(sites[2].positionMm[1] - sites[0].positionMm[1], .02);
+    close(bounds.max.x - bounds.min.x, .07); close(bounds.max.y - bounds.min.y, 9.6);
+    close(bounds.max.z - bounds.min.z, .033);
+    close(Math.max(...sites.map(s=>s.positionMm[0])) - Math.min(...sites.map(s=>s.positionMm[0])) + model.siteSize, .06);
+    close(Math.max(...sites.map(s=>s.positionMm[1])) - Math.min(...sites.map(s=>s.positionMm[1])) + model.siteSize, 9.592);
+    assert(sites.every(s=>s.channel === null));
+    assert.match(model.notes, /optical emitters.*omitted/);
   }
   if (model.id === 'neuropixels-ultra-dense-window') {
     assert.equal(sites.length, 384); assert.equal(model.simultaneousChannels, 384);

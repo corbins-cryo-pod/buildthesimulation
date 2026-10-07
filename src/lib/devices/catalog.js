@@ -3,6 +3,16 @@
 const utahSource = { label: 'Blackrock — Utah Array specifications and photographs', url: 'https://blackrockneurotech.com/products/utah-array/' };
 const slantSource = { label: 'Blackrock — Slant Array specifications and side view', url: 'https://blackrockneurotech.com/products/slant-array/' };
 export const deviceModels = {
+  'BTSD-ACAD-0083': {
+    id: 'neuropixels-opto-electrical-window', revision: 1, deviceId: 'BTSD-ACAD-0083', kind: 'surface-grid',
+    name: 'Neuropixels Opto · electrical recording window', slug: '140-neuropixels-opto-prototype-2026',
+    physicalSites: 960, simultaneousChannels: 384, rows: 480, columns: 2,
+    rowPitch: 0.02, columnPitch: 0.048, pitch: 0.02, siteSize: 0.012,
+    thickness: 0.033, width: 0.07, length: 9.6,
+    specs: [['Modeled crop', 'Two columns of 480 electrical contacts; optics omitted'], ['Physical sites / simultaneous channels', '960 / 384; no channel map'], ['Contact size', '12 × 12 µm TiN'], ['Along-row / between-column pitch', '20 µm / 48 µm'], ['Crop envelope / thickness', '70 µm × 9.6 mm / 33 µm'], ['Not modeled', 'Tip, base, emitters, waveguides, fibers, layers and thermal effects']],
+    notes: 'Electrical contact window only, not the complete optical probe. The 2026 paper defines 960 TiN contacts in two columns of 480, at 20 µm along-shank pitch and 48 µm between columns. All contacts are 12 × 12 µm. The 70 µm width and 33 µm total shank thickness are reported; the 9.6 mm length is a recording-window crop with half-row-pitch margins, not the 10 mm full shank. Contact-face extents are 60 µm × 9.592 mm. Positions use a centered local crop coordinate system, not coordinates relative to the unknown tip origin. The 14 blue and 14 red optical emitters, photonic waveguides, tip, base, cables, internal layers and coating texture are omitted. Gold marks electrical contacts only. Geometric site IDs are not acquisition channel IDs. The 384 selectable channels are separate from 960 available sites. No optical fields, electrical fields, tissue response or thermal prediction is implemented.',
+    sources: [{ label: 'Lakunina et al. (2026), Results, Figure 1 and fabrication methods', url: 'https://www.nature.com/articles/s41592-026-03076-z' }, { label: 'Published Supplementary Table 2, prototype dimensions', url: 'https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41592-026-03076-z/MediaObjects/41592_2026_3076_MOESM1_ESM.pdf' }], references: [],
+  },
   'BTSD-ACAD-0056': {
     id: 'neuropixels-ultra-dense-window', revision: 1, deviceId: 'BTSD-ACAD-0056', kind: 'surface-grid',
     name: 'Neuropixels Ultra · 384-site dense window', slug: '83-neuropixels-ultra-high-density-probe',
@@ -173,7 +183,7 @@ export function getContactGeometry(model) {
     for (let i = 0; i < model.physicalSites; i++) sites.push({ id: `site-${i}`, positionMm: [(i - (model.physicalSites - 1) / 2) * model.pitch, 0, model.length], normal: [0, 0, 1], channel: null, contactAreaMm2: null, positionMeaning: 'nominal cut tip center; coating geometry unknown' });
   } else if (model.kind === 'surface-grid') {
     for (let row = 0; row < model.rows; row++) for (let col = 0; col < model.columns; col++) {
-      sites.push({ id: `r${row}-c${col}`, positionMm: [(col - (model.columns - 1) / 2) * model.pitch, (row - (model.rows - 1) / 2) * model.pitch, model.siteDepth ? -model.siteDepth : 0], normal: [0, 0, 1], channel: null, contactAreaMm2: model.siteShape === 'circle' ? Math.PI * (model.siteSize / 2) ** 2 : model.siteSize ** 2, positionMeaning: 'contact center in reconstructed flat recording patch; depth relative to film surface' });
+      sites.push({ id: `r${row}-c${col}`, positionMm: [(col - (model.columns - 1) / 2) * (model.columnPitch ?? model.pitch), (row - (model.rows - 1) / 2) * (model.rowPitch ?? model.pitch), model.siteDepth ? -model.siteDepth : 0], normal: [0, 0, 1], channel: null, contactAreaMm2: model.siteShape === 'circle' ? Math.PI * (model.siteSize / 2) ** 2 : model.siteSize ** 2, positionMeaning: 'contact center in reconstructed flat recording patch; depth relative to film surface' });
     }
   } else if (model.kind === 'utah') {
     for (let row = 0; row < model.rows; row++) {
@@ -231,7 +241,7 @@ export function getContactGeometry(model) {
 }
 
 export function exportGeometry(model) {
-  return { schemaVersion: 1, units: 'mm', coordinateSystem: model.kind === 'stentrode' ? 'right-handed; scaffold longitudinal axis +Z; radial outward normals' : model.kind === 'neuralink' ? 'right-handed; display fan extends +Y; pad normals +Z; not an implanted pose' : 'right-handed; insertion +Z; see origin',
+  return { schemaVersion: 1, units: 'mm', coordinateSystem: model.id === 'neuropixels-opto-electrical-window' ? 'right-handed; electrical crop rows +Y, columns +X, surface normal +Z; not tip-relative or an implanted pose' : model.kind === 'stentrode' ? 'right-handed; scaffold longitudinal axis +Z; radial outward normals' : model.kind === 'neuralink' ? 'right-handed; display fan extends +Y; pad normals +Z; not an implanted pose' : 'right-handed; insertion +Z; see origin',
     origin: model.kind === 'chip-envelope' ? 'center of package; no implant pose or electrode coordinates' : model.kind === 'carbon-row' ? 'center of row at fiber roots; straight fibers extend +Z' : model.kind === 'surface-grid' ? 'center of flat recording face; film occupies negative Z' : model.kind === 'stentrode' ? 'center of proximal scaffold end; scaffold Z=0 to length; illustrative lead extends into negative Z' : ['utah', 'connexus'].includes(model.kind) ? 'center of tissue-facing substrate surface' : model.kind === 'neuralink' ? 'center of thread-facing enclosure surface; enclosure occupies negative Z' : 'center of shank base',
     model, sites: getContactGeometry(model),
     simulationNote: 'Geometric reference only. Assign channels, transform to tissue coordinates and supply a validated electrical model before simulation. Null area/channel values are unknown, not zero.' };
