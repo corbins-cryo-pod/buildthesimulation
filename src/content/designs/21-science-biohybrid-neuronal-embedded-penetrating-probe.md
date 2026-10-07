@@ -1,88 +1,130 @@
 ---
-title: "Science biohybrid neuronal-embedded penetrating probe (architecture concept)"
+title: "Science neuronal-embedded electronic biohybrid interface (architecture concept)"
 order: 21
 pubDate: 2026-02-06
 updatedDate: 2026-02-06
 device_id: "BTSD-IMBCI-00SCBH-02"
-interface_class: "intracortical"
+interface_class: "other"
 status: "theoretical"
 last_updated: 2026-02-06
-description: "A conceptual biohybrid intracortical probe where embedded neurons form the tissue-facing interface; microLEDs and electrodes interact with those neurons while neurites/synapses provide coupling to brain tissue."
-modality: "Intracortical"
+description: "A company-described biohybrid architecture with neurons embedded in electronics; hardware geometry and complete-system performance remain unreported."
+modality: "Other"
 successRank: 21
-website: "https://www.biorxiv.org/content/10.1101/2024.11.22.624907v1"
-tags: ["biohybrid", "intracortical", "concept", "optogenetics", "Science Corporation", "cortex", "recording", "stimulation", "bidirectional"]
+website: "https://science.xyz/news/biohybrid-neural-interfaces/"
+tags: ["biohybrid", "concept", "optogenetics", "Science Corporation", "cortex", "recording", "stimulation", "bidirectional"]
 draft: false
 ---
 
-# Science biohybrid neuronal-embedded penetrating probe (architecture concept)
+# Science neuronal-embedded electronic biohybrid interface (architecture concept)
 
-> *One-line verdict:* A neuronal-embedded probe concept that keeps electronics on-device while living neurons provide the tissue-facing interface, trading conventional electrode trauma for major unknowns in cell sourcing, immune strategy, and chronic reliability.
+All rows follow the shared implant-device template. Measurements belong to the named study or configuration. Unreported means the reviewed sources do not establish a value. Proposed architectures, optical behavior and validated electronic recording systems are kept separate.
 
-*Quick tags:* Recording (via embedded neurons) · Stimulation (optogenetic) · Status: theoretical
+## Identity
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Device | Science neuronal-embedded electronic biohybrid probe architecture concept; penetrating form factor not established |
+| Manufacturer | Science Corporation, company description November 2024 |
+| Interface class | Conceptual biohybrid neural interface; deployment geometry unreported |
+| Origin | Science Corporation biohybrid program led by Alan Mardinly and Yifan Kong |
+| First demonstrated | Company architecture description 2024; complete electronic system demonstration not established by reviewed sources |
+| First human implant | Unreported in reviewed sources |
+| Species studied | No cohort for this complete electronic architecture given; separate surface microwell study uses mice |
+| Regulatory status | Company describes low technology readiness; clinical authorization unreported |
+| Function | Proposed electrical interaction with device-associated neurons and optical activation through microLEDs; not a validated bidirectional system |
+| Target tissue | Brain via graft neurites; precise surgical target/placement unreported |
 
-### Overview
+## Geometry and architecture
 
-*What it is:* A biohybrid architecture described publicly by Science Corporation where neurons are anchored to the device, microLEDs can stimulate those neurons optogenetically, and electrodes can record their activity. Neurites from the device-associated neurons extend into the brain and (in the intended model) form synaptic connections.
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Neurons embedded in electronics with neurites growing into host tissue; penetrating shanks not established |
+| Array layout | Unreported in reviewed sources |
+| Electrode count | Unreported. Company million-neuron/billion-synapse examples are scaling ambitions, not device/contact counts |
+| Pitch | Unreported in reviewed sources |
+| Electrode lengths | Unreported in reviewed sources |
+| Shank width and thickness | Unreported; no dimensions transferred from separate 5 x 5 mm microwell scaffold |
+| Tip and exposed site geometry | Unreported in reviewed sources |
+| Contact coating | Unreported in reviewed sources |
+| Insulation | Unreported in reviewed sources |
+| Insertion method | Unreported; source does not establish a penetrating probe or insertion procedure |
+| Anchoring and fixation | Unreported in reviewed sources |
 
-*Why it matters:* If validated at scale, it represents a different scaling axis: synapses/neurites as the coupling mechanism rather than more metal electrode sites.
+## Electrode and channel physics
 
-*Most comparable devices:* conventional intracortical arrays (Utah/threads), opto-electro probes, neurotrophic electrode (conceptual similarity: tissue ingrowth), other “living electrode” constructs.
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in reviewed sources |
+| Electrode material | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Noise floor or SNR | Company calls SNR great without a numerical measurement for this architecture; not treated as a measured spec |
+| Recording modality | Electrical interaction with graft cells proposed; validated on-device recording yield/modality unreported |
+| Sampling rate | Unreported in reviewed sources |
+| Stimulation capability | Company illustration shows microLED activating nearby neuron; wavelength, power and complete-system validation unreported |
+| Charge injection limit | Unreported in reviewed sources |
+| Reference and ground | Unreported in reviewed sources |
 
----
+## Tissue interface and bioresponse
 
-### Spec Card Grid
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Device-associated graft neurons and their axons/dendrites in brain |
+| Insertion trauma and BBB disruption | Quantitative trauma and BBB effects unreported for this architecture; not presumed noninvasive |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Unreported in reviewed sources |
+| Gliosis and encapsulation | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Company identifies hypoimmunogenic allogeneic neurons as a development need, not a demonstrated clinical solution |
+| Typical failure modes | Company identifies graft survival under hypoxia, glycemic shock and host immunity as engineering challenges; failure rates not published here |
 
-### Identity
-- *Device name:* Science biohybrid neuronal-embedded penetrating probe (concept)
-- *Canonical ID:* BTSD-IMBCI-00SCBH-02
-- *Org / manufacturer:* Science Corporation
-- *First demonstrated (year):* not publicly demonstrated as a complete penetrating probe system
-- *Species:* not specified for this probe form factor
-- *Regulatory / trial status:* not disclosed
-- *Primary use:* hybrid (read embedded neurons electrically; write via optogenetics)
-- *Primary target:* cortex (generic)
+## System architecture
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Electronics with embedded neurons and illustrated microLED; circuit configuration unreported |
+| Data path | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported in reviewed sources |
+| Sampling rate | Unreported in reviewed sources |
+| Power | Company argues strong cell signals could reduce amplifier power; measured system power unreported |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | Unreported in reviewed sources |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Implant procedure unreported; no geometry inferred from the word probe |
+| Output connectors | Unreported in reviewed sources |
 
-### Geometry & Architecture
-- *Interface type:* penetrating neural probe (concept)
-- *Penetrating?:* yes (probe category), but coupling is intended to be via neurites rather than electrode sites
-- *Array layout / footprint / insertion depth:* not publicly specified
-- *Insertion method:* not publicly specified
+## Performance envelope
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Unreported in reviewed sources |
+| Chronic yield | Unreported in reviewed sources |
+| Stability over time | Complete electronic architecture performance unreported; mouse microwell survival not transferred |
+| Longevity | Unreported in reviewed sources |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | No safety cohort for this architecture in reviewed sources; surface microwell explant injury belongs to that separate study |
+| Notable demonstrations | Company links a separate passive cortical microwell/optical mouse proof of concept; not proof of this electronic probe system |
 
-### Electrode & Channel Physics
-- *Channel count:* not disclosed
-- *Recording modality:* electrical recording from embedded neurons (claimed)
-- *Stimulation capability:* optogenetic stimulation via microLEDs (claimed)
-- *Key safety constraints:* heating/phototoxicity and chronic immune compatibility are likely dominant, but not quantified publicly
+## Clinical and preclinical evidence
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | Unreported for this architecture |
+| Preclinical cohort | Unreported for this architecture; Brown mouse microwell cohort is separate |
+| Follow-up duration | Unreported in reviewed sources |
+| Indications | Long-term high-bandwidth brain interface ambition, not validated clinical indication |
+| Trials and registries | Unreported in reviewed sources |
+| Primary outcomes | No quantitative complete-system outcomes published in reviewed company description |
+| Key limitations | Architecture-level company source; no pinned form factor, contact map, chronic electronics or clinical evidence. Surface scaffold findings must not be relabeled as probe results |
 
-### Tissue Interface & Bioresponse
-- *Dominant risks:* cell death, immune rejection, loss of synaptic integration, glial encapsulation around probe body (not characterized publicly)
+## Engineering tradeoffs
 
----
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Proposed biological coupling through neurons and synapses; theoretical scaling path |
+| Limitations | Cell production, immune compatibility, survival and electronic packaging remain unresolved in public specification |
+| Scaling constraints | Million-neuron and billion-synapse company examples are not measured throughput or channel count |
 
-### Clinical / Preclinical Evidence
-- *Evidence base:* architecture-level descriptions + related surface biohybrid preprint; no public in vivo validation for this specific penetrating probe form factor
+## References
 
----
-
-### Engineering Verdict
-
-*Strengths:*
-- potential pathway to reduce tissue damage per “channel” by moving coupling to biology
-
-*Limitations / failure modes:*
-- key specs and in vivo validation are not public
-- immune strategy and long-term cell survival/integration remain core unknowns
-
----
-
-### References
-- Brown J, et al. bioRxiv preprint (surface biohybrid demonstration): <https://www.biorxiv.org/content/10.1101/2024.11.22.624907v1>
+- [Science Corporation, Biohybrid neural interfaces, November 2024](https://science.xyz/news/biohybrid-neural-interfaces/). Company architecture description and illustration; future-scale examples are not measured specifications.
+- Brown et al. [Separate surface microwell study](https://www.biorxiv.org/content/10.1101/2024.11.22.624907v1) and [full manuscript](https://science.xyz/papers/science-biohybrid-microwell-manuscript.pdf). Context only; evidence belongs to its surface scaffold, not this unspecified electronic probe architecture.
