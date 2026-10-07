@@ -12,7 +12,7 @@ modality: "Intracortical"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10592461/"
 tags: ["StimNET", "Rice", "mouse", "ICMS", "stimulation", "chronic", "preclinical"]
 devices: ["98-stimnet-ultraflexible-stimulation-thread"]
-orgs: ["40-rice-ultraflexible-neural-interface-labs"]
+orgs: ["40-rice-ultraflexible-neural-interface-labs", "47-rice-xie-lab"]
 draft: false
 ---
 
