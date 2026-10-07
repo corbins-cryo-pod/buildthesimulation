@@ -20,7 +20,7 @@ The August 28, 2025 published paper reports a platform with several distinct dem
 
 This uses off-the-shelf circuitry and an ME laminate. It is not the 2022 ME-BIT ASIC/endovascular package.
 
-The [Rice magnetoelectric bioelectronics lab brief](/companies/43-rice-magnetoelectric-bioelectronics-labs/) links this work to source-grounded faculty and laboratory context.
+The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectronics-labs/) links this work to source-grounded faculty and laboratory context.
 
 ## Spinal configuration
 
