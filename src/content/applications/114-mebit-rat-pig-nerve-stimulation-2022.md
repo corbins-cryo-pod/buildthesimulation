@@ -21,19 +21,19 @@ The 2022 paper tests [magnetoelectric ME-BIT hardware](/devices/113-mebit-magnet
 
 ## Cohort scopes and conflict
 
-Results and the reporting summary say two rats supplied the demonstrated stimulation evidence. Methods says stimulation was confirmed in three male Long-Evans rats,300-400 g. The fetched sources do not resolve that difference; no animal count is silently selected as universal.
+Results and the reporting summary say two rats supplied the demonstrated stimulation evidence. Methods says stimulation was confirmed in three male Long-Evans rats, 300-400 g. The fetched sources do not resolve that difference; no animal count is silently selected as universal.
 
-Pig Methods describes eight female Yorkshire pigs,35-45 kg. The reporting summary says data are shown for one pig and additional animals were pilots. Femoral and segmental stimulation are repetitions within that pig, not eight independent outcome datasets. No blinding was used and the summary reports no data exclusions.
+Pig Methods describes eight female Yorkshire pigs, 35-45 kg. The reporting summary says data are shown for one pig and additional animals were pilots. Femoral and segmental stimulation are repetitions within that pig, not eight independent outcome datasets. No blinding was used and the summary reports no data exclusions.
 
 ## Rat direct-contact stimulation
 
-The 6.2-mm³/30-mg device rested directly on the sciatic nerve. Rat A used an untethered implant with 1-cm transmitter distance and 3-V,1.5-ms monophasic pulses at 3 Hz. Rat B's amplitude sweep used 0.3-3.1 V at 1 Hz with 1.5-ms width; recorded CMAP amplitude saturated at higher voltage. These protocol values are distinct from the ASIC paragraph's 1.2-ms maximum-width statement.
+The 6.2-mm³/30-mg device rested directly on the sciatic nerve. Rat A used an untethered implant with 1-cm transmitter distance and 3-V, 1.5-ms monophasic pulses at 3 Hz. Rat B's amplitude sweep used 0.3-3.1 V at 1 Hz with 1.5-ms width; recorded CMAP amplitude saturated at higher voltage. These protocol values are distinct from the ASIC paragraph's 1.2-ms maximum-width statement.
 
 ## Pig stimulation was not entirely catheter-only
 
 For physiological stimulation, the paper describes a hind-leg incision exposing the femoral neurovascular bundle. The implant was placed near the vessel and its parylene-insulated lead was introduced through a 9 Fr sheath into the femoral artery. The external transmitter powered it at approximately 1.5 cm beneath skin. Thus, the demonstrated nerve response does not mean the full implant was delivered and operated without open surgical exposure in that experiment.
 
-Femoral stimulation used 3-V,1.5-ms monophasic pulses, including 10 Hz. EMG, nerve action potentials and averaged somatosensory responses supported nerve-mediated stimulation. Off-resonant magnetic controls produced no response. Segmental-artery leads also supported intercostal/DRG-target experiments at 1-10 Hz.
+Femoral stimulation used 3-V, 1.5-ms monophasic pulses, including 10 Hz. EMG, nerve action potentials and averaged somatosensory responses supported nerve-mediated stimulation. Off-resonant magnetic controls produced no response. Segmental-artery leads also supported intercostal/DRG-target experiments at 1-10 Hz.
 
 ## Delivery and follow-up boundary
 
