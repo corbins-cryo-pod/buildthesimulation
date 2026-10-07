@@ -20,6 +20,8 @@ The March 31, 2022 paper reports MagnetoElectric-powered Bio Implants (ME-BITs) 
 
 This is not Stentrode recording hardware, an ultrasound-powered StimDust mote or the later 2025 distributed ME network. Sharing a wireless mechanism does not make their circuits and cohorts interchangeable.
 
+The [Rice magnetoelectric bioelectronics lab brief](/companies/43-rice-magnetoelectric-bioelectronics-labs/) links this work to source-grounded faculty and laboratory context.
+
 ## Hardware and variants
 
 | Component | Published specification |
