@@ -12,7 +12,7 @@ modality: "Cortical surface"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9650779/"
 tags: ["PtNRGrid", "human mapping", "rat", "grasp", "epilepsy", "intraoperative", "academic", "human"]
 devices: ["74-ptnrgrid-platinum-nanorod-surface-arrays"]
-orgs: []
+orgs: ["41-ucsd-integrated-electronics-biointerfaces-lab"]
 draft: false
 ---
 
@@ -36,7 +36,7 @@ These are recordings during clinically indicated surgery. They do not establish 
 
 The human grids were selected for different surgical exposures and were not tested as a single uniform protocol in every recruited patient. The study does not supply chronic human survival data for a permanently implanted wireless system. The [later device entry](/devices/74-ptnrgrid-platinum-nanorod-surface-arrays/) separates UCSD's 2024 IDE announcement from the 2022 results.
 
-No atlas link is added for a generic university affiliation without a matching lab brief. The primary paper lists UC San Diego, Oregon Health & Science University and Massachusetts General Hospital collaborators; it does not make every existing brief at those institutions the owner of this study.
+The linked [UC San Diego IEBL brief](/companies/41-ucsd-integrated-electronics-biointerfaces-lab/) grounds the surface-grid laboratory relationship. The primary paper also lists Oregon Health & Science University and Massachusetts General Hospital collaborators; the link does not make IEBL the sole owner of the study.
 
 ## Sources
 
