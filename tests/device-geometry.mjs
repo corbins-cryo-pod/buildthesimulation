@@ -26,10 +26,10 @@ for (const model of Object.values(deviceModels)) {
     assert(sites.every(s => s.contactAreaMm2 === null));
   }
   if (model.kind === 'surface-grid') {
-    close(sites[1].positionMm[0] - sites[0].positionMm[0], .03);
-    close(sites[16].positionMm[1] - sites[0].positionMm[1], .03);
-    close(bounds.max.x - bounds.min.x, .48); close(bounds.max.z - bounds.min.z, .004);
-    assert(sites.every(s => s.positionMm[2] === 0 && Math.abs(s.contactAreaMm2 - .0001) < 1e-9));
+    close(sites[1].positionMm[0] - sites[0].positionMm[0], model.pitch);
+    close(sites[model.columns].positionMm[1] - sites[0].positionMm[1], model.pitch);
+    close(bounds.max.x - bounds.min.x, model.width); close(bounds.max.z - bounds.min.z, model.thickness);
+    assert(sites.every(s => s.positionMm[2] === 0 && Math.abs(s.contactAreaMm2 - model.siteSize ** 2) < 1e-9));
   }
   if (model.kind === 'utah') {
     close(sites[1].positionMm[0] - sites[0].positionMm[0], .4);

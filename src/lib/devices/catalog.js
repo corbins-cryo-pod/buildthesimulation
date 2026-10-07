@@ -3,6 +3,15 @@
 const utahSource = { label: 'Blackrock — Utah Array specifications and photographs', url: 'https://blackrockneurotech.com/products/utah-array/' };
 const slantSource = { label: 'Blackrock — Slant Array specifications and side view', url: 'https://blackrockneurotech.com/products/slant-array/' };
 export const deviceModels = {
+  'BTSD-ACAD-0044': {
+    id: 'active-microecog-196-recording-patch', revision: 1, deviceId: 'BTSD-ACAD-0044', kind: 'surface-grid',
+    name: 'Active micro-ECoG · 196-site recording patch', slug: '65-active-microecog-auditory-cortex-array',
+    physicalSites: 196, simultaneousChannels: null, rows: 14, columns: 14,
+    pitch: 0.25, siteSize: 0.2, thickness: 0.025, width: 3.5, length: 3.5,
+    specs: [['Physical sites / interface wires', '196 / 29; active multiplexing'], ['Layout', '14 × 14 sites, 250 µm center pitch'], ['Site size', '200 × 200 µm'], ['Recording-area envelope', 'Approximately 3.5 × 3.5 mm'], ['Multilayer thickness', 'Approximately 25 µm'], ['Omitted hardware', 'Switching layers, full film outline and cable']],
+    notes: 'Flat recording-patch reference for the 2014 auditory-cortex array. Site count, matrix, pitch, size and multilayer thickness come from the paper. The 3.5 mm square uses the reported approximate recording-area envelope as a crop, not a recovered full film outline. Platinum contact faces are shown as surfaces without adding thickness above the published multilayer total. Switching electronics, interconnects, flexible cable and curved cortical placement are omitted. Electrical channel timing and tissue response are not modeled.',
+    sources: [{ label: 'Escabí et al. (2014), electrode fabrication and Figure 1', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4137255/' }], references: [],
+  },
   'BTSD-ACAD-0004': {
     id: 'neurograin-packaged-envelope', revision: 1, deviceId: 'BTSD-ACAD-0004', kind: 'chip-envelope',
     name: 'Neurograin · packaged chip envelope', slug: '25-neurograins-wireless-microimplant-network',
