@@ -27,8 +27,8 @@ Every field follows the shared implant-device template. Values belong to a named
 | Manufacturer | ActiGait brand in Martin clinical studies; historical manufacturer not inferred from current ownership |
 | Interface class | Extraneural peroneal nerve cuff with implanted stimulator and external gait control |
 | Origin | Reviewed clinical studies in Dresden; not an invention-priority claim |
-| First demonstrated | Unreported in reviewed sources |
-| First human implant | Unreported in reviewed sources |
+| First demonstrated | Unreported |
+| First human implant | Unreported |
 | Species studied | Human stroke and multiple sclerosis cohorts, Martin 2016/36-month study |
 | Regulatory status | Clinical study evidence; present market availability and current authorization unreported |
 | Function | Gait-triggered stimulation for dorsiflexion |
@@ -44,9 +44,9 @@ Every field follows the shared implant-device template. Values belong to a named
 | Pitch | 90° angular channel arrangement; linear pitch unreported |
 | Electrode lengths | Not applicable to cortical shanks; cuff length unreported |
 | Shank width and thickness | Not applicable; cuff wall dimensions unreported |
-| Tip and exposed site geometry | Unreported in reviewed sources |
-| Contact coating | Unreported in reviewed sources |
-| Insulation | Unreported in reviewed sources |
+| Tip and exposed site geometry | Unreported |
+| Contact coating | Unreported |
+| Insulation | Unreported |
 | Insertion method | Two-incision surgery under general anesthesia; nerve exposed for 4 cm above tibial plateau, cuff placed around motor branch, 36-month study |
 | Anchoring and fixation | Stimulator sutured to thigh muscle fascia, lead tunneled subcutaneously over biceps tendon; cuff closed around nerve, 36-month study |
 
@@ -54,15 +54,15 @@ Every field follows the shared implant-device template. Values belong to a named
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
-| Electrode material | Unreported in reviewed sources |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
-| Noise floor or SNR | Unreported in reviewed sources |
+| Exposed site area | Unreported |
+| Electrode material | Unreported |
+| Impedance (with measurement frequency) | Unreported |
+| Noise floor or SNR | Unreported |
 | Recording modality | Not applicable to described stimulation-only use |
 | Sampling rate | Not applicable to passive cuff; heel-switch control is separate |
 | Stimulation capability | Four selectable stimulation channels; patient-specific settings in Table 1 of 36-month study, not a universal safety envelope |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
@@ -70,11 +70,11 @@ Every field follows the shared implant-device template. Values belong to a named
 | --- | --- |
 | Target tissue | Peroneal nerve surface |
 | Insertion trauma and BBB disruption | BBB: not applicable; nerve surgically exposed and cuffed. Martin 2016 reports nerve injury in two patients |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
 | Gliosis and encapsulation | Peripheral interface; quantitative fibrosis/histology unreported in audited studies |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
 | Typical failure modes | Martin 2016: nerve injury requiring cuff repositioning and infection requiring system removal; later study also notes heel-switch malfunction |
 
 ## System architecture
@@ -83,12 +83,12 @@ Every field follows the shared implant-device template. Values belong to a named
 | --- | --- |
 | Onboard electronics | Implanted stimulator body in thigh connected by cable to cuff |
 | Data path | External heel switch sends radiofrequency signal to external control unit; antenna sends power/control to implanted stimulator, 36-month study |
-| Telemetry bandwidth | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported |
 | Sampling rate | Not applicable to described neural recording; stimulation timing patient-specific |
 | Power | External control unit transfers energy via external antenna to implant; 36-month study |
-| Thermal management | Unreported in reviewed sources |
+| Thermal management | Unreported |
 | Packaging and hermeticity | Subcutaneous stimulator and lead; hermetic qualification unreported |
-| MRI compatibility | Unreported in reviewed sources; preoperative MRI is not evidence of post-implant MR safety |
+| MRI compatibility | Unreported; preoperative MRI is not evidence of post-implant MR safety |
 | Surgical complexity | General anesthesia, two incisions, nerve dissection and thigh stimulator placement |
 | Output connectors | Internal electrode cable; external wireless heel-switch/control chain, connector dimensions unreported |
 
@@ -96,8 +96,8 @@ Every field follows the shared implant-device template. Values belong to a named
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in reviewed sources |
-| Chronic yield | Unreported in reviewed sources |
+| Acute yield | Unreported |
+| Chronic yield | Unreported |
 | Stability over time | 36-month study reports maintained gait benefit; not channel-yield or hardware reliability rate |
 | Longevity | 36 months follow-up in later study; not maximum service life |
 | Revision and explant experience | Martin 2016: two cuff repositionings for nerve injury and one system removal for wound infection among 27 patients |
@@ -109,7 +109,7 @@ Every field follows the shared implant-device template. Values belong to a named
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | 2016: 27 stroke patients; later study: 33 total, 27 stroke and six MS. Cohorts overlap, do not add as unique people |
-| Preclinical cohort | Unreported in reviewed sources |
+| Preclinical cohort | Unreported |
 | Follow-up duration | Later study evaluates baseline and 36 months |
 | Indications | Central drop foot after stroke or MS with response to surface stimulation |
 | Trials and registries | Prospective clinical studies; registry identifier unreported in audited sources |
