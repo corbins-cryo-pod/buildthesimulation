@@ -22,6 +22,111 @@ This is not Stentrode recording hardware, an ultrasound-powered StimDust mote or
 
 The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectronics-labs/) and [Rice University, Yang lab](/companies/48-rice-yang-lab/) links this work to source-grounded faculty and laboratory context.
 
+## Identity
+
+| Field | Value and source scope |
+| --- | --- |
+| Device | ME-BIT (MagnetoElectric-powered Bio Implant) [1] |
+| Manufacturer | Academic research device; Rice, UT Medical Branch, UTHealth, Duke, Cambridge, Baylor [1] |
+| Interface class | Wireless magnetoelectric stimulator; direct-contact and endovascular configurations |
+| Origin | Nature Biomedical Engineering, March 31, 2022 [1, 2] |
+| First demonstrated | March 31, 2022 [1] |
+| First human implant | None |
+| Species studied | Rat (direct contact) and pig (vascular); ex-vivo power delivery to 4 cm [1] |
+| Regulatory status | Research device; no clearance |
+| Function | Stimulation [1] |
+| Target tissue | Peripheral nerve and vascular delivery [1] |
+
+## Geometry and architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Gold pads (rat) or electrode/lead in a PLA capsule (endovascular) [1] |
+| Array layout | Unreported in reviewed sources |
+| Electrode count | Two 1 × 1 mm gold pads in the direct rat configuration [1] |
+| Pitch | 2 mm between the two gold pads (rat) [1] |
+| Electrode lengths | Unreported in reviewed sources |
+| Shank width and thickness | ME film 1.75 × 5 × 0.3 mm; ASIC 1 × 0.8 mm; rat device 6.2 mm³, 30 mg; encapsulated form 3 × 2.15 × 14.8 mm [1] |
+| Tip and exposed site geometry | Two 1 × 1 mm gold pads (rat) [1] |
+| Contact coating | Unreported in reviewed sources |
+| Insulation | PLA capsule with nonconductive epoxy [1] |
+| Insertion method | Packageable within 11 Fr in design text; 9 Fr sheath delivery demonstrated [1] |
+| Anchoring and fixation | Unreported in reviewed sources |
+
+## Electrode and channel physics
+
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in reviewed sources |
+| Electrode material | Gold pads (rat) [1] |
+| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Noise floor or SNR | Unreported in reviewed sources |
+| Recording modality | Unreported in reviewed sources |
+| Sampling rate | Unreported in reviewed sources |
+| Stimulation capability | Voltage-controlled 0.3-3.3 V, 4-bit; monophasic or biphasic; pulse width 0.05-1.2 ms (ASIC text, 3-bit) while protocols report 1.5 ms (discrepancy retained); maximum 1 kHz [1] |
+| Charge injection limit | Unreported in reviewed sources |
+| Reference and ground | Unreported in reviewed sources |
+
+## Tissue interface and bioresponse
+
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Unreported in reviewed sources |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Unreported in reviewed sources |
+| Gliosis and encapsulation | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Unreported in reviewed sources |
+| Typical failure modes | Unreported in reviewed sources |
+
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | 180-nm CMOS ASIC, energy-storage capacitor, ME laminated Metglas/PZT film [1] |
+| Data path | Magnetic downlink: 345 kHz resonance, 350 kHz low-amplitude data state, 400 kHz phase notches; 4.6 kbps, 18-bit stimulation payload [1] |
+| Telemetry bandwidth | 4.6 kbps downlink [1] |
+| Sampling rate | Unreported in reviewed sources |
+| Power | Battery-free; ASIC below 9 µW; above 90% stimulation efficiency at 1.5-3.3 V (circuit metric); Figure 3 about 6 W transmitter and 1.17 mW implant at 30 mm, caption efficiency 0.01% (as reported) [1] |
+| Thermal management | Field meets cited IEEE E-field/SAR limits but lies outside the more restrictive ICNIRP range [1] |
+| Packaging and hermeticity | PLA capsule; chronic hermetic packaging needed; lead-containing PZT needs a biocompatible barrier [1] |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Unreported in reviewed sources |
+| Output connectors | Unreported in reviewed sources |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Unreported in reviewed sources |
+| Chronic yield | Unreported in reviewed sources |
+| Stability over time | Unreported in reviewed sources |
+| Longevity | Unreported in reviewed sources |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | Unreported in reviewed sources |
+| Notable demonstrations | Rat and pig nerve stimulation; ex-vivo power delivery to 4 cm under tested conditions [1] |
+
+## Clinical and preclinical evidence
+
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None |
+| Preclinical cohort | Rat and pig acute studies [1] |
+| Follow-up duration | Unreported in reviewed sources |
+| Indications | Unreported in reviewed sources |
+| Trials and registries | Unreported in reviewed sources |
+| Primary outcomes | Wireless nerve stimulation, direct and vascular [1] |
+| Key limitations | Acute histology without observed damage does not establish months of intravascular safety; vascular-health and antithrombotic needs open [1] |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Catheter-deliverable, battery-free, tiny ASIC [1] |
+| Limitations | Lead-containing PZT; standard-dependent exposure compliance [1] |
+| Scaling constraints | Unreported in reviewed sources |
+
 ## Hardware and variants
 
 | Component | Published specification |
@@ -57,7 +162,7 @@ Chronic use still requires hermetic packaging, vascular-health studies and asses
 
 No full model is supplied. Specified transducer/ASIC dimensions and one package envelope do not establish every variant's internal placement, lead tip, contact map or tissue-fixed orientation.
 
-## Primary sources
+## References
 
-- [Published2022 primary paper](https://www.nature.com/articles/s41551-022-00873-7).
-- [Published PDF,including Methods and reporting summary](https://www.nature.com/articles/s41551-022-00873-7.pdf).
+1. [Published2022 primary paper](https://www.nature.com/articles/s41551-022-00873-7).
+2. [Published PDF,including Methods and reporting summary](https://www.nature.com/articles/s41551-022-00873-7.pdf).

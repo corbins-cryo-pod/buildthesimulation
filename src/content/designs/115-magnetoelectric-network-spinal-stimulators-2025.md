@@ -22,6 +22,111 @@ This uses off-the-shelf circuitry and an ME laminate. It is not the 2022 ME-BIT 
 
 The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectronics-labs/) links this work to source-grounded faculty and laboratory context.
 
+## Identity
+
+| Field | Value and source scope |
+| --- | --- |
+| Device | Distributed magnetoelectric spinal implantable pulse generators (IPGs), 2025 [1] |
+| Manufacturer | Academic research device; Rice University Robinson lab context [1, 3] |
+| Interface class | Wireless battery-free spinal stimulation nodes on percutaneous SCS leads |
+| Origin | Published paper, August 28, 2025 [1] |
+| First demonstrated | August 28, 2025 [1] |
+| First human implant | None |
+| Species studied | Pig (acute spinal stimulation, two then four devices) [1] |
+| Regulatory status | Research device; no clearance |
+| Function | Stimulation; downlink only, no neural-recording uplink [1] |
+| Target tissue | Spinal cord [1] |
+
+## Geometry and architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Commercial percutaneous SCS lead per node [1] |
+| Array layout | Network of addressed nodes; one contact pair per node [1] |
+| Electrode count | One pair on a commercial lead per node; six devices built for bench, two then four implanted [1] |
+| Pitch | Unreported in reviewed sources |
+| Electrode lengths | Unreported in reviewed sources |
+| Shank width and thickness | Packaged IPG about 1 × 1 × 1 cm per node; ME film 7.5 × 3 mm [1] |
+| Tip and exposed site geometry | Adjacent stainless-steel cylinders, 1.33 mm diameter, 3 mm length [1] |
+| Contact coating | Stainless-steel cylinders [1] |
+| Insulation | 3D-printed box and epoxy; temporary, not proven chronic hermetic [1] |
+| Insertion method | Unreported in reviewed sources |
+| Anchoring and fixation | Unreported in reviewed sources |
+
+## Electrode and channel physics
+
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in reviewed sources |
+| Electrode material | Stainless steel [1] |
+| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Noise floor or SNR | Unreported in reviewed sources |
+| Recording modality | Unreported in reviewed sources |
+| Sampling rate | Unreported in reviewed sources |
+| Stimulation capability | Voltage-controlled, 250 µs pulses, up to 14.5 V [1] |
+| Charge injection limit | Unreported in reviewed sources |
+| Reference and ground | Unreported in reviewed sources |
+
+## Tissue interface and bioresponse
+
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Unreported in reviewed sources |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Unreported in reviewed sources |
+| Gliosis and encapsulation | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Unreported in reviewed sources |
+| Typical failure modes | Unreported in reviewed sources |
+
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Rectification, storage capacitance, programmable boost converter, microcontroller, output switch [1] |
+| Data path | On-off-keying downlink up to 4 kbps from a shared transmitter; 3-bit node ID, up to eight IDs [1] |
+| Telemetry bandwidth | Up to 4 kbps downlink [1] |
+| Sampling rate | Unreported in reviewed sources |
+| Power | Battery-free implants; ME film 267 µm PZT between two 25 µm Metglas layers, 220 kHz; six-film summed efficiency 0.22% to 1.3%, 2.2 mW per node at 1 cm; bench transmitter demand 7 W [1] |
+| Thermal management | Low efficiency burdens transmitter; thermal and exposure management needed [1] |
+| Packaging and hermeticity | Temporary epoxy box; PZT needs a barrier; 30-day glass-encapsulated prior work is not this network's result [1] |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Unreported in reviewed sources |
+| Output connectors | Unreported in reviewed sources |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Unreported in reviewed sources |
+| Chronic yield | About 80% of laser-cut films passed the open-circuit-voltage criterion; not a fabrication yield guarantee [1] |
+| Stability over time | Unreported in reviewed sources |
+| Longevity | Unreported in reviewed sources |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | Unreported in reviewed sources |
+| Notable demonstrations | 12-node LED demonstration and six-film power experiment are not implanted nodes; simulated 50-film network at 7.1% is simulation only [1] |
+
+## Clinical and preclinical evidence
+
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None |
+| Preclinical cohort | Acute pig experiments with two then four devices [1] |
+| Follow-up duration | Unreported in reviewed sources |
+| Indications | Unreported in reviewed sources |
+| Trials and registries | Unreported in reviewed sources |
+| Primary outcomes | Spinal stimulation and cardiac pacing demonstrations; spinal arm only is this record [1] |
+| Key limitations | Lead placement changed thresholds between animals; no recording uplink or closed loop [1] |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Off-the-shelf circuitry, addressable multi-node network [1] |
+| Limitations | Low power-transfer efficiency; external transmitter still needs power [1] |
+| Scaling constraints | Close-film coupling depends on position and orientation [1] |
+
 ## Spinal configuration
 
 | Feature | Published spinal configuration |
@@ -55,8 +160,8 @@ Lead placement changed activation thresholds between animal experiments. Lead-co
 
 No full model is supplied. The approximately 1-cm enclosure and contact dimensions do not recover PCB placement, film placement, wire routing, lead spacing or an exact assembly drawing.
 
-## Primary sources
+## References
 
-- [Published2025 paper](https://www.nature.com/articles/s41551-025-01489-3).
-- [Full primary manuscript archive](https://pmc.ncbi.nlm.nih.gov/articles/PMC12557647/),Figure3 and spinal Methods.
-- [Rice institutional report](https://news.rice.edu/news/2025/wireless-implant-network-could-transform-cardiac-neurological-care),used only as program context,not additional animal data.
+1. [Published2025 paper](https://www.nature.com/articles/s41551-025-01489-3).
+2. [Full primary manuscript archive](https://pmc.ncbi.nlm.nih.gov/articles/PMC12557647/),Figure3 and spinal Methods.
+3. [Rice institutional report](https://news.rice.edu/news/2025/wireless-implant-network-could-transform-cardiac-neurological-care),used only as program context,not additional animal data.
