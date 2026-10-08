@@ -49,34 +49,34 @@ The broader wire-to-chip approach overlaps with the [Stanford 2020 bundle interf
 | Contact coating | Gold/iridium-oxide electrodeposition [1] |
 | Insulation | Glass sheath [1] |
 | Insertion method | Bundle insertion in a head-fixed setup with mechanical presses [1] |
-| Anchoring and fixation | Unreported in reviewed sources |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
+| Exposed site area | Unreported |
 | Electrode material | Gold core, glass sheath, gold/iridium-oxide tip [1] |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported |
 | Noise floor or SNR | Saline: 24.2 ± 7.7 µV RMS (MEA1k pixels), 58.2 ± 21.5 µV (camera pixels); after correlated-noise subtraction MEA1k residual 6.5 ± 2.6 µV; processing states, not averaged [1] |
 | Recording modality | Extracellular acute recording [1] |
 | Sampling rate | Camera full-frame 1.7 kHz up to 200 kHz for the smallest window; MEA1k rate not extracted [1] |
-| Stimulation capability | Unreported in reviewed sources |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Stimulation capability | Unreported |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported in reviewed sources |
-| Insertion trauma and BBB disruption | Unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
-| Gliosis and encapsulation | Unreported in reviewed sources |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Target tissue | Unreported |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
@@ -84,25 +84,25 @@ The broader wire-to-chip approach overlaps with the [Stanford 2020 bundle interf
 | --- | --- |
 | Onboard electronics | Commodity CMOS (MEA1k, camera-derived) with reference-voltage electronics; camera lacks MEA offset compensation and filtering, so drifts saturate pixels [1] |
 | Data path | Wired acquisition equipment; untethered electronics not demonstrated [1] |
-| Telemetry bandwidth | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
-| Power | Unreported in reviewed sources |
-| Thermal management | Unreported in reviewed sources |
-| Packaging and hermeticity | Unreported in reviewed sources |
-| MRI compatibility | Unreported in reviewed sources |
-| Surgical complexity | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
+| Power | Unreported |
+| Thermal management | Unreported |
+| Packaging and hermeticity | Unreported |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
 | Output connectors | Wires pressed onto CMOS pixels with gold bumps [1] |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in reviewed sources |
-| Chronic yield | Unreported in reviewed sources |
+| Acute yield | Unreported |
+| Chronic yield | Unreported |
 | Stability over time | 40 minutes in the acute mouse application, not days to months [1] |
-| Longevity | Unreported in reviewed sources |
-| Revision and explant experience | Unreported in reviewed sources |
-| Adverse events | Unreported in reviewed sources |
+| Longevity | Unreported |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
 | Notable demonstrations | Figure 3 connects 200 electrodes; not a 327,680-electrode brain recording [1] |
 
 ## Clinical and preclinical evidence
@@ -112,8 +112,8 @@ The broader wire-to-chip approach overlaps with the [Stanford 2020 bundle interf
 | Human subjects | None |
 | Preclinical cohort | Acute mouse olfactory bulb [1] |
 | Follow-up duration | About 40 minutes [1] |
-| Indications | Unreported in reviewed sources |
-| Trials and registries | Unreported in reviewed sources |
+| Indications | Unreported |
+| Trials and registries | Unreported |
 | Primary outcomes | Acute multichannel recordings through wire-to-CMOS connection [1] |
 | Key limitations | Chronic histological and functional studies called for; dense bundles displace tissue; smaller wires buckle; vascular damage not proven zero for all bundles [1] |
 

@@ -88,7 +88,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Power | External LED/fiber and microscope; no implanted power supply. Functional imaging approximately 50 mW at 1040 nm, structural imaging 100 mW at 930 nm |
 | Thermal management | Temperature rise and phototoxicity limit unreported; optical powers are experimental settings, not safety ratings |
 | Packaging and hermeticity | Glass cranial window bonded with epoxy/acrylic/cement; living-cell scaffold, not hermetic electronic package |
-| MRI compatibility | Unreported in reviewed sources |
+| MRI compatibility | Unreported |
 | Surgical complexity | Craniotomy/duratomy, cell-loaded placement, headplate fixation and later fiber ferrule attachment |
 | Output connectors | 400 µm optical cannula, 0.39 NA, Thorlabs CFMLC14L02; external optical fiber and rotary joint, not electrical connector |
 

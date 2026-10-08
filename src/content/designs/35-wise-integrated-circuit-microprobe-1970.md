@@ -29,91 +29,91 @@ The paper that moved extracellular electrodes from hand-made wires to photolitho
 | Origin | Wise, Angell and Starr, "An Integrated-Circuit Approach to Extracellular Microelectrodes" [1] |
 | First demonstrated | 1970 [1] |
 | First human implant | None; recording results are in the paper, not extracted here |
-| Species studied | Unreported in reviewed sources |
+| Species studied | Unreported |
 | Regulatory status | Research device; no clearance |
 | Function | Extracellular recording [1] |
-| Target tissue | Unreported in reviewed sources |
+| Target tissue | Unreported |
 
 ## Geometry and architecture
 
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Gold electrodes on a silicon carrier projecting beyond it [1] |
-| Array layout | Unreported in reviewed sources |
-| Electrode count | Unreported in reviewed sources |
-| Pitch | Unreported in reviewed sources |
+| Array layout | Unreported |
+| Electrode count | Unreported |
+| Pitch | Unreported |
 | Electrode lengths | Electrodes project about 50 µm beyond the carrier [1] |
-| Shank width and thickness | Unreported in reviewed sources |
+| Shank width and thickness | Unreported |
 | Tip and exposed site geometry | Recording area set by photoengraving the oxide open at the tips [1] |
-| Contact coating | Unreported in reviewed sources |
+| Contact coating | Unreported |
 | Insulation | 0.4 µm silicon dioxide, opened at the tips by photoengraving [1] |
-| Insertion method | Unreported in reviewed sources |
-| Anchoring and fixation | Unreported in reviewed sources |
+| Insertion method | Unreported |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
+| Exposed site area | Unreported |
 | Electrode material | Gold [1] |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
-| Noise floor or SNR | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported |
+| Noise floor or SNR | Unreported |
 | Recording modality | Extracellular recording [1] |
-| Sampling rate | Unreported in reviewed sources |
-| Stimulation capability | Unreported in reviewed sources |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Sampling rate | Unreported |
+| Stimulation capability | Unreported |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported in reviewed sources |
-| Insertion trauma and BBB disruption | Unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
-| Gliosis and encapsulation | Unreported in reviewed sources |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Target tissue | Unreported |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported in reviewed sources |
-| Data path | Unreported in reviewed sources |
-| Telemetry bandwidth | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
-| Power | Unreported in reviewed sources |
-| Thermal management | Unreported in reviewed sources |
-| Packaging and hermeticity | Unreported in reviewed sources |
-| MRI compatibility | Unreported in reviewed sources |
-| Surgical complexity | Unreported in reviewed sources |
-| Output connectors | Unreported in reviewed sources |
+| Onboard electronics | Unreported |
+| Data path | Unreported |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
+| Power | Unreported |
+| Thermal management | Unreported |
+| Packaging and hermeticity | Unreported |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
+| Output connectors | Unreported |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in reviewed sources |
-| Chronic yield | Unreported in reviewed sources |
-| Stability over time | Unreported in reviewed sources |
-| Longevity | Unreported in reviewed sources |
-| Revision and explant experience | Unreported in reviewed sources |
-| Adverse events | Unreported in reviewed sources |
-| Notable demonstrations | Unreported in reviewed sources |
+| Acute yield | Unreported |
+| Chronic yield | Unreported |
+| Stability over time | Unreported |
+| Longevity | Unreported |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
+| Notable demonstrations | Unreported |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | None established in this sheet |
-| Preclinical cohort | Unreported in reviewed sources |
-| Follow-up duration | Unreported in reviewed sources |
-| Indications | Unreported in reviewed sources |
-| Trials and registries | Unreported in reviewed sources |
-| Primary outcomes | Unreported in reviewed sources |
+| Preclinical cohort | Unreported |
+| Follow-up duration | Unreported |
+| Indications | Unreported |
+| Trials and registries | Unreported |
+| Primary outcomes | Unreported |
 | Key limitations | Recording results, channel counts and later probe dimensions are in the paper and its successors, not here [1] |
 
 ## Engineering tradeoffs
@@ -121,8 +121,8 @@ The paper that moved extracellular electrodes from hand-made wires to photolitho
 | Field | Value and source scope |
 | --- | --- |
 | Strengths | Controlled geometry and batch fabrication in place of hand-made microelectrodes [1] |
-| Limitations | Unreported in reviewed sources |
-| Scaling constraints | Unreported in reviewed sources |
+| Limitations | Unreported |
+| Scaling constraints | Unreported |
 
 ## Overview
 

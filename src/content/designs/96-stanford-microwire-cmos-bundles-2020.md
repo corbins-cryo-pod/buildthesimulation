@@ -47,7 +47,7 @@ Obaid and colleagues' 2020 paper joins three-dimensional microwire bundles to pl
 | Contact coating | Platinum-pad modifications on the chip supported over 95% connectivity for recording bundles [1] |
 | Insulation | 1 µm glass coating on mouse PtIr wires; parylene-C spacing before embedding in epoxy [1] |
 | Insertion method | Bundle with released tissue end inserted; insufficient spacing can make a bundle behave like a solid object [1] |
-| Anchoring and fixation | Unreported in reviewed sources |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
@@ -55,13 +55,13 @@ Obaid and colleagues' 2020 paper joins three-dimensional microwire bundles to pl
 | --- | --- |
 | Exposed site area | Not reported in reviewed sources |
 | Electrode material | Demonstrated Au, W, PtIr and PtW; mouse bundles PtIr [1] |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported |
 | Noise floor or SNR | 251-wire PtIr bundle in saline: bare-chip 5.0 ± 1.5 µV RMS (10 Hz-10 kHz); at most 5.97 ± 2.2 µV after mating in text, 6.0 ± 2.2 µV in the Figure 4 caption. Includes electrode-solution interface [1] |
 | Recording modality | CMOS-MEA readout of extracellular activity [1] |
 | Sampling rate | 20 kHz, 1,024 channels addressable simultaneously [1] |
-| Stimulation capability | Unreported in reviewed sources |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Stimulation capability | Unreported |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
@@ -69,12 +69,12 @@ Obaid and colleagues' 2020 paper joins three-dimensional microwire bundles to pl
 | --- | --- |
 | Target tissue | Mouse brain and retina [1] |
 | Insertion trauma and BBB disruption | Tissue-displacement estimate of about 2% assumes 15 µm wires, 100 µm spacing and ideal packing; geometric estimate, not proof of zero injury [1] |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
-| Gliosis and encapsulation | Unreported in reviewed sources |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
@@ -82,25 +82,25 @@ Obaid and colleagues' 2020 paper joins three-dimensional microwire bundles to pl
 | --- | --- |
 | Onboard electronics | Planar CMOS chip (26,400-pixel recording CMOS-MEA); contact also shown with imaging, OLED and MEA chips [1] |
 | Data path | Wired CMOS readout [1] |
-| Telemetry bandwidth | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported |
 | Sampling rate | 20 kHz [1] |
-| Power | Unreported in reviewed sources |
-| Thermal management | Unreported in reviewed sources |
+| Power | Unreported |
+| Thermal management | Unreported |
 | Packaging and hermeticity | Compression mating of wires to pads; 14-day pressed-interface bench test showed no connectivity change [1] |
-| MRI compatibility | Unreported in reviewed sources |
-| Surgical complexity | Unreported in reviewed sources |
-| Output connectors | Unreported in reviewed sources |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
+| Output connectors | Unreported |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
 | Acute yield | Bundle-to-chip connectivity over 90% in reported examples; 184-wire example connected 177 (96%); not a guaranteed manufacturing yield [1] |
-| Chronic yield | Unreported in reviewed sources |
+| Chronic yield | Unreported |
 | Stability over time | 14-day pressed-interface bench test: no connectivity change, small noise fluctuations; not an implanted cohort [1] |
-| Longevity | Unreported in reviewed sources |
-| Revision and explant experience | Unreported in reviewed sources |
-| Adverse events | Unreported in reviewed sources |
+| Longevity | Unreported |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
 | Notable demonstrations | Retina and acute awake-mouse recordings; 8,640-wire connectivity demonstration [1] |
 
 ## Clinical and preclinical evidence
@@ -110,8 +110,8 @@ Obaid and colleagues' 2020 paper joins three-dimensional microwire bundles to pl
 | Human subjects | None |
 | Preclinical cohort | Mouse and retina experiments; counts not extracted here [1] |
 | Follow-up duration | Acute in vivo; 14-day bench test [1] |
-| Indications | Unreported in reviewed sources |
-| Trials and registries | Unreported in reviewed sources |
+| Indications | Unreported |
+| Trials and registries | Unreported |
 | Primary outcomes | Retina and awake-mouse recording through the wire-to-chip interface [1] |
 | Key limitations | Wire count, contacted pixels and independent signals differ; multiple wires per pixel mix signals; no full bundle model [1] |
 

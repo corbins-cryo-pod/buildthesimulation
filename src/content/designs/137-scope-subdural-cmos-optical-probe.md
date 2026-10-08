@@ -43,40 +43,40 @@ The [Columbia University, Shepard lab](/companies/45-columbia-shepard-optical-an
 | Array layout | 192 × 256 nominal SPAD array, 12.5% removed for LED pads and drivers; 24 blue and 24 red microLEDs in pairs [2] |
 | Electrode count | No electrodes; 24 blue and 24 red microLEDs, 192 × 256 nominal SPADs [2] |
 | Pitch | 25 µm SPAD pitch [2] |
-| Electrode lengths | Unreported in reviewed sources |
+| Electrode lengths | Unreported |
 | Shank width and thickness | Table S1: 6.4 × 7.8 × 0.15 mm, 0.107 g; abstract says below 200 µm, Figure S5 stack below 250 µm (all kept); field of view 5.1 × 6.8 × 0.5 mm, 60 µm resolution; die thinned below 15 µm (preprint) [1, 2, 3] |
 | Tip and exposed site geometry | Blue 470 nm and red 590 nm microLEDs (preprint) [2] |
-| Contact coating | Unreported in reviewed sources |
+| Contact coating | Unreported |
 | Insulation | Polyimide spacer, filters and absorbing epoxy [2, 3] |
 | Insertion method | Subdural placement in acute animals [1] |
-| Anchoring and fixation | Unreported in reviewed sources |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
-| Electrode material | Unreported in reviewed sources |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
-| Noise floor or SNR | Unreported in reviewed sources |
+| Exposed site area | Unreported |
+| Electrode material | Unreported |
+| Impedance (with measurement frequency) | Unreported |
+| Noise floor or SNR | Unreported |
 | Recording modality | Mesoscopic fluorescence imaging with coded-mask computational reconstruction; not single-unit electrophysiology [2, 3] |
 | Sampling rate | 200 fps full array and 400 fps half array (supplement); in-vivo 40 fps; 10-bit global-shutter counters [3] |
 | Stimulation capability | Optical: Table S5 six blue LEDs at 4.5 µW each (mouse 1), four at 3 µW (mouse 2), 22 at 9 µW (NHP 1), red LED 193 µW optical at 12.25 mW electrical; preprint 27 µW per blue LED in its electrical-stimulation mouse test [2, 3] |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported in reviewed sources |
-| Insertion trauma and BBB disruption | Unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
-| Gliosis and encapsulation | Unreported in reviewed sources |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Target tissue | Unreported |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
@@ -85,23 +85,23 @@ The [Columbia University, Shepard lab](/companies/45-columbia-shepard-optical-an
 | Onboard electronics | 130 nm high-voltage CMOS, 6.4 × 7.8 mm; flex PCB to FPGA, power board and host computer [2] |
 | Data path | Wired flexible interposer; wireless power and telemetry proposed only; full-array 200 fps raw link 98.3 Mb/s [2, 3] |
 | Telemetry bandwidth | 98.3 Mb/s raw digital link at full array, 200 fps [3] |
-| Sampling rate | Unreported in reviewed sources |
+| Sampling rate | Unreported |
 | Power | Supplement: sensor below 10 mW, below 110 µW per LED generally; Table S5 NHP blue electrical input 123 µW [3] |
 | Thermal management | Slice-overlay test stayed below 1 °C rise at tested powers [3] |
 | Packaging and hermeticity | Chronic containment not established [3] |
-| MRI compatibility | Unreported in reviewed sources |
-| Surgical complexity | Unreported in reviewed sources |
-| Output connectors | Unreported in reviewed sources |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
+| Output connectors | Unreported |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in reviewed sources |
-| Chronic yield | Unreported in reviewed sources |
+| Acute yield | Unreported |
+| Chronic yield | Unreported |
 | Stability over time | Acute tests only [1] |
-| Longevity | Unreported in reviewed sources |
-| Revision and explant experience | Unreported in reviewed sources |
+| Longevity | Unreported |
+| Revision and explant experience | Unreported |
 | Adverse events | Dead blue LEDs 02B and 22B identified in the supplement [3] |
 | Notable demonstrations | Mouse bidirectional optical tests and macaque reach-speed decoding [1] |
 
@@ -111,9 +111,9 @@ The [Columbia University, Shepard lab](/companies/45-columbia-shepard-optical-an
 | --- | --- |
 | Human subjects | None |
 | Preclinical cohort | Mouse and macaque acute experiments [1, 3] |
-| Follow-up duration | Unreported in reviewed sources |
-| Indications | Unreported in reviewed sources |
-| Trials and registries | Unreported in reviewed sources |
+| Follow-up duration | Unreported |
+| Indications | Unreported |
+| Trials and registries | Unreported |
 | Primary outcomes | Bidirectional optical interface; reach-speed decoding in macaque [1] |
 | Key limitations | Published main text not accessible; blue imaging light can activate ChRmine; low-contrast scenes and scattering amplify noise; clinical gene delivery and long-term safety unestablished [1, 3] |
 
@@ -123,7 +123,7 @@ The [Columbia University, Shepard lab](/companies/45-columbia-shepard-optical-an
 | --- | --- |
 | Strengths | Thin CMOS stack combining imaging and stimulation [1] |
 | Limitations | Tethered, computational reconstruction, two dead LEDs in one experiment [3] |
-| Scaling constraints | Unreported in reviewed sources |
+| Scaling constraints | Unreported |
 
 ## Hardware configuration
 

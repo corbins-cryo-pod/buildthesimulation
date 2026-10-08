@@ -43,13 +43,13 @@ The light is a display for the surgical field. This is not an optogenetic stimul
 | Array layout | Single-colour: 1,024 microLEDs over 1,024 contacts. Dual-colour: 2,048 quantum-dot-converted pixels over 1,024 contacts. Kept separate [1] |
 | Electrode count | 1,024 recording contacts in both configurations; pixels are not recording channels [1] |
 | Pitch | Single-colour 1 mm (pig) or 0.15 mm (rat). Dual-colour display 0.4 mm vertical and 0.5 mm horizontal; recording 0.8 mm vertical and 0.5 mm horizontal [1] |
-| Electrode lengths | Unreported in reviewed sources |
-| Shank width and thickness | Unreported in reviewed sources |
+| Electrode lengths | Unreported |
+| Shank width and thickness | Unreported |
 | Tip and exposed site geometry | Contacts 30 µm diameter; microLEDs 220 µm (1 mm pitch display) or 100 µm (rat and dual-colour). Coverage 32 x 32 mm (pig), 5 x 5 mm (rat), 12.8 x 32 mm (dual-colour) [1] |
 | Contact coating | Platinum nanorods; indium-phosphide quantum-dot conversion for colour (inkjet printed) [1] |
-| Insulation | Unreported in reviewed sources |
-| Insertion method | Unreported in reviewed sources |
-| Anchoring and fixation | Unreported in reviewed sources |
+| Insulation | Unreported |
+| Insertion method | Unreported |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
@@ -60,23 +60,23 @@ The light is a display for the surgical field. This is not an optogenetic stimul
 | Impedance (with measurement frequency) | Average around 30 kΩ at 1 kHz [1] |
 | Noise floor or SNR | LED driver proximity added high-frequency noise when powered, peaks beginning around 98.63 Hz and harmonics [1] |
 | Recording modality | Cortical surface electrophysiology with real-time optical display [1] |
-| Sampling rate | Unreported in reviewed sources |
+| Sampling rate | Unreported |
 | Stimulation capability | None claimed; light is a display, not stimulation [1] |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Cortical surface [1] |
-| Insertion trauma and BBB disruption | Unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
-| Gliosis and encapsulation | Unreported in reviewed sources |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
@@ -84,25 +84,25 @@ The light is a display for the surgical field. This is not an optogenetic stimul
 | --- | --- |
 | Onboard electronics | LED driver proximal to the grid; recording, analysis and display-driver equipment required [1] |
 | Data path | Wired external equipment; no fully implanted wireless package [1] |
-| Telemetry bandwidth | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
-| Power | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
+| Power | Unreported |
 | Thermal management | Pig: no change above 0.1 °C resolution over 30 min with all 2,048 LEDs. Denser rat display heated up to 6 °C in under five minutes at full brightness; duty-cycle adjustment gave under 1 °C rise [1] |
 | Packaging and hermeticity | Biocompatibility, sterility and packaging tests of the assembled display still needed for human use [1] |
-| MRI compatibility | Unreported in reviewed sources |
-| Surgical complexity | Unreported in reviewed sources |
-| Output connectors | Unreported in reviewed sources |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
+| Output connectors | Unreported |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
 | Acute yield | Real-time display of cortical landmarks and pathological activity in rat and pig; channel yield not extracted [1] |
-| Chronic yield | Unreported in reviewed sources |
+| Chronic yield | Unreported |
 | Stability over time | Impedance relative to tissue followed for 3.7 hours on one pig brain [1] |
 | Longevity | Bounded tests only; years of safety not established [1] |
-| Revision and explant experience | Unreported in reviewed sources |
-| Adverse events | Unreported in reviewed sources |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
 | Notable demonstrations | Co-registration of functional boundaries and epileptic activity with a dual-colour display [1] |
 
 ## Clinical and preclinical evidence
@@ -112,8 +112,8 @@ The light is a display for the surgical field. This is not an optogenetic stimul
 | Human subjects | None |
 | Preclinical cohort | Rat and pig proof-of-concept experiments; animal counts not extracted [1] |
 | Follow-up duration | Acute; up to 3.7 hours of impedance monitoring in one pig [1] |
-| Indications | Unreported in reviewed sources |
-| Trials and registries | Unreported in reviewed sources |
+| Indications | Unreported |
+| Trials and registries | Unreported |
 | Primary outcomes | Real-time light maps of recorded cortical activity [1] |
 | Key limitations | No improved human surgical outcome or chronic use shown; grid-only tests do not qualify the assembled display; leakage-current monitoring needs to be more sensitive [1] |
 

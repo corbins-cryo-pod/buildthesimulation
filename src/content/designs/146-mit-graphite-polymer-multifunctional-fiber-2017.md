@@ -38,69 +38,69 @@ Park and colleagues' 2017 paper changes the conductive composite and cross-secti
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Six graphite-doped conductive-polyethylene electrodes, PC/COC waveguide, two fluidic channels [2] |
-| Array layout | Unreported in reviewed sources |
+| Array layout | Unreported |
 | Electrode count | Six electrode regions [2] |
-| Pitch | Unreported in reviewed sources |
-| Electrode lengths | Unreported in reviewed sources |
+| Pitch | Unreported |
+| Electrode lengths | Unreported |
 | Shank width and thickness | 180-220 µm range with 200 µm used in experiments; abstract and discussion say less than 200 µm (both kept); six electrode regions 20.9 ± 1.3, 20.7 ± 0.9, 25.8 ± 1.5, 24.0 ± 1.8, 24.5 ± 1.4, 22.6 ± 2.3 µm; channels 16.4 ± 2.1 and 15.3 ± 1.9 µm; waveguide 68.2 ± 2.9 µm diameter [2] |
-| Tip and exposed site geometry | Unreported in reviewed sources |
-| Contact coating | Unreported in reviewed sources |
-| Insulation | Unreported in reviewed sources |
-| Insertion method | Unreported in reviewed sources |
-| Anchoring and fixation | Unreported in reviewed sources |
+| Tip and exposed site geometry | Unreported |
+| Contact coating | Unreported |
+| Insulation | Unreported |
+| Insertion method | Unreported |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
+| Exposed site area | Unreported |
 | Electrode material | Polyethylene with 5 wt% graphite [2] |
 | Impedance (with measurement frequency) | At 1 kHz: 1.31 ± 0.27 MΩ falling to 0.62 ± 0.23 MΩ after overnight saline soak; 0.67 ± 0.12 MΩ at three days and 0.71 ± 0.13 MΩ at three months in vivo [2] |
-| Noise floor or SNR | Unreported in reviewed sources |
+| Noise floor or SNR | Unreported |
 | Recording modality | Extracellular recording; unit counts are example-specific [2] |
-| Sampling rate | Unreported in reviewed sources |
-| Stimulation capability | Unreported in reviewed sources |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Sampling rate | Unreported |
+| Stimulation capability | Unreported |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported in reviewed sources |
-| Insertion trauma and BBB disruption | Unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
-| Gliosis and encapsulation | Unreported in reviewed sources |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Target tissue | Unreported |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported in reviewed sources |
+| Onboard electronics | Unreported |
 | Data path | Optical ferrules, electrical pins and fluid tubing; requires external recorder, light source and pump [2] |
-| Telemetry bandwidth | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
-| Power | Unreported in reviewed sources |
-| Thermal management | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
+| Power | Unreported |
+| Thermal management | Unreported |
 | Packaging and hermeticity | Assembled probe 0.3-0.5 g [2] |
-| MRI compatibility | Unreported in reviewed sources |
-| Surgical complexity | Unreported in reviewed sources |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
 | Output connectors | Optical ferrules, electrical pins, fluid tubing; connectorization is a named barrier [2] |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in reviewed sources |
-| Chronic yield | Unreported in reviewed sources |
-| Stability over time | Unreported in reviewed sources |
+| Acute yield | Unreported |
+| Chronic yield | Unreported |
+| Stability over time | Unreported |
 | Longevity | Optical transmission loss below 1.5 dB/cm including explanted devices through three months; no longer time points [2] |
-| Revision and explant experience | Unreported in reviewed sources |
-| Adverse events | Unreported in reviewed sources |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
 | Notable demonstrations | Fluid return 70-95% at 1-100 nl/s including bent fibers; 7.85 µl channel capacity for a 1 cm probe stated but not reconciled with cross-section data [2] |
 
 ## Clinical and preclinical evidence
@@ -110,8 +110,8 @@ Park and colleagues' 2017 paper changes the conductive composite and cross-secti
 | Human subjects | None |
 | Preclinical cohort | Mouse projection-mapping study [2] |
 | Follow-up duration | Up to three months [2] |
-| Indications | Unreported in reviewed sources |
-| Trials and registries | Unreported in reviewed sources |
+| Indications | Unreported |
+| Trials and registries | Unreported |
 | Primary outcomes | Integrated recording, optical stimulation and drug delivery for projection mapping [2] |
 | Key limitations | Tissue response measured, not eliminated; no indefinite-life or clinical claim [2] |
 
@@ -121,7 +121,7 @@ Park and colleagues' 2017 paper changes the conductive composite and cross-secti
 | --- | --- |
 | Strengths | Smaller electrode regions from lower-resistance composite [2] |
 | Limitations | External backend; not wireless [2] |
-| Scaling constraints | Unreported in reviewed sources |
+| Scaling constraints | Unreported |
 
 ## Selected experimental geometry
 

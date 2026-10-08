@@ -61,7 +61,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Recording modality | Multi-unit and sortable single-unit extracellular action potentials under anesthesia |
 | Sampling rate | 20 kHz |
 | Stimulation capability | Not demonstrated by reviewed recording study |
-| Charge injection limit | Unreported in reviewed sources |
+| Charge injection limit | Unreported |
 | Reference and ground | Bare Ag wire in contralateral hemisphere serves as grounding reference, Methods |
 
 ## Tissue interface and bioresponse
@@ -86,9 +86,9 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Telemetry bandwidth | Not applicable to wired probe; not a fully wireless or free-floating implant |
 | Sampling rate | 20 kHz; 300 Hz high-pass and 60 Hz notch for single-unit acquisition |
 | Power | External amplifier/recording apparatus; implant active power consumption not applicable |
-| Thermal management | Unreported in reviewed sources |
+| Thermal management | Unreported |
 | Packaging and hermeticity | SU-8 thread insulation, carrier/bonding region at skull; no fully implanted hermetic electronic system qualification |
-| MRI compatibility | Unreported in reviewed sources |
+| MRI compatibility | Unreported |
 | Surgical complexity | Craniotomy/duratomy, delicate sequential shuttle placement, skull carrier/coverslip fixation |
 | Output connectors | Molex series 502598, 33-pin flexible-flat connector on silicon carrier |
 

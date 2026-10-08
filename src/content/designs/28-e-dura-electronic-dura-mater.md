@@ -70,7 +70,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | --- | --- |
 | Target tissue | Cortex or spinal surface beneath dura |
 | Insertion trauma and BBB disruption | Dural openings and spinal/cortical surgery required despite no electrode penetration; BBB injury unquantified |
-| Vascular disruption risk | Unreported in reviewed sources |
+| Vascular disruption risk | Unreported |
 | Micromotion sensitivity | Soft device conforms/elongates with spinal-cord model; stiff control wrinkles/compresses/slides. Bench fatigue to 20% strain one million cycles and five million 100 µA charge-balanced pulses (200 µs/phase), not a patient-motion or implant-lifetime measurement |
 | Gliosis and encapsulation | At six weeks, soft implant astrocyte/microglia density not significantly different from sham, unlike stiff controls; minimal connective tissue. Not absence across all durations |
 | Neuron loss near sites | Native-neuron loss rate not quantified in reviewed main-text outcomes |
@@ -86,9 +86,9 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Telemetry bandwidth | Not applicable to wired research system |
 | Sampling rate | 25 kHz; cortical filter 0.1-5000 Hz, spinal filter 1-5000 Hz |
 | Power | External recording/stimulation and drug-delivery hardware; no implanted battery reported |
-| Thermal management | Unreported in reviewed sources |
+| Thermal management | Unreported |
 | Packaging and hermeticity | Covalently bonded PDMS layers, silicone-protected soft-to-wire connection; not a multi-year hermetic electronics qualification |
-| MRI compatibility | Unreported in reviewed sources |
+| MRI compatibility | Unreported |
 | Surgical complexity | Spinal laminectomies/dural entry and exit, subdural passage, orthosis and subcutaneous wire/tube routing; cortical configuration uses cranial windows |
 | Output connectors | Cooner multistranded insulated steel wires, 300 µm outer diameter, to 12-pin male Omnetics microcircular head socket; polyethylene fluid capillary 0.008 inch ID/0.014 inch OD |
 

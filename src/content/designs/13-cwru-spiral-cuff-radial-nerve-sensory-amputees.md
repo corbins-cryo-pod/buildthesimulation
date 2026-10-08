@@ -45,7 +45,7 @@ Every field follows the shared implant-device template. Values belong to a named
 | Electrode lengths | Not applicable to penetrating shanks; cuff axial length unreported in audited descriptions |
 | Shank width and thickness | Not applicable; cuff diameter selected intraoperatively from 2-10 mm inventory, Christie 2017 |
 | Tip and exposed site geometry | Configuration dependent; Tan 2015 radial spiral: four contacts, 4 mm cuff diameter; exposed area unreported |
-| Contact coating | Unreported in reviewed sources |
+| Contact coating | Unreported |
 | Insulation | Self-curling polymer sheath, Christie 2017; composition and thickness not established in audited Methods |
 | Insertion method | Surgical nerve exposure and wrapping around nerve, without epineurial penetration |
 | Anchoring and fixation | Self-sizing wrap can secure without sutures, Christie 2017; redundant lead length matters for strain relief |
@@ -54,10 +54,10 @@ Every field follows the shared implant-device template. Values belong to a named
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
-| Electrode material | Unreported in reviewed sources |
+| Exposed site area | Unreported |
+| Electrode material | Unreported |
 | Impedance (with measurement frequency) | Tan 2015 radial spiral in subject 1: 2.91 ± 0.22 kΩ. Derived from voltage drop with 0.3 mA, 50 µs pulses at 20/100 Hz, not 1 kHz spectroscopy |
-| Noise floor or SNR | Unreported in reviewed sources |
+| Noise floor or SNR | Unreported |
 | Recording modality | Recording capability unreported in reviewed deployments; these are stimulation studies |
 | Sampling rate | Not applicable to passive cuff stimulation; controller acquisition is system-specific |
 | Stimulation capability | Constant-current charge-balanced biphasic stimulation in Christie 2017. IST supports 1-255 µs and 0.1-20 mA, but study generally limits current to 2.1 mA or less; not a cuff safety rating |
@@ -73,7 +73,7 @@ Every field follows the shared implant-device template. Values belong to a named
 | Vascular disruption risk | Quantitative risk unreported; proper fit and accommodation of nerve size are design concerns, not a validated low-risk rating |
 | Micromotion sensitivity | Lead tension implicated in one cuff pulling off thoracodorsal nerve, Christie 2017 |
 | Gliosis and encapsulation | Peripheral nerve, not CNS gliosis; quantitative fibrosis histology unreported in reviewed human studies |
-| Neuron loss near sites | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported |
 | Foreign-body response mitigation | Self-sizing construction accommodates differing nerve sizes; no quantitative mitigation efficacy established |
 | Typical failure modes | Christie 2017: one cuff pulled off nerve, attributed to possible lead tension; one contact in active cohort nonfunctional |
 
@@ -83,12 +83,12 @@ Every field follows the shared implant-device template. Values belong to a named
 | --- | --- |
 | Onboard electronics | None in cuff; separate implanted stimulator-telemeter in Christie 2017 |
 | Data path | Cuff lead to implanted IST in Christie 2017; Tan 2015 sensory system instead uses percutaneous leads to external UECU |
-| Telemetry bandwidth | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported |
 | Sampling rate | Configuration dependent; not an electrode-only specification |
 | Power | Christie 2017 IST receives external inductive radiofrequency power/control. Tan 2015 uses external stimulator |
-| Thermal management | Unreported in reviewed sources |
+| Thermal management | Unreported |
 | Packaging and hermeticity | Passive cuff plus separately packaged stimulator; hermetic qualification unreported in audited descriptions |
-| MRI compatibility | Unreported in reviewed sources |
+| MRI compatibility | Unreported |
 | Surgical complexity | Peripheral nerve exposure, cuff sizing and lead routing; controller placement depends on system |
 | Output connectors | Tan 2015: spring-sleeve connectors to open-helix percutaneous leads. Christie IST connector dimensions unreported |
 

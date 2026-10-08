@@ -80,23 +80,23 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | Shank width and thickness | Older technical slides report wires under 40 µm diameter [4]; current exact diameter unreported. Module about 1 cm circular [3]; the 2023 slides show an older, different square package of 9 mm [4] |
 | Tip and exposed site geometry | Unreported; exposed area stays unknown |
 | Contact coating | Platinum-iridium electrodes [3, 4]; any additional coating unreported |
-| Insulation | Unreported in reviewed sources |
-| Insertion method | Unreported in reviewed sources |
+| Insulation | Unreported |
+| Insertion method | Unreported |
 | Anchoring and fixation | Module on cortex with a flexible lead to the chest transceiver [1]; fixation detail unreported |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
+| Exposed site area | Unreported |
 | Electrode material | Platinum-iridium [3, 4] |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
-| Noise floor or SNR | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported |
+| Noise floor or SNR | Unreported |
 | Recording modality | Intracortical neural signals; specific bands not specified in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
+| Sampling rate | Unreported |
 | Stimulation capability | Unreported for this system in reviewed sources |
 | Charge injection limit | Unreported |
-| Reference and ground | Unreported in reviewed sources |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
@@ -107,8 +107,8 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | Vascular disruption risk | Placement-dependent; not quantified in reviewed sources |
 | Micromotion sensitivity | Rigid microwires in soft tissue; comparative data unreported |
 | Gliosis and encapsulation | Chronic histology unreported in reviewed public sources |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
 | Typical failure modes | Chronic stability and yield limits typical of intracortical interfaces; no device-specific failure data published in reviewed sources |
 
 ## System architecture
@@ -117,12 +117,12 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | --- | --- |
 | Onboard electronics | Implanted electronics in the module; internal ASIC detail unreported in reviewed sources |
 | Data path | Flexible lead to an implanted chest transceiver; optical through-skin data link [1] |
-| Telemetry bandwidth | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
 | Power | Inductive power to the implanted transceiver [1] |
-| Thermal management | Unreported in reviewed sources |
+| Thermal management | Unreported |
 | Packaging and hermeticity | Fully internalized system [1]; packaging-stack detail unreported |
-| MRI compatibility | Unreported in reviewed sources |
+| MRI compatibility | Unreported |
 | Surgical complexity | Open cranial surgery for module placement plus chest transceiver implantation; procedural detail limited in reviewed sources |
 | Output connectors | Flexible lead from module to chest transceiver [1]; connector detail unreported |
 

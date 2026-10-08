@@ -29,7 +29,7 @@ Blindsight is Neuralink's visual prosthesis, meant per Neuralink and Elon Musk's
 | Origin | Neuralink, United States [1] |
 | First demonstrated | Breakthrough device designation announced September 17, 2024 [1]; no demonstration data in the reviewed sources |
 | First human implant | Not confirmed by a primary source. Reuters on May 18, 2026 reported Musk expecting a first implant later in 2026 [5]; a third-party report of a human result is unconfirmed [6] |
-| Species studied | Unreported in reviewed sources |
+| Species studied | Unreported |
 | Regulatory status | FDA breakthrough device designation, announced September 17, 2024; an FDA spokesperson quoted by IEEE Spectrum said it does not mean the device is safe or effective and full clinical trials are still required [1, 4] |
 | Function | Intended to give visual perception by stimulating visual cortex and bypassing the eyes and optic nerve [1, 2] |
 | Target tissue | Visual cortex [2, 3] |
@@ -40,77 +40,77 @@ Blindsight is Neuralink's visual prosthesis, meant per Neuralink and Elon Musk's
 | --- | --- |
 | Interface type | Cortical implant for the visual cortex [3]; hardware configuration not published in reviewed sources |
 | Array layout | Unreported; no published geometry in the reviewed sources |
-| Electrode count | Unreported in reviewed sources |
-| Pitch | Unreported in reviewed sources |
-| Electrode lengths | Unreported in reviewed sources |
-| Shank width and thickness | Unreported in reviewed sources |
-| Tip and exposed site geometry | Unreported in reviewed sources |
-| Contact coating | Unreported in reviewed sources |
-| Insulation | Unreported in reviewed sources |
-| Insertion method | Unreported in reviewed sources |
-| Anchoring and fixation | Unreported in reviewed sources |
+| Electrode count | Unreported |
+| Pitch | Unreported |
+| Electrode lengths | Unreported |
+| Shank width and thickness | Unreported |
+| Tip and exposed site geometry | Unreported |
+| Contact coating | Unreported |
+| Insulation | Unreported |
+| Insertion method | Unreported |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
-| Electrode material | Unreported in reviewed sources |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
-| Noise floor or SNR | Unreported in reviewed sources |
-| Recording modality | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
-| Stimulation capability | Unreported in reviewed sources |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Exposed site area | Unreported |
+| Electrode material | Unreported |
+| Impedance (with measurement frequency) | Unreported |
+| Noise floor or SNR | Unreported |
+| Recording modality | Unreported |
+| Sampling rate | Unreported |
+| Stimulation capability | Unreported |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Visual cortex; medical-device press says it depends on the visual cortex remaining intact [3] |
-| Insertion trauma and BBB disruption | Unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
-| Gliosis and encapsulation | Unreported in reviewed sources |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported in reviewed sources |
+| Onboard electronics | Unreported |
 | Data path | Described as processing and transmitting neural signals [3]; camera and link hardware not given |
-| Telemetry bandwidth | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
-| Power | Unreported in reviewed sources |
-| Thermal management | Unreported in reviewed sources |
-| Packaging and hermeticity | Unreported in reviewed sources |
-| MRI compatibility | Unreported in reviewed sources |
-| Surgical complexity | Unreported in reviewed sources |
-| Output connectors | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
+| Power | Unreported |
+| Thermal management | Unreported |
+| Packaging and hermeticity | Unreported |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
+| Output connectors | Unreported |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in reviewed sources |
-| Chronic yield | Unreported in reviewed sources |
-| Stability over time | Unreported in reviewed sources |
-| Longevity | Unreported in reviewed sources |
-| Revision and explant experience | Unreported in reviewed sources |
-| Adverse events | Unreported in reviewed sources |
-| Notable demonstrations | Unreported in reviewed sources |
+| Acute yield | Unreported |
+| Chronic yield | Unreported |
+| Stability over time | Unreported |
+| Longevity | Unreported |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
+| Notable demonstrations | Unreported |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | None confirmed by a primary source [5, 6] |
-| Preclinical cohort | Unreported in reviewed sources |
-| Follow-up duration | Unreported in reviewed sources |
+| Preclinical cohort | Unreported |
+| Follow-up duration | Unreported |
 | Indications | Blindness, including loss of both eyes and the optic nerve, per Neuralink and Musk as quoted by Reuters [2] |
 | Trials and registries | No registry entry cited in reviewed sources |
 | Primary outcomes | None reported by a primary source |
@@ -122,7 +122,7 @@ Blindsight is Neuralink's visual prosthesis, meant per Neuralink and Elon Musk's
 | --- | --- |
 | Strengths | Targets blindness that eye-based prostheses cannot address, such as loss of the optic nerve [2] |
 | Limitations | No published hardware specifications or human data; expected to fall short of natural sight per IEEE Spectrum [4] |
-| Scaling constraints | Unreported in reviewed sources |
+| Scaling constraints | Unreported |
 
 ## References
 

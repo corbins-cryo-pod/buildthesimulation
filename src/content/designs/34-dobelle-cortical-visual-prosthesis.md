@@ -39,43 +39,43 @@ An early human cortical visual prosthesis that turned camera images into phosphe
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Electrode arrays on visual cortex with percutaneous pedestals [1] |
-| Array layout | Unreported in reviewed sources |
+| Array layout | Unreported |
 | Electrode count | Array channel counts are not covered in the reviewed source [1] |
-| Pitch | Unreported in reviewed sources |
-| Electrode lengths | Unreported in reviewed sources |
-| Shank width and thickness | Unreported in reviewed sources |
-| Tip and exposed site geometry | Unreported in reviewed sources |
-| Contact coating | Unreported in reviewed sources |
-| Insulation | Unreported in reviewed sources |
-| Insertion method | Unreported in reviewed sources |
-| Anchoring and fixation | Unreported in reviewed sources |
+| Pitch | Unreported |
+| Electrode lengths | Unreported |
+| Shank width and thickness | Unreported |
+| Tip and exposed site geometry | Unreported |
+| Contact coating | Unreported |
+| Insulation | Unreported |
+| Insertion method | Unreported |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
-| Electrode material | Unreported in reviewed sources |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
-| Noise floor or SNR | Unreported in reviewed sources |
-| Recording modality | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
-| Stimulation capability | Unreported in reviewed sources |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Exposed site area | Unreported |
+| Electrode material | Unreported |
+| Impedance (with measurement frequency) | Unreported |
+| Noise floor or SNR | Unreported |
+| Recording modality | Unreported |
+| Sampling rate | Unreported |
+| Stimulation capability | Unreported |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported in reviewed sources |
-| Insertion trauma and BBB disruption | Unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
-| Gliosis and encapsulation | Unreported in reviewed sources |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Target tissue | Unreported |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
@@ -83,25 +83,25 @@ An early human cortical visual prosthesis that turned camera images into phosphe
 | --- | --- |
 | Onboard electronics | Sunglasses-mounted video camera, computer and battery-powered electronics [1] |
 | Data path | Wired through percutaneous pedestals; a battery-powered, RF-isolated interface can replace the camera for television and computer use [1] |
-| Telemetry bandwidth | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
 | Power | Battery-powered electronics [1] |
-| Thermal management | Unreported in reviewed sources |
-| Packaging and hermeticity | Unreported in reviewed sources |
-| MRI compatibility | Unreported in reviewed sources |
-| Surgical complexity | Unreported in reviewed sources |
+| Thermal management | Unreported |
+| Packaging and hermeticity | Unreported |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
 | Output connectors | Percutaneous connecting pedestals [1] |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in reviewed sources |
-| Chronic yield | Unreported in reviewed sources |
-| Stability over time | Unreported in reviewed sources |
+| Acute yield | Unreported |
+| Chronic yield | Unreported |
+| Stability over time | Unreported |
 | Longevity | One array removed after 3 months as planned; the other removed after 14 years for a blood-borne infection the paper says did not originate with the implant [1] |
 | Revision and explant experience | Explants at 3 months (planned) and 14 years (infection) [1] |
-| Adverse events | Unreported in reviewed sources |
+| Adverse events | Unreported |
 | Notable demonstrations | Black-and-white phosphene displays described as like scoreboard light-bulb arrays; design aimed primarily at independent mobility, not reading [1] |
 
 ## Clinical and preclinical evidence
@@ -109,10 +109,10 @@ An early human cortical visual prosthesis that turned camera images into phosphe
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | 37 sighted volunteers (cortical stimulation), three blind volunteers (temporary implants), four blind volunteers with permanent arrays [1] |
-| Preclinical cohort | Unreported in reviewed sources |
+| Preclinical cohort | Unreported |
 | Follow-up duration | Up to 14 years for one array [1] |
-| Indications | Unreported in reviewed sources |
-| Trials and registries | Unreported in reviewed sources |
+| Indications | Unreported |
+| Trials and registries | Unreported |
 | Primary outcomes | Artificial vision in blind volunteers [1] |
 | Key limitations | Array channel counts and later fate of the program not covered here [1] |
 
@@ -122,7 +122,7 @@ An early human cortical visual prosthesis that turned camera images into phosphe
 | --- | --- |
 | Strengths | Decades-long human use of a cortical prosthesis [1] |
 | Limitations | Percutaneous pedestal connection [1] |
-| Scaling constraints | Unreported in reviewed sources |
+| Scaling constraints | Unreported |
 
 ## Overview
 

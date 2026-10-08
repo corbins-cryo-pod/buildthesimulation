@@ -56,12 +56,12 @@ A thin-film cortical-surface electrode interface from Precision Neuroscience, wi
 | --- | --- |
 | Exposed site area | Diameters only: 20, 50, 100 and 200 µm (529-channel); 50, 380 and 500 µm (1,024-channel) [1]; areas not given |
 | Electrode material | Platinum at the surface; Ti/Pt/Ti stack, with gold added to the traces in the 1,024-channel process [1] |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
-| Noise floor or SNR | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported |
+| Noise floor or SNR | Unreported |
 | Recording modality | Surface neural recording; the paper reports multimodal decoding [1] |
-| Sampling rate | Unreported in reviewed sources |
+| Sampling rate | Unreported |
 | Stimulation capability | Electrodes can be used for recording or stimulation; the 42 larger sites are stimulation-optimized, not the only stimulating sites [1] |
-| Charge injection limit | Unreported in reviewed sources |
+| Charge injection limit | Unreported |
 | Reference and ground | Five dedicated 500 µm reference electrodes in the 1,024-channel array [1]; ground configuration unreported |
 
 ## Tissue interface and bioresponse
@@ -70,25 +70,25 @@ A thin-film cortical-surface electrode interface from Precision Neuroscience, wi
 | --- | --- |
 | Target tissue | Cortical surface, subdural [1] |
 | Insertion trauma and BBB disruption | Minimally invasive slit delivery [1]; trauma and barrier disruption data unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
-| Gliosis and encapsulation | Unreported in reviewed sources |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
 | Neuron loss near sites | Not applicable to a surface film; no histology reported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported in reviewed sources |
-| Data path | Unreported in reviewed sources |
-| Telemetry bandwidth | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
-| Power | Unreported in reviewed sources |
-| Thermal management | Unreported in reviewed sources |
-| Packaging and hermeticity | Unreported in reviewed sources |
-| MRI compatibility | Unreported in reviewed sources |
+| Onboard electronics | Unreported |
+| Data path | Unreported |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
+| Power | Unreported |
+| Thermal management | Unreported |
+| Packaging and hermeticity | Unreported |
+| MRI compatibility | Unreported |
 | Surgical complexity | Cranial-slit delivery with a stylet in pigs and cadaver heads [1]; not demonstrated as a chronic procedure in living patients |
 | Output connectors | Interposer and connector details are not fixed by the reviewed sources [1] |
 
@@ -96,12 +96,12 @@ A thin-film cortical-surface electrode interface from Precision Neuroscience, wi
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in reviewed sources |
-| Chronic yield | Unreported in reviewed sources |
+| Acute yield | Unreported |
+| Chronic yield | Unreported |
 | Stability over time | Not reported as a chronic dataset; temporary 30-day clearance only [3, 4] |
 | Longevity | Cleared for implantation up to 30 days [3]; chronic and wireless performance not established |
-| Revision and explant experience | Unreported in reviewed sources |
-| Adverse events | Unreported in reviewed sources |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
 | Notable demonstrations | Slit delivery in pigs and cadaver heads [1]; 529- and 1,024-channel fabrication [1]; five-patient intraoperative recordings [1]; FDA clearance of Layer 7-T [4] |
 
 ## Clinical and preclinical evidence

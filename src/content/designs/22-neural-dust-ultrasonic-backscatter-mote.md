@@ -70,10 +70,10 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | --- | --- |
 | Target tissue | Peripheral nerve epineurium and muscle surface |
 | Insertion trauma and BBB disruption | BBB not applicable; surgical exposure and fixation still required |
-| Vascular disruption risk | Unreported in reviewed sources |
+| Vascular disruption risk | Unreported |
 | Micromotion sensitivity | Water-tank test: 0.7 mm lateral misalignment doubled noise floor in five devices. Beam alignment is a measured link limitation, not chronic tissue-motion tolerance |
 | Gliosis and encapsulation | Peripheral, not CNS gliosis; chronic tissue encapsulation unreported |
-| Neuron loss near sites | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported |
 | Foreign-body response mitigation | Small wireless package avoids required data cable; epoxy insulation does not prove chronic biocompatibility |
 | Typical failure modes | Acoustic misalignment degrades signal quality; chronic hardware/tissue failure rate unreported |
 
@@ -88,7 +88,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Power | Battery-free acoustic harvesting; approximately 25% acoustic-to-electrical load conversion on axis in tank. External system supplies ultrasound |
 | Thermal management | Measured MI 0.01, derated ISPPA 6.37 mW/cm² and ISPTA 0.21 mW/cm² at reported 5 V peak-to-peak drive. Temperature rise unreported; comparison to limits is not safety approval |
 | Packaging and hermeticity | Epoxy-protected polyimide assembly; multi-year hermetic qualification unreported |
-| MRI compatibility | Unreported in reviewed sources |
+| MRI compatibility | Unreported |
 | Surgical complexity | Peripheral exposure/placement plus alignment/coupling of external transducer approximately 8.9 mm from implant |
 | Output connectors | No required wired implant output; optional 0.35 mm wide, 25 mm long test lead used for ground-truth/voltage measurements |
 
@@ -100,7 +100,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Chronic yield | Not established by acute anesthetized experiments |
 | Stability over time | No appreciable EMG quality degradation after 30 min; t=0 versus 30 min waveform correlation R=0.901 in Figure 4, not chronic lifetime |
 | Longevity | Acute recording observation; maximum service life unreported |
-| Revision and explant experience | Unreported in reviewed sources |
+| Revision and explant experience | Unreported |
 | Adverse events | No quantitative chronic/clinical adverse-event series |
 | Notable demonstrations | At saturating evoked stimulation: EMG wireless/wired R=0.795 with differences within ±0.4 mV; ENG R=0.886, differences within ±0.2 mV. Protocol-specific |
 
