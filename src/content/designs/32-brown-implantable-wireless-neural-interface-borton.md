@@ -62,25 +62,25 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Electrode count | 100-element silicon microelectrode array [1] |
 | Pitch | Not explicitly extracted for this connected array; no generic Utah pitch substituted |
 | Electrode lengths | 1.5 mm insertion in macaques; not a complete shank-length option list [2] |
-| Shank width and thickness | Unreported in the reviewed sources |
-| Tip and exposed site geometry | Unreported in the reviewed sources |
+| Shank width and thickness | Unreported |
+| Tip and exposed site geometry | Unreported |
 | Contact coating | Contact-tip material not explicitly assigned here |
 | Insulation | Individually insulated gold wires; Kapton interconnect overmolded in biocompatible silicone (MED-4211) [2] |
-| Insertion method | Unreported in the reviewed sources |
+| Insertion method | Unreported |
 | Anchoring and fixation | In the two initial macaque experiments the titanium can was mostly embedded in PMMA and partly exposed; fully subcutaneous placement was in swine [2] |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in the reviewed sources |
+| Exposed site area | Unreported |
 | Electrode material | Silicon array; Pt/Ir feedthrough pins and 25 µm gold interconnect wires are separate components [2] |
 | Impedance (with measurement frequency) | 100-800 kΩ, manufacturer-verified at 1 kHz for the attached study array [2] |
-| Noise floor or SNR | Unreported in the reviewed sources |
+| Noise floor or SNR | Unreported |
 | Recording modality | Action potentials, field potentials and lower-frequency rhythms in freely moving animals [1, 2] |
 | Sampling rate | 20 kS/s per preamplifier channel [2] |
 | Stimulation capability | Not established as a function of this recording system [2] |
-| Charge injection limit | Unreported in the reviewed sources |
+| Charge injection limit | Unreported |
 | Reference and ground | Two 25 µm Pt/Ir reference wires attached to feedthrough pins; no independent ground wiring inferred [2] |
 
 ## Tissue interface and bioresponse
@@ -88,12 +88,12 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Cerebral cortex [1] |
-| Insertion trauma and BBB disruption | Unreported in the reviewed sources |
-| Vascular disruption risk | Unreported in the reviewed sources |
-| Micromotion sensitivity | Unreported in the reviewed sources |
-| Gliosis and encapsulation | Unreported in the reviewed sources |
-| Neuron loss near sites | Unreported in the reviewed sources |
-| Foreign-body response mitigation | Unreported in the reviewed sources |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
 | Typical failure modes | Heating during charging, handled with active skin cooling in animals; incomplete skin closure over the enclosure in the two initial macaque experiments [2] |
 
 ## System architecture
@@ -107,20 +107,20 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Power | Embedded medical-grade rechargeable Li-ion, 200 mAh; 90.6 mW normal power; seven hours of continuous operation per charge; inductive transcutaneous recharge at 2 MHz. A proposed extension to 16-hour operation is development work, not achieved battery life [2] |
 | Thermal management | Heating observed during charging; active skin cooling used in animals [2] |
 | Packaging and hermeticity | Hermetically sealed titanium enclosure with sapphire window; whole neural interface 44.5 g (battery 7.4 g, titanium package 30.6 g, PCBs and components 6.5 g) [2] |
-| MRI compatibility | Unreported in the reviewed sources |
-| Surgical complexity | Unreported in the reviewed sources |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
 | Output connectors | Custom hermetic feedthrough: 104 Pt/Ir pins, 100 connected to the array, two reference leads, two open [2] |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in the reviewed sources |
-| Chronic yield | Unreported in the reviewed sources |
+| Acute yield | Unreported |
+| Chronic yield | Unreported |
 | Stability over time | Abstract reports stable operation during over one year of testing; not identical uninterrupted lifetime for every channel, animal or package [2] |
 | Longevity | Over one year of testing reported in the abstract; seven hours per battery charge [1, 2] |
-| Revision and explant experience | Unreported in the reviewed sources |
-| Adverse events | Unreported in the reviewed sources |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
 | Notable demonstrations | Wireless recording in moving swine and rhesus macaques [1, 2] |
 
 ## Clinical and preclinical evidence
@@ -131,7 +131,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Preclinical cohort | Swine and rhesus macaques; four interfaces in the Figure 5 animals [2] |
 | Follow-up duration | Over one year of testing per the abstract [1] |
 | Indications | Neural recording research; clinical use was a design goal, not a human result [1] |
-| Trials and registries | Unreported in the reviewed sources |
+| Trials and registries | Unreported |
 | Primary outcomes | Stable wireless recording of cortical dynamics in moving primates and swine [1] |
 | Key limitations | Component regulatory status is not whole-system approval; heating during charging; incomplete skin closure in two initial macaques [1, 2] |
 
