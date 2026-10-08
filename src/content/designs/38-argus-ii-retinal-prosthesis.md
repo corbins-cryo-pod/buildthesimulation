@@ -39,43 +39,43 @@ The first retinal prosthesis to reach routine clinical use in the US, and a case
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Epiretinal array on a polymer cable, secured over the fovea by a spring retinal tack [2] |
-| Array layout | Unreported in reviewed sources |
+| Array layout | Unreported |
 | Electrode count | 55 enabled platinum electrodes [2] |
-| Pitch | Unreported in reviewed sources |
-| Electrode lengths | Unreported in reviewed sources |
-| Shank width and thickness | Unreported in reviewed sources |
-| Tip and exposed site geometry | Unreported in reviewed sources |
-| Contact coating | Unreported in reviewed sources |
-| Insulation | Unreported in reviewed sources |
-| Insertion method | Unreported in reviewed sources |
+| Pitch | Unreported |
+| Electrode lengths | Unreported |
+| Shank width and thickness | Unreported |
+| Tip and exposed site geometry | Unreported |
+| Contact coating | Unreported |
+| Insulation | Unreported |
+| Insertion method | Unreported |
 | Anchoring and fixation | Retinal tack; electronics case and coil held around the eyeball by a scleral band (equivalent to a 240 band) [2] |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
+| Exposed site area | Unreported |
 | Electrode material | Platinum [2] |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
-| Noise floor or SNR | Unreported in reviewed sources |
-| Recording modality | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported |
+| Noise floor or SNR | Unreported |
+| Recording modality | Unreported |
+| Sampling rate | Unreported |
 | Stimulation capability | Electrical stimulation; parameters are in the FDA labeling, not extracted here [2] |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported in reviewed sources |
-| Insertion trauma and BBB disruption | Unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
-| Gliosis and encapsulation | Unreported in reviewed sources |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Target tissue | Unreported |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
@@ -83,46 +83,46 @@ The first retinal prosthesis to reach routine clinical use in the US, and a case
 | --- | --- |
 | Onboard electronics | Electronics case and coil on the eye; glasses with camera and RF coils; battery-powered video processing unit worn in a pouch [2] |
 | Data path | Video processing unit sends stimulation data and power to the implant by RF telemetry via the glasses [2] |
-| Telemetry bandwidth | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
 | Power | Battery-powered external video processing unit [2] |
-| Thermal management | Unreported in reviewed sources |
-| Packaging and hermeticity | Unreported in reviewed sources |
-| MRI compatibility | Unreported in reviewed sources |
-| Surgical complexity | Unreported in reviewed sources |
-| Output connectors | Unreported in reviewed sources |
+| Thermal management | Unreported |
+| Packaging and hermeticity | Unreported |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
+| Output connectors | Unreported |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in reviewed sources |
-| Chronic yield | Unreported in reviewed sources |
-| Stability over time | Unreported in reviewed sources |
+| Acute yield | Unreported |
+| Chronic yield | Unreported |
+| Stability over time | Unreported |
 | Longevity | More than 350 implanted users were left with obsolete, unsupported technology after discontinuation in 2019 and near-failure in 2020 per IEEE Spectrum [3] |
-| Revision and explant experience | Unreported in reviewed sources |
-| Adverse events | Unreported in reviewed sources |
-| Notable demonstrations | Unreported in reviewed sources |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
+| Notable demonstrations | Unreported |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | Patients with severe to profound retinitis pigmentosa [2] |
-| Preclinical cohort | Unreported in reviewed sources |
-| Follow-up duration | Unreported in reviewed sources |
-| Indications | Unreported in reviewed sources |
+| Preclinical cohort | Unreported |
+| Follow-up duration | Unreported |
+| Indications | Unreported |
 | Trials and registries | FDA HDE H110002 [1] |
-| Primary outcomes | Unreported in reviewed sources |
+| Primary outcomes | Unreported |
 | Key limitations | Implant dimensions and electrode diameter are in the FDA labeling figures, not extracted here; effectiveness not demonstrated as is standard for an HDE [2] |
 
 ## Engineering tradeoffs
 
 | Field | Value and source scope |
 | --- | --- |
-| Strengths | Unreported in reviewed sources |
+| Strengths | Unreported |
 | Limitations | Support ended when the manufacturer discontinued the device [3] |
-| Scaling constraints | Unreported in reviewed sources |
+| Scaling constraints | Unreported |
 
 ## Overview
 
