@@ -20,6 +20,111 @@ The August 11, 2020 primary paper describes CMOS-Hosted in vivo Microelectrodes 
 
 The broader wire-to-chip approach overlaps with the [Stanford 2020 bundle interface](/devices/96-stanford-microwire-cmos-bundles-2020/), which the CHIME paper cites. This record identifies the distinct glass-gold, electrochemically functionalized CHIME assembly and its camera-derived readout variant, not a new name for every microwire-CMOS bundle. It is also not the later [Argo custom readout](/devices/94-argo-microwire-cmos-recording-system/).
 
+## Identity
+
+| Field | Value and source scope |
+| --- | --- |
+| Device | CHIME (CMOS-Hosted in vivo Microelectrodes), glass-gold microwires on MEA1k or camera CMOS [1] |
+| Manufacturer | Academic research device; Francis Crick Institute, UCL, Stanford, Paradromics, ETH Zurich, MaxWell Biosystems [1] |
+| Interface class | Intracortical microwire bundle coupled to a CMOS readout |
+| Origin | Primary paper, Frontiers in Neuroscience, August 11, 2020 [1, 2] |
+| First demonstrated | August 11, 2020 [1] |
+| First human implant | None |
+| Species studied | Mouse, acute olfactory-bulb recording [1] |
+| Regulatory status | Research device; no clearance |
+| Function | Recording [1] |
+| Target tissue | Brain, mouse olfactory bulb [1] |
+
+## Geometry and architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Glass-insulated gold wires pressed onto conductive CMOS pixels with electroplated gold bumps [1] |
+| Array layout | Flexible wire trajectories; one wire may contact multiple pixels; exact site positions not recoverable from average spacing [1] |
+| Electrode count | Bundles of 100-1,000 wires fabricated; 200-500 inserted in tests; MEA1k selects 1,024 of 26,400 pixels; Cheetah640CL has 640 × 512 pixels (327,680 amplifier inputs) [1] |
+| Pitch | About 100 µm average spacing in insertion tests [1] |
+| Electrode lengths | Released length: last 2 mm per Results, approximately 2-5 mm free per Methods; both retained [1] |
+| Shank width and thickness | 22-25 µm outer diameter, 1-7 µm gold core in reported recordings [1] |
+| Tip and exposed site geometry | 30-degree sharpening; gold/iridium-oxide electrodeposition; chip-side bumps about 10 µm [1] |
+| Contact coating | Gold/iridium-oxide electrodeposition [1] |
+| Insulation | Glass sheath [1] |
+| Insertion method | Bundle insertion in a head-fixed setup with mechanical presses [1] |
+| Anchoring and fixation | Unreported in reviewed sources |
+
+## Electrode and channel physics
+
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in reviewed sources |
+| Electrode material | Gold core, glass sheath, gold/iridium-oxide tip [1] |
+| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Noise floor or SNR | Saline: 24.2 ± 7.7 µV RMS (MEA1k pixels), 58.2 ± 21.5 µV (camera pixels); after correlated-noise subtraction MEA1k residual 6.5 ± 2.6 µV; processing states, not averaged [1] |
+| Recording modality | Extracellular acute recording [1] |
+| Sampling rate | Camera full-frame 1.7 kHz up to 200 kHz for the smallest window; MEA1k rate not extracted [1] |
+| Stimulation capability | Unreported in reviewed sources |
+| Charge injection limit | Unreported in reviewed sources |
+| Reference and ground | Unreported in reviewed sources |
+
+## Tissue interface and bioresponse
+
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Unreported in reviewed sources |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Unreported in reviewed sources |
+| Gliosis and encapsulation | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Unreported in reviewed sources |
+| Typical failure modes | Unreported in reviewed sources |
+
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Commodity CMOS (MEA1k, camera-derived) with reference-voltage electronics; camera lacks MEA offset compensation and filtering, so drifts saturate pixels [1] |
+| Data path | Wired acquisition equipment; untethered electronics not demonstrated [1] |
+| Telemetry bandwidth | Unreported in reviewed sources |
+| Sampling rate | Unreported in reviewed sources |
+| Power | Unreported in reviewed sources |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | Unreported in reviewed sources |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Unreported in reviewed sources |
+| Output connectors | Wires pressed onto CMOS pixels with gold bumps [1] |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Unreported in reviewed sources |
+| Chronic yield | Unreported in reviewed sources |
+| Stability over time | 40 minutes in the acute mouse application, not days to months [1] |
+| Longevity | Unreported in reviewed sources |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | Unreported in reviewed sources |
+| Notable demonstrations | Figure 3 connects 200 electrodes; not a 327,680-electrode brain recording [1] |
+
+## Clinical and preclinical evidence
+
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None |
+| Preclinical cohort | Acute mouse olfactory bulb [1] |
+| Follow-up duration | About 40 minutes [1] |
+| Indications | Unreported in reviewed sources |
+| Trials and registries | Unreported in reviewed sources |
+| Primary outcomes | Acute multichannel recordings through wire-to-CMOS connection [1] |
+| Key limitations | Chronic histological and functional studies called for; dense bundles displace tissue; smaller wires buckle; vascular damage not proven zero for all bundles [1] |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Commodity CMOS readout scales channel count well beyond custom chips [1] |
+| Limitations | Wire trajectories uncertain, spike sorting harder, camera saturation [1] |
+| Scaling constraints | Million-channel scaling is prospective, not demonstrated [1] |
+
 ## Demonstrated assembly
 
 | Component | Primary paper description |
@@ -51,7 +156,7 @@ Dense bundles increase tissue displacement. Smaller wires increase buckling risk
 
 No full model is supplied: average spacing does not recover the actual packing, tip coordinates, gold-bump deformation, chip assignments or press envelope. Prospective million-channel scaling and untethered electronics are not demonstrated hardware features here.
 
-## Primary sources
+## References
 
-- [Published 2020 paper, Methods and Figures 1-6](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2020.00834/full).
-- [Primary paper archive](https://pmc.ncbi.nlm.nih.gov/articles/PMC7432274/).
+1. [Published 2020 paper, Methods and Figures 1-6](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2020.00834/full).
+2. [Primary paper archive](https://pmc.ncbi.nlm.nih.gov/articles/PMC7432274/).
