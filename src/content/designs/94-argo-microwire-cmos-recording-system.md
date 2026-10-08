@@ -20,6 +20,111 @@ The 2021 Argo paper describes a head-fixed neural recording system from Paradrom
 
 PtIr microwire arrays are compressively and reversibly bonded to a custom CMOS amplifier array. Wire locations are stochastic, not a regular contact map. The system supports penetrating arrays for spikes and flat-ended surface arrays for local field potentials.
 
+## Identity
+
+| Field | Value and source scope |
+| --- | --- |
+| Device | Argo microwire-CMOS recording system [1] |
+| Manufacturer | Paradromics and Caeleste, with University of Pittsburgh participation [1] |
+| Interface class | PtIr microwire arrays bonded to a CMOS amplifier array, penetrating and surface variants [1] |
+| Origin | 2021 Argo paper [1] |
+| First demonstrated | 2021 paper [1, 2] |
+| First human implant | None |
+| Species studied | Rat and sheep [1] |
+| Regulatory status | Research system; not the later Connexus clinical module [1] |
+| Function | Acute head-fixed recording: spikes with penetrating arrays, local field potentials with surface arrays [1] |
+| Target tissue | Rat cortex (spikes) and sheep cortical surface [1] |
+
+## Geometry and architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Compressively and reversibly bonded PtIr microwires on a CMOS sensor; wire locations are stochastic [1] |
+| Array layout | Rat illustrated array 1,300 wires, 10 mm diameter; surface example roughly 35,000 wires, 12 × 12 mm. Kept separate [1] |
+| Electrode count | CMOS 256 × 256 = 65,536 pixels; 1,300 wires (rat array); 30,146 connected pixels at 86% connectivity in a surface example [1] |
+| Pitch | CMOS pixel pitch 50 × 50 µm (landing pad 40 × 40 µm); rat array 200 µm spacing; surface example 60 µm pitch; fabrication examples 100-400 µm [1] |
+| Electrode lengths | Rat array 1 mm wire length [1] |
+| Shank width and thickness | Rat wires 18 µm diameter; electrosharpened tip below 200 nm; sensor active area 12.8 × 12.8 mm, ASIC 14.5 × 16 mm [1] |
+| Tip and exposed site geometry | Penetrating tips electrosharpened; surface-array tips polished flat; selective insulation removal at recording sites [1] |
+| Contact coating | Unreported in reviewed sources |
+| Insulation | 20-30 nm alumina; sacrificial parylene sets spacing and is removed from the recording end [1] |
+| Insertion method | Penetrating array in rat; flat surface array on sheep cortex [1] |
+| Anchoring and fixation | Unreported in reviewed sources |
+
+## Electrode and channel physics
+
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Not reported for the exposed sites; wire diameter 18 µm [1] |
+| Electrode material | Platinum-iridium, 90% Pt and 10% Ir [1] |
+| Impedance (with measurement frequency) | Typical 300-500 kΩ at 1 kHz in saline [1] |
+| Noise floor or SNR | Table 1 lists 6.3 ± 0.5 µV RMS; the text reports 7.5 ± 0.4 µV RMS (300-6,000 Hz band). Surface example: 6.3 ± 0.5 µV RMS in text, 6.5 µV RMS in the Figure 6 caption. Not combined [1] |
+| Recording modality | Spikes (penetrating) and local field potentials (surface) [1] |
+| Sampling rate | 32 kHz per channel, 12-bit [1] |
+| Stimulation capability | Unreported in reviewed sources |
+| Charge injection limit | Unreported in reviewed sources |
+| Reference and ground | Unreported in reviewed sources |
+
+## Tissue interface and bioresponse
+
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Rat cortex and sheep cortical surface [1] |
+| Insertion trauma and BBB disruption | Unreported in reviewed sources |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Unreported in reviewed sources |
+| Gliosis and encapsulation | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Unreported in reviewed sources |
+| Typical failure modes | Unreported in reviewed sources |
+
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Custom CMOS amplifier array, 65,536 pixels [1] |
+| Data path | Head-fixed wired acute preparation limited by downstream electronics [1] |
+| Telemetry bandwidth | Unreported in reviewed sources |
+| Sampling rate | 32 kHz per channel, 12-bit [1] |
+| Power | Unreported in reviewed sources |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | Compressive reversible bonding of wires to the chip [1] |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Unreported in reviewed sources |
+| Output connectors | Unreported in reviewed sources |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Connectivity 71 ± 2.9% (SEM) across 32 sensor/array combinations; 86% in a selected surface example [1] |
+| Chronic yield | Unreported in reviewed sources |
+| Stability over time | Unreported in reviewed sources |
+| Longevity | Acute only; summary table lists continuous recording greater than eight hours, which is not a chronic follow-up [1] |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | Unreported in reviewed sources |
+| Notable demonstrations | 1,300-wire rat spiking and sheep surface mapping with over 30,000 connected channels [1] |
+
+## Clinical and preclinical evidence
+
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None |
+| Preclinical cohort | Rat and sheep acute experiments; animal counts not extracted here [1] |
+| Follow-up duration | Acute [1] |
+| Indications | Unreported in reviewed sources |
+| Trials and registries | Unreported in reviewed sources |
+| Primary outcomes | Spiking in rat and surface potential mapping in sheep [1] |
+| Key limitations | Electronics address 65,536 channels but the paper reports no 65,536 independent implanted wires or neurons; head-fixed acute use only; smaller floating device is future work [1] |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Very large channel capacity in the readout chip [1] |
+| Limitations | Stochastic wire positions, acute head-fixed use, noise figures that disagree across the paper [1] |
+| Scaling constraints | Full sensor use would need an ordered one-to-one electrode array rather than the tested stochastic arrays [1] |
+
 ## Electronic capacity versus tested arrays
 
 | Structure | Published configuration |
@@ -52,7 +157,7 @@ The system is limited to acute, head-fixed preparations because of its downstrea
 
 No full contact model is supplied. CMOS pixels, landed wires and exposed tissue contacts differ; stochastic wire positions and sharpened-tip shapes are not fully specified by nominal array diameter and spacing. A regular 1,300-wire grid would misrepresent the tested array.
 
-## Primary sources
+## References
 
-- [2021 complete primary manuscript, methods, Table 1 and Figures 2/6](https://pmc.ncbi.nlm.nih.gov/articles/PMC8607496/).
-- [Publisher record](https://beta.iopscience.iop.org/article/10.1088/1741-2552/abd0ce).
+1. [2021 complete primary manuscript, methods, Table 1 and Figures 2/6](https://pmc.ncbi.nlm.nih.gov/articles/PMC8607496/).
+2. [Publisher record](https://beta.iopscience.iop.org/article/10.1088/1741-2552/abd0ce).
