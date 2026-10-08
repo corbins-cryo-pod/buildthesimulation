@@ -20,6 +20,111 @@ Singer and colleagues report two discrete-component ME configurations in Neuron 
 
 Primary affiliations include Rice and UTHealth Houston. The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectronics-labs/) links the later ME platforms separately.
 
+## Identity
+
+| Field | Value and source scope |
+| --- | --- |
+| Device | Two-film PVDF/Metglas ME headstage (Demo 1) [1] |
+| Manufacturer | Academic research device; Rice and UTHealth Houston [1] |
+| Interface class | Head-mounted wireless stimulator connected to an implanted commercial array |
+| Origin | Singer and colleagues, Neuron 2020 [1] |
+| First demonstrated | 2020 [1] |
+| First human implant | None |
+| Species studied | Rat, hemi-Parkinsonian rotation study [1] |
+| Regulatory status | Research device; no clearance |
+| Function | Stimulation; no recording uplink or closed loop [1] |
+| Target tissue | Brain (subthalamic nucleus in the rotation study) [1] |
+
+## Geometry and architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Head-mounted stimulator to an implanted commercial array [1] |
+| Array layout | Unreported in reviewed sources |
+| Electrode count | Two films drive one phase each of the same output, not two channels [1] |
+| Pitch | Unreported in reviewed sources |
+| Electrode lengths | Unreported in reviewed sources |
+| Shank width and thickness | Whole assembly 500 mm³, 20 mm³ power source, 500 mg (Table 1); broader film tests 28-110 µm piezo layers, 50-150 µm total films [1] |
+| Tip and exposed site geometry | Unreported in reviewed sources |
+| Contact coating | Unreported in reviewed sources |
+| Insulation | Parylene-C 8-10 µm (Results) or 5-10 µm (Methods), both kept [1] |
+| Insertion method | Unreported in reviewed sources |
+| Anchoring and fixation | Unreported in reviewed sources |
+
+## Electrode and channel physics
+
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in reviewed sources |
+| Electrode material | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Calibration load 56 kΩ in parallel with 440 pF approximating electrode-brain impedance [1] |
+| Noise floor or SNR | Unreported in reviewed sources |
+| Recording modality | Unreported in reviewed sources |
+| Sampling rate | Unreported in reviewed sources |
+| Stimulation capability | 200 Hz biphasic, 400 µs phases at about 50% carrier duty; about ±1.5 V and ±100 µA from the equivalent-circuit calibration; biphasic to at least 800 Hz in saline bubble tests, monophasic about 50 Hz [1] |
+| Charge injection limit | Less than 1 nC residual charge dissipating in under 2 ms in the general two-film circuit test [1] |
+| Reference and ground | Unreported in reviewed sources |
+
+## Tissue interface and bioresponse
+
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Unreported in reviewed sources |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Unreported in reviewed sources |
+| Gliosis and encapsulation | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Unreported in reviewed sources |
+| Typical failure modes | Unreported in reviewed sources |
+
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Discrete circuit with separate full-wave rectifiers per phase and isolating transistors; no ASIC [1] |
+| Data path | No neural-recording uplink [1] |
+| Telemetry bandwidth | Unreported in reviewed sources |
+| Sampling rate | Unreported in reviewed sources |
+| Power | Table 1: 100-170 kHz carrier (rotation 130/160 kHz ON, 120/170 kHz OFF), 1-2 mT AC field, 30 W required, 0.1-0.2 mW maximum in-animal; bias about 8-9 mT [1] |
+| Thermal management | No measured temperature rise in one five-minute pulsed film test [1] |
+| Packaging and hermeticity | 14-day 37 °C saline test of polyimide-coated films, about 20% voltage loss in agarose; chronic assembly survival unestablished [1] |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Unreported in reviewed sources |
+| Output connectors | Unreported in reviewed sources |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Unreported in reviewed sources |
+| Chronic yield | Unreported in reviewed sources |
+| Stability over time | Unreported in reviewed sources |
+| Longevity | Unreported in reviewed sources |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | Unreported in reviewed sources |
+| Notable demonstrations | Hemi-Parkinsonian rat rotation control; 30 cm wire-wrapped behavioral enclosure [1] |
+
+## Clinical and preclinical evidence
+
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None |
+| Preclinical cohort | Hemi-Parkinsonian rats [1] |
+| Follow-up duration | Unreported in reviewed sources |
+| Indications | Unreported in reviewed sources |
+| Trials and registries | Unreported in reviewed sources |
+| Primary outcomes | Wireless ME-driven rotation behavior [1] |
+| Key limitations | Foreign-body response, pressure-wave effects, magnetic-imaging compatibility and wearable transmitter size open [1] |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | 0.5 g headstage, no battery [1] |
+| Limitations | Calibration by magnet distance; large wire-wrapped enclosure and 30 W drive [1] |
+| Scaling constraints | Unreported in reviewed sources |
+
 ## Hardware and magnetic drive
 
 | Part | Reported configuration |
@@ -51,6 +156,6 @@ The discussion reports a 14-day, 37°C saline test of polyimide-coated films, ab
 
 No 3D model is added. Figure 4 shows the headstage on a coin, but the 500-mm³ volume alone does not define its board outline, film placement, magnet geometry or enclosure.
 
-## Primary source
+## References
 
-- [Singer and colleagues, Neuron 2020](https://pmc.ncbi.nlm.nih.gov/articles/PMC7818389/): Table 1, Figures 3-4, fabrication/circuit/rotation methods and Discussion.
+1. [Singer and colleagues, Neuron 2020](https://pmc.ncbi.nlm.nih.gov/articles/PMC7818389/): Table 1, Figures 3-4, fabrication/circuit/rotation methods and Discussion.
