@@ -27,7 +27,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Manufacturer | Science Corporation, company description November 2024 |
 | Interface class | Conceptual biohybrid neural interface; deployment geometry unreported |
 | Origin | Science Corporation biohybrid program led by Alan Mardinly and Yifan Kong |
-| First demonstrated | Company architecture description 2024; complete electronic system demonstration not established by reviewed sources |
+| First demonstrated | Company architecture description 2024; complete electronic system demonstration not established |
 | First human implant | Unreported |
 | Species studied | No cohort for this complete electronic architecture given; separate surface microwell study uses mice |
 | Regulatory status | Company describes low technology readiness; clinical authorization unreported |
@@ -101,7 +101,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Stability over time | Complete electronic architecture performance unreported; mouse microwell survival not transferred |
 | Longevity | Unreported |
 | Revision and explant experience | Unreported |
-| Adverse events | No safety cohort for this architecture in reviewed sources; surface microwell explant injury belongs to that separate study |
+| Adverse events | No safety cohort for this architecture; surface microwell explant injury belongs to that separate study |
 | Notable demonstrations | Company links a separate passive cortical microwell/optical mouse proof of concept; not proof of this electronic probe system |
 
 ## Clinical and preclinical evidence
