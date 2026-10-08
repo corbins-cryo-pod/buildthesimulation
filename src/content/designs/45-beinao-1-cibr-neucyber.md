@@ -28,7 +28,7 @@ Beinao-1 (also written Beinao No. 1, "The NeuCyber Matrix BCI System") is a seco
 | Interface class | Semi-invasive, wireless, fully implanted, flexible electrode matrix outside the protective membrane of the brain [2] |
 | Origin | CIBR, Beijing, China [1] |
 | First demonstrated | Seven patients used the system in exploratory work over the year before March 2026, per CIBR [1] |
-| First human implant | Earlier investigator-initiated implants not dated in the reviewed sources; first two implants in the GCP-compliant multi-center trial on March 31, 2026 at Tiantan Hospital and Xuanwu Hospital [1] |
+| First human implant | Earlier investigator-initiated implants not dated; first two implants in the GCP-compliant multi-center trial on March 31, 2026 at Tiantan Hospital and Xuanwu Hospital [1] |
 | Species studied | Human [1] |
 | Regulatory status | GCP-compliant multi-center clinical trial started March 31, 2026; the sources reviewed here report no market approval [1] |
 | Function | Recording to restore motor and speech function; China Daily says it supports speech decoding with a vocabulary of nearly 100 commonly used Chinese words [1, 2] |
@@ -39,7 +39,7 @@ Beinao-1 (also written Beinao No. 1, "The NeuCyber Matrix BCI System") is a seco
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Semi-invasive flexible ultra-thin electrode matrix [2] |
-| Array layout | Matrix; coordinates unreported in reviewed sources |
+| Array layout | Matrix; coordinates unreported |
 | Electrode count | 128 channels [2] |
 | Pitch | Unreported |
 | Electrode lengths | Unreported |
@@ -101,7 +101,7 @@ Beinao-1 (also written Beinao No. 1, "The NeuCyber Matrix BCI System") is a seco
 | Stability over time | Unreported |
 | Longevity | Over 45,000 hours of safe operation across seven exploratory patients per CIBR [1]; China Daily reports more than 65,000 hours across nearly 30 implants in the earlier investigator-initiated phase [2] |
 | Revision and explant experience | Unreported |
-| Adverse events | Described as safe operation in CIBR and China Daily reports; no adverse-event dataset in the reviewed sources |
+| Adverse events | Described as safe operation in CIBR and China Daily reports; no adverse-event dataset |
 | Notable demonstrations | Speech decoding with a vocabulary of nearly 100 common Chinese words [2] |
 
 ## Clinical and preclinical evidence
@@ -113,15 +113,15 @@ Beinao-1 (also written Beinao No. 1, "The NeuCyber Matrix BCI System") is a seco
 | Follow-up duration | Hours of operation reported above [1, 2]; per-patient follow-up unreported |
 | Indications | Spinal cord injury, ALS or stroke patients, restoring motor and speech function, per the institute [1] |
 | Trials and registries | GCP-compliant multi-center trial from March 31, 2026 with initial planned enrollment of 36 patients; registry identifier not pinned in this sheet [1, 2]. Nationwide hospital use is planned for 2027 per the academy report [3] |
-| Primary outcomes | None peer-reviewed in the reviewed sources |
-| Key limitations | Implant counts differ by source; electrode area, pitch and implant dimensions are not published in the reviewed sources [1, 2, 3] |
+| Primary outcomes | None peer-reviewed |
+| Key limitations | Implant counts differ by source; electrode area, pitch and implant dimensions are not published [1, 2, 3] |
 
 ## Engineering tradeoffs
 
 | Field | Value and source scope |
 | --- | --- |
 | Strengths | Fully implanted wireless semi-invasive design with no direct brain contact [2] |
-| Limitations | Sparse technical disclosure; no per-electrode specifications or peer-reviewed outcomes in the reviewed sources |
+| Limitations | Sparse technical disclosure; no per-electrode specifications or peer-reviewed outcomes |
 | Scaling constraints | Unreported |
 
 ## References
