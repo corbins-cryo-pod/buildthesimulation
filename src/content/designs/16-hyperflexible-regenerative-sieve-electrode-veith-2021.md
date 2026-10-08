@@ -54,14 +54,14 @@ All rows follow the shared implant-device template. Measurements belong to the n
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
+| Exposed site area | Unreported |
 | Electrode material | Gold contacts and interconnects; nickel/gold pad layers, Methods |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
-| Noise floor or SNR | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported |
+| Noise floor or SNR | Unreported |
 | Recording modality | Mesh neural recording unreported; CMAP readout uses separate gastrocnemius needle and nerve hook electrodes |
 | Sampling rate | Unreported for mesh; Powerlab/LabChart external CMAP acquisition is separate |
 | Stimulation capability | Stimulation through mesh contacts unreported in audited study; CMAP induced by custom hook electrode |
-| Charge injection limit | Unreported in reviewed sources |
+| Charge injection limit | Unreported |
 | Reference and ground | Mesh reference/ground unreported; Achilles tendon needle reference belongs to CMAP assay, not mesh pin map |
 
 ## Tissue interface and bioresponse
@@ -73,7 +73,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Vascular disruption risk | Square mesh fractured and impeded regrowth; mixed pores aim to permit vascular invasion. Quantitative surgical vascular injury rate unreported |
 | Micromotion sensitivity | Mesh fracture during regeneration documented; not a quantified motion-transfer measurement |
 | Gliosis and encapsulation | Initial SM increased CD68 macrophage response; redesigned growth-factor MPM reduced macrophage response at three months. Peripheral, not CNS gliosis |
-| Neuron loss near sites | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported |
 | Foreign-body response mitigation | Mixed pore geometry plus distal 0.5% alginate carrying NGFβ, VEGF-A and FGF-2 at 100 ng/ml each, Methods |
 | Typical failure modes | All tested initial SM devices destroyed by 14 days; six-month initial experiment had limited regeneration in two of five nerves and fractured devices |
 
@@ -84,11 +84,11 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Onboard electronics | No active onboard electronics described; passive fabricated mesh |
 | Data path | Future electronic interfacing via contact pads; chronic connected mesh acquisition not demonstrated in reviewed study |
 | Telemetry bandwidth | Not applicable to unconnected passive mesh in tissue-integration experiments |
-| Sampling rate | Unreported in reviewed sources |
+| Sampling rate | Unreported |
 | Power | Not applicable to passive mesh in these experiments; separate assay electronics external |
-| Thermal management | Unreported in reviewed sources |
+| Thermal management | Unreported |
 | Packaging and hermeticity | SU-8 mesh immobilized in silicone conduit; no hermetic electronics qualification |
-| MRI compatibility | Unreported in reviewed sources |
+| MRI compatibility | Unreported |
 | Surgical complexity | Nerve transection, conduit placement and microsuturing; invasive regenerative model |
 | Output connectors | Contact pads fabricated; connected implanted-output connector specification unreported |
 
