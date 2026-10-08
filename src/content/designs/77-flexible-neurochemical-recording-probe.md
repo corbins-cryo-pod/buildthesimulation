@@ -18,6 +18,111 @@ draft: false
 
 Malekoshoaraie and colleagues' 2024 hardware combines electrical recording with electrically triggered, localized neurotransmitter release. The paper lists Carnegie Mellon University and University of Pittsburgh affiliations. The device is a flexible penetrating probe, not a cortical grid or a fluidic pump.
 
+## Identity
+
+| Field | Value and source scope |
+| --- | --- |
+| Device | Flexible neurochemical-release and recording probe [1] |
+| Manufacturer | Academic research device; Carnegie Mellon University and University of Pittsburgh affiliations [1, 2] |
+| Interface class | Flexible penetrating intracortical probe with recording and chemical-release sites [1] |
+| Origin | Malekoshoaraie and colleagues, 2024 [1] |
+| First demonstrated | 2024 paper [1] |
+| First human implant | None |
+| Species studied | Rat (acute, barrel cortex) [1] |
+| Regulatory status | Research device; no clearance [1] |
+| Function | Electrical recording plus electrically triggered localized glutamate or GABA release [1] |
+| Target tissue | Rat barrel cortex [1] |
+
+## Geometry and architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | 16 recording contacts plus two chemical-release sites on one shank [1, 3] |
+| Array layout | 16 contacts at 50 µm pitch; two release sites separate from recording contacts [1, 3] |
+| Electrode count | 16 recording contacts and two chemical-release sites (18 electrodes, not 18 recording channels) [1] |
+| Pitch | 50 µm contact pitch [1] |
+| Electrode lengths | Shank 10 mm long [1] |
+| Shank width and thickness | 350 µm wide, 20 µm thick [1] |
+| Tip and exposed site geometry | Recording contacts 33 × 33 µm; release sites 40 × 400 µm. Interconnects 4 µm wide at 4 µm spacing (recording), 10 µm wide (release) [1, 3] |
+| Contact coating | PEDOT:PSS on recording contacts; PEDOT doped with mesoporous sulfonated silica nanoparticles loaded with glutamate or GABA on release sites [1] |
+| Insulation | Parylene C, nominally 10 µm lower and 10 µm upper layers [1] |
+| Insertion method | Temporary 50 µm tungsten-wire shuttle attached with PEG [1] |
+| Anchoring and fixation | Unreported in reviewed sources |
+
+## Electrode and channel physics
+
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Recording contacts 33 × 33 µm; release sites 40 × 400 µm [1] |
+| Electrode material | PEDOT:PSS-coated recording contacts; PEDOT with silica nanoparticles on release sites [1] |
+| Impedance (with measurement frequency) | At 1 kHz, mean ± SE 387.64 ± 9.04 kΩ before and 16.18 ± 0.14 kΩ after PEDOT:PSS, across 128 microelectrodes (characterization sample, not the rat cohort) [1] |
+| Noise floor or SNR | Activity could not be quantified during the five-second release stimulus because of stimulation artifacts [1] |
+| Recording modality | Extracellular recording on 16 channels with a TDT Medusa/RX5 chain [1, 3] |
+| Sampling rate | Unreported in reviewed sources |
+| Stimulation capability | Electrically actuated chemical release (glutamate or GABA), not direct electrical stimulation alone [1] |
+| Charge injection limit | Unreported in reviewed sources |
+| Reference and ground | Unreported in reviewed sources |
+
+## Tissue interface and bioresponse
+
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Rat barrel cortex [1] |
+| Insertion trauma and BBB disruption | Shuttle-related tissue damage listed among work needed for chronic use [1] |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Unreported in reviewed sources |
+| Gliosis and encapsulation | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Unreported in reviewed sources |
+| Typical failure modes | Finite drug loading; stimulation artifacts; long-term stability open [1] |
+
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Unreported in reviewed sources |
+| Data path | Wired: 16-channel Omnetics connector to TDT recording chain; separate waveform-generator connections for release [1, 3] |
+| Telemetry bandwidth | Unreported in reviewed sources |
+| Sampling rate | Unreported in reviewed sources |
+| Power | Unreported in reviewed sources |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | Unreported in reviewed sources |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Shuttle-assisted insertion of a flexible probe [1] |
+| Output connectors | 0.3 mm-pitch flat cable and adaptor PCB; 19-position ZIF connector with one unconnected pad (no compatible 18-position connector available) [1, 3] |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Acute rat recordings; yield figures not extracted [1] |
+| Chronic yield | Unreported in reviewed sources |
+| Stability over time | Unreported in reviewed sources |
+| Longevity | Acute; chronic use not established [1] |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | Unreported in reviewed sources |
+| Notable demonstrations | Excitatory and inhibitory effects tested in rat barrel cortex [1] |
+
+## Clinical and preclinical evidence
+
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None |
+| Preclinical cohort | Acute rat experiment; cohort size not extracted here [1] |
+| Follow-up duration | Acute [1] |
+| Indications | Unreported in reviewed sources |
+| Trials and registries | Unreported in reviewed sources |
+| Primary outcomes | Localized neurotransmitter release with electrophysiological readout in rat barrel cortex [1] |
+| Key limitations | No chronic use, human safety or assistive BCI control established; Parylene C use in other approved implants does not make this probe approved [1] |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Recording and localized chemical release on one flexible shank, without a pressure-driven reservoir [1] |
+| Limitations | Finite drug loading, artifacts during release, connector size [1] |
+| Scaling constraints | Connector miniaturization, drug capacity, shuttle-related damage and long-term stability need work for chronic use [1] |
+
 ## Published hardware
 
 | Feature | Reported structure |
@@ -54,8 +159,8 @@ A 50 µm tungsten-wire shuttle is temporarily attached with PEG for insertion. T
 
 Shank and contact sizes are reported. No 3D model is supplied here: the full tip outline, exact contact coordinates, coating thickness and backend assembly would need a separately grounded reconstruction. The paper's schematic is not an acquisition channel map.
 
-## Primary sources
+## References
 
-- [2024 paper: design, characterization, acute results and limits](https://www.nature.com/articles/s41378-024-00685-6).
-- [Publisher PDF, including methods and author affiliations](https://www.nature.com/articles/s41378-024-00685-6.pdf).
-- [Figure 1: design and packaging](https://www.nature.com/articles/s41378-024-00685-6/figures/1).
+1. [2024 paper: design, characterization, acute results and limits](https://www.nature.com/articles/s41378-024-00685-6).
+2. [Publisher PDF, including methods and author affiliations](https://www.nature.com/articles/s41378-024-00685-6.pdf).
+3. [Figure 1: design and packaging](https://www.nature.com/articles/s41378-024-00685-6/figures/1).
