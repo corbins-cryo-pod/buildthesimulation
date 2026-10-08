@@ -54,7 +54,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
+| Exposed site area | Unreported |
 | Electrode material | Gold recording contacts; tungsten microwire in separate stimulation variant |
 | Impedance (with measurement frequency) | Standard electrode impedance unreported in reviewed figure/supplement text |
 | Noise floor or SNR | No universal noise rating assigned; supplement states low-noise activity came from a fraction of 48 channels, showing 12 |
@@ -70,10 +70,10 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | --- | --- |
 | Target tissue | Epicortical tissue for recording; intracortical microwires for separate stimulation experiments |
 | Insertion trauma and BBB disruption | Large craniotomy required; supplement says skin and skull not replaced during surgery for large stimulation construct. Closed-tissue attenuation simulation is not closed-skull demonstration |
-| Vascular disruption risk | Unreported in reviewed sources |
+| Vascular disruption risk | Unreported |
 | Micromotion sensitivity | Poor electrode-tissue contact/practical placement identified among reasons for noisy channels; quantified chronic motion tolerance unreported |
 | Gliosis and encapsulation | Chronic histological response not established for 2021 acute configuration |
-| Neuron loss near sites | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported |
 | Foreign-body response mitigation | Miniature distributed form factor and encapsulation are design features, not observed absence of foreign-body response |
 | Typical failure modes | Higher-noise channels linked to imperfect tissue contact, cortical activity and ensemble placement limits; chronic hardware failure rates unreported |
 
@@ -88,7 +88,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Power | Less than 30 µW per chip budget in supplement; external transmitter power is separate. Approximately 1 GHz carrier, 915 MHz design selection |
 | Thermal management | RF SAR simulations reported; measured chronic tissue heating unreported. Modeled exposures do not establish clinical safety |
 | Packaging and hermeticity | Acute PDMS assembly; conformal ALD/thinned 0.01 mm³ earlier work is not the demonstrated 650 x 650 x 250 µm configuration or a multi-year recording lifetime |
-| MRI compatibility | Unreported in reviewed sources |
+| MRI compatibility | Unreported |
 | Surgical complexity | Craniotomy, distributed-chip placement, relay-coil/carrier positioning and optional intracortical wires; closed-skin/skull modeled link not assumed surgically demonstrated |
 | Output connectors | No wired chip output to hub; wireless backscatter. External benchtop SDR/amplifier/duplexer connectors are not implanted chip connectors |
 
@@ -100,7 +100,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Chronic yield | Not established for 2021 recording ASIC; 2024 three-month stimulation branch is separate |
 | Stability over time | Acute recordings; standardized chronic recording stability unreported |
 | Longevity | Acute 2021 configuration, maximum implanted recording service life unreported |
-| Revision and explant experience | Unreported in reviewed sources |
+| Revision and explant experience | Unreported |
 | Adverse events | No clinical adverse-event series or standardized chronic tissue safety assessment for 2021 configuration |
 | Notable demonstrations | 48-chip acute rat recording; 64 autonomous TDMA chips and 32 call-and-response chips in distinct bench tests; 69-chip two-coil power/network demonstration is not 69 neural recording sites |
 
