@@ -29,21 +29,19 @@ const normalized = entries.map((p) => ({
 
 <Layout
   pageTitle="Devices"
-  subtitle="Explore neural interfaces, inspect 3D models and design your own electrodes."
+  subtitle="Explore neural interfaces and inspect their 3D models."
   description="BCI Devices: a searchable directory with curated facets (axis, interface type, directionality, form factor)."
 >
+  <section class="catalog-heading" aria-labelledby="device-catalog-title">
+    <h2 id="device-catalog-title">Device Catalog</h2>
+    <h3><a href="/devices/models/">3D Model Finder</a></h3>
+  </section>
   <DevicesDirectory client:load entries={normalized} />
 </Layout>
 
 <style>
-  .tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .tool { display: flex; flex-direction: column; padding: 22px; border: 1px solid var(--border); border-radius: 16px; background: var(--panel); text-decoration: none; color: inherit; }
-  .tool:hover { border-color: var(--borderStrong); background: var(--panelHover); }
-  .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; opacity: .72; }
-  .tool h2 { font-size: var(--title-card); margin: 10px 0 6px; }
-  .tool p { margin: 0 0 18px; line-height: 1.5; opacity: .82; }
-  .tool-link { margin-top: auto; font-size: 18px; font-style: italic; }
-  .catalog-title { font-size: var(--title-section); margin: 26px 0 8px; }
-  .muted { opacity: .72; margin: 0; line-height: 1.5; }
-  @media (max-width: 680px) { .tools { grid-template-columns: 1fr; } .tool { padding: 18px; } }
+  .catalog-heading { margin: 26px 0 18px; }
+  .catalog-heading h2 { font-size: var(--title-section); margin: 0 0 8px; }
+  .catalog-heading h3 { font-size: var(--title-card); font-style: italic; margin: 0; }
+  .catalog-heading a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 </style>

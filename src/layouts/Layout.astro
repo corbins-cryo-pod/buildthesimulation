@@ -100,21 +100,18 @@ function stripAtlasLabel(title) {
         <nav class="nav" aria-label="Primary">
           <a class={`pill ${pathname === "/" ? "active" : ""}`} href="/">Home</a>
 
-          <details class={`navDrop ${pathname.startsWith("/sim") || pathname.startsWith("/simulations") ? "active" : ""}`}>
-            <summary class="pill">Simulations</summary>
-            <div class="menu" role="menu">
+          <div class={`navDrop ${pathname.startsWith("/sim") || pathname.startsWith("/simulations") ? "active" : ""}`}>
+            <a class="pill" href="/simulations/">Simulations</a>
+            <div class="menu">
               <a class="menuItem" href="/simulations/cortex-slab/">Cortical recording lab</a>
               <a class="menuItem" href="/sim/">Nerve cross-section sandbox</a>
-              <div class="menuSep"></div>
-              <a class="menuItem" href="/simulations/">All simulations →</a>
             </div>
-          </details>
+          </div>
 
-          <details class={`navDrop ${pathname.startsWith("/designs") || (pathname.startsWith("/devices") && !pathname.startsWith("/devices/designer")) ? "active" : ""}`}>
-            <summary class="pill">Devices</summary>
-            <div class="menu" role="menu">
-              <a class="menuItem" href="/devices/">Device catalog →</a>
-              <a class="menuItem" href="/devices/models/">3D model finder →</a>
+          <div class={`navDrop ${pathname.startsWith("/designs") || (pathname.startsWith("/devices") && !pathname.startsWith("/devices/designer")) ? "active" : ""}`}>
+            <a class="pill" href="/devices/">Devices</a>
+            <div class="menu">
+              <a class="menuItem" href="/devices/models/">3D model finder</a>
               <div class="menuSep"></div>
               {designs.map((p) => (
                 <a class="menuItem" href={`/devices/${p.slug}/`}>
@@ -122,35 +119,31 @@ function stripAtlasLabel(title) {
                 </a>
               ))}
             </div>
-          </details>
+          </div>
 
           <a class={`pill ${pathname.startsWith("/devices/designer") ? "active" : ""}`} href="/devices/designer/">Designer</a>
 
-          <details class={`navDrop ${pathname.startsWith("/companies") ? "active" : ""}`}>
-            <summary class="pill">BCI Atlas</summary>
-            <div class="menu" role="menu">
-              <a class="menuItem" href="/companies/">Explore the atlas →</a>
-              <div class="menuSep"></div>
+          <div class={`navDrop ${pathname.startsWith("/companies") ? "active" : ""}`}>
+            <a class="pill" href="/companies/">BCI Atlas</a>
+            <div class="menu">
               {companies.map((p) => (
                 <a class="menuItem" href={`/companies/?org=${p.slug}`}>
                   {stripAtlasLabel(p.data.title)}
                 </a>
               ))}
             </div>
-          </details>
+          </div>
 
-          <details class={`navDrop ${pathname.startsWith("/applications") ? "active" : ""}`}>
-            <summary class="pill">Applications</summary>
-            <div class="menu" role="menu">
-              <a class="menuItem" href="/applications/">All applications →</a>
-              <div class="menuSep"></div>
+          <div class={`navDrop ${pathname.startsWith("/applications") ? "active" : ""}`}>
+            <a class="pill" href="/applications/">Applications</a>
+            <div class="menu">
               {applications.map((p) => (
                 <a class="menuItem" href={`/applications/${p.slug}/`}>
                   {stripPrefix(p.data.title)}
                 </a>
               ))}
             </div>
-          </details>
+          </div>
 
           <button id="themeToggle" class="pill" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
             Theme
@@ -180,89 +173,48 @@ function stripAtlasLabel(title) {
                 });
               }
 
-              const drops = Array.from(document.querySelectorAll("details.navDrop"));
-              const isTouchLike = window.matchMedia && window.matchMedia("(hover: none)").matches;
-
+              const drops = Array.from(document.querySelectorAll(".navDrop"));
               const closeAll = (except = null) => {
                 for (const d of drops) {
-                  if (except && d === except) continue;
-                  d.open = false;
+                  if (d !== except) d.removeAttribute("data-open");
                 }
               };
 
               for (const d of drops) {
                 let closeTimer = null;
-
                 const open = () => {
-                  if (closeTimer) {
-                    clearTimeout(closeTimer);
-                    closeTimer = null;
-                  }
-                  d.open = true;
+                  clearTimeout(closeTimer);
+                  closeAll(d);
+                  d.setAttribute("data-open", "");
                 };
-
                 const closeSoon = () => {
-                  if (closeTimer) clearTimeout(closeTimer);
-                  closeTimer = setTimeout(() => {
-                    d.open = false;
-                  }, 140);
+                  clearTimeout(closeTimer);
+                  closeTimer = setTimeout(() => d.removeAttribute("data-open"), 140);
                 };
 
-                // Desktop/hover behavior
-                d.addEventListener("mouseenter", () => {
-                  if (isTouchLike) return;
-                  closeAll(d);
-                  open();
+                // Hover offers shortcuts; clicking the pill always follows its link.
+                d.addEventListener("pointerenter", (event) => {
+                  if (event.pointerType === "mouse") open();
                 });
-                d.addEventListener("mouseleave", () => {
-                  if (isTouchLike) return;
-                  closeSoon();
+                d.addEventListener("pointerleave", (event) => {
+                  if (event.pointerType === "mouse" && !d.contains(document.activeElement)) closeSoon();
                 });
 
-                // Keyboard accessibility: keep it open while focused inside.
-                d.addEventListener("focusin", () => {
-                  closeAll(d);
-                  open();
+                // Keyboard users can tab through the shortcuts without intercepting taps.
+                d.addEventListener("focusin", (event) => {
+                  if (event.target.matches(":focus-visible")) open();
                 });
-                d.addEventListener("focusout", () => {
-                  if (isTouchLike) return;
-                  closeSoon();
+                d.addEventListener("focusout", (event) => {
+                  if (!d.contains(event.relatedTarget)) closeSoon();
                 });
-
-                // Touch/mobile behavior: tap to toggle, tap outside to close.
-                const summary = d.querySelector("summary");
-                if (summary) {
-                  summary.addEventListener("click", (e) => {
-                    if (!isTouchLike) return; // allow native click on desktop
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const next = !d.open;
-                    closeAll(d);
-                    d.open = next;
-                  });
-                }
-
-                // When a menu item is tapped, close all dropdowns.
-                d.addEventListener("click", (e) => {
-                  if (!isTouchLike) return;
-                  const t = e.target;
-                  if (t && t.closest && t.closest(".menuItem")) {
+                d.addEventListener("keydown", (event) => {
+                  if (event.key === "Escape") {
+                    clearTimeout(closeTimer);
+                    d.querySelector(".pill").focus();
                     closeAll();
                   }
                 });
               }
-
-              // Tap/click outside closes all (use capture so it runs early).
-              document.addEventListener(
-                "click",
-                (e) => {
-                  if (!isTouchLike) return;
-                  const t = e.target;
-                  if (t && t.closest && t.closest("details.navDrop")) return;
-                  closeAll();
-                },
-                true
-              );
             } catch {}
           })();
         </script>
@@ -520,22 +472,13 @@ function stripAtlasLabel(title) {
     margin: 0;
   }
 
-  .navDrop summary {
-    list-style: none;
-    cursor: pointer;
-  }
-
-  .navDrop summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .navDrop.active > summary {
+  .navDrop.active > .pill {
     font-style: italic;
     border-color: var(--borderStrong);
     background: var(--panelStrong);
   }
 
-  .navDrop:not([open]) .menu {
+  .navDrop:not([data-open]) .menu {
     display: none;
   }
 
@@ -572,12 +515,6 @@ function stripAtlasLabel(title) {
     height: 1px;
     margin: 8px 4px;
     background: var(--border);
-  }
-
-  @media (hover: hover) {
-    .navDrop:hover > .menu {
-      display: block;
-    }
   }
 
   /* Expandable definition pills (use <details class="def"> in Markdown) */
