@@ -22,7 +22,6 @@ draft: false
 ### Device entries
 
 - [Auditory brainstem implant](/devices/55-auditory-brainstem-implant/)
-- [Cochlear implant history](/devices/56-cochlear-implant-history/): the review there says a first multi-electrode device by Graeme Clark in 1978 was the first successful commercialized multichannel cochlear implant, sold under the Cochlear/Nucleus name.
 
 ### Limits
 

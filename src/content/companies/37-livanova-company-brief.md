@@ -24,10 +24,6 @@ draft: false
 - 16 July 1997: approval for epilepsy.
 - 15 July 2005: notice of approval for treatment-resistant depression (supplement S50).
 
-### Device entries
-
-- [Vagus nerve stimulation (FDA record)](/devices/61-vagus-nerve-stimulation-fda-history/)
-
 ### Limits
 
 The FDA record does not say when or how Cyberonics became LivaNova, so this brief does not state it.
