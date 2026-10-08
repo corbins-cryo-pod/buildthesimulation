@@ -15,9 +15,10 @@ const devices = (await getCollection("designs")).filter((p) => !p.data.draft);
       <div class="path">
         <a class="pathMain" href="/simulations/">
           <h3>Simulations</h3>
-          <p>Place electrodes, change thresholds and watch the recorded signals respond in a cortical slab or a nerve cross-section.</p>
+          <p>Explore how electrodes stimulate neurons, shape cortical recordings and interact with peripheral nerves.</p>
         </a>
         <div class="subLinks">
+          <a href="/simulations/cortical-stimulation/">Cortical stimulation lab</a>
           <a href="/simulations/cortex-slab/">Cortical recording lab</a>
           <a href="/sim/">Peripheral nerve cross-section</a>
         </div>

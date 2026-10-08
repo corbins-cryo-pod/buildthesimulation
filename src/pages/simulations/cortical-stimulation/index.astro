@@ -1,0 +1,9 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CorticalStimulationLab from '../../../components/CorticalStimulationLab.jsx';
+import '../../../styles/cortical-stimulation.css';
+---
+<Layout pageTitle="Cortical stimulation lab" subtitle="Explore how electrode geometry, current steering and neural anatomy shape electrical recruitment." description="A finite-contact volume conductor and active multicompartment neuron simulation. Customize electrodes, materials, pulse waveforms and cortical anatomy; inspect fields, spikes and recruitment." wide={true}>
+  <CorticalStimulationLab client:load />
+  <noscript><p>This simulation needs JavaScript to solve the fields and membrane equations. The <a href="/simulations/cortical-stimulation/guide/">model guide and scientific sources</a> are available without it.</p></noscript>
+</Layout>
