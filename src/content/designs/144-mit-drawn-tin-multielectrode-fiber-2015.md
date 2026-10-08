@@ -40,68 +40,68 @@ The same 2015 MIT paper separately reports a polymer-metal recording fiber. A tw
 | Interface type | Tin electrodes in polyetherimide with a sacrificial polyphenylsulfone outer layer, two-step thermal draw [1] |
 | Array layout | Seven tin electrodes imaged; preform with 36 electrodes drawn; nine-electrode structure around a hollow channel [2] |
 | Electrode count | Seven (demonstrated structure), 36 (fabrication demonstration), nine (hollow-channel variant); not 36 recorded units [2] |
-| Pitch | Unreported in reviewed sources |
-| Electrode lengths | Unreported in reviewed sources |
+| Pitch | Unreported |
+| Electrode lengths | Unreported |
 | Shank width and thickness | 416 µm before outer-cladding removal and 85 µm after etching (Figure 3a-c) [2] |
-| Tip and exposed site geometry | Unreported in reviewed sources |
-| Contact coating | Unreported in reviewed sources |
+| Tip and exposed site geometry | Unreported |
+| Contact coating | Unreported |
 | Insulation | Polyetherimide; hollow channel epoxy-filled for polishing, open in the exposure image [2] |
-| Insertion method | Unreported in reviewed sources |
-| Anchoring and fixation | Unreported in reviewed sources |
+| Insertion method | Unreported |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
+| Exposed site area | Unreported |
 | Electrode material | Tin [1] |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
-| Noise floor or SNR | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported |
+| Noise floor or SNR | Unreported |
 | Recording modality | Single-neuron recording with separable units and multiple active electrodes; optically evoked activity shown in the linked study [1] |
-| Sampling rate | Unreported in reviewed sources |
-| Stimulation capability | Unreported in reviewed sources |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Sampling rate | Unreported |
+| Stimulation capability | Unreported |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported in reviewed sources |
-| Insertion trauma and BBB disruption | Unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
+| Target tissue | Unreported |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
 | Gliosis and encapsulation | Figure 4 compares tissue markers with steel microwires from three days to three months, n = 6 per device and time point; no claim of absent response [3] |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported in reviewed sources |
+| Onboard electronics | Unreported |
 | Data path | Externally wired [4] |
-| Telemetry bandwidth | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
-| Power | Unreported in reviewed sources |
-| Thermal management | Unreported in reviewed sources |
-| Packaging and hermeticity | Unreported in reviewed sources |
-| MRI compatibility | Unreported in reviewed sources |
-| Surgical complexity | Unreported in reviewed sources |
-| Output connectors | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
+| Power | Unreported |
+| Thermal management | Unreported |
+| Packaging and hermeticity | Unreported |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
+| Output connectors | Unreported |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in reviewed sources |
-| Chronic yield | Unreported in reviewed sources |
-| Stability over time | Unreported in reviewed sources |
+| Acute yield | Unreported |
+| Chronic yield | Unreported |
+| Stability over time | Unreported |
 | Longevity | Three-month histology is not a three-month recording endpoint [3] |
-| Revision and explant experience | Unreported in reviewed sources |
-| Adverse events | Unreported in reviewed sources |
-| Notable demonstrations | Unreported in reviewed sources |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
+| Notable demonstrations | Unreported |
 
 ## Clinical and preclinical evidence
 
@@ -110,8 +110,8 @@ The same 2015 MIT paper separately reports a polymer-metal recording fiber. A tw
 | Human subjects | None |
 | Preclinical cohort | Mouse; histology n = 6 per device and time point [3] |
 | Follow-up duration | Three days to three months (histology) [3] |
-| Indications | Unreported in reviewed sources |
-| Trials and registries | Unreported in reviewed sources |
+| Indications | Unreported |
+| Trials and registries | Unreported |
 | Primary outcomes | Recordings from medial prefrontal cortex and comparison against steel microwires [1, 3] |
 | Key limitations | Main article restricted; electrode diameter and spacing from unofficial mirrors not adopted; no human result [1] |
 
@@ -121,7 +121,7 @@ The same 2015 MIT paper separately reports a polymer-metal recording fiber. A tw
 | --- | --- |
 | Strengths | Multielectrode metal fiber from a thermal draw [1] |
 | Limitations | No integrated optical waveguide in this architecture [1] |
-| Scaling constraints | Unreported in reviewed sources |
+| Scaling constraints | Unreported |
 
 ## Demonstrated structures
 
