@@ -42,41 +42,41 @@ The [Columbia University, Shepard lab](/companies/45-columbia-shepard-optical-an
 | Interface type | Single CMOS substrate with electrodes, processing and wireless telemetry [1] |
 | Array layout | 256 × 256 array [1] |
 | Electrode count | 65,536 recording electrodes; up to 1,024 simultaneously selectable channels; 256 channels used in Figures 2 and 3 [1, 3, 4] |
-| Pitch | Unreported in reviewed sources |
-| Electrode lengths | Unreported in reviewed sources |
+| Pitch | Unreported |
+| Electrode lengths | Unreported |
 | Shank width and thickness | 50 µm total thickness; chip outline not supplied [1] |
-| Tip and exposed site geometry | Unreported in reviewed sources |
+| Tip and exposed site geometry | Unreported |
 | Contact coating | Titanium nitride [2] |
-| Insulation | Unreported in reviewed sources |
+| Insulation | Unreported |
 | Insertion method | Placed below the dura [1] |
-| Anchoring and fixation | Unreported in reviewed sources |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
+| Exposed site area | Unreported |
 | Electrode material | Titanium nitride (TiN) [2] |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
-| Noise floor or SNR | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported |
+| Noise floor or SNR | Unreported |
 | Recording modality | Micro-ECoG; porcine somatosensory-evoked potentials and primate motor activity [3, 4] |
 | Sampling rate | 33.9 kS/s on 256 channels in Figures 2 and 3 [3, 4] |
 | Stimulation capability | Stimulation circuitry on chip; therapeutic outcome not established [2] |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported in reviewed sources |
-| Insertion trauma and BBB disruption | Unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
-| Gliosis and encapsulation | Unreported in reviewed sources |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Target tissue | Unreported |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
@@ -84,25 +84,25 @@ The [Columbia University, Shepard lab](/companies/45-columbia-shepard-optical-an
 | --- | --- |
 | Onboard electronics | Analog front end for recording and stimulation, inductive power link, bidirectional transceiver and controller [2] |
 | Data path | Wireless link to an external relay headstage, HDMI to a computer-controlled processor module [2] |
-| Telemetry bandwidth | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
 | Power | Inductive wireless power from the external relay [2] |
-| Thermal management | Unreported in reviewed sources |
-| Packaging and hermeticity | Unreported in reviewed sources |
-| MRI compatibility | Unreported in reviewed sources |
-| Surgical complexity | Unreported in reviewed sources |
-| Output connectors | Unreported in reviewed sources |
+| Thermal management | Unreported |
+| Packaging and hermeticity | Unreported |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
+| Output connectors | Unreported |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in reviewed sources |
-| Chronic yield | Unreported in reviewed sources |
-| Stability over time | Unreported in reviewed sources |
+| Acute yield | Unreported |
+| Chronic yield | Unreported |
+| Stability over time | Unreported |
 | Longevity | Up to two weeks in pigs and two months in behaving non-human primates [1] |
-| Revision and explant experience | Unreported in reviewed sources |
-| Adverse events | Unreported in reviewed sources |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
 | Notable demonstrations | Decoding of stimulation location in pig; wrist-velocity prediction in a reaching primate [3, 4] |
 
 ## Clinical and preclinical evidence
@@ -112,8 +112,8 @@ The [Columbia University, Shepard lab](/companies/45-columbia-shepard-optical-an
 | Human subjects | None |
 | Preclinical cohort | Pigs and non-human primates [1] |
 | Follow-up duration | Two weeks (pig) and two months (primate) [1] |
-| Indications | Unreported in reviewed sources |
-| Trials and registries | Unreported in reviewed sources |
+| Indications | Unreported |
+| Trials and registries | Unreported |
 | Primary outcomes | Reliable chronic recordings across cortices [1] |
 | Key limitations | Motor-feature prediction in a trained primate is not assistive-device control in a paralyzed person; contact sizes, pitch and coil geometry not supplied [1] |
 
@@ -123,7 +123,7 @@ The [Columbia University, Shepard lab](/companies/45-columbia-shepard-optical-an
 | --- | --- |
 | Strengths | Very high site count on a 50 µm wireless chip [1] |
 | Limitations | Only a subset of up to 1,024 channels recorded at once; external relay needed [1, 2] |
-| Scaling constraints | Unreported in reviewed sources |
+| Scaling constraints | Unreported |
 
 ## Physical sites versus channels
 
