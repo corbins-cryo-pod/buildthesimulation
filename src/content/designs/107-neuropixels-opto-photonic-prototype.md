@@ -47,7 +47,7 @@ Lakunina, Socha, Ladd and colleagues combine electrical recording with dual-colo
 | Contact coating | TiN recording sites; 150 nm SiN waveguide layer |
 | Insulation | Unreported |
 | Insertion method | Inserted into mouse brain for acute and tethered recording; tip-deflection specification is reported inconsistently (200 µm in Results versus below plus or minus 200 nm in Methods) |
-| Anchoring and fixation | Unreported in the reviewed sources |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
@@ -55,13 +55,13 @@ Lakunina, Socha, Ladd and colleagues combine electrical recording with dual-colo
 | --- | --- |
 | Exposed site area | 12 x 12 µm (144 µm2) per recording site |
 | Electrode material | Titanium nitride |
-| Impedance (with measurement frequency) | Unreported in the reviewed sources |
+| Impedance (with measurement frequency) | Unreported |
 | Noise floor or SNR | Mean AP/LFP noise 5.45/5.33 µV RMS across tested sites. Red-onset electrical artifact about 30 µV, reduced by common-average referencing and tapered pulses |
 | Recording modality | Extracellular spikes (0.3 to 10 kHz AP band) and LFP below 1 kHz |
 | Sampling rate | AP 30 kHz; LFP 2.5 kHz |
 | Stimulation capability | Optical stimulation, not electrical. Red or blue light pulses to individual emitters |
 | Charge injection limit | Not applicable: light delivery, not electrical stimulation |
-| Reference and ground | Unreported in the reviewed sources |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 

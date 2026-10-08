@@ -53,8 +53,7 @@ Obaid and colleagues' 2020 paper joins three-dimensional microwire bundles to pl
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Not reported in reviewed sources |
-| Electrode material | Demonstrated Au, W, PtIr and PtW; mouse bundles PtIr [1] |
+| Exposed site area | Unreported || Electrode material | Demonstrated Au, W, PtIr and PtW; mouse bundles PtIr [1] |
 | Impedance (with measurement frequency) | Unreported |
 | Noise floor or SNR | 251-wire PtIr bundle in saline: bare-chip 5.0 ± 1.5 µV RMS (10 Hz-10 kHz); at most 5.97 ± 2.2 µV after mating in text, 6.0 ± 2.2 µV in the Figure 4 caption. Includes electrode-solution interface [1] |
 | Recording modality | CMOS-MEA readout of extracellular activity [1] |

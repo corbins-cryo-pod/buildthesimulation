@@ -43,10 +43,10 @@ Quad Base keeps the four-shank Neuropixels 2.0 recording geometry while expandin
 | Pitch | 15 µm column pitch and 32 µm row pitch per the manufacturer datasheet |
 | Electrode lengths | 10 mm per shank |
 | Shank width and thickness | Shank cross-section 70 x 24 µm. Probe base 10.2 mm wide versus 3.5 mm for standard 2.0 in the preprint. Headstage 14 x 18 mm versus 10 x 14 mm for standard 2.0 |
-| Tip and exposed site geometry | Tip geometry unreported in the reviewed sources |
+| Tip and exposed site geometry | Tip geometry unreported |
 | Contact coating | Titanium nitride |
 | Insulation | Unreported |
-| Insertion method | Unreported in the reviewed sources beyond rodent implantation methods in the preprint |
+| Insertion method | Unreported beyond rodent implantation methods in the preprint |
 | Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
@@ -55,13 +55,13 @@ Quad Base keeps the four-shank Neuropixels 2.0 recording geometry while expandin
 | --- | --- |
 | Exposed site area | 12 x 12 µm (144 µm2) per site, geometric, per the manufacturer datasheet |
 | Electrode material | Titanium nitride on silicon |
-| Impedance (with measurement frequency) | Unreported as a Quad Base impedance in the reviewed sources |
+| Impedance (with measurement frequency) | Unreported as a Quad Base impedance |
 | Noise floor or SNR | Preprint Supplementary Figure S1: mean noise 7.83, 7.88 and 8.03 µV for three probes, 300 to 10,000 Hz band. Standard 2.0 comparator specification 6.8 µV RMS is not a Quad Base value. Channels under 50% of average gain excluded; low-gain fractions 0.26%, 0.85% and 0.13% for probes A to C; above 10 µV noise 2.08%, 1.30%, 2.41% |
 | Recording modality | Extracellular spikes and local signals |
-| Sampling rate | Unreported in the reviewed sources |
+| Sampling rate | Unreported |
 | Stimulation capability | Recording only |
 | Charge injection limit | Unreported |
-| Reference and ground | Unreported in the reviewed sources |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
@@ -83,7 +83,7 @@ Quad Base keeps the four-shank Neuropixels 2.0 recording geometry while expandin
 | Onboard electronics | CMOS probe base with 1,536 readout channels |
 | Data path | Probe to headstage to acquisition system; details beyond headstage dimensions unreported |
 | Telemetry bandwidth | Not applicable: wired |
-| Sampling rate | Unreported in the reviewed sources |
+| Sampling rate | Unreported |
 | Power | Unreported. Datasheet lists package mass 0.51 to 0.55 g, which excludes cable and acquisition |
 | Thermal management | Unreported |
 | Packaging and hermeticity | Silicon-spacer or metal-cap package alternatives exist per the manufacturer; they are not one universal enclosure |

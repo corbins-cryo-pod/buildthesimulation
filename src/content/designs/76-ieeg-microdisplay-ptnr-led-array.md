@@ -55,7 +55,7 @@ The light is a display for the surgical field. This is not an optogenetic stimul
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | 30 µm diameter contacts; area not stated in reviewed sources [1] |
+| Exposed site area | 30 µm diameter contacts; area not stated [1] |
 | Electrode material | Platinum nanorods [1] |
 | Impedance (with measurement frequency) | Average around 30 kΩ at 1 kHz [1] |
 | Noise floor or SNR | LED driver proximity added high-frequency noise when powered, peaks beginning around 98.63 Hz and harmonics [1] |

@@ -53,7 +53,7 @@ Reconfigurable thin-film cortical recording grids from Tchoe and colleagues. The
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | 30 µm contacts; area not stated in reviewed sources [1] |
+| Exposed site area | 30 µm contacts; area not stated [1] |
 | Electrode material | Platinum nanorods on gold traces [1] |
 | Impedance (with measurement frequency) | At 1 kHz: 11 ± 2 kΩ (1,024-channel grid) and 8 ± 4 kΩ (2,048-channel grid) [1, 2] |
 | Noise floor or SNR | Unreported |

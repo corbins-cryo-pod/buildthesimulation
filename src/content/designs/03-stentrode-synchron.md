@@ -43,7 +43,7 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Electrode count | 16 physical contacts, Kacker 2025; 12 and 8 retained for analysis in its two participants |
 | Pitch | Approximately 3 mm interelectrode spacing; not a complete 3D map, Kacker 2025 |
 | Electrode lengths | Not applicable to cortical shanks; scaffold length 40 mm in Kacker 2025 |
-| Shank width and thickness | Not applicable; strut dimensions unreported in reviewed sources |
+| Shank width and thickness | Not applicable; strut dimensions unreported |
 | Tip and exposed site geometry | 500 µm contact diameter, Kacker 2025. Schone 2025 preprint separately reports 300 µm; configurations are not equated |
 | Contact coating | Platinum contacts, Kacker 2025 |
 | Insulation | Unreported |
@@ -122,7 +122,7 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | --- | --- |
 | Strengths | Computer control demonstrated without penetrating cortex; fully implanted system in reviewed cohorts |
 | Limitations | Population field potentials rather than single-unit recording; evidence limited to small cohorts |
-| Scaling constraints | Contact placement must fit venous anatomy; no quantitative scaling ceiling established in reviewed sources |
+| Scaling constraints | Contact placement must fit venous anatomy; no quantitative scaling ceiling established |
 
 ## 3D reference, revision 2
 

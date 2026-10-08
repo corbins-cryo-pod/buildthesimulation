@@ -29,7 +29,7 @@ Published in January 2024, this UC San Diego-led design forms a flexible depth e
 | First demonstrated | Published January 17, 2024 [1] |
 | First human implant | Two participants, acute recording, short 64-channel PEDOT:PSS arrays [1] |
 | Species studied | Human (two participants, acute) and rat (14-day histology; recordings to 25 days) [1] |
-| Regulatory status | Research device; no clearance stated in the reviewed sources |
+| Regulatory status | Research device; no clearance stated |
 | Function | Recording; saline stimulation characterization of separate 1 mm PtNR contacts only [1] |
 | Target tissue | Brain depth recording, stereo-EEG-like [1] |
 

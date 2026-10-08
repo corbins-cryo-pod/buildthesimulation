@@ -32,7 +32,7 @@ This is the **64-thread, 16-sites-per-thread configuration described in 2024**, 
 | Thread width | 16–84 µm in the same interview [2] | Linear taper between those limits; progression is illustrative |
 | Thread thickness | Two 2 µm polymer layers and a 0.4 µm metal stack [2] | 4.4 µm total derived from the described stack |
 | Enclosure | Approximately quarter-sized and 9 mm thick [2] | Nominal 24 mm diameter × 9 mm thickness |
-| Contact shape and exposed area | Not established in the reviewed sources | 12 × 20 µm visual markers; exposed area is exported as unknown |
+| Contact shape and exposed area | Unreported | 12 × 20 µm visual markers; exposed area is exported as unknown |
 | Thread placement | Independently placed by the surgical robot [1] | Unfurled display fan, not a cortical insertion map |
 
 ### Using the 3D reference
@@ -131,7 +131,7 @@ Inductive charging and wireless data allow the implant to operate without a perc
 | Stability over time | Thread retraction affected early recordings in the first participant [1]; long-term stability unreported |
 | Longevity | Unreported; battery and packaging lifetime not publicly specified |
 | Revision and explant experience | Unreported |
-| Adverse events | No independently audited rates in reviewed sources |
+| Adverse events | No independently audited rates |
 | Notable demonstrations | Company-reported cursor control and computer use by study participants [1] |
 
 ## Clinical and preclinical evidence
