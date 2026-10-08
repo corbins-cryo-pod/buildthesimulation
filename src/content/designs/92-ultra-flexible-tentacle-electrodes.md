@@ -40,14 +40,14 @@ The 2024 UFTE paper reports independently flexible polyimide electrode fibers, b
 | Interface type | Independent fibers, one contact per fiber, bundled and released inside the brain [1] |
 | Array layout | Four bundles of 64 contacts. Mouse variant with four contacts per fiber (tetrode) kept separate [1] |
 | Electrode count | 256 recording contacts in the main rat array [1] |
-| Pitch | Unreported in reviewed sources |
+| Pitch | Unreported |
 | Electrode lengths | Other fibers extend 500 µm beyond contacts; the discussion describes a version intended to reach 3 cm into the human brain [1] |
 | Shank width and thickness | Fiber 7 µm wide, 2.4 µm thick [1] |
 | Tip and exposed site geometry | Recording contact 13 × 13 µm exposed area; primary tether loop 25 µm inner diameter on the longest fiber [1] |
 | Contact coating | PEDOT:PSS on exposed gold contacts [1] |
 | Insulation | Polyimide layers around Ti/Au conductors [1] |
 | Insertion method | 50 µm tungsten shuttle attached by a mechanical loop; PEG and silk fibroin hold fibers together and need not dissolve before shuttle removal [1] |
-| Anchoring and fixation | Unreported in reviewed sources |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
@@ -56,25 +56,25 @@ The 2024 UFTE paper reports independently flexible polyimide electrode fibers, b
 | Exposed site area | 13 × 13 µm [1] |
 | Electrode material | Gold contacts with Ti/Au conductors, PEDOT:PSS coating [1] |
 | Impedance (with measurement frequency) | Mean 54 ± 16 kΩ (s.d., n = 243 contacts) at 1 kHz for PEDOT:PSS-coated functional contacts [1] |
-| Noise floor or SNR | Unreported in reviewed sources |
+| Noise floor or SNR | Unreported |
 | Recording modality | Broadband extracellular recording [1] |
 | Sampling rate | 20 kHz per channel, 16-bit [1] |
-| Stimulation capability | Unreported in reviewed sources |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Stimulation capability | Unreported |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Rodent brain [1] |
-| Insertion trauma and BBB disruption | Unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
-| Gliosis and encapsulation | Unreported in reviewed sources |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
@@ -84,23 +84,23 @@ The 2024 UFTE paper reports independently flexible polyimide electrode fibers, b
 | Data path | Wired headstage; a separate 512-channel logger saved data to an SD card and did not transmit wirelessly [1] |
 | Telemetry bandwidth | No wireless telemetry; the logger stored data on SD [1] |
 | Sampling rate | 20 kHz per channel [1] |
-| Power | Unreported in reviewed sources |
-| Thermal management | Unreported in reviewed sources |
-| Packaging and hermeticity | Unreported in reviewed sources |
-| MRI compatibility | Unreported in reviewed sources |
+| Power | Unreported |
+| Thermal management | Unreported |
+| Packaging and hermeticity | Unreported |
+| MRI compatibility | Unreported |
 | Surgical complexity | Shuttle insertion to at least 6.5 mm; the authors note 50 µm tungsten shuttles may lack stiffness for large-animal or human subcortical targets [1] |
-| Output connectors | Unreported in reviewed sources |
+| Output connectors | Unreported |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
 | Acute yield | About 1.6% broken channels in vitro; 3% to 6% of contacts excluded from spike sorting for recording neither LFP nor spikes [1] |
-| Chronic yield | Unreported in reviewed sources |
-| Stability over time | Unreported in reviewed sources |
-| Longevity | Unreported in reviewed sources |
-| Revision and explant experience | Unreported in reviewed sources |
-| Adverse events | Unreported in reviewed sources |
+| Chronic yield | Unreported |
+| Stability over time | Unreported |
+| Longevity | Unreported |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
 | Notable demonstrations | 256-channel rat recording; 512-channel logger connected to 256 implanted channels for up to one hour; longitudinal rodent tracking in the tetrode variant, kept separate [1] |
 
 ## Clinical and preclinical evidence
@@ -111,8 +111,8 @@ The 2024 UFTE paper reports independently flexible polyimide electrode fibers, b
 | Preclinical cohort | Rat main array and a separate mouse tetrode variant; animal counts not extracted here [1] |
 | Follow-up duration | Logger sessions up to one hour in final sessions; long-term results belong to the mouse variant and are not assigned to the rat array [1] |
 | Indications | Future epilepsy work described in the discussion [1] |
-| Trials and registries | Unreported in reviewed sources |
-| Primary outcomes | Unreported in reviewed sources |
+| Trials and registries | Unreported |
+| Primary outcomes | Unreported |
 | Key limitations | No lifelong reliability or human outcome claimed; full assembly geometry not reconstructed [1] |
 
 ## Engineering tradeoffs
