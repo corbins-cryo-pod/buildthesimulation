@@ -20,6 +20,111 @@ The Nature Materials paper published online in October 2023, with a January 2024
 
 The primary affiliations include Rice and Baylor. The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectronics-labs/) gives institutional context. The [rat application](/applications/123-mnm-rat-reflex-severed-nerve-study/) separates reflex triggering, a severed-nerve bridge and closed-wound stimulation.
 
+## Identity
+
+| Field | Value and source scope |
+| --- | --- |
+| Device | Self-rectifying magnetoelectric nonlinear metamaterial (MNM) [1] |
+| Manufacturer | Academic research device; Rice and Baylor [1] |
+| Interface class | Functional-material wireless nerve stimulator |
+| Origin | Nature Materials, online October 2023, issue January 2024 [1, 2] |
+| First demonstrated | October 2023 [2] |
+| First human implant | None |
+| Species studied | Rat (reflex triggering, severed-nerve bridge, closed-wound stimulation) [1] |
+| Regulatory status | Research device; no clearance |
+| Function | Stimulation; force sensing, amplification and recording are external [1] |
+| Target tissue | Peripheral nerve [1] |
+
+## Geometry and architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | ME laminate with rectifying (RET) layer; contacts on the same plane, tape insulation; printed nerve clip in the closed-wound variant [1] |
+| Array layout | Unreported in reviewed sources |
+| Electrode count | Two silver-epoxy pads per sample [1] |
+| Pitch | Unreported in reviewed sources |
+| Electrode lengths | Unreported in reviewed sources |
+| Shank width and thickness | Stimulation samples 10 × 5, 5 × 3 and 3 × 2 mm; laminate 250 µm PZT-5A between two 23 µm Metglas sheets [1] |
+| Tip and exposed site geometry | Unreported in reviewed sources |
+| Contact coating | Silver-epoxy pads on extended bottom Metglas [1] |
+| Insulation | Tape insulation; closed-wound variant has about 20 µm Parylene-C [1] |
+| Insertion method | Unreported in reviewed sources |
+| Anchoring and fixation | Unreported in reviewed sources |
+
+## Electrode and channel physics
+
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in reviewed sources |
+| Electrode material | Silver epoxy on Metglas; RET layers Pt/HfO2/ZnO (Schottky, 50/40/130 nm) or Al/p-Si/ZnO (p-n, 50/500/100 nm) [1] |
+| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Noise floor or SNR | Unreported in reviewed sources |
+| Recording modality | Unreported in reviewed sources |
+| Sampling rate | Unreported in reviewed sources |
+| Stimulation capability | Rectified bias voltage; closed-wound p-n variant above 2 V; nerve stimulation at 100-375 kHz depending on size, 375 kHz in Figure 2 [1] |
+| Charge injection limit | Unreported in reviewed sources |
+| Reference and ground | Unreported in reviewed sources |
+
+## Tissue interface and bioresponse
+
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Unreported in reviewed sources |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Unreported in reviewed sources |
+| Gliosis and encapsulation | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Parylene-C coating (closed-wound variant) [1] |
+| Typical failure modes | Unreported in reviewed sources |
+
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Unreported in reviewed sources |
+| Data path | No neural-sensing processor or digital telemetry inside the material [1] |
+| Telemetry bandwidth | Unreported in reviewed sources |
+| Sampling rate | Unreported in reviewed sources |
+| Power | External magnetic driver, microcontroller and coil with a neodymium DC bias magnet [1] |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | Saline soak at 37 °C retained voltage and bias up to five days before fluid-ingress degradation; lead-containing PZT needs a barrier [1] |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Unreported in reviewed sources |
+| Output connectors | Unreported in reviewed sources |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Unreported in reviewed sources |
+| Chronic yield | Fabrication yield about 10% (ZnO design) and about 80% (p-Si/n-ZnO); not animal success rates [1] |
+| Stability over time | Unreported in reviewed sources |
+| Longevity | Five-day saline soak; three-week subcutaneous histology is a separate material assay, not stimulation operation [1] |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | Unreported in reviewed sources |
+| Notable demonstrations | Reflex triggering, severed-nerve bridge and closed-wound stimulation in rat [1] |
+
+## Clinical and preclinical evidence
+
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None |
+| Preclinical cohort | Rat; subcutaneous histology 3 weeks; short HEK-cell viability assay [1] |
+| Follow-up duration | Three weeks (histology only) [1] |
+| Indications | Unreported in reviewed sources |
+| Trials and registries | Unreported in reviewed sources |
+| Primary outcomes | Wireless nerve stimulation from a self-rectifying film [1] |
+| Key limitations | Increased vessels and cell infiltration at both MNM and PDMS controls; encapsulation damps ME performance; alternative piezoelectrics proposed [1] |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | No ASIC; rectification in the material [1] |
+| Limitations | Sample-specific resonance; ZnO fabrication yield; lead-containing PZT [1] |
+| Scaling constraints | Unreported in reviewed sources |
+
 ## Published variants
 
 | Part | Specification |
@@ -47,7 +152,7 @@ The lead-containing PZT and encapsulation that can damp ME performance remain ch
 
 No full model is supplied. Sample footprints and layer thicknesses do not define the complete contact mask, epoxy, doubled closed-wound stack, nerve clip or lead routing. Micro/nanoscale variants and chronic human therapy remain proposals.
 
-## Primary sources
+## References
 
-- [Published primary manuscript, Methods and Figures 1-4](https://pmc.ncbi.nlm.nih.gov/articles/PMC10972531/).
-- [Nature Materials version-of-record page](https://www.nature.com/articles/s41563-023-01680-4).
+1. [Published primary manuscript, Methods and Figures 1-4](https://pmc.ncbi.nlm.nih.gov/articles/PMC10972531/).
+2. [Nature Materials version-of-record page](https://www.nature.com/articles/s41563-023-01680-4).
