@@ -86,9 +86,9 @@ The 2015 and 2020 arrays are related but use different supports, exposed sites, 
 | Telemetry bandwidth | Not applicable to reported wired systems |
 | Sampling rate | 2015 approximately 25 kHz with 2.2 Hz high-pass/7.5 kHz antialias; 2020 30 kHz with 0.1 Hz-7.5 kHz bandpass |
 | Power | External electronics/power supply; no implanted battery |
-| Thermal management | Unreported in reviewed sources |
+| Thermal management | Unreported |
 | Packaging and hermeticity | Parylene/epoxy insulation and head-mounted connectors, not fully implanted multi-year hermetic electronics |
-| MRI compatibility | Unreported in reviewed sources |
+| MRI compatibility | Unreported |
 | Surgical complexity | 2015 cranial window/dural resection, incremental PEG removal or silicon insertion; 2020 deep cannula plus separate reference/stimulation implants and head fixation |
 | Output connectors | 2015 Hirose DF30FC-20DS-0.4V on PCB with ZIF headstage shroud; 2020 flex Omnetics A79024-001, 127 µm silver reference/ground wires with 4 µm Teflon coating |
 
