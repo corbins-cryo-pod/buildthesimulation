@@ -60,7 +60,7 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Noise floor or SNR | 2015 development abstract: less than 0.7 µV RMS input-referred noise over 0.5-300 Hz; not a chronic in-vivo SNR |
 | Recording modality | ECoG population field potentials |
 | Sampling rate | 976 Hz, 12-bit ADC in 2019 sheep protocol; contacts recorded in successive 16-contact phases |
-| Stimulation capability | Recording device; no therapeutic stimulation capability established in reviewed sources |
+| Stimulation capability | Recording device; no therapeutic stimulation capability established |
 | Charge injection limit | Not applicable to the reviewed recording use |
 | Reference and ground | Reference electrodes shown in 2019 Figure 9; electrical topology unreported in this audit |
 
