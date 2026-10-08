@@ -43,10 +43,10 @@ function init() {
     worldCopyJump: true,
   });
 
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
-    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-    subdomains: "abcd",
+    attribution: '&copy; OpenStreetMap contributors',
+    referrerPolicy: "strict-origin-when-cross-origin",
   }).addTo(map);
 
   if (!points.length) {

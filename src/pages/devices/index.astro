@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { compareDeviceEntries } from "../../lib/device-order.js";
 import DevicesDirectory from "../../components/DevicesDirectory";
 
 function stripPrefix(title) {
@@ -9,12 +10,7 @@ function stripPrefix(title) {
 
 const entries = (await getCollection("designs"))
   .filter((p) => !p.data.draft)
-  .sort((a, b) => {
-    const ar = a.data.successRank ?? Number.POSITIVE_INFINITY;
-    const br = b.data.successRank ?? Number.POSITIVE_INFINITY;
-    if (ar !== br) return ar - br;
-    return stripPrefix(a.data.title).localeCompare(stripPrefix(b.data.title));
-  });
+  .sort(compareDeviceEntries);
 
 const normalized = entries.map((p) => ({
   title: stripPrefix(p.data.title),

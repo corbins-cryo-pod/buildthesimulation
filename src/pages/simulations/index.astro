@@ -3,23 +3,19 @@ import Layout from "../../layouts/Layout.astro";
 
 const sims = [
   {
+    href: "/simulations/cortex-slab/",
+    title: "Cortical recording lab",
+    desc: "Explore a volume of neurons in 3D. Place up to six contacts in the neural population, compare a depth probe or array, inspect synthetic recordings and export raw traces.",
+  },
+  {
     href: "/sim/",
     title: "Peripheral nerve cross-section",
     desc: "Original sandbox with electrodes, pulse visualization, zoom/pan, and experiment export/import.",
-  },
-  {
-    href: "/simulations/cortex-slab/",
-    title: "Cortical recording lab",
-    desc: "Place up to six contacts in a 3D neural population. Compare a depth probe or array, inspect synthetic recordings, and export raw traces.",
   },
 ];
 ---
 
 <Layout pageTitle="Simulations" subtitle="Interactive simulation tools for neural interface exploration." description="Simulation launcher for buildthesimulation.">
-  <section class="card">
-    <p class="muted">Explore neural activity, electrode placement and synthetic recordings. Each experiment explains its assumptions and simplifications.</p>
-  </section>
-
   <section class="grid">
     {sims.map((s) => (
       <a class="tile" href={s.href}>
@@ -31,19 +27,6 @@ const sims = [
 </Layout>
 
 <style>
-  .card {
-    margin-top: 14px;
-    padding: 22px 22px;
-    border-radius: 16px;
-    border: 1px solid var(--border);
-    background: var(--panel);
-  }
-
-  .muted {
-    opacity: 0.72;
-    margin: 0;
-  }
-
   .grid {
     margin-top: 14px;
     display: grid;

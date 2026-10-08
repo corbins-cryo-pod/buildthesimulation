@@ -29,6 +29,7 @@ const titleNoPrefix = entry.data.title
 ---
 
 <Layout pageTitle="BCI Atlas" subtitle={subtitle} description={entry.data.description}>
+  <p class="atlas-return"><a href={`/companies/?org=${entry.slug}`}>← Explore this organization in the atlas</a></p>
   <article class="post">
     <header class="postHead">
       <div class="kicker">
@@ -77,6 +78,7 @@ const titleNoPrefix = entry.data.title
 </Layout>
 
 <style>
+  .atlas-return { margin: 0 0 16px; font-size: 18px; font-style: italic; }
   .post {
     padding: 26px 26px;
     border-radius: 16px;
