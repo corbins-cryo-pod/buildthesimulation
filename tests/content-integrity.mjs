@@ -39,7 +39,7 @@ for (const collection of collections) {
       const parts = pathname.split('/').filter(Boolean);
       if (parts.length !== 2) continue;
       const targetCollection = { devices: 'designs', applications: 'applications', companies: 'companies' }[parts[0]];
-      const special = parts[0] === 'devices' && ['models', 'designer', 'ecog-history'].includes(parts[1]);
+      const special = parts[0] === 'devices' && ['models', 'designer'].includes(parts[1]);
       assert(special || records[targetCollection].some(r => r.slug === parts[1]), `${collection}/${record.file}: broken link ${pathname}`);
     }
   }
