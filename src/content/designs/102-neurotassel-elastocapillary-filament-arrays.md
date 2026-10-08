@@ -18,6 +18,111 @@ draft: false
 
 Guan and colleagues' March 2019 Science Advances paper reports flexible filaments that gather into a stiff, implantable bundle when withdrawn from molten polyethylene glycol (PEG). The primary affiliations include China's National Center for Nanoscience and Technology and the Chinese Academy of Sciences' Institute of Neuroscience. This is China-secondary coverage in a US-first catalog, not Stanford NeuroRoots or a renamed NET probe.
 
+## Identity
+
+| Field | Value and source scope |
+| --- | --- |
+| Device | Neurotassel elastocapillary self-assembled filament arrays [1] |
+| Manufacturer | Academic research device; National Center for Nanoscience and Technology and CAS Institute of Neuroscience, China [1, 2] |
+| Interface class | Intracortical flexible filament bundle, stiffened by dissolvable PEG |
+| Origin | Guan and colleagues, Science Advances, March 2019 [1] |
+| First demonstrated | March 27, 2019 [1] |
+| First human implant | None; not evidence of human use [1] |
+| Species studied | Mouse (16-channel chronic recordings) [1] |
+| Regulatory status | Research device; no clearance |
+| Function | Recording; combined with an optical fiber in a 61-channel variant [1] |
+| Target tissue | Brain cortex [1] |
+
+## Geometry and architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Polyimide filaments gathered into a bundle on withdrawal from molten PEG [1] |
+| Array layout | Plane to mesh to filaments; sites in a V (128/256) or semicircular arch (512/1,024) before assembly [1] |
+| Electrode count | 16, 128, 256, 512 and 1,024 channels; separate 61-channel optical combination [1] |
+| Pitch | Not extracted; assembled contact positions are not defined by the published dimensions [1] |
+| Electrode lengths | Unreported in reviewed sources |
+| Shank width and thickness | 16-channel: 12 µm wide, 3 µm high filaments; 128/256: 10 × 1.5 µm; 512/1,024: 3 × 1.5 µm; assembled bundle about 55 µm (16-ch), 80 µm (128) and 100 µm (1,024) diameter [1] |
+| Tip and exposed site geometry | 10 µm-diameter recording sites (16-ch and 128/256); semicircular-arch sites in 512/1,024 [1] |
+| Contact coating | Platinum electrodeposition on gold sites [1] |
+| Insulation | Chromium/gold conductor between polyimide layers, sites exposed at the front [1] |
+| Insertion method | Drawn from molten PEG4000 at 120 °C; PEG solidifies to stiffen the bundle before insertion and dissolves in body fluid [1] |
+| Anchoring and fixation | Unreported in reviewed sources |
+
+## Electrode and channel physics
+
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | 10 µm-diameter sites [1] |
+| Electrode material | Chromium/gold conductor, platinum electrodeposition [1] |
+| Impedance (with measurement frequency) | Greater than 1 MΩ before and about 50 kΩ after platinum at 1 kHz in the reported recording preparation; 54 ± 15 kΩ average across channel counts after platinum [1] |
+| Noise floor or SNR | Unreported in reviewed sources |
+| Recording modality | Extracellular recording; learning and weeks-long mouse recording with 16 channels [1] |
+| Sampling rate | Unreported in reviewed sources |
+| Stimulation capability | Unreported in reviewed sources |
+| Charge injection limit | Unreported in reviewed sources |
+| Reference and ground | Unreported in reviewed sources |
+
+## Tissue interface and bioresponse
+
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Unreported in reviewed sources |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Unreported in reviewed sources |
+| Gliosis and encapsulation | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Unreported in reviewed sources |
+| Typical failure modes | Unreported in reviewed sources |
+
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | None implanted; on-chip amplification/multiplexing listed as future work [1] |
+| Data path | Flip-chip-bonded flexible circuits with an Omnetics connector (16-ch); 61-channel flexible circuit/PCB for the optical variant [1] |
+| Telemetry bandwidth | Unreported in reviewed sources |
+| Sampling rate | Unreported in reviewed sources |
+| Power | Unreported in reviewed sources |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | Unreported in reviewed sources |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Unreported in reviewed sources |
+| Output connectors | Omnetics connector (16-channel) [1] |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Greater than 80% fabrication/electrical yield across channel counts [1] |
+| Chronic yield | Greater than 95% electrical integrity after implantation for the tested preparation (a different denominator from fabrication yield) [1] |
+| Stability over time | Unreported in reviewed sources |
+| Longevity | Weeks-long 16-channel mouse recording [1] |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | Unreported in reviewed sources |
+| Notable demonstrations | 16-channel chronic mouse learning recordings; preliminary 1,024-channel recordings (Supplementary Fig. S16 not readable in this pass) [1] |
+
+## Clinical and preclinical evidence
+
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None |
+| Preclinical cohort | Mouse; 1,024-channel cohort, connected channels, duration and unit yield not asserted |
+| Follow-up duration | Unreported in reviewed sources |
+| Indications | Unreported in reviewed sources |
+| Trials and registries | Unreported in reviewed sources |
+| Primary outcomes | Chronic stable 16-channel mouse recording; electrical integrity above 95% [1] |
+| Key limitations | 1,024-channel recordings preliminary; probe-station measurements for 128-1,024 channels are not a freely behaving acquisition package [1] |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Tiny assembled bundle, very high channel counts fabricated [1] |
+| Limitations | Post-assembly geometry not fully defined; wiring density for 1,024 channels unproven in chronic use [1] |
+| Scaling constraints | On-chip amplification or multiplexing to cut external leads [1] |
+
 ## Variant-specific structure
 
 | Configuration | Published structure |
@@ -48,7 +153,7 @@ The authors identify on-chip amplification/multiplexing to reduce external leads
 
 No full model is supplied. The micrographs show the plane-mesh-filament transition and assembly, but the published summary dimensions do not define the complete mask, mesh junctions, individual lengths, assembled contact positions or connector outline. A neat cylinder of evenly spaced contacts would invent the post-assembly geometry.
 
-## Primary sources
+## References
 
-- [Published Science Advances paper, March 27, 2019](https://www.science.org/doi/10.1126/sciadv.aav2842).
-- [Primary full text, affiliations, Figures 1 and 6, methods](https://pmc.ncbi.nlm.nih.gov/articles/PMC6436924/).
+1. [Published Science Advances paper, March 27, 2019](https://www.science.org/doi/10.1126/sciadv.aav2842).
+2. [Primary full text, affiliations, Figures 1 and 6, methods](https://pmc.ncbi.nlm.nih.gov/articles/PMC6436924/).
