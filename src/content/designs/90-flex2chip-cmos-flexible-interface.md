@@ -41,13 +41,13 @@ Zhao and colleagues' 2023 paper reports a flexible thin-film electrode array joi
 | Array layout | Slice array 720 sites in a 30 × 24 layout; acute mouse ECoG array 504 sites [1, 2] |
 | Electrode count | Connector arrays of 720 and 2,200 nominal connections; CMOS-MEA 26,400 active pixels with up to 1,024 simultaneous channels; 720-site slice array; 504-site ECoG array [1, 2] |
 | Pitch | Connector pitch 50 µm; lead pitch 2 µm; CMOS pixel pitch 17.5 µm; slice array reported 90 µm pitch [1, 2] |
-| Electrode lengths | Unreported in reviewed sources |
+| Electrode lengths | Unreported |
 | Shank width and thickness | Leads 1 µm wide, 100 nm thick platinum between two 1 µm polyimide layers [1, 2] |
 | Tip and exposed site geometry | Recording contacts 20 µm diameter; ECoG active area 760 × 760 µm. I/O pad 35 µm (main text) or 40 µm (Figure 2 caption); interface area 3.5 × 2.1 mm (Figure 1) or 3.85 × 2.10 mm (text); slice section 3.6 × 1.62 mm. Conflicts kept [1, 2] |
-| Contact coating | Unreported in reviewed sources |
+| Contact coating | Unreported |
 | Insulation | Polyimide layers; silicone encapsulation can secure the interface [1] |
 | Insertion method | Surface array on tissue; pads pulled onto the chip by an isopropyl-alcohol liquid bridge, then held by van der Waals forces [1] |
-| Anchoring and fixation | Unreported in reviewed sources |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
@@ -55,26 +55,26 @@ Zhao and colleagues' 2023 paper reports a flexible thin-film electrode array joi
 | --- | --- |
 | Exposed site area | 20 µm diameter contacts [1, 2] |
 | Electrode material | Platinum leads [1] |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
-| Noise floor or SNR | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported |
+| Noise floor or SNR | Unreported |
 | Recording modality | CMOS-MEA readout of ECoG and slice activity [1] |
-| Sampling rate | Unreported in reviewed sources |
-| Stimulation capability | Unreported in reviewed sources |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Sampling rate | Unreported |
+| Stimulation capability | Unreported |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Brain slice and mouse cortical surface [1, 2] |
-| Insertion trauma and BBB disruption | Unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
-| Gliosis and encapsulation | Unreported in reviewed sources |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
@@ -82,25 +82,25 @@ Zhao and colleagues' 2023 paper reports a flexible thin-film electrode array joi
 | --- | --- |
 | Onboard electronics | CMOS-MEA with 26,400 active pixels and a switch matrix selecting connected pixels [1] |
 | Data path | Wired CMOS readout; 1,024 simultaneous channels maximum [1] |
-| Telemetry bandwidth | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
-| Power | Unreported in reviewed sources |
-| Thermal management | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
+| Power | Unreported |
+| Thermal management | Unreported |
 | Packaging and hermeticity | Unencapsulated interface is delicate under external forces; silicone encapsulation lowered channel yield by 9.38% ± 14.6% [1] |
-| MRI compatibility | Unreported in reviewed sources |
-| Surgical complexity | Unreported in reviewed sources |
-| Output connectors | Unreported in reviewed sources |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
+| Output connectors | Unreported |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
 | Acute yield | Connector yield 95.3% ± 3.42% (720-connection) and 75.7% ± 10.4% (2,200-connection devices) [1] |
-| Chronic yield | Unreported in reviewed sources |
+| Chronic yield | Unreported |
 | Stability over time | One 720-connection device went from 709 to 705 connected channels after a month in a 37 °C, 97% humidity incubator; bench aging, not implanted [1] |
-| Longevity | Unreported in reviewed sources |
-| Revision and explant experience | Unreported in reviewed sources |
-| Adverse events | Unreported in reviewed sources |
+| Longevity | Unreported |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
 | Notable demonstrations | Slice and seizure mapping; acute 504-site mouse ECoG [1, 2] |
 
 ## Clinical and preclinical evidence
@@ -110,8 +110,8 @@ Zhao and colleagues' 2023 paper reports a flexible thin-film electrode array joi
 | Human subjects | None |
 | Preclinical cohort | Brain slice and acute mouse ECoG; counts not extracted here [1] |
 | Follow-up duration | Acute; one-month bench incubation only [1] |
-| Indications | Unreported in reviewed sources |
-| Trials and registries | Unreported in reviewed sources |
+| Indications | Unreported |
+| Trials and registries | Unreported |
 | Primary outcomes | Connector yield and high-density slice and ECoG recordings [1] |
 | Key limitations | 2,200 nominal connections are not 2,200 simultaneous channels; conflicting pad and area dimensions; no full mask reconstructed [1, 2] |
 
