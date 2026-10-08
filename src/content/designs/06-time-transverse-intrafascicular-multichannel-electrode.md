@@ -74,7 +74,7 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Gliosis and encapsulation | Unreported |
 | Neuron loss near sites | Unreported |
 | Foreign-body response mitigation | Unreported |
-| Typical failure modes | Chronic failure rates unreported in reviewed sources; 2010 report explicitly leaves chronic material-tissue behavior to future work |
+| Typical failure modes | Chronic failure rates unreported; 2010 report explicitly leaves chronic material-tissue behavior to future work |
 
 ## System architecture
 
