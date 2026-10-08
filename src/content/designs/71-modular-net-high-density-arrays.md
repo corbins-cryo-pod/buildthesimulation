@@ -42,41 +42,41 @@ This is a hardware development beyond the [2017 NET-50 and NET-10 probes](/devic
 | Interface type | Eight shanks per module, 16 sites per shank; three NET array designs [2] |
 | Array layout | Mouse visual cortex 8 × 8 × 16 layout, targeted module spacing 150 µm; one mouse with ten type-I modules at 150 µm inter-shank and 250 µm inter-module spacing (kept separate) [1, 2] |
 | Electrode count | 128 channels per module; 1,024 channels from eight modules (rat, Figure 1); 80 shanks and 1,280 channels (Figure 3); 144 shanks (Figure 6) [2, 4, 5] |
-| Pitch | Unreported in reviewed sources |
-| Electrode lengths | Unreported in reviewed sources |
-| Shank width and thickness | Unreported in reviewed sources |
-| Tip and exposed site geometry | Unreported in reviewed sources |
-| Contact coating | Unreported in reviewed sources |
-| Insulation | Unreported in reviewed sources |
+| Pitch | Unreported |
+| Electrode lengths | Unreported |
+| Shank width and thickness | Unreported |
+| Tip and exposed site geometry | Unreported |
+| Contact coating | Unreported |
+| Insulation | Unreported |
 | Insertion method | Sequential implantation one module at a time with stereotaxic micromanipulators [2] |
-| Anchoring and fixation | Unreported in reviewed sources |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
-| Electrode material | Unreported in reviewed sources |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
-| Noise floor or SNR | Unreported in reviewed sources |
-| Recording modality | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
-| Stimulation capability | Unreported in reviewed sources |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Exposed site area | Unreported |
+| Electrode material | Unreported |
+| Impedance (with measurement frequency) | Unreported |
+| Noise floor or SNR | Unreported |
+| Recording modality | Unreported |
+| Sampling rate | Unreported |
+| Stimulation capability | Unreported |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported in reviewed sources |
-| Insertion trauma and BBB disruption | Unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
+| Target tissue | Unreported |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
 | Gliosis and encapsulation | No observable scarring in one mouse with ten type-I modules (Extended Data Figure 1) [1] |
 | Neuron loss near sites | No significant difference in sampled local neuron densities in that mouse [1] |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
@@ -84,26 +84,26 @@ This is a hardware development beyond the [2017 NET-50 and NET-10 probes](/devic
 | --- | --- |
 | Onboard electronics | Flexible printed circuit to a stackable 128-channel headstage; 3D-printed case on the rat [1] |
 | Data path | Wired headstage; not a fully implanted wireless BCI [1] |
-| Telemetry bandwidth | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
-| Power | Unreported in reviewed sources |
-| Thermal management | Unreported in reviewed sources |
-| Packaging and hermeticity | Unreported in reviewed sources |
-| MRI compatibility | Unreported in reviewed sources |
-| Surgical complexity | Unreported in reviewed sources |
-| Output connectors | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
+| Power | Unreported |
+| Thermal management | Unreported |
+| Packaging and hermeticity | Unreported |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
+| Output connectors | Unreported |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in reviewed sources |
+| Acute yield | Unreported |
 | Chronic yield | Figure 3: 1,355 recorded units from 1,280 channels; Figure 6: raster of 2,548 units; abstract reports about 1,000 units per cubic millimetre [1, 4, 5] |
 | Stability over time | Module-averaged impedance, spike amplitude, SNR and unit yield stable after initial changes within 60 days; not proof every channel stayed unchanged [6] |
 | Longevity | 21 modules: 16 for 145 days and five for 290 days (Figure 7) [6] |
-| Revision and explant experience | Unreported in reviewed sources |
-| Adverse events | Unreported in reviewed sources |
-| Notable demonstrations | Unreported in reviewed sources |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
+| Notable demonstrations | Unreported |
 
 ## Clinical and preclinical evidence
 
@@ -112,8 +112,8 @@ This is a hardware development beyond the [2017 NET-50 and NET-10 probes](/devic
 | Human subjects | None |
 | Preclinical cohort | Mice and rats; five implanted animals in Figure 3 and 21 modules in Figure 7 [3, 6] |
 | Follow-up duration | 145 and 290 days [6] |
-| Indications | Unreported in reviewed sources |
-| Trials and registries | Unreported in reviewed sources |
+| Indications | Unreported |
+| Trials and registries | Unreported |
 | Primary outcomes | Visual decoding, behavioural-state prediction and optogenetic stimulation alongside recording [1] |
 | Key limitations | Channel count is not unit count; correlations do not prove anatomical connections; full shank outlines and electrode coordinates not reconstructed [1] |
 
@@ -123,7 +123,7 @@ This is a hardware development beyond the [2017 NET-50 and NET-10 probes](/devic
 | --- | --- |
 | Strengths | Thousands of neurons recorded with ultraflexible modules [1] |
 | Limitations | Head-mounted wired headstages, rodent only [1] |
-| Scaling constraints | Unreported in reviewed sources |
+| Scaling constraints | Unreported |
 
 ## Module and recording system
 
