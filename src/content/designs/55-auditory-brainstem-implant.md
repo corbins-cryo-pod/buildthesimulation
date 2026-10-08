@@ -39,43 +39,43 @@ The most widely placed surface stimulator in the central nervous system, and a 4
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Multielectrode surface paddle array [1] |
-| Array layout | Unreported in reviewed sources |
+| Array layout | Unreported |
 | Electrode count | ABI541: 21 platinum contacts; earlier Nucleus version 8 electrodes; Wurzburg 1997 array 12 electrodes [1, 3] |
-| Pitch | Unreported in reviewed sources |
-| Electrode lengths | Unreported in reviewed sources |
+| Pitch | Unreported |
+| Electrode lengths | Unreported |
 | Shank width and thickness | ABI541 paddle 8.5 by 3.0 mm; paddle thickness not covered [1] |
 | Tip and exposed site geometry | Contact diameter not covered here [1] |
-| Contact coating | Unreported in reviewed sources |
-| Insulation | Unreported in reviewed sources |
+| Contact coating | Unreported |
+| Insulation | Unreported |
 | Insertion method | Placed during or after tumor surgery into the lateral recess of the fourth ventricle [1, 3] |
-| Anchoring and fixation | Unreported in reviewed sources |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
+| Exposed site area | Unreported |
 | Electrode material | Platinum [1] |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
-| Noise floor or SNR | Unreported in reviewed sources |
-| Recording modality | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
-| Stimulation capability | Unreported in reviewed sources |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported |
+| Noise floor or SNR | Unreported |
+| Recording modality | Unreported |
+| Sampling rate | Unreported |
+| Stimulation capability | Unreported |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported in reviewed sources |
-| Insertion trauma and BBB disruption | Unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
-| Gliosis and encapsulation | Unreported in reviewed sources |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Target tissue | Unreported |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
@@ -83,24 +83,24 @@ The most widely placed surface stimulator in the central nervous system, and a 4
 | --- | --- |
 | Onboard electronics | External microphone, battery, speech processor, magnet and transmitter antenna; Nucleus 6 processor with ABI541 [1] |
 | Data path | Transcutaneous transmitter to implanted receiver, like a cochlear implant [1] |
-| Telemetry bandwidth | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
-| Power | Unreported in reviewed sources |
-| Thermal management | Unreported in reviewed sources |
-| Packaging and hermeticity | Unreported in reviewed sources |
-| MRI compatibility | Unreported in reviewed sources |
-| Surgical complexity | Unreported in reviewed sources |
-| Output connectors | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
+| Power | Unreported |
+| Thermal management | Unreported |
+| Packaging and hermeticity | Unreported |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
+| Output connectors | Unreported |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in reviewed sources |
-| Chronic yield | Unreported in reviewed sources |
-| Stability over time | Unreported in reviewed sources |
-| Longevity | Unreported in reviewed sources |
-| Revision and explant experience | Unreported in reviewed sources |
+| Acute yield | Unreported |
+| Chronic yield | Unreported |
+| Stability over time | Unreported |
+| Longevity | Unreported |
+| Revision and explant experience | Unreported |
 | Adverse events | First patient's performance fell later, attributed to electrode migration [3] |
 | Notable demonstrations | Sound awareness and improved pattern recognition for most users, closed-set word recognition above chance; not equivalent to cochlear implant results [1, 2] |
 
@@ -109,11 +109,11 @@ The most widely placed surface stimulator in the central nervous system, and a 4
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | Over one thousand ABIs placed worldwide per one review; 71 NF2 patients in the US series received the 8-electrode version [1, 3] |
-| Preclinical cohort | Unreported in reviewed sources |
-| Follow-up duration | Unreported in reviewed sources |
+| Preclinical cohort | Unreported |
+| Follow-up duration | Unreported |
 | Indications | Profound sensorineural hearing loss when cochlear nerves or cochleae are not intact, such as NF2 [1] |
-| Trials and registries | Unreported in reviewed sources |
-| Primary outcomes | Unreported in reviewed sources |
+| Trials and registries | Unreported |
+| Primary outcomes | Unreported |
 | Key limitations | Paddle thickness and contact diameter not covered here [1] |
 
 ## Engineering tradeoffs
@@ -122,7 +122,7 @@ The most widely placed surface stimulator in the central nervous system, and a 4
 | --- | --- |
 | Strengths | Bypasses the nerve entirely [1] |
 | Limitations | Outcomes below cochlear implant levels [1, 2] |
-| Scaling constraints | Unreported in reviewed sources |
+| Scaling constraints | Unreported |
 
 ## Overview
 
