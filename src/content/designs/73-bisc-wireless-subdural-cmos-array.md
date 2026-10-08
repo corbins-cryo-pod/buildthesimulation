@@ -20,6 +20,111 @@ A mechanically flexible micro-ECoG chip that combines electrodes, signal process
 
 The [Columbia University, Shepard lab](/companies/45-columbia-shepard-optical-and-electrical-interfaces/) links BISC and the distinct SCOPe optical family. Wireless electrical recording here does not establish a wireless optical SCOPe configuration.
 
+## Identity
+
+| Field | Value and source scope |
+| --- | --- |
+| Device | BISC wireless subdural CMOS array [1] |
+| Manufacturer | Academic research device; Columbia University electrical engineering and computer science with US collaborators [1] |
+| Interface class | Subdural flexible CMOS micro-ECoG chip, wireless power and data |
+| Origin | Jung, Zeng and colleagues, Nature Electronics [1] |
+| First demonstrated | 8 December 2025 [1] |
+| First human implant | None; no human implantation or clinical efficacy shown [1] |
+| Species studied | Pig and behaving non-human primate [1] |
+| Regulatory status | Research device; no clearance |
+| Function | Recording and stimulation circuitry on chip; therapeutic stimulation not shown [1, 2] |
+| Target tissue | Somatosensory, motor and visual cortex, below the dura [1] |
+
+## Geometry and architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Single CMOS substrate with electrodes, processing and wireless telemetry [1] |
+| Array layout | 256 × 256 array [1] |
+| Electrode count | 65,536 recording electrodes; up to 1,024 simultaneously selectable channels; 256 channels used in Figures 2 and 3 [1, 3, 4] |
+| Pitch | Unreported in reviewed sources |
+| Electrode lengths | Unreported in reviewed sources |
+| Shank width and thickness | 50 µm total thickness; chip outline not supplied [1] |
+| Tip and exposed site geometry | Unreported in reviewed sources |
+| Contact coating | Titanium nitride [2] |
+| Insulation | Unreported in reviewed sources |
+| Insertion method | Placed below the dura [1] |
+| Anchoring and fixation | Unreported in reviewed sources |
+
+## Electrode and channel physics
+
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in reviewed sources |
+| Electrode material | Titanium nitride (TiN) [2] |
+| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Noise floor or SNR | Unreported in reviewed sources |
+| Recording modality | Micro-ECoG; porcine somatosensory-evoked potentials and primate motor activity [3, 4] |
+| Sampling rate | 33.9 kS/s on 256 channels in Figures 2 and 3 [3, 4] |
+| Stimulation capability | Stimulation circuitry on chip; therapeutic outcome not established [2] |
+| Charge injection limit | Unreported in reviewed sources |
+| Reference and ground | Unreported in reviewed sources |
+
+## Tissue interface and bioresponse
+
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Unreported in reviewed sources |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Unreported in reviewed sources |
+| Gliosis and encapsulation | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Unreported in reviewed sources |
+| Typical failure modes | Unreported in reviewed sources |
+
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Analog front end for recording and stimulation, inductive power link, bidirectional transceiver and controller [2] |
+| Data path | Wireless link to an external relay headstage, HDMI to a computer-controlled processor module [2] |
+| Telemetry bandwidth | Unreported in reviewed sources |
+| Sampling rate | Unreported in reviewed sources |
+| Power | Inductive wireless power from the external relay [2] |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | Unreported in reviewed sources |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Unreported in reviewed sources |
+| Output connectors | Unreported in reviewed sources |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Unreported in reviewed sources |
+| Chronic yield | Unreported in reviewed sources |
+| Stability over time | Unreported in reviewed sources |
+| Longevity | Up to two weeks in pigs and two months in behaving non-human primates [1] |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | Unreported in reviewed sources |
+| Notable demonstrations | Decoding of stimulation location in pig; wrist-velocity prediction in a reaching primate [3, 4] |
+
+## Clinical and preclinical evidence
+
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None |
+| Preclinical cohort | Pigs and non-human primates [1] |
+| Follow-up duration | Two weeks (pig) and two months (primate) [1] |
+| Indications | Unreported in reviewed sources |
+| Trials and registries | Unreported in reviewed sources |
+| Primary outcomes | Reliable chronic recordings across cortices [1] |
+| Key limitations | Motor-feature prediction in a trained primate is not assistive-device control in a paralyzed person; contact sizes, pitch and coil geometry not supplied [1] |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Very high site count on a 50 µm wireless chip [1] |
+| Limitations | Only a subset of up to 1,024 channels recorded at once; external relay needed [1, 2] |
+| Scaling constraints | Unreported in reviewed sources |
+
 ## Physical sites versus channels
 
 The chip has a 256 x 256 array: 65,536 recording electrodes. It can simultaneously record a selectable subset of up to 1,024 channels. These are different counts. The device does not stream all 65,536 sites at once in the reported configuration.
@@ -46,11 +151,13 @@ This entry uses the peer-reviewed 2025 paper rather than treating the earlier pr
 
 No 3D model is added from the thickness and matrix count alone. The complete package outline, contact sizes, wireless-coil geometry and configuration-specific channel mapping remain outside the sources inspected for this entry. Chronic tissue and material reliability beyond the stated pig and primate durations are not established here.
 
-## Sources
+## References
 
-- Jung T, Zeng N, et al. [A wireless subdural-contained brain-computer interface with 65,536 electrodes and 1,024 channels](https://www.nature.com/articles/s41928-025-01509-9). Primary abstract, author affiliations, 8 December 2025.
-- [Figure 1: implant and relay station](https://www.nature.com/articles/s41928-025-01509-9/figures/1). Circuit blocks, wireless link, TiN contacts and external equipment.
-- [Figure 2: porcine somatosensory recording](https://www.nature.com/articles/s41928-025-01509-9/figures/2).
-- [Figure 3: motor-cortex recording in a behaving non-human primate](https://www.nature.com/articles/s41928-025-01509-9/figures/3).
+1. Jung T, Zeng N, et al. [A wireless subdural-contained brain-computer interface with 65,536 electrodes and 1,024 channels](https://www.nature.com/articles/s41928-025-01509-9). Primary abstract, author affiliations, 8 December 2025.
+2. [Figure 1: implant and relay station](https://www.nature.com/articles/s41928-025-01509-9/figures/1). Circuit blocks, wireless link, TiN contacts and external equipment.
+3. [Figure 2: porcine somatosensory recording](https://www.nature.com/articles/s41928-025-01509-9/figures/2).
+4. [Figure 3: motor-cortex recording in a behaving non-human primate](https://www.nature.com/articles/s41928-025-01509-9/figures/3).
+
+## Source notes
 
 The full fabrication and implantation methods are not reproduced from the accessible abstract and captions.

@@ -19,6 +19,111 @@ draft: false
 
 A transparent cortical-surface array with cell-scale contacts. The 2024 paper reports arrays up to 256 channels and 20 µm electrode diameters. Platinum nanoparticles improve the small graphene contacts' electrical interface; interlayer-doped double-layer graphene reduces open-circuit failures in the long, thin traces.
 
+## Identity
+
+| Field | Value and source scope |
+| --- | --- |
+| Device | High-density transparent graphene array, up to 256 channels [1] |
+| Manufacturer | Academic research device; UC San Diego, Duygu Kuzum group [2] |
+| Interface class | Transparent cortical-surface array with cell-scale contacts |
+| Origin | Ramezani, Kim, Liu and colleagues, Nature Nanotechnology 2024 [1] |
+| First demonstrated | January 11, 2024 [2] |
+| First human implant | None |
+| Species studied | Mouse visual cortex [1, 2] |
+| Regulatory status | Research device; no clearance |
+| Function | Recording, combined with two-photon calcium imaging [1, 2] |
+| Target tissue | Cortical surface; imaged neurons to 250 µm depth [2] |
+
+## Geometry and architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Thin transparent flexible polymer strip, no gold trace extensions in the field of view [2] |
+| Array layout | Unreported in reviewed sources |
+| Electrode count | Up to 256 channels, a design capability not used in every experiment [1] |
+| Pitch | Unreported in reviewed sources |
+| Electrode lengths | Unreported in reviewed sources |
+| Shank width and thickness | Unreported in reviewed sources |
+| Tip and exposed site geometry | 20 µm contact diameter [1] |
+| Contact coating | Platinum nanoparticles [1] |
+| Insulation | Unreported in reviewed sources |
+| Insertion method | Unreported in reviewed sources |
+| Anchoring and fixation | Unreported in reviewed sources |
+
+## Electrode and channel physics
+
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in reviewed sources |
+| Electrode material | Interlayer-doped double-layer graphene traces; platinum-nanoparticle contacts [1] |
+| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Noise floor or SNR | Unreported in reviewed sources |
+| Recording modality | Surface potentials; multiunit-band power related to cellular calcium activity; neural networks predict calcium activity, an inference not a deep electrical recording [1, 2] |
+| Sampling rate | Unreported in reviewed sources |
+| Stimulation capability | Unreported in reviewed sources |
+| Charge injection limit | Unreported in reviewed sources |
+| Reference and ground | Unreported in reviewed sources |
+
+## Tissue interface and bioresponse
+
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Unreported in reviewed sources |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Unreported in reviewed sources |
+| Gliosis and encapsulation | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported in reviewed sources |
+| Foreign-body response mitigation | Unreported in reviewed sources |
+| Typical failure modes | Unreported in reviewed sources |
+
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Unreported in reviewed sources |
+| Data path | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported in reviewed sources |
+| Sampling rate | Unreported in reviewed sources |
+| Power | Unreported in reviewed sources |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | Unreported in reviewed sources |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Unreported in reviewed sources |
+| Output connectors | Unreported in reviewed sources |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Unreported in reviewed sources |
+| Chronic yield | Unreported in reviewed sources |
+| Stability over time | Unreported in reviewed sources |
+| Longevity | Unreported in reviewed sources |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | Unreported in reviewed sources |
+| Notable demonstrations | Unreported in reviewed sources |
+
+## Clinical and preclinical evidence
+
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None |
+| Preclinical cohort | Mice [1] |
+| Follow-up duration | Unreported in reviewed sources |
+| Indications | Unreported in reviewed sources |
+| Trials and registries | Unreported in reviewed sources |
+| Primary outcomes | Prediction of single-cell and population calcium activity from surface potentials [1] |
+| Key limitations | Mouse only; film thickness, contact map and full outline not grounded; longer-duration and BCI aims are not demonstrations [2] |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Transparent field with cell-scale contacts [1] |
+| Limitations | Doped double-layer traces needed to avoid open-circuit failures in long thin traces [1] |
+| Scaling constraints | Unreported in reviewed sources |
+
 ## Hardware distinction
 
 Unlike the [2014 CLEAR device](/devices/68-clear-transparent-graphene-microecog/), this design has a transparent recording field without gold trace extensions in the field of view. The 256-channel maximum is a design capability reported by the paper, not a statement that every experiment used 256 channels.
@@ -42,9 +147,11 @@ Neural networks and dimensionality reduction were used to predict single-cell an
 
 The reported experiments are in mice. No human implantation or clinical BCI result is asserted. The institutional article discusses future longer-duration experiments and BCI possibilities; those aims are separate from the paper's demonstrations. A full 3D device model is deliberately omitted until the remaining geometry is checked.
 
-## Source and organization
+## References
+
+1. Ramezani M, Kim JH, Liu X, et al. *High-density transparent graphene arrays for predicting cellular calcium activity at depth from surface potential recordings.* Nature Nanotechnology (2024). DOI: 10.1038/s41565-023-01576-z. [Primary paper abstract](https://www.nature.com/articles/s41565-023-01576-z).
+2. UC San Diego. [Transparent Brain Implant Can Read Deep Neural Activity From the Surface](https://today.ucsd.edu/story/transparent-brain-implant-can-read-deep-neural-activity-from-the-surface), January 11, 2024.
+
+## Source notes
 
 The University of California San Diego announcement identifies Duygu Kuzum's group and describes the device, fabrication changes and mouse experiments. The paper was published January 11, 2024.
-
-- Ramezani M, Kim JH, Liu X, et al. *High-density transparent graphene arrays for predicting cellular calcium activity at depth from surface potential recordings.* Nature Nanotechnology (2024). DOI: 10.1038/s41565-023-01576-z. [Primary paper abstract](https://www.nature.com/articles/s41565-023-01576-z).
-- UC San Diego. [Transparent Brain Implant Can Read Deep Neural Activity From the Surface](https://today.ucsd.edu/story/transparent-brain-implant-can-read-deep-neural-activity-from-the-surface), January 11, 2024.
