@@ -28,8 +28,8 @@ Connexus combines a penetrating microwire array with implanted electronics, a fl
 | Insertion depth | 1.5 mm [1, 2] | All tips at Z = 1.5 mm |
 | Circular package | Approximately 1 cm diameter [3] | Nominal 10 mm envelope |
 | Wire diameter | Older technical slides report <40 µm PtIr wires [4] | 40 µm visualization bound; current exact diameter unknown |
-| Exact contact map | No coordinate map in the reviewed sources | Circularly cropped lattice is reconstructed |
-| Housing thickness / tip exposure | Not established by the reviewed sources | Explicit illustrative dimensions; exposed area stays unknown |
+| Exact contact map | No coordinate map | Circularly cropped lattice is reconstructed |
+| Housing thickness / tip exposure | Unreported | Explicit illustrative dimensions; exposed area stays unknown |
 
 The manufacturer’s 2024 photograph shows the circular module used as this model’s visual reference. The 2023 technical slides show a **different square package** with a 9 mm dimension. That older package dimension is not applied to this model. Photographs guide appearance; they do not supply measured dimensions.
 
@@ -63,7 +63,7 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | Origin | Paradromics; Connect-One study with the University of Michigan [6] |
 | First demonstrated | Temporary intraoperative human recording announced June 2, 2025 [5] |
 | First human implant | Acute recording June 2025 [5]; first Connect-One chronic implant announced June 17, 2026 [6] |
-| Species studied | Human (investigational); preclinical animal work referenced by the manufacturer but not detailed in reviewed sources |
+| Species studied | Human (investigational); preclinical animal work referenced by the manufacturer but not detailed |
 | Regulatory status | Investigational: IDE authorized November 2025; Connect-One Early Feasibility Study. Not commercial approval [6] |
 | Function | Recording for intended speech and computer-control applications [1] |
 | Target tissue | Cortex; severe motor impairment population intended [1] |
@@ -73,7 +73,7 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Penetrating microwire array |
-| Array layout | Circular module with penetrating wires on a 300 µm square lattice [2]; no coordinate map in the reviewed sources, so the model lattice is reconstructed |
+| Array layout | Circular module with penetrating wires on a 300 µm square lattice [2]; no coordinate map, so the model lattice is reconstructed |
 | Electrode count | 421 physical microwires per module [1]; 420 analyzed in the SfN report [2] |
 | Pitch | 300 µm square lattice [2] |
 | Electrode lengths | 1.5 mm insertion depth [1, 2]; wire lengths beyond that unreported |
@@ -92,9 +92,9 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | Electrode material | Platinum-iridium [3, 4] |
 | Impedance (with measurement frequency) | Unreported |
 | Noise floor or SNR | Unreported |
-| Recording modality | Intracortical neural signals; specific bands not specified in reviewed sources |
+| Recording modality | Intracortical neural signals; specific bands not specified |
 | Sampling rate | Unreported |
-| Stimulation capability | Unreported for this system in reviewed sources |
+| Stimulation capability | Unreported for this system |
 | Charge injection limit | Unreported |
 | Reference and ground | Unreported |
 
@@ -103,19 +103,19 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Cerebral cortex, penetrating microwires, 1.5 mm insertion depth [1, 2] |
-| Insertion trauma and BBB disruption | Inherent to penetrating wires; quantitative data unreported in reviewed sources |
-| Vascular disruption risk | Placement-dependent; not quantified in reviewed sources |
+| Insertion trauma and BBB disruption | Inherent to penetrating wires; quantitative data unreported |
+| Vascular disruption risk | Placement-dependent; not quantified |
 | Micromotion sensitivity | Rigid microwires in soft tissue; comparative data unreported |
-| Gliosis and encapsulation | Chronic histology unreported in reviewed public sources |
+| Gliosis and encapsulation | Chronic histology unreported |
 | Neuron loss near sites | Unreported |
 | Foreign-body response mitigation | Unreported |
-| Typical failure modes | Chronic stability and yield limits typical of intracortical interfaces; no device-specific failure data published in reviewed sources |
+| Typical failure modes | Chronic stability and yield limits typical of intracortical interfaces; no device-specific failure data published |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Implanted electronics in the module; internal ASIC detail unreported in reviewed sources |
+| Onboard electronics | Implanted electronics in the module; internal ASIC detail unreported |
 | Data path | Flexible lead to an implanted chest transceiver; optical through-skin data link [1] |
 | Telemetry bandwidth | Unreported |
 | Sampling rate | Unreported |
@@ -123,7 +123,7 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | Thermal management | Unreported |
 | Packaging and hermeticity | Fully internalized system [1]; packaging-stack detail unreported |
 | MRI compatibility | Unreported |
-| Surgical complexity | Open cranial surgery for module placement plus chest transceiver implantation; procedural detail limited in reviewed sources |
+| Surgical complexity | Open cranial surgery for module placement plus chest transceiver implantation; procedural detail limited |
 | Output connectors | Flexible lead from module to chest transceiver [1]; connector detail unreported |
 
 ## Performance envelope
@@ -143,7 +143,7 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | At least one acute recording participant [5] and the first Connect-One implant recipient [6]; full enrollment not pinned here |
-| Preclinical cohort | Preclinical cohort details are not detailed in the reviewed sources |
+| Preclinical cohort | Preclinical cohort details unreported |
 | Follow-up duration | Acute (minutes) for the 2025 test; chronic follow-up beginning with the 2026 EFS implant [5, 6] |
 | Indications | Severe motor impairment; speech restoration intended [1, 6] |
 | Trials and registries | Connect-One Early Feasibility Study; registry identifier not pinned in this sheet |
