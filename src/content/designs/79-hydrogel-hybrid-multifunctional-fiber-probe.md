@@ -40,54 +40,54 @@ Park and colleagues' 2021 device integrates multiple thermally drawn polymer fib
 | Interface type | Central optical waveguide with three electrode fibers and three fluidic fibers in a PAAm-alginate hydrogel [1, 3] |
 | Array layout | Electrode and fluidic fibers alternate around the central waveguide [1, 3] |
 | Electrode count | 21 physical tin microwires (3 fibers x 7); not 21 independent channels because wires in each fiber are collectively connectorized [1] |
-| Pitch | Unreported in reviewed sources |
-| Electrode lengths | Unreported in reviewed sources |
+| Pitch | Unreported |
+| Electrode lengths | Unreported |
 | Shank width and thickness | Waveguide 105.9 ± 8.0 µm; electrode fibers 80.0 ± 1.8 µm; fluidic fibers 54.0 ± 2.1 µm inner and 115.4 ± 3.0 µm outer diameter; 334 µm is a finite-element modeling dimension [1, 3, 4] |
 | Tip and exposed site geometry | Tin microwires 4.75 ± 2.22 µm diameter [1, 3] |
-| Contact coating | Unreported in reviewed sources |
+| Contact coating | Unreported |
 | Insulation | PEI insulation on electrode and fluidic fibers [1] |
 | Insertion method | Inserted dehydrated and stiff, then hydrates and softens; hydration within ten minutes [1, 4] |
-| Anchoring and fixation | Unreported in reviewed sources |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
+| Exposed site area | Unreported |
 | Electrode material | Tin microwires [1] |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
-| Noise floor or SNR | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported |
+| Noise floor or SNR | Unreported |
 | Recording modality | Extracellular electrophysiology; about one or two isolated units per electrode fiber, two to six recordable units per probe after accounting for overlap [1] |
-| Sampling rate | Unreported in reviewed sources |
+| Sampling rate | Unreported |
 | Stimulation capability | Optical delivery through the central waveguide (optogenetics) and drug infusion through fluidic channels [1] |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Mouse brain [1] |
-| Insertion trauma and BBB disruption | Unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
 | Micromotion sensitivity | Hydrogel mechanically separates functional fibers during bending, reducing loading on tissue; thermoplastic fibers are not identical to brain tissue [1, 4] |
-| Gliosis and encapsulation | Unreported in reviewed sources |
-| Neuron loss near sites | Unreported in reviewed sources |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
 | Foreign-body response mitigation | Hydrated hydrogel compliance [1] |
-| Typical failure modes | Unreported in reviewed sources |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported in reviewed sources |
+| Onboard electronics | Unreported |
 | Data path | Wired: optical ferrule, electrical pin connections, fluidic tubing, epoxy-stabilized assembly [1, 3] |
-| Telemetry bandwidth | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
-| Power | Unreported in reviewed sources |
-| Thermal management | Unreported in reviewed sources |
-| Packaging and hermeticity | Unreported in reviewed sources |
-| MRI compatibility | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
+| Power | Unreported |
+| Thermal management | Unreported |
+| Packaging and hermeticity | Unreported |
+| MRI compatibility | Unreported |
 | Surgical complexity | Direct insertion while dehydrated [1] |
 | Output connectors | Optical ferrule, pins and tubing; collective connectorization of microwires in each fiber [1] |
 
@@ -95,12 +95,12 @@ Park and colleagues' 2021 device integrates multiple thermally drawn polymer fib
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in reviewed sources |
+| Acute yield | Unreported |
 | Chronic yield | About one or two isolated units per electrode fiber; two to six recordable units per probe [1] |
 | Stability over time | Recordings through 168 days; fluidic patency shown at least eight weeks after implantation [1] |
 | Longevity | 168 days (also called six months or 24 weeks); not a guarantee of indefinite life [1] |
-| Revision and explant experience | Unreported in reviewed sources |
-| Adverse events | Unreported in reviewed sources |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
 | Notable demonstrations | Chronic electrophysiology, light delivery, drug infusion and behavioral assays in mice [1] |
 
 ## Clinical and preclinical evidence
@@ -110,8 +110,8 @@ Park and colleagues' 2021 device integrates multiple thermally drawn polymer fib
 | Human subjects | None |
 | Preclinical cohort | Mice; animal counts not extracted here [1] |
 | Follow-up duration | Up to 168 days [1] |
-| Indications | Unreported in reviewed sources |
-| Trials and registries | Unreported in reviewed sources |
+| Indications | Unreported |
+| Trials and registries | Unreported |
 | Primary outcomes | Chronic recording with optogenetic and drug delivery in mouse circuit study [1] |
 | Key limitations | Physical wires exceed independent readout; fluidic patency not established for every later recording time point; no human qualification [1] |
 
