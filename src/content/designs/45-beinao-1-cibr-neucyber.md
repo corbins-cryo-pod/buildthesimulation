@@ -41,66 +41,66 @@ Beinao-1 (also written Beinao No. 1, "The NeuCyber Matrix BCI System") is a seco
 | Interface type | Semi-invasive flexible ultra-thin electrode matrix [2] |
 | Array layout | Matrix; coordinates unreported in reviewed sources |
 | Electrode count | 128 channels [2] |
-| Pitch | Unreported in reviewed sources |
-| Electrode lengths | Unreported in reviewed sources |
-| Shank width and thickness | Unreported in reviewed sources |
-| Tip and exposed site geometry | Unreported in reviewed sources |
-| Contact coating | Unreported in reviewed sources |
-| Insulation | Unreported in reviewed sources |
+| Pitch | Unreported |
+| Electrode lengths | Unreported |
+| Shank width and thickness | Unreported |
+| Tip and exposed site geometry | Unreported |
+| Contact coating | Unreported |
+| Insulation | Unreported |
 | Insertion method | Placed outside the protective membrane of the brain, avoiding direct contact with brain tissue [2]; surgical steps unreported |
-| Anchoring and fixation | Unreported in reviewed sources |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
-| Electrode material | Unreported in reviewed sources |
-| Impedance (with measurement frequency) | Unreported in reviewed sources |
-| Noise floor or SNR | Unreported in reviewed sources |
+| Exposed site area | Unreported |
+| Electrode material | Unreported |
+| Impedance (with measurement frequency) | Unreported |
+| Noise floor or SNR | Unreported |
 | Recording modality | Neural recording for motor and speech decoding [1, 2] |
-| Sampling rate | Unreported in reviewed sources |
-| Stimulation capability | Unreported in reviewed sources |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Sampling rate | Unreported |
+| Stimulation capability | Unreported |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Outside the dura, without direct contact with brain tissue [2] |
-| Insertion trauma and BBB disruption | Unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
-| Gliosis and encapsulation | Unreported in reviewed sources |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported in reviewed sources |
+| Onboard electronics | Unreported |
 | Data path | Wireless, fully implanted [2]; protocol and external hardware unreported |
-| Telemetry bandwidth | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
-| Power | Unreported in reviewed sources |
-| Thermal management | Unreported in reviewed sources |
-| Packaging and hermeticity | Unreported in reviewed sources |
-| MRI compatibility | Unreported in reviewed sources |
-| Surgical complexity | Unreported in reviewed sources |
-| Output connectors | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
+| Power | Unreported |
+| Thermal management | Unreported |
+| Packaging and hermeticity | Unreported |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
+| Output connectors | Unreported |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in reviewed sources |
-| Chronic yield | Unreported in reviewed sources |
-| Stability over time | Unreported in reviewed sources |
+| Acute yield | Unreported |
+| Chronic yield | Unreported |
+| Stability over time | Unreported |
 | Longevity | Over 45,000 hours of safe operation across seven exploratory patients per CIBR [1]; China Daily reports more than 65,000 hours across nearly 30 implants in the earlier investigator-initiated phase [2] |
-| Revision and explant experience | Unreported in reviewed sources |
+| Revision and explant experience | Unreported |
 | Adverse events | Described as safe operation in CIBR and China Daily reports; no adverse-event dataset in the reviewed sources |
 | Notable demonstrations | Speech decoding with a vocabulary of nearly 100 common Chinese words [2] |
 
@@ -109,7 +109,7 @@ Beinao-1 (also written Beinao No. 1, "The NeuCyber Matrix BCI System") is a seco
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | Counts disagree and are all listed: 7 exploratory patients per CIBR [1]; nearly 30 implants in the earlier phase per China Daily, June 15, 2026 [2]; 16 implantations per a Chinese Academy of Sciences academic divisions report, July 6, 2026 [3]. These may count different things and the sources do not say. Trial started with two spinal cord injury patients [1] |
-| Preclinical cohort | Unreported in reviewed sources |
+| Preclinical cohort | Unreported |
 | Follow-up duration | Hours of operation reported above [1, 2]; per-patient follow-up unreported |
 | Indications | Spinal cord injury, ALS or stroke patients, restoring motor and speech function, per the institute [1] |
 | Trials and registries | GCP-compliant multi-center trial from March 31, 2026 with initial planned enrollment of 36 patients; registry identifier not pinned in this sheet [1, 2]. Nationwide hospital use is planned for 2027 per the academy report [3] |
@@ -122,7 +122,7 @@ Beinao-1 (also written Beinao No. 1, "The NeuCyber Matrix BCI System") is a seco
 | --- | --- |
 | Strengths | Fully implanted wireless semi-invasive design with no direct brain contact [2] |
 | Limitations | Sparse technical disclosure; no per-electrode specifications or peer-reviewed outcomes in the reviewed sources |
-| Scaling constraints | Unreported in reviewed sources |
+| Scaling constraints | Unreported |
 
 ## References
 
