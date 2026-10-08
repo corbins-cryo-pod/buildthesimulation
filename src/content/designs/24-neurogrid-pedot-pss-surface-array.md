@@ -61,7 +61,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Recording modality | LFP and putative single-neuron spikes, based on neighboring-site waveforms/clustering |
 | Sampling rate | 20 kHz, 16-bit acquisition format |
 | Stimulation capability | Not demonstrated in this recording study |
-| Charge injection limit | Unreported in reviewed sources |
+| Charge injection limit | Unreported |
 | Reference and ground | Rat: two tungsten wires, 100 µm diameter/2 mm long, in cerebellum as ground/reference. Human: scalp subcutaneous stainless-steel needles |
 
 ## Tissue interface and bioresponse
@@ -73,7 +73,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Vascular disruption risk | Sites over major blood vessels fail to show spikes in reported examples; surgical vascular injury rate unreported |
 | Micromotion sensitivity | Conformability and anchoring intended to stabilize tissue contact; quantitative motion transfer unreported |
 | Gliosis and encapsulation | Quantitative chronic scar/encapsulation burden not established by reviewed recording report |
-| Neuron loss near sites | Unreported in reviewed sources |
+| Neuron loss near sites | Unreported |
 | Foreign-body response mitigation | 4 µm soft film, conducting-polymer interface and complete metal covering; not proof of no tissue reaction |
 | Typical failure modes | Poor tissue contact/large vessels limit observable spikes; standardized hardware failure rates unreported |
 
@@ -86,9 +86,9 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Telemetry bandwidth | Not applicable to reported wired/headstage system; wireless integration proposed |
 | Sampling rate | 20 kHz, 16-bit storage; spike clustering uses 0.25-2.5 kHz bandpass |
 | Power | External headstage/acquisition, no implanted power supply specified |
-| Thermal management | Unreported in reviewed sources |
+| Thermal management | Unreported |
 | Packaging and hermeticity | Parylene film and headstage/cable; no fully implanted hermetic chronic package qualification |
-| MRI compatibility | Unreported in reviewed sources |
+| MRI compatibility | Unreported |
 | Surgical complexity | Clinical cranial access for human intraoperative recordings; rat cortical/hippocampal surgery and reference wire implantation |
 | Output connectors | Direct headstage attachment/bonding pads; exact cable/connector part unreported |
 
