@@ -27,7 +27,7 @@ Blindsight is Neuralink's visual prosthesis, meant per Neuralink and Elon Musk's
 | Manufacturer | Neuralink [1] |
 | Interface class | Cortical visual prosthesis; stimulation of visual cortex [1, 3] |
 | Origin | Neuralink, United States [1] |
-| First demonstrated | Breakthrough device designation announced September 17, 2024 [1]; no demonstration data in the reviewed sources |
+| First demonstrated | Breakthrough device designation announced September 17, 2024 [1]; no demonstration data |
 | First human implant | Not confirmed by a primary source. Reuters on May 18, 2026 reported Musk expecting a first implant later in 2026 [5]; a third-party report of a human result is unconfirmed [6] |
 | Species studied | Unreported |
 | Regulatory status | FDA breakthrough device designation, announced September 17, 2024; an FDA spokesperson quoted by IEEE Spectrum said it does not mean the device is safe or effective and full clinical trials are still required [1, 4] |
@@ -38,8 +38,8 @@ Blindsight is Neuralink's visual prosthesis, meant per Neuralink and Elon Musk's
 
 | Field | Value and source scope |
 | --- | --- |
-| Interface type | Cortical implant for the visual cortex [3]; hardware configuration not published in reviewed sources |
-| Array layout | Unreported; no published geometry in the reviewed sources |
+| Interface type | Cortical implant for the visual cortex [3]; hardware configuration not published |
+| Array layout | Unreported; no published geometry |
 | Electrode count | Unreported |
 | Pitch | Unreported |
 | Electrode lengths | Unreported |
@@ -112,7 +112,7 @@ Blindsight is Neuralink's visual prosthesis, meant per Neuralink and Elon Musk's
 | Preclinical cohort | Unreported |
 | Follow-up duration | Unreported |
 | Indications | Blindness, including loss of both eyes and the optic nerve, per Neuralink and Musk as quoted by Reuters [2] |
-| Trials and registries | No registry entry cited in reviewed sources |
+| Trials and registries | No registry entry cited |
 | Primary outcomes | None reported by a primary source |
 | Key limitations | Any human result needs a primary source; IEEE Spectrum's September 2024 analysis says the device is likely to disappoint and will not deliver natural sight [4] |
 
