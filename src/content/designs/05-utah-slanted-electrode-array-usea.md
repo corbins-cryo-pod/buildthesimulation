@@ -62,7 +62,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Pitch | 400 µm, 2017 study and current manufacturer [1, 2] |
 | Electrode lengths | 2017: approximately 0.75-1.5 mm [2]. Current table: custom 0.75-1.5 mm; overview: 0.5-1.5 mm linear grading [1] |
 | Shank width and thickness | Unreported |
-| Tip and exposed site geometry | Sharpened silicon; exact exposure not specified in reviewed sources |
+| Tip and exposed site geometry | Sharpened silicon; exact exposure not specified |
 | Contact coating | Current options: platinum or sputtered iridium oxide (SIROF); no coating assigned to the 2017 arrays from options alone [1] |
 | Insulation | Current manufacturer: Parylene-C; study-specific coating stack not extracted here [1] |
 | Insertion method | Pneumatic impactor after epineurium dissection, 2017 Methods [2] |
@@ -75,7 +75,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Exposed site area | Unreported; older generic figures were removed |
 | Electrode material | Silicon needles with platinum or SIROF contact metallization [1] |
 | Impedance (with measurement frequency) | Manufacturer: platinum 20-800 kΩ, SIROF/IrOx 1-80 kΩ, frequency not stated [1]. Study check at 1 kHz; 500 kΩ or more classified as failed for that analysis, not a universal threshold [2] |
-| Noise floor or SNR | System dependent; no array-level noise specification in reviewed sources |
+| Noise floor or SNR | System dependent; no array-level noise specification |
 | Recording modality | Intrafascicular peripheral-nerve recording; single-fiber and multi-unit selectivity claims are study-specific [2] |
 | Sampling rate | Set by the external recording/stimulation system; configuration dependent |
 | Stimulation capability | Yes; the 2017 study used biphasic stimulation; waveform limits not inferred here [2] |
@@ -87,10 +87,10 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Peripheral nerve fascicles [2] |
-| Insertion trauma and BBB disruption | Insertion trauma is a qualitative concern of rigid needles; no quantitative value in reviewed sources |
+| Insertion trauma and BBB disruption | Insertion trauma is a qualitative concern of rigid needles; no quantitative value |
 | Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Mechanical fragility under lead forces noted qualitatively; no quantitative data in reviewed sources |
-| Gliosis and encapsulation | Fibrosis around rigid silicon needles noted qualitatively; no quantitative data in reviewed sources |
+| Micromotion sensitivity | Mechanical fragility under lead forces noted qualitatively; no quantitative data |
+| Gliosis and encapsulation | Fibrosis around rigid silicon needles noted qualitatively; no quantitative data |
 | Neuron loss near sites | Unreported |
 | Foreign-body response mitigation | Unreported |
 | Typical failure modes | Different channel-loss trends across arrays in the 2017 four- and five-week windows [2] |
@@ -106,7 +106,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Power | External recording/stimulation hardware, not an autonomous wireless implant |
 | Thermal management | External |
 | Packaging and hermeticity | Percutaneous research assembly, not a hermetic implant |
-| MRI compatibility | Not established; no compatibility assertion in reviewed sources |
+| MRI compatibility | Not established; no compatibility assertion |
 | Surgical complexity | Microsurgery with nerve dissection and pneumatic impact insertion, 2017 Methods [2] |
 | Output connectors | 2017: custom PCB with ZIF-Clip-96 [2]. Current: Omnetics, CerePort pedestal 128/256, custom [1] |
 
@@ -127,7 +127,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | Two subjects, each with a median-nerve and an ulnar-nerve array [2] |
-| Preclinical cohort | Manufacturer cites primate experience [1]; cohort not detailed in reviewed sources |
+| Preclinical cohort | Manufacturer cites primate experience [1]; cohort not detailed |
 | Follow-up duration | Four weeks (S3) and five weeks (S4) [2] |
 | Indications | Investigational: sensorimotor prosthetic control and sensory feedback research [1, 2] |
 | Trials and registries | Manufacturer notes IDE/IRB support is needed for human use [1]; no registry identifier pinned in this sheet |
@@ -170,11 +170,11 @@ The abstract calls the arrays "100-channel"; Methods explicitly allocates 96 ele
 | Current lead options | Manufacturer: 20-130 mm wire bundle |
 | Power and acquisition | External recording/stimulation hardware, not an autonomous wireless implant |
 | Exposed site area | Unreported; older generic ~200-400 µm² figures were removed |
-| Noise floor / SNR | System-dependent; no array-level noise specification in reviewed sources |
+| Noise floor / SNR | System-dependent; no array-level noise specification |
 | Recording modality | Intrafascicular peripheral-nerve recording; single-fiber and multi-unit selectivity claims are study-specific |
 | Stimulation capability | Yes; 2017 study used biphasic stimulation; configuration-specific waveform limits not inferred here |
 | Charge injection limit | No universal material charge limit assigned; requires configuration-specific instructions and evidence |
-| Tip geometry | Sharpened silicon; exact exposure not specified in reviewed sources |
+| Tip geometry | Sharpened silicon; exact exposure not specified |
 | MRI labeling | Not established here; no compatibility assertion |
 
 A study's failure threshold is not the manufacturer's acceptable impedance range or a universal clinical safety threshold. Connector model names do not determine electrode count. Safe charge limits, waveform limits and tissue-current density require configuration-specific instructions and evidence; none is inferred from the generic array name.
