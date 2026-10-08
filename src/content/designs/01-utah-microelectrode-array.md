@@ -19,7 +19,7 @@ draft: false
 
 A silicon array of penetrating electrodes for recording cortical neural activity. The Utah research family and the NeuroPort clinical product share an array architecture, but their configurations, labeling and permitted uses are not interchangeable.
 
-For the early manufacturing geometry and commercial lineage, see [Utah array origins](/devices/59-utah-array-origins/). The [BrainGate pilot](/applications/37-braingate-pilot-2006/) used a 96-microelectrode sensor for a human neural cursor and device control.
+The [BrainGate pilot](/applications/37-braingate-pilot-2006/) used a 96-microelectrode sensor for a human neural cursor and device control.
 
 ## Core interface specifications
 
@@ -47,7 +47,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Device | Utah Microelectrode Array research family; NeuroPort is the human clinical configuration |
 | Manufacturer | Blackrock Neurotech (formerly Blackrock Microsystems) |
 | Interface class | Intracortical, penetrating silicon microelectrode array |
-| Origin | University of Utah; see [Utah array origins](/devices/59-utah-array-origins/) |
+| Origin | University of Utah |
 | First demonstrated | Not restated without a cited source; the origins entry covers early manufacturing history |
 | First human implant | Unreported; earlier unsourced dates were removed rather than kept |
 | Species studied | Human (NeuroPort programs) and non-human primate (2013 Barrese cohort) |
@@ -160,7 +160,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 
 The manufacturer does not give one consistent electrode count for the whole Utah family. Its current overview says "up to 96 electrodes per array"; the FAQ says "up to 128", "100 - 128" microneedles and "96 - 128" electrodes. Those figures are preserved rather than treated as the same configuration. Connector names such as CerePort 128 do not, by themselves, establish the number of connected recording sites.
 
-The [1991 manufacturing geometry](/devices/59-utah-array-origins/) describes a 4.2 mm substrate. That is historical geometry, not a replacement for the current manufacturer's 4 mm FAQ figure.
+The 1991 manufacturing geometry describes a 4.2 mm substrate. That is historical geometry, not a replacement for the current manufacturer's 4 mm FAQ figure.
 
 ## Recording and stimulation
 
