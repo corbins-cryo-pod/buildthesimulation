@@ -41,7 +41,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Interface type | Distributed surface chips, optional post-process penetrating stimulation microwires |
 | Array layout | Spatially distributed chiplets with relay coil on polyimide carrier, not one monolithic electrode array |
 | Electrode count | One differential recording input between two gold electrodes per recording chip; 48-chip acute ensemble. Separate stimulation ASIC/assemblies |
-| Pitch | No universal array pitch; chip placement/contact spacing not assigned from reviewed sources |
+| Pitch | No universal array pitch; chip placement/contact spacing not assigned |
 | Electrode lengths | Recording chips have no shanks; optional tungsten stimulation wire length unreported here |
 | Shank width and thickness | Figure 1 chiplet 650 x 650 x 250 µm; Figure 2 stimulating ASIC 500 x 500 µm is a different scope |
 | Tip and exposed site geometry | Two on-chip gold contacts; numerical pad shape/area unreported here. Microwires not reconstructed from package envelope |
