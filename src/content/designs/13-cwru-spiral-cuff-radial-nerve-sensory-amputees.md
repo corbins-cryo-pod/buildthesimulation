@@ -41,7 +41,7 @@ Every field follows the shared implant-device template. Values belong to a named
 | Interface type | Non-penetrating self-curling spiral cuff |
 | Array layout | Self-curling polymer sheath wraps nerve twice, Christie 2017; contacts distributed around circumference |
 | Electrode count | One to four independent stimulation contacts per cuff in Christie 2017; monopolar versions connect four contacts in series |
-| Pitch | Configuration dependent; no universal pitch in reviewed sources |
+| Pitch | Configuration dependent; no universal pitch |
 | Electrode lengths | Not applicable to penetrating shanks; cuff axial length unreported in audited descriptions |
 | Shank width and thickness | Not applicable; cuff diameter selected intraoperatively from 2-10 mm inventory, Christie 2017 |
 | Tip and exposed site geometry | Configuration dependent; Tan 2015 radial spiral: four contacts, 4 mm cuff diameter; exposed area unreported |
