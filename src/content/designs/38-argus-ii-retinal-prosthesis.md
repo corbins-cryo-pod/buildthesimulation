@@ -28,8 +28,7 @@ The first retinal prosthesis to reach routine clinical use in the US, and a case
 | Interface class | Epiretinal electrode array, wirelessly powered |
 | Origin | Second Sight Medical Products [1] |
 | First demonstrated | FDA humanitarian device exemption H110002 received 4 May 2011 [1] |
-| First human implant | Not stated in the reviewed sources |
-| Species studied | Human [2] |
+| First human implant | Unreported || Species studied | Human [2] |
 | Regulatory status | FDA HDE H110002, decision 13 February 2013; label says effectiveness for this use has not been demonstrated; discontinued by Second Sight in 2019 per IEEE Spectrum [1, 2, 3] |
 | Function | Electrical stimulation of the retina to induce visual perception [2] |
 | Target tissue | Retina, over the fovea; for severe to profound retinitis pigmentosa with bare or no light perception [2] |
