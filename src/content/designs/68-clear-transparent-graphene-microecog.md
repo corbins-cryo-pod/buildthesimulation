@@ -39,69 +39,69 @@ A surface array with transparent graphene contacts and traces over the brain-fac
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Four stacked graphene monolayers on parylene-C; gold pads and initial trace portions remain opaque [1] |
-| Array layout | Unreported in reviewed sources |
+| Array layout | Unreported |
 | Electrode count | 16 sites [1] |
 | Pitch | Not inferred; contact pitch not given [1] |
-| Electrode lengths | Unreported in reviewed sources |
+| Electrode lengths | Unreported |
 | Shank width and thickness | Electrode area 3.1 × 3.1 mm (rat size) and 1.9 × 1.9 mm (mouse size); not the device outline or one contact [1] |
-| Tip and exposed site geometry | Unreported in reviewed sources |
-| Contact coating | Unreported in reviewed sources |
+| Tip and exposed site geometry | Unreported |
+| Contact coating | Unreported |
 | Insulation | Parylene-C base 15 µm plus 10 µm encapsulation patterned to expose contacts [1] |
-| Insertion method | Unreported in reviewed sources |
-| Anchoring and fixation | Unreported in reviewed sources |
+| Insertion method | Unreported |
+| Anchoring and fixation | Unreported |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in reviewed sources |
+| Exposed site area | Unreported |
 | Electrode material | Four-layer graphene, sheet resistance 76 Ω per square [1] |
 | Impedance (with measurement frequency) | At 1 kHz in saline: graphene 243.5 ± 5.9 kΩ versus platinum comparison 188.8 ± 92.9 kΩ [1] |
-| Noise floor or SNR | Unreported in reviewed sources |
+| Noise floor or SNR | Unreported |
 | Recording modality | Spontaneous and evoked signals; allowed fluorescence microscopy and OCT of cortical vasculature [1] |
-| Sampling rate | Unreported in reviewed sources |
-| Stimulation capability | Unreported in reviewed sources |
-| Charge injection limit | Unreported in reviewed sources |
-| Reference and ground | Unreported in reviewed sources |
+| Sampling rate | Unreported |
+| Stimulation capability | Unreported |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported in reviewed sources |
-| Insertion trauma and BBB disruption | Unreported in reviewed sources |
-| Vascular disruption risk | Unreported in reviewed sources |
-| Micromotion sensitivity | Unreported in reviewed sources |
-| Gliosis and encapsulation | Unreported in reviewed sources |
-| Neuron loss near sites | Unreported in reviewed sources |
-| Foreign-body response mitigation | Unreported in reviewed sources |
-| Typical failure modes | Unreported in reviewed sources |
+| Target tissue | Unreported |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported in reviewed sources |
-| Data path | Unreported in reviewed sources |
-| Telemetry bandwidth | Unreported in reviewed sources |
-| Sampling rate | Unreported in reviewed sources |
-| Power | Unreported in reviewed sources |
-| Thermal management | Unreported in reviewed sources |
-| Packaging and hermeticity | Unreported in reviewed sources |
-| MRI compatibility | Unreported in reviewed sources |
-| Surgical complexity | Unreported in reviewed sources |
+| Onboard electronics | Unreported |
+| Data path | Unreported |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
+| Power | Unreported |
+| Thermal management | Unreported |
+| Packaging and hermeticity | Unreported |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
 | Output connectors | Zero-insertion-force PCB connector [1] |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in reviewed sources |
-| Chronic yield | Unreported in reviewed sources |
+| Acute yield | Unreported |
+| Chronic yield | Unreported |
 | Stability over time | Steep impedance rise in the first ten days for both graphene and platinum, with no significant difference over the implantation period [1] |
-| Longevity | Unreported in reviewed sources |
-| Revision and explant experience | Unreported in reviewed sources |
-| Adverse events | Unreported in reviewed sources |
+| Longevity | Unreported |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
 | Notable demonstrations | Over 90% transmission in the abstract; roughly 90% at 470 and 570 nm within a 300-1,500 nm test range (both kept); light still creates an electrical artifact [1] |
 
 ## Clinical and preclinical evidence
@@ -110,9 +110,9 @@ A surface array with transparent graphene contacts and traces over the brain-fac
 | --- | --- |
 | Human subjects | None |
 | Preclinical cohort | Four rats and five mice [1] |
-| Follow-up duration | Unreported in reviewed sources |
-| Indications | Unreported in reviewed sources |
-| Trials and registries | Unreported in reviewed sources |
+| Follow-up duration | Unreported |
+| Indications | Unreported |
+| Trials and registries | Unreported |
 | Primary outcomes | Transparent recording with optogenetic and optical imaging access [1] |
 | Key limitations | No lifetime reliability, human safety or clinical BCI outcome; overlapping artifact and neural response in some paradigms [1] |
 
@@ -122,7 +122,7 @@ A surface array with transparent graphene contacts and traces over the brain-fac
 | --- | --- |
 | Strengths | Optical path through contacts [1] |
 | Limitations | Gold pads and traces are not transparent [1] |
-| Scaling constraints | Unreported in reviewed sources |
+| Scaling constraints | Unreported |
 
 ## Published construction
 
