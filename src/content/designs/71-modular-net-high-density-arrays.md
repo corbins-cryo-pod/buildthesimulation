@@ -20,6 +20,111 @@ A larger modular recording platform built from ultraflexible nanoelectronic thre
 
 This is a hardware development beyond the [2017 NET-50 and NET-10 probes](/devices/27-nanoelectronic-thread-net-probes/), not a claim that the original four- or eight-contact threads had thousands of channels.
 
+## Identity
+
+| Field | Value and source scope |
+| --- | --- |
+| Device | Modular NET high-density arrays, 128-channel modules [1] |
+| Manufacturer | Academic research device; Rice ECE, bioengineering and NeuroEngineering Initiative, UCSF neuroscience and neurological surgery [1] |
+| Interface class | Intracortical ultraflexible nanoelectronic-thread shanks in stackable modules |
+| Origin | Zhao, Zhu, Li and colleagues, Nature Biomedical Engineering [1] |
+| First demonstrated | Published online 3 October 2022 [1] |
+| First human implant | None |
+| Species studied | Head-fixed mice and freely moving rats [1] |
+| Regulatory status | Research device; no clearance |
+| Function | Recording, with optogenetic stimulation in some experiments [1] |
+| Target tissue | Rodent cortex [1] |
+
+## Geometry and architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Eight shanks per module, 16 sites per shank; three NET array designs [2] |
+| Array layout | Mouse visual cortex 8 × 8 × 16 layout, targeted module spacing 150 µm; one mouse with ten type-I modules at 150 µm inter-shank and 250 µm inter-module spacing (kept separate) [1, 2] |
+| Electrode count | 128 channels per module; 1,024 channels from eight modules (rat, Figure 1); 80 shanks and 1,280 channels (Figure 3); 144 shanks (Figure 6) [2, 4, 5] |
+| Pitch | Unreported in reviewed sources |
+| Electrode lengths | Unreported in reviewed sources |
+| Shank width and thickness | Unreported in reviewed sources |
+| Tip and exposed site geometry | Unreported in reviewed sources |
+| Contact coating | Unreported in reviewed sources |
+| Insulation | Unreported in reviewed sources |
+| Insertion method | Sequential implantation one module at a time with stereotaxic micromanipulators [2] |
+| Anchoring and fixation | Unreported in reviewed sources |
+
+## Electrode and channel physics
+
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in reviewed sources |
+| Electrode material | Unreported in reviewed sources |
+| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Noise floor or SNR | Unreported in reviewed sources |
+| Recording modality | Unreported in reviewed sources |
+| Sampling rate | Unreported in reviewed sources |
+| Stimulation capability | Unreported in reviewed sources |
+| Charge injection limit | Unreported in reviewed sources |
+| Reference and ground | Unreported in reviewed sources |
+
+## Tissue interface and bioresponse
+
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Unreported in reviewed sources |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Unreported in reviewed sources |
+| Gliosis and encapsulation | No observable scarring in one mouse with ten type-I modules (Extended Data Figure 1) [1] |
+| Neuron loss near sites | No significant difference in sampled local neuron densities in that mouse [1] |
+| Foreign-body response mitigation | Unreported in reviewed sources |
+| Typical failure modes | Unreported in reviewed sources |
+
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Flexible printed circuit to a stackable 128-channel headstage; 3D-printed case on the rat [1] |
+| Data path | Wired headstage; not a fully implanted wireless BCI [1] |
+| Telemetry bandwidth | Unreported in reviewed sources |
+| Sampling rate | Unreported in reviewed sources |
+| Power | Unreported in reviewed sources |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | Unreported in reviewed sources |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Unreported in reviewed sources |
+| Output connectors | Unreported in reviewed sources |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Unreported in reviewed sources |
+| Chronic yield | Figure 3: 1,355 recorded units from 1,280 channels; Figure 6: raster of 2,548 units; abstract reports about 1,000 units per cubic millimetre [1, 4, 5] |
+| Stability over time | Module-averaged impedance, spike amplitude, SNR and unit yield stable after initial changes within 60 days; not proof every channel stayed unchanged [6] |
+| Longevity | 21 modules: 16 for 145 days and five for 290 days (Figure 7) [6] |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | Unreported in reviewed sources |
+| Notable demonstrations | Unreported in reviewed sources |
+
+## Clinical and preclinical evidence
+
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None |
+| Preclinical cohort | Mice and rats; five implanted animals in Figure 3 and 21 modules in Figure 7 [3, 6] |
+| Follow-up duration | 145 and 290 days [6] |
+| Indications | Unreported in reviewed sources |
+| Trials and registries | Unreported in reviewed sources |
+| Primary outcomes | Visual decoding, behavioural-state prediction and optogenetic stimulation alongside recording [1] |
+| Key limitations | Channel count is not unit count; correlations do not prove anatomical connections; full shank outlines and electrode coordinates not reconstructed [1] |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Thousands of neurons recorded with ultraflexible modules [1] |
+| Limitations | Head-mounted wired headstages, rodent only [1] |
+| Scaling constraints | Unreported in reviewed sources |
+
 ## Module and recording system
 
 Figure 1 shows 128-channel modules, each with eight shanks carrying 16 intracortical recording sites. The study used three NET array designs. Modules were assembled for sequential implantation, one module at a time, using stereotaxic micromanipulators.
@@ -51,13 +156,15 @@ The source describes head-fixed mice and freely moving rats. No human implant, c
 
 No model is added from figure photographs alone. Exact full shank outlines, electrode coordinates and trace routing for the three designs are not reconstructed in this entry.
 
-## Sources
+## References
 
-- Zhao Z, Zhu H, Li X, et al. [Ultraflexible electrode arrays for months-long high-density electrophysiological mapping of thousands of neurons in rodents](https://www.nature.com/articles/s41551-022-00941-y). Primary abstract, affiliations and Extended Data Figures 1 to 3.
-- [Figure 1: modular hardware and placement](https://www.nature.com/articles/s41551-022-00941-y/figures/1).
-- [Figure 2: recording performance and five implanted animals](https://www.nature.com/articles/s41551-022-00941-y/figures/2).
-- [Figure 3: 1,280-channel visual-cortex example](https://www.nature.com/articles/s41551-022-00941-y/figures/3).
-- [Figure 6: distributed recordings and behaviour decoding](https://www.nature.com/articles/s41551-022-00941-y/figures/6).
-- [Figure 7: module-level follow-up](https://www.nature.com/articles/s41551-022-00941-y/figures/7).
+1. Zhao Z, Zhu H, Li X, et al. [Ultraflexible electrode arrays for months-long high-density electrophysiological mapping of thousands of neurons in rodents](https://www.nature.com/articles/s41551-022-00941-y). Primary abstract, affiliations and Extended Data Figures 1 to 3.
+2. [Figure 1: modular hardware and placement](https://www.nature.com/articles/s41551-022-00941-y/figures/1).
+3. [Figure 2: recording performance and five implanted animals](https://www.nature.com/articles/s41551-022-00941-y/figures/2).
+4. [Figure 3: 1,280-channel visual-cortex example](https://www.nature.com/articles/s41551-022-00941-y/figures/3).
+5. [Figure 6: distributed recordings and behaviour decoding](https://www.nature.com/articles/s41551-022-00941-y/figures/6).
+6. [Figure 7: module-level follow-up](https://www.nature.com/articles/s41551-022-00941-y/figures/7).
+
+## Source notes
 
 This entry uses the accessible primary abstract, figure captions and extended-data captions. It does not claim to reproduce every fabrication method from the full article.
