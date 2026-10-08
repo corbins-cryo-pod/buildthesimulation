@@ -19,6 +19,111 @@ draft: false
 
 A thin-film electrode system paired with a robotic inserter. A stiff needle engages a loop on a flexible thread, inserts it at an individually chosen location, then withdraws. The thread stays in the tissue. The 2019 bioRxiv preprint describes the electrode array, insertion needle and robot as separate parts of the system.
 
+## Identity
+
+| Field | Value and source scope |
+| --- | --- |
+| Device | "Sewing machine" polymer electrode threads with robotic inserter (preprint) [1] |
+| Manufacturer | Academic research device; UCSF Physiology, Berkeley/UCSF Bioengineering, Berkeley ECE, Chan Zuckerberg Biohub; not the Neuralink N1 [1] |
+| Interface class | Intracortical flexible thread electrodes inserted individually by a robot |
+| Origin | Hanson, Diaz-Botia, Kharazia, Maharbiz, Sabes [1] |
+| First demonstrated | bioRxiv 578542, posted March 14, 2019, not peer reviewed [1] |
+| First human implant | None |
+| Species studied | Rat [1] |
+| Regulatory status | Research device; no clearance |
+| Function | Recording or stimulating, one site per thread [1] |
+| Target tissue | Rat brain [1] |
+
+## Geometry and architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Flexible thread with a loop engaged by a stiff needle; some threads have barbs [1] |
+| Array layout | 64 individual threads fabricated; individually chosen insertion locations [1] |
+| Electrode count | 64 threads with one site each (fabricated; not all implanted in every animal) [1] |
+| Pitch | Unreported in reviewed sources |
+| Electrode lengths | Thread length 27.25 mm in Figure 2; bondpad region 4.2 × 7.7 mm [1] |
+| Shank width and thickness | Shank width 16 µm; conductor trace width 4 µm; thickness not stated [1] |
+| Tip and exposed site geometry | Unreported in reviewed sources |
+| Contact coating | Unreported in reviewed sources |
+| Insulation | Polyimide substrate [1] |
+| Insertion method | Insertion needle 25 µm engages the thread loop, inserts and withdraws; under nine seconds per thread [1] |
+| Anchoring and fixation | Unreported in reviewed sources |
+
+## Electrode and channel physics
+
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported in reviewed sources |
+| Electrode material | Platinum conductor on polyimide [1] |
+| Impedance (with measurement frequency) | Unreported in reviewed sources |
+| Noise floor or SNR | Unreported in reviewed sources |
+| Recording modality | Extracellular activity; single units on 39% of implanted electrodes overall (3 of 22, 2 of 13, 7 of 12, 16 of 24) [1] |
+| Sampling rate | Unreported in reviewed sources |
+| Stimulation capability | Unreported in reviewed sources |
+| Charge injection limit | Unreported in reviewed sources |
+| Reference and ground | Unreported in reviewed sources |
+
+## Tissue interface and bioresponse
+
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Unreported in reviewed sources |
+| Vascular disruption risk | Unreported in reviewed sources |
+| Micromotion sensitivity | Unreported in reviewed sources |
+| Gliosis and encapsulation | Increased GFAP around insertion sites [1] |
+| Neuron loss near sites | Histology showed neuronal loss in lesion cores [1] |
+| Foreign-body response mitigation | Unreported in reviewed sources |
+| Typical failure modes | Blood obscuring targets, needle-cannula clogging, microdurotomy depth and implant durability [1] |
+
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Unreported in reviewed sources |
+| Data path | Unreported in reviewed sources |
+| Telemetry bandwidth | Unreported in reviewed sources |
+| Sampling rate | Unreported in reviewed sources |
+| Power | Unreported in reviewed sources |
+| Thermal management | Unreported in reviewed sources |
+| Packaging and hermeticity | Unreported in reviewed sources |
+| MRI compatibility | Unreported in reviewed sources |
+| Surgical complexity | Unreported in reviewed sources |
+| Output connectors | Unreported in reviewed sources |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Unreported in reviewed sources |
+| Chronic yield | Single units on 39% of implanted electrodes overall [1] |
+| Stability over time | Unreported in reviewed sources |
+| Longevity | One rat with 24 electrodes recorded over two months; three recording animals lost implants prematurely [1] |
+| Revision and explant experience | Unreported in reviewed sources |
+| Adverse events | Premature implant loss in three animals [1] |
+| Notable demonstrations | Unreported in reviewed sources |
+
+## Clinical and preclinical evidence
+
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | None |
+| Preclinical cohort | Four recording rats [1] |
+| Follow-up duration | Two months in one rat [1] |
+| Indications | Unreported in reviewed sources |
+| Trials and registries | Unreported in reviewed sources |
+| Primary outcomes | Minimally invasive single-unit recording [1] |
+| Key limitations | Preprint not peer reviewed; longevity and stability not shown to match other flexible probes [1] |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Unreported in reviewed sources |
+| Limitations | Surgical reliability, durability and tissue damage [1] |
+| Scaling constraints | Unreported in reviewed sources |
+
 ## Hardware
 
 | Field | Preprint detail |
@@ -51,6 +156,6 @@ The preprint states that its probes had not shown the longevity and stability re
 
 The preprint lists UCSF Physiology, the joint Berkeley/UCSF Bioengineering graduate group, Berkeley Electrical and Computer Engineering and the Chan Zuckerberg Biohub among its affiliations. It was posted March 14, 2019 and is explicitly marked not certified by peer review. This entry is not the Neuralink N1 device or a claim about its origins.
 
-## Source
+## References
 
-- Hanson TL, Diaz-Botia CA, Kharazia V, Maharbiz MM, Sabes PN. *The "sewing machine" for minimally invasive neural recording.* bioRxiv 578542 (2019). DOI: 10.1101/578542. [Full primary preprint, methods and results](https://www.biorxiv.org/content/10.1101/578542v1.full).
+1. Hanson TL, Diaz-Botia CA, Kharazia V, Maharbiz MM, Sabes PN. *The "sewing machine" for minimally invasive neural recording.* bioRxiv 578542 (2019). DOI: 10.1101/578542. [Full primary preprint, methods and results](https://www.biorxiv.org/content/10.1101/578542v1.full).
