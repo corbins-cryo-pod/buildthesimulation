@@ -39,7 +39,7 @@ A thin-film cortical-surface electrode interface from Precision Neuroscience, wi
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Thin-film, subdural surface array [1] |
-| Array layout | Uniform grid pitch in each research version [1]; site coordinates are not in the reviewed sources |
+| Array layout | Uniform grid pitch in each research version [1]; site coordinates are not |
 | Electrode count | 529 channels (groups of 20, 50, 100 and 200 µm electrodes) [1]; 1,024 channels, made of 977 recording, 42 stimulation-optimized and five reference electrodes [1]. The 1,024 total is not 1,024 identical recording sites |
 | Pitch | 300 µm (529-channel) and 400 µm (1,024-channel) [1] |
 | Electrode lengths | Not applicable: surface film, no penetrating shafts [1] |
@@ -69,11 +69,11 @@ A thin-film cortical-surface electrode interface from Precision Neuroscience, wi
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Cortical surface, subdural [1] |
-| Insertion trauma and BBB disruption | Minimally invasive slit delivery [1]; trauma and barrier disruption data unreported in reviewed sources |
+| Insertion trauma and BBB disruption | Minimally invasive slit delivery [1]; trauma and barrier disruption data unreported |
 | Vascular disruption risk | Unreported |
 | Micromotion sensitivity | Unreported |
 | Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Not applicable to a surface film; no histology reported in reviewed sources |
+| Neuron loss near sites | Not applicable to a surface film; no histology reported |
 | Foreign-body response mitigation | Unreported |
 | Typical failure modes | Unreported |
 
@@ -90,7 +90,7 @@ A thin-film cortical-surface electrode interface from Precision Neuroscience, wi
 | Packaging and hermeticity | Unreported |
 | MRI compatibility | Unreported |
 | Surgical complexity | Cranial-slit delivery with a stylet in pigs and cadaver heads [1]; not demonstrated as a chronic procedure in living patients |
-| Output connectors | Interposer and connector details are not fixed by the reviewed sources [1] |
+| Output connectors | Interposer and connector details are not fixed [1] |
 
 ## Performance envelope
 
@@ -112,7 +112,7 @@ A thin-film cortical-surface electrode interface from Precision Neuroscience, wi
 | Preclinical cohort | Pigs and human cadaver heads [1]; group sizes not pinned in this sheet |
 | Follow-up duration | Intraoperative only; chronic follow-up unreported [1] |
 | Indications | Recording, monitoring and stimulation for implantation up to 30 days (cleared product) [3] |
-| Trials and registries | None cited in reviewed sources |
+| Trials and registries | None cited |
 | Primary outcomes | Delivery feasibility and intraoperative human recording [1] |
 | Key limitations | Slit delivery not shown as a chronic human procedure; clearance does not establish wireless BCI performance [1, 3] |
 
