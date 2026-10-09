@@ -16,7 +16,7 @@ draft: false
 
 # Medtronic Inceptiv closed-loop SCS
 
-Inceptiv is Medtronic's closed-loop rechargeable spinal cord stimulator, approved by PMA supplement S512 on April 24, 2024. This sheet is thinly sourced: the FDA supplement record names the models and features, and a Medtronic announcement adds the sensing rate and MRI statements. Unknown cells stay Unreported.
+Inceptiv is Medtronic's closed-loop rechargeable spinal cord stimulator, approved by PMA supplement S512 on April 24, 2024. This sheet is thinly sourced: the FDA supplement record names the models and features, and a Medtronic announcement adds the sensing rate and MRI statements. Unknown cells stay blank.
 
 ## Identity
 
@@ -26,9 +26,9 @@ Inceptiv is Medtronic's closed-loop rechargeable spinal cord stimulator, approve
 | Manufacturer | Medtronic, Inc. [1][2] |
 | Interface class | Rechargeable spinal cord stimulator with epidural leads and closed-loop sensing of evoked compound action potentials [1][2] |
 | Origin | Commercial FDA-approved device within PMA P840001 [1] |
-| First demonstrated | Unreported |
-| First human implant | Unreported |
-| Species studied | Unreported |
+| First demonstrated |  |
+| First human implant |  |
+| Species studied |  |
 | Regulatory status | PMA P840001/S512, received March 1, 2022, decision April 24, 2024. Medtronic reports earlier approvals in Europe and Japan [1][2] |
 | Function | Spinal cord stimulation for chronic pain with ECAP sensing, about 50 times per second, to adjust stimulation toward the prescribed setting; Medtronic notes sensing signals may not be measurable in all cases [2] |
 | Target tissue | Spinal cord via epidural leads [1][2] |
@@ -40,41 +40,41 @@ Inceptiv is Medtronic's closed-loop rechargeable spinal cord stimulator, approve
 | Interface type | Closed-loop feature approved for Vectris SureScan MRI 1x8 Compact leads, models 977A260, 977A275 and 977A290 only [1] |
 | Array layout | 1x8 lead per the model names [1] |
 | Electrode count | 8 contacts per Vectris 1x8 Compact lead (from the lead name) [1] |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
+| Shank width and thickness |  |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | ECAP sensing by specialized circuitry and a proprietary algorithm [2] |
-| Sampling rate | Unreported |
+| Sampling rate |  |
 | Stimulation capability | Multiple waveform types including Medtronic Differential Target Multiplexed (DTM) programming; updated DTM user interface with Spine Anatomy View and templating in this approval [1][2] |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -82,36 +82,36 @@ Inceptiv is Medtronic's closed-loop rechargeable spinal cord stimulator, approve
 | --- | --- |
 | Onboard electronics | Closed-loop circuitry in the Inceptiv neurostimulator; the Intellis Pro and Inceptiv LT are named in the same approval [1] |
 | Data path | CareGuidePro mobile application and web portal (Medtronic) [2] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Rechargeable; new wireless recharger WR9230 [1][2] |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
+| Thermal management |  |
+| Packaging and hermeticity |  |
 | MRI compatibility | Medtronic states 1.5T and 3T full-body MRI access with no power or impedance restrictions under labeled conditions [2] |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects | Unreported |
-| Preclinical cohort | Unreported |
-| Follow-up duration | Unreported |
+| Human subjects |  |
+| Preclinical cohort |  |
+| Follow-up duration |  |
 | Indications | Chronic pain (the Medtronic announcement states treatment of chronic pain); the FDA record read does not list the indication text [2] |
-| Trials and registries | Unreported |
+| Trials and registries |  |
 | Primary outcomes | DTM waveform: 84% responder rate at 12 months in a multicenter open-label randomized trial (Fishman 2021, Pain Practice). This is a waveform result, not a closed-loop result [2] |
 | Key limitations | The PMA SSED and closed-loop clinical data were not read. Statements about size, MRI and market rank are Medtronic announcement claims [2] |
 
@@ -120,8 +120,8 @@ Inceptiv is Medtronic's closed-loop rechargeable spinal cord stimulator, approve
 | Field | Value and source scope |
 | --- | --- |
 | Strengths | Closed-loop ECAP sensing with MRI access stated by the manufacturer [2] |
-| Limitations | Unreported |
-| Scaling constraints | Unreported |
+| Limitations |  |
+| Scaling constraints |  |
 
 ## Version boundary
 
