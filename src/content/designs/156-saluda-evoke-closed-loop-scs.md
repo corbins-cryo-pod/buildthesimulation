@@ -18,6 +18,8 @@ draft: false
 
 The Saluda Evoke System records evoked compound action potentials from the spinal cord after every pulse. This sheet comes from the FDA summary for PMA P190002. Clinical result values were not read and stay blank.
 
+Company brief: [Saluda Medical Pty Ltd](/companies/57-saluda-medical-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |

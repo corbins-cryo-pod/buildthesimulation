@@ -18,6 +18,8 @@ draft: false
 
 Argus II is an epiretinal implant for blind patients with retinitis pigmentosa. FDA authorized it under a Humanitarian Device Exemption on February 13, 2013, and Cortigent says it is discontinued. This sheet is thin: it rests on the HDE record and the Cortigent page, so electrode and performance cells stay blank. Orion, the cortical visual prosthesis, is investigational and gets its own sheet.
 
+Company brief: [Second Sight](/companies/23-second-sight-medical-products-company-brief/), [Cortigent](/companies/24-cortigent-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |

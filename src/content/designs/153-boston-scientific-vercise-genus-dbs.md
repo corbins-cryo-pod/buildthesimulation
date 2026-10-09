@@ -18,6 +18,8 @@ draft: false
 
 The Vercise Genus DBS System is Boston Scientific's current DBS platform under PMA P150031. This sheet is scoped to the February 29, 2024 supplement S064, with lead and IPG details taken from Boston Scientific pages and labeled as manufacturer statements.
 
+Company brief: [Boston Scientific Corporation](/companies/55-boston-scientific-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |

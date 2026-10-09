@@ -18,6 +18,8 @@ draft: false
 
 The WaveWriter family is Boston Scientific's FDA-approved SCS line. This sheet uses the FDA summary for supplement S363, which added patients without prior back surgery based on the SOLIS trial. Hardware dimensions and contact counts are left blank.
 
+Company brief: [Boston Scientific Corporation](/companies/55-boston-scientific-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |

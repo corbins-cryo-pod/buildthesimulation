@@ -18,6 +18,8 @@ draft: false
 
 The Altius System places a cuff electrode on the nerve of an amputated leg and delivers 5 or 10 kHz high-frequency alternating current to block post-amputation pain. This sheet comes from the FDA overview and summary for PMA P230020 (approved August 26, 2024). Arm-level trial numbers were not extracted and stay blank.
 
+Company brief: [Neuros Medical, Inc.](/companies/61-neuros-medical-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |

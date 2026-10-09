@@ -18,6 +18,8 @@ draft: false
 
 StimRouter is an implanted peripheral nerve lead with an integrated receiver, driven by an external pulse transmitter worn on a skin patch. This sheet uses the 510(k) K211965 clearance. Lead and waveform specs are left blank.
 
+Company brief: [Bioness Inc.](/companies/68-bioness-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |

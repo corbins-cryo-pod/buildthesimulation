@@ -48,3 +48,8 @@ Cortigent should be treated as a *clinical-stage / investigational* company in t
 
 - *Corporate (Jul 2, 2026):* Vivani announced a definitive agreement to merge Cortigent into Nasdaq-listed ClearOne, Inc. (to be renamed Cortigent Holdings, ticker CRGT). The deal was announced, not confirmed closed as of this review. Source: <https://www.globenewswire.com/news-release/2026/07/02/3321264/0/en/Vivani-Announces-Entry-into-Merger-Agreement-Between-Wholly-Owned-Subsidiary-Cortigent-Inc-and-Nasdaq-listed-ClearOne-Inc.html>
 - *Clinical:* six-year early feasibility results for Orion were presented in Jan 2026. Source: <https://investors.vivani.com/investors/news-events/press-releases/detail/212/vivani-subsidiary-cortigent-presents-promising-6-year-early>
+
+### Device entries
+
+- [Argus II retinal prosthesis](/devices/165-argus-ii-retinal-prosthesis/)
+- [Cortigent Orion visual cortical prosthesis](/devices/166-cortigent-orion-visual-cortical-prosthesis/)

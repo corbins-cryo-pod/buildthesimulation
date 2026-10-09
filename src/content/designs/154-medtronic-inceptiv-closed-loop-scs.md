@@ -18,6 +18,8 @@ draft: false
 
 Inceptiv is Medtronic's closed-loop rechargeable spinal cord stimulator, approved by PMA supplement S512 on April 24, 2024. This sheet is thinly sourced: the FDA supplement record names the models and features, and a Medtronic announcement adds the sensing rate and MRI statements. Unknown cells stay blank.
 
+Company brief: [Medtronic plc](/companies/53-medtronic-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |

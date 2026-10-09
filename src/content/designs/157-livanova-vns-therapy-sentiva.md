@@ -18,6 +18,8 @@ draft: false
 
 The VNS Therapy System is the longest-running implanted vagus nerve stimulator, approved under PMA P970003. This sheet is scoped to the SenTiva Model 1000 generator and the lead models listed with it. Unknown cells stay blank.
 
+Company brief: [LivaNova](/companies/37-livanova-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |

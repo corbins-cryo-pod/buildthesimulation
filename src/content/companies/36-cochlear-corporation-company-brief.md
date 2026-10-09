@@ -21,6 +21,7 @@ draft: false
 
 ### Device entries
 
+- [Cochlear Nucleus implant system](/devices/161-cochlear-nucleus-implant-system/)
 - [Auditory brainstem implant](/devices/55-auditory-brainstem-implant/)
 
 ### Limits

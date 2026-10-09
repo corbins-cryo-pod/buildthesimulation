@@ -18,6 +18,8 @@ draft: false
 
 Abbott's SCS family is approved under PMA P010032 and delivers epidural stimulation from a rechargeable or non-rechargeable IPG. This sheet uses the FDA summary for supplement S189 and the S191 record. Hardware specs and trial numbers are left blank because the FDA text read does not give them.
 
+Company brief: [Abbott Medical](/companies/54-abbott-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |

@@ -18,6 +18,8 @@ draft: false
 
 The HiRes Ultra 3D is Advanced Bionics' current FDA-approved cochlear implant, with a choice of SlimJ or Mid-Scala 16-contact electrodes. Hardware values come from the manufacturer's surgeon manual, so they are manufacturer-stated. Clinical trial values are left blank pending a deeper pass.
 
+Company brief: [Advanced Bionics](/companies/66-advanced-bionics-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |

@@ -18,6 +18,8 @@ draft: false
 
 This sheet covers the brain-spine interface (脑脊接口) developed by Jia Fumin's Fudan team and its company, 神复健行. It is an implanted brain-to-spinal-cord system rather than a cursor or arm controller. Sources are Fudan and hospital releases in Chinese and the ChiCTR registry. Hardware details are mostly unpublished, so many cells are blank.
 
+Company brief: [神复健行](/companies/70-shenfu-jianxing-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |

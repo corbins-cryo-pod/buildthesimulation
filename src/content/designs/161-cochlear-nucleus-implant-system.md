@@ -18,6 +18,8 @@ draft: false
 
 The Nucleus system is Cochlear's implant family under PMA P840024. The newest approval read is supplement S096 (decision July 3, 2025), which adds the CI1000 Series implants. This is a thin sheet: electrode and clinical specifications were not found in the sources read and stay blank. MED-EL and Advanced Bionics are separate families.
 
+Company brief: [Cochlear Corporation](/companies/36-cochlear-corporation-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |

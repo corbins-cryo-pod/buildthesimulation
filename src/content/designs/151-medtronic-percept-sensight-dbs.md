@@ -18,6 +18,8 @@ draft: false
 
 Percept PC (approved June 2020) and Percept RC (approved January 2024) are the current Medtronic DBS neurostimulators under PMA P960009. They pair with SenSight directional leads and can record local field potentials through BrainSense. This sheet separates the FDA record, Medtronic labeling and an independent technical paper.
 
+Company brief: [Medtronic plc](/companies/53-medtronic-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |

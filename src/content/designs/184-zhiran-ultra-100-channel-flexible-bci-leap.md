@@ -18,6 +18,8 @@ draft: false
 
 Beijing Zhiran Medical's system combines micrometre-thick flexible intracortical electrodes with a fully implanted wireless unit. The first implantation was in October 2025 in a glioma patient. A multicenter GCP trial for tetraplegia, LEAP, began on May 18, 2026. Figures here are company or hospital statements; no data are published.
 
+Company brief: [智冉医疗](/companies/72-zhiran-medical-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |

@@ -53,3 +53,8 @@ Accuracy, throughput, training time, stability over months.
 
 - *Status (reported by the company):* NeuroXess says its fully implanted, fully wireless system started a GCP registration clinical trial at Huashan Hospital on Jul 8, 2026, which it describes as the first subdural implantable BCI in China to reach registration-stage trials. The company reported a second clinical implant in Apr 2026. The "six patients" figure above is from earlier Wired reporting. Sources (company, in Chinese): <https://www.neuroxess.com/news/naohukejisanquannaojijiekouxitongzhengshiqidonggcpzhucelinchuangshiyan/> and <https://www.neuroxess.com/news/kejixiangshan/>
 - Funding amounts for Chinese firms in this directory are reported by media or the companies and are not independently audited.
+
+### Device entries
+
+- [NeuroXess 256-channel flexible ECoG BCI](/devices/179-neuroxess-flexible-ecog-256-channel-bci/)
+- [NeuroXess Triple-F fully implanted subdural BCI](/devices/180-neuroxess-triple-f-fully-implanted-subdural-bci/)

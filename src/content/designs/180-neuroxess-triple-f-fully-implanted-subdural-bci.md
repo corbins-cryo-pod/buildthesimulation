@@ -18,6 +18,8 @@ draft: false
 
 The Triple-F system, called 三全 in Chinese for fully implanted, fully wireless and fully functional, is NeuroXess's successor to the wired research array on [the 256-channel sheet](/devices/179-neuroxess-flexible-ecog-256-channel-bci/). It started a registration trial in July 2026. The English-language press and the English company pages used for the earlier sheet do not describe it. Sources here are Chinese-language: hospital and state reporting, the company's Chinese news pages and ClinicalTrials.gov. Accuracy figures are company disclosures.
 
+Company brief: [NeuroXess](/companies/10-neuroxess-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
