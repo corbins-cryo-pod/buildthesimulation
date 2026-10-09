@@ -38,43 +38,43 @@ The Triple-F system, called 三全 in Chinese for fully implanted, fully wireles
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Flexible electrode on the cortical surface under the dura, no brain penetration [2, 6] |
-| Array layout | Unreported |
+| Array layout |  |
 | Electrode count | 64 channels, with 100 percent of channels conducting at 6 months in the first patient and at 4 months in the second, per a Xinmin Evening News report of company figures [6]. The company's own news page does not state the channel count [2] |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
+| Shank width and thickness |  |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
 | Insertion method | DBS-style surgery with no dedicated surgical robot, per the company [2]; the battery unit is placed in a subcutaneous chest pocket [3, 4] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Subdural ECoG [2, 4] |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -82,12 +82,12 @@ The Triple-F system, called 三全 in Chinese for fully implanted, fully wireles
 | --- | --- |
 | Onboard electronics | Battery, processor and heat-producing units are in a separate chest-pocket module; the company also describes its own operating system, XessOS [2, 4] |
 | Data path | Fully wireless: wireless data and wireless power, no external cable or connector through the skin [2, 3] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Rechargeable internal battery in the chest; short wireless charging supports daily use, per the company [2, 3] |
 | Thermal management | Heat-producing units are kept away from the brain by placing them in the chest, per the company [2, 3] |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
 | Surgical complexity | First patient moved to a general ward 1 day after surgery [3, 4]. DBS-style procedure per the company [2] |
 | Output connectors | None through the skin; no percutaneous connector [2, 3] |
 
@@ -95,11 +95,11 @@ The Triple-F system, called 三全 in Chinese for fully implanted, fully wireles
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
+| Acute yield |  |
 | Chronic yield | Company-reported decoding accuracy 96.1 percent at over 6 months in the first patient (28 years old, C3 spinal cord injury) and 91.2 percent at 4 months in the second (26 years old, C4, Nanchang) [2, 6] |
-| Stability over time | Unreported |
+| Stability over time |  |
 | Longevity | Longest reported follow-up is over 6 months in the first patient as of July 2026 [6] |
-| Revision and explant experience | Unreported |
+| Revision and explant experience |  |
 | Adverse events | The company says safety was sufficiently verified; no adverse-event data published [2, 6] |
 | Notable demonstrations | 5.2 bits per second Webgrid result at Huashan after 17 days of training, matched by a cursor decoding figure of 5.2 in the company's July 2026 account [2, 4]. Company claim of latency under 50 ms [2]. In June 2026 the Shanghai and Nanchang patients played chess against each other over 800 km, one by controlling a virtual board, the other an exoskeleton glove (company claim) [2] |
 
@@ -108,7 +108,7 @@ The Triple-F system, called 三全 in Chinese for fully implanted, fully wireles
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | At least two patients with this system per the company (Shanghai 28-year-old, Nanchang 26-year-old) [2, 6]. The registry estimates 32 participants [1]. The company also says it has completed 54 human implants across its BCI products as of December 2025 [3] and 60 clinical trials as of July 2026 [2]; these count all NeuroXess products, not this system alone |
-| Preclinical cohort | Unreported |
+| Preclinical cohort |  |
 | Follow-up duration | Registry: follow-up at 1, 2, 3 and 6 months after implantation; primary completion January 30, 2027 [1] |
 | Indications | Upper-limb functional replacement in tetraplegia caused by spinal cord injury [1] |
 | Trials and registries | NCT07720882: prospective, multicenter, single-arm target-value trial, start 2026-07-07, completion 2027-04-30, enrolment 32 estimated [1] |
@@ -121,7 +121,7 @@ The Triple-F system, called 三全 in Chinese for fully implanted, fully wireles
 | --- | --- |
 | Strengths | No transcutaneous connector or external unit, heat source kept away from the brain, subdural placement that avoids brain tissue, and a conventional DBS-style operation, per the company [2] |
 | Limitations | Surface potentials have lower spatial resolution than penetrating arrays; a chest-pocket battery needs periodic wireless charging and a second implant site; evidence is early [1, 2] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Version boundary
 
