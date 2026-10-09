@@ -17,7 +17,7 @@ draft: false
 
 # Macro-sieve regenerative electrode with transit zones (MacEwan et al., 2016)
 
-All rows follow the shared implant-device template. Measurements belong to the named study or configuration. Unreported means the reviewed sources do not establish a value. Proposed use, terminal assays and continuously functioning implants are not treated as equivalent.
+All rows follow the shared implant-device template. Measurements belong to the named study or configuration. A blank cell means the reviewed sources do not establish a value. Proposed use, terminal assays and continuously functioning implants are not treated as equivalent.
 
 ## Identity
 
@@ -28,7 +28,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Interface class | Regenerative peripheral nerve sieve |
 | Origin | MacEwan, Zellmer, Wheeler, Burton and Moran team |
 | First demonstrated | 2016 reviewed report; earliest prototype date not established |
-| First human implant | Unreported; reviewed study uses rats |
+| First human implant | Reviewed study uses rats |
 | Species studied | Adult male Lewis rats |
 | Regulatory status | Preclinical animal research |
 | Function | Stimulation of regenerated sciatic nerve axons |
@@ -57,11 +57,11 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Exposed site area | About 33,000 µm² central curved and 24,000 µm² peripheral straight sites, Results |
 | Electrode material | Pt-Ir/platinized active sites with gold traces on polyimide, Figures/Methods |
 | Impedance (with measurement frequency) | At 1 kHz before implantation: 2.3-6.3 kΩ, mean 4.2 ± 0.9 kΩ; not chronic impedance |
-| Noise floor or SNR | Unreported |
+| Noise floor or SNR |  |
 | Recording modality | Electrical stimulation through MSE; CNAP/EMG assay recordings use separate electrodes, not chronic MSE neural recording |
 | Sampling rate | 40 kHz CNAP and 10 kHz EMG assay acquisition; not MSE onboard sampling specifications |
 | Stimulation capability | Monopolar individual-site and simultaneous-site stimulation evoked reinnervated muscle force at three months |
-| Charge injection limit | Unreported |
+| Charge injection limit |  |
 | Reference and ground | Monopolar assay configuration; exact assembly reference/ground pin map unreported |
 
 ## Tissue interface and bioresponse
@@ -73,7 +73,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Vascular disruption risk | Microvasculature seen crossing MSE; quantified vascular injury rate unreported |
 | Micromotion sensitivity | Micro-PCB increases rigidity, Results; quantified micromotion unreported |
 | Gliosis and encapsulation | Myelinated/unmyelinated fibers through transit zones; quantitative fibrosis burden unreported |
-| Neuron loss near sites | Unreported |
+| Neuron loss near sites |  |
 | Foreign-body response mitigation | Large transit zones; GDNF tested versus saline and conduit controls, not universal coating efficacy |
 | Typical failure modes | No assembly damage/failure observed through three months; longer-term failure rate unreported |
 
@@ -86,9 +86,9 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Telemetry bandwidth | Not applicable; wired assay |
 | Sampling rate | External assay-specific, no onboard ADC |
 | Power | External test equipment |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | Epoxy EpoTek 730 protects connections; elastomer MDX4-4210 encapsulation; no hermetic certification |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Nerve transection, conduit assembly, lead routing and subcutaneous connector pocket |
 | Output connectors | Female Omnetics 20-pin connector, Methods |
 
