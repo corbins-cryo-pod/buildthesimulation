@@ -30,7 +30,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | First demonstrated | Earlier LIFE reports cited in Thota 2015; earliest demonstration not independently established in this audit |
 | First human implant | Human functional study published by Dhillon and Horch in 2005; not a first implantation date |
 | Species studied | Human amputees in Dhillon 2005; cadaver arm and acute rodents in Thota 2015 |
-| Regulatory status | Research; authorization for general clinical use unreported |
+| Regulatory status | Research; authorization for general clinical use not reported |
 | Function | Peripheral neural recording and stimulation |
 | Target tissue | Axon groups inside peripheral nerve fascicles |
 
@@ -44,7 +44,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Pitch | Configuration dependent; individually deployed wires have no fixed array pitch |
 | Electrode lengths | Approximately 1 mm de-insulated active segment, Thota 2015 |
 | Shank width and thickness | 2015 DIME: 25 µm Pt/Ir core, 6 µm PTFE coating, 37 µm insulated diameter. Same paper describes earlier LIFE literature as 27.5 µm wire; not identical configurations |
-| Tip and exposed site geometry | Approximately 1 mm exposed wire segment, not a point tip; exact exposure perimeter unreported |
+| Tip and exposed site geometry | Approximately 1 mm exposed wire segment, not a point tip; exact exposure perimeter not reported |
 | Contact coating | Pt/Ir wire; no added surface film established in audited Methods |
 | Insulation | PTFE-coated wire, silicone bundled lead; protective polyimide deployment sheaths, Thota 2015 |
 | Insertion method | Tungsten needle attached to distal wire used to thread longitudinally into fascicle, Thota 2015 |
@@ -59,7 +59,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Impedance (with measurement frequency) |  |
 | Noise floor or SNR |  |
 | Recording modality | Peripheral neural activity from axon groups; acute afferent recording in 2015 and motor intent control in 2005 human study |
-| Sampling rate | Configuration dependent; external recording system, exact rate unreported in audited Methods |
+| Sampling rate | Configuration dependent; external recording system, exact rate not reported in audited Methods |
 | Stimulation capability | Selective sensory and motor stimulation in published use; 2015 acute rodent ankle movements and 2005 human feedback |
 | Charge injection limit |  |
 | Reference and ground | 2015 recording: one wire extrafascicular within nerve as differential reference; separate ball ground in prototype assembly |
@@ -69,10 +69,10 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Within peripheral nerve fascicles |
-| Insertion trauma and BBB disruption | BBB: not applicable; needle insertion breaches peripheral fascicle, quantitative injury unreported in reviewed system paper |
+| Insertion trauma and BBB disruption | BBB: not applicable; needle insertion breaches peripheral fascicle, quantitative injury not reported in reviewed system paper |
 | Vascular disruption risk |  |
 | Micromotion sensitivity | Fine wires risk entanglement and breakage under mechanical stress; coiled DIME bundle and sheaths are intended to reduce that risk, 2015 |
-| Gliosis and encapsulation | Peripheral interface, not CNS gliosis; chronic tissue-response rate unreported in audited sources |
+| Gliosis and encapsulation | Peripheral interface, not CNS gliosis; chronic tissue-response rate not reported in audited sources |
 | Neuron loss near sites |  |
 | Foreign-body response mitigation | Small wire diameter and flexible routing are design choices; chronic effectiveness not quantified here |
 | Typical failure modes | Wire entanglement and stress-related breakage identified as design risks, Thota 2015; not measured cohort failure rates |
@@ -101,7 +101,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Stability over time | Chronic stability not established by the 2015 cadaver and acute rodent system study |
 | Longevity | Proposed weeks-to-months studies are not observed device lifetime |
 | Revision and explant experience |  |
-| Adverse events | Clinical adverse-event rate unreported in audited sources; cadaver routing is not a safety trial |
+| Adverse events | Clinical adverse-event rate not reported in audited sources; cadaver routing is not a safety trial |
 | Notable demonstrations | Dhillon 2005 amputees judged and set prosthetic grip force/joint position without visual input; 2015 demonstrates multi-fascicle deployment |
 
 ## Clinical and preclinical evidence
@@ -109,7 +109,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | Amputees in Dhillon 2005; exact audited participant count not pinned here. 2015 prototype study includes human cadaver, not a living clinical cohort |
-| Preclinical cohort | Acute rodents in Thota 2015; cohort count unreported in audited text |
+| Preclinical cohort | Acute rodents in Thota 2015; cohort count not reported in audited text |
 | Follow-up duration | Cadaver/acute deployment in 2015; generic chronic duration not asserted |
 | Indications | Experimental prosthetic sensory feedback and motor control |
 | Trials and registries |  |

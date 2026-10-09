@@ -69,7 +69,7 @@ This entry is the single-shank Neuropixels 1.0 recording probe, not every member
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Brain parenchyma along the insertion track |
-| Insertion trauma and BBB disruption | Inherent to penetrating silicon shanks; quantitative values unreported |
+| Insertion trauma and BBB disruption | Inherent to penetrating silicon shanks; quantitative values not reported |
 | Vascular disruption risk |  |
 | Micromotion sensitivity | Rigid shank; qualitative concern, quantitative data not extracted here |
 | Gliosis and encapsulation | Not extracted in this sheet |
@@ -86,7 +86,7 @@ This entry is the single-shank Neuropixels 1.0 recording probe, not every member
 | Telemetry bandwidth | Wired; configuration dependent |
 | Sampling rate | 30 kHz AP / 2.5 kHz LFP, datasheet [1] |
 | Power | External |
-| Thermal management | Low dissipation; specifics unreported here |
+| Thermal management | Low dissipation; specifics not reported here |
 | Packaging and hermeticity | Non-hermetic research probe |
 | MRI compatibility |  |
 | Surgical complexity | Stereotaxic research surgery |

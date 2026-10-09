@@ -57,7 +57,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Exposed site area | Not applicable to electrical contacts; implanted scaffold area 25 mm² |
 | Electrode material | No electrode conductor reported; SU-8/fused silica scaffold and glass coverslip |
 | Impedance (with measurement frequency) | Not applicable to passive optical scaffold |
-| Noise floor or SNR | Electrical SNR not applicable; numerical optical SNR unreported |
+| Noise floor or SNR | Electrical SNR not applicable; numerical optical SNR not reported |
 | Recording modality | External two-photon jRGECO1a calcium imaging in three grafted mice, not on-device spike recording |
 | Sampling rate | Functional single-plane calcium imaging 30 Hz at 1040 nm |
 | Stimulation capability | CheRiff-expressing graft neurons activated by external 470 nm fiber-coupled LED; ten 10 ms pulses at 20 Hz |
@@ -70,10 +70,10 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | --- | --- |
 | Target tissue | Graft cell bodies in scaffold; processes grow into superficial cortex and axons observed across cortical layers |
 | Insertion trauma and BBB disruption | No electrode shank insertion, but craniotomy, duratomy and residual bleeding requiring Gelfoam. BBB injury not quantitatively measured |
-| Vascular disruption risk | Vessels observed in cortical tissue pulled out during terminal scaffold removal; vascular injury rate unreported |
-| Micromotion sensitivity | Strong scaffold-brain adhesion at explant; quantitative chronic motion transfer unreported |
+| Vascular disruption risk | Vessels observed in cortical tissue pulled out during terminal scaffold removal; vascular injury rate not reported |
+| Micromotion sensitivity | Strong scaffold-brain adhesion at explant; quantitative chronic motion transfer not reported |
 | Gliosis and encapsulation | Systematic histology prevented by explant damage; no quantitative gliosis/encapsulation result established |
-| Neuron loss near sites | Native-neuron loss unreported. Occupied wells: 77±15% before implantation (n=23), 52±23% fluorescent at three weeks (n=13). Occupancy is not an exact surviving-cell fraction |
+| Neuron loss near sites | Native-neuron loss not reported. Occupied wells: 77±15% before implantation (n=23), 52±23% fluorescent at three weeks (n=13). Occupancy is not an exact surviving-cell fraction |
 | Foreign-body response mitigation | Strain-matched mouse donor/recipient cells used without immunomodulatory therapy in this experiment; does not establish human immune compatibility |
 | Typical failure modes | Not all grafted animals learned task (5/9 met criterion); terminal explant routinely fractured scaffold and tore cortex. Quantitative clinical failure rate not established |
 
@@ -86,7 +86,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Telemetry bandwidth | No wireless data telemetry demonstrated; task bit rate is not telemetry bandwidth |
 | Sampling rate | External functional imaging 30 Hz; behavioral readout is separate |
 | Power | External LED/fiber and microscope; no implanted power supply. Functional imaging approximately 50 mW at 1040 nm, structural imaging 100 mW at 930 nm |
-| Thermal management | Temperature rise and phototoxicity limit unreported; optical powers are experimental settings, not safety ratings |
+| Thermal management | Temperature rise and phototoxicity limit not reported; optical powers are experimental settings, not safety ratings |
 | Packaging and hermeticity | Glass cranial window bonded with epoxy/acrylic/cement; living-cell scaffold, not hermetic electronic package |
 | MRI compatibility |  |
 | Surgical complexity | Craniotomy/duratomy, cell-loaded placement, headplate fixation and later fiber ferrule attachment |
@@ -99,7 +99,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Acute yield | 77±15% wells occupied at 24 h in 23 loaded scaffolds; mean approximately 90000 cells. Not electrical channel yield |
 | Chronic yield | 52±23% wells fluorescent at three weeks in 13 implants; not a long-term channel-survival rate |
 | Stability over time | Three-week functional calcium imaging and behavior after three-to-four-week screening. Scaffold visually intact months after implantation, not months of validated BCI function |
-| Longevity | Months-scale scaffold integrity observation; maximum functional graft/device lifetime unreported |
+| Longevity | Months-scale scaffold integrity observation; maximum functional graft/device lifetime not reported |
 | Revision and explant experience | Terminal histology removal frequently tore underlying cortex and fractured scaffold; not a clinical revision series |
 | Adverse events | Explant tissue damage documented; no teratomas/overgrowth observed. General safety rate not established |
 | Notable demonstrations | 5/9 grafted mice reached behavioral criterion; best-session mean 0.25±0.24 bits/s (n=9), up to 0.7 bits/s. Not per-neuron bandwidth |

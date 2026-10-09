@@ -17,7 +17,7 @@ draft: false
 
 # ActiGait implanted drop-foot stimulator (common peroneal nerve multi-contact cuff)
 
-Every field follows the shared implant-device template. Values belong to a named configuration or study; unreported means the reviewed sources do not establish the value. Family-wide and deployment-specific evidence are kept separate.
+Every field follows the shared implant-device template. Values belong to a named configuration or study; not reported means the reviewed sources do not establish the value. Family-wide and deployment-specific evidence are kept separate.
 
 ## Identity
 
@@ -30,7 +30,7 @@ Every field follows the shared implant-device template. Values belong to a named
 | First demonstrated |  |
 | First human implant |  |
 | Species studied | Human stroke and multiple sclerosis cohorts, Martin 2016/36-month study |
-| Regulatory status | Clinical study evidence; present market availability and current authorization unreported |
+| Regulatory status | Clinical study evidence; present market availability and current authorization not reported |
 | Function | Gait-triggered stimulation for dorsiflexion |
 | Target tissue | Common peroneal nerve motor branch |
 
@@ -41,9 +41,9 @@ Every field follows the shared implant-device template. Values belong to a named
 | Interface type | Non-penetrating peripheral nerve cuff |
 | Array layout | Four stimulation channels positioned at 90° around circumference, 36-month study |
 | Electrode count | Four stimulation channels, 36-month study; physical contact construction not separately reported |
-| Pitch | 90° angular channel arrangement; linear pitch unreported |
-| Electrode lengths | Not applicable to cortical shanks; cuff length unreported |
-| Shank width and thickness | Not applicable; cuff wall dimensions unreported |
+| Pitch | 90° angular channel arrangement; linear pitch not reported |
+| Electrode lengths | Not applicable to cortical shanks; cuff length not reported |
+| Shank width and thickness | Not applicable; cuff wall dimensions not reported |
 | Tip and exposed site geometry |  |
 | Contact coating |  |
 | Insulation |  |
@@ -72,7 +72,7 @@ Every field follows the shared implant-device template. Values belong to a named
 | Insertion trauma and BBB disruption | BBB: not applicable; nerve surgically exposed and cuffed. Martin 2016 reports nerve injury in two patients |
 | Vascular disruption risk |  |
 | Micromotion sensitivity |  |
-| Gliosis and encapsulation | Peripheral interface; quantitative fibrosis/histology unreported in audited studies |
+| Gliosis and encapsulation | Peripheral interface; quantitative fibrosis/histology not reported in audited studies |
 | Neuron loss near sites |  |
 | Foreign-body response mitigation |  |
 | Typical failure modes | Martin 2016: nerve injury requiring cuff repositioning and infection requiring system removal; later study also notes heel-switch malfunction |
@@ -87,10 +87,10 @@ Every field follows the shared implant-device template. Values belong to a named
 | Sampling rate | Not applicable to described neural recording; stimulation timing patient-specific |
 | Power | External control unit transfers energy via external antenna to implant; 36-month study |
 | Thermal management |  |
-| Packaging and hermeticity | Subcutaneous stimulator and lead; hermetic qualification unreported |
+| Packaging and hermeticity | Subcutaneous stimulator and lead; hermetic qualification not reported |
 | MRI compatibility | Preoperative MRI is not evidence of post-implant MR safety |
 | Surgical complexity | General anesthesia, two incisions, nerve dissection and thigh stimulator placement |
-| Output connectors | Internal electrode cable; external wireless heel-switch/control chain, connector dimensions unreported |
+| Output connectors | Internal electrode cable; external wireless heel-switch/control chain, connector dimensions not reported |
 
 ## Performance envelope
 
@@ -112,7 +112,7 @@ Every field follows the shared implant-device template. Values belong to a named
 | Preclinical cohort |  |
 | Follow-up duration | Later study evaluates baseline and 36 months |
 | Indications | Central drop foot after stroke or MS with response to surface stimulation |
-| Trials and registries | Prospective clinical studies; registry identifier unreported in audited sources |
+| Trials and registries | Prospective clinical studies; registry identifier not reported in audited sources |
 | Primary outcomes | Gait speed, endurance, timed up-and-go and quality of life |
 | Key limitations | Selected surface-stimulation responders; small uncontrolled cohorts; current product status not established |
 

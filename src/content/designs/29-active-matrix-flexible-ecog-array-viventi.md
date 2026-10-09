@@ -69,12 +69,12 @@ A flexible cortical-surface array with a buffer and a multiplexing transistor at
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Cortical surface of the cat: visual cortex and interhemispheric surface |
-| Insertion trauma and BBB disruption | Craniotomy and durotomy required. The array does not penetrate cortex. Tissue injury from the surface contact is unreported |
+| Insertion trauma and BBB disruption | Craniotomy and durotomy required. The array does not penetrate cortex. Tissue injury from the surface contact is not reported |
 | Vascular disruption risk | Not given for this array. Surface placement over vessels is not quantified |
-| Micromotion sensitivity | Conformal thin film and folding aim at close contact. Micromotion behavior in a long-term implant is unreported |
+| Micromotion sensitivity | Conformal thin film and folding aim at close contact. Micromotion behavior in a long-term implant is not reported |
 | Gliosis and encapsulation | Not assessed. The recordings are acute and the paper gives no chronic encapsulation data |
 | Neuron loss near sites | Not assessed. Surface array, no penetrating histology reported |
-| Foreign-body response mitigation | Thin flexible substrate and conformal contact are the stated approach. Biological mitigation outcome is unreported |
+| Foreign-body response mitigation | Thin flexible substrate and conformal contact are the stated approach. Biological mitigation outcome is not reported |
 | Typical failure modes | Process-yield limits: about 83% of channels operational in the gain test, others interpolated. Chronic insulation failure in saline-immersed implant use is not demonstrated |
 
 ## System architecture
@@ -89,8 +89,8 @@ A flexible cortical-surface array with a buffer and a multiplexing transistor at
 | Thermal management |  |
 | Packaging and hermeticity | Encapsulation of polyimide and epoxy to limit leakage in saline. Not qualified as chronic hermetic packaging |
 | MRI compatibility |  |
-| Surgical complexity | Craniotomy and durotomy; folding and fissure insertion adds handling complexity. Human surgical workflow unreported |
-| Output connectors | Elform anisotropic conductive film to a short cable and interface board; connector model unreported |
+| Surgical complexity | Craniotomy and durotomy; folding and fissure insertion adds handling complexity. Human surgical workflow not reported |
+| Output connectors | Elform anisotropic conductive film to a short cable and interface board; connector model not reported |
 
 ## Performance envelope
 
@@ -110,7 +110,7 @@ A flexible cortical-surface array with a buffer and a multiplexing transistor at
 | --- | --- |
 | Human subjects | None in the paper |
 | Preclinical cohort | Ten cats; acute anesthetized recordings. Picrotoxin seizures were induced, not spontaneous epilepsy |
-| Follow-up duration | Acute sessions only. Chronic follow-up unreported |
+| Follow-up duration | Acute sessions only. Chronic follow-up not reported |
 | Indications | Preclinical neural mapping research. Not an approved or indicated clinical device |
 | Trials and registries | None established; animal procedures |
 | Primary outcomes | Dense surface sampling of spindles, visual responses and acute seizures with multiplexed readout |
@@ -126,17 +126,17 @@ A flexible cortical-surface array with a buffer and a multiplexing transistor at
 
 ## Core interface specifications
 
-The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values remain unreported; inapplicable fields are marked.
+The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values stay blank; inapplicable fields are marked.
 
 | Field | Specification and source scope |
 | --- | --- |
 | Electrode Pitch | 500 µm contact spacing |
 | Channel Count | 360 recording sites, 720 transistors |
-| Output Connectors | Elform anisotropic conductive film to interface board; model unreported |
+| Output Connectors | Elform anisotropic conductive film to interface board; model not reported |
 | Output Conn. dimensions L x W x H |  |
 | Standard Electrode Lengths | Not applicable: surface contacts |
 | Impedance | 84 kΩ gold and 29 kΩ platinum measured on 250 x 250 µm passive test contacts at 1 kHz; about 20 kΩ expected for the 300 x 300 µm active contact, not directly measured |
-| Array Dimensions | 18 by 20 sites at 500 µm pitch; sampled region discussed as 10 x 9 mm; full substrate outline unreported |
+| Array Dimensions | 18 by 20 sites at 500 µm pitch; sampled region discussed as 10 x 9 mm; full substrate outline not reported |
 | Multi-Port Options | Not applicable: research prototype |
 | Metalization | Cr/Au interconnects with about 50 nm platinum on contacts |
 | Wire Bundle Length | About 2 ft short cable plus 15 ft acquisition cable |

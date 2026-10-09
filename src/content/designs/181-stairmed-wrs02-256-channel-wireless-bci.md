@@ -16,7 +16,7 @@ draft: false
 
 # StairMed WRS02 256-channel wireless BCI
 
-WRS02 is the successor to the 64-channel WRS01 described on [the WRS sheet](/devices/178-stairmed-wrs-ultraflexible-wireless-bci/). Chinese-language sources give the channel count, launch date and a few company-reported performance figures. Nearly everything else is unreported, and the entries below say so.
+WRS02 is the successor to the 64-channel WRS01 described on [the WRS sheet](/devices/178-stairmed-wrs-ultraflexible-wireless-bci/). Chinese-language sources give the channel count, launch date and a few company-reported performance figures. Nearly everything else is not reported, and the entries below say so.
 
 ## Identity
 
@@ -46,7 +46,7 @@ WRS02 is the successor to the 64-channel WRS01 described on [the WRS sheet](/dev
 | Tip and exposed site geometry |  |
 | Contact coating |  |
 | Insulation |  |
-| Insertion method | Minimally invasive surgery [3]; steps unreported |
+| Insertion method | Minimally invasive surgery [3]; steps not reported |
 | Anchoring and fixation |  |
 
 ## Electrode and channel physics
@@ -86,7 +86,7 @@ WRS02 is the successor to the 64-channel WRS01 described on [the WRS sheet](/dev
 | Sampling rate |  |
 | Power |  |
 | Thermal management |  |
-| Packaging and hermeticity | In May 2025 StairMed said the next-generation 256-channel system would be one third smaller than the then-current implant (26 mm diameter, under 6 mm thick); the sizes of the delivered WRS02 are unreported [4] |
+| Packaging and hermeticity | In May 2025 StairMed said the next-generation 256-channel system would be one third smaller than the then-current implant (26 mm diameter, under 6 mm thick); the sizes of the delivered WRS02 are not reported [4] |
 | MRI compatibility |  |
 | Surgical complexity |  |
 | Output connectors |  |

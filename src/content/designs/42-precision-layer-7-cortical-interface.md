@@ -44,7 +44,7 @@ A thin-film cortical-surface electrode interface from Precision Neuroscience, wi
 | Pitch | 300 µm (529-channel) and 400 µm (1,024-channel) [1] |
 | Electrode lengths | Not applicable: surface film, no penetrating shafts [1] |
 | Shank width and thickness | Approximately 10 µm per polyimide layer, two layers around a Ti/Pt/Ti metal stack in the first fabrication [1]; complete film, pocket, connector and assembly thickness not fixed by the paper |
-| Tip and exposed site geometry | Electrode diameters 20, 50, 100 and 200 µm (529-channel); 50 µm recording, 380 µm stimulation-optimized and 500 µm reference (1,024-channel) [1]; film outline unreported |
+| Tip and exposed site geometry | Electrode diameters 20, 50, 100 and 200 µm (529-channel); 50 µm recording, 380 µm stimulation-optimized and 500 µm reference (1,024-channel) [1]; film outline not reported |
 | Contact coating | Platinum at the tissue interface [1] |
 | Insulation | Polyimide layers around the metal stack [1] |
 | Insertion method | Subdural delivery through narrow cranial slits; a removable stylet in a polyimide pocket is withdrawn after placement [1] |
@@ -62,14 +62,14 @@ A thin-film cortical-surface electrode interface from Precision Neuroscience, wi
 | Sampling rate |  |
 | Stimulation capability | Electrodes can be used for recording or stimulation; the 42 larger sites are stimulation-optimized, not the only stimulating sites [1] |
 | Charge injection limit |  |
-| Reference and ground | Five dedicated 500 µm reference electrodes in the 1,024-channel array [1]; ground configuration unreported |
+| Reference and ground | Five dedicated 500 µm reference electrodes in the 1,024-channel array [1]; ground configuration not reported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Cortical surface, subdural [1] |
-| Insertion trauma and BBB disruption | Minimally invasive slit delivery [1]; trauma and barrier disruption data unreported |
+| Insertion trauma and BBB disruption | Minimally invasive slit delivery [1]; trauma and barrier disruption data not reported |
 | Vascular disruption risk |  |
 | Micromotion sensitivity |  |
 | Gliosis and encapsulation |  |
@@ -110,7 +110,7 @@ A thin-film cortical-surface electrode interface from Precision Neuroscience, wi
 | --- | --- |
 | Human subjects | Five patients with intraoperative recordings [1]; Precision's 37-patient figure is a company-wide program count, not this cohort [3] |
 | Preclinical cohort | Pigs and human cadaver heads [1]; group sizes not pinned in this sheet |
-| Follow-up duration | Intraoperative only; chronic follow-up unreported [1] |
+| Follow-up duration | Intraoperative only; chronic follow-up not reported [1] |
 | Indications | Recording, monitoring and stimulation for implantation up to 30 days (cleared product) [3] |
 | Trials and registries | None cited |
 | Primary outcomes | Delivery feasibility and intraoperative human recording [1] |
@@ -121,7 +121,7 @@ A thin-film cortical-surface electrode interface from Precision Neuroscience, wi
 | Field | Value and source scope |
 | --- | --- |
 | Strengths | Minimally invasive surface delivery, high channel count in a thin film, cleared temporary-use product [1, 3, 4] |
-| Limitations | Chronic performance unreported; research versions are not assumed identical to the cleared assembly [1, 4] |
+| Limitations | Chronic performance not reported; research versions are not assumed identical to the cleared assembly [1, 4] |
 | Scaling constraints | Dense multi-size layout, reference sites, film outline and interposer all need configuration-specific geometry [1] |
 
 ## References

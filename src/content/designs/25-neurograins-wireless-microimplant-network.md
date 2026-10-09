@@ -42,13 +42,13 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Array layout | Spatially distributed chiplets with relay coil on polyimide carrier, not one monolithic electrode array |
 | Electrode count | One differential recording input between two gold electrodes per recording chip; 48-chip acute ensemble. Separate stimulation ASIC/assemblies |
 | Pitch | No universal array pitch; chip placement/contact spacing not assigned |
-| Electrode lengths | Recording chips have no shanks; optional tungsten stimulation wire length unreported here |
+| Electrode lengths | Recording chips have no shanks; optional tungsten stimulation wire length not reported here |
 | Shank width and thickness | Figure 1 chiplet 650 x 650 x 250 µm; Figure 2 stimulating ASIC 500 x 500 µm is a different scope |
-| Tip and exposed site geometry | Two on-chip gold contacts; numerical pad shape/area unreported here. Microwires not reconstructed from package envelope |
+| Tip and exposed site geometry | Two on-chip gold contacts; numerical pad shape/area not reported here. Microwires not reconstructed from package envelope |
 | Contact coating | Gold recording electrodes; tungsten stimulation electrodes in separate variant |
 | Insulation | PDMS around chips/relay-coil assembly for acute in vivo use; ALD discussion concerns separate packaging work |
 | Insertion method | Cortical placement following craniotomy; separate intracortical stimulation template |
-| Anchoring and fixation | Polyimide carrier and PDMS-encapsulated chips/relay coil; specific long-term fixation unreported |
+| Anchoring and fixation | Polyimide carrier and PDMS-encapsulated chips/relay coil; specific long-term fixation not reported |
 
 ## Electrode and channel physics
 
@@ -56,12 +56,12 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | --- | --- |
 | Exposed site area |  |
 | Electrode material | Gold recording contacts; tungsten microwire in separate stimulation variant |
-| Impedance (with measurement frequency) | Standard electrode impedance unreported in reviewed figure/supplement text |
+| Impedance (with measurement frequency) | Standard electrode impedance not reported in reviewed figure/supplement text |
 | Noise floor or SNR | No universal noise rating assigned; supplement states low-noise activity came from a fraction of 48 channels, showing 12 |
 | Recording modality | Epicortical ECoG, including low-frequency oscillations and evoked responses; not broadband single-neuron acquisition |
 | Sampling rate | 1 kHz, 8-bit ADC per recording chip |
 | Stimulation capability | Separate biphasic current-source chips; Figure 4 protocol up to 25 µA/device, Figure 2 100/200/400 µs phases into 20 kΩ load |
-| Charge injection limit | Validated charge-density limit unreported; example waveform/current is not a safety rating |
+| Charge injection limit | Validated charge-density limit not reported; example waveform/current is not a safety rating |
 | Reference and ground | Recording differential between two on-chip electrodes; no distal wired reference required for this configuration |
 
 ## Tissue interface and bioresponse
@@ -71,11 +71,11 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Target tissue | Epicortical tissue for recording; intracortical microwires for separate stimulation experiments |
 | Insertion trauma and BBB disruption | Large craniotomy required; supplement says skin and skull not replaced during surgery for large stimulation construct. Closed-tissue attenuation simulation is not closed-skull demonstration |
 | Vascular disruption risk |  |
-| Micromotion sensitivity | Poor electrode-tissue contact/practical placement identified among reasons for noisy channels; quantified chronic motion tolerance unreported |
+| Micromotion sensitivity | Poor electrode-tissue contact/practical placement identified among reasons for noisy channels; quantified chronic motion tolerance not reported |
 | Gliosis and encapsulation | Chronic histological response not established for 2021 acute configuration |
 | Neuron loss near sites |  |
 | Foreign-body response mitigation | Miniature distributed form factor and encapsulation are design features, not observed absence of foreign-body response |
-| Typical failure modes | Higher-noise channels linked to imperfect tissue contact, cortical activity and ensemble placement limits; chronic hardware failure rates unreported |
+| Typical failure modes | Higher-noise channels linked to imperfect tissue contact, cortical activity and ensemble placement limits; chronic hardware failure rates not reported |
 
 ## System architecture
 
@@ -86,7 +86,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Telemetry bandwidth | 10 Mbit/s uplink packet rate in timing budget; 8 kbit/s neural payload per recording chip. Not 10 Mbit/s neural content per chip |
 | Sampling rate | 1 kHz per recording chip; 100 samples buffered as 800 bits/100 ms |
 | Power | Less than 30 µW per chip budget in supplement; external transmitter power is separate. Approximately 1 GHz carrier, 915 MHz design selection |
-| Thermal management | RF SAR simulations reported; measured chronic tissue heating unreported. Modeled exposures do not establish clinical safety |
+| Thermal management | RF SAR simulations reported; measured chronic tissue heating not reported. Modeled exposures do not establish clinical safety |
 | Packaging and hermeticity | Acute PDMS assembly; conformal ALD/thinned 0.01 mm³ earlier work is not the demonstrated 650 x 650 x 250 µm configuration or a multi-year recording lifetime |
 | MRI compatibility |  |
 | Surgical complexity | Craniotomy, distributed-chip placement, relay-coil/carrier positioning and optional intracortical wires; closed-skin/skull modeled link not assumed surgically demonstrated |
@@ -98,8 +98,8 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | --- | --- |
 | Acute yield | All 48 recording chips activated/transmitted in PUF analysis; clear low-noise brain signals from only a fraction, 12 illustrated. Radio activation is not useful neural-channel yield |
 | Chronic yield | Not established for 2021 recording ASIC; 2024 three-month stimulation branch is separate |
-| Stability over time | Acute recordings; standardized chronic recording stability unreported |
-| Longevity | Acute 2021 configuration, maximum implanted recording service life unreported |
+| Stability over time | Acute recordings; standardized chronic recording stability not reported |
+| Longevity | Acute 2021 configuration, maximum implanted recording service life not reported |
 | Revision and explant experience |  |
 | Adverse events | No clinical adverse-event series or standardized chronic tissue safety assessment for 2021 configuration |
 | Notable demonstrations | 48-chip acute rat recording; 64 autonomous TDMA chips and 32 call-and-response chips in distinct bench tests; 69-chip two-coil power/network demonstration is not 69 neural recording sites |
@@ -109,7 +109,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | None in reviewed 2021 study |
-| Preclinical cohort | Acute rat cortical recording and separate stimulation experiments; unique animal count unreported in reviewed figures/supplement |
+| Preclinical cohort | Acute rat cortical recording and separate stimulation experiments; unique animal count not reported in reviewed figures/supplement |
 | Follow-up duration | Acute anesthetized recordings, not a chronic cohort |
 | Indications | Preclinical distributed neural recording/stimulation platform |
 | Trials and registries | Human registry not applicable to reported study |
@@ -126,7 +126,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 
 ## Core interface specifications
 
-The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values remain unreported; inapplicable fields are marked. Configuration-specific details and limits follow below.
+The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values stay blank; inapplicable fields are marked. Configuration-specific details and limits follow below.
 
 | Field | Specification and source scope |
 | --- | --- |

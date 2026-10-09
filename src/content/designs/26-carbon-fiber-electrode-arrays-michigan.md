@@ -57,7 +57,7 @@ The 2015 and 2020 arrays are related but use different supports, exposed sites, 
 | Exposed site area | 2015 nominal carbon cut-end 36.3 µm² used for CSC calculations. 2020 sidewall exposure 50/100 µm is distinct, not assigned cut-end area |
 | Electrode material | Carbon fiber; 2015 PEDOT:pTS lowers site impedance; 2020 laser/plasma-prepared carbon |
 | Impedance (with measurement frequency) | 2015 accelerated saline soak n=23: PEDOT 118±28 kΩ at 1 kHz day 0, 321±56 kΩ simulated day 29.5 (SEM), not in vivo. 2020 flex saline 50 µm exposure 370±61 kΩ n=75, 100 µm 225±105 kΩ n=57 (SD) |
-| Noise floor or SNR | 2015 planar silicon-supported 16 units mean amplitude 245.9±122.2 µV (SD), not noise floor. Numerical RMS floor unreported here; 2020 reports small spikes |
+| Noise floor or SNR | 2015 planar silicon-supported 16 units mean amplitude 245.9±122.2 µV (SD), not noise floor. Numerical RMS floor not reported here; 2020 reports small spikes |
 | Recording modality | 2015 extracellular units; 2020 units plus FSCV dopamine in separate sessions, not simultaneously from a single headstage |
 | Sampling rate | 2015 approximately 25 kHz TDT; 2020 electrophysiology 30 kHz Intan. FSCV scan waveform parameters not substituted for digitizer rate |
 | Stimulation capability | Array records; 2020 dopamine elicitation uses separate implanted VTA steel stimulating electrode, not a carbon-array stimulation demonstration |
@@ -70,7 +70,7 @@ The 2015 and 2020 arrays are related but use different supports, exposed sites, 
 | --- | --- |
 | Target tissue | Penetrating motor cortex or nucleus accumbens, configuration-specific |
 | Insertion trauma and BBB disruption | Fiber footprint small but cranial access/dural resection or deep glass-cannula insertion remain invasive. 2015 blunt silicon predecessor dimpling 150.5±41.4 µm vs pointed 33.0±11.6 µm (SD, six shanks each, 650 µm insertion). 2020 cannula damage envelope excludes 14 identified electrodes/holes with white-matter exclusions combined |
-| Vascular disruption risk | 2015 fibers deliberately removed if path crossed major surface vessel; quantitative bleeding rate unreported |
+| Vascular disruption risk | 2015 fibers deliberately removed if path crossed major surface vessel; quantitative bleeding rate not reported |
 | Micromotion sensitivity | Small compliant fibers proposed to reduce tissue strain; skull-attached PCB/cannula remain. No numerical chronic motion-transfer metric |
 | Gliosis and encapsulation | 2020 neuron-density study does not supply numerical astrocyte/microglia burden for this sheet; do not import earlier single-fiber results |
 | Neuron loss near sites | 2020 four-rat histology at 10.1-13.3 weeks: 58/64 fibers/holes localized, 44 analyzed after 14 exclusions. Density 25-100 µm from sites not significantly different from 175-200 µm reference, excluding cannula-damage/white-matter regions |

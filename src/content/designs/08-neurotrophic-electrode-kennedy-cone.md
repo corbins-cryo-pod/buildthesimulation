@@ -43,9 +43,9 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Electrode count | Three gold wires and two recording channels in 2020 subject 5; 2008 abstract describes a four-wire version, not one universal count |
 | Pitch | Configuration dependent; wires offset inside cone, no uniform grid pitch |
 | Electrode lengths | Cone length 1.5-2 mm, 2020 Methods |
-| Shank width and thickness | Cone openings: 50 µm at deep end and 200-300 µm at upper end, 2020 Methods; wall thickness unreported |
+| Shank width and thickness | Cone openings: 50 µm at deep end and 200-300 µm at upper end, 2020 Methods; wall thickness not reported |
 | Tip and exposed site geometry | Hollow tip; closest wire end about 500 µm from deep opening in subject 5, 2020 |
-| Contact coating | 99.9% gold wire, 2020 Methods; separate coating unreported |
+| Contact coating | 99.9% gold wire, 2020 Methods; separate coating not reported |
 | Insulation | Teflon-insulated 2 mil gold wires, glass cone and acrylic assembly, 2020 Methods |
 | Insertion method | Surgical insertion into cortex; depth and angle not generalized across versions |
 | Anchoring and fixation | Neurite ingrowth through cone; coiled flexible leads reduce strain, 2020 Methods |
@@ -62,16 +62,16 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Sampling rate | Not given as a single hardware sampling rate; 2020 describes digital filtering and approximately 1 ms spike windows |
 | Stimulation capability | Not used for stimulation in 2020 configuration |
 | Charge injection limit | Not applicable to reviewed recording configuration |
-| Reference and ground | Three wires feed two differential recording channels in 2020; pin-level reference assignment unreported |
+| Reference and ground | Three wires feed two differential recording channels in 2020; pin-level reference assignment not reported |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Motor speech cortex |
-| Insertion trauma and BBB disruption | Penetrating cortical placement; quantitative BBB injury unreported |
+| Insertion trauma and BBB disruption | Penetrating cortical placement; quantitative BBB injury not reported |
 | Vascular disruption risk |  |
-| Micromotion sensitivity | Coiled leads intended to reduce strain at tip, 2020; quantified micromotion unreported |
+| Micromotion sensitivity | Coiled leads intended to reduce strain at tip, 2020; quantified micromotion not reported |
 | Gliosis and encapsulation | 2020 single-subject tip histology reports neurofilaments and absence of gliosis inside tip after 13 years; not a whole-cortex or cohort claim |
 | Neuron loss near sites |  |
 | Foreign-body response mitigation |  |
@@ -84,10 +84,10 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Onboard electronics | Subcutaneous skull-mounted differential amplifiers and FM transmitters, 2008/2020; not a percutaneous tether in this configuration |
 | Data path | Cone wires to subcutaneous electronics, FM transmission through scalp to external receiver |
 | Telemetry bandwidth | FM carrier 42 ± 8 MHz and amplifier bandpass 5-5,000 Hz in 2020; carrier range is not digital throughput |
-| Sampling rate | Configuration dependent; exact rate unreported in reviewed Methods |
+| Sampling rate | Configuration dependent; exact rate not reported in reviewed Methods |
 | Power | External induction coil powers implanted receiver coil; no battery in 2020 configuration |
 | Thermal management |  |
-| Packaging and hermeticity | Elvax internal and Silastic external protection, 2020; hermetic qualification unreported |
+| Packaging and hermeticity | Elvax internal and Silastic external protection, 2020; hermetic qualification not reported |
 | MRI compatibility |  |
 | Surgical complexity | Cortical insertion plus subcutaneous electronics fixed to skull with acrylic, 2020 |
 | Output connectors | Internal miniature connector in 2008 assembly; external receiver captures FM signal |
@@ -112,7 +112,7 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Preclinical cohort |  |
 | Follow-up duration |  |
 | Indications | Locked-in syndrome after brainstem stroke; experimental communication |
-| Trials and registries | FDA IDE G960032 reported in 2020; modern registry record unreported |
+| Trials and registries | FDA IDE G960032 reported in 2020; modern registry record not reported |
 | Primary outcomes | Histological confirmation of myelinated filaments in cone and relation to decade-long recordings |
 | Key limitations | Single-subject histology, hand-built version differences, few recording channels; not comparative lifetime evidence |
 
@@ -122,7 +122,7 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | --- | --- |
 | Strengths | Single-subject decade-long recording with postmortem ingrowth confirmation |
 | Limitations | Few channels, hand assembly, and repeated electronics repair in reviewed case |
-| Scaling constraints | Each cone requires implantation and wire routing; high-channel scaling unreported |
+| Scaling constraints | Each cone requires implantation and wire routing; high-channel scaling not reported |
 
 ## References
 

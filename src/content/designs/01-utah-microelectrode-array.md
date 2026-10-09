@@ -23,7 +23,7 @@ The [BrainGate pilot](/applications/37-braingate-pilot-2006/) used a 96-microele
 
 ## Core interface specifications
 
-The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values remain unreported; inapplicable fields are marked. Configuration-specific details and limits follow below.
+The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values stay blank; inapplicable fields are marked. Configuration-specific details and limits follow below.
 
 | Field | Specification and source scope |
 | --- | --- |
@@ -68,8 +68,8 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Tip and exposed site geometry | Not reconstructed |
 | Contact coating | Platinum or sputtered iridium oxide (SIROF) |
 | Insulation | Parylene-C, Utah options table |
-| Insertion method | Configuration-dependent tooling; specifics unreported |
-| Anchoring and fixation | Percutaneous pedestal or connector; array fixation detail unreported |
+| Insertion method | Configuration-dependent tooling; specifics not reported |
+| Anchoring and fixation | Percutaneous pedestal or connector; array fixation detail not reported |
 
 ## Electrode and channel physics
 
@@ -91,7 +91,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | --- | --- |
 | Target tissue | Cerebral cortex |
 | Insertion trauma / BBB disruption | Inherent to penetrating insertion; no quantitative value |
-| Vascular disruption risk | Qualitative risk of penetrating placement; unreported quantitatively |
+| Vascular disruption risk | Qualitative risk of penetrating placement; not reported quantitatively |
 | Micromotion sensitivity | Rigid silicon array in soft tissue; qualitative concern, no reviewed quantitative source |
 | Gliosis and encapsulation | Meningeal reactions and insulation degradation documented in the 2013 macaque failure cohort |
 | Neuron loss near sites |  |

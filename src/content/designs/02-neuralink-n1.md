@@ -59,7 +59,7 @@ Inductive charging and wireless data allow the implant to operate without a perc
 | Origin | Neuralink; first human participant reported in company updates from 2024 [1] |
 | First demonstrated | 2024 company update for the 64-thread, 16-site description [1, 2]; the July 2025 UCLH description gives 128 threads of 8 electrodes [3] |
 | First human implant | First PRIME participant reported in company updates beginning 2024 [1] |
-| Species studied | Human (investigational) and preclinical animals; preclinical detail unreported here |
+| Species studied | Human (investigational) and preclinical animals; preclinical detail not reported here |
 | Regulatory status | Investigational: PRIME (NCT06429735) [4] and GB-PRIME [3]; not commercially approved |
 | Function | Recording; stimulation capability discussed in the engineering interview [2] |
 | Target tissue | Motor cortex in the reported human program |
@@ -70,15 +70,15 @@ Inductive charging and wireless data allow the implant to operate without a perc
 | --- | --- |
 | Interface type | Penetrating flexible polymer threads with a skull-mounted enclosure |
 | Array layout | 64 threads x 16 sites (2024 description) [1, 2]; the 128 x 8 variant is documented separately [3] |
-| Electrode count | 1,024 physical sites in both descriptions [1, 3]; simultaneous channel count unreported |
+| Electrode count | 1,024 physical sites in both descriptions [1, 3]; simultaneous channel count not reported |
 | Pitch | 200 µm along the thread, per the 2024 interview [2] |
 | Electrode lengths | Thread reach and insertion depth are patient-specific and not published |
 | Shank width and thickness | 16-84 µm width; thickness about 4.4 µm derived from two 2 µm polymer layers and a 0.4 µm metal stack [2] |
-| Tip and exposed site geometry | Contact shape and exposed area unreported; model markers are illustrative |
+| Tip and exposed site geometry | Contact shape and exposed area not reported; model markers are illustrative |
 | Contact coating | Iridium oxide recording sites on a thin-film metal stack [2] |
 | Insulation | Polyimide over a thin-film metal stack [2] |
 | Insertion method | R1 surgical robot with a needle that grasps, inserts and releases threads [1]; company page describes five cameras and an OCT system |
-| Anchoring and fixation | Skull-mounted enclosure [1, 4]; thread anchoring in tissue unreported |
+| Anchoring and fixation | Skull-mounted enclosure [1, 4]; thread anchoring in tissue not reported |
 
 ## Electrode and channel physics
 
@@ -88,9 +88,9 @@ Inductive charging and wireless data allow the implant to operate without a perc
 | Electrode material | Iridium-oxide recording sites on a thin-film metal stack [2] |
 | Impedance (with measurement frequency) |  |
 | Noise floor or SNR |  |
-| Recording modality | Recording of neural activity near neurons to detect action potentials per the company page; bands unreported |
+| Recording modality | Recording of neural activity near neurons to detect action potentials per the company page; bands not reported |
 | Sampling rate |  |
-| Stimulation capability | Discussed publicly [2]; parameters and limits unreported |
+| Stimulation capability | Discussed publicly [2]; parameters and limits not reported |
 | Charge injection limit |  |
 | Reference and ground |  |
 
@@ -99,12 +99,12 @@ Inductive charging and wireless data allow the implant to operate without a perc
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Cerebral cortex |
-| Insertion trauma and BBB disruption | Threads are placed to avoid vasculature per company descriptions [1]; quantitative trauma data unreported |
-| Vascular disruption risk | Threads placed to avoid vasculature per company descriptions [1]; quantitative data unreported |
-| Micromotion sensitivity | Flexible threads are designed to move with tissue [1]; independent quantitative data unreported |
+| Insertion trauma and BBB disruption | Threads are placed to avoid vasculature per company descriptions [1]; quantitative trauma data not reported |
+| Vascular disruption risk | Threads placed to avoid vasculature per company descriptions [1]; quantitative data not reported |
+| Micromotion sensitivity | Flexible threads are designed to move with tissue [1]; independent quantitative data not reported |
 | Gliosis and encapsulation |  |
 | Neuron loss near sites |  |
-| Foreign-body response mitigation | Thread flexibility and small cross-section are the design approach; measured outcomes unreported |
+| Foreign-body response mitigation | Thread flexibility and small cross-section are the design approach; measured outcomes not reported |
 | Typical failure modes | Thread retraction after implantation was reported for the first participant in company updates [1] |
 
 ## System architecture
@@ -117,18 +117,18 @@ Inductive charging and wireless data allow the implant to operate without a perc
 | Sampling rate |  |
 | Power | Small rechargeable battery charged wirelessly with an inductive charger [1, 4] |
 | Thermal management |  |
-| Packaging and hermeticity | Hermetically sealed biocompatible enclosure per the company page; hermeticity specifications unreported |
+| Packaging and hermeticity | Hermetically sealed biocompatible enclosure per the company page; hermeticity specifications not reported |
 | MRI compatibility |  |
 | Surgical complexity | R1 robot insertion with skull-mounted enclosure placement [1] |
-| Output connectors | No percutaneous connector [1]; wireless link details unreported |
+| Output connectors | No percutaneous connector [1]; wireless link details not reported |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
 | Acute yield |  |
-| Chronic yield | Company reports cursor and device control in study participants [1]; independent datasets unreported |
-| Stability over time | Thread retraction affected early recordings in the first participant [1]; long-term stability unreported |
+| Chronic yield | Company reports cursor and device control in study participants [1]; independent datasets not reported |
+| Stability over time | Thread retraction affected early recordings in the first participant [1]; long-term stability not reported |
 | Longevity | Battery and packaging lifetime not publicly specified |
 | Revision and explant experience |  |
 | Adverse events | No independently audited rates |
@@ -139,7 +139,7 @@ Inductive charging and wireless data allow the implant to operate without a perc
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | PRIME and GB-PRIME investigational studies; company-reported participant counts change over time and are not pinned here |
-| Preclinical cohort | Preclinical cohort details unreported here |
+| Preclinical cohort | Preclinical cohort details not reported here |
 | Follow-up duration | Initial study period with longer follow-up per UCLH [3] |
 | Indications | Severe motor impairment and paralysis |
 | Trials and registries | NCT06429735 (PRIME) [4]; GB-PRIME [3] |

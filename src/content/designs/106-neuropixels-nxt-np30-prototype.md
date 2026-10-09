@@ -31,7 +31,7 @@ Neuropixels Central's August 2026 announcement calls NXT the development name an
 | Species studied | Awake, tethered mice and rats per the access announcement |
 | Regulatory status | Prototype research tool. No clearance; purchase availability expected in 2027 is a forecast |
 | Function | High-channel extracellular recording |
-| Target tissue | Rodent brain; regions unreported |
+| Target tissue | Rodent brain; regions not reported |
 
 ## Geometry and architecture
 
@@ -39,7 +39,7 @@ Neuropixels Central's August 2026 announcement calls NXT the development name an
 | --- | --- |
 | Interface type | Four-shank silicon CMOS probe, same size and shape as 2.0 |
 | Array layout | Same shank geometry and site layout as Neuropixels 2.0 |
-| Electrode count | 1,536 simultaneous channels across four shanks; total physical site count unreported |
+| Electrode count | 1,536 simultaneous channels across four shanks; total physical site count not reported |
 | Pitch | Same as Neuropixels 2.0 per the technology page; values not restated |
 | Electrode lengths | Same as Neuropixels 2.0 per the technology page |
 | Shank width and thickness | Same size and shape as 2.0; dimensions not restated |
@@ -108,7 +108,7 @@ Neuropixels Central's August 2026 announcement calls NXT the development name an
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | None |
-| Preclinical cohort | Awake tethered mice and rats; sizes unreported |
+| Preclinical cohort | Awake tethered mice and rats; sizes not reported |
 | Follow-up duration | Months, project-reported |
 | Indications | Research recording, not a clinical indication |
 | Trials and registries | None |

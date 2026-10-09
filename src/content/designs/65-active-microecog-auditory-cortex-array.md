@@ -47,7 +47,7 @@ A flexible surface array with switching electronics at each site, used in anesth
 | Tip and exposed site geometry | 200 x 200 µm square surface sites |
 | Contact coating | Platinum, about 50 nm, evaporated onto the electrode surfaces |
 | Insulation | Polyimide about 1.2 µm interlayer, with polyimide and epoxy encapsulation layers of about 1.2 µm and 4 µm |
-| Insertion method | Imaging first, then array placed on the exposed surface of auditory cortex. Placement method details beyond this are unreported here |
+| Insertion method | Imaging first, then array placed on the exposed surface of auditory cortex. Placement method details beyond this are not reported here |
 | Anchoring and fixation | Acute anesthetized preparation |
 
 ## Electrode and channel physics
@@ -62,7 +62,7 @@ A flexible surface array with switching electronics at each site, used in anesth
 | Sampling rate | 125 kS/s multiplexed acquisition; 30 samples averaged per site; 14 row selections at 8.928 kHz gives 297.6 Hz per site. Circuit speeds above 10 kS/s and a proposed 14 kS/s are not actual recording rates |
 | Stimulation capability | Not demonstrated. Recording only |
 | Charge injection limit |  |
-| Reference and ground | Reference electrode attached to each animal; exact placement and material unreported. Not inherited from the 2011 cat experiment |
+| Reference and ground | Reference electrode attached to each animal; exact placement and material not reported. Not inherited from the 2011 cat experiment |
 
 ## Tissue interface and bioresponse
 
@@ -74,7 +74,7 @@ A flexible surface array with switching electronics at each site, used in anesth
 | Micromotion sensitivity | Not given for an implanted case; acute anesthetized recording only |
 | Gliosis and encapsulation | Not assessed; acute experiments |
 | Neuron loss near sites | Not assessed |
-| Foreign-body response mitigation | Thin flexible film is the design direction. Biological mitigation outcome is unreported |
+| Foreign-body response mitigation | Thin flexible film is the design direction. Biological mitigation outcome is not reported |
 | Typical failure modes | The scaling discussion to thousands of sites is a design argument, not a demonstrated device |
 
 ## System architecture
@@ -87,16 +87,16 @@ A flexible surface array with switching electronics at each site, used in anesth
 | Sampling rate | Per-site 297.6 Hz after multiplexing and averaging; total 125 kS/s |
 | Power | External acquisition electronics; no implanted power source |
 | Thermal management |  |
-| Packaging and hermeticity | Encapsulation layers are described. Chronic hermeticity unreported |
+| Packaging and hermeticity | Encapsulation layers are described. Chronic hermeticity not reported |
 | MRI compatibility |  |
-| Surgical complexity | Skull and dura removal under anesthesia plus optical imaging beforehand. Human workflow unreported |
-| Output connectors | Elform anisotropic conductive film to the data-acquisition system; connector model unreported |
+| Surgical complexity | Skull and dura removal under anesthesia plus optical imaging beforehand. Human workflow not reported |
+| Output connectors | Elform anisotropic conductive film to the data-acquisition system; connector model not reported |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Tonotopic mapping across auditory cortex in the three active-array rats, compared with optical imaging. Per-animal channel yield is unreported in the reviewed methods |
+| Acute yield | Tonotopic mapping across auditory cortex in the three active-array rats, compared with optical imaging. Per-animal channel yield is not reported in the reviewed methods |
 | Chronic yield | Not demonstrated. Acute experiments only |
 | Stability over time |  |
 | Longevity | Not applicable beyond session duration. A 13.5 s acquisition is a mapping protocol, not device lifetime |
@@ -110,7 +110,7 @@ A flexible surface array with switching electronics at each site, used in anesth
 | --- | --- |
 | Human subjects | None in the paper |
 | Preclinical cohort | Three active-array rats and three separate passive-array comparison rats; anesthetized, acute |
-| Follow-up duration | Acute sessions. Chronic follow-up unreported |
+| Follow-up duration | Acute sessions. Chronic follow-up not reported |
 | Indications | Preclinical auditory-cortex mapping research. Not an approved clinical device |
 | Trials and registries | None established; animal procedures |
 | Primary outcomes | Spatial maps of auditory responses and functional relationships between sites at small spacing |
@@ -121,7 +121,7 @@ A flexible surface array with switching electronics at each site, used in anesth
 | Field | Value and source scope |
 | --- | --- |
 | Strengths | Small pitch with 196 sites on few wires; flexible 25 µm film; comparison against optical imaging |
-| Limitations | No implanted-lifetime data; acquisition cards and cable bulk; reference details unreported |
+| Limitations | No implanted-lifetime data; acquisition cards and cable bulk; reference details not reported |
 | Scaling constraints | More sites per wire is the design aim, but only 196 sites are demonstrated and wiring, switching speed and acquisition limit larger arrays |
 
 ## References

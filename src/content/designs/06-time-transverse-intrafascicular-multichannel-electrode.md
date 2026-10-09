@@ -68,13 +68,13 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Peripheral nerve fascicles |
-| Insertion trauma and BBB disruption | BBB: not applicable to peripheral nerve; quantitative nerve insertion injury unreported in these acute studies |
+| Insertion trauma and BBB disruption | BBB: not applicable to peripheral nerve; quantitative nerve insertion injury not reported in these acute studies |
 | Vascular disruption risk |  |
 | Micromotion sensitivity |  |
 | Gliosis and encapsulation |  |
 | Neuron loss near sites |  |
 | Foreign-body response mitigation |  |
-| Typical failure modes | Chronic failure rates unreported; 2010 report explicitly leaves chronic material-tissue behavior to future work |
+| Typical failure modes | Chronic failure rates not reported; 2010 report explicitly leaves chronic material-tissue behavior to future work |
 
 ## System architecture
 
@@ -85,7 +85,7 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Telemetry bandwidth | Not applicable to the passive wired electrode |
 | Sampling rate | Configuration dependent, external acquisition system |
 | Power | External STIMEP stimulator in 2021 experiment |
-| Thermal management | Not applicable to passive onboard electronics; tissue heating characterization unreported |
+| Thermal management | Not applicable to passive onboard electronics; tissue heating characterization not reported |
 | Packaging and hermeticity | Thin film, ceramic interconnection, silicone-protected lead; no hermetic package qualification in reviewed Methods |
 | MRI compatibility |  |
 | Surgical complexity | Exposed nerve, microscope-assisted transverse insertion, 2021 rat Methods |
@@ -97,7 +97,7 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | --- | --- |
 | Acute yield |  |
 | Chronic yield |  |
-| Stability over time | Chronic stability unreported in reviewed acute studies |
+| Stability over time | Chronic stability not reported in reviewed acute studies |
 | Longevity |  |
 | Revision and explant experience |  |
 | Adverse events |  |
@@ -121,7 +121,7 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | --- | --- |
 | Strengths | Thin-film transverse geometry accesses different fascicles; graded recruitment in acute studies |
 | Limitations | Penetrating nerve insertion and wired lead; chronic durability not established by the reviewed acute studies |
-| Scaling constraints | Per-contact wiring and nerve cross-section constrain placement; quantitative ceiling unreported |
+| Scaling constraints | Per-contact wiring and nerve cross-section constrain placement; quantitative ceiling not reported |
 
 ## References
 

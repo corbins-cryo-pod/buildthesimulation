@@ -30,7 +30,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | First demonstrated | 2015 Nature Nanotechnology report; earlier scaffold work is not the same injection demonstration |
 | First human implant | Reviewed study uses mice |
 | Species studied | Adult male C57BL/6J and GFAPGFP transgenic mice |
-| Regulatory status | Preclinical Harvard animal research approval; clinical authorization unreported |
+| Regulatory status | Preclinical Harvard animal research approval; clinical authorization not reported |
 | Function | Injected mesh metal electrodes record LFP and spikes; distinct FET versions also tested for injection/strain sensing |
 | Target tissue | Hippocampus and lateral ventricle, reached through cortex |
 
@@ -54,10 +54,10 @@ All rows follow the shared implant-device template. Measurements belong to the n
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Approximately 314 µm² nominal circular planar area from 20 µm diameter, calculated; electrochemical effective area unreported |
+| Exposed site area | Approximately 314 µm² nominal circular planar area from 20 µm diameter, calculated; electrochemical effective area not reported |
 | Electrode material | Pt recording face on Cr adhesion layer; Cr/Au/Cr address lines separate from Pt contacts |
 | Impedance (with measurement frequency) | Approximately 950 kΩ at 1 kHz for acute Pt-electrode configuration, Figure 4. Post-injection impedance change below 7% is a different bench measurement |
-| Noise floor or SNR | Absolute RMS noise/SNR unreported here; acute example spikes approximately 70 µV peak-to-peak, not a noise-floor rating |
+| Noise floor or SNR | Absolute RMS noise/SNR not reported here; acute example spikes approximately 70 µV peak-to-peak, not a noise-floor rating |
 | Recording modality | LFP across 16 channels and single-unit waveform example from hippocampus under anesthesia |
 | Sampling rate | 20 kHz brain recording; 1 kHz nanowire strain acquisition is a separate system |
 | Stimulation capability | Neural stimulation not demonstrated in reviewed brain-recording study; future multifunctional use proposed |
@@ -71,7 +71,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Target tissue | Hippocampal tissue or ventricular cavity, configuration-specific |
 | Insertion trauma and BBB disruption | 0.5 mm skull hole, incised/resected dura and penetrating injection needle; not noninvasive. BBB leakage not quantified |
 | Vascular disruption risk |  |
-| Micromotion sensitivity | Very low bending stiffness proposed to reduce motion stress; quantitative in vivo motion-transfer result unreported |
+| Micromotion sensitivity | Very low bending stiffness proposed to reduce motion stress; quantitative in vivo motion-transfer result not reported |
 | Gliosis and encapsulation | Five-week slices show limited/background-like GFAP near mesh across three independent hippocampal injections; not lifetime absence of immune response |
 | Neuron loss near sites | Healthy NeuN-positive cells near ribbons, but paper explicitly notes reduced cell density at central injection region; do not label injury-free |
 | Foreign-body response mitigation | Open ultrasoft mesh and cell-scale ribbons; poly-D-lysine treatment. Tissue results are five-week study-specific |
@@ -85,7 +85,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Data path | Mesh I/O outside tissue to ACF-bonded Molex PREMO-FLEX cable and external Intan RHD2132 evaluation system |
 | Telemetry bandwidth | Not applicable to wired acute recording; wireless integration is future work |
 | Sampling rate | 20 kHz, 60 Hz notch; single-unit analysis 300-6000 Hz bandpass |
-| Power | External amplifier/recording system; passive recording contacts, implanted power consumption unreported |
+| Power | External amplifier/recording system; passive recording contacts, implanted power consumption not reported |
 | Thermal management |  |
 | Packaging and hermeticity | SU-8 passivation and external bond/cable; no full hermetic implanted system or multi-year qualification |
 | MRI compatibility |  |
@@ -99,9 +99,9 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Acute yield | Metal device yield above 94% with below 7% average impedance change after bench injection. FET yield above 90% at 260-600 µm ID, 83% at 100 µm ID. Not chronic neural-channel yield |
 | Chronic yield | No longitudinal neural-channel survival percentage established in this 2015 paper |
 | Stability over time | Five-week tissue integration/histology; neural electrical example is acute, not five weeks of continuous recording |
-| Longevity | Five-week implant tissue observation; maximum functional recording lifetime unreported |
-| Revision and explant experience | Postmortem tissue slicing includes ribbon breakage; clinical revision/explant experience unreported |
-| Adverse events | Central injection-region cell-density reduction noted; general surgical complication rates unreported |
+| Longevity | Five-week implant tissue observation; maximum functional recording lifetime not reported |
+| Revision and explant experience | Postmortem tissue slicing includes ribbon breakage; clinical revision/explant experience not reported |
+| Adverse events | Central injection-region cell-density reduction noted; general surgical complication rates not reported |
 | Notable demonstrations | Acute 16-channel hippocampal LFP 200-400 µV, 1-4 Hz; approximately 70 µV single-unit waveform. Bench injection of wide mesh through narrow needles is separate |
 
 ## Clinical and preclinical evidence

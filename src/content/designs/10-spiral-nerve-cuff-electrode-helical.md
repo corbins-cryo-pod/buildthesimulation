@@ -17,7 +17,7 @@ draft: false
 
 # Spiral nerve cuff electrode (self-sizing / helical cuff)
 
-Every field follows the shared implant-device template. Values belong to a named configuration or study; unreported means the reviewed sources do not establish the value. Family-wide and deployment-specific evidence are kept separate.
+Every field follows the shared implant-device template. Values belong to a named configuration or study; not reported means the reviewed sources do not establish the value. Family-wide and deployment-specific evidence are kept separate.
 
 ## Identity
 
@@ -42,9 +42,9 @@ Every field follows the shared implant-device template. Values belong to a named
 | Array layout | Self-curling polymer sheath wraps nerve twice, Christie 2017; contacts distributed around circumference |
 | Electrode count | One to four independent stimulation contacts per cuff in Christie 2017; monopolar versions connect four contacts in series |
 | Pitch | Configuration dependent; no universal pitch |
-| Electrode lengths | Not applicable to penetrating shanks; cuff axial length unreported in audited descriptions |
+| Electrode lengths | Not applicable to penetrating shanks; cuff axial length not reported in audited descriptions |
 | Shank width and thickness | Not applicable; cuff diameter selected intraoperatively from 2-10 mm inventory, Christie 2017 |
-| Tip and exposed site geometry | Configuration dependent; Tan 2015 radial spiral: four contacts, 4 mm cuff diameter; exposed area unreported |
+| Tip and exposed site geometry | Configuration dependent; Tan 2015 radial spiral: four contacts, 4 mm cuff diameter; exposed area not reported |
 | Contact coating |  |
 | Insulation | Self-curling polymer sheath, Christie 2017; composition and thickness not established in audited Methods |
 | Insertion method | Surgical nerve exposure and wrapping around nerve, without epineurial penetration |
@@ -58,7 +58,7 @@ Every field follows the shared implant-device template. Values belong to a named
 | Electrode material |  |
 | Impedance (with measurement frequency) | Tan 2015 radial spiral in subject 1: 2.91 ± 0.22 kΩ. Derived from voltage drop with 0.3 mA, 50 µs pulses at 20/100 Hz, not 1 kHz spectroscopy |
 | Noise floor or SNR |  |
-| Recording modality | Recording capability unreported in reviewed deployments; these are stimulation studies |
+| Recording modality | Recording capability not reported in reviewed deployments; these are stimulation studies |
 | Sampling rate | Not applicable to passive cuff stimulation; controller acquisition is system-specific |
 | Stimulation capability | Constant-current charge-balanced biphasic stimulation in Christie 2017. IST supports 1-255 µs and 0.1-20 mA, but study generally limits current to 2.1 mA or less; not a cuff safety rating |
 | Charge injection limit | Not given as material injection limit; study stimulus settings are not a charge-injection limit |
@@ -69,10 +69,10 @@ Every field follows the shared implant-device template. Values belong to a named
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Extraneural peripheral nerve surface |
-| Insertion trauma and BBB disruption | BBB: not applicable; cuff does not breach epineurium, Christie 2017. Quantitative surgical nerve injury unreported |
-| Vascular disruption risk | Quantitative risk unreported; proper fit and accommodation of nerve size are design concerns, not a validated low-risk rating |
+| Insertion trauma and BBB disruption | BBB: not applicable; cuff does not breach epineurium, Christie 2017. Quantitative surgical nerve injury not reported |
+| Vascular disruption risk | Quantitative risk not reported; proper fit and accommodation of nerve size are design concerns, not a validated low-risk rating |
 | Micromotion sensitivity | Lead tension implicated in one cuff pulling off thoracodorsal nerve, Christie 2017 |
-| Gliosis and encapsulation | Peripheral nerve, not CNS gliosis; quantitative fibrosis histology unreported in reviewed human studies |
+| Gliosis and encapsulation | Peripheral nerve, not CNS gliosis; quantitative fibrosis histology not reported in reviewed human studies |
 | Neuron loss near sites |  |
 | Foreign-body response mitigation | Self-sizing construction accommodates differing nerve sizes; no quantitative mitigation efficacy established |
 | Typical failure modes | Christie 2017: one cuff pulled off nerve, attributed to possible lead tension; one contact in active cohort nonfunctional |
@@ -87,10 +87,10 @@ Every field follows the shared implant-device template. Values belong to a named
 | Sampling rate | Configuration dependent; not an electrode-only specification |
 | Power | Christie 2017 IST receives external inductive radiofrequency power/control. Tan 2015 uses external stimulator |
 | Thermal management |  |
-| Packaging and hermeticity | Passive cuff plus separately packaged stimulator; hermetic qualification unreported in audited descriptions |
+| Packaging and hermeticity | Passive cuff plus separately packaged stimulator; hermetic qualification not reported in audited descriptions |
 | MRI compatibility |  |
 | Surgical complexity | Peripheral nerve exposure, cuff sizing and lead routing; controller placement depends on system |
-| Output connectors | Tan 2015: spring-sleeve connectors to open-helix percutaneous leads. Christie IST connector dimensions unreported |
+| Output connectors | Tan 2015: spring-sleeve connectors to open-helix percutaneous leads. Christie IST connector dimensions not reported |
 
 ## Performance envelope
 
@@ -112,7 +112,7 @@ Every field follows the shared implant-device template. Values belong to a named
 | Preclinical cohort |  |
 | Follow-up duration | Christie: up to 11 years implanted, thresholds measured over up to 10.4 years. Tan: mixed cuff follow-up 1-2 years; do not assign all FINE outcomes to spiral |
 | Indications | SCI motor restoration and limb-loss sensory restoration research |
-| Trials and registries | Tan 2015 FDA IDE study; registry number unreported in audited Methods |
+| Trials and registries | Tan 2015 FDA IDE study; registry number not reported in audited Methods |
 | Primary outcomes | Charge thresholds, recruitment curves, motor-unit overlap and sensory percept stability |
 | Key limitations | Selected active participants, heterogeneous systems and nerves; contact-level denominator differs from total implanted cuffs |
 

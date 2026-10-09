@@ -28,7 +28,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Interface class | Conformable surface recording array for LFP and putative single units |
 | Origin | Khodagholy, Gelinas, Thesen, Doyle, Devinsky, Malliaras and Buzsaki research team |
 | First demonstrated | 2015 journal issue, published online December 2014; not a first-family claim |
-| First human implant | Two intraoperative human recordings in reviewed report; exact dates/first-use priority unreported |
+| First human implant | Two intraoperative human recordings in reviewed report; exact dates/first-use priority not reported |
 | Species studied | 13 male Long-Evans rats and two adult epilepsy patients |
 | Regulatory status | Research under animal and NYU human ethics approvals; no commercial clearance established |
 | Function | Record field potentials and surface-visible action potentials |
@@ -70,12 +70,12 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | --- | --- |
 | Target tissue | Superficial cortex and surgically exposed rat hippocampal surface |
 | Insertion trauma and BBB disruption | No recording-shank penetration, but craniotomy/dural removal and hippocampal cortex removal are invasive; BBB injury not quantified |
-| Vascular disruption risk | Sites over major blood vessels fail to show spikes in reported examples; surgical vascular injury rate unreported |
-| Micromotion sensitivity | Conformability and anchoring intended to stabilize tissue contact; quantitative motion transfer unreported |
+| Vascular disruption risk | Sites over major blood vessels fail to show spikes in reported examples; surgical vascular injury rate not reported |
+| Micromotion sensitivity | Conformability and anchoring intended to stabilize tissue contact; quantitative motion transfer not reported |
 | Gliosis and encapsulation | Quantitative chronic scar/encapsulation burden not established by reviewed recording report |
 | Neuron loss near sites |  |
 | Foreign-body response mitigation | 4 µm soft film, conducting-polymer interface and complete metal covering; not proof of no tissue reaction |
-| Typical failure modes | Poor tissue contact/large vessels limit observable spikes; standardized hardware failure rates unreported |
+| Typical failure modes | Poor tissue contact/large vessels limit observable spikes; standardized hardware failure rates not reported |
 
 ## System architecture
 
@@ -90,16 +90,16 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Packaging and hermeticity | Parylene film and headstage/cable; no fully implanted hermetic chronic package qualification |
 | MRI compatibility |  |
 | Surgical complexity | Clinical cranial access for human intraoperative recordings; rat cortical/hippocampal surgery and reference wire implantation |
-| Output connectors | Direct headstage attachment/bonding pads; exact cable/connector part unreported |
+| Output connectors | Direct headstage attachment/bonding pads; exact cable/connector part not reported |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Surface LFP/spikes in rat and human recordings; contact-level manufacturing yield unreported |
+| Acute yield | Surface LFP/spikes in rat and human recordings; contact-level manufacturing yield not reported |
 | Chronic yield | Rat waveform/phase stability demonstrated; no long-term percentage of surviving contacts established |
 | Stability over time | Average rat waveform amplitude maintained over ten days, no significant rise in detection threshold; not same-unit proof for every contact |
-| Longevity | Ten-day recording observations; maximum service life unreported |
+| Longevity | Ten-day recording observations; maximum service life not reported |
 | Revision and explant experience | Postmortem tissue localization; chronic human revision experience not reported |
 | Adverse events | No numerical adverse-event series; nonpenetrating sites do not imply noninvasive surgery |
 | Notable demonstrations | Rat cortex/hippocampus putative unit isolation in behaving animals; human surface LFP-modulated spikes under intraoperative anesthesia |
@@ -112,7 +112,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Preclinical cohort | 13 rats: ten cortical, three hippocampal implantations |
 | Follow-up duration | Human maximum 30 min intraoperative; rat waveform data over ten days |
 | Indications | Research surface electrophysiology, not cleared chronic BCI indication |
-| Trials and registries | NYU Langone IRB approval stated; registry identifier unreported |
+| Trials and registries | NYU Langone IRB approval stated; registry identifier not reported |
 | Primary outcomes | Surface spike waveform/clustering, LFP phase relationships, signal stability and recording feasibility |
 | Key limitations | Human data are acute; units are putative and depend on multi-site waveform visibility/contact. Hippocampal surface demonstration includes overlying cortex removal |
 

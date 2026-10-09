@@ -39,11 +39,11 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Endovascular, without cortical penetration |
-| Array layout | Contacts on a self-expanding nitinol scaffold; Kacker 2025 nominal scaffold 8 x 40 mm. Exact contact map is unreported |
+| Array layout | Contacts on a self-expanding nitinol scaffold; Kacker 2025 nominal scaffold 8 x 40 mm. Exact contact map is not reported |
 | Electrode count | 16 physical contacts, Kacker 2025; 12 and 8 retained for analysis in its two participants |
 | Pitch | Approximately 3 mm interelectrode spacing; not a complete 3D map, Kacker 2025 |
 | Electrode lengths | Not applicable to cortical shanks; scaffold length 40 mm in Kacker 2025 |
-| Shank width and thickness | Not applicable; strut dimensions unreported |
+| Shank width and thickness | Not applicable; strut dimensions not reported |
 | Tip and exposed site geometry | 500 µm contact diameter, Kacker 2025. Schone 2025 preprint separately reports 300 µm; configurations are not equated |
 | Contact coating | Platinum contacts, Kacker 2025 |
 | Insulation |  |
@@ -69,13 +69,13 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Venous wall adjacent to cortex, not intracortical placement |
-| Insertion trauma and BBB disruption | No cortical penetration in the described procedure; quantitative BBB injury unreported |
+| Insertion trauma and BBB disruption | No cortical penetration in the described procedure; quantitative BBB injury not reported |
 | Vascular disruption risk | SWITCH monitored patency, migration and thrombosis; no occlusion or migration in four implanted participants at 12 months. Not a general risk estimate |
 | Micromotion sensitivity |  |
-| Gliosis and encapsulation | Cortical gliosis measurements unreported in these human studies |
+| Gliosis and encapsulation | Cortical gliosis measurements not reported in these human studies |
 | Neuron loss near sites |  |
 | Foreign-body response mitigation |  |
-| Typical failure modes | No device-related serious failure in the four-person 12-month SWITCH cohort; longer-term failure rates unreported |
+| Typical failure modes | No device-related serious failure in the four-person 12-month SWITCH cohort; longer-term failure rates not reported |
 
 ## System architecture
 
@@ -87,10 +87,10 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Sampling rate | 2,000 Hz, Kacker 2025 |
 | Power |  |
 | Thermal management |  |
-| Packaging and hermeticity | Fully implanted sensing device, lead and receiver-transmitter; hermetic qualification unreported |
+| Packaging and hermeticity | Fully implanted sensing device, lead and receiver-transmitter; hermetic qualification not reported |
 | MRI compatibility |  |
 | Surgical complexity | Neurointerventional transvenous delivery and chest pocket; no cortical craniotomy in described procedure |
-| Output connectors | Internal lead plus wireless external receiver; connector specification unreported |
+| Output connectors | Internal lead plus wireless external receiver; connector specification not reported |
 
 ## Performance envelope
 
@@ -112,7 +112,7 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Preclinical cohort |  |
 | Follow-up duration |  |
 | Indications | Severe upper-limb paralysis; ALS or primary lateral sclerosis in SWITCH |
-| Trials and registries | SWITCH prospective first-in-human study; registry ID unreported in this audit |
+| Trials and registries | SWITCH prospective first-in-human study; registry ID not reported in this audit |
 | Primary outcomes | Safety, venous patency and computer-control feasibility |
 | Key limitations | Small selected cohorts, variable decoding strategies, limited follow-up, source-specific geometry and reference descriptions |
 

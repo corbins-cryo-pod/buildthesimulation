@@ -39,7 +39,7 @@ Beinao-1 (also written Beinao No. 1, "The NeuCyber Matrix BCI System") is a seco
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Flexible high-density thin-film electrode, micrometre thickness and about 4 cm square, placed inside the skull on the outer side of the dura (epidural) [6]. Reuters calls it a mesh [4]; the Chinese reports read here describe a thin film, not a mesh. Xuanwu Hospital describes the electrode over the left-hand motor area, epidural, with the main unit and coil seated in a coin-sized skull groove [8] |
-| Array layout | Matrix; coordinates unreported |
+| Array layout | Matrix; coordinates not reported |
 | Electrode count | 128 channels [2, 5]. After surgery more than 98 percent of channels were effective in every implanted patient, per CIBR and Beijing News (institute claim) [5, 7] |
 | Pitch |  |
 | Electrode lengths |  |
@@ -47,7 +47,7 @@ Beinao-1 (also written Beinao No. 1, "The NeuCyber Matrix BCI System") is a seco
 | Tip and exposed site geometry |  |
 | Contact coating |  |
 | Insulation |  |
-| Insertion method | Placed outside the protective membrane of the brain, avoiding direct contact with brain tissue [2]; surgical steps unreported |
+| Insertion method | Placed outside the protective membrane of the brain, avoiding direct contact with brain tissue [2]; surgical steps not reported |
 | Anchoring and fixation |  |
 
 ## Electrode and channel physics
@@ -82,12 +82,12 @@ Beinao-1 (also written Beinao No. 1, "The NeuCyber Matrix BCI System") is a seco
 | Field | Value and source scope |
 | --- | --- |
 | Onboard electronics |  |
-| Data path | Wireless, fully implanted [2]; protocol and external hardware unreported |
+| Data path | Wireless, fully implanted [2]; protocol and external hardware not reported |
 | Telemetry bandwidth |  |
 | Sampling rate |  |
 | Power |  |
 | Thermal management |  |
-| Packaging and hermeticity | Coin-sized main unit and coil seated in a skull groove [8]; other dimensions unreported |
+| Packaging and hermeticity | Coin-sized main unit and coil seated in a skull groove [8]; other dimensions not reported |
 | MRI compatibility |  |
 | Surgical complexity | First trial surgery on March 31, 2026 took 4 hours per Xuanwu Hospital [8] |
 | Output connectors |  |
@@ -110,7 +110,7 @@ Beinao-1 (also written Beinao No. 1, "The NeuCyber Matrix BCI System") is a seco
 | --- | --- |
 | Human subjects | Counts disagree and are all listed: 7 exploratory patients per CIBR [1]; seven human implantations of Beinao-1 as of March 20, 2026 per NeuCyber's rotating CEO to Reuters [4]; nearly 30 implants in the earlier phase per China Daily, June 15, 2026 [2]; 16 implantations per a Chinese Academy of Sciences academic divisions report, July 6, 2026 [3]. These may count different things and the sources do not say. Trial started with two spinal cord injury patients [1]. Chinese-language counts: 5 by June 2025 [6]; 7 per Xuanwu Hospital on April 2, 2026 [8]; 10 per Beijing News on April 20, 2026 [7]. The registration trial had 2 patients on March 31, 2026 per Beijing News, which also states 3 enrolled in a later paragraph [7] |
 | Preclinical cohort |  |
-| Follow-up duration | Hours of operation reported above [1, 2]; per-patient follow-up unreported |
+| Follow-up duration | Hours of operation reported above [1, 2]; per-patient follow-up not reported |
 | Indications | Spinal cord injury, ALS or stroke patients, restoring motor and speech function, per the institute [1]. Beijing News: the registration indication is high paraplegia (tetraplegia); investigator-initiated studies extended to hemiplegia, lumbar paraplegia and ALS [7] |
 | Trials and registries | GCP-compliant multi-center trial from March 31, 2026 with initial planned enrollment of 36 patients; registry identifier not pinned in this sheet. NeuCyber told Reuters it hopes to expand to 50 patients, with registration trials focused on spinal cord injury motor restoration and commercial availability two to three years out (company statements). Nationwide hospital use is planned for 2027 per the academy report [1][2][3][4]. Chinese sources: Xuanwu Hospital gives 36 planned patients and 26 weeks of follow-up [8]; CIBR's director said 30 to 40 patients within 2026 and filing for NMPA registration in 2027 [7]; CIBR lists 14 investigator-initiated trials approved [6]. No ChiCTR or ClinicalTrials.gov identifier was found |
 | Primary outcomes | None peer-reviewed |

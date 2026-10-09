@@ -43,7 +43,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Electrode count | Eight Pt-Ir sites; four curved around central zone, four straight on alternating spokes |
 | Pitch | No uniform pitch reported; central transit hole about 600 µm diameter and each zone about 0.285 mm² |
 | Electrode lengths | Not applicable to shanks; two 3 mm silicone conduit segments attached to sieve |
-| Shank width and thickness | Polyimide wafer thickness unreported in audited article; assembly elastomer encapsulation 1-2 mm is not wafer thickness |
+| Shank width and thickness | Polyimide wafer thickness not reported in audited article; assembly elastomer encapsulation 1-2 mm is not wafer thickness |
 | Tip and exposed site geometry | Curved central sites about 33,000 µm²; straight peripheral sites about 24,000 µm² |
 | Contact coating | Pt-Ir metallized/platinized sites as described by article; terminology preserved |
 | Insulation | Polyimide base, medical epoxy at connections and elastomer encapsulation; silicone nerve conduits |
@@ -62,7 +62,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Sampling rate | 40 kHz CNAP and 10 kHz EMG assay acquisition; not MSE onboard sampling specifications |
 | Stimulation capability | Monopolar individual-site and simultaneous-site stimulation evoked reinnervated muscle force at three months |
 | Charge injection limit |  |
-| Reference and ground | Monopolar assay configuration; exact assembly reference/ground pin map unreported |
+| Reference and ground | Monopolar assay configuration; exact assembly reference/ground pin map not reported |
 
 ## Tissue interface and bioresponse
 
@@ -70,12 +70,12 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | --- | --- |
 | Target tissue | Regenerating peripheral sciatic nerve |
 | Insertion trauma and BBB disruption | BBB: not applicable; intentional sciatic nerve transection |
-| Vascular disruption risk | Microvasculature seen crossing MSE; quantified vascular injury rate unreported |
-| Micromotion sensitivity | Micro-PCB increases rigidity, Results; quantified micromotion unreported |
-| Gliosis and encapsulation | Myelinated/unmyelinated fibers through transit zones; quantitative fibrosis burden unreported |
+| Vascular disruption risk | Microvasculature seen crossing MSE; quantified vascular injury rate not reported |
+| Micromotion sensitivity | Micro-PCB increases rigidity, Results; quantified micromotion not reported |
+| Gliosis and encapsulation | Myelinated/unmyelinated fibers through transit zones; quantitative fibrosis burden not reported |
 | Neuron loss near sites |  |
 | Foreign-body response mitigation | Large transit zones; GDNF tested versus saline and conduit controls, not universal coating efficacy |
-| Typical failure modes | No assembly damage/failure observed through three months; longer-term failure rate unreported |
+| Typical failure modes | No assembly damage/failure observed through three months; longer-term failure rate not reported |
 
 ## System architecture
 
@@ -96,9 +96,9 @@ All rows follow the shared implant-device template. Measurements belong to the n
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | All tested metallized sites functional at implantation, Results; tested-site denominator unreported |
+| Acute yield | All tested metallized sites functional at implantation, Results; tested-site denominator not reported |
 | Chronic yield | Assembly integrity maintained in all implanted animals through three months; not channel-by-channel chronic recording yield |
-| Stability over time | Three-month terminal stimulation evidence; longitudinal recording stability unreported |
+| Stability over time | Three-month terminal stimulation evidence; longitudinal recording stability not reported |
 | Longevity | Three months observed, not maximum lifetime |
 | Revision and explant experience | Terminal explant/histology, no clinical revision cohort |
 | Adverse events | No assembly damage/failure reported in study; nerve injury inherent to model, not a general safety claim |

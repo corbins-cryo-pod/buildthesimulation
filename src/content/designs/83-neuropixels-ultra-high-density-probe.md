@@ -47,7 +47,7 @@ Ye and colleagues' 2025 Neuron paper describes Neuropixels Ultra (NP Ultra), a s
 | Contact coating | Titanium nitride (TiN) |
 | Insulation |  |
 | Insertion method | Inserted through craniotomy; mouse recordings used 1-2 mm or 2 mm craniotomies, monkey craniotomy plus durotomy, lizard 3 x 2 mm craniotomy with probe implanted 500 µm deep at about 100 µm/s |
-| Anchoring and fixation | Acute head-fixed mice with titanium headpost and cement chamber. Lizard probe lowered by up to 280 µm per day; fixation for lizard otherwise unreported |
+| Anchoring and fixation | Acute head-fixed mice with titanium headpost and cement chamber. Lizard probe lowered by up to 280 µm per day; fixation for lizard otherwise not reported |
 
 ## Electrode and channel physics
 
@@ -86,10 +86,10 @@ Ye and colleagues' 2025 Neuron paper describes Neuropixels Ultra (NP Ultra), a s
 | Sampling rate |  |
 | Power |  |
 | Thermal management |  |
-| Packaging and hermeticity | Identical to NP 1.0 form factor; construction details unreported |
+| Packaging and hermeticity | Identical to NP 1.0 form factor; construction details not reported |
 | MRI compatibility |  |
 | Surgical complexity | Craniotomy and acute head-fixed insertion; animal surgery with headplate. Human workflow not applicable |
-| Output connectors | Identical to NP 1.0 base and cable per the paper; connector specifics unreported |
+| Output connectors | Identical to NP 1.0 base and cable per the paper; connector specifics not reported |
 
 ## Performance envelope
 
