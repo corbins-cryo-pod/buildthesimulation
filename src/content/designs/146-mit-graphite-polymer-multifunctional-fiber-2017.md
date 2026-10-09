@@ -38,69 +38,69 @@ Park and colleagues' 2017 paper changes the conductive composite and cross-secti
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Six graphite-doped conductive-polyethylene electrodes, PC/COC waveguide, two fluidic channels [2] |
-| Array layout | Unreported |
+| Array layout |  |
 | Electrode count | Six electrode regions [2] |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
 | Shank width and thickness | 180-220 µm range with 200 µm used in experiments; abstract and discussion say less than 200 µm (both kept); six electrode regions 20.9 ± 1.3, 20.7 ± 0.9, 25.8 ± 1.5, 24.0 ± 1.8, 24.5 ± 1.4, 22.6 ± 2.3 µm; channels 16.4 ± 2.1 and 15.3 ± 1.9 µm; waveguide 68.2 ± 2.9 µm diameter [2] |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Polyethylene with 5 wt% graphite [2] |
 | Impedance (with measurement frequency) | At 1 kHz: 1.31 ± 0.27 MΩ falling to 0.62 ± 0.23 MΩ after overnight saline soak; 0.67 ± 0.12 MΩ at three days and 0.71 ± 0.13 MΩ at three months in vivo [2] |
-| Noise floor or SNR | Unreported |
+| Noise floor or SNR |  |
 | Recording modality | Extracellular recording; unit counts are example-specific [2] |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
+| Onboard electronics |  |
 | Data path | Optical ferrules, electrical pins and fluid tubing; requires external recorder, light source and pump [2] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
 | Packaging and hermeticity | Assembled probe 0.3-0.5 g [2] |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
+| MRI compatibility |  |
+| Surgical complexity |  |
 | Output connectors | Optical ferrules, electrical pins, fluid tubing; connectorization is a named barrier [2] |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | Optical transmission loss below 1.5 dB/cm including explanted devices through three months; no longer time points [2] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Fluid return 70-95% at 1-100 nl/s including bent fibers; 7.85 µl channel capacity for a 1 cm probe stated but not reconciled with cross-section data [2] |
 
 ## Clinical and preclinical evidence
@@ -110,8 +110,8 @@ Park and colleagues' 2017 paper changes the conductive composite and cross-secti
 | Human subjects | None |
 | Preclinical cohort | Mouse projection-mapping study [2] |
 | Follow-up duration | Up to three months [2] |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Integrated recording, optical stimulation and drug delivery for projection mapping [2] |
 | Key limitations | Tissue response measured, not eliminated; no indefinite-life or clinical claim [2] |
 
@@ -121,7 +121,7 @@ Park and colleagues' 2017 paper changes the conductive composite and cross-secti
 | --- | --- |
 | Strengths | Smaller electrode regions from lower-resistance composite [2] |
 | Limitations | External backend; not wireless [2] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Selected experimental geometry
 
