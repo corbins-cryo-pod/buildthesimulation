@@ -48,7 +48,7 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Contact coating | Platinum-iridium 90/10 contact material, 2019 Methods |
 | Insulation |  |
 | Insertion method | 50 mm craniotomy; contacts above intact dura, implant replaces removed bone, 2019 Methods |
-| Anchoring and fixation | Four titanium wings protect against pressure or shocks, 2019 Methods; fixation details beyond these unreported |
+| Anchoring and fixation | Four titanium wings protect against pressure or shocks, 2019 Methods; fixation details beyond these not reported |
 
 ## Electrode and channel physics
 
@@ -62,20 +62,20 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Sampling rate | 976 Hz, 12-bit ADC in 2019 sheep protocol; contacts recorded in successive 16-contact phases |
 | Stimulation capability | Recording device; no therapeutic stimulation capability established |
 | Charge injection limit | Not applicable to the reviewed recording use |
-| Reference and ground | Reference electrodes shown in 2019 Figure 9; electrical topology unreported in this audit |
+| Reference and ground | Reference electrodes shown in 2019 Figure 9; electrical topology not reported in this audit |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Dura over sensorimotor cortex |
-| Insertion trauma and BBB disruption | Epidural placement without cortical penetration; quantitative BBB disruption unreported |
+| Insertion trauma and BBB disruption | Epidural placement without cortical penetration; quantitative BBB disruption not reported |
 | Vascular disruption risk |  |
 | Micromotion sensitivity |  |
 | Gliosis and encapsulation | 2019 sheep histology: increased GFAP reactivity in glia limitans and layer I under implant; do not describe as no gliosis |
 | Neuron loss near sites |  |
 | Foreign-body response mitigation |  |
-| Typical failure modes | General failure rates unreported; 2021 measures signal stability, not lifetime reliability |
+| Typical failure modes | General failure rates not reported; 2021 measures signal stability, not lifetime reliability |
 
 ## System architecture
 
@@ -100,8 +100,8 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Chronic yield | No single yield percentage; two sheep retained relatively stable ECoG and SSEP over 10 months, 2019 |
 | Stability over time | 2021 two-patient study: limited decline in RMS, band power and SNR; effective bandwidth and spectral edge frequency stable |
 | Longevity | 32 and 14 months observed in two patients, 2021; not a maximum service life |
-| Revision and explant experience | Postmortem explant and histology in two sheep, 2019; human revision rate unreported |
-| Adverse events | Human adverse-event rate unreported in reviewed stability abstract; no generic safety claim |
+| Revision and explant experience | Postmortem explant and histology in two sheep, 2019; human revision rate not reported |
+| Adverse events | Human adverse-event rate not reported in reviewed stability abstract; no generic safety claim |
 | Notable demonstrations | Task-related motor imagery discrimination maintained beyond two years in 2021 study |
 
 ## Clinical and preclinical evidence
