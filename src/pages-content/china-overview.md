@@ -42,8 +42,8 @@ Not found in ChiCTR in this pass: registrations for the StairMed, NeuroXess and 
 | Shenfu Jianxing (神复健行), Shanghai | Brain-spine interface from Fudan; ChiCTR2500095359 above; reported by Fudan to be on the FDA Breakthrough pathway. | [Shenfu brief](/companies/70-shenfu-jianxing-company-brief/), [sheet](/devices/182-shenfu-jianxing-brain-spine-interface-fudan/) |
 | Mindtrix (明视脑机), Suzhou | Visual reconstruction system; founded October 2024 per press. | [Mindtrix brief](/companies/71-mindtrix-company-brief/), [sheet](/devices/183-mindtrix-cortical-visual-reconstruction-system/) |
 | Neucyber / Beinao-1 (北脑一号), Beijing | Implant counts differ across Chinese sources; the sheet lists all. A Beijing paper reported the seventh human implant in March 2026. | [Neucyber brief](/companies/11-neucyber-beinao-1-company-brief/), [Beinao-1 sheet](/devices/45-beinao-1-cibr-neucyber/) |
-| Tianjin Rongyuan Intelligent Technology (天津嵘元智能) | Funds the endovascular "type A sensor" study in ChiCTR2400093125. No brief or sheet yet. | |
-| Zhejiang Norkang Neuroelectronic Technology | Named in the English registry text of the auditory brainstem implant NF2 trial. No brief yet. | |
+| Tianjin Rongyuan Intelligent Technology (天津嵘元智能) | Funds the endovascular "type A sensor" study in ChiCTR2400093125. The Nankai District government reports a first-in-human endovascular BCI trial (August 2025). | [Rongyuan brief](/companies/73-tianjin-rongyuan-company-brief/) |
+| Zhejiang Nurotron / Norkang (诺尔康) | Hangzhou, founded 2006 per its profile page. Makes cochlear implants and, with Shanghai Ninth People's Hospital, a domestic auditory brainstem implant in ChiCTR2300070545. Company statements. | [Nurotron brief](/companies/74-zhejiang-norkang-company-brief/) |
 
 ### Limits
 
@@ -51,4 +51,4 @@ Not found in ChiCTR in this pass: registrations for the StairMed, NeuroXess and 
 - The NMPA announcements were read through Xinhua, a provincial NMPA mirror and reprints. The nmpa.gov.cn originals and the review center's own report file for the Neuracle product were not opened.
 - ChiCTR was searched with a limited set of queries, so the invasive-trial table is not a complete census.
 - Financing amounts for StairMed and Zhiran, apart from the headlines on Zhiran's own news page, rest on press and are not treated as confirmed.
-- Next candidates: the NMPA original notices, the Zhiran and StairMed trial records, Tianjin Rongyuan and Norkang company pages, and the Beinao-1 registry records.
+- Next candidates: the NMPA original notices, the Zhiran and StairMed trial records, and the Beinao-1 registry records.
