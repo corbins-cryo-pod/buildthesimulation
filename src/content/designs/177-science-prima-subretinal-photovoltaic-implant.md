@@ -26,8 +26,8 @@ PRIMA is a 2 x 2 mm, 30 um thick silicon implant of 378 photovoltaic pixels plac
 | Manufacturer | Science Corporation, Alameda, California [1][2] |
 | Interface class | Subretinal photovoltaic retinal prosthesis, wirelessly activated by light [1] |
 | Origin | Company device; the paper reports a multicenter study at 17 sites in 5 European countries [1] |
-| First demonstrated | Unreported |
-| First human implant | Unreported |
+| First demonstrated |  |
+| First human implant |  |
 | Species studied | Human [1] |
 | Regulatory status | Investigational in the NEJM trial; the NEJM paper reports a confirmatory study, and company statements about regulatory submissions were not verified here [1][2] |
 | Function | Restores central vision in geographic atrophy due to age-related macular degeneration [1] |
@@ -41,74 +41,74 @@ PRIMA is a 2 x 2 mm, 30 um thick silicon implant of 378 photovoltaic pixels plac
 | Array layout | 378 photovoltaic pixels, each 100 um [1] |
 | Electrode count | 378 pixels [1] |
 | Pitch | Pixel size 100 um (pitch not separately stated in the text read) [1] |
-| Electrode lengths | Unreported |
+| Electrode lengths |  |
 | Shank width and thickness | Implant 2 x 2 mm wide and 30 um thick [1] |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
+| Onboard electronics |  |
 | Data path | A frame-mounted camera captures images; processed images are projected onto the implant with 880 nm near-infrared light [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Implant pixels convert the near-infrared light into electrical current; no implanted battery [1] |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | PRIMAvera: 38 participants implanted, 17 sites in 5 European countries; 32 reached 12 months; mean age 78.9; an earlier feasibility trial had 5 participants [1] |
-| Preclinical cohort | Unreported |
+| Preclinical cohort |  |
 | Follow-up duration | 12 months [1] |
 | Indications | Geographic atrophy from AMD, age 60 or older, visual acuity logMAR 1.2 or worse, fovea-involving atrophy larger than 2.4 mm [1] |
 | Trials and registries | NCT04676854 PRIMAvera: open-label, baseline-controlled, single-arm, multicenter. Published N Engl J Med 2025 Oct 20;394(3):232-242 [1] |
@@ -119,9 +119,9 @@ PRIMA is a 2 x 2 mm, 30 um thick silicon implant of 378 photovoltaic pixels plac
 
 | Field | Value and source scope |
 | --- | --- |
-| Strengths | Unreported |
-| Limitations | Unreported |
-| Scaling constraints | Unreported |
+| Strengths |  |
+| Limitations |  |
+| Scaling constraints |  |
 
 ## Version boundary
 
