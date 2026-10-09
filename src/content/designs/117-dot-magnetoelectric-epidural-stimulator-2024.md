@@ -40,10 +40,10 @@ This entry describes the published research device, not a specification for a la
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Epidural device above intact dura in a 14 mm skull burr hole [1] |
-| Array layout | Unreported |
+| Array layout |  |
 | Electrode count | Two contacts, one on each cap [1] |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
 | Shank width and thickness | Packaged 9 × 9 × 11 mm; rounded-square borosilicate glass tube and two caps; ME antennas 7.5 × 3 mm; magnet 1 × 2 × 3.5 mm [1] |
 | Tip and exposed site geometry | 1.5 mm diameter contacts [1] |
 | Contact coating | Sputtered Ti/Pt/Ti/IrOx stack, 10/100/10/300 nm [1] |
@@ -55,28 +55,28 @@ This entry describes the published research device, not a specification for a la
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Ti/Pt/Ti/IrOx sputtered stack [1] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
 | Stimulation capability | Voltage controlled, ±6.75 to ±14.5 V in 250 mV steps; 250/500 µs pulse widths in these studies; contacts form a pseudo-monopolar path, earlier cohorts used bottom-only bipolar [1] |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -84,26 +84,26 @@ This entry describes the published research device, not a specification for a la
 | --- | --- |
 | Onboard electronics | KL15 microcontroller, LTC3129 boost converter, INA186 current monitor, DG636 output switch [1] |
 | Data path | ME films carry digital downlink and 8-bit ringdown-backscatter diagnostic uplink; message 3.4 ms stated against 1.8-3.0 ms downlink plus 1.6 ms uplink (both kept) [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Battery-free; 218 kHz field tested at 7 mT at the coil surface; transmitter 18 W peak, about 500 ms for a maximum pulse train; operating diameter 1.8 cm at 9 V and 1 cm at 14.5 V at 7.5 mm [1] |
 | Thermal management | Field assessed against IEEE limits, not blanket under every standard [1] |
 | Packaging and hermeticity | Not fully hermetic by the authors' statement [1] |
 | MRI compatibility | Bias magnet expected to cause artifacts; MRI safety expected but not qualified here [1] |
 | Surgical complexity | 14 mm burr hole above intact dura [1] |
-| Output connectors | Unreported |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
@@ -111,9 +111,9 @@ This entry describes the published research device, not a specification for a la
 | --- | --- |
 | Human subjects | Acute human motor-stimulation tests (separate application record) [1] |
 | Preclinical cohort | Chronic pig study (separate application record) [1] |
-| Follow-up duration | Unreported |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Follow-up duration |  |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Battery-free epidural stimulation in acute human and chronic pig [1] |
 | Key limitations | Voltage-controlled, not charge-balanced therapeutic; multi-year packaging, biocompatibility, durability and IrOx testing are future work [1] |
 
@@ -123,7 +123,7 @@ This entry describes the published research device, not a specification for a la
 | --- | --- |
 | Strengths | Battery-free, small epidural form with two contacts [1] |
 | Limitations | External transmitter needs 18 W peak; not fully hermetic [1] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Published hardware
 
