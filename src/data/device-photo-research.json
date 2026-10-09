@@ -887,6 +887,17 @@
       "license": null,
       "notes": "No current source review recorded."
     },
+    "BTSD-ACAD-0090": {
+      "title": "SIMIT 256-channel high-density micro-ECoG (64 electrodes/cm2)",
+      "order": 188,
+      "url": "https://buildthesimulation.com/devices/188-simit-256-channel-high-density-uecog/",
+      "status": "pending",
+      "researchStatus": "further_asset_search",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12677598/",
+      "candidateAssetUrl": null,
+      "license": null,
+      "notes": "No current source review recorded."
+    },
     "BTSD-PNI-0010": {
       "title": "RPNI with implanted bipolar EMG electrodes (Vu 2023 configuration)",
       "order": 19,
@@ -1403,4 +1414,4 @@
       "followUp": "Rechecked official Europe PMC10592461 fullTextXML: CC BY-NC-ND4.0. It specifically identifies the real meandering StimNET-in-water photo as Fig.1D, but entire figure also includes simulations/graphs; no cropped image cleared."
     }
   }
-}
+    }
