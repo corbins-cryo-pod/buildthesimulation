@@ -18,6 +18,8 @@ draft: false
 
 INBRAIN's BCI is a flexible graphene thin film placed on the cortex during tumor surgery. The first four patients showed no device-related adverse events and high-gamma phoneme activity. This sheet uses company releases and the registry ID, so electrode geometry is left blank.
 
+Company brief: [INBRAIN Neuroelectronics](/companies/07-inbrain-neuroelectronics-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
