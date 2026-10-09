@@ -16,7 +16,7 @@ draft: false
 
 # Neuropixels Ultra
 
-Ye and colleagues' 2025 Neuron paper describes Neuropixels Ultra (NP Ultra), a silicon probe with much denser sites than earlier Neuropixels probes. Each value is scoped to NP Ultra or to the named experiment. Unreported means not established by the reviewed primary paper.
+Ye and colleagues' 2025 Neuron paper describes Neuropixels Ultra (NP Ultra), a silicon probe with much denser sites than earlier Neuropixels probes. Each value is scoped to NP Ultra or to the named experiment. A blank cell means not established by the reviewed primary paper.
 
 ## Identity
 
@@ -27,7 +27,7 @@ Ye and colleagues' 2025 Neuron paper describes Neuropixels Ultra (NP Ultra), a s
 | Interface class | Penetrating silicon CMOS recording probe |
 | Origin | Ye and colleagues; Neuron, online September 30, 2025, issue December 3, 2025. Preprint on bioRxiv April 10, 2024 |
 | First demonstrated | 2025 paper |
-| First human implant | Unreported. The paper's references to human Neuropixels recordings concern other work, not NP Ultra |
+| First human implant | The paper's references to human Neuropixels recordings concern other work, not NP Ultra |
 | Species studied | Mouse (acute head-fixed), macaque monkey, lizard and electric fish recordings. No chronic implants reported in the reviewed text |
 | Regulatory status | Preclinical research tool. No human clearance established |
 | Function | Extracellular recording with dense sampling for yield, small-footprint waveforms and interneuron classification |
@@ -41,11 +41,11 @@ Ye and colleagues' 2025 Neuron paper describes Neuropixels Ultra (NP Ultra), a s
 | Array layout | 768 x 8 grid of sites with 6 µm center pitch; readout configurations 48 x 8, 96 x 4, 192 x 2 and 384 x 1 |
 | Electrode count | 6,144 physical sites; 384 simultaneously recorded channels selected from them |
 | Pitch | 6 µm center to center with 1 µm gap between 5 x 5 µm sites |
-| Electrode lengths | Unreported in the reviewed text. Paper states the form factor (shank dimensions and base) is identical to NP 1.0 |
+| Electrode lengths |  |
 | Shank width and thickness | Identical to NP 1.0 per the paper; dimensions not restated. Dense site field about 4.6 mm x 48 µm |
-| Tip and exposed site geometry | Unreported beyond identical-to-NP 1.0 form factor. The 384 x 1 configuration spans 3,840 µm while the dense 48 x 8 configuration spans 288 µm vertically |
+| Tip and exposed site geometry | Not given beyond identical-to-NP 1.0 form factor. The 384 x 1 configuration spans 3,840 µm while the dense 48 x 8 configuration spans 288 µm vertically |
 | Contact coating | Titanium nitride (TiN) |
-| Insulation | Unreported in the reviewed text |
+| Insulation |  |
 | Insertion method | Inserted through craniotomy; mouse recordings used 1-2 mm or 2 mm craniotomies, monkey craniotomy plus durotomy, lizard 3 x 2 mm craniotomy with probe implanted 500 µm deep at about 100 µm/s |
 | Anchoring and fixation | Acute head-fixed mice with titanium headpost and cement chamber. Lizard probe lowered by up to 280 µm per day; fixation for lizard otherwise unreported |
 
@@ -58,9 +58,9 @@ Ye and colleagues' 2025 Neuron paper describes Neuropixels Ultra (NP Ultra), a s
 | Impedance (with measurement frequency) | About 500 kΩ estimated from test structures for the 25 µm2 sites versus about 100 kΩ for NP 1.0/2.0 sites. Measurement frequency not stated in the reviewed text |
 | Noise floor or SNR | Saline noise slightly higher than NP 1.0 (small but significant RMS difference). In vivo median-absolute-deviation noise 20% ± 2% higher than NP 1.0. Modeled electrode noise about doubles but total recording noise rises 23% in saline and 32% in brain tissue; NP 1.0 amplifier noise 5.4 µV RMS |
 | Recording modality | Extracellular spikes including small-footprint (under 20 µm) waveforms, axonal and dendritic signals |
-| Sampling rate | Unreported in the reviewed excerpt; uses the Neuropixels 1.0 acquisition chain via SpikeGLX |
+| Sampling rate | Uses the Neuropixels 1.0 acquisition chain via SpikeGLX |
 | Stimulation capability | Not demonstrated. Photo-artifact and light sensitivity were tested using a 200 µm core fiber in saline |
-| Charge injection limit | Unreported |
+| Charge injection limit |  |
 | Reference and ground | Self-referenced single-ended configuration with ground and reference tied together. Either an external Ag wire above the skull in a Ringer's or cortex-buffer bath, or the tip reference site. Lizard used a silver wire in CSF |
 
 ## Tissue interface and bioresponse
@@ -69,7 +69,7 @@ Ye and colleagues' 2025 Neuron paper describes Neuropixels Ultra (NP Ultra), a s
 | --- | --- |
 | Target tissue | Mouse, monkey, lizard and electric fish neural tissue, region-specific |
 | Insertion trauma and BBB disruption | Craniotomy required. Insertion-related injury is not quantified for NP Ultra in the reviewed text |
-| Vascular disruption risk | Unreported |
+| Vascular disruption risk |  |
 | Micromotion sensitivity | Acute head-fixed recordings with imposed probe motion as ground truth; chronic micromotion not tested |
 | Gliosis and encapsulation | Not assessed |
 | Neuron loss near sites | Not assessed. Muscimol control confirmed identities of small-footprint waveforms |
@@ -83,11 +83,11 @@ Ye and colleagues' 2025 Neuron paper describes Neuropixels Ultra (NP Ultra), a s
 | Onboard electronics | Same CMOS base as Neuropixels 1.0 with switch memory shared among grouped sites |
 | Data path | Same acquisition path as Neuropixels 1.0 using SpikeGLX; reviewed text gives no probe-specific link rate |
 | Telemetry bandwidth | Not applicable: wired |
-| Sampling rate | Unreported in the reviewed excerpt |
-| Power | Unreported |
-| Thermal management | Unreported |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
 | Packaging and hermeticity | Identical to NP 1.0 form factor; construction details unreported |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Craniotomy and acute head-fixed insertion; animal surgery with headplate. Human workflow not applicable |
 | Output connectors | Identical to NP 1.0 base and cable per the paper; connector specifics unreported |
 
@@ -100,7 +100,7 @@ Ye and colleagues' 2025 Neuron paper describes Neuropixels Ultra (NP Ultra), a s
 | Stability over time | Stability ratio measured under imposed slow probe motion during visual fingerprint sessions; not chronic stability |
 | Longevity | Not demonstrated. Daily sessions of about 2 h and at most three consecutive days per animal in acute studies |
 | Revision and explant experience | Not applicable: no chronic explant reported |
-| Adverse events | Unreported |
+| Adverse events |  |
 | Notable demonstrations | Dense sampling raised amplitude, SNR and localization; small-footprint waveforms (under 20 µm) found in all four species, about 10% in mouse V1 (36/359) and monkey V1 (13/124); optotagged PV, SST and VIP interneuron classification (89%, 82%, 83% correct with balanced sampling) |
 
 ## Clinical and preclinical evidence
