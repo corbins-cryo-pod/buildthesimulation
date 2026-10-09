@@ -18,6 +18,8 @@ draft: false
 
 Axoft's Fleuron probe is an ultrasoft depth electrode that recorded single-neuron activity for about 20 minutes in four patients having tumor tissue removed in Panama. This sheet uses the company release, the ClinicalTrials.gov record and the preprint, so results are company-reported and unreviewed. Dimensions and impedance are left blank.
 
+Company brief: [Axoft](/companies/08-axoft-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
