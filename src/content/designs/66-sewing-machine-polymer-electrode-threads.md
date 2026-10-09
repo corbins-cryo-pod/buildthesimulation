@@ -41,68 +41,68 @@ A thin-film electrode system paired with a robotic inserter. A stiff needle enga
 | Interface type | Flexible thread with a loop engaged by a stiff needle; some threads have barbs [1] |
 | Array layout | 64 individual threads fabricated; individually chosen insertion locations [1] |
 | Electrode count | 64 threads with one site each (fabricated; not all implanted in every animal) [1] |
-| Pitch | Unreported |
+| Pitch |  |
 | Electrode lengths | Thread length 27.25 mm in Figure 2; bondpad region 4.2 × 7.7 mm [1] |
 | Shank width and thickness | Shank width 16 µm; conductor trace width 4 µm; thickness not stated [1] |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
 | Insulation | Polyimide substrate [1] |
 | Insertion method | Insertion needle 25 µm engages the thread loop, inserts and withdraws; under nine seconds per thread [1] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Platinum conductor on polyimide [1] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Extracellular activity; single units on 39% of implanted electrodes overall (3 of 22, 2 of 13, 7 of 12, 16 of 24) [1] |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
 | Gliosis and encapsulation | Increased GFAP around insertion sites [1] |
 | Neuron loss near sites | Histology showed neuronal loss in lesion cores [1] |
-| Foreign-body response mitigation | Unreported |
+| Foreign-body response mitigation |  |
 | Typical failure modes | Blood obscuring targets, needle-cannula clogging, microdurotomy depth and implant durability [1] |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
-| Data path | Unreported |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Onboard electronics |  |
+| Data path |  |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
+| Acute yield |  |
 | Chronic yield | Single units on 39% of implanted electrodes overall [1] |
-| Stability over time | Unreported |
+| Stability over time |  |
 | Longevity | One rat with 24 electrodes recorded over two months; three recording animals lost implants prematurely [1] |
-| Revision and explant experience | Unreported |
+| Revision and explant experience |  |
 | Adverse events | Premature implant loss in three animals [1] |
-| Notable demonstrations | Unreported |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
@@ -111,8 +111,8 @@ A thin-film electrode system paired with a robotic inserter. A stiff needle enga
 | Human subjects | None |
 | Preclinical cohort | Four recording rats [1] |
 | Follow-up duration | Two months in one rat [1] |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Minimally invasive single-unit recording [1] |
 | Key limitations | Preprint not peer reviewed; longevity and stability not shown to match other flexible probes [1] |
 
@@ -120,9 +120,9 @@ A thin-film electrode system paired with a robotic inserter. A stiff needle enga
 
 | Field | Value and source scope |
 | --- | --- |
-| Strengths | Unreported |
+| Strengths |  |
 | Limitations | Surgical reliability, durability and tissue damage [1] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Hardware
 
