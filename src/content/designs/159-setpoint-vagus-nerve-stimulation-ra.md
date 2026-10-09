@@ -18,6 +18,8 @@ draft: false
 
 The SetPoint System is an FDA-approved vagus nerve stimulator for rheumatoid arthritis, approved by PMA P240039 on July 30, 2025. This sheet comes from the FDA summary of safety and effectiveness. Efficacy results and some electrical specifications were not extracted and stay blank.
 
+Company brief: [SetPoint Medical](/companies/59-setpoint-medical-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
