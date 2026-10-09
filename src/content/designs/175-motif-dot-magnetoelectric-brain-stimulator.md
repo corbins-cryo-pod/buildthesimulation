@@ -18,6 +18,8 @@ draft: false
 
 Motif's DOT is a roughly 9 mm, battery-free stimulator powered through the magnetoelectric effect, shown on a human motor cortex in 2023. The XCS System is now in an early feasibility study for treatment-resistant depression. Specs beyond size and voltage are left blank.
 
+Company brief: [Motif Neurotech](/companies/69-motif-neurotech-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
