@@ -17,7 +17,7 @@ draft: false
 
 # FINE (Flat Interface Nerve Electrode)
 
-Every field follows the shared implant-device template. Values belong to a named configuration or study; unreported means the reviewed sources do not establish the value. Family-wide and deployment-specific evidence are kept separate.
+Every field follows the shared implant-device template. Values belong to a named configuration or study; not reported means the reviewed sources do not establish the value. Family-wide and deployment-specific evidence are kept separate.
 
 ## Identity
 
@@ -27,7 +27,7 @@ Every field follows the shared implant-device template. Values belong to a named
 | Manufacturer | Tan 2015 human components: Ardiem Medical. Dweiri 2016 fabrication is an academic protocol, not the same manufactured cuff |
 | Interface class | Extraneural flat-interface peripheral nerve cuff |
 | Origin | Tyler and Durand design cited in Dweiri 2016 |
-| First demonstrated | 2002 foundational selective-stimulation paper cited in Dweiri 2016; earliest prototype date unreported |
+| First demonstrated | 2002 foundational selective-stimulation paper cited in Dweiri 2016; earliest prototype date not reported |
 | First human implant | Tan 2015 reports first chronic human FINE study; earliest exact implantation date not established in this audit |
 | Species studied | Human in Tan 2015; species of 2016 chronic fabrication measurement not pinned here |
 | Regulatory status | Tan 2015 research under FDA IDE; not general market approval |
@@ -44,7 +44,7 @@ Every field follows the shared implant-device template. Values belong to a named
 | Pitch | 2016 middle-contact spacing 0.51 ± 0.04 mm, n=70; not a clinical Tan 2015 pitch |
 | Electrode lengths | Not applicable to shanks; axial cuff length configuration dependent |
 | Shank width and thickness | 2016 PEEK contact frame 125 µm thick, not total cuff thickness. Tan 2015 lumen 10 x 1.0 or 10 x 1.5 mm, depending on nerve/subject |
-| Tip and exposed site geometry | 2016 laser-cut strip width follows frame guide channel; numerical exposed active area unreported |
+| Tip and exposed site geometry | 2016 laser-cut strip width follows frame guide channel; numerical exposed active area not reported |
 | Contact coating | Platinum/10% iridium strips in 2016 protocol; not automatically assigned to Tan 2015 clinical cuffs |
 | Insulation | 2016 silicone cuff surrounding 125 µm PEEK contact frame; clinical cuff stack not established here |
 | Insertion method | Surgical nerve exposure, placement around nerve without penetrating epineurium |
@@ -55,8 +55,8 @@ Every field follows the shared implant-device template. Values belong to a named
 | Field | Value and source scope |
 | --- | --- |
 | Exposed site area |  |
-| Electrode material | Platinum/10% iridium contacts, Dweiri 2016; human clinical contact material unreported in audited Tan Methods |
-| Impedance (with measurement frequency) | Dweiri 2016: 2.55 ± 0.25 kΩ at 7.5 months, measurement frequency unreported in audited abstract. Tan 2015 pairwise pulse-derived values about 2.66-3.12 kΩ, measured with 0.3 mA/50 µs pulses at 20/100 Hz; not one 1 kHz rating |
+| Electrode material | Platinum/10% iridium contacts, Dweiri 2016; human clinical contact material not reported in audited Tan Methods |
+| Impedance (with measurement frequency) | Dweiri 2016: 2.55 ± 0.25 kΩ at 7.5 months, measurement frequency not reported in audited abstract. Tan 2015 pairwise pulse-derived values about 2.66-3.12 kΩ, measured with 0.3 mA/50 µs pulses at 20/100 Hz; not one 1 kHz rating |
 | Noise floor or SNR | 2016 protocol: chronic recording SNR 5.10 ± 0.81 dB at 7.5 months; not a device-wide noise floor |
 | Recording modality | Peripheral electroneurogram in 2016 fabrication report; Tan 2015 concerns stimulation |
 | Sampling rate | Configuration dependent; 2016 external preamplifier bandwidth 700 Hz-7 kHz and gain 2,000 do not establish sample rate |
@@ -69,9 +69,9 @@ Every field follows the shared implant-device template. Values belong to a named
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Nerve surface, outside epineurium |
-| Insertion trauma and BBB disruption | BBB: not applicable; extraneural cuff placement. Quantitative injury unreported in audited human study |
+| Insertion trauma and BBB disruption | BBB: not applicable; extraneural cuff placement. Quantitative injury not reported in audited human study |
 | Vascular disruption risk | Compression/fit is a design concern; no quantitative human vascular injury rate |
-| Micromotion sensitivity | 2016 design balances transverse rigidity and longitudinal flexibility; quantitative motion sensitivity unreported |
+| Micromotion sensitivity | 2016 design balances transverse rigidity and longitudinal flexibility; quantitative motion sensitivity not reported |
 | Gliosis and encapsulation | CNS gliosis not applicable; Tan 2015 discusses encapsulation as possible mechanism, not quantitative human histology |
 | Neuron loss near sites |  |
 | Foreign-body response mitigation | 2016 design expands cross-sectional area by 25% at 67 mmHg bench pressure; not an approved safe nerve-compression limit |
@@ -90,7 +90,7 @@ Every field follows the shared implant-device template. Values belong to a named
 | Packaging and hermeticity | 2016 silicone/PEEK passive cuff; Tan 2015 uses percutaneous leads, not a fully sealed implant |
 | MRI compatibility |  |
 | Surgical complexity | Peripheral nerve exposure with careful lumen selection and closure |
-| Output connectors | Tan 2015 spring-sleeve to open-helix percutaneous leads; 2016 connector model unreported |
+| Output connectors | Tan 2015 spring-sleeve to open-helix percutaneous leads; 2016 connector model not reported |
 
 ## Performance envelope
 
@@ -100,7 +100,7 @@ Every field follows the shared implant-device template. Values belong to a named
 | Chronic yield | Tan 2015 subject 2: 16/16 available contacts by week 27. Subject 1 total 19/20 includes four spiral contacts, so not assigned wholly to FINE |
 | Stability over time | Tan 2015 threshold/impedance/percept evidence over 1-2 years in mixed cuff study; configurations distinguished |
 | Longevity | 2016 recording cuff observed at 7.5 months; human sensory study 1-2 years, not maximum lifetime |
-| Revision and explant experience | Opened human ulnar cuff documented; revision/explant details unreported |
+| Revision and explant experience | Opened human ulnar cuff documented; revision/explant details not reported |
 | Adverse events | Tan 2015: no infection of percutaneous leads or implanted components in study period; one FINE opened |
 | Notable demonstrations | Characteristic sensory percept fields in human amputees; 2016 reports chronic neural recording |
 
@@ -109,10 +109,10 @@ Every field follows the shared implant-device template. Values belong to a named
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | Tan 2015: two amputees with FINEs; subject 1 also has a spiral radial cuff. Do not attribute mixed-system totals to FINE alone |
-| Preclinical cohort | 2016 chronic recording example; cohort size/species unreported in audited abstract |
+| Preclinical cohort | 2016 chronic recording example; cohort size/species not reported in audited abstract |
 | Follow-up duration | Tan 2015: 1-2 years; 2016 chronic recording example: 7.5 months |
 | Indications | Experimental sensory restoration after upper-limb loss and peripheral nerve recording |
-| Trials and registries | Tan 2015 FDA IDE; registry identifier unreported |
+| Trials and registries | Tan 2015 FDA IDE; registry identifier not reported |
 | Primary outcomes | Percept selectivity, thresholds, pulse-derived impedance, chronic recording SNR |
 | Key limitations | FINE is a family with different builds; tiny human cohort, mixed cuff types, opened cuff and nonuniform measurement methods |
 
