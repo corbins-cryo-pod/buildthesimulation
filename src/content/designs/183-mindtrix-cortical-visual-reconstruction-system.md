@@ -18,6 +18,8 @@ draft: false
 
 Mindtrix (明视脑机) is developing a visual cortex prosthesis for blind patients. The December 2025 human result came from a patient already undergoing epilepsy surgery, so the study hardware was temporary clinical electrodes, not the company's own implant. Product details on the company site are listed separately and labeled.
 
+Company brief: [明视脑机](/companies/71-mindtrix-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
