@@ -62,3 +62,7 @@ If Axoft’s mechanical matching actually translates into:
 - *Location corrected:* Axoft is based in Cambridge, Massachusetts (148 Sidney St), not Detroit. Source: <https://axoftmaterials.com/contact>
 - *Funding (Apr 29, 2026):* Axoft announced an oversubscribed *$55M Series A* led by C.P. Group Innovation to advance clinical trials globally. Source: <https://www.businesswire.com/news/home/20260429285106/en/Axoft-Secures-%2455M-Series-A-to-Advance-Clinical-Trials-Globally-for-its-Bio-Inspired-Implantable-Brain-Computer-Interface>
 - *Clinical:* the same announcement period reported a temporary implant of its soft probe in a patient in Shanghai (secondary: <https://hoodline.com/2026/04/cambridge-brain-implant-startup-takes-rare-detour-to-shanghai-trial/>). The Panama study described above was "planned" status as of Dec 2024.
+
+### Device entries
+
+- [Axoft Fleuron ultrasoft neural probe](/devices/174-axoft-fleuron-ultrasoft-neural-probe/)
