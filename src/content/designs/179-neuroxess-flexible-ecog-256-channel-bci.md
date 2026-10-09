@@ -38,7 +38,7 @@ NeuroXess has described a 256-channel flexible cortical array that decoded motor
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Flexible high-density ECoG grid on the cortical surface, headstage fixed to the skull [2] |
-| Array layout | 256 electrodes; layout beyond count and pitch unreported [2] |
+| Array layout | 256 electrodes; layout beyond count and pitch not reported [2] |
 | Electrode count | 256 channels [1][2] |
 | Pitch | 3 mm center to center [2] |
 | Electrode lengths |  |
@@ -98,7 +98,7 @@ NeuroXess has described a 256-channel flexible cortical array that decoded motor
 | Acute yield | Over 11 days of monitoring about 9 hours of data were collected; no new bad channels emerged [2] |
 | Chronic yield |  |
 | Stability over time |  |
-| Longevity | 11 days of intracranial monitoring in the Mandarin paper; chronic duration unreported [2] |
+| Longevity | 11 days of intracranial monitoring in the Mandarin paper; chronic duration not reported [2] |
 | Revision and explant experience |  |
 | Adverse events |  |
 | Notable demonstrations | Peer-reviewed: median offline accuracy of 71.2% over 394 Mandarin syllables in a single-character reading task (Science Advances 2025). Company announcement: 71.2% accuracy across 142 common syllables within five days, decoding latency under 100 ms per character, and motor decoding with system latency under 60 ms [1][2]. Timing conflict: the company's English announcement says the 142-syllable result came within five days [1]; Jiefang Daily says 142 syllables at about 71 percent 7 days after surgery [6]. Chinese release for the 19-year-old patient: 4.07 bits per second cursor control after 19.87 hours of training, from local field potentials with a position-velocity Kalman filter [7] |
