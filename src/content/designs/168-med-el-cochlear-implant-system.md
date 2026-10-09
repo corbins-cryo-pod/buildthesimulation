@@ -18,6 +18,8 @@ draft: false
 
 The MED-EL Cochlear Implant System is an FDA-approved cochlear implant family. This sheet uses the FDA summary for supplement S129 (approved October 3, 2024) and MED-EL's SYNCHRONY 2 page. It is thin on hardware: electrode geometry and implant dimensions are left blank.
 
+Company brief: [MED-EL](/companies/65-med-el-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
