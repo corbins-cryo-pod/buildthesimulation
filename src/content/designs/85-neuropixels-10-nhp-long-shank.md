@@ -45,7 +45,7 @@ Trautmann and colleagues' 2025 technical report describes an extended Neuropixel
 | Shank width and thickness | Shank 125 µm wide, 90 µm thick (rodent probe is 24 µm thick). Base area 48 mm2 for the study version |
 | Tip and exposed site geometry | 20 degree top-plane chisel taper, mechanically ground to a 25 degree side-plane bevel for reported data. Large tip reference electrode on the shank tip |
 | Contact coating | Titanium nitride sites |
-| Insulation | Insulation material and thickness unreported in the reviewed text |
+| Insulation | Insulation material and thickness not reported in the reviewed text |
 | Insertion method | Inserted through dura, with a blunt guide tube under gentle compression for superficial recordings and a sharp penetrating guide tube for deeper ones. Mechanical sharpening with a modified pipette microgrinder |
 | Anchoring and fixation | Acute recordings in a recording chamber; no chronic anchoring. Multi-probe sessions used one chamber with nonparallel trajectories |
 
@@ -56,7 +56,7 @@ Trautmann and colleagues' 2025 technical report describes an extended Neuropixel
 | Exposed site area | 12 x 12 µm (144 µm2) per site, geometric |
 | Electrode material | Titanium nitride on a silicon CMOS shank |
 | Impedance (with measurement frequency) | Approximately 150 kΩ at 1 kHz (the extracted text prints a plus-minus sign before 150 kΩ; read as approximate) |
-| Noise floor or SNR | Noise measured across banks 0 to 11 with a distribution of mean plus or minus SD per readout channel; one tested probe had three sites with noise more than 2 µV above the channel mean. Absolute RMS value is unreported in the reviewed text. Neuropixels 1.0 circuits are reused |
+| Noise floor or SNR | Noise measured across banks 0 to 11 with a distribution of mean plus or minus SD per readout channel; one tested probe had three sites with noise more than 2 µV above the channel mean. Absolute RMS value is not reported in the reviewed text. Neuropixels 1.0 circuits are reused |
 | Recording modality | Extracellular spikes and local field potentials (10-bit resolution); raw 384-channel traces shown from macaque motor cortex |
 | Sampling rate | Same signal-conditioning circuits and acquisition system as Neuropixels 1.0 with SpikeGLX or OpenEphys |
 | Stimulation capability | Recording only |
