@@ -49,34 +49,34 @@ The broader wire-to-chip approach overlaps with the [Stanford 2020 bundle interf
 | Contact coating | Gold/iridium-oxide electrodeposition [1] |
 | Insulation | Glass sheath [1] |
 | Insertion method | Bundle insertion in a head-fixed setup with mechanical presses [1] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Gold core, glass sheath, gold/iridium-oxide tip [1] |
-| Impedance (with measurement frequency) | Unreported |
+| Impedance (with measurement frequency) |  |
 | Noise floor or SNR | Saline: 24.2 ± 7.7 µV RMS (MEA1k pixels), 58.2 ± 21.5 µV (camera pixels); after correlated-noise subtraction MEA1k residual 6.5 ± 2.6 µV; processing states, not averaged [1] |
 | Recording modality | Extracellular acute recording [1] |
 | Sampling rate | Camera full-frame 1.7 kHz up to 200 kHz for the smallest window; MEA1k rate not extracted [1] |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -84,25 +84,25 @@ The broader wire-to-chip approach overlaps with the [Stanford 2020 bundle interf
 | --- | --- |
 | Onboard electronics | Commodity CMOS (MEA1k, camera-derived) with reference-voltage electronics; camera lacks MEA offset compensation and filtering, so drifts saturate pixels [1] |
 | Data path | Wired acquisition equipment; untethered electronics not demonstrated [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
 | Output connectors | Wires pressed onto CMOS pixels with gold bumps [1] |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
 | Stability over time | 40 minutes in the acute mouse application, not days to months [1] |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Figure 3 connects 200 electrodes; not a 327,680-electrode brain recording [1] |
 
 ## Clinical and preclinical evidence
@@ -112,8 +112,8 @@ The broader wire-to-chip approach overlaps with the [Stanford 2020 bundle interf
 | Human subjects | None |
 | Preclinical cohort | Acute mouse olfactory bulb [1] |
 | Follow-up duration | About 40 minutes [1] |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Acute multichannel recordings through wire-to-CMOS connection [1] |
 | Key limitations | Chronic histological and functional studies called for; dense bundles displace tissue; smaller wires buckle; vascular damage not proven zero for all bundles [1] |
 
