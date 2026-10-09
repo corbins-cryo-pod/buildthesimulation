@@ -53,3 +53,8 @@ StairMed is part of a broader Chinese push to build an invasive BCI pipeline (ha
 
 - *Funding (reported, Mar-Apr 2026):* StairMed announced an *RMB 500M* (about $73M) financing led by Alibaba, with Tencent among existing investors participating, and plans for larger registration trials. Sources: <https://www.prnewswire.com/news-releases/stairmed-secures-rmb-500-million-financing-led-by-alibaba-joined-by-tencent-302732525.html> and <https://kr-asia.com/alibaba-leads-rmb-500-million-investment-in-bci-startup-stairmed>
 - Funding amounts for Chinese firms in this directory are reported by media or the companies and are not independently audited.
+
+### Device entries
+
+- [StairMed WRS ultra-flexible wireless BCI](/devices/178-stairmed-wrs-ultraflexible-wireless-bci/)
+- [StairMed WRS02 256-channel wireless BCI](/devices/181-stairmed-wrs02-256-channel-wireless-bci/)
