@@ -16,7 +16,7 @@ draft: false
 
 # INBRAIN graphene cortical interface
 
-INBRAIN's BCI is a flexible graphene thin film placed on the cortex during tumor surgery. The first four patients showed no device-related adverse events and high-gamma phoneme activity. This sheet uses company releases and the registry ID, so electrode geometry is Unreported.
+INBRAIN's BCI is a flexible graphene thin film placed on the cortex during tumor surgery. The first four patients showed no device-related adverse events and high-gamma phoneme activity. This sheet uses company releases and the registry ID, so electrode geometry is left blank.
 
 ## Identity
 
@@ -27,7 +27,7 @@ INBRAIN's BCI is a flexible graphene thin film placed on the cortex during tumor
 | Interface class | Cortical surface thin-film graphene electrode array [1] |
 | Origin | Company device; first-in-human study sponsored by the University of Manchester [1] |
 | First demonstrated | First human application announced September 27, 2024 [2] |
-| First human implant | Unreported |
+| First human implant |  |
 | Species studied | Human [1][2] |
 | Regulatory status | Investigational; first-in-human study NCT06368310 [1] |
 | Function | Brain signal monitoring and targeted stimulation during tumor surgery; high-gamma decoding for language mapping [1] |
@@ -38,79 +38,79 @@ INBRAIN's BCI is a flexible graphene thin film placed on the cortex during tumor
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Ultra-flexible thin-film graphene semiconductor with high-density, multiscale, bidirectional contacts and reduced graphene oxide nanoporous matrices [1] |
-| Array layout | Unreported |
-| Electrode count | Unreported |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Array layout |  |
+| Electrode count |  |
+| Pitch |  |
+| Electrode lengths |  |
+| Shank width and thickness |  |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
-| Data path | Unreported |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Onboard electronics |  |
+| Data path |  |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | Interim analysis of the first four patients at the Manchester Centre for Clinical Neurosciences; the 2024 release said 8 to 10 patients were planned [1][2] |
-| Preclinical cohort | Unreported |
-| Follow-up duration | Unreported |
-| Indications | Unreported |
+| Preclinical cohort |  |
+| Follow-up duration |  |
+| Indications |  |
 | Trials and registries | NCT06368310, sponsor University of Manchester; chief investigator David Coope [1] |
 | Primary outcomes | Company-reported: no device-related adverse events in the first four patients; during awake language mapping the device captured distinct high-gamma activity linked to different phonemes [1] |
 | Key limitations | Intraoperative, short-term use in tumor surgery. Contact counts, pitch and dimensions were not in the sources read. Company release [1][2] |
@@ -119,9 +119,9 @@ INBRAIN's BCI is a flexible graphene thin film placed on the cortex during tumor
 
 | Field | Value and source scope |
 | --- | --- |
-| Strengths | Unreported |
-| Limitations | Unreported |
-| Scaling constraints | Unreported |
+| Strengths |  |
+| Limitations |  |
+| Scaling constraints |  |
 
 ## Version boundary
 
