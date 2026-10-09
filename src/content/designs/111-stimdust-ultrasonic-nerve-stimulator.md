@@ -40,42 +40,42 @@ This is stimulation hardware, not the earlier [neural-dust recording mote](/devi
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Mote with sciatic-nerve cuff [1] |
-| Array layout | Unreported |
+| Array layout |  |
 | Electrode count | Published sources reviewed do not extract a contact count |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
 | Shank width and thickness | Mote volume 1.7 mm³; envelope and electrode map not derived from volume alone [1] |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
 | Insertion method | Mote mounted with a nerve cuff in acute animals [1] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Not a neural recording device [1] |
-| Sampling rate | Unreported |
+| Sampling rate |  |
 | Stimulation capability | Current-controlled stimulation; parameters set on the fly by downlink timing [1] |
 | Charge injection limit | Not stated as a limit; supplement Table S2 shows modeled peak discharge current can exceed commanded current [2] |
-| Reference and ground | Unreported |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Peripheral nerve [1] |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
 | Typical failure modes | Rare erroneous decoding of ultrasound state changes; 5 pulses with wrong duration excluded (1 animal C, 4 animal F); 26 timing-aberrant pulses of 1,076 omitted in material plots; preprint reports tissue discoloration after an erroneously long pulse [2, 3, 5] |
 
 ## System architecture
@@ -84,25 +84,25 @@ This is stimulation hardware, not the earlier [neural-dust recording mote](/devi
 | --- | --- |
 | Onboard electronics | Piezoceramic transducer, energy-storage capacitor and integrated circuit [1] |
 | Data path | Ultrasound downlink timing encodes parameters; uplink backscatter reports whether stimulation occurs [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Battery-free; ultrasound harvested by the transducer [1] |
 | Thermal management | Figure 5 compares at 7.8% of diagnostic-ultrasound intensity; not blanket authorization for chronic exposure [1] |
 | Packaging and hermeticity | Hermetic package qualification not established [1] |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | No chronic implanted lifetime established [1] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | 55 mm link through ex-vivo porcine tissue (Figure 4), not an in-vivo depth [1] |
 
 ## Clinical and preclinical evidence
@@ -111,9 +111,9 @@ This is stimulation hardware, not the earlier [neural-dust recording mote](/devi
 | --- | --- |
 | Human subjects | None |
 | Preclinical cohort | Acute rat; animals C and F named in exclusions [2, 3] |
-| Follow-up duration | Unreported |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Follow-up duration |  |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Acute sciatic stimulation; link benchmarks kept separate from physiology [1] |
 | Key limitations | Main full text not accessible in this pass; no chronic lifetime, hermetic qualification or clinical efficacy [1] |
 
@@ -123,7 +123,7 @@ This is stimulation hardware, not the earlier [neural-dust recording mote](/devi
 | --- | --- |
 | Strengths | Leadless, battery-free, 1.7 mm³ [1] |
 | Limitations | Depends on acoustic path, power, orientation and cuff behavior; passive charge balance is not zero transient current [1, 2] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Published system
 
