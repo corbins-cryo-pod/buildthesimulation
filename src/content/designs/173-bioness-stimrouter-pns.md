@@ -39,7 +39,7 @@ StimRouter is an implanted peripheral nerve lead with an integrated receiver, dr
 | --- | --- |
 | Interface type | Implantable multi-electrode lead with an integrated receiver; supplied in a Lead Loader for intraoperative testing [1] |
 | Array layout |  |
-| Electrode count |  |
+| Electrode count | 3 cylindrical stimulating electrodes on the lead's stimulating end, plus a 12 mm receiver electrode at the receiver end [3] |
 | Pitch |  |
 | Electrode lengths |  |
 | Shank width and thickness |  |
@@ -53,14 +53,14 @@ StimRouter is an implanted peripheral nerve lead with an integrated receiver, dr
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area |  |
-| Electrode material |  |
+| Exposed site area | 6.3 mm2 per stimulating electrode [3] |
+| Electrode material | Platinum iridium stimulating electrodes [3] |
 | Impedance (with measurement frequency) |  |
 | Noise floor or SNR |  |
 | Recording modality |  |
 | Sampling rate |  |
-| Stimulation capability |  |
-| Charge injection limit |  |
+| Stimulation capability | Modified StimRouter (K211965) external stimulator: current controlled, monopolar, amplitude at the lead 0 to 5 mA (20% maximum pick-up ratio), positive phase duration 100 to 500 µs in 100 µs steps with asymmetric negative phase at three times the positive, maximum compliance voltage raised to 130 V from 100 V, charge-balanced [3] |
+| Charge injection limit | Per the lead description: maximum charge per pulse 3 µC and maximum charge density 15.9 µC/cm2 per stimulating electrode; the external stimulator limits charge per phase to 15 µC [3] |
 | Reference and ground |  |
 
 ## Tissue interface and bioresponse
@@ -80,7 +80,7 @@ StimRouter is an implanted peripheral nerve lead with an integrated receiver, dr
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics |  |
+| Onboard electronics | The cleared predecessor transmitter uses a TI CC2510F32 (26 MHz) circuit board with encrypted 2.4 GHz wireless; the modified external device (E-EFC) uses Bluetooth Low Energy; both contain a rechargeable lithium battery and snap onto the skin electrode [3] |
 | Data path | The external pulse transmitter on a skin electrode patch sends an electrical signal transcutaneously to the lead's receiver [1] |
 | Telemetry bandwidth |  |
 | Sampling rate |  |
@@ -131,3 +131,4 @@ K211965 is the latest StimRouter clearance read. Earlier clearances K190047, K14
 
 1. [FDA 510(k) clearance and summary, K211965](https://www.accessdata.fda.gov/cdrh_docs/pdf21/K211965.pdf).
 2. [FDA 510(k) clearance letter, K200482](https://www.accessdata.fda.gov/cdrh_docs/pdf20/K200482.pdf).
+3. FDA 510(k) summary within K211965 (Bioness StimRouter, modified), technological comparison with predicate K200482. [FDA PDF](https://www.accessdata.fda.gov/cdrh_docs/pdf21/K211965.pdf)
