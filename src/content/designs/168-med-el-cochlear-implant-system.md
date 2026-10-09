@@ -16,7 +16,7 @@ draft: false
 
 # MED-EL cochlear implant system
 
-The MED-EL Cochlear Implant System is an FDA-approved cochlear implant family. This sheet uses the FDA summary for supplement S129 (approved October 3, 2024) and MED-EL's SYNCHRONY 2 page. It is thin on hardware: electrode geometry and implant dimensions are Unreported.
+The MED-EL Cochlear Implant System is an FDA-approved cochlear implant family. This sheet uses the FDA summary for supplement S129 (approved October 3, 2024) and MED-EL's SYNCHRONY 2 page. It is thin on hardware: electrode geometry and implant dimensions are left blank.
 
 ## Identity
 
@@ -26,9 +26,9 @@ The MED-EL Cochlear Implant System is an FDA-approved cochlear implant family. T
 | Manufacturer | MED-EL Elektromedizinische Geraete GmbH, Innsbruck, Austria (MED-EL Corp.) [1] |
 | Interface class | Cochlear implant with an electrode array and external audio processor [1] |
 | Origin | Commercial FDA-approved device; PMA P000025, original approval August 20, 2001 [1] |
-| First demonstrated | Unreported |
-| First human implant | Unreported |
-| Species studied | Unreported |
+| First demonstrated |  |
+| First human implant |  |
+| Species studied |  |
 | Regulatory status | P000025/S129 panel-track supplement approved October 3, 2024, expanding indications to adults with bilateral moderate to profound sensorineural hearing loss; SYNCHRONY 2 approved under S110 (decision 06/04/2019) [1][3] |
 | Function | Evokes auditory sensations by electrical stimulation of the auditory pathways [1] |
 | Target tissue | Cochlea and auditory nerve [1] |
@@ -38,90 +38,90 @@ The MED-EL Cochlear Implant System is an FDA-approved cochlear implant family. T
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | A variant of an active electrode array in the cochlea; the SSED notes hearing preservation claims for the FLEX electrode series [1] |
-| Array layout | Unreported |
-| Electrode count | Unreported |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Array layout |  |
+| Electrode count |  |
+| Pitch |  |
+| Electrode lengths |  |
+| Shank width and thickness |  |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
+| Onboard electronics |  |
 | Data path | Audio processor sends a coded signal over an RF inductive link through an external coil held by the implant magnet [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
 | MRI compatibility | MED-EL states SYNCHRONY 2 allows MRI up to 3.0 T without magnet removal surgery (manufacturer claim) [2] |
 | Surgical complexity | Implant stimulator housing recessed in the skull; PIN variants named in the product list [1] |
-| Output connectors | Unreported |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | IDE G170111: 44 participants in the database through March 27, 2023; enrolled April 26, 2018 to March 27, 2023 [1] |
-| Preclinical cohort | Unreported |
+| Preclinical cohort |  |
 | Follow-up duration | 6 months after activation for the primary endpoints [1] |
 | Indications | Adults 18 and older with bilateral moderate to profound sensorineural hearing loss and limited benefit from appropriately fit hearing aids (CNC 50% or less in the implant ear) [1] |
 | Trials and registries | IDE G170111, multicenter, prospective, open-label, single-arm, US and Canada [1] |
 | Primary outcomes | CNC words in quiet: baseline 26.5 +/- 12.4 (n=44), 6 months 52.0 +/- 19.9 (n=43), change 25.6 +/- 22.8 (n=43), p<.01. AzBio sentences in noise: 23.5 +/- 17.3 (n=44), 47.0 +/- 22.8 (n=43), change 24.1 +/- 25.3 (n=43), p<.01 [1] |
-| Key limitations | Single-arm study of 44 participants. Electrode contact counts, lengths and implant dimensions are not in the SSED text read, so they read Unreported. Many models and processors are covered by one PMA; this sheet follows the SYNCHRONY 2 family [1] |
+| Key limitations | Single-arm study of 44 participants. Electrode contact counts, lengths and implant dimensions are not in the SSED text read, so they are left blank. Many models and processors are covered by one PMA; this sheet follows the SYNCHRONY 2 family [1] |
 
 ## Engineering tradeoffs
 
 | Field | Value and source scope |
 | --- | --- |
-| Strengths | Unreported |
-| Limitations | Unreported |
-| Scaling constraints | Unreported |
+| Strengths |  |
+| Limitations |  |
+| Scaling constraints |  |
 
 ## Version boundary
 

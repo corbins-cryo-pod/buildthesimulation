@@ -54,14 +54,14 @@ Every field follows the shared implant-device template. Values belong to a named
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Platinum/10% iridium contacts, Dweiri 2016; human clinical contact material unreported in audited Tan Methods |
 | Impedance (with measurement frequency) | Dweiri 2016: 2.55 ± 0.25 kΩ at 7.5 months, measurement frequency unreported in audited abstract. Tan 2015 pairwise pulse-derived values about 2.66-3.12 kΩ, measured with 0.3 mA/50 µs pulses at 20/100 Hz; not one 1 kHz rating |
 | Noise floor or SNR | 2016 protocol: chronic recording SNR 5.10 ± 0.81 dB at 7.5 months; not a device-wide noise floor |
 | Recording modality | Peripheral electroneurogram in 2016 fabrication report; Tan 2015 concerns stimulation |
 | Sampling rate | Configuration dependent; 2016 external preamplifier bandwidth 700 Hz-7 kHz and gain 2,000 do not establish sample rate |
 | Stimulation capability | Selective sensory stimulation in Tan 2015; 2016 protocol supports recording/stimulation configurations |
-| Charge injection limit | Unreported as material limit; perceptual thresholds are not charge-injection limits |
+| Charge injection limit | Not given as material limit; perceptual thresholds are not charge-injection limits |
 | Reference and ground | 2016 protocol: four outer reference contacts and middle arrays, positioned symmetrically for interference rejection; clinical topology not equated |
 
 ## Tissue interface and bioresponse
@@ -73,7 +73,7 @@ Every field follows the shared implant-device template. Values belong to a named
 | Vascular disruption risk | Compression/fit is a design concern; no quantitative human vascular injury rate |
 | Micromotion sensitivity | 2016 design balances transverse rigidity and longitudinal flexibility; quantitative motion sensitivity unreported |
 | Gliosis and encapsulation | CNS gliosis not applicable; Tan 2015 discusses encapsulation as possible mechanism, not quantitative human histology |
-| Neuron loss near sites | Unreported |
+| Neuron loss near sites |  |
 | Foreign-body response mitigation | 2016 design expands cross-sectional area by 25% at 67 mmHg bench pressure; not an approved safe nerve-compression limit |
 | Typical failure modes | Tan 2015: ulnar FINE opened in subject 2, losing intimate nerve contact; other contacts remained available |
 
@@ -86,9 +86,9 @@ Every field follows the shared implant-device template. Values belong to a named
 | Telemetry bandwidth | Not applicable to passive wired cuff |
 | Sampling rate | Configuration dependent; external acquisition |
 | Power | External stimulation/acquisition system in audited configurations |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | 2016 silicone/PEEK passive cuff; Tan 2015 uses percutaneous leads, not a fully sealed implant |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Peripheral nerve exposure with careful lumen selection and closure |
 | Output connectors | Tan 2015 spring-sleeve to open-helix percutaneous leads; 2016 connector model unreported |
 

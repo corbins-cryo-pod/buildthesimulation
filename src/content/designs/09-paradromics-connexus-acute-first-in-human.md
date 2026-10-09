@@ -29,7 +29,7 @@ Connexus combines a penetrating microwire array with implanted electronics, a fl
 | Circular package | Approximately 1 cm diameter [3] | Nominal 10 mm envelope |
 | Wire diameter | Older technical slides report <40 µm PtIr wires [4] | 40 µm visualization bound; current exact diameter unknown |
 | Exact contact map | No coordinate map | Circularly cropped lattice is reconstructed |
-| Housing thickness / tip exposure | Unreported | Explicit illustrative dimensions; exposed area stays unknown |
+| Housing thickness / tip exposure |  | Explicit illustrative dimensions; exposed area stays unknown |
 
 The manufacturer’s 2024 photograph shows the circular module used as this model’s visual reference. The 2023 technical slides show a **different square package** with a 9 mm dimension. That older package dimension is not applied to this model. Photographs guide appearance; they do not supply measured dimensions.
 
@@ -78,25 +78,25 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | Pitch | 300 µm square lattice [2] |
 | Electrode lengths | 1.5 mm insertion depth [1, 2]; wire lengths beyond that unreported |
 | Shank width and thickness | Older technical slides report wires under 40 µm diameter [4]; current exact diameter unreported. Module about 1 cm circular [3]; the 2023 slides show an older, different square package of 9 mm [4] |
-| Tip and exposed site geometry | Unreported; exposed area stays unknown |
+| Tip and exposed site geometry | Exposed area stays unknown |
 | Contact coating | Platinum-iridium electrodes [3, 4]; any additional coating unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported |
+| Insulation |  |
+| Insertion method |  |
 | Anchoring and fixation | Module on cortex with a flexible lead to the chest transceiver [1]; fixation detail unreported |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Platinum-iridium [3, 4] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Intracortical neural signals; specific bands not specified |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported for this system |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Sampling rate |  |
+| Stimulation capability | Not given for this system |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
@@ -107,8 +107,8 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | Vascular disruption risk | Placement-dependent; not quantified |
 | Micromotion sensitivity | Rigid microwires in soft tissue; comparative data unreported |
 | Gliosis and encapsulation | Chronic histology unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
 | Typical failure modes | Chronic stability and yield limits typical of intracortical interfaces; no device-specific failure data published |
 
 ## System architecture
@@ -117,12 +117,12 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | --- | --- |
 | Onboard electronics | Implanted electronics in the module; internal ASIC detail unreported |
 | Data path | Flexible lead to an implanted chest transceiver; optical through-skin data link [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Inductive power to the implanted transceiver [1] |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | Fully internalized system [1]; packaging-stack detail unreported |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Open cranial surgery for module placement plus chest transceiver implantation; procedural detail limited |
 | Output connectors | Flexible lead from module to chest transceiver [1]; connector detail unreported |
 
@@ -131,8 +131,8 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | Field | Value and source scope |
 | --- | --- |
 | Acute yield | Human neural signals recorded intraoperatively, June 2025 [5]; quantitative yield unreported |
-| Chronic yield | Unreported publicly |
-| Stability over time | Unreported publicly |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | Company design goals exist; demonstrated lifetime unreported |
 | Revision and explant experience | Acute intact explant demonstrated, removed in under 20 minutes per the announcement [5]; chronic revision experience unreported |
 | Adverse events | Acute procedure reported as successful [5]; no chronic safety dataset public |

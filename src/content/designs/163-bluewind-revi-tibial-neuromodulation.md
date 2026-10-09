@@ -16,7 +16,7 @@ draft: false
 
 # BlueWind Revi tibial neuromodulation
 
-The Revi System is a battery-less implant near the tibial nerve at the ankle, powered by a wearable unit, for urgency incontinence. This sheet comes from the FDA De Novo review (DEN220073) and the 2024 510(k) record. Clinical result percentages were not extracted and stay Unreported.
+The Revi System is a battery-less implant near the tibial nerve at the ankle, powered by a wearable unit, for urgency incontinence. This sheet comes from the FDA De Novo review (DEN220073) and the 2024 510(k) record. Clinical result percentages were not extracted and stay blank.
 
 ## Identity
 
@@ -26,9 +26,9 @@ The Revi System is a battery-less implant near the tibial nerve at the ankle, po
 | Manufacturer | BlueWind Medical Ltd., Herzliya, Israel [1][2] |
 | Interface class | Wirelessly powered implanted tibial nerve stimulator [1] |
 | Origin | Commercial FDA-authorized device; De Novo request received October 5, 2022; the pivotal study is named OASIS, and the review text also refers to the system as RENOVA iStim [1] |
-| First demonstrated | Unreported |
-| First human implant | Unreported |
-| Species studied | Unreported |
+| First demonstrated |  |
+| First human implant |  |
+| Species studied |  |
 | Regulatory status | De Novo DEN220073 (implanted tibial electrical urinary continence device, product code QXM); 510(k) K240037 decision May 2, 2024, substantially equivalent [1][2] |
 | Function | Treatment of urgency incontinence alone or with urinary urgency by tibial nerve stimulation [1] |
 | Target tissue | Tibial nerve near the ankle, in the vicinity of the tibial neurovascular bundle [1] |
@@ -38,43 +38,43 @@ The Revi System is a battery-less implant near the tibial nerve at the ankle, po
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Implantable wireless neurostimulator placed subfascially near the tibial neurovascular bundle [1] |
-| Array layout | Unreported |
-| Electrode count | Unreported |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Array layout |  |
+| Electrode count |  |
+| Pitch |  |
+| Electrode lengths |  |
+| Shank width and thickness |  |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
 | Stimulation capability | Frequency up to 30 Hz; amplitude steps of 0.1 mA, frequency steps of 1 Hz, treatment duration steps of 5 minutes [1] |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -82,33 +82,33 @@ The Revi System is a battery-less implant near the tibial nerve at the ankle, po
 | --- | --- |
 | Onboard electronics | Implant has no internal power source; the Wearable Unit holds the circuit board, flexible antenna and battery and pairs to one implant [1] |
 | Data path | Bluetooth between the Wearable Unit and a Hub, which transfers data to the cloud during charging sessions [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Wearable Unit: Li-ion rechargeable 1400 mAh, 3.1-4.2 V; up to 1 week of therapy per charge. The implant draws power wirelessly [1] |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
+| Thermal management |  |
+| Packaging and hermeticity |  |
 | MRI compatibility | Sponsor testing showed the Implant is MR compatible at 1.5 T and 3 T under specified conditions [1] |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | OASIS pivotal study: 27 sites; 282 consented and screened, 151 implanted (intent-to-treat set) [1] |
-| Preclinical cohort | Unreported |
+| Preclinical cohort |  |
 | Follow-up duration | Visits at activation (4 weeks plus or minus 2 weeks after implant), then 1, 3, 6 and 12 months after activation [1] |
 | Indications | Urgency incontinence alone or combined with urinary urgency [1] |
 | Trials and registries | OASIS (OverActive Bladder Stimulation System Study); registry ID not extracted here [1] |
@@ -121,7 +121,7 @@ The Revi System is a battery-less implant near the tibial nerve at the ankle, po
 | --- | --- |
 | Strengths | Battery-less implant powered by a wearable unit; MR conditional at 1.5 T and 3 T [1] |
 | Limitations | Patient must wear and charge the external unit [1] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Version boundary
 

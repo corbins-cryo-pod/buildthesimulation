@@ -40,16 +40,16 @@ The [Cornell University, Molnar lab](/companies/44-cornell-mote-neurotechnology-
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Two Pt contacts on a CMOS die with an AlGaAs diode [1] |
-| Array layout | Unreported |
+| Array layout |  |
 | Electrode count | Two contacts forming one differential channel [1] |
 | Pitch | 294.25 µm centre spacing [1] |
-| Electrode lengths | Unreported |
+| Electrode lengths |  |
 | Shank width and thickness | Envelope 370 × 70 × 20 µm (Figure 1); area 24,675 µm² (not length × width) [1, 2] |
 | Tip and exposed site geometry | Pt contacts 28.5 × 30.5 µm and 12.5 × 23 µm [1] |
 | Contact coating | Platinum [1] |
 | Insulation | ALD SiO₂, Si₃N₄ and Al₂O₃ below 1.5 µm total; Pt light shield with outer Al₂O₃ [1] |
 | Insertion method | Placed beneath a surgical cranial window [1] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
@@ -57,26 +57,26 @@ The [Cornell University, Molnar lab](/companies/44-cornell-mote-neurotechnology-
 | --- | --- |
 | Exposed site area | 28.5 × 30.5 µm and 12.5 × 23 µm [1] |
 | Electrode material | Platinum [1] |
-| Impedance (with measurement frequency) | Unreported |
+| Impedance (with measurement frequency) |  |
 | Noise floor or SNR | 14.8 µV rms reported noise [1] |
 | Recording modality | Extracellular voltage, encoded by pulse-position modulation [1] |
-| Sampling rate | Unreported |
+| Sampling rate |  |
 | Stimulation capability | None demonstrated [1] |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -84,25 +84,25 @@ The [Cornell University, Molnar lab](/companies/44-cornell-mote-neurotechnology-
 | --- | --- |
 | Onboard electronics | TSMC 180 nm mixed-signal CMOS, 97 circuits per die; amplifier 500 nW, below 10 Hz to above 10 kHz; 186 transistors (conclusion) versus 307 (Figure 3, Extended Data Table 2, Supplement), both kept [1, 2, 3] |
 | Data path | 825 nm pulse-position-modulated optical uplink decoded by an external photodetector, oscilloscope and computer; 12.8 ns timing interval is not a neural sample interval [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | External 623 nm LED; nominal 1 µW (about 1 V, 1 µA); diode harvests for 93.4% of time and emits for 0.06%; irradiance below 70 mW/mm² [1] |
 | Thermal management | Reported setup irradiance is not a general human limit [1] |
 | Packaging and hermeticity | Thin-film ALD encapsulation; day-365 limits discussed in the Supplement [3] |
 | MRI compatibility | Possible compatibility is a proposal, not qualification [1] |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | Day-365 limits are in the Supplement; not extracted here [3] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Optical readout of cortical voltage in mouse; 6 mm operation is a theoretical projection at 160 mW/mm² [1, 3] |
 
 ## Clinical and preclinical evidence
@@ -111,9 +111,9 @@ The [Cornell University, Molnar lab](/companies/44-cornell-mote-neurotechnology-
 | --- | --- |
 | Human subjects | None |
 | Preclinical cohort | Head-fixed mice; failed devices retained in the application record [1] |
-| Follow-up duration | Unreported |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Follow-up duration |  |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Untethered optical-uplink recording of extracellular voltage [1] |
 | Key limitations | Head-fixed under an optical system; freely moving tracking is future work; no stimulation or closed loop [1] |
 
@@ -123,7 +123,7 @@ The [Cornell University, Molnar lab](/companies/44-cornell-mote-neurotechnology-
 | --- | --- |
 | Strengths | Tiny, untethered, no battery [1] |
 | Limitations | Needs external optics; shallow demonstrated depth [1] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Hardware
 

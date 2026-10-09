@@ -17,7 +17,7 @@ draft: false
 
 # Science neuronal-embedded electronic biohybrid interface (architecture concept)
 
-All rows follow the shared implant-device template. Measurements belong to the named study or configuration. Unreported means the reviewed sources do not establish a value. Proposed architectures, optical behavior and validated electronic recording systems are kept separate.
+All rows follow the shared implant-device template. Measurements belong to the named study or configuration. A blank cell means the reviewed sources do not establish a value. Proposed architectures, optical behavior and validated electronic recording systems are kept separate.
 
 ## Identity
 
@@ -28,7 +28,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Interface class | Conceptual biohybrid neural interface; deployment geometry unreported |
 | Origin | Science Corporation biohybrid program led by Alan Mardinly and Yifan Kong |
 | First demonstrated | Company architecture description 2024; complete electronic system demonstration not established |
-| First human implant | Unreported |
+| First human implant |  |
 | Species studied | No cohort for this complete electronic architecture given; separate surface microwell study uses mice |
 | Regulatory status | Company describes low technology readiness; clinical authorization unreported |
 | Function | Proposed electrical interaction with device-associated neurons and optical activation through microLEDs; not a validated bidirectional system |
@@ -39,30 +39,30 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Neurons embedded in electronics with neurites growing into host tissue; penetrating shanks not established |
-| Array layout | Unreported |
-| Electrode count | Unreported. Company million-neuron/billion-synapse examples are scaling ambitions, not device/contact counts |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported; no dimensions transferred from separate 5 x 5 mm microwell scaffold |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported; source does not establish a penetrating probe or insertion procedure |
-| Anchoring and fixation | Unreported |
+| Array layout |  |
+| Electrode count | Company million-neuron/billion-synapse examples are scaling ambitions, not device/contact counts |
+| Pitch |  |
+| Electrode lengths |  |
+| Shank width and thickness | No dimensions transferred from separate 5 x 5 mm microwell scaffold |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
+| Insertion method | Source does not establish a penetrating probe or insertion procedure |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
 | Noise floor or SNR | Company calls SNR great without a numerical measurement for this architecture; not treated as a measured spec |
 | Recording modality | Electrical interaction with graft cells proposed; validated on-device recording yield/modality unreported |
-| Sampling rate | Unreported |
+| Sampling rate |  |
 | Stimulation capability | Company illustration shows microLED activating nearby neuron; wavelength, power and complete-system validation unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
@@ -70,10 +70,10 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | --- | --- |
 | Target tissue | Device-associated graft neurons and their axons/dendrites in brain |
 | Insertion trauma and BBB disruption | Quantitative trauma and BBB effects unreported for this architecture; not presumed noninvasive |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
 | Foreign-body response mitigation | Company identifies hypoimmunogenic allogeneic neurons as a development need, not a demonstrated clinical solution |
 | Typical failure modes | Company identifies graft survival under hypoxia, glycemic shock and host immunity as engineering challenges; failure rates not published here |
 
@@ -82,25 +82,25 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Field | Value and source scope |
 | --- | --- |
 | Onboard electronics | Electronics with embedded neurons and illustrated microLED; circuit configuration unreported |
-| Data path | Unreported |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Data path |  |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Company argues strong cell signals could reduce amplifier power; measured system power unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
 | Surgical complexity | Implant procedure unreported; no geometry inferred from the word probe |
-| Output connectors | Unreported |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
 | Stability over time | Complete electronic architecture performance unreported; mouse microwell survival not transferred |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
+| Longevity |  |
+| Revision and explant experience |  |
 | Adverse events | No safety cohort for this architecture; surface microwell explant injury belongs to that separate study |
 | Notable demonstrations | Company links a separate passive cortical microwell/optical mouse proof of concept; not proof of this electronic probe system |
 
@@ -108,11 +108,11 @@ All rows follow the shared implant-device template. Measurements belong to the n
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects | Unreported for this architecture |
-| Preclinical cohort | Unreported for this architecture; Brown mouse microwell cohort is separate |
-| Follow-up duration | Unreported |
+| Human subjects | Not given for this architecture |
+| Preclinical cohort | Not given for this architecture; Brown mouse microwell cohort is separate |
+| Follow-up duration |  |
 | Indications | Long-term high-bandwidth brain interface ambition, not validated clinical indication |
-| Trials and registries | Unreported |
+| Trials and registries |  |
 | Primary outcomes | No quantitative complete-system outcomes published in reviewed company description |
 | Key limitations | Architecture-level company source; no pinned form factor, contact map, chronic electronics or clinical evidence. Surface scaffold findings must not be relabeled as probe results |
 

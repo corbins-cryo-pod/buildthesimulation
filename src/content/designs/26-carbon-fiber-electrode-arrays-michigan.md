@@ -17,7 +17,7 @@ draft: false
 
 # Carbon fiber electrode arrays (University of Michigan)
 
-The 2015 and 2020 arrays are related but use different supports, exposed sites, acquisition and targets. Every measurement below belongs to its named configuration or cohort. Unreported means not established by the reviewed primary papers.
+The 2015 and 2020 arrays are related but use different supports, exposed sites, acquisition and targets. Every measurement below belongs to its named configuration or cohort. A blank cell means not established by the reviewed primary papers.
 
 ## Identity
 
@@ -28,7 +28,7 @@ The 2015 and 2020 arrays are related but use different supports, exposed sites, 
 | Interface class | Penetrating fiber recording array; 2020 configuration adds FSCV chemical sensing |
 | Origin | University of Michigan researchers and collaborators; configurations attributed to Patel et al. 2015/2020 |
 | First demonstrated | 2015 linear-array paper; earlier individual carbon-fiber work not claimed as new here |
-| First human implant | Unreported; reviewed experiments are rodents |
+| First human implant | Reviewed experiments are rodents |
 | Species studied | Long-Evans rats; ex vivo rat brains and agarose insertion tests separate |
 | Regulatory status | Preclinical research under Michigan animal approvals; no human clearance established |
 | Function | 2015 single-unit recording; 2020 flex unit recording plus dopamine FSCV in separate sessions |
@@ -61,7 +61,7 @@ The 2015 and 2020 arrays are related but use different supports, exposed sites, 
 | Recording modality | 2015 extracellular units; 2020 units plus FSCV dopamine in separate sessions, not simultaneously from a single headstage |
 | Sampling rate | 2015 approximately 25 kHz TDT; 2020 electrophysiology 30 kHz Intan. FSCV scan waveform parameters not substituted for digitizer rate |
 | Stimulation capability | Array records; 2020 dopamine elicitation uses separate implanted VTA steel stimulating electrode, not a carbon-array stimulation demonstration |
-| Charge injection limit | Unreported; CSC/voltammetry measurements are not stimulation charge-injection limits |
+| Charge injection limit | CSC/voltammetry measurements are not stimulation charge-injection limits |
 | Reference and ground | 2015 PCB reference/ground at posterior skull screw. 2020 electrophysiology screw over cerebellum plus common-average reference in analysis; FSCV separate Ag/AgCl wire in cannula |
 
 ## Tissue interface and bioresponse
@@ -86,9 +86,9 @@ The 2015 and 2020 arrays are related but use different supports, exposed sites, 
 | Telemetry bandwidth | Not applicable to reported wired systems |
 | Sampling rate | 2015 approximately 25 kHz with 2.2 Hz high-pass/7.5 kHz antialias; 2020 30 kHz with 0.1 Hz-7.5 kHz bandpass |
 | Power | External electronics/power supply; no implanted battery |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | Parylene/epoxy insulation and head-mounted connectors, not fully implanted multi-year hermetic electronics |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | 2015 cranial window/dural resection, incremental PEG removal or silicon insertion; 2020 deep cannula plus separate reference/stimulation implants and head fixation |
 | Output connectors | 2015 Hirose DF30FC-20DS-0.4V on PCB with ZIF headstage shroud; 2020 flex Omnetics A79024-001, 127 µm silver reference/ground wires with 4 µm Teflon coating |
 

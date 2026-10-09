@@ -39,70 +39,70 @@ Independent electrode tendrils, rather than a single planar shank. Each root is 
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Separate mechanically independent electrode tendrils, not a planar shank [1] |
-| Array layout | Unreported |
-| Electrode count | Unreported |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
+| Array layout |  |
+| Electrode count |  |
+| Pitch |  |
+| Electrode lengths |  |
 | Shank width and thickness | Each root 7 µm wide and 1.5 µm thick [1] |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
 | Insertion method | Microscale delivery with commercially available apparatus [1] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | High-density single-unit recording, in vitro and in vivo [1] |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
-| Data path | Unreported |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Onboard electronics |  |
+| Data path |  |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
 | Stability over time | Action potentials recorded without electrode repositioning [1] |
 | Longevity | At least seven weeks in freely moving rats [1] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
@@ -111,8 +111,8 @@ Independent electrode tendrils, rather than a single planar shank. Each root is 
 | Human subjects | None |
 | Preclinical cohort | Rats in behavioral experiments; cohort size not in the abstract used [1] |
 | Follow-up duration | At least seven weeks [1] |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Single-unit recordings from delicate brain regions over weeks [1] |
 | Key limitations | Channel count, contact geometry and root length not given in the abstract; the 2019 award aim of a BCI platform for paralysis is not a clinical result [1, 2] |
 
@@ -121,8 +121,8 @@ Independent electrode tendrils, rather than a single planar shank. Each root is 
 | Field | Value and source scope |
 | --- | --- |
 | Strengths | Compliance and spatial distribution inspired by axons [1] |
-| Limitations | Unreported |
-| Scaling constraints | Unreported |
+| Limitations |  |
+| Scaling constraints |  |
 
 ## What was shown
 

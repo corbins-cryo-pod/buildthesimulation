@@ -39,69 +39,69 @@ Wireless pressure and temperature sensors built from bioresorbable silicon. The 
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Bioresorbable silicon sensors, with an injectable format for deep brain monitoring [1] |
-| Array layout | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Electrode count | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Pitch | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Electrode lengths | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Shank width and thickness | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Tip and exposed site geometry | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Contact coating | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Insulation | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Insertion method | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Anchoring and fixation | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
+| Array layout | The paper holds sensor dimensions and dissolution times |
+| Electrode count | The paper holds sensor dimensions and dissolution times |
+| Pitch | The paper holds sensor dimensions and dissolution times |
+| Electrode lengths | The paper holds sensor dimensions and dissolution times |
+| Shank width and thickness | The paper holds sensor dimensions and dissolution times |
+| Tip and exposed site geometry | The paper holds sensor dimensions and dissolution times |
+| Contact coating | The paper holds sensor dimensions and dissolution times |
+| Insulation | The paper holds sensor dimensions and dissolution times |
+| Insertion method | The paper holds sensor dimensions and dissolution times |
+| Anchoring and fixation | The paper holds sensor dimensions and dissolution times |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Electrode material | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Impedance (with measurement frequency) | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Noise floor or SNR | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
+| Exposed site area | The paper holds sensor dimensions and dissolution times |
+| Electrode material | The paper holds sensor dimensions and dissolution times |
+| Impedance (with measurement frequency) | The paper holds sensor dimensions and dissolution times |
+| Noise floor or SNR | The paper holds sensor dimensions and dissolution times |
 | Recording modality | Pressure and temperature sensing, not neural recording [1] |
-| Sampling rate | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
+| Sampling rate | The paper holds sensor dimensions and dissolution times |
 | Stimulation capability | Not applicable |
-| Charge injection limit | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Reference and ground | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
+| Charge injection limit | The paper holds sensor dimensions and dissolution times |
+| Reference and ground | The paper holds sensor dimensions and dissolution times |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Insertion trauma and BBB disruption | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Vascular disruption risk | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Micromotion sensitivity | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Gliosis and encapsulation | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Neuron loss near sites | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Foreign-body response mitigation | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Typical failure modes | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
+| Target tissue | The paper holds sensor dimensions and dissolution times |
+| Insertion trauma and BBB disruption | The paper holds sensor dimensions and dissolution times |
+| Vascular disruption risk | The paper holds sensor dimensions and dissolution times |
+| Micromotion sensitivity | The paper holds sensor dimensions and dissolution times |
+| Gliosis and encapsulation | The paper holds sensor dimensions and dissolution times |
+| Neuron loss near sites | The paper holds sensor dimensions and dissolution times |
+| Foreign-body response mitigation | The paper holds sensor dimensions and dissolution times |
+| Typical failure modes | The paper holds sensor dimensions and dissolution times |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
+| Onboard electronics | The paper holds sensor dimensions and dissolution times |
 | Data path | Wireless [1] |
-| Telemetry bandwidth | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Sampling rate | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Power | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Thermal management | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
+| Telemetry bandwidth | The paper holds sensor dimensions and dissolution times |
+| Sampling rate | The paper holds sensor dimensions and dissolution times |
+| Power | The paper holds sensor dimensions and dissolution times |
+| Thermal management | The paper holds sensor dimensions and dissolution times |
 | Packaging and hermeticity | Dissolves in the body; function lasts only as long as the device persists [1] |
-| MRI compatibility | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
+| MRI compatibility | The paper holds sensor dimensions and dissolution times |
 | Surgical complexity | No retrieval surgery needed because the device resorbs [1] |
-| Output connectors | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
+| Output connectors | The paper holds sensor dimensions and dissolution times |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Chronic yield | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Stability over time | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
+| Acute yield | The paper holds sensor dimensions and dissolution times |
+| Chronic yield | The paper holds sensor dimensions and dissolution times |
+| Stability over time | The paper holds sensor dimensions and dissolution times |
 | Longevity | Limited by dissolution; times are in the paper [1] |
-| Revision and explant experience | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
-| Adverse events | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
+| Revision and explant experience | The paper holds sensor dimensions and dissolution times |
+| Adverse events | The paper holds sensor dimensions and dissolution times |
 | Notable demonstrations | Wireless ICP and temperature in freely moving animals; sensors in other body cavities; injectable deep-brain format [1] |
 
 ## Clinical and preclinical evidence
@@ -110,9 +110,9 @@ Wireless pressure and temperature sensors built from bioresorbable silicon. The 
 | --- | --- |
 | Human subjects | None; human use not covered |
 | Preclinical cohort | Live, freely moving animals [1]; cohort sizes are in the paper and not extracted here |
-| Follow-up duration | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
+| Follow-up duration | The paper holds sensor dimensions and dissolution times |
 | Indications | Temporary intracranial pressure and temperature monitoring (research) |
-| Trials and registries | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
+| Trials and registries | The paper holds sensor dimensions and dissolution times |
 | Primary outcomes | Wireless ICP and temperature measurement [1] |
 | Key limitations | Sensing only, not neural recording; human use, dissolution times and sensor dimensions are not covered in this sheet |
 
@@ -122,7 +122,7 @@ Wireless pressure and temperature sensors built from bioresorbable silicon. The 
 | --- | --- |
 | Strengths | No retrieval, lower infection burden, wireless [1] |
 | Limitations | Sensing only; function lasts only as long as the device persists before it dissolves |
-| Scaling constraints | Unreported in the reviewed source summary; the paper holds sensor dimensions and dissolution times |
+| Scaling constraints | The paper holds sensor dimensions and dissolution times |
 
 ## References
 

@@ -40,68 +40,68 @@ The same 2015 MIT paper separately reports a polymer-metal recording fiber. A tw
 | Interface type | Tin electrodes in polyetherimide with a sacrificial polyphenylsulfone outer layer, two-step thermal draw [1] |
 | Array layout | Seven tin electrodes imaged; preform with 36 electrodes drawn; nine-electrode structure around a hollow channel [2] |
 | Electrode count | Seven (demonstrated structure), 36 (fabrication demonstration), nine (hollow-channel variant); not 36 recorded units [2] |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
 | Shank width and thickness | 416 µm before outer-cladding removal and 85 µm after etching (Figure 3a-c) [2] |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
 | Insulation | Polyetherimide; hollow channel epoxy-filled for polishing, open in the exposure image [2] |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Tin [1] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Single-neuron recording with separable units and multiple active electrodes; optically evoked activity shown in the linked study [1] |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
 | Gliosis and encapsulation | Figure 4 compares tissue markers with steel microwires from three days to three months, n = 6 per device and time point; no claim of absent response [3] |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
+| Onboard electronics |  |
 | Data path | Externally wired [4] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | Three-month histology is not a three-month recording endpoint [3] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
@@ -110,8 +110,8 @@ The same 2015 MIT paper separately reports a polymer-metal recording fiber. A tw
 | Human subjects | None |
 | Preclinical cohort | Mouse; histology n = 6 per device and time point [3] |
 | Follow-up duration | Three days to three months (histology) [3] |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Recordings from medial prefrontal cortex and comparison against steel microwires [1, 3] |
 | Key limitations | Main article restricted; electrode diameter and spacing from unofficial mirrors not adopted; no human result [1] |
 
@@ -121,7 +121,7 @@ The same 2015 MIT paper separately reports a polymer-metal recording fiber. A tw
 | --- | --- |
 | Strengths | Multielectrode metal fiber from a thermal draw [1] |
 | Limitations | No integrated optical waveguide in this architecture [1] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Demonstrated structures
 

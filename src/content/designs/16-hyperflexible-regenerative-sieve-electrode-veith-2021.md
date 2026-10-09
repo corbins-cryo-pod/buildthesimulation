@@ -17,7 +17,7 @@ draft: false
 
 # Hyperflexible regenerative sieve electrode (Veith et al., 2021)
 
-All rows follow the shared implant-device template. Measurements belong to the named study or configuration. Unreported means the reviewed sources do not establish a value. Proposed use, terminal assays and continuously functioning implants are not treated as equivalent.
+All rows follow the shared implant-device template. Measurements belong to the named study or configuration. A blank cell means the reviewed sources do not establish a value. Proposed use, terminal assays and continuously functioning implants are not treated as equivalent.
 
 ## Identity
 
@@ -28,7 +28,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Interface class | Regenerative peripheral nerve mesh electrode |
 | Origin | Veith, Li, Modi, Abbaspour, Luan, Xie and Baker research team |
 | First demonstrated | 2021 report reviewed here; not a claim of earliest family demonstration |
-| First human implant | Unreported; reviewed study is rat preclinical research |
+| First human implant | Reviewed study is rat preclinical research |
 | Species studied | Adult male Sprague-Dawley rats |
 | Regulatory status | Preclinical animal research; clinical authorization unreported |
 | Function | Regenerative neurovascular scaffold with fabricated electrical contacts; study tests tissue integration, not chronic mesh neural recording |
@@ -41,7 +41,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Interface type | Regenerative sieve between nerve stumps |
 | Array layout | Initial 60 µm square pore mesh (SM); redesigned mixed-porosity mesh (MPM) has 80 µm circular pores and four 280 µm holes |
 | Electrode count | 100 initial SM contacts; 84 redesigned MPM contacts, Veith 2021. Not demonstrated simultaneously active neural channels |
-| Pitch | Unreported as contact pitch; pore diameters are not pitch |
+| Pitch | Not given as contact pitch; pore diameters are not pitch |
 | Electrode lengths | Not applicable to penetrating shanks; implanted assembly crosses 3 mm nerve gap |
 | Shank width and thickness | Mesh total thickness 800 nm-1 µm; interconnect between two 400-500 nm SU-8 layers, Results |
 | Tip and exposed site geometry | Contact exposure through top SU-8 openings; numerical exposed area unreported |
@@ -54,14 +54,14 @@ All rows follow the shared implant-device template. Measurements belong to the n
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Gold contacts and interconnects; nickel/gold pad layers, Methods |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Mesh neural recording unreported; CMAP readout uses separate gastrocnemius needle and nerve hook electrodes |
-| Sampling rate | Unreported for mesh; Powerlab/LabChart external CMAP acquisition is separate |
+| Sampling rate | Not given for mesh; Powerlab/LabChart external CMAP acquisition is separate |
 | Stimulation capability | Stimulation through mesh contacts unreported in audited study; CMAP induced by custom hook electrode |
-| Charge injection limit | Unreported |
+| Charge injection limit |  |
 | Reference and ground | Mesh reference/ground unreported; Achilles tendon needle reference belongs to CMAP assay, not mesh pin map |
 
 ## Tissue interface and bioresponse
@@ -73,7 +73,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Vascular disruption risk | Square mesh fractured and impeded regrowth; mixed pores aim to permit vascular invasion. Quantitative surgical vascular injury rate unreported |
 | Micromotion sensitivity | Mesh fracture during regeneration documented; not a quantified motion-transfer measurement |
 | Gliosis and encapsulation | Initial SM increased CD68 macrophage response; redesigned growth-factor MPM reduced macrophage response at three months. Peripheral, not CNS gliosis |
-| Neuron loss near sites | Unreported |
+| Neuron loss near sites |  |
 | Foreign-body response mitigation | Mixed pore geometry plus distal 0.5% alginate carrying NGFβ, VEGF-A and FGF-2 at 100 ng/ml each, Methods |
 | Typical failure modes | All tested initial SM devices destroyed by 14 days; six-month initial experiment had limited regeneration in two of five nerves and fractured devices |
 
@@ -84,11 +84,11 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Onboard electronics | No active onboard electronics described; passive fabricated mesh |
 | Data path | Future electronic interfacing via contact pads; chronic connected mesh acquisition not demonstrated in reviewed study |
 | Telemetry bandwidth | Not applicable to unconnected passive mesh in tissue-integration experiments |
-| Sampling rate | Unreported |
+| Sampling rate |  |
 | Power | Not applicable to passive mesh in these experiments; separate assay electronics external |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | SU-8 mesh immobilized in silicone conduit; no hermetic electronics qualification |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Nerve transection, conduit placement and microsuturing; invasive regenerative model |
 | Output connectors | Contact pads fabricated; connected implanted-output connector specification unreported |
 

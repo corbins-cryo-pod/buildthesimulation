@@ -16,7 +16,7 @@ draft: false
 
 # Abbott Proclaim XR spinal cord stimulation
 
-Abbott's SCS family is approved under PMA P010032 and delivers epidural stimulation from a rechargeable or non-rechargeable IPG. This sheet uses the FDA summary for supplement S189 and the S191 record. Hardware specs and trial numbers are Unreported because the FDA text read does not give them.
+Abbott's SCS family is approved under PMA P010032 and delivers epidural stimulation from a rechargeable or non-rechargeable IPG. This sheet uses the FDA summary for supplement S189 and the S191 record. Hardware specs and trial numbers are left blank because the FDA text read does not give them.
 
 ## Identity
 
@@ -26,8 +26,8 @@ Abbott's SCS family is approved under PMA P010032 and delivers epidural stimulat
 | Manufacturer | Abbott Medical, Plano, Texas [1] |
 | Interface class | Epidural spinal cord stimulation leads with a subcutaneous IPG [1] |
 | Origin | Commercial FDA-approved device; PMA P010032, original approval December 3, 2001 [1] |
-| First demonstrated | Unreported |
-| First human implant | Unreported |
+| First demonstrated |  |
+| First human implant |  |
 | Species studied | Human [1] |
 | Regulatory status | P010032/S189 (diabetic peripheral neuropathy of the lower extremities) notice of approval January 24, 2023; S191 (Prodigy, Proclaim XR, Proclaim Plus and Externa) decision May 10, 2023, adding non-surgical back pain for tonic and BurstDR modes and DPN for tonic mode [1][2] |
 | Function | Aid in the management of chronic, intractable pain of the trunk and/or limbs [1] |
@@ -38,90 +38,90 @@ Abbott's SCS family is approved under PMA P010032 and delivers epidural stimulat
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Permanent and trial leads in multiple configurations with variable lead body lengths and electrode spacing; extensions connect lead to neurostimulator [1] |
-| Array layout | Unreported |
-| Electrode count | Unreported |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Array layout |  |
+| Electrode count |  |
+| Pitch |  |
+| Electrode lengths |  |
+| Shank width and thickness |  |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
 | Onboard electronics | IPG in a hermetically sealed titanium case with an integrated circuit; subcutaneous pocket; programmed by an external Patient Programmer [1] |
-| Data path | Unreported |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Data path |  |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Rechargeable IPG models use a patient recharger charged by a plug-in charger [1] |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects | Unreported |
-| Preclinical cohort | Unreported |
-| Follow-up duration | Unreported |
+| Human subjects |  |
+| Preclinical cohort |  |
+| Follow-up duration |  |
 | Indications | Chronic intractable pain of the trunk and/or limbs, including failed back surgery syndrome, intractable low back and leg pain, and diabetic peripheral neuropathy of the lower extremities (S189 wording) [1] |
 | Trials and registries | S189 rested mainly on a systematic review of the published literature (1984-2022), two randomized controlled trials in diabetic peripheral neuropathy and Medicare claims data [1] |
-| Primary outcomes | Unreported |
-| Key limitations | The SSED text read gives no lead contact counts, IPG dimensions, battery figures or trial numbers; those read Unreported. Systems covered by one PMA span several generations; this sheet follows the Proclaim family as named in S191 [1][2] |
+| Primary outcomes |  |
+| Key limitations | The SSED text read gives no lead contact counts, IPG dimensions, battery figures or trial numbers; those are left blank. Systems covered by one PMA span several generations; this sheet follows the Proclaim family as named in S191 [1][2] |
 
 ## Engineering tradeoffs
 
 | Field | Value and source scope |
 | --- | --- |
-| Strengths | Unreported |
-| Limitations | Unreported |
-| Scaling constraints | Unreported |
+| Strengths |  |
+| Limitations |  |
+| Scaling constraints |  |
 
 ## Version boundary
 

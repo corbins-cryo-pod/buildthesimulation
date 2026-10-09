@@ -47,7 +47,7 @@ Reconfigurable thin-film cortical recording grids from Tchoe and colleagues. The
 | Contact coating | Platinum nanorods [1] |
 | Insulation | Parylene C: 3.5 µm bottom and 3.1 µm top layers around 500 nm gold traces, 4 µm wide on 6 µm spacing [1, 2] |
 | Insertion method | Placed on the cortical surface; recessed contacts protect against shear during placement [1] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
@@ -56,38 +56,38 @@ Reconfigurable thin-film cortical recording grids from Tchoe and colleagues. The
 | Exposed site area | 30 µm contacts; area not stated [1] |
 | Electrode material | Platinum nanorods on gold traces [1] |
 | Impedance (with measurement frequency) | At 1 kHz: 11 ± 2 kΩ (1,024-channel grid) and 8 ± 4 kΩ (2,048-channel grid) [1, 2] |
-| Noise floor or SNR | Unreported |
+| Noise floor or SNR |  |
 | Recording modality | Surface cortical field potential recording [1] |
-| Sampling rate | Unreported |
+| Sampling rate |  |
 | Stimulation capability | No stimulation through the PtNR recording contacts is established; handheld clinical stimulator access through larger holes in some human grids [1] |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Cortical surface [1] |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
 | Foreign-body response mitigation | Perforation holes let saline and cerebrospinal fluid move away from the contact interface [1] |
-| Typical failure modes | Unreported |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
+| Onboard electronics |  |
 | Data path | Wired; land-grid-array CPU sockets and extender boards to external acquisition electronics. Not a fully implanted wireless BCI [1, 2] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
 | Surgical complexity | Intraoperative placement; scale up to 17 cm device length [1] |
 | Output connectors | Land-grid-array CPU sockets with extender boards [1, 2] |
 
@@ -96,11 +96,11 @@ Reconfigurable thin-film cortical recording grids from Tchoe and colleagues. The
 | Field | Value and source scope |
 | --- | --- |
 | Acute yield | Up to 99.4% (1,024-channel grid) and 95.2% (2,048-channel grid); results for those configurations, not a guarantee for every array [1, 2] |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | High-resolution rat barrel-cortex mapping, human grasp-related activity and epileptic-discharge dynamics [1] |
 
 ## Clinical and preclinical evidence
@@ -109,7 +109,7 @@ Reconfigurable thin-film cortical recording grids from Tchoe and colleagues. The
 | --- | --- |
 | Human subjects | Intraoperative human recordings in the 2022 paper; subject count not extracted here [1, 2] |
 | Preclinical cohort | Rat recordings [1] |
-| Follow-up duration | Unreported |
+| Follow-up duration |  |
 | Indications | Intraoperative mapping and monitoring in the planned IDE study [3] |
 | Trials and registries | Announced IDE study, first phase planned for 20 patients; no registry ID or enrollment status inferred [3] |
 | Primary outcomes | Mapping results; not demonstrated restoration of function in a person with paralysis [1] |

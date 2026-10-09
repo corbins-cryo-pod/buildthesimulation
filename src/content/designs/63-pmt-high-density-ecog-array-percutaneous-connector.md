@@ -42,76 +42,76 @@ A clinical-style surface grid, laid on the pial surface and wired out through th
 | Array layout | 2021: 16-by-8 lattice; 2023: lattice, dimensions of the lattice not given [1, 2] |
 | Electrode count | 128 (2021) and 253 (2023); separate configurations, not one device [1, 2] |
 | Pitch | 4 mm center to center (2021); 3 mm center to center (2023) [1, 2] |
-| Electrode lengths | Unreported |
+| Electrode lengths |  |
 | Shank width and thickness | 2021 array 6.7 cm long, 3.5 cm wide, 0.51 mm thick; 2023 overall dimensions not covered [1] |
 | Tip and exposed site geometry | 2023: 1 mm recording-contact diameter, 2 mm overall diameter [2] |
-| Contact coating | Unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Contact coating |  |
+| Insulation |  |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
+| Onboard electronics |  |
 | Data path | Percutaneous connector passes signals through the skull to external hardware [1, 2] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
 | Output connectors | Blackrock Microsystems percutaneous connector [1, 2] |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | Speech neuroprosthesis participants in the 2021 and 2023 studies [1, 2] |
-| Preclinical cohort | Unreported |
-| Follow-up duration | Unreported |
-| Indications | Unreported |
+| Preclinical cohort |  |
+| Follow-up duration |  |
+| Indications |  |
 | Trials and registries | NCT03698149 (as cited in the 2023 paper) [2] |
 | Primary outcomes | Speech decoding in anarthria (2021); speech and avatar control (2023) [1, 2] |
 | Key limitations | Electrode material not given in either source; 2023 overall dimensions not covered [1, 2] |
@@ -120,9 +120,9 @@ A clinical-style surface grid, laid on the pial surface and wired out through th
 
 | Field | Value and source scope |
 | --- | --- |
-| Strengths | Unreported |
-| Limitations | Unreported |
-| Scaling constraints | Unreported |
+| Strengths |  |
+| Limitations |  |
+| Scaling constraints |  |
 
 ## Overview
 

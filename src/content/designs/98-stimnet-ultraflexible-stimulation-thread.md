@@ -47,7 +47,7 @@ The 2023 Cell Reports paper from Rice University reports a stimulation-specific 
 | Contact coating | Ti/Pt/Ti/300 nm sputtered iridium oxide contact stack, with separate gold interconnects [1] |
 | Insulation | Polyimide substrate (replacing SU-8 of the original NET) with polyimide cap rings [1] |
 | Insertion method | Temporary sharpened 50 µm tungsten wire shuttle attached with PEG [1] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
@@ -56,50 +56,50 @@ The 2023 Cell Reports paper from Rice University reports a stimulation-specific 
 | Exposed site area | 24 µm diameter contacts [1] |
 | Electrode material | Sputtered iridium oxide on Ti/Pt/Ti, gold interconnects [1] |
 | Impedance (with measurement frequency) | Contacts above 3 MΩ were treated as broken backend connections; measurement frequency not extracted here [1] |
-| Noise floor or SNR | Unreported |
+| Noise floor or SNR |  |
 | Recording modality | Recording through the same contacts [1] |
-| Sampling rate | Unreported |
+| Sampling rate |  |
 | Stimulation capability | Charge-balanced biphasic microstimulation; chronic behavioral stimulation used 167 µs phases, 67 µs interphase interval and 100 Hz [1] |
 | Charge injection limit | 1.1 mC/cm² in saline; currents up to 50 µA tested within the water window; depends on waveform, reference and conditions [1] |
-| Reference and ground | Unreported |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Mouse cortex [1] |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
 | Typical failure modes | Backend connector failure (longest animal, day 308); accidental large DC exposure raised behavioral thresholds [1] |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
+| Onboard electronics |  |
 | Data path | Wired backend connector [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
+| Acute yield |  |
 | Chronic yield | Average fully functional contact yield 90% [1] |
 | Stability over time | Bench test: 30 µA charge-balanced biphasic pulses at 500 Hz for 50 million pulses (100 µs pulse width, 33 µs interphase interval) [1] |
 | Longevity | Longest-performing animal detected stimulation through day 308, when its backend connector failed [1] |
-| Revision and explant experience | Unreported |
+| Revision and explant experience |  |
 | Adverse events | Accidental large DC exposure raised behavioral thresholds in one case [1] |
 | Notable demonstrations | Chronic mouse behavioral detection of microstimulation over months; contact pulse counts from 12,000 to 1.9 million [1] |
 
@@ -110,8 +110,8 @@ The 2023 Cell Reports paper from Rice University reports a stimulation-specific 
 | Human subjects | None |
 | Preclinical cohort | Mice; animal count not extracted here [1] |
 | Follow-up duration | Up to 308 days [1] |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Behavioral detection of chronic microstimulation [1] |
 | Key limitations | Chronic stimulation results are not assigned to the 2017 recording design; bench pulse count is not delivered dose in every mouse; no full mask or model [1] |
 

@@ -17,7 +17,7 @@ draft: false
 
 # Active micro-ECoG array (196 sites, auditory cortex)
 
-A flexible surface array with switching electronics at each site, used in anesthetized rat auditory cortex in 2014. Values are scoped to the active array unless a row names the passive comparison array. Unreported means not established by the reviewed primary paper.
+A flexible surface array with switching electronics at each site, used in anesthetized rat auditory cortex in 2014. Values are scoped to the active array unless a row names the passive comparison array. A blank cell means not established by the reviewed primary paper.
 
 ## Identity
 
@@ -28,7 +28,7 @@ A flexible surface array with switching electronics at each site, used in anesth
 | Interface class | Non-penetrating cortical-surface micro-ECoG with on-array active electronics |
 | Origin | Escabí, Read, Viventi, Kim and colleagues; Journal of Neurophysiology 112:1566-1583 (2014). Follows the active flexible arrays of Viventi and colleagues |
 | First demonstrated | 2014 primary paper, for this 196-site configuration |
-| First human implant | Unreported. No human implantation |
+| First human implant | No human implantation |
 | Species studied | Six adult male Brown Norwegian rats: three recorded with the active array and three separate rats with a passive 32-site comparator. Not six active-array subjects |
 | Regulatory status | Preclinical research. No human clearance established |
 | Function | Electrical recording of sound-evoked cortical activity with active multiplexing |
@@ -48,7 +48,7 @@ A flexible surface array with switching electronics at each site, used in anesth
 | Contact coating | Platinum, about 50 nm, evaporated onto the electrode surfaces |
 | Insulation | Polyimide about 1.2 µm interlayer, with polyimide and epoxy encapsulation layers of about 1.2 µm and 4 µm |
 | Insertion method | Imaging first, then array placed on the exposed surface of auditory cortex. Placement method details beyond this are unreported here |
-| Anchoring and fixation | Unreported. Acute anesthetized preparation |
+| Anchoring and fixation | Acute anesthetized preparation |
 
 ## Electrode and channel physics
 
@@ -57,11 +57,11 @@ A flexible surface array with switching electronics at each site, used in anesth
 | Exposed site area | 200 x 200 µm (0.04 mm2) per site, geometric |
 | Electrode material | Platinum on metal contacts, transistor switching in silicon |
 | Impedance (with measurement frequency) | About 45 kΩ at 1 kHz, reported with the platinum deposition step. Measurement medium and sample scope not detailed here |
-| Noise floor or SNR | Unreported as a numeric RMS floor in the reviewed methods. Multiple samples (30) averaged per site to reduce recording noise |
+| Noise floor or SNR | Not given as a numeric RMS floor in the reviewed methods. Multiple samples (30) averaged per site to reduce recording noise |
 | Recording modality | Extracellular surface field potentials for tone responses, frequency response areas, spectrotemporal receptive fields and dynamic moving ripple responses |
 | Sampling rate | 125 kS/s multiplexed acquisition; 30 samples averaged per site; 14 row selections at 8.928 kHz gives 297.6 Hz per site. Circuit speeds above 10 kS/s and a proposed 14 kS/s are not actual recording rates |
 | Stimulation capability | Not demonstrated. Recording only |
-| Charge injection limit | Unreported |
+| Charge injection limit |  |
 | Reference and ground | Reference electrode attached to each animal; exact placement and material unreported. Not inherited from the 2011 cat experiment |
 
 ## Tissue interface and bioresponse
@@ -70,12 +70,12 @@ A flexible surface array with switching electronics at each site, used in anesth
 | --- | --- |
 | Target tissue | Rat auditory cortex surface |
 | Insertion trauma and BBB disruption | Dura and skull were removed. Tissue effects of the array are not assessed |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported for an implanted case; acute anesthetized recording only |
+| Vascular disruption risk |  |
+| Micromotion sensitivity | Not given for an implanted case; acute anesthetized recording only |
 | Gliosis and encapsulation | Not assessed; acute experiments |
 | Neuron loss near sites | Not assessed |
 | Foreign-body response mitigation | Thin flexible film is the design direction. Biological mitigation outcome is unreported |
-| Typical failure modes | Unreported failure modes. The scaling discussion to thousands of sites is a design argument, not a demonstrated device |
+| Typical failure modes | The scaling discussion to thousands of sites is a design argument, not a demonstrated device |
 
 ## System architecture
 
@@ -86,9 +86,9 @@ A flexible surface array with switching electronics at each site, used in anesth
 | Telemetry bandwidth | Not applicable: wired |
 | Sampling rate | Per-site 297.6 Hz after multiplexing and averaging; total 125 kS/s |
 | Power | External acquisition electronics; no implanted power source |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | Encapsulation layers are described. Chronic hermeticity unreported |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Skull and dura removal under anesthesia plus optical imaging beforehand. Human workflow unreported |
 | Output connectors | Elform anisotropic conductive film to the data-acquisition system; connector model unreported |
 
@@ -98,10 +98,10 @@ A flexible surface array with switching electronics at each site, used in anesth
 | --- | --- |
 | Acute yield | Tonotopic mapping across auditory cortex in the three active-array rats, compared with optical imaging. Per-animal channel yield is unreported in the reviewed methods |
 | Chronic yield | Not demonstrated. Acute experiments only |
-| Stability over time | Unreported |
+| Stability over time |  |
 | Longevity | Not applicable beyond session duration. A 13.5 s acquisition is a mapping protocol, not device lifetime |
 | Revision and explant experience | Not applicable: no explant study |
-| Adverse events | Unreported |
+| Adverse events |  |
 | Notable demonstrations | Sound-evoked cortical mapping with high site count on 29 wires; frequency maps compared with intrinsic optical imaging |
 
 ## Clinical and preclinical evidence

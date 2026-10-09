@@ -42,13 +42,13 @@ A recording platform built from flexible polymer probes, stackable electronics a
 | Array layout | Two or four shanks, 16 contacts per shank in a dual-line layout [1] |
 | Electrode count | 32 or 64 channels per array; system up to 1,024 channels [1] |
 | Pitch | 20 µm edge-to-edge contact spacing (not center pitch); four-shank arrays 250 µm edge-to-edge [1] |
-| Electrode lengths | Unreported |
+| Electrode lengths |  |
 | Shank width and thickness | Shank thickness 14 µm; stiffener silicon 30 µm thick and 60 µm wide, 25° tip [1] |
 | Tip and exposed site geometry | Circular contacts, 20 µm diameter [1] |
 | Contact coating | Electrodeposited PEDOT:PSS [1] |
-| Insulation | Unreported |
+| Insulation |  |
 | Insertion method | Serial insertion with silicon stiffeners; multiple arrays per region [1] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
@@ -56,26 +56,26 @@ A recording platform built from flexible polymer probes, stackable electronics a
 | --- | --- |
 | Exposed site area | 20 µm diameter circles [1] |
 | Electrode material | Platinum with electrodeposited PEDOT:PSS [1] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Single-unit and multi-unit extracellular recording [1] |
 | Sampling rate | 30 kHz per channel [1] |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -83,26 +83,26 @@ A recording platform built from flexible polymer probes, stackable electronics a
 | --- | --- |
 | Onboard electronics | 64-channel Intan amplifying, digitizing and multiplexing chip on a custom PCB per module; two stacks of eight modules [1] |
 | Data path | FPGA headstage and HDMI commutator [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
 | Thermal management | Passive aluminum heatsinks [1] |
 | Packaging and hermeticity | Silicone gel, elastomer and a printed casing [1] |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
+| Acute yield |  |
 | Chronic yield | 375 putative single units from 512 channels of a 1,024-channel implant by automated curation [1] |
 | Stability over time | Units tracked over 10- or 11-day recordings in three animals starting 42, 47 and 53 days after implantation; not every unit identifiable for months [1] |
 | Longevity | Months-long recordings reported [1] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
@@ -110,9 +110,9 @@ A recording platform built from flexible polymer probes, stackable electronics a
 | --- | --- |
 | Human subjects | None |
 | Preclinical cohort | Rats; three animals in the continuous-tracking analysis [1] |
-| Follow-up duration | Unreported |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Follow-up duration |  |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Hundreds of well-isolated units across brain regions in freely behaving rats [1] |
 | Key limitations | Preclinical only; 1,024-channel capacity is not the count of isolated neurons [1] |
 
@@ -121,8 +121,8 @@ A recording platform built from flexible polymer probes, stackable electronics a
 | Field | Value and source scope |
 | --- | --- |
 | Strengths | Modular stackable electronics scaling to 1,024 channels [1] |
-| Limitations | Unreported |
-| Scaling constraints | Unreported |
+| Limitations |  |
+| Scaling constraints |  |
 
 ## Published hardware
 

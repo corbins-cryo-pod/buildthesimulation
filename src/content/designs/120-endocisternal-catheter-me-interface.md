@@ -38,43 +38,43 @@ Chen and colleagues report catheter electrodes delivered through cerebrospinal-f
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Catheter electrode in CSF; lead to glass-packaged generator in a back pocket [1] |
-| Array layout | Unreported |
+| Array layout |  |
 | Electrode count | Two channels per catheter (preprint) [1] |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
 | Shank width and thickness | 0.6 mm catheter diameter (preprint); enclosure dimensions not stated [1] |
-| Tip and exposed site geometry | Unreported |
+| Tip and exposed site geometry |  |
 | Contact coating | Sputtered contacts; material and spacing not stated [1] |
 | Insulation | Glass enclosure sealed with medical-grade epoxy; conductive epoxy joins leads [1] |
 | Insertion method | Navigation from cervical access (cadaver) or lumbar (sheep); ventricle access can traverse the third ventricle floor, so no skull opening is not no tissue traversal [1] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Wireless backscatter of larger muscle, cardiac and stimulation-artifact signals; smaller spinal potentials and EEG used a separate benchtop system [1] |
-| Sampling rate | Unreported |
+| Sampling rate |  |
 | Stimulation capability | Programmable up to 14.5 V; Results calls one spinal protocol monophasic while Methods describes programmable biphasic trains (both kept) [1] |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -82,25 +82,25 @@ Chen and colleagues report catheter electrodes delivered through cerebrospinal-f
 | --- | --- |
 | Onboard electronics | Custom PCB, two 7.5 × 3 mm ME films at 218 kHz, bias magnet; refers to the cortical DOT platform for electronics [1] |
 | Data path | ME wireless power and backscatter; benchtop system for small potentials [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Battery-free ME power [1] |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | Glass enclosure with medical-grade epoxy; final enclosure dimensions not established [1] |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Catheter navigation through CSF spaces; no craniotomy but not risk-free [1] |
-| Output connectors | Unreported |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Sheep recording, stimulation, repositioning and explantation after chronic implantation per the abstract [2] |
 
 ## Clinical and preclinical evidence
@@ -109,9 +109,9 @@ Chen and colleagues report catheter electrodes delivered through cerebrospinal-f
 | --- | --- |
 | Human subjects | None; cadaver navigation and living-human MRI anatomy only [1] |
 | Preclinical cohort | Sheep; separate acute, survival and explantation evidence [1, 2] |
-| Follow-up duration | Unreported |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Follow-up duration |  |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Chronic sheep recording and stimulation per the abstract [2] |
 | Key limitations | Published main text not accessible, so figures are attributed to the preprint; benchtop D-wave and EEG are not wireless implant recordings; therapy and closed loop remain proposed [1, 2, 3] |
 
@@ -121,7 +121,7 @@ Chen and colleagues report catheter electrodes delivered through cerebrospinal-f
 | --- | --- |
 | Strengths | Avoids both blood vessels and the skull [1] |
 | Limitations | Limited sampling rate and gain on the wireless recording path [1] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Source boundary
 

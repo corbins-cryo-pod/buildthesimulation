@@ -46,7 +46,7 @@ This entry is the single-shank Neuropixels 1.0 recording probe, not every member
 | Shank width and thickness | 70 µm wide; 20 µm thick in the 2017 paper, 24 µm in the later datasheet; both retained [1, 2] |
 | Tip and exposed site geometry | 12 x 12 µm titanium nitride contacts [1]; the model tip outline and 200 µm first-row offset are approximations, not manufacturer drawings |
 | Contact coating | Titanium nitride [1] |
-| Insulation | Unreported |
+| Insulation |  |
 | Insertion method | Stereotaxic placement in research surgery |
 | Anchoring and fixation | Skull or headstage fixation in chronic preparations; configuration dependent |
 
@@ -56,8 +56,8 @@ This entry is the single-shank Neuropixels 1.0 recording probe, not every member
 | --- | --- |
 | Exposed site area | 144 µm² nominal from 12 x 12 µm contacts [1] |
 | Electrode material | Titanium nitride contacts [1] |
-| Impedance (with measurement frequency) | Unreported; earlier mixed-generation values were removed |
-| Noise floor or SNR | Unreported as a single figure here; the 2017 paper reports low-noise performance [2] |
+| Impedance (with measurement frequency) | Earlier mixed-generation values were removed |
+| Noise floor or SNR | Not given as a single figure here; the 2017 paper reports low-noise performance [2] |
 | Recording modality | Action potential and local field potential bands [1] |
 | Sampling rate | 30 kHz AP / 2.5 kHz LFP, datasheet [1] |
 | Stimulation capability | Not applicable; recording-only probe |
@@ -70,11 +70,11 @@ This entry is the single-shank Neuropixels 1.0 recording probe, not every member
 | --- | --- |
 | Target tissue | Brain parenchyma along the insertion track |
 | Insertion trauma and BBB disruption | Inherent to penetrating silicon shanks; quantitative values unreported |
-| Vascular disruption risk | Unreported |
+| Vascular disruption risk |  |
 | Micromotion sensitivity | Rigid shank; qualitative concern, quantitative data not extracted here |
 | Gliosis and encapsulation | Not extracted in this sheet |
 | Neuron loss near sites | Not extracted in this sheet |
-| Foreign-body response mitigation | Unreported |
+| Foreign-body response mitigation |  |
 | Typical failure modes | Recording failures documented in the 2017 study; see the linked application entry [2] |
 
 ## System architecture
@@ -88,9 +88,9 @@ This entry is the single-shank Neuropixels 1.0 recording probe, not every member
 | Power | External |
 | Thermal management | Low dissipation; specifics unreported here |
 | Packaging and hermeticity | Non-hermetic research probe |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Stereotaxic research surgery |
-| Output connectors | Unreported |
+| Output connectors |  |
 
 ## Performance envelope
 
@@ -110,10 +110,10 @@ This entry is the single-shank Neuropixels 1.0 recording probe, not every member
 | --- | --- |
 | Human subjects | None; research-only device |
 | Preclinical cohort | 2017 rodent study and follow-on literature [2] |
-| Follow-up duration | Unreported |
+| Follow-up duration |  |
 | Indications | Neuroscience research |
 | Trials and registries | None |
-| Primary outcomes | Unreported |
+| Primary outcomes |  |
 | Key limitations | Research-only; chronic durability limited per the linked study |
 
 ## Engineering tradeoffs

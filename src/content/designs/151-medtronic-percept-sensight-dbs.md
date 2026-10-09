@@ -27,8 +27,8 @@ Percept PC (approved June 2020) and Percept RC (approved January 2024) are the c
 | Interface class | Implanted pulse generator with directional deep brain leads that can sense local field potentials [2][3] |
 | Origin | Commercial FDA-approved device within PMA P960009 (Activa and Percept family) [1] |
 | First demonstrated | Percept PC FDA approval June 24, 2020 (P960009/S361) [1][4] |
-| First human implant | Unreported |
-| Species studied | Unreported |
+| First human implant |  |
+| Species studied |  |
 | Regulatory status | PMA P960009. Percept PC approved June 24, 2020 (S361); Percept RC B35300 approved January 8, 2024 (S438); SenSight lead kits May 25, 2021 (S391) [1]. Not an FDA clearance of any individual research result |
 | Function | Stimulation and, in the Percept PC, wireless recording of local field potentials from the implanted site [2][5] |
 | Target tissue | STN or GPi (Parkinson's disease), VIM thalamus (tremor), ANT thalamus (epilepsy), GPi (dystonia, HDE history) [1][3] |
@@ -41,11 +41,11 @@ Percept PC (approved June 2020) and Percept RC (approved January 2024) are the c
 | Array layout | 1-3-3-1 configuration [2] |
 | Electrode count | 8 contacts per SenSight lead (1-3-3-1) [2] |
 | Pitch | 1.5 mm and 0.5 mm electrode spacing options [2] |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
+| Electrode lengths |  |
+| Shank width and thickness |  |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
 | Insertion method | Stereotactic lead with burr hole device and depth stop; SureTune 4 software automates orientation [1][2] |
 | Anchoring and fixation | Burr hole device anchors the lead to the skull [1] |
 
@@ -53,27 +53,27 @@ Percept PC (approved June 2020) and Percept RC (approved January 2024) are the c
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Bipolar local field potential sensing in BrainSense modes (Setup, Streaming, Survey, Indefinite Streaming, Timeline) [5] |
 | Sampling rate | Time-domain LFP at 250 Hz in the exported JSON files [5] |
 | Stimulation capability | Directional stimulation with programmable amplitude, rate, pulse width, cycling and electrode configuration [1][2] |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Deep brain targets listed under Identity [1][3] |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
 | Typical failure modes | Labeled device complications include lead or extension fracture, neurostimulator malfunction and high impedance [1] |
 
 ## System architecture
@@ -82,22 +82,22 @@ Percept PC (approved June 2020) and Percept RC (approved January 2024) are the c
 | --- | --- |
 | Onboard electronics | Implantable neurostimulator with sensing capability; clinician programmer, patient programmer and therapy access controller [1][3] |
 | Data path | Wireless LFP recording; Streaming mode shows selected power and stimulation amplitude on the clinician tablet in real time; Passive mode collects band power chronically up to 60 days [5] |
-| Telemetry bandwidth | Unreported |
+| Telemetry bandwidth |  |
 | Sampling rate | 250 Hz time-domain LFP [5] |
 | Power | Percept PC described by Medtronic as recharge free with projected mean longevity greater than five years for a median energy user; Percept RC is rechargeable per the SSED's component list [1][3] |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
+| Thermal management |  |
+| Packaging and hermeticity |  |
 | MRI compatibility | Medtronic states full-body MR Conditional access for 1.5T and 3T when conditions are met; non-conforming scans risk tissue lesions at the electrodes [2][3] |
 | Surgical complexity | Stereotactic lead implant plus chest or abdominal neurostimulator pocket and extension [1] |
-| Output connectors | Unreported |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | Projected mean greater than five years for median energy users (Percept PC, manufacturer figure) [3] |
 | Revision and explant experience | In the SSED dystonia cohort (18 adults, 5 years), subcutaneous infection occurred in 16.7% (3/18) and electrode fracture in 5.6% (1/18); this is a GPi dystonia cohort, not Percept-specific [1] |
 | Adverse events | Labeled risks include intracranial hemorrhage, infection, meningitis, brain abscess, cyst formation and neurological effects [1] |
@@ -108,11 +108,11 @@ Percept PC (approved June 2020) and Percept RC (approved January 2024) are the c
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | 20 patients in the Percept PC technical report (14 PD, 5 dystonia, 1 chronic pain) [5]. SSED supplement S482 reviews prior studies for dystonia |
-| Preclinical cohort | Unreported |
-| Follow-up duration | Unreported for the Percept hardware; SSED dystonia data run to 5 years [1] |
+| Preclinical cohort |  |
+| Follow-up duration | Not given for the Percept hardware; SSED dystonia data run to 5 years [1] |
 | Indications | Parkinson's disease, essential and parkinsonian tremor, epilepsy (ANT), and dystonia per the November 22, 2025 SSED and Medtronic labeling [1][3] |
 | Trials and registries | SSED cites investigator study 6 (Kupsch 2006, Volkmann 2012) for GPi dystonia [1] |
-| Primary outcomes | Unreported for Percept sensing as a therapy outcome; the Percept PC report found it reliably recorded LFP from the implanted site [5] |
+| Primary outcomes | Not given for Percept sensing as a therapy outcome; the Percept PC report found it reliably recorded LFP from the implanted site [5] |
 | Key limitations | The SSED read here supports a dystonia indication, so its safety tables are not specific to Percept sensing; the technical report names artefacts, contact selection, data loss and synchronization as pitfalls [1][5] |
 
 ## Engineering tradeoffs

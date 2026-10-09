@@ -16,7 +16,7 @@ draft: false
 
 # Axonics sacral neuromodulation
 
-The Axonics system is a rechargeable sacral neuromodulation stimulator. This sheet reads the FDA summary for PMA P190006 (fecal incontinence, approved September 6, 2019). Clinical results and the urinary indication were not read and stay Unreported.
+The Axonics system is a rechargeable sacral neuromodulation stimulator. This sheet reads the FDA summary for PMA P190006 (fecal incontinence, approved September 6, 2019). Clinical results and the urinary indication were not read and stay blank.
 
 ## Identity
 
@@ -26,8 +26,8 @@ The Axonics system is a rechargeable sacral neuromodulation stimulator. This she
 | Manufacturer | Axonics Modulation Technologies, Inc., Irvine, California [1] |
 | Interface class | Rechargeable sacral neuromodulation stimulator with a four-contact tined lead [1] |
 | Origin | Commercial FDA-approved device; this sheet reads PMA P190006 (fecal incontinence). The same family's other PMA, P180046 (urinary indications), supplies the hardware and animal-study rows marked [2]; its clinical sections were not read [1][2] |
-| First demonstrated | Unreported |
-| First human implant | Unreported |
+| First demonstrated |  |
+| First human implant |  |
 | Species studied | Hound dog (30 and 60 day GLP study, local tissue safety) and porcine (30 day, S2 stimulation and recharging) [2] |
 | Regulatory status | PMA P190006 approved September 6, 2019 for chronic fecal incontinence, with no panel recommendation [1] |
 | Function | Applies electrical stimulation to the sacral nerves for chronic fecal incontinence in patients who have failed or are not candidates for more conservative treatments [1] |
@@ -43,8 +43,8 @@ The Axonics system is a rechargeable sacral neuromodulation stimulator. This she
 | Pitch | 3 mm electrode spacing [1] |
 | Electrode lengths | Lead length 30 cm; electrode size 3 mm [1] |
 | Shank width and thickness | Lead diameter 1.3 mm (5 French) [1] |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
 | Insulation | Polyurethane jacket tubing and polyurethane fixation; 16 anchoring tines [2] |
 | Insertion method | Introducer sheath and dilator through the foramen; foramen needle can deliver up to 12.5 mA, 450 us and 130 Hz during testing [1] |
 | Anchoring and fixation | Anchoring tines on the lead [1] |
@@ -53,66 +53,66 @@ The Axonics system is a rechargeable sacral neuromodulation stimulator. This she
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Platinum-iridium ring electrodes and proximal contacts; MP35N conductor wires, 4 filar in-line coil [2] |
 | Impedance (with measurement frequency) | Lead DC resistance acceptance limit under 135 ohm; this is lead resistance, not electrode-tissue impedance [1] |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
 | Stimulation capability | 2.1 to 130 Hz, 60 to 450 us pulse width, 0 to 12.5 mA, current controlled, unipolar and bipolar, with cycling and ramp features (IPG per the P180046 SSED); trial with a temporary lead up to 7 days or a permanent lead up to 14 days, with at least a 50% drop in incontinent episodes needed to proceed [1][2] |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
-| Data path | Unreported |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Onboard electronics |  |
+| Data path |  |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Rechargeable battery, 50 mAh at 3.6 V nominal; device life 15 years at moderate energy [1] |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
+| Thermal management |  |
+| Packaging and hermeticity |  |
 | MRI compatibility | The P180046 SSED lists MRI testing for 1.5T and 3T head coil and 1.5T full body coil, with conditions in the labeling; the specific conditions were not read [2] |
 | Surgical complexity | Trial phase with a temporary or percutaneous lead, then a permanent lead and an IPG pocket in the upper buttock [1] |
-| Output connectors | Unreported |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | Device life 15 years at moderate energy (manufacturer-specified design figure from the SSED, not a measured clinical result); lead flex fatigue tested to 100,000 cycles at 2 Hz [2] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects | Unreported |
-| Preclinical cohort | Unreported |
-| Follow-up duration | Unreported |
+| Human subjects |  |
+| Preclinical cohort |  |
+| Follow-up duration |  |
 | Indications | Chronic fecal incontinence in patients who failed or are not candidates for more conservative treatments (P190006) [1] |
-| Trials and registries | Unreported |
-| Primary outcomes | Unreported |
+| Trials and registries |  |
+| Primary outcomes |  |
 | Key limitations | Clinical study sizes and outcomes in the SSED were not read for this sheet, and the urinary indication PMA was not read [1] |
 
 ## Engineering tradeoffs
@@ -120,8 +120,8 @@ The Axonics system is a rechargeable sacral neuromodulation stimulator. This she
 | Field | Value and source scope |
 | --- | --- |
 | Strengths | Rechargeable with stated 15-year device life at moderate energy [1] |
-| Limitations | Unreported |
-| Scaling constraints | Unreported |
+| Limitations |  |
+| Scaling constraints |  |
 
 ## Version boundary
 

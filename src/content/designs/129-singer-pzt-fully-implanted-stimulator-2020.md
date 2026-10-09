@@ -40,13 +40,13 @@ The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectr
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Case channel holds a 9 mm Pt-Ir bipolar stereotrode [1] |
-| Array layout | Unreported |
+| Array layout |  |
 | Electrode count | Bipolar stereotrode, two contacts [1] |
-| Pitch | Unreported |
+| Pitch |  |
 | Electrode lengths | 9 mm stereotrode [1] |
 | Shank width and thickness | Films 4.3 × 2 mm and 5.4 × 2 mm; whole assembly 175 mm³, 500 mg; power source 2-4 mm³ (Table 1) [1] |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
 | Insulation | Parylene-coated films and circuit in a rounded 3D-printed case, outer Flow-It ALC and epoxy [1] |
 | Insertion method | Stereotrode enters the brain through the case; skin sutured over [1] |
 | Anchoring and fixation | Fixed to skull screws and dental materials [1] |
@@ -55,54 +55,54 @@ The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectr
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Platinum-iridium [1] |
 | Impedance (with measurement frequency) | Nominal 10 kΩ at 1 kHz [1] |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
 | Stimulation capability | 150 Hz (Table 1); biphasic from two rectifier branches balanced by magnet position [1] |
 | Charge injection limit | Less than 1 nC residual charge, discharging within 2 ms, in the general two-film circuit test; not a per-implant qualification [1] |
-| Reference and ground | Unreported |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
 | Onboard electronics | Components soldered directly without a circuit board; two resonances, full-wave rectifier branches with transistor isolation [1] |
-| Data path | Unreported |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Data path |  |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Table 1: 250-400 kHz carrier, 1-2 mT AC field, 7 W required, 2 mW maximum in-animal; resonant-coil methods 300-400 kHz; place-preference track used 1.5 mT [1] |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | Ethylene-oxide sterilized then degassed; 14-day saline test of coated films; lead-containing PZT lifetime containment not established [1] |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | Acute 1-3 days after surgery; skin sutures held at least one month, not a functional or histology result [1] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Place preference from medial-forebrain-bundle stimulation without a headstage [1] |
 
 ## Clinical and preclinical evidence
@@ -112,8 +112,8 @@ The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectr
 | Human subjects | None |
 | Preclinical cohort | Three rats [1] |
 | Follow-up duration | 1-3 days after surgery [1] |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Reward-circuit behavior from wireless stimulation [1] |
 | Key limitations | No chronic function, human therapy, recording channel or feedback loop shown; chronic packaging and foreign-body tests called for [1] |
 
@@ -123,7 +123,7 @@ The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectr
 | --- | --- |
 | Strengths | Fully implanted, no exposed headstage; no genetic modification needed [1] |
 | Limitations | Lead-containing PZT; 7 W drive; supplement geometry not readable in this pass [1] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Package and output
 

@@ -26,8 +26,8 @@ The Nalu system is a miniature implanted peripheral nerve stimulator with an eig
 | Manufacturer | Nalu Medical, Inc., Carlsbad, California [1] |
 | Interface class | Wirelessly powered implanted peripheral nerve stimulator with lead electrodes [1] |
 | Origin | Commercial FDA-cleared device; 510(k) K183579 [1] |
-| First demonstrated | Unreported |
-| First human implant | Unreported |
+| First demonstrated |  |
+| First human implant |  |
 | Species studied | Human [1] |
 | Regulatory status | 510(k) K183579 cleared March 29, 2019; later 510(k) K232415 decision 08/21/2024, substantially equivalent. Class II, product code GZF [1][2] |
 | Function | Peripheral nerve stimulation for severe intractable chronic pain of peripheral nerve origin, not for craniofacial pain [1] |
@@ -38,43 +38,43 @@ The Nalu system is a miniature implanted peripheral nerve stimulator with an eig
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Lead with eight cylindrical electrodes at the distal end, available integrated with the IPG or connected through ports [1] |
-| Array layout | Unreported |
+| Array layout |  |
 | Electrode count | 8 per lead; single or dual lead configurations [1] |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
+| Shank width and thickness |  |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Pt/Ir electrodes, polyurethane insulation [1] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -82,46 +82,46 @@ The Nalu system is a miniature implanted peripheral nerve stimulator with an eig
 | --- | --- |
 | Onboard electronics | Ceramic hermetic IPG enclosure with feedthrough and printed circuit board, polyurethane-encapsulated wires and silicone overmold [1] |
 | Data path | Therapy Disc powers and commands the implant by RF; the clinician programmer runs on an Android tablet over Bluetooth Low Energy [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Implant has no battery in the description read; the externally worn Therapy Disc holds a rechargeable lithium-ion battery and is held by an adhesive clip or belt [1] |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects | Unreported |
-| Preclinical cohort | Unreported |
-| Follow-up duration | Unreported |
+| Human subjects |  |
+| Preclinical cohort |  |
+| Follow-up duration |  |
 | Indications | Adults with severe intractable chronic pain of peripheral nerve origin, as sole agent or adjunct; trial devices for no more than 30 days [1] |
-| Trials and registries | Unreported |
-| Primary outcomes | Unreported |
-| Key limitations | Cleared by 510(k) on predicate equivalence; no clinical trial data in the sources read. Pulse parameter ranges appear in a multi-device comparison table and were not attributed to the Nalu device here, so they read Unreported [1] |
+| Trials and registries |  |
+| Primary outcomes |  |
+| Key limitations | Cleared by 510(k) on predicate equivalence; no clinical trial data in the sources read. Pulse parameter ranges appear in a multi-device comparison table and were not attributed to the Nalu device here, so they are left blank [1] |
 
 ## Engineering tradeoffs
 
 | Field | Value and source scope |
 | --- | --- |
-| Strengths | Unreported |
-| Limitations | Unreported |
-| Scaling constraints | Unreported |
+| Strengths |  |
+| Limitations |  |
+| Scaling constraints |  |
 
 ## Version boundary
 

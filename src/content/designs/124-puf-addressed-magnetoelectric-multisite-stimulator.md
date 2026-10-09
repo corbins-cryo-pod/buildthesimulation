@@ -39,44 +39,44 @@ This is the paper-specific 330-kHz, PUF-addressed configuration. The [2022 endov
 
 | Field | Value and source scope |
 | --- | --- |
-| Interface type | Unreported |
-| Array layout | Unreported |
+| Interface type |  |
+| Array layout |  |
 | Electrode count | Electrode count not extracted; animal-specific stereotrode not specified [1] |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
 | Shank width and thickness | Implant 6.2 mm³, 30 mg; ASIC 1 × 0.8 mm (0.8 mm²); ME film 2 × 3 mm, 0.2 mm thick per table [1] |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
 | Stimulation capability | Voltage-controlled monophasic or biphasic pulses; 4-bit amplitude 0.3 V (intro) or 0.25-3.5 V (functional measurement) and pulse width 0.15-1.2 ms; 5-bit delay to 0.8 ms; electrodes shorted after each stimulus [1] |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -85,24 +85,24 @@ This is the paper-specific 330-kHz, PUF-addressed configuration. The [2022 endov
 | Onboard electronics | TSMC 180 nm CMOS ASIC, off-chip storage capacitor, eight-bit CMOS PUF ID with temporal majority voting [1] |
 | Data path | ASK downlink, 64 resonance cycles per bit, 5.16 kbps; PUF ID selects a device, not encryption or authentication [1] |
 | Telemetry bandwidth | 5.16 kbps downlink [1] |
-| Sampling rate | Unreported |
+| Sampling rate |  |
 | Power | Battery-free; about 330 kHz resonance; stimulation circuit about 90% efficient above 1.5 V (not end to end); peak transfer 1.03% at coil center under ideal alignment; 9 µW idle [1] |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | Chronic packaging not established [1] |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Two bench implants at 15 and 25 mm individually programmed; ex-vivo 2 cm porcine tissue with reliable operation to 3.5 cm total separation (not implanted tissue); 40 mm in air; 60 mm depth is a COMSOL simulation; 50° and 40° tolerance in two planes at 30 mm for complete devices [1] |
 
 ## Clinical and preclinical evidence
@@ -111,9 +111,9 @@ This is the paper-specific 330-kHz, PUF-addressed configuration. The [2022 endov
 | --- | --- |
 | Human subjects | None |
 | Preclinical cohort | Hydra and acute rat sciatic; spinal cord and cardiac pacing are proposed only [1] |
-| Follow-up duration | Unreported |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Follow-up duration |  |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Individually addressed stimulation of multiple devices from one transmitter [1] |
 | Key limitations | Bit distributions and supply regulation are simulated, not a clinical reliability dataset; chronic tissue response unestablished [1] |
 
@@ -123,7 +123,7 @@ This is the paper-specific 330-kHz, PUF-addressed configuration. The [2022 endov
 | --- | --- |
 | Strengths | Individual addressing from a shared transmitter, 1 mm ASIC [1] |
 | Limitations | Low end-to-end efficiency; eight-bit address only [1] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Published components
 

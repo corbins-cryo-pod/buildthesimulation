@@ -32,7 +32,7 @@ This is the **64-thread, 16-sites-per-thread configuration described in 2024**, 
 | Thread width | 16–84 µm in the same interview [2] | Linear taper between those limits; progression is illustrative |
 | Thread thickness | Two 2 µm polymer layers and a 0.4 µm metal stack [2] | 4.4 µm total derived from the described stack |
 | Enclosure | Approximately quarter-sized and 9 mm thick [2] | Nominal 24 mm diameter × 9 mm thickness |
-| Contact shape and exposed area | Unreported | 12 × 20 µm visual markers; exposed area is exported as unknown |
+| Contact shape and exposed area |  | 12 × 20 µm visual markers; exposed area is exported as unknown |
 | Thread placement | Independently placed by the surgical robot [1] | Unfurled display fan, not a cortical insertion map |
 
 ### Using the 3D reference
@@ -72,7 +72,7 @@ Inductive charging and wireless data allow the implant to operate without a perc
 | Array layout | 64 threads x 16 sites (2024 description) [1, 2]; the 128 x 8 variant is documented separately [3] |
 | Electrode count | 1,024 physical sites in both descriptions [1, 3]; simultaneous channel count unreported |
 | Pitch | 200 µm along the thread, per the 2024 interview [2] |
-| Electrode lengths | Unreported; thread reach and insertion depth are patient-specific and not published |
+| Electrode lengths | Thread reach and insertion depth are patient-specific and not published |
 | Shank width and thickness | 16-84 µm width; thickness about 4.4 µm derived from two 2 µm polymer layers and a 0.4 µm metal stack [2] |
 | Tip and exposed site geometry | Contact shape and exposed area unreported; model markers are illustrative |
 | Contact coating | Iridium oxide recording sites on a thin-film metal stack [2] |
@@ -84,15 +84,15 @@ Inductive charging and wireless data allow the implant to operate without a perc
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported; exported as unknown |
+| Exposed site area | Exported as unknown |
 | Electrode material | Iridium-oxide recording sites on a thin-film metal stack [2] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Recording of neural activity near neurons to detect action potentials per the company page; bands unreported |
-| Sampling rate | Unreported |
+| Sampling rate |  |
 | Stimulation capability | Discussed publicly [2]; parameters and limits unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
@@ -102,8 +102,8 @@ Inductive charging and wireless data allow the implant to operate without a perc
 | Insertion trauma and BBB disruption | Threads are placed to avoid vasculature per company descriptions [1]; quantitative trauma data unreported |
 | Vascular disruption risk | Threads placed to avoid vasculature per company descriptions [1]; quantitative data unreported |
 | Micromotion sensitivity | Flexible threads are designed to move with tissue [1]; independent quantitative data unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
 | Foreign-body response mitigation | Thread flexibility and small cross-section are the design approach; measured outcomes unreported |
 | Typical failure modes | Thread retraction after implantation was reported for the first participant in company updates [1] |
 
@@ -113,12 +113,12 @@ Inductive charging and wireless data allow the implant to operate without a perc
 | --- | --- |
 | Onboard electronics | Enclosure contains electronics for recording, processing and wireless telemetry; custom low-power chips per the company page [1] |
 | Data path | Wireless to the Neuralink Application, which decodes the data stream into actions; no percutaneous connector [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Small rechargeable battery charged wirelessly with an inductive charger [1, 4] |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | Hermetically sealed biocompatible enclosure per the company page; hermeticity specifications unreported |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | R1 robot insertion with skull-mounted enclosure placement [1] |
 | Output connectors | No percutaneous connector [1]; wireless link details unreported |
 
@@ -126,11 +126,11 @@ Inductive charging and wireless data allow the implant to operate without a perc
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
+| Acute yield |  |
 | Chronic yield | Company reports cursor and device control in study participants [1]; independent datasets unreported |
 | Stability over time | Thread retraction affected early recordings in the first participant [1]; long-term stability unreported |
-| Longevity | Unreported; battery and packaging lifetime not publicly specified |
-| Revision and explant experience | Unreported |
+| Longevity | Battery and packaging lifetime not publicly specified |
+| Revision and explant experience |  |
 | Adverse events | No independently audited rates |
 | Notable demonstrations | Company-reported cursor control and computer use by study participants [1] |
 

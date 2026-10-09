@@ -16,7 +16,7 @@ draft: false
 
 # Neuropixels Opto prototype
 
-Lakunina, Socha, Ladd and colleagues combine electrical recording with dual-color photonic stimulation in a Nature Methods paper published June 1, 2026. Values are scoped to the prototype in that paper and its supplement. Unreported means not established by the reviewed sources.
+Lakunina, Socha, Ladd and colleagues combine electrical recording with dual-color photonic stimulation in a Nature Methods paper published June 1, 2026. Values are scoped to the prototype in that paper and its supplement. A blank cell means not established by the reviewed sources.
 
 ## Identity
 
@@ -27,7 +27,7 @@ Lakunina, Socha, Ladd and colleagues combine electrical recording with dual-colo
 | Interface class | Penetrating silicon probe with integrated optical waveguides and electrical recording |
 | Origin | Lakunina, Socha, Ladd and colleagues; Nature Methods, June 1, 2026 |
 | First demonstrated | 2026 peer-reviewed paper; supplement Table 2 distinguishes 2019 design targets from 2023 prototype results |
-| First human implant | Unreported. No human implant |
+| First human implant | No human implant |
 | Species studied | Mouse optotagging and cortical activation and inhibition experiments; cohort sizes are in the application pages |
 | Regulatory status | Research prototype. No clearance. UCL expects community availability in 2028, a forecast |
 | Function | Electrical recording plus blue and red light delivery for optotagging and photostimulation |
@@ -45,9 +45,9 @@ Lakunina, Socha, Ladd and colleagues combine electrical recording with dual-colo
 | Shank width and thickness | 70 µm wide, 33 µm thick. Silicon base 9.6 x 10.2 mm with package base thickness 1.1 mm |
 | Tip and exposed site geometry | Emitter areas described as 16 to 25 µm2; Table 2 gives blue 0.45 x 32 µm and red 0.60 x 42 µm. Emitters span about 1.4 mm (introduction) or 1.5 mm from the tip (Results) |
 | Contact coating | TiN recording sites; 150 nm SiN waveguide layer |
-| Insulation | Unreported |
+| Insulation |  |
 | Insertion method | Inserted into mouse brain for acute and tethered recording; tip-deflection specification is reported inconsistently (200 µm in Results versus below plus or minus 200 nm in Methods) |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
@@ -55,24 +55,24 @@ Lakunina, Socha, Ladd and colleagues combine electrical recording with dual-colo
 | --- | --- |
 | Exposed site area | 12 x 12 µm (144 µm2) per recording site |
 | Electrode material | Titanium nitride |
-| Impedance (with measurement frequency) | Unreported |
+| Impedance (with measurement frequency) |  |
 | Noise floor or SNR | Mean AP/LFP noise 5.45/5.33 µV RMS across tested sites. Red-onset electrical artifact about 30 µV, reduced by common-average referencing and tapered pulses |
 | Recording modality | Extracellular spikes (0.3 to 10 kHz AP band) and LFP below 1 kHz |
 | Sampling rate | AP 30 kHz; LFP 2.5 kHz |
 | Stimulation capability | Optical stimulation, not electrical. Red or blue light pulses to individual emitters |
 | Charge injection limit | Not applicable: light delivery, not electrical stimulation |
-| Reference and ground | Unreported |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Mouse brain |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
 | Foreign-body response mitigation | Blue light limited in power; red used for higher-intensity precise addressing. Tapered pulses reduce artifact |
 | Typical failure modes | High-intensity blue light produces material instability and leaks from unintended emitters. Blue 0.24% and red 2.07% of fiber input; about 5 mW red or 40 mW blue input to deliver 100 µW at an emitter. Tip-deflection spec conflict unresolved |
 
@@ -86,8 +86,8 @@ Lakunina, Socha, Ladd and colleagues combine electrical recording with dual-colo
 | Sampling rate | Same 30 kHz AP and 2.5 kHz LFP |
 | Power | External lasers and PXI systems; no implanted power |
 | Thermal management | Table 2 reports below 1 degree C probe-tissue temperature difference in prototype tests |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
 | Surgical complexity | Craniotomy and tethered fiber plus cable in mice. About 740 processing steps in fabrication |
 | Output connectors | Fiber coupling and flex cable to headstage; connector model unreported |
 
@@ -96,11 +96,11 @@ Lakunina, Socha, Ladd and colleagues combine electrical recording with dual-colo
 | Field | Value and source scope |
 | --- | --- |
 | Acute yield | Optical and electrical activation of cortical neurons in mice; optotagging of cell types in parallel |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Parallel dual-color optotagging and cortical activation and inhibition in mice |
 
 ## Clinical and preclinical evidence
@@ -109,7 +109,7 @@ Lakunina, Socha, Ladd and colleagues combine electrical recording with dual-colo
 | --- | --- |
 | Human subjects | None |
 | Preclinical cohort | Mouse; sizes in the linked application pages |
-| Follow-up duration | Unreported |
+| Follow-up duration |  |
 | Indications | Preclinical research, not a clinical indication |
 | Trials and registries | Reporting summary: randomized stimulus conditions, no blinding, no planned sample-size calculation; no data excluded per the form while the paper applies unit-quality criteria |
 | Primary outcomes | Integrated optotagging with recording; characterization of loss, leakage and artifact |

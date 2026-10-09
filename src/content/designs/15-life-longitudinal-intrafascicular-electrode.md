@@ -17,7 +17,7 @@ draft: false
 
 # LIFE (Longitudinal Intrafascicular Electrode)
 
-All rows follow the shared implant-device template. Measurements belong to the named study or configuration. Unreported means the reviewed sources do not establish a value. Proposed use, terminal assays and continuously functioning implants are not treated as equivalent.
+All rows follow the shared implant-device template. Measurements belong to the named study or configuration. A blank cell means the reviewed sources do not establish a value. Proposed use, terminal assays and continuously functioning implants are not treated as equivalent.
 
 ## Identity
 
@@ -54,14 +54,14 @@ All rows follow the shared implant-device template. Measurements belong to the n
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported as measured area; 25 µm core and approximately 1 mm exposure specified for DIME, not converted to an exact exposed area |
+| Exposed site area | Not given as measured area; 25 µm core and approximately 1 mm exposure specified for DIME, not converted to an exact exposed area |
 | Electrode material | Pt/Ir wire in Thota 2015 |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Peripheral neural activity from axon groups; acute afferent recording in 2015 and motor intent control in 2005 human study |
 | Sampling rate | Configuration dependent; external recording system, exact rate unreported in audited Methods |
 | Stimulation capability | Selective sensory and motor stimulation in published use; 2015 acute rodent ankle movements and 2005 human feedback |
-| Charge injection limit | Unreported |
+| Charge injection limit |  |
 | Reference and ground | 2015 recording: one wire extrafascicular within nerve as differential reference; separate ball ground in prototype assembly |
 
 ## Tissue interface and bioresponse
@@ -70,10 +70,10 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | --- | --- |
 | Target tissue | Within peripheral nerve fascicles |
 | Insertion trauma and BBB disruption | BBB: not applicable; needle insertion breaches peripheral fascicle, quantitative injury unreported in reviewed system paper |
-| Vascular disruption risk | Unreported |
+| Vascular disruption risk |  |
 | Micromotion sensitivity | Fine wires risk entanglement and breakage under mechanical stress; coiled DIME bundle and sheaths are intended to reduce that risk, 2015 |
 | Gliosis and encapsulation | Peripheral interface, not CNS gliosis; chronic tissue-response rate unreported in audited sources |
-| Neuron loss near sites | Unreported |
+| Neuron loss near sites |  |
 | Foreign-body response mitigation | Small wire diameter and flexible routing are design choices; chronic effectiveness not quantified here |
 | Typical failure modes | Wire entanglement and stress-related breakage identified as design risks, Thota 2015; not measured cohort failure rates |
 
@@ -86,9 +86,9 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Telemetry bandwidth | Not applicable to wired LIFE prototype |
 | Sampling rate | Configuration dependent, external acquisition |
 | Power | External electronics for audited prototype |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | 2015: silicone-protected bundle and epoxy-insulated connector; percutaneous system, no hermetic lifetime qualification |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Nerve/fascicle exposure, multiple needle insertions and lead routing; tested in human cadaver arm, 2015 |
 | Output connectors | 2015 custom PCB with Hirose LX multi-channel connector; silicone assembly approximately 6 mm high |
 
@@ -97,10 +97,10 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Field | Value and source scope |
 | --- | --- |
 | Acute yield | Cadaver prototype routed without visually observed mechanical damage; acute rodent functional stimulation/recording, 2015. Not a numerical electrical yield |
-| Chronic yield | Unreported |
+| Chronic yield |  |
 | Stability over time | Chronic stability not established by the 2015 cadaver and acute rodent system study |
 | Longevity | Proposed weeks-to-months studies are not observed device lifetime |
-| Revision and explant experience | Unreported |
+| Revision and explant experience |  |
 | Adverse events | Clinical adverse-event rate unreported in audited sources; cadaver routing is not a safety trial |
 | Notable demonstrations | Dhillon 2005 amputees judged and set prosthetic grip force/joint position without visual input; 2015 demonstrates multi-fascicle deployment |
 
@@ -112,7 +112,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Preclinical cohort | Acute rodents in Thota 2015; cohort count unreported in audited text |
 | Follow-up duration | Cadaver/acute deployment in 2015; generic chronic duration not asserted |
 | Indications | Experimental prosthetic sensory feedback and motor control |
-| Trials and registries | Unreported |
+| Trials and registries |  |
 | Primary outcomes | Feasibility of direct neural feedback/control and multi-LIFE surgical management |
 | Key limitations | LIFE family differs from DIME packaging; acute/cadaver deployment does not establish chronic clinical durability |
 

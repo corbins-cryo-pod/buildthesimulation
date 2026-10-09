@@ -16,7 +16,7 @@ draft: false
 
 # Bioness StimRouter PNS
 
-StimRouter is an implanted peripheral nerve lead with an integrated receiver, driven by an external pulse transmitter worn on a skin patch. This sheet uses the 510(k) K211965 clearance. Lead and waveform specs are Unreported.
+StimRouter is an implanted peripheral nerve lead with an integrated receiver, driven by an external pulse transmitter worn on a skin patch. This sheet uses the 510(k) K211965 clearance. Lead and waveform specs are left blank.
 
 ## Identity
 
@@ -26,8 +26,8 @@ StimRouter is an implanted peripheral nerve lead with an integrated receiver, dr
 | Manufacturer | Bioness Inc., Valencia, California [1] |
 | Interface class | Implanted peripheral nerve lead powered and driven transcutaneously by an external transmitter [1] |
 | Origin | Commercial FDA-cleared device; 510(k) K211965, predicate K200482 [1] |
-| First demonstrated | Unreported |
-| First human implant | Unreported |
+| First demonstrated |  |
+| First human implant |  |
 | Species studied | Human [1] |
 | Regulatory status | 510(k) K211965 cleared February 22, 2022 (dated January 21, 2022); predicate K200482 cleared 2020; Class II, 21 CFR 882.5870, product code GZF [1][2] |
 | Function | Electrical stimulation of a target peripheral nerve for severe intractable chronic pain of peripheral nerve origin, as an adjunct to other therapies; not for craniofacial pain [1] |
@@ -38,90 +38,90 @@ StimRouter is an implanted peripheral nerve lead with an integrated receiver, dr
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Implantable multi-electrode lead with an integrated receiver; supplied in a Lead Loader for intraoperative testing [1] |
-| Array layout | Unreported |
-| Electrode count | Unreported |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Array layout |  |
+| Electrode count |  |
+| Pitch |  |
+| Electrode lengths |  |
+| Shank width and thickness |  |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
+| Onboard electronics |  |
 | Data path | The external pulse transmitter on a skin electrode patch sends an electrical signal transcutaneously to the lead's receiver [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | No implanted battery described; stimulation energy comes from the external transmitter [1] |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects | Unreported |
-| Preclinical cohort | Unreported |
-| Follow-up duration | Unreported |
+| Human subjects |  |
+| Preclinical cohort |  |
+| Follow-up duration |  |
 | Indications | Adults with severe intractable chronic pain of peripheral nerve origin as an adjunct to other modes of therapy such as medications [1] |
-| Trials and registries | Unreported |
-| Primary outcomes | Unreported |
-| Key limitations | 510(k) clearance letter and summary only; lead length, electrode count, waveform and clinical data were not extracted, so they read Unreported [1] |
+| Trials and registries |  |
+| Primary outcomes |  |
+| Key limitations | 510(k) clearance letter and summary only; lead length, electrode count, waveform and clinical data were not extracted, so they are left blank [1] |
 
 ## Engineering tradeoffs
 
 | Field | Value and source scope |
 | --- | --- |
-| Strengths | Unreported |
-| Limitations | Unreported |
-| Scaling constraints | Unreported |
+| Strengths |  |
+| Limitations |  |
+| Scaling constraints |  |
 
 ## Version boundary
 

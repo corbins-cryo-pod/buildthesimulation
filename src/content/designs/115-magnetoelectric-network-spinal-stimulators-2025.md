@@ -44,41 +44,41 @@ The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectr
 | Interface type | Commercial percutaneous SCS lead per node [1] |
 | Array layout | Network of addressed nodes; one contact pair per node [1] |
 | Electrode count | One pair on a commercial lead per node; six devices built for bench, two then four implanted [1] |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
 | Shank width and thickness | Packaged IPG about 1 × 1 × 1 cm per node; ME film 7.5 × 3 mm [1] |
 | Tip and exposed site geometry | Adjacent stainless-steel cylinders, 1.33 mm diameter, 3 mm length [1] |
 | Contact coating | Stainless-steel cylinders [1] |
 | Insulation | 3D-printed box and epoxy; temporary, not proven chronic hermetic [1] |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Stainless steel [1] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
 | Stimulation capability | Voltage-controlled, 250 µs pulses, up to 14.5 V [1] |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -87,24 +87,24 @@ The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectr
 | Onboard electronics | Rectification, storage capacitance, programmable boost converter, microcontroller, output switch [1] |
 | Data path | On-off-keying downlink up to 4 kbps from a shared transmitter; 3-bit node ID, up to eight IDs [1] |
 | Telemetry bandwidth | Up to 4 kbps downlink [1] |
-| Sampling rate | Unreported |
+| Sampling rate |  |
 | Power | Battery-free implants; ME film 267 µm PZT between two 25 µm Metglas layers, 220 kHz; six-film summed efficiency 0.22% to 1.3%, 2.2 mW per node at 1 cm; bench transmitter demand 7 W [1] |
 | Thermal management | Low efficiency burdens transmitter; thermal and exposure management needed [1] |
 | Packaging and hermeticity | Temporary epoxy box; PZT needs a barrier; 30-day glass-encapsulated prior work is not this network's result [1] |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
+| Acute yield |  |
 | Chronic yield | About 80% of laser-cut films passed the open-circuit-voltage criterion; not a fabrication yield guarantee [1] |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | 12-node LED demonstration and six-film power experiment are not implanted nodes; simulated 50-film network at 7.1% is simulation only [1] |
 
 ## Clinical and preclinical evidence
@@ -113,9 +113,9 @@ The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectr
 | --- | --- |
 | Human subjects | None |
 | Preclinical cohort | Acute pig experiments with two then four devices [1] |
-| Follow-up duration | Unreported |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Follow-up duration |  |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Spinal stimulation and cardiac pacing demonstrations; spinal arm only is this record [1] |
 | Key limitations | Lead placement changed thresholds between animals; no recording uplink or closed loop [1] |
 

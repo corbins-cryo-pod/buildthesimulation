@@ -42,41 +42,41 @@ The [Columbia University, Shepard lab](/companies/45-columbia-shepard-optical-an
 | Interface type | Single CMOS substrate with electrodes, processing and wireless telemetry [1] |
 | Array layout | 256 × 256 array [1] |
 | Electrode count | 65,536 recording electrodes; up to 1,024 simultaneously selectable channels; 256 channels used in Figures 2 and 3 [1, 3, 4] |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
 | Shank width and thickness | 50 µm total thickness; chip outline not supplied [1] |
-| Tip and exposed site geometry | Unreported |
+| Tip and exposed site geometry |  |
 | Contact coating | Titanium nitride [2] |
-| Insulation | Unreported |
+| Insulation |  |
 | Insertion method | Placed below the dura [1] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Titanium nitride (TiN) [2] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Micro-ECoG; porcine somatosensory-evoked potentials and primate motor activity [3, 4] |
 | Sampling rate | 33.9 kS/s on 256 channels in Figures 2 and 3 [3, 4] |
 | Stimulation capability | Stimulation circuitry on chip; therapeutic outcome not established [2] |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -84,25 +84,25 @@ The [Columbia University, Shepard lab](/companies/45-columbia-shepard-optical-an
 | --- | --- |
 | Onboard electronics | Analog front end for recording and stimulation, inductive power link, bidirectional transceiver and controller [2] |
 | Data path | Wireless link to an external relay headstage, HDMI to a computer-controlled processor module [2] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Inductive wireless power from the external relay [2] |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | Up to two weeks in pigs and two months in behaving non-human primates [1] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Decoding of stimulation location in pig; wrist-velocity prediction in a reaching primate [3, 4] |
 
 ## Clinical and preclinical evidence
@@ -112,8 +112,8 @@ The [Columbia University, Shepard lab](/companies/45-columbia-shepard-optical-an
 | Human subjects | None |
 | Preclinical cohort | Pigs and non-human primates [1] |
 | Follow-up duration | Two weeks (pig) and two months (primate) [1] |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Reliable chronic recordings across cortices [1] |
 | Key limitations | Motor-feature prediction in a trained primate is not assistive-device control in a paralyzed person; contact sizes, pitch and coil geometry not supplied [1] |
 
@@ -123,7 +123,7 @@ The [Columbia University, Shepard lab](/companies/45-columbia-shepard-optical-an
 | --- | --- |
 | Strengths | Very high site count on a 50 µm wireless chip [1] |
 | Limitations | Only a subset of up to 1,024 channels recorded at once; external relay needed [1, 2] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Physical sites versus channels
 

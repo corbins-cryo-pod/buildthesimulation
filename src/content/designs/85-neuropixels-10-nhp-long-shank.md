@@ -16,7 +16,7 @@ draft: false
 
 # Neuropixels 1.0 NHP long-shank probe
 
-Trautmann and colleagues' 2025 technical report describes an extended Neuropixels probe for acute deep and multi-area recording in nonhuman primates. Each value is scoped to the NHP probe or to a named experiment. Unreported means not established by the reviewed primary paper.
+Trautmann and colleagues' 2025 technical report describes an extended Neuropixels probe for acute deep and multi-area recording in nonhuman primates. Each value is scoped to the NHP probe or to a named experiment. A blank cell means not established by the reviewed primary paper.
 
 ## Identity
 
@@ -27,7 +27,7 @@ Trautmann and colleagues' 2025 technical report describes an extended Neuropixel
 | Interface class | Penetrating silicon CMOS recording probe |
 | Origin | Trautmann and colleagues; Nature Neuroscience 2025 |
 | First demonstrated | 2025 technical report |
-| First human implant | Unreported. The rodent Neuropixels 1.0 was used in humans in other work; the NHP probe was not |
+| First human implant | The rodent Neuropixels 1.0 was used in humans in other work; the NHP probe was not |
 | Species studied | Rhesus macaques (Macaca mulatta); the reviewed text names two male rhesus monkeys, 11 and 16 kg, for part of the work. Full cohort size across all experiments is not itemized here |
 | Regulatory status | Preclinical research tool. No human clearance established |
 | Function | Acute extracellular recording, programmable selection of 384 channels from 4,416 sites |
@@ -58,9 +58,9 @@ Trautmann and colleagues' 2025 technical report describes an extended Neuropixel
 | Impedance (with measurement frequency) | Approximately 150 kΩ at 1 kHz (the extracted text prints a plus-minus sign before 150 kΩ; read as approximate) |
 | Noise floor or SNR | Noise measured across banks 0 to 11 with a distribution of mean plus or minus SD per readout channel; one tested probe had three sites with noise more than 2 µV above the channel mean. Absolute RMS value is unreported in the reviewed text. Neuropixels 1.0 circuits are reused |
 | Recording modality | Extracellular spikes and local field potentials (10-bit resolution); raw 384-channel traces shown from macaque motor cortex |
-| Sampling rate | Unreported in the reviewed excerpt; same signal-conditioning circuits and acquisition system as Neuropixels 1.0 with SpikeGLX or OpenEphys |
+| Sampling rate | Same signal-conditioning circuits and acquisition system as Neuropixels 1.0 with SpikeGLX or OpenEphys |
 | Stimulation capability | Recording only |
-| Charge injection limit | Unreported |
+| Charge injection limit |  |
 | Reference and ground | Referenced to the large tip electrode or an external reference wire placed in the recording chamber |
 
 ## Tissue interface and bioresponse
@@ -69,7 +69,7 @@ Trautmann and colleagues' 2025 technical report describes an extended Neuropixel
 | --- | --- |
 | Target tissue | Macaque brain; targets from superficial to about 42 mm deep |
 | Insertion trauma and BBB disruption | Dura penetration and acute shank insertion with guide tubes. Insertion injury is not quantified in the reviewed text; tip bevel is meant to reduce dimpling and tissue damage |
-| Vascular disruption risk | Unreported |
+| Vascular disruption risk |  |
 | Micromotion sensitivity | Repeated penetrations in the same location showed no clear decline in neurons recorded over up to 23 sessions per probe. Rapid drift was uncommon with careful preparation. Unstable sessions typically came from not placing gentle pressure on the dura with a guide tube |
 | Gliosis and encapsulation | Not assessed. Acute recordings |
 | Neuron loss near sites | Not assessed |
@@ -83,11 +83,11 @@ Trautmann and colleagues' 2025 technical report describes an extended Neuropixel
 | Onboard electronics | Same signal-conditioning circuits as Neuropixels 1.0: 384 low-noise channels with programmable gain and 10-bit resolution, 130 nm SOI CMOS, with wider shank wires and power wires and larger decoupling capacitors |
 | Data path | Base on a 2 x 40 mm flexible PCB into a ZIF connector on a 15 x 16 mm2, 900 mg headstage, then PXIe controller; SpikeGLX |
 | Telemetry bandwidth | Not applicable: wired |
-| Sampling rate | Unreported in the reviewed excerpt |
-| Power | Unreported beyond the base electronics, headstage, cable and PXIe system being identical to Neuropixels 1.0 |
-| Thermal management | Unreported |
+| Sampling rate |  |
+| Power | Not given beyond the base electronics, headstage, cable and PXIe system being identical to Neuropixels 1.0 |
+| Thermal management |  |
 | Packaging and hermeticity | Acute use only. No hermetic chronic packaging described |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Craniotomy and dura penetration through guide tubes in monkeys, reaching 42 mm for deep targets. Human workflow not applicable |
 | Output connectors | ZIF connector on the headstage; headstage to PXIe |
 

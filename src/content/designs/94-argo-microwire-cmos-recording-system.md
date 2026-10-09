@@ -46,10 +46,10 @@ PtIr microwire arrays are compressively and reversibly bonded to a custom CMOS a
 | Electrode lengths | Rat array 1 mm wire length [1] |
 | Shank width and thickness | Rat wires 18 µm diameter; electrosharpened tip below 200 nm; sensor active area 12.8 × 12.8 mm, ASIC 14.5 × 16 mm [1] |
 | Tip and exposed site geometry | Penetrating tips electrosharpened; surface-array tips polished flat; selective insulation removal at recording sites [1] |
-| Contact coating | Unreported |
+| Contact coating |  |
 | Insulation | 20-30 nm alumina; sacrificial parylene sets spacing and is removed from the recording end [1] |
 | Insertion method | Penetrating array in rat; flat surface array on sheep cortex [1] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
@@ -61,22 +61,22 @@ PtIr microwire arrays are compressively and reversibly bonded to a custom CMOS a
 | Noise floor or SNR | Table 1 lists 6.3 ± 0.5 µV RMS; the text reports 7.5 ± 0.4 µV RMS (300-6,000 Hz band). Surface example: 6.3 ± 0.5 µV RMS in text, 6.5 µV RMS in the Figure 6 caption. Not combined [1] |
 | Recording modality | Spikes (penetrating) and local field potentials (surface) [1] |
 | Sampling rate | 32 kHz per channel, 12-bit [1] |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Rat cortex and sheep cortical surface [1] |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -84,25 +84,25 @@ PtIr microwire arrays are compressively and reversibly bonded to a custom CMOS a
 | --- | --- |
 | Onboard electronics | Custom CMOS amplifier array, 65,536 pixels [1] |
 | Data path | Head-fixed wired acute preparation limited by downstream electronics [1] |
-| Telemetry bandwidth | Unreported |
+| Telemetry bandwidth |  |
 | Sampling rate | 32 kHz per channel, 12-bit [1] |
-| Power | Unreported |
-| Thermal management | Unreported |
+| Power |  |
+| Thermal management |  |
 | Packaging and hermeticity | Compressive reversible bonding of wires to the chip [1] |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
 | Acute yield | Connectivity 71 ± 2.9% (SEM) across 32 sensor/array combinations; 86% in a selected surface example [1] |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | Acute only; summary table lists continuous recording greater than eight hours, which is not a chronic follow-up [1] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | 1,300-wire rat spiking and sheep surface mapping with over 30,000 connected channels [1] |
 
 ## Clinical and preclinical evidence
@@ -112,8 +112,8 @@ PtIr microwire arrays are compressively and reversibly bonded to a custom CMOS a
 | Human subjects | None |
 | Preclinical cohort | Rat and sheep acute experiments; animal counts not extracted here [1] |
 | Follow-up duration | Acute [1] |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Spiking in rat and surface potential mapping in sheep [1] |
 | Key limitations | Electronics address 65,536 channels but the paper reports no 65,536 independent implanted wires or neurons; head-fixed acute use only; smaller floating device is future work [1] |
 

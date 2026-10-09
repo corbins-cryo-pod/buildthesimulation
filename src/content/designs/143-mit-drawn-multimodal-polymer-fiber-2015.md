@@ -38,69 +38,69 @@ Canales, Jia and colleagues' 2015 paper reports flexible polymer probes made by 
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Design I: polycarbonate core, COC cladding, two conductive-polyethylene electrodes, two fluidic channels; Design II: four electrodes around a central channel with light in an outer ring [2] |
-| Array layout | Unreported |
+| Array layout |  |
 | Electrode count | Two (Design I) or four (Design II) conductive-polyethylene electrode regions [2] |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
 | Shank width and thickness | Scale bars only; no universal shaft diameter [2] |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
 | Insertion method | Implanted in mouse; backend connected externally [4] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Conductive polyethylene composite (not the tin of fiber 144) [1] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Optoelectrophysiology through two months after implantation (Figure 2) [3] |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
+| Onboard electronics |  |
 | Data path | External: copper wires with silver paint to a PCB, fluidic tubing and an optical ferrule; not wireless [4] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
 | Output connectors | PCB, fluidic tubing and optical ferrule (Supplementary Figure 16) [4] |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | Two months of optoelectrophysiology in design I [3] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Optical loss 2.7 dB/cm (design I) and 1.6 dB/cm (design II); injections at 1-100 nl/s including 90° bending at 4 mm radius, n = 3 (Supplementary Figures 1 and 2) [4] |
 
 ## Clinical and preclinical evidence
@@ -110,8 +110,8 @@ Canales, Jia and colleagues' 2015 paper reports flexible polymer probes made by 
 | Human subjects | None |
 | Preclinical cohort | Mouse study with recording, optogenetic stimulation and drug delivery [1] |
 | Follow-up duration | Two months [3] |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Integrated recording, stimulation and drug perturbation in one fiber [1] |
 | Key limitations | Main article subscription-restricted; no stability beyond two months, human use or clinical decoder [1] |
 
@@ -121,7 +121,7 @@ Canales, Jia and colleagues' 2015 paper reports flexible polymer probes made by 
 | --- | --- |
 | Strengths | Three functions in one drawn fiber [1] |
 | Limitations | Wired external backend; composite electrodes [4] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Published architectures
 

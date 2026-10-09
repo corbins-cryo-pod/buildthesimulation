@@ -40,69 +40,69 @@ The primary affiliations include Rice and Baylor. The [Rice University, Robinson
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | ME laminate with rectifying (RET) layer; contacts on the same plane, tape insulation; printed nerve clip in the closed-wound variant [1] |
-| Array layout | Unreported |
+| Array layout |  |
 | Electrode count | Two silver-epoxy pads per sample [1] |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
 | Shank width and thickness | Stimulation samples 10 × 5, 5 × 3 and 3 × 2 mm; laminate 250 µm PZT-5A between two 23 µm Metglas sheets [1] |
-| Tip and exposed site geometry | Unreported |
+| Tip and exposed site geometry |  |
 | Contact coating | Silver-epoxy pads on extended bottom Metglas [1] |
 | Insulation | Tape insulation; closed-wound variant has about 20 µm Parylene-C [1] |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Silver epoxy on Metglas; RET layers Pt/HfO2/ZnO (Schottky, 50/40/130 nm) or Al/p-Si/ZnO (p-n, 50/500/100 nm) [1] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
 | Stimulation capability | Rectified bias voltage; closed-wound p-n variant above 2 V; nerve stimulation at 100-375 kHz depending on size, 375 kHz in Figure 2 [1] |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
 | Foreign-body response mitigation | Parylene-C coating (closed-wound variant) [1] |
-| Typical failure modes | Unreported |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
+| Onboard electronics |  |
 | Data path | No neural-sensing processor or digital telemetry inside the material [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | External magnetic driver, microcontroller and coil with a neodymium DC bias magnet [1] |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | Saline soak at 37 °C retained voltage and bias up to five days before fluid-ingress degradation; lead-containing PZT needs a barrier [1] |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
+| Acute yield |  |
 | Chronic yield | Fabrication yield about 10% (ZnO design) and about 80% (p-Si/n-ZnO); not animal success rates [1] |
-| Stability over time | Unreported |
+| Stability over time |  |
 | Longevity | Five-day saline soak; three-week subcutaneous histology is a separate material assay, not stimulation operation [1] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Reflex triggering, severed-nerve bridge and closed-wound stimulation in rat [1] |
 
 ## Clinical and preclinical evidence
@@ -112,8 +112,8 @@ The primary affiliations include Rice and Baylor. The [Rice University, Robinson
 | Human subjects | None |
 | Preclinical cohort | Rat; subcutaneous histology 3 weeks; short HEK-cell viability assay [1] |
 | Follow-up duration | Three weeks (histology only) [1] |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Wireless nerve stimulation from a self-rectifying film [1] |
 | Key limitations | Increased vessels and cell infiltration at both MNM and PDMS controls; encapsulation damps ME performance; alternative piezoelectrics proposed [1] |
 
@@ -123,7 +123,7 @@ The primary affiliations include Rice and Baylor. The [Rice University, Robinson
 | --- | --- |
 | Strengths | No ASIC; rectification in the material [1] |
 | Limitations | Sample-specific resonance; ZnO fabrication yield; lead-containing PZT [1] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Published variants
 

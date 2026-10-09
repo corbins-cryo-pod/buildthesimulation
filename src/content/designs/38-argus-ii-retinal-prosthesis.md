@@ -28,7 +28,8 @@ The first retinal prosthesis to reach routine clinical use in the US, and a case
 | Interface class | Epiretinal electrode array, wirelessly powered |
 | Origin | Second Sight Medical Products [1] |
 | First demonstrated | FDA humanitarian device exemption H110002 received 4 May 2011 [1] |
-| First human implant | Unreported || Species studied | Human [2] |
+| First human implant |  |
+| Species studied | Human [2] |
 | Regulatory status | FDA HDE H110002, decision 13 February 2013; label says effectiveness for this use has not been demonstrated; discontinued by Second Sight in 2019 per IEEE Spectrum [1, 2, 3] |
 | Function | Electrical stimulation of the retina to induce visual perception [2] |
 | Target tissue | Retina, over the fovea; for severe to profound retinitis pigmentosa with bare or no light perception [2] |
@@ -38,43 +39,43 @@ The first retinal prosthesis to reach routine clinical use in the US, and a case
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Epiretinal array on a polymer cable, secured over the fovea by a spring retinal tack [2] |
-| Array layout | Unreported |
+| Array layout |  |
 | Electrode count | 55 enabled platinum electrodes [2] |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
+| Shank width and thickness |  |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
+| Insertion method |  |
 | Anchoring and fixation | Retinal tack; electronics case and coil held around the eyeball by a scleral band (equivalent to a 240 band) [2] |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Platinum [2] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
 | Stimulation capability | Electrical stimulation; parameters are in the FDA labeling, not extracted here [2] |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -82,46 +83,46 @@ The first retinal prosthesis to reach routine clinical use in the US, and a case
 | --- | --- |
 | Onboard electronics | Electronics case and coil on the eye; glasses with camera and RF coils; battery-powered video processing unit worn in a pouch [2] |
 | Data path | Video processing unit sends stimulation data and power to the implant by RF telemetry via the glasses [2] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Battery-powered external video processing unit [2] |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | More than 350 implanted users were left with obsolete, unsupported technology after discontinuation in 2019 and near-failure in 2020 per IEEE Spectrum [3] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | Patients with severe to profound retinitis pigmentosa [2] |
-| Preclinical cohort | Unreported |
-| Follow-up duration | Unreported |
-| Indications | Unreported |
+| Preclinical cohort |  |
+| Follow-up duration |  |
+| Indications |  |
 | Trials and registries | FDA HDE H110002 [1] |
-| Primary outcomes | Unreported |
+| Primary outcomes |  |
 | Key limitations | Implant dimensions and electrode diameter are in the FDA labeling figures, not extracted here; effectiveness not demonstrated as is standard for an HDE [2] |
 
 ## Engineering tradeoffs
 
 | Field | Value and source scope |
 | --- | --- |
-| Strengths | Unreported |
+| Strengths |  |
 | Limitations | Support ended when the manufacturer discontinued the device [3] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Overview
 

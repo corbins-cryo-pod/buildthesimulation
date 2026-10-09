@@ -49,7 +49,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Interface class | Intracortical, penetrating silicon microelectrode array |
 | Origin | University of Utah |
 | First demonstrated | Not restated without a cited source; the origins entry covers early manufacturing history |
-| First human implant | Unreported; earlier unsourced dates were removed rather than kept |
+| First human implant | Earlier unsourced dates were removed rather than kept |
 | Species studied | Human (NeuroPort programs) and non-human primate (2013 Barrese cohort) |
 | Regulatory status | NeuroPort April 2022 IFU: temporary recording and monitoring for less than 30 days; research arrays are investigational |
 | Function | Recording; the research page also describes stimulation. The NeuroPort labeling conflict is kept below |
@@ -64,8 +64,8 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Electrode count | 100 physical, 96 connected (NeuroPort IFU); conflicting manufacturer marketing counts are preserved in Published geometry |
 | Pitch | 400 µm, current Utah and NeuroPort pages |
 | Electrode lengths | 0.5-1.5 mm research; 1.0-1.5 mm clinical |
-| Shank width / thickness | Unreported; Utah FAQ gives a 4 x 4 mm footprint, 0.2 mm substrate |
-| Tip and exposed site geometry | Unreported; not reconstructed |
+| Shank width / thickness | Utah FAQ gives a 4 x 4 mm footprint, 0.2 mm substrate |
+| Tip and exposed site geometry | Not reconstructed |
 | Contact coating | Platinum or sputtered iridium oxide (SIROF) |
 | Insulation | Parylene-C, Utah options table |
 | Insertion method | Configuration-dependent tooling; specifics unreported |
@@ -75,14 +75,14 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Silicon shank with platinum or SIROF contact metallization |
 | Impedance (with measurement frequency) | NeuroPort page: platinum 100-800 kΩ, SIROF at most 50 kΩ at 1 kHz; Utah table: platinum 20-800 kΩ, SIROF/IrOx 1-80 kΩ with frequency unstated; 2022 IFU: 100-800 kΩ platinum, 1-80 kΩ iridium oxide. Source-specific figures kept, not merged |
-| Noise floor | Unreported; acquisition-system dependent |
+| Noise floor | Acquisition-system dependent |
 | Recording modality | Single- and multi-unit spiking and local field potentials in published use |
 | Sampling rate | Configuration dependent; set by the external acquisition system |
 | Stimulation capability | Research arrays: described by the manufacturer. NeuroPort IFU: recording-only labeling; conflict retained in Recording and stimulation |
-| Charge injection limit | Unreported |
+| Charge injection limit |  |
 | Reference and ground | "Ground Source and Selectable Reference Wires", Utah page |
 
 ## Tissue interface and bioresponse
@@ -94,8 +94,8 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Vascular disruption risk | Qualitative risk of penetrating placement; unreported quantitatively |
 | Micromotion sensitivity | Rigid silicon array in soft tissue; qualitative concern, no reviewed quantitative source |
 | Gliosis and encapsulation | Meningeal reactions and insulation degradation documented in the 2013 macaque failure cohort |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
 | Typical failure modes | Connector failures, meningeal reactions, insulation degradation and gradual channel loss in the 2013 cohort |
 
 ## System architecture
@@ -109,7 +109,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Power | External |
 | Thermal management | External |
 | Packaging and hermeticity | Not a hermetically sealed implant; percutaneous connector |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Craniotomy, array insertion and percutaneous pedestal placement |
 | Output connectors | Omnetics, CerePort pedestal 128/256, custom (Utah options) |
 
@@ -117,11 +117,11 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported as a single figure |
+| Acute yield | Not given as a single figure |
 | Chronic yield | 2013 macaque cohort: recording durations 0-2,104 days, median 182 days; 62 of 78 arrays failed completely |
 | Stability over time | Variable across the cohort; see Long-term evidence and failures |
 | Longevity | Manufacturer claims more than eight years in one patient; a single-patient marketing claim, not a cohort result |
-| Revision and explant experience | Unreported |
+| Revision and explant experience |  |
 | Adverse events | Percutaneous infection risk is noted qualitatively; no rate |
 | Notable demonstrations | BrainGate human cursor and device control ([BrainGate pilot](/applications/37-braingate-pilot-2006/)) |
 

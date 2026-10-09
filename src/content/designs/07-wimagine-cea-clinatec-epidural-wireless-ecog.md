@@ -17,7 +17,7 @@ draft: false
 
 # WIMAGINE (CEA-Clinatec) epidural wireless ECoG implant
 
-The tables use the same field framework as the other implant-device sheets. Values belong to the named study or configuration. Unreported means the reviewed sources do not establish a value, not that the device lacks that property.
+The tables use the same field framework as the other implant-device sheets. Values belong to the named study or configuration. A blank cell means the reviewed sources do not establish a value, not that the device lacks that property.
 
 ## Identity
 
@@ -46,7 +46,7 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Shank width and thickness | Not applicable; implant fits a 50 mm craniotomy with 90 mm upper-surface curvature, 2019 Methods |
 | Tip and exposed site geometry | 2.3 mm diameter contacts, 2019 Methods |
 | Contact coating | Platinum-iridium 90/10 contact material, 2019 Methods |
-| Insulation | Unreported |
+| Insulation |  |
 | Insertion method | 50 mm craniotomy; contacts above intact dura, implant replaces removed bone, 2019 Methods |
 | Anchoring and fixation | Four titanium wings protect against pressure or shocks, 2019 Methods; fixation details beyond these unreported |
 
@@ -54,9 +54,9 @@ The tables use the same field framework as the other implant-device sheets. Valu
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Platinum-iridium 90/10, 2019 Methods |
-| Impedance (with measurement frequency) | Unreported |
+| Impedance (with measurement frequency) |  |
 | Noise floor or SNR | 2015 development abstract: less than 0.7 µV RMS input-referred noise over 0.5-300 Hz; not a chronic in-vivo SNR |
 | Recording modality | ECoG population field potentials |
 | Sampling rate | 976 Hz, 12-bit ADC in 2019 sheep protocol; contacts recorded in successive 16-contact phases |
@@ -70,11 +70,11 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | --- | --- |
 | Target tissue | Dura over sensorimotor cortex |
 | Insertion trauma and BBB disruption | Epidural placement without cortical penetration; quantitative BBB disruption unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
 | Gliosis and encapsulation | 2019 sheep histology: increased GFAP reactivity in glia limitans and layer I under implant; do not describe as no gliosis |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
 | Typical failure modes | General failure rates unreported; 2021 measures signal stability, not lifetime reliability |
 
 ## System architecture
@@ -86,9 +86,9 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Telemetry bandwidth | About 250 kb/s in 2-FSK mode, 2019 sheep protocol; MICS band 402-405 MHz |
 | Sampling rate | 976 Hz in 2019 sheep protocol; 16 contacts at a time |
 | Power | Remote inductive power at 13.56 MHz, 2019 Methods; not a rechargeable implanted battery claim |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | Hermetic titanium housing in 2015 development abstract |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | 50 mm cranial opening and epidural module placement, 2019 Methods |
 | Output connectors | Wireless base station to computer; no percutaneous electrode connector in described system |
 
@@ -96,7 +96,7 @@ The tables use the same field framework as the other implant-device sheets. Valu
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
+| Acute yield |  |
 | Chronic yield | No single yield percentage; two sheep retained relatively stable ECoG and SSEP over 10 months, 2019 |
 | Stability over time | 2021 two-patient study: limited decline in RMS, band power and SNR; effective bandwidth and spectral edge frequency stable |
 | Longevity | 32 and 14 months observed in two patients, 2021; not a maximum service life |
@@ -110,7 +110,7 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | --- | --- |
 | Human subjects | Two bilaterally implanted quadriplegic patients, 2021 stability study |
 | Preclinical cohort | Two sheep, 2019 study |
-| Follow-up duration | Unreported |
+| Follow-up duration |  |
 | Indications | Motor BCI for paralysis research |
 | Trials and registries | NCT02550522 is retained as the linked protocol record; current recruitment status not asserted |
 | Primary outcomes | Longitudinal ECoG stability, effective bandwidth and evoked responses |

@@ -58,29 +58,29 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Wired connection to implanted neural probes; wireless link from headstage to receivers [1] |
-| Array layout | Unreported |
+| Array layout |  |
 | Electrode count | 100 amplifier inputs: 96 neural, three accelerometer axes and one calibration reference; connected array count not assigned [1] |
 | Pitch | Not extracted for this system; no Utah geometry assigned backward |
 | Electrode lengths | Not assigned; headstage dimensions are not shank lengths |
 | Shank width and thickness | Headstage envelope 52 × 44 × 30 mm, which is not an implanted array size [1] |
-| Tip and exposed site geometry | Unreported |
+| Tip and exposed site geometry |  |
 | Contact coating | Paper discusses platinum-coated electrode safety; copper LGA pads on the pedestal interface are a different component [1] |
 | Insulation | Static-dissipative carbon-fiber-reinforced PEEK enclosure and anisotropic conductive polymer interface; no full electrode insulation stack assigned [1] |
-| Insertion method | Unreported |
+| Insertion method |  |
 | Anchoring and fixation | Screw-on pedestal interconnect; interface polymer 0.3 mm thick, 15 mm diameter [1] |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
 | Impedance (with measurement frequency) | No electrode impedance assigned; 2.83 µV RMS is amplifier input-referred noise, not electrode impedance [1] |
 | Noise floor or SNR | Preamplifier input-referred noise 2.83 µV RMS; noise-efficiency factor 3.3 [1] |
 | Recording modality | Broadband neural population activity, with locomotion and sleep-wake recordings [1] |
 | Sampling rate | 20 kS/s per channel [1] |
 | Stimulation capability | Not applicable; recording only |
-| Charge injection limit | Unreported |
+| Charge injection limit |  |
 | Reference and ground | One amplifier input tied to reference for calibration; input protection references a low-impedance ground electrode; full array reference routing not reconstructed [1] |
 
 ## Tissue interface and bioresponse
@@ -88,13 +88,13 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Cortex through the connected array; the headstage adds enclosure, connector, motion and radio-link constraints [1] |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -105,22 +105,22 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Telemetry bandwidth | Transmitter chip capable of up to 200 Mbit/s over 1-2 m; not substituted for a measured neural payload rate at 5 m [1] |
 | Sampling rate | 20 kS/s per channel [1] |
 | Power | Single 1.2-Ah half-AA Li-SOCl₂ primary battery per Methods (Results text says Li-ion; conflict retained); headstage current 17 mA at low-RF or 27 mA at high-RF output [1] |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | Headstage 52 × 44 × 30 mm, 46.1 g (battery 8.7 g, PEEK enclosure 33.8 g, electronics 3.6 g) [1] |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
+| MRI compatibility |  |
+| Surgical complexity |  |
 | Output connectors | Screw-on pedestal interconnect; amplifier PCB land-grid pads matched to the array pedestal through anisotropic conductive polymer [1] |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | More than 48 hours of continuous runtime on the battery [1] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Population recordings in freely moving monkeys during treadmill locomotion and sleep-wake transitions [1] |
 
 ## Clinical and preclinical evidence
@@ -129,9 +129,9 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | --- | --- |
 | Human subjects | None established; human use is discussed as a prospective application [1] |
 | Preclinical cohort | Freely behaving nonhuman primates; three monkeys in the locomotion analysis [1] |
-| Follow-up duration | Unreported |
+| Follow-up duration |  |
 | Indications | Neural recording research |
-| Trials and registries | Unreported |
+| Trials and registries |  |
 | Primary outcomes | Wireless broadband recording of population activity, with decoded brain states, in freely moving monkeys [1] |
 | Key limitations | External transmitter, not an implanted package; compatibility with other probes does not establish their qualification; ADC resolution and clinical reliability period not populated [1] |
 
@@ -141,7 +141,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | --- | --- |
 | Strengths | Cable-free recording in freely moving animals, spatially distributed receivers mitigate multipath fading [1] |
 | Limitations | Headstage still sits on a wired connection to the implanted probe; Li-SOCl₂ primary battery chemistry [1] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Identity and configuration
 

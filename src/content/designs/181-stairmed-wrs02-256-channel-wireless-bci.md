@@ -38,69 +38,69 @@ WRS02 is the successor to the 64-channel WRS01 described on [the WRS sheet](/dev
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Ultra-flexible electrodes implanted through minimally invasive surgery near the motor cortex, with a wireless implant [3] |
-| Array layout | Unreported |
+| Array layout |  |
 | Electrode count | 256 channels [1, 2, 3] |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
+| Shank width and thickness |  |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
 | Insertion method | Minimally invasive surgery [3]; steps unreported |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Single-neuron signals collected with ultra-flexible electrodes, per the trade report [3] |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
+| Onboard electronics |  |
 | Data path | Wireless implant; the system connects to Windows and iOS as input devices [3] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
 | Packaging and hermeticity | In May 2025 StairMed said the next-generation 256-channel system would be one third smaller than the then-current implant (26 mm diameter, under 6 mm thick); the sizes of the delivered WRS02 are unreported [4] |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
+| Acute yield |  |
 | Chronic yield | Company-disclosed information-transfer efficiency of 380 bits per minute, about 6.3 bits per second, and command latency under 50 ms [3] |
-| Stability over time | Unreported |
+| Stability over time |  |
 | Longevity | Patients operated a computer for 3 to 4 hours continuously, per the company [3] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Company disclosure reported in a trade article on July 30 to August 2, 2026: several patients with high spinal cord injury work full-time through the system, including e-commerce logistics coordination and data labeling [3] |
 
 ## Clinical and preclinical evidence
@@ -108,11 +108,11 @@ WRS02 is the successor to the 64-channel WRS01 described on [the WRS sheet](/dev
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | Number of WRS02 patients not stated in the sources read; the trade report says implanted in early 2026 and that several patients now use the system for work [3] |
-| Preclinical cohort | Unreported |
-| Follow-up duration | Unreported |
-| Indications | Unreported |
+| Preclinical cohort |  |
+| Follow-up duration |  |
+| Indications |  |
 | Trials and registries | No WRS02 registry entry identified. StairMed's WRS01 trials are on ClinicalTrials.gov, see the [WRS sheet](/devices/178-stairmed-wrs-ultraflexible-wireless-bci/) |
-| Primary outcomes | Unreported |
+| Primary outcomes |  |
 | Key limitations | Little published detail. Specifications and results are company disclosures relayed by a trade site, with no peer-reviewed or regulator-held data. WRS02 may or may not share the first generation's electrodes; that is not stated |
 
 ## Engineering tradeoffs
@@ -121,7 +121,7 @@ WRS02 is the successor to the 64-channel WRS01 described on [the WRS sheet](/dev
 | --- | --- |
 | Strengths | Four times the channel count of WRS01 in a planned smaller package, per the company [1, 4] |
 | Limitations | No published hardware dimensions, no registry data and few patients reported |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Version boundary
 
