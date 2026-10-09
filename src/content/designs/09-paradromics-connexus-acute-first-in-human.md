@@ -76,13 +76,13 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | Array layout | Circular module with penetrating wires on a 300 µm square lattice [2]; no coordinate map, so the model lattice is reconstructed |
 | Electrode count | 421 physical microwires per module [1]; 420 analyzed in the SfN report [2] |
 | Pitch | 300 µm square lattice [2] |
-| Electrode lengths | 1.5 mm insertion depth [1, 2]; wire lengths beyond that unreported |
-| Shank width and thickness | Older technical slides report wires under 40 µm diameter [4]; current exact diameter unreported. Module about 1 cm circular [3]; the 2023 slides show an older, different square package of 9 mm [4] |
+| Electrode lengths | 1.5 mm insertion depth [1, 2]; wire lengths beyond that not reported |
+| Shank width and thickness | Older technical slides report wires under 40 µm diameter [4]; current exact diameter not reported. Module about 1 cm circular [3]; the 2023 slides show an older, different square package of 9 mm [4] |
 | Tip and exposed site geometry | Exposed area stays unknown |
-| Contact coating | Platinum-iridium electrodes [3, 4]; any additional coating unreported |
+| Contact coating | Platinum-iridium electrodes [3, 4]; any additional coating not reported |
 | Insulation |  |
 | Insertion method |  |
-| Anchoring and fixation | Module on cortex with a flexible lead to the chest transceiver [1]; fixation detail unreported |
+| Anchoring and fixation | Module on cortex with a flexible lead to the chest transceiver [1]; fixation detail not reported |
 
 ## Electrode and channel physics
 
@@ -94,7 +94,7 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | Noise floor or SNR |  |
 | Recording modality | Intracortical neural signals; specific bands not specified |
 | Sampling rate |  |
-| Stimulation capability | Not given for this system |
+| Stimulation capability |  |
 | Charge injection limit |  |
 | Reference and ground |  |
 
@@ -103,10 +103,10 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Cerebral cortex, penetrating microwires, 1.5 mm insertion depth [1, 2] |
-| Insertion trauma and BBB disruption | Inherent to penetrating wires; quantitative data unreported |
+| Insertion trauma and BBB disruption | Inherent to penetrating wires; quantitative data not reported |
 | Vascular disruption risk | Placement-dependent; not quantified |
-| Micromotion sensitivity | Rigid microwires in soft tissue; comparative data unreported |
-| Gliosis and encapsulation | Chronic histology unreported |
+| Micromotion sensitivity | Rigid microwires in soft tissue; comparative data not reported |
+| Gliosis and encapsulation | Chronic histology not reported |
 | Neuron loss near sites |  |
 | Foreign-body response mitigation |  |
 | Typical failure modes | Chronic stability and yield limits typical of intracortical interfaces; no device-specific failure data published |
@@ -115,26 +115,26 @@ Study authorization is distinct from commercial approval. The geometry model doe
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Implanted electronics in the module; internal ASIC detail unreported |
+| Onboard electronics | Implanted electronics in the module; internal ASIC detail not reported |
 | Data path | Flexible lead to an implanted chest transceiver; optical through-skin data link [1] |
 | Telemetry bandwidth |  |
 | Sampling rate |  |
 | Power | Inductive power to the implanted transceiver [1] |
 | Thermal management |  |
-| Packaging and hermeticity | Fully internalized system [1]; packaging-stack detail unreported |
+| Packaging and hermeticity | Fully internalized system [1]; packaging-stack detail not reported |
 | MRI compatibility |  |
 | Surgical complexity | Open cranial surgery for module placement plus chest transceiver implantation; procedural detail limited |
-| Output connectors | Flexible lead from module to chest transceiver [1]; connector detail unreported |
+| Output connectors | Flexible lead from module to chest transceiver [1]; connector detail not reported |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Human neural signals recorded intraoperatively, June 2025 [5]; quantitative yield unreported |
+| Acute yield | Human neural signals recorded intraoperatively, June 2025 [5]; quantitative yield not reported |
 | Chronic yield |  |
 | Stability over time |  |
-| Longevity | Company design goals exist; demonstrated lifetime unreported |
-| Revision and explant experience | Acute intact explant demonstrated, removed in under 20 minutes per the announcement [5]; chronic revision experience unreported |
+| Longevity | Company design goals exist; demonstrated lifetime not reported |
+| Revision and explant experience | Acute intact explant demonstrated, removed in under 20 minutes per the announcement [5]; chronic revision experience not reported |
 | Adverse events | Acute procedure reported as successful [5]; no chronic safety dataset public |
 | Notable demonstrations | First temporary human recording June 2025 [5]; first Connect-One chronic implant June 2026 [6] |
 
@@ -143,7 +143,7 @@ Study authorization is distinct from commercial approval. The geometry model doe
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | At least one acute recording participant [5] and the first Connect-One implant recipient [6]; full enrollment not pinned here |
-| Preclinical cohort | Preclinical cohort details unreported |
+| Preclinical cohort | Preclinical cohort details not reported |
 | Follow-up duration | Acute (minutes) for the 2025 test; chronic follow-up beginning with the 2026 EFS implant [5, 6] |
 | Indications | Severe motor impairment; speech restoration intended [1, 6] |
 | Trials and registries | Connect-One Early Feasibility Study; registry identifier not pinned in this sheet |
