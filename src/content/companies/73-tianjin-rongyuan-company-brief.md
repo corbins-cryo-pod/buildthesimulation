@@ -20,7 +20,7 @@ draft: false
 
 ### Device entries
 
-No device sheet yet. The closest existing entry for an endovascular BCI is the Stentrode sheet: [Stentrode](/devices/03-stentrode-synchron/). Whether the Rongyuan "type A sensor" shares that design is not stated in the sources read.
+- [Nankai / Rongyuan interventional (stent-electrode) BCI](/devices/189-nankai-rongyuan-interventional-bci/). Electrode geometry is not published in the sources read; the Stentrode is a different system.
 
 ### Limits
 
