@@ -38,12 +38,12 @@ The Nucleus system is Cochlear's implant family under PMA P840024. The newest ap
 | Field | Value and source scope |
 | --- | --- |
 | Interface type |  |
-| Array layout |  |
-| Electrode count |  |
-| Pitch |  |
-| Electrode lengths |  |
-| Shank width and thickness |  |
-| Tip and exposed site geometry |  |
+| Array layout | Intracochlear array with 22 contacts in all three electrode options below [3, 4, 5]. The CI1012 sheet also lists an extracochlear electrode on the implant [3] |
+| Electrode count | 22 intracochlear contacts; 50 independent current sources in the implant [3, 4, 5] |
+| Pitch | Contour Advance (CI1012): non-uniform spacing from 0.4 to 0.8 mm; other electrodes not stated as a pitch in the sheets read [3] |
+| Electrode lengths | Active length: Contour Advance (CI1012) 14.25 mm, Slim Straight (CI1022) 19.1 mm, Slim Modiolar (CI1032) 14 mm; implant to array tip 99 mm (CI1012), 105 mm (CI1022), 98 mm (CI1032) when straightened [3, 4, 5] |
+| Shank width and thickness | Apical tip 0.5 mm (CI1012) or 0.3 mm (CI1022); basal diameter 0.8 mm (CI1012) or 0.6 mm (CI1022); Slim Modiolar basal 0.475 x 0.5 mm [5] |
+| Tip and exposed site geometry | Half-banded platinum contacts on CI1012 and CI1022; Softip at the apical end [3, 4] |
 | Contact coating |  |
 | Insulation |  |
 | Insertion method |  |
@@ -54,12 +54,12 @@ The Nucleus system is Cochlear's implant family under PMA P840024. The newest ap
 | Field | Value and source scope |
 | --- | --- |
 | Exposed site area |  |
-| Electrode material |  |
+| Electrode material | Platinum half-banded contacts (CI1012, CI1022); platinum iridium contacts (CI1032) [3, 4, 5] |
 | Impedance (with measurement frequency) |  |
 | Noise floor or SNR |  |
 | Recording modality |  |
 | Sampling rate |  |
-| Stimulation capability |  |
+| Stimulation capability | Biphasic current pulses; monopolar, bipolar or common ground; amplitude 0 to 1750 µA nominal at 37 C; pulse width 9.6 to 400 µs per phase [3] |
 | Charge injection limit |  |
 | Reference and ground |  |
 
@@ -84,10 +84,10 @@ The Nucleus system is Cochlear's implant family under PMA P840024. The newest ap
 | Data path | Nucleus 8 processor streams audio directly and is ready for Bluetooth LE Audio; Nucleus Smart App allows setting changes and remote care and firmware updates [2] |
 | Telemetry bandwidth |  |
 | Sampling rate |  |
-| Power |  |
+| Power | Power and data arrive over a 5 MHz inductive link from the sound processor coil; the implant has no battery; transmitting range 1 to 10 mm [3] |
 | Thermal management |  |
-| Packaging and hermeticity |  |
-| MRI compatibility |  |
+| Packaging and hermeticity | Titanium casing, implant body 3.9 mm thin, 9.5 g including the electrode array, impact resistant to 2.5 J; the drawing also gives 31, 24, 23, 50.5 and 60 mm outline dimensions whose labels did not survive text extraction, so they are not assigned to features; measurements include silicone coating [3] |
+| MRI compatibility | Cochlear states MRI at 1.5 T and 3.0 T with the magnet in place; the magnet is removable, and compatibility varies by country [3] |
 | Surgical complexity |  |
 | Output connectors |  |
 
@@ -131,3 +131,6 @@ S096 covers CI1000 Series implants, the Nucleus 8 and Kanso 3 processors and a s
 
 1. [FDA PMA P840024/S096 record](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?id=P840024S096).
 2. [Cochlear announcement, Nucleus 8 Sound Processor, November 1, 2022](https://www.cochlear.com/us/en/corporate/media-center/media-releases/2022/fda-approves-cochlear-nucleus-8-sound-processor).
+3. Cochlear (manufacturer technical specifications). [Nucleus Nexa implant with Contour Advance electrode (CI1012)](https://assets.cochlear.com/api/public/content/FUN5450-Nucleus-Nexa-CI1012-Tech-Specs.pdf), January 2025 issue.
+4. Cochlear (manufacturer technical specifications). [Nucleus Nexa implant with Slim Straight electrode (CI1022)](https://assets.cochlear.com/api/public/content/FUN5451-Nucleus-Nexa-CI1022-Tech-Specs.pdf).
+5. Cochlear (manufacturer technical specifications). [Nucleus Nexa implant with Slim Modiolar electrode (CI1032)](https://assets.cochlear.com/api/public/content/FUN5453-Nucleus-Nexa-CI1032-Tech-Specs.pdf).
