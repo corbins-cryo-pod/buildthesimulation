@@ -17,7 +17,7 @@ draft: false
 
 # Stentrode (Synchron)
 
-The tables use the same field framework as the other implant-device sheets. Values belong to the named study or configuration. Unreported means the reviewed sources do not establish a value, not that the device lacks that property.
+The tables use the same field framework as the other implant-device sheets. Values belong to the named study or configuration. A blank cell means the reviewed sources do not establish a value, not that the device lacks that property.
 
 ## Identity
 
@@ -27,7 +27,7 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Manufacturer | Synchron, Kacker 2025 |
 | Interface class | Endovascular cortical recording interface |
 | Origin | SWITCH study at Royal Melbourne Hospital, Australia; not a claim about invention priority |
-| First demonstrated | Unreported |
+| First demonstrated |  |
 | First human implant | SWITCH study began May 2019; exact first implantation date is not pinned here |
 | Species studied | Human in SWITCH 2023 and Kacker 2025; this audit does not enumerate earlier animal cohorts |
 | Regulatory status | Investigational feasibility study; commercial authorization not established by these papers |
@@ -46,7 +46,7 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Shank width and thickness | Not applicable; strut dimensions unreported |
 | Tip and exposed site geometry | 500 µm contact diameter, Kacker 2025. Schone 2025 preprint separately reports 300 µm; configurations are not equated |
 | Contact coating | Platinum contacts, Kacker 2025 |
-| Insulation | Unreported |
+| Insulation |  |
 | Insertion method | Jugular-vein catheter delivery into superior sagittal sinus, Kacker 2025 |
 | Anchoring and fixation | Expanded scaffold apposed to sinus wall, verified by angiography in Kacker 2025 |
 
@@ -60,8 +60,8 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Noise floor or SNR | Kacker 2025 Tables 1 and 2 report per-channel low- and high-gamma task SNR; not one device noise-floor specification |
 | Recording modality | Field potentials with gamma/high-gamma motor modulation, Kacker 2025 |
 | Sampling rate | 2,000 Hz, Kacker 2025 |
-| Stimulation capability | Unreported; clinical papers reviewed here concern recording |
-| Charge injection limit | Unreported |
+| Stimulation capability | Clinical papers reviewed here concern recording |
+| Charge injection limit |  |
 | Reference and ground | Kacker 2025: one Stentrode channel used as common reference. SWITCH 2023 instead describes a reference on the receiver-transmitter unit; source-specific descriptions retained |
 
 ## Tissue interface and bioresponse
@@ -71,10 +71,10 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Target tissue | Venous wall adjacent to cortex, not intracortical placement |
 | Insertion trauma and BBB disruption | No cortical penetration in the described procedure; quantitative BBB injury unreported |
 | Vascular disruption risk | SWITCH monitored patency, migration and thrombosis; no occlusion or migration in four implanted participants at 12 months. Not a general risk estimate |
-| Micromotion sensitivity | Unreported |
+| Micromotion sensitivity |  |
 | Gliosis and encapsulation | Cortical gliosis measurements unreported in these human studies |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
 | Typical failure modes | No device-related serious failure in the four-person 12-month SWITCH cohort; longer-term failure rates unreported |
 
 ## System architecture
@@ -83,12 +83,12 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | --- | --- |
 | Onboard electronics | Lead-connected implantable receiver-transmitter in infraclavicular subcutaneous pocket, SWITCH 2023 |
 | Data path | Stent contacts to implanted receiver-transmitter to external telemetry unit to computer, Kacker 2025 |
-| Telemetry bandwidth | Unreported |
+| Telemetry bandwidth |  |
 | Sampling rate | 2,000 Hz, Kacker 2025 |
-| Power | Unreported |
-| Thermal management | Unreported |
+| Power |  |
+| Thermal management |  |
 | Packaging and hermeticity | Fully implanted sensing device, lead and receiver-transmitter; hermetic qualification unreported |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Neurointerventional transvenous delivery and chest pocket; no cortical craniotomy in described procedure |
 | Output connectors | Internal lead plus wireless external receiver; connector specification unreported |
 
@@ -96,11 +96,11 @@ The tables use the same field framework as the other implant-device sheets. Valu
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
 | Stability over time | SWITCH: mean signal bandwidth 233 (16) Hz stable across 12 months in four participants |
 | Longevity | 12-month SWITCH follow-up; not a maximum lifetime |
-| Revision and explant experience | Unreported |
+| Revision and explant experience |  |
 | Adverse events | SWITCH: no serious adverse events, vessel occlusion or migration in four implanted participants; eight mild device effects resolved without intervention |
 | Notable demonstrations | All four SWITCH participants controlled a computer; Kacker 2025 maps motor modulation in two people with ALS |
 
@@ -109,8 +109,8 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | SWITCH: five enrolled, four implanted and analyzed; Kacker 2025: two participants. Do not sum as unique people |
-| Preclinical cohort | Unreported |
-| Follow-up duration | Unreported |
+| Preclinical cohort |  |
+| Follow-up duration |  |
 | Indications | Severe upper-limb paralysis; ALS or primary lateral sclerosis in SWITCH |
 | Trials and registries | SWITCH prospective first-in-human study; registry ID unreported in this audit |
 | Primary outcomes | Safety, venous patency and computer-control feasibility |
