@@ -41,11 +41,11 @@ Steinmetz and colleagues' 2021 paper reports the alpha version of Neuropixels 2.
 | Array layout | One or four shanks; two vertically aligned columns of sites per shank; arrow-shaped rigid PCB and 43.5 mm flex cable |
 | Electrode count | 1,280 sites per shank: 1,280 on single-shank, 5,120 on four-shank. 384 channels per probe. Two four-shank probes give 10,240 sites and 768 simultaneous channels |
 | Pitch | 15 µm along the shank, 32 µm between the two columns, 250 µm center spacing between shanks on the four-shank probe |
-| Electrode lengths | Site field about 10 mm along the shank (two columns, 15 µm pitch, 1,280 sites per shank, four-shank plane stated as about 1 x 10 mm). Full shank length unreported in the reviewed full text |
+| Electrode lengths | Site field about 10 mm along the shank (two columns, 15 µm pitch, 1,280 sites per shank, four-shank plane stated as about 1 x 10 mm). Full shank length not reported in the reviewed full text |
 | Shank width and thickness | Shank section 70 x 24 µm. Base 2.2 x 8.7 mm2. PCB about 14 mm long, 3.5 mm wide at the thin end and 6.9 mm at the thick end, about 1.2 mm thick. Flex cable 43.5 mm x 4.0 mm x 80 µm |
 | Tip and exposed site geometry | As-fabricated tip taper 175 µm long at about 20 degrees in the shank plane. The triangular tip area is one large electrode site configurable as internal reference |
 | Contact coating | Porous titanium nitride on the sites |
-| Insulation | Insulation material and thickness unreported in the reviewed text |
+| Insulation | Insulation material and thickness not reported in the reviewed text |
 | Insertion method | Rigid shank inserted into brain; chronic implants used custom 3D printed fixtures for 7 of 21 implants, enabling probe recovery and re-use |
 | Anchoring and fixation | Seven of 21 implants used recoverable 3D-printed fixtures protecting probe and headstage. The other 14 anchoring methods follow each laboratory and are not itemized here |
 
@@ -86,7 +86,7 @@ Steinmetz and colleagues' 2021 paper reports the alpha version of Neuropixels 2.
 | Sampling rate | 30 kHz per channel, 384 channels per probe, 768 with two probes on one headstage |
 | Power | Base consumes 36.5 mW. Headstage and cable powered from the base station; optional battery supply for isolation |
 | Thermal management |  |
-| Packaging and hermeticity | Epoxy and wire bonding of base to PCB. Chronic hermeticity beyond the reported recordings is unreported |
+| Packaging and hermeticity | Epoxy and wire bonding of base to PCB. Chronic hermeticity beyond the reported recordings is not reported |
 | MRI compatibility |  |
 | Surgical complexity | Craniotomy and implantation in rodents, with optional recoverable fixture. Human surgery not applicable |
 | Output connectors | 27-pin ZIF on the headstage side; 4-pin Omnetics connector from headstage to cable; USB-C at the base station |
