@@ -37,9 +37,9 @@ The Liberta RC is Abbott's rechargeable DBS pulse generator, approved under PMA 
 
 | Field | Value and source scope |
 | --- | --- |
-| Interface type | Unreported |
+| Interface type | Not stated for the Liberta RC IPG itself. The Abbott Infinity DBS leads in the same PMA, per the S039 SSED, are 4- or 8-contact leads; 8-contact leads use a 1-3-3-1 layout with segmented middle rings. Whether Liberta RC ships with these leads was not confirmed [3] |
 | Array layout | Unreported |
-| Electrode count | Unreported |
+| Electrode count | 4 or 8 contacts per Infinity lead (predecessor system, S039) [3] |
 | Pitch | Unreported |
 | Electrode lengths | Unreported |
 | Shank width and thickness | Unreported |
@@ -59,7 +59,7 @@ The Liberta RC is Abbott's rechargeable DBS pulse generator, approved under PMA 
 | Noise floor or SNR | Unreported |
 | Recording modality | Unreported |
 | Sampling rate | Unreported |
-| Stimulation capability | Unreported |
+| Stimulation capability | Infinity IPG (non-rechargeable predecessor, S039): 16 channels, up to 15 programs, constant-current charge-balanced biphasic, up to 12.75 mA in 0.05 mA steps, pulse width 20 to 500 us, 2 to 240 Hz, unipolar or bipolar. Liberta RC values were not located [3] |
 | Charge injection limit | Unreported |
 | Reference and ground | Unreported |
 
@@ -131,3 +131,4 @@ The sheet covers the Liberta RC IPG (model 62400) and charger kit (model 66000) 
 
 1. [FDA PMA P140009/S087 record](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P140009S087).
 2. [Abbott Liberta RC rechargeable DBS page](https://www.neuromodulation.abbott/int/en/healthcare-professionals/movement-disorders/rechargeable-dbs.html).
+3. [FDA summary of safety and effectiveness data, Abbott Infinity DBS System, P140009/S039](https://www.accessdata.fda.gov/cdrh_docs/pdf14/P140009S039B.pdf).
