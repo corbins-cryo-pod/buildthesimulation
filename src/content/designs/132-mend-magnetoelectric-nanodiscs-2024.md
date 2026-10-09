@@ -40,42 +40,42 @@ Separate applications cover [VTA reward and longitudinal optical measurements](/
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Hexagonal core-double-shell nanodiscs: Fe₃O₄ core, CoFe₂O₄ shell, BaTiO₃ outer shell [1] |
-| Array layout | Unreported |
+| Array layout |  |
 | Electrode count | Not applicable; no electrodes |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
 | Shank width and thickness | Nominal 250 nm diameter and 50 nm thickness (abstract); measured diameter 250 ± 41 nm ensemble [1] |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
 | Insertion method | Craniotomy and brain injection of particles [1] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | BaTiO₃ piezoelectric shell over CoFe₂O₄ magnetostrictive shell [1] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
 | Stimulation capability | Peak ME coefficient 150 mV mT⁻¹ cm⁻¹ at 220 mT offset with 10 mT, 150 Hz alternating field; single-particle potential 37.5 µV calculated (Supplementary Note 1), far below the roughly 15-30 mV threshold, so a summation mechanism is proposed and called qualitative [1, 2] |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
 | Gliosis and encapsulation | Immune markers compared with PBS and a microwire; not a blanket biocompatibility certificate [1] |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
 | Typical failure modes | Culture at 1 µg/mm² with three ten-second 1 kHz epochs reduced viability (possible excitotoxicity); 0.75 µg/mm² avoided a measured difference; frequencies above 150 Hz silenced neurons with rebound [1] |
 
 ## System architecture
@@ -83,26 +83,26 @@ Separate applications cover [VTA reward and longitudinal optical measurements](/
 | Field | Value and source scope |
 | --- | --- |
 | Onboard electronics | None; no ASIC, battery, rectifier board, radio or addressed node [1] |
-| Data path | Unreported |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Data path |  |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | External static offset plus alternating field; 10 mT alternating component alone understates exposure [1] |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
+| Thermal management |  |
+| Packaging and hermeticity |  |
 | MRI compatibility | MRI contrast seen in isolated brains; not MRI-use qualification [1] |
 | Surgical complexity | Craniotomy and stereotaxic injection at 1 mg/ml (abstract) or 1.5 mg/ml (most assays) plus 0.5 mg/ml for c-Fos, kept distinct [1] |
-| Output connectors | Unreported |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | Optical responses persist to three months but decline; diffusion and uptake suggested with about 500 µm spread [1] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | VTA reward behavior, longitudinal photometry and STN-driven rotations in mice [1] |
 
 ## Clinical and preclinical evidence
@@ -112,8 +112,8 @@ Separate applications cover [VTA reward and longitudinal optical measurements](/
 | Human subjects | None |
 | Preclinical cohort | Mice; photometry used AAV-delivered GCaMP6s and implanted fibres [1] |
 | Follow-up duration | Up to three months [1] |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Transgene-free wireless modulation of neural activity and behavior [1] |
 | Key limitations | Delivery reversibility, clearance, cell-type selectivity and human safety unestablished; mechanism partly model-based [1, 3] |
 
@@ -123,7 +123,7 @@ Separate applications cover [VTA reward and longitudinal optical measurements](/
 | --- | --- |
 | Strengths | No electronics or genetic sensitization needed [1] |
 | Limitations | Strong static field required; response declines over months; injection needs craniotomy [1] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Material interface
 
