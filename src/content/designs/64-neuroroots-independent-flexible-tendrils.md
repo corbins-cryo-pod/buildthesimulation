@@ -140,7 +140,7 @@ These are preclinical recording results. The abstract does not report human impl
 | Root thickness | 1.5 µm |
 | Architecture | Separate, mechanically independent electrode tendrils |
 | Recording duration | At least seven weeks in rats |
-| Channel count and contact geometry | Not given in the abstract used for this entry |
+| Channel count and contact geometry |  |
 | Full 3D model | Not added; root length, contact layout and delivery geometry are not grounded here |
 
 The paper describes compliance and spatial distribution inspired by axons. That does not make the implant a neuron or establish a lifetime interface.
