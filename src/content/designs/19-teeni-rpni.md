@@ -61,7 +61,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Recording modality | EMG from RPNI and residual muscles, not direct neural spikes |
 | Sampling rate | NeuroPort acquisition 30 ksps; decoded after downsampling to 1 kSps, Vu 2023 |
 | Stimulation capability | Not demonstrated by this motor-control recording study |
-| Charge injection limit | Not applicable to demonstrated recording task; stimulation limit unreported |
+| Charge injection limit | Not applicable to demonstrated recording task; stimulation limit not reported |
 | Reference and ground | Bipolar electrode recordings; separate reference/ground details not given in reviewed 2023 Methods |
 
 ## Tissue interface and bioresponse
@@ -70,12 +70,12 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | --- | --- |
 | Target tissue | Muscle grafts revascularized and reinnervated by transected nerves; electrodes in muscle |
 | Insertion trauma and BBB disruption | BBB: not applicable. Peripheral surgery neurotizes free muscle graft and later implants muscle electrodes |
-| Vascular disruption risk | Free graft initially devascularized, then revascularizes; quantitative surgical complication rate unreported here |
+| Vascular disruption risk | Free graft initially devascularized, then revascularizes; quantitative surgical complication rate not reported here |
 | Micromotion sensitivity | Day-to-day EMG variation observed; paper does not find substantial cluster centroid shifts across arm positions. Not a mechanical motion measurement |
 | Gliosis and encapsulation | Peripheral muscle interface; CNS gliosis not applicable. Electrode-muscle fibrosis not quantified in reviewed 2023 report |
 | Neuron loss near sites | Not quantified; interface records muscle rather than placing contacts among CNS neurons |
 | Foreign-body response mitigation | Biological amplification avoids a direct nerve-contact recording interface; not proof that electrode-muscle foreign-body response is absent |
-| Typical failure modes | Session-to-session EMG amplitude variation and degraded nine-movement decoding without recalibration reported; hardware failure rates unreported |
+| Typical failure modes | Session-to-session EMG amplitude variation and degraded nine-movement decoding without recalibration reported; hardware failure rates not reported |
 
 ## System architecture
 
@@ -85,23 +85,23 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Data path | Percutaneous connectors to Blackrock NeuroPort; Matlab target xPC decodes movements |
 | Telemetry bandwidth | Not applicable to wired research configuration |
 | Sampling rate | 30 ksps raw, 1 kSps decoder input; raw 3-7000 Hz filter, decoder 100-500 Hz filter |
-| Power | External acquisition, computer and prosthesis; implant power draw unreported |
+| Power | External acquisition, computer and prosthesis; implant power draw not reported |
 | Thermal management |  |
-| Packaging and hermeticity | Percutaneous research electrode system; hermetic lifetime qualification unreported |
+| Packaging and hermeticity | Percutaneous research electrode system; hermetic lifetime qualification not reported |
 | MRI compatibility |  |
 | Surgical complexity | RPNI muscle graft surgery followed by separate indwelling electrode surgery; graft number/targets differ between participants |
-| Output connectors | Percutaneous connectors to external NeuroPort; exact connector part unreported in 2023 Methods |
+| Output connectors | Percutaneous connectors to external NeuroPort; exact connector part not reported in 2023 Methods |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Per-contact acute manufacturing/implant yield unreported |
+| Acute yield | Per-contact acute manufacturing/implant yield not reported |
 | Chronic yield | RPNI SNR at least 15 across sampled sessions through 276 d (P1) and 1054 d (P2); not a contact-survival percentage |
 | Stability over time | Monthly recordings interrupted by COVID-19 pauses. P2 four-grip performance above 94% across 604 d without recalibration; nine-movement offline performance often declined |
 | Longevity | 1054 d post-electrode implantation signal observation in P2; not continuous acquisition or maximum service life |
 | Revision and explant experience |  |
-| Adverse events | Quantitative adverse-event accounting unreported in reviewed 2023 Methods/Results; not evidence of zero complications |
+| Adverse events | Quantitative adverse-event accounting not reported in reviewed 2023 Methods/Results; not evidence of zero complications |
 | Notable demonstrations | P2 coffee-making sequence 99% accuracy over 611 d without decoder recalibration; uses RPNI plus residual-muscle channels |
 
 ## Clinical and preclinical evidence
@@ -112,7 +112,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Preclinical cohort | Not applicable to the audited 2023 human study |
 | Follow-up duration | Signal quality: 12 sessions over one year for P1, 27 over three years for P2; last signal recordings 276 and 1054 d after electrode implantation |
 | Indications | Experimental upper-limb prosthetic motor control; RPNI surgeries initially for neuroma and phantom pain |
-| Trials and registries | IRB HUM00124839 given; trial registry identifier unreported in reviewed report |
+| Trials and registries | IRB HUM00124839 given; trial registry identifier not reported in reviewed report |
 | Primary outcomes | EMG SNR, movement decoding, arm-position robustness and physical coffee-making task |
 | Key limitations | Small cohort; physical/prolonged decoder tasks in P2 only. Mixed RPNI/residual-muscle signals, not RPNI-only accuracy. TEENI is a different hydrogel-thread platform |
 
