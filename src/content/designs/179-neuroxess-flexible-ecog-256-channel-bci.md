@@ -18,6 +18,8 @@ draft: false
 
 NeuroXess has described a 256-channel flexible cortical array that decoded motor intent and Mandarin speech in patients who were implanted for clinical epilepsy or tumor work. The hardware details here come from the Science Advances paper; accuracy claims beyond the paper come from the company. A secondary source called the array penetrating; the paper and Chinese state reporting describe a surface ECoG grid under the dura. This sheet covers the earlier wired research array. NeuroXess's fully implanted wireless Triple-F system, now in registration trials, has [its own sheet](/devices/180-neuroxess-triple-f-fully-implanted-subdural-bci/).
 
+Company brief: [NeuroXess](/companies/10-neuroxess-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
