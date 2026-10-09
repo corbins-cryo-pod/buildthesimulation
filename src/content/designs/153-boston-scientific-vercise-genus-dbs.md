@@ -40,12 +40,12 @@ The Vercise Genus DBS System is Boston Scientific's current DBS platform under P
 | Interface type | Standard 8-contact leads (DB-2201, 30 and 45 cm) and Vercise Cartesia 8-contact directional leads (DB-2202, 30 and 45 cm); Cartesia X and HX are 16-contact directional leads [2][3] |
 | Array layout | Unreported |
 | Electrode count | 8 contacts (DB-2201, DB-2202) or 16 contacts (Cartesia X and HX) [2][3] |
-| Pitch | Unreported |
-| Electrode lengths | 30 cm or 45 cm for the DB-2201 and DB-2202 leads [2] |
-| Shank width and thickness | Unreported |
+| Pitch | 2.0 mm center to center (original DB-2201 lead) [4] |
+| Electrode lengths | Contact length 1.5 mm; contact span 15.5 mm; overall lead length 30 or 45 cm (DB-2201) [4] |
+| Shank width and thickness | Lead diameter 1.3 mm (DB-2201) [4] |
 | Tip and exposed site geometry | Unreported |
 | Contact coating | Unreported |
-| Insulation | Unreported |
+| Insulation | Polyurethane outer jacket tubing [4] |
 | Insertion method | Unreported |
 | Anchoring and fixation | Unreported |
 
@@ -53,13 +53,13 @@ The Vercise Genus DBS System is Boston Scientific's current DBS platform under P
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
+| Exposed site area | 6.0 mm2 per contact (DB-2201) [4] |
+| Electrode material | Platinum/Iridium contacts [4] |
+| Impedance (with measurement frequency) | Lead conductor 90 ohm or less from each connector to its contact; measurement frequency not stated [4] |
 | Noise floor or SNR | Unreported |
 | Recording modality | Unreported |
 | Sampling rate | Unreported |
-| Stimulation capability | Multiple Independent Current Control (MICC); Cartesia 3D combines MICC with the directional lead to shape and steer stimulation; semi-bipolar and anodic stimulation modes are described [3][4] |
+| Stimulation capability | Original IPG DB-1110-C: current-regulated, charge-balanced asymmetric biphasic pulses; 0.1 to 12.7 mA per contact (up to 20.0 mA per area); pulse width 10 to 450 us; frequency 2 to 255 Hz; 16 independent areas (4 programs of 4 areas); unipolar, bipolar or multipolar; charge density warning at 30 uC/cm2/phase or more [4] |
 | Charge injection limit | Unreported |
 | Reference and ground | Unreported |
 
@@ -84,10 +84,10 @@ The Vercise Genus DBS System is Boston Scientific's current DBS platform under P
 | Data path | Clinician programmer on a tablet and a patient controller [1] |
 | Telemetry bandwidth | Unreported |
 | Sampling rate | Unreported |
-| Power | Rechargeable options provide 30 days of stimulation between recharges (manufacturer claim); the P8 is described as the only directional single-channel primary cell [3][5] |
+| Power | Original IPG has a rechargeable battery charged by an RF charging device [4] |
 | Thermal management | Unreported |
 | Packaging and hermeticity | Unreported |
-| MRI compatibility | Genus, Genus Mixed with M8 or S8 adapters, Gevia and lead-only systems provide full-body MRI access when specific components and conditions are used [5][2] |
+| MRI compatibility | The 2017 SSED says patients implanted with the Vercise DBS System should not have MRI; later labeling is not described here [4] |
 | Surgical complexity | Lead kit and extension kit with an IPG; mixed systems can connect to existing Medtronic or Abbott leads through adapters [1][5] |
 | Output connectors | Unreported |
 
@@ -107,12 +107,12 @@ The Vercise Genus DBS System is Boston Scientific's current DBS platform under P
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects | Unreported |
+| Human subjects | INTREPID: 160 randomized subjects in the pre-specified interim analysis (design 3:1 randomization, up to 30 US sites, up to 310 subjects); VANTAGE contributed safety data from 40 consented patients [4] |
 | Preclinical cohort | Unreported |
 | Follow-up duration | Unreported |
 | Indications | Essential tremor not adequately controlled by medication, now including two-sided VIM stimulation (S064) [1] |
-| Trials and registries | Unreported in the pages read; the FDA overview points to an SSED not fetched for this sheet [1] |
-| Primary outcomes | Unreported |
+| Trials and registries | INTREPID, IDE G120075: multi-center, prospective, double-blind, randomized 3:1 controlled study; VANTAGE (safety only) [4] |
+| Primary outcomes | Primary endpoint: difference between Active and Control in mean change over 12 weeks in waking hours per day with good symptom control and no troublesome dyskinesia (PD diary), with no medication increase. The SSED states the study met success criteria at the interim analysis; the numeric difference was not extracted here [4] |
 | Key limitations | Values rest on an FDA overview and company pages. The SSED, clinical study sizes and adverse event rates were not read [1][3][5] |
 
 ## Engineering tradeoffs
@@ -125,7 +125,7 @@ The Vercise Genus DBS System is Boston Scientific's current DBS platform under P
 
 ## Version boundary
 
-S064 covers Vercise PC, Gevia and Genus. The 16-contact Cartesia X and HX lead claims come from Boston Scientific's product page and are not tied to an FDA document read here.
+Values cited [4] describe the original 2017 approval configuration (IPG DB-1110-C, lead DB-2201). S064 covers Vercise PC, Gevia and Genus. The 16-contact Cartesia X and HX lead claims come from Boston Scientific's product page and are not tied to an FDA document read here.
 
 ## References
 
@@ -134,3 +134,4 @@ S064 covers Vercise PC, Gevia and Genus. The 16-contact Cartesia X and HX lead c
 3. [Boston Scientific DBS system page](https://www.bostonscientific.com/en-US/medical-specialties/neurological-surgery/deep-brain-stimulation-system.html).
 4. [Boston Scientific Vercise Genus leads page](https://www.bostonscientific.com/en-EU/products/deep-brain-stimulation-systems/vercise-genus-dbs/leads.html).
 5. [Boston Scientific Vercise Genus IPG page](https://www.bostonscientific.com/en-US/medical-specialties/neurological-surgery/deep-brain-stimulation-system/vercise-genus-batteries.html).
+4. [FDA summary of safety and effectiveness data, P150031 (original approval 12/08/2017)](https://www.accessdata.fda.gov/cdrh_docs/pdf15/P150031B.pdf).
