@@ -113,3 +113,7 @@ But the credibility hinge is the same as always: can they make it *reliable, saf
 - *PRIMA in Europe (Jul 22, 2026):* PRIMA received a CE mark and Science announced its European commercial launch for geographic atrophy from age-related macular degeneration; US FDA approval process is underway and PRIMA holds two FDA Humanitarian Use Device designations. Sources: <https://science.xyz/news/ce-mark/> and <https://science.xyz/news/hud-designation/>
 - *Leadership (Sep 17, 2026):* Darius Shahida, previously Chief Strategy Officer, was named President. Source: <https://investor.wedbush.com/wedbush/article/bizwire-2026-9-17-science-corporation-names-darius-shahida-as-president>
 - Pixium Vision, mentioned in older coverage, is now part of Science (per Science press materials).
+
+### Device entries
+
+- [Science PRIMA subretinal photovoltaic implant](/devices/177-science-prima-subretinal-photovoltaic-implant/)
