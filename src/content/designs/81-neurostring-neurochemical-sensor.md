@@ -42,67 +42,67 @@ NeuroString measures chemical dynamics. It is not an intracortical spike-recordi
 | Interface type | Strings cut from an elastomer-embedded sensing network; exposed cross-sectional tips are the sensing surface [1, 4] |
 | Array layout | Three-channel brain sensor in the primary figures; distinct gut layout [1, 4] |
 | Electrode count | Three channels (brain sensor, primary figures) [1] |
-| Pitch | Unreported |
+| Pitch |  |
 | Electrode lengths | Brain layout 3-5 mm intracerebral segment; gut layout 30-200 mm segment [4] |
 | Shank width and thickness | Brain layout lateral dimensions labeled 100-150 µm and 50-150 µm, with strings cut to 90 µm width in the fabrication caption (kept separate). Gut layout approximately 200 µm and a 100-200 µm lateral range. Full stack thickness not established [4] |
 | Tip and exposed site geometry | Exposed cross-sectional string tips [1, 4] |
 | Contact coating | Additional elastomer coating, oxygen-plasma exposure and Nafion coating to reduce ascorbic-acid interference [4] |
 | Insulation | SEBS elastomer encapsulation [1, 4] |
 | Insertion method | Brain version uses a temporary pullulan coating that dissolves to release the soft strings; gut version has a distinct layout and preparation for a moving lumen [1] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Laser-carbonized graphene with iron-oxide or nickel-oxide nanoparticles, from a metalloporphyrin-containing polyimide precursor [1] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Electrochemical sensing; solution calibration and changing pH limit interpretation of estimated in vivo concentrations [1, 3] |
-| Sampling rate | Unreported |
+| Sampling rate |  |
 | Stimulation capability | None; not a stimulation implant [1] |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Brain and gut [1] |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
 | Micromotion sensitivity | Material tested under deformation up to 5,000 cycles at 0-50% strain; that is not an in vivo session count [2] |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
+| Onboard electronics |  |
 | Data path | Wired to external readout [5] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
 | Surgical complexity | Pullulan-coated insertion in brain; placement within the gut lumen for the gut version [1] |
-| Output connectors | Unreported |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
 | Stability over time | Abstract describes chronic sensing; no specific chronic lifetime is assigned from the sources used [1] |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Mouse reward learning, optogenetic and pharmacological perturbations, and gut serotonin measurements [1] |
 
 ## Clinical and preclinical evidence
@@ -111,9 +111,9 @@ NeuroString measures chemical dynamics. It is not an intracortical spike-recordi
 | --- | --- |
 | Human subjects | None |
 | Preclinical cohort | Mouse brain and gut; animal counts not extracted here [1] |
-| Follow-up duration | Unreported |
+| Follow-up duration |  |
 | Indications | Parkinson's disease, depression and intestinal disorders are research directions, not clinical indications [5] |
-| Trials and registries | Unreported |
+| Trials and registries |  |
 | Primary outcomes | Neurochemical dynamics measured in brain and gut [1] |
 | Key limitations | Not clinical-ready; wired readout; some results are catecholamines rather than uniquely dopamine [1, 5] |
 
@@ -123,7 +123,7 @@ NeuroString measures chemical dynamics. It is not an intracortical spike-recordi
 | --- | --- |
 | Strengths | Soft, stretchable chemical sensing in moving tissue [1] |
 | Limitations | Chemical measurement only, wired, solution-calibrated, no 3D model or full coordinate map [1, 4, 5] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Fabrication and sensing interface
 
