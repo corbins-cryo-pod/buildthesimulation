@@ -18,6 +18,8 @@ draft: false
 
 WRS02 is the successor to the 64-channel WRS01 described on [the WRS sheet](/devices/178-stairmed-wrs-ultraflexible-wireless-bci/). Chinese-language sources give the channel count, launch date and a few company-reported performance figures. Nearly everything else is not reported, and the entries below say so.
 
+Company brief: [StairMed](/companies/12-stairmed-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
