@@ -30,7 +30,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | First demonstrated | 2017 Science Advances report reviewed here |
 | First human implant | Mouse preclinical study |
 | Species studied | Male C57BJ/6 and Thy1-YFP transgenic mice |
-| Regulatory status | UT Austin IACUC research; clinical authorization unreported |
+| Regulatory status | UT Austin IACUC research; clinical authorization not reported |
 | Function | Chronic sampled neural recording and tissue integration studies |
 | Target tissue | Somatosensory and visual cortex |
 
@@ -54,7 +54,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | NET-50 nominal planar 900 µm², NET-10 200 µm², calculated from reported rectangular dimensions; electrochemical effective areas unreported |
+| Exposed site area | NET-50 nominal planar 900 µm², NET-10 200 µm², calculated from reported rectangular dimensions; electrochemical effective areas not reported |
 | Electrode material | Pt/Au options and 100 nm interconnect metallization; material/size differences drive impedance variation |
 | Impedance (with measurement frequency) | Measured at 1000 Hz with Intan equipment; average decreases over first 1.5 months then stabilizes. No single graph-estimated family impedance assigned |
 | Noise floor or SNR | Mean noise decreases first 1.5 months then stable; 19 electrodes show stable sortable-waveform average SNR across four months. Highest-SNR example above 30 is not a universal rating |
@@ -100,8 +100,8 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Chronic yield | Approximately 75% multi-unit and 25% sortable-unit yield under anesthesia; 19 electrodes with sortable waveforms followed across four months |
 | Stability over time | Twice-monthly recordings improve first 1.5 months, stable for following 2.5 months. Trackable minor waveform changes in 18/19 electrodes; not all 80 tracking one neuron |
 | Longevity | Four-month electrical study; five-month histology is separate. Years-scale service life not established |
-| Revision and explant experience | Thread cannot conveniently be advanced to another region like movable rigid probe; clinical revision/explant experience unreported |
-| Adverse events | Transient BBB leakage/imaging surgical injury documented; numerical clinical complication rates unreported |
+| Revision and explant experience | Thread cannot conveniently be advanced to another region like movable rigid probe; clinical revision/explant experience not reported |
+| Adverse events | Transient BBB leakage/imaging surgical injury documented; numerical clinical complication rates not reported |
 | Notable demonstrations | Stable sampled unit recording in seven mice plus longitudinal tissue/vascular imaging and postmortem histology |
 
 ## Clinical and preclinical evidence
