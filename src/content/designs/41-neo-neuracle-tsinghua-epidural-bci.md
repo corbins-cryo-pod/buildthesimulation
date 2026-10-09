@@ -41,12 +41,12 @@ NEO (Neural Electronic Opportunity) is a battery-free epidural ECoG implant for 
 | Interface type | Epidural, skull-embedded implant with electrodes outside the dura [1] |
 | Array layout | Epidural array over the functionally localized area [1]; layout not published in the sources used here |
 | Electrode count | Not published in any source read, English or Chinese. The NMPA review summary lists electrode kit models K1014-15, K1014-25 and K1014-35 but no contact count [7]. A figure of 8 sensors has appeared in English-language press; no Chinese primary source read here supports it and it is not used on this sheet |
-| Pitch | Not given in the sources used here |
+| Pitch |  |
 | Electrode lengths | Not applicable: epidural surface electrodes, no penetrating shafts [1] |
 | Shank width and thickness | Skull-embedded implant 25 mm in diameter [1]; no electrode shaft dimensions published |
-| Tip and exposed site geometry | Not given in the sources used here |
-| Contact coating | Not given in the sources used here |
-| Insulation | Not given in the sources used here |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
 | Insertion method | Minimally invasive epidural implantation, implant seated in the skull [1]. The company prospectus states only about 2 mm of deep bone grinding is needed [9]. Tsinghua reports the first patient left hospital 10 days after surgery [10] |
 | Anchoring and fixation | Implant fits in the skull [1]; electrode fixation not described |
 
@@ -54,15 +54,15 @@ NEO (Neural Electronic Opportunity) is a battery-free epidural ECoG implant for 
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Not given in the sources used here |
-| Electrode material | Not given in the sources used here |
-| Impedance (with measurement frequency) | Not given in the sources used here |
-| Noise floor or SNR | Not given in the sources used here |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Epidural ECoG. The NMPA review summary states the usable low and high frequency signals reach up to 200 Hz and can be collected epidurally; whether this is bandwidth or sampling rate is not specified [7] |
-| Sampling rate | Not given in the sources used here |
+| Sampling rate |  |
 | Stimulation capability | The approved component list names no stimulation module [5]. The ChiCTR scientific title calls the trial system an acquisition and stimulation system [8], and the prospectus describes the NEO platform as bidirectional closed-loop [9]; these describe the platform or trial system, not the approved indication |
-| Charge injection limit | Not given in the sources used here |
-| Reference and ground | Not given in the sources used here |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
@@ -70,25 +70,25 @@ NEO (Neural Electronic Opportunity) is a battery-free epidural ECoG implant for 
 | --- | --- |
 | Target tissue | Sensorimotor cortex, epidural placement; the electrodes stay outside the dura so cortical tissue is left intact [1] |
 | Insertion trauma and BBB disruption | Cortical tissue left intact because the electrodes stay outside the dura [1]; quantitative data not given |
-| Vascular disruption risk | Not given in the sources used here |
-| Micromotion sensitivity | Not given in the sources used here |
-| Gliosis and encapsulation | Not given in the sources used here |
-| Neuron loss near sites | Not given in the sources used here |
-| Foreign-body response mitigation | Not given in the sources used here |
-| Typical failure modes | Not given in the sources used here |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | BCI implant plus EEG signal transceiver worn outside the scalp; details unreported [5] |
+| Onboard electronics | BCI implant plus EEG signal transceiver worn outside the scalp; details not reported [5] |
 | Data path | Wireless link through the scalp between the skull-embedded implant and the external transceiver [1, 7]; the prospectus describes wireless power and signal transmission as integrated, with no battery [9] |
-| Telemetry bandwidth | Not given in the sources used here |
-| Sampling rate | Not given in the sources used here |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | No battery; near-field wireless power from the external unit, per Tsinghua and the company prospectus [1, 9, 10] |
-| Thermal management | Not given in the sources used here |
+| Thermal management |  |
 | Packaging and hermeticity | Skull-embedded unit, 25 mm diameter [1]; hermeticity not described |
-| MRI compatibility | Not given in the sources used here |
+| MRI compatibility |  |
 | Surgical complexity | Minimally invasive; epidural placement leaves the dura intact [1]. About 2 mm of bone grinding per the company prospectus [9] |
 | Output connectors | Wireless; no percutaneous connector described [1] |
 
@@ -96,11 +96,11 @@ NEO (Neural Electronic Opportunity) is a battery-free epidural ECoG implant for 
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Not given in the sources used here |
+| Acute yield |  |
 | Chronic yield | Mean decoding accuracy 87% in the confirmatory trial, 90% in the feasibility study and 83% in long-term use, per the NMPA technical review summary [7]. Tsinghua reported home-use grasp decoding above 90% in the first patients [10]. Mean device use in months 2 to 6 was 44.61 hours per month (SD 22.43) [7] |
-| Stability over time | Not given in the sources used here |
+| Stability over time |  |
 | Longevity | Design life per the review summary: implant and electrode kit 10 years, transceiver 2 years, pneumatic glove device 8 years, glove 1 year or 100,000 cycles; shelf life 3 years. These are labeled design values, not measured durability [7] |
-| Revision and explant experience | Not given in the sources used here |
+| Revision and explant experience |  |
 | Adverse events | Confirmatory trial per the NMPA review summary: any adverse event 81.25 percent and serious adverse events 6.25 percent (bacterial pneumonia, lumbar fracture), with no device-related adverse event and no device defect reported [7]. The company said at a December 2025 conference there were no device-related serious adverse events [11] |
 | Notable demonstrations | Home-use case in which decoded signals drove a pneumatic glove for grasping, reported by Tsinghua [1]; first implantable BCI reported to receive market approval [2]; BCI-assisted ARAT gain +8.03 (SD 3.78) at 2 months and +9.06 (SD 3.60) at 6 months; unassisted ARAT gain in the implanted hand +5.72 at 3 months and +6.53 at 6 months [7] |
 
@@ -121,8 +121,8 @@ NEO (Neural Electronic Opportunity) is a battery-free epidural ECoG implant for 
 | Field | Value and source scope |
 | --- | --- |
 | Strengths | Battery-free, intact cortical tissue, market approval reported in China [1, 2, 3] |
-| Limitations | Electrode count, spacing and signal quality unreported; epidural recording versus penetrating arrays not compared in this catalog [1] |
-| Scaling constraints | Not given in the sources used here |
+| Limitations | Electrode count, spacing and signal quality not reported; epidural recording versus penetrating arrays not compared in this catalog [1] |
+| Scaling constraints |  |
 
 ## References
 
