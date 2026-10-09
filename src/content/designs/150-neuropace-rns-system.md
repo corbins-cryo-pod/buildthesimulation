@@ -27,8 +27,8 @@ The RNS System is an FDA-approved, cranially implanted neurostimulator from Neur
 | Interface class | Cranially implanted responsive neurostimulator with one or two cortical strip or depth leads [1] |
 | Origin | Commercial FDA-approved device; Feasibility (G010288 external model), pivotal and long-term treatment studies [1][2] |
 | First demonstrated | Feasibility study began 2004 per the long-term paper [2] |
-| First human implant | Unreported |
-| Species studied | Unreported |
+| First human implant |  |
+| Species studied |  |
 | Regulatory status | FDA PMA P100026, approval November 14, 2013 (panel recommendation February 22, 2013) [1]. Later supplements and the RNS-320 model were not read for this sheet |
 | Function | Records electrocorticography, detects programmed abnormal activity and delivers responsive stimulation; adjunctive therapy for adults with partial onset seizures from no more than 2 foci, refractory to two or more antiepileptic drugs [1] |
 | Target tissue | Seizure foci in or near the brain, via cortical surface strips or stereotactic depth leads [1] |
@@ -44,7 +44,7 @@ The RNS System is an FDA-approved, cranially implanted neurostimulator from Neur
 | Electrode lengths | Lead length 15, 25 or 35 cm (cortical strip); 30 or 44 cm (depth) [1] |
 | Shank width and thickness | Lead diameter 1.27 mm for both lead types [1] |
 | Tip and exposed site geometry | Electrode surface area 0.079 cm2 [1] |
-| Contact coating | Unreported |
+| Contact coating |  |
 | Insulation | Silicone lead body [1] |
 | Insertion method | Depth leads stereotactic, using a stop gauge to set depth; strip leads placed near epileptic foci; neurostimulator in a craniectomy with ferrule [1] |
 | Anchoring and fixation | Ferrule secures the neurostimulator in the skull; suture sleeves protect the lead body when sutured [1] |
@@ -56,12 +56,12 @@ The RNS System is an FDA-approved, cranially implanted neurostimulator from Neur
 | Exposed site area | 0.079 cm2 per electrode [1] |
 | Electrode material | Platinum/iridium [1] |
 | Impedance (with measurement frequency) | Lead conductor resistance listed as 15, 25, 35 ohm (cortical strip) and 30, 44 ohm (depth), +/-10% by lead length; this is lead resistance, not electrode-tissue impedance [1] |
-| Noise floor or SNR | Unreported |
+| Noise floor or SNR |  |
 | Recording modality | Electrocorticographic (ECoG) activity monitored; three programmable detection tools: area, line-length and bandpass [1] |
-| Sampling rate | Unreported |
+| Sampling rate |  |
 | Stimulation capability | Max current 11.5 mA +/-10% and 6 V +/-10% at 500 ohm; pulse width 40-1000 us; 1-333 Hz; 1-1666 pulses per burst; bipolar or multipolar current paths [1] |
 | Charge injection limit | Maximum charge density 25 uC/cm2/phase [1] |
-| Reference and ground | Unreported |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
@@ -69,11 +69,11 @@ The RNS System is an FDA-approved, cranially implanted neurostimulator from Neur
 | --- | --- |
 | Target tissue | Seizure foci in cortex or depth structures [1] |
 | Insertion trauma and BBB disruption | Rabbit study (6 days, 4 and 26 weeks): no evidence of systemic toxicity, neurotoxicity or local tissue reaction beyond expected effects of surgical placement and the physical presence of implants [1] |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
 | Gliosis and encapsulation | Rabbit histopathology included GFAP (astroglial activation) and macrophage staining; no reaction beyond expected effects of placement and presence [1] |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
 | Typical failure modes | RNS-300M: median time to replacement about 1,284 days (3.5 years), with no battery-related device malfunctions; ECoG recording can be affected by radio-frequency identification devices [1][2] |
 
 ## System architecture
@@ -82,10 +82,10 @@ The RNS System is an FDA-approved, cranially implanted neurostimulator from Neur
 | --- | --- |
 | Onboard electronics | Hermetically sealed titanium enclosure with electronic circuitry and a Li-CFx/SVO battery [1] |
 | Data path | Programmer or Remote Monitor wand communicates with the neurostimulator; Remote Monitor uploads data over analog phone lines to the Patient Data Management System [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Li-CFx/SVO primary battery; manual end-of-service estimate 2.6 to 4.2 years depending on settings; RNS-320 anticipated to reach 8 years at moderate use [2] |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | Hermetic titanium case; helium leak rate no greater than 5.0 x 10^-9 cc-atm/s per acceptance criteria [1] |
 | MRI compatibility | Contraindicated at the 2013 approval; MR imaging not permitted with any implanted RNS System [1]. Later labeling not read |
 | Surgical complexity | Craniectomy with ferrule, stereotactic or subdural lead placement; infection risk 4.1% per procedure including replacements [2] |
@@ -95,9 +95,9 @@ The RNS System is an FDA-approved, cranially implanted neurostimulator from Neur
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | RNS-300M median replacement about 3.5 years in the long-term study [2] |
 | Revision and explant experience | Serious infection at the implant site in 12.1% of participants; 16 of 35 infections led to explantation [2] |
 | Adverse events | Non-seizure-related hemorrhage in 7 of 256 (2.7%); status epilepticus 8.2%; suicidality-related events 9.8%; 16 deaths over 9 years including probable or definite SUDEP 3.2 per 1,000 patient-implantation years [2] |
