@@ -40,12 +40,12 @@ The Nalu system is a miniature implanted peripheral nerve stimulator with an eig
 | Interface type | Lead with eight cylindrical electrodes at the distal end, available integrated with the IPG or connected through ports [1] |
 | Array layout |  |
 | Electrode count | 8 per lead; single or dual lead configurations [1] |
-| Pitch |  |
-| Electrode lengths |  |
+| Pitch | 4.0 mm electrode spacing [3] |
+| Electrode lengths | Individual electrode 3.0 mm; electrode array 52 mm; lead diameter 1.30 mm; lead length 40 cm or 60 cm [3] |
 | Shank width and thickness |  |
 | Tip and exposed site geometry |  |
 | Contact coating |  |
-| Insulation |  |
+| Insulation | Pellethane 2363-55D insulation body (a polyurethane), multilumen tube cable [3] |
 | Insertion method |  |
 | Anchoring and fixation |  |
 
@@ -53,13 +53,13 @@ The Nalu system is a miniature implanted peripheral nerve stimulator with an eig
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area |  |
+| Exposed site area | 12.25 mm2 per electrode [3] |
 | Electrode material | Pt/Ir electrodes, polyurethane insulation [1] |
 | Impedance (with measurement frequency) |  |
 | Noise floor or SNR |  |
 | Recording modality |  |
 | Sampling rate |  |
-| Stimulation capability |  |
+| Stimulation capability | Subject device column of the FDA comparison table: pulse frequency 2 to 1500 Hz (footnoted as available in a predicate-family system, so read as a labeled capability range), pulse width 12 to 1000 µs, output current 0 to 10.2 mA into 300 ohms, output voltage 0 to 3.1 V (300 ohms), 0 to 5.1 V (500 ohms), 0 to 8.2 V (800 ohms) [3] |
 | Charge injection limit |  |
 | Reference and ground |  |
 
@@ -86,7 +86,7 @@ The Nalu system is a miniature implanted peripheral nerve stimulator with an eig
 | Sampling rate |  |
 | Power | Implant has no battery in the description read; the externally worn Therapy Disc holds a rechargeable lithium-ion battery and is held by an adhesive clip or belt [1] |
 | Thermal management |  |
-| Packaging and hermeticity |  |
+| Packaging and hermeticity | Implant housing silicone with Pellethane 2363-55D over a ceramic hermetic enclosure; IPG 28 x 11 x 4.9 mm [1, 3] |
 | MRI compatibility |  |
 | Surgical complexity |  |
 | Output connectors |  |
@@ -131,3 +131,4 @@ Description is from K183579 (2019). K232415 (decision August 21, 2024) is the la
 
 1. [FDA 510(k) clearance and summary, K183579](https://www.accessdata.fda.gov/cdrh_docs/pdf18/K183579.pdf).
 2. [FDA 510(k) record, K232415](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfPMN/pmn.cfm?ID=K232415).
+3. FDA 510(k) summary within K183579 (Nalu Medical), substantial equivalence comparison table, subject device column. [FDA PDF](https://www.accessdata.fda.gov/cdrh_docs/pdf18/K183579.pdf)

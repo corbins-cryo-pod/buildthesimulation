@@ -38,14 +38,14 @@ SPRINT is a temporary peripheral nerve stimulation system: a thin coiled percuta
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Percutaneous electrode (MicroLead): a sterile, flexible, coiled stainless steel wire inserted through an introducer needle near the target nerve [2] |
-| Array layout |  |
+| Array layout | One or two percutaneous fine-wire electrodes plus one surface return electrode; stimulation between separately placed cathode and anode [4] |
 | Electrode count | One or two percutaneous electrodes per system; the second lead is a new sales configuration in K223306 [2] |
 | Pitch |  |
-| Electrode lengths |  |
+| Electrode lengths | Electrode (MicroLead) 15 mm; lead length 221 mm; 19 strands; introducer 20 gauge extra-thin wall, 12.5 cm long; sleeve 17 gauge [4] |
 | Shank width and thickness |  |
 | Tip and exposed site geometry |  |
 | Contact coating |  |
-| Insulation |  |
+| Insulation | Lead materials listed as 316L stainless steel, silicone and PFA; which material insulates which part is not stated [4] |
 | Insertion method | Introducer needles placed in proximity to peripheral nerves associated with the painful area [2] |
 | Anchoring and fixation | Remains indwelling for the duration of therapy, up to 60 days [2] |
 
@@ -59,7 +59,7 @@ SPRINT is a temporary peripheral nerve stimulation system: a thin coiled percuta
 | Noise floor or SNR |  |
 | Recording modality |  |
 | Sampling rate |  |
-| Stimulation capability |  |
+| Stimulation capability | Two channels. Charge-balanced asymmetric biphasic waveform; 0.2 to 30 mA (0 to 45 V peak to peak); phase duration 10 to 200 µs; 5 to 150 Hz; duty cycle under 1% to 100%; session duration 1 to 24 hours [4] |
 | Charge injection limit |  |
 | Reference and ground |  |
 
@@ -84,9 +84,9 @@ SPRINT is a temporary peripheral nerve stimulation system: a thin coiled percuta
 | Data path |  |
 | Telemetry bandwidth |  |
 | Sampling rate |  |
-| Power |  |
+| Power | External pulse generator with a rechargeable lithium ion polymer battery [4] |
 | Thermal management |  |
-| Packaging and hermeticity |  |
+| Packaging and hermeticity | Pulse generator, rechargeable battery and remote housing in ABS plastic; pulse generator mass 0.030 kg; worn on the body, not implanted [4] |
 | MRI compatibility |  |
 | Surgical complexity |  |
 | Output connectors |  |
@@ -98,7 +98,7 @@ SPRINT is a temporary peripheral nerve stimulation system: a thin coiled percuta
 | Acute yield |  |
 | Chronic yield |  |
 | Stability over time |  |
-| Longevity |  |
+| Longevity | Maximum implant duration 60 days per lead [2, 4] |
 | Revision and explant experience |  |
 | Adverse events |  |
 | Notable demonstrations |  |
@@ -132,3 +132,4 @@ K223306 adds a configuration that provides a second lead. Earlier clearances are
 1. [FDA 510(k) clearance letter, K223306](https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223306.pdf).
 2. [FDA 510(k) summary text within K223306](https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223306.pdf).
 3. [FDA 510(k) database record, K223306](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K223306).
+4. FDA 510(k) summary within K223306 (SPR Therapeutics, SPRINT PNS System), technological characteristics table comparing with predicate K211801. [FDA PDF](https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223306.pdf).
