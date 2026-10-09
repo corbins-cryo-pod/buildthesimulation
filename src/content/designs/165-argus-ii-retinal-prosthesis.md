@@ -38,8 +38,8 @@ Argus II is an epiretinal implant for blind patients with retinitis pigmentosa. 
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Microelectronic implant applied to the retinal surface, with an electronics case and antenna fixed to the outer surface of the eye [2] |
-| Array layout |  |
-| Electrode count |  |
+| Array layout | Thin-film electrode array in a 6 x 10 pattern on the retinal surface, connected by a thin-film cable to the electronics package [3] |
+| Electrode count | 60 exposed platinum electrodes, of which 55 are enabled for use [3] |
 | Pitch |  |
 | Electrode lengths |  |
 | Shank width and thickness |  |
@@ -47,14 +47,14 @@ Argus II is an epiretinal implant for blind patients with retinitis pigmentosa. 
 | Contact coating |  |
 | Insulation |  |
 | Insertion method |  |
-| Anchoring and fixation |  |
+| Anchoring and fixation | Array secured to the retina with a retinal tack (a titanium alloy tack; two included); the implant is secured to the outside of the eye with a scleral band and a suture-tab assembly around the electronics package [3] |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
 | Exposed site area |  |
-| Electrode material |  |
+| Electrode material | Platinum [3] |
 | Impedance (with measurement frequency) |  |
 | Noise floor or SNR |  |
 | Recording modality |  |
@@ -84,10 +84,10 @@ Argus II is an epiretinal implant for blind patients with retinitis pigmentosa. 
 | Data path | Images from a miniature camera on glasses are processed externally and sent wirelessly to the retinal implant [2] |
 | Telemetry bandwidth |  |
 | Sampling rate |  |
-| Power |  |
+| Power | Powered wirelessly through a coil implanted in the eye and an external primary coil on the glasses; the video processing unit is worn on a belt and has a rechargeable battery [3] |
 | Thermal management |  |
-| Packaging and hermeticity |  |
-| MRI compatibility |  |
+| Packaging and hermeticity | Small hermetic electronics package with a suture tab assembly, internal coil and scleral band [3] |
+| MRI compatibility | Conditional: MRI only with 1.5 T or 3.0 T systems and following the manufacturer's MRI instructions; patients should not enter rooms with other field strengths [3] |
 | Surgical complexity |  |
 | Output connectors |  |
 
@@ -98,7 +98,7 @@ Argus II is an epiretinal implant for blind patients with retinitis pigmentosa. 
 | Acute yield |  |
 | Chronic yield |  |
 | Stability over time |  |
-| Longevity |  |
+| Longevity | Bench lifetime testing only: active soak at the maximum charge density limit at 30 Hz reached the equivalent of 32 years in accelerated aging with no significant waveform change, and an interconnect flexural test ran for a 5-year equivalent [3] |
 | Revision and explant experience |  |
 | Adverse events |  |
 | Notable demonstrations |  |
@@ -107,13 +107,13 @@ Argus II is an epiretinal implant for blind patients with retinitis pigmentosa. 
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects |  |
-| Preclinical cohort |  |
+| Human subjects | 30 subjects implanted at 10 centers (6 in the United States, 4 in Europe) in the pivotal study: 29 with retinitis pigmentosa (one with Leber congenital amaurosis) and 1 with choroideremia; 21 men and 9 women, median age about 58 [3] |
+| Preclinical cohort | Canine mechanical-model studies: 30 canines in design development, then 3 with the final design and 3 more with the design used at the start of the human trial [3] |
 | Follow-up duration |  |
 | Indications | Adults aged 25 or older with severe to profound retinitis pigmentosa and bare or no light perception in both eyes (the order statement lists further criteria not extracted here) [1] |
 | Trials and registries |  |
 | Primary outcomes |  |
-| Key limitations | Electrode count, stimulation parameters and clinical outcomes were not in the sources read. The HDE and later supplements (S001 to S033) were not reviewed [1] |
+| Key limitations | Electrode count, array layout and pivotal-study population now come from the original HDE summary (configuration at original approval, not later supplements); stimulation parameters and clinical outcomes are still not in the sources read. The HDE and later supplements (S001 to S033) were not reviewed [1] |
 
 ## Engineering tradeoffs
 
@@ -131,3 +131,4 @@ The HDE has 33 supplements (S001 to S033) listed on the FDA record; the sheet de
 
 1. [FDA HDE record, H110002](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfhde/hde.cfm?id=h110002).
 2. [Cortigent Argus II page](https://www.cortigent.com/argus-ii).
+3. FDA HDE H110002, Summary of Safety and Probable Benefit (Second Sight Medical Products, Argus II Retinal Prosthesis System), original HDE configuration. [FDA PDF](https://www.accessdata.fda.gov/cdrh_docs/pdf11/H110002B.pdf)
