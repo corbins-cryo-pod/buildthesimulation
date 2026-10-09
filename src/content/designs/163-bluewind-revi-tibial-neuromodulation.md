@@ -18,6 +18,8 @@ draft: false
 
 The Revi System is a battery-less implant near the tibial nerve at the ankle, powered by a wearable unit, for urgency incontinence. This sheet comes from the FDA De Novo review (DEN220073) and the 2024 510(k) record. Clinical result percentages were not extracted and stay blank.
 
+Company brief: [BlueWind Medical](/companies/62-bluewind-medical-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
