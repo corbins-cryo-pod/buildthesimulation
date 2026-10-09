@@ -24,6 +24,10 @@ draft: false
 - 16 July 1997: approval for epilepsy.
 - 15 July 2005: notice of approval for treatment-resistant depression (supplement S50).
 
+### Device entries
+
+- [LivaNova VNS Therapy SenTiva](/devices/157-livanova-vns-therapy-sentiva/)
+
 ### Limits
 
 The FDA record does not say when or how Cyberonics became LivaNova, so this brief does not state it.
