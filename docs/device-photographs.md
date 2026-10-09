@@ -10,7 +10,9 @@ The Connexus image comes from Paradromics' official media press kit and retains 
 
 ## Coverage and maintenance
 
-The initial release contains 25 photographed device records. Coverage remains incomplete: missing images may need copyright permission, a clearer implanted-part view or a verified hardware version. Absence of an image does not mean no photograph exists. Two DOT records reference the same published prototype; they are not distinct hardware photographs.
+The initial release contained 25 photographed device records. The follow-up release contains 31, adding NET, Flex2Chip, Neurotassel, Axonics, INBRAIN and PRIMA. The Stanford microwire and both DOT records now use higher-resolution originals recovered from the published PDFs, without synthetic enhancement. The source extraction page and image index are retained in the manifest.
+
+The follow-up source review is tracked for every published device record in `src/data/device-photo-research.json`. Pending candidates are not public gallery images. Some need copyright permission, a clearer implanted-part view, a verified hardware version or photographic-type verification. Absence of an image does not mean no photograph exists. Two DOT records reference the same published prototype; they are not distinct hardware photographs. Altius remains pending: its article clears noncommercial reuse but does not establish that its polished product image is a camera photograph. The MIT fiber press image is licensed but is a researcher portrait, not a useful implanted-part close-up.
 
 Use `scripts/prepare-device-photo.mjs` for reproducible panel extraction and WebP optimization. Do not remove original scale bars, fabricate dimensions, recolor hardware or replace real devices with generated images. Keep each source hash and extraction rectangle in the manifest and verify the local image dimensions. Recheck licensing before any commercial change to the site.
 

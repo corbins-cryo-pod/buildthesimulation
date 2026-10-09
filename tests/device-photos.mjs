@@ -16,6 +16,17 @@ test('photo records match a visible device and include accessible captions and r
     assert(['Photograph', 'Optical micrograph', 'Electron micrograph'].includes(photo.kind), `${deviceId}: identify the image accurately`);
     for (const field of ['sourceUrl', 'sourceAssetUrl', 'licenseUrl']) assert.equal(new URL(photo[field]).protocol, 'https:', `${deviceId}: ${field}`);
     assert(photo.width > 0 && photo.height > 0);
+    if (photo.crop) {
+      assert(photo.crop.width > 0 && photo.crop.height > 0);
+      assert(photo.crop.left >= 0 && photo.crop.top >= 0);
+      assert(photo.crop.left + photo.crop.width <= photo.sourceDimensions.width);
+      assert(photo.crop.top + photo.crop.height <= photo.sourceDimensions.height);
+    }
+    if (photo.sourceExtraction) {
+      assert(Number.isInteger(photo.sourceExtraction.pdfPage) && photo.sourceExtraction.pdfPage > 0);
+      assert(Number.isInteger(photo.sourceExtraction.pdfImageIndex) && photo.sourceExtraction.pdfImageIndex >= 0);
+      assert.deepEqual(photo.sourceExtraction.sourceFigureDimensions, photo.sourceDimensions);
+    }
     assert(/^[a-f0-9]{64}$/.test(photo.sourceSha256), `${deviceId}: keep original-image integrity record`);
     for (const field of ['src', 'thumbnail']) {
       assert(/^\/images\/devices\/[a-z0-9-]+\.webp$/.test(photo[field]));
@@ -34,6 +45,19 @@ test('photo records match a visible device and include accessible captions and r
     }
   }
   assert.equal(getDevicePhoto('not-a-device'), null);
+});
+
+test('source review tracks every published record without auto-clearing pending candidates', () => {
+  const audit = JSON.parse(fs.readFileSync('src/data/device-photo-research.json', 'utf8'));
+  assert.equal(audit.noncommercialConfirmed, true);
+  assert.deepEqual(new Set(Object.keys(audit.records)), visibleIds);
+  for (const [id, entry] of Object.entries(audit.records)) {
+    assert(entry.notes?.trim());
+    assert(entry.researchStatus !== 'not-reviewed');
+    assert.equal(entry.status, getDevicePhoto(id) ? 'published' : 'pending');
+    if (entry.status === 'published') assert.equal(entry.image, getDevicePhoto(id).src);
+    else assert.equal(entry.image, undefined);
+  }
 });
 
 test('families never silently attribute an older photograph to a new version', () => {

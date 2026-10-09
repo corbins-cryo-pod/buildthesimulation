@@ -447,32 +447,40 @@
   "BTSD-ACAD-0073": {
     "src": "/images/devices/btsd-acad-0073.webp",
     "thumbnail": "/images/devices/btsd-acad-0073-640.webp",
-    "width": 171,
-    "height": 214,
-    "thumbnailWidth": 171,
-    "thumbnailHeight": 214,
+    "width": 412,
+    "height": 524,
+    "thumbnailWidth": 412,
+    "thumbnailHeight": 524,
     "sourceDimensions": {
-      "width": 798,
-      "height": 465
+      "width": 1959,
+      "height": 1143
     },
     "crop": {
-      "left": 14,
-      "top": 16,
-      "width": 171,
-      "height": 214
+      "left": 38,
+      "top": 41,
+      "width": 412,
+      "height": 524
     },
-    "sourceSha256": "3e4c49bf165c2dd6439f7653669e4c326a2dd56b992a929157f241ca67f915d9",
+    "sourceSha256": "f2d37a4bd912dfc7ae73870a7490e0dcf37c4bb60593da08fd00c6762af7e00a",
     "kind": "Photograph",
     "alt": "A tiny clear glass-encased DOT stimulator held between two dark-gloved fingers, with a 10 mm scale bar.",
     "caption": "The packaged 2024 DOT epidural stimulator held between gloved fingers. Scale bar: 10 mm.",
     "credit": "Woods, Singer et al., Science Advances (2024), Fig. 1A detail, CC BY 4.0",
     "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11014439/",
-    "sourceAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/5d23/11014439/a173f3a61269/sciadv.adn0858-f1.jpg",
+    "sourceAssetUrl": "https://europepmc.org/articles/PMC11014439?pdf=render",
     "sourceLabel": "Publication · original figure",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-    "changes": "Select real photograph at left of 1A only; exclude exploded render; preserve 10 mm bar.",
-    "versionNote": "Research DOT prototype from 2024 paper, not unverified later clinical Motif DOT generations. Source provides modest resolution, so do not upscale excessively."
+    "changes": "Photo component selected from original PDF-embedded Figure 1A; original 10 mm scale retained. Resized and re-encoded; no hardware retouching.",
+    "versionNote": "Research DOT prototype from 2024 paper, not unverified later clinical Motif DOT generations. Source provides modest resolution, so do not upscale excessively.",
+    "sourceExtraction": {
+      "pdfPage": 2,
+      "pdfImageIndex": 0,
+      "sourceFigureDimensions": {
+        "width": 1959,
+        "height": 1143
+      }
+    }
   },
   "BTSD-ACAD-0071": {
     "src": "/images/devices/btsd-acad-0071.webp",
@@ -567,32 +575,40 @@
   "BTSD-STUP-0002": {
     "src": "/images/devices/btsd-stup-0002.webp",
     "thumbnail": "/images/devices/btsd-stup-0002-640.webp",
-    "width": 175,
-    "height": 219,
-    "thumbnailWidth": 175,
-    "thumbnailHeight": 219,
+    "width": 412,
+    "height": 524,
+    "thumbnailWidth": 412,
+    "thumbnailHeight": 524,
     "sourceDimensions": {
-      "width": 798,
-      "height": 465
+      "width": 1959,
+      "height": 1143
     },
     "crop": {
-      "left": 13,
-      "top": 13,
-      "width": 175,
-      "height": 219
+      "left": 38,
+      "top": 41,
+      "width": 412,
+      "height": 524
     },
-    "sourceSha256": "3e4c49bf165c2dd6439f7653669e4c326a2dd56b992a929157f241ca67f915d9",
+    "sourceSha256": "f2d37a4bd912dfc7ae73870a7490e0dcf37c4bb60593da08fd00c6762af7e00a",
+    "kind": "Photograph",
     "alt": "Photograph of a small transparent packaged DOT magnetoelectric cortical stimulator held between two black-gloved fingertips.",
     "caption": "DOT research prototype photographed in 2024; fully packaged implant with 10 mm scale.",
-    "kind": "Photograph",
     "credit": "Woods et al., Science Advances (2024), Fig. 1A",
     "sourceUrl": "https://www.science.org/doi/10.1126/sciadv.adn0858",
-    "sourceAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/5d23/11014439/a173f3a61269/sciadv.adn0858-f1.jpg",
+    "sourceAssetUrl": "https://europepmc.org/articles/PMC11014439?pdf=render",
     "sourceLabel": "Original source · photographic panel",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original scale bars and annotations retained.",
-    "versionNote": "2024 Woods et al. research prototype of the DOT platform, not asserted to be the exact later Motif clinical device revision. Retain prototype/date qualification. Same study is the academic DOT catalog record at order 117."
+    "changes": "Photo component selected from original PDF-embedded Figure 1A; original 10 mm scale retained. Resized and re-encoded; no hardware retouching.",
+    "versionNote": "2024 Woods et al. research prototype of the DOT platform, not asserted to be the exact later Motif clinical device revision. Retain prototype/date qualification. Same study is the academic DOT catalog record at order 117.",
+    "sourceExtraction": {
+      "pdfPage": 2,
+      "pdfImageIndex": 0,
+      "sourceFigureDimensions": {
+        "width": 1959,
+        "height": 1143
+      }
+    }
   },
   "BTSD-ACAD-0005": {
     "src": "/images/devices/btsd-acad-0005.webp",
@@ -717,31 +733,241 @@
   "BTSD-ACAD-0062": {
     "src": "/images/devices/btsd-acad-0062.webp",
     "thumbnail": "/images/devices/btsd-acad-0062-640.webp",
-    "width": 151,
-    "height": 124,
-    "thumbnailWidth": 151,
-    "thumbnailHeight": 124,
+    "width": 503,
+    "height": 407,
+    "thumbnailWidth": 503,
+    "thumbnailHeight": 407,
     "sourceDimensions": {
-      "width": 440,
-      "height": 390
+      "width": 1465,
+      "height": 1299
     },
     "crop": {
-      "left": 287,
-      "top": 160,
-      "width": 151,
-      "height": 124
+      "left": 954,
+      "top": 534,
+      "width": 503,
+      "height": 407
     },
-    "sourceSha256": "4ba0d7c6c88149311330f9098856b040871eff06c540b377eb993c7962ec2cee",
+    "sourceSha256": "99388176010c7c24458b6817acff2a66d80fa50bd03248bdd2b20cb8b9ee85b1",
     "kind": "Electron micrograph",
     "alt": "Electron micrograph of a dense bundle of slender parallel microwires with exposed tips at staggered heights.",
     "caption": "The tissue-facing microwire bundle of the Stanford microwire–CMOS interface. Scale bar: 500 µm.",
     "credit": "Obaid et al., Science Advances (2020), Figure 1C, CC BY-NC 4.0",
     "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7083623/",
-    "sourceAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/4dce/7083623/360937aedd74/aay2789-F1.jpg",
+    "sourceAssetUrl": "https://europepmc.org/articles/PMC7083623?pdf=render",
     "sourceLabel": "Original source · photographic panel",
     "license": "CC BY-NC 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
-    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original scale bars and annotations retained.",
-    "versionNote": "2020 research device, showing its penetrating microwires rather than the external CMOS readout chip. Original source resolution is limited."
+    "changes": "Micrograph component selected from original PDF-embedded Figure 1C; 500 µm scale retained. Resized and re-encoded; no new image enhancement.",
+    "versionNote": "2020 research device, showing its penetrating microwires rather than the external CMOS readout chip. Extracted from the original published figure.",
+    "sourceExtraction": {
+      "pdfPage": 2,
+      "pdfImageIndex": 0,
+      "sourceFigureDimensions": {
+        "width": 1465,
+        "height": 1299
+      }
+    }
+  },
+  "BTSD-ACAD-0006": {
+    "src": "/images/devices/btsd-acad-0006.webp",
+    "thumbnail": "/images/devices/btsd-acad-0006-640.webp",
+    "width": 1068,
+    "height": 1001,
+    "thumbnailWidth": 640,
+    "thumbnailHeight": 600,
+    "sourceDimensions": {
+      "width": 1501,
+      "height": 1851
+    },
+    "crop": {
+      "left": 0,
+      "top": 0,
+      "width": 1068,
+      "height": 1001
+    },
+    "sourceSha256": "4ec6d4f5346a31b1f7a5e794820cfed493ef72e6ba91c2cdcd11aaf99d7aa069",
+    "kind": "Optical micrograph",
+    "alt": "Optical micrographs of gold-colored NET-50 and finer NET-10 threads with exposed contacts, original panel labels and scale bars retained.",
+    "caption": "As-fabricated NET-50 (left) and NET-10 (right) recording threads on their substrates, from the 2017 study. Scale bars: 100 µm and 50 µm, respectively.",
+    "credit": "Luan, Wei, Zhao et al., Science Advances 3, e1601966 (2017), Figure 1A–B. DOI: 10.1126/sciadv.1601966",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5310823/",
+    "sourceAssetUrl": "https://europepmc.org/articles/PMC5310823?pdf=render",
+    "sourceLabel": "Original source · physical interface",
+    "license": "CC BY-NC 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original annotations and scale bars retained where present.",
+    "versionNote": "Exact Luan et al. 2017 NET-50/NET-10 devices. These are substrate-mounted, as-fabricated threads, not an implanted-tissue view or later StimNET.",
+    "sourceExtraction": {
+      "pdfPage": 2,
+      "pdfImageIndex": 0,
+      "sourceFigureDimensions": {
+        "width": 1501,
+        "height": 1851
+      }
+    }
+  },
+  "BTSD-ACAD-0059": {
+    "src": "/images/devices/btsd-acad-0059.webp",
+    "thumbnail": "/images/devices/btsd-acad-0059-640.webp",
+    "width": 741,
+    "height": 599,
+    "thumbnailWidth": 640,
+    "thumbnailHeight": 517,
+    "sourceDimensions": {
+      "width": 2160,
+      "height": 1433
+    },
+    "crop": {
+      "left": 31,
+      "top": 46,
+      "width": 741,
+      "height": 599
+    },
+    "sourceSha256": "d2e27fccfa915d74ef297c777dc49231d5bad10777a661ec9833527f635bd6ab",
+    "kind": "Optical micrograph",
+    "alt": "Microscopy of the flexible fenestrated Flex2Chip array with circular recording contacts and tissue cells visible through openings; a red outlined inset shows cells.",
+    "caption": "The fenestrated tissue-facing Flex2Chip array with cerebellar cells in the same focal plane. Scale bar: 20 µm. The source inset has adjusted brightness and contrast.",
+    "credit": "Zhao et al., Science Advances (2023), Fig. 4A, CC BY-NC 4.0",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10246892/",
+    "sourceAssetUrl": "https://europepmc.org/articles/PMC10246892?pdf=render",
+    "sourceLabel": "Original source · physical interface",
+    "license": "CC BY-NC 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original annotations and scale bars retained where present.",
+    "versionNote": "A detail of the 720-channel slice-recording array from the 2023 study; not the separate 504-site acute mouse ECoG layout or the 2,200-connection CMOS pad interface. This shows real tissue-end hardware, not a system schematic.",
+    "sourceExtraction": {
+      "pdfPage": 5,
+      "pdfImageIndex": 3,
+      "sourceFigureDimensions": {
+        "width": 2160,
+        "height": 1433
+      }
+    }
+  },
+  "BTSD-ACAD-0065": {
+    "src": "/images/devices/btsd-acad-0065.webp",
+    "thumbnail": "/images/devices/btsd-acad-0065-640.webp",
+    "width": 306,
+    "height": 287,
+    "thumbnailWidth": 306,
+    "thumbnailHeight": 287,
+    "sourceDimensions": {
+      "width": 1381,
+      "height": 1083
+    },
+    "crop": {
+      "left": 1071,
+      "top": 18,
+      "width": 306,
+      "height": 287
+    },
+    "sourceSha256": "54ac8f113be301810f4f8601a983354d569b742ccef2d06c5e8de57323040b14",
+    "kind": "Optical micrograph",
+    "alt": "Four thin transparent Neurotassel electrode filaments ending in pointed tips with circular recording sites, with an electron-micrograph inset of one tip.",
+    "caption": "The recording ends of Neurotassel filaments under optical microscopy. Scale bar: 50 µm; electron-micrograph inset: 10 µm.",
+    "credit": "Guan, Wang, Gu et al., Science Advances (2019), Fig. 1B, CC BY-NC 4.0",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6436924/",
+    "sourceAssetUrl": "https://europepmc.org/articles/PMC6436924?pdf=render",
+    "sourceLabel": "Original source · physical interface",
+    "license": "CC BY-NC 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original annotations and scale bars retained where present.",
+    "versionNote": "Filaments of the 16-channel 2019 Neurotassel before PEG assembly; not the later 128- or 1,024-channel variants or the 61-channel optical-fiber version. This is a contact-level detail, not the assembled whole implant.",
+    "sourceExtraction": {
+      "pdfPage": 2,
+      "pdfImageIndex": 0,
+      "sourceFigureDimensions": {
+        "width": 1381,
+        "height": 1083
+      }
+    }
+  },
+  "BTSD-STUP-0003": {
+    "src": "/images/devices/btsd-stup-0003.webp",
+    "thumbnail": "/images/devices/btsd-stup-0003-640.webp",
+    "width": 700,
+    "height": 475,
+    "thumbnailWidth": 640,
+    "thumbnailHeight": 434,
+    "sourceDimensions": {
+      "width": 700,
+      "height": 475
+    },
+    "crop": null,
+    "sourceSha256": "6f2be7fc801fd6bd17d03ae9a40ea947b1c1cf30d4a61e9301470b16e38a8d37",
+    "kind": "Photograph",
+    "alt": "Photograph of a thin flexible graphene cortical electrode array bent upward by metal tweezers, showing dark circular electrode contacts and patterned traces.",
+    "caption": "INBRAIN graphene cortical array held with tweezers. Archival manufacturer photograph; source-image metadata dates to 2022, and the exact hardware revision is unspecified.",
+    "credit": "INBRAIN Neuroelectronics / Graphene Flagship, via EurekAlert!",
+    "sourceUrl": "https://www.eurekalert.org/multimedia/976264",
+    "sourceAssetUrl": "https://mediasvc.eurekalert.org/Api/v1/Multimedia/e0087eb8-6e48-4fea-b080-29c25905ea0e/Rendition/low-res/Content/Public",
+    "sourceLabel": "Original source · physical interface",
+    "license": "Public Domain — source-declared",
+    "licenseUrl": "https://www.eurekalert.org/multimedia/976264",
+    "changes": "Resized/re-encoded for web display only.",
+    "versionNote": "2022 archival INBRAIN cortical-array photograph. It is not verified as the exact device used in the2024 first-in-human or2025 interim-analysis cohort, and its visible contact count must not be substituted into current specifications."
+  },
+  "BTSD-STUP-0004": {
+    "src": "/images/devices/btsd-stup-0004.webp",
+    "thumbnail": "/images/devices/btsd-stup-0004-640.webp",
+    "width": 1216,
+    "height": 1400,
+    "thumbnailWidth": 556,
+    "thumbnailHeight": 640,
+    "sourceDimensions": {
+      "width": 2400,
+      "height": 1462
+    },
+    "crop": {
+      "left": 1130,
+      "top": 0,
+      "width": 1270,
+      "height": 1462
+    },
+    "sourceSha256": "2b5f2332b22f6522909fb0bd3d585862fb990ce064852224426b853f40dac97f",
+    "kind": "Optical micrograph",
+    "alt": "Optical micrograph of the PRIMA subretinal photovoltaic chip showing a dense hexagonal pixel lattice on a rounded square implant, with a 2 mm dimension marker.",
+    "caption": "2 mm PRIMA photovoltaic retinal implant from the 2020 preclinical study. Dimension arrow retained.",
+    "credit": "Muqit et al., PLOS ONE15(4):e0230713 (2020), Figure2",
+    "sourceUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0230713",
+    "sourceAssetUrl": "https://journals.plos.org/plosone/article/figure/image?download=&id=10.1371%2Fjournal.pone.0230713.g002&size=large",
+    "sourceLabel": "Original source · physical interface",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Right-hand photographic panel cropped; dimension marker preserved; resized/re-encoded for display.",
+    "versionNote": "Archival 2 mm PRIMA implant from the 2020 primate/feline study, when developed by Pixium Vision. It illustrates the family hardware architecture; not verified as the precise manufacturing revision in the 2025 Science Corporation clinical cohort."
+  },
+  "BTSD-FDA-0011": {
+    "src": "/images/devices/btsd-fda-0011.webp",
+    "thumbnail": "/images/devices/btsd-fda-0011-640.webp",
+    "width": 975,
+    "height": 337,
+    "thumbnailWidth": 640,
+    "thumbnailHeight": 221,
+    "sourceDimensions": {
+      "width": 975,
+      "height": 337
+    },
+    "crop": null,
+    "sourceSha256": "80ee1f268ec521064319ec12048e1a2eac64a32c18bf9532b2180fc3571bd605",
+    "kind": "Photograph",
+    "alt": "A small Axonics implanted pulse generator beside a U.S. quarter for scale, with its transparent connector header visible.",
+    "caption": "Axonics sacral neuromodulation pulse generator beside a U.S. quarter, from the 2020 ARTISAN-SNM study. Lead not shown.",
+    "credit": "Benson et al., Neurourology and Urodynamics (2020), Figure 1, CC BY-NC 4.0.",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7384085/",
+    "sourceAssetUrl": "https://europepmc.org/articles/PMC7384085?pdf=render",
+    "sourceLabel": "Original source · physical interface",
+    "license": "CC BY-NC 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "changes": "Full image retained; resized and re-encoded. Original annotations and scale bars retained where present.",
+    "versionNote": "The 2020 ARTISAN-SNM study's 5 cc original rechargeable Axonics stimulator aligns with the 2019 Model 1101/R15 family boundary. Not the current R20. The photograph shows only the IPG, not the tined lead.",
+    "sourceExtraction": {
+      "pdfPage": 3,
+      "pdfImageIndex": 4,
+      "sourceFigureDimensions": {
+        "width": 975,
+        "height": 337
+      }
+    }
   }
 }
