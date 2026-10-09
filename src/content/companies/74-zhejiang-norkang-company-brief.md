@@ -23,7 +23,7 @@ draft: false
 
 ### Device entries
 
-- [Auditory brainstem implant](/devices/55-auditory-brainstem-implant/) is the general entry for this device class (Cochlear's ABI). No separate Nurotron sheet yet.
+- [Auditory brainstem implant](/devices/55-auditory-brainstem-implant/) is the general entry for this device class (Cochlear's ABI). Nurotron's own device: [WH-01A auditory brainstem implant](/devices/190-nurotron-wh-01a-auditory-brainstem-implant/).
 
 ### Limits
 
