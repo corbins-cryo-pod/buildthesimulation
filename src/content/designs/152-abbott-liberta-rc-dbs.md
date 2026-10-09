@@ -18,6 +18,8 @@ draft: false
 
 The Liberta RC is Abbott's rechargeable DBS pulse generator, approved under PMA P140009 supplement S087 with a decision date of January 24, 2024. This is the thinnest-sourced of the DBS sheets: the FDA supplement record gives model numbers and software versions, and Abbott's page adds charging claims. Unknown values stay blank.
 
+Company brief: [Abbott Medical](/companies/54-abbott-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
