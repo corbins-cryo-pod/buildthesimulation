@@ -18,6 +18,8 @@ draft: false
 
 PRIMA is a 2 x 2 mm, 30 um thick silicon implant of 378 photovoltaic pixels placed under the retina and driven by 880 nm light from camera glasses. This sheet uses the open-access NEJM paper. Regulatory status beyond the trial is not verified here.
 
+Company brief: [Science Corporation](/companies/06-science-corporation-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
