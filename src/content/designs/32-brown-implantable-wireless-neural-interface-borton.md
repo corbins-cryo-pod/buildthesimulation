@@ -21,7 +21,7 @@ An implanted cortical-recording electronics package in a hermetic titanium enclo
 
 ## Core interface specifications
 
-The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values remain unreported; inapplicable fields are marked. Configuration-specific details and limits follow below.
+The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values stay blank; inapplicable fields are marked. Configuration-specific details and limits follow below.
 
 | Field | Specification and source scope |
 | --- | --- |
@@ -36,7 +36,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Metalization | Contact-tip material not explicitly assigned here; Pt/Ir feedthrough pins and gold interconnect wires are different components |
 | Wire Bundle Length | Specific length described as matching clinical-trial assemblies, but no number given here; individual gold wires 25 µm diameter |
 | Reference and Ground | Two 25 µm diameter Pt/Ir reference wires attached to feedthrough pins; no independent ground wiring inferred |
-| Insulation | Individually insulated gold wires; Kapton interconnect overmolded in biocompatible silicone (MED-4211). No unreported shank insulation assigned |
+| Insulation | Individually insulated gold wires; Kapton interconnect overmolded in biocompatible silicone (MED-4211). No not reported shank insulation assigned |
 
 ## Identity
 
