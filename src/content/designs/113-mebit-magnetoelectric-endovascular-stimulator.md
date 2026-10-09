@@ -42,43 +42,43 @@ The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectr
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Gold pads (rat) or electrode/lead in a PLA capsule (endovascular) [1] |
-| Array layout | Unreported |
+| Array layout |  |
 | Electrode count | Two 1 × 1 mm gold pads in the direct rat configuration [1] |
 | Pitch | 2 mm between the two gold pads (rat) [1] |
-| Electrode lengths | Unreported |
+| Electrode lengths |  |
 | Shank width and thickness | ME film 1.75 × 5 × 0.3 mm; ASIC 1 × 0.8 mm; rat device 6.2 mm³, 30 mg; encapsulated form 3 × 2.15 × 14.8 mm [1] |
 | Tip and exposed site geometry | Two 1 × 1 mm gold pads (rat) [1] |
-| Contact coating | Unreported |
+| Contact coating |  |
 | Insulation | PLA capsule with nonconductive epoxy [1] |
 | Insertion method | Packageable within 11 Fr in design text; 9 Fr sheath delivery demonstrated [1] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Gold pads (rat) [1] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
 | Stimulation capability | Voltage-controlled 0.3-3.3 V, 4-bit; monophasic or biphasic; pulse width 0.05-1.2 ms (ASIC text, 3-bit) while protocols report 1.5 ms (discrepancy retained); maximum 1 kHz [1] |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -87,24 +87,24 @@ The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectr
 | Onboard electronics | 180-nm CMOS ASIC, energy-storage capacitor, ME laminated Metglas/PZT film [1] |
 | Data path | Magnetic downlink: 345 kHz resonance, 350 kHz low-amplitude data state, 400 kHz phase notches; 4.6 kbps, 18-bit stimulation payload [1] |
 | Telemetry bandwidth | 4.6 kbps downlink [1] |
-| Sampling rate | Unreported |
+| Sampling rate |  |
 | Power | Battery-free; ASIC below 9 µW; above 90% stimulation efficiency at 1.5-3.3 V (circuit metric); Figure 3 about 6 W transmitter and 1.17 mW implant at 30 mm, caption efficiency 0.01% (as reported) [1] |
 | Thermal management | Field meets cited IEEE E-field/SAR limits but lies outside the more restrictive ICNIRP range [1] |
 | Packaging and hermeticity | PLA capsule; chronic hermetic packaging needed; lead-containing PZT needs a biocompatible barrier [1] |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Rat and pig nerve stimulation; ex-vivo power delivery to 4 cm under tested conditions [1] |
 
 ## Clinical and preclinical evidence
@@ -113,9 +113,9 @@ The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectr
 | --- | --- |
 | Human subjects | None |
 | Preclinical cohort | Rat and pig acute studies [1] |
-| Follow-up duration | Unreported |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Follow-up duration |  |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Wireless nerve stimulation, direct and vascular [1] |
 | Key limitations | Acute histology without observed damage does not establish months of intravascular safety; vascular-health and antithrombotic needs open [1] |
 
@@ -125,7 +125,7 @@ The [Rice University, Robinson lab](/companies/43-rice-magnetoelectric-bioelectr
 | --- | --- |
 | Strengths | Catheter-deliverable, battery-free, tiny ASIC [1] |
 | Limitations | Lead-containing PZT; standard-dependent exposure compliance [1] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Hardware and variants
 
