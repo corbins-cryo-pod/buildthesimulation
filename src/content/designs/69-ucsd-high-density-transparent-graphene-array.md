@@ -39,70 +39,70 @@ A transparent cortical-surface array with cell-scale contacts. The 2024 paper re
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Thin transparent flexible polymer strip, no gold trace extensions in the field of view [2] |
-| Array layout | Unreported |
+| Array layout |  |
 | Electrode count | Up to 256 channels, a design capability not used in every experiment [1] |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
+| Shank width and thickness |  |
 | Tip and exposed site geometry | 20 µm contact diameter [1] |
 | Contact coating | Platinum nanoparticles [1] |
-| Insulation | Unreported |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Insulation |  |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Interlayer-doped double-layer graphene traces; platinum-nanoparticle contacts [1] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Surface potentials; multiunit-band power related to cellular calcium activity; neural networks predict calcium activity, an inference not a deep electrical recording [1, 2] |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
-| Data path | Unreported |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Onboard electronics |  |
+| Data path |  |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
@@ -110,9 +110,9 @@ A transparent cortical-surface array with cell-scale contacts. The 2024 paper re
 | --- | --- |
 | Human subjects | None |
 | Preclinical cohort | Mice [1] |
-| Follow-up duration | Unreported |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Follow-up duration |  |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Prediction of single-cell and population calcium activity from surface potentials [1] |
 | Key limitations | Mouse only; film thickness, contact map and full outline not grounded; longer-duration and BCI aims are not demonstrations [2] |
 
@@ -122,7 +122,7 @@ A transparent cortical-surface array with cell-scale contacts. The 2024 paper re
 | --- | --- |
 | Strengths | Transparent field with cell-scale contacts [1] |
 | Limitations | Doped double-layer traces needed to avoid open-circuit failures in long thin traces [1] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Hardware distinction
 
