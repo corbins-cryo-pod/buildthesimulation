@@ -17,7 +17,7 @@ draft: false
 
 # Microchannel-based regenerative scaffold interface (Srinivasan et al., 2015)
 
-All rows follow the shared implant-device template. Measurements belong to the named study or configuration. Unreported means the reviewed sources do not establish a value. Proposed use, terminal assays and continuously functioning implants are not treated as equivalent.
+All rows follow the shared implant-device template. Measurements belong to the named study or configuration. A blank cell means the reviewed sources do not establish a value. Proposed use, terminal assays and continuously functioning implants are not treated as equivalent.
 
 ## Identity
 
@@ -28,7 +28,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Interface class | Regenerative peripheral microchannel recording interface |
 | Origin | Georgia Tech/Emory research team; design builds on prior microchannel work |
 | First demonstrated | 2015 journal report, online December 2014; earliest family demonstration not established |
-| First human implant | Unreported; reviewed study is rat preclinical work |
+| First human implant | Reviewed study is rat preclinical work |
 | Species studied | Rat sciatic amputee model |
 | Regulatory status | Preclinical research |
 | Function | Scaffold-guided regeneration and terminal neural recording after chronic implantation |
@@ -45,24 +45,24 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Electrode lengths | 3 mm microchannel length in design discussion; not penetrating electrode length |
 | Shank width and thickness | 40 µm base PDMS, 100 µm SU-8 layer, fabrication excerpt; total rolled scaffold dimensions unreported |
 | Tip and exposed site geometry | Microwires integrated into bottom PDMS; exposed wire geometry unreported in audited excerpts |
-| Contact coating | Unreported |
+| Contact coating |  |
 | Insulation | PDMS and SU-8 scaffold; microwire insulation unreported |
 | Insertion method | Regenerating transected axons enter rolled microchannel scaffold in sciatic amputee model |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Microwire conductor material unreported in audited excerpts; fabrication substrate Ti/Au anti-adhesion layers are not asserted as electrode material |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Spontaneous, sensory-evoked and electrically evoked single-/multi-unit action potentials at five-month terminal experiment |
-| Sampling rate | Unreported |
+| Sampling rate |  |
 | Stimulation capability | Electrically evoked signals recorded; direct stimulation through integrated scaffold wires not established by audited excerpts |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
@@ -70,10 +70,10 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | --- | --- |
 | Target tissue | Regenerating peripheral axons, Schwann cells and fibroblasts inside microchannels |
 | Insertion trauma and BBB disruption | BBB: not applicable; model intentionally transects/amputates nerve |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
 | Gliosis and encapsulation | Publisher abstract reports organized axons, endoneurial tubes and myelination distal to scaffold, without disorganized growth characteristic of neuroma; not a zero-neuroma clinical rate |
-| Neuron loss near sites | Unreported |
+| Neuron loss near sites |  |
 | Foreign-body response mitigation | Biocompatible PDMS/SU-8 construction tested in vitro and in vivo; response not generalized to all packaging |
 | Typical failure modes | Quantitative failure modes/rates unreported in audited excerpts; channel-clogging is not asserted as observed |
 
@@ -84,19 +84,19 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Onboard electronics | Passive microwires integrated in scaffold; active onboard electronics unreported |
 | Data path | External terminal electrophysiology after chronic scaffold implant; chronic wiring/packaging not demonstrated in this study |
 | Telemetry bandwidth | Not applicable to described terminal wired acquisition |
-| Sampling rate | Unreported |
+| Sampling rate |  |
 | Power | External electrophysiology equipment at terminal test |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | PDMS/SU-8 scaffold, no validated hermetic implanted electronic package |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Invasive regenerative nerve model with no distal target |
-| Output connectors | Unreported |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
+| Acute yield |  |
 | Chronic yield | All devices in described terminal study recorded neural activity after five months; device count and per-contact yield unreported in audited abstract |
 | Stability over time | Five-month endpoint recording, not five months of continuous recordings |
 | Longevity | Five months implanted before terminal recording; maximum lifetime unreported |
