@@ -59,7 +59,7 @@ Inceptiv is Medtronic's closed-loop rechargeable spinal cord stimulator, approve
 | Noise floor or SNR |  |
 | Recording modality | ECAP sensing by specialized circuitry and a proprietary algorithm [2] |
 | Sampling rate |  |
-| Stimulation capability | Multiple waveform types including Medtronic Differential Target Multiplexed (DTM) programming; updated DTM user interface with Spine Anatomy View and templating in this approval [1][2] |
+| Stimulation capability | Multiple waveform types including Medtronic Differential Target Multiplexed (DTM) programming; updated DTM user interface with Spine Anatomy View and templating in this approval [1][2]. Operating ranges for models 977119, 977117 and 977118: pulse width 60 to 1000 µs, rate 2 to 1200 Hz, maximum 25.5 mA per electrode, program intensity 0 to 100 mA, 8 groups with up to 32 programs; Neuro Sense (closed loop) is on model 977119 only [3] |
 | Charge injection limit |  |
 | Reference and ground |  |
 
@@ -86,10 +86,10 @@ Inceptiv is Medtronic's closed-loop rechargeable spinal cord stimulator, approve
 | Sampling rate |  |
 | Power | Rechargeable; new wireless recharger WR9230 [1][2] |
 | Thermal management |  |
-| Packaging and hermeticity |  |
+| Packaging and hermeticity | Titanium, polysulfone with titanium dioxide, and silicone; case 57 x 47 x 6 mm, 57 x 47 x 9 mm at the connector block, 13.9 cm3, 29 g, surface area 53 cm2 [3] |
 | MRI compatibility | Medtronic states 1.5T and 3T full-body MRI access with no power or impedance restrictions under labeled conditions [2] |
 | Surgical complexity |  |
-| Output connectors |  |
+| Output connectors | Octapolar inline connector, 2.8 mm spacing; electrode configuration from 2 to 16 electrodes [3] |
 
 ## Performance envelope
 
@@ -98,7 +98,7 @@ Inceptiv is Medtronic's closed-loop rechargeable spinal cord stimulator, approve
 | Acute yield |  |
 | Chronic yield |  |
 | Stability over time |  |
-| Longevity |  |
+| Longevity | Manufacturer implant manual: lithium ion rechargeable battery, expected lifetime 15 years before the elective replacement indicator [3] |
 | Revision and explant experience |  |
 | Adverse events |  |
 | Notable demonstrations |  |
@@ -131,3 +131,4 @@ The approval covers Inceptiv, Inceptiv LT and Intellis Pro neurostimulators. Inc
 
 1. [FDA PMA P840001/S512 record](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P840001S512).
 2. [Medtronic announcement, April 26, 2024](https://news.medtronic.com/2024-04-26-Medtronic-receives-FDA-approval-for-Inceptiv-TM-closed-loop-spinal-cord-stimulator).
+3. Medtronic (manufacturer labeling, Inceptiv 977119, Inceptiv LT 977117 and Intellis Pro 977118 rechargeable neurostimulators implant manual), as hosted by the Slovak Ministry of Health categorization site (Slovak host; the manual itself is Medtronic's). [Implant manual](https://kategorizacia.mzsr.sk/Pomocky/Download/RequestAttachment/129256). Physical and operating tables read October 9, 2026; hosted copy not dated.
