@@ -16,7 +16,7 @@ draft: false
 
 # Neuropixels NXT, planned NP3.0
 
-Neuropixels Central's August 2026 announcement calls NXT the development name and NP3.0 the name planned for purchase availability. Values are project-reported, with no peer-reviewed dataset. Unreported means not established by the official pages reviewed.
+Neuropixels Central's August 2026 announcement calls NXT the development name and NP3.0 the name planned for purchase availability. Values are project-reported, with no peer-reviewed dataset. A blank cell means not established by the official pages reviewed.
 
 ## Identity
 
@@ -27,7 +27,7 @@ Neuropixels Central's August 2026 announcement calls NXT the development name an
 | Interface class | Penetrating silicon CMOS recording probe |
 | Origin | Johns Hopkins with imec; the Harris lab is distinct from Johns Hopkins APL |
 | First demonstrated | Prototype testing reported; access announcement August 17, 2026, updated August 27 |
-| First human implant | Unreported |
+| First human implant |  |
 | Species studied | Awake, tethered mice and rats per the access announcement |
 | Regulatory status | Prototype research tool. No clearance; purchase availability expected in 2027 is a forecast |
 | Function | High-channel extracellular recording |
@@ -43,64 +43,64 @@ Neuropixels Central's August 2026 announcement calls NXT the development name an
 | Pitch | Same as Neuropixels 2.0 per the technology page; values not restated |
 | Electrode lengths | Same as Neuropixels 2.0 per the technology page |
 | Shank width and thickness | Same size and shape as 2.0; dimensions not restated |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
 | Noise floor or SNR | Project says consistently lower noise than prior probes, with no numeric distribution or cohort size in the fetched source |
 | Recording modality | Extracellular recording |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Rodent brain |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
 | Onboard electronics | CMOS probe base; channel mapping lets up to 912 of 1,536 channels map to one shank |
-| Data path | Unreported |
+| Data path |  |
 | Telemetry bandwidth | Not applicable: tethered |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
 | Stability over time | Months-long spiking stability in implanted prototypes is project-reported without cohort sizes, unit-tracking criteria or attrition |
 | Longevity | Project-reported months of stability, unquantified |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Concentrating up to 912 of 1,536 channels on one shank |
 
 ## Clinical and preclinical evidence
