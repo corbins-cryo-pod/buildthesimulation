@@ -41,66 +41,66 @@ NeuroXess has described a 256-channel flexible cortical array that decoded motor
 | Array layout | 256 electrodes; layout beyond count and pitch unreported [2] |
 | Electrode count | 256 channels [1][2] |
 | Pitch | 3 mm center to center [2] |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported |
+| Electrode lengths |  |
+| Shank width and thickness |  |
 | Tip and exposed site geometry | Each recording contact 1.3 mm in diameter [2] |
-| Contact coating | Unreported |
-| Insulation | Unreported |
+| Contact coating |  |
+| Insulation |  |
 | Insertion method | Placed on the cortical surface during surgery, in the cases reported as part of epilepsy localization [2] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
 | Noise floor or SNR | The paper reports generally high SNR with minimal drift across days and no significant new bad channels over 11 days; no numeric SNR extracted [2] |
 | Recording modality | Cortical surface potentials; features taken from the high-gamma band (70 to 150 Hz) [1][2] |
 | Sampling rate | 15 kHz raw, downsampled to 400 Hz for offline processing [2] |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Cortical surface, over temporal and ventral sensorimotor regions in the Mandarin study [2] |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
 | Typical failure modes | Not reported in the sources read; the array performed reliably over 11 days of monitoring [2] |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
+| Onboard electronics |  |
 | Data path | Headstage fixed to the skull; the downstream link to the acquisition system is not described in the sections read, and wireless fully implanted operation is not described for this array [2]. Jiefang Daily (January 2025) says the array was wired at that time, with a thin metal braid, and that a semi-implanted wireless version was planned around Chinese New Year 2025 and a fully implanted wireless version for the second half of 2025 [6] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
 | Surgical complexity | Craniotomy placement of a surface grid as part of epilepsy monitoring; electrode placement guided by clinical need [2] |
-| Output connectors | Unreported |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
 | Acute yield | Over 11 days of monitoring about 9 hours of data were collected; no new bad channels emerged [2] |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | 11 days of intracranial monitoring in the Mandarin paper; chronic duration unreported [2] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Peer-reviewed: median offline accuracy of 71.2% over 394 Mandarin syllables in a single-character reading task (Science Advances 2025). Company announcement: 71.2% accuracy across 142 common syllables within five days, decoding latency under 100 ms per character, and motor decoding with system latency under 60 ms [1][2]. Timing conflict: the company's English announcement says the 142-syllable result came within five days [1]; Jiefang Daily says 142 syllables at about 71 percent 7 days after surgery [6]. Chinese release for the 19-year-old patient: 4.07 bits per second cursor control after 19.87 hours of training, from local field potentials with a position-velocity Kalman filter [7] |
 
 ## Clinical and preclinical evidence
@@ -108,7 +108,7 @@ NeuroXess has described a 256-channel flexible cortical array that decoded motor
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | One 21-year-old epilepsy patient with a motor-cortex lesion (motor decoding) and one epilepsy patient with a language-cortex tumor (December 2024), per the company; the Science Advances paper reports one 43-year-old woman [1][2]. Chinese-language reports add a third case: a 19-year-old with right frontal lobe epilepsy, 256-channel, April 2025 [7]. Jiefang Daily describes the first two as a 21-year-old with a motor-area lesion in August 2024 and a tumor-epilepsy patient with a language-area lesion in December 2024 [6] |
-| Preclinical cohort | Unreported |
+| Preclinical cohort |  |
 | Follow-up duration | Days to about two weeks of in-hospital monitoring in the reported cases [1][2] |
 | Indications | Motor, language and visual function restoration are listed as company goals; reported cases were epilepsy and tumor patients [1][5] |
 | Trials and registries | Huashan Hospital IRB approval KY2024-842 for the paper; no registry identifier found [2]. Jiefang Daily put the fastest path to clinical use at about three years from January 2025 [6] |
@@ -121,7 +121,7 @@ NeuroXess has described a 256-channel flexible cortical array that decoded motor
 | --- | --- |
 | Strengths | High channel count of 256 over a 3 mm grid allowed fast functional mapping and decoding of both motor and Mandarin speech in days [1][2] |
 | Limitations | Surface potentials have lower spatial resolution than penetrating arrays; reported use was short-term [2] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Version boundary
 
