@@ -48,7 +48,7 @@ A thin-film cortical-surface electrode interface from Precision Neuroscience, wi
 | Contact coating | Platinum at the tissue interface [1] |
 | Insulation | Polyimide layers around the metal stack [1] |
 | Insertion method | Subdural delivery through narrow cranial slits; a removable stylet in a polyimide pocket is withdrawn after placement [1] |
-| Anchoring and fixation | Unreported; the paper does not describe chronic fixation |
+| Anchoring and fixation | The paper does not describe chronic fixation |
 
 ## Electrode and channel physics
 
@@ -56,12 +56,12 @@ A thin-film cortical-surface electrode interface from Precision Neuroscience, wi
 | --- | --- |
 | Exposed site area | Diameters only: 20, 50, 100 and 200 µm (529-channel); 50, 380 and 500 µm (1,024-channel) [1]; areas not given |
 | Electrode material | Platinum at the surface; Ti/Pt/Ti stack, with gold added to the traces in the 1,024-channel process [1] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Surface neural recording; the paper reports multimodal decoding [1] |
-| Sampling rate | Unreported |
+| Sampling rate |  |
 | Stimulation capability | Electrodes can be used for recording or stimulation; the 42 larger sites are stimulation-optimized, not the only stimulating sites [1] |
-| Charge injection limit | Unreported |
+| Charge injection limit |  |
 | Reference and ground | Five dedicated 500 µm reference electrodes in the 1,024-channel array [1]; ground configuration unreported |
 
 ## Tissue interface and bioresponse
@@ -70,25 +70,25 @@ A thin-film cortical-surface electrode interface from Precision Neuroscience, wi
 | --- | --- |
 | Target tissue | Cortical surface, subdural [1] |
 | Insertion trauma and BBB disruption | Minimally invasive slit delivery [1]; trauma and barrier disruption data unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
 | Neuron loss near sites | Not applicable to a surface film; no histology reported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
-| Data path | Unreported |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
+| Onboard electronics |  |
+| Data path |  |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
 | Surgical complexity | Cranial-slit delivery with a stylet in pigs and cadaver heads [1]; not demonstrated as a chronic procedure in living patients |
 | Output connectors | Interposer and connector details are not fixed [1] |
 
@@ -96,12 +96,12 @@ A thin-film cortical-surface electrode interface from Precision Neuroscience, wi
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
 | Stability over time | Not reported as a chronic dataset; temporary 30-day clearance only [3, 4] |
 | Longevity | Cleared for implantation up to 30 days [3]; chronic and wireless performance not established |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Slit delivery in pigs and cadaver heads [1]; 529- and 1,024-channel fabrication [1]; five-patient intraoperative recordings [1]; FDA clearance of Layer 7-T [4] |
 
 ## Clinical and preclinical evidence
