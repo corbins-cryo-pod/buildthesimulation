@@ -16,7 +16,7 @@ draft: false
 
 # Argus II retinal prosthesis
 
-Argus II is an epiretinal implant for blind patients with retinitis pigmentosa. FDA authorized it under a Humanitarian Device Exemption on February 13, 2013, and Cortigent says it is discontinued. This sheet is thin: it rests on the HDE record and the Cortigent page, so electrode and performance cells stay Unreported. Orion, the cortical visual prosthesis, is investigational and gets its own sheet.
+Argus II is an epiretinal implant for blind patients with retinitis pigmentosa. FDA authorized it under a Humanitarian Device Exemption on February 13, 2013, and Cortigent says it is discontinued. This sheet is thin: it rests on the HDE record and the Cortigent page, so electrode and performance cells stay blank. Orion, the cortical visual prosthesis, is investigational and gets its own sheet.
 
 ## Identity
 
@@ -27,7 +27,7 @@ Argus II is an epiretinal implant for blind patients with retinitis pigmentosa. 
 | Interface class | Epiretinal implant stimulating the retinal surface [2] |
 | Origin | Commercial FDA-approved Humanitarian Device Exemption device [1][2] |
 | First demonstrated | Cortigent says Argus II launched in 2011, with EU approval in March 2011 [2] |
-| First human implant | Unreported |
+| First human implant |  |
 | Species studied | Human [1] |
 | Regulatory status | HDE H110002: received May 4, 2011, approved February 13, 2013; European approval March 2011. Cortigent states Argus II is discontinued and no longer available. HDE authorization means probable benefit, and effectiveness was not demonstrated [1][2] |
 | Function | Electrical stimulation of the retina to induce visual perception in blind patients with severe to profound retinitis pigmentosa and bare or no light perception in both eyes [1][2] |
@@ -38,43 +38,43 @@ Argus II is an epiretinal implant for blind patients with retinitis pigmentosa. 
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Microelectronic implant applied to the retinal surface, with an electronics case and antenna fixed to the outer surface of the eye [2] |
-| Array layout | Unreported |
-| Electrode count | Unreported |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Array layout |  |
+| Electrode count |  |
+| Pitch |  |
+| Electrode lengths |  |
+| Shank width and thickness |  |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -82,46 +82,46 @@ Argus II is an epiretinal implant for blind patients with retinitis pigmentosa. 
 | --- | --- |
 | Onboard electronics | Data processing unit converts camera images into small electrical pulses [2] |
 | Data path | Images from a miniature camera on glasses are processed externally and sent wirelessly to the retinal implant [2] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects | Unreported |
-| Preclinical cohort | Unreported |
-| Follow-up duration | Unreported |
+| Human subjects |  |
+| Preclinical cohort |  |
+| Follow-up duration |  |
 | Indications | Adults aged 25 or older with severe to profound retinitis pigmentosa and bare or no light perception in both eyes (the order statement lists further criteria not extracted here) [1] |
-| Trials and registries | Unreported [1] |
-| Primary outcomes | Unreported |
+| Trials and registries |  |
+| Primary outcomes |  |
 | Key limitations | Electrode count, stimulation parameters and clinical outcomes were not in the sources read. The HDE and later supplements (S001 to S033) were not reviewed [1] |
 
 ## Engineering tradeoffs
 
 | Field | Value and source scope |
 | --- | --- |
-| Strengths | Unreported |
-| Limitations | Unreported |
-| Scaling constraints | Unreported |
+| Strengths |  |
+| Limitations |  |
+| Scaling constraints |  |
 
 ## Version boundary
 
