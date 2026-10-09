@@ -89,3 +89,7 @@ The reported Breakthrough Device Designation for Parkinson’s needs confirmatio
 
 - *Funding (2026):* INBRAIN announced a *$50M Series B*. Source: <https://www.neurofounders.co/press-releases/inbrain-neuroelectronics-raises-50m-series-b-to-advance-graphene-based-brain-computer-interface-technology>
 - *Clinical:* the company announced completion of patient recruitment in its first-in-human graphene study on Apr 20, 2026. Source: <https://www.businesswire.com/news/home/20260420000990/en/INBRAIN-Neuroelectronics-Completes-Enrolment-of-Worlds-First-in-Human-Study-of-Graphene-Neural-Interfaces-for-Brain-Decoding-Mapping>
+
+### Device entries
+
+- [INBRAIN graphene cortical interface](/devices/176-inbrain-graphene-cortical-interface/)
