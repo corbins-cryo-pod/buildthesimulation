@@ -25,10 +25,10 @@ The Axonics system is a rechargeable sacral neuromodulation stimulator. This she
 | Device | Axonics Sacral Neuromodulation System: IPG Model 1101, Tined Lead Models 1201 and 2201, Surgical Tool Kit 1801, PNE lead Model 1901, external trial stimulator, remote control, charger and clinician programmer [1] |
 | Manufacturer | Axonics Modulation Technologies, Inc., Irvine, California [1] |
 | Interface class | Rechargeable sacral neuromodulation stimulator with a four-contact tined lead [1] |
-| Origin | Commercial FDA-approved device; this sheet reads PMA P190006 (fecal incontinence). The same family's other PMA, P180046, was found but not read [1] |
+| Origin | Commercial FDA-approved device; this sheet reads PMA P190006 (fecal incontinence). The same family's other PMA, P180046 (urinary indications), supplies the hardware and animal-study rows marked [2]; its clinical sections were not read [1][2] |
 | First demonstrated | Unreported |
 | First human implant | Unreported |
-| Species studied | Unreported |
+| Species studied | Hound dog (30 and 60 day GLP study, local tissue safety) and porcine (30 day, S2 stimulation and recharging) [2] |
 | Regulatory status | PMA P190006 approved September 6, 2019 for chronic fecal incontinence, with no panel recommendation [1] |
 | Function | Applies electrical stimulation to the sacral nerves for chronic fecal incontinence in patients who have failed or are not candidates for more conservative treatments [1] |
 | Target tissue | Sacral nerve at the foramen [1] |
@@ -45,7 +45,7 @@ The Axonics system is a rechargeable sacral neuromodulation stimulator. This she
 | Shank width and thickness | Lead diameter 1.3 mm (5 French) [1] |
 | Tip and exposed site geometry | Unreported |
 | Contact coating | Unreported |
-| Insulation | Unreported |
+| Insulation | Polyurethane jacket tubing and polyurethane fixation; 16 anchoring tines [2] |
 | Insertion method | Introducer sheath and dilator through the foramen; foramen needle can deliver up to 12.5 mA, 450 us and 130 Hz during testing [1] |
 | Anchoring and fixation | Anchoring tines on the lead [1] |
 
@@ -54,12 +54,12 @@ The Axonics system is a rechargeable sacral neuromodulation stimulator. This she
 | Field | Value and source scope |
 | --- | --- |
 | Exposed site area | Unreported |
-| Electrode material | Unreported |
+| Electrode material | Platinum-iridium ring electrodes and proximal contacts; MP35N conductor wires, 4 filar in-line coil [2] |
 | Impedance (with measurement frequency) | Lead DC resistance acceptance limit under 135 ohm; this is lead resistance, not electrode-tissue impedance [1] |
 | Noise floor or SNR | Unreported |
 | Recording modality | Unreported |
 | Sampling rate | Unreported |
-| Stimulation capability | 2.1 to 130 Hz from the IPG; trial with a temporary lead up to 7 days or a permanent lead up to 14 days, with at least a 50% drop in incontinent episodes needed to proceed [1] |
+| Stimulation capability | 2.1 to 130 Hz, 60 to 450 us pulse width, 0 to 12.5 mA, current controlled, unipolar and bipolar, with cycling and ramp features (IPG per the P180046 SSED); trial with a temporary lead up to 7 days or a permanent lead up to 14 days, with at least a 50% drop in incontinent episodes needed to proceed [1][2] |
 | Charge injection limit | Unreported |
 | Reference and ground | Unreported |
 
@@ -87,7 +87,7 @@ The Axonics system is a rechargeable sacral neuromodulation stimulator. This she
 | Power | Rechargeable battery, 50 mAh at 3.6 V nominal; device life 15 years at moderate energy [1] |
 | Thermal management | Unreported |
 | Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
+| MRI compatibility | The P180046 SSED lists MRI testing for 1.5T and 3T head coil and 1.5T full body coil, with conditions in the labeling; the specific conditions were not read [2] |
 | Surgical complexity | Trial phase with a temporary or percutaneous lead, then a permanent lead and an IPG pocket in the upper buttock [1] |
 | Output connectors | Unreported |
 
@@ -98,7 +98,7 @@ The Axonics system is a rechargeable sacral neuromodulation stimulator. This she
 | Acute yield | Unreported |
 | Chronic yield | Unreported |
 | Stability over time | Unreported |
-| Longevity | Unreported |
+| Longevity | Device life 15 years at moderate energy (manufacturer-specified design figure from the SSED, not a measured clinical result); lead flex fatigue tested to 100,000 cycles at 2 Hz [2] |
 | Revision and explant experience | Unreported |
 | Adverse events | Unreported |
 | Notable demonstrations | Unreported |
@@ -130,3 +130,4 @@ The sheet describes IPG Model 1101 and the tined leads as listed in the 2019 sum
 ## References
 
 1. [FDA summary of safety and effectiveness data, P190006](https://www.accessdata.fda.gov/cdrh_docs/pdf19/P190006b.pdf).
+2. [FDA summary of safety and effectiveness data, P180046 (urinary indications)](https://www.accessdata.fda.gov/cdrh_docs/pdf18/P180046B.pdf).
