@@ -18,6 +18,8 @@ draft: false
 
 Senza HFX iQ is Nevro's current spinal cord stimulation system, approved by PMA supplement S044 on October 12, 2022. Its IPG has 16 output channels and can deliver 10 kHz therapy. This sheet is thinly sourced from the FDA record and Nevro's prescriber information; unknown cells stay blank.
 
+Company brief: [Nevro Corp.](/companies/56-nevro-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
