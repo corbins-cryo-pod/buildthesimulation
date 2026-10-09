@@ -17,7 +17,7 @@ draft: false
 
 # Nanoelectronic thread (NET) probes
 
-All rows follow the shared implant-device template. Measurements belong to the named configuration or study. Unreported means the reviewed sources do not establish a value. Injection yield, acute electrical recording and chronic histology are distinct results.
+All rows follow the shared implant-device template. Measurements belong to the named configuration or study. A blank cell means the reviewed sources do not establish a value. Injection yield, acute electrical recording and chronic histology are distinct results.
 
 ## Identity
 
@@ -28,7 +28,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Interface class | Intracortical ultraflexible thread electrodes |
 | Origin | Luan, Wei, Zhao and colleagues, University of Texas at Austin |
 | First demonstrated | 2017 Science Advances report reviewed here |
-| First human implant | Unreported; mouse preclinical study |
+| First human implant | Mouse preclinical study |
 | Species studied | Male C57BJ/6 and Thy1-YFP transgenic mice |
 | Regulatory status | UT Austin IACUC research; clinical authorization unreported |
 | Function | Chronic sampled neural recording and tissue integration studies |
@@ -61,7 +61,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Recording modality | Multi-unit and sortable single-unit extracellular action potentials under anesthesia |
 | Sampling rate | 20 kHz |
 | Stimulation capability | Not demonstrated by reviewed recording study |
-| Charge injection limit | Unreported |
+| Charge injection limit |  |
 | Reference and ground | Bare Ag wire in contralateral hemisphere serves as grounding reference, Methods |
 
 ## Tissue interface and bioresponse
@@ -86,9 +86,9 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Telemetry bandwidth | Not applicable to wired probe; not a fully wireless or free-floating implant |
 | Sampling rate | 20 kHz; 300 Hz high-pass and 60 Hz notch for single-unit acquisition |
 | Power | External amplifier/recording apparatus; implant active power consumption not applicable |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | SU-8 thread insulation, carrier/bonding region at skull; no fully implanted hermetic electronic system qualification |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Craniotomy/duratomy, delicate sequential shuttle placement, skull carrier/coverslip fixation |
 | Output connectors | Molex series 502598, 33-pin flexible-flat connector on silicon carrier |
 
