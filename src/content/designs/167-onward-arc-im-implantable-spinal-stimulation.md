@@ -16,7 +16,7 @@ draft: false
 
 # ONWARD ARC-IM implantable spinal stimulation
 
-ARC-IM is ONWARD's investigational implanted spinal cord stimulation system, an IPG with a thoracic epidural lead, being tested for blood pressure instability after spinal cord injury. It is not approved. Hardware dimensions and contact counts are Unreported because the sources read do not give them. The external ARC-EX system is out of scope.
+ARC-IM is ONWARD's investigational implanted spinal cord stimulation system, an IPG with a thoracic epidural lead, being tested for blood pressure instability after spinal cord injury. It is not approved. Hardware dimensions and contact counts are left blank because the sources read do not give them. The external ARC-EX system is out of scope.
 
 ## Identity
 
@@ -26,8 +26,8 @@ ARC-IM is ONWARD's investigational implanted spinal cord stimulation system, an 
 | Manufacturer | ONWARD Medical N.V. (US sponsor entity ONWARD Medical, Inc.) [2][3] |
 | Interface class | Epidural spinal cord stimulation lead with an implanted neurostimulator [1][2] |
 | Origin | Investigational device; FDA IDE approved August 18, 2025 for the Empower BP pivotal study [2] |
-| First demonstrated | Unreported |
-| First human implant | Unreported |
+| First demonstrated |  |
+| First human implant |  |
 | Species studied | Human [1][3] |
 | Regulatory status | Investigational, not approved. FDA Breakthrough Device designation in 2020 for leg motor function and later for blood pressure and trunk control [1][4] |
 | Function | Targeted, programmed stimulation of the spinal cord for blood pressure instability after spinal cord injury; ONWARD describes it as aimed at the thoracic Hemodynamic Hotspot [1][5] |
@@ -38,77 +38,77 @@ ARC-IM is ONWARD's investigational implanted spinal cord stimulation system, an 
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Purpose-designed epidural lead for spinal cord injury connected to a purpose-designed neurostimulator [1][5] |
-| Array layout | Unreported |
-| Electrode count | Unreported |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Array layout |  |
+| Electrode count |  |
+| Pitch |  |
+| Electrode lengths |  |
+| Shank width and thickness |  |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
-| Data path | Unreported |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Onboard electronics |  |
+| Data path |  |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | Empower BP: 60 participants planned (ESTIMATED) at about 20 centers across the US, Canada and Europe; ages 18 to 75 [2][3] |
-| Preclinical cohort | Unreported |
+| Preclinical cohort |  |
 | Follow-up duration | Primary outcomes at 3 months post-implant [3] |
 | Indications | Investigational use: symptomatic blood pressure instability secondary to chronic spinal cord injury [3][5] |
 | Trials and registries | NCT07147296, Empower BP: randomized, double-blinded, sham-controlled; start 2025-10-17; primary completion 2026-11 [2][3] |
@@ -119,9 +119,9 @@ ARC-IM is ONWARD's investigational implanted spinal cord stimulation system, an 
 
 | Field | Value and source scope |
 | --- | --- |
-| Strengths | Unreported |
-| Limitations | Unreported |
-| Scaling constraints | Unreported |
+| Strengths |  |
+| Limitations |  |
+| Scaling constraints |  |
 
 ## Version boundary
 
