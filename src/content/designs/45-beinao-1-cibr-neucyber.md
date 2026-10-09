@@ -41,66 +41,66 @@ Beinao-1 (also written Beinao No. 1, "The NeuCyber Matrix BCI System") is a seco
 | Interface type | Flexible high-density thin-film electrode, micrometre thickness and about 4 cm square, placed inside the skull on the outer side of the dura (epidural) [6]. Reuters calls it a mesh [4]; the Chinese reports read here describe a thin film, not a mesh. Xuanwu Hospital describes the electrode over the left-hand motor area, epidural, with the main unit and coil seated in a coin-sized skull groove [8] |
 | Array layout | Matrix; coordinates unreported |
 | Electrode count | 128 channels [2, 5]. After surgery more than 98 percent of channels were effective in every implanted patient, per CIBR and Beijing News (institute claim) [5, 7] |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
+| Shank width and thickness |  |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
 | Insertion method | Placed outside the protective membrane of the brain, avoiding direct contact with brain tissue [2]; surgical steps unreported |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Neural recording for motor and speech decoding [1, 2] |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Outside the dura, without direct contact with brain tissue [2] |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
+| Onboard electronics |  |
 | Data path | Wireless, fully implanted [2]; protocol and external hardware unreported |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
 | Packaging and hermeticity | Coin-sized main unit and coil seated in a skull groove [8]; other dimensions unreported |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | First trial surgery on March 31, 2026 took 4 hours per Xuanwu Hospital [8] |
-| Output connectors | Unreported |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | Over 45,000 hours of safe operation across seven exploratory patients per CIBR [1]; China Daily reports more than 65,000 hours across nearly 30 implants in the earlier investigator-initiated phase [2]. Chinese sources: Xuanwu Hospital, April 2, 2026: 7 implants in the past year, over 45,000 device-hours [8]; Beijing News, April 20, 2026: 10 implants, 45,000 hours, longest implant over one year [7]. The same hours figure appears with different implant counts |
-| Revision and explant experience | Unreported |
+| Revision and explant experience |  |
 | Adverse events | Xuanwu Hospital: no serious adverse events [8]; CIBR's director said no serious side effect attributable to the product has been observed (institute statement) [7]. No adverse-event dataset |
 | Notable demonstrations | Speech decoding with a vocabulary of nearly 100 common Chinese words [2]. First spinal cord injury patient, implanted over a year, controls a robotic arm, a muscle stimulator and a cursor, with improved strength and arm function scores; a patient with thoracic and lumbar injury paralysed 5 years stands and walks with two crutches using brain-controlled spinal stimulation and an exoskeleton (institute statements) [7] |
 
@@ -109,7 +109,7 @@ Beinao-1 (also written Beinao No. 1, "The NeuCyber Matrix BCI System") is a seco
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | Counts disagree and are all listed: 7 exploratory patients per CIBR [1]; seven human implantations of Beinao-1 as of March 20, 2026 per NeuCyber's rotating CEO to Reuters [4]; nearly 30 implants in the earlier phase per China Daily, June 15, 2026 [2]; 16 implantations per a Chinese Academy of Sciences academic divisions report, July 6, 2026 [3]. These may count different things and the sources do not say. Trial started with two spinal cord injury patients [1]. Chinese-language counts: 5 by June 2025 [6]; 7 per Xuanwu Hospital on April 2, 2026 [8]; 10 per Beijing News on April 20, 2026 [7]. The registration trial had 2 patients on March 31, 2026 per Beijing News, which also states 3 enrolled in a later paragraph [7] |
-| Preclinical cohort | Unreported |
+| Preclinical cohort |  |
 | Follow-up duration | Hours of operation reported above [1, 2]; per-patient follow-up unreported |
 | Indications | Spinal cord injury, ALS or stroke patients, restoring motor and speech function, per the institute [1]. Beijing News: the registration indication is high paraplegia (tetraplegia); investigator-initiated studies extended to hemiplegia, lumbar paraplegia and ALS [7] |
 | Trials and registries | GCP-compliant multi-center trial from March 31, 2026 with initial planned enrollment of 36 patients; registry identifier not pinned in this sheet. NeuCyber told Reuters it hopes to expand to 50 patients, with registration trials focused on spinal cord injury motor restoration and commercial availability two to three years out (company statements). Nationwide hospital use is planned for 2027 per the academy report [1][2][3][4]. Chinese sources: Xuanwu Hospital gives 36 planned patients and 26 weeks of follow-up [8]; CIBR's director said 30 to 40 patients within 2026 and filing for NMPA registration in 2027 [7]; CIBR lists 14 investigator-initiated trials approved [6]. No ChiCTR or ClinicalTrials.gov identifier was found |
@@ -122,7 +122,7 @@ Beinao-1 (also written Beinao No. 1, "The NeuCyber Matrix BCI System") is a seco
 | --- | --- |
 | Strengths | Fully implanted wireless semi-invasive design with no direct brain contact [2] |
 | Limitations | Sparse technical disclosure; no per-electrode specifications or peer-reviewed outcomes |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## References
 
