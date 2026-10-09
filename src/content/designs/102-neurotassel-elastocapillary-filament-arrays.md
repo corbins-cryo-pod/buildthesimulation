@@ -41,13 +41,13 @@ Guan and colleagues' March 2019 Science Advances paper reports flexible filament
 | Array layout | Plane to mesh to filaments; sites in a V (128/256) or semicircular arch (512/1,024) before assembly [1] |
 | Electrode count | 16, 128, 256, 512 and 1,024 channels; separate 61-channel optical combination [1] |
 | Pitch | Not extracted; assembled contact positions are not defined by the published dimensions [1] |
-| Electrode lengths | Unreported |
+| Electrode lengths |  |
 | Shank width and thickness | 16-channel: 12 µm wide, 3 µm high filaments; 128/256: 10 × 1.5 µm; 512/1,024: 3 × 1.5 µm; assembled bundle about 55 µm (16-ch), 80 µm (128) and 100 µm (1,024) diameter [1] |
 | Tip and exposed site geometry | 10 µm-diameter recording sites (16-ch and 128/256); semicircular-arch sites in 512/1,024 [1] |
 | Contact coating | Platinum electrodeposition on gold sites [1] |
 | Insulation | Chromium/gold conductor between polyimide layers, sites exposed at the front [1] |
 | Insertion method | Drawn from molten PEG4000 at 120 °C; PEG solidifies to stiffen the bundle before insertion and dissolves in body fluid [1] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
@@ -56,25 +56,25 @@ Guan and colleagues' March 2019 Science Advances paper reports flexible filament
 | Exposed site area | 10 µm-diameter sites [1] |
 | Electrode material | Chromium/gold conductor, platinum electrodeposition [1] |
 | Impedance (with measurement frequency) | Greater than 1 MΩ before and about 50 kΩ after platinum at 1 kHz in the reported recording preparation; 54 ± 15 kΩ average across channel counts after platinum [1] |
-| Noise floor or SNR | Unreported |
+| Noise floor or SNR |  |
 | Recording modality | Extracellular recording; learning and weeks-long mouse recording with 16 channels [1] |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -82,13 +82,13 @@ Guan and colleagues' March 2019 Science Advances paper reports flexible filament
 | --- | --- |
 | Onboard electronics | None implanted; on-chip amplification/multiplexing listed as future work [1] |
 | Data path | Flip-chip-bonded flexible circuits with an Omnetics connector (16-ch); 61-channel flexible circuit/PCB for the optical variant [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
 | Output connectors | Omnetics connector (16-channel) [1] |
 
 ## Performance envelope
@@ -97,10 +97,10 @@ Guan and colleagues' March 2019 Science Advances paper reports flexible filament
 | --- | --- |
 | Acute yield | Greater than 80% fabrication/electrical yield across channel counts [1] |
 | Chronic yield | Greater than 95% electrical integrity after implantation for the tested preparation (a different denominator from fabrication yield) [1] |
-| Stability over time | Unreported |
+| Stability over time |  |
 | Longevity | Weeks-long 16-channel mouse recording [1] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | 16-channel chronic mouse learning recordings; preliminary 1,024-channel recordings (Supplementary Fig. S16 not readable in this pass) [1] |
 
 ## Clinical and preclinical evidence
@@ -109,9 +109,9 @@ Guan and colleagues' March 2019 Science Advances paper reports flexible filament
 | --- | --- |
 | Human subjects | None |
 | Preclinical cohort | Mouse; 1,024-channel cohort, connected channels, duration and unit yield not asserted |
-| Follow-up duration | Unreported |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Follow-up duration |  |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Chronic stable 16-channel mouse recording; electrical integrity above 95% [1] |
 | Key limitations | 1,024-channel recordings preliminary; probe-station measurements for 128-1,024 channels are not a freely behaving acquisition package [1] |
 
