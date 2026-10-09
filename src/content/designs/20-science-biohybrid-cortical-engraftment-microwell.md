@@ -17,7 +17,7 @@ draft: false
 
 # Science biohybrid cortical engraftment implant (microwell / waffle device)
 
-All rows follow the shared implant-device template. Measurements belong to the named study or configuration. Unreported means the reviewed sources do not establish a value. Proposed architectures, optical behavior and validated electronic recording systems are kept separate.
+All rows follow the shared implant-device template. Measurements belong to the named study or configuration. A blank cell means the reviewed sources do not establish a value. Proposed architectures, optical behavior and validated electronic recording systems are kept separate.
 
 ## Identity
 
@@ -28,7 +28,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Interface class | Surface cortical cell scaffold with external optical stimulation/readout; not an electrical ECoG array |
 | Origin | Brown, Zappitelli, Dawson and Science Corporation team |
 | First demonstrated | 2024 preprint reviewed here; no claim of earliest family demonstration |
-| First human implant | Unreported; mouse preclinical study |
+| First human implant | Mouse preclinical study |
 | Species studied | C57/B6J mice, male and female; embryonic primary cortical donor neurons |
 | Regulatory status | Animal research under Science Corporation IACUC; reviewed report is a preprint |
 | Function | Optogenetically stimulate graft neurons to provide behavioral input; two-photon imaging observes graft activity |
@@ -88,7 +88,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Power | External LED/fiber and microscope; no implanted power supply. Functional imaging approximately 50 mW at 1040 nm, structural imaging 100 mW at 930 nm |
 | Thermal management | Temperature rise and phototoxicity limit unreported; optical powers are experimental settings, not safety ratings |
 | Packaging and hermeticity | Glass cranial window bonded with epoxy/acrylic/cement; living-cell scaffold, not hermetic electronic package |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Craniotomy/duratomy, cell-loaded placement, headplate fixation and later fiber ferrule attachment |
 | Output connectors | 400 µm optical cannula, 0.39 NA, Thorlabs CFMLC14L02; external optical fiber and rotary joint, not electrical connector |
 
