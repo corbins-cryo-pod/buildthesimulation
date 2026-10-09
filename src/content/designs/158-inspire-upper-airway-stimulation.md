@@ -18,6 +18,8 @@ draft: false
 
 Inspire is an implanted hypoglossal nerve stimulator with a sensing lead that tracks breathing. This sheet uses the FDA overview for the June 2023 indication expansion and the supplement record for the Inspire V IPG (Model 3150, decision August 1, 2024). Lead and electrode specifications are not in those sources and stay blank.
 
+Company brief: [Inspire Medical Systems, Inc.](/companies/58-inspire-medical-systems-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
