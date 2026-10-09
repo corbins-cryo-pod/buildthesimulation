@@ -18,6 +18,8 @@ draft: false
 
 SPRINT is a temporary peripheral nerve stimulation system: a thin coiled percutaneous lead and a wearable pulse generator, indicated for up to 60 days. This sheet is a thin one built from the 510(k) clearance letter and summary text for K223306 (January 25, 2023). A 510(k) is a clearance, not a PMA approval.
 
+Company brief: [SPR Therapeutics, Inc.](/companies/63-spr-therapeutics-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
