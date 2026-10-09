@@ -18,6 +18,8 @@ draft: false
 
 The RNS System is an FDA-approved, cranially implanted neurostimulator from NeuroPace that listens to electrocorticography through up to two four-electrode leads and responds with stimulation when a programmed detection fires. This sheet is scoped to the RNS-300M and leads described in the 2013 FDA summary and to the published trials. Later models and supplements are not reviewed.
 
+Company brief: [NeuroPace, Inc.](/companies/52-neuropace-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
