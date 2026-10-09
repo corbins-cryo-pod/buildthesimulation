@@ -1,0 +1,134 @@
+---
+title: "Motif DOT magnetoelectric brain stimulator"
+order: 175
+pubDate: 2026-10-08
+updatedDate: 2026-10-08
+device_id: "BTSD-STUP-0002"
+interface_class: "other"
+status: "human"
+last_updated: 2026-10-08
+description: "Pea-sized, battery-free wireless cortical stimulator from Motif Neurotech, shown acutely in a human in 2023 and now in an early feasibility study for treatment-resistant depression."
+modality: "Other"
+website: "https://clinicaltrials.gov/study/NCT07594483"
+tags: ["Motif", "DOT", "XCS", "magnetoelectric", "wireless stimulator", "depression", "investigational", "human"]
+draft: false
+---
+
+# Motif DOT magnetoelectric brain stimulator
+
+Motif's DOT is a roughly 9 mm, battery-free stimulator powered through the magnetoelectric effect, shown on a human motor cortex in 2023. The XCS System is now in an early feasibility study for treatment-resistant depression. Specs beyond size and voltage are Unreported.
+
+## Identity
+
+| Field | Value and source scope |
+| --- | --- |
+| Device | Motif Digitally programmable Over-brain Therapeutic (DOT) microstimulator; the clinical system is named Motif eXternally powered Cortical Stimulation (XCS) System [1][2][3] |
+| Manufacturer | Motif Neurotech, Inc. (spin-out of Rice University lab of Jacob Robinson) [1][2] |
+| Interface class | Wireless, battery-free stimulator on the dura or skull-side cortex, without penetrating the dura [2][3] |
+| Origin | Company device with Rice University, Baylor College of Medicine and UTHealth Houston collaborators; published in Science Advances [1][2] |
+| First demonstrated | First-in-human intraoperative stimulation reported September 13, 2023 at Baylor St Luke's Medical Center [1] |
+| First human implant | Unreported |
+| Species studied | Human (acute) and pig (30-day) [2] |
+| Regulatory status | Investigational; ClinicalTrials.gov NCT07594483 early feasibility study of the XCS System for treatment-resistant depression [3] |
+| Function | Stimulates the cortex wirelessly; in the first human demonstration it activated the motor cortex and produced a hand movement; the intended therapy is for treatment-resistant depression [1][2][3] |
+| Target tissue | Left dorsolateral prefrontal cortex for the XCS study; motor cortex in the first acute demonstration [2][3] |
+
+## Geometry and architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Interface type | Surface electrodes implanted in a skull burr hole, stimulating through the dura [3] |
+| Array layout | Unreported |
+| Electrode count | Unreported |
+| Pitch | Unreported |
+| Electrode lengths | Unreported |
+| Shank width and thickness | Unreported |
+| Tip and exposed site geometry | Unreported |
+| Contact coating | Unreported |
+| Insulation | Unreported |
+| Insertion method | Unreported |
+| Anchoring and fixation | Burr hole in the skull; the XCS study requires skull thickness of 5.5 to 15.5 mm over the target [3] |
+
+## Electrode and channel physics
+
+| Field | Value and source scope |
+| --- | --- |
+| Exposed site area | Unreported |
+| Electrode material | Unreported |
+| Impedance (with measurement frequency) | Unreported |
+| Noise floor or SNR | Unreported |
+| Recording modality | Unreported |
+| Sampling rate | Unreported |
+| Stimulation capability | The prototype delivered 14.5 V of stimulation, per the Rice report [2] |
+| Charge injection limit | Unreported |
+| Reference and ground | Unreported |
+
+## Tissue interface and bioresponse
+
+| Field | Value and source scope |
+| --- | --- |
+| Target tissue | Unreported |
+| Insertion trauma and BBB disruption | Unreported |
+| Vascular disruption risk | Unreported |
+| Micromotion sensitivity | Unreported |
+| Gliosis and encapsulation | Unreported |
+| Neuron loss near sites | Unreported |
+| Foreign-body response mitigation | Unreported |
+| Typical failure modes | Unreported |
+
+## System architecture
+
+| Field | Value and source scope |
+| --- | --- |
+| Onboard electronics | Prototype includes regulation electronics, a small magnet and two magnetoelectric films for wireless data and power [1] |
+| Data path | Wireless data and power through an external transmitter worn on the head, such as a hat or wearable [1][2] |
+| Telemetry bandwidth | Unreported |
+| Sampling rate | Unreported |
+| Power | Battery-free; powered by the magnetoelectric effect from an external transmitter [1][2] |
+| Thermal management | Unreported |
+| Packaging and hermeticity | Unreported |
+| MRI compatibility | Unreported |
+| Surgical complexity | Unreported |
+| Output connectors | Unreported |
+
+## Performance envelope
+
+| Field | Value and source scope |
+| --- | --- |
+| Acute yield | Unreported |
+| Chronic yield | Unreported |
+| Stability over time | Unreported |
+| Longevity | Unreported |
+| Revision and explant experience | Unreported |
+| Adverse events | Unreported |
+| Notable demonstrations | Unreported |
+
+## Clinical and preclinical evidence
+
+| Field | Value and source scope |
+| --- | --- |
+| Human subjects | Prototype: one patient intraoperatively. XCS study enrollment not extracted [1][2] |
+| Preclinical cohort | Unreported |
+| Follow-up duration | Unreported |
+| Indications | Unreported |
+| Trials and registries | NCT07594483: prospective, multi-center, single-arm, open-label early feasibility study of the XCS System [3] |
+| Primary outcomes | Unreported |
+| Key limitations | The 2023 prototype is about 9 mm across (pea-sized); whether the XCS clinical system matches that prototype is not stated in the sources read. Company and press-release claims for the human demonstration [1][2][3] |
+
+## Engineering tradeoffs
+
+| Field | Value and source scope |
+| --- | --- |
+| Strengths | Unreported |
+| Limitations | Unreported |
+| Scaling constraints | Unreported |
+
+## Version boundary
+
+Hardware values come from the 2023 prototype. The XCS clinical configuration may differ.
+
+## References
+
+1. [Motif release, September 13, 2023](https://www.businesswire.com/news/home/20230913723932/en/Motif-Neurotech-Conducts-First-in-human-Brain-Stimulation-With-Millimeter-sized-Implantable-Device-for-Treatment-resistant-Depression).
+2. [Rice University report on the Science Advances paper](https://www.technology.org/2024/04/15/rice-team-demonstrates-miniature-brain-stimulator-in-humans/).
+3. [ClinicalTrials.gov NCT07594483](https://clinicaltrials.gov/study/NCT07594483).
