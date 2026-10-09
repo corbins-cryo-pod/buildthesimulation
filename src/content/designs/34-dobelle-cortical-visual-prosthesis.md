@@ -39,43 +39,43 @@ An early human cortical visual prosthesis that turned camera images into phosphe
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Electrode arrays on visual cortex with percutaneous pedestals [1] |
-| Array layout | Unreported |
+| Array layout |  |
 | Electrode count | Array channel counts are not covered in the reviewed source [1] |
-| Pitch | Unreported |
-| Electrode lengths | Unreported |
-| Shank width and thickness | Unreported |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Pitch |  |
+| Electrode lengths |  |
+| Shank width and thickness |  |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation |  |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
-| Recording modality | Unreported |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
+| Recording modality |  |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
@@ -83,25 +83,25 @@ An early human cortical visual prosthesis that turned camera images into phosphe
 | --- | --- |
 | Onboard electronics | Sunglasses-mounted video camera, computer and battery-powered electronics [1] |
 | Data path | Wired through percutaneous pedestals; a battery-powered, RF-isolated interface can replace the camera for television and computer use [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Battery-powered electronics [1] |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
 | Output connectors | Percutaneous connecting pedestals [1] |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
 | Longevity | One array removed after 3 months as planned; the other removed after 14 years for a blood-borne infection the paper says did not originate with the implant [1] |
 | Revision and explant experience | Explants at 3 months (planned) and 14 years (infection) [1] |
-| Adverse events | Unreported |
+| Adverse events |  |
 | Notable demonstrations | Black-and-white phosphene displays described as like scoreboard light-bulb arrays; design aimed primarily at independent mobility, not reading [1] |
 
 ## Clinical and preclinical evidence
@@ -109,10 +109,10 @@ An early human cortical visual prosthesis that turned camera images into phosphe
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | 37 sighted volunteers (cortical stimulation), three blind volunteers (temporary implants), four blind volunteers with permanent arrays [1] |
-| Preclinical cohort | Unreported |
+| Preclinical cohort |  |
 | Follow-up duration | Up to 14 years for one array [1] |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Artificial vision in blind volunteers [1] |
 | Key limitations | Array channel counts and later fate of the program not covered here [1] |
 
@@ -122,7 +122,7 @@ An early human cortical visual prosthesis that turned camera images into phosphe
 | --- | --- |
 | Strengths | Decades-long human use of a cortical prosthesis [1] |
 | Limitations | Percutaneous pedestal connection [1] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Overview
 
