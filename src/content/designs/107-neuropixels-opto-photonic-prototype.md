@@ -89,7 +89,7 @@ Lakunina, Socha, Ladd and colleagues combine electrical recording with dual-colo
 | Packaging and hermeticity |  |
 | MRI compatibility |  |
 | Surgical complexity | Craniotomy and tethered fiber plus cable in mice. About 740 processing steps in fabrication |
-| Output connectors | Fiber coupling and flex cable to headstage; connector model unreported |
+| Output connectors | Fiber coupling and flex cable to headstage; connector model not reported |
 
 ## Performance envelope
 
