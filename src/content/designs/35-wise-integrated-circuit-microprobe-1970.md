@@ -29,91 +29,91 @@ The paper that moved extracellular electrodes from hand-made wires to photolitho
 | Origin | Wise, Angell and Starr, "An Integrated-Circuit Approach to Extracellular Microelectrodes" [1] |
 | First demonstrated | 1970 [1] |
 | First human implant | None; recording results are in the paper, not extracted here |
-| Species studied | Unreported |
+| Species studied |  |
 | Regulatory status | Research device; no clearance |
 | Function | Extracellular recording [1] |
-| Target tissue | Unreported |
+| Target tissue |  |
 
 ## Geometry and architecture
 
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Gold electrodes on a silicon carrier projecting beyond it [1] |
-| Array layout | Unreported |
-| Electrode count | Unreported |
-| Pitch | Unreported |
+| Array layout |  |
+| Electrode count |  |
+| Pitch |  |
 | Electrode lengths | Electrodes project about 50 µm beyond the carrier [1] |
-| Shank width and thickness | Unreported |
+| Shank width and thickness |  |
 | Tip and exposed site geometry | Recording area set by photoengraving the oxide open at the tips [1] |
-| Contact coating | Unreported |
+| Contact coating |  |
 | Insulation | 0.4 µm silicon dioxide, opened at the tips by photoengraving [1] |
-| Insertion method | Unreported |
-| Anchoring and fixation | Unreported |
+| Insertion method |  |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
+| Exposed site area |  |
 | Electrode material | Gold [1] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Extracellular recording [1] |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
-| Target tissue | Unreported |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
-| Foreign-body response mitigation | Unreported |
-| Typical failure modes | Unreported |
+| Target tissue |  |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
+| Foreign-body response mitigation |  |
+| Typical failure modes |  |
 
 ## System architecture
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Unreported |
-| Data path | Unreported |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
-| Surgical complexity | Unreported |
-| Output connectors | Unreported |
+| Onboard electronics |  |
+| Data path |  |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
+| Surgical complexity |  |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
-| Chronic yield | Unreported |
-| Stability over time | Unreported |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
-| Notable demonstrations | Unreported |
+| Acute yield |  |
+| Chronic yield |  |
+| Stability over time |  |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
+| Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | None established in this sheet |
-| Preclinical cohort | Unreported |
-| Follow-up duration | Unreported |
-| Indications | Unreported |
-| Trials and registries | Unreported |
-| Primary outcomes | Unreported |
+| Preclinical cohort |  |
+| Follow-up duration |  |
+| Indications |  |
+| Trials and registries |  |
+| Primary outcomes |  |
 | Key limitations | Recording results, channel counts and later probe dimensions are in the paper and its successors, not here [1] |
 
 ## Engineering tradeoffs
@@ -121,8 +121,8 @@ The paper that moved extracellular electrodes from hand-made wires to photolitho
 | Field | Value and source scope |
 | --- | --- |
 | Strengths | Controlled geometry and batch fabrication in place of hand-made microelectrodes [1] |
-| Limitations | Unreported |
-| Scaling constraints | Unreported |
+| Limitations |  |
+| Scaling constraints |  |
 
 ## Overview
 
