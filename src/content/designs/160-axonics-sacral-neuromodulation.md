@@ -18,6 +18,8 @@ draft: false
 
 The Axonics system is a rechargeable sacral neuromodulation stimulator. This sheet reads the FDA summary for PMA P190006 (fecal incontinence, approved September 6, 2019). Clinical results and the urinary indication were not read and stay blank.
 
+Company brief: [Boston Scientific Corporation](/companies/55-boston-scientific-company-brief/), [Axonics, Inc.](/companies/60-axonics-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
