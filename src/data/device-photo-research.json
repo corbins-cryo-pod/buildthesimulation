@@ -24,7 +24,7 @@
       "sourceUrl": "https://neuralink.com/updates/prime-study-progress-update/",
       "candidateAssetUrl": null,
       "license": null,
-      "notes": "No current source review recorded."
+      "notes": "Official terms prohibit republishing photos and separate illustrations from their accompanying text, even for noncommercial use. Exploded N1 reference is illustrative, not established actual device photograph.2019JMIR photographs are openly licensed but depict older wired research hardware and must not be relabeled N1."
     },
     "BTSD-0003": {
       "title": "Stentrode (Synchron)",
@@ -42,12 +42,13 @@
       "title": "Neuropixels 1.0 recording probe",
       "order": 4,
       "url": "https://buildthesimulation.com/devices/04-neuropixels-probe/",
-      "status": "pending",
-      "researchStatus": "quality-pending",
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7721443/",
       "candidateAssetUrl": "https://europepmc.org/articles/PMC7721443?pdf=render",
       "license": "CC BY 4.0",
-      "notes": "Root verified article CC BY4 permissions. Genuine Figure2D photo downloaded/extracted, but external black mounting platform dominates and the penetrating shank is poorly resolved. The separate Liu2021 tip image has an unverified microscopy/illustration type. Neither published as a clean physical-interface photo."
+      "notes": "Published 2 source-credited views; version qualifications and per-image rights are recorded in the manifest. 2020 Neuropixels 1.0 study specimen. The black implant holder is external mounting hardware, not part of the silicon probe.",
+      "image": "/images/devices/btsd-0004.webp"
     },
     "BTSD-0005": {
       "title": "Utah Slanted Electrode Array (USEA)",
@@ -58,7 +59,7 @@
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5702130/",
       "candidateAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/d0dc/5702130/7c878ba66407/12984_2017_320_Fig1_HTML.jpg",
       "license": null,
-      "notes": "No current source review recorded."
+      "notes": "2017Wendelken articleCCBY4, but idealFig1ASEM credits source[21] Branner2001JNeurophysiol. Third-party reuse grant not verified. Fig1B authors' surgery photo shows array in nerve wrap but not clean architecture view. Blackrock publication protocol provides officialSlantArrayimages with allowedcrop/credit but terms specifically say customers mayuse; Corbin customer status not established."
     },
     "BTSD-0006": {
       "title": "TIME (Transverse Intrafascicular Multichannel Electrode)",
@@ -112,12 +113,13 @@
       "title": "Spiral nerve cuff electrode (self-sizing / helical cuff)",
       "order": 10,
       "url": "https://buildthesimulation.com/devices/10-spiral-nerve-cuff-electrode-helical/",
-      "status": "pending",
-      "researchStatus": "pending_license",
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5504677/",
       "candidateAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/11c4/5504677/82f036b77800/12984_2017_285_Fig1_HTML.jpg",
-      "license": "Article CC BY 4.0; third-party photograph grant unresolved",
-      "notes": "The primary 2017 CC BY 4.0 article's Figure 1 contains a clear photograph, but it explicitly credits Ardiem Medical, Inc. Separate-image reuse permission remains unresolved."
+      "license": "CC BY 4.0",
+      "notes": "Published 1 source-credited view; version qualifications and per-image rights are recorded in the manifest. 2017 standard four-contact family specimen. This photograph does not identify a particular participant’s implanted cuff or establish the geometry of every cuff diameter.",
+      "image": "/images/devices/btsd-pni-0001.webp"
     },
     "BTSD-ACAD-0064": {
       "title": "µSEEG flexible stylet-guided depth electrode",
@@ -153,7 +155,7 @@
       "sourceUrl": "https://www.neuropixels.org/probe2-0-qb-multi-shank",
       "candidateAssetUrl": "https://static.wixstatic.com/media/328966_cf3490b90dd44b369117df9f2ba3015b~mv2.jpg/v1/fill/w_980%2Ch_551%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/328966_cf3490b90dd44b369117df9f2ba3015b~mv2.jpg",
       "license": "Manufacturer photo; reuse permission not established",
-      "notes": "Official Quad Base product page provides device photos but no image-reuse grant. Official disclaimer is not a photo license. The 2026 Quad preprint link was access-blocked; no license inferred from it.",
+      "notes": "New 2026 Quad Base preprint PMC13483804 fullTextXML explicitly grants CC BY 4.0. Figure 1 was downloaded and visually inspected; its device panel is a drawing, not a photograph, so not a substitute for the manufacturer's copyrighted photo. No genuine licensed photograph found in this follow-up.",
       "followUp": "New 2026 Quad Base preprint PMC13483804 fullTextXML explicitly grants CC BY 4.0. Figure 1 was downloaded and visually inspected; its device panel is a drawing, not a photograph, so not a substitute for the manufacturer's copyrighted photo. No genuine licensed photograph found in this follow-up."
     },
     "BTSD-ACAD-0067": {
@@ -201,7 +203,7 @@
       "sourceUrl": "https://www.nature.com/articles/s41551-020-0518-9",
       "candidateAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41551-020-0518-9/MediaObjects/41551_2020_518_Fig1_HTML.png",
       "license": "Authors under exclusive Springer Nature license; no open image grant verified",
-      "notes": "Primary publisher copyright metadata states exclusive licensing; no Creative Commons image-reuse statement was found. A later open review says reproduced with permission, which does not transfer that permission to this website.",
+      "notes": "Checked authors' arXiv1807.07590 StimDust preprint and followed its actual license link: arXiv nonexclusive distribution only, not a photo reuse grant. Berkeley2018 press photo exists but version predates the catalog's2020 paper and no unrestricted/reusable photo grant verified.",
       "followUp": "Checked authors' arXiv1807.07590 StimDust preprint and followed its actual license link: arXiv nonexclusive distribution only, not a photo reuse grant. Berkeley2018 press photo exists but version predates the catalog's2020 paper and no unrestricted/reusable photo grant verified."
     },
     "BTSD-ACAD-0071": {
@@ -260,7 +262,7 @@
       "sourceUrl": "https://www.nature.com/articles/s41551-024-01281-9",
       "candidateAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41551-024-01281-9/MediaObjects/41551_2024_1281_Fig1_HTML.png",
       "license": "Publisher exclusive rights; no unrestricted photo grant verified",
-      "notes": "Primary publisher Rights and permissions states exclusive rights. No CC BY/CC0 or explicit press-photograph license was found for the ECI hardware.",
+      "notes": "Targeted follow-up found the2023 endocisternal preprint with NC-ND figure-license indications and attempted original2024 publisher rights page; publisher retrieval blocked. No reusable cropped actual catheter hardware photo established. Preserve prior reserved-rights status; do not substitute ME-BIT hardware.",
       "followUp": "Targeted follow-up found the2023 endocisternal preprint with NC-ND figure-license indications and attempted original2024 publisher rights page; publisher retrieval blocked. No reusable cropped actual catheter hardware photo established. Preserve prior reserved-rights status; do not substitute ME-BIT hardware."
     },
     "BTSD-ACAD-0075": {
@@ -272,7 +274,7 @@
       "sourceUrl": "https://www.nature.com/articles/s41563-023-01680-4",
       "candidateAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41563-023-01680-4/MediaObjects/41563_2023_1680_Fig1_HTML.png",
       "license": "Authors under exclusive Springer Nature license; no open photo grant verified",
-      "notes": "Primary Nature Materials copyright states an exclusive publishing license. No CC BY/CC0 grant for the original MNM photograph was verified.",
+      "notes": "Rechecked official Europe PMC10972531 fullTextXML; HTTP500. Located earlier self-rectifying-metamaterial preprint references but no explicit reuse license confirmed. Original Nature Materials photo remains reserved-rights.",
       "followUp": "Rechecked official Europe PMC10972531 fullTextXML; HTTP500. Located earlier self-rectifying-metamaterial preprint references but no explicit reuse license confirmed. Original Nature Materials photo remains reserved-rights."
     },
     "BTSD-ACAD-0076": {
@@ -284,7 +286,7 @@
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9581110/",
       "candidateAssetUrl": null,
       "license": "No unrestricted photo-reuse grant verified",
-      "notes": "Primary IEEE Journal of Solid-State Circuits paper was identified by the device record and PMC entry; no reusable CC BY/CC0 image license was verified. Official OA XML retrieval did not provide the manuscript.",
+      "notes": "Checked authors' arXiv2112.15552 PUF-network preprint and actual license link: arXiv nonexclusive distribution only. Europe PMC9581110 XML unavailable HTTP500. No new photo publication grant established.",
       "followUp": "Checked authors' arXiv2112.15552 PUF-network preprint and actual license link: arXiv nonexclusive distribution only. Europe PMC9581110 XML unavailable HTTP500. No new photo publication grant established."
     },
     "BTSD-ACAD-0077": {
@@ -296,7 +298,7 @@
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8712272/",
       "candidateAssetUrl": null,
       "license": "No unrestricted photo-reuse grant verified",
-      "notes": "Primary IEEE TBCAS paper and PMC author manuscript for MagNI were found. No explicit CC BY/CC0 or press-reuse grant was verified for an implant photograph.",
+      "notes": "Checked authors' arXiv2107.02995 MagNI preprint and followed actual license link: arXiv nonexclusive distribution only, not CC. Europe PMC8712272 XML unavailable HTTP500. Do not infer reuse rights from public manuscript.",
       "followUp": "Checked authors' arXiv2107.02995 MagNI preprint and followed actual license link: arXiv nonexclusive distribution only, not CC. Europe PMC8712272 XML unavailable HTTP500. Do not infer reuse rights from public manuscript."
     },
     "BTSD-ACAD-0078": {
@@ -308,7 +310,7 @@
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7818389/",
       "candidateAssetUrl": null,
       "license": "No unrestricted photo-reuse grant verified",
-      "notes": "Primary Neuron study for the two-film system was identified; no CC BY/CC0 or explicit implant-photograph grant was verified. Publicly readable accepted manuscripts do not establish republication rights.",
+      "notes": "Rechecked official Europe PMC7818389 fullTextXML; HTTP500 and no new permissive photo grant. Preserve distinct external PVDF vs fully implanted PZT versions; do not substitute later ME-BIT images.",
       "followUp": "Rechecked official Europe PMC7818389 fullTextXML; HTTP500 and no new permissive photo grant. Preserve distinct external PVDF vs fully implanted PZT versions; do not substitute later ME-BIT images."
     },
     "BTSD-ACAD-0079": {
@@ -320,19 +322,20 @@
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7818389/",
       "candidateAssetUrl": null,
       "license": "No unrestricted photo-reuse grant verified",
-      "notes": "Same primary 2020 Neuron study; no unrestricted reuse grant was verified. A separate fully implanted PZT version is described and must be distinguished from the PVDF headstage.",
+      "notes": "Rechecked official Europe PMC7818389 fullTextXML; HTTP500 and no new permissive photo grant. Preserve distinct external PVDF vs fully implanted PZT versions; do not substitute later ME-BIT images.",
       "followUp": "Rechecked official Europe PMC7818389 fullTextXML; HTTP500 and no new permissive photo grant. Preserve distinct external PVDF vs fully implanted PZT versions; do not substitute later ME-BIT images."
     },
     "BTSD-PNI-0003": {
       "title": "CWRU self-sizing spiral nerve cuff (upper-limb sensory stimulation research deployments)",
       "order": 13,
       "url": "https://buildthesimulation.com/devices/13-cwru-spiral-cuff-radial-nerve-sensory-amputees/",
-      "status": "pending",
-      "researchStatus": "pending_license",
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5504677/",
       "candidateAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/11c4/5504677/82f036b77800/12984_2017_285_Fig1_HTML.jpg",
-      "license": "Article CC BY 4.0; third-party photograph grant unresolved",
-      "notes": "The general spiral-cuff photograph is credited to Ardiem Medical and shows a standard 4 mm cuff, not a verified exact radial sensory four-contact specimen. Both rights and version scope need clarification."
+      "license": "CC BY 4.0",
+      "notes": "Published 1 source-credited view; version qualifications and per-image rights are recorded in the manifest. 2017 standard four-contact family specimen. This photograph does not identify a particular participant’s implanted cuff or establish the geometry of every cuff diameter.",
+      "image": "/images/devices/btsd-pni-0003.webp"
     },
     "BTSD-ACAD-0080": {
       "title": "MEND magnetoelectric nanodiscs, 2024",
@@ -350,13 +353,14 @@
       "title": "MOTE optical tetherless recorder, 2025",
       "order": 135,
       "url": "https://buildthesimulation.com/devices/135-mote-optoelectronic-tetherless-recorder-2025/",
-      "status": "pending",
-      "researchStatus": "license-pending",
-      "sourceUrl": "https://www.nature.com/articles/s41928-025-01484-1",
-      "candidateAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41928-025-01484-1/MediaObjects/41928_2025_1484_Fig1_HTML.png",
-      "license": "CC BY-NC-ND 4.0",
-      "notes": "Publisher Rights and permissions explicitly declares noncommercial/no-derivatives terms. Open access here is not CC BY. Figure1b is the authors' microscopy image; no extra reuse permission was found.",
-      "followUp": "Rechecked original Nature Electronics source and its hair-comparison microscopy caption; explicit photo is Fig.1B. Prior confirmed license remains CC BY-NC-ND4.0, and a new direct rights-page fetch was blocked. No cropped microscopic device image permitted; older2020MOTE photos would depict a different hardware version."
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
+      "sourceUrl": "https://www.eurekalert.org/multimedia/1103818",
+      "candidateAssetUrl": "https://mediasvc.eurekalert.org/Api/v1/Multimedia/ce3ba2aa-5f18-4583-ac54-de598bb395d3/Rendition/low-res/Content/Public",
+      "license": "Institutional press-image permission · credit retained",
+      "notes": "Published 1 source-credited view; version qualifications and per-image rights are recorded in the manifest. MOTE from the 2025 Nature Electronics study (10.1038/s41928-025-01484-1), not the older 2018 or 2020 MOTE designs.",
+      "followUp": "Rechecked original Nature Electronics source and its hair-comparison microscopy caption; explicit photo is Fig.1B. Prior confirmed license remains CC BY-NC-ND4.0, and a new direct rights-page fetch was blocked. No cropped microscopic device image permitted; older2020MOTE photos would depict a different hardware version.",
+      "image": "/images/devices/btsd-acad-0081.jpg"
     },
     "BTSD-ACAD-0082": {
       "title": "SCOPe subdural CMOS optical probe",
@@ -367,7 +371,7 @@
       "sourceUrl": "https://www.nature.com/articles/s41928-024-01209-w",
       "candidateAssetUrl": null,
       "license": "Publisher exclusive rights; no unrestricted photo grant verified",
-      "notes": "Publisher Rights and permissions states exclusive rights. Figure2 covers SCOPe packaging/data acquisition but no image-reuse grant was established. No suitable licensed hardware preprint photograph was confirmed.",
+      "notes": "Located the 2023 SCOPe preprint PMC9934536. The primary PMC record explicitly says selected author license terms do not permit archiving full text in PMC. No reusable cropped implant photograph obtained; official published source remains permission-pending.",
       "followUp": "Located the 2023 SCOPe preprint PMC9934536. The primary PMC record explicitly says selected author license terms do not permit archiving full text in PMC. No reusable cropped implant photograph obtained; official published source remains permission-pending."
     },
     "BTSD-PNI-0005": {
@@ -390,7 +394,7 @@
       "sourceUrl": "https://www.nature.com/articles/nbt.3093",
       "candidateAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnbt.3093/MediaObjects/41587_2015_Article_BFnbt3093_Fig1_HTML.jpg",
       "license": "Publisher copyright; no unrestricted photo grant verified",
-      "notes": "Publisher article has copyright metadata but no CC BY/CC0 image license. Official MIT-hosted author PDF makes the study readable, not automatically licensed for image republication.",
+      "notes": "Located MIT News2015 media-download image with CC BY-NC-ND3.0 terms. The supplied photo shows a researcher holding a generic multifunctional-fiber sample, and does not distinguish all-polymer vs tin variants. Not approved as an exact implanted-part architecture photograph.",
       "followUp": "Located MIT News2015 media-download image with CC BY-NC-ND3.0 terms. The supplied photo shows a researcher holding a generic multifunctional-fiber sample, and does not distinguish all-polymer vs tin variants. Not approved as an exact implanted-part architecture photograph."
     },
     "BTSD-ACAD-0085": {
@@ -402,7 +406,7 @@
       "sourceUrl": "https://www.nature.com/articles/nbt.3093",
       "candidateAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnbt.3093/MediaObjects/41587_2015_Article_BFnbt3093_Fig1_HTML.jpg",
       "license": "Publisher copyright; no unrestricted photo grant verified",
-      "notes": "No CC BY/CC0 or explicit press-use grant found for the source's tin multielectrode fiber image. Shared publication with order143 is not evidence of identical hardware or rights clearance.",
+      "notes": "Located MIT News2015 media-download image with CC BY-NC-ND3.0 terms. The supplied photo shows a researcher holding a generic multifunctional-fiber sample, and does not distinguish all-polymer vs tin variants. Not approved as an exact implanted-part architecture photograph.",
       "followUp": "Located MIT News2015 media-download image with CC BY-NC-ND3.0 terms. The supplied photo shows a researcher holding a generic multifunctional-fiber sample, and does not distinguish all-polymer vs tin variants. Not approved as an exact implanted-part architecture photograph."
     },
     "BTSD-ACAD-0086": {
@@ -414,7 +418,7 @@
       "sourceUrl": "https://news.mit.edu/2017/multifunctional-tiny-fibers-brain-0221",
       "candidateAssetUrl": "https://news.mit.edu/sites/default/files/download/201702/MIT-Multifunction-Fiber-Press.jpg",
       "license": "CC BY-NC-ND 3.0",
-      "notes": "MIT News article Media Download terms explicitly permit reuse by noncommercial entities, press, and the general public with photo credit, and link CC BY-NC-ND 3.0. This candidate preserves the full downloaded original byte-for-byte without crop, recoloring, or retouching.",
+      "notes": "Original image visually inspected. Rights cleared for noncommercial unadapted distribution, but unsuitable for the requested implant-focused close-up gallery. Keep as a documented lead, not automatically publish.",
       "followUp": "Original image visually inspected. Rights cleared for noncommercial unadapted distribution, but unsuitable for the requested implant-focused close-up gallery. Keep as a documented lead, not automatically publish.",
       "preserveSource": true
     },
@@ -612,12 +616,13 @@
       "title": "Argus II retinal prosthesis",
       "order": 165,
       "url": "https://buildthesimulation.com/devices/165-argus-ii-retinal-prosthesis/",
-      "status": "pending",
-      "researchStatus": "license-pending",
-      "sourceUrl": "https://www.aaojournal.org/article/s0161-6420%2816%2930579-6/fulltext",
-      "candidateAssetUrl": null,
-      "license": "CC BY-NC-ND and manufacturer image rights; not cleared",
-      "notes": "Five-year Argus II safety paper contains an implant photograph but uses a noncommercial/no-derivatives license. Other reviews reprint the same image by permission from Second Sight/Elsevier. No creator-owned Commons Argus II implant photograph found; name-only Commons hits were aircraft, rejected."
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/",
+      "candidateAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/figure/fig1/",
+      "license": "CC BY-NC-ND 4.0",
+      "notes": "Published 1 source-credited view; version qualifications and per-image rights are recorded in the manifest. Argus II hardware illustrated in the 2016 five-year clinical-trial report; not a new-generation Cortigent implant.",
+      "image": "/images/devices/btsd-fda-0016.jpg"
     },
     "BTSD-FDA-0017": {
       "title": "Cortigent Orion visual cortical prosthesis",
@@ -728,7 +733,7 @@
       "sourceUrl": "https://www.medrxiv.org/content/10.1101/2025.04.24.25326126v3",
       "candidateAssetUrl": null,
       "license": null,
-      "notes": "No current source review recorded."
+      "notes": "AxoftFleuron2025preprint explicitlyAll rights reserved.No reuse allowedwithoutpermission; PMC12045424 says license does not permit archiving. UserNCconfirmation does not override this. Actual device images exist inFig1/2 but cannot currentlyupload."
     },
     "BTSD-STUP-0002": {
       "title": "Motif DOT magnetoelectric brain stimulator",
@@ -775,7 +780,7 @@
       "sourceUrl": "https://www.nature.com/articles/s41467-026-71443-7",
       "candidateAssetUrl": null,
       "license": null,
-      "notes": "No current source review recorded."
+      "notes": "StairMed2026primary articleCCBYNCND4. Official HNEproductpage images also lack reusegrant and are research HNE versions rather than automatically equivalent to clinicalWRS."
     },
     "BTSD-STUP-0006": {
       "title": "NeuroXess 256-channel flexible ECoG BCI",
@@ -786,7 +791,7 @@
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12588286/",
       "candidateAssetUrl": null,
       "license": null,
-      "notes": "No current source review recorded."
+      "notes": "2025ScienceAdvancesprimary article verifiedCCBY4, but mainFigure1is schematic anatomy/render, not photograph. SupplementaryPDF is best opportunity for actual arrayphoto; currentlyunderinspection. Officialmanufacturerphotos not independentlycleared."
     },
     "BTSD-PNI-0009-03": {
       "title": "Microchannel-based regenerative scaffold interface (Srinivasan et al., 2015)",
@@ -808,7 +813,7 @@
       "sourceUrl": "https://www.neuroxess.com/news/guoneishoukuannaohukejiziyanyingmoxiazhirushirouxingnaojijiekoujinrulusetongdao/",
       "candidateAssetUrl": null,
       "license": null,
-      "notes": "No current source review recorded."
+      "notes": "Triple-Fbattery-equippedfullyimplanted system is separate from earlier256channelexternalconnectorclinicalsystem; no reusegrant and exactphysicalphoto verified."
     },
     "BTSD-STUP-0008": {
       "title": "StairMed WRS02 256-channel wireless BCI",
@@ -819,7 +824,7 @@
       "sourceUrl": "https://www.stairmed.com/",
       "candidateAssetUrl": null,
       "license": null,
-      "notes": "No current source review recorded."
+      "notes": "WRS02version requires separate exact product photograph. HNErodent research probes must not be relabeledWRS02. No editorial reusegrant verified in thisbatch."
     },
     "BTSD-STUP-0009": {
       "title": "Shenfu Jianxing brain-spine interface (Fudan)",
@@ -830,7 +835,7 @@
       "sourceUrl": "https://news.fudan.edu.cn/2025/1212/c235a147745/page.htm",
       "candidateAssetUrl": null,
       "license": null,
-      "notes": "No current source review recorded."
+      "notes": "OfficialFudanreportopened; creditedphotographyLiLingandcopyrightFudanpublicitydepartment; photos largelyresearcher/patientcontext ratherthanisolatedbrain/spineimplantedhardware. No reusablephoto grantfound."
     },
     "BTSD-STUP-0010": {
       "title": "Mindtrix cortical visual reconstruction system",
@@ -841,7 +846,7 @@
       "sourceUrl": "https://www.mindtrix.cn/technology",
       "candidateAssetUrl": null,
       "license": null,
-      "notes": "No current source review recorded."
+      "notes": "Companytechnology pagechecked alongsideprimaryCAScatalogsource; no exact implant photograph plus reusegrantfound. Do notsubstitutecompanypromotionalrender."
     },
     "BTSD-STUP-0011": {
       "title": "Zhiran ultra-100-channel flexible BCI (LEAP trial)",
@@ -852,51 +857,55 @@
       "sourceUrl": "https://www.bjtth.cn/Html/News/Articles/214568.html",
       "candidateAssetUrl": null,
       "license": null,
-      "notes": "No current source review recorded."
+      "notes": "PrimaryTiantanLEAPclinicaltriallaunchpageopened. Event/surgerymedia do not supply isolated implantarchitecturephotoorverifiedreusegrant. Xinhua/CFP photos are notpublicdomain merelybecausehospitalorgovernmentpostedthem."
     },
     "BTSD-ACAD-0087": {
       "title": "MERF 128-channel ultraflexible polyimide array (CEBSIT)",
       "order": 185,
       "url": "https://buildthesimulation.com/devices/185-merf-ultraflexible-nhp-array-cebsit/",
-      "status": "pending",
-      "researchStatus": "further_asset_search",
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10667845/",
-      "candidateAssetUrl": null,
-      "license": null,
-      "notes": "No current source review recorded."
+      "candidateAssetUrl": "https://europepmc.org/articles/PMC10667845?pdf=render",
+      "license": "CC BY 4.0",
+      "notes": "Published 2 source-credited views; version qualifications and per-image rights are recorded in the manifest. 2023 MERF two-shank research specimen. The optical and electron-microscopy views document different scales of the same published electrode design.",
+      "image": "/images/devices/btsd-acad-0087.webp"
     },
     "BTSD-ACAD-0088": {
       "title": "SIMIT mosquito-mouthpart bionic neural probe (128-channel flexible array)",
       "order": 186,
       "url": "https://buildthesimulation.com/devices/186-simit-mosquito-mouthpart-bionic-neural-probe/",
-      "status": "pending",
-      "researchStatus": "further_asset_search",
-      "sourceUrl": "https://www.nature.com/articles/s41378-023-00565-5",
-      "candidateAssetUrl": null,
-      "license": null,
-      "notes": "No current source review recorded."
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10336119/",
+      "candidateAssetUrl": "https://europepmc.org/articles/PMC10336119?pdf=render",
+      "license": "CC BY 4.0",
+      "notes": "Published 2 source-credited views; version qualifications and per-image rights are recorded in the manifest. 2023 four-shank biomimetic research system. The insertion shuttles, tactile sensor and external PCB are distinguished from the flexible implant electrodes.",
+      "image": "/images/devices/btsd-acad-0088.webp"
     },
     "BTSD-ACAD-0089": {
       "title": "SIMIT silk-enabled intraventricular interface (IVI)",
       "order": 187,
       "url": "https://buildthesimulation.com/devices/187-simit-silk-intraventricular-interface/",
-      "status": "pending",
-      "researchStatus": "further_asset_search",
-      "sourceUrl": "https://www.nature.com/articles/s41467-025-64397-9",
-      "candidateAssetUrl": null,
-      "license": null,
-      "notes": "No current source review recorded."
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12549829/",
+      "candidateAssetUrl": "https://europepmc.org/articles/PMC12549829?pdf=render",
+      "license": "CC BY 4.0",
+      "notes": "Published 2 source-credited views; version qualifications and per-image rights are recorded in the manifest. 2025 silk-enabled intraventricular-interface prototype. The unfolded electrode and the catheter delivery assembly are shown separately.",
+      "image": "/images/devices/btsd-acad-0089.webp"
     },
     "BTSD-ACAD-0090": {
       "title": "SIMIT 256-channel high-density micro-ECoG (64 electrodes/cm2)",
       "order": 188,
       "url": "https://buildthesimulation.com/devices/188-simit-256-channel-high-density-uecog/",
-      "status": "pending",
-      "researchStatus": "further_asset_search",
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12677598/",
-      "candidateAssetUrl": null,
-      "license": null,
-      "notes": "No current source review recorded."
+      "candidateAssetUrl": "https://europepmc.org/articles/PMC12677598?pdf=render",
+      "license": "CC BY 4.0",
+      "notes": "Published 1 source-credited view; version qualifications and per-image rights are recorded in the manifest. 256-channel SIMIT specimen from the 2025 motor-decoding study. This is separate from NeuroXess hardware.",
+      "image": "/images/devices/btsd-acad-0090.webp"
     },
     "BTSD-PNI-0010": {
       "title": "RPNI with implanted bipolar EMG electrodes (Vu 2023 configuration)",
@@ -918,7 +927,7 @@
       "sourceUrl": "https://www.biorxiv.org/content/10.1101/2024.11.22.624907v1",
       "candidateAssetUrl": "https://science.xyz/papers/science-biohybrid-microwell-manuscript.pdf",
       "license": null,
-      "notes": "No current source review recorded."
+      "notes": "Author-hosted full manuscript downloaded, but authoritative bioRxivAPI license fieldcc_no for2024preprint, notCC grant. Fig1physical scaffold microscopy promising after permission."
     },
     "BTSD-IMBCI-00SCBH-02": {
       "title": "Science neuronal-embedded electronic biohybrid interface (architecture concept)",
@@ -929,7 +938,7 @@
       "sourceUrl": "https://science.xyz/news/biohybrid-neural-interfaces/",
       "candidateAssetUrl": null,
       "license": null,
-      "notes": "No current source review recorded."
+      "notes": "Catalog explicitly architecture concept rather than measured physical product. Public illustration not a photograph, and the separate microwell device must not be substituted."
     },
     "BTSD-ACAD-0001": {
       "title": "Neural dust (ultrasonic backscatter mote)",
@@ -946,23 +955,25 @@
       "title": "Syringe-injectable mesh electronics",
       "order": 23,
       "url": "https://buildthesimulation.com/devices/23-syringe-injectable-mesh-electronics/",
-      "status": "pending",
-      "researchStatus": "pending_license",
-      "sourceUrl": "https://www.nature.com/articles/nnano.2015.115",
-      "candidateAssetUrl": null,
-      "license": null,
-      "notes": "No broad reuse grant was verified for the 2015 Nature manuscript. The 2018 JoVE and 2017 high-channel mesh candidates are NC-ND; do not crop them."
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6126522/",
+      "candidateAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6126522/figure/F3/",
+      "license": "CC BY-NC-ND 3.0",
+      "notes": "Published 1 source-credited view; version qualifications and per-image rights are recorded in the manifest. Specimens from the 2018 fabrication protocol for the mesh-electronics platform; not claimed to be the exact specimens of the original 2015 paper.",
+      "image": "/images/devices/btsd-acad-0002.jpg"
     },
     "BTSD-ACAD-0003": {
       "title": "NeuroGrid (PEDOT:PSS surface array)",
       "order": 24,
       "url": "https://buildthesimulation.com/devices/24-neurogrid-pedot-pss-surface-array/",
-      "status": "pending",
-      "researchStatus": "pending_license",
-      "sourceUrl": "https://www.nature.com/articles/nn.3905",
-      "candidateAssetUrl": null,
-      "license": null,
-      "notes": "The original 2015 NeuroGrid Nature author manuscript permits academic viewing/research, not broadly licensed image redistribution."
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5569954/",
+      "candidateAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5569954/figure/F1/",
+      "license": "CC BY-NC 4.0",
+      "notes": "Published 3 source-credited views; version qualifications and per-image rights are recorded in the manifest. 240-channel human intraoperative NeuroGrid (2016); distinct from the earlier 2015 rodent configuration.",
+      "image": "/images/devices/btsd-acad-0003.webp"
     },
     "BTSD-ACAD-0004": {
       "title": "Neurograins (wireless microimplant network)",
@@ -1091,12 +1102,13 @@
       "title": "Argus II retinal prosthesis",
       "order": 38,
       "url": "https://buildthesimulation.com/devices/38-argus-ii-retinal-prosthesis/",
-      "status": "pending",
-      "researchStatus": "permission-pending",
-      "sourceUrl": "https://www.cortigent.com/",
-      "candidateAssetUrl": null,
-      "license": null,
-      "notes": "Legacy ArgusII record cross-checked against the clinical ArgusII photo audit. Official product imagery found, but source reuse grant and exact historic hardware generation not verified; no publication."
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/",
+      "candidateAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/figure/fig1/",
+      "license": "CC BY-NC-ND 4.0",
+      "notes": "Published 1 source-credited view; version qualifications and per-image rights are recorded in the manifest. Argus II hardware illustrated in the 2016 five-year clinical-trial report; not a new-generation Cortigent implant.",
+      "image": "/images/devices/btsd-acad-0017.jpg"
     },
     "BTSD-ACAD-0020": {
       "title": "NEO wireless epidural BCI (Neuracle, Tsinghua)",
@@ -1107,18 +1119,19 @@
       "sourceUrl": "https://www.medrxiv.org/content/10.1101/2024.09.05.24313041v2.full",
       "candidateAssetUrl": null,
       "license": null,
-      "notes": "No current source review recorded."
+      "notes": "OfficialmedRxivAPI version2+licensescc_by_nc_nd. Figure1b contains NEOhardware but mixed figure cropping is not cleared. Full figure could be linked unadapted, not ideal productgallery."
     },
     "BTSD-ACAD-0021": {
       "title": "Precision Layer 7 Cortical Interface",
       "order": 42,
       "url": "https://buildthesimulation.com/devices/42-precision-layer-7-cortical-interface/",
-      "status": "pending",
-      "researchStatus": "permission_required",
-      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13278958/",
-      "candidateAssetUrl": null,
-      "license": null,
-      "notes": "No current source review recorded."
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12884823/",
+      "candidateAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12884823/figure/fig2/",
+      "license": "CC BY-NC-ND 4.0",
+      "notes": "Published 1 source-credited view; version qualifications and per-image rights are recorded in the manifest. 1024-electrode array documented in the 2026 illustrative case. The conventional strip is shown for comparison, not as part of Layer 7.",
+      "image": "/images/devices/btsd-acad-0021.jpg"
     },
     "BTSD-ACAD-0022": {
       "title": "Neuralink Blindsight",
@@ -1129,7 +1142,7 @@
       "sourceUrl": "https://neuralink.com/updates/neuralink-receives-breakthrough-device-designation-for-blindsight/",
       "candidateAssetUrl": null,
       "license": null,
-      "notes": "No current source review recorded."
+      "notes": "No verified actualBlindsightdevicephoto distinctfromN1. Officialsiteprohibitsrepublication; do not useN1pictureasBlindsight."
     },
     "BTSD-ACAD-0024": {
       "title": "Beinao-1 (CIBR, NeuCyber)",
@@ -1140,7 +1153,7 @@
       "sourceUrl": "https://en.cibr.ac.cn/detail/cibrNewsnews/c0370bcc7cb94c4a8c980f38f9bf16c0",
       "candidateAssetUrl": null,
       "license": null,
-      "notes": "No current source review recorded."
+      "notes": "Official CIBR2026clinical news verified, footerAll rights reserved. Getty/CFP productdisplay photos also require paidlicense. No open photograph grant found."
     },
     "BTSD-ACAD-0034": {
       "title": "Auditory brainstem implant (ABI)",
@@ -1241,7 +1254,7 @@
       "sourceUrl": "https://www.nature.com/articles/s41551-022-00941-y",
       "candidateAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41551-022-00941-y/MediaObjects/41551_2022_941_Fig1_HTML.png",
       "license": "Publisher exclusive rights; no open image-reuse grant verified",
-      "notes": "Publisher Rights and permissions states an exclusive publishing agreement. Extended Data Figure 3 identifies actual ready-to-implant NET/FPC assembly photographs, but a public figure is not itself a reuse license.",
+      "notes": "Targeted follow-up searched the original modular NET DOI and attempted the publisher source. Publisher retrieval is blocked and no separately licensed original hardware photo was found. Preserve prior exclusive-rights status; original2017 NET photo does not identify the2022 modular array.",
       "followUp": "Targeted follow-up searched the original modular NET DOI and attempted the publisher source. Publisher retrieval is blocked and no separately licensed original hardware photo was found. Preserve prior exclusive-rights status; original2017 NET photo does not identify the2022 modular array."
     },
     "BTSD-ACAD-0050": {
@@ -1249,36 +1262,38 @@
       "order": 73,
       "url": "https://buildthesimulation.com/devices/73-bisc-wireless-subdural-cmos-array/",
       "status": "pending",
-      "researchStatus": "license-pending",
-      "sourceUrl": "https://www.nature.com/articles/s41928-025-01509-9",
-      "candidateAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41928-025-01509-9/MediaObjects/41928_2025_1509_Fig1_HTML.png",
-      "license": "Publisher exclusive rights; no open image-reuse grant verified",
-      "notes": "Publisher Rights and permissions states exclusive rights. Figure 1 covers the BISC implant and relay station; no permission allowing site republication was identified.",
+      "researchStatus": "press image identified; retrieval pending",
+      "sourceUrl": "https://www.eurekalert.org/multimedia/1105871",
+      "candidateAssetUrl": "https://www.engineering.columbia.edu/sites/default/files/styles/masthead_news_16_9/public/2025-12/BISC%20thumb%2001.jpg?h=5f5f1d84&itok=qDYjM4be",
+      "license": "Institutional press-image permission; attribution required",
+      "notes": "2025 Columbia BISC press photograph identified and credited to Jane Nisselson; EurekAlert lists Original content with Attribution rights. Original photo download returned HTTP 403, so the candidate is not published. Earlier NC-ND Figure 1 can be displayed only intact and is a mixed schematic/plot figure, not the desired clean lead image.",
       "followUp": "Checked the new PMC13327737 published record (Europe PMC XML unavailable HTTP500) and the authors' preprint PMC11118429. The latter fullTextXML explicitly grants CC BY-NC-ND 4.0; its whole Figure 1 includes schematics/charts, so no cropped hardware photograph is cleared."
     },
     "BTSD-ACAD-0051": {
       "title": "PtNRGrid platinum-nanorod surface arrays",
       "order": 74,
       "url": "https://buildthesimulation.com/devices/74-ptnrgrid-platinum-nanorod-surface-arrays/",
-      "status": "pending",
-      "researchStatus": "license-pending",
-      "sourceUrl": "https://www.science.org/doi/10.1126/scitranslmed.abj1441",
-      "candidateAssetUrl": null,
-      "license": "No unrestricted image-reuse license verified",
-      "notes": "The primary Science Translational Medicine paper and its PMC author manuscript were identified; no CC BY/CC0 or explicit photo permission was verified. The NIH news item also carries externally sourced hardware images and cannot be assumed to be public-domain government photography.",
-      "followUp": "Rechecked primary PMC9650779: web CAPTCHA, official Europe PMC XML HTTP500. NIH news image is credited externally, and open review reproductions explicitly say with permission; neither establishes a transferable photo license."
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
+      "sourceUrl": "https://www.eurekalert.org/multimedia/877989",
+      "candidateAssetUrl": "https://www.eurekalert.org/multimedia/877989",
+      "license": "Institutional press-image permission · credit required",
+      "notes": "Published 1 source-credited view; version qualifications and per-image rights are recorded in the manifest. Specimen from the 2022 multithousand-channel PtNRGrid announcement. The image does not identify the exact channel-count variant; this is not the later integrated iEEG microdisplay.",
+      "followUp": "Rechecked primary PMC9650779: web CAPTCHA, official Europe PMC XML HTTP500. NIH news image is credited externally, and open review reproductions explicitly say with permission; neither establishes a transferable photo license.",
+      "image": "/images/devices/btsd-acad-0051.png"
     },
     "BTSD-ACAD-0052": {
       "title": "iEEG microdisplay with PtNR recording grid",
       "order": 76,
       "url": "https://buildthesimulation.com/devices/76-ieeg-microdisplay-ptnr-led-array/",
-      "status": "pending",
-      "researchStatus": "license-pending",
-      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11093107/",
-      "candidateAssetUrl": null,
-      "license": "Published study reserved rights; earlier preprint CC BY-NC-ND 4.0",
-      "notes": "Primary institutional publication record identifies ©2024 AAAS, all rights reserved, for Science Translational Medicine16eadj7257. Earlier PMC10370209 preprint is noncommercial/no-derivatives, not unrestricted reuse.",
-      "followUp": "Rechecked the earlier authors' preprint PMC10370209 XML: explicitly CC BY-NC-ND4.0. Figures contain device micrographs alongside drawings and animal experiments; no cropping permitted under current instruction. Published2024 PMC11093107 XML unavailable HTTP500."
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
+      "sourceUrl": "https://www.eurekalert.org/multimedia/1024315",
+      "candidateAssetUrl": "https://mediasvc.eurekalert.org/Api/v1/Multimedia/99d625ee-a439-46dc-bf50-ba5c4760d31f/Rendition/low-res/Content/Public",
+      "license": "Institutional press-image permission · credit required",
+      "notes": "Published 2 source-credited views; version qualifications and per-image rights are recorded in the manifest. Small-format specimen from the 2024 press release; the larger recording/display grid is a different size configuration.",
+      "followUp": "Rechecked the earlier authors' preprint PMC10370209 XML: explicitly CC BY-NC-ND4.0. Figures contain device micrographs alongside drawings and animal experiments; no cropping permitted under current instruction. Published2024 PMC11093107 XML unavailable HTTP500.",
+      "image": "/images/devices/btsd-acad-0052.jpg"
     },
     "BTSD-ACAD-0053": {
       "title": "Flexible neurochemical-release and recording probe (CMU and Pittsburgh)",
@@ -1313,7 +1328,7 @@
       "sourceUrl": "https://www.nature.com/articles/s41586-022-04615-2",
       "candidateAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-022-04615-2/MediaObjects/41586_2022_4615_Fig1_HTML.png",
       "license": "Authors under exclusive license to Springer Nature; no open photo grant verified",
-      "notes": "Publisher page contains exclusive-license copyright metadata and no Creative Commons photo-reuse statement. Figure 1 depicts NeuroString for brain/gut sensing; the full figure is not approved for site use.",
+      "notes": "Located official Stanford Bio-X2022 press story and NeuroString tech transfer page. No explicit image reuse grant established. Official Europe PMC9210986 fullTextXML unavailable HTTP500; retain original reserved-rights status.",
       "followUp": "Located official Stanford Bio-X2022 press story and NeuroString tech transfer page. No explicit image reuse grant established. Official Europe PMC9210986 fullTextXML unavailable HTTP500; retain original reserved-rights status."
     },
     "BTSD-ACAD-0056": {
@@ -1321,11 +1336,11 @@
       "order": 83,
       "url": "https://buildthesimulation.com/devices/83-neuropixels-ultra-high-density-probe/",
       "status": "pending",
-      "researchStatus": "license-pending",
+      "researchStatus": "whole figure licensed; clearer standalone image pending",
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12981004/",
       "candidateAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/25e0/12981004/6f02148b34e4/nihms-2127598-f0001.jpg",
       "license": "CC BY-NC-ND 4.0",
-      "notes": "Official Europe PMC fullTextXML for PMC12981004 explicitly licenses the 2025 Neuron article as noncommercial and no-derivatives. This does not support unrestricted republication/cropping in the website workflow.",
+      "notes": "Primary 2025 Neuron XML and original PDF declare CC BY-NC-ND 4.0. Whole Figure 1 is available and can be copied intact within the confirmed noncommercial scope; its probe-tip SEM cannot be cropped under that grant. The full figure is dominated by diagrams and plots, so a clearer standalone implant image remains pending.",
       "followUp": "Rechecked official Europe PMC12981004 fullTextXML: still explicitly CC BY-NC-ND4.0. Figure1A contains a genuine shank/contact SEM alongside diagrams, but cropping the photo is not permitted by the task. Primary author-hosted PDF also displays NC-ND terms."
     },
     "BTSD-ACAD-0057": {
@@ -1349,7 +1364,7 @@
       "sourceUrl": "https://www.science.org/doi/10.1126/science.abf4588",
       "candidateAssetUrl": null,
       "license": "No unrestricted published-image license verified; preprint CC BY-NC-ND 4.0",
-      "notes": "Primary bioRxiv preprint declares CC BY-NC-ND4.0. Primary PubMed record33859006 lists AAAS publication copyright. An unrestricted license for a photograph from the published Science paper/PMC8244810 was not verified.",
+      "notes": "Rechecked primary published PMC8244810; web retrieval hits CAPTCHA and official Europe PMC XML returned HTTP500. Earlier preprint remains CC BY-NC-ND, so the owner’s noncommercial status does not clear cropped photo reuse.",
       "followUp": "Rechecked primary published PMC8244810; web retrieval hits CAPTCHA and official Europe PMC XML returned HTTP500. Earlier preprint remains CC BY-NC-ND, so the owner’s noncommercial status does not clear cropped photo reuse."
     },
     "BTSD-ACAD-0059": {
@@ -1381,13 +1396,14 @@
       "title": "Argo microwire-CMOS recording system",
       "order": 94,
       "url": "https://buildthesimulation.com/devices/94-argo-microwire-cmos-recording-system/",
-      "status": "pending",
-      "researchStatus": "license-pending",
-      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8607496/",
-      "candidateAssetUrl": null,
-      "license": "No unrestricted photo-reuse license verified",
-      "notes": "Primary Journal of Neural Engineering article and PMC author manuscript were identified. Publisher access was blocked for retrieval; official Europe PMC did not supply an OA XML. No CC BY or explicit reprint grant was verified.",
-      "followUp": "Rechecked official Europe PMC8607496 fullTextXML; HTTP500. No independently licensed Argo implanted microwire assembly found. CHIME and Connexus images cannot be relabeled as Argo."
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
+      "sourceUrl": "https://doi.org/10.1101/2020.07.17.209403",
+      "candidateAssetUrl": "https://doi.org/10.1101/2020.07.17.209403",
+      "license": "CC BY-NC-ND 4.0",
+      "notes": "Published 1 source-credited view; version qualifications and per-image rights are recorded in the manifest. 2020 Argo research prototype, as shown in the original preprint. This is not Paradromics’ later Connexus cortical module.",
+      "followUp": "Rechecked official Europe PMC8607496 fullTextXML; HTTP500. No independently licensed Argo implanted microwire assembly found. CHIME and Connexus images cannot be relabeled as Argo.",
+      "image": "/images/devices/btsd-acad-0061.jpg"
     },
     "BTSD-ACAD-0062": {
       "title": "Stanford microwire-CMOS bundles, 2020",
@@ -1406,12 +1422,12 @@
       "order": 98,
       "url": "https://buildthesimulation.com/devices/98-stimnet-ultraflexible-stimulation-thread/",
       "status": "pending",
-      "researchStatus": "license-pending",
+      "researchStatus": "whole figure licensed; clearer standalone image pending",
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10592461/",
       "candidateAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/d67d/10592461/b030a952482b/nihms-1912774-f0002.jpg",
       "license": "CC BY-NC-ND 4.0",
-      "notes": "Official Europe PMC fullTextXML for Cell Reports DOI10.1016/j.celrep.2023.112554 explicitly declares NC-ND4.0. No extra photo permission was identified.",
+      "notes": "2023 Cell Reports article and its earlier preprint both declare CC BY-NC-ND 4.0. Whole Figure 1 is available intact, including a real meandering StimNET photo in panel D alongside simulations and plots. A clean photographic crop is not permitted by that grant. A 2026 Science Advances follow-up is CC BY-NC but shows neural imaging rather than a standalone device close-up.",
       "followUp": "Rechecked official Europe PMC10592461 fullTextXML: CC BY-NC-ND4.0. It specifically identifies the real meandering StimNET-in-water photo as Fig.1D, but entire figure also includes simulations/graphs; no cropped image cleared."
     }
   }
-    }
+}

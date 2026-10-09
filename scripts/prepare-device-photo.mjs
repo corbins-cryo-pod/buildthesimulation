@@ -6,18 +6,42 @@ import sharp from 'sharp';
 // Mechanical, reproducible extraction of a photographic panel. No generated
 // content, background removal, retouching, recoloring, or scale invention.
 // node scripts/prepare-device-photo.mjs SOURCE DEVICE_ID [CROP_JSON]
-const [input, deviceId, cropJson] = process.argv.slice(2);
+// Add --view=slug for another angle; --preserve-source copies an intact source.
+const args = process.argv.slice(2);
+const [input, deviceId, cropJson] = args.filter(arg => !arg.startsWith('--'));
+const preserveSource = args.includes('--preserve-source');
+const view = args.find(arg => arg.startsWith('--view='))?.slice(7);
+if (view && !/^[a-z0-9-]+$/.test(view)) throw new Error('Invalid view slug.');
 if (!input || !/^BTSD-[A-Z0-9-]+$/.test(deviceId ?? '')) {
   throw new Error('Expected an existing source image and a catalog device ID.');
 }
 const directory = path.resolve('public/images/devices');
 await fs.mkdir(directory, { recursive: true });
-const stem = deviceId.toLowerCase();
+const stem = `${deviceId.toLowerCase()}${view ? `-${view}` : ''}`;
 const full = path.join(directory, `${stem}.webp`);
 const thumbnail = path.join(directory, `${stem}-640.webp`);
 const bytes = await fs.readFile(input);
 const metadata = await sharp(bytes).metadata();
 const crop = cropJson ? JSON.parse(cropJson) : null;
+if (preserveSource) {
+  if (crop) throw new Error('An intact-source image cannot be cropped.');
+  const extensions = { jpeg: 'jpg', png: 'png', webp: 'webp' };
+  const extension = extensions[metadata.format];
+  if (!extension) throw new Error('Unsupported intact-source image format.');
+  const filename = `${stem}.${extension}`;
+  await fs.copyFile(input, path.join(directory, filename));
+  console.log(JSON.stringify({
+    src: `/images/devices/${filename}`,
+    thumbnail: `/images/devices/${filename}`,
+    width: metadata.width, height: metadata.height,
+    thumbnailWidth: metadata.width, thumbnailHeight: metadata.height,
+    sourceDimensions: { width: metadata.width, height: metadata.height },
+    crop: null, preserveSource: true,
+    sourceSha256: createHash('sha256').update(bytes).digest('hex'),
+    fullBytes: bytes.length,
+  }));
+  process.exit(0);
+}
 if (crop) {
   for (const value of Object.values(crop)) if (!Number.isInteger(value) || value < 0) throw new Error('Crop bounds must be positive integer pixels.');
   if (!crop.width || !crop.height || crop.left + crop.width > metadata.width || crop.top + crop.height > metadata.height) throw new Error('Crop exceeds source image bounds.');

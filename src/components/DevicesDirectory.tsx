@@ -247,7 +247,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
           <button type="button" aria-pressed={!photosOnly} onClick={() => setPhotosOnly(false)}>All interfaces</button>
           <button type="button" aria-pressed={photosOnly} onClick={() => setPhotosOnly(true)}>Photo gallery</button>
         </div>
-        <span class="photo-coverage">{photoCount} photographic records</span>
+        <span class="photo-coverage">{photoCount} pictured records</span>
       </div>}
       <div class="top">
         <label class="search">
@@ -324,12 +324,12 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
               return (
               <article key={family?.id ?? e.slug} class={`item familyCard ${pictured ? 'has-photo' : ''}`}>
                 {pictured && <figure class="catalog-photo">
-                  <a class="catalog-photo-image" href={`/devices/${pictured.slug}/`} aria-label={`View photograph and specifications of ${pictured.title}`}>
+                  <a class="catalog-photo-image" href={`/devices/${pictured.slug}/`} aria-label={`View images and specifications of ${pictured.title}`}>
                     <img src={pictured.photo.thumbnail} srcSet={pictured.photo.width > pictured.photo.thumbnailWidth ? `${pictured.photo.thumbnail} ${pictured.photo.thumbnailWidth}w, ${pictured.photo.src} ${pictured.photo.width}w` : undefined} sizes="(max-width: 900px) calc(100vw - 84px), 360px" width={pictured.photo.width} height={pictured.photo.height} loading="lazy" decoding="async" alt={pictured.photo.alt} />
                     <span class="photo-hover" aria-hidden="true">View the interface <span>↗</span></span>
                   </a>
                   <figcaption>
-                    <span>{pictured.photo.kind}</span>
+                    <span>{pictured.photo.kind}{pictured.photo.additionalViews?.length ? ` · ${pictured.photo.additionalViews.length + 1} views` : ''}</span>
                     <span class="photo-record">{pictured.device_id}</span>
                   </figcaption>
                   <p class="catalog-photo-caption">{pictured.photo.caption}</p>

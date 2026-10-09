@@ -7,7 +7,7 @@ import DeviceModelViewer from "../../components/DeviceModelViewer";
 import { getDeviceFamily } from "../../lib/device-families.js";
 import { getDeviceModel } from "../../lib/devices/catalog.js";
 import { getDevicePhoto } from "../../lib/device-photos.js";
-import DevicePhotograph from "../../components/DevicePhotograph.astro";
+import DevicePhotoGallery from "../../components/DevicePhotoGallery.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("designs");
@@ -45,7 +45,7 @@ const photo = getDevicePhoto(entry.data.device_id);
 
     </header>
 
-    {photo && <DevicePhotograph photo={photo} title={titleNoPrefix} deviceId={entry.data.device_id} />}
+    {photo && <DevicePhotoGallery photo={photo} title={titleNoPrefix} deviceId={entry.data.device_id} />}
 
     <section class="sheetControl" aria-label="Document control and evidence">
       <dl>

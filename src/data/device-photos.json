@@ -969,5 +969,737 @@
         "height": 337
       }
     }
+  },
+  "BTSD-0004": {
+    "src": "/images/devices/btsd-0004.webp",
+    "thumbnail": "/images/devices/btsd-0004-640.webp",
+    "width": 535,
+    "height": 267,
+    "thumbnailWidth": 535,
+    "thumbnailHeight": 267,
+    "sourceDimensions": {
+      "width": 535,
+      "height": 267
+    },
+    "crop": null,
+    "sourceSha256": "525f567130b7a30dd5701c45d2c03671a950581f1b289bfb7ae1621c4fcbcb44",
+    "kind": "Photograph",
+    "label": "Probe assembly",
+    "alt": "Neuropixels 1.0 probe fitted to a black experimental implant holder, with a red cap and a thin shank extending to the right.",
+    "caption": "Neuropixels 1.0 on the study’s custom implant platform; the recording shank extends to the right.",
+    "credit": "Luo et al., eLife (2020), Figure 2D",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7721443/",
+    "sourceAssetUrl": "https://europepmc.org/articles/PMC7721443?pdf=render",
+    "sourceLabel": "eLife · Figure 2D",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Original photographic panel extracted from the published PDF and re-encoded without upscaling or hardware retouching.",
+    "versionNote": "2020 Neuropixels 1.0 study specimen. The black implant holder is external mounting hardware, not part of the silicon probe.",
+    "sourceExtraction": {
+      "pdfPage": 8,
+      "pdfImageIndex": 5,
+      "sourceFigureDimensions": {
+        "width": 535,
+        "height": 267
+      }
+    },
+    "additionalViews": [
+      {
+        "src": "/images/devices/btsd-0004-tip.webp",
+        "thumbnail": "/images/devices/btsd-0004-tip-640.webp",
+        "width": 173,
+        "height": 338,
+        "thumbnailWidth": 173,
+        "thumbnailHeight": 338,
+        "sourceDimensions": {
+          "width": 4130,
+          "height": 2116
+        },
+        "crop": {
+          "left": 5,
+          "top": 68,
+          "width": 173,
+          "height": 338
+        },
+        "sourceSha256": "f767cacb75c822c3d91b91ea010edef23097bad6ce117c7c7d5ff21b078cdd7c",
+        "kind": "Source figure",
+        "label": "Probe tip",
+        "alt": "Published close-up of the Neuropixels probe tip and rectangular recording sites, with its original 20 micrometer scale bar.",
+        "caption": "Published probe-tip view and recording-site layout; 20 µm scale retained.",
+        "credit": "Liu et al., eNeuro (2021), Figure 2A",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8597948/",
+        "sourceAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8597948/figure/F2/",
+        "sourceLabel": "eNeuro · Figure 2A",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "changes": "Probe-tip inset cropped from Figure 2A and re-encoded without upscaling. Original scale retained; image type is not asserted to be microscopy.",
+        "versionNote": "Neuropixels 1.0 reference tip from the 2021 localization study, separate from the 2020 assembly photograph."
+      }
+    ]
+  },
+  "BTSD-PNI-0001": {
+    "src": "/images/devices/btsd-pni-0001.webp",
+    "thumbnail": "/images/devices/btsd-pni-0001-640.webp",
+    "width": 358,
+    "height": 256,
+    "thumbnailWidth": 358,
+    "thumbnailHeight": 256,
+    "sourceDimensions": {
+      "width": 358,
+      "height": 256
+    },
+    "crop": null,
+    "sourceSha256": "6d260388f7771e3082de9a8044f40a0c17b8a116eb884bf3f340eda3e9ee0892",
+    "kind": "Photograph",
+    "label": "Four-contact cuff",
+    "alt": "Photograph of a transparent self-curling spiral nerve cuff with four metallic stimulation contacts and a lead wire.",
+    "caption": "Standard self-sizing spiral nerve cuff, nominal 4 mm diameter, with four radial contacts.",
+    "credit": "Photo courtesy of Ardiem Medical, Inc.; Christie et al., Journal of NeuroEngineering and Rehabilitation (2017), Figure 1",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5504677/",
+    "sourceAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/11c4/5504677/82f036b77800/12984_2017_285_Fig1_HTML.jpg",
+    "sourceLabel": "JNER · Figure 1",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Whole published photograph re-encoded without cropping or upscaling. Original Ardiem attribution retained.",
+    "versionNote": "2017 standard four-contact family specimen. This photograph does not identify a particular participant’s implanted cuff or establish the geometry of every cuff diameter."
+  },
+  "BTSD-PNI-0003": {
+    "src": "/images/devices/btsd-pni-0003.webp",
+    "thumbnail": "/images/devices/btsd-pni-0003-640.webp",
+    "width": 358,
+    "height": 256,
+    "thumbnailWidth": 358,
+    "thumbnailHeight": 256,
+    "sourceDimensions": {
+      "width": 358,
+      "height": 256
+    },
+    "crop": null,
+    "sourceSha256": "6d260388f7771e3082de9a8044f40a0c17b8a116eb884bf3f340eda3e9ee0892",
+    "kind": "Photograph",
+    "label": "Four-contact cuff",
+    "alt": "Photograph of a transparent self-curling spiral nerve cuff with four metallic stimulation contacts and a lead wire.",
+    "caption": "Standard self-sizing spiral nerve cuff, nominal 4 mm diameter, with four radial contacts.",
+    "credit": "Photo courtesy of Ardiem Medical, Inc.; Christie et al., Journal of NeuroEngineering and Rehabilitation (2017), Figure 1",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5504677/",
+    "sourceAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/11c4/5504677/82f036b77800/12984_2017_285_Fig1_HTML.jpg",
+    "sourceLabel": "JNER · Figure 1",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Whole published photograph re-encoded without cropping or upscaling. Original Ardiem attribution retained.",
+    "versionNote": "2017 standard four-contact family specimen. This photograph does not identify a particular participant’s implanted cuff or establish the geometry of every cuff diameter."
+  },
+  "BTSD-ACAD-0002": {
+    "src": "/images/devices/btsd-acad-0002.jpg",
+    "thumbnail": "/images/devices/btsd-acad-0002.jpg",
+    "width": 700,
+    "height": 220,
+    "thumbnailWidth": 700,
+    "thumbnailHeight": 220,
+    "sourceDimensions": {
+      "width": 700,
+      "height": 220
+    },
+    "crop": null,
+    "preserveSource": true,
+    "sourceSha256": "3e90b40353507c6d9d3435c7806c4131d32acef71bf8f568fe567ef508b796a1",
+    "kind": "Source figure",
+    "label": "Fabricated meshes",
+    "alt": "Complete source figure showing fabricated syringe-injectable mesh electronics, a wafer held in a hand, and magnified mesh structures and connection pads.",
+    "caption": "Fabricated mesh electronics and their connection pads, shown across the complete photographic Figure 3.",
+    "credit": "Schuhmann et al., Journal of Visualized Experiments (2018), Figure 3",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6126522/",
+    "sourceAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6126522/figure/F3/",
+    "sourceLabel": "JoVE · complete Figure 3",
+    "license": "CC BY-NC-ND 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc-nd/3.0/",
+    "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
+    "versionNote": "Specimens from the 2018 fabrication protocol for the mesh-electronics platform; not claimed to be the exact specimens of the original 2015 paper."
+  },
+  "BTSD-ACAD-0003": {
+    "src": "/images/devices/btsd-acad-0003.webp",
+    "thumbnail": "/images/devices/btsd-acad-0003-640.webp",
+    "width": 440,
+    "height": 380,
+    "thumbnailWidth": 440,
+    "thumbnailHeight": 380,
+    "sourceDimensions": {
+      "width": 660,
+      "height": 738
+    },
+    "crop": {
+      "left": 0,
+      "top": 0,
+      "width": 440,
+      "height": 380
+    },
+    "sourceSha256": "ccef81a7809cb08d43c871ecc1ce56b935ebf224510d633dce2d45a6131f17e8",
+    "kind": "Optical micrograph",
+    "credit": "Khodagholy et al., Science Advances (2016), Figure 1",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5569954/",
+    "sourceAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5569954/figure/F1/",
+    "sourceLabel": "Science Advances · Figure 1A",
+    "license": "CC BY-NC 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "changes": "Photographic panel extracted from the published source; resized and re-encoded. Original scale bars and annotations retained; no hardware retouching.",
+    "versionNote": "240-channel human intraoperative NeuroGrid (2016); distinct from the earlier 2015 rodent configuration.",
+    "label": "Array pattern",
+    "alt": "Optical micrograph of the 240-channel NeuroGrid with long fine traces joining repeated tetrode groups.",
+    "caption": "240-channel NeuroGrid surface array; 1 mm scale retained.",
+    "additionalViews": [
+      {
+        "src": "/images/devices/btsd-acad-0003-groups.webp",
+        "thumbnail": "/images/devices/btsd-acad-0003-groups-640.webp",
+        "width": 216,
+        "height": 214,
+        "thumbnailWidth": 216,
+        "thumbnailHeight": 214,
+        "sourceDimensions": {
+          "width": 660,
+          "height": 738
+        },
+        "crop": {
+          "left": 444,
+          "top": 0,
+          "width": 216,
+          "height": 214
+        },
+        "sourceSha256": "ccef81a7809cb08d43c871ecc1ce56b935ebf224510d633dce2d45a6131f17e8",
+        "kind": "Optical micrograph",
+        "credit": "Khodagholy et al., Science Advances (2016), Figure 1",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5569954/",
+        "sourceAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5569954/figure/F1/",
+        "sourceLabel": "Science Advances · Figure 1B",
+        "license": "CC BY-NC 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
+        "changes": "Photographic panel extracted from the published source; resized and re-encoded. Original scale bars and annotations retained; no hardware retouching.",
+        "versionNote": "240-channel human intraoperative NeuroGrid (2016); distinct from the earlier 2015 rodent configuration.",
+        "label": "Electrode groups",
+        "alt": "Magnified NeuroGrid traces and tetrode groups, with a perforation marked in yellow.",
+        "caption": "Tetrode groups and the perforations between them; 1 mm scale retained."
+      },
+      {
+        "src": "/images/devices/btsd-acad-0003-tetrode.webp",
+        "thumbnail": "/images/devices/btsd-acad-0003-tetrode-640.webp",
+        "width": 216,
+        "height": 162,
+        "thumbnailWidth": 216,
+        "thumbnailHeight": 162,
+        "sourceDimensions": {
+          "width": 660,
+          "height": 738
+        },
+        "crop": {
+          "left": 444,
+          "top": 218,
+          "width": 216,
+          "height": 162
+        },
+        "sourceSha256": "ccef81a7809cb08d43c871ecc1ce56b935ebf224510d633dce2d45a6131f17e8",
+        "kind": "Optical micrograph",
+        "credit": "Khodagholy et al., Science Advances (2016), Figure 1",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5569954/",
+        "sourceAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5569954/figure/F1/",
+        "sourceLabel": "Science Advances · Figure 1C",
+        "license": "CC BY-NC 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
+        "changes": "Photographic panel extracted from the published source; resized and re-encoded. Original scale bars and annotations retained; no hardware retouching.",
+        "versionNote": "240-channel human intraoperative NeuroGrid (2016); distinct from the earlier 2015 rodent configuration.",
+        "label": "Tetrode detail",
+        "alt": "Optical close-up of four conducting-polymer NeuroGrid electrode contacts and their traces.",
+        "caption": "Conducting-polymer tetrode contacts; 20 µm scale retained."
+      }
+    ]
+  },
+  "BTSD-ACAD-0017": {
+    "src": "/images/devices/btsd-acad-0017.jpg",
+    "thumbnail": "/images/devices/btsd-acad-0017.jpg",
+    "width": 627,
+    "height": 750,
+    "thumbnailWidth": 627,
+    "thumbnailHeight": 750,
+    "sourceDimensions": {
+      "width": 627,
+      "height": 750
+    },
+    "crop": null,
+    "preserveSource": true,
+    "sourceSha256": "eac47e1d556efc8748721b84140fb2748379c10338320c9544f93b7bec712fe4",
+    "kind": "Source figure",
+    "label": "Implant and controller",
+    "alt": "Complete published figure of the Argus II retinal implant with its curved 60-electrode array, and the external camera glasses and video-processing unit.",
+    "caption": "Argus II implant and retinal electrode array (A), with its external camera glasses and processing unit (B).",
+    "credit": "da Cruz et al., Ophthalmology (2016), Figure 1",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/",
+    "sourceAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/figure/fig1/",
+    "sourceLabel": "Ophthalmology · complete Figure 1",
+    "license": "CC BY-NC-ND 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
+    "versionNote": "Argus II hardware illustrated in the 2016 five-year clinical-trial report; not a new-generation Cortigent implant."
+  },
+  "BTSD-FDA-0016": {
+    "src": "/images/devices/btsd-fda-0016.jpg",
+    "thumbnail": "/images/devices/btsd-fda-0016.jpg",
+    "width": 627,
+    "height": 750,
+    "thumbnailWidth": 627,
+    "thumbnailHeight": 750,
+    "sourceDimensions": {
+      "width": 627,
+      "height": 750
+    },
+    "crop": null,
+    "preserveSource": true,
+    "sourceSha256": "eac47e1d556efc8748721b84140fb2748379c10338320c9544f93b7bec712fe4",
+    "kind": "Source figure",
+    "label": "Implant and controller",
+    "alt": "Complete published figure of the Argus II retinal implant with its curved 60-electrode array, and the external camera glasses and video-processing unit.",
+    "caption": "Argus II implant and retinal electrode array (A), with its external camera glasses and processing unit (B).",
+    "credit": "da Cruz et al., Ophthalmology (2016), Figure 1",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/",
+    "sourceAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/figure/fig1/",
+    "sourceLabel": "Ophthalmology · complete Figure 1",
+    "license": "CC BY-NC-ND 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
+    "versionNote": "Argus II hardware illustrated in the 2016 five-year clinical-trial report; not a new-generation Cortigent implant."
+  },
+  "BTSD-ACAD-0021": {
+    "src": "/images/devices/btsd-acad-0021.jpg",
+    "thumbnail": "/images/devices/btsd-acad-0021.jpg",
+    "width": 666,
+    "height": 948,
+    "thumbnailWidth": 666,
+    "thumbnailHeight": 948,
+    "sourceDimensions": {
+      "width": 666,
+      "height": 948
+    },
+    "crop": null,
+    "preserveSource": true,
+    "sourceSha256": "e3705bde14a7e043f72ca71a4935cbcdcc3f945f0ac7e682e93480c6186ee473",
+    "kind": "Photograph",
+    "label": "Array comparison",
+    "alt": "Photograph comparing a conventional four-contact ECoG strip on the left with the densely patterned Precision Layer 7 cortical array on the right.",
+    "caption": "Precision Layer 7 array (right) beside a conventional ECoG strip (left).",
+    "credit": "Cummins et al., JNS Case Lessons (2026), Figure 2",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12884823/",
+    "sourceAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12884823/figure/fig2/",
+    "sourceLabel": "JNS Case Lessons · Figure 2",
+    "license": "CC BY-NC-ND 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
+    "versionNote": "1024-electrode array documented in the 2026 illustrative case. The conventional strip is shown for comparison, not as part of Layer 7."
+  },
+  "BTSD-ACAD-0051": {
+    "src": "/images/devices/btsd-acad-0051.png",
+    "thumbnail": "/images/devices/btsd-acad-0051.png",
+    "width": 700,
+    "height": 467,
+    "thumbnailWidth": 700,
+    "thumbnailHeight": 467,
+    "sourceDimensions": {
+      "width": 700,
+      "height": 467
+    },
+    "crop": null,
+    "preserveSource": true,
+    "sourceSha256": "81659e87a6fce25adc6d3681c1a256bfff284831ea22d39216c9675fead512c5",
+    "kind": "Photograph",
+    "label": "Flexible cortical grid",
+    "alt": "Photograph of a thin golden PtNRGrid cortical sensor sheet bent between two fingers, with dense recording contacts and fine connecting traces.",
+    "caption": "A flexible PtNRGrid cortical recording sheet held between fingers.",
+    "credit": "David Baillot / UC San Diego Jacobs School of Engineering",
+    "sourceUrl": "https://www.eurekalert.org/multimedia/877989",
+    "sourceAssetUrl": "https://www.eurekalert.org/multimedia/877989",
+    "sourceLabel": "UC San Diego · official press photograph",
+    "license": "Institutional press-image permission · credit required",
+    "licenseUrl": "https://www.eurekalert.org/multimedia/877989",
+    "reusePolicyUrl": "https://www.eurekalert.org/releaseguidelines",
+    "licenseEvidence": "Official multimedia page identifies Original content and the sole restriction: credit David Baillot / UC San Diego Jacobs School of Engineering. EurekAlert requires uploaded media to be cleared for third-party use.",
+    "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
+    "versionNote": "Specimen from the 2022 multithousand-channel PtNRGrid announcement. The image does not identify the exact channel-count variant; this is not the later integrated iEEG microdisplay."
+  },
+  "BTSD-ACAD-0052": {
+    "src": "/images/devices/btsd-acad-0052.jpg",
+    "thumbnail": "/images/devices/btsd-acad-0052.jpg",
+    "width": 700,
+    "height": 437,
+    "thumbnailWidth": 700,
+    "thumbnailHeight": 437,
+    "sourceDimensions": {
+      "width": 700,
+      "height": 437
+    },
+    "crop": null,
+    "preserveSource": true,
+    "sourceSha256": "815bf521b93a85e1c35bfaf1dd8c14e13d9fe2a8032be6f0ddb210f6106e3301",
+    "kind": "Optical micrograph",
+    "label": "MicroLED close-up",
+    "alt": "Close-up of the physical iEEG microdisplay showing rows of dark electrode contacts, fine gold traces, and lit blue-violet microLEDs.",
+    "caption": "Physical contacts, traces and illuminated microLEDs of the small-format iEEG microdisplay.",
+    "credit": "University of California San Diego",
+    "sourceUrl": "https://www.eurekalert.org/multimedia/1024315",
+    "sourceAssetUrl": "https://mediasvc.eurekalert.org/Api/v1/Multimedia/99d625ee-a439-46dc-bf50-ba5c4760d31f/Rendition/low-res/Content/Public",
+    "sourceLabel": "UC San Diego · microdisplay close-up",
+    "license": "Institutional press-image permission · credit required",
+    "licenseUrl": "https://www.eurekalert.org/multimedia/1024315",
+    "reusePolicyUrl": "https://www.eurekalert.org/releaseguidelines",
+    "licenseEvidence": "UC San Diego multimedia page: Original content; Usage Restrictions: Please credit. EurekAlert requires third-party reuse clearance.",
+    "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
+    "versionNote": "Small-format specimen from the 2024 press release; the larger recording/display grid is a different size configuration.",
+    "additionalViews": [
+      {
+        "src": "/images/devices/btsd-acad-0052-study.jpg",
+        "thumbnail": "/images/devices/btsd-acad-0052-study.jpg",
+        "width": 1430,
+        "height": 1066,
+        "thumbnailWidth": 1430,
+        "thumbnailHeight": 1066,
+        "sourceDimensions": {
+          "width": 1430,
+          "height": 1066
+        },
+        "crop": null,
+        "preserveSource": true,
+        "sourceSha256": "ea81561a221441d1b035a82168a8a5920a0ec2dbeddaa1b0ac427517c1dc3d91",
+        "kind": "Source figure",
+        "label": "Whole-device study",
+        "alt": "Complete published source figure with iEEG microdisplay device photographs and microscopy, an operating concept illustration, and LED characterization plots.",
+        "caption": "Complete study figure: physical grids in panels B–D, alongside the operating concept and characterization plots.",
+        "credit": "Tchoe et al., bioRxiv preprint (2023), Figure 1",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10370209/",
+        "sourceAssetUrl": "https://europepmc.org/articles/PMC10370209?pdf=render",
+        "sourceLabel": "bioRxiv · complete Figure 1",
+        "license": "CC BY-NC-ND 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+        "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
+        "versionNote": "2023 preprint views include both the larger and smaller experimental grids. The full figure is retained to preserve its no-derivatives license."
+      }
+    ]
+  },
+  "BTSD-ACAD-0061": {
+    "src": "/images/devices/btsd-acad-0061.jpg",
+    "thumbnail": "/images/devices/btsd-acad-0061.jpg",
+    "width": 570,
+    "height": 1019,
+    "thumbnailWidth": 570,
+    "thumbnailHeight": 1019,
+    "sourceDimensions": {
+      "width": 570,
+      "height": 1019
+    },
+    "crop": null,
+    "preserveSource": true,
+    "sourceSha256": "1d17791c8064418939f49fd3a75d2618a9e5f0991d9b28f089fd36832af280c8",
+    "kind": "Source figure",
+    "label": "Tip to bundle",
+    "alt": "Complete three-panel Argo source figure showing an exposed microwire tip, the array of microwire tips under electron microscopy, and the assembled electrode bundle above a nut.",
+    "caption": "Argo microwire tip (A), electrode-tip array (B), and assembled bundle (C); the original scale bars are retained.",
+    "credit": "Sahasrabuddhe et al., bioRxiv preprint (2020), Figure 2",
+    "sourceUrl": "https://doi.org/10.1101/2020.07.17.209403",
+    "sourceAssetUrl": "https://doi.org/10.1101/2020.07.17.209403",
+    "sourceLabel": "bioRxiv · complete Figure 2",
+    "license": "CC BY-NC-ND 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
+    "versionNote": "2020 Argo research prototype, as shown in the original preprint. This is not Paradromics’ later Connexus cortical module."
+  },
+  "BTSD-ACAD-0081": {
+    "src": "/images/devices/btsd-acad-0081.jpg",
+    "thumbnail": "/images/devices/btsd-acad-0081.jpg",
+    "width": 700,
+    "height": 278,
+    "thumbnailWidth": 700,
+    "thumbnailHeight": 278,
+    "sourceDimensions": {
+      "width": 700,
+      "height": 278
+    },
+    "crop": null,
+    "preserveSource": true,
+    "sourceSha256": "7575fb774824d88f14e6b374aff94270886e0c277f5eb25b4e2dee5987189408",
+    "kind": "Optical micrograph",
+    "label": "Implant and scale",
+    "alt": "Two-panel microscopy photograph showing a tiny MOTE implant on a salt crystal on the left and two implanted MOTEs in mouse cortex on day 296 on the right.",
+    "caption": "MOTE on a salt crystal (left), and implanted MOTEs in mouse cortex at day 296 (right); 400 µm scale retained.",
+    "credit": "KAIST",
+    "sourceUrl": "https://www.eurekalert.org/multimedia/1103818",
+    "sourceAssetUrl": "https://mediasvc.eurekalert.org/Api/v1/Multimedia/ce3ba2aa-5f18-4583-ac54-de598bb395d3/Rendition/low-res/Content/Public",
+    "sourceLabel": "KAIST · original research press image",
+    "license": "Institutional press-image permission · credit retained",
+    "licenseUrl": "https://www.eurekalert.org/multimedia/1103818",
+    "reusePolicyUrl": "https://www.eurekalert.org/releaseguidelines",
+    "licenseEvidence": "KAIST multimedia page explicitly identifies Licensed content with Usage Restrictions: NO. EurekAlert requires uploaded multimedia to be cleared for third-party use.",
+    "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
+    "versionNote": "MOTE from the 2025 Nature Electronics study (10.1038/s41928-025-01484-1), not the older 2018 or 2020 MOTE designs."
+  },
+  "BTSD-ACAD-0087": {
+    "src": "/images/devices/btsd-acad-0087.webp",
+    "thumbnail": "/images/devices/btsd-acad-0087-640.webp",
+    "width": 426,
+    "height": 519,
+    "thumbnailWidth": 426,
+    "thumbnailHeight": 519,
+    "sourceDimensions": {
+      "width": 1556,
+      "height": 2153
+    },
+    "crop": {
+      "left": 528,
+      "top": 34,
+      "width": 426,
+      "height": 519
+    },
+    "sourceSha256": "17ff78d638f0cce34711eca343e43e3edcb6b01da878e0f86b7de25d2edce91a",
+    "credit": "Tian et al., Advanced Science (2023), Figure 1b",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10667845/",
+    "sourceAssetUrl": "https://europepmc.org/articles/PMC10667845?pdf=render",
+    "sourceLabel": "Advanced Science · Figure 1b",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Photographic panel rendered directly from the published PDF in its original colors, cropped and re-encoded. Original scales retained; no retouching or synthetic enhancement.",
+    "versionNote": "2023 MERF two-shank research specimen. The optical and electron-microscopy views document different scales of the same published electrode design.",
+    "sourceRendering": {
+      "pdfPage": 3,
+      "pdfImageIndex": 0,
+      "pixelsPerPoint": 4.5,
+      "reason": "Preserve the PDF’s CMYK display colors rather than publishing an incorrectly decoded negative."
+    },
+    "kind": "Optical micrograph",
+    "label": "Two-shank array",
+    "alt": "Optical micrograph of two ultraflexible MERF electrode shanks tapering to fine tips, with the original 1 millimeter scale.",
+    "caption": "Ultraflexible MERF recording shanks; 1 mm scale retained.",
+    "additionalViews": [
+      {
+        "src": "/images/devices/btsd-acad-0087-contacts.webp",
+        "thumbnail": "/images/devices/btsd-acad-0087-contacts-640.webp",
+        "width": 240,
+        "height": 624,
+        "thumbnailWidth": 240,
+        "thumbnailHeight": 624,
+        "sourceDimensions": {
+          "width": 1556,
+          "height": 2153
+        },
+        "crop": {
+          "left": 1316,
+          "top": 0,
+          "width": 240,
+          "height": 624
+        },
+        "sourceSha256": "17ff78d638f0cce34711eca343e43e3edcb6b01da878e0f86b7de25d2edce91a",
+        "credit": "Tian et al., Advanced Science (2023), Figure 1b",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10667845/",
+        "sourceAssetUrl": "https://europepmc.org/articles/PMC10667845?pdf=render",
+        "sourceLabel": "Advanced Science · Figure 1b",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "changes": "Photographic panel rendered directly from the published PDF in its original colors, cropped and re-encoded. Original scales retained; no retouching or synthetic enhancement.",
+        "versionNote": "2023 MERF two-shank research specimen. The optical and electron-microscopy views document different scales of the same published electrode design.",
+        "sourceRendering": {
+          "pdfPage": 3,
+          "pdfImageIndex": 0,
+          "pixelsPerPoint": 4.5,
+          "reason": "Preserve the PDF’s CMYK display colors rather than publishing an incorrectly decoded negative."
+        },
+        "kind": "Electron micrograph",
+        "label": "Contact surfaces",
+        "alt": "Electron micrographs comparing circular MERF electrode contacts coated with PEDOT and iridium oxide.",
+        "caption": "PEDOT and IrOx electrode-surface views; 25 µm scale retained."
+      }
+    ]
+  },
+  "BTSD-ACAD-0088": {
+    "src": "/images/devices/btsd-acad-0088.webp",
+    "thumbnail": "/images/devices/btsd-acad-0088-640.webp",
+    "width": 453,
+    "height": 622,
+    "thumbnailWidth": 453,
+    "thumbnailHeight": 622,
+    "sourceDimensions": {
+      "width": 453,
+      "height": 622
+    },
+    "crop": null,
+    "sourceSha256": "7d138478d81cd9b8fcc5871affc6e8bb62003628cbf25ce9d51be7be551171c3",
+    "credit": "Zhou et al., Microsystems & Nanoengineering (2023)",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10336119/",
+    "sourceAssetUrl": "https://europepmc.org/articles/PMC10336119?pdf=render",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "versionNote": "2023 four-shank biomimetic research system. The insertion shuttles, tactile sensor and external PCB are distinguished from the flexible implant electrodes.",
+    "kind": "Photograph",
+    "label": "Implant module",
+    "alt": "Photographs of a four-shank biomimetic flexible neural electrode array on adjustable sharpened insertion shuttles, with magnified tip views.",
+    "caption": "Implant module and adjustable insertion shuttles; original 2 mm, 1 mm and 50 µm scales retained.",
+    "sourceLabel": "Microsystems & Nanoengineering · Figure 2b",
+    "changes": "Figure 2b photographic panel rendered directly from the original PDF in its original colors and re-encoded; no cropping of the panel, scale removal or hardware retouching.",
+    "sourceRendering": {
+      "pdfPage": 4,
+      "pdfImageIndex": 3,
+      "pixelsPerPoint": 4.5
+    },
+    "additionalViews": [
+      {
+        "src": "/images/devices/btsd-acad-0088-assembly.webp",
+        "thumbnail": "/images/devices/btsd-acad-0088-assembly-640.webp",
+        "width": 572,
+        "height": 360,
+        "thumbnailWidth": 572,
+        "thumbnailHeight": 360,
+        "sourceDimensions": {
+          "width": 572,
+          "height": 642
+        },
+        "crop": {
+          "left": 0,
+          "top": 282,
+          "width": 572,
+          "height": 360
+        },
+        "sourceSha256": "75600a13549c1edba3a1297ccb7367d7994e49ab895a2b217ab6603a56b91414",
+        "credit": "Zhou et al., Microsystems & Nanoengineering (2023)",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10336119/",
+        "sourceAssetUrl": "https://europepmc.org/articles/PMC10336119?pdf=render",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "versionNote": "2023 four-shank biomimetic research system. The insertion shuttles, tactile sensor and external PCB are distinguished from the flexible implant electrodes.",
+        "kind": "Photograph",
+        "label": "System assembly",
+        "alt": "Photograph of the assembled biomimetic neural probe with its external circuit board, flexible four-shank electrode module, a coin, and a magnified view of the tips.",
+        "caption": "Assembled experimental system, including the external PCB and a close-up of the electrode tips.",
+        "sourceLabel": "Microsystems & Nanoengineering · Figure 1e",
+        "changes": "Photographic panel extracted from the published source; resized and re-encoded. Original scale bars and annotations retained; no hardware retouching.",
+        "sourceExtraction": {
+          "pdfPage": 3,
+          "pdfImageIndex": 2,
+          "sourceFigureDimensions": {
+            "width": 572,
+            "height": 642
+          }
+        }
+      }
+    ]
+  },
+  "BTSD-ACAD-0089": {
+    "src": "/images/devices/btsd-acad-0089.webp",
+    "thumbnail": "/images/devices/btsd-acad-0089-640.webp",
+    "width": 425,
+    "height": 356,
+    "thumbnailWidth": 425,
+    "thumbnailHeight": 356,
+    "sourceDimensions": {
+      "width": 1999,
+      "height": 1926
+    },
+    "crop": {
+      "left": 535,
+      "top": 1570,
+      "width": 425,
+      "height": 356
+    },
+    "sourceSha256": "a65ea7957437ed587eecf4e60c4b8d82460dbf82ef283f792309c251d2d23095",
+    "kind": "Photograph",
+    "credit": "Liang et al., Nature Communications (2025), Figure 1",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12549829/",
+    "sourceAssetUrl": "https://europepmc.org/articles/PMC12549829?pdf=render",
+    "sourceLabel": "Nature Communications · Figure 1e, lower photograph",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Photographic panel extracted from the published source; resized and re-encoded. Original scale bars and annotations retained; no hardware retouching.",
+    "versionNote": "2025 silk-enabled intraventricular-interface prototype. The unfolded electrode and the catheter delivery assembly are shown separately.",
+    "label": "Unfolded electrode",
+    "alt": "Photograph of the unfolded flower-shaped silk-enabled intraventricular electrode, with dark circular contacts on flexible petals.",
+    "caption": "Unfolded intraventricular electrode, with conformal petals and surface contacts.",
+    "sourceExtraction": {
+      "pdfPage": 3,
+      "pdfImageIndex": 0,
+      "sourceFigureDimensions": {
+        "width": 1999,
+        "height": 1926
+      }
+    },
+    "additionalViews": [
+      {
+        "src": "/images/devices/btsd-acad-0089-delivery.webp",
+        "thumbnail": "/images/devices/btsd-acad-0089-delivery-640.webp",
+        "width": 470,
+        "height": 766,
+        "thumbnailWidth": 393,
+        "thumbnailHeight": 640,
+        "sourceDimensions": {
+          "width": 1999,
+          "height": 1926
+        },
+        "crop": {
+          "left": 20,
+          "top": 1160,
+          "width": 470,
+          "height": 766
+        },
+        "sourceSha256": "a65ea7957437ed587eecf4e60c4b8d82460dbf82ef283f792309c251d2d23095",
+        "kind": "Photograph",
+        "credit": "Liang et al., Nature Communications (2025), Figure 1",
+        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12549829/",
+        "sourceAssetUrl": "https://europepmc.org/articles/PMC12549829?pdf=render",
+        "sourceLabel": "Nature Communications · Figure 1d",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "changes": "Photographic panel extracted from the published source; resized and re-encoded. Original scale bars and annotations retained; no hardware retouching.",
+        "versionNote": "2025 silk-enabled intraventricular-interface prototype. The unfolded electrode and the catheter delivery assembly are shown separately.",
+        "label": "Delivery assembly",
+        "alt": "Photograph of the complete intraventricular-interface delivery assembly, showing the flexible electrode lead, catheter and white external pedestal.",
+        "caption": "Complete delivery assembly: electrode lead, catheter and external pedestal.",
+        "sourceExtraction": {
+          "pdfPage": 3,
+          "pdfImageIndex": 0,
+          "sourceFigureDimensions": {
+            "width": 1999,
+            "height": 1926
+          }
+        }
+      }
+    ]
+  },
+  "BTSD-ACAD-0090": {
+    "src": "/images/devices/btsd-acad-0090.webp",
+    "thumbnail": "/images/devices/btsd-acad-0090-640.webp",
+    "width": 393,
+    "height": 405,
+    "thumbnailWidth": 393,
+    "thumbnailHeight": 405,
+    "sourceDimensions": {
+      "width": 2046,
+      "height": 2372
+    },
+    "crop": {
+      "left": 90,
+      "top": 1400,
+      "width": 393,
+      "height": 405
+    },
+    "sourceSha256": "fdfb4e3b19f8019aff29e5a5dc8d3afa8e25b75321bfb2b72cc85774e4200e6a",
+    "kind": "Photograph",
+    "label": "Integrated implant",
+    "alt": "Photograph of the SIMIT 256-channel micro-ECoG implant, with its titanium electronics enclosure, flexible golden surface array, reference lead and contact close-up.",
+    "caption": "Integrated 256-channel µECoG implant with its surface array, reference lead and titanium electronics enclosure.",
+    "credit": "Zhou et al., Advanced Science (2025), Figure 1b",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12677598/",
+    "sourceAssetUrl": "https://europepmc.org/articles/PMC12677598?pdf=render",
+    "sourceLabel": "Advanced Science · Figure 1b",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Photographic panel extracted from the published source; resized and re-encoded. Original scale bars and annotations retained; no hardware retouching.",
+    "versionNote": "256-channel SIMIT specimen from the 2025 motor-decoding study. This is separate from NeuroXess hardware.",
+    "sourceExtraction": {
+      "pdfPage": 3,
+      "pdfImageIndex": 1,
+      "sourceFigureDimensions": {
+        "width": 2046,
+        "height": 2372
+      }
+    }
   }
 }

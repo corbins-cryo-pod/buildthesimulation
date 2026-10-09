@@ -1,0 +1,60 @@
+---
+import DevicePhotograph from './DevicePhotograph.astro';
+const { photo, title, deviceId } = Astro.props;
+const views = [photo, ...(photo.additionalViews ?? [])];
+const galleryId = `views-${deviceId.toLowerCase().replace(/[^a-z0-9-]/g, '-')}`;
+---
+
+<device-photo-gallery aria-label={`Physical views of ${title}`}>
+  {views.map((view, index) => <div id={`${galleryId}-${index}`} data-gallery-view>
+    <DevicePhotograph photo={view} title={title} deviceId={`${deviceId}-view-${index}`} priority={index === 0} />
+  </div>)}
+  {views.length > 1 && <nav class="view-rail" aria-label="Choose a device view">
+    {views.map((view, index) => <a href={`#${galleryId}-${index}`} data-gallery-select={index} aria-current={index === 0 ? 'true' : undefined}>
+      <span class="view-thumbnail"><img src={view.thumbnail} width={view.thumbnailWidth} height={view.thumbnailHeight} alt="" loading="lazy" decoding="async" /></span>
+      <span class="view-name"><span class="view-number">{String(index + 1).padStart(2, '0')}</span>{view.label ?? view.kind}</span>
+    </a>)}
+  </nav>}
+</device-photo-gallery>
+
+<script>
+  class DevicePhotoGallery extends HTMLElement {
+    connectedCallback() {
+      if (this.dataset.ready) return;
+      this.dataset.ready = 'true';
+      const views = Array.from(this.querySelectorAll<HTMLElement>('[data-gallery-view]'));
+      const links = Array.from(this.querySelectorAll<HTMLAnchorElement>('[data-gallery-select]'));
+      if (views.length < 2) return;
+      const select = (index: number) => {
+        if (!views[index]) return;
+        views.forEach((view, current) => { view.hidden = current !== index; });
+        links.forEach((link, current) => {
+          if (current === index) link.setAttribute('aria-current', 'true');
+          else link.removeAttribute('aria-current');
+        });
+      };
+      const fromHash = views.findIndex(view => `#${view.id}` === window.location.hash);
+      select(fromHash < 0 ? 0 : fromHash);
+      links.forEach((link, index) => link.addEventListener('click', event => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        select(index);
+      }));
+    }
+  }
+  if (!customElements.get('device-photo-gallery')) customElements.define('device-photo-gallery', DevicePhotoGallery);
+</script>
+
+<style>
+  device-photo-gallery { display: block; margin-bottom: 30px; }
+  [data-gallery-view][hidden] { display: none; }
+  .view-rail { display: flex; gap: 14px; overflow-x: auto; padding: 0 1px 10px; scrollbar-width: thin; }
+  .view-rail > a { flex: 0 0 128px; color: var(--text); text-decoration: none; opacity: .6; transition: opacity .2s; }
+  .view-rail > a:hover, .view-rail > a[aria-current] { opacity: 1; }
+  .view-thumbnail { display: grid; height: 78px; background: #f5f4f0; border: 1px solid transparent; border-radius: 3px; }
+  .view-thumbnail img { width: 100%; height: 76px; padding: 6px; object-fit: contain; }
+  .view-rail > a[aria-current] .view-thumbnail { border-color: var(--text); }
+  .view-name { display: flex; gap: 8px; margin-top: 7px; font-size: 13px; font-style: italic; line-height: 1.35; }
+  .view-number { font-size: 11px; opacity: .55; font-style: normal; padding-top: 1px; }
+  @media (prefers-reduced-motion: reduce) { .view-rail > a { transition: none; } }
+</style>

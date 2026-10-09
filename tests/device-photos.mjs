@@ -1,8 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { createHash } from 'node:crypto';
 import sharp from 'sharp';
-import { devicePhotos, getDevicePhoto, getPicturedEntry } from '../src/lib/device-photos.js';
+import { devicePhotos, getDevicePhoto, getDevicePhotos, getPicturedEntry } from '../src/lib/device-photos.js';
 
 const visibleIds = new Set(fs.readdirSync('src/content/designs').filter(file => file.endsWith('.md')).flatMap(file => {
   const text = fs.readFileSync(`src/content/designs/${file}`, 'utf8');
@@ -10,10 +11,13 @@ const visibleIds = new Set(fs.readdirSync('src/content/designs').filter(file => 
 }));
 
 test('photo records match a visible device and include accessible captions and rights', async () => {
-  for (const [deviceId, photo] of Object.entries(devicePhotos)) {
+  for (const deviceId of Object.keys(devicePhotos)) {
     assert(visibleIds.has(deviceId), `Unknown or unpublished pictured device: ${deviceId}`);
+    const views = getDevicePhotos(deviceId);
+    assert.equal(new Set(views.map(view => view.src)).size, views.length, `${deviceId}: do not repeat the same image`);
+    for (const photo of views) {
     for (const field of ['alt', 'kind', 'caption', 'credit', 'sourceLabel', 'license', 'changes']) assert(photo[field]?.trim(), `${deviceId}: missing ${field}`);
-    assert(['Photograph', 'Optical micrograph', 'Electron micrograph'].includes(photo.kind), `${deviceId}: identify the image accurately`);
+    assert(['Photograph', 'Optical micrograph', 'Electron micrograph', 'Source figure'].includes(photo.kind), `${deviceId}: identify the image accurately`);
     for (const field of ['sourceUrl', 'sourceAssetUrl', 'licenseUrl']) assert.equal(new URL(photo[field]).protocol, 'https:', `${deviceId}: ${field}`);
     assert(photo.width > 0 && photo.height > 0);
     if (photo.crop) {
@@ -28,12 +32,18 @@ test('photo records match a visible device and include accessible captions and r
       assert.deepEqual(photo.sourceExtraction.sourceFigureDimensions, photo.sourceDimensions);
     }
     assert(/^[a-f0-9]{64}$/.test(photo.sourceSha256), `${deviceId}: keep original-image integrity record`);
+    if (/\bND\b/.test(photo.license)) assert.equal(photo.preserveSource, true, `${deviceId}: preserve no-derivatives sources intact`);
+    if (photo.preserveSource) {
+      assert.equal(photo.crop, null);
+      assert.equal(photo.src, photo.thumbnail);
+      assert.equal(createHash('sha256').update(fs.readFileSync(`public${photo.src}`)).digest('hex'), photo.sourceSha256, `${deviceId}: unchanged source bytes`);
+    }
     for (const field of ['src', 'thumbnail']) {
-      assert(/^\/images\/devices\/[a-z0-9-]+\.webp$/.test(photo[field]));
+      assert(/^\/images\/devices\/[a-z0-9-]+\.(webp|jpg|png)$/.test(photo[field]));
       const file = `public${photo[field]}`;
       assert(fs.existsSync(file), `Missing local image: ${file}`);
       const actual = await sharp(file).metadata();
-      assert.equal(actual.format, 'webp');
+      assert(['webp', 'jpeg', 'png'].includes(actual.format));
       if (field === 'src') {
         assert.equal(photo.width, actual.width);
         assert.equal(photo.height, actual.height);
@@ -41,10 +51,19 @@ test('photo records match a visible device and include accessible captions and r
         assert.equal(photo.thumbnailWidth, actual.width);
         assert.equal(photo.thumbnailHeight, actual.height);
       }
-      assert(fs.statSync(file).size < 900_000, `Unnecessarily heavy photograph: ${file}`);
+      assert(fs.statSync(file).size < (photo.preserveSource ? 6_000_000 : 900_000), `Unnecessarily heavy image: ${file}`);
+    }
     }
   }
   assert.equal(getDevicePhoto('not-a-device'), null);
+  assert.deepEqual(getDevicePhotos('not-a-device'), []);
+});
+
+test('device image lookup returns the lead and all separately credited views', () => {
+  for (const [id, lead] of Object.entries(devicePhotos)) {
+    assert.equal(getDevicePhotos(id)[0], lead);
+    assert.deepEqual(getDevicePhotos(id).slice(1), lead.additionalViews ?? []);
+  }
 });
 
 test('source review tracks every published record without auto-clearing pending candidates', () => {

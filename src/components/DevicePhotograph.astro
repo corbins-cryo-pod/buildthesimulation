@@ -1,13 +1,13 @@
 ---
-const { photo, title, deviceId } = Astro.props;
+const { photo, title, deviceId, priority = true } = Astro.props;
 const dialogId = `photo-${deviceId.toLowerCase().replace(/[^a-z0-9-]/g, '-')}`;
 ---
 
 <implant-photograph>
   <figure class="implant-photo">
     <div class="photo-label"><span>Physical interface</span><span>{photo.kind}</span></div>
-    <a class="photo-open" href={photo.src} target="_blank" rel="noopener" data-photo-open aria-haspopup="dialog" aria-controls={dialogId} aria-label={`Enlarge photograph of ${title}`}>
-      <img src={photo.src} srcset={photo.width > photo.thumbnailWidth ? `${photo.thumbnail} ${photo.thumbnailWidth}w, ${photo.src} ${photo.width}w` : undefined} sizes="(max-width: 680px) calc(100vw - 72px), 760px" width={photo.width} height={photo.height} alt={photo.alt} decoding="async" fetchpriority="high" />
+    <a class="photo-open" href={photo.src} target="_blank" rel="noopener" data-photo-open aria-haspopup="dialog" aria-controls={dialogId} aria-label={`Enlarge image of ${title}`}>
+      <img src={photo.src} srcset={photo.width > photo.thumbnailWidth ? `${photo.thumbnail} ${photo.thumbnailWidth}w, ${photo.src} ${photo.width}w` : undefined} sizes="(max-width: 680px) calc(100vw - 72px), 760px" width={photo.width} height={photo.height} alt={photo.alt} loading={priority ? undefined : 'lazy'} decoding="async" fetchpriority={priority ? 'high' : 'auto'} />
       <span class="photo-enlarge" aria-hidden="true">View closer <span>↗</span></span>
     </a>
     <figcaption>
@@ -21,8 +21,8 @@ const dialogId = `photo-${deviceId.toLowerCase().replace(/[^a-z0-9-]/g, '-')}`;
     </figcaption>
   </figure>
 
-  <dialog id={dialogId} class="photo-dialog" aria-label={`Photograph of ${title}`}>
-    <form method="dialog"><button class="photo-close" type="submit" autofocus aria-label="Close photograph">Close <span aria-hidden="true">×</span></button></form>
+  <dialog id={dialogId} class="photo-dialog" aria-label={`Image of ${title}`}>
+    <form method="dialog"><button class="photo-close" type="submit" autofocus aria-label="Close image">Close <span aria-hidden="true">×</span></button></form>
     <div class="photo-dialog-heading"><span>{photo.kind}</span><h2>{title}</h2></div>
     <img src={photo.src} width={photo.width} height={photo.height} alt={photo.alt} loading="lazy" decoding="async" />
     <p>{photo.caption}</p>

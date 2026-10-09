@@ -38,7 +38,7 @@ const photographedCount = normalized.filter(entry => entry.photo).length;
   <section class="catalog-heading" aria-labelledby="device-catalog-title">
     <h2 id="device-catalog-title">Device Catalog</h2>
     <h3><a href="/devices/models/">3D Model Finder</a></h3>
-    {photographedCount > 0 && <p class="catalog-photo-note"><em>The interface, up close.</em> {photographedCount} photographed records, from implant assemblies to microscopic contacts. Images are not to a common scale.</p>}
+    {photographedCount > 0 && <p class="catalog-photo-note"><em>The interface, up close.</em> {photographedCount} pictured records, from implant assemblies to microscopic contacts. Images are not to a common scale.</p>}
   </section>
   <DevicesDirectory client:load entries={normalized} />
 </Layout>
