@@ -17,7 +17,7 @@ draft: false
 
 # Syringe-injectable mesh electronics
 
-All rows follow the shared implant-device template. Measurements belong to the named configuration or study. Unreported means the reviewed sources do not establish a value. Injection yield, acute electrical recording and chronic histology are distinct results.
+All rows follow the shared implant-device template. Measurements belong to the named configuration or study. A blank cell means the reviewed sources do not establish a value. Injection yield, acute electrical recording and chronic histology are distinct results.
 
 ## Identity
 
@@ -28,7 +28,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Interface class | Syringe-delivered intracortical mesh recording interface |
 | Origin | Liu, Fu, Cheng and collaborators; Harvard and National Center for Nanoscience and Technology, Beijing |
 | First demonstrated | 2015 Nature Nanotechnology report; earlier scaffold work is not the same injection demonstration |
-| First human implant | Unreported; reviewed study uses mice |
+| First human implant | Reviewed study uses mice |
 | Species studied | Adult male C57BL/6J and GFAPGFP transgenic mice |
 | Regulatory status | Preclinical Harvard animal research approval; clinical authorization unreported |
 | Function | Injected mesh metal electrodes record LFP and spikes; distinct FET versions also tested for injection/strain sensing |
@@ -61,7 +61,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Recording modality | LFP across 16 channels and single-unit waveform example from hippocampus under anesthesia |
 | Sampling rate | 20 kHz brain recording; 1 kHz nanowire strain acquisition is a separate system |
 | Stimulation capability | Neural stimulation not demonstrated in reviewed brain-recording study; future multifunctional use proposed |
-| Charge injection limit | Unreported |
+| Charge injection limit |  |
 | Reference and ground | Ag/AgCl electrode as reference in acute brain recordings, Methods |
 
 ## Tissue interface and bioresponse
@@ -70,7 +70,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | --- | --- |
 | Target tissue | Hippocampal tissue or ventricular cavity, configuration-specific |
 | Insertion trauma and BBB disruption | 0.5 mm skull hole, incised/resected dura and penetrating injection needle; not noninvasive. BBB leakage not quantified |
-| Vascular disruption risk | Unreported |
+| Vascular disruption risk |  |
 | Micromotion sensitivity | Very low bending stiffness proposed to reduce motion stress; quantitative in vivo motion-transfer result unreported |
 | Gliosis and encapsulation | Five-week slices show limited/background-like GFAP near mesh across three independent hippocampal injections; not lifetime absence of immune response |
 | Neuron loss near sites | Healthy NeuN-positive cells near ribbons, but paper explicitly notes reduced cell density at central injection region; do not label injury-free |
@@ -86,9 +86,9 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Telemetry bandwidth | Not applicable to wired acute recording; wireless integration is future work |
 | Sampling rate | 20 kHz, 60 Hz notch; single-unit analysis 300-6000 Hz bandpass |
 | Power | External amplifier/recording system; passive recording contacts, implanted power consumption unreported |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | SU-8 passivation and external bond/cable; no full hermetic implanted system or multi-year qualification |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Stereotaxic skull opening, dural incision, needle placement, synchronized injection/retraction and external I/O bonding |
 | Output connectors | ACF AC-4351Y bond to Molex PREMO-FLEX FFC/FPC cable, external Intan acquisition |
 
