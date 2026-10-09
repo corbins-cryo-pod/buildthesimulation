@@ -47,7 +47,7 @@ Published in January 2024, this UC San Diego-led design forms a flexible depth e
 | Contact coating | PEDOT:PSS or PtNR (short 32); PEDOT:PSS (short 64); PtNR (long) [3] |
 | Insulation | Two polyimide layers with sacrificial titanium form the stylet sheath; a third polyimide layer insulates traces; short 64 also reported with parylene C [1, 3] |
 | Insertion method | Stylet-guided insertion, stylet withdrawn afterward [1] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
@@ -55,25 +55,25 @@ Published in January 2024, this UC San Diego-led design forms a flexible depth e
 | --- | --- |
 | Exposed site area | Not stated beyond the 20 and 30 µm contact diameters [3] |
 | Electrode material | Chromium/gold traces, 520 nm total, 3 µm width and spacing on the narrow section; PEDOT:PSS or PtNR contacts [1] |
-| Impedance (with measurement frequency) | Unreported |
-| Noise floor or SNR | Unreported |
+| Impedance (with measurement frequency) |  |
+| Noise floor or SNR |  |
 | Recording modality | Depth field and unit recording [1] |
 | Sampling rate | Custom board feeding an Intan 1,024-channel system; per-channel rate not extracted [1] |
 | Stimulation capability | Saline characterization of separate 1 mm PtNR contacts only; not shown safe through the 20 µm human recording contacts [1] |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Brain; human cortex in the acute study, rat in the histology [1] |
-| Insertion trauma and BBB disruption | Unreported |
-| Vascular disruption risk | Unreported |
-| Micromotion sensitivity | Unreported |
+| Insertion trauma and BBB disruption |  |
+| Vascular disruption risk |  |
+| Micromotion sensitivity |  |
 | Gliosis and encapsulation | 14-day rat histology: less GFAP-positive scarring than a clinical lead [1] |
 | Neuron loss near sites | No significant difference in nearby NeuN-positive cell counts versus a clinical lead [1] |
-| Foreign-body response mitigation | Unreported |
+| Foreign-body response mitigation |  |
 | Typical failure modes | Parylene C cracked during stylet insertion, cracks propagating into PEDOT:PSS; PEDOT:PSS delaminated in a substantial subset, reducing yield; PtNR did not show this [1] |
 
 ## System architecture
@@ -82,12 +82,12 @@ Published in January 2024, this UC San Diego-led design forms a flexible depth e
 | --- | --- |
 | Onboard electronics | Custom acquisition board to an Intan 1,024-channel system; no implanted electronics [1] |
 | Data path | Wired through a non-clinical connector [1] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
-| Power | Unreported |
-| Thermal management | Unreported |
-| Packaging and hermeticity | Unreported |
-| MRI compatibility | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
+| Power |  |
+| Thermal management |  |
+| Packaging and hermeticity |  |
+| MRI compatibility |  |
 | Surgical complexity | Stylet-guided insertion; electrode deflation after stylet withdrawal is a remaining limitation [1] |
 | Output connectors | Non-clinical connector standards listed as a limitation [1] |
 
@@ -95,12 +95,12 @@ Published in January 2024, this UC San Diego-led design forms a flexible depth e
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Unreported |
+| Acute yield |  |
 | Chronic yield | Rat responses in three of nine implanted rats [1] |
-| Stability over time | Unreported |
+| Stability over time |  |
 | Longevity | Accelerated aging equals 150 days and 84,000 lead-bending cycles (bench only); rat recordings reached 25 days [1] |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Acute human cortical recording in two participants [1] |
 
 ## Clinical and preclinical evidence
@@ -110,8 +110,8 @@ Published in January 2024, this UC San Diego-led design forms a flexible depth e
 | Human subjects | Two participants, short 64-channel PEDOT:PSS arrays; Supplementary Table 2 assigns parylene C to HS1 and polyimide to HS2 [1] |
 | Preclinical cohort | Rats: 14-day histology comparison; recordings to 25 days, responses in 3 of 9 [1] |
 | Follow-up duration | Acute in humans; up to 25 days in rats [1] |
-| Indications | Unreported |
-| Trials and registries | Unreported |
+| Indications |  |
+| Trials and registries |  |
 | Primary outcomes | Acute human recording; less GFAP scarring in rats [1] |
 | Key limitations | Cross-talk not definitively quantified; common-mode subtraction, reference placement, connector standards and deflation after stylet withdrawal remain open; not chronic human validation [1] |
 
@@ -121,7 +121,7 @@ Published in January 2024, this UC San Diego-led design forms a flexible depth e
 | --- | --- |
 | Strengths | Scalable contact counts on a flexible shank with stylet delivery [1] |
 | Limitations | Material failures in parylene C and PEDOT:PSS; U-shaped ribbon and delivery mechanics [1] |
-| Scaling constraints | Unreported |
+| Scaling constraints |  |
 
 ## Published variants, not one universal device
 
