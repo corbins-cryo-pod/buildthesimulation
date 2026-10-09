@@ -7,7 +7,7 @@ device_id: "BTSD-IMBCI-00SCBH-02"
 interface_class: "other"
 status: "theoretical"
 last_updated: 2026-02-06
-description: "A company-described biohybrid architecture with neurons embedded in electronics; hardware geometry and complete-system performance remain unreported."
+description: "A company-described biohybrid architecture with neurons embedded in electronics; hardware geometry and complete-system performance remain not reported."
 modality: "Other"
 successRank: 21
 website: "https://science.xyz/news/biohybrid-neural-interfaces/"
@@ -25,14 +25,14 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | --- | --- |
 | Device | Science neuronal-embedded electronic biohybrid probe architecture concept; penetrating form factor not established |
 | Manufacturer | Science Corporation, company description November 2024 |
-| Interface class | Conceptual biohybrid neural interface; deployment geometry unreported |
+| Interface class | Conceptual biohybrid neural interface; deployment geometry not reported |
 | Origin | Science Corporation biohybrid program led by Alan Mardinly and Yifan Kong |
 | First demonstrated | Company architecture description 2024; complete electronic system demonstration not established |
 | First human implant |  |
 | Species studied | No cohort for this complete electronic architecture given; separate surface microwell study uses mice |
-| Regulatory status | Company describes low technology readiness; clinical authorization unreported |
+| Regulatory status | Company describes low technology readiness; clinical authorization not reported |
 | Function | Proposed electrical interaction with device-associated neurons and optical activation through microLEDs; not a validated bidirectional system |
-| Target tissue | Brain via graft neurites; precise surgical target/placement unreported |
+| Target tissue | Brain via graft neurites; precise surgical target/placement not reported |
 
 ## Geometry and architecture
 
@@ -58,9 +58,9 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Electrode material |  |
 | Impedance (with measurement frequency) |  |
 | Noise floor or SNR | Company calls SNR great without a numerical measurement for this architecture; not treated as a measured spec |
-| Recording modality | Electrical interaction with graft cells proposed; validated on-device recording yield/modality unreported |
+| Recording modality | Electrical interaction with graft cells proposed; validated on-device recording yield/modality not reported |
 | Sampling rate |  |
-| Stimulation capability | Company illustration shows microLED activating nearby neuron; wavelength, power and complete-system validation unreported |
+| Stimulation capability | Company illustration shows microLED activating nearby neuron; wavelength, power and complete-system validation not reported |
 | Charge injection limit |  |
 | Reference and ground |  |
 
@@ -69,7 +69,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Device-associated graft neurons and their axons/dendrites in brain |
-| Insertion trauma and BBB disruption | Quantitative trauma and BBB effects unreported for this architecture; not presumed noninvasive |
+| Insertion trauma and BBB disruption | Quantitative trauma and BBB effects not reported for this architecture; not presumed noninvasive |
 | Vascular disruption risk |  |
 | Micromotion sensitivity |  |
 | Gliosis and encapsulation |  |
@@ -81,15 +81,15 @@ All rows follow the shared implant-device template. Measurements belong to the n
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics | Electronics with embedded neurons and illustrated microLED; circuit configuration unreported |
+| Onboard electronics | Electronics with embedded neurons and illustrated microLED; circuit configuration not reported |
 | Data path |  |
 | Telemetry bandwidth |  |
 | Sampling rate |  |
-| Power | Company argues strong cell signals could reduce amplifier power; measured system power unreported |
+| Power | Company argues strong cell signals could reduce amplifier power; measured system power not reported |
 | Thermal management |  |
 | Packaging and hermeticity |  |
 | MRI compatibility |  |
-| Surgical complexity | Implant procedure unreported; no geometry inferred from the word probe |
+| Surgical complexity | Implant procedure not reported; no geometry inferred from the word probe |
 | Output connectors |  |
 
 ## Performance envelope
@@ -98,7 +98,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 | --- | --- |
 | Acute yield |  |
 | Chronic yield |  |
-| Stability over time | Complete electronic architecture performance unreported; mouse microwell survival not transferred |
+| Stability over time | Complete electronic architecture performance not reported; mouse microwell survival not transferred |
 | Longevity |  |
 | Revision and explant experience |  |
 | Adverse events | No safety cohort for this architecture; surface microwell explant injury belongs to that separate study |
@@ -108,7 +108,7 @@ All rows follow the shared implant-device template. Measurements belong to the n
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects | Not given for this architecture |
+| Human subjects |  |
 | Preclinical cohort | Not given for this architecture; Brown mouse microwell cohort is separate |
 | Follow-up duration |  |
 | Indications | Long-term high-bandwidth brain interface ambition, not validated clinical indication |
