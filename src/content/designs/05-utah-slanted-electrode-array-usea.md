@@ -20,7 +20,7 @@ A penetrating silicon array with unequal electrode lengths for peripheral-nerve 
 
 ## Core interface specifications
 
-The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values remain unreported; inapplicable fields are marked. Configuration-specific details and limits follow below.
+The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values stay blank; inapplicable fields are marked. Configuration-specific details and limits follow below.
 
 | Field | Specification and source scope |
 | --- | --- |
@@ -153,8 +153,8 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Electrode length | Approximately 0.75-1.5 mm | Overview: 0.5-1.5 mm linear grading; specification table: custom 0.75-1.5 mm |
 | Contact coatings | Do not infer one coating from generic Utah-family figures | Platinum or sputtered iridium oxide (SIROF/IrOx) |
 | Insulation | Study-specific fabrication details not extracted here | Parylene-C |
-| Insertion method | Pneumatic impactor after epineurium dissection, 2017 study Methods | Configuration-dependent tooling; specifics unreported |
-| Anchoring / fixation | Wire bundle, ground and reference wires sutured to epineurium; collagen wrap secured with vascular clips, 2017 study Methods | Unreported |
+| Insertion method | Pneumatic impactor after epineurium dissection, 2017 study Methods | Configuration-dependent tooling; specifics not reported |
+| Anchoring / fixation | Wire bundle, ground and reference wires sutured to epineurium; collagen wrap secured with vascular clips, 2017 study Methods | Not reported |
 
 The abstract calls the arrays "100-channel"; Methods explicitly allocates 96 electrodes for recording/stimulation and four for on-array reference. Both descriptions are preserved. The manufacturer's 100-needle overview, 16-96-channel table and up-to-1,024-channel system wording are different scopes, not one 1,024-site implant. Electrode area, exposed tip dimensions and one universal noise floor are not established by the sources inspected here.
 
