@@ -1,0 +1,747 @@
+{
+  "BTSD-0001": {
+    "src": "/images/devices/btsd-0001.webp",
+    "thumbnail": "/images/devices/btsd-0001-640.webp",
+    "width": 752,
+    "height": 514,
+    "thumbnailWidth": 640,
+    "thumbnailHeight": 437,
+    "sourceDimensions": {
+      "width": 1535,
+      "height": 1144
+    },
+    "crop": {
+      "left": 4,
+      "top": 2,
+      "width": 752,
+      "height": 514
+    },
+    "sourceSha256": "02cd8b302370855fd24a1c1f326f67588ef8c38688c6f2495ec77b2d20e1e22e",
+    "kind": "Electron micrograph",
+    "alt": "Scanning electron micrograph of a Utah array with a dense square grid of tapered penetrating silicon electrodes.",
+    "caption": "Utah electrode array, scanning electron micrograph. 2 mm scale retained.",
+    "credit": "Fernandez et al., Frontiers in Neuroengineering (2014), Fig. 1A",
+    "sourceUrl": "https://www.frontiersin.org/journals/neuroengineering/articles/10.3389/fneng.2014.00024/full",
+    "sourceAssetUrl": "https://www.frontiersin.org/files/Articles/92611/xml-images/fneng-07-00024-g0001.webp",
+    "sourceLabel": "Frontiers · Figure 1A",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original scale bars and annotations retained.",
+    "versionNote": "Unwired 100-electrode research array (2014), not the complete current NeuroPort assembly."
+  },
+  "BTSD-0003": {
+    "src": "/images/devices/btsd-0003.webp",
+    "thumbnail": "/images/devices/btsd-0003-640.webp",
+    "width": 1200,
+    "height": 800,
+    "thumbnailWidth": 640,
+    "thumbnailHeight": 427,
+    "sourceDimensions": {
+      "width": 1200,
+      "height": 800
+    },
+    "crop": null,
+    "sourceSha256": "f3b49e53a0e1411081d0f8a419b47e7c65620a09af4f9d26b2c2a4fc8ddd64fb",
+    "kind": "Photograph",
+    "alt": "Photograph of a slender mesh Stentrode scaffold with small dark electrode contacts mounted along its struts.",
+    "caption": "Stentrode reference specimen photographed in 2020. Hardware revision not specified by the photographer.",
+    "credit": "Christinecooch / Wikimedia Commons (2020)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stentrode_Device.jpg",
+    "sourceAssetUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Stentrode_Device.jpg",
+    "sourceLabel": "Wikimedia Commons · original photograph",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "changes": "Resized and re-encoded; no hardware retouching. This image and its resized versions remain CC BY-SA 4.0.",
+    "versionNote": "2020 reference specimen; exact hardware revision unspecified. This photograph does not verify the current implant geometry."
+  },
+  "BTSD-0006": {
+    "src": "/images/devices/btsd-0006.webp",
+    "thumbnail": "/images/devices/btsd-0006-640.webp",
+    "width": 552,
+    "height": 294,
+    "thumbnailWidth": 552,
+    "thumbnailHeight": 294,
+    "sourceDimensions": {
+      "width": 789,
+      "height": 294
+    },
+    "crop": {
+      "left": 0,
+      "top": 0,
+      "width": 552,
+      "height": 294
+    },
+    "sourceSha256": "b2b75f4e9c0d54227199fdfdc747eaf4e1084a73301832ba0f65183e445a2ca3",
+    "kind": "Photograph",
+    "alt": "Photograph of the TIME-4H implant assembly, with an L-shaped thin-film electrode, ceramic interconnection, coiled cable and connector.",
+    "caption": "TIME-4H assembly with thin-film electrode and helical lead; 1 cm scale retained.",
+    "credit": "Guiho et al., Sensors (2021), Fig. 2a",
+    "sourceUrl": "https://www.mdpi.com/1424-8220/21/21/7219",
+    "sourceAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/3a3e/8587292/3c9e2e368509/sensors-21-07219-g002.jpg",
+    "sourceLabel": "Sensors · Figure 2a",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original scale bars and annotations retained.",
+    "versionNote": "TIME-4H configuration (2021). The connector and interconnect are shown alongside the implantable thin-film electrode."
+  },
+  "BTSD-IMBCI-0004": {
+    "src": "/images/devices/btsd-imbci-0004.webp",
+    "thumbnail": "/images/devices/btsd-imbci-0004-640.webp",
+    "width": 1025,
+    "height": 1000,
+    "thumbnailWidth": 640,
+    "thumbnailHeight": 624,
+    "sourceDimensions": {
+      "width": 2107,
+      "height": 1045
+    },
+    "crop": {
+      "left": 6,
+      "top": 18,
+      "width": 1025,
+      "height": 1000
+    },
+    "sourceSha256": "c57e688c3b48a8c63ad4cec09b3ccf6dbf3b550af599cbdec029311ce841e9ab",
+    "kind": "Photograph",
+    "alt": "Photograph of a WIMAGINE implant with its circular 64-contact electrode face and flat antenna extension.",
+    "caption": "WIMAGINE implant viewed from its cortical-contact side, held between gloved fingers.",
+    "credit": "Sauter-Starace et al., Frontiers in Neuroscience (2019), Fig. 1A",
+    "sourceUrl": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2019.00847/full",
+    "sourceAssetUrl": "https://www.frontiersin.org/files/Articles/451890/xml-images/fnins-13-00847-g001.webp",
+    "sourceLabel": "Frontiers · Figure 1A",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original scale bars and annotations retained.",
+    "versionNote": "Hardware from the catalog’s cited 2019 preclinical study."
+  },
+  "BTSD-IMBCI-0009": {
+    "src": "/images/devices/btsd-imbci-0009.webp",
+    "thumbnail": "/images/devices/btsd-imbci-0009-640.webp",
+    "width": 1600,
+    "height": 702,
+    "thumbnailWidth": 640,
+    "thumbnailHeight": 281,
+    "sourceDimensions": {
+      "width": 2217,
+      "height": 2174
+    },
+    "crop": {
+      "left": 10,
+      "top": 4,
+      "width": 2196,
+      "height": 963
+    },
+    "sourceSha256": "047673e3fc5b2fa1e9c73acc5b7835d0e9c951210bb4ec3c9b6b4f473baac87a",
+    "kind": "Optical micrograph",
+    "alt": "Microscope photograph of fine coiled gold electrode wires entering a small glass cone at the tip of a neurotrophic electrode.",
+    "caption": "Neurotrophic cone-electrode assembly photographed under magnification; 2 mm scale retained.",
+    "credit": "Gearing and Kennedy, Frontiers in Human Neuroscience (2020), Fig. 1A",
+    "sourceUrl": "https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2020.00111/full",
+    "sourceAssetUrl": "https://www.frontiersin.org/files/Articles/511514/xml-images/fnhum-14-00111-g001.webp",
+    "sourceLabel": "Frontiers · Figure 1A",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original scale bars and annotations retained.",
+    "versionNote": "Example assembly from the cited 2020 paper; experimental wire configurations differ."
+  },
+  "BTSD-IMBCI-0010": {
+    "src": "/images/devices/btsd-imbci-0010.webp",
+    "thumbnail": "/images/devices/btsd-imbci-0010-640.webp",
+    "width": 1560,
+    "height": 1240,
+    "thumbnailWidth": 640,
+    "thumbnailHeight": 509,
+    "sourceDimensions": {
+      "width": 5760,
+      "height": 3840
+    },
+    "crop": {
+      "left": 2080,
+      "top": 1140,
+      "width": 1560,
+      "height": 1240
+    },
+    "sourceSha256": "217d6a1dfaa010d15a6b178d85e85d870dab1a30ad65802d6e12da74fbfa3bb8",
+    "kind": "Photograph",
+    "alt": "A Connexus cortical module resting on a fingertip, with a circular metal enclosure and a dense bed of fine penetrating electrodes.",
+    "caption": "Connexus cortical module on a fingertip, showing its penetrating microelectrodes.",
+    "credit": "Paradromics, Inc. — official press kit",
+    "sourceUrl": "https://paradromics.com/contact/",
+    "sourceAssetUrl": "https://www.dropbox.com/scl/fo/lpwt0trshahrz71w3pc8f/AGz4jCaBbpGTcOP1miYtBrA?dl=0&e=1&rlkey=24h183xgxmgqlqe2d2aiuiel7&st=8c5v04r6",
+    "sourceLabel": "Paradromics · official press kit",
+    "license": "Official press kit — editorial use with credit",
+    "licenseUrl": "https://paradromics.com/contact/",
+    "changes": "Editorial crop centered on the cortical module; resized and re-encoded. No hardware retouching.",
+    "versionNote": "Manufacturer-supplied Connexus cortical-module photograph. No manufacturer endorsement is implied."
+  },
+  "BTSD-PNI-0009-02": {
+    "src": "/images/devices/btsd-pni-0009-02.webp",
+    "thumbnail": "/images/devices/btsd-pni-0009-02-640.webp",
+    "width": 503,
+    "height": 421,
+    "thumbnailWidth": 503,
+    "thumbnailHeight": 421,
+    "sourceDimensions": {
+      "width": 945,
+      "height": 481
+    },
+    "crop": {
+      "left": 441,
+      "top": 12,
+      "width": 503,
+      "height": 421
+    },
+    "sourceSha256": "fe01e07514c7da39b61de06341c32f3fccc2b6baa401aa18101ca418e000b745",
+    "kind": "Optical micrograph",
+    "alt": "Circular macro-sieve electrode with a central porous gold-colored membrane, radial traces and eight peripheral connections; original 600-micrometre scale preserved.",
+    "caption": "Optical micrograph of the fabricated macro-sieve electrode and bonded micro-PCB; 2016 configuration.",
+    "credit": "MacEwan, Zellmer, Wheeler, Burton & Moran, Frontiers in Neuroscience (2016), Figure 1B. DOI: 10.3389/fnins.2016.00557",
+    "sourceUrl": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2016.00557/full",
+    "sourceAssetUrl": "https://www.frontiersin.org/files/Articles/220934/xml-images/fnins-10-00557-g0001.webp",
+    "sourceLabel": "Frontiers · original figure",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original scale bars and annotations retained.",
+    "versionNote": "Exact MacEwan et al. 2016 macro-sieve electrode in assigned catalog record. Panel crop, not a reconstruction. Include 600µm scale and region labels. License version to root-check through the article's actual CC BY link (4.0 expected)."
+  },
+  "BTSD-ACAD-0047": {
+    "src": "/images/devices/btsd-acad-0047.webp",
+    "thumbnail": "/images/devices/btsd-acad-0047-640.webp",
+    "width": 262,
+    "height": 323,
+    "thumbnailWidth": 262,
+    "thumbnailHeight": 323,
+    "sourceDimensions": {
+      "width": 946,
+      "height": 1041
+    },
+    "crop": {
+      "left": 650,
+      "top": 307,
+      "width": 262,
+      "height": 323
+    },
+    "sourceSha256": "a64048229b27c0ab7b3c6777b39c3c860a76ccd2ded8c8faad743363b48983f7",
+    "kind": "Photograph",
+    "alt": "Transparent graphene cortical-surface electrode array with narrow gold traces wrapped around a green-tinted glass bar, with an inset showing the flexible array.",
+    "caption": "The real CLEAR graphene electrode array wrapped around a glass bar to demonstrate flexibility; 2014 device.",
+    "credit": "Park et al., Nature Communications 5, 5258 (2014), Figure 1c. DOI: 10.1038/ncomms6258",
+    "sourceUrl": "https://www.nature.com/articles/ncomms6258",
+    "sourceAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fncomms6258/MediaObjects/41467_2014_Article_BFncomms6258_Fig1_HTML.jpg",
+    "sourceLabel": "Publisher · original figure",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original scale bars and annotations retained.",
+    "versionNote": "Exact Park et al. 2014 CLEAR device family. Mechanical panel crop only; glass bar is a flexibility demonstration, not tissue or an implanted component. Full figure also has optical micrograph 1e with 500µm scale if preferred."
+  },
+  "BTSD-ACAD-0053": {
+    "src": "/images/devices/btsd-acad-0053.webp",
+    "thumbnail": "/images/devices/btsd-acad-0053-640.webp",
+    "width": 505,
+    "height": 354,
+    "thumbnailWidth": 505,
+    "thumbnailHeight": 354,
+    "sourceDimensions": {
+      "width": 1200,
+      "height": 1305
+    },
+    "crop": {
+      "left": 72,
+      "top": 8,
+      "width": 505,
+      "height": 354
+    },
+    "sourceSha256": "2155a78ba1504084eaea5ccc3781bdb19670d98ce54f77bbbef85fc0e302d9cb",
+    "kind": "Photograph",
+    "alt": "A slender flexible recording shank with a small contact fan beside a US penny.",
+    "caption": "The released flexible neurochemical and recording probe, beside a US penny for scale.",
+    "credit": "Malekoshoaraie et al., Microsystems & Nanoengineering (2024), Fig. 2a, CC BY 4.0",
+    "sourceUrl": "https://www.nature.com/articles/s41378-024-00685-6",
+    "sourceAssetUrl": "https://media.springernature.com/lw1200/springer-static/image/art%3A10.1038%2Fs41378-024-00685-6/MediaObjects/41378_2024_685_Fig2_HTML.png",
+    "sourceLabel": "Publisher · original figure",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Select only photo panel 2a; no recoloring, geometry alteration or invented background. Penny retained as scale.",
+    "versionNote": "Actual released probe from the 2024 CMU/Pittsburgh paper. Figure 2a, not the adaptor PCB or earlier device."
+  },
+  "BTSD-ACAD-0054": {
+    "src": "/images/devices/btsd-acad-0054.webp",
+    "thumbnail": "/images/devices/btsd-acad-0054-640.webp",
+    "width": 458,
+    "height": 440,
+    "thumbnailWidth": 458,
+    "thumbnailHeight": 440,
+    "sourceDimensions": {
+      "width": 2000,
+      "height": 2469
+    },
+    "crop": {
+      "left": 1542,
+      "top": 978,
+      "width": 458,
+      "height": 440
+    },
+    "sourceSha256": "d07f9422d3d7ca28accffe305bd950aeedb91f38638dcad85d779105e9990269",
+    "kind": "Photograph",
+    "alt": "An annotated photograph of the hydrogel-hybrid probe, connecting a thin pink fiber to optical, electrical and fluidic connectors.",
+    "caption": "The hydrogel-hybrid fiber assembly, with a 1 cm scale bar. The hydrogel is dyed pink for visibility in the source photograph.",
+    "credit": "Park et al., Nature Communications (2021), Fig. 1e, CC BY 4.0",
+    "sourceUrl": "https://www.nature.com/articles/s41467-021-23802-9",
+    "sourceAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-021-23802-9/MediaObjects/41467_2021_23802_Fig1_HTML.png",
+    "sourceLabel": "Publisher · original figure",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Select source photo panel 1e only, with original labels and scale; no hardware editing.",
+    "versionNote": "2021 MIT hydrogel hybrid; dyed Rhodamine B in authors' image. Upper connector assembly is not implanted in brain tissue. Retain original annotations and scale."
+  },
+  "BTSD-ACAD-0064": {
+    "src": "/images/devices/btsd-acad-0064.webp",
+    "thumbnail": "/images/devices/btsd-acad-0064-640.webp",
+    "width": 1600,
+    "height": 373,
+    "thumbnailWidth": 640,
+    "thumbnailHeight": 149,
+    "sourceDimensions": {
+      "width": 2000,
+      "height": 2491
+    },
+    "crop": {
+      "left": 33,
+      "top": 2030,
+      "width": 1946,
+      "height": 454
+    },
+    "sourceSha256": "469f341bf3ea304eda8a005870977bb46dfc7afc38f37e077f96f74bd5bf1588",
+    "kind": "Photograph",
+    "alt": "A long gold-colored flexible µSEEG lead looping gently around a partly withdrawn steel insertion stylet, with a 1 cm scale bar.",
+    "caption": "The long µSEEG electrode with its insertion stylet partly withdrawn, showing the thin flexible body. Scale bar: 1 cm.",
+    "credit": "Lee, Paulk et al., Nature Communications (2024), Fig. 1o, CC BY 4.0",
+    "sourceUrl": "https://www.nature.com/articles/s41467-023-43727-9",
+    "sourceAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-023-43727-9/MediaObjects/41467_2023_43727_Fig1_HTML.png",
+    "sourceLabel": "Publisher · original figure",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Select source photo panel 1o only; preserve full lead, stylet and original scale.",
+    "versionNote": "Actual long 128-channel depth-electrode version from the 2024 paper; not the short 64-channel version. The steel stylet aids insertion and is removed."
+  },
+  "BTSD-ACAD-0068": {
+    "src": "/images/devices/btsd-acad-0068.webp",
+    "thumbnail": "/images/devices/btsd-acad-0068-640.webp",
+    "width": 398,
+    "height": 1046,
+    "thumbnailWidth": 244,
+    "thumbnailHeight": 640,
+    "sourceDimensions": {
+      "width": 2161,
+      "height": 1147
+    },
+    "crop": {
+      "left": 869,
+      "top": 35,
+      "width": 398,
+      "height": 1046
+    },
+    "sourceSha256": "a5af3e180cfb58940f48b2085346772a70b3533e3c8a34c8ce7090b71fdffac2",
+    "kind": "Optical micrograph",
+    "alt": "Four microscope views of a narrow Neuropixels Opto shank with red and blue light emitting at different positions.",
+    "caption": "Four microscope views of the same Neuropixels Opto prototype shank, demonstrating successive red and blue emitters.",
+    "credit": "Lakunina et al., Nature Methods (2026), Fig. 1c, CC BY 4.0",
+    "sourceUrl": "https://www.nature.com/articles/s41592-026-03076-z",
+    "sourceAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41592-026-03076-z/MediaObjects/41592_2026_3076_Fig1_HTML.png",
+    "sourceLabel": "Publisher · original figure",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Select authors' microscopy panel 1c only; preserve all four successive states and explicitly caption them.",
+    "versionNote": "2026 Neuropixels Opto prototype matching published order 107. The panel depicts the same single shank in four successive lighting states, not a four-shank probe. Figure 1d is a schematic package, not a photo, so excluded."
+  },
+  "BTSD-ACAD-0057": {
+    "src": "/images/devices/btsd-acad-0057.webp",
+    "thumbnail": "/images/devices/btsd-acad-0057-640.webp",
+    "width": 567,
+    "height": 493,
+    "thumbnailWidth": 567,
+    "thumbnailHeight": 493,
+    "sourceDimensions": {
+      "width": 2043,
+      "height": 2706
+    },
+    "crop": {
+      "left": 1455,
+      "top": 815,
+      "width": 567,
+      "height": 493
+    },
+    "sourceSha256": "b993c04f395504c410fc297c98695833f20d58826243d0b85febf40dc1aa44f0",
+    "kind": "Electron micrograph",
+    "alt": "Electron micrographs of the narrow Neuropixels 1.0 NHP probe tip, with a smaller inset showing its original fabricated shape.",
+    "caption": "Neuropixels 1.0 NHP shank-tip electron micrographs: the large view shows a mechanically sharpened tip; the inset shows the as-fabricated tip. Scale bars: 100 µm.",
+    "credit": "Trautmann et al., Nature Neuroscience (2025), Fig. 1g, CC BY 4.0",
+    "sourceUrl": "https://www.nature.com/articles/s41593-025-01976-5",
+    "sourceAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41593-025-01976-5/MediaObjects/41593_2025_1976_Fig1_HTML.png",
+    "sourceLabel": "Publisher · original figure",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Select SEM panel 1g, retain both 100 µm bars, original labels and inset.",
+    "versionNote": "NHP long-shank Neuropixels 1.0 from the 2025 paper, not standard NP1.0. This is tip architecture, not the whole 45 mm shank."
+  },
+  "BTSD-ACAD-0060": {
+    "src": "/images/devices/btsd-acad-0060.webp",
+    "thumbnail": "/images/devices/btsd-acad-0060-640.webp",
+    "width": 422,
+    "height": 295,
+    "thumbnailWidth": 422,
+    "thumbnailHeight": 295,
+    "sourceDimensions": {
+      "width": 1971,
+      "height": 1593
+    },
+    "crop": {
+      "left": 543,
+      "top": 678,
+      "width": 422,
+      "height": 295
+    },
+    "sourceSha256": "5041d183771f948f09470438a1a578ebdeec725c4248fc5c06c386bf9c4f4ac1",
+    "kind": "Photograph",
+    "alt": "Thin transparent UFTE electrode fibers floating apart in water, their gold conductors faintly visible.",
+    "caption": "The independent UFTE electrode fibers spread in distilled water. Scale bar: 1 mm.",
+    "credit": "Yasar et al., Nature Communications (2024), Fig. 2a(v), CC BY 4.0",
+    "sourceUrl": "https://www.nature.com/articles/s41467-024-49226-9",
+    "sourceAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-024-49226-9/MediaObjects/41467_2024_49226_Fig2_HTML.png",
+    "sourceLabel": "Publisher · original figure",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Select photo 2a(v) and retain 1 mm black scale bar.",
+    "versionNote": "2024 Ultra-Flexible Tentacle Electrode, the actual free fibers of a bundle. Not the rendered implant carrier in Figure 2d/e."
+  },
+  "BTSD-ACAD-0069": {
+    "src": "/images/devices/btsd-acad-0069.webp",
+    "thumbnail": "/images/devices/btsd-acad-0069-640.webp",
+    "width": 375,
+    "height": 468,
+    "thumbnailWidth": 375,
+    "thumbnailHeight": 468,
+    "sourceDimensions": {
+      "width": 2500,
+      "height": 965
+    },
+    "crop": {
+      "left": 900,
+      "top": 468,
+      "width": 375,
+      "height": 468
+    },
+    "sourceSha256": "94884742826aea18b602abcac172bd371d7715d4b1bb13d45828cd53a6b78042",
+    "kind": "Electron micrograph",
+    "alt": "Electron micrograph of a bundle of slim glass-insulated microwires terminating in angled sharp tips.",
+    "caption": "The tissue-facing end of a CHIME glass-insulated microwire bundle, imaged by scanning electron microscopy. Scale bar: 200 µm.",
+    "credit": "Kollo et al., Frontiers in Neuroscience (2020), Fig. 2C detail, CC BY 4.0",
+    "sourceUrl": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2020.00834/full",
+    "sourceAssetUrl": "https://www.frontiersin.org/files/Articles/532074/xml-images/fnins-14-00834-g002.webp",
+    "sourceLabel": "Frontiers · original figure",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Select bottom central SEM inset of Figure 2C, retaining original 200 µm scale.",
+    "versionNote": "2020 CHIME actual tissue-end micrograph. Excludes the rendered bundle and CMOS camera/headstage."
+  },
+  "BTSD-ACAD-0073": {
+    "src": "/images/devices/btsd-acad-0073.webp",
+    "thumbnail": "/images/devices/btsd-acad-0073-640.webp",
+    "width": 171,
+    "height": 214,
+    "thumbnailWidth": 171,
+    "thumbnailHeight": 214,
+    "sourceDimensions": {
+      "width": 798,
+      "height": 465
+    },
+    "crop": {
+      "left": 14,
+      "top": 16,
+      "width": 171,
+      "height": 214
+    },
+    "sourceSha256": "3e4c49bf165c2dd6439f7653669e4c326a2dd56b992a929157f241ca67f915d9",
+    "kind": "Photograph",
+    "alt": "A tiny clear glass-encased DOT stimulator held between two dark-gloved fingers, with a 10 mm scale bar.",
+    "caption": "The packaged 2024 DOT epidural stimulator held between gloved fingers. Scale bar: 10 mm.",
+    "credit": "Woods, Singer et al., Science Advances (2024), Fig. 1A detail, CC BY 4.0",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11014439/",
+    "sourceAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/5d23/11014439/a173f3a61269/sciadv.adn0858-f1.jpg",
+    "sourceLabel": "Publication · original figure",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Select real photograph at left of 1A only; exclude exploded render; preserve 10 mm bar.",
+    "versionNote": "Research DOT prototype from 2024 paper, not unverified later clinical Motif DOT generations. Source provides modest resolution, so do not upscale excessively."
+  },
+  "BTSD-ACAD-0071": {
+    "src": "/images/devices/btsd-acad-0071.webp",
+    "thumbnail": "/images/devices/btsd-acad-0071-640.webp",
+    "width": 624,
+    "height": 426,
+    "thumbnailWidth": 624,
+    "thumbnailHeight": 426,
+    "sourceDimensions": {
+      "width": 1671,
+      "height": 1266
+    },
+    "crop": {
+      "left": 1046,
+      "top": 826,
+      "width": 624,
+      "height": 426
+    },
+    "sourceSha256": "dfe80f6f23ee12b246867538afd39ac07a4e2be9fe36837909c2f5781d9cdfa0",
+    "kind": "Photograph",
+    "alt": "A small transparent ME-BIT capsule with a dark magnetoelectric strip and a tiny circuit visible inside, shown in a clear sheath.",
+    "caption": "The encapsulated ME-BIT implant in its clear delivery sheath. Scale bar: 2 mm.",
+    "credit": "Chen et al., Nature Biomedical Engineering (2022), Fig. 1d, CC BY 4.0",
+    "sourceUrl": "https://www.nature.com/articles/s41551-022-00873-7",
+    "sourceAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41551-022-00873-7/MediaObjects/41551_2022_873_Fig1_HTML.png",
+    "sourceLabel": "Publisher · original figure",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Select photo panel 1d only, retaining original rounded outline and 2 mm scale.",
+    "versionNote": "2022 ME-BIT implant from Chen et al. This is the actual packaged device in Figure 1d, not the neighboring component render in 1c. A separate stimulation lead was introduced into a blood vessel in the porcine proof of concept."
+  },
+  "BTSD-ACAD-0080": {
+    "src": "/images/devices/btsd-acad-0080.webp",
+    "thumbnail": "/images/devices/btsd-acad-0080-640.webp",
+    "width": 482,
+    "height": 346,
+    "thumbnailWidth": 482,
+    "thumbnailHeight": 346,
+    "sourceDimensions": {
+      "width": 2168,
+      "height": 1985
+    },
+    "crop": {
+      "left": 1183,
+      "top": 379,
+      "width": 482,
+      "height": 346
+    },
+    "sourceSha256": "9857b20e41ab540acd02701ac593b8f87f16bc8f0c8fbe2bd720fad6496b0ca0",
+    "kind": "Electron micrograph",
+    "alt": "An electron micrograph of rough-surfaced, stacked hexagonal magnetoelectric nanodiscs, with a 100 nm scale bar.",
+    "caption": "Electron micrograph of the fully coated MEND nanodiscs. Scale bar: 100 nm. These are injected nanomaterials, not a conventional electrode implant.",
+    "credit": "Kim et al., Nature Nanotechnology (2024 online), Fig. 1d, CC BY 4.0",
+    "sourceUrl": "https://www.nature.com/articles/s41565-024-01798-9",
+    "sourceAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41565-024-01798-9/MediaObjects/41565_2024_1798_Fig1_HTML.png",
+    "sourceLabel": "Publisher · original figure",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Select SEM panel 1d only and retain original MEND label and 100 nm scale.",
+    "versionNote": "2024 MEND core–double-shell Fe3O4–CoFe2O4–BaTiO3 particles. Other Figure 1 micrographs show precursor cores and must not be substituted as the complete device."
+  },
+  "BTSD-FDA-0010": {
+    "src": "/images/devices/btsd-fda-0010.webp",
+    "thumbnail": "/images/devices/btsd-fda-0010-640.webp",
+    "width": 322,
+    "height": 264,
+    "thumbnailWidth": 322,
+    "thumbnailHeight": 264,
+    "sourceDimensions": {
+      "width": 1961,
+      "height": 960
+    },
+    "crop": {
+      "left": 14,
+      "top": 123,
+      "width": 322,
+      "height": 264
+    },
+    "sourceSha256": "44699a87407a179c0a5339e478d26551d245d7ca60a1b1765aa7c2428c4c2eed",
+    "kind": "Photograph",
+    "alt": "A miniature SetPoint neurostimulator beside a copper coin; its metal capsule and integrated contacts are visible.",
+    "caption": "SetPoint's implanted pulse generator, shown beside a coin for scale. RESET-RA study device, 2024.",
+    "credit": "Peterson et al., Bioelectronic Medicine (2024), Figure 2A, CC BY 4.0. Cropped from the original figure.",
+    "sourceUrl": "https://link.springer.com/article/10.1186/s42234-023-00138-x",
+    "sourceAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1186%2Fs42234-023-00138-x/MediaObjects/42234_2023_138_Fig2_HTML.png",
+    "sourceLabel": "Publication · original figure",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original scale bars and annotations retained.",
+    "versionNote": "RESET-RA trial device (2024); not a photograph specifically labeled as the 2025 commercial configuration."
+  },
+  "BTSD-STUP-0002": {
+    "src": "/images/devices/btsd-stup-0002.webp",
+    "thumbnail": "/images/devices/btsd-stup-0002-640.webp",
+    "width": 175,
+    "height": 219,
+    "thumbnailWidth": 175,
+    "thumbnailHeight": 219,
+    "sourceDimensions": {
+      "width": 798,
+      "height": 465
+    },
+    "crop": {
+      "left": 13,
+      "top": 13,
+      "width": 175,
+      "height": 219
+    },
+    "sourceSha256": "3e4c49bf165c2dd6439f7653669e4c326a2dd56b992a929157f241ca67f915d9",
+    "alt": "Photograph of a small transparent packaged DOT magnetoelectric cortical stimulator held between two black-gloved fingertips.",
+    "caption": "DOT research prototype photographed in 2024; fully packaged implant with 10 mm scale.",
+    "kind": "Photograph",
+    "credit": "Woods et al., Science Advances (2024), Fig. 1A",
+    "sourceUrl": "https://www.science.org/doi/10.1126/sciadv.adn0858",
+    "sourceAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/5d23/11014439/a173f3a61269/sciadv.adn0858-f1.jpg",
+    "sourceLabel": "Original source · photographic panel",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original scale bars and annotations retained.",
+    "versionNote": "2024 Woods et al. research prototype of the DOT platform, not asserted to be the exact later Motif clinical device revision. Retain prototype/date qualification. Same study is the academic DOT catalog record at order 117."
+  },
+  "BTSD-ACAD-0005": {
+    "src": "/images/devices/btsd-acad-0005.webp",
+    "thumbnail": "/images/devices/btsd-acad-0005-640.webp",
+    "width": 248,
+    "height": 220,
+    "thumbnailWidth": 248,
+    "thumbnailHeight": 220,
+    "sourceDimensions": {
+      "width": 1050,
+      "height": 716
+    },
+    "crop": {
+      "left": 7,
+      "top": 7,
+      "width": 248,
+      "height": 220
+    },
+    "sourceSha256": "266cbf27679c72f0df5539fb86deeee3859a46a400d624bf3b4e0ca5c1010986",
+    "alt": "Microscope photograph of a narrow flexible brown circuit with two rows of fine projecting carbon fibers; original 300-micrometre scale preserved.",
+    "caption": "Michigan carbon-fiber flex array, pictured in Huan et al. (2021): a related 2 × 8, 132µm-pitch configuration with sharpened PEDOT:pTS-coated tips, not the exact 2020 bare-carbon implant.",
+    "kind": "Optical micrograph",
+    "credit": "Huan et al., Journal of Neural Engineering 18 (2021), Figure 1A. DOI: 10.1088/1741-2552/ac3dd7",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10729305/",
+    "sourceAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/3a0f/10729305/082fcca8e846/nihms-1947721-f0001.jpg",
+    "sourceLabel": "Original source · photographic panel",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original scale bars and annotations retained.",
+    "versionNote": "Family-qualified specimen, not exact Patel 2015/2020 implant. Primary methods identify Michigan/Chestek fabrication, flex 2 × 8 layout and 132µm pitch, citing Patel 2020 as fabrication reference. This 2021 intracellular Aplysia study sharpens and PEDOT:pTS-coats tips; catalog 2020 configuration uses laser/plasma-exposed bare carbon. Label this difference visibly, and do not imply the 2021 intracellular stimulation result belongs to the 2015/2020 catalog cohorts."
+  },
+  "BTSD-ACAD-0072": {
+    "src": "/images/devices/btsd-acad-0072.webp",
+    "thumbnail": "/images/devices/btsd-acad-0072-640.webp",
+    "width": 316,
+    "height": 119,
+    "thumbnailWidth": 316,
+    "thumbnailHeight": 119,
+    "sourceDimensions": {
+      "width": 766,
+      "height": 538
+    },
+    "crop": {
+      "left": 15,
+      "top": 2,
+      "width": 316,
+      "height": 119
+    },
+    "sourceSha256": "05396f2e75f461fa8afa1112c0a758907574620eb29082a5303d69b349a397cf",
+    "kind": "Photograph",
+    "alt": "Six small black encapsulated stimulator nodes connected to long thin electrode leads, photographed together with a 1 cm scale bar.",
+    "caption": "Six magnetoelectric-powered spinal stimulators with their electrode leads. Authors' preprint prototype photograph, 2024. Scale bar: 1 cm.",
+    "credit": "Woods, Alrashdan et al., Research Square preprint (2024), Fig. 3a, CC BY 4.0",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11469518/",
+    "sourceAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/f903/11469518/915934d21e14/nihpp-rs5005441v1-f0003.jpg",
+    "sourceLabel": "Original source · photographic panel",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original scale bars and annotations retained.",
+    "versionNote": "The 2024 authors' preprint version of the ME-network study published online in Nature Biomedical Engineering in 2025. PubMed PMID39399673 explicitly lists DOI10.1038/s41551-025-01489-3 as its update. It is a six-node epidural spinal-stimulator network, not the twelve-node LED demonstrator or the later cardiac-pacing experiment. Caption must preserve preprint-source distinction; not asserted to be a new 2025 hardware generation."
+  },
+  "BTSD-FDA-0012": {
+    "src": "/images/devices/btsd-fda-0012.webp",
+    "thumbnail": "/images/devices/btsd-fda-0012-640.webp",
+    "width": 1600,
+    "height": 459,
+    "thumbnailWidth": 640,
+    "thumbnailHeight": 184,
+    "sourceDimensions": {
+      "width": 4416,
+      "height": 3312
+    },
+    "crop": {
+      "left": 70,
+      "top": 840,
+      "width": 4040,
+      "height": 1160
+    },
+    "sourceSha256": "9f39ca00d1e403c8ab28f3565efa069d1f8cc819defca9ab161b52376f947a87",
+    "kind": "Photograph",
+    "alt": "An archival Cochlear Nucleus Freedom CI24RE implant on paper, with a round receiver coil, metal stimulator housing and two thin electrode leads.",
+    "caption": "Archival Nucleus specimen: Cochlear Freedom CI24RE receiver and electrode leads, photographed in 2009. Not the CI1000/Nexa generation.",
+    "credit": "Edwtie, Cochearimplants.JPG (2009), Wikimedia Commons, CC BY-SA 3.0. Cropped; the adapted photograph remains CC BY-SA 3.0.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cochearimplants.JPG",
+    "sourceAssetUrl": "https://upload.wikimedia.org/wikipedia/commons/2/24/Cochearimplants.JPG",
+    "sourceLabel": "Original source · photographic panel",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original scale bars and annotations retained. The adapted photograph remains CC BY-SA 3.0.",
+    "versionNote": "This is explicitly a 2009 CI24RE/Freedom specimen, not the 2025 CI1000/Nexa implant emphasized by the current sheet. The page title describes the Nucleus family and its version boundary names CI24RE, permitting a visibly qualified archival specimen only. Do not infer modern dimensions, electrode counts or performance from this older photograph. Main agent expressly authorized clearly qualified archival family specimens."
+  },
+  "BTSD-ACAD-0043": {
+    "src": "/images/devices/btsd-acad-0043.webp",
+    "thumbnail": "/images/devices/btsd-acad-0043-640.webp",
+    "width": 511,
+    "height": 328,
+    "thumbnailWidth": 511,
+    "thumbnailHeight": 328,
+    "sourceDimensions": {
+      "width": 761,
+      "height": 1116
+    },
+    "crop": {
+      "left": 244,
+      "top": 366,
+      "width": 511,
+      "height": 328
+    },
+    "sourceSha256": "fe3d3fdf77089bd57aabefea17974bbf9daf104651156bc805739398e91a2e7a",
+    "kind": "Optical micrograph",
+    "alt": "Parallel fine NeuroRoots electrode tendrils ending in small round contacts, viewed through a microscope.",
+    "caption": "NeuroRoots electrode tendrils and contacts under optical microscopy. Scale bar: 40 µm.",
+    "credit": "NeuroRoots study authors, APL Bioengineering (2024), Figure 1B, CC BY-NC 4.0",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11309783/",
+    "sourceAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/8d5f/11309783/eb985e0737b7/AAIDBI-000014-085109_1-g001.jpg",
+    "sourceLabel": "Original source · photographic panel",
+    "license": "CC BY-NC 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original scale bars and annotations retained.",
+    "versionNote": "Actual fabricated NeuroRoots electrodes from the 2024 study; not the schematic render or insertion shuttle shown elsewhere in the source figure."
+  },
+  "BTSD-ACAD-0062": {
+    "src": "/images/devices/btsd-acad-0062.webp",
+    "thumbnail": "/images/devices/btsd-acad-0062-640.webp",
+    "width": 151,
+    "height": 124,
+    "thumbnailWidth": 151,
+    "thumbnailHeight": 124,
+    "sourceDimensions": {
+      "width": 440,
+      "height": 390
+    },
+    "crop": {
+      "left": 287,
+      "top": 160,
+      "width": 151,
+      "height": 124
+    },
+    "sourceSha256": "4ba0d7c6c88149311330f9098856b040871eff06c540b377eb993c7962ec2cee",
+    "kind": "Electron micrograph",
+    "alt": "Electron micrograph of a dense bundle of slender parallel microwires with exposed tips at staggered heights.",
+    "caption": "The tissue-facing microwire bundle of the Stanford microwire–CMOS interface. Scale bar: 500 µm.",
+    "credit": "Obaid et al., Science Advances (2020), Figure 1C, CC BY-NC 4.0",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7083623/",
+    "sourceAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/4dce/7083623/360937aedd74/aay2789-F1.jpg",
+    "sourceLabel": "Original source · photographic panel",
+    "license": "CC BY-NC 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original scale bars and annotations retained.",
+    "versionNote": "2020 research device, showing its penetrating microwires rather than the external CMOS readout chip. Original source resolution is limited."
+  }
+}

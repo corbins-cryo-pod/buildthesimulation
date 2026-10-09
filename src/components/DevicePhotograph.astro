@@ -1,0 +1,84 @@
+---
+const { photo, title, deviceId } = Astro.props;
+const dialogId = `photo-${deviceId.toLowerCase().replace(/[^a-z0-9-]/g, '-')}`;
+---
+
+<implant-photograph>
+  <figure class="implant-photo">
+    <div class="photo-label"><span>Physical interface</span><span>{photo.kind}</span></div>
+    <a class="photo-open" href={photo.src} target="_blank" rel="noopener" data-photo-open aria-haspopup="dialog" aria-controls={dialogId} aria-label={`Enlarge photograph of ${title}`}>
+      <img src={photo.src} srcset={photo.width > photo.thumbnailWidth ? `${photo.thumbnail} ${photo.thumbnailWidth}w, ${photo.src} ${photo.width}w` : undefined} sizes="(max-width: 680px) calc(100vw - 72px), 760px" width={photo.width} height={photo.height} alt={photo.alt} decoding="async" fetchpriority="high" />
+      <span class="photo-enlarge" aria-hidden="true">View closer <span>↗</span></span>
+    </a>
+    <figcaption>
+      <p class="photo-caption">{photo.caption}</p>
+      {photo.versionNote && <p class="photo-version">{photo.versionNote}</p>}
+      <details class="photo-provenance">
+        <summary>Image credit &amp; source</summary>
+        <p>{photo.credit} · <a href={photo.sourceUrl} target="_blank" rel="noopener noreferrer">{photo.sourceLabel}</a> · <a href={photo.licenseUrl} target="_blank" rel="noopener noreferrer">{photo.license}</a>.</p>
+        {photo.changes && <p>{photo.changes}</p>}
+      </details>
+    </figcaption>
+  </figure>
+
+  <dialog id={dialogId} class="photo-dialog" aria-label={`Photograph of ${title}`}>
+    <form method="dialog"><button class="photo-close" type="submit" autofocus aria-label="Close photograph">Close <span aria-hidden="true">×</span></button></form>
+    <div class="photo-dialog-heading"><span>{photo.kind}</span><h2>{title}</h2></div>
+    <img src={photo.src} width={photo.width} height={photo.height} alt={photo.alt} loading="lazy" decoding="async" />
+    <p>{photo.caption}</p>
+    <p class="photo-dialog-credit">{photo.credit} · <a href={photo.sourceUrl} target="_blank" rel="noopener noreferrer">Source</a> · <a href={photo.licenseUrl} target="_blank" rel="noopener noreferrer">{photo.license}</a>{photo.changes ? ` · ${photo.changes}` : ''}</p>
+  </dialog>
+</implant-photograph>
+
+<script>
+  class ImplantPhotograph extends HTMLElement {
+    connectedCallback() {
+      if (this.dataset.ready) return;
+      this.dataset.ready = 'true';
+      const opener = this.querySelector<HTMLAnchorElement>('[data-photo-open]');
+      const dialog = this.querySelector<HTMLDialogElement>('dialog');
+      if (!opener || !dialog || typeof dialog.showModal !== 'function') return;
+      opener.addEventListener('click', (event) => {
+        // Keep native new-tab behavior for modified clicks.
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        dialog.showModal();
+      });
+      dialog.addEventListener('click', (event) => {
+        if (event.target !== dialog) return;
+        const box = dialog.getBoundingClientRect();
+        if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close();
+      });
+      dialog.addEventListener('close', () => opener.focus({ preventScroll: true }));
+    }
+  }
+  if (!customElements.get('implant-photograph')) customElements.define('implant-photograph', ImplantPhotograph);
+</script>
+
+<style>
+  implant-photograph { display: block; }
+  .implant-photo { margin: 28px 0; }
+  .photo-label { display: flex; justify-content: space-between; gap: 12px; padding: 11px 0; border-top: 1px solid var(--border); font-size: 13px; font-style: italic; opacity: .72; }
+  .photo-open { display: grid; position: relative; background: #f5f4f0; border-radius: 3px; overflow: hidden; text-decoration: none; }
+  .photo-open img { width: 100%; height: clamp(260px, 45vw, 490px); object-fit: scale-down; padding: 24px; transition: transform .45s ease; }
+  .photo-open:hover img { transform: scale(1.025); }
+  .photo-enlarge { position: absolute; right: 14px; bottom: 14px; color: #282923; background: #f8f7f2; border: 1px solid #dcdad1; padding: 6px 11px; border-radius: 3px; font-size: 14px; font-style: italic; }
+  .photo-enlarge span { margin-left: 10px; }
+  figcaption { padding-top: 12px; }
+  .photo-caption { margin: 0; font-size: 18px; font-style: italic; line-height: 1.45; }
+  .photo-version { font-size: 13px; line-height: 1.55; opacity: .75; margin: 7px 0 0; }
+  .photo-provenance { margin-top: 9px; font-size: 12px; opacity: .75; }
+  .photo-provenance p { margin: 7px 0 0; line-height: 1.6; overflow-wrap: anywhere; }
+  .photo-dialog { max-width: min(1100px, 94vw); width: 94vw; max-height: 94dvh; overflow: auto; padding: 28px; color: var(--text); background: var(--menuBg); border: 1px solid var(--borderStrong); border-radius: 8px; }
+  .photo-dialog::backdrop { background: rgb(0 0 0 / .78); }
+  .photo-dialog form { display: flex; justify-content: flex-end; margin: 0; }
+  .photo-close { cursor: pointer; color: inherit; background: transparent; border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; font-style: italic; }
+  .photo-close span { margin-left: 12px; }
+  .photo-dialog-heading > span { font-size: 13px; opacity: .65; font-style: italic; }
+  .photo-dialog-heading h2 { font: 400 clamp(30px, 5vw, 56px)/1.1 var(--font-heading); margin: 8px 0 22px; }
+  .photo-dialog > img { display: block; width: 100%; height: auto; max-height: 65dvh; object-fit: scale-down; background: #f5f4f0; }
+  .photo-dialog > p { font-size: 16px; line-height: 1.5; font-style: italic; }
+  .photo-dialog .photo-dialog-credit { font-size: 12px; font-style: normal; opacity: .7; }
+  @media (max-width: 680px) { .photo-open img { padding: 12px; } .photo-dialog { padding: 18px; } .photo-caption { font-size: 16px; } }
+  @media (prefers-reduced-motion: reduce) { .photo-open img { transition: none; } .photo-open:hover img { transform: none; } }
+</style>

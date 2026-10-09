@@ -6,6 +6,8 @@ import NeuropixelsExplorer from "../../components/NeuropixelsExplorer";
 import DeviceModelViewer from "../../components/DeviceModelViewer";
 import { getDeviceFamily } from "../../lib/device-families.js";
 import { getDeviceModel } from "../../lib/devices/catalog.js";
+import { getDevicePhoto } from "../../lib/device-photos.js";
+import DevicePhotograph from "../../components/DevicePhotograph.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("designs");
@@ -26,6 +28,7 @@ const outline = headings.filter(h => h.depth === 2 || h.depth === 3);
 
 const subtitle = entry.data.description ?? "BCI device entry.";
 const titleNoPrefix = entry.data.title.replace(/^\d+\s*—\s*/, "");
+const photo = getDevicePhoto(entry.data.device_id);
 ---
 
 <Layout pageTitle="Devices" subtitle={subtitle} description={entry.data.description}>
@@ -41,6 +44,8 @@ const titleNoPrefix = entry.data.title.replace(/^\d+\s*—\s*/, "");
       ) : null}
 
     </header>
+
+    {photo && <DevicePhotograph photo={photo} title={titleNoPrefix} deviceId={entry.data.device_id} />}
 
     <section class="sheetControl" aria-label="Document control and evidence">
       <dl>

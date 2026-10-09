@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { compareDeviceEntries } from "../../lib/device-order.js";
 import DevicesDirectory from "../../components/DevicesDirectory";
+import { getDevicePhoto } from "../../lib/device-photos.js";
 
 function stripPrefix(title) {
   return title.replace(/^\d+\s*[-—]\s*/, "");
@@ -24,17 +25,20 @@ const normalized = entries.map((p) => ({
   website: p.data.website ?? "",
   last_updated: p.data.last_updated?.toISOString().slice(0,10) ?? "",
   tags: p.data.tags ?? [],
+  photo: getDevicePhoto(p.data.device_id),
 }));
+const photographedCount = normalized.filter(entry => entry.photo).length;
 ---
 
 <Layout
   pageTitle="Devices"
-  subtitle="Explore neural interfaces and inspect their 3D models."
-  description="BCI Devices: a searchable directory with curated facets (axis, interface type, directionality, form factor)."
+  subtitle="See the hardware. Explore neural interfaces and inspect their 3D models."
+  description="Explore implanted neural interfaces through source-credited hardware photographs, searchable specification sheets, and 3D reference models."
 >
   <section class="catalog-heading" aria-labelledby="device-catalog-title">
     <h2 id="device-catalog-title">Device Catalog</h2>
     <h3><a href="/devices/models/">3D Model Finder</a></h3>
+    {photographedCount > 0 && <p class="catalog-photo-note"><em>The interface, up close.</em> {photographedCount} photographed records, from implant assemblies to microscopic contacts. Images are not to a common scale.</p>}
   </section>
   <DevicesDirectory client:load entries={normalized} />
 </Layout>
@@ -44,4 +48,6 @@ const normalized = entries.map((p) => ({
   .catalog-heading h2 { font-size: var(--title-section); margin: 0 0 8px; }
   .catalog-heading h3 { font-size: var(--title-card); font-style: italic; margin: 0; }
   .catalog-heading a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+  .catalog-photo-note { max-width: 700px; margin: 18px 0 0; font-size: 16px; line-height: 1.55; color: var(--muted); }
+  .catalog-photo-note em { color: var(--text); }
 </style>
