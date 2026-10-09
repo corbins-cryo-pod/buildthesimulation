@@ -21,7 +21,7 @@ An external, head-mounted recording transmitter connected to implanted electrode
 
 ## Core interface specifications
 
-The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values remain unreported; inapplicable fields are marked. Configuration-specific details and limits follow below.
+The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer-issued datasheet. Missing values stay blank; inapplicable fields are marked. Configuration-specific details and limits follow below.
 
 | Field | Specification and source scope |
 | --- | --- |
