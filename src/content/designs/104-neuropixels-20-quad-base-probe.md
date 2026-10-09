@@ -43,7 +43,7 @@ Quad Base keeps the four-shank Neuropixels 2.0 recording geometry while expandin
 | Pitch | 15 µm column pitch and 32 µm row pitch per the manufacturer datasheet |
 | Electrode lengths | 10 mm per shank |
 | Shank width and thickness | Shank cross-section 70 x 24 µm. Probe base 10.2 mm wide versus 3.5 mm for standard 2.0 in the preprint. Headstage 14 x 18 mm versus 10 x 14 mm for standard 2.0 |
-| Tip and exposed site geometry | Tip geometry unreported |
+| Tip and exposed site geometry | Tip geometry not reported |
 | Contact coating | Titanium nitride |
 | Insulation |  |
 | Insertion method | Not given beyond rodent implantation methods in the preprint |
@@ -68,7 +68,7 @@ Quad Base keeps the four-shank Neuropixels 2.0 recording geometry while expandin
 | Field | Value and source scope |
 | --- | --- |
 | Target tissue | Rodent brain |
-| Insertion trauma and BBB disruption | Rigid four-shank insertion; injury and blood-brain barrier disruption unreported |
+| Insertion trauma and BBB disruption | Rigid four-shank insertion; injury and blood-brain barrier disruption not reported |
 | Vascular disruption risk |  |
 | Micromotion sensitivity |  |
 | Gliosis and encapsulation |  |
@@ -81,7 +81,7 @@ Quad Base keeps the four-shank Neuropixels 2.0 recording geometry while expandin
 | Field | Value and source scope |
 | --- | --- |
 | Onboard electronics | CMOS probe base with 1,536 readout channels |
-| Data path | Probe to headstage to acquisition system; details beyond headstage dimensions unreported |
+| Data path | Probe to headstage to acquisition system; details beyond headstage dimensions not reported |
 | Telemetry bandwidth | Not applicable: wired |
 | Sampling rate |  |
 | Power | Datasheet lists package mass 0.51 to 0.55 g, which excludes cable and acquisition |
@@ -95,7 +95,7 @@ Quad Base keeps the four-shank Neuropixels 2.0 recording geometry while expandin
 
 | Field | Value and source scope |
 | --- | --- |
-| Acute yield | Two probes gave 3,072 channels in mouse sequence recordings per the application page; per-probe yield unreported here |
+| Acute yield | Two probes gave 3,072 channels in mouse sequence recordings per the application page; per-probe yield not reported here |
 | Chronic yield |  |
 | Stability over time |  |
 | Longevity |  |
