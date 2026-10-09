@@ -43,25 +43,25 @@ StairMed's WRS pairs ultra-flexible penetrating electrodes with a wireless impla
 | Pitch | 65 um typical site pitch along a shank in the intraoperative arrays [2] |
 | Electrode lengths | Intraoperative shanks 20 mm long (35 mm for the 256-channel array) [2] |
 | Shank width and thickness | Intraoperative shanks 80 to 245 um wide, tapered, and 2 um thick per the Nature Communications methods. StairMed's own implant page states electrode thickness of only 1 um. Both are listed because the sources differ and may describe different versions [2][4] |
-| Tip and exposed site geometry | Unreported |
-| Contact coating | Unreported |
-| Insulation | Unreported; the paper describes a Ti/Ni/Au (50/800/200 nm) I/O layer but the insulating film material was not extracted [2] |
+| Tip and exposed site geometry |  |
+| Contact coating |  |
+| Insulation | The paper describes a Ti/Ni/Au (50/800/200 nm) I/O layer but the insulating film material was not extracted [2] |
 | Insertion method | Intraoperative arrays were guided by tungsten shuttle needles 75 um in diameter to 5 to 6 mm depth, then the needles were removed. StairMed reports a 3 to 5 mm cranial puncture with sensor depth of 5 to 8 mm for the implant (company statement via MedPath) [2][6]. The Shanghai government account gives a 3 to 5 mm cranial micro-hole and an electrode about one hundredth the width of a hair (company statement) [10] |
-| Anchoring and fixation | Unreported |
+| Anchoring and fixation |  |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area | Unreported |
-| Electrode material | Unreported |
-| Impedance (with measurement frequency) | Unreported |
+| Exposed site area |  |
+| Electrode material |  |
+| Impedance (with measurement frequency) |  |
 | Noise floor or SNR | Company states ultra-low background noise and high signal-to-noise ratio without figures [4] |
 | Recording modality | Single-unit action potentials and local field potentials [3][2] |
-| Sampling rate | Unreported |
-| Stimulation capability | Unreported |
-| Charge injection limit | Unreported |
-| Reference and ground | Unreported |
+| Sampling rate |  |
+| Stimulation capability |  |
+| Charge injection limit |  |
+| Reference and ground |  |
 
 ## Tissue interface and bioresponse
 
@@ -69,10 +69,10 @@ StairMed's WRS pairs ultra-flexible penetrating electrodes with a wireless impla
 | --- | --- |
 | Target tissue | Cortex, inserted 5 to 8 mm deep [2][6] |
 | Insertion trauma and BBB disruption | Tungsten shuttle needles created an insertion track much larger than the shank; a small superficial pia incision was made in all patients. No histology reported [2] |
-| Vascular disruption risk | Unreported |
+| Vascular disruption risk |  |
 | Micromotion sensitivity | Flexible shanks followed brain pulsation; spike position drift was lower after the shuttle needle was removed than with the needle in place [2] |
-| Gliosis and encapsulation | Unreported |
-| Neuron loss near sites | Unreported |
+| Gliosis and encapsulation |  |
+| Neuron loss near sites |  |
 | Foreign-body response mitigation | Ultra-thin flexible shank mechanics, per the company and paper; no chronic tissue data in humans [2][4] |
 | Typical failure modes | In the intraoperative study, 5 early cases produced no valid single-unit data, mainly from operating-room electrical noise and damaged shuttle needle tips [2] |
 
@@ -82,25 +82,25 @@ StairMed's WRS pairs ultra-flexible penetrating electrodes with a wireless impla
 | --- | --- |
 | Onboard electronics | Implant electronics paired with the flexible electrodes for single-cell resolution recording [4] |
 | Data path | Wireless; implant has no visible external components, with an external data and energy transmitter (DTC01/02) [1][4] |
-| Telemetry bandwidth | Unreported |
-| Sampling rate | Unreported |
+| Telemetry bandwidth |  |
+| Sampling rate |  |
 | Power | Wireless power supply, no internal battery, integrated power and communication coil [4] |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | Titanium alloy and zirconia ceramic enclosure with a high-vacuum seal, per the company; implant about 26 mm in diameter and under 6 mm thick (company statement via MedPath) [4][6]. Shanghai government reporting also gives 26 mm diameter and under 6 mm thickness [10] |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Company-reported 3 to 5 mm cranial puncture [6] |
-| Output connectors | Unreported |
+| Output connectors |  |
 
 ## Performance envelope
 
 | Field | Value and source scope |
 | --- | --- |
 | Acute yield | 719 single neurons isolated from 1,302 valid channels across 11 of 16 patients, maximum 135 neurons simultaneously in one patient, recordings up to 36.5 minutes (secondary summary of the Nature Communications study) [2][7] |
-| Chronic yield | Unreported |
+| Chronic yield |  |
 | Stability over time | The HNE research electrode page claims stable recording of 300 days or more in animals (company claim) [3] |
-| Longevity | Unreported |
-| Revision and explant experience | Unreported |
-| Adverse events | Unreported |
+| Longevity |  |
+| Revision and explant experience |  |
+| Adverse events |  |
 | Notable demonstrations | Company-disclosed: after implantation an amputee patient controlled a computer and played games within 2 to 3 weeks of training; later a patient scored 6.19 bits per second on a one-minute cursor test on CCTV in July 2026, which StairMed itself described as a marketing figure and which is not task-matched to published benchmarks [5][6]. Chinese reports: second patient implanted June 2025 (injured in 2022) controlled a wheelchair and a robot dog with under 100 ms end-to-end latency (company statement) [14]; third patient, October 2025, controlled a robotic arm [14]. Later company disclosure of 380 bits per minute, under 50 ms latency and 3 to 4 hours of continuous use refers to the 256-channel system [13] |
 
 ## Clinical and preclinical evidence
@@ -108,7 +108,7 @@ StairMed's WRS pairs ultra-flexible penetrating electrodes with a wireless impla
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | Company-disclosed 18 cumulative implants at July 20, 2026, not an audited registry figure. Registries estimate 4 (NCT06829212), 5 (NCT06944834) and 4 (NCT07647315) participants. Intraoperative study: 16 patients [1][2][5][8][9]. Chinese reports: first patient March 2025, second June 2025, third October 2025, and the 256-channel WRS02 in early 2026 [13, 14]. The plan stated in May 2025 was 3 to 4 subjects in 2025 [10] |
-| Preclinical cohort | Unreported |
+| Preclinical cohort |  |
 | Follow-up duration | NCT06829212 primary completion February 2027, average follow-up about 7 months for the primary outcome [1] |
 | Indications | Paraplegia or quadriplegia, spinal cord injury, brainstem stroke, ALS and bilateral upper-limb amputation (NCT06829212); a separate registered study targets Mandarin speech neuroprosthesis [1][9] |
 | Trials and registries | NCT06829212 (RISE, recruiting, start 2025-03, completion 2027-02); NCT06944834 (motor rehabilitation, not yet recruiting, start 2025-04); NCT07647315 (Mandarin speech, recruiting, start 2026-09-01) [1][8][9]. Shanghai government reporting said the 2025 trial ran under NMPA guidance with Huashan ethics approval and registration-trial-level requirements [10]. Company news: 500 million yuan strategic financing announced March 2026, with a large-scale registration trial to begin within the year [15] |
