@@ -38,7 +38,7 @@ Beinao-1 (also written Beinao No. 1, "The NeuCyber Matrix BCI System") is a seco
 
 | Field | Value and source scope |
 | --- | --- |
-| Interface type | Semi-invasive flexible ultra-thin electrode matrix [2] |
+| Interface type | Semi-invasive flexible ultra-thin electrode matrix [2]; Reuters describes it as a mesh with electrodes on the brain's outer membrane [4] |
 | Array layout | Matrix; coordinates unreported |
 | Electrode count | 128 channels [2] |
 | Pitch | Unreported |
@@ -108,11 +108,11 @@ Beinao-1 (also written Beinao No. 1, "The NeuCyber Matrix BCI System") is a seco
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects | Counts disagree and are all listed: 7 exploratory patients per CIBR [1]; nearly 30 implants in the earlier phase per China Daily, June 15, 2026 [2]; 16 implantations per a Chinese Academy of Sciences academic divisions report, July 6, 2026 [3]. These may count different things and the sources do not say. Trial started with two spinal cord injury patients [1] |
+| Human subjects | Counts disagree and are all listed: 7 exploratory patients per CIBR [1]; seven human implantations of Beinao-1 as of March 20, 2026 per NeuCyber's rotating CEO to Reuters [4]; nearly 30 implants in the earlier phase per China Daily, June 15, 2026 [2]; 16 implantations per a Chinese Academy of Sciences academic divisions report, July 6, 2026 [3]. These may count different things and the sources do not say. Trial started with two spinal cord injury patients [1] |
 | Preclinical cohort | Unreported |
 | Follow-up duration | Hours of operation reported above [1, 2]; per-patient follow-up unreported |
 | Indications | Spinal cord injury, ALS or stroke patients, restoring motor and speech function, per the institute [1] |
-| Trials and registries | GCP-compliant multi-center trial from March 31, 2026 with initial planned enrollment of 36 patients; registry identifier not pinned in this sheet [1, 2]. Nationwide hospital use is planned for 2027 per the academy report [3] |
+| Trials and registries | GCP-compliant multi-center trial from March 31, 2026 with initial planned enrollment of 36 patients; registry identifier not pinned in this sheet. NeuCyber told Reuters it hopes to expand to 50 patients, with registration trials focused on spinal cord injury motor restoration and commercial availability two to three years out (company statements). Nationwide hospital use is planned for 2027 per the academy report [1][2][3][4] |
 | Primary outcomes | None peer-reviewed |
 | Key limitations | Implant counts differ by source; electrode area, pitch and implant dimensions are not published [1, 2, 3] |
 
@@ -129,3 +129,4 @@ Beinao-1 (also written Beinao No. 1, "The NeuCyber Matrix BCI System") is a seco
 1. CIBR. ["Beinao No. 1" Advances to GCP Clinical Trials](https://en.cibr.ac.cn/detail/cibrNewsnews/c0370bcc7cb94c4a8c980f38f9bf16c0). April 2026.
 2. China Daily. [China's Beinao-1 brain-computer interface enters registered trials](https://www.chinadaily.com.cn/a/202606/15/WS6a2fc5cba310986e2b460147.html). 15 Jun 2026.
 3. Chinese Academy of Sciences academic divisions. [Beinao No.1 BCI System Completes 16 Implantations](https://english.casad.cas.cn/newsroom/ma/202607/t20260706_1176268.html). 6 Jul 2026.
+4. Reuters. [Beijing-backed brain chip firm says it is 3 years behind Musk's Neuralink](https://www.reuters.com/business/healthcare-pharmaceuticals/beijing-backed-brain-chip-firm-says-it-is-3-years-behind-musks-neuralink-2026-03-20/). 20 Mar 2026.
