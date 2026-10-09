@@ -17,7 +17,7 @@ draft: false
 
 # Active-matrix flexible ECoG array (Viventi, 2011)
 
-A flexible cortical-surface array with a buffer and a multiplexing transistor at each electrode. Every figure below belongs to the 2011 cat experiments and bench tests named in the row. It is not the later 196-site rat array and not a qualified chronic implant. Unreported means not established by the reviewed primary paper.
+A flexible cortical-surface array with a buffer and a multiplexing transistor at each electrode. Every figure below belongs to the 2011 cat experiments and bench tests named in the row. It is not the later 196-site rat array and not a qualified chronic implant. A blank cell means not established by the reviewed primary paper.
 
 ## Identity
 
@@ -28,7 +28,7 @@ A flexible cortical-surface array with a buffer and a multiplexing transistor at
 | Interface class | Non-penetrating cortical-surface (subdural/epicortical) array with on-array active electronics |
 | Origin | Jonathan Viventi, John Rogers, Brian Litt and collaborators; Nature Neuroscience 2011 |
 | First demonstrated | 2011 primary paper. Earlier multiplexed-array work is not rated on this sheet |
-| First human implant | Unreported. No human implantation in the paper |
+| First human implant | No human implantation in the paper |
 | Species studied | Ten cats for in vivo visual-cortex mapping. Spindle, visual and picrotoxin seizure recordings are separate demonstrations |
 | Regulatory status | Preclinical research, acute animal use. No human clearance established |
 | Function | Electrical recording with active multiplexing. Stimulation not demonstrated |
@@ -48,7 +48,7 @@ A flexible cortical-surface array with a buffer and a multiplexing transistor at
 | Contact coating | Platinum, about 50 nm, deposited on contacts. Applied to the test contacts used for the impedance figure |
 | Insulation | 1.2 µm polyimide interlayer plus further polyimide and epoxy encapsulation (about 1.2 µm and 4 µm in the encapsulation stack); 8 µm epoxy is also stated for the assembled device. Scopes differ |
 | Insertion method | Surface placement through craniotomy and durotomy. Folded around a low-modulus PDMS insert (about 700 µm) and slid into the interhemispheric fissure, as well as flat placement |
-| Anchoring and fixation | Unreported for the electrodes. Cat preparation and acute positioning only; no chronic anchoring described |
+| Anchoring and fixation | Not given for the electrodes. Cat preparation and acute positioning only; no chronic anchoring described |
 
 ## Electrode and channel physics
 
@@ -61,7 +61,7 @@ A flexible cortical-surface array with a buffer and a multiplexing transistor at
 | Recording modality | Extracellular surface field potentials from sleep spindles, single-trial visual responses and electrographic seizures |
 | Sampling rate | Actual per-site rate about 277 Hz. Row cycling 5 kHz and 100 kS/s total with 20-fold oversampling. The above 10 kS/s figure is circuit capability, not the sampling used in the cat recordings |
 | Stimulation capability | Not demonstrated for this array. Recording only |
-| Charge injection limit | Unreported. External test current sources in the paper are not an array charge-injection rating |
+| Charge injection limit | External test current sources in the paper are not an array charge-injection rating |
 | Reference and ground | Reference (ground) was clipped to nearby exposed muscle in the cat experiments |
 
 ## Tissue interface and bioresponse
@@ -70,7 +70,7 @@ A flexible cortical-surface array with a buffer and a multiplexing transistor at
 | --- | --- |
 | Target tissue | Cortical surface of the cat: visual cortex and interhemispheric surface |
 | Insertion trauma and BBB disruption | Craniotomy and durotomy required. The array does not penetrate cortex. Tissue injury from the surface contact is unreported |
-| Vascular disruption risk | Unreported for this array. Surface placement over vessels is not quantified |
+| Vascular disruption risk | Not given for this array. Surface placement over vessels is not quantified |
 | Micromotion sensitivity | Conformal thin film and folding aim at close contact. Micromotion behavior in a long-term implant is unreported |
 | Gliosis and encapsulation | Not assessed. The recordings are acute and the paper gives no chronic encapsulation data |
 | Neuron loss near sites | Not assessed. Surface array, no penetrating histology reported |
@@ -86,9 +86,9 @@ A flexible cortical-surface array with a buffer and a multiplexing transistor at
 | Telemetry bandwidth | Not applicable: wired. No wireless link |
 | Sampling rate | Per-site about 277 Hz after multiplexing. Total 100 kS/s with 20-fold oversampling; faster ADCs are described as capability only |
 | Power | External acquisition electronics. No implanted battery or wireless power reported |
-| Thermal management | Unreported |
+| Thermal management |  |
 | Packaging and hermeticity | Encapsulation of polyimide and epoxy to limit leakage in saline. Not qualified as chronic hermetic packaging |
-| MRI compatibility | Unreported |
+| MRI compatibility |  |
 | Surgical complexity | Craniotomy and durotomy; folding and fissure insertion adds handling complexity. Human surgical workflow unreported |
 | Output connectors | Elform anisotropic conductive film to a short cable and interface board; connector model unreported |
 
@@ -98,10 +98,10 @@ A flexible cortical-surface array with a buffer and a multiplexing transistor at
 | --- | --- |
 | Acute yield | Gain test: about 83% of channels operational, median gain 0.68. Non-operational channels were interpolated from 3 x 3 neighbors before plotting. Not all 360 channels were independent recordings |
 | Chronic yield | Not demonstrated. The paper reports acute experiments in cats |
-| Stability over time | Unreported |
+| Stability over time |  |
 | Longevity | Not demonstrated. Experiment durations are acute recordings, not implant lifetime |
 | Revision and explant experience | Not applicable: no implanted survival or explant described |
-| Adverse events | Unreported |
+| Adverse events |  |
 | Notable demonstrations | Mapping of spindles, single-trial visual responses and electrographic seizures; clinical-scale and microseizure-scale spatial patterns resolved, including seizure spiral waves in picrotoxin-treated cats |
 
 ## Clinical and preclinical evidence
@@ -133,7 +133,7 @@ The 12 fields follow the Blackrock Utah table for comparison, not a manufacturer
 | Electrode Pitch | 500 µm contact spacing |
 | Channel Count | 360 recording sites, 720 transistors |
 | Output Connectors | Elform anisotropic conductive film to interface board; model unreported |
-| Output Conn. dimensions L x W x H | Unreported |
+| Output Conn. dimensions L x W x H |  |
 | Standard Electrode Lengths | Not applicable: surface contacts |
 | Impedance | 84 kΩ gold and 29 kΩ platinum measured on 250 x 250 µm passive test contacts at 1 kHz; about 20 kΩ expected for the 300 x 300 µm active contact, not directly measured |
 | Array Dimensions | 18 by 20 sites at 500 µm pitch; sampled region discussed as 10 x 9 mm; full substrate outline unreported |
