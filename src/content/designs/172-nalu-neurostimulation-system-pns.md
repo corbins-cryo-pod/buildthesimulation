@@ -18,6 +18,8 @@ draft: false
 
 The Nalu system is a miniature implanted peripheral nerve stimulator with an eight-electrode lead, powered wirelessly by a worn Therapy Disc. This sheet uses the 2019 510(k) K183579 and the 2024 K232415 record. A 510(k) shows substantial equivalence, not efficacy.
 
+Company brief: [Nalu Medical, Inc.](/companies/67-nalu-medical-company-brief/).
+
 ## Identity
 
 | Field | Value and source scope |
