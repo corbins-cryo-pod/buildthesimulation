@@ -40,7 +40,7 @@ NEO (Neural Electronic Opportunity) is a battery-free epidural ECoG implant for 
 | --- | --- |
 | Interface type | Epidural, skull-embedded implant with electrodes outside the dura [1] |
 | Array layout | Epidural array over the functionally localized area [1]; layout not published in the sources used here |
-| Electrode count | Not published in any source read, English or Chinese. The NMPA review summary lists electrode kit models K1014-15, K1014-25 and K1014-35 but no contact count [7]. A figure of 8 sensors has appeared in English-language press; no Chinese primary source read here supports it and it is not used on this sheet |
+| Electrode count | 8 channels, per Neuracle's September 2026 reply to the Shanghai Stock Exchange (company statement, not a regulator figure) [11]. The NMPA review summary lists electrode kit models K1014-15, K1014-25 and K1014-35 but no contact count [7]. The June prospectus and the review summary were read for a count earlier and gave none; an 8-sensor figure in English-language press is now matched by the company filing |
 | Pitch |  |
 | Electrode lengths | Not applicable: epidural surface electrodes, no penetrating shafts [1] |
 | Shank width and thickness | Skull-embedded implant 25 mm in diameter [1]; no electrode shaft dimensions published |
@@ -57,9 +57,9 @@ NEO (Neural Electronic Opportunity) is a battery-free epidural ECoG implant for 
 | Exposed site area |  |
 | Electrode material |  |
 | Impedance (with measurement frequency) |  |
-| Noise floor or SNR |  |
+| Noise floor or SNR | Input-referred noise 2 uV peak-to-peak, common-mode rejection at least 80 dB, 24-bit resolution, per the company filing [11]. The same table cites a 2019 Neuralink N1 paper at about 5.9 uV RMS and 10 bit; peak-to-peak and RMS values are not directly comparable, as the filing itself notes |
 | Recording modality | Epidural ECoG. The NMPA review summary states the usable low and high frequency signals reach up to 200 Hz and can be collected epidurally; whether this is bandwidth or sampling rate is not specified [7] |
-| Sampling rate |  |
+| Sampling rate | 1 kHz for the epidural ECoG channel, per the company filing [11] |
 | Stimulation capability | The approved component list names no stimulation module [5]. The ChiCTR scientific title calls the trial system an acquisition and stimulation system [8], and the prospectus describes the NEO platform as bidirectional closed-loop [9]; these describe the platform or trial system, not the approved indication |
 | Charge injection limit |  |
 | Reference and ground |  |
@@ -136,6 +136,7 @@ NEO (Neural Electronic Opportunity) is a battery-free epidural ECoG implant for 
 8. ChiCTR (Chinese Clinical Trial Registry). [ChiCTR2500102814](https://www.chictr.org.cn/showproj.html?proj=273107).
 9. Neuracle prospectus, Shanghai Stock Exchange (Chinese). [PDF, 11 June 2026](https://static.sse.com.cn/stock/disclosure/announcement/c/202606/002198_20260611_0RN0.pdf).
 10. Tsinghua University (Chinese). [First implants, 30 January 2024](https://www.tsinghua.edu.cn/info/1175/109595.htm).
+11. Neuracle (博睿康) reply to the Shanghai Stock Exchange inquiry letter, STAR Market IPO, September 2026 (Chinese). [PDF](https://static.sse.com.cn/stock/disclosure/announcement/c/202609/002198_20260929_9IJE.pdf). It names NEO-ONE SCI (approved, epidural, 8 channels), NEO-ONE ANS (8 channels as clinical-stage subdural in one table, described elsewhere in the same document as a pipeline cortical-attached or penetrating product; both statements are in the filing) and pipeline NEO-AXIS and NEO-AURA at 8 to 128 channels.
 11. Shanghai Observer / Jiefang Daily (Chinese). [Huashan director on BCI trials, 5 December 2025](https://www.shobserver.cn/wx/detail.do?id=1030636); includes company statements by Neuracle.
 12. runhugemedical.com (Chinese). [NMPA March 2026 approvals list, third-party reproduction](https://www.runhugemedical.com/Index/show/catid/24/id/4637.html).
 13. NMPA medical device registration database (Chinese). [datasearch.nmpa.gov.cn, 境内医疗器械（注册）](https://datasearch.nmpa.gov.cn/datasearch/home-index.html#category=ylqx), searches for 国械注准20263120537 and 国械注准20263120536, retrieved 9 October 2026 (record pages have session-bound addresses).
