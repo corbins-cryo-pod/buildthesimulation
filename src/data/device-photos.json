@@ -1755,5 +1755,32 @@
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
     "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
     "versionNote": "Active silicon-transistor array tested in rats; the paper's device, not a clinical product."
+  },
+  "BTSD-ACAD-0099": {
+    "src": "/images/devices/10-btsd-acad-0099.jpg",
+    "thumbnail": "/images/devices/10-btsd-acad-0099.jpg",
+    "width": 546,
+    "height": 477,
+    "thumbnailWidth": 546,
+    "thumbnailHeight": 477,
+    "sourceDimensions": {
+      "width": 546,
+      "height": 477
+    },
+    "crop": null,
+    "preserveSource": true,
+    "sourceSha256": "fb1156a6ddeddfed15519e8c77edb1fa58ce763aae30a69a09afd5cafc31731b",
+    "kind": "Source figure",
+    "label": "Array photographs and cortical mapping",
+    "alt": "Complete source figure: schematic a of the 1024-channel hydrogel micro-ECoG on rat cortex, photograph b of the array with 6.2 mm edges and a 5 mm scale bar, impedance data c, photograph d of the array on the exposed cortex with a 1 mm scale bar, and stimulation-response maps and statistics e to i.",
+    "caption": "Figure 3 of the paper: photograph of the 1024-channel array (b, 5 mm scale) and of the array on exposed rat cortex (d, 1 mm scale), with schematic and data panels a, c and e to i.",
+    "credit": "Chinese Institute for Brain Research (CIBR) group and collaborators, Advanced Science (2025), Figure 3",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12713035/",
+    "sourceAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/1c51/12713035/fe905d792388/ADVS-12-e15453-g003.jpg",
+    "sourceLabel": "Advanced Science · complete Figure 3 (CC BY 4.0)",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Complete source image retained byte-for-byte as served by PubMed Central (546 px wide rendition). No cropping, re-encoding, recoloring or synthetic enhancement.",
+    "versionNote": "aGel micro-ECoG tested in rats; the paper's device, not a clinical product."
   }
 }
