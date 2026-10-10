@@ -1,5 +1,5 @@
 {
-  "checkedOn": "2026-10-09",
+  "checkedOn": "2026-10-10",
   "noncommercialConfirmed": true,
   "scope": "Published device records. Source review is not a guarantee that a usable photograph exists. Pending entries must not be auto-published.",
   "records": {
@@ -31,24 +31,24 @@
       "order": 3,
       "url": "https://buildthesimulation.com/devices/03-stentrode-synchron/",
       "status": "published",
-      "researchStatus": "published in initial release",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stentrode_Device.jpg",
-      "candidateAssetUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Stentrode_Device.jpg",
-      "license": "CC BY-SA 4.0",
-      "notes": "Published source-credited image; see photo manifest for version, provenance and changes.",
-      "image": "/images/devices/btsd-0003.webp"
+      "researchStatus": "published_owner_supplied",
+      "sourceUrl": "https://synchron.com/",
+      "candidateAssetUrl": "https://synchron.com/",
+      "license": "User-supplied image; source copyright retained",
+      "notes": "3 credited gallery views. New images were explicitly supplied by the site owner for publication and preserved byte for byte in the requested order. Original source copyrights are retained; owner submission is not recorded as a Creative Commons license or a general republication permission. Existing separately licensed reference views remain available. Reference photograph supplied for this gallery; exact hardware revision unspecified.",
+      "image": "/images/devices/btsd-0003-device-view.jpg"
     },
     "BTSD-0004": {
       "title": "Neuropixels 1.0 recording probe",
       "order": 4,
       "url": "https://buildthesimulation.com/devices/04-neuropixels-probe/",
       "status": "published",
-      "researchStatus": "verified physical-image source and reuse terms",
-      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7721443/",
-      "candidateAssetUrl": "https://europepmc.org/articles/PMC7721443?pdf=render",
-      "license": "CC BY 4.0",
-      "notes": "Published 2 source-credited views; version qualifications and per-image rights are recorded in the manifest. 2020 Neuropixels 1.0 study specimen. The black implant holder is external mounting hardware, not part of the silicon probe.",
-      "image": "/images/devices/btsd-0004.webp"
+      "researchStatus": "published_owner_supplied",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12981004/",
+      "candidateAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12981004/figure/F1/",
+      "license": "User-supplied image; source copyright retained",
+      "notes": "5 credited gallery views. New images were explicitly supplied by the site owner for publication and preserved byte for byte in the requested order. Original source copyrights are retained; owner submission is not recorded as a Creative Commons license or a general republication permission. Existing separately licensed reference views remain available. The assembly and electron micrographs show Neuropixels Ultra. The contact-layout comparison provides context for the Neuropixels 1.0 specifications below.",
+      "image": "/images/devices/btsd-0004-architecture.png"
     },
     "BTSD-0005": {
       "title": "Utah Slanted Electrode Array (USEA)",
@@ -1634,4 +1634,4 @@
       "followUp": "Rechecked official Europe PMC10592461 fullTextXML: CC BY-NC-ND4.0. It specifically identifies the real meandering StimNET-in-water photo as Fig.1D, but entire figure also includes simulations/graphs; no cropped image cleared."
     }
   }
-    }
+}
