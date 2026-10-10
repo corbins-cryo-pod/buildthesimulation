@@ -1836,5 +1836,32 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
     "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
     "versionNote": "Research probe tested in mice; the paper device, not a clinical product."
+  },
+  "BTSD-ACAD-0095": {
+    "src": "/images/devices/4-btsd-acad-0095.jpg",
+    "thumbnail": "/images/devices/4-btsd-acad-0095.jpg",
+    "width": 749,
+    "height": 979,
+    "thumbnailWidth": 749,
+    "thumbnailHeight": 979,
+    "sourceDimensions": {
+      "width": 749,
+      "height": 979
+    },
+    "crop": null,
+    "preserveSource": true,
+    "sourceSha256": "6d9c90e73f4d87b253aa3fee197fcc9a22e0f1a0cd6fd52624b61b94e93dea6a",
+    "kind": "Source figure",
+    "label": "CHIP array on rat cortex",
+    "alt": "Complete source figure: photograph of a CHIP-based ECoG array and a commercial platinum electrode array on the exposed rat cortex with a scale bar, paired recording traces and spectrograms from both arrays, a cortical-area map with a photograph of the array over the cortex, and spontaneous and whisker-stimulated activity maps with traces from M1, S1 and V2.",
+    "caption": "Figure 4 of the paper: photographs of the CHIP-based array beside a commercial platinum array on rat cortex and of the array covering the cortex (scale bars as published), with recordings, spectrograms, a cortical-area schematic and activity maps in the remaining panels.",
+    "credit": "Tsinghua Shenzhen International Graduate School group and collaborators, PNAS (2026), Figure 4",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13142910/",
+    "sourceAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/3b98/13142910/714114afe0a9/pnas.2532840123fig04.jpg",
+    "sourceLabel": "PNAS · complete Figure 4",
+    "license": "CC BY-NC-ND 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
+    "versionNote": "Research CHIP hydrogel ECoG array tested in rats; the paper device, not a clinical product."
   }
 }
