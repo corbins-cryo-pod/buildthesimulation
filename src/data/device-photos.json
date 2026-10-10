@@ -1728,5 +1728,32 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
     "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
     "versionNote": "Research prototype from the 2025 paper, 10 x 10 silicon array; panels a to h are process schematics, only i and j are photographs."
+  },
+  "BTSD-ACAD-0100": {
+    "src": "/images/devices/9-btsd-acad-0100.jpg",
+    "thumbnail": "/images/devices/9-btsd-acad-0100.jpg",
+    "width": 1367,
+    "height": 1158,
+    "thumbnailWidth": 1367,
+    "thumbnailHeight": 1158,
+    "sourceDimensions": {
+      "width": 1367,
+      "height": 1158
+    },
+    "crop": null,
+    "preserveSource": true,
+    "sourceSha256": "d3abbaa0e7927f37732036102c004cb8057bf72e7d9d8587a6acef08a5068963",
+    "kind": "Source figure",
+    "label": "In vivo implant and sensing results",
+    "alt": "Complete source figure: photograph a of the flexible multimodal neural interface array on a rat skull with a 10 mm scale bar, ECoG traces and maps b and c, a temperature-sensor calibration d with an inset photograph of the implant beside a thermocouple, a photograph e of the rat under a blue LED with the implanted device, and cell-viability panels f and g.",
+    "caption": "Figure 4 of the paper: photographs of the implanted device on a rat (a, 10 mm scale; d inset, 4 mm; e, 2 cm) alongside recording, temperature, photodetector and cell-viability data. Panels b, c, d, f and g are data plots and micrographs rather than device photographs.",
+    "credit": "Song group and collaborators, Fudan University, Advanced Science (2026), Figure 4",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12806190/",
+    "sourceAssetUrl": "https://advanced.onlinelibrary.wiley.com/cms/asset/5147e9a3-4439-46c5-b690-11856908a20b/advs72425-fig-0004-m.jpg",
+    "sourceLabel": "Advanced Science · complete Figure 4 (CC BY 4.0)",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
+    "versionNote": "Active silicon-transistor array tested in rats; the paper's device, not a clinical product."
   }
 }
