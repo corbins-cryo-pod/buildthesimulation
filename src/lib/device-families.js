@@ -27,6 +27,18 @@ export const deviceFamilies = [
     146: '2017: graphite-doped conductive polymer, about 4.1× lower sheet resistance; six electrodes, one waveguide and two fluidic channels.',
     143: '2015: two all-polymer cross-section variants with optical, electrical and fluidic functions.'
   } },
+  { id: 'cwru-spiral-cuff', title: 'CWRU/Ardiem spiral cuff', featured: 10, members: [10,13], kind: 'Design and sensory-study records', recordsLabel: 'Related study records', summary: 'These sheets cover the same self-sizing cuff design family. The standard four-contact photograph appears once; the sensory study is a deployment record, not a second cuff architecture. The ITIS 33-contact prototype has its own catalog entry.', changes: {
+    10: 'Standard self-sizing design family, with the credited four-contact reference photograph.',
+    13: 'Upper-limb sensory research deployment; exact participant hardware is not identified by the standard reference photograph.'
+  } },
+  { id: 'dot-platform', title: 'DOT magnetoelectric platform', featured: 175, members: [175,117], kind: 'Research prototype and clinical program', recordsLabel: 'Related platform records', summary: 'The photograph documents the 2024 research prototype. The Motif program is a separate clinical record; this image does not establish its later implant geometry.', changes: {
+    175: 'Motif clinical-program record; use the research gallery only as a dated prototype reference.',
+    117: '2024 published research hardware, with the photographed implant and its 10 mm scale.'
+  } },
+  { id: 'argus-ii', title: 'Argus II', featured: 38, members: [38,165], kind: 'Engineering and regulatory records', recordsLabel: 'Related system records', summary: 'Two sheets document the same Argus II system. The implant gallery appears once on the engineering sheet; the other sheet records regulatory context.', changes: {
+    38: 'Engineering sheet and credited implant gallery.',
+    165: 'Regulatory evidence sheet for the same system; not a second hardware generation.'
+  } },
   { id: 'singer-two-film', title: 'Two-film ME stimulators', featured: 129, members: [129,128], kind: 'Two configurations in one 2020 study', summary: 'The fully implanted PZT assembly is highlighted. The external PVDF headstage is a different configuration, not an earlier publication or an obsolete product.', changes: {
     129: 'Fully implanted PZT/Metglas assembly with stereotrode; 175 mm³ whole assembly.',
     128: 'External PVDF/Metglas headstage connected to an implanted array; 500 mm³ whole assembly.'

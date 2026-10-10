@@ -17,6 +17,8 @@ draft: false
 
 # CWRU self-sizing spiral nerve cuff (upper-limb sensory stimulation research deployments)
 
+This is a sensory-deployment record of the [CWRU/Ardiem self-sizing design family](/devices/10-spiral-nerve-cuff-electrode-helical/), not a second spiral-cuff architecture. The standard reference photograph belongs to the family sheet.
+
 Every field follows the shared implant-device template. Values belong to a named configuration or study; not reported means the reviewed sources do not establish the value. Family-wide and deployment-specific evidence are kept separate.
 
 ## Identity

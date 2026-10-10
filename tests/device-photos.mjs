@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { createHash } from 'node:crypto';
 import sharp from 'sharp';
-import { devicePhotos, getDevicePhoto, getDevicePhotos, getPicturedEntry } from '../src/lib/device-photos.js';
+import { devicePhotos, devicePhotoReferences, getDevicePhoto, getDevicePhotoReference, getDevicePhotos, getPicturedEntry } from '../src/lib/device-photos.js';
 
 const visibleIds = new Set(fs.readdirSync('src/content/designs').filter(file => file.endsWith('.md')).flatMap(file => {
   const text = fs.readFileSync(`src/content/designs/${file}`, 'utf8');
@@ -11,6 +11,7 @@ const visibleIds = new Set(fs.readdirSync('src/content/designs').filter(file => 
 }));
 
 test('photo records match a visible device and include accessible captions and rights', async () => {
+  const seenPixels = new Map();
   for (const deviceId of Object.keys(devicePhotos)) {
     assert(visibleIds.has(deviceId), `Unknown or unpublished pictured device: ${deviceId}`);
     const views = getDevicePhotos(deviceId);
@@ -20,6 +21,10 @@ test('photo records match a visible device and include accessible captions and r
     assert(['Photograph', 'Optical micrograph', 'Electron micrograph', 'Source figure'].includes(photo.kind), `${deviceId}: identify the image accurately`);
     for (const field of ['sourceUrl', 'sourceAssetUrl', 'licenseUrl']) assert.equal(new URL(photo[field]).protocol, 'https:', `${deviceId}: ${field}`);
     assert(photo.width > 0 && photo.height > 0);
+    const pixels = await sharp(`public${photo.src}`).removeAlpha().toColourspace('srgb').raw().toBuffer();
+    const fingerprint = `${photo.width}x${photo.height}:${createHash('sha256').update(pixels).digest('hex')}`;
+    assert(!seenPixels.has(fingerprint), `${deviceId}: duplicate of ${seenPixels.get(fingerprint)}; link to its canonical gallery instead`);
+    seenPixels.set(fingerprint, deviceId);
     if (photo.crop) {
       assert(photo.crop.width > 0 && photo.crop.height > 0);
       assert(photo.crop.left >= 0 && photo.crop.top >= 0);
@@ -73,10 +78,30 @@ test('source review tracks every published record without auto-clearing pending 
   for (const [id, entry] of Object.entries(audit.records)) {
     assert(entry.notes?.trim());
     assert(entry.researchStatus !== 'not-reviewed');
-    assert.equal(entry.status, getDevicePhoto(id) ? 'published' : 'pending');
+    assert.equal(entry.status, getDevicePhoto(id) ? 'published' : getDevicePhotoReference(id) ? 'reference' : 'pending');
     if (entry.status === 'published') assert.equal(entry.image, getDevicePhoto(id).src);
     else assert.equal(entry.image, undefined);
   }
+});
+
+test('shared-photo references identify one visible canonical gallery without duplicates or chains', () => {
+  for (const [id, reference] of Object.entries(devicePhotoReferences)) {
+    assert(visibleIds.has(id));
+    assert(visibleIds.has(reference.deviceId));
+    assert.equal(getDevicePhoto(id), null);
+    assert(getDevicePhoto(reference.deviceId));
+    assert.equal(getDevicePhotoReference(reference.deviceId), null);
+    assert(reference.note.trim());
+    assert(reference.title.trim());
+    const content = fs.readFileSync(`src/content/designs/${reference.slug}.md`, 'utf8');
+    assert(content.includes(reference.deviceId));
+    const audit = JSON.parse(fs.readFileSync('src/data/device-photo-research.json', 'utf8'));
+    assert.equal(audit.records[id].referenceDeviceId, reference.deviceId);
+  }
+  const component = fs.readFileSync('src/pages/devices/[slug].astro', 'utf8');
+  assert(component.includes('See implant photographs:'));
+  assert(component.includes('#implant-photographs'));
+  assert.equal(getDevicePhotoReference('not-a-device'), null);
 });
 
 test('families never silently attribute an older photograph to a new version', () => {

@@ -1,5 +1,5 @@
 ---
-title: "Spiral nerve cuff electrode (self-sizing / helical cuff)"
+title: "CWRU/Ardiem self-sizing spiral nerve cuff"
 order: 10
 pubDate: 2026-02-06
 updatedDate: 2026-02-06
@@ -15,7 +15,9 @@ tags: ["PNI", "cuff", "spiral cuff", "helical cuff", "self-sizing", "stimulation
 draft: false
 ---
 
-# Spiral nerve cuff electrode (self-sizing / helical cuff)
+# CWRU/Ardiem self-sizing spiral nerve cuff
+
+This sheet covers the CWRU/Ardiem self-sizing cuff design family. The [upper-limb sensory sheet](/devices/13-cwru-spiral-cuff-radial-nerve-sensory-amputees/) is a study record of that family. The [ITIS 33-contact cuff](/devices/208-itis-33-contact-spiral-cuff/) is a separate architecture.
 
 Every field follows the shared implant-device template. Values belong to a named configuration or study; not reported means the reviewed sources do not establish the value. Family-wide and deployment-specific evidence are kept separate.
 

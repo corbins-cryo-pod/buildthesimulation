@@ -6,7 +6,7 @@ import NeuropixelsExplorer from "../../components/NeuropixelsExplorer";
 import DeviceModelViewer from "../../components/DeviceModelViewer";
 import { getDeviceFamily } from "../../lib/device-families.js";
 import { getDeviceModel } from "../../lib/devices/catalog.js";
-import { getDevicePhoto } from "../../lib/device-photos.js";
+import { getDevicePhoto, getDevicePhotoReference } from "../../lib/device-photos.js";
 import DevicePhotoGallery from "../../components/DevicePhotoGallery.astro";
 
 export async function getStaticPaths() {
@@ -29,6 +29,7 @@ const outline = headings.filter(h => h.depth === 2 || h.depth === 3);
 const subtitle = entry.data.description ?? "BCI device entry.";
 const titleNoPrefix = entry.data.title.replace(/^\d+\s*—\s*/, "");
 const photo = getDevicePhoto(entry.data.device_id);
+const photoReference = getDevicePhotoReference(entry.data.device_id);
 ---
 
 <Layout pageTitle="Devices" subtitle={subtitle} description={entry.data.description}>
@@ -46,6 +47,10 @@ const photo = getDevicePhoto(entry.data.device_id);
     </header>
 
     {photo && <DevicePhotoGallery photo={photo} title={titleNoPrefix} deviceId={entry.data.device_id} />}
+    {photoReference && <aside class="photoReference" aria-label="Implant photograph reference">
+      <p><a href={`/devices/${photoReference.slug}/#implant-photographs`}>See implant photographs: {photoReference.title} →</a></p>
+      <p>{photoReference.note}</p>
+    </aside>}
 
     <section class="sheetControl" aria-label="Document control and evidence">
       <dl>
@@ -63,7 +68,7 @@ const photo = getDevicePhoto(entry.data.device_id);
       <p>{family.summary}</p>
       {featured && featured.slug !== entry.slug && <p class="featuredLink"><a href={`/devices/${featured.slug}/`}>Highlighted family sheet: {stripNum(featured.data.title)} →</a></p>}
       <details open={featured?.slug !== entry.slug}>
-        <summary>Version history and parallel configurations ({familyEntries.length})</summary>
+        <summary>{family.recordsLabel ?? 'Version history and parallel configurations'} ({familyEntries.length})</summary>
         <ul>{familyEntries.map(p => <li>
           <a href={`/devices/${p.slug}/`} aria-current={p.slug === entry.slug ? "page" : undefined}>{stripNum(p.data.title)}</a>
           <span>{family.changes[p.data.order]}</span>
@@ -99,6 +104,10 @@ const photo = getDevicePhoto(entry.data.device_id);
 </Layout>
 
 <style>
+  .photoReference { margin: 20px 0; padding: 14px 18px; border-inline-start: 1px solid var(--border); }
+  .photoReference p { margin: 0; font-size: 14px; line-height: 1.6; }
+  .photoReference p + p { margin-top: 8px; color: var(--muted); }
+  .photoReference a { color: inherit; font-size: 18px; font-style: italic; text-underline-offset: 4px; }
   .sheetControl { margin: 20px 0; border-block: 1px solid var(--border); padding: 14px 0; }
   .sheetControl dl { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin: 0; }
   .sheetControl dt, .sheetLabel { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; opacity: .65; }

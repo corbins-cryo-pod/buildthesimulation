@@ -5,7 +5,7 @@ const views = [photo, ...(photo.additionalViews ?? [])];
 const galleryId = `views-${deviceId.toLowerCase().replace(/[^a-z0-9-]/g, '-')}`;
 ---
 
-<device-photo-gallery aria-label={`Physical views of ${title}`}>
+<device-photo-gallery id="implant-photographs" aria-label={`Physical views of ${title}`}>
   {views.map((view, index) => <div id={`${galleryId}-${index}`} data-gallery-view>
     <DevicePhotograph photo={view} title={title} deviceId={`${deviceId}-view-${index}`} priority={index === 0} />
   </div>)}

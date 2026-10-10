@@ -351,7 +351,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
                   <p>{pictured.photo.credit} · <a href={pictured.photo.sourceUrl} target="_blank" rel="noopener noreferrer">{pictured.photo.sourceLabel}</a> · <a href={pictured.photo.licenseUrl} target="_blank" rel="noopener noreferrer">{pictured.photo.license}</a>. {pictured.photo.changes}</p>
                 </details>}
                 {family && entries.length > 1 && <details class="familyHistory">
-                  <summary>Past versions and parallel branches ({entries.length - 1})</summary>
+                  <summary>{family.recordsLabel ?? 'Past versions and parallel branches'} ({entries.length - 1})</summary>
                   <ul>{entries.filter((p:any) => p.slug !== e.slug).map((p:any) => <li>
                     <a href={`/devices/${p.slug}/`}>{p.title}</a>
                     <span>{family.changes[p.order]}</span>

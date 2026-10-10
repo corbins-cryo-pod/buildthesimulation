@@ -330,13 +330,13 @@
       "title": "CWRU self-sizing spiral nerve cuff (upper-limb sensory stimulation research deployments)",
       "order": 13,
       "url": "https://buildthesimulation.com/devices/13-cwru-spiral-cuff-radial-nerve-sensory-amputees/",
-      "status": "published",
-      "researchStatus": "verified physical-image source and reuse terms",
+      "status": "reference",
+      "researchStatus": "shared_reference",
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5504677/",
       "candidateAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/11c4/5504677/82f036b77800/12984_2017_285_Fig1_HTML.jpg",
       "license": "CC BY 4.0",
-      "notes": "Published 1 source-credited view; version qualifications and per-image rights are recorded in the manifest. 2017 standard four-contact family specimen. This photograph does not identify a particular participant’s implanted cuff or establish the geometry of every cuff diameter.",
-      "image": "/images/devices/btsd-pni-0003.webp"
+      "notes": "Exact duplicate photograph removed from this record on 10 October 2026. This sensory-study record belongs to the same CWRU self-sizing design family. The shared photograph shows a standard four-contact specimen, not a separately identified participant implant. A direct gallery link retains access to the credited image without publishing it twice.",
+      "referenceDeviceId": "BTSD-PNI-0001"
     },
     "BTSD-ACAD-0080": {
       "title": "MEND magnetoelectric nanodiscs, 2024",
@@ -617,13 +617,13 @@
       "title": "Argus II retinal prosthesis",
       "order": 165,
       "url": "https://buildthesimulation.com/devices/165-argus-ii-retinal-prosthesis/",
-      "status": "published",
-      "researchStatus": "verified physical-image source and reuse terms",
+      "status": "reference",
+      "researchStatus": "shared_reference",
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/",
       "candidateAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/figure/fig1/",
       "license": "CC BY-NC-ND 4.0",
-      "notes": "Published 1 source-credited view; version qualifications and per-image rights are recorded in the manifest. Argus II hardware illustrated in the 2016 five-year clinical-trial report; not a new-generation Cortigent implant.",
-      "image": "/images/devices/btsd-fda-0016.jpg"
+      "notes": "Exact duplicate photograph removed from this record on 10 October 2026. The engineering and regulatory records describe the same Argus II system. Its photographs are collected on the engineering sheet. A direct gallery link retains access to the credited image without publishing it twice.",
+      "referenceDeviceId": "BTSD-ACAD-0017"
     },
     "BTSD-FDA-0017": {
       "title": "Cortigent Orion visual cortical prosthesis",
@@ -740,13 +740,13 @@
       "title": "Motif DOT magnetoelectric brain stimulator",
       "order": 175,
       "url": "https://buildthesimulation.com/devices/175-motif-dot-magnetoelectric-brain-stimulator/",
-      "status": "published",
-      "researchStatus": "ready",
+      "status": "reference",
+      "researchStatus": "shared_reference",
       "sourceUrl": "https://www.science.org/doi/10.1126/sciadv.adn0858",
       "candidateAssetUrl": "https://europepmc.org/articles/PMC11014439?pdf=render",
       "license": "CC BY 4.0",
-      "notes": "The same CC BY 4.0 Woods et al. Figure 1A, extracted at original resolution from the publicly available journal PDF. This replaces the low-resolution CDN preview with no synthetic enhancement.",
-      "image": "/images/devices/btsd-stup-0002.webp"
+      "notes": "Exact duplicate photograph removed from this record on 10 October 2026. The available photograph documents the 2024 research prototype. It does not verify the geometry of later Motif clinical hardware. A direct gallery link retains access to the credited image without publishing it twice.",
+      "referenceDeviceId": "BTSD-ACAD-0073"
     },
     "BTSD-STUP-0003": {
       "title": "INBRAIN graphene cortical interface",
@@ -945,12 +945,13 @@
       "title": "Tsinghua NeuroCam 4096-channel TFT ECoG array",
       "order": 192,
       "url": "https://buildthesimulation.com/devices/192-tsinghua-neurocam-4096-channel-tft-ecog/",
-      "status": "pending",
-      "researchStatus": "further_asset_search",
-      "sourceUrl": "https://www.tsinghua.edu.cn/info/1175/123501.htm",
-      "candidateAssetUrl": null,
-      "license": null,
-      "notes": "No current source review recorded."
+      "status": "published",
+      "researchStatus": "published_implant_detail",
+      "sourceUrl": "https://www.eurekalert.org/multimedia/1105872",
+      "candidateAssetUrl": "https://mediasvc.eurekalert.org/Api/v1/Multimedia/d66749ed-f2c1-429a-8b9d-18fb4d87929f/Rendition/low-res/Content/Public",
+      "license": "Press image · use with credit",
+      "notes": "2 implant-detail views added on 10 October 2026. Hardware and image type visually checked; original scales retained. 4096-channel NeuroCam research array from the 2025 study. This interface rests on the cortical surface; its contact grid is not an array of penetrating shanks.",
+      "image": "/images/devices/btsd-acad-0094.webp"
     },
     "BTSD-ACAD-0095": {
       "title": "Tsinghua SIGS all-organic CHIP hydrogel ECoG array",
@@ -991,12 +992,13 @@
       "title": "AIR-CAS MultiTransm dual-mode MEA (dopamine plus electrophysiology)",
       "order": 196,
       "url": "https://buildthesimulation.com/devices/196-aircas-multitransm-dopamine-electrophysiology-mea/",
-      "status": "pending",
-      "researchStatus": "further_asset_search",
+      "status": "published",
+      "researchStatus": "published_implant_detail",
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12509213/",
-      "candidateAssetUrl": null,
+      "candidateAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/05b2/12509213/0c780b329271/research.0944.fig.002.jpg",
       "license": "CC BY 4.0",
-      "notes": "No current source review recorded."
+      "notes": "1 implant-detail views added on 10 October 2026. Hardware and image type visually checked; original scales retained. 2025 two-shank research probe for mouse nucleus accumbens. This micrograph shows an individual contact, not the complete probe or its external recording hardware.",
+      "image": "/images/devices/btsd-acad-0098.webp"
     },
     "BTSD-ACAD-0099": {
       "title": "CIBR aGel-µECoG adhesive-hydrogel micro-ECoG array",
@@ -1633,6 +1635,18 @@
       "license": "CC BY-NC-ND 4.0",
       "notes": "2023 Cell Reports article and its earlier preprint both declare CC BY-NC-ND 4.0. Whole Figure 1 is available intact, including a real meandering StimNET photo in panel D alongside simulations and plots. A clean photographic crop is not permitted by that grant. A 2026 Science Advances follow-up is CC BY-NC but shows neural imaging rather than a standalone device close-up.",
       "followUp": "Rechecked official Europe PMC10592461 fullTextXML: CC BY-NC-ND4.0. It specifically identifies the real meandering StimNET-in-water photo as Fig.1D, but entire figure also includes simulations/graphs; no cropped image cleared."
+    },
+    "BTSD-PNI-0012": {
+      "title": "ITIS/Ljubljana 33-contact spiral cuff (2018 research prototype)",
+      "order": 208,
+      "url": "https://buildthesimulation.com/devices/208-itis-33-contact-spiral-cuff/",
+      "status": "published",
+      "researchStatus": "published_implant_detail",
+      "sourceUrl": "https://www.nature.com/articles/s41598-018-19318-w",
+      "candidateAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41598-018-19318-w/MediaObjects/41598_2018_19318_Fig4_HTML.jpg",
+      "license": "CC BY 4.0",
+      "image": "/images/devices/btsd-pni-0012.jpg",
+      "notes": "New distinct cuff architecture and full manufactured-device photograph. Source abstract and Figure 1 report 33 contacts, while one Methods sentence says 13 groups of three; that inconsistency is explicitly recorded and not silently corrected. Ex vivo porcine evidence, not established human clinical use of this photographed prototype."
     }
   }
 }

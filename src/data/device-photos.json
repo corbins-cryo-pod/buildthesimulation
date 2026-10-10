@@ -613,44 +613,6 @@
     "changes": "Photographic panel cropped from the original figure; resized and re-encoded. Original scale bars and annotations retained.",
     "versionNote": "RESET-RA trial device (2024); not a photograph specifically labeled as the 2025 commercial configuration."
   },
-  "BTSD-STUP-0002": {
-    "src": "/images/devices/btsd-stup-0002.webp",
-    "thumbnail": "/images/devices/btsd-stup-0002-640.webp",
-    "width": 412,
-    "height": 524,
-    "thumbnailWidth": 412,
-    "thumbnailHeight": 524,
-    "sourceDimensions": {
-      "width": 1959,
-      "height": 1143
-    },
-    "crop": {
-      "left": 38,
-      "top": 41,
-      "width": 412,
-      "height": 524
-    },
-    "sourceSha256": "f2d37a4bd912dfc7ae73870a7490e0dcf37c4bb60593da08fd00c6762af7e00a",
-    "kind": "Photograph",
-    "alt": "Photograph of a small transparent packaged DOT magnetoelectric cortical stimulator held between two black-gloved fingertips.",
-    "caption": "DOT research prototype photographed in 2024; fully packaged implant with 10 mm scale.",
-    "credit": "Woods et al., Science Advances (2024), Fig. 1A",
-    "sourceUrl": "https://www.science.org/doi/10.1126/sciadv.adn0858",
-    "sourceAssetUrl": "https://europepmc.org/articles/PMC11014439?pdf=render",
-    "sourceLabel": "Original source · photographic panel",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-    "changes": "Photo component selected from original PDF-embedded Figure 1A; original 10 mm scale retained. Resized and re-encoded; no hardware retouching.",
-    "versionNote": "2024 Woods et al. research prototype of the DOT platform, not asserted to be the exact later Motif clinical device revision. Retain prototype/date qualification. Same study is the academic DOT catalog record at order 117.",
-    "sourceExtraction": {
-      "pdfPage": 2,
-      "pdfImageIndex": 0,
-      "sourceFigureDimensions": {
-        "width": 1959,
-        "height": 1143
-      }
-    }
-  },
   "BTSD-ACAD-0005": {
     "src": "/images/devices/btsd-acad-0005.webp",
     "thumbnail": "/images/devices/btsd-acad-0005-640.webp",
@@ -1125,33 +1087,7 @@
     "kind": "Photograph",
     "label": "Four-contact cuff",
     "alt": "Photograph of a transparent self-curling spiral nerve cuff with four metallic stimulation contacts and a lead wire.",
-    "caption": "Standard self-sizing spiral nerve cuff, nominal 4 mm diameter, with four radial contacts.",
-    "credit": "Photo courtesy of Ardiem Medical, Inc.; Christie et al., Journal of NeuroEngineering and Rehabilitation (2017), Figure 1",
-    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5504677/",
-    "sourceAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/11c4/5504677/82f036b77800/12984_2017_285_Fig1_HTML.jpg",
-    "sourceLabel": "JNER · Figure 1",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-    "changes": "Whole published photograph re-encoded without cropping or upscaling. Original Ardiem attribution retained.",
-    "versionNote": "2017 standard four-contact family specimen. This photograph does not identify a particular participant’s implanted cuff or establish the geometry of every cuff diameter."
-  },
-  "BTSD-PNI-0003": {
-    "src": "/images/devices/btsd-pni-0003.webp",
-    "thumbnail": "/images/devices/btsd-pni-0003-640.webp",
-    "width": 358,
-    "height": 256,
-    "thumbnailWidth": 358,
-    "thumbnailHeight": 256,
-    "sourceDimensions": {
-      "width": 358,
-      "height": 256
-    },
-    "crop": null,
-    "sourceSha256": "6d260388f7771e3082de9a8044f40a0c17b8a116eb884bf3f340eda3e9ee0892",
-    "kind": "Photograph",
-    "label": "Four-contact cuff",
-    "alt": "Photograph of a transparent self-curling spiral nerve cuff with four metallic stimulation contacts and a lead wire.",
-    "caption": "Standard self-sizing spiral nerve cuff, nominal 4 mm diameter, with four radial contacts.",
+    "caption": "CWRU/Ardiem standard self-sizing spiral cuff: nominal 4 mm diameter and four radial contacts. It wraps a peripheral nerve.",
     "credit": "Photo courtesy of Ardiem Medical, Inc.; Christie et al., Journal of NeuroEngineering and Rehabilitation (2017), Figure 1",
     "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5504677/",
     "sourceAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/11c4/5504677/82f036b77800/12984_2017_285_Fig1_HTML.jpg",
@@ -1286,33 +1222,6 @@
   "BTSD-ACAD-0017": {
     "src": "/images/devices/btsd-acad-0017.jpg",
     "thumbnail": "/images/devices/btsd-acad-0017.jpg",
-    "width": 627,
-    "height": 750,
-    "thumbnailWidth": 627,
-    "thumbnailHeight": 750,
-    "sourceDimensions": {
-      "width": 627,
-      "height": 750
-    },
-    "crop": null,
-    "preserveSource": true,
-    "sourceSha256": "eac47e1d556efc8748721b84140fb2748379c10338320c9544f93b7bec712fe4",
-    "kind": "Source figure",
-    "label": "Implant and controller",
-    "alt": "Complete published figure of the Argus II retinal implant with its curved 60-electrode array, and the external camera glasses and video-processing unit.",
-    "caption": "Argus II implant and retinal electrode array (A), with its external camera glasses and processing unit (B).",
-    "credit": "da Cruz et al., Ophthalmology (2016), Figure 1",
-    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/",
-    "sourceAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/figure/fig1/",
-    "sourceLabel": "Ophthalmology · complete Figure 1",
-    "license": "CC BY-NC-ND 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-    "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
-    "versionNote": "Argus II hardware illustrated in the 2016 five-year clinical-trial report; not a new-generation Cortigent implant."
-  },
-  "BTSD-FDA-0016": {
-    "src": "/images/devices/btsd-fda-0016.jpg",
-    "thumbnail": "/images/devices/btsd-fda-0016.jpg",
     "width": 627,
     "height": 750,
     "thumbnailWidth": 627,
@@ -2019,5 +1928,135 @@
         }
       }
     ]
+  },
+  "BTSD-ACAD-0094": {
+    "src": "/images/devices/btsd-acad-0094.webp",
+    "thumbnail": "/images/devices/btsd-acad-0094-640.webp",
+    "width": 211,
+    "height": 170,
+    "thumbnailWidth": 211,
+    "thumbnailHeight": 170,
+    "sourceDimensions": {
+      "width": 700,
+      "height": 412
+    },
+    "crop": {
+      "left": 75,
+      "top": 73,
+      "width": 211,
+      "height": 170
+    },
+    "sourceSha256": "068e9a556360a2280c4ccfe38929acaf47d45f765cb116de51ffcea6d7b3a005",
+    "fullBytes": 7618,
+    "credit": "Xing Sheng @ Tsinghua University, China; Science China Press",
+    "sourceUrl": "https://www.eurekalert.org/multimedia/1105872",
+    "sourceAssetUrl": "https://mediasvc.eurekalert.org/Api/v1/Multimedia/d66749ed-f2c1-429a-8b9d-18fb4d87929f/Rendition/low-res/Content/Public",
+    "sourceLabel": "Tsinghua / Science China Press · NeuroCam photographs",
+    "license": "Press image · use with credit",
+    "licenseUrl": "https://www.eurekalert.org/multimedia/1105872",
+    "rightsStatus": "press_image_permission",
+    "versionNote": "4096-channel NeuroCam research array from the 2025 study. This interface rests on the cortical surface; its contact grid is not an array of penetrating shanks.",
+    "changes": "Optical photograph selected from panel (a) of the credited press image. Original scale bar retained; re-encoded without upscaling or hardware retouching. Press page permits use with credit; no Creative Commons grant is claimed.",
+    "kind": "Photograph",
+    "label": "Cortical array",
+    "alt": "Photograph of the flexible NeuroCam cortical-surface electrode array bending over a curved support, with the original 5 millimeter scale bar.",
+    "caption": "NeuroCam’s flexible cortical-surface electrode array, with its original 5 mm scale. The contact-bearing sheet is the neural interface; the curved support is a demonstration fixture.",
+    "additionalViews": [
+      {
+        "src": "/images/devices/btsd-acad-0094-contacts.webp",
+        "thumbnail": "/images/devices/btsd-acad-0094-contacts-640.webp",
+        "width": 190,
+        "height": 170,
+        "thumbnailWidth": 190,
+        "thumbnailHeight": 170,
+        "sourceDimensions": {
+          "width": 700,
+          "height": 412
+        },
+        "crop": {
+          "left": 317,
+          "top": 73,
+          "width": 190,
+          "height": 170
+        },
+        "sourceSha256": "068e9a556360a2280c4ccfe38929acaf47d45f765cb116de51ffcea6d7b3a005",
+        "fullBytes": 9248,
+        "credit": "Xing Sheng @ Tsinghua University, China; Science China Press",
+        "sourceUrl": "https://www.eurekalert.org/multimedia/1105872",
+        "sourceAssetUrl": "https://mediasvc.eurekalert.org/Api/v1/Multimedia/d66749ed-f2c1-429a-8b9d-18fb4d87929f/Rendition/low-res/Content/Public",
+        "sourceLabel": "Tsinghua / Science China Press · NeuroCam photographs",
+        "license": "Press image · use with credit",
+        "licenseUrl": "https://www.eurekalert.org/multimedia/1105872",
+        "rightsStatus": "press_image_permission",
+        "versionNote": "4096-channel NeuroCam research array from the 2025 study. This interface rests on the cortical surface; its contact grid is not an array of penetrating shanks.",
+        "changes": "Optical photograph selected from panel (a) of the credited press image. Original scale bar retained; re-encoded without upscaling or hardware retouching. Press page permits use with credit; no Creative Commons grant is claimed.",
+        "kind": "Optical micrograph",
+        "label": "Contact grid",
+        "alt": "Optical micrograph of NeuroCam’s gold contact grid and thin-film transistor units, retaining the original 100 micrometer scale bar.",
+        "caption": "NeuroCam’s contact-bearing surface and repeated thin-film transistor units. Original 100 µm scale retained."
+      }
+    ]
+  },
+  "BTSD-ACAD-0098": {
+    "src": "/images/devices/btsd-acad-0098.webp",
+    "thumbnail": "/images/devices/btsd-acad-0098-640.webp",
+    "width": 212,
+    "height": 185,
+    "thumbnailWidth": 212,
+    "thumbnailHeight": 185,
+    "sourceDimensions": {
+      "width": 660,
+      "height": 372
+    },
+    "crop": {
+      "left": 448,
+      "top": 0,
+      "width": 212,
+      "height": 185
+    },
+    "sourceSha256": "5c7f5be6a0e5e53926292194ab66bb408e69f9e892abf675ee22e8e08b9a6da3",
+    "fullBytes": 13114,
+    "kind": "Electron micrograph",
+    "label": "Implanted contact detail",
+    "alt": "Scanning electron micrograph of a MultiTransm dopamine-sensing contact, its surrounding reference ring and labeled coating regions, with an original 50 micrometer scale bar.",
+    "caption": "The tissue-facing MultiTransm contact: a dopamine-sensing site surrounded by an IrOx reference ring. Original 50 µm scale retained.",
+    "versionNote": "2025 two-shank research probe for mouse nucleus accumbens. This micrograph shows an individual contact, not the complete probe or its external recording hardware.",
+    "credit": "Jia et al., Research (2025), Figure 2C",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12509213/",
+    "sourceAssetUrl": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/05b2/12509213/0c780b329271/research.0944.fig.002.jpg",
+    "sourceLabel": "Research · Figure 2C",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "rightsStatus": "licensed",
+    "changes": "Complete SEM panel C selected from Figure 2, retaining its coating labels and 50 µm scale. Re-encoded without upscaling or hardware retouching."
+  },
+  "BTSD-PNI-0012": {
+    "src": "/images/devices/btsd-pni-0012.jpg",
+    "thumbnail": "/images/devices/btsd-pni-0012.jpg",
+    "width": 1000,
+    "height": 616,
+    "thumbnailWidth": 1000,
+    "thumbnailHeight": 616,
+    "sourceDimensions": {
+      "width": 1000,
+      "height": 616
+    },
+    "crop": null,
+    "preserveSource": true,
+    "sourceSha256": "5f48271d02161b989a59a0efd1d21d2969f9bf5319c2db5029ec709911e1e8fa",
+    "fullBytes": 81738,
+    "kind": "Photograph",
+    "label": "33-contact spiral cuff",
+    "alt": "Photograph of the manufactured ITIS 33-contact spiral nerve cuff, showing three contact rows in a transparent rolled sheath, connecting wires and an original 17 millimeter scale bar.",
+    "caption": "ITIS/Ljubljana’s manufactured 33-contact spiral cuff, with contact rows visible through its sheath. Original 17 mm scale retained.",
+    "versionNote": "2018 research prototype for peripheral nerve stimulation. A separate architecture from the CWRU/Ardiem standard four-contact cuff; not a brain-penetrating electrode or an approved commercial product.",
+    "credit": "Rozman, Pečlin, Ribarič, Godec and Burja, Scientific Reports (2018), Figure 4",
+    "sourceUrl": "https://www.nature.com/articles/s41598-018-19318-w",
+    "sourceAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41598-018-19318-w/MediaObjects/41598_2018_19318_Fig4_HTML.jpg",
+    "sourceLabel": "Scientific Reports · manufactured cuff photograph",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "rightsStatus": "licensed",
+    "changes": "Complete published photograph copied intact, byte for byte, including its original scale bar."
   }
 }
