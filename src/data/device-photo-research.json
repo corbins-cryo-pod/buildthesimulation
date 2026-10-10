@@ -996,7 +996,7 @@
       "notes": "No current source review recorded."
     },
     "BTSD-ACAD-0099": {
-      "title": "CIBR aGel-\u00b5ECoG adhesive-hydrogel micro-ECoG array",
+      "title": "CIBR aGel-µECoG adhesive-hydrogel micro-ECoG array",
       "order": 197,
       "url": "https://buildthesimulation.com/devices/197-cibr-agel-hydrogel-micro-ecog/",
       "status": "pending",
@@ -1043,12 +1043,13 @@
       "title": "Semi CAS silicon microneedle array with local de-insulation",
       "order": 201,
       "url": "https://buildthesimulation.com/devices/201-semi-cas-silicon-microneedle-array-local-deinsulation/",
-      "status": "pending",
-      "researchStatus": "further_asset_search",
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
       "sourceUrl": "https://www.nature.com/articles/s41378-025-00922-6",
-      "candidateAssetUrl": null,
-      "license": null,
-      "notes": "No current source review recorded."
+      "candidateAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41378-025-00922-6/MediaObjects/41378_2025_922_Fig1_HTML.png",
+      "license": "CC BY-NC-ND 4.0",
+      "notes": "Published 1 source-credited view (intact complete figure; NC-ND so not cropped). Research prototype from the 2025 paper, 10 x 10 silicon array; panels a to h are process schematics, only i and j are photographs.",
+      "image": "/images/devices/btsd-acad-0103.png"
     },
     "BTSD-ACAD-0104": {
       "title": "SIAT ferroelectric bioelectronic interface (FBI) for vagus nerve",
@@ -1628,4 +1629,4 @@
       "followUp": "Rechecked official Europe PMC10592461 fullTextXML: CC BY-NC-ND4.0. It specifically identifies the real meandering StimNET-in-water photo as Fig.1D, but entire figure also includes simulations/graphs; no cropped image cleared."
     }
   }
-  }
+    }
