@@ -19,12 +19,13 @@
       "title": "Neuralink N1 (flexible-thread implant)",
       "order": 2,
       "url": "https://buildthesimulation.com/devices/02-neuralink-n1/",
-      "status": "pending",
-      "researchStatus": "permission_required",
-      "sourceUrl": "https://neuralink.com/updates/prime-study-progress-update/",
-      "candidateAssetUrl": null,
-      "license": null,
-      "notes": "Official terms prohibit republishing photos and separate illustrations from their accompanying text, even for noncommercial use. Exploded N1 reference is illustrative, not established actual device photograph.2019JMIR photographs are openly licensed but depict older wired research hardware and must not be relabeled N1."
+      "status": "published",
+      "researchStatus": "published_historical_reference",
+      "sourceUrl": "https://www.jmir.org/2019/10/e16194/",
+      "candidateAssetUrl": "https://tweakers.net/files/upload/Neuralink-White-Paper.pdf",
+      "license": "CC BY-ND 4.0",
+      "notes": "Two complete 2019 research white-paper figures, recovered at native embedded resolution and published as historical references at the owner’s request. Figure 1 shows polymer thread architecture; Figure 6 shows implanted threads in rat cortex and the wired package. Neither image depicts the current N1 implant. Full panels, annotations and scale bars are retained under CC BY-ND 4.0; recovered PNGs are copied intact. Current N1 manufacturer photographs remain subject to separate permission.",
+      "image": "/images/devices/btsd-0002-threads-2019.png"
     },
     "BTSD-0003": {
       "title": "Stentrode (Synchron)",
@@ -35,7 +36,7 @@
       "sourceUrl": "https://synchron.com/",
       "candidateAssetUrl": "https://synchron.com/",
       "license": "User-supplied image; source copyright retained",
-      "notes": "3 credited gallery views. New images were explicitly supplied by the site owner for publication and preserved byte for byte in the requested order. Original source copyrights are retained; owner submission is not recorded as a Creative Commons license or a general republication permission. Existing separately licensed reference views remain available. Reference photograph supplied for this gallery; exact hardware revision unspecified.",
+      "notes": "2 credited owner-supplied gallery views, preserved byte for byte in the requested order. Older reference views were removed from the public gallery at the owner’s request on 10 October 2026. Original source copyrights are retained; owner submission is not a Creative Commons license or a general republication permission. Reference photograph supplied for this gallery; exact hardware revision unspecified.",
       "image": "/images/devices/btsd-0003-device-view.jpg"
     },
     "BTSD-0004": {
@@ -47,7 +48,7 @@
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12981004/",
       "candidateAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12981004/figure/F1/",
       "license": "User-supplied image; source copyright retained",
-      "notes": "5 credited gallery views. New images were explicitly supplied by the site owner for publication and preserved byte for byte in the requested order. Original source copyrights are retained; owner submission is not recorded as a Creative Commons license or a general republication permission. Existing separately licensed reference views remain available. The assembly and electron micrographs show Neuropixels Ultra. The contact-layout comparison provides context for the Neuropixels 1.0 specifications below.",
+      "notes": "3 credited owner-supplied gallery views, preserved byte for byte in the requested order. Older reference views were removed from the public gallery at the owner’s request on 10 October 2026. Original source copyrights are retained; owner submission is not a Creative Commons license or a general republication permission. The assembly and electron micrographs show Neuropixels Ultra. The contact-layout comparison provides context for the Neuropixels 1.0 specifications below.",
       "image": "/images/devices/btsd-0004-architecture.png"
     },
     "BTSD-0005": {

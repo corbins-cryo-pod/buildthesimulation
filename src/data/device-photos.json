@@ -92,32 +92,6 @@
         "rightsStatus": "user_supplied",
         "license": "User-supplied image; source copyright retained",
         "changes": "Supplied image copied intact, byte for byte. All labels, panels, scale bars and embedded metadata retained."
-      },
-      {
-        "src": "/images/devices/btsd-0003.webp",
-        "thumbnail": "/images/devices/btsd-0003-640.webp",
-        "width": 1200,
-        "height": 800,
-        "thumbnailWidth": 640,
-        "thumbnailHeight": 427,
-        "sourceDimensions": {
-          "width": 1200,
-          "height": 800
-        },
-        "crop": null,
-        "sourceSha256": "f3b49e53a0e1411081d0f8a419b47e7c65620a09af4f9d26b2c2a4fc8ddd64fb",
-        "kind": "Photograph",
-        "alt": "Photograph of a slender mesh Stentrode scaffold with small dark electrode contacts mounted along its struts.",
-        "caption": "Stentrode reference specimen photographed in 2020. Hardware revision not specified by the photographer.",
-        "credit": "Christinecooch / Wikimedia Commons (2020)",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stentrode_Device.jpg",
-        "sourceAssetUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Stentrode_Device.jpg",
-        "sourceLabel": "Wikimedia Commons · original photograph",
-        "license": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-        "changes": "Resized and re-encoded; no hardware retouching. This image and its resized versions remain CC BY-SA 4.0.",
-        "versionNote": "2020 reference specimen; exact hardware revision unspecified. This photograph does not verify the current implant geometry.",
-        "label": "Reference specimen"
       }
     ]
   },
@@ -1132,71 +1106,6 @@
         "rightsStatus": "user_supplied",
         "license": "User-supplied image; source copyright retained",
         "changes": "Supplied image copied intact, byte for byte. All labels, panels, scale bars and embedded metadata retained."
-      },
-      {
-        "src": "/images/devices/btsd-0004.webp",
-        "thumbnail": "/images/devices/btsd-0004-640.webp",
-        "width": 535,
-        "height": 267,
-        "thumbnailWidth": 535,
-        "thumbnailHeight": 267,
-        "sourceDimensions": {
-          "width": 535,
-          "height": 267
-        },
-        "crop": null,
-        "sourceSha256": "525f567130b7a30dd5701c45d2c03671a950581f1b289bfb7ae1621c4fcbcb44",
-        "kind": "Photograph",
-        "label": "Probe assembly",
-        "alt": "Neuropixels 1.0 probe fitted to a black experimental implant holder, with a red cap and a thin shank extending to the right.",
-        "caption": "Neuropixels 1.0 on the study’s custom implant platform; the recording shank extends to the right.",
-        "credit": "Luo et al., eLife (2020), Figure 2D",
-        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7721443/",
-        "sourceAssetUrl": "https://europepmc.org/articles/PMC7721443?pdf=render",
-        "sourceLabel": "eLife · Figure 2D",
-        "license": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-        "changes": "Original photographic panel extracted from the published PDF and re-encoded without upscaling or hardware retouching.",
-        "versionNote": "2020 Neuropixels 1.0 study specimen. The black implant holder is external mounting hardware, not part of the silicon probe.",
-        "sourceExtraction": {
-          "pdfPage": 8,
-          "pdfImageIndex": 5,
-          "sourceFigureDimensions": {
-            "width": 535,
-            "height": 267
-          }
-        }
-      },
-      {
-        "src": "/images/devices/btsd-0004-tip.webp",
-        "thumbnail": "/images/devices/btsd-0004-tip-640.webp",
-        "width": 173,
-        "height": 338,
-        "thumbnailWidth": 173,
-        "thumbnailHeight": 338,
-        "sourceDimensions": {
-          "width": 4130,
-          "height": 2116
-        },
-        "crop": {
-          "left": 5,
-          "top": 68,
-          "width": 173,
-          "height": 338
-        },
-        "sourceSha256": "f767cacb75c822c3d91b91ea010edef23097bad6ce117c7c7d5ff21b078cdd7c",
-        "kind": "Source figure",
-        "label": "Probe tip",
-        "alt": "Published close-up of the Neuropixels probe tip and rectangular recording sites, with its original 20 micrometer scale bar.",
-        "caption": "Published probe-tip view and recording-site layout; 20 µm scale retained.",
-        "credit": "Liu et al., eNeuro (2021), Figure 2A",
-        "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8597948/",
-        "sourceAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8597948/figure/F2/",
-        "sourceLabel": "eNeuro · Figure 2A",
-        "license": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-        "changes": "Probe-tip inset cropped from Figure 2A and re-encoded without upscaling. Original scale retained; image type is not asserted to be microscopy.",
-        "versionNote": "Neuropixels 1.0 reference tip from the 2021 localization study, separate from the 2020 assembly photograph."
       }
     ]
   },
@@ -2026,5 +1935,89 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
     "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
     "versionNote": "Research CHIP hydrogel ECoG array tested in rats; the paper device, not a clinical product."
+  },
+  "BTSD-0002": {
+    "src": "/images/devices/btsd-0002-threads-2019.png",
+    "thumbnail": "/images/devices/btsd-0002-threads-2019.png",
+    "width": 1762,
+    "height": 1240,
+    "thumbnailWidth": 1762,
+    "thumbnailHeight": 1240,
+    "sourceDimensions": {
+      "width": 1762,
+      "height": 1240
+    },
+    "crop": null,
+    "preserveSource": true,
+    "sourceSha256": "40aca1253893a5ae9b5b1f1bfcc9e417c3ac76ece5e536ae6af25847a40fbb57",
+    "fullBytes": 2467413,
+    "kind": "Source figure",
+    "credit": "Elon Musk and Neuralink, 2019 research white paper, published in JMIR 21(10):e16194",
+    "sourceUrl": "https://www.jmir.org/2019/10/e16194/",
+    "sourceAssetUrl": "https://tweakers.net/files/upload/Neuralink-White-Paper.pdf",
+    "sourceLabel": "Neuralink · 2019 research white paper",
+    "license": "CC BY-ND 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nd/4.0/",
+    "rightsStatus": "licensed",
+    "changes": "Complete figure recovered at its native embedded resolution from the 2019 white paper. Transparency composited on the paper’s white background; no cropping, upscaling, retouching or panel removal. The recovered PNG is copied intact for both display and enlargement.",
+    "versionNote": "Historical 2019 wired research platform, not the current wireless N1 implant. N1 specifications below describe a later generation.",
+    "label": "2019 thread architecture",
+    "alt": "Complete 2019 Neuralink Figure 1 showing electron micrographs of Linear Edge and Tree polymer thread probes, an optical image of electrode contacts, and an impedance graph, with original annotations and scale bars.",
+    "caption": "Neuralink’s 2019 research thread architecture: two polymer probe designs, electrode contacts and impedance measurements. Historical reference, not the current N1 implant.",
+    "sourceExtraction": {
+      "pdfPage": 2,
+      "pdfImageXref": 3,
+      "pdfSoftMaskXref": 2,
+      "figure": 1,
+      "method": "Full native embedded image with its transparency composited on white.",
+      "pdfImageIndex": 0,
+      "sourceFigureDimensions": {
+        "width": 1762,
+        "height": 1240
+      }
+    },
+    "additionalViews": [
+      {
+        "src": "/images/devices/btsd-0002-implantation-2019.png",
+        "thumbnail": "/images/devices/btsd-0002-implantation-2019.png",
+        "width": 5252,
+        "height": 1835,
+        "thumbnailWidth": 5252,
+        "thumbnailHeight": 1835,
+        "sourceDimensions": {
+          "width": 5252,
+          "height": 1835
+        },
+        "crop": null,
+        "preserveSource": true,
+        "sourceSha256": "2064ebd552e79595d63078f27db65e028976177f3eb5f5b8ad4aea9f9be19cf5",
+        "fullBytes": 2247269,
+        "kind": "Source figure",
+        "credit": "Elon Musk and Neuralink, 2019 research white paper, published in JMIR 21(10):e16194",
+        "sourceUrl": "https://www.jmir.org/2019/10/e16194/",
+        "sourceAssetUrl": "https://tweakers.net/files/upload/Neuralink-White-Paper.pdf",
+        "sourceLabel": "Neuralink · 2019 research white paper",
+        "license": "CC BY-ND 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-nd/4.0/",
+        "rightsStatus": "licensed",
+        "changes": "Complete figure recovered at its native embedded resolution from the 2019 white paper. Transparency composited on the paper’s white background; no cropping, upscaling, retouching or panel removal. The recovered PNG is copied intact for both display and enlargement.",
+        "versionNote": "Historical 2019 wired research platform, not the current wireless N1 implant. N1 specifications below describe a later generation.",
+        "label": "2019 implanted threads",
+        "alt": "Complete 2019 Neuralink Figure 6: a microscope photograph of threads implanted across rat cortical tissue with a 500 micrometer scale, alongside a rat wearing the wired research recording package.",
+        "caption": "Threads implanted in rat cortex, with the original 500 µm scale, beside the wired research recording package. Complete 2019 Figure 6; this does not depict the current N1 implant.",
+        "sourceExtraction": {
+          "pdfPage": 7,
+          "pdfImageXref": 23,
+          "pdfSoftMaskXref": 22,
+          "figure": 6,
+          "method": "Full native embedded image with its transparency composited on white.",
+          "pdfImageIndex": 0,
+          "sourceFigureDimensions": {
+            "width": 5252,
+            "height": 1835
+          }
+        }
+      }
+    ]
   }
 }
