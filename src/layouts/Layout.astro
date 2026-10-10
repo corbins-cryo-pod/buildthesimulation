@@ -127,12 +127,12 @@ function stripAtlasLabel(title) {
           <div class={`navDrop ${pathname.startsWith("/companies") || pathname.startsWith("/china") ? "active" : ""}`}>
             <a class="pill" href="/companies/">BCI Atlas</a>
             <div class="menu">
+              <a class="menuItem" href="/china/">China overview</a>
               {companies.map((p) => (
                 <a class="menuItem" href={`/companies/?org=${p.slug}`}>
                   {stripAtlasLabel(p.data.title)}
                 </a>
               ))}
-              <a class="menuItem" href="/china/">China overview</a>
             </div>
           </div>
 
