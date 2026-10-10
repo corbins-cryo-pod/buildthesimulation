@@ -46,8 +46,8 @@ Company brief: [StairMed](/companies/12-stairmed-company-brief/).
 | Electrode lengths | Intraoperative shanks 20 mm long (35 mm for the 256-channel array) [2] |
 | Shank width and thickness | Intraoperative shanks 80 to 245 um wide, tapered, and 2 um thick per the Nature Communications methods. StairMed's own implant page states electrode thickness of only 1 um. Both are listed because the sources differ and may describe different versions [2][4] |
 | Tip and exposed site geometry |  |
-| Contact coating |  |
-| Insulation | The paper describes a Ti/Ni/Au (50/800/200 nm) I/O layer but the insulating film material was not extracted [2] |
+| Contact coating | Sputtered porous iridium oxide (IrOx) on Ti/Au/Ti (5/100/5 nm) traces; recording-site impedance 52.99 +/- 0.49 kOhm at 1 kHz (n = 6 sites) [2] |
+| Insulation | Polyimide, spin-coated on a silicon wafer as the base layer and again as top encapsulation, with a Ti/Ni/Au (50/800/200 nm) I/O layer and Ti/Au/Ti interconnects patterned by photolithography and lift-off [2] |
 | Insertion method | Intraoperative arrays were guided by tungsten shuttle needles 75 um in diameter to 5 to 6 mm depth, then the needles were removed. StairMed reports a 3 to 5 mm cranial puncture with sensor depth of 5 to 8 mm for the implant (company statement via MedPath) [2][6]. The Shanghai government account gives a 3 to 5 mm cranial micro-hole and an electrode about one hundredth the width of a hair (company statement) [10] |
 | Anchoring and fixation |  |
 
