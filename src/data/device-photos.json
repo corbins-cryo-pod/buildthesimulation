@@ -1701,5 +1701,32 @@
         "height": 2372
       }
     }
+  },
+  "BTSD-ACAD-0103": {
+    "src": "/images/devices/btsd-acad-0103.png",
+    "thumbnail": "/images/devices/btsd-acad-0103.png",
+    "width": 1733,
+    "height": 928,
+    "thumbnailWidth": 1733,
+    "thumbnailHeight": 928,
+    "sourceDimensions": {
+      "width": 1733,
+      "height": 928
+    },
+    "crop": null,
+    "preserveSource": true,
+    "sourceSha256": "96c6090cda1adb11d69012734c714c01f99f59ff1dce2c2885c5fe313d785d3d",
+    "kind": "Source figure",
+    "label": "Fabrication and finished array",
+    "alt": "Complete source figure: cross-section schematics a to h of the silicon microneedle fabrication process, with photograph i of the finished 10 by 10 array on a fingertip and photograph j of a packaged array with gold wire leads.",
+    "caption": "Fabrication process (a to h, schematics) and photographs of the completed array (i, 4 mm scale) and a packaged array (j, 1 mm scale), shown across the complete Figure 1.",
+    "credit": "Pei group, Institute of Semiconductors CAS, Microsystems & Nanoengineering (2025), Figure 1",
+    "sourceUrl": "https://www.nature.com/articles/s41378-025-00922-6",
+    "sourceAssetUrl": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41378-025-00922-6/MediaObjects/41378_2025_922_Fig1_HTML.png",
+    "sourceLabel": "Microsystems & Nanoengineering · complete Figure 1",
+    "license": "CC BY-NC-ND 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
+    "versionNote": "Research prototype from the 2025 paper, 10 x 10 silicon array; panels a to h are process schematics, only i and j are photographs."
   }
 }
