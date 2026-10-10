@@ -10,5 +10,10 @@ const entries = buildAtlasEntries(companies, devices, applications, deviceModels
 ---
 <Layout pageTitle="BCI Atlas" subtitle="Explore the places, people and hardware shaping neural interfaces." description="An interactive BCI atlas connecting companies and labs with documented devices, 3D models and studies." wide={true}>
   <AtlasExplorer client:load entries={entries} />
+  <p class="atlas-china-link">Looking at programs in China? Read the <a href="/china/">China invasive BCI overview</a> for regulation, trials and companies from Chinese primary sources.</p>
   <noscript><p>Open any organization below to read its profile. Enable JavaScript for the interactive map, filters and connected hardware.</p></noscript>
 </Layout>
+
+<style>
+  .atlas-china-link { margin: 18px 0 0; font-size: 16px; font-style: italic; }
+</style>

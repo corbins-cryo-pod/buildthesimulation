@@ -124,9 +124,10 @@ function stripAtlasLabel(title) {
 
           <a class={`pill ${pathname.startsWith("/devices/designer") ? "active" : ""}`} href="/devices/designer/">Designer</a>
 
-          <div class={`navDrop ${pathname.startsWith("/companies") ? "active" : ""}`}>
+          <div class={`navDrop ${pathname.startsWith("/companies") || pathname.startsWith("/china") ? "active" : ""}`}>
             <a class="pill" href="/companies/">BCI Atlas</a>
             <div class="menu">
+              <a class="menuItem" href="/china/">China overview</a>
               {companies.map((p) => (
                 <a class="menuItem" href={`/companies/?org=${p.slug}`}>
                   {stripAtlasLabel(p.data.title)}
@@ -134,8 +135,6 @@ function stripAtlasLabel(title) {
               ))}
             </div>
           </div>
-
-          <a class={`pill ${pathname.startsWith("/china") ? "active" : ""}`} href="/china/">China</a>
 
           <div class={`navDrop ${pathname.startsWith("/applications") ? "active" : ""}`}>
             <a class="pill" href="/applications/">Applications</a>
