@@ -4,7 +4,7 @@ order: 81
 pubDate: 2026-10-07
 updatedDate: 2026-10-07
 device_id: "BTSD-ACAD-0055"
-interface_class: "other"
+interface_class: "sensing"
 status: "preclinical"
 last_updated: 2026-10-07
 description: "Graphene/nanoparticle networks embedded in elastomer for monoamine sensing in brain and gut. Chemical measurements, not spike recording; brain and gut layouts, calibration and clinical limits remain distinct."
