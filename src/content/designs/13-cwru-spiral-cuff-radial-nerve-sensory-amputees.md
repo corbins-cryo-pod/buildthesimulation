@@ -16,7 +16,7 @@ function: ["stimulation"]
 form: ["cuff"]
 regulatory: "investigational"
 origin: "US"
-tags: ["PNI", "spiral cuff", "self-sizing", "CWRU", "sensory feedback", "amputation", "stimulation", "peripheral nerve", "cuff"]
+tags: ["spiral cuff", "self-sizing", "sensory feedback", "amputation"]
 draft: false
 ---
 
