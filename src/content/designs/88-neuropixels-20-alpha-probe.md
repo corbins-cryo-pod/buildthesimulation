@@ -13,7 +13,7 @@ website: "https://www.science.org/doi/10.1126/science.abf4588"
 axis: ["cortex"]
 function: ["recording"]
 form: ["probe"]
-tags: ["Neuropixels", "2.0", "alpha", "intracortical", "recording", "silicon", "chronic", "preclinical"]
+tags: ["Neuropixels", "intracortical", "silicon", "chronic"]
 draft: false
 ---
 
