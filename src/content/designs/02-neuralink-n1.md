@@ -11,6 +11,11 @@ description: "Neuralink’s fully implanted, wireless intracortical BCI, with a 
 modality: "Intracortical"
 successRank: 4
 website: "https://neuralink.com/"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film", "microelectrode"]
+regulatory: "investigational"
+origin: "US"
 tags: ["BCI", "intracortical", "penetrating", "Neuralink", "wireless", "robotic surgery", "cortex", "recording", "microelectrode", "flexible threads"]
 draft: false
 ---
