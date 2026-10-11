@@ -10,6 +10,10 @@ last_updated: 2026-10-08
 description: "Investigational implantable epidural spinal stimulation system for blood pressure instability after spinal cord injury, in the Empower BP pivotal study. Hardware specifications are not published in the sources read."
 modality: "Other"
 website: "https://clinicaltrials.gov/study/NCT07147296"
+axis: ["spinal-cord"]
+function: ["stimulation"]
+regulatory: "investigational"
+origin: "Netherlands"
 tags: ["spinal cord stimulation", "ONWARD", "ARC-IM", "blood pressure", "spinal cord injury", "investigational", "human"]
 draft: false
 ---
