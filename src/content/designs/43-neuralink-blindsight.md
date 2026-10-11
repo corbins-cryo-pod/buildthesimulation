@@ -14,7 +14,7 @@ website: "https://neuralink.com/updates/neuralink-receives-breakthrough-device-d
 axis: ["cortex"]
 function: ["stimulation"]
 origin: "US"
-tags: ["Neuralink", "Blindsight", "visual prosthesis", "visual cortex", "breakthrough device", "company", "preclinical"]
+tags: ["Neuralink", "visual prosthesis", "visual cortex", "breakthrough device"]
 draft: false
 ---
 
