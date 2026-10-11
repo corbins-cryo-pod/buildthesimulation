@@ -13,7 +13,7 @@ website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8607496/"
 axis: ["cortex"]
 function: ["recording"]
 form: ["microwire"]
-tags: ["Argo", "Paradromics", "Caeleste", "microwire", "CMOS", "PtIr", "rat", "sheep", "preclinical"]
+tags: ["Paradromics", "CMOS", "PtIr", "rat", "sheep"]
 draft: false
 ---
 
