@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["film", "array"]
 origin: "US"
-tags: ["ECoG", "PEDOT:PSS", "organic electronics", "conformable", "spikes from surface", "NYU", "Buzsaki", "academic", "research"]
+tags: ["ECoG", "PEDOT:PSS", "NYU"]
 draft: false
 ---
 
