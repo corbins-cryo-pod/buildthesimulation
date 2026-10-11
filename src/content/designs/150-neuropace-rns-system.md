@@ -15,7 +15,7 @@ function: ["recording", "stimulation", "bidirectional"]
 form: ["probe", "array"]
 regulatory: "fda-approved"
 origin: "US"
-tags: ["epilepsy", "responsive stimulation", "ECoG", "closed loop", "NeuroPace", "FDA approved", "depth lead", "cortical strip", "human"]
+tags: ["epilepsy", "ECoG", "closed loop"]
 draft: false
 ---
 
