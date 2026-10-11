@@ -13,7 +13,7 @@ website: "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fni
 axis: ["cortex"]
 function: ["recording"]
 form: ["microwire"]
-tags: ["CHIME", "microwire", "gold", "glass", "CMOS", "Crick", "Stanford", "European-secondary", "preclinical"]
+tags: ["glass", "CMOS", "Stanford"]
 draft: false
 ---
 
