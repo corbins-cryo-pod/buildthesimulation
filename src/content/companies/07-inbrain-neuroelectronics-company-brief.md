@@ -2,8 +2,8 @@
 title: "INBRAIN Neuroelectronics (company brief)"
 order: 7
 pubDate: 2026-02-02
-updatedDate: 2026-10-04
-lastVerified: 2026-10-04
+updatedDate: 2026-10-10
+lastVerified: 2026-10-10
 description: "INBRAIN’s graphene-based, high-density cortical interfaces aimed at precision neurology: high-resolution sensing + stimulation with a path toward closed-loop therapy (e.g., Parkinson’s)."
 region: "European"
 kind: "Company"
@@ -89,6 +89,7 @@ The reported Breakthrough Device Designation for Parkinson’s needs confirmatio
 
 - *Funding (2026):* INBRAIN announced a *$50M Series B*. Source: <https://www.neurofounders.co/press-releases/inbrain-neuroelectronics-raises-50m-series-b-to-advance-graphene-based-brain-computer-interface-technology>
 - *Clinical:* the company announced completion of patient recruitment in its first-in-human graphene study on Apr 20, 2026. Source: <https://www.businesswire.com/news/home/20260420000990/en/INBRAIN-Neuroelectronics-Completes-Enrolment-of-Worlds-First-in-Human-Study-of-Graphene-Neural-Interfaces-for-Brain-Decoding-Mapping>
+- *MINIGRAPH results (Oct 7, 2026, company press release):* INBRAIN announced completion and results of MINIGRAPH, a European Innovation Council funded project coordinated by ICN2. Other consortium members: imec, Fraunhofer-Gesellschaft, Leiden University Medical Center, ETH Zurich, Nanoflex Robotics and Palacky University Olomouc. Per the release, Nanoflex Robotics and ETH Zurich built a magnetically guided robotic system that deployed ultra-thin cortical and subcortical graphene probes along straight and curved trajectories under X-ray imaging, validated in vitro and in vivo in a large animal model. The consortium also reports accelerated-ageing data supporting more than 10 years of projected stability, and compact implantable electronics decoding signals from hundreds of neural sites. Parkinson's disease was the initial application. All results are company-reported from the press release, and this work was preclinical, not human. Separately, INBRAIN has a collaboration with Robeauté that is not part of MINIGRAPH. Source: <https://www.biospace.com/press-releases/inbrain-neuroelectronics-and-minigraph-european-consortium-develop-magnetically-guided-robotic-implantation-for-ultra-thin-graphene-brain-computer-interfaces>
 
 ### Device entries
 
