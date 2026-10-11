@@ -10,6 +10,11 @@ last_updated: 2026-10-08
 description: "Beijing Zhiran's fully implanted wireless intracortical flexible BCI with over 100 channels, in a multicenter registration-style trial (LEAP) that launched at Tiantan Hospital in May 2026. Details come from Chinese hospital and state media releases and company statements."
 modality: "Intracortical"
 website: "https://www.bjtth.cn/Html/News/Articles/214568.html"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film"]
+regulatory: "investigational"
+origin: "China"
 tags: ["Zhiran", "LEAP", "flexible electrode", "intracortical", "wireless", "China", "human"]
 draft: false
 ---
