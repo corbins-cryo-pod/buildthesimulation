@@ -11,6 +11,9 @@ description: "A camera-driven visual cortex stimulator that gave blind volunteer
 modality: "Cortical surface"
 successRank: 34
 website: "http://nuui.com/Sections/Technology/Artificial%20Vision/artificial%20vision.pdf"
+axis: ["cortex"]
+function: ["stimulation"]
+form: ["array"]
 tags: ["visual prosthesis", "phosphenes", "cortical stimulation", "percutaneous", "historical", "Dobelle", "human", "dead end"]
 draft: false
 ---
