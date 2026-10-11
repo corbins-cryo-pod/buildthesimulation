@@ -15,7 +15,7 @@ axis: ["peripheral-nerve"]
 function: ["recording"]
 form: ["other"]
 origin: "US"
-tags: ["wireless", "ultrasound", "backscatter", "battery-free", "peripheral nerve", "EMG", "ENG", "Berkeley", "academic", "preclinical"]
+tags: ["wireless", "ultrasound", "battery-free", "EMG", "Berkeley"]
 draft: false
 ---
 
