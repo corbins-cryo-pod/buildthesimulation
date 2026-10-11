@@ -11,6 +11,11 @@ description: "A foundational, non-penetrating, self-sizing peripheral nerve cuff
 modality: "Peripheral nerve"
 successRank: 6
 website: "https://pubmed.ncbi.nlm.nih.gov/3198136/"
+axis: ["peripheral-nerve"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["cuff"]
+regulatory: "investigational"
+origin: "US"
 tags: ["PNI", "cuff", "spiral cuff", "helical cuff", "self-sizing", "stimulation", "recording", "peripheral nerve", "bidirectional"]
 draft: false
 ---
