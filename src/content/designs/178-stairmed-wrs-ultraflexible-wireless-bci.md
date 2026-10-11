@@ -10,6 +10,11 @@ last_updated: 2026-10-08
 description: "StairMed's Wireless Recording System, a skull-mounted battery-free implant with ultra-flexible penetrating electrodes, in early human trials at Huashan Hospital in Shanghai. Implant counts and several specifications are company disclosures."
 modality: "Intracortical"
 website: "https://clinicaltrials.gov/study/NCT06829212"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film"]
+regulatory: "investigational"
+origin: "China"
 tags: ["StairMed", "WRS", "HNE", "uFINE", "flexible electrode", "wireless", "China", "investigational", "human"]
 draft: false
 ---
