@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording", "stimulation", "bidirectional"]
 form: ["array", "microelectrode"]
 origin: "US"
-tags: ["intracortical", "silicon"]
+tags: ["BCI", "intracortical", "Utah array", "UEA", "NeuroPort", "silicon", "recording", "stimulation", "human"]
 draft: false
 ---
 
