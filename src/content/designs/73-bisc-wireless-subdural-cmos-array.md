@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["film", "array"]
 origin: "US"
-tags: ["BISC", "CMOS", "wireless", "subdural", "ECoG", "Columbia", "Shepard", "high density", "academic", "preclinical"]
+tags: ["CMOS", "wireless", "subdural", "ECoG", "Columbia", "high density"]
 draft: false
 ---
 
