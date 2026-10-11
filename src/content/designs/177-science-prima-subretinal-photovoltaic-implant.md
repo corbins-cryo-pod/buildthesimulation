@@ -4,12 +4,15 @@ order: 177
 pubDate: 2026-10-08
 updatedDate: 2026-10-08
 device_id: "BTSD-STUP-0004"
-interface_class: "other"
+interface_class: "retinal"
 status: "human"
 last_updated: 2026-10-08
 description: "Subretinal 378-pixel photovoltaic implant with near-infrared camera glasses for geographic atrophy, with a 38-participant European study published in NEJM in October 2025."
 modality: "Other"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7618305/"
+axis: ["retina"]
+function: ["stimulation"]
+origin: "US"
 tags: ["Science Corporation", "PRIMA", "retinal prosthesis", "photovoltaic", "geographic atrophy", "NEJM", "human"]
 draft: false
 ---
