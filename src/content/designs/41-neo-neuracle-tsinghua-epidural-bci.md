@@ -16,7 +16,7 @@ function: ["recording"]
 form: ["array"]
 regulatory: "nmpa-approved"
 origin: "China"
-tags: ["NEO", "Neuracle", "Tsinghua", "epidural", "ECoG", "wireless", "spinal cord injury", "China", "market approval", "human"]
+tags: ["Tsinghua", "epidural", "ECoG", "wireless", "spinal cord injury"]
 draft: false
 ---
 
