@@ -11,6 +11,10 @@ description: "A 4 µm thick organic electrode array with 10 × 10 µm sites on 3
 modality: "Cortical surface"
 successRank: 24
 website: "https://www.nature.com/articles/nn.3905"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film", "array"]
+origin: "US"
 tags: ["ECoG", "PEDOT:PSS", "organic electronics", "conformable", "spikes from surface", "NYU", "Buzsaki", "academic", "research"]
 draft: false
 ---
