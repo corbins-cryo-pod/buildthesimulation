@@ -14,7 +14,7 @@ axis: ["peripheral-nerve"]
 function: ["stimulation"]
 regulatory: "fda-approved"
 origin: "US"
-tags: ["VNS", "vagus nerve", "SetPoint", "rheumatoid arthritis", "FDA approved", "breakthrough device", "human"]
+tags: ["vagus nerve", "breakthrough device"]
 draft: false
 ---
 
