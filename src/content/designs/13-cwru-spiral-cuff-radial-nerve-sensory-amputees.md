@@ -11,6 +11,11 @@ description: "A research-grade self-sizing spiral cuff electrode implementation 
 modality: "Peripheral nerve"
 successRank: 12
 website: "https://pubmed.ncbi.nlm.nih.gov/28693584/"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+form: ["cuff"]
+regulatory: "investigational"
+origin: "US"
 tags: ["PNI", "spiral cuff", "self-sizing", "CWRU", "sensory feedback", "amputation", "stimulation", "peripheral nerve", "cuff"]
 draft: false
 ---
