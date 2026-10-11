@@ -14,7 +14,7 @@ axis: ["cortex", "deep-brain"]
 function: ["recording", "stimulation", "bidirectional"]
 form: ["fiber"]
 origin: "China"
-tags: ["SIAT", "MXene", "PEDOT:PSS", "fibre electrode", "deep brain stimulation", "China", "mouse", "rat", "preclinical", "institutional source"]
+tags: ["SIAT", "PEDOT:PSS", "fiber electrode", "deep brain stimulation", "mouse", "rat"]
 draft: false
 ---
 
