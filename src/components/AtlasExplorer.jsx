@@ -12,6 +12,7 @@ const blankState = {query: '', kind: '', region: '', interfaceType: '', stage: '
 export default function AtlasExplorer({ entries }) {
   const [state, setState] = useState(blankState);
   const [initialized, setInitialized] = useState(false);
+  const [view, setView] = useState('list');
   const [mapReady, setMapReady] = useState(false);
   const [mapError, setMapError] = useState('');
   const [tileError, setTileError] = useState(false);
@@ -85,7 +86,9 @@ export default function AtlasExplorer({ entries }) {
   }, [previewId, Viewer]);
 
   useEffect(() => {
-    if (!initialized) return;
+    if (!initialized || view !== 'map') return;
+    setMapReady(false);
+    setMapError('');
     let cancelled = false, dispose = () => {};
     (async () => {
       const {default: L} = await import('leaflet');
@@ -165,7 +168,7 @@ export default function AtlasExplorer({ entries }) {
       dispose = () => { resize.disconnect(); map.off(); map.remove(); mapApi.current = null; mapActions.current = {}; };
     })().catch(() => { if (!cancelled) setMapError('The map could not load. You can still browse every organization and its linked hardware.'); });
     return () => { cancelled = true; dispose(); };
-  }, [initialized]);
+  }, [initialized, view]);
 
   useEffect(() => { mapActions.current.render?.(); }, [filtered]);
   useEffect(() => { mapActions.current.decorate?.(); }, [hovered, state.selected]);
@@ -174,18 +177,30 @@ export default function AtlasExplorer({ entries }) {
   const clearFilters = () => { setState(blankState); writeUrl(blankState); setCluster(null); setAreaOnly(false); setPreviewId(''); mapActions.current.fit?.(entries); };
   const activeFilters = state.query || state.kind || state.region || state.interfaceType || state.stage || state.regulatory || state.sort !== 'maturity' || cluster || areaOnly;
   return <section class="atlas" aria-label="Interactive BCI atlas">
-    <div class="atlas-toolbar">
-      <label class="atlas-search">Search the ecosystem<input id="atlas-search" type="search" placeholder="Organization, place, device or study…" value={state.query} onInput={e => changeFilter('query', e.currentTarget.value)} /></label>
-      <label>Organizations<select value={state.kind} onChange={e => changeFilter('kind', e.currentTarget.value)}><option value="">Companies &amp; labs</option><option value="Company">Companies</option><option value="Lab">Labs</option></select></label>
-      <label>Region<select value={state.region} onChange={e => changeFilter('region', e.currentTarget.value)}><option value="">Worldwide</option>{Object.keys(regionLabels).map(region => <option key={region} value={region}>{regionLabels[region]}</option>)}</select></label>
-      <label>Technology<select value={state.interfaceType} onChange={e => changeFilter('interfaceType', e.currentTarget.value)}><option value="">All interfaces</option>{interfaces.map(type => <option key={type}>{type}</option>)}</select></label>
-      <label>Development stage<select value={state.stage} onChange={e => changeFilter('stage', e.currentTarget.value)}><option value="">All stages</option>{Object.entries(stageLabels).map(([stage, label]) => <option key={stage} value={stage}>{stage === '?' ? label : `${stage} · ${label}`}</option>)}</select></label>
-      <label>Regulatory status<select value={state.regulatory} onChange={e => changeFilter('regulatory', e.currentTarget.value)}><option value="">All statuses</option>{Object.entries(regulatoryLabels).map(([code, label]) => <option key={code} value={code}>{code} · {label}</option>)}</select></label>
-      <label>Sort by<select value={state.sort} onChange={e => changeFilter('sort', e.currentTarget.value)}>{Object.entries(sortLabels).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></label>
-      {activeFilters && <button class="atlas-clear" onClick={clearFilters}>Reset filters</button>}
+    <div class="atlas-viewbar">
+      <div><strong>Companies &amp; labs</strong><span>{filtered.length} matching organizations</span></div>
+      <div class="atlas-view-switch" role="group" aria-label="Atlas view">
+        <button type="button" aria-pressed={view === 'list'} onClick={() => { setView('list'); setAreaOnly(false); setCluster(null); }}>Directory</button>
+        <button type="button" aria-pressed={view === 'map'} onClick={() => { setView('map'); setAreaOnly(false); setCluster(null); }}>Map</button>
+      </div>
     </div>
+    <div class="atlas-toolbar">
+      <label class="atlas-search">Search<input id="atlas-search" type="search" placeholder="Organization, technology, device or study…" value={state.query} onInput={e => changeFilter('query', e.currentTarget.value)} /></label>
+      <label>Technology<select value={state.interfaceType} onChange={e => changeFilter('interfaceType', e.currentTarget.value)}><option value="">All interfaces</option>{interfaces.map(type => <option key={type}>{type}</option>)}</select></label>
+      <label>Development<select value={state.stage} onChange={e => changeFilter('stage', e.currentTarget.value)}><option value="">All stages</option>{Object.entries(stageLabels).map(([stage, label]) => <option key={stage} value={stage}>{stage === '?' ? label : `${stage} · ${label}`}</option>)}</select></label>
+      <label>Region<select value={state.region} onChange={e => changeFilter('region', e.currentTarget.value)}><option value="">Worldwide</option>{Object.keys(regionLabels).map(region => <option key={region} value={region}>{regionLabels[region]}</option>)}</select></label>
+    </div>
+    <details class="atlas-advanced">
+      <summary>More filters &amp; sorting</summary>
+      <div class="atlas-toolbar atlas-toolbar-extra">
+        <label>Organization type<select value={state.kind} onChange={e => changeFilter('kind', e.currentTarget.value)}><option value="">Companies &amp; labs</option><option value="Company">Companies</option><option value="Lab">Labs</option></select></label>
+        <label>Regulatory status<select value={state.regulatory} onChange={e => changeFilter('regulatory', e.currentTarget.value)}><option value="">All statuses</option>{Object.entries(regulatoryLabels).map(([code, label]) => <option key={code} value={code}>{code} · {label}</option>)}</select></label>
+        <label>Sort by<select value={state.sort} onChange={e => changeFilter('sort', e.currentTarget.value)}>{Object.entries(sortLabels).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></label>
+      </div>
+    </details>
+    {activeFilters && <button class="atlas-filter-reset" type="button" onClick={clearFilters}>Clear filters</button>}
     <details class="atlas-code-key"><summary>Read the codes <span><i>C</i> Company / <i>L</i> Lab · Stage 0–4 · R Research / A Regulatory approved / K Cleared</span></summary><p>0 Concept · 1 Bench testing · 2 Animal studies · 3 Human studies · 4 Clinical product. Approval can be from any country; open a profile for its named device, regulator and sources. A question mark means unverified.</p><p><a href="/companies/classification/">Full classification guide &amp; all {entries.length} organizations →</a></p></details>
-    <div class={`atlas-workspace ${expanded ? 'sheet-expanded' : ''}`}>
+    <div class={`atlas-workspace ${expanded ? 'sheet-expanded' : ''} ${view === 'list' ? 'is-list' : ''}`}>
       <div ref={mapHost} class="atlas-map" aria-label="World map of cataloged company and lab locations" />
       {!mapReady && <div class="atlas-map-loading" role="status">{mapError || 'Preparing the atlas…'}</div>}
       {tileError && <p class="atlas-map-warning" role="status">Map imagery is unavailable. Organization locations and browsing still work.</p>}
