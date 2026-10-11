@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "PtNR surface electrodes laminated with GaN microLEDs to display cortical activity in the surgical field. Rat and pig proof of concept, including a 2,048-pixel display over 1,024 recording contacts and documented electrical interference."
 modality: "Cortical surface"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11093107/"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film", "array"]
+origin: "US"
 tags: ["iEEG", "microdisplay", "PtNRGrid", "microLED", "GaN", "UCSD", "Dayeh", "mapping", "academic", "preclinical"]
 draft: false
 ---
