@@ -12,6 +12,7 @@ modality: "Other"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7618305/"
 axis: ["retina"]
 function: ["stimulation"]
+regulatory: "ce-marked"
 origin: "US"
 tags: ["Science Corporation", "PRIMA", "retinal prosthesis", "photovoltaic", "geographic atrophy", "NEJM", "human"]
 draft: false
@@ -34,7 +35,7 @@ Company brief: [Science Corporation](/companies/06-science-corporation-company-b
 | First demonstrated |  |
 | First human implant |  |
 | Species studied | Human [1] |
-| Regulatory status | Investigational in the NEJM trial; the NEJM paper reports a confirmatory study, and company statements about regulatory submissions were not verified here [1][2] |
+| Regulatory status | CE marked under the EU Medical Device Regulation (DEKRA), commercial launch in Europe announced July 22, 2026, and later reported available in the UK; US: FDA review pending, with Breakthrough Device and Humanitarian Use Device designations. All company-reported [3][4]. The pivotal trial in the NEJM paper was investigational [1][2] |
 | Function | Restores central vision in geographic atrophy due to age-related macular degeneration [1] |
 | Target tissue | Subretinal space under the atrophic lesion [1] |
 
@@ -136,3 +137,5 @@ The implant and glasses as used in the PRIMAvera trial.
 
 1. [N Engl J Med 2025;394(3):232-242, subretinal photovoltaic implant (PMC full text)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7618305/).
 2. [Science Corporation release on the NEJM paper](https://science.xyz/news/new-england-journal-of-medicine-prima/).
+3. [Science Corporation, European commercial launch and CE mark, July 22, 2026](https://science.xyz/news/ce-mark/).
+4. [Science Corporation, 36-month PRIMAvera results, October 5, 2026](https://science.xyz/news/long-term-prima-results/).
