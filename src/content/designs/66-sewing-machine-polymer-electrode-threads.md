@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["fiber"]
 origin: "US"
-tags: ["polymer threads", "robotic insertion", "UCSF", "Berkeley", "preprint", "academic", "preclinical"]
+tags: ["UCSF", "Berkeley"]
 draft: false
 ---
 
