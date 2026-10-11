@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "Rice's 2023 32-contact polyimide stimulation/recording thread: 1 µm shank, reinforced sputtered-iridium-oxide contacts and separate bench and chronic mouse stimulation evidence."
 modality: "Intracortical"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10592461/"
+axis: ["cortex"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["fiber"]
+origin: "US"
 tags: ["StimNET", "NET", "Rice", "polyimide", "iridium oxide", "stimulation", "recording", "preclinical"]
 draft: false
 ---
