@@ -10,6 +10,9 @@ last_updated: 2026-10-07
 description: "The 2021 alpha hardware has 1,280 sites per shank, one or four shanks and 384 channels per probe. Vertical alignment and miniaturized packaging support motion correction and small-animal chronic recording."
 modality: "Intracortical"
 website: "https://www.science.org/doi/10.1126/science.abf4588"
+axis: ["cortex"]
+function: ["recording"]
+form: ["probe"]
 tags: ["Neuropixels", "2.0", "alpha", "intracortical", "recording", "silicon", "chronic", "preclinical"]
 draft: false
 ---
