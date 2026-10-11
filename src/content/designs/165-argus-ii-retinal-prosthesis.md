@@ -15,7 +15,7 @@ function: ["stimulation"]
 form: ["array"]
 regulatory: "fda-hde"
 origin: "US"
-tags: ["retinal prosthesis", "Argus II", "Second Sight", "Cortigent", "epiretinal", "HDE", "discontinued", "human"]
+tags: ["retinal prosthesis", "Second Sight", "Cortigent", "epiretinal", "discontinued"]
 draft: false
 ---
 
