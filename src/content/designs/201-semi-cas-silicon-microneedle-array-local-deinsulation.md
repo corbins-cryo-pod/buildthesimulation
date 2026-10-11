@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "10 x 10 bulk-silicon microneedle array, Utah-style, with tips exposed by masking in PDMS before Parylene-C deposition instead of etching. Tip exposure about 50 um, platinum black sites at 33.2 kOhm at 1 kHz, 15 of 16 channels recording in rat with mean spike SNR 12.63. Pei Weihua's group, Institute of Semiconductors, CAS."
 modality: "Intracortical"
 website: "https://www.nature.com/articles/s41378-025-00922-6"
+axis: ["cortex"]
+function: ["recording"]
+form: ["array"]
+origin: "China"
 tags: ["Institute of Semiconductors", "Pei Weihua", "silicon microneedle", "Utah-style", "Parylene-C", "platinum black", "China", "rat", "preclinical", "primary source"]
 draft: false
 ---
