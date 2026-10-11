@@ -15,7 +15,7 @@ function: ["recording"]
 form: ["film", "array"]
 regulatory: "investigational"
 origin: "China"
-tags: ["NeuroXess", "flexible ECoG", "speech decoding", "Mandarin", "China", "investigational", "human"]
+tags: ["NeuroXess"]
 draft: false
 ---
 
