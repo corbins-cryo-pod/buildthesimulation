@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["film", "array"]
 origin: "China"
-tags: ["Tsinghua", "SIAT", "hydrogel", "PEDOT:PSS", "all-organic", "ECoG", "China", "rabbit", "preclinical", "primary source"]
+tags: ["Tsinghua", "SIAT", "hydrogel", "PEDOT:PSS", "ECoG", "rabbit"]
 draft: false
 ---
 
