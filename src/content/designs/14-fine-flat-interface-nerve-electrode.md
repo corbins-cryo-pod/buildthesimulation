@@ -16,7 +16,7 @@ function: ["recording", "stimulation", "bidirectional"]
 form: ["cuff"]
 regulatory: "investigational"
 origin: "US"
-tags: ["PNI", "cuff", "FINE", "flat interface", "selective stimulation", "extraneural", "peripheral nerve", "recording", "stimulation", "bidirectional"]
+tags: []
 draft: false
 ---
 
