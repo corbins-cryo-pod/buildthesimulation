@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "Discrete 2020 ME stimulator uses two PVDF/Metglas films and a bias magnet for head-mounted rat STN stimulation. It is not the fully implanted PZT configuration."
 modality: "Other"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7818389/"
+axis: ["deep-brain"]
+function: ["stimulation"]
+form: ["other"]
+origin: "US"
 tags: ["magnetoelectric", "Rice", "two-film", "stimulation", "preclinical"]
 draft: false
 ---
