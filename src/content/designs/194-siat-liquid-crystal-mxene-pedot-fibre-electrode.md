@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "Wet-spun fibre electrode in which MXene nanosheets are aligned in a nematic liquid-crystal state, with an MXene/PEDOT:PSS composite version. Du Zhanhong's lab at SIAT: 43.16 ohm mm2 at 1 kHz, 11.81 mC/cm2 charge injection, cortical recording in mouse and deep brain stimulation in rat."
 modality: "Other"
 website: "https://bcbdi.siat.ac.cn/siat/2025-04/01/article_2025040107071517469.html"
+axis: ["cortex", "deep-brain"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["fiber"]
+origin: "China"
 tags: ["SIAT", "MXene", "PEDOT:PSS", "fibre electrode", "deep brain stimulation", "China", "mouse", "rat", "preclinical", "institutional source"]
 draft: false
 ---
