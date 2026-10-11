@@ -13,7 +13,7 @@ website: "https://news.sjtu.edu.cn/jdzh/20240909/201670.html"
 function: ["recording", "stimulation", "bidirectional"]
 form: ["probe"]
 origin: "China"
-tags: ["Shanghai Jiao Tong University", "Liu Jingquan", "optogenetics", "iridium oxide", "nano optical fibre", "intracellular", "photoelectric artifact", "China", "in vitro", "institutional source"]
+tags: ["Shanghai Jiao Tong University", "Liu Jingquan", "optogenetics", "iridium oxide", "intracellular"]
 draft: false
 ---
 
