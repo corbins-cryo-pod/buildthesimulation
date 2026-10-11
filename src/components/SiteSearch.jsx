@@ -102,7 +102,7 @@ export default function SiteSearch() {
         {!query.trim() ? <>
           <p class="discovery-kicker">Explore</p>
           {STARTS.map(item => <a class="discovery-result" href={item.href} key={item.href}>
-            <span><strong>{item.label}</strong><small>{item.detail}</small></span><span aria-hidden="true">↗</span>
+            <span><strong>{item.label}</strong><small>{item.detail}</small></span><span aria-hidden="true">→</span>
           </a>)}
           <p class="discovery-tip">Type a name, technology or application. Use ↑ ↓ and Enter to navigate.</p>
         </> : loadState === 'loading' || loadState === 'idle' ? <p class="discovery-empty" role="status">Loading catalog search…</p> : loadState === 'error' ? <p class="discovery-empty" role="alert">Search is unavailable. Use the main navigation to browse the catalogs.</p> : displayed.length ? groups.map(group => <section class="discovery-group" key={group.type}>
@@ -112,7 +112,7 @@ export default function SiteSearch() {
             return <a class={`discovery-result ${index === active ? 'is-active' : ''}`} key={`${item.type}:${item.href}:${item.title}`} href={item.href}
               onMouseEnter={() => setActive(index)}>
               <span><strong>{item.title}</strong><small>{[item.detail, item.summary].filter(Boolean).join(' · ').slice(0, 132)}</small></span>
-              <span aria-hidden="true">↗</span>
+              <span aria-hidden="true">→</span>
             </a>;
           })}
         </section>) : <p class="discovery-empty">No matches. Try a device, organization, anatomy or application.</p>}

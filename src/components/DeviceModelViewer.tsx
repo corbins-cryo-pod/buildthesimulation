@@ -172,7 +172,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
     </div>
     <details class="model-sources"><summary>Sources &amp; reference images</summary>
       <p>Dimensions come from the linked specifications; images guide shape only. Reference images remain on their owners’ websites.</p>
-      <ul>{[...model.sources, ...model.references].map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a></li>)}</ul>
+      <ul>{[...model.sources, ...model.references].map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label} →</a></li>)}</ul>
       <p>JSON includes physical site coordinates, unknown channel mappings and approximation notes. GLB uses meters. These models do not predict recording or stimulation performance.</p>
     </details>
     <style>{`

@@ -14,7 +14,7 @@ export default function ProgramClassification({classification, primary = classif
         <div><ClassificationBadge program={program} /><strong>{program.name}</strong></div>
         <p class="org-program-stage">{program.label}{program.historical ? ' · Historical / discontinued' : ''}</p>
         <p>{program.notes}</p>
-        <div class="org-program-links"><a href={program.evidenceUrl} {...(program.evidenceUrl.startsWith('https:') ? {target: '_blank', rel: 'noopener noreferrer'} : {})}>Evidence &amp; sources ↗</a>{program.authorizationUrl && <a href={program.authorizationUrl} target="_blank" rel="noopener noreferrer">{program.authorizationLabel} ↗</a>}</div>
+        <div class="org-program-links"><a href={program.evidenceUrl} {...(program.evidenceUrl.startsWith('https:') ? {target: '_blank', rel: 'noopener noreferrer'} : {})}>Evidence &amp; sources →</a>{program.authorizationUrl && <a href={program.authorizationUrl} target="_blank" rel="noopener noreferrer">{program.authorizationLabel} →</a>}</div>
       </section>)}
       <a class="org-guide-link" href="/companies/classification/">How to read the codes →</a>
     </div>

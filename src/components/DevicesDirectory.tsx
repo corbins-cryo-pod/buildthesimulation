@@ -348,7 +348,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
                 {pictured && <figure class="catalog-photo">
                   <a class="catalog-photo-image" href={`/devices/${pictured.slug}/`} aria-label={`View images and specifications of ${pictured.title}`}>
                     <img src={pictured.photo.thumbnail} srcSet={pictured.photo.width > pictured.photo.thumbnailWidth ? `${pictured.photo.thumbnail} ${pictured.photo.thumbnailWidth}w, ${pictured.photo.src} ${pictured.photo.width}w` : undefined} sizes="(max-width: 900px) calc(100vw - 84px), 360px" width={pictured.photo.width} height={pictured.photo.height} loading="lazy" decoding="async" alt={pictured.photo.alt} />
-                    <span class="photo-hover" aria-hidden="true">View the interface <span>↗</span></span>
+                    <span class="photo-hover" aria-hidden="true">View the interface <span>→</span></span>
                   </a>
                   <figcaption>
                     <span>{pictured.photo.kind}{pictured.photo.additionalViews?.length ? ` · ${pictured.photo.additionalViews.length + 1} views` : ''}</span>

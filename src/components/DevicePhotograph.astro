@@ -8,7 +8,7 @@ const dialogId = `photo-${deviceId.toLowerCase().replace(/[^a-z0-9-]/g, '-')}`;
     <div class="photo-label"><span>Physical interface</span><span>{photo.kind}</span></div>
     <a class="photo-open" href={photo.src} target="_blank" rel="noopener" data-photo-open aria-haspopup="dialog" aria-controls={dialogId} aria-label={`Enlarge image of ${title}`}>
       <img src={photo.src} srcset={photo.width > photo.thumbnailWidth ? `${photo.thumbnail} ${photo.thumbnailWidth}w, ${photo.src} ${photo.width}w` : undefined} sizes="(max-width: 680px) calc(100vw - 72px), 760px" width={photo.width} height={photo.height} alt={photo.alt} loading={priority ? undefined : 'lazy'} decoding="async" fetchpriority={priority ? 'high' : 'auto'} />
-      <span class="photo-enlarge" aria-hidden="true">View closer <span>↗</span></span>
+      <span class="photo-enlarge" aria-hidden="true">View closer <span>→</span></span>
     </a>
     <figcaption>
       <p class="photo-caption">{photo.caption}</p>
