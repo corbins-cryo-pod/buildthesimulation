@@ -1,11 +1,14 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import preact from "@astrojs/preact";
+import remarkCompanyBriefs from "./src/lib/remark-company-briefs.mjs";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://buildthesimulation.com",
   integrations: [preact()],
+  // Bump this version when the formatter changes to invalidate cached Markdown.
+  markdown: { remarkPlugins: [[remarkCompanyBriefs, { version: 1 }]] },
   redirects: {
     "/companies/map": "/companies/",
     '/devices/140-neuropixels-opto-prototype-2026': '/devices/107-neuropixels-opto-photonic-prototype/',

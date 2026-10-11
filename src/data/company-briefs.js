@@ -1,4 +1,4 @@
-// Two company briefs. Dated figures retain their sources and reporting context.
+// The two approved editorial editions; other briefs use the shared formatter.
 export const companyBriefs = {
   "04-blackrock-neurotech-company-brief": {
     "name": "Blackrock Neurotech",

@@ -2,219 +2,27 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
 import CompanyBrief from "../../components/CompanyBrief.astro";
-import { companyBriefs } from "../../data/company-briefs.js";
+import { cleanCompanyTitle, getCompanyBrief, linkedDeviceSlugs } from "../../lib/company-briefs.js";
 
 export async function getStaticPaths() {
   const posts = await getCollection("companies");
-  return posts.filter((p) => !p.data.draft).map((p) => ({ params: { slug: p.slug }, props: { entry: p } }));
+  return posts.filter((entry) => !entry.data.draft).map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
 }
 
 const { entry } = Astro.props;
 const apps = (await getCollection("applications"))
-  .filter((a) => !a.data.draft && a.data.orgs.includes(entry.slug))
+  .filter((app) => !app.data.draft && app.data.orgs.includes(entry.slug))
   .sort((a, b) => a.data.order - b.data.order);
-const allDevices = await getCollection("designs");
-const stripNum = (s) => s.replace(/^\d+\s*[-—]\s*/, "");
-const deviceSlugs = [...new Set(apps.flatMap((a) => a.data.devices))];
-const devices = deviceSlugs.map((s) => allDevices.find((d) => d.slug === s)).filter(Boolean);
-const { Content, headings } = await render(entry);
-const editorial = companyBriefs[entry.slug];
-
-const lastVerified = entry.data.lastVerified
-  ? entry.data.lastVerified.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" })
-  : null;
-
-const subtitle = entry.data.description ?? "Company / lab brief.";
-
-const titleNoPrefix = entry.data.title
-  .replace(/^\d+\s*[-—]\s*/, "")
-  .replace(/\s*\((company|lab) brief\)$/i, "");
+const allDevices = (await getCollection("designs")).filter((device) => !device.data.draft);
+const deviceSlugs = [...new Set([...linkedDeviceSlugs(entry.body), ...apps.flatMap((app) => app.data.devices)])];
+const devices = deviceSlugs.map((slug) => allDevices.find((device) => device.slug === slug)).filter(Boolean);
+const { Content, headings, remarkPluginFrontmatter } = await render(entry);
+const brief = getCompanyBrief(entry, remarkPluginFrontmatter.briefFormatting, headings, devices);
+const title = cleanCompanyTitle(entry.data.title);
 ---
 
-<Layout pageTitle={editorial ? `${titleNoPrefix} · Company brief` : "BCI Atlas"} subtitle={subtitle} description={entry.data.description} compactHeader={Boolean(editorial)} wide={Boolean(editorial)}>
-  {editorial ? <div id="top-of-brief"><CompanyBrief entry={entry} brief={editorial} headings={headings} apps={apps} devices={devices} lastVerified={lastVerified}><Content /></CompanyBrief></div> : <>
-  <p class="atlas-return"><a href={`/companies/?org=${entry.slug}`}>← Explore this organization in the atlas</a></p>
-  <article class="post">
-    <header class="postHead">
-      <div class="kicker">
-        {entry.data.kind} — {entry.data.region}
-      </div>
-      <h2 class="title">{titleNoPrefix}</h2>
-
-      {entry.data.website ? (
-        <p class="siteLink">
-          <a class="siteBtn" href={entry.data.website} target="_blank" rel="noopener noreferrer">
-            Official site →
-          </a>
-          {entry.data.location ? <span class="siteLoc">{entry.data.location}</span> : null}
-        </p>
-      ) : entry.data.location ? (
-        <p class="siteLink">
-          <span class="siteLoc">{entry.data.location}</span>
-        </p>
-      ) : null}
-
-      {entry.data.tags?.length ? <div class="meta">{entry.data.tags.join(" · ")}</div> : null}
-      {lastVerified ? <div class="meta verified">Last reviewed against public sources: {lastVerified}</div> : null}
-    </header>
-
-    {apps.length ? (
-      <section class="appList" aria-label="Applications">
-        <h3>Applications</h3>
-        <ul>
-          {apps.map((a) => <li><a href={`/applications/${a.slug}/`}>{stripNum(a.data.title)}</a></li>)}
-        </ul>
-        {devices.length ? (
-          <>
-            <h3>Devices used</h3>
-            <ul>
-              {devices.map((d) => <li><a href={`/devices/${d.slug}/`}>{stripNum(d.data.title)}</a></li>)}
-            </ul>
-          </>
-        ) : null}
-      </section>
-    ) : null}
-
-    <section class="content">
-      <Content />
-    </section>
-  </article>
-  </>}
+<Layout pageTitle={`${title} · ${entry.data.kind === "Lab" ? "Lab" : "Company"} brief`} description={entry.data.description} compactHeader wide>
+  <div id="top-of-brief">
+    <CompanyBrief entry={entry} brief={brief} headings={headings} apps={apps} devices={devices}><Content /></CompanyBrief>
+  </div>
 </Layout>
-
-<style>
-  .atlas-return { margin: 0 0 16px; font-size: 18px; font-style: italic; }
-  .post {
-    padding: 26px 26px;
-    border-radius: 16px;
-    border: 1px solid var(--border);
-    background: var(--panel);
-    max-width: 860px;
-  }
-
-  :global(main.wrap) {
-    display: flex;
-    flex-direction: column;
-  }
-
-  :global(main.wrap) .post {
-    align-self: center;
-    width: 100%;
-  }
-
-  .kicker {
-    opacity: 0.7;
-    font-size: var(--text-kicker);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  .title {
-    margin: 6px 0 0;
-    font-size: var(--title-post);
-    letter-spacing: -0.005em;
-    line-height: 1.15;
-  }
-
-  .siteLink {
-    margin: 12px 0 0;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .siteBtn {
-    display: inline-block;
-    padding: 8px 12px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    background: var(--panelStrong);
-    color: inherit;
-    text-decoration: none;
-    font-size: 13px;
-    letter-spacing: 0.02em;
-  }
-
-  .siteBtn:hover {
-    border-color: var(--borderStrong);
-    background: var(--panelHover);
-    transform: translateY(-1px);
-  }
-
-  .siteLoc {
-    opacity: 0.70;
-    font-size: 13px;
-  }
-
-  .meta {
-    margin-top: 8px;
-    opacity: 0.72;
-    font-size: var(--text-meta);
-  }
-
-  .content :global(p) {
-    line-height: 1.55;
-    margin: 0.95em 0;
-  }
-
-  .content :global(p:first-of-type) {
-    font-size: 1.08em;
-    line-height: 1.55;
-  }
-
-  .content :global(h2) {
-    margin: 1.2em 0 0.2em;
-    font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
-    font-size: var(--title-section);
-    font-weight: 400;
-    letter-spacing: 0;
-    line-height: 1.12;
-  }
-
-  .content :global(h3) {
-    margin: 1.0em 0 0.2em;
-    font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
-    font-size: 28px;
-    font-weight: 400;
-    line-height: 1.12;
-  }
-
-  .content :global(ul),
-  .content :global(ol) {
-    margin: 0.6em 0 0.9em;
-    padding-left: 1.2em;
-  }
-
-  .content :global(li) {
-    margin: 0.25em 0;
-    line-height: 1.55;
-  }
-
-  .content :global(a) {
-    color: inherit;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
-  }
-
-  .appList {
-    margin-top: 18px;
-    padding: 14px 16px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    background: var(--panelStrong);
-  }
-
-  .appList h3 {
-    margin: 0 0 6px;
-    font-family: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 1.12;
-  }
-
-  .appList h3:not(:first-child) { margin-top: 12px; }
-  .appList ul { margin: 0; padding-left: 1.1em; }
-  .appList li { margin: 0.25em 0; }
-  .appList a { color: inherit; }
-</style>

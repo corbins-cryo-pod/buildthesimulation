@@ -6,33 +6,35 @@ const { entry, brief, headings, apps, devices } = Astro.props;
 const sections = headings.filter((heading) => heading.depth === 2);
 const photo = getDevicePhoto(brief.photoDeviceId);
 const cleanTitle = (title) => title.replace(/^\d+\s*[-—]\s*/, '');
+const hasSources = brief.sources.length > 0;
+const hasMarginalia = Boolean(photo || apps.length || devices.length);
 ---
 
 <article class="company-brief" data-company-brief>
   <div class="brief-edition">
-    <a href={`/companies/?org=${entry.slug}`}>BCI Atlas <span aria-hidden="true">/</span> Company brief</a>
+    <a href={`/companies/?org=${entry.slug}`}>BCI Atlas <span aria-hidden="true">/</span> {brief.kind === 'Lab' ? 'Lab' : 'Company'} brief</a>
     <span>{brief.region}</span>
   </div>
 
   <header class="brief-cover">
     <div class="brief-cover-grid">
       <div class="brief-title-block">
-        <h1 class="brief-name" aria-label={brief.name}>{brief.headline.map(line => <span>{line}</span>)}</h1>
+        <h1 class:list={['brief-name', { 'brief-name-long': brief.longName }]} aria-label={brief.name}>{brief.headline.map(line => <span>{line}</span>)}</h1>
         <p class="brief-deck">{brief.deck}</p>
       </div>
-      <aside class="brief-company" aria-label="Company facts">
+      <aside class="brief-company" aria-label="Organization facts">
         <dl class="brief-facts">
-          <div><dt>Location</dt><dd>{entry.data.location}</dd></div>
+          {entry.data.location && <div><dt>Location</dt><dd>{entry.data.location}</dd></div>}
           <div><dt>Organization</dt><dd>{brief.structure}</dd></div>
           <div><dt>Platform</dt><dd>{brief.platform}</dd></div>
           <div><dt>Focus</dt><dd>{brief.focus}</dd></div>
         </dl>
-        <a class="brief-official" href={entry.data.website} target="_blank" rel="noopener noreferrer">Official website <span aria-hidden="true">↗</span></a>
+        {entry.data.website && <a class="brief-official" href={entry.data.website} target="_blank" rel="noopener noreferrer">Official website <span aria-hidden="true">↗</span></a>}
       </aside>
     </div>
   </header>
 
-  <div class="brief-reading-grid">
+  <div class:list={['brief-reading-grid', { 'brief-reading-grid-text-only': !hasMarginalia }]}>
     <aside class="brief-rail">
       <nav class="brief-contents" aria-label="In this brief">
         <p class="brief-small-label">In this brief</p>
@@ -40,7 +42,7 @@ const cleanTitle = (title) => title.replace(/^\d+\s*[-—]\s*/, '');
           {sections.map((section, index) => <li><a href={`#${section.slug}`} data-brief-section>
             <span class="brief-nav-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><span>{brief.contents?.[section.slug] ?? section.text}</span>
           </a></li>)}
-          <li><a href="#source-index" data-brief-section><span class="brief-nav-number" aria-hidden="true">{String(sections.length + 1).padStart(2, '0')}</span><span>Source index</span></a></li>
+          {hasSources && <li><a href="#source-index" data-brief-section><span class="brief-nav-number" aria-hidden="true">{String(sections.length + 1).padStart(2, '0')}</span><span>Source index</span></a></li>}
         </ol>
         <a class="brief-rail-atlas" href={`/companies/?org=${entry.slug}`}>Locate in the atlas <span aria-hidden="true">↗</span></a>
       </nav>
@@ -50,7 +52,7 @@ const cleanTitle = (title) => title.replace(/^\d+\s*[-—]\s*/, '');
       <slot />
     </div>
 
-    <aside class="brief-marginalia" aria-label="Interface and related reading">
+    {hasMarginalia && <aside class="brief-marginalia" aria-label="Interface and related reading">
       {photo && <figure class="brief-interface">
         <div class="brief-small-label">The physical interface</div>
         <a class="brief-photo" href={photo.src} target="_blank" rel="noopener noreferrer" aria-label={`Enlarge the image of ${brief.deviceName}`}>
@@ -74,13 +76,13 @@ const cleanTitle = (title) => title.replace(/^\d+\s*[-—]\s*/, '');
         {devices.length > 0 && <><p class="brief-small-label">Linked hardware</p><ul>{devices.map(device => <li><a href={`/devices/${device.slug}/`}>{cleanTitle(device.data.title)}</a></li>)}</ul></>}
         {apps.length > 0 && <><p class="brief-small-label">Applications &amp; studies</p><ul>{apps.map(app => <li><a href={`/applications/${app.slug}/`}>{cleanTitle(app.data.title)}</a></li>)}</ul></>}
       </section>}
-    </aside>
+    </aside>}
   </div>
 
-  <section class="brief-sources" id="source-index" aria-labelledby="source-heading">
+  {hasSources && <section class="brief-sources" id="source-index" aria-labelledby="source-heading">
     <div class="brief-source-heading">
       <h2 id="source-heading">Source index</h2>
-      <p>References, research and company reports.</p>
+      <p>References, research and {brief.kind === 'Lab' ? 'institutional' : 'company'} reports.</p>
     </div>
     <ol class="brief-source-list">
       {brief.sources.map(source => <li id={`source-${source.id}`}>
@@ -96,7 +98,7 @@ const cleanTitle = (title) => title.replace(/^\d+\s*[-—]\s*/, '');
         </div>
       </li>)}
     </ol>
-  </section>
+  </section>}
 
   <footer class="brief-colophon">
     <a class="brief-back-top" href="#top-of-brief">Back to the beginning <span aria-hidden="true">↑</span></a>
