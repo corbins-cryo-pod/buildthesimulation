@@ -15,7 +15,7 @@ function: ["recording"]
 form: ["film", "array"]
 regulatory: "investigational"
 origin: "US"
-tags: ["PtNRGrid", "platinum nanorods", "UCSD", "Dayeh", "micro-ECoG", "thin film", "surface", "academic", "human"]
+tags: ["PtNRGrid", "UC San Diego", "Dayeh", "ECoG"]
 draft: false
 ---
 
