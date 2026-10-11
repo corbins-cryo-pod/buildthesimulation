@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "Graphene/nanoparticle networks embedded in elastomer for monoamine sensing in brain and gut. Chemical measurements, not spike recording; brain and gut layouts, calibration and clinical limits remain distinct."
 modality: "Other"
 website: "https://www.nature.com/articles/s41586-022-04615-2"
+axis: ["other"]
+function: ["recording"]
+form: ["other"]
+origin: "US"
 tags: ["NeuroString", "neurochemical", "dopamine", "serotonin", "graphene", "stretchable", "Stanford", "academic", "preclinical"]
 draft: false
 ---
