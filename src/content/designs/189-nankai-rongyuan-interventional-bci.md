@@ -10,6 +10,11 @@ last_updated: 2026-10-09
 description: "Endovascular stent-electrode BCI from Duan Feng's group at Nankai University, with a subcutaneous wireless power and transmission unit. Sheep (2022), non-human primate (2023), sensor retrieval in sheep (2024) and a first human implant in a stroke patient (2025). Electrode geometry and materials are not published in the sources read."
 modality: "Endovascular"
 website: "https://en.nankai.edu.cn/2025/0911/c22796a577326/page.htm"
+axis: ["vasculature"]
+function: ["recording"]
+form: ["stent"]
+regulatory: "investigational"
+origin: "China"
 tags: ["Nankai", "Rongyuan", "endovascular", "stent electrode", "wireless", "stroke", "China", "human", "institutional source"]
 draft: false
 ---
