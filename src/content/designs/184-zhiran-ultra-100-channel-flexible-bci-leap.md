@@ -15,7 +15,7 @@ function: ["recording"]
 form: ["film"]
 regulatory: "investigational"
 origin: "China"
-tags: ["Zhiran", "LEAP", "flexible electrode", "intracortical", "wireless", "China", "human"]
+tags: ["flexible", "intracortical", "wireless"]
 draft: false
 ---
 
