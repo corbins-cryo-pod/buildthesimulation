@@ -14,7 +14,7 @@ axis: ["peripheral-nerve"]
 function: ["stimulation"]
 regulatory: "fda-authorized"
 origin: "Israel"
-tags: ["tibial nerve", "BlueWind", "Revi", "overactive bladder", "wireless implant", "De Novo", "FDA authorized", "human"]
+tags: ["wireless"]
 draft: false
 ---
 
