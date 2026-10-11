@@ -10,6 +10,10 @@ last_updated: 2026-10-08
 description: "FDA-approved Medtronic spinal cord stimulator with closed-loop ECAP sensing, approved April 2024. Values rest on the FDA supplement record and Medtronic's announcement; the SSED was not read."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P840001S512"
+axis: ["spinal-cord"]
+function: ["recording", "stimulation", "bidirectional"]
+regulatory: "fda-approved"
+origin: "US"
 tags: ["SCS", "spinal cord stimulation", "Medtronic", "Inceptiv", "closed loop", "ECAP", "FDA approved", "human"]
 draft: false
 ---
