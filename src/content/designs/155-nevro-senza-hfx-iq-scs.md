@@ -14,7 +14,7 @@ axis: ["spinal-cord"]
 function: ["stimulation"]
 regulatory: "fda-approved"
 origin: "US"
-tags: ["SCS", "spinal cord stimulation", "Nevro", "HFX iQ", "10 kHz", "FDA approved", "human"]
+tags: ["spinal cord stimulation"]
 draft: false
 ---
 
