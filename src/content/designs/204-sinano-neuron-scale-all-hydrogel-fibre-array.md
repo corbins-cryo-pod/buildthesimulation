@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "16-channel array of PEDOT:PSS hydrogel fibres wet-spun and annealed under mechanical constraint to 0.94 to 20 micrometer diameter, the size of a neuron. Single-unit tracking for 6 months in mouse motor cortex, no clear gliosis at 16 weeks. Zhang Ting's group at Suzhou Institute of Nano-Tech and Nano-Bionics (Matter, 2026)."
 modality: "Intracortical"
 website: "https://sinano.cas.cn/news/kyjz/202604/t20260429_8194590.html"
+axis: ["cortex"]
+function: ["recording"]
+form: ["fiber", "array"]
+origin: "China"
 tags: ["SINANO", "Zhang Ting", "hydrogel fibre", "PEDOT:PSS", "wet spinning", "neuron-scale", "China", "mouse", "preclinical", "institutional source"]
 draft: false
 ---

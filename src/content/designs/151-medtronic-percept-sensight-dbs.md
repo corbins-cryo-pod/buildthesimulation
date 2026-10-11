@@ -10,6 +10,11 @@ last_updated: 2026-10-08
 description: "FDA-approved deep brain stimulation family with sensing-enabled Percept neurostimulators and 8-contact SenSight directional leads. Values are scoped to the FDA record, Medtronic labeling and an independent technical report."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf/P960009S482B.pdf"
+axis: ["deep-brain"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["probe"]
+regulatory: "fda-approved"
+origin: "US"
 tags: ["DBS", "Medtronic", "Percept", "SenSight", "BrainSense", "FDA approved", "directional lead", "sensing", "human"]
 draft: false
 ---

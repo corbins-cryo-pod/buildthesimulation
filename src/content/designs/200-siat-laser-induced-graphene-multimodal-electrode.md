@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "Two laser-induced graphene devices from Lu Yi's group at SIAT and SIBS: a stretchable BiL-LIG wearable sensor and an IntE-LIG neural electrode array with a conductive polymer-gold coating, 1 kHz impedance down 98.5%, 4 weeks of macaque and 12 weeks of mouse recording, with a mouse seizure closed loop."
 modality: "Cortical surface"
 website: "https://www.shibs.cn/news/detail-488"
+axis: ["cortex"]
+function: ["recording"]
+form: ["array"]
+origin: "China"
 tags: ["SIAT", "SIBS", "Lu Yi", "laser-induced graphene", "LIG", "closed loop", "epilepsy", "China", "preclinical", "institutional source"]
 draft: false
 ---

@@ -10,6 +10,10 @@ last_updated: 2026-10-08
 description: "FDA-approved Abbott spinal cord stimulation family (Prodigy, Proclaim XR, Proclaim Plus, Externa), indications expanded to diabetic neuropathy and non-surgical back pain in 2023. Thin: hardware specs not in the FDA summary read."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf/P010032S189B.pdf"
+axis: ["spinal-cord"]
+function: ["stimulation"]
+regulatory: "fda-approved"
+origin: "US"
 tags: ["spinal cord stimulation", "Abbott", "Proclaim", "Prodigy", "BurstDR", "PMA", "FDA approved", "human"]
 draft: false
 ---

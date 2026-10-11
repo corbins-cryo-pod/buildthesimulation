@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "Wet-spun PEDOT:PSS fibre about 15 micrometers across with PDMS insulation and a magnetic susceptibility of -9.23 ppm matched to brain tissue, giving little to no artifact at 11.7 T. 11.9 kOhm at 1 kHz for a 20 micrometer fibre, charge injection limit 14.3 mC/cm2, used to stimulate and record in rats during multimodal MRI. Fudan University (National Science Review 2026)."
 modality: "Intracortical"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC13358296/"
+axis: ["cortex"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["fiber"]
+origin: "China"
 tags: ["Fudan University", "Peng Huisheng", "Sun Xiaoyu", "PEDOT:PSS", "fibre electrode", "MRI-compatible", "11.7 T", "wet spinning", "China", "rat", "preclinical", "primary source"]
 draft: false
 ---

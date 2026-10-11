@@ -10,6 +10,8 @@ last_updated: 2026-10-08
 description: "Pea-sized, battery-free wireless cortical stimulator from Motif Neurotech, shown acutely in a human in 2023 and now in an early feasibility study for treatment-resistant depression."
 modality: "Other"
 website: "https://clinicaltrials.gov/study/NCT07594483"
+function: ["stimulation"]
+regulatory: "investigational"
 tags: ["Motif", "DOT", "XCS", "magnetoelectric", "wireless stimulator", "depression", "investigational", "human"]
 draft: false
 ---

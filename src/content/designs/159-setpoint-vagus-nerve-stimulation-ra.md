@@ -10,6 +10,10 @@ last_updated: 2026-10-08
 description: "FDA-approved vagus nerve stimulator for rheumatoid arthritis, approved July 2025. Values come from the FDA summary of safety and effectiveness; trial efficacy numbers were not extracted."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf24/P240039B.pdf"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+regulatory: "fda-approved"
+origin: "US"
 tags: ["VNS", "vagus nerve", "SetPoint", "rheumatoid arthritis", "FDA approved", "breakthrough device", "human"]
 draft: false
 ---

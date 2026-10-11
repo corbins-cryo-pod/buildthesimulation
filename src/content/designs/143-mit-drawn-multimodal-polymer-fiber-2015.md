@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "All-polymer fibers integrate optical waveguides, conductive-polymer electrodes and fluidic channels. Two published cross-section designs precede the distinct 2021 hydrogel-hybrid assembly."
 modality: "Intracortical"
 website: "https://www.nature.com/articles/nbt.3093"
+axis: ["cortex"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["fiber"]
+origin: "US"
 tags: ["cortex", "intracortical", "recording", "stimulation", "bidirectional", "optogenetics", "microfluidic", "fiber", "MIT", "academic"]
 draft: false
 ---

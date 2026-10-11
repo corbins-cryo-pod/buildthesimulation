@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "4 x 4 array of silicon PMOS transistor nodes on a 31 micrometer flexible film that records ECoG by capacitive coupling, senses temperature with gold resistors and detects light with built-in photodiodes. Song Enming's group at Fudan University; acute rat recordings (Advanced Science 2025)."
 modality: "Cortical surface"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12806190/"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film", "array"]
+origin: "China"
 tags: ["Fudan", "Song Enming", "silicon transistor", "capacitive coupling", "active electrode", "multimodal", "ECoG", "China", "rat", "preclinical", "primary source"]
 draft: false
 ---

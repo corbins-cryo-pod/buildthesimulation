@@ -4,12 +4,16 @@ order: 196
 pubDate: 2026-10-09
 updatedDate: 2026-10-09
 device_id: "BTSD-ACAD-0098"
-interface_class: "other"
+interface_class: "sensing"
 status: "preclinical"
 last_updated: 2026-10-09
 description: "Two-shank silicon MEMS probe, 5.70 mm long, with 20 micrometer electrophysiology sites, a 180 micrometer dopamine-sensing site and an on-probe IrOx reference. Aerospace Information Research Institute (CAS) with Zhejiang University and Ruijin Hospital; recorded dopamine and spikes in mouse nucleus accumbens across sleep and wake (Research 2025)."
 modality: "Other"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12509213/"
+axis: ["deep-brain"]
+function: ["recording"]
+form: ["probe"]
+origin: "China"
 tags: ["AIR-CAS", "Cai Xinxia", "MultiTransm", "dopamine", "dual-mode", "silicon MEMS", "nucleus accumbens", "China", "mouse", "preclinical", "primary source"]
 draft: false
 ---

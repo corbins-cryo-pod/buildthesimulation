@@ -4,12 +4,16 @@ order: 190
 pubDate: 2026-10-09
 updatedDate: 2026-10-09
 device_id: "BTSD-ACAD-0092"
-interface_class: "other"
+interface_class: "brainstem"
 status: "human"
 last_updated: 2026-10-09
 description: "Domestic Chinese auditory brainstem implant with 16 electrodes on a 5.5 x 3.5 mm silicone paddle, developed from Wu Hao's team at Shanghai Ninth People's Hospital. First implant January 26, 2022; NMPA innovative-device special review entry March 2024 (company report); phase III NF2 trial registered."
 modality: "Other"
 website: "https://nurotron.com/news/560.html"
+axis: ["other"]
+function: ["stimulation"]
+form: ["array"]
+origin: "China"
 tags: ["Nurotron", "Norkang", "auditory brainstem implant", "cochlear nucleus", "Shanghai Ninth People's Hospital", "China", "human", "company source"]
 draft: false
 ---

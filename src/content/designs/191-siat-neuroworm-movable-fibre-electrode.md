@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "60-channel, 196 micrometer stretchable fibre rolled from an ultrathin film, with a magnetic tip so an external field can steer it inside rabbit brain or rat muscle. Shenzhen Institute of Advanced Technology, Nature 2025; muscle recordings beyond 43 weeks."
 modality: "Other"
 website: "https://www.siat.ac.cn/siatxww/kyjz/202509/t20250918_7969644.html"
+axis: ["other"]
+function: ["recording"]
+form: ["fiber"]
+origin: "China"
 tags: ["SIAT", "NeuroWorm", "fibre electrode", "magnetic steering", "dynamic electrode", "China", "rabbit", "rat", "preclinical", "institutional source"]
 draft: false
 ---

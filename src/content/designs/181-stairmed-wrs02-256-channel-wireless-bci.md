@@ -10,6 +10,11 @@ last_updated: 2026-10-08
 description: "StairMed's second-generation 256-channel wireless BCI, launched in December 2025 and implanted from early 2026. Specifications are sparse and come from Chinese-language company disclosures and trade reporting."
 modality: "Intracortical"
 website: "https://www.stairmed.com/"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film"]
+regulatory: "investigational"
+origin: "China"
 tags: ["StairMed", "WRS02", "wireless", "256-channel", "China", "investigational", "human"]
 draft: false
 ---

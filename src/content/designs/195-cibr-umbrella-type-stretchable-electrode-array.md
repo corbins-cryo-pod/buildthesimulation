@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "120- and 240-channel ultrathin (about 3 micrometer) polyimide and gold array of eight stretchable serpentine filaments joined to a central anchor, implanted in one pass on a 190 micrometer shuttle. Gao Lei's lab, Chinese Institute for Brain Research Beijing; same neuronal ensembles tracked in head-fixed mice for 80 weeks (Nature Communications 2026)."
 modality: "Intracortical"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC13620120/"
+axis: ["cortex"]
+function: ["recording"]
+form: ["array"]
+origin: "China"
 tags: ["CIBR", "Gao Lei", "stretchable electrode", "umbrella", "polyimide", "chronic recording", "China", "mouse", "preclinical", "primary source"]
 draft: false
 ---

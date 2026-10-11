@@ -10,6 +10,11 @@ last_updated: 2026-10-08
 description: "NeuroXess's 256-channel flexible cortical-surface array used for real-time motor and Mandarin speech decoding at Huashan Hospital. Reported in temporarily implanted epilepsy and tumor patients; some figures are company announcements."
 modality: "Cortical surface"
 website: "https://en.neuroxess.com/news/major-breakthrough/"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film", "array"]
+regulatory: "investigational"
+origin: "China"
 tags: ["NeuroXess", "flexible ECoG", "speech decoding", "Mandarin", "China", "investigational", "human"]
 draft: false
 ---

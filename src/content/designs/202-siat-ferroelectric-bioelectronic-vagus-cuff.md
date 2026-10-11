@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "Self-curling, suture-free hydrogel cuff for a 0.5 mm vagus nerve carrying a carbon nanotube and P(VDF-TrFE) ferroelectric strip that turns near-infrared light into nerve-like electrical pulses. Du Xuemin's group at SIAT; anti-inflammatory vagus modulation in rats (Advanced Materials, 2026)."
 modality: "Peripheral nerve"
 website: "http://www.siat.cas.cn/siatxww/kyjz/202604/t20260415_8185750.html"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+form: ["cuff"]
+origin: "China"
 tags: ["SIAT", "Du Xuemin", "ferroelectric", "P(VDF-TrFE)", "hydrogel", "vagus nerve", "self-curling", "near-infrared", "China", "rat", "preclinical", "institutional source"]
 draft: false
 ---

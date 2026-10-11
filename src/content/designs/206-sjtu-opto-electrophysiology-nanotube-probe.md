@@ -10,6 +10,9 @@ last_updated: 2026-10-09
 description: "Laser-pulled nanotube probe with a nano optical fibre as the light channel inside and iridium oxide as the electrical channel outside, plus a total-internal-reflection layer that removes the photoelectric artifact. Intracellular recording and light stimulation in hippocampal neuron cell-line experiments. Liu Jingquan's group at Shanghai Jiao Tong University (ACS Nano 2024)."
 modality: "Other"
 website: "https://news.sjtu.edu.cn/jdzh/20240909/201670.html"
+function: ["recording", "stimulation", "bidirectional"]
+form: ["probe"]
+origin: "China"
 tags: ["Shanghai Jiao Tong University", "Liu Jingquan", "optogenetics", "iridium oxide", "nano optical fibre", "intracellular", "photoelectric artifact", "China", "in vitro", "institutional source"]
 draft: false
 ---

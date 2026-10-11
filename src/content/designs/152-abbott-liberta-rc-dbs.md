@@ -10,6 +10,11 @@ last_updated: 2026-10-08
 description: "FDA-approved rechargeable DBS system from Abbott, approved by supplement S087 of PMA P140009 in January 2024. Many fields stay blank because the FDA record and company pages do not give them."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P140009S087"
+axis: ["deep-brain"]
+function: ["stimulation"]
+form: ["probe"]
+regulatory: "fda-approved"
+origin: "US"
 tags: ["DBS", "Abbott", "Liberta RC", "FDA approved", "rechargeable", "human"]
 draft: false
 ---

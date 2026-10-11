@@ -4,12 +4,17 @@ order: 161
 pubDate: 2026-10-08
 updatedDate: 2026-10-08
 device_id: "BTSD-FDA-0012"
-interface_class: "other"
+interface_class: "cochlear"
 status: "human"
 last_updated: 2026-10-08
 description: "FDA-approved cochlear implant family, newest implant series CI1000 approved July 2025. Thinly sourced from the FDA supplement record and a Cochlear announcement; electrode specifications are not yet on the sheet."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?id=P840024S096"
+axis: ["cochlea"]
+function: ["stimulation"]
+form: ["array"]
+regulatory: "fda-approved"
+origin: "Australia"
 tags: ["cochlear implant", "Cochlear", "Nucleus", "CI1000", "FDA approved", "auditory", "human"]
 draft: false
 ---

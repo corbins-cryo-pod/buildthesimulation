@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "Probe with a tip about 100 nm across and a sensing region exposed over about 40 nm, so only the tip site sits inside one neuron. Records intracellular action potentials up to about 70 mV and synaptic currents in live mouse. Liu Jingquan's group at Shanghai Jiao Tong University (IEEE MEMS 2026 award paper)."
 modality: "Intracortical"
 website: "https://news.sjtu.edu.cn/jdzh/20260209/219729.html"
+axis: ["cortex"]
+function: ["recording"]
+form: ["probe"]
+origin: "China"
 tags: ["Shanghai Jiao Tong University", "Liu Jingquan", "nanoprobe", "intracellular", "single neuron", "MEMS", "China", "mouse", "preclinical", "institutional source"]
 draft: false
 ---

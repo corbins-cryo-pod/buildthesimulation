@@ -10,6 +10,11 @@ last_updated: 2026-10-08
 description: "Mindtrix's cortical stimulation system for visual reconstruction in blindness, with a first investigator-initiated human study reported in December 2025. Sources are Chinese-language press and the company site; study hardware is not fully described."
 modality: "Cortical surface"
 website: "https://www.mindtrix.cn/technology"
+axis: ["cortex"]
+function: ["stimulation"]
+form: ["array"]
+regulatory: "investigational"
+origin: "China"
 tags: ["Mindtrix", "visual prosthesis", "cortical stimulation", "blindness", "China", "human"]
 draft: false
 ---

@@ -10,6 +10,10 @@ last_updated: 2026-10-08
 description: "FDA-approved hypoglossal nerve stimulator for obstructive sleep apnea, newest version Inspire V approved August 2024. Thinly sourced from the FDA overview and supplement record; many cells stay blank."
 modality: "Peripheral nerve"
 website: "https://www.fda.gov/medical-devices/recently-approved-devices/inspire-upper-airway-stimulation-p130008s090"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+regulatory: "fda-approved"
+origin: "US"
 tags: ["hypoglossal", "sleep apnea", "Inspire", "upper airway stimulation", "FDA approved", "human"]
 draft: false
 ---

@@ -10,6 +10,11 @@ last_updated: 2026-10-08
 description: "FDA-approved responsive neurostimulator that records ECoG through four-contact cortical strip and depth leads and delivers stimulation when programmed detections fire. Values come from the FDA summary and the published trials, scoped to the 2013 RNS-300M approval."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf10/P100026b.pdf"
+axis: ["cortex", "deep-brain"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["probe", "array"]
+regulatory: "fda-approved"
+origin: "US"
 tags: ["epilepsy", "responsive stimulation", "ECoG", "closed loop", "NeuroPace", "FDA approved", "depth lead", "cortical strip", "human"]
 draft: false
 ---

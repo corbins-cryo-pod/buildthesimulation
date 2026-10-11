@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "Flexible, multiplexed cortical-surface array with 4096 metal-oxide thin-film-transistor channels at 44 sites per mm2, read through 128 lines. Sheng Xing's group at Tsinghua with Xuanwu Hospital; in vivo epilepsy-model recording."
 modality: "Cortical surface"
 website: "https://www.tsinghua.edu.cn/info/1175/123501.htm"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film", "array"]
+origin: "China"
 tags: ["Tsinghua", "NeuroCam", "thin-film transistor", "multiplexed ECoG", "epilepsy", "China", "preclinical", "institutional source"]
 draft: false
 ---

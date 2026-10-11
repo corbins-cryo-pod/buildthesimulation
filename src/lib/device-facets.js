@@ -32,6 +32,7 @@ export const REGULATORY = [
   ["fda-approved", "FDA approved"],
   ["fda-cleared", "FDA cleared"],
   ["fda-authorized", "FDA authorized (De Novo)"],
+  ["fda-hde", "FDA humanitarian device exemption"],
   ["ce-marked", "CE marked"],
   ["nmpa-approved", "NMPA approved"],
   ["registration-trial", "Registration trial"],

@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "Graphite-doped polymer electrodes, one optical waveguide and two fluidic channels within a drawn fiber. The selected experimental section was 200 micrometers despite a less-than-200 claim elsewhere in the paper."
 modality: "Intracortical"
 website: "https://www.nature.com/articles/nn.4510"
+axis: ["cortex"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["fiber"]
+origin: "US"
 tags: ["cortex", "intracortical", "recording", "stimulation", "bidirectional", "microfluidic", "optogenetics", "fiber", "MIT", "academic"]
 draft: false
 ---

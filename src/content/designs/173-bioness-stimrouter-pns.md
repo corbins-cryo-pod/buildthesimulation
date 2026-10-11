@@ -10,6 +10,10 @@ last_updated: 2026-10-08
 description: "FDA-cleared peripheral nerve stimulation lead with an integrated receiver driven by an external transmitter, latest 510(k) read cleared February 2022. Thin: 510(k) text only."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf21/K211965.pdf"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+regulatory: "fda-cleared"
+origin: "US"
 tags: ["peripheral nerve stimulation", "StimRouter", "Bioness", "510(k)", "FDA cleared", "human"]
 draft: false
 ---

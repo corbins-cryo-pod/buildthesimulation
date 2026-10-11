@@ -10,6 +10,10 @@ last_updated: 2026-10-08
 description: "FDA-approved closed-loop spinal cord stimulator that records ECAPs through two 12-contact leads, approved February 2022. Values come from the FDA summary of safety and effectiveness."
 modality: "Other"
 website: "https://www.fda.gov/medical-devices/recently-approved-devices/evoke-spinal-cord-stimulation-scs-system-p190002"
+axis: ["spinal-cord"]
+function: ["recording", "stimulation", "bidirectional"]
+regulatory: "fda-approved"
+origin: "Australia"
 tags: ["SCS", "spinal cord stimulation", "Saluda", "Evoke", "closed loop", "ECAP", "FDA approved", "human"]
 draft: false
 ---

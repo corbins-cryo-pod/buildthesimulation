@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "Stretchable penetrating array whose electrode wires are cut like kirigami and form helical springs once implanted. 120-channel rodent and 256-channel macaque versions, 250 days of recording with over 240 neurons per session, about 1000 channels across arrays and a reach-decoding R2 of 0.79. Fang Ying's lab at CIBR Beijing (Nature Electronics, Feb 2026)."
 modality: "Intracortical"
 website: "https://cibr.ac.cn/detail/researchAchievementpaper/1fbe986ad2f942dd8b7adccd5a05ffde"
+axis: ["cortex"]
+function: ["recording"]
+form: ["array"]
+origin: "China"
 tags: ["CIBR", "Fang Ying", "kirigami", "stretchable electrode", "macaque", "helical", "non-human primate", "China", "preclinical", "institutional source"]
 draft: false
 ---

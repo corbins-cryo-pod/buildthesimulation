@@ -10,6 +10,11 @@ last_updated: 2026-10-08
 description: "FDA-approved implanted nerve cuff system that blocks pain from an amputated limb with 5 or 10 kHz alternating current, approved August 2024. Values come from the FDA summary of safety and effectiveness."
 modality: "Peripheral nerve"
 website: "https://www.fda.gov/medical-devices/recently-approved-devices/altius-direct-electrical-nerve-stimulation-system-p230020"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+form: ["cuff"]
+regulatory: "fda-approved"
+origin: "US"
 tags: ["peripheral nerve", "nerve cuff", "HFAC", "nerve block", "Neuros", "Altius", "amputation pain", "FDA approved", "human"]
 draft: false
 ---

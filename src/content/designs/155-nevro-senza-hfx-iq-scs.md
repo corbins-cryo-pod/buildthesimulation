@@ -10,6 +10,10 @@ last_updated: 2026-10-08
 description: "FDA-approved 10 kHz spinal cord stimulation system with a 16-channel rechargeable IPG, approved October 2022. Values rest on the FDA supplement record and Nevro's prescriber information; the SSED and clinical data were not read."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?id=P130022S044"
+axis: ["spinal-cord"]
+function: ["stimulation"]
+regulatory: "fda-approved"
+origin: "US"
 tags: ["SCS", "spinal cord stimulation", "Nevro", "HFX iQ", "10 kHz", "FDA approved", "human"]
 draft: false
 ---

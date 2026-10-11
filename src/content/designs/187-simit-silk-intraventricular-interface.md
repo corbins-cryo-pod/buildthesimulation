@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "Catheter-delivered 14 micrometer polyimide microelectrode array on a shape-memory silk fibroin scaffold that unfolds in cerebrospinal fluid and lies on the inner surface of the lateral ventricle. SIMIT and NeuroXess; recorded from the caudate head in Parkinsonian sheep for four weeks."
 modality: "Other"
 website: "https://www.nature.com/articles/s41467-025-64397-9"
+axis: ["deep-brain"]
+function: ["recording"]
+form: ["array"]
+origin: "China"
 tags: ["SIMIT", "NeuroXess", "silk fibroin", "intraventricular", "deep brain", "China", "sheep", "preclinical", "primary source"]
 draft: false
 ---

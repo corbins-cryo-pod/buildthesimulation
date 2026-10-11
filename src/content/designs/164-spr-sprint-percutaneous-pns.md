@@ -10,6 +10,10 @@ last_updated: 2026-10-08
 description: "FDA-cleared temporary percutaneous peripheral nerve stimulation system with a wearable pulse generator, cleared January 2023 under 510(k) K223306. Thinly sourced; many cells stay blank."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223306.pdf"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+regulatory: "fda-cleared"
+origin: "US"
 tags: ["peripheral nerve stimulation", "SPR", "SPRINT", "percutaneous", "510(k)", "FDA cleared", "human"]
 draft: false
 ---

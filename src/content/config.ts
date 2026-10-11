@@ -44,7 +44,7 @@ const designs = defineCollection({
     // Device metadata (matches the DEVICE_TEMPLATE.md). Optional for now.
     device_id: z.string().optional(), // e.g., "BTSD-0002"
     interface_class: z
-      .enum(["intracortical", "ecog", "seeg", "endovascular", "pni", "dbs", "scs", "other"])
+      .enum(["intracortical", "ecog", "seeg", "endovascular", "pni", "dbs", "scs", "cochlear", "retinal", "brainstem", "sensing", "other"])
       .default("other"),
     status: z.enum(["human", "preclinical", "research", "theoretical"]).default("theoretical"),
     last_updated: z.coerce.date().optional(),

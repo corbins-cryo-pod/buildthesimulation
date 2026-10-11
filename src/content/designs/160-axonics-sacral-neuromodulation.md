@@ -10,6 +10,10 @@ last_updated: 2026-10-08
 description: "FDA-approved rechargeable sacral neuromodulation system with a four-contact tined lead. Values come from the 2019 FDA summary for the fecal incontinence indication."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf19/P190006b.pdf"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+regulatory: "fda-approved"
+origin: "US"
 tags: ["sacral neuromodulation", "Axonics", "incontinence", "FDA approved", "tined lead", "rechargeable", "human"]
 draft: false
 ---
