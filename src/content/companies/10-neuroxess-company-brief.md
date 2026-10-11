@@ -2,7 +2,7 @@
 title: "NeuroXess (company brief)"
 order: 10
 pubDate: 2026-02-02
-updatedDate: 2026-10-10
+updatedDate: 2026-10-11
 lastVerified: 2026-10-10
 description: "NeuroXess (Shanghai): a Chinese implantable BCI company cited in reporting for multi-patient implants and Chinese speech decoding demos."
 region: "Chinese"
@@ -35,6 +35,12 @@ China’s BCI ecosystem is increasingly driven by:
 - building a local supply chain (chips, electrodes, decoding algorithms)
 
 NeuroXess is one of the clearest named examples in mainstream reporting with multi-patient implant claims.
+
+### Clinical network and manufacturing
+
+NeuroXess says its registration-trial network spans 15 tertiary hospitals in 12 provinces and regions. It also announced a Jiangxi factory with a target of the second half of 2026; that target is not confirmation that the factory has opened. Source: [NeuroXess trial and manufacturing announcement](https://www.neuroxess.com/news/naohukejisanquannaojijiekouxitongzhengshiqidonggcpzhucelinchuangshiyan/).
+
+The national industrial-policy backdrop is the July 23, 2025 opinion, 工信部联科〔2025〕164号, issued jointly by MIIT, NDRC, the education and health ministries, SASAC, CAS and NMPA. It targets internationally advanced electrodes, chips and complete devices by 2027, and two to three globally influential leading firms by 2030. These are policy targets, not milestones achieved by NeuroXess. Source: [Government policy text](https://www.gov.cn/zhengce/zhengceku/202508/content_7035603.htm).
 
 ### What to watch
 
