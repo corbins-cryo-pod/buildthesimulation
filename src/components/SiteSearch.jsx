@@ -89,7 +89,7 @@ export default function SiteSearch({ entries = [] }) {
           <h2>{group.type}</h2>
           {group.rows.map(item => {
             const index = running++;
-            return <a class={`discovery-result ${index === active ? 'is-active' : ''}`} key={item.href} href={item.href}
+            return <a class={`discovery-result ${index === active ? 'is-active' : ''}`} key={`${item.type}:${item.href}:${item.title}`} href={item.href}
               onMouseEnter={() => setActive(index)}>
               <span><strong>{item.title}</strong><small>{[item.detail, item.summary].filter(Boolean).join(' · ').slice(0, 132)}</small></span>
               <span aria-hidden="true">↗</span>
