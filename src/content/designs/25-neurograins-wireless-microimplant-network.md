@@ -11,6 +11,10 @@ description: "Distributed RF-powered neurograins: 650 × 650 × 250 µm chiplets
 modality: "Cortical surface"
 successRank: 25
 website: "https://doi.org/10.1038/s41928-021-00631-8"
+axis: ["cortex"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["other"]
+origin: "US"
 tags: ["wireless", "distributed", "microimplant", "network", "Brown", "Nurmikko", "academic", "preclinical", "bidirectional"]
 draft: false
 ---
