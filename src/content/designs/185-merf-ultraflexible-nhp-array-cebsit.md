@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "Two-shank, 128-channel, 1 micrometer thick polyimide array from Zhao Zhengtao's group at CEBSIT (Chinese Academy of Sciences) with Li Chengyu's group at Lingang Laboratory. Chronic single-unit recording in macaque visual and motor cortex for up to eight months, plus a cursor-control demonstration."
 modality: "Intracortical"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10667845/"
+axis: ["cortex"]
+function: ["recording"]
+form: ["array"]
+origin: "China"
 tags: ["MERF", "ultraflexible", "polyimide", "CEBSIT", "Lingang Laboratory", "China", "macaque", "preclinical", "primary source"]
 draft: false
 ---
