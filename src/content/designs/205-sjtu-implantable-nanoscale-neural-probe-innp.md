@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["probe"]
 origin: "China"
-tags: ["Shanghai Jiao Tong University", "Liu Jingquan", "nanoprobe", "intracellular", "single neuron", "MEMS", "China", "mouse", "preclinical", "institutional source"]
+tags: ["Shanghai Jiao Tong University", "Liu Jingquan", "intracellular", "mouse"]
 draft: false
 ---
 
