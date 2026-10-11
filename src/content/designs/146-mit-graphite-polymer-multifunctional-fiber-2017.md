@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording", "stimulation", "bidirectional"]
 form: ["fiber"]
 origin: "US"
-tags: ["cortex", "intracortical", "recording", "stimulation", "bidirectional", "microfluidic", "optogenetics", "fiber", "MIT", "academic"]
+tags: ["intracortical", "microfluidic", "optogenetics", "MIT"]
 draft: false
 ---
 
