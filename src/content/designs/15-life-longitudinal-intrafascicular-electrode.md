@@ -11,6 +11,9 @@ description: "A classic fine-wire intrafascicular peripheral nerve interface pla
 modality: "Peripheral nerve"
 successRank: 11
 website: "https://pubmed.ncbi.nlm.nih.gov/16425828/"
+axis: ["peripheral-nerve"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["intrafascicular", "film"]
 tags: ["PNI", "intrafascicular", "LIFE", "stimulation", "recording", "CAP", "neuroprosthetics", "peripheral nerve", "bidirectional", "cuff", "film"]
 draft: false
 ---
