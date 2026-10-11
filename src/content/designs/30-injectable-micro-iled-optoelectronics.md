@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["stimulation"]
 form: ["other"]
 origin: "US"
-tags: ["optogenetics", "micro-LED", "injectable", "wireless", "Rogers", "Bruchas", "academic", "preclinical"]
+tags: ["optogenetics", "injectable", "wireless", "Rogers"]
 draft: false
 ---
 
