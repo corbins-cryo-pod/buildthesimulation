@@ -11,6 +11,11 @@ description: "Precision's thin-film cortical array. The 2025 paper reports a 1,0
 modality: "Cortical surface"
 successRank: 42
 website: "https://www.precisionneuro.io/articles/company-news/precision-neuroscience-receives-fda-clearance-for-high-resolution-cortical-electrode-array"
+axis: ["cortex"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["film", "array"]
+regulatory: "fda-cleared"
+origin: "US"
 tags: ["Precision Neuroscience", "Layer 7", "thin film", "ECoG", "FDA 510(k)", "cortical surface", "human", "company"]
 draft: false
 ---
