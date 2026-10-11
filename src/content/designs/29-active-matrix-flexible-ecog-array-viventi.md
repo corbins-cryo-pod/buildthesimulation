@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["film", "array"]
 origin: "US"
-tags: ["ECoG", "active matrix", "silicon nanomembrane", "multiplexed", "flexible", "UPenn", "Rogers", "Litt", "academic", "research"]
+tags: ["ECoG", "multiplexed", "flexible", "Rogers"]
 draft: false
 ---
 
