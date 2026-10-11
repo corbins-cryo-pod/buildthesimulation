@@ -2,6 +2,7 @@
 import '../styles/company-brief.css';
 import { getDevicePhoto } from '../lib/device-photos.js';
 import ProgramClassification from './ProgramClassification.jsx';
+import { organizationDisplayName } from '../lib/organization-names.js';
 
 const { entry, brief, headings, apps, devices } = Astro.props;
 const sections = headings.filter((heading) => heading.depth === 2);
@@ -20,7 +21,7 @@ const hasMarginalia = Boolean(photo || apps.length || devices.length);
   <header class="brief-cover">
     <div class="brief-cover-grid">
       <div class="brief-title-block">
-        <h1 class:list={['brief-name', { 'brief-name-long': brief.longName }]} aria-label={brief.name}>{brief.headline.map(line => <span>{line}</span>)}</h1>
+        <h1 class:list={['brief-name', { 'brief-name-long': brief.longName }]} aria-label={organizationDisplayName(entry.slug, brief.name)}>{organizationDisplayName(entry.slug, brief.name) !== brief.name ? <span>{organizationDisplayName(entry.slug, brief.name)}</span> : brief.headline.map(line => <span>{line}</span>)}</h1>
         <p class="brief-deck">{brief.deck}</p>
       </div>
       <aside class="brief-company" aria-label="Organization facts">
