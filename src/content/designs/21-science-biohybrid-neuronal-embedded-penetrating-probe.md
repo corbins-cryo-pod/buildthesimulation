@@ -11,6 +11,10 @@ description: "A company-described biohybrid architecture with neurons embedded i
 modality: "Other"
 successRank: 21
 website: "https://science.xyz/news/biohybrid-neural-interfaces/"
+axis: ["cortex"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["other"]
+origin: "US"
 tags: ["biohybrid", "concept", "optogenetics", "Science Corporation", "cortex", "recording", "stimulation", "bidirectional"]
 draft: false
 ---
