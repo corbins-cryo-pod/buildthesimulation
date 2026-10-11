@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["array"]
 origin: "China"
-tags: ["CIBR", "Gao Lei", "stretchable electrode", "umbrella", "polyimide", "chronic recording", "China", "mouse", "preclinical", "primary source"]
+tags: ["CIBR", "stretchable", "polyimide", "mouse"]
 draft: false
 ---
 
