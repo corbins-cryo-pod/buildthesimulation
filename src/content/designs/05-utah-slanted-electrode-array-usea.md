@@ -15,7 +15,7 @@ function: ["recording", "stimulation", "bidirectional"]
 form: ["intrafascicular", "array", "microelectrode", "regenerative"]
 regulatory: "investigational"
 origin: "US"
-tags: ["BCI", "PNI", "intrafascicular", "USEA", "stimulation", "recording", "prosthetics", "sensory feedback", "peripheral nerve", "bidirectional", "regenerative", "array", "microelectrode"]
+tags: ["prosthetics", "sensory feedback"]
 draft: false
 ---
 
