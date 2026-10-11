@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["probe"]
 origin: "US"
-tags: ["polyimide", "modular headstage", "1024 channels", "UCSF", "Lawrence Livermore", "SpikeGadgets", "academic", "preclinical"]
+tags: ["polyimide", "UCSF"]
 draft: false
 ---
 
