@@ -11,6 +11,10 @@ description: "External Brown2014 neurosensor: 96 neural channels plus auxiliary 
 modality: "Intracortical"
 successRank: 33
 website: "https://pubmed.ncbi.nlm.nih.gov/25482026/"
+axis: ["cortex"]
+function: ["recording"]
+form: ["array"]
+origin: "US"
 tags: ["wireless", "head-mounted", "broadband", "freely behaving", "Brown", "Nurmikko", "academic", "preclinical"]
 draft: false
 ---
