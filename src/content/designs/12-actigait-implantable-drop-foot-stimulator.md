@@ -14,7 +14,7 @@ website: "https://pubmed.ncbi.nlm.nih.gov/26207599/"
 axis: ["peripheral-nerve"]
 function: ["stimulation"]
 form: ["cuff"]
-tags: ["PNI", "FES", "drop foot", "peroneal nerve", "cuff", "gait", "peripheral nerve", "stimulation"]
+tags: []
 draft: false
 ---
 
