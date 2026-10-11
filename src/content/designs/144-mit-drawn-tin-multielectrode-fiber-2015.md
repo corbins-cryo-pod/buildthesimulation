@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["fiber"]
 origin: "US"
-tags: ["cortex", "intracortical", "recording", "microelectrode", "fiber", "MIT", "academic"]
+tags: ["intracortical", "MIT"]
 draft: false
 ---
 
