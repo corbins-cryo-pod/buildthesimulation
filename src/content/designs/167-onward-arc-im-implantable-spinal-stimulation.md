@@ -14,7 +14,7 @@ axis: ["spinal-cord"]
 function: ["stimulation"]
 regulatory: "investigational"
 origin: "Netherlands"
-tags: ["spinal cord stimulation", "ONWARD", "ARC-IM", "blood pressure", "spinal cord injury", "investigational", "human"]
+tags: ["spinal cord stimulation", "spinal cord injury"]
 draft: false
 ---
 
