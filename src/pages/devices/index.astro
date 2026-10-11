@@ -29,7 +29,6 @@ const normalized = entries.map((p) => ({
   facets: resolveFacets(p.data),
   photo: getDevicePhoto(p.data.device_id),
 }));
-const photographedCount = normalized.filter(entry => entry.photo).length;
 ---
 
 <Layout
@@ -39,7 +38,6 @@ const photographedCount = normalized.filter(entry => entry.photo).length;
 >
   <section class="catalog-heading">
     <h3><a href="/devices/models/">3D Model Finder</a></h3>
-    {photographedCount > 0 && <p class="catalog-photo-note"><em>The interface, up close.</em> {photographedCount} pictured records, from implant assemblies to microscopic contacts. Images are not to a common scale.</p>}
   </section>
   <DevicesDirectory client:load entries={normalized} />
 </Layout>
@@ -48,6 +46,4 @@ const photographedCount = normalized.filter(entry => entry.photo).length;
   .catalog-heading { margin: 26px 0 18px; }
   .catalog-heading h3 { font-size: var(--title-card); font-style: italic; margin: 0; }
   .catalog-heading a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; }
-  .catalog-photo-note { max-width: 700px; margin: 18px 0 0; font-size: 16px; line-height: 1.55; color: var(--muted); }
-  .catalog-photo-note em { color: var(--text); }
 </style>
