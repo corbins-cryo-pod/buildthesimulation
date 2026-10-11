@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "2022 magnetoelectric-powered stimulation ASIC and packaged ME-BIT variants. Rodent direct contact, pig vascular leads and device delivery remain separate; chronic packaging, thrombosis and exposure-standard limits are explicit."
 modality: "Endovascular"
 website: "https://www.nature.com/articles/s41551-022-00873-7"
+axis: ["vasculature"]
+function: ["stimulation"]
+form: ["other"]
+origin: "US"
 tags: ["ME-BIT", "magnetoelectric", "Rice", "endovascular", "stimulation", "PZT", "preclinical"]
 draft: false
 ---
