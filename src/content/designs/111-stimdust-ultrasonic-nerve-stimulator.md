@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "Published 1.7-mm³ battery-free stimulation mote, ultrasound-powered with backscatter status. Acute rat sciatic-nerve stimulation and 55-mm ex-vivo tissue link, not chronic clinical safety or neural recording."
 modality: "Peripheral nerve"
 website: "https://www.nature.com/articles/s41551-020-0518-9"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+form: ["other"]
+origin: "US"
 tags: ["StimDust", "ultrasound", "stimulation", "Berkeley", "battery-free", "peripheral nerve", "preclinical"]
 draft: false
 ---
