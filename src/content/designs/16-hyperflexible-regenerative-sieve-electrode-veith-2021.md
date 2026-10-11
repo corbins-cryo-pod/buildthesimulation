@@ -11,6 +11,9 @@ description: "A hyperflexible regenerative sieve electrode designed to promote n
 modality: "Peripheral nerve"
 successRank: 17
 website: "https://pubmed.ncbi.nlm.nih.gov/34147716/"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+form: ["regenerative"]
 tags: ["PNI", "regenerative", "sieve electrode", "mesh", "preclinical", "nerve transection", "neurovascular", "peripheral nerve", "stimulation"]
 draft: false
 ---
