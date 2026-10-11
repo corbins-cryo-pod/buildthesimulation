@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["film", "array"]
 origin: "US"
-tags: ["graphene", "transparent", "micro-ECoG", "optogenetics", "Wisconsin", "academic", "preclinical"]
+tags: ["graphene", "transparent", "ECoG", "optogenetics"]
 draft: false
 ---
 
