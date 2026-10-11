@@ -4,12 +4,17 @@ order: 165
 pubDate: 2026-10-08
 updatedDate: 2026-10-08
 device_id: "BTSD-FDA-0016"
-interface_class: "other"
+interface_class: "retinal"
 status: "human"
 last_updated: 2026-10-08
 description: "The first FDA-approved retinal prosthesis, approved under a Humanitarian Device Exemption in February 2013 and now discontinued. Thinly sourced from the FDA HDE record and Cortigent; electrode specifications are not on this sheet yet."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfhde/hde.cfm?id=h110002"
+axis: ["retina"]
+function: ["stimulation"]
+form: ["array"]
+regulatory: "fda-hde"
+origin: "US"
 tags: ["retinal prosthesis", "Argus II", "Second Sight", "Cortigent", "epiretinal", "HDE", "discontinued", "human"]
 draft: false
 ---
