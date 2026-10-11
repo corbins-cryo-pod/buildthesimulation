@@ -2,8 +2,8 @@
 title: "Precision Neuroscience (company brief)"
 order: 5
 pubDate: 2026-02-02
-updatedDate: 2026-10-04
-lastVerified: 2026-10-04
+updatedDate: 2026-10-10
+lastVerified: 2026-10-10
 description: "Precision Neuroscience’s Layer 7 Cortical Interface: a high-density, thin-film cortical surface array aimed at minimally invasive, removable, high-bandwidth BCI."
 region: "American"
 kind: "Company"
@@ -94,3 +94,10 @@ Precision’s own history highlights:
 ### 2026 update (reviewed Oct 4, 2026)
 
 - *Funding (Sep 24, 2026):* Precision closed an oversubscribed *$250M Series D* co-led by Pershing Square and the Ackman Oxman Institute, bringing total capital raised to *$430M*, and reports more than 100 patient procedures across 18 medical institutions. Source: <https://www.globenewswire.com/news-release/2026/09/24/3368254/0/en/precision-neuroscience-closes-oversubscribed-250m-series-d-led-by-pershing-square-inc-the-ackman-oxman-institute-and-a-leading-life-sciences-investment-fund.html>
+
+### Oct 8, 2026 update: atlas manuscript (reviewed Oct 10, 2026)
+
+- *Atlas (company claim):* Precision announced a manuscript, available on bioRxiv, describing a growing atlas of the human central nervous system. It is built from high-resolution surface electrophysiology recordings in *70 patients across twelve academic medical centers*, with more than 100,000 electrode deployments, more than 180 hours of synchronized neural and behavioral data, and 87,342 individual microelectrodes (all per the company release). Recordings were made with the Layer 7 Cortical Interface, described as up to 1,024 channels at 400-micron pitch.
+- *Implant count (company claim):* the release says the total number of patients implanted with the Precision system "has now surpassed 100." The Sep 24 release above gives the same figure as more than 100 patient procedures across 18 medical institutions.
+- The manuscript itself has not been read for this brief; the figures above come from the press release only.
+- Source: <https://www.globenewswire.com/news-release/2026/10/08/3377330/0/en/precision-neuroscience-unveils-a-new-map-of-the-human-nervous-system.html>
