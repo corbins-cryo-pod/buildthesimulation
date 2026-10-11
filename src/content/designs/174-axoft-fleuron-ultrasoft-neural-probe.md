@@ -15,7 +15,7 @@ function: ["recording", "stimulation", "bidirectional"]
 form: ["probe"]
 regulatory: "investigational"
 origin: "US"
-tags: ["Axoft", "Fleuron", "soft probe", "depth electrode", "first-in-human", "investigational", "human"]
+tags: ["depth electrode", "first-in-human"]
 draft: false
 ---
 
