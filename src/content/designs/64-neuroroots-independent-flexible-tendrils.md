@@ -12,7 +12,7 @@ modality: "Intracortical"
 successRank: 64
 website: "https://pubmed.ncbi.nlm.nih.gov/39130131/"
 form: ["fiber"]
-tags: ["flexible", "tendrils", "Stanford", "Cambridge", "cerebellum", "academic", "preclinical"]
+tags: ["flexible", "Stanford"]
 draft: false
 ---
 
