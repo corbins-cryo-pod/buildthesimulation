@@ -14,7 +14,7 @@ axis: ["vasculature"]
 function: ["stimulation"]
 form: ["other"]
 origin: "US"
-tags: ["ME-BIT", "magnetoelectric", "Rice", "endovascular", "stimulation", "PZT", "preclinical"]
+tags: ["magnetoelectric", "Rice", "endovascular", "PZT"]
 draft: false
 ---
 
