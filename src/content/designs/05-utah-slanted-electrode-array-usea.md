@@ -10,6 +10,11 @@ last_updated: 2026-10-07
 description: "Slanted silicon peripheral-nerve arrays: 100 physical needles with 96 recording/stimulation electrodes in the 2017 human study; current manufacturer options and investigational-use limits remain separate."
 modality: "Peripheral nerve"
 successRank: 7
+axis: ["peripheral-nerve"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["intrafascicular", "array", "microelectrode", "regenerative"]
+regulatory: "investigational"
+origin: "US"
 tags: ["BCI", "PNI", "intrafascicular", "USEA", "stimulation", "recording", "prosthetics", "sensory feedback", "peripheral nerve", "bidirectional", "regenerative", "array", "microelectrode"]
 draft: false
 ---
