@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording", "stimulation", "bidirectional"]
 form: ["fiber"]
 origin: "US"
-tags: ["StimNET", "NET", "Rice", "polyimide", "iridium oxide", "stimulation", "recording", "preclinical"]
+tags: ["NET", "Rice", "polyimide", "iridium oxide"]
 draft: false
 ---
 
