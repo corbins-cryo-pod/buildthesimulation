@@ -14,7 +14,7 @@ axis: ["deep-brain"]
 function: ["stimulation"]
 form: ["other"]
 origin: "US"
-tags: ["magnetoelectric", "Rice", "two-film", "stimulation", "preclinical"]
+tags: ["magnetoelectric", "Rice", "two-film"]
 draft: false
 ---
 
