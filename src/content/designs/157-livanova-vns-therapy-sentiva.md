@@ -10,6 +10,11 @@ last_updated: 2026-10-08
 description: "FDA-approved vagus nerve stimulation system for refractory epilepsy with the SenTiva generator that senses heart rate. Values come from the FDA supplement records, summary and LivaNova's spec sheet."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf/P970003S207B.pdf"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+form: ["cuff"]
+regulatory: "fda-approved"
+origin: "US"
 tags: ["VNS", "vagus nerve", "LivaNova", "SenTiva", "epilepsy", "FDA approved", "human"]
 draft: false
 ---
