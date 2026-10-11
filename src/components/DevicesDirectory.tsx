@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "preact/hooks";
 
+import { AXIS, FORM, REGULATORY, FUNCTION, facetSlug } from "../lib/device-facets.js";
 import { groupDeviceEntries } from "../lib/device-families.js";
 import { downloadCatalogCsv } from "../lib/catalog-csv.js";
 
@@ -37,6 +38,7 @@ type DeviceEntry = {
   website?: string;
   last_updated?: string;
   tags: string[];
+  facets?: { axis: string[]; function: string[]; form: string[]; regulatory: string; origin: string };
   photo?: DevicePhoto | null;
 };
 
@@ -62,12 +64,7 @@ function toTitleCase(s: string) {
 }
 
 const FACETS = {
-  axis: [
-    { label: "Any", value: "" },
-    { label: "Cortex", value: "cortex" },
-    { label: "Peripheral nerve", value: "peripheral nerve" },
-    { label: "Spinal cord", value: "spinal cord" },
-  ],
+  axis: [{ label: "Any", value: "" }, ...AXIS.map(([value, label]) => ({ label, value }))],
   interfaceType: [
     { label: "Any", value: "" },
     { label: "Other / chemical", value: "other" },
@@ -79,21 +76,10 @@ const FACETS = {
     { label: "DBS", value: "dbs" },
     { label: "SCS", value: "scs" },
   ],
-  directionality: [
-    { label: "Recording", value: "recording" },
-    { label: "Stimulation", value: "stimulation" },
-    { label: "Bidirectional", value: "bidirectional" },
-  ],
-  formFactor: [
-    { label: "Any", value: "" },
-    { label: "Array", value: "array" },
-    { label: "Cuff", value: "cuff" },
-    { label: "Intrafascicular", value: "intrafascicular" },
-    { label: "Regenerative", value: "regenerative" },
-    { label: "Microelectrode", value: "microelectrode" },
-    { label: "Thin film", value: "film" },
-  ],
-} as const;
+  directionality: FUNCTION.map(([value, label]) => ({ label, value })),
+  formFactor: [{ label: "Any", value: "" }, ...FORM.map(([value, label]) => ({ label, value }))],
+  regulatory: [{ label: "Any", value: "" }, ...REGULATORY.map(([value, label]) => ({ label, value }))],
+};
 
 export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
   const [stage, setStage] = useState("");
@@ -104,6 +90,8 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
   const [axis, setAxis] = useState("");
   const [iface, setIface] = useState("");
   const [form, setForm] = useState("");
+  const [reg, setReg] = useState("");
+  const [origin, setOrigin] = useState("");
   const [dir, setDir] = useState<Set<string>>(new Set());
 
   // Load initial state from URL once.
@@ -113,15 +101,17 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
     const axis0 = url.searchParams.get("axis") ?? "";
     const iface0 = url.searchParams.get("iface") ?? "";
     const form0 = url.searchParams.get("form") ?? "";
+    setReg(norm(url.searchParams.get("reg") ?? ""));
+    setOrigin(norm(url.searchParams.get("origin") ?? ""));
     const dir0 = splitCsv(url.searchParams.get("dir"));
 
     setStage(norm(url.searchParams.get("stage") ?? ""));
     setModelsOnly(url.searchParams.get("models") === "1");
     setPhotosOnly(url.searchParams.get("photos") === "1");
     setQuery(q);
-    setAxis(norm(axis0));
+    setAxis(facetSlug(axis0));
     setIface(norm(iface0));
-    setForm(norm(form0));
+    setForm(facetSlug(form0));
     setDir(new Set(dir0.map(norm).filter(Boolean)));
     setInitialized(true);
   }, []);
@@ -147,12 +137,15 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
     if (form) url.searchParams.set("form", form);
     else url.searchParams.delete("form");
 
+    if (reg) url.searchParams.set("reg", reg); else url.searchParams.delete("reg");
+    if (origin) url.searchParams.set("origin", origin); else url.searchParams.delete("origin");
+
     const dirList = [...dir].filter(Boolean).sort();
     if (dirList.length) url.searchParams.set("dir", dirList.join(","));
     else url.searchParams.delete("dir");
 
     window.history.replaceState({}, "", url);
-  }, [query, axis, iface, form, dir, initialized, stage, modelsOnly, photosOnly]);
+  }, [query, axis, iface, form, reg, origin, dir, initialized, stage, modelsOnly, photosOnly]);
 
   const normalizedEntries = useMemo(() => {
     return props.entries.map((e) => {
@@ -169,26 +162,25 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
           e.status,
           e.modality,
           ...(e.tags ?? []),
+          ...(e.facets ? [...e.facets.axis, ...e.facets.form, e.facets.regulatory, e.facets.origin] : []),
         ].join(" \n")
       );
 
-      const axisHit = FACETS.axis.map((x) => x.value).find((v) => v && tagSet.has(v)) ?? "";
+      const fx = e.facets ?? { axis: [], function: [], form: [], regulatory: "", origin: "" };
       const ifaceHit =
         FACETS.interfaceType.map((x) => x.value).find((v) => v && tagSet.has(v)) ?? norm(e.interface_class ?? "");
-      const formHit = FACETS.formFactor.map((x) => x.value).find((v) => v && tagSet.has(v)) ?? "";
-
-      const dirHits: string[] = [];
-      for (const d of FACETS.directionality) {
-        if (tagSet.has(d.value)) dirHits.push(d.value);
-      }
+      const dirHits: string[] = fx.function.map(norm);
+      const searchExtra = [...fx.axis, ...fx.form, fx.regulatory, fx.origin].join(" ").replace(/-/g, " ");
 
       return {
         ...e,
         _tags: tagSet,
         _haystack: haystack,
-        _axis: axisHit,
+        _axisSet: new Set(fx.axis),
         _iface: ifaceHit,
-        _form: formHit,
+        _formSet: new Set(fx.form),
+        _reg: fx.regulatory,
+        _origin: norm(fx.origin),
         _dir: new Set(dirHits),
       };
     });
@@ -200,26 +192,34 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
       if (stage && norm(e.status ?? "") !== stage) return false;
       if (modelsOnly && !getDeviceModel(e.device_id)) return false;
       if (photosOnly && !e.photo) return false;
-      if (axis && e._axis !== axis && !e._tags.has(axis)) return false;
+      if (axis && !e._axisSet.has(axis)) return false;
       if (iface && e._iface !== iface && !e._tags.has(iface)) return false;
-      if (form && e._form !== form && !e._tags.has(form)) return false;
+      if (form && !e._formSet.has(form)) return false;
+      if (reg && e._reg !== reg) return false;
+      if (origin && e._origin !== origin) return false;
 
       // Directionality is multi-select AND.
       for (const d of dir) {
         const dn = norm(d);
         if (!dn) continue;
-        if (!e._tags.has(dn)) return false;
+        if (!e._dir.has(dn)) return false;
       }
 
       if (q && !e._haystack.includes(q)) return false;
       return true;
     });
-  }, [normalizedEntries, query, axis, iface, form, dir, stage, modelsOnly, photosOnly]);
+  }, [normalizedEntries, query, axis, iface, form, reg, origin, dir, stage, modelsOnly, photosOnly]);
+
+  const originOptions = useMemo(() => {
+    const set = new Map<string, string>();
+    for (const e of props.entries) { const o = e.facets?.origin; if (o) set.set(norm(o), o); }
+    return [{ label: "Any", value: "" }, ...[...set.entries()].sort((a, b) => a[1].localeCompare(b[1])).map(([value, label]) => ({ label, value }))];
+  }, [props.entries]);
 
   const grouped = useMemo(() => groupDeviceEntries(filtered), [filtered]);
 
   const photoCount = normalizedEntries.filter(entry => entry.photo).length;
-  const hasFilters = query.trim() || axis || iface || form || dir.size || stage || modelsOnly || photosOnly;
+  const hasFilters = query.trim() || axis || iface || form || reg || origin || dir.size || stage || modelsOnly || photosOnly;
 
   function clearAll() {
     setStage(""); setModelsOnly(false); setPhotosOnly(false);
@@ -227,6 +227,8 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
     setAxis("");
     setIface("");
     setForm("");
+    setReg("");
+    setOrigin("");
     setDir(new Set());
   }
 
@@ -290,7 +292,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
             name="axis"
             value={axis}
             options={FACETS.axis}
-            onChange={(v) => setAxis(norm(v))}
+            onChange={(v) => setAxis(v)}
           />
 
           <FacetRadio
@@ -309,11 +311,27 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
           />
 
           <FacetRadio
+            title="Regulatory"
+            name="reg"
+            value={reg}
+            options={FACETS.regulatory}
+            onChange={(v) => setReg(norm(v))}
+          />
+
+          <FacetRadio
+            title="Origin country"
+            name="origin"
+            value={origin}
+            options={originOptions}
+            onChange={(v) => setOrigin(norm(v))}
+          />
+
+          <FacetRadio
             title="Form factor"
             name="form"
             value={form}
             options={FACETS.formFactor}
-            onChange={(v) => setForm(norm(v))}
+            onChange={(v) => setForm(v)}
           />
         </aside>
 

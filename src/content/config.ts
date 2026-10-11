@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import { AXIS, FUNCTION, FORM, REGULATORY, slugs } from "../lib/device-facets.js";
 
 const companies = defineCollection({
   type: "content",
@@ -57,6 +58,13 @@ const designs = defineCollection({
 
     // Optional ranking signal for directory sorting (lower = appears earlier).
     successRank: z.number().int().positive().optional(),
+
+        // Filter fields. Leave blank when the sheet does not state the value.
+    axis: z.array(z.enum(slugs(AXIS))).default([]),
+    function: z.array(z.enum(slugs(FUNCTION))).default([]),
+    form: z.array(z.enum(slugs(FORM))).default([]),
+    regulatory: z.enum(slugs(REGULATORY)).optional(),
+    origin: z.string().optional(), // country of the developing organization
 
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),

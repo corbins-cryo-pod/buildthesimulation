@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { compareDeviceEntries } from "../../lib/device-order.js";
 import DevicesDirectory from "../../components/DevicesDirectory";
+import { resolveFacets } from "../../lib/device-facets.js";
 import { getDevicePhoto } from "../../lib/device-photos.js";
 
 function stripPrefix(title) {
@@ -25,6 +26,7 @@ const normalized = entries.map((p) => ({
   website: p.data.website ?? "",
   last_updated: p.data.last_updated?.toISOString().slice(0,10) ?? "",
   tags: p.data.tags ?? [],
+  facets: resolveFacets(p.data),
   photo: getDevicePhoto(p.data.device_id),
 }));
 const photographedCount = normalized.filter(entry => entry.photo).length;
