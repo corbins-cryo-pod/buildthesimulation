@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording", "stimulation", "bidirectional"]
 form: ["other"]
 origin: "US"
-tags: ["wireless", "distributed", "microimplant", "network", "Brown", "Nurmikko", "academic", "preclinical", "bidirectional"]
+tags: ["wireless", "network", "Brown", "Nurmikko"]
 draft: false
 ---
 
