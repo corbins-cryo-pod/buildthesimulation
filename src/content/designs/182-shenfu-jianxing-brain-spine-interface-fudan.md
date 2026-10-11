@@ -10,6 +10,10 @@ last_updated: 2026-10-08
 description: "Fudan's brain-spine interface from Shenfu Jianxing: brain electrodes decode intent and drive spinal epidural stimulation in paraplegia. Four patients in a 2025 investigator-initiated study. Hardware specifications are not published; sources are Chinese-language releases and the ChiCTR registry."
 modality: "Other"
 website: "https://www.chictr.org.cn/showprojEN.html?proj=256806"
+axis: ["spinal-cord", "cortex"]
+function: ["recording", "stimulation", "bidirectional"]
+regulatory: "investigational"
+origin: "China"
 tags: ["brain-spine interface", "Fudan", "Shenfu Jianxing", "spinal cord stimulation", "paraplegia", "China", "human"]
 draft: false
 ---
