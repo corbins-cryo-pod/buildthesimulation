@@ -7,7 +7,7 @@ import { resolveFacets } from "../lib/device-facets.js";
 import NerveHero from "../components/NerveHero.astro";
 import { getCollection } from "astro:content";
 import { compareDeviceEntries } from "../lib/device-order.js";
-import { compareOrganizations } from "../lib/organization-classification.js";
+import { compareOrganizations, classifyOrganization } from "../lib/organization-classification.js";
 
 const {
   pageTitle,
