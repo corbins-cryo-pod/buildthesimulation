@@ -13,7 +13,7 @@ website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12981004/"
 axis: ["cortex"]
 function: ["recording"]
 form: ["probe"]
-tags: ["Neuropixels Ultra", "intracortical", "recording", "silicon", "TiN", "University of Washington", "Allen Institute", "imec", "academic", "preclinical"]
+tags: ["intracortical", "silicon", "TiN", "Allen Institute", "imec"]
 draft: false
 ---
 
