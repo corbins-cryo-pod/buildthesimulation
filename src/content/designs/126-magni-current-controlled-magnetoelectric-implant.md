@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "Published 8.2-mm³, 28-mg MagNI research stimulator: 250-kHz ME power, 1.5-mm² ASIC and programmable biphasic current. Hydra activation and a seven-day saline test are not spinal pain treatment."
 modality: "Other"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8712272/"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+form: ["other"]
+origin: "US"
 tags: ["MagNI", "magnetoelectric", "Rice", "CMOS", "current stimulation", "Hydra", "preclinical"]
 draft: false
 ---
