@@ -11,6 +11,10 @@ description: "A 14 x 14 multiplexed surface array with 196 platinum sites on 250
 modality: "Cortical surface"
 successRank: 65
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4137255/"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film", "array"]
+origin: "US"
 tags: ["micro-ECoG", "multiplexed", "active electronics", "auditory cortex", "Connecticut", "Pennsylvania", "NYU", "academic"]
 draft: false
 ---
