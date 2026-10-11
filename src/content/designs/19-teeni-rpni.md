@@ -15,7 +15,7 @@ axis: ["peripheral-nerve"]
 function: ["recording", "stimulation", "bidirectional"]
 form: ["regenerative"]
 origin: "US"
-tags: ["PNI", "RPNI", "biohybrid", "EMG", "amputation", "prosthetic control", "neuroma prevention", "peripheral nerve", "recording", "stimulation", "bidirectional", "regenerative"]
+tags: ["biohybrid", "EMG", "amputation"]
 draft: false
 ---
 
