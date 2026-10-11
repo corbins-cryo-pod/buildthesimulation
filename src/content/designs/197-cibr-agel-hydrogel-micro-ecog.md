@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "6 micrometer polyimide micro-ECoG (64 or 1024 channels, 20 micrometer sites at 200 micrometer pitch) coated with a thin adhesive PVA/PTPM hydrogel that sticks to the brain without sutures and resists fibrosis. Wu Ting's lab at CIBR Beijing with Qiu Dong at ICCAS; 16 weeks subdural in rats (Advanced Science 2025)."
 modality: "Cortical surface"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12713035/"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film", "array"]
+origin: "China"
 tags: ["CIBR", "ICCAS", "hydrogel", "micro-ECoG", "1024-channel", "fibrosis", "China", "rat", "preclinical", "primary source"]
 draft: false
 ---
