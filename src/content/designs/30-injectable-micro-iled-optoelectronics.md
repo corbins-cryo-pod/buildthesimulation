@@ -11,6 +11,10 @@ description: "Cellular-scale GaN micro-LEDs with a Pt electrode and sensors on a
 modality: "Intracortical"
 successRank: 30
 website: "https://www.science.org/doi/10.1126/science.1232437"
+axis: ["cortex"]
+function: ["stimulation"]
+form: ["other"]
+origin: "US"
 tags: ["optogenetics", "micro-LED", "injectable", "wireless", "Rogers", "Bruchas", "academic", "preclinical"]
 draft: false
 ---
