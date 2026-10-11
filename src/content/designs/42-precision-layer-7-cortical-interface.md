@@ -16,7 +16,7 @@ function: ["recording", "stimulation", "bidirectional"]
 form: ["film", "array"]
 regulatory: "fda-cleared"
 origin: "US"
-tags: ["Precision Neuroscience", "Layer 7", "thin film", "ECoG", "FDA 510(k)", "cortical surface", "human", "company"]
+tags: ["ECoG", "cortical surface"]
 draft: false
 ---
 
