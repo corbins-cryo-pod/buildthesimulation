@@ -24,7 +24,6 @@ const deviceName = (s) => {
   description="BCI applications: studies and clinical programs, each linked to its device and the lab or organization behind it."
 >
   <section class="card">
-    <h2>Applications</h2>
     <div class="filters" aria-label="Application filters">
       <label>Search<input id="app-search" type="search" placeholder="Study, device or result" /></label>
       <label>Interface<select id="app-modality"><option value="">All interfaces</option>{modalities.map(m => <option value={m}>{m}</option>)}</select></label>
