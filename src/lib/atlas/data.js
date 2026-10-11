@@ -1,3 +1,4 @@
+import { organizationDisplayName, organizationSearchNames } from '../organization-names.js';
 import { classifyOrganization, matchingPrograms, sortAtlasEntries, sortLabels } from '../organization-classification.js';
 
 const cleanTitle = title => title.replace(/^\d+\s*[-—]\s*/, '').replace(/\s*\((company|lab) brief\)$/i, '');
@@ -26,11 +27,11 @@ export function buildAtlasEntries(companies, devices, applications, models = {})
     for (const program of classification.programs) for (const type of program.interfaces ?? []) interfaces.add(type);
     const lat = org.data.lat, lon = org.data.lon;
     return {
-      slug: org.slug, title: cleanTitle(org.data.title), kind: org.data.kind, region: org.data.region,
+      slug: org.slug, title: organizationDisplayName(org.slug, org.data.title), kind: org.data.kind, region: org.data.region,
       description: org.data.description ?? '', location: org.data.location ?? '', website: org.data.website ?? '',
       lat: Number.isFinite(lat) && Number.isFinite(lon) ? lat : null,
       lon: Number.isFinite(lat) && Number.isFinite(lon) ? lon : null,
-      reviewed: org.data.lastVerified?.toISOString().slice(0, 10) ?? '', tags: org.data.tags ?? [],
+      reviewed: org.data.lastVerified?.toISOString().slice(0, 10) ?? '', tags: [...(org.data.tags ?? []), ...organizationSearchNames(org.slug)],
       interfaces: [...interfaces].sort(), devices: linkedDevices,
       classification,
       applications: apps.map(app => ({slug: app.slug, title: cleanTitle(app.data.title), description: app.data.description ?? '', status: app.data.status ?? 'theoretical'})),
