@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["film", "array"]
 origin: "US"
-tags: ["graphene", "transparent", "high density", "calcium imaging", "UC San Diego", "academic", "preclinical"]
+tags: ["graphene", "transparent", "high density", "UC San Diego"]
 draft: false
 ---
 
