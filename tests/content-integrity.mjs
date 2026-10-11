@@ -28,7 +28,7 @@ for (const collection of collections) {
     const id = field(record, collection === 'designs' ? 'device_id' : 'application_id');
     if (collection !== 'companies') {
       assert(id, `${collection}/${record.file}: identifying ID missing`);
-      assert(['intracortical','ecog','seeg','endovascular','pni','dbs','scs','other'].includes(field(record, 'interface_class')), `${record.file}: interface class missing or invalid`);
+      assert(['intracortical','ecog','seeg','endovascular','pni','dbs','scs','cochlear','retinal','brainstem','sensing','other'].includes(field(record, 'interface_class')), `${record.file}: interface class missing or invalid`);
       assert(['human','preclinical','research','theoretical'].includes(field(record, 'status')), `${record.file}: evidence stage missing or invalid`);
       const updated = field(record, 'last_updated');
       assert(updated && /^\d{4}-\d{2}-\d{2}$/.test(updated) && Number.isFinite(Date.parse(updated)), `${record.file}: review date missing or invalid`);
