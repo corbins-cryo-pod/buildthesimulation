@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording", "stimulation", "bidirectional"]
 form: ["other"]
 origin: "US"
-tags: ["cortex", "recording", "stimulation", "bidirectional", "SCOPe", "Columbia", "CMOS", "SPAD", "optical", "preclinical"]
+tags: ["Columbia", "CMOS", "optical"]
 draft: false
 ---
 
