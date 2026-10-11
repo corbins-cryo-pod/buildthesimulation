@@ -10,6 +10,11 @@ last_updated: 2026-10-08
 description: "NeuroXess's fully implanted, fully wireless subdural BCI with a chest-pocket battery, in a registration trial at Huashan Hospital since July 2026. Most figures are company disclosures from Chinese-language sources."
 modality: "Cortical surface"
 website: "https://clinicaltrials.gov/study/NCT07720882"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film", "array"]
+regulatory: "registration-trial"
+origin: "China"
 tags: ["NeuroXess", "Triple-F", "subdural", "wireless", "battery", "China", "registration trial", "human"]
 draft: false
 ---
