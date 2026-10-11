@@ -11,6 +11,10 @@ description: "A fully implanted, wireless epidural ECoG system developed by CEA-
 modality: "Cortical surface"
 successRank: 14
 website: "https://clinatec.fr/"
+axis: ["cortex"]
+function: ["recording"]
+form: ["array"]
+origin: "France"
 tags: ["BCI", "ECoG", "epidural", "wireless", "CEA", "Clinatec", "WIMAGINE", "motor decoding", "cortex", "recording"]
 draft: false
 ---
