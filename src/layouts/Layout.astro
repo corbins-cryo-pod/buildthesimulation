@@ -1,5 +1,10 @@
 ---
 import "../styles/site.css";
+import "../styles/discovery.css";
+import SiteSearch from "../components/SiteSearch.jsx";
+import { deviceModels } from "../lib/devices/catalog.js";
+import { resolveFacets } from "../lib/device-facets.js";
+import { cleanDiscoveryTitle } from "../lib/discovery.js";
 import NerveHero from "../components/NerveHero.astro";
 import { getCollection } from "astro:content";
 import { compareDeviceEntries } from "../lib/device-order.js";
@@ -49,6 +54,48 @@ function stripPrefix(title) {
 function stripAtlasLabel(title) {
   return stripPrefix(title).replace(/\s*\((company|lab) brief\)$/i, "");
 }
+
+// A small, source-backed search index built from the same collections as the directories.
+const discoveryEntries = [
+  ...companies.map(p => {
+    const program = classifyOrganization(p).primary;
+    return {
+      type: "Organizations", title: stripAtlasLabel(p.data.title),
+      href: `/companies/?org=${p.slug}`,
+      detail: [p.data.kind, program?.code].filter(Boolean).join(" · "),
+      summary: p.data.location ?? "",
+      keywords: [...(p.data.tags ?? []), p.data.description ?? "", p.data.region ?? "", program?.name ?? "", ...(program?.interfaces ?? [])],
+    };
+  }),
+  ...designs.map(p => {
+    const facets = resolveFacets(p.data);
+    return {
+      type: "Devices", title: stripPrefix(p.data.title), href: `/devices/${p.slug}/`,
+      detail: [p.data.modality, p.data.status].filter(Boolean).join(" · "),
+      summary: p.data.description ?? "",
+      keywords: [p.data.device_id ?? "", p.data.interface_class ?? "", ...(p.data.tags ?? []), ...(facets.axis ?? []), ...(facets.form ?? []), ...(facets.function ?? []), facets.regulatory ?? ""],
+    };
+  }),
+  ...applications.map(p => ({
+    type: "Applications", title: stripPrefix(p.data.title), href: `/applications/${p.slug}/`,
+    detail: p.data.status ?? "", summary: p.data.modality ?? "",
+    keywords: [p.data.description ?? "", ...(p.data.tags ?? []), ...(p.data.devices ?? []), ...(p.data.orgs ?? [])],
+  })),
+  ...Object.values(deviceModels).map(model => ({
+    type: "3D models", title: model.name, href: "/devices/models/",
+    detail: "3D reference", summary: "Documented reconstruction",
+    keywords: [model.deviceId, model.slug ?? "", ...(model.specs ?? []).flatMap(spec => spec)],
+  })),
+  ...[
+    ["Cortical stimulation lab", "/simulations/cortical-stimulation/", "Electrodes and tissue response", "cortex stimulation experiment"],
+    ["Cortical recording lab", "/simulations/cortex-slab/", "Synthetic signals from neurons", "recording depth electrodes"],
+    ["Peripheral nerve sandbox", "/sim/", "Nerve cross-sections and pulses", "peripheral nerve cuff simulation"],
+    ["Neural interface designer", "/devices/designer/", "Electrode geometry and routing", "design electrode layout exports"],
+    ["3D model finder", "/devices/models/", "Reference hardware geometry", "models inspect implants"],
+  ].map(([title, href, summary, keywords]) => ({
+    type: "Tools", title, href, detail: "Interactive tool", summary, keywords: [keywords],
+  })),
+];
 ---
 
 <!doctype html>
@@ -96,128 +143,33 @@ function stripAtlasLabel(title) {
 
         <nav class="nav" aria-label="Primary">
           <a class={`pill ${pathname === "/" ? "active" : ""}`} href="/">Home</a>
-
-          <div class={`navDrop ${pathname.startsWith("/sim") || pathname.startsWith("/simulations") ? "active" : ""}`}>
-            <a class="pill" href="/simulations/">Simulations</a>
-            <div class="menu">
-              <a class="menuItem" href="/simulations/cortical-stimulation/">Cortical stimulation lab</a>
-              <a class="menuItem" href="/simulations/cortex-slab/">Cortical recording lab</a>
-              <a class="menuItem" href="/sim/">Nerve cross-section sandbox</a>
-            </div>
-          </div>
-
-          <div class={`navDrop ${pathname.startsWith("/designs") || (pathname.startsWith("/devices") && !pathname.startsWith("/devices/designer")) ? "active" : ""}`}>
-            <a class="pill" href="/devices/">Devices</a>
-            <div class="menu">
-              <a class="menuItem" href="/devices/models/">3D model finder</a>
-              <div class="menuSep"></div>
-              {designs.map((p) => (
-                <a class="menuItem" href={`/devices/${p.slug}/`}>
-                  {stripPrefix(p.data.title)}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <a class={`pill ${pathname.startsWith("/devices/designer") ? "active" : ""}`} href="/devices/designer/">Designer</a>
-
-          <div class={`navDrop ${pathname.startsWith("/companies") ? "active" : ""}`}>
-            <a class="pill" href="/companies/">BCI Atlas</a>
-            <div class="menu">
-              {companies.map((p) => (
-                <a class="menuItem" href={`/companies/?org=${p.slug}`}>
-                  {stripAtlasLabel(p.data.title)}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div class={`navDrop ${pathname.startsWith("/applications") ? "active" : ""}`}>
-            <a class="pill" href="/applications/">Applications</a>
-            <div class="menu">
-              {applications.map((p) => (
-                <a class="menuItem" href={`/applications/${p.slug}/`}>
-                  {stripPrefix(p.data.title)}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <button id="themeToggle" class="pill" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
-            Theme
-          </button>
-        </nav>
+          <a class={`pill ${pathname.startsWith("/devices/") && !pathname.startsWith("/devices/designer") ? "active" : ""}`} href="/devices/">Devices</a>
+          <a class={`pill ${pathname.startsWith("/companies/") ? "active" : ""}`} href="/companies/">Companies &amp; Labs</a>
+          <a class={`pill ${pathname.startsWith("/applications/") ? "active" : ""}`} href="/applications/">Applications</a>
+          <a class={`pill ${pathname.startsWith("/sim") ? "active" : ""}`} href="/simulations/">Simulations</a>
+          <a class={`pill ${pathname.startsWith("/devices/designer/") ? "active" : ""}`} href="/devices/designer/">Designer</a>
+          <button class="pill discovery-trigger" type="button" data-discovery-trigger aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K">Search <span aria-hidden="true" class="nav-key">⌘K</span></button>
+          <button id="themeToggle" class="pill" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">Theme</button>
+        </nav>  </nav>
 
         <script>
-          // Wire up theme toggle + hoverable nav dropdowns after markup exists.
           (() => {
-            try {
-              // Theme toggle
-              const btn = document.getElementById("themeToggle");
-              if (btn) {
-                const setLabel = (theme) => {
-                  btn.textContent = theme === "dark" ? "Light" : "Dark";
-                  btn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
-                };
-
-                const getTheme = () => document.documentElement.dataset.theme || "light";
-                setLabel(getTheme());
-
-                btn.addEventListener("click", () => {
-                  const next = getTheme() === "dark" ? "light" : "dark";
-                  document.documentElement.dataset.theme = next;
-                  localStorage.setItem("bts_theme", next);
-                  setLabel(next);
-                });
-              }
-
-              const drops = Array.from(document.querySelectorAll(".navDrop"));
-              const closeAll = (except = null) => {
-                for (const d of drops) {
-                  if (d !== except) d.removeAttribute("data-open");
-                }
-              };
-
-              for (const d of drops) {
-                let closeTimer = null;
-                const open = () => {
-                  clearTimeout(closeTimer);
-                  closeAll(d);
-                  d.setAttribute("data-open", "");
-                };
-                const closeSoon = () => {
-                  clearTimeout(closeTimer);
-                  closeTimer = setTimeout(() => d.removeAttribute("data-open"), 140);
-                };
-
-                // Hover offers shortcuts; clicking the pill always follows its link.
-                d.addEventListener("pointerenter", (event) => {
-                  if (event.pointerType === "mouse") open();
-                });
-                d.addEventListener("pointerleave", (event) => {
-                  if (event.pointerType === "mouse" && !d.contains(document.activeElement)) closeSoon();
-                });
-
-                // Keyboard users can tab through the shortcuts without intercepting taps.
-                d.addEventListener("focusin", (event) => {
-                  if (event.target.matches(":focus-visible")) open();
-                });
-                d.addEventListener("focusout", (event) => {
-                  if (!d.contains(event.relatedTarget)) closeSoon();
-                });
-                d.addEventListener("keydown", (event) => {
-                  if (event.key === "Escape") {
-                    clearTimeout(closeTimer);
-                    d.querySelector(".pill").focus();
-                    closeAll();
-                  }
-                });
-              }
-            } catch {}
+            const btn = document.getElementById("themeToggle");
+            if (!btn) return;
+            const current = () => document.documentElement.dataset.theme || "light";
+            const label = () => { btn.textContent = current() === "dark" ? "Light" : "Dark"; btn.setAttribute("aria-pressed", String(current() === "dark")); };
+            label();
+            btn.addEventListener("click", () => {
+              const next = current() === "dark" ? "light" : "dark";
+              document.documentElement.dataset.theme = next;
+              try { localStorage.setItem("bts_theme", next); } catch {}
+              label();
+            });
           })();
-        </script>
+        </script>/script>
       </header>
 
+      <SiteSearch client:load entries={discoveryEntries} />
       <slot />
 
       <footer class="foot">
@@ -461,6 +413,7 @@ function stripAtlasLabel(title) {
     background: var(--panelHover);
   }
 
+  .nav-key { margin-left: 7px; opacity: .55; font-size: 14px; }
   .pill.active {
     border-color: var(--borderStrong);
     background: var(--panelStrong);
