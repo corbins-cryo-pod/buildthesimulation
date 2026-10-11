@@ -14,7 +14,7 @@ axis: ["peripheral-nerve"]
 function: ["stimulation"]
 form: ["other"]
 origin: "US"
-tags: ["MNM", "magnetoelectric", "Rice", "PZT", "ZnO", "peripheral nerve", "stimulation", "preclinical"]
+tags: ["magnetoelectric", "Rice", "PZT"]
 draft: false
 ---
 
