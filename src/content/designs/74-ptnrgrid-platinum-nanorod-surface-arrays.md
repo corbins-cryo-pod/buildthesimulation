@@ -10,6 +10,11 @@ last_updated: 2026-10-07
 description: "Reconfigurable cortical grids with 30 µm platinum-nanorod contacts in 6.6 µm parylene C. The 2022 paper reports 1,024- and 2,048-channel layouts with different pitch and coverage; a later IDE announcement is not commercial clearance."
 modality: "Cortical surface"
 website: "https://www.science.org/doi/10.1126/scitranslmed.abj1441"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film", "array"]
+regulatory: "investigational"
+origin: "US"
 tags: ["PtNRGrid", "platinum nanorods", "UCSD", "Dayeh", "micro-ECoG", "thin film", "surface", "academic", "human"]
 draft: false
 ---
