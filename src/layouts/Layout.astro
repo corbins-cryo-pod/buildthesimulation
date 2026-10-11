@@ -66,7 +66,7 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
         <div class="brand">
           <div class="titleblock">
             {compactHeader ? <a class="compact-brand" href="/">{siteTitle}</a> : pageTitle ? <h1 class="pageTitle">{pageTitle}</h1> : <h1 class={pathname === "/" ? "homeTitle" : undefined}>{displayTitle}</h1>}
-            {compactHeader || pathname === "/" || subtitle === "" ? null : <p class="sub">
+            {compactHeader || pathname === "/" || subtitle === "" || ["/devices", "/designs", "/applications", "/companies"].some(prefix => pathname === prefix || pathname.startsWith(prefix + "/")) ? null : <p class="sub">
               {subtitle ??
                 "Brain-computer interface companies, their work, and their technologies."}
             </p>}
@@ -80,9 +80,9 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
           <a class={`pill ${pathname.startsWith("/applications/") ? "active" : ""}`} href="/applications/">Applications</a>
           <a class={`pill ${pathname.startsWith("/sim") ? "active" : ""}`} href="/simulations/">Simulations</a>
           <a class={`pill ${pathname.startsWith("/devices/designer/") ? "active" : ""}`} href="/devices/designer/">Designer</a>
-          <button class="pill discovery-trigger" type="button" data-discovery-trigger aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K">Search <span aria-hidden="true" class="nav-key">⌘K</span></button>
+          <button class="pill discovery-trigger" type="button" data-discovery-trigger aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K">Search</button>
           <button id="themeToggle" class="pill" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">Theme</button>
-        </nav>  </nav>
+        </nav>
 
         <script>
           (() => {
@@ -98,7 +98,7 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
               label();
             });
           })();
-        </script>/script>
+        </script>
       </header>
 
       <SiteSearch client:load />
