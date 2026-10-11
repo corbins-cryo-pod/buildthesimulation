@@ -15,7 +15,7 @@ function: ["stimulation"]
 form: ["array"]
 regulatory: "fda-approved"
 origin: "Australia"
-tags: ["cochlear implant", "Cochlear", "Nucleus", "CI1000", "FDA approved", "auditory", "human"]
+tags: ["cochlear implant", "auditory"]
 draft: false
 ---
 
