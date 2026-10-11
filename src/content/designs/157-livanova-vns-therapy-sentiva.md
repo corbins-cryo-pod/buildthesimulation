@@ -15,7 +15,7 @@ function: ["stimulation"]
 form: ["cuff"]
 regulatory: "fda-approved"
 origin: "US"
-tags: ["VNS", "vagus nerve", "LivaNova", "SenTiva", "epilepsy", "FDA approved", "human"]
+tags: ["vagus nerve", "epilepsy"]
 draft: false
 ---
 
