@@ -11,6 +11,10 @@ description: "Polyimide arrays with 16 contacts per shank and stackable 64-chann
 modality: "Intracortical"
 successRank: 67
 website: "https://www.cell.com/neuron/fulltext/S0896-6273(18)30993-0"
+axis: ["cortex"]
+function: ["recording"]
+form: ["probe"]
+origin: "US"
 tags: ["polyimide", "modular headstage", "1024 channels", "UCSF", "Lawrence Livermore", "SpikeGadgets", "academic", "preclinical"]
 draft: false
 ---
