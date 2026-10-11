@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
+import CompanyBrief from "../../components/CompanyBrief.astro";
+import { companyBriefs } from "../../data/company-briefs.js";
 
 export async function getStaticPaths() {
   const posts = await getCollection("companies");
@@ -15,7 +17,8 @@ const allDevices = await getCollection("designs");
 const stripNum = (s) => s.replace(/^\d+\s*[-—]\s*/, "");
 const deviceSlugs = [...new Set(apps.flatMap((a) => a.data.devices))];
 const devices = deviceSlugs.map((s) => allDevices.find((d) => d.slug === s)).filter(Boolean);
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
+const editorial = companyBriefs[entry.slug];
 
 const lastVerified = entry.data.lastVerified
   ? entry.data.lastVerified.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" })
@@ -28,7 +31,8 @@ const titleNoPrefix = entry.data.title
   .replace(/\s*\((company|lab) brief\)$/i, "");
 ---
 
-<Layout pageTitle="BCI Atlas" subtitle={subtitle} description={entry.data.description}>
+<Layout pageTitle={editorial ? `${titleNoPrefix} · Company brief` : "BCI Atlas"} subtitle={subtitle} description={entry.data.description} compactHeader={Boolean(editorial)}>
+  {editorial ? <div id="top-of-brief"><CompanyBrief entry={entry} brief={editorial} headings={headings} apps={apps} devices={devices} lastVerified={lastVerified}><Content /></CompanyBrief></div> : <>
   <p class="atlas-return"><a href={`/companies/?org=${entry.slug}`}>← Explore this organization in the atlas</a></p>
   <article class="post">
     <header class="postHead">
@@ -75,6 +79,7 @@ const titleNoPrefix = entry.data.title
       <Content />
     </section>
   </article>
+  </>}
 </Layout>
 
 <style>

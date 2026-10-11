@@ -11,6 +11,7 @@ const {
     "A catalog of brain-computer interface companies, their work, and their technologies, with device briefs and interactive simulations.",
   withHero = false,
   wide = false,
+  compactHeader = false,
 } = Astro.props;
 
 const siteTitle = "Build the Simulation";
@@ -86,11 +87,11 @@ function stripAtlasLabel(title) {
     {withHero ? <NerveHero /> : null}
 
     <main class:list={["wrap", { "wrap-wide": wide }]}>
-      <header class="hero">
+      <header class:list={["hero", { "hero-compact": compactHeader }]}>
         <div class="brand">
           <div class="titleblock">
-            {pageTitle ? <h1 class="pageTitle">{pageTitle}</h1> : <h1 class={pathname === "/" ? "homeTitle" : undefined}>{displayTitle}</h1>}
-            {pathname === "/" || subtitle === "" ? null : <p class="sub">
+            {compactHeader ? <a class="compact-brand" href="/">{siteTitle}</a> : pageTitle ? <h1 class="pageTitle">{pageTitle}</h1> : <h1 class={pathname === "/" ? "homeTitle" : undefined}>{displayTitle}</h1>}
+            {compactHeader || pathname === "/" || subtitle === "" ? null : <p class="sub">
               {subtitle ??
                 "Brain-computer interface companies, their work, and their technologies."}
             </p>}
@@ -405,6 +406,9 @@ function stripAtlasLabel(title) {
     gap: 14px;
     align-items: center;
   }
+
+  .hero-compact { gap: 20px; margin-bottom: 0; padding-bottom: 26px; }
+  .compact-brand { font: 400 clamp(30px, 4vw, 42px)/1 var(--font-heading); text-decoration: none; }
 
 
   h1 {
