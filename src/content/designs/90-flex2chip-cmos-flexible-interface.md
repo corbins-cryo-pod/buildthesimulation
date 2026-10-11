@@ -13,7 +13,7 @@ website: "https://www.science.org/doi/10.1126/sciadv.adf9524"
 axis: ["cortex"]
 function: ["recording"]
 form: ["film", "array"]
-tags: ["Flex2Chip", "ECoG", "CMOS", "flexible", "Stanford", "ETH", "connector", "preclinical"]
+tags: ["ECoG", "CMOS", "flexible", "Stanford"]
 draft: false
 ---
 
