@@ -13,7 +13,7 @@ successRank: 10
 axis: ["peripheral-nerve"]
 function: ["recording", "stimulation", "bidirectional"]
 form: ["intrafascicular", "film", "regenerative"]
-tags: ["BCI", "PNI", "intrafascicular", "stimulation", "recording", "prosthetics", "sensory feedback", "TIME", "peripheral nerve", "bidirectional", "regenerative", "film"]
+tags: ["prosthetics", "sensory feedback"]
 draft: false
 ---
 
