@@ -11,6 +11,10 @@ description: "Single-shank Neuropixels 1.0: 960 selectable recording sites and 3
 modality: "Intracortical"
 successRank: 5
 website: "https://www.neuropixels.org/probe1-0"
+axis: ["cortex"]
+function: ["recording"]
+form: ["probe"]
+origin: "Belgium"
 tags: ["intracortical", "Neuropixels", "recording", "CMOS", "imec", "UCL", "Allen Institute", "Janelia", "research"]
 draft: false
 ---
