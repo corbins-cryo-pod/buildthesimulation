@@ -18,11 +18,12 @@ html[data-theme="dark"] .company-brief {
 .company-brief :is([id], h2) { scroll-margin-top: 28px; }
 .company-brief :is(a, summary) { transition: color .16s, background .16s, border-color .16s; }
 .company-brief a:hover { color: var(--brief-accent); }
+main.wrap-wide:has(.company-brief) { max-width: none; padding: 28px clamp(18px, 3vw, 56px) 36px; }
 .brief-edition {
   display: flex;
   justify-content: space-between;
   gap: 18px;
-  padding: 16px 0 14px;
+  padding: 10px 0;
   font-size: 15px;
   font-style: italic;
   color: var(--muted);
@@ -30,35 +31,25 @@ html[data-theme="dark"] .company-brief {
 .brief-edition a { text-decoration: none; }
 .brief-edition span span, .brief-edition a span { margin: 0 7px; color: var(--brief-accent); }
 .brief-cover { border-top: 1px solid var(--brief-rule); }
-.brief-cover-grid { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 48px; padding: 38px 24px 34px; }
-.brief-overline { color: var(--brief-accent); font-size: 20px; font-style: italic; }
+.brief-cover-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 28px; padding: 24px 0; align-items: center; }
 .brief-name {
-  font: 400 clamp(82px, 12.5vw, 174px)/.83 var(--font-heading);
+  font: 400 clamp(76px, 9vw, 130px)/.9 var(--font-heading);
   letter-spacing: -.013em;
   color: var(--brief-ink);
-  padding: 25px 0 24px;
+  padding: 0 0 14px;
 }
 .brief-name span { display: block; }
-.brief-deck { max-width: 41ch; font-size: clamp(20px, 2.3vw, 25px); line-height: 1.42; font-style: italic; }
-.brief-imprint {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.brief-deck { max-width: 60ch; font-size: 22px; line-height: 1.36; font-style: italic; }
+.brief-company {
   border-left: 1px solid var(--brief-rule);
-  padding-left: 30px;
-  text-align: center;
+  padding-left: 22px;
+  min-width: 0;
 }
-.brief-imprint-label { font-size: 13px; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 14px; }
-.brief-reviewed { color: var(--muted); font-size: 14px; line-height: 1.45; }
-.brief-reviewed time { color: var(--text); font-style: italic; }
-.brief-official { display: flex; justify-content: space-between; gap: 18px; width: 100%; padding: 12px 0 6px; margin-top: 15px; border-top: 1px solid var(--brief-rule); font-size: 17px; font-style: italic; text-decoration: none; }
-.brief-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--brief-rule); }
-.brief-facts > div { padding: 17px 20px 18px; border-left: 1px solid var(--brief-rule); }
-.brief-facts > div:first-child { border-left: 0; padding-left: 0; }
-.brief-facts dt { color: var(--brief-accent); font-size: 14px; font-style: italic; margin-bottom: 5px; }
-.brief-facts dd { font-size: 18px; line-height: 1.28; margin: 0; }
-.brief-reading-grid { display: grid; grid-template-columns: 148px minmax(0, 1fr) 248px; gap: 36px; padding-top: 40px; }
+.brief-official { display: flex; justify-content: space-between; gap: 18px; padding: 12px 0 4px; margin-top: 10px; border-top: 1px solid var(--brief-rule); font-size: 17px; font-style: italic; text-decoration: none; }
+.brief-facts > div { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 10px; padding: 7px 0; }
+.brief-facts dt { color: var(--brief-accent); font-size: 14px; font-style: italic; padding-top: 2px; }
+.brief-facts dd { font-size: 17px; line-height: 1.3; margin: 0; }
+.brief-reading-grid { display: grid; grid-template-columns: 145px minmax(0, 1fr) 300px; gap: 28px; padding-top: 24px; border-top: 1px solid var(--brief-rule); }
 .brief-rail { min-width: 0; }
 .brief-contents { position: sticky; top: 30px; }
 .brief-small-label { color: var(--brief-accent); font-size: 14px; font-style: italic; }
@@ -70,21 +61,26 @@ html[data-theme="dark"] .company-brief {
 .brief-contents a[aria-current] .brief-nav-number { text-decoration: underline; text-underline-offset: 4px; }
 .brief-rail-atlas { display: block; font-size: 14px; font-style: italic; margin-top: 17px; text-decoration: none; }
 .brief-rail-atlas span { padding-left: 5px; }
-.brief-prose { min-width: 0; font-size: 19px; }
-.brief-prose > h2 { padding: 13px 0 0; margin: 45px 0 21px; border-top: 1px solid var(--brief-rule); font: 400 clamp(35px, 3.5vw, 44px)/1.04 var(--font-heading); }
+.brief-prose { min-width: 0; font-size: 19px; max-width: 88ch; }
+.brief-prose > h2 { padding: 10px 0 0; margin: 30px 0 14px; border-top: 1px solid var(--brief-rule); font: 400 clamp(32px, 3vw, 39px)/1.08 var(--font-heading); }
 .brief-prose > h2:first-child { margin-top: 0; }
-.brief-prose h3 { font: 400 29px/1.06 var(--font-heading); margin: 25px 0 10px; }
-.brief-prose p { line-height: 1.57; margin-bottom: 17px; }
-.brief-prose :is(ul, ol) { padding-left: 22px; margin: 15px 0 20px; }
-.brief-prose li { padding-left: 3px; line-height: 1.5; margin-bottom: 13px; }
+.brief-prose h3 { font: 400 28px/1.1 var(--font-heading); margin: 20px 0 8px; }
+.brief-prose p { line-height: 1.5; margin-bottom: 13px; }
+.brief-prose :is(ul, ol) { padding-left: 22px; margin: 12px 0 16px; }
+.brief-prose li { padding-left: 3px; line-height: 1.45; margin-bottom: 8px; }
 .brief-prose li::marker { color: var(--brief-accent); }
 .brief-prose a { text-decoration-thickness: 1px; text-underline-offset: 4px; }
-.brief-prose sup { vertical-align: baseline; position: relative; top: -.45em; font-size: .65em; }
-.brief-prose sup a { display: inline-block; padding: 2px 4px; margin-left: 3px; color: var(--brief-accent); border-bottom: 1px solid var(--brief-rule); text-decoration: none; line-height: 1; }
-.brief-prose sup a:hover { color: var(--text); border-color: var(--text); background: var(--panelHover); }
+.company-brief sup { vertical-align: baseline; position: relative; top: -.45em; font-size: .65em; }
+.company-brief sup a { display: inline-block; padding: 2px 4px; margin-left: 3px; color: var(--brief-accent); border-bottom: 1px solid var(--brief-rule); text-decoration: none; line-height: 1; }
+.company-brief sup a:hover { color: var(--text); border-color: var(--text); background: var(--panelHover); }
 .brief-prose blockquote { margin: 24px 0; padding: 18px 0 18px 20px; border-left: 1px solid var(--brief-rule); color: var(--muted); font-style: italic; font-size: 18px; }
 .brief-prose blockquote p:last-child { margin-bottom: 0; }
 .brief-marginalia { min-width: 0; padding-left: 22px; border-left: 1px solid var(--brief-rule); }
+.brief-signals { margin-bottom: 25px !important; }
+.brief-signals > div { padding: 0 0 11px; margin-bottom: 11px; border-bottom: 1px solid var(--border); }
+.brief-signals dt { color: var(--brief-accent); font-size: 14px; font-style: italic; }
+.brief-signals dd { font: 400 32px/1.15 var(--font-heading); margin: 3px 0; }
+.brief-signals > div > span { display: block; color: var(--muted); font-size: 12px; line-height: 1.4; }
 .brief-interface .brief-small-label { display: block; margin-bottom: 13px; }
 .brief-photo { display: block; padding: 9px; background: #f7f6f2; border: 1px solid var(--brief-rule); color: #51452f; text-decoration: none; }
 .brief-photo img { display: block; width: 100%; height: auto; }
@@ -102,7 +98,7 @@ html[data-theme="dark"] .company-brief {
 .brief-related ul { list-style: none; padding: 0; margin: 9px 0 24px; }
 .brief-related li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; line-height: 1.4; }
 .brief-related li a { text-decoration: none; }
-.brief-sources { margin-top: 55px; padding: 30px 0 0; border-top: 1px solid var(--brief-rule); }
+.brief-sources { margin-top: 35px; padding: 22px 0 0; border-top: 1px solid var(--brief-rule); }
 .brief-source-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); gap: 17px; align-items: center; padding-bottom: 26px; }
 .brief-source-heading h2 { font: 400 50px/1 var(--font-heading); }
 .brief-source-heading > p { font-size: 16px; font-style: italic; line-height: 1.45; color: var(--muted); max-width: 38ch; justify-self: end; }
@@ -125,11 +121,9 @@ html[data-theme="dark"] .company-brief {
 .brief-next-name > span { font-size: 23px; color: var(--brief-accent); }
 .brief-next-label { color: var(--muted); font-size: 16px; font-style: italic; }
 .brief-back-top { font-size: 14px; font-style: italic; text-decoration: none; white-space: nowrap; }
-@media (min-width: 1100px) {
-  .company-brief .brief-name { font-size: 168px; }
-}
 @media (max-width: 1000px) {
-  .brief-reading-grid { grid-template-columns: minmax(0, 1fr) 235px; gap: 30px; }
+  .brief-cover-grid { grid-template-columns: minmax(0, 1fr) 270px; }
+  .brief-reading-grid { grid-template-columns: minmax(0, 1fr) 270px; gap: 24px; }
   .brief-rail { grid-column: 1 / -1; border-bottom: 1px solid var(--brief-rule); padding-bottom: 16px; }
   .brief-contents { position: static; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; }
   .brief-contents ol { display: flex; flex-wrap: wrap; gap: 4px 20px; border: 0; margin: 0; padding: 0; }
@@ -140,27 +134,17 @@ html[data-theme="dark"] .company-brief {
 @media (max-width: 680px) {
   .brief-edition { font-size: 12px; gap: 10px; }
   .brief-edition span span, .brief-edition a span { margin: 0 3px; }
-  .brief-cover-grid { grid-template-columns: minmax(0, 1fr); padding: 31px 12px 24px; gap: 27px; }
-  .brief-name { font-size: clamp(76px, 18.5vw, 122px); padding-block: 20px; }
-  .brief-overline { font-size: 18px; }
+  .brief-cover-grid { grid-template-columns: minmax(0, 1fr); padding: 20px 0; gap: 20px; }
+  .brief-name { font-size: clamp(72px, 18vw, 110px); }
   .brief-deck { font-size: 20px; }
-  .brief-imprint { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 9px 25px; text-align: left; border-left: 0; border-top: 1px solid var(--brief-rule); padding: 16px 0 0; }
-  .brief-imprint-label { font-size: 12px; margin-bottom: 0; }
-  .brief-reviewed { grid-column: 1; font-size: 13px; }
-  .brief-reviewed br { display: none; }
-  .brief-reviewed time::before { content: ' · '; }
-  .brief-official { grid-column: 2; grid-row: 1 / 3; width: auto; border: 0; margin: 0; padding: 10px 0; font-size: 16px; gap: 8px; }
-  .brief-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .brief-facts > div { padding: 14px 12px; }
-  .brief-facts > div:nth-child(odd) { border-left: 0; padding-left: 0; }
-  .brief-facts > div:nth-child(n+3) { border-top: 1px solid var(--brief-rule); }
+  .brief-company { border-left: 0; border-top: 1px solid var(--brief-rule); padding: 12px 0 0; }
   .brief-facts dd { font-size: 17px; }
   .brief-reading-grid { grid-template-columns: minmax(0, 1fr); gap: 30px; padding-top: 25px; }
   .brief-contents .brief-small-label { width: 100%; }
   .brief-contents ol { gap: 0 16px; }
   .brief-contents li a { grid-template-columns: 18px minmax(0, 1fr); }
   .brief-prose { font-size: 19px; }
-  .brief-prose > h2 { font-size: 38px; }
+  .brief-prose > h2 { font-size: 35px; }
   .brief-marginalia { padding: 26px 0 0; border-left: 0; border-top: 1px solid var(--brief-rule); display: grid; grid-template-columns: minmax(0, 1fr); }
   .brief-photo { max-width: 420px; margin-inline: auto; }
   .brief-interface figcaption > p { font-size: 15px; }
@@ -172,10 +156,6 @@ html[data-theme="dark"] .company-brief {
   .brief-source-list { grid-template-columns: minmax(0, 1fr); }
   .brief-colophon { flex-direction: column; align-items: start; }
   .brief-next-name { font-size: 36px; }
-}
-@media (max-width: 380px) {
-  .brief-imprint { display: flex; align-items: start; }
-  .brief-official { margin-top: 3px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .company-brief :is(a, summary) { transition: none; }

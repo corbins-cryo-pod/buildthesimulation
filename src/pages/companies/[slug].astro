@@ -31,7 +31,7 @@ const titleNoPrefix = entry.data.title
   .replace(/\s*\((company|lab) brief\)$/i, "");
 ---
 
-<Layout pageTitle={editorial ? `${titleNoPrefix} · Company brief` : "BCI Atlas"} subtitle={subtitle} description={entry.data.description} compactHeader={Boolean(editorial)}>
+<Layout pageTitle={editorial ? `${titleNoPrefix} · Company brief` : "BCI Atlas"} subtitle={subtitle} description={entry.data.description} compactHeader={Boolean(editorial)} wide={Boolean(editorial)}>
   {editorial ? <div id="top-of-brief"><CompanyBrief entry={entry} brief={editorial} headings={headings} apps={apps} devices={devices} lastVerified={lastVerified}><Content /></CompanyBrief></div> : <>
   <p class="atlas-return"><a href={`/companies/?org=${entry.slug}`}>← Explore this organization in the atlas</a></p>
   <article class="post">

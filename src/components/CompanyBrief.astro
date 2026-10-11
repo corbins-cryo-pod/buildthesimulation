@@ -2,7 +2,7 @@
 import '../styles/company-brief.css';
 import { getDevicePhoto } from '../lib/device-photos.js';
 
-const { entry, brief, headings, apps, devices, lastVerified } = Astro.props;
+const { entry, brief, headings, apps, devices } = Astro.props;
 const sections = headings.filter((heading) => heading.depth === 2);
 const photo = getDevicePhoto(brief.photoDeviceId);
 const cleanTitle = (title) => title.replace(/^\d+\s*[-—]\s*/, '');
@@ -11,28 +11,25 @@ const cleanTitle = (title) => title.replace(/^\d+\s*[-—]\s*/, '');
 <article class="company-brief" data-company-brief>
   <div class="brief-edition">
     <a href={`/companies/?org=${entry.slug}`}>BCI Atlas <span aria-hidden="true">/</span> Company brief</a>
-    <span>{entry.data.region} edition <span aria-hidden="true">·</span> No. {brief.folio}</span>
+    <span>{brief.region}</span>
   </div>
 
   <header class="brief-cover">
     <div class="brief-cover-grid">
       <div class="brief-title-block">
-        <p class="brief-overline">{brief.label}</p>
         <h1 class="brief-name" aria-label={brief.name}>{brief.headline.map(line => <span>{line}</span>)}</h1>
         <p class="brief-deck">{brief.deck}</p>
       </div>
-      <div class="brief-imprint">
-        <span class="brief-imprint-label">Organization dossier</span>
-        {lastVerified && <p class="brief-reviewed">Public-source review<br /><time datetime={entry.data.lastVerified.toISOString().slice(0, 10)}>{lastVerified}</time></p>}
+      <aside class="brief-company" aria-label="Company facts">
+        <dl class="brief-facts">
+          <div><dt>Location</dt><dd>{entry.data.location}</dd></div>
+          <div><dt>Organization</dt><dd>{brief.structure}</dd></div>
+          <div><dt>Platform</dt><dd>{brief.platform}</dd></div>
+          <div><dt>Focus</dt><dd>{brief.focus}</dd></div>
+        </dl>
         <a class="brief-official" href={entry.data.website} target="_blank" rel="noopener noreferrer">Official website <span aria-hidden="true">↗</span></a>
-      </div>
+      </aside>
     </div>
-    <dl class="brief-facts" aria-label="Company at a glance">
-      <div><dt>Location</dt><dd>{entry.data.location}</dd></div>
-      <div><dt>Organization</dt><dd>{brief.structure}</dd></div>
-      <div><dt>Platform</dt><dd>{brief.platform}</dd></div>
-      <div><dt>Focus</dt><dd>{brief.focus}</dd></div>
-    </dl>
   </header>
 
   <div class="brief-reading-grid">
@@ -54,6 +51,13 @@ const cleanTitle = (title) => title.replace(/^\d+\s*[-—]\s*/, '');
     </div>
 
     <aside class="brief-marginalia" aria-label="Interface and related reading">
+      <dl class="brief-signals" aria-label="Key figures">
+        {brief.signals.map(signal => <div>
+          <dt>{signal.label}</dt>
+          <dd>{signal.value} <sup><a href={`#source-${signal.source}`} aria-label={`Source ${signal.source}: ${signal.label}`}>{signal.source}</a></sup></dd>
+          <span>{signal.context}</span>
+        </div>)}
+      </dl>
       {photo && <figure class="brief-interface">
         <div class="brief-small-label">The physical interface</div>
         <a class="brief-photo" href={photo.src} target="_blank" rel="noopener noreferrer" aria-label={`Enlarge the image of ${brief.deviceName}`}>
@@ -83,7 +87,7 @@ const cleanTitle = (title) => title.replace(/^\d+\s*[-—]\s*/, '');
   <section class="brief-sources" id="source-index" aria-labelledby="source-heading">
     <div class="brief-source-heading">
       <h2 id="source-heading">Source index</h2>
-      <p>Short citations in the text lead here. Each reference keeps its original destination and context.</p>
+      <p>References, research and company reports.</p>
     </div>
     <ol class="brief-source-list">
       {brief.sources.map(source => <li id={`source-${source.id}`}>
