@@ -2,7 +2,7 @@
 title: "诺尔康 (Zhejiang Nurotron) (company brief)"
 order: 74
 pubDate: 2026-10-09
-updatedDate: 2026-10-09
+updatedDate: 2026-10-11
 lastVerified: 2026-10-09
 description: "Hangzhou neural-electronics company founded in 2006 that makes cochlear implants and, with Shanghai Ninth People's Hospital, a domestic auditory brainstem implant now in a ChiCTR phase III trial."
 region: "Chinese"
@@ -25,6 +25,10 @@ draft: false
 
 - [Auditory brainstem implant](/devices/55-auditory-brainstem-implant/) is the general entry for this device class (Cochlear's ABI). Nurotron's own device: [WH-01A auditory brainstem implant](/devices/190-nurotron-wh-01a-auditory-brainstem-implant/).
 
+### Trial leadership
+
+The NF2 auditory brainstem implant registry identifies Wu Hao at Shanghai Ninth People's Hospital as study leader, with sponsor funding and Zhejiang Norkang named as manufacturer in the English record. This is a single-arm phase III protocol; its planned dates do not establish trial completion. Source: [ChiCTR2300070545](https://www.chictr.org.cn/showproj.html?proj=195656).
+
 ### Limits
 
-Product claims above are the company's. The NMPA review notice, the trial results and any approval status are not covered. See the [China overview](/china/).
+Product claims above are the company's. The NMPA review notice, the trial results and any approval status are not covered.

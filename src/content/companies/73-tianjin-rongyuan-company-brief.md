@@ -2,7 +2,7 @@
 title: "天津嵘元智能 (Tianjin Rongyuan Intelligent Technology) (company brief)"
 order: 73
 pubDate: 2026-10-09
-updatedDate: 2026-10-09
+updatedDate: 2026-10-11
 lastVerified: 2026-10-09
 description: "Tianjin company founded in April 2023 to commercialize Nankai University's endovascular (stent-electrode) brain-computer interface work; funds the ChiCTR2400093125 safety study."
 region: "Chinese"
@@ -22,6 +22,10 @@ draft: false
 
 - [Nankai / Rongyuan interventional (stent-electrode) BCI](/devices/189-nankai-rongyuan-interventional-bci/). Electrode geometry is not published in the sources read; the Stentrode is a different system.
 
+### Trial schedule
+
+The type A sensor safety study, [ChiCTR2400093125](https://www.chictr.org.cn/showprojEN.html?proj=252273), was registered November 28, 2024 with planned dates November 1, 2024–May 31, 2025. Those planning dates should not be read as evidence of enrollment or completion, or equated with the separately reported August 2025 first-human procedure.
+
 ### Limits
 
-Founding date and trial claims come from a government news page and the registry. No company website, NMPA filing or financing record was read. The overview page lists this company with the registry trial: [China overview](/china/).
+Founding date and trial claims come from a government news page and the registry. No company website, NMPA filing or financing record was read.

@@ -2,7 +2,7 @@
 title: "Shenfu Jianxing brain-spine interface (Fudan)"
 order: 182
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-STUP-0009"
 interface_class: "other"
 status: "human"
@@ -128,6 +128,12 @@ Company brief: [神复健行](/companies/70-shenfu-jianxing-company-brief/).
 ## Version boundary
 
 The configuration studied is the March 2025 clinical proof of concept, with brain electrodes and spinal epidural electrodes. The team describes a later 'three-in-one' skull-implanted miniature device as a planned refinement; that version is not described in the sources read.
+
+## Registered schedule and related research
+
+ChiCTR2500095359 lists planned study dates January 1–December 31, 2025. These are protocol dates, not confirmed enrollment or completion dates [4].
+
+A separate [Jiangsu cervical spinal cord injury epidural-stimulation protocol](/applications/151-jiangsu-cervical-sci-epidural-stimulation-protocol/) is also registered. Its manufacturer and hardware are not identified in the available record; it is not attributed to Shenfu Jianxing or treated as a trial of this device.
 
 ## References
 

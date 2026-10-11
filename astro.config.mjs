@@ -10,6 +10,7 @@ export default defineConfig({
   // Bump this version when the formatter changes to invalidate cached Markdown.
   markdown: { remarkPlugins: [[remarkCompanyBriefs, { version: 1 }]] },
   redirects: {
+    "/china": "/companies/?region=Chinese",
     "/companies/map": "/companies/",
     '/devices/140-neuropixels-opto-prototype-2026': '/devices/107-neuropixels-opto-photonic-prototype/',
     '/devices/36-neuropixels-2-0': '/devices/88-neuropixels-20-alpha-probe/',
