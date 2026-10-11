@@ -4,7 +4,7 @@ order: 55
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
 device_id: "BTSD-ACAD-0034"
-interface_class: "other"
+interface_class: "brainstem"
 status: "human"
 last_updated: 2026-10-06
 description: "A paddle electrode array placed on the cochlear nucleus of the brainstem to restore sound awareness when a cochlear implant cannot work. First implanted 1979, FDA approved in 2000 for NF2. The current US device has 21 platinum contacts on an 8.5 by 3.0 mm paddle."
