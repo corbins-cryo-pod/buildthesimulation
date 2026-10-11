@@ -14,7 +14,7 @@ axis: ["spinal-cord"]
 function: ["stimulation"]
 regulatory: "fda-approved"
 origin: "US"
-tags: ["spinal cord stimulation", "Boston Scientific", "WaveWriter", "SOLIS", "PMA", "FDA approved", "human"]
+tags: ["spinal cord stimulation", "Boston Scientific", "PMA"]
 draft: false
 ---
 
