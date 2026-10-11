@@ -11,6 +11,10 @@ description: "A subcutaneous titanium-housed system that streams 100 channels of
 modality: "Intracortical"
 successRank: 32
 website: "https://iopscience.iop.org/article/10.1088/1741-2560/10/2/026010/meta"
+axis: ["cortex"]
+function: ["recording"]
+form: ["array"]
+origin: "US"
 tags: ["wireless", "implantable", "hermetic", "transcutaneous charging", "Brown", "Nurmikko", "academic", "preclinical"]
 draft: false
 ---
