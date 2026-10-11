@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["fiber", "array"]
 origin: "US"
-tags: ["carbon fiber", "intracortical", "single-unit", "small footprint", "Michigan", "Chestek", "academic", "preclinical"]
+tags: ["intracortical", "single-unit", "Michigan"]
 draft: false
 ---
 
