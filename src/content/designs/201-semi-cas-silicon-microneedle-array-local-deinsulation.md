@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["array"]
 origin: "China"
-tags: ["Institute of Semiconductors", "Pei Weihua", "silicon microneedle", "Utah-style", "Parylene-C", "platinum black", "China", "rat", "preclinical", "primary source"]
+tags: ["Parylene C", "rat"]
 draft: false
 ---
 
