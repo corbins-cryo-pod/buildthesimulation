@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "Thermally drawn optical, electrical and fluidic fibers integrated in a soft hydrogel matrix. Dry insertion and hydrated compliance, with six-month mouse recordings and a connectorization limit that prevents independent readout of every microwire."
 modality: "Intracortical"
 website: "https://www.nature.com/articles/s41467-021-23802-9"
+axis: ["cortex"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["fiber"]
+origin: "US"
 tags: ["intracortical", "recording", "optogenetics", "microfluidic", "hydrogel", "fiber", "MIT", "academic", "preclinical"]
 draft: false
 ---
