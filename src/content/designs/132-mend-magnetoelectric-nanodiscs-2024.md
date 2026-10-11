@@ -13,7 +13,7 @@ website: "https://www.nature.com/articles/s41565-024-01798-9"
 axis: ["other"]
 function: ["stimulation"]
 form: ["other"]
-tags: ["MEND", "nanodiscs", "magnetoelectric", "MIT", "neuromodulation", "preclinical"]
+tags: ["magnetoelectric", "MIT"]
 draft: false
 ---
 
