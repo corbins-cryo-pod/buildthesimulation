@@ -14,7 +14,7 @@ axis: ["spinal-cord"]
 function: ["recording", "stimulation", "bidirectional"]
 regulatory: "fda-approved"
 origin: "Australia"
-tags: ["SCS", "spinal cord stimulation", "Saluda", "Evoke", "closed loop", "ECAP", "FDA approved", "human"]
+tags: ["spinal cord stimulation", "closed loop", "ECAP"]
 draft: false
 ---
 
