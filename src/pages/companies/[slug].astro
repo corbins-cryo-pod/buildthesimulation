@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
 import CompanyBrief from "../../components/CompanyBrief.astro";
+import { organizationDisplayName } from "../../lib/organization-names.js";
 import { cleanCompanyTitle, getCompanyBrief, linkedDeviceSlugs } from "../../lib/company-briefs.js";
 
 export async function getStaticPaths() {
@@ -18,7 +19,7 @@ const deviceSlugs = [...new Set([...linkedDeviceSlugs(entry.body), ...apps.flatM
 const devices = deviceSlugs.map((slug) => allDevices.find((device) => device.slug === slug)).filter(Boolean);
 const { Content, headings, remarkPluginFrontmatter } = await render(entry);
 const brief = getCompanyBrief(entry, remarkPluginFrontmatter.briefFormatting, headings, devices);
-const title = cleanCompanyTitle(entry.data.title);
+const title = organizationDisplayName(entry.slug, cleanCompanyTitle(entry.data.title));
 ---
 
 <Layout pageTitle={`${title} · ${entry.data.kind === "Lab" ? "Lab" : "Company"} brief`} description={entry.data.description} compactHeader>

@@ -8,7 +8,7 @@ import '../../styles/atlas.css';
 const [companies, devices, applications] = await Promise.all([getCollection('companies'), getCollection('designs'), getCollection('applications')]);
 const entries = buildAtlasEntries(companies, devices, applications, deviceModels);
 ---
-<Layout pageTitle="BCI Atlas" subtitle="Explore the places, people and hardware shaping neural interfaces." description="An interactive BCI atlas connecting companies and labs with documented devices, 3D models and studies." wide={true}>
+<Layout pageTitle="Companies & Labs" subtitle="" description="An interactive BCI atlas connecting companies and labs with documented devices, 3D models and studies." wide={true}>
   <AtlasExplorer client:load entries={entries} />
   <noscript><p>Open any organization below to read its profile. Enable JavaScript for the interactive map, filters and connected hardware.</p></noscript>
 </Layout>

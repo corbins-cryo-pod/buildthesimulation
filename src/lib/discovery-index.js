@@ -3,6 +3,7 @@ import { compareDeviceEntries } from './device-order.js';
 import { compareOrganizations, classifyOrganization } from './organization-classification.js';
 import { resolveFacets } from './device-facets.js';
 import { deviceModels } from './devices/catalog.js';
+import { organizationDisplayName, organizationSearchNames } from './organization-names.js';
 import { cleanDiscoveryTitle } from './discovery.js';
 
 // One search index per deployment, not an embedded copy in every HTML page.
@@ -18,11 +19,11 @@ export async function buildDiscoveryIndex() {
     ...companies.map(entry => {
       const program = classifyOrganization(entry).primary;
       return {
-        type: 'Organizations', title: cleanDiscoveryTitle(entry.data.title),
+        type: 'Organizations', title: organizationDisplayName(entry.slug, entry.data.title),
         href: `/companies/?org=${entry.slug}`,
         detail: [entry.data.kind, program?.code].filter(Boolean).join(' · '),
         summary: entry.data.location ?? '',
-        keywords: [...(entry.data.tags ?? []), entry.data.description ?? '', entry.data.region ?? '', program?.name ?? '', ...(program?.interfaces ?? [])],
+        keywords: [...(entry.data.tags ?? []), ...organizationSearchNames(entry.slug), entry.data.description ?? '', entry.data.region ?? '', program?.name ?? '', ...(program?.interfaces ?? [])],
       };
     }),
     ...devices.map(entry => {
