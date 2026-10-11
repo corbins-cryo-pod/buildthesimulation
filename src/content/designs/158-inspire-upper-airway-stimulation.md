@@ -14,7 +14,7 @@ axis: ["peripheral-nerve"]
 function: ["stimulation"]
 regulatory: "fda-approved"
 origin: "US"
-tags: ["hypoglossal", "sleep apnea", "Inspire", "upper airway stimulation", "FDA approved", "human"]
+tags: []
 draft: false
 ---
 
