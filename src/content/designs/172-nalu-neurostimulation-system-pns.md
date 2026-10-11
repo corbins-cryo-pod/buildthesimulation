@@ -10,6 +10,10 @@ last_updated: 2026-10-08
 description: "FDA-cleared miniature peripheral nerve stimulator powered by a worn Therapy Disc, cleared 2019 with later 510(k)s through 2024. Thin: 510(k) text only."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf18/K183579.pdf"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+regulatory: "fda-cleared"
+origin: "US"
 tags: ["peripheral nerve stimulation", "Nalu", "wireless implant", "510(k)", "FDA cleared", "human"]
 draft: false
 ---
