@@ -22,12 +22,7 @@ const cleanTitle = (title) => title.replace(/^\d+\s*[-—]\s*/, '');
         <p class="brief-deck">{brief.deck}</p>
       </div>
       <div class="brief-imprint">
-        <svg class="brief-emblem" width="176" height="100" viewBox="0 0 176 100" fill="none" aria-hidden="true">
-          <path d="M12 88H164M24 80H152M36 72H140M48 64H128M60 56H116M72 48H104M88 4V40M48 14L70 44M18 38L62 52M128 14L106 44M158 38L114 52" stroke="currentColor" stroke-width="1" />
-          <path d="M78 42L88 32L98 42L88 52Z" stroke="currentColor" />
-        </svg>
         <span class="brief-imprint-label">Organization dossier</span>
-        <span class="brief-folio" aria-hidden="true">{brief.folio}</span>
         {lastVerified && <p class="brief-reviewed">Public-source review<br /><time datetime={entry.data.lastVerified.toISOString().slice(0, 10)}>{lastVerified}</time></p>}
         <a class="brief-official" href={entry.data.website} target="_blank" rel="noopener noreferrer">Official website <span aria-hidden="true">↗</span></a>
       </div>
@@ -46,7 +41,7 @@ const cleanTitle = (title) => title.replace(/^\d+\s*[-—]\s*/, '');
         <p class="brief-small-label">In this brief</p>
         <ol>
           {sections.map((section, index) => <li><a href={`#${section.slug}`} data-brief-section>
-            <span class="brief-nav-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><span>{section.text}</span>
+            <span class="brief-nav-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><span>{brief.contents?.[section.slug] ?? section.text}</span>
           </a></li>)}
           <li><a href="#source-index" data-brief-section><span class="brief-nav-number" aria-hidden="true">{String(sections.length + 1).padStart(2, '0')}</span><span>Source index</span></a></li>
         </ol>
@@ -77,12 +72,6 @@ const cleanTitle = (title) => title.replace(/^\d+\s*[-—]\s*/, '');
         <a class="brief-catalog-link" href={`/devices/${brief.deviceSlug}/`}>{brief.deviceName} <span>Device brief ↗</span></a>
       </figure>}
 
-      <div class="brief-field-note">
-        <span class="brief-small-label">An engineering lens</span>
-        <p>{brief.note}</p>
-        <svg viewBox="0 0 84 16" width="84" height="16" fill="none" aria-hidden="true"><path d="M0 8H30M54 8H84M34 8L42 0L50 8L42 16Z" stroke="currentColor" /></svg>
-      </div>
-
       {(apps.length > 0 || devices.length > 0) && <section class="brief-related">
         <h2>In the collection</h2>
         {devices.length > 0 && <><p class="brief-small-label">Linked hardware</p><ul>{devices.map(device => <li><a href={`/devices/${device.slug}/`}>{cleanTitle(device.data.title)}</a></li>)}</ul></>}
@@ -93,8 +82,7 @@ const cleanTitle = (title) => title.replace(/^\d+\s*[-—]\s*/, '');
 
   <section class="brief-sources" id="source-index" aria-labelledby="source-heading">
     <div class="brief-source-heading">
-      <span class="brief-section-number" aria-hidden="true">{String(sections.length + 1).padStart(2, '0')}</span>
-      <div><p class="brief-small-label">The reading room</p><h2 id="source-heading">Source index</h2></div>
+      <h2 id="source-heading">Source index</h2>
       <p>Short citations in the text lead here. Each reference keeps its original destination and context.</p>
     </div>
     <ol class="brief-source-list">
