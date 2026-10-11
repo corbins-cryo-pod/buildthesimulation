@@ -10,6 +10,10 @@ last_updated: 2026-10-08
 description: "FDA-authorized wirelessly powered tibial nerve stimulator for urgency incontinence, from the De Novo review and 2024 510(k). Trial result values were not extracted."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN220073.pdf"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+regulatory: "fda-authorized"
+origin: "Israel"
 tags: ["tibial nerve", "BlueWind", "Revi", "overactive bladder", "wireless implant", "De Novo", "FDA authorized", "human"]
 draft: false
 ---
