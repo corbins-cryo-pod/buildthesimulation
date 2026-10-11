@@ -1,0 +1,45 @@
+/* Shared navigation + discovery language. All surfaces respect the paper/charcoal theme. */
+.discovery-dialog {
+  width: min(690px, calc(100vw - 30px));
+  max-width: none;
+  max-height: min(760px, calc(100dvh - 50px));
+  padding: 0;
+  border: 1px solid var(--borderStrong);
+  border-radius: 16px;
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: 0 30px 95px var(--shadow);
+  overflow: hidden;
+  position: fixed;
+  z-index: 10000;
+  font-family: var(--font-body);
+}
+.discovery-dialog::backdrop { background: rgba(12, 13, 14, .64); backdrop-filter: blur(3px); }
+.discovery-shell { display: flex; flex-direction: column; max-height: min(760px, calc(100dvh - 50px)); }
+.discovery-field { display: flex; align-items: center; gap: 10px; padding: 13px 17px; border-bottom: 1px solid var(--border); background: var(--panelStrong); }
+.discovery-mag { font-size: 29px; line-height: 1; color: var(--muted); }
+.discovery-field input { flex: 1; min-width: 0; padding: 8px 0; border: 0; outline: 0; background: transparent; color: var(--text); font-size: 19px; font-style: normal; }
+.discovery-field input:focus { outline: none; }
+.discovery-field:focus-within { outline: 2px solid var(--borderStrong); outline-offset: -2px; }
+.discovery-field input::placeholder { color: var(--muted); opacity: .84; }
+.discovery-close { border: 1px solid var(--border); border-radius: 7px; padding: 5px 8px; background: var(--panel); color: var(--muted); font-size: 14px; cursor: pointer; }
+.discovery-results { overflow-y: auto; min-height: 150px; padding: 14px; scrollbar-width: thin; }
+.discovery-kicker, .discovery-group h2 { font: normal 14px/1.2 var(--font-body); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 12px 11px 5px; }
+.discovery-group + .discovery-group { margin-top: 14px; }
+.discovery-result { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 10px 12px; border-radius: 9px; color: inherit; text-decoration: none; }
+.discovery-result:hover, .discovery-result.is-active, .discovery-result:focus-visible { background: var(--panelStrong); outline-color: var(--borderStrong); }
+.discovery-result span:first-child { min-width: 0; }
+.discovery-result strong { display: block; font: normal 22px/1.15 var(--font-heading); overflow-wrap: anywhere; }
+.discovery-result small { display: block; font: normal 14px/1.4 var(--font-body); color: var(--muted); margin-top: 3px; }
+.discovery-result > span:last-child { color: var(--muted); font-size: 18px; }
+.discovery-tip, .discovery-empty { padding: 12px; color: var(--muted); font-size: 16px; margin: 0; }
+.discovery-footer { display: flex; justify-content: space-between; gap: 12px; padding: 10px 17px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--border); }
+button.discovery-trigger { font: inherit; cursor: pointer; }
+@media (max-width: 600px) {
+  .discovery-dialog { width: calc(100vw - 16px); max-height: calc(100dvh - 20px); }
+  .discovery-shell { max-height: calc(100dvh - 20px); }
+  .discovery-field { padding: 10px 12px; }
+  .discovery-field input { font-size: 16px; }
+  .discovery-result strong { font-size: 20px; }
+  .discovery-results { padding: 8px; }
+}
