@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "Tin electrodes in a polymer fiber, with sacrificial-cladding removal reducing the demonstrated cross-section from 416 to 85 micrometers. Recording-only architecture is distinct from the all-polymer optical/fluidic fiber."
 modality: "Intracortical"
 website: "https://www.nature.com/articles/nbt.3093"
+axis: ["cortex"]
+function: ["recording"]
+form: ["fiber"]
+origin: "US"
 tags: ["cortex", "intracortical", "recording", "microelectrode", "fiber", "MIT", "academic"]
 draft: false
 ---
