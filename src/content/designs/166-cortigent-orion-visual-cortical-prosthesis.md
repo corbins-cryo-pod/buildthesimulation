@@ -10,6 +10,11 @@ last_updated: 2026-10-08
 description: "Investigational 60-electrode cortical surface visual prosthesis from Cortigent, tested in a six-subject early feasibility study. Not FDA approved. Separate from the discontinued Argus II retinal implant."
 modality: "Cortical surface"
 website: "https://clinicaltrials.gov/study/NCT03344848"
+axis: ["cortex"]
+function: ["stimulation"]
+form: ["array"]
+regulatory: "investigational"
+origin: "US"
 tags: ["cortical visual prosthesis", "Orion", "Cortigent", "Second Sight", "visual cortex", "investigational", "human"]
 draft: false
 ---
