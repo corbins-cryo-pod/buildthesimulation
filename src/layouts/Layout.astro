@@ -4,7 +4,6 @@ import "../styles/discovery.css";
 import SiteSearch from "../components/SiteSearch.jsx";
 import { deviceModels } from "../lib/devices/catalog.js";
 import { resolveFacets } from "../lib/device-facets.js";
-import { cleanDiscoveryTitle } from "../lib/discovery.js";
 import NerveHero from "../components/NerveHero.astro";
 import { getCollection } from "astro:content";
 import { compareDeviceEntries } from "../lib/device-order.js";
@@ -82,7 +81,7 @@ const discoveryEntries = [
     keywords: [p.data.description ?? "", ...(p.data.tags ?? []), ...(p.data.devices ?? []), ...(p.data.orgs ?? [])],
   })),
   ...Object.values(deviceModels).map(model => ({
-    type: "3D models", title: model.name, href: "/devices/models/",
+    type: "3D models", title: model.name, href: `/devices/${model.slug}/#model-3d`,
     detail: "3D reference", summary: "Documented reconstruction",
     keywords: [model.deviceId, model.slug ?? "", ...(model.specs ?? []).flatMap(spec => spec)],
   })),
