@@ -2,8 +2,8 @@
 title: "Science Corporation (company brief)"
 order: 6
 pubDate: 2026-02-02
-updatedDate: 2026-10-04
-lastVerified: 2026-10-04
+updatedDate: 2026-10-10
+lastVerified: 2026-10-10
 description: "Science Corporation’s BCI work with an emphasis on its biohybrid neural interface concept (neurons-as-the-interface), plus its PRIMA retinal prosthesis program."
 region: "American"
 kind: "Company"
@@ -113,6 +113,7 @@ But the credibility hinge is the same as always: can they make it *reliable, saf
 - *PRIMA in Europe (Jul 22, 2026):* PRIMA received a CE mark and Science announced its European commercial launch for geographic atrophy from age-related macular degeneration; US FDA approval process is underway and PRIMA holds two FDA Humanitarian Use Device designations. Sources: <https://science.xyz/news/ce-mark/> and <https://science.xyz/news/hud-designation/>
 - *Leadership (Sep 17, 2026):* Darius Shahida, previously Chief Strategy Officer, was named President. Source: <https://investor.wedbush.com/wedbush/article/bizwire-2026-9-17-science-corporation-names-darius-shahida-as-president>
 - Pixium Vision, mentioned in older coverage, is now part of Science (per Science press materials).
+- *PRIMA 36-month results (Oct 5, 2026, company press release):* Science reported 36-month follow-up from the PRIMAvera trial (NCT04676854), presented at the 26th EURETINA Congress in Vienna by Mahi Muqit (Moorfields Eye Hospital). Per the release: 38 patients implanted at 17 sites in five European countries; 27 evaluable for safety and 18 for efficacy at 36 months; mean gain of 29 ETDRS letters (24.5 at 12 months); 14 of 18 (78%) gained at least 15 letters; no new safety signal between months 12 and 36. The release states PRIMA is commercially available in Europe and the UK and pending FDA approval. The 36-month averages cover 18 of 38 implanted patients, and Inside BCI notes the data are not yet peer reviewed and that Science has not said which glasses setting the 36-month figure uses. Sources: <https://science.xyz/news/long-term-prima-results/> (company) and <https://insidebci.com/news/2026-10-06-science-corp-prima-36-month-results-durable-vision-geographic-atrophy-euretina/> (secondary)
 
 ### Device entries
 
