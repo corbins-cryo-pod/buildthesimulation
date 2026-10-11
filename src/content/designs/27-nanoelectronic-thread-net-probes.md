@@ -11,6 +11,10 @@ description: "NET-50 and NET-10 ultraflexible electrodes: 50 x 1 µm and 10 x 1.
 modality: "Intracortical"
 successRank: 27
 website: "https://www.science.org/doi/10.1126/sciadv.1601966"
+axis: ["cortex"]
+function: ["recording"]
+form: ["fiber"]
+origin: "US"
 tags: ["ultraflexible", "nanoelectronic thread", "NET", "chronic", "glial scar", "UT Austin", "Xie", "academic", "preclinical"]
 draft: false
 ---
