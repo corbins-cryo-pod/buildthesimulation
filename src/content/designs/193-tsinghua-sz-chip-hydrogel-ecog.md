@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "128-channel ECoG array, 9 micrometers thick, made entirely of a conductive hydrogel (CHIP) printed on parylene, at 853 channels per cm2. Xu Xiaomin's group at Tsinghua Shenzhen International Graduate School with SIAT; rabbit recordings to 550 days (PNAS 2026)."
 modality: "Cortical surface"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC13142910/"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film", "array"]
+origin: "China"
 tags: ["Tsinghua", "SIAT", "hydrogel", "PEDOT:PSS", "all-organic", "ECoG", "China", "rabbit", "preclinical", "primary source"]
 draft: false
 ---
