@@ -11,6 +11,11 @@ description: "A fully implanted endovascular BCI: a stent-electrode array in the
 modality: "Endovascular"
 successRank: 3
 website: "https://synchron.com/"
+axis: ["vasculature"]
+function: ["recording"]
+form: ["stent", "array"]
+regulatory: "investigational"
+origin: "US"
 tags: ["BCI", "endovascular", "Stentrode", "Synchron", "ECoG-like", "minimally invasive", "cortex", "recording", "array"]
 draft: false
 ---
