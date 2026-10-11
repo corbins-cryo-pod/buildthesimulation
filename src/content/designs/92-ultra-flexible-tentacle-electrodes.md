@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["fiber"]
 origin: "Switzerland"
-tags: ["UFTE", "flexible", "polyimide", "ETH Zurich", "University of Zurich", "Switzerland", "Europe", "secondary", "preclinical"]
+tags: ["flexible", "polyimide"]
 draft: false
 ---
 
