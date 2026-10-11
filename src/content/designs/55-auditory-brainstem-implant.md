@@ -11,7 +11,7 @@ description: "A paddle electrode array placed on the cochlear nucleus of the bra
 modality: "Other"
 successRank: 55
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6438789/"
-tags: ["auditory", "brainstem", "cochlear nucleus", "NF2", "Cochlear Corporation", "surface array", "academic", "human"]
+tags: ["auditory", "cochlear nucleus"]
 draft: false
 ---
 
