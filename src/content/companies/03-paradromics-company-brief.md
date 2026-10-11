@@ -2,8 +2,8 @@
 title: "Paradromics (company brief)"
 order: 3
 pubDate: 2026-02-02
-updatedDate: 2026-10-04
-lastVerified: 2026-10-04
+updatedDate: 2026-10-10
+lastVerified: 2026-10-10
 description: "Paradromics’ Connexus BCI: high-channel-count intracortical recording aimed at restoring speech and computer control, plus what’s known publicly about the company."
 region: "American"
 kind: "Company"
@@ -116,3 +116,4 @@ Paradromics looks like a classic “high‑bandwidth intracortical” bet:
 
 - *First human implant (Jun 17, 2026):* Paradromics and University of Michigan Health completed the first Connexus implant in the FDA-approved Connect-One early feasibility study. Source: <https://paradromics.com/news/paradromics-completes-first-human-brain-computer-interface-bci-implantation/>
 - *Speech (Sep 14, 2026):* the company reports the first participant used Connexus for real-time speech. Source: <https://paradromics.com/news/paradromics-achieves-real-time-speech-connexus-brain-computer-interface/>
+- *Durability (Oct 8, 2026, company press release):* Paradromics reports more than four years of stable neural recording and decoding in two sheep implanted with cortical modules described as representative of the electrode technology in the Connexus BCI. The release says spike signal-to-noise ratio stayed stable in both animals, no electrode-array migration was observed, and the animals remain healthy. A separate ongoing study of the full platform in six sheep shows stable spike SNR for nearly two years. This is preclinical, from two animals, and company-reported; no data tables were published in the release. Source: <https://paradromics.com/news/paradromics-demonstrates-four-years-of-stable-neural-recording-in-major-brain-computer-interface-durability-milestone/>
