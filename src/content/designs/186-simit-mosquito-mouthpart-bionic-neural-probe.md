@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["array"]
 origin: "China"
-tags: ["SIMIT", "flexible electrode", "polyimide", "transdural implantation", "tactile sensor", "China", "mouse", "preclinical", "primary source"]
+tags: ["SIMIT", "flexible", "polyimide", "mouse"]
 draft: false
 ---
 
