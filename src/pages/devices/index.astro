@@ -37,8 +37,7 @@ const photographedCount = normalized.filter(entry => entry.photo).length;
   subtitle="See the hardware. Explore neural interfaces and inspect their 3D models."
   description="Explore implanted neural interfaces through source-credited hardware photographs, searchable specification sheets, and 3D reference models."
 >
-  <section class="catalog-heading" aria-labelledby="device-catalog-title">
-    <h2 id="device-catalog-title">Device Catalog</h2>
+  <section class="catalog-heading">
     <h3><a href="/devices/models/">3D Model Finder</a></h3>
     {photographedCount > 0 && <p class="catalog-photo-note"><em>The interface, up close.</em> {photographedCount} pictured records, from implant assemblies to microscopic contacts. Images are not to a common scale.</p>}
   </section>
@@ -47,7 +46,6 @@ const photographedCount = normalized.filter(entry => entry.photo).length;
 
 <style>
   .catalog-heading { margin: 26px 0 18px; }
-  .catalog-heading h2 { font-size: var(--title-section); margin: 0 0 8px; }
   .catalog-heading h3 { font-size: var(--title-card); font-style: italic; margin: 0; }
   .catalog-heading a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; }
   .catalog-photo-note { max-width: 700px; margin: 18px 0 0; font-size: 16px; line-height: 1.55; color: var(--muted); }
