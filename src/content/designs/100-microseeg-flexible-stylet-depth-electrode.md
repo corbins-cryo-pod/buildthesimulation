@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "UC San Diego-led 2024 thin-film depth-electrode family: 32/64/128-contact variants, removable stylet, separate PEDOT human and PtNR primate configurations, and polymer/contact failure evidence."
 modality: "Intracortical"
 website: "https://www.nature.com/articles/s41467-023-43727-9"
+axis: ["deep-brain"]
+function: ["recording"]
+form: ["probe"]
+origin: "US"
 tags: ["µSEEG", "UC San Diego", "MGH", "depth electrode", "polyimide", "PEDOT:PSS", "PtNR", "research"]
 draft: false
 ---
