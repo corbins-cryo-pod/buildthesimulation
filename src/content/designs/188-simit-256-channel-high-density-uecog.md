@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "16 x 16 gold-on-polyimide micro-ECoG array with 850 micrometer sites at 1250 micrometer pitch, in a titanium-housed implant with four Intan chips. 203 days in a Labrador, then intraoperative and short-term human motor-imagery decoding at Huashan Hospital. SIMIT with NeuroXess."
 modality: "Cortical surface"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12677598/"
+axis: ["cortex"]
+function: ["recording"]
+form: ["array"]
+origin: "China"
 tags: ["SIMIT", "NeuroXess", "micro-ECoG", "polyimide", "motor decoding", "Huashan Hospital", "China", "human", "primary source"]
 draft: false
 ---
