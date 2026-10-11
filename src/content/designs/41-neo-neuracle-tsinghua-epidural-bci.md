@@ -11,6 +11,11 @@ description: "A battery-free epidural ECoG implant for hand function in cervical
 modality: "Cortical surface"
 successRank: 41
 website: "https://www.tsinghua.edu.cn/en/info/1420/12707.htm"
+axis: ["cortex"]
+function: ["recording"]
+form: ["array"]
+regulatory: "nmpa-approved"
+origin: "China"
 tags: ["NEO", "Neuracle", "Tsinghua", "epidural", "ECoG", "wireless", "spinal cord injury", "China", "market approval", "human"]
 draft: false
 ---

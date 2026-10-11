@@ -10,6 +10,9 @@ last_updated: 2026-10-07
 description: "6,144-site silicon probe with 5 x 5 µm TiN contacts at 6 µm pitch and 384 simultaneous channels. Dense sampling trades recording span for waveform detail; channel selections and study results are kept separate."
 modality: "Intracortical"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12981004/"
+axis: ["cortex"]
+function: ["recording"]
+form: ["probe"]
 tags: ["Neuropixels Ultra", "intracortical", "recording", "silicon", "TiN", "University of Washington", "Allen Institute", "imec", "academic", "preclinical"]
 draft: false
 ---

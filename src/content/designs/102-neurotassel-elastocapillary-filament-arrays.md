@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "China-secondary coverage: 2019 polyimide filaments self-assembled in dissolvable PEG; 16-channel chronic mouse evidence is separate from 128-1,024-channel fabrication and preliminary recording claims."
 modality: "Intracortical"
 website: "https://www.science.org/doi/10.1126/sciadv.aav2842"
+axis: ["cortex"]
+function: ["recording"]
+form: ["fiber"]
+origin: "China"
 tags: ["Neurotassel", "polyimide", "PEG", "elastocapillary", "China", "secondary", "preclinical"]
 draft: false
 ---

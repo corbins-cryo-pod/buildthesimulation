@@ -11,6 +11,10 @@ description: "A subdural grid of flat disk electrodes made by PMT, wired through
 modality: "Cortical surface"
 successRank: 63
 website: "https://www.nejm.org/doi/full/10.1056/NEJMoa2027540"
+axis: ["cortex"]
+function: ["recording"]
+form: ["array"]
+regulatory: "investigational"
 tags: ["ECoG", "subdural", "percutaneous connector", "PMT", "Blackrock", "speech", "academic", "human"]
 draft: false
 ---

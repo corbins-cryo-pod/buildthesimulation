@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "Rice-led semiconductor-coated ME laminates for millisecond-timed peripheral stimulation. Schottky and p-Si/ZnO variants, low fabrication yield, short encapsulation life and external trigger hardware remain explicit."
 modality: "Other"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10972531/"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+form: ["other"]
+origin: "US"
 tags: ["MNM", "magnetoelectric", "Rice", "PZT", "ZnO", "peripheral nerve", "stimulation", "preclinical"]
 draft: false
 ---

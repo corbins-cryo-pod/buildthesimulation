@@ -10,6 +10,9 @@ last_updated: 2026-10-07
 description: "45 mm silicon shank with 4,416 selectable sites and 384 simultaneous channels, engineered for acute recordings in nonhuman primates. Reticle stitching, stress compensation and insertion geometry are part of the hardware."
 modality: "Intracortical"
 website: "https://www.nature.com/articles/s41593-025-01976-5"
+axis: ["cortex"]
+function: ["recording"]
+form: ["probe"]
 tags: ["Neuropixels", "NHP", "intracortical", "recording", "silicon", "macaque", "imec", "academic", "preclinical"]
 draft: false
 ---

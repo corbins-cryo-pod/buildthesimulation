@@ -11,6 +11,10 @@ description: "The first multielectrode microprobe made with integrated-circuit f
 modality: "Intracortical"
 successRank: 35
 website: "https://escholarship.org/uc/item/5374x0rj"
+axis: ["cortex"]
+function: ["recording"]
+form: ["probe"]
+origin: "US"
 tags: ["silicon probe", "microfabrication", "historical", "photolithography", "Michigan", "Wise", "academic", "research"]
 draft: false
 ---

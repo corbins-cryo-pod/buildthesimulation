@@ -11,6 +11,9 @@ description: "A miniaturized silicon probe with more than 5,000 sites for chroni
 modality: "Intracortical"
 successRank: 36
 website: "https://www.science.org/doi/10.1126/science.abf4588"
+axis: ["cortex"]
+function: ["recording"]
+form: ["probe"]
 tags: ["Neuropixels", "silicon probe", "high density", "chronic", "freely moving", "research tool", "academic"]
 draft: true
 ---

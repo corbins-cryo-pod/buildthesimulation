@@ -10,6 +10,9 @@ last_updated: 2026-10-07
 description: "Injected Fe3O4-CoFe2O4-BaTiO3 nanodiscs mediate magnetic neuromodulation in mice. No ASIC, lead, recording uplink or stimulation transgene; optical verification uses a separate reporter."
 modality: "Other"
 website: "https://www.nature.com/articles/s41565-024-01798-9"
+axis: ["other"]
+function: ["stimulation"]
+form: ["other"]
 tags: ["MEND", "nanodiscs", "magnetoelectric", "MIT", "neuromodulation", "preclinical"]
 draft: false
 ---

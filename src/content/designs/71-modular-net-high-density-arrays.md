@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "128-channel, eight-shank NET modules assembled into distributed rodent cortical arrays. The 2022 paper shows 1,024- and 1,280-channel placements, thousands of sorted units and module follow-up to 290 days."
 modality: "Intracortical"
 website: "https://www.nature.com/articles/s41551-022-00941-y"
+axis: ["cortex"]
+function: ["recording"]
+form: ["fiber"]
+origin: "US"
 tags: ["NET", "ultraflexible", "modular", "Rice", "UCSF", "high density", "cortex", "rodent", "academic", "preclinical"]
 draft: false
 ---

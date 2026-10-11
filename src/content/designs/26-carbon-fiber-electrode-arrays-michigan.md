@@ -11,6 +11,10 @@ description: "Michigan carbon-fiber arrays: 2015 PEG or silicon-assisted cortica
 modality: "Intracortical"
 successRank: 26
 website: "https://iopscience.iop.org/article/10.1088/1741-2560/12/4/046009"
+axis: ["cortex"]
+function: ["recording"]
+form: ["fiber", "array"]
+origin: "US"
 tags: ["carbon fiber", "intracortical", "single-unit", "small footprint", "Michigan", "Chestek", "academic", "preclinical"]
 draft: false
 ---

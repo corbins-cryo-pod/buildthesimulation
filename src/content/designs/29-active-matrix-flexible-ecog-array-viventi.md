@@ -11,6 +11,10 @@ description: "Flexible, foldable cortical-surface array with a transistor at eac
 modality: "Cortical surface"
 successRank: 29
 website: "https://www.nature.com/articles/nn.2973"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film", "array"]
+origin: "US"
 tags: ["ECoG", "active matrix", "silicon nanomembrane", "multiplexed", "flexible", "UPenn", "Rogers", "Litt", "academic", "research"]
 draft: false
 ---

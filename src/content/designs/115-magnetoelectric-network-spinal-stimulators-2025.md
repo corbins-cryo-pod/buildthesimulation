@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "2025 network's spinal configuration: roughly 1-cm³ wireless battery-free IPGs, one electrode pair per node, six bench devices and up to four in acute pigs. LED/power/pacing demonstrations are not merged into that cohort."
 modality: "Other"
 website: "https://www.nature.com/articles/s41551-025-01489-3"
+axis: ["spinal-cord"]
+function: ["stimulation"]
+form: ["other"]
+origin: "US"
 tags: ["magnetoelectric", "network", "spinal cord", "Rice", "Houston Methodist", "stimulation", "preclinical"]
 draft: false
 ---

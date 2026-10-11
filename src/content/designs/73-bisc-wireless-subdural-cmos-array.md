@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "A 50 µm-thick wireless cortical chip with 65,536 physical electrodes and a selectable subset of up to 1,024 simultaneous channels. Published pig and non-human-primate recordings, December 2025."
 modality: "Cortical surface"
 website: "https://www.nature.com/articles/s41928-025-01509-9"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film", "array"]
+origin: "US"
 tags: ["BISC", "CMOS", "wireless", "subdural", "ECoG", "Columbia", "Shepard", "high density", "academic", "preclinical"]
 draft: false
 ---

@@ -11,6 +11,10 @@ description: "A 2019 preprint system with 64 individually inserted polyimide-pla
 modality: "Intracortical"
 successRank: 66
 website: "https://www.biorxiv.org/content/10.1101/578542v1.full"
+axis: ["cortex"]
+function: ["recording"]
+form: ["fiber"]
+origin: "US"
 tags: ["polymer threads", "robotic insertion", "UCSF", "Berkeley", "preprint", "academic", "preclinical"]
 draft: false
 ---

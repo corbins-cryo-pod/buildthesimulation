@@ -11,6 +11,10 @@ description: "Silicon penetrating arrays with 400 µm electrode pitch. Separates
 modality: "Intracortical"
 successRank: 2
 website: "https://blackrockneurotech.com/products/utah-array/"
+axis: ["cortex"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["array", "microelectrode"]
+origin: "US"
 tags: ["BCI", "intracortical", "Utah array", "UEA", "NeuroPort", "silicon", "recording", "stimulation", "human"]
 draft: false
 ---

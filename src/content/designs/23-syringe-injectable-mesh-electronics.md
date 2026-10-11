@@ -11,6 +11,10 @@ description: "Sub-micrometre-thick, centimetre-scale mesh electronics that unfol
 modality: "Intracortical"
 successRank: 23
 website: "https://www.nature.com/articles/nnano.2015.115"
+axis: ["cortex"]
+function: ["recording"]
+form: ["other"]
+origin: "US"
 tags: ["mesh electronics", "injectable", "flexible", "Lieber", "Harvard", "chronic", "academic", "preclinical"]
 draft: false
 ---

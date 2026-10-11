@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "Official 2026 prototype report: 1,536-channel four-shank NXT, planned NP3.0 name, up to 912 channels mapped to one shank. Access and 2027 sale are forecasts, not completed deliveries."
 modality: "Intracortical"
 website: "https://www.neuropixelscentral.org/technology"
+axis: ["cortex"]
+function: ["recording"]
+form: ["probe"]
+origin: "US"
 tags: ["Neuropixels", "NXT", "NP3.0", "prototype", "JHU", "imec", "preclinical"]
 draft: false
 ---

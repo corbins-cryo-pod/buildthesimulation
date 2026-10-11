@@ -10,6 +10,9 @@ last_updated: 2026-10-07
 description: "Four-shank, 1,536-channel Neuropixels 2.0 Quad Base: 5,120 TiN sites, larger base/headstage and July 2026 mouse preprint evidence. Not standard 384-channel 2.0 or NXT/NP 3.0."
 modality: "Intracortical"
 website: "https://www.neuropixelscentral.org/technology"
+axis: ["cortex"]
+function: ["recording"]
+form: ["probe"]
 tags: ["Neuropixels", "Quad Base", "silicon", "TiN", "JHU", "Janelia", "imec", "preclinical", "preprint"]
 draft: false
 ---

@@ -11,6 +11,10 @@ description: "Wireless pressure and temperature sensors built from silicon that 
 modality: "Other"
 successRank: 31
 website: "https://www.nature.com/articles/nature16492"
+axis: ["other"]
+function: ["recording"]
+form: ["other"]
+origin: "US"
 tags: ["bioresorbable", "transient electronics", "intracranial pressure", "temperature", "wireless", "Rogers", "academic", "preclinical"]
 draft: false
 ---

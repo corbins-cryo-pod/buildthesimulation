@@ -10,6 +10,9 @@ last_updated: 2026-10-07
 description: "A modular wire-to-chip interface with 135-251-wire mouse bundles, a 138-wire retina experiment and separate 8,640-wire connectivity demonstration. Chip pixels, readout capacity and implanted wires stay distinct."
 modality: "Intracortical"
 website: "https://www.science.org/doi/10.1126/sciadv.aay2789"
+axis: ["cortex"]
+function: ["recording"]
+form: ["microwire"]
 tags: ["microwire", "CMOS", "Stanford", "PtIr", "retina", "mouse", "modular", "preclinical"]
 draft: false
 ---

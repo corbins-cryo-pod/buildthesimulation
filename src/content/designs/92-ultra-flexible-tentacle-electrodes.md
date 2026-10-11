@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "Swiss secondary coverage: 256 contacts on independent polyimide fibers in four bundles. Mechanical loop tethering separates shuttle removal from glue dissolution; the separate 512-channel logger stores data on SD rather than transmitting it."
 modality: "Intracortical"
 website: "https://www.nature.com/articles/s41467-024-49226-9"
+axis: ["cortex"]
+function: ["recording"]
+form: ["fiber"]
+origin: "Switzerland"
 tags: ["UFTE", "flexible", "polyimide", "ETH Zurich", "University of Zurich", "Switzerland", "Europe", "secondary", "preclinical"]
 draft: false
 ---

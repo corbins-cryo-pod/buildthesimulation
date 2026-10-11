@@ -11,6 +11,10 @@ description: "Ultrasonic recording mote: primary 2016 assemblies about 0.8 × 3 
 modality: "Peripheral nerve"
 successRank: 22
 website: "https://www.cell.com/neuron/fulltext/S0896-6273%2816%2930344-0"
+axis: ["peripheral-nerve"]
+function: ["recording"]
+form: ["other"]
+origin: "US"
 tags: ["wireless", "ultrasound", "backscatter", "battery-free", "peripheral nerve", "EMG", "ENG", "Berkeley", "academic", "preclinical"]
 draft: false
 ---

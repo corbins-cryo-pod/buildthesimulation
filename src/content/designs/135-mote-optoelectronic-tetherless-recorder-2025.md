@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "Subnanolitre electrical recorder with AlGaAs optical power and PPM uplink. Mouse evidence uses a cranial window and head fixation; day-365 LFP is weakened and averaged."
 website: "https://www.nature.com/articles/s41928-025-01484-1"
 modality: "Other"
+axis: ["cortex"]
+function: ["recording"]
+form: ["other"]
+origin: "US"
 tags: ["MOTE", "Cornell", "optical", "wireless", "recording", "preclinical"]
 draft: false
 ---

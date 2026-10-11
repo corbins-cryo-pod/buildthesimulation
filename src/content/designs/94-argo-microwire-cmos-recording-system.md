@@ -10,6 +10,9 @@ last_updated: 2026-10-07
 description: "Paradromics/Caeleste's 2021 acute research system: a 65,536-pixel CMOS readout bonded to disordered PtIr wires, with 1,300-wire rat spiking and over 30,000 connected sheep surface channels kept separate."
 modality: "Other"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8607496/"
+axis: ["cortex"]
+function: ["recording"]
+form: ["microwire"]
 tags: ["Argo", "Paradromics", "Caeleste", "microwire", "CMOS", "PtIr", "rat", "sheep", "preclinical"]
 draft: false
 ---

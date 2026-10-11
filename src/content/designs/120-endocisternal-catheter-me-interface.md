@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "Catheter electrodes navigated through cerebrospinal-fluid spaces, coupled to magnetoelectric bioelectronics. Full 2023 preprint specifications are separated from the 2024 published abstract and supplement."
 modality: "Other"
 website: "https://www.nature.com/articles/s41551-024-01281-9"
+axis: ["other"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["other"]
+origin: "US"
 tags: ["endocisternal", "Rice", "UTMB", "CSF", "catheter", "magnetoelectric", "stimulation", "recording", "preclinical"]
 draft: false
 ---

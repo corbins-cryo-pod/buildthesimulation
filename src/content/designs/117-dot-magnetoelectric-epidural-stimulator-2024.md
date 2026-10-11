@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "Published 9 × 9 × 11-mm glass-packaged, battery-free DOT cortical stimulator. Voltage-controlled proof of concept with diagnostic backscatter, two acute human studies and separate chronic pig evidence."
 modality: "Other"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11014439/"
+axis: ["cortex"]
+function: ["stimulation"]
+form: ["other"]
+origin: "US"
 tags: ["DOT", "Rice", "Motif", "magnetoelectric", "epidural", "stimulation", "glass", "human", "research"]
 draft: false
 ---

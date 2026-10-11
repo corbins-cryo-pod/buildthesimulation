@@ -11,6 +11,9 @@ description: "Neuralink's visual prosthesis, which would stimulate visual cortex
 modality: "Intracortical"
 successRank: 43
 website: "https://neuralink.com/updates/neuralink-receives-breakthrough-device-designation-for-blindsight/"
+axis: ["cortex"]
+function: ["stimulation"]
+origin: "US"
 tags: ["Neuralink", "Blindsight", "visual prosthesis", "visual cortex", "breakthrough device", "company", "preclinical"]
 draft: false
 ---

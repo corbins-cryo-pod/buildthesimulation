@@ -11,6 +11,10 @@ description: "A 16-site graphene surface array that combines electrical recordin
 modality: "Cortical surface"
 successRank: 68
 website: "https://www.nature.com/articles/ncomms6258"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film", "array"]
+origin: "US"
 tags: ["graphene", "transparent", "micro-ECoG", "optogenetics", "Wisconsin", "academic", "preclinical"]
 draft: false
 ---

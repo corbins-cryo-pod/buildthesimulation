@@ -11,6 +11,11 @@ description: "An extraneural cuff electrode that intentionally flattens/reshapes
 modality: "Peripheral nerve"
 successRank: 8
 website: "https://pubmed.ncbi.nlm.nih.gov/12611367/"
+axis: ["peripheral-nerve"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["cuff"]
+regulatory: "investigational"
+origin: "US"
 tags: ["PNI", "cuff", "FINE", "flat interface", "selective stimulation", "extraneural", "peripheral nerve", "recording", "stimulation", "bidirectional"]
 draft: false
 ---

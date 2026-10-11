@@ -11,6 +11,10 @@ description: "A muscle-mediated peripheral nerve interface (RPNI) used as a biol
 modality: "Peripheral nerve"
 successRank: 16
 website: "https://pubmed.ncbi.nlm.nih.gov/37023743/"
+axis: ["peripheral-nerve"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["regenerative"]
+origin: "US"
 tags: ["PNI", "RPNI", "biohybrid", "EMG", "amputation", "prosthetic control", "neuroma prevention", "peripheral nerve", "recording", "stimulation", "bidirectional", "regenerative"]
 draft: false
 ---

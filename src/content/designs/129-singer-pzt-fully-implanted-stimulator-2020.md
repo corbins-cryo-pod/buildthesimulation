@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "Two PZT/Metglas films, discrete rectifiers and a bias magnet in a 175-mm³ package drive rat MFB place preference. Acute behavioral evidence is separate from the PVDF Parkinson headstage."
 modality: "Other"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7818389/"
+axis: ["deep-brain"]
+function: ["stimulation"]
+form: ["other"]
+origin: "US"
 tags: ["magnetoelectric", "Rice", "two-film", "stimulation", "preclinical"]
 draft: false
 ---

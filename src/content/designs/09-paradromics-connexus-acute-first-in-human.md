@@ -11,6 +11,11 @@ description: "Paradromics’ 421-electrode intracortical module, with a source-d
 modality: "Intracortical"
 successRank: 15
 website: "https://paradromics.com/connexus/"
+axis: ["cortex"]
+function: ["recording"]
+form: ["microwire", "array"]
+regulatory: "investigational"
+origin: "US"
 tags: ["BCI", "intracortical", "Paradromics", "Connexus", "microwire", "speech restoration", "cortex", "recording", "array"]
 draft: false
 ---

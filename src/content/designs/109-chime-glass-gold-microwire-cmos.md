@@ -10,6 +10,9 @@ last_updated: 2026-10-07
 description: "CHIME's glass-insulated gold wires and electroplated contacts coupled to MEA1k or camera-derived CMOS. Demonstrated bundles and connected pixels are separate from327,680 amplifier capacity; chronic validation remains open."
 modality: "Intracortical"
 website: "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2020.00834/full"
+axis: ["cortex"]
+function: ["recording"]
+form: ["microwire"]
 tags: ["CHIME", "microwire", "gold", "glass", "CMOS", "Crick", "Stanford", "European-secondary", "preclinical"]
 draft: false
 ---

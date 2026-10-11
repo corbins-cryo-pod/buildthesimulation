@@ -11,6 +11,10 @@ description: "A chronically implanted macro-sieve electrode with large transit z
 modality: "Peripheral nerve"
 successRank: 18
 website: "https://pubmed.ncbi.nlm.nih.gov/28008303/"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+form: ["regenerative"]
+origin: "US"
 tags: ["PNI", "regenerative", "macro-sieve", "transit zones", "preclinical", "stimulation", "nerve transection", "peripheral nerve"]
 draft: false
 ---

@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "Parylene C probe with 16 recording contacts and two electrically actuated chemical-release sites. Acute rat proof of concept, with finite drug loading, stimulation artifacts and chronic-use work still open."
 modality: "Intracortical"
 website: "https://www.nature.com/articles/s41378-024-00685-6"
+axis: ["cortex"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["probe"]
+origin: "US"
 tags: ["intracortical", "cortex", "recording", "chemical modulation", "Parylene C", "PEDOT", "Carnegie Mellon", "University of Pittsburgh", "academic", "preclinical"]
 draft: false
 ---

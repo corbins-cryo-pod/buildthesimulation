@@ -10,6 +10,9 @@ last_updated: 2026-10-07
 description: "Capillary-assembled suspended pads connect flexible neural arrays to a CMOS-MEA. Published 720/2,200-connection layouts, 1,024 simultaneous chip channels and acute 504-site ECoG use are kept distinct."
 modality: "Cortical surface"
 website: "https://www.science.org/doi/10.1126/sciadv.adf9524"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film", "array"]
 tags: ["Flex2Chip", "ECoG", "CMOS", "flexible", "Stanford", "ETH", "connector", "preclinical"]
 draft: false
 ---
