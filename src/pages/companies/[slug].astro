@@ -21,7 +21,7 @@ const brief = getCompanyBrief(entry, remarkPluginFrontmatter.briefFormatting, he
 const title = cleanCompanyTitle(entry.data.title);
 ---
 
-<Layout pageTitle={`${title} · ${entry.data.kind === "Lab" ? "Lab" : "Company"} brief`} description={entry.data.description} compactHeader wide>
+<Layout pageTitle={`${title} · ${entry.data.kind === "Lab" ? "Lab" : "Company"} brief`} description={entry.data.description} compactHeader>
   <div id="top-of-brief">
     <CompanyBrief entry={entry} brief={brief} headings={headings} apps={apps} devices={devices}><Content /></CompanyBrief>
   </div>

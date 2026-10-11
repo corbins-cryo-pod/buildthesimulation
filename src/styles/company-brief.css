@@ -18,7 +18,7 @@ html[data-theme="dark"] .company-brief {
 .company-brief :is([id], h2) { scroll-margin-top: 28px; }
 .company-brief :is(a, summary) { transition: color .16s, background .16s, border-color .16s; }
 .company-brief a:hover { color: var(--brief-accent); }
-main.wrap-wide:has(.company-brief) { max-width: none; padding: 28px clamp(18px, 3vw, 56px) 36px; }
+main.wrap:has(.company-brief) { padding: 28px 24px 36px; }
 .brief-edition {
   display: flex;
   justify-content: space-between;
@@ -129,6 +129,7 @@ main.wrap-wide:has(.company-brief) { max-width: none; padding: 28px clamp(18px, 
   .brief-rail-atlas { display: none; }
 }
 @media (max-width: 680px) {
+  main.wrap:has(.company-brief) { padding: 24px 18px 32px; }
   .brief-edition { font-size: 12px; gap: 10px; }
   .brief-edition span span, .brief-edition a span { margin: 0 3px; }
   .brief-cover-grid { grid-template-columns: minmax(0, 1fr); padding: 20px 0; gap: 20px; }
