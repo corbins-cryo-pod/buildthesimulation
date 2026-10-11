@@ -14,7 +14,7 @@ axis: ["deep-brain"]
 function: ["recording"]
 form: ["probe"]
 origin: "China"
-tags: ["AIR-CAS", "Cai Xinxia", "MultiTransm", "dopamine", "dual-mode", "silicon MEMS", "nucleus accumbens", "China", "mouse", "preclinical", "primary source"]
+tags: ["dopamine", "mouse"]
 draft: false
 ---
 
