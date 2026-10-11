@@ -14,7 +14,7 @@ axis: ["spinal-cord", "cortex"]
 function: ["recording", "stimulation", "bidirectional"]
 regulatory: "investigational"
 origin: "China"
-tags: ["brain-spine interface", "Fudan", "Shenfu Jianxing", "spinal cord stimulation", "paraplegia", "China", "human"]
+tags: ["Fudan", "spinal cord stimulation"]
 draft: false
 ---
 
