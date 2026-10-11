@@ -4,7 +4,7 @@ order: 38
 pubDate: 2026-10-06
 updatedDate: 2026-10-06
 device_id: "BTSD-ACAD-0017"
-interface_class: "other"
+interface_class: "retinal"
 status: "human"
 last_updated: 2026-10-06
 description: "An epiretinal implant that sends camera-derived stimulation to a platinum electrode array tacked over the fovea. FDA humanitarian device approval in 2013; discontinued by its maker in 2019, leaving more than 350 users with an unsupported implant."
