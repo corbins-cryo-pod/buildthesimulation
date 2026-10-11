@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["film", "array"]
 origin: "China"
-tags: ["Tsinghua", "NeuroCam", "thin-film transistor", "multiplexed ECoG", "epilepsy", "China", "preclinical", "institutional source"]
+tags: ["Tsinghua", "epilepsy"]
 draft: false
 ---
 
