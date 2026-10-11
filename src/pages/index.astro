@@ -9,7 +9,7 @@ const [companies, devices, applications] = await Promise.all([
 const count = entries => entries.filter(entry => !entry.data.draft).length;
 const routes = [
   {name: "Devices", href: "/devices/", kicker: "Hardware", desc: "Specifications, photographs and 3D references.", number: "01"},
-  {name: "Companies & labs", href: "/companies/", kicker: "BCI Atlas", desc: "Who's developing what, where, and at what stage.", number: "02"},
+  {name: "Companies & labs", href: "/companies/", kicker: "Directory", desc: "Who's developing what, where, and at what stage.", number: "02"},
   {name: "Applications", href: "/applications/", kicker: "Evidence", desc: "Studies, clinical programs and demonstrated uses.", number: "03"},
   {name: "Simulations & tools", href: "/simulations/", kicker: "Explore", desc: "Run experiments or design neural interfaces.", number: "04"},
 ];
@@ -23,15 +23,11 @@ const topics = [
   {label: "3D models", href: "/devices/models/"},
 ];
 ---
-<Layout compactHeader={true} description="Find neural interface devices, companies, studies, technical specifications and interactive neuroengineering tools.">
-  <section class="home-intro" aria-labelledby="home-heading">
-    <p class="eyebrow">An open neurotechnology reference</p>
-    <h1 id="home-heading">Explore neural interfaces.</h1>
-    <p class="intro">Find devices, companies and research. Inspect hardware and experiment with simulations.</p>
+<Layout compactHeader={false} description="Find neural interface devices, companies, studies, technical specifications and interactive neuroengineering tools.">
+  <section class="home-intro" aria-label="Search neural interface information">
     <button class="hero-search" type="button" data-discovery-trigger aria-haspopup="dialog" aria-label="Search the entire site">
       <span class="search-lens" aria-hidden="true">⌕</span>
       <span>Search devices, companies, technologies, studies…</span>
-      <kbd>⌘ K</kbd>
     </button>
     <div class="try-search" aria-label="Example searches">
       <span>Try</span>
@@ -44,8 +40,7 @@ const topics = [
 
   <section class="home-paths" aria-labelledby="home-paths-title">
     <div class="section-head">
-      <h2 id="home-paths-title">Find your starting point</h2>
-      <p>Choose a collection or search everything above.</p>
+      <h2 id="home-paths-title">Start Here</h2>
     </div>
     <div class="route-grid">
       {routes.map(route => (
