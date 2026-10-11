@@ -16,7 +16,7 @@ function: ["recording"]
 form: ["film", "microelectrode"]
 regulatory: "investigational"
 origin: "US"
-tags: ["BCI", "intracortical", "penetrating", "Neuralink", "wireless", "robotic surgery", "cortex", "recording", "microelectrode", "flexible threads"]
+tags: ["intracortical", "Neuralink", "wireless"]
 draft: false
 ---
 
