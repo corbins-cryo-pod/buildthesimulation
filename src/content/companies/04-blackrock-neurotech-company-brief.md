@@ -56,7 +56,7 @@ Fernández and colleagues demonstrated visual percepts using a *96-channel intra
 
 ## Company and direction
 
-*Marcus Gerhardt* is CEO. Blackrock is privately held and based in *Salt Lake City, Utah*. Its LinkedIn page shows *190 associated employee profiles* in the October review. <sup><a href="#source-11" aria-label="Source 11: Blackrock leadership">11</a></sup> <sup><a href="#source-02" aria-label="Source 02: Blackrock company profile">02</a></sup>
+*Marcus Gerhardt* is CEO. Blackrock is privately held and based in *Salt Lake City, Utah*. Its LinkedIn page lists *190 associated employee profiles*. <sup><a href="#source-11" aria-label="Source 11: Blackrock leadership">11</a></sup> <sup><a href="#source-02" aria-label="Source 02: Blackrock company profile">02</a></sup>
 
 *Tether invested $200 million in April 2024* and became the majority stakeholder. Revenue is not publicly disclosed. <sup><a href="#source-09" aria-label="Source 09: Tether investment announcement">09</a></sup>
 

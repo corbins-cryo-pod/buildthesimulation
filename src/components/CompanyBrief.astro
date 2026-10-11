@@ -51,13 +51,6 @@ const cleanTitle = (title) => title.replace(/^\d+\s*[-—]\s*/, '');
     </div>
 
     <aside class="brief-marginalia" aria-label="Interface and related reading">
-      <dl class="brief-signals" aria-label="Key figures">
-        {brief.signals.map(signal => <div>
-          <dt>{signal.label}</dt>
-          <dd>{signal.value} <sup><a href={`#source-${signal.source}`} aria-label={`Source ${signal.source}: ${signal.label}`}>{signal.source}</a></sup></dd>
-          <span>{signal.context}</span>
-        </div>)}
-      </dl>
       {photo && <figure class="brief-interface">
         <div class="brief-small-label">The physical interface</div>
         <a class="brief-photo" href={photo.src} target="_blank" rel="noopener noreferrer" aria-label={`Enlarge the image of ${brief.deviceName}`}>
@@ -106,11 +99,6 @@ const cleanTitle = (title) => title.replace(/^\d+\s*[-—]\s*/, '');
   </section>
 
   <footer class="brief-colophon">
-    <a href={`/companies/${brief.counterpart.slug}/`} class="brief-next">
-      <span class="brief-small-label">Another perspective</span>
-      <span class="brief-next-name">{brief.counterpart.name} <span aria-hidden="true">↗</span></span>
-      <span class="brief-next-label">{brief.counterpart.label}</span>
-    </a>
     <a class="brief-back-top" href="#top-of-brief">Back to the beginning <span aria-hidden="true">↑</span></a>
   </footer>
 </article>

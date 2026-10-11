@@ -76,11 +76,6 @@ main.wrap-wide:has(.company-brief) { max-width: none; padding: 28px clamp(18px, 
 .brief-prose blockquote { margin: 24px 0; padding: 18px 0 18px 20px; border-left: 1px solid var(--brief-rule); color: var(--muted); font-style: italic; font-size: 18px; }
 .brief-prose blockquote p:last-child { margin-bottom: 0; }
 .brief-marginalia { min-width: 0; padding-left: 22px; border-left: 1px solid var(--brief-rule); }
-.brief-signals { margin-bottom: 25px !important; }
-.brief-signals > div { padding: 0 0 11px; margin-bottom: 11px; border-bottom: 1px solid var(--border); }
-.brief-signals dt { color: var(--brief-accent); font-size: 14px; font-style: italic; }
-.brief-signals dd { font: 400 32px/1.15 var(--font-heading); margin: 3px 0; }
-.brief-signals > div > span { display: block; color: var(--muted); font-size: 12px; line-height: 1.4; }
 .brief-interface .brief-small-label { display: block; margin-bottom: 13px; }
 .brief-photo { display: block; padding: 9px; background: #f7f6f2; border: 1px solid var(--brief-rule); color: #51452f; text-decoration: none; }
 .brief-photo img { display: block; width: 100%; height: auto; }
@@ -114,12 +109,7 @@ main.wrap-wide:has(.company-brief) { max-width: none; padding: 28px clamp(18px, 
 .brief-source-note { font-size: 14px; line-height: 1.45; color: var(--muted); margin-top: 9px !important; }
 .brief-source-actions { display: flex; flex-wrap: wrap; gap: 18px; font-size: 12px; font-style: italic; margin-top: 12px; }
 .brief-source-actions a { text-decoration: none; border-bottom: 1px solid var(--brief-rule); padding: 3px 0; }
-.brief-colophon { display: flex; justify-content: space-between; align-items: end; gap: 28px; padding: 30px 0 10px; }
-.brief-next { text-decoration: none; }
-.brief-next :is(.brief-small-label, .brief-next-name, .brief-next-label) { display: block; }
-.brief-next-name { font: 400 39px/1.1 var(--font-heading); margin: 7px 0; }
-.brief-next-name > span { font-size: 23px; color: var(--brief-accent); }
-.brief-next-label { color: var(--muted); font-size: 16px; font-style: italic; }
+.brief-colophon { text-align: right; padding: 20px 0 10px; }
 .brief-back-top { font-size: 14px; font-style: italic; text-decoration: none; white-space: nowrap; }
 @media (max-width: 1000px) {
   .brief-cover-grid { grid-template-columns: minmax(0, 1fr) 270px; }
@@ -154,8 +144,7 @@ main.wrap-wide:has(.company-brief) { max-width: none; padding: 28px clamp(18px, 
   .brief-source-heading > p { justify-self: start; font-size: 15px; margin-top: 4px; }
   .brief-source-heading h2 { font-size: 43px; }
   .brief-source-list { grid-template-columns: minmax(0, 1fr); }
-  .brief-colophon { flex-direction: column; align-items: start; }
-  .brief-next-name { font-size: 36px; }
+  .brief-colophon { text-align: left; }
 }
 @media (prefers-reduced-motion: reduce) {
   .company-brief :is(a, summary) { transition: none; }

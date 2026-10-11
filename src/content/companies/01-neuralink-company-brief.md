@@ -51,7 +51,7 @@ Neuralink’s 2026 goals include higher-volume production and greater surgical a
 
 ## Company and funding
 
-Neuralink now lists its headquarters in *Austin, Texas*, with operations also in Fremont and South San Francisco. Its LinkedIn page shows *705 associated employee profiles* in the October review. <sup><a href="#source-02" aria-label="Source 02: Neuralink company profile">02</a></sup> <sup><a href="#source-03" aria-label="Source 03: Neuralink locations">03</a></sup>
+Neuralink now lists its headquarters in *Austin, Texas*, with operations also in Fremont and South San Francisco. Its LinkedIn page lists *705 associated employee profiles*. <sup><a href="#source-02" aria-label="Source 02: Neuralink company profile">02</a></sup> <sup><a href="#source-03" aria-label="Source 03: Neuralink locations">03</a></sup>
 
 The privately held company does not disclose audited revenue. In June 2025 it raised *$650 million* in a Series E round at a reported *$9 billion* valuation. <sup><a href="#source-05" aria-label="Source 05: Series E funding report">05</a></sup>
 

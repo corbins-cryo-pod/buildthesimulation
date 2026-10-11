@@ -14,11 +14,6 @@ export const companyBriefs = {
     "deviceSlug": "01-utah-microelectrode-array",
     "deviceName": "Utah Microelectrode Array",
     "photoTitle": "A closer look at the interface",
-    "counterpart": {
-      "slug": "01-neuralink-company-brief",
-      "name": "Neuralink",
-      "label": "Flexible threads & surgical automation"
-    },
     "contents": {
       "the-technology": "The technology",
       "research-demonstrations": "Research demonstrations",
@@ -41,7 +36,7 @@ export const companyBriefs = {
         "type": "Public listing",
         "url": "https://www.linkedin.com/company/blackrock-neurotech",
         "section": "company-and-direction",
-        "note": "190 associated employee profiles at the October 11, 2026 review. Profile count is not payroll headcount."
+        "note": "LinkedIn-associated profiles, distinct from payroll headcount."
       },
       {
         "id": "03",
@@ -130,27 +125,7 @@ export const companyBriefs = {
         "section": "company-and-direction"
       }
     ],
-    "region": "North America",
-    "signals": [
-      {
-        "label": "Human implants",
-        "value": "56 people",
-        "context": "CEO interview · August 2026",
-        "source": "10"
-      },
-      {
-        "label": "Implant exposure",
-        "value": "55,000 days",
-        "context": "Patient-days · CEO interview, August 2026",
-        "source": "10"
-      },
-      {
-        "label": "LinkedIn team listings",
-        "value": "190 profiles",
-        "context": "Associated employee profiles · October 11, 2026",
-        "source": "02"
-      }
-    ]
+    "region": "North America"
   },
   "01-neuralink-company-brief": {
     "name": "Neuralink",
@@ -165,11 +140,6 @@ export const companyBriefs = {
     "deviceSlug": "02-neuralink-n1",
     "deviceName": "Neuralink N1",
     "photoTitle": "The thread architecture",
-    "counterpart": {
-      "slug": "04-blackrock-neurotech-company-brief",
-      "name": "Blackrock Neurotech",
-      "label": "Utah Array & the recording ecosystem"
-    },
     "contents": {
       "the-platform": "The platform",
       "clinical-progress": "Clinical progress",
@@ -193,7 +163,7 @@ export const companyBriefs = {
         "type": "Public listing",
         "url": "https://www.linkedin.com/company/neuralink",
         "section": "company-and-funding",
-        "note": "705 associated employee profiles and Austin headquarters at the October 11, 2026 review. Profile count is not payroll headcount."
+        "note": "LinkedIn-associated profiles, distinct from payroll headcount."
       },
       {
         "id": "03",
@@ -285,26 +255,6 @@ export const companyBriefs = {
         "section": "company-and-funding"
       }
     ],
-    "region": "North America",
-    "signals": [
-      {
-        "label": "People implanted",
-        "value": "27+",
-        "context": "Publicly documented · October 2026",
-        "source": "11"
-      },
-      {
-        "label": "Cursor control",
-        "value": "11.32 bits/s",
-        "context": "Neuralink result · October 1, 2026",
-        "source": "10"
-      },
-      {
-        "label": "LinkedIn team listings",
-        "value": "705 profiles",
-        "context": "Associated employee profiles · October 11, 2026",
-        "source": "02"
-      }
-    ]
+    "region": "North America"
   }
 };
