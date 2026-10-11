@@ -11,6 +11,10 @@ description: "Transparent graphene surface arrays up to 256 channels with 20 µm
 modality: "Cortical surface"
 successRank: 69
 website: "https://www.nature.com/articles/s41565-023-01576-z"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film", "array"]
+origin: "US"
 tags: ["graphene", "transparent", "high density", "calcium imaging", "UC San Diego", "academic", "preclinical"]
 draft: false
 ---
