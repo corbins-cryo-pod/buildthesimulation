@@ -13,7 +13,7 @@ website: "https://www.nature.com/articles/s41592-026-03076-z"
 axis: ["cortex"]
 function: ["recording", "stimulation", "bidirectional"]
 form: ["probe"]
-tags: ["cortex", "recording", "stimulation", "bidirectional", "microelectrode", "Neuropixels Opto", "photonics", "optogenetics", "Allen Institute", "UCL", "IMEC", "prototype"]
+tags: ["Neuropixels Opto", "photonics", "optogenetics", "Allen Institute", "UCL", "imec", "prototype"]
 draft: true
 ---
 
