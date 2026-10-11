@@ -10,6 +10,10 @@ last_updated: 2026-10-08
 description: "FDA-approved Boston Scientific spinal cord stimulation family (Spectra WaveWriter, WaveWriter Alpha, Alpha Prime), with the SOLIS trial for patients without prior back surgery. Lead contact counts and IPG dimensions are not in the FDA summary read."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf3/P030017S363B.pdf"
+axis: ["spinal-cord"]
+function: ["stimulation"]
+regulatory: "fda-approved"
+origin: "US"
 tags: ["spinal cord stimulation", "Boston Scientific", "WaveWriter", "SOLIS", "PMA", "FDA approved", "human"]
 draft: false
 ---
