@@ -14,7 +14,7 @@ axis: ["deep-brain"]
 function: ["recording"]
 form: ["probe"]
 origin: "US"
-tags: ["µSEEG", "UC San Diego", "MGH", "depth electrode", "polyimide", "PEDOT:PSS", "PtNR", "research"]
+tags: ["UC San Diego", "depth electrode", "polyimide", "PEDOT:PSS"]
 draft: false
 ---
 

@@ -15,7 +15,7 @@ axis: ["other"]
 function: ["recording"]
 form: ["other"]
 origin: "US"
-tags: ["bioresorbable", "transient electronics", "intracranial pressure", "temperature", "wireless", "Rogers", "academic", "preclinical"]
+tags: ["wireless", "Rogers"]
 draft: false
 ---
 

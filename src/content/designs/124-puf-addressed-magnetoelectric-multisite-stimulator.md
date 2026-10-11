@@ -14,7 +14,7 @@ axis: ["peripheral-nerve"]
 function: ["stimulation"]
 form: ["other"]
 origin: "US"
-tags: ["magnetoelectric", "PUF", "Rice", "CMOS", "multisite", "stimulation", "preclinical"]
+tags: ["magnetoelectric", "Rice", "CMOS"]
 draft: false
 ---
 

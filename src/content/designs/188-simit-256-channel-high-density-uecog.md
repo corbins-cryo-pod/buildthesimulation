@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["array"]
 origin: "China"
-tags: ["SIMIT", "NeuroXess", "micro-ECoG", "polyimide", "motor decoding", "Huashan Hospital", "China", "human", "primary source"]
+tags: ["SIMIT", "NeuroXess", "ECoG", "polyimide", "motor decoding"]
 draft: false
 ---
 

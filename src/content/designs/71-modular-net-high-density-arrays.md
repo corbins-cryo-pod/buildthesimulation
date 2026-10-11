@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["fiber"]
 origin: "US"
-tags: ["NET", "ultraflexible", "modular", "Rice", "UCSF", "high density", "cortex", "rodent", "academic", "preclinical"]
+tags: ["NET", "ultraflexible", "modular", "Rice", "UCSF", "high density"]
 draft: false
 ---
 

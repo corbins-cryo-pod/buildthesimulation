@@ -15,7 +15,7 @@ function: ["stimulation"]
 form: ["array"]
 regulatory: "fda-approved"
 origin: "Austria"
-tags: ["cochlear implant", "MED-EL", "SYNCHRONY 2", "hearing", "PMA", "FDA approved", "human"]
+tags: ["cochlear implant", "hearing", "PMA"]
 draft: false
 ---
 

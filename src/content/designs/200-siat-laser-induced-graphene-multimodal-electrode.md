@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["array"]
 origin: "China"
-tags: ["SIAT", "SIBS", "Lu Yi", "laser-induced graphene", "LIG", "closed loop", "epilepsy", "China", "preclinical", "institutional source"]
+tags: ["SIAT", "closed loop", "epilepsy"]
 draft: false
 ---
 

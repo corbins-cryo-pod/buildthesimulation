@@ -14,7 +14,7 @@ axis: ["peripheral-nerve"]
 function: ["stimulation"]
 form: ["cuff"]
 origin: "Slovenia"
-tags: ["spiral cuff", "peripheral nerve", "vagus", "ITIS", "platinum", "33 contacts", "stimulation", "research prototype"]
+tags: ["spiral cuff"]
 draft: false
 ---
 

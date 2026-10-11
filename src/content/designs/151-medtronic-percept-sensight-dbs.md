@@ -15,7 +15,7 @@ function: ["recording", "stimulation", "bidirectional"]
 form: ["probe"]
 regulatory: "fda-approved"
 origin: "US"
-tags: ["DBS", "Medtronic", "Percept", "SenSight", "BrainSense", "FDA approved", "directional lead", "sensing", "human"]
+tags: ["deep brain stimulation", "Medtronic", "directional lead"]
 draft: false
 ---
 

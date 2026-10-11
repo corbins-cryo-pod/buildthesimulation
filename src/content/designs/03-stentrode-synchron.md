@@ -16,7 +16,7 @@ function: ["recording"]
 form: ["stent", "array"]
 regulatory: "investigational"
 origin: "US"
-tags: ["BCI", "endovascular", "Stentrode", "Synchron", "ECoG-like", "minimally invasive", "cortex", "recording", "array"]
+tags: ["endovascular"]
 draft: false
 ---
 

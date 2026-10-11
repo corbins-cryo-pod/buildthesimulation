@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["film", "array"]
 origin: "China"
-tags: ["CIBR", "ICCAS", "hydrogel", "micro-ECoG", "1024-channel", "fibrosis", "China", "rat", "preclinical", "primary source"]
+tags: ["CIBR", "hydrogel", "ECoG", "rat"]
 draft: false
 ---
 

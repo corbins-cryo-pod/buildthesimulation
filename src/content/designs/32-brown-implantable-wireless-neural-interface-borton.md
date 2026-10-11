@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["array"]
 origin: "US"
-tags: ["wireless", "implantable", "hermetic", "transcutaneous charging", "Brown", "Nurmikko", "academic", "preclinical"]
+tags: ["wireless", "Brown", "Nurmikko"]
 draft: false
 ---
 

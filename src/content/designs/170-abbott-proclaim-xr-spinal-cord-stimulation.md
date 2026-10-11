@@ -14,7 +14,7 @@ axis: ["spinal-cord"]
 function: ["stimulation"]
 regulatory: "fda-approved"
 origin: "US"
-tags: ["spinal cord stimulation", "Abbott", "Proclaim", "Prodigy", "BurstDR", "PMA", "FDA approved", "human"]
+tags: ["spinal cord stimulation", "Abbott", "PMA"]
 draft: false
 ---
 

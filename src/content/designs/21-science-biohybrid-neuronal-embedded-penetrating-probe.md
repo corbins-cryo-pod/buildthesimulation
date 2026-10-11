@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording", "stimulation", "bidirectional"]
 form: ["other"]
 origin: "US"
-tags: ["biohybrid", "concept", "optogenetics", "Science Corporation", "cortex", "recording", "stimulation", "bidirectional"]
+tags: ["biohybrid", "optogenetics", "Science Corporation"]
 draft: false
 ---
 

@@ -14,7 +14,7 @@ website: "https://www.science.org/doi/10.1126/science.1260318"
 axis: ["spinal-cord", "cortex"]
 form: ["film"]
 origin: "Switzerland"
-tags: ["soft implant", "silicone", "stretchable", "spinal cord", "chemotrode", "EPFL", "Europe", "preclinical"]
+tags: ["stretchable"]
 draft: false
 ---
 

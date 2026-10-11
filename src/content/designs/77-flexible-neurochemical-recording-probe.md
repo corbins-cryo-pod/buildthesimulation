@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording", "stimulation", "bidirectional"]
 form: ["probe"]
 origin: "US"
-tags: ["intracortical", "cortex", "recording", "chemical modulation", "Parylene C", "PEDOT", "Carnegie Mellon", "University of Pittsburgh", "academic", "preclinical"]
+tags: ["intracortical", "Parylene C"]
 draft: false
 ---
 

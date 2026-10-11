@@ -14,7 +14,7 @@ axis: ["retina"]
 function: ["stimulation"]
 regulatory: "ce-marked"
 origin: "US"
-tags: ["Science Corporation", "PRIMA", "retinal prosthesis", "photovoltaic", "geographic atrophy", "NEJM", "human"]
+tags: ["Science Corporation", "retinal prosthesis"]
 draft: false
 ---
 

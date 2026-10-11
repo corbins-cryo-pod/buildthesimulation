@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["other"]
 origin: "US"
-tags: ["MOTE", "Cornell", "optical", "wireless", "recording", "preclinical"]
+tags: ["optical", "wireless"]
 draft: false
 ---
 

@@ -12,7 +12,7 @@ modality: "Other"
 website: "https://clinicaltrials.gov/study/NCT07594483"
 function: ["stimulation"]
 regulatory: "investigational"
-tags: ["Motif", "DOT", "XCS", "magnetoelectric", "wireless stimulator", "depression", "investigational", "human"]
+tags: ["Motif", "DOT", "magnetoelectric"]
 draft: false
 ---
 

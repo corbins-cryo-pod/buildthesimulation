@@ -14,7 +14,7 @@ axis: ["peripheral-nerve"]
 function: ["stimulation"]
 form: ["cuff"]
 origin: "China"
-tags: ["SIAT", "Du Xuemin", "ferroelectric", "P(VDF-TrFE)", "hydrogel", "vagus nerve", "self-curling", "near-infrared", "China", "rat", "preclinical", "institutional source"]
+tags: ["SIAT", "hydrogel", "vagus nerve", "rat"]
 draft: false
 ---
 

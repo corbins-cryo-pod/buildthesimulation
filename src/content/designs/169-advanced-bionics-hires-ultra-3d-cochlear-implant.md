@@ -15,7 +15,7 @@ function: ["stimulation"]
 form: ["array"]
 regulatory: "fda-approved"
 origin: "US"
-tags: ["cochlear implant", "Advanced Bionics", "HiRes Ultra 3D", "HiFocus", "hearing", "PMA", "FDA approved", "human"]
+tags: ["cochlear implant", "hearing", "PMA"]
 draft: false
 ---
 

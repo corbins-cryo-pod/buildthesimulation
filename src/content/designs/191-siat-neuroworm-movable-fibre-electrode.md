@@ -14,7 +14,7 @@ axis: ["other"]
 function: ["recording"]
 form: ["fiber"]
 origin: "China"
-tags: ["SIAT", "NeuroWorm", "fibre electrode", "magnetic steering", "dynamic electrode", "China", "rabbit", "rat", "preclinical", "institutional source"]
+tags: ["SIAT", "fiber electrode", "rabbit", "rat"]
 draft: false
 ---
 

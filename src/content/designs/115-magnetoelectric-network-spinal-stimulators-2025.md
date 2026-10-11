@@ -14,7 +14,7 @@ axis: ["spinal-cord"]
 function: ["stimulation"]
 form: ["other"]
 origin: "US"
-tags: ["magnetoelectric", "network", "spinal cord", "Rice", "Houston Methodist", "stimulation", "preclinical"]
+tags: ["magnetoelectric", "network", "Rice"]
 draft: false
 ---
 

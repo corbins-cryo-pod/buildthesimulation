@@ -16,7 +16,7 @@ function: ["recording", "stimulation", "bidirectional"]
 form: ["cuff"]
 regulatory: "investigational"
 origin: "US"
-tags: ["PNI", "cuff", "spiral cuff", "helical cuff", "self-sizing", "stimulation", "recording", "peripheral nerve", "bidirectional"]
+tags: ["spiral cuff", "self-sizing"]
 draft: false
 ---
 

@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["fiber"]
 origin: "US"
-tags: ["ultraflexible", "nanoelectronic thread", "NET", "chronic", "glial scar", "UT Austin", "Xie", "academic", "preclinical"]
+tags: ["ultraflexible", "NET", "chronic"]
 draft: false
 ---
 

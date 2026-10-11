@@ -14,7 +14,7 @@ axis: ["peripheral-nerve"]
 function: ["stimulation"]
 regulatory: "fda-cleared"
 origin: "US"
-tags: ["peripheral nerve stimulation", "Nalu", "wireless implant", "510(k)", "FDA cleared", "human"]
+tags: ["peripheral nerve stimulation", "wireless"]
 draft: false
 ---
 

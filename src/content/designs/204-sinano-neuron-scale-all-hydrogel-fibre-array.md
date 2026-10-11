@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["fiber", "array"]
 origin: "China"
-tags: ["SINANO", "Zhang Ting", "hydrogel fibre", "PEDOT:PSS", "wet spinning", "neuron-scale", "China", "mouse", "preclinical", "institutional source"]
+tags: ["PEDOT:PSS", "wet spinning", "mouse"]
 draft: false
 ---
 

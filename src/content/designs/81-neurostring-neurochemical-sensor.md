@@ -14,7 +14,7 @@ axis: ["other"]
 function: ["recording"]
 form: ["other"]
 origin: "US"
-tags: ["NeuroString", "neurochemical", "dopamine", "serotonin", "graphene", "stretchable", "Stanford", "academic", "preclinical"]
+tags: ["dopamine", "graphene", "stretchable", "Stanford"]
 draft: false
 ---
 

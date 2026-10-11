@@ -15,7 +15,7 @@ function: ["stimulation"]
 form: ["probe"]
 regulatory: "fda-approved"
 origin: "US"
-tags: ["DBS", "Boston Scientific", "Vercise", "Genus", "Cartesia", "MICC", "FDA approved", "directional lead", "human"]
+tags: ["deep brain stimulation", "Boston Scientific", "directional lead"]
 draft: false
 ---
 

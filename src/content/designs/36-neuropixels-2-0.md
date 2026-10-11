@@ -14,7 +14,7 @@ website: "https://www.science.org/doi/10.1126/science.abf4588"
 axis: ["cortex"]
 function: ["recording"]
 form: ["probe"]
-tags: ["Neuropixels", "silicon probe", "high density", "chronic", "freely moving", "research tool", "academic"]
+tags: ["Neuropixels", "silicon", "high density", "chronic"]
 draft: true
 ---
 

@@ -14,7 +14,7 @@ axis: ["deep-brain"]
 function: ["recording"]
 form: ["array"]
 origin: "China"
-tags: ["SIMIT", "NeuroXess", "silk fibroin", "intraventricular", "deep brain", "China", "sheep", "preclinical", "primary source"]
+tags: ["SIMIT", "NeuroXess", "sheep"]
 draft: false
 ---
 

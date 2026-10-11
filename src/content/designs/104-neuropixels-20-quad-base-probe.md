@@ -13,7 +13,7 @@ website: "https://www.neuropixelscentral.org/technology"
 axis: ["cortex"]
 function: ["recording"]
 form: ["probe"]
-tags: ["Neuropixels", "Quad Base", "silicon", "TiN", "JHU", "Janelia", "imec", "preclinical", "preprint"]
+tags: ["Neuropixels", "silicon", "TiN", "JHU", "Janelia", "imec"]
 draft: false
 ---
 

@@ -14,7 +14,7 @@ axis: ["other"]
 function: ["stimulation"]
 form: ["array"]
 origin: "China"
-tags: ["Nurotron", "Norkang", "auditory brainstem implant", "cochlear nucleus", "Shanghai Ninth People's Hospital", "China", "human", "company source"]
+tags: ["cochlear nucleus"]
 draft: false
 ---
 

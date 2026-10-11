@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["film", "array"]
 origin: "China"
-tags: ["Fudan", "Song Enming", "silicon transistor", "capacitive coupling", "active electrode", "multimodal", "ECoG", "China", "rat", "preclinical", "primary source"]
+tags: ["Fudan", "ECoG", "rat"]
 draft: false
 ---
 

@@ -14,7 +14,7 @@ axis: ["spinal-cord"]
 function: ["recording", "stimulation", "bidirectional"]
 regulatory: "fda-approved"
 origin: "US"
-tags: ["SCS", "spinal cord stimulation", "Medtronic", "Inceptiv", "closed loop", "ECAP", "FDA approved", "human"]
+tags: ["spinal cord stimulation", "Medtronic", "closed loop", "ECAP"]
 draft: false
 ---
 

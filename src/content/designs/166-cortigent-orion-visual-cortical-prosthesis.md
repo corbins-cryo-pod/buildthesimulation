@@ -15,7 +15,7 @@ function: ["stimulation"]
 form: ["array"]
 regulatory: "investigational"
 origin: "US"
-tags: ["cortical visual prosthesis", "Orion", "Cortigent", "Second Sight", "visual cortex", "investigational", "human"]
+tags: ["Cortigent", "Second Sight", "visual cortex"]
 draft: false
 ---
 

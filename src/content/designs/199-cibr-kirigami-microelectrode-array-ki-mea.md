@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["array"]
 origin: "China"
-tags: ["CIBR", "Fang Ying", "kirigami", "stretchable electrode", "macaque", "helical", "non-human primate", "China", "preclinical", "institutional source"]
+tags: ["CIBR", "stretchable", "macaque"]
 draft: false
 ---
 

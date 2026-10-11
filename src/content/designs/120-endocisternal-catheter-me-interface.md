@@ -14,7 +14,7 @@ axis: ["other"]
 function: ["recording", "stimulation", "bidirectional"]
 form: ["other"]
 origin: "US"
-tags: ["endocisternal", "Rice", "UTMB", "CSF", "catheter", "magnetoelectric", "stimulation", "recording", "preclinical"]
+tags: ["Rice", "magnetoelectric"]
 draft: false
 ---
 

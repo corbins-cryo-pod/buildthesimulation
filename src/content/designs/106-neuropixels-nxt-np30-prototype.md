@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["probe"]
 origin: "US"
-tags: ["Neuropixels", "NXT", "NP3.0", "prototype", "JHU", "imec", "preclinical"]
+tags: ["Neuropixels", "prototype", "JHU", "imec"]
 draft: false
 ---
 

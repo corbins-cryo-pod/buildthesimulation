@@ -15,7 +15,7 @@ function: ["stimulation"]
 form: ["probe"]
 regulatory: "fda-approved"
 origin: "US"
-tags: ["DBS", "Abbott", "Liberta RC", "FDA approved", "rechargeable", "human"]
+tags: ["deep brain stimulation", "Abbott", "rechargeable"]
 draft: false
 ---
 

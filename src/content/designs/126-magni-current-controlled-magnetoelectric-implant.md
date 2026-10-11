@@ -14,7 +14,7 @@ axis: ["peripheral-nerve"]
 function: ["stimulation"]
 form: ["other"]
 origin: "US"
-tags: ["MagNI", "magnetoelectric", "Rice", "CMOS", "current stimulation", "Hydra", "preclinical"]
+tags: ["magnetoelectric", "Rice", "CMOS"]
 draft: false
 ---
 

@@ -16,7 +16,7 @@ function: ["recording"]
 form: ["microwire", "array"]
 regulatory: "investigational"
 origin: "US"
-tags: ["BCI", "intracortical", "Paradromics", "Connexus", "microwire", "speech restoration", "cortex", "recording", "array"]
+tags: ["intracortical", "Paradromics"]
 draft: false
 ---
 

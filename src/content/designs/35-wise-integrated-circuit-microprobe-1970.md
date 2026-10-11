@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["probe"]
 origin: "US"
-tags: ["silicon probe", "microfabrication", "historical", "photolithography", "Michigan", "Wise", "academic", "research"]
+tags: ["silicon", "historical", "Michigan"]
 draft: false
 ---
 

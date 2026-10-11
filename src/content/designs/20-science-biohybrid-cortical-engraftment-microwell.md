@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording", "stimulation", "bidirectional"]
 form: ["other"]
 origin: "US"
-tags: ["biohybrid", "optogenetics", "cortical surface", "microwell", "preclinical", "Science Corporation", "cortex", "ecog", "recording", "stimulation", "bidirectional"]
+tags: ["biohybrid", "optogenetics", "cortical surface", "Science Corporation", "ECoG"]
 draft: false
 ---
 

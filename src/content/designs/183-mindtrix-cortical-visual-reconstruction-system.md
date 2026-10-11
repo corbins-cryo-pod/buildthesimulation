@@ -15,7 +15,7 @@ function: ["stimulation"]
 form: ["array"]
 regulatory: "investigational"
 origin: "China"
-tags: ["Mindtrix", "visual prosthesis", "cortical stimulation", "blindness", "China", "human"]
+tags: ["visual prosthesis", "cortical stimulation"]
 draft: false
 ---
 

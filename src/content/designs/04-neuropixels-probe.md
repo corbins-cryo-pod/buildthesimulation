@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["probe"]
 origin: "Belgium"
-tags: ["intracortical", "Neuropixels", "recording", "CMOS", "imec", "UCL", "Allen Institute", "Janelia", "research"]
+tags: ["intracortical", "Neuropixels", "CMOS", "imec", "UCL", "Allen Institute", "Janelia"]
 draft: false
 ---
 

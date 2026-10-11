@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["film", "array"]
 origin: "US"
-tags: ["iEEG", "microdisplay", "PtNRGrid", "microLED", "GaN", "UCSD", "Dayeh", "mapping", "academic", "preclinical"]
+tags: ["PtNRGrid", "UC San Diego", "Dayeh"]
 draft: false
 ---
 

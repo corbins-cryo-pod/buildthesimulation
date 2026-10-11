@@ -15,7 +15,7 @@ function: ["recording"]
 form: ["film", "array"]
 regulatory: "registration-trial"
 origin: "China"
-tags: ["NeuroXess", "Triple-F", "subdural", "wireless", "battery", "China", "registration trial", "human"]
+tags: ["NeuroXess", "subdural", "wireless"]
 draft: false
 ---
 

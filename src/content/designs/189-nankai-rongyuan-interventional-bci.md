@@ -15,7 +15,7 @@ function: ["recording"]
 form: ["stent"]
 regulatory: "investigational"
 origin: "China"
-tags: ["Nankai", "Rongyuan", "endovascular", "stent electrode", "wireless", "stroke", "China", "human", "institutional source"]
+tags: ["endovascular", "wireless"]
 draft: false
 ---
 

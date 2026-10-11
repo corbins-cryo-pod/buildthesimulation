@@ -15,7 +15,7 @@ function: ["recording"]
 form: ["film"]
 regulatory: "investigational"
 origin: "China"
-tags: ["StairMed", "WRS02", "wireless", "256-channel", "China", "investigational", "human"]
+tags: ["StairMed", "wireless"]
 draft: false
 ---
 

@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["stimulation"]
 form: ["other"]
 origin: "US"
-tags: ["DOT", "Rice", "Motif", "magnetoelectric", "epidural", "stimulation", "glass", "human", "research"]
+tags: ["DOT", "Rice", "Motif", "magnetoelectric", "epidural", "glass"]
 draft: false
 ---
 

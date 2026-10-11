@@ -15,7 +15,7 @@ axis: ["peripheral-nerve"]
 function: ["stimulation"]
 form: ["regenerative"]
 origin: "US"
-tags: ["PNI", "regenerative", "macro-sieve", "transit zones", "preclinical", "stimulation", "nerve transection", "peripheral nerve"]
+tags: ["nerve transection"]
 draft: false
 ---
 

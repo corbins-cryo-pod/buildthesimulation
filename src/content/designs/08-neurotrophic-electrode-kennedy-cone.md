@@ -16,7 +16,7 @@ function: ["recording"]
 form: ["microelectrode", "regenerative"]
 regulatory: "investigational"
 origin: "US"
-tags: ["BCI", "intracortical", "single-unit", "neurotrophic", "cone electrode", "Kennedy", "cortex", "recording", "regenerative", "array"]
+tags: ["intracortical", "single-unit"]
 draft: false
 ---
 

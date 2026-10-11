@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["film", "array"]
 origin: "US"
-tags: ["micro-ECoG", "multiplexed", "active electronics", "auditory cortex", "Connecticut", "Pennsylvania", "NYU", "academic"]
+tags: ["ECoG", "multiplexed", "NYU"]
 draft: false
 ---
 

@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["other"]
 origin: "US"
-tags: ["mesh electronics", "injectable", "flexible", "Lieber", "Harvard", "chronic", "academic", "preclinical"]
+tags: ["injectable", "flexible", "chronic"]
 draft: false
 ---
 

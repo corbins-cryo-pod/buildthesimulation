@@ -16,7 +16,7 @@ function: ["recording"]
 form: ["film"]
 regulatory: "investigational"
 origin: "China"
-tags: ["Beinao-1", "CIBR", "NeuCyber", "semi-invasive", "flexible electrode", "spinal cord injury", "China", "human"]
+tags: ["CIBR", "flexible", "spinal cord injury"]
 draft: false
 ---
 

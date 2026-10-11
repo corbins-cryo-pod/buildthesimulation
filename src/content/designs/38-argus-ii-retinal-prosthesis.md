@@ -11,7 +11,7 @@ description: "An epiretinal implant that sends camera-derived stimulation to a p
 modality: "Other"
 successRank: 38
 website: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfhde/hde.cfm?id=H110002"
-tags: ["retinal prosthesis", "epiretinal", "visual prosthesis", "Second Sight", "FDA HDE", "discontinued", "human", "dead end"]
+tags: ["retinal prosthesis", "epiretinal", "visual prosthesis", "Second Sight", "discontinued", "dead end"]
 draft: false
 ---
 

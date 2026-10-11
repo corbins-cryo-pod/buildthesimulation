@@ -14,7 +14,7 @@ website: "https://pubmed.ncbi.nlm.nih.gov/25522974/"
 axis: ["peripheral-nerve"]
 function: ["recording", "stimulation", "bidirectional"]
 form: ["regenerative"]
-tags: ["PNI", "regenerative", "microchannel", "scaffold", "preclinical", "recording", "stimulation", "peripheral nerve", "bidirectional"]
+tags: []
 draft: false
 ---
 

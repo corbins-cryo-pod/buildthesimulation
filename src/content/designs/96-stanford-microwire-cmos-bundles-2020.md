@@ -13,7 +13,7 @@ website: "https://www.science.org/doi/10.1126/sciadv.aay2789"
 axis: ["cortex"]
 function: ["recording"]
 form: ["microwire"]
-tags: ["microwire", "CMOS", "Stanford", "PtIr", "retina", "mouse", "modular", "preclinical"]
+tags: ["CMOS", "Stanford", "PtIr", "mouse", "modular"]
 draft: false
 ---
 

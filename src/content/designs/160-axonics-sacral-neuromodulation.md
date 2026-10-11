@@ -14,7 +14,7 @@ axis: ["peripheral-nerve"]
 function: ["stimulation"]
 regulatory: "fda-approved"
 origin: "US"
-tags: ["sacral neuromodulation", "Axonics", "incontinence", "FDA approved", "tined lead", "rechargeable", "human"]
+tags: ["rechargeable"]
 draft: false
 ---
 

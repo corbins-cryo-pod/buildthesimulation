@@ -14,7 +14,7 @@ axis: ["peripheral-nerve"]
 function: ["stimulation"]
 form: ["other"]
 origin: "US"
-tags: ["StimDust", "ultrasound", "stimulation", "Berkeley", "battery-free", "peripheral nerve", "preclinical"]
+tags: ["ultrasound", "Berkeley", "battery-free"]
 draft: false
 ---
 

@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["fiber"]
 origin: "China"
-tags: ["Neurotassel", "polyimide", "PEG", "elastocapillary", "China", "secondary", "preclinical"]
+tags: ["polyimide"]
 draft: false
 ---
 

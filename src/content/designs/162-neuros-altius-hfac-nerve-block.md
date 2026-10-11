@@ -15,7 +15,7 @@ function: ["stimulation"]
 form: ["cuff"]
 regulatory: "fda-approved"
 origin: "US"
-tags: ["peripheral nerve", "nerve cuff", "HFAC", "nerve block", "Neuros", "Altius", "amputation pain", "FDA approved", "human"]
+tags: []
 draft: false
 ---
 
