@@ -10,6 +10,11 @@ last_updated: 2026-10-08
 description: "Ultrasoft 128-channel depth probe from Axoft, tested for about 20 minutes in tissue due for resection in a first-in-human study in 2025. Preprint and company claims; not a chronic implant."
 modality: "Intracortical"
 website: "https://clinicaltrials.gov/study/NCT06673264"
+axis: ["cortex"]
+function: ["recording", "stimulation", "bidirectional"]
+form: ["probe"]
+regulatory: "investigational"
+origin: "US"
 tags: ["Axoft", "Fleuron", "soft probe", "depth electrode", "first-in-human", "investigational", "human"]
 draft: false
 ---
