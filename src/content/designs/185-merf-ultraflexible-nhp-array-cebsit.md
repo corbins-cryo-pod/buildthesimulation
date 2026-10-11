@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["array"]
 origin: "China"
-tags: ["MERF", "ultraflexible", "polyimide", "CEBSIT", "Lingang Laboratory", "China", "macaque", "preclinical", "primary source"]
+tags: ["ultraflexible", "polyimide", "macaque"]
 draft: false
 ---
 
