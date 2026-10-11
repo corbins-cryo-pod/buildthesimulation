@@ -4,12 +4,17 @@ order: 169
 pubDate: 2026-10-08
 updatedDate: 2026-10-08
 device_id: "BTSD-FDA-0020"
-interface_class: "other"
+interface_class: "cochlear"
 status: "human"
 last_updated: 2026-10-08
 description: "FDA-approved cochlear implant with a 16-contact HiFocus electrode, specified from the manufacturer's surgeon manual and the FDA PMA record P960058. Clinical data not extracted yet."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P960058S166"
+axis: ["cochlea"]
+function: ["stimulation"]
+form: ["array"]
+regulatory: "fda-approved"
+origin: "US"
 tags: ["cochlear implant", "Advanced Bionics", "HiRes Ultra 3D", "HiFocus", "hearing", "PMA", "FDA approved", "human"]
 draft: false
 ---
