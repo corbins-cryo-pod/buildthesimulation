@@ -11,6 +11,11 @@ description: "A wireless, fully implanted, semi-invasive BCI with a 128-channel 
 modality: "Cortical surface"
 successRank: 45
 website: "https://en.cibr.ac.cn/detail/cibrNewsnews/c0370bcc7cb94c4a8c980f38f9bf16c0"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film"]
+regulatory: "investigational"
+origin: "China"
 tags: ["Beinao-1", "CIBR", "NeuCyber", "semi-invasive", "flexible electrode", "spinal cord injury", "China", "human"]
 draft: false
 ---
