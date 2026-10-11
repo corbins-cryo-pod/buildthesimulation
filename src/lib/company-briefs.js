@@ -1,5 +1,6 @@
 import { companyBriefs } from '../data/company-briefs.js';
 import { getDevicePhoto } from './device-photos.js';
+import { classifyOrganization } from './organization-classification.js';
 
 // Short display labels drawn from the existing briefs, not new company research.
 const topics = {
@@ -110,7 +111,7 @@ export function linkedDeviceSlugs(body) {
 
 export function getCompanyBrief(entry, formatting, headings, devices) {
   const bespoke = companyBriefs[entry.slug];
-  if (bespoke) return { ...bespoke, kind: entry.data.kind, longName: false };
+  if (bespoke) return { ...bespoke, kind: entry.data.kind, longName: false, classification: classifyOrganization(entry) };
   const name = cleanCompanyTitle(entry.data.title);
   const [platform, focus] = topics[entry.data.order] ?? [devices[0] ? cleanCompanyTitle(devices[0].data.title) : 'Neural interfaces', entry.data.tags.filter(tag => !/^(company|lab|academic|american|european|chinese|other)$/i.test(tag)).slice(0, 3).join(' / ') || 'Neurotechnology'];
   const photoEntry = devices.find(device => getDevicePhoto(device.data.device_id));
@@ -119,6 +120,7 @@ export function getCompanyBrief(entry, formatting, headings, devices) {
   return {
     name,
     kind: entry.data.kind,
+    classification: classifyOrganization(entry),
     headline: [name],
     longName: name.length > 24,
     deck: entry.data.description ?? '',

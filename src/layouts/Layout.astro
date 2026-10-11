@@ -3,6 +3,7 @@ import "../styles/site.css";
 import NerveHero from "../components/NerveHero.astro";
 import { getCollection } from "astro:content";
 import { compareDeviceEntries } from "../lib/device-order.js";
+import { compareOrganizations } from "../lib/organization-classification.js";
 
 const {
   pageTitle,
@@ -31,12 +32,7 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
 // Build dropdown menus (a mini table of contents) for quick navigation.
 const companies = (await getCollection("companies"))
   .filter((p) => !p.data.draft)
-  .sort((a, b) => {
-    const ar = a.data.sizeRank ?? Number.POSITIVE_INFINITY;
-    const br = b.data.sizeRank ?? Number.POSITIVE_INFINITY;
-    if (ar !== br) return ar - br;
-    return stripPrefix(a.data.title).localeCompare(stripPrefix(b.data.title));
-  });
+  .sort(compareOrganizations);
 
 const designs = (await getCollection("designs"))
   .filter((p) => !p.data.draft)

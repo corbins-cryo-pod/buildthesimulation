@@ -24,7 +24,7 @@ const companies = defineCollection({
     lat: z.number().min(-90).max(90).optional(),
     lon: z.number().min(-180).max(180).optional(),
 
-    // Optional ranking signal for directory sorting (lower = appears earlier).
+    // Legacy editorial priority; retained for history, no longer used by the Atlas.
     sizeRank: z.number().int().positive().optional(),
 
     tags: z.array(z.string()).default([]),

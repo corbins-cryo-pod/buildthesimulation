@@ -1,6 +1,7 @@
 ---
 import '../styles/company-brief.css';
 import { getDevicePhoto } from '../lib/device-photos.js';
+import ProgramClassification from './ProgramClassification.jsx';
 
 const { entry, brief, headings, apps, devices } = Astro.props;
 const sections = headings.filter((heading) => heading.depth === 2);
@@ -23,6 +24,7 @@ const hasMarginalia = Boolean(photo || apps.length || devices.length);
         <p class="brief-deck">{brief.deck}</p>
       </div>
       <aside class="brief-company" aria-label="Organization facts">
+        <ProgramClassification classification={brief.classification} />
         <dl class="brief-facts">
           {entry.data.location && <div><dt>Location</dt><dd>{entry.data.location}</dd></div>}
           <div><dt>Organization</dt><dd>{brief.structure}</dd></div>

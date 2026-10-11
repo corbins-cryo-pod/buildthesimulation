@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import 'leaflet/dist/leaflet.css';
 import { clusterAtlasPoints, filterAtlasEntries, readAtlasState } from '../lib/atlas/data.js';
+import { displayProgram, stageLabels, regulatoryLabels, sortLabels } from '../lib/organization-classification.js';
+import ProgramClassification, { ClassificationBadge } from './ProgramClassification.jsx';
 
 const escapeHtml = text => String(text).replace(/[&<>"']/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c]));
 const hasCoordinates = entry => Number.isFinite(entry.lat) && Number.isFinite(entry.lon);
 const regionLabels = {American: 'US / Americas', European: 'Europe', Chinese: 'China', Other: 'Other / international'};
-const blankState = {query: '', kind: '', region: '', interfaceType: '', selected: ''};
+const blankState = {query: '', kind: '', region: '', interfaceType: '', stage: '', regulatory: '', sort: 'maturity', selected: ''};
 
 export default function AtlasExplorer({ entries }) {
   const [state, setState] = useState(blankState);
@@ -24,16 +26,16 @@ export default function AtlasExplorer({ entries }) {
   const callbacks = useRef({}), mapActions = useRef({}), status = useRef({});
   const profileHeading = useRef(null);
   const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const filtered = useMemo(() => filterAtlasEntries(entries, state), [entries, state.query, state.kind, state.region, state.interfaceType]);
+  const filtered = useMemo(() => filterAtlasEntries(entries, state), [entries, state.query, state.kind, state.region, state.interfaceType, state.stage, state.regulatory, state.sort]);
   const selected = filtered.find(entry => entry.slug === state.selected) ?? null;
   const listed = filtered.filter(entry => (!cluster || cluster.includes(entry.slug)) && (!areaOnly || !viewport || viewport.includes(entry.slug)));
   const mapped = filtered.filter(hasCoordinates);
   const interfaces = [...new Set(entries.flatMap(entry => entry.interfaces))].sort();
-  status.current = {filtered, selected: selected?.slug, hovered, expanded};
+  status.current = {filtered, selected: selected?.slug, hovered, expanded, state};
 
   const writeUrl = (next, push = false) => {
     const url = new URL(window.location.href);
-    for (const [key, value] of [['q', next.query], ['kind', next.kind], ['region', next.region], ['interface', next.interfaceType], ['org', next.selected]]) {
+    for (const [key, value] of [['q', next.query], ['kind', next.kind], ['region', next.region], ['interface', next.interfaceType], ['stage', next.stage], ['reg', next.regulatory], ['sort', next.sort === 'maturity' ? '' : next.sort], ['org', next.selected]]) {
       if (value) url.searchParams.set(key, value); else url.searchParams.delete(key);
     }
     if (url.href !== window.location.href) window.history[push ? 'pushState' : 'replaceState'](null, '', url);
@@ -42,7 +44,7 @@ export default function AtlasExplorer({ entries }) {
     const next = {...state, [key]: value};
     if (!filterAtlasEntries(entries, next).some(entry => entry.slug === next.selected)) next.selected = '';
     setState(next); writeUrl(next); setCluster(null); setAreaOnly(false);
-    mapActions.current.fit?.(filterAtlasEntries(entries, next));
+    if (key !== 'sort') mapActions.current.fit?.(filterAtlasEntries(entries, next));
   };
   const choose = (entry, move = true) => {
     const next = {...state, selected: entry.slug};
@@ -138,7 +140,8 @@ export default function AtlasExplorer({ entries }) {
           const latlng = isCluster ? map.containerPointToLatLng([group.x, group.y]) : [members[0].lat, members[0].lon];
           const icon = L.divIcon({className: `atlas-pin ${isCluster ? 'atlas-cluster' : members[0].kind === 'Lab' ? 'atlas-lab' : 'atlas-company'}`, iconSize: [44,44], iconAnchor: [22,22], html: `<span>${isCluster ? members.length : ''}</span>`});
           const marker = L.marker(latlng, {icon, keyboard: true, title: isCluster ? `${members.length} organizations: ${members.map(e => e.title).join(', ')}` : members[0].title}).addTo(layer);
-          marker.bindTooltip(isCluster ? `${members.length} organizations · select to explore` : `<strong>${escapeHtml(members[0].title)}</strong><br>${escapeHtml(members[0].location)}`, {direction: 'top', offset: [0,-12]});
+          const program = displayProgram(members[0], status.current.state);
+          marker.bindTooltip(isCluster ? `${members.length} organizations · select to explore` : `<strong>${escapeHtml(members[0].title)}</strong><br>${escapeHtml(members[0].location)}<br>${escapeHtml(program.code)} · ${escapeHtml(stageLabels[program.stage ?? '?'])} · ${escapeHtml(regulatoryLabels[program.regulatory])}`, {direction: 'top', offset: [0,-12]});
           marker.on('mouseover', () => { if (!isCluster) callbacks.current.hover(members[0].slug); });
           marker.on('mouseout', () => callbacks.current.hover(''));
           marker.on('click', () => {
@@ -169,15 +172,19 @@ export default function AtlasExplorer({ entries }) {
   useEffect(() => { if (!selected && state.selected) { const next = {...state, selected: ''}; setState(next); if (initialized) writeUrl(next); } }, [filtered]);
 
   const clearFilters = () => { setState(blankState); writeUrl(blankState); setCluster(null); setAreaOnly(false); setPreviewId(''); mapActions.current.fit?.(entries); };
-  const activeFilters = state.query || state.kind || state.region || state.interfaceType || cluster || areaOnly;
+  const activeFilters = state.query || state.kind || state.region || state.interfaceType || state.stage || state.regulatory || state.sort !== 'maturity' || cluster || areaOnly;
   return <section class="atlas" aria-label="Interactive BCI atlas">
     <div class="atlas-toolbar">
       <label class="atlas-search">Search the ecosystem<input id="atlas-search" type="search" placeholder="Organization, place, device or study…" value={state.query} onInput={e => changeFilter('query', e.currentTarget.value)} /></label>
       <label>Organizations<select value={state.kind} onChange={e => changeFilter('kind', e.currentTarget.value)}><option value="">Companies &amp; labs</option><option value="Company">Companies</option><option value="Lab">Labs</option></select></label>
       <label>Region<select value={state.region} onChange={e => changeFilter('region', e.currentTarget.value)}><option value="">Worldwide</option>{Object.keys(regionLabels).map(region => <option key={region} value={region}>{regionLabels[region]}</option>)}</select></label>
       <label>Technology<select value={state.interfaceType} onChange={e => changeFilter('interfaceType', e.currentTarget.value)}><option value="">All interfaces</option>{interfaces.map(type => <option key={type}>{type}</option>)}</select></label>
+      <label>Development stage<select value={state.stage} onChange={e => changeFilter('stage', e.currentTarget.value)}><option value="">All stages</option>{Object.entries(stageLabels).map(([stage, label]) => <option key={stage} value={stage}>{stage === '?' ? label : `${stage} · ${label}`}</option>)}</select></label>
+      <label>Regulatory status<select value={state.regulatory} onChange={e => changeFilter('regulatory', e.currentTarget.value)}><option value="">All statuses</option>{Object.entries(regulatoryLabels).map(([code, label]) => <option key={code} value={code}>{code} · {label}</option>)}</select></label>
+      <label>Sort by<select value={state.sort} onChange={e => changeFilter('sort', e.currentTarget.value)}>{Object.entries(sortLabels).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></label>
       {activeFilters && <button class="atlas-clear" onClick={clearFilters}>Reset filters</button>}
     </div>
+    <details class="atlas-code-key"><summary>Read the codes <span><i>C</i> Company / <i>L</i> Lab · Stage 0–4 · R Research / A Regulatory approved / K Cleared</span></summary><p>0 Concept · 1 Bench testing · 2 Animal studies · 3 Human studies · 4 Clinical product. Approval can be from any country; open a profile for its named device, regulator and sources. A question mark means unverified.</p><p><a href="/companies/classification/">Full classification guide &amp; all {entries.length} organizations →</a></p></details>
     <div class={`atlas-workspace ${expanded ? 'sheet-expanded' : ''}`}>
       <div ref={mapHost} class="atlas-map" aria-label="World map of cataloged company and lab locations" />
       {!mapReady && <div class="atlas-map-loading" role="status">{mapError || 'Preparing the atlas…'}</div>}
@@ -191,6 +198,7 @@ export default function AtlasExplorer({ entries }) {
         {selected ? <div class="atlas-profile">
           <div class="atlas-profile-top"><button onClick={close}>← All results</button><span>{selected.kind}</span></div>
           <h2 ref={profileHeading} tabIndex={-1}>{selected.title}</h2>
+          <ProgramClassification classification={selected.classification} primary={displayProgram(selected, state)} />
           <p class="atlas-location">{selected.location || 'Location not documented'}{!hasCoordinates(selected) && <span>Map coordinates not cataloged</span>}</p>
           <p class="atlas-description">{selected.description}</p>
           <div class="atlas-profile-links"><a href={`/companies/${selected.slug}/`}>Read full brief →</a>{selected.website && <a href={selected.website} target="_blank" rel="noopener noreferrer">Official source ↗</a>}</div>
@@ -201,7 +209,7 @@ export default function AtlasExplorer({ entries }) {
           {!selected.devices.length && !selected.applications.length && <p class="atlas-no-links">Device and study connections have not been cataloged for this profile yet.</p>}
         </div> : <>
           <div class="atlas-panel-heading"><div><span class="atlas-eyebrow">Explore the ecosystem</span><h2>{cluster ? 'In this cluster' : areaOnly ? 'In this map area' : 'Companies & labs'}</h2></div><p role="status" aria-live="polite">{listed.length} of {entries.length} organizations</p>{cluster && <button onClick={() => setCluster(null)}>← All matching results</button>}</div>
-          <div class="atlas-results">{listed.map(entry => <a key={entry.slug} ref={el => { if (el) rows.current.set(entry.slug, el); else rows.current.delete(entry.slug); }} class={`atlas-row ${hovered === entry.slug ? 'is-hovered' : ''}`} href={`/companies/${entry.slug}/`} onMouseEnter={() => setHovered(entry.slug)} onMouseLeave={() => setHovered('')} onFocus={() => setHovered(entry.slug)} onBlur={() => setHovered('')} onClick={e => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || !initialized) return; e.preventDefault(); choose(entry); }}><span class={`atlas-row-symbol ${entry.kind === 'Lab' ? 'is-lab' : ''}`} aria-hidden="true" /><div><h3>{entry.title}</h3><p>{entry.location || regionLabels[entry.region]} <span>· {entry.kind}</span></p><span class="atlas-row-meta">{entry.interfaces.length ? entry.interfaces.join(' · ') : 'Read organization brief'}{!hasCoordinates(entry) ? ' · Unmapped' : ''}</span></div><span aria-hidden="true">↗</span></a>)}{!listed.length && <div class="atlas-empty"><h3>No organizations here</h3><p>{areaOnly ? 'Move the map or turn off the area filter.' : 'Try another search, interface or region.'}</p><button onClick={clearFilters}>Show all organizations</button></div>}</div>
+          <div class="atlas-results">{listed.map(entry => <a key={entry.slug} ref={el => { if (el) rows.current.set(entry.slug, el); else rows.current.delete(entry.slug); }} class={`atlas-row ${hovered === entry.slug ? 'is-hovered' : ''}`} href={`/companies/${entry.slug}/`} onMouseEnter={() => setHovered(entry.slug)} onMouseLeave={() => setHovered('')} onFocus={() => setHovered(entry.slug)} onBlur={() => setHovered('')} onClick={e => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || !initialized) return; e.preventDefault(); choose(entry); }}><span class={`atlas-row-symbol ${entry.kind === 'Lab' ? 'is-lab' : ''}`} aria-hidden="true" /><div><h3>{entry.title}</h3><p>{entry.location || regionLabels[entry.region]} <span>· {entry.kind}</span></p><div class="atlas-row-classification"><ClassificationBadge program={displayProgram(entry, state)} /><span>{stageLabels[displayProgram(entry, state).stage ?? '?']} · {regulatoryLabels[displayProgram(entry, state).regulatory]}{displayProgram(entry, state).historical ? ' · Historical' : ''}</span></div><span class="atlas-row-program">{displayProgram(entry, state).name}</span><span class="atlas-row-meta">{entry.interfaces.length ? entry.interfaces.join(' · ') : 'Read organization brief'}{!hasCoordinates(entry) ? ' · Unmapped' : ''}</span></div><span aria-hidden="true">↗</span></a>)}{!listed.length && <div class="atlas-empty"><h3>No organizations here</h3><p>{areaOnly ? 'Move the map or turn off the area filter.' : 'Try another search, interface or region.'}</p><button onClick={clearFilters}>Show all organizations</button></div>}</div>
         </>}
       </aside>
       <div class="atlas-map-caption"><span><i class="company-dot" /> Company</span><span><i class="lab-dot" /> Lab</span><span>{mapped.length} mapped · {filtered.length - mapped.length} unmapped</span></div>
