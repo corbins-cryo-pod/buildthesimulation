@@ -15,7 +15,7 @@ function: ["recording"]
 form: ["film"]
 regulatory: "investigational"
 origin: "China"
-tags: ["StairMed", "WRS", "HNE", "uFINE", "flexible electrode", "wireless", "China", "investigational", "human"]
+tags: ["StairMed", "flexible", "wireless"]
 draft: false
 ---
 
