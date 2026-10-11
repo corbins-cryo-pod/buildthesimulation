@@ -14,7 +14,7 @@ axis: ["peripheral-nerve"]
 function: ["stimulation"]
 regulatory: "fda-cleared"
 origin: "US"
-tags: ["peripheral nerve stimulation", "StimRouter", "Bioness", "510(k)", "FDA cleared", "human"]
+tags: ["peripheral nerve stimulation"]
 draft: false
 ---
 
