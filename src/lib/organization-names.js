@@ -10,6 +10,7 @@ const names = {
   '71-mindtrix-company-brief': ['Mindtrix', '明视脑机'],
   '72-zhiran-medical-company-brief': ['Zhiran Medical', '智冉医疗'],
   '73-tianjin-rongyuan-company-brief': ['Tianjin Rongyuan Intelligent Technology', '天津嵘元智能'],
+  '74-zhejiang-norkang-company-brief': ['Zhejiang Nurotron', '诺尔康'],
 };
 // Some older catalog records already have Chinese characters and Latin text;
 // these mappings make the display order consistent without guessing names.
