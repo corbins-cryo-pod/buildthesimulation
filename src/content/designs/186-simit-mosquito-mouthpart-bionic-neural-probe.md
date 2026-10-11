@@ -10,6 +10,10 @@ last_updated: 2026-10-09
 description: "128-channel, 2.5 micrometer polyimide array delivered through the dura by sharpened tungsten shuttles in microtubule tracks, with a tactile sensor array that warns of vessels. Built by Tao Hu and Wei Xiaoling's group at Shanghai Institute of Microsystem and Information Technology; mouse recordings to 16 weeks."
 modality: "Intracortical"
 website: "https://www.nature.com/articles/s41378-023-00565-5"
+axis: ["cortex"]
+function: ["recording"]
+form: ["array"]
+origin: "China"
 tags: ["SIMIT", "flexible electrode", "polyimide", "transdural implantation", "tactile sensor", "China", "mouse", "preclinical", "primary source"]
 draft: false
 ---
