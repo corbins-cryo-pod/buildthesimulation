@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording", "stimulation", "bidirectional"]
 form: ["fiber"]
 origin: "US"
-tags: ["intracortical", "recording", "optogenetics", "microfluidic", "hydrogel", "fiber", "MIT", "academic", "preclinical"]
+tags: ["intracortical", "optogenetics", "microfluidic", "hydrogel", "MIT"]
 draft: false
 ---
 
