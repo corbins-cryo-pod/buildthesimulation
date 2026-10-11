@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["array"]
 origin: "France"
-tags: ["BCI", "ECoG", "epidural", "wireless", "CEA", "Clinatec", "WIMAGINE", "motor decoding", "cortex", "recording"]
+tags: ["ECoG", "epidural", "wireless", "motor decoding"]
 draft: false
 ---
 
