@@ -4,12 +4,17 @@ order: 168
 pubDate: 2026-10-08
 updatedDate: 2026-10-08
 device_id: "BTSD-FDA-0019"
-interface_class: "other"
+interface_class: "cochlear"
 status: "human"
 last_updated: 2026-10-08
 description: "FDA-approved cochlear implant family with SYNCHRONY 2 as the current implant, indications expanded in October 2024. Values come from the FDA summary of safety and effectiveness; electrode specs are not on this sheet yet."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf/P000025S129B.pdf"
+axis: ["cochlea"]
+function: ["stimulation"]
+form: ["array"]
+regulatory: "fda-approved"
+origin: "Austria"
 tags: ["cochlear implant", "MED-EL", "SYNCHRONY 2", "hearing", "PMA", "FDA approved", "human"]
 draft: false
 ---
