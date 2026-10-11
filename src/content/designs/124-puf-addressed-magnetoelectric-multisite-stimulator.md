@@ -10,6 +10,10 @@ last_updated: 2026-10-07
 description: "Rice-led 180-nm CMOS ME stimulation configuration with eight-bit PUF addresses and a shared transmitter. Bench and Hydra multisite demonstrations stay separate from rat nerve stimulation and proposed cardiac/spinal use."
 modality: "Other"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9581110/"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+form: ["other"]
+origin: "US"
 tags: ["magnetoelectric", "PUF", "Rice", "CMOS", "multisite", "stimulation", "preclinical"]
 draft: false
 ---
