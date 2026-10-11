@@ -10,6 +10,11 @@ last_updated: 2026-10-08
 description: "Thin-film graphene cortical surface interface from INBRAIN, used intraoperatively in a first-in-human study at Manchester. Company release; contact counts not published in the sources read."
 modality: "Cortical surface"
 website: "https://www.businesswire.com/news/home/20250728135880/en/INBRAIN-Neuroelectronics-Reports-Interim-Analysis-of-First-in-Human-Study-of-Graphene-Brain-Computer-Interface"
+axis: ["cortex"]
+function: ["recording"]
+form: ["film"]
+regulatory: "investigational"
+origin: "Spain"
 tags: ["INBRAIN", "graphene", "ECoG", "cortical film", "first-in-human", "investigational", "human"]
 draft: false
 ---
