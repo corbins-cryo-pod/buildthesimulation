@@ -13,7 +13,7 @@ website: "https://www.nature.com/articles/s41593-025-01976-5"
 axis: ["cortex"]
 function: ["recording"]
 form: ["probe"]
-tags: ["Neuropixels", "NHP", "intracortical", "recording", "silicon", "macaque", "imec", "academic", "preclinical"]
+tags: ["Neuropixels", "intracortical", "silicon", "macaque", "imec"]
 draft: false
 ---
 
