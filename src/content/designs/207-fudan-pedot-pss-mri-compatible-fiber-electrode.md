@@ -14,7 +14,7 @@ axis: ["cortex"]
 function: ["recording", "stimulation", "bidirectional"]
 form: ["fiber"]
 origin: "China"
-tags: ["Fudan University", "Peng Huisheng", "Sun Xiaoyu", "PEDOT:PSS", "fibre electrode", "MRI-compatible", "11.7 T", "wet spinning", "China", "rat", "preclinical", "primary source"]
+tags: ["PEDOT:PSS", "fiber electrode", "wet spinning", "rat"]
 draft: false
 ---
 
