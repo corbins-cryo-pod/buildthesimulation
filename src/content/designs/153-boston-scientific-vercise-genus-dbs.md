@@ -10,6 +10,11 @@ last_updated: 2026-10-08
 description: "FDA-approved Vercise Genus DBS family with 8-contact and 16-contact directional leads and Multiple Independent Current Control. Values rest on the FDA overview and company pages; the SSED was not read."
 modality: "Other"
 website: "https://www.fda.gov/medical-devices/recently-approved-devices/vercise-pc-vercise-gevia-and-vercise-genus-deep-brain-stimulation-systems-p150031s064"
+axis: ["deep-brain"]
+function: ["stimulation"]
+form: ["probe"]
+regulatory: "fda-approved"
+origin: "US"
 tags: ["DBS", "Boston Scientific", "Vercise", "Genus", "Cartesia", "MICC", "FDA approved", "directional lead", "human"]
 draft: false
 ---
