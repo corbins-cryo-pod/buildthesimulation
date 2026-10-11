@@ -15,7 +15,7 @@ axis: ["cortex"]
 function: ["recording"]
 form: ["array"]
 regulatory: "investigational"
-tags: ["ECoG", "subdural", "percutaneous connector", "PMT", "Blackrock", "speech", "academic", "human"]
+tags: ["ECoG", "subdural"]
 draft: false
 ---
 
