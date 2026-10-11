@@ -15,7 +15,7 @@ function: ["recording"]
 form: ["film"]
 regulatory: "investigational"
 origin: "Spain"
-tags: ["INBRAIN", "graphene", "ECoG", "cortical film", "first-in-human", "investigational", "human"]
+tags: ["graphene", "ECoG", "first-in-human"]
 draft: false
 ---
 
