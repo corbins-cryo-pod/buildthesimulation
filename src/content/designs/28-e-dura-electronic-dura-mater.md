@@ -11,6 +11,9 @@ description: "A soft implant with the shape and elasticity of the dura that carr
 modality: "Cortical surface"
 successRank: 28
 website: "https://www.science.org/doi/10.1126/science.1260318"
+axis: ["spinal-cord", "cortex"]
+form: ["film"]
+origin: "Switzerland"
 tags: ["soft implant", "silicone", "stretchable", "spinal cord", "chemotrode", "EPFL", "Europe", "preclinical"]
 draft: false
 ---
