@@ -8,7 +8,10 @@ const STARTS = [
   {label: 'Simulations', href: '/simulations/', detail: 'Experiments and design tools'},
 ];
 
-export default function SiteSearch({ entries = [] }) {
+export default function SiteSearch() {
+  const [entries, setEntries] = useState([]);
+  const [loadState, setLoadState] = useState('idle');
+  const [isOpen, setIsOpen] = useState(false);
   const dialog = useRef(null);
   const input = useRef(null);
   const opener = useRef(null);
@@ -21,6 +24,7 @@ export default function SiteSearch({ entries = [] }) {
     if (source) opener.current = source;
     setQuery(value);
     setActive(0);
+    setIsOpen(true);
     if (!el.open) el.showModal();
     requestAnimationFrame(() => input.current?.focus());
   }, []);
@@ -51,6 +55,22 @@ export default function SiteSearch({ entries = [] }) {
     };
   }, [open, close]);
 
+  useEffect(() => {
+    if (!isOpen || loadState !== 'idle') return;
+    setLoadState('loading');
+    fetch('/search-index.json')
+      .then(response => {
+        if (!response.ok) throw new Error('Search index unavailable');
+        return response.json();
+      })
+      .then(data => {
+        if (!Array.isArray(data)) throw new Error('Invalid search index');
+        setEntries(data);
+        setLoadState('ready');
+      })
+      .catch(() => setLoadState('error'));
+  }, [isOpen, loadState]);
+
   const matches = useMemo(() => searchDiscovery(entries, query, 80), [entries, query]);
   const groups = useMemo(() => DISCOVERY_TYPES.map(type => ({
     type, rows: matches.filter(entry => entry.type === type).slice(0, 5),
@@ -68,7 +88,7 @@ export default function SiteSearch({ entries = [] }) {
 
   let running = 0;
   return <dialog ref={dialog} class="discovery-dialog" aria-label="Search Build the Simulation"
-      onClose={() => { setQuery(''); opener.current?.focus?.(); }}
+      onClose={() => { setQuery(''); setIsOpen(false); opener.current?.focus?.(); }}
       onClick={event => { if (event.target === dialog.current) close(); }}>
     <div class="discovery-shell">
       <div class="discovery-field">
@@ -85,7 +105,7 @@ export default function SiteSearch({ entries = [] }) {
             <span><strong>{item.label}</strong><small>{item.detail}</small></span><span aria-hidden="true">↗</span>
           </a>)}
           <p class="discovery-tip">Type a name, technology or application. Use ↑ ↓ and Enter to navigate.</p>
-        </> : displayed.length ? groups.map(group => <section class="discovery-group" key={group.type}>
+        </> : loadState === 'loading' || loadState === 'idle' ? <p class="discovery-empty" role="status">Loading catalog search…</p> : loadState === 'error' ? <p class="discovery-empty" role="alert">Search is unavailable. Use the main navigation to browse the catalogs.</p> : displayed.length ? groups.map(group => <section class="discovery-group" key={group.type}>
           <h2>{group.type}</h2>
           {group.rows.map(item => {
             const index = running++;
