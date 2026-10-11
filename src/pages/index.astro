@@ -45,7 +45,7 @@ const topics = [
     <div class="route-grid">
       {routes.map(route => (
         <a class="route" href={route.href}>
-          <div class="route-top"><span>{route.kicker}</span><span aria-hidden="true">↗</span></div>
+          <div class="route-top"><span>{route.kicker}</span><span aria-hidden="true">→</span></div>
           <h3>{route.name}</h3>
           <p>{route.desc}</p>
         </a>
@@ -56,7 +56,7 @@ const topics = [
   <section class="home-topics" aria-labelledby="home-topics-title">
     <h2 id="home-topics-title">Explore by topic</h2>
     <div class="topic-links">
-      {topics.map(topic => <a href={topic.href}>{topic.label} <span aria-hidden="true">↗</span></a>)}
+      {topics.map(topic => <a href={topic.href}>{topic.label} <span aria-hidden="true">→</span></a>)}
     </div>
   </section>
   <div class="home-footerline" aria-label="Catalog size">
