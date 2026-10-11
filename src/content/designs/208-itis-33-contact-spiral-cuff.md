@@ -10,6 +10,10 @@ last_updated: 2026-10-10
 description: "A separate 33-contact platinum spiral-cuff prototype, photographed with its contact rows visible. Developed by the ITIS/Ljubljana team and tested on isolated porcine vagus nerve."
 modality: "Peripheral nerve"
 website: "https://www.nature.com/articles/s41598-018-19318-w"
+axis: ["peripheral-nerve"]
+function: ["stimulation"]
+form: ["cuff"]
+origin: "Slovenia"
 tags: ["spiral cuff", "peripheral nerve", "vagus", "ITIS", "platinum", "33 contacts", "stimulation", "research prototype"]
 draft: false
 ---
