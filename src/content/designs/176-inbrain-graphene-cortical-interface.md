@@ -114,7 +114,7 @@ Company brief: [INBRAIN Neuroelectronics](/companies/07-inbrain-neuroelectronics
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects | Interim analysis of the first four patients at the Manchester Centre for Clinical Neurosciences; the 2024 release said 8 to 10 patients were planned [1][2] |
+| Human subjects | Company-reported April 20, 2026: 10 patients recruited, 8 treated surgically (complete datasets from 8). Earlier: interim analysis of the first four patients at the Manchester Centre for Clinical Neurosciences, and a 2024 plan of 8 to 10 patients [1][2][3] |
 | Preclinical cohort |  |
 | Follow-up duration | Intraoperative use during tumor resection; the primary safety endpoint includes a 90-day post-operative monitoring period with imaging (company release) [3] |
 | Indications | Investigational use during brain tumor resection surgery, including awake procedures where patients named objects for speech decoding; not an approved indication [3] |
