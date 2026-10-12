@@ -2,11 +2,11 @@
 title: "Inspire upper airway stimulation"
 order: 158
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-FDA-0009"
 interface_class: "pni"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "FDA-approved hypoglossal nerve stimulator for obstructive sleep apnea, newest version Inspire V approved August 2024. Thinly sourced from the FDA overview and supplement record; many cells stay blank."
 modality: "Peripheral nerve"
 website: "https://www.fda.gov/medical-devices/recently-approved-devices/inspire-upper-airway-stimulation-p130008s090"
@@ -44,7 +44,7 @@ Company brief: [Inspire Medical Systems, Inc.](/companies/58-inspire-medical-sys
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Original 2014 approval configuration: Model 4063 stimulation lead with a cuff electrode in a guarded bipolar configuration around the hypoglossal nerve; Model 4323 sensing lead with a piezoelectric differential pressure sensor placed in the intercostal space [4] |
-| Array layout |  |
+| Array layout | Stimulation lead (Model 4063 in the Inspire IV system) has a flexible, self-sizing cuff with the stimulating electrodes on its inner surface; the respiratory sensing lead (Model 4340 or 4323) has a pressure-sensitive membrane [5] |
 | Electrode count | Bipolar guarded cuff (contact count per lead not stated in the SSED text read) [4] |
 | Pitch |  |
 | Electrode lengths |  |
@@ -52,8 +52,8 @@ Company brief: [Inspire Medical Systems, Inc.](/companies/58-inspire-medical-sys
 | Tip and exposed site geometry |  |
 | Contact coating |  |
 | Insulation |  |
-| Insertion method |  |
-| Anchoring and fixation |  |
+| Insertion method | Cuff placed around the exposed hypoglossal nerve through a neck incision, irrigated with saline for electrical contact and tested with the generator or an external nerve stimulator. The cuff is not sutured around the nerve and is not forced into position; the spine of the cuff is recommended inferior to the nerve [5] |
+| Anchoring and fixation | Lead anchor tied with permanent sutures through both anchor recesses to the digastric tendon or muscle, with a strain-relief loop between cuff and anchor. Anchor points must sit in tissue that moves with the hypoglossal nerve [5] |
 
 ## Electrode and channel physics
 
@@ -80,7 +80,7 @@ Company brief: [Inspire Medical Systems, Inc.](/companies/58-inspire-medical-sys
 | Gliosis and encapsulation |  |
 | Neuron loss near sites |  |
 | Foreign-body response mitigation |  |
-| Typical failure modes |  |
+| Typical failure modes | Labeling lists undesirable change in stimulation over time, possibly from tissue changes around the electrodes, shifts in electrode position, loose electrical connections or lead fractures [5] |
 
 ## System architecture
 
@@ -139,3 +139,4 @@ Inspire V Model 3150 is the new version of the Model 3028 IPG. The FDA overview 
 2. [FDA PMA P130008/S098 record](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?id=P130008S098).
 3. [Inspire Medical Systems announcement, August 2, 2024](https://investors.inspiresleep.com/news/news-details/2024/Inspire-Medical-Systems-Inc.-Announces-FDA-Approval-of-the-Inspire-V-System/default.aspx).
 4. [FDA summary of safety and effectiveness data, P130008 (original approval April 30, 2014)](https://www.accessdata.fda.gov/cdrh_docs/pdf13/P130008b.pdf).
+5. [Inspire IV physician manual, IPG Model 3028, stimulation lead 4063, sensing lead 4340](https://manuals.inspiresleep.com/content/widgets/manual.php?NTI1fDF8MQ=%3D), manufacturer labeling. Describes Inspire IV, not Inspire V.
