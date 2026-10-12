@@ -2,11 +2,11 @@
 title: "LivaNova VNS Therapy SenTiva"
 order: 157
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-FDA-0008"
 interface_class: "pni"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "FDA-approved vagus nerve stimulation system for refractory epilepsy with the SenTiva generator that senses heart rate. Values come from the FDA supplement records, summary and LivaNova's spec sheet."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf/P970003S207B.pdf"
@@ -46,14 +46,14 @@ Company brief: [LivaNova](/companies/37-livanova-company-brief/).
 | --- | --- |
 | Interface type | VNS Therapy lead attached to the left vagus nerve; the SSED and spec sheet name models 302, 303 and 304 [2][3] |
 | Array layout |  |
-| Electrode count |  |
+| Electrode count | Two helical electrodes on the Model 302 lead, per the S207 summary [2] |
 | Pitch |  |
 | Electrode lengths |  |
 | Shank width and thickness |  |
 | Tip and exposed site geometry |  |
 | Contact coating |  |
-| Insulation |  |
-| Insertion method |  |
+| Insulation | Lead insulated with silicone rubber; lead wire is quadrifilar MP-35N (Model 302 lead) [2] |
+| Insertion method | Lead is placed with the VNS Therapy Tunneler Model 402 for subcutaneous tunneling: stainless steel shaft, two fluorocarbon polymer sleeves and a stainless steel bullet tip, single use [2] |
 | Anchoring and fixation |  |
 
 ## Electrode and channel physics
@@ -61,7 +61,7 @@ Company brief: [LivaNova](/companies/37-livanova-company-brief/).
 | Field | Value and source scope |
 | --- | --- |
 | Exposed site area |  |
-| Electrode material |  |
+| Electrode material | Platinum ribbon electrodes (Model 302 lead) [2] |
 | Impedance (with measurement frequency) |  |
 | Noise floor or SNR |  |
 | Recording modality |  |
@@ -93,10 +93,10 @@ Company brief: [LivaNova](/companies/37-livanova-company-brief/).
 | Sampling rate |  |
 | Power | Lithium carbon monofluoride primary cell, 3.3 V open circuit, 1 Ah rated capacity [3] |
 | Thermal management |  |
-| Packaging and hermeticity |  |
-| MRI compatibility |  |
-| Surgical complexity |  |
-| Output connectors |  |
+| Packaging and hermeticity | SenTiva Model 1000 case: titanium, hermetically sealed; header: polyurethane (Tecothane TT-1075D-M); lead connector blocks: stainless steel; setscrew plug: silicone. Typical dimensions 45 x 32 x 6.9 mm, weight 16 g. No component made with natural rubber latex [3] |
+| MRI compatibility | MR Conditional at 1.5 T or 3 T in a horizontal, cylindrical closed-bore scanner, normal operating mode, with stimulation off. Exclusion zone C7 to L3 with a body coil, C7 to T8 with a transmit-receive head or extremity coil. Spatial gradient up to 3000 gauss/cm, slew rate up to 200 T/m/s, SAR up to 3.2 W/kg (head coil) or 2.0 W/kg (body coil), body-coil exposure up to 15 minutes of active scan in a 30 minute window. LivaNova notes body-coil scans are not approved in all geographies [6] |
+| Surgical complexity | Lead is tunneled subcutaneously with the Model 402 tunneler; the S207 summary lists use after a bilateral or left cervical vagotomy as a contraindication [2] |
+| Output connectors | Lead receptacle 3.2 mm (0.126 in) nominal; connector retention strength with a VNS Therapy lead above 10 N. Compatible leads: 302, 303, 304 [3] |
 
 ## Performance envelope
 
@@ -107,20 +107,20 @@ Company brief: [LivaNova](/companies/37-livanova-company-brief/).
 | Stability over time |  |
 | Longevity |  |
 | Revision and explant experience |  |
-| Adverse events | Not extracted here |
+| Adverse events | Pediatric supplement S207 reports device-related serious adverse events at 4.25 percent per person-year in ages 4 to 11. Listed major events include coughing (15.1 percent), flushing (5.3 percent), injury (4.4 percent) and dysphonia (2.7 percent) [2] |
 | Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects |  |
+| Human subjects | S207 pooled data from pre-market studies E03, E04, E05, E06, a Japan post-approval study and a post-market surveillance database; 847 patients in the safety population [2] |
 | Preclinical cohort |  |
-| Follow-up duration |  |
+| Follow-up duration | Safety and efficacy analysis taken at the 12 month post-operative visit [2] |
 | Indications | Patients 4 years and older with partial onset seizures refractory to antiepileptic medications [1] |
-| Trials and registries | Not extracted here |
-| Primary outcomes |  |
-| Key limitations | The S207 SSED is a multi-model summary and the clinical efficacy sections were not read. Contraindications include diathermy and prior bilateral or left cervical vagotomy [2] |
+| Trials and registries | E03 (randomized, controlled, high versus low stimulation, 115 patients aged 13 to 57, June 1990 to July 1993), E04 (open label, 123 patients aged 3 to 63), E05 (randomized, controlled), E06 (randomized, parallel group) and the Japan post-approval study (30 patients aged 4 to 11 in the efficacy analysis) [2] |
+| Primary outcomes | Japan study, ages 4 to 11: 14 of 30 reached a 50 percent seizure reduction; adjusted estimate 39 percent (95 percent CI 28 to 52). Median seizure reduction at 12 months pooled across studies: 24.7 percent in ages 4 to 11 and 40.4 percent in ages 12 and over [2] |
+| Key limitations | The S207 SSED is a multi-model summary. Contraindications include diathermy and prior bilateral or left cervical vagotomy [2] |
 
 ## Engineering tradeoffs
 
@@ -141,3 +141,4 @@ The S207 SSED lists several earlier generators (Models 102 to 106). SenTiva Mode
 3. [LivaNova SenTiva M1000 generator spec sheet](https://www.livanova.com/getcontentasset/0dbf2b2e-59cb-4547-a376-db811aa11225/dfc3d011-8f63-43f6-9ed8-4b444333a1d0/tis-sentiva-spec-sheet.pdf).
 4. [FDA PMA P970003/S218 record](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=422948).
 5. [LivaNova SenTiva technical guide](https://www.livanova.com/getcontentasset/2c75dc2a-113a-4dc1-b329-ace3ee78e7b2/dfc3d011-8f63-43f6-9ed8-4b444333a1d0/sentecgd19u1-rev-3-sentiva-technical-guide-final.pdf).
+6. [LivaNova MRI scan conditions, SenTiva Model 1000](https://www.livanova.com/epilepsy-vnstherapy/en-gb/hcp/mri-safety/q2/a), citing VNS Therapy System MRI Guidelines, October 2023.
