@@ -88,7 +88,7 @@ The first retinal prosthesis to reach routine clinical use in the US, and a case
 | Power | Battery-powered external video processing unit [2] |
 | Thermal management |  |
 | Packaging and hermeticity | Cylindrical hermetically sealed case holding an ASIC that processes received data and generates stimulation. Assembled implant interconnect met a design lifetime specification of at least 5 years in vitro under accelerated active soak [2][4] |
-| MRI compatibility |  |
+| MRI compatibility | Conditional. Bench testing (Magn Reson Imaging 2012) found magnetic field interactions acceptable and RF heating not hazardous under the test conditions, at 1.5 T and 3 T; artifacts were moderate relative to the implant size and no functional changes occurred. Authors conclude a patient may undergo MRI at 1.5 T or 3 T when manufacturer guidelines and conditions are followed [5] |
 | Surgical complexity | Vitreoretinal surgery plus scleral fixation of case, coil and band; the labeling recommends a backup implant and backup tacks for each procedure. Training is required before implanting [2] |
 | Output connectors |  |
 
@@ -156,3 +156,4 @@ The first retinal prosthesis to reach routine clinical use in the US, and a case
 2. FDA. *Argus II Retinal Prosthesis System, physician labeling.* <https://www.accessdata.fda.gov/cdrh_docs/pdf11/H110002C.pdf>
 3. IEEE Spectrum. *Their Bionic Eyes Are Now Obsolete and Unsupported.* 15 Feb 2022. <https://spectrum.ieee.org/bionic-eye-obsolete>
 4. [FDA summary of safety and probable benefit, HDE H110002](https://www.accessdata.fda.gov/cdrh_docs/pdf11/H110002B.pdf).
+5. [Assessment of MRI issues for the Argus II retinal prosthesis, PubMed 22260934](https://pubmed.ncbi.nlm.nih.gov/22260934/). Peer-reviewed bench study abstract; the manufacturer labeling conditions are on sheet 165.
