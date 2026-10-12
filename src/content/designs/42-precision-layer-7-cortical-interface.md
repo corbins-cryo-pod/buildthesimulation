@@ -2,11 +2,11 @@
 title: "Precision Layer 7 Cortical Interface"
 order: 42
 pubDate: 2026-10-06
-updatedDate: 2026-10-07
+updatedDate: 2026-10-11
 device_id: "BTSD-ACAD-0021"
 interface_class: "ecog"
 status: "human"
-last_updated: 2026-10-07
+last_updated: 2026-10-11
 description: "Precision's thin-film cortical array. The 2025 paper reports a 1,024-channel version with 977 recording, 42 stimulation-optimized and five reference electrodes; FDA Layer 7-T clearance is separate from the future wireless BCI."
 modality: "Cortical surface"
 successRank: 42
@@ -93,7 +93,7 @@ A thin-film cortical-surface electrode interface from Precision Neuroscience, wi
 | Power |  |
 | Thermal management |  |
 | Packaging and hermeticity |  |
-| MRI compatibility |  |
+| MRI compatibility | Not MRI-compatible, per the FDA 510(k) summary for Layer 7-T. The device is passive, powered by a connected FDA-cleared EEG system, has no wireless capability and no software [5] |
 | Surgical complexity | Cranial-slit delivery with a stylet in pigs and cadaver heads [1]; not demonstrated as a chronic procedure in living patients |
 | Output connectors | Interposer and connector details are not fixed [1] |
 
@@ -135,3 +135,4 @@ A thin-film cortical-surface electrode interface from Precision Neuroscience, wi
 2. [Publisher PDF of the same paper](https://www.nature.com/articles/s41551-025-01501-w.pdf). Primary affiliation and hardware record.
 3. Precision Neuroscience. [Clearance announcement](https://www.precisionneuro.io/articles/company-news/precision-neuroscience-receives-fda-clearance-for-high-resolution-cortical-electrode-array), 17 April 2025.
 4. FDA. [K242618, Layer 7-T](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K242618).
+5. [FDA 510(k) clearance letter and summary, K242618 (PDF)](https://www.accessdata.fda.gov/cdrh_docs/pdf24/K242618.pdf)
