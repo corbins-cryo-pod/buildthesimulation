@@ -2,11 +2,11 @@
 title: "Auditory brainstem implant (ABI)"
 order: 55
 pubDate: 2026-10-06
-updatedDate: 2026-10-06
+updatedDate: 2026-10-11
 device_id: "BTSD-ACAD-0034"
 interface_class: "brainstem"
 status: "human"
-last_updated: 2026-10-06
+last_updated: 2026-10-11
 description: "A paddle electrode array placed on the cochlear nucleus of the brainstem to restore sound awareness when a cochlear implant cannot work. First implanted 1979, FDA approved in 2000 for NF2. The current US device has 21 platinum contacts on an 8.5 by 3.0 mm paddle."
 modality: "Other"
 successRank: 55
@@ -88,7 +88,7 @@ The most widely placed surface stimulator in the central nervous system, and a 4
 | Power |  |
 | Thermal management |  |
 | Packaging and hermeticity |  |
-| MRI compatibility |  |
+| MRI compatibility | Cochlear MRI guidelines table lists ABI541 under the Profile group: 1.5 T with the implant magnet in place using the Nucleus MRI Kit; 3.0 T only with the implant magnet surgically removed [5] |
 | Surgical complexity |  |
 | Output connectors |  |
 
@@ -164,3 +164,4 @@ The most widely placed surface stimulator in the central nervous system, and a 4
 2. Auditory Brainstem Implants: Recent Progress and Future Perspectives. <https://pmc.ncbi.nlm.nih.gov/articles/PMC6361749/>
 3. History of cochlear implants and auditory brainstem implants. <https://pubmed.ncbi.nlm.nih.gov/16891833/>
 4. Auditory brainstem implant (Wikipedia, for the 2013 pediatric trial note only). <https://en.wikipedia.org/wiki/Auditory_brainstem_implant>
+5. [Cochlear MRI Guidelines: Nucleus, Osia, Baha](https://www.cochlear.com/us/en/professionals/resources-and-training/mri-guidelines). Manufacturer page; the full guideline document was not read.
