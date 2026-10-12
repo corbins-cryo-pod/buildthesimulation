@@ -2,11 +2,11 @@
 title: "INBRAIN graphene cortical interface"
 order: 176
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-STUP-0003"
 interface_class: "ecog"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "Thin-film graphene cortical surface interface from INBRAIN, used intraoperatively in a first-in-human study at Manchester. Company release; contact counts not published in the sources read."
 modality: "Cortical surface"
 website: "https://www.businesswire.com/news/home/20250728135880/en/INBRAIN-Neuroelectronics-Reports-Interim-Analysis-of-First-in-Human-Study-of-Graphene-Brain-Computer-Interface"
@@ -107,7 +107,7 @@ Company brief: [INBRAIN Neuroelectronics](/companies/07-inbrain-neuroelectronics
 | Stability over time |  |
 | Longevity |  |
 | Revision and explant experience |  |
-| Adverse events |  |
+| Adverse events | Company-reported (April 20, 2026): no device-related adverse events in all eight surgically treated patients up to surgical discharge, and no perioperative device failure. Ten patients were recruited and eight treated surgically; complete datasets from eight [3] |
 | Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
@@ -116,8 +116,8 @@ Company brief: [INBRAIN Neuroelectronics](/companies/07-inbrain-neuroelectronics
 | --- | --- |
 | Human subjects | Interim analysis of the first four patients at the Manchester Centre for Clinical Neurosciences; the 2024 release said 8 to 10 patients were planned [1][2] |
 | Preclinical cohort |  |
-| Follow-up duration |  |
-| Indications |  |
+| Follow-up duration | Intraoperative use during tumor resection; the primary safety endpoint includes a 90-day post-operative monitoring period with imaging (company release) [3] |
+| Indications | Investigational use during brain tumor resection surgery, including awake procedures where patients named objects for speech decoding; not an approved indication [3] |
 | Trials and registries | NCT06368310, sponsor University of Manchester; chief investigator David Coope [1] |
 | Primary outcomes | Company-reported: no device-related adverse events in the first four patients; during awake language mapping the device captured distinct high-gamma activity linked to different phonemes [1] |
 | Key limitations | Intraoperative, short-term use in tumor surgery. Contact counts, pitch and dimensions were not in the sources read. Company release [1][2] |
@@ -138,3 +138,4 @@ The configuration in the interim analysis of July 2025. Enrolment completion was
 
 1. [INBRAIN interim analysis release, July 28, 2025](https://www.businesswire.com/news/home/20250728135880/en/INBRAIN-Neuroelectronics-Reports-Interim-Analysis-of-First-in-Human-Study-of-Graphene-Brain-Computer-Interface).
 2. [ICN2, first human application, September 27, 2024](https://icn2.cat/en/news/5327-icn2-spin-off-inbrain-neuroelectronics-achieves-the-world-s-first-application-of-a-graphene-brain-computer-interface-in-a-human-patient-2).
+3. [INBRAIN Neuroelectronics, enrolment completed in first-in-human study, Business Wire, April 20, 2026](https://www.businesswire.com/news/home/20260420000990/en/INBRAIN-Neuroelectronics-Completes-Enrolment-of-Worlds-First-in-Human-Study-of-Graphene-Neural-Interfaces-for-Brain-Decoding-Mapping). Company press release.
