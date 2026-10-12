@@ -2,11 +2,11 @@
 title: "Medtronic Inceptiv closed-loop SCS"
 order: 154
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-FDA-0005"
 interface_class: "scs"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "FDA-approved Medtronic spinal cord stimulator with closed-loop ECAP sensing, approved April 2024. Values rest on the FDA supplement record and Medtronic's announcement; the SSED was not read."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P840001S512"
@@ -46,14 +46,14 @@ Company brief: [Medtronic plc](/companies/53-medtronic-company-brief/).
 | Interface type | Closed-loop feature approved for Vectris SureScan MRI 1x8 Compact leads, models 977A260, 977A275 and 977A290 only [1] |
 | Array layout | 1x8 lead per the model names [1] |
 | Electrode count | 8 contacts per Vectris 1x8 Compact lead (from the lead name) [1] |
-| Pitch |  |
-| Electrode lengths |  |
+| Pitch | Vectris SureScan MRI 1x8 Compact leads (977A260, 977A275, 977A290): 4.0 mm spacing per the Medtronic product page. A 2021 recall (FDA Z-2159-2021, 1,131 units, EU distribution) covered specific PINs of these kits for incorrect electrode spacing printed on box and sterile pack labels [4][5] |
+| Electrode lengths | Contact length 3.0 mm on 8 contacts; lead lengths 60, 75 and 90 cm for models 977A260, 977A275 and 977A290 respectively [4] |
 | Shank width and thickness |  |
 | Tip and exposed site geometry |  |
 | Contact coating |  |
 | Insulation |  |
-| Insertion method |  |
-| Anchoring and fixation |  |
+| Insertion method | Kit includes bent and straight 0.30 mm stylets, guidewire, passing straw, 14 ga 3.5 in Tuohy needles and a tunneling tip and rod, per the Vectris SureScan kit contents [4] |
+| Anchoring and fixation | Kit includes an Injex bumpy anchor with an anchor dispenser tool [4] |
 
 ## Electrode and channel physics
 
@@ -138,3 +138,5 @@ The approval covers Inceptiv, Inceptiv LT and Intellis Pro neurostimulators. Inc
 1. [FDA PMA P840001/S512 record](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P840001S512).
 2. [Medtronic announcement, April 26, 2024](https://news.medtronic.com/2024-04-26-Medtronic-receives-FDA-approval-for-Inceptiv-TM-closed-loop-spinal-cord-stimulator).
 3. Medtronic (manufacturer labeling, Inceptiv 977119, Inceptiv LT 977117 and Intellis Pro 977118 rechargeable neurostimulators implant manual), as hosted by the Slovak Ministry of Health categorization site (Slovak host; the manual itself is Medtronic's). [Implant manual](https://kategorizacia.mzsr.sk/Pomocky/Download/RequestAttachment/129256). Physical and operating tables read October 9, 2026; hosted copy not dated.
+4. [Medtronic Vectris SureScan MRI surgical lead product page](https://www.medtronic.com/en-us/healthcare-professionals/products/neurological/spinal-cord-stimulation/mri-leads/vectris-surescan-surgical-lead.html), manufacturer.
+5. [FDA recall record Z-2159-2021, Medtronic Vectris SureScan MRI lead kits](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfRes/res.cfm?id=188265).
