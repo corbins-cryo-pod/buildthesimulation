@@ -2,11 +2,11 @@
 title: "Cochlear Nucleus implant system"
 order: 161
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-FDA-0012"
 interface_class: "cochlear"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "FDA-approved cochlear implant family, newest implant series CI1000 approved July 2025. Thinly sourced from the FDA supplement record and a Cochlear announcement; electrode specifications are not yet on the sheet."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?id=P840024S096"
@@ -52,8 +52,8 @@ Company brief: [Cochlear Corporation](/companies/36-cochlear-corporation-company
 | Shank width and thickness | Apical tip 0.5 mm (CI1012) or 0.3 mm (CI1022); basal diameter 0.8 mm (CI1012) or 0.6 mm (CI1022); Slim Modiolar basal 0.475 x 0.5 mm [5] |
 | Tip and exposed site geometry | Half-banded platinum contacts on CI1012 and CI1022; Softip at the apical end [3, 4] |
 | Contact coating |  |
-| Insulation |  |
-| Insertion method |  |
+| Insulation | Silicone coating on the lead and array (the CI1012 sheet states all listed measurements include the silicone coating); implant body in a titanium casing [6] |
+| Insertion method | CI1012 Contour Advance is pre-curved and held straight by a platinum stylet for the Advance Off-Stylet (AOS) technique; three silicone ribs and a white marker indicate insertion depth. Suitable for extended round window or cochleostomy surgery, per Cochlear [6] |
 | Anchoring and fixation |  |
 
 ## Electrode and channel physics
@@ -68,7 +68,7 @@ Company brief: [Cochlear Corporation](/companies/36-cochlear-corporation-company
 | Sampling rate |  |
 | Stimulation capability | Biphasic current pulses; monopolar, bipolar or common ground; amplitude 0 to 1750 µA nominal at 37 C; pulse width 9.6 to 400 µs per phase [3] |
 | Charge injection limit |  |
-| Reference and ground |  |
+| Reference and ground | Extracochlear electrode plate and a separate extracochlear electrode lead; stimulation modes monopolar, bipolar or common ground [6] |
 
 ## Tissue interface and bioresponse
 
@@ -87,7 +87,7 @@ Company brief: [Cochlear Corporation](/companies/36-cochlear-corporation-company
 
 | Field | Value and source scope |
 | --- | --- |
-| Onboard electronics |  |
+| Onboard electronics | Upgradeable implant firmware, non-volatile memory, optimised power management, implant ID and type check so the processor can confirm it is coupled to the nominated implant; integrated telemetry modes NRT, AutoNRT, ESRT, ABR and intraoperative NRT [6] |
 | Data path | Nucleus 8 processor streams audio directly and is ready for Bluetooth LE Audio; Nucleus Smart App allows setting changes and remote care and firmware updates [2] |
 | Telemetry bandwidth |  |
 | Sampling rate |  |
@@ -141,3 +141,4 @@ S096 covers CI1000 Series implants, the Nucleus 8 and Kanso 3 processors and a s
 3. Cochlear (manufacturer technical specifications). [Nucleus Nexa implant with Contour Advance electrode (CI1012)](https://assets.cochlear.com/api/public/content/FUN5450-Nucleus-Nexa-CI1012-Tech-Specs.pdf), January 2025 issue.
 4. Cochlear (manufacturer technical specifications). [Nucleus Nexa implant with Slim Straight electrode (CI1022)](https://assets.cochlear.com/api/public/content/FUN5451-Nucleus-Nexa-CI1022-Tech-Specs.pdf).
 5. Cochlear (manufacturer technical specifications). [Nucleus Nexa implant with Slim Modiolar electrode (CI1032)](https://assets.cochlear.com/api/public/content/FUN5453-Nucleus-Nexa-CI1032-Tech-Specs.pdf).
+6. [Cochlear Nucleus Nexa CI1012 technical specifications](https://assets.cochlear.com/api/public/content/FUN5450-Nucleus-Nexa-CI1012-Tech-Specs.pdf), manufacturer document. Applies to the CI1012 implant.
