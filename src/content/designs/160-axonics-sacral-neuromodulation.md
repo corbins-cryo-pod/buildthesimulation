@@ -2,11 +2,11 @@
 title: "Axonics sacral neuromodulation"
 order: 160
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-FDA-0011"
 interface_class: "pni"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "FDA-approved rechargeable sacral neuromodulation system with a four-contact tined lead. Values come from the 2019 FDA summary for the fecal incontinence indication."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf19/P190006b.pdf"
@@ -80,7 +80,7 @@ Company brief: [Boston Scientific Corporation](/companies/55-boston-scientific-c
 | Gliosis and encapsulation |  |
 | Neuron loss near sites |  |
 | Foreign-body response mitigation |  |
-| Typical failure modes |  |
+| Typical failure modes | Labeled potential adverse effects include adverse change in voiding function (bowel or bladder), allergic or immune response to implanted materials leading to device rejection, and undesirable change in pelvic function [1] |
 
 ## System architecture
 
@@ -92,7 +92,7 @@ Company brief: [Boston Scientific Corporation](/companies/55-boston-scientific-c
 | Sampling rate |  |
 | Power | Rechargeable battery, 50 mAh at 3.6 V nominal; device life 15 years at moderate energy [1] |
 | Thermal management |  |
-| Packaging and hermeticity |  |
+| Packaging and hermeticity | SSED design verification requires the IPG enclosure to be hermetically sealed, with a helium leak rate below 1e-9 atm-cc/s after environmental testing; this is an acceptance criterion, not a reported measurement [1] |
 | MRI compatibility | The P180046 SSED lists MRI testing for 1.5T and 3T head coil and 1.5T full body coil, with conditions in the labeling; the specific conditions were not read [2] |
 | Surgical complexity | Trial phase with a temporary or percutaneous lead, then a permanent lead and an IPG pocket in the upper buttock [1] |
 | Output connectors |  |
