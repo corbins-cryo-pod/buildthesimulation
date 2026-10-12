@@ -2,11 +2,11 @@
 title: "SPR SPRINT percutaneous PNS"
 order: 164
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-FDA-0015"
 interface_class: "pni"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "FDA-cleared temporary percutaneous peripheral nerve stimulation system with a wearable pulse generator, cleared January 2023 under 510(k) K223306. Thinly sourced; many cells stay blank."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223306.pdf"
@@ -93,7 +93,7 @@ Company brief: [SPR Therapeutics, Inc.](/companies/63-spr-therapeutics-company-b
 | Power | External pulse generator with a rechargeable lithium ion polymer battery [4] |
 | Thermal management |  |
 | Packaging and hermeticity | Pulse generator, rechargeable battery and remote housing in ABS plastic; pulse generator mass 0.030 kg; worn on the body, not implanted [4] |
-| MRI compatibility |  |
+| MRI compatibility | Manufacturer page: the SPRINT PNS System is MR Unsafe, and all MRI procedures at any anatomic site are contraindicated while it is implanted; the lead and all system components must be removed before MRI. A retained lead remnant only is MR Conditional at 1.5 T or 3.0 T under stated conditions. Patients implanted before September 1, 2022 are directed to contact SPR for MRI information [5] |
 | Surgical complexity |  |
 | Output connectors |  |
 
@@ -139,3 +139,4 @@ K223306 adds a configuration that provides a second lead. Earlier clearances are
 2. [FDA 510(k) summary text within K223306](https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223306.pdf).
 3. [FDA 510(k) database record, K223306](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K223306).
 4. FDA 510(k) summary within K223306 (SPR Therapeutics, SPRINT PNS System), technological characteristics table comparing with predicate K211801. [FDA PDF](https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223306.pdf).
+5. [SPRINT PNS System MRI Safety Information, SPR Therapeutics](https://www.sprpainrelief.com/sprint-pns-system/mri-safety-information). Manufacturer page.
