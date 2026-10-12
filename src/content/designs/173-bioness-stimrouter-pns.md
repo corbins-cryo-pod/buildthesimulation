@@ -2,11 +2,11 @@
 title: "Bioness StimRouter PNS"
 order: 173
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-FDA-0024"
 interface_class: "pni"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "FDA-cleared peripheral nerve stimulation lead with an integrated receiver driven by an external transmitter, latest 510(k) read cleared February 2022. Thin: 510(k) text only."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf21/K211965.pdf"
@@ -93,7 +93,7 @@ Company brief: [Bioness Inc.](/companies/68-bioness-company-brief/).
 | Power | No implanted battery described; stimulation energy comes from the external transmitter [1] |
 | Thermal management |  |
 | Packaging and hermeticity |  |
-| MRI compatibility |  |
+| MRI compatibility | Manufacturer page: a patient with an implanted StimRouter lead can be scanned, including immediately after implantation, under stated conditions at 1.5 T and 3 T. If the entire lead is at least 50 cm from the bore center and transmit-RF body coil center, whole-body-averaged SAR must not exceed 2 W/kg (1.5 T/64 MHz or 3 T/128 MHz, normal operating mode); otherwise B1+rms and SAR limits in Table 3.1 of the MRI Guidelines apply. External components (electrode, External Electric Field Conductor, Patient Programmer) must be removed before entering the MRI environment [4] |
 | Surgical complexity |  |
 | Output connectors |  |
 
@@ -138,3 +138,4 @@ K211965 is the latest StimRouter clearance read. Earlier clearances K190047, K14
 1. [FDA 510(k) clearance and summary, K211965](https://www.accessdata.fda.gov/cdrh_docs/pdf21/K211965.pdf).
 2. [FDA 510(k) clearance letter, K200482](https://www.accessdata.fda.gov/cdrh_docs/pdf20/K200482.pdf).
 3. FDA 510(k) summary within K211965 (Bioness StimRouter, modified), technological comparison with predicate K200482. [FDA PDF](https://www.accessdata.fda.gov/cdrh_docs/pdf21/K211965.pdf)
+4. [StimRouter MRI Safety page, stimrouter.com](https://stimrouter.com/physicians/mri-safety-following-stimrouter-implant/). Manufacturer page; the full MRI Guidelines document was not read.
