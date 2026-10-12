@@ -2,11 +2,11 @@
 title: "Nalu neurostimulation system PNS"
 order: 172
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-FDA-0023"
 interface_class: "pni"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "FDA-cleared miniature peripheral nerve stimulator powered by a worn Therapy Disc, cleared 2019 with later 510(k)s through 2024. Thin: 510(k) text only."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf18/K183579.pdf"
@@ -93,7 +93,7 @@ Company brief: [Nalu Medical, Inc.](/companies/67-nalu-medical-company-brief/).
 | Power | Implant has no battery in the description read; the externally worn Therapy Disc holds a rechargeable lithium-ion battery and is held by an adhesive clip or belt [1] |
 | Thermal management |  |
 | Packaging and hermeticity | Implant housing silicone with Pellethane 2363-55D over a ceramic hermetic enclosure; IPG 28 x 11 x 4.9 mm [1, 3] |
-| MRI compatibility |  |
+| MRI compatibility | Manufacturer MRI safety sheet (MA-000105 Rev A): intro text says whole-body scans at 1.5 T; its conditions table lists 1.5 T or 3.0 T, cylindrical scanner, stimulation OFF, no external devices, 20 T/m maximum spatial gradient, 200 T/m/s slew rate, first level controlled SAR (10 W/kg partial body, 3.2 W/kg head), scans up to 15 minutes, with head and extremity transmit/receive coils only. Artifact about 10 mm from the implant (gradient echo, 3 T) in non-clinical testing [4] |
 | Surgical complexity |  |
 | Output connectors |  |
 
@@ -138,3 +138,4 @@ Description is from K183579 (2019). K232415 (decision August 21, 2024) is the la
 1. [FDA 510(k) clearance and summary, K183579](https://www.accessdata.fda.gov/cdrh_docs/pdf18/K183579.pdf).
 2. [FDA 510(k) record, K232415](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfPMN/pmn.cfm?ID=K232415).
 3. FDA 510(k) summary within K183579 (Nalu Medical), substantial equivalence comparison table, subject device column. [FDA PDF](https://www.accessdata.fda.gov/cdrh_docs/pdf18/K183579.pdf)
+4. [Nalu MRI Safety Information, MA-000105 Rev A](https://nalumed.com/wp-content/uploads/2024/11/MA-000105-Rev-A.pdf). Manufacturer document; the sheet's intro (1.5 T) and conditions table (1.5 T or 3.0 T) differ, both shown.
