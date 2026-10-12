@@ -2,11 +2,11 @@
 title: "SetPoint vagus nerve stimulation for rheumatoid arthritis"
 order: 159
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-FDA-0010"
 interface_class: "pni"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "FDA-approved vagus nerve stimulator for rheumatoid arthritis, approved July 2025. Values come from the FDA summary of safety and effectiveness; trial efficacy numbers were not extracted."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf24/P240039B.pdf"
@@ -93,7 +93,7 @@ Company brief: [SetPoint Medical](/companies/59-setpoint-medical-company-brief/)
 | Power | Rechargeable by a neck-worn Charger used about once a week for about 10 minutes; not for patients who cannot safely use it, including those with a pacemaker or defibrillator [1] |
 | Thermal management |  |
 | Packaging and hermeticity |  |
-| MRI compatibility |  |
+| MRI compatibility | Manufacturer MRI manual: Implant and Pod are MR Conditional; scans anywhere in the body at 1.5 T or 3.0 T from two weeks after implantation. Conditions: horizontal cylindrical closed-bore scanner, maximum spatial gradient 30 T/m, slew rate 200 T/m/s per axis, circularly polarized RF, whole-body average SAR 2.0 W/kg or less, up to 1 hour continuous scanning in Normal Operating Mode, integrated body transmit coil or local transmit coil except for head and neck imaging (no transmit/receive head coil). Artifact extends about 45 mm from the implant in non-clinical gradient echo testing [3] |
 | Surgical complexity |  |
 | Output connectors |  |
 
@@ -137,3 +137,4 @@ There is one approved system configuration. The SSED reports that the system had
 
 1. [FDA summary of safety and effectiveness data, P240039](https://www.accessdata.fda.gov/cdrh_docs/pdf24/P240039B.pdf).
 2. [FDA PMA P240039 record](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P240039).
+3. [SetPoint System MRI Safety Information Manual](https://setpointmedical.com/wp-content/uploads/2025/07/DWG_65172_SetPoint_System_Magnetic_Resonance_Imaging__MRI__Safety_Information_Manual.pdf). Manufacturer document.
