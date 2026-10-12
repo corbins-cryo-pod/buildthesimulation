@@ -2,11 +2,11 @@
 title: "Abbott Liberta RC DBS system"
 order: 152
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-FDA-0003"
 interface_class: "dbs"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "FDA-approved rechargeable DBS system from Abbott, approved by supplement S087 of PMA P140009 in January 2024. Many fields stay blank because the FDA record and company pages do not give them."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P140009S087"
@@ -93,10 +93,10 @@ Company brief: [Abbott Medical](/companies/54-abbott-company-brief/).
 | Sampling rate |  |
 | Power | Rechargeable cell; Abbott states a charging frequency of 10 times per year (manufacturer claim). The charger holds two full IPG charges and has an alternate cell battery part number from an existing supplier [1][2] |
 | Thermal management |  |
-| Packaging and hermeticity |  |
-| MRI compatibility |  |
+| Packaging and hermeticity | Volume reported by Abbott from engineering-model measurements: 13.79 cc in the January 2024 launch release and 13.6 cc in the current product page footnote. Both are company comparison figures. Hermeticity is not stated in these sources [4][5] |
+| MRI compatibility | MR Conditional as a full system with IPG model 62400 implanted in the pectoral or abdominal location, with approved leads and extensions. Scan parameters are in Abbott's MRI procedure manual [6]. The Shellock MR list records 1.5 T conditional status [7] |
 | Surgical complexity |  |
-| Output connectors |  |
+| Output connectors | Abbott states mixed-system compatibility with non-Abbott leads and extensions, and lists an 8-channel adapter clinician's manual among its sources. Connector geometry is not given on the page (manufacturer claim) [4] |
 
 ## Performance envelope
 
@@ -105,7 +105,7 @@ Company brief: [Abbott Medical](/companies/54-abbott-company-brief/).
 | Acute yield |  |
 | Chronic yield |  |
 | Stability over time |  |
-| Longevity |  |
+| Longevity | Abbott states a recharge needed as few as every 37 days (10 times per year) at nominal stimulation settings. This is a manufacturer claim and depends on programming [4][5] |
 | Revision and explant experience |  |
 | Adverse events |  |
 | Notable demonstrations |  |
@@ -117,7 +117,7 @@ Company brief: [Abbott Medical](/companies/54-abbott-company-brief/).
 | Human subjects |  |
 | Preclinical cohort |  |
 | Follow-up duration |  |
-| Indications |  |
+| Indications | Bilateral STN or GPi stimulation as adjunct for advanced levodopa-responsive Parkinson's disease; unilateral or bilateral VIM stimulation for disabling upper-extremity tremor in adult essential tremor [4] |
 | Trials and registries | S087 is a normal 180-day supplement for design, components, specifications and material changes [1] |
 | Primary outcomes |  |
 | Key limitations | This sheet rests on the FDA supplement record and Abbott marketing pages. Lead geometry, sensing and clinical data were not located in a primary Abbott or FDA document [1][2] |
@@ -139,3 +139,7 @@ The sheet covers the Liberta RC IPG (model 62400) and charger kit (model 66000) 
 1. [FDA PMA P140009/S087 record](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P140009S087).
 2. [Abbott Liberta RC rechargeable DBS page](https://www.neuromodulation.abbott/int/en/healthcare-professionals/movement-disorders/rechargeable-dbs.html).
 3. [FDA summary of safety and effectiveness data, Abbott Infinity DBS System, P140009/S039](https://www.accessdata.fda.gov/cdrh_docs/pdf14/P140009S039B.pdf).
+4. [Abbott Liberta RC DBS System product page, with indications and comparison footnotes](https://www.neuromodulation.abbott/us/en/healthcare-professionals/movement-disorders/rechargeable-dbs.html).
+5. [Abbott launch release, January 25, 2024](https://abbott.mediaroom.com/2024-01-25-Abbott-Launches-Worlds-Smallest-Rechargeable-System-With-Remote-Programming-Capabilities-to-Treat-Movement-Disorders).
+6. [Abbott MRI support page for neurostimulation](https://www.neuromodulation.abbott/us/en/healthcare-professionals/mri-support.html).
+7. [MRIsafety.com list entry, Liberta DBS System model 62400](https://www.mrisafety.com/TMDL_view.php?editid1=9266).
