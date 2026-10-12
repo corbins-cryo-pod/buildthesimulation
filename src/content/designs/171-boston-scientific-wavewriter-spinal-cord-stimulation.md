@@ -2,11 +2,11 @@
 title: "Boston Scientific WaveWriter spinal cord stimulation"
 order: 171
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-FDA-0022"
 interface_class: "scs"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "FDA-approved Boston Scientific spinal cord stimulation family (Spectra WaveWriter, WaveWriter Alpha, Alpha Prime), with the SOLIS trial for patients without prior back surgery. Lead contact counts and IPG dimensions are not in the FDA summary read."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf3/P030017S363B.pdf"
@@ -45,7 +45,7 @@ Company brief: [Boston Scientific Corporation](/companies/55-boston-scientific-c
 | --- | --- |
 | Interface type | Percutaneous leads (Linear, Linear ST, Linear 3-4, Linear 3-6, Infinion, Infinion CX, Avista MRI) and surgical leads (CoverEdge, CoverEdge X, Artisan) [1] |
 | Array layout |  |
-| Electrode count |  |
+| Electrode count | IPGs drive 16 or 32 contacts depending on model. Leads in the WaveWriter Alpha labeling: Avista MRI 8 contact, Infinion 16 contact percutaneous, Artisan 2x8 surgical paddle (16), CoverEdge 4x8 surgical paddle (32). 16-contact IPG systems support any combination of leads totaling up to 16 active contacts [3][4] |
 | Pitch |  |
 | Electrode lengths |  |
 | Shank width and thickness |  |
@@ -53,7 +53,7 @@ Company brief: [Boston Scientific Corporation](/companies/55-boston-scientific-c
 | Contact coating |  |
 | Insulation |  |
 | Insertion method |  |
-| Anchoring and fixation |  |
+| Anchoring and fixation | Avista MRI leads are secured with the suture sleeves supplied in the lead kit or the Clik X MRI anchor; the IFU warns against polypropylene sutures at the IPG [3] |
 
 ## Electrode and channel physics
 
@@ -65,7 +65,7 @@ Company brief: [Boston Scientific Corporation](/companies/55-boston-scientific-c
 | Noise floor or SNR |  |
 | Recording modality |  |
 | Sampling rate |  |
-| Stimulation capability |  |
+| Stimulation capability | 4 areas (channels). Amplitude 0 to 25.5 mA, rate 2 to 1200 Hz, pulse width 20 to 1000 microseconds, cycling 0 sec to 90 min, ramp up 1 to 10 sec. Contacts programmable 1 to 16 (16-contact IPG) or 1 to 32 (32-contact IPG), with the IPG case selectable as +100 to -100 percent [3] |
 | Charge injection limit |  |
 | Reference and ground |  |
 
@@ -90,10 +90,10 @@ Company brief: [Boston Scientific Corporation](/companies/55-boston-scientific-c
 | Data path |  |
 | Telemetry bandwidth |  |
 | Sampling rate |  |
-| Power |  |
+| Power | Rechargeable WaveWriter Alpha and Alpha 16 IPGs: battery stated to provide at least 5 years and up to 25 years or more of service, recharge intervals from once a week to once a month, depending on settings. WaveWriter Alpha Prime and Prime 16 IPGs are non-rechargeable [3] |
 | Thermal management |  |
-| Packaging and hermeticity |  |
-| MRI compatibility |  |
+| Packaging and hermeticity | Case titanium (18 to 57 percent of IPG weight), epoxy header (42 to 82 percent), silicone strain relief. Size including header: Alpha Prime 75 x 49.6 x 11.6 mm (36.6 cc); Alpha Prime 16 72 x 49.6 x 11.6 mm (34.9 cc); Alpha 55.6 x 46 x 10.7 mm (21.6 cc); Alpha 16 52.1 x 46 x 10.7 mm (20.1 cc). The source text prints volume units as "cm", read here as cc [3] |
+| MRI compatibility | Full-body MRI eligibility only under the ImageReady MRI conditions: use only ImageReady MRI components as listed in the MRI guidelines, explant abandoned leads, extensions, splitters or adapters, and record component numbers on the eligibility checklist. Boston Scientific states MRI conditional adapters exist for connecting Abbott or Medtronic leads (manufacturer claim) [3][5] |
 | Surgical complexity |  |
 | Output connectors | Adaptors connect other manufacturers' leads (M8 for Medtronic leads, S8 for Abbott leads); lead extensions 25, 35 and 55 cm [1] |
 
@@ -137,3 +137,6 @@ S363 covers Spectra WaveWriter, WaveWriter Alpha and WaveWriter Alpha Prime. The
 
 1. [FDA summary of safety and effectiveness, P030017/S363](https://www.accessdata.fda.gov/cdrh_docs/pdf3/P030017S363B.pdf).
 2. [FDA PMA record, P030017/S363](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?id=P030017S363).
+3. [Boston Scientific WaveWriter Alpha and Alpha Prime IPG instructions for use](https://www.bostonscientific.com/content/dam/elabeling/nm/92959607-02_A_WaveWriter_Alpha_WW_Alpha_Prime_IPG_IFU_multi-OUS_s.pdf).
+4. [Boston Scientific WaveWriter Alpha and Alpha Prime implantable pulse generator manual](https://www.bostonscientific.com/content/dam/elabeling/nm/92469342-02_WaveWriter_Alpha_and_WaveWriter_Alpha_Prime_Implantable_Pulse_Generator_multi-OUS_s.pdf).
+5. [Boston Scientific WaveWriter Alpha SCS product page](https://www.bostonscientific.com/en-US/medical-specialties/pain-management/wavewriter-alpha-scs.html).
