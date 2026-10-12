@@ -6,6 +6,10 @@ Initial audit base: `6104dd0`. Continued against updated main `26387b9`
 (manufacturer/FDA device-sheet changes); these unrelated changes were preserved.
 Branch: `feature/cortex-laboratory-foundation`. No production merge or deploy.
 
+Review: [draft PR #243](https://github.com/corbins-cryo-pod/buildthesimulation/pull/243).
+Implementation commit: `3f0e25e6cd3cd985c4b3ff31503b14273f34a7da`.
+The PR carries the latest CI status and outstanding browser-review checklist.
+
 Implemented the `/cortex/` workspace and `/cortex/methods/`, one shared world,
 catalog Utah placement, synthetic lamination/passive arbor, three protocols,
 point/line-source recording, bipolar field section, trace/compartment inspection,
@@ -18,6 +22,8 @@ baseline repository suite: 71 passing tests. Full run: **101/101 tests passed**;
 Astro built **436 pages** with no warnings on a fresh-cache build. Post-build
 route/search/worker asset assertions passed. The worker bridge produced identical
 typed outputs and monotonic progress; browser cancellation/lifecycle remains to review.
+Static checks follow the current HTML component and its linked worker, so stale
+hashed assets from incremental builds cannot satisfy the wiring check.
 
 Scientific correction during development: terminal-compartment synaptic placement
 moved under refinement. Replaced by a fixed 100 µm physical input patch; kept
