@@ -2,11 +2,11 @@
 title: "Advanced Bionics HiRes Ultra 3D cochlear implant"
 order: 169
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-FDA-0020"
 interface_class: "cochlear"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "FDA-approved cochlear implant with a 16-contact HiFocus electrode, specified from the manufacturer's surgeon manual and the FDA PMA record P960058. Clinical data not extracted yet."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P960058S166"
@@ -52,23 +52,23 @@ Company brief: [Advanced Bionics](/companies/66-advanced-bionics-company-brief/)
 | Shank width and thickness |  |
 | Tip and exposed site geometry |  |
 | Contact coating |  |
-| Insulation |  |
-| Insertion method |  |
-| Anchoring and fixation |  |
+| Insulation | Flexible silicone carrier; telemetry coil wires (gold-braided and platinum-shield) in flexible silicone, reinforced with high-density polymer fiber [1] |
+| Insertion method | HiFocus SlimJ: free-hand insertion with optional forceps. HiFocus Mid-Scala: free-hand with stylet or optional insertion tool (reloadable 2 times maximum). Maximum 3 insertions for either array [1] |
+| Anchoring and fixation | Implant seated in a recess drilled in the skull; ramped recess with optional suture-to-bone fixation described as an alternate placement method [1] |
 
 ## Electrode and channel physics
 
 | Field | Value and source scope |
 | --- | --- |
-| Exposed site area |  |
+| Exposed site area | Minimum exposed contact area 0.12 mm2 [1] |
 | Electrode material | Platinum contacts on platinum-iridium wires in a flexible silicone carrier; minimum exposed contact area 0.12 mm2 [1] |
-| Impedance (with measurement frequency) |  |
+| Impedance (with measurement frequency) | Impedance measurement accuracy 2.5 kohm. Measurement frequency is not stated in the manual [1] |
 | Noise floor or SNR |  |
-| Recording modality |  |
-| Sampling rate |  |
+| Recording modality | Neural response imaging (NRI) through the implant, with impedance measurement, ESRT and integrity testing as diagnostics [1] |
+| Sampling rate | ADC resolution 9 bits, sampling rate 25 kHz [1] |
 | Stimulation capability | Up to 83,000 pulses per second (software limited); 16 independent output circuits; up to 120 sites of stimulation (software limited); pulse amplitude 0-2040 uA; pulse width 10.78-229 us; monopolar configuration [1] |
 | Charge injection limit |  |
-| Reference and ground |  |
+| Reference and ground | Two grounds: case ground and a ring ground integrated on the lead; monopolar stimulation configuration [1] |
 
 ## Tissue interface and bioresponse
 
@@ -90,10 +90,10 @@ Company brief: [Advanced Bionics](/companies/66-advanced-bionics-company-brief/)
 | Onboard electronics | Hermetically sealed titanium case with removable magnet and telemetry coil in silicone; 25 mm wide at case, 28.5 mm at antenna, 56.2 mm long, 4.5 mm thick; 11 g; volume 4800 mm3 [1] |
 | Data path | Bi-directional inductive telemetry; 90 kHz information update rate; neural response imaging and impedance diagnostics [1] |
 | Telemetry bandwidth |  |
-| Sampling rate |  |
+| Sampling rate | 25 kHz ADC sampling for the neural response measurement path, 9 bit resolution [1] |
 | Power |  |
 | Thermal management |  |
-| Packaging and hermeticity |  |
+| Packaging and hermeticity | Hermetically sealed titanium case 4.5 mm thick; housing 25 or 28.5 mm x 56.2 mm in flexible silicone; weight 11 g; volume 4800 mm3 (housing and telemetry coil). Impact resistance exceeds EN 45502-2-3:2010; withstands pressure to 42 m water depth (4 ATM gauge, 413 kPa) [1] |
 | MRI compatibility | Magnet can be left in place for 1.5 T and 3.0 T MRI scans per the surgeon manual; see the MRI safety document [1] |
 | Surgical complexity | Free-hand or stylet insertion; a maximum of 3 insertions for either electrode [1] |
 | Output connectors |  |

@@ -2,11 +2,11 @@
 title: "Abbott Proclaim XR spinal cord stimulation"
 order: 170
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-FDA-0021"
 interface_class: "scs"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "FDA-approved Abbott spinal cord stimulation family (Prodigy, Proclaim XR, Proclaim Plus, Externa), indications expanded to diabetic neuropathy and non-surgical back pain in 2023. Thin: hardware specs not in the FDA summary read."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf/P010032S189B.pdf"
@@ -80,7 +80,7 @@ Company brief: [Abbott Medical](/companies/54-abbott-company-brief/).
 | Gliosis and encapsulation |  |
 | Neuron loss near sites |  |
 | Foreign-body response mitigation |  |
-| Typical failure modes |  |
+| Typical failure modes | Labeling attributes undesirable changes in stimulation over time to cellular changes around the electrodes, electrode position change, loose connections or lead failure; lead migration and battery failure are also listed [1] |
 
 ## System architecture
 
@@ -105,8 +105,8 @@ Company brief: [Abbott Medical](/companies/54-abbott-company-brief/).
 | Chronic yield |  |
 | Stability over time |  |
 | Longevity | Abbott states up to 10 years of battery life for the recharge-free Proclaim XR at the lowest dose setting (0.6 mA, 500 ohms, 30 s on and 360 s off); that is a manufacturer claim at one setting and shorter at higher doses. Cell: 5.3 Ah (XR 5) and 7.5 Ah (XR 7), carbon monofluoride/silver vanadium oxide [4, 5] |
-| Revision and explant experience |  |
-| Adverse events |  |
+| Revision and explant experience | The S189 Medicare claims analysis counted device removal, reimplant and revision after implantation as safety events, compared between a diabetic neuropathy cohort and a non-DPN cohort. Counts are not given in the portion read [1] |
+| Adverse events | Labeled potential adverse effects: epidural hemorrhage, hematoma, infection, spinal cord compression, paralysis, CSF leakage, seroma, persistent pain at the electrode or IPG site, lead migration, battery failure or leakage, allergic or rejection response to materials, implant migration or skin erosion, radicular chest wall stimulation, and stimulation-dependent gastrointestinal or bladder symptoms. Patients on anticoagulants may be at higher risk of hematoma [1] |
 | Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
@@ -115,7 +115,7 @@ Company brief: [Abbott Medical](/companies/54-abbott-company-brief/).
 | --- | --- |
 | Human subjects |  |
 | Preclinical cohort |  |
-| Follow-up duration |  |
+| Follow-up duration | Medicare claims analysis for S189 followed safety events up to 12 months after implantation, for patients implanted between January 1, 2014 and September 30, 2020 [1] |
 | Indications | Chronic intractable pain of the trunk and/or limbs, including failed back surgery syndrome, intractable low back and leg pain, and diabetic peripheral neuropathy of the lower extremities (S189 wording) [1] |
 | Trials and registries | S189 rested mainly on a systematic review of the published literature (1984-2022), two randomized controlled trials in diabetic peripheral neuropathy and Medicare claims data [1] |
 | Primary outcomes |  |
