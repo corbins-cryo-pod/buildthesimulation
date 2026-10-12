@@ -2,11 +2,11 @@
 title: "Science PRIMA subretinal photovoltaic implant"
 order: 177
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-STUP-0004"
 interface_class: "retinal"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "Subretinal 378-pixel photovoltaic implant with near-infrared camera glasses for geographic atrophy, with a 38-participant European study published in NEJM in October 2025."
 modality: "Other"
 website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7618305/"
@@ -32,8 +32,8 @@ Company brief: [Science Corporation](/companies/06-science-corporation-company-b
 | Manufacturer | Science Corporation, Alameda, California [1][2] |
 | Interface class | Subretinal photovoltaic retinal prosthesis, wirelessly activated by light [1] |
 | Origin | Company device; the paper reports a multicenter study at 17 sites in 5 European countries [1] |
-| First demonstrated |  |
-| First human implant |  |
+| First demonstrated | Feasibility trial in five participants: three reliably recognized letter sequences, with acuity near the 20/420 limit set by the 100 um pixels; mean 20/135 at 4 years (reference 21 of the paper) [1] |
+| First human implant | First-in-human feasibility trial of PRIMA in five participants with geographic atrophy, preceding PRIMAvera; implant date not stated in the paper text read [1] |
 | Species studied | Human [1] |
 | Regulatory status | CE marked under the EU Medical Device Regulation (DEKRA), commercial launch in Europe announced July 22, 2026, and later reported available in the UK; US: FDA review pending, with Breakthrough Device and Humanitarian Use Device designations. All company-reported [3][4]. The pivotal trial in the NEJM paper was investigational [1][2] |
 | Function | Restores central vision in geographic atrophy due to age-related macular degeneration [1] |
@@ -52,7 +52,7 @@ Company brief: [Science Corporation](/companies/06-science-corporation-company-b
 | Tip and exposed site geometry |  |
 | Contact coating |  |
 | Insulation |  |
-| Insertion method |  |
+| Insertion method | Subretinal implantation through vitrectomy and a retinal bleb with retinotomy, placed within the atrophic lesion. The paper notes advanced intraoperative imaging could help [1] |
 | Anchoring and fixation |  |
 
 ## Electrode and channel physics
@@ -105,16 +105,16 @@ Company brief: [Science Corporation](/companies/06-science-corporation-company-b
 | Chronic yield |  |
 | Stability over time |  |
 | Longevity |  |
-| Revision and explant experience |  |
-| Adverse events |  |
-| Notable demonstrations |  |
+| Revision and explant experience | No implants explanted in humans at the 12-month report; the authors note the wireless design allows replacement or tiling with next-generation chips [1] |
+| Adverse events | PRIMAvera, 12 months: 26 device- or procedure-related serious adverse events (text says 19 participants; Table 2 totals 25 participants). Ocular hypertension 6 participants, peripheral retinal break 5, macular hole 3, subretinal hemorrhage 3, choroidal neovascularization 2, one each of choroidal hemorrhage, choroidal fold, proliferative vitreoretinopathy, retinal detachment, retinal hemorrhage, thrombophlebitis. No serious event was related to the device alone; 21 of 26 occurred within 2 months of surgery [1] |
+| Notable demonstrations | Prosthetic visual acuity without zoom or image processing: mean logMAR 1.32 +/- 0.16 (Snellen 20/417), matching the sampling limit of the 100 um pixels. 30 of 32 participants had central perception at 12 months [1] |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | PRIMAvera: 38 participants implanted, 17 sites in 5 European countries; 32 reached 12 months; mean age 78.9; an earlier feasibility trial had 5 participants [1] |
-| Preclinical cohort |  |
+| Preclinical cohort | The paper cites pre-clinical rat work on subretinal flat and pillar arrays and on retinal response to photovoltaic stimulation (its references 18 to 20); cohort sizes not read here [1] |
 | Follow-up duration | 12 months [1] |
 | Indications | Geographic atrophy from AMD, age 60 or older, visual acuity logMAR 1.2 or worse, fovea-involving atrophy larger than 2.4 mm [1] |
 | Trials and registries | NCT04676854 PRIMAvera: open-label, baseline-controlled, single-arm, multicenter. Published N Engl J Med 2025 Oct 20;394(3):232-242 [1] |
