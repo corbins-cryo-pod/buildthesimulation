@@ -2,11 +2,11 @@
 title: "Neuros Altius HFAC nerve block"
 order: 162
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-FDA-0013"
 interface_class: "pni"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "FDA-approved implanted nerve cuff system that blocks pain from an amputated limb with 5 or 10 kHz alternating current, approved August 2024. Values come from the FDA summary of safety and effectiveness."
 modality: "Peripheral nerve"
 website: "https://www.fda.gov/medical-devices/recently-approved-devices/altius-direct-electrical-nerve-stimulation-system-p230020"
@@ -94,7 +94,7 @@ Company brief: [Neuros Medical, Inc.](/companies/61-neuros-medical-company-brief
 | Power | Rechargeable lithium-ion battery charged wirelessly by an external charger; bench testing demonstrated a 10-year life at typical settings [2] |
 | Thermal management |  |
 | Packaging and hermeticity |  |
-| MRI compatibility |  |
+| MRI compatibility | Manufacturer patient manual: safety of MRI with the Altius System has not been tested or evaluated. If an MRI is needed, the entire Altius System must be explanted first; scanning with the IPG in place may cause severe patient injury, death or device damage, with possible dislodgement or heating of the IPG or cuff electrodes [3] |
 | Surgical complexity | Cuff placement on the target nerve, lead tunneling and an abdominal IPG pocket [1][2] |
 | Output connectors | Standard IS-1 connector ports; a silicone port plug is used when only one electrode is implanted [2] |
 
@@ -138,3 +138,4 @@ One approved configuration is described: IPG with two channels and 4, 6 or 9 mm 
 
 1. [FDA overview, Altius Direct Electrical Nerve Stimulation System, P230020](https://www.fda.gov/medical-devices/recently-approved-devices/altius-direct-electrical-nerve-stimulation-system-p230020).
 2. [FDA summary of safety and effectiveness data, P230020](https://www.accessdata.fda.gov/cdrh_docs/pdf23/P230020B.pdf).
+3. [Altius Patient Manual LB-0196 Rev C](https://www.neurosmedical.com/wp-content/uploads/2024/10/LB-0196-Rev-C-Altius-Patient-Manual.pdf). Manufacturer document.
