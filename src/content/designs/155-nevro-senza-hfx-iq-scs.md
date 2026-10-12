@@ -2,11 +2,11 @@
 title: "Nevro Senza HFX iQ SCS"
 order: 155
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-FDA-0006"
 interface_class: "scs"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "FDA-approved 10 kHz spinal cord stimulation system with a 16-channel rechargeable IPG, approved October 2022. Values rest on the FDA supplement record and Nevro's prescriber information; the SSED and clinical data were not read."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?id=P130022S044"
@@ -44,7 +44,7 @@ Company brief: [Nevro Corp.](/companies/56-nevro-company-brief/).
 | Field | Value and source scope |
 | --- | --- |
 | Interface type | Two lead ports on the IPG header; compatible Nevro and competitor leads are listed in the prescriber information, not extracted here [2] |
-| Array layout |  |
+| Array layout | Nevro lead kits listed for the HFX iQ system: percutaneous 1x8 leads with 5 mm spacing (50, 70, 90 cm), Surpass surgical paddle 2x8 (50, 70, 90 cm) and Surpass-C surgical paddle 2x5 (70, 90 cm). Adaptors connect Medtronic (M8) and Abbott (S8) leads [2] |
 | Electrode count | 16 output channels on the IPG; contacts per lead not extracted here [2] |
 | Pitch | Edge-to-edge electrode spacing 1 to 9 mm (original percutaneous leads) [4] |
 | Electrode lengths | Electrode span 3.1 to 8.7 cm; lead length 30 to 90 cm in 5 cm steps [4] |
@@ -52,8 +52,8 @@ Company brief: [Nevro Corp.](/companies/56-nevro-company-brief/).
 | Tip and exposed site geometry |  |
 | Contact coating |  |
 | Insulation | Pellethane 55D and Dow Corning 2363 lead body; ETFE-insulated MP35N conductor with silver core [4] |
-| Insertion method |  |
-| Anchoring and fixation |  |
+| Insertion method | Percutaneous lead introduced between the vertebrae into the epidural space with an insertion needle and stylets; an optional coiled lead blank clears the path. Leads tunneled to the IPG pocket with a tunneling tool [2] |
+| Anchoring and fixation | Lead anchors secure the lead to the fascia or the supraspinous ligament; active anchors use a torque-wrench retention mechanism [2] |
 
 ## Electrode and channel physics
 
@@ -94,8 +94,8 @@ Company brief: [Nevro Corp.](/companies/56-nevro-company-brief/).
 | Thermal management |  |
 | Packaging and hermeticity | Hermetic titanium enclosure around a hermetically sealed battery housing [2] |
 | MRI compatibility | MR Conditional; Nevro MRI Guidelines (P/N 10001162) give the conditions. The charger, trial stimulator and remote are not MRI safe [2] |
-| Surgical complexity |  |
-| Output connectors |  |
+| Surgical complexity | Implanted with a lead or leads in the epidural space, extension or adaptor as needed, and an IPG pocket sized with an IPG template; an IPG port plug seals the unused port when one lead is implanted [2] |
+| Output connectors | IPG header has two lead ports; 16 output channels; lead extensions 1x8 in 25, 35 and 60 cm lengths [2] |
 
 ## Performance envelope
 
