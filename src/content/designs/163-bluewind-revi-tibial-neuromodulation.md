@@ -2,11 +2,11 @@
 title: "BlueWind Revi tibial neuromodulation"
 order: 163
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-10-11
 device_id: "BTSD-FDA-0014"
 interface_class: "pni"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-10-11
 description: "FDA-authorized wirelessly powered tibial nerve stimulator for urgency incontinence, from the De Novo review and 2024 510(k). Trial result values were not extracted."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN220073.pdf"
@@ -92,7 +92,7 @@ Company brief: [BlueWind Medical](/companies/62-bluewind-medical-company-brief/)
 | Sampling rate |  |
 | Power | Wearable Unit: Li-ion rechargeable 1400 mAh, 3.1-4.2 V; up to 1 week of therapy per charge. The implant draws power wirelessly [1] |
 | Thermal management |  |
-| Packaging and hermeticity |  |
+| Packaging and hermeticity | Sponsor hermeticity testing of the implant followed MIL-STD-883 Method 1014.17; silicone wings hold the implant and a push-out force test was run. The OASIS exclusion criteria list allergy to platinum iridium, titanium, zirconia, gold, silicone or parylene [1] |
 | MRI compatibility | Sponsor testing showed the Implant is MR compatible at 1.5 T and 3 T under specified conditions [1] |
 | Surgical complexity |  |
 | Output connectors |  |
@@ -103,18 +103,18 @@ Company brief: [BlueWind Medical](/companies/62-bluewind-medical-company-brief/)
 | --- | --- |
 | Acute yield |  |
 | Chronic yield |  |
-| Stability over time |  |
+| Stability over time | In the ovine study the implant did not migrate or change position over 6 months [1] |
 | Longevity |  |
-| Revision and explant experience |  |
-| Adverse events |  |
-| Notable demonstrations |  |
+| Revision and explant experience | Two explants after completing 12-month follow-up in OASIS: one for ongoing device-related pain and one for pain tied to a surgical wound event [1] |
+| Adverse events | OASIS (151 implanted): 117 subjects (77.5 percent) had at least one adverse event, 286 in total. 6 subjects (4 percent) had device-related events, all pain from treatment or stimulation, and 16 subjects (10.6 percent) had procedure-related events, ten of them surgical wound related. All were mild or moderate; no procedure or device related serious events [1] |
+| Notable demonstrations | OASIS primary endpoint: 76.4 percent responders (95 percent CI 68.7 to 82.6) with at least 50 percent fewer urgency incontinence episodes at 6 months after activation. The 12-month figure of 78.4 percent is post hoc. FDA noted urinary frequency reduction at 12 months was not clinically meaningful [1] |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
 | Human subjects | OASIS pivotal study: 27 sites; 282 consented and screened, 151 implanted (intent-to-treat set) [1] |
-| Preclinical cohort |  |
+| Preclinical cohort | Ovine study: 9 ewes, two devices each (one on the vagal, one on the tibial nerve), 2, 30, 90 or 180 days of stimulation; no effect on vital signs, well-being or neurological condition [1] |
 | Follow-up duration | Visits at activation (4 weeks plus or minus 2 weeks after implant), then 1, 3, 6 and 12 months after activation [1] |
 | Indications | Urgency incontinence alone or combined with urinary urgency [1] |
 | Trials and registries | OASIS (OverActive Bladder Stimulation System Study); registry ID not extracted here [1] |
