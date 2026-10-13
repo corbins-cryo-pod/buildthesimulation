@@ -4,7 +4,7 @@ order: 63
 pubDate: 2026-10-09
 updatedDate: 2026-10-12
 lastVerified: 2026-10-12
-description: "SPR Therapeutics makes the SPRINT percutaneous peripheral nerve stimulation system."
+description: "SPR Therapeutics made the SPRINT short-term peripheral nerve stimulation system and was acquired by Medtronic in July 2026."
 region: "American"
 kind: "Company"
 website: "https://www.sprpainrelief.com/"
@@ -14,26 +14,26 @@ lon: -81.6944
 tags: ["company","american","device maker"]
 draft: false
 ---
-SPR Therapeutics makes the SPRINT percutaneous peripheral nerve stimulation system. It is based in Cleveland, Ohio and describes itself as a private medical device company (2017 release).
+SPR Therapeutics makes the SPRINT percutaneous peripheral nerve stimulation system, a short-term (60-day) therapy. Medtronic completed its acquisition of SPR on July 16, 2026, so SPR is no longer an independent private company.
 
 ## Products and regulatory status
 
-- The company states it received FDA 510(k) clearance for the first generation in 2016 and reached 50,000 implants in December 2025 (company claims). The 510(k) record used on the device sheet is K223306.
-- Labeling: SPRINT is MR Unsafe; only a retained lead remnant is MR Conditional (manufacturer MRI page, summarized on the device sheet).
+- Medtronic describes SPRINT as an FDA-cleared, short-term 60-day therapy that does not require a permanent implant.
 
 ## Funding and ownership
 
-- September 12, 2017: completed a $25 million Series C to commercialize SPRINT and fund research in further indications (company release). Later rounds were not read here.
+- May 20, 2026: Medtronic announced its intent to acquire SPR for an upfront cash payment of approximately $650 million for all outstanding equity (Medtronic release). July 16, 2026: Medtronic announced the acquisition was completed.
+- Earlier: SPR completed a $25 million Series C in 2017 (company release). Other rounds were not read here.
 
 ## Not public or not verified
 
-- Revenue, headcount, current investors and any acquisition: not stated in the sources read.
+- SPR revenue and headcount are not stated in the sources read. How SPRINT is branded and sold inside Medtronic after closing was not read.
 
 ## Primary sources
 
+- Medtronic intent to acquire (May 20, 2026): <https://news.medtronic.com/2026-05-20-Medtronic-announces-intent-to-acquire-SPR-Therapeutics,-Inc-,-expanding-care-options-for-people-living-with-chronic-pain>
+- Medtronic completion (July 16, 2026): <https://news.medtronic.com/2026-07-16-Medtronic-completes-acquisition-of-SPR,-expanding-patient-access-to-minimally-invasive,-non-opioid-treatment-of-chronic-and-acute-pain>
 - Series C release: <https://www.sprpainrelief.com/press-releases/spr-secures-25-million-series-c-financing>
-- Company page: <https://www.sprpainrelief.com/about-us>
-- MRI page: <https://www.sprpainrelief.com/sprint-pns-system/mri-safety-information>
 
 ### Device entries
 
