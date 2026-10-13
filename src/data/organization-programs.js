@@ -1079,5 +1079,17 @@ export default {
         "Intracortical"
       ]
     }
+  ],
+  "83-caltech-andersen-lab": [
+    {
+      "name": "Internal speech BMI in supramarginal gyrus",
+      "stage": 3,
+      "regulatory": "R",
+      "evidenceUrl": "/applications/156-caltech-internal-speech-smg-single-neurons-2024/",
+      "notes": "Clinical research in two participants; no marketing authorization.",
+      "interfaces": [
+        "Intracortical"
+      ]
+    }
   ]
 };
