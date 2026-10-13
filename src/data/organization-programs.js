@@ -1091,5 +1091,17 @@ export default {
         "Intracortical"
       ]
     }
+  ],
+  "84-university-of-chicago-bensmaia-lab": [
+    {
+      "name": "Intracortical microstimulation for artificial touch",
+      "stage": 3,
+      "regulatory": "R",
+      "evidenceUrl": "/applications/157-patterned-icms-tactile-edges-motion-2025/",
+      "notes": "Clinical research in two participants; no marketing authorization.",
+      "interfaces": [
+        "Intracortical"
+      ]
+    }
   ]
 };
