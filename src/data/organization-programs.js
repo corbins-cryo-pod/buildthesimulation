@@ -1103,5 +1103,17 @@ export default {
         "Intracortical"
       ]
     }
+  ],
+  "85-carnegie-mellon-yu-and-chase-groups": [
+    {
+      "name": "Macaque BCI learning studies",
+      "stage": 2,
+      "regulatory": "R",
+      "evidenceUrl": "/applications/158-bci-neural-constraints-on-learning-macaque-2014/",
+      "notes": "Animal study; no human participants.",
+      "interfaces": [
+        "Intracortical"
+      ]
+    }
   ]
 };
