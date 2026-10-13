@@ -1,0 +1,560 @@
+{
+  "schemaVersion": "cortex-benchmark/1",
+  "engineVersion": "cortex-passive/0.1.0",
+  "generatedAt": "2026-10-12T18:22:54.782Z",
+  "sourceBaseCommit": "31eb4127adfbd15937db4bedfd0aad91b01a188f",
+  "runtime": {
+    "node": "v24.19.0",
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "logicalCpus": 9,
+    "systemMemoryBytes": 10451460096
+  },
+  "scope": "Node CPU solver only; no browser FPS/GPU measurements; outputBytes excludes JS heap, renderer and serialization",
+  "cases": [
+    {
+      "mode": "synaptic-recording",
+      "config": {
+        "schemaVersion": "cortex-experiment/1",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "segmentLengthUm": 40
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "capacitanceUfPerCm2": 1,
+          "resistanceOhmCm2": 20000,
+          "axialResistivityOhmCm": 150,
+          "restMv": -65
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "synaptic-recording",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 0.05,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.025,
+          "durationMs": 40
+        }
+      },
+      "repetitions": 7,
+      "elapsedMs": {
+        "min": 10.25043999999997,
+        "median": 17.774045,
+        "max": 33.76416900000004
+      },
+      "medianWallSecondsPerBiologicalSecond": 0.444351125,
+      "outputBytes": 1344840,
+      "compartments": 48,
+      "frames": 1601,
+      "peakExcursionMv": 5.799515778757453,
+      "peakNeuralA_Uv": 0.057696069660911974,
+      "maxConservationResidualNa": 1.1524054009236923e-13,
+      "maxKclResidualNa": 4.0732943683589526e-14
+    },
+    {
+      "mode": "extracellular-stimulation",
+      "config": {
+        "schemaVersion": "cortex-experiment/1",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "segmentLengthUm": 40
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "capacitanceUfPerCm2": 1,
+          "resistanceOhmCm2": 20000,
+          "axialResistivityOhmCm": 150,
+          "restMv": -65
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 0.05,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.025,
+          "durationMs": 40
+        }
+      },
+      "repetitions": 7,
+      "elapsedMs": {
+        "min": 9.396793000000002,
+        "median": 9.753276999999969,
+        "max": 20.099141999999915
+      },
+      "medianWallSecondsPerBiologicalSecond": 0.24383192499999923,
+      "outputBytes": 1344840,
+      "compartments": 48,
+      "frames": 1601,
+      "peakExcursionMv": 0.08393520403076593,
+      "peakNeuralA_Uv": 0.006265052084343832,
+      "maxConservationResidualNa": 1.0402021037890041e-13,
+      "maxKclResidualNa": 3.8446144125194563e-14
+    },
+    {
+      "mode": "intracellular-current",
+      "config": {
+        "schemaVersion": "cortex-experiment/1",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "segmentLengthUm": 40
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "capacitanceUfPerCm2": 1,
+          "resistanceOhmCm2": 20000,
+          "axialResistivityOhmCm": 150,
+          "restMv": -65
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "intracellular-current",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 0.05,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.025,
+          "durationMs": 40
+        }
+      },
+      "repetitions": 7,
+      "elapsedMs": {
+        "min": 16.00978299999997,
+        "median": 17.799698000000035,
+        "max": 24.301631000000043
+      },
+      "medianWallSecondsPerBiologicalSecond": 0.44499245000000087,
+      "outputBytes": 1344840,
+      "compartments": 48,
+      "frames": 1601,
+      "peakExcursionMv": 2.01158439688529,
+      "peakNeuralA_Uv": 0.1304529131128991,
+      "maxConservationResidualNa": 1.1347700394365862e-13,
+      "maxKclResidualNa": 4.608813330975181e-14
+    }
+  ],
+  "refinement": {
+    "baseline": {
+      "config": {
+        "schemaVersion": "cortex-experiment/1",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "segmentLengthUm": 40
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "capacitanceUfPerCm2": 1,
+          "resistanceOhmCm2": 20000,
+          "axialResistivityOhmCm": 150,
+          "restMv": -65
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "synaptic-recording",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 0.05,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.025,
+          "durationMs": 40
+        }
+      },
+      "peakExcursionMv": 5.799515778757453,
+      "peakNeuralA_Uv": 0.057696069660911974,
+      "maxConservationResidualNa": 1.1524054009236923e-13,
+      "maxKclResidualNa": 4.0732943683589526e-14
+    },
+    "halfDt": {
+      "config": {
+        "schemaVersion": "cortex-experiment/1",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "segmentLengthUm": 40
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "capacitanceUfPerCm2": 1,
+          "resistanceOhmCm2": 20000,
+          "axialResistivityOhmCm": 150,
+          "restMv": -65
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "synaptic-recording",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 0.05,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0125,
+          "durationMs": 40
+        }
+      },
+      "peakExcursionMv": 5.802117533118768,
+      "peakNeuralA_Uv": 0.05772853507296024,
+      "maxConservationResidualNa": 9.879206827601017e-14,
+      "maxKclResidualNa": 1.0123672733453049e-13
+    },
+    "halfSegmentAfterHalfDt": {
+      "config": {
+        "schemaVersion": "cortex-experiment/1",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "segmentLengthUm": 20
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "capacitanceUfPerCm2": 1,
+          "resistanceOhmCm2": 20000,
+          "axialResistivityOhmCm": 150,
+          "restMv": -65
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "synaptic-recording",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 0.05,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0125,
+          "durationMs": 40
+        }
+      },
+      "peakExcursionMv": 5.82351897993415,
+      "peakNeuralA_Uv": 0.05781829449792298,
+      "maxConservationResidualNa": 1.6672751233012123e-13,
+      "maxKclResidualNa": 5.251900543925788e-14
+    },
+    "temporalRelativeChange": {
+      "peakExcursion": 0.0004484146256025223,
+      "peakNeuralA": 0.00056238066680947
+    },
+    "spatialRelativeChange": {
+      "peakExcursion": 0.0036750025009146814,
+      "peakNeuralA": 0.0015524398590823774
+    },
+    "gate": "Each reported relative change < 0.01; default synaptic benchmark only"
+  },
+  "sensitivity": [
+    {
+      "parameter": "conductivitySPerM",
+      "value": 0.15,
+      "interpretation": "Assumed sensitivity sweep, not biological confidence interval",
+      "peakExcursionMv": 5.799515778757453,
+      "peakNeuralA_Uv": 0.11539213932182395,
+      "maxConservationResidualNa": 1.1524054009236923e-13,
+      "maxKclResidualNa": 4.0732943683589526e-14
+    },
+    {
+      "parameter": "conductivitySPerM",
+      "value": 0.3,
+      "interpretation": "Assumed sensitivity sweep, not biological confidence interval",
+      "peakExcursionMv": 5.799515778757453,
+      "peakNeuralA_Uv": 0.057696069660911974,
+      "maxConservationResidualNa": 1.1524054009236923e-13,
+      "maxKclResidualNa": 4.0732943683589526e-14
+    },
+    {
+      "parameter": "conductivitySPerM",
+      "value": 0.6,
+      "interpretation": "Assumed sensitivity sweep, not biological confidence interval",
+      "peakExcursionMv": 5.799515778757453,
+      "peakNeuralA_Uv": 0.028848034830455987,
+      "maxConservationResidualNa": 1.1524054009236923e-13,
+      "maxKclResidualNa": 4.0732943683589526e-14
+    },
+    {
+      "parameter": "implant.translationUm[0]",
+      "value": -100,
+      "peakExcursionMv": 5.799515778757453,
+      "peakNeuralA_Uv": 0.03168136444765983,
+      "maxConservationResidualNa": 1.1524054009236923e-13,
+      "maxKclResidualNa": 4.0732943683589526e-14
+    }
+  ]
+}

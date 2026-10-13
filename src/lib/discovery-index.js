@@ -48,6 +48,7 @@ export async function buildDiscoveryIndex() {
       keywords: [model.deviceId, model.slug ?? '', ...(model.specs ?? []).flatMap(spec => spec)],
     })),
     ...[
+      ['Cortex Laboratory', '/cortex/', 'Shared anatomy, passive cable currents and physical implant placement', 'cortex laboratory recording stimulation Utah membrane physics'],
       ['Cortical stimulation lab', '/simulations/cortical-stimulation/', 'Electrodes and tissue response', 'cortex stimulation experiment'],
       ['Cortical recording lab', '/simulations/cortex-slab/', 'Synthetic signals from neurons', 'recording depth electrodes'],
       ['Peripheral nerve sandbox', '/sim/', 'Nerve cross-sections and pulses', 'peripheral nerve cuff simulation'],

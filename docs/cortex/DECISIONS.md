@@ -1,0 +1,73 @@
+# Architecture decision log
+
+## C001 — Shared world, not a third isolated cortical toy
+
+Adopt one versioned config/world for recording and stimulation, importing the
+existing catalog and mesh. Existing tools remain available pending adapters.
+Reject duplicated device specifications and differently scaled tissue scenes.
+
+## C002 — Passive verified first slice
+
+Start with explicit passive membrane currents and analytical oracles. The legacy
+active solver is useful but its morphology/channel allocation is not a validated
+human sensorimotor model. Reject relabeling it as a high-fidelity human model, and
+reject synthetic spike templates as the new recording engine.
+
+## C003 — Canonical geometry versus measured anatomy
+
+Use a 4 mm slab and clearly assumed fractions, not unsupported exact human M1
+layers. No density background is rendered to imply cells were simulated. Curved
+atlas geometry is deferred until licensing, region and deformation semantics are
+defined. Preserve physical dimensions; camera crops do not scale the implant.
+
+## C004 — Ideal apex probes, with near-field rejection
+
+Utah exposed contact dimensions are unknown in the selected catalog reference.
+Keep point sensing/stimulation explicit, reject close geometry, preserve null
+area/channel map, and avoid fabricated finite-contact impedance or charge density.
+Do not claim the 25 µm cutoff validates farther-field accuracy.
+
+## C005 — Plain JavaScript worker kernel
+
+Existing repository tests use Node ESM; transparent Float64 kernels integrate
+without additional runtime dependencies. Adopt workers and pinned offline
+NEURON/LFPykit references. Reject a premature in-browser whole-solver port or GPU precision claim.
+CoreNEURON's extracellular restrictions require separate compatibility analysis.
+
+## C006 — Physical source support survives refinement
+
+Initial terminal-compartment synapse placement changed the experiment with dx.
+Use a fixed distal 100 µm conductance patch, distributed by overlap. Tests retain
+the <1% default refinement target. This is a synthetic distributed input, not a
+single measured synapse; the distinction is visible in UI and exports.
+
+## C007 — Separate source artifact and current-clamp return
+
+Compute total outward current, including capacitance and synaptic contributions.
+Explicitly close intracellular current injection with a bath return and retain
+its field/artifact. Never equate soma injection with extracellular stimulation.
+
+## C008 — No production deployment
+
+User requested an isolated feature branch and reviewable PR, with no automatic
+merge. Sites workflow guidance does not override that instruction. No hosting or
+production branch changes are made. Browser QA unavailable here is an explicit
+review limitation, not an assumed success.
+
+## C009 — Independent reference of the declared soma circuit
+
+Preserve the explicit radial half-soma resistance on each branch. Model it in
+NEURON with five membrane-free geometric connector sections; do not copy the
+JavaScript conductance matrix or fit connector values to outputs. Directly
+attaching every branch to soma(1) shares one resistance and is a different model.
+Adapter segmentation and applied-potential perturbations must leave retained
+membrane responses unchanged within stated tolerance. This verifies the reduced
+circuit, not 3D spherical conduction or human physiology.
+
+## C010 — Separate independent currents and recording coefficients
+
+LFPykit 0.6.2 consumes NEURON-generated currents and shared geometric inputs,
+never browser output. Compare coefficients and neural/applied/total/bipolar
+signals, in both point and line approximations. Keep fixtures small, pinned and
+hashed; require regeneration after any generator/input change. Offline GPL
+package code is not copied into or shipped with the website.

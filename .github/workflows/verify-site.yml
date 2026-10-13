@@ -19,3 +19,5 @@ jobs:
         run: npm ci
       - name: Test and build
         run: npm run build
+      - name: Verify Cortex routes and worker artifacts
+        run: node scripts/verify-cortex-build.mjs
