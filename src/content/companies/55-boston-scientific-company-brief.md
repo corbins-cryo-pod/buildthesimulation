@@ -2,8 +2,8 @@
 title: "Boston Scientific Corporation (company brief)"
 order: 55
 pubDate: 2026-10-09
-updatedDate: 2026-10-09
-lastVerified: 2026-10-09
+updatedDate: 2026-10-12
+lastVerified: 2026-10-12
 description: "Boston Scientific makes the Vercise Genus DBS system and the WaveWriter spinal cord stimulation system."
 region: "American"
 kind: "Company"
@@ -14,9 +14,31 @@ lon: -71.5523
 tags: ["company","american","device maker"]
 draft: false
 ---
-Boston Scientific makes the Vercise Genus DBS system and the WaveWriter spinal cord stimulation system. It closed its acquisition of Axonics, Inc. on November 15, 2024, so the Axonics sacral neuromodulation sheet is listed here as well and is also covered by the Axonics brief.
+Boston Scientific is a large public medical technology company (NYSE: BSX) and makes neuromodulation systems covered on the linked sheets. It has bought two catalog neuromodulation companies in the last two years: Axonics (closed November 15, 2024) and Nalu Medical (completed January 2026), so those sheets are listed here too.
 
-- Acquisition release: <https://news.bostonscientific.com/2024-11-15-Boston-Scientific-Closes-Acquisition-of-Axonics,-Inc>
+## Products and regulatory status
+
+- Approvals and labeling are on the linked device sheets. The Axonics and Nalu systems are described on their own sheets and company briefs.
+
+## Funding and ownership
+
+- Axonics: $71 per share in cash, equity value $3.7 billion (company release).
+- Nalu: Completed January 2026 (Boston Scientific and MassDevice). Reported price figures are press-reported, not company-stated.
+
+## Financials (company-reported)
+
+- Full-year 2025 net sales were $20.074 billion (company release). The neuromodulation line in the results table was not confirmed here.
+
+## Not public or not verified
+
+- Headcount and the neuromodulation annual revenue were not confirmed from a primary source here.
+
+## Primary sources
+
+- Axonics close: <https://news.bostonscientific.com/2024-11-15-Boston-Scientific-Closes-Acquisition-of-Axonics,-Inc>
+- Q4 and FY2025 results: <https://news.bostonscientific.com/2026-02-04-Boston-Scientific-announces-results-for-fourth-quarter-and-full-year-2025>
+- Nalu acquisition feature: <https://news.bostonscientific.com/nalu-medical-acquisition-chronic-peripheral-nerve-pain>
+- Nalu closing report: <https://www.massdevice.com/boston-scientific-completes-nalu-medical-acquisition/>
 
 ### Device entries
 
