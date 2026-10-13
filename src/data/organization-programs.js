@@ -983,5 +983,17 @@ export default {
         "Other"
       ]
     }
+  ],
+  "75-fudan-university-neural-interface-groups": [
+    {
+      "name": "Fudan ECoG array, fiber electrode and brain-spine research",
+      "stage": 2,
+      "regulatory": "R",
+      "evidenceUrl": "/devices/198-fudan-mnis-silicon-transistor-multimodal-ecog/",
+      "notes": "Rat studies for the array and fiber electrode; the brain-spine interface is covered by its own sheet and the Shenfu Jianxing brief.",
+      "interfaces": [
+        "Cortical surface"
+      ]
+    }
   ]
 };
