@@ -62,17 +62,19 @@ unavailable until a specific experiment, material law and contact condition are 
 
 ## Software decision matrix
 
-Primary official sources below were reviewed. NEURON 9.0.1 was subsequently
-installed in an isolated reference environment and used for the uniform passive
-cable fixture described in VALIDATION.md; other packages were not executed.
+Primary official sources below were reviewed. NEURON 9.0.1 and LFPykit 0.6.2
+were subsequently installed in an isolated reference environment and executed
+for the uniform/branched passive and recording fixtures in VALIDATION.md.
+Other listed frameworks were not executed.
 Integration-cost judgments are ours. Licenses describe
 the reviewed project, not every dependency, dataset, model mechanism or plugin.
 
 | Framework | Scope, license and deployment evidence | Decision / integration risk |
 | --- | --- | --- |
-| [NEURON](https://github.com/neuronsimulator/nrn) | Native/Python multicompartment simulator; BSD-3-Clause in project metadata | Version 9.0.1 used for independent uniform-cable voltage/current fixture. Full-arbor/stimulation reference remains open. No browser port assumed. |
+| [NEURON](https://github.com/neuronsimulator/nrn) | Native/Python multicompartment simulator; BSD-3-Clause in project metadata | Version 9.0.1 used for uniform cable and full declared radial-soma circuit; three protocols plus rotated/nonaligned stimulation. No browser port assumed. |
 | [CoreNEURON](https://www.neuronsimulator.org/en/latest/coreneuron/compatibility.html) | Optimized CPU/GPU backend; documented restrictions include extracellular mechanism, variable timesteps and per-step callbacks | Defer; not a drop-in extracellular stimulation reference. `fast_imem` serves current readout, not all extracellular behavior. |
-| [LFPy](https://github.com/LFPy/LFPy) | Python/NEURON forward potentials, point/line sources/contact averaging; GPL-3.0-or-later | Offline reference planned. Pin compatible versions; no code copied or redistributed runtime. |
+| [LFPy](https://github.com/LFPy/LFPy) | Python/NEURON forward potentials, point/line sources/contact averaging; GPL-3.0-or-later | Forward component checked through standalone LFPykit; the full LFPy Cell workflow was not run. No package code copied or redistributed runtime. |
+| [LFPykit](https://lfpykit.readthedocs.io/en/latest/) | Standalone forward models used by LFPy; GPL-3.0-or-later | Version 0.6.2 executed offline: point/line coefficients and recordings from independent NEURON currents, in eight fixed ideal-contact cases. |
 | [NetPyNE](https://github.com/suny-downstate-medical-center/netpyne) | MIT; NEURON network construction, analysis, optimization | Later network workflow; unnecessary for one passive tree. |
 | [Brian2](https://brian2.readthedocs.io/en/stable/user/computation.html) | CeCILL 2.1; Python runtime and C++ standalone; SpatialNeuron/SWC support | Alternative population/reference solver. C++ generation does not establish WASM compatibility. |
 | [NEST](https://github.com/nest/nest-simulator) | GPL-2.0-or-later; native/Python large spiking networks, including some current multicompartment models | Later network backend; not first detailed implant forward model. |

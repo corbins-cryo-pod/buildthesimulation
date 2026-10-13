@@ -24,6 +24,12 @@ The soma's axial connection uses an equivalent 20 µm long, 20 µm diameter
 cylinder, whereas its membrane uses spherical area. Branches start at the sphere
 surface. This is a stated reduced-model choice, not resolved intracellular 3D
 conduction. Tree parents precede children; no cycles or intercellular junctions.
+Each of the five branches has its own half-soma radial resistance. The independent
+NEURON reference expresses it using a separate membrane-free 10 µm × 20 µm
+connector from the soma center, followed by the dendritic branch. Connecting all
+branches to one soma endpoint would instead share that resistance and change the
+model. These reference connectors are numerical circuit adapters, not extra
+anatomical neurites. See REFERENCE_COMPARISONS.md.
 
 Let V be transmembrane voltage, Ve the prescribed extracellular voltage,
 EL the leak reversal, gs a synaptic conductance and Es its reversal:

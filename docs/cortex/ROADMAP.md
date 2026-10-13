@@ -13,9 +13,9 @@ open. Phases 4–8 are not complete.
 
 1. Review draft PR, perform desktop/mobile browser QA, inspect scale/transforms,
    worker cancel/reset/stale-state behavior, exports and no-WebGL path.
-2. Extend the completed NEURON 9.0.1 uniform-cable fixture to the exact branched
-   geometry and extracellular intervention, and add an LFPy reference. Retain
-   hashes/versions; do not generalize the existing fixture to untested regimes.
+2. Expand the completed NEURON 9.0.1 full-arbor and LFPykit 0.6.2 recording
+   comparisons beyond four fixed configurations. Retain hashes/versions and
+   the explicit soma-circuit adapter; do not generalize to untested regimes.
 3. Add testable finite exposed contact geometry for a well-documented alternative
    device (e.g. Neuropixels recording or surface-grid contact). Do not treat all
    catalog modalities as electrically interchangeable.

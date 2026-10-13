@@ -11,6 +11,7 @@ assert.match(html, /no experimental validation/);
 assert.match(html, /cortex\/methods/);
 assert.match(html, /client="load"/);
 assert.match(methods, /NEURON 9\.0\.1/);
+assert.match(methods, /LFPykit 0\.6\.2/);
 assert.match(methods, /No experimental dataset/);
 for (const match of html.matchAll(/(?:src|component-url|renderer-url)="(\/_astro\/[^"]+)"/g))
   assert.ok(existsSync(path.join('dist', match[1])), `Missing asset ${match[1]}`);

@@ -30,8 +30,8 @@ Do not claim the 25 µm cutoff validates farther-field accuracy.
 ## C005 — Plain JavaScript worker kernel
 
 Existing repository tests use Node ESM; transparent Float64 kernels integrate
-without additional dependencies. Adopt workers now, offline NEURON/LFPy reference
-later. Reject a premature in-browser whole-solver port or GPU precision claim.
+without additional runtime dependencies. Adopt workers and pinned offline
+NEURON/LFPykit references. Reject a premature in-browser whole-solver port or GPU precision claim.
 CoreNEURON's extracellular restrictions require separate compatibility analysis.
 
 ## C006 — Physical source support survives refinement
@@ -53,3 +53,21 @@ User requested an isolated feature branch and reviewable PR, with no automatic
 merge. Sites workflow guidance does not override that instruction. No hosting or
 production branch changes are made. Browser QA unavailable here is an explicit
 review limitation, not an assumed success.
+
+## C009 — Independent reference of the declared soma circuit
+
+Preserve the explicit radial half-soma resistance on each branch. Model it in
+NEURON with five membrane-free geometric connector sections; do not copy the
+JavaScript conductance matrix or fit connector values to outputs. Directly
+attaching every branch to soma(1) shares one resistance and is a different model.
+Adapter segmentation and applied-potential perturbations must leave retained
+membrane responses unchanged within stated tolerance. This verifies the reduced
+circuit, not 3D spherical conduction or human physiology.
+
+## C010 — Separate independent currents and recording coefficients
+
+LFPykit 0.6.2 consumes NEURON-generated currents and shared geometric inputs,
+never browser output. Compare coefficients and neural/applied/total/bipolar
+signals, in both point and line approximations. Keep fixtures small, pinned and
+hashed; require regeneration after any generator/input change. Offline GPL
+package code is not copied into or shipped with the website.

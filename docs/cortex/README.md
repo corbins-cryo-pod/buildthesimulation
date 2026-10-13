@@ -21,7 +21,8 @@ current clamp and extracellular stimulation use the **same physical world**.
   applied-source signals, replay/step, pinned-run comparison, configuration
   round trip, CSV and self-contained provenance/results JSON.
 - Worker execution, cancellation, bounded CPU fallback, numerical tests and
-  reproducible Node benchmarks; an independent pinned NEURON 9.0.1 passive-cable fixture.
+  reproducible Node benchmarks; pinned NEURON 9.0.1 uniform/branched-cable references
+  and independent LFPykit 0.6.2 coefficients and recordings for all three protocols.
 
 ## What does not work yet
 
@@ -32,7 +33,7 @@ device-performance or tissue-safety inference is supported. See [ROADMAP](ROADMA
 
 ## Development
 
-Use Node 22 and the existing lockfile. No dependency was added for this feature.
+Use Node 22 and the existing lockfile. No website/runtime dependency was added.
 
 ```sh
 npm ci
@@ -57,11 +58,16 @@ Optional independent-reference regeneration (not required for normal website tes
 python -m venv .venv-cortex-reference
 .venv-cortex-reference/bin/python -m pip install -r scripts/cortex-reference-requirements.txt
 .venv-cortex-reference/bin/python scripts/cortex-neuron-reference.py
-node --test tests/cortex-neuron-reference.mjs
+.venv-cortex-reference/bin/python scripts/cortex-neuron-arbor-reference.py
+.venv-cortex-reference/bin/python scripts/cortex-lfpykit-reference.py
+node --test tests/cortex-neuron-reference.mjs tests/cortex-neuron-arbor.mjs tests/cortex-lfpykit-reference.mjs
 ```
 
-Keep the environment outside the checkout if preferred; never commit it. The
-fixture records package versions, NEURON build, generator hash and exact config.
+Keep the environment outside the checkout if preferred; never commit it. These
+are offline reference packages, excluded from the website. Fixtures record
+package versions, NEURON build, generator/input hashes and exact configurations.
+Run the arbor generator before the LFPykit generator, which consumes its independent
+membrane currents. See [REFERENCE_COMPARISONS](REFERENCE_COMPARISONS.md) for scope.
 
 ## Documentation map
 
@@ -73,6 +79,7 @@ fixture records package versions, NEURON build, generator hash and exact config.
 | [PHYSICS](PHYSICS.md) | Equations, signs, units, boundaries and algorithms |
 | [PARAMETERS](PARAMETERS.md) | Assumptions, defaults, uncertainty and provenance |
 | [VALIDATION](VALIDATION.md) | Verification matrix versus empirical validation |
+| [REFERENCE_COMPARISONS](REFERENCE_COMPARISONS.md) | Independent NEURON/LFPykit construction, results and limits |
 | [PERFORMANCE](PERFORMANCE.md) | Measured cost, limits and benchmark procedure |
 | [DECISIONS](DECISIONS.md) | Accepted/rejected choices |
 | [ROADMAP](ROADMAP.md) | Dependency-gated next work |

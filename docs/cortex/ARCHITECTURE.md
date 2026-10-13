@@ -79,7 +79,10 @@ must pass the external format's validator and round-trip tests. Separate anatomy
 mesh, connectivity, waveform and material schemas should be introduced when their
 semantics are implemented, not populated with pretend data now.
 
-Next interface: immutable morphology + membrane parameters + prescribed Ve(t)
-→ time/current result. A pinned offline NEURON reference can consume/export the
-same quantities. A future finite-element solver replaces transfer matrices while
+Independent reference boundary: `scripts/cortex-reference-input.mjs` exports only
+geometry and parameters, not solver outputs or matrices. Offline NEURON builds its
+own section circuit and produces compartment currents; offline LFPykit converts
+those currents to recording potentials. Node CI compares the browser modules
+against hashed fixtures. The generator hashes and exact input hashes detect stale
+references. A future finite-element solver replaces transfer matrices while
 retaining the coordinate/unit contract; worker and UI must not depend on its internals.

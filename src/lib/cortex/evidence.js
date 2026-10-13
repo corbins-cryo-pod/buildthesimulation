@@ -97,7 +97,49 @@ export const evidenceRegistry = {
       supports: ['0.3 S/m default', 'current-clamp return accounting'],
       license: 'Software GPL-3.0-or-later; no code copied',
       limitation:
-        'A uniform passive cable was compared with NEURON 9.0.1; full-arbor, extracellular-drive and LFPy comparisons remain pending.',
+        'The standalone LFPykit forward models are checked in fixed numerical cases; finite-contact and layered-conductor behavior remains unverified here.',
+    },
+    {
+      id: 'neuron-reference',
+      title: 'NEURON 9.0.1 geometry and extracellular mechanisms',
+      authors: 'NEURON developers',
+      year: null,
+      publicationDate: null,
+      doi: null,
+      url: 'https://www.neuronsimulator.org/en/9.0.1/progref/modelspec/programmatic/topology/geometry.html',
+      locator:
+        'Stylized geometry; extracellular mechanism; CVode.use_fast_imem; pinned reference fixtures in tests/fixtures',
+      evidence: 'independent-numerical-reference',
+      species: 'synthetic passive circuit; no biological specimen',
+      supports: [
+        'uniform cable verification',
+        'branched radial-soma circuit',
+        'three protocols and rotated implant case',
+      ],
+      license: 'NEURON BSD-3-Clause; installed offline only; no package code bundled',
+      limitation:
+        'Fixed numerical cases verify the declared equivalent circuit, not a physical spherical soma or biological predictions.',
+    },
+    {
+      id: 'lfpykit-reference',
+      title: 'LFPykit 0.6.2 electrostatic forward models',
+      authors: 'LFPykit developers',
+      year: null,
+      publicationDate: null,
+      doi: null,
+      url: 'https://lfpykit.readthedocs.io/en/latest/',
+      locator:
+        'RecExtElectrode pointsource/root_as_point; PointSourcePotential; installed version 0.6.2',
+      evidence: 'independent-numerical-reference',
+      species: 'synthetic geometry and independent NEURON currents',
+      supports: [
+        'point/line transfer coefficients',
+        'neural and applied signals',
+        'bipolar reference',
+      ],
+      license: 'GPL-3.0-or-later; invoked offline only; no package source copied or bundled',
+      limitation:
+        'Eight fixed ideal-contact cases stay outside radius regularization; no finite exposed area, electronics or experimental validation.',
     },
     {
       id: 'blackrock-utah',
@@ -167,7 +209,7 @@ export const evidenceRegistry = {
     'Select a licensed regional human morphology and independent recordings.',
     'Recover exposed Utah tip geometry for a named revision.',
     'Separate future calibration and validation specimens.',
-    'Extend the NEURON uniform-cable reference to the full arbor and extracellular drive; add LFPy comparisons.',
+    'Expand the pinned NEURON/LFPykit comparisons beyond the tested configurations and discretizations.',
     'Quantify layered-conductor error against finite elements.',
     'Select mechanical boundary/contact conditions and validation data.',
   ],

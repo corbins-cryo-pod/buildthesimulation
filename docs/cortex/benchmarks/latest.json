@@ -1,15 +1,15 @@
 {
   "schemaVersion": "cortex-benchmark/1",
   "engineVersion": "cortex-passive/0.1.0",
-  "generatedAt": "2026-10-12T12:39:58.042Z",
-  "sourceBaseCommit": "26387b9ccc96ef2636b3787695460e69e098d309",
+  "generatedAt": "2026-10-12T18:22:54.782Z",
+  "sourceBaseCommit": "31eb4127adfbd15937db4bedfd0aad91b01a188f",
   "runtime": {
     "node": "v24.19.0",
     "platform": "linux",
     "arch": "x64",
-    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
     "logicalCpus": 9,
-    "systemMemoryBytes": 10451464192
+    "systemMemoryBytes": 10451460096
   },
   "scope": "Node CPU solver only; no browser FPS/GPU measurements; outputBytes excludes JS heap, renderer and serialization",
   "cases": [
@@ -88,11 +88,11 @@
       },
       "repetitions": 7,
       "elapsedMs": {
-        "min": 7.813337000000018,
-        "median": 9.710561000000013,
-        "max": 27.85633999999999
+        "min": 10.25043999999997,
+        "median": 17.774045,
+        "max": 33.76416900000004
       },
-      "medianWallSecondsPerBiologicalSecond": 0.24276402500000033,
+      "medianWallSecondsPerBiologicalSecond": 0.444351125,
       "outputBytes": 1344840,
       "compartments": 48,
       "frames": 1601,
@@ -176,11 +176,11 @@
       },
       "repetitions": 7,
       "elapsedMs": {
-        "min": 6.960428999999976,
-        "median": 7.438450999999986,
-        "max": 12.169304000000011
+        "min": 9.396793000000002,
+        "median": 9.753276999999969,
+        "max": 20.099141999999915
       },
-      "medianWallSecondsPerBiologicalSecond": 0.18596127499999965,
+      "medianWallSecondsPerBiologicalSecond": 0.24383192499999923,
       "outputBytes": 1344840,
       "compartments": 48,
       "frames": 1601,
@@ -264,11 +264,11 @@
       },
       "repetitions": 7,
       "elapsedMs": {
-        "min": 6.853627000000017,
-        "median": 9.060269000000005,
-        "max": 10.816461000000004
+        "min": 16.00978299999997,
+        "median": 17.799698000000035,
+        "max": 24.301631000000043
       },
-      "medianWallSecondsPerBiologicalSecond": 0.22650672500000013,
+      "medianWallSecondsPerBiologicalSecond": 0.44499245000000087,
       "outputBytes": 1344840,
       "compartments": 48,
       "frames": 1601,

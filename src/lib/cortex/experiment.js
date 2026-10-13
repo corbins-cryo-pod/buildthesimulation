@@ -79,7 +79,8 @@ export function runExperiment(input, progress = () => {}) {
     config: c,
     modelStatus: {
       implemented: true,
-      verification: 'analytical and convergence tests in tests/cortex-laboratory.mjs',
+      verification:
+        'Analytical/convergence tests and fixed NEURON 9.0.1 / LFPykit 0.6.2 reference cases; not a guarantee for arbitrary configurations.',
       experimentalValidation: 'none',
       fidelity: 'exploratory passive cable; homogeneous infinite conductor',
     },
@@ -334,7 +335,14 @@ export function resultBundle(result) {
       role: 'Default evidence metadata; actual experiment values are in config',
       parameters: parameterRegistry,
     },
-    sourceIds: ['linden2014', 'anastassiou2010', 'lfpy-api', 'blackrock-utah'],
+    sourceIds: [
+      'linden2014',
+      'anastassiou2010',
+      'lfpy-api',
+      'neuron-reference',
+      'lfpykit-reference',
+      'blackrock-utah',
+    ],
   };
 }
 export const encodeJson = (data) =>

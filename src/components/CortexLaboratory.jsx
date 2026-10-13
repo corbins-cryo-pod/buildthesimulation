@@ -402,7 +402,7 @@ export default function CortexLaboratory() {
       </header>
       <div class="cx-scope">
         <strong>Exploratory passive model</strong>
-        <span>Analytical verification · no experimental validation · no action potentials</span>
+        <span>Numerical verification · no experimental validation · no action potentials</span>
       </div>
       <div class="cx-lab-grid">
         <aside class="cx-config">
