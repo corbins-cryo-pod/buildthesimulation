@@ -995,5 +995,17 @@ export default {
         "Cortical surface"
       ]
     }
+  ],
+  "76-northwestern-rogers-research-group": [
+    {
+      "name": "Flexible, injectable and bioresorbable neural electronics",
+      "stage": 2,
+      "regulatory": "R",
+      "evidenceUrl": "/devices/30-injectable-micro-iled-optoelectronics/",
+      "notes": "Academic research devices; animal and acute studies on the cataloged sheets.",
+      "interfaces": [
+        "Cortical surface"
+      ]
+    }
   ]
 };
