@@ -1,0 +1,120 @@
+name: Finger atlas source assets
+on:
+  push:
+    branches: [finger-atlas-realism-v2]
+    paths: [.github/workflows/finger-atlas-assets.yml]
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: |
+          mkdir -p /tmp/atlas-assets/{anatomy,morphologies,vendor}
+          cd /tmp
+          npm install --no-audit --no-fund three@0.169.0 esbuild@0.24.0
+          cat > atlas-vendor.js <<'EOF'
+          import * as THREE from 'three';
+          import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+          import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+          import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+          import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+          import {SSAOPass} from 'three/addons/postprocessing/SSAOPass.js';
+          import {OutputPass} from 'three/addons/postprocessing/OutputPass.js';
+          import {GLTFExporter} from 'three/addons/exporters/GLTFExporter.js';
+          import {mergeGeometries,mergeVertices,toCreasedNormals} from 'three/addons/utils/BufferGeometryUtils.js';
+          window.ATLAS_ENGINE={...THREE,OrbitControls,EffectComposer,RenderPass,UnrealBloomPass,SSAOPass,OutputPass,GLTFExporter,mergeGeometries,mergeVertices,toCreasedNormals};
+          EOF
+          ./node_modules/.bin/esbuild atlas-vendor.js --bundle --minify --format=iife --outfile=/tmp/atlas-assets/vendor/three-bundle.js
+          cp node_modules/three/LICENSE /tmp/atlas-assets/vendor/THREE-LICENSE.txt
+      - run: |
+          python -m pip -q install requests numpy trimesh fast-simplification
+          python - <<'PY'
+          import requests,json,pathlib,concurrent.futures,time,hashlib,re
+          import numpy as np
+          import trimesh
+          out=pathlib.Path('/tmp/atlas-assets')
+          session=requests.Session()
+          session.headers['User-Agent']='BuildTheSimulation educational finger atlas; public research data'
+          def get(url,**kw):
+              for attempt in range(4):
+                  try:
+                      r=session.get(url,timeout=100,**kw);r.raise_for_status();return r
+                  except Exception:
+                      if attempt==3:raise
+                      time.sleep(1+attempt)
+          repo='https://api.github.com/repos/Kevin-Mattheus-Moerman/BodyParts3D'
+          sha=get(repo+'/commits/main').json()['sha']
+          raw=f'https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/{sha}/assets/BodyParts3D_data/'
+          names=get(raw+'parts_list_e.txt').text
+          (out/'anatomy/parts_list_e.txt').write_text(names)
+          (out/'anatomy/LICENSE_content.txt').write_text(get(raw+'LICENSE_content').text)
+          mapping=dict(line.split('\t',1) for line in names.splitlines() if '\t' in line)
+          tree=get(repo+'/git/trees/'+sha,params={'recursive':1}).json()['tree']
+          files={pathlib.Path(f['path']).stem:f for f in tree if '/stl/' in f['path'] and f['path'].endswith('.stl')}
+          manifest=[]
+          def category(name):
+              if name=='skin':return 'skin'
+              if any(s in name for s in ['gyrus','gyri','lobule','cerebral cortex','occipital lobe','insula']) and not any(s in name for s in ['artery','vein']):return 'cortex'
+              if name in ['cerebellum','medulla oblongata','pons','midbrain','spinal cord','right thalamus','left thalamus','brain stem'] or 'cerebellar hemisphere' in name:return 'cns'
+              if any(s in name for s in ['median nerve','radial nerve','ulnar nerve','brachial plexus','musculocutaneous nerve','axillary nerve','spinal nerve','dorsal root','ventral root','cervical nerve']):return 'nerve'
+              if 'right' in name and any(s in name for s in ['humerus','radius','ulna','phalange','phalanx','metacarpal','scaphoid','lunate','capitate','hamate','trapezium','trapezoid','pisiform','triquetral','scapula','clavicle']):return 'bone'
+              if name in ['atlas','axis'] or ('cervical vertebra' in name) or name in ['first thoracic vertebra','second thoracic vertebra']:return 'bone'
+              if 'right' in name and any(s in name for s in ['flexor digitorum profundus','flexor digitorum superficialis','extensor indicis','first dorsal interosseous','first lumbrical']):return 'muscle'
+              return None
+          tasks=[(i,mapping.get(i,i),category(mapping.get(i,i))) for i in files if category(mapping.get(i,i))]
+          print('Downloading atlas meshes:',len(tasks),flush=True)
+          def fetch_mesh(t):
+              ident,name,cat=t;url=raw+'stl/'+ident+'.stl'
+              data=get(url).content
+              path=out/'anatomy'/f'{ident}.stl';path.write_bytes(data)
+              m=trimesh.load(path,force='mesh')
+              entry={'id':ident,'name':name,'category':cat,'source':url,'sourceCommit':sha,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),'vertices':len(m.vertices),'faces':len(m.faces),'bounds':m.bounds.tolist()}
+              print(ident,name,len(m.faces),flush=True)
+              return entry
+          with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+              for entry in pool.map(fetch_mesh,tasks):manifest.append(entry)
+          (out/'anatomy/manifest.json').write_text(json.dumps(manifest,indent=2))
+          (out/'anatomy/available-meshes.json').write_text(json.dumps([{'id':i,'name':mapping.get(i,i),'path':f['path']} for i,f in files.items()],indent=2))
+          api='https://api.brain-map.org/api/v2/data/query.json'
+          criteria="model::ApiCellTypesSpecimenDetail,rma::criteria,[donor__species$il'homo sapiens'],[nr__reconstruction_type$nenull],rma::options[num_rows$eqall]"
+          try:
+              meta=get(api,params={'criteria':criteria}).json()
+              (out/'morphologies/query.json').write_text(json.dumps(meta,indent=2))
+              cells=meta['msg']
+              assert isinstance(cells,list),str(meta)[:1000]
+              chosen=[]
+              for typ,limit in [('spiny',7),('aspiny',3),('sparsely spiny',2)]:
+                  subset=[c for c in cells if c.get('tag__dendrite_type')==typ]
+                  subset.sort(key=lambda c:(c.get('tag__apical')!='intact',str(c.get('specimen__id'))))
+                  chosen+=subset[:limit]
+              if not chosen:chosen=cells[:10]
+              morphs=[]
+              for c in chosen:
+                  sid=c.get('specimen__id',c.get('id'))
+                  query=f'model::NeuronReconstruction,rma::criteria,[specimen_id$eq{sid}],rma::include,well_known_files'
+                  data=get(api,params={'criteria':query}).json()
+                  for recon in data.get('msg',[]):
+                      for f in recon.get('well_known_files',[]):
+                          if '.swc' in f.get('path','').lower():
+                              url='https://api.brain-map.org'+f['download_link']
+                              swc=get(url).text
+                              (out/'morphologies'/f'{sid}.swc').write_text(swc)
+                              morphs.append({'specimen_id':sid,'metadata':c,'reconstruction':recon,'file_id':f['id'],'source':url,'sha256':hashlib.sha256(swc.encode()).hexdigest()})
+                              print('Human morphology',sid,len(swc),flush=True)
+                              break
+              (out/'morphologies/manifest.json').write_text(json.dumps(morphs,indent=2))
+          except Exception as e:
+              (out/'morphologies/ERROR.txt').write_text(repr(e));print('Morphology request failed:',e,flush=True)
+          print('Finished source package',flush=True)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: finger-atlas-source-assets
+          path: /tmp/atlas-assets/
+          retention-days: 14
