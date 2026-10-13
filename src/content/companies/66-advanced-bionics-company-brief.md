@@ -2,8 +2,8 @@
 title: "Advanced Bionics (company brief)"
 order: 66
 pubDate: 2026-10-09
-updatedDate: 2026-10-09
-lastVerified: 2026-10-09
+updatedDate: 2026-10-12
+lastVerified: 2026-10-12
 description: "Advanced Bionics lists its global offices on its own site, with the headquarters in Valencia, California, and presents itself as part of Sonova."
 region: "American"
 kind: "Company"
@@ -14,9 +14,19 @@ lon: -118.6082
 tags: ["company","american","device maker"]
 draft: false
 ---
-Advanced Bionics lists its global offices on its own site, with the headquarters in Valencia, California, and presents itself as part of Sonova.
+Advanced Bionics makes cochlear implants, including the HiRes Ultra 3D system on the linked device sheet.
 
-- Offices page: <https://www.advancedbionics.com/com/en/home/contact-us/f/ab-global-offices>
+## Funding and ownership
+
+- Sonova's announcement of January 4, 2010 says it completed the acquisition of Advanced Bionics Corporation for a transaction value of USD 489 million, after regulatory approval.
+
+## Not public or not verified
+
+- Revenue and headcount for Advanced Bionics alone: Sonova reports at group level, and a separate figure was not read here. Founding year was not read from a primary source.
+
+## Primary sources
+
+- Sonova completion notice: <https://www.sonova.com/acquisition-advanced-bionics-completed/>
 
 ### Device entries
 
