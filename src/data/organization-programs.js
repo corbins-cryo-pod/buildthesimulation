@@ -1043,5 +1043,29 @@ export default {
         "Cortical surface"
       ]
     }
+  ],
+  "80-university-of-tubingen-birbaumer-group": [
+    {
+      "name": "Intracortical speller in completely locked-in ALS",
+      "stage": 3,
+      "regulatory": "R",
+      "evidenceUrl": "/applications/154-completely-locked-in-als-intracortical-speller-2022/",
+      "notes": "Single-case study under German special authorization; no marketing authorization.",
+      "interfaces": [
+        "Intracortical"
+      ]
+    }
+  ],
+  "81-wyss-center-bio-and-neuroengineering": [
+    {
+      "name": "Intracortical speller in completely locked-in ALS (co-authors)",
+      "stage": 3,
+      "regulatory": "R",
+      "evidenceUrl": "/applications/154-completely-locked-in-als-intracortical-speller-2022/",
+      "notes": "Single-case study under German special authorization; no marketing authorization.",
+      "interfaces": [
+        "Intracortical"
+      ]
+    }
   ]
 };
