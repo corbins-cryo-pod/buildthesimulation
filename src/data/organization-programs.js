@@ -1007,5 +1007,17 @@ export default {
         "Cortical surface"
       ]
     }
+  ],
+  "77-hhmi-janelia-neuropixels-program": [
+    {
+      "name": "Neuropixels collaboration probes",
+      "stage": 2,
+      "regulatory": "R",
+      "evidenceUrl": "/devices/04-neuropixels-probe/",
+      "notes": "Research probes used in animal electrophysiology; manufacturing and sales are by imec.",
+      "interfaces": [
+        "Intracortical"
+      ]
+    }
   ]
 };
