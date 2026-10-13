@@ -1,0 +1,22 @@
+name: Finger atlas offline meshing tools
+on:
+  push:
+    branches: [finger-atlas-realism-v2]
+    paths: [.github/workflows/finger-atlas-meshing-tools.yml]
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: |
+          mkdir -p /tmp/wheels
+          python -m pip download fast-simplification==0.1.13 --only-binary=:all: --no-deps --dest /tmp/wheels
+      - uses: actions/upload-artifact@v4
+        with:
+          name: finger-atlas-meshing-wheels
+          path: /tmp/wheels/
+          retention-days: 14
