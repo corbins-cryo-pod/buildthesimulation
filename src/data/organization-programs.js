@@ -1067,5 +1067,17 @@ export default {
         "Intracortical"
       ]
     }
+  ],
+  "82-case-western-cleveland-fes-center": [
+    {
+      "name": "Intracortical BCI with implanted muscle stimulation (BrainGate2)",
+      "stage": 3,
+      "regulatory": "R",
+      "evidenceUrl": "/applications/155-cwru-ibci-controlled-fes-reach-grasp-2017/",
+      "notes": "Investigational proof-of-concept in one participant; no marketing authorization.",
+      "interfaces": [
+        "Intracortical"
+      ]
+    }
   ]
 };
