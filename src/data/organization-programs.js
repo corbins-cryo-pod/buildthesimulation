@@ -1019,5 +1019,17 @@ export default {
         "Intracortical"
       ]
     }
+  ],
+  "78-uc-davis-brandman-stavisky-group": [
+    {
+      "name": "Intracortical speech neuroprosthesis (BrainGate2)",
+      "stage": 3,
+      "regulatory": "R",
+      "evidenceUrl": "/applications/152-uc-davis-speech-neuroprosthesis-als-2024/",
+      "notes": "Investigational clinical study in one participant; no marketing authorization.",
+      "interfaces": [
+        "Intracortical"
+      ]
+    }
   ]
 };
