@@ -1031,5 +1031,17 @@ export default {
         "Intracortical"
       ]
     }
+  ],
+  "79-umc-utrecht-ramsey-group": [
+    {
+      "name": "Fully implanted ECoG communication BCI",
+      "stage": 3,
+      "regulatory": "R",
+      "evidenceUrl": "/applications/153-utrecht-fully-implanted-ecog-bci-als-2016/",
+      "notes": "Investigational study in one participant; the implant parts are certified for other uses.",
+      "interfaces": [
+        "Cortical surface"
+      ]
+    }
   ]
 };
