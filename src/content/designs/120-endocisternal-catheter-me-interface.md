@@ -1,5 +1,5 @@
 ---
-title: "Endocisternal catheter and ME interface, 2023-2024"
+title: "Endocisternal Magnetoelectric Interface"
 order: 120
 pubDate: 2026-10-07
 updatedDate: 2026-10-07
