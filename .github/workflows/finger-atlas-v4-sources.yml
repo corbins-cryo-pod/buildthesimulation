@@ -1,0 +1,107 @@
+name: Finger Atlas V4 anatomical sources
+on:
+  push:
+    branches: [finger-atlas-v4-anatomy]
+    paths: [.github/workflows/finger-atlas-v4-sources.yml]
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - run: python -m pip -q install numpy scipy nibabel scikit-image trimesh fast-simplification requests beautifulsoup4
+      - name: Acquire traceable anatomy and extract physical cross sections
+        run: |
+          mkdir -p /tmp/v4-assets
+          cat > /tmp/prepare.py <<'PY'
+          import requests,pathlib,json,hashlib,concurrent.futures,gzip,io
+          import numpy as np,nibabel as nib,trimesh
+          from skimage.measure import find_contours
+          from scipy.ndimage import gaussian_filter
+          O=pathlib.Path('/tmp/v4-assets');log=[]
+          def get(u):
+            r=requests.get(u,timeout=50);r.raise_for_status();return r
+          def save(u,path):
+            r=get(u);p=O/path;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(r.content);log.append({'path':str(path),'url':u,'sha256':hashlib.sha256(r.content).hexdigest()});return p
+          repo='spinalcordtoolbox/PAM50'
+          sha=get(f'https://api.github.com/repos/{repo}/commits/master').json()['sha']
+          base=f'https://raw.githubusercontent.com/{repo}/{sha}/'
+          save(base+'README.md','pam50/README.md')
+          names=['PAM50_cord','PAM50_gm','PAM50_spinal_levels','PAM50_levels','PAM50_rootlets']
+          for n in names:save(base+'template/'+n+'.nii.gz','pam50/'+n+'.nii.gz')
+          save('https://raw.githubusercontent.com/spinalcordtoolbox/spinalcordtoolbox/master/LICENSE','pam50/SCT_LICENSE.txt')
+          ims={n:nib.as_closest_canonical(nib.load(O/'pam50'/f'{n}.nii.gz')) for n in names}
+          arrays={n:im.get_fdata(dtype=np.float32) for n,im in ims.items()}
+          print('PAM50',sha,{n:(im.shape,nib.aff2axcodes(im.affine)) for n,im in ims.items()},flush=True)
+          cord=arrays['PAM50_cord'];gm=arrays['PAM50_gm'];levels=arrays['PAM50_spinal_levels'];aff=ims['PAM50_cord'].affine
+          out={'source':'PAM50','commit':sha,'url':f'https://github.com/{repo}/tree/{sha}','citation':'De Leener et al. NeuroImage 2018, doi:10.1016/j.neuroimage.2017.10.041','coordinates':'micrometers; x patient left, y dorsal, z rostral; each section centered on cord centroid','threshold':0.5,'levelKind':'spinal segment labels from PAM50_spinal_levels; not vertebral labels','sections':[]}
+          for lev,name in [(3,'C3'),(5,'C5'),(6,'C6'),(7,'C7'),(8,'C8'),(9,'T1')]:
+            counts=np.sum(np.isclose(levels,lev),axis=(0,1));zs=np.where(counts>0)[0]
+            if len(zs)==0:continue
+            z=int(np.median(zs));mask=cord[:,:,z]>.5;ij=np.argwhere(mask);cent=ij.mean(axis=0);world=nib.affines.apply_affine(aff,[*cent,z]);
+            def contours(a):
+              found=find_contours(gaussian_filter(a.astype(float),.65),.5);res=[]
+              for c in found:
+                if len(c)<15:continue
+                pts=nib.affines.apply_affine(aff,np.column_stack([c,np.full(len(c),z)]))-world
+                pts=pts[:,[0,1]]*-1000
+                res.append(np.round(pts,3).tolist())
+              return sorted(res,key=len,reverse=True)
+            outer=contours(mask);gray=contours(gm[:,:,z]);
+            out['sections'].append({'level':name,'label':lev,'voxelZ':z,'sourceWorldMm':world.tolist(),'outer':outer,'gray':gray,'areaMm2':float(mask.sum()*abs(aff[0,0]*aff[1,1])),'gmAreaMm2':float((gm[:,:,z]>.5).sum()*abs(aff[0,0]*aff[1,1])),'pixelSizeMm':list(ims['PAM50_cord'].header.get_zooms()[:2]),'extentMm':(np.ptp(ij,axis=0)*np.abs(np.diag(aff)[:2])).tolist()})
+          (O/'cord-sections.json').write_text(json.dumps(out,default=float,separators=(',',':')))
+          # Existing BodyParts3D source family, same coordinate system as V3.
+          bsha='f0eeb6e843380cfe6b83797cf8c3e1af74de5e61';bb=f'https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/{bsha}/assets/BodyParts3D_data/'
+          parts=save(bb+'parts_list_e.txt','bodyparts/parts_list_e.txt').read_text().splitlines();save(bb+'LICENSE_content','bodyparts/LICENSE_content')
+          wanted=[]
+          for line in parts:
+            p=line.split('\t',1)
+            if len(p)==2 and any(k in p[1].lower() for k in ['midbrain','red nucleus','substantia nigra','superior colliculus','inferior colliculus','cerebral peduncle']):wanted.append(p)
+          extras=[]
+          for id,name in wanted:
+            try:
+              p=save(bb+'stl/'+id+'.stl','bodyparts/'+id+'.stl');m=trimesh.load(p,force='mesh');nf=len(m.faces)
+              if nf>24000:m=m.simplify_quadric_decimation(face_count=24000)
+              extras.append({'id':id,'name':name,'source':bb+'stl/'+id+'.stl','commit':bsha,'originalFaces':nf,'p':np.round(m.vertices,4).tolist(),'f':m.faces.tolist(),'license':'BodyParts3D CC BY-SA 2.1 Japan; source notice included'})
+              print(id,name,len(m.faces),flush=True)
+            except Exception as e:log.append({'error':str(e),'id':id})
+          (O/'brainstem-extra.json').write_text(json.dumps(extras,separators=(',',':')))
+          # Open research figures and quantitative text for morphology constraints.
+          from bs4 import BeautifulSoup
+          import urllib.parse,xml.etree.ElementTree as ET
+          ids=['PMC2277171','PMC7414433']
+          def collect(pid):
+            d=O/'papers'/pid;d.mkdir(parents=True,exist_ok=True);meta={'id':pid,'figures':[]}
+            try:
+              x=get(f'https://www.ebi.ac.uk/europepmc/webservices/rest/{pid}/fullTextXML');(d/'article.xml').write_bytes(x.content);root=ET.fromstring(x.content)
+              text=lambda e: ''.join(e.itertext()) if e is not None else ''
+              meta['title']=text(root.find('.//article-title'));meta['permissions']=text(root.find('.//permissions'))
+              h=get(f'https://pmc.ncbi.nlm.nih.gov/articles/{pid}/');soup=BeautifulSoup(h.text,'html.parser')
+              for f in root.findall('.//fig')[:6]:
+                k=f.attrib.get('id');block=soup.find(id=k);im=block.find('img') if block else None
+                if im:
+                  u=urllib.parse.urljoin(h.url,im.get('src'));r=get(u)
+                  if r.headers.get('Content-Type','').startswith('image/'):
+                    fn=k+'.jpg';(d/fn).write_bytes(r.content);meta['figures'].append({'id':k,'file':fn,'url':u,'caption':text(f.find('caption')),'sha256':hashlib.sha256(r.content).hexdigest()})
+            except Exception as e:meta['error']=str(e)
+            (d/'metadata.json').write_text(json.dumps(meta,indent=2));return meta
+          with concurrent.futures.ThreadPoolExecutor(max_workers=2) as ex:list(ex.map(collect,ids))
+          for doi in ['1331305','1409974']:
+            journal='fnana' if doi=='1331305' else 'fncel';vol='18';d=O/'papers'/doi;d.mkdir(parents=True,exist_ok=True)
+            url=f'https://www.frontiersin.org/journals/'+('neuroanatomy' if journal=='fnana' else 'cellular-neuroscience')+f'/articles/10.3389/{journal}.2024.{doi}/full'
+            try:
+              h=get(url);(d/'article.html').write_text(h.text)
+              for i in [2,3,4]:
+                u=f'https://www.frontiersin.org/files/Articles/{doi}/{journal}-{vol}-{doi}-HTML/image_m/{journal}-{vol}-{doi}-g00{i}.jpg';save(u,f'papers/{doi}/Figure{i}.jpg')
+            except Exception as e:log.append({'doi':doi,'error':str(e)})
+          (O/'acquisition.json').write_text(json.dumps(log,indent=2))
+          print('SECTIONS',[(s['level'],s['areaMm2'],len(s['gray'])) for s in out['sections']],flush=True)
+          PY
+          python /tmp/prepare.py
+          cp /tmp/prepare.py /tmp/v4-assets/prepare_sources.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: finger-atlas-v4-anatomical-sources
+          path: /tmp/v4-assets
+          retention-days: 14
