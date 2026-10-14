@@ -21,3 +21,5 @@ jobs:
         run: npm run build
       - name: Verify Cortex routes and worker artifacts
         run: node scripts/verify-cortex-build.mjs
+      - name: Verify Finger Atlas geometry and published assets
+        run: node scripts/verify-finger-atlas.mjs --build

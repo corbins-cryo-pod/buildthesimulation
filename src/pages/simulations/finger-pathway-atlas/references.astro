@@ -1,0 +1,71 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import manifest from '../../../data/finger-atlas-comparisons.json';
+const base = '/assets/finger-pathway-atlas/v3/';
+const groups = [...new Set(manifest.comparisons.map(c => c.group))];
+const sourceById = new Map(manifest.sources.map(s => [s.id, s]));
+---
+
+<Layout pageTitle="Finger atlas · Reference images" compactHeader wide subtitle="" description="50 comparison plates and 42 original scientific figures accompanying the Finger Pathway Atlas V3. Source, species, tissue and model limitations are retained for each comparison.">
+  <header class="reference-heading"><p class="edition">Finger Pathway Atlas · V3</p><h1>Model and real tissue</h1><p>50 comparison plates · 42 original figures · 19 studies and the H01 gallery</p><a href="/simulations/finger-pathway-atlas/">← Return to the 3D atlas</a></header>
+  <p class="reading-note">Left: the supplied V3 model. Right: published scientific tissue images. The two panels have independent magnifications and represent different specimens, fields and scales. Source species and imaging methods are identified on every plate.</p>
+  <div class="filters" role="search" aria-label="Filter reference plates">
+    <label>Region<select id="reference-group"><option value="">All regions</option>{groups.map(group => <option value={group}>{group.replace(/^\d+\s+/, '')}</option>)}</select></label>
+    <label>Find a plate<input id="reference-query" type="search" placeholder="e.g. myelin, human, brainstem, EM" /></label>
+    <span id="reference-count" role="status">50 plates</span>
+  </div>
+  <p id="reference-empty" hidden>No plates match. Choose All regions or clear the search.</p>
+  <div class="plate-grid">
+    {manifest.comparisons.map(c => {
+      const source = sourceById.get(c.reference_source)!;
+      return <article class="plate" id={`plate-${c.number}`} data-group={c.group} data-search={[c.title,c.species,c.tissue,c.modality,source.short,c.compare,c.gap].join(' ').toLowerCase()}>
+        <button class="plate-image" type="button" data-full={base + c.plate_file} data-title={`${String(c.number).padStart(2,'0')} · ${c.title}`} aria-label={`Enlarge plate ${c.number}: ${c.title}`}><img src={base + c.thumbnail_file} alt={`${c.title}: V3 model beside ${c.species.toLowerCase()} ${c.modality.toLowerCase()} reference`} width="960" height="656" loading="lazy" decoding="async" /></button>
+        <div class="plate-content"><p class="plate-number">{String(c.number).padStart(2,'0')} · {c.group.replace(/^\d+\s+/, '')}</p><h2>{c.title}</h2><p class="metadata">{c.species} · {c.modality}<br />{c.tissue}</p><p>{c.compare}</p><details><summary>Model differences and attribution</summary><p>{c.gap}</p><p>{c.model_basis}</p><p>{c.scale_notice}</p><p><a href={source.url} target="_blank" rel="noopener noreferrer">{source.short} — {c.panel}</a></p><p>{source.rights_notice || 'The source retains its copyright and reuse terms; consult the original publication.'}</p>{source.license_links?.map(url => <p><a href={url} target="_blank" rel="noopener noreferrer">Source license</a></p>)}</details>
+        <nav class="plate-links" aria-label={`Plate ${c.number} resources`}><a href={`/simulations/finger-pathway-atlas/?view=${c.region}`}>Inspect in 3D</a><a href={base + c.full_figure_file} target="_blank" rel="noopener">Original figure</a><a href={base + c.plate_file} download>Full plate</a></nav></div>
+      </article>;
+    })}
+  </div>
+  <section class="sources" id="sources"><h2>Sources and provenance</h2><p>Original full figures and full-size supplied comparison plates are preserved. Gallery thumbnails are resized display copies. The comparison notes, crops, species, model basis and reference hashes remain in the <a href={base + 'comparison_manifest.json'} download>comparison manifest</a>; camera states and model-image provenance remain in the <a href={base + 'model_render_provenance.json'} download>render provenance</a>.</p><p><a href={base + 'SOURCES.md'} download>Download source bibliography</a></p>
+    <ol>{manifest.sources.map(source => <li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.short}</a> — {source.title}{source.doi && <span> · DOI: {source.doi}</span>}</li>)}</ol>
+  </section>
+  <dialog id="plate-dialog" aria-labelledby="plate-dialog-title"><div class="dialog-top"><h2 id="plate-dialog-title"></h2><button id="plate-close" type="button">Close</button></div><img id="plate-full" alt="" /><a id="plate-download" download>Download full-size plate</a></dialog>
+</Layout>
+
+<script>
+  const group = document.querySelector<HTMLSelectElement>('#reference-group')!;
+  const query = document.querySelector<HTMLInputElement>('#reference-query')!;
+  const plates = [...document.querySelectorAll<HTMLElement>('.plate')];
+  function filter() {
+    const terms = query.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    let visible = 0;
+    for (const plate of plates) {
+      plate.hidden = Boolean(group.value && plate.dataset.group !== group.value) || !terms.every(term => plate.dataset.search?.includes(term));
+      if (!plate.hidden) visible++;
+    }
+    document.querySelector('#reference-count')!.textContent = `${visible} ${visible === 1 ? 'plate' : 'plates'}`;
+    document.querySelector<HTMLElement>('#reference-empty')!.hidden = visible > 0;
+  }
+  group.addEventListener('change',filter); query.addEventListener('input',filter);
+  const dialog = document.querySelector<HTMLDialogElement>('#plate-dialog')!;
+  let opener: HTMLElement | null = null;
+  document.querySelectorAll<HTMLButtonElement>('.plate-image').forEach(button => button.addEventListener('click', () => {
+    opener = button;
+    const image = document.querySelector<HTMLImageElement>('#plate-full')!;
+    image.src = button.dataset.full!; image.alt = button.dataset.title!;
+    document.querySelector('#plate-dialog-title')!.textContent = button.dataset.title!;
+    document.querySelector<HTMLAnchorElement>('#plate-download')!.href = button.dataset.full!;
+    dialog.showModal();
+  }));
+  document.querySelector('#plate-close')!.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', e => { if (e.target === dialog) { const r=dialog.getBoundingClientRect(); if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close(); } });
+  dialog.addEventListener('close',()=>{document.querySelector<HTMLImageElement>('#plate-full')!.removeAttribute('src');opener?.focus();});
+</script>
+
+<style>
+  .reference-heading{margin:28px 0 20px}.edition,.plate-number{font-size:11px;letter-spacing:1px;color:var(--muted);text-transform:uppercase}h1{font-size:clamp(36px,5vw,58px);font-weight:400;margin:8px 0}h2{font-size:25px;font-weight:400;line-height:1.2;margin:0 0 12px}p{font-size:14px;line-height:1.65}.reading-note{max-width:920px;border-left:2px solid var(--borderStrong);padding:8px 18px}
+  .filters{display:flex;gap:20px;align-items:end;margin:26px 0}.filters label{display:grid;gap:7px;font-size:12px}.filters input,.filters select{font:inherit;font-size:14px;border:1px solid var(--borderStrong);border-radius:7px;padding:10px;background:var(--panel);color:var(--text);min-width:250px;max-width:100%}#reference-count{padding:10px 0;font-size:13px;color:var(--muted)}
+  .plate-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.plate{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--panel)}.plate[hidden]{display:none}.plate-image{display:block;padding:0;width:100%;border:0;cursor:zoom-in;background:#f3f2ef}.plate-image img{width:100%;height:auto;display:block}.plate-content{padding:20px}.plate-number{margin:0 0 10px;font-size:10px}.metadata{font-size:12px;color:var(--muted)}details{margin-top:15px}summary{font-size:13px;cursor:pointer}details p{font-size:12px;color:var(--muted)}.plate-links{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;border-top:1px solid var(--border);padding-top:15px;margin-top:18px}
+  .sources{margin:40px 0;max-width:960px}.sources li{font-size:13px;line-height:1.7;margin:0 0 12px}.sources span{color:var(--muted)}
+  dialog{padding:18px;max-width:min(1500px,96vw);max-height:94vh;overflow:auto;border:1px solid var(--borderStrong);border-radius:10px;background:var(--panel);color:var(--text)}dialog::backdrop{background:rgba(0,0,0,.8)}.dialog-top{display:flex;gap:20px;justify-content:space-between;align-items:start}.dialog-top h2{font-size:22px}.dialog-top button{font:inherit;background:var(--panelHover);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px 14px;cursor:pointer}#plate-full{display:block;width:100%;height:auto;margin:5px 0 15px}#plate-download{font-size:13px}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+  @media(max-width:760px){.plate-grid{grid-template-columns:1fr}.filters{flex-direction:column;align-items:stretch;gap:12px}.filters input,.filters select{width:100%;min-width:0}.plate-content{padding:16px}#reference-count{padding:0}}
+</style>
