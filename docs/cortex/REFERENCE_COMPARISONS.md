@@ -5,6 +5,12 @@ Python environment. They are not website dependencies. These checks verify the
 declared mathematical models in fixed cases; they are not experimental validation
 or biological uncertainty estimates.
 
+The passive cases below remain regression references. The active extension adds
+the selected native SWC/original NMODL model, eight complete exported voltage/current
+traces, native threshold brackets and LFPykit recordings. Its conventions and
+predeclared gates are in [ACTIVE_MODEL](ACTIVE_MODEL.md); achieved results are in
+[VALIDATION](VALIDATION.md). Reproduction commands are in [README](README.md).
+
 ## Inputs and independence
 
 `scripts/cortex-reference-input.mjs` exports only the shared geometry, catalog

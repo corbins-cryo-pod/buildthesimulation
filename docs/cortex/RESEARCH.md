@@ -95,7 +95,26 @@ Specific license references: [Brian2](https://github.com/brian-team/brian2/blob/
 [Allen data terms](https://alleninstitute.org/terms-of-use/),
 [NEURON metadata](https://github.com/neuronsimulator/nrn/blob/master/codemeta.json).
 
-## Scope not resolved by this review
+## Active-reference selection, 2026-10-13
+
+Selected the openly available Allen/Mosher–Wei human middle-temporal layer-2 spiny
+specimen 571654895 from the model repository accompanying
+[Mosher, Wei et al. (2020)](https://doi.org/10.1016/j.celrep.2020.02.027),
+[ModelDB 263961](https://modeldb.science/263961). The pinned model contains a
+matching human reconstruction, fitted channel distributions and original
+mechanisms, making it more defensible for this milestone than assigning generic
+Hodgkin–Huxley parameters to a human arbor. It does not supply human-measured
+kinetics for every channel, an intact axon or held-out validation here.
+
+The historical directed axon processor was inspected at pinned ateam-tools
+commit `04850c7bc585fa065073eda0fefd1fd401209b27`; its literal final-section PCA
+convention and two appended 30 µm sections are retained. Source assets and license
+were inspected separately. Native NEURON 9.0.1 now executes these original
+mechanisms, and LFPykit 0.6.2 computes recordings from its membrane currents.
+See [ACTIVE_MODEL](ACTIVE_MODEL.md) for fit, preparation, transformations,
+reproduction, achieved errors and the noncommercial redistribution condition.
+
+## Remaining research gaps
 
 Human sensorimotor cell-type densities, synaptic connectivity distributions,
 spatial active-channel calibration, axonal initiation/propagation, frequency-dependent

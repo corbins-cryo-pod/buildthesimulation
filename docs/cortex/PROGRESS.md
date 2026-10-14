@@ -1,12 +1,85 @@
 # Development handoff
 
+## 2026-10-14 — Production publication approved
+
+The user explicitly approved making the completed active development version
+live. Publish the tested active milestone through the repository PR and successful
+CI/Cloudflare deployment. The passive model remains available and the initial
+selection. Interactive browser QA and independent biological validation remain
+open; publication does not change the documented numerical or scientific scope.
+After incorporating concurrent atlas changes through main `50774ce`, the full
+suite passed 136/136 tests, Astro built 454 pages, and static Cortex asset checks
+passed. Production publication status is recorded in the PR and deployment check.
+
+## 2026-10-13 — Active human single-neuron review milestone
+
+Branch: `feature/cortex-active-neuron`. The passive foundation PR #243 was
+approved for publication and merged as
+`f910af3b986d3629c02e8dff6a60a6287a55f251`; its Cloudflare deployment succeeded.
+The active stage remains a review feature and must not be merged to production
+without the user's approval. The default selection remains the passive model.
+
+Selected and pinned Allen/Mosher–Wei human middle-temporal layer-2 spiny specimen
+571654895, original SWC/fit/NMODL and Allen's noncommercial software license.
+The matching human morphology and fitted distributions make it a stronger
+reference than a generic HH substitution. Channel kinetics have mixed-species
+origins; the published processor substitutes a synthetic 60 µm axon.
+See ACTIVE_MODEL.md for precise conventions and biological limitations.
+
+Implemented native tapered geometry with shared branch junctions, rigid placement,
+nine active mechanisms, calcium dynamics, backward-Euler cable/Markov integration,
+total outward membrane currents, true extracellular-potential cable forcing,
+separate neural/applied/total recordings, internal-step crossing detection and
+selected-compartment channel/current inspection. The interface adds a named model
+selector, reference stimulation preset, compatible schema-2 configs/results and
+provenance exports while retaining all passive regressions and other simulations.
+
+Independent NEURON 9.0.1 with original NMODL and actual LFPykit 0.6.2 generated
+eight complete exported voltage/current references: rest, below/above-threshold
+intracellular and extracellular inputs, changed implant pose, half timestep and
+refined morphology. Full-compartment voltage RMS is below 2.9e−7 mV and recording
+RMS below 2e−11 µV; threshold-boundary classifications agree. A calcium/SK
+ordering mismatch was corrected using native state-coupling evidence, without
+loosening any gates. Website CI uses hashed fixtures without Python simulators.
+
+The full repository run passed **136/136 tests**, including the actual worker
+module through a Node bridge with nested active channel arrays. Astro built
+**446 pages**; static route/search/current-worker/active-asset checks passed. These checks
+do not establish browser interaction or GPU performance. Supported control-browser
+tooling is unavailable; no unsupported browser automation was installed.
+
+Unrelated concurrent device/atlas updates were incorporated through current main
+`506c0c5f3cbb2ab125423cf3a398a12dbf67d453` before the final build. The active
+feature does not change their content or existing peripheral simulations.
+
+Performance, output storage and refinement are recorded in
+`benchmarks/active-latest.json` and PERFORMANCE.md. Conditioning is computed by
+the browser solver and may be reused in a bounded worker-local cache; no native
+reference solution is imported as an initial state. Active runs require Workers.
+
+### Review and next session
+
+1. Inspect the feature PR and its hosting check/preview, current main and branch
+   head. Preserve concurrent atlas/device changes; none belong to this milestone.
+2. On `/cortex/`, select the human temporal cell and run default current injection;
+   inspect soma/local crossings, selected channels and separated recording traces.
+   Load the reference extracellular preset, then compare/export both runs.
+3. Perform desktop/mobile, keyboard, WebGL/fallback, cancel/reset/stale-state,
+   replay, contact/compartment selection and download QA. Keep the PR draft until
+   this gap and the scientific scope are reviewed; await production approval.
+4. Next bounded scientific work: identify original fitting sweeps, import a small
+   source NWB set with explicit junction correction, reproduce somatic protocols
+   without refitting, and extend spatial threshold convergence to 10 µm.
+   No population, electronics, FEM or mechanics expansion is part of this stage.
+
 ## 2026-10-11/12 — Shared passive foundation
 
 Initial audit base: `6104dd0`. Continued against updated main `26387b9`
 (manufacturer/FDA device-sheet changes); these unrelated changes were preserved.
-Branch: `feature/cortex-laboratory-foundation`. No production merge or deploy.
+Branch: `feature/cortex-laboratory-foundation`. Initially held for review;
+subsequently approved, merged and deployed as recorded above.
 
-Review: [draft PR #243](https://github.com/corbins-cryo-pod/buildthesimulation/pull/243).
+Review: [merged PR #243](https://github.com/corbins-cryo-pod/buildthesimulation/pull/243).
 Initial implementation commit: `3f0e25e6cd3cd985c4b3ff31503b14273f34a7da`.
 The continued independent-reference work is retained in the same feature branch/PR.
 The PR carries the latest CI status and outstanding browser-review checklist.

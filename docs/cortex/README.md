@@ -2,11 +2,16 @@
 
 Route: `/cortex/`. Public methods: `/cortex/methods/`.
 Engine: `cortex-passive/0.1.0`. Experiment schema: `cortex-experiment/1`.
+Active engine: `cortex-active/0.2.0`; active experiment schema: `cortex-experiment/2`.
 
-This is the first shared scientific vertical slice, not the completed platform.
+This is a shared scientific foundation, not the completed platform.
 It contains one representative cortical slab, one synthetic passive arbor, and
 the existing catalog's Utah 1.5 mm reference. Synaptic recording, intracellular
 current clamp and extracellular stimulation use the **same physical world**.
+The second milestone adds the published human temporal layer-2 spiny specimen
+571654895: reconstructed dendrites, fitted section parameters, nine channel
+mechanisms, calcium dynamics and the published synthetic 60 µm axon stub.
+The passive reference remains the initial/default selection and regression model.
 
 ## What works
 
@@ -26,10 +31,12 @@ current clamp and extracellular stimulation use the **same physical world**.
 
 ## What does not work yet
 
-No active channels, action potentials, neural populations, human-specific fitted
-models, curved anatomical scans, layered conductivity, finite exposed Utah tip
+No neural populations, regional tissue scans, layered conductivity, finite exposed Utah tip
 model, acquisition electronics, mechanics or experimental validation. No clinical,
 device-performance or tissue-safety inference is supported. See [ROADMAP](ROADMAP.md).
+Active numerical verification is not held-out biological validation. The selected
+cell is temporal, not M1; its axon is a model stub and kinetics have mixed-species
+origins. See [ACTIVE_MODEL](ACTIVE_MODEL.md) for source, license and exact scope.
 
 ## Development
 
@@ -42,6 +49,7 @@ npm test
 npm run build
 node scripts/verify-cortex-build.mjs
 node scripts/benchmark-cortex.mjs
+node scripts/benchmark-cortex-active.mjs
 npm run dev
 ```
 
@@ -69,6 +77,34 @@ package versions, NEURON build, generator/input hashes and exact configurations.
 Run the arbor generator before the LFPykit generator, which consumes its independent
 membrane currents. See [REFERENCE_COMPARISONS](REFERENCE_COMPARISONS.md) for scope.
 
+### Active reference reproduction
+
+Original model assets and the noncommercial Allen Institute Software License are
+retained at `public/models/cortex/allen571654895/`. Original NMODL sources and
+license are in `scripts/cortex-active-mechanisms/`; they run offline, not in the
+website. Compile them outside the checkout with the pinned NEURON installation:
+
+```sh
+# From the repository root; use the environment prepared above.
+cortex_repo_dir="$PWD"
+mkdir -p /tmp/cortex-active-reference-build
+cd /tmp/cortex-active-reference-build
+CC=gcc CXX=g++ "$cortex_repo_dir/.venv-cortex-reference/bin/nrnivmodl" "$cortex_repo_dir/scripts/cortex-active-mechanisms"
+export CORTEX_ACTIVE_MECHANISM_LIBRARY="$PWD/x86_64/libnrnmech.so"
+cd "$cortex_repo_dir"
+.venv-cortex-reference/bin/python scripts/cortex-active-model.py
+.venv-cortex-reference/bin/python scripts/cortex-active-neuron-reference.py
+.venv-cortex-reference/bin/python scripts/cortex-active-threshold-reference.py
+node --test tests/cortex-active.mjs tests/cortex-active-reference.mjs tests/cortex-active-thresholds.mjs
+```
+
+Compiler/library paths vary by host. This managed runtime additionally needed
+`NMODL_PYLIB` pointing to its Python shared library. No compiled library is
+committed. Full physical-compartment voltage/current references use hashed
+gzip/int32 delta fixtures with explicit quantization far below test tolerances.
+The main reference also retains exact snapshots, dense soma/contact signals,
+internal-step crossing times and held-voltage channel trajectories.
+
 ## Documentation map
 
 | Document | Purpose |
@@ -80,6 +116,7 @@ membrane currents. See [REFERENCE_COMPARISONS](REFERENCE_COMPARISONS.md) for sco
 | [PARAMETERS](PARAMETERS.md) | Assumptions, defaults, uncertainty and provenance |
 | [VALIDATION](VALIDATION.md) | Verification matrix versus empirical validation |
 | [REFERENCE_COMPARISONS](REFERENCE_COMPARISONS.md) | Independent NEURON/LFPykit construction, results and limits |
+| [ACTIVE_MODEL](ACTIVE_MODEL.md) | Human active model provenance, conventions and verification gates |
 | [PERFORMANCE](PERFORMANCE.md) | Measured cost, limits and benchmark procedure |
 | [DECISIONS](DECISIONS.md) | Accepted/rejected choices |
 | [ROADMAP](ROADMAP.md) | Dependency-gated next work |

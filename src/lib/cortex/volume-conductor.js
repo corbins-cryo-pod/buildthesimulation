@@ -50,10 +50,21 @@ export function pointField(point, source, currentNa, sigma) {
 export function leadField(nodes, contacts, sigma, approximation = 'line', exclusionUm = 25) {
   return contacts.map((contact) =>
     Float64Array.from(nodes, (node) => {
+      if (node.kind === 'junction') return 0;
       const separation =
-        node.kind === 'soma'
-          ? distance(contact.positionUm, node.centerUm) - node.diameterUm / 2
-          : segmentDistance(contact.positionUm, node.startUm, node.endUm) - node.diameterUm / 2;
+        node.pathUm?.length > 1
+          ? Math.min(
+              ...node.pathUm
+                .slice(1)
+                .map(
+                  (p, j) =>
+                    segmentDistance(contact.positionUm, node.pathUm[j], p) -
+                    Math.max(node.pathDiameterUm[j], node.pathDiameterUm[j + 1]) / 2,
+                ),
+            )
+          : node.kind === 'soma'
+            ? distance(contact.positionUm, node.centerUm) - node.diameterUm / 2
+            : segmentDistance(contact.positionUm, node.startUm, node.endUm) - node.diameterUm / 2;
       if (separation < exclusionUm)
         throw new Error(
           `${contact.id} is within ${exclusionUm} µm of the modeled membrane. Move the implant; near-contact physics is not supported.`,

@@ -115,7 +115,7 @@ last dt is shortened to end exactly at duration. Full outputs use Float64.
 
 ## Omitted physics and operating regime
 
-No active channels, spikes, axon, recruitment, ephaptic feedback, heterogeneity,
+For the passive reference: no active channels or axon. Neither model includes population recruitment, ephaptic feedback, heterogeneity,
 anisotropy, CSF/skull boundary effects, material interface, substrate conductivity,
 vascular space, extracellular volume fraction, deformation or injury model.
 Large passive excursions (>10 mV) trigger a warning, not a fictional spike.
@@ -127,3 +127,46 @@ phases share a timestep. Correct charge does not imply resolved polarization:
 interval averaging can suppress fast opposing drives, so timestep refinement is required.
 Unknown exposed Utah area prevents a meaningful geometric charge-density output.
 Charge balance alone establishes neither electrochemical nor tissue safety.
+
+## Active reference extension
+
+The selected human temporal model preserves original section-specific cm, Ra,
+g_pas, e_pas, ionic reversals and fitted channel densities. Native SWC geometry
+provides tapered membrane area and axial resistance, including shared zero-area
+branch junctions. No independent half-soma radial resistance is substituted into
+this model; that convention belongs only to the synthetic passive reference.
+
+```
+C_i dVm_i/dt + I_leak + I_Na + I_K + I_Ca + I_HCN + I_syn
+  = Σ_j G_ij [(Vm_j + Ve_j) − (Vm_i + Ve_i)] + I_inj
+```
+
+Voltage uses backward Euler with current channel state and reversals, solved by
+tree elimination. Original exponential gate updates and the implicit 12-state
+NaV Markov system then advance at the new voltage. Calcium dynamics use the
+source shell/buffer/removal equation. Its driving calcium current uses pre-solve
+voltage, gates and reversal, as in native fixed-step NEURON; SK reads the newly
+updated calcium concentration. This calcium drive is separate from the
+solve-consistent current used for KCL and recording. Calcium reversal follows Nernst with 2 mM
+external concentration. Scalar rates/powers/temperature conventions are retained
+from the original NMODL, including fixed-34°C rates where present.
+
+Total outward current is reconstructed from the same states/reversals used by
+the voltage solve. Exported channel state is after state advancement; it is not
+the state used for that interval's ionic-current calculation. Local KCL and total
+conservation are checked at every internal timestep. Zero-area junctions have no
+membrane current or forward source. The line-source approximation uses an endpoint
+chord even though rendering, area, axial resistance and exclusion retain the full
+polyline/taper; spatial refinement quantifies the recording approximation.
+
+Internal integration and retained output sampling are separate. Every exported
+drive/artifact sample averages the preceding internal timestep only. No anti-alias
+filter is implied. Upward −25 mV crossings are detected on internal steps, with
+linear time interpolation; soma events use a 2 ms detection refractory interval.
+Earliest local crossings are recorded separately and do not alone establish the
+biological spike initiation site. Conditioning begins at −80 mV for the specified
+duration; frame zero is conditioned, not assumed exact equilibrium. Identical
+conditioning may be reused from a bounded four-entry worker-local cache.
+
+See ACTIVE_MODEL.md for source conventions, the synthetic axon, channel origins,
+predeclared gates and experimental/redistribution limits.
