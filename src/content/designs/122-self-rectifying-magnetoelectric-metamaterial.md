@@ -1,5 +1,5 @@
 ---
-title: "Self-rectifying magnetoelectric metamaterial, 2023"
+title: "Self-Rectifying ME Implant"
 order: 122
 pubDate: 2026-10-07
 updatedDate: 2026-10-07
