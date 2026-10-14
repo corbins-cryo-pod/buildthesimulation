@@ -1115,5 +1115,23 @@ export default {
         "Intracortical"
       ]
     }
+  ],
+  "86-radboud-donders-institute": [
+    {
+      "name": "Speech reconstruction from temporary implants (Radboud and UMC Utrecht)",
+      "stage": 3,
+      "regulatory": "R",
+      "evidenceUrl": "https://www.ru.nl/en/research/research-news/brain-signals-transformed-into-speech-through-implants-and-ai",
+      "notes": "Human study in people with epilepsy and temporary implants; no Donders-developed device is cataloged.",
+      "interfaces": []
+    },
+    {
+      "name": "DBI2 neurotechnology hardware (consortium)",
+      "stage": 1,
+      "regulatory": "R",
+      "evidenceUrl": "https://dbi2.nl/dbi-2-research/neurotechnology-hardware",
+      "notes": "Consortium work items; graphene arrays recorded from brain slices. Hardware leads are largely at Delft University of Technology.",
+      "interfaces": []
+    }
   ]
 };
