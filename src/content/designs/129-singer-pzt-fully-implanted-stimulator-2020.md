@@ -1,5 +1,5 @@
 ---
-title: "Fully implanted two-film PZT ME stimulator, 2020"
+title: "PZT Magnetoelectric Stimulator"
 order: 129
 pubDate: 2026-10-07
 updatedDate: 2026-10-07
