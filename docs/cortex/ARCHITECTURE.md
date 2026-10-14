@@ -134,3 +134,14 @@ Slice-transfer caches are keyed by world identity and plane configuration, bound
 to four entries per live world. Result summaries use weak keys; trace paths are
 memoized independently of the replay cursor. Replaying an unchanged pulse interval
 reuses slice colors. No history scan is performed on every replay tick.
+
+
+## Sustained-step inspection
+
+`current-step.js` derives summaries from the result's internal soma events and
+uses a half-open input window. Adjacent-spike navigation finds the next distinct
+retained frame to avoid getting stuck when an event rounds to the current frame.
+Long-step presets explicitly choose output spacing and replay speed; loading them
+does not change the underlying integrator, channels or event criterion. Recording
+length is next to input duration in the main workflow. Exact event times remain
+in the existing results export; the UI table contains all events, including recovery.

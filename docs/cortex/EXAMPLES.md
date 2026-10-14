@@ -1,6 +1,6 @@
 # Reproducible laboratory examples
 
-`src/lib/cortex/examples.js` contains eight curated, immutable **complete**
+`src/lib/cortex/examples.js` contains ten curated, immutable **complete**
 experiment configurations. Loading one resets all experimental settings,
 including model, positions/orientations, contacts, waveform, reference and
 numerical resolution; it clears the current result and preserves a separately
@@ -24,7 +24,7 @@ refractory interval. Local crossing counts are membrane compartments crossing
 at least once, not cells, recruited axons or an experimentally measured spike
 population. Peak soma values below are maxima of the retained output samples.
 
-All active examples use the published human temporal L2 model 571654895 at
+The seven original active examples use the published human temporal L2 model 571654895 at
 34 °C, 40 µm maximum compartment length, 0.005 ms integration, 0.05 ms output,
 100 ms no-drive conditioning and a 40 ms experiment. The soma is at
 [−100, −200, 1500] µm with zero cell rotation. All examples use the homogeneous,
@@ -96,7 +96,7 @@ node scripts/verify-cortex-examples.mjs
 node --test tests/cortex-examples.mjs
 ```
 
-The generator executes all eight examples, checks the declared qualitative
+The generator executes all ten examples, checks the declared qualitative
 outcomes, finiteness, current conservation/KCL (<1e−8 nA), per-contact charge
 (<1e−10 nC error), signal decomposition/reference (<1e−10 µV error), output
 budgets and the controlled applied-artifact comparisons. It writes actual
@@ -132,3 +132,36 @@ layered conductivity, acquisition electronics, injury, cortical-population
 recruitment, biological selectivity or safe human stimulation level is inferred.
 Original fitting to experimental data is not independent biological validation
 of this port or these protocols.
+
+
+## Sustained current-clamp examples (2026-10-14)
+
+Two additional examples use the same fitted human cell, unchanged mechanisms,
+40 µm mesh, 0.005 ms integration and 100 ms no-drive conditioning. A constant
++0.3 nA (300 pA) soma current is applied with the existing equal/opposite bath
+return. No spike train is prescribed: repeated action potentials emerge from
+integration of the original channel and cable equations.
+
+| Example | Current window | Recording | Saved interval | Soma events | During-step count rate |
+| --- | --- | --- | --- | --- | --- |
+| `active-current-step-200ms` | 20–220 ms | 250 ms | 0.1 ms | 9, all during step | 45 Hz |
+| `active-current-step-500ms` | 50–550 ms | 600 ms | 0.25 ms | 18: 17 during step, 1 after | 34 Hz |
+
+The 200 ms step's first crossing occurs at 43.394546 ms (latency 23.394546 ms).
+Its first and last interspike intervals are 11.336086 and 30.631592 ms. The 500 ms
+step's last crossing is at 550.371530 ms, just after current offset; the during-step
+summary intentionally excludes it, while the full spike table/export includes it.
+During-step means onset <= event time < offset. Count rate is count / duration;
+it is not a claim of stationary firing. Interval growth illustrates adaptation in
+this fitted model, not a universal human-neuron response.
+
+These two examples also differ in onset, recording length and saved interval;
+they are not a one-variable comparison. Pin either, change only amplitude or
+step duration while preserving an adequate recovery window, and rerun for a
+controlled comparison. Loading an example retains the existing reset disclosure.
+For waveform peaks choose a shorter recording and finer saved output. Spike
+counts/times use all internal timesteps regardless of retained frame spacing.
+
+Native NEURON/LFPykit long-step verification and reproducible commands are recorded
+in CURRENT_STEPS.md. These cases do not resolve the earlier spatial-refinement
+failures and do not simulate pipette resistance, clamp electronics or a population.

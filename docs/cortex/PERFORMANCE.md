@@ -143,3 +143,15 @@ REFINEMENT.md; those ran on a shared development host and are not isolated
 performance trials. Its coarse/fine waveform and threshold failures are accuracy
 findings, not performance gates. Browser rendering, label collisions, responsiveness,
 cancellation interaction and actual peak memory still require supported browser QA.
+
+## Sustained steps, 2026-10-14
+
+The example reproduction pass measured 9.05 s for the 250 ms recording and
+22.41 s for the 600 ms recording with previously cached conditioning, 40 µm mesh
+and 0.005 ms integration. Retained numeric output was 57,405,240 and 55,110,040
+bytes, respectively (0.1 and 0.25 ms saved intervals). Other development checks
+were running concurrently; these are descriptive CPU observations, not isolated
+browser benchmarks or portable speed guarantees. The complete report retains
+CPU/runtime and per-case diagnostics. The existing 64 MiB cap is unchanged.
+No rendering/FPS claim is made. Replay adds faster user-selected speeds up to
+100 biological ms/s; changing replay speed never changes numerical integration.

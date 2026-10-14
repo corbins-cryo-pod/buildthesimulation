@@ -56,6 +56,12 @@ const active = {
 };
 const intracellularBelow = structuredClone(active);
 intracellularBelow.protocol.injectionNa = 0.05;
+const currentStep200 = structuredClone(active);
+Object.assign(currentStep200.protocol, { startMs: 20, durationMs: 200, injectionNa: 0.3 });
+Object.assign(currentStep200.solver, { durationMs: 250, sampleMs: 0.1 });
+const currentStep500 = structuredClone(active);
+Object.assign(currentStep500.protocol, { startMs: 50, durationMs: 500, injectionNa: 0.3 });
+Object.assign(currentStep500.solver, { durationMs: 600, sampleMs: 0.25 });
 const extracellularLocal = structuredClone(active);
 extracellularLocal.protocol.mode = 'extracellular-stimulation';
 extracellularLocal.protocol.amplitudeUa = 40;
@@ -121,6 +127,26 @@ export const EXAMPLES = freezeDeep([
     config: active,
     view: { recordingComponent: 'neural', baselineExampleId: 'active-intracellular-subthreshold' },
     outcome: { somaSpikes: 1, localCrossings: 'present', appliedSignal: 'nonzero' },
+  }),
+  example({
+    id: 'active-current-step-200ms',
+    title: 'Patch clamp · 200 ms current step',
+    purpose: 'Explore repeated soma action potentials and adaptation during sustained current injection.',
+    description: '+0.3 nA (300 pA) from 20 to 220 ms; 250 ms recording. Integration remains 0.005 ms at the 40 µm mesh, with 0.1 ms saved output and 100 ms conditioning.',
+    expectedBehavior: 'Nine soma crossings occur during the step. Interspike intervals increase as this modeled cell adapts. Count divided by step duration is 45 Hz, not a constant instantaneous firing rate. These are calculated responses of one fitted cell, not universal biological thresholds.',
+    config: currentStep200,
+    view: { recordingComponent: 'neural', replaySpeed: 25, baselineExampleId: 'active-current-step-500ms' },
+    outcome: { somaSpikes: 9, localCrossings: 'present', appliedSignal: 'nonzero' },
+  }),
+  example({
+    id: 'active-current-step-500ms',
+    title: 'Patch clamp · 500 ms current step',
+    purpose: 'Observe a longer spike train, adaptation and post-step recovery.',
+    description: '+0.3 nA (300 pA) from 50 to 550 ms; 600 ms recording. Integration stays at 0.005 ms / 40 µm. Saved output is explicitly 0.25 ms to stay below 64 MiB; output peaks are less resolved than in the 200 ms example.',
+    expectedBehavior: 'Eighteen soma crossings occur: seventeen during the current step and one just after its offset. Interspike intervals lengthen. Onset, step length, recording length and output interval differ from the 200 ms example; this is not a single-variable comparison. Internal event detection retains full timestep resolution.',
+    config: currentStep500,
+    view: { recordingComponent: 'neural', replaySpeed: 50, baselineExampleId: 'active-current-step-200ms' },
+    outcome: { somaSpikes: 18, localCrossings: 'present', appliedSignal: 'nonzero' },
   }),
   example({
     id: 'extracellular-local-crossings',

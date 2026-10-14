@@ -133,3 +133,13 @@ retaining one pinned baseline. Surface changed fields and separate membrane mV,
 neural µV and artifact µV metrics; record the chosen display independently.
 Default replay slows to 1 biological ms/s and phase buttons choose actual saved
 samples. No output sample is fabricated to fill a missed pulse phase.
+
+
+## C017 — Extend current-clamp windows without changing excitability
+
+Permit sustained active inputs and longer recordings under the existing strict
+memory limits. Explicit presets choose saved intervals; never coarsen integration
+or alter the fitted channel model to force repetitive spikes. Keep internal soma
+event detection independent of output sampling. Show during-step counts/rates,
+latency and intervals separately from post-step events. Preserve original short
+examples and native fixtures; add separate long-step NEURON/LFPykit fixtures.

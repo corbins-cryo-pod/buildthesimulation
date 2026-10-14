@@ -1,6 +1,6 @@
 {
   "schemaVersion": "cortex-examples-verification/1",
-  "generatedAt": "2026-10-14T15:22:52.172Z",
+  "generatedAt": "2026-10-14T16:30:13.070Z",
   "status": "passed",
   "runtime": {
     "node": "v24.19.0",
@@ -18,10 +18,10 @@
   },
   "sourceHashes": {
     "scripts/verify-cortex-examples.mjs": "aebb7cf7b990fafed39962a25bd321f661a20659fddffaa043a6e663db0cc748",
-    "src/lib/cortex/examples.js": "e212c2980be5ee5758cbfbc775730d31054ec4d96cd48a589961d9ffeff901f3",
-    "src/lib/cortex/config.js": "b3d1080ae692bf91ded163551c064ee47ce75f6971510b5835a3d56327ccfdc2",
+    "src/lib/cortex/examples.js": "a851561ccb43efe1476de644cac123423ec2525ce8e812d197b819018f49a4dd",
+    "src/lib/cortex/config.js": "5ce2a7e7ed03cf22dfb996a76f4c7d8d017dc44c8de3a73558d340aa52e849ae",
     "src/lib/cortex/experiment.js": "09e73e77a4b6cb26219c7e892a7e2b78ad2beb32e6412e0cdfaf2607a3ccab53",
-    "src/lib/cortex/world.js": "252c4aeea14e8f16d60843da783a466b601e7859880db3415b4c59ffd0b861bb",
+    "src/lib/cortex/world.js": "7cf606dc408e19010af6b8c14426aebe091be4bfe34680cfb2c9c6fcf08b4002",
     "src/lib/cortex/active-morphology.js": "9304538355a52714802af57a0d86140e2509e28dfdebc1a95238233a156bc734",
     "src/lib/cortex/active-cable.js": "dfa8b78268f781f69c9f5ef8e3e7ca713a7c440b884e07093930b62fba21812f",
     "src/lib/cortex/active-channels.js": "be4c862dddd31f0492c27c7f9349d40550b0402b562d561d3fe22d799237afbb",
@@ -389,11 +389,11 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 0,
         "anodicChargeNc": 0,
-        "elapsedMs": 43.166274000000016,
+        "elapsedMs": 114.924692,
         "outputBytes": 1344840,
         "frames": 1601,
         "compartments": 48,
-        "wallSecondsPerBiologicalSecond": 1.0791568500000004
+        "wallSecondsPerBiologicalSecond": 2.8731172999999997
       },
       "conditioning": "passive equilibrium",
       "warnings": []
@@ -761,11 +761,11 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 0,
         "anodicChargeNc": 0,
-        "elapsedMs": 5258.779735,
+        "elapsedMs": 10328.886215,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 131.469493375,
+        "wallSecondsPerBiologicalSecond": 258.222155375,
         "firstThresholdCrossing": null,
         "spikeCount": 0
       },
@@ -2566,17 +2566,3775 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 0,
         "anodicChargeNc": 0,
-        "elapsedMs": 1570.4746829999995,
+        "elapsedMs": 1726.5047559999985,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 39.261867074999984,
+        "wallSecondsPerBiologicalSecond": 43.16261889999996,
         "firstThresholdCrossing": {
           "timeMs": 9.020456068584641,
           "compartmentId": "axon_stub[1]:0",
           "kind": "axon"
         },
         "spikeCount": 1
+      },
+      "conditioning": "reused identical state",
+      "warnings": []
+    },
+    {
+      "id": "active-current-step-200ms",
+      "title": "Patch clamp · 200 ms current step",
+      "status": {
+        "status": "passed",
+        "decompositionResidualUv": 1.4224732503009818e-16,
+        "differentialResidualUv": 2.220446049250313e-16
+      },
+      "engineVersion": "cortex-active/0.2.0",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "modelId": "allen-human-571654895/1",
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ],
+          "segmentLengthUm": 40
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-571654895/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "intracellular-current",
+          "startMs": 20,
+          "durationMs": 200,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 0.3,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 250,
+          "sampleMs": 0.1,
+          "settleMs": 100
+        }
+      },
+      "configSha256": "6b861f2e4f4c99350d8b0796414b9f5da00d0c6e884b486ac46346fe63bec20b",
+      "modelId": "allen-human-571654895/1",
+      "geometry": {
+        "somaCenterUm": [
+          -100,
+          -200,
+          1500
+        ],
+        "stimulatingContacts": [
+          {
+            "id": "r3-c4",
+            "positionUm": [
+              -200,
+              -600.0000000000001,
+              1500
+            ]
+          },
+          {
+            "id": "r3-c5",
+            "positionUm": [
+              200,
+              -600.0000000000001,
+              1500
+            ]
+          }
+        ],
+        "recordingContacts": [
+          {
+            "id": "r4-c4",
+            "positionUm": [
+              -200,
+              -200,
+              1500
+            ]
+          },
+          {
+            "id": "r4-c5",
+            "positionUm": [
+              200,
+              -200,
+              1500
+            ]
+          }
+        ]
+      },
+      "expectedBehavior": "Nine soma crossings occur during the step. Interspike intervals increase as this modeled cell adapts. Count divided by step duration is 45 Hz, not a constant instantaneous firing rate. These are calculated responses of one fitted cell, not universal biological thresholds.",
+      "somaSpikes": [
+        {
+          "timeMs": 43.39454630679981,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 54.730632252405286,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 71.44308638708084,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 89.7110328392454,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 110.37452434555142,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 133.7503144177765,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 159.92642733253862,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 188.6131865523697,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 219.24477847848817,
+          "compartmentId": "soma[0]:0"
+        }
+      ],
+      "somaMv": {
+        "min": -92.51069212073202,
+        "max": 22.702432950235817,
+        "peakAbsolute": 92.51069212073202,
+        "rms": 72.97383669591741
+      },
+      "crossingCriterion": {
+        "thresholdMv": -25,
+        "refractoryMs": 2,
+        "convention": "Upward voltage crossing, linearly interpolated between internal solver steps; earliest crossing is model-dependent"
+      },
+      "localCrossingCount": 143,
+      "localCrossings": [
+        {
+          "timeMs": 42.963875682474395,
+          "compartmentId": "axon_stub[1]:0",
+          "kind": "axon",
+          "centerUm": [
+            -134.6935003901263,
+            -196.86273282878952,
+            1537.2422344517165
+          ]
+        },
+        {
+          "timeMs": 43.021697059727515,
+          "compartmentId": "axon_stub[0]:0",
+          "kind": "axon",
+          "centerUm": [
+            -116.98008523213682,
+            -198.95424337612775,
+            1513.120437057931
+          ]
+        },
+        {
+          "timeMs": 43.39454630679981,
+          "compartmentId": "soma[0]:0",
+          "kind": "soma",
+          "centerUm": [
+            -100,
+            -200,
+            1500
+          ]
+        },
+        {
+          "timeMs": 43.39538407809455,
+          "compartmentId": "apic[0]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -109.4004879056117,
+            -200.8856638465344,
+            1481.3226863941861
+          ]
+        },
+        {
+          "timeMs": 43.39942395775203,
+          "compartmentId": "apic[36]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -128.8341504359502,
+            -205.48765567266665,
+            1469.706723187029
+          ]
+        },
+        {
+          "timeMs": 43.4023943190546,
+          "compartmentId": "dend[11]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -98.51250038994141,
+            -202.41305150152823,
+            1511.2319768524594
+          ]
+        },
+        {
+          "timeMs": 43.40385564201107,
+          "compartmentId": "apic[1]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -118.02884725722404,
+            -204.34098120803327,
+            1461.2939887183147
+          ]
+        },
+        {
+          "timeMs": 43.40534948002424,
+          "compartmentId": "dend[20]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -91.17737571132977,
+            -196.78616468107424,
+            1504.8353569153094
+          ]
+        },
+        {
+          "timeMs": 43.40580475649513,
+          "compartmentId": "apic[38]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -146.13135230847317,
+            -217.12583283065442,
+            1454.5159241830397
+          ]
+        },
+        {
+          "timeMs": 43.40624023542542,
+          "compartmentId": "apic[37]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -142.47560438320298,
+            -206.99985928437948,
+            1464.930741923283
+          ]
+        },
+        {
+          "timeMs": 43.41262898147935,
+          "compartmentId": "dend[0]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -109.2019857341871,
+            -195.5458420083269,
+            1507.0979730414438
+          ]
+        },
+        {
+          "timeMs": 43.41414018821352,
+          "compartmentId": "apic[2]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -120.77253381848581,
+            -203.48755325076178,
+            1450.636369608058
+          ]
+        },
+        {
+          "timeMs": 43.41474498280841,
+          "compartmentId": "apic[34]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -119.69543196757678,
+            -211.95740750852787,
+            1444.8372128846377
+          ]
+        },
+        {
+          "timeMs": 43.41538885620734,
+          "compartmentId": "apic[39]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -157.3645949263776,
+            -213.99521811310294,
+            1462.740159301324
+          ]
+        },
+        {
+          "timeMs": 43.415722592487676,
+          "compartmentId": "apic[40]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -158.47380901883864,
+            -206.41163343996777,
+            1462.230269039262
+          ]
+        },
+        {
+          "timeMs": 43.4164663354353,
+          "compartmentId": "apic[35]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -105.5756598905449,
+            -205.59111626585187,
+            1442.4057140297043
+          ]
+        },
+        {
+          "timeMs": 43.41780586353947,
+          "compartmentId": "dend[25]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -84.3827682907812,
+            -201.04394253825694,
+            1498.6916462481972
+          ]
+        },
+        {
+          "timeMs": 43.42202221069482,
+          "compartmentId": "apic[3]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -122.86537455914689,
+            -203.00963983025613,
+            1444.524159613263
+          ]
+        },
+        {
+          "timeMs": 43.42504338962448,
+          "compartmentId": "apic[35]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -75.21331525445683,
+            -211.60102947664618,
+            1427.9536799313196
+          ]
+        },
+        {
+          "timeMs": 43.42670293694077,
+          "compartmentId": "dend[15]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -102.76571358654176,
+            -202.58254793762467,
+            1517.4654467399384
+          ]
+        },
+        {
+          "timeMs": 43.43116505922153,
+          "compartmentId": "dend[21]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -85.54214914001736,
+            -195.46730920408208,
+            1506.0718833680007
+          ]
+        },
+        {
+          "timeMs": 43.4336275837396,
+          "compartmentId": "apic[35]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -46.747666916737316,
+            -216.29066954739866,
+            1412.7495596809067
+          ]
+        },
+        {
+          "timeMs": 43.43558299757083,
+          "compartmentId": "apic[39]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -186.2299687861951,
+            -220.8374393213897,
+            1461.571237301171
+          ]
+        },
+        {
+          "timeMs": 43.438936224596524,
+          "compartmentId": "apic[29]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -135.18552037733542,
+            -200.53753700494204,
+            1435.9302255229209
+          ]
+        },
+        {
+          "timeMs": 43.44171588513044,
+          "compartmentId": "apic[40]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -190.20856127851792,
+            -205.07113232787887,
+            1452.7752807679449
+          ]
+        },
+        {
+          "timeMs": 43.447125073617215,
+          "compartmentId": "apic[4]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -124.92611514998387,
+            -203.83324949839331,
+            1427.8201544727137
+          ]
+        },
+        {
+          "timeMs": 43.45128794422698,
+          "compartmentId": "apic[39]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -217.08198229956207,
+            -222.53836303487276,
+            1454.788256044789
+          ]
+        },
+        {
+          "timeMs": 43.45305148501587,
+          "compartmentId": "dend[1]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -118.10371317009607,
+            -193.25974642836036,
+            1508.1059808865368
+          ]
+        },
+        {
+          "timeMs": 43.462920813426116,
+          "compartmentId": "dend[16]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -107.02456999370662,
+            -202.89792130193686,
+            1520.3418141112031
+          ]
+        },
+        {
+          "timeMs": 43.46452198666515,
+          "compartmentId": "dend[12]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -95.504726652884,
+            -205.05713239720896,
+            1527.545111188333
+          ]
+        },
+        {
+          "timeMs": 43.46776037644263,
+          "compartmentId": "dend[8]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -122.05718415798593,
+            -191.59642037960003,
+            1504.594094645943
+          ]
+        },
+        {
+          "timeMs": 43.46953963210278,
+          "compartmentId": "apic[30]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -145.5690091684748,
+            -195.7775990937408,
+            1421.1571049269978
+          ]
+        },
+        {
+          "timeMs": 43.4715506241408,
+          "compartmentId": "apic[40]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -215.8483383406135,
+            -200.9185656713217,
+            1431.8904084202777
+          ]
+        },
+        {
+          "timeMs": 43.4750620172177,
+          "compartmentId": "apic[33]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -159.54849166891108,
+            -199.5046525475708,
+            1423.8749827746146
+          ]
+        },
+        {
+          "timeMs": 43.48331059535952,
+          "compartmentId": "dend[24]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -87.48414708308613,
+            -189.13293560066026,
+            1498.4421358214709
+          ]
+        },
+        {
+          "timeMs": 43.49067281385767,
+          "compartmentId": "apic[18]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -140.61613086462944,
+            -207.51951871836332,
+            1409.6556575304385
+          ]
+        },
+        {
+          "timeMs": 43.49388579377465,
+          "compartmentId": "apic[5]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -128.32771106866832,
+            -204.5467917827998,
+            1402.1692108581974
+          ]
+        },
+        {
+          "timeMs": 43.49784919971632,
+          "compartmentId": "apic[30]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -148.03593749941908,
+            -187.7956414846509,
+            1402.440075325686
+          ]
+        },
+        {
+          "timeMs": 43.5024198616783,
+          "compartmentId": "apic[40]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -245.05315285640236,
+            -196.9602006560079,
+            1416.6868301948016
+          ]
+        },
+        {
+          "timeMs": 43.51214162934409,
+          "compartmentId": "apic[33]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -189.039636902052,
+            -198.03324021987984,
+            1412.8768203566067
+          ]
+        },
+        {
+          "timeMs": 43.5195241781112,
+          "compartmentId": "dend[2]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -120.4555311935923,
+            -192.64714112590912,
+            1513.9072467813817
+          ]
+        },
+        {
+          "timeMs": 43.52347457323419,
+          "compartmentId": "dend[19]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -110.78030368327582,
+            -206.23024704994936,
+            1526.810838825806
+          ]
+        },
+        {
+          "timeMs": 43.52622318364189,
+          "compartmentId": "apic[40]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -267.13506978864245,
+            -194.73653662142104,
+            1393.1356351753063
+          ]
+        },
+        {
+          "timeMs": 43.52960459156153,
+          "compartmentId": "apic[30]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -153.03974021244082,
+            -180.9183435781845,
+            1383.1721506750105
+          ]
+        },
+        {
+          "timeMs": 43.52976252717766,
+          "compartmentId": "apic[6]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -128.22993993562346,
+            -204.40876019605903,
+            1379.5968947697042
+          ]
+        },
+        {
+          "timeMs": 43.529810094690745,
+          "compartmentId": "apic[19]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -152.23814800582392,
+            -211.15335493332987,
+            1397.9709277487757
+          ]
+        },
+        {
+          "timeMs": 43.53241159007765,
+          "compartmentId": "apic[20]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -156.6769230193102,
+            -208.90012422204268,
+            1402.5421596122244
+          ]
+        },
+        {
+          "timeMs": 43.534508290062874,
+          "compartmentId": "dend[26]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -65.99142457220213,
+            -204.42448855417257,
+            1501.8241041469837
+          ]
+        },
+        {
+          "timeMs": 43.5387541588221,
+          "compartmentId": "apic[19]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -142.89249863649434,
+            -216.41505315109987,
+            1385.211454332468
+          ]
+        },
+        {
+          "timeMs": 43.54452565427305,
+          "compartmentId": "apic[19]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -135.81937525646237,
+            -221.17041018378666,
+            1370.2020241082096
+          ]
+        },
+        {
+          "timeMs": 43.54453915495724,
+          "compartmentId": "apic[15]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -114.6316238087096,
+            -206.07156648438576,
+            1372.896960818029
+          ]
+        },
+        {
+          "timeMs": 43.547788157825806,
+          "compartmentId": "apic[6]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -130.24875558863465,
+            -202.40269185348058,
+            1364.7894716524156
+          ]
+        },
+        {
+          "timeMs": 43.548520534312765,
+          "compartmentId": "apic[32]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -153.56559889995526,
+            -180.0899695788333,
+            1381.3375485815368
+          ]
+        },
+        {
+          "timeMs": 43.550311617696956,
+          "compartmentId": "apic[33]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -218.49670787053878,
+            -197.2894642989765,
+            1400.502652875459
+          ]
+        },
+        {
+          "timeMs": 43.55724299503609,
+          "compartmentId": "apic[28]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -157.521087003888,
+            -214.4357070721982,
+            1388.259208988212
+          ]
+        },
+        {
+          "timeMs": 43.55948908517736,
+          "compartmentId": "apic[31]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -152.9020829733886,
+            -172.80805048330248,
+            1363.4753755617687
+          ]
+        },
+        {
+          "timeMs": 43.56038503849437,
+          "compartmentId": "apic[21]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -162.42377633790005,
+            -208.66822478936643,
+            1394.993584658729
+          ]
+        },
+        {
+          "timeMs": 43.56951304686222,
+          "compartmentId": "dend[29]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -60.03849361977119,
+            -199.77563631151074,
+            1499.4535423910806
+          ]
+        },
+        {
+          "timeMs": 43.574538074467235,
+          "compartmentId": "apic[6]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -131.2043423256539,
+            -200.82950662443236,
+            1349.8015775840809
+          ]
+        },
+        {
+          "timeMs": 43.57915154163559,
+          "compartmentId": "apic[16]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -105.54910999405506,
+            -211.27113194476345,
+            1350.0007721278134
+          ]
+        },
+        {
+          "timeMs": 43.58059543771674,
+          "compartmentId": "dend[30]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -66.0998406731423,
+            -203.6467951968532,
+            1485.4061488354728
+          ]
+        },
+        {
+          "timeMs": 43.58096073361656,
+          "compartmentId": "apic[17]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -96.22425908889333,
+            -213.70072181155228,
+            1352.450529492883
+          ]
+        },
+        {
+          "timeMs": 43.58232585359724,
+          "compartmentId": "apic[31]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -143.36036649682734,
+            -167.2245068558401,
+            1345.0411017102656
+          ]
+        },
+        {
+          "timeMs": 43.58599175514229,
+          "compartmentId": "apic[28]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -158.86260832655665,
+            -221.1245136147794,
+            1361.8709734851552
+          ]
+        },
+        {
+          "timeMs": 43.58712335885522,
+          "compartmentId": "apic[33]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -249.8247974361966,
+            -197.4869003160122,
+            1393.2597365931417
+          ]
+        },
+        {
+          "timeMs": 43.59624147424513,
+          "compartmentId": "apic[22]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -172.6960008550017,
+            -209.7177301433803,
+            1383.0215867482484
+          ]
+        },
+        {
+          "timeMs": 43.59654936166585,
+          "compartmentId": "apic[16]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -107.02482080374321,
+            -214.78018806958698,
+            1325.1832981699104
+          ]
+        },
+        {
+          "timeMs": 43.597187744626794,
+          "compartmentId": "apic[31]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -144.10858042616923,
+            -163.51777036260154,
+            1325.1042980640234
+          ]
+        },
+        {
+          "timeMs": 43.6012867089944,
+          "compartmentId": "dend[17]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -117.92587179768161,
+            -205.6658754291068,
+            1517.387074229693
+          ]
+        },
+        {
+          "timeMs": 43.602265270330406,
+          "compartmentId": "apic[17]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -94.38409235556563,
+            -217.3029650747564,
+            1324.6941516432269
+          ]
+        },
+        {
+          "timeMs": 43.60624172369311,
+          "compartmentId": "apic[28]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -162.72373182908535,
+            -221.93671800081808,
+            1332.368585130208
+          ]
+        },
+        {
+          "timeMs": 43.6071721844626,
+          "compartmentId": "apic[7]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -129.68596417393434,
+            -199.42441106087506,
+            1335.7967048305777
+          ]
+        },
+        {
+          "timeMs": 43.6077657846414,
+          "compartmentId": "apic[12]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -129.97204351038474,
+            -197.53013446476717,
+            1334.9349648192217
+          ]
+        },
+        {
+          "timeMs": 43.60862855327587,
+          "compartmentId": "apic[16]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -94.18258701540957,
+            -217.42745565015062,
+            1303.292729313844
+          ]
+        },
+        {
+          "timeMs": 43.612991786541784,
+          "compartmentId": "apic[33]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -277.9472322505845,
+            -193.7767331228828,
+            1380.4648476518503
+          ]
+        },
+        {
+          "timeMs": 43.614623215865926,
+          "compartmentId": "apic[25]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -175.60780586799126,
+            -205.82770800931806,
+            1386.5609579177983
+          ]
+        },
+        {
+          "timeMs": 43.618126107350705,
+          "compartmentId": "apic[22]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -176.00385165734957,
+            -212.6854679762563,
+            1366.6411766396782
+          ]
+        },
+        {
+          "timeMs": 43.6186162881498,
+          "compartmentId": "apic[17]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -88.26958939918775,
+            -220.27347120961082,
+            1297.6010956039859
+          ]
+        },
+        {
+          "timeMs": 43.631877761043256,
+          "compartmentId": "dend[7]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -124.04165898792112,
+            -186.18714320766586,
+            1506.1777987128105
+          ]
+        },
+        {
+          "timeMs": 43.6334345420226,
+          "compartmentId": "apic[7]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -129.9417863220314,
+            -197.05343992488523,
+            1322.5680719238733
+          ]
+        },
+        {
+          "timeMs": 43.634056169301026,
+          "compartmentId": "apic[12]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -128.8697190488643,
+            -193.69976129115665,
+            1320.3044741546462
+          ]
+        },
+        {
+          "timeMs": 43.64137026974901,
+          "compartmentId": "apic[22]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -184.38564498082053,
+            -216.46605243047034,
+            1352.634623044303
+          ]
+        },
+        {
+          "timeMs": 43.647185394685756,
+          "compartmentId": "dend[13]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -83.55817095811645,
+            -210.8513937302175,
+            1542.3766081099875
+          ]
+        },
+        {
+          "timeMs": 43.65054507720929,
+          "compartmentId": "dend[23]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -68.4567489223794,
+            -195.95774551771416,
+            1514.9636115810706
+          ]
+        },
+        {
+          "timeMs": 43.65670233880118,
+          "compartmentId": "apic[24]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -200.48185461432547,
+            -219.4515948701326,
+            1345.9919807793206
+          ]
+        },
+        {
+          "timeMs": 43.66330910742284,
+          "compartmentId": "apic[27]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -195.9797727667803,
+            -199.66563356600793,
+            1372.6626141533877
+          ]
+        },
+        {
+          "timeMs": 43.66712495965694,
+          "compartmentId": "apic[26]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -180.53303601760544,
+            -201.5381737652779,
+            1362.175893836193
+          ]
+        },
+        {
+          "timeMs": 43.66915898582737,
+          "compartmentId": "apic[12]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -129.92701142974948,
+            -188.79662862219357,
+            1306.1351781792587
+          ]
+        },
+        {
+          "timeMs": 43.66985647769484,
+          "compartmentId": "dend[19]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -118.52188323036165,
+            -211.7483762643627,
+            1539.3679082524934
+          ]
+        },
+        {
+          "timeMs": 43.67024663801771,
+          "compartmentId": "apic[23]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -200.87871311205356,
+            -218.02405603856616,
+            1331.4948593175843
+          ]
+        },
+        {
+          "timeMs": 43.67256670333157,
+          "compartmentId": "apic[7]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -130.19199789162894,
+            -195.11357373989196,
+            1309.5485852102158
+          ]
+        },
+        {
+          "timeMs": 43.684884639569795,
+          "compartmentId": "dend[22]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -77.1850335391047,
+            -190.6641806660961,
+            1522.7449208432492
+          ]
+        },
+        {
+          "timeMs": 43.69734442698257,
+          "compartmentId": "dend[24]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -94.75351430927039,
+            -179.8766850066355,
+            1480.4251227265286
+          ]
+        },
+        {
+          "timeMs": 43.699953404567815,
+          "compartmentId": "apic[27]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -225.62639699912563,
+            -197.25100438112668,
+            1362.346828348339
+          ]
+        },
+        {
+          "timeMs": 43.71017325539037,
+          "compartmentId": "apic[26]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -182.83301286744438,
+            -200.35210237529628,
+            1327.1142920089794
+          ]
+        },
+        {
+          "timeMs": 43.718543894473335,
+          "compartmentId": "dend[18]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -117.36116800947357,
+            -202.60025229003276,
+            1535.6601886999408
+          ]
+        },
+        {
+          "timeMs": 43.72025244119925,
+          "compartmentId": "apic[14]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -145.55527773470487,
+            -185.1844833468697,
+            1293.0018691312343
+          ]
+        },
+        {
+          "timeMs": 43.72581301521953,
+          "compartmentId": "apic[9]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -132.90201936840197,
+            -193.57836742757985,
+            1295.9806665346462
+          ]
+        },
+        {
+          "timeMs": 43.72944691127433,
+          "compartmentId": "apic[13]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -133.2003420002677,
+            -182.01208465943887,
+            1282.1214100169013
+          ]
+        },
+        {
+          "timeMs": 43.72966901774262,
+          "compartmentId": "apic[8]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -119.02660834875016,
+            -193.0673508704827,
+            1291.736137369584
+          ]
+        },
+        {
+          "timeMs": 43.73750823519851,
+          "compartmentId": "apic[27]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -251.45770246037054,
+            -197.08844681793155,
+            1344.5975500121442
+          ]
+        },
+        {
+          "timeMs": 43.75487337646113,
+          "compartmentId": "apic[26]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -211.1727593349799,
+            -201.55490314251676,
+            1305.7870123768332
+          ]
+        },
+        {
+          "timeMs": 43.76339069958807,
+          "compartmentId": "apic[14]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -169.98808145116004,
+            -180.71392146383374,
+            1280.7253191719822
+          ]
+        },
+        {
+          "timeMs": 43.77281555173897,
+          "compartmentId": "dend[19]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -119.92364162677461,
+            -218.78133174580435,
+            1553.4726151506852
+          ]
+        },
+        {
+          "timeMs": 43.774508900653466,
+          "compartmentId": "apic[11]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -136.4302487036123,
+            -195.29856669259337,
+            1274.2844290867674
+          ]
+        },
+        {
+          "timeMs": 43.77588542707089,
+          "compartmentId": "dend[13]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -78.09348388380853,
+            -216.06521590709258,
+            1552.1686206539105
+          ]
+        },
+        {
+          "timeMs": 43.776706128082964,
+          "compartmentId": "apic[27]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -277.80003095978367,
+            -196.03263255294792,
+            1328.3828194823677
+          ]
+        },
+        {
+          "timeMs": 43.77829523743751,
+          "compartmentId": "apic[8]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -102.99588228279254,
+            -196.3669629403105,
+            1264.010375935687
+          ]
+        },
+        {
+          "timeMs": 43.781318696968796,
+          "compartmentId": "apic[10]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -147.85452394438806,
+            -194.90558712748248,
+            1274.5836030026696
+          ]
+        },
+        {
+          "timeMs": 43.78646476547592,
+          "compartmentId": "apic[13]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -140.95846320559326,
+            -170.19569346231762,
+            1249.7798769487056
+          ]
+        },
+        {
+          "timeMs": 43.801526072203224,
+          "compartmentId": "apic[26]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -223.85461861797924,
+            -202.46954106784517,
+            1272.4771242029708
+          ]
+        },
+        {
+          "timeMs": 43.806357077057235,
+          "compartmentId": "apic[14]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -186.22397195631754,
+            -179.17195315360863,
+            1256.8683570353487
+          ]
+        },
+        {
+          "timeMs": 43.81690987541642,
+          "compartmentId": "apic[27]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -307.927640449569,
+            -193.00821531802956,
+            1320.6346883285248
+          ]
+        },
+        {
+          "timeMs": 43.821462195933435,
+          "compartmentId": "apic[11]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -157.61908463014308,
+            -197.30860295907135,
+            1251.0810101638733
+          ]
+        },
+        {
+          "timeMs": 43.82620562192964,
+          "compartmentId": "apic[8]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -80.53410380281605,
+            -197.4667631168917,
+            1241.9084310524454
+          ]
+        },
+        {
+          "timeMs": 43.83925078829429,
+          "compartmentId": "apic[10]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -169.88231088611784,
+            -190.4679338919639,
+            1243.4621216928795
+          ]
+        },
+        {
+          "timeMs": 43.842880065506854,
+          "compartmentId": "dend[13]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -65.45502839071622,
+            -220.22103540183832,
+            1556.552151902772
+          ]
+        },
+        {
+          "timeMs": 43.84415619153744,
+          "compartmentId": "apic[13]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -159.20307084272085,
+            -157.48500580159703,
+            1220.2180257125317
+          ]
+        },
+        {
+          "timeMs": 43.849730953646436,
+          "compartmentId": "apic[26]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -248.71404653177547,
+            -203.04417581820832,
+            1246.7446601360468
+          ]
+        },
+        {
+          "timeMs": 43.85016976530772,
+          "compartmentId": "apic[14]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -200.8010890793094,
+            -176.95616503713603,
+            1231.4670117343194
+          ]
+        },
+        {
+          "timeMs": 43.85548440239281,
+          "compartmentId": "apic[27]:5",
+          "kind": "dendrite",
+          "centerUm": [
+            -335.1643098886125,
+            -186.37817573164656,
+            1311.9927752901729
+          ]
+        },
+        {
+          "timeMs": 43.86864540806586,
+          "compartmentId": "apic[11]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -167.81692607406006,
+            -196.78001633386853,
+            1221.4492813916133
+          ]
+        },
+        {
+          "timeMs": 43.87517677456269,
+          "compartmentId": "apic[8]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -62.29206021585992,
+            -195.8527161949018,
+            1215.8911774133705
+          ]
+        },
+        {
+          "timeMs": 43.88215789467006,
+          "compartmentId": "apic[27]:6",
+          "kind": "dendrite",
+          "centerUm": [
+            -359.9236628565808,
+            -178.28302902646826,
+            1300.3990832583966
+          ]
+        },
+        {
+          "timeMs": 43.893771625734416,
+          "compartmentId": "apic[14]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -216.35235967222945,
+            -176.99459386052712,
+            1206.8611583023016
+          ]
+        },
+        {
+          "timeMs": 43.89682713694212,
+          "compartmentId": "apic[26]:5",
+          "kind": "dendrite",
+          "centerUm": [
+            -274.4428806482204,
+            -201.33718026203886,
+            1222.8929445824851
+          ]
+        },
+        {
+          "timeMs": 43.8986380660841,
+          "compartmentId": "apic[10]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -195.98565032909676,
+            -185.75934259748112,
+            1215.261074063998
+          ]
+        },
+        {
+          "timeMs": 43.90005955416142,
+          "compartmentId": "apic[13]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -171.20246549925292,
+            -153.71634327249737,
+            1183.8909113368954
+          ]
+        },
+        {
+          "timeMs": 43.91336089105064,
+          "compartmentId": "apic[11]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -175.7265874107101,
+            -196.64651952176854,
+            1191.1057076754546
+          ]
+        },
+        {
+          "timeMs": 43.925313920871055,
+          "compartmentId": "apic[8]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -46.338785636427524,
+            -191.15815609565936,
+            1188.7625307723056
+          ]
+        },
+        {
+          "timeMs": 43.9307992011661,
+          "compartmentId": "apic[26]:6",
+          "kind": "dendrite",
+          "centerUm": [
+            -287.90862762549807,
+            -194.1315676197237,
+            1190.7089370260317
+          ]
+        },
+        {
+          "timeMs": 43.93359623833491,
+          "compartmentId": "apic[14]:5",
+          "kind": "dendrite",
+          "centerUm": [
+            -238.46496775053942,
+            -177.4517097008287,
+            1187.4976504876954
+          ]
+        },
+        {
+          "timeMs": 43.93946316150193,
+          "compartmentId": "apic[13]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -179.16479247987297,
+            -142.12001809684787,
+            1148.362921290372
+          ]
+        },
+        {
+          "timeMs": 43.943603678539944,
+          "compartmentId": "apic[11]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -195.40855802361733,
+            -198.1937207983359,
+            1167.5039170344805
+          ]
+        },
+        {
+          "timeMs": 43.956420391174774,
+          "compartmentId": "apic[10]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -217.6512755995231,
+            -188.2942933411548,
+            1183.6944416614451
+          ]
+        },
+        {
+          "timeMs": 43.95900530765515,
+          "compartmentId": "apic[14]:6",
+          "kind": "dendrite",
+          "centerUm": [
+            -254.95428995796559,
+            -181.887082951099,
+            1164.4752716130895
+          ]
+        },
+        {
+          "timeMs": 43.97628457064525,
+          "compartmentId": "apic[8]:5",
+          "kind": "dendrite",
+          "centerUm": [
+            -33.21565171021351,
+            -190.2857297808573,
+            1159.470944586279
+          ]
+        },
+        {
+          "timeMs": 43.997305706156496,
+          "compartmentId": "apic[10]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -239.69099439098477,
+            -192.91221107723962,
+            1153.9253391441048
+          ]
+        },
+        {
+          "timeMs": 44.027176945434,
+          "compartmentId": "apic[8]:6",
+          "kind": "dendrite",
+          "centerUm": [
+            -22.036376844801737,
+            -189.5869785794377,
+            1129.3761789509017
+          ]
+        },
+        {
+          "timeMs": 44.07406879671694,
+          "compartmentId": "apic[8]:7",
+          "kind": "dendrite",
+          "centerUm": [
+            0.09713610182484445,
+            -192.73502270829977,
+            1106.6087167162013
+          ]
+        },
+        {
+          "timeMs": 44.10447070256504,
+          "compartmentId": "apic[8]:8",
+          "kind": "dendrite",
+          "centerUm": [
+            23.386390924862212,
+            -195.02223156896497,
+            1084.4618211139477
+          ]
+        },
+        {
+          "timeMs": 55.17351249955225,
+          "compartmentId": "dend[10]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -138.70345576576594,
+            -185.7309610386213,
+            1496.7698224820822
+          ]
+        },
+        {
+          "timeMs": 71.98636956874225,
+          "compartmentId": "dend[28]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -48.05706515972661,
+            -208.62045700654699,
+            1500.756069429396
+          ]
+        }
+      ],
+      "selectedCompartments": [
+        {
+          "compartmentId": "soma[0]:0",
+          "kind": "soma",
+          "centerUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "membraneMv": {
+            "min": -92.51069212073202,
+            "max": 22.702432950235817,
+            "peakAbsolute": 92.51069212073202,
+            "rms": 72.97383669591741
+          }
+        },
+        {
+          "compartmentId": "apic[8]:5",
+          "kind": "dendrite",
+          "centerUm": [
+            -33.21565171021351,
+            -190.2857297808573,
+            1159.470944586279
+          ],
+          "membraneMv": {
+            "min": -104.93557529553166,
+            "max": 25.318535609259794,
+            "peakAbsolute": 104.93557529553166,
+            "rms": 86.9582676470996
+          }
+        },
+        {
+          "compartmentId": "axon_stub[1]:0",
+          "kind": "axon",
+          "centerUm": [
+            -134.6935003901263,
+            -196.86273282878952,
+            1537.2422344517165
+          ],
+          "membraneMv": {
+            "min": -92.54382845794561,
+            "max": 38.65615923211366,
+            "peakAbsolute": 92.54382845794561,
+            "rms": 76.35569684462448
+          }
+        }
+      ],
+      "recordings": [
+        {
+          "contactId": "r4-c4",
+          "reference": "infinity",
+          "units": "µV",
+          "neural": {
+            "min": -1.1251367284191127,
+            "max": 2.571483419067895,
+            "peakAbsolute": 2.571483419067895,
+            "rms": 0.7918223955456534
+          },
+          "applied": {
+            "min": -0.02151528420697176,
+            "max": 0,
+            "peakAbsolute": 0.02151528420697176,
+            "rms": 0.01924000759998808
+          },
+          "total": {
+            "min": -1.146652012626054,
+            "max": 2.5499681348609538,
+            "peakAbsolute": 2.5499681348609538,
+            "rms": 0.7741835907789127
+          }
+        },
+        {
+          "contactId": "r4-c5",
+          "reference": "infinity",
+          "units": "µV",
+          "neural": {
+            "min": -0.24912677310149678,
+            "max": 0.4665843524876034,
+            "peakAbsolute": 0.4665843524876034,
+            "rms": 0.2199870887708323
+          },
+          "applied": {
+            "min": -0.022895844604137315,
+            "max": 0,
+            "peakAbsolute": 0.022895844604137315,
+            "rms": 0.020474571469940875
+          },
+          "total": {
+            "min": -0.24912677310149678,
+            "max": 0.4436885078834661,
+            "peakAbsolute": 0.4436885078834661,
+            "rms": 0.20046123071853184
+          }
+        }
+      ],
+      "bipolarRecordings": {
+        "neural": {
+          "min": -1.5699784818042928,
+          "max": 2.3241592407407423,
+          "peakAbsolute": 2.3241592407407423,
+          "rms": 0.6253360624981468
+        },
+        "applied": {
+          "min": 0,
+          "max": 0.0013805603971655568,
+          "peakAbsolute": 0.0013805603971655568,
+          "rms": 0.0012345638699534152
+        },
+        "total": {
+          "min": -1.5685979214071293,
+          "max": 2.3255398011379063,
+          "peakAbsolute": 2.3255398011379063,
+          "rms": 0.6263566155539225
+        }
+      },
+      "snapshots": [
+        {
+          "timeMs": 0,
+          "driveIntervalAverage": 0,
+          "driveUnits": "nA",
+          "somaMv": -92.26390815576467,
+          "neuralUv": [
+            -0.0004002127852688693,
+            -0.0004609861126142498
+          ],
+          "appliedUv": [
+            0,
+            0
+          ],
+          "totalUv": [
+            -0.0004002127852688693,
+            -0.0004609861126142498
+          ]
+        },
+        {
+          "timeMs": 20,
+          "driveIntervalAverage": 0,
+          "driveUnits": "nA",
+          "somaMv": -92.51069212073202,
+          "neuralUv": [
+            -0.00011411612576872881,
+            -0.00031699202501484224
+          ],
+          "appliedUv": [
+            0,
+            0
+          ],
+          "totalUv": [
+            -0.00011411612576872881,
+            -0.00031699202501484224
+          ]
+        },
+        {
+          "timeMs": 21,
+          "driveIntervalAverage": 0.2999999999999403,
+          "driveUnits": "nA",
+          "somaMv": -89.67070396873356,
+          "neuralUv": [
+            0.7793858686930512,
+            0.2692717120221556
+          ],
+          "appliedUv": [
+            -0.021515284206956472,
+            -0.022895844604121047
+          ],
+          "totalUv": [
+            0.7578705844860947,
+            0.24637586741803455
+          ]
+        },
+        {
+          "timeMs": 220,
+          "driveIntervalAverage": 0.29999999999972715,
+          "driveUnits": "nA",
+          "somaMv": -24.312013222725785,
+          "neuralUv": [
+            2.222903913979521,
+            0.16232414178787713
+          ],
+          "appliedUv": [
+            -0.021515284206941186,
+            -0.02289584460410478
+          ],
+          "totalUv": [
+            2.20138862977258,
+            0.13942829718377237
+          ]
+        },
+        {
+          "timeMs": 15.000000000000002,
+          "driveIntervalAverage": 0,
+          "driveUnits": "nA",
+          "somaMv": -92.46481921078407,
+          "neuralUv": [
+            -0.0001686234568162358,
+            -0.000344600646732055
+          ],
+          "appliedUv": [
+            0,
+            0
+          ],
+          "totalUv": [
+            -0.0001686234568162358,
+            -0.000344600646732055
+          ]
+        },
+        {
+          "timeMs": 250,
+          "driveIntervalAverage": 0,
+          "driveUnits": "nA",
+          "somaMv": -91.66485354027132,
+          "neuralUv": [
+            0.01386838783428261,
+            -0.002306756498511561
+          ],
+          "appliedUv": [
+            0,
+            0
+          ],
+          "totalUv": [
+            0.01386838783428261,
+            -0.002306756498511561
+          ]
+        }
+      ],
+      "diagnostics": {
+        "maxConservationResidualNa": 1.8518573176654063e-12,
+        "maxKclResidualNa": 1.501597457487236e-12,
+        "maxExcursionMv": 131.19458757892107,
+        "signedChargeNc": 0,
+        "cathodicChargeNc": 0,
+        "anodicChargeNc": 0,
+        "elapsedMs": 9054.402922999998,
+        "outputBytes": 57405240,
+        "frames": 2501,
+        "compartments": 286,
+        "wallSecondsPerBiologicalSecond": 36.21761169199999,
+        "firstThresholdCrossing": {
+          "timeMs": 42.963875682474395,
+          "compartmentId": "axon_stub[1]:0",
+          "kind": "axon"
+        },
+        "spikeCount": 9
+      },
+      "conditioning": "reused identical state",
+      "warnings": []
+    },
+    {
+      "id": "active-current-step-500ms",
+      "title": "Patch clamp · 500 ms current step",
+      "status": {
+        "status": "passed",
+        "decompositionResidualUv": 1.4224732503009818e-16,
+        "differentialResidualUv": 2.220446049250313e-16
+      },
+      "engineVersion": "cortex-active/0.2.0",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "modelId": "allen-human-571654895/1",
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ],
+          "segmentLengthUm": 40
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-571654895/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "intracellular-current",
+          "startMs": 50,
+          "durationMs": 500,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 0.3,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 600,
+          "sampleMs": 0.25,
+          "settleMs": 100
+        }
+      },
+      "configSha256": "16582af5b0328b5d0c1a482e06be4a4687bc788c3df153ebb749e71fecc9971b",
+      "modelId": "allen-human-571654895/1",
+      "geometry": {
+        "somaCenterUm": [
+          -100,
+          -200,
+          1500
+        ],
+        "stimulatingContacts": [
+          {
+            "id": "r3-c4",
+            "positionUm": [
+              -200,
+              -600.0000000000001,
+              1500
+            ]
+          },
+          {
+            "id": "r3-c5",
+            "positionUm": [
+              200,
+              -600.0000000000001,
+              1500
+            ]
+          }
+        ],
+        "recordingContacts": [
+          {
+            "id": "r4-c4",
+            "positionUm": [
+              -200,
+              -200,
+              1500
+            ]
+          },
+          {
+            "id": "r4-c5",
+            "positionUm": [
+              200,
+              -200,
+              1500
+            ]
+          }
+        ]
+      },
+      "expectedBehavior": "Eighteen soma crossings occur: seventeen during the current step and one just after its offset. Interspike intervals lengthen. Onset, step length, recording length and output interval differ from the 200 ms example; this is not a single-variable comparison. Internal event detection retains full timestep resolution.",
+      "somaSpikes": [
+        {
+          "timeMs": 73.47642295123177,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 84.84812436290773,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 101.65119393222878,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 120.04768130221663,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 140.8861626266263,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 164.476289584852,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 190.89081101125123,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 219.81739142423925,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 250.67058364528734,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 282.812077493207,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 315.72274701499526,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 349.04930657525745,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 382.57529169603936,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 416.17573088371125,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 449.7810171901284,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 483.3534284803688,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 516.8733492713561,
+          "compartmentId": "soma[0]:0"
+        },
+        {
+          "timeMs": 550.3715300804965,
+          "compartmentId": "soma[0]:0"
+        }
+      ],
+      "somaMv": {
+        "min": -95.29319177671366,
+        "max": 22.63367146923986,
+        "peakAbsolute": 95.29319177671366,
+        "rms": 72.8423102808721
+      },
+      "crossingCriterion": {
+        "thresholdMv": -25,
+        "refractoryMs": 2,
+        "convention": "Upward voltage crossing, linearly interpolated between internal solver steps; earliest crossing is model-dependent"
+      },
+      "localCrossingCount": 143,
+      "localCrossings": [
+        {
+          "timeMs": 73.04576386126861,
+          "compartmentId": "axon_stub[1]:0",
+          "kind": "axon",
+          "centerUm": [
+            -134.6935003901263,
+            -196.86273282878952,
+            1537.2422344517165
+          ]
+        },
+        {
+          "timeMs": 73.10357948113447,
+          "compartmentId": "axon_stub[0]:0",
+          "kind": "axon",
+          "centerUm": [
+            -116.98008523213682,
+            -198.95424337612775,
+            1513.120437057931
+          ]
+        },
+        {
+          "timeMs": 73.47642295123177,
+          "compartmentId": "soma[0]:0",
+          "kind": "soma",
+          "centerUm": [
+            -100,
+            -200,
+            1500
+          ]
+        },
+        {
+          "timeMs": 73.47724471922369,
+          "compartmentId": "apic[0]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -109.4004879056117,
+            -200.8856638465344,
+            1481.3226863941861
+          ]
+        },
+        {
+          "timeMs": 73.48130234429415,
+          "compartmentId": "apic[36]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -128.8341504359502,
+            -205.48765567266665,
+            1469.706723187029
+          ]
+        },
+        {
+          "timeMs": 73.48432651637198,
+          "compartmentId": "dend[11]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -98.51250038994141,
+            -202.41305150152823,
+            1511.2319768524594
+          ]
+        },
+        {
+          "timeMs": 73.48577029764932,
+          "compartmentId": "apic[1]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -118.02884725722404,
+            -204.34098120803327,
+            1461.2939887183147
+          ]
+        },
+        {
+          "timeMs": 73.48722376591938,
+          "compartmentId": "dend[20]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -91.17737571132977,
+            -196.78616468107424,
+            1504.8353569153094
+          ]
+        },
+        {
+          "timeMs": 73.48765897899185,
+          "compartmentId": "apic[38]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -146.13135230847317,
+            -217.12583283065442,
+            1454.5159241830397
+          ]
+        },
+        {
+          "timeMs": 73.4881238263616,
+          "compartmentId": "apic[37]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -142.47560438320298,
+            -206.99985928437948,
+            1464.930741923283
+          ]
+        },
+        {
+          "timeMs": 73.49455475634895,
+          "compartmentId": "dend[0]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -109.2019857341871,
+            -195.5458420083269,
+            1507.0979730414438
+          ]
+        },
+        {
+          "timeMs": 73.49603652463924,
+          "compartmentId": "apic[2]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -120.77253381848581,
+            -203.48755325076178,
+            1450.636369608058
+          ]
+        },
+        {
+          "timeMs": 73.49659732347489,
+          "compartmentId": "apic[34]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -119.69543196757678,
+            -211.95740750852787,
+            1444.8372128846377
+          ]
+        },
+        {
+          "timeMs": 73.49722472149205,
+          "compartmentId": "apic[39]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -157.3645949263776,
+            -213.99521811310294,
+            1462.740159301324
+          ]
+        },
+        {
+          "timeMs": 73.49757837616015,
+          "compartmentId": "apic[40]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -158.47380901883864,
+            -206.41163343996777,
+            1462.230269039262
+          ]
+        },
+        {
+          "timeMs": 73.49835766519799,
+          "compartmentId": "apic[35]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -105.5756598905449,
+            -205.59111626585187,
+            1442.4057140297043
+          ]
+        },
+        {
+          "timeMs": 73.4997259805363,
+          "compartmentId": "dend[25]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -84.3827682907812,
+            -201.04394253825694,
+            1498.6916462481972
+          ]
+        },
+        {
+          "timeMs": 73.50393098606943,
+          "compartmentId": "apic[3]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -122.86537455914689,
+            -203.00963983025613,
+            1444.524159613263
+          ]
+        },
+        {
+          "timeMs": 73.50685299984428,
+          "compartmentId": "apic[35]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -75.21331525445683,
+            -211.60102947664618,
+            1427.9536799313196
+          ]
+        },
+        {
+          "timeMs": 73.50860605435402,
+          "compartmentId": "dend[15]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -102.76571358654176,
+            -202.58254793762467,
+            1517.4654467399384
+          ]
+        },
+        {
+          "timeMs": 73.51307288827527,
+          "compartmentId": "dend[21]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -85.54214914001736,
+            -195.46730920408208,
+            1506.0718833680007
+          ]
+        },
+        {
+          "timeMs": 73.51555281999366,
+          "compartmentId": "apic[35]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -46.747666916737316,
+            -216.29066954739866,
+            1412.7495596809067
+          ]
+        },
+        {
+          "timeMs": 73.51741867995618,
+          "compartmentId": "apic[39]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -186.2299687861951,
+            -220.8374393213897,
+            1461.571237301171
+          ]
+        },
+        {
+          "timeMs": 73.52083885517983,
+          "compartmentId": "apic[29]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -135.18552037733542,
+            -200.53753700494204,
+            1435.9302255229209
+          ]
+        },
+        {
+          "timeMs": 73.52361041890552,
+          "compartmentId": "apic[40]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -190.20856127851792,
+            -205.07113232787887,
+            1452.7752807679449
+          ]
+        },
+        {
+          "timeMs": 73.52902336400544,
+          "compartmentId": "apic[4]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -124.92611514998387,
+            -203.83324949839331,
+            1427.8201544727137
+          ]
+        },
+        {
+          "timeMs": 73.53315148960914,
+          "compartmentId": "apic[39]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -217.08198229956207,
+            -222.53836303487276,
+            1454.788256044789
+          ]
+        },
+        {
+          "timeMs": 73.53492691328613,
+          "compartmentId": "dend[1]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -118.10371317009607,
+            -193.25974642836036,
+            1508.1059808865368
+          ]
+        },
+        {
+          "timeMs": 73.54479794624804,
+          "compartmentId": "dend[16]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -107.02456999370662,
+            -202.89792130193686,
+            1520.3418141112031
+          ]
+        },
+        {
+          "timeMs": 73.54643657788685,
+          "compartmentId": "dend[12]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -95.504726652884,
+            -205.05713239720896,
+            1527.545111188333
+          ]
+        },
+        {
+          "timeMs": 73.54964047578956,
+          "compartmentId": "dend[8]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -122.05718415798593,
+            -191.59642037960003,
+            1504.594094645943
+          ]
+        },
+        {
+          "timeMs": 73.55141100487697,
+          "compartmentId": "apic[30]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -145.5690091684748,
+            -195.7775990937408,
+            1421.1571049269978
+          ]
+        },
+        {
+          "timeMs": 73.55343402111897,
+          "compartmentId": "apic[40]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -215.8483383406135,
+            -200.9185656713217,
+            1431.8904084202777
+          ]
+        },
+        {
+          "timeMs": 73.5569015384875,
+          "compartmentId": "apic[33]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -159.54849166891108,
+            -199.5046525475708,
+            1423.8749827746146
+          ]
+        },
+        {
+          "timeMs": 73.56519883732328,
+          "compartmentId": "dend[24]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -87.48414708308613,
+            -189.13293560066026,
+            1498.4421358214709
+          ]
+        },
+        {
+          "timeMs": 73.57254345767666,
+          "compartmentId": "apic[18]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -140.61613086462944,
+            -207.51951871836332,
+            1409.6556575304385
+          ]
+        },
+        {
+          "timeMs": 73.57577945080526,
+          "compartmentId": "apic[5]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -128.32771106866832,
+            -204.5467917827998,
+            1402.1692108581974
+          ]
+        },
+        {
+          "timeMs": 73.57977448504177,
+          "compartmentId": "apic[30]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -148.03593749941908,
+            -187.7956414846509,
+            1402.440075325686
+          ]
+        },
+        {
+          "timeMs": 73.58433746236426,
+          "compartmentId": "apic[40]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -245.05315285640236,
+            -196.9602006560079,
+            1416.6868301948016
+          ]
+        },
+        {
+          "timeMs": 73.59404861849329,
+          "compartmentId": "apic[33]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -189.039636902052,
+            -198.03324021987984,
+            1412.8768203566067
+          ]
+        },
+        {
+          "timeMs": 73.6014450612509,
+          "compartmentId": "dend[2]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -120.4555311935923,
+            -192.64714112590912,
+            1513.9072467813817
+          ]
+        },
+        {
+          "timeMs": 73.60536501899546,
+          "compartmentId": "dend[19]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -110.78030368327582,
+            -206.23024704994936,
+            1526.810838825806
+          ]
+        },
+        {
+          "timeMs": 73.6080827461131,
+          "compartmentId": "apic[40]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -267.13506978864245,
+            -194.73653662142104,
+            1393.1356351753063
+          ]
+        },
+        {
+          "timeMs": 73.61146670569389,
+          "compartmentId": "apic[30]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -153.03974021244082,
+            -180.9183435781845,
+            1383.1721506750105
+          ]
+        },
+        {
+          "timeMs": 73.61163008999364,
+          "compartmentId": "apic[6]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -128.22993993562346,
+            -204.40876019605903,
+            1379.5968947697042
+          ]
+        },
+        {
+          "timeMs": 73.61166498290122,
+          "compartmentId": "apic[19]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -152.23814800582392,
+            -211.15335493332987,
+            1397.9709277487757
+          ]
+        },
+        {
+          "timeMs": 73.61430295116098,
+          "compartmentId": "apic[20]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -156.6769230193102,
+            -208.90012422204268,
+            1402.5421596122244
+          ]
+        },
+        {
+          "timeMs": 73.61642594574258,
+          "compartmentId": "dend[26]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -65.99142457220213,
+            -204.42448855417257,
+            1501.8241041469837
+          ]
+        },
+        {
+          "timeMs": 73.62065680722586,
+          "compartmentId": "apic[19]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -142.89249863649434,
+            -216.41505315109987,
+            1385.211454332468
+          ]
+        },
+        {
+          "timeMs": 73.6263683862933,
+          "compartmentId": "apic[19]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -135.81937525646237,
+            -221.17041018378666,
+            1370.2020241082096
+          ]
+        },
+        {
+          "timeMs": 73.62639835468926,
+          "compartmentId": "apic[15]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -114.6316238087096,
+            -206.07156648438576,
+            1372.896960818029
+          ]
+        },
+        {
+          "timeMs": 73.62968825371344,
+          "compartmentId": "apic[6]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -130.24875558863465,
+            -202.40269185348058,
+            1364.7894716524156
+          ]
+        },
+        {
+          "timeMs": 73.63043782962102,
+          "compartmentId": "apic[32]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -153.56559889995526,
+            -180.0899695788333,
+            1381.3375485815368
+          ]
+        },
+        {
+          "timeMs": 73.63215041441777,
+          "compartmentId": "apic[33]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -218.49670787053878,
+            -197.2894642989765,
+            1400.502652875459
+          ]
+        },
+        {
+          "timeMs": 73.63914523349675,
+          "compartmentId": "apic[28]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -157.521087003888,
+            -214.4357070721982,
+            1388.259208988212
+          ]
+        },
+        {
+          "timeMs": 73.64134509493894,
+          "compartmentId": "apic[31]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -152.9020829733886,
+            -172.80805048330248,
+            1363.4753755617687
+          ]
+        },
+        {
+          "timeMs": 73.64224613001056,
+          "compartmentId": "apic[21]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -162.42377633790005,
+            -208.66822478936643,
+            1394.993584658729
+          ]
+        },
+        {
+          "timeMs": 73.65143008887043,
+          "compartmentId": "dend[29]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -60.03849361977119,
+            -199.77563631151074,
+            1499.4535423910806
+          ]
+        },
+        {
+          "timeMs": 73.65641192359395,
+          "compartmentId": "apic[6]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -131.2043423256539,
+            -200.82950662443236,
+            1349.8015775840809
+          ]
+        },
+        {
+          "timeMs": 73.66102381492007,
+          "compartmentId": "apic[16]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -105.54910999405506,
+            -211.27113194476345,
+            1350.0007721278134
+          ]
+        },
+        {
+          "timeMs": 73.66251648095971,
+          "compartmentId": "dend[30]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -66.0998406731423,
+            -203.6467951968532,
+            1485.4061488354728
+          ]
+        },
+        {
+          "timeMs": 73.66281568059075,
+          "compartmentId": "apic[17]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -96.22425908889333,
+            -213.70072181155228,
+            1352.450529492883
+          ]
+        },
+        {
+          "timeMs": 73.66423747123487,
+          "compartmentId": "apic[31]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -143.36036649682734,
+            -167.2245068558401,
+            1345.0411017102656
+          ]
+        },
+        {
+          "timeMs": 73.66784578107921,
+          "compartmentId": "apic[28]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -158.86260832655665,
+            -221.1245136147794,
+            1361.8709734851552
+          ]
+        },
+        {
+          "timeMs": 73.66902553417086,
+          "compartmentId": "apic[33]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -249.8247974361966,
+            -197.4869003160122,
+            1393.2597365931417
+          ]
+        },
+        {
+          "timeMs": 73.6781090113574,
+          "compartmentId": "apic[22]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -172.6960008550017,
+            -209.7177301433803,
+            1383.0215867482484
+          ]
+        },
+        {
+          "timeMs": 73.67842451703403,
+          "compartmentId": "apic[16]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -107.02482080374321,
+            -214.78018806958698,
+            1325.1832981699104
+          ]
+        },
+        {
+          "timeMs": 73.67910334946635,
+          "compartmentId": "apic[31]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -144.10858042616923,
+            -163.51777036260154,
+            1325.1042980640234
+          ]
+        },
+        {
+          "timeMs": 73.68319742126008,
+          "compartmentId": "dend[17]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -117.92587179768161,
+            -205.6658754291068,
+            1517.387074229693
+          ]
+        },
+        {
+          "timeMs": 73.68417246520742,
+          "compartmentId": "apic[17]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -94.38409235556563,
+            -217.3029650747564,
+            1324.6941516432269
+          ]
+        },
+        {
+          "timeMs": 73.68810067663645,
+          "compartmentId": "apic[28]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -162.72373182908535,
+            -221.93671800081808,
+            1332.368585130208
+          ]
+        },
+        {
+          "timeMs": 73.68904815064087,
+          "compartmentId": "apic[7]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -129.68596417393434,
+            -199.42441106087506,
+            1335.7967048305777
+          ]
+        },
+        {
+          "timeMs": 73.68965315052239,
+          "compartmentId": "apic[12]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -129.97204351038474,
+            -197.53013446476717,
+            1334.9349648192217
+          ]
+        },
+        {
+          "timeMs": 73.69054256911637,
+          "compartmentId": "apic[16]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -94.18258701540957,
+            -217.42745565015062,
+            1303.292729313844
+          ]
+        },
+        {
+          "timeMs": 73.69494921333519,
+          "compartmentId": "apic[33]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -277.9472322505845,
+            -193.7767331228828,
+            1380.4648476518503
+          ]
+        },
+        {
+          "timeMs": 73.6964830062975,
+          "compartmentId": "apic[25]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -175.60780586799126,
+            -205.82770800931806,
+            1386.5609579177983
+          ]
+        },
+        {
+          "timeMs": 73.7000357566031,
+          "compartmentId": "apic[22]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -176.00385165734957,
+            -212.6854679762563,
+            1366.6411766396782
+          ]
+        },
+        {
+          "timeMs": 73.70052962001576,
+          "compartmentId": "apic[17]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -88.26958939918775,
+            -220.27347120961082,
+            1297.6010956039859
+          ]
+        },
+        {
+          "timeMs": 73.71378463906355,
+          "compartmentId": "dend[7]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -124.04165898792112,
+            -186.18714320766586,
+            1506.1777987128105
+          ]
+        },
+        {
+          "timeMs": 73.71530679033869,
+          "compartmentId": "apic[7]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -129.9417863220314,
+            -197.05343992488523,
+            1322.5680719238733
+          ]
+        },
+        {
+          "timeMs": 73.71592499044633,
+          "compartmentId": "apic[12]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -128.8697190488643,
+            -193.69976129115665,
+            1320.3044741546462
+          ]
+        },
+        {
+          "timeMs": 73.72323359843102,
+          "compartmentId": "apic[22]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -184.38564498082053,
+            -216.46605243047034,
+            1352.634623044303
+          ]
+        },
+        {
+          "timeMs": 73.72908891416226,
+          "compartmentId": "dend[13]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -83.55817095811645,
+            -210.8513937302175,
+            1542.3766081099875
+          ]
+        },
+        {
+          "timeMs": 73.73247723138508,
+          "compartmentId": "dend[23]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -68.4567489223794,
+            -195.95774551771416,
+            1514.9636115810706
+          ]
+        },
+        {
+          "timeMs": 73.7385771159463,
+          "compartmentId": "apic[24]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -200.48185461432547,
+            -219.4515948701326,
+            1345.9919807793206
+          ]
+        },
+        {
+          "timeMs": 73.74521431826258,
+          "compartmentId": "apic[27]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -195.9797727667803,
+            -199.66563356600793,
+            1372.6626141533877
+          ]
+        },
+        {
+          "timeMs": 73.74901031801606,
+          "compartmentId": "apic[26]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -180.53303601760544,
+            -201.5381737652779,
+            1362.175893836193
+          ]
+        },
+        {
+          "timeMs": 73.75102163804026,
+          "compartmentId": "apic[12]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -129.92701142974948,
+            -188.79662862219357,
+            1306.1351781792587
+          ]
+        },
+        {
+          "timeMs": 73.75178050969674,
+          "compartmentId": "dend[19]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -118.52188323036165,
+            -211.7483762643627,
+            1539.3679082524934
+          ]
+        },
+        {
+          "timeMs": 73.7520446541697,
+          "compartmentId": "apic[23]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -200.87871311205356,
+            -218.02405603856616,
+            1331.4948593175843
+          ]
+        },
+        {
+          "timeMs": 73.75441382353186,
+          "compartmentId": "apic[7]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -130.19199789162894,
+            -195.11357373989196,
+            1309.5485852102158
+          ]
+        },
+        {
+          "timeMs": 73.7668339961808,
+          "compartmentId": "dend[22]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -77.1850335391047,
+            -190.6641806660961,
+            1522.7449208432492
+          ]
+        },
+        {
+          "timeMs": 73.7792542340134,
+          "compartmentId": "dend[24]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -94.75351430927039,
+            -179.8766850066355,
+            1480.4251227265286
+          ]
+        },
+        {
+          "timeMs": 73.78176804776052,
+          "compartmentId": "apic[27]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -225.62639699912563,
+            -197.25100438112668,
+            1362.346828348339
+          ]
+        },
+        {
+          "timeMs": 73.7919863251041,
+          "compartmentId": "apic[26]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -182.83301286744438,
+            -200.35210237529628,
+            1327.1142920089794
+          ]
+        },
+        {
+          "timeMs": 73.80046760508691,
+          "compartmentId": "dend[18]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -117.36116800947357,
+            -202.60025229003276,
+            1535.6601886999408
+          ]
+        },
+        {
+          "timeMs": 73.80206566428755,
+          "compartmentId": "apic[14]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -145.55527773470487,
+            -185.1844833468697,
+            1293.0018691312343
+          ]
+        },
+        {
+          "timeMs": 73.80764945649075,
+          "compartmentId": "apic[9]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -132.90201936840197,
+            -193.57836742757985,
+            1295.9806665346462
+          ]
+        },
+        {
+          "timeMs": 73.81127471121546,
+          "compartmentId": "apic[13]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -133.2003420002677,
+            -182.01208465943887,
+            1282.1214100169013
+          ]
+        },
+        {
+          "timeMs": 73.81148877779911,
+          "compartmentId": "apic[8]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -119.02660834875016,
+            -193.0673508704827,
+            1291.736137369584
+          ]
+        },
+        {
+          "timeMs": 73.8193958098728,
+          "compartmentId": "apic[27]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -251.45770246037054,
+            -197.08844681793155,
+            1344.5975500121442
+          ]
+        },
+        {
+          "timeMs": 73.8366843512608,
+          "compartmentId": "apic[26]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -211.1727593349799,
+            -201.55490314251676,
+            1305.7870123768332
+          ]
+        },
+        {
+          "timeMs": 73.8452747408989,
+          "compartmentId": "apic[14]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -169.98808145116004,
+            -180.71392146383374,
+            1280.7253191719822
+          ]
+        },
+        {
+          "timeMs": 73.85472257721149,
+          "compartmentId": "dend[19]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -119.92364162677461,
+            -218.78133174580435,
+            1553.4726151506852
+          ]
+        },
+        {
+          "timeMs": 73.85632443556213,
+          "compartmentId": "apic[11]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -136.4302487036123,
+            -195.29856669259337,
+            1274.2844290867674
+          ]
+        },
+        {
+          "timeMs": 73.8578251546295,
+          "compartmentId": "dend[13]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -78.09348388380853,
+            -216.06521590709258,
+            1552.1686206539105
+          ]
+        },
+        {
+          "timeMs": 73.85856489968499,
+          "compartmentId": "apic[27]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -277.80003095978367,
+            -196.03263255294792,
+            1328.3828194823677
+          ]
+        },
+        {
+          "timeMs": 73.86017864603755,
+          "compartmentId": "apic[8]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -102.99588228279254,
+            -196.3669629403105,
+            1264.010375935687
+          ]
+        },
+        {
+          "timeMs": 73.86314690443689,
+          "compartmentId": "apic[10]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -147.85452394438806,
+            -194.90558712748248,
+            1274.5836030026696
+          ]
+        },
+        {
+          "timeMs": 73.86830672290014,
+          "compartmentId": "apic[13]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -140.95846320559326,
+            -170.19569346231762,
+            1249.7798769487056
+          ]
+        },
+        {
+          "timeMs": 73.8833764713022,
+          "compartmentId": "apic[26]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -223.85461861797924,
+            -202.46954106784517,
+            1272.4771242029708
+          ]
+        },
+        {
+          "timeMs": 73.8881941786036,
+          "compartmentId": "apic[14]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -186.22397195631754,
+            -179.17195315360863,
+            1256.8683570353487
+          ]
+        },
+        {
+          "timeMs": 73.89877233717725,
+          "compartmentId": "apic[27]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -307.927640449569,
+            -193.00821531802956,
+            1320.6346883285248
+          ]
+        },
+        {
+          "timeMs": 73.90329311082145,
+          "compartmentId": "apic[11]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -157.61908463014308,
+            -197.30860295907135,
+            1251.0810101638733
+          ]
+        },
+        {
+          "timeMs": 73.90802909647391,
+          "compartmentId": "apic[8]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -80.53410380281605,
+            -197.4667631168917,
+            1241.9084310524454
+          ]
+        },
+        {
+          "timeMs": 73.92107234427893,
+          "compartmentId": "apic[10]:1",
+          "kind": "dendrite",
+          "centerUm": [
+            -169.88231088611784,
+            -190.4679338919639,
+            1243.4621216928795
+          ]
+        },
+        {
+          "timeMs": 73.92480318804081,
+          "compartmentId": "dend[13]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -65.45502839071622,
+            -220.22103540183832,
+            1556.552151902772
+          ]
+        },
+        {
+          "timeMs": 73.92599062850067,
+          "compartmentId": "apic[13]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -159.20307084272085,
+            -157.48500580159703,
+            1220.2180257125317
+          ]
+        },
+        {
+          "timeMs": 73.9315391210395,
+          "compartmentId": "apic[26]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -248.71404653177547,
+            -203.04417581820832,
+            1246.7446601360468
+          ]
+        },
+        {
+          "timeMs": 73.93196731761097,
+          "compartmentId": "apic[14]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -200.8010890793094,
+            -176.95616503713603,
+            1231.4670117343194
+          ]
+        },
+        {
+          "timeMs": 73.93729416600233,
+          "compartmentId": "apic[27]:5",
+          "kind": "dendrite",
+          "centerUm": [
+            -335.1643098886125,
+            -186.37817573164656,
+            1311.9927752901729
+          ]
+        },
+        {
+          "timeMs": 73.95050090971625,
+          "compartmentId": "apic[11]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -167.81692607406006,
+            -196.78001633386853,
+            1221.4492813916133
+          ]
+        },
+        {
+          "timeMs": 73.95696249743101,
+          "compartmentId": "apic[8]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -62.29206021585992,
+            -195.8527161949018,
+            1215.8911774133705
+          ]
+        },
+        {
+          "timeMs": 73.96403620905552,
+          "compartmentId": "apic[27]:6",
+          "kind": "dendrite",
+          "centerUm": [
+            -359.9236628565808,
+            -178.28302902646826,
+            1300.3990832583966
+          ]
+        },
+        {
+          "timeMs": 73.97562281639809,
+          "compartmentId": "apic[14]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -216.35235967222945,
+            -176.99459386052712,
+            1206.8611583023016
+          ]
+        },
+        {
+          "timeMs": 73.97868137970467,
+          "compartmentId": "apic[26]:5",
+          "kind": "dendrite",
+          "centerUm": [
+            -274.4428806482204,
+            -201.33718026203886,
+            1222.8929445824851
+          ]
+        },
+        {
+          "timeMs": 73.98049297019386,
+          "compartmentId": "apic[10]:2",
+          "kind": "dendrite",
+          "centerUm": [
+            -195.98565032909676,
+            -185.75934259748112,
+            1215.261074063998
+          ]
+        },
+        {
+          "timeMs": 73.98183376643698,
+          "compartmentId": "apic[13]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -171.20246549925292,
+            -153.71634327249737,
+            1183.8909113368954
+          ]
+        },
+        {
+          "timeMs": 73.99523196583361,
+          "compartmentId": "apic[11]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -175.7265874107101,
+            -196.64651952176854,
+            1191.1057076754546
+          ]
+        },
+        {
+          "timeMs": 74.0070975082211,
+          "compartmentId": "apic[8]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -46.338785636427524,
+            -191.15815609565936,
+            1188.7625307723056
+          ]
+        },
+        {
+          "timeMs": 74.01260376534688,
+          "compartmentId": "apic[26]:6",
+          "kind": "dendrite",
+          "centerUm": [
+            -287.90862762549807,
+            -194.1315676197237,
+            1190.7089370260317
+          ]
+        },
+        {
+          "timeMs": 74.01545629584487,
+          "compartmentId": "apic[14]:5",
+          "kind": "dendrite",
+          "centerUm": [
+            -238.46496775053942,
+            -177.4517097008287,
+            1187.4976504876954
+          ]
+        },
+        {
+          "timeMs": 74.02126265590486,
+          "compartmentId": "apic[13]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -179.16479247987297,
+            -142.12001809684787,
+            1148.362921290372
+          ]
+        },
+        {
+          "timeMs": 74.0254671817052,
+          "compartmentId": "apic[11]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -195.40855802361733,
+            -198.1937207983359,
+            1167.5039170344805
+          ]
+        },
+        {
+          "timeMs": 74.03823530168746,
+          "compartmentId": "apic[10]:3",
+          "kind": "dendrite",
+          "centerUm": [
+            -217.6512755995231,
+            -188.2942933411548,
+            1183.6944416614451
+          ]
+        },
+        {
+          "timeMs": 74.04084170836504,
+          "compartmentId": "apic[14]:6",
+          "kind": "dendrite",
+          "centerUm": [
+            -254.95428995796559,
+            -181.887082951099,
+            1164.4752716130895
+          ]
+        },
+        {
+          "timeMs": 74.0580925902121,
+          "compartmentId": "apic[8]:5",
+          "kind": "dendrite",
+          "centerUm": [
+            -33.21565171021351,
+            -190.2857297808573,
+            1159.470944586279
+          ]
+        },
+        {
+          "timeMs": 74.07916258007754,
+          "compartmentId": "apic[10]:4",
+          "kind": "dendrite",
+          "centerUm": [
+            -239.69099439098477,
+            -192.91221107723962,
+            1153.9253391441048
+          ]
+        },
+        {
+          "timeMs": 74.10900926892796,
+          "compartmentId": "apic[8]:6",
+          "kind": "dendrite",
+          "centerUm": [
+            -22.036376844801737,
+            -189.5869785794377,
+            1129.3761789509017
+          ]
+        },
+        {
+          "timeMs": 74.1558776471028,
+          "compartmentId": "apic[8]:7",
+          "kind": "dendrite",
+          "centerUm": [
+            0.09713610182484445,
+            -192.73502270829977,
+            1106.6087167162013
+          ]
+        },
+        {
+          "timeMs": 74.18624513417423,
+          "compartmentId": "apic[8]:8",
+          "kind": "dendrite",
+          "centerUm": [
+            23.386390924862212,
+            -195.02223156896497,
+            1084.4618211139477
+          ]
+        },
+        {
+          "timeMs": 85.29177468086752,
+          "compartmentId": "dend[10]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -138.70345576576594,
+            -185.7309610386213,
+            1496.7698224820822
+          ]
+        },
+        {
+          "timeMs": 102.1950302321588,
+          "compartmentId": "dend[28]:0",
+          "kind": "dendrite",
+          "centerUm": [
+            -48.05706515972661,
+            -208.62045700654699,
+            1500.756069429396
+          ]
+        }
+      ],
+      "selectedCompartments": [
+        {
+          "compartmentId": "soma[0]:0",
+          "kind": "soma",
+          "centerUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "membraneMv": {
+            "min": -95.29319177671366,
+            "max": 22.63367146923986,
+            "peakAbsolute": 95.29319177671366,
+            "rms": 72.8423102808721
+          }
+        },
+        {
+          "compartmentId": "apic[8]:5",
+          "kind": "dendrite",
+          "centerUm": [
+            -33.21565171021351,
+            -190.2857297808573,
+            1159.470944586279
+          ],
+          "membraneMv": {
+            "min": -104.92703768404337,
+            "max": 25.312527332271394,
+            "peakAbsolute": 104.92703768404337,
+            "rms": 86.01670104812239
+          }
+        },
+        {
+          "compartmentId": "axon_stub[1]:0",
+          "kind": "axon",
+          "centerUm": [
+            -134.6935003901263,
+            -196.86273282878952,
+            1537.2422344517165
+          ],
+          "membraneMv": {
+            "min": -95.45521391307335,
+            "max": 38.59623252160819,
+            "peakAbsolute": 95.45521391307335,
+            "rms": 75.836853581655
+          }
+        }
+      ],
+      "recordings": [
+        {
+          "contactId": "r4-c4",
+          "reference": "infinity",
+          "units": "µV",
+          "neural": {
+            "min": -1.1083827454185502,
+            "max": 2.5720314674214717,
+            "peakAbsolute": 2.5720314674214717,
+            "rms": 0.78931015913897
+          },
+          "applied": {
+            "min": -0.02151528420697176,
+            "max": 0,
+            "peakAbsolute": 0.02151528420697176,
+            "rms": 0.01963658695589839
+          },
+          "total": {
+            "min": -1.1298980296254915,
+            "max": 2.5505161832145307,
+            "peakAbsolute": 2.5505161832145307,
+            "rms": 0.7710783470599885
+          }
+        },
+        {
+          "contactId": "r4-c5",
+          "reference": "infinity",
+          "units": "µV",
+          "neural": {
+            "min": -0.24643299781250777,
+            "max": 0.46637030661980017,
+            "peakAbsolute": 0.46637030661980017,
+            "rms": 0.22463180518323914
+          },
+          "applied": {
+            "min": -0.022895844604137315,
+            "max": 0,
+            "peakAbsolute": 0.022895844604137315,
+            "rms": 0.020896597933490395
+          },
+          "total": {
+            "min": -0.24643299781250777,
+            "max": 0.4434744620156954,
+            "peakAbsolute": 0.4434744620156954,
+            "rms": 0.20450645854957128
+          }
+        }
+      ],
+      "bipolarRecordings": {
+        "neural": {
+          "min": -1.5509457393507065,
+          "max": 2.3241114995561167,
+          "peakAbsolute": 2.3241114995561167,
+          "rms": 0.6115700638081041
+        },
+        "applied": {
+          "min": 0,
+          "max": 0.0013805603971655568,
+          "peakAbsolute": 0.0013805603971655568,
+          "rms": 0.0012600109775926338
+        },
+        "total": {
+          "min": -1.549565178953543,
+          "max": 2.3254920599532802,
+          "peakAbsolute": 2.3254920599532802,
+          "rms": 0.6126358093554702
+        }
+      },
+      "snapshots": [
+        {
+          "timeMs": 0,
+          "driveIntervalAverage": 0,
+          "driveUnits": "nA",
+          "somaMv": -92.26390815576467,
+          "neuralUv": [
+            -0.0004002127852688693,
+            -0.0004609861126142498
+          ],
+          "appliedUv": [
+            0,
+            0
+          ],
+          "totalUv": [
+            -0.0004002127852688693,
+            -0.0004609861126142498
+          ]
+        },
+        {
+          "timeMs": 50.00000000000001,
+          "driveIntervalAverage": 4.263256414560601e-13,
+          "driveUnits": "nA",
+          "somaMv": -92.65297932396388,
+          "neuralUv": [
+            0.00006723005697983702,
+            -0.00022346383048978195
+          ],
+          "appliedUv": [
+            -3.057505780213994e-14,
+            -3.2536952125107066e-14
+          ],
+          "totalUv": [
+            0.00006723005694926196,
+            -0.0002234638305223189
+          ]
+        },
+        {
+          "timeMs": 51.00000000000001,
+          "driveIntervalAverage": 0.3000000000001535,
+          "driveUnits": "nA",
+          "somaMv": -89.80700260892948,
+          "neuralUv": [
+            0.7795609814217994,
+            0.26936176200666084
+          ],
+          "appliedUv": [
+            -0.02151528420697176,
+            -0.022895844604137315
+          ],
+          "totalUv": [
+            0.7580456972148276,
+            0.24646591740252352
+          ]
+        },
+        {
+          "timeMs": 550,
+          "driveIntervalAverage": 0.29999999999972715,
+          "driveUnits": "nA",
+          "somaMv": -61.56308605876409,
+          "neuralUv": [
+            -1.0999876136463111,
+            0.4423694491307484
+          ],
+          "appliedUv": [
+            -0.021515284206941186,
+            -0.02289584460410478
+          ],
+          "totalUv": [
+            -1.1215028978532524,
+            0.4194736045266436
+          ]
+        },
+        {
+          "timeMs": 15.000000000000002,
+          "driveIntervalAverage": 0,
+          "driveUnits": "nA",
+          "somaMv": -92.46481921078407,
+          "neuralUv": [
+            -0.0001686234568162358,
+            -0.000344600646732055
+          ],
+          "appliedUv": [
+            0,
+            0
+          ],
+          "totalUv": [
+            -0.0001686234568162358,
+            -0.000344600646732055
+          ]
+        },
+        {
+          "timeMs": 600,
+          "driveIntervalAverage": 0,
+          "driveUnits": "nA",
+          "somaMv": -95.29319177671366,
+          "neuralUv": [
+            0.012520826187558055,
+            0.00003767964910153911
+          ],
+          "appliedUv": [
+            0,
+            0
+          ],
+          "totalUv": [
+            0.012520826187558055,
+            0.00003767964910153911
+          ]
+        }
+      ],
+      "diagnostics": {
+        "maxConservationResidualNa": 1.8924044189322364e-12,
+        "maxKclResidualNa": 1.823520501265108e-12,
+        "maxExcursionMv": 131.19053739005778,
+        "signedChargeNc": 0,
+        "cathodicChargeNc": 0,
+        "anodicChargeNc": 0,
+        "elapsedMs": 22412.651872,
+        "outputBytes": 55110040,
+        "frames": 2401,
+        "compartments": 286,
+        "wallSecondsPerBiologicalSecond": 37.35441978666666,
+        "firstThresholdCrossing": {
+          "timeMs": 73.04576386126861,
+          "compartmentId": "axon_stub[1]:0",
+          "kind": "axon"
+        },
+        "spikeCount": 18
       },
       "conditioning": "reused identical state",
       "warnings": []
@@ -3096,11 +6854,11 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 7.9999999999998295,
         "anodicChargeNc": 7.9999999999998295,
-        "elapsedMs": 1613.6866109999992,
+        "elapsedMs": 2005.357925000004,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 40.34216527499998,
+        "wallSecondsPerBiologicalSecond": 50.133948125000096,
         "firstThresholdCrossing": {
           "timeMs": 5.058694759896566,
           "compartmentId": "apic[40]:1",
@@ -4881,11 +8639,11 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 39.99999999999915,
         "anodicChargeNc": 39.99999999999915,
-        "elapsedMs": 1600.895445,
+        "elapsedMs": 1524.6826089999959,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 40.022386125000004,
+        "wallSecondsPerBiologicalSecond": 38.1170652249999,
         "firstThresholdCrossing": {
           "timeMs": 5.379964638768679,
           "compartmentId": "dend[11]:0",
@@ -6431,11 +10189,11 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 39.99999999999915,
         "anodicChargeNc": 39.99999999999915,
-        "elapsedMs": 1801.9685590000008,
+        "elapsedMs": 1552.840866999999,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 45.04921397500002,
+        "wallSecondsPerBiologicalSecond": 38.821021674999976,
         "firstThresholdCrossing": {
           "timeMs": 5.058694759896566,
           "compartmentId": "apic[40]:1",
@@ -8166,11 +11924,11 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 39.99999999999915,
         "anodicChargeNc": 39.99999999999915,
-        "elapsedMs": 1592.6837109999997,
+        "elapsedMs": 1602.910812000002,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 39.81709277499999,
+        "wallSecondsPerBiologicalSecond": 40.072770300000045,
         "firstThresholdCrossing": {
           "timeMs": 5.127866143142854,
           "compartmentId": "apic[35]:2",
@@ -8696,11 +12454,11 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 7.9999999999998295,
         "anodicChargeNc": 7.9999999999998295,
-        "elapsedMs": 1698.7028489999993,
+        "elapsedMs": 1733.4323800000057,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 42.467571224999986,
+        "wallSecondsPerBiologicalSecond": 43.33580950000014,
         "firstThresholdCrossing": {
           "timeMs": 5.058694759896566,
           "compartmentId": "apic[40]:1",

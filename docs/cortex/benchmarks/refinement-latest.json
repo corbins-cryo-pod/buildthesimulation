@@ -1,12 +1,12 @@
 {
   "schemaVersion": "cortex-refinement-study/1",
   "status": "completed",
-  "generatedAt": "2026-10-14T15:08:37.761Z",
-  "sourceCommit": "1c8d104964a0f68cbffb739f5f7ba9b88991288b",
+  "generatedAt": "2026-10-14T16:26:57.136Z",
+  "sourceCommit": "503c78c1d863e89660760bd88724e36a5760a854",
   "sourceHashes": {
     "scripts/cortex-refinement-study.mjs": "d373435341ea64ee93af4c0c8c3ec3a852af2a299742957d38c2b1e996ef7e0c",
-    "src/lib/cortex/config.js": "b3d1080ae692bf91ded163551c064ee47ce75f6971510b5835a3d56327ccfdc2",
-    "src/lib/cortex/world.js": "252c4aeea14e8f16d60843da783a466b601e7859880db3415b4c59ffd0b861bb",
+    "src/lib/cortex/config.js": "5ce2a7e7ed03cf22dfb996a76f4c7d8d017dc44c8de3a73558d340aa52e849ae",
+    "src/lib/cortex/world.js": "7cf606dc408e19010af6b8c14426aebe091be4bfe34680cfb2c9c6fcf08b4002",
     "src/lib/cortex/active-morphology.js": "9304538355a52714802af57a0d86140e2509e28dfdebc1a95238233a156bc734",
     "src/lib/cortex/active-cable.js": "dfa8b78268f781f69c9f5ef8e3e7ca713a7c440b884e07093930b62fba21812f",
     "src/lib/cortex/active-channels.js": "be4c862dddd31f0492c27c7f9349d40550b0402b562d561d3fe22d799237afbb",
@@ -131,7 +131,7 @@
       "frames": 401,
       "compartments": 286,
       "membraneCompartments": 211,
-      "elapsedMs": 4436.947789000001,
+      "elapsedMs": 6651.448733,
       "outputBytes": 9206040,
       "conditioning": "computed",
       "spikeCount": 1,
@@ -2001,7 +2001,7 @@
       "frames": 401,
       "compartments": 286,
       "membraneCompartments": 211,
-      "elapsedMs": 811.9319770000002,
+      "elapsedMs": 1327.2975129999995,
       "outputBytes": 9206040,
       "conditioning": "reused identical state",
       "spikeCount": 0,
@@ -2270,7 +2270,7 @@
       "frames": 401,
       "compartments": 286,
       "membraneCompartments": 211,
-      "elapsedMs": 8994.196533000002,
+      "elapsedMs": 9403.483986,
       "outputBytes": 9206040,
       "conditioning": "computed",
       "spikeCount": 1,
@@ -4140,7 +4140,7 @@
       "frames": 401,
       "compartments": 286,
       "membraneCompartments": 211,
-      "elapsedMs": 1383.7662779999991,
+      "elapsedMs": 1262.0490930000014,
       "outputBytes": 9206040,
       "conditioning": "reused identical state",
       "spikeCount": 0,
@@ -4409,7 +4409,7 @@
       "frames": 401,
       "compartments": 286,
       "membraneCompartments": 211,
-      "elapsedMs": 1524.1813369999982,
+      "elapsedMs": 1321.8695430000007,
       "outputBytes": 9206040,
       "conditioning": "reused identical state",
       "spikeCount": 1,
@@ -6207,7 +6207,7 @@
       "frames": 401,
       "compartments": 286,
       "membraneCompartments": 211,
-      "elapsedMs": 16608.937943999998,
+      "elapsedMs": 20954.299781,
       "outputBytes": 9206040,
       "conditioning": "computed",
       "spikeCount": 1,
@@ -8077,7 +8077,7 @@
       "frames": 401,
       "compartments": 286,
       "membraneCompartments": 211,
-      "elapsedMs": 2827.149378000002,
+      "elapsedMs": 3194.028812999997,
       "outputBytes": 9206040,
       "conditioning": "reused identical state",
       "spikeCount": 0,
@@ -8346,7 +8346,7 @@
       "frames": 401,
       "compartments": 444,
       "membraneCompartments": 369,
-      "elapsedMs": 8776.472267999998,
+      "elapsedMs": 7295.6753159999935,
       "outputBytes": 14275944,
       "conditioning": "computed",
       "spikeCount": 1,
@@ -11428,7 +11428,7 @@
       "frames": 401,
       "compartments": 444,
       "membraneCompartments": 369,
-      "elapsedMs": 1200.141896999994,
+      "elapsedMs": 1167.591895999998,
       "outputBytes": 14275944,
       "conditioning": "reused identical state",
       "spikeCount": 0,
@@ -11745,7 +11745,7 @@
       "frames": 401,
       "compartments": 444,
       "membraneCompartments": 369,
-      "elapsedMs": 13668.606820999994,
+      "elapsedMs": 26349.345379999984,
       "outputBytes": 14275944,
       "conditioning": "computed",
       "spikeCount": 1,
@@ -14815,7 +14815,7 @@
       "frames": 401,
       "compartments": 444,
       "membraneCompartments": 369,
-      "elapsedMs": 2467.163413000002,
+      "elapsedMs": 4622.270756000013,
       "outputBytes": 14275944,
       "conditioning": "reused identical state",
       "spikeCount": 0,
@@ -15132,7 +15132,7 @@
       "frames": 401,
       "compartments": 444,
       "membraneCompartments": 369,
-      "elapsedMs": 2648.240317000018,
+      "elapsedMs": 4322.2148739999975,
       "outputBytes": 14275944,
       "conditioning": "reused identical state",
       "spikeCount": 1,
@@ -18118,7 +18118,7 @@
       "frames": 401,
       "compartments": 444,
       "membraneCompartments": 369,
-      "elapsedMs": 37608.03181700001,
+      "elapsedMs": 43543.06375999999,
       "outputBytes": 14275944,
       "conditioning": "computed",
       "spikeCount": 1,
@@ -21188,7 +21188,7 @@
       "frames": 401,
       "compartments": 444,
       "membraneCompartments": 369,
-      "elapsedMs": 7458.738022000005,
+      "elapsedMs": 4342.181510999973,
       "outputBytes": 14275944,
       "conditioning": "reused identical state",
       "spikeCount": 0,
@@ -21505,7 +21505,7 @@
       "frames": 401,
       "compartments": 744,
       "membraneCompartments": 669,
-      "elapsedMs": 12227.908716999984,
+      "elapsedMs": 17227.658289999992,
       "outputBytes": 23902344,
       "conditioning": "computed",
       "spikeCount": 1,
@@ -26903,7 +26903,7 @@
       "frames": 401,
       "compartments": 744,
       "membraneCompartments": 669,
-      "elapsedMs": 2213.605628999998,
+      "elapsedMs": 2029.3364419999998,
       "outputBytes": 23902344,
       "conditioning": "reused identical state",
       "spikeCount": 0,
@@ -27388,7 +27388,7 @@
       "frames": 401,
       "compartments": 744,
       "membraneCompartments": 669,
-      "elapsedMs": 25282.261471999984,
+      "elapsedMs": 26240.888952999958,
       "outputBytes": 23902344,
       "conditioning": "computed",
       "spikeCount": 1,
@@ -32786,7 +32786,7 @@
       "frames": 401,
       "compartments": 744,
       "membraneCompartments": 669,
-      "elapsedMs": 4636.839734999987,
+      "elapsedMs": 4612.949841999973,
       "outputBytes": 23902344,
       "conditioning": "reused identical state",
       "spikeCount": 0,
@@ -33283,7 +33283,7 @@
       "frames": 401,
       "compartments": 744,
       "membraneCompartments": 669,
-      "elapsedMs": 4686.607648999954,
+      "elapsedMs": 6596.65955599997,
       "outputBytes": 23902344,
       "conditioning": "reused identical state",
       "spikeCount": 1,
@@ -38513,7 +38513,7 @@
       "frames": 401,
       "compartments": 744,
       "membraneCompartments": 669,
-      "elapsedMs": 46587.942522,
+      "elapsedMs": 57357.11602299992,
       "outputBytes": 23902344,
       "conditioning": "computed",
       "spikeCount": 1,
@@ -43911,7 +43911,7 @@
       "frames": 401,
       "compartments": 744,
       "membraneCompartments": 669,
-      "elapsedMs": 9468.483047000016,
+      "elapsedMs": 10560.448768999893,
       "outputBytes": 23902344,
       "conditioning": "reused identical state",
       "spikeCount": 0,
@@ -44436,7 +44436,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.4855042109601646e-12,
           "maxConservationResidualNa": 1.8518573176654063e-12,
-          "elapsedMs": 820.0665090000002,
+          "elapsedMs": 1120.67072,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44458,7 +44458,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.609331808441472e-12,
           "maxConservationResidualNa": 1.8518573176654063e-12,
-          "elapsedMs": 746.7491200000004,
+          "elapsedMs": 1144.4239030000008,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44480,7 +44480,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.4855042109601646e-12,
           "maxConservationResidualNa": 1.8518573176654063e-12,
-          "elapsedMs": 896.4696839999997,
+          "elapsedMs": 1087.2718160000004,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44491,7 +44491,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.5334894812313316e-12,
           "maxConservationResidualNa": 1.8518573176654063e-12,
-          "elapsedMs": 1195.3929630000002,
+          "elapsedMs": 1049.5000519999994,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44502,7 +44502,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.5938697844192218e-12,
           "maxConservationResidualNa": 1.8518573176654063e-12,
-          "elapsedMs": 1159.0072220000002,
+          "elapsedMs": 1109.6131239999995,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44513,7 +44513,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.7501844157968849e-12,
           "maxConservationResidualNa": 1.8518573176654063e-12,
-          "elapsedMs": 1105.1324260000001,
+          "elapsedMs": 1108.1759390000007,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44524,7 +44524,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.5504427169216184e-12,
           "maxConservationResidualNa": 1.9037075518410496e-12,
-          "elapsedMs": 1107.6810670000013,
+          "elapsedMs": 1098.0435720000005,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44535,7 +44535,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.5909881918851898e-12,
           "maxConservationResidualNa": 1.8847291891228857e-12,
-          "elapsedMs": 997.8675049999983,
+          "elapsedMs": 1078.7453580000001,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44546,7 +44546,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.4855042109601646e-12,
           "maxConservationResidualNa": 1.8518573176654063e-12,
-          "elapsedMs": 734.79709,
+          "elapsedMs": 1113.3527489999979,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44568,7 +44568,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.5288048604844562e-12,
           "maxConservationResidualNa": 1.8518573176654063e-12,
-          "elapsedMs": 741.7171990000024,
+          "elapsedMs": 1068.1619170000013,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         }
@@ -44670,7 +44670,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.024832337730765e-12,
           "maxConservationResidualNa": 3.2022090057717834e-12,
-          "elapsedMs": 1441.809564999996,
+          "elapsedMs": 1260.7635269999992,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44692,7 +44692,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.1270207777323034e-12,
           "maxConservationResidualNa": 2.9939384305066596e-12,
-          "elapsedMs": 1438.7287639999995,
+          "elapsedMs": 1256.8627960000013,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44714,7 +44714,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.4638617928822724e-12,
           "maxConservationResidualNa": 3.422891419087304e-12,
-          "elapsedMs": 1442.5437749999983,
+          "elapsedMs": 1300.4405469999983,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44725,7 +44725,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.96357664970881e-12,
           "maxConservationResidualNa": 3.0995831986138644e-12,
-          "elapsedMs": 1548.289742999994,
+          "elapsedMs": 1296.1375090000001,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44736,7 +44736,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.0359082218642253e-12,
           "maxConservationResidualNa": 2.9976195137226824e-12,
-          "elapsedMs": 1904.7506120000035,
+          "elapsedMs": 1243.1671119999955,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44747,7 +44747,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.3713971284848876e-12,
           "maxConservationResidualNa": 3.369462423918196e-12,
-          "elapsedMs": 1406.8612209999992,
+          "elapsedMs": 1254.4672120000032,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44758,7 +44758,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.9367142398428747e-12,
           "maxConservationResidualNa": 3.186994721945946e-12,
-          "elapsedMs": 1439.2988629999963,
+          "elapsedMs": 1255.017869999996,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44769,7 +44769,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.122629325252868e-12,
           "maxConservationResidualNa": 3.2222806779606816e-12,
-          "elapsedMs": 1413.8099010000005,
+          "elapsedMs": 1223.2626460000029,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44791,7 +44791,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.5210289545117845e-12,
           "maxConservationResidualNa": 3.5091514655020972e-12,
-          "elapsedMs": 1406.0863989999998,
+          "elapsedMs": 1403.087394999995,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44802,7 +44802,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.0210710235539784e-12,
           "maxConservationResidualNa": 3.100098086225578e-12,
-          "elapsedMs": 1548.6039830000009,
+          "elapsedMs": 1379.4298839999974,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         }
@@ -44904,7 +44904,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.024832337730765e-12,
           "maxConservationResidualNa": 3.2022090057717834e-12,
-          "elapsedMs": 1457.7754270000005,
+          "elapsedMs": 1307.2220110000053,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44931,7 +44931,7 @@
           ],
           "maxKclResidualNa": 2.991436959254301e-12,
           "maxConservationResidualNa": 3.530280234809169e-12,
-          "elapsedMs": 1391.2198199999984,
+          "elapsedMs": 1248.0204680000024,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44942,7 +44942,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.7482814201479355e-12,
           "maxConservationResidualNa": 3.102644497657986e-12,
-          "elapsedMs": 1472.4267420000033,
+          "elapsedMs": 1369.5601610000012,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44953,7 +44953,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.7482814201479355e-12,
           "maxConservationResidualNa": 2.736542058495023e-12,
-          "elapsedMs": 1406.3469110000005,
+          "elapsedMs": 1238.1476909999983,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -44980,7 +44980,7 @@
           ],
           "maxKclResidualNa": 2.7482814201479355e-12,
           "maxConservationResidualNa": 2.736542058495023e-12,
-          "elapsedMs": 1443.9441579999984,
+          "elapsedMs": 1308.2280079999982,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -45007,7 +45007,7 @@
           ],
           "maxKclResidualNa": 2.7482814201479355e-12,
           "maxConservationResidualNa": 2.736542058495023e-12,
-          "elapsedMs": 1506.3442839999989,
+          "elapsedMs": 1231.7121750000006,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -45034,7 +45034,7 @@
           ],
           "maxKclResidualNa": 2.8926860906608454e-12,
           "maxConservationResidualNa": 2.9097835252400728e-12,
-          "elapsedMs": 1571.9457030000049,
+          "elapsedMs": 1230.7485959999976,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -45045,7 +45045,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.7482814201479355e-12,
           "maxConservationResidualNa": 2.736542058495023e-12,
-          "elapsedMs": 1916.495074999999,
+          "elapsedMs": 1215.920720000002,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -45056,7 +45056,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.7482814201479355e-12,
           "maxConservationResidualNa": 2.736542058495023e-12,
-          "elapsedMs": 1445.612460999997,
+          "elapsedMs": 1338.5312380000032,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -45078,7 +45078,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.039901663726141e-12,
           "maxConservationResidualNa": 2.9680702340328935e-12,
-          "elapsedMs": 1406.7237779999996,
+          "elapsedMs": 1478.0605200000064,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         }
@@ -45180,7 +45180,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.4781199188121947e-12,
           "maxConservationResidualNa": 3.4638498124482664e-12,
-          "elapsedMs": 2890.3042859999987,
+          "elapsedMs": 3825.53154299999,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -45202,7 +45202,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.994281468078231e-12,
           "maxConservationResidualNa": 3.838052000781217e-12,
-          "elapsedMs": 3218.5787629999977,
+          "elapsedMs": 3221.0062800000014,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -45224,7 +45224,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.8258673572960644e-12,
           "maxConservationResidualNa": 3.896953669046271e-12,
-          "elapsedMs": 2849.0736679999973,
+          "elapsedMs": 3479.92743299999,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -45235,7 +45235,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.4781199188121947e-12,
           "maxConservationResidualNa": 3.600574699502701e-12,
-          "elapsedMs": 2823.697068999987,
+          "elapsedMs": 3092.683718,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -45246,7 +45246,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.7995743704111185e-12,
           "maxConservationResidualNa": 3.5035061332101824e-12,
-          "elapsedMs": 3239.708025,
+          "elapsedMs": 2921.166987999997,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -45257,7 +45257,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.5781583859056942e-12,
           "maxConservationResidualNa": 3.708381637792385e-12,
-          "elapsedMs": 3477.9773609999975,
+          "elapsedMs": 2967.9320349999907,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -45268,7 +45268,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.5831684841447498e-12,
           "maxConservationResidualNa": 3.641821056960676e-12,
-          "elapsedMs": 2844.294213000001,
+          "elapsedMs": 3497.57920800001,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -45279,7 +45279,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.48946631138769e-12,
           "maxConservationResidualNa": 3.4638498124482664e-12,
-          "elapsedMs": 2882.069903999989,
+          "elapsedMs": 3865.0138129999978,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -45301,7 +45301,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.4781199188121947e-12,
           "maxConservationResidualNa": 3.4638498124482664e-12,
-          "elapsedMs": 2907.4737440000026,
+          "elapsedMs": 2930.7021239999885,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         },
@@ -45323,7 +45323,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.4781199188121947e-12,
           "maxConservationResidualNa": 3.856540249907309e-12,
-          "elapsedMs": 3365.7216469999985,
+          "elapsedMs": 3046.1523589999997,
           "outputBytes": 9206040,
           "conditioning": "reused identical state"
         }
@@ -45425,7 +45425,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.4969347376242448e-12,
           "maxConservationResidualNa": 1.4251573554092956e-12,
-          "elapsedMs": 1483.8992690000014,
+          "elapsedMs": 1199.7669670000032,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45447,7 +45447,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.4888502757048894e-12,
           "maxConservationResidualNa": 1.5004132376643387e-12,
-          "elapsedMs": 1240.799536000006,
+          "elapsedMs": 1718.5826809999999,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45469,7 +45469,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.391270779138587e-12,
           "maxConservationResidualNa": 1.385831499469553e-12,
-          "elapsedMs": 1377.977171999999,
+          "elapsedMs": 1384.9725479999906,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45480,7 +45480,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.2706934029299566e-12,
           "maxConservationResidualNa": 1.452147430081041e-12,
-          "elapsedMs": 1217.7090599999938,
+          "elapsedMs": 1077.7002229999925,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45491,7 +45491,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.6394108293127374e-12,
           "maxConservationResidualNa": 1.821804859747367e-12,
-          "elapsedMs": 1324.4549890000053,
+          "elapsedMs": 1122.8134929999942,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45502,7 +45502,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.3345030375894185e-12,
           "maxConservationResidualNa": 1.6321768291300068e-12,
-          "elapsedMs": 1358.2229050000024,
+          "elapsedMs": 1377.9433779999963,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45513,7 +45513,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.742883615207802e-12,
           "maxConservationResidualNa": 1.635254431864297e-12,
-          "elapsedMs": 1217.3917380000057,
+          "elapsedMs": 1144.1190709999937,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45535,7 +45535,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.3401664760576137e-12,
           "maxConservationResidualNa": 1.4467514100786893e-12,
-          "elapsedMs": 1266.141116999992,
+          "elapsedMs": 1109.674461000017,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45557,7 +45557,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.3387043210077998e-12,
           "maxConservationResidualNa": 1.445273764490336e-12,
-          "elapsedMs": 1205.5370119999861,
+          "elapsedMs": 1126.8502140000055,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45579,7 +45579,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.7880529955965896e-12,
           "maxConservationResidualNa": 1.8592500314936616e-12,
-          "elapsedMs": 1212.8233069999842,
+          "elapsedMs": 1779.1865180000023,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         }
@@ -45681,7 +45681,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.838761127207934e-12,
           "maxConservationResidualNa": 2.8645876903182765e-12,
-          "elapsedMs": 2886.940759000019,
+          "elapsedMs": 2614.4317219999793,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45703,7 +45703,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.8175777683214775e-12,
           "maxConservationResidualNa": 2.799550115383312e-12,
-          "elapsedMs": 2880.6030930000124,
+          "elapsedMs": 2141.1992129999853,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45725,7 +45725,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.617055227041587e-12,
           "maxConservationResidualNa": 2.772743758769694e-12,
-          "elapsedMs": 3607.0308590000204,
+          "elapsedMs": 2112.0935210000025,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45736,7 +45736,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.6909563986821095e-12,
           "maxConservationResidualNa": 2.6259268061856397e-12,
-          "elapsedMs": 3188.4077149999794,
+          "elapsedMs": 2185.5862460000208,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45747,7 +45747,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.0659561261331403e-12,
           "maxConservationResidualNa": 3.180340512427479e-12,
-          "elapsedMs": 2465.003171999997,
+          "elapsedMs": 2110.5509670000174,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45758,7 +45758,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.942851474660446e-12,
           "maxConservationResidualNa": 2.5943893029994197e-12,
-          "elapsedMs": 2339.3245030000107,
+          "elapsedMs": 2471.2896990000154,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45780,7 +45780,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.666183896923857e-12,
           "maxConservationResidualNa": 2.7357591018961624e-12,
-          "elapsedMs": 2406.051574000012,
+          "elapsedMs": 4539.9943889999995,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45791,7 +45791,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.7422398119619773e-12,
           "maxConservationResidualNa": 2.6928120920154813e-12,
-          "elapsedMs": 3286.0426060000027,
+          "elapsedMs": 3406.3183319999953,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45802,7 +45802,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.890886531894954e-12,
           "maxConservationResidualNa": 2.6906928291339782e-12,
-          "elapsedMs": 3922.8805139999895,
+          "elapsedMs": 3768.1731259999797,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45813,7 +45813,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.8268383727575452e-12,
           "maxConservationResidualNa": 2.672251363331629e-12,
-          "elapsedMs": 3496.1793110000144,
+          "elapsedMs": 3829.4469399999944,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         }
@@ -45915,7 +45915,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.838761127207934e-12,
           "maxConservationResidualNa": 2.8645876903182765e-12,
-          "elapsedMs": 2784.2445439999865,
+          "elapsedMs": 3906.1493349999946,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45942,7 +45942,7 @@
           ],
           "maxKclResidualNa": 2.475138149993228e-12,
           "maxConservationResidualNa": 2.5943893029994197e-12,
-          "elapsedMs": 3042.0710869999893,
+          "elapsedMs": 2886.7094379999908,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45953,7 +45953,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.469245511185769e-12,
           "maxConservationResidualNa": 2.5943893029994197e-12,
-          "elapsedMs": 2725.4797380000236,
+          "elapsedMs": 3237.7833910000045,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45964,7 +45964,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.5208723997138804e-12,
           "maxConservationResidualNa": 2.5943893029994197e-12,
-          "elapsedMs": 3111.504117000004,
+          "elapsedMs": 3625.974532000022,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -45991,7 +45991,7 @@
           ],
           "maxKclResidualNa": 2.469245511185769e-12,
           "maxConservationResidualNa": 2.5943893029994197e-12,
-          "elapsedMs": 3239.337407999992,
+          "elapsedMs": 2110.2982349999947,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -46018,7 +46018,7 @@
           ],
           "maxKclResidualNa": 2.469245511185769e-12,
           "maxConservationResidualNa": 2.5943893029994197e-12,
-          "elapsedMs": 2803.1906180000224,
+          "elapsedMs": 2214.0873509999947,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -46045,7 +46045,7 @@
           ],
           "maxKclResidualNa": 2.6294522115222208e-12,
           "maxConservationResidualNa": 2.5943893029994197e-12,
-          "elapsedMs": 2926.6174790000077,
+          "elapsedMs": 2300.0016919999907,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -46056,7 +46056,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.469245511185769e-12,
           "maxConservationResidualNa": 2.5943893029994197e-12,
-          "elapsedMs": 3049.6023289999866,
+          "elapsedMs": 3913.604972000001,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -46067,7 +46067,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.469245511185769e-12,
           "maxConservationResidualNa": 2.5943893029994197e-12,
-          "elapsedMs": 3365.8279150000017,
+          "elapsedMs": 4333.450974999985,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -46078,7 +46078,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.757627459715195e-12,
           "maxConservationResidualNa": 2.6333344955564025e-12,
-          "elapsedMs": 2927.9872040000046,
+          "elapsedMs": 4826.316019999998,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         }
@@ -46180,7 +46180,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.546085083558359e-12,
           "maxConservationResidualNa": 3.1695802259939024e-12,
-          "elapsedMs": 5469.830805000034,
+          "elapsedMs": 5129.3866179999895,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -46202,7 +46202,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.262212982385604e-12,
           "maxConservationResidualNa": 3.64922407070957e-12,
-          "elapsedMs": 4917.51961899997,
+          "elapsedMs": 4746.76893000002,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -46224,7 +46224,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.366209437929979e-12,
           "maxConservationResidualNa": 3.6110351769305313e-12,
-          "elapsedMs": 4625.880688000005,
+          "elapsedMs": 5382.4400410000235,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -46235,7 +46235,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.4985070396231777e-12,
           "maxConservationResidualNa": 3.504398160547595e-12,
-          "elapsedMs": 4620.291506000038,
+          "elapsedMs": 4419.551304999972,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -46246,7 +46246,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.073667839345595e-12,
           "maxConservationResidualNa": 3.1695802259939024e-12,
-          "elapsedMs": 4497.625819000008,
+          "elapsedMs": 4987.647103999974,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -46257,7 +46257,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.1141064119749595e-12,
           "maxConservationResidualNa": 3.1695802259939024e-12,
-          "elapsedMs": 4777.429986999952,
+          "elapsedMs": 4689.847018999979,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -46279,7 +46279,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.2706207533927945e-12,
           "maxConservationResidualNa": 3.4165358666097753e-12,
-          "elapsedMs": 5685.1477959999465,
+          "elapsedMs": 4256.815447999979,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -46290,7 +46290,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.933315045195895e-12,
           "maxConservationResidualNa": 3.88094100584567e-12,
-          "elapsedMs": 5702.091986999963,
+          "elapsedMs": 4692.332164000021,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -46301,7 +46301,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.252544067411378e-12,
           "maxConservationResidualNa": 3.6242877324505277e-12,
-          "elapsedMs": 6154.455949999974,
+          "elapsedMs": 4627.769749999978,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         },
@@ -46312,7 +46312,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.1124859634079627e-12,
           "maxConservationResidualNa": 3.2317384852193973e-12,
-          "elapsedMs": 4712.739337000006,
+          "elapsedMs": 8768.762710000039,
           "outputBytes": 14275944,
           "conditioning": "reused identical state"
         }
@@ -46414,7 +46414,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.4955445735986839e-12,
           "maxConservationResidualNa": 1.5605570763584098e-12,
-          "elapsedMs": 2665.1509540000116,
+          "elapsedMs": 2456.5419949999778,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46436,7 +46436,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.5616184560751645e-12,
           "maxConservationResidualNa": 1.9002036814701195e-12,
-          "elapsedMs": 2488.1334439999773,
+          "elapsedMs": 2003.3903489999939,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46458,7 +46458,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.5953688023429002e-12,
           "maxConservationResidualNa": 1.6009183318203488e-12,
-          "elapsedMs": 2064.9338949999656,
+          "elapsedMs": 2119.497626999975,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46469,7 +46469,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.5659318459981808e-12,
           "maxConservationResidualNa": 1.6171185348917358e-12,
-          "elapsedMs": 2052.6574030000484,
+          "elapsedMs": 2087.492741999973,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46480,7 +46480,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.4924077598732488e-12,
           "maxConservationResidualNa": 1.7106487938418208e-12,
-          "elapsedMs": 2124.4772200000007,
+          "elapsedMs": 3134.804546999978,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46491,7 +46491,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.5148667910358515e-12,
           "maxConservationResidualNa": 1.6741462816743935e-12,
-          "elapsedMs": 2210.5781139999744,
+          "elapsedMs": 2244.8473770000273,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46502,7 +46502,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.6961339017323995e-12,
           "maxConservationResidualNa": 1.5611717783326276e-12,
-          "elapsedMs": 2365.9467909999657,
+          "elapsedMs": 2209.8202259999816,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46513,7 +46513,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.486783786364132e-12,
           "maxConservationResidualNa": 1.7280395593188141e-12,
-          "elapsedMs": 2014.1489260000526,
+          "elapsedMs": 2061.8072769999853,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46535,7 +46535,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.7189953887414289e-12,
           "maxConservationResidualNa": 1.849167967729083e-12,
-          "elapsedMs": 2395.5917129999725,
+          "elapsedMs": 2603.2456759999623,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46557,7 +46557,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 1.772046051562448e-12,
           "maxConservationResidualNa": 1.6080829837216218e-12,
-          "elapsedMs": 2043.9149800000014,
+          "elapsedMs": 2213.5785449999967,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         }
@@ -46659,7 +46659,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.669562270893322e-12,
           "maxConservationResidualNa": 2.902024486602789e-12,
-          "elapsedMs": 4325.430263999966,
+          "elapsedMs": 6319.8784469999955,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46681,7 +46681,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.7186256718048085e-12,
           "maxConservationResidualNa": 2.9469996186198485e-12,
-          "elapsedMs": 3912.5086080000037,
+          "elapsedMs": 10612.493172999995,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46703,7 +46703,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.834160423709209e-12,
           "maxConservationResidualNa": 3.020747795781306e-12,
-          "elapsedMs": 3951.3659210000187,
+          "elapsedMs": 9147.926200999995,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46714,7 +46714,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.669562270893322e-12,
           "maxConservationResidualNa": 2.902024486602789e-12,
-          "elapsedMs": 4133.871212000027,
+          "elapsedMs": 5246.266829999979,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46725,7 +46725,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.0625419734919834e-12,
           "maxConservationResidualNa": 3.6321702617152576e-12,
-          "elapsedMs": 4246.938602000009,
+          "elapsedMs": 4816.249300999974,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46736,7 +46736,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.759172447810987e-12,
           "maxConservationResidualNa": 2.902024486602789e-12,
-          "elapsedMs": 4064.357841000019,
+          "elapsedMs": 4396.513998000009,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46747,7 +46747,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.669562270893322e-12,
           "maxConservationResidualNa": 2.902024486602789e-12,
-          "elapsedMs": 3974.8233720000135,
+          "elapsedMs": 4488.52603899996,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46769,7 +46769,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.1679103784654217e-12,
           "maxConservationResidualNa": 3.037979590114759e-12,
-          "elapsedMs": 3904.217277000018,
+          "elapsedMs": 4423.987828999991,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46780,7 +46780,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.7636465164959656e-12,
           "maxConservationResidualNa": 2.902024486602789e-12,
-          "elapsedMs": 3936.647561999969,
+          "elapsedMs": 4567.565225000028,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46791,7 +46791,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.7786297568388463e-12,
           "maxConservationResidualNa": 2.902024486602789e-12,
-          "elapsedMs": 4484.038072000025,
+          "elapsedMs": 4862.785626000026,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         }
@@ -46893,7 +46893,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.669562270893322e-12,
           "maxConservationResidualNa": 2.902024486602789e-12,
-          "elapsedMs": 4432.932159999968,
+          "elapsedMs": 4684.2636729999795,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46920,7 +46920,7 @@
           ],
           "maxKclResidualNa": 2.7551294579097885e-12,
           "maxConservationResidualNa": 2.902024486602789e-12,
-          "elapsedMs": 4547.884077999974,
+          "elapsedMs": 4322.783103999973,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46931,7 +46931,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.669562270893322e-12,
           "maxConservationResidualNa": 2.902024486602789e-12,
-          "elapsedMs": 4162.871069999994,
+          "elapsedMs": 4537.009711000021,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46942,7 +46942,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.669562270893322e-12,
           "maxConservationResidualNa": 2.902024486602789e-12,
-          "elapsedMs": 4071.8011920000426,
+          "elapsedMs": 4452.00761900004,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46969,7 +46969,7 @@
           ],
           "maxKclResidualNa": 2.669562270893322e-12,
           "maxConservationResidualNa": 2.902024486602789e-12,
-          "elapsedMs": 3945.111193000048,
+          "elapsedMs": 4448.324538999994,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -46996,7 +46996,7 @@
           ],
           "maxKclResidualNa": 2.669562270893322e-12,
           "maxConservationResidualNa": 2.902024486602789e-12,
-          "elapsedMs": 4124.390948999964,
+          "elapsedMs": 4554.762874999957,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -47023,7 +47023,7 @@
           ],
           "maxKclResidualNa": 2.669562270893322e-12,
           "maxConservationResidualNa": 2.902024486602789e-12,
-          "elapsedMs": 3985.2030270000105,
+          "elapsedMs": 4644.36596700002,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -47034,7 +47034,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.9644117022220584e-12,
           "maxConservationResidualNa": 2.902024486602789e-12,
-          "elapsedMs": 3910.9693160000024,
+          "elapsedMs": 4277.117145999975,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -47045,7 +47045,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.669562270893322e-12,
           "maxConservationResidualNa": 2.902024486602789e-12,
-          "elapsedMs": 3913.919947999995,
+          "elapsedMs": 4834.878473000019,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -47056,7 +47056,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 2.669562270893322e-12,
           "maxConservationResidualNa": 2.902024486602789e-12,
-          "elapsedMs": 3874.5471750000142,
+          "elapsedMs": 4609.491495999973,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         }
@@ -47158,7 +47158,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 4.69286610439712e-12,
           "maxConservationResidualNa": 4.437610462470001e-12,
-          "elapsedMs": 8006.958668000065,
+          "elapsedMs": 8942.499046999961,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -47180,7 +47180,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 4.1696583252121e-12,
           "maxConservationResidualNa": 4.289695443478181e-12,
-          "elapsedMs": 7958.749308999977,
+          "elapsedMs": 8827.123994000023,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -47202,7 +47202,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 4.061347395542536e-12,
           "maxConservationResidualNa": 4.3056498579170654e-12,
-          "elapsedMs": 7780.811900999979,
+          "elapsedMs": 10786.642611999996,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -47213,7 +47213,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 4.3241838061647275e-12,
           "maxConservationResidualNa": 4.38564480142057e-12,
-          "elapsedMs": 8355.103538000025,
+          "elapsedMs": 9927.122603000025,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -47224,7 +47224,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 4.031895260367402e-12,
           "maxConservationResidualNa": 3.985733577492774e-12,
-          "elapsedMs": 7995.65823400009,
+          "elapsedMs": 8143.32215500006,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -47235,7 +47235,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.940538867430732e-12,
           "maxConservationResidualNa": 4.032392434826122e-12,
-          "elapsedMs": 8141.384531000047,
+          "elapsedMs": 11039.761141000083,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -47246,7 +47246,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.940538867430732e-12,
           "maxConservationResidualNa": 3.844570441082634e-12,
-          "elapsedMs": 8200.93740299996,
+          "elapsedMs": 8598.21309199999,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -47268,7 +47268,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 3.940538867430732e-12,
           "maxConservationResidualNa": 3.940951541882634e-12,
-          "elapsedMs": 8208.301729999948,
+          "elapsedMs": 8411.636748000048,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -47279,7 +47279,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 4.200234344359233e-12,
           "maxConservationResidualNa": 4.282115271094303e-12,
-          "elapsedMs": 8155.829136000015,
+          "elapsedMs": 9064.57564299996,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         },
@@ -47301,7 +47301,7 @@
           "somaSpikes": [],
           "maxKclResidualNa": 4.062520285452731e-12,
           "maxConservationResidualNa": 4.034937341928016e-12,
-          "elapsedMs": 8542.542964000022,
+          "elapsedMs": 11387.003741999972,
           "outputBytes": 23902344,
           "conditioning": "reused identical state"
         }
@@ -57271,182 +57271,10 @@
     ]
   },
   "nativeEnvironmentAudit": {
-    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
-    "neuronBuild": "NEURON -- VERSION 9.0.1 HEAD (b12a541+) 2025-11-14",
-    "nativeGeometryReproduction": [
-      {
-        "meshUm": 40,
-        "nodes": 286,
-        "maximumAbsoluteDifferences": {
-          "areaUm2": 0,
-          "lengthUm": 0,
-          "diameterUm": 0,
-          "edgeUs": 0,
-          "sectionX": 0,
-          "startUm": 0,
-          "endUm": 0,
-          "centerUm": 0
-        },
-        "topologyMatches": true
-      },
-      {
-        "meshUm": 20,
-        "nodes": 444,
-        "maximumAbsoluteDifferences": {
-          "areaUm2": 0,
-          "lengthUm": 0,
-          "diameterUm": 0,
-          "edgeUs": 0,
-          "sectionX": 0,
-          "startUm": 0,
-          "endUm": 0,
-          "centerUm": 0
-        },
-        "topologyMatches": true
-      },
-      {
-        "meshUm": 10,
-        "nodes": 744,
-        "maximumAbsoluteDifferences": {
-          "areaUm2": 0,
-          "lengthUm": 0,
-          "diameterUm": 0,
-          "edgeUs": 0,
-          "sectionX": 0,
-          "startUm": 0,
-          "endUm": 0,
-          "centerUm": 0
-        },
-        "topologyMatches": true
-      }
-    ],
-    "dependencies": [
-      {
-        "package": "neuron",
-        "expected": "9.0.1",
-        "actual": "9.0.1",
-        "matches": true
-      },
-      {
-        "package": "numpy",
-        "expected": "2.5.4",
-        "actual": "2.5.4",
-        "matches": true
-      },
-      {
-        "package": "sympy",
-        "expected": "1.14.0",
-        "actual": "1.14.0",
-        "matches": true
-      },
-      {
-        "package": "mpmath",
-        "expected": "1.3.0",
-        "actual": "1.3.0",
-        "matches": true
-      },
-      {
-        "package": "packaging",
-        "expected": "26.3",
-        "actual": "26.3",
-        "matches": true
-      },
-      {
-        "package": "find-libpython",
-        "expected": "0.5.1",
-        "actual": "0.5.1",
-        "matches": true
-      },
-      {
-        "package": "setuptools",
-        "expected": "84.0.0",
-        "actual": "84.0.0",
-        "matches": true
-      },
-      {
-        "package": "LFPykit",
-        "expected": "0.6.2",
-        "actual": "0.6.2",
-        "matches": true
-      },
-      {
-        "package": "MEAutility",
-        "expected": "1.5.3",
-        "actual": "1.5.3",
-        "matches": true
-      },
-      {
-        "package": "scipy",
-        "expected": "1.18.1",
-        "actual": "1.18.1",
-        "matches": true
-      },
-      {
-        "package": "matplotlib",
-        "expected": "3.11.2",
-        "actual": "3.11.2",
-        "matches": true
-      },
-      {
-        "package": "PyYAML",
-        "expected": "6.0.3",
-        "actual": "6.0.3",
-        "matches": true
-      },
-      {
-        "package": "contourpy",
-        "expected": "1.4.0",
-        "actual": "1.4.0",
-        "matches": true
-      },
-      {
-        "package": "cycler",
-        "expected": "0.12.1",
-        "actual": "0.12.1",
-        "matches": true
-      },
-      {
-        "package": "fonttools",
-        "expected": "4.66.1",
-        "actual": "4.66.1",
-        "matches": true
-      },
-      {
-        "package": "kiwisolver",
-        "expected": "1.5.1",
-        "actual": "1.5.1",
-        "matches": true
-      },
-      {
-        "package": "pillow",
-        "expected": "12.3.0",
-        "actual": "12.3.0",
-        "matches": true
-      },
-      {
-        "package": "pyparsing",
-        "expected": "3.3.3",
-        "actual": "3.3.3",
-        "matches": true
-      },
-      {
-        "package": "python-dateutil",
-        "expected": "2.9.0.post0",
-        "actual": "2.9.0.post0",
-        "matches": true
-      },
-      {
-        "package": "six",
-        "expected": "1.17.0",
-        "actual": "1.17.0",
-        "matches": true
-      }
-    ],
-    "mechanismLibrarySha256": "8c1d93788a10ddf1f755475b0c3a37022d4fbb04027749ad7276572926a1fed0",
-    "scope": "Read-only native morphology regeneration and dependency audit; no new full-cell dynamics fixture generated."
+    "scope": "Not requested. Set CORTEX_REFERENCE_PYTHON and CORTEX_ACTIVE_MECHANISM_LIBRARY to run the optional pinned native geometry/environment audit."
   },
   "sourceUnchangedDuringStudy": true,
-  "totalWallMs": 604477.618549,
+  "totalWallMs": 682206.195151,
   "acceptanceSummary": {
     "geometryPass": true,
     "currentAccountingPass": true,

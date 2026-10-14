@@ -135,8 +135,8 @@ export function validateConfig(input) {
     )
   )
     throw new Error('Unsupported experiment mode.');
-  finiteRange(c.protocol.startMs, 1, 10, 'Drive start (ms)');
-  finiteRange(c.protocol.durationMs, 0.1, 10, 'Drive duration (ms)');
+  finiteRange(c.protocol.startMs, 1, active ? 500 : 10, 'Drive start (ms)');
+  finiteRange(c.protocol.durationMs, 0.1, active ? 1000 : 10, 'Drive duration (ms)');
   finiteRange(c.protocol.synapseNs, 0, active ? 100 : 5, 'Synaptic conductance (nS)');
   finiteRange(c.protocol.synapseReversalMv, -90, 20, 'Synapse reversal (mV)');
   finiteRange(
@@ -150,9 +150,9 @@ export function validateConfig(input) {
   finiteRange(c.protocol.phaseUs, 50, 1000, 'Phase duration (µs)');
   finiteRange(c.protocol.gapUs, 0, 1000, 'Interphase gap (µs)');
   finiteRange(c.solver.dtMs, active ? 0.00125 : 0.0025, active ? 0.01 : 0.1, 'Timestep (ms)');
-  finiteRange(c.solver.durationMs, 20, 100, 'Experiment duration (ms)');
+  finiteRange(c.solver.durationMs, 20, active ? 1200 : 100, 'Experiment duration (ms)');
   if (active) {
-    finiteRange(c.solver.sampleMs, c.solver.dtMs, 0.1, 'Output sampling interval (ms)');
+    finiteRange(c.solver.sampleMs, c.solver.dtMs, 0.5, 'Output sampling interval (ms)');
     finiteRange(c.solver.settleMs, 100, 500, 'Initialization settling time (ms)');
     for (const [name, value] of [
       ['sampleMs', c.solver.sampleMs],

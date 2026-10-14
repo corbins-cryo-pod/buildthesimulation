@@ -183,3 +183,15 @@ are component/static checks, not pointer, keyboard, WebGL or browser lifecycle Q
 
 No new empirical validation, channel refitting, population model, finite-contact
 regularization or electrode acquisition model is inferred from these checks.
+
+## Sustained somatic input verification, 2026-10-14
+
+Two new, separate native NEURON 9.0.1 / LFPykit 0.6.2 cases verify 200 ms and
+500 ms +0.3 nA steps. Both pass the unchanged short-case tolerances for full
+physical-compartment voltage/current traces, local/soma crossings, recordings
+and conservation. Soma counts are 9 and 18; timing disagreement is <2.3e-8 ms.
+Maximum voltage disagreement is <3.1e-5 mV. See CURRENT_STEPS.md for generators,
+hashes, every metric, exact configurations and interpretation. These are fixed
+numerical agreement cases; unresolved spatial refinement and lack of independent
+biological validation remain. Tests also exercise long-step budget rejection,
+configuration round-trip, sampling-independent events and worker cancellation.

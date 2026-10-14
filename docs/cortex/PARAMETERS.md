@@ -52,3 +52,15 @@ boundaries, return paths, electrode placement and interface behavior dominates
 many small numerical errors. No probabilistic uncertainty interval is claimed.
 Future calibrated parameters must identify a fitting dataset and leave a separate
 independent dataset for validation.
+
+
+## Active sustained-step bounds
+
+Active onset: 1–500 ms; active conductance/current-step duration: 0.1–1000 ms;
+active recording length: 20–1200 ms, strictly extending beyond onset + duration.
+Saved interval: integration timestep through 0.5 ms, an integer multiple of dt.
+Integration limits, membrane parameters and extracellular phase-width limits are
+unchanged. Passive limits are unchanged. Long steps remain subject to the existing
+2,000,000 node-frame and 64 MiB active-output budgets; unsupported combinations
+are rejected, never silently downsampled. The 1000 ms step bound does not claim
+that every amplitude/resolution/length combination is scientifically verified.
