@@ -1,0 +1,62 @@
+name: Finger atlas additional primary references
+on:
+  push:
+    branches: [finger-atlas-realism-v2]
+    paths: [.github/workflows/finger-atlas-reference-supplement.yml]
+permissions:
+  contents: read
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - run: python -m pip -q install requests beautifulsoup4 lxml
+      - name: Collect public primary figures
+        run: |
+          mkdir -p /tmp/supplement
+          cat > /tmp/collect.py <<'PY'
+          import requests,pathlib,json,hashlib,concurrent.futures,urllib.parse,xml.etree.ElementTree as ET
+          from bs4 import BeautifulSoup
+          O=pathlib.Path('/tmp/supplement');S=requests.Session();S.headers['User-Agent']='Educational microscopy reference comparison; public article figures'
+          def get(u):
+            r=S.get(u,timeout=40);r.raise_for_status();return r
+          def collect(p):
+            d=O/p;d.mkdir(exist_ok=True);m={'pmcid':p,'url':f'https://pmc.ncbi.nlm.nih.gov/articles/{p}/','figures':[],'errors':[]}
+            def tx(e):return ''.join(e.itertext()) if e is not None else ''
+            try:
+              r=get(f'https://www.ebi.ac.uk/europepmc/webservices/rest/{p}/fullTextXML');(d/'article.xml').write_bytes(r.content);root=ET.fromstring(r.content)
+              m['title']=tx(root.find('.//article-title'));m['license']=tx(root.find('.//permissions'));m['doi']=next((a.text for a in root.findall('.//article-id') if a.attrib.get('pub-id-type')=='doi'),None)
+              for f in root.findall('.//fig')[:12]:
+                g=f.find('.//graphic');href=g.attrib.get('{http://www.w3.org/1999/xlink}href','') if g is not None else ''
+                if href:m['figures'].append({'id':f.attrib.get('id'),'label':tx(f.find('label')),'caption':tx(f.find('caption')),'href':href})
+            except Exception as e:m['errors'].append(str(e))
+            try:
+              r=get(m['url']);(d/'article.html').write_text(r.text);soup=BeautifulSoup(r.text,'html.parser')
+              for f in m['figures']:
+                block=soup.find(id=f['id']);im=block.find('img') if block else None
+                if im:f['image_url']=urllib.parse.urljoin(m['url'],im.get('src',''))
+              if not m['figures']:
+                for i,block in enumerate(soup.select('figure')[:12]):
+                  im=block.find('img')
+                  if im:m['figures'].append({'id':block.get('id',str(i)),'label':f'Figure {i+1}','caption':block.get_text(' ',strip=True),'image_url':urllib.parse.urljoin(m['url'],im.get('src',''))})
+            except Exception as e:m['errors'].append(str(e))
+            for f in m['figures']:
+              urls=[f.get('image_url')]
+              if f.get('href'):urls += [f'https://europepmc.org/articles/{p}/bin/{f["href"]}',f'https://europepmc.org/articles/{p}/bin/{f["href"]}.jpg']
+              for u in filter(None,urls):
+                try:
+                  r=get(u)
+                  if not r.headers.get('Content-Type','').startswith('image/'):continue
+                  fn=str(f['id']).replace('/','_')+('.png' if 'png'in r.headers['Content-Type'] else '.jpg');(d/fn).write_bytes(r.content);f.update(file=fn,image_url=r.url,sha256=hashlib.sha256(r.content).hexdigest(),bytes=len(r.content));break
+                except Exception as e:f['error']=str(e)
+            (d/'metadata.json').write_text(json.dumps(m,indent=2));print(p,m.get('title'),sum('file'in f for f in m['figures']),flush=True);return m
+          ids=['PMC7211131','PMC9205958','PMC4878004','PMC11068404','PMC6946031','PMC10985268','PMC5581694']
+          with concurrent.futures.ThreadPoolExecutor(max_workers=3) as ex:out=list(ex.map(collect,ids))
+          (O/'manifest.json').write_text(json.dumps(out,indent=2))
+          PY
+          python /tmp/collect.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: finger-atlas-reference-supplement
+          path: /tmp/supplement
+          retention-days: 7
