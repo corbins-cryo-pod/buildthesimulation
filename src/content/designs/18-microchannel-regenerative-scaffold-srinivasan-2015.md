@@ -1,5 +1,5 @@
 ---
-title: "Microchannel-based regenerative scaffold interface (Srinivasan et al., 2015)"
+title: "Regenerative Microchannel Interface"
 order: 18
 pubDate: 2026-02-06
 updatedDate: 2026-02-06
