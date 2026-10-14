@@ -30,6 +30,7 @@ import {
   placementReport,
   translationForTipDepth,
 } from "../lib/cortex/placement.js";
+import { currentStepSummary, adjacentSpikeFrame } from "../lib/cortex/current-step.js";
 import { EXAMPLES, getExampleConfig } from "../lib/cortex/examples.js";
 import "../styles/cortex-laboratory.css";
 
@@ -239,6 +240,7 @@ export default function CortexLaboratory() {
     [world, selected],
   );
   const summary = useMemo(() => resultSummary(ready), [ready]);
+  const stepSummary = useMemo(() => currentStepSummary(ready), [ready]);
   const baselineSummary = useMemo(() => resultSummary(pinned), [pinned]);
   const baselineSoma = useMemo(
     () =>
@@ -315,6 +317,7 @@ export default function CortexLaboratory() {
     setPlaying(false);
     setError("");
     setComponent(e.view.recordingComponent);
+    setReplaySpeed(e.view.replaySpeed ?? 1);
     setPlotReference(e.config.recording.reference);
     setRunStage("Example loaded. Inspect geometry, then run.");
   };
@@ -760,7 +763,7 @@ export default function CortexLaboratory() {
                 label="Onset · ms"
                 value={config.protocol.startMs}
                 min={1}
-                max={10}
+                max={active ? 500 : 10}
                 step={0.5}
                 onChange={(v) => edit("protocol", "startMs", v)}
               />
@@ -777,13 +780,30 @@ export default function CortexLaboratory() {
                 )}
               {config.protocol.mode !== "extracellular-stimulation" && (
                 <NumberControl
-                  label="Drive duration · ms"
+                  label={config.protocol.mode === "intracellular-current" ? "Current step duration · ms" : "Drive duration · ms"}
                   value={config.protocol.durationMs}
                   min={0.1}
-                  max={10}
+                  max={active ? 1000 : 10}
                   step={0.5}
                   onChange={(v) => edit("protocol", "durationMs", v)}
                 />
+              )}
+              <NumberControl
+                label="Recording length · ms"
+                value={config.solver.durationMs}
+                min={20}
+                max={active ? 1200 : 100}
+                step={10}
+                onChange={(v) => edit("solver", "durationMs", v)}
+              />
+              {active && config.protocol.mode === "intracellular-current" && (
+                <p class="cx-muted">
+                  A sustained current step can produce repeated spikes and adaptation.
+                  Choose “200 ms current step” or “500 ms current step” above, then
+                  Load example and Run. Set recording length beyond onset + step
+                  duration to include recovery. This is ideal somatic current clamp;
+                  pipette resistance and clamp electronics are not modeled.
+                </p>
               )}
             </details>
             <details open>
@@ -1046,19 +1066,21 @@ export default function CortexLaboratory() {
                   label="Output sample interval · ms"
                   value={config.solver.sampleMs}
                   min={config.solver.dtMs}
-                  max={0.1}
+                  max={0.5}
                   step={0.005}
                   onChange={(v) => edit("solver", "sampleMs", v)}
                 />
               )}
-              <NumberControl
-                label="Experiment length · ms"
-                value={config.solver.durationMs}
-                min={20}
-                max={100}
-                step={10}
-                onChange={(v) => edit("solver", "durationMs", v)}
-              />
+              {active && (
+                <p class="cx-muted">
+                  Output sampling changes saved plots, replay and exports, not integration
+                  or internal spike detection. Longer runs remain limited to 64 MiB of
+                  numeric output. At the default 40 µm mesh, use 0.1 ms for a 250 ms
+                  recording, 0.25 ms for 600 ms, or 0.5 ms for 1200 ms. Coarser output
+                  can miss spike peaks; use a shorter recording with finer output for
+                  waveform inspection. No resolution is changed automatically.
+                </p>
+              )}
               <label>
                 Neurite source model
                 <select
@@ -1442,7 +1464,7 @@ export default function CortexLaboratory() {
                       setReplaySpeed(Number(e.currentTarget.value))
                     }
                   >
-                    {[0.25, 1, 5, 10].map((v) => (
+                    {[0.25, 1, 5, 10, 25, 50, 100].map((v) => (
                       <option value={v}>{v} biological ms/s</option>
                     ))}
                   </select>
@@ -1483,6 +1505,26 @@ export default function CortexLaboratory() {
                     </button>
                   </>
                 )}
+                {active && result.spikes.length > 0 && [-1, 1].map((direction) => {
+                  const target = adjacentSpikeFrame(result, frame, direction);
+                  return (
+                    <button disabled={target < 0} onClick={() => {
+                      setPlaying(false);
+                      setFrame(target);
+                    }}>
+                      {direction < 0 ? "Previous spike" : "Next spike"}
+                    </button>
+                  );
+                })}
+                {config.protocol.mode === "intracellular-current" && [
+                  ["Step onset", config.protocol.startMs],
+                  ["Step end", config.protocol.startMs + config.protocol.durationMs],
+                ].map(([label, time]) => (
+                  <button onClick={() => {
+                    setPlaying(false);
+                    setFrame(nearestFrame(result.timeMs, time));
+                  }}>{label}</button>
+                ))}
                 <button
                   onClick={() => {
                     setPlaying(false);
@@ -1628,6 +1670,27 @@ export default function CortexLaboratory() {
                   { label: "Soma Vₘ", values: traces.soma, color: "#b3532e" },
                 ]}
               />
+              {stepSummary && (
+                <div class="cx-notice">
+                  <strong>During the current step: {stepSummary.spikeCount} soma spikes</strong>
+                  <p>
+                    Count / step duration: {format(stepSummary.countRateHz)} Hz.
+                    First-spike latency: {format(stepSummary.latencyMs)} ms.
+                    First / last interspike interval: {format(stepSummary.firstIsiMs)} / {format(stepSummary.lastIsiMs)} ms.
+                    {" "}— means no applicable event or interval.
+                  </p>
+                  <details>
+                    <summary>Spike times and intervals</summary>
+                    <table>
+                      <caption>All soma crossings; times from recording start. Intervals use internal detection, not saved frame peaks.</caption>
+                      <thead><tr><th>Spike</th><th>Time · ms</th><th>Interval · ms</th><th>During step</th></tr></thead>
+                      <tbody>{stepSummary.events.map((s, i) => (
+                        <tr><td>{i + 1}</td><td>{format(s.timeMs)}</td><td>{format(s.intervalMs)}</td><td>{s.duringStep ? "Yes" : "No"}</td></tr>
+                      ))}</tbody>
+                    </table>
+                  </details>
+                </div>
+              )}
               {active && (
                 <p class="cx-muted">
                   {result.spikes.length} soma crossings at −25 mV · internal

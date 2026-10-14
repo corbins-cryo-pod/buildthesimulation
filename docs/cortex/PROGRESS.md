@@ -1,5 +1,29 @@
 # Development handoff
 
+## 2026-10-14 — Sustained patch-clamp-style current steps
+
+Branched from verified main `503c78c` into `feature/cortex-long-current-steps` in
+an isolated worktree. Extended active rectangular input windows to 1000 ms and
+recordings to 1200 ms; output intervals up to 0.5 ms permit explicit memory
+tradeoffs under the unchanged 64 MiB cap. Passive limits and all physical solver
+mechanisms/defaults remain unchanged. New +0.3 nA, 200/500 ms examples calculate
+9/18 soma events with model-specific adaptation. Both are independently checked
+against the original native NEURON/LFPykit kernel, full physical-membrane traces,
+source/input hashes and separate fixtures; all unchanged agreement gates pass.
+
+Recording duration is next to input duration; UI explains ideal current clamp,
+recovery time, coarse output and memory limits. Replay gains faster speeds,
+step onset/end and previous/next spike navigation. The spike table and derived
+latency/count-rate/interval summary distinguish during-step from recovery events.
+Exact events/configurations remain exported through the existing bundle contract.
+Tests cover saved-sampling independence, budgets, configuration import, event
+window/navigation semantics and actual-worker cancellation during long integration.
+The prior refinement study is rerun without changing its criteria. Scientific
+waveform/spatial-threshold failures remain documented; this update does not fix them.
+Supported browser interaction QA remains unavailable. See CURRENT_STEPS.md for
+reproduction commands, measured agreement and scientific/verification scope.
+
+
 ## 2026-10-14 — Electrical workbench milestone
 
 Recovered `/workspace/scratch/917b341386bf/buildthesimulation` at clean local

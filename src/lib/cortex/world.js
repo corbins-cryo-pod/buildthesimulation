@@ -99,7 +99,7 @@ export function makeWorld(input) {
     2000000
   )
     throw new Error(
-      'This configuration exceeds the 2,000,000 compartment-frame storage budget (32 MB for voltage/current arrays). Shorten the run or explicitly choose a coarser timestep or morphology.',
+      'This configuration exceeds the 2,000,000 compartment-frame storage budget (32 MB for voltage/current arrays). Shorten the run or, for the active model, increase the output sample interval without changing the integration timestep.',
     );
   if (
     config.neuron.modelId &&

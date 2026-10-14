@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Worker } from 'node:worker_threads';
 import { freshConfig, freshActiveConfig } from '../src/lib/cortex/config.js';
+import { getExampleConfig } from '../src/lib/cortex/examples.js';
 import { resultBuffers } from '../src/lib/cortex/buffers.js';
 import { runExperiment } from '../src/lib/cortex/experiment.js';
 
@@ -67,4 +68,25 @@ test('worker reports invalid configurations without returning fake traces', asyn
   assert.equal(actual.result.type, 'error');
   assert.match(actual.result.message, /Timestep/);
   assert.equal(actual.result.result, undefined);
+});
+
+test('long current-clamp worker can be cancelled during integration', async () => {
+  const worker = new Worker(new URL('./fixtures/cortex-worker-adapter.mjs', import.meta.url));
+  let completed = false;
+  try {
+    await new Promise((resolve, reject) => {
+      const timer = setTimeout(() => reject(new Error('Long worker did not progress')), 60000);
+      worker.on('error', (error) => { clearTimeout(timer); reject(error); });
+      worker.on('message', (message) => {
+        if (message.type === 'result') completed = true;
+        if (message.type === 'error') { clearTimeout(timer); reject(new Error(message.message)); }
+        if (message.type === 'progress' && message.stage === 'Simulating') {
+          clearTimeout(timer); resolve();
+        }
+      });
+      worker.postMessage({ id: 44, config: getExampleConfig('active-current-step-500ms') });
+    });
+    await worker.terminate();
+    assert.equal(completed, false);
+  } finally { await worker.terminate(); }
 });
