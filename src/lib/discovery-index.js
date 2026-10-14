@@ -49,6 +49,8 @@ export async function buildDiscoveryIndex() {
     })),
     ...[
       ['Cortex Laboratory', '/cortex/', 'Shared anatomy, passive cable currents and physical implant placement', 'cortex laboratory recording stimulation Utah membrane physics'],
+      ['Finger Pathway Atlas', '/simulations/finger-pathway-atlas/', '3D sensory and motor anatomy from fingertip to cortex', 'finger index touch motor hand nerve ganglion spinal cord brainstem medulla thalamus cortex anatomy atlas'],
+      ['Finger atlas reference images', '/simulations/finger-pathway-atlas/references/', '50 model-versus-tissue plates and 42 original figures', 'finger atlas reference histology microscopy myelin synapse Meissner Pacinian neuromuscular connectomics'],
       ['Cortical stimulation lab', '/simulations/cortical-stimulation/', 'Electrodes and tissue response', 'cortex stimulation experiment'],
       ['Cortical recording lab', '/simulations/cortex-slab/', 'Synthetic signals from neurons', 'recording depth electrodes'],
       ['Peripheral nerve sandbox', '/sim/', 'Nerve cross-sections and pulses', 'peripheral nerve cuff simulation'],
