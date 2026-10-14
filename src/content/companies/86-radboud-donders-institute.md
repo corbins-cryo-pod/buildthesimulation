@@ -31,7 +31,9 @@ These are program work items. The report does not show a fabricated implant used
 
 ## Cataloged hardware and applications
 
-None. No Donders-developed implant has a device or application sheet.
+- [TU Delft transfer-free multilayer graphene MEA (DBI2 TS4)](/devices/209-tu-delft-transfer-free-multilayer-graphene-mea/): the DBI2 annual report credits Donders's Battaglia lab as a collaborator on the graphene electrode designs. The device is an in vitro slice-recording array from Delft University of Technology; no Radboud or Donders author is on its paper. It is not an implant and not a Donders-developed device.
+
+No Donders-developed implant has a device or application sheet.
 
 ## Studies with Donders researchers
 
@@ -44,7 +46,7 @@ The Utrecht NeuroProsthesis study of two people with locked-in syndrome (subdura
 
 ## Not public or not verified
 
-A Donders implant geometry, electrode specifications, a Donders-branded device, array manufacturer for the 2023 speech study, regulatory pathway and funding beyond the NWO Gravitation grant were not found in the sources read.
+A Donders-owned implant geometry, electrode specifications, a Donders-branded device, array manufacturer for the 2023 speech study, regulatory pathway and funding beyond the NWO Gravitation grant were not found in the sources read.
 
 ## Primary sources
 
