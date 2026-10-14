@@ -1,5 +1,64 @@
 # Development handoff
 
+## 2026-10-14 — Electrical workbench milestone
+
+Recovered `/workspace/scratch/917b341386bf/buildthesimulation` at clean local
+checkpoint `1c8d104` on `feature/cortex-electrical-overlay`. A remote fetch and
+branch query confirmed it was unpushed. Main remained `2a3c607` (PR #260), with
+Cloudflare success for that preceding active-neuron deployment. Work continued
+on `feature/cortex-scientific-workbench`, preserving the checkpoint and unrelated
+site content. This request explicitly authorizes the completed milestone's
+publication through GitHub and the existing Cloudflare workflow.
+
+Implemented independent quantity legends and controls; labeled current/recording
+guide markers; movable/oriented/extent/opacity-controlled applied slices; fixed
+or run-wide automatic scales with saturation counts; neutral zero-drive slices;
+conservative exclusion of entire source-intersecting cells; cached transfers and
+replay paths; a phase-aware sample inspector; correct shortened passive final-step
+labels; and small nonzero potential labels that do not round to false zero.
+
+Placement controls now include all implant/cell rotation axes, numerical
+translation/reset, mean apex depth relative to pia and actual tilted tip-depth
+range. Shared conservative membrane-clearance diagnostics identify soma, axon,
+selected and nearest compartments. Unsupported near-contact configurations block
+Run and explain how to move them out of the excluded region. No drag-to-solver
+coordinate mismatch or new collision/finite-contact physics is introduced.
+
+The workflow is Choose → Inspect → Run → Replay → Compare/export, with a first-run
+guide, explicit example reset disclosure, progress/cancel states, stale clearing,
+separate membrane/input/recording plots, display-only A/B versus A−B selection,
+slow replay and actual saved phase/gap jumps. Eight complete examples are freshly
+reproduced; the requested shifted 40 µA / 1000 µs candidate has one soma event at
+5.381823 ms. One pinned baseline survives example loading. Comparisons enumerate
+changed fields, show event/voltage/neural/artifact metrics and overlay exact
+shared-time-grid traces without time alignment or interpolation.
+
+The bounded numerical research ran 141 experiments across a 3×3 timestep/mesh
+matrix plus soma-threshold/candidate checks. Physical morphology and channel
+amounts are invariant, conservation passes, and event counts/timing are stable.
+**Fourteen waveform comparisons and six extracellular spatial-threshold
+comparisons fail their unchanged predeclared gates.** The spatial threshold
+sequence is nonmonotonic and switches early crossing location/pulse phase.
+No solver mechanism, fitting parameter, physical model or resolution was changed
+to conceal these findings. See REFINEMENT.md and its hashed report; this work is
+published as qualified numerical research, not a convergence certification.
+
+Supported control-browser tooling is unavailable. No preview server, unsupported
+browser driver or claimed interactive QA was substituted. Regression/scene tests,
+actual-worker Node bridge, Preact server rendering, build/artifact checks and
+Cloudflare deployment status are distinct from browser QA. Final local checks passed: **152/152 regression tests**, all eight curated
+examples, **454 built pages**, current-entry/worker/static artifact checks,
+report/source-fingerprint checks and diff whitespace checks. The bounded study's
+failed scientific acceptance gates remain explicitly reported above. Production
+publication is authorized; the feature PR records CI and the exact Cloudflare
+merge-commit deployment result.
+
+Next bounded scientific work: independent NEURON/LFPykit dynamics at 10 µm /
+0.00125 ms and candidate/threshold endpoints, followed by controlled local/finer
+spatial refinement of competing apic[40] crossing regions. Retain current gates.
+Browser keyboard/mobile/WebGL/cancellation/download review remains separately
+outstanding. Both neuron models and original human model licensing are preserved.
+
 ## 2026-10-14 — Production publication approved
 
 The user explicitly approved making the completed active development version
@@ -150,3 +209,11 @@ runtime dependency or solver equation changed in this continuation.
 
 Do not infer unfinished features from the mission brief. The README and current
 source describe implemented behavior; ROADMAP describes future work.
+
+## Replay electrical overlay
+
+The 3D workspace now displays enlarged stimulating-tip markers colored by signed outward current (µA), recording-tip markers colored by the selected neural/applied/total ideal potential (µV), and three translucent 1.6 mm orthogonal sections through the soma showing the applied stimulation potential. All values follow the exported replay sample; drive is the solver's timestep-average current. Positive values are red and negative values blue. Tissue colors use a fixed ±2 mV scale, clipping beyond that range; recording colors use the component's peak absolute value across both contacts and the run. Numeric sample readouts accompany the view.
+
+The tissue probes use the same transformed point-contact positions and homogeneous conductor transfer as the solver. Near-source triangles are excluded; no finite contact surface or electrode impedance is inferred. Tissue sections disappear at zero pulse current. Stale results hide the entire overlay. The checkbox disables it. The passive and active solvers and their exports are unchanged.
+
+Verification: transformed-source formula and exclusion tests; replay polarity, component, zero-drive and stale/disabled visibility tests. Interactive browser QA remains pending because the supported browser runner is unavailable.

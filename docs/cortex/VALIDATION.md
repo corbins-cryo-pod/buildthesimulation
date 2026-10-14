@@ -137,5 +137,49 @@ Browser behavior, responsive
 layout appearance, WebGL/software rendering, keyboard operation, worker cancellation
 and download interactions still require interactive browser QA. This environment
 has no supported control-browser skill; no preview browser was installed or improvised.
-Keep the PR draft until this gap is reviewed. A successful build alone is not a
-browser or scientific-validation pass.
+The 2026-10-14 publication request explicitly permits release with this gap disclosed.
+A successful build alone is not a browser or scientific-validation pass.
+
+## Electrical workbench verification (2026-10-14)
+
+`tests/cortex-electrical-overlay.mjs` and `tests/cortex-workbench.mjs` check
+transformed contacts, independent source-field arithmetic, agreement of slice
+values with ideal recording artifact at the same position, both phases and rest,
+separate fixed/automatic scales, whole-cell source exclusion, configurable plane
+geometry, replacement disposal, independent visibility and stale-result clearing.
+The whole-cell exclusion test specifically places a singularity between valid
+vertices: checking vertices alone is insufficient to prevent a triangle from
+bridging the unsupported region.
+
+Placement reports and solver rejection call the same tapered-polyline membrane
+distance function. Tests check finite diagnostics, overlap rejection and mean
+apex depth under a rotated implant, retaining X/Y coordinates. Numerical
+settings, source equations and engine revisions are unchanged.
+
+Eight complete examples were executed and their actual outcomes retained with
+source/configuration hashes. Regression tests rerun the new shifted-array,
+unshifted-array and reversed-polarity cases. This verifies reproduction, not
+independent biological truth. New 1000 µs cases have no new native dynamics
+fixtures; see EXAMPLES.md. The bounded 3×3 refinement matrix and predeclared
+acceptance results are in REFINEMENT.md, including failed convergence gates.
+
+Static artifact checks traverse the current hydrated entry’s reachable chunks
+before verifying its exact worker path; old build assets cannot satisfy them.
+Completed-result electrical panels were also server-rendered with Preact. These
+are component/static checks, not pointer, keyboard, WebGL or browser lifecycle QA.
+
+### Computational audit summary
+
+| Area | Audit finding / preserved contract |
+| --- | --- |
+| Timestep integration | Backward-Euler tree solve retained; 0.005/0.0025/0.00125 ms study measures unresolved sharp-spike waveform error instead of assuming event stability is enough. |
+| Morphology/channel distribution | Native taper, arc area, attachment topology, section-specific densities and synthetic 60 µm axon retained; 40/20/10 µm totals invariant to roundoff. |
+| Channel-state ordering | Original scalar/Markov updates and calcium/SK sequencing unchanged; existing native held-voltage and full-cell reference tests remain gates. |
+| Current accounting | Capacitive, ionic/leak and synaptic currents use solve-consistent states; conservation/local KCL checked on every internal step. |
+| Forward model | One-way point-soma / line-chord neural recording; changing chords can alter recordings but cannot cause stimulation threshold changes. |
+| Pulse/output sampling | Exact phase overlap/charge retained; saved drive/artifact reflects preceding internal interval, not an output-bin average. Passive shortened final interval is now described correctly in the viewer. Missing saved phases/gaps are explicit. |
+| Export contracts | Both experiment schemas, exact CSV A/B/A−B and current arrays, result provenance and worker buffer transfers retained. UI adds separate visualization metadata to result downloads. |
+| Lifecycle/performance | Bounded buffers/conditioning cache and worker cancellation retained; slice replacements dispose resources, replay caches geometry coefficients/scales/paths and skips repeated unchanged color updates. |
+
+No new empirical validation, channel refitting, population model, finite-contact
+regularization or electrode acquisition model is inferred from these checks.

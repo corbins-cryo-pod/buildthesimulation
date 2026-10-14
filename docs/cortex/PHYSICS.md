@@ -170,3 +170,39 @@ conditioning may be reused from a bounded four-entry worker-local cache.
 
 See ACTIVE_MODEL.md for source conventions, the synthetic axon, channel origins,
 predeclared gates and experimental/redistribution limits.
+
+## Applied-potential visualization and placement diagnostics
+
+The electrical overlay samples the existing bipolar point-source solution at
+25×25 vertices per plane. The coefficient in mV/µA is numerically equal to the
+difference of the two µV/nA transfer coefficients; multiplying by the exported
+signed contact-A current in µA produces applied potential in mV. Contact B is
+its equal/opposite return. The sampled field is applied-only; membrane coloring
+is Vₘ (active) or explicitly rest-centered ΔVₘ (passive). Recording markers use
+the selected neural/applied/total individual contact potential in µV relative
+to infinity, regardless of the A−B plot display.
+
+Color interpolation inside a retained triangle is a display approximation.
+Neither vertices nor triangles intersecting the configured source-exclusion
+sphere are rendered. The implementation tests the closest point on each plane
+cell to each source and conservatively removes both triangles if the cell
+intersects the sphere. This prevents triangles bridging a singularity that lies
+between vertices; it does not regularize or infer a finite electrode surface.
+The coarse exclusion hole can extend beyond the sphere. Auto scale is defined
+from visible sampled vertices at full configured current, not a guaranteed
+continuum maximum between vertices; fixed scales explicitly report saturation.
+Potential is relative to infinity, neutral is zero, and red/blue are positive/
+negative. No electric-field arrows or |E| claims are made by these colors.
+
+At rest the applied slices are neutral; an absent neural volume visualization
+is not a claim that extracellular neural potential is zero. The existing forward
+model still computes neural potential at both recording contacts. Slice pose,
+extent, opacity and color scale never feed back into the cable or conductor.
+
+Placement diagnostics reuse the solver's conservative membrane-distance rule,
+including tapered polyline radii and spherical soma radius. The mean-tip-depth
+control changes only implant Z translation so the arithmetic mean of transformed
+apex Z coordinates equals the requested value. Rotations and X/Y translations
+are unchanged. Pial Z=0 and layer boundaries remain illustrative coordinates,
+not electrical conductivity interfaces. A passing 25 µm exclusion is only a
+domain restriction, not a measured accuracy radius or a collision check.

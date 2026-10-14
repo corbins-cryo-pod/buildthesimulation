@@ -1,0 +1,131 @@
+{
+  "schemaVersion": "cortex-workbench-benchmark/1",
+  "generatedAt": "2026-10-14T15:23:50.828Z",
+  "runtime": {
+    "node": "v24.19.0",
+    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C"
+  },
+  "config": {
+    "schemaVersion": "cortex-experiment/2",
+    "anatomy": {
+      "widthUm": 6000,
+      "thicknessUm": 4000
+    },
+    "implant": {
+      "deviceId": "BTSD-0001",
+      "revision": 1,
+      "translationUm": [
+        100,
+        -50,
+        0
+      ],
+      "rotationDeg": [
+        0,
+        0,
+        0
+      ]
+    },
+    "neuron": {
+      "modelId": "allen-human-571654895/1",
+      "somaUm": [
+        -100,
+        -200,
+        1500
+      ],
+      "rotationDeg": [
+        0,
+        0,
+        0
+      ],
+      "segmentLengthUm": 40
+    },
+    "tissue": {
+      "conductivitySPerM": 0.3
+    },
+    "membrane": {
+      "sourceModelId": "allen-human-571654895/1",
+      "temperatureC": 34
+    },
+    "recording": {
+      "contactIds": [
+        "r3-c3",
+        "r3-c6"
+      ],
+      "reference": "infinity",
+      "sourceModel": "line",
+      "exclusionUm": 25
+    },
+    "protocol": {
+      "mode": "extracellular-stimulation",
+      "startMs": 5,
+      "durationMs": 5,
+      "synapseNs": 1,
+      "synapseReversalMv": 0,
+      "injectionNa": 1.2,
+      "bathReturnUm": [
+        2000,
+        2000,
+        -500
+      ],
+      "amplitudeUa": 40,
+      "phaseUs": 1000,
+      "gapUs": 100,
+      "sourceContactIds": [
+        "r4-c4",
+        "r4-c5"
+      ]
+    },
+    "solver": {
+      "dtMs": 0.005,
+      "durationMs": 40,
+      "sampleMs": 0.05,
+      "settleMs": 100
+    }
+  },
+  "scope": "Node CPU solver and scene-object updates measured separately, sequentially. Excludes actual rendering, DOM layout/labels, draw calls, GPU and browser peak memory.",
+  "solver": {
+    "coldMs": 4908.003713,
+    "warmMs": 1418.4257290000005,
+    "numericOutputBytes": 18386840
+  },
+  "summaryIndexMs": 2.0222780000003695,
+  "sliceTransferPreparationMs": 8.231260999999904,
+  "sliceVertices": 1875,
+  "sliceTriangles": 3432,
+  "geometryBuildAndDispose": {
+    "samplesMs": [
+      67.73441600000024,
+      70.33701800000017,
+      67.26084600000013,
+      53.63421600000038,
+      39.82645800000046,
+      39.39370500000041,
+      30.618829000000005
+    ],
+    "medianMs": 53.63421600000038,
+    "maximumMs": 70.33701800000017
+  },
+  "fullReplayOverlayCpu": {
+    "samplesMs": [
+      5.818328000000292,
+      9.897277000000031,
+      2.6336739999997008,
+      2.654504999999517,
+      2.496817999999621,
+      2.9165979999997944,
+      2.133690999999999
+    ],
+    "medianMs": 2.654504999999517,
+    "maximumMs": 9.897277000000031
+  },
+  "frames": 801,
+  "medianOverlayCpuMsPerFrame": 0.003313988764044341,
+  "sourceHashes": {
+    "src/lib/cortex/scene.js": "680b41cdc40760ab9a9fdbfe8de7618eb976b69a2250217c2c68b79dc2d83a44",
+    "src/lib/cortex/electrical.js": "7ee6edb0b61b9a01ed784a5b237143b96fe277ab862483170f52e723a245dde6",
+    "src/lib/cortex/placement.js": "7e9e6768715d8a31c7d66917deebb8cca7b89bfb6d080e175837e2260e5b1b23",
+    "src/components/CortexLaboratory.jsx": "73cb6730a228725d4857b02bce91a9713253e8e700e7b703da381cc1c98b8add",
+    "src/components/CortexElectricalPanel.jsx": "1dad4c44148bf8b524c2f634644f5e79422b3f351be4201ef20beb82f87bfd44",
+    "scripts/benchmark-cortex-workbench.mjs": "6fd08e56c99483594c2fe07cf56f6900f4d15d3e5bfa22d1e4e9716a1baeb55a"
+  }
+}

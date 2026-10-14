@@ -15,6 +15,9 @@
 | `volume-conductor.js` | Analytic transfer coefficients and point-source fields | Unlabeled radius clamps |
 | `experiment.js` | Protocols, coupling, traces, diagnostics and serialization | Display-timed integration |
 | `worker.js` | Request/result lifecycle and progress | Random defaults or hidden quality reduction |
+| `electrical.js` | Cached applied-potential slices, explicit scales, replay indexing and run summaries | Neural volume inferred from contact traces |
+| `placement.js` | Shared solver membrane-exclusion diagnostics and apex-depth translation | New collision physics |
+| `examples.js` | Immutable complete experiments and verified example metadata | Hardcoded computed traces |
 | `scene.js` | Uniform µm→mm conversion, shared device mesh, physical rendering | Signal fabrication |
 | `CortexLaboratory.jsx` | Input, inspection, plots and local downloads | Physics hidden in UI callbacks |
 | `evidence.js` | Source IDs, evidence categories, parameter default provenance | A claim of validation |
@@ -41,15 +44,15 @@ any field/lead matrix. Moving the array changes distances and coefficients.
 Worker messages contain a monotonically increasing run ID. Edits are disabled
 while solving; cancellation terminates the worker and invalidates its ID. Any
 config change after a run hides stale traces and membrane colors. Replay changes
-only the inspected frame, at 10 biological ms per wall-clock second; it never
+only the inspected frame, at a selectable 0.25–10 biological ms per wall-clock second (default 1); it never
 reintegrates the equations. Benchmarks time only the solve, not replay.
 
 Completed workers remain available for subsequent runs. The active kernel may
 reuse a bounded four-entry cache of its own no-drive conditioned state, keyed by
-model, mesh, timestep and conditioning duration. Cancellation/error/reset/unmount
+model, mesh, timestep and conditioning duration. Cancellation/error/unmount
 terminate the worker and discard its cache. Reference-simulator solutions never
 enter this cache. Active runs require a Worker; passive runs retain the bounded
-main-thread fallback. Browser lifecycle behavior remains an interactive QA gate.
+main-thread fallback. Browser lifecycle behavior remains an explicitly unverified interactive QA item.
 
 ## Units and transforms
 
@@ -109,3 +112,25 @@ and transformed geometry only. Native NEURON imports the original SWC, applies
 the published directed axon processor and original NMODL, then supplies total
 membrane currents to actual LFPykit. Every exported physical-compartment sample
 is checked against hashed compressed fixtures; website CI needs only Node.
+
+## Electrical workbench display contract
+
+Display state is separate from experiment configuration: slice pose/extent/opacity,
+visibility, color limits, selected component, plot reference and replay frame never
+change solver coordinates or resolution. UI result downloads add a `visualization`
+object to the result bundle; numerical schema and arrays retain their semantics.
+CSV continues to contain both individual infinity-referenced contacts and A−B.
+The UI plot-reference selector is a display choice, independent of the historical
+configuration preferred-reference field.
+
+Each loaded example replaces the full experiment and clears the current result;
+one pinned result remains available. Comparisons enumerate changed fields and
+retain each run’s own configuration. Baseline results are never overlaid onto a
+changed geometry. Changing numerical input hides old electrical overlays and
+plots; cancel terminates the worker, and unmount disposes scene buffers and labels.
+Slice changes dispose replaced geometry/materials and reuse the device/neuron.
+
+Slice-transfer caches are keyed by world identity and plane configuration, bounded
+to four entries per live world. Result summaries use weak keys; trace paths are
+memoized independently of the replay cursor. Replaying an unchanged pulse interval
+reuses slice colors. No history scan is performed on every replay tick.

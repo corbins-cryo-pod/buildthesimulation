@@ -109,3 +109,37 @@ does not require thousands of neurons for this first scientific experiment.
 Larger future runs need chunked output, decimation with defined error, progressive
 computation and/or offline reference libraries. Do not retain unrestricted full
 multicompartment histories or giant generated artifacts in Git.
+
+## Electrical workbench measurements, 2026-10-14
+
+`node scripts/benchmark-cortex-workbench.mjs` profiles the verified shifted-array
+40 µA / 1000 µs example. `benchmarks/workbench-latest.json` retains exact config,
+source hashes and seven scene/overlay samples. These measurements ran sequentially
+after the large numerical study, on Node v24.19.0 / Intel Xeon Platinum 8573C.
+They time CPU numerical and scene-object work separately; there was no browser
+or WebGL draw. No FPS, DOM-layout, GPU or whole-browser memory claim follows.
+
+| Operation | Measured cost | Scope |
+| --- | ---: | --- |
+| Cold active experiment | 4,908 ms | 100 ms conditioning + 40 ms integration / diagnostics |
+| Same configuration, reused conditioning | 1,418 ms | Full 40 ms integration / diagnostics |
+| Retained result arrays | 18.387 MB | Ten histories, signals, events; excludes heap/GPU/JSON expansion |
+| One-time result summary/index | 2.02 ms | Signal peaks, soma peak and phase/gap sample indices |
+| Applied slice transfer preparation | 8.23 ms | 1,875 vertices; 3,432 retained triangles after exclusions |
+| World geometry creation + disposal, median of 7 | 53.63 ms | Three scene objects; no rendering |
+| All 801 overlay replay updates, median of 7 | 2.65 ms | Cached transfers/scales and unchanged-current slice colors |
+| Mean overlay CPU work per frame from that median | 0.00331 ms | Overlay only; excludes membrane mesh recoloring and plotting/rendering |
+
+The geometry preparation cost supports retaining device/neuron meshes while
+slices or visual opacity change. Transfers are cached by world and slice geometry
+with four configurations per live world. Replaying the same current/scale reuses
+vertex colors. Weak-key result summaries and memoized trace paths remove repeated
+whole-history scans; cursor changes do not regenerate plot polylines. Slice
+replacement disposes both geometry and material, and the scene removes projected
+DOM labels and handlers on teardown. No computational resolution was reduced.
+
+The full bounded refinement study has separate timings for 141 runs in
+REFINEMENT.md; those ran on a shared development host and are not isolated
+performance trials. Its coarse/fine waveform and threshold failures are accuracy
+findings, not performance gates. Browser rendering, label collisions, responsiveness,
+cancellation interaction and actual peak memory still require supported browser QA.

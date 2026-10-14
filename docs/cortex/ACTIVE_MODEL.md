@@ -149,7 +149,7 @@ threshold boundaries agree with native NEURON: 0.928125–0.9375 nA for a soma
 crossing, and 19.6875–20 µA for any-membrane crossing by 15 ms. These are specified
 numerical event criteria, not experimental rheobase or proof of axonal recruitment.
 
-The extracellular case uses r4-c4/r4-c5 with the standard 200 µs phases and 50 µs
+The extracellular case uses r4-c4/r4-c5 with the standard 200 µs phases and 100 µs
 gap; sensing sites are r3-c3/r3-c6. Exact configs and generator/package/source
 hashes are in `tests/fixtures/cortex-active-neuron.json` and
 `cortex-active-thresholds.json`. Original mechanism sources, offline generators

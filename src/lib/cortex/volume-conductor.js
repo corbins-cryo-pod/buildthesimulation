@@ -47,24 +47,27 @@ export function pointField(point, source, currentNa, sigma) {
     r2 = d.reduce((s, x) => s + x * x, 0);
   return { voltageMv, fieldVPerM: d.map((x) => (voltageMv * 1000 * x) / r2) };
 }
-export function leadField(nodes, contacts, sigma, approximation = 'line', exclusionUm = 25) {
-  return contacts.map((contact) =>
-    Float64Array.from(nodes, (node) => {
-      if (node.kind === 'junction') return 0;
-      const separation =
-        node.pathUm?.length > 1
+export function membraneDistanceUm(point, node) {
+  return node.pathUm?.length > 1
           ? Math.min(
               ...node.pathUm
                 .slice(1)
                 .map(
                   (p, j) =>
-                    segmentDistance(contact.positionUm, node.pathUm[j], p) -
+                    segmentDistance(point, node.pathUm[j], p) -
                     Math.max(node.pathDiameterUm[j], node.pathDiameterUm[j + 1]) / 2,
                 ),
             )
           : node.kind === 'soma'
-            ? distance(contact.positionUm, node.centerUm) - node.diameterUm / 2
-            : segmentDistance(contact.positionUm, node.startUm, node.endUm) - node.diameterUm / 2;
+            ? distance(point, node.centerUm) - node.diameterUm / 2
+            : segmentDistance(point, node.startUm, node.endUm) - node.diameterUm / 2;
+}
+
+export function leadField(nodes, contacts, sigma, approximation = 'line', exclusionUm = 25) {
+  return contacts.map((contact) =>
+    Float64Array.from(nodes, (node) => {
+      if (node.kind === 'junction') return 0;
+      const separation = membraneDistanceUm(contact.positionUm, node);
       if (separation < exclusionUm)
         throw new Error(
           `${contact.id} is within ${exclusionUm} µm of the modeled membrane. Move the implant; near-contact physics is not supported.`,
