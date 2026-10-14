@@ -1,5 +1,5 @@
 ---
-title: "Sewing-machine polymer electrode threads (UCSF and Berkeley)"
+title: "Sewn Polymer Electrode Array"
 order: 66
 pubDate: 2026-10-07
 updatedDate: 2026-10-07
