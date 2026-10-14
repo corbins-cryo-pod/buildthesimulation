@@ -101,3 +101,35 @@ quantization far below acceptance gates, rather than replacing full traces with
 snapshots or bundling large raw JSON. Keep current/gate sampling phases explicit.
 Retain the worker between completed runs for a bounded conditioning cache; cancel
 terminates it. Active runs require workers rather than blocking a CPU fallback.
+
+## C014 — Publish the verified electrical workbench; preserve unresolved science
+
+The 2026-10-14 request authorizes publication after appropriate checks even when
+supported browser tooling is unavailable, provided that gap is explicit. Recover
+unpushed checkpoint `1c8d104` and retain both existing engines and all unrelated
+main-branch work. Publish visualization, workflow, verified examples and the
+reproducible refinement findings through the existing GitHub/Cloudflare workflow.
+No unverified physical-model replacement is introduced. Failed refinement gates
+remain an isolated research finding, not a reason to loosen criteria or silently
+change physical resolution. Historical publication restrictions above describe
+earlier requests and do not override this authorization.
+
+## C015 — Separate quantities, fixed replay scales and conservative source holes
+
+Give Vₘ, contact outward current, applied tissue potential and individual ideal
+recording potential separate legends, units and controls. Start with applied
+point-source slices; defer neural volume, isopotentials and arrows until they add
+verified utility. Never infer a field from two traces. Cache geometry transfers
+and discard any plane cell intersecting an exclusion sphere; do not substitute
+a finite source radius or conceal a singularity. Automatic color limits stay
+fixed across an entire replay, including zero-current intervals.
+
+## C016 — Complete example resets and exact comparison provenance
+
+Ship immutable full configurations with measured outcomes, verification scope,
+source/configuration hashes and executable generators. Loading an example
+explicitly replaces all experimental settings and clears current results while
+retaining one pinned baseline. Surface changed fields and separate membrane mV,
+neural µV and artifact µV metrics; record the chosen display independently.
+Default replay slows to 1 biological ms/s and phase buttons choose actual saved
+samples. No output sample is fabricated to fill a missed pulse phase.

@@ -100,3 +100,22 @@ Primary documentation:
 - [NEURON extracellular](https://www.neuronsimulator.org/en/9.0.1/progref/modelspec/programmatic/mechanisms/mech.html#extracellular): prescribed-field circuit and section ownership.
 - [NEURON fast_imem](https://www.neuronsimulator.org/en/9.0.1/progref/simctrl/cvode.html#CVode.use_fast_imem): units, electrode-current exclusion and unique-node conservation.
 - [LFPykit API](https://lfpykit.readthedocs.io/en/latest/): CellGeometry, RecExtElectrode and PointSourcePotential; installed version 0.6.2 is pinned.
+
+## Electrical workbench continuation
+
+The existing full-trace native comparisons remain unchanged and are rerun in
+website tests. A read-only audit during the bounded refinement study confirmed
+all 20 installed dependency pins and reproduced committed 40/20/10 µm morphology
+geometry exactly from native sources. It checked generator, shared-input, source
+asset and compressed-trace hashes. This is additional provenance/geometry
+verification, not new independent dynamics for the finer meshes or long-phase
+candidate. New applied-slice calculations reuse the independently verified
+point-source transfer and compare directly with the ideal contact artifact at
+the same point, through phases and rest. Whole-cell singularity masking is a
+separate geometry-domain test and does not alter the physical transfer formula.
+
+Concrete reference gaps and exact audit output are retained in REFINEMENT.md and
+its report. The generators use pinned requirements and executable commands, but
+future native dynamics regeneration should additionally enforce actual package
+versions and retain compiler/compiled-mechanism provenance and wheel hashes.
+Those reproducibility improvements are not claimed complete here.

@@ -4,7 +4,7 @@ Route: `/cortex/`. Public methods: `/cortex/methods/`.
 Engine: `cortex-passive/0.1.0`. Experiment schema: `cortex-experiment/1`.
 Active engine: `cortex-active/0.2.0`; active experiment schema: `cortex-experiment/2`.
 
-This is a shared scientific foundation, not the completed platform.
+This is a shared scientific foundation and electrical workbench, not a completed population platform.
 It contains one representative cortical slab, one synthetic passive arbor, and
 the existing catalog's Utah 1.5 mm reference. Synaptic recording, intracellular
 current clamp and extracellular stimulation use the **same physical world**.
@@ -28,6 +28,27 @@ The passive reference remains the initial/default selection and regression model
 - Worker execution, cancellation, bounded CPU fallback, numerical tests and
   reproducible Node benchmarks; pinned NEURON 9.0.1 uniform/branched-cable references
   and independent LFPykit 0.6.2 coefficients and recordings for all three protocols.
+
+## Electrical workbench milestone
+
+The laboratory now follows Choose → Inspect → Run → Replay → Compare/export.
+A concise first-run guide, eight complete examples, separate physical-quantity
+legends, configurable applied-potential slices, labeled guide tips, shared
+near-contact diagnostics and explicit pial/apex-depth controls connect the
+geometry to the numerical experiment. Current input edits require rerunning;
+display edits update immediately. Default replay is 1 biological ms/s, with
+phase jumps and individual sample stepping.
+
+See [EXAMPLES](EXAMPLES.md), [REFINEMENT](REFINEMENT.md) and the public methods
+page. Example outcomes are reproduced calculations, not biological thresholds.
+The 3×3 refinement study preserves physical morphology/channel totals and
+reports failed gates transparently; no deeper physical model is released.
+
+```sh
+node scripts/verify-cortex-examples.mjs
+node scripts/cortex-refinement-study.mjs
+node scripts/benchmark-cortex-workbench.mjs
+```
 
 ## What does not work yet
 
@@ -116,6 +137,8 @@ internal-step crossing times and held-voltage channel trajectories.
 | [PARAMETERS](PARAMETERS.md) | Assumptions, defaults, uncertainty and provenance |
 | [VALIDATION](VALIDATION.md) | Verification matrix versus empirical validation |
 | [REFERENCE_COMPARISONS](REFERENCE_COMPARISONS.md) | Independent NEURON/LFPykit construction, results and limits |
+| [EXAMPLES](EXAMPLES.md) | Exact curated experiments, measured outcomes and reproduction |
+| [REFINEMENT](REFINEMENT.md) | Predeclared 3×3 convergence study and unresolved gates |
 | [ACTIVE_MODEL](ACTIVE_MODEL.md) | Human active model provenance, conventions and verification gates |
 | [PERFORMANCE](PERFORMANCE.md) | Measured cost, limits and benchmark procedure |
 | [DECISIONS](DECISIONS.md) | Accepted/rejected choices |

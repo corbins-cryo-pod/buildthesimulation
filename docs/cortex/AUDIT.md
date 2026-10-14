@@ -50,3 +50,20 @@ navigation active-state condition make the lab discoverable without redesigning
 the homepage or replacing prior routes.
 
 Baseline verification before new work: 71 Node tests passed.
+
+## 2026-10-14 electrical continuation audit
+
+Recovered clean, unpushed local checkpoint `1c8d104`; fetched current remote main
+`2a3c607` and verified its Cloudflare check before editing. Created feature branch
+`feature/cortex-scientific-workbench`. No unrelated content changes were present
+in the recovered checkout. The overlay review found vertex-only source masking
+could bridge excluded regions, coarse replay could skip phases, and unqualified
+shared color cues needed separate legends/scales. Those presentation/domain
+issues were addressed without changing cable integration or original mechanisms.
+The shared membrane-clearance extraction is regression-tested against solver
+rejection; body collision and near-contact physics remain unsupported.
+
+The scientific audit separates source geometry/channel invariance, numerical
+refinement, independent simulator references and empirical validation. Full
+findings and predeclared failed criteria are retained in REFINEMENT.md rather
+than presented as accuracy improvements the study did not achieve.
