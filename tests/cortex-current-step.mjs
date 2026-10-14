@@ -1,6 +1,5 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
 import { freshActiveConfig, freshConfig, validateConfig } from '../src/lib/cortex/config.js';
 import { getExampleConfig } from '../src/lib/cortex/examples.js';
 import { makeWorld } from '../src/lib/cortex/world.js';
@@ -53,9 +52,11 @@ test('coarser retained sampling preserves every internally detected spike and th
   const c = getExampleConfig('active-current-step-200ms');
   c.solver.sampleMs = 0.25;
   const r = runExperiment(c);
-  const report = JSON.parse(readFileSync(new URL('../docs/cortex/benchmarks/examples-latest.json', import.meta.url)));
-  const fine = report.cases.find(e => e.id === 'active-current-step-200ms');
-  assert.deepEqual(r.spikes, fine.somaSpikes);
+  // Compare both output intervals on the same runtime: serialized results from
+  // another CPU can differ at floating-point roundoff even with identical inputs.
+  // Keep exact equality for the property being tested; do not relax a tolerance.
+  const fine = runExperiment(getExampleConfig('active-current-step-200ms'));
+  assert.deepEqual(r.spikes, fine.spikes);
   assert.equal(currentStepSummary(r).spikeCount, 9);
   assert.equal(currentStepSummary(r).countRateHz, 45);
   assert.ok(currentStepSummary(r).lastIsiMs > currentStepSummary(r).firstIsiMs);
