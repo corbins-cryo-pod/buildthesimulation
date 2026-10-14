@@ -24,6 +24,7 @@ type DevicePhoto = {
   licenseUrl: string;
   changes?: string;
   versionNote?: string;
+  additionalViews?: DevicePhoto[];
 };
 
 type DeviceEntry = {
