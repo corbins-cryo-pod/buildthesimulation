@@ -14,7 +14,7 @@ const organization = n => entries.find(entry => entry.slug.startsWith(`${String(
 const atlasEntry = n => {const entry = organization(n); return {slug: entry.slug, title: entry.data.title, kind: entry.data.kind, region: 'Other', tags: [], interfaces: [], devices: [], applications: [], classification: classifyOrganization(entry)};};
 
 test('every organization has explicitly scoped evidence and authorization records', () => {
-  assert.equal(entries.length, 85);
+  assert.equal(entries.length, 86);
   assert.deepEqual(Object.keys(catalog).sort(), entries.map(entry => entry.slug).sort());
   for (const entry of entries) {
     const classification = classifyOrganization(entry);
