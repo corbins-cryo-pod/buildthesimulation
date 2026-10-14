@@ -1,6 +1,6 @@
 {
   "schemaVersion": "cortex-examples-verification/1",
-  "generatedAt": "2026-10-14T16:30:13.070Z",
+  "generatedAt": "2026-10-14T17:10:28.519Z",
   "status": "passed",
   "runtime": {
     "node": "v24.19.0",
@@ -18,7 +18,7 @@
   },
   "sourceHashes": {
     "scripts/verify-cortex-examples.mjs": "aebb7cf7b990fafed39962a25bd321f661a20659fddffaa043a6e663db0cc748",
-    "src/lib/cortex/examples.js": "a851561ccb43efe1476de644cac123423ec2525ce8e812d197b819018f49a4dd",
+    "src/lib/cortex/examples.js": "134351c4a7f45fd28fb527ff997e79bdbf22328bc438a40490f92f32c0cd91ad",
     "src/lib/cortex/config.js": "5ce2a7e7ed03cf22dfb996a76f4c7d8d017dc44c8de3a73558d340aa52e849ae",
     "src/lib/cortex/experiment.js": "09e73e77a4b6cb26219c7e892a7e2b78ad2beb32e6412e0cdfaf2607a3ccab53",
     "src/lib/cortex/world.js": "7cf606dc408e19010af6b8c14426aebe091be4bfe34680cfb2c9c6fcf08b4002",
@@ -36,368 +36,6 @@
     "recordingComponentViewChangesPhysics": false
   },
   "cases": [
-    {
-      "id": "passive-subthreshold",
-      "title": "Passive · small synaptic response",
-      "status": {
-        "status": "passed",
-        "decompositionResidualUv": 0,
-        "differentialResidualUv": 3.469446951953614e-18
-      },
-      "engineVersion": "cortex-passive/0.1.0",
-      "config": {
-        "schemaVersion": "cortex-experiment/1",
-        "anatomy": {
-          "widthUm": 6000,
-          "thicknessUm": 4000
-        },
-        "implant": {
-          "deviceId": "BTSD-0001",
-          "revision": 1,
-          "translationUm": [
-            0,
-            0,
-            0
-          ],
-          "rotationDeg": [
-            0,
-            0,
-            0
-          ]
-        },
-        "neuron": {
-          "somaUm": [
-            -100,
-            -200,
-            1500
-          ],
-          "segmentLengthUm": 40
-        },
-        "tissue": {
-          "conductivitySPerM": 0.3
-        },
-        "membrane": {
-          "capacitanceUfPerCm2": 1,
-          "resistanceOhmCm2": 20000,
-          "axialResistivityOhmCm": 150,
-          "restMv": -65
-        },
-        "recording": {
-          "contactIds": [
-            "r4-c4",
-            "r4-c5"
-          ],
-          "reference": "infinity",
-          "sourceModel": "line",
-          "exclusionUm": 25
-        },
-        "protocol": {
-          "mode": "synaptic-recording",
-          "startMs": 5,
-          "durationMs": 5,
-          "synapseNs": 1,
-          "synapseReversalMv": 0,
-          "injectionNa": 0.05,
-          "bathReturnUm": [
-            2000,
-            2000,
-            -500
-          ],
-          "amplitudeUa": 1,
-          "phaseUs": 200,
-          "gapUs": 100,
-          "sourceContactIds": [
-            "r3-c4",
-            "r3-c5"
-          ]
-        },
-        "solver": {
-          "dtMs": 0.025,
-          "durationMs": 40
-        }
-      },
-      "configSha256": "892dbe7485d668718f07b5edb9599f51756fe95e0ff85e8741717f232acb2d15",
-      "modelId": "canonical-passive-arbor/1",
-      "geometry": {
-        "somaCenterUm": [
-          -100,
-          -200,
-          1500
-        ],
-        "stimulatingContacts": [
-          {
-            "id": "r3-c4",
-            "positionUm": [
-              -200,
-              -600.0000000000001,
-              1500
-            ]
-          },
-          {
-            "id": "r3-c5",
-            "positionUm": [
-              200,
-              -600.0000000000001,
-              1500
-            ]
-          }
-        ],
-        "recordingContacts": [
-          {
-            "id": "r4-c4",
-            "positionUm": [
-              -200,
-              -200,
-              1500
-            ]
-          },
-          {
-            "id": "r4-c5",
-            "positionUm": [
-              200,
-              -200,
-              1500
-            ]
-          }
-        ]
-      },
-      "expectedBehavior": "A small depolarization spreads to the soma and produces a neural contact signal. This model has no active channels and cannot predict spikes; its applied contact potential is zero.",
-      "somaSpikes": null,
-      "somaMv": {
-        "min": -65.00000000000013,
-        "max": -63.51917435343123,
-        "peakAbsolute": 65.00000000000013,
-        "rms": 64.24583732823
-      },
-      "crossingCriterion": "Not defined for the passive model",
-      "localCrossingCount": null,
-      "localCrossings": [],
-      "selectedCompartments": [
-        {
-          "compartmentId": "soma",
-          "kind": "soma",
-          "centerUm": [
-            -100,
-            -200,
-            1500
-          ],
-          "membraneMv": {
-            "min": -65.00000000000013,
-            "max": -63.51917435343123,
-            "peakAbsolute": 65.00000000000013,
-            "rms": 64.24583732823
-          }
-        },
-        {
-          "compartmentId": "apical-14",
-          "kind": "dendrite",
-          "centerUm": [
-            -100,
-            -200,
-            910
-          ],
-          "membraneMv": {
-            "min": -65.00000000000084,
-            "max": -59.20048422124255,
-            "peakAbsolute": 65.00000000000084,
-            "rms": 63.623026573557794
-          }
-        }
-      ],
-      "recordings": [
-        {
-          "contactId": "r4-c4",
-          "reference": "infinity",
-          "units": "µV",
-          "neural": {
-            "min": -1.3340229416348378e-13,
-            "max": 0.057696069660911974,
-            "peakAbsolute": 0.057696069660911974,
-            "rms": 0.018057754495269293
-          },
-          "applied": {
-            "min": 0,
-            "max": 0,
-            "peakAbsolute": 0,
-            "rms": 0
-          },
-          "total": {
-            "min": -1.3340229416348378e-13,
-            "max": 0.057696069660911974,
-            "peakAbsolute": 0.057696069660911974,
-            "rms": 0.018057754495269293
-          }
-        },
-        {
-          "contactId": "r4-c5",
-          "reference": "infinity",
-          "units": "µV",
-          "neural": {
-            "min": -5.798270637273805e-14,
-            "max": 0.018778598940271365,
-            "peakAbsolute": 0.018778598940271365,
-            "rms": 0.005849736975314849
-          },
-          "applied": {
-            "min": 0,
-            "max": 0,
-            "peakAbsolute": 0,
-            "rms": 0
-          },
-          "total": {
-            "min": -5.798270637273805e-14,
-            "max": 0.018778598940271365,
-            "peakAbsolute": 0.018778598940271365,
-            "rms": 0.005849736975314849
-          }
-        }
-      ],
-      "bipolarRecordings": {
-        "neural": {
-          "min": -7.541958779074573e-14,
-          "max": 0.03891747072064061,
-          "peakAbsolute": 0.03891747072064061,
-          "rms": 0.01222263971001595
-        },
-        "applied": {
-          "min": 0,
-          "max": 0,
-          "peakAbsolute": 0,
-          "rms": 0
-        },
-        "total": {
-          "min": -7.541958779074573e-14,
-          "max": 0.03891747072064061,
-          "peakAbsolute": 0.03891747072064061,
-          "rms": 0.01222263971001595
-        }
-      },
-      "snapshots": [
-        {
-          "timeMs": 0,
-          "driveIntervalAverage": 0,
-          "driveUnits": "nS",
-          "somaMv": -65,
-          "neuralUv": [
-            0,
-            0
-          ],
-          "appliedUv": [
-            0,
-            0
-          ],
-          "totalUv": [
-            0,
-            0
-          ]
-        },
-        {
-          "timeMs": 5.000000000000001,
-          "driveIntervalAverage": 3.552713678800501e-14,
-          "driveUnits": "nS",
-          "somaMv": -65.00000000000013,
-          "neuralUv": [
-            -3.0379683770843052e-15,
-            -2.1299146545568304e-15
-          ],
-          "appliedUv": [
-            0,
-            0
-          ],
-          "totalUv": [
-            -3.0379683770843052e-15,
-            -2.1299146545568304e-15
-          ]
-        },
-        {
-          "timeMs": 6.000000000000001,
-          "driveIntervalAverage": 1.0000000000000144,
-          "driveUnits": "nS",
-          "somaMv": -64.94931632631548,
-          "neuralUv": [
-            0.02811710659003857,
-            0.010195498073500014
-          ],
-          "appliedUv": [
-            0,
-            0
-          ],
-          "totalUv": [
-            0.02811710659003857,
-            0.010195498073500014
-          ]
-        },
-        {
-          "timeMs": 10.000000000000002,
-          "driveIntervalAverage": 0.9999999999999432,
-          "driveUnits": "nS",
-          "somaMv": -63.87642621491199,
-          "neuralUv": [
-            0.057696069660911974,
-            0.018778598940271365
-          ],
-          "appliedUv": [
-            0,
-            0
-          ],
-          "totalUv": [
-            0.057696069660911974,
-            0.018778598940271365
-          ]
-        },
-        {
-          "timeMs": 15.000000000000002,
-          "driveIntervalAverage": 0,
-          "driveUnits": "nS",
-          "somaMv": -63.579361786361126,
-          "neuralUv": [
-            0.004070898257043516,
-            0.0012906707895623596
-          ],
-          "appliedUv": [
-            0,
-            0
-          ],
-          "totalUv": [
-            0.004070898257043516,
-            0.0012906707895623596
-          ]
-        },
-        {
-          "timeMs": 40,
-          "driveIntervalAverage": 0,
-          "driveUnits": "nS",
-          "somaMv": -64.57647286681933,
-          "neuralUv": [
-            1.760484673137952e-8,
-            5.582206566438321e-9
-          ],
-          "appliedUv": [
-            0,
-            0
-          ],
-          "totalUv": [
-            1.760484673137952e-8,
-            5.582206566438321e-9
-          ]
-        }
-      ],
-      "diagnostics": {
-        "maxConservationResidualNa": 1.1524054009236923e-13,
-        "maxKclResidualNa": 4.0732943683589526e-14,
-        "maxExcursionMv": 5.799515778757453,
-        "signedChargeNc": 0,
-        "cathodicChargeNc": 0,
-        "anodicChargeNc": 0,
-        "elapsedMs": 114.924692,
-        "outputBytes": 1344840,
-        "frames": 1601,
-        "compartments": 48,
-        "wallSecondsPerBiologicalSecond": 2.8731172999999997
-      },
-      "conditioning": "passive equilibrium",
-      "warnings": []
-    },
     {
       "id": "active-intracellular-subthreshold",
       "title": "Human cell · subthreshold current",
@@ -761,11 +399,11 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 0,
         "anodicChargeNc": 0,
-        "elapsedMs": 10328.886215,
+        "elapsedMs": 5416.768593,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 258.222155375,
+        "wallSecondsPerBiologicalSecond": 135.41921482499998,
         "firstThresholdCrossing": null,
         "spikeCount": 0
       },
@@ -2566,11 +2204,11 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 0,
         "anodicChargeNc": 0,
-        "elapsedMs": 1726.5047559999985,
+        "elapsedMs": 1521.586222,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 43.16261889999996,
+        "wallSecondsPerBiologicalSecond": 38.03965555,
         "firstThresholdCrossing": {
           "timeMs": 9.020456068584641,
           "compartmentId": "axon_stub[1]:0",
@@ -4427,11 +4065,11 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 0,
         "anodicChargeNc": 0,
-        "elapsedMs": 9054.402922999998,
+        "elapsedMs": 9793.124091999998,
         "outputBytes": 57405240,
         "frames": 2501,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 36.21761169199999,
+        "wallSecondsPerBiologicalSecond": 39.17249636799999,
         "firstThresholdCrossing": {
           "timeMs": 42.963875682474395,
           "compartmentId": "axon_stub[1]:0",
@@ -6324,11 +5962,11 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 0,
         "anodicChargeNc": 0,
-        "elapsedMs": 22412.651872,
+        "elapsedMs": 25728.398238,
         "outputBytes": 55110040,
         "frames": 2401,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 37.35441978666666,
+        "wallSecondsPerBiologicalSecond": 42.88066373,
         "firstThresholdCrossing": {
           "timeMs": 73.04576386126861,
           "compartmentId": "axon_stub[1]:0",
@@ -6854,11 +6492,11 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 7.9999999999998295,
         "anodicChargeNc": 7.9999999999998295,
-        "elapsedMs": 2005.357925000004,
+        "elapsedMs": 1709.5668730000034,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 50.133948125000096,
+        "wallSecondsPerBiologicalSecond": 42.739171825000085,
         "firstThresholdCrossing": {
           "timeMs": 5.058694759896566,
           "compartmentId": "apic[40]:1",
@@ -8639,11 +8277,11 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 39.99999999999915,
         "anodicChargeNc": 39.99999999999915,
-        "elapsedMs": 1524.6826089999959,
+        "elapsedMs": 1662.0196269999942,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 38.1170652249999,
+        "wallSecondsPerBiologicalSecond": 41.55049067499986,
         "firstThresholdCrossing": {
           "timeMs": 5.379964638768679,
           "compartmentId": "dend[11]:0",
@@ -10189,11 +9827,11 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 39.99999999999915,
         "anodicChargeNc": 39.99999999999915,
-        "elapsedMs": 1552.840866999999,
+        "elapsedMs": 1561.0422240000044,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 38.821021674999976,
+        "wallSecondsPerBiologicalSecond": 39.026055600000106,
         "firstThresholdCrossing": {
           "timeMs": 5.058694759896566,
           "compartmentId": "apic[40]:1",
@@ -11924,11 +11562,11 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 39.99999999999915,
         "anodicChargeNc": 39.99999999999915,
-        "elapsedMs": 1602.910812000002,
+        "elapsedMs": 2261.833832000004,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 40.072770300000045,
+        "wallSecondsPerBiologicalSecond": 56.545845800000095,
         "firstThresholdCrossing": {
           "timeMs": 5.127866143142854,
           "compartmentId": "apic[35]:2",
@@ -12454,11 +12092,11 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 7.9999999999998295,
         "anodicChargeNc": 7.9999999999998295,
-        "elapsedMs": 1733.4323800000057,
+        "elapsedMs": 1686.2176889999973,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 43.33580950000014,
+        "wallSecondsPerBiologicalSecond": 42.15544222499993,
         "firstThresholdCrossing": {
           "timeMs": 5.058694759896566,
           "compartmentId": "apic[40]:1",

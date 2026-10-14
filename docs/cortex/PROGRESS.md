@@ -241,3 +241,10 @@ The 3D workspace now displays enlarged stimulating-tip markers colored by signed
 The tissue probes use the same transformed point-contact positions and homogeneous conductor transfer as the solver. Near-source triangles are excluded; no finite contact surface or electrode impedance is inferred. Tissue sections disappear at zero pulse current. Stale results hide the entire overlay. The checkbox disables it. The passive and active solvers and their exports are unchanged.
 
 Verification: transformed-source formula and exclusion tests; replay polarity, component, zero-drive and stale/disabled visibility tests. Interactive browser QA remains pending because the supported browser runner is unavailable.
+
+
+## 2026-10-14 — Human-only laboratory
+
+Retired the selectable simplified passive arbor and its example. Human cell is the initial/reset model; all nine curated experiments use it. Added an active-only configuration-import boundary and a disclosed retired-URL redirect. Updated public methods, model labels and default parameter explanations to describe the actual active physiology. Original mathematical passive kernels/fixtures remain offline regression references. Active configurations and solver mechanisms are unchanged; the examples report is reproduced after registry cleanup. Browser interaction QA remains unavailable.
+
+Verification: all 162 regression tests passed; all nine human examples reproduced; 454 pages built; static artifact checks confirm the selected human default and absence of the retired model controls. Publication uses the existing GitHub/Cloudflare workflow.
