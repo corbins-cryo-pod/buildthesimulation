@@ -1,15 +1,5 @@
 export const ACTIVE_MODEL_ID = 'allen-human-571654895/1';
-export const PASSIVE_MODEL_ID = 'canonical-passive-arbor/1';
 export const modelRegistry = [
-  {
-    id: PASSIVE_MODEL_ID,
-    label: 'Synthetic passive arbor',
-    species: 'Synthetic',
-    cellType: 'Passive tree',
-    source: '/cortex/methods/',
-    scope:
-      'Analytical and fixed NEURON/LFPykit checks; no active channels or experimental validation.',
-  },
   {
     id: ACTIVE_MODEL_ID,
     label: 'Human temporal L2 spiny cell · 571654895',

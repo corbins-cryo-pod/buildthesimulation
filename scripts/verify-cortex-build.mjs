@@ -9,8 +9,11 @@ import {
 const html = readFileSync("dist/cortex/index.html", "utf8");
 const methods = readFileSync("dist/cortex/methods/index.html", "utf8");
 assert.match(html, /From membrane to contact/);
-assert.match(html, /Exploratory passive model/);
-assert.match(html, /no experimental validation/);
+assert.match(html, /Human temporal cell · published active model/);
+assert.doesNotMatch(html, /Exploratory passive model|Synthetic passive arbor|Passive · small synaptic response/);
+assert.match(html, /<option selected value="active-intracellular-spike">/);
+assert.doesNotMatch(html, /Neuron model<select/);
+assert.match(html, /no independent experimental validation/);
 assert.match(html, /cortex\/methods/);
 assert.match(html, /client="load"/);
 assert.match(methods, /NEURON 9\.0\.1/);

@@ -1,23 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "preact/hooks";
-import {
-  freshConfig,
-  freshActiveConfig,
-  ENGINE_VERSION,
-  ACTIVE_ENGINE_VERSION,
-} from "../lib/cortex/config.js";
+import { ACTIVE_ENGINE_VERSION } from "../lib/cortex/config.js";
 import { makeWorld, placedContacts } from "../lib/cortex/world.js";
 import { getDeviceModel } from "../lib/devices/catalog.js";
+import { modelRegistry } from "../lib/cortex/model-registry.js";
 import {
-  modelRegistry,
-  ACTIVE_MODEL_ID,
-  PASSIVE_MODEL_ID,
-} from "../lib/cortex/model-registry.js";
-import {
-  runExperiment,
   encodeJson,
   resultBundle,
   resultCsv,
-  parseConfig,
 } from "../lib/cortex/experiment.js";
 import CortexElectricalPanel from "./CortexElectricalPanel.jsx";
 import {
@@ -30,6 +19,7 @@ import {
   placementReport,
   translationForTipDepth,
 } from "../lib/cortex/placement.js";
+import { parseLaboratoryConfig } from "../lib/cortex/laboratory.js";
 import { currentStepSummary, adjacentSpikeFrame } from "../lib/cortex/current-step.js";
 import { EXAMPLES, getExampleConfig } from "../lib/cortex/examples.js";
 import "../styles/cortex-laboratory.css";
@@ -186,7 +176,7 @@ function Trace({ time, series, unit, title, frame = 0, spikes = [] }) {
   );
 }
 export default function CortexLaboratory() {
-  const [config, setConfig] = useState(freshConfig),
+  const [config, setConfig] = useState(() => getExampleConfig("active-intracellular-spike")),
     [result, setResult] = useState(null),
     [pinned, setPinned] = useState(null);
   const [running, setRunning] = useState(false),
@@ -206,7 +196,7 @@ export default function CortexLaboratory() {
     [plotReference, setPlotReference] = useState("infinity"),
     [visual, setVisual] = useState(() => structuredClone(DEFAULT_ELECTRICAL)),
     [replaySpeed, setReplaySpeed] = useState(1),
-    [exampleId, setExampleId] = useState("passive-subthreshold"),
+    [exampleId, setExampleId] = useState("active-intracellular-spike"),
     [guideOpen, setGuideOpen] = useState(true);
   const chosenExample = EXAMPLES.find((e) => e.id === exampleId);
   const displayOptions = useMemo(
@@ -228,9 +218,9 @@ export default function CortexLaboratory() {
       return { world: null, error: e.message };
     }
   }, [config]);
-  const active = !!config.neuron.modelId,
+  const active = true,
     model = modelRegistry.find(
-      (m) => m.id === (config.neuron.modelId ?? PASSIVE_MODEL_ID),
+      (m) => m.id === (config.neuron.modelId),
     );
   const world = state.world,
     stale = !!result && encodeJson(result.config) !== encodeJson(config),
@@ -360,18 +350,7 @@ export default function CortexLaboratory() {
           },
         );
       } catch {
-        if (
-          valid.neuron.modelId ||
-          Math.ceil(valid.solver.durationMs / valid.solver.dtMs) > 5000
-        ) {
-          fail(
-            "Workers are unavailable. The active model requires a worker; passive CPU fallback supports at most 5,000 steps.",
-          );
-          return;
-        }
-        setViewStatus("Bounded main-thread CPU fallback");
-        await new Promise((resolve) => setTimeout(resolve, 0));
-        if (id === runId.current) finish(runExperiment(valid));
+        fail("Workers are unavailable. This neuron requires a browser worker; use a browser with worker support and reload.");
         return;
       }
       worker.current.onmessage = ({ data }) => {
@@ -397,7 +376,10 @@ export default function CortexLaboratory() {
     const requestedExample = new URLSearchParams(window.location.search).get(
       "example",
     );
-    if (EXAMPLES.some((e) => e.id === requestedExample))
+    if (requestedExample === "passive-subthreshold") {
+      loadExample("active-intracellular-subthreshold");
+      setRunStage("The simplified neuron was retired. Loaded the human cell subthreshold example; inspect its settings, then run.");
+    } else if (EXAMPLES.some((e) => e.id === requestedExample))
       loadExample(requestedExample);
     let cancelled = false;
     import("../lib/cortex/scene.js")
@@ -537,14 +519,10 @@ export default function CortexLaboratory() {
       </header>
       <div class="cx-scope">
         <strong>
-          {active
-            ? "Human temporal cell · published active model"
-            : "Exploratory passive model"}
+          Human temporal cell · published active model
         </strong>
         <span>
-          {active
-            ? "Reconstructed dendrites · synthetic axon stub · no independent experimental validation"
-            : "Numerical verification · no experimental validation · no action potentials"}
+          Reconstructed dendrites · synthetic axon stub · no independent experimental validation
         </span>
       </div>
       <nav class="cx-workflow" aria-label="Laboratory workflow">
@@ -574,7 +552,8 @@ export default function CortexLaboratory() {
             of numerical conditioning.
           </li>
           <li>
-            Use <b>Phase 1</b> and <b>Phase 2</b>, then replay slowly. Compare
+            Replay slowly and use <b>Next spike</b> for soma events. Array
+            examples also offer <b>Phase 1</b> and <b>Phase 2</b>. Compare
             membrane mV, contact µV and source µA.
           </li>
           <li>
@@ -592,7 +571,7 @@ export default function CortexLaboratory() {
         <aside class="cx-config">
           <fieldset disabled={running}>
             <details open>
-              <summary id="cx-choose">1 / Choose neuron & example</summary>
+              <summary id="cx-choose">1 / Choose example</summary>
               <label>
                 Curated example
                 <select
@@ -631,35 +610,9 @@ export default function CortexLaboratory() {
                   Save exact example configuration
                 </button>
               </details>
-              <label>
-                Neuron model
-                <select
-                  value={config.neuron.modelId ?? PASSIVE_MODEL_ID}
-                  onChange={(e) => {
-                    setConfig(
-                      e.currentTarget.value === ACTIVE_MODEL_ID
-                        ? freshActiveConfig()
-                        : freshConfig(),
-                    );
-                    setSelected(0);
-                    setPlaying(false);
-                    setResult(null);
-                    setError("");
-                    setExampleId(
-                      e.currentTarget.value === ACTIVE_MODEL_ID
-                        ? "active-intracellular-spike"
-                        : "passive-subthreshold",
-                    );
-                  }}
-                >
-                  {modelRegistry.map((m) => (
-                    <option value={m.id}>{m.label}</option>
-                  ))}
-                </select>
-              </label>
+              <p class="cx-device-name">Neuron model · {model.label}</p>
               <p class="cx-muted">
-                Changing the model resets the complete experiment.
-                {model?.scope} <a href={model?.source}>Model source →</a>
+                {model.scope} <a href={model.source}>Model source →</a>
               </p>
               {active && (
                 <p class="cx-muted">
@@ -923,9 +876,7 @@ export default function CortexLaboratory() {
             <details>
               <summary>Neuron placement & advanced physiology</summary>
               <p class="cx-muted">
-                {active
-                  ? "Human middle temporal layer-2 spiny dendrites in an illustrative slab; the published model uses a synthetic active axon stub. Placement depth does not change its cortical identity."
-                  : "Representative slab, synthetic layer fractions and one idealized passive arbor."}
+                Human middle temporal layer-2 spiny dendrites in an illustrative slab; the published model uses a synthetic active axon stub. Placement depth does not change its cortical identity.
               </p>
               <NumberControl
                 label="Cortical thickness · µm"
@@ -1098,7 +1049,8 @@ export default function CortexLaboratory() {
               <button
                 type="button"
                 onClick={() => {
-                  setConfig(active ? freshActiveConfig() : freshConfig());
+                  setConfig(getExampleConfig("active-intracellular-spike"));
+                  setExampleId("active-intracellular-spike");
                   setResult(null);
                   setFrame(0);
                   setError("");
@@ -1106,7 +1058,7 @@ export default function CortexLaboratory() {
                   setPlaying(false);
                 }}
               >
-                Reset selected model configuration
+                Reset human cell configuration
               </button>
               <button
                 type="button"
@@ -1135,7 +1087,7 @@ export default function CortexLaboratory() {
                   try {
                     if (file.size > 100000)
                       throw new Error("Configuration exceeds 100 KB.");
-                    const next = parseConfig(await file.text());
+                    const next = parseLaboratoryConfig(await file.text());
                     makeWorld(next);
                     setConfig(next);
                     setResult(null);
@@ -1850,9 +1802,9 @@ export default function CortexLaboratory() {
                       <tr>
                         <td>Neuron model</td>
                         <td>
-                          {pinned.config.neuron.modelId ?? PASSIVE_MODEL_ID}
+                          {pinned.config.neuron.modelId}
                         </td>
-                        <td>{config.neuron.modelId ?? PASSIVE_MODEL_ID}</td>
+                        <td>{config.neuron.modelId}</td>
                       </tr>
                       <tr>
                         <td>Implant X / µm</td>
@@ -1885,8 +1837,7 @@ export default function CortexLaboratory() {
                     </tbody>
                   </table>
                   <p class="cx-muted">
-                    An unavailable spike detector is shown as — for the passive
-                    model; zero means an active detector found no event.
+                    Zero means the soma detector found no event. All runs use the same human cell model.
                   </p>
                   {sameTimeGrid ? (
                     <>
@@ -1959,9 +1910,7 @@ export default function CortexLaboratory() {
           <details class="cx-inspector">
             <summary>Model limits & next steps</summary>
             <p>
-              {active
-                ? "This model has human reconstructed dendrites, fitted active channels and a synthetic axon stub. Computed threshold crossings depend on this model and placement."
-                : "This reference is a passive synthetic arbor without action potentials."}{" "}
+              This model has human reconstructed dendrites, fitted active channels and a synthetic axon stub. Computed threshold crossings depend on this model and placement.{" "}
               Population activity, layered conductivity, finite exposed
               contacts, acquisition electronics, mechanics and independent
               experimental validation remain outside this milestone.
@@ -1973,7 +1922,7 @@ export default function CortexLaboratory() {
             </p>
             <a href="/cortex/methods/">Read the scientific scope →</a>
             <p class="cx-muted">
-              {active ? ACTIVE_ENGINE_VERSION : ENGINE_VERSION}
+              {ACTIVE_ENGINE_VERSION}
             </p>
           </details>
         </aside>

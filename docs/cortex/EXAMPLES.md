@@ -1,6 +1,6 @@
 # Reproducible laboratory examples
 
-`src/lib/cortex/examples.js` contains ten curated, immutable **complete**
+`src/lib/cortex/examples.js` contains nine curated human-cell, immutable **complete**
 experiment configurations. Loading one resets all experimental settings,
 including model, positions/orientations, contacts, waveform, reference and
 numerical resolution; it clears the current result and preserves a separately
@@ -34,7 +34,6 @@ electrical boundary at the pia or illustrative cortical layers.
 
 | Example | Exact input or controlled change | Soma event (ms) | Local crossing count | Peak sampled soma (mV) |
 | --- | --- | ---: | ---: | ---: |
-| Passive small response | 1 nS distal apical conductance, 5–10 ms; passive dt 0.025 ms | Not defined | Not defined | −63.5192 |
 | Active intracellular below threshold | +0.05 nA, 5–10 ms | None | 0 | −91.0188 |
 | Active intracellular spike | +1.2 nA, 5–10 ms | 9.29395 | 141 | +23.6825 |
 | Extracellular local crossings | 40 µA, 200 µs phases, 100 µs gap; unshifted array | None | 10 | −87.2025 |
@@ -96,7 +95,7 @@ node scripts/verify-cortex-examples.mjs
 node --test tests/cortex-examples.mjs
 ```
 
-The generator executes all ten examples, checks the declared qualitative
+The generator executes all nine human-cell examples, checks the declared qualitative
 outcomes, finiteness, current conservation/KCL (<1e−8 nA), per-contact charge
 (<1e−10 nC error), signal decomposition/reference (<1e−10 µV error), output
 budgets and the controlled applied-artifact comparisons. It writes actual
@@ -165,3 +164,16 @@ counts/times use all internal timesteps regardless of retained frame spacing.
 Native NEURON/LFPykit long-step verification and reproducible commands are recorded
 in CURRENT_STEPS.md. These cases do not resolve the earlier spatial-refinement
 failures and do not simulate pipette resistance, clamp electronics or a population.
+
+
+## Human-only laboratory (2026-10-14)
+
+The simplified passive example is retired. All nine current examples use the
+same published human model and preserve their prior exact active configurations.
+The laboratory starts with `active-intracellular-spike`; reset restores it.
+An old `?example=passive-subthreshold` link now loads the human intracellular
+subthreshold example with an explicit retirement notice. It does not promise
+matching passive dynamics. Version-1 passive configuration imports are rejected
+with guidance; they are never silently relabeled as human active experiments.
+Historical passive measurements and independent fixtures are retained as offline
+mathematical verification records, not offered in the interactive interface.

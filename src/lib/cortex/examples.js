@@ -1,9 +1,9 @@
 import { validateConfig } from './config.js';
-import { ACTIVE_MODEL_ID, PASSIVE_MODEL_ID } from './model-registry.js';
+import { ACTIVE_MODEL_ID } from './model-registry.js';
 
 // Curated experiments are full configurations, not patches over mutable UI state.
 // Keep these values explicit: changing a future default must not change an example.
-const passive = {
+const base = {
   schemaVersion: 'cortex-experiment/1',
   anatomy: { widthUm: 6000, thicknessUm: 4000 },
   implant: {
@@ -42,7 +42,7 @@ const passive = {
   solver: { dtMs: 0.025, durationMs: 40 },
 };
 const active = {
-  ...structuredClone(passive),
+  ...structuredClone(base),
   schemaVersion: 'cortex-experiment/2',
   neuron: {
     modelId: ACTIVE_MODEL_ID,
@@ -51,7 +51,7 @@ const active = {
     segmentLengthUm: 40,
   },
   membrane: { sourceModelId: ACTIVE_MODEL_ID, temperatureC: 34 },
-  protocol: { ...structuredClone(passive.protocol), mode: 'intracellular-current', injectionNa: 1.2 },
+  protocol: { ...structuredClone(base.protocol), mode: 'intracellular-current', injectionNa: 1.2 },
   solver: { dtMs: 0.005, durationMs: 40, sampleMs: 0.05, settleMs: 100 },
 };
 const intracellularBelow = structuredClone(active);
@@ -90,7 +90,7 @@ function freezeDeep(value) {
 
 const example = (entry) => ({
   ...entry,
-  modelId: entry.config.neuron.modelId ?? PASSIVE_MODEL_ID,
+  modelId: entry.config.neuron.modelId,
   config: validateConfig(entry.config),
   resetDisclosure: EXAMPLE_RESET_DISCLOSURE,
   verification: EXAMPLE_VERIFICATION_SCOPE,
@@ -98,16 +98,6 @@ const example = (entry) => ({
 });
 
 export const EXAMPLES = freezeDeep([
-  example({
-    id: 'passive-subthreshold',
-    title: 'Passive · small synaptic response',
-    purpose: 'Begin with a small response in the synthetic passive arbor.',
-    description: 'A 1 nS, 5 ms conductance input begins at 5 ms on the fixed distal apical patch. No external stimulating current is applied.',
-    expectedBehavior: 'A small depolarization spreads to the soma and produces a neural contact signal. This model has no active channels and cannot predict spikes; its applied contact potential is zero.',
-    config: passive,
-    view: { recordingComponent: 'neural' },
-    outcome: { somaSpikes: null, localCrossings: 'not-defined', appliedSignal: 'zero' },
-  }),
   example({
     id: 'active-intracellular-subthreshold',
     title: 'Human cell · subthreshold current',

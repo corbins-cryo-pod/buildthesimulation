@@ -1,17 +1,16 @@
 # Cortex Laboratory
 
 Route: `/cortex/`. Public methods: `/cortex/methods/`.
-Engine: `cortex-passive/0.1.0`. Experiment schema: `cortex-experiment/1`.
 Active engine: `cortex-active/0.2.0`; active experiment schema: `cortex-experiment/2`.
 
 This is a shared scientific foundation and electrical workbench, not a completed population platform.
-It contains one representative cortical slab, one synthetic passive arbor, and
+It contains one representative cortical slab, one published human temporal cell, and
 the existing catalog's Utah 1.5 mm reference. Synaptic recording, intracellular
 current clamp and extracellular stimulation use the **same physical world**.
-The second milestone adds the published human temporal layer-2 spiny specimen
+The laboratory uses human temporal layer-2 spiny specimen
 571654895: reconstructed dendrites, fitted section parameters, nine channel
 mechanisms, calcium dynamics and the published synthetic 60 µm axon stub.
-The passive reference remains the initial/default selection and regression model.
+The human cell is the only selectable model and the default for initial load and reset. The simplified passive arbor is retired from the interactive laboratory; its mathematical kernel and original fixtures remain offline regression references.
 
 ## What works
 
@@ -20,7 +19,7 @@ The passive reference remains the initial/default selection and regression model
   bar; compartment, contact-coordinate and soma-distance inspection.
 - Catalog-based implant translation/rotation/depth; physical sites remain
   separate from simultaneous channels and unknown channel assignment.
-- Passive branched cable, total outward membrane currents, point/line-source
+- Human active cable, total outward membrane currents, point/line-source
   recordings, explicit source/return stimulation and computed field section.
 - Two ideal recording sites, infinity/bipolar reference, separated neural and
   applied-source signals, replay/step, pinned-run comparison, configuration
@@ -32,7 +31,7 @@ The passive reference remains the initial/default selection and regression model
 ## Electrical workbench milestone
 
 The laboratory now follows Choose → Inspect → Run → Replay → Compare/export.
-A concise first-run guide, eight complete examples, separate physical-quantity
+A concise first-run guide, nine complete human-cell examples, separate physical-quantity
 legends, configurable applied-potential slices, labeled guide tips, shared
 near-contact diagnostics and explicit pial/apex-depth controls connect the
 geometry to the numerical experiment. Current input edits require rerunning;

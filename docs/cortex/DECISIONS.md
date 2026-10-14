@@ -143,3 +143,8 @@ or alter the fitted channel model to force repetitive spikes. Keep internal soma
 event detection independent of output sampling. Show during-step counts/rates,
 latency and intervals separately from post-step events. Preserve original short
 examples and native fixtures; add separate long-step NEURON/LFPykit fixtures.
+
+
+## C018 — Retire the simplified neuron from the interactive laboratory
+
+The user explicitly requested removing the simplified neuron. Expose only the published human cell in the model registry and every curated example; initialize and reset to its intracellular-spike example. Remove the model switch and passive CPU fallback. Reject historical passive imports without implicit migration, and disclose redirection of the retired example URL. Preserve offline mathematical reference fixtures and unchanged active physiology.
