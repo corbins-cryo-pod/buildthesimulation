@@ -35,10 +35,6 @@ export const deviceFamilies = [
     175: 'Motif clinical-program record; use the research gallery only as a dated prototype reference.',
     117: '2024 published research hardware, with the photographed implant and its 10 mm scale.'
   } },
-  { id: 'argus-ii', title: 'Argus II', featured: 38, members: [38,165], kind: 'Engineering and regulatory records', recordsLabel: 'Related system records', summary: 'Two sheets document the same Argus II system. The implant gallery appears once on the engineering sheet; the other sheet records regulatory context.', changes: {
-    38: 'Engineering sheet and credited implant gallery.',
-    165: 'Regulatory evidence sheet for the same system; not a second hardware generation.'
-  } },
   { id: 'singer-two-film', title: 'Two-film ME stimulators', featured: 129, members: [129,128], kind: 'Two configurations in one 2020 study', summary: 'The fully implanted PZT assembly is highlighted. The external PVDF headstage is a different configuration, not an earlier publication or an obsolete product.', changes: {
     129: 'Fully implanted PZT/Metglas assembly with stereotrode; 175 mm³ whole assembly.',
     128: 'External PVDF/Metglas headstage connected to an implanted array; 500 mm³ whole assembly.'
