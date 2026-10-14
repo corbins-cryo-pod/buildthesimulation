@@ -1,5 +1,5 @@
 ---
-title: "Active micro-ECoG array (196 sites, auditory cortex)"
+title: "196-Channel Active Micro-ECoG"
 order: 65
 pubDate: 2026-10-07
 updatedDate: 2026-10-07
