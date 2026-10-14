@@ -1,5 +1,5 @@
 ---
-title: "Implantable wireless neural interface (Brown, 2013)"
+title: "Brown Wireless Neural Interface"
 order: 32
 pubDate: 2026-10-06
 updatedDate: 2026-10-07
