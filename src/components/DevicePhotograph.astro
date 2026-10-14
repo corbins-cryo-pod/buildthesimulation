@@ -5,7 +5,7 @@ const dialogId = `photo-${deviceId.toLowerCase().replace(/[^a-z0-9-]/g, '-')}`;
 
 <implant-photograph>
   <figure class="implant-photo">
-    <div class="photo-label"><span>Physical interface</span><span>{photo.kind}</span></div>
+    <div class="photo-label"><span>{photo.kind === 'Source figure' ? 'Source reference' : 'Physical interface'}</span><span>{photo.kind}</span></div>
     <a class="photo-open" href={photo.src} target="_blank" rel="noopener" data-photo-open aria-haspopup="dialog" aria-controls={dialogId} aria-label={`Enlarge image of ${title}`}>
       <img src={photo.src} srcset={photo.width > photo.thumbnailWidth ? `${photo.thumbnail} ${photo.thumbnailWidth}w, ${photo.src} ${photo.width}w` : undefined} sizes="(max-width: 680px) calc(100vw - 72px), 760px" width={photo.width} height={photo.height} alt={photo.alt} loading={priority ? undefined : 'lazy'} decoding="async" fetchpriority={priority ? 'high' : 'auto'} />
       <span class="photo-enlarge" aria-hidden="true">View closer <span>→</span></span>
@@ -13,6 +13,8 @@ const dialogId = `photo-${deviceId.toLowerCase().replace(/[^a-z0-9-]/g, '-')}`;
     <figcaption>
       <p class="photo-caption">{photo.caption}</p>
       {photo.versionNote && <p class="photo-version">{photo.versionNote}</p>}
+      {photo.scaleDescription && <p class="photo-detail"><strong>Scale:</strong> {photo.scaleDescription}</p>}
+      {photo.geometryNote && <p class="photo-detail">{photo.geometryNote}</p>}
       <details class="photo-provenance">
         <summary>Image credit &amp; source</summary>
         <p>{photo.credit} · <a href={photo.sourceUrl} target="_blank" rel="noopener noreferrer">{photo.sourceLabel}</a> · <a href={photo.licenseUrl} target="_blank" rel="noopener noreferrer">{photo.license}</a>.</p>
@@ -25,7 +27,10 @@ const dialogId = `photo-${deviceId.toLowerCase().replace(/[^a-z0-9-]/g, '-')}`;
     <form method="dialog"><button class="photo-close" type="submit" autofocus aria-label="Close image">Close <span aria-hidden="true">×</span></button></form>
     <div class="photo-dialog-heading"><span>{photo.kind}</span><h2>{title}</h2></div>
     <img src={photo.src} width={photo.width} height={photo.height} alt={photo.alt} loading="lazy" decoding="async" />
+    <p class="photo-resolution"><a href={photo.src} target="_blank" rel="noopener noreferrer">Open full-resolution image ({photo.width} × {photo.height}) →</a></p>
     <p>{photo.caption}</p>
+    {photo.scaleDescription && <p><strong>Scale:</strong> {photo.scaleDescription}</p>}
+    {photo.geometryNote && <p>{photo.geometryNote}</p>}
     <p class="photo-dialog-credit">{photo.credit} · <a href={photo.sourceUrl} target="_blank" rel="noopener noreferrer">Source</a> · <a href={photo.licenseUrl} target="_blank" rel="noopener noreferrer">{photo.license}</a>{photo.changes ? ` · ${photo.changes}` : ''}</p>
   </dialog>
 </implant-photograph>
@@ -67,6 +72,9 @@ const dialogId = `photo-${deviceId.toLowerCase().replace(/[^a-z0-9-]/g, '-')}`;
   figcaption { padding-top: 12px; }
   .photo-caption { margin: 0; font-size: 18px; font-style: italic; line-height: 1.45; }
   .photo-version { font-size: 13px; line-height: 1.55; opacity: .75; margin: 7px 0 0; }
+  .photo-detail { font-size: 13px; line-height: 1.55; margin: 8px 0 0; }
+  .photo-detail strong { font-weight: 500; }
+  .photo-resolution a { color: inherit; text-underline-offset: 4px; }
   .photo-provenance { margin-top: 9px; font-size: 12px; opacity: .75; }
   .photo-provenance p { margin: 7px 0 0; line-height: 1.6; overflow-wrap: anywhere; }
   .photo-dialog { max-width: min(1100px, 94vw); width: 94vw; max-height: 94dvh; overflow: auto; padding: 28px; color: var(--text); background: var(--menuBg); border: 1px solid var(--borderStrong); border-radius: 8px; }
