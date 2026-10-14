@@ -1,5 +1,5 @@
 ---
-title: "Active-matrix flexible ECoG array (Viventi, 2011)"
+title: "Viventi Active-Matrix ECoG"
 order: 29
 pubDate: 2026-10-06
 updatedDate: 2026-10-07

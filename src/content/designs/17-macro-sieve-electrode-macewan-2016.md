@@ -1,5 +1,5 @@
 ---
-title: "Macro-sieve regenerative electrode with transit zones (MacEwan et al., 2016)"
+title: "Macro-Sieve Electrode"
 order: 17
 pubDate: 2026-02-06
 updatedDate: 2026-02-06

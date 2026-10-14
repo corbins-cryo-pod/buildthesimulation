@@ -1,5 +1,5 @@
 ---
-title: "Head-mounted wireless neurosensor (Brown, 2014)"
+title: "Brown Wireless Neurosensor"
 order: 33
 pubDate: 2026-10-06
 updatedDate: 2026-10-07

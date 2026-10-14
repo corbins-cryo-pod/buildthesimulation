@@ -1,5 +1,5 @@
 ---
-title: "Hyperflexible regenerative sieve electrode (Veith et al., 2021)"
+title: "Hyperflexible Regenerative Sieve"
 order: 16
 pubDate: 2026-02-06
 updatedDate: 2026-02-06

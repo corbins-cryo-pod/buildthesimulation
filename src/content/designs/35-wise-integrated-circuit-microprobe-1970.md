@@ -1,5 +1,5 @@
 ---
-title: "Integrated-circuit microprobe (Wise, 1970)"
+title: "Wise Silicon Microprobe"
 order: 35
 pubDate: 2026-10-06
 updatedDate: 2026-10-06

@@ -1,5 +1,5 @@
 ---
-title: "Magnetoelectric network spinal stimulators, 2025"
+title: "Networked Magnetoelectric Spinal Stimulators"
 order: 115
 pubDate: 2026-10-07
 updatedDate: 2026-10-07

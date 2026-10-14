@@ -6,13 +6,13 @@ const entries=fs.readdirSync('src/content/designs').filter(f=>f.endsWith('.md'))
   const text=fs.readFileSync(`src/content/designs/${f}`,'utf8');
   return {slug:f.slice(0,-3),order:Number(text.match(/^order: (\d+)/m)[1]),draft:/^draft: true/m.test(text)};
 }).filter(e=>!e.draft);
-test('families preserve twenty-four independently addressable records, nine explicit groups',()=>{
-  const seen=new Set();assert.equal(deviceFamilies.length,9);
+test('families preserve twenty-two independently addressable records, eight explicit groups',()=>{
+  const seen=new Set();assert.equal(deviceFamilies.length,8);
   for(const family of deviceFamilies){
     assert(family.members.includes(family.featured));
     for(const order of family.members){assert(!seen.has(order));seen.add(order);assert(entries.some(e=>e.order===order));assert(family.changes[order]);}
   }
-  assert.equal(seen.size,24);assert.equal(groupDeviceEntries(entries).length,entries.length-15);
+  assert.equal(seen.size,22);assert.equal(groupDeviceEntries(entries).length,entries.length-14);
   assert.equal(getDeviceFamily(109),null);assert.equal(getDeviceFamily(111),null);
 });
 test('filter matching an older sheet does not lose its result',()=>{
@@ -24,7 +24,6 @@ test('family highlights are explicit and not all called current products',()=>{
   assert(getDeviceFamily(5).summary.includes('does not supersede'));
   assert(getDeviceFamily(129).summary.includes('not an earlier publication'));
   assert.equal(getDeviceFamily(10),getDeviceFamily(13));
-  assert.equal(getDeviceFamily(38),getDeviceFamily(165));
   assert.equal(getDeviceFamily(117),getDeviceFamily(175));
   assert.equal(getDeviceFamily(208),null);
 });

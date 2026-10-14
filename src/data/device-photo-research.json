@@ -618,13 +618,13 @@
       "title": "Argus II retinal prosthesis",
       "order": 165,
       "url": "https://buildthesimulation.com/devices/165-argus-ii-retinal-prosthesis/",
-      "status": "reference",
-      "researchStatus": "shared_reference",
+      "status": "published",
+      "researchStatus": "verified physical-image source and reuse terms",
       "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/",
       "candidateAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/figure/fig1/",
       "license": "CC BY-NC-ND 4.0",
-      "notes": "Exact duplicate photograph removed from this record on 10 October 2026. The engineering and regulatory records describe the same Argus II system. Its photographs are collected on the engineering sheet. A direct gallery link retains access to the credited image without publishing it twice.",
-      "referenceDeviceId": "BTSD-ACAD-0017"
+      "notes": "Published 1 source-credited view; version qualifications and per-image rights are recorded in the manifest. Argus II hardware illustrated in the 2016 five-year clinical-trial report; not a new-generation Cortigent implant.",
+      "image": "/images/devices/btsd-acad-0017.jpg"
     },
     "BTSD-FDA-0017": {
       "title": "Cortigent Orion visual cortical prosthesis",
@@ -1307,18 +1307,6 @@
       "license": null,
       "notes": "The Wise 1970 institutional primary deposit has no verified photograph reuse permission; modern Michigan probes must not substitute for this historical device."
     },
-    "BTSD-ACAD-0017": {
-      "title": "Argus II retinal prosthesis",
-      "order": 38,
-      "url": "https://buildthesimulation.com/devices/38-argus-ii-retinal-prosthesis/",
-      "status": "published",
-      "researchStatus": "verified physical-image source and reuse terms",
-      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/",
-      "candidateAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/figure/fig1/",
-      "license": "CC BY-NC-ND 4.0",
-      "notes": "Published 1 source-credited view; version qualifications and per-image rights are recorded in the manifest. Argus II hardware illustrated in the 2016 five-year clinical-trial report; not a new-generation Cortigent implant.",
-      "image": "/images/devices/btsd-acad-0017.jpg"
-    },
     "BTSD-ACAD-0020": {
       "title": "NEO wireless epidural BCI (Neuracle, Tsinghua)",
       "order": 41,
@@ -1651,4 +1639,4 @@
       "notes": "New distinct cuff architecture and full manufactured-device photograph. Source abstract and Figure 1 report 33 contacts, while one Methods sentence says 13 groups of three; that inconsistency is explicitly recorded and not silently corrected. Ex vivo porcine evidence, not established human clinical use of this photographed prototype."
     }
   }
-}
+    }

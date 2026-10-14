@@ -1219,33 +1219,6 @@
       }
     ]
   },
-  "BTSD-ACAD-0017": {
-    "src": "/images/devices/btsd-acad-0017.jpg",
-    "thumbnail": "/images/devices/btsd-acad-0017.jpg",
-    "width": 627,
-    "height": 750,
-    "thumbnailWidth": 627,
-    "thumbnailHeight": 750,
-    "sourceDimensions": {
-      "width": 627,
-      "height": 750
-    },
-    "crop": null,
-    "preserveSource": true,
-    "sourceSha256": "eac47e1d556efc8748721b84140fb2748379c10338320c9544f93b7bec712fe4",
-    "kind": "Source figure",
-    "label": "Implant and controller",
-    "alt": "Complete published figure of the Argus II retinal implant with its curved 60-electrode array, and the external camera glasses and video-processing unit.",
-    "caption": "Argus II implant and retinal electrode array (A), with its external camera glasses and processing unit (B).",
-    "credit": "da Cruz et al., Ophthalmology (2016), Figure 1",
-    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/",
-    "sourceAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/figure/fig1/",
-    "sourceLabel": "Ophthalmology · complete Figure 1",
-    "license": "CC BY-NC-ND 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-    "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
-    "versionNote": "Argus II hardware illustrated in the 2016 five-year clinical-trial report; not a new-generation Cortigent implant."
-  },
   "BTSD-ACAD-0021": {
     "src": "/images/devices/btsd-acad-0021.jpg",
     "thumbnail": "/images/devices/btsd-acad-0021.jpg",
@@ -2190,5 +2163,32 @@
         "sourceAssetNote": "Figure explicitly selected by the site owner for this noncommercial scholarly device reference. Publisher copyright is retained; no Creative Commons license or publisher republication grant is claimed."
       }
     ]
+  },
+  "BTSD-FDA-0016": {
+    "src": "/images/devices/btsd-acad-0017.jpg",
+    "thumbnail": "/images/devices/btsd-acad-0017.jpg",
+    "width": 627,
+    "height": 750,
+    "thumbnailWidth": 627,
+    "thumbnailHeight": 750,
+    "sourceDimensions": {
+      "width": 627,
+      "height": 750
+    },
+    "crop": null,
+    "preserveSource": true,
+    "sourceSha256": "eac47e1d556efc8748721b84140fb2748379c10338320c9544f93b7bec712fe4",
+    "kind": "Source figure",
+    "label": "Implant and controller",
+    "alt": "Complete published figure of the Argus II retinal implant with its curved 60-electrode array, and the external camera glasses and video-processing unit.",
+    "caption": "Argus II implant and retinal electrode array (A), with its external camera glasses and processing unit (B).",
+    "credit": "da Cruz et al., Ophthalmology (2016), Figure 1",
+    "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/",
+    "sourceAssetUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5035591/figure/fig1/",
+    "sourceLabel": "Ophthalmology · complete Figure 1",
+    "license": "CC BY-NC-ND 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "changes": "Complete source image retained byte-for-byte, including every panel and annotation. No cropping, re-encoding, recoloring or synthetic enhancement.",
+    "versionNote": "Argus II hardware illustrated in the 2016 five-year clinical-trial report; not a new-generation Cortigent implant."
   }
 }

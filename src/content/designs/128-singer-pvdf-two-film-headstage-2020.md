@@ -1,5 +1,5 @@
 ---
-title: "Two-film PVDF ME headstage, 2020"
+title: "PVDF Magnetoelectric Headstage"
 order: 128
 pubDate: 2026-10-07
 updatedDate: 2026-10-07

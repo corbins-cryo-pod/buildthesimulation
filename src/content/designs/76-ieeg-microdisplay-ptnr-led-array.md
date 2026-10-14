@@ -1,5 +1,5 @@
 ---
-title: "iEEG microdisplay with PtNR recording grid"
+title: "PtNRGrid Recording and Display System"
 order: 76
 pubDate: 2026-10-07
 updatedDate: 2026-10-07

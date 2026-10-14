@@ -1,5 +1,5 @@
 ---
-title: "Flexible neurochemical-release and recording probe (CMU and Pittsburgh)"
+title: "CMU Multimodal Neurochemical Probe"
 order: 77
 pubDate: 2026-10-07
 updatedDate: 2026-10-07
