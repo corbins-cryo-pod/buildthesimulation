@@ -1,0 +1,81 @@
+name: Finger atlas reference images
+on:
+  push:
+    branches: [finger-atlas-realism-v2]
+    paths: [.github/workflows/finger-atlas-reference-images.yml]
+permissions:
+  contents: read
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - run: python -m pip -q install requests beautifulsoup4 lxml
+      - name: Download public reference figures and provenance
+        run: |
+          mkdir -p /tmp/references
+          cat > /tmp/collect.py <<'PY'
+          import requests,pathlib,json,time,hashlib,concurrent.futures,urllib.parse,xml.etree.ElementTree as ET
+          from bs4 import BeautifulSoup
+          O=pathlib.Path('/tmp/references')
+          IDS=['PMC11718559','PMC12154225','PMC5723673','PMC10773061','PMC7354383','PMC7527120','PMC6347413','PMC2770322','PMC4811329','PMC2075321','PMC10115609','PMC7820487','PMC11652813','PMC6071077','PMC9729103','PMC4575617','PMC7542190','PMC11864184','PMC10499330']
+          S=requests.Session();S.headers['User-Agent']='Scientific reference collection for educational model comparison (public figures only)'
+          def get(u):
+            r=S.get(u,timeout=40);r.raise_for_status();return r
+          def collect(p):
+            d=O/p;d.mkdir(exist_ok=True);meta={'pmcid':p,'url':f'https://pmc.ncbi.nlm.nih.gov/articles/{p}/','figures':[],'errors':[]}
+            try:
+              x=get(f'https://www.ebi.ac.uk/europepmc/webservices/rest/{p}/fullTextXML');(d/'article.xml').write_bytes(x.content)
+              root=ET.fromstring(x.content)
+              def text(e):return ''.join(e.itertext()) if e is not None else ''
+              meta['title']=text(root.find('.//article-title'));meta['license']=text(root.find('.//permissions'));meta['doi']=next((a.text for a in root.findall('.//article-id') if a.attrib.get('pub-id-type')=='doi'),None)
+              for f in root.findall('.//fig')[:12]:
+                g=f.find('.//graphic');href=g.attrib.get('{http://www.w3.org/1999/xlink}href','') if g is not None else ''
+                if href:meta['figures'].append({'id':f.attrib.get('id'),'label':text(f.find('label')),'caption':text(f.find('caption')),'href':href})
+            except Exception as e:meta['errors'].append(str(e))
+            try:
+              h=get(meta['url']);(d/'article.html').write_text(h.text);soup=BeautifulSoup(h.text,'html.parser')
+              for f in meta['figures']:
+                block=soup.find(id=f['id']);im=block.find('img') if block else None
+                if im:f['image_url']=urllib.parse.urljoin(meta['url'],im.get('src',''))
+              if not meta['figures']:
+                for i,block in enumerate(soup.select('figure')[:12]):
+                  im=block.find('img')
+                  if im:meta['figures'].append({'id':block.get('id',str(i)),'label':f'Figure {i+1}','caption':block.get_text(' ',strip=True),'image_url':urllib.parse.urljoin(meta['url'],im.get('src',''))})
+            except Exception as e:meta['errors'].append(str(e))
+            for f in meta['figures']:
+              urls=[f.get('image_url')]
+              if f.get('href'):urls += [f'https://europepmc.org/articles/{p}/bin/{f["href"]}',f'https://europepmc.org/articles/{p}/bin/{f["href"]}.jpg']
+              for u in [u for u in urls if u]:
+                try:
+                  r=get(u)
+                  if not r.headers.get('Content-Type','').startswith('image/'):continue
+                  if len(r.content)>12000000:continue
+                  ext='.png' if 'png' in r.headers.get('Content-Type','') else '.jpg'
+                  fn=str(f['id']).replace('/','_')+ext;(d/fn).write_bytes(r.content);f.update(file=fn,image_url=r.url,sha256=hashlib.sha256(r.content).hexdigest(),bytes=len(r.content));break
+                except Exception as e:f['error']=str(e)
+            (d/'metadata.json').write_text(json.dumps(meta,indent=2));print(p,meta.get('title'),sum('file'in f for f in meta['figures']),flush=True)
+            return meta
+          with concurrent.futures.ThreadPoolExecutor(max_workers=3) as ex:out=list(ex.map(collect,IDS))
+          extras=[('giacci_f1.jpg','https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41598-018-22361-2/MediaObjects/41598_2018_22361_Fig1_HTML.jpg'),('giacci_f4.jpg','https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41598-018-22361-2/MediaObjects/41598_2018_22361_Fig4_HTML.jpg')]
+          try:
+            u='https://h01-release.storage.googleapis.com/gallery.html';r=get(u);(O/'h01_gallery.html').write_text(r.text)
+            soup=BeautifulSoup(r.text,'html.parser')
+            for i,im in enumerate(soup.find_all('img')):
+              url=urllib.parse.urljoin(u,im.get('src',''));extras.append((f'h01_gallery_{i}.png',url))
+          except Exception as e:print('H01',e,flush=True)
+          extra_meta=[]
+          for fn,u in extras:
+            try:
+              r=get(u)
+              if r.headers.get('Content-Type','').startswith('image/'):
+                (O/fn).write_bytes(r.content);extra_meta.append({'file':fn,'url':u,'sha256':hashlib.sha256(r.content).hexdigest()})
+            except Exception as e:print('EXTRA',u,str(e),flush=True)
+          (O/'manifest.json').write_text(json.dumps(out,indent=2));(O/'extra_images.json').write_text(json.dumps(extra_meta,indent=2))
+          PY
+          python /tmp/collect.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: finger-atlas-reference-images
+          path: /tmp/references
+          retention-days: 7
