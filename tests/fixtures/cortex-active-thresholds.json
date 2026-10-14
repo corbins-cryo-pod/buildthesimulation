@@ -1,0 +1,243 @@
+{
+  "generator": {
+    "neuronVersion": "9.0.1",
+    "scriptSha256": "f007d8f7150f16542067a99b1b5acf278dc152897e8e5ecacc86a5c9f96514c5",
+    "modelGeneratorSha256": "7c71d7ddd39b600571e8dcdc37394187b30da6e7a740ced1319b3f25764998db",
+    "inputScriptSha256": "c9ecb6236f53b7a1ad613b232436e643be423008219900452c5faad550f23c89",
+    "inputSha256": "ff8ed48a8a7ea42ff93e1295f2ce9944adc1544eacccadeaeca5bbf0efe8d78a"
+  },
+  "cases": [
+    {
+      "id": "intracellular-spiking",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "segmentLengthUm": 40,
+          "modelId": "allen-human-571654895/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-571654895/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "intracellular-current",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 40,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "criterion": "soma",
+      "thresholdMv": -25,
+      "windowEndMs": 15,
+      "units": "nA",
+      "lowerNoCrossing": 0.9281249999999999,
+      "upperCrossing": 0.9374999999999999,
+      "probes": [
+        {
+          "amplitude": 0.6,
+          "crosses": false
+        },
+        {
+          "amplitude": 0.8999999999999999,
+          "crosses": false
+        },
+        {
+          "amplitude": 1.0499999999999998,
+          "crosses": true
+        },
+        {
+          "amplitude": 0.9749999999999999,
+          "crosses": true
+        },
+        {
+          "amplitude": 0.9374999999999999,
+          "crosses": true
+        },
+        {
+          "amplitude": 0.91875,
+          "crosses": false
+        },
+        {
+          "amplitude": 0.9281249999999999,
+          "crosses": false
+        }
+      ]
+    },
+    {
+      "id": "extracellular-spiking",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "segmentLengthUm": 40,
+          "modelId": "allen-human-571654895/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-571654895/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r3-c3",
+            "r3-c6"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 40,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r4-c4",
+            "r4-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 40,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "criterion": "any-membrane",
+      "thresholdMv": -25,
+      "windowEndMs": 15,
+      "units": "\u00b5A",
+      "lowerNoCrossing": 19.6875,
+      "upperCrossing": 20.0,
+      "probes": [
+        {
+          "amplitude": 20.0,
+          "crosses": true
+        },
+        {
+          "amplitude": 10.0,
+          "crosses": false
+        },
+        {
+          "amplitude": 15.0,
+          "crosses": false
+        },
+        {
+          "amplitude": 17.5,
+          "crosses": false
+        },
+        {
+          "amplitude": 18.75,
+          "crosses": false
+        },
+        {
+          "amplitude": 19.375,
+          "crosses": false
+        },
+        {
+          "amplitude": 19.6875,
+          "crosses": false
+        }
+      ]
+    }
+  ]
+}

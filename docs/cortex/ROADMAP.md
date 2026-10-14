@@ -5,29 +5,35 @@
 Phase 0: repository/physics review and initial framework decisions implemented;
 research is not exhaustive. Phase 1: shared slab/implant foundation implemented,
 but regional/curved anatomy incomplete. Phase 2: verified **passive** recording
-vertical slice implemented, without experimental validation. Phase 3: verified
-subthreshold passive stimulation implemented; action potentials/recruitment remain
-open. Phases 4–8 are not complete.
+vertical slice implemented, without experimental validation. Phase 3 now has a
+review-stage published human temporal single-neuron extension with active channels,
+native morphology and independent intracellular/extracellular numerical checks.
+The passive foundation is live; the user approved active publication on 2026-10-14.
+Population recruitment and phases 4–8 are not complete.
 
 ## Next review / engineering gate
 
-1. Review draft PR, perform desktop/mobile browser QA, inspect scale/transforms,
+1. Review the active feature PR, perform desktop/mobile browser QA, inspect scale/transforms,
    worker cancel/reset/stale-state behavior, exports and no-WebGL path.
-2. Expand the completed NEURON 9.0.1 full-arbor and LFPykit 0.6.2 recording
-   comparisons beyond four fixed configurations. Retain hashes/versions and
-   the explicit soma-circuit adapter; do not generalize to untested regimes.
-3. Add testable finite exposed contact geometry for a well-documented alternative
-   device (e.g. Neuropixels recording or surface-grid contact). Do not treat all
-   catalog modalities as electrically interchangeable.
+2. Retain the eight active NEURON/LFPykit cases and native threshold brackets.
+   Resolve the measured extracellular threshold's spatial sensitivity before
+   interpreting it quantitatively. Fixed cases do not cover all allowed settings.
+3. Follow the bounded experimental comparison milestone below, then select finite
+   exposed contact geometry with source dimensions. Catalog modalities are not
+   electrically interchangeable.
 
-## First active biological milestone
+## Next bounded milestone: experimental comparison and convergence
 
-- Select a licensed human-region or explicitly nonhuman reference morphology and
-  model with experimental traces. Separate calibration and validation observations.
-- Adapt the existing active cable to the shared geometry/current contract; compare
-  against reference solver and channel kinetics before enabling spiking.
-- Verify timestep/spatial convergence, current conservation and reference behavior.
-- Only then expose action-potential/recruitment curves; no radius-based activation.
+- Keep specimen 571654895 and the passive regression model; add no population.
+- Import a small source NWB sweep set with explicit junction-potential correction,
+  preparation metadata and fitting-sweep identity. Reproduce original somatic
+  current protocols in both solvers, without refitting merely to improve agreement.
+- Report voltage/spike-feature errors against observations and their provenance.
+  Only call a comparison held-out validation if that role can be established.
+- Extend native threshold/refinement cases to the 10 µm mesh and changed electrode
+  poses, with predeclared sensitivity gates and local-versus-somatic event criteria.
+- Complete supported desktop/mobile, keyboard, WebGL/fallback, cancellation,
+  stale-result and export QA. Profile browser startup/solver/rendering separately.
 
 ## Populations and acquisition
 

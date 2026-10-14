@@ -8,6 +8,10 @@
 | `world.js` | One anatomy, morphology, implant pose, contacts and units | Renderer-derived physical properties |
 | Existing `devices/catalog.js` | Device identity, revision, source dimensions | Neural response claims |
 | `passive-cable.js` | Capacitance, leak, axial tree solve, membrane currents | Three.js or device marketing metadata |
+| `active-morphology.js`, `models/allen571654895.json` | Pinned native-SWC geometry/fit and rigid placement | Reference voltage solutions |
+| `active-channels.js`, `active-cable.js` | Source channel kinetics, calcium and active tree solve | Scripted activation or rendering |
+| `model-registry.js` | Model identity, species, source and scope | Unqualified human-channel claims |
+| `buffers.js` | Unique nested output buffers for accounting/transfer | Copying or dropping channel histories |
 | `volume-conductor.js` | Analytic transfer coefficients and point-source fields | Unlabeled radius clamps |
 | `experiment.js` | Protocols, coupling, traces, diagnostics and serialization | Display-timed integration |
 | `worker.js` | Request/result lifecycle and progress | Random defaults or hidden quality reduction |
@@ -21,7 +25,7 @@ SVG renderer. If both renderers fail, computation and exports remain accessible.
 
 ## State and coupling
 
-`ExperimentConfig → makeWorld → protocol → passive cable → I_membrane → lead field → signals`.
+`ExperimentConfig → makeWorld → protocol → selected cable → I_membrane → lead field → signals`.
 Both scene and kernel derive the same contacts and morphology from the config.
 Mode changes do not regenerate a different cortex. Rigid pose is computed before
 any field/lead matrix. Moving the array changes distances and coefficients.
@@ -39,6 +43,13 @@ while solving; cancellation terminates the worker and invalidates its ID. Any
 config change after a run hides stale traces and membrane colors. Replay changes
 only the inspected frame, at 10 biological ms per wall-clock second; it never
 reintegrates the equations. Benchmarks time only the solve, not replay.
+
+Completed workers remain available for subsequent runs. The active kernel may
+reuse a bounded four-entry cache of its own no-drive conditioned state, keyed by
+model, mesh, timestep and conditioning duration. Cancellation/error/reset/unmount
+terminate the worker and discard its cache. Reference-simulator solutions never
+enter this cache. Active runs require a Worker; passive runs retain the bounded
+main-thread fallback. Browser lifecycle behavior remains an interactive QA gate.
 
 ## Units and transforms
 
@@ -59,6 +70,11 @@ amplitude is µA with explicit conversion. Recording output is µV.
 - `cortex-result/1`: exact config and engine ID, time array, frame-major compartment
   voltage/current arrays, two neural/applied/total potential arrays, differential
   total signal, interval-average drive, numerical diagnostics and limitations.
+- `cortex-experiment/2`, `cortex-result/2`: explicit active model identity,
+  pinned source fit/temperature, supported native meshes, cell rotation, separate
+  integration/output periods and conditioning; results add source hashes/fit,
+  grouped ionic/capacitive currents, calcium/NaV state and internal-step crossing
+  events. Version-1 passive configurations retain their original semantics.
 - `cortex-evidence/1`: source IDs, URL/DOI/date/locator, species, category, usage
   license notes, limitations and open questions. Null means unknown/not applicable.
 - `cortex-comparison/1`: two complete result bundles. Different interventions may
@@ -73,8 +89,9 @@ currents. JSON records the drive units and end-of-step/interval-average conventi
 
 ## Interoperability and growth
 
-No SWC/SONATA/NeuroML/NWB compatibility is claimed. Current config import accepts
-only its exact version and validates bounds before expensive work. Future adapters
+The offline adapter supports the selected pinned SWC through native NEURON;
+there is no general browser SWC/SONATA/NeuroML/NWB importer. Config import accepts
+the two explicit experiment versions and validates bounds before expensive work. Future adapters
 must pass the external format's validator and round-trip tests. Separate anatomy,
 mesh, connectivity, waveform and material schemas should be introduced when their
 semantics are implemented, not populated with pretend data now.
@@ -86,3 +103,9 @@ those currents to recording potentials. Node CI compares the browser modules
 against hashed fixtures. The generator hashes and exact input hashes detect stale
 references. A future finite-element solver replaces transfer matrices while
 retaining the coordinate/unit contract; worker and UI must not depend on its internals.
+
+The active boundary is `scripts/cortex-active-reference-input.mjs`: exact configs
+and transformed geometry only. Native NEURON imports the original SWC, applies
+the published directed axon processor and original NMODL, then supplies total
+membrane currents to actual LFPykit. Every exported physical-compartment sample
+is checked against hashed compressed fixtures; website CI needs only Node.

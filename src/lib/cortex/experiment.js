@@ -1,6 +1,11 @@
-import { ENGINE_VERSION, validateConfig } from './config.js';
+import { ENGINE_VERSION, ACTIVE_ENGINE_VERSION, validateConfig } from './config.js';
 import { makeWorld } from './world.js';
 import { createPassiveCable, stepPassiveCable } from './passive-cable.js';
+import { createActiveCable, stepActiveCable } from './active-cable.js';
+import { activeModelData } from './active-morphology.js';
+import { resultBuffers } from './buffers.js';
+import { modelRegistry } from './model-registry.js';
+const conditionedStates = new Map();
 import {
   leadField,
   pointTransferUvPerNa,
@@ -32,8 +37,12 @@ export function runExperiment(input, progress = () => {}) {
   const stimulating = c.protocol.sourceContactIds.map((id) =>
     world.contacts.find((s) => s.id === id),
   );
+  const active = !!c.neuron.modelId;
   const sigma = c.tissue.conductivitySPerM,
-    cable = createPassiveCable(nodes, c.membrane);
+    cable = active
+      ? createActiveCable(nodes, activeModelData.fit)
+      : createPassiveCable(nodes, c.membrane),
+    stepCable = active ? stepActiveCable : stepPassiveCable;
   const lead = leadField(nodes, selected, sigma, c.recording.sourceModel, c.recording.exclusionUm);
   const stimulationMode = c.protocol.mode === 'extracellular-stimulation';
   if (stimulationMode) leadField(nodes, stimulating, sigma, 'point', c.recording.exclusionUm); // explicit near-field rejection
@@ -51,8 +60,22 @@ export function runExperiment(input, progress = () => {}) {
       : 0,
   );
   const injectionMode = c.protocol.mode === 'intracellular-current';
+  if (injectionMode && active) {
+    try {
+      leadField(
+        nodes,
+        [{ id: 'bath-return', positionUm: c.protocol.bathReturnUm }],
+        sigma,
+        'point',
+        c.recording.exclusionUm,
+      );
+    } catch {
+      throw new Error('Move the bath return away from the modeled membrane.');
+    }
+  }
   if (
     injectionMode &&
+    !active &&
     nodes.some(
       (node) =>
         segmentDistance(c.protocol.bathReturnUm, node.startUm, node.endUm) <
@@ -72,17 +95,20 @@ export function runExperiment(input, progress = () => {}) {
     injectionMode ? pointTransferUvPerNa(node.centerUm, c.protocol.bathReturnUm, sigma) / 1000 : 0,
   );
   const steps = Math.ceil(c.solver.durationMs / c.solver.dtMs),
-    frames = steps + 1;
+    sampleEvery = active ? Math.round(c.solver.sampleMs / c.solver.dtMs) : 1,
+    frames = Math.ceil(steps / sampleEvery) + 1;
   const result = {
-    schemaVersion: 'cortex-result/1',
-    engineVersion: ENGINE_VERSION,
+    schemaVersion: active ? 'cortex-result/2' : 'cortex-result/1',
+    engineVersion: active ? ACTIVE_ENGINE_VERSION : ENGINE_VERSION,
     config: c,
     modelStatus: {
       implemented: true,
       verification:
         'Analytical/convergence tests and fixed NEURON 9.0.1 / LFPykit 0.6.2 reference cases; not a guarantee for arbitrary configurations.',
       experimentalValidation: 'none',
-      fidelity: 'exploratory passive cable; homogeneous infinite conductor',
+      fidelity: active
+        ? 'Human temporal L2 fitted model; reconstructed dendrites, published axon stub, mixed-species kinetics; homogeneous infinite conductor'
+        : 'exploratory passive cable; homogeneous infinite conductor',
     },
     timeMs: new Float64Array(frames),
     membraneMv: new Float64Array(frames * n),
@@ -108,49 +134,173 @@ export function runExperiment(input, progress = () => {}) {
     },
     warnings: [...world.warnings],
   };
+  if (active) {
+    result.modelStatus.verification =
+      'Active reference comparisons are recorded in docs/cortex/ACTIVE_MODEL.md; limited to specified cases.';
+    result.spikeDetection = {
+      thresholdMv: -25,
+      refractoryMs: 2,
+      convention:
+        'Upward voltage crossing, linearly interpolated between internal solver steps; earliest crossing is model-dependent',
+    };
+    result.spikes = [];
+    result.firstCrossingByCompartment = new Float64Array(n).fill(NaN);
+    result.channels = Object.fromEntries(
+      [
+        'sodiumNa',
+        'potassiumNa',
+        'calciumNa',
+        'hcnNa',
+        'leakNa',
+        'capacitiveNa',
+        'calciumMm',
+        'sodiumOpen',
+      ].map((key) => [key, new Float64Array(frames * n)]),
+    );
+    const settlingSteps = Math.round(c.solver.settleMs / c.solver.dtMs),
+      key = JSON.stringify([
+        c.neuron.modelId,
+        c.neuron.segmentLengthUm,
+        c.solver.dtMs,
+        c.solver.settleMs,
+      ]);
+    const cached = conditionedStates.get(key),
+      fields = [
+        'voltageMv',
+        'previous',
+        'membraneCurrentNa',
+        'ionicNa',
+        'potassiumNa',
+        'calciumNa',
+        'hcnNa',
+        'leakNa',
+        'capacitiveNa',
+        'gates',
+        'sodium',
+        'calciumMm',
+      ];
+    if (cached) {
+      for (const field of fields) cable[field].set(cached[field]);
+      progress({ progress: 0.5, biologicalMs: 0, stage: 'Reusing identical conditioning' });
+    } else {
+      for (let k = 0; k < settlingSteps; k++) {
+        stepCable(cable, c.solver.dtMs);
+        if (k % 128 === 0)
+          progress({
+            progress: (0.5 * (k + 1)) / settlingSteps,
+            biologicalMs: 0,
+            stage: 'Conditioning',
+          });
+      }
+      if (conditionedStates.size >= 4)
+        conditionedStates.delete(conditionedStates.keys().next().value);
+      conditionedStates.set(
+        key,
+        Object.fromEntries(fields.map((field) => [field, cable[field].slice()])),
+      );
+    }
+    result.initialization = {
+      startMv: -80,
+      settleMs: c.solver.settleMs,
+      temperatureC: 34,
+      conditioningCache: cached ? 'reused identical state' : 'computed',
+      convention:
+        'Source JSON initialization, including legacy NaV seqinitial; no-drive conditioning. Frame zero is the conditioned state, not assumed exact equilibrium.',
+    };
+  }
   result.membraneMv.set(cable.voltageMv);
+  const initialVoltages = cable.voltageMv.slice();
+  if (active) {
+    result.membraneCurrentNa.set(cable.membraneCurrentNa);
+    for (const [key, source] of [
+      ['sodiumNa', 'ionicNa'],
+      ['potassiumNa', 'potassiumNa'],
+      ['calciumNa', 'calciumNa'],
+      ['hcnNa', 'hcnNa'],
+      ['leakNa', 'leakNa'],
+      ['capacitiveNa', 'capacitiveNa'],
+      ['calciumMm', 'calciumMm'],
+    ])
+      result.channels[key].set(cable[source]);
+    for (let i = 0; i < n; i++) result.channels.sodiumOpen[i] = cable.sodium[i * 12 + 10];
+    for (let ch = 0; ch < 2; ch++) {
+      result.neuralUv[ch][0] = dot(lead[ch], cable.membraneCurrentNa);
+      result.totalUv[ch][0] = result.neuralUv[ch][0];
+    }
+    result.differentialUv[0] = result.totalUv[0][0] - result.totalUv[1][0];
+  }
   const extracellularMv = new Float64Array(n),
     injectionNa = new Float64Array(n),
     synapticUs = new Float64Array(n);
+  const axial = new Float64Array(n);
   for (let k = 0; k < steps; k++) {
     const t = k * c.solver.dtMs,
       dt = Math.min(c.solver.dtMs, c.solver.durationMs - t),
-      frame = k + 1;
+      frame = Math.ceil((k + 1) / sampleEvery);
     const gate = windowAverage(t, dt, c.protocol.startMs, c.protocol.durationMs);
     const currentUa = stimulationMode
       ? c.protocol.amplitudeUa * biphasicAverage(t, dt, c.protocol)
       : 0;
     const inject = injectionMode ? c.protocol.injectionNa * gate : 0;
     injectionNa.fill(0);
-    injectionNa[0] = inject;
+    injectionNa[world.neuron.somaIndex] = inject;
     for (let i = 0; i < n; i++)
       extracellularMv[i] = unitFieldMv[i] * currentUa - bathAtNodesMvPerNa[i] * inject;
     const synapseUs =
       c.protocol.mode === 'synaptic-recording' ? c.protocol.synapseNs * 0.001 * gate : 0;
     for (let i = 0; i < n; i++) synapticUs[i] = synapseUs * (nodes[i].synapseWeight ?? 0);
-    stepPassiveCable(cable, dt, {
+    stepCable(cable, dt, {
       extracellularMv,
       injectionNa,
       synapticUs,
       synapseReversalMv: c.protocol.synapseReversalMv,
     });
-    result.timeMs[frame] = t + dt;
-    result.membraneMv.set(cable.voltageMv, frame * n);
-    result.membraneCurrentNa.set(cable.membraneCurrentNa, frame * n);
-    // Sample at step END; drive/applied potential is the average over that preceding interval.
-    result.drive[frame] = stimulationMode ? currentUa : injectionMode ? inject : synapseUs * 1000;
-    for (let ch = 0; ch < 2; ch++) {
-      result.neuralUv[ch][frame] = dot(lead[ch], cable.membraneCurrentNa);
-      result.appliedUv[ch][frame] = artifactPerUa[ch] * currentUa - bathPerNa[ch] * inject;
-      result.totalUv[ch][frame] = result.neuralUv[ch][frame] + result.appliedUv[ch][frame];
+    if (active)
+      for (let i = 0; i < n; i++)
+        if (nodes[i].areaUm2 && cable.previous[i] < -25 && cable.voltageMv[i] >= -25) {
+          const crossing =
+            t + (dt * (-25 - cable.previous[i])) / (cable.voltageMv[i] - cable.previous[i]);
+          if (Number.isNaN(result.firstCrossingByCompartment[i]))
+            result.firstCrossingByCompartment[i] = crossing;
+          if (
+            i === world.neuron.somaIndex &&
+            (!result.spikes.length || crossing - result.spikes.at(-1).timeMs >= 2)
+          )
+            result.spikes.push({ timeMs: crossing, compartmentId: nodes[i].id });
+        }
+    if ((k + 1) % sampleEvery === 0 || k === steps - 1) {
+      result.timeMs[frame] = t + dt;
+      result.membraneMv.set(cable.voltageMv, frame * n);
+      result.membraneCurrentNa.set(cable.membraneCurrentNa, frame * n);
+      // Sample at step END; drive/applied potential is the average over that preceding interval.
+      result.drive[frame] = stimulationMode ? currentUa : injectionMode ? inject : synapseUs * 1000;
+      for (let ch = 0; ch < 2; ch++) {
+        result.neuralUv[ch][frame] = dot(lead[ch], cable.membraneCurrentNa);
+        result.appliedUv[ch][frame] = artifactPerUa[ch] * currentUa - bathPerNa[ch] * inject;
+        result.totalUv[ch][frame] = result.neuralUv[ch][frame] + result.appliedUv[ch][frame];
+      }
+      result.differentialUv[frame] = result.totalUv[0][frame] - result.totalUv[1][frame];
+      if (active) {
+        for (const [key, source] of [
+          ['sodiumNa', 'ionicNa'],
+          ['potassiumNa', 'potassiumNa'],
+          ['calciumNa', 'calciumNa'],
+          ['hcnNa', 'hcnNa'],
+          ['leakNa', 'leakNa'],
+          ['capacitiveNa', 'capacitiveNa'],
+          ['calciumMm', 'calciumMm'],
+        ])
+          result.channels[key].set(cable[source], frame * n);
+        for (let i = 0; i < n; i++)
+          result.channels.sodiumOpen[frame * n + i] = cable.sodium[i * 12 + 10];
+      }
     }
-    result.differentialUv[frame] = result.totalUv[0][frame] - result.totalUv[1][frame];
     const balance = cable.membraneCurrentNa.reduce((s, x) => s + x, 0) - inject;
     result.diagnostics.maxConservationResidualNa = Math.max(
       result.diagnostics.maxConservationResidualNa,
       Math.abs(balance),
     );
-    const axial = new Float64Array(n);
+    axial.fill(0);
     for (let i = 0; i < n; i++)
       if (nodes[i].parent >= 0) {
         const p = nodes[i].parent,
@@ -165,9 +315,9 @@ export function runExperiment(input, progress = () => {}) {
         result.diagnostics.maxKclResidualNa,
         Math.abs(cable.membraneCurrentNa[i] - axial[i] - injectionNa[i]),
       );
-      result.diagnostics.maxExcursionMv = Math.max(
+      if(nodes[i].areaUm2)result.diagnostics.maxExcursionMv = Math.max(
         result.diagnostics.maxExcursionMv,
-        Math.abs(cable.voltageMv[i] - c.membrane.restMv),
+        Math.abs(cable.voltageMv[i] - initialVoltages[i]),
       );
     }
     // µA × ms = nC. Integrate phase overlaps separately: taking signs after
@@ -183,9 +333,14 @@ export function runExperiment(input, progress = () => {}) {
         dt *
         windowAverage(t, dt, c.protocol.startMs + phaseMs + c.protocol.gapUs / 1000, phaseMs);
     }
-    if (k % 128 === 0) progress({ progress: (k + 1) / steps, biologicalMs: t + dt });
+    if (k % 128 === 0)
+      progress({
+        progress: active ? 0.5 + (0.5 * (k + 1)) / steps : (k + 1) / steps,
+        biologicalMs: t + dt,
+        stage: 'Simulating',
+      });
   }
-  if (result.diagnostics.maxExcursionMv > 10)
+  if (!active && result.diagnostics.maxExcursionMv > 10)
     result.warnings.push(
       'Membrane excursion exceeds 10 mV. Active channels are absent; the passive solution is a mathematical extrapolation, not a spike prediction.',
     );
@@ -196,11 +351,18 @@ export function runExperiment(input, progress = () => {}) {
   result.diagnostics.elapsedMs = performance.now() - started;
   result.diagnostics.wallSecondsPerBiologicalSecond =
     result.diagnostics.elapsedMs / c.solver.durationMs;
-  for (const value of Object.values(result)) {
-    if (ArrayBuffer.isView(value)) result.diagnostics.outputBytes += value.byteLength;
-    else if (Array.isArray(value))
-      for (const v of value)
-        if (ArrayBuffer.isView(v)) result.diagnostics.outputBytes += v.byteLength;
+  result.diagnostics.outputBytes = resultBuffers(result).reduce(
+    (sum, buffer) => sum + buffer.byteLength,
+    0,
+  );
+  if (active) {
+    const first = Array.from(result.firstCrossingByCompartment)
+      .map((timeMs, i) => ({ timeMs, compartmentId: nodes[i].id, kind: nodes[i].kind }))
+      .filter((x) => Number.isFinite(x.timeMs))
+      .sort((a, b) => a.timeMs - b.timeMs)[0];
+    result.diagnostics.firstThresholdCrossing = first ?? null;
+    result.diagnostics.spikeCount = result.spikes.length;
+    result.somaIndex = world.neuron.somaIndex;
   }
   progress({ progress: 1, biologicalMs: c.solver.durationMs });
   return result;
@@ -270,6 +432,7 @@ export function resultCsv(result, component = 'total') {
     ...result.recordingSiteIds.map((id) => `${id}_${component}_uV`),
     `${component}_A_minus_B_uV`,
     'soma_mV',
+    ...(result.channels ? Object.keys(result.channels).map((key) => `soma_${key}`) : []),
     `drive_interval_average_${driveUnit}`,
     ...result.compartmentIds.map((id) => `${id}_outward_membrane_nA`),
   ];
@@ -281,7 +444,10 @@ export function resultCsv(result, component = 'total') {
         series[0][k],
         series[1][k],
         series[0][k] - series[1][k],
-        result.membraneMv[k * n],
+        result.membraneMv[k * n + (result.somaIndex ?? 0)],
+        ...(result.channels
+          ? Object.values(result.channels).map((values) => values[k * n + (result.somaIndex ?? 0)])
+          : []),
         result.drive[k],
         ...result.membraneCurrentNa.subarray(k * n, (k + 1) * n),
       ].join(','),
@@ -307,16 +473,23 @@ export function resultBundle(result) {
     },
     coordinateSystem:
       'right-handed; +Z depth below pia; rotations X then Y then Z about the center of the tissue-facing substrate surface; all model positions µm',
-    sampling:
-      'frame 0 equilibrium; subsequent frames are step-end values, with interval-averaged drive/applied field; no ADC/filter model',
+    sampling: result.initialization
+      ? 'frame 0 follows declared no-drive conditioning; output samples are solver-step-end values. Drive/applied field averages only the preceding internal timestep, not the output sample window. Internal spike detection precedes output sampling; no ADC/anti-alias/filter model'
+      : 'frame 0 equilibrium; subsequent frames are step-end values, with interval-averaged drive/applied field; no ADC/filter model',
     assumptions: [
-      'canonical synthetic arbor and layer fractions',
+      result.initialization
+        ? 'Human temporal reconstructed dendrites; published synthetic axon stub; illustrative slab/layers'
+        : 'canonical synthetic arbor and layer fractions',
       'infinite homogeneous isotropic conductor',
-      'passive sealed tree',
+      result.initialization
+        ? 'Source-fitted active sealed tree; mixed-species channel kinetics at 34 °C'
+        : 'passive sealed tree',
       'point sensing at Utah apices; exposed contact area unknown',
       'implant displacement and conductivity contrast omitted',
       'one-way applied field → membrane → ideal recording; no ephaptic feedback',
-      'no action potentials, acquisition electronics, mechanics or experimental validation',
+      result.initialization
+        ? 'No acquisition electronics, mechanics or independent experimental validation'
+        : 'no action potentials, acquisition electronics, mechanics or experimental validation',
     ],
     anatomy: { layers: world.layers, sourceIds: ['wagstyl2020'] },
     implant: {
@@ -330,9 +503,40 @@ export function resultBundle(result) {
       geometryNotes: world.model.notes,
     },
     morphology: world.neuron,
+    ...(result.initialization
+      ? {
+          zeroAreaNodes:
+            'Junction entries have no membrane or forward source. Their algebraic voltage minus the assigned extracellular reference is not a physical transmembrane measurement; current is zero.',
+        }
+      : {}),
+    ...(result.initialization
+      ? {
+          activeModel: {
+            ...modelRegistry.find((m) => m.id === result.config.neuron.modelId),
+            fit: activeModelData.fit,
+            sourceCommit: activeModelData.sourceCommit,
+            sourceHashes: activeModelData.sourceHashes,
+            generatorSha256: activeModelData.generatorSha256,
+          },
+          channelUnits: {
+            sodiumNa: 'nA outward',
+            potassiumNa: 'nA outward',
+            calciumNa: 'nA outward',
+            hcnNa: 'nA outward',
+            leakNa: 'nA outward',
+            capacitiveNa: 'nA outward',
+            calciumMm: 'mM',
+            sodiumOpen: 'probability',
+          },
+          channelSampling:
+            'Currents use the state/reversal employed by the voltage solve; channel concentrations/probabilities are after the state update at the sample time.',
+        }
+      : {}),
     evidenceRegistry,
     parameterDefaults: {
-      role: 'Default evidence metadata; actual experiment values are in config',
+      role: result.initialization
+        ? 'Passive defaults are not active membrane values. Active section parameters and densities are in activeModel.fit; run and placement values are in config.'
+        : 'Default evidence metadata; actual experiment values are in config',
       parameters: parameterRegistry,
     },
     sourceIds: [
@@ -342,6 +546,7 @@ export function resultBundle(result) {
       'neuron-reference',
       'lfpykit-reference',
       'blackrock-utah',
+      ...(result.initialization ? ['mosher-wei2020', 'allen-human-active-license'] : []),
     ],
   };
 }

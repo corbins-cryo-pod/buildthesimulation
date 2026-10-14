@@ -1,0 +1,476 @@
+{
+  "schemaVersion": "cortex-active-benchmark/1",
+  "engineVersion": "cortex-active/0.2.0",
+  "generatedAt": "2026-10-13T12:16:18.493Z",
+  "runtime": {
+    "node": "v24.19.0",
+    "cpu": "AMD EPYC 9V74 80-Core Processor"
+  },
+  "scope": "Node CPU solver, including declared conditioning on cold runs; output arrays only; no browser FPS or whole-process peak memory",
+  "cases": [
+    {
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "segmentLengthUm": 40,
+          "modelId": "allen-human-571654895/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-571654895/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "intracellular-current",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 40,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "elapsedMs": 3601.549623,
+      "outputBytes": 18386840,
+      "frames": 801,
+      "compartments": 286,
+      "conditioning": "computed",
+      "somaSpikes": [
+        {
+          "timeMs": 9.293949523611893,
+          "compartmentId": "soma[0]:0"
+        }
+      ],
+      "firstCrossing": {
+        "timeMs": 9.020456068584641,
+        "compartmentId": "axon_stub[1]:0",
+        "kind": "axon"
+      },
+      "peakSomaMv": 23.682527424273,
+      "peakNeuralUv": 4.773215592908996,
+      "conservationNa": 1.8518573176654063e-12,
+      "kclNa": 1.4855042109601646e-12
+    },
+    {
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "segmentLengthUm": 40,
+          "modelId": "allen-human-571654895/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-571654895/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "intracellular-current",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 40,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "elapsedMs": 1125.9810660000003,
+      "outputBytes": 18386840,
+      "frames": 801,
+      "compartments": 286,
+      "conditioning": "reused identical state",
+      "somaSpikes": [
+        {
+          "timeMs": 9.293949523611893,
+          "compartmentId": "soma[0]:0"
+        }
+      ],
+      "firstCrossing": {
+        "timeMs": 9.020456068584641,
+        "compartmentId": "axon_stub[1]:0",
+        "kind": "axon"
+      },
+      "peakSomaMv": 23.682527424273,
+      "peakNeuralUv": 4.773215592908996,
+      "conservationNa": 1.8518573176654063e-12,
+      "kclNa": 1.4855042109601646e-12
+    },
+    {
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "segmentLengthUm": 40,
+          "modelId": "allen-human-571654895/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-571654895/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "intracellular-current",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 40,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "elapsedMs": 7167.938007000001,
+      "outputBytes": 18386840,
+      "frames": 801,
+      "compartments": 286,
+      "conditioning": "computed",
+      "somaSpikes": [
+        {
+          "timeMs": 9.286283285588453,
+          "compartmentId": "soma[0]:0"
+        }
+      ],
+      "firstCrossing": {
+        "timeMs": 9.014603232164879,
+        "compartmentId": "axon_stub[1]:0",
+        "kind": "axon"
+      },
+      "peakSomaMv": 23.717563463528325,
+      "peakNeuralUv": 4.787982067976593,
+      "conservationNa": 3.530280234809169e-12,
+      "kclNa": 2.991436959254301e-12
+    },
+    {
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "segmentLengthUm": 20,
+          "modelId": "allen-human-571654895/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-571654895/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "intracellular-current",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 40,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "elapsedMs": 12083.45882,
+      "outputBytes": 28512744,
+      "frames": 801,
+      "compartments": 444,
+      "conditioning": "computed",
+      "somaSpikes": [
+        {
+          "timeMs": 9.251579102273812,
+          "compartmentId": "soma[0]:0"
+        }
+      ],
+      "firstCrossing": {
+        "timeMs": 9.030279191573277,
+        "compartmentId": "axon_stub[1]:2",
+        "kind": "axon"
+      },
+      "peakSomaMv": 23.53184705760366,
+      "peakNeuralUv": 4.842210030755091,
+      "conservationNa": 2.5943893029994197e-12,
+      "kclNa": 2.59582698218519e-12
+    }
+  ],
+  "thresholds": [
+    {
+      "mode": "intracellular-current",
+      "criterion": "soma",
+      "windowEndMs": 15,
+      "thresholdMv": -25,
+      "dtMs": 0.005,
+      "maximumSegmentUm": 40,
+      "lowerNoCrossing": 0.91875,
+      "upperCrossing": 0.9374999999999999,
+      "units": "nA"
+    },
+    {
+      "mode": "extracellular-stimulation",
+      "criterion": "any membrane",
+      "windowEndMs": 15,
+      "thresholdMv": -25,
+      "dtMs": 0.005,
+      "maximumSegmentUm": 40,
+      "lowerNoCrossing": 19.375,
+      "upperCrossing": 20,
+      "units": "µA"
+    },
+    {
+      "mode": "intracellular-current",
+      "criterion": "soma",
+      "windowEndMs": 15,
+      "thresholdMv": -25,
+      "dtMs": 0.0025,
+      "maximumSegmentUm": 40,
+      "lowerNoCrossing": 0.91875,
+      "upperCrossing": 0.9374999999999999,
+      "units": "nA"
+    },
+    {
+      "mode": "extracellular-stimulation",
+      "criterion": "any membrane",
+      "windowEndMs": 15,
+      "thresholdMv": -25,
+      "dtMs": 0.0025,
+      "maximumSegmentUm": 40,
+      "lowerNoCrossing": 19.375,
+      "upperCrossing": 20,
+      "units": "µA"
+    },
+    {
+      "mode": "intracellular-current",
+      "criterion": "soma",
+      "windowEndMs": 15,
+      "thresholdMv": -25,
+      "dtMs": 0.0025,
+      "maximumSegmentUm": 20,
+      "lowerNoCrossing": 0.91875,
+      "upperCrossing": 0.9374999999999999,
+      "units": "nA"
+    },
+    {
+      "mode": "extracellular-stimulation",
+      "criterion": "any membrane",
+      "windowEndMs": 15,
+      "thresholdMv": -25,
+      "dtMs": 0.0025,
+      "maximumSegmentUm": 20,
+      "lowerNoCrossing": 18.125,
+      "upperCrossing": 18.75,
+      "units": "µA"
+    }
+  ]
+}

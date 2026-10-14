@@ -1,6 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-import { freshConfig, ENGINE_VERSION } from '../lib/cortex/config.js';
-import { makeWorld } from '../lib/cortex/world.js';
+import {
+  freshConfig,
+  freshActiveConfig,
+  ENGINE_VERSION,
+  ACTIVE_ENGINE_VERSION,
+} from '../lib/cortex/config.js';
+import { makeWorld, placedContacts } from '../lib/cortex/world.js';
+import { getDeviceModel } from '../lib/devices/catalog.js';
+import { modelRegistry, ACTIVE_MODEL_ID, PASSIVE_MODEL_ID } from '../lib/cortex/model-registry.js';
 import {
   runExperiment,
   encodeJson,
@@ -44,7 +51,7 @@ function NumberControl({ label, value, min, max, step = 1, onChange }) {
     </label>
   );
 }
-function Trace({ time, series, unit, title, frame = 0 }) {
+function Trace({ time, series, unit, title, frame = 0, spikes = [] }) {
   const w = 440,
     h = 156,
     l = 57,
@@ -107,6 +114,11 @@ function Trace({ time, series, unit, title, frame = 0 }) {
         ))}
         {series.map((s) => (
           <polyline points={path(s.values)} fill="none" stroke={s.color} stroke-width="1.6" />
+        ))}
+        {spikes.map((s) => (
+          <line x1={x(s.timeMs)} x2={x(s.timeMs)} y1={top} y2={top + 10} stroke="#b3532e">
+            <title>Computed crossing at {format(s.timeMs)} ms</title>
+          </line>
         ))}
         <line
           x1={x(time[frame] ?? 0)}
@@ -219,11 +231,13 @@ export default function CortexLaboratory() {
       return { world: null, error: e.message };
     }
   }, [config]);
+  const active = !!config.neuron.modelId,
+    model = modelRegistry.find((m) => m.id === (config.neuron.modelId ?? PASSIVE_MODEL_ID));
   const world = state.world,
     stale = !!result && encodeJson(result.config) !== encodeJson(config),
     ready = result && !stale && world ? result : null;
-  const latest = useRef({ world, section, opacity, ready, frame, selected });
-  latest.current = { world, section, opacity, ready, frame, selected };
+  const latest = useRef({ world, section, opacity, ready, frame, selected, projection });
+  latest.current = { world, section, opacity, ready, frame, selected, projection };
   const edit = (group, key, value) => {
     setConfig((c) => ({ ...c, [group]: { ...c[group], [key]: value } }));
     setPlaying(false);
@@ -247,7 +261,8 @@ export default function CortexLaboratory() {
     setPlaying(false);
     try {
       const valid = makeWorld(config).config;
-      cancel();
+      if (running) cancel();
+      else runId.current++;
       const id = ++runId.current;
       setRunning(true);
       setProgress(0);
@@ -257,8 +272,6 @@ export default function CortexLaboratory() {
         setFrame(0);
         setRunning(false);
         setProgress(1);
-        worker.current?.terminate();
-        worker.current = null;
       };
       const fail = (message) => {
         if (!mounted.current || id !== runId.current) return;
@@ -268,13 +281,13 @@ export default function CortexLaboratory() {
         worker.current = null;
       };
       try {
-        worker.current = new Worker(new URL('../lib/cortex/worker.js', import.meta.url), {
+        worker.current ??= new Worker(new URL('../lib/cortex/worker.js', import.meta.url), {
           type: 'module',
         });
       } catch {
-        if (Math.ceil(valid.solver.durationMs / valid.solver.dtMs) > 5000) {
+        if (valid.neuron.modelId || Math.ceil(valid.solver.durationMs / valid.solver.dtMs) > 5000) {
           fail(
-            'Workers are unavailable. Reduce duration/timestep to at most 5,000 steps for the CPU fallback.',
+            'Workers are unavailable. The active model requires a worker; passive CPU fallback supports at most 5,000 steps.',
           );
           return;
         }
@@ -317,6 +330,7 @@ export default function CortexLaboratory() {
         const s = latest.current;
         if (s.world) {
           api.setWorld(s.world, s);
+          api.setProjection(s.projection);
           api.setFrame(s.ready || null, s.frame, s.selected);
         }
       })
@@ -334,6 +348,11 @@ export default function CortexLaboratory() {
     };
   }, []);
   useEffect(() => {
+    setSelected(0);
+    setPlaying(false);
+  }, [config.neuron.modelId, config.neuron.segmentLengthUm]);
+  useEffect(() => view.current?.setProjection(projection), [projection]);
+  useEffect(() => {
     if (world && view.current) {
       view.current.setWorld(world, { section, opacity });
       view.current.setFrame(ready || null, frame, selected);
@@ -350,7 +369,7 @@ export default function CortexLaboratory() {
         setFrame((f) => {
           const next = Math.min(
             result.timeMs.length - 1,
-            f + Math.max(1, Math.round(0.5 / config.solver.dtMs)),
+            f + Math.max(1, Math.round(0.5 / (config.solver.sampleMs ?? config.solver.dtMs))),
           );
           if (next === result.timeMs.length - 1) setPlaying(false);
           return next;
@@ -359,7 +378,13 @@ export default function CortexLaboratory() {
     );
     return () => clearInterval(timer);
   }, [playing, ready]);
-  const contacts = world?.contacts ?? [],
+  const contacts = useMemo(() => {
+      try {
+        return placedContacts(getDeviceModel(config.implant.deviceId), config.implant);
+      } catch {
+        return [];
+      }
+    }, [config.implant]),
     selectedNode = world?.neuron.nodes[Math.min(selected, (world?.neuron.nodes.length ?? 1) - 1)];
   const traces = useMemo(() => {
     if (!ready) return null;
@@ -371,6 +396,10 @@ export default function CortexLaboratory() {
       differential: Float64Array.from(pair[0], (v, i) => v - pair[1][i]),
       voltage: Float64Array.from(result.timeMs, (_, k) => result.membraneMv[k * n + index]),
       current: Float64Array.from(result.timeMs, (_, k) => result.membraneCurrentNa[k * n + index]),
+      soma: Float64Array.from(
+        result.timeMs,
+        (_, k) => result.membraneMv[k * n + (result.somaIndex ?? 0)],
+      ),
     };
   }, [ready, result, component, selected]);
   const selector = (label, ids, onChange) => (
@@ -383,7 +412,9 @@ export default function CortexLaboratory() {
             onChange={(e) => onChange(ids.map((v, j) => (j === i ? e.currentTarget.value : v)))}
           >
             {contacts.map((s) => (
-              <option value={s.id}>{s.id}</option>
+              <option value={s.id} disabled={ids.some((other, j) => j !== i && other === s.id)}>
+                {s.id}
+              </option>
             ))}
           </select>
         </label>
@@ -394,21 +425,57 @@ export default function CortexLaboratory() {
     <section class="cortex-lab">
       <header class="cx-heading">
         <div>
-          <p class="cx-eyebrow">Cortex Laboratory · foundation 01</p>
+          <p class="cx-eyebrow">Cortex Laboratory · active reference 02</p>
           <h1>From membrane to contact.</h1>
           <p>Place a real array. Follow calculated currents through a shared cortical scene.</p>
         </div>
         <a href="/cortex/methods/">Equations, evidence & scope →</a>
       </header>
       <div class="cx-scope">
-        <strong>Exploratory passive model</strong>
-        <span>Numerical verification · no experimental validation · no action potentials</span>
+        <strong>
+          {active ? 'Human temporal cell · published active model' : 'Exploratory passive model'}
+        </strong>
+        <span>
+          {active
+            ? 'Reconstructed dendrites · synthetic axon stub · no independent experimental validation'
+            : 'Numerical verification · no experimental validation · no action potentials'}
+        </span>
       </div>
       <div class="cx-lab-grid">
         <aside class="cx-config">
           <fieldset disabled={running}>
             <details open>
               <summary>01 / Experiment</summary>
+              <label>
+                Neuron model
+                <select
+                  value={config.neuron.modelId ?? PASSIVE_MODEL_ID}
+                  onChange={(e) => {
+                    setConfig(
+                      e.currentTarget.value === ACTIVE_MODEL_ID
+                        ? freshActiveConfig()
+                        : freshConfig(),
+                    );
+                    setSelected(0);
+                    setPlaying(false);
+                    setError('');
+                  }}
+                >
+                  {modelRegistry.map((m) => (
+                    <option value={m.id}>{m.label}</option>
+                  ))}
+                </select>
+              </label>
+              <p class="cx-muted">
+                {model?.scope} <a href={model?.source}>Model source →</a>
+              </p>
+              {active && (
+                <p class="cx-muted">
+                  34 °C · fitted channel distributions · {config.solver.settleMs} ms initialization
+                  conditioning. Detailed runs can take several seconds; repeat runs reuse identical
+                  conditioning.
+                </p>
+              )}
               <label>
                 Protocol
                 <select
@@ -426,13 +493,15 @@ export default function CortexLaboratory() {
                     label="Total synaptic conductance · nS"
                     value={config.protocol.synapseNs}
                     min={0}
-                    max={5}
+                    max={active ? 100 : 5}
                     step={0.1}
                     onChange={(v) => edit('protocol', 'synapseNs', v)}
                   />
                   <p class="cx-muted">
-                    A step conductance across the distal 100 µm of the apical branch; passive return
-                    currents generate the recording.
+                    {active
+                      ? world?.neuron.synapseDescription
+                      : 'A step conductance across the distal 100 µm of the apical branch.'}{' '}
+                    Total membrane currents generate the recording.
                   </p>
                 </>
               ) : config.protocol.mode === 'intracellular-current' ? (
@@ -440,8 +509,8 @@ export default function CortexLaboratory() {
                   <NumberControl
                     label="Soma current · nA"
                     value={config.protocol.injectionNa}
-                    min={-0.2}
-                    max={0.2}
+                    min={active ? -1 : -0.2}
+                    max={active ? 2 : 0.2}
                     step={0.01}
                     onChange={(v) => edit('protocol', 'injectionNa', v)}
                   />
@@ -459,7 +528,7 @@ export default function CortexLaboratory() {
                     label="Phase current magnitude · µA"
                     value={config.protocol.amplitudeUa}
                     min={0}
-                    max={10}
+                    max={active ? 100 : 10}
                     step={0.1}
                     onChange={(v) => edit('protocol', 'amplitudeUa', v)}
                   />
@@ -484,6 +553,23 @@ export default function CortexLaboratory() {
                     point sources at apices, without an electrode interface model.
                   </p>
                 </>
+              )}
+              {active && config.protocol.mode === 'extracellular-stimulation' && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    const c = freshActiveConfig();
+                    c.protocol.mode = 'extracellular-stimulation';
+                    c.protocol.amplitudeUa = 40;
+                    c.protocol.sourceContactIds = ['r4-c4', 'r4-c5'];
+                    c.recording.contactIds = ['r3-c3', 'r3-c6'];
+                    setConfig(c);
+                    setSelected(0);
+                    setPlaying(false);
+                  }}
+                >
+                  Load reference extracellular configuration
+                </button>
               )}
               <NumberControl
                 label="Onset · ms"
@@ -564,10 +650,11 @@ export default function CortexLaboratory() {
               </a>
             </details>
             <details>
-              <summary>03 / Anatomy & passive cell</summary>
+              <summary>03 / Anatomy & membrane</summary>
               <p class="cx-muted">
-                Representative slab, synthetic layer fractions and one idealized arbor. Human motor
-                anatomy motivates the scope; this is not a reconstructed M1 neuron.
+                {active
+                  ? 'Human middle temporal layer-2 spiny dendrites in an illustrative slab; the published model uses a synthetic active axon stub. Placement depth does not change its cortical identity.'
+                  : 'Representative slab, synthetic layer fractions and one idealized passive arbor.'}
               </p>
               <NumberControl
                 label="Cortical thickness · µm"
@@ -595,49 +682,86 @@ export default function CortexLaboratory() {
                 step={0.025}
                 onChange={(v) => edit('tissue', 'conductivitySPerM', v)}
               />
-              <NumberControl
-                label="Specific capacitance · µF/cm²"
-                value={config.membrane.capacitanceUfPerCm2}
-                min={0.2}
-                max={2}
-                step={0.1}
-                onChange={(v) => edit('membrane', 'capacitanceUfPerCm2', v)}
-              />
-              <NumberControl
-                label="Membrane resistance · Ω cm²"
-                value={config.membrane.resistanceOhmCm2}
-                min={5000}
-                max={100000}
-                step={1000}
-                onChange={(v) => edit('membrane', 'resistanceOhmCm2', v)}
-              />
-              <NumberControl
-                label="Axial resistivity · Ω cm"
-                value={config.membrane.axialResistivityOhmCm}
-                min={50}
-                max={300}
-                step={10}
-                onChange={(v) => edit('membrane', 'axialResistivityOhmCm', v)}
-              />
+              {!active && (
+                <>
+                  <NumberControl
+                    label="Specific capacitance · µF/cm²"
+                    value={config.membrane.capacitanceUfPerCm2}
+                    min={0.2}
+                    max={2}
+                    step={0.1}
+                    onChange={(v) => edit('membrane', 'capacitanceUfPerCm2', v)}
+                  />
+                  <NumberControl
+                    label="Membrane resistance · Ω cm²"
+                    value={config.membrane.resistanceOhmCm2}
+                    min={5000}
+                    max={100000}
+                    step={1000}
+                    onChange={(v) => edit('membrane', 'resistanceOhmCm2', v)}
+                  />
+                  <NumberControl
+                    label="Axial resistivity · Ω cm"
+                    value={config.membrane.axialResistivityOhmCm}
+                    min={50}
+                    max={300}
+                    step={10}
+                    onChange={(v) => edit('membrane', 'axialResistivityOhmCm', v)}
+                  />
+                </>
+              )}
+              {active && (
+                <p class="cx-muted">
+                  Capacitance, axial resistivity and channel densities use the pinned source model
+                  and vary by section type.{' '}
+                  <a href="/cortex/methods/#active-model">Read model conventions →</a>
+                </p>
+              )}
             </details>
             <details>
               <summary>04 / Resolution & files</summary>
               <NumberControl
                 label="Timestep · ms"
                 value={config.solver.dtMs}
-                min={0.0025}
-                max={0.1}
-                step={0.0025}
+                min={active ? 0.00125 : 0.0025}
+                max={active ? 0.01 : 0.1}
+                step={active ? 0.00125 : 0.0025}
                 onChange={(v) => edit('solver', 'dtMs', v)}
               />
-              <NumberControl
-                label="Maximum segment length · µm"
-                value={config.neuron.segmentLengthUm}
-                min={10}
-                max={100}
-                step={10}
-                onChange={(v) => edit('neuron', 'segmentLengthUm', v)}
-              />
+              {active ? (
+                <label>
+                  Maximum segment length · µm
+                  <select
+                    value={config.neuron.segmentLengthUm}
+                    onChange={(e) =>
+                      edit('neuron', 'segmentLengthUm', Number(e.currentTarget.value))
+                    }
+                  >
+                    {[10, 20, 40, 80].map((v) => (
+                      <option value={v}>{v}</option>
+                    ))}
+                  </select>
+                </label>
+              ) : (
+                <NumberControl
+                  label="Maximum segment length · µm"
+                  value={config.neuron.segmentLengthUm}
+                  min={10}
+                  max={100}
+                  step={10}
+                  onChange={(v) => edit('neuron', 'segmentLengthUm', v)}
+                />
+              )}
+              {active && (
+                <NumberControl
+                  label="Output sample interval · ms"
+                  value={config.solver.sampleMs}
+                  min={config.solver.dtMs}
+                  max={0.1}
+                  step={0.005}
+                  onChange={(v) => edit('solver', 'sampleMs', v)}
+                />
+              )}
               <NumberControl
                 label="Experiment length · ms"
                 value={config.solver.durationMs}
@@ -712,7 +836,7 @@ export default function CortexLaboratory() {
                 : stale
                   ? 'Configuration changed. Run again to update results.'
                   : ready
-                    ? `${result.diagnostics.compartments} compartments · ${result.timeMs.at(-1)} ms solved`
+                    ? `${active?`${world.neuron.membraneCompartments} membrane compartments + ${result.diagnostics.compartments-world.neuron.membraneCompartments} junction nodes`:`${result.diagnostics.compartments} compartments`} · ${result.timeMs.at(-1)} ms solved`
                     : 'Ready to calculate.'}
             </p>
           </div>
@@ -763,7 +887,6 @@ export default function CortexLaboratory() {
                 checked={projection}
                 onChange={(e) => {
                   setProjection(e.currentTarget.checked);
-                  view.current?.setProjection(e.currentTarget.checked);
                 }}
               />{' '}
               Orthographic
@@ -783,8 +906,10 @@ export default function CortexLaboratory() {
           </div>
           <p class="cx-muted cx-caption">
             {viewStatus}. Thin lines mark neurite centers; crosshairs mark recording sites. Colors
-            show ΔVₘ from −10 to +10 mV, with saturation beyond this range. White marks the selected
-            compartment.
+            {active
+              ? 'show membrane voltage from −100 to +40 mV.'
+              : 'show ΔVₘ from −10 to +10 mV, saturating beyond this range.'}{' '}
+            The selection marker identifies the inspected compartment.
           </p>
           <div class="cx-layers">
             {world?.layers.map((l) => (
@@ -807,9 +932,9 @@ export default function CortexLaboratory() {
                   value={Math.min(selected, world.neuron.nodes.length - 1)}
                   onChange={(e) => setSelected(Number(e.currentTarget.value))}
                 >
-                  {world.neuron.nodes.map((n, i) => (
-                    <option value={i}>{n.id}</option>
-                  ))}
+                  {world.neuron.nodes.map(
+                    (n, i) => n.kind !== 'junction' && <option value={i}>{n.id}</option>,
+                  )}
                 </select>
               </label>
               <div class="cx-readouts">
@@ -826,6 +951,35 @@ export default function CortexLaboratory() {
                   Outward current / nA<b>{traces ? format(traces.current[frame]) : '—'}</b>
                 </span>
               </div>
+              {ready?.channels && (
+                <div class="cx-readouts">
+                  {[
+                    ['sodiumNa', 'Na outward / nA'],
+                    ['potassiumNa', 'K outward / nA'],
+                    ['calciumNa', 'Ca outward / nA'],
+                    ['hcnNa', 'HCN outward / nA'],
+                    ['leakNa', 'Leak outward / nA'],
+                    ['capacitiveNa', 'Capacitive / nA'],
+                    ['calciumMm', 'Intracellular Ca / mM'],
+                    ['sodiumOpen', 'NaV open probability'],
+                  ].map(([key, label]) => (
+                    <span>
+                      {label}
+                      <b>
+                        {format(
+                          ready.channels[key][frame * ready.diagnostics.compartments + selected],
+                        )}
+                      </b>
+                    </span>
+                  ))}
+                </div>
+              )}
+              {ready?.channels && (
+                <p class="cx-muted">
+                  Currents use channel states from the voltage solve. NaV open probability and
+                  calcium are shown after the state update at this sample.
+                </p>
+              )}
               <table>
                 <thead>
                   <tr>
@@ -930,6 +1084,25 @@ export default function CortexLaboratory() {
                 }
               />
               <Trace
+                title={
+                  active ? 'Soma voltage · computed threshold crossings' : 'Soma membrane voltage'
+                }
+                time={result.timeMs}
+                unit="mV"
+                frame={frame}
+                spikes={result.spikes ?? []}
+                series={[{ label: 'Soma Vₘ', values: traces.soma, color: '#b3532e' }]}
+              />
+              {active && (
+                <p class="cx-muted">
+                  {result.spikes.length} soma crossings at −25 mV · internal timestep{' '}
+                  {config.solver.dtMs} ms · output samples {config.solver.sampleMs} ms.
+                  {result.diagnostics.firstThresholdCrossing &&
+                    ` Earliest modeled crossing: ${result.diagnostics.firstThresholdCrossing.compartmentId} at ${format(result.diagnostics.firstThresholdCrossing.timeMs)} ms.`}{' '}
+                  Crossing location depends on this morphology and the synthetic axon stub.
+                </p>
+              )}
+              <Trace
                 title={`${selectedNode.id} · membrane voltage`}
                 time={result.timeMs}
                 unit="mV"
@@ -943,7 +1116,9 @@ export default function CortexLaboratory() {
                 frame={frame}
                 series={[
                   {
-                    label: 'Capacitive + leak + synaptic',
+                    label: active
+                      ? 'Capacitive + ionic + synaptic'
+                      : 'Capacitive + leak + synaptic',
                     values: traces.current,
                     color: '#8e739f',
                   },
@@ -988,6 +1163,12 @@ export default function CortexLaboratory() {
                 <span>
                   Solver time<b>{format(result.diagnostics.elapsedMs)} ms</b>
                 </span>
+                {active && (
+                  <span>
+                    Compute / simulated time
+                    <b>{format(result.diagnostics.elapsedMs / config.solver.durationMs)}×</b>
+                  </span>
+                )}
                 <span>
                   Current-balance error
                   <b>{result.diagnostics.maxConservationResidualNa.toExponential(2)} nA</b>
@@ -1043,6 +1224,11 @@ export default function CortexLaboratory() {
                     </thead>
                     <tbody>
                       <tr>
+                        <td>Neuron model</td>
+                        <td>{pinned.config.neuron.modelId ?? PASSIVE_MODEL_ID}</td>
+                        <td>{config.neuron.modelId ?? PASSIVE_MODEL_ID}</td>
+                      </tr>
+                      <tr>
                         <td>Implant X / µm</td>
                         <td>{pinned.config.implant.translationUm[0]}</td>
                         <td>{config.implant.translationUm[0]}</td>
@@ -1084,9 +1270,12 @@ export default function CortexLaboratory() {
           <details class="cx-inspector">
             <summary>Model limits & next steps</summary>
             <p>
-              These are mathematical experiments with a passive synthetic arbor. Spikes, population
-              activity, layered conductivity, finite exposed contacts, acquisition electronics,
-              mechanics and empirical validation remain unmodeled here.
+              {active
+                ? 'This model has human reconstructed dendrites, fitted active channels and a synthetic axon stub. Computed threshold crossings depend on this model and placement.'
+                : 'This reference is a passive synthetic arbor without action potentials.'}{' '}
+              Population activity, layered conductivity, finite exposed contacts, acquisition
+              electronics, mechanics and independent experimental validation remain outside this
+              milestone.
             </p>
             <p>
               The existing active stimulation and synthetic recording tools remain available under{' '}
@@ -1094,7 +1283,7 @@ export default function CortexLaboratory() {
               model.
             </p>
             <a href="/cortex/methods/">Read the scientific scope →</a>
-            <p class="cx-muted">{ENGINE_VERSION}</p>
+            <p class="cx-muted">{active ? ACTIVE_ENGINE_VERSION : ENGINE_VERSION}</p>
           </details>
         </aside>
       </div>

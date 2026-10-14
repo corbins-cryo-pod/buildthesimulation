@@ -1,6 +1,9 @@
 // Public experiment contract. Geometry µm; time ms; voltage mV; current nA.
 export const SCHEMA_VERSION = 'cortex-experiment/1';
 export const ENGINE_VERSION = 'cortex-passive/0.1.0';
+export const ACTIVE_SCHEMA_VERSION = 'cortex-experiment/2';
+export const ACTIVE_ENGINE_VERSION = 'cortex-active/0.2.0';
+export const ACTIVE_MODEL_ID = 'allen-human-571654895/1';
 export const DEFAULT_CONFIG = {
   schemaVersion: SCHEMA_VERSION,
   anatomy: { widthUm: 6000, thicknessUm: 4000 },
@@ -35,6 +38,17 @@ export const DEFAULT_CONFIG = {
   solver: { dtMs: 0.025, durationMs: 40 },
 };
 export const freshConfig = () => structuredClone(DEFAULT_CONFIG);
+export function freshActiveConfig() {
+  const c = freshConfig();
+  c.schemaVersion = ACTIVE_SCHEMA_VERSION;
+  c.neuron.modelId = ACTIVE_MODEL_ID;
+  c.neuron.rotationDeg = [0, 0, 0];
+  c.membrane = { sourceModelId: ACTIVE_MODEL_ID, temperatureC: 34 };
+  c.solver = { dtMs: 0.005, durationMs: 40, sampleMs: 0.05, settleMs: 100 };
+  c.protocol.mode = 'intracellular-current';
+  c.protocol.injectionNa = 1.2;
+  return c;
+}
 const finiteRange = (value, min, max, name) => {
   if (typeof value !== 'number' || !Number.isFinite(value) || value < min || value > max)
     throw new Error(`${name} must be between ${min} and ${max}.`);
@@ -44,11 +58,15 @@ const vector = (v, min, max, name) => {
   v.forEach((x) => finiteRange(x, min, max, name));
 };
 export function validateConfig(input) {
-  if (!input || input.schemaVersion !== SCHEMA_VERSION)
+  if (!input || ![SCHEMA_VERSION, ACTIVE_SCHEMA_VERSION].includes(input.schemaVersion))
     throw new Error(
       `Expected ${SCHEMA_VERSION}; incompatible configurations are not silently migrated.`,
     );
   const c = structuredClone(input);
+  const active = c.schemaVersion === ACTIVE_SCHEMA_VERSION;
+  const template = active ? freshActiveConfig() : DEFAULT_CONFIG;
+  if (active && c.neuron?.modelId !== ACTIVE_MODEL_ID)
+    throw new Error('Unknown active model revision.');
   for (const key of Object.keys(c))
     if (!Object.hasOwn(DEFAULT_CONFIG, key)) throw new Error(`Unknown configuration field ${key}.`);
   for (const key of [
@@ -73,7 +91,7 @@ export function validateConfig(input) {
     'solver',
   ])
     for (const field of Object.keys(c[key]))
-      if (!Object.hasOwn(DEFAULT_CONFIG[key], field))
+      if (!Object.hasOwn(template[key], field))
         throw new Error(`Unknown configuration field ${key}.${field}.`);
   finiteRange(c.anatomy.widthUm, 5000, 10000, 'Patch width (µm)');
   finiteRange(c.anatomy.thicknessUm, 3000, 5000, 'Cortical thickness (µm)');
@@ -83,11 +101,21 @@ export function validateConfig(input) {
   vector(c.implant.rotationDeg, -180, 180, 'Implant rotation (degrees)');
   vector(c.neuron.somaUm, -2500, 4500, 'Soma position (µm)');
   finiteRange(c.neuron.segmentLengthUm, 10, 100, 'Maximum compartment length (µm)');
+  if (active) {
+    if (![10, 20, 40, 80].includes(c.neuron.segmentLengthUm))
+      throw new Error('Active morphology uses verified 10, 20, 40 or 80 µm discretizations.');
+    vector(c.neuron.rotationDeg, -180, 180, 'Cell orientation (degrees)');
+  }
   finiteRange(c.tissue.conductivitySPerM, 0.1, 1, 'Conductivity (S/m)');
-  finiteRange(c.membrane.capacitanceUfPerCm2, 0.2, 2, 'Membrane capacitance (µF/cm²)');
-  finiteRange(c.membrane.resistanceOhmCm2, 5000, 100000, 'Membrane resistance (Ω cm²)');
-  finiteRange(c.membrane.axialResistivityOhmCm, 50, 300, 'Axial resistivity (Ω cm)');
-  finiteRange(c.membrane.restMv, -90, -40, 'Rest potential (mV)');
+  if (active) {
+    if (c.membrane.sourceModelId !== ACTIVE_MODEL_ID || c.membrane.temperatureC !== 34)
+      throw new Error('Use the pinned active membrane model at 34 °C.');
+  } else {
+    finiteRange(c.membrane.capacitanceUfPerCm2, 0.2, 2, 'Membrane capacitance (µF/cm²)');
+    finiteRange(c.membrane.resistanceOhmCm2, 5000, 100000, 'Membrane resistance (Ω cm²)');
+    finiteRange(c.membrane.axialResistivityOhmCm, 50, 300, 'Axial resistivity (Ω cm)');
+    finiteRange(c.membrane.restMv, -90, -40, 'Rest potential (mV)');
+  }
   if (!['infinity', 'bipolar'].includes(c.recording.reference))
     throw new Error('Unsupported recording reference.');
   if (!['line', 'point'].includes(c.recording.sourceModel))
@@ -109,15 +137,31 @@ export function validateConfig(input) {
     throw new Error('Unsupported experiment mode.');
   finiteRange(c.protocol.startMs, 1, 10, 'Drive start (ms)');
   finiteRange(c.protocol.durationMs, 0.1, 10, 'Drive duration (ms)');
-  finiteRange(c.protocol.synapseNs, 0, 5, 'Synaptic conductance (nS)');
+  finiteRange(c.protocol.synapseNs, 0, active ? 100 : 5, 'Synaptic conductance (nS)');
   finiteRange(c.protocol.synapseReversalMv, -90, 20, 'Synapse reversal (mV)');
-  finiteRange(c.protocol.injectionNa, -0.2, 0.2, 'Intracellular current (nA)');
+  finiteRange(
+    c.protocol.injectionNa,
+    active ? -1 : -0.2,
+    active ? 2 : 0.2,
+    'Intracellular current (nA)',
+  );
   vector(c.protocol.bathReturnUm, -10000, 10000, 'Bath return (µm)');
-  finiteRange(c.protocol.amplitudeUa, 0, 10, 'Stimulation amplitude (µA)');
+  finiteRange(c.protocol.amplitudeUa, 0, active ? 100 : 10, 'Stimulation amplitude (µA)');
   finiteRange(c.protocol.phaseUs, 50, 1000, 'Phase duration (µs)');
   finiteRange(c.protocol.gapUs, 0, 1000, 'Interphase gap (µs)');
-  finiteRange(c.solver.dtMs, 0.0025, 0.1, 'Timestep (ms)');
+  finiteRange(c.solver.dtMs, active ? 0.00125 : 0.0025, active ? 0.01 : 0.1, 'Timestep (ms)');
   finiteRange(c.solver.durationMs, 20, 100, 'Experiment duration (ms)');
+  if (active) {
+    finiteRange(c.solver.sampleMs, c.solver.dtMs, 0.1, 'Output sampling interval (ms)');
+    finiteRange(c.solver.settleMs, 100, 500, 'Initialization settling time (ms)');
+    for (const [name, value] of [
+      ['sampleMs', c.solver.sampleMs],
+      ['durationMs', c.solver.durationMs],
+      ['settleMs', c.solver.settleMs],
+    ])
+      if (Math.abs(value / c.solver.dtMs - Math.round(value / c.solver.dtMs)) > 1e-8)
+        throw new Error(`${name} must be an integer multiple of the active timestep.`);
+  }
   if (c.protocol.startMs + c.protocol.durationMs >= c.solver.durationMs)
     throw new Error('The drive must end before the experiment ends.');
   if (

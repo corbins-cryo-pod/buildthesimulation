@@ -1,5 +1,6 @@
 import { getDeviceModel, getContactGeometry } from '../devices/catalog.js';
 import { validateConfig } from './config.js';
+import { makeActiveMorphology } from './active-morphology.js';
 
 // Layer ordering is anatomical; these fractions are explicit visualization assumptions.
 // They are NOT a measured human M1 laminar profile (especially the thin layer IV).
@@ -89,13 +90,27 @@ export function makeWorld(input) {
   if (!model || model.revision !== config.implant.revision)
     throw new Error('Catalog revision changed; explicitly migrate the experiment.');
   const contacts = placedContacts(model, config.implant),
-    neuron = makeMorphology(config.neuron.somaUm, config.neuron.segmentLengthUm);
+    neuron = config.neuron.modelId
+      ? makeActiveMorphology(config)
+      : makeMorphology(config.neuron.somaUm, config.neuron.segmentLengthUm);
   if (
-    (Math.ceil(config.solver.durationMs / config.solver.dtMs) + 1) * neuron.nodes.length >
+    (Math.ceil(config.solver.durationMs / (config.solver.sampleMs ?? config.solver.dtMs)) + 1) *
+      neuron.nodes.length >
     2000000
   )
     throw new Error(
       'This configuration exceeds the 2,000,000 compartment-frame storage budget (32 MB for voltage/current arrays). Shorten the run or explicitly choose a coarser timestep or morphology.',
+    );
+  if (
+    config.neuron.modelId &&
+    ((Math.ceil(config.solver.durationMs / config.solver.sampleMs) + 1) *
+      (neuron.nodes.length * 10 + 10) +
+      neuron.nodes.length) *
+      8 >
+      64 * 1024 * 1024
+  )
+    throw new Error(
+      'Active voltage/current/channel outputs exceed 64 MB. Shorten the experiment or increase output sampling interval.',
     );
   for (const id of [...config.recording.contactIds, ...config.protocol.sourceContactIds])
     if (!contacts.some((s) => s.id === id)) throw new Error(`Unknown catalog contact ${id}.`);
@@ -104,7 +119,11 @@ export function makeWorld(input) {
     Math.abs(p[1]) <= config.anatomy.widthUm / 2 &&
     p[2] >= 0 &&
     p[2] <= config.anatomy.thicknessUm;
-  if (neuron.nodes.some((n) => !inside(n.startUm) || !inside(n.endUm)))
+  if (
+    neuron.nodes.some(
+      (n) => !inside(n.startUm) || !inside(n.endUm) || n.pathUm?.some((p) => !inside(p)),
+    )
+  )
     throw new Error('The complete arbor must remain inside the cortical patch.');
   const outside = contacts.filter((s) => !inside(s.positionUm)).length;
   return {

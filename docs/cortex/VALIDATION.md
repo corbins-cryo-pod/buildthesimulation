@@ -1,8 +1,10 @@
 # Verification and validation matrix
 
 **Numerical verification is not experimental validation.** No dataset is calibrated
-or held out for empirical validation in this first release. There are no clinical,
-human recruitment, device-performance or tissue-safety claims.
+or held out for empirical validation here. The active reference was fitted to
+human recordings by its original authors; this port has no held-out biological
+validation. There are no clinical, human recruitment, device-performance or
+tissue-safety claims.
 
 `node --test tests/cortex-laboratory.mjs` runs the tests below. The benchmark's
 achieved values and tested configurations are in `benchmarks/latest.json`.
@@ -32,7 +34,8 @@ achieved values and tested configurations are in `benchmarks/latest.json`.
 | Invalid/singular cases | Explicit contract/domain rules | rejected rather than clamped | Verified |
 | Tissue boundaries / meshes | No finite-element model yet | mesh and boundary sensitivity | Not yet modeled |
 | Biological recording amplitude | Independent experimental recording | dataset and metric not selected | Not experimentally validated |
-| Stimulation spikes / recruitment | Independent active-cell experiment | dataset and metric not selected | Not yet modeled |
+| Active single-cell response | Native original NMODL, SWC and independent recordings | See active matrix below | Numerically verified in fixed cases |
+| Biological stimulation / recruitment | Independent active-cell experiment | dataset and metric not selected | Not experimentally validated; no population |
 | Mechanics | Defined stress/relaxation and implant-contact experiment | dataset and metric not selected | Not yet modeled |
 
 Example achieved default residuals are around 1e−13 nA. This only establishes
@@ -44,7 +47,8 @@ currents without an explicit normalization floor; current tests use absolute nA.
 The line quadrature, finite-difference field and analytic cable tests provide
 different calculations from the implementation under test. End-to-end tests alone
 would not be independent oracles. Source-area averaging, tissue/implant boundaries,
-active channels and acquisition are not verified because they are not implemented.
+and acquisition are not verified because they are not implemented. The active
+channel extension has its own original-mechanism references below.
 
 Default refinement fixes the synaptic input in a physical distal 100 µm region.
 An initial terminal-compartment-only input moved on refinement and failed the
@@ -83,12 +87,47 @@ runs the comparisons without downloading Python packages or executing a referenc
 
 1. Extend independent reference coverage across parameters, pulse timings and
    discretizations before claiming broader numerical accuracy.
-2. Acquire a licensed morphology/electrophysiology pair. Separate fitted from
-   held-out observations and document temperature/preparation/species.
+2. Identify the selected human model's original fitting sweeps, import appropriate
+   observations and separate fitted from held-out comparisons explicitly.
 3. Define metrics before fitting: voltage RMSE, extracellular amplitude/waveform
    error and geometry sensitivity, including measurement uncertainty.
-4. Add active/channel and finite-contact tests only with defined regimes. Test
-   dt/dx and boundary sensitivity separately before any recruitment visualization.
+4. Expand active threshold convergence and add finite-contact tests in defined
+   regimes before quantitative recruitment or device-specific claims.
+
+## Active model verification
+
+The selected human temporal cell's predeclared gates are in ACTIVE_MODEL.md.
+`tests/cortex-active-reference.mjs` compares original native NEURON 9.0.1 and
+actual LFPykit 0.6.2 against the browser kernel. Eight cases cover no-drive,
+subthreshold/suprathreshold intracellular input, subthreshold/local-crossing
+extracellular input, changed implant rotation/translation, halved timestep and
+refined morphology. Every physical compartment is checked at all 801 exported
+samples per case; detection/conservation use internal timesteps.
+
+| Check | Achieved result | Interpretation |
+| --- | --- | --- |
+| Nine source channel state trajectories | NaV <2e−14; scalar gates <7e−16 absolute error | Original held-voltage mechanisms, not generic HH |
+| Full physical-compartment voltage | RMS <2.9e−7 mV; maximum <5.05e−7 mV across eight cases | At the fixture's 1e−6 mV encoding quantum |
+| Total outward membrane current | RMS <2.9e−8 nA | At the fixture's 1e−7 nA encoding quantum |
+| Neural/applied/total recording | Maximum channel RMS <2e−11 µV | Native membrane currents through independent LFPykit |
+| Soma events and first local crossings | Same classifications; timing differences <0.1 ms gate | Intracellular case has one soma event; extracellular cases have local events without soma spikes |
+| Intracellular threshold bracket | 0.928125 nA no soma crossing / 0.9375 nA crossing | Both boundaries agree with native solver; 5 ms input, −25 mV criterion by 15 ms |
+| Extracellular threshold bracket | 19.6875 µA no local crossing / 20 µA crossing | Both boundaries agree; any membrane, specified bipolar pair/pulse/pose |
+| Worker/channel transfer | Node bridge verifies nested typed outputs, spike event, progress and byte accounting | Browser cancellation/transfer behavior still pending |
+
+Native field coupling uses a stated high-conductance extracellular boundary;
+agreement establishes the tested cable/field implementation, not realistic tissue
+boundaries. Zero-area endpoints are excluded from membrane-voltage comparisons,
+event detection and forward sources. Full geometry, exact configs, generator and
+original-asset hashes plus compressed-trace hashes are retained in fixtures.
+Normal CI executes no Python simulator and downloads no model.
+
+The calcium-ordering comparison initially revealed a source-coupling mismatch:
+CaDynamics must use pre-solve voltage and SK must read updated calcium. That was
+corrected without changing acceptance gates, and full-cell errors fell to the
+fixture quantization floor. Timestep/spatial changes and computational cost are
+reported in PERFORMANCE.md and the checked-in active benchmark; convergence of
+extracellular threshold is not assumed from solver agreement at each resolution.
 
 ## UI/build verification
 

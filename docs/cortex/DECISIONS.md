@@ -54,6 +54,11 @@ merge. Sites workflow guidance does not override that instruction. No hosting or
 production branch changes are made. Browser QA unavailable here is an explicit
 review limitation, not an assumed success.
 
+Historical update: the user subsequently authorized publication of the passive
+foundation. PR #243 was merged as `f910af3` and Cloudflare reported successful
+deployment. The active milestone again requires a feature branch/review PR;
+production merge awaits explicit approval.
+
 ## C009 — Independent reference of the declared soma circuit
 
 Preserve the explicit radial half-soma resistance on each branch. Model it in
@@ -71,3 +76,28 @@ never browser output. Compare coefficients and neural/applied/total/bipolar
 signals, in both point and line approximations. Keep fixtures small, pinned and
 hashed; require regeneration after any generator/input change. Offline GPL
 package code is not copied into or shipped with the website.
+
+## C011 — Published human temporal model with original mechanisms
+
+Select Allen/Mosher–Wei specimen 571654895 under its explicit noncommercial
+redistribution license. Retain human morphology and fitted distributions, the
+published 60 µm synthetic active axon, and mixed-species original kinetics.
+Reject a generic HH replacement, an unsupported M1 identity, or treating source
+training error as held-out biological validation.
+
+## C012 — Native morphology preprocessing, transparent browser dynamics
+
+Use a reproducible native SWC adapter to retain taper, area, axial resistance and
+shared zero-area junctions at four resolutions. Export geometry/parameters only;
+the browser solves channel/cable dynamics independently. Original NMODL remains
+offline for numerical references. Retain the documented legacy sodium initializer;
+do not silently repair the source model or start from invented equilibrium values.
+
+## C013 — Complete trace references and explicit sampling
+
+Compare every physical compartment across the full exported sampling grid, plus
+internal-step crossings and independent recordings. Encode references with bounded
+quantization far below acceptance gates, rather than replacing full traces with
+snapshots or bundling large raw JSON. Keep current/gate sampling phases explicit.
+Retain the worker between completed runs for a bounded conditioning cache; cancel
+terminates it. Active runs require workers rather than blocking a CPU fallback.

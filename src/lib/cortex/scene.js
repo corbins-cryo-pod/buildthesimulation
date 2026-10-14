@@ -3,6 +3,44 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { buildDeviceMesh, disposeDeviceMesh } from '../devices/geometry.js';
 
 const mm = (p) => p.map((x) => x / 1000);
+function morphologyGeometry(node) {
+  const path = node.pathUm.map((p) => new THREE.Vector3(...mm(p))),
+    vertices = [],
+    indices = [],
+    radial = 6;
+  for (let i = 0; i < path.length; i++) {
+    const tangent = path[Math.min(i + 1, path.length - 1)]
+      .clone()
+      .sub(path[Math.max(0, i - 1)])
+      .normalize();
+    const helper =
+      Math.abs(tangent.z) < 0.9 ? new THREE.Vector3(0, 0, 1) : new THREE.Vector3(0, 1, 0);
+    const u = new THREE.Vector3().crossVectors(tangent, helper).normalize(),
+      v = new THREE.Vector3().crossVectors(tangent, u).normalize();
+    const radius = node.pathDiameterUm[i] / 2000;
+    for (let j = 0; j < radial; j++) {
+      const angle = (j * 2 * Math.PI) / radial,
+        p = path[i]
+          .clone()
+          .addScaledVector(u, Math.cos(angle) * radius)
+          .addScaledVector(v, Math.sin(angle) * radius);
+      vertices.push(p.x, p.y, p.z);
+    }
+    if (i)
+      for (let j = 0; j < radial; j++) {
+        const a = (i - 1) * radial + j,
+          b = (i - 1) * radial + ((j + 1) % radial),
+          c = i * radial + j,
+          d = i * radial + ((j + 1) % radial);
+        indices.push(a, c, b, b, c, d);
+      }
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+  g.setIndex(indices);
+  g.computeVertexNormals();
+  return g;
+}
 export function buildWorldGroup(world, options = {}) {
   const root = new THREE.Group(),
     tissue = new THREE.Group(),
@@ -63,9 +101,14 @@ export function buildWorldGroup(world, options = {}) {
   root.add(device.group);
   const nodeMeshes = [];
   for (const [i, node] of world.neuron.nodes.entries()) {
+    if (node.kind === 'junction') {
+      nodeMeshes.push(null);
+      continue;
+    }
     const material = new THREE.MeshBasicMaterial({ color: '#79c9c1' });
     let geometry;
     if (node.kind === 'soma') geometry = new THREE.SphereGeometry(node.diameterUm / 2000, 24, 12);
+    else if (node.pathUm?.length > 1) geometry = morphologyGeometry(node);
     else
       geometry = new THREE.CylinderGeometry(
         node.diameterUm / 2000,
@@ -74,9 +117,9 @@ export function buildWorldGroup(world, options = {}) {
         6,
       );
     const mesh = new THREE.Mesh(geometry, material);
-    mesh.position.fromArray(mm(node.centerUm));
+    if (!node.pathUm?.length || node.kind === 'soma') mesh.position.fromArray(mm(node.centerUm));
     mesh.userData.nodeIndex = i;
-    if (node.kind !== 'soma')
+    if (node.kind !== 'soma' && !node.pathUm?.length)
       mesh.quaternion.setFromUnitVectors(
         new THREE.Vector3(0, 1, 0),
         new THREE.Vector3(...node.endUm.map((x, j) => x - node.startUm[j])).normalize(),
@@ -87,8 +130,9 @@ export function buildWorldGroup(world, options = {}) {
     if (node.kind !== 'soma') {
       const line = new THREE.Line(
         new THREE.BufferGeometry().setFromPoints([
-          new THREE.Vector3(...mm(node.startUm)),
-          new THREE.Vector3(...mm(node.endUm)),
+          ...(node.pathUm?.length
+            ? node.pathUm.map((p) => new THREE.Vector3(...mm(p)))
+            : [new THREE.Vector3(...mm(node.startUm)), new THREE.Vector3(...mm(node.endUm))]),
         ]),
         new THREE.LineBasicMaterial({ color: '#79c9c1', transparent: true, opacity: 0.7 }),
       );
@@ -115,8 +159,21 @@ export function buildWorldGroup(world, options = {}) {
     markers.add(line);
   }
   root.add(markers);
+  const selectedMarker = new THREE.LineSegments(
+    new THREE.BufferGeometry().setFromPoints([
+      new THREE.Vector3(-0.012, 0, 0),
+      new THREE.Vector3(0.012, 0, 0),
+      new THREE.Vector3(0, -0.012, 0),
+      new THREE.Vector3(0, 0.012, 0),
+      new THREE.Vector3(0, 0, -0.012),
+      new THREE.Vector3(0, 0, 0.012),
+    ]),
+    new THREE.LineBasicMaterial({ color: '#ffffff', depthTest: false }),
+  );
+  selectedMarker.renderOrder = 10;
+  root.add(selectedMarker);
   root.updateMatrixWorld(true);
-  return { root, tissue, neurons, device, nodeMeshes, markers };
+  return { root, tissue, neurons, device, nodeMeshes, markers, selectedMarker };
 }
 
 export async function createCortexView(host, onStatus, onScale, onPick) {
@@ -183,6 +240,16 @@ export async function createCortexView(host, onStatus, onScale, onPick) {
         ? new THREE.Vector3(...mm(world.config.neuron.somaUm)).add(new THREE.Vector3(0, 0, -0.18))
         : new THREE.Vector3(0, 0, 1.8);
     extent = detail ? 1.5 : 8;
+    if (detail && world.neuron.specimenId) {
+      const box = new THREE.Box3().setFromPoints(
+        world.neuron.nodes
+          .filter((n) => n.kind !== 'junction')
+          .flatMap((n) => [new THREE.Vector3(...mm(n.startUm)), new THREE.Vector3(...mm(n.endUm))]),
+      );
+      box.getCenter(target);
+      const size = box.getSize(new THREE.Vector3());
+      extent = Math.max(size.x, size.y, size.z) * 1.2;
+    }
     const direction =
       view === 'top'
         ? new THREE.Vector3(0, -0.001, -1)
@@ -236,7 +303,7 @@ export async function createCortexView(host, onStatus, onScale, onPick) {
       ),
       camera,
     );
-    const hit = raycaster.intersectObjects(objects.nodeMeshes)[0];
+    const hit = raycaster.intersectObjects(objects.nodeMeshes.filter(Boolean))[0];
     if (hit) onPick(hit.object.userData.nodeIndex);
   };
   renderer.domElement.addEventListener('pointerdown', pointerDown);
@@ -244,32 +311,63 @@ export async function createCortexView(host, onStatus, onScale, onPick) {
   onStatus(software ? 'Software 3D · CPU solver' : 'WebGL 3D · CPU solver');
   return {
     setWorld(next, options) {
-      const first = !world;
+      if (world === next && objects) {
+        const nextWidth = next.config.anatomy.widthUm / 1000,
+          yWidth = options.section ? nextWidth / 2 : nextWidth;
+        for (const object of objects.tissue.children) {
+          object.material.opacity = object.isMesh ? options.opacity : 0.3;
+          object.scale.y =
+            yWidth / (world.config.anatomy.widthUm / 1000 / (objects.cutaway ? 2 : 1));
+          object.position.y = options.section ? nextWidth / 4 : 0;
+        }
+        render();
+        return;
+      }
+      const first = !world,
+        modelChanged = world?.neuron.id !== next.neuron.id;
       world = next;
       if (objects) {
         scene.remove(objects.root);
         disposeDeviceMesh(objects.root);
       }
       objects = buildWorldGroup(next, options);
+      objects.cutaway = options.section;
       scene.add(objects.root);
-      if (first) fit();
+      if (first || modelChanged) fit();
       else render();
     },
     setFrame(result, frame, selected) {
       if (!objects || !world) return;
       for (const [i, mesh] of objects.nodeMeshes.entries()) {
-        const deviation = result
-          ? result.membraneMv[frame * result.diagnostics.compartments + i] -
-            result.config.membrane.restMv
-          : 0;
-        const color = new THREE.Color('#79c9c1').lerp(
-          new THREE.Color(deviation >= 0 ? '#ff9c56' : '#658dff'),
-          Math.min(1, Math.abs(deviation) / 10),
-        );
-        if (i === selected) color.set('#ffffff');
+        if (!mesh) continue;
+        const active = !!world.neuron.specimenId;
+        const deviation =
+          result && !active
+            ? result.membraneMv[frame * result.diagnostics.compartments + i] -
+              result.config.membrane.restMv
+            : 0;
+        const color = active
+          ? new THREE.Color('#658dff').lerp(
+              new THREE.Color('#ff9c56'),
+              Math.max(
+                0,
+                Math.min(
+                  1,
+                  ((result?.membraneMv[frame * result.diagnostics.compartments + i] ?? -90) + 100) /
+                    140,
+                ),
+              ),
+            )
+          : new THREE.Color('#79c9c1').lerp(
+              new THREE.Color(deviation >= 0 ? '#ff9c56' : '#658dff'),
+              Math.min(1, Math.abs(deviation) / 10),
+            );
         mesh.material.color.copy(color);
         mesh.userData.centerline?.material.color.copy(color);
       }
+      objects.selectedMarker.position.fromArray(
+        mm(world.neuron.nodes[selected]?.centerUm ?? world.config.neuron.somaUm),
+      );
       render();
     },
     setView: fit,
