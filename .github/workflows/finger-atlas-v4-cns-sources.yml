@@ -1,0 +1,87 @@
+name: Finger atlas V4 CNS sources
+on:
+  push:
+    branches: [finger-atlas-realism-v2]
+    paths: [.github/workflows/finger-atlas-v4-cns-sources.yml]
+permissions:
+  contents: read
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - run: python -m pip -q install requests beautifulsoup4
+      - name: Collect public CNS reference assets
+        run: |
+          mkdir -p /tmp/v4-cns
+          cat > /tmp/collect.py <<'PY'
+          import requests,pathlib,json,hashlib,concurrent.futures,urllib.parse,xml.etree.ElementTree as ET
+          from bs4 import BeautifulSoup
+          O=pathlib.Path('/tmp/v4-cns');S=requests.Session();S.headers['User-Agent']='Noncommercial educational anatomical modeling research; public source retrieval'
+          def get(u):
+            r=S.get(u,timeout=45);r.raise_for_status();return r
+          def tx(e):return ''.join(e.itertext()) if e is not None else ''
+          def collect(p):
+            d=O/p;d.mkdir(exist_ok=True);m={'pmcid':p,'url':f'https://pmc.ncbi.nlm.nih.gov/articles/{p}/','figures':[],'errors':[]}
+            try:
+              r=get(f'https://www.ebi.ac.uk/europepmc/webservices/rest/{p}/fullTextXML');(d/'article.xml').write_bytes(r.content);root=ET.fromstring(r.content)
+              m['title']=tx(root.find('.//article-title'));m['license']=tx(root.find('.//permissions'));m['doi']=next((a.text for a in root.findall('.//article-id') if a.attrib.get('pub-id-type')=='doi'),None)
+              for f in root.findall('.//fig')[:24]:
+                g=f.find('.//graphic');href=g.attrib.get('{http://www.w3.org/1999/xlink}href','') if g is not None else ''
+                if href:m['figures'].append({'id':f.attrib.get('id'),'label':tx(f.find('label')),'caption':tx(f.find('caption')),'href':href})
+            except Exception as e:m['errors'].append(str(e))
+            try:
+              r=get(m['url']);(d/'article.html').write_text(r.text);soup=BeautifulSoup(r.text,'html.parser')
+              for f in m['figures']:
+                block=soup.find(id=f['id']);im=block.find('img') if block else None
+                if im:f['image_url']=urllib.parse.urljoin(m['url'],im.get('src',''))
+              if not m['figures']:
+                for i,block in enumerate(soup.select('figure')[:24]):
+                  im=block.find('img')
+                  if im:m['figures'].append({'id':block.get('id',str(i)),'label':f'Figure {i+1}','caption':block.get_text(' ',strip=True),'image_url':urllib.parse.urljoin(m['url'],im.get('src',''))})
+            except Exception as e:m['errors'].append(str(e))
+            for f in m['figures']:
+              urls=[f.get('image_url')]
+              if f.get('href'):urls += [f'https://europepmc.org/articles/{p}/bin/{f["href"]}',f'https://europepmc.org/articles/{p}/bin/{f["href"]}.jpg']
+              for u in filter(None,urls):
+                try:
+                  r=get(u)
+                  if not r.headers.get('Content-Type','').startswith('image/'):continue
+                  fn=str(f['id']).replace('/','_')+('.png' if 'png'in r.headers['Content-Type'] else '.jpg');(d/fn).write_bytes(r.content);f.update(file=fn,image_url=r.url,sha256=hashlib.sha256(r.content).hexdigest());break
+                except Exception as e:f['error']=str(e)
+            (d/'metadata.json').write_text(json.dumps(m,indent=2));print(p,m.get('title'),sum('file'in f for f in m['figures']),flush=True);return m
+          ids=['PMC8414831','PMC2290200','PMC11502235']
+          # Resolve the original pontine and human spinal studies through the public literature index.
+          for title in ['Modular organization of the pontine nuclei dendritic fields','A cellular taxonomy of the adult human spinal cord','A Novel Human Brainstem Map Based on True-Color Sectioned Images']:
+            try:
+              items=get('https://www.ebi.ac.uk/europepmc/webservices/rest/search?format=json&pageSize=3&query='+urllib.parse.quote(title)).json()['resultList']['result'];(O/(str(len(ids))+'-search.json')).write_text(json.dumps(items,indent=2))
+              p=next((i.get('pmcid') for i in items if i.get('pmcid')),None)
+              if p and p not in ids:ids.append(p)
+            except Exception as e:print(e)
+          with concurrent.futures.ThreadPoolExecutor(max_workers=3) as ex:out=list(ex.map(collect,ids))
+          (O/'manifest.json').write_text(json.dumps(out,indent=2))
+          a=O/'anatomy';a.mkdir(exist_ok=True)
+          base='https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/'
+          try:
+            text=get(base+'parts_list_e.txt').text;(a/'parts_list_e.txt').write_text(text)
+            names=[line.split('\t') for line in text.splitlines() if any(w in line.lower() for w in ['midbrain','mesencephalon','red nucleus','substantia nigra','cerebral peduncle','spinal cord','medulla oblongata','pons'])]
+            result=[]
+            for row in names:
+              if len(row)<2:continue
+              ident,name=row[:2];u=base+'stl/'+ident+'.stl'
+              try:
+                r=get(u);(a/(ident+'.stl')).write_bytes(r.content);result.append({'id':ident,'name':name,'url':u,'sha256':hashlib.sha256(r.content).hexdigest(),'bytes':len(r.content)})
+              except Exception as e:result.append({'id':ident,'name':name,'error':str(e)})
+            (a/'manifest.json').write_text(json.dumps(result,indent=2))
+          except Exception as e:print(e)
+          # Original human red-nucleus Golgi paper. Kept as reference, not relicensed.
+          try:
+            u='https://digitum.um.es/bitstreams/bac2de11-6847-41a0-ad87-a762363b4af0/download';r=get(u);(O/'Patt_1994_Red_Nucleus.pdf').write_bytes(r.content)
+          except Exception as e:print(e)
+          PY
+          python /tmp/collect.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: finger-atlas-v4-cns-sources
+          path: /tmp/v4-cns
+          retention-days: 7
