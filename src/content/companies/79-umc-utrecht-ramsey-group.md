@@ -2,8 +2,8 @@
 title: "UMC Utrecht, Ramsey Group"
 order: 79
 pubDate: 2026-10-13
-updatedDate: 2026-10-13
-lastVerified: 2026-10-13
+updatedDate: 2026-10-14
+lastVerified: 2026-10-14
 description: "The Utrecht group of Nick Ramsey and Mariska Vansteensel behind a 2016 fully implanted ECoG communication system for a locked-in patient with ALS."
 region: "European"
 kind: "Lab"
@@ -20,6 +20,8 @@ The 2016 NEJM paper lists Mariska J. Vansteensel as first author and Nick F. Ram
 ## Cataloged hardware and applications
 
 - [Fully implanted ECoG BCI in locked-in ALS, 2016](/applications/153-utrecht-fully-implanted-ecog-bci-als-2016/): subdural strips, a chest-implanted transmitter and home typing in one participant.
+
+- Follow-up: two people with locked-in syndrome had subdural electrode strips over the dorsolateral prefrontal cortex in the Utrecht NeuroProsthesis system, tracked over 47 and 22 months ([Leinders et al., Scientific Reports 2020](https://pmc.ncbi.nlm.nih.gov/articles/PMC7508852/)). Related: UMC Utrecht is a member institution of the Dutch Brain Interface Initiative, led from the [Radboud Donders Institute](/companies/86-radboud-donders-institute/).
 
 ## Program claims versus study evidence
 
