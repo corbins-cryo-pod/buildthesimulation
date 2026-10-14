@@ -1,5 +1,5 @@
 ---
-title: "RPNI with implanted bipolar EMG electrodes (Vu 2023 configuration)"
+title: "Regenerative Peripheral Nerve Interface (RPNI)"
 order: 19
 pubDate: 2026-02-06
 updatedDate: 2026-02-06
