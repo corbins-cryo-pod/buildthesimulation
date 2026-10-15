@@ -72,10 +72,12 @@ test('maturity sorts favor actual stage, not funding or legacy priority, and unk
   const unknown = {...atlasEntry(26), slug: 'new-lab', title: 'A new lab', classification: classifyOrganization({slug: 'new-lab', data: {kind: 'Lab'}})};
   assert.equal(unknown.classification.primary.code, 'L??');
   const list = [atlasEntry(26), unknown, atlasEntry(52), atlasEntry(40)];
-  assert.deepEqual(sortAtlasEntries(list).map(e => e.classification.primary.code), ['C4A', 'L2R', 'C0R', 'L??']);
+  assert.deepEqual(sortAtlasEntries(list, {sort: 'maturity'}).map(e => e.classification.primary.code), ['C4A', 'L2R', 'C0R', 'L??']);
+  assert.deepEqual(sortAtlasEntries(list).map(e => e.title), [...list].map(e => e.title).sort((a, b) => a.localeCompare(b)));
   assert.deepEqual(sortAtlasEntries(list, {sort: 'early'}).map(e => e.classification.primary.code), ['C0R', 'L2R', 'C4A', 'L??']);
   assert.equal(sortAtlasEntries(list, {sort: 'name'})[0].slug, 'new-lab');
-  assert.ok(compareOrganizations(organization(52), organization(1)) < 0);
+  const strip = e => e.data.title.replace(/^\d+\s*[-—]\s*/, '');
+  assert.equal(Math.sign(compareOrganizations(organization(52), organization(1))), Math.sign(strip(organization(52)).localeCompare(strip(organization(1)))));
   assert.equal(list[0].slug, organization(26).slug); // Sorting doesn't mutate caller state.
 });
 
@@ -84,5 +86,5 @@ test('shared URLs validate stage, status and sort values', () => {
   const valid = readAtlasState(`?stage=2&reg=R&sort=early&org=${entries[0].slug}`, entries);
   assert.equal(valid.stage, '2'); assert.equal(valid.regulatory, 'R'); assert.equal(valid.sort, 'early');
   const invalid = readAtlasState('?stage=9&reg=D&sort=funding', entries);
-  assert.equal(invalid.stage, ''); assert.equal(invalid.regulatory, ''); assert.equal(invalid.sort, 'maturity');
+  assert.equal(invalid.stage, ''); assert.equal(invalid.regulatory, ''); assert.equal(invalid.sort, 'name');
 });
