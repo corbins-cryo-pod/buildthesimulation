@@ -7,7 +7,7 @@ import ProgramClassification, { ClassificationBadge } from './ProgramClassificat
 const escapeHtml = text => String(text).replace(/[&<>"']/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c]));
 const hasCoordinates = entry => Number.isFinite(entry.lat) && Number.isFinite(entry.lon);
 const regionLabels = {American: 'US / Americas', European: 'Europe', Chinese: 'China', Other: 'Other / international'};
-const blankState = {query: '', kind: '', region: '', interfaceType: '', stage: '', regulatory: '', sort: 'maturity', selected: ''};
+const blankState = {query: '', kind: '', region: '', interfaceType: '', stage: '', regulatory: '', sort: 'name', selected: ''};
 
 export default function AtlasExplorer({ entries }) {
   const [state, setState] = useState(blankState);
@@ -36,7 +36,7 @@ export default function AtlasExplorer({ entries }) {
 
   const writeUrl = (next, push = false) => {
     const url = new URL(window.location.href);
-    for (const [key, value] of [['q', next.query], ['kind', next.kind], ['region', next.region], ['interface', next.interfaceType], ['stage', next.stage], ['reg', next.regulatory], ['sort', next.sort === 'maturity' ? '' : next.sort], ['org', next.selected]]) {
+    for (const [key, value] of [['q', next.query], ['kind', next.kind], ['region', next.region], ['interface', next.interfaceType], ['stage', next.stage], ['reg', next.regulatory], ['sort', next.sort === 'name' ? '' : next.sort], ['org', next.selected]]) {
       if (value) url.searchParams.set(key, value); else url.searchParams.delete(key);
     }
     if (url.href !== window.location.href) window.history[push ? 'pushState' : 'replaceState'](null, '', url);
@@ -175,7 +175,7 @@ export default function AtlasExplorer({ entries }) {
   useEffect(() => { if (!selected && state.selected) { const next = {...state, selected: ''}; setState(next); if (initialized) writeUrl(next); } }, [filtered]);
 
   const clearFilters = () => { setState(blankState); writeUrl(blankState); setCluster(null); setAreaOnly(false); setPreviewId(''); mapActions.current.fit?.(entries); };
-  const activeFilters = state.query || state.kind || state.region || state.interfaceType || state.stage || state.regulatory || state.sort !== 'maturity' || cluster || areaOnly;
+  const activeFilters = state.query || state.kind || state.region || state.interfaceType || state.stage || state.regulatory || state.sort !== 'name' || cluster || areaOnly;
   return <section class="atlas" aria-label="Interactive BCI atlas">
     <div class="atlas-viewbar">
       <div><strong>Companies &amp; labs</strong><span>{filtered.length} matching organizations</span></div>
