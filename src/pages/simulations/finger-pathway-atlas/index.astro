@@ -4,7 +4,7 @@ import Layout from '../../../layouts/Layout.astro';
 
 <Layout pageTitle="Finger Pathway Atlas" compactHeader wide subtitle="" description="Explore a right index finger's sensory and motor pathways in 3D, from sensory endings through peripheral nerves, spinal cord, brainstem and cortex. Compare 50 source-attributed reference plates.">
   <section class="atlas-heading" aria-labelledby="atlas-title">
-    <div><p class="edition">Anatomical edition · V3</p><h1 id="atlas-title">Finger Pathway Atlas</h1></div>
+    <div><p class="edition">Anatomical edition · V4</p><h1 id="atlas-title">Finger Pathway Atlas</h1></div>
     <nav aria-label="Atlas pages">
       <a href="/simulations/finger-pathway-atlas/references/">Reference images · 50 plates</a>
       <button id="atlas-fullscreen" type="button">Full screen</button>
@@ -15,10 +15,10 @@ import Layout from '../../../layouts/Layout.astro';
     <iframe id="atlas-frame" src="/simulations/finger-pathway-atlas/viewer/" title="Finger Pathway Atlas: interactive 3D anatomy" allow="fullscreen" allowfullscreen></iframe>
   </div>
   <section class="atlas-guide" aria-label="Quick start and scope">
-    <div><h2>Follow one pathway</h2><p>Start with <strong>Follow touch</strong> or <strong>Follow motor</strong>. Choose a view to inspect the fingertip, nerve, ganglion, spinal circuit, medullary crossings, thalamus or cortex. Drag to orbit, scroll to zoom, and Shift-drag to pan.</p></div>
-    <div><h2>Inspect and compare</h2><p>Open the Inspector to select cells and structures. Toggle tissue layers, sampling and detail; export GLB geometry, original human SWC traces or the evidence manifest. <a href="/simulations/finger-pathway-atlas/references/">Compare the model with published tissue images.</a></p></div>
-    <p class="scope">An anatomical exploration: source anatomy and human neuron traces combined with constructed pathways and local tissue specimens. V3 has no electrical or biomechanics solver. Each reference plate identifies species, tissue, magnification limits and differences from the model.</p>
-    <p class="download"><button id="atlas-offline" type="button">Download the original offline atlas (22 MB)</button> · Current desktop browsers with WebGL 2 are recommended.</p>
+    <div><h2>One connected model</h2><p>Follow <strong>touch, free-ending, proprioceptive, or motor</strong> pathways through 306 individually identified cells and 78 representative routes. Each relay is a distinct neuron. Choose a region, then select <strong>Inspect cell</strong> or <strong>Inspect ending</strong> to see that same cell at close range.</p></div>
+    <div><h2>Detail where you look</h2><p>Intact transparent anatomy replaces the cutaway specimens. Cellular membranes and myelin appear near the camera; distant pathways keep their identities and connections. Drag to orbit, scroll to zoom, and right-drag to pan. <a href="/simulations/finger-pathway-atlas/references/">Compare with the published histology and microscopy references.</a></p></div>
+    <p class="scope">V4 is a representative anatomical model with reference-informed procedural cells, not a complete biological census or experimentally mapped human connectome. Cortex is intentionally simplified. There is no electrical or biomechanics solver. The 50 comparison plates retain V3 model panels as the development baseline; source species, tissue and scale limits remain labeled.</p>
+    <p class="download"><a href="/simulations/finger-pathway-atlas/v3-viewer/">V3 archive</a> · <button id="atlas-offline" type="button">Download original V3 offline atlas (22 MB)</button> · WebGL 2 is required for the 3D viewer.</p>
     <p id="offline-status" role="status"></p>
     <p id="fullscreen-status" role="status"></p>
   </section>
@@ -27,7 +27,7 @@ import Layout from '../../../layouts/Layout.astro';
 <script>
   const frame = document.querySelector<HTMLIFrameElement>('#atlas-frame');
   const requested = new URLSearchParams(location.search).get('view');
-  const views = ['overview','hand','arm','cervical','brain','tip','nerve','drg','spinal','medulla','thalamus','cortex','cell','nmj','proprio'];
+  const views = ['overview','hand','arm','tip','nerve','drg','spinal','medulla','pons','midbrain','thalamus','cortex','nmj','proprio'];
   if (frame && requested && views.includes(requested)) frame.src += `#view=${requested}`;
   document.querySelector('#atlas-fullscreen')?.addEventListener('click', async () => {
     const shell = document.querySelector<HTMLElement>('#atlas-shell');

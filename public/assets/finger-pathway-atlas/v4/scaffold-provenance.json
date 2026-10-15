@@ -1,0 +1,1083 @@
+{
+  "version": "4.0.0",
+  "input": {
+    "files": [
+      "anatomy.json.gz.part-1.bin",
+      "anatomy.json.gz.part-2.bin"
+    ],
+    "concatenatedSha256": "b4d71ef83604b5884e57d060dde2eb3cbc56ac97f67b41d251f0fe3a42c38579"
+  },
+  "output": {
+    "file": "scaffold.json",
+    "sha256": "8ea473025e312a7a125b6925c428b23db9c4ef3977860091c8b4e62a73586ef2",
+    "bytes": 1753997,
+    "gzipBytes": 600000,
+    "meshes": 41,
+    "vertices": 36159,
+    "triangles": 76856
+  },
+  "authorship": "BodyParts3D, © The Database Center for Life Science; source-derived display simplification for BuildTheSimulation.",
+  "sources": [
+    {
+      "name": "BodyParts3D license",
+      "url": "https://lifesciencedb.jp/bp3d/info_en/license/index.html",
+      "terms": "BodyParts3D CC BY-SA 2.1 Japan, preserved from the supplied v3 mirror"
+    },
+    {
+      "name": "STL conversion source",
+      "url": "https://github.com/Kevin-Mattheus-Moerman/BodyParts3D",
+      "commit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61"
+    }
+  ],
+  "method": {
+    "name": "Spatial vertex clustering with source triangle remapping",
+    "retained": "All provided skin, cortical gyri, thalami, pons, medulla, cerebellum surfaces",
+    "excluded": "Bone and muscle context meshes",
+    "cortexClusterMm": 4.5,
+    "cnsClusterMm": 2,
+    "cerebellumClusterMm": 3.5,
+    "skinClustersMm": {
+      "selectedIndexFinger": 1.3,
+      "hand": 3,
+      "arm": 5,
+      "otherUpperBody": 10
+    },
+    "roundedCoordinatePrecisionMm": 0.01,
+    "limitations": "Source-derived spatially clustered display surfaces; not patient-specific, histology-registered, or watertight simulation geometry. The imported skin retains the earlier upper-body crop. No new cross sections or clipping windows are introduced."
+  },
+  "sourceMeshes": [
+    {
+      "id": "BP49",
+      "name": "left superior parietal lobule precuneus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/BP49.stl",
+      "sourceSha256": "a8e62da081dcb54e84d49f481d56ac243b97c8f62aa93455b2ce7281f137037f",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 8917,
+      "outputVertices": 654,
+      "outputTriangles": 1491,
+      "bounds": [
+        [
+          -0.04,
+          307.87,
+          -86.79
+        ],
+        [
+          34.35,
+          370.02,
+          -34.04
+        ]
+      ]
+    },
+    {
+      "id": "BP50",
+      "name": "right superior parietal lobule precuneus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/BP50.stl",
+      "sourceSha256": "f8335ade3ebc35876ae50a39201232f7fff023f25fc57f9e24e3c4953ce62a63",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 8866,
+      "outputVertices": 660,
+      "outputTriangles": 1489,
+      "bounds": [
+        [
+          -35.07,
+          307.91,
+          -86.9
+        ],
+        [
+          -1.51,
+          369.88,
+          -34.16
+        ]
+      ]
+    },
+    {
+      "id": "BP51",
+      "name": "orbital gyri straight gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/BP51.stl",
+      "sourceSha256": "d8c143b43314bb10c3b1bb463fe42a099117e0922bce5d8e4c73de71f7bf8fee",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 9468,
+      "outputVertices": 703,
+      "outputTriangles": 1574,
+      "bounds": [
+        [
+          -38.94,
+          291.74,
+          12.45
+        ],
+        [
+          37.92,
+          320.05,
+          75.14
+        ]
+      ]
+    },
+    {
+      "id": "FMA258714",
+      "name": "right thalamus",
+      "category": "cns",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA258714.stl",
+      "sourceSha256": "3cc9822dcd85957d59e1f7693261e5439a82cb18fe1eb73d212149d6f20b5125",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 1596,
+      "outputVertices": 533,
+      "outputTriangles": 1069,
+      "bounds": [
+        [
+          -23.3,
+          299.56,
+          -22.16
+        ],
+        [
+          -1.19,
+          321.88,
+          12.18
+        ]
+      ]
+    },
+    {
+      "id": "FMA258716",
+      "name": "left thalamus",
+      "category": "cns",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA258716.stl",
+      "sourceSha256": "0d8e8d8ee7ead40b24827006db87c84fa5f63797339f551db9ebebd3c41dfee0",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 3112,
+      "outputVertices": 608,
+      "outputTriangles": 1215,
+      "bounds": [
+        [
+          -0.12,
+          299.57,
+          -22.17
+        ],
+        [
+          22.03,
+          321.87,
+          12.18
+        ]
+      ]
+    },
+    {
+      "id": "FMA62004",
+      "name": "medulla oblongata",
+      "category": "cns",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA62004.stl",
+      "sourceSha256": "9c3b3ed2c81667526e14ba3cd5f427c4611f596eb38df6939d2154324dd6bb07",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 7639,
+      "outputVertices": 898,
+      "outputTriangles": 2015,
+      "bounds": [
+        [
+          -12.97,
+          226.56,
+          -32.09
+        ],
+        [
+          11.67,
+          265.1,
+          -1.03
+        ]
+      ]
+    },
+    {
+      "id": "FMA67943",
+      "name": "pons",
+      "category": "cns",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA67943.stl",
+      "sourceSha256": "464721a0893b05d7e830b327725cbd71c92d5fba6016c218bdbc4057f519e867",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 11985,
+      "outputVertices": 1317,
+      "outputTriangles": 2824,
+      "bounds": [
+        [
+          -20.5,
+          261.84,
+          -21.46
+        ],
+        [
+          19.2,
+          288.56,
+          10.94
+        ]
+      ]
+    },
+    {
+      "id": "FMA67944",
+      "name": "cerebellum",
+      "category": "cns",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA67944.stl",
+      "sourceSha256": "a023ac8cad7440cbb16814782f0d78643c9e81cdf04272971afa11a0100bd6fe",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 41357,
+      "outputVertices": 1623,
+      "outputTriangles": 3456,
+      "bounds": [
+        [
+          -50.51,
+          247.93,
+          -68.79
+        ],
+        [
+          49.33,
+          297.84,
+          -16.59
+        ]
+      ]
+    },
+    {
+      "id": "FMA7163",
+      "name": "skin",
+      "category": "skin",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA7163.stl",
+      "sourceSha256": "c7762a9b5044a7329ac99403b42551571a28325472103cf1900c379cd8dfcfb7",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 105282,
+      "outputVertices": 14790,
+      "outputTriangles": 29636,
+      "bounds": [
+        [
+          -330.58,
+          -588.07,
+          -128.88
+        ],
+        [
+          245.18,
+          393.32,
+          131.77
+        ]
+      ]
+    },
+    {
+      "id": "FMA72653",
+      "name": "right superior frontal gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72653.stl",
+      "sourceSha256": "bfdfb291520f28f3243e5b6969449e9d0ce70fcbe7f2e1862629cea21110eb94",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 13654,
+      "outputVertices": 1025,
+      "outputTriangles": 2302,
+      "bounds": [
+        [
+          -31.51,
+          309.44,
+          -28.96
+        ],
+        [
+          -1.52,
+          382.97,
+          78.93
+        ]
+      ]
+    },
+    {
+      "id": "FMA72654",
+      "name": "left superior frontal gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72654.stl",
+      "sourceSha256": "54aa6966cf6dee412cd16f2fc9ba4222a47910c59cc7a147dbac87d62689a13d",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 13655,
+      "outputVertices": 971,
+      "outputTriangles": 2272,
+      "bounds": [
+        [
+          0.26,
+          309.54,
+          -28.84
+        ],
+        [
+          29.23,
+          382.88,
+          79.31
+        ]
+      ]
+    },
+    {
+      "id": "FMA72655",
+      "name": "right middle frontal gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72655.stl",
+      "sourceSha256": "3996b19ea6ddce123eb1c41798cfff26f8af125fa63492a98454c6ea994bf26e",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 6926,
+      "outputVertices": 526,
+      "outputTriangles": 1214,
+      "bounds": [
+        [
+          -46.91,
+          317.09,
+          -10.39
+        ],
+        [
+          -15.61,
+          374.96,
+          69.4
+        ]
+      ]
+    },
+    {
+      "id": "FMA72656",
+      "name": "left middle frontal gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72656.stl",
+      "sourceSha256": "e97ef0b0a99f9d5b76d96363555cc27dca101c0f39ec340f38517e106a68d05b",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 6874,
+      "outputVertices": 506,
+      "outputTriangles": 1136,
+      "bounds": [
+        [
+          14.66,
+          317.37,
+          -10.89
+        ],
+        [
+          45.84,
+          374.8,
+          69.69
+        ]
+      ]
+    },
+    {
+      "id": "FMA72661",
+      "name": "right precentral gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72661.stl",
+      "sourceSha256": "136dc5cab4297753d7d26af60990c9e94b78997d6bf6a61d2beea08c726fd497",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 8394,
+      "outputVertices": 606,
+      "outputTriangles": 1432,
+      "bounds": [
+        [
+          -60.18,
+          317.61,
+          -43.09
+        ],
+        [
+          -2.16,
+          379.39,
+          18.32
+        ]
+      ]
+    },
+    {
+      "id": "FMA72662",
+      "name": "left precentral gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72662.stl",
+      "sourceSha256": "533692c92294c4f5ad4158a51ab681cfefb4bd0f729a70df2e983693a1b51b2b",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 8390,
+      "outputVertices": 599,
+      "outputTriangles": 1443,
+      "bounds": [
+        [
+          1.49,
+          317.79,
+          -42.62
+        ],
+        [
+          59.06,
+          379.42,
+          18.33
+        ]
+      ]
+    },
+    {
+      "id": "FMA72665",
+      "name": "right postcentral gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72665.stl",
+      "sourceSha256": "26aa859a22bed7bb4165f41b456f532ace9de8e7583754f894ec239615558829",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 7494,
+      "outputVertices": 564,
+      "outputTriangles": 1301,
+      "bounds": [
+        [
+          -64.57,
+          320.82,
+          -56.41
+        ],
+        [
+          -2.1,
+          375.58,
+          1.92
+        ]
+      ]
+    },
+    {
+      "id": "FMA72666",
+      "name": "left postcentral gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72666.stl",
+      "sourceSha256": "30fd9c050762f100770d42a71c64976cce10c49440f03e991702fe8514ebceb3",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 7496,
+      "outputVertices": 563,
+      "outputTriangles": 1303,
+      "bounds": [
+        [
+          1.05,
+          320.74,
+          -56.82
+        ],
+        [
+          63.32,
+          375.63,
+          1.69
+        ]
+      ]
+    },
+    {
+      "id": "FMA72667",
+      "name": "right supramarginal gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72667.stl",
+      "sourceSha256": "babd989df0c238866ab1ae6c9e94d1fb3ec5b7d457ee25576a31a120831e9f97",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 4285,
+      "outputVertices": 350,
+      "outputTriangles": 785,
+      "bounds": [
+        [
+          -66.1,
+          317.63,
+          -46.77
+        ],
+        [
+          -24.11,
+          356.58,
+          -12.22
+        ]
+      ]
+    },
+    {
+      "id": "FMA72668",
+      "name": "left supramarginal gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72668.stl",
+      "sourceSha256": "ac0d7b383407477f53f13304de628ec848e8273f41b9ca5895a34697834e6f1b",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 4245,
+      "outputVertices": 350,
+      "outputTriangles": 764,
+      "bounds": [
+        [
+          22.02,
+          317.67,
+          -47.08
+        ],
+        [
+          64.74,
+          356.42,
+          -12.34
+        ]
+      ]
+    },
+    {
+      "id": "FMA72669",
+      "name": "right angular gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72669.stl",
+      "sourceSha256": "8d269ad9da1d34453e23ac41ce4cf1e94734f48023373b7f2502beaed17cfeb1",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 5905,
+      "outputVertices": 466,
+      "outputTriangles": 1020,
+      "bounds": [
+        [
+          -61.33,
+          297.88,
+          -81.4
+        ],
+        [
+          -21.99,
+          356.37,
+          -38.88
+        ]
+      ]
+    },
+    {
+      "id": "FMA72670",
+      "name": "left angular gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72670.stl",
+      "sourceSha256": "206507829901707be007389c3ebdbae07ebb942ec983d4582c3c2b76fef6ae34",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 5831,
+      "outputVertices": 457,
+      "outputTriangles": 979,
+      "bounds": [
+        [
+          21.22,
+          296.89,
+          -81.44
+        ],
+        [
+          60.35,
+          356.43,
+          -38.94
+        ]
+      ]
+    },
+    {
+      "id": "FMA72685",
+      "name": "right middle temporal gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72685.stl",
+      "sourceSha256": "a39ee61dc99086d7d1be44c42157de54e04f9defa85074c63dc43b0bd1ef028f",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 5784,
+      "outputVertices": 467,
+      "outputTriangles": 994,
+      "bounds": [
+        [
+          -66.11,
+          281.33,
+          -66.77
+        ],
+        [
+          -33.6,
+          312.56,
+          37.02
+        ]
+      ]
+    },
+    {
+      "id": "FMA72686",
+      "name": "left middle temporal gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72686.stl",
+      "sourceSha256": "b7e58d0f86e4dd335eabf01b5459526f6a7fe66821b03ccb43d879ba70d56332",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 5695,
+      "outputVertices": 464,
+      "outputTriangles": 1003,
+      "bounds": [
+        [
+          31.34,
+          281.63,
+          -66.96
+        ],
+        [
+          64.72,
+          312.29,
+          37.16
+        ]
+      ]
+    },
+    {
+      "id": "FMA72687",
+      "name": "right inferior temporal gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72687.stl",
+      "sourceSha256": "ec04eabe123163d811f4eb4cbca8baf6cfc018ee5994bfe48b04a6b1991ad479",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 5869,
+      "outputVertices": 453,
+      "outputTriangles": 1003,
+      "bounds": [
+        [
+          -58.58,
+          272.84,
+          -55.05
+        ],
+        [
+          -17.31,
+          299.48,
+          34.91
+        ]
+      ]
+    },
+    {
+      "id": "FMA72688",
+      "name": "left inferior temporal gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72688.stl",
+      "sourceSha256": "fe75592f16a8c604c07f17e788e22f34801467f14f4a1e9d1066da3759a7616f",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 5830,
+      "outputVertices": 450,
+      "outputTriangles": 973,
+      "bounds": [
+        [
+          16.15,
+          272.91,
+          -55.14
+        ],
+        [
+          56.83,
+          299.85,
+          34.76
+        ]
+      ]
+    },
+    {
+      "id": "FMA72689",
+      "name": "right fusiform gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72689.stl",
+      "sourceSha256": "5f7263b7768b54a4ef8b8e31a1d0ef7a7d8f72ccce5011fcbfce66b36a27ad58",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 2761,
+      "outputVertices": 226,
+      "outputTriangles": 475,
+      "bounds": [
+        [
+          -41.11,
+          274.41,
+          -33.37
+        ],
+        [
+          -11.78,
+          298.97,
+          23.39
+        ]
+      ]
+    },
+    {
+      "id": "FMA72690",
+      "name": "left fusiform gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72690.stl",
+      "sourceSha256": "f7573954276f752193fe5b80b2ebab8e717d0e6c2b11f8ccea12c632c8abea3a",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 2775,
+      "outputVertices": 218,
+      "outputTriangles": 470,
+      "bounds": [
+        [
+          10.8,
+          274.43,
+          -33.19
+        ],
+        [
+          39.5,
+          298.89,
+          23.25
+        ]
+      ]
+    },
+    {
+      "id": "FMA72701",
+      "name": "right accessory short gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72701.stl",
+      "sourceSha256": "dae4a0cd8dbeeb27170af29c1f03a7626fa5fbb3c21748c71f07ab67177dafc3",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 6786,
+      "outputVertices": 519,
+      "outputTriangles": 1191,
+      "bounds": [
+        [
+          -58.84,
+          304.1,
+          4.23
+        ],
+        [
+          -26.24,
+          360.63,
+          63.6
+        ]
+      ]
+    },
+    {
+      "id": "FMA72702",
+      "name": "left accessory short gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72702.stl",
+      "sourceSha256": "68aec4cd4cb4a7c28c9f28e2056b64fd202237281012faba38736b03ab951d7a",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 6731,
+      "outputVertices": 509,
+      "outputTriangles": 1165,
+      "bounds": [
+        [
+          25.59,
+          303.89,
+          4.21
+        ],
+        [
+          57.63,
+          360.6,
+          63.64
+        ]
+      ]
+    },
+    {
+      "id": "FMA72705",
+      "name": "right parahippocampal gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72705.stl",
+      "sourceSha256": "fd317edc429ea14f0cc4398198bfb5a6f3a06d1ab9b2b24e5d41a63756899e0a",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 1541,
+      "outputVertices": 118,
+      "outputTriangles": 253,
+      "bounds": [
+        [
+          -29.29,
+          281.09,
+          -32.05
+        ],
+        [
+          -10.59,
+          299.78,
+          14.22
+        ]
+      ]
+    },
+    {
+      "id": "FMA72706",
+      "name": "left parahippocampal gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72706.stl",
+      "sourceSha256": "fa2679accd8a5134422e3d06012d30ac7db37cac3dcccba5526b9c9c3c55438b",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 1530,
+      "outputVertices": 120,
+      "outputTriangles": 265,
+      "bounds": [
+        [
+          8.57,
+          280.93,
+          -32.08
+        ],
+        [
+          27.92,
+          299.97,
+          14.37
+        ]
+      ]
+    },
+    {
+      "id": "FMA72717",
+      "name": "right cingulate gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72717.stl",
+      "sourceSha256": "052c22b760864144c50cc50077a3bdb111d7ed57e5f025ed9c061829b353b5dc",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 5274,
+      "outputVertices": 438,
+      "outputTriangles": 920,
+      "bounds": [
+        [
+          -27.57,
+          289.23,
+          -51.28
+        ],
+        [
+          -1.24,
+          351.38,
+          52.48
+        ]
+      ]
+    },
+    {
+      "id": "FMA72718",
+      "name": "left cingulate gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72718.stl",
+      "sourceSha256": "e83fc7ef26bafad285d81a236a5651132bd7eb1232f488ebb01f14202bffd927",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 5223,
+      "outputVertices": 404,
+      "outputTriangles": 877,
+      "bounds": [
+        [
+          -0.07,
+          289.37,
+          -51.27
+        ],
+        [
+          25.62,
+          351.33,
+          52.51
+        ]
+      ]
+    },
+    {
+      "id": "FMA72800",
+      "name": "anterior part of right superior temporal gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72800.stl",
+      "sourceSha256": "19cde3a87977e5e3ba6c4a7f5570686108354193ce1e57c4b2607461ef6444cf",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 3627,
+      "outputVertices": 280,
+      "outputTriangles": 624,
+      "bounds": [
+        [
+          -59.8,
+          282.88,
+          -28.52
+        ],
+        [
+          -26.71,
+          328.53,
+          39.77
+        ]
+      ]
+    },
+    {
+      "id": "FMA72801",
+      "name": "anterior part of left superior temporal gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72801.stl",
+      "sourceSha256": "72022c802774b46f1ed6b3ae4afc705649d0a0a55a4eb50eef01ba40cb1278cb",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 3673,
+      "outputVertices": 281,
+      "outputTriangles": 620,
+      "bounds": [
+        [
+          25.69,
+          282.67,
+          -28.6
+        ],
+        [
+          58.76,
+          327.04,
+          39.46
+        ]
+      ]
+    },
+    {
+      "id": "FMA72804",
+      "name": "posterior part of right superior temporal gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72804.stl",
+      "sourceSha256": "812a311901ebf3947d8bf37341b91e9ce25560c14cb65834ea4a1e707310af51",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 4607,
+      "outputVertices": 351,
+      "outputTriangles": 774,
+      "bounds": [
+        [
+          -66.6,
+          292.08,
+          -59.56
+        ],
+        [
+          -38.14,
+          328.64,
+          9.44
+        ]
+      ]
+    },
+    {
+      "id": "FMA72805",
+      "name": "posterior part of left superior temporal gyrus",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72805.stl",
+      "sourceSha256": "8ee112c9d3387d6dcceacca5c13b27792466a55ecad95766c0cdee541a7e8210",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 4611,
+      "outputVertices": 367,
+      "outputTriangles": 818,
+      "bounds": [
+        [
+          35.89,
+          292.09,
+          -59.76
+        ],
+        [
+          65.96,
+          328.64,
+          9.57
+        ]
+      ]
+    },
+    {
+      "id": "FMA72975",
+      "name": "right occipital lobe",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72975.stl",
+      "sourceSha256": "1ce0984b5f92adef2278d7adb2d6eada578f20da6d00ce642eb085af60711138",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 8305,
+      "outputVertices": 638,
+      "outputTriangles": 1377,
+      "bounds": [
+        [
+          -42.14,
+          276.67,
+          -90.42
+        ],
+        [
+          -1.37,
+          326.52,
+          -30.93
+        ]
+      ]
+    },
+    {
+      "id": "FMA72976",
+      "name": "left occipital lobe",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72976.stl",
+      "sourceSha256": "8f718a0c60a316c7e6b60fa440909865927de819d2229c2c513f9dee97644a0a",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 8219,
+      "outputVertices": 649,
+      "outputTriangles": 1445,
+      "bounds": [
+        [
+          -0.1,
+          276.78,
+          -90.48
+        ],
+        [
+          40.97,
+          326.24,
+          -30.93
+        ]
+      ]
+    },
+    {
+      "id": "FMA72977",
+      "name": "right insula",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72977.stl",
+      "sourceSha256": "2586b9df7a37d40d5082b0fa212856e285c6cbebb0bac3c7cbf1af06678f949a",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 4444,
+      "outputVertices": 220,
+      "outputTriangles": 446,
+      "bounds": [
+        [
+          -42.7,
+          303.08,
+          -13.79
+        ],
+        [
+          -25.38,
+          334.79,
+          34.54
+        ]
+      ]
+    },
+    {
+      "id": "FMA72978",
+      "name": "left insula",
+      "category": "cortex",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA72978.stl",
+      "sourceSha256": "8ab8b6fdee006cf8776db3b3c9857dd10aa9d60cd1851c2e7975eb7978c8d57b",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 4530,
+      "outputVertices": 218,
+      "outputTriangles": 443,
+      "bounds": [
+        [
+          24.07,
+          303.38,
+          -13.76
+        ],
+        [
+          41.45,
+          334.83,
+          33.89
+        ]
+      ]
+    }
+  ],
+  "missingSourceGeometry": [
+    "Peripheral nerves",
+    "Dorsal root ganglia",
+    "Cervical spinal cord",
+    "Brainstem nuclei",
+    "Thalamic VPL subnucleus"
+  ],
+  "neuralModelNotice": "The accompanying neural routes and cellular arrangements are procedural educational approximations in the shared frame; the anatomical source is not a measured end-to-end connectome."
+}

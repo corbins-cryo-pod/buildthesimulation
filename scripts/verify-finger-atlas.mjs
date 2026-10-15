@@ -60,7 +60,7 @@ for(const c of manifest.comparisons) {
   const {thumbnail_file,region,...imported} = c;
   assert.deepEqual(imported,originalManifest.comparisons.find(p=>p.number===c.number),'Comparison provenance changed');
 }
-const viewer = readFileSync('public/simulations/finger-pathway-atlas/viewer/index.html','utf8');
+const viewer = readFileSync('public/simulations/finger-pathway-atlas/v3-viewer/index.html','utf8');
 assert.ok(viewer.length<100000,'Viewer shell still embeds the large payload');
 for(const [,file] of viewer.matchAll(/<script src="\/assets\/finger-pathway-atlas\/v3\/([^\"]+)"/g))assert.ok(existsSync(base+file));
 assert.match(readFileSync(base+'viewer.js','utf8'),/response\.ok/);
