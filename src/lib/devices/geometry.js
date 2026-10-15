@@ -2,25 +2,33 @@ import { implantedKinds } from './implant-contacts.js';
 import { buildImplantPrimitive } from './implant-primitives.js';
 import * as THREE from 'three';
 import { getContactGeometry, getNeuralinkThread } from './catalog.js';
+import { createDeviceMaterial, createDeviceMaterials } from './materials.js';
 
 // Closed rectangular ribbon along sampled centers, with an explicit surface normal.
 // Width follows the surface, thickness follows the normal (both in mm).
 function ribbonGeometry(points, widthAt, thickness, normalAt) {
-  const vertices = [], indices = [];
+  const vertices = [], indices = [], frames = [];
   points.forEach((point, i) => {
     const tangent = points[Math.min(i + 1, points.length - 1)].clone().sub(points[Math.max(0, i - 1)]).normalize();
     const normal = normalAt(point).normalize();
     const across = tangent.clone().cross(normal).normalize();
-    for (const [side, face] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) {
-      vertices.push(...point.clone().addScaledVector(across, side * widthAt(i / (points.length - 1)) / 2).addScaledVector(normal, face * thickness / 2).toArray());
-    }
-    if (i) {
-      const a = (i - 1) * 4, b = i * 4;
-      for (const [j, k] of [[0, 1], [1, 3], [3, 2], [2, 0]]) indices.push(a + j, b + j, a + k, a + k, b + j, b + k);
+    const corners = [[-1,-1],[1,-1],[-1,1],[1,1]].map(([side,face]) => point.clone()
+      .addScaledVector(across,side*widthAt(i/(points.length-1))/2).addScaledVector(normal,face*thickness/2));
+    frames.push(corners);
+    // Each cross-section face has its own vertices. Normals are smooth along
+    // a curved ribbon, while its top/side edges retain their actual sharpness.
+    for (const [j,k] of [[0,1],[1,3],[3,2],[2,0]]) vertices.push(...corners[j].toArray(),...corners[k].toArray());
+    if (i) for (let face=0;face<4;face++) {
+      const a=(i-1)*8+face*2,b=i*8+face*2;
+      indices.push(a,b,a+1,a+1,b,b+1);
     }
   });
-  const end = (points.length - 1) * 4;
-  indices.push(0, 2, 1, 1, 2, 3, end, end + 1, end + 2, end + 1, end + 3, end + 2);
+  const startCap=vertices.length/3;
+  frames[0].forEach(p=>vertices.push(...p.toArray()));
+  const endCap=vertices.length/3;
+  frames.at(-1).forEach(p=>vertices.push(...p.toArray()));
+  indices.push(startCap,startCap+1,startCap+2,startCap+1,startCap+3,startCap+2,
+    endCap,endCap+2,endCap+1,endCap+1,endCap+2,endCap+3);
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
   geometry.setIndex(indices); geometry.computeVertexNormals();
@@ -37,9 +45,8 @@ function cylinder(radius, height, material, z) {
 export function buildDeviceMesh(model) {
   const group = new THREE.Group();
   group.name = model.id;
-  group.userData = { units: 'mm', revision: model.revision, deviceId: model.deviceId, physicalSites: model.physicalSites, modeledScope: model.modeledScope ?? null, fidelity: model.fidelity ?? null, sourceDimensionUnits: 'mm', notes: model.notes, sources: model.sources.map(source => source.url) };
-  const silicon = new THREE.MeshStandardMaterial({ color: 0x343e4c, metalness: 0.65, roughness: 0.36 });
-  const metal = new THREE.MeshStandardMaterial({ color: 0xdcc18a, metalness: 0.75, roughness: 0.32 });
+  group.userData = { units: 'mm', revision: model.revision, visualRevision: model.visualRevision ?? model.revision, deviceId: model.deviceId, physicalSites: model.physicalSites, modeledScope: model.modeledScope ?? null, fidelity: model.fidelity ?? null, appearance: model.appearance ?? null, sourceDimensionUnits: 'mm', notes: model.notes, sources: model.sources.map(source => source.url) };
+  const { substrate: silicon, contact: metal } = createDeviceMaterials(model);
   const bodies = new THREE.Group(); bodies.name = 'substrate-and-shanks';
   const contacts = new THREE.Group(); contacts.name = 'contact-surfaces';
   group.add(bodies, contacts);
@@ -48,17 +55,29 @@ export function buildDeviceMesh(model) {
     buildImplantPrimitive(model, sites, bodies, contacts);
     silicon.dispose(); metal.dispose();
   } else if (model.kind === 'chip-envelope') {
-    bodies.add(new THREE.Mesh(new THREE.BoxGeometry(model.width, model.length, model.thickness), silicon));
+    const top = createDeviceMaterial(model.appearance?.surface ?? 'gold', { roughness: 0.48 });
+    bodies.add(new THREE.Mesh(new THREE.BoxGeometry(model.width, model.length, model.thickness), [silicon,silicon,silicon,silicon,top,silicon]));
   } else if (model.kind === 'carbon-row') {
-    const fiberMaterial = new THREE.MeshStandardMaterial({ color: 0x9ba6b2, roughness: 0.55 });
+    const fiberMaterial = createDeviceMaterial('carbon');
+    const coating = createDeviceMaterial('parylene');
+    // Distinguish the documented carbon core from its 800 nm radial coating.
+    // Open core cylinders leave the cut face to the contact mesh, avoiding a
+    // coplanar cap and keeping that face at its exact nominal location.
+    const coreGeometry = new THREE.CylinderGeometry(model.coreDiameter / 2, model.coreDiameter / 2, model.length, 32, 1, true);
+    const sleeveGeometry = new THREE.CylinderGeometry(model.diameter / 2, model.diameter / 2, model.length, 32, 1, true);
+    const endGeometry = new THREE.RingGeometry(model.coreDiameter / 2, model.diameter / 2, 32);
     for (const site of sites) {
-      const shaft = cylinder(model.diameter / 2, model.length, fiberMaterial, model.length / 2);
-      shaft.position.x = site.positionMm[0]; bodies.add(shaft);
-      const pad = new THREE.Mesh(new THREE.CircleGeometry(model.coreDiameter / 2, 24), metal);
+      for (const [geometry, material] of [[coreGeometry, fiberMaterial], [sleeveGeometry, coating]]) {
+        const shaft = new THREE.Mesh(geometry, material); shaft.rotation.x = Math.PI / 2;
+        shaft.position.set(site.positionMm[0], 0, model.length / 2); bodies.add(shaft);
+      }
+      const annulus = new THREE.Mesh(endGeometry, coating); annulus.position.fromArray(site.positionMm); bodies.add(annulus);
+      const pad = new THREE.Mesh(new THREE.CircleGeometry(model.coreDiameter / 2, 32), metal);
       pad.position.fromArray(site.positionMm); pad.name = site.id; contacts.add(pad);
     }
+    silicon.dispose();
   } else if (model.kind === 'surface-grid') {
-    const filmMaterial = new THREE.MeshStandardMaterial({ color: 0x748c94, roughness: 0.65 });
+    const filmMaterial = silicon;
     if (model.siteDepth) {
       // A perforated film surface lets recessed contact faces remain visible.
       // Local well sidewalls are schematic; no nanorod or perfusion-hole mask is inferred.
@@ -77,11 +96,14 @@ export function buildDeviceMesh(model) {
       const lower = new THREE.Mesh(new THREE.BoxGeometry(model.width, model.length, model.thickness - model.siteDepth), filmMaterial);
       lower.position.z = -(model.thickness + model.siteDepth) / 2; bodies.add(lower);
     } else {
-      const film = new THREE.Mesh(new THREE.BoxGeometry(model.width, model.length, model.thickness), filmMaterial);
+      // BISC's surface coating is visible in the source SEM. Use a face finish,
+      // without inventing a separate coating thickness or changing its bound.
+      const surfaceFinish = model.appearance?.surface ? createDeviceMaterial(model.appearance.surface, { opacity: 1, transparent: false, depthWrite: true }) : null;
+      const film = new THREE.Mesh(new THREE.BoxGeometry(model.width, model.length, model.thickness), surfaceFinish ? [filmMaterial,filmMaterial,filmMaterial,filmMaterial,surfaceFinish,filmMaterial] : filmMaterial);
       film.position.z = -model.thickness / 2; bodies.add(film);
     }
     // Depth bias is a rendering setting, not an added physical layer.
-    const surfaceMetal = metal.clone(); surfaceMetal.polygonOffset = true; surfaceMetal.polygonOffsetFactor = -1; surfaceMetal.polygonOffsetUnits = -1;
+    const surfaceMetal = metal;
     const padGeometry = model.siteShape === 'circle' ? new THREE.CircleGeometry(model.siteSize / 2, 24) : new THREE.PlaneGeometry(model.siteSize, model.siteSize);
     for (const site of sites) {
       const pad = new THREE.Mesh(padGeometry, surfaceMetal); pad.position.fromArray(site.positionMm); pad.position.z += 0.00001; pad.userData = {visualizationOffsetMm: 0.00001, note: 'Display separation only; nominal coordinates remain in geometry JSON'}; pad.name = site.id; contacts.add(pad);
@@ -92,11 +114,19 @@ export function buildDeviceMesh(model) {
     bodies.add(base);
     for (const site of sites) {
       const [x, y, length] = site.positionMm;
-      const shaft = new THREE.Mesh(new THREE.CylinderGeometry(model.shaftRadius * 0.55, model.shaftRadius, length - model.tipLength, 10), silicon);
-      shaft.rotation.x = Math.PI / 2;
-      shaft.position.set(x, y, (length - model.tipLength) / 2);
+      const h = length - model.tipLength, R = model.shaftRadius;
+      // Source photographs show a flared foot and a continuous etched taper.
+      // These profile samples describe that silhouette; only the documented
+      // base, pitch and selected lengths are asserted as measured dimensions.
+      const curve = new THREE.CatmullRomCurve3([[R,0],[.82*R,.025*h],[.65*R,.08*h],[.43*R,.5*h],[.22*R,h]].map(([r,z])=>new THREE.Vector3(r,z,0)),false,'centripetal');
+      // The root meets the substrate; an internal cap is unnecessary and would
+      // pull smooth taper normals down across the visible basal flare.
+      const profile = curve.getPoints(32).map(p=>new THREE.Vector2(p.x,p.y));
+      const shaftGeometry = new THREE.LatheGeometry(profile,32); shaftGeometry.normalizeNormals();
+      const shaft = new THREE.Mesh(shaftGeometry, silicon);
+      shaft.rotation.x = Math.PI / 2; shaft.position.set(x,y,0);
       bodies.add(shaft);
-      const tip = new THREE.Mesh(new THREE.ConeGeometry(model.shaftRadius * 0.55, model.tipLength, 10), metal);
+      const tip = new THREE.Mesh(new THREE.ConeGeometry(model.shaftRadius * 0.22, model.tipLength, 32), metal);
       tip.rotation.x = Math.PI / 2;
       tip.position.set(x, y, length - model.tipLength / 2);
       tip.name = site.id;
@@ -105,30 +135,32 @@ export function buildDeviceMesh(model) {
   } else if (model.kind === 'neuropixels') {
     const shape = new THREE.Shape();
     shape.moveTo(-model.width / 2, 0); shape.lineTo(model.width / 2, 0);
-    shape.lineTo(model.width / 2, model.length - 0.12);
-    shape.lineTo(0, model.length); shape.lineTo(-model.width / 2, model.length - 0.12); shape.closePath();
+    shape.lineTo(model.width / 2, model.length - model.tipLength);
+    shape.lineTo(0, model.length); shape.lineTo(-model.width / 2, model.length - model.tipLength); shape.closePath();
     const geom = new THREE.ExtrudeGeometry(shape, { depth: model.thickness, bevelEnabled: false });
     // shape X/Y -> model X/Z, extrusion -> negative Y.
     geom.rotateX(Math.PI / 2); geom.translate(0, model.thickness / 2, 0);
-    // Lighter than the shared silicon tone so the 70 µm shank reads against the dark canvas.
-    const shankMaterial = new THREE.MeshStandardMaterial({ color: 0x8b98aa, metalness: 0.2, roughness: 0.55 });
-    bodies.add(new THREE.Mesh(geom, shankMaterial));
+    bodies.add(new THREE.Mesh(geom, silicon));
     const contactShape = new THREE.PlaneGeometry(model.siteSize, model.siteSize);
     contactShape.rotateX(Math.PI / 2);
     for (const site of sites) {
       const pad = new THREE.Mesh(contactShape, metal);
-      pad.position.fromArray(site.positionMm); pad.position.y -= 0.00005;
+      pad.position.fromArray(site.positionMm); pad.position.y -= 0.00001;
+      pad.userData = { visualizationOffsetMm: 0.00001 };
       pad.name = site.id; contacts.add(pad);
     }
   } else if (model.kind === 'connexus') {
-    const ceramic = new THREE.MeshStandardMaterial({ color: 0xb4b6af, roughness: 0.75 });
-    const housing = new THREE.MeshStandardMaterial({ color: 0xa5acb2, metalness: 0.65, roughness: 0.33 });
-    const wire = new THREE.MeshStandardMaterial({ color: 0xaeb6c0, metalness: 0.35, roughness: 0.45 });
+    const ceramic = createDeviceMaterial('neutral-polymer', { color: 0x30383d, metalness: 0.08, roughness: 0.73, opacity: 1, transparent: false, depthWrite: true });
+    ceramic.name = 'dark-face-visual-finish';
+    const housing = silicon;
+    const wire = createDeviceMaterial('platinum-iridium', { roughness: 0.44 });
     bodies.add(cylinder(model.diameter / 2, model.bodyThickness - 0.01, housing, -(model.bodyThickness + 0.01) / 2));
     bodies.add(cylinder(model.ceramicDiameter / 2, 0.08, ceramic, -0.045));
+    const rim = new THREE.Mesh(new THREE.RingGeometry(model.ceramicDiameter / 2, model.diameter / 2, 96), createDeviceMaterial('gold', { roughness: 0.48 }));
+    rim.name = 'photo-informed-sealing-rim'; rim.position.z = -0.004; bodies.add(rim);
     // Tip length/shape are schematic; the point coordinates identify the apex.
-    const shaftGeometry = new THREE.CylinderGeometry(model.shaftDiameter / 2, model.shaftDiameter / 2, model.length - model.tipLength, 10);
-    const tipGeometry = new THREE.ConeGeometry(model.shaftDiameter / 2, model.tipLength, 10);
+    const shaftGeometry = new THREE.CylinderGeometry(model.shaftDiameter / 2, model.shaftDiameter / 2, model.length - model.tipLength, 24);
+    const tipGeometry = new THREE.ConeGeometry(model.shaftDiameter / 2, model.tipLength, 24);
     for (const site of sites) {
       const [x, y, length] = site.positionMm;
       const shaft = new THREE.Mesh(shaftGeometry, wire);
@@ -138,24 +170,29 @@ export function buildDeviceMesh(model) {
       tip.rotation.x = Math.PI / 2; tip.position.set(x, y, length - model.tipLength / 2);
       tip.name = site.id; contacts.add(tip);
     }
-    silicon.dispose();
   } else if (model.kind === 'neuralink') {
-    const housing = new THREE.MeshStandardMaterial({ color: 0xa7b0b8, metalness: 0.6, roughness: 0.42 });
-    const polymer = new THREE.MeshStandardMaterial({ color: 0xa8c7ce, metalness: 0.15, roughness: 0.48, side: THREE.DoubleSide });
+    const housing = createDeviceMaterial('neutral-polymer', { color: 0xd5d8d8, opacity: 1, transparent: false, depthWrite: true, roughness: 0.42 });
+    const polymer = createDeviceMaterial('neutral-polymer', { opacity: 0.82, roughness: 0.4 });
     // Rounded disc body (lathe profile, axis +Z) so the rim catches light like the real enclosure.
     const R = model.diameter / 2, T = model.bodyThickness, f = 1.1;
     const profile = [new THREE.Vector2(0, -T)];
     for (let i = 0; i <= 8; i++) { const a = -Math.PI / 2 + i * Math.PI / 16; profile.push(new THREE.Vector2(R - f + f * Math.cos(a), -T + f + f * Math.sin(a))); }
     for (let i = 0; i <= 8; i++) { const a = i * Math.PI / 16; profile.push(new THREE.Vector2(R - f + f * Math.cos(a), -f + f * Math.sin(a))); }
     profile.push(new THREE.Vector2(0, 0));
-    const body = new THREE.Mesh(new THREE.LatheGeometry(profile, 128), housing);
+    const bodyGeometry = new THREE.LatheGeometry(profile, 128); bodyGeometry.normalizeNormals();
+    // Lathe poles contain coincident vertices; omit their zero-area triangles.
+    const positions=bodyGeometry.attributes.position, originalIndex=bodyGeometry.index, cleanIndex=[];
+    const a=new THREE.Vector3(), b=new THREE.Vector3(), c=new THREE.Vector3();
+    for(let i=0;i<originalIndex.count;i+=3) {
+      const ids=[originalIndex.getX(i),originalIndex.getX(i+1),originalIndex.getX(i+2)];
+      a.fromBufferAttribute(positions,ids[0]);b.fromBufferAttribute(positions,ids[1]);c.fromBufferAttribute(positions,ids[2]);
+      if(b.sub(a).cross(c.sub(a)).lengthSq()>1e-20)cleanIndex.push(...ids);
+    }
+    bodyGeometry.setIndex(cleanIndex);
+    const body = new THREE.Mesh(bodyGeometry, housing);
     body.rotation.x = Math.PI / 2; bodies.add(body);
-    // Dark inlay ring and centre disc sit 30 um proud of the face: no coplanar surfaces.
-    const inlay = new THREE.MeshStandardMaterial({ color: 0x2b333d, metalness: 0.5, roughness: 0.45 });
-    const ring = new THREE.Mesh(new THREE.RingGeometry(R - 3.0, R - 2.2, 128), inlay); ring.position.z = 0.03; ring.material.side = THREE.DoubleSide; bodies.add(ring);
-    const centre = new THREE.Mesh(new THREE.CircleGeometry(R - 5.5, 128), new THREE.MeshStandardMaterial({ color: 0x5d6873, metalness: 0.4, roughness: 0.6, side: THREE.DoubleSide })); centre.position.z = 0.03; bodies.add(centre);
     // Strain-relief tab where the thread cable leaves the enclosure (illustrative).
-    const tab = new THREE.Mesh(new THREE.BoxGeometry(3.4, 1.6, 0.5), polymer); tab.position.set(0, R - 0.5, -0.3); bodies.add(tab);
+    const tab = new THREE.Mesh(new THREE.BoxGeometry((model.threadCount - 1) * model.entryPitch + model.threadMaxWidth, 1.6, 0.5), polymer); tab.position.set(0, model.threadStartY - 0.4, -0.25); bodies.add(tab);
     for (let thread = 0; thread < model.threadCount; thread++) {
       const { entryX, exitX } = getNeuralinkThread(model, thread);
       const curve = new THREE.CubicBezierCurve3(
@@ -168,7 +205,7 @@ export function buildDeviceMesh(model) {
       ribbon.name = `thread-${thread}`; bodies.add(ribbon);
     }
     const padGeometry = new THREE.PlaneGeometry(model.visualContactWidth, model.visualContactLength);
-    metal.side = THREE.DoubleSide; metal.metalness = 0.25; metal.emissive.setHex(0x8a6530); metal.emissiveIntensity = 0.3;
+    metal.side = THREE.DoubleSide;
     metal.polygonOffset = true; metal.polygonOffsetFactor = -1; metal.polygonOffsetUnits = -1;
     for (const site of sites) {
       const pad = new THREE.Mesh(padGeometry, metal); pad.name = site.id;
@@ -178,13 +215,12 @@ export function buildDeviceMesh(model) {
       pad.position.z += 0.00001; pad.userData = { visualizationOffsetMm: 0.00001 };
       contacts.add(pad);
     }
+    silicon.dispose();
   } else if (model.kind === 'stentrode') {
     // Curved, flat struts follow the manufacturer's visual reference. Dimensions
     // and topology remain explicit assumptions, not reverse-engineered CAD.
     // Contrast comes from material response, never inflated strut/contact dimensions.
-    const scaffold = new THREE.MeshStandardMaterial({ color: 0xd9e4ee, metalness: 0.25, roughness: 0.55, emissive: 0x667788, emissiveIntensity: 0.22 });
-    metal.metalness = 0.25; metal.roughness = 0.5;
-    metal.emissive.setHex(0xdcc18a); metal.emissiveIntensity = 0.35;
+    const scaffold = silicon;
     const radius = model.diameter / 2;
     for (let row = 0; row < model.latticeRows; row++) {
       for (let col = 0; col < model.latticeColumns; col++) {
@@ -195,7 +231,9 @@ export function buildDeviceMesh(model) {
             const t = step / 16;
             const eased = t - 0.75 * Math.sin(2 * Math.PI * t) / (2 * Math.PI);
             const angle = theta + sign * eased * Math.PI / model.latticeColumns;
-            points.push(new THREE.Vector3(radius * Math.cos(angle), radius * Math.sin(angle), (row + t) * model.length / model.latticeRows));
+            const z = (row + t) * model.length / model.latticeRows;
+            const r = THREE.MathUtils.lerp(model.leadDiameter / 2, radius, Math.min(z / model.neckLength, 1));
+            points.push(new THREE.Vector3(r * Math.cos(angle), r * Math.sin(angle), z));
           }
           const strut = new THREE.Mesh(ribbonGeometry(points, () => model.strutWidth, model.strutThickness, p => new THREE.Vector3(p.x, p.y, 0)), scaffold);
           strut.name = 'scaffold-strut'; bodies.add(strut);
@@ -203,8 +241,8 @@ export function buildDeviceMesh(model) {
       }
     }
     const diskGeometry = new THREE.CylinderGeometry(model.electrodeDiameter / 2, model.electrodeDiameter / 2, model.contactThickness, 24);
-    const mountMaterial = new THREE.MeshStandardMaterial({ color: 0x88765e, metalness: 0.3, roughness: 0.5, side: THREE.DoubleSide });
-    const mountGeometry = new THREE.RingGeometry(model.electrodeDiameter / 2, model.contactMountDiameter / 2, 32);
+    const mountMaterial = createDeviceMaterial('nitinol', { roughness: 0.5 });
+    const mountGeometry = new THREE.CylinderGeometry(model.contactMountDiameter / 2, model.contactMountDiameter / 2, 0.06, 32);
     for (const site of sites) {
       const normal = new THREE.Vector3(...site.normal);
       const disk = new THREE.Mesh(diskGeometry, metal);
@@ -212,16 +250,15 @@ export function buildDeviceMesh(model) {
       disk.position.fromArray(site.positionMm).addScaledVector(normal, -model.contactThickness / 2);
       disk.name = site.id; contacts.add(disk);
       const collar = new THREE.Mesh(mountGeometry, mountMaterial);
-      collar.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), normal);
-      collar.position.fromArray(site.positionMm).addScaledVector(normal, -0.005);
+      collar.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), normal);
+      collar.position.fromArray(site.positionMm).addScaledVector(normal, -model.contactThickness);
+      collar.userData = { fidelity: 'Photo-informed mount support; 0.06 mm thickness is illustrative' };
       collar.name = 'contact-mount'; bodies.add(collar);
     }
-    const leadPath = new THREE.CubicBezierCurve3(new THREE.Vector3(radius, 0, 0), new THREE.Vector3(radius, 0, -4), new THREE.Vector3(1.5, 0, -5), new THREE.Vector3(1.5, 0, -model.leadLength));
-    const leadMaterial = new THREE.MeshStandardMaterial({ color: 0xb6c0c8, roughness: 0.6, metalness: 0.1 });
+    const leadPath = new THREE.CubicBezierCurve3(new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, -4), new THREE.Vector3(1.5, 0, -5), new THREE.Vector3(1.5, 0, -model.leadLength));
+    const leadMaterial = createDeviceMaterial('silicone');
     const lead = new THREE.Mesh(new THREE.TubeGeometry(leadPath, 40, model.leadDiameter / 2, 12, false), leadMaterial);
     lead.name = 'schematic-lead-stub'; lead.userData = { fidelity: 'illustrative envelope; no conductor routing or full implant cable length' }; bodies.add(lead);
-    // These materials are unused for the stent family.
-    silicon.dispose();
   }
   return { group, bodies, contacts };
 }
