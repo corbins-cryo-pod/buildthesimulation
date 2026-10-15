@@ -67,7 +67,7 @@ export function readAtlasState(search, entries) {
     interfaceType: allowed('interface', [...new Set(entries.flatMap(e => e.interfaces))]),
     stage: allowed('stage', ['0', '1', '2', '3', '4', '?']),
     regulatory: allowed('reg', ['R', 'A', 'K', '?']),
-    sort: allowed('sort', Object.keys(sortLabels)) || 'maturity',
+    sort: allowed('sort', Object.keys(sortLabels)) || 'name',
     selected: entries.some(e => e.slug === params.get('org')) ? params.get('org') : '',
   };
 }
