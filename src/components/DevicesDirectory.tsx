@@ -344,11 +344,8 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
         </aside>
 
         <div class="results">
-          <div class="browse-groups">
-          {browseGroups.map((group) => <section key={group.id} class="browse-group" aria-labelledby={`browse-${group.id}`}>
-            <h2 id={`browse-${group.id}`} class="browse-group-title">{group.title}</h2>
-            <div class="grid">
-            {group.cards.map(({family, entries, representative: e}: any) => {
+          <div class="grid">
+            {browseGroups.flatMap(group => group.cards).map(({family, entries, representative: e}: any) => {
               const pictured = getPicturedEntry(entries, e);
               return (
               <article key={family?.id ?? e.slug} class={`item familyCard ${pictured ? 'has-photo' : ''}`}>
@@ -389,8 +386,6 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
               </article>
             ); })}
 
-            </div>
-          </section>)}
             {!filtered.length ? <p class="muted">No matching devices.</p> : null}
           </div>
         </div>
@@ -422,8 +417,6 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
         .stage{display:block;font-size:16px}.stage select{display:block;width:100%;margin:7px 0 12px;padding:8px;border:1px solid var(--border);border-radius:8px;color:inherit;background:var(--panelStrong);font:inherit}
         .model-filter{display:flex;gap:8px;align-items:center;font-size:14px}.stage-note{font-size:12px;line-height:1.6;opacity:.72;margin:12px 0 18px}
         .device-directory .results{min-width:0}
-        .browse-group + .browse-group{margin-top:34px}
-        .browse-group-title{font-size:22px;font-weight:400;font-style:italic;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
         .device-directory .grid{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:18px 16px;align-items:start}
         @media (max-width: 900px){.device-directory .grid{grid-template-columns:1fr}}
 
