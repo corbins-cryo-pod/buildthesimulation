@@ -35,6 +35,6 @@ test('projected clustering separates distant points and preserves coincident org
 
 test('shared atlas URLs validate facets and profile identities', () => {
   const entries = [{slug:'a',region:'American',interfaces:['Intracortical']}];
-  assert.deepEqual(readAtlasState('?q=speech&kind=Lab&region=American&interface=Intracortical&org=a', entries), {query:'speech',kind:'Lab',region:'American',interfaceType:'Intracortical',stage:'',regulatory:'',sort:'maturity',selected:'a'});
-  assert.deepEqual(readAtlasState('?kind=Unknown&region=Invalid&interface=Fake&org=missing', entries), {query:'',kind:'',region:'',interfaceType:'',stage:'',regulatory:'',sort:'maturity',selected:''});
+  assert.deepEqual(readAtlasState('?q=speech&kind=Lab&region=American&interface=Intracortical&org=a', entries), {query:'speech',kind:'Lab',region:'American',interfaceType:'Intracortical',stage:'',regulatory:'',sort:'name',selected:'a'});
+  assert.deepEqual(readAtlasState('?kind=Unknown&region=Invalid&interface=Fake&org=missing', entries), {query:'',kind:'',region:'',interfaceType:'',stage:'',regulatory:'',sort:'name',selected:''});
 });
