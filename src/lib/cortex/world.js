@@ -1,4 +1,4 @@
-import { getDeviceModel, getContactGeometry } from '../devices/catalog.js';
+import { getCortexImplantModel, getCortexContacts, implantTipPointsMm } from './implants.js';
 import { validateConfig } from './config.js';
 import { makeActiveMorphology } from './active-morphology.js';
 
@@ -23,7 +23,7 @@ export function transformPoint(localUm, pose) {
   return rotateVector(localUm, pose.rotationDeg).map((x, i) => x + pose.translationUm[i]);
 }
 export function placedContacts(model, pose) {
-  return getContactGeometry(model).map((site) => ({
+  return getCortexContacts(model).map((site) => ({
     ...site,
     positionUm: transformPoint(
       site.positionMm.map((x) => x * 1000),
@@ -86,7 +86,7 @@ export function makeMorphology(somaUm, maximumLengthUm = 40) {
 }
 export function makeWorld(input) {
   const config = validateConfig(input),
-    model = getDeviceModel(config.implant.deviceId);
+    model = getCortexImplantModel(config.implant.deviceId);
   if (!model || model.revision !== config.implant.revision)
     throw new Error('Catalog revision changed; explicitly migrate the experiment.');
   const contacts = placedContacts(model, config.implant),
@@ -130,6 +130,7 @@ export function makeWorld(input) {
     config,
     model,
     contacts,
+    tipsUm: implantTipPointsMm(model).map(p => transformPoint(p.map(x => x * 1000), config.implant)),
     neuron,
     layers: LAYER_TEMPLATE.map(([id, from, to, color]) => ({
       id,
@@ -140,7 +141,7 @@ export function makeWorld(input) {
     })),
     warnings: outside
       ? [
-          `${outside} contact apices are outside the cortical box. The electrical solver still assumes an infinite homogeneous conductor.`,
+          `${outside} of ${contacts.length} contacts are outside the cortical box. All remain visible; this is expected for a partially inserted long shank. The electrical solver still assumes an infinite homogeneous conductor.`,
         ]
       : [],
   };

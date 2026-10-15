@@ -47,16 +47,17 @@ export function placementReport(
   return {
     rows,
     supported: rows.every((r) => r.supported),
-    minTipDepthUm: Math.min(...world.contacts.map((c) => c.positionUm[2])),
-    maxTipDepthUm: Math.max(...world.contacts.map((c) => c.positionUm[2])),
+    minTipDepthUm: Math.min(...world.tipsUm.map(p => p[2])),
+    maxTipDepthUm: Math.max(...world.tipsUm.map(p => p[2])),
+    meanTipDepthUm: world.tipsUm.reduce((sum, p) => sum + p[2], 0) / world.tipsUm.length,
   };
 }
 
 // Set the mean physical apex depth, retaining X/Y translation and all rotations.
 export function translationForTipDepth(world, depthUm) {
   const mean =
-    world.contacts.reduce((sum, c) => sum + c.positionUm[2], 0) /
-    world.contacts.length;
+    world.tipsUm.reduce((sum, p) => sum + p[2], 0) /
+    world.tipsUm.length;
   return world.config.implant.translationUm.map((v, i) =>
     i === 2 ? v + depthUm - mean : v,
   );

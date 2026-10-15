@@ -6,7 +6,8 @@ import {
 } from "./electrical.js";
 export { appliedTransferMvPerUa } from "./electrical.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { buildDeviceMesh, disposeDeviceMesh } from "../devices/geometry.js";
+import { disposeDeviceMesh } from "../devices/geometry.js";
+import { buildCortexImplantMesh } from "./implant-mesh.js";
 
 const mm = (p) => p.map((x) => x / 1000);
 function morphologyGeometry(node) {
@@ -107,7 +108,7 @@ export function buildWorldGroup(world, options = {}) {
   );
   pial.name = "pia-z-zero";
   root.add(pial);
-  const device = buildDeviceMesh(world.model);
+  const device = buildCortexImplantMesh(world.model);
   device.group.position.fromArray(mm(world.config.implant.translationUm));
   device.group.rotation.set(
     ...world.config.implant.rotationDeg.map((x) => (x * Math.PI) / 180),
@@ -360,7 +361,7 @@ export async function createCortexView(host, onStatus, onScale, onPick) {
   renderer.domElement.setAttribute("role", "img");
   renderer.domElement.setAttribute(
     "aria-label",
-    "Physically scaled cortical patch and Utah array. Use view buttons, then select a compartment in the inspector.",
+    "Physically scaled cortical patch and selected implant. Use view buttons, then select a compartment in the inspector.",
   );
   host.append(renderer.domElement);
   const labelLayer = document.createElement("div");
@@ -444,6 +445,17 @@ export async function createCortexView(host, onStatus, onScale, onPick) {
       const size = box.getSize(new THREE.Vector3());
       extent = Math.max(size.x, size.y, size.z) * 1.2;
     }
+    if (view === "implant") {
+      const box = new THREE.Box3().setFromObject(objects.device.group);
+      box.getCenter(target);
+      const size = box.getSize(new THREE.Vector3());
+      extent = Math.max(size.x, size.y, size.z) * 1.25;
+    } else if (view === "contacts") {
+      const points = world.config.recording.contactIds.map(id =>
+        new THREE.Vector3(...mm(world.contacts.find(s => s.id === id).positionUm)));
+      target.copy(points[0]).add(points[1]).multiplyScalar(0.5);
+      extent = Math.max(0.18, points[0].distanceTo(points[1]) * 2.5);
+    }
     const direction =
       view === "top"
         ? new THREE.Vector3(0, -0.001, -1)
@@ -521,7 +533,9 @@ export async function createCortexView(host, onStatus, onScale, onPick) {
         return;
       }
       const first = !world,
-        modelChanged = world?.neuron.id !== next.neuron.id;
+        modelChanged = world?.neuron.id !== next.neuron.id,
+        implantChanged = world?.config.implant.deviceId !== next.config.implant.deviceId,
+        pairChanged = world?.config.recording.contactIds.join() !== next.config.recording.contactIds.join();
       world = next;
       if (objects) {
         scene.remove(objects.root);
@@ -537,7 +551,7 @@ export async function createCortexView(host, onStatus, onScale, onPick) {
       }
       objects.cutaway = options.section;
       scene.add(objects.root);
-      if (first || modelChanged) fit();
+      if (first || modelChanged || (implantChanged && ["contacts", "implant"].includes(currentView)) || (pairChanged && currentView === "contacts")) fit();
       else render();
     },
     setFrame(result, frame, selected, options = {}) {

@@ -36,6 +36,13 @@ const limits = Object.freeze({
 const relevantPaths = [
   'scripts/cortex-refinement-study.mjs',
   'src/lib/cortex/config.js',
+  'src/lib/cortex/implants.js',
+  'src/lib/devices/catalog.js',
+  'src/lib/devices/implant-contacts.js',
+  'src/lib/devices/models-surface.js',
+  'src/lib/devices/models-probes.js',
+  'src/lib/devices/models-leads.js',
+  'src/lib/devices/models-peripheral.js',
   'src/lib/cortex/world.js',
   'src/lib/cortex/active-morphology.js',
   'src/lib/cortex/active-cable.js',
