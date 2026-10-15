@@ -7,8 +7,8 @@ const sourceById = new Map(manifest.sources.map(s => [s.id, s]));
 ---
 
 <Layout pageTitle="Finger atlas · Reference images" compactHeader wide subtitle="" description="50 comparison plates and 42 original scientific figures accompanying the Finger Pathway Atlas V3. Source, species, tissue and model limitations are retained for each comparison.">
-  <header class="reference-heading"><p class="edition">Finger Pathway Atlas · V3</p><h1>Model and real tissue</h1><p>50 comparison plates · 42 original figures · 19 studies and the H01 gallery</p><a href="/simulations/finger-pathway-atlas/">← Return to the 3D atlas</a></header>
-  <p class="reading-note">Left: the supplied V3 model. Right: published scientific tissue images. The two panels have independent magnifications and represent different specimens, fields and scales. Source species and imaging methods are identified on every plate.</p>
+  <header class="reference-heading"><p class="edition">Finger Pathway Atlas · V4 references</p><h1>Model and real tissue</h1><p>50 comparison plates · 42 original figures · 19 studies and the H01 gallery</p><a href="/simulations/finger-pathway-atlas/">← Return to the 3D atlas</a></header>
+  <p class="reading-note">Left: the supplied V3 model, retained as the development baseline. Right: published scientific tissue images used to guide V4 morphology. These plates are not V4 screenshots. The two panels have independent magnifications and represent different specimens, fields and scales. Source species and imaging methods are identified on every plate.</p>
   <div class="filters" role="search" aria-label="Filter reference plates">
     <label>Region<select id="reference-group"><option value="">All regions</option>{groups.map(group => <option value={group}>{group.replace(/^\d+\s+/, '')}</option>)}</select></label>
     <label>Find a plate<input id="reference-query" type="search" placeholder="e.g. myelin, human, brainstem, EM" /></label>

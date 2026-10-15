@@ -23,3 +23,5 @@ jobs:
         run: node scripts/verify-cortex-build.mjs
       - name: Verify Finger Atlas geometry and published assets
         run: node scripts/verify-finger-atlas.mjs --build
+      - name: Verify continuous V4 Finger Atlas and lightweight assets
+        run: node scripts/verify-finger-atlas-v4.mjs --build

@@ -1,0 +1,162 @@
+{
+  "version": 4,
+  "title": "Finger Pathway Atlas V4",
+  "scope": "Representative connected anatomical model: 52 cutaneous tactile afferents, 8 free-ending nociceptive examples, 6 proprioceptive afferents, and 12 motor-unit examples with distinct relay cells. Every modeled cell is present in a single millimetre coordinate system. This is not a full biological cell census, measured connectome, histology/EM segmentation, or physiological simulation. Somata, caliber, dendrites, receptor structures, anatomical routes and synaptic assignments are reference-informed synthetic priors; the source plates are comparisons, not registration data. Conscious proprioceptive pathways and selected local collaterals are represented; cerebellar, autonomic, reticular and other collateral networks are outside this model.",
+  "statistics": {
+    "primarySensoryCells": 66,
+    "tactileAfferents": 52,
+    "nociceptiveExamples": 8,
+    "proprioceptiveAfferents": 6,
+    "motorUnits": 12,
+    "cells": 306,
+    "routes": 78
+  },
+  "coordinates": {
+    "units": "mm",
+    "rightSide": "negative x",
+    "superior": "positive y",
+    "sourceTransform": "[x, z-1250, -y-95]"
+  },
+  "morphology": {
+    "basis": "Reference-informed synthetic morphology; not an EM segmentation",
+    "dimensions": "Local dimensions and placement are explicit model priors, not measurements from resized comparison plates.",
+    "meissner": "Handler et al. 2023, PMC10773061: longitudinal, flattened terminal profiles, side protrusions and interdigitating support processes; cross-species structural analogue.",
+    "pacinian": "Handler et al. 2023, PMC10773061: central ending with protrusions; interleaved inner support processes and closed outer lamellae.",
+    "drg": "Human ganglion comparison plates 21–23: pseudounipolar soma, continuous stem, conformal satellite support; no dendrites or DRG synapse.",
+    "nmj": "Jones et al. 2017, PMC5723673: varied, compact human endplates with separated receptor islands; not a copied mouse pretzel.",
+    "proprioception": "PMC4811329: sheep extraocular spindle and tendon-organ analogues; neither a human finger reconstruction nor a human size calibration.",
+    "central": "Multipolar spinal, cuneate and VPL class priors; simplified cortical pyramidal trees. Nissl profiles do not establish complete dendritic topology."
+  },
+  "sourceScaffold": "/assets/finger-pathway-atlas/v4/scaffold-provenance.json",
+  "references": [
+    {
+      "id": "PMC12154225",
+      "title": "Lamellar Schwann cells in the Pacinian corpuscle potentiate vibration perception",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12154225/",
+      "doi": "10.1126/sciadv.adt5110"
+    },
+    {
+      "id": "PMC5723673",
+      "title": "Cellular and Molecular Anatomy of the Human Neuromuscular Junction",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5723673/",
+      "doi": "10.1016/j.celrep.2017.11.008"
+    },
+    {
+      "id": "PMC7527120",
+      "title": "Re-evaluation of the distribution of Meissner’s corpuscles in human skin",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7527120/",
+      "doi": "10.5115/acb.20.105"
+    },
+    {
+      "id": "PMC11718559",
+      "title": "A petavoxel fragment of human cerebral cortex reconstructed at nanoscale resolution",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11718559/",
+      "doi": "10.1126/science.adk4858"
+    },
+    {
+      "id": "PMC4575617",
+      "title": "Spinal cord neuron inputs to the cuneate nucleus that partially survive dorsal column lesions: a pathway that could contribute to recovery after spinal cord injury",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4575617/",
+      "doi": "10.1002/cne.23783"
+    },
+    {
+      "id": "PMC5581694",
+      "title": "Quantitative models of feline lumbosacral dorsal root ganglia neuronal cell density",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5581694/",
+      "doi": "10.1016/j.jneumeth.2017.07.018"
+    },
+    {
+      "id": "PMC11068404",
+      "title": "Ventral posterolateral and ventral posteromedial thalamocortical neurons have distinct physiological properties",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11068404/",
+      "doi": "10.1152/jn.00525.2022"
+    },
+    {
+      "id": "PMC10773061",
+      "title": "Three-dimensional reconstructions of mechanosensory end organs suggest a unifying mechanism underlying dynamic, light touch",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10773061/",
+      "doi": "10.1016/j.neuron.2023.08.023"
+    },
+    {
+      "id": "PMC6946031",
+      "title": "Quantitative 3D Ultrastructure of Thalamocortical Synapses from the “Lemniscal” Ventral Posteromedial Nucleus in Mouse Barrel Cortex",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6946031/",
+      "doi": "10.1093/cercor/bhx187"
+    },
+    {
+      "id": "PMC6071077",
+      "title": "TRPV1-Like Immunoreactivity in the Human Locus K, a Distinct Subregion of the Cuneate Nucleus",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6071077/",
+      "doi": "10.3390/cells7070072"
+    },
+    {
+      "id": "PMC4878004",
+      "title": "Automated PGP9.5 immunofluorescence staining: a valuable tool in the assessment of small fiber neuropathy?",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4878004/",
+      "doi": "10.1186/s13104-016-2085-4"
+    },
+    {
+      "id": "PMC4811329",
+      "title": "Ultrastructural and molecular biologic comparison of classical proprioceptors and palisade endings in sheep extraocular muscles",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4811329/",
+      "doi": "10.1167/iovs.09-3902"
+    },
+    {
+      "id": "PMC6347413",
+      "title": "MERKEL CELLS ACTIVATE SENSORY NEURAL PATHWAYS THROUGH ADRENERGIC SYNAPSES",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6347413/",
+      "doi": "10.1016/j.neuron.2018.10.034"
+    },
+    {
+      "id": "PMC9205958",
+      "title": "Imaging peripheral nerve micro-anatomy with MUSE, 2D and 3D approaches",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9205958/",
+      "doi": "10.1038/s41598-022-14166-1"
+    },
+    {
+      "id": "PMC7211131",
+      "title": "Spatial models of cell distribution in human lumbar dorsal root ganglia",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7211131/",
+      "doi": "10.1002/cne.24848"
+    },
+    {
+      "id": "PMC7542190",
+      "title": "Comparative anatomy of the mammalian neuromuscular junction",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7542190/",
+      "doi": "10.1111/joa.13260"
+    },
+    {
+      "id": "PMC7354383",
+      "title": "Meissner corpuscles and their spatially intermingled afferents underlie gentle touch perception",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7354383/",
+      "doi": "10.1126/science.abb2751"
+    },
+    {
+      "id": "PMC10985268",
+      "title": "Discontinuity third harmonic generation microscopy for label-free imaging and quantification of intraepidermal nerve fibers",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10985268/",
+      "doi": "10.1016/j.crmeth.2024.100735"
+    },
+    {
+      "id": "GIACCI",
+      "title": "Three dimensional electron microscopy reveals changing axonal and myelin morphology along normal and partially injured optic nerves",
+      "url": "https://www.nature.com/articles/s41598-018-22361-2",
+      "doi": "10.1038/s41598-018-22361-2"
+    },
+    {
+      "id": "H01G",
+      "title": "H01 human cerebral cortex reconstruction gallery",
+      "url": "https://h01-release.storage.googleapis.com/gallery.html",
+      "doi": "10.1126/science.adk4858"
+    }
+  ],
+  "limitations": [
+    "All cell identities, synapses, routes and shapes are constructed examples, not measured end-to-end human cells.",
+    "Source figures include different species, tissue sites and microscopy scales.",
+    "No cross sections or clipping planes; supplied gross skin retains its original upper-body crop.",
+    "Cortex intentionally simplified; autonomic, cerebellar, reticular and other collateral networks are outside this selected circuit.",
+    "Overview line widths are screen visibility cues; membrane coordinates and caliber priors use millimeters.",
+    "Local myelin uses bounded display patches. Nodal spacing and sheath ratio are model priors.",
+    "The original 50 comparison plates show V3 baseline model panels, not V4 screenshots."
+  ]
+}
