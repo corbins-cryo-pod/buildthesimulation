@@ -1,5 +1,5 @@
 {
-  "version": "4.0.0",
+  "version": "4.1.0",
   "input": {
     "files": [
       "anatomy.json.gz.part-1.bin",
@@ -9,12 +9,30 @@
   },
   "output": {
     "file": "scaffold.json",
-    "sha256": "8ea473025e312a7a125b6925c428b23db9c4ef3977860091c8b4e62a73586ef2",
-    "bytes": 1753997,
-    "gzipBytes": 600000,
-    "meshes": 41,
-    "vertices": 36159,
-    "triangles": 76856
+    "sha256": "e753dfa51eb1dbeb6ca565323ca24e5dd19ffa8f430ea0dfde7868a0dd3b5573",
+    "bytes": 2996854,
+    "gzipBytes": 1030739,
+    "meshes": 86,
+    "vertices": 61772,
+    "triangles": 130607,
+    "categories": {
+      "cortex": 35,
+      "bone": 41,
+      "cns": 5,
+      "muscle": 4,
+      "skin": 1
+    }
+  },
+  "sourceDetail": {
+    "directory": "source-meshes",
+    "encoding": "base64-float32-uint32-le",
+    "fidelity": "Every p and i base64 value equals its supplied V3 source field byte for byte; restP takes precedence if supplied.",
+    "lazyLoading": "Fetch the detail descriptor for a nearby mesh. Decode p as little-endian Float32 triples and i as little-endian Uint32 triangle indices. Positions already use the same display millimetre frame as the overview. Replace the matching id geometry, keeping its material/visibility state.",
+    "meshes": 86,
+    "vertices": 523602,
+    "triangles": 1053311,
+    "bytes": 25322251,
+    "gzipBytes": 10765977
   },
   "authorship": "BodyParts3D, © The Database Center for Life Science; source-derived display simplification for BuildTheSimulation.",
   "sources": [
@@ -30,9 +48,9 @@
     }
   ],
   "method": {
-    "name": "Spatial vertex clustering with source triangle remapping",
-    "retained": "All provided skin, cortical gyri, thalami, pons, medulla, cerebellum surfaces",
-    "excluded": "Bone and muscle context meshes",
+    "name": "Overview spatial vertex clustering plus exact V3 surface detail",
+    "retained": "All 86 provided source surfaces: skin, cortical gyri, thalami, pons, medulla, cerebellum, 41 skeletal meshes, and four forearm muscle meshes",
+    "excluded": "None of the supplied anatomical source meshes",
     "cortexClusterMm": 4.5,
     "cnsClusterMm": 2,
     "cerebellumClusterMm": 3.5,
@@ -42,8 +60,14 @@
       "arm": 5,
       "otherUpperBody": 10
     },
+    "boneClustersMm": {
+      "hand": 1.4,
+      "scapula": 4.5,
+      "other": 3
+    },
+    "muscleClusterMm": 3.5,
     "roundedCoordinatePrecisionMm": 0.01,
-    "limitations": "Source-derived spatially clustered display surfaces; not patient-specific, histology-registered, or watertight simulation geometry. The imported skin retains the earlier upper-body crop. No new cross sections or clipping windows are introduced."
+    "limitations": "Overview surfaces use spatial clustering; every supplied V3 surface is also retained at its exact original supplied resolution as a locally loadable detail asset. These are source-derived atlas surfaces, not patient-specific, histology-registered, or watertight simulation geometry. The imported skin retains the earlier upper-body crop. No new cross sections or clipping windows are introduced."
   },
   "sourceMeshes": [
     {
@@ -69,7 +93,19 @@
           370.02,
           -34.04
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/BP49.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/BP49.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 8917,
+        "triangles": 17830,
+        "bytes": 429015,
+        "gzipBytes": 166666,
+        "sha256": "49b676c8f6ca47637c105df6f5a4b4182b4074b3903058bedc883ad209008f83",
+        "positionSha256": "ae838df0e096adfd7a0ca5f8b1eb93790689734a96b3681b66efa60af320c1ad",
+        "indexSha256": "79017658879ba79d6abd47757a0b0453cb56b5cfa335a3a048a9d11552b301fa"
+      }
     },
     {
       "id": "BP50",
@@ -94,7 +130,19 @@
           369.88,
           -34.16
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/BP50.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/BP50.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 8866,
+        "triangles": 17730,
+        "bytes": 426609,
+        "gzipBytes": 165524,
+        "sha256": "4bcbd2392f48ec60291aafe0077bf775cc6b2d1bff963a813a02ad1c887f4757",
+        "positionSha256": "dbb5288e17b01e47729ec057de417e858ffa05cc112f0c3f3573ea986cf20940",
+        "indexSha256": "719c91878c288efa3045bbddd40d1e020c1883e2aa33455152cba011a4ba0cdd"
+      }
     },
     {
       "id": "BP51",
@@ -119,7 +167,1462 @@
           320.05,
           75.14
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/BP51.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/BP51.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 9468,
+        "triangles": 18914,
+        "bytes": 455171,
+        "gzipBytes": 168089,
+        "sha256": "796eea0281111d34df16203a7561298f0dbf966adc9f75b74345317876518bdf",
+        "positionSha256": "85e575344fe1ea21dab9ba1a41d9b095e1002a52368795cb80b85944cf7b46f7",
+        "indexSha256": "d19c0a58468a1bd3402f1036a3f62b93754eb9f787a72bf15a19f168929d6cbf"
+      }
+    },
+    {
+      "id": "FMA12519",
+      "name": "atlas",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA12519.stl",
+      "sourceSha256": "cc959122b7875a65d78597d89134fdb2f59a7c0f60d2e781c399db4010208f81",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 3082,
+      "outputVertices": 622,
+      "outputTriangles": 1268,
+      "bounds": [
+        [
+          -42.22,
+          221.26,
+          -41.15
+        ],
+        [
+          41.17,
+          240.31,
+          5.64
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA12519.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA12519.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 3082,
+        "triangles": 6172,
+        "bytes": 149109,
+        "gzipBytes": 63348,
+        "sha256": "77b56ab417305d9805995a2bf4f174ca4fddfe107497578e3477122b7abe3de5",
+        "positionSha256": "ffa4aca432765c6c28254b513a4d78787d45d2ae80b49e4c7e7a48d07411e6ef",
+        "indexSha256": "048bbc3e6d58cf2a0a6de55296cad01229fdeef376908fcf2eddd34a4f62c929"
+      }
+    },
+    {
+      "id": "FMA12520",
+      "name": "axis",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA12520.stl",
+      "sourceSha256": "9e2a940db7b4bf921f97b63ed5aa549f675effe55af2cc81ad8589331309f896",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 3431,
+      "outputVertices": 668,
+      "outputTriangles": 1394,
+      "bounds": [
+        [
+          -26,
+          197.7,
+          -46.95
+        ],
+        [
+          25.06,
+          239.05,
+          3.21
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA12520.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA12520.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 3431,
+        "triangles": 6870,
+        "bytes": 165861,
+        "gzipBytes": 71801,
+        "sha256": "222d0be9c13e2c0939dff06ff44738feed957863f81ae4ae0f8c566782ab6da7",
+        "positionSha256": "2fddece14c7f03c9440855fd29c7d377451dfb43a4c574274c742e68eb207d3c",
+        "indexSha256": "c64c38b8f6e16109b8bec211994d9a1f1ff854fbc21db6d8652e786cbbbc9dd2"
+      }
+    },
+    {
+      "id": "FMA12521",
+      "name": "third cervical vertebra",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA12521.stl",
+      "sourceSha256": "1147f621766b9dce37b21a827f552c5669afaaf49531aab8d7b0df6f374233d1",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 2635,
+      "outputVertices": 520,
+      "outputTriangles": 1069,
+      "bounds": [
+        [
+          -27.65,
+          182.72,
+          -48.84
+        ],
+        [
+          27.02,
+          207.86,
+          3.07
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA12521.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA12521.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 2635,
+        "triangles": 5278,
+        "bytes": 127672,
+        "gzipBytes": 54909,
+        "sha256": "461f5c13ae796915381e895e972d30783c84dce269d18544ecae643ac0a6223d",
+        "positionSha256": "d6e72bb52834a088d8e3a2b58ffbb285c12450565f199085393eaba5ab36fa36",
+        "indexSha256": "e108a88e740d29c8e75ce045eeffa96c6d3c498402a034f15b7237919d73d79a"
+      }
+    },
+    {
+      "id": "FMA12522",
+      "name": "fourth cervical vertebra",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA12522.stl",
+      "sourceSha256": "34ea19b8f1c42e91c96f1ce19c520c2f72cda372c5373b15f85dc102e8da8208",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 2108,
+      "outputVertices": 521,
+      "outputTriangles": 1082,
+      "bounds": [
+        [
+          -28.17,
+          170.56,
+          -48.34
+        ],
+        [
+          27.04,
+          194.24,
+          2.59
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA12522.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA12522.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 2108,
+        "triangles": 4224,
+        "bytes": 102367,
+        "gzipBytes": 44459,
+        "sha256": "8a5d0326bbc5a8ed85dcb6c04fe94c2c7fd0b2b299080083ba472d72cd127b1b",
+        "positionSha256": "61adae47186386299a51654b1c0a4819fdc8f9bd7fae07f2cd787f800f9ad002",
+        "indexSha256": "4f8f83c61f318300e7a54c424f06477956a21ed97d73694467823431078963b8"
+      }
+    },
+    {
+      "id": "FMA12523",
+      "name": "fifth cervical vertebra",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA12523.stl",
+      "sourceSha256": "e33ae49024283758ff60e48d14eeacf123fb79c48730e275951222e0fd91739c",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 2373,
+      "outputVertices": 575,
+      "outputTriangles": 1197,
+      "bounds": [
+        [
+          -30.25,
+          159.66,
+          -52.31
+        ],
+        [
+          27.76,
+          180.9,
+          1.46
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA12523.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA12523.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 2373,
+        "triangles": 4754,
+        "bytes": 115096,
+        "gzipBytes": 49726,
+        "sha256": "e6358cb17b80706318839e55d0edb997549dedf3b1751b24137f51b38c965da4",
+        "positionSha256": "d6ad9b1324c666edc87135f42d05743b42d5b66d14bca76ad8c1a4164fc01c04",
+        "indexSha256": "49426e189d7c3f41b07fb9ca90141e6c602fa69a0ee1b327f2d3a52748834d2b"
+      }
+    },
+    {
+      "id": "FMA12524",
+      "name": "sixth cervical vertebra",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA12524.stl",
+      "sourceSha256": "449c209bd191ce4a0fbd32b422d48d0ab73142427b336dde45688f08f06455c6",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 3171,
+      "outputVertices": 595,
+      "outputTriangles": 1236,
+      "bounds": [
+        [
+          -30.26,
+          144.48,
+          -61.4
+        ],
+        [
+          28.04,
+          168.26,
+          -0.39
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA12524.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA12524.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 3171,
+        "triangles": 6350,
+        "bytes": 153397,
+        "gzipBytes": 65597,
+        "sha256": "4153582abeb1e28c76350f06582731b1e75597206847fe07ff540af8bf15186e",
+        "positionSha256": "2ad79224c3f799032b06599e3ab541162dff06d321e12bf137ae50cdbcd0b6d0",
+        "indexSha256": "df4fe228ec7eeaffffa8e047199055e591328ef481f187f6c3997a4fd44a90bb"
+      }
+    },
+    {
+      "id": "FMA12525",
+      "name": "seventh cervical vertebra",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA12525.stl",
+      "sourceSha256": "083c2e5aa6876089f4b9fa43aaa1cb2ce5284ba5b49cb1700b8dbdaca89729b7",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 2607,
+      "outputVertices": 655,
+      "outputTriangles": 1357,
+      "bounds": [
+        [
+          -34.63,
+          129.93,
+          -72.08
+        ],
+        [
+          30.96,
+          156.56,
+          -4.26
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA12525.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA12525.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 2607,
+        "triangles": 5222,
+        "bytes": 126327,
+        "gzipBytes": 54600,
+        "sha256": "ac380e21fdbdde8564431d79252e93c98b980a9030ee4c8f3165d9abc1daa6b3",
+        "positionSha256": "750c2d586bc7a9cc341afdc274fbb7334be5eab28848d4dc98e083d05505a159",
+        "indexSha256": "e894a65ca80451b8da7425aac7b9c244b7d57f6de80131235c0e97be91d28823"
+      }
+    },
+    {
+      "id": "FMA13322",
+      "name": "right clavicle",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA13322.stl",
+      "sourceSha256": "f340050375ea4397a85082fb7bd68ea553d52f4718656599804ecf8f4c7768be",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 2558,
+      "outputVertices": 865,
+      "outputTriangles": 1735,
+      "bounds": [
+        [
+          -150.03,
+          82.2,
+          -47.61
+        ],
+        [
+          -11.59,
+          116.86,
+          51.53
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA13322.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA13322.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 2558,
+        "triangles": 5112,
+        "bytes": 123774,
+        "gzipBytes": 52219,
+        "sha256": "f6e16cead49555f493d59ad9083e4ada8ded9e81b52dc9b36c9a86804e73cd5a",
+        "positionSha256": "aaa9cb5f5e27f6a1a690f3fc8ee1cda0b969daa4bb27cc07a23e436c167a2522",
+        "indexSha256": "83087a04c44c2b7ab29843f1db5b1141c081da196b7b5331afe6c9b253e4c737"
+      }
+    },
+    {
+      "id": "FMA13395",
+      "name": "right scapula",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA13395.stl",
+      "sourceSha256": "c0a3afd469db1fec9527bb81ec1f0956876d3d64d3acbf3a083619d4e7ce297b",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 31466,
+      "outputVertices": 1782,
+      "outputTriangles": 4046,
+      "bounds": [
+        [
+          -168.08,
+          -47.16,
+          -105.98
+        ],
+        [
+          -60.09,
+          109.5,
+          2.89
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA13395.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA13395.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 31466,
+        "triangles": 63010,
+        "bytes": 1512673,
+        "gzipBytes": 696636,
+        "sha256": "46b13d401afcfa3fc28678550b5b2a6a79f4351f46cef9973991c3ed43b9d1e1",
+        "positionSha256": "07e55ea01409f35ae8532d87c7c39f4463469be947c89758e5f1bdde93677a8c",
+        "indexSha256": "b068a779e0548ff1914eb1df4dde305d57a9536cdc25ed9e7364fed0dc3355f1"
+      }
+    },
+    {
+      "id": "FMA23130",
+      "name": "right humerus",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA23130.stl",
+      "sourceSha256": "6e26ad2b9794b136000abe2cc0b54cade989b943214e2149732cc2db2e337dce",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 7630,
+      "outputVertices": 2343,
+      "outputTriangles": 4720,
+      "bounds": [
+        [
+          -241.31,
+          -210.42,
+          -47.8
+        ],
+        [
+          -140.72,
+          96.9,
+          1.58
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA23130.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA23130.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 7630,
+        "triangles": 15256,
+        "bytes": 367231,
+        "gzipBytes": 160342,
+        "sha256": "f9e5b972f3a1e60a11a10b80979b4645458d2bf818a306c53af46c05893e9799",
+        "positionSha256": "6e480b18541cbf446ae0813044c3f22325bd212d8f1048b714e96abb055a16e6",
+        "indexSha256": "2638d7beb9a786d0879cde409ee7a7a086874b442214a301b349cb26f991bb4f"
+      }
+    },
+    {
+      "id": "FMA23464",
+      "name": "right radius",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA23464.stl",
+      "sourceSha256": "23eed49ade9f558406782b47decee325d12ee9e1d5ef661a051a0516a142dfa3",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 1404,
+      "outputVertices": 682,
+      "outputTriangles": 1369,
+      "bounds": [
+        [
+          -280.09,
+          -433.54,
+          -37.79
+        ],
+        [
+          -220.48,
+          -204.68,
+          28.36
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA23464.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA23464.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 1404,
+        "triangles": 2804,
+        "bytes": 68383,
+        "gzipBytes": 29826,
+        "sha256": "39b76c33227f47b43074d7a48114133efd3b7c30c176385aa1538cf3900dc88e",
+        "positionSha256": "0e37fb7b0194852c121aae8c706d3dd59929c62cc52f71db8c2ab051e9da8826",
+        "indexSha256": "679758131244fb2a327cd448c0bb8e03f76f26810ea5c69434ec8d96d031876d"
+      }
+    },
+    {
+      "id": "FMA23467",
+      "name": "right ulna",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA23467.stl",
+      "sourceSha256": "c6074d69a2ccbcef6db2fb8bf758b44a5f6438b035da3399d6efb41b9d759a03",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 1798,
+      "outputVertices": 797,
+      "outputTriangles": 1607,
+      "bounds": [
+        [
+          -247.96,
+          -433.79,
+          -54.42
+        ],
+        [
+          -197.41,
+          -187.17,
+          24.92
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA23467.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA23467.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 1798,
+        "triangles": 3592,
+        "bytes": 87295,
+        "gzipBytes": 38508,
+        "sha256": "0abd643acf0cf61d4b0f75d8953e31f1a4bb95e61967dd9434a53e0995756244",
+        "positionSha256": "c0cde55ef841e30fdbad5b2908817a93024f54560abcb0b2f5001e0bcc5f9f0e",
+        "indexSha256": "38fe0ce955789b0498afbf4720c80c8466a4d23ffc60b853d3d34870be8b03e9"
+      }
+    },
+    {
+      "id": "FMA23725",
+      "name": "right trapezoid",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA23725.stl",
+      "sourceSha256": "db19cf9ed7c2e97266255c03615458913b8c970d3b6e44eb015a756e4c839e5c",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 310,
+      "outputVertices": 157,
+      "outputTriangles": 309,
+      "bounds": [
+        [
+          -273.99,
+          -456.97,
+          14.83
+        ],
+        [
+          -262.8,
+          -444.38,
+          29.73
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA23725.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA23725.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 310,
+        "triangles": 616,
+        "bytes": 15873,
+        "gzipBytes": 7306,
+        "sha256": "ca90a032605e5ced15135764e2cef9056068c176863bcb0817368e31edfda6f1",
+        "positionSha256": "f3a65ebe3bed363254821c5e46c96c9f374919bf248056f995dfa4f0e039f1d2",
+        "indexSha256": "0ca6c0fc4325f681881df6ac3f8bbe6cba5493720b442ea97e60a4394f36baa1"
+      }
+    },
+    {
+      "id": "FMA24435",
+      "name": "right scaphoid",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24435.stl",
+      "sourceSha256": "106d5be5a72229257a9ba41a543a4f42d18eae0513b45e0cd21e8e34d62518b6",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 539,
+      "outputVertices": 142,
+      "outputTriangles": 282,
+      "bounds": [
+        [
+          -273.53,
+          -443.48,
+          12.84
+        ],
+        [
+          -250.55,
+          -428,
+          27.83
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24435.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24435.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 539,
+        "triangles": 1074,
+        "bytes": 26863,
+        "gzipBytes": 12133,
+        "sha256": "ba44ad2c6504f300411e520b9b7f95177bd47cd0922c92bdabffcdf6692ab162",
+        "positionSha256": "02096fcfeb089767e5f9a5160a9174078687e4c0aacdca87f2e12d6daa167e65",
+        "indexSha256": "854b5460ee8769a8c034974ed9e82788578079abf47bcfc35e057b22033decac"
+      }
+    },
+    {
+      "id": "FMA24437",
+      "name": "right lunate",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24437.stl",
+      "sourceSha256": "4b35077cf6a5711e1dfdd39a07734d792f0c84ce19b3b8cc942e2ad4838ef8ea",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 434,
+      "outputVertices": 114,
+      "outputTriangles": 224,
+      "bounds": [
+        [
+          -253.07,
+          -442.55,
+          11.88
+        ],
+        [
+          -236.9,
+          -429.73,
+          28.12
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24437.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24437.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 434,
+        "triangles": 864,
+        "bytes": 21825,
+        "gzipBytes": 9883,
+        "sha256": "4e527cdcbbda987232925008c5752e082451c387135eb8cbfde8c4adc24313a8",
+        "positionSha256": "a4605e8206d165548ba38f458d00919a10f2493e74019ba3d8ddf26e6c3b3c40",
+        "indexSha256": "1823f018c740a87db4b1a2389ddff129ed3d195f199ce75602e4fdaf58c6490f"
+      }
+    },
+    {
+      "id": "FMA24439",
+      "name": "right triquetral",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24439.stl",
+      "sourceSha256": "bb2139a7289e784de0ff2db5e1adcc9bd8f5c9c0d4418c0b885d379c97e8e319",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 354,
+      "outputVertices": 185,
+      "outputTriangles": 367,
+      "bounds": [
+        [
+          -243.25,
+          -450.93,
+          15.68
+        ],
+        [
+          -232.2,
+          -436.99,
+          31.22
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24439.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24439.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 354,
+        "triangles": 704,
+        "bytes": 17985,
+        "gzipBytes": 8171,
+        "sha256": "9181e636b8f1dcf1bcf9ebc298979240aef72f07774a485929e69ed78ae892fb",
+        "positionSha256": "217375ea4e5fd3905904e67d2652b86de4fe355f7c3c941e377d726ef67b5940",
+        "indexSha256": "16f24bf06bd08aa202d76493257e853574b1b19651e676ac6556fda914ef45d4"
+      }
+    },
+    {
+      "id": "FMA24441",
+      "name": "right pisiform",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24441.stl",
+      "sourceSha256": "1357a32fd5fc1bb826a122dc67f5c795644516300ce53aae6e9b106da1997a19",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 200,
+      "outputVertices": 113,
+      "outputTriangles": 222,
+      "bounds": [
+        [
+          -240.91,
+          -450.04,
+          28.42
+        ],
+        [
+          -232.35,
+          -438.43,
+          39.02
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24441.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24441.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 200,
+        "triangles": 396,
+        "bytes": 10593,
+        "gzipBytes": 5020,
+        "sha256": "cc8e7aab536ed98e81633e49b16b6b10b0e52d03326589f332b6c5a865dfd61d",
+        "positionSha256": "44a7ee8deeec2c79e8585b82abcedd2b459cda21c36ebaf80c59f8cbf2e8684d",
+        "indexSha256": "ff2f00c3cdea752c14af6ddace14a0afa862fe8e2243f09442d32fff106d2ce2"
+      }
+    },
+    {
+      "id": "FMA24443",
+      "name": "right trapezium",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24443.stl",
+      "sourceSha256": "c28bb9f078fa7e1f164e549449c8025201a31965c47df0546476c84bb13cffaf",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 515,
+      "outputVertices": 234,
+      "outputTriangles": 467,
+      "bounds": [
+        [
+          -282.35,
+          -453.93,
+          18.92
+        ],
+        [
+          -265.6,
+          -434.3,
+          35.99
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24443.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24443.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 515,
+        "triangles": 1026,
+        "bytes": 25709,
+        "gzipBytes": 11616,
+        "sha256": "73be96dd33fccb77396503af37cbe974022293744776fe101d762a948c3115b7",
+        "positionSha256": "676d56a2326f541c76d49e042cc4ca486924ccd30682263f635b2c197efb60bc",
+        "indexSha256": "adfcbd12a9c45022bd9b4dbe8e018ed54fef138bb58156bb187e737a30647094"
+      }
+    },
+    {
+      "id": "FMA24446",
+      "name": "right capitate",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24446.stl",
+      "sourceSha256": "4f717f2fba9b0cb432da64921d7aeaab2709d97129f39b6538c6ea147e68977d",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 644,
+      "outputVertices": 324,
+      "outputTriangles": 646,
+      "bounds": [
+        [
+          -265.03,
+          -457.69,
+          11.56
+        ],
+        [
+          -248.93,
+          -434.96,
+          29.1
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24446.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24446.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 644,
+        "triangles": 1284,
+        "bytes": 31905,
+        "gzipBytes": 14377,
+        "sha256": "76eb192de1695499fe5efa36221c2d1021a9276f95a3dd2a8142f10722367c72",
+        "positionSha256": "415112b0508a2f39eaebfcb628042de2df67f03930fb332a5f75dbc9c014b2bc",
+        "indexSha256": "2f545421214738c3803c0e239e568c6639762bcfe42869e6ed942b865c2eff07"
+      }
+    },
+    {
+      "id": "FMA24448",
+      "name": "right hamate",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24448.stl",
+      "sourceSha256": "28fc3501dc45884187c91738d368194820d0fa8fc5c421cc40525e0c71665e7d",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 577,
+      "outputVertices": 305,
+      "outputTriangles": 611,
+      "bounds": [
+        [
+          -252.72,
+          -458.53,
+          12.54
+        ],
+        [
+          -236.92,
+          -439.11,
+          35.19
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24448.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24448.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 577,
+        "triangles": 1150,
+        "bytes": 28684,
+        "gzipBytes": 12929,
+        "sha256": "59d9e77a4da5259e40abea71ab5fc6963ba7306c43f13b9ba9ea5c53cc172338",
+        "positionSha256": "819e01528b1152af31c8dd1392cc800b86a7717f31364bf693310ecffc78cabb",
+        "indexSha256": "b51f2b3d3dec4f1af09c05f357529756d44c02c759cadb0b0da36d865101e05e"
+      }
+    },
+    {
+      "id": "FMA24450",
+      "name": "proximal phalanx of right thumb",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24450.stl",
+      "sourceSha256": "12066c799d3468b5d697a87b6fcf0b35e71c68df5e030053ecdd3d39c2259dec",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 688,
+      "outputVertices": 344,
+      "outputTriangles": 684,
+      "bounds": [
+        [
+          -319.41,
+          -504.23,
+          43.91
+        ],
+        [
+          -299.19,
+          -472.56,
+          66.08
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24450.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24450.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 688,
+        "triangles": 1368,
+        "bytes": 33967,
+        "gzipBytes": 15347,
+        "sha256": "c50804b832d5c35e97bc92d960933ccd59735957e1f646dfe86540dbc26a23f8",
+        "positionSha256": "5c81a54c35ab5a232d0eaa287e966ff7bf5670a45b4c3cbe51233d5c485ceb95",
+        "indexSha256": "0578c94a5661d2df424bf232661eedeb52927f3cebe94cb11c90a912ff9bd4c8"
+      }
+    },
+    {
+      "id": "FMA24451",
+      "name": "proximal phalanx of right index finger",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24451.stl",
+      "sourceSha256": "29ac3a5b3459b99e81e4da835f4aa909b647f1fbb187423e53aa3e57315253ff",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 834,
+      "outputVertices": 414,
+      "outputTriangles": 825,
+      "bounds": [
+        [
+          -303.4,
+          -553.98,
+          35.42
+        ],
+        [
+          -281.4,
+          -516.32,
+          58.29
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24451.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24451.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 834,
+        "triangles": 1664,
+        "bytes": 41047,
+        "gzipBytes": 18229,
+        "sha256": "f171b800ae57254c781fe171ce616a356d78ac90e3b890dc07eccc2b10408130",
+        "positionSha256": "2dc38f869deda5268007dac9ca2b453623b26a3566c3985173554da72f4d0dbd",
+        "indexSha256": "1c9ede82b83a136179769b776c9d70026fd7639ccb1b35280070bbb023c115f8"
+      }
+    },
+    {
+      "id": "FMA24452",
+      "name": "proximal phalanx of right middle finger",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24452.stl",
+      "sourceSha256": "648823478862684fe11a5c647b02ae7892f634a3d56ff402c71b89e91aed33ec",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 986,
+      "outputVertices": 498,
+      "outputTriangles": 995,
+      "bounds": [
+        [
+          -277.96,
+          -555.44,
+          36.38
+        ],
+        [
+          -259.79,
+          -514.69,
+          65.57
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24452.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24452.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 986,
+        "triangles": 1968,
+        "bytes": 48341,
+        "gzipBytes": 21362,
+        "sha256": "5ca505d6a2f532bf5ff0ab50f900c88c3444a4b5739522fd3ba8a6a734240fdf",
+        "positionSha256": "05987cdac08ba481620fe6c1f3550a367dd26d67f5ce74a2c821487dbf3282a1",
+        "indexSha256": "7ba83ca065968e8abe03e36b566ebe07725aadb02702b50d6f9f833b2ee3c443"
+      }
+    },
+    {
+      "id": "FMA24453",
+      "name": "proximal phalanx of right ring finger",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24453.stl",
+      "sourceSha256": "3f36cfec72db8d90f89069910d0a1981c0e22b621fd4a7f9c6ad5d1517d2e15e",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 812,
+      "outputVertices": 405,
+      "outputTriangles": 808,
+      "bounds": [
+        [
+          -254.56,
+          -549.8,
+          36.87
+        ],
+        [
+          -240.94,
+          -510.59,
+          63.28
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24453.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24453.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 812,
+        "triangles": 1620,
+        "bytes": 39992,
+        "gzipBytes": 17812,
+        "sha256": "988a7f872745b087e1f47638ee8cacff4a868ef487e46cdf5b3cb0ae158a4a23",
+        "positionSha256": "af4e550c8b93e9d8f7b3abb1a1afb7cbb2bfe8693addcef2655e66aedfbec753",
+        "indexSha256": "58696e5969a0d01113f3c8f038de92750d6c9d1434c8e8bb1f103948e71bbc6f"
+      }
+    },
+    {
+      "id": "FMA24454",
+      "name": "proximal phalanx of right little finger",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24454.stl",
+      "sourceSha256": "bf7d8f3cd4dcc1bef6487551a87d703e5a6b2b5ce856bc8c941edd5e90519bc9",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 606,
+      "outputVertices": 300,
+      "outputTriangles": 598,
+      "bounds": [
+        [
+          -237.21,
+          -536.33,
+          39.77
+        ],
+        [
+          -222.99,
+          -503.71,
+          60.81
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24454.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24454.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 606,
+        "triangles": 1208,
+        "bytes": 30103,
+        "gzipBytes": 13591,
+        "sha256": "b0b5d869b67b7eddbf8fbfce8a6d01ead5c1e4ea989d6574b26fd8ecd908ee21",
+        "positionSha256": "0cf9b26b2731c56adb15474fb58f1d826e26291e501d76775b0955e92a6ffc97",
+        "indexSha256": "0a63497c24529ec57fd1c228edcc2c0e2e62818044869e5e9194c6df90d7f7f8"
+      }
+    },
+    {
+      "id": "FMA24455",
+      "name": "middle phalanx of right index finger",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24455.stl",
+      "sourceSha256": "b44a016e7a7798587ad694405a65275931c904e3cf2d55dd64061cbecbabe2ab",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 572,
+      "outputVertices": 247,
+      "outputTriangles": 497,
+      "bounds": [
+        [
+          -309.64,
+          -568.84,
+          52.55
+        ],
+        [
+          -294.98,
+          -548.47,
+          73.35
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24455.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24455.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 572,
+        "triangles": 1140,
+        "bytes": 28469,
+        "gzipBytes": 12811,
+        "sha256": "708730136fbf7ab698744c04f6445917e5c90fcaca5eaa94c455b1341b070875",
+        "positionSha256": "64edf0565d37a79ded5a704a99ff74b70e0cff16faf65e8386bcaf8759ec60b5",
+        "indexSha256": "35cc2b59307f3543c79a86e1fe965b42642f81ec83ccfdbc4ceab589b6526dfe"
+      }
+    },
+    {
+      "id": "FMA24456",
+      "name": "middle phalanx of right middle finger",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24456.stl",
+      "sourceSha256": "43d9601a373cf165c2e2bd604638186eda9ccded8f4418cc4aa382183cd5c2c2",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 740,
+      "outputVertices": 340,
+      "outputTriangles": 678,
+      "bounds": [
+        [
+          -280.75,
+          -577.28,
+          59.12
+        ],
+        [
+          -267.14,
+          -551.9,
+          82.12
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24456.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24456.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 740,
+        "triangles": 1476,
+        "bytes": 36525,
+        "gzipBytes": 16533,
+        "sha256": "42271213350264e83f02906697d670151b97a88e2f1520e3c2466c0bb62a64ba",
+        "positionSha256": "79bb2abe1a3c7541d8edfe34e6fb314ace29f155299afab224d5d73688d3a58d",
+        "indexSha256": "d957480c325d8af6b07cb29b66bcc54bff37f85810ab0aa4b2429ca9b36f7d50"
+      }
+    },
+    {
+      "id": "FMA24457",
+      "name": "middle phalanx of right ring finger",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24457.stl",
+      "sourceSha256": "929519bef218c8e53a80751a46fa69ef3ac301b8dd278e3156d7600431618e85",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 677,
+      "outputVertices": 303,
+      "outputTriangles": 609,
+      "bounds": [
+        [
+          -255.1,
+          -569.97,
+          57.75
+        ],
+        [
+          -243.28,
+          -545.94,
+          81.89
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24457.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24457.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 677,
+        "triangles": 1350,
+        "bytes": 33508,
+        "gzipBytes": 15138,
+        "sha256": "e0eae2256e6091053815a37a7bd2b1ee6e33c51e1da139408768792ad4a95c44",
+        "positionSha256": "f98e14542113676be6cefd871c4d56b155d513af6566bd8ece9ac74488a06a46",
+        "indexSha256": "ceadcff108d268a58ac499110b9f0bb135d86976436adf250e4997f74971e394"
+      }
+    },
+    {
+      "id": "FMA24458",
+      "name": "middle phalanx of right little finger",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24458.stl",
+      "sourceSha256": "d67f25f614d977663d141628d01bdefcd55b0624dc90b3aee91dc96abac1942f",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 452,
+      "outputVertices": 197,
+      "outputTriangles": 391,
+      "bounds": [
+        [
+          -231.2,
+          -552.28,
+          56.09
+        ],
+        [
+          -219.58,
+          -532.49,
+          72.84
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24458.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24458.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 452,
+        "triangles": 900,
+        "bytes": 22709,
+        "gzipBytes": 10236,
+        "sha256": "061ce353af7d88ead0d7aced373a5a466988045ff6195a7cf6877c3d80b75b03",
+        "positionSha256": "8fc1c5f4c031f36d9e88104e46266e6a4151cf3715b8953dea0aa8a2d16469c5",
+        "indexSha256": "4829712bf5fab3430208ef86a35d1df962b8af4dff5dc383de68e7f96f8b0382"
+      }
+    },
+    {
+      "id": "FMA24459",
+      "name": "distal phalanx of right thumb",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24459.stl",
+      "sourceSha256": "a9aa0c6acb7269cc5a81632a00b06ceb8a33cd2fe078634239da5a7f53ea1602",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 520,
+      "outputVertices": 233,
+      "outputTriangles": 475,
+      "bounds": [
+        [
+          -324.48,
+          -520.21,
+          58.4
+        ],
+        [
+          -310.99,
+          -497.37,
+          74.49
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24459.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24459.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 520,
+        "triangles": 1040,
+        "bytes": 26026,
+        "gzipBytes": 11825,
+        "sha256": "3ab3c9c20da460405ff766b1079d53b9e17320183d1c28f0b939af4379d0d1c8",
+        "positionSha256": "3d39d5223b842ab3345d08bc96065e493561933432da2d024d2fe80d313c836f",
+        "indexSha256": "d674c66ccc75c6cbb692dac15d27b903c1d6e90fbee29d63b6988729161cb73b"
+      }
+    },
+    {
+      "id": "FMA24460",
+      "name": "distal phalanx of right index finger",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24460.stl",
+      "sourceSha256": "7f5f76eb2982eb79bbf51ed626f722abe0d8ceb6e678e433d6732a71187b61db",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 330,
+      "outputVertices": 151,
+      "outputTriangles": 301,
+      "bounds": [
+        [
+          -311.67,
+          -577.92,
+          71.02
+        ],
+        [
+          -301.91,
+          -564.01,
+          87.78
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24460.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24460.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 330,
+        "triangles": 656,
+        "bytes": 16849,
+        "gzipBytes": 7824,
+        "sha256": "86063b4b311f185d1f41b44a0ce12a09d0f25d68afa4b38ba81d16f153cd19af",
+        "positionSha256": "90d3a178e43d9663a2672d8667e9b46cefee54ca0176c256647e7d6eab62cf28",
+        "indexSha256": "14038c90a4bfe5723e9fe87600f3210709c510506792fc4e5a49e0d42dcfdab4"
+      }
+    },
+    {
+      "id": "FMA24461",
+      "name": "distal phalanx of right middle finger",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24461.stl",
+      "sourceSha256": "5a2321e130f03d57b18e6cc725c9129b8e8398385f06403d8e6228a3f959756a",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 322,
+      "outputVertices": 158,
+      "outputTriangles": 320,
+      "bounds": [
+        [
+          -281.64,
+          -586.77,
+          79.37
+        ],
+        [
+          -272.12,
+          -573.26,
+          96.83
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24461.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24461.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 322,
+        "triangles": 640,
+        "bytes": 16466,
+        "gzipBytes": 7644,
+        "sha256": "10b59685a867fdffad97645776fd0dba4b95e02ae8b34cac3959aaa20e37410d",
+        "positionSha256": "978bb9922d15e8268bfd72c28c7efc2b0d74e478236d9ee1a4e976bb598b10f0",
+        "indexSha256": "a6b2232f993fbdb40fb78de4ac2ca32c7f9f11a8faa554bcce54ec34f01b446c"
+      }
+    },
+    {
+      "id": "FMA24462",
+      "name": "distal phalanx of right ring finger",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24462.stl",
+      "sourceSha256": "9e14b18953b97f741d9ab5a0b05f786d6474cda29a13f06072d188b3ff978291",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 228,
+      "outputVertices": 111,
+      "outputTriangles": 220,
+      "bounds": [
+        [
+          -254.11,
+          -574.99,
+          80.02
+        ],
+        [
+          -246.05,
+          -565.69,
+          95.69
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24462.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24462.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 228,
+        "triangles": 452,
+        "bytes": 11955,
+        "gzipBytes": 5602,
+        "sha256": "8ef56612b305888b0a522be684902eb399cae346753b904ebf0f2b7d3c99e9e2",
+        "positionSha256": "00167539f3eadd847a75f2bfffb427cdbe72a2f576265dac9747ae669abb71db",
+        "indexSha256": "eed8fe251e962eca417e9964544187706e9d48b382653e87f5a339addadab9b0"
+      }
+    },
+    {
+      "id": "FMA24463",
+      "name": "distal phalanx of right little finger",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24463.stl",
+      "sourceSha256": "520090dc80d537f973295acd49e070f3e094c4d5a48ef708e36a2b98a351d0d7",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 237,
+      "outputVertices": 98,
+      "outputTriangles": 192,
+      "bounds": [
+        [
+          -227.53,
+          -563.01,
+          69.47
+        ],
+        [
+          -219.51,
+          -550.48,
+          83.33
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24463.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24463.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 237,
+        "triangles": 466,
+        "bytes": 12325,
+        "gzipBytes": 5692,
+        "sha256": "ce843d8ccfe140777f7022b402a62aaea73b7a9d7b576c2ad3b5fca5c9c91748",
+        "positionSha256": "97067e6124f20812f439d120ac0c8701864b3b32a1e0ec718d7d1d71813ef5d3",
+        "indexSha256": "5d176d0a480a1cd512e89c27afcf688b940195c560c58ad7674457eac4286a5d"
+      }
+    },
+    {
+      "id": "FMA24464",
+      "name": "right first metacarpal bone",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24464.stl",
+      "sourceSha256": "5bca353b5b387b71fd6a9b3a588b08303a32cbf924a9c0bc7dc700024808624c",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 1219,
+      "outputVertices": 573,
+      "outputTriangles": 1145,
+      "bounds": [
+        [
+          -310.32,
+          -479.37,
+          24.56
+        ],
+        [
+          -272.85,
+          -442.29,
+          55.12
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24464.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24464.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 1219,
+        "triangles": 2434,
+        "bytes": 59519,
+        "gzipBytes": 25918,
+        "sha256": "410f20d3c7e28f0dbf87e58448fe69abc2e148e7525ad6f4ff018e8f5fe24375",
+        "positionSha256": "6905612875c7076cc5281b49afc82b39abdb1cd0a214f426ed6cff29c1e0a131",
+        "indexSha256": "a98494d9a2a3ee9c93b3a866ca913b707cfdbf9d09e11ef12b4a76582563a434"
+      }
+    },
+    {
+      "id": "FMA24466",
+      "name": "right second metacarpal bone",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24466.stl",
+      "sourceSha256": "3541c67a2864e4e72f56fe2a0c01aaa5d87346e55864e92a0360b32991892fe7",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 1611,
+      "outputVertices": 789,
+      "outputTriangles": 1578,
+      "bounds": [
+        [
+          -293.36,
+          -520.96,
+          18.35
+        ],
+        [
+          -262.4,
+          -452.68,
+          44.17
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24466.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24466.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 1611,
+        "triangles": 3218,
+        "bytes": 78332,
+        "gzipBytes": 33904,
+        "sha256": "3f71bebf37a2ae60e6032be39280e8bce7053234c35f00c4bfb104d1422d969d",
+        "positionSha256": "44ccefc7300e9be98492dad5cfe6d576a63c3e160e3003703d707fa0b3d0b84d",
+        "indexSha256": "1a5c7c30e1b8d6a0572e7d64ac7669ade723ec77c5dce407a36c7b0c8f4b3bbd"
+      }
+    },
+    {
+      "id": "FMA24468",
+      "name": "right third metacarpal bone",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24468.stl",
+      "sourceSha256": "f8d96b418c20308dc76868621875a3b029f9d6f072621efa37045dceb2730d5e",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 1511,
+      "outputVertices": 758,
+      "outputTriangles": 1527,
+      "bounds": [
+        [
+          -273.13,
+          -519.11,
+          13.66
+        ],
+        [
+          -253.01,
+          -454.6,
+          44.26
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24468.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24468.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 1511,
+        "triangles": 3018,
+        "bytes": 73535,
+        "gzipBytes": 31671,
+        "sha256": "cda5df54980d7a013fffc4915ae728dfea61ec9774b47ab3de08fd1f2c91f50f",
+        "positionSha256": "2f42cfddd033f3e9f0f2653e9ceac6a2fd61aa8712de2e94bb6cceb28bda0a49",
+        "indexSha256": "35dcbe251a81f4fc4e641e05c129a3461ffb43a114d63b493b28c6fedb9d940d"
+      }
+    },
+    {
+      "id": "FMA24470",
+      "name": "right fourth metacarpal bone",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24470.stl",
+      "sourceSha256": "5b9338a2d75680e92abbdc2c539d36ae8dd6f634ea3a026f2a6b33c071fb8e35",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 1155,
+      "outputVertices": 611,
+      "outputTriangles": 1222,
+      "bounds": [
+        [
+          -254.59,
+          -514.59,
+          17.36
+        ],
+        [
+          -242.01,
+          -454.6,
+          43.43
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24470.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24470.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 1155,
+        "triangles": 2306,
+        "bytes": 56448,
+        "gzipBytes": 24764,
+        "sha256": "611f1001908586fec75c284f44aa40756721801702f41f9801c2081181c1ed56",
+        "positionSha256": "9acd98158b3fdc5af2ec2b65542c82dfd637e6a4590f7f8fd922b5929eeee725",
+        "indexSha256": "47155b74966eefdc458f136a09526bde336e6975b2b03ce3a6bad93aa46477ca"
+      }
+    },
+    {
+      "id": "FMA24472",
+      "name": "right fifth metacarpal bone",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA24472.stl",
+      "sourceSha256": "4359ea925a821e599ed8f65bd02f3d6754144718f8724ef155177c38b9b79480",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 1091,
+      "outputVertices": 543,
+      "outputTriangles": 1083,
+      "bounds": [
+        [
+          -246.12,
+          -507.79,
+          21.28
+        ],
+        [
+          -225.86,
+          -452.88,
+          45.9
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24472.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA24472.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 1091,
+        "triangles": 2178,
+        "bytes": 53373,
+        "gzipBytes": 23398,
+        "sha256": "b7fb752db0605cf265421b4050ba827a485e0542f87a3a27bdc8e2c7f608d216",
+        "positionSha256": "7e4f4c276fe0929b94c27763258ddafdc28946c231c6ceb4a274e6e6dc48a244",
+        "indexSha256": "c5b96a997ef59b45841fbbe7745558e8fb95933cb40e73bab91aa7b445286cd2"
+      }
     },
     {
       "id": "FMA258714",
@@ -144,7 +1647,19 @@
           321.88,
           12.18
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA258714.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA258714.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 1596,
+        "triangles": 3188,
+        "bytes": 77601,
+        "gzipBytes": 33912,
+        "sha256": "61f8b6c47827aa690996449beaca507185dad13512527014d4933e145120ccf5",
+        "positionSha256": "40fa880305bb22b70515e65eb3140e32cbcbcbb5ec94b2262046379c76b791cd",
+        "indexSha256": "cf7a6a618f2fa414769e6345a28267face6940a4b7b19e4277588cc48703ab45"
+      }
     },
     {
       "id": "FMA258716",
@@ -169,7 +1684,167 @@
           321.87,
           12.18
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA258716.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA258716.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 3112,
+        "triangles": 6218,
+        "bytes": 150334,
+        "gzipBytes": 65801,
+        "sha256": "bb0ee3b235ab78325ac39be00f9bab4ce094939fef7808394299310c069320c8",
+        "positionSha256": "bf2059ce9a527571c55c1f3eec45bd6020d16718002b21826b8617fa32018b15",
+        "indexSha256": "22ecbbfa3782bbd99557851fe0dd36453e3cd48d5835305555474749d7a769f4"
+      }
+    },
+    {
+      "id": "FMA38479",
+      "name": "right flexor digitorum profundus",
+      "category": "muscle",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA38479.stl",
+      "sourceSha256": "fe247eb3cf81286795bb7b88818c56edda9480f0a73764fd94c9ade434cc9ab0",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 16131,
+      "outputVertices": 1823,
+      "outputTriangles": 4262,
+      "bounds": [
+        [
+          -306.28,
+          -574.08,
+          -29.53
+        ],
+        [
+          -204.93,
+          -222.16,
+          87.83
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA38479.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA38479.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 16131,
+        "triangles": 33205,
+        "bytes": 790455,
+        "gzipBytes": 353512,
+        "sha256": "ac0b75b3de27ddac591297093ed7901bb8278d3c9e8fcf470e90a17243284011",
+        "positionSha256": "1508d1d4b7c61be675d9d90c7eb832d49095d80656d0b71a41f2ef68d11a56e9",
+        "indexSha256": "2e70e13dc86338956c7a08ce4e33ce9df5e58bbb2d5548188a0535699b6508ca"
+      }
+    },
+    {
+      "id": "FMA38525",
+      "name": "right extensor indicis",
+      "category": "muscle",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA38525.stl",
+      "sourceSha256": "6bd49ef83948199840a779333f27af2538ca0aa195894c27904669ed212018de",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 2658,
+      "outputVertices": 298,
+      "outputTriangles": 681,
+      "bounds": [
+        [
+          -308.25,
+          -570.81,
+          -3.58
+        ],
+        [
+          -230.23,
+          -372.93,
+          74.4
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA38525.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA38525.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 2658,
+        "triangles": 5477,
+        "bytes": 131227,
+        "gzipBytes": 57408,
+        "sha256": "6a916f62b027fc5c6b9be0c74cc1f88c400edbe96864a882e1be73c285cd9294",
+        "positionSha256": "9692680545a6d0bba6f36d44f331fde141166d3f724417c7364055c8eb1d12a8",
+        "indexSha256": "88e844880d4697baa347f15ee246eb9d0862b2c2d92461127b827747e6c3ab54"
+      }
+    },
+    {
+      "id": "FMA38638",
+      "name": "humeroulnar head of right flexor digitorum superficialis",
+      "category": "muscle",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA38638.stl",
+      "sourceSha256": "4194a008246d158149e6f7bd0aeb5db3c56e6116e746c893a101f77bd968fe25",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 21741,
+      "outputVertices": 1986,
+      "outputTriangles": 4604,
+      "bounds": [
+        [
+          -305.42,
+          -563.74,
+          -30.2
+        ],
+        [
+          -179.39,
+          -187.77,
+          67.93
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA38638.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA38638.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 21741,
+        "triangles": 45576,
+        "bytes": 1078175,
+        "gzipBytes": 483311,
+        "sha256": "db617e016d183498d5e2408ad210dc66e9c9244ee080d5ac723cec31732aed7a",
+        "positionSha256": "5d52d67e0fab281c5cccea834a73eacf9dccf10753c63a2721096e54605262c4",
+        "indexSha256": "49c13e60f787316c5b9839308088e45e987e05e5ec66b9583fc05cfe05f5eb95"
+      }
+    },
+    {
+      "id": "FMA38640",
+      "name": "radial head of right flexor digitorum superficialis",
+      "category": "muscle",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA38640.stl",
+      "sourceSha256": "99d4d6f1835668f6141704684f8f5a2a470997f07f7a13d80701d091ac0ed3f6",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 4472,
+      "outputVertices": 734,
+      "outputTriangles": 1776,
+      "bounds": [
+        [
+          -254.36,
+          -426.09,
+          -16.25
+        ],
+        [
+          -226.84,
+          -247.75,
+          33.5
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA38640.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA38640.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 4472,
+        "triangles": 9015,
+        "bytes": 216890,
+        "gzipBytes": 97833,
+        "sha256": "222d0f5cabacf4eb6b2959211e2ce7f291eef4ea72da9b430e530f13a1c05287",
+        "positionSha256": "aa1f789f38e714984c458470e5920fb96adb558c035c72db6d8a63c3a799b61f",
+        "indexSha256": "51dfeb8f044dc96a2843806623645dd43cea0286db78a33d8086fa9beb3a340f"
+      }
     },
     {
       "id": "FMA62004",
@@ -194,7 +1869,19 @@
           265.1,
           -1.03
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA62004.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA62004.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 7639,
+        "triangles": 15811,
+        "bytes": 376260,
+        "gzipBytes": 158240,
+        "sha256": "c1e1fa539531d8a1c7a56e05e78beeb99725888d4d2c44875679ef3ace8efe5f",
+        "positionSha256": "b0e3e5781316c7cf48510c9f998381aa0ea704f859c7c06ea7d9fcc96163e4d5",
+        "indexSha256": "f99ab5ecaff595470485ef269ada6800ac3d5c5030ce4797d2d18944216aafe7"
+      }
     },
     {
       "id": "FMA67943",
@@ -219,7 +1906,19 @@
           288.56,
           10.94
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA67943.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA67943.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 11985,
+        "triangles": 24495,
+        "bytes": 584728,
+        "gzipBytes": 256547,
+        "sha256": "5849d8f4ea3faa3500e56ec72e2be6d16e090e9c9767b78243d9658106894abe",
+        "positionSha256": "48e9d7f76acb77396c650156d22993719ba26fd92b7b05d6a6233cbbab3bff30",
+        "indexSha256": "58a640b88fae5df68328317a0643ce65ec015a1c5c8f5198150695dd221f8488"
+      }
     },
     {
       "id": "FMA67944",
@@ -244,7 +1943,19 @@
           297.84,
           -16.59
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA67944.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA67944.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 41357,
+        "triangles": 85200,
+        "bytes": 2025960,
+        "gzipBytes": 839400,
+        "sha256": "951cc35ffa85b09bb0655adec6118ad8407fa0ebbfcc10b8f541625849e147ea",
+        "positionSha256": "6a0983d34644160ee22ec821d038e3e7cd20e9f7f8bb641de5d4afc0326b1e50",
+        "indexSha256": "1aca9905a50ae38e1aee63d48da6bbca6e2042ff1d4c56d5b68182c3c24969eb"
+      }
     },
     {
       "id": "FMA7163",
@@ -269,7 +1980,19 @@
           393.32,
           131.77
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA7163.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA7163.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 105282,
+        "triangles": 210000,
+        "bytes": 5045559,
+        "gzipBytes": 2466063,
+        "sha256": "13e9571ea28ee058e6d3d7d681abd9eecdc818ebf093f20b0bb6bbefedd63223",
+        "positionSha256": "9d8a17a2151403af5554e317969649ada05904b523369cebe0a2ed335cb66899",
+        "indexSha256": "2632d227383da0e3805714a9c4e47d0062d9ad9a5146f70b7a1837e4678f97b4"
+      }
     },
     {
       "id": "FMA72653",
@@ -294,7 +2017,19 @@
           382.97,
           78.93
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72653.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72653.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 13654,
+        "triangles": 27301,
+        "bytes": 656354,
+        "gzipBytes": 256178,
+        "sha256": "f180887bc43b7e72168a286782054f84fca55bf2a063f2eb6f4fc14ae7a03acc",
+        "positionSha256": "87287b620412cf02b57fce4b62bc470e92655f4ac8ed2bf48d5a31adedaccf41",
+        "indexSha256": "f76adb9bcba1cf25b3f0373ad52350be73fd6cbee13b2f59ba05d28cb39ba814"
+      }
     },
     {
       "id": "FMA72654",
@@ -319,7 +2054,19 @@
           382.88,
           79.31
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72654.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72654.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 13655,
+        "triangles": 27304,
+        "bytes": 656415,
+        "gzipBytes": 257102,
+        "sha256": "46ee3abe86b12981ae567b4bec33714fed0fd33b8c3b4dcab919c649d9a95a7e",
+        "positionSha256": "9648ecdd40b29426b86a41537e044d0040d244d451756104fb5894971af4083d",
+        "indexSha256": "5a502e3df48ac8f10adb70ae9678f2d05a27853ec633b2a309f0ba6c036eb88b"
+      }
     },
     {
       "id": "FMA72655",
@@ -344,7 +2091,19 @@
           374.96,
           69.4
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72655.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72655.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 6926,
+        "triangles": 13852,
+        "bytes": 333517,
+        "gzipBytes": 129687,
+        "sha256": "b148e432b10ee28097460f144d2ffcdf5ec77ea2027c065e86a822759ae0c800",
+        "positionSha256": "120a15f734cf6dec8fcc76202c83a32c6c306771725428133fb1bad8f0b71b06",
+        "indexSha256": "0b0391336edce7b92d283ae266d12baa28287147a4aeba224b1ded2c50faaf17"
+      }
     },
     {
       "id": "FMA72656",
@@ -369,7 +2128,19 @@
           374.8,
           69.69
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72656.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72656.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 6874,
+        "triangles": 13744,
+        "bytes": 330953,
+        "gzipBytes": 128536,
+        "sha256": "331286ba869e2b0491a74aae2ba1ecba462c0128d9943be22fe55b7b01d12740",
+        "positionSha256": "0b59c54009c03b818eab20b0535f659ee759ca5a62a9a90a3349c892a5789c60",
+        "indexSha256": "d681f7f2b8b8419f781e18b6cef99bfffe61537827646f0fdb97c9c19b45cf0a"
+      }
     },
     {
       "id": "FMA72661",
@@ -394,7 +2165,19 @@
           379.39,
           18.32
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72661.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72661.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 8394,
+        "triangles": 16784,
+        "bytes": 403914,
+        "gzipBytes": 153004,
+        "sha256": "f3e2553a9f214c0641eeb20a17cafff43eaf5128d2b17cbe788bb007ce30b593",
+        "positionSha256": "6ad702e415579b8ee64539205d68f732477524b0cf331d952b87550df7446a87",
+        "indexSha256": "9b6c0bb736bdbbf327a5c5c32df263932244a2b9aa577a9904302c1d1125779c"
+      }
     },
     {
       "id": "FMA72662",
@@ -419,7 +2202,19 @@
           379.42,
           18.33
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72662.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72662.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 8390,
+        "triangles": 16777,
+        "bytes": 403737,
+        "gzipBytes": 153674,
+        "sha256": "08d17718bd3cc4687ee896e8ec164c7643f032efae29cee682c02a1dd0a90bf3",
+        "positionSha256": "b8ee82505424ad34574af48d1e290f488523a5df13bc34838eca5a758b7caf9b",
+        "indexSha256": "310eaf8d145461293658fde41503e423fc11d786335d941bb58cb508647d866e"
+      }
     },
     {
       "id": "FMA72665",
@@ -444,7 +2239,19 @@
           375.58,
           1.92
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72665.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72665.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 7494,
+        "triangles": 14984,
+        "bytes": 360710,
+        "gzipBytes": 136419,
+        "sha256": "0375d9854f773a5868deae0a16e5cd01501a3e1f8aa0bae238d67877b2df076e",
+        "positionSha256": "fe21782d3977de50e2b80d989d6b08548f1d63fe6045bc37cb7e006663d49c1e",
+        "indexSha256": "3f4b0459d98064290bbe89edfdedebb72124d2bf6d33b7d25855265d3cdf185c"
+      }
     },
     {
       "id": "FMA72666",
@@ -469,7 +2276,19 @@
           375.63,
           1.69
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72666.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72666.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 7496,
+        "triangles": 14989,
+        "bytes": 360822,
+        "gzipBytes": 136975,
+        "sha256": "d684ba16cbc0da3bcbc9ffa0c1a42fdef2f5e464c4ea61586e1f22d498439e72",
+        "positionSha256": "1b73eea8b4bef200161038b442a949d368c6a3a0e28a1073d20ae12b0ce03f6d",
+        "indexSha256": "95b90207271f642ef7e5cc193dd04458534e1695b72bc5de347de1bac4804e13"
+      }
     },
     {
       "id": "FMA72667",
@@ -494,7 +2313,19 @@
           356.58,
           -12.22
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72667.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72667.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 4285,
+        "triangles": 8567,
+        "bytes": 206701,
+        "gzipBytes": 77931,
+        "sha256": "203dd8d93fcdb6d73210d4f786ef953a659434a8b270094032cedb7d3d8791ea",
+        "positionSha256": "5d47b8db3fbcddb1b663124b46705370acab50f1cde1ed1c0204b2f60dd902f5",
+        "indexSha256": "a4d9a05e7a4d73ab609f28317093c3f11f9fef96c68e5fe55d31fb0080bdb2c9"
+      }
     },
     {
       "id": "FMA72668",
@@ -519,7 +2350,19 @@
           356.42,
           -12.34
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72668.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72668.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 4245,
+        "triangles": 8488,
+        "bytes": 204794,
+        "gzipBytes": 77146,
+        "sha256": "19c078c58c3bb1efd57c24cc57254ecf49378c7bf1b9177469152c383561dd16",
+        "positionSha256": "f3459f9ea0f1111006c2f2d1f2ebb29b7e1394902db949a5fc0deb038ee0e715",
+        "indexSha256": "ca570d59915ff9c703914efbc16561a58da55e7f9a6c8c044c031dc517e87cc2"
+      }
     },
     {
       "id": "FMA72669",
@@ -544,7 +2387,19 @@
           356.37,
           -38.88
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72669.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72669.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 5905,
+        "triangles": 11807,
+        "bytes": 284457,
+        "gzipBytes": 107851,
+        "sha256": "58985579ab147ae8a0b7bb74cc64ad0318dced05e4710fdf6372c37d01e7f5b9",
+        "positionSha256": "591de0057d6138fcd24791f79419186d7700f97433d6ead3b8623b780023d3a6",
+        "indexSha256": "9e94328ea7b2beed4d1efe59593f2a786cfde0d6a619dc8704ea4ce4d34e193b"
+      }
     },
     {
       "id": "FMA72670",
@@ -569,7 +2424,19 @@
           356.43,
           -38.94
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72670.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72670.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 5831,
+        "triangles": 11661,
+        "bytes": 280934,
+        "gzipBytes": 106799,
+        "sha256": "3c6cc5561f8a82b16c07e5c2223d2d28f9db6873423751a289959db026fb02d3",
+        "positionSha256": "9643910730b1c699ef8da5da30475482042b1b64df991fb650d9d25c1931fd5d",
+        "indexSha256": "00d67f82266e1fca6a2f6bc089e0aaab54dcd46b19fa42b6953404ed5f409e71"
+      }
     },
     {
       "id": "FMA72685",
@@ -594,7 +2461,19 @@
           312.56,
           37.02
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72685.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72685.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 5784,
+        "triangles": 11564,
+        "bytes": 278637,
+        "gzipBytes": 105530,
+        "sha256": "ab98e467c02be6f5ded735ba1c7d434b80e0e8ff55f28247c609c74850583dfd",
+        "positionSha256": "54c85b2f0bfa668a8b194589dcc24e28ae0ac717e716616ed1e2f7c56deef377",
+        "indexSha256": "3af428f5578c6f0e5e386607c62b548396bb488526cedc2bed2ef93a861e9563"
+      }
     },
     {
       "id": "FMA72686",
@@ -619,7 +2498,19 @@
           312.29,
           37.16
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72686.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72686.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 5695,
+        "triangles": 11387,
+        "bytes": 274377,
+        "gzipBytes": 104316,
+        "sha256": "3c7ab0492982f3b95d72fc062beabae09826ac2d574d22b00184cb2bfd6ff490",
+        "positionSha256": "8ff50449e872ef066994d820275738be6462002d743654753425529b385a69e3",
+        "indexSha256": "d559344b997b840f7b5c98835e7fbd5f727ee84c64db6edc0b7b3f0d5cd12424"
+      }
     },
     {
       "id": "FMA72687",
@@ -644,7 +2535,19 @@
           299.48,
           34.91
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72687.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72687.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 5869,
+        "triangles": 11735,
+        "bytes": 282736,
+        "gzipBytes": 107342,
+        "sha256": "6bf53b720eb290078ad9536179bc482e3c26ed17ce8c6975abbf129e83edc3d2",
+        "positionSha256": "94fe59e51041a371f86966c12c954502b837635c9d867a355f80bb7b32d64949",
+        "indexSha256": "e5e07b8d1257d84879dfa49863c9e1267c6835e328359d1c0f312a0b7ac260c8"
+      }
     },
     {
       "id": "FMA72688",
@@ -669,7 +2572,19 @@
           299.85,
           34.76
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72688.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72688.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 5830,
+        "triangles": 11658,
+        "bytes": 280877,
+        "gzipBytes": 106680,
+        "sha256": "8c304f58c60773143a8490e0c86194e953e26f36601d16e34057a1d5039dd09a",
+        "positionSha256": "54541ea3d89f588e51322f95299914a6b64fb78c60d8c59223cc0f87ea8b6709",
+        "indexSha256": "7166d3aebdee8957d507ac6d7f1e3f0c7c4f4e0fef87ad89c56b609e494e968c"
+      }
     },
     {
       "id": "FMA72689",
@@ -694,7 +2609,19 @@
           298.97,
           23.39
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72689.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72689.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 2761,
+        "triangles": 5518,
+        "bytes": 133526,
+        "gzipBytes": 49806,
+        "sha256": "dc24506847cfcf206fe7cd2bf1899240833cdd55daed273952f98a467bd41bfe",
+        "positionSha256": "e4ed18e232f50fa473c8fdefe5e2b859e622bf43bac372c79626b62100269b9a",
+        "indexSha256": "c70d7228cdb521cf7d2d51dc445128862ed450de881a958887064d5f58334624"
+      }
     },
     {
       "id": "FMA72690",
@@ -719,7 +2646,19 @@
           298.89,
           23.25
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72690.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72690.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 2775,
+        "triangles": 5546,
+        "bytes": 134193,
+        "gzipBytes": 50199,
+        "sha256": "4d4a012c5d779686e7a6d1239451eb821656ff00e13df8f68a9606ce4122c839",
+        "positionSha256": "a695ad28efb5741ae7ff4a098e33108f923b62c32ebf552cc40702cf81ca8c79",
+        "indexSha256": "84e2afbfe1a9bc849c144736126b458a5368ac369824208b39e5e505e1cfc793"
+      }
     },
     {
       "id": "FMA72701",
@@ -744,7 +2683,19 @@
           360.63,
           63.6
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72701.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72701.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 6786,
+        "triangles": 13561,
+        "bytes": 326617,
+        "gzipBytes": 125943,
+        "sha256": "a06ba5245ed4374ae6ce9523b2122ed70f8dd63586d22473d0a414f8500d0020",
+        "positionSha256": "83f4a78a6bcbc8451f17522ce036ddf036e241dc8049732567aaba3ec34ff2f7",
+        "indexSha256": "bf39f2999bd7f0f6d8f815615a645aa7c0e7cd50d16ef616d3982b7538131918"
+      }
     },
     {
       "id": "FMA72702",
@@ -769,7 +2720,19 @@
           360.6,
           63.64
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72702.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72702.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 6731,
+        "triangles": 13452,
+        "bytes": 323994,
+        "gzipBytes": 124677,
+        "sha256": "bc650b4dd921e5269ed88f305553a292203787d425c541edc65a478f0fdb2168",
+        "positionSha256": "d1854671a43a84e19e5b9d513ca6a08b87bc5d6fb5e1133d1804dfde2a604ebe",
+        "indexSha256": "50cd9fca06ac08bc581173f249e0720f76a45685182f61a863835ef92b4d356e"
+      }
     },
     {
       "id": "FMA72705",
@@ -794,7 +2757,19 @@
           299.78,
           14.22
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72705.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72705.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 1541,
+        "triangles": 3078,
+        "bytes": 74974,
+        "gzipBytes": 28102,
+        "sha256": "95eee767d6ca02e63eb3d62e72ba31a99701d125009ecb45e1b8646804d3221f",
+        "positionSha256": "1322be4e6bf7d9cdf883329f0aef3155a384a31ed7ecf022ee401c7051c4c3e5",
+        "indexSha256": "968c4e689df26837847b6a62d9cb45145c80091cdc6dfa083aecf15cf8eb88b4"
+      }
     },
     {
       "id": "FMA72706",
@@ -819,7 +2794,19 @@
           299.97,
           14.37
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72706.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72706.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 1530,
+        "triangles": 3056,
+        "bytes": 74444,
+        "gzipBytes": 27836,
+        "sha256": "f1c8ca21746aaebdf550b201d6358638372d8227ebff01e1449c27977af8c9c3",
+        "positionSha256": "cb486ea93a641874db6ba45d11d548abdd35e07241d9c43398d99b9ac7956ad9",
+        "indexSha256": "a1a7a70bf1e69bd6c1d65245d8c1d31169848173a3d0ebe94ec284110e96af89"
+      }
     },
     {
       "id": "FMA72717",
@@ -844,7 +2831,19 @@
           351.38,
           52.48
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72717.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72717.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 5274,
+        "triangles": 10545,
+        "bytes": 254169,
+        "gzipBytes": 98172,
+        "sha256": "4b8eb3064aa18b21de40406e0a007c3916885e3f051c0464fce10fa9d55def35",
+        "positionSha256": "03515b82bf509f76e385d1a039823dd514b600ebf8da1794a1f986174fe6f1d2",
+        "indexSha256": "1b0f4d26a93f5371af3dbdbc6bcc2fa726930f90922cae5ecacd4c99b9cb7753"
+      }
     },
     {
       "id": "FMA72718",
@@ -869,7 +2868,19 @@
           351.33,
           52.51
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72718.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72718.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 5223,
+        "triangles": 10442,
+        "bytes": 251700,
+        "gzipBytes": 97327,
+        "sha256": "3c53a4a027b702d2ca969ee24ac163f5bdb0c453711b9d07da0ea7383ededb6f",
+        "positionSha256": "261c58c7c65d16e3171c2364f0de96692f2347bf9198d25391e9c9aa2af28477",
+        "indexSha256": "7206d59081089332cbb1d4f5ca8809689b656855d294fb4d055723f30d84f6f3"
+      }
     },
     {
       "id": "FMA72800",
@@ -894,7 +2905,19 @@
           328.53,
           39.77
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72800.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72800.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 3627,
+        "triangles": 7250,
+        "bytes": 175120,
+        "gzipBytes": 66117,
+        "sha256": "594ee3e9952f012148baf1e87bc9bddaaa96c9aa012307194e7600e68de44842",
+        "positionSha256": "5a94b697092bf60c62aa1bf1ec1ec7ca298496f6fd3264bc033b1a43d9dd64ce",
+        "indexSha256": "cb3174182de3046cc917e7ed6b7acd22c03a2fec21b69983980d5e25932d7759"
+      }
     },
     {
       "id": "FMA72801",
@@ -919,7 +2942,19 @@
           327.04,
           39.46
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72801.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72801.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 3673,
+        "triangles": 7342,
+        "bytes": 177313,
+        "gzipBytes": 66733,
+        "sha256": "58b94c5563f03c41ef7ed9e82901f11054ea058c8df719af5877b202c0f8222a",
+        "positionSha256": "c2c31a8cc06c791510814716204305b5af180dac062d34366f076893219d6923",
+        "indexSha256": "2edd093ce85e0caabf739c68b42e7c3f8185410ba424b8590aaab46b264d0464"
+      }
     },
     {
       "id": "FMA72804",
@@ -944,7 +2979,19 @@
           328.64,
           9.44
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72804.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72804.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 4607,
+        "triangles": 9210,
+        "bytes": 222156,
+        "gzipBytes": 85641,
+        "sha256": "916a9dffa888f19a656a997bde9f8a50e8661dc909201d25d41a98e3b12bbfe5",
+        "positionSha256": "9adc95f1cd6dd24290336b61b109cb3545b448f7d94e6095346fb695f5714361",
+        "indexSha256": "1c9adebbc4bdd0f6e68c68f613481b214d9d3b699a54703771bf4ce23fa95d2a"
+      }
     },
     {
       "id": "FMA72805",
@@ -969,7 +3016,19 @@
           328.64,
           9.57
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72805.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72805.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 4611,
+        "triangles": 9219,
+        "bytes": 222359,
+        "gzipBytes": 85893,
+        "sha256": "c94440060356c205ffa717a045642040c38fdaf81f640ba3e22eebd0badab015",
+        "positionSha256": "9f74906307c615cc11d5d870506b2cdfb092fbc7d75837432145f4504a2147fe",
+        "indexSha256": "a6a8c87c06293de90607e84e0f8f4160e9a1ddeda4d73a31a9234deb9c2248b1"
+      }
     },
     {
       "id": "FMA72975",
@@ -994,7 +3053,19 @@
           326.52,
           -30.93
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72975.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72975.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 8305,
+        "triangles": 16607,
+        "bytes": 399660,
+        "gzipBytes": 154234,
+        "sha256": "973df62ac6e3bbb25865fbb00f5ec195dddef6efa4880749ab2fb46287ee74de",
+        "positionSha256": "7d7457c3b162d7a4c8fd9b8f605498e83a8a6287b04297db4ff739235c96778e",
+        "indexSha256": "985a1c0109f8f1d6122d5db4a5193fe79c6c0b43630cdc1470a983d220c5fdb0"
+      }
     },
     {
       "id": "FMA72976",
@@ -1019,7 +3090,19 @@
           326.24,
           -30.93
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72976.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72976.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 8219,
+        "triangles": 16434,
+        "bytes": 395514,
+        "gzipBytes": 152842,
+        "sha256": "ce7c68b1344c0be65cae531ad1aec4716e852f25492c61256b35ce08a5527d25",
+        "positionSha256": "1138dc24af59928a751e78246e09e7e0ab40fbbd0f5e26a03ea69f84f04ae969",
+        "indexSha256": "0b9708f9aebe2da428ab0f3a89fe7e1602526fd473cb1694b8f3f6b947c7f4b4"
+      }
     },
     {
       "id": "FMA72977",
@@ -1044,7 +3127,19 @@
           334.79,
           34.54
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72977.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72977.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 4444,
+        "triangles": 8892,
+        "bytes": 214430,
+        "gzipBytes": 83101,
+        "sha256": "9d2c9c76f2d39f0087bb1698f849ca964e8151417e873dab87c839925adcbc50",
+        "positionSha256": "07d7c22da956f6dcf564d8815a2ad02e80dccff832d25da7c83d9402d684ba92",
+        "indexSha256": "63423865124b132c917de56223c2cf5e8fbfd39b88cda679ce0ae0c76513e888"
+      }
     },
     {
       "id": "FMA72978",
@@ -1069,10 +3164,97 @@
           334.83,
           33.89
         ]
-      ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72978.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA72978.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 4530,
+        "triangles": 9064,
+        "bytes": 218557,
+        "gzipBytes": 84272,
+        "sha256": "164e88f0f428b2092f7a48438934deef56d28221ef141dded07556b80fcee12f",
+        "positionSha256": "09845e4a86fcbe4504c3bcda77596ee25cd265c0e72982a1729e60742a6ef082",
+        "indexSha256": "3ff050177211b6ae3b19888103d96755c22a41968d62838a23101b2e11c4a156"
+      }
+    },
+    {
+      "id": "FMA9165",
+      "name": "first thoracic vertebra",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA9165.stl",
+      "sourceSha256": "ca7d411ee7e536c64f37ab217a151b9edfa4fbd7fdc80994ddb8e2a895a14cff",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 2807,
+      "outputVertices": 681,
+      "outputTriangles": 1386,
+      "bounds": [
+        [
+          -37.75,
+          114.75,
+          -78.05
+        ],
+        [
+          33.21,
+          144.12,
+          -8.23
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA9165.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA9165.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 2807,
+        "triangles": 5614,
+        "bytes": 135798,
+        "gzipBytes": 58327,
+        "sha256": "ff8fed25bdd40f05c67f3a69259c7aa5c3d12de9c04a5181e19d7ffbfb652b6c",
+        "positionSha256": "84d673d96df0cdac89a3a1a4ab0c759dc7d7f9b092982f3d44b033cdbd178344",
+        "indexSha256": "405905e74dabf21573937b9b3b51250ee3fccce5455f27bf433d381a285b6c4f"
+      }
+    },
+    {
+      "id": "FMA9187",
+      "name": "second thoracic vertebra",
+      "category": "bone",
+      "source": "https://raw.githubusercontent.com/Kevin-Mattheus-Moerman/BodyParts3D/f0eeb6e843380cfe6b83797cf8c3e1af74de5e61/assets/BodyParts3D_data/stl/FMA9187.stl",
+      "sourceSha256": "819eee72d2b2582a6ac99757371a451ae22496311cbffbc7fd8a5027c51316a4",
+      "sourceCommit": "f0eeb6e843380cfe6b83797cf8c3e1af74de5e61",
+      "license": "BodyParts3D CC BY-SA 2.1 Japan, preserved from v3 mirror",
+      "originalDerivation": "Source STL decimated for display in atlas-rest coordinates. Skin additionally has a source-derived outer-envelope extraction, upper-body crop and gentle surface smoothing. Not patient-specific anatomy or a biomechanical result.",
+      "inputVertices": 4180,
+      "outputVertices": 819,
+      "outputTriangles": 1686,
+      "bounds": [
+        [
+          -36.82,
+          95.21,
+          -83.32
+        ],
+        [
+          33.04,
+          129.37,
+          -13.09
+        ]
+      ],
+      "detail": {
+        "url": "/assets/finger-pathway-atlas/v4/source-meshes/FMA9187.json",
+        "gzipUrl": "/assets/finger-pathway-atlas/v4/source-meshes/FMA9187.json.gz",
+        "encoding": "base64-float32-uint32-le",
+        "vertices": 4180,
+        "triangles": 8360,
+        "bytes": 201697,
+        "gzipBytes": 86572,
+        "sha256": "ecbd053f8851f011bafafec07f0fb852a1a74754114fe24e3b6642667c4d523b",
+        "positionSha256": "542f15b6c97f4dbcb50135ae9c8f7a1ede78acf95c6fbb7b020b4d0ef2c4ada3",
+        "indexSha256": "3c1db35d036a324be19d264a54ab4ddd806040558eee2b752be4334e8d4fcd36"
+      }
     }
   ],
   "missingSourceGeometry": [
+    "Blood vessels",
     "Peripheral nerves",
     "Dorsal root ganglia",
     "Cervical spinal cord",

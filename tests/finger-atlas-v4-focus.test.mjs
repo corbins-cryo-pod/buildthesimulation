@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { Box3, PerspectiveCamera, Vector3 } from 'three';
+import { Box3, BoxGeometry, Group, Mesh, MeshBasicMaterial, PerspectiveCamera, Vector3 } from 'three';
 import { createAtlasModel } from '../src/lib/finger-atlas-v4/model.mjs';
 import { createCellDetail } from '../src/lib/finger-atlas-v4/morphology.mjs';
-import { computeCellFocus } from '../src/lib/finger-atlas-v4/focus.mjs';
+import { computeCellFocus, computeDetailFocus } from '../src/lib/finger-atlas-v4/focus.mjs';
 
 const model = createAtlasModel();
 const dispose = group => group.traverse(object => { object.geometry?.dispose(); object.material?.dispose(); });
@@ -61,4 +61,31 @@ test('focusing preserves the single model and returns its existing anatomical re
     }
   }
   assert.deepEqual(model, before, 'Focus must not translate or regenerate registered cells in another coordinate system');
+});
+
+test('source-derived focus includes every intact group at the selected anchor and preserves caller ownership', () => {
+  const cell = model.cells.find(item => item.type === 'pacinian');
+  const detail = new Group();
+  let disposals = 0;
+  for (const offset of [-2, 3]) {
+    const part = new Group();
+    part.userData.anchor = 'terminal';
+    part.position.fromArray(cell.terminal);
+    const geometry = new BoxGeometry(1, .5, .3);
+    const material = new MeshBasicMaterial();
+    geometry.addEventListener('dispose', () => disposals++);
+    material.addEventListener('dispose', () => disposals++);
+    const mesh = new Mesh(geometry, material);
+    mesh.position.x = offset;
+    part.add(mesh);
+    detail.add(part);
+  }
+  const before = detail.children.map(part => Array.from(part.children[0].geometry.attributes.position.array));
+  const focus = computeDetailFocus(cell, detail, { ending: true });
+  assert.deepEqual(focus.center, [cell.terminal[0] + .5, cell.terminal[1], cell.terminal[2]]);
+  assert.ok(focus.distance > 10, 'Preserved large geometry must not inherit a small synthetic closeup distance');
+  assert.equal(disposals, 0, 'Focusing cannot dispose cached source geometry');
+  assert.deepEqual(detail.children.map(part => Array.from(part.children[0].geometry.attributes.position.array)), before);
+  dispose(detail);
+  assert.equal(disposals, 4);
 });
