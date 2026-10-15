@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
+import { implantedKinds } from '../lib/devices/implant-contacts.js';
 import { getDeviceModel, getContactGeometry, exportGeometry } from '../lib/devices/catalog.js';
 
 function download(data: BlobPart, name: string, type: string) {
@@ -15,7 +16,6 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
   const [status, setStatus] = useState('Loading 3D viewer…');
   const [ready, setReady] = useState(false);
   const [onlyContacts, setOnlyContacts] = useState(false);
-  const [exporting, setExporting] = useState(false);
 
   useEffect(() => {
     if (!model || !mount.current) return;
@@ -76,9 +76,11 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       const defaultView = model.kind === 'neuropixels' ? 'tip' : model.id === 'neuropixels-opto-electrical-window' ? 'detail' : 'oblique';
       let view = defaultView;
       const setView = (next: string) => {
-        if (next === 'default') next = defaultView;
+        if (next === 'default') { next = defaultView; bodies.visible = true; setOnlyContacts(false); }
+        const cuffCutaway = next === 'detail' && ['nerve-cuff', 'flat-cuff'].includes(model.kind);
+        if (cuffCutaway) { bodies.visible = false; setOnlyContacts(true); }
         view = next;
-        const isTip = next === 'tip', isDetail = ['tip', 'detail', 'thread'].includes(next) || (model.kind === 'neuropixels' && ['front', 'side'].includes(next));
+        const isTip = next === 'tip' || (next === 'detail' && model.kind === 'planar-probe'), isDetail = ['tip', 'detail', 'thread'].includes(next) || (model.kind === 'neuropixels' && ['front', 'side'].includes(next));
         grid.visible = !isDetail;
         const target = center.clone();
         let distance = extent / (2 * Math.tan(19 * Math.PI / 180)) * 1.12;
@@ -94,7 +96,13 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
         }
         // The Neuropixels shank is 70 µm wide and 10 mm long, so whole-shank orthogonal views are a hairline. Crop to the lowest 1.4 mm instead.
         if (model.kind === 'neuropixels' && (next === 'front' || next === 'side')) { target.set(0, 0, 0.75); distance = 1.6; }
-        if (isTip) { target.set(0, 0, model.length - 0.28); distance = 0.9; direction.set(0, -1, 0); }
+        if (isTip) {
+          if (model.kind === 'planar-probe') {
+            const site = sites.reduce((best, site) => site.positionMm[2] > best.positionMm[2] ? site : best, sites[0]);
+            target.fromArray(site.positionMm); distance = Math.max(model.width * 8, model.contactLayout[0].size * 10, 0.15);
+          } else { target.set(0, 0, model.length - 0.28); distance = 0.9; }
+          direction.set(0, -1, 0);
+        }
         if (next === 'detail' && model.kind === 'surface-grid') { target.fromArray(sites[Math.floor(sites.length / 2)].positionMm); direction.set(0, -0.35, 1).normalize(); distance = Math.max(model.siteSize * 4, 0.08); }
         if (next === 'detail' && model.id === 'neuropixels-opto-electrical-window') { target.set(0, 0, 0); direction.set(0, -0.2, 1).normalize(); distance = 0.2; }
         if (next === 'detail' && model.kind === 'carbon-row') { target.fromArray(sites[4].positionMm); direction.set(0, -0.35, 1).normalize(); distance = 0.08; }
@@ -108,10 +116,18 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
           target.fromArray(site.positionMm); direction.set(0, -0.0001, 1).normalize();
           distance = next === 'thread' ? 5.5 : 0.38;
         }
+        if (next === 'detail' && ['cylindrical-lead', 'nerve-cuff', 'flat-cuff', 'exposed-wire'].includes(model.kind)) {
+          const site = sites[Math.floor(sites.length / 2)]; target.fromArray(site.positionMm);
+          if (site.normal) direction.fromArray(site.normal); else direction.set(0.8, -1, 0.4).normalize();
+          distance = model.kind === 'flat-cuff' ? Math.max(model.innerHeight * 2, model.contacts[0].diameter * 5) : model.kind === 'exposed-wire' ? model.exposedLength * 2 : Math.max(model.diameter ?? model.innerDiameter, model.contacts[0].length) * 2.5;
+        }
+        // Surface patches face +Z, independent of whether their anatomy is cortex.
+        if (next === 'front' && model.kind === 'surface-grid') direction.set(0, -0.0001, 1).normalize();
+        if (next === 'end' && model.kind === 'flat-cuff') { direction.set(0, 0, 1); distance = Math.max(model.innerWidth * 1.5, model.length * 1.5); }
         distance /= Math.min(camera.aspect, 1);
         camera.position.copy(target).addScaledVector(direction, distance);
         controls.target.copy(target); controls.update(); render();
-        const hint = isDetail ? 'Detail view · camera crop only; physical dimensions unchanged · drag to rotate' : `Drag to rotate · scroll or pinch to zoom · grid spacing 1 mm${model.kind === 'neuralink' ? ' · unfurled display pose' : ''}`;
+        const hint = cuffCutaway ? 'Contact detail · cuff shell hidden to expose inward-facing contacts · physical dimensions unchanged' : isDetail ? 'Detail view · camera crop only; physical dimensions unchanged · drag to rotate' : `Drag to rotate · scroll or pinch to zoom · grid spacing 1 mm${model.kind === 'neuralink' ? ' · unfurled display pose' : ''}`;
         setStatus(`${software ? 'Software rendering · ' : ''}${hint}`);
       };
       const resize = () => {
@@ -147,29 +163,31 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
 
   if (!model) return null;
   return <section class="device-model" id="model-3d" aria-label="3D device geometry">
-    <div class="model-heading"><span class="model-kicker">3D GEOMETRY · REFERENCE MODEL</span><h3>{model.name}</h3><p>{model.kind === 'chip-envelope' ? 'Package envelope only' : model.id === 'neuropixels-opto-electrical-window' ? 'Electrical crop only; optics omitted' : 'Electrode-bearing structure'} · dimensions in millimeters</p></div>
+    <div class="model-heading"><span class="model-kicker">3D GEOMETRY · REFERENCE MODEL</span><h3>{model.name}</h3><p>{model.modeledScope ?? (model.kind === 'chip-envelope' ? 'Package envelope only' : model.id === 'neuropixels-opto-electrical-window' ? 'Electrical crop only; optics omitted' : 'Electrode-bearing structure')} · dimensions in millimeters</p></div>
     <div ref={mount} class="model-canvas" />
     <p class="model-status" role="status">{status}</p>
     <div class="model-controls" aria-label="Model controls">
       <button disabled={!ready} onClick={() => api.current?.setView('default')}>Reset view</button>
       <button disabled={!ready} onClick={() => api.current?.setView('front')}>Front</button>
       <button disabled={!ready} onClick={() => api.current?.setView('side')}>Side</button>
-      {model.kind === 'stentrode' && <button disabled={!ready} onClick={() => api.current?.setView('end')}>End-on</button>}
+      {['stentrode', 'cylindrical-lead', 'nerve-cuff', 'flat-cuff', 'exposed-wire'].includes(model.kind) && <button disabled={!ready} onClick={() => api.current?.setView('end')}>End-on</button>}
       {['connexus', 'neuralink'].includes(model.kind) && <button disabled={!ready} onClick={() => api.current?.setView('end')}>{model.kind === 'connexus' ? 'Electrode face' : 'Top view'}</button>}
       {model.kind === 'neuralink' && <button disabled={!ready} onClick={() => api.current?.setView('thread')}>Thread detail</button>}
-      {['connexus', 'neuralink', 'stentrode', 'carbon-row', 'surface-grid'].includes(model.kind) && <button disabled={!ready} onClick={() => api.current?.setView('detail')}>{model.kind === 'connexus' ? 'Microwire detail' : 'Contact detail'}</button>}
-      {model.kind === 'neuropixels' && <button disabled={!ready} onClick={() => api.current?.setView('oblique')}>Full shank</button>}
-      {model.kind === 'neuropixels' && <button disabled={!ready} onClick={() => api.current?.setView('tip')}>Tip detail</button>}
+      {['connexus', 'neuralink', 'stentrode', 'carbon-row', 'surface-grid', 'planar-probe', 'cylindrical-lead', 'nerve-cuff', 'flat-cuff', 'exposed-wire'].includes(model.kind) && <button disabled={!ready} onClick={() => api.current?.setView('detail')}>{model.kind === 'connexus' ? 'Microwire detail' : 'Contact detail'}</button>}
+      {['neuropixels', 'planar-probe'].includes(model.kind) && <button disabled={!ready} onClick={() => api.current?.setView('oblique')}>Full shank</button>}
+      {['neuropixels', 'planar-probe'].includes(model.kind) && <button disabled={!ready} onClick={() => api.current?.setView('tip')}>Tip detail</button>}
       <button disabled={!ready} onClick={() => api.current?.zoom(0.7)} aria-label="Zoom in">Zoom +</button>
       <button disabled={!ready} onClick={() => api.current?.zoom(1.4)} aria-label="Zoom out">Zoom −</button>
       <button disabled={!ready || model.physicalSites === 0} aria-pressed={onlyContacts} onClick={() => { const value = !onlyContacts; setOnlyContacts(value); api.current?.contacts(value); }}>Contacts only</button>
     </div>
     <div class="model-specs">{model.specs.map(([label, value]) => <div key={label}><span>{label}</span><strong>{value}</strong></div>)}</div>
+    {model.fidelity && <div class="model-evidence">{[['documented', 'Documented measurements'], ['reconstructed', 'Reconstructed or assumed'], ['omitted', 'Not modeled']].map(([key, label]) => <div><h4>{label}</h4><ul>{(model.fidelity[key] ?? []).map((item: string) => <li>{item}</li>)}</ul></div>)}</div>}
     <p class="model-note"><strong>Model fidelity.</strong> {model.notes}</p>
     <div class="model-controls">
       <button onClick={() => download(JSON.stringify(exportGeometry(model), null, 2), `${model.id}.json`, 'application/json')}>Download geometry JSON</button>
-      <button disabled={!ready || exporting} onClick={async () => { setExporting(true); try { await api.current?.export(); } catch { setStatus('GLB export failed. Try geometry JSON or reload the viewer.'); } finally { setExporting(false); } }}>{exporting ? 'Exporting…' : 'Download 3D model (.glb)'}</button>
+      <a class="model-download" href={`/models/devices/${model.id}.glb`} download>Download 3D model (.glb)</a>
     </div>
+    {(model.kind === 'surface-grid' || (implantedKinds.has(model.kind) && model.kind !== 'exposed-wire')) && <p class="model-note">Contact meshes use a 10 nm display separation to prevent surface flicker in 3D exports. Geometry JSON retains the nominal measured surfaces.</p>}
     <details class="model-sources"><summary>Sources &amp; reference images</summary>
       <p>Dimensions come from the linked specifications; images guide shape only. Reference images remain on their owners’ websites.</p>
       <ul>{[...model.sources, ...model.references].map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label} →</a></li>)}</ul>
@@ -180,10 +198,12 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       .model-heading h3{font-size:var(--title-card);margin:8px 0}.model-heading p{opacity:.75;margin:0 0 16px}.model-kicker{font-size:11px;letter-spacing:.14em;opacity:.7}
       .model-canvas{height:400px;width:100%;border-radius:10px;overflow:hidden;background:#101925;touch-action:none}.model-canvas canvas,.model-canvas svg{display:block;width:100%;height:100%}
       .model-status{font-size:12px;opacity:.8;min-height:2em}.model-controls{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+      .model-controls .model-download{font-size:13px;padding:9px 12px;border:1px solid var(--border);border-radius:9px;color:inherit;background:var(--panel);text-decoration:none}
       .model-controls button{font:inherit;font-size:13px;color:inherit;background:var(--panel);border:1px solid var(--border);padding:9px 12px;border-radius:9px;cursor:pointer}.model-controls button:disabled{opacity:.45;cursor:default}
       .model-controls button[aria-pressed=true]{border-color:currentColor}.model-controls button:focus-visible,.model-sources summary:focus-visible{outline:2px solid currentColor;outline-offset:3px}
       .model-specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:18px 0}
       .model-specs>div{padding:12px;background:var(--panel)}.model-specs span{display:block;font-size:12px;opacity:.72;margin-bottom:6px}.model-specs strong{font-size:16px;font-weight:400}
+      .model-evidence{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:16px 0}.model-evidence h4{font-size:14px;font-weight:400;font-style:italic;margin:0 0 8px}.model-evidence ul{padding-left:18px;margin:0;font-size:13px;line-height:1.6;opacity:.8}
       .model-note,.model-sources{font-size:16px;line-height:1.65}.model-note{opacity:.85}.model-sources{margin-top:18px}.model-sources summary{cursor:pointer}.model-sources a{color:inherit;text-decoration:underline}.model-sources li{margin:7px 0}
       @media(max-width:600px){.device-model{padding:12px}.model-canvas{height:320px}.model-specs{grid-template-columns:1fr}}
     `}</style>

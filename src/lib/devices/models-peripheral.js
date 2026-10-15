@@ -1,0 +1,61 @@
+// Selected implanted peripheral contact architectures. Coordinates and lengths: mm.
+// A partial model is deliberately not a complete implant or a fabrication drawing.
+const fineContacts = [
+  ...[-3.5, -1.5, 0.5, 2.5].map((x) => ({ x, y: 0.75, z: 3.5, diameter: 0.5, normal: [0, -1, 0] })),
+  ...[-2.5, -0.5, 1.5, 3.5].map((x) => ({ x, y: -0.75, z: 3.5, diameter: 0.5, normal: [0, 1, 0] })),
+];
+
+export const peripheralDeviceModels = {
+  'BTSD-PNI-0005': {
+    id: 'fine-2013-eight-contact-lumen', revision: 1, deviceId: 'BTSD-PNI-0005', kind: 'flat-cuff',
+    name: 'FINE · 2013 eight-contact lumen reference', slug: '14-fine-flat-interface-nerve-electrode',
+    modeledScope: 'Electrode-bearing lumen; simplified silicone shell',
+    fidelity: { documented: ['10 × 1.5 × 7 mm selected lumen', 'Eight 0.5 mm apertures, approximately 2 mm pitch and opposing half-pitch stagger'], reconstructed: ['0.3 mm wall and squared outer shell', 'Centered transverse row origins and axial midpoint'], omitted: ['Contact recess, snap closure, strain relief and leads', 'Nerve reshaping and electrical response'] },
+    physicalSites: 8, simultaneousChannels: null,
+    innerWidth: 10, innerHeight: 1.5, length: 7, wallThickness: 0.3,
+    contacts: fineContacts,
+    specs: [['Selected variant', '2013 eight-contact, 10 × 1.5 mm lumen'], ['Lumen length along nerve', '7 mm'], ['Exposed contact aperture', '0.5 mm diameter'], ['Contact spacing / opposing offset', 'Approximately 2 mm / 1 mm'], ['Reconstructed', 'Centered contact row and 0.3 mm display wall'], ['Omitted', 'Closure, strain relief, leads and exact outer silhouette']],
+    notes: 'Selected 10 × 1.5 × 7 mm luminal variant from Schiefer et al. (2013), with four inward-facing 0.5 mm apertures on each opposing wall. Approximately 2 mm center spacing and half-pitch staggering are reported. Absolute X offsets are centered for display and axial centers are placed at the cuff midpoint; those origins were not specified. The 0.3 mm wall thickness, rectangular outer shell and squared corners are display assumptions, not measured silicone geometry. Recess depth, closure, lead exits and strain relief are omitted. Contact area describes ideal aperture area, not electrochemical surface area. Not the 2016 high-density PEEK-frame FINE. No nerve reshaping, pressure or stimulation is calculated.',
+    sources: [{ label: 'Schiefer et al. (2013), FINE design, section 2.2', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3809099/' }],
+    references: [],
+  },
+  'BTSD-PNI-0004': {
+    id: 'life-2015-dime-single-wire-window', revision: 1, deviceId: 'BTSD-PNI-0004', kind: 'exposed-wire',
+    name: 'LIFE · 2015 DIME single-wire contact window', slug: '15-life-longitudinal-intrafascicular-electrode',
+    modeledScope: 'Single wire and exposure; local crop',
+    fidelity: { documented: ['25 µm Pt/Ir core and 6 µm radial PTFE: 37 µm insulated diameter', 'Approximately 1 mm active segment within a continuing wire'], reconstructed: ['Straight 2 mm display crop', 'Half-millimeter insulated stubs on both sides'], omitted: ['Exact stripped perimeter and exposed area', 'Remaining wire, needle, bundle, coils and sheaths'] },
+    physicalSites: 1, simultaneousChannels: null,
+    diameter: 0.037, coreDiameter: 0.025, length: 2, exposedStart: 0.5, exposedLength: 1,
+    contactAreaMm2: null, areaUnknown: true,
+    specs: [['Modeled structure', '2 mm crop of one DIME LIFE wire'], ['Pt/Ir core / insulated diameter', '25 / 37 µm'], ['Radial PTFE thickness', '6 µm'], ['Active segment', 'Approximately 1 mm de-insulated wire'], ['Display crop', '0.5 mm insulated continuation on each side'], ['Omitted', 'Remaining wire, needle, coiling, sheaths and bundle']],
+    notes: 'One straight local wire crop from the 2015 DIME fabrication method, not six wires arranged at invented pitch. A 25 µm Pt/Ir core plus 6 µm radial PTFE gives 37 µm insulated diameter. Approximately 1 mm is de-insulated; the paper places this segment about 2 cm from the distal end, so it is not a tip pad. The model retains a 0.5 mm insulated crop stub on each side. The 2 mm crop length and straight pose are display choices, not a full implanted-wire length or deployment trajectory. Exact stripped perimeter and taper are unresolved, so exposed area remains null. Distal wire, introducer, strain-relief coils, sheath and other LIFE sites are omitted. No neural recording or stimulation physics is supplied.',
+    sources: [{ label: 'Thota et al. (2015), DIME fabrication, section 2.1.3', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4312748/' }],
+    references: [],
+  },
+  'BTSD-0006': {
+    id: 'time4h-one-side-seven-contact-window', revision: 1, deviceId: 'BTSD-0006', kind: 'surface-grid',
+    name: 'TIME-4H · one-side seven-contact window', slug: '06-time-transverse-intrafascicular-multichannel-electrode',
+    modeledScope: 'One-sided stimulation contact window; partial thin film',
+    fidelity: { documented: ['Seven 80 µm apertures per side at 750 µm pitch', 'Approximately 11 µm TIME-4H thin-film thickness'], reconstructed: ['160 µm × 5.25 mm cropped film envelope', 'Flat one-sided window in local coordinates'], omitted: ['Opposite folded side, both grounds and loop', 'Needle, traces, ceramic and cable'] },
+    physicalSites: 7, simultaneousChannels: null,
+    rows: 7, columns: 1, pitch: 0.75, rowPitch: 0.75, siteSize: 0.08, siteShape: 'circle',
+    thickness: 0.011, width: 0.16, length: 5.25,
+    specs: [['Modeled structure', 'Seven stimulation apertures on one side only'], ['Aperture diameter / pitch', '80 µm / 750 µm'], ['Thin-film total thickness', 'Approximately 11 µm, 2017 TIME-4H Methods'], ['Display crop', '160 µm × 5.25 mm; not the full strip outline'], ['Complete device', '14 stimulation sites and two grounds; not reproduced here'], ['Omitted', 'Opposite folded side, grounds, loop, needle, cable and ceramic']],
+    notes: 'Partial contact window, not a complete TIME-4H or an ECoG implant. The 2021 study establishes seven 80 µm stimulation apertures per side at 0.75 mm pitch; the 2017 TIME-4H Methods report approximately 11 µm overall thin-film thickness. The 160 µm width is a display crop around the contact row, not a published strip width. The 5.25 mm crop uses half-pitch axial margins around the 4.5 mm center span. It is laid flat in local crop coordinates. The actual folded second side and its half-pitch offset, the two 109-opening grounds, loop, traces, needle, interconnection ceramic and cable are omitted. Exported seven site IDs represent only this window and are not the complete device count or electrical channel map. SIROF texture and contact recess are not reconstructed.',
+    sources: [{ label: 'Guiho et al. (2021), TIME-4H geometry, section 2.2.2', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8587292/' }, { label: 'Krähenbühl et al. (2017), TIME-4H thickness, section 2.2', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5521907/' }],
+    references: [],
+  },
+  'BTSD-PNI-0012': {
+    id: 'itis-2018-single-triplet-cuff-reference', revision: 1, deviceId: 'BTSD-PNI-0012', kind: 'nerve-cuff',
+    name: 'ITIS spiral cuff · single-triplet reference', slug: '208-itis-33-contact-spiral-cuff',
+    modeledScope: 'One longitudinal triplet on nominal sleeve; partial architecture',
+    fidelity: { documented: ['2.5 mm nominal lumen and 17 mm cuff length', '2.5 × 0.7 mm contacts; 0.15 mm bonded two-sheet composite'], reconstructed: ['Three representative contacts; arbitrary azimuth and centered axial placement', '2.5 mm separation interpreted as edge gap; one cylindrical sleeve'], omitted: ['Full contact map: 33-count versus thirteen-triplet source conflict', '1.5-turn overlap, contact-carrier thickness, welds and leads'] },
+    physicalSites: 3, simultaneousChannels: null,
+    innerDiameter: 2.5, wallThickness: 0.15, length: 17, openingAngle: 0,
+    contacts: [3.5, 8.5, 13.5].map((z) => ({ angle: Math.PI, z, angularSpan: 0.7 / 1.25, length: 2.5 })),
+    specs: [['Modeled structure', 'One longitudinal triplet; not all 33 contacts'], ['Nominal inner diameter / cuff length', '2.5 / 17 mm'], ['Each contact footprint', '2.5 mm axial × 0.7 mm circumferential'], ['Axial edge separation', '2.5 mm interpreted as a gap; 5 mm center pitch'], ['Shell approximation', '0.15 mm composite thickness; one cylindrical sleeve'], ['Omitted', '1.5-turn overlap, other contact columns, third sheet and leads']],
+    notes: 'Partial repeat-unit model because the primary article reports both 33 electrodes and thirteen groups of three, which cannot establish a complete contact map. Only a single longitudinal triplet is shown. The 2.5 mm contact length, 0.7 mm width, nominal 2.5 mm lumen and 17 mm cuff length are reported. Interpreting the 2.5 mm longitudinal separation as an edge gap gives 5 mm center spacing; the triplet is centered axially for display and its azimuth is arbitrary. Contact width is mapped as an arc length on the nominal lumen. The 0.15 mm shell uses the reported bonded two-sheet composite; additional contact-carrier sheet thickness is unresolved. A single closed cylinder approximates the nominal lumen, omitting the reported 1.5-turn spiral overlap, additional contacts, welds and wires. It is not a recovered 33-contact blueprint or deployed nerve shape.',
+    sources: [{ label: 'Rozman et al. (2018), cuff dimensions and fabrication', url: 'https://www.nature.com/articles/s41598-018-19318-w' }],
+    references: [],
+  },
+};

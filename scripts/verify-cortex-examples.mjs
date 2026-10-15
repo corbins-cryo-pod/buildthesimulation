@@ -21,6 +21,11 @@ export const EXAMPLE_SOURCE_PATHS = [
   'src/lib/cortex/passive-cable.js',
   'src/lib/cortex/volume-conductor.js',
   'src/lib/devices/catalog.js',
+  'src/lib/devices/implant-contacts.js',
+  'src/lib/devices/models-surface.js',
+  'src/lib/devices/models-probes.js',
+  'src/lib/devices/models-leads.js',
+  'src/lib/devices/models-peripheral.js',
   'src/lib/cortex/models/allen571654895.json',
 ];
 export const sha256 = (value) => createHash('sha256').update(value).digest('hex');
