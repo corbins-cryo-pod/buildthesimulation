@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "preact/hooks";
 import { ACTIVE_ENGINE_VERSION } from "../lib/cortex/config.js";
 import { makeWorld, placedContacts } from "../lib/cortex/world.js";
-import { getDeviceModel } from "../lib/devices/catalog.js";
+import { CORTEX_IMPLANTS, getCortexImplant, getCortexImplantModel, selectCortexImplant } from "../lib/cortex/implants.js";
 import { modelRegistry } from "../lib/cortex/model-registry.js";
 import {
   encodeJson,
@@ -219,6 +219,7 @@ export default function CortexLaboratory() {
     }
   }, [config]);
   const active = true,
+    implant = getCortexImplant(config.implant.deviceId),
     model = modelRegistry.find(
       (m) => m.id === (config.neuron.modelId),
     );
@@ -296,6 +297,12 @@ export default function CortexLaboratory() {
     setRunning(false);
     setProgress(0);
     setRunStage("Cancelled. Adjust settings or run again.");
+  };
+  const chooseImplant = (deviceId) => {
+    setConfig(c => selectCortexImplant(c, deviceId));
+    setPlaying(false);
+    setError("");
+    setRunStage("Implant loaded. Inspect placement and recording sites, then run.");
   };
   const loadExample = (id = exampleId) => {
     const e = EXAMPLES.find((e) => e.id === id);
@@ -381,6 +388,9 @@ export default function CortexLaboratory() {
       setRunStage("The simplified neuron was retired. Loaded the human cell subthreshold example; inspect its settings, then run.");
     } else if (EXAMPLES.some((e) => e.id === requestedExample))
       loadExample(requestedExample);
+    const requestedImplant = new URLSearchParams(window.location.search).get("implant");
+    const implantChoice = CORTEX_IMPLANTS.find(d => d.key === requestedImplant);
+    if (implantChoice) chooseImplant(implantChoice.deviceId);
     let cancelled = false;
     import("../lib/cortex/scene.js")
       .then(async ({ createCortexView }) => {
@@ -447,7 +457,7 @@ export default function CortexLaboratory() {
   const contacts = useMemo(() => {
       try {
         return placedContacts(
-          getDeviceModel(config.implant.deviceId),
+          getCortexImplantModel(config.implant.deviceId),
           config.implant,
         );
       } catch {
@@ -496,7 +506,7 @@ export default function CortexLaboratory() {
                 value={s.id}
                 disabled={ids.some((other, j) => j !== i && other === s.id)}
               >
-                {s.id}
+                {s.id} · {Math.round(s.positionUm[2])} µm depth{s.positionUm[2] < 0 || s.positionUm[2] > config.anatomy.thicknessUm ? " · outside slab" : ""}
               </option>
             ))}
           </select>
@@ -511,7 +521,7 @@ export default function CortexLaboratory() {
           <p class="cx-eyebrow">Cortex Laboratory · electrical workbench 03</p>
           <h1>From membrane to contact.</h1>
           <p>
-            Place a real array. Follow calculated currents through a shared
+            Place an array, thread or shank. Follow calculated currents through a shared
             cortical scene.
           </p>
         </div>
@@ -633,7 +643,7 @@ export default function CortexLaboratory() {
                   <option value="synaptic-recording">
                     Record a synaptic response
                   </option>
-                  <option value="extracellular-stimulation">
+                  <option value="extracellular-stimulation" disabled={!implant.extracellular}>
                     Extracellular polarization
                   </option>
                   <option value="intracellular-current">
@@ -641,6 +651,7 @@ export default function CortexLaboratory() {
                   </option>
                 </select>
               </label>
+              {!implant.extracellular && <p class="cx-muted">This implant is recording-only here. Current clamp drives the neuron, not the device.</p>}
               {config.protocol.mode === "synaptic-recording" ? (
                 <>
                   <NumberControl
@@ -761,21 +772,25 @@ export default function CortexLaboratory() {
             </details>
             <details open>
               <summary id="cx-geometry">2 / Place implant & recording</summary>
-              <p class="cx-device-name">Utah Array · 1.5 mm</p>
-              <p class="cx-muted">
-                100 physical shanks · 96 nominal channels · channel map unknown.
-                Sampling sites below are ideal probes.
-              </p>
+              <label>
+                Implant geometry
+                <select value={config.implant.deviceId} onChange={e => chooseImplant(e.currentTarget.value)}>
+                  {CORTEX_IMPLANTS.map(d => <option value={d.deviceId}>{d.label}</option>)}
+                </select>
+              </label>
+              <p class="cx-muted">{implant.summary}</p>
+              <p class="cx-reset-notice">Changing implant resets its pose and recording pair, keeping the neuron and solver settings. For recording-only implants, extracellular polarization switches to intracellular current clamp. Loading a curated example restores its Utah array.</p>
+              {implant.notes && <details><summary>Geometry evidence & limits</summary><p class="cx-muted">{implant.notes}</p></details>}
               {[
                 "X translation · µm",
                 "Y translation · µm",
-                "Substrate origin Z · µm",
+                implant.key === "utah" ? "Substrate origin Z · µm" : "Distal tip Z · µm",
               ].map((label, i) => (
                 <NumberControl
                   label={label}
                   value={config.implant.translationUm[i]}
-                  min={-2000}
-                  max={2000}
+                  min={-implant.poseLimitUm}
+                  max={implant.poseLimitUm}
                   step={25}
                   onChange={(v) => editVector("implant", "translationUm", i, v)}
                 />
@@ -798,41 +813,16 @@ export default function CortexLaboratory() {
               </div>
               <p class="cx-muted">
                 Pia is Z = 0; +Z points into cortex. X/Y are lateral. Rotation
-                applies X, Y, then Z about the tissue-facing substrate center,
+                applies X, Y, then Z about the {implant.origin},
                 before translation. Layers are anatomical guides.
               </p>
               {world && (
                 <>
                   <NumberControl
-                    label="Mean tip depth below pia · µm"
-                    value={
-                      Math.round(
-                        (world.contacts.reduce(
-                          (sum, c) => sum + c.positionUm[2],
-                          0,
-                        ) /
-                          world.contacts.length) *
-                          100,
-                      ) / 100
-                    }
-                    min={
-                      world.contacts.reduce(
-                        (sum, c) => sum + c.positionUm[2],
-                        0,
-                      ) /
-                        world.contacts.length -
-                      config.implant.translationUm[2] -
-                      2000
-                    }
-                    max={
-                      world.contacts.reduce(
-                        (sum, c) => sum + c.positionUm[2],
-                        0,
-                      ) /
-                        world.contacts.length -
-                      config.implant.translationUm[2] +
-                      2000
-                    }
+                    label={implant.key === "utah" ? "Mean tip depth below pia · µm" : "Distal tip depth below pia · µm"}
+                    value={Math.round(placement.meanTipDepthUm * 100) / 100}
+                    min={placement.meanTipDepthUm - config.implant.translationUm[2] - implant.poseLimitUm}
+                    max={placement.meanTipDepthUm - config.implant.translationUm[2] + implant.poseLimitUm}
                     step={25}
                     onChange={(v) =>
                       edit(
@@ -843,9 +833,7 @@ export default function CortexLaboratory() {
                     }
                   />
                   <p class="cx-muted">
-                    Actual apex depth range: {format(placement.minTipDepthUm)}–
-                    {format(placement.maxTipDepthUm)} µm. Without tilt, tip
-                    depth = substrate Z + 1500 µm.
+                    {implant.key === "utah" ? `Apex depth range: ${format(placement.minTipDepthUm)}–${format(placement.maxTipDepthUm)} µm. Without tilt, tip depth = substrate Z + 1500 µm.` : `Distal tip: ${format(placement.meanTipDepthUm)} µm. Recording sites run up the shaft toward the pia; their depths are not tip depth.`}
                   </p>
                 </>
               )}
@@ -858,7 +846,7 @@ export default function CortexLaboratory() {
                     ...c,
                     implant: {
                       ...c.implant,
-                      translationUm: [0, 0, 0],
+                      translationUm: [...implant.translationUm],
                       rotationDeg: [0, 0, 0],
                     },
                   }));
@@ -869,7 +857,7 @@ export default function CortexLaboratory() {
               {selector("Recording site", config.recording.contactIds, (v) =>
                 edit("recording", "contactIds", v),
               )}
-              <a href="/devices/01-utah-microelectrode-array/#model-3d">
+              <a href={`/devices/${getCortexImplantModel(config.implant.deviceId).slug}/#model-3d`}>
                 Catalog geometry & sources →
               </a>
             </details>
@@ -1139,11 +1127,11 @@ export default function CortexLaboratory() {
         <section class="cx-workspace" aria-label="Shared cortical geometry">
           <div class="cx-viewbar">
             <div>
-              {["cell", "patch", "side", "top"].map((v) => (
+              {["cell", "contacts", "implant", "patch", "side", "top"].map((v) => (
                 <button onClick={() => view.current?.setView(v)}>
                   {v === "cell"
                     ? "Cell detail"
-                    : v.charAt(0).toUpperCase() + v.slice(1)}
+                    : v === "contacts" ? "Contact detail" : v === "implant" ? "Whole implant" : v.charAt(0).toUpperCase() + v.slice(1)}
                 </button>
               ))}
             </div>

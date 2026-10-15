@@ -472,7 +472,7 @@ export function resultBundle(result) {
             : 'nS',
     },
     coordinateSystem:
-      'right-handed; +Z depth below pia; rotations X then Y then Z about the center of the tissue-facing substrate surface; all model positions µm',
+      `right-handed; +Z depth below pia; rotations X then Y then Z about ${world.model.cortex.origin}; all world positions µm; contact positionMm remains implant-local`,
     sampling: result.initialization
       ? 'frame 0 follows declared no-drive conditioning; output samples are solver-step-end values. Drive/applied field averages only the preceding internal timestep, not the output sample window. Internal spike detection precedes output sampling; no ADC/anti-alias/filter model'
       : 'frame 0 equilibrium; subsequent frames are step-end values, with interval-averaged drive/applied field; no ADC/filter model',
@@ -484,7 +484,7 @@ export function resultBundle(result) {
       result.initialization
         ? 'Source-fitted active sealed tree; mixed-species channel kinetics at 34 °C'
         : 'passive sealed tree',
-      'point sensing at Utah apices; exposed contact area unknown',
+      world.model.cortex.key === 'utah' ? 'point sensing at Utah apices; exposed contact area unknown' : 'point sensing at reconstructed contact centers; no finite-area averaging or acquisition electronics',
       'implant displacement and conductivity contrast omitted',
       'one-way applied field → membrane → ideal recording; no ephaptic feedback',
       result.initialization
@@ -495,6 +495,11 @@ export function resultBundle(result) {
     implant: {
       ...result.config.implant,
       modelId: world.model.id,
+      catalogModelId: world.model.catalogModelId,
+      catalogRevision: world.model.catalogRevision,
+      modeledScope: world.model.cortex.summary,
+      origin: world.model.cortex.origin,
+      extracellularStimulationSupported: world.model.cortex.extracellular,
       physicalContacts: world.model.physicalSites,
       simultaneousChannels: world.model.simultaneousChannels,
       channelMap: null,

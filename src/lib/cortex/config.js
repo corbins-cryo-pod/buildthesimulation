@@ -1,3 +1,4 @@
+import { getCortexImplant } from './implants.js';
 // Public experiment contract. Geometry µm; time ms; voltage mV; current nA.
 export const SCHEMA_VERSION = 'cortex-experiment/1';
 export const ENGINE_VERSION = 'cortex-passive/0.1.0';
@@ -95,9 +96,12 @@ export function validateConfig(input) {
         throw new Error(`Unknown configuration field ${key}.${field}.`);
   finiteRange(c.anatomy.widthUm, 5000, 10000, 'Patch width (µm)');
   finiteRange(c.anatomy.thicknessUm, 3000, 5000, 'Cortical thickness (µm)');
-  if (c.implant.deviceId !== 'BTSD-0001' || c.implant.revision !== 1)
-    throw new Error('This experiment supports the catalog Utah 1.5 mm reference, revision 1.');
-  vector(c.implant.translationUm, -2000, 2000, 'Implant translation (µm)');
+  const implant = getCortexImplant(c.implant.deviceId);
+  if (!implant || c.implant.revision !== implant.revision)
+    throw new Error('Unsupported laboratory implant or revision; explicitly migrate the experiment.');
+  if (!implant.extracellular && c.protocol.mode === 'extracellular-stimulation')
+    throw new Error(`${implant.label} is recording-only in this laboratory; choose synaptic recording or intracellular current clamp.`);
+  vector(c.implant.translationUm, -implant.poseLimitUm, implant.poseLimitUm, 'Implant translation (µm)');
   vector(c.implant.rotationDeg, -180, 180, 'Implant rotation (degrees)');
   vector(c.neuron.somaUm, -2500, 4500, 'Soma position (µm)');
   finiteRange(c.neuron.segmentLengthUm, 10, 100, 'Maximum compartment length (µm)');

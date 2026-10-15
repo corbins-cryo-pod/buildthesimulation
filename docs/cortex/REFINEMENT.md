@@ -79,9 +79,14 @@ This analysis does not change the website solver or fixtures.
 ## Results and interpretation
 
 The completed report is `benchmarks/refinement-latest.json`. It contains 21 fixed
-experiments and 120 threshold trials (141 solver runs), completed in 604.48 s on
-Node v24.19.0. Relevant source hashes remained unchanged throughout execution.
+experiments and 120 threshold trials (141 solver runs); runtime and environment
+are recorded in the report. Relevant source hashes remained unchanged throughout execution.
 The predeclared criteria were retained without modification.
+
+The single N1-thread / Neuropixels-shank integration reran this Utah study;
+all numerical results and pass/fail findings remained unchanged. Separate
+`cortex-implants.mjs` tests cover the new geometries, transforms and ideal
+recordings. This does not extend Utah stimulation findings to either device.
 
 | Gate | Result | Interpretation |
 | --- | --- | --- |

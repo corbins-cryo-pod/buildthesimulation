@@ -13,6 +13,7 @@ export const EXAMPLE_SOURCE_PATHS = [
   'scripts/verify-cortex-examples.mjs',
   'src/lib/cortex/examples.js',
   'src/lib/cortex/config.js',
+  'src/lib/cortex/implants.js',
   'src/lib/cortex/experiment.js',
   'src/lib/cortex/world.js',
   'src/lib/cortex/active-morphology.js',

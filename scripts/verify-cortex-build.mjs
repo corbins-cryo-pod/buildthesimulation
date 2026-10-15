@@ -66,6 +66,13 @@ assert.ok(
 assert.match(componentCode, /Human temporal L2 spiny cell/);
 assert.match(html, /First run/);
 assert.match(html, /Curated example/);
+assert.match(html, /Implant geometry/);
+assert.match(html, /Neuralink N1 · one 16-site thread/);
+assert.match(html, /Neuropixels 1.0 · one shank/);
+assert.match(html, /Contact detail/);
+assert.match(html, /Whole implant/);
+assert.match(componentCode, /recording-only in this laboratory/);
+assert.match(methods, /single-implants/);
 assert.match(html, /Applied extracellular tissue potential|Tissue scale/);
 assert.match(componentCode, /extracellular-soma-spike/);
 const index = JSON.parse(readFileSync("dist/search-index.json", "utf8"));
