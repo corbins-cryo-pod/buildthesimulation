@@ -29,12 +29,29 @@ assert.equal(scaffold.sourceStats.meshes,scaffold.meshes.length);
 const model=createAtlasModel();assert.equal(model.cells.length,306);assert.equal(model.routes.length,78);
 const evidence=JSON.parse(readFileSync(base+'provenance.json'));
 assert.equal(evidence.version,4);assert.ok(evidence.references.length>=19);assert.match(evidence.scope,/not a full biological cell census/);
+
+const cortexSources=JSON.parse(readFileSync(base+'cortex-sources.json'));
+assert.equal(cortexSources.schemaVersion,'finger-atlas-v4-cortex-sources/1');
+assert.equal(cortexSources.implementation.m1.layerFractions.length,6);
+assert.equal(cortexSources.implementation.s1.layerFractions.length,6);
+for(const area of ['m1','s1'])assert.ok(Math.abs(cortexSources.implementation[area].layerFractions.reduce((a,b)=>a+b,0)-1)<1e-9,`${area.toUpperCase()} layer fractions must sum to one`);
+assert.ok(cortexSources.references.some(reference=>reference.id==='h01-science-2024'));
+assert.ok(cortexSources.references.some(reference=>reference.id==='bigbrain-layers-2020'));
+assert.ok(cortexSources.references.filter(reference=>reference.modality?.toLowerCase().includes('diffusion')||reference.id.startsWith('dki')).length>=4);
+assert.match(cortexSources.scope.microstructure,/not H01 object IDs/);
+const cortexModule='src/lib/finger-atlas-v4/sensorimotor-cortex.mjs';
+assert.ok(existsSync(cortexModule),'Paired M1/S1 cortex module missing');
+const cortexCode=readFileSync(cortexModule,'utf8');
+assert.match(cortexCode,/Primary motor cortex/);assert.match(cortexCode,/Primary somatosensory cortex/);
+assert.match(cortexCode,/H01-inspired cellular microstructure/);assert.match(cortexCode,/DKI-informed orientation envelopes/);
+
 if(process.argv.includes('--build')){
   const route='dist/simulations/finger-pathway-atlas/';
   const parent=readFileSync(route+'index.html','utf8'),viewer=readFileSync(route+'viewer/index.html','utf8');
   assert.match(parent,/Anatomical edition · V4/);assert.match(parent,/306 individually identified cells/);
   assert.ok(existsSync(route+'v3-viewer/index.html'),'Original viewer archive missing');
-  assert.match(viewer,/ANATOMICAL EDITION IV/);assert.match(viewer,/Inspect ending/);assert.doesNotMatch(viewer,/anatomy\.json\.gz\.part|v3\/engine\.js/);
+  assert.match(viewer,/ANATOMICAL EDITION IV/);assert.match(viewer,/Inspect ending/);assert.match(viewer,/M1 \+ S1 coronal cortex/);assert.match(viewer,/cortex-sources\.json/);
+  assert.doesNotMatch(viewer,/anatomy\.json\.gz\.part|v3\/engine\.js/);
   const resources=[...viewer.matchAll(/(?:src|href)="(\/_astro\/[^"?#]+)"/g)].map(m=>m[1]);
   assert.ok(resources.some(s=>s.endsWith('.js')),'V4 module absent');assert.ok(resources.some(s=>s.endsWith('.css')),'Viewer styling absent');
   for(const resource of resources)assert.ok(existsSync('dist'+resource),`Missing bundled resource ${resource}`);
@@ -42,4 +59,4 @@ if(process.argv.includes('--build')){
   assert.match(readFileSync(route+'references/index.html','utf8'),/These plates are not V4 screenshots/);
   console.log(`Published shell verified; direct JS entries ${Math.round(js/1024)} KiB gzip (shared imports additional).`);
 }
-console.log(`V4 verified: ${model.cells.length} cells, ${model.routes.length} complete modeled routes, ${scaffold.meshes.length} source surfaces, ${vertices} vertices, ${triangles} scaffold triangles, ${Math.round(packed.length/1024)} KiB anatomy. WebGL/browser interaction not tested by this command.`);
+console.log(`V4 verified: ${model.cells.length} cells, ${model.routes.length} complete modeled routes, paired M1/S1 cortex with ${cortexSources.references.length} references, ${scaffold.meshes.length} source surfaces, ${vertices} vertices, ${triangles} scaffold triangles, ${Math.round(packed.length/1024)} KiB anatomy. WebGL/browser interaction not tested by this command.`);
