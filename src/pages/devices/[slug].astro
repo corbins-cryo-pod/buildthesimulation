@@ -7,6 +7,7 @@ import DeviceModelViewer from "../../components/DeviceModelViewer";
 import { getDeviceFamily } from "../../lib/device-families.js";
 import { getDeviceModel } from "../../lib/devices/catalog.js";
 import { getDevicePhoto, getDevicePhotoReference } from "../../lib/device-photos.js";
+import { buildDeviceCodes } from "../../lib/device-code.js";
 import DevicePhotoGallery from "../../components/DevicePhotoGallery.astro";
 
 export async function getStaticPaths() {
@@ -28,6 +29,7 @@ const outline = headings.filter(h => h.depth === 2 || h.depth === 3);
 
 const subtitle = entry.data.description ?? "BCI device entry.";
 const titleNoPrefix = entry.data.title.replace(/^\d+\s*—\s*/, "");
+const deviceCodes = buildDeviceCodes(await getCollection("companies"), await getCollection("designs"), await getCollection("applications"));
 const photo = getDevicePhoto(entry.data.device_id);
 const photoReference = getDevicePhotoReference(entry.data.device_id);
 ---
@@ -54,7 +56,7 @@ const photoReference = getDevicePhotoReference(entry.data.device_id);
 
     <section class="sheetControl" aria-label="Document control and evidence">
       <dl>
-        <div><dt>Record ID</dt><dd>{entry.data.device_id}</dd></div>
+        <div><dt>Code</dt><dd>{deviceCodes[entry.slug]}</dd></div>
         <div><dt>Reviewed</dt><dd>{entry.data.last_updated?.toISOString().slice(0,10) ?? "Not recorded"}</dd></div>
         <div><dt>Interface</dt><dd>{entry.data.interface_class}</dd></div>
         <div><dt>Evidence stage</dt><dd>{entry.data.status}</dd></div>
