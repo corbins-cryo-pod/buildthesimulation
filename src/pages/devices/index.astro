@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import { compareDeviceEntries } from "../../lib/device-order.js";
 import DevicesDirectory from "../../components/DevicesDirectory";
 import { resolveFacets } from "../../lib/device-facets.js";
+import { buildDeviceCodes } from "../../lib/device-code.js";
 import { getDeviceCardPhoto } from "../../lib/device-photos.js";
 
 function stripPrefix(title) {
@@ -14,12 +15,14 @@ const entries = (await getCollection("designs"))
   .filter((p) => !p.data.draft)
   .sort(compareDeviceEntries);
 
+const deviceCodes = buildDeviceCodes(await getCollection("companies"), await getCollection("designs"), await getCollection("applications"));
 const normalized = entries.map((p) => ({
   title: stripPrefix(p.data.title),
   slug: p.slug,
   description: p.data.description ?? "",
   order: p.data.order,
   device_id: p.data.device_id ?? "",
+  code: deviceCodes[p.slug],
   interface_class: p.data.interface_class,
   status: p.data.status,
   modality: p.data.modality,

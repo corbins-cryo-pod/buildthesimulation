@@ -42,7 +42,7 @@ const designs = defineCollection({
     description: z.string().optional(),
 
     // Device metadata (matches the DEVICE_TEMPLATE.md). Optional for now.
-    device_id: z.string().optional(), // e.g., "BTSD-0002"
+    device_id: z.string().optional(), // internal key for photos and models; not shown on the site. The displayed code is built in src/lib/device-code.js
     interface_class: z
       .enum(["intracortical", "ecog", "seeg", "endovascular", "pni", "dbs", "scs", "cochlear", "retinal", "brainstem", "sensing", "other"])
       .default("other"),

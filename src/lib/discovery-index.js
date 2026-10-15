@@ -1,4 +1,5 @@
 import { getCollection } from 'astro:content';
+import { buildDeviceCodes } from './device-code.js';
 import { compareDeviceEntries } from './device-order.js';
 import { compareOrganizations, classifyOrganization } from './organization-classification.js';
 import { resolveFacets } from './device-facets.js';
@@ -15,6 +16,7 @@ export async function buildDiscoveryIndex() {
   const companies = organizations.filter(entry => !entry.data.draft).sort(compareOrganizations);
   const devices = hardware.filter(entry => !entry.data.draft).sort(compareDeviceEntries);
   const applications = studies.filter(entry => !entry.data.draft).sort((a,b) => a.data.order - b.data.order);
+  const deviceCodes = buildDeviceCodes(organizations, hardware, studies);
   return [
     ...companies.map(entry => {
       const program = classifyOrganization(entry).primary;
@@ -31,9 +33,9 @@ export async function buildDiscoveryIndex() {
       return {
         type: 'Devices', title: cleanDiscoveryTitle(entry.data.title),
         href: `/devices/${entry.slug}/`,
-        detail: [entry.data.modality, entry.data.status].filter(Boolean).join(' · '),
+        detail: [entry.data.modality, entry.data.status, deviceCodes[entry.slug]].filter(Boolean).join(' · '),
         summary: entry.data.description ?? '',
-        keywords: [entry.data.device_id ?? '', entry.data.interface_class ?? '', ...(entry.data.tags ?? []), ...(facets.axis ?? []), ...(facets.form ?? []), ...(facets.function ?? []), facets.regulatory ?? ''],
+        keywords: [deviceCodes[entry.slug] ?? '', entry.data.interface_class ?? '', ...(entry.data.tags ?? []), ...(facets.axis ?? []), ...(facets.form ?? []), ...(facets.function ?? []), facets.regulatory ?? ''],
       };
     }),
     ...applications.map(entry => ({
