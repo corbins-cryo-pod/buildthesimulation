@@ -1,6 +1,6 @@
 # Finger Pathway Atlas V4
 
-V4 integrates the original V3 detailed cellular models and anatomical surfaces into one deterministic world-registered cell graph. The production route remains `/simulations/finger-pathway-atlas/`; the standalone viewer is `/simulations/finger-pathway-atlas/viewer/`. The original viewer and untouched source assets remain available under `v3-viewer` and `assets/finger-pathway-atlas/v3`.
+V4 integrates the original V3 detailed cellular models and anatomical surfaces into one deterministic world-registered cell graph. V3 and V4 have independent public pages at `/simulations/finger-pathway-atlas/v3/` and `/simulations/finger-pathway-atlas/v4/`, with separate simulation listings, version navigation and shared reference plates. The existing `/simulations/finger-pathway-atlas/` route remains a V4 alias. The complete original V3 viewer and its untouched source assets remain under `v3-viewer` and `assets/finger-pathway-atlas/v3`; V4 uses `/simulations/finger-pathway-atlas/viewer/`.
 
 ## Model
 

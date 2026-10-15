@@ -76,8 +76,18 @@ if(process.argv.includes('--build')) {
   assert.match(references,/data-full=/);
   assert.ok(existsSync(route+'viewer/index.html'));
   for(const [file,expected]of Object.entries(integrity.files))assert.equal(hash(readFileSync('dist/assets/finger-pathway-atlas/v3/'+file)),expected,`Built asset mismatch: ${file}`);
-  assert.match(readFileSync('dist/simulations/index.html','utf8'),/href="\/simulations\/finger-pathway-atlas\/"/);
+  const launcher = readFileSync('dist/simulations/index.html','utf8');
+  for (const version of [3,4]) {
+    const href = `/simulations/finger-pathway-atlas/v${version}/`;
+    assert.ok(launcher.includes(`href="${href}"`), `Missing V${version} simulation listing`);
+    const versionPage = readFileSync(route+`v${version}/index.html`,'utf8');
+    const viewerPath = version === 3 ? 'v3-viewer' : 'viewer';
+    assert.ok(versionPage.includes(`src="/simulations/finger-pathway-atlas/${viewerPath}/"`), `Wrong V${version} viewer`);
+    assert.match(versionPage,/aria-current="page"/);
+    assert.ok(versionPage.includes('/finger-pathway-atlas/v3/') && versionPage.includes('/finger-pathway-atlas/v4/'));
+  }
+  assert.equal(hash(readFileSync(route+'v3-viewer/index.html')), hash(Buffer.from(viewer)), 'Original V3 viewer changed in build');
   const index = JSON.parse(readFileSync('dist/search-index.json','utf8'));
-  for(const href of ['/simulations/finger-pathway-atlas/','/simulations/finger-pathway-atlas/references/'])assert.ok(index.some(entry=>entry.href===href));
+  for(const href of ['/simulations/finger-pathway-atlas/','/simulations/finger-pathway-atlas/v3/','/simulations/finger-pathway-atlas/v4/','/simulations/finger-pathway-atlas/references/'])assert.ok(index.some(entry=>entry.href===href));
 }
 console.log(`Finger atlas verified: 15 view definitions, ${scenes.length} scenes, all 10 source cells, three cortex detail levels, ${objects} objects, ${vertices.toLocaleString()} vertices, 50 plates and 42 original figures. Browser/WebGL verification remains pending.`);
