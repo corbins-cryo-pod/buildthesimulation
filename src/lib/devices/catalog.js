@@ -1,8 +1,17 @@
+import { probeDeviceModels } from './models-probes.js';
+import { leadDeviceModels } from './models-leads.js';
+import { surfaceDeviceModels } from './models-surface.js';
+import { peripheralDeviceModels } from './models-peripheral.js';
+import { implantedKinds, getImplantContacts } from './implant-contacts.js';
 // Versioned geometry definitions. All dimensions and site coordinates are mm.
 // Keep electrical channel selection separate from physical contact locations.
 const utahSource = { label: 'Blackrock — Utah Array specifications and photographs', url: 'https://blackrockneurotech.com/products/utah-array/' };
 const slantSource = { label: 'Blackrock — Slant Array specifications and side view', url: 'https://blackrockneurotech.com/products/slant-array/' };
 export const deviceModels = {
+  ...peripheralDeviceModels,
+  ...surfaceDeviceModels,
+  ...leadDeviceModels,
+  ...probeDeviceModels,
   'BTSD-ACAD-0068': {
     id: 'neuropixels-opto-electrical-window', revision: 1, deviceId: 'BTSD-ACAD-0068', kind: 'surface-grid',
     name: 'Neuropixels Opto · electrical recording window', slug: '107-neuropixels-opto-photonic-prototype',
@@ -176,6 +185,7 @@ export function getNeuralinkThread(model, thread) {
 // Right-handed local coordinates: substrate/tip plane is XY; insertion is +Z.
 // Utah origin: center of substrate tissue-facing surface. NP origin: shank base.
 export function getContactGeometry(model) {
+  if (implantedKinds.has(model.kind)) return getImplantContacts(model);
   const sites = [];
   if (model.kind === 'chip-envelope') {
     // No contact geometry has been recovered from the package dimensions.
@@ -183,7 +193,7 @@ export function getContactGeometry(model) {
     for (let i = 0; i < model.physicalSites; i++) sites.push({ id: `site-${i}`, positionMm: [(i - (model.physicalSites - 1) / 2) * model.pitch, 0, model.length], normal: [0, 0, 1], channel: null, contactAreaMm2: null, positionMeaning: 'nominal cut tip center; coating geometry unknown' });
   } else if (model.kind === 'surface-grid') {
     for (let row = 0; row < model.rows; row++) for (let col = 0; col < model.columns; col++) {
-      sites.push({ id: `r${row}-c${col}`, positionMm: [(col - (model.columns - 1) / 2) * (model.columnPitch ?? model.pitch), (row - (model.rows - 1) / 2) * (model.rowPitch ?? model.pitch), model.siteDepth ? -model.siteDepth : 0], normal: [0, 0, 1], channel: null, contactAreaMm2: model.siteShape === 'circle' ? Math.PI * (model.siteSize / 2) ** 2 : model.siteSize ** 2, positionMeaning: 'contact center in reconstructed recording crop; depth relative to substrate face' });
+      sites.push({ id: `r${row}-c${col}`, positionMm: [(col - (model.columns - 1) / 2) * (model.columnPitch ?? model.pitch), (row - (model.rows - 1) / 2) * (model.rowPitch ?? model.pitch), model.siteDepth ? -model.siteDepth : 0], normal: [0, 0, 1], channel: null, contactAreaMm2: model.contactAreaKnown === false ? null : model.siteShape === 'circle' ? Math.PI * (model.siteSize / 2) ** 2 : model.siteSize ** 2, positionMeaning: 'contact center in reconstructed recording crop; depth relative to substrate face' });
     }
   } else if (model.kind === 'utah') {
     for (let row = 0; row < model.rows; row++) {
@@ -241,6 +251,7 @@ export function getContactGeometry(model) {
 }
 
 export function exportGeometry(model) {
+  if (implantedKinds.has(model.kind)) return { schemaVersion: 1, units: 'mm', coordinateSystem: 'right-handed; longitudinal axis +Z, angle zero +X toward +Y; no implanted pose inferred', origin: model.kind === 'planar-probe' ? 'center of shank base; insertion +Z, contact face -Y' : 'cross-section center at the start of modeled axial crop (Z=0); complete cable and tip outside crop omitted where stated', model, sites: getContactGeometry(model), simulationNote: 'Geometric reference only. Contact surfaces have distributed normals. No acquisition map or validated electrical or tissue model is supplied.' };
   return { schemaVersion: 1, units: 'mm', coordinateSystem: model.kind === 'surface-grid' ? 'right-handed; recording crop rows +Y, columns +X, face normal +Z; not a shank insertion axis, tip-relative origin or implanted pose' : model.kind === 'stentrode' ? 'right-handed; scaffold longitudinal axis +Z; radial outward normals' : model.kind === 'neuralink' ? 'right-handed; display fan extends +Y; pad normals +Z; not an implanted pose' : 'right-handed; insertion +Z; see origin',
     origin: model.kind === 'chip-envelope' ? 'center of package; no implant pose or electrode coordinates' : model.kind === 'carbon-row' ? 'center of row at fiber roots; straight fibers extend +Z' : model.kind === 'surface-grid' ? 'center of flat recording crop; substrate occupies negative Z; anatomy and tip origin not inferred' : model.kind === 'stentrode' ? 'center of proximal scaffold end; scaffold Z=0 to length; illustrative lead extends into negative Z' : ['utah', 'connexus'].includes(model.kind) ? 'center of tissue-facing substrate surface' : model.kind === 'neuralink' ? 'center of thread-facing enclosure surface; enclosure occupies negative Z' : 'center of shank base',
     model, sites: getContactGeometry(model),

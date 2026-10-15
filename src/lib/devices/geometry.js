@@ -1,3 +1,5 @@
+import { implantedKinds } from './implant-contacts.js';
+import { buildImplantPrimitive } from './implant-primitives.js';
 import * as THREE from 'three';
 import { getContactGeometry, getNeuralinkThread } from './catalog.js';
 
@@ -35,14 +37,17 @@ function cylinder(radius, height, material, z) {
 export function buildDeviceMesh(model) {
   const group = new THREE.Group();
   group.name = model.id;
-  group.userData = { units: 'mm', revision: model.revision, deviceId: model.deviceId, physicalSites: model.physicalSites, notes: model.notes, sources: model.sources.map(source => source.url) };
+  group.userData = { units: 'mm', revision: model.revision, deviceId: model.deviceId, physicalSites: model.physicalSites, modeledScope: model.modeledScope ?? null, fidelity: model.fidelity ?? null, sourceDimensionUnits: 'mm', notes: model.notes, sources: model.sources.map(source => source.url) };
   const silicon = new THREE.MeshStandardMaterial({ color: 0x343e4c, metalness: 0.65, roughness: 0.36 });
   const metal = new THREE.MeshStandardMaterial({ color: 0xdcc18a, metalness: 0.75, roughness: 0.32 });
   const bodies = new THREE.Group(); bodies.name = 'substrate-and-shanks';
   const contacts = new THREE.Group(); contacts.name = 'contact-surfaces';
   group.add(bodies, contacts);
   const sites = getContactGeometry(model);
-  if (model.kind === 'chip-envelope') {
+  if (implantedKinds.has(model.kind)) {
+    buildImplantPrimitive(model, sites, bodies, contacts);
+    silicon.dispose(); metal.dispose();
+  } else if (model.kind === 'chip-envelope') {
     bodies.add(new THREE.Mesh(new THREE.BoxGeometry(model.width, model.length, model.thickness), silicon));
   } else if (model.kind === 'carbon-row') {
     const fiberMaterial = new THREE.MeshStandardMaterial({ color: 0x9ba6b2, roughness: 0.55 });
@@ -67,7 +72,7 @@ export function buildDeviceMesh(model) {
         hole.absarc(site.positionMm[0], site.positionMm[1], model.siteSize / 2, 0, Math.PI * 2, true);
         shape.holes.push(hole);
       }
-      const top = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, { depth: model.siteDepth, bevelEnabled: false, curveSegments: 8 }), filmMaterial);
+      const top = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, { depth: model.siteDepth, bevelEnabled: false, curveSegments: 12 }), filmMaterial);
       top.position.z = -model.siteDepth; bodies.add(top);
       const lower = new THREE.Mesh(new THREE.BoxGeometry(model.width, model.length, model.thickness - model.siteDepth), filmMaterial);
       lower.position.z = -(model.thickness + model.siteDepth) / 2; bodies.add(lower);
@@ -79,7 +84,7 @@ export function buildDeviceMesh(model) {
     const surfaceMetal = metal.clone(); surfaceMetal.polygonOffset = true; surfaceMetal.polygonOffsetFactor = -1; surfaceMetal.polygonOffsetUnits = -1;
     const padGeometry = model.siteShape === 'circle' ? new THREE.CircleGeometry(model.siteSize / 2, 24) : new THREE.PlaneGeometry(model.siteSize, model.siteSize);
     for (const site of sites) {
-      const pad = new THREE.Mesh(padGeometry, surfaceMetal); pad.position.fromArray(site.positionMm); pad.name = site.id; contacts.add(pad);
+      const pad = new THREE.Mesh(padGeometry, surfaceMetal); pad.position.fromArray(site.positionMm); pad.position.z += 0.00001; pad.userData = {visualizationOffsetMm: 0.00001, note: 'Display separation only; nominal coordinates remain in geometry JSON'}; pad.name = site.id; contacts.add(pad);
     }
   } else if (model.kind === 'utah') {
     const base = new THREE.Mesh(new THREE.BoxGeometry(model.baseWidth, model.baseWidth, model.baseThickness), silicon);

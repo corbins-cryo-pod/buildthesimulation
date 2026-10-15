@@ -1,10 +1,15 @@
 # Device model collection
 
-Models: Utah 10 × 10 / 1.5 mm, USEA 10 × 10 / 0.5–1.5 mm,
-Neuropixels 1.0, Synchron Stentrode, Paradromics Connexus Neuralink N1, NeuroGrid, an eight-fiber carbon row, a Neurograin package envelope
-and the 196-site active micro-ECoG recording patch.
-Each definition carries its own revision. Catalog and legacy design URLs use
-the same viewer. `/devices/models/` indexes the models.
+The authoritative registry is `src/lib/devices/catalog.js`. Additional measured
+configurations live in `models-surface.js`, `models-probes.js`,
+`models-leads.js` and `models-peripheral.js`. The model finder lists the current
+count at `/devices/models/`; each catalog device uses the same viewer.
+
+Named configurations distinguish complete implanted shanks, contact windows,
+partial cuffs and package envelopes. A model is not a released fabrication CAD
+file. Evidence ledgers for the October 2026 expansion are in
+`docs/model-surface-evidence.md`, `docs/model-probe-evidence.md`,
+`docs/model-lead-evidence.md` and `docs/model-peripheral-evidence.md`.
 
 ## Source and geometry contracts
 
@@ -196,3 +201,34 @@ Surface contact meshes share a face plane with the film. A material depth bias
 prevents display depth fighting without changing exported positions or thickness.
 The tests cover each model's own dimensions, counts, pitch and unknown areas.
 Carbon Contact detail is a camera crop, not increased electrode size.
+
+
+## Measured implanted geometry expansion (2026-10-15)
+
+The expansion concentrates on tissue-contact structures rather than pulse-generator
+cases, headstages or external accessories. Each new reference declares its named
+hardware variant, modeled scope, measured dimensions, reconstruction choices and
+omissions. Nominal dimensions, upper bounds, process-stack sums and values transferred
+from a documented family are distinguished from direct measurements. No acquisition
+map, electrical model, tissue response or manufacturing tolerances are invented.
+
+New primitives include planar multi-shank probes, cylindrical ring/segmented leads,
+round cuff contact arcs, rectangular-lumen FINE contacts and exposed LIFE wire.
+Source coordinates stay in millimeters. Ring and wire coordinates describe axial
+centers with null normals because one surface has many radial normals. Directional
+arcs carry radial midpoint normals. Model crop ends are not physical lead tips.
+
+GLB and geometry JSON use the same model definitions as the viewer. The production
+build writes all artifacts under `/models/devices/` and an `index.json` listing.
+GLB uses meters, JSON uses millimeters, and source/fidelity metadata accompanies both.
+Direct GLB downloads work without initializing WebGL. For new curved and planar
+primitive faces, a 10 nm visual separation avoids coplanar flicker in glTF consumers;
+the mesh metadata records it and JSON retains the nominal source surfaces. This is
+not an inferred coating thickness. Exposed wire surfaces need no such offset.
+
+Validation checks visible device IDs/slugs, unique configuration IDs, physical contact
+counts, cropped contact containment, nominal and rendered dimensions, finite mesh
+attributes, face normals, unknown areas, JSON and complete binary GLB export. Source
+verification uses primary papers and manufacturer/FDA documents. The supported browser
+QA integration is unavailable in this environment, so interactive WebGL QA is not
+claimed. Existing simulation physics is unchanged.
