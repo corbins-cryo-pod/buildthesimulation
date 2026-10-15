@@ -59,22 +59,45 @@ for (const model of Object.values(deviceModels)) {
     close(Math.max(...sites.map(s=>s.positionMm[2])), model.maxLength);
     close(bounds.min.x, -2); close(bounds.max.x, 2);
     close(bounds.min.z, -.2); close(bounds.max.z, model.maxLength);
+    // The photographed basal flare narrows continuously: a spline must not
+    // double back in height or swell again between the source-guided samples.
+    for (const shaft of group.children[0].children.filter(m=>m.geometry.type === 'LatheGeometry')) {
+      const profile = shaft.geometry.parameters.points;
+      for(let i=1;i<profile.length;i++) {
+        assert(profile[i].y > profile[i-1].y, 'taper never folds back toward substrate');
+        assert(profile[i].x <= profile[i-1].x, 'taper narrows continuously');
+      }
+    }
   } else if (model.kind === 'neuropixels') {
     close(sites[0].positionMm[2] - sites[2].positionMm[2], .02);
     close(sites[1].positionMm[0] - sites[0].positionMm[0], .032);
     close(sites[2].positionMm[0] - sites[0].positionMm[0], .016);
     close(bounds.max.z, 10); close(bounds.max.x-bounds.min.x, .07);
+    close(model.tipLength,.175);
     for (const site of sites) {
       assert(Math.abs(site.positionMm[0]) + model.siteSize / 2 < model.width / 2);
       assert(site.positionMm[2] > 0 && site.positionMm[2] < 10);
       close(site.contactAreaMm2, .000144);
     }
   }
+  if (model.kind === 'planar-probe' && model.tipBevelAngle) {
+    const blade=group.children[0].children[0].geometry.attributes.position;
+    const start=model.length-model.thickness/Math.tan(model.tipBevelAngle*Math.PI/180);
+    const atStart=[],atTip=[];
+    for(let i=0;i<blade.count;i++) {
+      if(Math.abs(blade.getZ(i)-start)<1e-5)atStart.push(blade.getY(i));
+      if(Math.abs(blade.getZ(i)-model.length)<1e-5)atTip.push(blade.getY(i));
+    }
+    assert(atStart.length && atTip.length);
+    close(Math.max(...atStart),model.thickness/2);
+    close(Math.max(...atTip),-model.thickness/2);
+    close(Math.min(...atTip),-model.thickness/2);
+  }
   if (model.kind === 'stentrode') {
     assert.equal(sites.length, 16);
     assert(Math.abs(bounds.min.z + 12) < 1e-4); assert(bounds.max.z <= 40.05);
     assert(bounds.max.x - bounds.min.x > 8 && bounds.max.x - bounds.min.x < 8.3);
-    assert.equal(group.children[0].children.filter(m=>m.name === 'scaffold-strut').length, 240);
+    assert.equal(group.children[0].children.filter(m=>m.name === 'scaffold-strut').length, model.latticeRows * model.latticeColumns * 2);
     assert.equal(group.children[0].children.filter(m=>m.name === 'contact-mount').length, 16);
     assert(group.getObjectByName('schematic-lead-stub'));
     const scaffoldBounds = new Box3();
@@ -91,9 +114,9 @@ for (const model of Object.values(deviceModels)) {
       close(normal.dot(new Vector3(...site.normal)), 1);
       const face = disk.position.clone().addScaledVector(normal, model.contactThickness / 2);
       close(face.distanceTo(new Vector3(...site.positionMm)), 0);
-      if(i) {
+      if(i % 2 === 1) {
         const spacing = new Vector3(...site.positionMm).distanceTo(new Vector3(...sites[i-1].positionMm));
-        assert(spacing > 2.8 && spacing < 3.1);
+        close(spacing, 2 * 4.07 * Math.sin(Math.PI / 8));
       }
     }
   }
@@ -134,6 +157,8 @@ for (const model of Object.values(deviceModels)) {
   group.traverse(object => {
     if (!object.geometry) return;
     for (const key of ['position', 'normal']) assert([...object.geometry.attributes[key].array].every(Number.isFinite), `${model.id}: finite ${key}`);
+    const normals=object.geometry.attributes.normal;
+    for(let i=0;i<normals.count;i++) assert(Math.abs(Math.hypot(normals.getX(i),normals.getY(i),normals.getZ(i))-1)<.001, `${model.id}: unit surface normal`);
   });
   const exported = JSON.parse(JSON.stringify(exportGeometry(model)));
   assert.equal(exported.units,'mm'); assert.deepEqual(exported.sites,sites);

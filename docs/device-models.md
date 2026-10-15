@@ -11,6 +11,51 @@ file. Evidence ledgers for the October 2026 expansion are in
 `docs/model-surface-evidence.md`, `docs/model-probe-evidence.md`,
 `docs/model-lead-evidence.md` and `docs/model-peripheral-evidence.md`.
 
+
+## Visual audit and refinement (October 2026)
+
+All 36 configurations were compared with actual source photographs, microscopy,
+figures, dimensioned drawings and descriptions. Per-model audit records:
+
+- `docs/model-visual-audit-surface.md` — 12 surface/contact windows
+- `docs/model-visual-audit-probes.md` — six Neuropixels/fiber models
+- `docs/model-visual-audit-leads-peripheral.md` — eight leads and four peripheral models
+- `docs/model-visual-audit-flagships.md` — Utah, USEA, Connexus, N1, Stentrode, Neurograin
+
+The current revision supersedes earlier rendering descriptions below. All models
+have reference-informed material finishes instead of universal blue substrates
+and gold contacts. Materials are visual approximations, not measured optical
+constants. Contacts can be highlighted temporarily in the viewer; downloads retain
+their ordinary finishes. The shared material palette lives in `materials.js`.
+
+Shape corrections include a documented 175 µm NP1 taper, the NP1032 approximately
+25° backside bevel, a smooth source-informed Utah basal flare, rounded FINE lumen
+ends, separate carbon core/parylene sleeves, a dark Connexus face and sealing rim,
+and removal of unsupported N1 concentric decorations. The Neurograin envelope
+has a source-informed gold-toned top; no circuit pattern was inferred.
+
+Stentrode revision 3 uses ten axial intervals and eight circumferential nodes,
+with sixteen contacts on supported nodes in eight distributed pairs and a 4 mm
+proximal convergence. Pair spacing is approximately 3.12 mm; axial levels are
+4 mm apart. The topology, map and neck profile are explicitly reconstructed, not
+a released manufacturing layout. Published 40 × 8 mm envelope, 500 µm contact
+diameter and 16-site count remain unchanged.
+
+The viewer uses neutral studio reflections, measured camera crops, optional grid
+and highlighting, cuff shell cutaway, and a focus-plane µm/mm scale bar. Controls
+never stretch physical dimensions. Static previews are rasterized from the same
+meshes by `scripts/render-device-previews.mjs` after the site/export build. Their
+view/crop labels and scale bars distinguish magnification from device size.
+Preview rasterization is not browser/WebGL validation. JSON and GLB downloads
+remain independent of viewer highlight and clipping controls.
+
+The final audit checked all 36 meshes for finite unit normals, degenerate
+triangles and inverted surface normals, and visually inspected every generated
+preview. Utah's contact revision remains 1 for existing Cortex experiments;
+`visualRevision: 2` records the appearance-only change. Its apex coordinates and
+unknown exposed areas are unchanged. Recomputed Cortex example outputs match
+the preceding numerical results after excluding provenance and runtime timing.
+
 ## Source and geometry contracts
 
 `src/lib/devices/catalog.js` holds variant-specific dimensions, evidence links,
@@ -53,8 +98,8 @@ select actual channels and supply validated contact/electrical parameters.
   the narrow shank from external electronics/flex. Only the shank is modeled.
 
 All reference images were inspected externally, not redistributed. No image-derived
-measurement is presented as published. Utah shaft radius/tip exposure and NP tip
-outline/first-site offset are illustrative; see per-model notes. NP 1.0 site area
+measurement is presented as published. Utah shaft radius/tip exposure and NP first-site offset are illustrative;
+the NP1 175 µm taper now follows its manufacturer datasheet; see per-model notes. NP 1.0 site area
 and thickness in the catalog were corrected, and erroneous stimulation tags removed.
 
 ## Validation and extension

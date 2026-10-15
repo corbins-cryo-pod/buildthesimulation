@@ -9,6 +9,10 @@ const abbottSsed = {
   label: 'FDA P140009/S039, Tables 2/10 and Figure 1: Abbott Infinity lead family',
   url: 'https://www.accessdata.fda.gov/cdrh_docs/pdf14/P140009S039B.pdf',
 };
+const abbottMaterials = {
+  label: 'St. Jude Medical / Abbott lead manual (2017), Table 3: Pt/Ir and polycarbonate urethane; manufacturer manual, academic mirror',
+  url: 'https://trajectoryguide.greydongilmore.com/static/stjude_lead_manual_2017.pdf',
+};
 const abbottCompatibility = {
   label: 'Abbott MRI support: full-system component table lists Liberta RC 62400 and leads 6170–6173',
   url: 'https://www.neuromodulation.abbott/us/en/healthcare-professionals/mri-support.html',
@@ -20,6 +24,10 @@ const cartesiaSsed = {
 const medtronicReport = {
   label: 'Medtronic 2024 Product Performance Report, p. 185: Vectris 977A2 specifications',
   url: 'https://www.medtronic.com/content/dam/medtronic-wide/public/united-states/products/neurological/2024-product-performance-report-neuromodulation.pdf',
+};
+const vectrisMaterials = {
+  label: 'Medtronic Closed-Loop SCS study protocol, implant-component materials for 977A2 compact leads',
+  url: 'https://cdn.clinicaltrials.gov/large-docs/54/NCT05177354/Prot_003.pdf',
 };
 const medtronicCompatibility = {
   label: 'Medtronic SCS US product list: Vectris SureScan leads and Inceptiv compatibility',
@@ -36,6 +44,10 @@ const nevroCompatibility = {
 const evokeSsed = {
   label: 'FDA Evoke P190002, Table 2: 12-contact percutaneous-lead specifications',
   url: 'https://www.accessdata.fda.gov/cdrh_docs/pdf19/P190002B.pdf',
+};
+const evokeManual = {
+  label: 'Saluda Evoke User Manual, Table 15-4: 12C lead materials, 3 mm contact length and 7 mm pitch',
+  url: 'https://www.accessdata.fda.gov/cdrh_docs/pdf19/P190002C.pdf',
 };
 const avistaManual = {
   label: 'Boston Scientific Avista MRI SC-2408 lead directions for use, pp. 1 and 12',
@@ -59,7 +71,7 @@ const rnsPitchStudy = {
 };
 
 const commonOmissions = ['Distal physical tip outside crop', 'Full cable and proximal connector', 'Internal conductors and insulation layers', 'Patient-specific curvature and implantation pose'];
-const commonNotes = 'The model ends at the outer contact edges; its flat end faces are crop planes, not recovered physical lead tips. No contact-metal thickness or internal cable structure is inferred. Ring areas, where exported, are ideal cylindrical lateral areas rather than certified electrochemically active areas. No electrical field or tissue-response prediction is included.';
+const commonNotes = 'The model ends at the outer contact edges; its flat end faces are crop planes, not recovered physical lead tips. No contact-metal thickness or internal cable structure is inferred. Ring areas, where exported, are ideal cylindrical lateral areas rather than certified electrochemically active areas. Source-informed pale insulation and silver Pt/Ir shading replace the generic gold appearance; optical finish is illustrative, with no invented internal wires. No electrical field or tissue-response prediction is included.';
 const directionalNotes = 'The 1-3-3-1 topology and axial dimensions are documented. The six directional contacts use illustrative 90° arcs separated by 30° gaps because the reviewed sources do not establish a manufactured arc boundary. Their areas are deliberately unknown. Angular zero is an arbitrary display orientation; it is not an anatomical direction or a recovered orientation-marker registration.';
 
 function ringBands(count, contactLength, edgeGap) {
@@ -81,7 +93,8 @@ function directionalBands(contactLength, edgeGap, documentedArc = false) {
 
 export const leadDeviceModels = {
   'BTSD-FDA-0002': {
-    id: 'sensight-b33005-contact-window', revision: 1, deviceId: 'BTSD-FDA-0002', kind: 'cylindrical-lead',
+    id: 'sensight-b33005-contact-window', revision: 2, deviceId: 'BTSD-FDA-0002', kind: 'cylindrical-lead',
+    appearance: { substrate: 'polyurethane', contact: 'platinum-iridium' },
     name: 'SenSight B33005 · directional contact window', slug: '151-medtronic-percept-sensight-dbs',
     physicalSites: 8, simultaneousChannels: null, diameter: 1.36, length: 7.5,
     contacts: directionalBands(1.5, 0.5),
@@ -97,7 +110,8 @@ export const leadDeviceModels = {
     references: [],
   },
   'BTSD-FDA-0003': {
-    id: 'abbott-6172-contact-window', revision: 1, deviceId: 'BTSD-FDA-0003', kind: 'cylindrical-lead',
+    id: 'abbott-6172-contact-window', revision: 2, deviceId: 'BTSD-FDA-0003', kind: 'cylindrical-lead',
+    appearance: { substrate: 'polyurethane', contact: 'platinum-iridium' },
     name: 'Abbott 6172 · directional contact window', slug: '152-abbott-liberta-rc-dbs',
     physicalSites: 8, simultaneousChannels: null, diameter: 1.295, length: 7.5,
     contacts: directionalBands(1.5, 0.5),
@@ -108,11 +122,12 @@ export const leadDeviceModels = {
       reconstructed: ['Straight contact-window crop', 'Schematic 90° directional arcs and angular orientation'],
       omitted: [...commonOmissions, 'Orientation marker'],
     },
-    notes: `Selected 6172 lead from Abbott’s full-system component table. Table 10 supplies 1.5 mm bands and 1.295 mm diameter; Table 2 rounds diameter to 1.30 mm. Dimensions belong to the Infinity-family lead, which Abbott lists with Liberta RC, not the Liberta generator case. ${directionalNotes} ${commonNotes}`,
-    sources: [abbottSsed, abbottCompatibility], references: [],
+    notes: `Selected 6172 lead from Abbott’s full-system component table. Table 10 supplies 1.5 mm bands and 1.295 mm diameter; Table 2 rounds diameter to 1.30 mm. Pt/Ir appearance follows the manufacturer materials table and FDA Table 10; FDA Table 2 instead lists MP35N. The 2017 manual also lists a 1.27 mm lead diameter, so this reference retains the selected FDA nominal geometry rather than silently mixing revisions. Dimensions belong to the Infinity-family lead, which Abbott lists with Liberta RC, not the Liberta generator case. ${directionalNotes} ${commonNotes}`,
+    sources: [abbottSsed, abbottMaterials, abbottCompatibility], references: [],
   },
   'BTSD-FDA-0004': {
-    id: 'vercise-cartesia-db2202-contact-window', revision: 1, deviceId: 'BTSD-FDA-0004', kind: 'cylindrical-lead',
+    id: 'vercise-cartesia-db2202-contact-window', revision: 2, deviceId: 'BTSD-FDA-0004', kind: 'cylindrical-lead',
+    appearance: { substrate: 'polyurethane', contact: 'platinum-iridium' },
     name: 'Vercise Cartesia DB-2202 · directional window', slug: '153-boston-scientific-vercise-genus-dbs',
     physicalSites: 8, simultaneousChannels: null, diameter: 1.3, length: 7.5,
     contacts: directionalBands(1.5, 0.5, true),
@@ -127,7 +142,8 @@ export const leadDeviceModels = {
     sources: [cartesiaSsed, { label: 'Boston Scientific Genus leads: standard and Cartesia variants', url: 'https://www.bostonscientific.com/en-EU/products/deep-brain-stimulation-systems/vercise-genus-dbs/leads.html' }], references: [],
   },
   'BTSD-FDA-0005': {
-    id: 'vectris-977a2-contact-window', revision: 1, deviceId: 'BTSD-FDA-0005', kind: 'cylindrical-lead',
+    id: 'vectris-977a2-contact-window', revision: 2, deviceId: 'BTSD-FDA-0005', kind: 'cylindrical-lead',
+    appearance: { substrate: 'polyurethane', contact: 'platinum-iridium' },
     name: 'Vectris SureScan 977A2 · compact window', slug: '154-medtronic-inceptiv-closed-loop-scs',
     physicalSites: 8, simultaneousChannels: null, diameter: 1.3, length: 52,
     contacts: ringBands(8, 3, 4),
@@ -139,10 +155,11 @@ export const leadDeviceModels = {
       omitted: [...commonOmissions, 'MRI shielding and marker details', 'Inceptiv pulse generator'],
     },
     notes: `Selected 977A2 compact family, not the 977A1 subcompact lead with 1.5 mm gaps. Medtronic explicitly lists the compact lead as compatible with Inceptiv closed-loop technology. ${commonNotes}`,
-    sources: [medtronicReport, medtronicCompatibility], references: [],
+    sources: [medtronicReport, medtronicCompatibility, vectrisMaterials], references: [],
   },
   'BTSD-FDA-0006': {
-    id: 'nevro-lead1058-contact-window', revision: 1, deviceId: 'BTSD-FDA-0006', kind: 'cylindrical-lead',
+    id: 'nevro-lead1058-contact-window', revision: 2, deviceId: 'BTSD-FDA-0006', kind: 'cylindrical-lead',
+    appearance: { substrate: 'polyurethane', contact: 'platinum-iridium' },
     name: 'Nevro LEAD1058 · percutaneous contact window', slug: '155-nevro-senza-hfx-iq-scs',
     physicalSites: 8, simultaneousChannels: null, diameter: 1.4, length: 59,
     contacts: ringBands(8, 3, 5),
@@ -157,22 +174,24 @@ export const leadDeviceModels = {
     sources: [nevroSsed, nevroCompatibility], references: [],
   },
   'BTSD-FDA-0007': {
-    id: 'saluda-evoke-12-contact-window', revision: 1, deviceId: 'BTSD-FDA-0007', kind: 'cylindrical-lead',
+    id: 'saluda-evoke-12-contact-window', revision: 2, deviceId: 'BTSD-FDA-0007', kind: 'cylindrical-lead',
+    appearance: { substrate: 'polyurethane', contact: 'platinum-iridium' },
     name: 'Saluda Evoke · 12-contact percutaneous window', slug: '156-saluda-evoke-closed-loop-scs',
     physicalSites: 12, simultaneousChannels: null, diameter: 1.32, length: 80,
     contacts: ringBands(12, 3, 4),
     modeledScope: 'One 80 mm distal contact window from the original Evoke twelve-contact percutaneous lead.',
-    specs: [['Lead reference', 'Original P190002 percutaneous lead'], ['Ring contacts / diameter', '12 / 1.32 mm'], ['Contact length', '3 mm derived'], ['Edge gap / center pitch', '4 / 7 mm'], ['Contact-window span', '80 mm']],
+    specs: [['Lead reference', 'Original P190002 percutaneous lead'], ['Ring contacts / diameter', '12 / 1.32 mm'], ['Contact length', '3 mm; user manual Table 15-4'], ['Edge gap / center pitch', '4 / 7 mm'], ['Contact-window span', '80 mm']],
     fidelity: {
-      documented: ['Twelve contacts', '1.32 mm diameter', '4 mm edge gaps', '80 mm contact span'],
-      reconstructed: ['3 mm band length: (80 − 11 × 4) / 12', 'Straight contact-window pose'],
+      documented: ['Twelve contacts', '1.32 mm diameter', '3 mm bands and 7 mm center pitch', '4 mm edge gaps and 80 mm contact span'],
+      reconstructed: ['Straight contact-window pose'],
       omitted: [...commonOmissions, 'Second implanted lead', 'Later CAP24 paddle architecture', 'Closed-loop pulse generator'],
     },
-    notes: `This is the original P190002 twelve-contact percutaneous architecture, not a later paddle. Contact length follows directly from the 80 mm span and eleven 4 mm gaps: 3 mm. The published 12.44 mm² contact area agrees with the ideal cylinder to rounding. ${commonNotes}`,
-    sources: [evokeSsed], references: [],
+    notes: `This is the original P190002 twelve-contact percutaneous architecture, not a later paddle. The original user manual Table 15-4 directly specifies 3 mm contacts at 7 mm center pitch, consistent with the FDA 80 mm span and eleven 4 mm edge gaps. It also specifies Pellethane lead insulation and Pt/Ir electrodes. The published 12.44 mm² contact area agrees with the ideal cylinder to rounding. ${commonNotes}`,
+    sources: [evokeSsed, evokeManual], references: [],
   },
   'BTSD-FDA-0022': {
-    id: 'avista-sc2408-contact-window', revision: 1, deviceId: 'BTSD-FDA-0022', kind: 'cylindrical-lead',
+    id: 'avista-sc2408-contact-window', revision: 2, deviceId: 'BTSD-FDA-0022', kind: 'cylindrical-lead',
+    appearance: { substrate: 'polyurethane', contact: 'platinum-iridium' },
     name: 'Avista MRI SC-2408 · eight-contact window', slug: '171-boston-scientific-wavewriter-spinal-cord-stimulation',
     physicalSites: 8, simultaneousChannels: null, diameter: 1.6, length: 31,
     contacts: ringBands(8, 3, 1),
@@ -187,7 +206,8 @@ export const leadDeviceModels = {
     sources: [avistaManual, wavewriterManual], references: [],
   },
   'BTSD-FDA-0001': {
-    id: 'rns-dl330-10-contact-window', revision: 1, deviceId: 'BTSD-FDA-0001', kind: 'cylindrical-lead',
+    id: 'rns-dl330-10-contact-window', revision: 2, deviceId: 'BTSD-FDA-0001', kind: 'cylindrical-lead',
+    appearance: { substrate: 'silicone', contact: 'platinum-iridium' },
     name: 'NeuroPace DL-330-10 · depth-contact window', slug: '150-neuropace-rns-system',
     physicalSites: 4, simultaneousChannels: null, diameter: 1.27, length: 32,
     contacts: ringBands(4, 2, 8),

@@ -16,7 +16,7 @@ for (const model of Object.values(deviceModels)) {
     const bytes = await exportDeviceGlb(group);
     await fs.writeFile(path.join(directory, `${model.id}.glb`), new Uint8Array(bytes));
     await fs.writeFile(path.join(directory, `${model.id}.json`), JSON.stringify(exportGeometry(model), null, 2));
-    index.push({deviceId:model.deviceId, id:model.id, name:model.name, revision:model.revision, scope:model.modeledScope ?? model.specs[0][1], glb:`/models/devices/${model.id}.glb`, geometry:`/models/devices/${model.id}.json`, glbUnits:'meters', geometryUnits:'mm'});
+    index.push({deviceId:model.deviceId, id:model.id, name:model.name, revision:model.revision, visualRevision:model.visualRevision ?? model.revision, scope:model.modeledScope ?? model.specs[0][1], glb:`/models/devices/${model.id}.glb`, geometry:`/models/devices/${model.id}.json`, preview:`/models/devices/${model.id}.webp`, glbUnits:'meters', geometryUnits:'mm'});
   } finally { disposeDeviceMesh(group); }
 }
 await fs.writeFile(path.join(directory,'index.json'), JSON.stringify(index,null,2));
