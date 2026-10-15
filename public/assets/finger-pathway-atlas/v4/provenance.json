@@ -1,7 +1,7 @@
 {
   "version": 4,
   "title": "Finger Pathway Atlas V4",
-  "scope": "Representative connected anatomical model: 52 cutaneous tactile afferents, 8 free-ending nociceptive examples, 6 proprioceptive afferents, and 12 motor-unit examples with distinct relay cells. Every modeled cell is present in a single millimetre coordinate system. This is not a full biological cell census, measured connectome, histology/EM segmentation, or physiological simulation. Somata, caliber, dendrites, receptor structures, anatomical routes and synaptic assignments are reference-informed synthetic priors; the source plates are comparisons, not registration data. Conscious proprioceptive pathways and selected local collaterals are represented; cerebellar, autonomic, reticular and other collateral networks are outside this model.",
+  "scope": "Representative connected anatomical model in one millimetre coordinate system. Detailed V3 cellular templates and all supplied anatomical surfaces are retained. Some cortical templates preserve measured human light-microscopy skeletons and radii; noncortical templates are the original procedural V3 models. Template reuse, cell placement, long-range extensions and synaptic assignments are modeled. This is not a full biological cell census, a measured end-to-end human connectome, EM segmentation, or a physiological simulation. Selected conscious sensory and motor routes are represented; other neural networks are outside this model.",
   "statistics": {
     "primarySensoryCells": 66,
     "tactileAfferents": 52,
@@ -18,14 +18,15 @@
     "sourceTransform": "[x, z-1250, -y-95]"
   },
   "morphology": {
-    "basis": "Reference-informed synthetic morphology; not an EM segmentation",
-    "dimensions": "Local dimensions and placement are explicit model priors, not measurements from resized comparison plates.",
-    "meissner": "Handler et al. 2023, PMC10773061: longitudinal, flattened terminal profiles, side protrusions and interdigitating support processes; cross-species structural analogue.",
-    "pacinian": "Handler et al. 2023, PMC10773061: central ending with protrusions; interleaved inner support processes and closed outer lamellae.",
-    "drg": "Human ganglion comparison plates 21–23: pseudounipolar soma, continuous stem, conformal satellite support; no dendrites or DRG synapse.",
-    "nmj": "Jones et al. 2017, PMC5723673: varied, compact human endplates with separated receptor islands; not a copied mouse pretzel.",
-    "proprioception": "PMC4811329: sheep extraocular spindle and tendon-organ analogues; neither a human finger reconstruction nor a human size calibration.",
-    "central": "Multipolar spinal, cuneate and VPL class priors; simplified cortical pyramidal trees. Nissl profiles do not establish complete dendritic topology."
+    "basis": "Preserved detailed V3 cellular templates, with declared intact-support amendments and modeled V4 placement/connectivity; not an EM segmentation.",
+    "dimensions": "Original template dimensions are retained in micrometres and converted to millimetres without rescaling to fit. Original procedural dimensions remain assumptions. Source-figure panels are independently resized and are not matched-scale validation.",
+    "meissner": "Original V3 terminal and lamellar support geometry retained. Its regular axon-loop topology remains a known mismatch to the longitudinal/protrusion-rich mouse EM references; preservation is not a new anatomical-validation claim.",
+    "pacinian": "Original central neural ending retained. All 25 original support lamellae retain their original count, size and tessellation; the inspection opening is closed. Fine protrusion and individual support-cell anatomy remain limited by the V3 model.",
+    "drg": "Original synthetic pseudounipolar soma, fused stem and satellite support retained. The old isolated T-branches are replaced by connected world routes. No dendrites or ganglion synapses are added.",
+    "nmj": "Original V3 human-inspired terminal arbor, receptor islands, junctional-fold crests and Schwann support retained. These are procedural models, not traced human NMJs. The old open comparison-muscle surface is excluded.",
+    "proprioception": "Original V3 spindle and Golgi tendon-organ components are separated into distinct model afferents. The spindle support opening is closed. The two group-II spindle examples use explicitly modeled secondary terminals rather than relabeling the original Ia-like source. Reference images include sheep extraocular tissue; the templates are not human finger end-organ reconstructions or validated human size measurements.",
+    "noncortical": "Original V3 synthetic spinal, cuneate and VPL somata and arbors retained. Cell-class reuse and location are declared; Nissl images do not establish full dendritic connectivity.",
+    "cortical": "Ten Allen human bright-field SWC templates retain their source skeletons/radii and original V3 generated surfaces. Sources are middle temporal gyrus, frontal lobe and inferior frontal gyrus, not measured finger S1/M1 neurons. Six source layer-II/III spiny cells with intact apical dendrites provide morphological analogues for the modeled upper-motor cells; they are not identified layer-V corticospinal neurons. H01 EM images are comparison references only and are not the source of these meshes."
   },
   "sourceScaffold": "/assets/finger-pathway-atlas/v4/scaffold-provenance.json",
   "references": [
@@ -151,12 +152,359 @@
     }
   ],
   "limitations": [
-    "All cell identities, synapses, routes and shapes are constructed examples, not measured end-to-end human cells.",
-    "Source figures include different species, tissue sites and microscopy scales.",
-    "No cross sections or clipping planes; supplied gross skin retains its original upper-body crop.",
-    "Cortex intentionally simplified; autonomic, cerebellar, reticular and other collateral networks are outside this selected circuit.",
-    "Overview line widths are screen visibility cues; membrane coordinates and caliber priors use millimeters.",
-    "Local myelin uses bounded display patches. Nodal spacing and sheath ratio are model priors.",
-    "The original 50 comparison plates show V3 baseline model panels, not V4 screenshots."
+    "Retained source geometry does not establish measured V4 cell identities, atlas registration, synapse positions or long-range connectivity.",
+    "The detailed V3 noncortical templates remain procedural; known shape limitations in the supplied comparison plates are not erased by restoration.",
+    "Source microscopy spans different species, tissue regions and scales. H01 comparison images do not make the Allen-derived display meshes EM reconstructions.",
+    "No cross-section or cutaway inspection geometry is added. Supplied gross skin retains its original upper-body crop; original source surfaces are not guaranteed watertight.",
+    "Original cellular traces can be incomplete biological specimens. The model retains their available branches and adds explicitly modeled route extensions; it is not a complete experimental reconstruction of every neuron.",
+    "Overview lines and optional visibility padding are display cues. Physical template coordinates use the documented micrometre-to-millimetre conversion.",
+    "Local myelin remains a bounded display representation with modeled nodal spacing and sheath ratio.",
+    "No electrical activity or biomechanical response is simulated; autonomic, cerebellar, reticular and other networks are outside the selected routes.",
+    "The 50 comparison plates show V3 baseline model panels, not screenshots of the integrated V4 placement."
+  ],
+  "revision": "4.1-preserved-v3",
+  "sourceCells": "/assets/finger-pathway-atlas/v4/cells/manifest.json",
+  "preservation": {
+    "anatomicalSurfaces": {
+      "catalogMeshes": 86,
+      "vertices": 523602,
+      "triangles": 1053311,
+      "method": "All supplied V3 rest-pose position bytes and triangle indices are retained in deferred detail assets. Overview display meshes are spatially clustered. No anatomical source surface is dropped.",
+      "scope": "Exact preservation of the supplied V3 atlas surfaces, not a claim of original unprocessed BodyParts3D STL resolution."
+    },
+    "cellularTemplates": {
+      "templates": 159,
+      "bytes": 67146128,
+      "jsonBytes": 147971317,
+      "vertices": 2316162,
+      "triangles": 3965019,
+      "manifestSha256": "ee0492c78dce7b0c03bd96ee2df01973d9df63e2990660e430b9a15533899cac",
+      "catalogFamilies": {
+        "drg": 60,
+        "spinal": 38,
+        "medulla": 20,
+        "thalamus": 24,
+        "cortex": 10,
+        "tip": 4,
+        "nmj": 1,
+        "proprio": 2
+      },
+      "registeredTemplateCount": 159,
+      "unregisteredTemplateKeys": [],
+      "method": "Original V3 neural morphology preserved without simplification. Local-origin translation and exclusion of whole context meshes/connected components occur. Pacinian and spindle support inspection openings are closed at their original shell count, radii and resolution. Source branches are retained as exact centerlines for low-detail rendering.",
+      "sourceFiles": {
+        "engine.js": "c30fd6ce0c31ab60fffce01b459e18efd05e0f623bed92623f430fb6581101f8",
+        "membrane.js": "0ac2b066b6db3c177ae593235a134239cc2a05b4a7ea60680eaf2d60f4febe21",
+        "specimens.js": "af095b0f71a1ebd54fc1309a91f5f48832faa5b06f5df5ba6a3ca7480c40101e",
+        "anatomy.json.gz.part-1.bin": "bc6508caf77ebb9f930ab357c9ee902fc5f9f27d0d5f00d627af186db48b49e0",
+        "anatomy.json.gz.part-2.bin": "45b3db932c4d907b45cd0666339bcc299741ed583b19f3d95eefc60df4b8b72c"
+      },
+      "registration": "Original local micrometre geometry is rigidly rotated and translated, with an exact factor of 0.001 millimetres per micrometre. Source template identities and V4 modeled cell identities remain separate.",
+      "delivery": "Only compressed template assets are deployed. The jsonBytes field reports their uncompressed serialized size, not additional deployed copies. Templates load individually on demand; the full collection is not required at startup."
+    },
+    "retained": [
+      "Original V3 neural membrane vertices, normals and triangle connectivity for the exported cellular components.",
+      "Original DRG implicit somata and fused proximal stems, conformal satellite-cell patches, and noncortical dendritic arbors.",
+      "All ten supplied Allen human cortical tracing templates and their original V3 generated surfaces.",
+      "Original sensory terminal, neuromuscular junction and separated spindle/tendon-organ components.",
+      "Original captured branch centerlines for lighter display; separate original modeled spine/bouton detail remains labeled synthetic."
+    ],
+    "amended": [
+      {
+        "template": "terminal:pacinian",
+        "description": "Pacinian 25-lamella support: inspection opening closed; shell count/radii/resolution retained."
+      },
+      {
+        "template": "terminal:spindle",
+        "description": "Spindle capsule: inspection opening closed; shell count/radii/resolution retained."
+      }
+    ],
+    "excludedContext": [
+      "V3 nerve cross-section faces, cut fascicle rims, epineurial inspection windows and spinal section context.",
+      "Open skin comparison blocks, NMJ sarcolemma comparison patch and striation guides.",
+      "Old long specimen-only DRG T-branches and separate projection fragments, replaced by declared continuous V4 route connections."
+    ],
+    "connectionRule": "Long-range paths attach at declared original membrane ports. Cortical extensions attach to a retained distal axon leaf. The selected leaf and synaptic partner are modeling choices; neither is measured end-to-end connectivity.",
+    "registration": {
+      "scaleMmPerUm": 0.001,
+      "templatesUsed": 159,
+      "availableTemplates": 159,
+      "drgPacking": "Synthetic packing with complete preserved DRG template bounding radii plus 10% separation; source surface dimensions unchanged.",
+      "registeredCells": 306,
+      "preservedComponents": 375,
+      "notice": "Original V3 local cell geometry is retained at 1 micrometre = 0.001 millimetre. Anatomical placement, orientation, template reuse and connections between preserved source ports and long-range routes are modeled. Cortical source reconstructions are not measured S1/M1 finger-pathway cells; noncortical V3 geometries remain their original synthetic models.",
+      "terminalAnchoring": "For each original terminal template, its declared organ center maps to anatomical cell.terminal. The retained incoming stub lies upstream, where its original inlet joins the long-range route. Rigid registration leaves original geometry and physical dimensions unchanged. Organ centers describe the source model, not histologically registered human end organs.",
+      "organCenters": [
+        {
+          "template": "terminal:meissner",
+          "organCenterUm": [
+            221,
+            720,
+            -35
+          ],
+          "basis": "Original Meissner lamellar-cluster center in endings()."
+        },
+        {
+          "template": "terminal:merkel",
+          "organCenterUm": [
+            486,
+            780.5011865405289,
+            -42.49721849112151
+          ],
+          "basis": "Centroid of the original nine Merkel contact endpoints, using the original basal surface and seeded lateral positions."
+        },
+        {
+          "template": "terminal:pacinian",
+          "organCenterUm": [
+            868,
+            442,
+            -36
+          ],
+          "basis": "Original pcen shared by all 25 Pacinian lamellae."
+        },
+        {
+          "template": "terminal:free",
+          "organCenterUm": [
+            635.809422159217,
+            726.027829662871,
+            51.99515502889834
+          ],
+          "basis": "Bounds center of the original free-ending arbor centerlines, excluding the long inlet curve."
+        },
+        {
+          "template": "terminal:nmj",
+          "organCenterUm": [
+            62,
+            -47,
+            62
+          ],
+          "basis": "Original central sarcolemmal surface under the motor-endplate cluster."
+        },
+        {
+          "template": "terminal:spindle",
+          "organCenterUm": [
+            210,
+            630,
+            0
+          ],
+          "basis": "Original spindle capsule and equatorial sensory-region center."
+        },
+        {
+          "template": "terminal:golgi",
+          "organCenterUm": [
+            -263,
+            620,
+            0
+          ],
+          "basis": "Original tendon-organ local collagen/terminal inspection territory center."
+        }
+      ]
+    },
+    "additionalModeledDetail": [
+      "V3 has no separately reconstructed SA-II receptor geometry; these cells retain an unencapsulated modeled ending.",
+      "The two group-II spindle examples use explicitly modeled secondary flower-spray terminals because the retained V3 spindle template is Ia-like; their original DRG morphology is retained."
+    ]
+  },
+  "corticalSources": [
+    {
+      "template": "cortex:508282493",
+      "sourceCellId": 508282493,
+      "url": "https://api.brain-map.org/api/v2/well_known_file_download/582653921",
+      "swcSha256": "c2a2711c78320568831c1bcb901d90fef43019eabad134f69d6cc9b8ed4baea2",
+      "specimen": {
+        "specimen__id": 508282493,
+        "specimen__name": "H16.06.004.01.04.03",
+        "specimen__hemisphere": "right",
+        "donor__species": "Homo Sapiens",
+        "structure__name": "\"middle temporal gyrus\"",
+        "structure__layer": "3",
+        "structure__acronym": "MTG",
+        "tag__dendrite_type": "spiny",
+        "tag__apical": "intact",
+        "nr__reconstruction_type": "full"
+      },
+      "provenance": "Human bright-field morphological tracing; display membrane generated around measured skeleton and radius. Not EM; not finger S1/M1.",
+      "extension": "Farthest retained distal axon leaf; modeled extension begins here without deleting any source branch."
+    },
+    {
+      "template": "cortex:508298270",
+      "sourceCellId": 508298270,
+      "url": "https://api.brain-map.org/api/v2/well_known_file_download/556380172",
+      "swcSha256": "70b354404d17426769c961ae407d96d03f83aebb77811db832ac82f9b60df5cb",
+      "specimen": {
+        "specimen__id": 508298270,
+        "specimen__name": "H16.06.004.01.04.05",
+        "specimen__hemisphere": "right",
+        "donor__species": "Homo Sapiens",
+        "structure__name": "\"middle temporal gyrus\"",
+        "structure__layer": "3",
+        "structure__acronym": "MTG",
+        "tag__dendrite_type": "spiny",
+        "tag__apical": "intact",
+        "nr__reconstruction_type": "full"
+      },
+      "provenance": "Human bright-field morphological tracing; display membrane generated around measured skeleton and radius. Not EM; not finger S1/M1.",
+      "extension": "Farthest retained distal axon leaf; modeled extension begins here without deleting any source branch."
+    },
+    {
+      "template": "cortex:508305938",
+      "sourceCellId": 508305938,
+      "url": "https://api.brain-map.org/api/v2/well_known_file_download/544901582",
+      "swcSha256": "0f00c8fb220fc65d5b8f12225b0f04670d9e9355eaf48da1cd70c1ad85fb974b",
+      "specimen": {
+        "specimen__id": 508305938,
+        "specimen__name": "H16.06.004.02.10.01",
+        "specimen__hemisphere": "right",
+        "donor__species": "Homo Sapiens",
+        "structure__name": "\"middle temporal gyrus\"",
+        "structure__layer": "3",
+        "structure__acronym": "MTG",
+        "tag__dendrite_type": "spiny",
+        "tag__apical": "intact",
+        "nr__reconstruction_type": "full"
+      },
+      "provenance": "Human bright-field morphological tracing; display membrane generated around measured skeleton and radius. Not EM; not finger S1/M1.",
+      "extension": "Farthest retained distal axon leaf; modeled extension begins here without deleting any source branch."
+    },
+    {
+      "template": "cortex:508378649",
+      "sourceCellId": 508378649,
+      "url": "https://api.brain-map.org/api/v2/well_known_file_download/667324828",
+      "swcSha256": "749f22c3ceba4501268c5d2c0a69a45348be313d29bf4591daf1adb20839a61c",
+      "specimen": {
+        "specimen__id": 508378649,
+        "specimen__name": "H16.06.004.01.05.02",
+        "specimen__hemisphere": "right",
+        "donor__species": "Homo Sapiens",
+        "structure__name": "\"middle temporal gyrus\"",
+        "structure__layer": "3",
+        "structure__acronym": "MTG",
+        "tag__dendrite_type": "spiny",
+        "tag__apical": "intact",
+        "nr__reconstruction_type": "full"
+      },
+      "provenance": "Human bright-field morphological tracing; display membrane generated around measured skeleton and radius. Not EM; not finger S1/M1.",
+      "extension": "Farthest retained distal axon leaf; modeled extension begins here without deleting any source branch."
+    },
+    {
+      "template": "cortex:508421103",
+      "sourceCellId": 508421103,
+      "url": "https://api.brain-map.org/api/v2/well_known_file_download/552579451",
+      "swcSha256": "eb980f36f4244c8d232ce7c514498027be0707a6fc97ae987e7d0afb68339d6b",
+      "specimen": {
+        "specimen__id": 508421103,
+        "specimen__name": "H16.06.004.02.05.02",
+        "specimen__hemisphere": "right",
+        "donor__species": "Homo Sapiens",
+        "structure__name": "\"middle temporal gyrus\"",
+        "structure__layer": "2",
+        "structure__acronym": "MTG",
+        "tag__dendrite_type": "spiny",
+        "tag__apical": "intact",
+        "nr__reconstruction_type": "full"
+      },
+      "provenance": "Human bright-field morphological tracing; display membrane generated around measured skeleton and radius. Not EM; not finger S1/M1.",
+      "extension": "Farthest retained distal axon leaf; modeled extension begins here without deleting any source branch."
+    },
+    {
+      "template": "cortex:517673596",
+      "sourceCellId": 517673596,
+      "url": "https://api.brain-map.org/api/v2/well_known_file_download/716317427",
+      "swcSha256": "14afc7218c847d27b2bcd1de4add27a9e16b3d44a44b1965d527f63869bb65d2",
+      "specimen": {
+        "specimen__id": 517673596,
+        "specimen__name": "H16.06.006.01.04.01",
+        "specimen__hemisphere": "right",
+        "donor__species": "Homo Sapiens",
+        "structure__name": "\"frontal lobe\"",
+        "structure__layer": "3",
+        "structure__acronym": "FroL",
+        "tag__dendrite_type": "spiny",
+        "tag__apical": "intact",
+        "nr__reconstruction_type": "full"
+      },
+      "provenance": "Human bright-field morphological tracing; display membrane generated around measured skeleton and radius. Not EM; not finger S1/M1.",
+      "extension": "Farthest retained distal axon leaf; modeled extension begins here without deleting any source branch."
+    },
+    {
+      "template": "cortex:488386504",
+      "sourceCellId": 488386504,
+      "url": "https://api.brain-map.org/api/v2/well_known_file_download/623320234",
+      "swcSha256": "55a25dccf8a96a2e147182d986f8a5bc906e8b5874558edcac3f7362933905b3",
+      "specimen": {
+        "specimen__id": 488386504,
+        "specimen__name": "H15.06.016.01.12.01",
+        "specimen__hemisphere": "right",
+        "donor__species": "Homo Sapiens",
+        "structure__name": "\"inferior frontal gyrus\"",
+        "structure__layer": "3",
+        "structure__acronym": "IFG",
+        "tag__dendrite_type": "aspiny",
+        "tag__apical": "NA",
+        "nr__reconstruction_type": "full"
+      },
+      "provenance": "Human bright-field morphological tracing; display membrane generated around measured skeleton and radius. Not EM; not finger S1/M1.",
+      "extension": "Farthest retained distal axon leaf; modeled extension begins here without deleting any source branch."
+    },
+    {
+      "template": "cortex:488386626",
+      "sourceCellId": 488386626,
+      "url": "https://api.brain-map.org/api/v2/well_known_file_download/669287807",
+      "swcSha256": "3e31672ef503c37b36b43b780cef6cb379a35d5e82a4161fd25502b035f83c96",
+      "specimen": {
+        "specimen__id": 488386626,
+        "specimen__name": "H15.06.016.01.03.02",
+        "specimen__hemisphere": "right",
+        "donor__species": "Homo Sapiens",
+        "structure__name": "\"inferior frontal gyrus\"",
+        "structure__layer": "3",
+        "structure__acronym": "IFG",
+        "tag__dendrite_type": "aspiny",
+        "tag__apical": "NA",
+        "nr__reconstruction_type": "full"
+      },
+      "provenance": "Human bright-field morphological tracing; display membrane generated around measured skeleton and radius. Not EM; not finger S1/M1.",
+      "extension": "Farthest retained distal axon leaf; modeled extension begins here without deleting any source branch."
+    },
+    {
+      "template": "cortex:488418027",
+      "sourceCellId": 488418027,
+      "url": "https://api.brain-map.org/api/v2/well_known_file_download/669814888",
+      "swcSha256": "ac8b60bc3f09ff25eac57e7e346f1f2cba670b0a4f9b9e4f6a610a00af56c894",
+      "specimen": {
+        "specimen__id": 488418027,
+        "specimen__name": "H15.06.017.03.03.01",
+        "specimen__hemisphere": "right",
+        "donor__species": "Homo Sapiens",
+        "structure__name": "\"middle temporal gyrus\"",
+        "structure__layer": "3",
+        "structure__acronym": "MTG",
+        "tag__dendrite_type": "aspiny",
+        "tag__apical": "NA",
+        "nr__reconstruction_type": "full"
+      },
+      "provenance": "Human bright-field morphological tracing; display membrane generated around measured skeleton and radius. Not EM; not finger S1/M1.",
+      "extension": "Farthest retained distal axon leaf; modeled extension begins here without deleting any source branch."
+    },
+    {
+      "template": "cortex:569849486",
+      "sourceCellId": 569849486,
+      "url": "https://api.brain-map.org/api/v2/well_known_file_download/603514431",
+      "swcSha256": "27fadcddac661326bdcdd031dfb346b5560a088913229557afe3ec2751a3c1a8",
+      "specimen": {
+        "specimen__id": 569849486,
+        "specimen__name": "H17.03.002.11.06.05",
+        "specimen__hemisphere": "right",
+        "donor__species": "Homo Sapiens",
+        "structure__name": "\"middle temporal gyrus\"",
+        "structure__layer": "5",
+        "structure__acronym": "MTG",
+        "tag__dendrite_type": "sparsely spiny",
+        "tag__apical": "NA",
+        "nr__reconstruction_type": "full"
+      },
+      "provenance": "Human bright-field morphological tracing; display membrane generated around measured skeleton and radius. Not EM; not finger S1/M1.",
+      "extension": "Farthest retained distal axon leaf; modeled extension begins here without deleting any source branch."
+    }
   ]
 }

@@ -1,4 +1,6 @@
-# Finger Pathway Atlas V3 — website integration
+# Finger Pathway Atlas V3 — historical website integration
+
+This records the original V3 integration. V4 now occupies the production atlas route; see `finger-pathway-atlas-v4.md` for the current implementation. The original V3 viewer remains available under `v3-viewer`.
 
 The supplied V3 anatomical atlas is integrated at `/simulations/finger-pathway-atlas/`, with the full-size comparison plates and original reference figures at `/simulations/finger-pathway-atlas/references/`.
 

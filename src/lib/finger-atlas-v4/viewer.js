@@ -3,14 +3,17 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { createAtlasModel } from './model.mjs';
 import { morphologyPaths, createCellDetail } from './morphology.mjs';
-import { computeCellFocus } from './focus.mjs';
+import { computeDetailFocus } from './focus.mjs';
+import { loadPreservedCell, createPreservedCellDetail, preservedCellPaths, preservedAnchorInfo, PRESERVED_CELL_MANIFEST } from './preserved-morphology.mjs';
+import { createAnatomyLOD, fetchAtlasJSON } from './anatomy-lod.mjs';
+import { getPreservedCellRegistration, registeredCellBranches, registerPreservedModel } from './preserved-registration.mjs';
 
 const $ = id => document.getElementById(id);
 const v = p => new T.Vector3(...p);
 const colors = {sensory:0x7dd7dc,motor:0xf0b283,relay:0x9eabc9,interneuron:0xc8b4d9};
-const budgets = {light:{cells:4,pixelRatio:1},balanced:{cells:8,pixelRatio:1.5},high:{cells:14,pixelRatio:2}};
+const budgets = {light:{cells:4,triangles:300000,pixelRatio:1},balanced:{cells:8,triangles:650000,pixelRatio:1.5},high:{cells:14,triangles:1200000,pixelRatio:2}};
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const state = {route:null,cell:null,stop:0,region:'overview',highlight:true,isolate:false,quality:'balanced',skin:true,envelopes:true,labels:true,myelin:true};
+const state = {route:null,cell:null,stop:0,region:'overview',highlight:true,isolate:false,quality:'balanced',skin:true,envelopes:true,labels:true,myelin:true,supports:true};
 function message(text){$('toast').textContent=text;$('toast').hidden=false;clearTimeout(message.timer);message.timer=setTimeout(()=>$('toast').hidden=true,4500);}
 function dispose(group){const geometries=new Set(),materials=new Set();group.traverse(o=>{if(o.geometry)geometries.add(o.geometry);for(const m of (Array.isArray(o.material)?o.material:[o.material]))if(m)materials.add(m);});geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());group.removeFromParent();}
 function fail(error){console.error(error);$('load-state').hidden=true;$('fatal-error').hidden=false;$('error-message').textContent=error instanceof Error?error.message:String(error);}
@@ -18,7 +21,7 @@ $('retry').onclick=()=>location.reload();
 
 try { start(); } catch(error) { fail(error); }
 function start(){
-  const model=createAtlasModel(),byId=new Map(model.cells.map(c=>[c.id,c]));
+  const model=registerPreservedModel(createAtlasModel(),PRESERVED_CELL_MANIFEST),byId=new Map(model.cells.map(c=>[c.id,c]));
   const regions=model.regions,stage=$('stage'),canvas=$('viewport');
   const renderer=new T.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance',logarithmicDepthBuffer:true});
   renderer.setPixelRatio(Math.min(devicePixelRatio,budgets.balanced.pixelRatio));renderer.setClearColor(0x060d13);renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;
@@ -28,11 +31,14 @@ function start(){
   for(const [position,color,intensity] of [[[450,700,900],0xe2f5ff,2.3],[[-500,50,-400],0x84b7ce,1.6],[[0,-500,200],0xffd3ad,.6]]){const light=new T.DirectionalLight(color,intensity);light.position.copy(v(position));scene.add(light);}
   const scaffoldGroup=new T.Group(),envelopeGroup=new T.Group(),globalGroup=new T.Group(),highlightGroup=new T.Group(),detailGroup=new T.Group(),fiberGroup=new T.Group();
   scene.add(scaffoldGroup,envelopeGroup,globalGroup,highlightGroup,detailGroup,fiberGroup);
-  const pathMap=new Map(),sampleMap=new Map(),batches=new Map(),detailCache=new Map();
+  const pathMap=new Map(),sampleMap=new Map(),batches=new Map(),detailCache=new Map(),sourceLines=new Map(),detailFailures=new Map();
+  const sourceLineGroup=new T.Group();scene.add(sourceLineGroup);
+  const anatomyLOD=createAnatomyLOD({group:scaffoldGroup,camera,controls,state,requestDraw,reportError:error=>console.warn('Original anatomical surface unavailable; overview retained.',error)});
+  let focusRequest=0;
   let raf=0,dirty=true,tween=null,hidden=false,frameMs=0,detailPending=false,lastDetailKey='',currentDetails=[],contextLost=false;
   let buildTime=performance.now(),lastPointer=null,lastFiberKey='',scaffoldLoaded=false,lastMove=0,settleTimer;
   function requestDraw(){dirty=true;if(!raf&&!hidden&&!contextLost)raf=requestAnimationFrame(draw);}
-  controls.addEventListener('change',()=>{lastMove=performance.now();clearTimeout(settleTimer);settleTimer=setTimeout(requestDraw,150);requestDraw();});controls.addEventListener('start',()=>{tween=null;});controls.addEventListener('end',()=>{lastDetailKey='';requestDraw();});
+  controls.addEventListener('change',()=>{lastMove=performance.now();clearTimeout(settleTimer);settleTimer=setTimeout(requestDraw,150);requestDraw();});controls.addEventListener('start',()=>{tween=null;focusRequest++;});controls.addEventListener('end',()=>{lastDetailKey='';requestDraw();});
   canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();contextLost=true;fail(new Error('The graphics context was lost. Close other graphics-heavy tabs, then try again.'));});
   canvas.addEventListener('webglcontextrestored',()=>location.reload());
   document.addEventListener('visibilitychange',()=>{hidden=document.hidden;if(hidden&&raf){cancelAnimationFrame(raf);raf=0;}else if(!hidden)requestDraw();});
@@ -45,8 +51,12 @@ function start(){
   }
   function appendSegments(target,points,cellId){for(let i=1;i<points.length;i++){target.positions.push(...points[i-1].toArray(),...points[i].toArray());target.owners.push(cellId);}}
   for(const cell of model.cells){
-    const local=morphologyPaths(cell),all=[...cell.branches,...local];pathMap.set(cell.id,all);
-    const sampledBranches=cell.branches.map(branch=>({...branch,controls:branch.points.map(v),samples:sampled(branch)}));sampleMap.set(cell.id,sampledBranches);
+    // Keep the registered long-range axons at overview scale. Original V3 local
+    // arbors are loaded with their source meshes, never replaced with new trees.
+    const branches=registeredCellBranches(cell,getPreservedCellRegistration(cell,PRESERVED_CELL_MANIFEST));
+    const unsupported=(cell.terminal?['soma','terminal']:['soma']).filter(anchor=>!preservedAnchorInfo(cell,anchor));
+    const local=unsupported.length?morphologyPaths(cell).filter(path=>unsupported.includes(path.anchor||'soma')):[],all=[...branches,...local];pathMap.set(cell.id,all);
+    const sampledBranches=branches.map(branch=>({...branch,controls:branch.points.map(v),samples:sampled(branch)}));sampleMap.set(cell.id,sampledBranches);
     if(!batches.has(cell.kind))batches.set(cell.kind,{positions:[],owners:[]});const batch=batches.get(cell.kind);
     for(const branch of sampledBranches)appendSegments(batch,branch.samples,cell.id);
     for(const branch of local)appendSegments(batch,branch.points.map(v),cell.id);
@@ -71,27 +81,87 @@ function start(){
     lastDetailKey='';lastFiberKey='';requestDraw();
   }
   function activeIds(){return state.isolate&&state.route?new Set(state.route.cellIds):null;}
-  function nearestAnchor(cell){const soma=v(cell.soma),terminal=cell.terminal?v(cell.terminal):null;return terminal&&terminal.distanceToSquared(controls.target)<soma.distanceToSquared(controls.target)?terminal:soma;}
+  function anchorKey(cell,anchor){return `${cell.id}:${anchor}`;}
+  function anchorBounds(cell,anchor){
+    const key=anchorKey(cell,anchor),cached=detailCache.get(key);
+    if(cached)return cached.bounds;
+    const info=preservedAnchorInfo(cell,anchor);
+    if(info)return new T.Box3(v(info.boundsWorldMm[0]),v(info.boundsWorldMm[1]));
+    const point=v(anchor==='terminal'?cell.terminal:cell.soma),radius=anchor==='terminal'?.7:.25;
+    return new T.Box3(point.clone().addScalar(-radius),point.clone().addScalar(radius));
+  }
   function wantedDetails(){
-    const distance=camera.position.distanceTo(controls.target)*Math.min(1,Math.max(.48,camera.aspect));if(distance>5)return [];
-    const ids=activeIds(),candidates=[];
-    for(const cell of model.cells){if(ids&&!ids.has(cell.id))continue;const point=nearestAnchor(cell),d=point.distanceTo(controls.target);if(d>Math.max(.35,distance*.95))continue;const p=point.clone().project(camera);if(p.z>=1||Math.abs(p.x)>1.35||Math.abs(p.y)>1.5)continue;candidates.push({cell,d:cell.id===state.cell?.id?-1:d});}
-    candidates.sort((a,b)=>a.d-b.d);return candidates.slice(0,budgets[state.quality].cells).map(x=>x.cell);
+    const distance=camera.position.distanceTo(controls.target)*Math.min(1,Math.max(.48,camera.aspect));
+    if(distance>40)return [];
+    const ids=activeIds(),candidates=[],frustum=new T.Frustum().setFromProjectionMatrix(new T.Matrix4().multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse));
+    for(const cell of model.cells){
+      if(ids&&!ids.has(cell.id))continue;
+      for(const anchor of cell.terminal?['soma','terminal']:['soma']){
+        const bounds=anchorBounds(cell,anchor),d=bounds.distanceToPoint(controls.target),radius=bounds.getSize(new T.Vector3()).length()/2;
+        if(d>Math.max(.25,distance*.8)||!frustum.intersectsBox(bounds))continue;
+        if(radius/Math.max(.001,distance)<.012&&distance>3)continue;
+        const info=preservedAnchorInfo(cell,anchor),key=anchorKey(cell,anchor);
+        if(performance.now()-(detailFailures.get(key)||-Infinity)<30000)continue;
+        candidates.push({cell,anchor,key,bounds,triangles:info?.triangles||24000,d:cell.id===state.cell?.id&&d<distance*.5?-1:d});
+      }
+    }
+    candidates.sort((a,b)=>a.d-b.d);const wanted=[];let triangles=0;
+    for(const candidate of candidates){
+      if(wanted.length>=budgets[state.quality].cells)break;
+      if(wanted.length&&triangles+candidate.triangles>budgets[state.quality].triangles)continue;
+      wanted.push(candidate);triangles+=candidate.triangles;
+    }
+    return wanted;
+  }
+  function createAnchorDetail(cell,anchor){
+    if(preservedAnchorInfo(cell,anchor))return createPreservedCellDetail(cell,{anchors:[anchor],includeModeledFineDetail:state.quality==='high'});
+    const group=createCellDetail(cell,{quality:state.quality==='light'?'low':'high'});
+    for(const child of [...group.children])if(child.userData.anchor!==anchor)dispose(child);
+    return group;
+  }
+  function addSourceLines(cell,anchor){
+    const key=anchorKey(cell,anchor);if(sourceLines.has(key)||!preservedAnchorInfo(cell,anchor))return;
+    const paths=preservedCellPaths(cell,{anchors:[anchor]}),batch={positions:[],owners:[]};
+    for(const path of paths)appendSegments(batch,path.points.map(v),cell.id);
+    const retained=(pathMap.get(cell.id)||[]).filter(path=>path.anchor!==anchor);
+    pathMap.set(cell.id,[...retained,...paths]);
+    if(!batch.positions.length)return;
+    const geometry=new T.BufferGeometry();geometry.setAttribute('position',new T.Float32BufferAttribute(batch.positions,3));geometry.computeBoundingSphere();
+    const lines=new T.LineSegments(geometry,new T.LineBasicMaterial({color:colors[cell.kind],transparent:true,opacity:.55,depthWrite:false}));
+    lines.userData={cellId:cell.id,anchor};sourceLineGroup.add(lines);sourceLines.set(key,lines);
+    refreshHighlight();
+  }
+  async function ensureDetail(cell,anchor){
+    const key=anchorKey(cell,anchor);if(detailCache.has(key))return detailCache.get(key);
+    if(preservedAnchorInfo(cell,anchor))await loadPreservedCell(cell,{anchors:[anchor]});
+    // An explicit inspection and the idle loader can await the same asset.
+    if(detailCache.has(key))return detailCache.get(key);
+    const group=createAnchorDetail(cell,anchor);group.userData.cellId=cell.id;group.visible=false;
+    let triangles=0;group.traverse(o=>{if(o.isMesh)triangles+=(o.geometry.index?.count||o.geometry.attributes.position.count)/3;});
+    const entry={group,triangles,bounds:new T.Box3().setFromObject(group),used:performance.now()};
+    group.traverse(o=>{if(o.isMesh&&['support','skin'].includes(o.userData.layer))o.visible=state.supports;});
+    detailGroup.add(group);detailCache.set(key,entry);addSourceLines(cell,anchor);return entry;
   }
   function refreshDetails(){
-    const wanted=wantedDetails(),key=wanted.map(c=>c.id).join('|')+state.quality;
-    if(key===lastDetailKey)return;lastDetailKey=key;currentDetails=wanted.map(c=>c.id);
-    const wantedSet=new Set(currentDetails);for(const [id,entry] of detailCache){entry.group.visible=wantedSet.has(id);if(entry.group.visible)entry.used=performance.now();}
-    const missing=wanted.filter(c=>!detailCache.has(c.id));if(!missing.length||detailPending)return;
-    detailPending=true;const run=()=>{
-      detailPending=false;if(hidden||contextLost){lastDetailKey='';return;}
-      const currentWanted=new Set(wantedDetails().map(c=>c.id));
-      const cell=missing.find(c=>currentWanted.has(c.id)&&!detailCache.has(c.id));
-      if(cell){try{const group=createCellDetail(cell,{quality:state.quality==='light'?'low':'high'});group.userData.cellId=cell.id;detailGroup.add(group);detailCache.set(cell.id,{group,used:performance.now()});}catch(error){console.error('Cell detail failed',cell.id,error);message('A cell detail could not be generated; its pathway remains available.');}}
-      while(detailCache.size>24){const old=[...detailCache.entries()].filter(([id])=>!currentWanted.has(id)).sort((a,b)=>a[1].used-b[1].used)[0];if(!old)break;dispose(old[1].group);detailCache.delete(old[0]);}
-      lastDetailKey='';requestDraw();
+    const wanted=wantedDetails(),key=wanted.map(c=>c.key).join('|')+state.quality;
+    const wantedSet=new Set(wanted.map(item=>item.key));currentDetails=[...wantedSet].filter(id=>detailCache.has(id));
+    for(const [id,entry]of detailCache){entry.group.visible=wantedSet.has(id);if(entry.group.visible)entry.used=performance.now();}
+    for(const [id,lines]of sourceLines)lines.visible=!detailCache.get(id)?.group.visible&&(!state.isolate||state.route?.cellIds.includes(lines.userData.cellId))&&camera.position.distanceTo(controls.target)<40;
+    let cachedTriangles=[...detailCache.values()].reduce((sum,entry)=>sum+entry.triangles,0);
+    while(detailCache.size>24||cachedTriangles>1800000){
+      const old=[...detailCache.entries()].filter(([id])=>!wantedSet.has(id)).sort((a,b)=>a[1].used-b[1].used)[0];if(!old)break;
+      dispose(old[1].group);cachedTriangles-=old[1].triangles;detailCache.delete(old[0]);
+    }
+    if(key===lastDetailKey)return;lastDetailKey=key;
+    const missing=wanted.find(item=>!detailCache.has(item.key));if(!missing||detailPending)return;
+    detailPending=true;
+    const run=async()=>{
+      try{
+        if(!hidden&&!contextLost&&wantedDetails().some(item=>item.key===missing.key))await ensureDetail(missing.cell,missing.anchor);
+      }catch(error){detailFailures.set(missing.key,performance.now());console.error('V3 cell detail could not load',error);message('The original cell detail could not load. Its pathway remains available; retry Inspect cell.');}
+      finally{detailPending=false;lastDetailKey='';requestDraw();}
     };
-    if('requestIdleCallback' in window)requestIdleCallback(run,{timeout:180});else setTimeout(run,0);
+    if('requestIdleCallback'in window)requestIdleCallback(run,{timeout:180});else setTimeout(run,0);
   }
   function closestOnSegment(point,a,b){const delta=b.clone().sub(a),den=delta.lengthSq(),t=den?T.MathUtils.clamp(point.clone().sub(a).dot(delta)/den,0,1):0;return a.clone().addScaledVector(delta,t);}
   function refreshFibers(){
@@ -126,22 +196,39 @@ function start(){
     lastDetailKey='';lastFiberKey='';requestDraw();
   }
   function goRegion(id,{point,distance,animate=true}={}){
+    focusRequest++;
     const region=regions.find(r=>r.id===id)||regions[0];state.region=region.id;
+    updateInspectLabel(region.id);
     $('view-title').textContent=region.name;$('view-description').textContent=region.description;
     $('view-eyebrow').textContent='ONE SPATIAL MODEL / '+(distance&&distance<5?'CELLULAR DETAIL':'ANATOMICAL CONTEXT');
     document.querySelectorAll('.region-button').forEach(b=>b.classList.toggle('active',b.dataset.region===region.id));
     frame(point||region.center,distance||region.distance,animate);try{history.replaceState(null,'',`#view=${region.id}&route=${state.route?.id||''}`);}catch{}
   }
-  function inspectCell(ending=false){
-    if(!state.cell)return;const focus=computeCellFocus(state.cell,{ending,fov:camera.fov});
-    goRegion(focus.region,{point:focus.center,distance:focus.distance});collapseInspector(true);
+  async function inspectCell(ending=false){
+    if(!state.cell)return;const cell=state.cell,anchor=ending&&cell.terminal?'terminal':'soma',token=++focusRequest;
+    const key=anchorKey(cell,anchor);detailFailures.delete(key);
+    const button=$(ending?'focus-ending':'focus-cell'),label=ending?'Inspect ending':'Inspect cell';button.textContent='Opening detail…';
+    try{
+      const entry=await ensureDetail(cell,anchor);
+      if(token!==focusRequest||state.cell!==cell)return;
+      const focus=computeDetailFocus(cell,entry.group,{ending,organ:true,fov:camera.fov});
+      goRegion(focus.region,{point:focus.center,distance:focus.distance});collapseInspector(true);
+    }catch(error){console.error(error);message('The original detail could not load. Select Inspect again to retry.');}
+    finally{button.textContent=label;lastDetailKey='';requestDraw();}
+  }
+  function updateInspectLabel(region){
+    const ending=['tip','nmj','proprio'].includes(region)&&state.cell?.terminal,anchor=ending?'terminal':'soma';
+    const preserved=state.cell&&preservedAnchorInfo(state.cell,anchor);
+    $('inspect-region').textContent=`Open ${preserved?'V3':'modeled'} ${ending?'ending':'cell'} detail ↗`;
   }
   function cellInfo(){
     const cell=state.cell;if(!cell)return;$('cell-select').value=cell.id;
-    $('cell-description').textContent=`${cell.id} · ${cell.name} · soma ${(cell.somaRadiusMm*2000).toFixed(0)} µm · axon ${((cell.axonRadiusMm||0)*2000).toFixed(1)} µm. ${cell.sourceNote||'Reference-informed, constructed cell.'}`;
+    $('cell-description').textContent=`${cell.id} · ${cell.name} · soma prior ${(cell.somaRadiusMm*2000).toFixed(0)} µm · axon prior ${((cell.axonRadiusMm||0)*2000).toFixed(1)} µm. ${cell.sourceNote||'Reference-informed, constructed cell.'}`;
     $('focus-ending').disabled=!cell.terminal;
+    const source=preservedAnchorInfo(cell,'soma');if(source)$('cell-description').textContent+=` Original V3 detail: ${source.sourceRegion||cell.region} · ${source.sourceCellId||source.key}.`;
+    updateInspectLabel(state.region);
   }
-  function setCell(id){state.cell=byId.get(id)||byId.get(state.route.cellIds[0]);cellInfo();lastDetailKey='';requestDraw();}
+  function setCell(id){focusRequest++;state.cell=byId.get(id)||byId.get(state.route.cellIds[0]);cellInfo();lastDetailKey='';requestDraw();}
   function showStop(index,animate=true){
     if(!state.route)return;state.stop=T.MathUtils.clamp(index,0,state.route.landmarks.length-1);const stop=state.route.landmarks[state.stop];
     setCell(stop.cellId);document.querySelectorAll('#route-stops button').forEach((b,i)=>{b.classList.toggle('active',i===state.stop);b.setAttribute('aria-current',i===state.stop?'step':'false');});
@@ -183,23 +270,23 @@ function start(){
     raf=0;if(hidden||contextLost)return;const start=performance.now();
     if(tween){const t=Math.min(1,(now-tween.start)/650),e=t*t*(3-2*t);camera.position.lerpVectors(tween.from,tween.to,e);controls.target.lerpVectors(tween.targetFrom,tween.targetTo,e);if(t>=1)tween=null;else requestDraw();}
     controls.update();camera.updateMatrixWorld();
-    if(!tween&&performance.now()-lastMove>125){refreshDetails();refreshFibers();}
+    if(!tween&&performance.now()-lastMove>125){refreshDetails();refreshFibers();anatomyLOD.update();}
     if(dirty){renderer.render(scene,camera);updateLabels();updateStats();dirty=false;frameMs=performance.now()-start;}
   }
   async function loadScaffold(){
-    $('load-text').textContent='Opening intact anatomy…';const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),30000);
+    $('load-text').textContent='Opening intact anatomy…';
     try{
-      const compressed=typeof DecompressionStream!=='undefined',response=await fetch('/assets/finger-pathway-atlas/v4/scaffold.json'+(compressed?'.gz':''),{signal:controller.signal});if(!response.ok)throw new Error(`Anatomy download returned ${response.status}`);
-      const data=compressed?JSON.parse(await new Response(response.body.pipeThrough(new DecompressionStream('gzip'))).text()):await response.json();
-      for(const m of data.meshes){const geometry=new T.BufferGeometry();geometry.setAttribute('position',new T.Float32BufferAttribute(m.positions,3));geometry.setIndex(m.indices);geometry.computeVertexNormals();geometry.computeBoundingSphere();const skin=m.category==='skin',motor=m.id==='FMA72662',sensory=m.id==='FMA72666';const material=new T.MeshStandardMaterial({color:skin?0x79a9b7:motor?0xa78773:sensory?0x72a9b4:0x8298a8,transparent:true,opacity:skin?.075:.16,depthWrite:false,roughness:.9,side:T.FrontSide});const mesh=new T.Mesh(geometry,material);mesh.name=m.name;mesh.userData={category:m.category,source:m.source};mesh.visible=skin?state.skin:state.envelopes;scaffoldGroup.add(mesh);}
+      const data=await fetchAtlasJSON('/assets/finger-pathway-atlas/v4/scaffold.json');
+      for(const record of data.meshes)anatomyLOD.add(record);
       scaffoldLoaded=true;$('load-state').hidden=true;requestDraw();
-    }catch(error){console.error(error);$('load-state').hidden=true;message('Anatomical surfaces could not load. Individual cell pathways are still available. Reload to retry.');}finally{clearTimeout(timer);}
+    }catch(error){console.error(error);$('load-state').hidden=true;message('Anatomical surfaces could not load. Individual cell pathways are still available. Reload to retry.');}
   }
+  $('inspect-region').onclick=()=>inspectCell(['tip','nmj','proprio'].includes(state.region)&&!!state.cell?.terminal);
   $('overview').onclick=()=>goRegion('overview');$('route-kind').onchange=e=>{populateRoutes(e.target.value);setRoute($('route-select').value,true);};$('route-select').onchange=e=>setRoute(e.target.value,true);$('cell-select').onchange=e=>setCell(e.target.value);$('previous').onclick=()=>showStop(state.stop-1);$('next').onclick=()=>showStop(state.stop+1);$('focus-cell').onclick=()=>inspectCell(false);$('focus-ending').onclick=()=>inspectCell(true);
   $('isolate').onchange=e=>{state.isolate=e.target.checked;state.highlight=true;refreshHighlight();};$('clear-selection').onclick=()=>{state.highlight=false;state.isolate=false;$('isolate').checked=false;globalGroup.visible=true;[...highlightGroup.children].forEach(dispose);for(const lines of globalGroup.children)lines.material.opacity=.55;lastDetailKey='';requestDraw();};
-  for(const name of ['skin','envelopes','labels','myelin'])$(name).onchange=e=>{state[name]=e.target.checked;for(const mesh of scaffoldGroup.children)mesh.visible=mesh.userData.category==='skin'?state.skin:state.envelopes;envelopeGroup.visible=state.envelopes;lastFiberKey='';requestDraw();};
+  for(const name of ['skin','envelopes','labels','myelin','supports'])$(name).onchange=e=>{state[name]=e.target.checked;detailGroup.traverse(o=>{if(o.isMesh&&['support','skin'].includes(o.userData.layer))o.visible=state.supports;});for(const mesh of scaffoldGroup.children)mesh.visible=mesh.userData.category==='skin'?state.skin:state.envelopes;envelopeGroup.visible=state.envelopes;lastFiberKey='';requestDraw();};
   $('quality').onchange=e=>{state.quality=e.target.value;renderer.setPixelRatio(Math.min(devicePixelRatio,budgets[state.quality].pixelRatio));for(const {group}of detailCache.values())dispose(group);detailCache.clear();lastDetailKey='';lastFiberKey='';resize();};
-  $('export-map').onclick=()=>{const exported={...model,cells:model.cells.map(cell=>({...cell,morphology:morphologyPaths(cell)})),displayNote:'Millimeter coordinates; synthetic reference-informed paths and cell geometry, not a measured connectome. Screen-width padding is not physical diameter.'};const url=URL.createObjectURL(new Blob([JSON.stringify(exported)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='Finger_Pathway_Atlas_v4_cell_map.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);};
+  $('export-map').onclick=()=>{const exported={...model,cells:model.cells.map(cell=>({...cell,branches:registeredCellBranches(cell,getPreservedCellRegistration(cell,PRESERVED_CELL_MANIFEST)),loadedLocalArbors:(pathMap.get(cell.id)||[]).filter(path=>path.anchor),preservedSources:Object.fromEntries((cell.terminal?['soma','terminal']:['soma']).map(anchor=>[anchor,preservedAnchorInfo(cell,anchor)]))})),sourceTemplates:PRESERVED_CELL_MANIFEST,localGeometryNote:'Complete source manifest and registrations included; loadedLocalArbors contains only already-visited centerlines. Download the referenced source templates for complete local mesh geometry.',displayNote:'Millimeter coordinates; preserved V3 source geometry and constructed pathways/placements, not a measured connectome. Screen-width padding is not physical diameter.'};const url=URL.createObjectURL(new Blob([JSON.stringify(exported)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='Finger_Pathway_Atlas_v4_cell_map.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);};
   function help(open){$('help-panel').hidden=!open;$('help-toggle').setAttribute('aria-expanded',String(open));if(open)$('help-close').focus();else $('help-toggle').focus();}
   function collapseInspector(collapsed){$('inspector').classList.toggle('collapsed',collapsed);$('inspector-toggle').textContent=collapsed?'Show details':'Collapse';$('inspector-toggle').setAttribute('aria-expanded',String(!collapsed));requestDraw();}
   $('inspector-toggle').onclick=()=>collapseInspector(!$('inspector').classList.contains('collapsed'));
@@ -207,11 +294,11 @@ function start(){
   window.addEventListener('keydown',e=>{if(e.target.matches('input,select,textarea')||e.ctrlKey||e.metaKey||e.altKey)return;if(e.key==='Escape'){help(false);return;}if(e.key==='Home'){e.preventDefault();goRegion('overview');}if(e.key==='ArrowRight'){e.preventDefault();showStop(state.stop+1);}if(e.key==='ArrowLeft'){e.preventDefault();showStop(state.stop-1);}});
   const raycaster=new T.Raycaster(),pointer=new T.Vector2();canvas.addEventListener('pointerdown',e=>{lastPointer=[e.clientX,e.clientY];});canvas.addEventListener('pointerup',e=>{
     if(!lastPointer||Math.hypot(e.clientX-lastPointer[0],e.clientY-lastPointer[1])>4||e.button!==0)return;const rect=canvas.getBoundingClientRect();pointer.set((e.clientX-rect.left)/rect.width*2-1,1-(e.clientY-rect.top)/rect.height*2);raycaster.setFromCamera(pointer,camera);raycaster.params.Line.threshold=Math.max(.002,camera.position.distanceTo(controls.target)*.0015);
-    const surfaces=[...detailGroup.children.filter(g=>g.visible),...fiberGroup.children.filter(g=>g.visible)];
+    const surfaces=[...detailGroup.children.filter(g=>g.visible),...fiberGroup.children.filter(g=>g.visible),...sourceLineGroup.children.filter(g=>g.visible)];
     const detailHit=raycaster.intersectObjects(surfaces,true)[0],lineHit=!detailHit&&raycaster.intersectObjects(globalGroup.visible?globalGroup.children:highlightGroup.children,false)[0],hit=detailHit||lineHit;if(!hit)return;
     let owner=hit.object;while(owner&&!owner.userData.cellId&&!owner.userData.owners)owner=owner.parent;
     const id=owner?.userData.cellId||owner?.userData.owners?.[Math.floor(hit.index/2)],route=model.routes.find(r=>r.cellIds.includes(id));if(route){populateRoutes(route.kind);setRoute(route.id);setCell(id);}
   });
   populateRoutes('touch');const requested=new URLSearchParams(location.hash.slice(1));setRoute(requested.get('route')||model.routes[0].id);populateRoutes(state.route.kind);$('route-select').value=state.route.id;resize();goRegion(requested.get('view')||'overview',{animate:false});loadScaffold();
-  window.fingerAtlasV4={model,state,scene,camera,renderer,controls,goRegion,setRoute,showStop,inspectCell,byId,pathMap,get diagnostics(){return{version:4,registeredCells:model.cells.length,routes:model.routes.length,buildMs:buildTime,lastFrameMs:frameMs,detailCache:detailCache.size,visibleDetails:currentDetails.length,scaffoldLoaded,triangles:renderer.info.render.triangles,drawCalls:renderer.info.render.calls,units:'mm',clippingPlanes:renderer.clippingPlanes.length};}};
+  window.fingerAtlasV4={model,state,scene,camera,renderer,controls,goRegion,setRoute,showStop,inspectCell,byId,pathMap,get diagnostics(){return{version:4,registeredCells:model.cells.length,routes:model.routes.length,buildMs:buildTime,lastFrameMs:frameMs,detailCache:detailCache.size,visibleDetails:currentDetails.length,scaffoldLoaded,anatomy:anatomyLOD.diagnostics,restoredAnchors:detailCache.size,triangles:renderer.info.render.triangles,drawCalls:renderer.info.render.calls,units:'mm',clippingPlanes:renderer.clippingPlanes.length};}};
 }

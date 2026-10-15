@@ -35,7 +35,7 @@ export const REGIONS = [
   region('pons', 'Pons transit', [7, -97, 1528], 24, 'Distinct ascending sensory and descending motor axons traverse the pons. No obligatory relay is invented here.', [28]),
   region('midbrain', 'Midbrain transit', [9, -98, 1544], 22, 'Sensory fibers continue to thalamus while corticospinal axons descend through a separate route.', [28]),
   region('thalamus', 'Left VPL relay', [12, -92, 1561], 1.5, 'Separate modeled thalamic relay neurons connect ascending sensory pathways to S1. VPL is not a segmented source subnucleus.', [29, 38]),
-  region('cortex', 'Left S1 and M1', [36.5, -89, 1607.5], 34, 'Simplified individual cortical receivers and upper motor neurons. Local placement and connectivity are modeled; cortical cell complexity is intentionally reduced.', [30, 31, 32, 33, 34, 36, 37, 38, 39, 40]),
+  region('cortex', 'Left S1 and M1', [36.5, -89, 1607.5], 34, 'Original V3 human cortical trace templates at their source scale. Their use as S1 receivers and M1 output cells, placement and connectivity are modeled.', [30, 31, 32, 33, 34, 36, 37, 38, 39, 40]),
   region('nmj', 'Forearm motor endplates', [-225, -83, 974], 2, 'Motor axons end at a modeled forearm muscle endplate. Other motor routes terminate at extensor and intrinsic hand-muscle targets.', [41, 42, 43, 44]),
   region('proprio', 'Muscle and tendon receptors', [-220, -79, 990], 5, 'Muscle spindles and Golgi tendon organs connect to their own DRG cells, conscious sensory relays and illustrative local spinal collaterals. Select a tendon-organ route to visit its more distal myotendinous target.', [45, 46, 47, 48, 49, 50]),
 ];
@@ -57,8 +57,8 @@ const MOTOR = {
   ulnar: [[-4,-83,1386],[-25,-88,1381],[-74,-94,1361],[-148,-81,1319],[-181,-54,1215],[-203,-42,1082],[-214,-61,1035],[-239,-99,918],[-245,-107,835],[-248,-127,790],[-270,-148,749]],
 };
 
-const SCOPE = 'Representative connected anatomical model: 52 cutaneous tactile afferents, 8 free-ending nociceptive examples, 6 proprioceptive afferents, and 12 motor-unit examples with distinct relay cells. Every modeled cell is present in a single millimetre coordinate system. This is not a full biological cell census, measured connectome, histology/EM segmentation, or physiological simulation. Somata, caliber, dendrites, receptor structures, anatomical routes and synaptic assignments are reference-informed synthetic priors; the source plates are comparisons, not registration data. Conscious proprioceptive pathways and selected local collaterals are represented; cerebellar, autonomic, reticular and other collateral networks are outside this model.';
-const CELL_NOTE = 'Synthetic cell identity, morphology prior and atlas placement; not a measured individual human neuron. Terminal coordinates at target somata encode conceptual synaptic graph attachment, not measured subcellular synapse positions.';
+const SCOPE = 'Representative connected anatomical model: 52 cutaneous tactile afferents, 8 free-ending nociceptive examples, 6 proprioceptive afferents, and 12 motor-unit examples with distinct relay cells. Every modeled cell is present in a single millimetre coordinate system. This is not a full biological cell census, measured connectome, histology/EM segmentation, or physiological simulation. Original V3 anatomical surfaces, detailed procedural cells and measured human cortical trace templates are retained. Placements, long-range trajectories, synaptic assignments and noncortical morphology remain model priors; the source plates are comparisons, not registration data. Conscious proprioceptive pathways and selected local collaterals are represented; cerebellar, autonomic, reticular and other collateral networks are outside this model.';
+const CELL_NOTE = 'Modeled cell identity and atlas placement; original V3 geometry provenance is recorded separately. This is not a measured end-to-end human neuron. Terminal coordinates at target somata encode conceptual synaptic graph attachment, not measured subcellular synapse positions.';
 
 function random(seed) {
   let state = seed >>> 0;
@@ -171,7 +171,7 @@ export function createAtlasModel() {
     route.connections.push(synapse(relay, vpl));
 
     const s1Native = localSoma([36,-78,1607], i, 66, .40);
-    const s1 = makeCell(`${id}-s1`, `Left S1 cortical receiver ${i + 1}`, 'relay', 's1', 'cortex', s1Native, .010 + (i % 3) * .001, .00065, { simplified: true });
+    const s1 = makeCell(`${id}-s1`, `Left S1 cortical receiver ${i + 1}`, 'relay', 's1', 'cortex', s1Native, .010 + (i % 3) * .001, .00065, { simplified: false, geometrySource: 'preserved-v3' });
     vpl.branches.push(nativeBranch(`${vpl.id}-axon`, 'axon', [vplNative, add(CORTICAL[1], offset), s1Native]));
     s1.branches.push(nativeBranch(`${s1.id}-local`, 'axon', [s1Native, add(s1Native, [.035,-.045,-.055]), add(s1Native, [.09,-.02,-.12])]));
     appendCell(s1);
@@ -209,7 +209,7 @@ export function createAtlasModel() {
     const tract = offsetPath(MOTOR[nerve], offset), lmnNative = tract[0];
     const localNative = add([-2.5,-75.5,MOTOR[nerve][0][2]], offset);
     const m1Native = localSoma([37,-100,1608], i, 12, .33);
-    const m1 = makeCell(`${id}-m1`, `Left M1 upper motor neuron ${i + 1}`, 'motor', 'm1', 'cortex', m1Native, .015 + (i % 4) * .002, .0022, { simplified: true, nerve, routeId: `route-${id}` });
+    const m1 = makeCell(`${id}-m1`, `Left M1 upper motor neuron ${i + 1}`, 'motor', 'm1', 'cortex', m1Native, .015 + (i % 4) * .002, .0022, { simplified: false, geometrySource: 'preserved-v3', nerve, routeId: `route-${id}` });
     const local = makeCell(`${id}-interneuron`, `Right spinal motor interneuron ${i + 1}`, 'interneuron', 'spinal-interneuron', 'spinal', localNative, .010 + n * .0007, .0008, { nerve });
     const lmn = makeCell(`${id}-lower`, `Lower motor neuron ${i + 1} (${nerve})`, 'motor', 'lower-motor', 'spinal', lmnNative, .024 + n * .003, .004 + n * .0007, { nerve, terminal: world(tract.at(-1)), receptorType: 'nmj', myelinated: true });
     m1.branches.push(nativeBranch(`${m1.id}-axon`, 'axon', [m1Native, ...offsetPath(UPPER_MOTOR.slice(1), offset), add([-5,-72,1422], offset), localNative]));

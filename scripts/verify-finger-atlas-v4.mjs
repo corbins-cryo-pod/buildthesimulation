@@ -16,9 +16,16 @@ for(const mesh of scaffold.meshes){
   assert.equal(mesh.positions.length%3,0);assert.equal(mesh.indices.length%3,0);
   for(const x of mesh.positions)assert.ok(Number.isFinite(x));
   for(const i of mesh.indices)assert.ok(Number.isInteger(i)&&i>=0&&i<mesh.positions.length/3);
+  assert.ok(mesh.detail,'Original V3 detail descriptor missing');
+  assert.equal(mesh.detail.encoding,'base64-float32-uint32-le');
+  assert.ok(existsSync(root+mesh.detail.url),`Original V3 detail absent: ${mesh.id}`);
+  assert.ok(existsSync(root+mesh.detail.gzipUrl),`Compressed original V3 detail absent: ${mesh.id}`);
   vertices+=mesh.positions.length/3;triangles+=mesh.indices.length/3;
 }
-assert.equal(scaffold.meshes.length,41);assert.equal(vertices,36159);assert.equal(triangles,76856);
+assert.equal(scaffold.meshes.length,provenance.output.meshes);
+assert.equal(vertices,provenance.output.vertices);assert.equal(triangles,provenance.output.triangles);
+assert.deepEqual(scaffold.meshes.map(m=>m.id).sort(),provenance.sourceMeshes.map(m=>m.id).sort());
+assert.equal(scaffold.sourceStats.meshes,scaffold.meshes.length);
 const model=createAtlasModel();assert.equal(model.cells.length,306);assert.equal(model.routes.length,78);
 const evidence=JSON.parse(readFileSync(base+'provenance.json'));
 assert.equal(evidence.version,4);assert.ok(evidence.references.length>=19);assert.match(evidence.scope,/not a full biological cell census/);
