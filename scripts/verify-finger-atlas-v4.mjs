@@ -50,7 +50,7 @@ if(process.argv.includes('--build')){
   const parent=readFileSync(route+'index.html','utf8'),viewer=readFileSync(route+'viewer/index.html','utf8');
   assert.match(parent,/Anatomical edition · V4/);assert.match(parent,/306 individually identified cells/);
   assert.ok(existsSync(route+'v3-viewer/index.html'),'Original viewer archive missing');
-  assert.match(viewer,/ANATOMICAL EDITION IV/);assert.match(viewer,/Inspect ending/);assert.match(viewer,/M1 \+ S1 paired coronal sections/);assert.match(viewer,/cortex-sources\.json/);
+  assert.match(viewer,/ANATOMICAL EDITION IV/);assert.match(viewer,/Inspect ending/);assert.match(viewer,/M1 \+ S1 coronal cortex/);assert.match(viewer,/cortex-sources\.json/);
   assert.doesNotMatch(viewer,/anatomy\.json\.gz\.part|v3\/engine\.js/);
   const resources=[...viewer.matchAll(/(?:src|href)="(\/_astro\/[^"?#]+)"/g)].map(m=>m[1]);
   assert.ok(resources.some(s=>s.endsWith('.js')),'V4 module absent');assert.ok(resources.some(s=>s.endsWith('.css')),'Viewer styling absent');
