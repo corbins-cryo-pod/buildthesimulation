@@ -34,6 +34,7 @@ type DeviceEntry = {
   description: string;
   order: number;
   device_id?: string;
+  code?: string;
   interface_class?: string;
   status?: string;
   modality?: string;
@@ -163,7 +164,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
         [
           e.title,
           e.description,
-          e.device_id,
+          e.code,
           e.interface_class,
           e.status,
           e.modality,
@@ -271,7 +272,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
         </label>
 
         <div class="topRight">
-          <button type="button" class="clear" onClick={() => downloadCatalogCsv('device-catalog.csv', ['Device ID','Title','Evidence stage','Interface class','Modality','Model available','Last reviewed','Catalog URL','Primary source','Description'], filtered.map(e=>[e.device_id,e.title,e.status,e.interface_class,e.modality,getDeviceModel(e.device_id)?'yes':'no',e.last_updated,new URL(`/devices/${e.slug}/`,window.location.origin).href,e.website,e.description]))}>Export results CSV</button>
+          <button type="button" class="clear" onClick={() => downloadCatalogCsv('device-catalog.csv', ['Code','Title','Evidence stage','Interface class','Modality','Model available','Last reviewed','Catalog URL','Primary source','Description'], filtered.map(e=>[e.code,e.title,e.status,e.interface_class,e.modality,getDeviceModel(e.device_id)?'yes':'no',e.last_updated,new URL(`/devices/${e.slug}/`,window.location.origin).href,e.website,e.description]))}>Export results CSV</button>
           <div class="count" role="status" aria-live="polite">{filtered.length} records / {grouped.length} cards</div>
           {hasFilters ? (
             <button type="button" class="clear" onClick={clearAll}>
@@ -356,7 +357,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
                   </a>
                   <figcaption>
                     <span>{pictured.photo.kind}{pictured.photo.additionalViews?.length ? ` · ${pictured.photo.additionalViews.length + 1} views` : ''}</span>
-                    <span class="photo-record">{pictured.device_id}</span>
+                    <span class="photo-record">{pictured.code}</span>
                   </figcaption>
                   <p class="catalog-photo-caption">{pictured.photo.caption}</p>
                   {pictured.slug !== e.slug && <p class="pictured-version">Pictured: <a href={`/devices/${pictured.slug}/`}>{pictured.title}</a>. Other family versions differ.</p>}
