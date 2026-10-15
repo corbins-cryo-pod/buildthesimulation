@@ -8,7 +8,7 @@ const posts = (await getCollection("applications"))
   .sort((a, b) => a.data.order - b.data.order);
 const devices = await getCollection("designs");
 const orgs = await getCollection("companies");
-const usedOrgs = orgs.filter(o => posts.some(p => p.data.orgs.includes(o.slug))).sort((a,b) => a.data.title.localeCompare(b.data.title));
+const usedOrgs = orgs.filter(o => posts.some(p => p.data.orgs.includes(o.slug))).sort((a,b) => strip(a.data.title).localeCompare(strip(b.data.title)));
 const stages = [...new Set(posts.map(p => p.data.status))].sort();
 const stageLabels: Record<string, string> = {human: "Human evidence", preclinical: "Preclinical", research: "Research", theoretical: "Theoretical"};
 const modalities = [...new Set(posts.map(p => p.data.modality))].sort();

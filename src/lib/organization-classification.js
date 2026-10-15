@@ -2,7 +2,7 @@ import catalog from '../data/organization-programs.js';
 
 export const stageLabels = {0: 'Concept', 1: 'Bench testing', 2: 'Animal studies', 3: 'Human studies', 4: 'Clinical product', '?': 'Stage unverified'};
 export const regulatoryLabels = {R: 'Research', A: 'Regulatory approved', K: 'Cleared', '?': 'Status unverified'};
-export const sortLabels = {maturity: 'Most advanced first', early: 'Earliest research first', name: 'Name A–Z'};
+export const sortLabels = {name: 'Name A–Z', maturity: 'Most advanced first', early: 'Earliest research first'};
 
 export function classifyOrganization(entry) {
   const kind = entry.data?.kind ?? entry.kind;
@@ -30,7 +30,7 @@ export function displayProgram(entry, state = {}) {
 }
 
 export function sortAtlasEntries(entries, state = {}) {
-  const sort = state.sort ?? 'maturity';
+  const sort = state.sort ?? 'name';
   return [...entries].sort((a, b) => {
     if (sort !== 'name') {
       const as = displayProgram(a, state)?.stage, bs = displayProgram(b, state)?.stage;
@@ -43,6 +43,5 @@ export function sortAtlasEntries(entries, state = {}) {
 }
 
 export function compareOrganizations(a, b) {
-  const as = classifyOrganization(a).primary.stage, bs = classifyOrganization(b).primary.stage;
-  return (bs ?? -1) - (as ?? -1) || a.data.title.replace(/^\d+\s*[-—]\s*/, '').localeCompare(b.data.title.replace(/^\d+\s*[-—]\s*/, ''));
+  return a.data.title.replace(/^\d+\s*[-—]\s*/, '').localeCompare(b.data.title.replace(/^\d+\s*[-—]\s*/, ''));
 }
