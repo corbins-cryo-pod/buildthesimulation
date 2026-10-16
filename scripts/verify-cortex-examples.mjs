@@ -15,6 +15,7 @@ export const EXAMPLE_SOURCE_PATHS = [
   'src/lib/cortex/config.js',
   'src/lib/cortex/implants.js',
   'src/lib/cortex/experiment.js',
+  'src/lib/cortex/response-analysis.js',
   'src/lib/cortex/world.js',
   'src/lib/cortex/active-morphology.js',
   'src/lib/cortex/active-cable.js',

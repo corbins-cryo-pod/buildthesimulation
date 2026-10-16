@@ -6,7 +6,7 @@ human recordings by its original authors; this port has no held-out biological
 validation. There are no clinical, human recruitment, device-performance or
 tissue-safety claims.
 
-`node --test tests/cortex-laboratory.mjs` runs the tests below. The benchmark's
+`npm test` runs the regression suites described below. The foundation benchmark's
 achieved values and tested configurations are in `benchmarks/latest.json`.
 
 | Subsystem / test | Independent mathematical reference | Metric / gate | Status |
@@ -159,8 +159,10 @@ settings, source equations and engine revisions are unchanged.
 Eight complete examples were executed and their actual outcomes retained with
 source/configuration hashes. Regression tests rerun the new shifted-array,
 unshifted-array and reversed-polarity cases. This verifies reproduction, not
-independent biological truth. New 1000 µs cases have no new native dynamics
-fixtures; see EXAMPLES.md. The bounded 3×3 refinement matrix and predeclared
+independent biological truth. At that milestone the 1000 µs cases had no new native dynamics
+fixtures; the 2026-10-16 study adds a matched 10 µm shifted-candidate comparison
+without certifying the other meshes or reversed-polarity case. See EXAMPLES.md
+and NUMERICAL_RELIABILITY.md. The bounded 3×3 refinement matrix and predeclared
 acceptance results are in REFINEMENT.md, including failed convergence gates.
 
 Static artifact checks traverse the current hydrated entry’s reachable chunks
@@ -195,3 +197,26 @@ hashes, every metric, exact configurations and interpretation. These are fixed
 numerical agreement cases; unresolved spatial refinement and lack of independent
 biological validation remain. Tests also exercise long-step budget rejection,
 configuration round-trip, sampling-independent events and worker cancellation.
+
+## Active human-cell reliability audit, 2026-10-16
+
+The original numerical comparison arrays reproduce exactly on rerun: all six
+extracellular spatial-threshold comparisons still fail the 2% gate, and 14/26
+waveform comparisons fail. Eleven new independent NEURON cases pass their
+retained agreement gates, including the 19 µA no/local/no mesh classification
+and a 10 µm shifted-array soma-event case. Full physical-voltage errors reach
+2.90e−7 mV RMS / 5.43e−7 mV maximum; current and recording comparisons also pass.
+This validates selected same-discretization implementations, not spatial
+convergence or new configurations generally. Detailed tighter brackets and
+finer offline studies are in [NUMERICAL_RELIABILITY.md](NUMERICAL_RELIABILITY.md).
+
+The response analysis retains raw detector outputs and separately reports
+polarization, local crossings, soma events and sampled overshoot/return evidence.
+Propagation remains not established. Tests cover zero-area exclusion, coarse
+sampling/short observation limits, event evidence windows, quantity definitions
+and actual experiment/export integration. Fresh reference reports explicitly
+mark incomplete or failed comparisons; targeted study tests independently check
+coverage, hashes and raw-data acceptance calculations. The human-only workflow
+and both sustained native-reference recordings remain verified. See
+[RELIABILITY_REFERENCES.md](RELIABILITY_REFERENCES.md) for exact reproduction and
+[TARGETED_REFINEMENT_PROVENANCE.md](TARGETED_REFINEMENT_PROVENANCE.md) for audit scope.
