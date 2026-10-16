@@ -48,6 +48,7 @@ const relevantPaths = [
   'src/lib/cortex/active-cable.js',
   'src/lib/cortex/active-channels.js',
   'src/lib/cortex/experiment.js',
+  'src/lib/cortex/response-analysis.js',
   'src/lib/cortex/volume-conductor.js',
   'src/lib/cortex/buffers.js',
   'src/lib/cortex/models/allen571654895.json',

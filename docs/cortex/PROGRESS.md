@@ -1,5 +1,56 @@
 # Development handoff
 
+## 2026-10-16 — Active human-cell numerical reliability
+
+Branched from main `8d3de557` into `fix/cortex-numerical-reliability`. The human
+cell remains the sole interactive model. No solver equation, fitting parameter,
+initialization, waveform or internal event-detection rule changed. The audit
+found no substantiated implementation defect; historical convergence failures
+remain explicit rather than being reclassified as passes by reference agreement.
+
+Reran the original 141-run refinement study: numerical comparison arrays are
+identical to the historical report, with all six extracellular spatial-threshold
+comparisons and 14/26 waveform comparisons failing their unchanged gates. Added
+a predeclared finer study through research-only 2.5 µm compartments and
+0.000625 ms timesteps, tight threshold brackets, fixed-current classifications,
+physical probe comparisons and completeness/provenance guards. These meshes are
+not added to the public configuration schema. See NUMERICAL_RELIABILITY.md for
+results and interpretation, TARGETED_REFINEMENT.md for frozen criteria, and
+TARGETED_REFINEMENT_PROVENANCE.md for the initial during-run supplemental hash
+capture limitation and complete future audit workflow.
+
+Generated 11 new independent original-mechanism NEURON/LFPykit references,
+including historical threshold endpoints and 19 µA at 40/20/10 µm. The two solvers
+agree on no/local/no crossings at 19 µA, with no soma events. New shifted-array
+and intracellular cases at 10 µm / 0.00125 ms each produce one soma event with
+sampled overshoot/return evidence. All fixed-case agreement gates pass, with
+worst physical-voltage maximum error 5.43e−7 mV. The separate research-only
+42/43 µm positional pair also agrees for soma waveforms; it is not a
+neuron-separation or device-resolution result. Exact native environment,
+mechanism-library, source, input, payload and orchestration history are retained.
+
+UI and additive result/export metadata now distinguish polarization, local
+crossings, soma threshold events, sampled AP-like evidence and unestablished
+propagation. Electrical potential, field, neural recording and applied artifact
+have separate definitions. Example labels and a visible extracellular
+mesh-sensitivity notice prevent stronger classification claims. Sustained
+200/500 ms inputs still produce 9/18 total events and pass separate native
+references; all nine human-cell examples were rerun. Source-hash coverage now
+includes response analysis. See RELIABILITY_REFERENCES.md for reproduction.
+
+Completed checks: **253/253 tests** across nonoverlapping groups; 460-page build;
+Cortex and both Finger Atlas artifact checks; all nine examples; and whitespace
+checks. Targeted thresholds pass 5/7 comparisons, and all 15 fixed-probe waveform
+sets pass their voltage/recording gates. Four overall comparisons fail solely
+on local-event classification changes. The 5→2.5 µm fine threshold envelope is
+0.309%; original coarse failures remain. Publication checks are recorded on the PR.
+
+The remaining limitations include the two-section 60 µm synthetic axon, one
+human temporal layer-2 cell, mixed-source kinetics, ideal point contacts and
+homogeneous unbounded tissue. No M1/S1, population selectivity, causal propagation
+or biological/device accuracy is established. Supported interactive browser QA
+remains outstanding; static build/artifact checks are a distinct verification.
+
 ## 2026-10-14 — Sustained patch-clamp-style current steps
 
 Branched from verified main `503c78c` into `feature/cortex-long-current-steps` in

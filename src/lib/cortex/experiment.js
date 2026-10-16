@@ -5,6 +5,7 @@ import { createActiveCable, stepActiveCable } from './active-cable.js';
 import { activeModelData } from './active-morphology.js';
 import { resultBuffers } from './buffers.js';
 import { modelRegistry } from './model-registry.js';
+import { analyzeActiveResponse } from './response-analysis.js';
 const conditionedStates = new Map();
 import {
   leadField,
@@ -141,7 +142,7 @@ export function runExperiment(input, progress = () => {}) {
       thresholdMv: -25,
       refractoryMs: 2,
       convention:
-        'Upward voltage crossing, linearly interpolated between internal solver steps; earliest crossing is model-dependent',
+        'Upward voltage threshold event, linearly interpolated between internal solver steps; the legacy spikes field does not by itself confirm a regenerative action potential or propagation',
     };
     result.spikes = [];
     result.firstCrossingByCompartment = new Float64Array(n).fill(NaN);
@@ -348,13 +349,6 @@ export function runExperiment(input, progress = () => {}) {
     result.warnings.push(
       'Fewer than four timesteps per stimulation phase. Refine dt before interpreting transient polarization.',
     );
-  result.diagnostics.elapsedMs = performance.now() - started;
-  result.diagnostics.wallSecondsPerBiologicalSecond =
-    result.diagnostics.elapsedMs / c.solver.durationMs;
-  result.diagnostics.outputBytes = resultBuffers(result).reduce(
-    (sum, buffer) => sum + buffer.byteLength,
-    0,
-  );
   if (active) {
     const first = Array.from(result.firstCrossingByCompartment)
       .map((timeMs, i) => ({ timeMs, compartmentId: nodes[i].id, kind: nodes[i].kind }))
@@ -363,7 +357,17 @@ export function runExperiment(input, progress = () => {}) {
     result.diagnostics.firstThresholdCrossing = first ?? null;
     result.diagnostics.spikeCount = result.spikes.length;
     result.somaIndex = world.neuron.somaIndex;
+    result.responseAnalysis = analyzeActiveResponse(result, world);
+    result.modelStatus.spatialThresholdConvergence =
+      'Not established across supported meshes: all six extracellular spatial-threshold comparisons in the original 40/20/10 µm study fail the unchanged 2% gate. Independent solver agreement at a fixed mesh does not establish spatial convergence.';
   }
+  result.diagnostics.elapsedMs = performance.now() - started;
+  result.diagnostics.wallSecondsPerBiologicalSecond =
+    result.diagnostics.elapsedMs / c.solver.durationMs;
+  result.diagnostics.outputBytes = resultBuffers(result).reduce(
+    (sum, buffer) => sum + buffer.byteLength,
+    0,
+  );
   progress({ progress: 1, biologicalMs: c.solver.durationMs });
   return result;
 }
@@ -463,6 +467,7 @@ export function resultBundle(result) {
       membrane: 'mV',
       electrode: 'µV',
       membraneCurrent: 'nA',
+      electricField: 'V/m',
       geometry: 'µm',
       drive:
         result.config.protocol.mode === 'extracellular-stimulation'
@@ -470,6 +475,14 @@ export function resultBundle(result) {
           : result.config.protocol.mode === 'intracellular-current'
             ? 'nA'
             : 'nS',
+    },
+    electricalQuantities: {
+      membraneMv: 'Transmembrane voltage Vi − Ve. Polarization is its change from the conditioned initial state, not the applied extracellular potential.',
+      appliedPotential: 'Extracellular scalar potential of the prescribed source/return current in the homogeneous conductor; not membrane voltage.',
+      electricField: 'Negative spatial gradient of the applied extracellular potential, in V/m; displayed tissue slices may show potential or field magnitude.',
+      neuralUv: 'Ideal recording-site potential calculated from total transmembrane currents, including capacitive and ionic currents.',
+      appliedUv: 'Applied source/return potential at the ideal recording site, reported separately as the modeled stimulation/injection artifact; excludes electrode interface and amplifier effects.',
+      totalUv: 'Algebraic sum of neuralUv and appliedUv at each ideal recording site.',
     },
     coordinateSystem:
       `right-handed; +Z depth below pia; rotations X then Y then Z about ${world.model.cortex.origin}; all world positions µm; contact positionMm remains implant-local`,

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "cortex-examples-verification/1",
-  "generatedAt": "2026-10-15T10:38:30.807Z",
+  "generatedAt": "2026-10-16T13:08:50.866Z",
   "status": "passed",
   "runtime": {
     "node": "v24.19.0",
@@ -17,11 +17,12 @@
     "finite": "All retained membrane voltages/currents and recording components must be finite."
   },
   "sourceHashes": {
-    "scripts/verify-cortex-examples.mjs": "4f89864cd2647d9398ffb8380e57db80cc8db84ce2ef31cfe7045fdad2d2800c",
-    "src/lib/cortex/examples.js": "134351c4a7f45fd28fb527ff997e79bdbf22328bc438a40490f92f32c0cd91ad",
+    "scripts/verify-cortex-examples.mjs": "9d3d30b3ac3408fe097709e1315b138eaffb30b95e477fab7647d30bbf2933a8",
+    "src/lib/cortex/examples.js": "f986682443b437e32e83d23213cc34654b77cb16adf78807e265d659378543c1",
     "src/lib/cortex/config.js": "fdf67b124b0f5b60c68698e954106b52bba72b82d7a786d706b1250d73fb9d6e",
     "src/lib/cortex/implants.js": "fa664d2d1f812cd59937f6370785b60abf4897725f4f105c4f8a12304ccf84e2",
-    "src/lib/cortex/experiment.js": "1e9eb7cc7b701622a1179a5da18359a8b5552bca6d097591de311a1e91b50b69",
+    "src/lib/cortex/experiment.js": "75a0c325906cc10477747784b7568a089e4fe8438d889ac7377570d9306c4eeb",
+    "src/lib/cortex/response-analysis.js": "f01177fb217dbe99395dcfd0f4c54382b1d9652c62f993490e308a2c398da664",
     "src/lib/cortex/world.js": "3b1350748dd202b9b7969b76c3b893d120cd8da9af41ea3c6aad5f7fad19bfe0",
     "src/lib/cortex/active-morphology.js": "9304538355a52714802af57a0d86140e2509e28dfdebc1a95238233a156bc734",
     "src/lib/cortex/active-cable.js": "dfa8b78268f781f69c9f5ef8e3e7ca713a7c440b884e07093930b62fba21812f",
@@ -184,7 +185,7 @@
       "crossingCriterion": {
         "thresholdMv": -25,
         "refractoryMs": 2,
-        "convention": "Upward voltage crossing, linearly interpolated between internal solver steps; earliest crossing is model-dependent"
+        "convention": "Upward voltage threshold event, linearly interpolated between internal solver steps; the legacy spikes field does not by itself confirm a regenerative action potential or propagation"
       },
       "localCrossingCount": 0,
       "localCrossings": [],
@@ -405,13 +406,13 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 0,
         "anodicChargeNc": 0,
-        "elapsedMs": 4835.21687,
+        "elapsedMs": 4073.0250789999996,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 120.88042175000001,
         "firstThresholdCrossing": null,
-        "spikeCount": 0
+        "spikeCount": 0,
+        "wallSecondsPerBiologicalSecond": 101.82562697499999
       },
       "conditioning": "computed",
       "warnings": []
@@ -563,7 +564,7 @@
       "crossingCriterion": {
         "thresholdMv": -25,
         "refractoryMs": 2,
-        "convention": "Upward voltage crossing, linearly interpolated between internal solver steps; earliest crossing is model-dependent"
+        "convention": "Upward voltage threshold event, linearly interpolated between internal solver steps; the legacy spikes field does not by itself confirm a regenerative action potential or propagation"
       },
       "localCrossingCount": 141,
       "localCrossings": [
@@ -2210,17 +2211,17 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 0,
         "anodicChargeNc": 0,
-        "elapsedMs": 1546.8930449999998,
+        "elapsedMs": 1764.8031369999999,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 38.672326125,
         "firstThresholdCrossing": {
           "timeMs": 9.020456068584641,
           "compartmentId": "axon_stub[1]:0",
           "kind": "axon"
         },
-        "spikeCount": 1
+        "spikeCount": 1,
+        "wallSecondsPerBiologicalSecond": 44.120078424999996
       },
       "conditioning": "reused identical state",
       "warnings": []
@@ -2404,7 +2405,7 @@
       "crossingCriterion": {
         "thresholdMv": -25,
         "refractoryMs": 2,
-        "convention": "Upward voltage crossing, linearly interpolated between internal solver steps; earliest crossing is model-dependent"
+        "convention": "Upward voltage threshold event, linearly interpolated between internal solver steps; the legacy spikes field does not by itself confirm a regenerative action potential or propagation"
       },
       "localCrossingCount": 143,
       "localCrossings": [
@@ -4071,17 +4072,17 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 0,
         "anodicChargeNc": 0,
-        "elapsedMs": 9124.347177,
+        "elapsedMs": 9358.052060000002,
         "outputBytes": 57405240,
         "frames": 2501,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 36.497388707999995,
         "firstThresholdCrossing": {
           "timeMs": 42.963875682474395,
           "compartmentId": "axon_stub[1]:0",
           "kind": "axon"
         },
-        "spikeCount": 9
+        "spikeCount": 9,
+        "wallSecondsPerBiologicalSecond": 37.43220824000001
       },
       "conditioning": "reused identical state",
       "warnings": []
@@ -4301,7 +4302,7 @@
       "crossingCriterion": {
         "thresholdMv": -25,
         "refractoryMs": 2,
-        "convention": "Upward voltage crossing, linearly interpolated between internal solver steps; earliest crossing is model-dependent"
+        "convention": "Upward voltage threshold event, linearly interpolated between internal solver steps; the legacy spikes field does not by itself confirm a regenerative action potential or propagation"
       },
       "localCrossingCount": 143,
       "localCrossings": [
@@ -5968,24 +5969,24 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 0,
         "anodicChargeNc": 0,
-        "elapsedMs": 33695.079171,
+        "elapsedMs": 19561.502797999998,
         "outputBytes": 55110040,
         "frames": 2401,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 56.158465285,
         "firstThresholdCrossing": {
           "timeMs": 73.04576386126861,
           "compartmentId": "axon_stub[1]:0",
           "kind": "axon"
         },
-        "spikeCount": 18
+        "spikeCount": 18,
+        "wallSecondsPerBiologicalSecond": 32.60250466333333
       },
       "conditioning": "reused identical state",
       "warnings": []
     },
     {
       "id": "extracellular-local-crossings",
-      "title": "Array · local crossings without soma spike",
+      "title": "Array · local crossings without soma event",
       "status": {
         "status": "passed",
         "decompositionResidualUv": 0,
@@ -6125,7 +6126,7 @@
       "crossingCriterion": {
         "thresholdMv": -25,
         "refractoryMs": 2,
-        "convention": "Upward voltage crossing, linearly interpolated between internal solver steps; earliest crossing is model-dependent"
+        "convention": "Upward voltage threshold event, linearly interpolated between internal solver steps; the legacy spikes field does not by itself confirm a regenerative action potential or propagation"
       },
       "localCrossingCount": 10,
       "localCrossings": [
@@ -6498,24 +6499,24 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 7.9999999999998295,
         "anodicChargeNc": 7.9999999999998295,
-        "elapsedMs": 1498.1714439999996,
+        "elapsedMs": 1537.933864999999,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 37.45428609999999,
         "firstThresholdCrossing": {
           "timeMs": 5.058694759896566,
           "compartmentId": "apic[40]:1",
           "kind": "dendrite"
         },
-        "spikeCount": 0
+        "spikeCount": 0,
+        "wallSecondsPerBiologicalSecond": 38.44834662499998
       },
       "conditioning": "reused identical state",
       "warnings": []
     },
     {
       "id": "extracellular-soma-spike",
-      "title": "Array · calculated soma spike",
+      "title": "Array · soma threshold event",
       "status": {
         "status": "passed",
         "decompositionResidualUv": 0,
@@ -6660,7 +6661,7 @@
       "crossingCriterion": {
         "thresholdMv": -25,
         "refractoryMs": 2,
-        "convention": "Upward voltage crossing, linearly interpolated between internal solver steps; earliest crossing is model-dependent"
+        "convention": "Upward voltage threshold event, linearly interpolated between internal solver steps; the legacy spikes field does not by itself confirm a regenerative action potential or propagation"
       },
       "localCrossingCount": 135,
       "localCrossings": [
@@ -8283,17 +8284,17 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 39.99999999999915,
         "anodicChargeNc": 39.99999999999915,
-        "elapsedMs": 2339.1085139999996,
+        "elapsedMs": 1219.3745119999949,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 58.47771284999999,
         "firstThresholdCrossing": {
           "timeMs": 5.379964638768679,
           "compartmentId": "dend[11]:0",
           "kind": "dendrite"
         },
-        "spikeCount": 1
+        "spikeCount": 1,
+        "wallSecondsPerBiologicalSecond": 30.48436279999987
       },
       "conditioning": "reused identical state",
       "warnings": []
@@ -8440,7 +8441,7 @@
       "crossingCriterion": {
         "thresholdMv": -25,
         "refractoryMs": 2,
-        "convention": "Upward voltage crossing, linearly interpolated between internal solver steps; earliest crossing is model-dependent"
+        "convention": "Upward voltage threshold event, linearly interpolated between internal solver steps; the legacy spikes field does not by itself confirm a regenerative action potential or propagation"
       },
       "localCrossingCount": 112,
       "localCrossings": [
@@ -9833,17 +9834,17 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 39.99999999999915,
         "anodicChargeNc": 39.99999999999915,
-        "elapsedMs": 2011.558465000002,
+        "elapsedMs": 1292.949649999995,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 50.28896162500005,
         "firstThresholdCrossing": {
           "timeMs": 5.058694759896566,
           "compartmentId": "apic[40]:1",
           "kind": "dendrite"
         },
-        "spikeCount": 0
+        "spikeCount": 0,
+        "wallSecondsPerBiologicalSecond": 32.32374124999988
       },
       "conditioning": "reused identical state",
       "warnings": []
@@ -9995,7 +9996,7 @@
       "crossingCriterion": {
         "thresholdMv": -25,
         "refractoryMs": 2,
-        "convention": "Upward voltage crossing, linearly interpolated between internal solver steps; earliest crossing is model-dependent"
+        "convention": "Upward voltage threshold event, linearly interpolated between internal solver steps; the legacy spikes field does not by itself confirm a regenerative action potential or propagation"
       },
       "localCrossingCount": 130,
       "localCrossings": [
@@ -11568,17 +11569,17 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 39.99999999999915,
         "anodicChargeNc": 39.99999999999915,
-        "elapsedMs": 2320.926910999995,
+        "elapsedMs": 1293.3664379999973,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 58.02317277499988,
         "firstThresholdCrossing": {
           "timeMs": 5.127866143142854,
           "compartmentId": "apic[35]:2",
           "kind": "dendrite"
         },
-        "spikeCount": 1
+        "spikeCount": 1,
+        "wallSecondsPerBiologicalSecond": 32.334160949999934
       },
       "conditioning": "reused identical state",
       "warnings": []
@@ -11725,7 +11726,7 @@
       "crossingCriterion": {
         "thresholdMv": -25,
         "refractoryMs": 2,
-        "convention": "Upward voltage crossing, linearly interpolated between internal solver steps; earliest crossing is model-dependent"
+        "convention": "Upward voltage threshold event, linearly interpolated between internal solver steps; the legacy spikes field does not by itself confirm a regenerative action potential or propagation"
       },
       "localCrossingCount": 10,
       "localCrossings": [
@@ -12098,17 +12099,17 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 7.9999999999998295,
         "anodicChargeNc": 7.9999999999998295,
-        "elapsedMs": 2066.358304000001,
+        "elapsedMs": 2629.072847999996,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
-        "wallSecondsPerBiologicalSecond": 51.65895760000003,
         "firstThresholdCrossing": {
           "timeMs": 5.058694759896566,
           "compartmentId": "apic[40]:1",
           "kind": "dendrite"
         },
-        "spikeCount": 0
+        "spikeCount": 0,
+        "wallSecondsPerBiologicalSecond": 65.7268211999999
       },
       "conditioning": "reused identical state",
       "warnings": []

@@ -1,0 +1,1044 @@
+{
+  "schemaVersion": "cortex-reliability-comparison/2",
+  "generatedAt": "2026-10-16T13:24:22.856Z",
+  "status": "passed",
+  "completed": true,
+  "passed": true,
+  "expectedCaseCount": 11,
+  "completedCaseCount": 11,
+  "provenance": {
+    "completed": true,
+    "passed": true
+  },
+  "fixtureUnchanged": true,
+  "nativeFixtureSha256": "c0da9ef3a2540c3d07120d61c9df666ab7303d6dd73d68e2df0fe8a3fd5cef46",
+  "comparisonSourceHashes": {
+    "tests/cortex-reliability-reference.mjs": "99ad64129675d9a2f39fd4bc37b673c3946f6d6e560e0ed1d2ab0fc1e80a3349",
+    "scripts/cortex-reliability-reference-input.mjs": "e133cd681ed6395ad213d0f1fc972a66dfd745fba15901b8952477f036f2be23",
+    "src/lib/cortex/active-cable.js": "dfa8b78268f781f69c9f5ef8e3e7ca713a7c440b884e07093930b62fba21812f",
+    "src/lib/cortex/active-channels.js": "be4c862dddd31f0492c27c7f9349d40550b0402b562d561d3fe22d799237afbb",
+    "src/lib/cortex/active-morphology.js": "9304538355a52714802af57a0d86140e2509e28dfdebc1a95238233a156bc734",
+    "src/lib/cortex/models/allen571654895.json": "1e0ca661dc7abc8b24d2e1abe435c12247821961113cf05b43d7cc1db5367e54",
+    "src/lib/cortex/experiment.js": "75a0c325906cc10477747784b7568a089e4fe8438d889ac7377570d9306c4eeb",
+    "src/lib/cortex/response-analysis.js": "f01177fb217dbe99395dcfd0f4c54382b1d9652c62f993490e308a2c398da664",
+    "src/lib/cortex/volume-conductor.js": "2ddfc04a1d5bb695c764d9833584ffc1ee48ef8c19c217c32a52b1531088b601",
+    "src/lib/cortex/config.js": "fdf67b124b0f5b60c68698e954106b52bba72b82d7a786d706b1250d73fb9d6e"
+  },
+  "comparisonSourcesUnchanged": true,
+  "nodeVersion": "v24.19.0",
+  "comparisonConvention": "Identical mesh, fixed timestep, initialization, original mechanisms and point-source forcing. Full physical membrane traces; unshifted samples.",
+  "limits": {
+    "voltageRmsMv": 0.1,
+    "voltageMaximumMv": 1,
+    "eventTimeMs": 0.1,
+    "currentRelativeRms": 0.01,
+    "currentFloorNa": 0.0001,
+    "signalRelativeRms": 0.01,
+    "signalFloorUv": 0.0001
+  },
+  "cases": [
+    {
+      "id": "reliability-local-40um-lower",
+      "completed": true,
+      "passed": true,
+      "status": "passed",
+      "meshUm": 40,
+      "dtMs": 0.00125,
+      "amplitudeUa": 19.375,
+      "mode": "extracellular-stimulation",
+      "voltageRmsMv": 2.882288950986143e-7,
+      "voltageMaximumMv": 5.000250240527748e-7,
+      "somaVoltageRmsMv": 2.8611214517417375e-7,
+      "somaVoltageMaximumMv": 4.993984674683816e-7,
+      "membraneCurrentRmsNa": 2.8818473712627274e-8,
+      "nativePeakCurrentNa": 0.44371629999999995,
+      "browserSomaCrossings": [],
+      "nativeSomaCrossings": [],
+      "nativeEarliestLocalCrossing": null,
+      "nativeSampledSomaPeakMv": -90.9791716900835,
+      "browserAnyLocalCrossing": false,
+      "nativeAnyLocalCrossing": false,
+      "thresholdWindowEndMs": 15,
+      "browserLocalCrossingBy15Ms": false,
+      "nativeLocalCrossingBy15Ms": false,
+      "nativeNewCrossingsAfter15Ms": 0,
+      "browserSomaWaveformEvidenceCount": 0,
+      "nativeMaxConservationResidualNa": 4.003077776486459e-13,
+      "browserMaxConservationResidualNa": 3.4638498124482664e-12,
+      "browserMaxKclResidualNa": 3.48946631138769e-12,
+      "maximumFirstCrossingTimeErrorMs": 0,
+      "signals": {
+        "neuralUv": [
+          {
+            "rmsUv": 3.7689760984357285e-13,
+            "maximumUv": 1.0304049280485117e-12,
+            "nativePeakUv": 0.10285742547898617
+          },
+          {
+            "rmsUv": 3.019458054280907e-13,
+            "maximumUv": 1.0725378918330364e-12,
+            "nativePeakUv": 0.06922658055659382
+          }
+        ],
+        "appliedUv": [
+          {
+            "rmsUv": 1.926922463680372e-13,
+            "maximumUv": 1.3642420526593924e-12,
+            "nativePeakUv": 3339.2235430085457
+          },
+          {
+            "rmsUv": 1.926922463680372e-13,
+            "maximumUv": 1.3642420526593924e-12,
+            "nativePeakUv": 3339.2235430085457
+          }
+        ],
+        "totalUv": [
+          {
+            "rmsUv": 4.538871872448918e-13,
+            "maximumUv": 2.2737367544323206e-12,
+            "nativePeakUv": 3339.160228352211
+          },
+          {
+            "rmsUv": 3.7239968912510474e-13,
+            "maximumUv": 1.8189894035458565e-12,
+            "nativePeakUv": 3339.1793576655004
+          }
+        ]
+      },
+      "localCrossingClassificationMismatchCount": 0,
+      "maximumSomaCrossingTimeErrorMs": 0,
+      "gates": {
+        "voltageRms": true,
+        "voltageMaximum": true,
+        "membraneCurrentRms": true,
+        "globalLocalClassification20Ms": true,
+        "globalLocalClassification15Ms": true,
+        "somaCrossingCount": true,
+        "somaCrossingTimes": true,
+        "compartmentCrossingClassification": true,
+        "compartmentCrossingTimes": true,
+        "recordingSignals": true,
+        "conservation": true,
+        "localKcl": true
+      }
+    },
+    {
+      "id": "reliability-local-40um-upper",
+      "completed": true,
+      "passed": true,
+      "status": "passed",
+      "meshUm": 40,
+      "dtMs": 0.00125,
+      "amplitudeUa": 19.53125,
+      "mode": "extracellular-stimulation",
+      "voltageRmsMv": 2.8980500387323793e-7,
+      "voltageMaximumMv": 5.036466177443799e-7,
+      "somaVoltageRmsMv": 2.9409235565165307e-7,
+      "somaVoltageMaximumMv": 4.978640077979435e-7,
+      "membraneCurrentRmsNa": 2.8880730936076524e-8,
+      "nativePeakCurrentNa": 0.4472539,
+      "browserSomaCrossings": [],
+      "nativeSomaCrossings": [],
+      "nativeEarliestLocalCrossing": {
+        "timeMs": 5.590315949937092,
+        "id": "apic[40]:4",
+        "sectionId": "apic[40]",
+        "sectionX": 0.9,
+        "positionUm": [
+          -267.13506978864245,
+          -194.73653662142104,
+          1393.1356351753063
+        ]
+      },
+      "nativeSampledSomaPeakMv": -90.4318550831313,
+      "browserAnyLocalCrossing": true,
+      "nativeAnyLocalCrossing": true,
+      "thresholdWindowEndMs": 15,
+      "browserLocalCrossingBy15Ms": true,
+      "nativeLocalCrossingBy15Ms": true,
+      "nativeNewCrossingsAfter15Ms": 0,
+      "browserSomaWaveformEvidenceCount": 0,
+      "nativeMaxConservationResidualNa": 3.608307703735318e-13,
+      "browserMaxConservationResidualNa": 3.856540249907309e-12,
+      "browserMaxKclResidualNa": 3.4781199188121947e-12,
+      "maximumFirstCrossingTimeErrorMs": 6.605294089467861e-11,
+      "signals": {
+        "neuralUv": [
+          {
+            "rmsUv": 5.502648197929885e-13,
+            "maximumUv": 2.6769662875292255e-12,
+            "nativePeakUv": 0.10494519907247249
+          },
+          {
+            "rmsUv": 3.9453630442576033e-13,
+            "maximumUv": 1.821270564916766e-12,
+            "nativePeakUv": 0.07045144295266699
+          }
+        ],
+        "appliedUv": [
+          {
+            "rmsUv": 1.2846149757869146e-13,
+            "maximumUv": 9.094947017729282e-13,
+            "nativePeakUv": 3366.152765129582
+          },
+          {
+            "rmsUv": 1.2846149757869146e-13,
+            "maximumUv": 9.094947017729282e-13,
+            "nativePeakUv": 3366.152765129582
+          }
+        ],
+        "totalUv": [
+          {
+            "rmsUv": 5.779569549217776e-13,
+            "maximumUv": 2.6769662875292255e-12,
+            "nativePeakUv": 3366.089064393582
+          },
+          {
+            "rmsUv": 4.1328558262991e-13,
+            "maximumUv": 1.821270564916766e-12,
+            "nativePeakUv": 3366.1082889186573
+          }
+        ]
+      },
+      "localCrossingClassificationMismatchCount": 0,
+      "maximumSomaCrossingTimeErrorMs": 0,
+      "gates": {
+        "voltageRms": true,
+        "voltageMaximum": true,
+        "membraneCurrentRms": true,
+        "globalLocalClassification20Ms": true,
+        "globalLocalClassification15Ms": true,
+        "somaCrossingCount": true,
+        "somaCrossingTimes": true,
+        "compartmentCrossingClassification": true,
+        "compartmentCrossingTimes": true,
+        "recordingSignals": true,
+        "conservation": true,
+        "localKcl": true
+      }
+    },
+    {
+      "id": "reliability-local-40um-fixed19",
+      "completed": true,
+      "passed": true,
+      "status": "passed",
+      "meshUm": 40,
+      "dtMs": 0.00125,
+      "amplitudeUa": 19,
+      "mode": "extracellular-stimulation",
+      "voltageRmsMv": 2.897435530730062e-7,
+      "voltageMaximumMv": 5.000234750696109e-7,
+      "somaVoltageRmsMv": 3.023739429770798e-7,
+      "somaVoltageMaximumMv": 4.964157227504984e-7,
+      "membraneCurrentRmsNa": 2.8909061838668967e-8,
+      "nativePeakCurrentNa": 0.43520739999999997,
+      "browserSomaCrossings": [],
+      "nativeSomaCrossings": [],
+      "nativeEarliestLocalCrossing": null,
+      "nativeSampledSomaPeakMv": -91.12671299651394,
+      "browserAnyLocalCrossing": false,
+      "nativeAnyLocalCrossing": false,
+      "thresholdWindowEndMs": 15,
+      "browserLocalCrossingBy15Ms": false,
+      "nativeLocalCrossingBy15Ms": false,
+      "nativeNewCrossingsAfter15Ms": 0,
+      "browserSomaWaveformEvidenceCount": 0,
+      "nativeMaxConservationResidualNa": 2.5373572600656535e-13,
+      "browserMaxConservationResidualNa": 3.730758811690965e-12,
+      "browserMaxKclResidualNa": 3.4781199188121947e-12,
+      "maximumFirstCrossingTimeErrorMs": 0,
+      "signals": {
+        "neuralUv": [
+          {
+            "rmsUv": 3.816311924808448e-13,
+            "maximumUv": 1.0585214887774697e-12,
+            "nativePeakUv": 0.09908029398930689
+          },
+          {
+            "rmsUv": 3.0497903521060446e-13,
+            "maximumUv": 8.364102596289391e-13,
+            "nativePeakUv": 0.06694510244052908
+          }
+        ],
+        "appliedUv": [
+          {
+            "rmsUv": 1.2846149757869146e-13,
+            "maximumUv": 9.094947017729282e-13,
+            "nativePeakUv": 3274.5934099180577
+          },
+          {
+            "rmsUv": 1.2846149757869146e-13,
+            "maximumUv": 9.094947017729282e-13,
+            "nativePeakUv": 3274.5934099180577
+          }
+        ],
+        "totalUv": [
+          {
+            "rmsUv": 4.155832418148723e-13,
+            "maximumUv": 1.8189894035458565e-12,
+            "nativePeakUv": 3274.5310623265073
+          },
+          {
+            "rmsUv": 3.393580964792884e-13,
+            "maximumUv": 1.3642420526593924e-12,
+            "nativePeakUv": 3274.5499439803493
+          }
+        ]
+      },
+      "localCrossingClassificationMismatchCount": 0,
+      "maximumSomaCrossingTimeErrorMs": 0,
+      "gates": {
+        "voltageRms": true,
+        "voltageMaximum": true,
+        "membraneCurrentRms": true,
+        "globalLocalClassification20Ms": true,
+        "globalLocalClassification15Ms": true,
+        "somaCrossingCount": true,
+        "somaCrossingTimes": true,
+        "compartmentCrossingClassification": true,
+        "compartmentCrossingTimes": true,
+        "recordingSignals": true,
+        "conservation": true,
+        "localKcl": true
+      }
+    },
+    {
+      "id": "reliability-local-20um-lower",
+      "completed": true,
+      "passed": true,
+      "status": "passed",
+      "meshUm": 20,
+      "dtMs": 0.00125,
+      "amplitudeUa": 18.59375,
+      "mode": "extracellular-stimulation",
+      "voltageRmsMv": 2.8885199117881656e-7,
+      "voltageMaximumMv": 5.000272551569651e-7,
+      "somaVoltageRmsMv": 2.991661767107231e-7,
+      "somaVoltageMaximumMv": 4.989772008912041e-7,
+      "membraneCurrentRmsNa": 2.881584195695154e-8,
+      "nativePeakCurrentNa": 0.3266055,
+      "browserSomaCrossings": [],
+      "nativeSomaCrossings": [],
+      "nativeEarliestLocalCrossing": null,
+      "nativeSampledSomaPeakMv": -91.09027140755789,
+      "browserAnyLocalCrossing": false,
+      "nativeAnyLocalCrossing": false,
+      "thresholdWindowEndMs": 15,
+      "browserLocalCrossingBy15Ms": false,
+      "nativeLocalCrossingBy15Ms": false,
+      "nativeNewCrossingsAfter15Ms": 0,
+      "browserSomaWaveformEvidenceCount": 0,
+      "nativeMaxConservationResidualNa": 1.82509660596325e-13,
+      "browserMaxConservationResidualNa": 3.2317384852193973e-12,
+      "browserMaxKclResidualNa": 3.1124859634079627e-12,
+      "maximumFirstCrossingTimeErrorMs": 0,
+      "signals": {
+        "neuralUv": [
+          {
+            "rmsUv": 3.399982509309255e-13,
+            "maximumUv": 8.608528589948948e-13,
+            "nativePeakUv": 0.09911365490158987
+          },
+          {
+            "rmsUv": 2.7146162803314334e-13,
+            "maximumUv": 6.751924052413733e-13,
+            "nativePeakUv": 0.06662857130376237
+          }
+        ],
+        "appliedUv": [
+          {
+            "rmsUv": 1.2846149757869146e-13,
+            "maximumUv": 9.094947017729282e-13,
+            "nativePeakUv": 3204.5774324033623
+          },
+          {
+            "rmsUv": 1.2846149757869146e-13,
+            "maximumUv": 9.094947017729282e-13,
+            "nativePeakUv": 3204.5774324033623
+          }
+        ],
+        "totalUv": [
+          {
+            "rmsUv": 3.6386550442397797e-13,
+            "maximumUv": 1.3642420526593924e-12,
+            "nativePeakUv": 3204.51690954744
+          },
+          {
+            "rmsUv": 3.11332531104045e-13,
+            "maximumUv": 1.3642420526593924e-12,
+            "nativePeakUv": 3204.5350723085144
+          }
+        ]
+      },
+      "localCrossingClassificationMismatchCount": 0,
+      "maximumSomaCrossingTimeErrorMs": 0,
+      "gates": {
+        "voltageRms": true,
+        "voltageMaximum": true,
+        "membraneCurrentRms": true,
+        "globalLocalClassification20Ms": true,
+        "globalLocalClassification15Ms": true,
+        "somaCrossingCount": true,
+        "somaCrossingTimes": true,
+        "compartmentCrossingClassification": true,
+        "compartmentCrossingTimes": true,
+        "recordingSignals": true,
+        "conservation": true,
+        "localKcl": true
+      }
+    },
+    {
+      "id": "reliability-local-20um-upper",
+      "completed": true,
+      "passed": true,
+      "status": "passed",
+      "meshUm": 20,
+      "dtMs": 0.00125,
+      "amplitudeUa": 18.75,
+      "mode": "extracellular-stimulation",
+      "voltageRmsMv": 2.8827563539002096e-7,
+      "voltageMaximumMv": 5.000245693054239e-7,
+      "somaVoltageRmsMv": 2.880595858887431e-7,
+      "somaVoltageMaximumMv": 4.973902605343028e-7,
+      "membraneCurrentRmsNa": 2.8860025677103957e-8,
+      "nativePeakCurrentNa": 0.32934209999999997,
+      "browserSomaCrossings": [],
+      "nativeSomaCrossings": [],
+      "nativeEarliestLocalCrossing": {
+        "timeMs": 5.197314394128134,
+        "id": "apic[40]:2",
+        "sectionId": "apic[40]",
+        "sectionX": 0.2777777777777778,
+        "positionUm": [
+          -187.69632550229875,
+          -205.4614489286035,
+          1455.584296005935
+        ]
+      },
+      "nativeSampledSomaPeakMv": -91.02955019020189,
+      "browserAnyLocalCrossing": true,
+      "nativeAnyLocalCrossing": true,
+      "thresholdWindowEndMs": 15,
+      "browserLocalCrossingBy15Ms": true,
+      "nativeLocalCrossingBy15Ms": true,
+      "nativeNewCrossingsAfter15Ms": 0,
+      "browserSomaWaveformEvidenceCount": 0,
+      "nativeMaxConservationResidualNa": 2.783727838084199e-13,
+      "browserMaxConservationResidualNa": 3.4165358666097753e-12,
+      "browserMaxKclResidualNa": 3.2706207533927945e-12,
+      "maximumFirstCrossingTimeErrorMs": 7.016609515630989e-14,
+      "signals": {
+        "neuralUv": [
+          {
+            "rmsUv": 3.7651651359755175e-13,
+            "maximumUv": 1.0455031480317845e-12,
+            "nativePeakUv": 0.10059741971624571
+          },
+          {
+            "rmsUv": 2.9637239726233555e-13,
+            "maximumUv": 8.361805646224345e-13,
+            "nativePeakUv": 0.06753485879911393
+          }
+        ],
+        "appliedUv": [
+          {
+            "rmsUv": 1.2846149757869146e-13,
+            "maximumUv": 9.094947017729282e-13,
+            "nativePeakUv": 3231.506654524399
+          },
+          {
+            "rmsUv": 1.2846149757869146e-13,
+            "maximumUv": 9.094947017729282e-13,
+            "nativePeakUv": 3231.506654524399
+          }
+        ],
+        "totalUv": [
+          {
+            "rmsUv": 4.1758855384963007e-13,
+            "maximumUv": 1.8189894035458565e-12,
+            "nativePeakUv": 3231.4457850788863
+          },
+          {
+            "rmsUv": 3.0786563811134396e-13,
+            "maximumUv": 9.094947017729282e-13,
+            "nativePeakUv": 3231.464022975423
+          }
+        ]
+      },
+      "localCrossingClassificationMismatchCount": 0,
+      "maximumSomaCrossingTimeErrorMs": 0,
+      "gates": {
+        "voltageRms": true,
+        "voltageMaximum": true,
+        "membraneCurrentRms": true,
+        "globalLocalClassification20Ms": true,
+        "globalLocalClassification15Ms": true,
+        "somaCrossingCount": true,
+        "somaCrossingTimes": true,
+        "compartmentCrossingClassification": true,
+        "compartmentCrossingTimes": true,
+        "recordingSignals": true,
+        "conservation": true,
+        "localKcl": true
+      }
+    },
+    {
+      "id": "reliability-local-20um-fixed19",
+      "completed": true,
+      "passed": true,
+      "status": "passed",
+      "meshUm": 20,
+      "dtMs": 0.00125,
+      "amplitudeUa": 19,
+      "mode": "extracellular-stimulation",
+      "voltageRmsMv": 2.8883980220145377e-7,
+      "voltageMaximumMv": 5.010891044321397e-7,
+      "somaVoltageRmsMv": 2.877910226139314e-7,
+      "somaVoltageMaximumMv": 4.980999648296347e-7,
+      "membraneCurrentRmsNa": 2.8859775322285147e-8,
+      "nativePeakCurrentNa": 0.3337198,
+      "browserSomaCrossings": [],
+      "nativeSomaCrossings": [],
+      "nativeEarliestLocalCrossing": {
+        "timeMs": 5.190649159917553,
+        "id": "apic[40]:2",
+        "sectionId": "apic[40]",
+        "sectionX": 0.2777777777777778,
+        "positionUm": [
+          -187.69632550229875,
+          -205.4614489286035,
+          1455.584296005935
+        ]
+      },
+      "nativeSampledSomaPeakMv": -90.0940526695825,
+      "browserAnyLocalCrossing": true,
+      "nativeAnyLocalCrossing": true,
+      "thresholdWindowEndMs": 15,
+      "browserLocalCrossingBy15Ms": true,
+      "nativeLocalCrossingBy15Ms": true,
+      "nativeNewCrossingsAfter15Ms": 0,
+      "browserSomaWaveformEvidenceCount": 0,
+      "nativeMaxConservationResidualNa": 2.2088178454251345e-13,
+      "browserMaxConservationResidualNa": 3.5435386314683695e-12,
+      "browserMaxKclResidualNa": 3.2482506268083355e-12,
+      "maximumFirstCrossingTimeErrorMs": 1.1801226662555564e-11,
+      "signals": {
+        "neuralUv": [
+          {
+            "rmsUv": 3.895500795823494e-13,
+            "maximumUv": 1.2123054296542257e-12,
+            "nativePeakUv": 0.10331093919533704
+          },
+          {
+            "rmsUv": 3.067045695706735e-13,
+            "maximumUv": 9.241904116996658e-13,
+            "nativePeakUv": 0.06917139857538336
+          }
+        ],
+        "appliedUv": [
+          {
+            "rmsUv": 1.2846149757869146e-13,
+            "maximumUv": 9.094947017729282e-13,
+            "nativePeakUv": 3274.5934099180577
+          },
+          {
+            "rmsUv": 1.2846149757869146e-13,
+            "maximumUv": 9.094947017729282e-13,
+            "nativePeakUv": 3274.5934099180577
+          }
+        ],
+        "totalUv": [
+          {
+            "rmsUv": 4.248177866774627e-13,
+            "maximumUv": 1.8189894035458565e-12,
+            "nativePeakUv": 3274.5320061870966
+          },
+          {
+            "rmsUv": 3.2995421130677827e-13,
+            "maximumUv": 1.3642420526593924e-12,
+            "nativePeakUv": 3274.5503550513113
+          }
+        ]
+      },
+      "localCrossingClassificationMismatchCount": 0,
+      "maximumSomaCrossingTimeErrorMs": 0,
+      "gates": {
+        "voltageRms": true,
+        "voltageMaximum": true,
+        "membraneCurrentRms": true,
+        "globalLocalClassification20Ms": true,
+        "globalLocalClassification15Ms": true,
+        "somaCrossingCount": true,
+        "somaCrossingTimes": true,
+        "compartmentCrossingClassification": true,
+        "compartmentCrossingTimes": true,
+        "recordingSignals": true,
+        "conservation": true,
+        "localKcl": true
+      }
+    },
+    {
+      "id": "reliability-local-10um-lower",
+      "completed": true,
+      "passed": true,
+      "status": "passed",
+      "meshUm": 10,
+      "dtMs": 0.00125,
+      "amplitudeUa": 19.0625,
+      "mode": "extracellular-stimulation",
+      "voltageRmsMv": 2.886581859213156e-7,
+      "voltageMaximumMv": 5.001335097176707e-7,
+      "somaVoltageRmsMv": 2.822853382087429e-7,
+      "somaVoltageMaximumMv": 4.989712607539332e-7,
+      "membraneCurrentRmsNa": 2.8836686760921412e-8,
+      "nativePeakCurrentNa": 0.20798629999999999,
+      "browserSomaCrossings": [],
+      "nativeSomaCrossings": [],
+      "nativeEarliestLocalCrossing": null,
+      "nativeSampledSomaPeakMv": -91.06752657034819,
+      "browserAnyLocalCrossing": false,
+      "nativeAnyLocalCrossing": false,
+      "thresholdWindowEndMs": 15,
+      "browserLocalCrossingBy15Ms": false,
+      "nativeLocalCrossingBy15Ms": false,
+      "nativeNewCrossingsAfter15Ms": 0,
+      "browserSomaWaveformEvidenceCount": 0,
+      "nativeMaxConservationResidualNa": 4.619067477953324e-13,
+      "browserMaxConservationResidualNa": 4.282115271094303e-12,
+      "browserMaxKclResidualNa": 4.200234344359233e-12,
+      "maximumFirstCrossingTimeErrorMs": 0,
+      "signals": {
+        "neuralUv": [
+          {
+            "rmsUv": 5.11050115186381e-13,
+            "maximumUv": 1.5644597569459615e-12,
+            "nativePeakUv": 0.10139201658050345
+          },
+          {
+            "rmsUv": 4.056659419915317e-13,
+            "maximumUv": 1.2292217482605394e-12,
+            "nativePeakUv": 0.068292991920701
+          }
+        ],
+        "appliedUv": [
+          {
+            "rmsUv": 1.2846149757869146e-13,
+            "maximumUv": 9.094947017729282e-13,
+            "nativePeakUv": 3285.365098766472
+          },
+          {
+            "rmsUv": 1.2846149757869146e-13,
+            "maximumUv": 9.094947017729282e-13,
+            "nativePeakUv": 3285.365098766472
+          }
+        ],
+        "totalUv": [
+          {
+            "rmsUv": 5.345120691625453e-13,
+            "maximumUv": 1.5644597569459615e-12,
+            "nativePeakUv": 3285.303286968766
+          },
+          {
+            "rmsUv": 4.286051075998016e-13,
+            "maximumUv": 1.3642420526593924e-12,
+            "nativePeakUv": 3285.3216735148235
+          }
+        ]
+      },
+      "localCrossingClassificationMismatchCount": 0,
+      "maximumSomaCrossingTimeErrorMs": 0,
+      "gates": {
+        "voltageRms": true,
+        "voltageMaximum": true,
+        "membraneCurrentRms": true,
+        "globalLocalClassification20Ms": true,
+        "globalLocalClassification15Ms": true,
+        "somaCrossingCount": true,
+        "somaCrossingTimes": true,
+        "compartmentCrossingClassification": true,
+        "compartmentCrossingTimes": true,
+        "recordingSignals": true,
+        "conservation": true,
+        "localKcl": true
+      }
+    },
+    {
+      "id": "reliability-local-10um-upper",
+      "completed": true,
+      "passed": true,
+      "status": "passed",
+      "meshUm": 10,
+      "dtMs": 0.00125,
+      "amplitudeUa": 19.21875,
+      "mode": "extracellular-stimulation",
+      "voltageRmsMv": 2.89124400351603e-7,
+      "voltageMaximumMv": 5.001394782766511e-7,
+      "somaVoltageRmsMv": 2.908880042526894e-7,
+      "somaVoltageMaximumMv": 4.987267061551393e-7,
+      "membraneCurrentRmsNa": 2.8868803087072924e-8,
+      "nativePeakCurrentNa": 0.2167932,
+      "browserSomaCrossings": [],
+      "nativeSomaCrossings": [],
+      "nativeEarliestLocalCrossing": {
+        "timeMs": 5.198437827873225,
+        "id": "apic[40]:4",
+        "sectionId": "apic[40]",
+        "sectionX": 0.23684210526315788,
+        "positionUm": [
+          -180.96874536875953,
+          -205.90707162494147,
+          1457.409510694975
+        ]
+      },
+      "nativeSampledSomaPeakMv": -91.00452025344288,
+      "browserAnyLocalCrossing": true,
+      "nativeAnyLocalCrossing": true,
+      "thresholdWindowEndMs": 15,
+      "browserLocalCrossingBy15Ms": true,
+      "nativeLocalCrossingBy15Ms": true,
+      "nativeNewCrossingsAfter15Ms": 0,
+      "browserSomaWaveformEvidenceCount": 0,
+      "nativeMaxConservationResidualNa": 4.41077125537759e-13,
+      "browserMaxConservationResidualNa": 4.034937341928016e-12,
+      "browserMaxKclResidualNa": 4.062520285452731e-12,
+      "maximumFirstCrossingTimeErrorMs": 1.0240697179142444e-12,
+      "signals": {
+        "neuralUv": [
+          {
+            "rmsUv": 4.9619171675486e-13,
+            "maximumUv": 1.6782799244297389e-12,
+            "nativePeakUv": 0.10293091060721986
+          },
+          {
+            "rmsUv": 4.073348508089468e-13,
+            "maximumUv": 1.3123012672735558e-12,
+            "nativePeakUv": 0.06922860695780986
+          }
+        ],
+        "appliedUv": [
+          {
+            "rmsUv": 1.2846149757869146e-13,
+            "maximumUv": 9.094947017729282e-13,
+            "nativePeakUv": 3312.294320887509
+          },
+          {
+            "rmsUv": 1.2846149757869146e-13,
+            "maximumUv": 9.094947017729282e-13,
+            "nativePeakUv": 3312.294320887509
+          }
+        ],
+        "totalUv": [
+          {
+            "rmsUv": 5.226856001256761e-13,
+            "maximumUv": 1.8189894035458565e-12,
+            "nativePeakUv": 3312.232171826507
+          },
+          {
+            "rmsUv": 4.313792371942111e-13,
+            "maximumUv": 1.8189894035458565e-12,
+            "nativePeakUv": 3312.250625562792
+          }
+        ]
+      },
+      "localCrossingClassificationMismatchCount": 0,
+      "maximumSomaCrossingTimeErrorMs": 0,
+      "gates": {
+        "voltageRms": true,
+        "voltageMaximum": true,
+        "membraneCurrentRms": true,
+        "globalLocalClassification20Ms": true,
+        "globalLocalClassification15Ms": true,
+        "somaCrossingCount": true,
+        "somaCrossingTimes": true,
+        "compartmentCrossingClassification": true,
+        "compartmentCrossingTimes": true,
+        "recordingSignals": true,
+        "conservation": true,
+        "localKcl": true
+      }
+    },
+    {
+      "id": "reliability-local-10um-fixed19",
+      "completed": true,
+      "passed": true,
+      "status": "passed",
+      "meshUm": 10,
+      "dtMs": 0.00125,
+      "amplitudeUa": 19,
+      "mode": "extracellular-stimulation",
+      "voltageRmsMv": 2.8856279871997247e-7,
+      "voltageMaximumMv": 5.001327849640802e-7,
+      "somaVoltageRmsMv": 2.9319838263259667e-7,
+      "somaVoltageMaximumMv": 4.980178260893808e-7,
+      "membraneCurrentRmsNa": 2.888729382153805e-8,
+      "nativePeakCurrentNa": 0.20456149999999998,
+      "browserSomaCrossings": [],
+      "nativeSomaCrossings": [],
+      "nativeEarliestLocalCrossing": null,
+      "nativeSampledSomaPeakMv": -91.08992429798994,
+      "browserAnyLocalCrossing": false,
+      "nativeAnyLocalCrossing": false,
+      "thresholdWindowEndMs": 15,
+      "browserLocalCrossingBy15Ms": false,
+      "nativeLocalCrossingBy15Ms": false,
+      "nativeNewCrossingsAfter15Ms": 0,
+      "browserSomaWaveformEvidenceCount": 0,
+      "nativeMaxConservationResidualNa": 4.3909078711315205e-13,
+      "browserMaxConservationResidualNa": 3.966553905536234e-12,
+      "browserMaxKclResidualNa": 3.940538867430732e-12,
+      "maximumFirstCrossingTimeErrorMs": 0,
+      "signals": {
+        "neuralUv": [
+          {
+            "rmsUv": 5.015134910294608e-13,
+            "maximumUv": 1.3808090684307855e-12,
+            "nativePeakUv": 0.10082061367007045
+          },
+          {
+            "rmsUv": 4.006132745824556e-13,
+            "maximumUv": 1.0893575267106187e-12,
+            "nativePeakUv": 0.0679426930182847
+          }
+        ],
+        "appliedUv": [
+          {
+            "rmsUv": 1.2846149757869146e-13,
+            "maximumUv": 9.094947017729282e-13,
+            "nativePeakUv": 3274.5934099180577
+          },
+          {
+            "rmsUv": 1.2846149757869146e-13,
+            "maximumUv": 9.094947017729282e-13,
+            "nativePeakUv": 3274.5934099180577
+          }
+        ],
+        "totalUv": [
+          {
+            "rmsUv": 5.100737888852258e-13,
+            "maximumUv": 1.3808090684307855e-12,
+            "nativePeakUv": 3274.531735973598
+          },
+          {
+            "rmsUv": 4.4484676697872926e-13,
+            "maximumUv": 1.8189894035458565e-12,
+            "nativePeakUv": 3274.550094259384
+          }
+        ]
+      },
+      "localCrossingClassificationMismatchCount": 0,
+      "maximumSomaCrossingTimeErrorMs": 0,
+      "gates": {
+        "voltageRms": true,
+        "voltageMaximum": true,
+        "membraneCurrentRms": true,
+        "globalLocalClassification20Ms": true,
+        "globalLocalClassification15Ms": true,
+        "somaCrossingCount": true,
+        "somaCrossingTimes": true,
+        "compartmentCrossingClassification": true,
+        "compartmentCrossingTimes": true,
+        "recordingSignals": true,
+        "conservation": true,
+        "localKcl": true
+      }
+    },
+    {
+      "id": "reliability-moved-soma-10um",
+      "completed": true,
+      "passed": true,
+      "status": "passed",
+      "meshUm": 10,
+      "dtMs": 0.00125,
+      "amplitudeUa": 40,
+      "mode": "extracellular-stimulation",
+      "voltageRmsMv": 2.8881987529147466e-7,
+      "voltageMaximumMv": 5.238682945218898e-7,
+      "somaVoltageRmsMv": 2.956408767066831e-7,
+      "somaVoltageMaximumMv": 4.990670419147136e-7,
+      "membraneCurrentRmsNa": 2.8876191520199678e-8,
+      "nativePeakCurrentNa": 10.7203421,
+      "browserSomaCrossings": [
+        5.387500163677325
+      ],
+      "nativeSomaCrossings": [
+        5.387500163680645
+      ],
+      "nativeEarliestLocalCrossing": {
+        "timeMs": 5.386574782887934,
+        "id": "dend[11]:0",
+        "sectionId": "dend[11]",
+        "sectionX": 0.5,
+        "positionUm": [
+          -98.51250038994141,
+          -202.41305150152823,
+          1511.2319768524594
+        ]
+      },
+      "nativeSampledSomaPeakMv": 30.574066261455147,
+      "browserAnyLocalCrossing": true,
+      "nativeAnyLocalCrossing": true,
+      "thresholdWindowEndMs": 15,
+      "browserLocalCrossingBy15Ms": true,
+      "nativeLocalCrossingBy15Ms": true,
+      "nativeNewCrossingsAfter15Ms": 0,
+      "browserSomaWaveformEvidenceCount": 1,
+      "nativeMaxConservationResidualNa": 1.5785281000618538e-12,
+      "browserMaxConservationResidualNa": 4.656552921034063e-12,
+      "browserMaxKclResidualNa": 4.929390229335695e-12,
+      "maximumFirstCrossingTimeErrorMs": 5.1323389982371737e-11,
+      "signals": {
+        "neuralUv": [
+          {
+            "rmsUv": 9.005011475744374e-13,
+            "maximumUv": 5.630700766756647e-12,
+            "nativePeakUv": 0.10593000567100733
+          },
+          {
+            "rmsUv": 5.496816435393511e-13,
+            "maximumUv": 3.782120450157578e-12,
+            "nativePeakUv": 0.016411961536668983
+          }
+        ],
+        "appliedUv": [
+          {
+            "rmsUv": 8.617459232321363e-13,
+            "maximumUv": 2.7284841053187847e-12,
+            "nativePeakUv": 6893.880862985385
+          },
+          {
+            "rmsUv": 8.617459232321363e-13,
+            "maximumUv": 2.7284841053187847e-12,
+            "nativePeakUv": 6893.880862985385
+          }
+        ],
+        "totalUv": [
+          {
+            "rmsUv": 1.4095319154154728e-12,
+            "maximumUv": 8.185452315956354e-12,
+            "nativePeakUv": 6893.895270858876
+          },
+          {
+            "rmsUv": 1.2201556752667052e-12,
+            "maximumUv": 6.366462912410498e-12,
+            "nativePeakUv": 6893.897274946921
+          }
+        ]
+      },
+      "localCrossingClassificationMismatchCount": 0,
+      "maximumSomaCrossingTimeErrorMs": 3.320010932839068e-12,
+      "gates": {
+        "voltageRms": true,
+        "voltageMaximum": true,
+        "membraneCurrentRms": true,
+        "globalLocalClassification20Ms": true,
+        "globalLocalClassification15Ms": true,
+        "somaCrossingCount": true,
+        "somaCrossingTimes": true,
+        "compartmentCrossingClassification": true,
+        "compartmentCrossingTimes": true,
+        "recordingSignals": true,
+        "conservation": true,
+        "localKcl": true
+      }
+    },
+    {
+      "id": "reliability-intracellular-10um",
+      "completed": true,
+      "passed": true,
+      "status": "passed",
+      "meshUm": 10,
+      "dtMs": 0.00125,
+      "amplitudeUa": 1,
+      "mode": "intracellular-current",
+      "voltageRmsMv": 2.886536545383825e-7,
+      "voltageMaximumMv": 5.432689746953656e-7,
+      "somaVoltageRmsMv": 2.9566480561550766e-7,
+      "somaVoltageMaximumMv": 5.125453341747743e-7,
+      "membraneCurrentRmsNa": 2.8910814892408853e-8,
+      "nativePeakCurrentNa": 14.4742287,
+      "browserSomaCrossings": [
+        9.25645025709231
+      ],
+      "nativeSomaCrossings": [
+        9.256450257123333
+      ],
+      "nativeEarliestLocalCrossing": {
+        "timeMs": 9.033462789272505,
+        "id": "axon_stub[1]:2",
+        "sectionId": "axon_stub[1]",
+        "sectionX": 0.8333333333333334,
+        "positionUm": [
+          -140.59798285563267,
+          -196.1655635464789,
+          1545.282829845426
+        ]
+      },
+      "nativeSampledSomaPeakMv": 23.809162378626468,
+      "browserAnyLocalCrossing": true,
+      "nativeAnyLocalCrossing": true,
+      "thresholdWindowEndMs": 15,
+      "browserLocalCrossingBy15Ms": true,
+      "nativeLocalCrossingBy15Ms": true,
+      "nativeNewCrossingsAfter15Ms": 0,
+      "browserSomaWaveformEvidenceCount": 1,
+      "nativeMaxConservationResidualNa": 2.19824158875781e-14,
+      "browserMaxConservationResidualNa": 3.844570441082634e-12,
+      "browserMaxKclResidualNa": 3.940538867430732e-12,
+      "maximumFirstCrossingTimeErrorMs": 6.109068806381401e-11,
+      "signals": {
+        "neuralUv": [
+          {
+            "rmsUv": 8.052655671787501e-11,
+            "maximumUv": 8.143596907927986e-10,
+            "nativePeakUv": 4.884057476005615
+          },
+          {
+            "rmsUv": 7.95668384424981e-12,
+            "maximumUv": 7.174882910021552e-11,
+            "nativePeakUv": 1.297276908399798
+          }
+        ],
+        "appliedUv": [
+          {
+            "rmsUv": 0,
+            "maximumUv": 0,
+            "nativePeakUv": 0.08606113682788703
+          },
+          {
+            "rmsUv": 0,
+            "maximumUv": 0,
+            "nativePeakUv": 0.09158337841654926
+          }
+        ],
+        "totalUv": [
+          {
+            "rmsUv": 8.052655671787501e-11,
+            "maximumUv": 8.143596907927986e-10,
+            "nativePeakUv": 4.797996339177728
+          },
+          {
+            "rmsUv": 7.95668384424981e-12,
+            "maximumUv": 7.174882910021552e-11,
+            "nativePeakUv": 1.2056935299832487
+          }
+        ]
+      },
+      "localCrossingClassificationMismatchCount": 0,
+      "maximumSomaCrossingTimeErrorMs": 3.1024072200125374e-11,
+      "gates": {
+        "voltageRms": true,
+        "voltageMaximum": true,
+        "membraneCurrentRms": true,
+        "globalLocalClassification20Ms": true,
+        "globalLocalClassification15Ms": true,
+        "somaCrossingCount": true,
+        "somaCrossingTimes": true,
+        "compartmentCrossingClassification": true,
+        "compartmentCrossingTimes": true,
+        "recordingSignals": true,
+        "conservation": true,
+        "localKcl": true
+      }
+    }
+  ]
+}
