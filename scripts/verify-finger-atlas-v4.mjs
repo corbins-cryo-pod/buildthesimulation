@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {readFileSync,existsSync} from 'node:fs';
 import {gunzipSync,gzipSync} from 'node:zlib';
 import {createHash} from 'node:crypto';
+import {CORTEX_PROFILES} from '../src/lib/finger-atlas-v4/cortical-model.mjs';
 import {createAtlasModel} from '../src/lib/finger-atlas-v4/model.mjs';
 
 const root=process.argv.includes('--build')?'dist':'public';
@@ -38,12 +39,14 @@ for(const area of ['m1','s1'])assert.ok(Math.abs(cortexSources.implementation[ar
 assert.ok(cortexSources.references.some(reference=>reference.id==='h01-science-2024'));
 assert.ok(cortexSources.references.some(reference=>reference.id==='bigbrain-layers-2020'));
 assert.ok(cortexSources.references.filter(reference=>reference.modality?.toLowerCase().includes('diffusion')||reference.id.startsWith('dki')).length>=4);
-assert.match(cortexSources.scope.microstructure,/not H01 object IDs/);
-const cortexModule='src/lib/finger-atlas-v4/sensorimotor-cortex.mjs';
+assert.match(cortexSources.scope.microstructure,/H01 source/);
+for(const [area,p] of Object.entries(CORTEX_PROFILES)){assert.equal(cortexSources.implementation[area].corticalThicknessPriorMm,p.thickness);p.boundaries.slice(1).forEach((b,i)=>assert.ok(Math.abs((b-p.boundaries[i])-cortexSources.implementation[area].layerFractions[i])<1e-9));}
+const cortexModule='src/lib/finger-atlas-v4/cortical-sections.mjs';
 assert.ok(existsSync(cortexModule),'Paired M1/S1 cortex module missing');
 const cortexCode=readFileSync(cortexModule,'utf8');
-assert.match(cortexCode,/Primary motor cortex/);assert.match(cortexCode,/Primary somatosensory cortex/);
-assert.match(cortexCode,/H01-inspired cellular microstructure/);assert.match(cortexCode,/DKI-informed orientation envelopes/);
+assert.match(cortexCode,/createCorticalSections/);assert.match(cortexCode,/attachH01References/);
+assert.ok(existsSync(root+cortexSources.implementation.h01Pack),'H01 source pack missing');
+assert.match(cortexSources.scope.tracts,/No DKI acquisition has been fitted/);
 
 if(process.argv.includes('--build')){
   const route='dist/simulations/finger-pathway-atlas/';

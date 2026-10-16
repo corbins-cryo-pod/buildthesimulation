@@ -1,7 +1,7 @@
 {
   "version": 4,
   "title": "Finger Pathway Atlas V4",
-  "scope": "Representative connected anatomical model in one millimetre coordinate system. Detailed V3 cellular templates and all supplied anatomical surfaces are retained. Some cortical templates preserve measured human light-microscopy skeletons and radii; noncortical templates are the original procedural V3 models. Template reuse, cell placement, long-range extensions and synaptic assignments are modeled. This is not a full biological cell census, a measured end-to-end human connectome, EM segmentation, or a physiological simulation. Selected conscious sensory and motor routes are represented; other neural networks are outside this model.",
+  "scope": "Representative connected anatomical model in one millimetre coordinate system. Detailed V3 cellular templates and all supplied anatomical surfaces are retained. Some cortical templates preserve measured human light-microscopy skeletons and radii; noncortical templates are the original procedural V3 models. Template reuse, cell placement, long-range extensions and synaptic assignments are modeled. This is not a full biological cell census, a measured end-to-end human connectome, EM segmentation, or a physiological simulation. Selected conscious sensory and motor routes are represented; other neural networks are outside this model. The cortical display is restricted to the left precentral and postcentral gyri. A separate paired coronal inspection adds six-layer representative samples and actual H01 neurite references; shapes, laminar proportions and new connectivity are modeled.",
   "statistics": {
     "primarySensoryCells": 66,
     "tactileAfferents": 52,
@@ -26,7 +26,8 @@
     "nmj": "Original V3 human-inspired terminal arbor, receptor islands, junctional-fold crests and Schwann support retained. These are procedural models, not traced human NMJs. The old open comparison-muscle surface is excluded.",
     "proprioception": "Original V3 spindle and Golgi tendon-organ components are separated into distinct model afferents. The spindle support opening is closed. The two group-II spindle examples use explicitly modeled secondary terminals rather than relabeling the original Ia-like source. Reference images include sheep extraocular tissue; the templates are not human finger end-organ reconstructions or validated human size measurements.",
     "noncortical": "Original V3 synthetic spinal, cuneate and VPL somata and arbors retained. Cell-class reuse and location are declared; Nissl images do not establish full dendritic connectivity.",
-    "cortical": "Ten Allen human bright-field SWC templates retain their source skeletons/radii and original V3 generated surfaces. Sources are middle temporal gyrus, frontal lobe and inferior frontal gyrus, not measured finger S1/M1 neurons. Six source layer-II/III spiny cells with intact apical dendrites provide morphological analogues for the modeled upper-motor cells; they are not identified layer-V corticospinal neurons. H01 EM images are comparison references only and are not the source of these meshes."
+    "cortical": "Ten Allen human bright-field SWC templates retain their source skeletons/radii and original V3 generated surfaces. Sources are middle temporal gyrus, frontal lobe and inferior frontal gyrus, not measured finger S1/M1 neurons. Six source layer-II/III spiny cells with intact apical dendrites provide morphological analogues for the modeled upper-motor cells; they are not identified layer-V corticospinal neurons. H01 EM images are comparison references only and are not the source of these meshes.",
+    "h01": "Twelve connected H01 proofread neurite components, two from each source layer, rigidly transplanted as references into modeled M1/S1 tissue. H01 is temporal cortex. Neurite skeletons/radii are source-derived; soma display ellipsoids, placement and continued axons are modeled. See /assets/finger-pathway-atlas/v4/h01/reference-neurites.json and soma-layer-records.json."
   },
   "sourceScaffold": "/assets/finger-pathway-atlas/v4/scaffold-provenance.json",
   "references": [
@@ -155,14 +156,15 @@
     "Retained source geometry does not establish measured V4 cell identities, atlas registration, synapse positions or long-range connectivity.",
     "The detailed V3 noncortical templates remain procedural; known shape limitations in the supplied comparison plates are not erased by restoration.",
     "Source microscopy spans different species, tissue regions and scales. H01 comparison images do not make the Allen-derived display meshes EM reconstructions.",
-    "No cross-section or cutaway inspection geometry is added. Supplied gross skin retains its original upper-body crop; original source surfaces are not guaranteed watertight.",
     "Original cellular traces can be incomplete biological specimens. The model retains their available branches and adds explicitly modeled route extensions; it is not a complete experimental reconstruction of every neuron.",
-    "Overview lines and optional visibility padding are display cues. Physical template coordinates use the documented micrometre-to-millimetre conversion.",
     "Local myelin remains a bounded display representation with modeled nodal spacing and sheath ratio.",
     "No electrical activity or biomechanical response is simulated; autonomic, cerebellar, reticular and other networks are outside the selected routes.",
-    "The 50 comparison plates show V3 baseline model panels, not screenshots of the integrated V4 placement."
+    "The 50 comparison plates show V3 baseline model panels, not screenshots of the integrated V4 placement.",
+    "Paired cortical sections are MRI-style constructions, not MRI segmentation, and occupy separate anterior-posterior planes. Nominal thickness, fractions, packing and connectivity are priors.",
+    "All axonal rendering uses solid cylinders; overview radius padding is a display aid. The paired view can disable padding for physical diameter.",
+    "No DKI data is fitted. DKI references inform future bundle-orientation modeling, not measured individual axons, diameters or synapses."
   ],
-  "revision": "4.1-preserved-v3",
+  "revision": "4.2-paired-m1-s1",
   "sourceCells": "/assets/finger-pathway-atlas/v4/cells/manifest.json",
   "preservation": {
     "anatomicalSurfaces": {
@@ -506,5 +508,25 @@
       "provenance": "Human bright-field morphological tracing; display membrane generated around measured skeleton and radius. Not EM; not finger S1/M1.",
       "extension": "Farthest retained distal axon leaf; modeled extension begins here without deleting any source branch."
     }
-  ]
+  ],
+  "corticalSections": {
+    "units": "mm",
+    "modeledCells": {
+      "M1": 290,
+      "S1": 330
+    },
+    "H01sourceCells": 12,
+    "H01instances": 24,
+    "H01archive": "/assets/finger-pathway-atlas/v4/h01/reference-neurites.json",
+    "sourceCellLayers": "/assets/finger-pathway-atlas/v4/h01/soma-layer-records.json",
+    "displayedCortexSourceIds": [
+      "FMA72662",
+      "FMA72666"
+    ],
+    "thicknessPriorsMm": {
+      "M1": 3.4,
+      "S1": 2.2
+    },
+    "references": "/simulations/finger-pathway-atlas/references/#cortical-methods"
+  }
 }

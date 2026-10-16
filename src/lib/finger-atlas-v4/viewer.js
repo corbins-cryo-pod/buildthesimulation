@@ -2,6 +2,9 @@ import * as T from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { createAtlasModel } from './model.mjs';
+import { createTubeBatch, segmentsFromPaths } from './tubes.mjs';
+import { placeCorticalRouteCells } from './cortical-model.mjs';
+import { createCorticalSections } from './cortical-sections.mjs';
 import { morphologyPaths, createCellDetail } from './morphology.mjs';
 import { computeDetailFocus } from './focus.mjs';
 import { loadPreservedCell, createPreservedCellDetail, preservedCellPaths, preservedAnchorInfo, PRESERVED_CELL_MANIFEST } from './preserved-morphology.mjs';
@@ -21,7 +24,7 @@ $('retry').onclick=()=>location.reload();
 
 try { start(); } catch(error) { fail(error); }
 function start(){
-  const model=registerPreservedModel(createAtlasModel(),PRESERVED_CELL_MANIFEST),byId=new Map(model.cells.map(c=>[c.id,c]));
+  const model=placeCorticalRouteCells(registerPreservedModel(createAtlasModel(),PRESERVED_CELL_MANIFEST)),byId=new Map(model.cells.map(c=>[c.id,c]));
   const regions=model.regions,stage=$('stage'),canvas=$('viewport');
   const renderer=new T.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance',logarithmicDepthBuffer:true});
   renderer.setPixelRatio(Math.min(devicePixelRatio,budgets.balanced.pixelRatio));renderer.setClearColor(0x060d13);renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;
@@ -31,7 +34,7 @@ function start(){
   for(const [position,color,intensity] of [[[450,700,900],0xe2f5ff,2.3],[[-500,50,-400],0x84b7ce,1.6],[[0,-500,200],0xffd3ad,.6]]){const light=new T.DirectionalLight(color,intensity);light.position.copy(v(position));scene.add(light);}
   const scaffoldGroup=new T.Group(),envelopeGroup=new T.Group(),globalGroup=new T.Group(),highlightGroup=new T.Group(),detailGroup=new T.Group(),fiberGroup=new T.Group();
   scene.add(scaffoldGroup,envelopeGroup,globalGroup,highlightGroup,detailGroup,fiberGroup);
-  const pathMap=new Map(),sampleMap=new Map(),batches=new Map(),detailCache=new Map(),sourceLines=new Map(),detailFailures=new Map();
+  const pathMap=new Map(),sampleMap=new Map(),batches=new Set(),detailCache=new Map(),sourceLines=new Map(),detailFailures=new Map();
   const sourceLineGroup=new T.Group();scene.add(sourceLineGroup);
   const anatomyLOD=createAnatomyLOD({group:scaffoldGroup,camera,controls,state,requestDraw,reportError:error=>console.warn('Original anatomical surface unavailable; overview retained.',error)});
   let focusRequest=0;
@@ -42,26 +45,21 @@ function start(){
   canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();contextLost=true;fail(new Error('The graphics context was lost. Close other graphics-heavy tabs, then try again.'));});
   canvas.addEventListener('webglcontextrestored',()=>location.reload());
   document.addEventListener('visibilitychange',()=>{hidden=document.hidden;if(hidden&&raf){cancelAnimationFrame(raf);raf=0;}else if(!hidden)requestDraw();});
-  function sampled(branch){
-    const points=branch.points.map(v);if(points.length<2)return [];
-    const length=points.reduce((sum,p,i)=>sum+(i?p.distanceTo(points[i-1]):0),0);
-    // Exact endpoints and branch junctions are retained. Piecewise sampling avoids
-    // Catmull-Rom overshoot through adjacent narrow spinal tracts.
-    const result=[];for(let i=0;i<points.length-1;i++){const count=Math.max(1,Math.min(80,Math.ceil(points[i].distanceTo(points[i+1])/Math.max(.008,length/650))));for(let k=0;k<count;k++)result.push(points[i].clone().lerp(points[i+1],k/count));}result.push(points.at(-1));return result;
-  }
-  function appendSegments(target,points,cellId){for(let i=1;i<points.length;i++){target.positions.push(...points[i-1].toArray(),...points[i].toArray());target.owners.push(cellId);}}
+  const corticalSections=createCorticalSections({renderer,canvas,stage,requestDraw,onExit:()=>goRegion('cortex',{distance:75,point:[42,355,-10]}),onOriginal:()=>inspectCell(false,true)});
   for(const cell of model.cells){
     // Keep the registered long-range axons at overview scale. Original V3 local
     // arbors are loaded with their source meshes, never replaced with new trees.
     const branches=registeredCellBranches(cell,getPreservedCellRegistration(cell,PRESERVED_CELL_MANIFEST));
     const unsupported=(cell.terminal?['soma','terminal']:['soma']).filter(anchor=>!preservedAnchorInfo(cell,anchor));
     const local=unsupported.length?morphologyPaths(cell).filter(path=>unsupported.includes(path.anchor||'soma')):[],all=[...branches,...local];pathMap.set(cell.id,all);
-    const sampledBranches=branches.map(branch=>({...branch,controls:branch.points.map(v),samples:sampled(branch)}));sampleMap.set(cell.id,sampledBranches);
-    if(!batches.has(cell.kind))batches.set(cell.kind,{positions:[],owners:[]});const batch=batches.get(cell.kind);
-    for(const branch of sampledBranches)appendSegments(batch,branch.samples,cell.id);
-    for(const branch of local)appendSegments(batch,branch.points.map(v),cell.id);
+    const sampledBranches=branches.map(branch=>({...branch,controls:branch.points.map(v)}));sampleMap.set(cell.id,sampledBranches);
+    batches.add(cell.kind);
+
   }
-  for(const [kind,batch] of batches){const geometry=new T.BufferGeometry();geometry.setAttribute('position',new T.Float32BufferAttribute(batch.positions,3));geometry.computeBoundingSphere();const lines=new T.LineSegments(geometry,new T.LineBasicMaterial({color:colors[kind]||colors.sensory,transparent:true,opacity:.52,depthWrite:false}));lines.name=kind;lines.userData.owners=batch.owners;globalGroup.add(lines);}
+  for(const kind of batches.keys()){
+    const segments=model.cells.filter(c=>c.kind===kind).flatMap(c=>segmentsFromPaths(pathMap.get(c.id),c));
+    const mesh=createTubeBatch(segments,{color:colors[kind]||colors.sensory,opacity:.65});mesh.name=kind;globalGroup.add(mesh);
+  }
   buildTime=performance.now()-buildTime;
   function createEnvelope(points,radius,color,opacity){const curve=new T.CatmullRomCurve3(points.map(v));const geometry=new T.TubeGeometry(curve,Math.max(32,points.length*8),radius,12,false);const mesh=new T.Mesh(geometry,new T.MeshStandardMaterial({color,transparent:true,opacity,roughness:.7,depthWrite:false,side:T.FrontSide}));envelopeGroup.add(mesh);return mesh;}
   const pose=([x,y,z])=>[x,z-1250,-y-95];
@@ -71,12 +69,12 @@ function start(){
   }
   const capsuleMaterial=new T.MeshStandardMaterial({color:0x86a8b4,transparent:true,opacity:.07,roughness:.8,depthWrite:false});
   for(const z of [1398,1414]){const mesh=new T.Mesh(new T.SphereGeometry(1,24,16),capsuleMaterial);mesh.position.copy(v(pose([-24,-91,z])));mesh.scale.set(2.5,3,2);envelopeGroup.add(mesh);}
-  // No clipping planes, cutaway windows, or separate microscopic scenes.
+  // Paired cortical sections are an explicit inspection mode. The body route stays intact.
   function refreshHighlight(){
     [...highlightGroup.children].forEach(dispose);
     if(!state.highlight||!state.route)return;
-    const batch={positions:[],owners:[]};for(const id of state.route.cellIds){for(const branch of sampleMap.get(id)||[])appendSegments(batch,branch.samples,id);for(const branch of pathMap.get(id)?.filter(b=>b.role==='dendrite'||b.role==='terminal')||[])appendSegments(batch,branch.points.map(v),id);}
-    const geometry=new T.BufferGeometry();geometry.setAttribute('position',new T.Float32BufferAttribute(batch.positions,3));geometry.computeBoundingSphere();const lines=new T.LineSegments(geometry,new T.LineBasicMaterial({color:state.route.kind==='motor'?0xffc397:0xb9fff2,transparent:true,opacity:.95,depthWrite:false}));lines.userData.owners=batch.owners;highlightGroup.add(lines);
+    const segments=state.route.cellIds.flatMap(id=>segmentsFromPaths(pathMap.get(id),byId.get(id)));
+    highlightGroup.add(createTubeBatch(segments,{color:state.route.kind==='motor'?0xffc397:0xb9fff2}));
     globalGroup.visible=!state.isolate;for(const lines of globalGroup.children)lines.material.opacity=state.highlight?.22:.55;
     lastDetailKey='';lastFiberKey='';requestDraw();
   }
@@ -121,14 +119,12 @@ function start(){
   }
   function addSourceLines(cell,anchor){
     const key=anchorKey(cell,anchor);if(sourceLines.has(key)||!preservedAnchorInfo(cell,anchor))return;
-    const paths=preservedCellPaths(cell,{anchors:[anchor]}),batch={positions:[],owners:[]};
-    for(const path of paths)appendSegments(batch,path.points.map(v),cell.id);
+    const paths=preservedCellPaths(cell,{anchors:[anchor]});
     const retained=(pathMap.get(cell.id)||[]).filter(path=>path.anchor!==anchor);
     pathMap.set(cell.id,[...retained,...paths]);
-    if(!batch.positions.length)return;
-    const geometry=new T.BufferGeometry();geometry.setAttribute('position',new T.Float32BufferAttribute(batch.positions,3));geometry.computeBoundingSphere();
-    const lines=new T.LineSegments(geometry,new T.LineBasicMaterial({color:colors[cell.kind],transparent:true,opacity:.55,depthWrite:false}));
-    lines.userData={cellId:cell.id,anchor};sourceLineGroup.add(lines);sourceLines.set(key,lines);
+    if(!paths.some(path=>path.points.length>1))return;
+    const tubes=createTubeBatch(segmentsFromPaths(paths,cell),{color:colors[cell.kind],opacity:.6});
+    tubes.userData.cellId=cell.id;tubes.userData.anchor=anchor;sourceLineGroup.add(tubes);sourceLines.set(key,tubes);
     refreshHighlight();
   }
   async function ensureDetail(cell,anchor){
@@ -179,7 +175,6 @@ function start(){
       const a=selected[0],b=selected.at(-1);if(a.distanceTo(best.p)>range)selected[0]=best.p.clone().add(a.clone().sub(best.p).setLength(range));if(b.distanceTo(best.p)>range)selected[selected.length-1]=best.p.clone().add(b.clone().sub(best.p).setLength(range));
       const origin=best.p.clone(),local=selected.map(p=>p.clone().sub(origin)),curve=new T.CatmullRomCurve3(local),length=curve.getLength(),radius=Math.max(.00025,cell.axonRadiusMm||.002);
       const group=new T.Group();group.position.copy(origin);group.userData.cellId=cell.id;
-      const tube=new T.Mesh(new T.TubeGeometry(curve,24,radius,7,false),new T.MeshStandardMaterial({color:colors[cell.kind]||0x99cdd2,roughness:.6}));group.add(tube);
       if(state.myelin&&cell.myelinated!==false&&branch.role!=='stem'&&cell.type!=='free'&&radius>.0006){
         const internode=Math.min(.35,Math.max(.045,radius*90)),count=Math.min(32,Math.ceil(length/internode)),mat=new T.MeshStandardMaterial({color:0xb8b6a1,transparent:true,opacity:.45,roughness:.7,depthWrite:false});
         const sheaths=[];for(let j=0;j<count;j++){const t0=j/count+.003,t1=(j+1)/count-.003;if(t1<=t0)continue;const pts=Array.from({length:7},(_,k)=>curve.getPoint(t0+(t1-t0)*k/6));sheaths.push(new T.TubeGeometry(new T.CatmullRomCurve3(pts),8,radius/0.66,8,false));}
@@ -197,15 +192,20 @@ function start(){
   }
   function goRegion(id,{point,distance,animate=true}={}){
     focusRequest++;
+    const paired=id==='cortex'&&!distance;
+    corticalSections.setActive(paired);controls.enabled=!paired;
+    if(paired&&state.cell?.region!=='cortex'){const cell=state.route?.cellIds.map(id=>byId.get(id)).find(c=>c.region==='cortex');if(cell)setCell(cell.id);}
     const region=regions.find(r=>r.id===id)||regions[0];state.region=region.id;
     updateInspectLabel(region.id);
     $('view-title').textContent=region.name;$('view-description').textContent=region.description;
     $('view-eyebrow').textContent='ONE SPATIAL MODEL / '+(distance&&distance<5?'CELLULAR DETAIL':'ANATOMICAL CONTEXT');
     document.querySelectorAll('.region-button').forEach(b=>b.classList.toggle('active',b.dataset.region===region.id));
-    frame(point||region.center,distance||region.distance,animate);try{history.replaceState(null,'',`#view=${region.id}&route=${state.route?.id||''}`);}catch{}
+    if(paired){tween=null;collapseInspector(true);$('view-title').textContent='M1 & S1 · paired coronal sections';$('view-description').textContent='Six layers in each gyrus. Zoom and pan together from cortical ribbon to connected axons.';}else frame(point||region.center,distance||region.distance,animate);try{history.replaceState(null,'',`#view=${region.id}&route=${state.route?.id||''}`);}catch{}
   }
-  async function inspectCell(ending=false){
-    if(!state.cell)return;const cell=state.cell,anchor=ending&&cell.terminal?'terminal':'soma',token=++focusRequest;
+  async function inspectCell(ending=false,preserved=false){
+    if(!state.cell)return;
+    if(state.cell.region==='cortex'&&!ending&&!preserved){goRegion('cortex');corticalSections.preset('deep');return;}
+    const cell=state.cell,anchor=ending&&cell.terminal?'terminal':'soma',token=++focusRequest;
     const key=anchorKey(cell,anchor);detailFailures.delete(key);
     const button=$(ending?'focus-ending':'focus-cell'),label=ending?'Inspect ending':'Inspect cell';button.textContent='Opening detail…';
     try{
@@ -217,6 +217,7 @@ function start(){
     finally{button.textContent=label;lastDetailKey='';requestDraw();}
   }
   function updateInspectLabel(region){
+    if(region==='cortex'){$('inspect-region').textContent='Open both cortical sections ↗';return;}
     const ending=['tip','nmj','proprio'].includes(region)&&state.cell?.terminal,anchor=ending?'terminal':'soma';
     const preserved=state.cell&&preservedAnchorInfo(state.cell,anchor);
     $('inspect-region').textContent=`Open ${preserved?'V3':'modeled'} ${ending?'ending':'cell'} detail ↗`;
@@ -269,36 +270,38 @@ function start(){
   function draw(now){
     raf=0;if(hidden||contextLost)return;const start=performance.now();
     if(tween){const t=Math.min(1,(now-tween.start)/650),e=t*t*(3-2*t);camera.position.lerpVectors(tween.from,tween.to,e);controls.target.lerpVectors(tween.targetFrom,tween.targetTo,e);if(t>=1)tween=null;else requestDraw();}
+    if(corticalSections.state.active){if(dirty){renderer.clear();corticalSections.render();dirty=false;frameMs=performance.now()-start;}return;}
     controls.update();camera.updateMatrixWorld();
     if(!tween&&performance.now()-lastMove>125){refreshDetails();refreshFibers();anatomyLOD.update();}
-    if(dirty){renderer.render(scene,camera);updateLabels();updateStats();dirty=false;frameMs=performance.now()-start;}
+    if(dirty){const floor=camera.position.distanceTo(controls.target)*2*Math.tan(T.MathUtils.degToRad(camera.fov/2))/stage.clientHeight*.65;for(const g of [globalGroup,highlightGroup,sourceLineGroup])g.traverse(o=>o.userData.setMinimumRadius?.(floor));renderer.render(scene,camera);updateLabels();updateStats();dirty=false;frameMs=performance.now()-start;}
   }
   async function loadScaffold(){
     $('load-text').textContent='Opening intact anatomy…';
     try{
       const data=await fetchAtlasJSON('/assets/finger-pathway-atlas/v4/scaffold.json');
-      for(const record of data.meshes)anatomyLOD.add(record);
+      for(const record of data.meshes)if(record.category!=='cortex'||['FMA72662','FMA72666'].includes(record.id))anatomyLOD.add(record);
       scaffoldLoaded=true;$('load-state').hidden=true;requestDraw();
     }catch(error){console.error(error);$('load-state').hidden=true;message('Anatomical surfaces could not load. Individual cell pathways are still available. Reload to retry.');}
   }
-  $('inspect-region').onclick=()=>inspectCell(['tip','nmj','proprio'].includes(state.region)&&!!state.cell?.terminal);
+  $('inspect-region').onclick=()=>state.region==='cortex'?goRegion('cortex'):inspectCell(['tip','nmj','proprio'].includes(state.region)&&!!state.cell?.terminal);
   $('overview').onclick=()=>goRegion('overview');$('route-kind').onchange=e=>{populateRoutes(e.target.value);setRoute($('route-select').value,true);};$('route-select').onchange=e=>setRoute(e.target.value,true);$('cell-select').onchange=e=>setCell(e.target.value);$('previous').onclick=()=>showStop(state.stop-1);$('next').onclick=()=>showStop(state.stop+1);$('focus-cell').onclick=()=>inspectCell(false);$('focus-ending').onclick=()=>inspectCell(true);
   $('isolate').onchange=e=>{state.isolate=e.target.checked;state.highlight=true;refreshHighlight();};$('clear-selection').onclick=()=>{state.highlight=false;state.isolate=false;$('isolate').checked=false;globalGroup.visible=true;[...highlightGroup.children].forEach(dispose);for(const lines of globalGroup.children)lines.material.opacity=.55;lastDetailKey='';requestDraw();};
   for(const name of ['skin','envelopes','labels','myelin','supports'])$(name).onchange=e=>{state[name]=e.target.checked;detailGroup.traverse(o=>{if(o.isMesh&&['support','skin'].includes(o.userData.layer))o.visible=state.supports;});for(const mesh of scaffoldGroup.children)mesh.visible=mesh.userData.category==='skin'?state.skin:state.envelopes;envelopeGroup.visible=state.envelopes;lastFiberKey='';requestDraw();};
   $('quality').onchange=e=>{state.quality=e.target.value;renderer.setPixelRatio(Math.min(devicePixelRatio,budgets[state.quality].pixelRatio));for(const {group}of detailCache.values())dispose(group);detailCache.clear();lastDetailKey='';lastFiberKey='';resize();};
-  $('export-map').onclick=()=>{const exported={...model,cells:model.cells.map(cell=>({...cell,branches:registeredCellBranches(cell,getPreservedCellRegistration(cell,PRESERVED_CELL_MANIFEST)),loadedLocalArbors:(pathMap.get(cell.id)||[]).filter(path=>path.anchor),preservedSources:Object.fromEntries((cell.terminal?['soma','terminal']:['soma']).map(anchor=>[anchor,preservedAnchorInfo(cell,anchor)]))})),sourceTemplates:PRESERVED_CELL_MANIFEST,localGeometryNote:'Complete source manifest and registrations included; loadedLocalArbors contains only already-visited centerlines. Download the referenced source templates for complete local mesh geometry.',displayNote:'Millimeter coordinates; preserved V3 source geometry and constructed pathways/placements, not a measured connectome. Screen-width padding is not physical diameter.'};const url=URL.createObjectURL(new Blob([JSON.stringify(exported)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='Finger_Pathway_Atlas_v4_cell_map.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);};
+  $('export-map').onclick=()=>{const exported={...model,corticalSections:corticalSections.export(),cells:model.cells.map(cell=>({...cell,branches:registeredCellBranches(cell,getPreservedCellRegistration(cell,PRESERVED_CELL_MANIFEST)),loadedLocalArbors:(pathMap.get(cell.id)||[]).filter(path=>path.anchor),preservedSources:Object.fromEntries((cell.terminal?['soma','terminal']:['soma']).map(anchor=>[anchor,preservedAnchorInfo(cell,anchor)]))})),sourceTemplates:PRESERVED_CELL_MANIFEST,localGeometryNote:'Complete source manifest and registrations included; loadedLocalArbors contains only already-visited centerlines. Download the referenced source templates for complete local mesh geometry.',displayNote:'Millimeter coordinates; preserved V3 source geometry and constructed pathways/placements, not a measured connectome. Display radius padding is not physical diameter; all neurites render as lit cylinder meshes.'};const url=URL.createObjectURL(new Blob([JSON.stringify(exported)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='Finger_Pathway_Atlas_v4_cell_map.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);};
   function help(open){$('help-panel').hidden=!open;$('help-toggle').setAttribute('aria-expanded',String(open));if(open)$('help-close').focus();else $('help-toggle').focus();}
   function collapseInspector(collapsed){$('inspector').classList.toggle('collapsed',collapsed);$('inspector-toggle').textContent=collapsed?'Show details':'Collapse';$('inspector-toggle').setAttribute('aria-expanded',String(!collapsed));requestDraw();}
   $('inspector-toggle').onclick=()=>collapseInspector(!$('inspector').classList.contains('collapsed'));
   $('help-toggle').onclick=()=>help($('help-panel').hidden);$('help-close').onclick=()=>help(false);$('fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch{message('Use the Open viewer link for a full-window view.');}};
   window.addEventListener('keydown',e=>{if(e.target.matches('input,select,textarea')||e.ctrlKey||e.metaKey||e.altKey)return;if(e.key==='Escape'){help(false);return;}if(e.key==='Home'){e.preventDefault();goRegion('overview');}if(e.key==='ArrowRight'){e.preventDefault();showStop(state.stop+1);}if(e.key==='ArrowLeft'){e.preventDefault();showStop(state.stop-1);}});
   const raycaster=new T.Raycaster(),pointer=new T.Vector2();canvas.addEventListener('pointerdown',e=>{lastPointer=[e.clientX,e.clientY];});canvas.addEventListener('pointerup',e=>{
+    if(corticalSections.state.active)return;
     if(!lastPointer||Math.hypot(e.clientX-lastPointer[0],e.clientY-lastPointer[1])>4||e.button!==0)return;const rect=canvas.getBoundingClientRect();pointer.set((e.clientX-rect.left)/rect.width*2-1,1-(e.clientY-rect.top)/rect.height*2);raycaster.setFromCamera(pointer,camera);raycaster.params.Line.threshold=Math.max(.002,camera.position.distanceTo(controls.target)*.0015);
     const surfaces=[...detailGroup.children.filter(g=>g.visible),...fiberGroup.children.filter(g=>g.visible),...sourceLineGroup.children.filter(g=>g.visible)];
     const detailHit=raycaster.intersectObjects(surfaces,true)[0],lineHit=!detailHit&&raycaster.intersectObjects(globalGroup.visible?globalGroup.children:highlightGroup.children,false)[0],hit=detailHit||lineHit;if(!hit)return;
     let owner=hit.object;while(owner&&!owner.userData.cellId&&!owner.userData.owners)owner=owner.parent;
-    const id=owner?.userData.cellId||owner?.userData.owners?.[Math.floor(hit.index/2)],route=model.routes.find(r=>r.cellIds.includes(id));if(route){populateRoutes(route.kind);setRoute(route.id);setCell(id);}
+    const id=owner?.userData.cellId||owner?.userData.owners?.[hit.instanceId??Math.floor(hit.index/2)],route=model.routes.find(r=>r.cellIds.includes(id));if(route){populateRoutes(route.kind);setRoute(route.id);setCell(id);}
   });
   populateRoutes('touch');const requested=new URLSearchParams(location.hash.slice(1));setRoute(requested.get('route')||model.routes[0].id);populateRoutes(state.route.kind);$('route-select').value=state.route.id;resize();goRegion(requested.get('view')||'overview',{animate:false});loadScaffold();
-  window.fingerAtlasV4={model,state,scene,camera,renderer,controls,goRegion,setRoute,showStop,inspectCell,byId,pathMap,get diagnostics(){return{version:4,registeredCells:model.cells.length,routes:model.routes.length,buildMs:buildTime,lastFrameMs:frameMs,detailCache:detailCache.size,visibleDetails:currentDetails.length,scaffoldLoaded,anatomy:anatomyLOD.diagnostics,restoredAnchors:detailCache.size,triangles:renderer.info.render.triangles,drawCalls:renderer.info.render.calls,units:'mm',clippingPlanes:renderer.clippingPlanes.length};}};
+  window.fingerAtlasV4={corticalSections,model,state,scene,camera,renderer,controls,goRegion,setRoute,showStop,inspectCell,byId,pathMap,get diagnostics(){return{version:4,registeredCells:model.cells.length,routes:model.routes.length,buildMs:buildTime,lastFrameMs:frameMs,detailCache:detailCache.size,visibleDetails:currentDetails.length,scaffoldLoaded,anatomy:anatomyLOD.diagnostics,restoredAnchors:detailCache.size,triangles:renderer.info.render.triangles,drawCalls:renderer.info.render.calls,units:'mm',clippingPlanes:renderer.clippingPlanes.length};}};
 }

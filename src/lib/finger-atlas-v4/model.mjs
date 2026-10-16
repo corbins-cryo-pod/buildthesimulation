@@ -35,7 +35,7 @@ export const REGIONS = [
   region('pons', 'Pons transit', [7, -97, 1528], 24, 'Distinct ascending sensory and descending motor axons traverse the pons. No obligatory relay is invented here.', [28]),
   region('midbrain', 'Midbrain transit', [9, -98, 1544], 22, 'Sensory fibers continue to thalamus while corticospinal axons descend through a separate route.', [28]),
   region('thalamus', 'Left VPL relay', [12, -92, 1561], 1.5, 'Separate modeled thalamic relay neurons connect ascending sensory pathways to S1. VPL is not a segmented source subnucleus.', [29, 38]),
-  region('cortex', 'Left S1 and M1', [36.5, -89, 1607.5], 34, 'Original V3 human cortical trace templates at their source scale. Their use as S1 receivers and M1 output cells, placement and connectivity are modeled.', [30, 31, 32, 33, 34, 36, 37, 38, 39, 40]),
+  region('cortex', 'M1 + S1 coronal cortex', [36.5, -89, 1607.5], 34, 'Paired M1 and S1 coronal sections, six cortical layers, white matter and H01 reference neurites. Cell placements and projection assignments are modeled.', [30, 31, 32, 33, 34, 36, 37, 38, 39, 40]),
   region('nmj', 'Forearm motor endplates', [-225, -83, 974], 2, 'Motor axons end at a modeled forearm muscle endplate. Other motor routes terminate at extensor and intrinsic hand-muscle targets.', [41, 42, 43, 44]),
   region('proprio', 'Muscle and tendon receptors', [-220, -79, 990], 5, 'Muscle spindles and Golgi tendon organs connect to their own DRG cells, conscious sensory relays and illustrative local spinal collaterals. Select a tendon-organ route to visit its more distal myotendinous target.', [45, 46, 47, 48, 49, 50]),
 ];
