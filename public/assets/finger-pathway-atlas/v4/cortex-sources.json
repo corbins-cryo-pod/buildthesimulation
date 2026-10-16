@@ -4,29 +4,52 @@
   "scope": {
     "anatomy": "Paired left precentral (M1) and postcentral (S1) gyri shown as coronal-orientation cut faces in the existing Finger Pathway Atlas coordinate system.",
     "layers": "Six isocortical layers are present in both sections. M1 is modeled as agranular with a very thin or indistinct layer IV and expanded pyramidal layers; S1 is modeled as granular with a prominent thalamorecipient layer IV.",
-    "microstructure": "H01 supplies a human electron-microscopy morphology and neuropil vocabulary. The rendered M1 and S1 cells, glia, vessels, puncta and arbors are deterministic representative samples; they are not H01 object IDs, segmented M1/S1 tissue, or mapped synapses.",
-    "tracts": "DKI-derived orientation distributions are represented as probabilistic bundle envelopes for corticofugal, thalamocortical and short association fibers. They do not identify individual axons or prove endpoints.",
-    "mri": "The dark coronal plane is an orientation and registration context, not a patient MRI or a copied atlas slice. Tissue geometry and laminar proportions are modeled from the cited histological and diffusion literature."
+    "microstructure": "Twelve H01 source neurite components with original object IDs and source-layer labels are transplanted rigidly to both M1/S1 samples. H01 is temporal cortex. Remaining cells and glial context are representative models; positions, new axon continuations and region assignments are not measured M1/S1 tissue or mapped synapses.",
+    "tracts": "No DKI acquisition has been fitted. Primary DKI references provide a proposed workflow for voxel-scale orientation peaks and anatomical tracking. Rendered individual axon cylinders, spacing, radii and endpoints are modeled; these are not DKI-derived observations.",
+    "mri": "MRI-style illustrative coronal tissue sections at two separate anterior-posterior planes, not a patient MRI, a segmented scan, or a single slice placing M1 and S1 side by side."
   },
   "implementation": {
-    "coordinateCenterMm": [36.5, 357.5, -6.0],
     "m1": {
       "label": "Primary motor cortex / precentral gyrus",
-      "corticalThicknessPriorMm": 3.65,
-      "layerFractions": [0.07, 0.12, 0.24, 0.035, 0.305, 0.23],
-      "specialization": "Agranular cortex; layer IV is retained as a thin six-layer bookkeeping band rather than claimed as a sharply defined granular layer. Layer V has the largest representative corticofugal somata."
+      "corticalThicknessPriorMm": 3.4,
+      "layerFractions": [
+        0.08,
+        0.1,
+        0.25,
+        0.05,
+        0.26,
+        0.26
+      ],
+      "specialization": "Agranular cortex; layer IV is retained as a thin six-layer bookkeeping band rather than claimed as a sharply defined granular layer. Layer V has the largest representative corticofugal somata.",
+      "originMm": [
+        41,
+        351,
+        0
+      ]
     },
     "s1": {
       "label": "Primary somatosensory cortex / postcentral gyrus",
-      "corticalThicknessPriorMm": 2.85,
-      "layerFractions": [0.08, 0.15, 0.19, 0.205, 0.175, 0.20],
-      "specialization": "Granular cortex; layer IV is expanded as the principal thalamorecipient band."
+      "corticalThicknessPriorMm": 2.2,
+      "layerFractions": [
+        0.08,
+        0.11,
+        0.24,
+        0.17,
+        0.18,
+        0.22
+      ],
+      "specialization": "Granular cortex; layer IV is expanded as the principal thalamorecipient band.",
+      "originMm": [
+        43,
+        354,
+        -21
+      ]
     },
     "lod": {
-      "gross": "Paired gyri and local white matter remain in the body-scale scene.",
-      "laminar": "All twelve layer bands (six per gyrus) appear in the paired coronal view.",
-      "cellular": "Both sections retain their cut faces while deterministic instanced somata, arbors, glia, vessels, representative puncta and one-millimeter H01-scale sampling windows are shown.",
-      "visibilityNote": "Somata and puncta use a display-size floor for readability; counts are representative samples and must not be interpreted as stereological density estimates."
+      "gross": "Only the left source precentral and postcentral gyri are rendered in the body view.",
+      "laminar": "Two separate coronal cameras keep all six layers of both samples visible at the same physical magnification.",
+      "cellular": "620 distinct sample cells, including 24 transplanted instances of twelve H01 source trees, connected cylindrical arbors and projection continuations.",
+      "visibilityNote": "Source and cell radii remain physical; optional axonal radius padding improves visibility. Counts and spacing are representative, not stereological measurements."
     },
     "dkiRules": [
       "Use local orientation-distribution peaks and cortical surface normals as direction priors.",
@@ -34,7 +57,14 @@
       "Terminate thalamocortical orientation families preferentially in S1 layer IV and originate corticofugal families preferentially in M1 layer V.",
       "Include short association U-fiber orientation under the central-sulcus interval.",
       "Do not infer axon identity, synapse identity, conduction direction or exact endpoints from DKI alone."
-    ]
+    ],
+    "sourceImplementation": [
+      "src/lib/finger-atlas-v4/cortical-model.mjs",
+      "src/lib/finger-atlas-v4/cortical-sections.mjs",
+      "src/lib/finger-atlas-v4/tubes.mjs"
+    ],
+    "dkiRulesStatus": "Proposed modeling guidance, not a fitted diffusion-data result.",
+    "h01Pack": "/assets/finger-pathway-atlas/v4/h01/reference-neurites.json"
   },
   "references": [
     {
@@ -45,7 +75,11 @@
       "modality": "serial-section electron microscopy / connectomics",
       "doi": "10.1126/science.adk4858",
       "url": "https://doi.org/10.1126/science.adk4858",
-      "usedFor": ["six-layer cellular vocabulary", "neuropil complexity", "representative vessels, glia and synaptic puncta", "one-cubic-millimeter inspection-window scale"],
+      "usedFor": [
+        "six-layer reference morphology",
+        "proofread neurite trees",
+        "human cortical ultrastructure context"
+      ],
       "boundary": "The H01 specimen is temporal cortex from surgical tissue, not primary motor or primary somatosensory cortex."
     },
     {
@@ -54,9 +88,12 @@
       "organization": "Google Research / Lichtman laboratory",
       "year": 2021,
       "modality": "public H01 data release",
-      "url": "https://research.google/blog/a-browsable-petascale-reconstruction-of-the-human-cortex/",
-      "usedFor": ["dataset scale", "all-layer inspection concept"],
-      "boundary": "Used as a reference and provenance record; no H01 mesh or segmentation object is copied into this model."
+      "url": "https://h01-release.storage.googleapis.com/data.html",
+      "usedFor": [
+        "dataset scale",
+        "all-layer inspection concept"
+      ],
+      "boundary": "Twelve proofread connected SWC components are copied with source IDs, anisotropic position calibration, physical radii, license and hashes; not a complete H01 connectome or EM membrane segmentation."
     },
     {
       "id": "bigbrain-layers-2020",
@@ -66,8 +103,12 @@
       "modality": "20-micrometer 3D histology / six-layer segmentation",
       "doi": "10.1371/journal.pbio.3000678",
       "url": "https://doi.org/10.1371/journal.pbio.3000678",
-      "usedFor": ["six-layer surface-normal construction", "motor-versus-sensory laminar differentiation", "coronal histological registration logic"],
-      "boundary": "Displayed layer fractions are bounded modeling priors, not values sampled from a subject-specific M1/S1 vertex."
+      "usedFor": [
+        "six-layer surface-normal construction",
+        "motor-versus-sensory laminar differentiation",
+        "coronal histological registration logic"
+      ],
+      "boundary": "Regional histological reference retained from PR #279; current numerical fractions are model priors, not sampled BigBrain surface values."
     },
     {
       "id": "bigbrain-layers-2018",
@@ -77,7 +118,11 @@
       "modality": "3D histology / laminar mapping",
       "doi": "10.1093/cercor/bhy074",
       "url": "https://doi.org/10.1093/cercor/bhy074",
-      "usedFor": ["layer-boundary construction along folded cortex", "pial-to-white-matter depth coordinates"]
+      "usedFor": [
+        "layer-boundary construction along folded cortex",
+        "pial-to-white-matter depth coordinates"
+      ],
+      "boundary": "Regional histological reference retained from PR #279; current numerical fractions are model priors, not sampled BigBrain surface values."
     },
     {
       "id": "dki-original-2005",
@@ -87,7 +132,10 @@
       "modality": "diffusion kurtosis MRI",
       "doi": "10.1002/mrm.20508",
       "url": "https://doi.org/10.1002/mrm.20508",
-      "usedFor": ["non-Gaussian diffusion basis", "kurtosis-informed uncertainty"]
+      "usedFor": [
+        "non-Gaussian diffusion basis",
+        "kurtosis-informed uncertainty"
+      ]
     },
     {
       "id": "dki-odf-2008",
@@ -97,7 +145,10 @@
       "modality": "DKI orientation distribution function",
       "doi": "10.1002/mrm.21725",
       "url": "https://doi.org/10.1002/mrm.21725",
-      "usedFor": ["multiple orientation peaks", "probabilistic streamline fan construction"]
+      "usedFor": [
+        "multiple orientation peaks",
+        "probabilistic streamline fan construction"
+      ]
     },
     {
       "id": "cortical-diffusion-orientation-2013",
@@ -107,7 +158,11 @@
       "modality": "high-resolution diffusion MRI",
       "doi": "10.1016/j.neuroimage.2012.11.065",
       "url": "https://doi.org/10.1016/j.neuroimage.2012.11.065",
-      "usedFor": ["surface-normal-relative intracortical orientation", "M1/S1 orientation transition", "radial-versus-tangential cortical priors"],
+      "usedFor": [
+        "surface-normal-relative intracortical orientation",
+        "M1/S1 orientation transition",
+        "radial-versus-tangential cortical priors"
+      ],
       "boundary": "Diffusion orientation is a voxel-scale signal and is not rendered as an axon-resolved measurement."
     },
     {
@@ -118,7 +173,10 @@
       "modality": "DKI white-matter modeling",
       "doi": "10.1016/j.neuroimage.2011.06.006",
       "url": "https://doi.org/10.1016/j.neuroimage.2011.06.006",
-      "usedFor": ["white-matter microstructural uncertainty", "bundle-envelope interpretation"]
+      "usedFor": [
+        "white-matter microstructural uncertainty",
+        "bundle-envelope interpretation"
+      ]
     },
     {
       "id": "dki-fiber-orientation-2016",
@@ -128,7 +186,28 @@
       "modality": "comparative diffusion tract orientation",
       "doi": "10.3174/ajnr.A4714",
       "url": "https://doi.org/10.3174/ajnr.A4714",
-      "usedFor": ["crossing-fiber orientation caveats", "DKI-versus-tensor direction prior"]
+      "usedFor": [
+        "crossing-fiber orientation caveats",
+        "DKI-versus-tensor direction prior"
+      ]
+    },
+    {
+      "id": "dki-odf-2014",
+      "title": "Leading non-Gaussian corrections for diffusion orientation distribution function",
+      "doi": "10.1002/nbm.3053",
+      "url": "https://doi.org/10.1002/nbm.3053",
+      "usedFor": [
+        "proposed DKI tract-orientation workflow; no fitted dataset"
+      ]
+    },
+    {
+      "id": "dki-tractography-2015",
+      "title": "Optimization of white matter fiber tractography with diffusional kurtosis imaging",
+      "doi": "10.1002/nbm.3374",
+      "url": "https://doi.org/10.1002/nbm.3374",
+      "usedFor": [
+        "proposed DKI tract-orientation workflow; no fitted dataset"
+      ]
     }
   ]
 }

@@ -197,7 +197,7 @@ function orientation(cell, template, anchor) {
     // Source cortical reconstructions are already display oriented with their
     // apical direction along +Y. Do not rotate an entire cortical arbor to aim
     // one distant axon leaf; the new connector can leave from that actual leaf.
-    if (template.key.startsWith('cortex:')) return [0,0,0,1];
+    if (template.key.startsWith('cortex:')) return cell.pialNormal ? align([0,1,0],cell.pialNormal) : [0,0,0,1];
     const branch = outgoingBranch(cell), port = template.ports?.axonOut;
     return branch && port && length(port) > 1e-9
       ? align(port, sub(branch.points[1], cell.soma))
