@@ -1214,7 +1214,7 @@ export default function CortexLaboratory() {
           </div>
           <p class="cx-muted cx-caption">
             {viewStatus}. Thin lines mark neurite centers; crosshairs mark
-            recording sites. Colors
+            recording sites. Colors{" "}
             {active
               ? "show membrane voltage from −100 to +40 mV."
               : "show ΔVₘ from −10 to +10 mV, saturating beyond this range."}{" "}
