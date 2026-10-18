@@ -1,0 +1,13 @@
+{
+  "name": "finite-contact-field",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Verified equipotential disk FEM field artifacts and portable SI sampler",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "test": "node tests/sampler.test.mjs",
+    "validate:js": "node tests/validate-js.mjs",
+    "example": "node examples/waveform.mjs"
+  }
+}

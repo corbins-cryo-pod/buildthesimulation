@@ -1,0 +1,52 @@
+{
+  "method": "shared equipotential-contact unknown with prescribed total current load; same FEM spatial operator as voltage-controlled solve",
+  "source_level": 2,
+  "source_domain_radius_in_a": 2000.0,
+  "cases": [
+    {
+      "prescribed_current_A": 1.0,
+      "contact_voltage_V": 33299.41496739326,
+      "maximum_absolute_difference_V": 5.748006515204906e-10,
+      "maximum_difference_relative_to_peak": 1.7261584087388455e-14,
+      "integrated_contact_current_A": 0.9999999999997264,
+      "integrated_outer_return_current_A": 1.0000000000000004,
+      "free_residual_linf_A": 4.757267158882347e-11,
+      "shared_contact_current_residual_A": 2.7355895326763857e-13,
+      "reduced_unknowns": 58964
+    },
+    {
+      "prescribed_current_A": 0.25,
+      "contact_voltage_V": 8324.853741848316,
+      "maximum_absolute_difference_V": 1.4370016288012266e-10,
+      "maximum_difference_relative_to_peak": 1.7261584087388455e-14,
+      "integrated_contact_current_A": 0.2499999999999316,
+      "integrated_outer_return_current_A": 0.2500000000000001,
+      "free_residual_linf_A": 1.1893167897205868e-11,
+      "shared_contact_current_residual_A": 6.838973831690964e-14,
+      "reduced_unknowns": 58964
+    },
+    {
+      "prescribed_current_A": -0.5,
+      "contact_voltage_V": -16649.70748369663,
+      "maximum_absolute_difference_V": 2.874003257602453e-10,
+      "maximum_difference_relative_to_peak": 1.7261584087388455e-14,
+      "integrated_contact_current_A": -0.4999999999998632,
+      "integrated_outer_return_current_A": -0.5000000000000002,
+      "free_residual_linf_A": 2.3786335794411736e-11,
+      "shared_contact_current_residual_A": 1.3677947663381929e-13,
+      "reduced_unknowns": 58964
+    },
+    {
+      "prescribed_current_A": 0.0,
+      "contact_voltage_V": 0.0,
+      "maximum_absolute_difference_V": 0.0,
+      "maximum_difference_relative_to_peak": 0.0,
+      "integrated_contact_current_A": 0.0,
+      "integrated_outer_return_current_A": -0.0,
+      "free_residual_linf_A": 0.0,
+      "shared_contact_current_residual_A": 0.0,
+      "reduced_unknowns": 58964
+    }
+  ],
+  "seconds": 0.4216180800000302
+}

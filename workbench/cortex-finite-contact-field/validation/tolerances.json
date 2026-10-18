@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "locked_before_study": true,
+  "scope": "Engineering gates for potential sampling of this ideal disk only; not biological tolerances or a proof of a uniform continuum error bound.",
+  "reference_max_relative": 0.02,
+  "mesh_last_change_max_relative": 0.01,
+  "domain_last_change_max_relative": 0.01,
+  "weak_current_imbalance_relative": 1e-9,
+  "linear_system_relative_residual": 1e-9,
+  "raw_boundary_current_error_relative": 0.05,
+  "raw_insulation_leakage_relative": 0.05,
+  "far_field_max_relative": 0.02,
+  "linearity_relative": 1e-10,
+  "export_relative": 2e-7,
+  "export_absolute_volts_per_amp": 0.001,
+  "neuron_delta_relative": 0.05,
+  "neuron_delta_absolute_volts_per_amp": 1.0,
+  "near_rim_diagnostic_relative": 0.02,
+  "justification": {
+    "potential": "2% is a useful preliminary engineering accuracy target, substantially tighter than the point-source error near a disk. It is not a stimulation-threshold tolerance.",
+    "convergence": "Last mesh and domain changes each below 1% reserve margin within the 2% total benchmark target; independent benchmark is still required.",
+    "flux": "P1 gradients converge slowly at a mixed-boundary sharp edge; 5% raw integrated current tolerance supplements the near-machine-precision conservative weak flux check. Gradient fields are not exported.",
+    "export": "Float32 nodal serialization plus identical P1 interpolation should incur only rounding error. Absolute tolerance protects comparisons near zero.",
+    "neuron_delta": "Neighbor differences use 5% plus 1 V/A (=1 microvolt at 1 microamp) to avoid meaningless relative errors near a zero difference. This verifies interface spatial variation only.",
+    "rim": "The same 2% potential threshold is recorded diagnostically for points inside the predeclared excluded rim tube of radius 0.02a. Failures remain in results; passing points do not expand the accepted region."
+  }
+}

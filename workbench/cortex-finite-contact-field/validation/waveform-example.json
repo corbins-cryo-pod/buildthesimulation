@@ -1,0 +1,83 @@
+{
+  "note": "Field interface demonstration only. No cable equation or firing validation. Equal 0.1 ms phases give zero net injected waveform charge.",
+  "rows": [
+    {
+      "timeMilliseconds": 0,
+      "timeSeconds": 0,
+      "currentMicroamps": -2,
+      "extracellularMillivolts": [
+        -29.459527734375,
+        -23.682459375000004,
+        -19.384337890625,
+        -19.384337890625,
+        -16.0514134765625,
+        -16.0514134765625
+      ]
+    },
+    {
+      "timeMilliseconds": 0.05,
+      "timeSeconds": 0.00005,
+      "currentMicroamps": -2,
+      "extracellularMillivolts": [
+        -29.459527734375,
+        -23.682459375000004,
+        -19.384337890625,
+        -19.384337890625,
+        -16.0514134765625,
+        -16.0514134765625
+      ]
+    },
+    {
+      "timeMilliseconds": 0.1,
+      "timeSeconds": 0.0001,
+      "currentMicroamps": 0,
+      "extracellularMillivolts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "timeMilliseconds": 0.15,
+      "timeSeconds": 0.00015,
+      "currentMicroamps": 2,
+      "extracellularMillivolts": [
+        29.459527734375,
+        23.682459375000004,
+        19.384337890625,
+        19.384337890625,
+        16.0514134765625,
+        16.0514134765625
+      ]
+    },
+    {
+      "timeMilliseconds": 0.2,
+      "timeSeconds": 0.0002,
+      "currentMicroamps": 2,
+      "extracellularMillivolts": [
+        29.459527734375,
+        23.682459375000004,
+        19.384337890625,
+        19.384337890625,
+        16.0514134765625,
+        16.0514134765625
+      ]
+    },
+    {
+      "timeMilliseconds": 0.25,
+      "timeSeconds": 0.00025,
+      "currentMicroamps": 0,
+      "extracellularMillivolts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

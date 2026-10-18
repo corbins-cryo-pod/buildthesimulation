@@ -1,0 +1,15 @@
+{
+  "solver_sha256": "1252a435585bb57f2df3595f95dee02bb704db740475779b508a315840628837",
+  "case": "L4_R1000",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-m",
+    "validation.run_case",
+    "--level",
+    "4",
+    "--domain",
+    "1000",
+    "--output",
+    "/workspace/work/finite-contact-field/validation/checkpoints/L4_R1000.npz"
+  ]
+}

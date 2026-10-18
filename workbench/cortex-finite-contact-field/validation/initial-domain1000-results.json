@@ -1,0 +1,1571 @@
+{
+  "schema": "finite-contact-validation/1.0",
+  "tolerances_sha256": "4f88a77bea324a6ab23c4b8901f6d2174cd8a2ff982cded934f7dd4ff4f4a051",
+  "solver_sha256": "e339401b63dd7a7274167216060e962ea049edfcac370690b6705f6303e05fee",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "numpy": "2.3.5",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "cpu_count": 5
+  },
+  "study_wall_seconds_this_run": 10.061304533000055,
+  "cases": [
+    {
+      "case": "L1_R1000",
+      "reused_checkpoint": false,
+      "subprocess_wall_seconds_this_run": 0.30687815300001375,
+      "diagnostics": {
+        "solver_version": "axisymmetric-p1-fem/1.0.0",
+        "level": 1,
+        "domain_radius_in_a": 1000.0,
+        "domain_height_in_a": 1000.0,
+        "disk_radius_m": 2.5e-05,
+        "conductivity_S_per_m": 0.3,
+        "radial_nodes": 131,
+        "axial_nodes": 109,
+        "nodes": 14279,
+        "triangles": 28080,
+        "matrix_nnz": 98995,
+        "free_dofs": 13995,
+        "one_volt_conductance_S": 3.0098647996010273e-05,
+        "contact_potential_V_per_A": 33224.083690820764,
+        "weak_flux": {
+          "injecting_current_A": 1.0,
+          "outer_return_current_A": 1.0000000000000024,
+          "relative_current_imbalance": 2.4424906541753444e-15,
+          "free_residual_linf_A": 2.1913415942932848e-11,
+          "free_residual_l1_A": 1.1849450983573014e-09,
+          "method": "integrated FEM boundary reactions (weak conormal flux), evaluated by cancellation-resistant edge voltage differences"
+        },
+        "raw_gradient_flux": {
+          "injecting_current_A": 1.0221819777125025,
+          "outer_return_current_A": 1.1334242684846643,
+          "insulating_plane_signed_outward_current_A": -0.012307007821846884,
+          "insulating_plane_absolute_leakage_A": 0.012307007821846884,
+          "source_return_relative_imbalance": 0.11124229077216174,
+          "all_boundaries_signed_outward_current_A": 0.09893528295031495,
+          "method": "exact boundary-edge integration of adjacent P1 element-gradient J.n; not equilibrated"
+        },
+        "linear_system_relative_residual_l2": 5.868812313358225e-13,
+        "generation_seconds": 0.06201036400000248,
+        "assembly_seconds": 0.007130772000039087,
+        "peak_process_rss_MiB": 69.76171875,
+        "runtime": {
+          "python": "3.12.14",
+          "numpy": "2.3.5",
+          "scipy": "1.17.0",
+          "platform": "Linux-6.18.55-x86_64-with-glibc2.41"
+        }
+      }
+    },
+    {
+      "case": "L2_R1000",
+      "reused_checkpoint": false,
+      "subprocess_wall_seconds_this_run": 0.6618623260000049,
+      "diagnostics": {
+        "solver_version": "axisymmetric-p1-fem/1.0.0",
+        "level": 2,
+        "domain_radius_in_a": 1000.0,
+        "domain_height_in_a": 1000.0,
+        "disk_radius_m": 2.5e-05,
+        "conductivity_S_per_m": 0.3,
+        "radial_nodes": 261,
+        "axial_nodes": 217,
+        "nodes": 56637,
+        "triangles": 112320,
+        "matrix_nnz": 394549,
+        "free_dofs": 56071,
+        "one_volt_conductance_S": 3.0039343950530853e-05,
+        "contact_potential_V_per_A": 33289.67508900367,
+        "weak_flux": {
+          "injecting_current_A": 1.0,
+          "outer_return_current_A": 1.0000000000000082,
+          "relative_current_imbalance": 8.215650382226158e-15,
+          "free_residual_linf_A": 2.3389483110299932e-11,
+          "free_residual_l1_A": 4.910239194457991e-09,
+          "method": "integrated FEM boundary reactions (weak conormal flux), evaluated by cancellation-resistant edge voltage differences"
+        },
+        "raw_gradient_flux": {
+          "injecting_current_A": 1.0087320481201885,
+          "outer_return_current_A": 1.0659819940156219,
+          "insulating_plane_signed_outward_current_A": -0.008904583305758593,
+          "insulating_plane_absolute_leakage_A": 0.008904583305758593,
+          "source_return_relative_imbalance": 0.05724994589543342,
+          "all_boundaries_signed_outward_current_A": 0.04834536258967481,
+          "method": "exact boundary-edge integration of adjacent P1 element-gradient J.n; not equilibrated"
+        },
+        "linear_system_relative_residual_l2": 1.0071334226772033e-12,
+        "generation_seconds": 0.3944866460000185,
+        "assembly_seconds": 0.027263935999997102,
+        "peak_process_rss_MiB": 163.51171875,
+        "runtime": {
+          "python": "3.12.14",
+          "numpy": "2.3.5",
+          "scipy": "1.17.0",
+          "platform": "Linux-6.18.55-x86_64-with-glibc2.41"
+        }
+      }
+    },
+    {
+      "case": "L4_R1000",
+      "reused_checkpoint": false,
+      "subprocess_wall_seconds_this_run": 3.4110326699999973,
+      "diagnostics": {
+        "solver_version": "axisymmetric-p1-fem/1.0.0",
+        "level": 4,
+        "domain_radius_in_a": 1000.0,
+        "domain_height_in_a": 1000.0,
+        "disk_radius_m": 2.5e-05,
+        "conductivity_S_per_m": 0.3,
+        "radial_nodes": 521,
+        "axial_nodes": 433,
+        "nodes": 225593,
+        "triangles": 449280,
+        "matrix_nnz": 1575337,
+        "free_dofs": 224463,
+        "one_volt_conductance_S": 3.002370549768258e-05,
+        "contact_potential_V_per_A": 33307.01468801665,
+        "weak_flux": {
+          "injecting_current_A": 1.0,
+          "outer_return_current_A": 0.999999999999974,
+          "relative_current_imbalance": 2.5979218776228663e-14,
+          "free_residual_linf_A": 3.197831209765169e-11,
+          "free_residual_l1_A": 1.9971170415549734e-08,
+          "method": "integrated FEM boundary reactions (weak conormal flux), evaluated by cancellation-resistant edge voltage differences"
+        },
+        "raw_gradient_flux": {
+          "injecting_current_A": 1.0025521995981346,
+          "outer_return_current_A": 1.0328152719020673,
+          "insulating_plane_signed_outward_current_A": -0.0063482732096199045,
+          "insulating_plane_absolute_leakage_A": 0.0063482732096199045,
+          "source_return_relative_imbalance": 0.03026307230393277,
+          "all_boundaries_signed_outward_current_A": 0.023914799094312933,
+          "method": "exact boundary-edge integration of adjacent P1 element-gradient J.n; not equilibrated"
+        },
+        "linear_system_relative_residual_l2": 1.3212352439716313e-12,
+        "generation_seconds": 3.08687417699997,
+        "assembly_seconds": 0.11550317699999368,
+        "peak_process_rss_MiB": 639.53125,
+        "runtime": {
+          "python": "3.12.14",
+          "numpy": "2.3.5",
+          "scipy": "1.17.0",
+          "platform": "Linux-6.18.55-x86_64-with-glibc2.41"
+        }
+      }
+    },
+    {
+      "case": "L4_R250",
+      "reused_checkpoint": false,
+      "subprocess_wall_seconds_this_run": 2.7338857510000025,
+      "diagnostics": {
+        "solver_version": "axisymmetric-p1-fem/1.0.0",
+        "level": 4,
+        "domain_radius_in_a": 250.0,
+        "domain_height_in_a": 250.0,
+        "disk_radius_m": 2.5e-05,
+        "conductivity_S_per_m": 0.3,
+        "radial_nodes": 493,
+        "axial_nodes": 405,
+        "nodes": 199665,
+        "triangles": 397536,
+        "matrix_nnz": 1394065,
+        "free_dofs": 198591,
+        "one_volt_conductance_S": 3.00765899959364e-05,
+        "contact_potential_V_per_A": 33248.45004487239,
+        "weak_flux": {
+          "injecting_current_A": 0.9999999999999999,
+          "outer_return_current_A": 1.0000000000000173,
+          "relative_current_imbalance": 1.7430501486614958e-14,
+          "free_residual_linf_A": 9.482380688783656e-12,
+          "free_residual_l1_A": 5.19799926734906e-09,
+          "method": "integrated FEM boundary reactions (weak conormal flux), evaluated by cancellation-resistant edge voltage differences"
+        },
+        "raw_gradient_flux": {
+          "injecting_current_A": 1.0025521996138986,
+          "outer_return_current_A": 1.0330758356511978,
+          "insulating_plane_signed_outward_current_A": -0.006348049127050503,
+          "insulating_plane_absolute_leakage_A": 0.006348049127050503,
+          "source_return_relative_imbalance": 0.03052363603729913,
+          "all_boundaries_signed_outward_current_A": 0.02417558691024868,
+          "method": "exact boundary-edge integration of adjacent P1 element-gradient J.n; not equilibrated"
+        },
+        "linear_system_relative_residual_l2": 3.2216777073390804e-13,
+        "generation_seconds": 2.4051892279999834,
+        "assembly_seconds": 0.11020784400000139,
+        "peak_process_rss_MiB": 563.1015625,
+        "runtime": {
+          "python": "3.12.14",
+          "numpy": "2.3.5",
+          "scipy": "1.17.0",
+          "platform": "Linux-6.18.55-x86_64-with-glibc2.41"
+        }
+      }
+    },
+    {
+      "case": "L4_R500",
+      "reused_checkpoint": false,
+      "subprocess_wall_seconds_this_run": 2.899975344999973,
+      "diagnostics": {
+        "solver_version": "axisymmetric-p1-fem/1.0.0",
+        "level": 4,
+        "domain_radius_in_a": 500.0,
+        "domain_height_in_a": 500.0,
+        "disk_radius_m": 2.5e-05,
+        "conductivity_S_per_m": 0.3,
+        "radial_nodes": 505,
+        "axial_nodes": 417,
+        "nodes": 210585,
+        "triangles": 419328,
+        "matrix_nnz": 1470409,
+        "free_dofs": 209487,
+        "one_volt_conductance_S": 3.0041310923041043e-05,
+        "contact_potential_V_per_A": 33287.495427938244,
+        "weak_flux": {
+          "injecting_current_A": 1.0,
+          "outer_return_current_A": 0.9999999999999895,
+          "relative_current_imbalance": 1.0547118733938987e-14,
+          "free_residual_linf_A": 1.8300454397346613e-11,
+          "free_residual_l1_A": 9.926181924475787e-09,
+          "method": "integrated FEM boundary reactions (weak conormal flux), evaluated by cancellation-resistant edge voltage differences"
+        },
+        "raw_gradient_flux": {
+          "injecting_current_A": 1.0025521995998885,
+          "outer_return_current_A": 1.0407106112078393,
+          "insulating_plane_signed_outward_current_A": -0.006348197585026404,
+          "insulating_plane_absolute_leakage_A": 0.006348197585026404,
+          "source_return_relative_imbalance": 0.03815841160795075,
+          "all_boundaries_signed_outward_current_A": 0.03181021402292439,
+          "method": "exact boundary-edge integration of adjacent P1 element-gradient J.n; not equilibrated"
+        },
+        "linear_system_relative_residual_l2": 6.513802541850178e-13,
+        "generation_seconds": 2.5684703740000145,
+        "assembly_seconds": 0.10568732699999828,
+        "peak_process_rss_MiB": 590.8125,
+        "runtime": {
+          "python": "3.12.14",
+          "numpy": "2.3.5",
+          "scipy": "1.17.0",
+          "platform": "Linux-6.18.55-x86_64-with-glibc2.41"
+        }
+      }
+    }
+  ],
+  "fixed_points_rz_over_a": [
+    [
+      0.0,
+      0.005
+    ],
+    [
+      0.5,
+      0.01
+    ],
+    [
+      0.95,
+      0.02
+    ],
+    [
+      1.0,
+      0.025
+    ],
+    [
+      1.05,
+      0.02
+    ],
+    [
+      0.0,
+      1.0
+    ],
+    [
+      1.0,
+      1.0
+    ],
+    [
+      3.0,
+      2.0
+    ],
+    [
+      0.0,
+      5.0
+    ],
+    [
+      5.0,
+      5.0
+    ],
+    [
+      10.0,
+      1.0
+    ],
+    [
+      1.0,
+      10.0
+    ],
+    [
+      10.0,
+      10.0
+    ]
+  ],
+  "fixed_point_labels": [
+    "above_center_0.125um",
+    "above_disk_0.25um",
+    "inner_rim",
+    "above_rim_0.625um",
+    "outer_rim",
+    "axis_one_radius",
+    "one_one",
+    "intermediate",
+    "axis_five",
+    "far_diagonal",
+    "radial_ten",
+    "axial_ten",
+    "far_corner"
+  ],
+  "reference_V_per_A": [
+    33227.23092211956,
+    33088.31460162602,
+    32000.023002860773,
+    29985.081719389425,
+    26634.929306907,
+    16666.666666666668,
+    14138.03986185639,
+    5888.7179532056325,
+    4188.863879266746,
+    2995.9556205311615,
+    2114.9294609304357,
+    2104.7083398959176,
+    1499.8989299937568
+  ],
+  "mesh_convergence": [
+    {
+      "level": 1,
+      "values_V_per_A": [
+        33118.20697169975,
+        32979.46418118251,
+        31896.313706166497,
+        29901.566381777004,
+        26546.722647843915,
+        16590.650329060874,
+        14063.918278052859,
+        5830.754201848414,
+        4146.289853766781,
+        2952.843843075333,
+        2061.906632828578,
+        2052.1308054804476,
+        1461.0234329917225
+      ],
+      "reference_error": {
+        "max_absolute_V_per_A": 109.02395041981072,
+        "rms_absolute_V_per_A": 75.77094240649036,
+        "max_relative": 0.02591874440646219,
+        "rms_relative": 0.013674043875575768
+      },
+      "diagnostics": {
+        "solver_version": "axisymmetric-p1-fem/1.0.0",
+        "level": 1,
+        "domain_radius_in_a": 1000.0,
+        "domain_height_in_a": 1000.0,
+        "disk_radius_m": 2.5e-05,
+        "conductivity_S_per_m": 0.3,
+        "radial_nodes": 131,
+        "axial_nodes": 109,
+        "nodes": 14279,
+        "triangles": 28080,
+        "matrix_nnz": 98995,
+        "free_dofs": 13995,
+        "one_volt_conductance_S": 3.0098647996010273e-05,
+        "contact_potential_V_per_A": 33224.083690820764,
+        "weak_flux": {
+          "injecting_current_A": 1.0,
+          "outer_return_current_A": 1.0000000000000024,
+          "relative_current_imbalance": 2.4424906541753444e-15,
+          "free_residual_linf_A": 2.1913415942932848e-11,
+          "free_residual_l1_A": 1.1849450983573014e-09,
+          "method": "integrated FEM boundary reactions (weak conormal flux), evaluated by cancellation-resistant edge voltage differences"
+        },
+        "raw_gradient_flux": {
+          "injecting_current_A": 1.0221819777125025,
+          "outer_return_current_A": 1.1334242684846643,
+          "insulating_plane_signed_outward_current_A": -0.012307007821846884,
+          "insulating_plane_absolute_leakage_A": 0.012307007821846884,
+          "source_return_relative_imbalance": 0.11124229077216174,
+          "all_boundaries_signed_outward_current_A": 0.09893528295031495,
+          "method": "exact boundary-edge integration of adjacent P1 element-gradient J.n; not equilibrated"
+        },
+        "linear_system_relative_residual_l2": 5.868812313358225e-13,
+        "generation_seconds": 0.06201036400000248,
+        "assembly_seconds": 0.007130772000039087,
+        "peak_process_rss_MiB": 69.76171875,
+        "runtime": {
+          "python": "3.12.14",
+          "numpy": "2.3.5",
+          "scipy": "1.17.0",
+          "platform": "Linux-6.18.55-x86_64-with-glibc2.41"
+        }
+      }
+    },
+    {
+      "level": 2,
+      "values_V_per_A": [
+        33183.642678597585,
+        33044.78224839788,
+        31958.399951317428,
+        29951.425330186474,
+        26599.606889671843,
+        16632.76026602124,
+        14104.598912996467,
+        5859.455919732501,
+        4162.475431780784,
+        2969.6634414023893,
+        2086.818310424767,
+        2076.670363034815,
+        1475.4229108564832
+      ],
+      "reference_error": {
+        "max_absolute_V_per_A": 43.58824352197553,
+        "rms_absolute_V_per_A": 33.506809662252955,
+        "max_relative": 0.016318445628450112,
+        "rms_relative": 0.007744560544374859
+      },
+      "diagnostics": {
+        "solver_version": "axisymmetric-p1-fem/1.0.0",
+        "level": 2,
+        "domain_radius_in_a": 1000.0,
+        "domain_height_in_a": 1000.0,
+        "disk_radius_m": 2.5e-05,
+        "conductivity_S_per_m": 0.3,
+        "radial_nodes": 261,
+        "axial_nodes": 217,
+        "nodes": 56637,
+        "triangles": 112320,
+        "matrix_nnz": 394549,
+        "free_dofs": 56071,
+        "one_volt_conductance_S": 3.0039343950530853e-05,
+        "contact_potential_V_per_A": 33289.67508900367,
+        "weak_flux": {
+          "injecting_current_A": 1.0,
+          "outer_return_current_A": 1.0000000000000082,
+          "relative_current_imbalance": 8.215650382226158e-15,
+          "free_residual_linf_A": 2.3389483110299932e-11,
+          "free_residual_l1_A": 4.910239194457991e-09,
+          "method": "integrated FEM boundary reactions (weak conormal flux), evaluated by cancellation-resistant edge voltage differences"
+        },
+        "raw_gradient_flux": {
+          "injecting_current_A": 1.0087320481201885,
+          "outer_return_current_A": 1.0659819940156219,
+          "insulating_plane_signed_outward_current_A": -0.008904583305758593,
+          "insulating_plane_absolute_leakage_A": 0.008904583305758593,
+          "source_return_relative_imbalance": 0.05724994589543342,
+          "all_boundaries_signed_outward_current_A": 0.04834536258967481,
+          "method": "exact boundary-edge integration of adjacent P1 element-gradient J.n; not equilibrated"
+        },
+        "linear_system_relative_residual_l2": 1.0071334226772033e-12,
+        "generation_seconds": 0.3944866460000185,
+        "assembly_seconds": 0.027263935999997102,
+        "peak_process_rss_MiB": 163.51171875,
+        "runtime": {
+          "python": "3.12.14",
+          "numpy": "2.3.5",
+          "scipy": "1.17.0",
+          "platform": "Linux-6.18.55-x86_64-with-glibc2.41"
+        }
+      }
+    },
+    {
+      "level": 4,
+      "values_V_per_A": [
+        33200.93544102343,
+        33062.04011568908,
+        31974.52569981284,
+        29962.364681701758,
+        26612.230217361714,
+        16643.439715270477,
+        14114.969971348979,
+        5866.741603289921,
+        4167.760539614948,
+        2974.8396676578664,
+        2093.2352483030777,
+        2083.0291941681553,
+        1479.1100474466352
+      ],
+      "reference_error": {
+        "max_absolute_V_per_A": 26.29548109613097,
+        "rms_absolute_V_per_A": 23.00824803798594,
+        "max_relative": 0.01386018893100226,
+        "rms_relative": 0.006202991506238967
+      },
+      "diagnostics": {
+        "solver_version": "axisymmetric-p1-fem/1.0.0",
+        "level": 4,
+        "domain_radius_in_a": 1000.0,
+        "domain_height_in_a": 1000.0,
+        "disk_radius_m": 2.5e-05,
+        "conductivity_S_per_m": 0.3,
+        "radial_nodes": 521,
+        "axial_nodes": 433,
+        "nodes": 225593,
+        "triangles": 449280,
+        "matrix_nnz": 1575337,
+        "free_dofs": 224463,
+        "one_volt_conductance_S": 3.002370549768258e-05,
+        "contact_potential_V_per_A": 33307.01468801665,
+        "weak_flux": {
+          "injecting_current_A": 1.0,
+          "outer_return_current_A": 0.999999999999974,
+          "relative_current_imbalance": 2.5979218776228663e-14,
+          "free_residual_linf_A": 3.197831209765169e-11,
+          "free_residual_l1_A": 1.9971170415549734e-08,
+          "method": "integrated FEM boundary reactions (weak conormal flux), evaluated by cancellation-resistant edge voltage differences"
+        },
+        "raw_gradient_flux": {
+          "injecting_current_A": 1.0025521995981346,
+          "outer_return_current_A": 1.0328152719020673,
+          "insulating_plane_signed_outward_current_A": -0.0063482732096199045,
+          "insulating_plane_absolute_leakage_A": 0.0063482732096199045,
+          "source_return_relative_imbalance": 0.03026307230393277,
+          "all_boundaries_signed_outward_current_A": 0.023914799094312933,
+          "method": "exact boundary-edge integration of adjacent P1 element-gradient J.n; not equilibrated"
+        },
+        "linear_system_relative_residual_l2": 1.3212352439716313e-12,
+        "generation_seconds": 3.08687417699997,
+        "assembly_seconds": 0.11550317699999368,
+        "peak_process_rss_MiB": 639.53125,
+        "runtime": {
+          "python": "3.12.14",
+          "numpy": "2.3.5",
+          "scipy": "1.17.0",
+          "platform": "Linux-6.18.55-x86_64-with-glibc2.41"
+        }
+      }
+    }
+  ],
+  "mesh_last_change": {
+    "max_absolute_V_per_A": 17.292762425844558,
+    "rms_absolute_V_per_A": 10.95639732607959,
+    "max_relative": 0.003074986378188653,
+    "rms_relative": 0.0016024884874413611
+  },
+  "domain_convergence": [
+    {
+      "radius_and_height_over_a": 250,
+      "values_V_per_A": [
+        33142.37079821869,
+        33003.475473034916,
+        31915.96105517785,
+        29903.8000334786,
+        26553.66556250629,
+        16584.87517636698,
+        14056.405394252115,
+        5808.1769469938,
+        4109.197921048413,
+        2916.2760538250395,
+        2034.6667033011863,
+        2024.472508660368,
+        1420.549474314675
+      ],
+      "reference_error": {
+        "max_absolute_V_per_A": 84.86012390087126,
+        "rms_absolute_V_per_A": 81.51850150809865,
+        "max_relative": 0.05290320173734109,
+        "rms_relative": 0.023275051704555166
+      },
+      "diagnostics": {
+        "solver_version": "axisymmetric-p1-fem/1.0.0",
+        "level": 4,
+        "domain_radius_in_a": 250.0,
+        "domain_height_in_a": 250.0,
+        "disk_radius_m": 2.5e-05,
+        "conductivity_S_per_m": 0.3,
+        "radial_nodes": 493,
+        "axial_nodes": 405,
+        "nodes": 199665,
+        "triangles": 397536,
+        "matrix_nnz": 1394065,
+        "free_dofs": 198591,
+        "one_volt_conductance_S": 3.00765899959364e-05,
+        "contact_potential_V_per_A": 33248.45004487239,
+        "weak_flux": {
+          "injecting_current_A": 0.9999999999999999,
+          "outer_return_current_A": 1.0000000000000173,
+          "relative_current_imbalance": 1.7430501486614958e-14,
+          "free_residual_linf_A": 9.482380688783656e-12,
+          "free_residual_l1_A": 5.19799926734906e-09,
+          "method": "integrated FEM boundary reactions (weak conormal flux), evaluated by cancellation-resistant edge voltage differences"
+        },
+        "raw_gradient_flux": {
+          "injecting_current_A": 1.0025521996138986,
+          "outer_return_current_A": 1.0330758356511978,
+          "insulating_plane_signed_outward_current_A": -0.006348049127050503,
+          "insulating_plane_absolute_leakage_A": 0.006348049127050503,
+          "source_return_relative_imbalance": 0.03052363603729913,
+          "all_boundaries_signed_outward_current_A": 0.02417558691024868,
+          "method": "exact boundary-edge integration of adjacent P1 element-gradient J.n; not equilibrated"
+        },
+        "linear_system_relative_residual_l2": 3.2216777073390804e-13,
+        "generation_seconds": 2.4051892279999834,
+        "assembly_seconds": 0.11020784400000139,
+        "peak_process_rss_MiB": 563.1015625,
+        "runtime": {
+          "python": "3.12.14",
+          "numpy": "2.3.5",
+          "scipy": "1.17.0",
+          "platform": "Linux-6.18.55-x86_64-with-glibc2.41"
+        }
+      }
+    },
+    {
+      "radius_and_height_over_a": 500,
+      "values_V_per_A": [
+        33181.41618098274,
+        33042.52085566512,
+        31955.0064395688,
+        29942.84542105905,
+        26592.710955982126,
+        16623.92046677361,
+        14095.450718608068,
+        5847.222341736093,
+        4148.241504614796,
+        2955.3205217106015,
+        2073.7155554898736,
+        2063.510820394032,
+        1459.5912359036377
+      ],
+      "reference_error": {
+        "max_absolute_V_per_A": 45.814741136819066,
+        "rms_absolute_V_per_A": 42.49318641487678,
+        "max_relative": 0.02687360680381775,
+        "rms_relative": 0.011892752812412208
+      },
+      "diagnostics": {
+        "solver_version": "axisymmetric-p1-fem/1.0.0",
+        "level": 4,
+        "domain_radius_in_a": 500.0,
+        "domain_height_in_a": 500.0,
+        "disk_radius_m": 2.5e-05,
+        "conductivity_S_per_m": 0.3,
+        "radial_nodes": 505,
+        "axial_nodes": 417,
+        "nodes": 210585,
+        "triangles": 419328,
+        "matrix_nnz": 1470409,
+        "free_dofs": 209487,
+        "one_volt_conductance_S": 3.0041310923041043e-05,
+        "contact_potential_V_per_A": 33287.495427938244,
+        "weak_flux": {
+          "injecting_current_A": 1.0,
+          "outer_return_current_A": 0.9999999999999895,
+          "relative_current_imbalance": 1.0547118733938987e-14,
+          "free_residual_linf_A": 1.8300454397346613e-11,
+          "free_residual_l1_A": 9.926181924475787e-09,
+          "method": "integrated FEM boundary reactions (weak conormal flux), evaluated by cancellation-resistant edge voltage differences"
+        },
+        "raw_gradient_flux": {
+          "injecting_current_A": 1.0025521995998885,
+          "outer_return_current_A": 1.0407106112078393,
+          "insulating_plane_signed_outward_current_A": -0.006348197585026404,
+          "insulating_plane_absolute_leakage_A": 0.006348197585026404,
+          "source_return_relative_imbalance": 0.03815841160795075,
+          "all_boundaries_signed_outward_current_A": 0.03181021402292439,
+          "method": "exact boundary-edge integration of adjacent P1 element-gradient J.n; not equilibrated"
+        },
+        "linear_system_relative_residual_l2": 6.513802541850178e-13,
+        "generation_seconds": 2.5684703740000145,
+        "assembly_seconds": 0.10568732699999828,
+        "peak_process_rss_MiB": 590.8125,
+        "runtime": {
+          "python": "3.12.14",
+          "numpy": "2.3.5",
+          "scipy": "1.17.0",
+          "platform": "Linux-6.18.55-x86_64-with-glibc2.41"
+        }
+      }
+    },
+    {
+      "radius_and_height_over_a": 1000,
+      "values_V_per_A": [
+        33200.93544102343,
+        33062.04011568908,
+        31974.52569981284,
+        29962.364681701758,
+        26612.230217361714,
+        16643.439715270477,
+        14114.969971348979,
+        5866.741603289921,
+        4167.760539614948,
+        2974.8396676578664,
+        2093.2352483030777,
+        2083.0291941681553,
+        1479.1100474466352
+      ],
+      "reference_error": {
+        "max_absolute_V_per_A": 26.29548109613097,
+        "rms_absolute_V_per_A": 23.00824803798594,
+        "max_relative": 0.01386018893100226,
+        "rms_relative": 0.006202991506238967
+      },
+      "diagnostics": {
+        "solver_version": "axisymmetric-p1-fem/1.0.0",
+        "level": 4,
+        "domain_radius_in_a": 1000.0,
+        "domain_height_in_a": 1000.0,
+        "disk_radius_m": 2.5e-05,
+        "conductivity_S_per_m": 0.3,
+        "radial_nodes": 521,
+        "axial_nodes": 433,
+        "nodes": 225593,
+        "triangles": 449280,
+        "matrix_nnz": 1575337,
+        "free_dofs": 224463,
+        "one_volt_conductance_S": 3.002370549768258e-05,
+        "contact_potential_V_per_A": 33307.01468801665,
+        "weak_flux": {
+          "injecting_current_A": 1.0,
+          "outer_return_current_A": 0.999999999999974,
+          "relative_current_imbalance": 2.5979218776228663e-14,
+          "free_residual_linf_A": 3.197831209765169e-11,
+          "free_residual_l1_A": 1.9971170415549734e-08,
+          "method": "integrated FEM boundary reactions (weak conormal flux), evaluated by cancellation-resistant edge voltage differences"
+        },
+        "raw_gradient_flux": {
+          "injecting_current_A": 1.0025521995981346,
+          "outer_return_current_A": 1.0328152719020673,
+          "insulating_plane_signed_outward_current_A": -0.0063482732096199045,
+          "insulating_plane_absolute_leakage_A": 0.0063482732096199045,
+          "source_return_relative_imbalance": 0.03026307230393277,
+          "all_boundaries_signed_outward_current_A": 0.023914799094312933,
+          "method": "exact boundary-edge integration of adjacent P1 element-gradient J.n; not equilibrated"
+        },
+        "linear_system_relative_residual_l2": 1.3212352439716313e-12,
+        "generation_seconds": 3.08687417699997,
+        "assembly_seconds": 0.11550317699999368,
+        "peak_process_rss_MiB": 639.53125,
+        "runtime": {
+          "python": "3.12.14",
+          "numpy": "2.3.5",
+          "scipy": "1.17.0",
+          "platform": "Linux-6.18.55-x86_64-with-glibc2.41"
+        }
+      }
+    }
+  ],
+  "domain_last_change": {
+    "max_absolute_V_per_A": 19.519692813204074,
+    "rms_absolute_V_per_A": 19.51916340222541,
+    "max_relative": 0.013372793055251133,
+    "rms_relative": 0.005812048056501672
+  },
+  "domain_local_mesh_identical": true,
+  "heldout_reference_error": {
+    "max_absolute_V_per_A": 26.620738690151484,
+    "rms_absolute_V_per_A": 22.581377023412248,
+    "max_relative": 0.01386018893100226,
+    "rms_relative": 0.0064490352690633945
+  },
+  "heldout_count": 2002,
+  "rim_approach": [
+    {
+      "offset_over_a": 0.1,
+      "points_rz_over_a": [
+        [
+          0.9,
+          0.1
+        ],
+        [
+          1.0,
+          0.1
+        ],
+        [
+          1.1,
+          0.1
+        ]
+      ],
+      "values_V_per_A": [
+        28895.234087515328,
+        26655.94019336467,
+        23325.919388586153
+      ],
+      "reference_V_per_A": [
+        28919.76863875698,
+        26679.912623566153,
+        23349.15013612
+      ],
+      "relative_errors": [
+        0.0008483660968426034,
+        0.0008985198167519165,
+        0.0009949290401755943
+      ],
+      "outside_predeclared_rim_restriction": [
+        true,
+        true,
+        true
+      ],
+      "max_relative_error": 0.0009949290401755943
+    },
+    {
+      "offset_over_a": 0.03,
+      "points_rz_over_a": [
+        [
+          0.97,
+          0.03
+        ],
+        [
+          1.0,
+          0.03
+        ],
+        [
+          1.03,
+          0.03
+        ]
+      ],
+      "values_V_per_A": [
+        30927.894178779614,
+        29644.181796021585,
+        27675.68854684784
+      ],
+      "reference_V_per_A": [
+        30952.41212641668,
+        29667.057643898865,
+        27698.255926719452
+      ],
+      "relative_errors": [
+        0.0007921175104844194,
+        0.0007710858337171242,
+        0.0008147581541349905
+      ],
+      "outside_predeclared_rim_restriction": [
+        true,
+        true,
+        true
+      ],
+      "max_relative_error": 0.0008147581541349905
+    },
+    {
+      "offset_over_a": 0.02,
+      "points_rz_over_a": [
+        [
+          0.98,
+          0.02
+        ],
+        [
+          1.0,
+          0.02
+        ],
+        [
+          1.02,
+          0.02
+        ]
+      ],
+      "values_V_per_A": [
+        31369.41168903912,
+        30314.763238831038,
+        28690.007198670348
+      ],
+      "reference_V_per_A": [
+        31393.51828953041,
+        30337.30307648223,
+        28711.923614374417
+      ],
+      "relative_errors": [
+        0.0007678846400382415,
+        0.0007429743373815022,
+        0.0007633210508088822
+      ],
+      "outside_predeclared_rim_restriction": [
+        true,
+        true,
+        true
+      ],
+      "max_relative_error": 0.0007678846400382415
+    },
+    {
+      "offset_over_a": 0.01,
+      "points_rz_over_a": [
+        [
+          0.99,
+          0.01
+        ],
+        [
+          1.0,
+          0.01
+        ],
+        [
+          1.01,
+          0.01
+        ]
+      ],
+      "values_V_per_A": [
+        31940.80445924643,
+        31191.810233346187,
+        30030.130926270165
+      ],
+      "reference_V_per_A": [
+        31964.635685090303,
+        31213.039780689523,
+        30050.905324464682
+      ],
+      "relative_errors": [
+        0.0007455497406150787,
+        0.0006801499467049957,
+        0.0006913068997493473
+      ],
+      "outside_predeclared_rim_restriction": [
+        false,
+        false,
+        false
+      ],
+      "max_relative_error": 0.0007455497406150787
+    },
+    {
+      "offset_over_a": 0.003,
+      "points_rz_over_a": [
+        [
+          0.997,
+          0.003
+        ],
+        [
+          1.0,
+          0.003
+        ],
+        [
+          1.003,
+          0.003
+        ]
+      ],
+      "values_V_per_A": [
+        32562.464198283298,
+        32153.650578150467,
+        31513.021519717906
+      ],
+      "reference_V_per_A": [
+        32584.79773042997,
+        32171.320738873186,
+        31529.81642888146
+      ],
+      "relative_errors": [
+        0.000685397292671126,
+        0.0005492519522634191,
+        0.0005326675212789563
+      ],
+      "outside_predeclared_rim_restriction": [
+        false,
+        false,
+        false
+      ],
+      "max_relative_error": 0.000685397292671126
+    },
+    {
+      "offset_over_a": 0.001,
+      "points_rz_over_a": [
+        [
+          0.999,
+          0.001
+        ],
+        [
+          1.0,
+          0.001
+        ],
+        [
+          1.001,
+          0.001
+        ]
+      ],
+      "values_V_per_A": [
+        32881.75636735394,
+        32651.066376101753,
+        32281.01579211556
+      ],
+      "reference_V_per_A": [
+        32901.35236359617,
+        32662.333105865517,
+        32291.133872720333
+      ],
+      "relative_errors": [
+        0.0005955985038447728,
+        0.0003449456512260079,
+        0.0003133392789691396
+      ],
+      "outside_predeclared_rim_restriction": [
+        false,
+        false,
+        false
+      ],
+      "max_relative_error": 0.0005955985038447728
+    },
+    {
+      "offset_over_a": 0.0003,
+      "points_rz_over_a": [
+        [
+          0.9997,
+          0.0003
+        ],
+        [
+          1.0,
+          0.0003
+        ],
+        [
+          1.0003,
+          0.0003
+        ]
+      ],
+      "values_V_per_A": [
+        33081.60966335234,
+        32970.727264294954,
+        32768.06569052904
+      ],
+      "reference_V_per_A": [
+        33096.76330147143,
+        32965.78992582046,
+        32762.316959974993
+      ],
+      "relative_errors": [
+        0.00045785861236815576,
+        0.00014977158095105185,
+        0.000175467765636613
+      ],
+      "outside_predeclared_rim_restriction": [
+        false,
+        false,
+        false
+      ],
+      "max_relative_error": 0.00045785861236815576
+    },
+    {
+      "offset_over_a": 0.0001,
+      "points_rz_over_a": [
+        [
+          0.9999,
+          0.0001
+        ],
+        [
+          1.0,
+          0.0001
+        ],
+        [
+          1.0001,
+          0.0001
+        ]
+      ],
+      "values_V_per_A": [
+        33187.55122833639,
+        33153.924865111345,
+        33045.6850353898
+      ],
+      "reference_V_per_A": [
+        33196.75544807303,
+        33121.12851097218,
+        33003.627131006586
+      ],
+      "relative_errors": [
+        0.0002772626304108686,
+        0.0009901943446250902,
+        0.0012743418841893984
+      ],
+      "outside_predeclared_rim_restriction": [
+        false,
+        false,
+        false
+      ],
+      "max_relative_error": 0.0012743418841893984
+    },
+    {
+      "offset_over_a": 3e-05,
+      "points_rz_over_a": [
+        [
+          0.99997,
+          3e-05
+        ],
+        [
+          1.0,
+          3e-05
+        ],
+        [
+          1.00003,
+          3e-05
+        ]
+      ],
+      "values_V_per_A": [
+        33261.08774114506,
+        33261.08774114506,
+        33228.61579222863
+      ],
+      "reference_V_per_A": [
+        33258.52767308866,
+        33217.10328728514,
+        33152.740105702615
+      ],
+      "relative_errors": [
+        7.697478618292253e-05,
+        0.0013241507990478512,
+        0.0022886701456379275
+      ],
+      "outside_predeclared_rim_restriction": [
+        false,
+        false,
+        false
+      ],
+      "max_relative_error": 0.0022886701456379275
+    },
+    {
+      "offset_over_a": 1e-05,
+      "points_rz_over_a": [
+        [
+          0.99999,
+          1e-05
+        ],
+        [
+          1.0,
+          1e-05
+        ],
+        [
+          1.00001,
+          1e-05
+        ]
+      ],
+      "values_V_per_A": [
+        33291.70570572612,
+        33291.70570572612,
+        33280.881722753824
+      ],
+      "reference_V_per_A": [
+        33290.144451383996,
+        33266.22777311528,
+        33229.06684389882
+      ],
+      "relative_errors": [
+        4.689839494097136e-05,
+        0.0007658798221609766,
+        0.0015593239225890623
+      ],
+      "outside_predeclared_rim_restriction": [
+        false,
+        false,
+        false
+      ],
+      "max_relative_error": 0.0015593239225890623
+    }
+  ],
+  "far_field": {
+    "points_rz_over_a": [
+      [
+        0.0,
+        8.0
+      ],
+      [
+        0.0,
+        10.0
+      ],
+      [
+        8.0,
+        0.1
+      ],
+      [
+        10.0,
+        0.1
+      ],
+      [
+        6.0,
+        8.0
+      ]
+    ],
+    "numerical_V_per_A": [
+      2617.5696220415994,
+      2093.325054413842,
+      2637.8563943037575,
+      2103.7856908258095,
+      2097.6807231901475
+    ],
+    "finite_disk_V_per_A": [
+      2638.8949440377028,
+      2115.034495370238,
+      2659.327017596686,
+      2125.5109886069436,
+      2118.8023034015127
+    ],
+    "halfspace_point_V_per_A": [
+      2652.5823848649225,
+      2122.065907891938,
+      2652.3751761480603,
+      2121.959812553627,
+      2122.065907891938
+    ],
+    "numerical_vs_halfspace_point": {
+      "max_absolute_V_per_A": 35.0127628233231,
+      "rms_absolute_V_per_A": 25.2494007015299,
+      "max_relative": 0.013543808121703124,
+      "rms_relative": 0.010890630469199815
+    },
+    "analytic_disk_vs_halfspace_point": {
+      "max_absolute_V_per_A": 13.687440827219689,
+      "rms_absolute_V_per_A": 7.853366967197712,
+      "max_relative": 0.005160043625908605,
+      "rms_relative": 0.003150895600176928
+    },
+    "infinite_medium_factor": 4,
+    "halfspace_factor": 2
+  },
+  "neuron": {
+    "potential_error": {
+      "max_absolute_V_per_A": 25.858927332435997,
+      "rms_absolute_V_per_A": 21.77568539003022,
+      "max_relative": 0.005909413761454067,
+      "rms_relative": 0.003924413164895817
+    },
+    "delta_max_absolute_error_V_per_A": 1.6164679869434622,
+    "delta_rms_absolute_error_V_per_A": 0.30508431933987545,
+    "delta_max_scaled_error": 0.0596852603126608,
+    "potentials_V_per_A": [
+      30109.194694443926,
+      25153.81761620903,
+      20992.737039621577,
+      17686.239557918576,
+      15109.041695063923,
+      13096.921467955077,
+      11508.351449280908,
+      10234.873617610689,
+      9198.113136394404,
+      8341.446507303976,
+      7623.860371219135,
+      7015.305916460563,
+      6495.258335911702,
+      6043.551945376967,
+      5648.1828635685915,
+      5301.330850183689,
+      4993.519870465856,
+      9743.301624963648,
+      9268.14317659112,
+      8813.088210687827,
+      8380.959929736897,
+      7973.345338096179,
+      7590.766331300946,
+      7233.235920394831,
+      6899.598166087417,
+      6588.766826105108,
+      6299.461479676243,
+      6030.125817128044,
+      5779.928807141432,
+      5546.639820613664,
+      5329.326688599384,
+      5126.117636261653,
+      4936.655136517919,
+      4758.920587055078,
+      4592.856613077925,
+      4436.692813058404,
+      4290.29079922567,
+      9814.077552094415,
+      9393.760694390436,
+      8979.779519469925,
+      8577.121658963464,
+      8189.392191398454,
+      7818.999506765913,
+      7467.699336821179,
+      7135.690067343366,
+      6823.072572353243,
+      6529.460444398991,
+      6254.180667714169,
+      5996.88854412579,
+      5755.97009960779,
+      5530.229566719594,
+      5318.973764998082,
+      5120.792374671593,
+      4935.235363161983,
+      4760.815118566269,
+      4597.282151370508,
+      4443.233490176472,
+      6298.179928699065,
+      6103.429169334573,
+      5912.345325194042,
+      5725.895131146375,
+      5545.305876723797,
+      5370.728842043873,
+      5202.283175820175,
+      5040.172406008758,
+      4884.50107178739,
+      4735.24710231899,
+      4592.337883210768,
+      4455.671211544705,
+      4324.919977840515,
+      4200.083656534575,
+      4080.7782517060878,
+      3966.8605937355674,
+      3858.297653197798,
+      3754.5098132641047,
+      3655.35418188662,
+      3560.5436057812976,
+      6305.355779468729,
+      6116.616334508964,
+      5930.45032400586,
+      5747.9827589627275,
+      5570.550528558673,
+      5398.43018641388,
+      5231.819782465771,
+      5071.02856371441,
+      4916.245495285214,
+      4767.531061004796,
+      4624.86106812812,
+      4488.249274239596,
+      4357.275488659278,
+      4232.112274959842,
+      4112.328868176645,
+      3997.8547670342887,
+      3888.6619685937067,
+      3784.2031923316413,
+      3684.3809275502636,
+      3588.786880925275
+    ],
+    "neighbor_differences_V_per_A": [
+      -4955.377078234895,
+      -4161.080576587454,
+      -3306.4974817030015,
+      -2577.197862854653,
+      -2012.120227108846,
+      -1588.5700186741688,
+      -1273.4778316702195,
+      -1036.7604812162845,
+      -856.6666290904286,
+      -717.5861360848403,
+      -608.5544547585723,
+      -520.0475805488613,
+      -451.70639053473496,
+      -395.3690818083751,
+      -346.8520133849024,
+      -307.8109797178331,
+      -491.57199264704104,
+      -475.15844837252735,
+      -455.0549659032931,
+      -432.1282809509303,
+      -407.61459164071766,
+      -382.579006795233,
+      -357.5304109061153,
+      -333.63775430741407,
+      -310.83133998230915,
+      -289.30534642886505,
+      -269.33566254819834,
+      -250.1970099866121,
+      -233.28898652776843,
+      -217.3131320142793,
+      -203.209052337731,
+      -189.46249974373404,
+      -177.73454946284164,
+      -166.06397397715227,
+      -156.16380001952166,
+      -146.40201383273416,
+      -420.7960655162733,
+      -420.3168577039796,
+      -413.98117492051097,
+      -402.65786050646057,
+      -387.72946756501005,
+      -370.3926846325412,
+      -351.3001699447341,
+      -332.0092694778132,
+      -312.6174949901224,
+      -293.6121279542522,
+      -275.2797766848216,
+      -257.2921235883796,
+      -240.9184445179999,
+      -225.74053288819596,
+      -211.2558017215124,
+      -198.18139032648833,
+      -185.55701150961067,
+      -174.42024459571348,
+      -163.53296719576156,
+      -154.04866119403596,
+      -197.0784072126362,
+      -194.7507593644923,
+      -191.08384414053126,
+      -186.45019404766663,
+      -180.58925442257805,
+      -174.5770346799245,
+      -168.44566622369803,
+      -162.1107698114165,
+      -155.67133422136794,
+      -149.2539694684001,
+      -142.9092191082218,
+      -136.66667166606294,
+      -130.75123370419078,
+      -124.83632130593924,
+      -119.30540482848755,
+      -113.9176579705204,
+      -108.56294053776946,
+      -103.78783993369325,
+      -99.1556313774845,
+      -94.81057610532253,
+      -189.90255644297213,
+      -188.73944495976502,
+      -186.1660105031042,
+      -182.4675650431327,
+      -177.43223040405428,
+      -172.12034214479354,
+      -166.6104039481088,
+      -160.79121875136116,
+      -154.78306842919574,
+      -148.71443428041766,
+      -142.6699928766766,
+      -136.6117938885236,
+      -130.97378558031778,
+      -125.16321369943671,
+      -119.78340678319637,
+      -114.47410114235663,
+      -109.19279844058201,
+      -104.45877626206538,
+      -99.82226478137773,
+      -95.59404662498855
+    ],
+    "reference_neighbor_differences_V_per_A": [
+      -4956.099763721031,
+      -4162.344077987014,
+      -3307.0432699094454,
+      -2577.504104898495,
+      -2012.257208813262,
+      -1588.9453287373053,
+      -1273.579200847913,
+      -1036.7990172341324,
+      -856.6578642043187,
+      -717.5321219276966,
+      -608.4446529989973,
+      -521.6640485358048,
+      -451.6926756304574,
+      -394.571420422144,
+      -347.4094552760962,
+      -308.06632978459766,
+      -491.3103180139042,
+      -475.4538939153081,
+      -455.1941786702773,
+      -432.1212981980698,
+      -407.54290020224926,
+      -382.48050359896297,
+      -357.69039424034236,
+      -333.7002669674248,
+      -310.8523384059299,
+      -289.3458552667371,
+      -269.2747897018344,
+      -250.65893090414102,
+      -233.46819545608378,
+      -217.64085439664905,
+      -203.09672617840897,
+      -189.74642379683974,
+      -177.49762863812612,
+      -166.25919131920728,
+      -155.94368426135406,
+      -146.46887621125916,
+      -420.5792556726574,
+      -420.5770017828181,
+      -414.08620522776437,
+      -402.64849257587593,
+      -387.64306162202774,
+      -370.2571182700185,
+      -351.4718754236783,
+      -332.06525669167695,
+      -312.62816405481954,
+      -293.58924474477135,
+      -275.2431615069572,
+      -257.7785295556487,
+      -241.30312873883122,
+      -225.86525447843724,
+      -211.47095948274455,
+      -198.0974668994386,
+      -185.70328844006417,
+      -174.2356537981468,
+      -163.63582889117333,
+      -153.84282431140673,
+      -196.9064617393724,
+      -194.49543526180423,
+      -190.8175464085998,
+      -186.16063285853488,
+      -180.77572513018185,
+      -174.87697566848146,
+      -168.64336154475131,
+      -162.22154305527874,
+      -155.72936672669948,
+      -149.25961752792045,
+      -142.88373652757855,
+      -136.65531715451925,
+      -130.61327112567596,
+      -124.78461348338351,
+      -119.18685698817899,
+      -113.83003247773104,
+      -108.71836712047389,
+      -103.85165987593882,
+      -99.22639550380609,
+      -94.83663713173019,
+      -189.71874612803003,
+      -188.49925824446382,
+      -185.89109729618303,
+      -182.18025959529223,
+      -177.62101484260984,
+      -172.4342949280517,
+      -166.8080936000615,
+      -160.89927893687036,
+      -154.83630037480816,
+      -148.72236989083376,
+      -142.6387982199194,
+      -136.64826070188974,
+      -130.79784695631497,
+      -125.1218115220845,
+      -119.64398918839015,
+      -114.37987099373186,
+      -109.33835751482138,
+      -104.52321791637951,
+      -99.93428879952717,
+      -95.56844822814764
+    ]
+  },
+  "gates": [
+    {
+      "name": "independent_reference_fixed",
+      "value": 0.01386018893100226,
+      "limit": 0.02,
+      "passed": true,
+      "scope": "release"
+    },
+    {
+      "name": "independent_reference_heldout",
+      "value": 0.01386018893100226,
+      "limit": 0.02,
+      "passed": true,
+      "scope": "release"
+    },
+    {
+      "name": "mesh_last_change",
+      "value": 0.003074986378188653,
+      "limit": 0.01,
+      "passed": true,
+      "scope": "release"
+    },
+    {
+      "name": "domain_last_change",
+      "value": 0.013372793055251133,
+      "limit": 0.01,
+      "passed": false,
+      "scope": "release"
+    },
+    {
+      "name": "domain_local_mesh_identical",
+      "value": 0.0,
+      "limit": 0.0,
+      "passed": true,
+      "scope": "release"
+    },
+    {
+      "name": "far_field_halfspace_factor",
+      "value": 0.013543808121703124,
+      "limit": 0.02,
+      "passed": true,
+      "scope": "release"
+    },
+    {
+      "name": "neuron_neighbor_differences",
+      "value": 0.0596852603126608,
+      "limit": 1.0,
+      "passed": true,
+      "scope": "release"
+    },
+    {
+      "name": "near_rim_exploratory",
+      "value": 0.0022886701456379275,
+      "limit": 0.02,
+      "passed": true,
+      "scope": "diagnostic_excluded_region"
+    }
+  ],
+  "note": "Conservation/residual/linearity gates and browser results are consolidated by validation.finalize after all environments run."
+}
