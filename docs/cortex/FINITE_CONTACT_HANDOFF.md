@@ -1,5 +1,9 @@
 # Finite-contact field — AI worker handoff
 
+**Integration update:** The experimental single-cell disk benchmark is now
+implemented at `/cortex/finite-contact/`. See [integration details and limits](FINITE_CONTACT_INTEGRATION.md).
+The original package and the historical handoff below remain preserved.
+
 This is the starting point for a worker integrating the independently verified
 finite-disk field into Cortex Laboratory. The user requested that the completed
 standalone package be placed in the Cortex project for handoff. This change

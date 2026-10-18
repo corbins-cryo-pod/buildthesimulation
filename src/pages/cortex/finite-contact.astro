@@ -4,18 +4,38 @@ const repository = 'https://github.com/corbins-cryo-pod/buildthesimulation';
 const archive = '/downloads/cortex/finite-contact-field-1.0.0.zip';
 const sha256 = '74f9905905c7281c19e978ba5a0cea76784e327edc4b4f8b2daae79ff41407e0';
 ---
-<Layout pageTitle="Finite-contact field — Cortex Laboratory handoff" description="Download the verified finite-disk field component, source, validation results and AI worker integration handoff for Cortex Laboratory.">
+<Layout pageTitle="Finite disk stimulation — Cortex Laboratory" description="Run experimental finite-disk stimulation of a reconstructed human neuron, inspect membrane replay, and download the field source and validation.">
   <article class="field-handoff">
     <a href="/cortex/">← Cortex Laboratory</a>
     <h1>Finite-contact field component</h1>
-    <p class="intro">Source, generated fields and validation evidence for the next integration worker.</p>
-    <p><strong>Experimental standalone package, version 1.0.0.</strong> The disk model is not yet connected to the live simulator. The laboratory retains its existing stimulation model and 25 µm application guardrail.</p>
+    <p class="intro">Experimental finite disk stimulation of a reconstructed human neuron.</p>
+    <p>The verified disk potential drives the laboratory’s human cable solver in this separate benchmark. Full membrane replay uses the same mechanisms and step-averaged waveform as Cortex Laboratory. Disk radius: 25 µm. Conductivity: 0.3 S/m. Return: distant grounded boundary.</p>
+    <section class="benchmark" aria-label="Finite disk experiment">
+      <div class="settings">
+        <label>Human cell<select id="disk-cell"></select></label>
+        <label>Compartment length (µm)<select id="disk-mesh"><option>10</option><option>20</option><option selected>40</option><option>80</option></select></label>
+        <label>Current amplitude (µA)<input id="disk-current" type="number" value="1" min="0" max="100" step="0.1" /></label>
+        <label>Cell height offset (µm)<input id="disk-offset" type="number" value="0" min="-200" max="200" step="5" /></label>
+        <label>Timestep (ms)<select id="disk-dt"><option>0.00125</option><option>0.0025</option><option selected>0.005</option><option>0.01</option></select></label>
+      </div>
+      <p>One cathodic-first biphasic pulse at 5 ms: 200 µs per phase, 100 µs gap. Each reconstruction is centered without scaling or trimming. Its entire membrane must fit within r ≤ 250 µm and z ≤ 250 µm and remain at least 25 µm above the insulating plane. This conservative plane guard also preserves the contact-distance guardrail.</p>
+      <div class="actions"><button id="disk-run" disabled>Run human cell</button><button id="disk-cancel">Stop</button><button id="disk-export" disabled>Export result</button></div>
+      <p id="disk-status" role="status" aria-live="polite">Loading benchmark…</p>
+      <div id="disk-scene" aria-label="Three-dimensional disk and human neuron"></div>
+      <p>Drag to orbit; scroll to zoom; click a branch to inspect it. Neuron: blue −100 mV → orange +40 mV. Gold: whole neuron excluded. Tissue slices: blue negative / orange positive applied potential, saturating at ±10 mV. Cylinder outlines the validated region; the plane is insulating and the small disk conducts.</p>
+      <div class="actions"><button id="disk-play" disabled>Play</button><input id="disk-frame" aria-label="Replay frame" type="range" min="0" max="0" value="0" disabled /></div>
+      <p id="disk-readout">Run the cell to inspect membrane voltage and ionic currents.</p>
+      <label>Inspect compartment <select id="disk-compartment" aria-label="Inspect compartment"></select></label>
+      <canvas id="disk-trace" width="800" height="180" aria-label="Selected compartment membrane voltage over time"></canvas>
+      <p>Recording traces and electric-field magnitude are unavailable: matching recording physics and field gradients have not been verified. Threshold crossings, waveform evidence, and propagation are distinct; the finite field does not resolve existing neural convergence failures.</p>
+    </section>
     <p class="downloads"><a href={archive} download>Download complete package (8.8 MB ZIP)</a> · <a href="/downloads/cortex/finite-contact-field-1.0.0.zip.sha256" download>SHA-256 checksum</a></p>
     <p>The archive contains 78 files: the numerical solver and mesh generator, browser/Worker sampler, generated potential field, tests, examples, reports, plots, reproducible commands and <code>INTEGRATION_HANDOFF.md</code>.</p>
 
-    <h2>Hand off to another worker</h2>
+    <h2>Source and reproducibility</h2>
+    <p><a href={`${repository}/blob/main/docs/cortex/FINITE_CONTACT_INTEGRATION.md`}>Integration verification and remaining limits</a> · <a href={`${repository}/blob/main/docs/cortex/finite-contact-integration-results.json`}>Mesh and timestep results</a>. Browser visual verification for this integration is pending; the Chromium results below describe the supplied standalone package.</p>
     <p>Start with the <a href={`${repository}/blob/main/docs/cortex/FINITE_CONTACT_HANDOFF.md`}>Cortex integration handoff</a>. The <a href={`${repository}/tree/main/workbench/cortex-finite-contact-field`}>unpacked source and artifacts</a> are also available in the repository.</p>
-    <pre>Read docs/cortex/FINITE_CONTACT_HANDOFF.md and the package in
+    <details><summary>Original integration handoff (historical)</summary><pre>Read docs/cortex/FINITE_CONTACT_HANDOFF.md and the package in
 workbench/cortex-finite-contact-field/. Inspect the current target branch.
 Integrate the disk as an explicit experimental half-space/distant-return
 field mode. Preserve the separate point-source baseline, 25 µm guardrail
@@ -23,7 +43,7 @@ and unresolved neural convergence limitations. Implement worker loading,
 SI coordinate transforms, cached compartment potentials and explicit
 invalid-region handling. Resolve or disable incompatible recording and
 electric-field outputs. Run integration and browser tests. Do not deploy
-further changes without authorization.</pre>
+further changes without authorization.</pre></details>
 
     <h2>Exactly what is verified</h2>
     <p>An equipotential conducting disk of radius 25 µm lies in an insulating plane and injects prescribed total current into homogeneous isotropic tissue of conductivity 0.3 S/m. A grounded cylinder of radius and height 50 mm approximates a distant return. Current density is not imposed uniformly. This is a benchmark contact, not a validated Utah, Neuralink or Neuropixels implant.</p>
@@ -47,6 +67,10 @@ further changes without authorization.</pre>
     <p><a href="/cortex/methods/">Laboratory methods and limitations →</a></p>
   </article>
 </Layout>
+<script>
+  import '../../lib/cortex/finite-ui.js';
+</script>
 <style>
+  .benchmark{padding:20px;border:1px solid var(--border);margin:24px 0}.settings{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}.settings label:first-child{grid-column:1/-1}.settings label{display:flex;flex-direction:column;font-size:14px;gap:5px}.settings input,.settings select,.actions button{font:inherit;padding:8px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:4px}.settings option{background:var(--panel);color:var(--text)}.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.actions button{cursor:pointer}.actions button:disabled{opacity:.5;cursor:default}#disk-frame{flex:1;min-width:150px}#disk-status{min-height:3em}#disk-scene{width:100%;min-height:100px;overflow:hidden}#disk-trace{width:100%;height:auto}#disk-readout{font-variant-numeric:tabular-nums}
   .field-handoff{max-width:900px;margin:28px auto;padding:0 16px;line-height:1.7}.field-handoff h1{font-size:clamp(28px,5vw,42px);font-weight:500;line-height:1.2}.field-handoff h2{font-size:25px;font-weight:500;margin-top:32px}.intro{color:var(--muted)}.field-handoff a{color:inherit;text-underline-offset:3px}.downloads{padding:18px;background:var(--panel);border:1px solid var(--border)}.field-handoff pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:20px;background:var(--panel);border:1px solid var(--border);font-size:13px;line-height:1.65}.field-handoff table{width:100%;border-collapse:collapse;font-size:14px}.field-handoff td,.field-handoff th{text-align:left;vertical-align:top;padding:10px;border-bottom:1px solid var(--border)}.field-handoff code{font-size:13px}.digest{overflow-wrap:anywhere}.field-handoff details{margin:24px 0}.field-handoff summary{cursor:pointer}@media(max-width:600px){.field-handoff table{font-size:12px}.field-handoff td,.field-handoff th{padding:8px 4px}}
 </style>
