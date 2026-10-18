@@ -1,0 +1,14 @@
+✔ both triangle orientations, axisymmetry, current signs and cache (8.100713ms)
+✔ triangle split is P1 SW-NE and is not bilinear interpolation (0.983173ms)
+✔ all boundary statuses and invalid samples remain NaN, including at zero current (0.840627ms)
+✔ checksum, schema, physical metadata, axes, truncation and protected ownership (1.94997ms)
+✔ SI conversions and rigid transforms preserve meaning (0.289716ms)
+✔ generated package is loadable, finite in supported tissue, and preserves polarity (8.313705ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 25.739637

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Finite-contact field sampler</title>
+<style>body{font-family:system-ui,sans-serif;margin:3rem auto;max-width:850px;padding:0 1rem;color:#123;background:#f5f8fa}h1{font-size:1.8rem}code,pre{background:white;border:1px solid #ccd8df;border-radius:5px;padding:.8rem;display:block;overflow:auto}label{display:block;margin:2rem 0 1rem}input{width:100%}.subtle{color:#456}#status{font-weight:600}</style></head>
+<body><h1>Finite conducting disk: extracellular potential</h1>
+<p>25 µm radius equipotential disk in an insulating plane; homogeneous tissue conductivity 0.3 S/m. Positive current flows into tissue; the finite outer cylinder is grounded. This reference contact is not an implant validation.</p>
+<p id="status" data-ready="false">Loading the verified field into a Web Worker…</p>
+<label>Injected current: <input id="current" type="range" min="-5" max="5" step="0.1" value="2" disabled></label>
+<pre id="result">Waiting for field package.</pre>
+<p class="subtle">Six synthetic compartment centers, in electrode-local micrometers: [0,0,30], [0,0,40], [10,0,50], [−10,0,50], [20,0,60], [−20,0,60]. The Worker samples their unit potentials once, then scales the cached values. This example validates the field interface; it does not model firing or check finite membrane and segment collisions.</p>
+<p>Run <code>python -m http.server 8000 --bind 127.0.0.1</code> from the package root, then open <a href="http://127.0.0.1:8000/examples/browser.html">http://127.0.0.1:8000/examples/browser.html</a>.</p>
+<script type="module">
+const status=document.querySelector('#status'),result=document.querySelector('#result'),current=document.querySelector('#current');
+const worker=new Worker(new URL('./field-worker.js',import.meta.url),{type:'module'});
+worker.onmessage=({data})=>{
+ if(data.type==='ready'){status.textContent=`Verified package loaded in a Web Worker (${data.storageBytes.toLocaleString()} bytes of field arrays).`;status.dataset.ready='true';current.disabled=false;update();}
+ else if(data.type==='potential'){result.textContent=`Current: ${data.currentMicroamps.toFixed(2)} µA\n\nCompartment extracellular potentials (mV):\n${data.potentialMillivolts.map((v,i)=>`${i}: ${v.toFixed(6)}`).join('\n')}`;}
+ else if(data.type==='error'){status.textContent=`Sampling failed: ${data.message}`;status.dataset.ready='error';}
+};
+worker.onerror=e=>{status.textContent='Worker failed: '+e.message;};
+function update(){worker.postMessage({type:'current',currentMicroamps:Number(current.value)});}
+current.addEventListener('input',update);
+worker.postMessage({type:'init',pointsMeters:[0,0,30,0,0,40,10,0,50,-10,0,50,20,0,60,-20,0,60].map(x=>x*1e-6)});
+</script></body></html>

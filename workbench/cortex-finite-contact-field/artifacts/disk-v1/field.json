@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "finite-contact-field/1.0",
+  "packageId": "equipotential-disk-a25um-sigma0p3",
+  "geometry": {
+    "type": "axisymmetric_disk_in_insulating_plane",
+    "radiusMeters": 2.5e-05,
+    "exposedSurface": "z=0 and x*x+y*y<=radiusMeters*radiusMeters",
+    "thicknessMeters": 0,
+    "tissueSide": "z>0",
+    "contactAreaSquareMeters": 1.9634954084936207e-09,
+    "insulatingSurface": "z=0 outside disk; z<0 solid insulation"
+  },
+  "conductivitySiemensPerMeter": 0.3,
+  "coordinateFrame": {
+    "originMeters": [
+      0,
+      0,
+      0
+    ],
+    "axis": "z",
+    "units": "m",
+    "handedness": "right",
+    "description": "disk center at origin; local +z points into conducting tissue; rotational symmetry around z"
+  },
+  "domain": {
+    "radialExtentMeters": 0.05,
+    "axialExtentMeters": 0.05,
+    "shape": "finite axisymmetric cylinder",
+    "outerBoundary": "r=R or z=H grounded at 0 V",
+    "intendedDomain": "homogeneous isotropic tissue half-space z>0; cylinder approximates return at infinity"
+  },
+  "validity": {
+    "maxRadiusMeters": 0.00025,
+    "maxHeightMeters": 0.00025,
+    "minRimDistanceMeters": 5.000000000000001e-07,
+    "tissueRequiresPositiveZ": true,
+    "restriction": "potential sampling only; reject tissue outside validated box or within excluded rim neighborhood",
+    "surfaceDistanceDefinition": "sqrt(max(hypot(x,y)-a,0)^2+z^2)",
+    "rimDistanceDefinition": "sqrt((hypot(x,y)-a)^2+z^2)",
+    "noUniversalSafeDistance": true
+  },
+  "bases": [
+    {
+      "id": "disk_to_outer_ground",
+      "units": "V/A",
+      "normalizationCurrentAmps": 1,
+      "contactCurrentsAmps": {
+        "disk": 1
+      },
+      "return": {
+        "type": "artificial_grounded_outer_cylinder",
+        "boundary": "r=R or z=H",
+        "totalCurrentAmps": -1,
+        "isFiniteReturnElectrode": false
+      },
+      "inactiveContacts": "none; single exposed conducting disk",
+      "signConvention": "positive current injects conventional current from disk into tissue; outer boundary removes it",
+      "voltageReference": "outer cylinder is 0 V",
+      "compatibleBasisSet": "single-disk-one-outer-ground"
+    }
+  ],
+  "data": {
+    "file": "field.bin",
+    "sha256": "0773a53e423d46d10f6c46a045940bc91048881cce32f80da780d9a9bfdcd011",
+    "byteLength": 956564,
+    "radialCount": 533,
+    "axialCount": 445,
+    "basisCount": 1,
+    "layout": "r-f64le,z-f64le,potential-f32le-z-major",
+    "triangulation": "SW-NE",
+    "radialAxisByteOffset": 0,
+    "axialAxisByteOffset": 4264,
+    "potentialByteOffset": 7824,
+    "potentialUnits": "V/A",
+    "axisUnits": "m"
+  },
+  "solver": {
+    "name": "axisymmetric-p1-fem/1.0.0",
+    "method": "axisymmetric continuous piecewise-linear Galerkin FEM",
+    "element": "P1 triangles; exact 2*pi*r conductivity weighting",
+    "mesh": {
+      "level": 4,
+      "nodes": 237185,
+      "triangles": 472416,
+      "radialNodeCount": 533,
+      "axialNodeCount": 445,
+      "domainRadiusInDiskRadii": 2000.0,
+      "domainHeightInDiskRadii": 2000.0,
+      "grading": "piecewise-linear near rim, fixed geometric outer knots ratio 1.22"
+    }
+  },
+  "provenance": {
+    "generator": "solver/fem.py",
+    "generatorSha256": "1252a435585bb57f2df3595f95dee02bb704db740475779b508a315840628837",
+    "command": "python -m solver.fem --level 4 --domain 2000 --export artifacts/reference --output work/cache/export.npz",
+    "runtime": {
+      "python": "3.12.14",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "platform": "Linux-6.18.55-x86_64-with-glibc2.41"
+    },
+    "deterministicInputs": true
+  },
+  "limitations": [
+    "ideal zero-thickness circular contact; not a validated commercial implant",
+    "homogeneous isotropic ohmic tissue; no electrode interface impedance or capacitance",
+    "sharp rim current density is singular; no electric-field output is provided",
+    "single basis; arbitrary contacts, floating inactive contacts, and insulating shanks are not implemented",
+    "field verification does not establish neuron cable discretization, timestep convergence, firing, or selectivity"
+  ]
+}

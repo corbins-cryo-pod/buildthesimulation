@@ -1,0 +1,43 @@
+{
+  "solver_version": "axisymmetric-p1-fem/1.0.0",
+  "level": 4,
+  "domain_radius_in_a": 2000.0,
+  "domain_height_in_a": 2000.0,
+  "disk_radius_m": 2.5e-05,
+  "conductivity_S_per_m": 0.3,
+  "radial_nodes": 533,
+  "axial_nodes": 445,
+  "nodes": 237185,
+  "triangles": 472416,
+  "matrix_nnz": 1656385,
+  "free_dofs": 236031,
+  "one_volt_conductance_S": 3.0014908811381413e-05,
+  "contact_potential_V_per_A": 33316.7762155855,
+  "weak_flux": {
+    "injecting_current_A": 1.0,
+    "outer_return_current_A": 1.000000000000013,
+    "relative_current_imbalance": 1.3100631690576847e-14,
+    "free_residual_linf_A": 7.550341512582677e-11,
+    "free_residual_l1_A": 3.9251908595511255e-08,
+    "method": "integrated FEM boundary reactions (weak conormal flux), evaluated by cancellation-resistant edge voltage differences"
+  },
+  "raw_gradient_flux": {
+    "injecting_current_A": 1.002552199598297,
+    "outer_return_current_A": 1.0401146201425084,
+    "insulating_plane_signed_outward_current_A": -0.006348310321874643,
+    "insulating_plane_absolute_leakage_A": 0.006348310321874643,
+    "source_return_relative_imbalance": 0.03756242054421155,
+    "all_boundaries_signed_outward_current_A": 0.031214110222336888,
+    "method": "exact boundary-edge integration of adjacent P1 element-gradient J.n; not equilibrated"
+  },
+  "linear_system_relative_residual_l2": 2.6216766127787807e-12,
+  "generation_seconds": 3.209779384000001,
+  "assembly_seconds": 0.11769237499999008,
+  "peak_process_rss_MiB": 670.96875,
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41"
+  }
+}

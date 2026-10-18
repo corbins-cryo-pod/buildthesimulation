@@ -5,6 +5,13 @@ Current population workflow: [distinct published-cell library](CELL_LIBRARY.md),
 Route: `/cortex/`. Public methods: `/cortex/methods/`.
 Active engine: `cortex-active/0.2.0`; active experiment schema: `cortex-experiment/2`.
 
+**Finite-contact integration handoff:** see
+[FINITE_CONTACT_HANDOFF](FINITE_CONTACT_HANDOFF.md) for the verified standalone
+disk package, measured results, current code entry points and a ready-to-use
+task for another worker AI. The complete package is retained offline in
+[`workbench/cortex-finite-contact-field/`](../../workbench/cortex-finite-contact-field/).
+It is not yet integrated into the laboratory runtime.
+
 This is a scientific electrical workbench with bounded independent populations.
 It contains one representative cortical slab, one published human temporal model instantiated at specified positions, and
 the existing catalog's Utah 1.5 mm reference. Synaptic recording, intracellular
@@ -149,6 +156,7 @@ internal-step crossing times and held-voltage channel trajectories.
 | [DECISIONS](DECISIONS.md) | Accepted/rejected choices |
 | [ROADMAP](ROADMAP.md) | Dependency-gated next work |
 | [PROGRESS](PROGRESS.md) | Handoff, checks and review status |
+| [FINITE_CONTACT_HANDOFF](FINITE_CONTACT_HANDOFF.md) | Verified finite-disk source/data package and next-worker integration instructions |
 
 The structured evidence and parameter registry is
 `src/lib/cortex/evidence.js`, used by the public methods page and JSON export.
