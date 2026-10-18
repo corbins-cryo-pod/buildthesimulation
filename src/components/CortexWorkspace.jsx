@@ -3,7 +3,7 @@ import CortexLaboratory from './CortexLaboratory.jsx';
 import CortexFiniteLaboratory from './CortexFiniteLaboratory.jsx';
 import '../styles/cortex-finite.css';
 export default function CortexWorkspace(){
-  const [mode,setMode]=useState(null);
+  const [mode,setMode]=useState('point');
   useEffect(()=>{
     const read=()=>setMode(new URLSearchParams(location.search).get('field')==='finite-disk'?'finite-disk':'point');
     read();addEventListener('popstate',read);return()=>removeEventListener('popstate',read);
@@ -21,6 +21,6 @@ export default function CortexWorkspace(){
       <button aria-pressed={mode==='finite-disk'} onClick={()=>select('finite-disk')}>Finite disk · single human cell</button>
       <span>Switching modes stops the current run and resets its workspace.</span>
     </nav>
-    {mode===null?<p role="status">Loading laboratory…</p>:mode==='finite-disk'?<CortexFiniteLaboratory />:<CortexLaboratory />}
+    {mode==='finite-disk'?<CortexFiniteLaboratory />:<CortexLaboratory />}
   </>;
 }

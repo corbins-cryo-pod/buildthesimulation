@@ -37,9 +37,11 @@ for (const match of html.matchAll(
 // Follow the current page's links, not the first matching file: incremental
 // builds can leave older hashed assets in dist that must not satisfy this check.
 const component = html.match(
-  /component-url="\/_astro\/(CortexLaboratory\.[^"]+\.js)"/,
+  /component-url="\/_astro\/(CortexWorkspace\.[^"]+\.js)"/,
 )?.[1];
 assert.ok(component, "Missing hydrated component");
+assert.match(html, /Finite disk · single human cell/);
+assert.match(html, /Laboratory field model/);
 // Vite can emit a thin re-export entry plus a shared implementation chunk.
 // Traverse only reachable module imports so stale output cannot satisfy this assertion.
 const reachable = new Map();
