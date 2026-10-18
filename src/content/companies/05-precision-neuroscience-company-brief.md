@@ -2,8 +2,8 @@
 title: "Precision Neuroscience (company brief)"
 order: 5
 pubDate: 2026-02-02
-updatedDate: 2026-10-10
-lastVerified: 2026-10-10
+updatedDate: 2026-10-17
+lastVerified: 2026-10-17
 description: "Precision Neuroscience’s Layer 7 Cortical Interface: a high-density, thin-film cortical surface array aimed at minimally invasive, removable, high-bandwidth BCI."
 region: "American"
 kind: "Company"
@@ -101,3 +101,8 @@ Precision’s own history highlights:
 - *Implant count (company claim):* the release says the total number of patients implanted with the Precision system "has now surpassed 100." The Sep 24 release above gives the same figure as more than 100 patient procedures across 18 medical institutions.
 - The manuscript itself has not been read for this brief; the figures above come from the press release only.
 - Source: <https://www.globenewswire.com/news-release/2026/10/08/3377330/0/en/precision-neuroscience-unveils-a-new-map-of-the-human-nervous-system.html>
+
+### Oct 15, 2026 update: leadership appointments (reviewed Oct 17, 2026)
+
+- *Leadership (Oct 15, 2026, company press release):* Konstantinos Alataris, founder and former CEO of Nevro and a Precision board member since May 2025, joined as president. Katherine Neuenfeldt, who led the U.S. launch and market access strategy for Nevro's Senza spinal cord stimulation system, joined as senior vice president, commercial strategies. The release frames both hires around commercialization and reimbursement following the Series D. Source: <https://www.globenewswire.com/news-release/2026/10/15/3381700/0/en/precision-neuroscience-appoints-nevro-founder-konstantinos-alataris-as-president-and-katherine-neuenfeldt-as-senior-vice-president-commercial-strategies.html>
+- *Valuation (reported, not confirmed by the company):* The New York Times reported the Series D valued Precision at about $1 billion, per The Next Web (Sep 24, 2026). Neither company release used here states a valuation. Source: <https://thenextweb.com/news/precision-neuroscience-250m-series-d-1bn-valuation-ackman>
