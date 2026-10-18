@@ -1,0 +1,61 @@
+{
+  "gates": {
+    "disk_potential_relative": 0.03,
+    "disk_field_vector_relative": 0.07,
+    "mesh_potential_relative": 0.04,
+    "mesh_field_vector_relative": 0.08,
+    "quadrature_potential_relative": 0.01,
+    "quadrature_field_vector_relative": 0.02
+  },
+  "sample_count": 180,
+  "levels": [
+    12,
+    24,
+    48
+  ],
+  "shapes": {
+    "disk": {
+      "panel_count": 1804,
+      "current_sum": 1.0,
+      "collocation_relative_spread": 1.2941499271082066e-14,
+      "mesh_potential_relative": 0.004249074109866665,
+      "mesh_field_vector_relative": 0.01467631024465284,
+      "quadrature_potential_relative": 1.1560923547425459e-07,
+      "quadrature_field_vector_relative": 3.153596454191418e-06,
+      "disk_potential_relative": 0.004206144168830246,
+      "disk_field_vector_relative": 0.014276883359274092,
+      "pass": true
+    },
+    "square": {
+      "panel_count": 2304,
+      "current_sum": 0.9999999999999999,
+      "collocation_relative_spread": 1.3616958264326795e-14,
+      "mesh_potential_relative": 0.005936284295187732,
+      "mesh_field_vector_relative": 0.01581441313614324,
+      "quadrature_potential_relative": 8.406325722641833e-08,
+      "quadrature_field_vector_relative": 1.1462183637137103e-06,
+      "pass": true
+    },
+    "rectangle": {
+      "panel_count": 576,
+      "current_sum": 1.0,
+      "collocation_relative_spread": 5.650094117375529e-15,
+      "mesh_potential_relative": 0.011018414779906,
+      "mesh_field_vector_relative": 0.03098538411668331,
+      "quadrature_potential_relative": 7.639455478018603e-07,
+      "quadrature_field_vector_relative": 2.5354952205371472e-05,
+      "pass": true
+    },
+    "ring": {
+      "panel_count": 1356,
+      "current_sum": 0.9999999999999999,
+      "collocation_relative_spread": 1.033866026741582e-14,
+      "mesh_potential_relative": 0.0032928783916709708,
+      "mesh_field_vector_relative": 0.020574037238314073,
+      "quadrature_potential_relative": 2.821387300714818e-07,
+      "quadrature_field_vector_relative": 4.524247725769405e-06,
+      "pass": true
+    }
+  },
+  "pass": true
+}

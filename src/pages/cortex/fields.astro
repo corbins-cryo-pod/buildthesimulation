@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout pageTitle="Contact field gallery — Cortex Laboratory" description="Compare electric potential and field magnitude for four planar electrode shapes and three sizes.">
+<article class="gallery">
+  <a href="/cortex/finite-contact/">← Finite-contact experiment</a>
+  <h1>Shape the contact. Explore the field.</h1>
+  <p class="lead">Four geometries. Three sizes. The same injected current.</p>
+  <p>Explore how a disk, square, long rectangle and ring distribute electrical potential and electric-field magnitude through tissue. Every map uses the same physical axes and one shared color scale.</p>
+  <div class="controls">
+    <label>Compare<select id="gallery-mode"><option value="shapes">Shapes · equal area</option><option value="sizes">Sizes · same shape</option></select></label>
+    <label id="gallery-size-label">Equivalent disk diameter<select id="gallery-size"><option>25</option><option selected>50</option><option>100</option></select> µm</label>
+    <label id="gallery-shape-label" hidden>Shape<select id="gallery-shape"><option value="disk">Disk</option><option value="square">Square</option><option value="rectangle">Rectangle · 4:1</option><option value="ring">Ring · inner/outer radius 1:2</option></select></label>
+    <label>Show<select id="gallery-quantity"><option value="potential">Potential · mV</option><option value="field">Field magnitude · V/m</option></select></label>
+    <label>Slice<select id="gallery-plane"><option value="top">Top · XY</option><option value="side">Side · XZ, y = 0</option></select></label>
+    <label id="gallery-height-label">Height above contact<select id="gallery-height"><option>10</option><option>25</option><option>50</option><option>100</option></select> µm</label>
+    <label>Current (µA)<input id="gallery-current" type="number" min="-100" max="100" step="0.1" value="1" /></label>
+  </div>
+  <p id="gallery-status" role="status" aria-live="polite">Preparing field maps…</p>
+  <div class="legend"><span id="gallery-low"></span><div id="gallery-gradient"></div><span id="gallery-high"></span></div>
+  <p class="small">Linear color scale, shared across all visible maps. It updates when the comparison changes. Dashed white outlines are contact footprints projected onto the top slice. Gray cells are outside the sampling guard.</p>
+  <div id="gallery-cards"></div>
+  <p id="gallery-readout" aria-live="polite">Move over a map, or focus it and use arrow keys, to inspect a location.</p>
+  <p id="gallery-explanation"></p>
+  <h2>What you are looking at</h2>
+  <p><strong>Potential</strong> is the extracellular voltage relative to a distant return. <strong>Electric field</strong> is how quickly that voltage changes with position: E = −∇V. The magnitude shows strength, not direction. Reversing current reverses potential and field direction; it leaves field magnitude unchanged.</p>
+  <p>At equal area, all contacts inject the same total current. Their shapes redistribute current near the contact, while their distant fields approach the same half-space point-source limit. In the size comparison, increasing contact area spreads the same current over more surface. Compare both near and far from the contacts.</p>
+  <h2>Model and limits</h2>
+  <p>This is a new <strong>exploratory boundary-element model</strong>: one equipotential planar conductor, homogeneous isotropic tissue (0.3 S/m), an insulating plane outside the contact, and a return at infinity. Panel currents are solved, not assumed uniform. All shapes have exactly the selected exposed area in the panel model; curved boundaries are approximated with small rectangles.</p>
+  <p>Samples are restricted to heights at least 0.2 times the equivalent disk radius. This avoids displaying the unresolved sharp-edge surface singularity; it is a numerical sampling guard, not a biological safety boundary. The ring’s center is insulating tissue boundary, not a second electrode. No shank, interface impedance, layered tissue, finite return contact or multi-contact interaction is included.</p>
+  <p>Disk potential and field are checked against an analytical reference; every shape has mesh-refinement and integration checks. These are sampled numerical checks, not a proof of accuracy everywhere. This gallery is separate from the finite-disk neuron replay and does not establish activation thresholds or selective stimulation.</p>
+  <p><a href="https://github.com/corbins-cryo-pod/buildthesimulation/blob/main/docs/cortex/FIELD_GALLERY.md">Method and reproducibility</a> · <a href="https://github.com/corbins-cryo-pod/buildthesimulation/blob/main/docs/cortex/field-gallery-validation.json">Numerical results</a> · <a href="/models/cortex/field-gallery.json" download>Download solved panel currents</a></p>
+</article>
+</Layout>
+<script>import '../../lib/cortex/gallery-ui.js';</script>
+<style>
+  .gallery{max-width:1100px;margin:0 auto;padding:2rem 1.2rem 5rem}.gallery h1{font-size:clamp(2rem,5vw,3.8rem);line-height:1.05;max-width:850px}.lead{font-size:1.4rem}.gallery p{line-height:1.6}.controls{display:flex;flex-wrap:wrap;gap:1rem;padding:1.2rem;background:#efeee8;border:1px solid #ccc}.controls label{display:flex;flex-direction:column;gap:.3rem;font-size:.85rem}.controls [hidden]{display:none}select,input{font:inherit;padding:.5rem;border:1px solid #aaa;background:white;color:#222;max-width:230px}input{width:110px}.legend{display:flex;align-items:center;gap:1rem;max-width:600px;margin:1rem auto}.legend div{height:18px;flex:1;border:1px solid #888}.small{font-size:.85rem;color:#555}#gallery-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.3rem}#gallery-cards :global(section){border:1px solid #ccc;padding:1rem;background:#faf9f5}#gallery-cards :global(h2){margin:.1rem 0 .5rem;font-size:1.3rem}#gallery-cards :global(canvas){width:100%;height:auto;display:block;touch-action:pan-y}#gallery-cards :global(p){font-size:.85rem;margin:.5rem 0}#gallery-readout{min-height:3em;padding:.8rem;background:#eeeee8;font-variant-numeric:tabular-nums}@media(max-width:650px){#gallery-cards{grid-template-columns:1fr}}
+</style>
