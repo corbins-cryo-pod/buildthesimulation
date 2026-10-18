@@ -1,3 +1,5 @@
+Current population workflow: [distinct published-cell library](CELL_LIBRARY.md), including source-specific fits, filters and no repeated specimens.
+
 # Cortex Laboratory
 
 Route: `/cortex/`. Public methods: `/cortex/methods/`.

@@ -1,3 +1,5 @@
+> Population update: the current [unique-cell library](CELL_LIBRARY.md) is bounded by 16 available specimens and includes per-specimen conditioning. The previous 64-copy benchmark is historical, not the current selectable count.
+
 # Performance
 
 ## Current population capacity, 2026-10-18

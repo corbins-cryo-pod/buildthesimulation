@@ -2,7 +2,7 @@ import { ENGINE_VERSION, ACTIVE_ENGINE_VERSION, validateConfig } from './config.
 import { makeWorld } from './world.js';
 import { createPassiveCable, stepPassiveCable } from './passive-cable.js';
 import { createActiveCable, stepActiveCable } from './active-cable.js';
-import { activeModelData } from './active-morphology.js';
+import { getActiveModel } from './model-library.js';
 import { resultBuffers } from './buffers.js';
 import { modelRegistry } from './model-registry.js';
 import { analyzeActiveResponse } from './response-analysis.js';
@@ -41,7 +41,7 @@ export function runExperiment(input, progress = () => {}) {
   const active = !!c.neuron.modelId;
   const sigma = c.tissue.conductivitySPerM,
     cable = active
-      ? createActiveCable(nodes, activeModelData.fit)
+      ? createActiveCable(nodes, getActiveModel(c.neuron.modelId).fit, { kv2TauGuard: getActiveModel(c.neuron.modelId).kv2TauGuard !== false })
       : createPassiveCable(nodes, c.membrane),
     stepCable = active ? stepActiveCable : stepPassiveCable;
   const lead = leadField(nodes, selected, sigma, c.recording.sourceModel, c.recording.exclusionUm);
@@ -180,6 +180,7 @@ export function runExperiment(input, progress = () => {}) {
         'sodium',
         'calciumMm',
       ];
+    if (cable.extraGates) fields.push('extraGates');
     if (cached) {
       for (const field of fields) cable[field].set(cached[field]);
       progress({ progress: 0.5, biologicalMs: 0, stage: 'Reusing identical conditioning' });
@@ -201,7 +202,7 @@ export function runExperiment(input, progress = () => {}) {
       );
     }
     result.initialization = {
-      startMv: -80,
+      startMv: getActiveModel(c.neuron.modelId).fit.conditions[0].v_init,
       settleMs: c.solver.settleMs,
       temperatureC: 34,
       conditioningCache: cached ? 'reused identical state' : 'computed',
@@ -531,10 +532,10 @@ export function resultBundle(result) {
       ? {
           activeModel: {
             ...modelRegistry.find((m) => m.id === result.config.neuron.modelId),
-            fit: activeModelData.fit,
-            sourceCommit: activeModelData.sourceCommit,
-            sourceHashes: activeModelData.sourceHashes,
-            generatorSha256: activeModelData.generatorSha256,
+            fit: getActiveModel(result.config.neuron.modelId).fit,
+            sourceCommit: getActiveModel(result.config.neuron.modelId).sourceCommit,
+            sourceHashes: getActiveModel(result.config.neuron.modelId).sourceHashes,
+            generatorSha256: getActiveModel(result.config.neuron.modelId).generatorSha256,
           },
           channelUnits: {
             sodiumNa: 'nA outward',

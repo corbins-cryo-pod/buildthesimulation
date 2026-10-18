@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 1,
+  "dataset": "Multi-modal characterization and simulation of human epileptic circuitry",
+  "repository": "https://github.com/anastassiou-team/human-epilepsy-project",
+  "repositoryCommit": "b09dcdada4ed6b94c4141ae2cab5cff9b50897f9",
+  "paper": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9841067/",
+  "retrievedOn": "2026-10-18",
+  "license": "Allen Institute noncommercial redistribution license; exact license section extracted unchanged from README-source.md",
+  "files": [
+    {
+      "path": "README-source.md",
+      "url": "https://raw.githubusercontent.com/anastassiou-team/human-epilepsy-project/master/README.md",
+      "sha256": "f0b262b190e07bb5391926f06822bed692d4ec5b8e87f288e44954916200e807",
+      "bytes": 5515
+    },
+    {
+      "path": "source-run_bionet.py",
+      "url": "https://raw.githubusercontent.com/anastassiou-team/human-epilepsy-project/master/Fig_5/network_simulations/WG1/HIPPOCAMPUS_DG/run_bionet.py",
+      "sha256": "00a644a19015209d2281ca7e6044076bd81eefe63b9eac5320a04d14ff26cb77",
+      "bytes": 2298
+    },
+    {
+      "path": "source-DG_node_types.csv",
+      "url": "https://raw.githubusercontent.com/anastassiou-team/human-epilepsy-project/master/Fig_5/network_simulations/WG1/HIPPOCAMPUS_DG/network/DG_node_types.csv",
+      "sha256": "fb2dc6b7107a6e86835a1f2c5e9fd79c7415ce4ee628b69b998edffe49b311c3",
+      "bytes": 1758
+    },
+    {
+      "path": "529807751.json",
+      "url": "https://raw.githubusercontent.com/anastassiou-team/human-epilepsy-project/master/Fig_5/network_simulations/WG1/biophys_components/biophysical_neuron_templates/529807751.json",
+      "sha256": "857cc5ba5f9724bf6f175c43fc30376f597fc113579e6e6b42f3453cf0286fa8",
+      "bytes": 6945
+    },
+    {
+      "path": "529807751.swc",
+      "url": "https://api.brain-map.org/api/v2/well_known_file_download/667320244",
+      "sha256": "9c69fb67b050a32ba505ef0c74293fa4c81d61e58f0f700e9fcd136105323e5d",
+      "bytes": 1983368
+    },
+    {
+      "path": "529807751-allen-metadata.json",
+      "url": "https://api.brain-map.org/api/v2/data/query.json?criteria=model::ApiCellTypesSpecimenDetail,rma::criteria,[specimen__id$eq529807751]",
+      "sha256": "2c18b9e846f5851b758823689a17a564ff13361a53c9b0a8e17efd8275685de3",
+      "bytes": 1847
+    },
+    {
+      "path": "541536216.json",
+      "url": "https://raw.githubusercontent.com/anastassiou-team/human-epilepsy-project/master/Fig_5/network_simulations/WG1/biophys_components/biophysical_neuron_templates/541536216.json",
+      "sha256": "f09149a76ba0c0084cbbbc36d6836ffda1ed2193bfbda69e8d14ce213f681147",
+      "bytes": 6946
+    },
+    {
+      "path": "541536216.swc",
+      "url": "https://api.brain-map.org/api/v2/well_known_file_download/665276723",
+      "sha256": "7cf1a6eac949e46a08936f6c7a4a84d7b5451cdcea4c98994fcb20904c6c3e70",
+      "bytes": 959489
+    },
+    {
+      "path": "541536216-allen-metadata.json",
+      "url": "https://api.brain-map.org/api/v2/data/query.json?criteria=model::ApiCellTypesSpecimenDetail,rma::criteria,[specimen__id$eq541536216]",
+      "sha256": "afddc9ced9cafebe8a553c2c8181c1831a0ca52e151c42ccfe92d0cf3e0abfec",
+      "bytes": 1840
+    },
+    {
+      "path": "mechanisms/NaV.mod",
+      "url": "https://raw.githubusercontent.com/anastassiou-team/human-epilepsy-project/master/Fig_5/network_simulations/WG1/biophys_components/mechanisms/modfiles/NaV.mod",
+      "sha256": "635605ba861c070f8fdc273365f3a0fca6eee24762afc9b102161fdd6e9cfc42",
+      "bytes": 4061
+    },
+    {
+      "path": "mechanisms/Ih.mod",
+      "url": "https://raw.githubusercontent.com/anastassiou-team/human-epilepsy-project/master/Fig_5/network_simulations/WG1/biophys_components/mechanisms/modfiles/Ih.mod",
+      "sha256": "8616325d83add9a1a6546972352b4a62e57095ba25f3c6b5a57ab8b397e2d662",
+      "bytes": 1005
+    },
+    {
+      "path": "mechanisms/Im_v2.mod",
+      "url": "https://raw.githubusercontent.com/anastassiou-team/human-epilepsy-project/master/Fig_5/network_simulations/WG1/biophys_components/mechanisms/modfiles/Im_v2.mod",
+      "sha256": "bc378428d3b4da76b6f9b1820dde1f52abef47389ce6edbcddb0c8fb967970fd",
+      "bytes": 761
+    },
+    {
+      "path": "mechanisms/Kd.mod",
+      "url": "https://raw.githubusercontent.com/anastassiou-team/human-epilepsy-project/master/Fig_5/network_simulations/WG1/biophys_components/mechanisms/modfiles/Kd.mod",
+      "sha256": "1cac92486bf77c2976cad9a34e1741dc20ecda70d7b2c9bf5c3474e66f7dfcce",
+      "bytes": 705
+    },
+    {
+      "path": "mechanisms/Kv2like.mod",
+      "url": "https://raw.githubusercontent.com/anastassiou-team/human-epilepsy-project/master/Fig_5/network_simulations/WG1/biophys_components/mechanisms/modfiles/Kv2like.mod",
+      "sha256": "b4fa91cc2e3392cfcd12ef8244d537d230d42e3044982dcc64de115683286449",
+      "bytes": 1394
+    },
+    {
+      "path": "mechanisms/K_T.mod",
+      "url": "https://raw.githubusercontent.com/anastassiou-team/human-epilepsy-project/master/Fig_5/network_simulations/WG1/biophys_components/mechanisms/modfiles/K_T.mod",
+      "sha256": "1cb9d72f985ef028922cafafed079df5c47b87a893001304181ec48881367ba7",
+      "bytes": 1031
+    },
+    {
+      "path": "mechanisms/Kv3_1.mod",
+      "url": "https://raw.githubusercontent.com/anastassiou-team/human-epilepsy-project/master/Fig_5/network_simulations/WG1/biophys_components/mechanisms/modfiles/Kv3_1.mod",
+      "sha256": "e636c3437a9d9ccb69a0a7efc09fcfe1f16ad97f0468615b70fdbc352fe0855c",
+      "bytes": 631
+    },
+    {
+      "path": "mechanisms/Ca_HVA.mod",
+      "url": "https://raw.githubusercontent.com/anastassiou-team/human-epilepsy-project/master/Fig_5/network_simulations/WG1/biophys_components/mechanisms/modfiles/Ca_HVA.mod",
+      "sha256": "021d34cf9ef3e76b0f2afee1a1eeab40eed56d0d3b1362b7e1019f4433273c71",
+      "bytes": 1211
+    },
+    {
+      "path": "mechanisms/Ca_LVA.mod",
+      "url": "https://raw.githubusercontent.com/anastassiou-team/human-epilepsy-project/master/Fig_5/network_simulations/WG1/biophys_components/mechanisms/modfiles/Ca_LVA.mod",
+      "sha256": "a7a9ef262541dc96f5d19afd97778f9320808d01ce397350f1f2be3db30f920f",
+      "bytes": 1069
+    },
+    {
+      "path": "mechanisms/SK.mod",
+      "url": "https://raw.githubusercontent.com/anastassiou-team/human-epilepsy-project/master/Fig_5/network_simulations/WG1/biophys_components/mechanisms/modfiles/SK.mod",
+      "sha256": "079f1e3cac7444696d480b8e02853b215cd93e0c7b9986dbb54925fc49eddbeb",
+      "bytes": 942
+    },
+    {
+      "path": "mechanisms/CaDynamics.mod",
+      "url": "https://raw.githubusercontent.com/anastassiou-team/human-epilepsy-project/master/Fig_5/network_simulations/WG1/biophys_components/mechanisms/modfiles/CaDynamics.mod",
+      "sha256": "f012def9758f7d0244b81c54291edea6597c15fad99b9f7b5725b121a3567f16",
+      "bytes": 704
+    },
+    {
+      "path": "LICENSE.txt",
+      "derivedFrom": "README-source.md, exact License section",
+      "sha256": "032a934a1cb638a30cc32acafb642916ccbda3116adf3ba73ec2d36e46c3efd5",
+      "bytes": 1736
+    }
+  ],
+  "cells": [
+    {
+      "specimenId": "529807751",
+      "species": "Homo Sapiens",
+      "region": "MTG",
+      "layer": "3",
+      "dendriteType": "aspiny",
+      "cellType": "basket interneuron",
+      "classificationSource": "Paper and original network BC node types; Allen metadata independently identifies aspiny MTG layer3",
+      "diseaseContext": "epilepsy",
+      "fitFile": "529807751.json",
+      "morphologyFile": "529807751.swc",
+      "conditions": [
+        {
+          "celsius": 34,
+          "erev": [
+            {
+              "ena": 53.0,
+              "section": "soma",
+              "ek": -107.0
+            },
+            {
+              "ena": 53.0,
+              "section": "axon",
+              "ek": -107.0
+            },
+            {
+              "ena": 53.0,
+              "section": "apic",
+              "ek": -107.0
+            },
+            {
+              "ena": 53.0,
+              "section": "dend",
+              "ek": -107.0
+            }
+          ],
+          "v_init": -78
+        }
+      ],
+      "mechanisms": [
+        "CaDynamics",
+        "Ca_HVA",
+        "Ca_LVA",
+        "Ih",
+        "Im_v2",
+        "K_T",
+        "Kd",
+        "Kv2like",
+        "Kv3_1",
+        "NaV",
+        "SK",
+        "pas"
+      ]
+    },
+    {
+      "specimenId": "541536216",
+      "species": "Homo Sapiens",
+      "region": "MTG",
+      "layer": "3",
+      "dendriteType": "aspiny",
+      "cellType": "basket interneuron",
+      "classificationSource": "Paper and original network BC node types; Allen metadata independently identifies aspiny MTG layer3",
+      "diseaseContext": "epilepsy",
+      "fitFile": "541536216.json",
+      "morphologyFile": "541536216.swc",
+      "conditions": [
+        {
+          "celsius": 34,
+          "erev": [
+            {
+              "ena": 53.0,
+              "section": "soma",
+              "ek": -107.0
+            },
+            {
+              "ena": 53.0,
+              "section": "axon",
+              "ek": -107.0
+            },
+            {
+              "ena": 53.0,
+              "section": "apic",
+              "ek": -107.0
+            },
+            {
+              "ena": 53.0,
+              "section": "dend",
+              "ek": -107.0
+            }
+          ],
+          "v_init": -78
+        }
+      ],
+      "mechanisms": [
+        "CaDynamics",
+        "Ca_HVA",
+        "Ca_LVA",
+        "Ih",
+        "Im_v2",
+        "K_T",
+        "Kd",
+        "Kv2like",
+        "Kv3_1",
+        "NaV",
+        "SK",
+        "pas"
+      ]
+    }
+  ],
+  "mechanismComparison": [
+    {
+      "mechanism": "Ih",
+      "existingFile": "scripts/cortex-active-mechanisms/Ih.mod",
+      "byteIdentical": true,
+      "existingSha256": "8616325d83add9a1a6546972352b4a62e57095ba25f3c6b5a57ab8b397e2d662"
+    },
+    {
+      "mechanism": "Kv3_1",
+      "existingFile": "scripts/cortex-active-mechanisms/Kv3_1.mod",
+      "byteIdentical": true,
+      "existingSha256": "e636c3437a9d9ccb69a0a7efc09fcfe1f16ad97f0468615b70fdbc352fe0855c"
+    },
+    {
+      "mechanism": "NaV",
+      "existingFile": "scripts/cortex-active-mechanisms/NaV.mod",
+      "byteIdentical": true,
+      "existingSha256": "635605ba861c070f8fdc273365f3a0fca6eee24762afc9b102161fdd6e9cfc42"
+    },
+    {
+      "mechanism": "Im_v2",
+      "existingFile": "scripts/cortex-active-mechanisms/Im_v2.mod",
+      "byteIdentical": true,
+      "existingSha256": "bc378428d3b4da76b6f9b1820dde1f52abef47389ce6edbcddb0c8fb967970fd"
+    },
+    {
+      "mechanism": "Ca_HVA",
+      "existingFile": "scripts/cortex-active-mechanisms/Ca_HVA.mod",
+      "byteIdentical": true,
+      "existingSha256": "021d34cf9ef3e76b0f2afee1a1eeab40eed56d0d3b1362b7e1019f4433273c71"
+    },
+    {
+      "mechanism": "SK",
+      "existingFile": "scripts/cortex-active-mechanisms/SK.mod",
+      "byteIdentical": true,
+      "existingSha256": "079f1e3cac7444696d480b8e02853b215cd93e0c7b9986dbb54925fc49eddbeb"
+    },
+    {
+      "mechanism": "Kv2like",
+      "existingFile": "scripts/cortex-active-mechanisms/Kv2like.mod",
+      "byteIdentical": false,
+      "existingSha256": "9244b0eb301dacee5a844910d6b4945856b90dc60937a74ac7f4f19f778d0895"
+    },
+    {
+      "mechanism": "CaDynamics",
+      "existingFile": "scripts/cortex-active-mechanisms/CaDynamics.mod",
+      "byteIdentical": true,
+      "existingSha256": "f012def9758f7d0244b81c54291edea6597c15fad99b9f7b5725b121a3567f16"
+    },
+    {
+      "mechanism": "Ca_LVA",
+      "existingFile": "scripts/cortex-active-mechanisms/Ca_LVA.mod",
+      "byteIdentical": true,
+      "existingSha256": "a7a9ef262541dc96f5d19afd97778f9320808d01ce397350f1f2be3db30f920f"
+    },
+    {
+      "mechanism": "Kd",
+      "existingFile": "scripts/cortex-active-mechanisms/Kd.mod",
+      "byteIdentical": true,
+      "existingSha256": "1cac92486bf77c2976cad9a34e1741dc20ecda70d7b2c9bf5c3474e66f7dfcce"
+    },
+    {
+      "mechanism": "K_T",
+      "existingFile": "scripts/cortex-active-mechanisms/K_T.mod",
+      "byteIdentical": true,
+      "existingSha256": "1cb9d72f985ef028922cafafed079df5c47b87a893001304181ec48881367ba7"
+    }
+  ],
+  "morphologyProcessing": {
+    "source": "source-run_bionet.py",
+    "processor": "aibs_allactive_granule",
+    "axon": "Published reconstructed axon replaced by two30\u00b5m sections. First diameter original axon[0].diam; second diameter initially same, then overwritten by sec.diam for each axonal segment with soma path distance>60\u00b5m (last matching section wins). Connect soma(1)\u2192axon0(0), axon0(1)\u2192axon1(0); h.define_shape. No explicit 3D orientation coordinates.",
+    "parameterApplication": "bmtk.simulator.bionet.default_setters.cell_models.set_params_allactive; fitted per-section Ra overrides passive ra100; all conditions34C/v_init-78/ena53/ek-107.",
+    "limitation": "Allen API currently exposes reconstruction versions; original repository does not ship original SWC, so same specimen identity is verified but exact morphology revision used in paper is not proven."
+  },
+  "compatibilityNotes": [
+    "Source Kv2like.mod differs from Human_all_active_models_EAP: it does not clamp negative h2Tau to1e-3. Reusing that guard would modify this published model; require explicit handling and reference validation.",
+    "Published source uses fitted section-specific Ra, cm and e_pas. Do not substitute passive.ra100 or one shared resting/leak potential.",
+    "The two current Allen SWCs contain extensive measured axons; original source replaces them with its two-section stub before parameter assignment.",
+    "Original raw files have been retained unchanged. No model execution or scientific validation is implied by asset acquisition."
+  ]
+}

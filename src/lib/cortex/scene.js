@@ -1,3 +1,5 @@
+import { makeActiveMorphology } from './active-morphology.js';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import * as THREE from "three";
 import {
   DEFAULT_ELECTRICAL,
@@ -216,52 +218,66 @@ export function buildWorldGroup(world, options = {}) {
   };
 }
 
+const voltageRestColor = new THREE.Color('#658dff');
+const voltagePeakColor = new THREE.Color('#ff9c56');
+export function membraneVoltageColor(voltageMv, target = new THREE.Color()) {
+  return target.copy(voltageRestColor).lerp(voltagePeakColor,
+    Math.max(0, Math.min(1, (voltageMv + 100) / 140)));
+}
 const neutralColor = new THREE.Color("#b6c4cc");
-// Reuse the exact tapered source geometries for every rigidly translated cell.
-// Instancing changes draw cost, not cable discretization or morphology scale.
-export function updatePopulationOverlay(objects, population) {
+// Each population specimen owns its own exact tapered morphology. Merge its
+// compartment surfaces into one draw call without rescaling or replacing trees.
+export function updatePopulationOverlay(objects, population, frame = 0, options = {}) {
   const cells = population?.cells?.slice(1) ?? [];
-  const key = JSON.stringify(cells.map(c => [c.offsetUm, c.unsupportedReason]));
+  const key = JSON.stringify(cells.map(c => [c.modelId, c.config?.neuron, c.unsupportedReason]));
   if (objects.populationKey !== key) {
     for (const mesh of objects.populationMeshes ?? []) {
-      objects.neurons.remove(mesh);
-      mesh.dispose(); // Borrowed geometry belongs to the original target mesh.
+      objects.neurons.remove(mesh); mesh.geometry.dispose(); mesh.material.dispose();
     }
-    objects.populationMaterial?.dispose();
-    objects.populationMeshes = [];
-    objects.populationKey = key;
-    objects.populationResponses = undefined;
-    if (cells.length) {
-      objects.populationMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
-      const translation = new THREE.Matrix4();
-      for (const source of objects.nodeMeshes.filter(Boolean)) {
-        source.updateMatrix();
-        const mesh = new THREE.InstancedMesh(source.geometry, objects.populationMaterial, cells.length);
-        mesh.name = 'sourced-population-morphology';
-        for (let i = 0; i < cells.length; i++) {
-          translation.makeTranslation(...mm(cells[i].offsetUm));
-          mesh.setMatrixAt(i, new THREE.Matrix4().multiplyMatrices(translation, source.matrix));
-        }
-        mesh.instanceMatrix.needsUpdate = true;
-        mesh.computeBoundingSphere();
-        objects.neurons.add(mesh);
-        objects.populationMeshes.push(mesh);
+    objects.populationMeshes = []; objects.populationKey = key;
+
+    for (const cell of cells) {
+      const nodes=makeActiveMorphology(cell.config).nodes, parts=[], ranges=[];
+      let vertexStart=0;
+      for(const [compartment, node] of nodes.entries()) {
+        if(!node.areaUm2) continue;
+        let geometry;
+        if(node.kind==='soma') {
+          geometry=new THREE.SphereGeometry(node.diameterUm/2000,16,8);
+          geometry.deleteAttribute('uv'); geometry.translate(...mm(node.centerUm));
+        } else geometry=morphologyGeometry(node);
+        const vertexCount=geometry.getAttribute('position').count;
+        ranges.push({ compartment, start: vertexStart, count: vertexCount });
+        vertexStart+=vertexCount;
+        parts.push(geometry);
       }
+      const geometry=mergeGeometries(parts);parts.forEach(p=>p.dispose());
+      geometry.setAttribute('color',new THREE.BufferAttribute(new Float32Array(vertexStart*3),3));
+      const mesh=new THREE.Mesh(geometry,new THREE.MeshBasicMaterial({vertexColors:true}));
+      mesh.userData.compartmentRanges=ranges;
+      mesh.name='sourced-population-morphology';mesh.userData.specimenId=cell.modelId;
+      objects.neurons.add(mesh);objects.populationMeshes.push(mesh);
     }
   }
-  const responses = population?.responses ?? null;
-  if (objects.populationResponses === responses) return;
-  objects.populationResponses = responses;
-  for (const mesh of objects.populationMeshes ?? []) {
-    for (let i = 0; i < cells.length; i++) {
-      const response = responses?.[i + 1]?.response;
-      const excluded = cells[i].unsupportedReason || responses?.[i + 1]?.status === 'excluded';
-      const color = excluded ? '#b58b31' : !response ? '#79c9c1' : response.soma.thresholdEventCount > 0 ? '#f2a05e'
-        : response.membraneThresholdCrossings.compartmentCount > 0 ? '#b28bdb' : '#658dff';
-      mesh.setColorAt(i, new THREE.Color(color));
+  const responses=population?.responses ?? null;
+
+  objects.populationMeshes.forEach((mesh,i)=>{
+    const response=responses?.[i+1]?.response;
+    const excluded=cells[i].unsupportedReason || responses?.[i+1]?.status==='excluded';
+    const replay=responses?.[i+1]?.replay;
+    const colors=mesh.geometry.getAttribute('color');
+    const color=new THREE.Color();
+    const validReplay=replay && frame>=0 && frame<replay.frames;
+    for(const range of mesh.userData.compartmentRanges) {
+      if(excluded) color.set('#b58b31');
+      else if(options.neuronColor===false) color.set('#79c9c1');
+      else if(validReplay) membraneVoltageColor(replay.membraneMv[frame*replay.compartments+range.compartment],color);
+      else color.set(!response?'#79c9c1':response.soma.thresholdEventCount>0?'#f2a05e'
+        :response.membraneThresholdCrossings.compartmentCount>0?'#b28bdb':'#658dff');
+      for(let v=range.start;v<range.start+range.count;v++) colors.setXYZ(v,color.r,color.g,color.b);
     }
-    if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
-  }
+    colors.needsUpdate=true;
+  });
 }
 const negativeColor = new THREE.Color("#438cff");
 const positiveColor = new THREE.Color("#ff684c");
@@ -607,7 +623,7 @@ export async function createCortexView(host, onStatus, onScale, onPick) {
     },
     setFrame(result, frame, selected, options = {}) {
       if (!objects || !world) return;
-      updatePopulationOverlay(objects, options.population);
+      updatePopulationOverlay(objects, options.population, frame, options);
       updateElectricalOverlay(objects.electrical, result, frame, options);
       for (const [i, mesh] of objects.nodeMeshes.entries()) {
         if (!mesh) continue;
@@ -618,20 +634,7 @@ export async function createCortexView(host, onStatus, onScale, onPick) {
               result.config.membrane.restMv
             : 0;
         const color = active
-          ? new THREE.Color("#658dff").lerp(
-              new THREE.Color("#ff9c56"),
-              Math.max(
-                0,
-                Math.min(
-                  1,
-                  ((result?.membraneMv[
-                    frame * result.diagnostics.compartments + i
-                  ] ?? -90) +
-                    100) /
-                    140,
-                ),
-              ),
-            )
+          ? membraneVoltageColor(result?.membraneMv[frame * result.diagnostics.compartments + i] ?? -90)
           : new THREE.Color("#79c9c1").lerp(
               new THREE.Color(deviation >= 0 ? "#ff9c56" : "#658dff"),
               Math.min(1, Math.abs(deviation) / 10),

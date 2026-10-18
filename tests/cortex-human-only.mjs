@@ -6,8 +6,11 @@ import { EXAMPLES, getExampleConfig } from '../src/lib/cortex/examples.js';
 import { parseLaboratoryConfig } from '../src/lib/cortex/laboratory.js';
 import { encodeJson } from '../src/lib/cortex/experiment.js';
 
-test('the interactive registry and every curated example use the published human cell', () => {
-  assert.deepEqual(modelRegistry.map(m => m.id), [ACTIVE_MODEL_ID]);
+test('the interactive registry contains unique published human cells and examples retain their reference cell', () => {
+  assert.equal(modelRegistry.length, 16);
+  assert.equal(new Set(modelRegistry.map(m => m.specimenId)).size, modelRegistry.length);
+  assert.ok(modelRegistry.every(m => m.species === 'Homo sapiens' && m.source && m.citation));
+  assert.ok(modelRegistry.some(m => m.id === ACTIVE_MODEL_ID));
   assert.equal(EXAMPLES.length, 9);
   assert.ok(EXAMPLES.every(e => e.modelId === ACTIVE_MODEL_ID && e.config.neuron.modelId === ACTIVE_MODEL_ID));
   assert.throws(() => getExampleConfig('passive-subthreshold'), /Unknown cortex example/);

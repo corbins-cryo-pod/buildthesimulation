@@ -1,3 +1,4 @@
+import { getModelMetadata } from './model-registry.js';
 import { ACTIVE_MODEL_ID, ACTIVE_SCHEMA_VERSION } from './config.js';
 import { parseConfig } from './experiment.js';
 
@@ -6,7 +7,7 @@ import { parseConfig } from './experiment.js';
 // their morphology and membrane physics into an active experiment implicitly.
 export function parseLaboratoryConfig(text) {
   const config = parseConfig(text);
-  if (config.schemaVersion !== ACTIVE_SCHEMA_VERSION || config.neuron.modelId !== ACTIVE_MODEL_ID)
+  if (config.schemaVersion !== ACTIVE_SCHEMA_VERSION || !getModelMetadata(config.neuron.modelId))
     throw new Error('The simplified passive neuron has been retired from this laboratory. Load a human cell example or import a human active-cell configuration.');
   return config;
 }

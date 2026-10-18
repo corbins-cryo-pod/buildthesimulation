@@ -1,3 +1,4 @@
+import { EXTRA_CHANNELS, extraRates, extraOpen, advanceExtra } from './extra-channels.js';
 import {
   CHANNELS,
   channelRates,
@@ -9,13 +10,19 @@ import {
 
 const FARADAY = 96485.33212;
 const RT_OVER_2F_MV = (1000 * 8.314462618 * (273.15 + 34)) / (2 * FARADAY);
-export function createActiveCable(nodes, fit) {
+export function createActiveCable(nodes, fit, {kv2TauGuard=true}={}) {
+  const vInit = fit.conditions?.[0]?.v_init ?? -80;
+  const hasExtra = fit.genome.some(p => EXTRA_CHANNELS.includes(p.mechanism));
   const n = nodes.length,
     f = () => new Float64Array(n),
     c = {
       nodes,
+      kv2TauGuard,
       n,
-      voltageMv: f().fill(-80),
+      voltageMv: f().fill(vInit),
+      extraGates: hasExtra ? new Float64Array(n * 8) : null,
+      extraDensity: hasExtra ? Array.from({length:4}, f) : null,
+      extraConductance: hasExtra ? new Float64Array(n * 4) : null,
       previous: f(),
       capacitanceNf: f(),
       leakUs: f(),
@@ -46,8 +53,8 @@ export function createActiveCable(nodes, fit) {
         r: new Float64Array(12),
       },
     };
-  const initial = initialSodium(-80),
-    rates = channelRates(-80);
+  const initial = initialSodium(vInit),
+    rates = channelRates(vInit);
   nodes.forEach((node, i) => {
     c.edgeUs[i] = node.edgeUs;
     if (node.parent >= 0) {
@@ -66,6 +73,10 @@ export function createActiveCable(nodes, fit) {
     );
     c.decayMs[i] = params.decay_CaDynamics ?? 80;
     c.gamma[i] = params.gamma_CaDynamics ?? 0.05;
+    if (hasExtra) {
+      EXTRA_CHANNELS.forEach((m,j) => c.extraDensity[j][i]=(params[`gbar_${m}`] ?? 0)*node.areaUm2*.01);
+      extraRates(vInit,kv2TauGuard).forEach(([inf],j)=>c.extraGates[i*8+j]=inf);
+    }
     c.sodium.set(initial, i * 12);
     rates.forEach(([inf], j) => (c.gates[i * 12 + j] = inf));
   });
@@ -101,6 +112,10 @@ export function stepActiveCable(
       conductance[i * 9 + j] = g;
       d[i] += g;
       b[i] += g * e;
+    }
+    if(c.extraGates) {
+      const open=extraOpen(c.extraGates,i);
+      for(let j=0;j<4;j++){const g=c.extraDensity[j][i]*open[j];c.extraConductance[i*4+j]=g;d[i]+=g;b[i]+=g*(-107);}
     }
   }
   if (extracellularMv)
@@ -141,6 +156,7 @@ export function stepActiveCable(
       else if (j === 6 || j === 7) ca += current;
       else k += current;
     }
+    if(c.extraGates) for(let j=0;j<4;j++) k+=c.extraConductance[i*4+j]*(v[i]+107);
     c.ionicNa[i] = na;
     c.potassiumNa[i] = k;
     c.calciumNa[i] = ca;
@@ -171,6 +187,7 @@ export function stepActiveCable(
     }
     // Native state ordering advances CaDynamics before SK, so SK reads new cai.
     advanceChannelGates(c.gates, i, v[i], dt, c.calciumMm[i], c.density);
+    if(c.extraGates) advanceExtra(c.extraGates,i,v[i],dt,c.kv2TauGuard);
     stepSodium(c.sodium, i * 12, v[i], dt, c.sodiumScratch);
   }
   return c;

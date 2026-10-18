@@ -1,5 +1,6 @@
-import model from './models/allen571654895.json' with { type: 'json' };
-export const activeModelData = model;
+import { getActiveModel } from './model-library.js';
+import { getModelMetadata } from './model-registry.js';
+export { activeModelData } from './model-library.js';
 
 // Published orientation angles (radians) followed by [X,Z,-Y] mapping to the
 // laboratory's +Z depth frame. All transforms are rigid and preserve scale.
@@ -11,9 +12,12 @@ const rotate = (v, angles) => {
   return [Math.cos(c) * x - Math.sin(c) * y, Math.sin(c) * x + Math.cos(c) * y, z];
 };
 export function makeActiveMorphology(config) {
+  const model = getActiveModel(config.neuron.modelId);
+  const metadata = getModelMetadata(config.neuron.modelId);
+  if (!model.variants[String(config.neuron.segmentLengthUm)]) throw new Error("Loading selected cell resolution…");
   const angles = config.neuron.rotationDeg.map((v) => (v * Math.PI) / 180);
   const point = (v) => {
-    const aligned = rotate(v, [-0.010516, 0, -3.011895]);
+    const aligned = rotate(v, metadata.orientationRadians ?? [0,0,0]);
     return rotate([aligned[0], aligned[2], -aligned[1]], angles).map(
       (x, i) => x + config.neuron.somaUm[i],
     );
@@ -29,7 +33,7 @@ export function makeActiveMorphology(config) {
   // section. Discretization changes overlap weights but not the input patch.
   const lengths = new Map();
   for (const n of nodes)
-    if (n.sectionType === 'apic' && n.areaUm2)
+    if (n.sectionType === (nodes.some(n=>n.sectionType==='apic') ? 'apic' : 'dend') && n.areaUm2)
       lengths.set(n.sectionId, (lengths.get(n.sectionId) ?? 0) + n.lengthUm);
   const section = [...lengths].sort((a, b) => b[1] - a[1])[0],
     length = section[1],
@@ -48,11 +52,11 @@ export function makeActiveMorphology(config) {
     nodes,
     somaIndex: 0,
     synapseIndex: nodes.findIndex((n) => n.synapseWeight > 0),
-    specimenId: 571654895,
+    specimenId: model.specimenId,
     sourceCommit: model.sourceCommit,
     sourceHashes: model.sourceHashes,
     morphology:
-      'Reconstructed human dendrites; native SWC taper/area/axial resistances; synthetic published 60×1 µm axon stub',
+      metadata.scope,
     synapseDescription: `Distal ${patch} µm of ${section[0]}; synthetic step input`,
     orientation: 'Published X/Z angles, then X,Z,-Y to +Z depth, then requested cell rotation',
     membraneCompartments: nodes.filter((n) => n.areaUm2 > 0).length,

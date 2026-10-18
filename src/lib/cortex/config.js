@@ -1,3 +1,4 @@
+import { getModelMetadata } from './model-registry.js';
 import { getCortexImplant } from './implants.js';
 // Public experiment contract. Geometry µm; time ms; voltage mV; current nA.
 export const SCHEMA_VERSION = 'cortex-experiment/1';
@@ -66,7 +67,7 @@ export function validateConfig(input) {
   const c = structuredClone(input);
   const active = c.schemaVersion === ACTIVE_SCHEMA_VERSION;
   const template = active ? freshActiveConfig() : DEFAULT_CONFIG;
-  if (active && c.neuron?.modelId !== ACTIVE_MODEL_ID)
+  if (active && !getModelMetadata(c.neuron?.modelId))
     throw new Error('Unknown active model revision.');
   for (const key of Object.keys(c))
     if (!Object.hasOwn(DEFAULT_CONFIG, key)) throw new Error(`Unknown configuration field ${key}.`);
@@ -112,7 +113,7 @@ export function validateConfig(input) {
   }
   finiteRange(c.tissue.conductivitySPerM, 0.1, 1, 'Conductivity (S/m)');
   if (active) {
-    if (c.membrane.sourceModelId !== ACTIVE_MODEL_ID || c.membrane.temperatureC !== 34)
+    if (c.membrane.sourceModelId !== c.neuron.modelId || c.membrane.temperatureC !== 34)
       throw new Error('Use the pinned active membrane model at 34 °C.');
   } else {
     finiteRange(c.membrane.capacitanceUfPerCm2, 0.2, 2, 'Membrane capacitance (µF/cm²)');

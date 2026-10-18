@@ -1,5 +1,7 @@
+import { modelRegistry } from '../lib/cortex/model-registry.js';
+import { loadActiveModels } from '../lib/cortex/model-library.js';
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-import { freshPopulation, planPopulation, populationCapacity, populationCsv } from '../lib/cortex/population.js';
+import { freshPopulation, planPopulation, populationCapacity, populationCsv, populationModels } from '../lib/cortex/population.js';
 import { encodeJson } from '../lib/cortex/experiment.js';
 
 const seconds = value => `${Math.round(value)} s`;
@@ -63,16 +65,26 @@ export default function CortexPopulationPanel({ config, disabled, onBusy, onScen
     worker.current?.terminate(); worker.current = null;
     setResult(null); setRunning(false); onBusy(false); setProgress(0); setError('');
   }, [inputKey]);
+  const [loadedKey,setLoadedKey] = useState('');
+  const [loadError,setLoadError] = useState('');
+  const [loadAttempt,setLoadAttempt] = useState(0);
+  useEffect(()=>{let alive=true;setLoadError('');
+    let models;try {models=populationModels(config,settings).slice(0,settings.count);}catch(e){setLoadError(e.message);return;}
+    loadActiveModels(models.map(m=>m.id),config.neuron.segmentLengthUm).then(()=>{if(alive){setLoadedKey(inputKey);const maximum=populationCapacity(config,settings).maxCells;if(maximum>0 && settings.count>maximum)setSettings(s=>({...s,count:maximum}));}}).catch(e=>{if(alive)setLoadError(e.message);});
+    return ()=>{alive=false;};
+  },[inputKey,loadAttempt]);
+  const changeFilters = patch => setSettings(s=>{const next={...s,...patch};return {...next,count:Math.min(s.count,populationModels(config,next).length)};});
   const ready = result?.inputKey === inputKey ? result.data : null;
   const state = useMemo(() => {
     try {
-      const capacity = populationCapacity(config);
+      const capacity = populationCapacity(config, settings);
+      if(loadedKey!==inputKey) return {capacity,plan:null,error:loadError || "Loading published cell models…"};
       if (config.protocol.mode !== 'extracellular-stimulation') return { capacity, plan: null, error: '' };
       return { capacity, plan: planPopulation(config, settings, { allowUnsupported: true }), error: '' };
     } catch (e) { return { plan: null, error: e.message }; }
-  }, [config, settings]);
+  }, [config, settings, loadedKey, loadError]);
   useEffect(() => {
-    onScene(state.plan ? { cells: state.plan.cells.map(({ id, offsetUm, unsupportedReason }) => ({ id, offsetUm, unsupportedReason })), responses: ready?.cells ?? null } : null);
+    onScene(state.plan ? { cells: state.plan.cells.map(({ id, modelId, config, offsetUm, unsupportedReason }) => ({ id, modelId, config, offsetUm, unsupportedReason })), responses: ready?.cells ?? null } : null);
   }, [state, ready, onScene]);
   useEffect(() => () => { request.current++; worker.current?.terminate(); }, []);
   useEffect(() => {
@@ -119,13 +131,16 @@ export default function CortexPopulationPanel({ config, disabled, onBusy, onScen
   return <section class="cx-population" id="cx-population" aria-label="Real-model population">
     <div class="cx-population-heading">
       <div><span class="cx-eyebrow">Population experiment</span><h2>Real-model population</h2></div>
-      <span class="cx-population-badge">1 source specimen · up to 64 independent cells</span>
+      <span class="cx-population-badge">{modelRegistry.length} distinct source specimens · no duplicates</span>
     </div>
-    <p>The default is a distance cloud: a target cell plus neurons at increasing radii, each in a seeded random direction from stimulating contact A. The initial distance ladder is 1, 2, 5, 12, 20, 28, 40, 60, 85, 120, 170, 240, 340, 480, 680 and 960 µm. Use the seed to reproduce or change the angles.</p>
-    <p class="cx-muted">Each supported position runs the published Allen human temporal L2 active cell independently. These are instances of one recorded specimen with reconstructed dendrites, fitted channels and its published synthetic 60 µm axon stub. Cell orientation stays fixed. The cloud is an illustrative placement experiment; close arbors can overlap. No invented morphologies, conductances or network connections.</p>
+    <p>The default is a distance cloud: a target cell plus neurons at increasing radii, each in a seeded random direction from stimulating contact A. Distances follow the increasing ladder 1, 2, 5, 12, 20, 28, 40, 60… µm, resampled logarithmically between the chosen endpoints for the available specimen count. Use the seed to reproduce or change the angles.</p>
+    <p class="cx-muted">Each position uses a different published specimen and its own fitted channels. No specimen is reused, including the target and excluded placements. The filters select additional cells; the target selected above remains cell 1. Source-prescribed synthetic axon stubs remain explicitly identified. The cloud is an illustrative placement experiment; close arbors can overlap.</p>
     <div class="cx-population-controls">
       <fieldset disabled={running || disabled}>
-        <label>Arrangement<select value={settings.layout} onChange={e => { const layout = e.currentTarget.value; setSettings(s => ({ ...s, layout, center: layout === 'grid' ? 'target' : layout === 'shells' ? 'stimulus-midpoint' : 'stimulus-a', nearUm: layout === 'cloud' ? 1 : 100, farUm: layout === 'cloud' ? 960 : 600, count: layout === 'cloud' ? 17 : layout === 'shells' ? 25 : 27 })); }}><option value="cloud">Distance cloud · default</option><option value="shells">Concentric distance shells</option><option value="grid">3D grid</option></select></label>
+        <label>Additional cell types<select value={settings.cellClass} onChange={e=>changeFilters({cellClass:e.currentTarget.value})}><option value="all">All types</option><option value="excitatory">Pyramidal / spiny excitatory</option><option value="inhibitory">Aspiny inhibitory interneurons</option></select></label>
+        <label>Additional cell dataset<select value={settings.dataset} onChange={e=>changeFilters({dataset:e.currentTarget.value})}><option value="all">All datasets</option>{[...new Map(modelRegistry.map(m=>[m.dataset,m.datasetLabel]))].map(([id,label])=><option key={id} value={id}>{label}</option>)}</select></label>
+        <label>Additional source layer<select value={settings.layer} onChange={e=>changeFilters({layer:e.currentTarget.value})}><option value="all">All layers</option><option value="L2">Layer 2</option><option value="L3">Layer 3</option></select></label>
+        <label>Arrangement<select value={settings.layout} onChange={e => { const layout = e.currentTarget.value; setSettings(s => ({ ...s, layout, center: layout === 'grid' ? 'target' : layout === 'shells' ? 'stimulus-midpoint' : 'stimulus-a', nearUm: layout === 'cloud' ? 1 : 100, farUm: layout === 'cloud' ? 960 : 600, count: Math.min(17, populationCapacity(config,s).maxCells) })); }}><option value="cloud">Distance cloud · default</option><option value="shells">Concentric distance shells</option><option value="grid">3D grid</option></select></label>
         <label>Origin<select value={settings.center} onChange={e => setSettings(s => ({ ...s, center: e.currentTarget.value }))}><option value="stimulus-a">Stimulating contact A</option><option value="stimulus-midpoint">Stimulating pair midpoint</option><option value="target">Target soma</option></select></label>
         <label>Cells including target<input type="number" min="1" max={state.capacity?.maxCells ?? 64} step="1" value={settings.count}
           onChange={e => setSettings(s => ({ ...s, count: Number(e.currentTarget.value) }))} /></label>
@@ -137,21 +152,23 @@ export default function CortexPopulationPanel({ config, disabled, onBusy, onScen
         <button onClick={() => onLoadExample(settings.layout === 'cloud' ? 40 : 20)}>Load {settings.layout === 'cloud' ? 40 : 20} µA population stimulus</button>
         <button class="cx-primary" onClick={run} disabled={!state.plan || !!state.plan.cells[0].unsupportedReason}>Run {state.plan?.supportedCells ?? settings.count} supported cells</button>
       </fieldset>
+      {loadError && <button onClick={()=>setLoadAttempt(v=>v+1)}>Retry loading cells</button>}
       {running && <button onClick={stop}>Cancel population</button>}
     </div>
     {config.protocol.mode !== 'extracellular-stimulation' && <p>Load the population stimulus to use the single-cell extracellular geometry as the starting configuration. Current clamp remains in the single-cell experiment above.</p>}
     {settings.layout !== 'cloud' && <p class="cx-muted">The measured grid and shell starting preset uses 20 µA. Load that preset explicitly to apply it; selecting a layout leaves the current stimulus unchanged.</p>}
     {state.plan && <p class="cx-population-budget">
-      <strong>{state.capacity.maxCells} cells maximum at these solver settings.</strong>{' '}
-      {state.capacity.membraneCompartmentsPerCell} membrane compartments per cell · {config.solver.durationMs} ms biological time · dt {config.solver.dtMs} ms.{' '}
+      <strong>{state.capacity.maxCells} unique specimens maximum with these filters and solver settings.</strong>{' '}
+      {state.capacity.membraneCompartmentsPerCell} membrane compartments in the target; other specimens differ · {config.solver.durationMs} ms biological time · dt {config.solver.dtMs} ms.{' '}
       Estimated {seconds(state.plan.estimatedSeconds)} for {state.plan.supportedCells} supported / {settings.count} placed cells; up to {(state.plan.retainedOutputUpperBytes / 1e6).toFixed(1)} MB retained numeric arrays.{' '}
-      Routine starting size: 8–16. Timing estimate uses a development CPU, not your browser; larger/finer runs take longer.
+      Each distinct cell is conditioned separately. Timing estimate uses a development CPU, not your browser; larger/finer runs take longer.
     </p>}
     {(error || state.error) && <p class="cx-error" role="alert">{error || state.error}</p>}
     <p aria-live="polite">{result && !ready ? 'Settings changed. Run again to update population results.' : status}{(running || ready) && ` · ${seconds(elapsed)}`}</p>
     {running && <progress aria-label="Population progress" value={progress} max="1" />}
     {!!state.plan?.errors.length && <details class="cx-population-exclusions"><summary>{state.plan.errors.length} unsupported positions · shown in gold, excluded from electrical calculation</summary><p>The existing 25 µm exclusion is measured from the full membrane, not just the soma center. Very close somata can also overlap the ideal source. These samples are neither firing nor inactive: their response is unknown here.</p><ul>{state.plan.errors.map(reason => <li key={reason}>{reason}</li>)}</ul></details>}
-    <p class="cx-muted">3D colors: teal = not yet calculated; orange = soma threshold event; purple = local-only crossings; blue = no detected crossings; gold = unsupported placement. These summarize the full run. The target retains its time-varying voltage replay. Applied tissue-field overlays remain separate from cell responses.</p>
+    <p class="cx-muted">3D replay: every supported cell shows its own compartment membrane voltages on the shared timeline, using the same blue-to-orange scale (−100 to +40 mV). Play, pause, and scrub to inspect activity across the population. Teal = not yet calculated; gold = unsupported placement. Neighbor replay uses Float32 voltage samples; channel readouts remain available for the target. Response plots summarize the full run. Applied tissue-field overlays remain separate from cell responses.</p>
+    {state.plan && <details><summary>Assigned specimens · each used once</summary><ol>{state.plan.cells.map(cell=><li key={cell.id}>{cell.label} · {cell.dataset}{cell.index===0?' · target':''}</li>)}</ol></details>}
     {state.plan && <DistanceMap plan={state.plan} result={ready} />}
     <p class="cx-muted">Distance is measured to soma centers; nearest membrane distance is reported separately. Each point has a different direction as well as distance. This is a sampled response map, not a continuous activation boundary or activation radius.</p>
     {ready && <>
@@ -170,9 +187,9 @@ export default function CortexPopulationPanel({ config, disabled, onBusy, onScen
           { label: 'Contact B · applied', color: '#9a6b45', values: ready.appliedUv[1] }]} />
       </div>
       <div class="cx-population-table"><table><caption>Per-cell evidence · soma and local threshold crossings are separate</caption>
-        <thead><tr><th>Cell</th><th>Origin distance / µm</th><th>Nearest source / µm</th><th>Nearest membrane / µm</th><th>Applied |E| at soma / V m⁻¹</th><th>Max |ΔVm| / mV</th><th>Local compartments crossing</th><th>Soma events</th><th>Overshoot + recovery</th><th>First soma / ms</th></tr></thead>
+        <thead><tr><th>Cell / specimen</th><th>Origin distance / µm</th><th>Nearest source / µm</th><th>Nearest membrane / µm</th><th>Applied |E| at soma / V m⁻¹</th><th>Max |ΔVm| / mV</th><th>Local compartments crossing</th><th>Soma events</th><th>Overshoot + recovery</th><th>First soma / ms</th></tr></thead>
         <tbody>{ready.cells.map((cell, i) => <tr key={cell.id}>
-          <td title={cell.reason ?? cell.somaUm.join(', ')}>{i + 1}{i === 0 ? ' · target' : ''}{cell.status === 'excluded' ? ' · unsupported' : ''}</td><td>{cell.distanceFromCenterUm.toFixed(1)}</td>
+          <td title={cell.reason ?? cell.somaUm.join(', ')}>{i + 1} · {cell.specimenId}<br />{cell.cellType}{i === 0 ? ' · target' : ''}{cell.status === 'excluded' ? ' · unsupported' : ''}</td><td>{cell.distanceFromCenterUm.toFixed(1)}</td>
           <td>{Math.min(...cell.sourceDistancesUm).toFixed(1)}</td><td>{cell.nearestMembraneUm?.toFixed(1) ?? '—'}</td><td>{cell.leadingFieldVPerM?.toFixed(2) ?? '—'}</td>
           <td>{cell.response?.polarization.maxAbsChangeMv.toFixed(2) ?? '—'}</td><td>{cell.response?.membraneThresholdCrossings.compartmentCount ?? '—'}</td>
           <td>{cell.response?.soma.thresholdEventCount ?? '—'}</td><td>{cell.response?.soma.waveformEvidenceCount ?? '—'}</td>
@@ -182,7 +199,7 @@ export default function CortexPopulationPanel({ config, disabled, onBusy, onScen
         <button onClick={() => download(populationCsv(ready), 'cortex-population-traces.csv', 'text/csv')}>Export population traces</button>
         <button onClick={() => download(encodeJson({ ...ready, targetResult: undefined }), 'cortex-population.json', 'application/json')}>Export population + provenance</button>
       </div>
-      <p class="cx-muted">{(ready.diagnostics.outputBytes / 1e6).toFixed(2)} MB retained numeric output. Full target traces remain in the single-cell export above; other cells retain soma traces and response evidence. Neural signals sum across cells; total recording adds the shared applied artifact once. No integration timestep or morphology resolution is reduced.</p>
+      <p class="cx-muted">{(ready.diagnostics.outputBytes / 1e6).toFixed(2)} MB retained numeric output. Full target traces remain in the single-cell export above; other cells retain compartment voltage replay, soma traces, and response evidence. Neural signals sum across cells; total recording adds the shared applied artifact once. No integration timestep or morphology resolution is reduced.</p>
     </>}
     <p class="cx-population-limit">Spatial threshold convergence remains unresolved. Local crossings and sampled action-potential-like waveforms do not establish propagation, biological recruitment or single-neuron selectivity. <a href="/cortex/methods/#populations">Population methods and measured capacity</a>.</p>
   </section>;

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "allen-human-529807751/1",
+    "specimenId": 529807751,
+    "layer": "L3",
+    "class": "inhibitory",
+    "orientationRadians": [
+      0,
+      0,
+      0
+    ],
+    "nodes": {
+      "10": 628,
+      "20": 362,
+      "40": 228,
+      "80": 166
+    },
+    "mechanisms": [
+      "CaDynamics",
+      "Ca_HVA",
+      "Ca_LVA",
+      "Ih",
+      "Im_v2",
+      "K_T",
+      "Kd",
+      "Kv2like",
+      "Kv3_1",
+      "NaV",
+      "SK"
+    ]
+  },
+  {
+    "id": "allen-human-541536216/1",
+    "specimenId": 541536216,
+    "layer": "L3",
+    "class": "inhibitory",
+    "orientationRadians": [
+      0,
+      0,
+      0
+    ],
+    "nodes": {
+      "10": 396,
+      "20": 220,
+      "40": 138,
+      "80": 96
+    },
+    "mechanisms": [
+      "CaDynamics",
+      "Ca_HVA",
+      "Ca_LVA",
+      "Ih",
+      "Im_v2",
+      "K_T",
+      "Kd",
+      "Kv2like",
+      "Kv3_1",
+      "NaV",
+      "SK"
+    ]
+  }
+]

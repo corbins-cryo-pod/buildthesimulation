@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { modelRegistry } from '../../lib/cortex/model-registry.js';
+import { readFileSync } from 'node:fs';
+import { gunzipSync } from 'node:zlib';
+const read = p => JSON.parse(readFileSync(`public${p}`, 'utf8'));
+const manifest = read('/assets/finger-pathway-atlas/v4/cells/manifest.json');
+const h01 = read('/assets/finger-pathway-atlas/v4/h01/reference-neurites.json');
+function swcPaths(path) {
+ const nodes = new Map(readFileSync(`public${path}`,'utf8').split('\n').filter(l=>l.trim()&&!l.startsWith('#')).map(l=>{const n=l.trim().split(/\s+/).map(Number);return [n[0],n];}));
+ return [...nodes.values()].filter(n=>nodes.has(n[6])).map(n=>[nodes.get(n[6]).slice(2,5),n.slice(2,5)]);
+}
+function drawing(paths) {
+ const points=paths.flat(); const xs=points.map(p=>p[0]),ys=points.map(p=>p[1]);
+ const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+ const span=Math.max(maxX-minX,maxY-minY,1), scale=240/span;
+ return {d:paths.map(ps=>ps.map((p,i)=>`${i?'L':'M'}${(150+(p[0]-(minX+maxX)/2)*scale).toFixed(2)},${(140-(p[1]-(minY+maxY)/2)*scale).toFixed(2)}`).join(' ')).join(' '),span:Math.round(span)};
+}
+const entries=modelRegistry.map(m=>{
+ const asset=`/models/cortex/${m.dataset}/${m.specimenId}.swc`;
+ return {...m,kind:'Electrical model',asset,preview:drawing(swcPaths(asset)),launch:`/cortex/?cell=${encodeURIComponent(m.id)}`};
+});
+for(const t of manifest.templates.filter(t=>t.sourceRegion==='cortex'&&!modelRegistry.some(m=>m.specimenId===t.sourceCellId))){
+ const s=t.metadata.specimen, raw=JSON.parse(gunzipSync(readFileSync(`public${t.url}`)));
+ entries.push({id:t.key,label:`Allen specimen ${t.sourceCellId}`,kind:'Morphology only',class:s.tag__dendrite_type==='spiny'?'excitatory':'unknown',datasetLabel:'Allen · Finger Atlas',layer:`L${s.structure__layer}`,cellType:`${s.tag__dendrite_type} reconstruction`,region:'Human middle temporal gyrus',source:t.metadata.source,scope:'Measured tracing, no matched active fit here. Atlas display surfaces and optional spines are not measured EM membranes.',asset:t.url,preview:drawing(raw.paths.map(p=>p.points))});
+}
+for(const t of h01.templates)entries.push({id:`h01:${t.sourceId}`,label:`H01 component ${t.sourceId}`,kind:'Morphology only',class:'unknown',datasetLabel:'H01 · proofread EM skeletons',layer:`L${t.layer}`,cellType:'Connected neurite component',region:t.sourceRegion,source:h01.sourceUrl,scope:'Largest connected component; incomplete cell, no fitted membrane dynamics. Preview uses the retained simplified skeleton. Temporal cortex, not measured M1/S1.',asset:'/assets/finger-pathway-atlas/v4/h01/reference-neurites.json',preview:drawing(t.paths.map(p=>p.points.map(v=>v.map(x=>x*1000))))});
+---
+<Layout pageTitle="Cell Model Atlas" description="Source-traceable human neuron models and measured morphology references.">
+ <p class="intro">16 distinct electrical models · 9 additional Allen reconstructions · 12 H01 neurite components. Browse real source anatomy and open fitted cells in the Cortex Laboratory.</p>
+ <p>Electrical models retain published axon stubs. Numerical agreement is not biological validation; extracellular spatial-threshold convergence remains unresolved. Morphology-only references cannot simulate firing here.</p>
+ <nav><a href="/cortex/">Cortex Laboratory</a> · <a href="/cortex/methods/">Methods & limitations</a> · <a href="/simulations/finger-pathway-atlas/v4/">Finger Pathway Atlas</a></nav>
+ <section class="filters" aria-label="Filter cells">
+ <label>Search specimen<input id="cell-search" type="search" placeholder="ID, layer, cell type…" /></label>
+ <label>Model status<select id="cell-kind"><option value="">All models</option><option>Electrical model</option><option>Morphology only</option></select></label>
+ <label>Dataset<select id="cell-dataset"><option value="">All datasets</option>{[...new Set(entries.map(e=>e.datasetLabel))].map(d=><option>{d}</option>)}</select></label>
+ <label>Cell class<select id="cell-class"><option value="">All classes</option><option value="excitatory">Spiny / excitatory</option><option value="inhibitory">Inhibitory interneuron</option><option value="unknown">Unclassified</option></select></label>
+ </section>
+ <p id="cell-count" role="status">{entries.length} entries</p>
+ <p class="note">Each preview is an XY projection of source coordinates, independently fitted to its frame; its largest XY extent is shown in µm. H01 previews retain the atlas’s 0.7 µm simplification. Allen previews show source tracing, not the fitted model’s replacement axon.</p>
+ <section class="cells">{entries.map(e=><article data-kind={e.kind} data-dataset={e.datasetLabel} data-class={e.class} data-search={`${e.label} ${e.cellType} ${e.layer}`.toLowerCase()}>
+ <span class="status">{e.kind} · {e.layer}</span><h2>{e.label}</h2>
+ <svg viewBox="0 0 300 280" role="img" aria-label={`Source morphology projection for ${e.label}`}><path d={e.preview.d} fill="none" stroke="currentColor" stroke-width="0.65" /></svg>
+ <small>XY extent: {e.preview.span} µm</small><h3>{e.cellType}</h3><p>{e.datasetLabel}<br />{e.region}</p><p>{e.scope}</p>
+ <p class="links">{e.launch&&<a href={e.launch}>Open electrical model →</a>}<a href={e.source}>Original source</a><a href={e.asset}>Morphology data</a></p>
+ </article>)}</section>
+</Layout>
+<script>
+ const search=document.querySelector<HTMLInputElement>('#cell-search')!;
+ const selects=['kind','dataset','class'].map(k=>[k,document.querySelector<HTMLSelectElement>(`#cell-${k}`)!] as const);
+ const cards=[...document.querySelectorAll<HTMLElement>('.cells article')];
+ function filter(){let count=0;for(const card of cards){card.hidden=!((card.dataset.search||'').includes(search.value.toLowerCase().trim())&&selects.every(([k,el])=>!el.value||card.dataset[k]===el.value));if(!card.hidden)count++;}document.querySelector('#cell-count')!.textContent=`${count} matching entries`;}
+ search.addEventListener('input',filter);selects.forEach(([,el])=>el.addEventListener('change',filter));
+</script>
+<style>
+ .intro{font-size:1.2rem}.filters{display:flex;flex-wrap:wrap;gap:18px;margin-top:28px}.filters label{display:grid;gap:6px;flex:1;min-width:180px}input,select{padding:10px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:6px}.cells{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}article{border:1px solid var(--border);border-radius:12px;padding:20px;background:var(--panel)}article[hidden]{display:none}h2{font-size:1.4rem;margin:12px 0}h3{font-size:1rem}svg{width:100%;height:280px;color:var(--text)}p{line-height:1.55}.status,small,.note{opacity:.75}.links{display:flex;flex-wrap:wrap;gap:12px}.status{text-transform:uppercase;font-size:.75rem;letter-spacing:.08em}
+</style>

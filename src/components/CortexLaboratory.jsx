@@ -1,3 +1,6 @@
+import { cellLibraryExample } from '../lib/cortex/library-examples.js';
+import CortexCellLibrary from './CortexCellLibrary.jsx';
+import { loadActiveModel } from '../lib/cortex/model-library.js';
 import { useEffect, useMemo, useRef, useState } from "preact/hooks";
 import { ACTIVE_ENGINE_VERSION } from "../lib/cortex/config.js";
 import { makeWorld, placedContacts } from "../lib/cortex/world.js";
@@ -216,13 +219,20 @@ export default function CortexLaboratory() {
     runId = useRef(0),
     importInput = useRef(null),
     mounted = useRef(true);
+  const [modelRevision, setModelRevision] = useState(0);
+  useEffect(() => { let alive=true; loadActiveModel(config.neuron.modelId, config.neuron.segmentLengthUm).then(()=>{if(alive)setModelRevision(v=>v+1);}).catch(e=>{if(alive)setError(e.message);}); return ()=>{alive=false;}; }, [config.neuron.modelId, config.neuron.segmentLengthUm]);
+  const modelRequest = useRef(0);
+  const chooseModel = async id => {
+    const request=++modelRequest.current;
+    try { await loadActiveModel(id, config.neuron.segmentLengthUm); if(request!==modelRequest.current || !mounted.current)return; setConfig(c=>({...c,neuron:{...c.neuron,modelId:id},membrane:{...c.membrane,sourceModelId:id}}));setSelected(0);setResult(null);setPlaying(false);setError(""); } catch(e){setError(e.message);}
+  };
   const state = useMemo(() => {
     try {
       return { world: makeWorld(config), error: "" };
     } catch (e) {
       return { world: null, error: e.message };
     }
-  }, [config]);
+  }, [config, modelRevision]);
   const active = true,
     implant = getCortexImplant(config.implant.deviceId),
     model = modelRegistry.find(
@@ -400,6 +410,8 @@ export default function CortexLaboratory() {
     const requestedImplant = new URLSearchParams(window.location.search).get("implant");
     const implantChoice = CORTEX_IMPLANTS.find(d => d.key === requestedImplant);
     if (implantChoice) chooseImplant(implantChoice.deviceId);
+    const requestedCell = new URLSearchParams(window.location.search).get("cell");
+    if (modelRegistry.some(m => m.id === requestedCell)) chooseModel(requestedCell);
     let cancelled = false;
     import("../lib/cortex/scene.js")
       .then(async ({ createCortexView }) => {
@@ -539,7 +551,7 @@ export default function CortexLaboratory() {
       </header>
       <div class="cx-scope">
         <strong>
-          Human temporal cell · published active model
+          Human cortical cells · published active models
         </strong>
         <span>
           Reconstructed dendrites · synthetic axon stub · no independent experimental validation
@@ -553,13 +565,14 @@ export default function CortexLaboratory() {
         <a href="#cx-response">4 · Replay</a>
         <a href="#cx-export">5 · Compare / export</a>
       </nav>
+        <CortexCellLibrary selectedId={config.neuron.modelId} onSelect={chooseModel} onPatch={id=>{setConfig(cellLibraryExample(id));setResult(null);setSelected(0);setPlaying(false);setError("");}} disabled={running || populationRunning} />
       <details
         class="cx-guide"
         open={guideOpen}
         onToggle={(e) => setGuideOpen(e.currentTarget.open)}
       >
         <summary>First run · a one-minute guide</summary>
-        <p>The default experiment places the sourced human cell in a seeded distance cloud. Open <a href="#cx-population">Real-model population</a>, inspect the supported and excluded positions, then run the supported cells. The controls below also retain the single-cell and patch-clamp experiments.</p>
+        <p>The default experiment places distinct sourced human cells in a seeded distance cloud. Open <a href="#cx-population">Real-model population</a>, inspect the supported and excluded positions, then run the supported cells. The controls below also retain the single-cell and patch-clamp experiments.</p>
         <ol>
           <li>
             Choose an example, read its reset notice and click{" "}
@@ -876,7 +889,7 @@ export default function CortexLaboratory() {
             <details>
               <summary>Neuron placement & advanced physiology</summary>
               <p class="cx-muted">
-                Human middle temporal layer-2 spiny dendrites in an illustrative slab; the published model uses a synthetic active axon stub. Placement depth does not change its cortical identity.
+                {model.label} in an illustrative slab; the published model uses a synthetic active axon stub. Placement depth does not change its cortical identity.
               </p>
               <NumberControl
                 label="Cortical thickness · µm"
@@ -1088,6 +1101,7 @@ export default function CortexLaboratory() {
                     if (file.size > 100000)
                       throw new Error("Configuration exceeds 100 KB.");
                     const next = parseLaboratoryConfig(await file.text());
+                    await loadActiveModel(next.neuron.modelId, next.neuron.segmentLengthUm);
                     makeWorld(next);
                     setConfig(next);
                     setResult(null);
@@ -1895,7 +1909,7 @@ export default function CortexLaboratory() {
                     </tbody>
                   </table>
                   <p class="cx-muted">
-                    Zero means the soma detector found no event. All runs use the same human cell model.
+                    Zero means the soma detector found no event. Each run retains the selected specimen identity. Compare source types explicitly.
                   </p>
                   {sameTimeGrid ? (
                     <>

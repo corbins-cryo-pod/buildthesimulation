@@ -4,12 +4,16 @@ import { cpus, platform, arch } from 'node:os';
 import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
 import { getExampleConfig } from '../src/lib/cortex/examples.js';
+import { modelRegistry } from '../src/lib/cortex/model-registry.js';
+import { loadActiveModels } from '../src/lib/cortex/model-library.js';
 import { freshPopulation, planPopulation, runPopulation } from '../src/lib/cortex/population.js';
 const config = getExampleConfig('extracellular-soma-spike');
-config.protocol.amplitudeUa = 20; // Fully supported 3D grid benchmark; separate from default 40 µA cloud.
+config.protocol.amplitudeUa = 1;
+config.implant.translationUm = [1500,1500,-1000];
+await loadActiveModels(modelRegistry.map(m=>m.id),40,path=>Promise.resolve(readFileSync("public"+path)));
 const cases = [];
-for (const count of [1, 8, 16, 64, 17]) {
-  const cloud = count === 17;
+for (const scenario of [{count:1},{count:8},{count:16},{count:16,cloud:true}]) {
+  const {count,cloud=false}=scenario;
   const caseConfig = cloud ? getExampleConfig('extracellular-soma-spike') : config;
   const settings = cloud ? freshPopulation() : { ...freshPopulation(), layout: 'grid', center: 'target', count };
   const plan = planPopulation(caseConfig, settings, { allowUnsupported: true });
@@ -31,7 +35,7 @@ for (const count of [1, 8, 16, 64, 17]) {
     somaWaveformEvidenceCells: solved.filter(c => c.response.soma.waveformEvidenceCount > 0).length,
     localOnlyCells: solved.filter(c => c.response.membraneThresholdCrossings.compartmentCount > 0 && !c.response.soma.thresholdEventCount).length,
     maxKclResidualNa: Math.max(...solved.map(c => c.maxKclResidualNa)),
-    cells: result.cells.map(({ id, status, reason, somaUm, response, elapsedMs }) => ({ id, status, reason, somaUm, elapsedMs,
+    cells: result.cells.map(({ id, specimenId, status, reason, somaUm, response, elapsedMs }) => ({ id, specimenId, status, reason, somaUm, elapsedMs,
       localCrossings: response?.membraneThresholdCrossings.compartmentCount ?? null,
       somaEvents: response?.soma.thresholdEventCount ?? null,
       waveformEvidence: response?.soma.waveformEvidenceCount ?? null,
@@ -42,7 +46,7 @@ for (const count of [1, 8, 16, 64, 17]) {
 const files = ['src/lib/cortex/population.js', 'src/lib/cortex/experiment.js', 'src/lib/cortex/active-cable.js', 'scripts/benchmark-cortex-population.mjs'];
 const report = { schemaVersion: 'cortex-population-benchmark/1', generatedAt: new Date().toISOString(),
   runtime: { node: process.version, cpu: cpus()[0].model, platform: platform(), arch: arch() }, config,
-  scope: 'Sequential Node CPU measurements. First case computes conditioning; later cases reuse the identical state. No browser, GPU, FPS or process/browser peak-memory measurement. Retained numeric bytes exclude objects, geometry, exports, caches and allocator/GC overhead.',
-  uniqueSpecimens: 1, cases,
+  scope: 'Sequential Node CPU measurements. First case computes conditioning; later cases may reuse identical per-specimen states. No browser, GPU, FPS or process/browser peak-memory measurement. Retained numeric bytes exclude objects, geometry, exports, caches and allocator/GC overhead.',
+  uniqueSpecimens: modelRegistry.length, cases,
   sourceHashes: Object.fromEntries(files.map(file => [file, createHash('sha256').update(readFileSync(file)).digest('hex')])) };
-writeFileSync('docs/cortex/benchmarks/population-latest.json', JSON.stringify(report, null, 2) + '\n');
+writeFileSync('docs/cortex/benchmarks/population-unique-latest.json', JSON.stringify(report, null, 2) + '\n');

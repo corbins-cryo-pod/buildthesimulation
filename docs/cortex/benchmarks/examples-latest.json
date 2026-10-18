@@ -1,10 +1,10 @@
 {
   "schemaVersion": "cortex-examples-verification/1",
-  "generatedAt": "2026-10-16T13:08:50.866Z",
+  "generatedAt": "2026-10-18T16:03:13.209Z",
   "status": "passed",
   "runtime": {
     "node": "v24.19.0",
-    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C"
+    "cpu": "AMD EPYC 9V74 80-Core Processor"
   },
   "scope": "Reproducible solver calculations and regression checks, not a new independent NEURON/LFPykit comparison or biological validation. Elapsed times include solver and any uncached conditioning, exclude rendering, and are machine-specific. Output bytes count retained numerical buffers, not peak process memory.",
   "acceptanceCriteria": {
@@ -19,13 +19,13 @@
   "sourceHashes": {
     "scripts/verify-cortex-examples.mjs": "9d3d30b3ac3408fe097709e1315b138eaffb30b95e477fab7647d30bbf2933a8",
     "src/lib/cortex/examples.js": "f986682443b437e32e83d23213cc34654b77cb16adf78807e265d659378543c1",
-    "src/lib/cortex/config.js": "fdf67b124b0f5b60c68698e954106b52bba72b82d7a786d706b1250d73fb9d6e",
+    "src/lib/cortex/config.js": "24d68988fccf5253ba54269da0b2bd0af578b17419720b28c8b2066505cb9828",
     "src/lib/cortex/implants.js": "fa664d2d1f812cd59937f6370785b60abf4897725f4f105c4f8a12304ccf84e2",
-    "src/lib/cortex/experiment.js": "75a0c325906cc10477747784b7568a089e4fe8438d889ac7377570d9306c4eeb",
+    "src/lib/cortex/experiment.js": "ccfc0b3023b6b05e36c1196e17f3b71d99f35c51bf02567439a6a52c54a32726",
     "src/lib/cortex/response-analysis.js": "f01177fb217dbe99395dcfd0f4c54382b1d9652c62f993490e308a2c398da664",
     "src/lib/cortex/world.js": "3b1350748dd202b9b7969b76c3b893d120cd8da9af41ea3c6aad5f7fad19bfe0",
-    "src/lib/cortex/active-morphology.js": "9304538355a52714802af57a0d86140e2509e28dfdebc1a95238233a156bc734",
-    "src/lib/cortex/active-cable.js": "dfa8b78268f781f69c9f5ef8e3e7ca713a7c440b884e07093930b62fba21812f",
+    "src/lib/cortex/active-morphology.js": "2f539f33208d571f3fbbcc2c47df45fbd83cd81d42bb7391e45bf3b7f622376a",
+    "src/lib/cortex/active-cable.js": "2e40c7dcdc3268490a3f5c552bf2f14a421e4048deff16090aa8298e03397537",
     "src/lib/cortex/active-channels.js": "be4c862dddd31f0492c27c7f9349d40550b0402b562d561d3fe22d799237afbb",
     "src/lib/cortex/passive-cable.js": "f1d854ccf2a6d8d4c09889d15953916aff6ce3289a267401f82b8f23b3d623d8",
     "src/lib/cortex/volume-conductor.js": "2ddfc04a1d5bb695c764d9833584ffc1ee48ef8c19c217c32a52b1531088b601",
@@ -406,13 +406,13 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 0,
         "anodicChargeNc": 0,
-        "elapsedMs": 4073.0250789999996,
+        "elapsedMs": 5059.795878,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
         "firstThresholdCrossing": null,
         "spikeCount": 0,
-        "wallSecondsPerBiologicalSecond": 101.82562697499999
+        "wallSecondsPerBiologicalSecond": 126.49489695
       },
       "conditioning": "computed",
       "warnings": []
@@ -2211,7 +2211,7 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 0,
         "anodicChargeNc": 0,
-        "elapsedMs": 1764.8031369999999,
+        "elapsedMs": 1561.1799959999998,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
@@ -2221,7 +2221,7 @@
           "kind": "axon"
         },
         "spikeCount": 1,
-        "wallSecondsPerBiologicalSecond": 44.120078424999996
+        "wallSecondsPerBiologicalSecond": 39.0294999
       },
       "conditioning": "reused identical state",
       "warnings": []
@@ -4072,7 +4072,7 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 0,
         "anodicChargeNc": 0,
-        "elapsedMs": 9358.052060000002,
+        "elapsedMs": 9822.042965999999,
         "outputBytes": 57405240,
         "frames": 2501,
         "compartments": 286,
@@ -4082,7 +4082,7 @@
           "kind": "axon"
         },
         "spikeCount": 9,
-        "wallSecondsPerBiologicalSecond": 37.43220824000001
+        "wallSecondsPerBiologicalSecond": 39.288171864
       },
       "conditioning": "reused identical state",
       "warnings": []
@@ -5969,7 +5969,7 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 0,
         "anodicChargeNc": 0,
-        "elapsedMs": 19561.502797999998,
+        "elapsedMs": 24186.318771000002,
         "outputBytes": 55110040,
         "frames": 2401,
         "compartments": 286,
@@ -5979,7 +5979,7 @@
           "kind": "axon"
         },
         "spikeCount": 18,
-        "wallSecondsPerBiologicalSecond": 32.60250466333333
+        "wallSecondsPerBiologicalSecond": 40.310531285
       },
       "conditioning": "reused identical state",
       "warnings": []
@@ -6499,7 +6499,7 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 7.9999999999998295,
         "anodicChargeNc": 7.9999999999998295,
-        "elapsedMs": 1537.933864999999,
+        "elapsedMs": 1747.7007009999943,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
@@ -6509,7 +6509,7 @@
           "kind": "dendrite"
         },
         "spikeCount": 0,
-        "wallSecondsPerBiologicalSecond": 38.44834662499998
+        "wallSecondsPerBiologicalSecond": 43.69251752499986
       },
       "conditioning": "reused identical state",
       "warnings": []
@@ -8284,7 +8284,7 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 39.99999999999915,
         "anodicChargeNc": 39.99999999999915,
-        "elapsedMs": 1219.3745119999949,
+        "elapsedMs": 1738.6798189999972,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
@@ -8294,7 +8294,7 @@
           "kind": "dendrite"
         },
         "spikeCount": 1,
-        "wallSecondsPerBiologicalSecond": 30.48436279999987
+        "wallSecondsPerBiologicalSecond": 43.46699547499993
       },
       "conditioning": "reused identical state",
       "warnings": []
@@ -9834,7 +9834,7 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 39.99999999999915,
         "anodicChargeNc": 39.99999999999915,
-        "elapsedMs": 1292.949649999995,
+        "elapsedMs": 1767.0618759999998,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
@@ -9844,7 +9844,7 @@
           "kind": "dendrite"
         },
         "spikeCount": 0,
-        "wallSecondsPerBiologicalSecond": 32.32374124999988
+        "wallSecondsPerBiologicalSecond": 44.17654689999999
       },
       "conditioning": "reused identical state",
       "warnings": []
@@ -11569,7 +11569,7 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 39.99999999999915,
         "anodicChargeNc": 39.99999999999915,
-        "elapsedMs": 1293.3664379999973,
+        "elapsedMs": 1841.0295140000017,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
@@ -11579,7 +11579,7 @@
           "kind": "dendrite"
         },
         "spikeCount": 1,
-        "wallSecondsPerBiologicalSecond": 32.334160949999934
+        "wallSecondsPerBiologicalSecond": 46.02573785000004
       },
       "conditioning": "reused identical state",
       "warnings": []
@@ -12099,7 +12099,7 @@
         "signedChargeNc": 0,
         "cathodicChargeNc": 7.9999999999998295,
         "anodicChargeNc": 7.9999999999998295,
-        "elapsedMs": 2629.072847999996,
+        "elapsedMs": 1827.9292910000004,
         "outputBytes": 18386840,
         "frames": 801,
         "compartments": 286,
@@ -12109,7 +12109,7 @@
           "kind": "dendrite"
         },
         "spikeCount": 0,
-        "wallSecondsPerBiologicalSecond": 65.7268211999999
+        "wallSecondsPerBiologicalSecond": 45.69823227500001
       },
       "conditioning": "reused identical state",
       "warnings": []

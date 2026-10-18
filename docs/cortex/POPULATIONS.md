@@ -1,3 +1,7 @@
+# Historical repeated-specimen milestone
+
+**Superseded by [CELL_LIBRARY.md](CELL_LIBRARY.md).** The current laboratory uses distinct specimens without replacement. The timing and count claims below document the previous repeated-cell implementation only.
+
 # Sourced-cell distance clouds and population capacity
 
 This milestone adds independent populations of the already integrated Allen human
@@ -48,17 +52,20 @@ ephaptic interactions. Conditioning is shared only when model, discretization,
 timestep and conditioning duration are identical. Each stimulus response is
 integrated independently at its own world position.
 
-Only the target retains full voltage/current/channel histories. Neighbors retain
-sampled soma voltage and the existing response-analysis summaries. The runner
+The target retains full voltage/current/channel histories. Every supported neighbor
+retains sampled compartment voltages as Float32 replay arrays, plus Float64 soma
+voltage and response-analysis summaries. Replay uses the original sampling grid;
+no integration timestep or morphology resolution is reduced. Additional replay
+arrays are capped at 128 MiB and included in capacity and output-size estimates. The runner
 retains one neighbor's full result at a time, sums its neural recordings, then
 releases that detailed result. Typed buffers transfer without copies, with alias
 deduplication. Summed neural signals include simulated cells only. The shared
 applied stimulus artifact is added **once**, not once per cell.
 
 Local membrane crossings, soma threshold events, sampled positive overshoot and
-recovery, and polarization remain distinct. Propagation is not established. The
-3D neighbors use whole-run classifications; the target alone shows instantaneous
-membrane-voltage replay. Applied potential/field slices remain separate from
+recovery, and polarization remain distinct. Propagation is not established. Every supported cell shows synchronized compartment-level membrane-voltage
+replay, with the same −100 to +40 mV color scale. Unsupported placements remain
+gold. Whole-run classifications remain in the response plots. Applied potential/field slices remain separate from
 membrane response. The distance-response plot shows individual points and never
 interpolates a continuous activation volume or minimum resolvable separation.
 
@@ -71,7 +78,8 @@ report. The grid benchmark uses 20 µA and fully supported positions. The defaul
 cloud is separately measured at the existing 40 µA configuration. No browser,
 rendering FPS, whole-process peak memory or GPU measurement is claimed.
 
-At the default 40 ms duration, 0.005 ms timestep and 40 µm discretization, each cell
+Historical single-specimen benchmark (before distinct cells and population replay):
+at the default 40 ms duration, 0.005 ms timestep and 40 µm discretization, each cell
 has 211 membrane compartments and 75 junction nodes. One detailed result is
 18,386,840 bytes. A 64-cell result remains below 19 MB of retained typed arrays
 because neighbor compartment histories are not accumulated. This does not bound

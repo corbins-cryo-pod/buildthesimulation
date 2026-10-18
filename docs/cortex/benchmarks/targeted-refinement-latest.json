@@ -1,18 +1,18 @@
 {
   "schemaVersion": "cortex-targeted-refinement/1",
   "status": "completed",
-  "generatedAt": "2026-10-16T12:59:59.472Z",
-  "sourceCommit": "8d3de557bedc4030aa2b6ade7aa7bd05cb2e1849",
+  "generatedAt": "2026-10-18T16:03:40.258Z",
+  "sourceCommit": "2b62408a00a7f1e8d6a5cf444286d2b957ecf290",
   "runtime": {
     "node": "v24.19.0",
-    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C"
+    "cpu": "AMD EPYC 9V74 80-Core Processor"
   },
   "sourceHashes": {
     "scripts/cortex-targeted-refinement-study.mjs": "615e9ecb4f1cc5a5740af1cc8f61830ba7d7edc268b3c6814a70e203219e9338",
     "scripts/cortex-active-model.py": "7c71d7ddd39b600571e8dcdc37394187b30da6e7a740ced1319b3f25764998db",
-    "src/lib/cortex/active-cable.js": "dfa8b78268f781f69c9f5ef8e3e7ca713a7c440b884e07093930b62fba21812f",
+    "src/lib/cortex/active-cable.js": "2e40c7dcdc3268490a3f5c552bf2f14a421e4048deff16090aa8298e03397537",
     "src/lib/cortex/active-channels.js": "be4c862dddd31f0492c27c7f9349d40550b0402b562d561d3fe22d799237afbb",
-    "src/lib/cortex/active-morphology.js": "9304538355a52714802af57a0d86140e2509e28dfdebc1a95238233a156bc734",
+    "src/lib/cortex/active-morphology.js": "2f539f33208d571f3fbbcc2c47df45fbd83cd81d42bb7391e45bf3b7f622376a",
     "src/lib/cortex/volume-conductor.js": "2ddfc04a1d5bb695c764d9833584ffc1ee48ef8c19c217c32a52b1531088b601",
     "src/lib/cortex/models/allen571654895.json": "1e0ca661dc7abc8b24d2e1abe435c12247821961113cf05b43d7cc1db5367e54"
   },
@@ -189,7 +189,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 22326.11176,
+      "elapsedMs": 18353.828767,
       "conditioning": "computed",
       "anyLocalCrossing": false,
       "firstLocalCrossing": null,
@@ -334,7 +334,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 48593.56266400001,
+      "elapsedMs": 30522.45959099999,
       "conditioning": "computed",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -489,7 +489,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 42517.294544000004,
+      "elapsedMs": 55525.25739699998,
       "conditioning": "computed",
       "anyLocalCrossing": false,
       "firstLocalCrossing": null,
@@ -634,7 +634,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 7915.717775000026,
+      "elapsedMs": 9168.468917999999,
       "conditioning": "reused",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -791,7 +791,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 7926.866169999994,
+      "elapsedMs": 9593.930920999992,
       "conditioning": "reused",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -948,7 +948,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 89137.812867,
+      "elapsedMs": 105833.92203899997,
       "conditioning": "computed",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -1103,7 +1103,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 15656.528495000035,
+      "elapsedMs": 18503.23498899996,
       "conditioning": "reused",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -1260,7 +1260,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 18515.299523000023,
+      "elapsedMs": 16656.53850699996,
       "conditioning": "reused",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -1417,7 +1417,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 125626.99590800004,
+      "elapsedMs": 111410.16861299996,
       "conditioning": "computed",
       "anyLocalCrossing": false,
       "firstLocalCrossing": null,
@@ -1562,7 +1562,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 23657.949255999993,
+      "elapsedMs": 17931.948269999935,
       "conditioning": "reused",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -1719,7 +1719,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 17352.894906,
+      "elapsedMs": 17645.810589,
       "conditioning": "reused",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -1876,7 +1876,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 235160.36175299995,
+      "elapsedMs": 174348.72796199995,
       "conditioning": "computed",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -2031,7 +2031,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 41416.903616999974,
+      "elapsedMs": 28727.69896999991,
       "conditioning": "reused",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -2188,7 +2188,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 40037.22748999996,
+      "elapsedMs": 30275.218307000003,
       "conditioning": "reused",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -2345,7 +2345,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 357069.656895,
+      "elapsedMs": 328825.71045799996,
       "conditioning": "computed",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -2587,7 +2587,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 3096.3470820000002,
+          "elapsedMs": 2453.195943999999,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -2731,7 +2731,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 1044.3005210000047,
+          "elapsedMs": 757.796825999998,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -2885,7 +2885,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 1055.5294749999957,
+          "elapsedMs": 838.1875349999973,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -3039,7 +3039,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 3073.7331369999956,
+          "elapsedMs": 2436.962016999998,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -3183,7 +3183,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 3059.020174999998,
+          "elapsedMs": 2267.6392940000005,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -3327,7 +3327,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 3622.270163000001,
+          "elapsedMs": 2195.510116999998,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -3471,7 +3471,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 4700.823870000007,
+          "elapsedMs": 2494.9476150000046,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -3615,7 +3615,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 3429.6047289999988,
+          "elapsedMs": 2456.3943779999972,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -3759,7 +3759,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2357.806801999992,
+          "elapsedMs": 914.4692240000004,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -3913,7 +3913,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2207.7876439999964,
+          "elapsedMs": 944.4182769999898,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -4067,7 +4067,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 5576.247197999997,
+          "elapsedMs": 2499.965068999998,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -4211,7 +4211,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 5858.767240000001,
+          "elapsedMs": 2398.530605000007,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -4355,7 +4355,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2228.747188999987,
+          "elapsedMs": 1000.6245449999988,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -4597,7 +4597,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 8763.058820000006,
+          "elapsedMs": 3984.4381189999986,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -4741,7 +4741,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2223.8113859999867,
+          "elapsedMs": 1053.5893979999964,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -4895,7 +4895,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2145.404411000025,
+          "elapsedMs": 1116.692253000001,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -5049,7 +5049,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 6430.492710999999,
+          "elapsedMs": 3976.8087610000075,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -5193,7 +5193,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 6975.98714100002,
+          "elapsedMs": 4219.7997890000115,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -5337,7 +5337,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 8191.009423999989,
+          "elapsedMs": 3923.9123210000107,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -5481,7 +5481,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 5169.984320999996,
+          "elapsedMs": 1338.6988270000002,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -5635,7 +5635,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 13825.235090000002,
+          "elapsedMs": 3947.346982999996,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -5779,7 +5779,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7323.264397999999,
+          "elapsedMs": 3899.9589500000147,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -5923,7 +5923,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 8155.376657999994,
+          "elapsedMs": 3968.2984580000048,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -6067,7 +6067,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2758.2906120000116,
+          "elapsedMs": 1397.7947779999813,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -6221,7 +6221,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7546.576552999992,
+          "elapsedMs": 3889.4183669999766,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -6365,7 +6365,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7728.537918000016,
+          "elapsedMs": 4203.254405000014,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -6597,7 +6597,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 5767.782314000011,
+          "elapsedMs": 7071.569423000008,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -6741,7 +6741,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 1974.6194569999934,
+          "elapsedMs": 2110.1807810000028,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -6895,7 +6895,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 3365.8881790000014,
+          "elapsedMs": 2327.2787680000183,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -7049,7 +7049,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 13077.10067200003,
+          "elapsedMs": 7309.577642999997,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -7193,7 +7193,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 9560.761172000028,
+          "elapsedMs": 7289.23020000002,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -7337,7 +7337,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 8575.342500000028,
+          "elapsedMs": 7006.642994999973,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -7481,7 +7481,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 6707.710166000004,
+          "elapsedMs": 7320.488305000006,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -7625,7 +7625,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2791.244316999975,
+          "elapsedMs": 2342.7256549999584,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -7779,7 +7779,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7865.763795999985,
+          "elapsedMs": 7130.113876999996,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -7923,7 +7923,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2126.936583999952,
+          "elapsedMs": 2490.7859590000007,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -8077,7 +8077,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7852.9501259999815,
+          "elapsedMs": 7715.746840000036,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -8221,7 +8221,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2115.429938000045,
+          "elapsedMs": 2647.6110459999763,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -8375,7 +8375,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 6119.264240999997,
+          "elapsedMs": 7577.931037999981,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -8607,7 +8607,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 11169.387722000014,
+          "elapsedMs": 13341.175518999982,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -8751,7 +8751,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 4165.502211000014,
+          "elapsedMs": 3967.8435840000166,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -8905,7 +8905,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 4354.799472000042,
+          "elapsedMs": 4585.487084000022,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -9059,7 +9059,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 11597.501313999994,
+          "elapsedMs": 13528.509757999971,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -9203,7 +9203,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 18302.614727000007,
+          "elapsedMs": 13017.147143999988,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -9347,7 +9347,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 13510.781449000002,
+          "elapsedMs": 12420.984146000003,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -9491,7 +9491,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 17978.2486370001,
+          "elapsedMs": 13043.578934999998,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -9635,7 +9635,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 5012.320568999974,
+          "elapsedMs": 4509.709714000055,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -9789,7 +9789,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 5510.014981999993,
+          "elapsedMs": 4462.696947999997,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -9943,7 +9943,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 11147.495348999975,
+          "elapsedMs": 13388.746357999975,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -10087,7 +10087,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 4812.277581000002,
+          "elapsedMs": 4284.519907000009,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -10241,7 +10241,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 19389.247560000047,
+          "elapsedMs": 12812.704215000034,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -10385,7 +10385,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7318.838299000054,
+          "elapsedMs": 5043.565095000085,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -10627,7 +10627,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 11693.865538999904,
+          "elapsedMs": 13747.485654999968,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -10771,7 +10771,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 4314.268306999933,
+          "elapsedMs": 5018.1933150000405,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -10925,7 +10925,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 4149.314668999985,
+          "elapsedMs": 5150.592148000025,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -11079,7 +11079,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 18906.332991999923,
+          "elapsedMs": 13978.724558000104,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -11223,7 +11223,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 27216.583375000046,
+          "elapsedMs": 11894.777202999918,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -11367,7 +11367,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 23773.418963999953,
+          "elapsedMs": 11512.004736999981,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -11511,7 +11511,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 17771.85378200002,
+          "elapsedMs": 11118.731137000024,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -11655,7 +11655,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 6568.828788000043,
+          "elapsedMs": 3853.4305869999807,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -11809,7 +11809,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 31481.540269999998,
+          "elapsedMs": 11027.740791000077,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -11953,7 +11953,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 10895.24730799999,
+          "elapsedMs": 3771.5762360000517,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -12107,7 +12107,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7146.775115000084,
+          "elapsedMs": 4443.451240000082,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -12261,7 +12261,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 13202.435294000083,
+          "elapsedMs": 15075.094473000034,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -12405,7 +12405,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 13239.16723599995,
+          "elapsedMs": 15256.89129900001,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -12637,7 +12637,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 38895.761624000035,
+          "elapsedMs": 21429.40677100001,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -12781,7 +12781,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 13481.322090999922,
+          "elapsedMs": 6895.081597999902,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -12935,7 +12935,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 15923.702246000059,
+          "elapsedMs": 6749.815931000048,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -13089,7 +13089,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 33949.42412800016,
+          "elapsedMs": 20853.743010999868,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -13233,7 +13233,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 35113.39315099991,
+          "elapsedMs": 21836.99499899987,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -13377,7 +13377,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 26249.01230400009,
+          "elapsedMs": 22520.418748999946,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -13521,7 +13521,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 24359.557947000023,
+          "elapsedMs": 23319.188846000005,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -13665,7 +13665,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 8217.034880999941,
+          "elapsedMs": 7889.333096999908,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -13819,7 +13819,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 8689.680410999805,
+          "elapsedMs": 7680.512184999883,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -13973,7 +13973,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 21984.601451999974,
+          "elapsedMs": 21125.068813999882,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -14117,7 +14117,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7928.8960269999225,
+          "elapsedMs": 7437.766515000025,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -14271,7 +14271,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7201.033839000156,
+          "elapsedMs": 7453.889528000029,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -14425,7 +14425,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7942.874538999982,
+          "elapsedMs": 7949.856193999993,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -14667,7 +14667,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 49932.52233599988,
+          "elapsedMs": 44428.87807900016,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -14811,7 +14811,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 16523.503707000054,
+          "elapsedMs": 13919.049165999983,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -14965,7 +14965,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 16030.744441000046,
+          "elapsedMs": 12967.157277999911,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -15119,7 +15119,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 50618.155272,
+          "elapsedMs": 41753.67675599991,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -15263,7 +15263,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 51574.51352400007,
+          "elapsedMs": 41725.103974000085,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -15407,7 +15407,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 55791.576550000114,
+          "elapsedMs": 39776.713057999965,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -15551,7 +15551,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 40780.29998200014,
+          "elapsedMs": 40886.26686199987,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -15695,7 +15695,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 13811.687969000079,
+          "elapsedMs": 14974.799679999938,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -15849,7 +15849,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 15057.265933000017,
+          "elapsedMs": 14472.180353000062,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -16003,7 +16003,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 43528.35949800024,
+          "elapsedMs": 41773.73465800006,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -16147,7 +16147,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 15333.52493600035,
+          "elapsedMs": 14368.232425000053,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -16301,7 +16301,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 43190.28766499972,
+          "elapsedMs": 41592.39540000004,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -16445,7 +16445,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 18000.178228999954,
+          "elapsedMs": 14331.30710399989,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -17665,11 +17665,34 @@
     }
   ],
   "nativeMeshProvenance": {
-    "fileSha256": "e987fecdfabcd1f1dbccea54d2f5e5ffc832d72cb42c59a637d754ee13d37cb6",
+    "fileSha256": "f221454047c919d7f572313bb2527a39e6eb3d5ff57c8e8f5dff8e65d2b51180",
     "generator": {
-      "neuronVersion": "9.0.1",
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
       "neuronBuild": "NEURON -- VERSION 9.0.1 HEAD (b12a541+) 2025-11-14",
-      "pythonVersion": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "versions": {
+        "neuron": "9.0.1",
+        "numpy": "2.5.4",
+        "sympy": "1.14.0",
+        "mpmath": "1.3.0",
+        "packaging": "26.3",
+        "find-libpython": "0.5.1",
+        "setuptools": "84.0.0",
+        "LFPykit": "0.6.2",
+        "MEAutility": "1.5.3",
+        "scipy": "1.18.1",
+        "matplotlib": "3.11.2",
+        "PyYAML": "6.0.3",
+        "contourpy": "1.4.0",
+        "cycler": "0.12.1",
+        "fonttools": "4.66.1",
+        "kiwisolver": "1.5.1",
+        "pillow": "12.3.0",
+        "pyparsing": "3.3.3",
+        "python-dateutil": "2.9.0.post0",
+        "six": "1.17.0"
+      },
+      "modelGeneratorSha256": "7c71d7ddd39b600571e8dcdc37394187b30da6e7a740ced1319b3f25764998db",
+      "mechanismLibrarySha256": "df6a69aa656b78377ec7aae71198dc27e7534e908f8404e3ac8fba928753471e",
       "sourceHashes": {
         "571654895.swc": "7ebb04f256f67f1ff9952fbb38889bfea481a59dd6cb2f0d70a41d3dd138d90a",
         "optim_param_571654895.json": "c4333a5cc294fa0288698ccbff9d3059c9b1cc9942a79c8594e6add0bd325304",
@@ -17683,10 +17706,7 @@
         "Ca_LVA.mod": "a7a9ef262541dc96f5d19afd97778f9320808d01ce397350f1f2be3db30f920f",
         "SK.mod": "079f1e3cac7444696d480b8e02853b215cd93e0c7b9986dbb54925fc49eddbeb",
         "CaDynamics.mod": "f012def9758f7d0244b81c54291edea6597c15fad99b9f7b5725b121a3567f16"
-      },
-      "modelGeneratorSha256": "7c71d7ddd39b600571e8dcdc37394187b30da6e7a740ced1319b3f25764998db",
-      "mechanismLibrarySha256": "ec9d0a48b93b3c82f73f45d24562fce50f212e24579d7c397706d374c1e81ce0",
-      "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0"
+      }
     }
   },
   "harnessProductionCheck": {
@@ -17817,7 +17837,7 @@
     "pass": true
   },
   "sourceUnchangedDuringStudy": true,
-  "totalWallMs": 2328283.466996,
+  "totalWallMs": 1946661.931934,
   "summary": {
     "geometryPass": true,
     "harnessProductionPass": true,
