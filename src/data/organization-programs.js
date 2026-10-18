@@ -1133,5 +1133,41 @@ export default {
       "notes": "Consortium work items; graphene arrays recorded from brain slices. Hardware leads are largely at Delft University of Technology.",
       "interfaces": []
     }
+  ],
+  "87-ceregate-company-brief": [
+    {
+      "name": "Freezing-of-gait therapy software on Boston Scientific DBS",
+      "stage": 3,
+      "regulatory": "R",
+      "evidenceUrl": "https://www.ceregate.com/press/",
+      "notes": "Software under clinical investigation on Boston Scientific DBS systems; no marketing authorization claimed.",
+      "interfaces": [
+        "Other"
+      ]
+    }
+  ],
+  "88-ability-neurotech-company-brief": [
+    {
+      "name": "ABILITY fully implantable communication BCI (INTRECOM)",
+      "stage": 3,
+      "regulatory": "R",
+      "evidenceUrl": "https://abilityneuro.com/clinical-trial/",
+      "notes": "Recruiting human study at UMC Utrecht; investigational, no authorization claimed.",
+      "interfaces": [
+        "Cortical surface"
+      ]
+    }
+  ],
+  "89-bridge-neurotech-company-brief": [
+    {
+      "name": "Non-invasive functional ultrasound BCI research",
+      "stage": 3,
+      "regulatory": "R",
+      "evidenceUrl": "https://www.bridgeneurotech.com/letter",
+      "notes": "First human research study enrolling in Redwood City; research only, no therapy claim.",
+      "interfaces": [
+        "Noninvasive"
+      ]
+    }
   ]
 };
