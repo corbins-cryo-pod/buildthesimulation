@@ -2,8 +2,8 @@
 title: "CorTec (company brief)"
 order: 9
 pubDate: 2026-02-02
-updatedDate: 2026-10-04
-lastVerified: 2026-10-04
+updatedDate: 2026-10-17
+lastVerified: 2026-10-17
 description: "CorTec’s Brain Interchange: a fully implantable, wireless, closed-loop neurotechnology platform moving into first-in-human use in Europe."
 region: "European"
 kind: "Company"
@@ -54,3 +54,4 @@ Implant size, longevity, recharge strategy, reliability, and surgical burden.
 
 - *FDA designations:* CorTec announced a second FDA Breakthrough Device Designation for Brain Interchange (Aug 31, 2026). Source: <https://cortec-neuro.com/news/cortec-receives-second-fda-breakthrough-device-designation-for-brain-interchange>
 - *Clinical:* Brain Interchange is described as the first European implantable BCI with an FDA-approved (IDE) US trial; lead indication is stroke rehabilitation. Source: <https://brain-interchange.com/> A University of Washington lab reported cursor control by its first participant in Apr 2026: <https://sites.uw.edu/jeffherr/2026/04/29/new-demonstration-of-cortical-brain-computer-interface-control-of-a-cursor-using-the-cortec-brain-interchange-device/>
+- *Stroke study details (Oct 9, 2026, Badische Zeitung interview):* In an interview with Badische Zeitung, CorTec co-founder Martin Schüttler said that in the company's studies stroke patients steered the computer game Pong by thought alone, and that targeted stimulation supported the relearning of movements. He described the system's electronics as sitting between skull and scalp, with silicone contact mats placed directly on the brain. Regional-press interview, not peer reviewed. Source: <https://www.badische-zeitung.de/freiburger-start-up-cortec-testet-hirnimplantat-bei-schlaganfallpatienten>
