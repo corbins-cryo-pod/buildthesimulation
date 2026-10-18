@@ -4,7 +4,11 @@ import {modelRegistry} from './model-registry.js';
 import {loadActiveModel} from './model-library.js';
 import {makeActiveMorphology} from './active-morphology.js';
 import {loadFiniteContact,finiteCellConfig,prepareFiniteNodes,finiteTransfer,FINITE_MODEL} from './finite-contact.js';
-const $=id=>document.getElementById(id);
+export function mountFiniteLaboratory(root) {
+const $=id=>root.querySelector(`#${id}`);
+let disposed=false,animation,observer;
+const events=new AbortController();
+const listen=(element,type,handler)=>element.addEventListener(type,handler,{signal:events.signal});
 const select=$('disk-cell'),status=$('disk-status'),run=$('disk-run'),slider=$('disk-frame');
 let field,config,nodes=[],support,result,worker,generation=0,playing=false,selectedNode=0;
 let renderer,scene,camera,controls,cellGroup,meshes=[],slices=[];
@@ -24,9 +28,9 @@ function initScene(){
   const g=new THREE.CylinderGeometry(250,250,250,64,1,true);g.rotateX(Math.PI/2);
   const bounds=new THREE.LineSegments(new THREE.EdgesGeometry(g),new THREE.LineBasicMaterial({color:'#586a76',transparent:true,opacity:.2}));bounds.position.z=125;scene.add(bounds);g.dispose();
   cellGroup=new THREE.Group();scene.add(cellGroup);
-  const resize=()=>{const w=host.clientWidth;renderer.setSize(w,450);camera.aspect=w/450;camera.updateProjectionMatrix();};new ResizeObserver(resize).observe(host);resize();
+  const resize=()=>{const w=Math.max(1,host.clientWidth);renderer.setSize(w,450);camera.aspect=w/450;camera.updateProjectionMatrix();};observer=new ResizeObserver(resize);observer.observe(host);resize();
   const ray=new THREE.Raycaster(),mouse=new THREE.Vector2();
-  renderer.domElement.addEventListener('click',e=>{const r=renderer.domElement.getBoundingClientRect();mouse.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(mouse,camera);const hit=ray.intersectObjects(meshes)[0];if(hit){selectedNode=hit.object.userData.node;updateFrame();}});
+  listen(renderer.domElement,'click',e=>{const r=renderer.domElement.getBoundingClientRect();mouse.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(mouse,camera);const hit=ray.intersectObjects(meshes)[0];if(hit){selectedNode=hit.object.userData.node;updateFrame();}});
 }
 function drawCell(){
   if(!cellGroup)return;
@@ -75,8 +79,9 @@ function updateFrame(){
   const v=result.membraneMv[index],ve=result.unitAppliedMvPerUa[selectedNode]*current;
   $('disk-readout').textContent=`${result.timeMs[frame].toFixed(2)} ms · ${nodes[selectedNode].id} · Vm ${v.toFixed(3)} mV · applied Ve ${ve.toFixed(3)} mV · current ${current.toFixed(3)} µA · Na ${result.channels.sodiumNa[index].toPrecision(4)} nA · K ${result.channels.potassiumNa[index].toPrecision(4)} nA · Ca ${result.channels.calciumNa[index].toPrecision(4)} nA`;
 }
-run.addEventListener('click',()=>{
-  clearRun();run.disabled=true;const token=generation;worker=new Worker(new URL('./finite-worker.js',import.meta.url),{type:'module'});
+listen(run,'click',()=>{
+  clearRun();run.disabled=true;const token=generation;
+  try{worker=new Worker(new URL('./finite-worker.js',import.meta.url),{type:'module'});}catch(e){status.textContent=`Worker unavailable: ${e.message}`;run.disabled=!support?.supported;return;}
   worker.onerror=e=>{if(token===generation){status.textContent=`Worker error: ${e.message}`;run.disabled=false;worker?.terminate();}};
   worker.onmessage=({data})=>{
     if(token!==generation||data.id!==token)return;if(data.type==='progress'){status.textContent=`${data.stage??'Simulating'} · ${Math.round(data.progress*100)}%`;return;}
@@ -85,17 +90,23 @@ run.addEventListener('click',()=>{
     status.textContent=`Complete. ${result.responseAnalysis.membraneThresholdCrossings.compartmentCount} compartments crossed −25 mV; ${result.responseAnalysis.soma.thresholdEventCount} soma threshold events; ${result.responseAnalysis.soma.waveformEvidenceCount} sampled overshoot-and-return waveforms. Propagation not established. Firing thresholds remain unvalidated.`;updateFrame();
   };worker.postMessage({id:token,config});
 });
-$('disk-cancel').addEventListener('click',()=>{clearRun();run.disabled=!support?.supported;status.textContent='Stopped. Change a setting or run again.';});
-for(const id of ['disk-cell','disk-mesh','disk-current','disk-offset','disk-dt'])$(id).addEventListener('change',prepare);
-slider.addEventListener('input',updateFrame);
-$('disk-compartment').addEventListener('change',()=>{selectedNode=Number($('disk-compartment').value);updateFrame();});
-$('disk-play').addEventListener('click',()=>{playing=!playing;$('disk-play').textContent=playing?'Pause':'Play';});
-$('disk-export').addEventListener('click',()=>{
+listen($('disk-cancel'),'click',()=>{clearRun();run.disabled=!support?.supported;status.textContent='Stopped. Change a setting or run again.';});
+for(const id of ['disk-cell','disk-mesh','disk-current','disk-offset','disk-dt'])listen($(id),'change',prepare);
+listen(slider,'input',updateFrame);
+listen($('disk-compartment'),'change',()=>{selectedNode=Number($('disk-compartment').value);updateFrame();});
+listen($('disk-play'),'click',()=>{playing=!playing;$('disk-play').textContent=playing?'Pause':'Play';});
+listen($('disk-export'),'click',()=>{
   if(!result)return;
   const {neuralUv,appliedUv,totalUv,differentialUv,recordingSiteIds,config:legacy,...response}=result;
   const output={schemaVersion:FINITE_MODEL,configuration:{cell:legacy.neuron,membrane:legacy.membrane,solver:legacy.solver,waveform:{amplitudeUa:legacy.protocol.amplitudeUa,startMs:legacy.protocol.startMs,phaseUs:legacy.protocol.phaseUs,gapUs:legacy.protocol.gapUs},field:result.fieldModel},units:{geometry:'µm',time:'ms',membrane:'mV',unitApplied:'mV/µA',ionicCurrent:'nA'},nodes,response,limitations:['Single cell, single finite disk; no recording, field gradient or multicontact steering','Spatial/timestep convergence and biological selectivity not established']};
   const blob=new Blob([JSON.stringify(output,(_,v)=>ArrayBuffer.isView(v)?Array.from(v):v)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='cortex-finite-disk-result.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 });
 initScene();prepare();let last=0;
-function animate(t){requestAnimationFrame(animate);if(playing&&result&&t-last>33){last=t;slider.value=String((Number(slider.value)+1)%result.timeMs.length);updateFrame();}if(renderer)renderer.render(scene,camera);}
-requestAnimationFrame(animate);
+function animate(t){if(disposed)return;animation=requestAnimationFrame(animate);if(playing&&result&&t-last>33){last=t;slider.value=String((Number(slider.value)+1)%result.timeMs.length);updateFrame();}if(renderer)renderer.render(scene,camera);}
+animation=requestAnimationFrame(animate);
+return ()=>{
+  disposed=true;generation++;worker?.terminate();events.abort();cancelAnimationFrame(animation);observer?.disconnect();controls?.dispose();
+  scene?.traverse(object=>{object.geometry?.dispose();for(const material of Array.isArray(object.material)?object.material:[object.material])material?.dispose();});
+  for(const slice of slices)slice.texture.dispose();renderer?.dispose();renderer?.domElement.remove();
+};
+}
