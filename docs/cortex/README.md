@@ -3,8 +3,8 @@
 Route: `/cortex/`. Public methods: `/cortex/methods/`.
 Active engine: `cortex-active/0.2.0`; active experiment schema: `cortex-experiment/2`.
 
-This is a shared scientific foundation and electrical workbench, not a completed population platform.
-It contains one representative cortical slab, one published human temporal cell, and
+This is a scientific electrical workbench with bounded independent populations.
+It contains one representative cortical slab, one published human temporal model instantiated at specified positions, and
 the existing catalog's Utah 1.5 mm reference. Synaptic recording, intracellular
 current clamp and extracellular stimulation use the **same physical world**.
 The laboratory uses human temporal layer-2 spiny specimen
@@ -14,6 +14,10 @@ The human cell is the only selectable model and the default for initial load and
 
 ## What works
 
+- Default seeded distance cloud with increasing radii and random angular vectors;
+  alternative 3D grid and concentric shells; up to 64 full active-cell instances
+  at default solver settings. Unsupported near-source placements are visible and
+  explicitly excluded, never labeled inactive. See [POPULATIONS](POPULATIONS.md).
 - Physically scaled 3D patch with pia, illustrative I–VI boundaries, CSF and white
   matter guides; cutaway/opacity; orthographic/perspective views; physical scale
   bar; compartment, contact-coordinate and soma-distance inspection.
@@ -51,7 +55,7 @@ node scripts/benchmark-cortex-workbench.mjs
 
 ## What does not work yet
 
-No neural populations, regional tissue scans, layered conductivity, finite exposed Utah tip
+No coupled networks, distinct-source cell diversity, regional tissue scans, layered conductivity, finite exposed Utah tip
 model, acquisition electronics, mechanics or experimental validation. No clinical,
 device-performance or tissue-safety inference is supported. See [ROADMAP](ROADMAP.md).
 Active numerical verification is not held-out biological validation. The selected

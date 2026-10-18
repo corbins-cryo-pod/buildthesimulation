@@ -1,0 +1,1731 @@
+{
+  "schemaVersion": "cortex-population-benchmark/1",
+  "generatedAt": "2026-10-18T15:06:40.679Z",
+  "runtime": {
+    "node": "v24.19.0",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "config": {
+    "schemaVersion": "cortex-experiment/2",
+    "anatomy": {
+      "widthUm": 6000,
+      "thicknessUm": 4000
+    },
+    "implant": {
+      "deviceId": "BTSD-0001",
+      "revision": 1,
+      "translationUm": [
+        100,
+        -50,
+        0
+      ],
+      "rotationDeg": [
+        0,
+        0,
+        0
+      ]
+    },
+    "neuron": {
+      "modelId": "allen-human-571654895/1",
+      "somaUm": [
+        -100,
+        -200,
+        1500
+      ],
+      "rotationDeg": [
+        0,
+        0,
+        0
+      ],
+      "segmentLengthUm": 40
+    },
+    "tissue": {
+      "conductivitySPerM": 0.3
+    },
+    "membrane": {
+      "sourceModelId": "allen-human-571654895/1",
+      "temperatureC": 34
+    },
+    "recording": {
+      "contactIds": [
+        "r3-c3",
+        "r3-c6"
+      ],
+      "reference": "infinity",
+      "sourceModel": "line",
+      "exclusionUm": 25
+    },
+    "protocol": {
+      "mode": "extracellular-stimulation",
+      "startMs": 5,
+      "durationMs": 5,
+      "synapseNs": 1,
+      "synapseReversalMv": 0,
+      "injectionNa": 1.2,
+      "bathReturnUm": [
+        2000,
+        2000,
+        -500
+      ],
+      "amplitudeUa": 20,
+      "phaseUs": 1000,
+      "gapUs": 100,
+      "sourceContactIds": [
+        "r4-c4",
+        "r4-c5"
+      ]
+    },
+    "solver": {
+      "dtMs": 0.005,
+      "durationMs": 40,
+      "sampleMs": 0.05,
+      "settleMs": 100
+    }
+  },
+  "scope": "Sequential Node CPU measurements. First case computes conditioning; later cases reuse the identical state. No browser, GPU, FPS or process/browser peak-memory measurement. Retained numeric bytes exclude objects, geometry, exports, caches and allocator/GC overhead.",
+  "uniqueSpecimens": 1,
+  "cases": [
+    {
+      "count": 1,
+      "simulatedCells": 1,
+      "excludedCells": 0,
+      "settings": {
+        "schemaVersion": "cortex-population/1",
+        "count": 1,
+        "layout": "grid",
+        "center": "target",
+        "spacingUm": 100,
+        "nearUm": 1,
+        "farUm": 960,
+        "levels": 3,
+        "seed": 20261018
+      },
+      "amplitudeUa": 20,
+      "elapsedMs": 5078.377102,
+      "initialization": "computed",
+      "outputBytes": 18425288,
+      "outputBudgetBytes": 18444512,
+      "maxReachableDetailedArraysBytes": 36831352,
+      "compartmentsPerCell": 286,
+      "membraneCompartmentsPerCell": 211,
+      "somaEventCells": 0,
+      "somaWaveformEvidenceCells": 0,
+      "localOnlyCells": 1,
+      "maxKclResidualNa": 1.6684431614066852e-12,
+      "cells": [
+        {
+          "id": "cell-1",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "elapsedMs": 4946.124742,
+          "localCrossings": 24,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        }
+      ]
+    },
+    {
+      "count": 8,
+      "simulatedCells": 8,
+      "excludedCells": 0,
+      "settings": {
+        "schemaVersion": "cortex-population/1",
+        "count": 8,
+        "layout": "grid",
+        "center": "target",
+        "spacingUm": 100,
+        "nearUm": 1,
+        "farUm": 960,
+        "levels": 3,
+        "seed": 20261018
+      },
+      "amplitudeUa": 20,
+      "elapsedMs": 11198.844032,
+      "initialization": "reused identical state",
+      "outputBytes": 18470144,
+      "outputBudgetBytes": 18489368,
+      "maxReachableDetailedArraysBytes": 36876208,
+      "compartmentsPerCell": 286,
+      "membraneCompartmentsPerCell": 211,
+      "somaEventCells": 0,
+      "somaWaveformEvidenceCells": 0,
+      "localOnlyCells": 1,
+      "maxKclResidualNa": 1.979509655150591e-12,
+      "cells": [
+        {
+          "id": "cell-1",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "elapsedMs": 1351.5809179999997,
+          "localCrossings": 24,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-2",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -300,
+            1400
+          ],
+          "elapsedMs": 1442.9611749999995,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-3",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -300,
+            1400
+          ],
+          "elapsedMs": 1365.8578429999998,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-4",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -300,
+            1400
+          ],
+          "elapsedMs": 1343.653628,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-5",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -200,
+            1400
+          ],
+          "elapsedMs": 1427.260604000001,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-6",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -200,
+            1400
+          ],
+          "elapsedMs": 1299.8260660000014,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-7",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -200,
+            1400
+          ],
+          "elapsedMs": 1371.6238150000008,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-8",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -100,
+            1400
+          ],
+          "elapsedMs": 1363.9595849999987,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        }
+      ]
+    },
+    {
+      "count": 16,
+      "simulatedCells": 16,
+      "excludedCells": 0,
+      "settings": {
+        "schemaVersion": "cortex-population/1",
+        "count": 16,
+        "layout": "grid",
+        "center": "target",
+        "spacingUm": 100,
+        "nearUm": 1,
+        "farUm": 960,
+        "levels": 3,
+        "seed": 20261018
+      },
+      "amplitudeUa": 20,
+      "elapsedMs": 21993.258715,
+      "initialization": "reused identical state",
+      "outputBytes": 18521408,
+      "outputBudgetBytes": 18540632,
+      "maxReachableDetailedArraysBytes": 36927472,
+      "compartmentsPerCell": 286,
+      "membraneCompartmentsPerCell": 211,
+      "somaEventCells": 0,
+      "somaWaveformEvidenceCells": 0,
+      "localOnlyCells": 4,
+      "maxKclResidualNa": 1.979509655150591e-12,
+      "cells": [
+        {
+          "id": "cell-1",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "elapsedMs": 1260.597173000002,
+          "localCrossings": 24,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-2",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -300,
+            1400
+          ],
+          "elapsedMs": 1362.5059680000013,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-3",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -300,
+            1400
+          ],
+          "elapsedMs": 1328.9358799999973,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-4",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -300,
+            1400
+          ],
+          "elapsedMs": 1462.443252000001,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-5",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -200,
+            1400
+          ],
+          "elapsedMs": 1320.9540779999988,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-6",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -200,
+            1400
+          ],
+          "elapsedMs": 1312.488577,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-7",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -200,
+            1400
+          ],
+          "elapsedMs": 1258.6541099999995,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-8",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -100,
+            1400
+          ],
+          "elapsedMs": 1349.7617079999982,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-9",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -100,
+            1400
+          ],
+          "elapsedMs": 1391.5135269999992,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-10",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -100,
+            1400
+          ],
+          "elapsedMs": 1408.0420279999998,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-11",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -300,
+            1500
+          ],
+          "elapsedMs": 1300.8320490000006,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-12",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -300,
+            1500
+          ],
+          "elapsedMs": 1293.1830719999962,
+          "localCrossings": 23,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-13",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -300,
+            1500
+          ],
+          "elapsedMs": 1328.8961679999993,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-14",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -200,
+            1500
+          ],
+          "elapsedMs": 1382.7417700000005,
+          "localCrossings": 1,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-15",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -200,
+            1500
+          ],
+          "elapsedMs": 1383.2167679999984,
+          "localCrossings": 9,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-16",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -100,
+            1500
+          ],
+          "elapsedMs": 1452.7574870000026,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        }
+      ]
+    },
+    {
+      "count": 64,
+      "simulatedCells": 64,
+      "excludedCells": 0,
+      "settings": {
+        "schemaVersion": "cortex-population/1",
+        "count": 64,
+        "layout": "grid",
+        "center": "target",
+        "spacingUm": 100,
+        "nearUm": 1,
+        "farUm": 960,
+        "levels": 3,
+        "seed": 20261018
+      },
+      "amplitudeUa": 20,
+      "elapsedMs": 87930.613308,
+      "initialization": "reused identical state",
+      "outputBytes": 18828992,
+      "outputBudgetBytes": 18848216,
+      "maxReachableDetailedArraysBytes": 37235056,
+      "compartmentsPerCell": 286,
+      "membraneCompartmentsPerCell": 211,
+      "somaEventCells": 0,
+      "somaWaveformEvidenceCells": 0,
+      "localOnlyCells": 9,
+      "maxKclResidualNa": 1.979509655150591e-12,
+      "cells": [
+        {
+          "id": "cell-1",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "elapsedMs": 1573.0236300000033,
+          "localCrossings": 24,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-2",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -300,
+            1400
+          ],
+          "elapsedMs": 1458.169587000004,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-3",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -300,
+            1400
+          ],
+          "elapsedMs": 1283.3186539999951,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-4",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -300,
+            1400
+          ],
+          "elapsedMs": 1339.4908370000048,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-5",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -200,
+            1400
+          ],
+          "elapsedMs": 1349.6178810000056,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-6",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -200,
+            1400
+          ],
+          "elapsedMs": 1238.2949899999949,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-7",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -200,
+            1400
+          ],
+          "elapsedMs": 1358.936238000002,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-8",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -100,
+            1400
+          ],
+          "elapsedMs": 1320.9277369999982,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-9",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -100,
+            1400
+          ],
+          "elapsedMs": 1326.4480659999972,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-10",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -100,
+            1400
+          ],
+          "elapsedMs": 1286.1544059999942,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-11",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -300,
+            1500
+          ],
+          "elapsedMs": 1306.2740449999983,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-12",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -300,
+            1500
+          ],
+          "elapsedMs": 1404.2241480000012,
+          "localCrossings": 23,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-13",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -300,
+            1500
+          ],
+          "elapsedMs": 1457.4979600000006,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-14",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -200,
+            1500
+          ],
+          "elapsedMs": 1412.5639700000029,
+          "localCrossings": 1,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-15",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -200,
+            1500
+          ],
+          "elapsedMs": 1322.3336930000005,
+          "localCrossings": 9,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-16",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -100,
+            1500
+          ],
+          "elapsedMs": 1274.2572619999992,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-17",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -100,
+            1500
+          ],
+          "elapsedMs": 1318.1542829999962,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-18",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -100,
+            1500
+          ],
+          "elapsedMs": 1364.1781460000057,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-19",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -300,
+            1600
+          ],
+          "elapsedMs": 1285.2348650000058,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-20",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -300,
+            1600
+          ],
+          "elapsedMs": 1393.0748359999998,
+          "localCrossings": 91,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-21",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -300,
+            1600
+          ],
+          "elapsedMs": 1278.8770099999965,
+          "localCrossings": 101,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-22",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -200,
+            1600
+          ],
+          "elapsedMs": 1265.6614960000006,
+          "localCrossings": 2,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-23",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -200,
+            1600
+          ],
+          "elapsedMs": 1336.4850259999948,
+          "localCrossings": 98,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-24",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -200,
+            1600
+          ],
+          "elapsedMs": 1320.355143000008,
+          "localCrossings": 103,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-25",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -100,
+            1600
+          ],
+          "elapsedMs": 1459.8241089999938,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-26",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -100,
+            1600
+          ],
+          "elapsedMs": 1450.3880939999945,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-27",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -100,
+            1600
+          ],
+          "elapsedMs": 1403.2797360000113,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-28",
+          "status": "simulated",
+          "somaUm": [
+            -300,
+            -400,
+            1300
+          ],
+          "elapsedMs": 1452.5024240000057,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-29",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -400,
+            1300
+          ],
+          "elapsedMs": 1438.261851000003,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-30",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -400,
+            1300
+          ],
+          "elapsedMs": 1337.407131999993,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-31",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -400,
+            1300
+          ],
+          "elapsedMs": 1358.0359320000134,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-32",
+          "status": "simulated",
+          "somaUm": [
+            100,
+            -400,
+            1300
+          ],
+          "elapsedMs": 1454.3448050000006,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-33",
+          "status": "simulated",
+          "somaUm": [
+            -300,
+            -300,
+            1300
+          ],
+          "elapsedMs": 1484.294716000004,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-34",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -300,
+            1300
+          ],
+          "elapsedMs": 1328.9725480000052,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-35",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -300,
+            1300
+          ],
+          "elapsedMs": 1356.0779299999995,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-36",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -300,
+            1300
+          ],
+          "elapsedMs": 1441.888163999989,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-37",
+          "status": "simulated",
+          "somaUm": [
+            100,
+            -300,
+            1300
+          ],
+          "elapsedMs": 1505.5151360000018,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-38",
+          "status": "simulated",
+          "somaUm": [
+            -300,
+            -200,
+            1300
+          ],
+          "elapsedMs": 1295.2205260000046,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-39",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -200,
+            1300
+          ],
+          "elapsedMs": 1379.1275449999957,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-40",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -200,
+            1300
+          ],
+          "elapsedMs": 1523.4468190000043,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-41",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -200,
+            1300
+          ],
+          "elapsedMs": 1396.091391000009,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-42",
+          "status": "simulated",
+          "somaUm": [
+            100,
+            -200,
+            1300
+          ],
+          "elapsedMs": 1507.485824000003,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-43",
+          "status": "simulated",
+          "somaUm": [
+            -300,
+            -100,
+            1300
+          ],
+          "elapsedMs": 1379.4196439999942,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-44",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -100,
+            1300
+          ],
+          "elapsedMs": 1415.8692999999912,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-45",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -100,
+            1300
+          ],
+          "elapsedMs": 1391.1522079999995,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-46",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -100,
+            1300
+          ],
+          "elapsedMs": 1413.282892000003,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-47",
+          "status": "simulated",
+          "somaUm": [
+            100,
+            -100,
+            1300
+          ],
+          "elapsedMs": 1321.9064290000097,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-48",
+          "status": "simulated",
+          "somaUm": [
+            -300,
+            0,
+            1300
+          ],
+          "elapsedMs": 1294.6449189999985,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-49",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            0,
+            1300
+          ],
+          "elapsedMs": 1372.7546109999967,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-50",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            0,
+            1300
+          ],
+          "elapsedMs": 1481.6465190000017,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-51",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            0,
+            1300
+          ],
+          "elapsedMs": 1250.6405300000042,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-52",
+          "status": "simulated",
+          "somaUm": [
+            100,
+            0,
+            1300
+          ],
+          "elapsedMs": 1336.5182849999983,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-53",
+          "status": "simulated",
+          "somaUm": [
+            -300,
+            -400,
+            1400
+          ],
+          "elapsedMs": 1260.5860700000048,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-54",
+          "status": "simulated",
+          "somaUm": [
+            -200,
+            -400,
+            1400
+          ],
+          "elapsedMs": 1280.4432180000003,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-55",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -400,
+            1400
+          ],
+          "elapsedMs": 1372.9217799999897,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-56",
+          "status": "simulated",
+          "somaUm": [
+            0,
+            -400,
+            1400
+          ],
+          "elapsedMs": 1315.3262560000003,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-57",
+          "status": "simulated",
+          "somaUm": [
+            100,
+            -400,
+            1400
+          ],
+          "elapsedMs": 1420.9427750000032,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-58",
+          "status": "simulated",
+          "somaUm": [
+            -300,
+            -300,
+            1400
+          ],
+          "elapsedMs": 1338.875165000005,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-59",
+          "status": "simulated",
+          "somaUm": [
+            100,
+            -300,
+            1400
+          ],
+          "elapsedMs": 1230.5514540000004,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-60",
+          "status": "simulated",
+          "somaUm": [
+            -300,
+            -200,
+            1400
+          ],
+          "elapsedMs": 1230.589055000004,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-61",
+          "status": "simulated",
+          "somaUm": [
+            100,
+            -200,
+            1400
+          ],
+          "elapsedMs": 1257.3215149999887,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-62",
+          "status": "simulated",
+          "somaUm": [
+            -300,
+            -100,
+            1400
+          ],
+          "elapsedMs": 1264.1979290000017,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-63",
+          "status": "simulated",
+          "somaUm": [
+            100,
+            -100,
+            1400
+          ],
+          "elapsedMs": 1235.8217049999948,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-64",
+          "status": "simulated",
+          "somaUm": [
+            -300,
+            0,
+            1400
+          ],
+          "elapsedMs": 1240.7681370000064,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        }
+      ]
+    },
+    {
+      "count": 17,
+      "simulatedCells": 8,
+      "excludedCells": 9,
+      "settings": {
+        "schemaVersion": "cortex-population/1",
+        "count": 17,
+        "layout": "cloud",
+        "center": "stimulus-a",
+        "spacingUm": 100,
+        "nearUm": 1,
+        "farUm": 960,
+        "levels": 3,
+        "seed": 20261018
+      },
+      "amplitudeUa": 40,
+      "elapsedMs": 11143.811436000004,
+      "initialization": "reused identical state",
+      "outputBytes": 18470144,
+      "outputBudgetBytes": 18547040,
+      "maxReachableDetailedArraysBytes": 36933880,
+      "compartmentsPerCell": 286,
+      "membraneCompartmentsPerCell": 211,
+      "somaEventCells": 1,
+      "somaWaveformEvidenceCells": 1,
+      "localOnlyCells": 3,
+      "maxKclResidualNa": 2.0099477637813834e-12,
+      "cells": [
+        {
+          "id": "cell-1",
+          "status": "simulated",
+          "somaUm": [
+            -100,
+            -200,
+            1500
+          ],
+          "elapsedMs": 1381.0122050000064,
+          "localCrossings": 135,
+          "somaEvents": 1,
+          "waveformEvidence": 1,
+          "firstSomaMs": 5.3818234934240365
+        },
+        {
+          "id": "cell-2",
+          "status": "excluded",
+          "reason": "Cell 2: r4-c4 is within 25 µm of its membrane. Change spacing, placement or contacts.",
+          "somaUm": [
+            -99.70526066217228,
+            -250.92274548876128,
+            1500.2483334164135
+          ],
+          "localCrossings": null,
+          "somaEvents": null,
+          "waveformEvidence": null,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-3",
+          "status": "excluded",
+          "reason": "Cell 3: r4-c4 is within 25 µm of its membrane. Change spacing, placement or contacts.",
+          "somaUm": [
+            -100.26941628837928,
+            -248.01957723691143,
+            1499.9269209811464
+          ],
+          "localCrossings": null,
+          "somaEvents": null,
+          "waveformEvidence": null,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-4",
+          "status": "excluded",
+          "reason": "Cell 4: r4-c4 is within 25 µm of its membrane. Change spacing, placement or contacts.",
+          "somaUm": [
+            -100.75221985411976,
+            -254.45174539706375,
+            1497.8514823224396
+          ],
+          "localCrossings": null,
+          "somaEvents": null,
+          "waveformEvidence": null,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-5",
+          "status": "excluded",
+          "reason": "Cell 5: r4-c4 is within 25 µm of its membrane. Change spacing, placement or contacts.",
+          "somaUm": [
+            -89.78125187629101,
+            -244.71015612421115,
+            1496.594895221293
+          ],
+          "localCrossings": null,
+          "somaEvents": null,
+          "waveformEvidence": null,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-6",
+          "status": "excluded",
+          "reason": "Cell 6: r4-c4 is within 25 µm of its membrane. Change spacing, placement or contacts.",
+          "somaUm": [
+            -113.85392333908871,
+            -235.57927927739632,
+            1499.665901279077
+          ],
+          "localCrossings": null,
+          "somaEvents": null,
+          "waveformEvidence": null,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-7",
+          "status": "excluded",
+          "reason": "Cell 7: r4-c4 is within 25 µm of its membrane. Change spacing, placement or contacts.",
+          "somaUm": [
+            -123.58656358710226,
+            -253.485551294272,
+            1514.6807680428028
+          ],
+          "localCrossings": null,
+          "somaEvents": null,
+          "waveformEvidence": null,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-8",
+          "status": "excluded",
+          "reason": "Cell 8: r4-c4 is within 25 µm of its membrane. Change spacing, placement or contacts.",
+          "somaUm": [
+            -98.23448831026211,
+            -287.81654841444754,
+            1512.9147835634649
+          ],
+          "localCrossings": null,
+          "somaEvents": null,
+          "waveformEvidence": null,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-9",
+          "status": "excluded",
+          "reason": "Cell 9: r4-c4 is within 25 µm of its membrane. Change spacing, placement or contacts.",
+          "somaUm": [
+            -86.34748438521193,
+            -213.80730037012955,
+            1454.1339198220521
+          ],
+          "localCrossings": null,
+          "somaEvents": null,
+          "waveformEvidence": null,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-10",
+          "status": "excluded",
+          "reason": "Cell 10: r4-c4 is within 25 µm of its membrane. Change spacing, placement or contacts.",
+          "somaUm": [
+            -184.21301023455504,
+            -250.50978951257545,
+            1488.4713824815117
+          ],
+          "localCrossings": null,
+          "somaEvents": null,
+          "waveformEvidence": null,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-11",
+          "status": "simulated",
+          "somaUm": [
+            -31.948081059285215,
+            -151.43230719289483,
+            1507.3038526251912
+          ],
+          "elapsedMs": 1395.5269859999971,
+          "localCrossings": 9,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-12",
+          "status": "simulated",
+          "somaUm": [
+            2.138872173316045,
+            -116.72136259478961,
+            1473.4584174817428
+          ],
+          "elapsedMs": 1399.5098780000117,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-13",
+          "status": "simulated",
+          "somaUm": [
+            130.5413815683864,
+            -189.6873011158635,
+            1528.5140270367265
+          ],
+          "elapsedMs": 1346.0878309999825,
+          "localCrossings": 15,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-14",
+          "status": "simulated",
+          "somaUm": [
+            -222.2532123094744,
+            65.98905345200075,
+            1471.6262413747609
+          ],
+          "elapsedMs": 1318.5120260000112,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-15",
+          "status": "simulated",
+          "somaUm": [
+            287.03410726673974,
+            14.297416477484319,
+            1603.6893218010664
+          ],
+          "elapsedMs": 1320.3831439999922,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-16",
+          "status": "simulated",
+          "somaUm": [
+            566.7851489490986,
+            -230.30677307106902,
+            1631.9459811970592
+          ],
+          "elapsedMs": 1382.3180950000242,
+          "localCrossings": 37,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        },
+        {
+          "id": "cell-17",
+          "status": "simulated",
+          "somaUm": [
+            -786.9688811465595,
+            379.3183055576727,
+            1268.4136734902859
+          ],
+          "elapsedMs": 1378.9503670000122,
+          "localCrossings": 0,
+          "somaEvents": 0,
+          "waveformEvidence": 0,
+          "firstSomaMs": null
+        }
+      ]
+    }
+  ],
+  "sourceHashes": {
+    "src/lib/cortex/population.js": "ecb2ca28262ebdbc36c467905549a93370dfc9e6431f1cb1638a15b3d5b90904",
+    "src/lib/cortex/experiment.js": "75a0c325906cc10477747784b7568a089e4fe8438d889ac7377570d9306c4eeb",
+    "src/lib/cortex/active-cable.js": "dfa8b78268f781f69c9f5ef8e3e7ca713a7c440b884e07093930b62fba21812f",
+    "scripts/benchmark-cortex-population.mjs": "2db85e4df90d1e1815b9e0303f11f61e8f450ffc558b0e8cfd4b9acf2b219a05"
+  }
+}

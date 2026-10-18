@@ -1,3 +1,38 @@
+.cx-population { border: 1px solid var(--border); border-radius: 5px; margin-top: 22px; padding: 22px; background: var(--panel); scroll-margin-top: 80px; }
+.cx-population-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.cx-population h2 { font: 400 29px Georgia, serif; margin: 3px 0 10px; }
+.cx-population-badge { border: 1px solid var(--border); border-radius: 20px; padding: 5px 12px; font-size: 11px; }
+.cx-population p { max-width: 1050px; }
+.cx-population-controls fieldset { border: 0; padding: 0; display: flex; align-items: end; gap: 12px; flex-wrap: wrap; }
+.cx-population-controls label { display: flex; flex-direction: column; gap: 5px; width: 145px; font-size: 11px; }
+.cx-population-controls button { min-height: 35px; }
+.cx-population-budget, .cx-population-limit { border-left: 3px solid var(--cx-teal); padding-left: 12px; font-size: 12px; }
+.cx-population-limit { border-color: var(--cx-amber); }
+.cx-population-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 20px 0; }
+.cx-population-summary span { border: 1px solid var(--border); padding: 14px; font-size: 11px; }
+.cx-population-summary b { display: block; font: 400 32px Georgia, serif; }
+.cx-population-plots { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.cx-population-table { max-height: 360px; overflow: auto; margin: 18px 0; }
+.cx-population-table table { width: 100%; border-collapse: collapse; font-size: 11px; font-variant-numeric: tabular-nums; }
+.cx-population-table th, .cx-population-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; white-space: nowrap; }
+.cx-population-table th { position: sticky; top: 0; background: var(--panel); }
+.cx-population-table caption { text-align: left; font-weight: 600; padding: 10px 0; }
+.cx-population-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.cx-population progress { width: 100%; }
+.cx-distance-maps { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 18px 0; max-width: 1000px; }
+.cx-distance-maps figure { margin: 0; border: 1px solid var(--border); padding: 14px; }
+.cx-distance-maps figcaption { font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+.cx-distance-maps svg { width: 100%; display: block; }
+.cx-distance-maps label { display: flex; gap: 8px; align-items: center; font-size: 11px; }
+.cx-distance-maps select { max-width: 170px; }
+.cx-population-exclusions { border: 1px solid var(--border); padding: 12px; margin: 12px 0; font-size: 12px; }
+.cx-population-exclusions summary { cursor: pointer; font-weight: 600; }
+@media (max-width: 700px) {
+  .cx-population { padding: 16px; }
+  .cx-population-summary { grid-template-columns: 1fr 1fr; }
+  .cx-population-plots { grid-template-columns: 1fr; }
+  .cx-distance-maps { grid-template-columns: 1fr; }
+}
 .cortex-lab {
   --cx-teal: #367a76;
   --cx-amber: #ad6837;

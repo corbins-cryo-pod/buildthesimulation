@@ -217,6 +217,52 @@ export function buildWorldGroup(world, options = {}) {
 }
 
 const neutralColor = new THREE.Color("#b6c4cc");
+// Reuse the exact tapered source geometries for every rigidly translated cell.
+// Instancing changes draw cost, not cable discretization or morphology scale.
+export function updatePopulationOverlay(objects, population) {
+  const cells = population?.cells?.slice(1) ?? [];
+  const key = JSON.stringify(cells.map(c => [c.offsetUm, c.unsupportedReason]));
+  if (objects.populationKey !== key) {
+    for (const mesh of objects.populationMeshes ?? []) {
+      objects.neurons.remove(mesh);
+      mesh.dispose(); // Borrowed geometry belongs to the original target mesh.
+    }
+    objects.populationMaterial?.dispose();
+    objects.populationMeshes = [];
+    objects.populationKey = key;
+    objects.populationResponses = undefined;
+    if (cells.length) {
+      objects.populationMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+      const translation = new THREE.Matrix4();
+      for (const source of objects.nodeMeshes.filter(Boolean)) {
+        source.updateMatrix();
+        const mesh = new THREE.InstancedMesh(source.geometry, objects.populationMaterial, cells.length);
+        mesh.name = 'sourced-population-morphology';
+        for (let i = 0; i < cells.length; i++) {
+          translation.makeTranslation(...mm(cells[i].offsetUm));
+          mesh.setMatrixAt(i, new THREE.Matrix4().multiplyMatrices(translation, source.matrix));
+        }
+        mesh.instanceMatrix.needsUpdate = true;
+        mesh.computeBoundingSphere();
+        objects.neurons.add(mesh);
+        objects.populationMeshes.push(mesh);
+      }
+    }
+  }
+  const responses = population?.responses ?? null;
+  if (objects.populationResponses === responses) return;
+  objects.populationResponses = responses;
+  for (const mesh of objects.populationMeshes ?? []) {
+    for (let i = 0; i < cells.length; i++) {
+      const response = responses?.[i + 1]?.response;
+      const excluded = cells[i].unsupportedReason || responses?.[i + 1]?.status === 'excluded';
+      const color = excluded ? '#b58b31' : !response ? '#79c9c1' : response.soma.thresholdEventCount > 0 ? '#f2a05e'
+        : response.membraneThresholdCrossings.compartmentCount > 0 ? '#b28bdb' : '#658dff';
+      mesh.setColorAt(i, new THREE.Color(color));
+    }
+    if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
+  }
+}
 const negativeColor = new THREE.Color("#438cff");
 const positiveColor = new THREE.Color("#ff684c");
 function signedColor(value, limit, target = new THREE.Color()) {
@@ -445,7 +491,12 @@ export async function createCortexView(host, onStatus, onScale, onPick) {
       const size = box.getSize(new THREE.Vector3());
       extent = Math.max(size.x, size.y, size.z) * 1.2;
     }
-    if (view === "implant") {
+    if (view === "population") {
+      const box = new THREE.Box3().setFromObject(objects.neurons);
+      box.getCenter(target);
+      const size = box.getSize(new THREE.Vector3());
+      extent = Math.max(size.x, size.y, size.z) * 1.25;
+    } else if (view === "implant") {
       const box = new THREE.Box3().setFromObject(objects.device.group);
       box.getCenter(target);
       const size = box.getSize(new THREE.Vector3());
@@ -556,6 +607,7 @@ export async function createCortexView(host, onStatus, onScale, onPick) {
     },
     setFrame(result, frame, selected, options = {}) {
       if (!objects || !world) return;
+      updatePopulationOverlay(objects, options.population);
       updateElectricalOverlay(objects.electrical, result, frame, options);
       for (const [i, mesh] of objects.nodeMeshes.entries()) {
         if (!mesh) continue;

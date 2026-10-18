@@ -1,10 +1,12 @@
 import { runExperiment } from './experiment.js';
 import { resultBuffers } from './buffers.js';
+import { runPopulation } from './population.js';
 self.onmessage = ({ data }) => {
   try {
-    const result = runExperiment(data.config, (status) =>
-      self.postMessage({ type: 'progress', id: data.id, ...status }),
-    );
+    const progress = (status) => self.postMessage({ type: 'progress', id: data.id, ...status });
+    const result = data.population
+      ? runPopulation(data.config, data.population, progress)
+      : runExperiment(data.config, progress);
     const buffers = resultBuffers(result);
     self.postMessage({ type: 'result', id: data.id, result }, buffers);
   } catch (error) {

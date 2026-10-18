@@ -1,5 +1,35 @@
 # Performance
 
+## Current population capacity, 2026-10-18
+
+The laboratory now opens with a seeded distance cloud of the sourced human cell.
+The measured population implementation supports up to 64 independent full-model
+instances at default numerical settings, with lower limits for finer/longer runs.
+There remains only one distinct source specimen. See [POPULATIONS.md](POPULATIONS.md)
+for source scope, near-contact exclusions, layout generation and retention policy.
+
+The isolated Node v24.19.0 / AMD EPYC 9V74 benchmark integrates 40 ms at dt=0.005 ms,
+with 211 membrane compartments plus 75 junction nodes per cell. The 20 µA grid
+cases simulate every requested cell; the 40 µA cloud separately reproduces the
+default placed/supported/excluded counts.
+
+| Layout | Placed / simulated / excluded | CPU time | Retained numeric output |
+| --- | ---: | ---: | ---: |
+| Grid, cold conditioning | 1 / 1 / 0 | 5.08 s | 18.43 MB |
+| Grid, reused conditioning | 8 / 8 / 0 | 11.20 s | 18.47 MB |
+| Grid, reused conditioning | 16 / 16 / 0 | 21.99 s | 18.52 MB |
+| Grid, reused conditioning | 64 / 64 / 0 | 87.93 s | 18.83 MB |
+| Default distance cloud, reused conditioning | 17 / 8 / 9 | 11.14 s | 18.47 MB |
+
+Reproduce with `node scripts/benchmark-cortex-population.mjs`. Exact configurations,
+per-cell responses and source hashes are in `benchmarks/population-latest.json`.
+These measurements do not establish browser responsiveness, GPU performance or
+real-time execution. The new memory reduction retains detailed histories only for
+the target and soma/response summaries for its neighbors; it does not change the
+model, timestep, numerical precision or compartment resolution. Peak process/browser
+memory is not measured. The historic single-cell measurements below retain their
+original scope; early passive-model measurements do not describe the current UI.
+
 Reproduce with `node scripts/benchmark-cortex.mjs`. It writes the small
 `benchmarks/latest.json` containing exact configs, engine version, source base,
 Node/CPU/OS, seven warmed samples per protocol and refinement/sensitivity results.
