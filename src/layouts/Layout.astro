@@ -75,10 +75,11 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
 
         <nav class="nav" aria-label="Primary">
           <a class={`pill ${pathname === "/" ? "active" : ""}`} href="/">Home</a>
+          <a class={`pill ${pathname.startsWith("/sim") || pathname.startsWith("/cortex/") ? "active" : ""}`} href="/simulations/">Simulations</a>
           <a class={`pill ${pathname.startsWith("/devices/") && !pathname.startsWith("/devices/designer") ? "active" : ""}`} href="/devices/">Devices</a>
           <a class={`pill ${pathname.startsWith("/companies/") ? "active" : ""}`} href="/companies/">Companies &amp; Labs</a>
           <a class={`pill ${pathname.startsWith("/applications/") ? "active" : ""}`} href="/applications/">Applications</a>
-          <a class={`pill ${pathname.startsWith("/sim") || pathname.startsWith("/cortex/") ? "active" : ""}`} href="/simulations/">Simulations</a>
+          <a class={`pill ${pathname.startsWith("/biology/") || pathname.startsWith("/cells/") ? "active" : ""}`} href="/biology/">Biology</a>
           <a class={`pill ${pathname.startsWith("/devices/designer/") ? "active" : ""}`} href="/devices/designer/">Designer</a>
           <button class="pill discovery-trigger" type="button" data-discovery-trigger aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K">Search</button>
           <button id="themeToggle" class="pill" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">Theme</button>
