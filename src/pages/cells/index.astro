@@ -26,7 +26,7 @@ for(const t of manifest.templates.filter(t=>t.sourceRegion==='cortex'&&!modelReg
 }
 for(const t of h01.templates)entries.push({id:`h01:${t.sourceId}`,label:`H01 component ${t.sourceId}`,kind:'Morphology only',class:'unknown',datasetLabel:'H01 · proofread EM skeletons',layer:`L${t.layer}`,cellType:'Connected neurite component',region:t.sourceRegion,source:h01.sourceUrl,scope:'Largest connected component; incomplete cell, no fitted membrane dynamics. Preview uses the retained simplified skeleton. Temporal cortex, not measured M1/S1.',asset:'/assets/finger-pathway-atlas/v4/h01/reference-neurites.json',preview:drawing(t.paths.map(p=>p.points.map(v=>v.map(x=>x*1000))))});
 ---
-<Layout pageTitle="Cell Model Atlas" description="Source-traceable human neuron models and measured morphology references.">
+<Layout pageTitle="Cell Model Atlas" subtitle="" description="Source-traceable human neuron models and measured morphology references.">
  <p class="intro">16 distinct electrical models · 9 additional Allen reconstructions · 12 H01 neurite components. Browse real source anatomy and open fitted cells in the Cortex Laboratory.</p>
  <p>Electrical models retain published axon stubs. Numerical agreement is not biological validation; extracellular spatial-threshold convergence remains unresolved. Morphology-only references cannot simulate firing here.</p>
  <nav><a href="/cortex/">Cortex Laboratory</a> · <a href="/cortex/methods/">Methods & limitations</a> · <a href="/simulations/finger-pathway-atlas/v4/">Finger Pathway Atlas</a></nav>
