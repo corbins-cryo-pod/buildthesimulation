@@ -23,6 +23,7 @@ export default function CortexFiniteLaboratory(){
     <p>One cathodic-first biphasic pulse at 5 ms: 200 µs per phase, 100 µs gap. Each full reconstruction is centered without scaling or trimming. Its membrane must fit within r ≤ 250 µm and z ≤ 250 µm and remain at least 25 µm above the contact plane.</p>
     <div class="cx-finite-actions"><button id="disk-run" disabled>Run human cell</button><button id="disk-cancel">Stop</button><button id="disk-export" disabled>Export result</button></div>
     <p id="disk-status" role="status" aria-live="polite">Loading finite-contact workspace…</p>
+    <details class="cx-evidence" open><summary>Scientific evidence for this configuration</summary><p id="disk-evidence">Loading scoped evidence…</p><a href="/cortex/validation/">Validation results and limitations</a></details>
     <div id="disk-scene" aria-label="Finite disk and human neuron in three dimensions" />
     <p>Drag to orbit; scroll to zoom; click a branch to inspect it. Neuron: blue −100 mV → orange +40 mV. Gold: whole neuron excluded. Tissue slices: blue negative / orange positive applied potential, saturating at ±10 mV. Cylinder: field coverage. Disk: conducting contact.</p>
     <div class="cx-finite-actions"><button id="disk-play" disabled>Play</button><input id="disk-frame" aria-label="Replay frame" type="range" min="0" max="0" defaultValue="0" disabled /></div>

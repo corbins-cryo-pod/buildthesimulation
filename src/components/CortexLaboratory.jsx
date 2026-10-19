@@ -1,5 +1,6 @@
 import { cellLibraryExample } from '../lib/cortex/library-examples.js';
 import CortexCellLibrary from './CortexCellLibrary.jsx';
+import CortexEvidencePanel from './CortexEvidencePanel.jsx';
 import { loadActiveModel } from '../lib/cortex/model-library.js';
 import { useEffect, useMemo, useRef, useState } from "preact/hooks";
 import { ACTIVE_ENGINE_VERSION } from "../lib/cortex/config.js";
@@ -538,6 +539,7 @@ export default function CortexLaboratory() {
   );
   return (
     <section class="cortex-lab">
+      <CortexEvidencePanel config={config} />
       <header class="cx-heading">
         <div>
           <p class="cx-eyebrow">Cortex Laboratory · electrical workbench 03</p>

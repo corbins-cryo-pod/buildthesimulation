@@ -1,0 +1,3349 @@
+{
+  "schema": "cortex-evidence/1",
+  "fieldSha256": "0773a53e423d46d10f6c46a045940bc91048881cce32f80da780d9a9bfdcd011",
+  "model": "allen-human-601927090/1",
+  "gates": {
+    "thresholdRelativeChange": 0.02,
+    "somaWaveformMaxMv": 1,
+    "allMembraneWaveformMaxMv": 2,
+    "crossingTimeMaxMs": 0.1
+  },
+  "scope": "One cell, fixed physical placement, one biphasic waveform, 0–100 µA. Scans can miss narrower intervals. Local crossings are not action potentials. No biological validation.",
+  "cases": [
+    {
+      "id": "mesh40-dt0.005-ua0",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 40,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 0,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 9.637801667849999e-11,
+      "maxMembraneErrorMv": 9.637801667849999e-11,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh40-dt0.005-ua1",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 40,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 8.986944521893747e-11,
+      "maxMembraneErrorMv": 9.201528428093297e-11,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh40-dt0.005-ua100",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 40,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 100,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 2.4301982648466947e-10,
+      "maxMembraneErrorMv": 8.85279405338224e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": 2.247091401841317e-12
+    },
+    {
+      "id": "mesh40-dt0.005-ua75.703125",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 40,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 75.703125,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 2.0385471088957274e-10,
+      "maxMembraneErrorMv": 6.756550874342793e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh40-dt0.005-ua75.78125",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 40,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 75.78125,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 2.035136503764079e-10,
+      "maxMembraneErrorMv": 6.760814130757353e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": 2.9904967391303217e-12
+    },
+    {
+      "id": "mesh40-dt0.0025-ua0",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 40,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 0,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 2.9061197892588098e-11,
+      "maxMembraneErrorMv": 3.001332515850663e-11,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh40-dt0.0025-ua1",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 40,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 2.7569058147491887e-11,
+      "maxMembraneErrorMv": 3.225864020350855e-11,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh40-dt0.0025-ua100",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 40,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 100,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.510045422037365e-10,
+      "maxMembraneErrorMv": 1.0102141345669224e-9,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": 2.5774937739697634e-12
+    },
+    {
+      "id": "mesh40-dt0.0025-ua75.3125",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 40,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 75.3125,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.2801137927453965e-10,
+      "maxMembraneErrorMv": 7.646221433788014e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh40-dt0.0025-ua75.390625",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 40,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 75.390625,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.2653345038415864e-10,
+      "maxMembraneErrorMv": 7.646789867976622e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": 7.0921046813055e-12
+    },
+    {
+      "id": "mesh20-dt0.005-ua0",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 20,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 0,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.9340973267389927e-11,
+      "maxMembraneErrorMv": 1.9340973267389927e-11,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh20-dt0.005-ua1",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 20,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.6996182239381596e-11,
+      "maxMembraneErrorMv": 2.084732386720134e-11,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh20-dt0.005-ua100",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 20,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 100,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.6724754914321238e-10,
+      "maxMembraneErrorMv": 1.0521716831135564e-9,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": 4.0749625895841746e-12
+    },
+    {
+      "id": "mesh20-dt0.005-ua62.109375",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 20,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 62.109375,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.0886935797316255e-10,
+      "maxMembraneErrorMv": 6.434461852222739e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh20-dt0.005-ua62.1875",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 20,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 62.1875,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.0976464182022028e-10,
+      "maxMembraneErrorMv": 6.435101340684923e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": 2.0881074647149944e-12
+    },
+    {
+      "id": "mesh20-dt0.0025-ua0",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 20,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 0,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 9.117684385273606e-11,
+      "maxMembraneErrorMv": 9.227107966580661e-11,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh20-dt0.0025-ua1",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 20,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 8.698464171175146e-11,
+      "maxMembraneErrorMv": 9.380585197504843e-11,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh20-dt0.0025-ua100",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 20,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 100,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 2.112727770509082e-10,
+      "maxMembraneErrorMv": 1.1613181527536653e-9,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": 4.849454171562684e-12
+    },
+    {
+      "id": "mesh20-dt0.0025-ua62.03125",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 20,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 62.03125,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.6251533452305011e-10,
+      "maxMembraneErrorMv": 7.455156492142123e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh20-dt0.0025-ua62.109375",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 20,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 62.109375,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.6231638255703729e-10,
+      "maxMembraneErrorMv": 7.459561857103836e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": 1.2159162565694714e-12
+    },
+    {
+      "id": "mesh10-dt0.005-ua0",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 10,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 0,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 7.599965101690032e-11,
+      "maxMembraneErrorMv": 7.599965101690032e-11,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh10-dt0.005-ua1",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 10,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 6.643574579356937e-11,
+      "maxMembraneErrorMv": 7.196376827778295e-11,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh10-dt0.005-ua100",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 10,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 100,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 2.2326673843053868e-10,
+      "maxMembraneErrorMv": 1.0341807410441106e-9,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": 3.3173463975799677e-12
+    },
+    {
+      "id": "mesh10-dt0.005-ua62.03125",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 10,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 62.03125,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.6196111118915724e-10,
+      "maxMembraneErrorMv": 6.382663286785828e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh10-dt0.005-ua62.109375",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 10,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 62.109375,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.6260059965134133e-10,
+      "maxMembraneErrorMv": 6.392184559445013e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": 4.079403481682675e-12
+    },
+    {
+      "id": "mesh10-dt0.0025-ua0",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 10,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 0,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 3.47597506333841e-11,
+      "maxMembraneErrorMv": 3.595346242946107e-11,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh10-dt0.0025-ua1",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 10,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 1,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.411137873219559e-11,
+      "maxMembraneErrorMv": 2.2893686946190428e-11,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh10-dt0.0025-ua100",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 10,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 100,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.4712497886648634e-10,
+      "maxMembraneErrorMv": 1.1247216491483414e-9,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": 3.566036355096003e-12
+    },
+    {
+      "id": "mesh10-dt0.0025-ua61.953125",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 10,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 61.953125,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 9.335110462416196e-11,
+      "maxMembraneErrorMv": 6.957421305742173e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh10-dt0.0025-ua62.03125",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 10,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 62.03125,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 9.389111710333964e-11,
+      "maxMembraneErrorMv": 6.96211088779819e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": 1.6342482922482304e-12
+    },
+    {
+      "id": "mesh40-dt0.005-ua70",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 40,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 70,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.9448975763225462e-10,
+      "maxMembraneErrorMv": 6.256755114009138e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh40-dt0.0025-ua70",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 40,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 70,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.1334577720845118e-10,
+      "maxMembraneErrorMv": 7.120988243514148e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": null
+    },
+    {
+      "id": "mesh20-dt0.005-ua70",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 20,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 70,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.2227019396959804e-10,
+      "maxMembraneErrorMv": 7.269562729561585e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": 1.5827339439056232e-12
+    },
+    {
+      "id": "mesh20-dt0.0025-ua70",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 20,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 70,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.7283241504628677e-10,
+      "maxMembraneErrorMv": 8.316547450704093e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": 9.542588941258145e-12
+    },
+    {
+      "id": "mesh10-dt0.005-ua70",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 10,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 70,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.005,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.7394086171407253e-10,
+      "maxMembraneErrorMv": 7.147349379010848e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": 3.538502824085299e-12
+    },
+    {
+      "id": "mesh10-dt0.0025-ua70",
+      "config": {
+        "schemaVersion": "cortex-experiment/2",
+        "anatomy": {
+          "widthUm": 6000,
+          "thicknessUm": 4000
+        },
+        "implant": {
+          "deviceId": "BTSD-0001",
+          "revision": 1,
+          "translationUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "neuron": {
+          "somaUm": [
+            18.707413452165454,
+            -10.284727173308319,
+            1153.9713250578789
+          ],
+          "segmentLengthUm": 10,
+          "modelId": "allen-human-601927090/1",
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ]
+        },
+        "tissue": {
+          "conductivitySPerM": 0.3
+        },
+        "membrane": {
+          "sourceModelId": "allen-human-601927090/1",
+          "temperatureC": 34
+        },
+        "recording": {
+          "contactIds": [
+            "r4-c4",
+            "r4-c5"
+          ],
+          "reference": "infinity",
+          "sourceModel": "line",
+          "exclusionUm": 25
+        },
+        "protocol": {
+          "mode": "extracellular-stimulation",
+          "startMs": 5,
+          "durationMs": 5,
+          "synapseNs": 1,
+          "synapseReversalMv": 0,
+          "injectionNa": 1.2,
+          "bathReturnUm": [
+            2000,
+            2000,
+            -500
+          ],
+          "amplitudeUa": 70,
+          "phaseUs": 200,
+          "gapUs": 100,
+          "sourceContactIds": [
+            "r3-c4",
+            "r3-c5"
+          ]
+        },
+        "solver": {
+          "dtMs": 0.0025,
+          "durationMs": 20,
+          "sampleMs": 0.05,
+          "settleMs": 100
+        }
+      },
+      "status": "pass",
+      "maxSomaErrorMv": 1.0398082395113306e-10,
+      "maxMembraneErrorMv": 7.854410455365723e-10,
+      "crossingClassificationMatch": true,
+      "maxSharedCrossingTimeErrorMs": 4.197531211502792e-12
+    }
+  ],
+  "refinement": [
+    {
+      "a": "mesh40-dt0.005",
+      "b": "mesh40-dt0.0025",
+      "thresholds": [
+        {
+          "kind": "local",
+          "transitions": [
+            {
+              "relativeChange": 0.005184033177812338,
+              "status": "pass"
+            }
+          ]
+        },
+        {
+          "kind": "soma",
+          "status": "not-assessed",
+          "reason": "No transition bracket in the bounded scan"
+        },
+        {
+          "kind": "waveform",
+          "status": "not-assessed",
+          "reason": "No transition bracket in the bounded scan"
+        }
+      ],
+      "maxSomaWaveformDifferenceAtSeventyUaMv": 0.038974221395207564,
+      "localClassificationAtSeventyUaMatches": true
+    },
+    {
+      "a": "mesh40-dt0.005",
+      "b": "mesh20-dt0.005",
+      "thresholds": [
+        {
+          "kind": "local",
+          "transitions": [
+            {
+              "relativeChange": 0.21873035826524198,
+              "status": "fail"
+            }
+          ]
+        },
+        {
+          "kind": "soma",
+          "status": "not-assessed",
+          "reason": "No transition bracket in the bounded scan"
+        },
+        {
+          "kind": "waveform",
+          "status": "not-assessed",
+          "reason": "No transition bracket in the bounded scan"
+        }
+      ],
+      "maxSomaWaveformDifferenceAtSeventyUaMv": 0.05982534687647956,
+      "localClassificationAtSeventyUaMatches": false
+    },
+    {
+      "a": "mesh40-dt0.0025",
+      "b": "mesh20-dt0.0025",
+      "thresholds": [
+        {
+          "kind": "local",
+          "transitions": [
+            {
+              "relativeChange": 0.21397105097545627,
+              "status": "fail"
+            }
+          ]
+        },
+        {
+          "kind": "soma",
+          "status": "not-assessed",
+          "reason": "No transition bracket in the bounded scan"
+        },
+        {
+          "kind": "waveform",
+          "status": "not-assessed",
+          "reason": "No transition bracket in the bounded scan"
+        }
+      ],
+      "maxSomaWaveformDifferenceAtSeventyUaMv": 0.05987610737747673,
+      "localClassificationAtSeventyUaMatches": false
+    },
+    {
+      "a": "mesh20-dt0.005",
+      "b": "mesh20-dt0.0025",
+      "thresholds": [
+        {
+          "kind": "local",
+          "transitions": [
+            {
+              "relativeChange": 0.0012586532410320957,
+              "status": "pass"
+            }
+          ]
+        },
+        {
+          "kind": "soma",
+          "status": "not-assessed",
+          "reason": "No transition bracket in the bounded scan"
+        },
+        {
+          "kind": "waveform",
+          "status": "not-assessed",
+          "reason": "No transition bracket in the bounded scan"
+        }
+      ],
+      "maxSomaWaveformDifferenceAtSeventyUaMv": 0.042018648247989177,
+      "localClassificationAtSeventyUaMatches": true
+    },
+    {
+      "a": "mesh20-dt0.005",
+      "b": "mesh10-dt0.005",
+      "thresholds": [
+        {
+          "kind": "local",
+          "transitions": [
+            {
+              "relativeChange": 0.0012586532410320957,
+              "status": "pass"
+            }
+          ]
+        },
+        {
+          "kind": "soma",
+          "status": "not-assessed",
+          "reason": "No transition bracket in the bounded scan"
+        },
+        {
+          "kind": "waveform",
+          "status": "not-assessed",
+          "reason": "No transition bracket in the bounded scan"
+        }
+      ],
+      "maxSomaWaveformDifferenceAtSeventyUaMv": 0.08990145552195372,
+      "localClassificationAtSeventyUaMatches": true
+    },
+    {
+      "a": "mesh20-dt0.0025",
+      "b": "mesh10-dt0.0025",
+      "thresholds": [
+        {
+          "kind": "local",
+          "transitions": [
+            {
+              "relativeChange": 0.001260239445494644,
+              "status": "pass"
+            }
+          ]
+        },
+        {
+          "kind": "soma",
+          "status": "not-assessed",
+          "reason": "No transition bracket in the bounded scan"
+        },
+        {
+          "kind": "waveform",
+          "status": "not-assessed",
+          "reason": "No transition bracket in the bounded scan"
+        }
+      ],
+      "maxSomaWaveformDifferenceAtSeventyUaMv": 0.09056018738029081,
+      "localClassificationAtSeventyUaMatches": true
+    },
+    {
+      "a": "mesh10-dt0.005",
+      "b": "mesh10-dt0.0025",
+      "thresholds": [
+        {
+          "kind": "local",
+          "transitions": [
+            {
+              "relativeChange": 0.001260239445494644,
+              "status": "pass"
+            }
+          ]
+        },
+        {
+          "kind": "soma",
+          "status": "not-assessed",
+          "reason": "No transition bracket in the bounded scan"
+        },
+        {
+          "kind": "waveform",
+          "status": "not-assessed",
+          "reason": "No transition bracket in the bounded scan"
+        }
+      ],
+      "maxSomaWaveformDifferenceAtSeventyUaMv": 0.04267738010632627,
+      "localClassificationAtSeventyUaMatches": true
+    }
+  ],
+  "gallery": {
+    "status": "pass",
+    "shapes": {
+      "disk": {
+        "status": "pass",
+        "bemDifference": {
+          "potential": 0.010276466498502307,
+          "field": 0.015157137151472853
+        },
+        "meshChange": {
+          "potential": 0.005066577415787327,
+          "field": 0.013341623452726067
+        },
+        "domainChange": {
+          "potential": 0.020481935195062785,
+          "field": 3.609740446210174e-8
+        }
+      },
+      "square": {
+        "status": "pass",
+        "bemDifference": {
+          "potential": 0.016314131481079148,
+          "field": 0.04845725789728568
+        },
+        "meshChange": {
+          "potential": 0.01612550819900804,
+          "field": 0.03757701000192097
+        },
+        "domainChange": {
+          "potential": 0.020497098255610944,
+          "field": 3.622993198902644e-8
+        }
+      },
+      "rectangle": {
+        "status": "pass",
+        "bemDifference": {
+          "potential": 0.012780898805048662,
+          "field": 0.034793669750980125
+        },
+        "meshChange": {
+          "potential": 0.012703557640069576,
+          "field": 0.04861825446420482
+        },
+        "domainChange": {
+          "potential": 0.020004895494372368,
+          "field": 4.012459628895859e-8
+        }
+      },
+      "ring": {
+        "status": "pass",
+        "bemDifference": {
+          "potential": 0.010167771753794512,
+          "field": 0.025093625550444403
+        },
+        "meshChange": {
+          "potential": 0.004149346662566447,
+          "field": 0.017875686028221382
+        },
+        "domainChange": {
+          "potential": 0.020579795690976944,
+          "field": 3.789521000612131e-8
+        }
+      }
+    }
+  },
+  "sourceHashes": {
+    "src/lib/cortex/finite-experiment.js": "f46674cfdfbcf98f8148eb6fc8078333198da93093b86591d60030d95ffbe63a",
+    "src/lib/cortex/finite-contact.js": "dc234e9eff03fffd89c3548925a87d9264968b07e4e866efa44a2a56aa43649d",
+    "src/lib/cortex/active-cable.js": "2e40c7dcdc3268490a3f5c552bf2f14a421e4048deff16090aa8298e03397537",
+    "src/lib/cortex/active-channels.js": "be4c862dddd31f0492c27c7f9349d40550b0402b562d561d3fe22d799237afbb",
+    "src/lib/cortex/extra-channels.js": "6852bf67814c58568e4c24c2521af118a549a9f8304c1e43434054f1715bc019",
+    "src/lib/cortex/active-morphology.js": "2f539f33208d571f3fbbcc2c47df45fbd83cd81d42bb7391e45bf3b7f622376a",
+    "src/lib/cortex/config.js": "24d68988fccf5253ba54269da0b2bd0af578b17419720b28c8b2066505cb9828",
+    "src/lib/cortex/model-library.js": "9074771687e11e114b701189bdf51fdc346f1e5e8a0bb14c3a127e658aa14d0a",
+    "scripts/cortex-finite-rigor.mjs": "717f67be25bba56c357ceaa7bfc1b7e6c3b4533e89b6d402adbd3227ee6e45b5",
+    "scripts/cortex-finite-focus.mjs": "1f0baf0870a8c849e59ef349e02e01c96d9d29c8a5ad7b06bb3313a3428e567d",
+    "scripts/cortex-finite-native.py": "2de377a8683d2cc55bc1a03bc8ba356a7bae5d316612843c1d0ca30f26544f74",
+    "scripts/cortex-gallery-independent.py": "5a2058f8ca43e211070c93668fd862c728b1063c492722fb30601249a8d0aa48"
+  },
+  "reportHashes": {
+    "docs/cortex/finite-neural-rigor.json": "2404f0bda3253a2a42df2193ad7dcef5ad701e6db3acb5dab3139b98b77e8be3",
+    "docs/cortex/finite-native-comparison.json": "7888cb1cbd844d7ba83d678519a6acf684d385af20a85713c9a64302fc5625d4",
+    "docs/cortex/gallery-independent-comparison.json": "559bd9826ed3a29122748a7539c1799d6ca05ae22d12d6a344a9914f5c5f10fc"
+  }
+}

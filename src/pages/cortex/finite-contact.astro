@@ -22,6 +22,7 @@ const sha256 = '74f9905905c7281c19e978ba5a0cea76784e327edc4b4f8b2daae79ff41407e0
       <p>One cathodic-first biphasic pulse at 5 ms: 200 µs per phase, 100 µs gap. Each reconstruction is centered without scaling or trimming. Its entire membrane must fit within r ≤ 250 µm and z ≤ 250 µm and remain at least 25 µm above the insulating plane. This conservative plane guard also preserves the contact-distance guardrail.</p>
       <div class="actions"><button id="disk-run" disabled>Run human cell</button><button id="disk-cancel">Stop</button><button id="disk-export" disabled>Export result</button></div>
       <p id="disk-status" role="status" aria-live="polite">Loading benchmark…</p>
+      <details open><summary>Scientific evidence for this configuration</summary><p id="disk-evidence" style="white-space:pre-line">Loading scoped evidence…</p><a href="/cortex/validation/">Validation results and limitations</a></details>
       <div id="disk-scene" aria-label="Three-dimensional disk and human neuron"></div>
       <p>Drag to orbit; scroll to zoom; click a branch to inspect it. Neuron: blue −100 mV → orange +40 mV. Gold: whole neuron excluded. Tissue slices: blue negative / orange positive applied potential, saturating at ±10 mV. Cylinder outlines the validated region; the plane is insulating and the small disk conducts.</p>
       <div class="actions"><button id="disk-play" disabled>Play</button><input id="disk-frame" aria-label="Replay frame" type="range" min="0" max="0" value="0" disabled /></div>

@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import neural from '../../../docs/cortex/finite-neural-rigor.json';
+import native from '../../../docs/cortex/finite-native-comparison.json';
+import fields from '../../../docs/cortex/gallery-independent-comparison.json';
+const pct=(v:number)=>(100*v).toFixed(2)+'%';
+const num=(v:number)=>v.toPrecision(4);
+const passed=native.cases.filter(c=>c.status==='pass').length;
+const repo='https://github.com/corbins-cryo-pod/buildthesimulation/blob/main/';
+---
+<Layout pageTitle="Scientific validation — Cortex Laboratory" description="Independent finite-field neuron comparisons, spatial and timestep refinement, and independent conductor checks with retained failures.">
+<article>
+<a href="/cortex/?field=finite-disk">← Cortex Laboratory · finite disk</a>
+<h1>Evidence, with its limits.</h1>
+<p>Numerical verification checks specified equations and implementations. It does not establish that these equations predict a particular person’s neural response. No independent biological validation is claimed here.</p>
+<h2>Finite-contact neuronal dynamics</h2>
+<p>{passed} of {native.cases.length} matched cases passed the declared comparison gates against NEURON {native.runtime.neuron}, using original channel mechanisms and independently reconstructed SWC geometry. Gates: maximum soma difference ≤ 1 mV, every physical membrane ≤ 2 mV, identical local-crossing masks and somatic event counts, and shared local-crossing times within 0.1 ms.</p>
+<p>The comparison uses the same pinned disk field export, independently sampled in Python. It checks neuronal dynamics and coupling, not an independent solution of that field. The morphology adapter and source-model conventions are shared. Each case matches cell identity, placement, initialization, waveform, timestep and compartment resolution.</p>
+<details><summary>Every matched case, including failures</summary><div class="table-wrap"><table><thead><tr><th>Mesh µm</th><th>dt ms</th><th>Current µA</th><th>Max soma / membrane error mV</th><th>Classification</th><th>Gate</th></tr></thead><tbody>{native.cases.map(c=><tr><td>{c.config.neuron.segmentLengthUm}</td><td>{c.config.solver.dtMs}</td><td>{c.config.protocol.amplitudeUa}</td><td>{num(c.maxSomaErrorMv)} / {num(c.maxMembraneErrorMv)}</td><td>{c.crossingClassificationMatch?'Match':'Mismatch'}</td><td>{c.status}</td></tr>)}</tbody></table></div></details>
+<h2>Firing-boundary refinement</h2>
+<p>The bounded scan tested 0, 1 and 5–100 µA in 5 µA increments, then refined observed classification transitions to brackets no wider than 0.1 µA. Narrower response intervals can be missed. An upward −25 mV crossing is not proof of a regenerative action potential.</p>
+<div class="table-wrap"><table><thead><tr><th>Mesh µm</th><th>dt ms</th><th>Local-onset bracket µA</th><th>Somatic onset</th></tr></thead><tbody>{neural.cases.map(c=><tr><td>{c.meshUm}</td><td>{c.dtMs}</td><td>{c.boundaries.filter(b=>b.kind==='local').map(b=>`${b.lowerUa.toFixed(3)}–${b.upperUa.toFixed(3)}`).join(', ')||'Not bracketed'}</td><td>{c.boundaries.some(b=>b.kind==='soma')?'See report':'Not bracketed in scan'}</td></tr>)}</tbody></table></div>
+<p><strong>The coarse spatial comparison failed the 2% gate.</strong> The final 20→10 µm local-onset comparison met that gate for this placement and waveform. This does not resolve historical failures or establish general convergence: the number and location of crossing compartments still change with the mesh. No somatic firing threshold was established.</p>
+<p>A follow-up at 70 µA compares a common stimulus across resolutions. It was selected after the initial scan to investigate classification sensitivity and is labeled exploratory in the report. Propagation and selective recruitment remain unestablished.</p>
+<h2>Independent gallery-field check</h2>
+<p>A separate three-dimensional finite-volume Laplace solver checks the gallery’s boundary-element calculations. It solves nominal contact shapes on a different mesh, applies an insulating plane outside the contact, measures total contact current, and normalizes the result. Its finite grounded box approximates the gallery’s return at infinity.</p>
+<p>The initial 16→32 box-size refinement failed the potential convergence gate. Those failures are retained. The extended study moves the boundary to 64 and 128 equivalent disk radii. Gates remain 5% potential and 8% field-vector error/change. The study checks 24 locations at heights 0.5, 1 and 2 equivalent radii; it does not validate every gallery pixel or the closest permitted height of 0.2 radii.</p>
+<div class="table-wrap"><table><thead><tr><th>Shape</th><th>Potential difference</th><th>Field-vector difference</th><th>Final domain change, potential</th><th>All gates</th></tr></thead><tbody>{Object.entries(fields.shapes).map(([name,r])=><tr><td>{name}</td><td>{pct(r.bemDifference.potential)}</td><td>{pct(r.bemDifference.field)}</td><td>{pct(r.domainChange.potential)}</td><td>{r.status}</td></tr>)}</tbody></table></div>
+<p>Contact boundaries have different stair-step approximations in the two solvers. Exposed-area errors, mesh changes, linear residuals, and the independent analytical disk comparison are reported separately. A small solver residual alone is not evidence of physical accuracy.</p>
+<h2>What the laboratory now reports</h2>
+<p>The finite mode matches the current cell, placement, waveform and solver settings to tested cases. Changing a setting outside that exact scope produces “Not assessed,” rather than inheriting a passing badge. Excluded placements cannot receive a matched-case pass. Exports retain the evidence assessment separately from simulation results.</p>
+<p>Experimental validation, propagated action potentials, population selectivity, realistic insulating shanks and interacting finite contacts remain outstanding. Browser visual verification is pending.</p>
+<ul>
+<li><a href={repo+'docs/cortex/FINITE_RIGOR.md'}>Methods, reproducibility and harness correction</a></li>
+<li><a href={repo+'docs/cortex/finite-neural-rigor.json'}>Complete scan and refinement report</a></li>
+<li><a href={repo+'docs/cortex/finite-native-comparison.json'}>NEURON comparisons and soma traces</a></li>
+<li><a href={repo+'docs/cortex/gallery-independent-comparison.json'}>Independent field results, including initial failures</a></li>
+</ul>
+</article>
+</Layout>
+<style>article{max-width:1050px;margin:auto;padding:30px 20px 60px}p{line-height:1.6}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}th,td{text-align:left;border-bottom:1px solid #aaa;padding:9px}details{padding:12px;border:1px solid #aaa}summary{cursor:pointer}h1{font-size:2.8rem}</style>

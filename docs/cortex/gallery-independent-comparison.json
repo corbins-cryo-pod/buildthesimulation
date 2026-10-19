@@ -1,0 +1,586 @@
+{
+  "schema": "cortex-gallery-independent/1",
+  "gates": {
+    "potential": 0.05,
+    "field": 0.08
+  },
+  "samplePoints": [
+    [
+      0.0,
+      0.0,
+      0.5
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ],
+    [
+      0.0,
+      0.0,
+      2.0
+    ],
+    [
+      0.0,
+      0.5,
+      0.5
+    ],
+    [
+      0.0,
+      0.5,
+      1.0
+    ],
+    [
+      0.0,
+      0.5,
+      2.0
+    ],
+    [
+      0.5,
+      0.0,
+      0.5
+    ],
+    [
+      0.5,
+      0.0,
+      1.0
+    ],
+    [
+      0.5,
+      0.0,
+      2.0
+    ],
+    [
+      0.5,
+      0.5,
+      0.5
+    ],
+    [
+      0.5,
+      0.5,
+      1.0
+    ],
+    [
+      0.5,
+      0.5,
+      2.0
+    ],
+    [
+      1.0,
+      0.0,
+      0.5
+    ],
+    [
+      1.0,
+      0.0,
+      1.0
+    ],
+    [
+      1.0,
+      0.0,
+      2.0
+    ],
+    [
+      1.0,
+      0.5,
+      0.5
+    ],
+    [
+      1.0,
+      0.5,
+      1.0
+    ],
+    [
+      1.0,
+      0.5,
+      2.0
+    ],
+    [
+      2.0,
+      0.0,
+      0.5
+    ],
+    [
+      2.0,
+      0.0,
+      1.0
+    ],
+    [
+      2.0,
+      0.0,
+      2.0
+    ],
+    [
+      2.0,
+      0.5,
+      0.5
+    ],
+    [
+      2.0,
+      0.5,
+      1.0
+    ],
+    [
+      2.0,
+      0.5,
+      2.0
+    ]
+  ],
+  "runtime": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pyamg": "5.3.0"
+  },
+  "shapes": {
+    "disk": {
+      "solves": [
+        {
+          "spacing": 0.125,
+          "extent": 16,
+          "cells": 97556,
+          "contactArea": 3.25,
+          "areaRelativeError": 0.03450713009731965,
+          "linearResidual": 6.771979227174045e-11,
+          "unitVoltageCurrent": 4.041818591923379
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 16,
+          "cells": 442368,
+          "contactArea": 3.171875,
+          "areaRelativeError": 0.009639170239211126,
+          "linearResidual": 8.669512417262627e-11,
+          "unitVoltageCurrent": 4.074773760384002
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 32,
+          "cells": 500000,
+          "contactArea": 3.171875,
+          "areaRelativeError": 0.009639170239211126,
+          "linearResidual": 9.17829135989178e-11,
+          "unitVoltageCurrent": 4.00250934523773
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 64,
+          "cells": 595508,
+          "contactArea": 3.171875,
+          "areaRelativeError": 0.009639170239211126,
+          "linearResidual": 3.518206100447824e-11,
+          "unitVoltageCurrent": 3.9673544651864514,
+          "preconditioner": "Ruge-Stuben AMG"
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 128,
+          "cells": 702464,
+          "contactArea": 3.171875,
+          "areaRelativeError": 0.009639170239211126,
+          "linearResidual": 9.20550048784571e-11,
+          "unitVoltageCurrent": 3.949932572515272,
+          "preconditioner": "Ruge-Stuben AMG"
+        }
+      ],
+      "meshChange": {
+        "potential": 0.005066577415787327,
+        "field": 0.013341623452726067
+      },
+      "domainChange": {
+        "potential": 0.020481935195062785,
+        "field": 3.609740446210174e-08
+      },
+      "bemDifference": {
+        "potential": 0.010276466498502307,
+        "field": 0.015157137151472853
+      },
+      "status": "pass",
+      "analyticalDiskDifference": {
+        "potential": 0.010159032752385628,
+        "field": 0.02294312531190556
+      }
+    },
+    "square": {
+      "solves": [
+        {
+          "spacing": 0.125,
+          "extent": 16,
+          "cells": 97556,
+          "contactArea": 3.0625,
+          "areaRelativeError": 0.025175973562141074,
+          "linearResidual": 6.852184681600463e-11,
+          "unitVoltageCurrent": 3.965517681401667
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 16,
+          "cells": 442368,
+          "contactArea": 3.0625,
+          "areaRelativeError": 0.025175973562141074,
+          "linearResidual": 8.783374761944525e-11,
+          "unitVoltageCurrent": 4.0673864614275
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 32,
+          "cells": 500000,
+          "contactArea": 3.0625,
+          "areaRelativeError": 0.025175973562141074,
+          "linearResidual": 9.301382801448151e-11,
+          "unitVoltageCurrent": 3.9953815903329777
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 64,
+          "cells": 595508,
+          "contactArea": 3.0625,
+          "areaRelativeError": 0.025175973562141074,
+          "linearResidual": 3.4996729264996454e-11,
+          "unitVoltageCurrent": 3.9603512623294237,
+          "preconditioner": "Ruge-Stuben AMG"
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 128,
+          "cells": 702464,
+          "contactArea": 3.0625,
+          "areaRelativeError": 0.025175973562141074,
+          "linearResidual": 2.564602581091594e-11,
+          "unitVoltageCurrent": 3.9429906873767284,
+          "preconditioner": "Ruge-Stuben AMG"
+        }
+      ],
+      "meshChange": {
+        "potential": 0.01612550819900804,
+        "field": 0.03757701000192097
+      },
+      "domainChange": {
+        "potential": 0.020497098255610944,
+        "field": 3.622993198902644e-08
+      },
+      "bemDifference": {
+        "potential": 0.016314131481079148,
+        "field": 0.04845725789728568
+      },
+      "status": "pass"
+    },
+    "rectangle": {
+      "solves": [
+        {
+          "spacing": 0.125,
+          "extent": 16,
+          "cells": 97556,
+          "contactArea": 3.5,
+          "areaRelativeError": 0.1140846016432675,
+          "linearResidual": 7.413135221055917e-11,
+          "unitVoltageCurrent": 4.623404896484919
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 16,
+          "cells": 442368,
+          "contactArea": 3.0625,
+          "areaRelativeError": 0.025175973562141074,
+          "linearResidual": 9.629175842435887e-11,
+          "unitVoltageCurrent": 4.4963972636161
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 32,
+          "cells": 500000,
+          "contactArea": 3.0625,
+          "areaRelativeError": 0.025175973562141074,
+          "linearResidual": 9.182298610385329e-11,
+          "unitVoltageCurrent": 4.408561364046889
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 64,
+          "cells": 595508,
+          "contactArea": 3.0625,
+          "areaRelativeError": 0.025175973562141074,
+          "linearResidual": 4.228020134291693e-11,
+          "unitVoltageCurrent": 4.365949626291929,
+          "preconditioner": "Ruge-Stuben AMG"
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 128,
+          "cells": 702464,
+          "contactArea": 3.0625,
+          "areaRelativeError": 0.025175973562141074,
+          "linearResidual": 3.4105170712490925e-11,
+          "unitVoltageCurrent": 4.344860465917922,
+          "preconditioner": "Ruge-Stuben AMG"
+        }
+      ],
+      "meshChange": {
+        "potential": 0.012703557640069576,
+        "field": 0.04861825446420482
+      },
+      "domainChange": {
+        "potential": 0.020004895494372368,
+        "field": 4.012459628895859e-08
+      },
+      "bemDifference": {
+        "potential": 0.012780898805048662,
+        "field": 0.034793669750980125
+      },
+      "status": "pass"
+    },
+    "ring": {
+      "solves": [
+        {
+          "spacing": 0.125,
+          "extent": 16,
+          "cells": 97556,
+          "contactArea": 3.125,
+          "areaRelativeError": 0.005281605675654166,
+          "linearResidual": 7.630977713132566e-11,
+          "unitVoltageCurrent": 4.507924757790447
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 16,
+          "cells": 442368,
+          "contactArea": 3.09375,
+          "areaRelativeError": 0.01522878961889762,
+          "linearResidual": 9.77354543964377e-11,
+          "unitVoltageCurrent": 4.580140052592141
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 32,
+          "cells": 500000,
+          "contactArea": 3.09375,
+          "areaRelativeError": 0.01522878961889762,
+          "linearResidual": 9.314365088979312e-11,
+          "unitVoltageCurrent": 4.489039216245317
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 64,
+          "cells": 595508,
+          "contactArea": 3.09375,
+          "areaRelativeError": 0.01522878961889762,
+          "linearResidual": 8.923663531801782e-11,
+          "unitVoltageCurrent": 4.444865455029635,
+          "preconditioner": "Ruge-Stuben AMG"
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 128,
+          "cells": 702464,
+          "contactArea": 3.09375,
+          "areaRelativeError": 0.01522878961889762,
+          "linearResidual": 3.819327997108575e-11,
+          "unitVoltageCurrent": 4.423008931259124,
+          "preconditioner": "Ruge-Stuben AMG"
+        }
+      ],
+      "meshChange": {
+        "potential": 0.004149346662566447,
+        "field": 0.017875686028221382
+      },
+      "domainChange": {
+        "potential": 0.020579795690976944,
+        "field": 3.789521000612131e-08
+      },
+      "bemDifference": {
+        "potential": 0.010167771753794512,
+        "field": 0.025093625550444403
+      },
+      "status": "pass"
+    }
+  },
+  "scope": "Independent finite-volume discretization of nominal shapes. Finite grounded box approximates the gallery infinite return. Different boundary staircases and area errors are reported; results are not a global error bound.",
+  "status": "pass",
+  "sourceHashes": {
+    "scripts/cortex-gallery-independent.py": "5a2058f8ca43e211070c93668fd862c728b1063c492722fb30601249a8d0aa48",
+    "public/models/cortex/field-gallery.json": "415f1948734c231948f49fe00f4a0b2b454ac1b54978cbdb75419370aa5514da"
+  },
+  "initialStudy": {
+    "disk": {
+      "solves": [
+        {
+          "spacing": 0.125,
+          "extent": 16,
+          "cells": 97556,
+          "contactArea": 3.25,
+          "areaRelativeError": 0.03450713009731965,
+          "linearResidual": 6.771979227174045e-11,
+          "unitVoltageCurrent": 4.041818591923379
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 16,
+          "cells": 442368,
+          "contactArea": 3.171875,
+          "areaRelativeError": 0.009639170239211126,
+          "linearResidual": 8.669512417262627e-11,
+          "unitVoltageCurrent": 4.074773760384002
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 32,
+          "cells": 500000,
+          "contactArea": 3.171875,
+          "areaRelativeError": 0.009639170239211126,
+          "linearResidual": 9.17829135989178e-11,
+          "unitVoltageCurrent": 4.00250934523773
+        }
+      ],
+      "meshChange": {
+        "potential": 0.005066577415787327,
+        "field": 0.013341623452726067
+      },
+      "domainChange": {
+        "potential": 0.08694969423861586,
+        "field": 3.577493830367414e-05
+      },
+      "bemDifference": {
+        "potential": 0.07091523052634478,
+        "field": 0.015157128657265252
+      },
+      "status": "fail",
+      "analyticalDiskDifference": {
+        "potential": 0.07080499175637915,
+        "field": 0.022943116251027906
+      }
+    },
+    "square": {
+      "solves": [
+        {
+          "spacing": 0.125,
+          "extent": 16,
+          "cells": 97556,
+          "contactArea": 3.0625,
+          "areaRelativeError": 0.025175973562141074,
+          "linearResidual": 6.852184681600463e-11,
+          "unitVoltageCurrent": 3.965517681401667
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 16,
+          "cells": 442368,
+          "contactArea": 3.0625,
+          "areaRelativeError": 0.025175973562141074,
+          "linearResidual": 8.783374761944525e-11,
+          "unitVoltageCurrent": 4.0673864614275
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 32,
+          "cells": 500000,
+          "contactArea": 3.0625,
+          "areaRelativeError": 0.025175973562141074,
+          "linearResidual": 9.301382801448151e-11,
+          "unitVoltageCurrent": 3.9953815903329777
+        }
+      ],
+      "meshChange": {
+        "potential": 0.01612550819900804,
+        "field": 0.03757701000192097
+      },
+      "domainChange": {
+        "potential": 0.08701817017981883,
+        "field": 3.5987614744833454e-05
+      },
+      "bemDifference": {
+        "potential": 0.07045723564076402,
+        "field": 0.048457248866994464
+      },
+      "status": "fail"
+    },
+    "rectangle": {
+      "solves": [
+        {
+          "spacing": 0.125,
+          "extent": 16,
+          "cells": 97556,
+          "contactArea": 3.5,
+          "areaRelativeError": 0.1140846016432675,
+          "linearResidual": 7.413135221055917e-11,
+          "unitVoltageCurrent": 4.623404896484919
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 16,
+          "cells": 442368,
+          "contactArea": 3.0625,
+          "areaRelativeError": 0.025175973562141074,
+          "linearResidual": 9.629175842435887e-11,
+          "unitVoltageCurrent": 4.4963972636161
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 32,
+          "cells": 500000,
+          "contactArea": 3.0625,
+          "areaRelativeError": 0.025175973562141074,
+          "linearResidual": 9.182298610385329e-11,
+          "unitVoltageCurrent": 4.408561364046889
+        }
+      ],
+      "meshChange": {
+        "potential": 0.012703557640069576,
+        "field": 0.04861825446420482
+      },
+      "domainChange": {
+        "potential": 0.08480167151128765,
+        "field": 3.9872473313641184e-05
+      },
+      "bemDifference": {
+        "potential": 0.0690480423926963,
+        "field": 0.03479364770525346
+      },
+      "status": "fail"
+    },
+    "ring": {
+      "solves": [
+        {
+          "spacing": 0.125,
+          "extent": 16,
+          "cells": 97556,
+          "contactArea": 3.125,
+          "areaRelativeError": 0.005281605675654166,
+          "linearResidual": 7.630977713132566e-11,
+          "unitVoltageCurrent": 4.507924757790447
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 16,
+          "cells": 442368,
+          "contactArea": 3.09375,
+          "areaRelativeError": 0.01522878961889762,
+          "linearResidual": 9.77354543964377e-11,
+          "unitVoltageCurrent": 4.580140052592141
+        },
+        {
+          "spacing": 0.0625,
+          "extent": 32,
+          "cells": 500000,
+          "contactArea": 3.09375,
+          "areaRelativeError": 0.01522878961889762,
+          "linearResidual": 9.314365088979312e-11,
+          "unitVoltageCurrent": 4.489039216245317
+        }
+      ],
+      "meshChange": {
+        "potential": 0.004149346662566447,
+        "field": 0.017875686028221382
+      },
+      "domainChange": {
+        "potential": 0.0873919194037185,
+        "field": 3.773504372506589e-05
+      },
+      "bemDifference": {
+        "potential": 0.07110293964378725,
+        "field": 0.025093645480561973
+      },
+      "status": "fail"
+    }
+  },
+  "extensionReason": "Initial 16\u219232 domain refinement failed potential convergence. Extend to 64 and 128 without changing acceptance gates; retain initial failures.",
+  "linearSolverDevelopment": "First 64-radius extension exhausted 300 CG iterations with smoothed-aggregation AMG. Changed preconditioner to Ruge-Stuben AMG and cap to 1000, retaining 1e-10 residual tolerance and all physical acceptance gates."
+}

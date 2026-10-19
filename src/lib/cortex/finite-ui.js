@@ -4,6 +4,7 @@ import {modelRegistry} from './model-registry.js';
 import {loadActiveModel} from './model-library.js';
 import {makeActiveMorphology} from './active-morphology.js';
 import {loadFiniteContact,finiteCellConfig,prepareFiniteNodes,finiteTransfer,FINITE_MODEL} from './finite-contact.js';
+import {assessExperimentEvidence,evidenceText} from './experiment-evidence.js';
 export function mountFiniteLaboratory(root) {
 const $=id=>root.querySelector(`#${id}`);
 let disposed=false,animation,observer;
@@ -56,15 +57,17 @@ function colorSlices(current){for(const s of slices){s.values.forEach((v,i)=>{co
 function clearRun(){generation++;worker?.terminate();worker=null;result=null;playing=false;$('disk-play').textContent='Play';slider.disabled=true;$('disk-play').disabled=true;$('disk-export').disabled=true;$('disk-trace').getContext('2d').clearRect(0,0,800,180);$('disk-readout').textContent='Run the cell to inspect membrane voltage and ionic currents.';}
 async function prepare(){
   clearRun();support=null;const token=generation;run.disabled=true;status.textContent='Loading verified field and human morphology…';
+  if($('disk-evidence'))$('disk-evidence').textContent='Checking this configuration…';
   try{
     const length=Number($('disk-mesh').value),modelId=select.value;
     const [loaded]=await Promise.all([loadFiniteContact(),loadActiveModel(modelId,length)]);if(token!==generation)return;field=loaded;
     config=finiteCellConfig(modelId,length,[0,0,Number($('disk-offset').value)]);config.protocol.amplitudeUa=Number($('disk-current').value);config.solver.dtMs=Number($('disk-dt').value);
     nodes=makeActiveMorphology(config).nodes;selectedNode=0;support=prepareFiniteNodes(field,nodes,config);
+    if($('disk-evidence'))$('disk-evidence').textContent=evidenceText(assessExperimentEvidence(config,support.metadata,support.supported));
     const compartments=$('disk-compartment');compartments.replaceChildren();nodes.forEach((n,i)=>{if(!n.areaUm2)return;const o=document.createElement('option');o.value=String(i);o.textContent=n.id;compartments.append(o);});
     drawCell();buildSlices();colorSlices(-config.protocol.amplitudeUa);
     status.textContent=support.supported?`${nodes.filter(n=>n.areaUm2).length} membrane compartments supported. Full morphology retained. Preview shows the cathodic phase; press Run for membrane response.`:`Whole neuron excluded: ${support.issues[0].reason}. ${new Set(support.issues.map(v=>v.id)).size} affected compartments. Gold means unresolved, not inactive. Choose specimen 601927090 for the supported benchmark.`;run.disabled=!support.supported;
-  }catch(e){if(token===generation)status.textContent=e.message;}
+  }catch(e){if(token===generation){status.textContent=e.message;if($('disk-evidence'))$('disk-evidence').textContent='Configuration unavailable: evidence cannot be assessed.';}}
 }
 function trace(frame){
   const canvas=$('disk-trace'),ctx=canvas.getContext('2d'),w=canvas.width,h=canvas.height,n=nodes.length;
@@ -99,6 +102,7 @@ listen($('disk-export'),'click',()=>{
   if(!result)return;
   const {neuralUv,appliedUv,totalUv,differentialUv,recordingSiteIds,config:legacy,...response}=result;
   const output={schemaVersion:FINITE_MODEL,configuration:{cell:legacy.neuron,membrane:legacy.membrane,solver:legacy.solver,waveform:{amplitudeUa:legacy.protocol.amplitudeUa,startMs:legacy.protocol.startMs,phaseUs:legacy.protocol.phaseUs,gapUs:legacy.protocol.gapUs},field:result.fieldModel},units:{geometry:'µm',time:'ms',membrane:'mV',unitApplied:'mV/µA',ionicCurrent:'nA'},nodes,response,limitations:['Single cell, single finite disk; no recording, field gradient or multicontact steering','Spatial/timestep convergence and biological selectivity not established']};
+  output.evidence=assessExperimentEvidence(result.config,result.fieldModel);
   const blob=new Blob([JSON.stringify(output,(_,v)=>ArrayBuffer.isView(v)?Array.from(v):v)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='cortex-finite-disk-result.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 });
 initScene();prepare();let last=0;
