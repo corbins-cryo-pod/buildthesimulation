@@ -12,3 +12,4 @@ test('voltage step starts at holding equilibrium and tends to clamp equilibrium'
  for(let i=1;i<9;i++){const hold=inspectMechanism(i,-80),step=inspectMechanism(i,0);stepGates(i,-80,0,1e-4,0).forEach((g,j)=>assert.ok(Math.abs(g.value-hold.gates[j].inf)<1e-14));stepGates(i,-80,0,1e-4,1e7).forEach((g,j)=>assert.ok(Math.abs(g.value-step.gates[j].inf)<1e-14));}
  assert.equal(inspectMechanism(8,-65,1e-4).gates[0].inf,channelRates(-65,1e-4)[11][0]);
 });
+// retrigger preview build
