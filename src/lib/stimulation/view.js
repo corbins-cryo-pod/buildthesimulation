@@ -73,7 +73,7 @@ export function createCortexView(host, onSelect) {
     result.samples.forEach((cell, i) => {
       const recruited = cell.firstSpike >= 0 && (time === null || time >= cell.firstSpike);
       const flashing = time !== null && cell.firstSpike >= 0 && Math.abs(time - cell.firstSpike) < .3;
-      color.setHex(i === selected ? 0xfff7de : flashing ? 0xffffff : recruited ? 0xf9b96c : cell.inhibitory ? 0xb1a7d7 : 0x6aafbe); somata.setColorAt(i, color);
+      color.setHex(!cell.valid ? 0xd56788 : i === selected ? 0xfff7de : flashing ? 0xffffff : recruited ? 0xf9b96c : cell.inhibitory ? 0xb1a7d7 : 0x6aafbe); somata.setColorAt(i, color);
     });
     somata.instanceColor.needsUpdate = true; render();
   }

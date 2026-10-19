@@ -21,6 +21,24 @@ export function makeKernel(sampleRateHz, len = 48) {
   return k;
 }
 
+// Instrument noise never advances the random stream that generates neurons
+// and their source events. Stable contact identities also keep noise and
+// waveform tails attached to the same channel when contacts are reordered.
+function contactKey(contact) {
+  if (typeof contact.id === 'string' || typeof contact.id === 'number')
+    return `id:${typeof contact.id}:${contact.id}`;
+  return `position:${JSON.stringify([contact.x, contact.y, contact.z])}`;
+}
+
+function noiseSeed(seed, key) {
+  let hash = 2166136261;
+  for (const char of `cortex-noise/1:${seed >>> 0}:${key}`) {
+    hash ^= char.charCodeAt(0);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
 function buildNeighborhood(neurons, radiusUm = 180, maxNeighbors = 20) {
   const cell = Math.max(40, radiusUm);
   const bins = new Map();
@@ -85,7 +103,7 @@ export function createEngine(cfg) {
   let neighbors = buildNeighborhood(neurons, lastRecruitRadius, cfg.recruitMaxNeighbors ?? 20);
 
   const lastSpikeMs = new Float64Array(neurons.length).fill(-Infinity);
-  let pending = [];
+  let channels = new Map(), channelOrder = [];
   const state = {
     tMs: 0,
     recentSpikes: [],
@@ -98,15 +116,35 @@ export function createEngine(cfg) {
     networkMod: 0,
   };
 
-  function ensureTraceCount(n) {
-    while (state.tracesByElectrode.length < n) state.tracesByElectrode.push(new Float32Array(traceN));
-    while (state.noiseByElectrode.length < n) state.noiseByElectrode.push(0);
-    if (state.tracesByElectrode.length > n) state.tracesByElectrode = state.tracesByElectrode.slice(0, n);
-    if (state.noiseByElectrode.length > n) state.noiseByElectrode = state.noiseByElectrode.slice(0, n);
+  function recordingChannels(electrodes) {
+    const occurrences = new Map(), next = new Map();
+    const ordered = electrodes.map(electrode => {
+      const identity = contactKey(electrode), occurrence = occurrences.get(identity) ?? 0;
+      occurrences.set(identity, occurrence + 1);
+      // Coincident anonymous contacts have no distinguishable identity. Give
+      // repeated entries deterministic occurrence suffixes instead of sharing
+      // one mutable noise generator. Explicit unique IDs are preferred.
+      const key = JSON.stringify([identity, occurrence]);
+      const channel = channels.get(key) ?? { key, noise: 0, pending: null,
+        trace: new Float32Array(traceN), rand: createRng(noiseSeed(cfg.seed ?? 1337, key)) };
+      next.set(key, channel);
+      return channel;
+    });
+    channels = next; // Retain only current contacts; geometry edits cannot grow a cache forever.
+    state.tracesByElectrode = ordered.map(channel => channel.trace);
+    state.noiseByElectrode = ordered.map(channel => channel.noise);
+    if (ordered.length !== channelOrder.length || ordered.some((channel, index) => channel.key !== channelOrder[index])) {
+      const indexByKey = new Map(ordered.map((channel, index) => [channel.key, index]));
+      state.detectedSpikes = state.detectedSpikes.filter(event => indexByKey.has(event.contactKey))
+        .map(event => ({ ...event, electrodeIndex: indexByKey.get(event.contactKey) }));
+      channelOrder = ordered.map(channel => channel.key);
+    }
+    return ordered;
   }
 
   function step(stepMs, electrodes, selectedIndex = 0) {
-    ensureTraceCount(electrodes.length);
+    if (!Number.isFinite(stepMs) || stepMs <= 0) return;
+    const recording = recordingChannels(electrodes);
 
     const rr = cfg.recruitRadiusUm ?? 180;
     if (Math.abs(rr - lastRecruitRadius) > 1) {
@@ -114,7 +152,6 @@ export function createEngine(cfg) {
       lastRecruitRadius = rr;
     }
 
-    if (!Number.isFinite(stepMs) || stepMs <= 0) return;
     const dtS = stepMs / 1000;
     const newSpikes = [];
     const decay = Math.exp(-stepMs / 125);
@@ -166,9 +203,9 @@ export function createEngine(cfg) {
 
     const addSamp = Math.max(1, Math.floor((stepMs / 1000) * cfg.sampleRateHz));
     const tailN = kernel.length + 64;
-    const blocks = electrodes.map((_,ei) => {
+    const blocks = recording.map(channel => {
       const block = new Float32Array(addSamp + tailN);
-      if (pending[ei]) block.set(pending[ei].subarray(0, block.length));
+      if (channel.pending) block.set(channel.pending.subarray(0, block.length));
       return block;
     });
     const detected = [];
@@ -183,17 +220,19 @@ export function createEngine(cfg) {
         const r = Math.hypot(n.pos[0] - e.x, n.pos[1] - e.y, n.pos[2] - e.z);
         const gain = (cfg.baseUv * state.neuronAmpScale[s.idx]) / (r + cfg.r0Um);
 
-        const delaySamples = Math.floor((r / 600) * (cfg.sampleRateHz / 1000));
-        const alignMs = (delaySamples / cfg.sampleRateHz) * 1000 + 0.55;
+        // The template's trough occurs 0.55 ms after its source event. Distance
+        // changes amplitude only; there is no sensor transit delay in this
+        // quasi-static recording illustration.
+        const alignMs = 0.55;
 
         const peakGain = gain * (1 + Math.max(0, Math.min(1, (gain - 0.35) / 0.95)) * (cfg.closeDipBoost ?? 1.35));
-        if (peakGain * negativeKernelPeak >= (cfg.rasterPeakUv ?? 6)) detected.push({ ...s, alignMs, electrodeIndex: ei });
+        if (peakGain * negativeKernelPeak >= (cfg.rasterPeakUv ?? 6)) detected.push({ ...s, alignMs, electrodeIndex: ei, contactKey: recording[ei].key });
 
         const block = blocks[ei];
         const nearFrac = Math.max(0, Math.min(1, (gain - 0.35) / 0.95));
         const closeDipBoost = 1 + nearFrac * (cfg.closeDipBoost ?? 1.35);
         for (let k = 0; k < kernel.length; k++) {
-          const j = i0 + delaySamples + k;
+          const j = i0 + k;
           if (j < 0 || j >= block.length) continue;
 
           // Slightly amplify negative trough for close/high-amplitude units.
@@ -207,30 +246,30 @@ export function createEngine(cfg) {
 
     for (let ei = 0; ei < electrodes.length; ei++) {
       const merged = new Float32Array(traceN);
-      const prev = state.tracesByElectrode[ei];
-      pending[ei] = blocks[ei].slice(addSamp);
+      const channel = recording[ei], prev = channel.trace;
+      channel.pending = blocks[ei].slice(addSamp);
       const block = blocks[ei].subarray(0, addSamp);
 
       // Add colored-ish background noise (AR(1)-like) so traces look electrode-like.
-      let nz = state.noiseByElectrode[ei] || 0;
+      let nz = channel.noise;
       const noiseUv = cfg.noiseUv ?? 3.8;
       for (let j = 0; j < block.length; j++) {
-        nz = 0.94 * nz + (rand() - 0.5) * noiseUv;
+        nz = 0.94 * nz + (channel.rand() - 0.5) * noiseUv;
         block[j] += nz;
       }
-      state.noiseByElectrode[ei] = nz;
+      channel.noise = nz; state.noiseByElectrode[ei] = nz;
 
       const keep = traceN - block.length;
       if (keep > 0) merged.set(prev.subarray(prev.length - keep), 0);
       merged.set(block.subarray(Math.max(0, block.length - traceN)), Math.max(0, keep));
-      state.tracesByElectrode[ei] = merged;
+      channel.trace = merged; state.tracesByElectrode[ei] = merged;
     }
 
     state.tMs += stepMs;
   }
 
   function clearRecording() {
-    pending = [];
+    channels.clear(); channelOrder = [];
     state.tracesByElectrode = [];
     state.noiseByElectrode = [];
     state.detectedSpikes = [];

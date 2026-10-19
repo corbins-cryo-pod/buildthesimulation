@@ -20,6 +20,12 @@
 
 const CONTACT_SIZES = [[12, 12], [20, 20], [30, 30], [12, 24], [12, 12], [20, 20], [30, 30], [12, 24]];
 
+export const INTERFACE_CONTACT_VARIANTS = Object.freeze([
+  [12, 12], [20, 20], [30, 30], [12, 24],
+].map(([widthUm, heightUm]) => Object.freeze({
+  id: `${widthUm}x${heightUm}`, widthUm, heightUm, label: `${widthUm} × ${heightUm} µm`,
+})));
+
 export const INTERFACE_DESIGN = Object.freeze({
   id: 'cortex-test-shank/1',
   name: 'Interface test shank',
@@ -41,6 +47,35 @@ export const INTERFACE_DESIGN = Object.freeze({
     { title: 'COMSOL — Current Distribution, Boundary Elements', url: 'https://doc.comsol.com/6.4/doc/com.comsol.help.corr/corr_ug_electrochem.06.069.html', supports: 'Boundary integral conductor formulation; does not validate this implementation.' },
   ]),
 });
+
+/**
+ * Resolve one controlled surface-size change. The contact center, orientation,
+ * identity and all other surfaces remain fixed. This changes planar contacts,
+ * not the infinite-backing-plane approximation or the visible shank body.
+ */
+export function makeInterfaceDesign(contactGeometry = null) {
+  if (contactGeometry === null) return INTERFACE_DESIGN;
+  if (typeof contactGeometry !== 'object' || Array.isArray(contactGeometry)
+    || ![Object.prototype, null].includes(Object.getPrototypeOf(contactGeometry)))
+    throw new Error('contactGeometry must be null or an object with contactIndex and variantId.');
+  const keys = Reflect.ownKeys(contactGeometry);
+  if (keys.length !== 2 || !keys.includes('contactIndex') || !keys.includes('variantId'))
+    throw new Error('contactGeometry supports only contactIndex and variantId.');
+  const { contactIndex, variantId } = contactGeometry;
+  if (!Number.isInteger(contactIndex) || contactIndex < 0 || contactIndex >= INTERFACE_DESIGN.contacts.length)
+    throw new Error('contactGeometry.contactIndex must be an integer from 0 through 7.');
+  const variant = INTERFACE_CONTACT_VARIANTS.find(candidate => candidate.id === variantId);
+  if (!variant) throw new Error('contactGeometry.variantId must be 12x12, 20x20, 30x30 or 12x24.');
+  const contacts = Object.freeze(INTERFACE_DESIGN.contacts.map((contact, index) => index !== contactIndex ? contact : Object.freeze({
+    ...contact, widthUm: variant.widthUm, heightUm: variant.heightUm, areaUm2: variant.widthUm * variant.heightUm,
+  })));
+  return Object.freeze({
+    ...INTERFACE_DESIGN,
+    id: `${INTERFACE_DESIGN.id}/${contacts[contactIndex].id}/${variant.id}`,
+    contacts,
+    contactGeometry: Object.freeze({ contactIndex, variantId: variant.id }),
+  });
+}
 
 const INV_SQRT_3 = 1 / Math.sqrt(3);
 
@@ -139,11 +174,11 @@ function makePanels(contacts, divisions) {
 }
 
 /** Build all current-driven contact bases jointly; defaults take <1 s in Node. */
-export function createInterfaceField({ panelDivisions = 4, conductivitySm = .3, minimumHeightUm = 10 } = {}) {
+export function createInterfaceField({ panelDivisions = 4, conductivitySm = .3, minimumHeightUm = 10, contactGeometry = null } = {}) {
   if (!Number.isInteger(panelDivisions) || panelDivisions < 2 || panelDivisions > 12) throw new Error('panelDivisions must be an integer from 2 through 12.');
   if (!(conductivitySm > 0) || !Number.isFinite(conductivitySm)) throw new Error('Conductivity must be finite and positive.');
   if (!(minimumHeightUm >= 10) || !Number.isFinite(minimumHeightUm)) throw new Error('Sampling height must be at least 10 µm.');
-  const contacts = INTERFACE_DESIGN.contacts, nc = contacts.length;
+  const design = makeInterfaceDesign(contactGeometry), contacts = design.contacts, nc = contacts.length;
   const panels = makePanels(contacts, panelDivisions), n = panels.length;
   const matrix = new Float64Array(n * n), lowRule = [[-INV_SQRT_3, 1], [INV_SQRT_3, 1]], selfRule = gaussLegendre(16);
   const selfValues = new Map();
@@ -185,7 +220,9 @@ export function createInterfaceField({ panelDivisions = 4, conductivitySm = .3, 
     for (let a = 0; a < nc; a++) currentBalanceError = Math.max(currentBalanceError, Math.abs(sums[a] - (a === c ? 1 : 0)));
   }
   const metadata = {
-    model: 'cortex-joint-planar-contacts/1', designId: INTERFACE_DESIGN.id,
+    model: 'cortex-joint-planar-contacts/1', designId: design.id,
+    contactGeometry: design.contactGeometry ?? null,
+    geometry: { plane: design.plane, tissueSide: design.tissueSide, contacts },
     method: 'Symmetric constant-panel Galerkin approximation; exact rectangular source integration, 2×2 target quadrature (16×16 for self panels), contact-current Schur complement.',
     status: 'exploratory', conductivitySm, panelDivisions, panelCount: n,
     minimumHeightUm, potentialCoefficientUnit: 'mV/µA = µV/nA',
@@ -222,5 +259,5 @@ export function createInterfaceField({ panelDivisions = 4, conductivitySm = .3, 
     }
     return { coefficients, supported: issues.length === 0, issues, contactCount: nc, pointCount: points.length };
   }
-  return { design: INTERFACE_DESIGN, contacts, panels, panelBasis, contactTransferMvPerUa, metadata, supportsPoint, sample, prepare };
+  return { design, contacts, panels, panelBasis, contactTransferMvPerUa, metadata, supportsPoint, sample, prepare };
 }

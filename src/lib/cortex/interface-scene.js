@@ -179,7 +179,7 @@ export function createInterfaceView(host, { onSelectCell = () => {}, onSelectCon
     if (!hit) { renderer.domElement.title = 'Drag to orbit · Scroll to zoom · Click a contact or neuron'; return; }
     const ci = hit.object.userData.contact;
     if (Number.isInteger(ci)) {
-      const contact = contacts[ci]; renderer.domElement.title = `Contact ${contact.label ?? ci + 1} · ${contact.widthUm} × ${contact.heightUm} µm · click to toggle stimulation`;
+      const contact = contacts[ci]; renderer.domElement.title = `Contact ${contact.label ?? ci + 1} · ${contact.widthUm} × ${contact.heightUm} µm · click to inspect recording`;
     } else {
       const cellIndex = hit.object.userData.cell, ni = cellMeshes[cellIndex].faceNodes[hit.faceIndex], cell = cells[cellIndex];
       const voltage = currentResult?.cells?.[cellIndex]?.membraneMv?.[currentFrame * cell.nodes.length + ni];
@@ -214,7 +214,7 @@ export function createInterfaceView(host, { onSelectCell = () => {}, onSelectCon
     camera.near = Math.max(.1, distance / 10000); camera.far = Math.max(10000, distance * 8); camera.updateProjectionMatrix(); controls.update();
   }
 
-  function setGeometry({ design, cells: nextCells }) {
+  function setGeometry({ design, cells: nextCells, preserveView = false }) {
     if (disposed) return;
     disposeObject(geometryGroup); disposeObject(labels); geometryGroup = new THREE.Group(); labels = new THREE.Group(); scene.add(geometryGroup, labels);
     cells = nextCells ?? []; contacts = design?.contacts ?? []; cellMeshes = []; contactMeshes = []; currentResult = null; marker.visible = false;
@@ -255,7 +255,7 @@ export function createInterfaceView(host, { onSelectCell = () => {}, onSelectCon
     const barPoints = [barOrigin.clone(), barOrigin.clone().add(new THREE.Vector3(100, 0, 0))];
     const scaleBar = new THREE.Line(new THREE.BufferGeometry().setFromPoints(barPoints), new THREE.LineBasicMaterial({ color: '#bacbd5' })); geometryGroup.add(scaleBar);
     const scaleLabel = labelSprite('100 µm'); scaleLabel.position.copy(barOrigin).add(new THREE.Vector3(50, 0, 25)); labels.add(scaleLabel);
-    paintCells(null, 0); setContacts(activeIds, recordingId); setView('oblique');
+    paintCells(null, 0); setContacts(activeIds, recordingId); if (!preserveView) setView('oblique');
   }
 
   function paintCells(result, frame) {

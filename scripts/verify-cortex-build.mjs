@@ -6,6 +6,7 @@ import {
   ENGINE_VERSION,
   ACTIVE_ENGINE_VERSION,
 } from "../src/lib/cortex/config.js";
+import { INTERFACE_VERSION, INTERFACE_COMPARISON_VERSION } from "../src/lib/cortex/interface-contract.js";
 const html = readFileSync("dist/cortex/index.html", "utf8");
 const methods = readFileSync("dist/cortex/methods/index.html", "utf8");
 assert.match(html, /From membrane to contact/);
@@ -45,14 +46,14 @@ assert.match(html, /Laboratory field model/);
 // Vite can emit a thin re-export entry plus a shared implementation chunk.
 // Traverse only reachable module imports so stale output cannot satisfy this assertion.
 const reachable = new Map();
-function visit(name) {
-  if (reachable.has(name)) return;
+function visit(name, modules = reachable) {
+  if (modules.has(name)) return;
   const code = readFileSync(`dist/_astro/${name}`, "utf8");
-  reachable.set(name, code);
+  modules.set(name, code);
   for (const match of code.matchAll(
     /(?:from\s*|import\s*|import\(\s*)["']\.\/([^"']+\.js)["']/g,
   ))
-    visit(match[1]);
+    visit(match[1], modules);
 }
 visit(component);
 const componentCode = [...reachable.values()].join("\n");
@@ -99,6 +100,45 @@ assert.match(
   readFileSync("dist/simulations/index.html", "utf8"),
   /href="\/cortex\/"/,
 );
+
+// Verify the integrated laboratory independently of the original workspace.
+// Follow its current hydrated entry to the worker; stale dist files cannot pass.
+const interfaceHtml = readFileSync("dist/cortex/interface/index.html", "utf8");
+const interfaceMethods = readFileSync("dist/cortex/interface/methods/index.html", "utf8");
+assert.match(interfaceHtml, /Neural Interface Laboratory/);
+assert.match(interfaceHtml, /href="\/cortex\/interface\/methods\/"/);
+assert.match(interfaceMethods, /infinite insulating plane/);
+const interfaceComponent = interfaceHtml.match(
+  /component-url="\/_astro\/(CortexInterfaceLaboratory\.[^"]+\.js)"/,
+)?.[1];
+assert.ok(interfaceComponent, "Missing hydrated interface laboratory component");
+const interfaceModules = new Map();
+visit(interfaceComponent, interfaceModules);
+const interfaceCode = [...interfaceModules.values()].join("\n");
+const interfaceWorker = interfaceCode.match(
+  /new Worker\(new URL\(["']\/_astro\/(interface-worker[-.][^"']+\.js)["']/,
+)?.[1];
+assert.ok(interfaceWorker, "Missing bundled interface worker");
+assert.ok(readFileSync(`dist/_astro/${interfaceWorker}`, "utf8").includes(INTERFACE_VERSION),
+  "Interface worker must include the current experiment contract");
+for (const name of ["default", "evoked"]) {
+  const base = `dist/models/cortex/interface/${name}`;
+  assert.ok(existsSync(`${base}.bin.gz`), `Missing ${name} compartment replay`);
+  const metadata = JSON.parse(readFileSync(`${base}.json`, "utf8"));
+  assert.equal(metadata.config?.version, INTERFACE_VERSION, `Incompatible ${name} replay contract`);
+  assert.equal(metadata.cells.length, 12, `Incomplete ${name} saved population`);
+}
+for (const name of ["geometry", "stimulation"]) {
+  const base = `dist/models/cortex/interface/${name}`;
+  assert.ok(existsSync(`${base}.bin.gz`), `Missing ${name} paired replay`);
+  const metadata = JSON.parse(readFileSync(`${base}.json`, "utf8"));
+  assert.equal(metadata.version, INTERFACE_COMPARISON_VERSION, `Incompatible ${name} comparison contract`);
+  assert.equal(metadata.baseline.cells.length, 12);
+  assert.equal(metadata.variant.cells.length, 12);
+}
+assert.ok(entries.some(entry => entry.href === "/cortex/interface/"),
+  "Neural Interface Laboratory missing from site search");
+assert.match(readFileSync("dist/simulations/index.html", "utf8"), /href="\/cortex\/interface\/"/);
 console.log(
-  `Cortex static artifact checks passed: routes, provenance labels, search, ${component}, ${worker}. Browser QA remains pending.`,
+  `Cortex static artifact checks passed: original and integrated routes, provenance labels, search, ${component}, ${worker}, ${interfaceComponent}, ${interfaceWorker}, saved replays. Browser QA remains pending.`,
 );

@@ -19,19 +19,22 @@
     "segmentLengthUm": 40,
     "panelDivisions": 4,
     "conductivitySm": 0.3,
-    "clearanceUm": 25
+    "clearanceUm": 25,
+    "contactGeometry": null
   },
-  "generatedAt": "2026-10-19T03:01:08.205Z",
-  "sha256": "6b0db04055bdad594444963f26e40a8f15aa369cc08a9b240b8c60fc642fa66a",
-  "compressedBytes": 11059654,
-  "decodedBytes": 25671008,
-  "elapsedSeconds": 159.27186300800003,
+  "generatedAt": "2026-10-19T03:56:09.124Z",
+  "sha256": "72bc53f0642df4fd5de4007b61af4c9cf91fa06a74a2f583bf489648a598aac2",
+  "compressedBytes": 12464866,
+  "decodedBytes": 27670796,
+  "elapsedSeconds": 199.688737441,
   "compartments": 3428,
   "solverSourceHashes": {
-    "src/lib/cortex/interface-experiment.js": "7248b00d196d269c4e428fed9e6e6551133e1c22e5079e350b164a7761a18b38",
-    "src/lib/cortex/interface-contract.js": "2a1712d0b79a44e0777d1b305d86a5401081df8acedb62db58f4bd36bfec35fd",
-    "src/lib/cortex/interface-field.js": "2ce38134b424f5d4af265e1e47f8406cb0950f03a3b914268166a836c69ce6d6",
+    "src/lib/cortex/interface-contract.js": "3d4a2c7ece1b0d9186f5b248c7600161d014f29d600723e73f0b5b7e3aa5a1e9",
+    "src/lib/cortex/interface-experiment.js": "152fad76269c432b565bddfb7b481c7c900cb12219902ecd991e626c0cb88701",
+    "src/lib/cortex/interface-field.js": "de3f6e6deccdb0fb461dd74340739f94e52686690268eb05a4e84712ca854782",
     "src/lib/cortex/interface-presets.js": "d44374b2c2dc1c3cbc3f32552849547e267ec42239a031f07c6aa6c5681d323d",
+    "src/lib/cortex/interface-comparison.js": "9261bfc94658a028e3c309436ec72dd4bcc9fc4ffa38e96b1f5b5856c2b1e50b",
+    "src/lib/cortex/interface-comparison-analysis.js": "75cb34878175c745eb56d38ee5fe4a461d3ab9b373a07c8a5bb7fafa6356e021",
     "src/lib/cortex/active-cable.js": "2e40c7dcdc3268490a3f5c552bf2f14a421e4048deff16090aa8298e03397537",
     "src/lib/cortex/active-channels.js": "be4c862dddd31f0492c27c7f9349d40550b0402b562d561d3fe22d799237afbb",
     "src/lib/cortex/extra-channels.js": "6852bf67814c58568e4c24c2521af118a549a9f8304c1e43434054f1715bc019",
@@ -427,5 +430,6 @@
     "recording": "Reciprocal lead field × outward total compartment membrane current; point source per compartment; ideal infinite-impedance sensing",
     "drive": "Explicit calibrated somatic intracellular current; independent cells, no synaptic network",
     "scope": "Exploratory model. This complete interface configuration has not been independently validated against native NEURON, FEM, or tissue."
-  }
+  },
+  "archiveCompression": "gzip; losslessly repacked with Zopfli, five iterations"
 }

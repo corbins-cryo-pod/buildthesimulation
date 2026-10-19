@@ -86,7 +86,7 @@ import Layout from "../layouts/Layout.astro";
           Threshold (proxy)
           <details class="def">
             <summary>What is this?</summary>
-            <div class="defBody">Proxy activation threshold. During a pulse, axons with |field| ≥ threshold are forced "on" for a short dwell time.</div>
+            <div class="defBody">Visual threshold only. During a pulse, sites with |field| ≥ threshold are highlighted; this does not calculate evoked neural spikes.</div>
           </details>
           <div class="rangeRow">
             <input id="thresh" type="range" min="0" max="200" value="55" />
@@ -125,16 +125,8 @@ import Layout from "../layouts/Layout.astro";
           Train duration (ms)
           <details class="def">
             <summary>What is this?</summary>
-            <div class="defBody">How long the sine-wave stimulation train runs when you click <b>Pulse</b>. Axons above the proxy threshold will be forced to fire during the train.</div>
+            <div class="defBody">How long the sine-wave stimulation train runs when you click <b>Pulse</b>. Sites above the proxy threshold are highlighted during the train; no evoked-spike solver is used.</div>
           </details>
-          <div class="rangeRow">
-            <input id="dur" type="range" min="50" max="1500" value="450" />
-            <div class="rangeMeta">
-              <span id="durVal"></span>
-              <span class="rangeMinMax">min <span id="durMin"></span> / max <span id="durMax"></span></span>
-            </div>
-          </div>
-        </label>
           <div class="rangeRow">
             <input id="dur" type="range" min="50" max="1500" value="450" />
             <div class="rangeMeta">
@@ -183,8 +175,9 @@ import Layout from "../layouts/Layout.astro";
         <summary class="panelTitle">Notes</summary>
         <p class="muted">
           Simplified model. Axon firing uses randomized per-axon timing with a <b>minimum 200 ms</b> refractory interval.
-          Recording is distance-weighted spikes per intrafascicular electrode (up to <b>10</b> graphs, auto-generated).
+          Recording shows synthetic, distance-weighted firing events per intrafascicular electrode (up to <b>10</b> graphs). Event times follow their schedule, independently of screen refresh. Dashed stimulus-start markers are separate from firing events; stimulation changes visual highlighting only.
         </p>
+        <output id="eventStatus" class="muted" aria-live="polite"></output>
       </details>
     </aside>
 
@@ -221,7 +214,9 @@ import Layout from "../layouts/Layout.astro";
         <div class="dlgTitle" id="dlgTitle">Export</div>
         <button class="btn ghost" value="cancel">Close</button>
       </div>
-      <textarea id="dlgText" spellcheck="false"></textarea>
+      <p class="muted">Restores nerve/electrode geometry, controls and view. Axon positions and firing schedules are regenerated; this is not a saved neural replay. Legacy versionless exports are validated and migrated explicitly.</p>
+      <textarea id="dlgText" spellcheck="false" maxlength="65536"></textarea>
+      <p id="dlgError" role="alert" hidden></p>
       <menu class="dlgActions">
         <button class="btn" id="dlgCopy" value="copy">Copy</button>
         <button class="btn" id="dlgApply" value="apply">Apply</button>
@@ -230,7 +225,9 @@ import Layout from "../layouts/Layout.astro";
   </dialog>
 </Layout>
 
-<script is:inline>
+<script>
+  import { advanceDueEvents } from "../lib/peripheral/events.js";
+  import { createPeripheralDocument, parsePeripheralDocument } from "../lib/peripheral/document.js";
   const $ = (id) => document.getElementById(id);
 
   const cnv = $("cnv");
@@ -432,6 +429,7 @@ import Layout from "../layouts/Layout.astro";
 
       // recording events per electrode id
       recEvents: new Map(),
+      stimMarkers: [],
     };
   }
 
@@ -638,6 +636,7 @@ import Layout from "../layouts/Layout.astro";
     const list = ensureRecList(eid);
     list.push({
       t: tS,
+      type: "neural",
       amp: Math.max(0, Math.min(1, amp01)),
       color,
     });
@@ -685,11 +684,26 @@ import Layout from "../layouts/Layout.astro";
     ctx2d.lineTo(W, mid);
     ctx2d.stroke();
 
-    // spikes
+    // Stimulus commands are separate markers, never synthetic neural spikes.
+    ctx2d.save();
+    ctx2d.strokeStyle = "#267c9b";
+    ctx2d.fillStyle = "#267c9b";
+    ctx2d.setLineDash([4, 4]);
+    ctx2d.lineWidth = 1;
+    ctx2d.font = "10px ui-sans-serif, system-ui";
+    for (const marker of model.stimMarkers) {
+      if (marker.type !== "stimulus-start" || marker.timeS < tStart || marker.timeS > nowS) continue;
+      const x = tx(marker.timeS);
+      ctx2d.beginPath(); ctx2d.moveTo(x, 24); ctx2d.lineTo(x, H); ctx2d.stroke();
+      ctx2d.fillText("stim start", x + 3, 26);
+    }
+    ctx2d.restore();
+
+    // Synthetic neural firing events only.
     ctx2d.lineWidth = 2;
 
     for (const ev of events) {
-      if (ev.t < tStart || ev.t > tEnd) continue;
+      if (ev.type !== "neural" || ev.t < tStart || ev.t > tEnd) continue;
       const x = tx(ev.t);
       const ampPx = ev.amp * (H * 0.60);
       ctx2d.strokeStyle = ev.color ?? "rgba(10,10,12,0.85)";
@@ -797,35 +811,23 @@ import Layout from "../layouts/Layout.astro";
   }
 
   function stepNoiseAndRecording(nowS) {
-    const uPerPx = umPerPx();
-    const intra = getIntraElectrodes();
-
-    // if no intra electrodes, we still update axon visuals but skip recording
-    function expSample(mean) {
-      return -Math.log(1 - rand()) * mean;
-    }
-
-    for (const a of model.axons) {
-      if (nowS >= a.nextFire) {
-        // fire
-        a.onUntil = Math.max(a.onUntil, nowS + ON_DWELL_S);
-
-        // schedule next:
-        // IMPORTANT: advance from previous nextFire (not from now),
-        // to avoid "locking" to the render loop.
-        const isi = MIN_ISI_S + expSample(JITTER_MEAN_S);
-        a.nextFire = a.nextFire + isi;
-
-        // record on all intra electrodes (we can display up to 10)
-        if (intra.length) {
-          for (const e of intra) {
-            const dUm = Math.hypot(a.x - e.x, a.y - e.y) * uPerPx;
-            const w = pickupWeight(dUm);
-            if (w <= 0) continue;
-            const color = model.colorMode === "axon" ? a.color : null;
-            pushRecEvent(e.id, nowS, w * 0.9, color);
-          }
-        }
+    const uPerPx = umPerPx(), intra = getIntraElectrodes();
+    const batch = advanceDueEvents(model.axons, nowS,
+      () => MIN_ISI_S - Math.log(1 - rand()) * JITTER_MEAN_S, 4000);
+    // Bounded work per frame. Unprocessed events retain their scheduled times.
+    const status = $("eventStatus");
+    status.textContent = batch.pending
+      ? `Catching up scheduled events (${(nowS - batch.nextTimeS).toFixed(1)} s behind); pending events are retained.`
+      : "";
+    for (const { axonIndex, timeS } of batch.events) {
+      const a = model.axons[axonIndex];
+      a.onUntil = Math.max(a.onUntil, timeS + ON_DWELL_S);
+      for (const e of intra) {
+        const dUm = Math.hypot(a.x - e.x, a.y - e.y) * uPerPx;
+        const w = pickupWeight(dUm);
+        if (w <= 0) continue;
+        const color = model.colorMode === "axon" ? a.color : null;
+        pushRecEvent(e.id, timeS, w * 0.9, color);
       }
     }
   }
@@ -850,10 +852,7 @@ import Layout from "../layouts/Layout.astro";
       }
     }
 
-    // big event marker on each intra electrode
-    for (const e of getIntraElectrodes()) {
-      pushRecEvent(e.id, nowS, 1.0, null);
-    }
+    // This proxy changes display highlighting only; it creates no neural event.
   }
 
   function drawMain(nowMs = performance.now()) {
@@ -1158,7 +1157,9 @@ import Layout from "../layouts/Layout.astro";
     syncWave();
     model.pulse.active = true;
     model.pulse.t0 = performance.now();
-    toast("Pulsing");
+    model.stimMarkers = model.stimMarkers.filter(marker => marker.timeS >= model.pulse.t0 / 1000 - 12);
+    model.stimMarkers.push({ type: "stimulus-start", timeS: model.pulse.t0 / 1000 });
+    toast("Stimulus train · visual proxy");
   });
 
   ui.stop.addEventListener("click", () => {
@@ -1205,7 +1206,7 @@ import Layout from "../layouts/Layout.astro";
 
   // --- Export / Import ---
   function exportModel() {
-    const payload = {
+    const payload = createPeripheralDocument({
       nerve: model.nerve,
       fascicles: model.fascicles,
       electrodes: model.electrodes,
@@ -1213,43 +1214,32 @@ import Layout from "../layouts/Layout.astro";
       wave: model.wave,
       view: model.view,
       scale: { nerveDiameterMm: NERVE_DIAMETER_MM, axonCount: model.axons.length },
-    };
+    });
     return JSON.stringify(payload, null, 2);
   }
 
   function importModel(txt) {
-    const obj = JSON.parse(txt);
-    if (!obj?.nerve || !obj?.fascicles || !obj?.electrodes) throw new Error("Invalid schema");
-
-    model.nerve = obj.nerve;
-    model.fascicles = obj.fascicles;
-    model.electrodes = (obj.electrodes ?? [])
-      .filter((e) => e.type === "intra")
-      .map((e) => ({ ...e, recEnabled: e.recEnabled !== false }));
-    model.stim = obj.stim ?? model.stim;
-    model.wave = obj.wave ?? model.wave;
-    model.view = obj.view ?? model.view;
-
-    // rebuild axons from slider or schema
-    const count = obj?.scale?.axonCount ?? Number(ui.axonCount.value);
-    model.axons = buildAxonSites(model.nerve, model.fascicles, count);
-
-    // reset recordings
-    model.recEvents = new Map();
-    for (const e of model.electrodes) {
-      if (e.type === "intra") ensureRecList(e.id);
-    }
-
-    model.selectedId = null;
-    model.pulse.active = false;
-
+    const parsed = parsePeripheralDocument(txt), obj = parsed.document;
+    // Validate everything, then generate the bounded candidate population before
+    // replacing the current model. Failed input cannot leave a partial import.
+    const axons = buildAxonSites(obj.nerve, obj.fascicles, obj.scale.axonCount);
+    model = {
+      ...model, nerve: obj.nerve, fascicles: obj.fascicles, electrodes: obj.electrodes,
+      stim: obj.stim, wave: obj.wave, view: obj.view, axons,
+      recEvents: new Map(), stimMarkers: [], selectedId: null,
+      pulse: { active: false, t0: 0 },
+    };
+    for (const e of model.electrodes) ensureRecList(e.id);
     syncUIFromModel();
     syncRangeMeta();
     setSelected(null);
     drawAll();
+    return parsed.migratedFrom;
   }
 
   function openDialog(mode) {
+    $("dlgError").hidden = true;
+    $("dlgError").textContent = "";
     ui.dlgTitle.textContent = mode === "export" ? "Export JSON" : "Import JSON";
     ui.dlgText.value = mode === "export" ? exportModel() : "";
     ui.dlgApply.style.display = mode === "import" ? "inline-flex" : "none";
@@ -1271,11 +1261,12 @@ import Layout from "../layouts/Layout.astro";
   ui.dlgApply.addEventListener("click", (e) => {
     e.preventDefault();
     try {
-      importModel(ui.dlgText.value);
+      const migrated = importModel(ui.dlgText.value);
       ui.dlg.close();
-      toast("Imported");
-    } catch {
-      toast("Import failed");
+      toast(migrated ? "Legacy document migrated · new synthetic activity" : "Geometry and controls restored · new synthetic activity");
+    } catch (error) {
+      $("dlgError").textContent = error instanceof Error ? error.message : "Import failed.";
+      $("dlgError").hidden = false;
     }
   });
 

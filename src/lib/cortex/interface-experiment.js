@@ -3,37 +3,11 @@ import { makeActiveMorphology } from './active-morphology.js';
 import { createActiveCable, stepActiveCable } from './active-cable.js';
 import { getActiveModel, loadActiveModels } from './model-library.js';
 import { getModelMetadata } from './model-registry.js';
-import { createInterfaceField, INTERFACE_DESIGN } from './interface-field.js';
+import { createInterfaceField } from './interface-field.js';
 import { INTERFACE_PRESETS } from './interface-presets.js';
-import { INTERFACE_VERSION, freshInterfaceConfig } from './interface-contract.js';
-export { INTERFACE_VERSION, INTERFACE_DEFAULT, freshInterfaceConfig } from './interface-contract.js';
+import { INTERFACE_VERSION, validateInterfaceConfig } from './interface-contract.js';
+export { INTERFACE_VERSION, INTERFACE_DEFAULT, freshInterfaceConfig, validateInterfaceConfig } from './interface-contract.js';
 
-export function validateInterfaceConfig(input) {
-  const config = { ...freshInterfaceConfig(), ...input };
-  if (config.version !== INTERFACE_VERSION) throw new Error('Unsupported interface experiment version.');
-  const range = (key, low, high) => {
-    if (!Number.isFinite(config[key]) || config[key] < low || config[key] > high)
-      throw new Error(`${key} must be between ${low} and ${high}.`);
-  };
-  range('count', 1, INTERFACE_PRESETS.length);
-  if (!Number.isInteger(config.count)) throw new Error('Select a whole number of cells.');
-  if (!['recording', 'evoked', 'combined'].includes(config.mode)) throw new Error('Unknown experiment mode.');
-  range('amplitudeUa', 0, 100); range('phaseUs', 100, 1000); range('gapUs', 0, 1000);
-  range('frequencyHz', 1, 100); range('startMs', 0, 200); range('durationMs', 20, 300);
-  range('conductivitySm', .1, 1); range('clearanceUm', 25, 200);
-  // Preset calibration and replay sizes are bound to these numerical settings.
-  if (config.dtMs !== .005 || config.sampleMs !== .1 || config.settleMs !== 100 ||
-      config.segmentLengthUm !== 40 || config.panelDivisions !== 4)
-    throw new Error('This experiment requires the documented calibrated solver and field resolution.');
-  if (!Array.isArray(config.activeContacts) || config.activeContacts.some(i => !Number.isInteger(i) || i < 0 || i > 7))
-    throw new Error('Contact indices must be between 0 and 7.');
-  config.activeContacts = [...new Set(config.activeContacts)].sort((a, b) => a - b);
-  if (config.mode !== 'recording' && !config.activeContacts.length) throw new Error('Select at least one stimulation contact.');
-  for (const key of ['phaseUs', 'gapUs'])
-    if (Math.abs(config[key] / (config.dtMs * 1000) - Math.round(config[key] / (config.dtMs * 1000))) > 1e-7)
-      throw new Error('Pulse edges must align to the 5 µs integration step.');
-  return config;
-}
 
 export async function loadInterfaceModels(config, readAsset) {
   await loadActiveModels(INTERFACE_PRESETS.slice(0, config.count).map(p => p.modelId), config.segmentLengthUm, readAsset);
@@ -81,10 +55,10 @@ const conditionedStates = new Map();
 let cachedField;
 export function runInterfaceExperiment(input, progress = () => {}) {
   const config = validateInterfaceConfig(input), started = performance.now();
-  const cells = makeInterfaceCells(config), nc = INTERFACE_DESIGN.contacts.length;
-  const fieldKey = `${config.conductivitySm}:${config.panelDivisions}`;
+  const cells = makeInterfaceCells(config);
+  const fieldKey = JSON.stringify([config.conductivitySm, config.panelDivisions, config.contactGeometry]);
   if (cachedField?.key !== fieldKey) cachedField = { key: fieldKey, value: createInterfaceField(config) };
-  const field = cachedField.value;
+  const field = cachedField.value, nc = field.design.contacts.length;
   const sampleEvery = Math.round(config.sampleMs / config.dtMs), steps = Math.round(config.durationMs / config.dtMs);
   const frames = Math.floor(steps / sampleEvery) + 1;
   const timeMs = Float64Array.from({ length: frames }, (_, i) => i * config.sampleMs);
@@ -124,6 +98,7 @@ export function runInterfaceExperiment(input, progress = () => {}) {
     const somaSodiumNa = new Float32Array(frames), somaPotassiumNa = new Float32Array(frames);
     const somaCalciumNa = new Float32Array(frames), somaInjectionNa = new Float32Array(frames);
     const injectionNa = new Float64Array(n), extracellularMv = new Float64Array(n);
+    const cellNeuralUv = new Float64Array(frames * nc);
     const events = [];
     let lastCrossing = -Infinity, minMv = Infinity, maxMv = -Infinity, applied = NaN;
     const onsetMs = cell.preset.phaseMs ?? ci * 2;
@@ -134,7 +109,13 @@ export function runInterfaceExperiment(input, progress = () => {}) {
       somaCalciumNa[frame] = cable.calciumNa[cell.somaIndex]; somaInjectionNa[frame] = injectionNa[cell.somaIndex];
       for (let i = 0; i < n; i++) {
         const current = cable.membraneCurrentNa[i];
-        for (let k = 0; k < nc; k++) neuralUv[frame * nc + k] += current * coefficients[i * nc + k];
+        for (let k = 0; k < nc; k++) {
+          const contributionUv = current * coefficients[i * nc + k];
+          // Preserve the existing global summation order and retain each source
+          // cell separately. Summing cell arrays differs only by roundoff.
+          neuralUv[frame * nc + k] += contributionUv;
+          cellNeuralUv[frame * nc + k] += contributionUv;
+        }
       }
     };
     sample(0);
@@ -163,12 +144,12 @@ export function runInterfaceExperiment(input, progress = () => {}) {
     outputCells.push({ id: cell.id, specimenId: cell.specimenId, label: cell.label, nodes: cell.nodes,
       somaIndex: cell.somaIndex, somaUm: cell.somaUm, cellType: cell.cellType, layer: cell.layer,
       source: cell.source, sourceHashes: cell.sourceHashes, sourceScope: cell.sourceScope,
-      backgroundNa: drive, backgroundStartMs: onsetMs, membraneMv, somaMv,
+      backgroundNa: drive, backgroundStartMs: onsetMs, membraneMv, somaMv, neuralUv: cellNeuralUv,
       somaSodiumNa, somaPotassiumNa, somaCalciumNa, somaInjectionNa,
       events, spikeTimesMs: events.filter(e => e.peakMv >= 0 && e.repolarized).map(e => e.timeMs),
       somaRangeMv: [minMv, maxMv] });
   }
-  return { version: INTERFACE_VERSION, config, design: INTERFACE_DESIGN, timeMs,
+  return { version: INTERFACE_VERSION, config, design: field.design, timeMs,
     currentUa, neuralUv, artifactUv, cells: outputCells, fieldMetadata: field.metadata,
     elapsedSeconds: (performance.now() - started) / 1000, compartments: totalNodes,
     provenance: { cable: 'Original Cortex Laboratory active-cable.js, source-fitted human channels and morphology',

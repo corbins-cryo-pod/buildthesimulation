@@ -1,0 +1,1314 @@
+{
+  "version": "cortex-interface-comparison/1",
+  "spec": {
+    "version": "cortex-interface-comparison/1",
+    "kind": "geometry",
+    "contactIndex": 4,
+    "baselineVariantId": "12x12",
+    "variantVariantId": "30x30",
+    "eventMatchWindowMs": 5
+  },
+  "generatedAt": "2026-10-19T03:55:37.912Z",
+  "sha256": "81ebcf9d7d5f93f45c570efca6a994d35b614c84382099b15e7f36f2b6386477",
+  "compressedBytes": 12414766,
+  "solverSourceHashes": {
+    "src/lib/cortex/interface-contract.js": "3d4a2c7ece1b0d9186f5b248c7600161d014f29d600723e73f0b5b7e3aa5a1e9",
+    "src/lib/cortex/interface-experiment.js": "152fad76269c432b565bddfb7b481c7c900cb12219902ecd991e626c0cb88701",
+    "src/lib/cortex/interface-field.js": "de3f6e6deccdb0fb461dd74340739f94e52686690268eb05a4e84712ca854782",
+    "src/lib/cortex/interface-presets.js": "d44374b2c2dc1c3cbc3f32552849547e267ec42239a031f07c6aa6c5681d323d",
+    "src/lib/cortex/interface-comparison.js": "9261bfc94658a028e3c309436ec72dd4bcc9fc4ffa38e96b1f5b5856c2b1e50b",
+    "src/lib/cortex/interface-comparison-analysis.js": "75cb34878175c745eb56d38ee5fe4a461d3ab9b373a07c8a5bb7fafa6356e021",
+    "src/lib/cortex/active-cable.js": "2e40c7dcdc3268490a3f5c552bf2f14a421e4048deff16090aa8298e03397537",
+    "src/lib/cortex/active-channels.js": "be4c862dddd31f0492c27c7f9349d40550b0402b562d561d3fe22d799237afbb",
+    "src/lib/cortex/extra-channels.js": "6852bf67814c58568e4c24c2521af118a549a9f8304c1e43434054f1715bc019",
+    "src/lib/cortex/active-morphology.js": "2f539f33208d571f3fbbcc2c47df45fbd83cd81d42bb7391e45bf3b7f622376a",
+    "src/lib/cortex/model-library.js": "9074771687e11e114b701189bdf51fdc346f1e5e8a0bb14c3a127e658aa14d0a"
+  },
+  "baseline": {
+    "config": {
+      "version": "cortex-interface/1",
+      "count": 12,
+      "mode": "recording",
+      "activeContacts": [
+        3
+      ],
+      "amplitudeUa": 10,
+      "phaseUs": 200,
+      "gapUs": 100,
+      "frequencyHz": 40,
+      "startMs": 40,
+      "durationMs": 100,
+      "dtMs": 0.005,
+      "sampleMs": 0.1,
+      "settleMs": 100,
+      "segmentLengthUm": 40,
+      "panelDivisions": 4,
+      "conductivitySm": 0.3,
+      "clearanceUm": 25,
+      "contactGeometry": {
+        "contactIndex": 4,
+        "variantId": "12x12"
+      }
+    },
+    "compartments": 3428,
+    "elapsedSeconds": 107.819816298,
+    "cells": [
+      {
+        "id": "allen-human-571654895/1",
+        "specimenId": 571654895,
+        "spikeTimesMs": [
+          23.228284165490503,
+          34.54590251693087,
+          51.185289999188626,
+          69.34306939832862,
+          89.85746280212064
+        ]
+      },
+      {
+        "id": "allen-human-508378649/1",
+        "specimenId": 508378649,
+        "spikeTimesMs": [
+          4.763595837221845,
+          29.958276264806493,
+          48.52681433155313,
+          66.20844282927442,
+          83.53881486100717
+        ]
+      },
+      {
+        "id": "allen-human-508417989/1",
+        "specimenId": 508417989,
+        "spikeTimesMs": [
+          7.890186087847843,
+          19.646060041992975,
+          33.29536639544056,
+          48.7824906111476,
+          67.5753416778852,
+          92.27565025591022
+        ]
+      },
+      {
+        "id": "allen-human-529878215/1",
+        "specimenId": 529878215,
+        "spikeTimesMs": [
+          18.208804536378093,
+          35.1447854888725,
+          53.1031126152112,
+          73.61562993084262,
+          93.73584592677737
+        ]
+      },
+      {
+        "id": "allen-human-541563728/1",
+        "specimenId": 541563728,
+        "spikeTimesMs": [
+          25.98581538648125,
+          46.00011517948283,
+          75.2421353072338
+        ]
+      },
+      {
+        "id": "allen-human-569844159/1",
+        "specimenId": 569844159,
+        "spikeTimesMs": [
+          29.188256851658416,
+          51.52297138738686,
+          89.39121175638546
+        ]
+      },
+      {
+        "id": "allen-human-531520637/1",
+        "specimenId": 531520637,
+        "spikeTimesMs": [
+          22.44055295221457,
+          31.990750228710244,
+          42.69379684688294,
+          54.55420898747873,
+          67.16059873438591,
+          80.17772362250251,
+          93.43404475661781
+        ]
+      },
+      {
+        "id": "allen-human-601927090/1",
+        "specimenId": 601927090,
+        "spikeTimesMs": [
+          21.57046726625044,
+          29.664059130316765,
+          42.602739571454435,
+          56.05749947217727,
+          69.45714821149545,
+          82.87596379222454,
+          96.3086688988966
+        ]
+      },
+      {
+        "id": "allen-human-614651270/1",
+        "specimenId": 614651270,
+        "spikeTimesMs": [
+          28.585047404487383,
+          43.10191312883331,
+          59.67930114703648,
+          76.91961399668179,
+          94.46582543370174
+        ]
+      },
+      {
+        "id": "allen-human-526734407/1",
+        "specimenId": 526734407,
+        "spikeTimesMs": [
+          26.784742667056662
+        ]
+      },
+      {
+        "id": "allen-human-529807751/1",
+        "specimenId": 529807751,
+        "spikeTimesMs": [
+          20.929421151647194,
+          26.24614526024159,
+          31.766760358441662,
+          37.55771686330651,
+          43.572296471009764,
+          49.707909182327896,
+          55.91986007866418,
+          62.196355416280845,
+          68.53933968395724,
+          74.95713435134937,
+          81.46280254899844,
+          88.07323804629618,
+          94.8095176235874
+        ]
+      },
+      {
+        "id": "allen-human-541536216/1",
+        "specimenId": 541536216,
+        "spikeTimesMs": [
+          22.751958639949464,
+          28.74603667055242,
+          36.19225058238865,
+          44.882837031710054,
+          54.17660183399397,
+          63.61675910970298,
+          73.09294831965532,
+          82.58268436653348,
+          92.08025566959806
+        ]
+      }
+    ]
+  },
+  "variant": {
+    "config": {
+      "version": "cortex-interface/1",
+      "count": 12,
+      "mode": "recording",
+      "activeContacts": [
+        3
+      ],
+      "amplitudeUa": 10,
+      "phaseUs": 200,
+      "gapUs": 100,
+      "frequencyHz": 40,
+      "startMs": 40,
+      "durationMs": 100,
+      "dtMs": 0.005,
+      "sampleMs": 0.1,
+      "settleMs": 100,
+      "segmentLengthUm": 40,
+      "panelDivisions": 4,
+      "conductivitySm": 0.3,
+      "clearanceUm": 25,
+      "contactGeometry": {
+        "contactIndex": 4,
+        "variantId": "30x30"
+      }
+    },
+    "compartments": 3428,
+    "elapsedSeconds": 58.398196953,
+    "cells": [
+      {
+        "id": "allen-human-571654895/1",
+        "specimenId": 571654895,
+        "spikeTimesMs": [
+          23.228284165490503,
+          34.54590251693087,
+          51.185289999188626,
+          69.34306939832862,
+          89.85746280212064
+        ]
+      },
+      {
+        "id": "allen-human-508378649/1",
+        "specimenId": 508378649,
+        "spikeTimesMs": [
+          4.763595837221845,
+          29.958276264806493,
+          48.52681433155313,
+          66.20844282927442,
+          83.53881486100717
+        ]
+      },
+      {
+        "id": "allen-human-508417989/1",
+        "specimenId": 508417989,
+        "spikeTimesMs": [
+          7.890186087847843,
+          19.646060041992975,
+          33.29536639544056,
+          48.7824906111476,
+          67.5753416778852,
+          92.27565025591022
+        ]
+      },
+      {
+        "id": "allen-human-529878215/1",
+        "specimenId": 529878215,
+        "spikeTimesMs": [
+          18.208804536378093,
+          35.1447854888725,
+          53.1031126152112,
+          73.61562993084262,
+          93.73584592677737
+        ]
+      },
+      {
+        "id": "allen-human-541563728/1",
+        "specimenId": 541563728,
+        "spikeTimesMs": [
+          25.98581538648125,
+          46.00011517948283,
+          75.2421353072338
+        ]
+      },
+      {
+        "id": "allen-human-569844159/1",
+        "specimenId": 569844159,
+        "spikeTimesMs": [
+          29.188256851658416,
+          51.52297138738686,
+          89.39121175638546
+        ]
+      },
+      {
+        "id": "allen-human-531520637/1",
+        "specimenId": 531520637,
+        "spikeTimesMs": [
+          22.44055295221457,
+          31.990750228710244,
+          42.69379684688294,
+          54.55420898747873,
+          67.16059873438591,
+          80.17772362250251,
+          93.43404475661781
+        ]
+      },
+      {
+        "id": "allen-human-601927090/1",
+        "specimenId": 601927090,
+        "spikeTimesMs": [
+          21.57046726625044,
+          29.664059130316765,
+          42.602739571454435,
+          56.05749947217727,
+          69.45714821149545,
+          82.87596379222454,
+          96.3086688988966
+        ]
+      },
+      {
+        "id": "allen-human-614651270/1",
+        "specimenId": 614651270,
+        "spikeTimesMs": [
+          28.585047404487383,
+          43.10191312883331,
+          59.67930114703648,
+          76.91961399668179,
+          94.46582543370174
+        ]
+      },
+      {
+        "id": "allen-human-526734407/1",
+        "specimenId": 526734407,
+        "spikeTimesMs": [
+          26.784742667056662
+        ]
+      },
+      {
+        "id": "allen-human-529807751/1",
+        "specimenId": 529807751,
+        "spikeTimesMs": [
+          20.929421151647194,
+          26.24614526024159,
+          31.766760358441662,
+          37.55771686330651,
+          43.572296471009764,
+          49.707909182327896,
+          55.91986007866418,
+          62.196355416280845,
+          68.53933968395724,
+          74.95713435134937,
+          81.46280254899844,
+          88.07323804629618,
+          94.8095176235874
+        ]
+      },
+      {
+        "id": "allen-human-541536216/1",
+        "specimenId": 541536216,
+        "spikeTimesMs": [
+          22.751958639949464,
+          28.74603667055242,
+          36.19225058238865,
+          44.882837031710054,
+          54.17660183399397,
+          63.61675910970298,
+          73.09294831965532,
+          82.58268436653348,
+          92.08025566959806
+        ]
+      }
+    ]
+  },
+  "analysis": {
+    "inputChanges": [
+      {
+        "path": "contactGeometry.variantId",
+        "baseline": "12x12",
+        "variant": "30x30"
+      }
+    ],
+    "canonicalInputs": {
+      "format": "canonical-json/1",
+      "baseline": "{\"activeContacts\":[3],\"amplitudeUa\":10,\"clearanceUm\":25,\"conductivitySm\":0.3,\"contactGeometry\":{\"contactIndex\":4,\"variantId\":\"12x12\"},\"count\":12,\"dtMs\":0.005,\"durationMs\":100,\"frequencyHz\":40,\"gapUs\":100,\"mode\":\"recording\",\"panelDivisions\":4,\"phaseUs\":200,\"sampleMs\":0.1,\"segmentLengthUm\":40,\"settleMs\":100,\"startMs\":40,\"version\":\"cortex-interface/1\"}",
+      "variant": "{\"activeContacts\":[3],\"amplitudeUa\":10,\"clearanceUm\":25,\"conductivitySm\":0.3,\"contactGeometry\":{\"contactIndex\":4,\"variantId\":\"30x30\"},\"count\":12,\"dtMs\":0.005,\"durationMs\":100,\"frequencyHz\":40,\"gapUs\":100,\"mode\":\"recording\",\"panelDivisions\":4,\"phaseUs\":200,\"sampleMs\":0.1,\"segmentLengthUm\":40,\"settleMs\":100,\"startMs\":40,\"version\":\"cortex-interface/1\"}"
+    },
+    "eventMatchWindowMs": 5,
+    "cells": [
+      {
+        "cellIndex": 0,
+        "id": "allen-human-571654895/1",
+        "specimenId": 571654895,
+        "label": "Cell 1",
+        "baselineEventCount": 5,
+        "variantEventCount": 5,
+        "matched": [
+          {
+            "baselineIndex": 0,
+            "variantIndex": 0,
+            "baselineTimeMs": 23.228284165490503,
+            "variantTimeMs": 23.228284165490503,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 1,
+            "variantIndex": 1,
+            "baselineTimeMs": 34.54590251693087,
+            "variantTimeMs": 34.54590251693087,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 2,
+            "variantIndex": 2,
+            "baselineTimeMs": 51.185289999188626,
+            "variantTimeMs": 51.185289999188626,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 3,
+            "variantIndex": 3,
+            "baselineTimeMs": 69.34306939832862,
+            "variantTimeMs": 69.34306939832862,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 4,
+            "variantIndex": 4,
+            "baselineTimeMs": 89.85746280212064,
+            "variantTimeMs": 89.85746280212064,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          }
+        ],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 1,
+        "id": "allen-human-508378649/1",
+        "specimenId": 508378649,
+        "label": "Cell 2",
+        "baselineEventCount": 5,
+        "variantEventCount": 5,
+        "matched": [
+          {
+            "baselineIndex": 0,
+            "variantIndex": 0,
+            "baselineTimeMs": 4.763595837221845,
+            "variantTimeMs": 4.763595837221845,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 1,
+            "variantIndex": 1,
+            "baselineTimeMs": 29.958276264806493,
+            "variantTimeMs": 29.958276264806493,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 2,
+            "variantIndex": 2,
+            "baselineTimeMs": 48.52681433155313,
+            "variantTimeMs": 48.52681433155313,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 3,
+            "variantIndex": 3,
+            "baselineTimeMs": 66.20844282927442,
+            "variantTimeMs": 66.20844282927442,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 4,
+            "variantIndex": 4,
+            "baselineTimeMs": 83.53881486100717,
+            "variantTimeMs": 83.53881486100717,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          }
+        ],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 2,
+        "id": "allen-human-508417989/1",
+        "specimenId": 508417989,
+        "label": "Cell 3",
+        "baselineEventCount": 6,
+        "variantEventCount": 6,
+        "matched": [
+          {
+            "baselineIndex": 0,
+            "variantIndex": 0,
+            "baselineTimeMs": 7.890186087847843,
+            "variantTimeMs": 7.890186087847843,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 1,
+            "variantIndex": 1,
+            "baselineTimeMs": 19.646060041992975,
+            "variantTimeMs": 19.646060041992975,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 2,
+            "variantIndex": 2,
+            "baselineTimeMs": 33.29536639544056,
+            "variantTimeMs": 33.29536639544056,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 3,
+            "variantIndex": 3,
+            "baselineTimeMs": 48.7824906111476,
+            "variantTimeMs": 48.7824906111476,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 4,
+            "variantIndex": 4,
+            "baselineTimeMs": 67.5753416778852,
+            "variantTimeMs": 67.5753416778852,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 5,
+            "variantIndex": 5,
+            "baselineTimeMs": 92.27565025591022,
+            "variantTimeMs": 92.27565025591022,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          }
+        ],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 3,
+        "id": "allen-human-529878215/1",
+        "specimenId": 529878215,
+        "label": "Cell 4",
+        "baselineEventCount": 5,
+        "variantEventCount": 5,
+        "matched": [
+          {
+            "baselineIndex": 0,
+            "variantIndex": 0,
+            "baselineTimeMs": 18.208804536378093,
+            "variantTimeMs": 18.208804536378093,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 1,
+            "variantIndex": 1,
+            "baselineTimeMs": 35.1447854888725,
+            "variantTimeMs": 35.1447854888725,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 2,
+            "variantIndex": 2,
+            "baselineTimeMs": 53.1031126152112,
+            "variantTimeMs": 53.1031126152112,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 3,
+            "variantIndex": 3,
+            "baselineTimeMs": 73.61562993084262,
+            "variantTimeMs": 73.61562993084262,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 4,
+            "variantIndex": 4,
+            "baselineTimeMs": 93.73584592677737,
+            "variantTimeMs": 93.73584592677737,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          }
+        ],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 4,
+        "id": "allen-human-541563728/1",
+        "specimenId": 541563728,
+        "label": "Cell 5",
+        "baselineEventCount": 3,
+        "variantEventCount": 3,
+        "matched": [
+          {
+            "baselineIndex": 0,
+            "variantIndex": 0,
+            "baselineTimeMs": 25.98581538648125,
+            "variantTimeMs": 25.98581538648125,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 1,
+            "variantIndex": 1,
+            "baselineTimeMs": 46.00011517948283,
+            "variantTimeMs": 46.00011517948283,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 2,
+            "variantIndex": 2,
+            "baselineTimeMs": 75.2421353072338,
+            "variantTimeMs": 75.2421353072338,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          }
+        ],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 5,
+        "id": "allen-human-569844159/1",
+        "specimenId": 569844159,
+        "label": "Cell 6",
+        "baselineEventCount": 3,
+        "variantEventCount": 3,
+        "matched": [
+          {
+            "baselineIndex": 0,
+            "variantIndex": 0,
+            "baselineTimeMs": 29.188256851658416,
+            "variantTimeMs": 29.188256851658416,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 1,
+            "variantIndex": 1,
+            "baselineTimeMs": 51.52297138738686,
+            "variantTimeMs": 51.52297138738686,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 2,
+            "variantIndex": 2,
+            "baselineTimeMs": 89.39121175638546,
+            "variantTimeMs": 89.39121175638546,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          }
+        ],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 6,
+        "id": "allen-human-531520637/1",
+        "specimenId": 531520637,
+        "label": "Cell 7",
+        "baselineEventCount": 7,
+        "variantEventCount": 7,
+        "matched": [
+          {
+            "baselineIndex": 0,
+            "variantIndex": 0,
+            "baselineTimeMs": 22.44055295221457,
+            "variantTimeMs": 22.44055295221457,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 1,
+            "variantIndex": 1,
+            "baselineTimeMs": 31.990750228710244,
+            "variantTimeMs": 31.990750228710244,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 2,
+            "variantIndex": 2,
+            "baselineTimeMs": 42.69379684688294,
+            "variantTimeMs": 42.69379684688294,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 3,
+            "variantIndex": 3,
+            "baselineTimeMs": 54.55420898747873,
+            "variantTimeMs": 54.55420898747873,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 4,
+            "variantIndex": 4,
+            "baselineTimeMs": 67.16059873438591,
+            "variantTimeMs": 67.16059873438591,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 5,
+            "variantIndex": 5,
+            "baselineTimeMs": 80.17772362250251,
+            "variantTimeMs": 80.17772362250251,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 6,
+            "variantIndex": 6,
+            "baselineTimeMs": 93.43404475661781,
+            "variantTimeMs": 93.43404475661781,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          }
+        ],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 7,
+        "id": "allen-human-601927090/1",
+        "specimenId": 601927090,
+        "label": "Cell 8",
+        "baselineEventCount": 7,
+        "variantEventCount": 7,
+        "matched": [
+          {
+            "baselineIndex": 0,
+            "variantIndex": 0,
+            "baselineTimeMs": 21.57046726625044,
+            "variantTimeMs": 21.57046726625044,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 1,
+            "variantIndex": 1,
+            "baselineTimeMs": 29.664059130316765,
+            "variantTimeMs": 29.664059130316765,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 2,
+            "variantIndex": 2,
+            "baselineTimeMs": 42.602739571454435,
+            "variantTimeMs": 42.602739571454435,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 3,
+            "variantIndex": 3,
+            "baselineTimeMs": 56.05749947217727,
+            "variantTimeMs": 56.05749947217727,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 4,
+            "variantIndex": 4,
+            "baselineTimeMs": 69.45714821149545,
+            "variantTimeMs": 69.45714821149545,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 5,
+            "variantIndex": 5,
+            "baselineTimeMs": 82.87596379222454,
+            "variantTimeMs": 82.87596379222454,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 6,
+            "variantIndex": 6,
+            "baselineTimeMs": 96.3086688988966,
+            "variantTimeMs": 96.3086688988966,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          }
+        ],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 8,
+        "id": "allen-human-614651270/1",
+        "specimenId": 614651270,
+        "label": "Cell 9",
+        "baselineEventCount": 5,
+        "variantEventCount": 5,
+        "matched": [
+          {
+            "baselineIndex": 0,
+            "variantIndex": 0,
+            "baselineTimeMs": 28.585047404487383,
+            "variantTimeMs": 28.585047404487383,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 1,
+            "variantIndex": 1,
+            "baselineTimeMs": 43.10191312883331,
+            "variantTimeMs": 43.10191312883331,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 2,
+            "variantIndex": 2,
+            "baselineTimeMs": 59.67930114703648,
+            "variantTimeMs": 59.67930114703648,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 3,
+            "variantIndex": 3,
+            "baselineTimeMs": 76.91961399668179,
+            "variantTimeMs": 76.91961399668179,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 4,
+            "variantIndex": 4,
+            "baselineTimeMs": 94.46582543370174,
+            "variantTimeMs": 94.46582543370174,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          }
+        ],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 9,
+        "id": "allen-human-526734407/1",
+        "specimenId": 526734407,
+        "label": "Cell 10",
+        "baselineEventCount": 1,
+        "variantEventCount": 1,
+        "matched": [
+          {
+            "baselineIndex": 0,
+            "variantIndex": 0,
+            "baselineTimeMs": 26.784742667056662,
+            "variantTimeMs": 26.784742667056662,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          }
+        ],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 10,
+        "id": "allen-human-529807751/1",
+        "specimenId": 529807751,
+        "label": "Cell 11",
+        "baselineEventCount": 13,
+        "variantEventCount": 13,
+        "matched": [
+          {
+            "baselineIndex": 0,
+            "variantIndex": 0,
+            "baselineTimeMs": 20.929421151647194,
+            "variantTimeMs": 20.929421151647194,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 1,
+            "variantIndex": 1,
+            "baselineTimeMs": 26.24614526024159,
+            "variantTimeMs": 26.24614526024159,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 2,
+            "variantIndex": 2,
+            "baselineTimeMs": 31.766760358441662,
+            "variantTimeMs": 31.766760358441662,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 3,
+            "variantIndex": 3,
+            "baselineTimeMs": 37.55771686330651,
+            "variantTimeMs": 37.55771686330651,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 4,
+            "variantIndex": 4,
+            "baselineTimeMs": 43.572296471009764,
+            "variantTimeMs": 43.572296471009764,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 5,
+            "variantIndex": 5,
+            "baselineTimeMs": 49.707909182327896,
+            "variantTimeMs": 49.707909182327896,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 6,
+            "variantIndex": 6,
+            "baselineTimeMs": 55.91986007866418,
+            "variantTimeMs": 55.91986007866418,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 7,
+            "variantIndex": 7,
+            "baselineTimeMs": 62.196355416280845,
+            "variantTimeMs": 62.196355416280845,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 8,
+            "variantIndex": 8,
+            "baselineTimeMs": 68.53933968395724,
+            "variantTimeMs": 68.53933968395724,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 9,
+            "variantIndex": 9,
+            "baselineTimeMs": 74.95713435134937,
+            "variantTimeMs": 74.95713435134937,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 10,
+            "variantIndex": 10,
+            "baselineTimeMs": 81.46280254899844,
+            "variantTimeMs": 81.46280254899844,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 11,
+            "variantIndex": 11,
+            "baselineTimeMs": 88.07323804629618,
+            "variantTimeMs": 88.07323804629618,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 12,
+            "variantIndex": 12,
+            "baselineTimeMs": 94.8095176235874,
+            "variantTimeMs": 94.8095176235874,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          }
+        ],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 11,
+        "id": "allen-human-541536216/1",
+        "specimenId": 541536216,
+        "label": "Cell 12",
+        "baselineEventCount": 9,
+        "variantEventCount": 9,
+        "matched": [
+          {
+            "baselineIndex": 0,
+            "variantIndex": 0,
+            "baselineTimeMs": 22.751958639949464,
+            "variantTimeMs": 22.751958639949464,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 1,
+            "variantIndex": 1,
+            "baselineTimeMs": 28.74603667055242,
+            "variantTimeMs": 28.74603667055242,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 2,
+            "variantIndex": 2,
+            "baselineTimeMs": 36.19225058238865,
+            "variantTimeMs": 36.19225058238865,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 3,
+            "variantIndex": 3,
+            "baselineTimeMs": 44.882837031710054,
+            "variantTimeMs": 44.882837031710054,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 4,
+            "variantIndex": 4,
+            "baselineTimeMs": 54.17660183399397,
+            "variantTimeMs": 54.17660183399397,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 5,
+            "variantIndex": 5,
+            "baselineTimeMs": 63.61675910970298,
+            "variantTimeMs": 63.61675910970298,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 6,
+            "variantIndex": 6,
+            "baselineTimeMs": 73.09294831965532,
+            "variantTimeMs": 73.09294831965532,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 7,
+            "variantIndex": 7,
+            "baselineTimeMs": 82.58268436653348,
+            "variantTimeMs": 82.58268436653348,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          },
+          {
+            "baselineIndex": 8,
+            "variantIndex": 8,
+            "baselineTimeMs": 92.08025566959806,
+            "variantTimeMs": 92.08025566959806,
+            "deltaMs": 0,
+            "classification": "unchanged"
+          }
+        ],
+        "added": [],
+        "lost": []
+      }
+    ],
+    "contacts": [
+      {
+        "contactIndex": 0,
+        "contactId": "contact-1",
+        "neural": {
+          "baselinePeakToPeakUv": 18.562393474718032,
+          "variantPeakToPeakUv": 18.562388951317192,
+          "peakToPeakChangeUv": -4.523400839673286e-06,
+          "deltaPeakToPeakUv": 0.00013836670121136763,
+          "deltaRmsUv": 2.0847855860669145e-05,
+          "maximumAbsoluteDeltaUv": 0.00010195417156921849
+        },
+        "artifact": {
+          "baselinePeakToPeakUv": 0,
+          "variantPeakToPeakUv": 0,
+          "peakToPeakChangeUv": 0,
+          "deltaPeakToPeakUv": 0,
+          "deltaRmsUv": 0,
+          "maximumAbsoluteDeltaUv": 0
+        },
+        "total": {
+          "baselinePeakToPeakUv": 18.562393474718032,
+          "variantPeakToPeakUv": 18.562388951317192,
+          "peakToPeakChangeUv": -4.523400839673286e-06,
+          "deltaPeakToPeakUv": 0.00013836670121136763,
+          "deltaRmsUv": 2.0847855860669145e-05,
+          "maximumAbsoluteDeltaUv": 0.00010195417156921849
+        }
+      },
+      {
+        "contactIndex": 1,
+        "contactId": "contact-2",
+        "neural": {
+          "baselinePeakToPeakUv": 17.154211137859573,
+          "variantPeakToPeakUv": 17.154200318230544,
+          "peakToPeakChangeUv": -1.081962902915734e-05,
+          "deltaPeakToPeakUv": 0.00022708994956310846,
+          "deltaRmsUv": 3.5070144528096035e-05,
+          "maximumAbsoluteDeltaUv": 0.0001710717314615806
+        },
+        "artifact": {
+          "baselinePeakToPeakUv": 0,
+          "variantPeakToPeakUv": 0,
+          "peakToPeakChangeUv": 0,
+          "deltaPeakToPeakUv": 0,
+          "deltaRmsUv": 0,
+          "maximumAbsoluteDeltaUv": 0
+        },
+        "total": {
+          "baselinePeakToPeakUv": 17.154211137859573,
+          "variantPeakToPeakUv": 17.154200318230544,
+          "peakToPeakChangeUv": -1.081962902915734e-05,
+          "deltaPeakToPeakUv": 0.00022708994956310846,
+          "deltaRmsUv": 3.5070144528096035e-05,
+          "maximumAbsoluteDeltaUv": 0.0001710717314615806
+        }
+      },
+      {
+        "contactIndex": 2,
+        "contactId": "contact-3",
+        "neural": {
+          "baselinePeakToPeakUv": 16.241387156143965,
+          "variantPeakToPeakUv": 16.24134483012719,
+          "peakToPeakChangeUv": -4.232601677500725e-05,
+          "deltaPeakToPeakUv": 0.0005533237389094836,
+          "deltaRmsUv": 8.349482254242596e-05,
+          "maximumAbsoluteDeltaUv": 0.0004084060330686867
+        },
+        "artifact": {
+          "baselinePeakToPeakUv": 0,
+          "variantPeakToPeakUv": 0,
+          "peakToPeakChangeUv": 0,
+          "deltaPeakToPeakUv": 0,
+          "deltaRmsUv": 0,
+          "maximumAbsoluteDeltaUv": 0
+        },
+        "total": {
+          "baselinePeakToPeakUv": 16.241387156143965,
+          "variantPeakToPeakUv": 16.24134483012719,
+          "peakToPeakChangeUv": -4.232601677500725e-05,
+          "deltaPeakToPeakUv": 0.0005533237389094836,
+          "deltaRmsUv": 8.349482254242596e-05,
+          "maximumAbsoluteDeltaUv": 0.0004084060330686867
+        }
+      },
+      {
+        "contactIndex": 3,
+        "contactId": "contact-4",
+        "neural": {
+          "baselinePeakToPeakUv": 14.182852530063382,
+          "variantPeakToPeakUv": 14.182507389928539,
+          "peakToPeakChangeUv": -0.0003451401348435468,
+          "deltaPeakToPeakUv": 0.0019402849407690326,
+          "deltaRmsUv": 0.00028459724186460174,
+          "maximumAbsoluteDeltaUv": 0.0014111479975085217
+        },
+        "artifact": {
+          "baselinePeakToPeakUv": 0,
+          "variantPeakToPeakUv": 0,
+          "peakToPeakChangeUv": 0,
+          "deltaPeakToPeakUv": 0,
+          "deltaRmsUv": 0,
+          "maximumAbsoluteDeltaUv": 0
+        },
+        "total": {
+          "baselinePeakToPeakUv": 14.182852530063382,
+          "variantPeakToPeakUv": 14.182507389928539,
+          "peakToPeakChangeUv": -0.0003451401348435468,
+          "deltaPeakToPeakUv": 0.0019402849407690326,
+          "deltaRmsUv": 0.00028459724186460174,
+          "maximumAbsoluteDeltaUv": 0.0014111479975085217
+        }
+      },
+      {
+        "contactIndex": 4,
+        "contactId": "contact-5",
+        "neural": {
+          "baselinePeakToPeakUv": 14.001601415535474,
+          "variantPeakToPeakUv": 14.009417793465518,
+          "peakToPeakChangeUv": 0.007816377930044638,
+          "deltaPeakToPeakUv": 0.0262347086381709,
+          "deltaRmsUv": 0.004112983415199548,
+          "maximumAbsoluteDeltaUv": 0.017426275625901155
+        },
+        "artifact": {
+          "baselinePeakToPeakUv": 0,
+          "variantPeakToPeakUv": 0,
+          "peakToPeakChangeUv": 0,
+          "deltaPeakToPeakUv": 0,
+          "deltaRmsUv": 0,
+          "maximumAbsoluteDeltaUv": 0
+        },
+        "total": {
+          "baselinePeakToPeakUv": 14.001601415535474,
+          "variantPeakToPeakUv": 14.009417793465518,
+          "peakToPeakChangeUv": 0.007816377930044638,
+          "deltaPeakToPeakUv": 0.0262347086381709,
+          "deltaRmsUv": 0.004112983415199548,
+          "maximumAbsoluteDeltaUv": 0.017426275625901155
+        }
+      },
+      {
+        "contactIndex": 5,
+        "contactId": "contact-6",
+        "neural": {
+          "baselinePeakToPeakUv": 12.781779115586588,
+          "variantPeakToPeakUv": 12.781552709484906,
+          "peakToPeakChangeUv": -0.0002264061016816754,
+          "deltaPeakToPeakUv": 0.0026032084292495483,
+          "deltaRmsUv": 0.0003808566638507088,
+          "maximumAbsoluteDeltaUv": 0.00182396418079378
+        },
+        "artifact": {
+          "baselinePeakToPeakUv": 0,
+          "variantPeakToPeakUv": 0,
+          "peakToPeakChangeUv": 0,
+          "deltaPeakToPeakUv": 0,
+          "deltaRmsUv": 0,
+          "maximumAbsoluteDeltaUv": 0
+        },
+        "total": {
+          "baselinePeakToPeakUv": 12.781779115586588,
+          "variantPeakToPeakUv": 12.781552709484906,
+          "peakToPeakChangeUv": -0.0002264061016816754,
+          "deltaPeakToPeakUv": 0.0026032084292495483,
+          "deltaRmsUv": 0.0003808566638507088,
+          "maximumAbsoluteDeltaUv": 0.00182396418079378
+        }
+      },
+      {
+        "contactIndex": 6,
+        "contactId": "contact-7",
+        "neural": {
+          "baselinePeakToPeakUv": 11.598596758647542,
+          "variantPeakToPeakUv": 11.598634661455586,
+          "peakToPeakChangeUv": 3.790280804416568e-05,
+          "deltaPeakToPeakUv": 0.0005560684437675434,
+          "deltaRmsUv": 8.341361654298557e-05,
+          "maximumAbsoluteDeltaUv": 0.00040765068435710816
+        },
+        "artifact": {
+          "baselinePeakToPeakUv": 0,
+          "variantPeakToPeakUv": 0,
+          "peakToPeakChangeUv": 0,
+          "deltaPeakToPeakUv": 0,
+          "deltaRmsUv": 0,
+          "maximumAbsoluteDeltaUv": 0
+        },
+        "total": {
+          "baselinePeakToPeakUv": 11.598596758647542,
+          "variantPeakToPeakUv": 11.598634661455586,
+          "peakToPeakChangeUv": 3.790280804416568e-05,
+          "deltaPeakToPeakUv": 0.0005560684437675434,
+          "deltaRmsUv": 8.341361654298557e-05,
+          "maximumAbsoluteDeltaUv": 0.00040765068435710816
+        }
+      },
+      {
+        "contactIndex": 7,
+        "contactId": "contact-8",
+        "neural": {
+          "baselinePeakToPeakUv": 8.636376910144305,
+          "variantPeakToPeakUv": 8.63639510156432,
+          "peakToPeakChangeUv": 1.819142001480145e-05,
+          "deltaPeakToPeakUv": 0.00026454377066365,
+          "deltaRmsUv": 3.905464592101074e-05,
+          "maximumAbsoluteDeltaUv": 0.0001911656860578148
+        },
+        "artifact": {
+          "baselinePeakToPeakUv": 0,
+          "variantPeakToPeakUv": 0,
+          "peakToPeakChangeUv": 0,
+          "deltaPeakToPeakUv": 0,
+          "deltaRmsUv": 0,
+          "maximumAbsoluteDeltaUv": 0
+        },
+        "total": {
+          "baselinePeakToPeakUv": 8.636376910144305,
+          "variantPeakToPeakUv": 8.63639510156432,
+          "peakToPeakChangeUv": 1.819142001480145e-05,
+          "deltaPeakToPeakUv": 0.00026454377066365,
+          "deltaRmsUv": 3.905464592101074e-05,
+          "maximumAbsoluteDeltaUv": 0.0001911656860578148
+        }
+      }
+    ],
+    "eventMatching": "Ordered one-to-one matching maximizes pair count within the inclusive 5 ms window, then minimizes total absolute timing difference. Added/lost labels are unmatched events under this rule. Timing changes within 1e-9 ms are labeled unchanged.",
+    "signalConvention": "Raw ideal contact signals in µV. Delta is variant minus baseline at identical saved times; peak-to-peak is over the complete saved window. Membrane-source signals include ionic and capacitive currents, not only isolated spikes.",
+    "scope": "Descriptive ground-truth model comparison. Event correspondence does not establish causal attribution, propagation, extracellular detectability, converged selectivity or biological validity. Both conditions use complete active-cable solves."
+  },
+  "archiveCompression": "gzip; losslessly repacked with Zopfli, five iterations"
+}

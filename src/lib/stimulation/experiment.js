@@ -1,7 +1,42 @@
 import { normalizeConfig, simulationDuration } from './config.js';
 import { contactArea, contactNodes, conductivityTensor, contactField, accessMatrix, distanceToContact, interfaceStep, fieldAt } from './field.js';
 import { createPopulation, samplePopulation, createMorphology } from './anatomy.js';
-import { compileCable, stepCable } from './membrane.js';
+import { compileCable, stepCable, MEMBRANE_DOMAIN_LIMIT_MV } from './membrane.js';
+
+export const RECRUITMENT_VALIDITY = Object.freeze({
+  version: 'reduced-stimulation-recruitment/2',
+  absoluteVoltageLimitMv: MEMBRANE_DOMAIN_LIMIT_MV,
+  rule: 'A trajectory is invalid if any compartment exceeds the absolute-voltage limit at any integration step. The entire cell is excluded, including crossings before the violation.',
+  denominator: 'Only within-domain simulated cells; excludes voltage-domain violations and contact intersections.',
+  detection: 'First upward 0 mV crossing in soma, AIS or axon. This reduced-model criterion is not independently validated biological recruitment.',
+  diagnostics: 'Raw threshold crossings, first domain violation and unclipped traces remain available for invalid trajectories. Nonfinite or absolute voltages above 3000 mV abort the experiment.',
+});
+
+/** Separate interpretable responses from raw crossings without altering traces. */
+export function qualifyResponse(cell) {
+  const diagnosticCrossings = { firstSpike: cell.firstSpike, firstNode: cell.firstNode, firstKind: cell.firstKind, somaSpike: cell.somaSpike, axonSpike: cell.axonSpike };
+  const valid = !cell.extreme;
+  return { ...cell, valid, responseStatus: valid ? cell.firstSpike >= 0 ? 'spiked' : 'silent' : 'invalid',
+    diagnosticCrossings,
+    ...(!valid ? { firstSpike: -1, firstNode: -1, firstKind: '', somaSpike: -1, axonSpike: -1 } : {}),
+  };
+}
+
+export function measureRecruitment(samples) {
+  const valid = samples.filter(n => n.valid), active = valid.filter(n => n.firstSpike >= 0);
+  const distances = active.map(n => n.somaDistance).sort((a, b) => a - b);
+  const bins = Array.from({ length: 8 }, (_, i) => ({ lower: i * 75, upper: (i + 1) * 75, total: 0, activated: 0, invalid: 0 }));
+  for (const cell of samples) {
+    const bin = bins[Math.min(bins.length - 1, Math.floor(cell.somaDistance / 75))];
+    if (!cell.valid) { bin.invalid++; continue; }
+    bin.total++; if (cell.firstSpike >= 0) bin.activated++;
+  }
+  return { bins, summary: { activated: active.length, valid: valid.length, invalid: samples.length - valid.length, silent: valid.length - active.length,
+    axonal: valid.filter(n => n.axonSpike >= 0).length, somatic: valid.filter(n => n.somaSpike >= 0).length,
+    firstAxonal: active.filter(n => ['ais', 'axon'].includes(n.firstKind)).length,
+    medianDistance: distances[Math.floor(distances.length / 2)] ?? 0,
+    p90Distance: distances[Math.floor((distances.length - 1) * .9)] ?? 0 } };
+}
 
 export function pulseAverage(t, dt, c) {
   const width = c.phaseWidth / 1000, gap = c.gap / 1000;
@@ -55,7 +90,7 @@ export function runExperiment(input, report = () => {}) {
   report({ progress: .12, label: 'Integrating finite contact fields along each neuron' });
   const extracellular = morphologies.flatMap(m => m.nodes.map(node => contacts.reduce((sum, contact, j) => sum + c.electrodes[j].weight * contactField(node.position, contact, sigma), 0)));
   const cable = compileCable(morphologies, c, extracellular), matrix = accessMatrix(contacts, sigma), count = morphologies.length;
-  const state = { firstSpike: new Float64Array(count).fill(-1), somaSpike: new Float64Array(count).fill(-1), axonSpike: new Float64Array(count).fill(-1), firstNode: new Int32Array(count).fill(-1), extreme: new Uint8Array(count) };
+  const state = { firstSpike: new Float64Array(count).fill(-1), somaSpike: new Float64Array(count).fill(-1), axonSpike: new Float64Array(count).fill(-1), firstNode: new Int32Array(count).fill(-1), extreme: new Uint8Array(count), invalidAt: new Float64Array(count).fill(-1), invalidNode: new Int32Array(count).fill(-1), invalidVoltage: new Float64Array(count), peakAbsVoltage: new Float64Array(count).fill(70) };
   const duration = simulationDuration(c), steps = Math.ceil(duration / c.dt), stride = Math.max(1, Math.round(.025 / c.dt)), frames = Math.floor(steps / stride) + 1;
   const time = new Float32Array(frames), soma = new Float32Array(frames * count), ais = new Float32Array(frames * count), current = new Float32Array(frames * contacts.length), voltage = new Float32Array(frames * contacts.length), etaTrace = new Float32Array(frames * contacts.length);
   const polarization = contacts.map(() => 0), charge = contacts.map(() => ({ leading: Array(c.pulses).fill(0), recovery: Array(c.pulses).fill(0), net: 0, maxVoltage: 0, maxPolarization: 0, maxCurrent: 0 }));
@@ -84,12 +119,10 @@ export function runExperiment(input, report = () => {}) {
     if (step % 100 === 0) report({ progress: .22 + .65 * step / steps, label: `Solving ${count.toLocaleString()} neurons · ${t.toFixed(1)} / ${duration.toFixed(1)} ms` });
   }
   report({ progress: .9, label: 'Mapping the field and measuring recruitment' });
-  const sampled = morphologies.map((m, i) => ({ ...m.cell, firstSpike: state.firstSpike[i], firstNode: state.firstNode[i], firstKind: state.firstNode[i] < 0 ? '' : m.nodes[state.firstNode[i]].kind, somaSpike: state.somaSpike[i], axonSpike: state.axonSpike[i], extreme: !!state.extreme[i], compartments: m.nodes.length, somaDistance: Math.min(...c.electrodes.filter(e => e.weight !== 0).map(e => distanceToContact(m.cell.position, e))), neuriteDistance: m.nearest }));
-  const bins = Array.from({ length: 8 }, (_, i) => ({ lower: i * 75, upper: (i + 1) * 75, total: 0, activated: 0 }));
-  for (const cell of sampled) { const bin = bins[Math.min(bins.length - 1, Math.floor(cell.somaDistance / 75))]; bin.total++; if (cell.firstSpike >= 0) bin.activated++; }
-  const active = sampled.filter(n => n.firstSpike >= 0), distances = active.map(n => n.somaDistance).sort((a, b) => a - b);
+  const sampled = morphologies.map((m, i) => qualifyResponse({ ...m.cell, firstSpike: state.firstSpike[i], firstNode: state.firstNode[i], firstKind: state.firstNode[i] < 0 ? '' : m.nodes[state.firstNode[i]].kind, somaSpike: state.somaSpike[i], axonSpike: state.axonSpike[i], extreme: !!state.extreme[i], domainViolation: state.extreme[i] ? { timeMs: state.invalidAt[i], compartment: state.invalidNode[i], voltageMv: state.invalidVoltage[i] } : null, peakAbsVoltageMv: state.peakAbsVoltage[i], compartments: m.nodes.length, somaDistance: Math.min(...c.electrodes.filter(e => e.weight !== 0).map(e => distanceToContact(m.cell.position, e))), neuriteDistance: m.nearest }));
+  const { bins, summary: recruitment } = measureRecruitment(sampled);
   const anatomy = { positions: new Float32Array(population.cells.length * 3), radii: new Float32Array(population.cells.length * 3) };
   population.cells.forEach((cell, i) => { anatomy.positions.set(cell.position, i * 3); anatomy.radii.set(cell.radii, i * 3); });
-  const summary = { activated: active.length, solved: count, represented: population.cells.length, rejected: rejected.length, axonal: sampled.filter(n => n.axonSpike >= 0).length, somatic: sampled.filter(n => n.somaSpike >= 0).length, firstAxonal: active.filter(n => ['ais', 'axon'].includes(n.firstKind)).length, extreme: sampled.filter(n => n.extreme).length, medianDistance: distances[Math.floor(distances.length / 2)] ?? 0, p90Distance: distances[Math.floor((distances.length - 1) * .9)] ?? 0, clippedFraction: onSteps ? clippedSteps / onSteps : 0, netWeight: c.electrodes.reduce((s, e) => s + e.weight, 0), compartmentCount: cable.length, runtimeMs: Date.now() - started };
-  return { version: c.version, config: c, anatomy, population: { count: population.cells.length, target: population.target, meanDiameter: population.meanDiameter, inhibitoryFraction: population.inhibitoryFraction, volume: population.volume, density: population.density, nearestMedian: population.nearestMedian, characteristicSpacing: population.characteristicSpacing }, samples: sampled, rejected, summary, bins, traces: { time, soma, ais, current, voltage, polarization: etaTrace, count, electrodes: contacts.length }, interfaces: charge.map((q, i) => ({ ...q, area: contactArea(c.electrodes[i]), phaseCharge: Math.max(...q.leading.map(Math.abs), ...q.recovery.map(Math.abs)), chargeDensity: Math.max(...q.leading.map(Math.abs), ...q.recovery.map(Math.abs)) / contactArea(c.electrodes[i]) * 100 })), field: fieldSlice(c, contacts, c.electrodes.map(e => e.weight * peakDrive)), peakDrive };
+  const summary = { ...recruitment, solved: count, represented: population.cells.length, rejected: rejected.length, extreme: recruitment.invalid, clippedFraction: onSteps ? clippedSteps / onSteps : 0, netWeight: c.electrodes.reduce((s, e) => s + e.weight, 0), compartmentCount: cable.length, runtimeMs: Date.now() - started };
+  return { version: c.version, recruitmentValidity: RECRUITMENT_VALIDITY, config: c, anatomy, population: { count: population.cells.length, target: population.target, meanDiameter: population.meanDiameter, inhibitoryFraction: population.inhibitoryFraction, volume: population.volume, density: population.density, nearestMedian: population.nearestMedian, characteristicSpacing: population.characteristicSpacing }, samples: sampled, rejected, summary, bins, traces: { time, soma, ais, current, voltage, polarization: etaTrace, count, electrodes: contacts.length }, interfaces: charge.map((q, i) => ({ ...q, area: contactArea(c.electrodes[i]), phaseCharge: Math.max(...q.leading.map(Math.abs), ...q.recovery.map(Math.abs)), chargeDensity: Math.max(...q.leading.map(Math.abs), ...q.recovery.map(Math.abs)) / contactArea(c.electrodes[i]) * 100 })), field: fieldSlice(c, contacts, c.electrodes.map(e => e.weight * peakDrive)), peakDrive };
 }

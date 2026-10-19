@@ -6,7 +6,7 @@ The new experiment uses the original active cable solver, morphology meshes, fit
 
 ## Test shank and finite fields
 
-The hypothetical shank is 90 × 20 µm, 1,800 µm long, with a 300 µm pointed taper. Eight surface contacts include 12 × 12, 20 × 20, 30 × 30 and 12 × 24 µm rectangles. The Neuropixels-inspired silhouette is a test design, not an optimized or manufactured device. Contact size and position both vary; comparisons do not isolate area alone.
+The hypothetical shank is 90 × 20 µm, 1,800 µm long, with a 300 µm pointed taper. Eight surface contacts include 12 × 12, 20 × 20, 30 × 30 and 12 × 24 µm rectangles. The Neuropixels-inspired silhouette is a test design, not an optimized or manufactured device. Contact size and position both vary in the original layout. The [controlled-comparison mode](INTERFACE_COMPARISONS.md) now changes one contact's size at a fixed center, holding the other inputs constant, or compares a protocol with stimulation off and on.
 
 The joint panel solver imposes equipotential contacts and prescribed total current. Inactive contacts float with zero net current, retaining induced local panel currents. Current is shared equally across selected pads; the return is at infinity. The same reciprocal coefficients are used for stimulation and ideal neural recording. Neural current is the cable solver's outward total membrane current; intracellular injection is not added again. Direct applied-source artifact is stored separately in µV. All signals at an output frame describe the just-completed integration interval.
 
@@ -14,7 +14,7 @@ The joint panel solver imposes equipotential contacts and prescribed total curre
 
 ## Computed examples
 
-Both examples use 40 µm compartments, dt 0.005 ms, 100 ms no-drive conditioning, 0.1 ms saved sampling and 0.3 S/m conductivity. Complete morphologies are rigidly placed with at least 25 µm membrane-surface clearance from the plane. Source hashes, cell identities, currents, placement and detector events accompany the saved data.
+The two original examples and two new paired fixtures use 40 µm compartments, dt 0.005 ms, 100 ms no-drive conditioning, 0.1 ms saved sampling and 0.3 S/m conductivity. Complete morphologies are rigidly placed with at least 25 µm membrane-surface clearance from the plane. Source hashes, cell identities, currents, placement and detector events accompany the saved data. See [the comparison guide](INTERFACE_COMPARISONS.md) for the paired fixtures, shared scales, per-cell recordings, and full comparison import/export.
 
 * Ongoing firing: 260 ms; explicit cell-specific somatic current starts at offsets 0–22 ms. All twelve cells produce at least two complete somatic events. This is imposed patch-style drive, not spontaneous resting activity or a cortical network.
 * Evoked example: 100 ms, no somatic drive; pad 5, 40 µA, 200 µs cathodic and anodic phases separated by 100 µs, 20 Hz from 20 ms. Cell 8 (601927090) has complete events at 20.870914 and 70.793808 ms, with peaks +14.0754 and +14.8585 mV. Other cells have no somatic events; all remain solved. The corresponding zero-current check has no event in this cell. This exact run is reproducible; it is not a converged threshold or biological selectivity result.

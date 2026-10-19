@@ -3,18 +3,19 @@ import { gzipSync } from 'node:zlib';
 import { createHash } from 'node:crypto';
 import { freshInterfaceConfig, loadInterfaceModels, runInterfaceExperiment } from '../src/lib/cortex/interface-experiment.js';
 import { encodeInterfaceArchive, decodeInterfaceArchive } from '../src/lib/cortex/interface-archive.js';
+import { INTERFACE_ENGINE_MANIFEST } from '../src/lib/cortex/interface-build-manifest.js';
 const config = freshInterfaceConfig();
 const exampleName = process.argv.includes('--evoked') ? 'evoked' : 'default';
 if (exampleName === 'evoked') Object.assign(config, { mode: 'evoked', activeContacts: [4], amplitudeUa: 40,
   startMs: 20, durationMs: 100, frequencyHz: 20 });
 await loadInterfaceModels(config, path => readFile(new URL('../public' + path, import.meta.url)));
 const result = runInterfaceExperiment(config, status => console.log(status.message));
-const sourcePaths = ['src/lib/cortex/interface-experiment.js', 'src/lib/cortex/interface-contract.js',
-  'src/lib/cortex/interface-field.js', 'src/lib/cortex/interface-presets.js',
-  'src/lib/cortex/active-cable.js', 'src/lib/cortex/active-channels.js', 'src/lib/cortex/extra-channels.js',
-  'src/lib/cortex/active-morphology.js', 'src/lib/cortex/model-library.js'];
+const sourcePaths = Object.keys(INTERFACE_ENGINE_MANIFEST.sourceHashes);
 result.solverSourceHashes = Object.fromEntries(await Promise.all(sourcePaths.map(async path =>
   [path, createHash('sha256').update(await readFile(new URL('../' + path, import.meta.url))).digest('hex')])));
+for (const path of sourcePaths) if (result.solverSourceHashes[path] !== INTERFACE_ENGINE_MANIFEST.sourceHashes[path])
+  throw new Error('Regenerate the interface engine manifest before saving examples.');
+result.engineManifestVersion = INTERFACE_ENGINE_MANIFEST.version;
 for (const cell of result.cells) {
   console.log(`${cell.specimenId}: ${cell.spikeTimesMs.length} complete somatic events, ${cell.nodes.length} compartments, soma y=${cell.somaUm[1].toFixed(1)} µm`);
   if (exampleName === 'default' && cell.spikeTimesMs.length < 2) throw new Error(`Default cell ${cell.specimenId} did not repeatedly fire.`);

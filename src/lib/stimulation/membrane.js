@@ -2,6 +2,9 @@
 // Pospischil et al. (2008) kinetics; spatial channel allocation is a new assumption.
 // Internal units: mV, ms, nA, nF, µS. Axial resistivity: Ω cm.
 const REST = -70, ENA = 50, EK = -100;
+// Existing diagnostic boundary, now also an explicit result-validity rule.
+// It is not a biological safety threshold. Preserve the trajectory unchanged.
+export const MEMBRANE_DOMAIN_LIMIT_MV = 200;
 const trap = (x, y) => Math.abs(x / y) < 1e-7 ? y * (1 - x / (2 * y)) : x / Math.expm1(x / y);
 export function gateRates(v, threshold = -55) {
   const u = v - threshold;
@@ -72,7 +75,15 @@ export function stepCable(cable, drive, time, state = null) {
     if (!Number.isFinite(v[i]) || Math.abs(v[i]) > 3000) throw new Error('The reduced membrane model left its supported voltage range. Reduce current or move contacts away from neurites.');
     if (state) {
       const owner = cable.owner[i];
-      if (Math.abs(v[i]) > 200) state.extreme[owner] = 1;
+      if (state.peakAbsVoltage) state.peakAbsVoltage[owner] = Math.max(state.peakAbsVoltage[owner], Math.abs(v[i]));
+      if (Math.abs(v[i]) > MEMBRANE_DOMAIN_LIMIT_MV) {
+        state.extreme[owner] = 1;
+        if (state.invalidAt?.[owner] < 0) {
+          state.invalidAt[owner] = time;
+          state.invalidNode[owner] = i - cable.root[owner];
+          state.invalidVoltage[owner] = v[i];
+        }
+      }
       if (old < 0 && v[i] >= 0 && cable.kind[i] !== 1) {
         if (state.firstSpike[owner] < 0) { state.firstSpike[owner] = time; state.firstNode[owner] = i - cable.root[owner]; }
         if (cable.kind[i] === 0 && state.somaSpike[owner] < 0) state.somaSpike[owner] = time;

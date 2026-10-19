@@ -50,7 +50,8 @@ export async function buildDiscoveryIndex() {
       keywords: [model.deviceId, model.slug ?? '', ...(model.specs ?? []).flatMap(spec => spec)],
     })),
     ...[
-      ['Cortex Laboratory', '/cortex/', 'Shared anatomy, passive cable currents and physical implant placement', 'cortex laboratory recording stimulation Utah membrane physics'],
+      ['Neural Interface Laboratory', '/cortex/interface/', 'Twelve active human neurons, finite surface contacts, stimulation and ideal recordings', 'cortex integrated neural interface laboratory finite shank electrode membrane voltage replay spike raster'],
+      ['Cortex Laboratory', '/cortex/', 'Published active human cells, physical implant placement and numerical evidence', 'cortex laboratory recording stimulation Utah membrane physics finite disk'],
       ['Finger Pathway Atlas', '/simulations/finger-pathway-atlas/', '3D sensory and motor anatomy from fingertip to cortex', 'finger index touch motor hand nerve ganglion spinal cord brainstem medulla thalamus cortex anatomy atlas'],
       ['Finger Pathway Atlas V3', '/simulations/finger-pathway-atlas/v3/', 'Complete original anatomical atlas and detailed cellular specimens', 'finger atlas v3 original baseline sensory motor cells comparison'],
       ['Finger Pathway Atlas V4', '/simulations/finger-pathway-atlas/v4/', 'Continuous sensory and motor pathways with adaptive cellular detail', 'finger atlas v4 development troubleshooting pathways cells comparison'],

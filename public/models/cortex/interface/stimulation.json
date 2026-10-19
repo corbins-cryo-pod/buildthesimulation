@@ -1,0 +1,590 @@
+{
+  "version": "cortex-interface-comparison/1",
+  "spec": {
+    "version": "cortex-interface-comparison/1",
+    "kind": "stimulation",
+    "eventMatchWindowMs": 5
+  },
+  "generatedAt": "2026-10-19T03:57:34.561Z",
+  "sha256": "a8ab12f6c86c630e651af458b2330e2c3778c66b095e7a62757615563a87b05c",
+  "compressedBytes": 7225579,
+  "solverSourceHashes": {
+    "src/lib/cortex/interface-contract.js": "3d4a2c7ece1b0d9186f5b248c7600161d014f29d600723e73f0b5b7e3aa5a1e9",
+    "src/lib/cortex/interface-experiment.js": "152fad76269c432b565bddfb7b481c7c900cb12219902ecd991e626c0cb88701",
+    "src/lib/cortex/interface-field.js": "de3f6e6deccdb0fb461dd74340739f94e52686690268eb05a4e84712ca854782",
+    "src/lib/cortex/interface-presets.js": "d44374b2c2dc1c3cbc3f32552849547e267ec42239a031f07c6aa6c5681d323d",
+    "src/lib/cortex/interface-comparison.js": "9261bfc94658a028e3c309436ec72dd4bcc9fc4ffa38e96b1f5b5856c2b1e50b",
+    "src/lib/cortex/interface-comparison-analysis.js": "75cb34878175c745eb56d38ee5fe4a461d3ab9b373a07c8a5bb7fafa6356e021",
+    "src/lib/cortex/active-cable.js": "2e40c7dcdc3268490a3f5c552bf2f14a421e4048deff16090aa8298e03397537",
+    "src/lib/cortex/active-channels.js": "be4c862dddd31f0492c27c7f9349d40550b0402b562d561d3fe22d799237afbb",
+    "src/lib/cortex/extra-channels.js": "6852bf67814c58568e4c24c2521af118a549a9f8304c1e43434054f1715bc019",
+    "src/lib/cortex/active-morphology.js": "2f539f33208d571f3fbbcc2c47df45fbd83cd81d42bb7391e45bf3b7f622376a",
+    "src/lib/cortex/model-library.js": "9074771687e11e114b701189bdf51fdc346f1e5e8a0bb14c3a127e658aa14d0a"
+  },
+  "baseline": {
+    "config": {
+      "version": "cortex-interface/1",
+      "count": 12,
+      "mode": "evoked",
+      "activeContacts": [
+        4
+      ],
+      "amplitudeUa": 0,
+      "phaseUs": 200,
+      "gapUs": 100,
+      "frequencyHz": 20,
+      "startMs": 20,
+      "durationMs": 100,
+      "dtMs": 0.005,
+      "sampleMs": 0.1,
+      "settleMs": 100,
+      "segmentLengthUm": 40,
+      "panelDivisions": 4,
+      "conductivitySm": 0.3,
+      "clearanceUm": 25,
+      "contactGeometry": null
+    },
+    "compartments": 3428,
+    "elapsedSeconds": 54.31020706100002,
+    "cells": [
+      {
+        "id": "allen-human-571654895/1",
+        "specimenId": 571654895,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-508378649/1",
+        "specimenId": 508378649,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-508417989/1",
+        "specimenId": 508417989,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-529878215/1",
+        "specimenId": 529878215,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-541563728/1",
+        "specimenId": 541563728,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-569844159/1",
+        "specimenId": 569844159,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-531520637/1",
+        "specimenId": 531520637,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-601927090/1",
+        "specimenId": 601927090,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-614651270/1",
+        "specimenId": 614651270,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-526734407/1",
+        "specimenId": 526734407,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-529807751/1",
+        "specimenId": 529807751,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-541536216/1",
+        "specimenId": 541536216,
+        "spikeTimesMs": []
+      }
+    ]
+  },
+  "variant": {
+    "config": {
+      "version": "cortex-interface/1",
+      "count": 12,
+      "mode": "evoked",
+      "activeContacts": [
+        4
+      ],
+      "amplitudeUa": 40,
+      "phaseUs": 200,
+      "gapUs": 100,
+      "frequencyHz": 20,
+      "startMs": 20,
+      "durationMs": 100,
+      "dtMs": 0.005,
+      "sampleMs": 0.1,
+      "settleMs": 100,
+      "segmentLengthUm": 40,
+      "panelDivisions": 4,
+      "conductivitySm": 0.3,
+      "clearanceUm": 25,
+      "contactGeometry": null
+    },
+    "compartments": 3428,
+    "elapsedSeconds": 56.120235208,
+    "cells": [
+      {
+        "id": "allen-human-571654895/1",
+        "specimenId": 571654895,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-508378649/1",
+        "specimenId": 508378649,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-508417989/1",
+        "specimenId": 508417989,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-529878215/1",
+        "specimenId": 529878215,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-541563728/1",
+        "specimenId": 541563728,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-569844159/1",
+        "specimenId": 569844159,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-531520637/1",
+        "specimenId": 531520637,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-601927090/1",
+        "specimenId": 601927090,
+        "spikeTimesMs": [
+          20.870913700875086,
+          70.79380811188166
+        ]
+      },
+      {
+        "id": "allen-human-614651270/1",
+        "specimenId": 614651270,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-526734407/1",
+        "specimenId": 526734407,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-529807751/1",
+        "specimenId": 529807751,
+        "spikeTimesMs": []
+      },
+      {
+        "id": "allen-human-541536216/1",
+        "specimenId": 541536216,
+        "spikeTimesMs": []
+      }
+    ]
+  },
+  "analysis": {
+    "inputChanges": [
+      {
+        "path": "amplitudeUa",
+        "baseline": 0,
+        "variant": 40
+      }
+    ],
+    "canonicalInputs": {
+      "format": "canonical-json/1",
+      "baseline": "{\"activeContacts\":[4],\"amplitudeUa\":0,\"clearanceUm\":25,\"conductivitySm\":0.3,\"contactGeometry\":null,\"count\":12,\"dtMs\":0.005,\"durationMs\":100,\"frequencyHz\":20,\"gapUs\":100,\"mode\":\"evoked\",\"panelDivisions\":4,\"phaseUs\":200,\"sampleMs\":0.1,\"segmentLengthUm\":40,\"settleMs\":100,\"startMs\":20,\"version\":\"cortex-interface/1\"}",
+      "variant": "{\"activeContacts\":[4],\"amplitudeUa\":40,\"clearanceUm\":25,\"conductivitySm\":0.3,\"contactGeometry\":null,\"count\":12,\"dtMs\":0.005,\"durationMs\":100,\"frequencyHz\":20,\"gapUs\":100,\"mode\":\"evoked\",\"panelDivisions\":4,\"phaseUs\":200,\"sampleMs\":0.1,\"segmentLengthUm\":40,\"settleMs\":100,\"startMs\":20,\"version\":\"cortex-interface/1\"}"
+    },
+    "eventMatchWindowMs": 5,
+    "cells": [
+      {
+        "cellIndex": 0,
+        "id": "allen-human-571654895/1",
+        "specimenId": 571654895,
+        "label": "Cell 1",
+        "baselineEventCount": 0,
+        "variantEventCount": 0,
+        "matched": [],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 1,
+        "id": "allen-human-508378649/1",
+        "specimenId": 508378649,
+        "label": "Cell 2",
+        "baselineEventCount": 0,
+        "variantEventCount": 0,
+        "matched": [],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 2,
+        "id": "allen-human-508417989/1",
+        "specimenId": 508417989,
+        "label": "Cell 3",
+        "baselineEventCount": 0,
+        "variantEventCount": 0,
+        "matched": [],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 3,
+        "id": "allen-human-529878215/1",
+        "specimenId": 529878215,
+        "label": "Cell 4",
+        "baselineEventCount": 0,
+        "variantEventCount": 0,
+        "matched": [],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 4,
+        "id": "allen-human-541563728/1",
+        "specimenId": 541563728,
+        "label": "Cell 5",
+        "baselineEventCount": 0,
+        "variantEventCount": 0,
+        "matched": [],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 5,
+        "id": "allen-human-569844159/1",
+        "specimenId": 569844159,
+        "label": "Cell 6",
+        "baselineEventCount": 0,
+        "variantEventCount": 0,
+        "matched": [],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 6,
+        "id": "allen-human-531520637/1",
+        "specimenId": 531520637,
+        "label": "Cell 7",
+        "baselineEventCount": 0,
+        "variantEventCount": 0,
+        "matched": [],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 7,
+        "id": "allen-human-601927090/1",
+        "specimenId": 601927090,
+        "label": "Cell 8",
+        "baselineEventCount": 0,
+        "variantEventCount": 2,
+        "matched": [],
+        "added": [
+          {
+            "variantIndex": 0,
+            "timeMs": 20.870913700875086
+          },
+          {
+            "variantIndex": 1,
+            "timeMs": 70.79380811188166
+          }
+        ],
+        "lost": []
+      },
+      {
+        "cellIndex": 8,
+        "id": "allen-human-614651270/1",
+        "specimenId": 614651270,
+        "label": "Cell 9",
+        "baselineEventCount": 0,
+        "variantEventCount": 0,
+        "matched": [],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 9,
+        "id": "allen-human-526734407/1",
+        "specimenId": 526734407,
+        "label": "Cell 10",
+        "baselineEventCount": 0,
+        "variantEventCount": 0,
+        "matched": [],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 10,
+        "id": "allen-human-529807751/1",
+        "specimenId": 529807751,
+        "label": "Cell 11",
+        "baselineEventCount": 0,
+        "variantEventCount": 0,
+        "matched": [],
+        "added": [],
+        "lost": []
+      },
+      {
+        "cellIndex": 11,
+        "id": "allen-human-541536216/1",
+        "specimenId": 541536216,
+        "label": "Cell 12",
+        "baselineEventCount": 0,
+        "variantEventCount": 0,
+        "matched": [],
+        "added": [],
+        "lost": []
+      }
+    ],
+    "contacts": [
+      {
+        "contactIndex": 0,
+        "contactId": "contact-1",
+        "neural": {
+          "baselinePeakToPeakUv": 0.005032306260921125,
+          "variantPeakToPeakUv": 0.946572208326047,
+          "peakToPeakChangeUv": 0.9415399020651259,
+          "deltaPeakToPeakUv": 0.9442059320628211,
+          "deltaRmsUv": 0.03934375733805341,
+          "maximumAbsoluteDeltaUv": 0.49813312966624496
+        },
+        "artifact": {
+          "baselinePeakToPeakUv": 0,
+          "variantPeakToPeakUv": 62426.10387109754,
+          "peakToPeakChangeUv": 62426.10387109754,
+          "deltaPeakToPeakUv": 62426.10387109754,
+          "deltaRmsUv": 2790.385392452395,
+          "maximumAbsoluteDeltaUv": 31213.05193554877
+        },
+        "total": {
+          "baselinePeakToPeakUv": 0.005032306260921125,
+          "variantPeakToPeakUv": 62427.05044330587,
+          "peakToPeakChangeUv": 62427.045410999606,
+          "deltaPeakToPeakUv": 62427.048077029605,
+          "deltaRmsUv": 2790.424028093279,
+          "maximumAbsoluteDeltaUv": 31213.550068678436
+        }
+      },
+      {
+        "contactIndex": 1,
+        "contactId": "contact-2",
+        "neural": {
+          "baselinePeakToPeakUv": 0.004110702702642181,
+          "variantPeakToPeakUv": 0.16435132301273828,
+          "peakToPeakChangeUv": 0.1602406203100961,
+          "deltaPeakToPeakUv": 0.16436562602044147,
+          "deltaRmsUv": 0.007935522451693862,
+          "maximumAbsoluteDeltaUv": 0.0971101703724036
+        },
+        "artifact": {
+          "baselinePeakToPeakUv": 0,
+          "variantPeakToPeakUv": 83047.52523103525,
+          "peakToPeakChangeUv": 83047.52523103525,
+          "deltaPeakToPeakUv": 83047.52523103525,
+          "deltaRmsUv": 3712.142628066406,
+          "maximumAbsoluteDeltaUv": 41523.762615517626
+        },
+        "total": {
+          "baselinePeakToPeakUv": 0.004110702702642181,
+          "variantPeakToPeakUv": 83047.6757898085,
+          "peakToPeakChangeUv": 83047.6716791058,
+          "deltaPeakToPeakUv": 83047.67352709189,
+          "deltaRmsUv": 3712.145722859463,
+          "maximumAbsoluteDeltaUv": 41523.85299104403
+        }
+      },
+      {
+        "contactIndex": 2,
+        "contactId": "contact-3",
+        "neural": {
+          "baselinePeakToPeakUv": 0.00282170161675201,
+          "variantPeakToPeakUv": 2.7834671706487555,
+          "peakToPeakChangeUv": 2.7806454690320033,
+          "deltaPeakToPeakUv": 2.7822331959240696,
+          "deltaRmsUv": 0.11854412491044033,
+          "maximumAbsoluteDeltaUv": 1.4651894047124183
+        },
+        "artifact": {
+          "baselinePeakToPeakUv": 0,
+          "variantPeakToPeakUv": 124904.53974525195,
+          "peakToPeakChangeUv": 124904.53974525195,
+          "deltaPeakToPeakUv": 124904.53974525195,
+          "deltaRmsUv": 5583.109973927209,
+          "maximumAbsoluteDeltaUv": 62452.26987262598
+        },
+        "total": {
+          "baselinePeakToPeakUv": 0.00282170161675201,
+          "variantPeakToPeakUv": 124902.08992090404,
+          "peakToPeakChangeUv": 124902.08709920241,
+          "deltaPeakToPeakUv": 124902.0882712996,
+          "deltaRmsUv": 5582.992811985514,
+          "maximumAbsoluteDeltaUv": 62451.0850016967
+        }
+      },
+      {
+        "contactIndex": 3,
+        "contactId": "contact-4",
+        "neural": {
+          "baselinePeakToPeakUv": 0.0010717394685908327,
+          "variantPeakToPeakUv": 20.75842008896051,
+          "peakToPeakChangeUv": 20.75734834949192,
+          "deltaPeakToPeakUv": 20.758420812231023,
+          "deltaRmsUv": 0.8725730620357252,
+          "maximumAbsoluteDeltaUv": 11.076167818265791
+        },
+        "artifact": {
+          "baselinePeakToPeakUv": 0,
+          "variantPeakToPeakUv": 244669.60295924876,
+          "peakToPeakChangeUv": 244669.60295924876,
+          "deltaPeakToPeakUv": 244669.60295924876,
+          "deltaRmsUv": 10936.490406070441,
+          "maximumAbsoluteDeltaUv": 122334.80147962438
+        },
+        "total": {
+          "baselinePeakToPeakUv": 0.0010717394685908327,
+          "variantPeakToPeakUv": 244652.01273176068,
+          "peakToPeakChangeUv": 244652.0116600212,
+          "deltaPeakToPeakUv": 244652.0120963039,
+          "deltaRmsUv": 10935.632554390366,
+          "maximumAbsoluteDeltaUv": 122326.49191898476
+        }
+      },
+      {
+        "contactIndex": 4,
+        "contactId": "contact-5",
+        "neural": {
+          "baselinePeakToPeakUv": 0.00031569295688547365,
+          "variantPeakToPeakUv": 80.7204861302967,
+          "peakToPeakChangeUv": 80.72017043733982,
+          "deltaPeakToPeakUv": 80.72062384988638,
+          "deltaRmsUv": 3.3544066144703653,
+          "maximumAbsoluteDeltaUv": 44.097547028486915
+        },
+        "artifact": {
+          "baselinePeakToPeakUv": 0,
+          "variantPeakToPeakUv": 10068813.068684328,
+          "peakToPeakChangeUv": 10068813.068684328,
+          "deltaPeakToPeakUv": 10068813.068684328,
+          "deltaRmsUv": 450066.0327001209,
+          "maximumAbsoluteDeltaUv": 5034406.534342164
+        },
+        "total": {
+          "baselinePeakToPeakUv": 0.00031569295688547365,
+          "variantPeakToPeakUv": 10068749.405808814,
+          "peakToPeakChangeUv": 10068749.405493122,
+          "deltaPeakToPeakUv": 10068749.405671071,
+          "deltaRmsUv": 450062.8039810478,
+          "maximumAbsoluteDeltaUv": 5034377.359085815
+        }
+      },
+      {
+        "contactIndex": 5,
+        "contactId": "contact-6",
+        "neural": {
+          "baselinePeakToPeakUv": 0.0002467125053476479,
+          "variantPeakToPeakUv": 6.855302417729938,
+          "peakToPeakChangeUv": 6.85505570522459,
+          "deltaPeakToPeakUv": 6.855303082860493,
+          "deltaRmsUv": 0.3101642960369265,
+          "maximumAbsoluteDeltaUv": 3.5972208636690435
+        },
+        "artifact": {
+          "baselinePeakToPeakUv": 0,
+          "variantPeakToPeakUv": 244426.89590771796,
+          "peakToPeakChangeUv": 244426.89590771796,
+          "deltaPeakToPeakUv": 244426.89590771796,
+          "deltaRmsUv": 10925.64163978134,
+          "maximumAbsoluteDeltaUv": 122213.44795385898
+        },
+        "total": {
+          "baselinePeakToPeakUv": 0.0002467125053476479,
+          "variantPeakToPeakUv": 244420.29704015,
+          "peakToPeakChangeUv": 244420.2967934375,
+          "deltaPeakToPeakUv": 244420.29716420674,
+          "deltaRmsUv": 10925.342101852357,
+          "maximumAbsoluteDeltaUv": 122210.37998699174
+        }
+      },
+      {
+        "contactIndex": 6,
+        "contactId": "contact-7",
+        "neural": {
+          "baselinePeakToPeakUv": 0.0001465124911749112,
+          "variantPeakToPeakUv": 6.923100707769697,
+          "peakToPeakChangeUv": 6.922954195278522,
+          "deltaPeakToPeakUv": 6.923176443170279,
+          "deltaRmsUv": 0.3001459472665453,
+          "maximumAbsoluteDeltaUv": 3.71559233500519
+        },
+        "artifact": {
+          "baselinePeakToPeakUv": 0,
+          "variantPeakToPeakUv": 124899.97400374392,
+          "peakToPeakChangeUv": 124899.97400374392,
+          "deltaPeakToPeakUv": 124899.97400374392,
+          "deltaRmsUv": 5582.905889776194,
+          "maximumAbsoluteDeltaUv": 62449.98700187196
+        },
+        "total": {
+          "baselinePeakToPeakUv": 0.0001465124911749112,
+          "variantPeakToPeakUv": 124906.8971044517,
+          "peakToPeakChangeUv": 124906.8969579392,
+          "deltaPeakToPeakUv": 124906.89718018708,
+          "deltaRmsUv": 5583.202859743709,
+          "maximumAbsoluteDeltaUv": 62453.70259420697
+        }
+      },
+      {
+        "contactIndex": 7,
+        "contactId": "contact-8",
+        "neural": {
+          "baselinePeakToPeakUv": 0.00006413069149214384,
+          "variantPeakToPeakUv": 4.318728827777198,
+          "peakToPeakChangeUv": 4.318664697085706,
+          "deltaPeakToPeakUv": 4.318758329880579,
+          "deltaRmsUv": 0.18838785886387738,
+          "maximumAbsoluteDeltaUv": 2.2750127330784546
+        },
+        "artifact": {
+          "baselinePeakToPeakUv": 0,
+          "variantPeakToPeakUv": 83057.15538387303,
+          "peakToPeakChangeUv": 83057.15538387303,
+          "deltaPeakToPeakUv": 83057.15538387303,
+          "deltaRmsUv": 3712.5730864185907,
+          "maximumAbsoluteDeltaUv": 41528.577691936516
+        },
+        "total": {
+          "baselinePeakToPeakUv": 0.00006413069149214384,
+          "variantPeakToPeakUv": 83061.47411270082,
+          "peakToPeakChangeUv": 83061.47404857012,
+          "deltaPeakToPeakUv": 83061.4741422029,
+          "deltaRmsUv": 3712.760515311516,
+          "maximumAbsoluteDeltaUv": 41530.852704669596
+        }
+      }
+    ],
+    "eventMatching": "Ordered one-to-one matching maximizes pair count within the inclusive 5 ms window, then minimizes total absolute timing difference. Added/lost labels are unmatched events under this rule. Timing changes within 1e-9 ms are labeled unchanged.",
+    "signalConvention": "Raw ideal contact signals in µV. Delta is variant minus baseline at identical saved times; peak-to-peak is over the complete saved window. Membrane-source signals include ionic and capacitive currents, not only isolated spikes.",
+    "scope": "Descriptive ground-truth model comparison. Event correspondence does not establish causal attribution, propagation, extracellular detectability, converged selectivity or biological validity. Both conditions use complete active-cable solves."
+  }
+}

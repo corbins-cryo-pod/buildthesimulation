@@ -1,45 +1,50 @@
-Current population workflow: [distinct published-cell library](CELL_LIBRARY.md), including source-specific fits, filters and no repeated specimens.
+# Cortex laboratories
 
-# Cortex Laboratory
+Current routes: `/cortex/` for the detailed cell/reference workbench;
+`/cortex/interface/` for the integrated twelve-cell neural interface.
+Active engine: `cortex-active/0.2.0`; original active experiment schema:
+`cortex-experiment/2`; integrated experiment schema: `cortex-interface/1`.
 
-Route: `/cortex/`. Public methods: `/cortex/methods/`.
-Active engine: `cortex-active/0.2.0`; active experiment schema: `cortex-experiment/2`.
+## Current capabilities
 
-**Finite-contact integration handoff:** see
-[FINITE_CONTACT_HANDOFF](FINITE_CONTACT_HANDOFF.md) for the verified standalone
-disk package, measured results, current code entry points and a ready-to-use
-task for another worker AI. The complete package is retained offline in
+| Surface | Implemented scope | Current record |
+| --- | --- | --- |
+| Original Cortex Laboratory | Sixteen distinct human source specimens, current clamp, synaptic input, extracellular stimulation, physical implant placement, ideal recordings and detailed membrane replay | [Cell library](CELL_LIBRARY.md), [architecture](ARCHITECTURE.md) |
+| Original population experiments | Distinct-specimen cloud/grid/shell placements within the available filtered pool and work/memory limits; unsupported placements are explicit | [Cell library](CELL_LIBRARY.md), [population history](POPULATIONS.md) |
+| Finite-disk laboratory mode | Active human-cell coupling to a pinned disk field with restricted coverage and exact-case evidence | [Finite integration](FINITE_CONTACT_INTEGRATION.md), [finite rigor](FINITE_RIGOR.md) |
+| Neural Interface Laboratory | Twelve distinct human active models, eight selectable finite rectangular pads on a hypothetical shank, complete compartment replay, ideal reciprocal recordings and soma-event rasters | [Integrated laboratory](INTERFACE_LABORATORY.md), [cell drive presets](INTERFACE_CELL_PRESETS.md) |
+| Field benchmarks | Standalone finite-disk package and surface-geometry gallery with scoped numerical checks | [Finite contact handoff](FINITE_CONTACT_HANDOFF.md), [field gallery](FIELD_GALLERY.md) |
+
+The integrated laboratory uses a joint contact solution with an **infinite
+insulating backing plane**, not a solved finite shank body. The shank tip,
+back and sides are visible geometry but do not yet shape its field. Repeated
+baseline firing comes from explicit calibrated somatic current; the cells are
+independent, without a synaptic network. Public methods are at
+`/cortex/interface/methods/` and `/cortex/methods/`.
+
+The source library includes fourteen human EAP fits and two explicitly described
+human epilepsy basket-cell adaptations. Specimen 571654895 remains the original
+human temporal layer-2 reference, not the only selectable model. Dendrites,
+source-fitted channels and source-prescribed short axons retain their original
+model identities. The former 64-copy population is historical; current selection
+does not repeat specimen identities. Passive mathematical kernels and fixtures
+remain offline regression references, not the interactive default.
+
+Physical implant sites remain separate from hardware channels and unknown
+channel assignment. The original workbench offers two ideal contact signals,
+infinity/bipolar display references, separate neural/applied components,
+configuration import, pinned comparisons and exports. The integrated workbench
+records all eight pads and exports its protocol, signals and full replay.
+Workers handle active solves; cancellation does not manufacture results.
+Independent NEURON/LFPykit references and finite-field studies apply only to their
+specified configurations; they do not certify the new interface generally.
+
+Historical handoff documents retain the state and limitations of their dated
+milestone. The retained offline disk package is at
 [`workbench/cortex-finite-contact-field/`](../../workbench/cortex-finite-contact-field/).
-It is not yet integrated into the laboratory runtime.
-
-This is a scientific electrical workbench with bounded independent populations.
-It contains one representative cortical slab, one published human temporal model instantiated at specified positions, and
-the existing catalog's Utah 1.5 mm reference. Synaptic recording, intracellular
-current clamp and extracellular stimulation use the **same physical world**.
-The laboratory uses human temporal layer-2 spiny specimen
-571654895: reconstructed dendrites, fitted section parameters, nine channel
-mechanisms, calcium dynamics and the published synthetic 60 µm axon stub.
-The human cell is the only selectable model and the default for initial load and reset. The simplified passive arbor is retired from the interactive laboratory; its mathematical kernel and original fixtures remain offline regression references.
-
-## What works
-
-- Default seeded distance cloud with increasing radii and random angular vectors;
-  alternative 3D grid and concentric shells; up to 64 full active-cell instances
-  at default solver settings. Unsupported near-source placements are visible and
-  explicitly excluded, never labeled inactive. See [POPULATIONS](POPULATIONS.md).
-- Physically scaled 3D patch with pia, illustrative I–VI boundaries, CSF and white
-  matter guides; cutaway/opacity; orthographic/perspective views; physical scale
-  bar; compartment, contact-coordinate and soma-distance inspection.
-- Catalog-based implant translation/rotation/depth; physical sites remain
-  separate from simultaneous channels and unknown channel assignment.
-- Human active cable, total outward membrane currents, point/line-source
-  recordings, explicit source/return stimulation and computed field section.
-- Two ideal recording sites, infinity/bipolar reference, separated neural and
-  applied-source signals, replay/step, pinned-run comparison, configuration
-  round trip, CSV and self-contained provenance/results JSON.
-- Worker execution, cancellation, bounded CPU fallback, numerical tests and
-  reproducible Node benchmarks; pinned NEURON 9.0.1 uniform/branched-cable references
-  and independent LFPykit 0.6.2 coefficients and recordings for all three protocols.
+The [platform review](../platform/REVIEW_2026-10-18.md) records the integration's
+remaining gaps and staged development plan; proposed capabilities are not shipped
+features.
 
 ## Electrical workbench milestone
 
@@ -54,7 +59,8 @@ phase jumps and individual sample stepping.
 See [EXAMPLES](EXAMPLES.md), [REFINEMENT](REFINEMENT.md) and the public methods
 page. Example outcomes are reproduced calculations, not biological thresholds.
 The 3×3 refinement study preserves physical morphology/channel totals and
-reports failed gates transparently; no deeper physical model is released.
+reports failed gates transparently. These historical gates do not establish
+convergence of the later finite-contact experiments.
 
 ```sh
 node scripts/verify-cortex-examples.mjs
@@ -64,12 +70,14 @@ node scripts/benchmark-cortex-workbench.mjs
 
 ## What does not work yet
 
-No coupled networks, distinct-source cell diversity, regional tissue scans, layered conductivity, finite exposed Utah tip
-model, acquisition electronics, mechanics or experimental validation. No clinical,
+No coupled networks, regional tissue scans, layered conductivity, solved finite
+shank body or finite exposed Utah tip model, acquisition electronics, mechanics
+or independent experimental validation. No clinical,
 device-performance or tissue-safety inference is supported. See [ROADMAP](ROADMAP.md).
-Active numerical verification is not held-out biological validation. The selected
-cell is temporal, not M1; its axon is a model stub and kinetics have mixed-species
-origins. See [ACTIVE_MODEL](ACTIVE_MODEL.md) for source, license and exact scope.
+Active numerical verification is not held-out biological validation. The source
+models are not a measured M1 circuit; their short axons and mixed-species channel
+kinetics retain the limitations of the original fits. See
+[ACTIVE_MODEL](ACTIVE_MODEL.md) for source, license and exact scope.
 
 ## Development
 

@@ -111,5 +111,5 @@ test('end-to-end local-return experiment returns finite traces and conserved del
   for (const key of ['time', 'soma', 'ais', 'current', 'voltage', 'polarization']) assert(r.traces[key].every(Number.isFinite));
   for (let k = 0; k < r.traces.time.length; k++) close(r.traces.current[k * 2] + r.traces.current[k * 2 + 1], 0, 1e-8);
   close(r.interfaces.reduce((sum, e) => sum + e.net, 0), 0, 1e-8);
-  assert.equal(r.bins.reduce((sum, b) => sum + b.total, 0), r.summary.solved); assert.equal(r.bins.reduce((sum, b) => sum + b.activated, 0), r.summary.activated);
+  assert.equal(r.bins.reduce((sum, b) => sum + b.total, 0), r.summary.valid); assert.equal(r.bins.reduce((sum, b) => sum + b.activated, 0), r.summary.activated);
 });
