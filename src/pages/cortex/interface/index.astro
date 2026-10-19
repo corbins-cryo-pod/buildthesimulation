@@ -1,0 +1,8 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CortexInterfaceLaboratory from '../../../components/CortexInterfaceLaboratory.jsx';
+---
+<Layout pageTitle="Neural Interface Laboratory" description="A single finite-contact test shank and twelve reconstructed human neurons: full membrane voltage replay, stimulation, ideal extracellular recordings and somatic spike rasters." wide={true} compactHeader={true}>
+  <CortexInterfaceLaboratory client:load />
+  <noscript><p>Enable JavaScript for the interactive experiment. <a href="/cortex/interface/methods/">Model equations, provenance and limitations</a> are available without it.</p></noscript>
+</Layout>

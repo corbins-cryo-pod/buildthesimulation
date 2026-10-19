@@ -1,0 +1,202 @@
+{
+  "schema": "cortex-interface-field-numerics/1",
+  "model": "cortex-joint-planar-contacts/1",
+  "design": {
+    "id": "cortex-test-shank/1",
+    "name": "Interface test shank",
+    "widthUm": 90,
+    "thicknessUm": 20,
+    "lengthUm": 1800,
+    "taperUm": 300,
+    "plane": "y=0",
+    "tissueSide": "+y",
+    "description": "A hypothetical 90 × 20 µm single shank with a 300 µm pointed tip and eight finite surface contacts. Neuropixels-inspired silhouette; dimensions and mixed contact sizes are a test design, not an optimized or manufactured device.",
+    "contacts": [
+      {
+        "id": "contact-1",
+        "index": 0,
+        "label": "1",
+        "centerUm": [
+          -18,
+          0,
+          250
+        ],
+        "widthUm": 12,
+        "heightUm": 12,
+        "areaUm2": 144,
+        "shape": "rectangle"
+      },
+      {
+        "id": "contact-2",
+        "index": 1,
+        "label": "2",
+        "centerUm": [
+          18,
+          0,
+          420
+        ],
+        "widthUm": 20,
+        "heightUm": 20,
+        "areaUm2": 400,
+        "shape": "rectangle"
+      },
+      {
+        "id": "contact-3",
+        "index": 2,
+        "label": "3",
+        "centerUm": [
+          -18,
+          0,
+          590
+        ],
+        "widthUm": 30,
+        "heightUm": 30,
+        "areaUm2": 900,
+        "shape": "rectangle"
+      },
+      {
+        "id": "contact-4",
+        "index": 3,
+        "label": "4",
+        "centerUm": [
+          18,
+          0,
+          760
+        ],
+        "widthUm": 12,
+        "heightUm": 24,
+        "areaUm2": 288,
+        "shape": "rectangle"
+      },
+      {
+        "id": "contact-5",
+        "index": 4,
+        "label": "5",
+        "centerUm": [
+          -18,
+          0,
+          930
+        ],
+        "widthUm": 12,
+        "heightUm": 12,
+        "areaUm2": 144,
+        "shape": "rectangle"
+      },
+      {
+        "id": "contact-6",
+        "index": 5,
+        "label": "6",
+        "centerUm": [
+          18,
+          0,
+          1100
+        ],
+        "widthUm": 20,
+        "heightUm": 20,
+        "areaUm2": 400,
+        "shape": "rectangle"
+      },
+      {
+        "id": "contact-7",
+        "index": 6,
+        "label": "7",
+        "centerUm": [
+          -18,
+          0,
+          1270
+        ],
+        "widthUm": 30,
+        "heightUm": 30,
+        "areaUm2": 900,
+        "shape": "rectangle"
+      },
+      {
+        "id": "contact-8",
+        "index": 7,
+        "label": "8",
+        "centerUm": [
+          18,
+          0,
+          1440
+        ],
+        "widthUm": 12,
+        "heightUm": 24,
+        "areaUm2": 288,
+        "shape": "rectangle"
+      }
+    ],
+    "references": [
+      {
+        "title": "Jun et al. 2017 — Fully integrated silicon probes for high-density recording of neural activity",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5955206/",
+        "supports": "Neuropixels single-shank inspiration; the original is 70 × 20 µm with a 10 mm shank, not this test geometry."
+      },
+      {
+        "title": "Steinmetz et al. 2021 — Neuropixels 2.0",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8244810/",
+        "supports": "Slender shank and tapered tip inspiration; this test design does not reproduce the device."
+      },
+      {
+        "title": "COMSOL — Current Distribution, Boundary Elements",
+        "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.corr/corr_ug_electrochem.06.069.html",
+        "supports": "Boundary integral conductor formulation; does not validate this implementation."
+      }
+    ]
+  },
+  "sampledPointCount": 144,
+  "sampleDomain": "At each contact: y=10,25,100 µm; x offsets 0,width/2,width; z offsets 0,height/2. All 8 contact lead fields.",
+  "gates": {
+    "coarseToFinePotentialRelativeDifference": 0.03,
+    "coarseToFineTerminalRelativeDifference": 0.04
+  },
+  "comparisons": [
+    {
+      "coarseDivisions": 4,
+      "fineDivisions": 6,
+      "maximumPotentialRelativeDifference": 0.012963283935252035,
+      "maximumTerminalRelativeDifference": 0.01348341097262895
+    },
+    {
+      "coarseDivisions": 6,
+      "fineDivisions": 8,
+      "maximumPotentialRelativeDifference": 0.005743305759734696,
+      "maximumTerminalRelativeDifference": 0.007087020589358728
+    },
+    {
+      "coarseDivisions": 4,
+      "fineDivisions": 8,
+      "maximumPotentialRelativeDifference": 0.01878104179827722,
+      "maximumTerminalRelativeDifference": 0.020665988773165278
+    }
+  ],
+  "balance": [
+    {
+      "panelDivisions": 4,
+      "panelCount": 160,
+      "currentBalanceError": 2.220446049250313e-16,
+      "weakEquipotentialRelativeError": 1.5525222514027627e-15
+    },
+    {
+      "panelDivisions": 6,
+      "panelCount": 360,
+      "currentBalanceError": 6.661338147750939e-16,
+      "weakEquipotentialRelativeError": 2.0979447057820012e-15
+    },
+    {
+      "panelDivisions": 8,
+      "panelCount": 640,
+      "currentBalanceError": 6.661338147750939e-16,
+      "weakEquipotentialRelativeError": 3.649404021174486e-15
+    }
+  ],
+  "passed": true,
+  "limitations": [
+    "The visible finite shaft is approximated electrically by an infinite insulating backing plane. No fields around its sides, back or tip are represented.",
+    "Floating inactive contacts have zero net current but may carry nonzero induced local panel currents.",
+    "Homogeneous isotropic resistive tissue; ideal conducting contact surfaces; no interface impedance, capacitance, noise or amplifier model.",
+    "No neural sample is accepted below 10 µm from the backing plane. Edge and surface fields are not reported.",
+    "Neural recording uses point transmembrane-current sources at compartment centers and the reciprocal finite-contact lead fields.",
+    "Numerical consistency and mesh checks do not establish real implant accuracy, tissue safety or biological selectivity."
+  ],
+  "independentConductorComparison": "Not performed for this multi-contact configuration."
+}

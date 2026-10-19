@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import CortexWorkspace from '../../components/CortexWorkspace.jsx';
 ---
 <Layout pageTitle="Cortex Laboratory" description="Physically scaled cortical experiments with a published human temporal active-neuron model, Utah array, single Neuralink N1 thread or Neuropixels shank, calculated currents and reproducible exports." wide={true} compactHeader={true}>
+  <p style="margin:14px auto;max-width:1400px;padding:14px 18px;border:1px solid var(--borderStrong);border-radius:10px"><a href="/cortex/interface/"><strong>Open the Neural Interface Laboratory →</strong></a> — twelve active human cells, one finite-contact shank, full membrane replay, recordings and spike rasters.</p>
   <CortexWorkspace client:load />
   <p style="margin:20px auto;max-width:1100px;padding:0 16px"><a href="/cortex/finite-contact/">Finite disk stimulation benchmark</a> — reconstructed human cell, membrane replay, source and validation.</p>
   <noscript><p>Enable JavaScript to run the numerical experiments. <a href="/cortex/methods/">Equations, assumptions and scientific sources</a> remain available without it.</p></noscript>

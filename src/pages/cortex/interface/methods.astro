@@ -1,0 +1,89 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { INTERFACE_DESIGN } from '../../../lib/cortex/interface-field.js';
+---
+<Layout pageTitle="Neural Interface Laboratory — methods" subtitle="Human cable models, finite surface contacts, and the limits of the combined experiment.">
+  <article class="interface-methods">
+    <a href="/cortex/interface/">← Open the Neural Interface Laboratory</a>
+    <h2>One experiment, three linked calculations</h2>
+    <p>The laboratory places independently simulated human cortical neurons beside one hypothetical test shank. Their compartment voltages drive the membrane colors and soma raster. Their transmembrane currents generate ideal extracellular recordings at the finite contacts. Selected contacts can also apply extracellular stimulation to the same cable equations.</p>
+    <p><strong>This is an exploratory numerical experiment.</strong> It combines existing human-cell machinery with a new joint finite-contact conductor calculation. Earlier point-source and single-disk reference results do not independently validate this new geometry, its population placements, or its stimulation thresholds.</p>
+    <table>
+      <thead><tr><th>What you see</th><th>What produces it</th><th>What it establishes</th></tr></thead>
+      <tbody>
+        <tr><td>Voltage moving across a cell</td><td>Saved membrane voltage in each actual cable compartment; one color scale for all neurons.</td><td>The calculated spatial and temporal membrane response. A traveling color change alone does not establish causal spike propagation.</td></tr>
+        <tr><td>Repeated somatic firing</td><td>Active membrane dynamics under an imposed, patch-style background current.</td><td>A driven response of the fitted cell. These neurons are not claimed to fire spontaneously at rest.</td></tr>
+        <tr><td>Contact recording</td><td>Reciprocal finite-contact coefficients applied to compartment transmembrane currents.</td><td>The ideal electrode potential in the declared conductor, without acquisition electronics.</td></tr>
+        <tr><td>Stimulation response</td><td>Selected contact currents produce extracellular potential differences along every neuron.</td><td>The model's resulting polarization and voltage events. Recruitment or selective activation requires additional convergence and validation.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>The test interface</h2>
+    <p>The rendered shank is {INTERFACE_DESIGN.lengthUm} µm long, {INTERFACE_DESIGN.widthUm} µm wide, and {INTERFACE_DESIGN.thicknessUm} µm thick, with a {INTERFACE_DESIGN.taperUm} µm taper to a pointed end. Its slender single-shank appearance is inspired by Neuropixels. The mixed contact sizes and positions are explicit design choices for this experiment; they do not reproduce a commercial device or establish an optimal implant.</p>
+    <table>
+      <thead><tr><th>Contact</th><th>Exposed rectangle</th><th>Area</th><th>Center (x, y, z)</th></tr></thead>
+      <tbody>{INTERFACE_DESIGN.contacts.map(contact => <tr>
+        <td>{contact.label}</td><td>{contact.widthUm} × {contact.heightUm} µm</td>
+        <td>{contact.areaUm2} µm²</td><td>{contact.centerUm.join(', ')} µm</td>
+      </tr>)}</tbody>
+    </table>
+    <p>All coordinates use micrometres. Positive z runs down the shank. The contact face lies at y = 0 and the modeled tissue occupies y &gt; 0. Contact surfaces and neuron branches are shown at their declared dimensions; labels and selection outlines are visual guides.</p>
+    <p>Comparing contacts in this fixed layout changes both contact size and position relative to a neuron. A larger observed signal at one contact therefore does not isolate an electrode-area effect. A controlled geometry study must hold cell placement, contact center, tissue conductivity, and the compared current or voltage condition fixed.</p>
+
+    <h2>What the finite-contact calculation solves</h2>
+    <p>Each exposed rectangle is subdivided into surface panels. A joint boundary-integral calculation estimates panel currents while constraining every contact to a single potential and prescribing its total current. Inactive contacts float with zero total current: their local induced panel currents are retained. The resulting contact bases can be combined linearly because they were solved with the same coupled contact boundary conditions.</p>
+    <p>The medium is homogeneous, isotropic, and purely resistive, with the configured conductivity. The contact plane is insulating outside the pads and the reference return is at infinity. The implementation integrates the rectangular source panels and uses a symmetric numerical approximation for the target averages; surface discretization and quadrature remain numerical approximations.</p>
+    <p><strong>The visible finite shank is electrically approximated by an infinite insulating plane.</strong> Fields wrapping around the sides, back, or pointed tip are not represented. This is the principal difference between the rendered implant and the present conductor model. A full finite-shank solution is needed before interpreting tip shape, substrate width, or backside placement as electrical design variables.</p>
+    <p>Neural geometry must remain at least 10 µm into the tissue half-space, including the modeled branch radius. Surface and edge fields are not reported. An unsupported placement or failed calculation must be identified explicitly; it cannot be turned into an inactive neuron or a fabricated firing trace.</p>
+
+    <h2>The same coefficients connect stimulation and recording</h2>
+    <p>Let L<sub>ik</sub> be the extracellular potential at compartment i for one unit of current delivered through contact k, with all other contacts floating. Numerically, mV/µA is identical to µV/nA. Reciprocity therefore allows the same coefficients to be used in both directions:</p>
+    <pre>Applied potential at compartment i [mV]:
+  Veᵢ(t) = Σₖ Lᵢₖ Iₖ(t), with contact current I in µA
+
+Neural potential at contact k [µV]:
+  Vneural,ₖ(t) = Σᵢ Lᵢₖ Im,ᵢ(t), with membrane current Im in nA
+
+Direct applied-source artifact at contact k [µV]:
+  Vartifact,ₖ(t) = 1000 × Σⱼ Zₖⱼ Iⱼ(t), with Z in mV/µA</pre>
+    <p>The neural current sum includes the modeled cells and their membrane compartments. Each compartment contributes a point current source at its center. Finite electrode area is represented, while the extended spatial distribution of current within a neuronal compartment is approximated by that point source.</p>
+    <p>Z is the jointly solved contact-to-contact transfer matrix. The direct stimulation artifact is displayed separately from the neural component; their sum is the ideal total potential. This direct term omits electrode polarization, capacitive transients, lead coupling, amplifier saturation, clipping, blanking, filtering, and recovery. It is not a prediction of a hardware recording during stimulation.</p>
+
+    <h2>Human neurons and their drive</h2>
+    <p>The cells use the Cortex Laboratory's existing reconstructed human morphologies, fitted membrane parameters, active channel implementations, cable solver, and initialization conventions. They are not reduced to point neurons or animated spike templates. Dendrites and the source-prescribed axon approximation retain their cable compartments, with membrane voltages recalculated under the applied conditions.</p>
+    <p>The principal library source is the Allen Institute human all-active collection used by Mosher, Wei and colleagues. Its fitted models include reconstructed dendrites, a short synthetic axon, and channel kinetics with mixed-species origins. The broader library also includes explicitly identified human epilepsy basket-cell adaptations. The selected specimen and dataset matter: moving a temporal-cortex reconstruction into this scene does not validate it as a motor- or sensory-cortex circuit.</p>
+    <p>The background activity is imposed by somatic current injection in the style of a patch-clamp experiment. Each cell's own dynamics determine its events, firing adaptation, and response to the added extracellular field. The injected drive is a declared experimental condition, not a model of ongoing synaptic input in living cortex. Outward transmembrane current is the cable solver's capacitive plus ionic current; the intracellular injection is not added a second time to the extracellular source list.</p>
+    <p>Neurons are independent. There are no synapses between them, no recurrent network, and no ephaptic feedback of recorded neural potentials into the other cells. Their signals add in the linear conductor. Somata and arbors are arranged for inspection around the interface; the layout is not a reconstruction of measured cortical packing or connectivity, and arbors can overlap.</p>
+
+    <h2>Reading the replay and raster</h2>
+    <p>Every neuron uses the same membrane-voltage color mapping. Neutral gray indicates that a voltage sample is unavailable, including the period before a run; it does not mean that a neuron failed to activate. Colors during a completed replay come from each cell's saved compartment voltages.</p>
+    <p>The replay slows the simulated time axis without changing the integration timestep. Its saved output sampling can be coarser than the integration used to solve the membrane. A loop repeats a finite calculated window; it does not create new simulated activity beyond that window. Any saved default run represents its recorded configuration, and changed settings require a new calculation.</p>
+    <p>The soma raster uses an explicit action-potential-like waveform criterion: an upward crossing of −25 mV, a peak reaching at least 0 mV within 3 ms, and a return below −40 mV within 20 ms, with a 2 ms counting refractory interval. Raw threshold crossings are retained separately. Events too close to the end of the saved window may not have enough subsequent samples to meet the recovery criterion.</p>
+    <p>Inspect the accompanying voltage waveform when interpreting these marks. Local crossings, somatic waveform events, propagation from an initiation site, and a change in recruitment are different conclusions. Neither the detector nor the animation establishes causal propagation by itself.</p>
+
+    <h2>Evidence and remaining limits</h2>
+    <p>The selected background drives produce sustained complete soma events in all twelve cells at both 40 and 20 µm maximum compartment lengths. One original drive failed this refinement screen and was replaced with a separately tested current; unsuccessful candidates and scans are retained. Eleven final-current cases were also checked at half the integration step. These are persistence checks, not convergence: event counts can differ, and maximum matched ordinal event-time differences reached 37.134 ms under spatial refinement and 4.710 ms under timestep refinement.</p>
+    <p>The saved evoked example solves all twelve cells with background drive off. Pad 5 supplies two 40 µA balanced pulses (200 µs per phase, 100 µs gap) beginning at 20 and 70 ms. Cell 8, specimen 601927090, produces complete somatic events at 20.870914 and 70.793808 ms, reaching +14.0754 and +14.8585 mV. The other cells remain modeled and have no complete somatic events in that window. This confirms an evoked response in that exact numerical example; its threshold and selectivity are not independently validated or converged.</p>
+    <p>The default integration step is 0.005 ms, after 100 ms of no-drive conditioning, with output every 0.1 ms. The stored example's compartment voltage is rounded to 0.01 mV for transfer and replay; integration, event detection, soma traces and extracellular signal calculation use the solver's unrounded values. Custom runs retain Float32 compartment replay samples. Every cell's imposed current and start offset are exported.</p>
+    <p>The 160-panel contact model was compared with 360 and 640 panels at 144 sampled positions for all eight lead fields. The maximum 160-to-640-panel potential difference was 1.878%, and contact transfer-voltage difference was 2.067%. Current balance and contact constraints passed numerical consistency checks. This is a sampled refinement study, not an independent multicontact field-solver comparison.</p>
+    <p>Current balance, reciprocal symmetry, contact constraints, and mesh comparisons check properties of this numerical implementation. Agreement for those quantities does not prove a complete finite-shank field, a converged neural firing threshold, or biological selectivity. The new combined multi-contact configurations have not yet been reproduced in a separately matched native NEURON experiment.</p>
+    <p>The prior laboratory's numerical comparisons remain useful for their exact tested configurations. Its known sensitivity of extracellular activation to compartment length is not resolved merely by replacing the point electrode with finite contacts. New stimulation boundaries need their own compartment and timestep refinement, plus independent comparisons with matched field forcing.</p>
+    <p>There is no electrode interface impedance, impedance-dependent noise, amplifier input model, acquisition bandwidth, spike sorting, or noise threshold here. Consequently, an ideal extracellular amplitude comparison cannot establish a real electrode's signal-to-noise ratio, detection probability, or number of distinguishable neurons. Contact area, source distance, and orientation can be explored within the stated mathematics; practical device performance remains unvalidated.</p>
+    <p>The next physical extension is a conductor solution that includes the actual shank surface, tip, and return geometry. The next neural gate is independent reproduction and convergence of the exact combined experiments, followed by comparison with held-out electrophysiology.</p>
+
+    <h2>Sources and reproducibility</h2>
+    <ul class="sources">
+      {INTERFACE_DESIGN.references.map(reference => <li><a href={reference.url}>{reference.title}</a><p>{reference.supports}</p></li>)}
+      <li><a href="https://github.com/AllenInstitute/Human_all_active_models_EAP">Allen Institute — Human all-active models for extracellular action potentials</a><p>Source morphologies, fitted parameters, and original membrane mechanisms for the principal human-cell collection.</p></li>
+      <li><a href="https://doi.org/10.1016/j.celrep.2020.02.027">Mosher, Wei et al. (2020), Cell Reports</a><p>Original study associated with the human EAP models. Its fitting evidence is separate from validation of this combined experiment.</p></li>
+      <li><a href="https://github.com/anastassiou-team/human-epilepsy-project">Human epilepsy circuitry model repository</a><p>Provenance of the basket-cell adaptations available in the existing library; individual specimen metadata identifies the dataset used.</p></li>
+      <li><a href="/cortex/methods/">Cortex Laboratory methods</a> · <a href="/cortex/validation/">Existing numerical validation record</a><p>Detailed cable equations, source-model limitations, earlier numerical checks, and unresolved firing-threshold findings.</p></li>
+      <li><a href="https://github.com/corbins-cryo-pod/buildthesimulation/blob/main/src/lib/cortex/interface-field.js">Joint finite-contact field implementation</a> · <a href="https://github.com/corbins-cryo-pod/buildthesimulation/blob/main/src/lib/cortex/interface-experiment.js">Combined experiment implementation</a><p>The implementation and exported configuration define the model actually calculated. A reference citation is not an independent verification of this code.</p></li>
+      <li><a href="https://github.com/corbins-cryo-pod/buildthesimulation/blob/main/docs/cortex/INTERFACE_CELL_PRESETS.md">Background-current calibration and retained failures</a> · <a href="https://github.com/corbins-cryo-pod/buildthesimulation/blob/main/docs/cortex/interface-field-numerics.json">Multicontact field checks</a><p>The scope of the new preset and field evidence, including resolution-sensitive timing and the untested revised-current half-timestep case.</p></li>
+    </ul>
+    <p><a href="/cortex/interface/">Return to the Neural Interface Laboratory →</a></p>
+  </article>
+</Layout>
+<style>
+  .interface-methods{max-width:900px;margin:24px auto;padding:0 12px;font-size:15px;line-height:1.75}.interface-methods h2{font-size:27px;font-weight:400;margin:34px 0 12px}.interface-methods a{color:inherit;text-underline-offset:3px}.interface-methods table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}.interface-methods th,.interface-methods td{text-align:left;vertical-align:top;padding:10px;border-bottom:1px solid var(--border)}.interface-methods th{font-weight:600}.interface-methods pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.75;background:var(--panel);border:1px solid var(--border);padding:18px}.sources li{margin:0 0 15px}.sources p{color:var(--muted);font-size:13px;margin:4px 0}.interface-methods strong{font-weight:600}@media(max-width:650px){.interface-methods{font-size:14px}.interface-methods table{font-size:11px}.interface-methods th,.interface-methods td{padding:7px 4px}.interface-methods h2{font-size:24px}}
+</style>
