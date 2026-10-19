@@ -1,0 +1,66 @@
+name: Tissue Phase 2 reference verification
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/lib/tissue-mechanics/**'
+      - 'scripts/tissue-phase2/**'
+      - 'tests/tissue-phase2*.mjs'
+      - '.github/workflows/tissue-phase2-reference.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install independent numerical reference packages
+        run: |
+          python -m pip install 'felupe==11.3.0' scipy openpyxl tensortrax
+          mkdir -p artifacts/tissue-phase2/wheels
+          python -m pip download --no-deps -d artifacts/tissue-phase2/wheels 'felupe==11.3.0' tensortrax
+      - name: Retrieve pinned primary experimental source
+        run: |
+          python - <<'PY'
+          import urllib.request, hashlib, json
+          from pathlib import Path
+          import openpyxl
+          p=Path('artifacts/tissue-phase2');p.mkdir(parents=True,exist_ok=True)
+          url='https://api.github.com/repos/LivingMatterLab/CANN/git/blobs/6e7bc72c317a29d24064eaf38c6f5951c226abcb'
+          import base64
+          info=json.load(urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'BuildTheSimulation-validation'})))
+          data=base64.b64decode(info['content']);assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()=='6e7bc72c317a29d24064eaf38c6f5951c226abcb'
+          f=p/'CANNsBRAINdata.xlsx';f.write_bytes(data)
+          book=openpyxl.load_workbook(f,data_only=True)
+          result={'source':url,'blobSha':'6e7bc72c317a29d24064eaf38c6f5951c226abcb','sha256':hashlib.sha256(data).hexdigest(),'sheets':{ws.title:list(ws.values) for ws in book.worksheets}}
+          (p/'experimental-source.json').write_text(json.dumps(result,indent=2,default=str));print('Workbook:',[(w.title,w.max_row,w.max_column) for w in book.worksheets])
+          try:
+            data=urllib.request.urlopen('https://eprints.gla.ac.uk/185716/1/185716.pdf',timeout=40).read();(p/'Budday2017-source.pdf').write_bytes(data)
+          except Exception as e: print('Optional paper download:',e)
+          PY
+      - name: Verify Phase 2 implementation when present
+        run: |
+          if [ -f scripts/tissue-phase2/validate.mjs ]; then
+            node --test tests/tissue-phase2*.mjs
+            node scripts/tissue-phase2/validate.mjs
+            python scripts/tissue-phase2/reference.py
+            python scripts/tissue-phase2/calibrate.py
+          else
+            echo 'Research-input preparation only; no Phase 2 verification is claimed.'
+          fi
+      - name: Preserve reference results and primary-input provenance
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tissue-phase2-reference
+          path: artifacts/tissue-phase2
+          retention-days: 14
