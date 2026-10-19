@@ -182,8 +182,8 @@ function Trace({ time, series, unit, title, frame = 0, spikes = [] }) {
     </figure>
   );
 }
-export default function CortexLaboratory() {
-  const [config, setConfig] = useState(populationExampleConfig),
+export default function CortexLaboratory({ populationEnabled = false } = {}) {
+  const [config, setConfig] = useState(() => populationEnabled ? populationExampleConfig() : getExampleConfig("active-intracellular-spike")),
     [result, setResult] = useState(null),
     [pinned, setPinned] = useState(null);
   const [running, setRunning] = useState(false),
@@ -205,7 +205,7 @@ export default function CortexLaboratory() {
     [plotReference, setPlotReference] = useState("infinity"),
     [visual, setVisual] = useState(() => structuredClone(DEFAULT_ELECTRICAL)),
     [replaySpeed, setReplaySpeed] = useState(1),
-    [exampleId, setExampleId] = useState("extracellular-soma-spike"),
+    [exampleId, setExampleId] = useState(populationEnabled ? "extracellular-soma-spike" : "active-intracellular-spike"),
     [guideOpen, setGuideOpen] = useState(true);
   const chosenExample = EXAMPLES.find((e) => e.id === exampleId);
   const displayOptions = useMemo(
@@ -542,8 +542,8 @@ export default function CortexLaboratory() {
       <CortexEvidencePanel config={config} />
       <header class="cx-heading">
         <div>
-          <p class="cx-eyebrow">Cortex Laboratory · electrical workbench 03</p>
-          <h1>From membrane to contact.</h1>
+          <p class="cx-eyebrow">{populationEnabled ? "Cortex Population Laboratory" : "Cortex Laboratory · single human cell"}</p>
+          <h1>{populationEnabled ? "Cells around a contact." : "From membrane to contact."}</h1>
           <p>
             Place an array, thread or shank. Follow calculated currents through a shared
             cortical scene.
@@ -560,7 +560,7 @@ export default function CortexLaboratory() {
         </span>
       </div>
       <nav class="cx-workflow" aria-label="Laboratory workflow">
-        <a href="#cx-population">Distance cloud</a>
+        {populationEnabled ? <a href="#cx-population">Distance cloud</a> : <a href="/cortex/population/">Population laboratory →</a>}
         <a href="#cx-choose">1 · Choose</a>
         <a href="#cx-geometry">2 · Inspect</a>
         <a href="#cx-run">3 · Run</a>
@@ -574,7 +574,7 @@ export default function CortexLaboratory() {
         onToggle={(e) => setGuideOpen(e.currentTarget.open)}
       >
         <summary>First run · a one-minute guide</summary>
-        <p>The default experiment places distinct sourced human cells in a seeded distance cloud. Open <a href="#cx-population">Real-model population</a>, inspect the supported and excluded positions, then run the supported cells. The controls below also retain the single-cell and patch-clamp experiments.</p>
+        {populationEnabled ? <p>The default experiment places distinct sourced human cells in a seeded distance cloud. Open <a href="#cx-population">Real-model population</a>, inspect the supported and excluded positions, then run the supported cells. The controls below configure the target cell and shared stimulation.</p> : <p>Start with one reconstructed human cell and its original intracellular soma-spike example. Run the experiment, then replay voltage across its soma, dendrites and axon stub. Choose a patch-clamp current step for repeated firing, or an array example for electrode stimulation.</p>}
         <ol>
           <li>
             Choose an example, read its reset notice and click{" "}
@@ -2003,7 +2003,7 @@ export default function CortexLaboratory() {
           </details>
         </aside>
       </div>
-      <CortexPopulationPanel config={config} disabled={running} onBusy={setPopulationRunning}
+      {populationEnabled && <CortexPopulationPanel config={config} disabled={running} onBusy={setPopulationRunning}
         onScene={setPopulationScene} onLoadExample={amplitudeUa => {
           loadExample("extracellular-soma-spike");
           setConfig(c => ({ ...c, protocol: { ...c.protocol, amplitudeUa } }));
@@ -2011,7 +2011,7 @@ export default function CortexLaboratory() {
         Trace={Trace} onTarget={target => {
           setResult(target); setFrame(0); setSelected(0); setPlaying(false);
           setRunStage("Population complete. Replaying the target cell; population totals are below.");
-        }} />
+        }} />}
     </section>
   );
 }

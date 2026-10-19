@@ -169,3 +169,7 @@ internal-step crossing times and held-voltage channel trajectories.
 The structured evidence and parameter registry is
 `src/lib/cortex/evidence.js`, used by the public methods page and JSON export.
 Treat repository source and the exported versioned configuration as authoritative.
+
+## Single-cell and population workspaces
+
+`/cortex/` opens the original single human-cell intracellular soma-spike example. The seeded distance cloud, angle randomization, shells, grids and multi-cell replay now live at `/cortex/population/`. The population panel is mounted only on that separate route; ordinary single-cell visits do not generate or load a population. Both routes retain the shared active-cell solver, source models, electrode controls and numerical evidence. `/cortex/interface/` remains the integrated finite-contact laboratory.

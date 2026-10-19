@@ -17,7 +17,7 @@ export default function CortexWorkspace(){
   return <>
     <nav class="cx-field-mode" aria-label="Laboratory field model">
       <strong>Field model</strong>
-      <button aria-pressed={mode==='point'} onClick={()=>select('point')}>Point sources · cells & population</button>
+      <button aria-pressed={mode==='point'} onClick={()=>select('point')}>Point sources · single human cell</button>
       <button aria-pressed={mode==='finite-disk'} onClick={()=>select('finite-disk')}>Finite disk · single human cell</button>
       <span>Switching modes stops the current run and resets its workspace.</span>
     </nav>
