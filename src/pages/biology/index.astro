@@ -1,0 +1,16 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const entries = [
+ ['/biology/membrane/', 'Membrane Biophysics', '9 mechanisms · steady state · kinetics · voltage step'],
+ ['/cells/', 'Cell Model Atlas', 'Electrical models · measured morphology · specimen sources'],
+ ['/cortex/methods/', 'Cellular Dynamics', 'Cable equation · membrane currents · calcium dynamics'],
+ ['/cortex/interface/methods/', 'Neural Interfaces', 'Finite contacts · stimulation · recording'],
+ ['/cortex/validation/', 'Numerical Verification', 'Reference fixtures · convergence · limitations'],
+];
+---
+<Layout pageTitle="Biology" subtitle="" description="Membrane biophysics, source-traceable cell models and neural simulation mechanisms.">
+ <section aria-label="Biology components">{entries.map(([href,title,scope])=><a class="component" href={href}><h2>{title}</h2><span>{scope}</span><b aria-hidden="true">↗</b></a>)}</section>
+</Layout>
+<style>
+section{display:grid;gap:12px;margin-top:24px}.component{display:grid;grid-template-columns:1fr auto;gap:8px;padding:22px;border:1px solid var(--border);border-radius:12px;background:var(--panel);text-decoration:none;color:var(--text)}h2{font-weight:400;margin:0;font-size:1.6rem}.component span{grid-column:1;opacity:.7}.component b{grid-column:2;grid-row:1/3;align-self:center;font-weight:400}.component:hover{border-color:var(--borderStrong);background:var(--panelHover)}
+</style>
