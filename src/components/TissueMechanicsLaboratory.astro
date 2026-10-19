@@ -1,0 +1,61 @@
+---
+import '../styles/tissue-mechanics.css';
+const { cellular = false } = Astro.props;
+---
+<section class="tm-lab" data-tissue-lab data-cellular={String(cellular)}>
+  <div class="tm-masthead">
+    <div><span class="tm-eyebrow">Mechanics / Experimental release 01</span><h2>{cellular ? 'Inside the deforming tissue' : 'The tissue is the experiment.'}</h2>
+      <p>{cellular ? 'An 80 µm native-position crop of measured H01 neurites, carried by the same finite-element displacement field.' : 'Pull, compress, shear and indent a three-dimensional tissue sample. Explore a bonded implant in a pre-existing tract.'}</p></div>
+    <nav aria-label="Mechanics laboratories"><a aria-current={!cellular ? 'page' : undefined} href="/simulations/tissue-mechanics/">Tissue</a><a aria-current={cellular ? 'page' : undefined} href="/simulations/cellular-mechanics/">Cellular</a><a href="/simulations/tissue-mechanics/methods/">Methods &amp; validation</a></nav>
+  </div>
+  <p class="tm-disclosure"><strong>Elastic baseline, not a validated brain-injury model.</strong> Finite-strain neo-Hookean FEM. Material stiffness is literature-informed, not a fitted human-brain constitutive law. No physical-time dynamics, viscoelasticity, pia rupture or cutting in this release.</p>
+  <div class="tm-workspace">
+    <aside class="tm-controls" aria-label="Experiment controls">
+      <h3>Experiment</h3>
+      <label>Loading mode<select data-tm="experiment"><option value="shear">Simple shear</option><option value="stretch">Stretch</option><option value="compression">Compression</option><option value="grab">Grab a surface patch</option>{!cellular && <><option value="indentation">Spherical-tip indentation</option><option value="micromotion">Implant micromotion / pre-formed tract</option></>}</select></label>
+      {!cellular && <label>Reference sample<select data-tm="shape"><option value="block">1 mm tissue block</option><option value="cap">Gently curved tissue cap</option></select></label>}
+      <label>Prescribed displacement <output data-tm="amplitude-value">8%</output><input data-tm="amplitude" type="range" min="0" max="20" step="0.5" value="8" /></label>
+      {!cellular && <label>Pre-existing tract depth<select data-tm="depth" disabled><option value="0.25">250 µm</option><option value="0.5">500 µm</option><option value="0.75" selected>750 µm</option></select></label>}
+      <p class="tm-help" data-tm="experiment-note"></p>
+      <h3>Material &amp; resolution</h3>
+      <label>Shear modulus <output data-tm="mu-value">0.8 kPa</output><input data-tm="mu" type="range" min="0.4" max="1.4" step="0.1" value="0.8" /></label>
+      <label>Poisson ratio<select data-tm="nu"><option value="0.30">0.30 / compressible comparison</option><option value="0.45" selected>0.45 / regularized baseline</option><option value="0.49">0.49 / locking sensitivity test</option></select></label>
+      <label>Volume mesh<select data-tm="resolution"><option value="4">Coarse / 4 cells per axis</option><option value="8" selected>Standard / 8 cells per axis</option><option value="12">Refined / 12 cells per axis</option></select></label>
+      <p class="tm-help">First-order tetrahedra can lock near incompressibility. Solver convergence does not establish mesh convergence.</p>
+      <div class="tm-buttons"><button type="button" data-tm="solve">Refine equilibrium</button><button type="button" data-tm="stop">Stop</button><button type="button" data-tm="reset">Unload</button></div>
+      <h3>Display</h3>
+      <label>Color field<select data-tm="view"><option value="displacement" selected={!cellular}>Displacement / µm</option><option value="strain">Green-strain norm / %</option><option value="stress">Von Mises stress / kPa</option><option value="anatomy" selected={cellular}>Anatomical color</option></select></label>
+      <label>Tissue opacity<input data-tm="opacity" type="range" min="5" max="95" value={cellular ? '12' : '65'} /></label>
+      <div class="tm-checks"><label><input type="checkbox" data-tm="wire" checked={!cellular}/> Surface mesh</label><label><input type="checkbox" data-tm="ghost" checked/> Reference outline</label><label><input type="checkbox" data-tm="grab"/> Grab tool</label></div>
+      <button type="button" data-tm="camera">Reset camera</button>
+    </aside>
+    <div class="tm-experiment">
+      <div class="tm-viewport" data-tm="viewport"><div class="tm-canvas-label">{cellular ? '80 × 80 × 80 µm / native H01 axes' : '1 × 1 × 1 mm / finite-element material'}</div><div class="tm-canvas-help">Drag to orbit · scroll to zoom · Shift + drag to deform</div><span class="tm-fps" data-tm="fps"></span></div>
+      <div class="tm-legend" data-tm="legend">Initializing the mechanical field…</div>
+      <div class="tm-status" data-tm="status" role="status" aria-live="polite">Starting worker…</div>
+      <div class="tm-metrics">
+        <div><span>Compute time</span><strong data-tm="time">—</strong></div><div><span>Free-force residual</span><strong data-tm="residual">—</strong></div><div><span>Reaction magnitude</span><strong data-tm="force">—</strong></div>
+        <div><span>Volume change</span><strong data-tm="volume">—</strong></div><div><span>Peak Green-strain norm</span><strong data-tm="strain">—</strong></div><div><span>Local volume ratio J</span><strong data-tm="jacobian">—</strong></div>
+      </div>
+      <div class="tm-readout"><span data-tm="mesh-count"></span><button data-tm="export" type="button" disabled>Export experiment JSON</button></div>
+      <p class="tm-help" data-tm="contact"></p><p class="tm-help" data-tm="inspector">{cellular ? 'Click a neurite to inspect its source identity and surrounding tissue strain.' : 'Forces and stress are predictions of this discretized example, not validated implantation measurements.'}</p>
+    </div>
+  </div>
+  {cellular && <section class="tm-source-panel">
+    <div><h3>Measured anatomy, explicit provenance</h3><p>H01 human temporal-cortex proofread skeletons. The existing reference pack contains twelve selected cells. Their native relative positions are retained; the crop is not filled with generated neurons.</p></div>
+    <label>Crop centered on<select data-tm="source"><option>Loading source identities…</option></select></label>
+    <p data-tm="source-status" role="status">Preparing H01 anatomy…</p><p class="tm-help" data-tm="source-detail"></p>
+    <details><summary>Import a segmented surface crop</summary><p>Load a local <code>bts-cellular-surface-v1</code> JSON with explicit source, license, coordinates and triangle indices. Geometry is not rescaled to fit. See the methods page for the schema. Imported provenance remains user-supplied.</p><label>Surface pack<input data-tm="import" type="file" accept=".json,application/json" /></label></details>
+  </section>}
+  <details class="tm-notes"><summary>What this release does—and does not—establish</summary>
+    <p>The scene is driven by volumetric mechanics, not a spring animation. Analytical energy, force-gradient, rigid-motion, affine-patch and geometry tests check the numerical implementation. The status panel reports optimization convergence, positive-volume checks and the actual compute time on this device. The worker stops a solve at a 25-second compute budget; loading external anatomy is separate.</p>
+    <p>Indentation is a finite spherical contact problem sampled at surface nodes. The micromotion experiment prescribes a perfectly bonded, rigid cuboid inside an already formed tract. It has no cutting law, pia layer, frictional sliding, electrode bending or insertion-force prediction. Sharp-corner peak stresses require refinement and must not be used as injury thresholds.</p>
+    <p>Cellular tubes are approximations of measured H01 skeleton radii, not segmented membrane surfaces. Their passive deformation does not model cell-specific stiffness, relative sliding, fluid pressure, adhesion or injury. Dense EM geometry and independently validated viscoelastic/contact models remain separate next stages.</p>
+  </details>
+  <noscript>Enable JavaScript for the interactive scene. <a href="/simulations/tissue-mechanics/methods/">Methods and limitations</a> remain accessible.</noscript>
+</section>
+<script>
+  import { mountLabs } from '../lib/tissue-mechanics/client.mjs';
+  mountLabs();
+  document.addEventListener('astro:page-load', mountLabs);
+</script>

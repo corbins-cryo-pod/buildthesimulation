@@ -1,0 +1,36 @@
+name: Verify tissue mechanics
+on:
+  pull_request:
+    paths:
+      - 'src/lib/tissue-mechanics/**'
+      - 'src/components/TissueMechanicsLaboratory.astro'
+      - 'src/styles/tissue-mechanics.css'
+      - 'src/pages/simulations/tissue-mechanics/**'
+      - 'src/pages/simulations/cellular-mechanics/**'
+      - 'tests/tissue-mechanics*.mjs'
+      - '.github/workflows/verify-tissue-mechanics.yml'
+  workflow_dispatch:
+
+jobs:
+  tissue-mechanics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Verify numerical mechanics and browser interactions
+        env:
+          TISSUE_QA_DIR: artifacts/tissue-mechanics
+        run: node --test tests/tissue-mechanics.mjs tests/tissue-mechanics-browser.mjs
+      - name: Compile production routes and worker bundles
+        run: npx astro build
+      - name: Preserve browser screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tissue-mechanics-browser
+          path: artifacts/tissue-mechanics
+          if-no-files-found: warn
