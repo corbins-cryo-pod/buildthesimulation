@@ -113,6 +113,12 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
 </html>
 
 <style>
+  /* Preview typography: all DOM text. Canvas/3D rendering code is unchanged. */
+  :global(body), :global(body *) {
+    line-height: 1.25 !important;
+    letter-spacing: -0.025em !important;
+  }
+
   @font-face {
     font-family: "Newston";
     src: url("/fonts/newston/Newston-Regular.ttf") format("truetype"),
@@ -154,6 +160,38 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
     font-display: swap;
   }
 
+  @font-face {
+    font-family: "BTS Schola Narrow";
+    src: url("/fonts/bts-schola-narrow/bts-schola-narrow-regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "BTS Schola Narrow";
+    src: url("/fonts/bts-schola-narrow/bts-schola-narrow-italic.otf") format("opentype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "BTS Schola Narrow";
+    src: url("/fonts/bts-schola-narrow/bts-schola-narrow-bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "BTS Schola Narrow";
+    src: url("/fonts/bts-schola-narrow/bts-schola-narrow-bolditalic.otf") format("opentype");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+  }
+
   :global(:root) {
     /* Light theme (default) */
     --bg: #f6f1e6; /* paper */
@@ -178,7 +216,7 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
     --title-page: clamp(56px, 6vw, 96px);
     --title-post: clamp(32px, 4.2vw, 46px);
     --font-body: "TeX Gyre Schola", "Times New Roman", serif;
-    --font-heading: "TeX Gyre Schola", "Times New Roman", serif;
+    --font-heading: "BTS Schola Narrow", "Times New Roman", serif;
     --title-section: 32px;
     --title-card: 32px;
     --text-meta: 16px;
