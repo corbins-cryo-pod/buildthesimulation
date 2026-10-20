@@ -80,7 +80,7 @@ const dialogId = `photo-${deviceId.toLowerCase().replace(/[^a-z0-9-]/g, '-')}`;
   .photo-dialog { max-width: min(1100px, 94vw); width: 94vw; max-height: 94dvh; overflow: auto; padding: 28px; color: var(--text); background: var(--menuBg); border: 1px solid var(--borderStrong); border-radius: 8px; }
   .photo-dialog::backdrop { background: rgb(0 0 0 / .78); }
   .photo-dialog form { display: flex; justify-content: flex-end; margin: 0; }
-  .photo-close { cursor: pointer; color: inherit; background: transparent; border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; font-style: italic; }
+  .photo-close { cursor: pointer; color: inherit; background: transparent; border: 1px solid var(--border); border-radius:0; padding: 6px 14px; font-style: italic; }
   .photo-close span { margin-left: 12px; }
   .photo-dialog-heading > span { font-size: 13px; opacity: .65; font-style: italic; }
   .photo-dialog-heading h2 { font: 400 clamp(30px, 5vw, 56px)/1.1 var(--font-heading); margin: 8px 0 22px; }

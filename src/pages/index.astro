@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import "../styles/home-header.css";
 import { getCollection } from "astro:content";
 import { deviceModels } from "../lib/devices/catalog.js";
 
@@ -40,13 +41,13 @@ const topics = [
 
   <section class="home-paths" aria-labelledby="home-paths-title">
     <div class="section-head">
-      <h2 id="home-paths-title">Start Here</h2>
+      <h2 id="home-paths-title">START HERE</h2>
     </div>
     <div class="route-grid">
       {routes.map(route => (
         <a class="route" href={route.href}>
           <div class="route-top"><span>{route.kicker}</span><span aria-hidden="true">→</span></div>
-          <h3>{route.name}</h3>
+          <h3>{route.name.toUpperCase()}</h3>
           <p>{route.desc}</p>
         </a>
       ))}
@@ -71,7 +72,7 @@ const topics = [
   .eyebrow { margin: 0 0 14px; color: var(--muted); font-size: 15px; letter-spacing: .07em; text-transform: uppercase; }
   .home-intro h1 { font-size: clamp(54px, 7.5vw, 98px); letter-spacing: -.012em; line-height: .98; max-width: 900px; }
   .intro { max-width: 720px; font-size: clamp(19px, 2.1vw, 23px); line-height: 1.35; color: var(--muted); margin: 19px 0 28px; }
-  .hero-search { display: flex; align-items: center; gap: 14px; width: min(100%, 850px); text-align: left; padding: 18px 19px; color: var(--text); border: 1px solid var(--borderStrong); border-radius: 12px; background: var(--panelStrong); cursor: pointer; transition: background .14s, border-color .14s; }
+  .hero-search { display: flex; align-items: center; gap: 14px; width: min(100%, 850px); text-align: left; padding: 18px 19px; color: var(--text); border: 1px solid var(--borderStrong); border-radius: 0; background: var(--panelStrong); cursor: pointer; transition: background .14s, border-color .14s; }
   .hero-search:hover { background: var(--panelHover); border-color: var(--text); }
   .hero-search:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
   .hero-search > span:nth-child(2) { flex: 1; min-width: 0; font: normal 18px/1.3 var(--font-body); color: var(--muted); }
@@ -83,9 +84,10 @@ const topics = [
   .home-paths { margin: 28px 0 0; }
   .section-head { display: flex; gap: 14px; align-items: baseline; justify-content: space-between; margin-bottom: 13px; }
   .section-head h2, .home-topics h2 { font: normal 29px/1.1 var(--font-heading); margin: 0; }
+  .section-head h2 { font-size: clamp(38px, 4.5vw, 52px); }
   .section-head p { margin: 0; color: var(--muted); font-size: 16px; }
   .route-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .route { display: block; min-width: 0; padding: 20px 21px; border: 1px solid var(--border); border-radius: 13px; text-decoration: none; background: var(--panel); transition: background .14s, border-color .14s, transform .14s; }
+  .route { display: block; min-width: 0; padding: 20px 21px; border: 1px solid var(--border); border-radius: 0; text-decoration: none; background: var(--panel); transition: background .14s, border-color .14s, transform .14s; }
   .route:hover { background: var(--panelStrong); border-color: var(--borderStrong); transform: translateY(-2px); }
   .route-top { display: flex; justify-content: space-between; font-size: 14px; color: var(--muted); }
   .route-top span:last-child { font-size: 19px; line-height: 1; }
@@ -93,7 +95,7 @@ const topics = [
   .route p { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.34; }
   .home-topics { margin: 30px 0 12px; }
   .topic-links { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 14px; }
-  .topic-links a { border: 1px solid var(--border); border-radius: 8px; background: var(--panel); color: var(--text); text-decoration: none; padding: 9px 12px; font-size: 16px; line-height: 1.2; }
+  .topic-links a { border: 1px solid var(--border); border-radius: 0; background: var(--panel); color: var(--text); text-decoration: none; padding: 9px 12px; font-size: 16px; line-height: 1.2; }
   .topic-links a:hover { background: var(--panelStrong); border-color: var(--borderStrong); }
   .topic-links a span { color: var(--muted); font-size: 12px; margin-left: 4px; }
   .home-footerline { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 22px; font-size: 14px; color: var(--muted); }
