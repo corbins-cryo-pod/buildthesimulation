@@ -1,0 +1,44 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import {STATIC_FITS} from '../../../lib/tissue-mechanics/calibration-presets.mjs';
+import {elasticIso} from '../../../lib/tissue-mechanics/phase2-material.mjs';
+import source from '../../../../scripts/tissue-phase2/primary-curves.json';
+const names={cortex:'Cortex',basal:'Basal ganglia',corona:'Corona radiata',callosum:'Corpus callosum'};
+const modes=['tension','compression','shear'];
+function prediction(fit,mode,x){
+ const transverse=1/Math.sqrt(x),F=mode==='shear'?[1,x,0,0,1,0,0,0,1]:[x,0,0,0,transverse,0,0,0,transverse];
+ const m=elasticIso(F,fit);return mode==='shear'?m.P[1]:m.P[0]-m.P[4]*transverse/x;
+}
+function chart(region,mode){
+ const X=source[mode==='shear'?'shearGamma':mode+'Lambda'],Y=source.regions[region][mode],fits=STATIC_FITS.filter(f=>f.region===region),pred=fits.map(f=>X.map(x=>prediction(f,mode,x)));
+ const lo=Math.min(0,...Y,...pred.flat()),hi=Math.max(0,...Y,...pred.flat()),xmin=Math.min(...X),xmax=Math.max(...X);
+ const point=(x,y)=>[40+310*(x-xmin)/(xmax-xmin),175-140*(y-lo)/(hi-lo)];
+ return {lo,hi,xmin,xmax,points:X.map((x,i)=>({xy:point(x,Y[i]),held:i>0&&i%4===0})),lines:pred.map((ys,k)=>({model:fits[k].model,d:ys.map((y,i)=>`${i?'L':'M'}${point(X[i],y).join(',')}`).join(' ')}))};
+}
+---
+<Layout pageTitle="Tissue mechanics — evidence & validation" description="Primary experimental curves, held-out errors, model comparison and the boundaries of the Phase 2 numerical verification.">
+<article>
+<p><a href="/simulations/tissue-mechanics/">Open the laboratory</a> · <a href="/simulations/tissue-mechanics/methods/">Equations &amp; limitations</a></p>
+<h2>Show the evidence, including the failures.</h2>
+<p>These static curves come from the <a href={source.source}>Living Matter Lab CANN data release</a>, attributed there to Budday 2017. They are not synthetic validation curves. The separate viscoelastic presets reproduce Tables 4 and 6 of <a href="https://doi.org/10.1016/j.jmbbm.2017.07.014">Budday et al., Viscoelastic parameter identification of human brain tissue</a>.</p>
+<p><strong>Two different questions:</strong> numerical verification asks whether the equations are solved correctly. Experimental comparison asks whether those equations describe measured tissue. A converged finite-element result is not evidence that a material law is biologically accurate.</p>
+<h3>Three laws, four regions, three loading modes</h3>
+<p>Each fit uses compression, tension and shear together. Nonzero indices 4, 8, 12 and 16 are held out; the other points train the model, with each mode weighted by its training peak stress. The reported error is held-out RMSE divided by that mode's full observed peak magnitude. Zero is not treated as an independent successful prediction. The script also performs leave-one-loading-mode-out checks.</p>
+<p>Ogden: solid line. Neo-Hookean: dashed. Mooney–Rivlin: dotted. Filled circles: training measurements. Open circles: held-out measurements. Stress is nominal stress in kPa; the horizontal axis is stretch λ or shear γ.</p>
+{Object.keys(names).map(region=><details open={region==='cortex'}><summary>{names[region]}</summary><div class="charts">{modes.map(mode=>{const c=chart(region,mode);return <figure><figcaption>{mode}</figcaption><svg viewBox="0 0 380 215" role="img" aria-label={`${names[region]} ${mode} primary measurements and model predictions`}><path d="M40 25V175H355" fill="none" stroke="currentColor" opacity=".4"/>{c.lines.map(l=><path d={l.d} fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray={l.model==='neo'?'7 4':l.model==='mooney'?'2 4':undefined}/>)}{c.points.map(p=><circle cx={p.xy[0]} cy={p.xy[1]} r={p.held?3.5:2} fill={p.held?'var(--panel,#faf8f1)':'currentColor'} stroke="currentColor"/>)}<text x="5" y="34">{c.hi.toFixed(2)}</text><text x="5" y="176">{c.lo.toFixed(2)}</text><text x="40" y="198">{c.xmin.toFixed(2)}</text><text x="300" y="198">{c.xmax.toFixed(2)}</text></svg></figure>;})}</div><div class="table-wrap"><table><thead><tr><th>Law</th><th>μ / kPa</th><th>α or I₂ fraction</th><th>Tension error</th><th>Compression error</th><th>Shear error</th></tr></thead><tbody>{STATIC_FITS.filter(f=>f.region===region).map(f=><tr><td>{f.model}</td><td>{f.mu.toFixed(4)}</td><td>{(f.model==='ogden'?f.alpha:f.mix).toFixed(3)}</td>{modes.map(m=><td>{(100*f.holdoutNRMSE[m]).toFixed(2)}%</td>)}</tr>)}</tbody></table></div></details>)}
+<p>The fits can be selected under “Material &amp; evidence” in both laboratories. Static curve fits contain no inferred viscosity and cannot be used as published viscoelastic fits. Choosing another law or changing parameters marks a modified model.</p>
+<h3>What the comparison does not establish</h3>
+<p>These are distributed average curves, not independent donor-level samples. Neighboring held-out points are correlated with the training curve. Neither curve holdouts nor loading-mode holdouts establish patient-specific accuracy. No confidence intervals are fabricated: the laboratory's 0.75× and 1.25× settings are sensitivity scenarios only. Some published all-mode viscoelastic fits have negative tension R²; the laboratory displays those values explicitly.</p>
+<h3>Numerical acceptance tests</h3>
+<p>The independent reference reconstructs the mesh and energy in Python/JAX, differentiates it automatically, and solves the nonlinear system with SciPy trust-region Newton. Four compression cases compare the mixed and full-volume formulations using neo-Hookean and Mooney–Rivlin energies. Both displacement relative L₂ error and reaction relative error must remain below 10⁻⁴. Ogden stresses are checked independently by NumPy energy differences; the finite viscoelastic law is checked against continuous-time DOP853 integration, including a timestep-halving sequence. These are bounded tests, not validation of every geometry or loading history.</p>
+<p>On the recorded finite-Maxwell material test, peak-normalized stress error was approximately 2.11%, 1.08% and 0.55% at 0.5, 0.25 and 0.125 s respectively. The interactive timestep is a speed/accuracy setting, not a universal error guarantee. Mesh sweeps expose remaining reaction-force sensitivity and the artificial stiffening of displacement-only tetrahedra near incompressibility.</p>
+<h3>Provenance and reproduction</h3>
+<p>Workbook blob: <code>{source.sourceBlobSha}</code>. SHA-256: <code>{source.sourceSha256}</code>. The CI input stage verifies the workbook hash and checks all 408 extracted x/y values against the pinned source. A duplicate sheet is deliberately excluded.</p>
+<pre>node --test tests/tissue-mechanics.mjs tests/tissue-phase2.mjs
+node scripts/tissue-phase2/validate.mjs --full
+python scripts/tissue-phase2/reference.py
+python scripts/tissue-phase2/calibrate.py</pre>
+<p>Full results, software versions, failed statuses and timings are retained as CI artifacts. Browser/network/EM loading are excluded from numerical timing. There is no claim of pia rupture, puncture, poroelastic fluid transport, tract anisotropy, cell-specific mechanics or injury prediction.</p>
+</article>
+</Layout>
+<style>article{max-width:1080px;margin:20px auto 50px;line-height:1.65}h2{font-size:36px;font-weight:400}h3{font-size:24px;font-weight:400;margin-top:30px}p{font-size:14px}details{padding:18px;border:1px solid var(--border);margin:18px 0;border-radius:8px;background:var(--panel)}summary{font-size:22px;cursor:pointer}.charts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}figure{margin:18px 0}figcaption{text-transform:capitalize;font-size:15px}svg{width:100%;display:block}svg text{font-size:11px;fill:currentColor}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:12px;text-align:left}th,td{padding:10px;border-bottom:1px solid var(--border)}pre{padding:18px;overflow:auto;background:var(--panel);font-size:12px}code{overflow-wrap:anywhere;font-size:11px}@media(max-width:700px){.charts{grid-template-columns:1fr}}</style>

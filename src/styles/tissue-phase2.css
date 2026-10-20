@@ -1,0 +1,6 @@
+/* Phase 2 additions inherit the current laboratory theme. */
+.tm-lab{--tm-paper:var(--panel)}
+.tm-lab input[type=number]{display:block;width:100%;padding:7px;border:1px solid var(--tm-edge);background:var(--tm-paper);color:inherit;border-radius:5px;margin-top:5px;font:inherit}.tm-lab .tm-history{padding:12px 18px;border-top:1px solid var(--tm-edge)}.tm-lab .tm-history svg{width:100%;height:160px;display:block;color:var(--text,#587e87)}.tm-lab .tm-time-label{display:flex;justify-content:space-between;gap:12px;font-size:12px}.tm-lab .tm-time-label strong{font-weight:500}.tm-lab .tm-controls{max-height:1250px;overflow:auto}.tm-lab .tm-experiment{position:sticky;top:8px;align-self:start;width:100%}@media(max-width:640px){.tm-lab .tm-controls{max-height:none}.tm-lab .tm-experiment{position:static}}
+.tm-lab .tm-control-section{grid-column:1/-1;padding:12px 0;margin:12px 0;border-top:1px solid var(--tm-edge)}.tm-lab .tm-control-section summary{font-size:18px}.tm-lab .tm-control-section>a{font-size:14px;color:inherit}
+/* Preserve scientific unit glyphs: uppercasing µ can look like an extra M. */
+.tm-lab .tm-canvas-label{text-transform:none;letter-spacing:.035em}

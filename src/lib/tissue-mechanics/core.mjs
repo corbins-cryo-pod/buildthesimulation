@@ -19,7 +19,7 @@ export function parameters(input = {}) {
   const p = { ...DEFAULTS, ...input };
   if (![4,8,12].includes(p.n)) throw new Error('Resolution must be 4, 8 or 12');
   for (const k of ['size','mu','nu','amplitude','depth','penalty']) if (!Number.isFinite(p[k])) throw new Error(`Invalid ${k}`);
-  if (p.size < 0.01 || p.size > 10 || p.mu < 0.05 || p.mu > 20 || p.nu < 0.2 || p.nu > 0.49) throw new Error('Material or length outside supported range');
+  if (p.size < 0.01 || p.size > 10 || p.mu < 0.01 || p.mu > 20 || p.nu < 0.2 || p.nu > 0.4995) throw new Error('Material or length outside supported range');
   if (Math.abs(p.amplitude)>0.2 || ![0.25,0.5,0.75].includes(p.depth) || p.penalty<10 || p.penalty>1000) throw new Error('Load outside supported range');
   if (!['grab','stretch','compression','shear','indentation','micromotion'].includes(p.experiment)) throw new Error('Unknown experiment');
   for (const k of ['handle','drag']) if (!Array.isArray(p[k]) || p[k].length!==3 || !p[k].every(Number.isFinite)) throw new Error(`Invalid ${k}`);
@@ -152,11 +152,11 @@ export function evaluate(mesh,x,p=mesh.p,diagnostic=false){
 const dot=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0);
 /** Restartable L-BFGS with Armijo backtracking; fixed DOFs eliminated exactly. */
 export class Solver {
-  constructor(mesh,p=mesh.p,{initial=null,tolerance=1e-5,maxIterations=400}={}){
-    this.mesh=mesh;this.p=parameters(p);this.bc=boundaries(mesh,p);this.x=initial?.length===mesh.X.length?Float64Array.from(initial):mesh.X.slice();
+  constructor(mesh,p=mesh.p,{initial=null,tolerance=1e-5,maxIterations=400,historyLimit=8,evaluator=evaluate,boundaryFactory=boundaries}={}){
+    this.mesh=mesh;this.p=parameters(p);this.evaluate=evaluator;this.bc=boundaryFactory(mesh,p);this.x=initial?.length===mesh.X.length?Float64Array.from(initial):mesh.X.slice();
     for(let i=0;i<this.x.length;i++)if(this.bc.fixed[i])this.x[i]=this.bc.target[i];
-    this.tolerance=tolerance;this.maxIterations=maxIterations;this.iteration=0;this.history=[];this.status='solving';
-    this.current=evaluate(mesh,this.x,p);this.project(this.current.g);this.residual=this.norm(this.current.g);
+    this.tolerance=tolerance;this.maxIterations=maxIterations;this.iteration=0;this.history=[];this.historyLimit=historyLimit;this.status='solving';
+    this.current=this.evaluate(mesh,this.x,p);this.project(this.current.g);this.residual=this.norm(this.current.g);
     if(!Number.isFinite(this.current.energy))this.status='invalid initial deformation';
   }
   project(g){for(let i=0;i<g.length;i++)if(this.bc.fixed[i])g[i]=0;}
@@ -175,19 +175,19 @@ export class Solver {
     if(!Number.isFinite(slope)||slope>=0){this.history=[];for(let i=0;i<q.length;i++)q[i]=-this.current.g[i]/(this.p.mu*this.p.size);slope=dot(q,this.current.g);}
     let step=1,candidate,trial,accepted=false;
     for(let k=0;k<32;k++){
-      candidate=this.x.map((v,i)=>v+step*q[i]);trial=evaluate(this.mesh,candidate,this.p);
+      candidate=this.x.map((v,i)=>v+step*q[i]);trial=this.evaluate(this.mesh,candidate,this.p);
       if(Number.isFinite(trial.energy)&&trial.energy<=this.current.energy+1e-4*step*slope){accepted=true;break;}step*=.5;
     }
     if(!accepted){this.status='line search stalled';return false;}
     this.project(trial.g);
     const s=candidate.map((v,i)=>v-this.x[i]),y=trial.g.map((v,i)=>v-this.current.g[i]),sy=dot(s,y);
-    if(sy>1e-12*Math.sqrt(dot(s,s)*dot(y,y))&&sy>1e-30){this.history.push({s,y,rho:1/sy});if(this.history.length>8)this.history.shift();}
+    if(sy>1e-12*Math.sqrt(dot(s,s)*dot(y,y))&&sy>1e-30){this.history.push({s,y,rho:1/sy});if(this.history.length>this.historyLimit)this.history.shift();}
     this.x=candidate;this.current=trial;this.residual=this.norm(trial.g);this.iteration++;
     if(this.residual<=this.tolerance)this.status='converged';
     return this.status==='solving';
   }
   report(){
-    const d=evaluate(this.mesh,this.x,this.p,true),reaction=[0,0,0];
+    const d=this.evaluate(this.mesh,this.x,this.p,true),reaction=[0,0,0];
     for(let i=0;i<this.bc.handles.length;i++)if(this.bc.handles[i])for(let a=0;a<3;a++)if(this.bc.fixed[i*3+a])reaction[a]+=d.g[i*3+a];
     const restVolume=this.mesh.volumes.reduce((s,v)=>s+v,0);
     return {status:this.status,iterations:this.iteration,residual:this.residual,tolerance:this.tolerance,energyMicroJ:d.energy,
