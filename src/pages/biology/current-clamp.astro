@@ -7,7 +7,7 @@ import {SOMA_AREA_UM2} from '../../lib/cortex/current-clamp.js';
 const fit=JSON.parse(readFileSync('public/models/cortex/allen571654895/optim_param_571654895.json','utf8'));
 const soma=Object.fromEntries(fit.genome.filter(p=>p.section==='soma').map(p=>[p.name,p.value]));
 ---
-<Layout pageTitle="Current Clamp" subtitle="" description="Single-compartment current clamp with the Cortex Laboratory's pinned soma mechanisms: voltage traces, steady-state IV and f-I curves.">
+<Layout pageTitle="Current Clamp" subtitle="Current steps through the pinned soma mechanisms of specimen 571654895: voltage traces, steady-state IV and f-I." description="Single-compartment current clamp with the Cortex Laboratory's pinned soma mechanisms: voltage traces, steady-state IV and f-I curves.">
  <nav class="local"><a href="/biology/">Biology</a><a href="/biology/membrane/">Membrane Biophysics</a><a href="/cells/">Cell Model Atlas</a><a href="/cortex/?cell=allen-human-571654895%2F1">Cortex Laboratory</a></nav>
  <CurrentClampExplorer client:load fit={fit} />
  <section class="panel"><h2>Soma parameters · specimen 571654895 · 34 °C</h2><div class="scroll"><table><caption>Allen / Mosher fitted genome, soma section</caption><thead><tr><th>Parameter</th><th>Value</th><th>Unit</th></tr></thead><tbody>
@@ -32,5 +32,5 @@ const soma=Object.fromEntries(fit.genome.filter(p=>p.section==='soma').map(p=>[p
  </tbody></table></section>
 </Layout>
 <style>
-.local{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0}.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px;margin:18px 0}h2{font-weight:400;font-size:1.4rem;margin-top:0}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--border);font-variant-numeric:tabular-nums}th{font-weight:500}caption{text-align:left;margin-bottom:12px;opacity:.7}
+.local{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.local a{border:1px solid var(--border);border-radius:999px;padding:8px 16px;text-decoration:none;color:inherit}.local a:hover{border-color:var(--borderStrong);background:var(--panelHover)}.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px;margin:18px 0}.panel h2{font-family:var(--font-heading);font-weight:400;font-size:28px;margin:0 0 12px}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);font-variant-numeric:tabular-nums}th{font-weight:400;font-style:italic;background:var(--panelStrong)}caption{text-align:left;margin-bottom:12px;opacity:.7;font-style:italic}
 </style>

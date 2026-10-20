@@ -36,9 +36,9 @@ function Plot({ series, minX, maxX, minY, maxY, xLabel, yLabel, marks = [] }) {
         <g key={j}>
           <path
             d={s.points.map(([x, y], i) => `${i ? 'L' : 'M'}${X(x).toFixed(2)},${Y(y).toFixed(2)}`).join(' ')}
-            stroke={s.color || '#2679ad'} stroke-width="2.2" fill="none"
+            style={{stroke:s.color || 'var(--bio-accent)'}} stroke-width="2.2" fill="none"
           />
-          {s.dots && s.points.map(([x, y], i) => <circle key={i} cx={X(x)} cy={Y(y)} r="3" fill={s.color || '#2679ad'} />)}
+          {s.dots && s.points.map(([x, y], i) => <circle key={i} cx={X(x)} cy={Y(y)} r="3" style={{fill:s.color || 'var(--bio-accent)'}} />)}
         </g>
       ))}
     </svg>
@@ -105,7 +105,7 @@ export default function CurrentClampExplorer({ fit }) {
 
   return (
     <div class="current-clamp">
-      <style>{`.current-clamp{font-variant-numeric:tabular-nums}.current-clamp .controls,.current-clamp .plots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.current-clamp .controls{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));padding:20px;border:1px solid var(--border);border-radius:12px;background:var(--panel)}.current-clamp label{display:grid;gap:10px;font-size:.9rem}.current-clamp output{opacity:.7}.current-clamp input,.current-clamp select{width:100%;accent-color:#2679ad}.current-clamp .plot{border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:16px;background:var(--panel);min-width:0}.current-clamp h2{font-size:1.25rem;font-weight:400;margin:0 0 12px}.current-clamp svg text{font-family:system-ui,sans-serif;font-size:12px;fill:currentColor}.current-clamp table{width:100%;border-collapse:collapse}.current-clamp td,.current-clamp th{padding:10px;text-align:left;border-bottom:1px solid var(--border);font-size:.9rem}.current-clamp code{display:block;padding:12px;overflow:auto}.current-clamp .note{opacity:.7;font-size:.85rem;margin-top:8px}@media(max-width:700px){.current-clamp .plots{grid-template-columns:1fr}}`}</style>
+      <style>{`.current-clamp{--bio-accent:#247b84;--bio-warm:#af6636;font-variant-numeric:tabular-nums}html[data-theme=dark] .current-clamp{--bio-accent:#8dcdd2;--bio-warm:#efb67e}.current-clamp .controls,.current-clamp .plots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.current-clamp .controls{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));padding:20px;border:1px solid var(--border);border-radius:12px;background:var(--panel)}.current-clamp label{display:grid;gap:10px;font-size:.9rem}.current-clamp output{opacity:.7}.current-clamp input,.current-clamp select{width:100%;accent-color:var(--bio-accent)}.current-clamp select{background:var(--bg);color:var(--text);padding:8px;border:1px solid var(--border);border-radius:6px}.current-clamp .plot{border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:16px;background:var(--panel);min-width:0}.current-clamp h2{font-family:var(--font-heading);font-size:28px;font-weight:400;margin:0 0 12px}.current-clamp svg text{font:13px var(--font-body);fill:var(--text);opacity:.7}.current-clamp .legend{display:flex;gap:18px;font-size:.9rem}.current-clamp table{width:100%;border-collapse:collapse;font-size:14px}.current-clamp td,.current-clamp th{padding:9px 12px;text-align:left;border-bottom:1px solid var(--border)}.current-clamp th{font-weight:400;font-style:italic;background:var(--panelStrong)}.current-clamp code{display:block;padding:12px;overflow:auto}.current-clamp .metrics{overflow:auto}.current-clamp .note{opacity:.7;font-size:.85rem;margin-top:8px}@media(max-width:700px){.current-clamp .plots{grid-template-columns:1fr}}`}</style>
       <div class="controls">
         {control('Step amplitude', amplitude, setAmplitude, -100, 300, 5, 'pA')}
         {control('Step start', start, setStart, 50, 400, 10, 'ms')}
@@ -151,7 +151,7 @@ export default function CurrentClampExplorer({ fit }) {
         <section class="plot">
           <h2>f-I curve</h2>
           <Plot
-            series={[{ points: fiSorted.map((p) => [pA(p.injectionNa), p.rateHz]), dots: true, color: '#b15d36' }]}
+            series={[{ points: fiSorted.map((p) => [pA(p.injectionNa), p.rateHz]), dots: true, color: 'var(--bio-warm)' }]}
             minX={0} maxX={300} minY={0} maxY={maxRate}
             xLabel="Injected current (pA)" yLabel="Rate (Hz)"
           />
