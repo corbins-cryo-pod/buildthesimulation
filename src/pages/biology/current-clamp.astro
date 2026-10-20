@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CurrentClampExplorer from '../../components/CurrentClampExplorer.jsx';
+import {readFileSync} from 'node:fs';
+import {CHANNELS} from '../../lib/cortex/active-channels.js';
+import {SOMA_AREA_UM2} from '../../lib/cortex/current-clamp.js';
+const fit=JSON.parse(readFileSync('public/models/cortex/allen571654895/optim_param_571654895.json','utf8'));
+const soma=Object.fromEntries(fit.genome.filter(p=>p.section==='soma').map(p=>[p.name,p.value]));
+---
+<Layout pageTitle="Current Clamp" subtitle="Current steps through the pinned soma mechanisms of specimen 571654895: voltage traces, steady-state IV and f-I." description="Single-compartment current clamp with the Cortex Laboratory's pinned soma mechanisms: voltage traces, steady-state IV and f-I curves.">
+ <nav class="local"><a href="/biology/">Biology</a><a href="/biology/membrane/">Membrane Biophysics</a><a href="/cells/">Cell Model Atlas</a><a href="/cortex/?cell=allen-human-571654895%2F1">Cortex Laboratory</a></nav>
+ <CurrentClampExplorer client:load fit={fit} />
+ <section class="panel"><h2>Soma parameters · specimen 571654895 · 34 °C</h2><div class="scroll"><table><caption>Allen / Mosher fitted genome, soma section</caption><thead><tr><th>Parameter</th><th>Value</th><th>Unit</th></tr></thead><tbody>
+ {CHANNELS.map(m=><tr><th>gbar_{m}</th><td>{soma[`gbar_${m}`] ?? ''}</td><td>S/cm²</td></tr>)}
+ <tr><th>cm</th><td>{soma.cm}</td><td>µF/cm²</td></tr>
+ <tr><th>g_pas</th><td>{soma.g_pas}</td><td>S/cm²</td></tr>
+ <tr><th>e_pas</th><td>{soma.e_pas}</td><td>mV</td></tr>
+ <tr><th>gamma_CaDynamics</th><td>{soma.gamma_CaDynamics}</td><td></td></tr>
+ <tr><th>decay_CaDynamics</th><td>{soma.decay_CaDynamics}</td><td>ms</td></tr>
+ <tr><th>Membrane area</th><td>{SOMA_AREA_UM2.toFixed(3)}</td><td>µm²</td></tr>
+ </tbody></table></div></section>
+ <section class="panel"><h2>Scope & provenance</h2><table><tbody>
+ <tr><th>Geometry</th><td>One isopotential compartment · soma membrane area summed from the pinned morphology, 10 µm variant · no dendritic or axonal load</td></tr>
+ <tr><th>Not the full cell</th><td>Input resistance and excitability differ from the reconstructed neuron · quantitative agreement with the published model is not claimed</td></tr>
+ <tr><th>Integration</th><td>Same fixed-step solver and channel code as Cortex Laboratory · dt 0.025 ms · NEURON state convention</td></tr>
+ <tr><th>Calcium</th><td>CaDynamics active with fitted gamma and decay · SK reads updated intracellular calcium</td></tr>
+ <tr><th>Sweeps</th><td>Fixed protocol · 200 ms baseline · 600 ms step · computed in the browser · spiking points excluded from the IV line</td></tr>
+ <tr><th>Depolarization block</th><td>f-I rate falls above ~160 pA as NaV inactivates · a property of this single compartment, not a tissue prediction</td></tr>
+ <tr><th>Model status</th><td>Published fitted model mechanisms · no independent biological validation here</td></tr>
+ <tr><th>Source</th><td><a href="https://github.com/AllenInstitute/Human_all_active_models_EAP">Allen Institute model repository</a> · <a href="/models/cortex/allen571654895/optim_param_571654895.json">Fitted parameters</a> · <a href="/models/cortex/allen571654895/LICENSE.txt">Allen license</a></td></tr>
+ <tr><th>Equations & verification</th><td><a href="/cortex/methods/">Methods</a> · <a href="/cortex/validation/">Numerical verification</a></td></tr>
+ </tbody></table></section>
+</Layout>
+<style>
+.local{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.local a{border:1px solid var(--border);border-radius:999px;padding:8px 16px;text-decoration:none;color:inherit}.local a:hover{border-color:var(--borderStrong);background:var(--panelHover)}.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px;margin:18px 0}.panel h2{font-family:var(--font-heading);font-weight:400;font-size:28px;margin:0 0 12px}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);font-variant-numeric:tabular-nums}th{font-weight:400;font-style:italic;background:var(--panelStrong)}caption{text-align:left;margin-bottom:12px;opacity:.7;font-style:italic}
+</style>
