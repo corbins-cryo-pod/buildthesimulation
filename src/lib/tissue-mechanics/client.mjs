@@ -23,7 +23,7 @@ function mount(el){
  try{renderer=new T.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance'});}catch(error){status.textContent='WebGL unavailable';inspector.textContent='This browser could not create a 3D context. The methods page remains available.';return ()=>abort.abort();}
  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.outputColorSpace=T.SRGBColorSpace;viewport.prepend(renderer.domElement);
  renderer.domElement.setAttribute('aria-label','Interactive three-dimensional tissue mechanics sample');renderer.domElement.setAttribute('role','img');renderer.domElement.style.touchAction='none';
- const scene=new T.Scene();scene.background=new T.Color('#101e26');
+ const scene=new T.Scene();scene.background=new T.Color('#302f2d');
  const camera=new T.PerspectiveCamera(38,1,.01,30);camera.position.set(1.8,1.6,2.1);
  const controls=new OrbitControls(camera,renderer.domElement);controls.target.set(0,.46,0);controls.enableDamping=true;controls.minDistance=.35;controls.maxDistance=6;
  scene.add(new T.HemisphereLight('#f1e2d8','#334851',2.8));const light=new T.DirectionalLight('#fff5ed',3);light.position.set(2,4,3);scene.add(light);

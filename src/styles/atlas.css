@@ -1,5 +1,5 @@
-.atlas { --atlas-paper: #f5f0e6; --atlas-ink: #292924; --atlas-soft: #68685f; --atlas-line: #d6d0c3; --atlas-hover: #e8e3d6; --atlas-map-bg: #e5e6df; --atlas-company: #a54732; --atlas-lab: #277a75; font-size: 18px; }
-html[data-theme="dark"] .atlas { --atlas-paper: #191d20; --atlas-ink: #eee9de; --atlas-soft: #b9b8af; --atlas-line: #3c4245; --atlas-hover: #282e31; --atlas-map-bg: #1c2226; --atlas-company: #f0a184; --atlas-lab: #80c5be; }
+.atlas { --atlas-paper: var(--paper); --atlas-ink: var(--text); --atlas-soft: var(--muted); --atlas-line: var(--rule); --atlas-hover: var(--panelHover); --atlas-map-bg: var(--outer); --atlas-company: #a54732; --atlas-lab: #277a75; font-size: 18px; }
+html[data-theme="dark"] .atlas { --atlas-paper: var(--paper); --atlas-ink: var(--text); --atlas-soft: var(--muted); --atlas-line: var(--rule); --atlas-hover: var(--panelHover); --atlas-map-bg: var(--outer); --atlas-company: #f0a184; --atlas-lab: #80c5be; }
 .atlas :is(button, input, select) { font: inherit; color: inherit; }
 .atlas button { cursor: pointer; }
 .atlas :is(button, select, input[type=search]) { border: 1px solid var(--atlas-line); background: var(--atlas-paper); border-radius: 8px; padding: 9px 12px; }

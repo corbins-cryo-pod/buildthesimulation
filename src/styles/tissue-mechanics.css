@@ -1,6 +1,6 @@
 /* Tissue mechanics labs, aligned with the cortical-stimulation lab conventions. */
-.tm-lab{--tm-accent:#247b84;--tm-warm:#755b30;--tm-rule:#b9aa8d;--tm-edge:var(--tm-rule);font:17px/1.5 var(--font-body);color:var(--text);margin:22px auto 40px;max-width:1600px;border:1px solid var(--tm-edge);border-radius:18px;overflow:hidden;background:var(--panel)}
-html[data-theme=dark] .tm-lab{--tm-accent:#8dcdd2;--tm-warm:#d2b77d;--tm-rule:#695b42}
+.tm-lab{--tm-accent:var(--accent-ink);--tm-warm:var(--accent-ink);--tm-rule:var(--rule);--tm-edge:var(--tm-rule);font:17px/1.5 var(--font-body);color:var(--text);margin:22px auto 40px;max-width:1600px;border:1px solid var(--tm-edge);border-radius:18px;overflow:hidden;background:var(--panel)}
+html[data-theme=dark] .tm-lab{--tm-accent:var(--accent-ink);--tm-warm:var(--accent-ink);--tm-rule:var(--rule)}
 .tm-lab *{box-sizing:border-box}
 .tm-lab h2,.tm-lab h3{font-family:var(--font-heading);font-weight:400;line-height:1.1}
 .tm-lab a{color:inherit;text-underline-offset:4px}
@@ -34,13 +34,13 @@ html[data-theme=dark] .tm-lab{--tm-accent:#8dcdd2;--tm-warm:#d2b77d;--tm-rule:#6
 .tm-lab .tm-buttons button:first-child:hover:not(:disabled){background:var(--tm-accent);filter:brightness(1.1)}
 .tm-lab .tm-help{font-size:14px;line-height:1.5;opacity:.72}
 .tm-lab .tm-experiment{min-width:0;padding-bottom:12px}
-.tm-lab .tm-viewport{position:relative;width:100%;height:clamp(440px,57vw,710px);background:#101e26;color:#d1e0e0;isolation:isolate;overflow:hidden}
+.tm-lab .tm-viewport{position:relative;width:100%;height:clamp(440px,57vw,710px);background:var(--scene-bg);color:var(--scene-text);isolation:isolate;overflow:hidden}
 .tm-lab .tm-viewport canvas{display:block;width:100%;height:100%}
 .tm-lab .tm-canvas-label,.tm-lab .tm-canvas-help,.tm-lab .tm-fps{position:absolute;pointer-events:none;z-index:2;font:13px var(--font-body);letter-spacing:.03em}
 .tm-lab .tm-canvas-label{left:18px;top:16px;text-transform:uppercase;font-size:12px;letter-spacing:.1em}
 .tm-lab .tm-canvas-help{bottom:16px;left:18px;opacity:.7}
 .tm-lab .tm-fps{right:16px;top:16px;opacity:.6}
-.tm-lab .tm-legend{padding:10px 18px;background:#162832;color:#d2dedd;font-size:13px;border-top:1px solid var(--tm-edge)}
+.tm-lab .tm-legend{padding:10px 18px;background:var(--scene-panel);color:var(--scene-text);font-size:13px;border-top:1px solid var(--tm-edge)}
 .tm-lab .tm-status{padding:13px 18px;border-bottom:1px solid var(--tm-edge);font-size:14px;font-variant-numeric:tabular-nums}
 .tm-lab .tm-status[data-ok=true]{border-left:3px solid var(--tm-accent)}
 .tm-lab .tm-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:9px}

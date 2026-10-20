@@ -1,17 +1,17 @@
 /* An editorial edition: Bodoni, warm paper and simple rules. */
 .company-brief {
-  --brief-accent: #755b30;
-  --brief-rule: #b9aa8d;
-  --brief-ink: #29251e;
+  --brief-accent: var(--accent-ink);
+  --brief-rule: var(--rule);
+  --brief-ink: var(--text);
   width: 100%;
   min-width: 0;
   color: var(--text);
   container-type: inline-size;
 }
 html[data-theme="dark"] .company-brief {
-  --brief-accent: #d2b77d;
-  --brief-rule: #695b42;
-  --brief-ink: #eee5d4;
+  --brief-accent: var(--accent-ink);
+  --brief-rule: var(--rule);
+  --brief-ink: var(--text);
 }
 .company-brief :is(h1, h2, h3, p, figure, dl, ol, ul) { margin: 0; }
 .company-brief :is(a, li, p, dd) { overflow-wrap: break-word; }
@@ -83,7 +83,7 @@ main.wrap:has(.company-brief) { padding: 28px 24px 36px; }
 .brief-prose blockquote p:last-child { margin-bottom: 0; }
 .brief-marginalia { min-width: 0; padding-left: 22px; border-left: 1px solid var(--brief-rule); }
 .brief-interface .brief-small-label { display: block; margin-bottom: 13px; }
-.brief-photo { display: block; padding: 9px; background: #f7f6f2; border: 1px solid var(--brief-rule); color: #51452f; text-decoration: none; }
+.brief-photo { display: block; padding: 9px; background: var(--paper); border: 1px solid var(--brief-rule); color: var(--muted); text-decoration: none; }
 .brief-photo img { display: block; width: 100%; height: auto; }
 .brief-photo > span { display: block; text-align: right; margin-top: 9px; font-size: 12px; font-style: italic; }
 .brief-interface figcaption { padding-top: 15px; }

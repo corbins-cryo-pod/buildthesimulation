@@ -419,7 +419,7 @@ export async function createCortexView(host, onStatus, onScale, onPick) {
     software = true;
   }
   renderer.setPixelRatio?.(Math.min(devicePixelRatio || 1, 2));
-  renderer.setClearColor("#111f26");
+  renderer.setClearColor("#302f2d");
   renderer.domElement.setAttribute("role", "img");
   renderer.domElement.setAttribute(
     "aria-label",

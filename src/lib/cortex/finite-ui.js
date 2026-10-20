@@ -21,7 +21,7 @@ function initScene(){
   const host=$('disk-scene');
   try{renderer=new THREE.WebGLRenderer({antialias:true});}catch{host.textContent='3D unavailable in this browser. Sampling, membrane traces and exports remain available.';return;}
   renderer.setPixelRatio(Math.min(devicePixelRatio,2));host.append(renderer.domElement);
-  scene=new THREE.Scene();scene.background=new THREE.Color('#101c25');
+  scene=new THREE.Scene();scene.background=new THREE.Color('#302f2d');
   camera=new THREE.PerspectiveCamera(42,1,1,5000);camera.up.set(0,0,1);camera.position.set(480,-600,380);
   controls=new OrbitControls(camera,renderer.domElement);controls.target.set(0,0,125);controls.update();
   scene.add(new THREE.Mesh(new THREE.PlaneGeometry(500,500),new THREE.MeshBasicMaterial({color:'#78908c',transparent:true,opacity:.16,side:THREE.DoubleSide})));

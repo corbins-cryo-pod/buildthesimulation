@@ -25,7 +25,7 @@ export function fieldImage(field, kind) {
 
 export function createCortexView(host, onSelect) {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.7)); renderer.setClearColor(0x0d1720); renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.7)); renderer.setClearColor(0x302f2d); renderer.outputColorSpace = THREE.SRGBColorSpace;
   const canvas = renderer.domElement; canvas.setAttribute('aria-label', 'Cortical tissue, electrodes, and simulated neurons. Drag to orbit, scroll to zoom. Use the view buttons and neuron selector for keyboard access.'); canvas.setAttribute('role', 'img'); host.append(canvas);
   const scene = new THREE.Scene(); scene.add(new THREE.HemisphereLight(0xe9f8ff, 0x1a2c39, 2));
   const light = new THREE.DirectionalLight(0xffe8bb, 2); light.position.set(-200, -500, 100); scene.add(light);
