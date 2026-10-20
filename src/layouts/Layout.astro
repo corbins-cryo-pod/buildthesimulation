@@ -43,17 +43,8 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
 
-    <script>
-      // Theme: default to system preference, allow manual override via localStorage.
-      (() => {
-        try {
-          const saved = localStorage.getItem("bts_theme");
-          const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-          const theme = saved === "light" || saved === "dark" ? saved : prefersDark ? "dark" : "light";
-          document.documentElement.dataset.theme = theme;
-        } catch {}
-      })();
-    </script>
+    <link rel="stylesheet" href="/styles/theme.css" />
+    <script is:inline src="/scripts/theme.js"></script>
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
@@ -83,24 +74,8 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
           <a class={`pill ${pathname.startsWith("/biology/") || pathname.startsWith("/cells/") ? "active" : ""}`} href="/biology/">Biology</a>
           <a class={`pill ${pathname.startsWith("/devices/designer/") ? "active" : ""}`} href="/devices/designer/">Designer</a>
           <button class="pill discovery-trigger" type="button" data-discovery-trigger aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K">Search</button>
-          <button id="themeToggle" class="pill" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">Theme</button>
+          <button id="themeToggle" data-theme-toggle class="pill" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">Theme</button>
         </nav>
-
-        <script>
-          (() => {
-            const btn = document.getElementById("themeToggle");
-            if (!btn) return;
-            const current = () => document.documentElement.dataset.theme || "light";
-            const label = () => { btn.textContent = current() === "dark" ? "Light" : "Dark"; btn.setAttribute("aria-pressed", String(current() === "dark")); };
-            label();
-            btn.addEventListener("click", () => {
-              const next = current() === "dark" ? "light" : "dark";
-              document.documentElement.dataset.theme = next;
-              try { localStorage.setItem("bts_theme", next); } catch {}
-              label();
-            });
-          })();
-        </script>
       </header>
 
       <SiteSearch client:load />
@@ -178,24 +153,6 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
   }
 
   :global(:root) {
-    /* Light theme (default) */
-    --bg: #f6f1e6; /* paper */
-    --text: rgba(10, 10, 12, 0.86);
-    --muted: rgba(10, 10, 12, 0.72);
-
-    --panel: rgba(255, 255, 255, 0.22);
-    --panelStrong: rgba(255, 255, 255, 0.65);
-    --panelHover: rgba(255, 255, 255, 0.50);
-
-    --border: rgba(10, 10, 12, 0.14);
-    --borderStrong: rgba(10, 10, 12, 0.28);
-
-    --shadow: rgba(0, 0, 0, 0.14);
-    --menuBg: rgba(255, 255, 255, 0.92);
-
-    --grainOpacity: 0.045;
-    --grainBlend: multiply;
-
     --compressed-size: 46px;
     --title-hero: clamp(46px, 5.2vw, 88px);
     --title-page: clamp(56px, 6vw, 96px);
@@ -208,33 +165,13 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
     --text-kicker: 14px;
   }
 
-  :global(html[data-theme="dark"]) {
-    /* Dark theme */
-    --bg: #0f1114;
-    --text: rgba(245, 242, 236, 0.88);
-    --muted: rgba(245, 242, 236, 0.68);
-
-    --panel: rgba(255, 255, 255, 0.06);
-    --panelStrong: rgba(255, 255, 255, 0.10);
-    --panelHover: rgba(255, 255, 255, 0.12);
-
-    --border: rgba(245, 242, 236, 0.14);
-    --borderStrong: rgba(245, 242, 236, 0.26);
-
-    --shadow: rgba(0, 0, 0, 0.45);
-    --menuBg: rgba(18, 20, 24, 0.96);
-
-    --grainOpacity: 0.035;
-    --grainBlend: overlay;
-  }
-
   :global(body) {
     margin: 0;
     font-family: var(--font-body);
     font-size: 22px;
     line-height: 1.34;
     color: var(--text);
-    background: var(--bg);
+    background: var(--outer);
   }
 
   :global(strong),
@@ -292,6 +229,9 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
 
   /* keep UI above the 3D canvas */
   .wrap {
+    background: var(--paper);
+    min-height: 100vh;
+    border-inline: 1px solid var(--accent);
     position: relative;
     z-index: 1;
     max-width: 1120px;
@@ -379,7 +319,8 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
 
   .nav-key { margin-left: 7px; opacity: .55; font-size: 14px; }
   .pill.active {
-    border-color: var(--borderStrong);
+    border-color: var(--accent);
+    box-shadow: inset 0 -2px var(--accent);
     background: var(--panelStrong);
     font-style: italic;
   }

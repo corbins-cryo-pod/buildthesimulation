@@ -27,7 +27,7 @@ function start(){
   const model=placeCorticalRouteCells(registerPreservedModel(createAtlasModel(),PRESERVED_CELL_MANIFEST)),byId=new Map(model.cells.map(c=>[c.id,c]));
   const regions=model.regions,stage=$('stage'),canvas=$('viewport');
   const renderer=new T.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance',logarithmicDepthBuffer:true});
-  renderer.setPixelRatio(Math.min(devicePixelRatio,budgets.balanced.pixelRatio));renderer.setClearColor(0x060d13);renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;
+  renderer.setPixelRatio(Math.min(devicePixelRatio,budgets.balanced.pixelRatio));renderer.setClearColor(0x302f2d);renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;
   const scene=new T.Scene(),camera=new T.PerspectiveCamera(34,1,.00001,8000),controls=new OrbitControls(camera,canvas);
   controls.enableDamping=true;controls.dampingFactor=.13;controls.minDistance=.018;controls.maxDistance=4500;controls.screenSpacePanning=true;controls.zoomSpeed=.85;
   const hemisphere=new T.HemisphereLight(0xd2eaf0,0x182334,2.0);scene.add(hemisphere);

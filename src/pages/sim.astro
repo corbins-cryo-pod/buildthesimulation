@@ -645,16 +645,24 @@ import Layout from "../layouts/Layout.astro";
     while (list.length && list[0].t < cutoff) list.shift();
   }
 
+  const canvasTheme = { paper: '#F5F1E6', ink: '#111111', muted: '#51483E', rule: '#292720', panel: '#DED4C3' };
+  function syncCanvasTheme() {
+    const css = getComputedStyle(document.documentElement);
+    for (const key of ['paper', 'ink', 'muted', 'rule', 'panel']) canvasTheme[key] = css.getPropertyValue('--' + (key === 'panel' ? 'outer' : key)).trim();
+  }
+  syncCanvasTheme();
+  new MutationObserver(syncCanvasTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
   function drawStrip(ctx2d, nowS, events, titleLeft) {
     const W = ctx2d.canvas.width;
     const H = ctx2d.canvas.height;
 
     ctx2d.clearRect(0, 0, W, H);
-    ctx2d.fillStyle = "rgba(255,255,255,0.10)";
+    ctx2d.fillStyle = canvasTheme.paper;
     ctx2d.fillRect(0, 0, W, H);
 
     // grid lines
-    ctx2d.strokeStyle = "rgba(10,10,12,0.10)";
+    ctx2d.strokeStyle = canvasTheme.panel;
     ctx2d.lineWidth = 1;
     for (let i = 1; i < 6; i++) {
       const y = (i / 6) * H;
@@ -678,7 +686,7 @@ import Layout from "../layouts/Layout.astro";
 
     // baseline
     const mid = Math.floor(H * 0.70);
-    ctx2d.strokeStyle = "rgba(10,10,12,0.25)";
+    ctx2d.strokeStyle = canvasTheme.panel;
     ctx2d.beginPath();
     ctx2d.moveTo(0, mid);
     ctx2d.lineTo(W, mid);
@@ -706,7 +714,7 @@ import Layout from "../layouts/Layout.astro";
       if (ev.type !== "neural" || ev.t < tStart || ev.t > tEnd) continue;
       const x = tx(ev.t);
       const ampPx = ev.amp * (H * 0.60);
-      ctx2d.strokeStyle = ev.color ?? "rgba(10,10,12,0.85)";
+      ctx2d.strokeStyle = ev.color ?? canvasTheme.ink;
       ctx2d.beginPath();
       ctx2d.moveTo(x, mid);
       ctx2d.lineTo(x, mid - ampPx);
@@ -714,14 +722,14 @@ import Layout from "../layouts/Layout.astro";
     }
 
     // now marker
-    ctx2d.strokeStyle = "rgba(0,0,0,0.35)";
+    ctx2d.strokeStyle = canvasTheme.rule;
     ctx2d.lineWidth = 2;
     ctx2d.beginPath();
     ctx2d.moveTo(nowX, 0);
     ctx2d.lineTo(nowX, H);
     ctx2d.stroke();
 
-    ctx2d.fillStyle = "rgba(10,10,12,0.60)";
+    ctx2d.fillStyle = canvasTheme.muted;
     ctx2d.font = "12px ui-sans-serif, system-ui";
     ctx2d.fillText(titleLeft, 10, 14);
     ctx2d.fillText("t = 0", nowX + 6, 14);
@@ -732,7 +740,7 @@ import Layout from "../layouts/Layout.astro";
     const H = sctx.canvas.height;
 
     sctx.clearRect(0, 0, W, H);
-    sctx.fillStyle = "rgba(255,255,255,0.10)";
+    sctx.fillStyle = canvasTheme.paper;
     sctx.fillRect(0, 0, W, H);
 
     const nowS = nowMs / 1000;
@@ -750,7 +758,7 @@ import Layout from "../layouts/Layout.astro";
     // axis: left y-axis + baseline
     const mid = Math.floor(H * 0.60);
 
-    sctx.strokeStyle = "rgba(10,10,12,0.28)";
+    sctx.strokeStyle = canvasTheme.panel;
     sctx.lineWidth = 1.5;
     sctx.beginPath();
     sctx.moveTo(36, 10);
@@ -763,7 +771,7 @@ import Layout from "../layouts/Layout.astro";
     sctx.stroke();
 
     // label (proxy units)
-    sctx.fillStyle = "rgba(10,10,12,0.60)";
+    sctx.fillStyle = canvasTheme.muted;
     sctx.font = "12px ui-sans-serif, system-ui";
     sctx.fillText("current (a.u.)", 8, 14);
 
@@ -771,7 +779,7 @@ import Layout from "../layouts/Layout.astro";
     const amp = Number(model.stim.amp);
     const scaleY = (H * 0.40) / Math.max(1, amp);
 
-    sctx.strokeStyle = "rgba(10,10,12,0.85)";
+    sctx.strokeStyle = canvasTheme.ink;
     sctx.lineWidth = 2;
 
     sctx.beginPath();
@@ -798,14 +806,14 @@ import Layout from "../layouts/Layout.astro";
     sctx.stroke();
 
     // now marker
-    sctx.strokeStyle = "rgba(0,0,0,0.35)";
+    sctx.strokeStyle = canvasTheme.rule;
     sctx.lineWidth = 2;
     sctx.beginPath();
     sctx.moveTo(nowX, 0);
     sctx.lineTo(nowX, H);
     sctx.stroke();
 
-    sctx.fillStyle = "rgba(10,10,12,0.60)";
+    sctx.fillStyle = canvasTheme.muted;
     sctx.font = "12px ui-sans-serif, system-ui";
     sctx.fillText("t = 0", nowX + 6, 14);
   }
@@ -859,7 +867,7 @@ import Layout from "../layouts/Layout.astro";
     const { cx, cy, r } = model.nerve;
     ctx.clearRect(0, 0, cnv.width, cnv.height);
 
-    ctx.fillStyle = "rgba(255,255,255,0.10)";
+    ctx.fillStyle = canvasTheme.paper;
     ctx.fillRect(0, 0, cnv.width, cnv.height);
 
     const mult = model.pulse.active ? stimMultiplier(nowMs) : 0;
@@ -893,7 +901,7 @@ import Layout from "../layouts/Layout.astro";
     // nerve boundary
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
-    ctx.strokeStyle = "rgba(10,10,12,0.60)";
+    ctx.strokeStyle = canvasTheme.muted;
     ctx.lineWidth = 2;
     ctx.stroke();
 
@@ -901,9 +909,9 @@ import Layout from "../layouts/Layout.astro";
     const f = model.fascicles[0];
     ctx.beginPath();
     ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(255,255,255,0.14)";
+    ctx.fillStyle = canvasTheme.paper;
     ctx.fill();
-    ctx.strokeStyle = "rgba(10,10,12,0.20)";
+    ctx.strokeStyle = canvasTheme.panel;
     ctx.lineWidth = 1;
     ctx.stroke();
 
@@ -916,7 +924,7 @@ import Layout from "../layouts/Layout.astro";
       const on = (a.onUntil > nowS) || (a.stimUntil > nowS);
 
       if (!on) {
-        ctx.fillStyle = "rgba(10,10,12,0.12)";
+        ctx.fillStyle = canvasTheme.panel;
         ctx.fillRect(a.x - half, a.y - half, cell, cell);
         continue;
       }
@@ -924,7 +932,7 @@ import Layout from "../layouts/Layout.astro";
       if (model.colorMode === "axon") {
         ctx.fillStyle = a.color;
       } else {
-        ctx.fillStyle = "rgba(10,10,12,0.78)";
+        ctx.fillStyle = canvasTheme.ink;
       }
 
       ctx.fillRect(a.x - half, a.y - half, cell, cell);
@@ -937,17 +945,17 @@ import Layout from "../layouts/Layout.astro";
 
       ctx.beginPath();
       ctx.arc(e.x, e.y, 6, 0, Math.PI * 2);
-      ctx.fillStyle = selected ? "rgba(10,10,12,0.95)" : "rgba(10,10,12,0.78)";
+      ctx.fillStyle = selected ? canvasTheme.ink : canvasTheme.muted;
       ctx.fill();
       ctx.beginPath();
       ctx.arc(e.x, e.y, 10, 0, Math.PI * 2);
-      ctx.strokeStyle = "rgba(10,10,12,0.24)";
+      ctx.strokeStyle = canvasTheme.panel;
       ctx.lineWidth = 1;
       ctx.stroke();
     }
 
     // label
-    ctx.fillStyle = "rgba(10,10,12,0.62)";
+    ctx.fillStyle = canvasTheme.muted;
     ctx.font = "16px Times New Roman";
     ctx.fillText("nerve", cx - 18, cy - r - 10);
 
@@ -960,14 +968,14 @@ import Layout from "../layouts/Layout.astro";
 
     const x0 = 18;
     const y0 = cnv.height - 18;
-    ctx.strokeStyle = "rgba(10,10,12,0.55)";
+    ctx.strokeStyle = canvasTheme.muted;
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(x0, y0);
     ctx.lineTo(x0 + barPx, y0);
     ctx.stroke();
 
-    ctx.fillStyle = "rgba(10,10,12,0.65)";
+    ctx.fillStyle = canvasTheme.muted;
     ctx.font = "14px Times New Roman";
     ctx.fillText(`${barMm} mm`, x0, y0 - 6);
   }

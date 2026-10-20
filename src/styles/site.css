@@ -3,7 +3,7 @@
 a { color: inherit; text-underline-offset: 3px; }
 button, input, select, textarea { font-family: var(--font-body); }
 button { font-size: inherit; }
-button, summary, input, select { accent-color: #12756c; }
+button, summary, input, select { accent-color: var(--accent); }
 :is(a, button, input, select, textarea, summary):focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 :is(.panelTitle, .stageTitle, .miniTitle, .dlgTitle) { font-family: var(--font-heading); font-weight: 400; }
 :is(.sub, .lede, .model-heading > p, .stageHint, .miniHint, .facetTitle) { font-style: italic; }

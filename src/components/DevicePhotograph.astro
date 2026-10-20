@@ -64,10 +64,10 @@ const dialogId = `photo-${deviceId.toLowerCase().replace(/[^a-z0-9-]/g, '-')}`;
   implant-photograph { display: block; }
   .implant-photo { margin: 28px 0; }
   .photo-label { display: flex; justify-content: space-between; gap: 12px; padding: 11px 0; border-top: 1px solid var(--border); font-size: 13px; font-style: italic; opacity: .72; }
-  .photo-open { display: grid; position: relative; background: #f5f4f0; border-radius: 3px; overflow: hidden; text-decoration: none; }
+  .photo-open { display: grid; position: relative; background: var(--paper); border-radius: 3px; overflow: hidden; text-decoration: none; }
   .photo-open img { width: 100%; height: clamp(260px, 45vw, 490px); object-fit: scale-down; padding: 24px; transition: transform .45s ease; }
   .photo-open:hover img { transform: scale(1.025); }
-  .photo-enlarge { position: absolute; right: 14px; bottom: 14px; color: #282923; background: #f8f7f2; border: 1px solid #dcdad1; padding: 6px 11px; border-radius: 3px; font-size: 14px; font-style: italic; }
+  .photo-enlarge { position: absolute; right: 14px; bottom: 14px; color: var(--text); background: var(--panelStrong); border: 1px solid var(--border); padding: 6px 11px; border-radius: 3px; font-size: 14px; font-style: italic; }
   .photo-enlarge span { margin-left: 10px; }
   figcaption { padding-top: 12px; }
   .photo-caption { margin: 0; font-size: 18px; font-style: italic; line-height: 1.45; }
@@ -84,7 +84,7 @@ const dialogId = `photo-${deviceId.toLowerCase().replace(/[^a-z0-9-]/g, '-')}`;
   .photo-close span { margin-left: 12px; }
   .photo-dialog-heading > span { font-size: 13px; opacity: .65; font-style: italic; }
   .photo-dialog-heading h2 { font: 400 clamp(30px, 5vw, 56px)/1.1 var(--font-heading); margin: 8px 0 22px; }
-  .photo-dialog > img { display: block; width: 100%; height: auto; max-height: 65dvh; object-fit: scale-down; background: #f5f4f0; }
+  .photo-dialog > img { display: block; width: 100%; height: auto; max-height: 65dvh; object-fit: scale-down; background: var(--paper); }
   .photo-dialog > p { font-size: 16px; line-height: 1.5; font-style: italic; }
   .photo-dialog .photo-dialog-credit { font-size: 12px; font-style: normal; opacity: .7; }
   @media (max-width: 680px) { .photo-open img { padding: 12px; } .photo-dialog { padding: 18px; } .photo-caption { font-size: 16px; } }

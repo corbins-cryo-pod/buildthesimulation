@@ -70,7 +70,7 @@ function Plot({ result, comparison, frame, kind, contact = 0, cell = 0, node = 0
     const element = canvas.current, ctx = element?.getContext('2d'); if (!ctx) return;
     const width = 900, height = kind === 'raster' ? 230 : 190;
     element.width = width * 2; element.height = height * 2; ctx.scale(2, 2);
-    ctx.fillStyle = '#0c1721'; ctx.fillRect(0, 0, width, height); ctx.font = '12px system-ui'; ctx.fillStyle = '#98aab9';
+    ctx.fillStyle = '#302f2d'; ctx.fillRect(0, 0, width, height); ctx.font = '12px system-ui'; ctx.fillStyle = '#98aab9';
     if (!graph || graph.unavailable) { ctx.fillText(graph?.unavailable ? 'This replay has no per-cell recording contributions. Run a new experiment to compute them.' : 'Load an example or run an experiment to inspect its recorded signals.', 35, height / 2); return; }
     const left = 62, right = width - 18, top = 22, bottom = height - 30, end = result.timeMs.at(-1);
     const x = time => left + time / end * (right - left);

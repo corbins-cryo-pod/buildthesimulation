@@ -137,7 +137,7 @@ export function createInterfaceView(host, { onSelectCell = () => {}, onSelectCon
   let cells = [], cellMeshes = [], contacts = [], contactMeshes = [], activeIds = [], recordingId = null;
   let currentResult = null, currentFrame = 0, selectedCellIndex = 0, selectedNodeIndex = 0;
   const events = new AbortController(), scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(38, 1, .5, 20000);
-  const background = '#101d28'; scene.background = new THREE.Color(background);
+  const background = '#302f2d'; scene.background = new THREE.Color(background);
   renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio || 1, 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.domElement.style.cssText = 'display:block;width:100%;height:100%;touch-action:none;';
   renderer.domElement.setAttribute('aria-label', 'Three dimensional finite-contact neural interface. Drag to rotate, scroll to zoom, click a cell compartment or electrode contact to inspect it.');

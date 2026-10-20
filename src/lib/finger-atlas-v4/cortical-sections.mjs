@@ -6,7 +6,7 @@ import { fetchAtlasJSON } from './anatomy-lod.mjs';
 const vec=p=>new T.Vector3(...p);
 const gray=[0x626971,0x797e85,0x6c747b,0x91989d,0x727e89,0x596c79];
 export function createCorticalScene(id) {
-  const sample=createCorticalSample(id),p=sample.profile,scene=new T.Scene();scene.background=new T.Color(0x080f16);
+  const sample=createCorticalSample(id),p=sample.profile,scene=new T.Scene();scene.background=new T.Color(0x302f2d);
   scene.add(new T.HemisphereLight(0xe0edf5,0x26363a,2));
   const light=new T.DirectionalLight(0xffedd5,2.6);light.position.set(-4,9,15);scene.add(light);
   const layers=new T.Group();layers.name='six-layer-coronal-section';scene.add(layers);

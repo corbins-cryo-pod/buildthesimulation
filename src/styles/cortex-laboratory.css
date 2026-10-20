@@ -34,8 +34,8 @@
   .cx-distance-maps { grid-template-columns: 1fr; }
 }
 .cortex-lab {
-  --cx-teal: #367a76;
-  --cx-amber: #ad6837;
+  --cx-teal: var(--accent-ink);
+  --cx-amber: var(--accent-ink);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 13px;
   line-height: 1.5;
@@ -210,7 +210,7 @@
 }
 .cx-run .cx-primary {
   background: var(--cx-teal);
-  color: #fff;
+  color: var(--paper);
   width: 100%;
   font-size: 12px;
   padding: 11px;
@@ -245,8 +245,8 @@
 .cx-stage {
   height: 460px;
   position: relative;
-  background: #111f26;
-  color: #dce9e9;
+  background: var(--scene-bg);
+  color: var(--scene-text);
 }
 .cx-canvas {
   position: absolute;
@@ -267,7 +267,7 @@
   font-size: 10px;
   pointer-events: none;
   line-height: 1.7;
-  color: #c5d3d4;
+  color: var(--scene-muted);
 }
 .cx-scale {
   position: absolute;
@@ -278,15 +278,15 @@
 }
 .cx-scale > div {
   height: 5px;
-  border-inline: 1px solid #e0e9e9;
-  border-bottom: 1px solid #e0e9e9;
+  border-inline: 1px solid var(--scene-rule);
+  border-bottom: 1px solid var(--scene-rule);
   margin-bottom: 4px;
 }
 .cx-stage-error {
   position: absolute;
   inset: 0;
   padding: 70px 30px;
-  background: #111f26;
+  background: var(--scene-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -553,9 +553,9 @@
 .cx-contact-label {
   position: absolute;
   white-space: pre-line;
-  background: rgba(10, 24, 32, 0.87);
-  color: #f1f5fa;
-  border: 1px solid #6a808e;
+  background: var(--scene-panel);
+  color: var(--scene-text);
+  border: 1px solid var(--scene-rule);
   padding: 3px 5px;
   font:
     10px/1.4 Arial,

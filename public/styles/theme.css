@@ -1,0 +1,46 @@
+/* Selected from schoolbook_three_way_color_lab_expanded.html:
+   01 / Vintage ivory and 07 / Graphite & brass. Shared by every viewer. */
+:root {
+  color-scheme: light;
+  --paper: #F5F1E6;
+  --ink: #111111;
+  --rule: #292720;
+  --muted: #51483E;
+  --outer: #DED4C3;
+  --accent: #BCA47F;
+  --bg: var(--paper);
+  --text: var(--ink);
+  --panel: var(--paper);
+  --panelStrong: color-mix(in srgb, var(--paper) 70%, var(--outer));
+  --panelHover: color-mix(in srgb, var(--paper) 80%, var(--accent));
+  --border: var(--rule);
+  --borderStrong: var(--rule);
+  --menuBg: var(--paper);
+  /* Brass is decorative; small accent text uses the contrast-safe ink. */
+  --accent-ink: var(--muted);
+  --on-accent: #111111;
+  --shadow: rgba(35, 35, 33, .16);
+  --grainOpacity: 0;
+  --grainBlend: multiply;
+  /* Scientific scenes retain a stable dark field behind their data colors. */
+  --scene-bg: #302F2D;
+  --scene-panel: #232321;
+  --scene-text: #EEE5D5;
+  --scene-muted: #D2C5AF;
+  --scene-rule: #D5C4A5;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #302F2D;
+  --ink: #EEE5D5;
+  --rule: #D5C4A5;
+  --muted: #D2C5AF;
+  --outer: #232321;
+  --accent: #BCA47F;
+  --shadow: rgba(0, 0, 0, .35);
+}
+html { background: var(--outer); }
+body { color: var(--text); background: var(--outer); }
+::selection { color: var(--on-accent); background: var(--accent); }
+input, select, textarea { color-scheme: inherit; }
+button, input, select, progress, meter { accent-color: var(--accent); }
