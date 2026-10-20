@@ -123,26 +123,34 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
   }
 
   @font-face {
-    font-family: "Bodoni MT";
-    src: url("/fonts/bodoni/BodoniMT-Regular.ttf") format("truetype");
+    font-family: "TeX Gyre Schola";
+    src: url("/fonts/tex-gyre-schola/texgyreschola-regular.otf") format("opentype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: "Bodoni MT";
-    src: url("/fonts/bodoni/BodoniMT-Italic.ttf") format("truetype");
+    font-family: "TeX Gyre Schola";
+    src: url("/fonts/tex-gyre-schola/texgyreschola-italic.otf") format("opentype");
     font-weight: 400;
     font-style: italic;
     font-display: swap;
   }
 
   @font-face {
-    font-family: "Bodoni MT Compressed";
-    src: url("/fonts/bodoni/BodoniMT-Compressed.ttf") format("truetype");
-    font-weight: 400;
+    font-family: "TeX Gyre Schola";
+    src: url("/fonts/tex-gyre-schola/texgyreschola-bold.otf") format("opentype");
+    font-weight: 700;
     font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "TeX Gyre Schola";
+    src: url("/fonts/tex-gyre-schola/texgyreschola-bolditalic.otf") format("opentype");
+    font-weight: 700;
+    font-style: italic;
     font-display: swap;
   }
 
@@ -169,8 +177,8 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
     --title-hero: clamp(46px, 5.2vw, 88px);
     --title-page: clamp(56px, 6vw, 96px);
     --title-post: clamp(32px, 4.2vw, 46px);
-    --font-body: "Bodoni MT", "Times New Roman", serif;
-    --font-heading: "Bodoni MT Compressed", "Bodoni MT", "Times New Roman", serif;
+    --font-body: "TeX Gyre Schola", "Times New Roman", serif;
+    --font-heading: "TeX Gyre Schola", "Times New Roman", serif;
     --title-section: 32px;
     --title-card: 32px;
     --text-meta: 16px;
