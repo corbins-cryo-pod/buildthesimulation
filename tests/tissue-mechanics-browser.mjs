@@ -48,6 +48,8 @@ test('browser: both mechanics pages solve, H01 loads, controls and cleanup work'
    const exported=await evaluate(`(async()=>{const original=URL.createObjectURL,click=HTMLAnchorElement.prototype.click;let blob;URL.createObjectURL=b=>{blob=b;return 'blob:verification'};HTMLAnchorElement.prototype.click=()=>{};document.querySelector('[data-tm="export"]').click();URL.createObjectURL=original;HTMLAnchorElement.prototype.click=click;const d=JSON.parse(await blob.text());return {schema:d.schema,complete:d.complete,steps:d.acceptedHistory.length,last:d.finalAcceptedTime,branches:d.finalViscousMetricInverse?.length,physicalTime:d.physicalTime};})()`);
    assert.equal(exported.schema,'bts-tissue-experiment-v2');assert.equal(exported.complete,true);assert.equal(exported.last,4);assert.equal(exported.branches,2);assert.equal(exported.steps,last+1);
    const shot=await command('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});assert.ok(shot.data.length>10000);writeFileSync(join(artifactDir,`${mode}.png`),Buffer.from(shot.data,'base64'));
+   await evaluate(`document.querySelector('[data-tm="history-chart"]').scrollIntoView({block:'center'});true`);await sleep(200);
+   const historyShot=await command('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});writeFileSync(join(artifactDir,`${mode}-history.png`),Buffer.from(historyShot.data,'base64'));
    console.log(`${mode}:`,await evaluate(`JSON.stringify({status:document.querySelector('[data-tm="status"]').textContent,source:document.querySelector('[data-tm="source-status"]')?.textContent,time:document.querySelector('[data-tm="time"]').textContent})`));
   }
   // Static calibration fits must not masquerade as calibrated time-dependent fits.
@@ -61,6 +63,7 @@ test('browser: both mechanics pages solve, H01 loads, controls and cleanup work'
   await sleep(250);await wait(()=>evaluate(`document.querySelector('[data-tm="status"]')?.textContent.startsWith('Complete · converged')`));
   await command('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});await sleep(300);
   assert.ok(await evaluate(`document.querySelector('[data-tissue-lab]').getBoundingClientRect().width<=window.innerWidth+2`));
+  const mobileShot=await command('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});writeFileSync(join(artifactDir,'cellular-mobile.png'),Buffer.from(mobileShot.data,'base64'));
   await evaluate(`document.dispatchEvent(new Event('astro:before-swap'));true`);assert.equal(await evaluate(`document.querySelectorAll('[data-tissue-lab] canvas').length`),0);
   assert.deepEqual(errors,[]);
   const page=await fetch(`http://127.0.0.1:${http}/simulations/tissue-mechanics/validation/`);assert.equal(page.status,200);assert.ok((await page.text()).includes('Held-out')||(await (await fetch(`http://127.0.0.1:${http}/simulations/tissue-mechanics/validation/`)).text()).includes('held-out'));
