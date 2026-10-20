@@ -27,3 +27,8 @@ button, summary, input, select { accent-color: #12756c; }
 @media (max-width: 680px) {
   .device-directory .topRight { flex-wrap: wrap; }
 }
+
+/* Headings use the installed Microsoft face; keep case, weight and style intact.
+   A licensed webfont can be added later without changing these selectors. */
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading) !important; }
+:is(h1, h2, h3, h4, h5, h6) :is(b, strong, em, i) { font-family: inherit !important; }
