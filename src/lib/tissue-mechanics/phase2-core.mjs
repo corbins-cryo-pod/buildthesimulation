@@ -35,7 +35,7 @@ export function evaluatePhase2(mesh,x,p=mesh.p,diagnostic=false,{history=null,dt
   if(commit&&m.next)for(let b=0;b<m.next.length;b++)next[b].set(m.next[b],e*9);
  }
  const pressure=new Float64Array(means.length);let maxMacroVolumeError=0,maxVolumeFluctuation=0;
- if(p.formulation==='mixed')for(let c=0;c<means.length;c++){pressure[c]=K*(means[c]-1);const E=.5*K*vols[c]*(means[c]-1)**2;energy+=E;storedEnergy+=E;maxMacroVolumeError=Math.max(maxMacroVolumeError,Math.abs(means[c]-1));}
+ for(let c=0;c<means.length;c++){pressure[c]=K*(means[c]-1);maxMacroVolumeError=Math.max(maxMacroVolumeError,Math.abs(means[c]-1));if(p.formulation==='mixed'){const E=.5*K*vols[c]*(means[c]-1)**2;energy+=E;storedEnergy+=E;}}
  let peakStrain=0,peakStress=0;const nodal=diagnostic?new Float64Array(x.length):null,weights=diagnostic?new Float64Array(x.length/3):null;
  for(let e=0;e<count;e++){
   const c=Math.floor(e/6),J=Js[e],F=Fs.subarray(e*9,e*9+9),P=Ps.subarray(e*9,e*9+9),cofactor=transpose(inv3(F)),V=mesh.volumes[e];
@@ -71,7 +71,7 @@ export class Phase2Solver extends Solver{
  }
  report(){const base=super.report(),d=this.evaluate(this.mesh,this.x,this.p,false);let displacement=0,area=0;const axis=this.p.experiment==='shear'?0:1;
   for(let i=0;i<this.mesh.topArea.length;i++){const A=this.mesh.topArea[i];area+=A;displacement+=A*(this.x[i*3+axis]-this.mesh.X[i*3+axis]);}
-  return {...base,storedEnergyMicroJ:d.storedEnergy,dissipationIncrementMicroJ:d.dissipation,maxMacroVolumeError:d.maxMacroVolumeError,maxVolumeFluctuation:d.maxVolumeFluctuation,pressureKPa:d.pressure,loadedDisplacementMM:displacement/area,appliedForceMN:this.p.forceControlled?(this.p.traction||0)*area:null,formulation:this.p.formulation,model:this.p.model,bulkKPa:bulkModulus(this.p)};
+  return {...base,storedEnergyMicroJ:d.storedEnergy,dissipationIncrementMicroJ:d.dissipation,maxMacroVolumeError:d.maxMacroVolumeError,maxVolumeFluctuation:d.maxVolumeFluctuation,pressureKPa:d.pressure,loadedDisplacementMM:displacement/area,appliedForceMN:this.p.forceControlled?(this.p.experiment==='compression'?-1:1)*(this.p.traction||0)*area:null,formulation:this.p.formulation,model:this.p.model,bulkKPa:bulkModulus(this.p)};
  }
  commit(){if(this.status!=='converged')throw new Error('Cannot commit unconverged material history');return evaluatePhase2(this.mesh,this.x,this.p,false,{history:this.materialHistory,dt:this.dt,commit:true}).next;}
 }

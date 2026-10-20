@@ -24,6 +24,7 @@ jobs:
       - name: Verify numerical mechanics and browser interactions
         env:
           TISSUE_QA_DIR: artifacts/tissue-mechanics
+          TISSUE_REQUIRE_BROWSER: '1'
         run: node --test tests/tissue-mechanics.mjs tests/tissue-mechanics-browser.mjs
       - name: Compile production routes and worker bundles
         run: npx astro build

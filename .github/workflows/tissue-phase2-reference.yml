@@ -19,12 +19,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: npm
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - name: Install independent numerical reference packages
-        run: python -m pip install numpy scipy 'jax[cpu]' 'felupe==11.3.0' tensortrax
+        run: python -m pip install 'numpy==2.4.6' 'scipy==1.17.1' 'jax[cpu]==0.10.2'
       - name: Retrieve pinned primary experimental source
         run: |
           python - <<'PY'
@@ -33,7 +32,7 @@ jobs:
           from pathlib import Path
           p=Path('artifacts/tissue-phase2');p.mkdir(parents=True,exist_ok=True)
           url='https://api.github.com/repos/LivingMatterLab/CANN/git/blobs/6e7bc72c317a29d24064eaf38c6f5951c226abcb'
-          info=json.load(urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'BuildTheSimulation-validation'})))
+          info=json.load(urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'BuildTheSimulation-validation'}),timeout=60))
           data=base64.b64decode(info['content']);assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()=='6e7bc72c317a29d24064eaf38c6f5951c226abcb'
           (p/'CANNsBRAINdata.xlsx').write_bytes(data)
           z=zipfile.ZipFile(io.BytesIO(data));ns={'m':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
@@ -51,22 +50,23 @@ jobs:
                 if values: rows.append(values)
               sheets[name]=rows
           result={'source':url,'blobSha':'6e7bc72c317a29d24064eaf38c6f5951c226abcb','sha256':hashlib.sha256(data).hexdigest(),'sheets':sheets}
-          (p/'experimental-source.json').write_text(json.dumps(result,indent=2));print('PRIMARY_SOURCE_JSON='+json.dumps(result,separators=(',',':')))
+          (p/'experimental-source.json').write_text(json.dumps(result,indent=2));print('PINNED_SOURCE_SHA256',result['sha256'])
           PY
-      - name: Verify Phase 2 implementation when present
+      - name: Verify mechanics, histories and refinement
         run: |
-          if [ -f scripts/tissue-phase2/validate.mjs ]; then
-            node --test tests/tissue-phase2*.mjs
-            node scripts/tissue-phase2/validate.mjs
-            python scripts/tissue-phase2/reference.py
-            python scripts/tissue-phase2/calibrate.py
-          else
-            echo 'Research-input preparation only; no Phase 2 verification is claimed.'
-          fi
-      - name: Preserve reference results and primary-input provenance
+          node --test tests/tissue-mechanics.mjs tests/tissue-phase2.mjs
+          node scripts/tissue-phase2/validate.mjs --full
+      - name: Run independent nonlinear and continuous-time references
+        run: python scripts/tissue-phase2/reference.py
+      - name: Calibrate against pinned measurements and enforce evidence gates
+        run: |
+          python scripts/tissue-phase2/calibrate.py
+          python scripts/tissue-phase2/gates.py
+      - name: Preserve complete verification evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: tissue-phase2-reference
           path: artifacts/tissue-phase2
-          retention-days: 14
+          retention-days: 30
+          if-no-files-found: error
