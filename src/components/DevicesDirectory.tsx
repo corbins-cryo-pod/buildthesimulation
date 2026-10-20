@@ -407,7 +407,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
 
         .device-directory .topRight{display:flex;gap:10px;align-items:center}
         .device-directory .count{opacity:.72;font-size:16px}
-        .device-directory .clear{cursor:pointer;border-radius:999px;border:1px solid var(--border);background:transparent;color:inherit;padding:8px 12px;font-size:16px;opacity:.9}
+        .device-directory .clear{cursor:pointer;border-radius:0;border:1px solid var(--border);background:transparent;color:inherit;padding:8px 12px;font-size:16px;opacity:.9}
         .device-directory .clear:hover{border-color:var(--borderStrong);background:var(--panelHover)}
 
         .device-directory .body{margin-top:16px;display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:start}
@@ -445,7 +445,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
         .device-directory .desc{margin:10px 0 0;font-size:17px;opacity:.78;line-height:1.5}
 
         .device-directory .badges{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px}
-        .device-directory .badge{opacity:.78;font-size:14px;border:1px solid var(--border);border-radius:999px;padding:4px 8px;background:var(--panelStrong)}
+        .device-directory .badge{opacity:.78;font-size:14px;border:1px solid var(--border);border-radius:0;padding:4px 8px;background:var(--panelStrong)}
 
         .device-directory .muted{opacity:.72;margin:0;line-height:1.5}
         .device-directory .srOnly{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}

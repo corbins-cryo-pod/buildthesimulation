@@ -65,6 +65,26 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
           </div>
         </div>
 
+        {pathname === "/" ? (
+          <div class="home-index">
+            <nav class="folder-tabs" aria-label="Primary">
+              {[
+                ["Home", "/"], ["Simulations", "/simulations/"],
+                ["Devices", "/devices/"], ["Companies & Labs", "/companies/"],
+                ["Applications", "/applications/"], ["Biology", "/biology/"],
+                ["Designer", "/devices/designer/"],
+              ].map(([label, href]) => (
+                <a class:list={["folder-tab", { active: href === "/" }]} href={href} aria-current={href === "/" ? "page" : undefined}>
+                  <span>{label}</span>
+                </a>
+              ))}
+            </nav>
+            <div class="home-utilities" aria-label="Site tools">
+              <button class="pill discovery-trigger" type="button" data-discovery-trigger aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K">Search</button>
+              <button id="themeToggle" data-theme-toggle class="pill" type="button" aria-label="Toggle dark mode">Theme</button>
+            </div>
+          </div>
+        ) : (
         <nav class="nav" aria-label="Primary">
           <a class={`pill ${pathname === "/" ? "active" : ""}`} href="/">Home</a>
           <a class={`pill ${pathname.startsWith("/sim") || pathname.startsWith("/cortex/") ? "active" : ""}`} href="/simulations/">Simulations</a>
@@ -76,6 +96,7 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
           <button class="pill discovery-trigger" type="button" data-discovery-trigger aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K">Search</button>
           <button id="themeToggle" data-theme-toggle class="pill" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">Theme</button>
         </nav>
+        )}
       </header>
 
       <SiteSearch client:load />
@@ -302,7 +323,7 @@ const bodyClass = bodyClasses.length ? bodyClasses.join(" ") : undefined;
   .pill {
     display: inline-flex;
     padding: 10px 14px;
-    border-radius: 999px;
+    border-radius: 0;
     border: 1px solid var(--border);
     text-decoration: none;
     color: inherit;
