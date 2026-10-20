@@ -31,3 +31,24 @@ button, summary, input, select { accent-color: #12756c; }
 /* Headings use the bundled Twentieth Century face; preserve case, weight and style. */
 h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading) !important; }
 :is(h1, h2, h3, h4, h5, h6) :is(b, strong, em, i) { font-family: inherit !important; }
+
+/* Book-style body copy: even margins, natural final lines and word hyphenation.
+   The document language is declared on <html lang="en"> in Layout.astro. */
+body :is(p, li, dd) {
+  text-align: justify;
+  text-align-last: start;
+  text-justify: inter-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  hyphenate-limit-chars: 6 3 3;
+  word-break: normal;
+  overflow-wrap: break-word;
+  word-spacing: normal;
+}
+/* Preserve UI and table alignment, even when they contain prose elements. */
+body :is(nav, [role="navigation"], [role="dialog"], [role="listbox"], table)
+  :is(p, li, dd) {
+  text-align: start;
+  -webkit-hyphens: manual;
+  hyphens: manual;
+}
