@@ -17,8 +17,19 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Test and build
-        run: npm run build
+      # Keep the real browser test out of the CPU-heavy reference-test pool.
+      # It still runs with all its assertions before a build can pass.
+      - name: Test numerical references and content
+        shell: bash
+        run: |
+          mapfile -t tests < <(find tests -maxdepth 1 -name '*.mjs' ! -name 'tissue-mechanics-browser.mjs' | sort)
+          node --test "${tests[@]}"
+      - name: Test mechanics in the browser without CPU contention
+        env:
+          TISSUE_REQUIRE_BROWSER: '1'
+        run: node --test tests/tissue-mechanics-browser.mjs
+      - name: Build site and model assets
+        run: npm run build --ignore-scripts
       - name: Verify Cortex routes and worker artifacts
         run: node scripts/verify-cortex-build.mjs
       - name: Verify Finger Atlas geometry and published assets
