@@ -20,7 +20,7 @@ const fullTitle = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
 const pathname = Astro.url?.pathname ?? "/";
 
 // Display title can be different from <title>
-const displayTitle = siteTitle;
+const displayTitle = siteTitle.toUpperCase();
 const isDirectoryIndexPath = /^\/(companies|devices|designs|applications|simulations)\/?$/.test(pathname);
 const bodyClasses = [
   pathname === "/" ? "home" : undefined,
