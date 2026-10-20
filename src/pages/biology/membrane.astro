@@ -6,7 +6,7 @@ import {CHANNELS} from '../../lib/cortex/active-channels.js';
 const fit=JSON.parse(readFileSync('public/models/cortex/allen571654895/optim_param_571654895.json','utf8'));
 const sections=['soma','axon','apic','dend'];
 ---
-<Layout pageTitle="Membrane Biophysics" subtitle="" description="Interactive gating curves from the Cortex Laboratory channel mechanisms, with fitted conductance densities.">
+<Layout pageTitle="Membrane Biophysics" subtitle="Steady-state gates, kinetics and ideal voltage-step responses of the nine pinned channel mechanisms at 34 °C." description="Interactive gating curves from the Cortex Laboratory channel mechanisms, with fitted conductance densities.">
  <nav class="local"><a href="/biology/">Biology</a><a href="/biology/current-clamp/">Current Clamp</a><a href="/cells/">Cell Model Atlas</a><a href="/cortex/?cell=allen-human-571654895%2F1">Cortex Laboratory</a></nav>
  <MembraneExplorer client:load />
  <section class="panel"><h2>Fitted conductance density · S/cm²</h2><div class="scroll"><table><caption>Allen / Mosher · specimen 571654895 · 34 °C</caption><thead><tr><th>Mechanism</th>{sections.map(s=><th>{s}</th>)}</tr></thead><tbody>{CHANNELS.map(m=><tr><th>{m}</th>{sections.map(s=><td>{fit.genome.find(p=>p.section===s&&p.mechanism===m&&p.name.startsWith('gbar'))?.value ?? ''}</td>)}</tr>)}</tbody></table></div></section>
@@ -20,5 +20,5 @@ const sections=['soma','axon','apic','dend'];
  </tbody></table></section>
 </Layout>
 <style>
-.local{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0}.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px;margin:18px 0}h2{font-weight:400;font-size:1.4rem;margin-top:0}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--border);font-variant-numeric:tabular-nums}th{font-weight:500}caption{text-align:left;margin-bottom:12px;opacity:.7}
+.local{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.local a{border:1px solid var(--border);border-radius:999px;padding:8px 16px;text-decoration:none;color:inherit}.local a:hover{border-color:var(--borderStrong);background:var(--panelHover)}.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px;margin:18px 0}.panel h2{font-family:var(--font-heading);font-weight:400;font-size:28px;margin:0 0 12px}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);font-variant-numeric:tabular-nums}th{font-weight:400;font-style:italic;background:var(--panelStrong)}caption{text-align:left;margin-bottom:12px;opacity:.7;font-style:italic}
 </style>
