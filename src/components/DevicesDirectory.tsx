@@ -393,7 +393,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
       </div>
 
       <style>{`
-        .device-directory{margin-top:14px;padding:22px 22px;border-radius:16px;border:1px solid var(--border);background:var(--panel)}
+        .device-directory{margin-top:14px;padding:22px 22px;border-radius:0;border:1px solid var(--border);background:var(--panel)}
         .directory-view-row{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
         .directory-views{display:flex;gap:22px}
         .directory-views button{cursor:pointer;border:0;border-bottom:1px solid transparent;padding:0 0 5px;color:inherit;background:transparent;opacity:.6;font-size:19px}
@@ -402,7 +402,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
 
         .device-directory .top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
         .device-directory .search{flex:1;min-width:min(260px,100%)}
-        .device-directory .search input{width:100%;padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:var(--panelStrong);color:inherit;font-size:16px}
+        .device-directory .search input{width:100%;padding:10px 12px;border-radius:0;border:1px solid var(--border);background:var(--panelStrong);color:inherit;font-size:16px}
         .device-directory .search input:focus{border-color:var(--borderStrong)}
 
         .device-directory .topRight{display:flex;gap:10px;align-items:center}
@@ -413,24 +413,24 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
         .device-directory .body{margin-top:16px;display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:start}
         @media (max-width: 900px){.device-directory .body{grid-template-columns:1fr}.device-directory .sidebar{position:relative}}
 
-        .device-directory .sidebar{padding:14px 14px;border-radius:14px;border:1px solid var(--border);background:var(--panelStrong)}
+        .device-directory .sidebar{padding:14px 14px;border-radius:0;border:1px solid var(--border);background:var(--panelStrong)}
 
-        .stage{display:block;font-size:16px}.stage select{display:block;width:100%;margin:7px 0 12px;padding:8px;border:1px solid var(--border);border-radius:8px;color:inherit;background:var(--panelStrong);font:inherit}
+        .stage{display:block;font-size:16px}.stage select{display:block;width:100%;margin:7px 0 12px;padding:8px;border:1px solid var(--border);border-radius:0;color:inherit;background:var(--panelStrong);font:inherit}
         .model-filter{display:flex;gap:8px;align-items:center;font-size:14px}.stage-note{font-size:12px;line-height:1.6;opacity:.72;margin:12px 0 18px}
         .device-directory .results{min-width:0}
         .device-directory .grid{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:18px 16px;align-items:start}
         @media (max-width: 900px){.device-directory .grid{grid-template-columns:1fr}}
 
-        .device-directory .item{display:block;padding:18px;border-radius:10px;border:1px solid var(--border);background:var(--panel);color:inherit;text-decoration:none;min-width:0}
+        .device-directory .item{display:block;padding:18px;border-radius:0;border:1px solid var(--border);background:var(--panel);color:inherit;text-decoration:none;min-width:0}
         .device-directory .item:hover{border-color:var(--borderStrong);background:var(--panelHover)}
         .catalog-photo{margin:0 0 18px}
-        .catalog-photo-image{display:grid;position:relative;overflow:hidden;border-radius:3px;background:#f5f4f0;color:#272922;text-decoration:none}
+        .catalog-photo-image{display:grid;position:relative;overflow:hidden;border-radius:0;background:#f5f4f0;color:#272922;text-decoration:none}
         .catalog-photo-image img{width:100%;height:235px;object-fit:scale-down;padding:16px;transition:transform .45s ease}
         .catalog-photo-image:hover img{transform:scale(1.04)}
         .catalog-photo figcaption{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 8px;font-size:11px;font-style:italic;padding-top:9px;opacity:.68}
         .catalog-photo-caption{font-size:13px;line-height:1.45;font-style:italic;margin:8px 0 0;opacity:.8}
         .photo-record{font-style:normal;font-size:10px;letter-spacing:.025em}
-        .photo-hover{position:absolute;right:10px;bottom:10px;background:#f8f7f2;border:1px solid #deddd4;border-radius:3px;padding:5px 9px;font-size:13px;font-style:italic;opacity:0;transform:translateY(4px);transition:opacity .2s,transform .2s}
+        .photo-hover{position:absolute;right:10px;bottom:10px;background:#f8f7f2;border:1px solid #deddd4;border-radius:0;padding:5px 9px;font-size:13px;font-style:italic;opacity:0;transform:translateY(4px);transition:opacity .2s,transform .2s}
         .photo-hover span{margin-left:12px}
         .catalog-photo-image:is(:hover,:focus-visible) .photo-hover{opacity:1;transform:none}
         .pictured-version{font-size:12px;line-height:1.55;margin:9px 0 0;opacity:.8}
