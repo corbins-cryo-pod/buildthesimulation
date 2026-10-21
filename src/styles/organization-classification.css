@@ -1,4 +1,4 @@
-.org-code { display: inline-flex; flex-shrink: 0; align-items: center; justify-content: center; min-width: 3.1em; padding: .18em .35em; border: 1px solid var(--brief-rule, var(--atlas-line, var(--border))); border-radius: 3px; color: var(--brief-accent, var(--atlas-ink, var(--text))); font: italic 400 23px/1 var(--font-heading); letter-spacing: .035em; white-space: nowrap; }
+.org-code { display: inline-flex; flex-shrink: 0; align-items: center; justify-content: center; min-width: 3.1em; padding: .18em .35em; border: 1px solid var(--brief-rule, var(--atlas-line, var(--border))); border-radius:0; color: var(--brief-accent, var(--atlas-ink, var(--text))); font: italic 400 23px/1 var(--font-heading); letter-spacing: .035em; white-space: nowrap; }
 .org-code[data-status=R] { border-style: dashed; }
 .org-code[data-status="?"] { opacity: .75; }
 .org-classification { font-size: 16px; line-height: 1.4; border-block: 1px solid var(--brief-rule, var(--atlas-line, var(--border))); margin: 15px 0; padding: 12px 0; }
