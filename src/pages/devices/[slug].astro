@@ -115,7 +115,7 @@ const photoReference = getDevicePhotoReference(entry.data.device_id);
   .sheetControl dt, .sheetLabel { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; opacity: .65; }
   .sheetControl dd { margin: 5px 0 0; font-size: 16px; overflow-wrap: anywhere; }
   .sheetControl p { font-size: 13px; line-height: 1.6; opacity: .75; margin: 16px 0 0; }
-  .familyPanel { padding: 18px; border: 1px solid var(--border); background: var(--panelStrong); border-radius: 12px; margin-bottom: 20px; }
+  .familyPanel { padding: 18px; border: 1px solid var(--border); background: var(--panelStrong); border-radius:0; margin-bottom: 20px; }
   .familyPanel h3 { margin: 8px 0; font-weight: 400; font-size: 28px; }
   .familyPanel p { line-height: 1.55; margin: 8px 0 16px; }
   .familyPanel details, .supplement { border-top: 1px solid var(--border); padding-top: 12px; }
@@ -125,7 +125,7 @@ const photoReference = getDevicePhotoReference(entry.data.device_id);
   .familyPanel li span { display: block; margin-top: 5px; font-size: 14px; line-height: 1.6; opacity: .75; }
   .familyPanel [aria-current=page] { font-weight: bold; }
   .sheetOutline { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 24px; }
-  .sheetOutline a { padding: 5px 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 13px; text-decoration: none; color: inherit; }
+  .sheetOutline a { padding: 5px 10px; border: 1px solid var(--border); border-radius:0; font-size: 13px; text-decoration: none; color: inherit; }
   .content :global(table) { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; margin: 18px 0; font-size: 14px; line-height: 1.5; }
   .content :global(th), .content :global(td) { padding: 10px 12px; text-align: left; border: 1px solid var(--border); min-width: 110px; }
   .content :global(th) { background: var(--panelStrong); font-weight: 500; }
@@ -135,7 +135,7 @@ const photoReference = getDevicePhotoReference(entry.data.device_id);
 
   .post {
     padding: 26px 26px;
-    border-radius: 16px;
+    border-radius:0;
     border: 1px solid var(--border);
     background: var(--panel);
     max-width: 860px;
@@ -231,7 +231,7 @@ const photoReference = getDevicePhotoReference(entry.data.device_id);
   .appList {
     margin-top: 18px;
     padding: 14px 16px;
-    border-radius: 14px;
+    border-radius:0;
     border: 1px solid var(--border);
     background: var(--panelStrong);
   }
