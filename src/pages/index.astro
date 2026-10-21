@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import "../styles/home-header.css";
 import { getCollection } from "astro:content";
 import { deviceModels } from "../lib/devices/catalog.js";
 
@@ -41,13 +40,13 @@ const topics = [
 
   <section class="home-paths" aria-labelledby="home-paths-title">
     <div class="section-head">
-      <h2 id="home-paths-title">START HERE</h2>
+      <h2 id="home-paths-title">Start Here</h2>
     </div>
     <div class="route-grid">
       {routes.map(route => (
         <a class="route" href={route.href}>
           <div class="route-top"><span>{route.kicker}</span><span aria-hidden="true">→</span></div>
-          <h3>{route.name.toUpperCase()}</h3>
+          <h3>{route.name}</h3>
           <p>{route.desc}</p>
         </a>
       ))}

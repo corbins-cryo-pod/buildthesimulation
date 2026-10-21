@@ -1,5 +1,5 @@
 /* Selected from schoolbook_three_way_color_lab_expanded.html:
-   01 / Vintage ivory and 07 / Graphite & brass. Shared by every viewer. */
+   01 / Vintage ivory and 07 / Graphite & brass, darkened by request. Shared by every viewer. */
 :root {
   color-scheme: light;
   --paper: #F5F1E6;
@@ -31,11 +31,11 @@
 }
 html[data-theme="dark"] {
   color-scheme: dark;
-  --paper: #302F2D;
+  --paper: #262523;
   --ink: #EEE5D5;
   --rule: #D5C4A5;
   --muted: #D2C5AF;
-  --outer: #232321;
+  --outer: #1B1B19;
   --accent: #BCA47F;
   --shadow: rgba(0, 0, 0, .35);
 }
