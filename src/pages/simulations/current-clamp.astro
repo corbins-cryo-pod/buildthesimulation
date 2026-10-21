@@ -8,7 +8,7 @@ const fit=JSON.parse(readFileSync('public/models/cortex/allen571654895/optim_par
 const soma=Object.fromEntries(fit.genome.filter(p=>p.section==='soma').map(p=>[p.name,p.value]));
 ---
 <Layout pageTitle="Current Clamp" subtitle="Current steps through the pinned soma mechanisms of specimen 571654895: voltage traces, steady-state IV and f-I." description="Single-compartment current clamp with the Cortex Laboratory's pinned soma mechanisms: voltage traces, steady-state IV and f-I curves.">
- <nav class="local"><a href="/biology/">Biology</a><a href="/biology/membrane/">Membrane Biophysics</a><a href="/biology/cable/">Cable Explorer</a><a href="/cells/">Cell Model Atlas</a><a href="/cortex/?cell=allen-human-571654895%2F1">Cortex Laboratory</a></nav>
+ <nav class="local"><a href="/simulations/">Simulations</a><a href="/simulations/membrane/">Membrane Biophysics</a><a href="/simulations/cable/">Cable Explorer</a><a href="/cells/">Cell Model Atlas</a><a href="/cortex/?cell=allen-human-571654895%2F1">Cortex Laboratory</a></nav>
  <CurrentClampExplorer client:load fit={fit} />
  <section class="panel"><h2>Soma parameters · specimen 571654895 · 34 °C</h2><div class="scroll"><table><caption>Allen / Mosher fitted genome, soma section</caption><thead><tr><th>Parameter</th><th>Value</th><th>Unit</th></tr></thead><tbody>
  {CHANNELS.map(m=><tr><th>gbar_{m}</th><td>{soma[`gbar_${m}`] ?? ''}</td><td>S/cm²</td></tr>)}
