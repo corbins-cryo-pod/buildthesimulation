@@ -296,6 +296,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
           <label class="model-filter"><input type="checkbox" checked={modelsOnly} onChange={(e) => setModelsOnly((e.target as HTMLInputElement).checked)} /> Has a 3D reference model</label>
           <p class="stage-note">Stage describes the catalog's evidence category, not approval or clinical readiness.</p>
 
+          <div class="filter-table">
           <FacetRadio
             title="Axis"
             name="axis"
@@ -342,6 +343,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
             options={FACETS.formFactor}
             onChange={(v) => setForm(v)}
           />
+          </div>
         </aside>
 
         <div class="results">
@@ -393,7 +395,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
       </div>
 
       <style>{`
-        .device-directory{margin-top:14px;padding:22px 22px;border-radius:0;border:1px solid var(--border);background:var(--panel)}
+        .device-directory{margin-top:14px;padding:22px 22px;border-radius:0;border:1px solid var(--border);background:transparent}
         .directory-view-row{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
         .directory-views{display:flex;gap:22px}
         .directory-views button{cursor:pointer;border:0;border-bottom:1px solid transparent;padding:0 0 5px;color:inherit;background:transparent;opacity:.6;font-size:19px}
@@ -410,13 +412,16 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
         .device-directory .clear{cursor:pointer;border-radius:0;border:1px solid var(--border);background:transparent;color:inherit;padding:8px 12px;font-size:16px;opacity:.9}
         .device-directory .clear:hover{border-color:var(--borderStrong);background:var(--panelHover)}
 
-        .device-directory .body{margin-top:16px;display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:start}
-        @media (max-width: 900px){.device-directory .body{grid-template-columns:1fr}.device-directory .sidebar{position:relative}}
-
-        .device-directory .sidebar{padding:14px 14px;border-radius:0;border:1px solid var(--border);background:var(--panelStrong)}
-
-        .stage{display:block;font-size:16px}.stage select{display:block;width:100%;margin:7px 0 12px;padding:8px;border:1px solid var(--border);border-radius:0;color:inherit;background:var(--panelStrong);font:inherit}
-        .model-filter{display:flex;gap:8px;align-items:center;font-size:14px}.stage-note{font-size:12px;line-height:1.6;opacity:.72;margin:12px 0 18px}
+        .device-directory .body{margin-top:16px;display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:start}
+        .device-directory .sidebar{display:grid;grid-template-columns:1fr 1fr;min-width:0;padding:0;border:0;background:transparent}
+        .device-directory .sidebar,.device-directory .sidebar *{font-family:"Twentieth Century",Arial,sans-serif;font-style:normal;font-weight:700;text-shadow:none}
+        .device-directory .stage{display:flex;gap:10px;align-items:center;font-size:13px;padding:7px 0 3px}
+        .device-directory .stage select{font:inherit;color:inherit;background:transparent;border:1px solid var(--border);border-radius:0;padding:7px 10px;margin:0;max-width:200px}
+        .device-directory .model-filter{display:flex;gap:8px;align-items:center;justify-content:flex-end;font-size:13px;padding:7px 0 3px}
+        .device-directory .stage-note{grid-column:1/-1;font-size:11px;line-height:1.15!important;opacity:.65;margin:0 0 10px;text-align:left}
+        .device-directory .filter-table{grid-column:1/-1;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border:1px solid var(--text);background:transparent;min-width:0}
+        @media(max-width:1000px){.device-directory .filter-table{grid-template-columns:repeat(3,minmax(0,1fr))}}
+        @media(max-width:600px){.device-directory .filter-table{grid-template-columns:repeat(2,minmax(0,1fr))}.device-directory .stage,.device-directory .model-filter{grid-column:1/-1;justify-content:flex-start}}
         .device-directory .results{min-width:0}
         .device-directory .grid{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:18px 16px;align-items:start}
         @media (max-width: 900px){.device-directory .grid{grid-template-columns:1fr}}
@@ -517,10 +522,10 @@ function FacetMulti(props: {
 }
 
 const facetCss = `
-  .device-directory .facet{margin:0 0 14px;padding:0;border:0}
-  .device-directory .facetTitle{opacity:.72;font-size:16px;font-style:italic;letter-spacing:.02em;text-transform:none;margin:0 0 8px}
-  .device-directory .facetList{display:grid;gap:8px}
-  .device-directory .row{display:flex;gap:10px;align-items:flex-start;cursor:pointer;user-select:none}
-  .device-directory .row input{margin-top:2px}
-  .device-directory .lbl{font-size:16px;line-height:1.35}
+  .device-directory .facet{display:flex;flex-direction:column;align-self:stretch;min-width:0;min-inline-size:0;margin:0;padding:0 8px 3px;border:0;background:transparent}
+  .device-directory .facetTitle{box-sizing:border-box;float:none;display:flex;align-items:flex-end;justify-content:center;width:calc(100% + 16px);max-width:none;height:25px;min-height:25px;padding:6px 5px 4px;margin:0 -8px 4px;border:0;border-bottom:1px solid var(--border);opacity:.72;font-size:12px;line-height:1.1!important;letter-spacing:.085em!important;text-align:center;text-transform:uppercase}
+  .device-directory .facetList{display:flex;flex-direction:column;gap:1px;clear:both;width:100%;margin:0}
+  .device-directory .row{display:flex;gap:7px;align-items:flex-start;justify-content:flex-start;cursor:pointer;user-select:none;min-height:0;min-width:0;width:100%;padding:1px 4px;border:0;background:transparent;text-align:left;line-height:1.1!important}
+  .device-directory .row input{appearance:auto;flex:0 0 13px;width:13px;height:13px;margin:0;accent-color:var(--text)}
+  .device-directory .lbl{font-size:12px;line-height:1.1!important;letter-spacing:.035em!important;text-align:left;white-space:normal;overflow-wrap:normal;hyphens:none}
 `;
