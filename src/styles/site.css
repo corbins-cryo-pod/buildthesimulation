@@ -57,3 +57,14 @@ body :is(nav, [role="navigation"], [role="dialog"], [role="listbox"], table)
 body :is(button, select, textarea, input:not([type="radio"]):not([type="checkbox"]):not([type="range"]), .pill, .badge, .tag, .chip, .cx-population-badge) {
   border-radius: 0 !important;
 }
+
+/* Subtle printed-ink edge, matching the typography demos. */
+body :is(p, li, dd, blockquote) {
+  text-shadow: 0.13px 0.1px 0.16px currentColor;
+}
+body :is(nav, [role="navigation"], [role="dialog"], [role="listbox"], button, input, select, textarea, pre, code, svg, canvas) {
+  text-shadow: none;
+}
+body :is(nav, [role="navigation"], [role="dialog"], [role="listbox"], button, pre, code) :is(p, li, dd, blockquote) {
+  text-shadow: none;
+}
