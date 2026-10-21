@@ -1,7 +1,7 @@
-.cx-population { border: 1px solid var(--border); border-radius: 5px; margin-top: 22px; padding: 22px; background: var(--panel); scroll-margin-top: 80px; }
+.cx-population { border: 1px solid var(--border); border-radius:0; margin-top: 22px; padding: 22px; background: var(--panel); scroll-margin-top: 80px; }
 .cx-population-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .cx-population h2 { font: 400 29px Georgia, serif; margin: 3px 0 10px; }
-.cx-population-badge { border: 1px solid var(--border); border-radius: 20px; padding: 5px 12px; font-size: 11px; }
+.cx-population-badge { border: 1px solid var(--border); border-radius:0; padding: 5px 12px; font-size: 11px; }
 .cx-population p { max-width: 1050px; }
 .cx-population-controls fieldset { border: 0; padding: 0; display: flex; align-items: end; gap: 12px; flex-wrap: wrap; }
 .cx-population-controls label { display: flex; flex-direction: column; gap: 5px; width: 145px; font-size: 11px; }
@@ -94,7 +94,7 @@
   gap: 0;
   margin-top: 16px;
   border: 1px solid var(--border);
-  border-radius: 5px;
+  border-radius:0;
   overflow: hidden;
 }
 .cx-config {
@@ -136,7 +136,7 @@
   min-width: 0;
   padding: 7px 8px;
   border: 1px solid var(--border);
-  border-radius: 3px;
+  border-radius:0;
   background: var(--bg);
   color: var(--text);
   font: inherit;
@@ -152,7 +152,7 @@
   color: var(--text);
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 3px;
+  border-radius:0;
   padding: 7px 9px;
   font: inherit;
   font-size: 11px;
@@ -503,7 +503,7 @@
 .cx-field svg {
   width: 100%;
   display: block;
-  border-radius: 3px;
+  border-radius:0;
 }
 .cx-field > p {
   font-size: 10px;
@@ -523,7 +523,7 @@
 .cx-workflow a {
   color: inherit;
   border: 1px solid var(--border);
-  border-radius: 3px;
+  border-radius:0;
   padding: 8px 12px;
   text-decoration: none;
 }
@@ -560,7 +560,7 @@
   font:
     10px/1.4 Arial,
     sans-serif;
-  border-radius: 3px;
+  border-radius:0;
 }
 .cx-electrical {
   border-top: 1px solid var(--border);
@@ -597,7 +597,7 @@
 .cx-legend {
   padding: 10px;
   border: 1px solid var(--border);
-  border-radius: 3px;
+  border-radius:0;
   min-width: 0;
 }
 .cx-legend strong {
@@ -610,7 +610,7 @@
 }
 .cx-colorbar {
   height: 9px;
-  border-radius: 2px;
+  border-radius:0;
   margin-top: 9px;
 }
 .cx-colorbar-signed {
@@ -773,4 +773,4 @@
   }
 }
 
-.cx-cell-library{padding:1.25rem;margin:1rem 0;border:1px solid var(--border);background:var(--panel);border-radius:8px}.cx-cell-library h2{margin:.3rem 0}.cx-library-filters{display:flex;flex-wrap:wrap;gap:1rem;border:0;padding:0;margin:1rem 0}.cx-library-filters label{display:flex;flex-direction:column;gap:.4rem;max-width:100%;font-size:.85rem}.cx-library-filters select{max-width:100%;padding:.5rem;background:var(--panel);color:inherit;border:1px solid var(--border);border-radius:4px}.cx-library-filters label:has(input[type=checkbox]){flex-direction:row;align-items:center}
+.cx-cell-library{padding:1.25rem;margin:1rem 0;border:1px solid var(--border);background:var(--panel);border-radius:0}.cx-cell-library h2{margin:.3rem 0}.cx-library-filters{display:flex;flex-wrap:wrap;gap:1rem;border:0;padding:0;margin:1rem 0}.cx-library-filters label{display:flex;flex-direction:column;gap:.4rem;max-width:100%;font-size:.85rem}.cx-library-filters select{max-width:100%;padding:.5rem;background:var(--panel);color:inherit;border:1px solid var(--border);border-radius:0}.cx-library-filters label:has(input[type=checkbox]){flex-direction:row;align-items:center}
