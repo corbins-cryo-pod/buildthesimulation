@@ -7,7 +7,7 @@ const fit=JSON.parse(readFileSync('public/models/cortex/allen571654895/optim_par
 const sections=['soma','axon','apic','dend'];
 ---
 <Layout pageTitle="Membrane Biophysics" subtitle="Steady-state gates, kinetics and ideal voltage-step responses of the nine pinned channel mechanisms at 34 °C." description="Interactive gating curves from the Cortex Laboratory channel mechanisms, with fitted conductance densities.">
- <nav class="local"><a href="/biology/">Biology</a><a href="/biology/current-clamp/">Current Clamp</a><a href="/cells/">Cell Model Atlas</a><a href="/cortex/?cell=allen-human-571654895%2F1">Cortex Laboratory</a></nav>
+ <nav class="local"><a href="/biology/">Biology</a><a href="/biology/current-clamp/">Current Clamp</a><a href="/biology/cable/">Cable Explorer</a><a href="/cells/">Cell Model Atlas</a><a href="/cortex/?cell=allen-human-571654895%2F1">Cortex Laboratory</a></nav>
  <MembraneExplorer client:load />
  <section class="panel"><h2>Fitted conductance density · S/cm²</h2><div class="scroll"><table><caption>Allen / Mosher · specimen 571654895 · 34 °C</caption><thead><tr><th>Mechanism</th>{sections.map(s=><th>{s}</th>)}</tr></thead><tbody>{CHANNELS.map(m=><tr><th>{m}</th>{sections.map(s=><td>{fit.genome.find(p=>p.section===s&&p.mechanism===m&&p.name.startsWith('gbar'))?.value ?? ''}</td>)}</tr>)}</tbody></table></div></section>
  <section class="panel"><h2>Scope & provenance</h2><table><tbody>
