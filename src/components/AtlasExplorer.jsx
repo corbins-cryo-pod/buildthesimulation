@@ -177,13 +177,6 @@ export default function AtlasExplorer({ entries }) {
   const clearFilters = () => { setState(blankState); writeUrl(blankState); setCluster(null); setAreaOnly(false); setPreviewId(''); mapActions.current.fit?.(entries); };
   const activeFilters = state.query || state.kind || state.region || state.interfaceType || state.stage || state.regulatory || state.sort !== 'name' || cluster || areaOnly;
   return <section class="atlas" aria-label="Interactive BCI atlas">
-    <div class="atlas-viewbar">
-      <div><strong>Companies &amp; labs</strong><span>{filtered.length} matching organizations</span></div>
-      <div class="atlas-view-switch" role="group" aria-label="Atlas view">
-        <button type="button" aria-pressed={view === 'list'} onClick={() => { setView('list'); setAreaOnly(false); setCluster(null); }}>Directory</button>
-        <button type="button" aria-pressed={view === 'map'} onClick={() => { setView('map'); setAreaOnly(false); setCluster(null); }}>Map</button>
-      </div>
-    </div>
     <div class="atlas-toolbar">
       <label class="atlas-search">Search<input id="atlas-search" type="search" placeholder="Organization, technology, device or study…" value={state.query} onInput={e => changeFilter('query', e.currentTarget.value)} /></label>
       <label>Technology<select value={state.interfaceType} onChange={e => changeFilter('interfaceType', e.currentTarget.value)}><option value="">All interfaces</option>{interfaces.map(type => <option key={type}>{type}</option>)}</select></label>
@@ -199,7 +192,13 @@ export default function AtlasExplorer({ entries }) {
       </div>
     </details>
     {activeFilters && <button class="atlas-filter-reset" type="button" onClick={clearFilters}>Clear filters</button>}
+    <div class="atlas-directory-controls">
     <details class="atlas-code-key"><summary>Read the codes <span><i>C</i> Company / <i>L</i> Lab · Stage 0–4 · R Research / A Regulatory approved / K Cleared</span></summary><p>0 Concept · 1 Bench testing · 2 Animal studies · 3 Human studies · 4 Clinical product. Approval can be from any country; open a profile for its named device, regulator and sources. A question mark means unverified.</p><p><a href="/companies/classification/">Full classification guide &amp; all {entries.length} organizations →</a></p></details>
+      <div class="atlas-view-switch" role="group" aria-label="Atlas view">
+        <button type="button" aria-pressed={view === 'list'} onClick={() => { setView('list'); setAreaOnly(false); setCluster(null); }}>Directory</button>
+        <button type="button" aria-pressed={view === 'map'} onClick={() => { setView('map'); setAreaOnly(false); setCluster(null); }}>Map</button>
+      </div>
+    </div>
     <div class={`atlas-workspace ${expanded ? 'sheet-expanded' : ''} ${view === 'list' ? 'is-list' : ''}`}>
       <div ref={mapHost} class="atlas-map" aria-label="World map of cataloged company and lab locations" />
       {!mapReady && <div class="atlas-map-loading" role="status">{mapError || 'Preparing the atlas…'}</div>}
@@ -223,7 +222,7 @@ export default function AtlasExplorer({ entries }) {
           {selected.applications.length > 0 && <section class="atlas-related"><h3>Studies &amp; applications <span>{selected.applications.length}</span></h3>{selected.applications.map(app => <details class="atlas-study" key={app.slug}><summary><span>{app.status} evidence</span>{app.title}</summary>{app.description && <p>{app.description}</p>}<a href={`/applications/${app.slug}/`}>Read study &amp; sources →</a></details>)}</section>}
           {!selected.devices.length && !selected.applications.length && <p class="atlas-no-links">Device and study connections have not been cataloged for this profile yet.</p>}
         </div> : <>
-          <div class="atlas-panel-heading"><div><span class="atlas-eyebrow">Explore the ecosystem</span><h2>{cluster ? 'In this cluster' : areaOnly ? 'In this map area' : 'Companies & labs'}</h2></div><p role="status" aria-live="polite">{listed.length} of {entries.length} organizations</p>{cluster && <button onClick={() => setCluster(null)}>← All matching results</button>}</div>
+          <div class="atlas-panel-heading"><div><span class="atlas-eyebrow">Explore the ecosystem</span>{view === 'map' && <h2>{cluster ? 'In this cluster' : areaOnly ? 'In this map area' : 'Companies & labs'}</h2>}</div><p role="status" aria-live="polite">{listed.length} of {entries.length} organizations</p>{cluster && <button onClick={() => setCluster(null)}>← All matching results</button>}</div>
           <div class="atlas-results">{listed.map(entry => <a key={entry.slug} ref={el => { if (el) rows.current.set(entry.slug, el); else rows.current.delete(entry.slug); }} class={`atlas-row ${hovered === entry.slug ? 'is-hovered' : ''}`} href={`/companies/${entry.slug}/`} onMouseEnter={() => setHovered(entry.slug)} onMouseLeave={() => setHovered('')} onFocus={() => setHovered(entry.slug)} onBlur={() => setHovered('')} onClick={e => { if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || !initialized) return; e.preventDefault(); choose(entry); }}><span class={`atlas-row-symbol ${entry.kind === 'Lab' ? 'is-lab' : ''}`} aria-hidden="true" /><div><h3>{entry.title}</h3><p>{entry.location || regionLabels[entry.region]} <span>· {entry.kind}</span></p><div class="atlas-row-classification"><ClassificationBadge program={displayProgram(entry, state)} /><span>{stageLabels[displayProgram(entry, state).stage ?? '?']} · {regulatoryLabels[displayProgram(entry, state).regulatory]}{displayProgram(entry, state).historical ? ' · Historical' : ''}</span></div><span class="atlas-row-program">{displayProgram(entry, state).name}</span><span class="atlas-row-meta">{entry.interfaces.length ? entry.interfaces.join(' · ') : 'Read organization brief'}{!hasCoordinates(entry) ? ' · Unmapped' : ''}</span></div><span aria-hidden="true">→</span></a>)}{!listed.length && <div class="atlas-empty"><h3>No organizations here</h3><p>{areaOnly ? 'Move the map or turn off the area filter.' : 'Try another search, interface or region.'}</p><button onClick={clearFilters}>Show all organizations</button></div>}</div>
         </>}
       </aside>

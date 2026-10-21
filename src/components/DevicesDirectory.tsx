@@ -227,7 +227,6 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
 
   const browseGroups = useMemo(() => groupDeviceCardsForBrowsing(grouped), [grouped]);
 
-  const photoCount = normalizedEntries.filter(entry => entry.photo).length;
   const hasFilters = query.trim() || axis || iface || form || reg || origin || dir.size || stage || modelsOnly || photosOnly;
 
   function clearAll() {
@@ -253,13 +252,6 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
 
   return (
     <section class="card device-directory">
-      {photoCount > 0 && <div class="directory-view-row">
-        <div class="directory-views" role="group" aria-label="Catalog view">
-          <button type="button" aria-pressed={!photosOnly} onClick={() => setPhotosOnly(false)}>All interfaces</button>
-          <button type="button" aria-pressed={photosOnly} onClick={() => setPhotosOnly(true)}>Photo gallery</button>
-        </div>
-        <span class="photo-coverage">{photoCount} pictured records</span>
-      </div>}
       <div class="top">
         <label class="search">
           <span class="srOnly">Search devices</span>
@@ -272,8 +264,10 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
         </label>
 
         <div class="topRight">
+          <label class="model-filter"><input type="checkbox" checked={modelsOnly} onChange={(e) => setModelsOnly((e.target as HTMLInputElement).checked)} /> Has a 3D reference model</label>
+
           <button type="button" class="clear" onClick={() => downloadCatalogCsv('device-catalog.csv', ['Code','Title','Evidence stage','Interface class','Modality','Model available','Last reviewed','Catalog URL','Primary source','Description'], filtered.map(e=>[e.code,e.title,e.status,e.interface_class,e.modality,getDeviceModel(e.device_id)?'yes':'no',e.last_updated,new URL(`/devices/${e.slug}/`,window.location.origin).href,e.website,e.description]))}>Export results CSV</button>
-          <div class="count" role="status" aria-live="polite">{filtered.length} records / {grouped.length} cards</div>
+          <div class="srOnly" role="status" aria-live="polite">{filtered.length} records / {grouped.length} cards</div>
           {hasFilters ? (
             <button type="button" class="clear" onClick={clearAll}>
               Clear
@@ -284,18 +278,6 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
 
       <div class="body">
         <aside class="sidebar">
-          <label class="stage">Evidence stage
-            <select value={stage} onChange={(e) => setStage((e.target as HTMLSelectElement).value)}>
-              <option value="">All stages</option>
-              <option value="human">Human</option>
-              <option value="preclinical">Preclinical</option>
-              <option value="research">Research</option>
-              <option value="theoretical">Theoretical</option>
-            </select>
-          </label>
-          <label class="model-filter"><input type="checkbox" checked={modelsOnly} onChange={(e) => setModelsOnly((e.target as HTMLInputElement).checked)} /> Has a 3D reference model</label>
-          <p class="stage-note">Stage describes the catalog's evidence category, not approval or clinical readiness.</p>
-
           <div class="filter-table">
           <FacetRadio
             title="Axis"
@@ -396,18 +378,12 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
 
       <style>{`
         .device-directory{margin-top:14px;padding:22px 22px;border-radius:0;border:1px solid var(--border);background:transparent}
-        .directory-view-row{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
-        .directory-views{display:flex;gap:22px}
-        .directory-views button{cursor:pointer;border:0;border-bottom:1px solid transparent;padding:0 0 5px;color:inherit;background:transparent;opacity:.6;font-size:19px}
-        .directory-views button[aria-pressed=true]{opacity:1;font-style:italic;border-bottom-color:currentColor}
-        .photo-coverage{font-size:12px;font-style:italic;opacity:.65}
-
         .device-directory .top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
         .device-directory .search{flex:1;min-width:min(260px,100%)}
         .device-directory .search input{width:100%;padding:10px 12px;border-radius:0;border:1px solid var(--border);background:var(--panelStrong);color:inherit;font-size:16px}
         .device-directory .search input:focus{border-color:var(--borderStrong)}
 
-        .device-directory .topRight{display:flex;gap:10px;align-items:center}
+        .device-directory .topRight{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
         .device-directory .count{opacity:.72;font-size:16px}
         .device-directory .clear{cursor:pointer;border-radius:0;border:1px solid var(--border);background:transparent;color:inherit;padding:8px 12px;font-size:16px;opacity:.9}
         .device-directory .clear:hover{border-color:var(--borderStrong);background:var(--panelHover)}
@@ -415,13 +391,10 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
         .device-directory .body{margin-top:16px;display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:start}
         .device-directory .sidebar{display:grid;grid-template-columns:1fr 1fr;min-width:0;padding:0;border:0;background:transparent}
         .device-directory .sidebar,.device-directory .sidebar *{font-family:"Twentieth Century",Arial,sans-serif;font-style:normal;font-weight:700;text-shadow:none}
-        .device-directory .stage{display:flex;gap:10px;align-items:center;font-size:13px;padding:7px 0 3px}
-        .device-directory .stage select{font:inherit;color:inherit;background:transparent;border:1px solid var(--border);border-radius:0;padding:7px 10px;margin:0;max-width:200px}
-        .device-directory .model-filter{display:flex;gap:8px;align-items:center;justify-content:flex-end;font-size:13px;padding:7px 0 3px}
-        .device-directory .stage-note{grid-column:1/-1;font-size:11px;line-height:1.15!important;opacity:.65;margin:0 0 10px;text-align:left}
+        .device-directory .model-filter{display:flex;gap:8px;align-items:center;font:700 12px "Twentieth Century",Arial,sans-serif;font-style:normal;letter-spacing:.035em!important}
         .device-directory .filter-table{grid-column:1/-1;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border:1px solid var(--text);background:transparent;min-width:0}
         @media(max-width:1000px){.device-directory .filter-table{grid-template-columns:repeat(3,minmax(0,1fr))}}
-        @media(max-width:600px){.device-directory .filter-table{grid-template-columns:repeat(2,minmax(0,1fr))}.device-directory .stage,.device-directory .model-filter{grid-column:1/-1;justify-content:flex-start}}
+        @media(max-width:600px){.device-directory .filter-table{grid-template-columns:repeat(2,minmax(0,1fr))}.device-directory .topRight{width:100%;justify-content:space-between}}
         .device-directory .results{min-width:0}
         .device-directory .grid{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:18px 16px;align-items:start}
         @media (max-width: 900px){.device-directory .grid{grid-template-columns:1fr}}

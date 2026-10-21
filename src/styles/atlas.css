@@ -166,3 +166,12 @@ html[data-theme="dark"] .atlas .leaflet-tile-pane { filter: grayscale(1) invert(
   .atlas-workspace.is-list .atlas-panel-heading { padding: 4px 0 12px; }
   .atlas-workspace.is-list .atlas-profile { padding: 16px; }
 }
+
+/* Keep one page title and align the directory with its filters. */
+.atlas-directory-controls{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;border-block:1px solid var(--atlas-line);margin-bottom:16px;padding:8px 0}
+.atlas-directory-controls .atlas-code-key{flex:1;min-width:0;border:0;margin:0;padding:6px 0}
+.atlas-directory-controls .atlas-view-switch{flex-shrink:0}
+.atlas-workspace.is-list{max-width:none;width:100%;margin-inline:0}
+.atlas-workspace.is-list .atlas-panel-heading{padding:0 0 10px}
+.atlas-workspace.is-list .atlas-panel-heading>div:empty{display:none}
+@media(max-width:760px){.atlas-directory-controls{flex-wrap:wrap}.atlas-directory-controls .atlas-code-key{flex-basis:100%}}
