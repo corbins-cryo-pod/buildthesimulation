@@ -3,7 +3,7 @@ import Layout from '../../../layouts/Layout.astro';
 import CortexLaboratory from '../../../components/CortexLaboratory.jsx';
 ---
 <Layout pageTitle="Cortex Population Laboratory" description="Seeded randomized distance clouds, shells and grids of distinct published human neuron models, with shared electrode stimulation and detailed population replay." wide={true} compactHeader={true}>
-  <nav aria-label="Related laboratories" style="margin:14px auto;max-width:1400px;padding:14px 18px;border:1px solid var(--borderStrong);border-radius:10px">
+  <nav aria-label="Related laboratories" style="margin:14px auto;max-width:1400px;padding:14px 18px;border:1px solid var(--borderStrong);border-radius:0">
     <a href="/cortex/">← Single-cell Cortex Laboratory</a> · <a href="/cortex/interface/">Neural Interface Laboratory</a>
   </nav>
   <CortexLaboratory populationEnabled={true} client:load />
