@@ -174,7 +174,7 @@ export default function HandwritingDecoder() {
         const x = left + i / 5 * pw;
         ctx.beginPath(); ctx.moveTo(x, top); ctx.lineTo(x, top + rasterH); ctx.stroke();
         ctx.fillStyle = '#b3c4d8'; ctx.textAlign = i === 5 ? 'right' : 'left';
-        ctx.fillText(`${(i / 5 * T * 0.02).toFixed(1)}s`, x, top + rasterH + 14);
+        ctx.fillText(`${(i / 5 * T * 0.02).toFixed(1)}s`, x, 420);
         ctx.textAlign = 'left';
       }
       // hover marker
