@@ -223,7 +223,10 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
     return [{ label: "Any", value: "" }, ...[...set.entries()].sort((a, b) => a[1].localeCompare(b[1])).map(([value, label]) => ({ label, value }))];
   }, [props.entries]);
 
-  const grouped = useMemo(() => groupDeviceEntries(filtered), [filtered]);
+  const grouped = useMemo(() => groupDeviceEntries(filtered).filter(card =>
+    getPicturedEntry(card.entries, card.representative)
+  ), [filtered]);
+  const visibleEntries = useMemo(() => grouped.flatMap(card => card.entries), [grouped]);
 
   const browseGroups = useMemo(() => groupDeviceCardsForBrowsing(grouped), [grouped]);
 
@@ -266,8 +269,8 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
         <div class="topRight">
           <label class="model-filter"><input type="checkbox" checked={modelsOnly} onChange={(e) => setModelsOnly((e.target as HTMLInputElement).checked)} /> Has a 3D reference model</label>
 
-          <button type="button" class="clear" onClick={() => downloadCatalogCsv('device-catalog.csv', ['Code','Title','Evidence stage','Interface class','Modality','Model available','Last reviewed','Catalog URL','Primary source','Description'], filtered.map(e=>[e.code,e.title,e.status,e.interface_class,e.modality,getDeviceModel(e.device_id)?'yes':'no',e.last_updated,new URL(`/devices/${e.slug}/`,window.location.origin).href,e.website,e.description]))}>Export results CSV</button>
-          <div class="srOnly" role="status" aria-live="polite">{filtered.length} records / {grouped.length} cards</div>
+          <button type="button" class="clear" onClick={() => downloadCatalogCsv('device-catalog.csv', ['Code','Title','Evidence stage','Interface class','Modality','Model available','Last reviewed','Catalog URL','Primary source','Description'], visibleEntries.map(e=>[e.code,e.title,e.status,e.interface_class,e.modality,getDeviceModel(e.device_id)?'yes':'no',e.last_updated,new URL(`/devices/${e.slug}/`,window.location.origin).href,e.website,e.description]))}>Export results CSV</button>
+          <div class="srOnly" role="status" aria-live="polite">{visibleEntries.length} records / {grouped.length} cards</div>
           {hasFilters ? (
             <button type="button" class="clear" onClick={clearAll}>
               Clear
@@ -371,7 +374,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
               </article>
             ); })}
 
-            {!filtered.length ? <p class="muted">No matching devices.</p> : null}
+            {!grouped.length ? <p class="muted">No matching devices.</p> : null}
           </div>
         </div>
       </div>
