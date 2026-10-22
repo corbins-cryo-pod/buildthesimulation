@@ -1808,5 +1808,54 @@
     "source": "https://pubmed.ncbi.nlm.nih.gov/34045935/",
     "note": "Cullen Lab's biohybrid construct; Penn ecosystem brief covers the lab.",
     "relatedOrganizations": []
+  },
+  "216-upenn-micro-tenn-living-neural-networks": {
+    "primaryOrganization": "18-upenn-cullenlab-neuroengineering-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Developer | Cullen Lab, University of Pennsylvania; Tissue Engineering Part A 2015 review and J Neural Eng 2016 transplant study [1][2] |",
+      "| Origin | Academic research construct [1] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4652241/",
+    "note": "Cullen Lab's living micro-tissue platform; distinct from the lab's living-electrode axon tracts.",
+    "relatedOrganizations": []
+  },
+  "217-innervace-tissue-engineered-nigrostriatal-pathway": {
+    "developer": {
+      "name": "Innervace (UPenn spin-out)",
+      "url": "https://pci.upenn.edu/innervace-launches-with-40m-to-repair-the-brain/"
+    },
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Developer | Innervace, co-founded by Penn Medicine's Kacy Cullen and Douglas Smith; Penn Center for Innovation [1] |",
+      "| Origin | UPenn spin-out commercializing Cullen/Smith tissue-engineering program [1] |"
+    ],
+    "source": "https://pci.upenn.edu/innervace-launches-with-40m-to-repair-the-brain/",
+    "note": "Company holds no site brief; Penn ecosystem brief covers the originating labs. Lead program: nigrostriatal pathway reconstruction for Parkinson's.",
+    "relatedOrganizations": [
+      {
+        "slug": "18-upenn-cullenlab-neuroengineering-lab-brief",
+        "role": "originating lab"
+      }
+    ]
+  },
+  "218-axonova-tissue-engineered-nerve-graft": {
+    "developer": {
+      "name": "Axonova Medical (UPenn spin-out)",
+      "url": "https://axonovamed.com/"
+    },
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Developer | Axonova Medical; company site [1] |",
+      "| Origin | UPenn spin-out; TENG biomanufacturing from porcine GalSafe neurons published [2] |"
+    ],
+    "source": "https://axonovamed.com/",
+    "note": "Company holds no site brief; Penn ecosystem brief covers the originating labs.",
+    "relatedOrganizations": [
+      {
+        "slug": "18-upenn-cullenlab-neuroengineering-lab-brief",
+        "role": "originating lab"
+      }
+    ]
   }
 }
