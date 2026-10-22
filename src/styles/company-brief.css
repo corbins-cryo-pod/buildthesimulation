@@ -158,3 +158,12 @@ main.wrap:has(.company-brief) { padding: 28px 24px 36px; }
 @media (prefers-reduced-motion: reduce) {
   .company-brief :is(a, summary) { transition: none; }
 }
+
+/* Oversized Bodoni masthead, fitted to the available title area. */
+body .company-brief .brief-cover-grid{align-items:start;padding-top:18px;padding-bottom:30px}
+body .company-brief .brief-title-block{min-width:0}
+body .company-brief .brief-name-frame{height:clamp(200px,39cqw,420px);display:flex;align-items:center;width:100%;min-width:0}
+body .company-brief h1.brief-name{font-family:"Bodoni MT Compressed",serif!important;font-size:clamp(70px,15cqw,180px);font-weight:400;line-height:.92!important;letter-spacing:-.015em!important;padding:0;margin:0;width:100%;text-align:left;text-transform:none;hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:7 3 3;overflow-wrap:normal;text-wrap:balance}
+body .company-brief .brief-deck{margin-top:34px;max-width:54ch;line-height:1.35!important}
+body .company-brief .brief-company{margin-top:14px}
+@media(max-width:680px){body .company-brief .brief-name-frame{height:clamp(140px,45vw,210px)}body .company-brief .brief-deck{margin-top:26px}}
