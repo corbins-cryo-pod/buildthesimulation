@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
 import RealRecordingExplorer from "../../components/RealRecordingExplorer";
+import HandwritingDecoder from "../../components/HandwritingDecoder";
 import NeuropixelsExplorer from "../../components/NeuropixelsExplorer";
 import DeviceModelViewer from "../../components/DeviceModelViewer";
 import { getDeviceFamily } from "../../lib/device-families.js";
@@ -88,6 +89,7 @@ const photoReference = getDevicePhotoReference(entry.data.device_id);
     {getDeviceModel(entry.data.device_id) && <DeviceModelViewer deviceId={entry.data.device_id} client:visible />}
 
     {entry.data.device_id === "BTSD-0001" && <RealRecordingExplorer client:visible />}
+    {entry.data.device_id === "BTSD-0001" && <HandwritingDecoder client:visible />}
     {entry.data.device_id === "BTSD-0004" && <NeuropixelsExplorer client:visible />}
 
     </details>}
