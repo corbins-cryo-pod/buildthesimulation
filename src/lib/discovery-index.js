@@ -52,6 +52,7 @@ export async function buildDiscoveryIndex() {
     ...[
       ['Neural Interface Laboratory', '/cortex/interface/', 'Twelve active human neurons, finite surface contacts, stimulation and ideal recordings', 'cortex integrated neural interface laboratory finite shank electrode membrane voltage replay spike raster'],
       ['Cortex Laboratory', '/cortex/', 'Single active human cell, patch clamp, electrode stimulation and membrane replay', 'cortex laboratory recording stimulation Utah membrane physics finite disk single neuron'],
+      ['Cellular Electrophysiology Laboratory', '/simulations/cellular-electrophysiology/', 'Current clamp, membrane-channel kinetics and passive cable spread in one laboratory', 'current clamp membrane biophysics cable explorer soma ion channel voltage step steady state kinetics electrophysiology'],
       ['Cortex Population Laboratory', '/cortex/population/', 'Seeded random distance clouds, shells and grids of distinct human cells', 'cortex population laboratory randomize randomization shuffle seed distance cloud neurons stimulation'],
       ['Finger Pathway Atlas', '/simulations/finger-pathway-atlas/', '3D sensory and motor anatomy from fingertip to cortex', 'finger index touch motor hand nerve ganglion spinal cord brainstem medulla thalamus cortex anatomy atlas'],
       ['Finger Pathway Atlas V3', '/simulations/finger-pathway-atlas/v3/', 'Complete original anatomical atlas and detailed cellular specimens', 'finger atlas v3 original baseline sensory motor cells comparison'],

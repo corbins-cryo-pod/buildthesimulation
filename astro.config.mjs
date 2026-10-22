@@ -10,10 +10,14 @@ export default defineConfig({
   // Bump this version when the formatter changes to invalidate cached Markdown.
   markdown: { remarkPlugins: [[remarkCompanyBriefs, { version: 1 }]] },
   redirects: {
+    '/simulations/membrane': '/simulations/cellular-electrophysiology/#membrane',
+    '/simulations/current-clamp': '/simulations/cellular-electrophysiology/#current-clamp',
+    '/simulations/cable': '/simulations/cellular-electrophysiology/#cable',
+
     '/biology': '/simulations/',
-    '/biology/membrane': '/simulations/membrane/',
-    '/biology/current-clamp': '/simulations/current-clamp/',
-    '/biology/cable': '/simulations/cable/',
+    '/biology/membrane': '/simulations/cellular-electrophysiology/#membrane',
+    '/biology/current-clamp': '/simulations/cellular-electrophysiology/#current-clamp',
+    '/biology/cable': '/simulations/cellular-electrophysiology/#cable',
     "/china": "/companies/?region=Chinese",
     "/companies/map": "/companies/",
     '/devices/140-neuropixels-opto-prototype-2026': '/devices/107-neuropixels-opto-photonic-prototype/',
