@@ -1,0 +1,76 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MembraneExplorer from '../../components/MembraneExplorer.jsx';
+import CurrentClampExplorer from '../../components/CurrentClampExplorer.jsx';
+import CableExplorer from '../../components/CableExplorer.jsx';
+import {readFileSync} from 'node:fs';
+import {CHANNELS} from '../../lib/cortex/active-channels.js';
+import {SOMA_AREA_UM2} from '../../lib/cortex/current-clamp.js';
+const fit=JSON.parse(readFileSync('public/models/cortex/allen571654895/optim_param_571654895.json','utf8'));
+const soma=Object.fromEntries(fit.genome.filter(p=>p.section==='soma').map(p=>[p.name,p.value]));
+const sections=['soma','axon','apic','dend'];
+---
+<Layout pageTitle="Cellular Electrophysiology" subtitle="Current clamp, membrane biophysics and passive cable spread in one laboratory." description="Three complete electrophysiology explorers with their original controls, plots, fitted parameters, source references and numerical limitations.">
+ <nav id="top" class="local" aria-label="Laboratory sections"><a href="#current-clamp">01 · Current Clamp</a><a href="#membrane">02 · Membrane Biophysics</a><a href="#cable">03 · Cable Explorer</a><a href="/cells/">Cell Model Atlas</a><a href="/cortex/">Cortex Laboratory</a></nav>
+ <section id="current-clamp" class="experiment" aria-labelledby="current-clamp-title">
+  <header class="experiment-heading"><p class="experiment-number">Experiment 01</p><h2 id="current-clamp-title">Current Clamp</h2><p>Current steps through the pinned soma mechanisms of specimen 571654895: voltage traces, steady-state IV and f-I.</p></header>
+<CurrentClampExplorer client:visible fit={fit} />
+ <section class="panel"><h2>Soma parameters · specimen 571654895 · 34 °C</h2><div class="scroll"><table><caption>Allen / Mosher fitted genome, soma section</caption><thead><tr><th>Parameter</th><th>Value</th><th>Unit</th></tr></thead><tbody>
+ {CHANNELS.map(m=><tr><th>gbar_{m}</th><td>{soma[`gbar_${m}`] ?? ''}</td><td>S/cm²</td></tr>)}
+ <tr><th>cm</th><td>{soma.cm}</td><td>µF/cm²</td></tr>
+ <tr><th>g_pas</th><td>{soma.g_pas}</td><td>S/cm²</td></tr>
+ <tr><th>e_pas</th><td>{soma.e_pas}</td><td>mV</td></tr>
+ <tr><th>gamma_CaDynamics</th><td>{soma.gamma_CaDynamics}</td><td></td></tr>
+ <tr><th>decay_CaDynamics</th><td>{soma.decay_CaDynamics}</td><td>ms</td></tr>
+ <tr><th>Membrane area</th><td>{SOMA_AREA_UM2.toFixed(3)}</td><td>µm²</td></tr>
+ </tbody></table></div></section>
+ <section class="panel"><h2>Scope & provenance</h2><table><tbody>
+ <tr><th>Geometry</th><td>One isopotential compartment · soma membrane area summed from the pinned morphology, 10 µm variant · no dendritic or axonal load</td></tr>
+ <tr><th>Not the full cell</th><td>Input resistance and excitability differ from the reconstructed neuron · quantitative agreement with the published model is not claimed</td></tr>
+ <tr><th>Integration</th><td>Same fixed-step solver and channel code as Cortex Laboratory · dt 0.025 ms · NEURON state convention</td></tr>
+ <tr><th>Calcium</th><td>CaDynamics active with fitted gamma and decay · SK reads updated intracellular calcium</td></tr>
+ <tr><th>Sweeps</th><td>Fixed protocol · 200 ms baseline · 600 ms step · computed in the browser · spiking points excluded from the IV line</td></tr>
+ <tr><th>Depolarization block</th><td>f-I rate falls above ~160 pA as NaV inactivates · a property of this single compartment, not a tissue prediction</td></tr>
+ <tr><th>Model status</th><td>Published fitted model mechanisms · no independent biological validation here</td></tr>
+ <tr><th>Source</th><td><a href="https://github.com/AllenInstitute/Human_all_active_models_EAP">Allen Institute model repository</a> · <a href="/models/cortex/allen571654895/optim_param_571654895.json">Fitted parameters</a> · <a href="/models/cortex/allen571654895/LICENSE.txt">Allen license</a></td></tr>
+ <tr><th>Equations & verification</th><td><a href="/cortex/methods/">Methods</a> · <a href="/cortex/validation/">Numerical verification</a></td></tr>
+ </tbody></table></section>
+  <a class="back-to-sections" href="#top">Back to laboratory sections ↑</a>
+ </section>
+ <section id="membrane" class="experiment" aria-labelledby="membrane-title">
+  <header class="experiment-heading"><p class="experiment-number">Experiment 02</p><h2 id="membrane-title">Membrane Biophysics</h2><p>Steady-state gates, kinetics and ideal voltage-step responses of the nine pinned channel mechanisms at 34 °C.</p></header>
+<MembraneExplorer client:visible />
+ <section class="panel"><h2>Fitted conductance density · S/cm²</h2><div class="scroll"><table><caption>Allen / Mosher · specimen 571654895 · 34 °C</caption><thead><tr><th>Mechanism</th>{sections.map(s=><th>{s}</th>)}</tr></thead><tbody>{CHANNELS.map(m=><tr><th>{m}</th>{sections.map(s=><td>{fit.genome.find(p=>p.section===s&&p.mechanism===m&&p.name.startsWith('gbar'))?.value ?? ''}</td>)}</tr>)}</tbody></table></div></section>
+ <section class="panel"><h2>Scope & provenance</h2><table><tbody>
+ <tr><th>Kinetics</th><td>Same 34 °C functions as Cortex Laboratory · mixed-species mechanism sources</td></tr>
+ <tr><th>NaV</th><td>12-state stationary distribution · open state O · no single τ · stationary solve, not upstream seqinitial</td></tr>
+ <tr><th>Voltage step</th><td>Ideal prescribed voltage · independent gates · fixed intracellular calcium · no membrane integration</td></tr>
+ <tr><th>Model status</th><td>Published fitted model · no independent biological validation here</td></tr>
+ <tr><th>Source</th><td><a href="https://github.com/AllenInstitute/Human_all_active_models_EAP">Allen Institute model repository</a> · <a href="/models/cortex/allen571654895/optim_param_571654895.json">Fitted parameters</a> · <a href="/models/cortex/allen571654895/LICENSE.txt">Allen license</a></td></tr>
+ <tr><th>Equations & verification</th><td><a href="/cortex/methods/">Methods</a> · <a href="/cortex/validation/">Numerical verification</a></td></tr>
+ </tbody></table></section>
+  <a class="back-to-sections" href="#top">Back to laboratory sections ↑</a>
+ </section>
+ <section id="cable" class="experiment" aria-labelledby="cable-title">
+  <header class="experiment-heading"><p class="experiment-number">Experiment 03</p><h2 id="cable-title">Cable Explorer</h2><p>Passive spread of voltage along a uniform sealed cable: length constant, steady state and step transients.</p></header>
+<CableExplorer client:visible />
+ <section class="panel"><h2>Scope & provenance</h2><table><tbody>
+ <tr><th>Model</th><td>Uniform passive cylinder · sealed ends · lateral membrane only · no branches, spines, taper or active channels</td></tr>
+ <tr><th>Theory</th><td>Analytic steady state for a finite sealed cable with point current at one end, after Rall · transients are numeric only</td></tr>
+ <tr><th>Integration</th><td>Same finite-volume backward-Euler solver as Cortex Laboratory · dt 0.025 ms · 128 compartments · injection held to 6τ</td></tr>
+ <tr><th>Comparison</th><td>Numeric steady state shown against the analytic profile live · default parameters agree within 0.5% of V(0)</td></tr>
+ <tr><th>Defaults</th><td>Cortex Laboratory passive membrane: Rm 20000 Ω·cm² · Ri 150 Ω·cm · Cm 1 µF/cm² · rest −65 mV</td></tr>
+ <tr><th>Interpretation</th><td>A teaching model of passive spread, not a reconstructed neuron · dendrites in the cell atlas carry active mechanisms and branches</td></tr>
+ <tr><th>Equations & verification</th><td><a href="/cortex/methods/">Methods</a> · <a href="/cortex/validation/">Numerical verification</a></td></tr>
+ </tbody></table></section>
+  <a class="back-to-sections" href="#top">Back to laboratory sections ↑</a>
+ </section>
+</Layout>
+<style>
+.local{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 28px}.local a{border:1px solid var(--border);padding:8px 12px;text-decoration:none;color:inherit;font-size:16px}.local a:hover{background:var(--panelHover)}
+.experiment{min-width:0;scroll-margin-top:20px}.experiment+.experiment{border-top:2px solid var(--border);padding-top:30px;margin-top:44px}
+.experiment-heading{margin-bottom:20px}.experiment-number{font-size:13px;letter-spacing:.08em!important;text-transform:uppercase;color:var(--muted);margin:0 0 7px}.experiment-heading h2{font-size:32px;margin:0 0 12px}.experiment-heading>p:last-child{font-size:18px;max-width:85ch;margin:0;opacity:.8}
+.panel{background:var(--panel);border:1px solid var(--border);padding:20px;margin:18px 0;min-width:0;overflow-x:auto}.panel h2{font-family:var(--font-heading);font-weight:400;font-size:28px;margin:0 0 12px}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);font-variant-numeric:tabular-nums}th{font-weight:400;font-style:italic;background:var(--panelStrong)}caption{text-align:left;margin-bottom:12px;opacity:.7;font-style:italic}
+.back-to-sections{display:inline-block;font-size:14px;margin-top:4px}
+@media(max-width:600px){:global(body .hero .pageTitle){font-size:clamp(24px,6.8vw,38px)!important;letter-spacing:.04em!important;overflow-wrap:normal}.panel{padding:12px}.experiment-heading h2{font-size:26px}.local a{font-size:14px}}
+</style>

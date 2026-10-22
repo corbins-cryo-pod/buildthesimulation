@@ -1,110 +1,113 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-
-const sims = [
-  { href: "/simulations/membrane/", title: "Membrane Biophysics", desc: "Explore nine membrane mechanisms, steady-state behavior, channel kinetics and voltage-step responses." },
-  { href: "/simulations/current-clamp/", title: "Current Clamp", desc: "Apply current steps to a soma compartment and inspect voltage traces, current–voltage relationships and firing-rate curves." },
-  { href: "/simulations/cable/", title: "Cable Explorer", desc: "Explore passive voltage spread, length constants, steady state and cable transients." },
-  { href: "/cortex/interface/", title: "Neural Interface Laboratory", desc: "A single pointed test shank with eight finite surface contacts and twelve active human neurons. Follow voltage across every cell, stimulate selected pads, and inspect ideal recordings and somatic spike rasters." },
-  { href: "/cells/", title: "Cell Model Atlas", desc: "Browse published human neuron fits and measured Allen and H01 morphology references. Open individual electrical models in the Cortex Laboratory." },
+import Layout from '../../layouts/Layout.astro';
+const groups = [
   {
-    href: "/cortex/",
-    title: "Cortex Laboratory",
-    desc: "The original single-cell laboratory: stimulate a reconstructed human neuron, run sustained patch-clamp experiments, and replay membrane voltage across its morphology.",
+    "title": "Neural Interface Laboratories",
+    "entries": [
+      {
+        "href": "/cortex/interface/",
+        "title": "Neural Interface Laboratory",
+        "desc": "A single pointed test shank with eight finite surface contacts and twelve active human neurons. Follow voltage across every cell, stimulate selected pads, and inspect ideal recordings and somatic spike rasters."
+      },
+      {
+        "href": "/cortex/",
+        "title": "Cortex Laboratory",
+        "desc": "The original single-cell laboratory: stimulate a reconstructed human neuron, run sustained patch-clamp experiments, and replay membrane voltage across its morphology."
+      },
+      {
+        "href": "/simulations/cortical-stimulation/",
+        "title": "Cortical Stimulation Laboratory",
+        "desc": "Shape finite electrodes, steer current through cortical tissue, and follow active neuron responses. Compare materials, pulse waveforms, membrane traces and recruitment at realistic cellular scale."
+      },
+      {
+        "href": "/simulations/cortex-slab/",
+        "title": "Cortical Recording Laboratory",
+        "desc": "Explore a volume of neurons in 3D. Place up to six contacts in the neural population, compare a depth probe or array, inspect synthetic recordings and export raw traces."
+      }
+    ]
   },
   {
-    href: "/cortex/population/",
-    title: "Cortex Population Laboratory",
-    desc: "Place distinct human neuron models in seeded random distance clouds, shells or grids. Shuffle angles, apply shared electrode stimulation, and inspect population voltage replay and recordings.",
+    "title": "Cell Models & Electrophysiology",
+    "entries": [
+      {
+        "href": "/cortex/population/",
+        "title": "Cortex Population Laboratory",
+        "desc": "Place distinct human neuron models in seeded random distance clouds, shells or grids. Shuffle angles, apply shared electrode stimulation, and inspect population voltage replay and recordings."
+      },
+      {
+        "href": "/simulations/cellular-electrophysiology/",
+        "title": "Cellular Electrophysiology Laboratory",
+        "desc": "Three linked scales of electrical behavior in one workspace: current-clamp responses, membrane-channel kinetics and passive cable spread. Each explorer retains its original controls, plots and model references."
+      },
+      {
+        "href": "/cells/",
+        "title": "Cell Model Atlas",
+        "desc": "Browse published human neuron fits and measured Allen and H01 morphology references. Open individual electrical models in the Cortex Laboratory."
+      }
+    ]
   },
   {
-    href: "/simulations/tissue-mechanics/",
-    title: "Brain Tissue Mechanics Laboratory",
-    desc: "Explore nonlinear tissue mechanics, physical-time relaxation, creep and recovery. Compare published regional material fits, finite-element formulations and experimental curves with explicit accuracy limits.",
+    "title": "Tissue Mechanics",
+    "entries": [
+      {
+        "href": "/simulations/tissue-mechanics/",
+        "title": "Brain Tissue Mechanics Laboratory",
+        "desc": "Explore nonlinear tissue mechanics, physical-time relaxation, creep and recovery. Compare published regional material fits, finite-element formulations and experimental curves with explicit accuracy limits."
+      },
+      {
+        "href": "/simulations/cellular-mechanics/",
+        "title": "Cellular Tissue Mechanics Laboratory",
+        "desc": "Deform a native-position crop of measured H01 human-cortex neurites with the shared Phase 2 mechanics field. Replay physical-time histories, inspect source identities and import attributed surface geometry."
+      }
+    ]
   },
   {
-    href: "/simulations/cellular-mechanics/",
-    title: "Cellular Tissue Mechanics Laboratory",
-    desc: "Deform a native-position crop of measured H01 human-cortex neurites with the shared Phase 2 mechanics field. Replay physical-time histories, inspect source identities and import attributed surface geometry.",
-  },
-  {
-    href: "/simulations/finger-pathway-atlas/v4/",
-    title: "Finger Pathway Atlas V4",
-    desc: "V4: follow 78 connected sensory and motor routes through 306 individual cells in one intact anatomical model. Zoom from finger to cortex with adaptive cellular detail and 50 scientific reference plates.",
-  },
-  {
-    href: "/simulations/finger-pathway-atlas/v3/",
-    title: "Finger Pathway Atlas V3",
-    desc: "The complete original V3 atlas: anatomical models, detailed cellular specimens, sensory and motor journeys, original controls and 50 comparison plates. Available alongside V4 for comparison.",
-  },
-  {
-    href: "/simulations/cortical-stimulation/",
-    title: "Cortical stimulation lab",
-    desc: "Shape finite electrodes, steer current through cortical tissue, and follow active neuron responses. Compare materials, pulse waveforms, membrane traces and recruitment at realistic cellular scale.",
-  },
-  {
-    href: "/simulations/cortex-slab/",
-    title: "Cortical recording lab",
-    desc: "Explore a volume of neurons in 3D. Place up to six contacts in the neural population, compare a depth probe or array, inspect synthetic recordings and export raw traces.",
-  },
-  {
-    href: "/sim/",
-    title: "Peripheral nerve cross-section",
-    desc: "Original sandbox with electrodes, pulse visualization, zoom/pan, and experiment export/import.",
-  },
+    "title": "Anatomy & Pathways",
+    "entries": [
+      {
+        "href": "/simulations/finger-pathway-atlas/v4/",
+        "title": "Finger Pathway Atlas V4",
+        "desc": "V4: follow 78 connected sensory and motor routes through 306 individual cells in one intact anatomical model. Zoom from finger to cortex with adaptive cellular detail and 50 scientific reference plates."
+      },
+      {
+        "href": "/simulations/finger-pathway-atlas/v3/",
+        "title": "Finger Pathway Atlas V3",
+        "desc": "The complete original V3 atlas: anatomical models, detailed cellular specimens, sensory and motor journeys, original controls and 50 comparison plates. Available alongside V4 for comparison."
+      },
+      {
+        "href": "/sim/",
+        "title": "Peripheral nerve cross-section",
+        "desc": "Original sandbox with electrodes, pulse visualization, zoom/pan, and experiment export/import."
+      }
+    ]
+  }
 ];
 ---
-
-<Layout pageTitle="Simulations" subtitle="Interactive simulation tools for neural interface exploration." description="Simulation launcher for buildthesimulation.">
-  <section class="grid">
-    {sims.map((s) => (
-      <a class="tile" href={s.href}>
-        <h2>{s.title}</h2>
-        <p>{s.desc}</p>
-      </a>
-    ))}
-  </section>
+<Layout pageTitle="Simulations" subtitle="" description="Explore neural-interface laboratories, cell electrophysiology, tissue mechanics and anatomical models.">
+  <p class="manual-intro">Explore neural interfaces from membrane currents to complete anatomical pathways. The laboratories below are grouped by scale and purpose, with the principal interface and cortex tools first.</p>
+  <div class="manual-index">
+    {groups.map((group, index) => <section class="manual-group" aria-labelledby={`simulation-group-${index}`}>
+      <header class="manual-group-heading"><span class="manual-group-number">{String(index + 1).padStart(2, '0')}</span><h2 id={`simulation-group-${index}`}>{group.title}</h2></header>
+      <ol class="manual-entries">{group.entries.map((entry, item) => <li class="manual-entry">
+        <span class="manual-entry-number" aria-hidden="true">{index + 1}.{item + 1}</span>
+        <div><h3><a href={entry.href}>{entry.title}</a></h3><p>{entry.desc}</p></div>
+      </li>)}</ol>
+    </section>)}
+  </div>
 </Layout>
-
 <style>
-  .grid {
-    margin-top: 14px;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .tile {
-    display: block;
-    padding: 18px;
-    border-radius:0;
-    border: 1px solid var(--border);
-    background: var(--panel);
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .tile:hover {
-    border-color: var(--borderStrong);
-    transform: translateY(-1px);
-    background: var(--panelHover);
-  }
-
-  h2 {
-    margin: 0 0 8px;
-    font-size: var(--title-card);
-    font-weight: 400;
-  }
-
-  p {
-    margin: 0;
-    opacity: 0.82;
-    line-height: 1.5;
-  }
-
-  @media (max-width: 680px) {
-    .grid {
-      grid-template-columns: 1fr;
-    }
-  }
+.manual-intro{max-width:84ch;font-size:19px;margin:20px 0 30px;line-height:1.4!important}
+.manual-index{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 44px;position:relative;align-items:start}
+.manual-index::before{content:'';position:absolute;top:0;bottom:0;left:50%;border-left:1px solid var(--border);opacity:.55}
+.manual-group{min-width:0}
+.manual-group-heading{display:flex;gap:12px;align-items:baseline;border-bottom:1px solid var(--border);padding-bottom:9px;margin-bottom:18px}
+.manual-group-heading h2,.manual-group-number{font-family:'Twentieth Century',Arial,sans-serif!important;font-size:18px;font-weight:700;font-style:normal;text-transform:uppercase;letter-spacing:.065em!important;line-height:1.2!important;margin:0}
+.manual-group-number{font-size:15px;color:var(--muted)}
+.manual-entries{list-style:none;margin:0;padding:0;display:grid;gap:20px}
+.manual-entry{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;margin:0;min-width:0}
+.manual-entry-number{font-size:15px;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
+.manual-entry h3{font-family:var(--font-body)!important;font-size:21px;font-weight:700;font-style:normal;line-height:1.2!important;margin:0 0 6px;letter-spacing:-.015em!important}
+.manual-entry a{color:inherit;text-decoration:none}.manual-entry a:hover{text-decoration:underline;text-underline-offset:4px}
+.manual-entry p{font-size:17px;margin:0;line-height:1.4!important;opacity:.84;hyphens:auto}
+@media(max-width:760px){.manual-index{grid-template-columns:1fr;gap:30px}.manual-index::before{display:none}.manual-intro{font-size:17px}.manual-group-heading h2{font-size:17px}}
 </style>
