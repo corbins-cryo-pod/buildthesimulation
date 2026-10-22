@@ -31,8 +31,35 @@ export function buildCatalogContents(companies, hardware, applications, assignme
       applications: linkedStudies.map(app => page(app, 'applications')).sort(byTitle),
     };
   }).sort((a, b) => byTitle(a.organization, b.organization));
+  // Devices without a matching primary brief are grouped under their reviewed
+  // development program (plain external link to the key paper or official page,
+  // not a site brief). Programs that cannot be grounded stay in Miscellaneous.
+  const developerGroups = new Map();
+  for (const device of devices) {
+    if (usedDevices.has(device.slug)) continue;
+    const developer = assignments[device.slug]?.developer;
+    if (!developer) continue;
+    if (!developerGroups.has(developer.name)) {
+      developerGroups.set(developer.name, { organization: { slug: null, title: developer.name, href: developer.url }, devices: [], deviceSlugs: new Set() });
+    }
+    const group = developerGroups.get(developer.name);
+    group.devices.push(device);
+    group.deviceSlugs.add(device.slug);
+    usedDevices.add(device.slug);
+  }
+  const developerRows = [...developerGroups.values()].map(group => {
+    const linkedStudies = studies.filter(app => (app.data.devices ?? []).some(slug => group.deviceSlugs.has(slug)) && !usedApplications.has(app.slug));
+    linkedStudies.forEach(app => usedApplications.add(app.slug));
+    return {
+      organization: group.organization,
+      devices: group.devices.map(device => page(device, 'devices')).sort(byTitle),
+      applications: linkedStudies.map(app => page(app, 'applications')).sort(byTitle),
+    };
+  });
+  groups.push(...developerRows);
+  groups.sort((a, b) => byTitle(a.organization, b.organization));
   const unlinked = {
-    organization: null,
+    organization: { slug: null, title: 'Miscellaneous', href: null },
     devices: devices.filter(device => !usedDevices.has(device.slug)).map(device => page(device, 'devices')).sort(byTitle),
     applications: studies.filter(app => !usedApplications.has(app.slug)).map(app => page(app, 'applications')).sort(byTitle),
   };
