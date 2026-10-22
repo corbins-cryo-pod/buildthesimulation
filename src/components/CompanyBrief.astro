@@ -21,7 +21,7 @@ const hasMarginalia = Boolean(photo || apps.length || devices.length);
   <header class="brief-cover">
     <div class="brief-cover-grid">
       <div class="brief-title-block">
-        <h1 class:list={['brief-name', { 'brief-name-long': brief.longName }]} aria-label={organizationDisplayName(entry.slug, brief.name)}>{organizationDisplayName(entry.slug, brief.name) !== brief.name ? <span>{organizationDisplayName(entry.slug, brief.name)}</span> : brief.headline.map(line => <span>{line}</span>)}</h1>
+        <div class="brief-name-frame"><h1 class="brief-name" lang="en" aria-label={organizationDisplayName(entry.slug, brief.name)}>{organizationDisplayName(entry.slug, brief.name)}</h1></div>
         <p class="brief-deck">{brief.deck}</p>
       </div>
       <aside class="brief-company" aria-label="Organization facts">
@@ -125,4 +125,29 @@ const hasMarginalia = Boolean(photo || apps.length || devices.length);
     links.forEach(link => link.addEventListener('click', () => activate(link.hash.slice(1))));
     activate(window.location.hash.slice(1) || sections[0]?.id || '');
   }
+</script>
+
+<script>
+  async function fitBriefNames() {
+    await document.fonts.ready;
+    document.querySelectorAll<HTMLElement>('.brief-name-frame').forEach(frame => {
+      const title = frame.querySelector<HTMLElement>('.brief-name');
+      if (!title) return;
+      const fit = () => {
+        let lo = 28, hi = 320;
+        for (let i = 0; i < 12; i++) {
+          const size = (lo + hi) / 2;
+          title.style.fontSize = `${size}px`;
+          const lines = title.getBoundingClientRect().height / (size * .92);
+          if (title.scrollWidth <= frame.clientWidth + 1 && title.getBoundingClientRect().height <= frame.clientHeight && lines <= 4.1) lo = size;
+          else hi = size;
+        }
+        title.style.fontSize = `${Math.floor(lo)}px`;
+      };
+      fit();
+      new ResizeObserver(fit).observe(frame);
+      new MutationObserver(fit).observe(title, {childList:true, characterData:true, subtree:true});
+    });
+  }
+  fitBriefNames();
 </script>
