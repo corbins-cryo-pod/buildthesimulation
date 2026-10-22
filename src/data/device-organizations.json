@@ -1,0 +1,1597 @@
+{
+  "01-utah-microelectrode-array": {
+    "primaryOrganization": "04-blackrock-neurotech-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Blackrock Neurotech (formerly Blackrock Microsystems) |",
+      "| Origin | University of Utah |"
+    ],
+    "source": "https://blackrockneurotech.com/products/utah-array/",
+    "note": "Primary manufacturer Blackrock; University of Utah is the origin, BrainGate is a clinical research consortium using the array.",
+    "relatedOrganizations": [
+      {
+        "slug": "16-university-of-utah-neural-engineering-lab-brief",
+        "role": "origin"
+      },
+      {
+        "slug": "13-braingate-consortium-lab-brief",
+        "role": "clinical research user"
+      }
+    ]
+  },
+  "02-neuralink-n1": {
+    "primaryOrganization": "01-neuralink-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Neuralink |",
+      "| Origin | Neuralink; first human participant reported in company updates from 2024 [1] |"
+    ],
+    "source": "https://neuralink.com/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "03-stentrode-synchron": {
+    "primaryOrganization": "02-synchron-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Synchron, Kacker 2025 |",
+      "| Origin | SWITCH study at Royal Melbourne Hospital, Australia; not a claim about invention priority |"
+    ],
+    "source": "https://synchron.com/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "04-neuropixels-probe": {
+    "primaryOrganization": "51-imec",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | imec, with HHMI Janelia, Allen Institute and UCL in the 2017 collaboration [2] |",
+      "| Origin | imec with HHMI Janelia, Allen Institute and UCL collaboration [2] |"
+    ],
+    "source": "https://www.neuropixels.org/probe1-0",
+    "note": "imec manufactures the probe; Janelia, Allen and UCL are development collaborators, not competing manufacturers.",
+    "relatedOrganizations": [
+      {
+        "slug": "77-hhmi-janelia-neuropixels-program",
+        "role": "development collaborator"
+      },
+      {
+        "slug": "46-allen-ucl-neuropixels-opto-collaboration",
+        "role": "related program"
+      },
+      {
+        "slug": "50-ucl-carandini-lab",
+        "role": "research collaborator"
+      }
+    ]
+  },
+  "05-utah-slanted-electrode-array-usea": {
+    "primaryOrganization": "04-blackrock-neurotech-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Blackrock Neurotech; the 2017 paper names Blackrock Microsystems [1, 2] |",
+      "| Origin |  |"
+    ],
+    "source": "https://blackrockneurotech.com/products/slant-array/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "06-time-transverse-intrafascicular-multichannel-electrode": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | TIME developed by Laboratory for Biomedical Microtechnology, IMTEK, University of Freiburg; 2021 Methods |",
+      "| Origin | Boretius et al. 2010 primary design report |"
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/20627510/",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "07-wimagine-cea-clinatec-epidural-wireless-ecog": {
+    "primaryOrganization": "14-cea-clinatec-wimagine-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | CEA-Clinatec, France; Sauter-Starace 2019 and 2015 development report |",
+      "| Origin | CEA development; primary design published before the reviewed 2019 sheep study |"
+    ],
+    "source": "https://clinatec.fr/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "08-neurotrophic-electrode-kennedy-cone": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | Neural Signals research program; 2008 assembly report |",
+      "| Origin | Kennedy and collaborators; historical human recording program |"
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/9665587/",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "09-paradromics-connexus-acute-first-in-human": {
+    "primaryOrganization": "03-paradromics-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Paradromics |",
+      "| Origin | Paradromics; Connect-One study with the University of Michigan [6] |"
+    ],
+    "source": "https://paradromics.com/connexus/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "10-spiral-nerve-cuff-electrode-helical": {
+    "primaryOrganization": "82-case-western-cleveland-fes-center",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | CWRU design; Tan 2015 implanted components manufactured by Ardiem Medical. Not one universal vendor SKU |",
+      "| Origin | Naples, Mortimer, Scheiner and Sweeney design; cited in Christie 2017 |"
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/3198136/",
+    "note": "Grouped by the CWRU design program; implanted components were manufactured by Ardiem Medical, which has no brief.",
+    "relatedOrganizations": []
+  },
+  "100-microseeg-flexible-stylet-depth-electrode": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; UC San Diego-led with MGH collaborators [1] |",
+      "| Origin | UC San Diego-led, Nature Communications, January 2024 [1, 2] |"
+    ],
+    "source": "https://www.nature.com/articles/s41467-023-43727-9",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "102-neurotassel-elastocapillary-filament-arrays": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; National Center for Nanoscience and Technology and CAS Institute of Neuroscience, China [1, 2] |",
+      "| Origin | Guan and colleagues, Science Advances, March 2019 [1] |"
+    ],
+    "source": "https://www.science.org/doi/10.1126/sciadv.aav2842",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "104-neuropixels-20-quad-base-probe": {
+    "primaryOrganization": "51-imec",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Manufacturer datasheet from the Neuropixels program with imec; preprint affiliations include Johns Hopkins University, HHMI Janelia and imec |",
+      "| Origin | Johns Hopkins, Janelia and imec; July 27, 2026 bioRxiv preprint |"
+    ],
+    "source": "https://www.neuropixelscentral.org/technology",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "106-neuropixels-nxt-np30-prototype": {
+    "primaryOrganization": "42-jhu-harris-high-capacity-electrophysiology-lab",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Johns Hopkins Biomedical Engineering project led by Tim Harris with Dan O'Connor as co-investigator, imec as design and manufacturing partner |",
+      "| Origin | Johns Hopkins with imec; the Harris lab is distinct from Johns Hopkins APL |"
+    ],
+    "source": "https://www.neuropixelscentral.org/technology",
+    "note": "Johns Hopkins Harris BME program, not Johns Hopkins APL. imec is the design/manufacturing partner.",
+    "relatedOrganizations": [
+      {
+        "slug": "51-imec",
+        "role": "design and manufacturing partner"
+      }
+    ]
+  },
+  "107-neuropixels-opto-photonic-prototype": {
+    "primaryOrganization": "46-allen-ucl-neuropixels-opto-collaboration",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Allen/UCL collaboration with UK and Belgian development partners; recording backend derives from Neuropixels 1.0. Prototype, not a commercial product |",
+      "| Origin | Lakunina, Socha, Ladd and colleagues; Nature Methods, June 1, 2026 |"
+    ],
+    "source": "https://www.nature.com/articles/s41592-026-03076-z",
+    "note": "Distinct Opto development collaboration; not assigned automatically to every Neuropixels partner.",
+    "relatedOrganizations": []
+  },
+  "109-chime-glass-gold-microwire-cmos": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Francis Crick Institute, UCL, Stanford, Paradromics, ETH Zurich, MaxWell Biosystems [1] |",
+      "| Origin | Primary paper, Frontiers in Neuroscience, August 11, 2020 [1, 2] |"
+    ],
+    "source": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2020.00834/full",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "111-stimdust-ultrasonic-nerve-stimulator": {
+    "primaryOrganization": "32-uc-berkeley-neural-dust-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; UC Berkeley/UCSF bioengineering, Berkeley EECS, Boise State, Chan Zuckerberg Biohub [1] |",
+      "| Origin | Muller lab, Nature Biomedical Engineering [1, 4] |"
+    ],
+    "source": "https://www.nature.com/articles/s41551-020-0518-9",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "113-mebit-magnetoelectric-endovascular-stimulator": {
+    "primaryOrganization": "43-rice-magnetoelectric-bioelectronics-labs",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Rice, UT Medical Branch, UTHealth, Duke, Cambridge, Baylor [1] |",
+      "| Origin | Nature Biomedical Engineering, March 31, 2022 [1, 2] |"
+    ],
+    "source": "https://www.nature.com/articles/s41551-022-00873-7",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "115-magnetoelectric-network-spinal-stimulators-2025": {
+    "primaryOrganization": "43-rice-magnetoelectric-bioelectronics-labs",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Rice University Robinson lab context [1, 3] |",
+      "| Origin | Published paper, August 28, 2025 [1] |"
+    ],
+    "source": "https://www.nature.com/articles/s41551-025-01489-3",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "117-dot-magnetoelectric-epidural-stimulator-2024": {
+    "primaryOrganization": "43-rice-magnetoelectric-bioelectronics-labs",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Rice, Motif Neurotech, UTHealth, Baylor [1] |",
+      "| Origin | Science Advances, April 2024 [1] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11014439/",
+    "note": "Published Rice-led research device; separate from the later Motif company device entry 175.",
+    "relatedOrganizations": []
+  },
+  "12-actigait-implantable-drop-foot-stimulator": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | ActiGait brand in Martin clinical studies; historical manufacturer not inferred from current ownership |",
+      "| Origin | Reviewed clinical studies in Dresden; not an invention-priority claim |"
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/26207599/",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "120-endocisternal-catheter-me-interface": {
+    "primaryOrganization": "43-rice-magnetoelectric-bioelectronics-labs",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Rice University Robinson lab context, collaborators per the paper [1, 2] |",
+      "| Origin | Chen and colleagues; 2023 preprint, Nature Biomedical Engineering online November 11, 2024, issue June 2025 [1, 2] |"
+    ],
+    "source": "https://www.nature.com/articles/s41551-024-01281-9",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "122-self-rectifying-magnetoelectric-metamaterial": {
+    "primaryOrganization": "43-rice-magnetoelectric-bioelectronics-labs",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Rice and Baylor [1] |",
+      "| Origin | Nature Materials, online October 2023, issue January 2024 [1, 2] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10972531/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "124-puf-addressed-magnetoelectric-multisite-stimulator": {
+    "primaryOrganization": "43-rice-magnetoelectric-bioelectronics-labs",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Rice and Baylor [1] |",
+      "| Origin | Yu and colleagues, IEEE JSSC, online December 2021, issue March 2022 [1] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9581110/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "126-magni-current-controlled-magnetoelectric-implant": {
+    "primaryOrganization": "43-rice-magnetoelectric-bioelectronics-labs",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Rice and Baylor [1] |",
+      "| Origin | IEEE Transactions on Biomedical Circuits and Systems, 2020 [1] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8712272/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "128-singer-pvdf-two-film-headstage-2020": {
+    "primaryOrganization": "43-rice-magnetoelectric-bioelectronics-labs",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Rice and UTHealth Houston [1] |",
+      "| Origin | Singer and colleagues, Neuron 2020 [1] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7818389/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "129-singer-pzt-fully-implanted-stimulator-2020": {
+    "primaryOrganization": "43-rice-magnetoelectric-bioelectronics-labs",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Rice and UTHealth Houston [1] |",
+      "| Origin | Singer and colleagues, Neuron 2020 [1] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7818389/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "13-cwru-spiral-cuff-radial-nerve-sensory-amputees": {
+    "primaryOrganization": "82-case-western-cleveland-fes-center",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | CWRU design; Tan 2015 implanted components manufactured by Ardiem Medical. Not one universal vendor SKU |",
+      "| Origin | Naples, Mortimer, Scheiner and Sweeney design; cited in Christie 2017 |"
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/28693584/",
+    "note": "Grouped by the CWRU design program; Ardiem manufactured the reported implanted components.",
+    "relatedOrganizations": []
+  },
+  "132-mend-magnetoelectric-nanodiscs-2024": {
+    "primaryOrganization": "22-mit-neural-engineering-neurotech-ecosystem-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research material; MIT and Friedrich-Alexander University Erlangen-Nuremberg [1] |",
+      "| Origin | Kim and colleagues, Nature Nanotechnology [1] |"
+    ],
+    "source": "https://www.nature.com/articles/s41565-024-01798-9",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "135-mote-optoelectronic-tetherless-recorder-2025": {
+    "primaryOrganization": "44-cornell-mote-neurotechnology-collaboration",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Cornell Molnar and Xu groups with NTU, KAIST, Boston University, University of Arizona [1] |",
+      "| Origin | Lee and colleagues, Nature Electronics [1] |"
+    ],
+    "source": "https://www.nature.com/articles/s41928-025-01484-1",
+    "note": "Joint Cornell Molnar/Xu development; one primary collaboration brief, Xu retained as collaborator.",
+    "relatedOrganizations": [
+      {
+        "slug": "49-cornell-xu-group",
+        "role": "development collaborator"
+      }
+    ]
+  },
+  "137-scope-subdural-cmos-optical-probe": {
+    "primaryOrganization": "45-columbia-shepard-optical-and-electrical-interfaces",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Columbia University Shepard lab [1] |",
+      "| Origin | 2023 bioRxiv preprint; 2024 Nature Electronics paper [1, 2] |"
+    ],
+    "source": "https://www.nature.com/articles/s41928-024-01209-w",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "14-fine-flat-interface-nerve-electrode": {
+    "primaryOrganization": "82-case-western-cleveland-fes-center",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Tan 2015 human components: Ardiem Medical. Dweiri 2016 fabrication is an academic protocol, not the same manufactured cuff |",
+      "| Origin | Tyler and Durand design cited in Dweiri 2016 |"
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/12611367/",
+    "note": "Grouped by CWRU design lineage; Ardiem human components and the academic fabrication protocol are distinct.",
+    "relatedOrganizations": []
+  },
+  "143-mit-drawn-multimodal-polymer-fiber-2015": {
+    "primaryOrganization": "22-mit-neural-engineering-neurotech-ecosystem-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; MIT Materials Science and Engineering, Research Laboratory of Electronics, Simons Center for the Social Brain [4] |",
+      "| Origin | Canales, Jia and colleagues, Nature Biotechnology 2015 [1] |"
+    ],
+    "source": "https://www.nature.com/articles/nbt.3093",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "144-mit-drawn-tin-multielectrode-fiber-2015": {
+    "primaryOrganization": "22-mit-neural-engineering-neurotech-ecosystem-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; MIT, same 2015 paper as fiber 143 [1] |",
+      "| Origin | Canales, Jia and colleagues, Nature Biotechnology 2015 [1] |"
+    ],
+    "source": "https://www.nature.com/articles/nbt.3093",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "146-mit-graphite-polymer-multifunctional-fiber-2017": {
+    "primaryOrganization": "22-mit-neural-engineering-neurotech-ecosystem-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; MIT with Tohoku University and Virginia Tech affiliations [2] |",
+      "| Origin | Park and colleagues, Nature Neuroscience 2017 [1] |"
+    ],
+    "source": "https://www.nature.com/articles/nn.4510",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "15-life-longitudinal-intrafascicular-electrode": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research fabrication, Thota 2015; not one vendor SKU |",
+      "| Origin | Fine-wire LIFE literature; DIME system developed by Thota and collaborators |"
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/16425828/",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "150-neuropace-rns-system": {
+    "primaryOrganization": "52-neuropace-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | NeuroPace, Inc., Mountain View, California [1] |",
+      "| Origin | Commercial FDA-approved device; Feasibility (G010288 external model), pivotal and long-term treatment studies [1][2] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/cdrh_docs/pdf10/P100026b.pdf",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "151-medtronic-percept-sensight-dbs": {
+    "primaryOrganization": "53-medtronic-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Medtronic, Inc., Medtronic Neuromodulation [1] |",
+      "| Origin | Commercial FDA-approved device within PMA P960009 (Activa and Percept family) [1] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/cdrh_docs/pdf/P960009S482B.pdf",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "152-abbott-liberta-rc-dbs": {
+    "primaryOrganization": "54-abbott-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Abbott Medical, Plano, Texas [1] |",
+      "| Origin | Commercial FDA-approved device within PMA P140009 [1] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P140009S087",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "153-boston-scientific-vercise-genus-dbs": {
+    "primaryOrganization": "55-boston-scientific-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Boston Scientific Corporation, Valencia, California [1] |",
+      "| Origin | Commercial FDA-approved device within PMA P150031 [1] |"
+    ],
+    "source": "https://www.fda.gov/medical-devices/recently-approved-devices/vercise-pc-vercise-gevia-and-vercise-genus-deep-brain-stimulation-systems-p150031s064",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "154-medtronic-inceptiv-closed-loop-scs": {
+    "primaryOrganization": "53-medtronic-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Medtronic, Inc. [1][2] |",
+      "| Origin | Commercial FDA-approved device within PMA P840001 [1] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P840001S512",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "155-nevro-senza-hfx-iq-scs": {
+    "primaryOrganization": "56-nevro-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Nevro Corp. [2] |",
+      "| Origin | Commercial FDA-approved device within PMA P130022 [1] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?id=P130022S044",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "156-saluda-evoke-closed-loop-scs": {
+    "primaryOrganization": "57-saluda-medical-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Saluda Medical Pty Ltd, Artarmon, New South Wales, Australia [1][2] |",
+      "| Origin | Commercial FDA-approved device, PMA P190002 [1] |"
+    ],
+    "source": "https://www.fda.gov/medical-devices/recently-approved-devices/evoke-spinal-cord-stimulation-scs-system-p190002",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "157-livanova-vns-therapy-sentiva": {
+    "primaryOrganization": "37-livanova-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | LivaNova USA, Inc., Houston, Texas (formerly Cyberonics) [1][3] |",
+      "| Origin | Commercial FDA-approved device, PMA P970003 [1][2] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/cdrh_docs/pdf/P970003S207B.pdf",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "158-inspire-upper-airway-stimulation": {
+    "primaryOrganization": "58-inspire-medical-systems-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Inspire Medical Systems, Inc. [1][2] |",
+      "| Origin | Commercial FDA-approved device, PMA P130008 [1][2] |"
+    ],
+    "source": "https://www.fda.gov/medical-devices/recently-approved-devices/inspire-upper-airway-stimulation-p130008s090",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "159-setpoint-vagus-nerve-stimulation-ra": {
+    "primaryOrganization": "59-setpoint-medical-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | SetPoint Medical, Valencia, California [1] |",
+      "| Origin | Commercial FDA-approved device, PMA P240039; FDA breakthrough designation granted [1] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/cdrh_docs/pdf24/P240039B.pdf",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "16-hyperflexible-regenerative-sieve-electrode-veith-2021": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic device fabrication in Veith et al. 2021; commercial manufacturer not reported |",
+      "| Origin | Veith, Li, Modi, Abbaspour, Luan, Xie and Baker research team |"
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/34147716/",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "160-axonics-sacral-neuromodulation": {
+    "primaryOrganization": "60-axonics-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Axonics Modulation Technologies, Inc., Irvine, California [1] |",
+      "| Origin | Commercial FDA-approved device; this sheet reads PMA P190006 (fecal incontinence). The same family's other PMA, P180046 (urinary indications), supplies the hardware and animal-study rows marked [2]; its clinical sections were not read [1][2] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/cdrh_docs/pdf19/P190006b.pdf",
+    "note": "Axonics-branded FDA device; parent-company links do not create a second primary manufacturer row.",
+    "relatedOrganizations": [
+      {
+        "slug": "55-boston-scientific-company-brief",
+        "role": "parent-company relationship"
+      }
+    ]
+  },
+  "161-cochlear-nucleus-implant-system": {
+    "primaryOrganization": "36-cochlear-corporation-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Cochlear Limited (Cochlear Americas) [1][2] |",
+      "| Origin | Commercial FDA-approved device; PMA P840024 (Nucleus 22 Cochlear Implant System) with supplements [1] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?id=P840024S096",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "162-neuros-altius-hfac-nerve-block": {
+    "primaryOrganization": "61-neuros-medical-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Neuros Medical, Inc., Aliso Viejo, California [1][2] |",
+      "| Origin | Commercial FDA-approved device, PMA P230020; pivotal QUEST IDE trial G130203 [2] |"
+    ],
+    "source": "https://www.fda.gov/medical-devices/recently-approved-devices/altius-direct-electrical-nerve-stimulation-system-p230020",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "163-bluewind-revi-tibial-neuromodulation": {
+    "primaryOrganization": "62-bluewind-medical-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | BlueWind Medical Ltd., Herzliya, Israel [1][2] |",
+      "| Origin | Commercial FDA-authorized device; De Novo request received October 5, 2022; the pivotal study is named OASIS, and the review text also refers to the system as RENOVA iStim [1] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN220073.pdf",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "164-spr-sprint-percutaneous-pns": {
+    "primaryOrganization": "63-spr-therapeutics-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | SPR Therapeutics, Inc., Cleveland, Ohio [1] |",
+      "| Origin | Commercial FDA-cleared device; 510(k) K223306 [1][3] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223306.pdf",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "165-argus-ii-retinal-prosthesis": {
+    "primaryOrganization": "24-cortigent-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Second Sight Medical Products, now Cortigent, Inc. [2]; the FDA record lists Cortigent, Inc. as applicant [1] |",
+      "| Origin | Commercial FDA-approved Humanitarian Device Exemption device [1][2] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfhde/hde.cfm?id=h110002",
+    "note": "Historical Second Sight device; current FDA applicant/manufacturer identity in this sheet is Cortigent. Second Sight retained as predecessor.",
+    "relatedOrganizations": [
+      {
+        "slug": "23-second-sight-medical-products-company-brief",
+        "role": "predecessor"
+      }
+    ]
+  },
+  "166-cortigent-orion-visual-cortical-prosthesis": {
+    "primaryOrganization": "24-cortigent-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Cortigent, Inc., a wholly owned subsidiary of Vivani Medical; predecessor Second Sight Medical Products [1][2] |",
+      "| Origin | Investigational device; not FDA approved [1][4] |"
+    ],
+    "source": "https://clinicaltrials.gov/study/NCT03344848",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "167-onward-arc-im-implantable-spinal-stimulation": {
+    "primaryOrganization": "64-onward-medical-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | ONWARD Medical N.V. (US sponsor entity ONWARD Medical, Inc.) [2][3] |",
+      "| Origin | Investigational device; FDA IDE approved August 18, 2025 for the Empower BP pivotal study [2] |"
+    ],
+    "source": "https://clinicaltrials.gov/study/NCT07147296",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "168-med-el-cochlear-implant-system": {
+    "primaryOrganization": "65-med-el-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | MED-EL Elektromedizinische Geraete GmbH, Innsbruck, Austria (MED-EL Corp.) [1] |",
+      "| Origin | Commercial FDA-approved device; PMA P000025, original approval August 20, 2001 [1] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/cdrh_docs/pdf/P000025S129B.pdf",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "169-advanced-bionics-hires-ultra-3d-cochlear-implant": {
+    "primaryOrganization": "66-advanced-bionics-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Advanced Bionics, Valencia, California [2] |",
+      "| Origin | Commercial FDA-approved device; PMA P960058 [2] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P960058S166",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "17-macro-sieve-electrode-macewan-2016": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | Washington University research fabrication, MacEwan 2016 |",
+      "| Origin | MacEwan, Zellmer, Wheeler, Burton and Moran team |"
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/28008303/",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "170-abbott-proclaim-xr-spinal-cord-stimulation": {
+    "primaryOrganization": "54-abbott-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Abbott Medical, Plano, Texas [1] |",
+      "| Origin | Commercial FDA-approved device; PMA P010032, original approval December 3, 2001 [1] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/cdrh_docs/pdf/P010032S189B.pdf",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "171-boston-scientific-wavewriter-spinal-cord-stimulation": {
+    "primaryOrganization": "55-boston-scientific-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Boston Scientific Corporation, Marlborough, Massachusetts [1] |",
+      "| Origin | Commercial FDA-approved device; PMA P030017, original approval April 27, 2004 [1] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/cdrh_docs/pdf3/P030017S363B.pdf",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "172-nalu-neurostimulation-system-pns": {
+    "primaryOrganization": "67-nalu-medical-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Nalu Medical, Inc., Carlsbad, California [1] |",
+      "| Origin | Commercial FDA-cleared device; 510(k) K183579 [1] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/cdrh_docs/pdf18/K183579.pdf",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "173-bioness-stimrouter-pns": {
+    "primaryOrganization": "68-bioness-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Bioness Inc., Valencia, California [1] |",
+      "| Origin | Commercial FDA-cleared device; 510(k) K211965, predicate K200482 [1] |"
+    ],
+    "source": "https://www.accessdata.fda.gov/cdrh_docs/pdf21/K211965.pdf",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "174-axoft-fleuron-ultrasoft-neural-probe": {
+    "primaryOrganization": "08-axoft-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Axoft, Inc. [1][3] |",
+      "| Origin | Company device; Fleuron is described as a family of ultrasoft, ultra-low-k dielectric materials compatible with thin-film microfabrication [2] |"
+    ],
+    "source": "https://clinicaltrials.gov/study/NCT06673264",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "175-motif-dot-magnetoelectric-brain-stimulator": {
+    "primaryOrganization": "69-motif-neurotech-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Motif Neurotech, Inc. (spin-out of Rice University lab of Jacob Robinson) [1][2] |",
+      "| Origin | Company device with Rice University, Baylor College of Medicine and UTHealth Houston collaborators; published in Science Advances [1][2] |"
+    ],
+    "source": "https://clinicaltrials.gov/study/NCT07594483",
+    "note": "Company device under Motif; Rice is origin/collaborator rather than a second commercial maker.",
+    "relatedOrganizations": [
+      {
+        "slug": "43-rice-magnetoelectric-bioelectronics-labs",
+        "role": "research origin"
+      }
+    ]
+  },
+  "176-inbrain-graphene-cortical-interface": {
+    "primaryOrganization": "07-inbrain-neuroelectronics-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | INBRAIN Neuroelectronics, Barcelona; spin-off of ICN2 and CSIC [1][2] |",
+      "| Origin | Company device; first-in-human study sponsored by the University of Manchester [1] |"
+    ],
+    "source": "https://www.businesswire.com/news/home/20250728135880/en/INBRAIN-Neuroelectronics-Reports-Interim-Analysis-of-First-in-Human-Study-of-Graphene-Brain-Computer-Interface",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "177-science-prima-subretinal-photovoltaic-implant": {
+    "primaryOrganization": "06-science-corporation-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Science Corporation, Alameda, California [1][2] |",
+      "| Origin | Company device; the paper reports a multicenter study at 17 sites in 5 European countries [1] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7618305/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "178-stairmed-wrs-ultraflexible-wireless-bci": {
+    "primaryOrganization": "12-stairmed-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Shanghai StairMed Technology Co., Ltd. (上海阶梯医疗科技有限公司), Shanghai; incorporated August 2021 per a secondary report [1][2][5] |",
+      "| Origin | Company device from StairMed with the CAS Center for Excellence in Brain Science and Intelligence Technology (CEBSIT) and Huashan Hospital, Fudan University [2][5] |"
+    ],
+    "source": "https://clinicaltrials.gov/study/NCT06829212",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "179-neuroxess-flexible-ecog-256-channel-bci": {
+    "primaryOrganization": "10-neuroxess-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Shanghai NeuroXess Technology Co., Ltd. (脑虎科技), founder Tiger H. Tao [1][4] |",
+      "| Origin | Company device with Huashan Hospital, Fudan University, supported by the Tianqiao and Chrissy Chen Institute and Shanghai and national grants [1][2] |"
+    ],
+    "source": "https://en.neuroxess.com/news/major-breakthrough/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "18-microchannel-regenerative-scaffold-srinivasan-2015": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic fabrication in Srinivasan et al. |",
+      "| Origin | Georgia Tech/Emory research team; design builds on prior microchannel work |"
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/25522974/",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "180-neuroxess-triple-f-fully-implanted-subdural-bci": {
+    "primaryOrganization": "10-neuroxess-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | NeuroXess Technology (Shanghai) Co., Ltd. (脑虎科技), sponsor on ClinicalTrials.gov, with Huashan Hospital as collaborator [1] |",
+      "| Origin | NeuroXess with Huashan Hospital, Fudan University; the first case was led by Mao Ying and Chen Liang's team [3, 4] |"
+    ],
+    "source": "https://clinicaltrials.gov/study/NCT07720882",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "181-stairmed-wrs02-256-channel-wireless-bci": {
+    "primaryOrganization": "12-stairmed-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Shanghai StairMed Technology Co., Ltd. (上海阶梯医疗科技有限公司) [1] |",
+      "| Origin | StairMed, with Huashan Hospital as the clinical partner of the earlier WRS01 trials [2] |"
+    ],
+    "source": "https://www.stairmed.com/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "182-shenfu-jianxing-brain-spine-interface-fudan": {
+    "primaryOrganization": "70-shenfu-jianxing-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | 神复健行(上海)医疗器械有限公司 (Shenfu Jianxing, Shanghai), a Fudan University translation company founded around Jia Fumin's team at Fudan's Institute of Science and Technology for Brain-Inspired Intelligence [1, 4] |",
+      "| Origin | Jia Fumin's team at Fudan University with Zhongshan Hospital and Huashan Hospital [1, 2] |"
+    ],
+    "source": "https://www.chictr.org.cn/showprojEN.html?proj=256806",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "183-mindtrix-cortical-visual-reconstruction-system": {
+    "primaryOrganization": "71-mindtrix-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | 明视脑机 (Mindtrix); founder and CEO Liu Bing, associate researcher at the Institute of Automation, Chinese Academy of Sciences; company founded 2024 [1, 3] |",
+      "| Origin | Founder from the Chinese Academy of Sciences Institute of Automation; company founded 2024 [1] |"
+    ],
+    "source": "https://www.mindtrix.cn/technology",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "184-zhiran-ultra-100-channel-flexible-bci-leap": {
+    "primaryOrganization": "72-zhiran-medical-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | 北京智冉医疗科技有限公司 (Beijing Zhiran Medical Technology), founder and CEO Song Qi; trial sponsor [1, 2, 3] |",
+      "| Origin | Beijing Zhiran Medical, with Tiantan Hospital as lead clinical site [1] |"
+    ],
+    "source": "https://www.bjtth.cn/Html/News/Articles/214568.html",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "185-merf-ultraflexible-nhp-array-cebsit": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | Research groups of Zhao Zhengtao (CEBSIT) and Li Chengyu (Lingang Laboratory), with the CEBSIT primate platform and micro-nano fabrication platform [1][2] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10667845/",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "186-simit-mosquito-mouthpart-bionic-neural-probe": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | SIMIT State Key Laboratory of Transducer Technology; animal work at Shanghai Laboratory Animal Research Center, approved by the Fudan University IACUC [1][2] |"
+    ],
+    "source": "https://www.nature.com/articles/s41378-023-00565-5",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "187-simit-silk-intraventricular-interface": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | SIMIT, with NeuroXess (脑虎科技) and Huashan Hospital, Fudan University [2] |"
+    ],
+    "source": "https://www.nature.com/articles/s41467-025-64397-9",
+    "note": "SIMIT-led collaboration includes NeuroXess; no SIMIT brief exists. Do not substitute a collaborator as primary.",
+    "relatedOrganizations": [
+      {
+        "slug": "10-neuroxess-company-brief",
+        "role": "development collaborator"
+      }
+    ]
+  },
+  "188-simit-256-channel-high-density-uecog": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | SIMIT with NeuroXess and Huashan Hospital [2] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12677598/",
+    "note": "SIMIT-led collaboration includes NeuroXess and Huashan; no SIMIT brief exists.",
+    "relatedOrganizations": [
+      {
+        "slug": "10-neuroxess-company-brief",
+        "role": "development collaborator"
+      }
+    ]
+  },
+  "189-nankai-rongyuan-interventional-bci": {
+    "primaryOrganization": "73-tianjin-rongyuan-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Origin | Duan Feng's team, Nankai University (School of Medicine, College of Artificial Intelligence); commercial vehicle Tianjin Rongyuan Intelligent Technology, founded April 2023 per the Nankai District government [1][4] |"
+    ],
+    "source": "https://en.nankai.edu.cn/2025/0911/c22796a577326/page.htm",
+    "note": "Nankai development with Tianjin Rongyuan as commercial vehicle.",
+    "relatedOrganizations": []
+  },
+  "19-teeni-rpni": {
+    "primaryOrganization": "17-university-of-michigan-neural-engineering-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | University of Michigan research system; electrode manufacturer not specified in reviewed 2023 Methods |",
+      "| Origin | University of Michigan RPNI program |"
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/37023743/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "190-nurotron-wh-01a-auditory-brainstem-implant": {
+    "primaryOrganization": "74-zhejiang-norkang-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Origin | Wu Hao's team at Shanghai Ninth People's Hospital, Shanghai Jiao Tong University School of Medicine, with Nurotron [1][2][3] |"
+    ],
+    "source": "https://nurotron.com/news/560.html",
+    "note": "Nurotron company statements and hospital development are explicitly scoped in this sheet.",
+    "relatedOrganizations": []
+  },
+  "191-siat-neuroworm-movable-fibre-electrode": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | SIAT (first institution), with Donghua University; five years of joint work [1] |"
+    ],
+    "source": "https://www.siat.ac.cn/siatxww/kyjz/202509/t20250918_7969644.html",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "192-tsinghua-neurocam-4096-channel-tft-ecog": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | Tsinghua Department of Electronic Engineering and the Tsinghua-IDG/McGovern Institute for Brain Research, with Xuanwu Hospital; first author Xie Yang (2024 PhD graduate) [1][2] |"
+    ],
+    "source": "https://www.tsinghua.edu.cn/info/1175/123501.htm",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "193-tsinghua-sz-chip-hydrogel-ecog": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | Tsinghua Shenzhen International Graduate School and SIAT; IACUC approvals at both [1] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13142910/",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "194-siat-liquid-crystal-mxene-pedot-fibre-electrode": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | SIAT brain institute, Du Zhanhong lab; funded in part by the Science and Technology Innovation 2030 brain science program [1] |"
+    ],
+    "source": "https://bcbdi.siat.ac.cn/siat/2025-04/01/article_2025040107071517469.html",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "195-cibr-umbrella-type-stretchable-electrode-array": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | CIBR Beijing, Gao Lei laboratory; first authors Bai Jin, Li Jie, Yang Chen, Lv Weipeng [1] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13620120/",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "196-aircas-multitransm-dopamine-electrophysiology-mea": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | AIR-CAS, Beijing; Zhejiang University; Ruijin Hospital [1] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12509213/",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "197-cibr-agel-hydrogel-micro-ecog": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | CIBR Beijing (Wu Ting) and ICCAS (Qiu Dong); first authors Chen Lin, Zhong Hao, Wang Linghao, Xu Liju [1] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12713035/",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "198-fudan-mnis-silicon-transistor-multimodal-ecog": {
+    "primaryOrganization": "75-fudan-university-neural-interface-groups",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Origin | Fudan University, Shanghai; Song Enming and Zhang Rongjun corresponding authors [1] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12806190/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "199-cibr-kirigami-microelectrode-array-ki-mea": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | CIBR Beijing (Fang Ying lab) with NCNST; co-first authors Fang Runjiu, Tian Huihui, Du Yan [1] |"
+    ],
+    "source": "https://cibr.ac.cn/detail/researchAchievementpaper/1fbe986ad2f942dd8b7adccd5a05ffde",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "20-science-biohybrid-cortical-engraftment-microwell": {
+    "primaryOrganization": "06-science-corporation-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Science Corporation research fabrication |",
+      "| Origin | Brown, Zappitelli, Dawson and Science Corporation team |"
+    ],
+    "source": "https://www.biorxiv.org/content/10.1101/2024.11.22.624907v1",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "200-siat-laser-induced-graphene-multimodal-electrode": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | SIAT Institute of Brain Cognition and Brain Disorders / SIBS, Lu Yi lab [1] |"
+    ],
+    "source": "https://www.shibs.cn/news/detail-488",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "201-semi-cas-silicon-microneedle-array-local-deinsulation": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | Institute of Semiconductors, CAS (Pei Weihua) [1][2] |"
+    ],
+    "source": "https://www.nature.com/articles/s41378-025-00922-6",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "202-siat-ferroelectric-bioelectronic-vagus-cuff": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | SIAT State Key Laboratory of Biomedical Imaging Science and System, Du Xuemin; co-author at Peking University School of Basic Medical Sciences [1] |"
+    ],
+    "source": "http://www.siat.cas.cn/siatxww/kyjz/202604/t20260415_8185750.html",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "204-sinano-neuron-scale-all-hydrogel-fibre-array": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | SINANO CAS, Zhang Ting; co-corresponding author Li Lianhui [1] |"
+    ],
+    "source": "https://sinano.cas.cn/news/kyjz/202604/t20260429_8194590.html",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "205-sjtu-implantable-nanoscale-neural-probe-innp": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | Shanghai Jiao Tong University, School of Integrated Circuits, Liu Jingquan (corresponding), Du Zhiyuan (first author) [1] |"
+    ],
+    "source": "https://news.sjtu.edu.cn/jdzh/20260209/219729.html",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "206-sjtu-opto-electrophysiology-nanotube-probe": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | Shanghai Jiao Tong University, Liu Jingquan group [1] |"
+    ],
+    "source": "https://news.sjtu.edu.cn/jdzh/20240909/201670.html",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "207-fudan-pedot-pss-mri-compatible-fiber-electrode": {
+    "primaryOrganization": "75-fudan-university-neural-interface-groups",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Origin | Fudan University, Shanghai [1] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13358296/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "208-itis-33-contact-spiral-cuff": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Developer | ITIS, University of Ljubljana and Institute of Metals and Technology; Rozman et al., 2018 |"
+    ],
+    "source": "https://www.nature.com/articles/s41598-018-19318-w",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "209-tu-delft-transfer-free-multilayer-graphene-mea": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Origin | Delft University of Technology (Department of Microelectronics), with Fraunhofer IZM Berlin and Erasmus MC Rotterdam listed among author affiliations [1] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13067786/",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "21-science-biohybrid-neuronal-embedded-penetrating-probe": {
+    "primaryOrganization": "06-science-corporation-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Science Corporation, company description November 2024 |",
+      "| Origin | Science Corporation biohybrid program led by Alan Mardinly and Yifan Kong |"
+    ],
+    "source": "https://science.xyz/news/biohybrid-neural-interfaces/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "22-neural-dust-ultrasonic-backscatter-mote": {
+    "primaryOrganization": "32-uc-berkeley-neural-dust-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | University of California, Berkeley research fabrication |",
+      "| Origin | Seo, Neely, Shen and colleagues, UC Berkeley |"
+    ],
+    "source": "https://www.cell.com/neuron/fulltext/S0896-6273%2816%2930344-0",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "23-syringe-injectable-mesh-electronics": {
+    "primaryOrganization": "27-harvard-lieber-group-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Harvard/NCNST academic fabrication |",
+      "| Origin | Liu, Fu, Cheng and collaborators; Harvard and National Center for Nanoscience and Technology, Beijing |"
+    ],
+    "source": "https://www.nature.com/articles/nnano.2015.115",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "24-neurogrid-pedot-pss-surface-array": {
+    "primaryOrganization": "28-nyu-buzsaki-lab-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Khodagholy and collaborators, academic fabrication; no commercial SKU asserted |",
+      "| Origin | Khodagholy, Gelinas, Thesen, Doyle, Devinsky, Malliaras and Buzsaki research team |"
+    ],
+    "source": "https://www.nature.com/articles/nn.3905",
+    "note": "NYU Buzsaki is a named development collaborator; Khodagholy, Gelinas, Malliaras and other collaborators also contributed.",
+    "relatedOrganizations": []
+  },
+  "25-neurograins-wireless-microimplant-network": {
+    "primaryOrganization": "33-brown-nurmikko-neurograins-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research fabrication; not a commercial SKU |",
+      "| Origin | Lee and colleagues; Brown, Baylor, Seoul National University, UC San Diego and Qualcomm affiliations in supplement |"
+    ],
+    "source": "https://doi.org/10.1038/s41928-021-00631-8",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "26-carbon-fiber-electrode-arrays-michigan": {
+    "primaryOrganization": "17-university-of-michigan-neural-engineering-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Chestek-led academic fabrication, not commercial clinical system |",
+      "| Origin | University of Michigan researchers and collaborators; configurations attributed to Patel et al. 2015/2020 |"
+    ],
+    "source": "https://iopscience.iop.org/article/10.1088/1741-2560/12/4/046009",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "27-nanoelectronic-thread-net-probes": {
+    "primaryOrganization": "35-ut-austin-nanoelectronic-thread-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | UT Austin academic fabrication |",
+      "| Origin | Luan, Wei, Zhao and colleagues, University of Texas at Austin |"
+    ],
+    "source": "https://www.science.org/doi/10.1126/sciadv.1601966",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "28-e-dura-electronic-dura-mater": {
+    "primaryOrganization": "34-epfl-neuroprosthetics-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | EPFL-led academic fabrication, not commercial clinical system |",
+      "| Origin | Minev, Musienko and collaborators; EPFL with international collaborators |"
+    ],
+    "source": "https://www.science.org/doi/10.1126/science.1260318",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "29-active-matrix-flexible-ecog-array-viventi": {
+    "primaryOrganization": "30-duke-viventi-lab-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic fabrication, not a commercial or manufacturer-issued product. Authors from Penn, Illinois at Urbana-Champaign and collaborators |",
+      "| Origin | Jonathan Viventi, John Rogers, Brian Litt and collaborators; Nature Neuroscience 2011 |"
+    ],
+    "source": "https://www.nature.com/articles/nn.2973",
+    "note": "Viventi-led historical research device; Penn/Illinois/Litt/Rogers collaboration, not a Duke-manufactured commercial product.",
+    "relatedOrganizations": []
+  },
+  "30-injectable-micro-iled-optoelectronics": {
+    "primaryOrganization": "76-northwestern-rogers-research-group",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; University of Illinois Urbana-Champaign and Washington University in St. Louis, with collaborators [1] |",
+      "| Origin | Tae-il Kim, Jordan G. McCall and co-authors; corresponding authors John A. Rogers and Michael R. Bruchas [1] |"
+    ],
+    "source": "https://www.science.org/doi/10.1126/science.1232437",
+    "note": "Rogers is a corresponding developer; historical Illinois/Washington University collaboration, not a Northwestern commercial product.",
+    "relatedOrganizations": []
+  },
+  "31-bioresorbable-silicon-brain-sensors": {
+    "primaryOrganization": "76-northwestern-rogers-research-group",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Illinois, Washington University and Northwestern [1] |",
+      "| Origin | Seung-Kyun Kang, Rory K. J. Murphy, Suk-Won Hwang, Seung Min Lee and co-authors; senior author John A. Rogers [1] |"
+    ],
+    "source": "https://www.nature.com/articles/nature16492",
+    "note": "Rogers-led historical academic collaboration; institutional affiliation changed over time.",
+    "relatedOrganizations": []
+  },
+  "32-brown-implantable-wireless-neural-interface-borton": {
+    "primaryOrganization": "33-brown-nurmikko-neurograins-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Brown University research system; authors David Borton, Ming Yin, Juan Aceros and Arto Nurmikko [1] |",
+      "| Origin | Brown University, Journal of Neural Engineering 2013;10:026010 [1] |"
+    ],
+    "source": "https://iopscience.iop.org/article/10.1088/1741-2560/10/2/026010/meta",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "33-wireless-neurosensor-yin-2014": {
+    "primaryOrganization": "33-brown-nurmikko-neurograins-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Brown University research system; authors Ming Yin, David Borton, Jacob Komar and colleagues; senior author Arto Nurmikko [1] |",
+      "| Origin | Brown University, Neuron 84:1170-1182, 2014 [1] |"
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/25482026/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "34-dobelle-cortical-visual-prosthesis": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | Institut Dobelle AG; William H. Dobelle [1] |",
+      "| Origin | Builds on a 1968 paper by Giles Brindley's group [1] |"
+    ],
+    "source": "http://nuui.com/Sections/Technology/Artificial%20Vision/artificial%20vision.pdf",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "35-wise-integrated-circuit-microprobe-1970": {
+    "primaryOrganization": "21-stanford-neural-engineering-bci-ecosystem-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research probe; Kensall D. Wise, James B. Angell, Arnold Starr [1] |",
+      "| Origin | Wise, Angell and Starr, \"An Integrated-Circuit Approach to Extracellular Microelectrodes\" [1] |"
+    ],
+    "source": "https://escholarship.org/uc/item/5374x0rj",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "41-neo-neuracle-tsinghua-epidural-bci": {
+    "primaryOrganization": "31-neuracle-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Neuracle Medical Technology (Shanghai) Co., Ltd., with Tsinghua University (Bo Hong's team) [1, 2] |",
+      "| Origin | Tsinghua University, design proposed in 2013; Neuracle developed the product [1] |"
+    ],
+    "source": "https://www.tsinghua.edu.cn/en/info/1420/12707.htm",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "42-precision-layer-7-cortical-interface": {
+    "primaryOrganization": "05-precision-neuroscience-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Precision Neuroscience [1, 3] |",
+      "| Origin | Precision Neuroscience; primary paper published October 2, 2025 [1] |"
+    ],
+    "source": "https://www.precisionneuro.io/articles/company-news/precision-neuroscience-receives-fda-clearance-for-high-resolution-cortical-electrode-array",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "43-neuralink-blindsight": {
+    "primaryOrganization": "01-neuralink-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Neuralink [1] |",
+      "| Origin | Neuralink, United States [1] |"
+    ],
+    "source": "https://neuralink.com/updates/neuralink-receives-breakthrough-device-designation-for-blindsight/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "45-beinao-1-cibr-neucyber": {
+    "primaryOrganization": "11-neucyber-beinao-1-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Chinese Institute for Brain Research, Beijing (CIBR) with NeuCyber NeuroTech (Beijing); CIBR's own release names Beijing CiNi Technology Co., Ltd. as co-developer [1, 2]. Chinese-language sources name the co-developer as 北京芯智达神经技术有限公司 (Beijing Xinzhida Neurotechnology), formed in 2023 and led by CIBR; its business director is named Li Yuan [6, 7]. Reuters's NeuCyber executive is also called Li Yuan [4]. No source read states outright that the two names are one company |",
+      "| Origin | CIBR, Beijing, China [1] |"
+    ],
+    "source": "https://en.cibr.ac.cn/detail/cibrNewsnews/c0370bcc7cb94c4a8c980f38f9bf16c0",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "55-auditory-brainstem-implant": {
+    "primaryOrganization": "36-cochlear-corporation-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Cochlear Corporation (only FDA-approved ABI); MED-EL and Oticon Medical make ABIs used outside the US [1, 2] |",
+      "| Origin | Djourno and Eyries 1957 cochlear nerve stimulation; House and Hitselberger first ABI [3] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6438789/",
+    "note": "Class entry spans vendors; grouped with Cochlear for the FDA-approved ABI discussed, not exclusive ownership of all ABIs.",
+    "relatedOrganizations": []
+  },
+  "63-pmt-high-density-ecog-array-percutaneous-connector": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | Array by PMT; percutaneous connector by Blackrock Microsystems; the 2021 paper calls its implant a customized combination [1] |",
+      "| Origin | UCSF speech neuroprosthesis studies [1, 2] |"
+    ],
+    "source": "https://www.nejm.org/doi/full/10.1056/NEJMoa2027540",
+    "note": "Composite custom array: PMT array and Blackrock connector. Neither the clinical user nor connector vendor is assigned as manufacturer of the whole device.",
+    "relatedOrganizations": []
+  },
+  "64-neuroroots-independent-flexible-tendrils": {
+    "primaryOrganization": "21-stanford-neural-engineering-bci-ecosystem-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Stanford Materials Science and Engineering and Neurobiology, Cambridge Engineering, collaborators in Hungary, France and Sweden [1] |",
+      "| Origin | Ferro, Proctor, Gonzalez and colleagues, AIP Advances 14, 085109 (2024); Stanford Neuroscience:Translate award 2019 [1, 2] |"
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/39130131/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "65-active-microecog-auditory-cortex-array": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic fabrication, not a commercial product. Paper affiliations include University of Connecticut, NYU, University of Pennsylvania, University of Illinois at Urbana-Champaign and Northwestern, with collaborators in South Korea and China |",
+      "| Origin | Escabí, Read, Viventi, Kim and colleagues; Journal of Neurophysiology 112:1566-1583 (2014). Follows the active flexible arrays of Viventi and colleagues |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4137255/",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "66-sewing-machine-polymer-electrode-threads": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; UCSF Physiology, Berkeley/UCSF Bioengineering, Berkeley ECE, Chan Zuckerberg Biohub; not the Neuralink N1 [1] |",
+      "| Origin | Hanson, Diaz-Botia, Kharazia, Maharbiz, Sabes [1] |"
+    ],
+    "source": "https://www.biorxiv.org/content/10.1101/578542v1.full",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "67-modular-polymer-probe-recording-system": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; UCSF, Lawrence Livermore National Laboratory, Flatiron Institute, SpikeGadgets, NYU, HHMI [1] |",
+      "| Origin | Chung, Joo, Fan and colleagues, Neuron 101:21-31.e5 [1] |"
+    ],
+    "source": "https://www.cell.com/neuron/fulltext/S0896-6273(18)30993-0",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "68-clear-transparent-graphene-microecog": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; University of Wisconsin-Madison with Wisconsin-Milwaukee and Mahidol University collaborators [1, 2] |",
+      "| Origin | Park, Schendel, Mikael and colleagues, Nature Communications 5, 5258 [1] |"
+    ],
+    "source": "https://www.nature.com/articles/ncomms6258",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "69-ucsd-high-density-transparent-graphene-array": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; UC San Diego, Duygu Kuzum group [2] |",
+      "| Origin | Ramezani, Kim, Liu and colleagues, Nature Nanotechnology 2024 [1] |"
+    ],
+    "source": "https://www.nature.com/articles/s41565-023-01576-z",
+    "note": "UCSD Kuzum group is distinct from the listed UCSD Dayeh laboratory; institution-name overlap is insufficient.",
+    "relatedOrganizations": []
+  },
+  "71-modular-net-high-density-arrays": {
+    "primaryOrganization": "47-rice-xie-lab",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Rice ECE, bioengineering and NeuroEngineering Initiative, UCSF neuroscience and neurological surgery [1] |",
+      "| Origin | Zhao, Zhu, Li and colleagues, Nature Biomedical Engineering [1] |"
+    ],
+    "source": "https://www.nature.com/articles/s41551-022-00941-y",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "73-bisc-wireless-subdural-cmos-array": {
+    "primaryOrganization": "45-columbia-shepard-optical-and-electrical-interfaces",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Columbia University electrical engineering and computer science with US collaborators [1] |",
+      "| Origin | Jung, Zeng and colleagues, Nature Electronics [1] |"
+    ],
+    "source": "https://www.nature.com/articles/s41928-025-01509-9",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "74-ptnrgrid-platinum-nanorod-surface-arrays": {
+    "primaryOrganization": "41-ucsd-integrated-electronics-biointerfaces-lab",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device (Tchoe, Bourhis, Cleary and colleagues, UC San Diego) [1, 3] |",
+      "| Origin | Tchoe and colleagues, Science Translational Medicine [1] |"
+    ],
+    "source": "https://www.science.org/doi/10.1126/scitranslmed.abj1441",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "76-ieeg-microdisplay-ptnr-led-array": {
+    "primaryOrganization": "41-ucsd-integrated-electronics-biointerfaces-lab",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; primary affiliation UC San Diego Integrated Electronics and Biointerfaces Laboratory, with other collaborators [1] |",
+      "| Origin | Tchoe and colleagues, Science Translational Medicine 16:eadj7257 [1] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11093107/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "77-flexible-neurochemical-recording-probe": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Carnegie Mellon University and University of Pittsburgh affiliations [1, 2] |",
+      "| Origin | Malekoshoaraie and colleagues, 2024 [1] |"
+    ],
+    "source": "https://www.nature.com/articles/s41378-024-00685-6",
+    "note": "CMU/Pittsburgh research device; not established as a Yu/Chase or Pittsburgh rehabilitation group device.",
+    "relatedOrganizations": []
+  },
+  "79-hydrogel-hybrid-multifunctional-fiber-probe": {
+    "primaryOrganization": "22-mit-neural-engineering-neurotech-ecosystem-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; MIT affiliations, with Ohio State affiliation and KAIST present addresses listed [2] |",
+      "| Origin | Park and colleagues, 2021 [1] |"
+    ],
+    "source": "https://www.nature.com/articles/s41467-021-23802-9",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "81-neurostring-neurochemical-sensor": {
+    "primaryOrganization": "21-stanford-neural-engineering-bci-ecosystem-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Zhenan Bao's group at Stanford per Stanford's account, with Stanford and Michigan State author affiliations [1, 5] |",
+      "| Origin | Li and colleagues, Nature, 2022 [1] |"
+    ],
+    "source": "https://www.nature.com/articles/s41586-022-04615-2",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "83-neuropixels-ultra-high-density-probe": {
+    "primaryOrganization": "51-imec",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Developed with imec; authors from University of Washington, Allen Institute, Columbia, Janelia and others. Not a commercial release specification |",
+      "| Origin | Ye and colleagues; Neuron, online September 30, 2025, issue December 3, 2025. Preprint on bioRxiv April 10, 2024 |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12981004/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "85-neuropixels-10-nhp-long-shank": {
+    "primaryOrganization": "51-imec",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Designed and fabricated with imec (130 nm silicon-on-insulator CMOS); academic team from Columbia, Stanford, Berkeley, Caltech, Janelia and others. Not a commercial release specification |",
+      "| Origin | Trautmann and colleagues; Nature Neuroscience 2025 |"
+    ],
+    "source": "https://www.nature.com/articles/s41593-025-01976-5",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "88-neuropixels-20-alpha-probe": {
+    "primaryOrganization": "51-imec",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Fabricated as a one-piece CMOS probe with imec; study by a multi-institution team including UCL, University of Washington and Janelia. Not a commercial release specification |",
+      "| Origin | Steinmetz, Aydin, Lebedeva, Okun, Pachitariu and a multi-lab team; Science 2021 |"
+    ],
+    "source": "https://www.science.org/doi/10.1126/science.abf4588",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "90-flex2chip-cmos-flexible-interface": {
+    "primaryOrganization": "21-stanford-neural-engineering-bci-ecosystem-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Stanford and ETH Zürich affiliations [1] |",
+      "| Origin | Zhao and colleagues, Science Advances, 2023 [1] |"
+    ],
+    "source": "https://www.science.org/doi/10.1126/sciadv.adf9524",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "92-ultra-flexible-tentacle-electrodes": {
+    "primaryOrganization": null,
+    "status": "unassigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; ETH Zurich and University of Zurich affiliations [1] |",
+      "| Origin | 2024 Nature Communications paper [1] |"
+    ],
+    "source": "https://www.nature.com/articles/s41467-024-49226-9",
+    "note": "No matching brief for the stated maker/developer, or no single primary developer established. Retain in the index without assigning a research user or a similarly named lab.",
+    "relatedOrganizations": []
+  },
+  "94-argo-microwire-cmos-recording-system": {
+    "primaryOrganization": "03-paradromics-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Paradromics and Caeleste, with University of Pittsburgh participation [1] |",
+      "| Origin | 2021 Argo paper [1] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8607496/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "96-stanford-microwire-cmos-bundles-2020": {
+    "primaryOrganization": "21-stanford-neural-engineering-bci-ecosystem-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Stanford, Francis Crick Institute, UCL, ETH Zurich and Paradromics affiliations [1] |",
+      "| Origin | Obaid and colleagues, Science Advances, 2020 [1] |"
+    ],
+    "source": "https://www.science.org/doi/10.1126/sciadv.aay2789",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  },
+  "98-stimnet-ultraflexible-stimulation-thread": {
+    "primaryOrganization": "47-rice-xie-lab",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | Academic research device; Rice University [1] |",
+      "| Origin | Cell Reports, 2023; stimulation-specific successor to recording NET probes [1] |"
+    ],
+    "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10592461/",
+    "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
+    "relatedOrganizations": []
+  }
+}

@@ -23,6 +23,8 @@ draft: false
 
 A silicon array of penetrating electrodes for recording cortical neural activity. The Utah research family and the NeuroPort clinical product share an array architecture, but their configurations, labeling and permitted uses are not interchangeable.
 
+Primary manufacturer: [Blackrock Neurotech](/companies/04-blackrock-neurotech-company-brief/). The [University of Utah](/companies/16-university-of-utah-neural-engineering-lab-brief/) is the array's origin; the [BrainGate consortium](/companies/13-braingate-consortium-lab-brief/) is a clinical research user. These are different roles, rather than three interchangeable manufacturers.
+
 The [BrainGate pilot](/applications/37-braingate-pilot-2006/) used a 96-microelectrode sensor for a human neural cursor and device control.
 
 ## Core interface specifications
