@@ -9,7 +9,7 @@ const { groups } = Astro.props;
       <thead><tr><th scope="col"><a href="/companies/">Companies &amp; labs</a></th><th scope="col"><a href="/devices/">Devices</a></th><th scope="col"><a href="/applications/">Applications</a></th></tr></thead>
       <tbody>
         {groups.map(group => <tr>
-          <td class="contents-organization">{group.organization && (group.organization.href ? <a href={group.organization.href}>{group.organization.title}</a> : group.organization.title)}{group.organization && !group.organization.slug && <span class="nopage-mark" title="No page on this site" aria-label="No page on this site">*</span>}</td>
+          <td class="contents-organization">{group.organization && (group.organization.href ? <a href={group.organization.href}>{group.organization.title}{!group.organization.slug && <span class="nopage-mark" title="No page on this site" aria-label="No page on this site">*</span>}</a> : <span>{group.organization.title}{!group.organization.slug && <span class="nopage-mark" title="No page on this site" aria-label="No page on this site">*</span>}</span>)}</td>
           <td class="contents-device"><ul>{group.devices.map(device => <li><a href={device.href}>{device.title}</a></li>)}</ul></td>
           <td class="contents-applications"><ul>{group.applications.map(app => <li><a href={app.href}>{app.title}</a></li>)}</ul></td>
         </tr>)}
@@ -24,7 +24,7 @@ const { groups } = Astro.props;
 .contents-scroll{max-width:100%;overflow-x:auto;border:1px solid var(--text)}
 table{width:100%;min-width:760px;table-layout:fixed;border-collapse:collapse}
 .organization-column{width:28%}.device-column{width:32%}.application-column{width:40%}
-.nopage-mark{font-size:12px;vertical-align:super;margin-left:1px}
+.nopage-mark{font-size:12px;vertical-align:super;margin:0;letter-spacing:0!important}
 .contents-note{margin:8px 0 0;font-size:12px;font-weight:400!important;opacity:.75;letter-spacing:.03em!important}
 .contents-caption{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 th{padding:14px 10px 12px;border-bottom:1px solid var(--text);border-right:1px solid var(--text);font-size:14px;text-align:center;text-transform:uppercase;letter-spacing:.1em!important}
