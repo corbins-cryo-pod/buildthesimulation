@@ -37,9 +37,9 @@ export default function HandwritingDecoder() {
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch(DATA_URL, { signal: controller.signal }).then(r => {
-      if (!r.ok) throw new Error('load'); return r.json();
-    }).then(d => {
+    Promise.all([1, 2, 3, 4].map(i => fetch(`${DATA_URL}.${i}`, { signal: controller.signal }).then(r => {
+      if (!r.ok) throw new Error('load'); return r.text();
+    }))).then(texts => JSON.parse(texts.join(''))).then(d => {
       if (d.channels !== 192 || d.binMs !== 20 || !d.trials?.length) throw new Error('format');
       setData(d);
     }).catch(e => { if (e.name !== 'AbortError') setError(true); });
