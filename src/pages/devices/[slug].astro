@@ -89,10 +89,11 @@ const photoReference = getDevicePhotoReference(entry.data.device_id);
     {getDeviceModel(entry.data.device_id) && <DeviceModelViewer deviceId={entry.data.device_id} client:visible />}
 
     {entry.data.device_id === "BTSD-0001" && <RealRecordingExplorer client:visible />}
-    {entry.data.device_id === "BTSD-0001" && <HandwritingDecoder client:visible />}
     {entry.data.device_id === "BTSD-0004" && <NeuropixelsExplorer client:visible />}
 
     </details>}
+
+    {entry.data.device_id === "BTSD-0001" && <HandwritingDecoder client:visible />}
 
     {apps.length ? (
       <section class="appList" aria-label="Applications of this device">
