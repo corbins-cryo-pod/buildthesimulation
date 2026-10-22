@@ -1,0 +1,33 @@
+---
+const { groups } = Astro.props;
+---
+<section class="catalog-contents" aria-label="Catalog table of contents">
+  <div class="contents-scroll" role="region" aria-label="Companies, devices and applications; scroll horizontally on small screens" tabindex="0">
+    <table>
+      <caption class="contents-caption">Alphabetical companies and labs with devices grouped by their reviewed primary manufacturer or development program. Applications include research uses and collaborations, not ownership. Devices without a matching primary organization brief appear after the organization groups.</caption>
+      <colgroup><col class="organization-column" /><col class="device-column" /><col class="application-column" /></colgroup>
+      <thead><tr><th scope="col"><a href="/companies/">Companies &amp; labs</a></th><th scope="col"><a href="/devices/">Devices</a></th><th scope="col"><a href="/applications/">Applications</a></th></tr></thead>
+      <tbody>
+        {groups.map(group => <tr>
+          <td class="contents-organization">{group.organization && <a href={group.organization.href}>{group.organization.title}</a>}</td>
+          <td class="contents-device"><ul>{group.devices.map(device => <li><a href={device.href}>{device.title}</a></li>)}</ul></td>
+          <td class="contents-applications"><ul>{group.applications.map(app => <li><a href={app.href}>{app.title}</a></li>)}</ul></td>
+        </tr>)}
+      </tbody>
+    </table>
+  </div>
+</section>
+<style>
+.catalog-contents{margin-top:22px;min-width:0;font-family:'Twentieth Century',Arial,sans-serif;font-size:15px}
+.catalog-contents :global(*){font-family:'Twentieth Century',Arial,sans-serif!important;font-weight:700;font-style:normal!important;line-height:1.08!important;letter-spacing:.05em!important}
+.contents-scroll{max-width:100%;overflow-x:auto;border:1px solid var(--text)}
+table{width:100%;min-width:760px;table-layout:fixed;border-collapse:collapse}
+.organization-column{width:28%}.device-column{width:32%}.application-column{width:40%}
+.contents-caption{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+th{padding:14px 10px 12px;border-bottom:1px solid var(--text);border-right:1px solid var(--text);font-size:14px;text-align:center;text-transform:uppercase;letter-spacing:.1em!important}
+th:last-child{border-right:0}td{vertical-align:top;padding:3px 12px 10px;border-right:1px solid var(--text);text-align:left;font-size:15px;overflow-wrap:break-word;hyphens:auto}
+td.contents-applications{border-right:0;font-size:14px}tr:first-child>td{padding-top:11px}
+a{color:inherit;text-decoration:none}a:hover{text-decoration:underline;text-underline-offset:3px}td>a{display:block}
+ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}li{padding:0;margin:0;text-align:left;hyphens:auto}
+@media(max-width:680px){.catalog-contents{margin-top:16px}th{font-size:13px}td{padding-inline:10px}}
+</style>
