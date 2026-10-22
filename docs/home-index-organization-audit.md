@@ -8,7 +8,7 @@ Each device appears once, beneath its reviewed primary manufacturer or developme
 
 `src/data/device-organizations.json` records all 142 decisions, quoted identity evidence from each device page, a source URL, a rationale and selected related organizations with explicit roles. These are editorial grouping decisions based on the catalog's existing cited identity sections, with targeted official-source verification of Utah and Neuropixels. This is not a fresh independent verification of every engineering specification, corporate acquisition or paper.
 
-103 devices have matching primary organization briefs. 39 are retained after the alphabetical organization groups with a blank organization cell: the matching maker/developer has no brief, the entry spans a collaboration or device class, or the primary assignment remains unclear. No placeholder text is added to the titles-only table. A blank cell does not mean the developer is unknown in the literature. New published devices require an explicit audit record through the catalog tests.
+103 devices have matching primary organization briefs. Of the 39 without one, 35 are grouped under their reviewed development program as plain entries whose name links to the program's key paper or official page from this audit (Corbin, 2026-10-22: simple entries, no full brief pages). The remaining 4 stay under a "Miscellaneous" label because no single program is grounded in the audit evidence: ActiGait (historical manufacturer not inferred), LIFE (no institution stated), the Veith 2021 hyperflexible sieve (team named without institution) and the 196-channel active micro-ECoG (five-plus institutions, no lead stated). The Miscellaneous label is a grouping, not a placeholder developer name; the audit JSON carries each device's quoted developer identity. New published devices require an explicit audit record through the catalog tests.
 
 ## Important distinctions
 
@@ -31,7 +31,7 @@ Official checks: [Blackrock Utah Array](https://blackrockneurotech.com/products/
 
 ## Entries retained without a matching primary grouping
 
-These are intentionally not assigned to a convenient research user, collaborator or similarly named institution. Consult the device identity rows and the audit JSON for their stated developers and source scope.
+These are intentionally not assigned to a convenient research user, collaborator or similarly named institution. On the home index they appear under their stated development program (external key-paper or official-page link) or, for the four ungroundable cases, under Miscellaneous. Consult the device identity rows and the audit JSON for their stated developers and source scope.
 
 - [TIME (Transverse Intrafascicular Multichannel Electrode)](../src/content/designs/06-time-transverse-intrafascicular-multichannel-electrode.md)
 - [Neurotrophic Electrode (Kennedy cone electrode)](../src/content/designs/08-neurotrophic-electrode-kennedy-cone.md)
