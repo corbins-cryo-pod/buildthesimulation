@@ -8,6 +8,7 @@ interface_class: "pni"
 status: "human"
 last_updated: 2026-02-03
 description: "A flexible thin-film intrafascicular peripheral nerve interface inserted transversely through a nerve to access multiple fascicles, trading surgical complexity for selectivity."
+website: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5702130/"
 modality: "Peripheral nerve"
 successRank: 10
 axis: ["peripheral-nerve"]
