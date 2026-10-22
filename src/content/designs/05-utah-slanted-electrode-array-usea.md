@@ -8,6 +8,7 @@ interface_class: "pni"
 status: "human"
 last_updated: 2026-10-07
 description: "Slanted silicon peripheral-nerve arrays: 100 physical needles with 96 recording/stimulation electrodes in the 2017 human study; current manufacturer options and investigational-use limits remain separate."
+website: "https://blackrockneurotech.com/products/slant-array/"
 modality: "Peripheral nerve"
 successRank: 7
 axis: ["peripheral-nerve"]
