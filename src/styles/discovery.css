@@ -29,7 +29,7 @@
 .discovery-result { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 10px 12px; border-radius:0; color: inherit; text-decoration: none; }
 .discovery-result:hover, .discovery-result.is-active, .discovery-result:focus-visible { background: var(--panelStrong); outline-color: var(--borderStrong); }
 .discovery-result span:first-child { min-width: 0; }
-.discovery-result strong { display: block; font: normal 22px/1.15 var(--font-heading); overflow-wrap: anywhere; }
+.discovery-result strong { display: block; font: 700 22px/1.15 var(--font-body); overflow-wrap: anywhere; }
 .discovery-result small { display: block; font: normal 14px/1.4 var(--font-body); color: var(--muted); margin-top: 3px; }
 .discovery-result > span:last-child { color: var(--muted); font-size: 18px; }
 .discovery-tip, .discovery-empty { padding: 12px; color: var(--muted); font-size: 16px; margin: 0; }
@@ -43,3 +43,4 @@ button.discovery-trigger { font: inherit; cursor: pointer; }
   .discovery-result strong { font-size: 20px; }
   .discovery-results { padding: 8px; }
 }
+
