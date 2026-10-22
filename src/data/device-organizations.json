@@ -1737,5 +1737,76 @@
     "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10592461/",
     "note": "Primary grouping follows the manufacturer or named development program in the cited device identity; it does not imply sole ownership.",
     "relatedOrganizations": []
+  },
+  "210-cortec-brain-interchange-closed-loop-bci": {
+    "primaryOrganization": "09-cortec-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | CorTec GmbH, Freiburg im Breisgau, Germany; company program site brain-interchange.com [1] |",
+      "| Origin | Commercial clinical-stage device; two FDA Breakthrough Device Designations, IDE US trial [1] |"
+    ],
+    "source": "https://brain-interchange.com/",
+    "note": "CorTec's own implant platform; first-in-human stroke rehabilitation use reported by BioWorld (Jul 2025) and UW Herr lab (Apr 2026).",
+    "relatedOrganizations": []
+  },
+  "211-ability-neurotech-fully-implantable-communication-bci": {
+    "primaryOrganization": "88-ability-neurotech-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | ABILITY Neurotech, Geneva, Switzerland; company study page [1] |",
+      "| Origin | Company-developed fully implantable communication BCI, INTRECOM clinical study [1] |"
+    ],
+    "source": "https://abilityneuro.com/clinical-trial/",
+    "note": "Company's own implant; first-in-human testing reported by trade press only, company page confirms recruiting.",
+    "relatedOrganizations": [
+      {
+        "slug": "79-umc-utrecht-ramsey-group",
+        "role": "clinical study site"
+      }
+    ]
+  },
+  "212-bridge-neurotech-fusi-noninvasive-bci": {
+    "primaryOrganization": "89-bridge-neurotech-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Developer | Bridge Neurotech, Redwood City, CA; founder's letter [1] |",
+      "| Origin | Company R&D system licensing Butterfly Network Ultrasound-on-Chip [2] |"
+    ],
+    "source": "https://www.bridgeneurotech.com/letter",
+    "note": "Company's own system under development; Butterfly is a technology licensor, not the device developer.",
+    "relatedOrganizations": []
+  },
+  "213-neuronexus-silicon-probe-array-families": {
+    "primaryOrganization": "25-neuronexus-technologies-company-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Manufacturer | NeuroNexus Technologies, Ann Arbor, MI; company product catalog [1] |",
+      "| Origin | Commercial research-tool product families [1] |"
+    ],
+    "source": "https://www.neuronexus.com/products/",
+    "note": "Product families entry (silicon shank arrays, X-Series probes); NeuroNexus is the manufacturer of record on its catalog.",
+    "relatedOrganizations": []
+  },
+  "214-tum-256-microelectrode-custom-bci-implant": {
+    "primaryOrganization": "15-technical-university-of-munich-bci-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Developer | Technical University of Munich (TUM) University Hospital team [1] |",
+      "| Origin | Custom research implant; reported by NeuroNews International [1] |"
+    ],
+    "source": "https://neuronewsinternational.com/researchers-complete-europes-first-bci-implantation-in-quadriplegia-patient/",
+    "note": "Single trade-press source; custom device developed and implanted by the TUM team.",
+    "relatedOrganizations": []
+  },
+  "215-upenn-cullen-living-electrodes-axonal-tracts": {
+    "primaryOrganization": "18-upenn-cullenlab-neuroengineering-lab-brief",
+    "status": "assigned",
+    "identityEvidence": [
+      "| Developer | Cullen Lab, University of Pennsylvania; Serruya et al. 2021 [1] |",
+      "| Origin | Academic research construct [1] |"
+    ],
+    "source": "https://pubmed.ncbi.nlm.nih.gov/34045935/",
+    "note": "Cullen Lab's biohybrid construct; Penn ecosystem brief covers the lab.",
+    "relatedOrganizations": []
   }
 }
