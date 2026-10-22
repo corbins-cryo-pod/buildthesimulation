@@ -223,9 +223,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
     return [{ label: "Any", value: "" }, ...[...set.entries()].sort((a, b) => a[1].localeCompare(b[1])).map(([value, label]) => ({ label, value }))];
   }, [props.entries]);
 
-  const grouped = useMemo(() => groupDeviceEntries(filtered).filter(card =>
-    getPicturedEntry(card.entries, card.representative)
-  ), [filtered]);
+  const grouped = useMemo(() => groupDeviceEntries(filtered), [filtered]);
   const visibleEntries = useMemo(() => grouped.flatMap(card => card.entries), [grouped]);
 
   const browseGroups = useMemo(() => groupDeviceCardsForBrowsing(grouped), [grouped]);
@@ -337,7 +335,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
               const pictured = getPicturedEntry(entries, e);
               return (
               <article key={family?.id ?? e.slug} class={`item familyCard ${pictured ? 'has-photo' : ''}`}>
-                {pictured && <figure class="catalog-photo">
+                {pictured ? <figure class="catalog-photo">
                   <a class="catalog-photo-image" href={`/devices/${pictured.slug}/`} aria-label={`View images and specifications of ${pictured.title}`}>
                     <img src={pictured.photo.thumbnail} srcSet={pictured.photo.width > pictured.photo.thumbnailWidth ? `${pictured.photo.thumbnail} ${pictured.photo.thumbnailWidth}w, ${pictured.photo.src} ${pictured.photo.width}w` : undefined} sizes="(max-width: 900px) calc(100vw - 84px), 360px" width={pictured.photo.width} height={pictured.photo.height} loading="lazy" decoding="async" alt={pictured.photo.alt} />
                     <span class="photo-hover" aria-hidden="true">View the interface <span>→</span></span>
@@ -348,7 +346,7 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
                   </figcaption>
                   <p class="catalog-photo-caption">{pictured.photo.caption}</p>
                   {pictured.slug !== e.slug && <p class="pictured-version">Pictured: <a href={`/devices/${pictured.slug}/`}>{pictured.title}</a>. Other family versions differ.</p>}
-                </figure>}
+                </figure> : <figure class="catalog-photo catalog-photo-unavailable" aria-label="No verified device photograph available"><div class="catalog-photo-placeholder"><span>DEVICE IMAGE</span><strong>Photograph pending verification</strong><span>{e.code ?? 'REFERENCE RECORD'}</span></div><figcaption><span>Image unavailable · device record retained</span></figcaption></figure>}
                 {family && <div class="familyLabel">{family.title} - {family.kind}</div>}
                 <a class="primaryEntry" href={`/devices/${e.slug}/`}>
                   <h3 class="itemTitle">{e.title}</h3>
@@ -405,6 +403,9 @@ export default function DevicesDirectory(props: { entries: DeviceEntry[] }) {
         .device-directory .item{display:block;padding:18px;border-radius:0;border:1px solid var(--border);background:var(--panel);color:inherit;text-decoration:none;min-width:0}
         .device-directory .item:hover{border-color:var(--borderStrong);background:var(--panelHover)}
         .catalog-photo{margin:0 0 18px}
+        .catalog-photo-placeholder{height:235px;border:1px solid var(--border);background:var(--panelStrong);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:16px}
+        .catalog-photo-placeholder span{font-size:11px;letter-spacing:.12em;opacity:.6}
+        .catalog-photo-placeholder strong{font-size:16px;font-weight:400;opacity:.8}
         .catalog-photo-image{display:grid;position:relative;overflow:hidden;border-radius:0;background:#f5f4f0;color:#272922;text-decoration:none}
         .catalog-photo-image img{width:100%;height:235px;object-fit:scale-down;padding:16px;transition:transform .45s ease}
         .catalog-photo-image:hover img{transform:scale(1.04)}
