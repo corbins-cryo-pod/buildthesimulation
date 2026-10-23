@@ -1,0 +1,234 @@
+{
+  "schema": "rpni-design-numerical-verification",
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-23T15:11:12.925Z",
+  "engine": {
+    "version": "1.0.0",
+    "source": "src/lib/rpni-design/model.mjs",
+    "sha256": "98ce671c27a1076d4d258c29ef6979609a3bf2173f11b7d0f20ce08b3f0b73f2",
+    "dependencies": [
+      {
+        "path": "src/lib/rpni-design/export.mjs",
+        "role": "Experiment schema, CSV and provenance export",
+        "sha256": "d48d97d447d3acc27a020f0df4cae4c8a29daf7be525c269aa6af6645d5420a9"
+      },
+      {
+        "path": "src/lib/rpni-design/evidence.mjs",
+        "role": "Evidence ledger and exported claim provenance",
+        "sha256": "a460cd4f8ab2d3e79f23c6693be3717b6689cd9f59d4f3fcdb602fe73c4df686"
+      }
+    ]
+  },
+  "environment": {
+    "node": "v24.19.0",
+    "platform": "linux",
+    "architecture": "x64"
+  },
+  "tests": {
+    "count": 48,
+    "passed": 48,
+    "failed": 0,
+    "files": [
+      {
+        "path": "tests/rpni-design.mjs",
+        "sha256": "99f077de917628b8cc56e807738b5f449873c45e7ddba06877a68f2f59afa06e",
+        "count": 40,
+        "passed": 40,
+        "failed": 0,
+        "command": "node --test-reporter=tap tests/rpni-design.mjs"
+      },
+      {
+        "path": "tests/rpni-design-export.mjs",
+        "sha256": "26b3e8677d44718e1e1bc94d8cca875c108b97cde6577c99d70c4e4d1c5f5131",
+        "count": 8,
+        "passed": 8,
+        "failed": 0,
+        "command": "node --test-reporter=tap tests/rpni-design-export.mjs"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "id": "isotropic-si",
+      "label": "Point solution versus independent isotropic SI calculation: absolute error",
+      "measured": 2.842170943040401e-14,
+      "tolerance": 1e-10,
+      "unit": "µV",
+      "pass": true
+    },
+    {
+      "id": "anisotropy-axis",
+      "label": "Anisotropic axis ratio versus √(σ∥/σ⊥): absolute error",
+      "measured": 0,
+      "tolerance": 1e-12,
+      "unit": "",
+      "pass": true
+    },
+    {
+      "id": "disk-integral",
+      "label": "Disk average versus closed-form on-axis integral: absolute error",
+      "measured": 3.410605131648481e-13,
+      "tolerance": 1e-10,
+      "unit": "µV",
+      "pass": true
+    },
+    {
+      "id": "linear-energy",
+      "label": "Triangular waveform energy versus exact 2/3 ms integral: absolute error",
+      "measured": 0,
+      "tolerance": 1e-16,
+      "unit": "µV²·s",
+      "pass": true
+    },
+    {
+      "id": "net-source-current",
+      "label": "Largest net instantaneous current residual across sampled tripole phases",
+      "measured": 0,
+      "tolerance": 1e-14,
+      "unit": "µA",
+      "pass": true
+    },
+    {
+      "id": "slab-conservation",
+      "label": "Two-face inward flux minus integrated first-order consumption: absolute error",
+      "measured": 1.734723475976807e-18,
+      "tolerance": 1e-14,
+      "unit": "normalized concentration·mm/s",
+      "pass": true
+    },
+    {
+      "id": "zero-source",
+      "label": "Largest clean voltage in a zero-source/noise-only experiment",
+      "measured": 0,
+      "tolerance": 0,
+      "unit": "µV",
+      "pass": true
+    }
+  ],
+  "convergence": [
+    {
+      "parameter": "kernelOversampling",
+      "coarse": 4,
+      "fine": 8,
+      "channel": "ch0",
+      "metric": "Expected clean RMS at the default benchmark",
+      "unit": "µV",
+      "coarseValue": 5.180593937981942,
+      "fineValue": 5.184845320784153,
+      "absoluteDifference": 0.004251382802211268,
+      "relativeDifference": 0.0008199632851473939,
+      "tolerance": 0.002,
+      "pass": true
+    },
+    {
+      "parameter": "kernelOversampling",
+      "coarse": 4,
+      "fine": 8,
+      "channel": "ch1",
+      "metric": "Expected clean RMS at the default benchmark",
+      "unit": "µV",
+      "coarseValue": 14.021849017327721,
+      "fineValue": 14.039064758557398,
+      "absoluteDifference": 0.01721574122967695,
+      "relativeDifference": 0.0012262740806280015,
+      "tolerance": 0.002,
+      "pass": true
+    },
+    {
+      "parameter": "contactOrder",
+      "coarse": 3,
+      "fine": 6,
+      "channel": "ch0",
+      "metric": "Expected clean RMS at the default benchmark",
+      "unit": "µV",
+      "coarseValue": 5.180593937981942,
+      "fineValue": 5.180593941531103,
+      "absoluteDifference": 3.5491609651217004e-9,
+      "relativeDifference": 6.850876569709999e-10,
+      "tolerance": 0.001,
+      "pass": true
+    },
+    {
+      "parameter": "contactOrder",
+      "coarse": 3,
+      "fine": 6,
+      "channel": "ch1",
+      "metric": "Expected clean RMS at the default benchmark",
+      "unit": "µV",
+      "coarseValue": 14.021849017327721,
+      "fineValue": 14.021861335907406,
+      "absoluteDifference": 0.000012318579685199893,
+      "relativeDifference": 8.785267084088385e-7,
+      "tolerance": 0.001,
+      "pass": true
+    }
+  ],
+  "benchmarks": {
+    "defaultRuntimeMs": 385.56744099999923,
+    "defaultConfiguration": {
+      "moduleCount": 2,
+      "graftLengthMm": 30,
+      "graftWidthMm": 15,
+      "graftThicknessMm": 5,
+      "moduleGapMm": 10,
+      "nerveDiameterMm": 2,
+      "insertionDepthMm": 5,
+      "motorUnitsPerModule": 24,
+      "routingFidelity": 1,
+      "territoryRadiusMm": 1.2,
+      "electrodeSpacingMm": 8,
+      "electrodeOffsetMm": 2,
+      "electrodeLateralMm": 0,
+      "electrodeDepthMm": 1,
+      "contactRadiusMm": 0.4,
+      "contactOrder": 3,
+      "sigmaLongitudinalSm": 0.5,
+      "sigmaTransverseSm": 0.1,
+      "sourceAmplitudeUa": 1,
+      "sourceRadiusMm": 0.15,
+      "poleSpacingMm": 1,
+      "conductionVelocityMps": 3,
+      "regenerationLagDays": 7,
+      "axonSpeedMmDay": 1,
+      "nmjMaturationDays": 21,
+      "sourceAvailability": 1,
+      "durationDays": 180,
+      "observationDay": 120,
+      "targetModule": 0,
+      "targetDrive": 0.7,
+      "otherDrive": 0.7,
+      "minFiringHz": 8,
+      "maxFiringHz": 24,
+      "noiseRmsUv": 5,
+      "sampleRateHz": 8000,
+      "kernelOversampling": 4,
+      "traceDurationMs": 400,
+      "oxygenDiffusivityMm2S": 0.002,
+      "oxygenConsumptionPerS": 0.01,
+      "seed": 2048
+    },
+    "defaultExpectedRmsUv": [
+      7.199899551400369,
+      14.886646696443574
+    ],
+    "defaultExpectedCleanRmsUv": [
+      5.180593937981942,
+      14.021849017327721
+    ],
+    "defaultRecordingRmsUv": [
+      7.3849658600421835,
+      13.89052754594968
+    ],
+    "defaultRecordingCleanRmsUv": [
+      5.54854802332629,
+      13.125700837078725
+    ],
+    "defaultOxygenCenterRatio": 0.0074686821920171564,
+    "defaultOxygenMeanRatio": 0.17888044890697827,
+    "expectedRmsInterpretation": "Stationary centered independent-Poisson equivalent-source variance; total expected RMS includes the imposed noise variance.",
+    "recordingRmsInterpretation": "Finite seeded, mean-removed waveform realization with independent imposed noise; it is not expected to equal ensemble RMS exactly.",
+    "timingInterpretation": "One local Node run, not a hardware-independent or browser performance guarantee."
+  },
+  "passed": true,
+  "interpretation": "Verifies stated analytical limits, implementation invariants, selected default refinements, and strict experiment schema behavior. This does not validate biological remodeling, graft survival, absolute RPNI voltage, clinical SNR, electrode safety, or a design optimum. Refinement tolerances apply only to the retained benchmark; arbitrary geometries can require additional refinement."
+}
