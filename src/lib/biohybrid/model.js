@@ -2,6 +2,9 @@ import {createGeometry} from './geometry.js';
 import {pointTransferUvPerNa,lineTransferUvPerNa,segmentDistance} from '../cortex/volume-conductor.js';
 export {createGeometry};
 export const MODEL_VERSION='biohybrid-hh-cable/1.0.0';
+// Observation-only extension. The cable dynamics and total-field summation
+// retain the independently verified 1.0.0 numerical convention.
+export const OBSERVATION_VERSION='biohybrid-source-observations/1.0.0';
 export const DEFAULT_SETTINGS=Object.freeze({
   graftCount:2,hostCount:3,connectedHosts:3,axonLengthUm:1000,axonDiameterUm:2,segmentLengthUm:25,scaffoldRadiusUm:90,
   axialResistivityOhmCm:100,temperatureC:6.3,sodiumScale:1,potassiumScale:1,conductivitySPerM:.3,
@@ -153,7 +156,7 @@ export function runSimulation(input={}, {onProgress}={}){
   const timeMs=new Float64Array(frameCount),voltageMv=new Float32Array(frameCount*n),stimulusUa=new Float64Array(frameCount);
   const traces=geometry.neurons.map(neuron=>({id:neuron.id,label:`${neuron.label} soma`,unit:'mV',nodeIndex:neuron.somaIndex,values:new Float64Array(frameCount)}));
   for(const neuron of geometry.neurons.filter(n=>n.role==='graft'))traces.push({id:`${neuron.id}:terminal`,label:`${neuron.label} tract tip`,unit:'mV',nodeIndex:neuron.terminalIndex,values:new Float64Array(frameCount)});
-  const recordings=fields.lead.map(l=>({id:l.id,label:l.id.replace('rec-','Recording '),neuralUv:new Float64Array(frameCount),artifactUv:new Float64Array(frameCount),totalUv:new Float64Array(frameCount)}));
+  const recordings=fields.lead.map(l=>({id:l.id,label:l.id.replace('rec-','Recording '),neuralUv:new Float64Array(frameCount),graftUv:new Float64Array(frameCount),hostUv:new Float64Array(frameCount),artifactUv:new Float64Array(frameCount),totalUv:new Float64Array(frameCount)}));
   const gSyn=new Float64Array(n),ve=new Float64Array(n),spikes=[],synapticEvents=[];
   const syn=geometry.synapses.map(x=>({...x,a:0,b:0,pending:[]}));
   const peakTime=s.synapticRiseMs*s.synapticDecayMs/(s.synapticDecayMs-s.synapticRiseMs)*Math.log(s.synapticDecayMs/s.synapticRiseMs);
@@ -165,8 +168,13 @@ export function runSimulation(input={}, {onProgress}={}){
     timeMs[frame]=t;voltageMv.set(c.voltageMv,frame*n);stimulusUa[frame]=current;
     for(const tr of traces)tr.values[frame]=c.voltageMv[tr.nodeIndex];
     for(let k=0;k<recordings.length;k++){
-      const tr=recordings[k],lead=fields.lead[k];let neural=0;
-      for(let i=0;i<n;i++)neural+=lead.coefficients[i]*c.membraneCurrentNa[i];
+      const tr=recordings[k],lead=fields.lead[k];let neural=0,graft=0,host=0;
+      for(let i=0;i<n;i++){
+        const contribution=lead.coefficients[i]*c.membraneCurrentNa[i];
+        neural+=contribution;
+        if(geometry.nodes[i].role==='graft')graft+=contribution;else host+=contribution;
+      }
+      tr.graftUv[frame]=graft;tr.hostUv[frame]=host;
       tr.neuralUv[frame]=neural;tr.artifactUv[frame]=lead.artifactUvPerUa*current;tr.totalUv[frame]=tr.neuralUv[frame]+tr.artifactUv[frame];
     }frame++;
   };
@@ -219,5 +227,5 @@ export function runSimulation(input={}, {onProgress}={}){
     solver:'Backward Euler tree solve; voltage first, Rush–Larsen HH gates second; exact sampled pulse charge; double-exponential event synapses',
     calibration:'Generic canonical HH benchmark; synthetic geometry; not calibrated to mammalian cells, graft integration, or clinical outcomes'};
   onProgress?.(1);
-  return {modelVersion:MODEL_VERSION,settings:s,geometry,timeMs,voltageMv,traces,recordings,stimulusUa,spikes,synapticEvents,metrics,diagnostics};
+  return {modelVersion:MODEL_VERSION,observationVersion:OBSERVATION_VERSION,settings:s,geometry,timeMs,voltageMv,traces,recordings,stimulusUa,spikes,synapticEvents,metrics,diagnostics};
 }
