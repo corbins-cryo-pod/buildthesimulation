@@ -1,0 +1,652 @@
+{
+  "schemaVersion": 1,
+  "title": "Peripheral nerve regeneration — numerical verification",
+  "modelVersion": "1.0.1",
+  "generatedAtUtc": "2026-10-23T03:16:12.800Z",
+  "startedAtUtc": "2026-10-23T03:16:03.920Z",
+  "engine": {
+    "path": "src/lib/nerve-regeneration/model.mjs",
+    "sha256": "cd5fbd17d1ddcfc1db0c459785fdc1d00d2691fb811b3681d8bb9e361a6de35f"
+  },
+  "testFile": {
+    "path": "tests/nerve-regeneration.mjs",
+    "sha256": "c172c1f05a497c7eed2072064fd9c762c1c258b38f3f464f85d64df3c4870fb9"
+  },
+  "script": {
+    "path": "scripts/verify-nerve-regeneration.mjs",
+    "sha256": "1cb51c9c464fa470d5440fd95b6b145f1a5b730d42ea95b156237dc27c375877"
+  },
+  "environment": {
+    "node": "v24.19.0",
+    "platform": "linux",
+    "architecture": "x64"
+  },
+  "command": "node scripts/verify-nerve-regeneration.mjs --write",
+  "claim": "Software and numerical verification only. No biological calibration, clinical validation, treatment-effect validation, or patient prediction is established.",
+  "tests": {
+    "runner": "node:test run({files:[tests/nerve-regeneration.mjs],isolation:none})",
+    "standaloneCommand": "node tests/nerve-regeneration.mjs",
+    "exitCode": 0,
+    "count": 36,
+    "passed": true,
+    "cases": [
+      {
+        "name": "input normalization rejects nonfinite values and unsafe enum choices",
+        "passed": true,
+        "durationMs": 1.494352
+      },
+      {
+        "name": "crush uses preserved zero-gap tracks and has no repair-delay clock",
+        "passed": true,
+        "durationMs": 0.190637
+      },
+      {
+        "name": "direct repair represents apposition rather than silently spanning an open gap",
+        "passed": true,
+        "durationMs": 0.11977
+      },
+      {
+        "name": "species label alone cannot turn rodent assumptions into a human calibration",
+        "passed": true,
+        "durationMs": 159.300672
+      },
+      {
+        "name": "same seed and configuration reproduce the entire model result exactly",
+        "passed": true,
+        "durationMs": 101.651536
+      },
+      {
+        "name": "different seeds generate distinct representative cohorts",
+        "passed": true,
+        "durationMs": 113.74729
+      },
+      {
+        "name": "ideal constant-speed limit matches exact distance, distal-entry and arrival times",
+        "passed": true,
+        "durationMs": 15.115995
+      },
+      {
+        "name": "zero elongation creates no distal entry, no target arrival and no new myelin",
+        "passed": true,
+        "durationMs": 44.818897
+      },
+      {
+        "name": "zero supportive state prevents advance in the reduced-order growth equation",
+        "passed": true,
+        "durationMs": 47.312835
+      },
+      {
+        "name": "event counts are integer and inclusive at exact events between daily samples",
+        "passed": true,
+        "durationMs": 17.049328
+      },
+      {
+        "name": "all trajectories are finite, monotone in time and longitudinal distance, and bounded",
+        "passed": true,
+        "durationMs": 61.527542
+      },
+      {
+        "name": "nonuniform mesh resolves a 1 mm bridge with a 500 mm distal pathway",
+        "passed": true,
+        "durationMs": 1.087138
+      },
+      {
+        "name": "reaction states conserve disconnected axon material across fragmentation and clearance",
+        "passed": true,
+        "durationMs": 20.054636
+      },
+      {
+        "name": "degeneration produces debris before clearance instead of starting with an empty distal stump",
+        "passed": true,
+        "durationMs": 11.776393
+      },
+      {
+        "name": "unrepaired transection never credits local sprouts as distal reinnervation",
+        "passed": true,
+        "durationMs": 41.577584
+      },
+      {
+        "name": "repair beyond the observation horizon has no bridge support or axon advance",
+        "passed": true,
+        "durationMs": 34.589575
+      },
+      {
+        "name": "delayed repair never credits growth or entry before the repair date",
+        "passed": true,
+        "durationMs": 46.23472
+      },
+      {
+        "name": "scheduled conduit repair cannot leak bridge support into earlier display times",
+        "passed": true,
+        "durationMs": 28.900133
+      },
+      {
+        "name": "unique parent-axon accounting is monotone and correctly nested",
+        "passed": true,
+        "durationMs": 55.459931
+      },
+      {
+        "name": "arbitrary-time statuses partition the representative cohort",
+        "passed": true,
+        "durationMs": 177.42388
+      },
+      {
+        "name": "timestep refinement converges without drawing a different random cohort",
+        "passed": true,
+        "durationMs": 264.848691
+      },
+      {
+        "name": "bridge mesh refinement converges for a long distal pathway",
+        "passed": true,
+        "durationMs": 182.82636
+      },
+      {
+        "name": "local myelin cannot appear ahead of the growth cone or before its local maturation lag",
+        "passed": true,
+        "durationMs": 11.260756
+      },
+      {
+        "name": "myelin follows segment age, retaining the first arrival across terminal plateaus",
+        "passed": true,
+        "durationMs": 48.824022
+      },
+      {
+        "name": "remyelination parameters cannot retroactively change growth or routing",
+        "passed": true,
+        "durationMs": 125.845183
+      },
+      {
+        "name": "target receptivity remains separate from arrival and routing counts",
+        "passed": true,
+        "durationMs": 121.778861
+      },
+      {
+        "name": "a farther target cannot arrive earlier for the same axon in an ideal pathway",
+        "passed": true,
+        "durationMs": 23.307186
+      },
+      {
+        "name": "perfect alignment preserves original fascicle identity",
+        "passed": true,
+        "durationMs": 55.013788
+      },
+      {
+        "name": "longer support persistence cannot reduce axial advance for the same cohort",
+        "passed": true,
+        "durationMs": 150.573079
+      },
+      {
+        "name": "ensemble bands are reproducible, ordered and explicitly stochastic rather than clinical intervals",
+        "passed": true,
+        "durationMs": 233.375301
+      },
+      {
+        "name": "sensitivity uses common seeds, validates parameters and reports its limited interpretation",
+        "passed": true,
+        "durationMs": 131.52799
+      },
+      {
+        "name": "every preset produces finite bounded outputs at its intended geometry",
+        "passed": true,
+        "durationMs": 550.513625
+      },
+      {
+        "name": "sampling clamps outside the observation period and preserves exact endpoint values",
+        "passed": true,
+        "durationMs": 51.239071
+      },
+      {
+        "name": "adaptive display-path reduction preserves solver events and stays close to dense trajectories",
+        "passed": true,
+        "durationMs": 255.209288
+      },
+      {
+        "name": "a newly inserted structured bridge has a post-repair support clock distinct from the old distal stump",
+        "passed": true,
+        "durationMs": 35.671385
+      },
+      {
+        "name": "restored source preserves the retained v1.0.0 cohort and quantifies numerical differences",
+        "passed": true,
+        "durationMs": 121.906333
+      }
+    ]
+  },
+  "acceptance": {
+    "scope": "Numerical acceptance for the explicitly listed cases only; not a biological error estimate or a guarantee across the complete parameter space.",
+    "analytic": {
+      "positionMm": 1e-9,
+      "eventDays": 1e-9
+    },
+    "temporal": {
+      "maximumFrontDifferenceMm": 0.05,
+      "maximumSharedArrivalDifferenceDays": 0.1
+    },
+    "spatial": {
+      "minimumAcceptedFieldNodes": 49,
+      "maximumFrontDifferenceMm": 0.1,
+      "maximumSharedArrivalDifferenceDays": 0.25
+    }
+  },
+  "reference": {
+    "name": "Ideal constant-speed reference",
+    "config": {
+      "injury": "transection",
+      "repair": "conduit",
+      "species": "human-exploratory",
+      "gapMm": 7,
+      "distalMm": 63,
+      "radiusMm": 1,
+      "delayDays": 0,
+      "durationDays": 60,
+      "dtDays": 0.13,
+      "axonCount": 32,
+      "seed": 2048,
+      "elongationMmDay": 1.7,
+      "growthLagDays": 3.1,
+      "alignment": 0.8,
+      "schwannSupport": 0.85,
+      "vascularSupport": 0.85,
+      "scar": 0.2,
+      "supportHalfLifeDays": 120,
+      "intrinsicHalfLifeDays": 180,
+      "targetHalfLifeDays": 240,
+      "remyelinationDays": 35,
+      "remyelinationLagDays": 7,
+      "motorFraction": 0.5,
+      "fieldNodes": 49,
+      "referenceMode": true
+    },
+    "expression": "x(t) = min(gap + distal, v × max(0, t − lag))",
+    "expectedEntryDay": 7.21764705882353,
+    "expectedArrivalDay": 44.2764705882353,
+    "maximumPositionErrorMm": 2.7000623958883807e-13,
+    "maximumEntryErrorDays": 2.6645352591003757e-15,
+    "maximumArrivalErrorDays": 1.5631940186722204e-13,
+    "runtimeMs": 40.254309999999805,
+    "passed": true
+  },
+  "timestep": {
+    "case": "Default 8 mm conduit / 70 mm distal path / 180 days / 128 parent axons",
+    "referenceDtDays": 0.05,
+    "rows": [
+      {
+        "dtDays": 0.25,
+        "runtimeMs": 126.713436,
+        "distalEntry": 128,
+        "arrived": 96,
+        "fascicleMatched": 77,
+        "meanFrontMm": 76.63183299081474,
+        "meanEntryMyelin": 0.9868633491721035,
+        "conductionProxy": 0.3384731623785362,
+        "maximumFrontErrorMm": 0.00303655,
+        "meanFrontAbsoluteErrorMm": 0.00050303,
+        "maximumSharedEntryErrorDays": 0.00350203,
+        "maximumSharedArrivalErrorDays": 0.01009056,
+        "pairedEntries": 128,
+        "pairedArrivals": 96,
+        "arrivalCountDifference": 0,
+        "meanMyelinDifference": -6.4e-7
+      },
+      {
+        "dtDays": 0.1,
+        "runtimeMs": 257.77038600000014,
+        "distalEntry": 128,
+        "arrived": 96,
+        "fascicleMatched": 77,
+        "meanFrontMm": 76.63227460498618,
+        "meanEntryMyelin": 0.9868639111748976,
+        "conductionProxy": 0.33850555364099544,
+        "maximumFrontErrorMm": 0.00039081,
+        "meanFrontAbsoluteErrorMm": 0.00006141,
+        "maximumSharedEntryErrorDays": 0.00044252,
+        "maximumSharedArrivalErrorDays": 0.00125796,
+        "pairedEntries": 128,
+        "pairedArrivals": 96,
+        "arrivalCountDifference": 0,
+        "meanMyelinDifference": -8e-8
+      },
+      {
+        "dtDays": 0.05,
+        "runtimeMs": 502.8171319999997,
+        "distalEntry": 128,
+        "arrived": 96,
+        "fascicleMatched": 77,
+        "meanFrontMm": 76.6323360199271,
+        "meanEntryMyelin": 0.9868639938522344,
+        "conductionProxy": 0.3385100892186001,
+        "maximumFrontErrorMm": 0,
+        "meanFrontAbsoluteErrorMm": 0,
+        "maximumSharedEntryErrorDays": 0,
+        "maximumSharedArrivalErrorDays": 0,
+        "pairedEntries": 128,
+        "pairedArrivals": 96,
+        "arrivalCountDifference": 0,
+        "meanMyelinDifference": 0
+      }
+    ],
+    "interpretation": "Differences are numerical sensitivity relative to the finest listed step, not error relative to biology. Integer arrival counts may change when an event lies near the observation horizon.",
+    "passed": true
+  },
+  "spatial": [
+    {
+      "case": "Default bridge and distal distance",
+      "config": {
+        "injury": "transection",
+        "repair": "conduit",
+        "species": "human-exploratory",
+        "gapMm": 8,
+        "distalMm": 70,
+        "radiusMm": 1,
+        "delayDays": 0,
+        "durationDays": 180,
+        "dtDays": 0.25,
+        "axonCount": 128,
+        "seed": 2048,
+        "elongationMmDay": 1,
+        "growthLagDays": 4,
+        "alignment": 0.8,
+        "schwannSupport": 0.85,
+        "vascularSupport": 0.85,
+        "scar": 0.2,
+        "supportHalfLifeDays": 120,
+        "intrinsicHalfLifeDays": 180,
+        "targetHalfLifeDays": 240,
+        "remyelinationDays": 35,
+        "remyelinationLagDays": 7,
+        "motorFraction": 0.5,
+        "fieldNodes": 49,
+        "referenceMode": false
+      },
+      "referenceFieldNodes": 129,
+      "rows": [
+        {
+          "fieldNodes": 25,
+          "bridgeIntervals": 11,
+          "firstDistalIntervalMm": 0.38804801174409675,
+          "runtimeMs": 93.36052899999959,
+          "distalEntry": 128,
+          "arrived": 96,
+          "fascicleMatched": 77,
+          "meanFrontMm": 76.64015284249547,
+          "meanEntryMyelin": 0.9868883790545652,
+          "conductionProxy": 0.33929380377049384,
+          "maximumFrontErrorMm": 0.04432819,
+          "meanFrontAbsoluteErrorMm": 0.01013608,
+          "maximumSharedEntryErrorDays": 0.09683072,
+          "maximumSharedArrivalErrorDays": 0.1648401,
+          "pairedEntries": 128,
+          "pairedArrivals": 96,
+          "arrivalCountDifference": 0,
+          "meanMyelinDifference": 0.00002752
+        },
+        {
+          "fieldNodes": 49,
+          "bridgeIntervals": 22,
+          "firstDistalIntervalMm": 0.17815449400496597,
+          "runtimeMs": 133.4209519999995,
+          "distalEntry": 128,
+          "arrived": 96,
+          "fascicleMatched": 77,
+          "meanFrontMm": 76.63183299081474,
+          "meanEntryMyelin": 0.9868633491721035,
+          "conductionProxy": 0.3384731623785362,
+          "maximumFrontErrorMm": 0.00857133,
+          "meanFrontAbsoluteErrorMm": 0.00181623,
+          "maximumSharedEntryErrorDays": 0.0147097,
+          "maximumSharedArrivalErrorDays": 0.02497944,
+          "pairedEntries": 128,
+          "pairedArrivals": 96,
+          "arrivalCountDifference": 0,
+          "meanMyelinDifference": 0.00000249
+        },
+        {
+          "fieldNodes": 97,
+          "bridgeIntervals": 43,
+          "firstDistalIntervalMm": 0.08375072946772377,
+          "runtimeMs": 190.84745500000008,
+          "distalEntry": 128,
+          "arrived": 96,
+          "fascicleMatched": 77,
+          "meanFrontMm": 76.6311032166596,
+          "meanEntryMyelin": 0.9868634641205271,
+          "conductionProxy": 0.33847512828318616,
+          "maximumFrontErrorMm": 0.00585632,
+          "meanFrontAbsoluteErrorMm": 0.00108645,
+          "maximumSharedEntryErrorDays": 0.01201209,
+          "maximumSharedArrivalErrorDays": 0.02104584,
+          "pairedEntries": 128,
+          "pairedArrivals": 96,
+          "arrivalCountDifference": 0,
+          "meanMyelinDifference": 0.0000026
+        },
+        {
+          "fieldNodes": 129,
+          "bridgeIntervals": 58,
+          "firstDistalIntervalMm": 0.06278776927376306,
+          "runtimeMs": 209.39259100000072,
+          "distalEntry": 128,
+          "arrived": 96,
+          "fascicleMatched": 77,
+          "meanFrontMm": 76.63001676262422,
+          "meanEntryMyelin": 0.9868608593726631,
+          "conductionProxy": 0.3383845646835216,
+          "maximumFrontErrorMm": 0,
+          "meanFrontAbsoluteErrorMm": 0,
+          "maximumSharedEntryErrorDays": 0,
+          "maximumSharedArrivalErrorDays": 0,
+          "pairedEntries": 128,
+          "pairedArrivals": 96,
+          "arrivalCountDifference": 0,
+          "meanMyelinDifference": 0
+        }
+      ],
+      "interpretation": "The field grid resolves the bridge separately and concentrates distal nodes near the stump. Convergence of interpolation for a local reaction model, not a PDE mesh or histological validation.",
+      "passed": true
+    },
+    {
+      "case": "Short bridge / long distal path",
+      "config": {
+        "injury": "transection",
+        "repair": "conduit",
+        "species": "human-exploratory",
+        "gapMm": 5,
+        "distalMm": 500,
+        "radiusMm": 1,
+        "delayDays": 0,
+        "durationDays": 180,
+        "dtDays": 0.25,
+        "axonCount": 128,
+        "seed": 2048,
+        "elongationMmDay": 1,
+        "growthLagDays": 4,
+        "alignment": 0.8,
+        "schwannSupport": 0.85,
+        "vascularSupport": 0.85,
+        "scar": 0.2,
+        "supportHalfLifeDays": 120,
+        "intrinsicHalfLifeDays": 180,
+        "targetHalfLifeDays": 240,
+        "remyelinationDays": 35,
+        "remyelinationLagDays": 7,
+        "motorFraction": 0.5,
+        "fieldNodes": 49,
+        "referenceMode": false
+      },
+      "referenceFieldNodes": 129,
+      "rows": [
+        {
+          "fieldNodes": 25,
+          "bridgeIntervals": 11,
+          "firstDistalIntervalMm": 0.6131688418222598,
+          "runtimeMs": 95.51224099999945,
+          "distalEntry": 128,
+          "arrived": 0,
+          "fascicleMatched": 0,
+          "meanFrontMm": 91.84558744681875,
+          "meanEntryMyelin": 0.9888478199798248,
+          "conductionProxy": 0,
+          "maximumFrontErrorMm": 0.04677734,
+          "meanFrontAbsoluteErrorMm": 0.02709443,
+          "maximumSharedEntryErrorDays": 0.04216469,
+          "maximumSharedArrivalErrorDays": null,
+          "pairedEntries": 128,
+          "pairedArrivals": 0,
+          "arrivalCountDifference": 0,
+          "meanMyelinDifference": 0.00001191
+        },
+        {
+          "fieldNodes": 49,
+          "bridgeIntervals": 22,
+          "firstDistalIntervalMm": 0.27010583882692973,
+          "runtimeMs": 135.67854399999942,
+          "distalEntry": 128,
+          "arrived": 0,
+          "fascicleMatched": 0,
+          "meanFrontMm": 91.82220947413525,
+          "meanEntryMyelin": 0.9888372714783428,
+          "conductionProxy": 0,
+          "maximumFrontErrorMm": 0.00720358,
+          "meanFrontAbsoluteErrorMm": 0.00381117,
+          "maximumSharedEntryErrorDays": 0.00865833,
+          "maximumSharedArrivalErrorDays": null,
+          "pairedEntries": 128,
+          "pairedArrivals": 0,
+          "arrivalCountDifference": 0,
+          "meanMyelinDifference": 0.00000136
+        },
+        {
+          "fieldNodes": 97,
+          "bridgeIntervals": 43,
+          "firstDistalIntervalMm": 0.12445048071944864,
+          "runtimeMs": 192.18663300000026,
+          "distalEntry": 128,
+          "arrived": 0,
+          "fascicleMatched": 0,
+          "meanFrontMm": 91.82112101839338,
+          "meanEntryMyelin": 0.9888369201091132,
+          "conductionProxy": 0,
+          "maximumFrontErrorMm": 0.00771945,
+          "meanFrontAbsoluteErrorMm": 0.002628,
+          "maximumSharedEntryErrorDays": 0.00747446,
+          "maximumSharedArrivalErrorDays": null,
+          "pairedEntries": 128,
+          "pairedArrivals": 0,
+          "arrivalCountDifference": 0,
+          "meanMyelinDifference": 0.00000101
+        },
+        {
+          "fieldNodes": 129,
+          "bridgeIntervals": 58,
+          "firstDistalIntervalMm": 0.09287152473735016,
+          "runtimeMs": 256.6194969999997,
+          "distalEntry": 128,
+          "arrived": 0,
+          "fascicleMatched": 0,
+          "meanFrontMm": 91.8184930140504,
+          "meanEntryMyelin": 0.9888359096632858,
+          "conductionProxy": 0,
+          "maximumFrontErrorMm": 0,
+          "meanFrontAbsoluteErrorMm": 0,
+          "maximumSharedEntryErrorDays": 0,
+          "maximumSharedArrivalErrorDays": null,
+          "pairedEntries": 128,
+          "pairedArrivals": 0,
+          "arrivalCountDifference": 0,
+          "meanMyelinDifference": 0
+        }
+      ],
+      "interpretation": "The field grid resolves the bridge separately and concentrates distal nodes near the stump. Convergence of interpolation for a local reaction model, not a PDE mesh or histological validation.",
+      "passed": true
+    }
+  ],
+  "restoration": {
+    "previousModelVersion": "1.0.0",
+    "previousEngineSha256": "97b501fd5310c31b4f676f15c5e64b98780c91e8f28478e9a8811741c56a56c5",
+    "sourceExportSha256": "f79ad73fa58226ccd997f69d8f8fa9e03a702fb79130641e0d0e489e08bd9cce",
+    "fixture": {
+      "path": "tests/fixtures/nerve-regeneration-v1.0.0-export.json",
+      "sha256": "cca07a789eef82dd19a47baa70906fc5f1368d5168347302f17ff37cd29433c0"
+    },
+    "comparison": {
+      "maximumFrontErrorMm": 0.00028438,
+      "meanFrontAbsoluteErrorMm": 0.00003863,
+      "maximumSharedEntryErrorDays": 0.00044173,
+      "maximumSharedArrivalErrorDays": 0.0009684,
+      "pairedEntries": 128,
+      "pairedArrivals": 96,
+      "arrivalCountDifference": 0,
+      "meanMyelinDifference": 7e-8
+    },
+    "maximumFieldDifference": 7.471800955727304e-14,
+    "conductionProxyDifference": 0.0000021071681114426255,
+    "identicalEndpointCounts": true,
+    "interpretation": "Source was reconstructed after transient workspace cleanup. This comparison uses a retained browser export from model1.0.0. Version1.0.1 has its own source hash and verification; numerical closeness does not establish byte-identical source or biological validity."
+  },
+  "benchmark": {
+    "config": {
+      "injury": "transection",
+      "repair": "conduit",
+      "species": "human-exploratory",
+      "gapMm": 8,
+      "distalMm": 500,
+      "radiusMm": 1,
+      "delayDays": 0,
+      "durationDays": 730,
+      "dtDays": 0.1,
+      "axonCount": 512,
+      "seed": 2048,
+      "elongationMmDay": 1,
+      "growthLagDays": 4,
+      "alignment": 0.8,
+      "schwannSupport": 0.85,
+      "vascularSupport": 0.85,
+      "scar": 0.2,
+      "supportHalfLifeDays": 120,
+      "intrinsicHalfLifeDays": 180,
+      "targetHalfLifeDays": 240,
+      "remyelinationDays": 35,
+      "remyelinationLagDays": 7,
+      "motorFraction": 0.5,
+      "fieldNodes": 49,
+      "referenceMode": false
+    },
+    "completed": true,
+    "solveMs": 2959.9613050000007,
+    "serializedBytes": 39356410,
+    "trajectoryPoints": 375611,
+    "maximumPointsPerAxon": 745,
+    "heapUsedBeforeBytes": 85891000,
+    "heapUsedAfterSerializationBytes": 251344000,
+    "peakRssBytes": 462573568,
+    "summary": {
+      "day": 730,
+      "distalEntry": 512,
+      "arrived": 0,
+      "correctlyRouted": 0,
+      "correctlyEntered": 411,
+      "maturing": 0,
+      "meanFrontMm": 143.9646274571044,
+      "p90FrontMm": 179.3971665184108,
+      "meanMyelin": 0.9999999980313302,
+      "conductionProxy": 0,
+      "debris": 5.787273323183086e-19,
+      "macrophage": 5.098256751779696e-18,
+      "schwann": 0.014934885567094845,
+      "vascular": 0.85,
+      "scar": 0.0032302275802147005,
+      "targetViability": 0.1324328867949119,
+      "support": 0.013222599141160123,
+      "active": 512,
+      "stalled": 0,
+      "lost": 0,
+      "waiting": 0
+    },
+    "interpretation": "One measured Node.js run in the verification process. Process memory includes the runtime, earlier checks, the result and JSON serialization; it is not isolated benchmark memory. Runtime is environment dependent and is not an iPhone/browser performance guarantee."
+  },
+  "build": {
+    "checked": false,
+    "interpretation": "No build-artifact inspection was requested. This report does not verify deployment."
+  },
+  "passed": true
+}

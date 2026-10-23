@@ -41,6 +41,7 @@ export default defineConfig({
     '/simulations/interface-designer/guide': '/devices/designer/guide/',
   },
   vite: {
+    server: { allowedHosts: ['terminal.local'] },
     // Prevent Vite from inlining built assets as data: URLs.
     // (Some browsers/extensions treat these strangely; we want a normal /_astro/*.js URL.)
     build: {
