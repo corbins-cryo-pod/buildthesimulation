@@ -36,7 +36,7 @@ Bridge Neurotech (Redwood City, founded 2026) is building a fully non-invasive B
 
 ## Notes
 
-- Founder Will Biederman previously co-founded Forest Neurotech, where he led development of a miniaturized fUSI device used to image the human brain (his own account) [1].
+- Founder Will Biederman previously co-founded Forest Neurotech - since renamed Arbor Neuroscience per the organization's own site (forestneurotech.org, verified 2026-10-23) - where he led development of a miniaturized fUSI device used to image the human brain (his own account) [1].
 
 ## Primary sources
 

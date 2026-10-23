@@ -3,7 +3,7 @@ title: "Bridge Neurotech (company brief)"
 order: 89
 pubDate: 2026-10-17
 updatedDate: 2026-10-17
-lastVerified: 2026-10-17
+lastVerified: 2026-10-23
 description: "Bridge Neurotech (Redwood City): non-invasive BCI startup using functional ultrasound imaging with AI decoding; emerged from stealth Oct 6, 2026 with $13.5M in funding and a Butterfly Network partnership."
 region: "American"
 kind: "Company"
@@ -30,7 +30,7 @@ Per the founder's letter and Butterfly Network's press release:
 
 ### Founder
 
-Will Biederman, PhD. In his own account in the letter: as a PhD student at Berkeley he developed the neural interface chip that Neuralink used for its first implants; he then spent almost a decade at Verily and Google, and co-founded Forest Neurotech, where he led development of a miniaturized functional ultrasound imaging device used to image the human brain.
+Will Biederman, PhD. In his own account in the letter: as a PhD student at Berkeley he developed the neural interface chip that Neuralink used for its first implants; he then spent almost a decade at Verily and Google, and co-founded Forest Neurotech, where he led development of a miniaturized functional ultrasound imaging device used to image the human brain. Forest Neurotech has since been renamed Arbor Neuroscience (the organization's own site, forestneurotech.org: "Arbor Neuroscience is the new name for Forest Neurotech", verified 2026-10-23).
 
 ### What to watch
 
