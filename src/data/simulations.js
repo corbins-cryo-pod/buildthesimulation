@@ -73,6 +73,11 @@ export const simulationGroups = [
     "title": "Anatomy & Pathways",
     "entries": [
       {
+        "href": "/simulations/nerve-regeneration/",
+        "title": "Peripheral Nerve Regeneration Laboratory",
+        "desc": "Follow seeded parent axons through degeneration, repair, distal growth and remyelination. Inspect anatomical trajectories, compare assumptions, run ensembles and consult the primary-source evidence."
+      },
+      {
         "href": "/simulations/finger-pathway-atlas/v4/",
         "title": "Finger Pathway Atlas V4",
         "desc": "V4: follow 78 connected sensory and motor routes through 306 individual cells in one intact anatomical model. Zoom from finger to cortex with adaptive cellular detail and 50 scientific reference plates."

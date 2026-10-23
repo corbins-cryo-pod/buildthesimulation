@@ -60,6 +60,8 @@ export async function buildDiscoveryIndex() {
       ['Finger atlas reference images', '/simulations/finger-pathway-atlas/references/', '50 model-versus-tissue plates and 42 original figures', 'finger atlas reference histology microscopy myelin synapse Meissner Pacinian neuromuscular connectomics'],
       ['Cortical stimulation lab', '/simulations/cortical-stimulation/', 'Electrodes and tissue response', 'cortex stimulation experiment'],
       ['Cortical recording lab', '/simulations/cortex-slab/', 'Synthetic signals from neurons', 'recording depth electrodes'],
+      ['Peripheral Nerve Regeneration Laboratory', '/simulations/nerve-regeneration/', 'Degeneration, repair, axon growth, remyelination and reproducible experiments', 'peripheral nerve regeneration Schwann myelin Wallerian conduit graft axon repair'],
+      ['Nerve Regeneration Model and Evidence', '/simulations/nerve-regeneration/methods/', 'Equations, primary studies, assumptions and numerical verification', 'nerve regeneration methods evidence sources validation equations'],
       ['Peripheral nerve sandbox', '/sim/', 'Nerve cross-sections and pulses', 'peripheral nerve cuff simulation'],
       ['Neural interface designer', '/devices/designer/', 'Electrode geometry and routing', 'design electrode layout exports'],
       ['3D model finder', '/devices/models/', 'Reference hardware geometry', 'models inspect implants'],
