@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>QA ONLY — Biohybrid Stage 2 Responsive Viewports</title>
+<style>
+body{margin:20px;background:#eee9df;color:#252622;font:15px/1.5 system-ui,sans-serif}
+h1{font-size:22px;margin:0 0 10px}h2{font-size:18px;margin:0 0 8px}
+p{max-width:100ch;margin:8px 0}.viewport-strip{overflow-x:auto;margin-top:20px;padding:4px}
+.viewport-strip:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+main{display:flex;align-items:flex-start;gap:24px;width:max-content}
+section{flex:none;width:var(--viewport-width)}
+iframe{display:block;width:var(--viewport-width);height:1100px;max-width:none;border:0;outline:1px solid #73746b;background:white}
+</style>
+</head>
+<body>
+<h1>QA ONLY — Biohybrid Stage 2 responsive verification</h1>
+<p>Preview-only fixture. The left panel provides a 390 px narrow viewport; the right panel provides a 760 px viewport. Both are 1100 px high and load the same compiled laboratory from this preview origin.</p>
+<p>Work inside one panel at a time. Wait for its initial calculation, open Controlled experiments, run the matched audit, and inspect controls, charts, tables, keyboard focus, and horizontal table scrolling. Scroll inside each panel to reach additional results. If both panels do not fit, scroll the comparison region horizontally.</p>
+<div class="viewport-strip" tabindex="0" role="region" aria-label="QA viewport comparison; scroll horizontally to reach both panels">
+<main>
+<section style="--viewport-width:390px" aria-labelledby="narrow-title">
+<h2 id="narrow-title">390 × 1100 px — narrow viewport</h2>
+<iframe width="390" height="1100" title="Biohybrid laboratory QA at a 390 pixel viewport" src="/simulations/biohybrid-interface/#controlled-experiments"></iframe>
+</section>
+<section style="--viewport-width:760px" aria-labelledby="wide-title">
+<h2 id="wide-title">760 × 1100 px — wider viewport</h2>
+<iframe width="760" height="1100" title="Biohybrid laboratory QA at a 760 pixel viewport" src="/simulations/biohybrid-interface/#controlled-experiments"></iframe>
+</section>
+</main>
+</div>
+</body>
+</html>
