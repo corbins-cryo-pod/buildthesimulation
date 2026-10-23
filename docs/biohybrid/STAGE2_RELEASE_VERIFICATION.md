@@ -82,6 +82,8 @@ The native endpoint observation remains documented: accumulated native time at 0
 
 ## Automated and build verification scope
 
+During release preparation, main advanced to `f08dfb68b82bfbd67b5a9f72228e452681ebd22a` with the RPNI Design & Testing Laboratory (PR #332). It was merged into this feature without conflicts. Both laboratories' directory and search entries are retained. The subsequent PR #333 checks must validate that integrated tree; the earlier 509-page build is evidence for the preceding tree and is not relabeled as an integrated build.
+
 These runs overlap and must not be added into an invented total assertion count. A test file or group is not an individual scientific assertion.
 
 | Recorded run | Result and scope |

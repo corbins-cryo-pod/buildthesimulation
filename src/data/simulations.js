@@ -13,6 +13,11 @@ export const simulationGroups = [
     "title": "Neural Interface Laboratories",
     "entries": [
       {
+        "href": "/simulations/rpni-design/",
+        "title": "RPNI Design & Testing Laboratory",
+        "desc": "Design muscle-graft regenerative peripheral nerve interfaces. Position finite bipolar contacts, route synthetic motor units, calculate recordings and cross-talk, and compare geometry with an explicit transport diagnostic."
+      },
+      {
         "href": "/simulations/biohybrid-interface/",
         "title": "Biohybrid Neural Interface Laboratory",
         "desc": "Calculate an engineered living neural bridge: active branched cells, axonal propagation, host–graft synapses and finite-contact recordings. Run matched causal controls, separate graft and host signal sources, and compare controlled parameter studies, seven experiments and exploratory growth."
