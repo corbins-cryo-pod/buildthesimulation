@@ -1,18 +1,22 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {MODEL_VERSION,OBSERVATION_VERSION,runSimulation,prepareFields} from '../src/lib/biohybrid/model.js';
+import {runSimulation as runReleasedSimulation} from './fixtures/biohybrid-v1-model.mjs';
+import {verifyReleasedFixture,compareReleasedResult} from './helpers/biohybrid-legacy-reference.mjs';
 
 const baseline=runSimulation();
 const blocked=runSimulation({synapticWeightUs:0});
 const peakToPeak=values=>Math.max(...values)-Math.min(...values);
 
-test('biohybrid sources: observation extension preserves the established full-signal benchmark',()=>{
+test('biohybrid sources: observation extension exactly preserves the frozen released solver within this runtime',()=>{
+  const provenance=verifyReleasedFixture();
+  assert.equal(provenance.passed,true,JSON.stringify(provenance));
+  const released=runReleasedSimulation();
+  const comparison=compareReleasedResult(baseline,released);
+  assert.equal(comparison.passed,true,JSON.stringify(comparison));
   assert.equal(baseline.modelVersion,MODEL_VERSION);
   assert.equal(baseline.observationVersion,OBSERVATION_VERSION);
-  assert.equal(baseline.metrics.firstGraftSpikeMs,6.18024184599108);
-  assert.equal(baseline.metrics.conductionDelayMs,2.1202743005897275);
   assert.equal(baseline.metrics.recruitedHosts,3);
-  assert.deepEqual(baseline.metrics.recordingPeakToPeakUv,[9.588411887442467,9.745329941385737,9.134042111447762]);
 });
 
 test('biohybrid sources: the two physical populations reconstruct every neural-field sample',()=>{

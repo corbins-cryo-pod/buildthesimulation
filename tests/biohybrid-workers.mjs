@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {Worker} from 'node:worker_threads';
 import {setImmediate as nextEventLoopTurn} from 'node:timers/promises';
+import {runSimulation} from '../src/lib/biohybrid/model.js';
 
 function harness(module){
   const worker=new Worker(new URL('./helpers/biohybrid-worker-harness.mjs',import.meta.url),{workerData:{module}});
@@ -25,6 +26,9 @@ function harness(module){
 }
 
 test('biohybrid workers: real transfer preserves source arrays, request identity and the original recording', {timeout:30000}, async()=>{
+  // The transfer contract is exact within the current runtime. A floating-point
+  // literal from a different V8 version is not an appropriate transport oracle.
+  const direct=runSimulation();
   const transport=harness('worker.js');
   try{
     await transport.waitFor(message=>message.__harness==='ready');
@@ -33,7 +37,12 @@ test('biohybrid workers: real transfer preserves source arrays, request identity
     const transfer=await transport.waitFor(message=>message.id===id&&message.__harness==='transfer');
     const result=message.result;
     assert.equal(result.metrics.recruitedHosts,3);
-    assert.equal(result.metrics.recordingPeakToPeakUv[1],9.745329941385737);
+    const withoutElapsed=value=>{
+      const snapshot={...value,diagnostics:{...value.diagnostics}};
+      delete snapshot.diagnostics.elapsedMs;return snapshot;
+    };
+    assert.deepEqual(withoutElapsed(result),withoutElapsed(direct),
+      'Every transported setting, geometry, metric, event and original/source waveform must exactly match a direct run in this runtime.');
     assert.ok(result.timeMs instanceof Float64Array);
     assert.ok(result.voltageMv instanceof Float32Array);
     assert.equal(result.timeMs.length,801);

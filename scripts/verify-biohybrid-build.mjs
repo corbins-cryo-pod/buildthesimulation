@@ -19,6 +19,7 @@ assert.ok(methods.includes('native NEURON'),'Methods must name the independently
 assert.ok(methods.includes('signed differences')&&methods.includes('negative physical conduction time'),'Methods must distinguish first-event order from physical propagation');
 assert.ok(methods.includes('successfulTransmission')&&methods.includes('Neither field alone establishes synaptic dependence'),'Legacy temporal metrics need an explicit causal interpretation limit');
 assert.ok(methods.includes('shared graft/host axon-diameter'),'Diameter studies must disclose both affected populations');
+assert.ok(methods.includes('Two original exact-literal regression comparisons failed'),'The cross-runtime exact-literal failure must remain visible');
 assert.equal(BIOHYBRID_QUESTIONS.length,34);
 for(const question of BIOHYBRID_QUESTIONS){
  assert.ok(questions.includes(`id="${question.id}"`),`Question ${question.id} not emitted`);

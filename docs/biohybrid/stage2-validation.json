@@ -10,10 +10,15 @@
     "src/lib/biohybrid/geometry.js": "10686d756b315eff3d0b51c328ca48ab16d5117006e50635e3a2e6179cd70798",
     "src/lib/biohybrid/protocols.js": "20c32bd9c6b225cb1059d491112c51f322b576a841664febb88d722a931e60d3",
     "src/lib/biohybrid/protocol-worker.js": "98a1b3dc50da940f49ef07745f493a626f3126a140175fe3da6e1f831bfe7de9",
-    "tests/biohybrid-sources.mjs": "7d0cddf1a19873a3bcaa9974de4124064d03a71673acd2793a06310ab9d8380c",
+    "tests/biohybrid-sources.mjs": "e7013097aafcb102ea929cb4ce62463dfc14a363d8959db3e3e4b5a21bfe0693",
     "tests/biohybrid-protocols.mjs": "b3d956d8ee940c8957a90953b9b53301d4fd17e3c0c4539f324b8bbd55348da4",
     "tests/biohybrid-response-boundary.mjs": "b832d0f65d4e10d3cc6b4e5db2bec85e1b717b624cb5b4559c78bbea959a87d8",
-    "scripts/validate-biohybrid-stage2.mjs": "8c06ed92d08c9ae90466443128734ee2a00bfe4821b64e75ba085525fcbce311"
+    "tests/biohybrid-workers.mjs": "f5d8cd612588490a696221a175699e8b0540babe964aac53558d74530c41b9be",
+    "tests/helpers/biohybrid-worker-harness.mjs": "9e2bd3496d42eb2a9fe8e396dcfc90f7365dcb32e5d392b0569ddc88dc1886b1",
+    "tests/helpers/biohybrid-legacy-reference.mjs": "aa96a894543181b1eee5e2893b9598fb993a49a723d9ecdae055abe9f47c23c1",
+    "tests/fixtures/biohybrid-v1-model.mjs": "fd6e9ec35db971cb1f9a8d69bbd933965c6f63d2dbb0c5e8f984e1554dc2a977",
+    "tests/fixtures/biohybrid-v1-provenance.json": "c2ca7a2823a9cffa90434f896184afe861eb8983fb715378e1770bc035f6e46d",
+    "scripts/validate-biohybrid-stage2.mjs": "a9a0f76ce7d30c5912db2bcead71f4913301eb8d7e614d887b13b24f1bc43dea"
   },
   "acceptance": {
     "sourceIdentityMaximumUv": 1e-10,
@@ -39,6 +44,10 @@
     "provisionalStoredStateAbsoluteDiagnosticUv": 0.001
   },
   "checks": [
+    {
+      "id": "exact-released-model-preservation-within-runtime",
+      "passed": true
+    },
     {
       "id": "default-synaptic-dependence",
       "passed": true
@@ -84,6 +93,31 @@
       "measuredHostMaximumErrorUv": 0.001273569150371523,
       "passed": false,
       "disposition": "Retained failed supplemental diagnostic. Original Float64 source recordings remain authoritative; the separate analytical quantization bound is reported independently."
+    },
+    {
+      "id": "cross-runtime-bit-equality-assumption",
+      "historical": true,
+      "passed": false,
+      "source": "https://github.com/corbins-cryo-pod/buildthesimulation/actions/runs/39979282565/job/120501984662",
+      "expectedRuntime": "Node 24.19.0",
+      "actualRuntime": "Node 22.23.3",
+      "failedTests": [
+        "tests/biohybrid-sources.mjs: original three-contact peak-to-peak literal comparison",
+        "tests/biohybrid-workers.mjs: original recording-2 peak-to-peak literal comparison"
+      ],
+      "originalCriterion": "Exact bit equality to peak-to-peak literals produced by a different Node/V8 runtime.",
+      "expectedPeakToPeakUv": [
+        9.588411887442467,
+        9.745329941385737,
+        9.134042111447762
+      ],
+      "actualPeakToPeakUv": [
+        9.588411887442454,
+        9.745329941385254,
+        9.134042111447727
+      ],
+      "disposition": "Retained failed cross-runtime assumption. Replaced by exact full-result comparison to a frozen released solver in the same runtime, and exact worker-versus-direct transport comparison in the same runtime. No numerical error allowance, model change, or relaxation of native-reference and convergence criteria.",
+      "maximumAbsoluteDifferenceUv": 4.831690603168681e-13
     }
   ],
   "defaultAudit": {
@@ -8358,52 +8392,116 @@
     "provisionalAbsoluteDiagnosticPassed": false,
     "interpretation": "The failed fixed absolute reconstruction diagnostic is retained. The analytical storage-precision consistency bound is a separate check; it does not turn that failure into a pass. Quantitative source exports use the original Float64 waveforms."
   },
+  "releasedModelPreservation": {
+    "provenance": {
+      "releaseCommit": "98ae75a826a536293158637360b173460f877602",
+      "releasePath": "src/lib/biohybrid/model.js",
+      "expectedSourceSha256": "c92fb7cf4793b4754b002ee8b69ab3b8d7af405f1d3c5e5712ad48988682919a",
+      "reconstructedSourceSha256": "c92fb7cf4793b4754b002ee8b69ab3b8d7af405f1d3c5e5712ad48988682919a",
+      "importRewritesMatch": true,
+      "sharedDependencies": [
+        {
+          "path": "src/lib/biohybrid/geometry.js",
+          "releasedSha256": "10686d756b315eff3d0b51c328ca48ab16d5117006e50635e3a2e6179cd70798",
+          "transitiveImports": [],
+          "actualSha256": "10686d756b315eff3d0b51c328ca48ab16d5117006e50635e3a2e6179cd70798",
+          "passed": true
+        },
+        {
+          "path": "src/lib/cortex/volume-conductor.js",
+          "releasedSha256": "2ddfc04a1d5bb695c764d9833584ffc1ee48ef8c19c217c32a52b1531088b601",
+          "transitiveImports": [],
+          "actualSha256": "2ddfc04a1d5bb695c764d9833584ffc1ee48ef8c19c217c32a52b1531088b601",
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    "comparison": {
+      "runtime": "v24.19.0",
+      "criterion": "Exact same-runtime equality with the frozen released implementation; no numerical error allowance.",
+      "exclusions": [
+        "observationVersion (added observation metadata)",
+        "recordings[].graftUv and hostUv (added source observations)",
+        "diagnostics.elapsedMs (wall-clock measurement)"
+      ],
+      "fieldsExact": {
+        "modelVersion": true,
+        "settings": true,
+        "geometry": true,
+        "timeMs": true,
+        "voltageMv": true,
+        "traces": true,
+        "recordings": true,
+        "stimulusUa": true,
+        "spikes": true,
+        "synapticEvents": true,
+        "metrics": true,
+        "diagnostics": true
+      },
+      "passed": true,
+      "comparedValues": {
+        "voltage": 525456,
+        "time": 801,
+        "stimulus": 801,
+        "traces": 5607,
+        "recordings": 7209,
+        "spikes": 20,
+        "synapticEvents": 12
+      }
+    },
+    "passed": true
+  },
   "timing": {
     "scope": "Node execution wall time for actual calculations, excluding UI rendering and network; not a device-independent performance guarantee.",
     "measurements": [
       {
         "id": "default-audit",
-        "elapsedMs": 9492.768342000001
+        "elapsedMs": 4307.678
       },
       {
         "id": "mixed-activation-audit",
-        "elapsedMs": 3402.8861180000004
+        "elapsedMs": 2296.7971660000003
       },
       {
         "id": "direct-activation-audit",
-        "elapsedMs": 1328.1154880000013
+        "elapsedMs": 885.8740079999998
       },
       {
         "id": "sweep-stimAmplitudeUa",
-        "elapsedMs": 8068.671853
+        "elapsedMs": 6473.509539
       },
       {
         "id": "sweep-synapticWeightUs",
-        "elapsedMs": 7926.591254999999
+        "elapsedMs": 7039.694670000001
       },
       {
         "id": "sweep-recordDistanceUm",
-        "elapsedMs": 9548.635067
+        "elapsedMs": 7203.904946000002
       },
       {
         "id": "sweep-axonDiameterUm",
-        "elapsedMs": 8729.88291
+        "elapsedMs": 8575.48923
       },
       {
         "id": "sweep-conductivitySPerM",
-        "elapsedMs": 7467.454229999996
+        "elapsedMs": 22310.996445000004
       },
       {
         "id": "current-boundary-finer-step",
-        "elapsedMs": 5584.085605999993
+        "elapsedMs": 21148.60702399999
       },
       {
         "id": "unsupported-placement",
-        "elapsedMs": 2294.690397999999
+        "elapsedMs": 2199.4712819999986
       },
       {
         "id": "source-reconstruction",
-        "elapsedMs": 1532.5389399999985
+        "elapsedMs": 1324.4193319999904
+      },
+      {
+        "id": "released-model-preservation",
+        "elapsedMs": 1397.6793890000117
       }
     ]
   }

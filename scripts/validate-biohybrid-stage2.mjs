@@ -3,6 +3,8 @@ import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {runSimulation,prepareFields,MODEL_VERSION,OBSERVATION_VERSION} from '../src/lib/biohybrid/model.js';
 import {runProtocol,PROTOCOL_AXES,PROTOCOL_VERSION} from '../src/lib/biohybrid/protocols.js';
+import {runSimulation as runReleasedSimulation} from '../tests/fixtures/biohybrid-v1-model.mjs';
+import {verifyReleasedFixture,compareReleasedResult} from '../tests/helpers/biohybrid-legacy-reference.mjs';
 
 const output=process.argv[2]??new URL('../docs/biohybrid/stage2-validation.json',import.meta.url);
 const acceptance={sourceIdentityMaximumUv:1e-10,savedStateFloatingPointAllowanceUv:1e-8,
@@ -57,6 +59,22 @@ console.log(`Current-boundary endpoint refinement: ${responseBoundaryRefinement.
 const errorRetention=measure('unsupported-placement',()=>runProtocol({pulseCount:1,durationMs:25,recordXOffsetUm:-100},
   {kind:'sweep',axis:'recordDistanceUm',values:[45,60,150],paired:false}));
 const baseline=measure('source-reconstruction',()=>runSimulation());
+const releasedModelPreservation={provenance:verifyReleasedFixture(),
+  comparison:compareReleasedResult(baseline,measure('released-model-preservation',()=>runReleasedSimulation()))};
+releasedModelPreservation.passed=releasedModelPreservation.provenance.passed&&releasedModelPreservation.comparison.passed;
+
+// Retain the actual failed CI assumption, including its original literals.
+// The replacement compares full results exactly within one runtime; it does
+// not introduce a floating-point allowance or relax any physical criterion.
+const runtimeEqualityFailure={id:'cross-runtime-bit-equality-assumption',historical:true,passed:false,
+  source:'https://github.com/corbins-cryo-pod/buildthesimulation/actions/runs/39979282565/job/120501984662',
+  expectedRuntime:'Node 24.19.0',actualRuntime:'Node 22.23.3',
+  failedTests:['tests/biohybrid-sources.mjs: original three-contact peak-to-peak literal comparison','tests/biohybrid-workers.mjs: original recording-2 peak-to-peak literal comparison'],
+  originalCriterion:'Exact bit equality to peak-to-peak literals produced by a different Node/V8 runtime.',
+  expectedPeakToPeakUv:[9.588411887442467,9.745329941385737,9.134042111447762],
+  actualPeakToPeakUv:[9.588411887442454,9.745329941385254,9.134042111447727],
+  disposition:'Retained failed cross-runtime assumption. Replaced by exact full-result comparison to a frozen released solver in the same runtime, and exact worker-versus-direct transport comparison in the same runtime. No numerical error allowance, model change, or relaxation of native-reference and convergence criteria.'};
+runtimeEqualityFailure.maximumAbsoluteDifferenceUv=Math.max(...runtimeEqualityFailure.expectedPeakToPeakUv.map((value,index)=>Math.abs(value-runtimeEqualityFailure.actualPeakToPeakUv[index])));
 
 // Independent Kirchhoff reconstruction: I_mem = A_axial * (Vm + Ve).
 // The cable solver instead records C*dVm/dt + ionic current + synaptic current.
@@ -112,6 +130,7 @@ storagePrecision.provisionalAbsoluteDiagnosticPassed=Object.values(storagePrecis
 storagePrecision.interpretation='The failed fixed absolute reconstruction diagnostic is retained. The analytical storage-precision consistency bound is a separate check; it does not turn that failure into a pass. Quantitative source exports use the original Float64 waveforms.';
 const intact=defaultAudit.cases[0],mixed=mixedAudit.cases[0],direct=directAudit.cases[0];
 const checks=[
+  {id:'exact-released-model-preservation-within-runtime',passed:releasedModelPreservation.passed},
   {id:'default-synaptic-dependence',passed:intact.baseline.metrics.recruitedHosts===3&&intact.synapsesOff.metrics.recruitedHosts===0&&intact.comparison.lostHosts===3},
   {id:'zero-stimulus-monitored-events',passed:defaultAudit.summary.allControlsQuiet===true},
   {id:'mixed-cell-specific-attribution',passed:mixed.comparison.lostHosts===2&&mixed.comparison.persistentHosts===1},
@@ -123,15 +142,17 @@ const checks=[
   {id:'unsupported-placement-error-retention',passed:errorRetention.cases.map(item=>item.status).join(',')==='ok,error,ok'&&errorRetention.cases[1].baseline.metrics===undefined&&errorRetention.summary.transitions.length===0},
 ];
 const sourcePaths=['src/lib/biohybrid/model.js','src/lib/biohybrid/geometry.js','src/lib/biohybrid/protocols.js','src/lib/biohybrid/protocol-worker.js',
-  'tests/biohybrid-sources.mjs','tests/biohybrid-protocols.mjs','tests/biohybrid-response-boundary.mjs','scripts/validate-biohybrid-stage2.mjs'];
+  'tests/biohybrid-sources.mjs','tests/biohybrid-protocols.mjs','tests/biohybrid-response-boundary.mjs','tests/biohybrid-workers.mjs',
+  'tests/helpers/biohybrid-worker-harness.mjs','tests/helpers/biohybrid-legacy-reference.mjs',
+  'tests/fixtures/biohybrid-v1-model.mjs','tests/fixtures/biohybrid-v1-provenance.json','scripts/validate-biohybrid-stage2.mjs'];
 const sourceSha256=Object.fromEntries(await Promise.all(sourcePaths.map(async path=>[path,createHash('sha256').update(await readFile(new URL(`../${path}`,import.meta.url))).digest('hex')])));
 const report={schema:'biohybrid-stage2-validation/1',modelVersion:MODEL_VERSION,observationVersion:OBSERVATION_VERSION,protocolVersion:PROTOCOL_VERSION,
   generator:'node scripts/validate-biohybrid-stage2.mjs',runtime:process.version,sourceSha256,acceptance,checks,
-  allAcceptancePassed:checks.every(check=>check.passed),retainedFailedDiagnostics:storagePrecision.provisionalAbsoluteDiagnosticPassed?[]:[{
+  allAcceptancePassed:checks.every(check=>check.passed),retainedFailedDiagnostics:[...(storagePrecision.provisionalAbsoluteDiagnosticPassed?[]:[{
     id:'stored-float32-current-reconstruction-absolute-error',criterionUv:storagePrecision.provisionalAbsoluteCriterionUv,
     measuredHostMaximumErrorUv:storagePrecision.populations.host.maximumErrorUv,passed:false,
-    disposition:'Retained failed supplemental diagnostic. Original Float64 source recordings remain authoritative; the separate analytical quantization bound is reported independently.'}],
-  defaultAudit,mixedAudit,directAudit,sweeps,responseBoundaryRefinement,errorRetention,sourceIdentity,storagePrecision,
+    disposition:'Retained failed supplemental diagnostic. Original Float64 source recordings remain authoritative; the separate analytical quantization bound is reported independently.'}]),runtimeEqualityFailure],
+  defaultAudit,mixedAudit,directAudit,sweeps,responseBoundaryRefinement,errorRetention,sourceIdentity,storagePrecision,releasedModelPreservation,
   timing:{scope:'Node execution wall time for actual calculations, excluding UI rendering and network; not a device-independent performance guarantee.',measurements:timings}};
 await mkdir(new URL('../docs/biohybrid/',import.meta.url),{recursive:true});
 await writeFile(output,JSON.stringify(report,null,2)+'\n');

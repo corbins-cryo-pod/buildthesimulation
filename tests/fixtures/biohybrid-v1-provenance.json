@@ -1,0 +1,30 @@
+{
+  "schema": "biohybrid-released-solver-fixture/1",
+  "releaseCommit": "98ae75a826a536293158637360b173460f877602",
+  "releasePath": "src/lib/biohybrid/model.js",
+  "releaseSourceSha256": "c92fb7cf4793b4754b002ee8b69ab3b8d7af405f1d3c5e5712ad48988682919a",
+  "fixturePath": "tests/fixtures/biohybrid-v1-model.mjs",
+  "importRewrites": [
+    {
+      "from": "./geometry.js",
+      "to": "../../src/lib/biohybrid/geometry.js"
+    },
+    {
+      "from": "../cortex/volume-conductor.js",
+      "to": "../../src/lib/cortex/volume-conductor.js"
+    }
+  ],
+  "sharedDependencies": [
+    {
+      "path": "src/lib/biohybrid/geometry.js",
+      "releasedSha256": "10686d756b315eff3d0b51c328ca48ab16d5117006e50635e3a2e6179cd70798",
+      "transitiveImports": []
+    },
+    {
+      "path": "src/lib/cortex/volume-conductor.js",
+      "releasedSha256": "2ddfc04a1d5bb695c764d9833584ffc1ee48ef8c19c217c32a52b1531088b601",
+      "transitiveImports": []
+    }
+  ],
+  "scope": "Frozen released solver source, with import specifiers rewritten only. Shared geometry and volume-conductor sources are pinned byte-for-byte to the same release; neither imports another module. This fixture verifies implementation preservation within one JavaScript runtime, not independent physical validity or bit identity across runtime versions."
+}

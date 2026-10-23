@@ -2,7 +2,7 @@
 
 **Status: prepublication verification; production publication is pending.**
 
-Prepared 2026-10-23 for `feature/biohybrid-stage2-causal-workbench`. The stage 1 base is `98ae75a826a536293158637360b173460f877602` (PR #331). The latest committed checkpoint when this record was prepared is `6e855e80b59735d2f81a1b7c2239f270dba22e52`; subsequent timing-label, boundary-refinement, documentation, and release-cleanup changes are present in the working tree. That checkpoint is not presented as the final tested or merged revision. The publication table below must identify the final revision and deployment.
+Prepared 2026-10-23 for `feature/biohybrid-stage2-causal-workbench`. The stage 1 base is `98ae75a826a536293158637360b173460f877602` (PR #331). The current saved checkpoint is `59bb741ccd979a61e4e706cf206a62e81849f5e5`, including the timing-interpretation, accessibility, and latest-main integration changes. Only the subsequent regression-check repair and verification-report changes remain in the working tree at this review. That checkpoint is not presented as the final tested or merged revision. The publication table below must identify the final revision and deployment.
 
 The model remains `biohybrid-hh-cable/1.0.0`; the new observation and protocol contracts are `biohybrid-source-observations/1.0.0` and `biohybrid-protocol/1.0.0`. Verification establishes behavior of the implemented idealized equations. The canonical Hodgkin–Huxley membrane at 6.3 °C remains an uncalibrated representation of mammalian engineered tissue.
 
@@ -57,9 +57,9 @@ Legacy timing fields are retained for data compatibility but described precisely
 
 Unsupported contact placement is retained as an error. A recording-height sweep at x offset −100 µm with heights 45, 60, and 150 µm returns success/error/success: the middle contact intersects the modeled membrane or its 3 µm clearance. That row has no fabricated zero result, and no response bracket is drawn across it.
 
-## Numerical verification and retained discrepancy
+## Numerical verification and retained discrepancies
 
-The stage 2 quantitative report has **nine passing acceptance checks**: default synaptic dependence; zero-stimulus monitored events; mixed cell-specific attribution; the direct-activation positive control; source additivity; analytical storage-precision consistency; completion of five default grids; fixed-endpoint recruitment under time refinement; and unsupported-placement error retention. A separate failed diagnostic remains in the same report.
+The regenerated stage 2 quantitative report has **ten passing acceptance checks**: exact preservation of the frozen released model within the executing runtime; default synaptic dependence; zero-stimulus monitored events; mixed cell-specific attribution; the direct-activation positive control; source additivity; analytical storage-precision consistency; completion of five default grids; fixed-endpoint recruitment under time refinement; and unsupported-placement error retention. All **13 recorded source hashes** match the reviewed files. Both the failed stored-Float32 reconstruction diagnostic and the historical cross-runtime equality failure remain explicitly recorded in the same report.
 
 ### Stored-voltage reconstruction: original absolute check failed
 
@@ -80,9 +80,27 @@ All four cases pass the retained criteria: voltage RMS ≤ 1 mV; spike-time erro
 
 The native endpoint observation remains documented: accumulated native time at 0.0025 ms can lie just below 40 ms, omitting the scheduled terminal sample. Reading the already-computed terminal state when within 10⁻⁸ ms supplies that endpoint without an additional step, interpolation, or time shift. Earlier spatial-gate failures, their target-selection correction, and the event-order defect remain in the validation history.
 
+### Cross-runtime exact-equality checks: failed CI retained
+
+[GitHub numerical/content CI](https://github.com/corbins-cryo-pod/buildthesimulation/actions/runs/39979282565/job/120501984662) at `829b6fd4700dbb97cc2881a8f7ecb06e3476ab46`, using Node **22.23.3**, reported **607 tests: 605 passed and two failed**. The failures occurred in the new source-preservation and Worker-transfer regression tests. They compared calculated extracellular peak-to-peak values using strict equality against decimal constants obtained in Node 24. The source test compared all three contacts; the Worker test repeated the contact-2 comparison. The subsequent run at `59bb741ccd979a61e4e706cf206a62e81849f5e5` again reported 605/607 passing with the same two failures; this is a repeated result, not two additional distinct defects.
+
+| Contact | Stored Node 24 expectation / µV p–p | Node 22.23.3 CI result / µV p–p | Absolute difference / µV |
+|---|---:|---:|---:|
+| R1 | 9.588411887442467 | 9.588411887442454 | 1.2434497875801753 × 10⁻¹⁴ |
+| R2 | 9.745329941385737 | 9.745329941385254 | **4.831690603168681 × 10⁻¹³** |
+| R3 | 9.134042111447762 | 9.134042111447727 | 3.552713678800501 × 10⁻¹⁴ |
+
+Native-reference and convergence checks passed in that run. Nevertheless, the two strict-equality failures made the numerical/content job fail, and its subsequent browser and build steps were skipped. Those skipped steps are not passes. The failure exposes an unsupported assumption of exact equality across JavaScript runtime versions; the small difference alone is not used as proof that a source change is harmless.
+
+The implemented correction preserves **exact equality within the executing runtime**. It uses a [frozen released solver](../../tests/fixtures/biohybrid-v1-model.mjs) from `98ae75a826a536293158637360b173460f877602`, with only its two import paths adjusted. Its [provenance record](../../tests/fixtures/biohybrid-v1-provenance.json) and [comparison helper](../../tests/helpers/biohybrid-legacy-reference.mjs) reverse those documented rewrites and check the released source hash, `c92fb7cf4793b4754b002ee8b69ab3b8d7af405f1d3c5e5712ad48988682919a`. The released geometry and volume-conductor dependencies are also pinned by hash, so a shared dependency change cannot silently alter both sides. Neither dependency imports another module. An independent review compared the recovered fixture and both dependencies directly against the actual released Git objects; they match byte for byte.
+
+The complete released result is compared against the current result after removing only elapsed runtime and the intentionally added observation-version and graft/host recording fields. An independent execution in Node **24.19.0** passed exact equality for all 12 legacy result fields, including **525,456 compartment-voltage values**, **5,607 trace samples**, **7,209 recording samples**, **20 spike events**, and **12 synaptic events**. The separate Worker test now compares its complete result against a direct solve in the same runtime, excluding elapsed runtime only. The corrected source and actual-Worker suites pass in **both Node 22.23.3 and Node 24.19.0**, in 11.05 s and 8.71 s respectively for the two-file runs. Final-revision GitHub CI remains pending.
+
+This changes the inappropriate cross-runtime reference assumption without increasing a scientific tolerance. It strengthens the earlier comparison of three summary values to exact trajectories, events, settings, geometry, and recording arrays for the tested case. The original CI failure and values above remain recorded. The independent NEURON and convergence criteria, the source-additivity criterion, and the separate failed Float32 diagnostic remain unchanged. The cause of Cloudflare's opaque earlier build failure has not been established by this CI result.
+
 ## Automated and build verification scope
 
-During release preparation, main advanced to `f08dfb68b82bfbd67b5a9f72228e452681ebd22a` with the RPNI Design & Testing Laboratory (PR #332). It was merged into this feature without conflicts. Both laboratories' directory and search entries are retained. The subsequent PR #333 checks must validate that integrated tree; the earlier 509-page build is evidence for the preceding tree and is not relabeled as an integrated build.
+During release preparation, main advanced to `f08dfb68b82bfbd67b5a9f72228e452681ebd22a` with the RPNI Design & Testing Laboratory (PR #332). It was merged into this feature without conflicts. Both laboratories' directory and search entries are retained. PR #333's complete integrated pipeline remains a release gate; the earlier 509-page builds concern the preceding tree. A separate successful Astro job on the integrated tree is identified below without treating it as success of the complete pipeline.
 
 These runs overlap and must not be added into an invented total assertion count. A test file or group is not an individual scientific assertion.
 
@@ -92,14 +110,20 @@ These runs overlap and must not be added into an invented total assertion count.
 | Biohybrid baseline subset | **7 files passed in 25.294 s.** |
 | Export checks after signed-timing label fixes | **2 files passed in 9.065 s.** |
 | Export checks after legacy-metric interpretation metadata | **2 files passed in 8.06 s**; measured booleans, counts and negative values are preserved. |
+| GitHub numerical/content CI at `829b6fd` | **605 of 607 reported tests passed; two cross-runtime strict-equality checks failed.** Subsequent browser/build steps were skipped. Raw values and the corrective verification design are retained above. |
+| GitHub numerical/content CI at `59bb741` | **605 of 607 reported tests passed**, repeating the same two strict-equality failures. This is not an additional pair of distinct defects. |
+| Corrected source and actual-Worker regression suites | **2 files pass in Node 22.23.3 (11.05 s) and Node 24.19.0 (8.71 s)**, using exact same-runtime comparisons and pinned released-source provenance. These targeted runs do not replace final integrated CI. |
 | Actual Worker lifecycle suite | **4 tests passed** using real Node Workers: transferred buffers and request identity; complete audit/progress; identified error responses; cancellation without a fabricated completed result. |
 | Fixed current-endpoint refinement | **1 test file/group passed in 8.53 s**, exercising four actual solves. |
-| Quantitative evidence regeneration | Nine acceptance checks pass; failed absolute Float32 diagnostic preserved. |
+| Quantitative evidence regeneration | **Ten acceptance checks pass; all 13 source hashes match.** Failed absolute Float32 and historical cross-runtime diagnostics are preserved. |
 | Native reference cases | Four cases pass, including the added graft/host source comparisons. |
 | Existing site artifact gates | Cortex and Finger Atlas artifact gates pass. |
 | Compiled Biohybrid gate | Questions, laboratory, Methods, directory/search links, both bundled Workers, and visible retained precision discrepancy pass. |
+| Integrated Astro job at `15ce8b8` | **511 pages in 20.31 s**, Node 22; the separate Astro job succeeded. This is not evidence that the complete test/browser/build pipeline passed. |
 
-An initial build encountered a telemetry permission error in the execution environment. Setting `ASTRO_TELEMETRY_DISABLED` allowed the build to complete without changing simulation equations. An earlier successful Astro build generated **509 pages in 74.93 s**. The latest successful Astro portion generated **509 pages in 39.40 s**, followed by completed model-asset exports and a zero exit status. The latter Astro duration is not presented as the total test/build/export duration. The verified bundles include `protocol-worker-Cby85uPp.js` and `worker-DaIAs6XI.js`.
+An initial build encountered a telemetry permission error in the execution environment. Setting `ASTRO_TELEMETRY_DISABLED` allowed the build to complete without changing simulation equations. An earlier successful local Astro build generated **509 pages in 74.93 s**. The later successful local Astro portion generated **509 pages in 39.40 s**, followed by completed model-asset exports and a zero exit status. These Astro durations are not presented as total test/build/export durations. The verified local bundles include `protocol-worker-Cby85uPp.js` and `worker-DaIAs6XI.js`.
+
+The last completed integrated Astro job at `15ce8b809b0cc59263be4e2ff610ffa2ca1c7cf2`, using Node 22, generated **511 pages in 20.31 s** and succeeded. It ran separately from the numerical/content job. Its successful compilation neither changes the recorded CI failures nor establishes that the skipped browser and full pipeline build steps passed.
 
 The temporary mobile QA fixture has been removed from the final source tree; it remains available in the committed preview checkpoint for isolated verification. The compiled Biohybrid gate requires its absence from the final publishable output. Final GitHub checks must run on the eventual release revision.
 
@@ -118,8 +142,8 @@ The pre-existing laboratory URL does not prove that stage 2 is deployed. Publica
 | Release item | Status / evidence to record |
 |---|---|
 | Final feature commit SHA | Pending final checkpoint. |
-| Stage 2 pull request | Pending; PR #331 identifies stage 1 only. |
-| Final GitHub CI | Pending final-revision results and run URLs. |
+| Stage 2 pull request | [PR #333](https://github.com/corbins-cryo-pod/buildthesimulation/pull/333); merge pending. PR #331 identifies stage 1 only. |
+| Final GitHub CI | Final-revision result pending. Numerical/content runs at `829b6fd` and `59bb741` each failed the same two of 607 reported tests. The separate integrated Astro job at `15ce8b8` succeeded; the complete pipeline remains unverified. |
 | Merge commit SHA | Pending merge. |
 | Cloudflare preview | Checkpoint `6e855e8`, deployment `87235129-49ef-4926-b0cc-b26265a69480`: **build failed**, as reported by the Cloudflare GitHub check. Its check output contains no cause or build log text; authenticated dashboard logs were not available in this browser. Final revision deployment and diagnosis remain pending. |
 | Compiled HTTPS browser checks | Pending: startup, default audit, source plot, invalid sweep, cancellation/restart, exports, desktop/mobile layout; record failures as well as passes. |
