@@ -50,6 +50,8 @@ export async function buildDiscoveryIndex() {
       keywords: [model.deviceId, model.slug ?? '', ...(model.specs ?? []).flatMap(spec => spec)],
     })),
     ...[
+      ['Biohybrid Neural Interface Laboratory', '/simulations/biohybrid-interface/', 'Active engineered axonal bridge, host–graft synapses, finite electrode contacts and calculated recordings', 'biohybrid living electrode micro-TENN neural tissue graft engineered axon bridge Hodgkin Huxley synapse stimulation recording growth'],
+      ['Biohybrid Methods and Validation', '/simulations/biohybrid-interface/methods/', 'Biophysical equations, evidence register, convergence studies and independent NEURON verification', 'biohybrid methods evidence references HH cable finite contact NEURON numerical validation growth limitations'],
       ['Neural Interface Laboratory', '/cortex/interface/', 'Twelve active human neurons, finite surface contacts, stimulation and ideal recordings', 'cortex integrated neural interface laboratory finite shank electrode membrane voltage replay spike raster'],
       ['Cortex Laboratory', '/cortex/', 'Single active human cell, patch clamp, electrode stimulation and membrane replay', 'cortex laboratory recording stimulation Utah membrane physics finite disk single neuron'],
       ['Cellular Electrophysiology Laboratory', '/simulations/cellular-electrophysiology/', 'Current clamp, membrane-channel kinetics and passive cable spread in one laboratory', 'current clamp membrane biophysics cable explorer soma ion channel voltage step steady state kinetics electrophysiology'],
