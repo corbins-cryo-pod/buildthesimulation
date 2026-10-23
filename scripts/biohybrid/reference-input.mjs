@@ -2,7 +2,7 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { gzipSync } from 'node:zlib';
 import { createHash } from 'node:crypto';
-import { runSimulation, MODEL_VERSION } from '../../src/lib/biohybrid/model.js';
+import { runSimulation, MODEL_VERSION, OBSERVATION_VERSION } from '../../src/lib/biohybrid/model.js';
 
 const output = process.argv[2] || '/tmp/biohybrid-current-reference-input.json.gz';
 const criteria = {
@@ -11,6 +11,7 @@ const criteria = {
   spikeCountAgreement: true,
   strictPointwiseVoltageMv: 0.5,
   extracellularMaximumErrorUv: 0.001,
+  sourceComponentMaximumErrorUv: 0.001, // Same predeclared electrical criterion, applied independently to each source partition.
   strictPointwiseRole: 'Preserved additional diagnostic; reported separately from RMS/timing acceptance, never discarded or loosened after an outcome.',
   alignment: 'Compare the same physical times. No voltage offset, time shift, waveform alignment, or rescaling.',
 };
@@ -29,12 +30,12 @@ for (const definition of definitions) {
   cases.push({ ...definition, inputSha256, settings: result.settings, geometry: result.geometry,
     timeMs: Array.from(result.timeMs), voltageMv: Array.from(result.voltageMv),
     traces: result.traces.map(trace => ({ ...trace, values: Array.from(trace.values) })),
-    recordings: result.recordings.map(trace => ({ id: trace.id, neuralUv: Array.from(trace.neuralUv) })),
+    recordings: result.recordings.map(trace => ({ id: trace.id, neuralUv: Array.from(trace.neuralUv), graftUv: Array.from(trace.graftUv), hostUv: Array.from(trace.hostUv) })),
     spikes: result.spikes, synapticEvents: result.synapticEvents,
     metrics: result.metrics, diagnostics: result.diagnostics });
   console.log(definition.id, JSON.stringify({ nodes: result.geometry.nodes.length, spikes: result.spikes.length, elapsedMs: result.diagnostics.elapsedMs }));
 }
 await mkdir(new URL('../../docs/biohybrid/', import.meta.url), { recursive: true });
-const payload = { schema: 'biohybrid-native-reference-input/1', modelVersion: MODEL_VERSION, criteria, sourceSha256, cases };
+const payload = { schema: 'biohybrid-native-reference-input/1', modelVersion: MODEL_VERSION, observationVersion: OBSERVATION_VERSION, criteria, sourceSha256, cases };
 await writeFile(output, gzipSync(Buffer.from(JSON.stringify(payload)), { level: 6 }));
 console.log(output);

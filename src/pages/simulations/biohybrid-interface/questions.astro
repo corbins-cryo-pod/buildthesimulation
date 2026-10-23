@@ -1,0 +1,25 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import {BIOHYBRID_QUESTIONS,QUESTION_CATEGORIES} from '../../../lib/biohybrid/questions.js';
+import {EVIDENCE_CLASSES} from '../../../lib/biohybrid/references.js';
+import '../../../styles/biohybrid.css';
+---
+<Layout pageTitle="Biohybrid Laboratory — Crucial Questions & Answers" description="34 scientific and engineering questions about living neural bridges, causal controls, extracellular recording, stimulation, model validation and biological uncertainty." compactHeader>
+<article class="bh-methods bh-questions">
+ <p class="bh-kicker">Biohybrid Neural Interface Laboratory / Stage 02</p>
+ <h1>The questions that determine<br/>whether a living bridge works</h1>
+ <p><a href="/simulations/biohybrid-interface/">← Open the laboratory</a> · <a href="/simulations/biohybrid-interface/#controlled-experiments">Run controlled experiments</a> · <a href="/simulations/biohybrid-interface/methods/#stage2">Stage 02 methods &amp; validation</a></p>
+ <p>A living interface must be excitable, conduct activity, establish functional junctions and produce an interpretable measurement. These {BIOHYBRID_QUESTIONS.length} questions connect the biological evidence to the actual calculations, the controls needed to interpret them and the measurements still missing.</p>
+ <div class="bh-stage-callout"><span>The decision behind this stage</span><p><strong>Test causality before adding biological complexity.</strong> A receiving electrode can record graft activity even when no host neuron fires. The new workbench compares assigned junctions with an otherwise identical synapses-off model and a zero-stimulus control, separates known source contributions, and preserves every tested point in controlled response studies.</p><p>The answers describe an idealized numerical laboratory. They do not turn the canonical Hodgkin–Huxley benchmark into a calibrated mammalian graft or a prediction of an implant’s safety or performance.</p></div>
+ <nav class="bh-question-nav" aria-label="Question topics">{QUESTION_CATEGORIES.map((category,index)=><a href={`#${category.id}`}>{String(index+1).padStart(2,'0')} / {category.label}</a>)}</nav>
+ <p>Each answer has an evidence label. Expand a question to see its practical consequence, verification requirement, remaining uncertainty and primary sources. The labels apply to the stated reasoning, not to the complete simulated architecture.</p>
+ {QUESTION_CATEGORIES.map(category=><section id={category.id}>
+  <h2>{category.label}</h2><p>{category.description}</p>
+  {BIOHYBRID_QUESTIONS.filter(question=>question.category===category.id).map(question=><details class="bh-question" id={question.id} open={BIOHYBRID_QUESTIONS.indexOf(question)===0}>
+   <summary><span>{String(BIOHYBRID_QUESTIONS.indexOf(question)+1).padStart(2,'0')}</span>{question.question}</summary>
+   <div class="bh-question-body"><span class="bh-question-evidence">{EVIDENCE_CLASSES[question.evidence]??question.evidence}</span><p>{question.answer}</p><dl><dt>What this changes</dt><dd>{question.implication}</dd><dt>How to verify it</dt><dd>{question.validation}</dd><dt>What remains unknown</dt><dd>{question.uncertainty}</dd></dl><p class="bh-question-sources">Sources: {question.sources.map((source,index)=><>{index>0?' · ':''}<a href={source.url}>{source.label}</a></>)}</p></div>
+  </details>)}
+ </section>)}
+ <div class="bh-stage-callout"><span>Continue the investigation</span><p><a href="/simulations/biohybrid-interface/#controlled-experiments">Run a matched causal audit</a>, compare it with the <a href="/simulations/biohybrid-interface/#recording-sources">calculated signal sources</a>, and read the <a href="/simulations/biohybrid-interface/methods/#stage2">quantitative verification and retained discrepancies</a>.</p></div>
+</article>
+</Layout>

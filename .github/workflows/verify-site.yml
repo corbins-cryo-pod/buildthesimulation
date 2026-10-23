@@ -30,6 +30,8 @@ jobs:
         run: node --test tests/tissue-mechanics-browser.mjs
       - name: Build site and model assets
         run: npm run build --ignore-scripts
+      - name: Verify Biohybrid routes, scientific disclosures and worker artifacts
+        run: node scripts/verify-biohybrid-build.mjs
       - name: Verify Cortex routes and worker artifacts
         run: node scripts/verify-cortex-build.mjs
       - name: Verify Finger Atlas geometry and published assets

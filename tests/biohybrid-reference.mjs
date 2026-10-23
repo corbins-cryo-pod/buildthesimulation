@@ -21,6 +21,8 @@ test('Biohybrid independent reference provenance and unchanged acceptance gates'
   assert.equal(report.criteria.maximumSpikeTimingErrorMs, .1);
   assert.equal(report.criteria.strictPointwiseVoltageMv, .5);
   assert.equal(report.criteria.extracellularMaximumErrorUv, .001);
+  assert.equal(report.criteria.sourceComponentMaximumErrorUv, .001);
+  assert.equal(report.observationVersion, 'biohybrid-source-observations/1.0.0');
   assert.equal(report.allAcceptancePassed, true);
   assert.equal(report.strictPointwiseAllPassed, true);
   assert.equal(report.cases.length, 4);
@@ -61,6 +63,12 @@ for (const reference of report.cases) {
       assert.equal(actual.length, native.length);
       const error = max(Array.from(actual, (value, i) => Math.abs(value - native[i])));
       assert.ok(error <= report.criteria.extracellularMaximumErrorUv, `Contact ${contact + 1}: native EAP error ${error} µV`);
+      for (const [field, nativeField] of [['graftUv','nativeGraftRecordingUv'],['hostUv','nativeHostRecordingUv']]) {
+        const source = result.recordings[contact][field], nativeSource = reference[nativeField][contact];
+        assert.equal(source.length, nativeSource.length);
+        const sourceError = max(Array.from(source, (value, i) => Math.abs(value - nativeSource[i])));
+        assert.ok(sourceError <= report.criteria.sourceComponentMaximumErrorUv, `${field} contact ${contact + 1}: native source error ${sourceError} µV`);
+      }
     }
   });
 }

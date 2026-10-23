@@ -12,6 +12,9 @@ test('biohybrid exports: JSON preserves normalized physical settings and measure
  assert.deepEqual(doc.settings,normalizeSettings(DEFAULT_SETTINGS));
  assert.equal(doc.sampleCount,result.timeMs.length);assert.equal(doc.compartmentCount,result.geometry.nodes.length);
  assert.deepEqual(doc.metrics,result.metrics);assert.deepEqual(doc.spikes,result.spikes);
+ assert.equal(doc.metrics.successfulTransmission,true);assert.equal(doc.metrics.relayConsistentHosts,result.metrics.relayConsistentHosts);
+ assert.match(doc.metricDefinitions.successfulTransmission.evidence,/Temporal consistency only/);
+ assert.match(doc.metricDefinitions.relayConsistentHosts.meaning,/Number of distinct host cells/);
  assert.deepEqual(doc.units,{time:'ms',membrane:'mV',extracellular:'µV',stimulus:'µA',length:'µm',conductance:'µS',conductivity:'S/m'});
  assert.equal(doc.metrics.recruitedHosts,3);assert.ok(doc.metrics.firstHostSpikeMs>doc.metrics.firstGraftSpikeMs);
 });
@@ -37,10 +40,10 @@ test('biohybrid exports: CSV columns, units, sample count, and every scientific 
  const csv=simulationCSV(result),header=csv.split('\n')[0].split(','),rows=numericalRows(csv);
  assert.deepEqual(header.slice(0,2),['time_ms','stimulus_uA']);
  assert.equal(rows.length,result.timeMs.length);
- assert.equal(header.length,2+result.traces.length+3*result.recordings.length);
+ assert.equal(header.length,2+result.traces.length+5*result.recordings.length);
  assert.equal(header[2],'graft-1_mV');assert.ok(header.includes('rec-1_neural_uV'));assert.ok(header.includes('rec-1_artifact_uV'));assert.ok(header.includes('rec-1_total_uV'));
  for(let i=0;i<rows.length;i++){
-  const expected=[result.timeMs[i],result.stimulusUa[i],...result.traces.map(t=>t.values[i]),...result.recordings.flatMap(r=>[r.neuralUv[i],r.artifactUv[i],r.totalUv[i]])];
+  const expected=[result.timeMs[i],result.stimulusUa[i],...result.traces.map(t=>t.values[i]),...result.recordings.flatMap(r=>[r.neuralUv[i],r.artifactUv[i],r.totalUv[i],r.graftUv[i],r.hostUv[i]])];
   assert.equal(rows[i].length,expected.length);
   for(let j=0;j<expected.length;j++)assert.ok(Math.abs(rows[i][j]-expected[j])<=Math.max(1e-8,Math.abs(expected[j])*1e-9));
  }
@@ -52,7 +55,7 @@ test('biohybrid exports: CSV columns, units, sample count, and every scientific 
 
 test('biohybrid exports: complete compartment CSV retains the exact frame-to-node mapping',()=>{
  const csv=simulationCSV(result,{allCompartments:true}),lines=csv.trimEnd().split('\n'),header=lines[0].split(',');
- const offset=2+result.traces.length+3*result.recordings.length,n=result.geometry.nodes.length;
+ const offset=2+result.traces.length+5*result.recordings.length,n=result.geometry.nodes.length;
  assert.equal(header.length,offset+n);assert.equal(lines.length,result.timeMs.length+1);
  for(let j=0;j<n;j++)assert.equal(header[offset+j],`compartment_${j}_${result.geometry.nodes[j].id}_mV`);
  for(let i=0;i<result.timeMs.length;i++){
@@ -75,4 +78,19 @@ test('biohybrid exports: spike CSV preserves physical event times and rejects co
  assert.throws(()=>spikeCSV({...result,spikes:[{neuronId:'host-1',kind:'soma',timeMs:NaN}]}),/Invalid/);
  assert.throws(()=>spikeCSV({...result,spikes:[{neuronId:'host-1',kind:'soma',timeMs:result.settings.durationMs+1}]}),/Invalid/);
  assert.equal(spikeCSV({...result,spikes:[]}).trim(),'neuron_id,location,time_ms');
+});
+
+
+test('biohybrid exports: source components have explicit provenance and sample-wise additivity',()=>{
+ const doc=experimentDocument(result);assert.equal(doc.observations,'biohybrid-source-observations/1.0.0');
+ assert.match(doc.recordingComponents.host,/subthreshold/);assert.match(doc.recordingComponents.graft,/Known/);
+ const csv=simulationCSV(result),header=csv.split('\n')[0].split(','),rows=numericalRows(csv);
+ for(const record of result.recordings){
+  const a=header.indexOf(`${record.id}_graft_uV`),b=header.indexOf(`${record.id}_host_uV`),n=header.indexOf(`${record.id}_neural_uV`);
+  assert.ok(a>=0&&b>=0);
+  for(const row of rows)assert.ok(Math.abs(row[a]+row[b]-row[n])<1e-7);
+ }
+ const recordings=result.recordings.map(r=>({...r,hostUv:Float64Array.from(r.hostUv)}));recordings[0].hostUv[15]=NaN;
+ assert.throws(()=>simulationCSV({...result,recordings}),/non-finite/);
+ assert.throws(()=>simulationCSV({...result,recordings:result.recordings.map(r=>({...r,graftUv:undefined}))}),/Incomplete/);
 });

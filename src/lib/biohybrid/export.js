@@ -1,10 +1,21 @@
-import { MODEL_VERSION, normalizeSettings } from './model.js';
+import { MODEL_VERSION, OBSERVATION_VERSION, normalizeSettings } from './model.js';
 export { MODEL_VERSION };
 export const EXPORT_SCHEMA='bts-biohybrid-experiment/1';
+// Legacy metric and CSV names are retained; these are signed first-event
+// differences and do not identify a propagation route on their own.
+export const TIMING_DEFINITIONS=Object.freeze({
+ conductionDelayMs:Object.freeze({unit:'ms',protocolCsvColumn:'trunk_delay_ms',label:'Signed graft-1 tip minus soma first-crossing time',expression:'First upward 0 mV crossing at the graft-1 tract tip minus the first upward 0 mV crossing at the graft-1 soma',negativeMeaning:'The graft-1 tract tip crossed before its soma. This signed event-order difference cannot be used as a forward conduction delay; inspect local initiation and propagation.'}),
+ relayDelayMs:Object.freeze({unit:'ms',protocolCsvColumn:'relay_delay_ms',label:'Signed earliest host minus graft-1 soma first-crossing time',expression:'Earliest upward 0 mV crossing among host somata minus the first upward 0 mV crossing at the graft-1 soma',negativeMeaning:'A host soma crossed before the graft-1 soma; use matched synapses-off controls and individual spike times to assess the activation route.'}),
+});
+export const METRIC_DEFINITIONS=Object.freeze({
+ ...TIMING_DEFINITIONS,
+ successfulTransmission:Object.freeze({type:'boolean',label:'Legacy temporal relay-consistency flag',meaning:'True when at least one host has a somatic upward 0 mV crossing after an earlier applied synaptic event at that same host during the run.',evidence:'Temporal consistency only. This flag does not establish synaptic dependence or exclude direct electrical activation; use the matched synapses-off comparison.'}),
+ relayConsistentHosts:Object.freeze({unit:'cells',label:'Hosts with temporally relay-consistent activity',meaning:'Number of distinct host cells with at least one somatic upward 0 mV crossing after an earlier applied synaptic event at that same host during the run.',evidence:'A temporal association, not a count of causally verified synaptic relays. Use the matched synapses-off comparison to test dependence within this model.'}),
+});
 const cell=v=>/[",\n\r]/.test(String(v))?`"${String(v).replaceAll('"','""')}"`:String(v);
 export function experimentDocument(result,label='Custom experiment'){
  if(!result?.settings||!result?.timeMs?.length)throw new Error('A completed calculation is required.');
- return {schema:EXPORT_SCHEMA,model:MODEL_VERSION,label,settings:{...result.settings},units:{time:'ms',membrane:'mV',extracellular:'µV',stimulus:'µA',length:'µm',conductance:'µS',conductivity:'S/m'},sampleCount:result.timeMs.length,compartmentCount:result.geometry.nodes.length,metrics:result.metrics,diagnostics:result.diagnostics,spikes:result.spikes,provenance:{membrane:'Canonical Hodgkin–Huxley; generic benchmark, not a fit to graft neurons',morphology:'Synthetic branched cables',source:'/simulations/biohybrid-interface/methods/'}};
+ return {schema:EXPORT_SCHEMA,model:MODEL_VERSION,observations:OBSERVATION_VERSION,label,recordingComponents:{neural:'Sum of outward transmembrane-current contributions; applied field excluded',graft:'Known engineered-cell source contribution, including subthreshold currents',host:'Known host-cell source contribution, including subthreshold currents',artifact:'Imposed source/return field',total:'Neural plus imposed field'},settings:{...result.settings},units:{time:'ms',membrane:'mV',extracellular:'µV',stimulus:'µA',length:'µm',conductance:'µS',conductivity:'S/m'},sampleCount:result.timeMs.length,compartmentCount:result.geometry.nodes.length,metrics:result.metrics,metricDefinitions:METRIC_DEFINITIONS,diagnostics:result.diagnostics,spikes:result.spikes,provenance:{membrane:'Canonical Hodgkin–Huxley; generic benchmark, not a fit to graft neurons',morphology:'Synthetic branched cables',source:'/simulations/biohybrid-interface/methods/'}};
 }
 export function experimentJSON(result,label){return JSON.stringify(experimentDocument(result,label),null,2);}
 export function parseExperiment(text){
@@ -15,11 +26,11 @@ export function parseExperiment(text){
 export function simulationCSV(result,{allCompartments=false}={}){
  if(!result?.timeMs?.length)throw new Error('No simulation samples to export.');
  const traces=result.traces??[],records=result.recordings??[],n=result.geometry.nodes.length;
- const columns=['time_ms','stimulus_uA',...traces.map(t=>`${t.id}_mV`),...records.flatMap(r=>[`${r.id}_neural_uV`,`${r.id}_artifact_uV`,`${r.id}_total_uV`])];
+ const columns=['time_ms','stimulus_uA',...traces.map(t=>`${t.id}_mV`),...records.flatMap(r=>[`${r.id}_neural_uV`,`${r.id}_artifact_uV`,`${r.id}_total_uV`,`${r.id}_graft_uV`,`${r.id}_host_uV`])];
  if(allCompartments)columns.push(...result.geometry.nodes.map((node,i)=>`compartment_${i}_${node.id}_mV`));
  const rows=[columns.map(cell).join(',')];
  for(let i=0;i<result.timeMs.length;i++){
-  const row=[result.timeMs[i],result.stimulusUa[i],...traces.map(t=>t.values[i]),...records.flatMap(r=>[r.neuralUv[i],r.artifactUv[i],r.totalUv[i]])];
+  const row=[result.timeMs[i],result.stimulusUa[i],...traces.map(t=>t.values[i]),...records.flatMap(r=>[r.neuralUv[i],r.artifactUv[i],r.totalUv[i],r.graftUv?.[i],r.hostUv?.[i]])];
   if(allCompartments)for(let j=0;j<n;j++)row.push(result.voltageMv[i*n+j]);
   if(row.some(v=>!Number.isFinite(v)))throw new Error(`Incomplete or non-finite data at sample ${i}.`);
   rows.push(row.map(v=>Number(v).toPrecision(10)).join(','));
