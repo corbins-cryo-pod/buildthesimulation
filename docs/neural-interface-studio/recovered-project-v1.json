@@ -1,0 +1,3497 @@
+{
+  "schema": "bts-neural-interface-studio",
+  "version": 1,
+  "savedAt": "2026-10-23T14:37:34.814Z",
+  "modelVersion": "neural-interface-studio/1.0.0",
+  "design": {
+    "id": "incomplete-contact-etch",
+    "name": "Contacts still covered",
+    "revision": 1,
+    "units": "um",
+    "outline": [
+      [
+        160,
+        12
+      ],
+      [
+        296,
+        120
+      ],
+      [
+        296,
+        976
+      ],
+      [
+        24,
+        976
+      ],
+      [
+        24,
+        120
+      ]
+    ],
+    "sites": [
+      {
+        "id": "E01",
+        "shape": "circle",
+        "x": 64,
+        "y": 170,
+        "w": 48,
+        "h": 48,
+        "inner": 0,
+        "rotation": 0,
+        "netId": "N01"
+      },
+      {
+        "id": "E02",
+        "shape": "circle",
+        "x": 128,
+        "y": 170,
+        "w": 48,
+        "h": 48,
+        "inner": 0,
+        "rotation": 0,
+        "netId": "N02"
+      },
+      {
+        "id": "E03",
+        "shape": "circle",
+        "x": 192,
+        "y": 170,
+        "w": 48,
+        "h": 48,
+        "inner": 0,
+        "rotation": 0,
+        "netId": "N03"
+      },
+      {
+        "id": "E04",
+        "shape": "circle",
+        "x": 256,
+        "y": 170,
+        "w": 48,
+        "h": 48,
+        "inner": 0,
+        "rotation": 0,
+        "netId": "N04"
+      }
+    ],
+    "pads": [
+      {
+        "id": "P01",
+        "shape": "rect",
+        "x": 64,
+        "y": 900,
+        "w": 44,
+        "h": 72,
+        "inner": 0,
+        "rotation": 0,
+        "netId": "N01"
+      },
+      {
+        "id": "P02",
+        "shape": "rect",
+        "x": 128,
+        "y": 900,
+        "w": 44,
+        "h": 72,
+        "inner": 0,
+        "rotation": 0,
+        "netId": "N02"
+      },
+      {
+        "id": "P03",
+        "shape": "rect",
+        "x": 192,
+        "y": 900,
+        "w": 44,
+        "h": 72,
+        "inner": 0,
+        "rotation": 0,
+        "netId": "N03"
+      },
+      {
+        "id": "P04",
+        "shape": "rect",
+        "x": 256,
+        "y": 900,
+        "w": 44,
+        "h": 72,
+        "inner": 0,
+        "rotation": 0,
+        "netId": "N04"
+      }
+    ],
+    "traces": [
+      {
+        "id": "T01",
+        "netId": "N01",
+        "width": 12,
+        "points": [
+          [
+            64,
+            170
+          ],
+          [
+            64,
+            900
+          ]
+        ]
+      },
+      {
+        "id": "T02",
+        "netId": "N02",
+        "width": 12,
+        "points": [
+          [
+            128,
+            170
+          ],
+          [
+            128,
+            900
+          ]
+        ]
+      },
+      {
+        "id": "T03",
+        "netId": "N03",
+        "width": 12,
+        "points": [
+          [
+            192,
+            170
+          ],
+          [
+            192,
+            900
+          ]
+        ]
+      },
+      {
+        "id": "T04",
+        "netId": "N04",
+        "width": 12,
+        "points": [
+          [
+            256,
+            170
+          ],
+          [
+            256,
+            900
+          ]
+        ]
+      }
+    ],
+    "openings": [
+      {
+        "id": "O01",
+        "shape": "circle",
+        "x": 64,
+        "y": 170,
+        "w": 36,
+        "h": 36,
+        "inner": 0,
+        "rotation": 0,
+        "targetId": "E01",
+        "kind": "site"
+      },
+      {
+        "id": "OP01",
+        "shape": "rect",
+        "x": 64,
+        "y": 900,
+        "w": 36,
+        "h": 56,
+        "inner": 0,
+        "rotation": 0,
+        "targetId": "P01",
+        "kind": "pad"
+      },
+      {
+        "id": "O02",
+        "shape": "circle",
+        "x": 128,
+        "y": 170,
+        "w": 36,
+        "h": 36,
+        "inner": 0,
+        "rotation": 0,
+        "targetId": "E02",
+        "kind": "site"
+      },
+      {
+        "id": "OP02",
+        "shape": "rect",
+        "x": 128,
+        "y": 900,
+        "w": 36,
+        "h": 56,
+        "inner": 0,
+        "rotation": 0,
+        "targetId": "P02",
+        "kind": "pad"
+      },
+      {
+        "id": "O03",
+        "shape": "circle",
+        "x": 192,
+        "y": 170,
+        "w": 36,
+        "h": 36,
+        "inner": 0,
+        "rotation": 0,
+        "targetId": "E03",
+        "kind": "site"
+      },
+      {
+        "id": "OP03",
+        "shape": "rect",
+        "x": 192,
+        "y": 900,
+        "w": 36,
+        "h": 56,
+        "inner": 0,
+        "rotation": 0,
+        "targetId": "P03",
+        "kind": "pad"
+      },
+      {
+        "id": "O04",
+        "shape": "circle",
+        "x": 256,
+        "y": 170,
+        "w": 36,
+        "h": 36,
+        "inner": 0,
+        "rotation": 0,
+        "targetId": "E04",
+        "kind": "site"
+      },
+      {
+        "id": "OP04",
+        "shape": "rect",
+        "x": 256,
+        "y": 900,
+        "w": 36,
+        "h": 56,
+        "inner": 0,
+        "rotation": 0,
+        "targetId": "P04",
+        "kind": "pad"
+      }
+    ],
+    "nets": [
+      {
+        "id": "N01",
+        "siteId": "E01",
+        "padId": "P01"
+      },
+      {
+        "id": "N02",
+        "siteId": "E02",
+        "padId": "P02"
+      },
+      {
+        "id": "N03",
+        "siteId": "E03",
+        "padId": "P03"
+      },
+      {
+        "id": "N04",
+        "siteId": "E04",
+        "padId": "P04"
+      }
+    ]
+  },
+  "recipe": {
+    "baseThicknessUm": 10,
+    "metalThicknessUm": 0.2,
+    "topThicknessUm": 10,
+    "resistThicknessUm": 2,
+    "undercutUm": 1.2,
+    "depositionAngleDeg": 6,
+    "lithographyBiasUm": 0,
+    "overlayXUm": 0,
+    "overlayYUm": 0,
+    "overlayRotationDeg": 0,
+    "etchTimeMin": 6,
+    "etchRateUmMin": 1,
+    "maskThicknessUm": 6,
+    "etchSelectivity": 3,
+    "lateralRatio": 0.04,
+    "resistivityOhmM": 4.88e-8
+  },
+  "defects": [],
+  "cellUm": 2,
+  "runs": [
+    {
+      "id": "run-1792764660952-64b8956e",
+      "name": "Four-channel reference · run 1",
+      "createdAt": "2026-10-23T14:11:00.952Z",
+      "modelVersion": "neural-interface-studio/1.0.0",
+      "design": {
+        "id": "reference-strip",
+        "name": "Four-channel reference",
+        "revision": 1,
+        "units": "um",
+        "outline": [
+          [
+            160,
+            12
+          ],
+          [
+            296,
+            120
+          ],
+          [
+            296,
+            976
+          ],
+          [
+            24,
+            976
+          ],
+          [
+            24,
+            120
+          ]
+        ],
+        "sites": [
+          {
+            "id": "E01",
+            "shape": "circle",
+            "x": 64,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N01"
+          },
+          {
+            "id": "E02",
+            "shape": "circle",
+            "x": 128,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N02"
+          },
+          {
+            "id": "E03",
+            "shape": "circle",
+            "x": 192,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N03"
+          },
+          {
+            "id": "E04",
+            "shape": "circle",
+            "x": 256,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N04"
+          }
+        ],
+        "pads": [
+          {
+            "id": "P01",
+            "shape": "rect",
+            "x": 64,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N01"
+          },
+          {
+            "id": "P02",
+            "shape": "rect",
+            "x": 128,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N02"
+          },
+          {
+            "id": "P03",
+            "shape": "rect",
+            "x": 192,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N03"
+          },
+          {
+            "id": "P04",
+            "shape": "rect",
+            "x": 256,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N04"
+          }
+        ],
+        "traces": [
+          {
+            "id": "T01",
+            "netId": "N01",
+            "width": 12,
+            "points": [
+              [
+                64,
+                170
+              ],
+              [
+                64,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T02",
+            "netId": "N02",
+            "width": 12,
+            "points": [
+              [
+                128,
+                170
+              ],
+              [
+                128,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T03",
+            "netId": "N03",
+            "width": 12,
+            "points": [
+              [
+                192,
+                170
+              ],
+              [
+                192,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T04",
+            "netId": "N04",
+            "width": 12,
+            "points": [
+              [
+                256,
+                170
+              ],
+              [
+                256,
+                900
+              ]
+            ]
+          }
+        ],
+        "openings": [
+          {
+            "id": "O01",
+            "shape": "circle",
+            "x": 64,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E01",
+            "kind": "site"
+          },
+          {
+            "id": "OP01",
+            "shape": "rect",
+            "x": 64,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P01",
+            "kind": "pad"
+          },
+          {
+            "id": "O02",
+            "shape": "circle",
+            "x": 128,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E02",
+            "kind": "site"
+          },
+          {
+            "id": "OP02",
+            "shape": "rect",
+            "x": 128,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P02",
+            "kind": "pad"
+          },
+          {
+            "id": "O03",
+            "shape": "circle",
+            "x": 192,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E03",
+            "kind": "site"
+          },
+          {
+            "id": "OP03",
+            "shape": "rect",
+            "x": 192,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P03",
+            "kind": "pad"
+          },
+          {
+            "id": "O04",
+            "shape": "circle",
+            "x": 256,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E04",
+            "kind": "site"
+          },
+          {
+            "id": "OP04",
+            "shape": "rect",
+            "x": 256,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P04",
+            "kind": "pad"
+          }
+        ],
+        "nets": [
+          {
+            "id": "N01",
+            "siteId": "E01",
+            "padId": "P01"
+          },
+          {
+            "id": "N02",
+            "siteId": "E02",
+            "padId": "P02"
+          },
+          {
+            "id": "N03",
+            "siteId": "E03",
+            "padId": "P03"
+          },
+          {
+            "id": "N04",
+            "siteId": "E04",
+            "padId": "P04"
+          }
+        ]
+      },
+      "recipe": {
+        "baseThicknessUm": 10,
+        "metalThicknessUm": 0.2,
+        "topThicknessUm": 10,
+        "resistThicknessUm": 2,
+        "undercutUm": 1.2,
+        "depositionAngleDeg": 6,
+        "lithographyBiasUm": 0,
+        "overlayXUm": 0,
+        "overlayYUm": 0,
+        "overlayRotationDeg": 0,
+        "etchTimeMin": 12,
+        "etchRateUmMin": 1,
+        "maskThicknessUm": 6,
+        "etchSelectivity": 3,
+        "lateralRatio": 0.04,
+        "resistivityOhmM": 4.88e-8
+      },
+      "options": {
+        "stage": 9,
+        "cellUm": 2,
+        "computeResistance": true,
+        "defects": []
+      },
+      "inputHash": "f4eeeb85",
+      "geometryHash": "6ae84bfd",
+      "metrics": {
+        "connectedCount": 4,
+        "isolatedCount": 4,
+        "openCount": 0,
+        "shortCount": 0,
+        "coveredCount": 0,
+        "exposedAreaUm2": 4096,
+        "unintendedExposedAreaUm2": 0,
+        "totalThicknessUm": 20.2,
+        "componentCount": 4
+      },
+      "channels": [
+        {
+          "id": "N01",
+          "siteId": "E01",
+          "padId": "P01",
+          "connected": true,
+          "shortedWith": [],
+          "status": "connected",
+          "componentIds": [
+            1
+          ],
+          "commonComponentIds": [
+            1
+          ],
+          "siteComponentIds": [
+            1
+          ],
+          "padComponentIds": [
+            1
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 1024,
+          "connectedExposedAreaUm2": 1024,
+          "exposedPadAreaUm2": 2016,
+          "connectedExposedPadAreaUm2": 2016,
+          "contactAccessible": true,
+          "exposureFraction": 0.5714285714285714,
+          "apertureCoverageFraction": 1,
+          "resistanceOhm": 13.664000637068462,
+          "resistanceConverged": true,
+          "resistanceIterations": 469,
+          "resistanceResidual": 8.331423025757092e-9,
+          "resistanceCurrentBalance": 4.5069799716861124e-7,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        },
+        {
+          "id": "N02",
+          "siteId": "E02",
+          "padId": "P02",
+          "connected": true,
+          "shortedWith": [],
+          "status": "connected",
+          "componentIds": [
+            2
+          ],
+          "commonComponentIds": [
+            2
+          ],
+          "siteComponentIds": [
+            2
+          ],
+          "padComponentIds": [
+            2
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 1024,
+          "connectedExposedAreaUm2": 1024,
+          "exposedPadAreaUm2": 2016,
+          "connectedExposedPadAreaUm2": 2016,
+          "contactAccessible": true,
+          "exposureFraction": 0.5714285714285714,
+          "apertureCoverageFraction": 1,
+          "resistanceOhm": 13.664000637068462,
+          "resistanceConverged": true,
+          "resistanceIterations": 469,
+          "resistanceResidual": 8.331423025757092e-9,
+          "resistanceCurrentBalance": 4.5069799716861124e-7,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        },
+        {
+          "id": "N03",
+          "siteId": "E03",
+          "padId": "P03",
+          "connected": true,
+          "shortedWith": [],
+          "status": "connected",
+          "componentIds": [
+            3
+          ],
+          "commonComponentIds": [
+            3
+          ],
+          "siteComponentIds": [
+            3
+          ],
+          "padComponentIds": [
+            3
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 1024,
+          "connectedExposedAreaUm2": 1024,
+          "exposedPadAreaUm2": 2016,
+          "connectedExposedPadAreaUm2": 2016,
+          "contactAccessible": true,
+          "exposureFraction": 0.5714285714285714,
+          "apertureCoverageFraction": 1,
+          "resistanceOhm": 13.664000637068462,
+          "resistanceConverged": true,
+          "resistanceIterations": 469,
+          "resistanceResidual": 8.331423025757092e-9,
+          "resistanceCurrentBalance": 4.5069799716861124e-7,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        },
+        {
+          "id": "N04",
+          "siteId": "E04",
+          "padId": "P04",
+          "connected": true,
+          "shortedWith": [],
+          "status": "connected",
+          "componentIds": [
+            4
+          ],
+          "commonComponentIds": [
+            4
+          ],
+          "siteComponentIds": [
+            4
+          ],
+          "padComponentIds": [
+            4
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 1024,
+          "connectedExposedAreaUm2": 1024,
+          "exposedPadAreaUm2": 2016,
+          "connectedExposedPadAreaUm2": 2016,
+          "contactAccessible": true,
+          "exposureFraction": 0.5714285714285714,
+          "apertureCoverageFraction": 1,
+          "resistanceOhm": 13.664000637068462,
+          "resistanceConverged": true,
+          "resistanceIterations": 469,
+          "resistanceResidual": 8.331423025757092e-9,
+          "resistanceCurrentBalance": 4.5069799716861124e-7,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        }
+      ],
+      "process": {
+        "liftOffMarginUm": 0.7897915294686471,
+        "sidewallReachUm": 0.4102084705313529,
+        "maskRemainingUm": 2,
+        "capRemainingUm": 0,
+        "etchDepthUm": 12,
+        "protectedDepthUm": 0,
+        "maskLifetimeMin": 18,
+        "overlayPivotUm": [
+          160,
+          494
+        ],
+        "minimumBaseThicknessUm": 10,
+        "electricalAcceptanceAvailable": true
+      },
+      "numerical": {
+        "cellCount": 75696,
+        "minFeatureUm": 12,
+        "elapsedMs": 546.6999999992549,
+        "resolutionWarnings": [],
+        "resistanceTolerance": 1e-8,
+        "resistanceMaxIterations": 4000,
+        "resistanceWork": 3770760,
+        "gridConvention": "cell-centres; four-neighbour shared-face conduction"
+      },
+      "diagnostics": [],
+      "effectiveStage": 9,
+      "imported": true
+    },
+    {
+      "id": "run-1792765058132-64b8956e",
+      "name": "Four-channel reference · run 2",
+      "createdAt": "2026-10-23T14:17:38.132Z",
+      "modelVersion": "neural-interface-studio/1.0.0",
+      "design": {
+        "id": "reference-strip",
+        "name": "Four-channel reference",
+        "revision": 1,
+        "units": "um",
+        "outline": [
+          [
+            160,
+            12
+          ],
+          [
+            296,
+            120
+          ],
+          [
+            296,
+            976
+          ],
+          [
+            24,
+            976
+          ],
+          [
+            24,
+            120
+          ]
+        ],
+        "sites": [
+          {
+            "id": "E01",
+            "shape": "circle",
+            "x": 64,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N01"
+          },
+          {
+            "id": "E02",
+            "shape": "circle",
+            "x": 128,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N02"
+          },
+          {
+            "id": "E03",
+            "shape": "circle",
+            "x": 192,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N03"
+          },
+          {
+            "id": "E04",
+            "shape": "circle",
+            "x": 256,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N04"
+          }
+        ],
+        "pads": [
+          {
+            "id": "P01",
+            "shape": "rect",
+            "x": 64,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N01"
+          },
+          {
+            "id": "P02",
+            "shape": "rect",
+            "x": 128,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N02"
+          },
+          {
+            "id": "P03",
+            "shape": "rect",
+            "x": 192,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N03"
+          },
+          {
+            "id": "P04",
+            "shape": "rect",
+            "x": 256,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N04"
+          }
+        ],
+        "traces": [
+          {
+            "id": "T01",
+            "netId": "N01",
+            "width": 12,
+            "points": [
+              [
+                64,
+                170
+              ],
+              [
+                64,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T02",
+            "netId": "N02",
+            "width": 12,
+            "points": [
+              [
+                128,
+                170
+              ],
+              [
+                128,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T03",
+            "netId": "N03",
+            "width": 12,
+            "points": [
+              [
+                192,
+                170
+              ],
+              [
+                192,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T04",
+            "netId": "N04",
+            "width": 12,
+            "points": [
+              [
+                256,
+                170
+              ],
+              [
+                256,
+                900
+              ]
+            ]
+          }
+        ],
+        "openings": [
+          {
+            "id": "O01",
+            "shape": "circle",
+            "x": 64,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E01",
+            "kind": "site"
+          },
+          {
+            "id": "OP01",
+            "shape": "rect",
+            "x": 64,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P01",
+            "kind": "pad"
+          },
+          {
+            "id": "O02",
+            "shape": "circle",
+            "x": 128,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E02",
+            "kind": "site"
+          },
+          {
+            "id": "OP02",
+            "shape": "rect",
+            "x": 128,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P02",
+            "kind": "pad"
+          },
+          {
+            "id": "O03",
+            "shape": "circle",
+            "x": 192,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E03",
+            "kind": "site"
+          },
+          {
+            "id": "OP03",
+            "shape": "rect",
+            "x": 192,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P03",
+            "kind": "pad"
+          },
+          {
+            "id": "O04",
+            "shape": "circle",
+            "x": 256,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E04",
+            "kind": "site"
+          },
+          {
+            "id": "OP04",
+            "shape": "rect",
+            "x": 256,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P04",
+            "kind": "pad"
+          }
+        ],
+        "nets": [
+          {
+            "id": "N01",
+            "siteId": "E01",
+            "padId": "P01"
+          },
+          {
+            "id": "N02",
+            "siteId": "E02",
+            "padId": "P02"
+          },
+          {
+            "id": "N03",
+            "siteId": "E03",
+            "padId": "P03"
+          },
+          {
+            "id": "N04",
+            "siteId": "E04",
+            "padId": "P04"
+          }
+        ]
+      },
+      "recipe": {
+        "baseThicknessUm": 10,
+        "metalThicknessUm": 0.2,
+        "topThicknessUm": 10,
+        "resistThicknessUm": 2,
+        "undercutUm": 1.2,
+        "depositionAngleDeg": 6,
+        "lithographyBiasUm": 0,
+        "overlayXUm": 0,
+        "overlayYUm": 0,
+        "overlayRotationDeg": 0,
+        "etchTimeMin": 12,
+        "etchRateUmMin": 1,
+        "maskThicknessUm": 6,
+        "etchSelectivity": 3,
+        "lateralRatio": 0.04,
+        "resistivityOhmM": 4.88e-8
+      },
+      "options": {
+        "stage": 9,
+        "cellUm": 2,
+        "computeResistance": true,
+        "defects": []
+      },
+      "inputHash": "f4eeeb85",
+      "geometryHash": "6ae84bfd",
+      "metrics": {
+        "connectedCount": 4,
+        "isolatedCount": 4,
+        "openCount": 0,
+        "shortCount": 0,
+        "coveredCount": 0,
+        "exposedAreaUm2": 4096,
+        "unintendedExposedAreaUm2": 0,
+        "totalThicknessUm": 20.2,
+        "componentCount": 4
+      },
+      "channels": [
+        {
+          "id": "N01",
+          "siteId": "E01",
+          "padId": "P01",
+          "connected": true,
+          "shortedWith": [],
+          "status": "connected",
+          "componentIds": [
+            1
+          ],
+          "commonComponentIds": [
+            1
+          ],
+          "siteComponentIds": [
+            1
+          ],
+          "padComponentIds": [
+            1
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 1024,
+          "connectedExposedAreaUm2": 1024,
+          "exposedPadAreaUm2": 2016,
+          "connectedExposedPadAreaUm2": 2016,
+          "contactAccessible": true,
+          "exposureFraction": 0.5714285714285714,
+          "apertureCoverageFraction": 1,
+          "resistanceOhm": 13.66400000000005,
+          "resistanceConverged": true,
+          "resistanceIterations": 0,
+          "resistanceResidual": 2.5389904903037657e-15,
+          "resistanceCurrentBalance": 0,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        },
+        {
+          "id": "N02",
+          "siteId": "E02",
+          "padId": "P02",
+          "connected": true,
+          "shortedWith": [],
+          "status": "connected",
+          "componentIds": [
+            2
+          ],
+          "commonComponentIds": [
+            2
+          ],
+          "siteComponentIds": [
+            2
+          ],
+          "padComponentIds": [
+            2
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 1024,
+          "connectedExposedAreaUm2": 1024,
+          "exposedPadAreaUm2": 2016,
+          "connectedExposedPadAreaUm2": 2016,
+          "contactAccessible": true,
+          "exposureFraction": 0.5714285714285714,
+          "apertureCoverageFraction": 1,
+          "resistanceOhm": 13.66400000000005,
+          "resistanceConverged": true,
+          "resistanceIterations": 0,
+          "resistanceResidual": 2.5389904903037657e-15,
+          "resistanceCurrentBalance": 0,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        },
+        {
+          "id": "N03",
+          "siteId": "E03",
+          "padId": "P03",
+          "connected": true,
+          "shortedWith": [],
+          "status": "connected",
+          "componentIds": [
+            3
+          ],
+          "commonComponentIds": [
+            3
+          ],
+          "siteComponentIds": [
+            3
+          ],
+          "padComponentIds": [
+            3
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 1024,
+          "connectedExposedAreaUm2": 1024,
+          "exposedPadAreaUm2": 2016,
+          "connectedExposedPadAreaUm2": 2016,
+          "contactAccessible": true,
+          "exposureFraction": 0.5714285714285714,
+          "apertureCoverageFraction": 1,
+          "resistanceOhm": 13.66400000000005,
+          "resistanceConverged": true,
+          "resistanceIterations": 0,
+          "resistanceResidual": 2.5389904903037657e-15,
+          "resistanceCurrentBalance": 0,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        },
+        {
+          "id": "N04",
+          "siteId": "E04",
+          "padId": "P04",
+          "connected": true,
+          "shortedWith": [],
+          "status": "connected",
+          "componentIds": [
+            4
+          ],
+          "commonComponentIds": [
+            4
+          ],
+          "siteComponentIds": [
+            4
+          ],
+          "padComponentIds": [
+            4
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 1024,
+          "connectedExposedAreaUm2": 1024,
+          "exposedPadAreaUm2": 2016,
+          "connectedExposedPadAreaUm2": 2016,
+          "contactAccessible": true,
+          "exposureFraction": 0.5714285714285714,
+          "apertureCoverageFraction": 1,
+          "resistanceOhm": 13.66400000000005,
+          "resistanceConverged": true,
+          "resistanceIterations": 0,
+          "resistanceResidual": 2.5389904903037657e-15,
+          "resistanceCurrentBalance": 0,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        }
+      ],
+      "process": {
+        "liftOffMarginUm": 0.7897915294686471,
+        "sidewallReachUm": 0.4102084705313529,
+        "maskRemainingUm": 2,
+        "capRemainingUm": 0,
+        "etchDepthUm": 12,
+        "protectedDepthUm": 0,
+        "maskLifetimeMin": 18,
+        "overlayPivotUm": [
+          160,
+          494
+        ],
+        "minimumBaseThicknessUm": 10,
+        "electricalAcceptanceAvailable": true
+      },
+      "numerical": {
+        "cellCount": 75696,
+        "minFeatureUm": 12,
+        "elapsedMs": 206.10000000149012,
+        "resolutionWarnings": [],
+        "resistanceTolerance": 1e-8,
+        "resistanceMaxIterations": 4000,
+        "resistanceWork": 0,
+        "gridConvention": "cell-centres; four-neighbour shared-face conduction"
+      },
+      "diagnostics": [],
+      "effectiveStage": 9,
+      "imported": true
+    },
+    {
+      "id": "run-1792765422577-cfe3683a",
+      "name": "One broken conductor · run 3",
+      "createdAt": "2026-10-23T14:23:42.577Z",
+      "modelVersion": "neural-interface-studio/1.0.0",
+      "design": {
+        "id": "open-conductor",
+        "name": "One broken conductor",
+        "revision": 1,
+        "units": "um",
+        "outline": [
+          [
+            160,
+            12
+          ],
+          [
+            296,
+            120
+          ],
+          [
+            296,
+            976
+          ],
+          [
+            24,
+            976
+          ],
+          [
+            24,
+            120
+          ]
+        ],
+        "sites": [
+          {
+            "id": "E01",
+            "shape": "circle",
+            "x": 64,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N01"
+          },
+          {
+            "id": "E02",
+            "shape": "circle",
+            "x": 128,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N02"
+          },
+          {
+            "id": "E03",
+            "shape": "circle",
+            "x": 192,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N03"
+          },
+          {
+            "id": "E04",
+            "shape": "circle",
+            "x": 256,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N04"
+          }
+        ],
+        "pads": [
+          {
+            "id": "P01",
+            "shape": "rect",
+            "x": 64,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N01"
+          },
+          {
+            "id": "P02",
+            "shape": "rect",
+            "x": 128,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N02"
+          },
+          {
+            "id": "P03",
+            "shape": "rect",
+            "x": 192,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N03"
+          },
+          {
+            "id": "P04",
+            "shape": "rect",
+            "x": 256,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N04"
+          }
+        ],
+        "traces": [
+          {
+            "id": "T01",
+            "netId": "N01",
+            "width": 12,
+            "points": [
+              [
+                64,
+                170
+              ],
+              [
+                64,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T02",
+            "netId": "N02",
+            "width": 12,
+            "points": [
+              [
+                128,
+                170
+              ],
+              [
+                128,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T03",
+            "netId": "N03",
+            "width": 12,
+            "points": [
+              [
+                192,
+                170
+              ],
+              [
+                192,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T04",
+            "netId": "N04",
+            "width": 12,
+            "points": [
+              [
+                256,
+                170
+              ],
+              [
+                256,
+                900
+              ]
+            ]
+          }
+        ],
+        "openings": [
+          {
+            "id": "O01",
+            "shape": "circle",
+            "x": 64,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E01",
+            "kind": "site"
+          },
+          {
+            "id": "OP01",
+            "shape": "rect",
+            "x": 64,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P01",
+            "kind": "pad"
+          },
+          {
+            "id": "O02",
+            "shape": "circle",
+            "x": 128,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E02",
+            "kind": "site"
+          },
+          {
+            "id": "OP02",
+            "shape": "rect",
+            "x": 128,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P02",
+            "kind": "pad"
+          },
+          {
+            "id": "O03",
+            "shape": "circle",
+            "x": 192,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E03",
+            "kind": "site"
+          },
+          {
+            "id": "OP03",
+            "shape": "rect",
+            "x": 192,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P03",
+            "kind": "pad"
+          },
+          {
+            "id": "O04",
+            "shape": "circle",
+            "x": 256,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E04",
+            "kind": "site"
+          },
+          {
+            "id": "OP04",
+            "shape": "rect",
+            "x": 256,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P04",
+            "kind": "pad"
+          }
+        ],
+        "nets": [
+          {
+            "id": "N01",
+            "siteId": "E01",
+            "padId": "P01"
+          },
+          {
+            "id": "N02",
+            "siteId": "E02",
+            "padId": "P02"
+          },
+          {
+            "id": "N03",
+            "siteId": "E03",
+            "padId": "P03"
+          },
+          {
+            "id": "N04",
+            "siteId": "E04",
+            "padId": "P04"
+          }
+        ]
+      },
+      "recipe": {
+        "baseThicknessUm": 10,
+        "metalThicknessUm": 0.2,
+        "topThicknessUm": 10,
+        "resistThicknessUm": 2,
+        "undercutUm": 1.2,
+        "depositionAngleDeg": 6,
+        "lithographyBiasUm": 0,
+        "overlayXUm": 0,
+        "overlayYUm": 0,
+        "overlayRotationDeg": 0,
+        "etchTimeMin": 12,
+        "etchRateUmMin": 1,
+        "maskThicknessUm": 6,
+        "etchSelectivity": 3,
+        "lateralRatio": 0.04,
+        "resistivityOhmM": 4.88e-8
+      },
+      "options": {
+        "stage": 9,
+        "cellUm": 2,
+        "computeResistance": true,
+        "defects": [
+          {
+            "type": "cut",
+            "x": 64,
+            "y": 528,
+            "w": 32,
+            "h": 18
+          }
+        ]
+      },
+      "inputHash": "aec1b577",
+      "geometryHash": "2c2cddad",
+      "metrics": {
+        "connectedCount": 3,
+        "isolatedCount": 3,
+        "openCount": 1,
+        "shortCount": 0,
+        "coveredCount": 0,
+        "exposedAreaUm2": 4096,
+        "unintendedExposedAreaUm2": 0,
+        "totalThicknessUm": 20.2,
+        "componentCount": 5
+      },
+      "channels": [
+        {
+          "id": "N01",
+          "siteId": "E01",
+          "padId": "P01",
+          "connected": false,
+          "shortedWith": [],
+          "status": "open",
+          "componentIds": [
+            1,
+            5
+          ],
+          "commonComponentIds": [],
+          "siteComponentIds": [
+            1
+          ],
+          "padComponentIds": [
+            5
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 1024,
+          "connectedExposedAreaUm2": 0,
+          "exposedPadAreaUm2": 2016,
+          "connectedExposedPadAreaUm2": 0,
+          "contactAccessible": false,
+          "exposureFraction": 0.5714285714285714,
+          "apertureCoverageFraction": 1,
+          "resistanceOhm": null,
+          "resistanceConverged": false,
+          "resistanceIterations": 0,
+          "resistanceResidual": null,
+          "resistanceCurrentBalance": null,
+          "resistanceReason": "not-eligible"
+        },
+        {
+          "id": "N02",
+          "siteId": "E02",
+          "padId": "P02",
+          "connected": true,
+          "shortedWith": [],
+          "status": "connected",
+          "componentIds": [
+            2
+          ],
+          "commonComponentIds": [
+            2
+          ],
+          "siteComponentIds": [
+            2
+          ],
+          "padComponentIds": [
+            2
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 1024,
+          "connectedExposedAreaUm2": 1024,
+          "exposedPadAreaUm2": 2016,
+          "connectedExposedPadAreaUm2": 2016,
+          "contactAccessible": true,
+          "exposureFraction": 0.5714285714285714,
+          "apertureCoverageFraction": 1,
+          "resistanceOhm": 13.66400000000005,
+          "resistanceConverged": true,
+          "resistanceIterations": 0,
+          "resistanceResidual": 2.5389904903037657e-15,
+          "resistanceCurrentBalance": 0,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        },
+        {
+          "id": "N03",
+          "siteId": "E03",
+          "padId": "P03",
+          "connected": true,
+          "shortedWith": [],
+          "status": "connected",
+          "componentIds": [
+            3
+          ],
+          "commonComponentIds": [
+            3
+          ],
+          "siteComponentIds": [
+            3
+          ],
+          "padComponentIds": [
+            3
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 1024,
+          "connectedExposedAreaUm2": 1024,
+          "exposedPadAreaUm2": 2016,
+          "connectedExposedPadAreaUm2": 2016,
+          "contactAccessible": true,
+          "exposureFraction": 0.5714285714285714,
+          "apertureCoverageFraction": 1,
+          "resistanceOhm": 13.66400000000005,
+          "resistanceConverged": true,
+          "resistanceIterations": 0,
+          "resistanceResidual": 2.5389904903037657e-15,
+          "resistanceCurrentBalance": 0,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        },
+        {
+          "id": "N04",
+          "siteId": "E04",
+          "padId": "P04",
+          "connected": true,
+          "shortedWith": [],
+          "status": "connected",
+          "componentIds": [
+            4
+          ],
+          "commonComponentIds": [
+            4
+          ],
+          "siteComponentIds": [
+            4
+          ],
+          "padComponentIds": [
+            4
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 1024,
+          "connectedExposedAreaUm2": 1024,
+          "exposedPadAreaUm2": 2016,
+          "connectedExposedPadAreaUm2": 2016,
+          "contactAccessible": true,
+          "exposureFraction": 0.5714285714285714,
+          "apertureCoverageFraction": 1,
+          "resistanceOhm": 13.66400000000005,
+          "resistanceConverged": true,
+          "resistanceIterations": 0,
+          "resistanceResidual": 2.5389904903037657e-15,
+          "resistanceCurrentBalance": 0,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        }
+      ],
+      "process": {
+        "liftOffMarginUm": 0.7897915294686471,
+        "sidewallReachUm": 0.4102084705313529,
+        "maskRemainingUm": 2,
+        "capRemainingUm": 0,
+        "etchDepthUm": 12,
+        "protectedDepthUm": 0,
+        "maskLifetimeMin": 18,
+        "overlayPivotUm": [
+          160,
+          494
+        ],
+        "minimumBaseThicknessUm": 10,
+        "electricalAcceptanceAvailable": true
+      },
+      "numerical": {
+        "cellCount": 75696,
+        "minFeatureUm": 12,
+        "elapsedMs": 321,
+        "resolutionWarnings": [],
+        "resistanceTolerance": 1e-8,
+        "resistanceMaxIterations": 4000,
+        "resistanceWork": 0,
+        "gridConvention": "cell-centres; four-neighbour shared-face conduction"
+      },
+      "diagnostics": [
+        {
+          "id": "open-N01",
+          "severity": "error",
+          "title": "Site-to-pad path is open",
+          "detail": "N01 has no shared conductor component between its actual site and pad regions.",
+          "netIds": [
+            "N01"
+          ]
+        }
+      ],
+      "effectiveStage": 9,
+      "imported": true
+    },
+    {
+      "id": "run-1792765446207-6cd058bc",
+      "name": "Two bridged channels · run 4",
+      "createdAt": "2026-10-23T14:24:06.207Z",
+      "modelVersion": "neural-interface-studio/1.0.0",
+      "design": {
+        "id": "bridged-channels",
+        "name": "Two bridged channels",
+        "revision": 1,
+        "units": "um",
+        "outline": [
+          [
+            160,
+            12
+          ],
+          [
+            296,
+            120
+          ],
+          [
+            296,
+            976
+          ],
+          [
+            24,
+            976
+          ],
+          [
+            24,
+            120
+          ]
+        ],
+        "sites": [
+          {
+            "id": "E01",
+            "shape": "circle",
+            "x": 64,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N01"
+          },
+          {
+            "id": "E02",
+            "shape": "circle",
+            "x": 128,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N02"
+          },
+          {
+            "id": "E03",
+            "shape": "circle",
+            "x": 192,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N03"
+          },
+          {
+            "id": "E04",
+            "shape": "circle",
+            "x": 256,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N04"
+          }
+        ],
+        "pads": [
+          {
+            "id": "P01",
+            "shape": "rect",
+            "x": 64,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N01"
+          },
+          {
+            "id": "P02",
+            "shape": "rect",
+            "x": 128,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N02"
+          },
+          {
+            "id": "P03",
+            "shape": "rect",
+            "x": 192,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N03"
+          },
+          {
+            "id": "P04",
+            "shape": "rect",
+            "x": 256,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N04"
+          }
+        ],
+        "traces": [
+          {
+            "id": "T01",
+            "netId": "N01",
+            "width": 12,
+            "points": [
+              [
+                64,
+                170
+              ],
+              [
+                64,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T02",
+            "netId": "N02",
+            "width": 12,
+            "points": [
+              [
+                128,
+                170
+              ],
+              [
+                128,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T03",
+            "netId": "N03",
+            "width": 12,
+            "points": [
+              [
+                192,
+                170
+              ],
+              [
+                192,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T04",
+            "netId": "N04",
+            "width": 12,
+            "points": [
+              [
+                256,
+                170
+              ],
+              [
+                256,
+                900
+              ]
+            ]
+          }
+        ],
+        "openings": [
+          {
+            "id": "O01",
+            "shape": "circle",
+            "x": 64,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E01",
+            "kind": "site"
+          },
+          {
+            "id": "OP01",
+            "shape": "rect",
+            "x": 64,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P01",
+            "kind": "pad"
+          },
+          {
+            "id": "O02",
+            "shape": "circle",
+            "x": 128,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E02",
+            "kind": "site"
+          },
+          {
+            "id": "OP02",
+            "shape": "rect",
+            "x": 128,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P02",
+            "kind": "pad"
+          },
+          {
+            "id": "O03",
+            "shape": "circle",
+            "x": 192,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E03",
+            "kind": "site"
+          },
+          {
+            "id": "OP03",
+            "shape": "rect",
+            "x": 192,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P03",
+            "kind": "pad"
+          },
+          {
+            "id": "O04",
+            "shape": "circle",
+            "x": 256,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E04",
+            "kind": "site"
+          },
+          {
+            "id": "OP04",
+            "shape": "rect",
+            "x": 256,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P04",
+            "kind": "pad"
+          }
+        ],
+        "nets": [
+          {
+            "id": "N01",
+            "siteId": "E01",
+            "padId": "P01"
+          },
+          {
+            "id": "N02",
+            "siteId": "E02",
+            "padId": "P02"
+          },
+          {
+            "id": "N03",
+            "siteId": "E03",
+            "padId": "P03"
+          },
+          {
+            "id": "N04",
+            "siteId": "E04",
+            "padId": "P04"
+          }
+        ]
+      },
+      "recipe": {
+        "baseThicknessUm": 10,
+        "metalThicknessUm": 0.2,
+        "topThicknessUm": 10,
+        "resistThicknessUm": 2,
+        "undercutUm": 1.2,
+        "depositionAngleDeg": 6,
+        "lithographyBiasUm": 0,
+        "overlayXUm": 0,
+        "overlayYUm": 0,
+        "overlayRotationDeg": 0,
+        "etchTimeMin": 12,
+        "etchRateUmMin": 1,
+        "maskThicknessUm": 6,
+        "etchSelectivity": 3,
+        "lateralRatio": 0.04,
+        "resistivityOhmM": 4.88e-8
+      },
+      "options": {
+        "stage": 9,
+        "cellUm": 2,
+        "computeResistance": true,
+        "defects": [
+          {
+            "type": "bridge",
+            "x": 160,
+            "y": 560,
+            "w": 80,
+            "h": 10
+          }
+        ]
+      },
+      "inputHash": "78e3d5eb",
+      "geometryHash": "9768535d",
+      "metrics": {
+        "connectedCount": 4,
+        "isolatedCount": 2,
+        "openCount": 0,
+        "shortCount": 2,
+        "coveredCount": 0,
+        "exposedAreaUm2": 4096,
+        "unintendedExposedAreaUm2": 0,
+        "totalThicknessUm": 20.2,
+        "componentCount": 3
+      },
+      "channels": [
+        {
+          "id": "N01",
+          "siteId": "E01",
+          "padId": "P01",
+          "connected": true,
+          "shortedWith": [],
+          "status": "connected",
+          "componentIds": [
+            1
+          ],
+          "commonComponentIds": [
+            1
+          ],
+          "siteComponentIds": [
+            1
+          ],
+          "padComponentIds": [
+            1
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 1024,
+          "connectedExposedAreaUm2": 1024,
+          "exposedPadAreaUm2": 2016,
+          "connectedExposedPadAreaUm2": 2016,
+          "contactAccessible": true,
+          "exposureFraction": 0.5714285714285714,
+          "apertureCoverageFraction": 1,
+          "resistanceOhm": 13.66400000000005,
+          "resistanceConverged": true,
+          "resistanceIterations": 0,
+          "resistanceResidual": 2.5389904903037657e-15,
+          "resistanceCurrentBalance": 0,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        },
+        {
+          "id": "N02",
+          "siteId": "E02",
+          "padId": "P02",
+          "connected": true,
+          "shortedWith": [
+            "N03"
+          ],
+          "status": "shorted",
+          "componentIds": [
+            2
+          ],
+          "commonComponentIds": [
+            2
+          ],
+          "siteComponentIds": [
+            2
+          ],
+          "padComponentIds": [
+            2
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 1024,
+          "connectedExposedAreaUm2": 1024,
+          "exposedPadAreaUm2": 2016,
+          "connectedExposedPadAreaUm2": 2016,
+          "contactAccessible": true,
+          "exposureFraction": 0.5714285714285714,
+          "apertureCoverageFraction": 1,
+          "resistanceOhm": null,
+          "resistanceConverged": false,
+          "resistanceIterations": 0,
+          "resistanceResidual": null,
+          "resistanceCurrentBalance": null,
+          "resistanceReason": "not-eligible"
+        },
+        {
+          "id": "N03",
+          "siteId": "E03",
+          "padId": "P03",
+          "connected": true,
+          "shortedWith": [
+            "N02"
+          ],
+          "status": "shorted",
+          "componentIds": [
+            2
+          ],
+          "commonComponentIds": [
+            2
+          ],
+          "siteComponentIds": [
+            2
+          ],
+          "padComponentIds": [
+            2
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 1024,
+          "connectedExposedAreaUm2": 1024,
+          "exposedPadAreaUm2": 2016,
+          "connectedExposedPadAreaUm2": 2016,
+          "contactAccessible": true,
+          "exposureFraction": 0.5714285714285714,
+          "apertureCoverageFraction": 1,
+          "resistanceOhm": null,
+          "resistanceConverged": false,
+          "resistanceIterations": 0,
+          "resistanceResidual": null,
+          "resistanceCurrentBalance": null,
+          "resistanceReason": "not-eligible"
+        },
+        {
+          "id": "N04",
+          "siteId": "E04",
+          "padId": "P04",
+          "connected": true,
+          "shortedWith": [],
+          "status": "connected",
+          "componentIds": [
+            3
+          ],
+          "commonComponentIds": [
+            3
+          ],
+          "siteComponentIds": [
+            3
+          ],
+          "padComponentIds": [
+            3
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 1024,
+          "connectedExposedAreaUm2": 1024,
+          "exposedPadAreaUm2": 2016,
+          "connectedExposedPadAreaUm2": 2016,
+          "contactAccessible": true,
+          "exposureFraction": 0.5714285714285714,
+          "apertureCoverageFraction": 1,
+          "resistanceOhm": 13.66400000000005,
+          "resistanceConverged": true,
+          "resistanceIterations": 0,
+          "resistanceResidual": 2.5389904903037657e-15,
+          "resistanceCurrentBalance": 0,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        }
+      ],
+      "process": {
+        "liftOffMarginUm": 0.7897915294686471,
+        "sidewallReachUm": 0.4102084705313529,
+        "maskRemainingUm": 2,
+        "capRemainingUm": 0,
+        "etchDepthUm": 12,
+        "protectedDepthUm": 0,
+        "maskLifetimeMin": 18,
+        "overlayPivotUm": [
+          160,
+          494
+        ],
+        "minimumBaseThicknessUm": 10,
+        "electricalAcceptanceAvailable": true
+      },
+      "numerical": {
+        "cellCount": 75696,
+        "minFeatureUm": 12,
+        "elapsedMs": 143.09999999776483,
+        "resolutionWarnings": [],
+        "resistanceTolerance": 1e-8,
+        "resistanceMaxIterations": 4000,
+        "resistanceWork": 0,
+        "gridConvention": "cell-centres; four-neighbour shared-face conduction"
+      },
+      "diagnostics": [
+        {
+          "id": "short-N02",
+          "severity": "error",
+          "title": "Intended channels are shorted",
+          "detail": "N02 shares conductor material with N03. Continuity and isolation are separate checks.",
+          "netIds": [
+            "N02",
+            "N03"
+          ]
+        },
+        {
+          "id": "short-N03",
+          "severity": "error",
+          "title": "Intended channels are shorted",
+          "detail": "N03 shares conductor material with N02. Continuity and isolation are separate checks.",
+          "netIds": [
+            "N03",
+            "N02"
+          ]
+        }
+      ],
+      "effectiveStage": 9,
+      "imported": true
+    },
+    {
+      "id": "run-1792765500041-22be00f5",
+      "name": "Contacts still covered · run 5",
+      "createdAt": "2026-10-23T14:25:00.041Z",
+      "modelVersion": "neural-interface-studio/1.0.0",
+      "design": {
+        "id": "incomplete-contact-etch",
+        "name": "Contacts still covered",
+        "revision": 1,
+        "units": "um",
+        "outline": [
+          [
+            160,
+            12
+          ],
+          [
+            296,
+            120
+          ],
+          [
+            296,
+            976
+          ],
+          [
+            24,
+            976
+          ],
+          [
+            24,
+            120
+          ]
+        ],
+        "sites": [
+          {
+            "id": "E01",
+            "shape": "circle",
+            "x": 64,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N01"
+          },
+          {
+            "id": "E02",
+            "shape": "circle",
+            "x": 128,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N02"
+          },
+          {
+            "id": "E03",
+            "shape": "circle",
+            "x": 192,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N03"
+          },
+          {
+            "id": "E04",
+            "shape": "circle",
+            "x": 256,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N04"
+          }
+        ],
+        "pads": [
+          {
+            "id": "P01",
+            "shape": "rect",
+            "x": 64,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N01"
+          },
+          {
+            "id": "P02",
+            "shape": "rect",
+            "x": 128,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N02"
+          },
+          {
+            "id": "P03",
+            "shape": "rect",
+            "x": 192,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N03"
+          },
+          {
+            "id": "P04",
+            "shape": "rect",
+            "x": 256,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N04"
+          }
+        ],
+        "traces": [
+          {
+            "id": "T01",
+            "netId": "N01",
+            "width": 12,
+            "points": [
+              [
+                64,
+                170
+              ],
+              [
+                64,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T02",
+            "netId": "N02",
+            "width": 12,
+            "points": [
+              [
+                128,
+                170
+              ],
+              [
+                128,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T03",
+            "netId": "N03",
+            "width": 12,
+            "points": [
+              [
+                192,
+                170
+              ],
+              [
+                192,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T04",
+            "netId": "N04",
+            "width": 12,
+            "points": [
+              [
+                256,
+                170
+              ],
+              [
+                256,
+                900
+              ]
+            ]
+          }
+        ],
+        "openings": [
+          {
+            "id": "O01",
+            "shape": "circle",
+            "x": 64,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E01",
+            "kind": "site"
+          },
+          {
+            "id": "OP01",
+            "shape": "rect",
+            "x": 64,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P01",
+            "kind": "pad"
+          },
+          {
+            "id": "O02",
+            "shape": "circle",
+            "x": 128,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E02",
+            "kind": "site"
+          },
+          {
+            "id": "OP02",
+            "shape": "rect",
+            "x": 128,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P02",
+            "kind": "pad"
+          },
+          {
+            "id": "O03",
+            "shape": "circle",
+            "x": 192,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E03",
+            "kind": "site"
+          },
+          {
+            "id": "OP03",
+            "shape": "rect",
+            "x": 192,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P03",
+            "kind": "pad"
+          },
+          {
+            "id": "O04",
+            "shape": "circle",
+            "x": 256,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E04",
+            "kind": "site"
+          },
+          {
+            "id": "OP04",
+            "shape": "rect",
+            "x": 256,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P04",
+            "kind": "pad"
+          }
+        ],
+        "nets": [
+          {
+            "id": "N01",
+            "siteId": "E01",
+            "padId": "P01"
+          },
+          {
+            "id": "N02",
+            "siteId": "E02",
+            "padId": "P02"
+          },
+          {
+            "id": "N03",
+            "siteId": "E03",
+            "padId": "P03"
+          },
+          {
+            "id": "N04",
+            "siteId": "E04",
+            "padId": "P04"
+          }
+        ]
+      },
+      "recipe": {
+        "baseThicknessUm": 10,
+        "metalThicknessUm": 0.2,
+        "topThicknessUm": 10,
+        "resistThicknessUm": 2,
+        "undercutUm": 1.2,
+        "depositionAngleDeg": 6,
+        "lithographyBiasUm": 0,
+        "overlayXUm": 0,
+        "overlayYUm": 0,
+        "overlayRotationDeg": 0,
+        "etchTimeMin": 6,
+        "etchRateUmMin": 1,
+        "maskThicknessUm": 6,
+        "etchSelectivity": 3,
+        "lateralRatio": 0.04,
+        "resistivityOhmM": 4.88e-8
+      },
+      "options": {
+        "stage": 9,
+        "cellUm": 2,
+        "computeResistance": true,
+        "defects": []
+      },
+      "inputHash": "c8849974",
+      "geometryHash": "6ae84bfd",
+      "metrics": {
+        "connectedCount": 4,
+        "isolatedCount": 4,
+        "openCount": 0,
+        "shortCount": 0,
+        "coveredCount": 4,
+        "exposedAreaUm2": 0,
+        "unintendedExposedAreaUm2": 0,
+        "totalThicknessUm": 20.2,
+        "componentCount": 4
+      },
+      "channels": [
+        {
+          "id": "N01",
+          "siteId": "E01",
+          "padId": "P01",
+          "connected": true,
+          "shortedWith": [],
+          "status": "covered",
+          "componentIds": [
+            1
+          ],
+          "commonComponentIds": [
+            1
+          ],
+          "siteComponentIds": [
+            1
+          ],
+          "padComponentIds": [
+            1
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 0,
+          "connectedExposedAreaUm2": 0,
+          "exposedPadAreaUm2": 0,
+          "connectedExposedPadAreaUm2": 0,
+          "contactAccessible": false,
+          "exposureFraction": 0,
+          "apertureCoverageFraction": 0,
+          "resistanceOhm": 13.66400000000005,
+          "resistanceConverged": true,
+          "resistanceIterations": 0,
+          "resistanceResidual": 2.5389904903037657e-15,
+          "resistanceCurrentBalance": 0,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        },
+        {
+          "id": "N02",
+          "siteId": "E02",
+          "padId": "P02",
+          "connected": true,
+          "shortedWith": [],
+          "status": "covered",
+          "componentIds": [
+            2
+          ],
+          "commonComponentIds": [
+            2
+          ],
+          "siteComponentIds": [
+            2
+          ],
+          "padComponentIds": [
+            2
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 0,
+          "connectedExposedAreaUm2": 0,
+          "exposedPadAreaUm2": 0,
+          "connectedExposedPadAreaUm2": 0,
+          "contactAccessible": false,
+          "exposureFraction": 0,
+          "apertureCoverageFraction": 0,
+          "resistanceOhm": 13.66400000000005,
+          "resistanceConverged": true,
+          "resistanceIterations": 0,
+          "resistanceResidual": 2.5389904903037657e-15,
+          "resistanceCurrentBalance": 0,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        },
+        {
+          "id": "N03",
+          "siteId": "E03",
+          "padId": "P03",
+          "connected": true,
+          "shortedWith": [],
+          "status": "covered",
+          "componentIds": [
+            3
+          ],
+          "commonComponentIds": [
+            3
+          ],
+          "siteComponentIds": [
+            3
+          ],
+          "padComponentIds": [
+            3
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 0,
+          "connectedExposedAreaUm2": 0,
+          "exposedPadAreaUm2": 0,
+          "connectedExposedPadAreaUm2": 0,
+          "contactAccessible": false,
+          "exposureFraction": 0,
+          "apertureCoverageFraction": 0,
+          "resistanceOhm": 13.66400000000005,
+          "resistanceConverged": true,
+          "resistanceIterations": 0,
+          "resistanceResidual": 2.5389904903037657e-15,
+          "resistanceCurrentBalance": 0,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        },
+        {
+          "id": "N04",
+          "siteId": "E04",
+          "padId": "P04",
+          "connected": true,
+          "shortedWith": [],
+          "status": "covered",
+          "componentIds": [
+            4
+          ],
+          "commonComponentIds": [
+            4
+          ],
+          "siteComponentIds": [
+            4
+          ],
+          "padComponentIds": [
+            4
+          ],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 0,
+          "connectedExposedAreaUm2": 0,
+          "exposedPadAreaUm2": 0,
+          "connectedExposedPadAreaUm2": 0,
+          "contactAccessible": false,
+          "exposureFraction": 0,
+          "apertureCoverageFraction": 0,
+          "resistanceOhm": 13.66400000000005,
+          "resistanceConverged": true,
+          "resistanceIterations": 0,
+          "resistanceResidual": 2.5389904903037657e-15,
+          "resistanceCurrentBalance": 0,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        }
+      ],
+      "process": {
+        "liftOffMarginUm": 0.7897915294686471,
+        "sidewallReachUm": 0.4102084705313529,
+        "maskRemainingUm": 4,
+        "capRemainingUm": 4,
+        "etchDepthUm": 6,
+        "protectedDepthUm": 0,
+        "maskLifetimeMin": 18,
+        "overlayPivotUm": [
+          160,
+          494
+        ],
+        "minimumBaseThicknessUm": 10,
+        "electricalAcceptanceAvailable": true
+      },
+      "numerical": {
+        "cellCount": 75696,
+        "minFeatureUm": 12,
+        "elapsedMs": 149.5,
+        "resolutionWarnings": [],
+        "resistanceTolerance": 1e-8,
+        "resistanceMaxIterations": 4000,
+        "resistanceWork": 0,
+        "gridConvention": "cell-centres; four-neighbour shared-face conduction"
+      },
+      "diagnostics": [
+        {
+          "id": "underetch",
+          "severity": "warning",
+          "title": "Upper polymer remains over contacts",
+          "detail": "4.000 µm remains under the nominal openings in the constant-rate etch model. Metal continuity alone does not make an accessible electrode.",
+          "netIds": []
+        }
+      ],
+      "effectiveStage": 9,
+      "imported": true
+    },
+    {
+      "id": "run-1792766214661-22be00f5",
+      "name": "Contacts still covered · run 6",
+      "createdAt": "2026-10-23T14:36:54.661Z",
+      "modelVersion": "neural-interface-studio/1.0.0",
+      "design": {
+        "id": "incomplete-contact-etch",
+        "name": "Contacts still covered",
+        "revision": 1,
+        "units": "um",
+        "outline": [
+          [
+            160,
+            12
+          ],
+          [
+            296,
+            120
+          ],
+          [
+            296,
+            976
+          ],
+          [
+            24,
+            976
+          ],
+          [
+            24,
+            120
+          ]
+        ],
+        "sites": [
+          {
+            "id": "E01",
+            "shape": "circle",
+            "x": 64,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N01"
+          },
+          {
+            "id": "E02",
+            "shape": "circle",
+            "x": 128,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N02"
+          },
+          {
+            "id": "E03",
+            "shape": "circle",
+            "x": 192,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N03"
+          },
+          {
+            "id": "E04",
+            "shape": "circle",
+            "x": 256,
+            "y": 170,
+            "w": 48,
+            "h": 48,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N04"
+          }
+        ],
+        "pads": [
+          {
+            "id": "P01",
+            "shape": "rect",
+            "x": 64,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N01"
+          },
+          {
+            "id": "P02",
+            "shape": "rect",
+            "x": 128,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N02"
+          },
+          {
+            "id": "P03",
+            "shape": "rect",
+            "x": 192,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N03"
+          },
+          {
+            "id": "P04",
+            "shape": "rect",
+            "x": 256,
+            "y": 900,
+            "w": 44,
+            "h": 72,
+            "inner": 0,
+            "rotation": 0,
+            "netId": "N04"
+          }
+        ],
+        "traces": [
+          {
+            "id": "T01",
+            "netId": "N01",
+            "width": 12,
+            "points": [
+              [
+                64,
+                170
+              ],
+              [
+                64,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T02",
+            "netId": "N02",
+            "width": 12,
+            "points": [
+              [
+                128,
+                170
+              ],
+              [
+                128,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T03",
+            "netId": "N03",
+            "width": 12,
+            "points": [
+              [
+                192,
+                170
+              ],
+              [
+                192,
+                900
+              ]
+            ]
+          },
+          {
+            "id": "T04",
+            "netId": "N04",
+            "width": 12,
+            "points": [
+              [
+                256,
+                170
+              ],
+              [
+                256,
+                900
+              ]
+            ]
+          }
+        ],
+        "openings": [
+          {
+            "id": "O01",
+            "shape": "circle",
+            "x": 64,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E01",
+            "kind": "site"
+          },
+          {
+            "id": "OP01",
+            "shape": "rect",
+            "x": 64,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P01",
+            "kind": "pad"
+          },
+          {
+            "id": "O02",
+            "shape": "circle",
+            "x": 128,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E02",
+            "kind": "site"
+          },
+          {
+            "id": "OP02",
+            "shape": "rect",
+            "x": 128,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P02",
+            "kind": "pad"
+          },
+          {
+            "id": "O03",
+            "shape": "circle",
+            "x": 192,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E03",
+            "kind": "site"
+          },
+          {
+            "id": "OP03",
+            "shape": "rect",
+            "x": 192,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P03",
+            "kind": "pad"
+          },
+          {
+            "id": "O04",
+            "shape": "circle",
+            "x": 256,
+            "y": 170,
+            "w": 36,
+            "h": 36,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "E04",
+            "kind": "site"
+          },
+          {
+            "id": "OP04",
+            "shape": "rect",
+            "x": 256,
+            "y": 900,
+            "w": 36,
+            "h": 56,
+            "inner": 0,
+            "rotation": 0,
+            "targetId": "P04",
+            "kind": "pad"
+          }
+        ],
+        "nets": [
+          {
+            "id": "N01",
+            "siteId": "E01",
+            "padId": "P01"
+          },
+          {
+            "id": "N02",
+            "siteId": "E02",
+            "padId": "P02"
+          },
+          {
+            "id": "N03",
+            "siteId": "E03",
+            "padId": "P03"
+          },
+          {
+            "id": "N04",
+            "siteId": "E04",
+            "padId": "P04"
+          }
+        ]
+      },
+      "recipe": {
+        "baseThicknessUm": 10,
+        "metalThicknessUm": 0.2,
+        "topThicknessUm": 10,
+        "resistThicknessUm": 2,
+        "undercutUm": 1.2,
+        "depositionAngleDeg": 6,
+        "lithographyBiasUm": 0,
+        "overlayXUm": 0,
+        "overlayYUm": 0,
+        "overlayRotationDeg": 0,
+        "etchTimeMin": 6,
+        "etchRateUmMin": 1,
+        "maskThicknessUm": 6,
+        "etchSelectivity": 3,
+        "lateralRatio": 0.04,
+        "resistivityOhmM": 4.88e-8
+      },
+      "options": {
+        "stage": 9,
+        "cellUm": 2,
+        "computeResistance": true,
+        "defects": []
+      },
+      "inputHash": "c8849974",
+      "geometryHash": "6ae84bfd",
+      "metrics": {
+        "connectedCount": 4,
+        "isolatedCount": 4,
+        "openCount": 0,
+        "shortCount": 0,
+        "coveredCount": 4,
+        "exposedAreaUm2": 0,
+        "unintendedExposedAreaUm2": 0,
+        "totalThicknessUm": 20.2,
+        "componentCount": 4
+      },
+      "channels": [
+        {
+          "id": "N01",
+          "siteId": "E01",
+          "padId": "P01",
+          "connected": true,
+          "shortedWith": [],
+          "status": "covered",
+          "componentIds": [
+            1
+          ],
+          "commonComponentIds": [
+            1
+          ],
+          "siteComponentIds": [
+            1
+          ],
+          "padComponentIds": [
+            1
+          ],
+          "exposedSiteComponentIds": [],
+          "exposedPadComponentIds": [],
+          "accessibleComponentIds": [],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 0,
+          "connectedExposedAreaUm2": 0,
+          "exposedPadAreaUm2": 0,
+          "connectedExposedPadAreaUm2": 0,
+          "contactAccessible": false,
+          "exposureFraction": 0,
+          "apertureCoverageFraction": 0,
+          "resistanceOhm": 13.66400000000005,
+          "resistanceConverged": true,
+          "resistanceIterations": 0,
+          "resistanceResidual": 2.5389904903037657e-15,
+          "resistanceCurrentBalance": 0,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        },
+        {
+          "id": "N02",
+          "siteId": "E02",
+          "padId": "P02",
+          "connected": true,
+          "shortedWith": [],
+          "status": "covered",
+          "componentIds": [
+            2
+          ],
+          "commonComponentIds": [
+            2
+          ],
+          "siteComponentIds": [
+            2
+          ],
+          "padComponentIds": [
+            2
+          ],
+          "exposedSiteComponentIds": [],
+          "exposedPadComponentIds": [],
+          "accessibleComponentIds": [],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 0,
+          "connectedExposedAreaUm2": 0,
+          "exposedPadAreaUm2": 0,
+          "connectedExposedPadAreaUm2": 0,
+          "contactAccessible": false,
+          "exposureFraction": 0,
+          "apertureCoverageFraction": 0,
+          "resistanceOhm": 13.66400000000005,
+          "resistanceConverged": true,
+          "resistanceIterations": 0,
+          "resistanceResidual": 2.5389904903037657e-15,
+          "resistanceCurrentBalance": 0,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        },
+        {
+          "id": "N03",
+          "siteId": "E03",
+          "padId": "P03",
+          "connected": true,
+          "shortedWith": [],
+          "status": "covered",
+          "componentIds": [
+            3
+          ],
+          "commonComponentIds": [
+            3
+          ],
+          "siteComponentIds": [
+            3
+          ],
+          "padComponentIds": [
+            3
+          ],
+          "exposedSiteComponentIds": [],
+          "exposedPadComponentIds": [],
+          "accessibleComponentIds": [],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 0,
+          "connectedExposedAreaUm2": 0,
+          "exposedPadAreaUm2": 0,
+          "connectedExposedPadAreaUm2": 0,
+          "contactAccessible": false,
+          "exposureFraction": 0,
+          "apertureCoverageFraction": 0,
+          "resistanceOhm": 13.66400000000005,
+          "resistanceConverged": true,
+          "resistanceIterations": 0,
+          "resistanceResidual": 2.5389904903037657e-15,
+          "resistanceCurrentBalance": 0,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        },
+        {
+          "id": "N04",
+          "siteId": "E04",
+          "padId": "P04",
+          "connected": true,
+          "shortedWith": [],
+          "status": "covered",
+          "componentIds": [
+            4
+          ],
+          "commonComponentIds": [
+            4
+          ],
+          "siteComponentIds": [
+            4
+          ],
+          "padComponentIds": [
+            4
+          ],
+          "exposedSiteComponentIds": [],
+          "exposedPadComponentIds": [],
+          "accessibleComponentIds": [],
+          "nominalAreaUm2": 1792,
+          "exposedAreaUm2": 0,
+          "connectedExposedAreaUm2": 0,
+          "exposedPadAreaUm2": 0,
+          "connectedExposedPadAreaUm2": 0,
+          "contactAccessible": false,
+          "exposureFraction": 0,
+          "apertureCoverageFraction": 0,
+          "resistanceOhm": 13.66400000000005,
+          "resistanceConverged": true,
+          "resistanceIterations": 0,
+          "resistanceResidual": 2.5389904903037657e-15,
+          "resistanceCurrentBalance": 0,
+          "resistanceReason": null,
+          "resistanceUnknownCount": 2010
+        }
+      ],
+      "process": {
+        "liftOffMarginUm": 0.7897915294686471,
+        "verticalLiftOffClearanceUm": 1.8,
+        "sidewallReachUm": 0.4102084705313529,
+        "maskRemainingUm": 4,
+        "capRemainingUm": 4,
+        "etchDepthUm": 6,
+        "protectedDepthUm": 0,
+        "maskLifetimeMin": 18,
+        "overlayPivotUm": [
+          160,
+          494
+        ],
+        "minimumBaseThicknessUm": 10,
+        "electricalAcceptanceAvailable": true
+      },
+      "numerical": {
+        "cellCount": 75696,
+        "minFeatureUm": 12,
+        "elapsedMs": 148.19999999925494,
+        "resolutionWarnings": [],
+        "resistanceTolerance": 1e-8,
+        "resistanceMaxIterations": 4000,
+        "resistanceWork": 0,
+        "gridConvention": "cell-centres; four-neighbour shared-face conduction"
+      },
+      "diagnostics": [
+        {
+          "id": "underetch",
+          "severity": "warning",
+          "title": "Upper polymer remains over contacts",
+          "detail": "4.000 µm remains under the nominal openings in the constant-rate etch model. Metal continuity alone does not make an accessible electrode.",
+          "netIds": []
+        }
+      ],
+      "effectiveStage": 9,
+      "imported": true
+    }
+  ],
+  "interpretation": "Educational single-metal polymer fabrication. Saved reports are historical results; recompute to verify them in the current model. No calibrated yield, electrolyte impedance, mechanics or implanted lifetime prediction."
+}
