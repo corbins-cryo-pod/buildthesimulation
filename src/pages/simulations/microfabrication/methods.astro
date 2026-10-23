@@ -1,0 +1,74 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { DEFAULT_CONFIG, STAGES } from '../../../lib/microfabrication/model.js';
+import '../../../styles/microfabrication.css';
+const c = DEFAULT_CONFIG;
+const references = [
+  { title: 'Esteban Linares, A. & Gong, Y. Microfabrication of Polyimide Microelectrode Arrays. USC Meng laboratory, reviewed by Ellis Meng; revision 2, September 13, 2024.', url: 'https://bpb-us-w1.wpmucdn.com/sites.usc.edu/dist/2/915/files/2024/09/Polyimide-MEA-Microfabrication-Protocol_Y2.pdf', note: 'Source for the process sequence and the scale of a 20 µm polyimide MEA. The simulator groups operations and uses its own generic layout.' },
+  { title: 'EPFL Center of MicroNanoTechnology. Photoresist Selection.', url: 'https://www.epfl.ch/research/facilities/cmi/process/photolithography/photoresist-selection-2/', note: 'Source for lift-off access, sidewall geometry, deposition direction, mask thickness and etch selectivity.' },
+  { title: 'UCSB Nanofab. Lift-Off with I-Line Imaging Resist + LOL2000 Underlayer.', url: 'https://wiki.nanofab.ucsb.edu/wiki/Lift-Off_with_I-Line_Imaging_Resist_%2B_LOL2000_Underlayer', note: 'Source for bilayer undercut, support loss during development and inspection checkpoints. Its named resist process is not reproduced here.' },
+  { title: 'Pimenta et al. Double-Layer Flexible Neural Probe With Closely Spaced Electrodes for High-Density in vivo Brain Recordings. Frontiers in Neuroscience 15, 663174 (2021).', url: 'https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.663174/full', note: 'Original research illustrating how sequential polymer etching affects exposed contact geometry. This is a different, 32-channel multilayer device.' },
+  { title: 'Tintelott, Schander & Lang. Understanding Electrical Failure of Polyimide-Based Flexible Neural Implants: The Role of Thin Film Adhesion. Polymers 14, 3702 (2022).', url: 'https://doi.org/10.3390/polym14183702', note: 'Evidence that interface preparation and adhesion affect insulation reliability. Accelerated test results are not converted into implant-lifetime predictions.' },
+];
+const dimensions = [
+  ['Trace width', c.traceWidthUm, 'µm'], ['Metal-site diameter', c.siteDiameterUm, 'µm'],
+  ['Contact-opening diameter', c.openingDiameterUm, 'µm'], ['Channel pitch', c.pitchUm, 'µm'],
+  ['Base / upper polyimide', `${c.baseThicknessUm} / ${c.topThicknessUm}`, 'µm'],
+  ['Effective metal thickness', c.metalThicknessNm, 'nm'],
+  ['Lift-off resist / undercut', `${c.resistThicknessUm} / ${c.undercutUm}`, 'µm'],
+  ['Polyimide etch rate', c.etchRateUmMin, 'µm/min'], ['Polyimide : mask selectivity', c.etchSelectivity, 'ratio'],
+];
+---
+<Layout pageTitle="Microfabrication methods" description="Process sources, equations, verification cases and limitations of the Microfabrication Laboratory." compactHeader>
+  <article class="mf-methods">
+    <header>
+      <a href="/simulations/microfabrication/">← Return to the laboratory</a>
+      <p class="mf-kicker">Fabrication series 01 · Methods &amp; evidence</p>
+      <h1>Process &amp; model notes</h1>
+      <p>A four-channel flexible electrode, built from one inspectable material state. This page explains what the calculations represent, which evidence informs them, and where their predictive limits lie.</p>
+    </header>
+
+    <h2>1. What this laboratory models</h2>
+    <p>The sample is a generic four-channel polyimide–metal–polyimide microelectrode. Its process order is informed by the USC Meng laboratory’s published polyimide MEA protocol <a href="#source-1">[1]</a>. The four-site layout, the single effective metal film and the adjustable rates are teaching assumptions. No measured fabrication dataset has been fitted to this model.</p>
+    <p>Every stage produces material footprints and thicknesses. The 3D specimen, plan view and cross-section display those same footprints. The electrical probe station determines continuity and shorts from the retained conductor geometry. Changing the recipe deterministically rebuilds the specimen at the selected step; an earlier electrical test is cleared.</p>
+    <div class="mf-table-scroll"><table><thead><tr><th>Step</th><th>Operation</th><th>Representation</th></tr></thead><tbody>{STAGES.map((s, i) => <tr><td>{String(i + 1).padStart(2, '0')}</td><td>{s.label}</td><td>{s.description}</td></tr>)}</tbody></table></div>
+
+    <h2>2. Dimensions and material geometry</h2>
+    <p>The in-plane domain is 320 × 1,000 µm, sampled on a 160 × 500 grid. Each cell covers 2 × 2 µm. Thickness is stored independently and retains nanometre-scale numerical values; it is not rounded to the in-plane cell size. Binary boundaries therefore move in discrete increments, and exposed areas change in multiples of 4 µm².</p>
+    <div class="mf-table-scroll"><table><thead><tr><th>Reference setting</th><th>Value</th><th>Unit</th></tr></thead><tbody>{dimensions.map(([name, value, unit]) => <tr><td>{name}</td><td>{value}</td><td>{unit}</td></tr>)}</tbody></table></div>
+    <p>The reference contact opening is smaller than its metal site. A successful device therefore exposes only part of the metal-site area. The reported exposed fraction uses the metal site as its denominator; it is not a percentage fabrication score.</p>
+    <p>The developed edge bias is a prescribed geometric shift. The simulator does not solve ultraviolet diffraction, resist photochemistry, solvent diffusion or the spin-coating flow. Undercut is represented by separate upper and lower resist footprints, making an overhang visible in section.</p>
+    <p>Material colors and translucency are illustrative. The 3D height setting and minimum visible metal thickness help inspection; measurements always use physical layer dimensions. The section enlarges the vertical axis. Wafer layout repeats the current sample schematically and does not estimate die yield.</p>
+
+    <h2>3. Deposition and lift-off</h2>
+    <p>Patterned resist precedes metal deposition. Metal reaches modeled accessible openings and also coats the top of the resist. Successful lift-off removes the sacrificial resist and its supported metal. Facility guidance identifies undercut, deposition direction and remover access as central considerations <a href="#source-2">[2]</a>, while excessive undercut can undermine narrow resist supports <a href="#source-3">[3]</a>.</p>
+    <p>The simulator uses an explicit, conservative geometric clearance condition:</p>
+    <p class="mf-equation">Deposition envelope = h tan(θ) + t<sub>m</sub></p>
+    <p>Here h is resist thickness, θ is the prescribed deposition angular spread, and t<sub>m</sub> is metal thickness. The undercut must clear this envelope for the modeled lift-off to proceed. This threshold is a teaching assumption, not an experimentally calibrated success law. Actual lift-off also depends on flux distribution, sidewall shape, solvent access, adhesion, mechanics and process history.</p>
+    <p>If the simplified lift-off condition fails, the material stack remains at lift-off. Encapsulation, etching and release do not proceed even if a later step was requested. The displayed warning explains which condition stopped the process.</p>
+
+    <h2>4. Contact etching</h2>
+    <p>The contact-opening mask can translate relative to the metal in both sample directions. Etching removes upper polyimide inside its openings. A constant rate v, duration t and selectivity S determine nominal polymer removal and mask erosion:</p>
+    <p class="mf-equation">Depth = vt &nbsp; · &nbsp; Mask consumption = vt / S</p>
+    <p>Remaining thickness is clamped at zero. When the mask is exhausted, the model also allows previously protected upper polyimide to erode. Lateral opening growth uses the selected lateral-to-vertical ratio. Remaining polyimide in an opening prevents that underlying metal from counting as exposed.</p>
+    <p>Mask survival and selectivity matter in documented etch workflows <a href="#source-2">[2]</a>. Pimenta and colleagues reported different exposed areas in a multilayer neural probe and attributed the difference to sequential lateral over-etching <a href="#source-4">[4]</a>. These sources support the mechanisms, not the numerical rate settings of this simulator.</p>
+    <p>The effective model omits plasma chemistry, transport, loading, microtrenching, redeposition and tool history. Its contact metal acts as an ideal etch stop. Outline patterning and carrier release are separate idealized operations. Release does not simulate peeling forces, stiction, curling or residual-stress relaxation.</p>
+
+    <h2>5. What the electrical test means</h2>
+    <p><strong>Continuity:</strong> edge-adjacent conducting cells are grouped into connected components. A channel is continuous when its intended site and pad share a component. <strong>Isolation:</strong> channels are shorted when their terminal components merge. The controlled open and bridge scenarios edit the metal footprint, so their outcomes follow from the resulting geometry.</p>
+    <p><strong>Exposed area:</strong> useful contact area is the intersection of the retained metal site and cleared insulation. An insulation pinhole is an explicit geometric defect. It is not assigned a manufacturing probability.</p>
+    <p>For an intact isolated straight trace, resistance is estimated with:</p>
+    <p class="mf-equation">R = ρL / (wt<sub>m</sub>)</p>
+    <p>The calculation converts dimensions into SI units and uses the specified effective resistivity. The default, 2.44 × 10⁻⁸ Ω·m, illustrates a bulk-gold conductor. It is not a measured value for the fabricated metal stack. Thin-film microstructure, interfaces and temperature can change resistivity.</p>
+    <p>This estimate excludes contact resistance, current crowding, pad spreading, electrode–electrolyte impedance, tissue impedance and amplifier noise. Independent channel resistance is not reported for an open or shorted channel. The summary channel count checks continuity, isolation and nonzero site exposure only; unintended exposure and damaged insulation must be inspected separately. The count does not establish fabrication acceptance or implant suitability.</p>
+
+    <h2>6. Verification and next validation targets</h2>
+    <p>The automated model checks cover four-channel baseline continuity; an independent flood-fill audit of break and bridge geometry; contact exposure after insulation clears; area changes with misregistration; mask consumption; metal-thickness and resistivity scaling; deterministic replay; and finite bounded input handling. These are structural and analytic checks, not a measured cleanroom calibration.</p>
+    <p>Quantitative fabrication prediction would additionally require a named material/tool process, measured thicknesses and critical dimensions across parameter sweeps, spatial-resolution studies, electrical test coupons and uncertainty estimates. Adhesion and long-term insulation survival need their own model and data. A geometrically successful specimen is insufficient evidence of chronic reliability <a href="#source-5">[5]</a>.</p>
+    <p>The released laboratory exports the recipe, reached process stages and calculated measurements as a replayable JSON run. SVG mask exports are discretized teaching geometry, not qualified manufacturing files. Data exchange with the separate Electrode Designer, Tissue Mechanics and Cortex laboratories remains a future integration.</p>
+
+    <h2>7. Primary references</h2>
+    <ol class="mf-source-list">{references.map((r, i) => <li id={`source-${i + 1}`}><a href={r.url}>{r.title}</a><small>{r.note}</small></li>)}</ol>
+    <p><a href="/simulations/microfabrication/">Return to the Microfabrication Laboratory →</a></p>
+  </article>
+</Layout>

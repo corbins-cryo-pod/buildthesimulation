@@ -2117,173 +2117,141 @@
       "order": 210,
       "url": "https://buildthesimulation.com/devices/210-cortec-brain-interchange-closed-loop-bci/",
       "status": "published",
-      "researchStatus": "published image metadata reconciled",
+      "researchStatus": "published_source_verified",
       "sourceUrl": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.932782/full",
       "candidateAssetUrl": "https://www.frontiersin.org/files/Articles/932782/xml-images/fnins-16-932782-g0001.webp",
       "license": "CC BY 4.0",
-      "notes": "The already selected 2022 Frontiers Figure 1 contains the Brain Interchange system schematic, AirRay array layout and electrode photograph from a canine study. Complete source figure verified and retained unchanged; this is not evidence of the 2025 human-study hardware configuration.",
-      "imageReviewDate": "2026-10-23",
-      "followUp": "Retain the documented research-version distinction and source credit if this device page is updated.",
-      "image": "/images/devices/btsd-imbci-0011.webp",
-      "preserveSource": true,
-      "reviewSources": [
-        "https://brain-interchange.com/",
-        "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.932782/full",
-        "https://creativecommons.org/licenses/by/4.0/"
-      ]
+      "notes": "Published source figure and attribution checked against the linked research article and its Creative Commons rights statement. Complete source asset is archived locally without crop, resizing or re-encoding; native dimensions and SHA-256 are recorded in the photo manifest. Published research configuration; do not assume it is identical to the 2025 human-study implant.",
+      "imageReviewDate": "2026-10-22",
+      "followUp": "Published research configuration; do not assume it is identical to the 2025 human-study implant.",
+      "discoverySourceUrl": "https://brain-interchange.com/",
+      "image": "/images/devices/btsd-imbci-0011-source.webp",
+      "viewCount": 1
     },
     "BTSD-IMBCI-0012": {
       "title": "ABILITY Neurotech fully implantable communication BCI",
       "order": 211,
       "url": "https://buildthesimulation.com/devices/211-ability-neurotech-fully-implantable-communication-bci/",
       "status": "published",
-      "researchStatus": "published image metadata reconciled",
+      "researchStatus": "published_source_verified",
       "sourceUrl": "https://www.eurekalert.org/multimedia/964335",
       "candidateAssetUrl": "https://mediasvc.eurekalert.org/Api/v1/Multimedia/b80870fb-635f-49aa-92b5-ca44b0ee3d68/Rendition/low-res/Content/Public",
       "license": "CC BY-NC-ND 4.0",
-      "notes": "The already selected 2022 Wyss Center ABILITY research-system photograph was downloaded from its recorded public EurekAlert asset URL and retained byte-for-byte. The existing CC BY-NC-ND 4.0 license and noncommercial/version restrictions are retained from the original photo manifest. The source page returned HTTP 403 during this metadata reconciliation, so its license statement was not independently rechecked in this pass.",
-      "imageReviewDate": "2026-10-23",
-      "followUp": "Recheck the existing license statement when the EurekAlert source page is accessible. Retain the unchanged source file, attribution, noncommercial-use restriction and research-version distinction.",
-      "image": "/images/devices/btsd-imbci-0012.png",
-      "preserveSource": true,
-      "reviewSources": [
-        "https://abilityneuro.com/clinical-trial/",
-        "https://www.eurekalert.org/multimedia/964335",
-        "https://creativecommons.org/licenses/by-nc-nd/4.0/"
-      ]
+      "notes": "Wyss Center research photograph matched to the EurekAlert! media page, which identifies CC BY-NC-ND terms; the manifest's existing 4.0 license link is retained. Complete source asset is archived locally without crop, resizing or re-encoding; native dimensions and SHA-256 are recorded in the photo manifest. 2022 research demonstration of ABILITY; not documented as the 2026 first-in-human hardware configuration. Image must remain unaltered. Site must remain noncommercial for licensed use.",
+      "imageReviewDate": "2026-10-22",
+      "followUp": "2022 research demonstration of ABILITY; not documented as the 2026 first-in-human hardware configuration. Image must remain unaltered. Site must remain noncommercial for licensed use.",
+      "discoverySourceUrl": "https://abilityneuro.com/clinical-trial/",
+      "image": "/images/devices/btsd-imbci-0012-source.png",
+      "viewCount": 1
     },
     "BTSD-ACAD-0111": {
       "title": "Bridge Neurotech non-invasive fUSI BCI system",
       "order": 212,
       "url": "https://buildthesimulation.com/devices/212-bridge-neurotech-fusi-noninvasive-bci/",
       "status": "pending",
-      "researchStatus": "photo-search-pending",
+      "researchStatus": "no_licensed_image_found_bounded_search",
       "sourceUrl": "https://www.bridgeneurotech.com/letter",
       "candidateAssetUrl": null,
       "license": null,
-      "notes": "Device sheet added Oct 22, 2026 from the home-index gap fill; no photograph search done yet.",
-      "imageReviewDate": "2026-10-22",
-      "followUp": "Search for a licensed photograph or source figure."
+      "notes": "Bounded search on 2026-10-23. Company site (homepage, /approach, /letter) carries no hardware photograph: only team and investor images plus a copyright-retained explainer video, with no license grant. The system is in development with no published paper of its own (company emerged from stealth Oct 6, 2026). The founder's prior miniaturized fUSI work was at Forest Neurotech, renamed Arbor Neuroscience per the organization's own site; its acoustic-window human fUSI paper (Rabut, Norman, et al., 'A window to the brain', bioRxiv 2023.06.14.544094) is not open access and carries no license grant, so no figure can be used. medRxiv 2025.08.19.25332261 and Science Advances adu9133 ('Mobile human brain imaging') are a different group (Erasmus MC, Soloukey/Verhoef) and cannot represent Bridge's system. No file added to the website.",
+      "imageReviewDate": "2026-10-23",
+      "followUp": "Re-check for a licensed photograph or source figure when Bridge publishes study results or releases hardware images; Butterfly Network press materials may also become usable under press-use terms."
     },
     "BTSD-ACAD-0112": {
       "title": "NeuroNexus silicon probe and array families",
       "order": 213,
       "url": "https://buildthesimulation.com/devices/213-neuronexus-silicon-probe-array-families/",
       "status": "published",
-      "researchStatus": "published image metadata reconciled",
+      "researchStatus": "published_source_verified",
       "sourceUrl": "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2014.00004/full",
       "candidateAssetUrl": "https://www.frontiersin.org/files/Articles/71276/xml-images/fncir-08-00004-g0001.webp",
       "license": "CC BY 3.0",
-      "notes": "The already selected 2014 Frontiers Figure 1 combines a NeuroNexus 3D probe assembly illustration, recording geometry and an implantation photograph. Complete source figure verified and retained unchanged; it represents one research assembly rather than the full product catalog.",
-      "imageReviewDate": "2026-10-23",
-      "followUp": "Retain the documented research-version distinction and source credit if this device page is updated.",
-      "image": "/images/devices/btsd-acad-0112.webp",
-      "preserveSource": true,
-      "reviewSources": [
-        "https://www.neuronexus.com/products/",
-        "https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2014.00004/full",
-        "https://creativecommons.org/licenses/by/3.0/"
-      ]
+      "notes": "Published source figure and attribution checked against the linked research article and its Creative Commons rights statement. Complete source asset is archived locally without crop, resizing or re-encoding; native dimensions and SHA-256 are recorded in the photo manifest. One research assembly from NeuroNexus probe families (2014), not a representation of the company's entire product catalog.",
+      "imageReviewDate": "2026-10-22",
+      "followUp": "One research assembly from NeuroNexus probe families (2014), not a representation of the company's entire product catalog.",
+      "discoverySourceUrl": "https://www.neuronexus.com/products/",
+      "image": "/images/devices/btsd-acad-0112-source.webp",
+      "viewCount": 1
     },
     "BTSD-IMBCI-0013": {
       "title": "TUM custom 256-microelectrode BCI implant",
       "order": 214,
       "url": "https://buildthesimulation.com/devices/214-tum-256-microelectrode-custom-bci-implant/",
       "status": "published",
-      "researchStatus": "published image metadata reconciled",
+      "researchStatus": "published_source_verified",
       "sourceUrl": "https://www.tum.de/en/news-and-events/all-news/press-releases/details/brain-computer-interface-for-a-patient-with-quadriplegia",
       "candidateAssetUrl": "https://www.tum.de/fileadmin/_processed_/9/4/csm_2510xx_OP_1_Hirn-Computer-Schnittstelle_Bildnachweis_Julia_Bergmeister_TUM_Klinikum_667ae8a707.jpg",
       "license": "Project-specific editorial reuse with photographer credit",
-      "notes": "The already selected TUM project press photograph shows the surgical team during the 2025 implantation, not a close-up of the implant. The credited IDW image page permits use for reporting on the research project with copyright attribution. Exact TUM source bytes retained.",
-      "imageReviewDate": "2026-10-23",
-      "followUp": "Retain the documented research-version distinction and source credit if this device page is updated.",
-      "image": "/images/devices/btsd-imbci-0013.jpg",
-      "preserveSource": true,
-      "reviewSources": [
-        "https://neuronewsinternational.com/researchers-complete-europes-first-bci-implantation-in-quadriplegia-patient/",
-        "https://www.tum.de/en/news-and-events/all-news/press-releases/details/brain-computer-interface-for-a-patient-with-quadriplegia",
-        "https://idw-online.de/de/image?id=413193&size=screen"
-      ]
+      "notes": "Project press photograph matched to the TUM release; project-specific reuse permission and photographer credit checked on the linked idw image page. Complete source asset is archived locally without crop, resizing or re-encoding; native dimensions and SHA-256 are recorded in the photo manifest. 2025 TUM clinical implantation using four 64-channel Utah microelectrode arrays, not a close-up photograph of the implant. Permitted for reporting on this research project.",
+      "imageReviewDate": "2026-10-22",
+      "followUp": "2025 TUM clinical implantation using four 64-channel Utah microelectrode arrays, not a close-up photograph of the implant. Permitted for reporting on this research project.",
+      "discoverySourceUrl": "https://neuronewsinternational.com/researchers-complete-europes-first-bci-implantation-in-quadriplegia-patient/",
+      "image": "/images/devices/btsd-imbci-0013-source.jpg",
+      "viewCount": 1
     },
     "BTSD-ACAD-0113": {
       "title": "UPenn engineered axonal tract living electrodes",
       "order": 215,
       "url": "https://buildthesimulation.com/devices/215-upenn-cullen-living-electrodes-axonal-tracts/",
       "status": "published",
-      "researchStatus": "published image metadata reconciled",
+      "researchStatus": "published_source_verified",
       "sourceUrl": "https://www.frontiersin.org/journals/molecular-neuroscience/articles/10.3389/fnmol.2024.1346696/full",
       "candidateAssetUrl": "https://www.frontiersin.org/files/Articles/1346696/xml-images/fnmol-17-1346696-g004.webp",
       "license": "CC BY 4.0",
-      "notes": "The already selected 2024 Frontiers Figure 4 combines fluorescence and phase-contrast microscopy with axonal contraction time-course plots. Complete source figure verified and retained unchanged. It is a related bidirectional micro-TENN experiment, not the specific unidirectional living electrode from the earlier publication.",
-      "imageReviewDate": "2026-10-23",
-      "followUp": "Retain the documented research-version distinction and source credit if this device page is updated.",
-      "image": "/images/devices/btsd-acad-0113.webp",
-      "preserveSource": true,
-      "reviewSources": [
-        "https://pubmed.ncbi.nlm.nih.gov/34045935/",
-        "https://www.frontiersin.org/journals/molecular-neuroscience/articles/10.3389/fnmol.2024.1346696/full",
-        "https://creativecommons.org/licenses/by/4.0/"
-      ]
+      "notes": "Published source figure and attribution checked against the linked research article and its Creative Commons rights statement. Complete source asset is archived locally without crop, resizing or re-encoding; native dimensions and SHA-256 are recorded in the photo manifest. Related 2024 Cullen Lab bidirectional micro-TENN experiment; not the specific unidirectional 'living electrode' pictured in the 2018 publication.",
+      "imageReviewDate": "2026-10-22",
+      "followUp": "Related 2024 Cullen Lab bidirectional micro-TENN experiment; not the specific unidirectional 'living electrode' pictured in the 2018 publication.",
+      "discoverySourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34045935/",
+      "image": "/images/devices/btsd-acad-0113-source.webp",
+      "viewCount": 1
     },
     "BTSD-ACAD-0114": {
       "title": "UPenn micro-TENN living neural network constructs",
       "order": 216,
       "url": "https://buildthesimulation.com/devices/216-upenn-micro-tenn-living-neural-networks/",
       "status": "published",
-      "researchStatus": "published image metadata reconciled",
+      "researchStatus": "published_source_verified",
       "sourceUrl": "https://www.frontiersin.org/journals/molecular-neuroscience/articles/10.3389/fnmol.2024.1346696/full",
       "candidateAssetUrl": "https://www.frontiersin.org/files/Articles/1346696/xml-images/fnmol-17-1346696-g002.webp",
       "license": "CC BY 4.0",
-      "notes": "The already selected 2024 Frontiers Figure 2 combines cortical micro-TENN microscopy, immunofluorescence and contraction schematics. Complete source figure verified and retained unchanged; this is a preclinical research construct, not a human implant.",
-      "imageReviewDate": "2026-10-23",
-      "followUp": "Retain the documented research-version distinction and source credit if this device page is updated.",
-      "image": "/images/devices/btsd-acad-0114.webp",
-      "preserveSource": true,
-      "reviewSources": [
-        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4652241/",
-        "https://www.frontiersin.org/journals/molecular-neuroscience/articles/10.3389/fnmol.2024.1346696/full",
-        "https://creativecommons.org/licenses/by/4.0/"
-      ]
+      "notes": "Published source figure and attribution checked against the linked research article and its Creative Commons rights statement. Complete source asset is archived locally without crop, resizing or re-encoding; native dimensions and SHA-256 are recorded in the photo manifest. 2024 preclinical micro-TENN research construct, not a human implant.",
+      "imageReviewDate": "2026-10-22",
+      "followUp": "2024 preclinical micro-TENN research construct, not a human implant.",
+      "discoverySourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4652241/",
+      "image": "/images/devices/btsd-acad-0114-source.webp",
+      "viewCount": 1
     },
     "BTSD-ACAD-0115": {
       "title": "Innervace tissue-engineered nigrostriatal pathway",
       "order": 217,
       "url": "https://buildthesimulation.com/devices/217-innervace-tissue-engineered-nigrostriatal-pathway/",
       "status": "published",
-      "researchStatus": "published image metadata reconciled",
+      "researchStatus": "published_source_verified",
       "sourceUrl": "https://www.nature.com/articles/s41531-019-0105-5",
       "candidateAssetUrl": "https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41531-019-0105-5/MediaObjects/41531_2019_105_Fig4_HTML.png",
       "license": "CC BY 4.0",
-      "notes": "The already selected 2020 npj Parkinson's Disease Figure 4 combines dopaminergic micro-TENN microscopy and a conceptual nigrostriatal pathway reconstruction. Complete source figure visually verified and retained unchanged; it is precursor research, not an Innervace clinical product photograph.",
-      "imageReviewDate": "2026-10-23",
-      "followUp": "Retain the documented research-version distinction and source credit if this device page is updated.",
-      "image": "/images/devices/btsd-acad-0115.png",
-      "preserveSource": true,
-      "reviewSources": [
-        "https://pci.upenn.edu/innervace-launches-with-40m-to-repair-the-brain/",
-        "https://www.nature.com/articles/s41531-019-0105-5",
-        "https://creativecommons.org/licenses/by/4.0/"
-      ]
+      "notes": "Published source figure and attribution checked against the linked research article and its Creative Commons rights statement. Complete source asset is archived locally without crop, resizing or re-encoding; native dimensions and SHA-256 are recorded in the photo manifest. Preclinical Cullen Lab nigrostriatal tissue-engineering research; NOT a photograph of an Innervace clinical product.",
+      "imageReviewDate": "2026-10-22",
+      "followUp": "Preclinical Cullen Lab nigrostriatal tissue-engineering research; NOT a photograph of an Innervace clinical product.",
+      "discoverySourceUrl": "https://pci.upenn.edu/innervace-launches-with-40m-to-repair-the-brain/",
+      "image": "/images/devices/btsd-acad-0115-source.png",
+      "viewCount": 1
     },
     "BTSD-ACAD-0116": {
       "title": "Axonova Medical tissue-engineered nerve graft",
       "order": 218,
       "url": "https://buildthesimulation.com/devices/218-axonova-tissue-engineered-nerve-graft/",
       "status": "published",
-      "researchStatus": "published image metadata reconciled",
+      "researchStatus": "published_source_verified",
       "sourceUrl": "https://www.frontiersin.org/journals/bioengineering-and-biotechnology/articles/10.3389/fbioe.2020.00492/full",
       "candidateAssetUrl": "https://www.frontiersin.org/files/Articles/532857/xml-images/fbioe-08-00492-g003.webp",
       "license": "CC BY 4.0",
-      "notes": "The already selected 2020 Frontiers Figure 3 is a complete multipanel confocal microscopy figure of TENG and host axons in rat peripheral-nerve experiments. Source figure verified and retained unchanged, including all panels and scale bars; it is Cullen Lab precursor research, not a verified Axonova commercial product photograph.",
-      "imageReviewDate": "2026-10-23",
-      "followUp": "Retain the documented research-version distinction and source credit if this device page is updated.",
-      "image": "/images/devices/btsd-acad-0116.webp",
-      "preserveSource": true,
-      "reviewSources": [
-        "https://axonovamed.com/",
-        "https://www.frontiersin.org/journals/bioengineering-and-biotechnology/articles/10.3389/fbioe.2020.00492/full",
-        "https://creativecommons.org/licenses/by/4.0/"
-      ]
+      "notes": "Published source figure and attribution checked against the linked research article and its Creative Commons rights statement. Complete source asset is archived locally without crop, resizing or re-encoding; native dimensions and SHA-256 are recorded in the photo manifest. Cullen Lab precursor tissue-engineered nerve graft, not a verified photograph of an Axonova commercial product.",
+      "imageReviewDate": "2026-10-22",
+      "followUp": "Cullen Lab precursor tissue-engineered nerve graft, not a verified photograph of an Axonova commercial product.",
+      "discoverySourceUrl": "https://axonovamed.com/",
+      "image": "/images/devices/btsd-acad-0116-source.webp",
+      "viewCount": 1
     }
   }
-    }
+}

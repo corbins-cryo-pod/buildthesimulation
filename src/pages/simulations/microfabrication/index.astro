@@ -1,0 +1,8 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MicrofabricationLaboratory from '../../../components/MicrofabricationLaboratory.jsx';
+---
+<Layout pageTitle="Microfabrication Laboratory" description="Build a flexible neural electrode one material layer at a time. Inspect masks, cross-sections, deposition, lift-off, contact etching and electrical connectivity." wide compactHeader>
+  <MicrofabricationLaboratory client:load />
+  <noscript><p>This interactive laboratory requires JavaScript. <a href="/simulations/microfabrication/methods/">Read the process, equations and model limitations.</a></p></noscript>
+</Layout>

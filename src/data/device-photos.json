@@ -7689,7 +7689,7 @@
     ]
   },
   "BTSD-IMBCI-0011": {
-    "src": "/images/devices/btsd-imbci-0011.webp",
+    "src": "/images/devices/btsd-imbci-0011-source.webp",
     "width": 1772,
     "height": 368,
     "kind": "Source figure",
@@ -7699,24 +7699,26 @@
     "sourceUrl": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.932782/full",
     "sourceLabel": "Frontiers in Neuroscience · Figure 1",
     "versionNote": "Published research configuration; do not assume it is identical to the 2025 human-study implant.",
-    "thumbnail": "/images/devices/btsd-imbci-0011.webp",
+    "thumbnail": "/images/devices/btsd-imbci-0011-source.webp",
     "thumbnailWidth": 1772,
     "thumbnailHeight": 368,
     "sourceAssetUrl": "https://www.frontiersin.org/files/Articles/932782/xml-images/fnins-16-932782-g0001.webp",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
     "rightsStatus": "publisher_cc_by",
-    "changes": "Exact publisher source asset copied locally without cropping, resizing, recompression or annotation. Original panel labels and scale bars retained.",
+    "changes": "Original complete research figure copied byte for byte to local storage; no crop, resizing or re-encoding. Original panels, annotations and scale bars retained.",
     "sourceDimensions": {
       "width": 1772,
       "height": 368
     },
-    "sourceSha256": "540215b6a7fafcd75f05f1880d1e504ed92aeb798abb2924e7f2f3b230a16d1f",
+    "crop": null,
     "preserveSource": true,
-    "crop": null
+    "sourceSha256": "540215b6a7fafcd75f05f1880d1e504ed92aeb798abb2924e7f2f3b230a16d1f",
+    "fullBytes": 253756,
+    "sourceKind": "Research figure"
   },
   "BTSD-ACAD-0114": {
-    "src": "/images/devices/btsd-acad-0114.webp",
+    "src": "/images/devices/btsd-acad-0114-source.webp",
     "width": 1535,
     "height": 1189,
     "kind": "Source figure",
@@ -7726,24 +7728,26 @@
     "sourceUrl": "https://www.frontiersin.org/journals/molecular-neuroscience/articles/10.3389/fnmol.2024.1346696/full",
     "sourceLabel": "Frontiers in Molecular Neuroscience · Figure 2",
     "versionNote": "2024 preclinical micro-TENN research construct, not a human implant.",
-    "thumbnail": "/images/devices/btsd-acad-0114.webp",
+    "thumbnail": "/images/devices/btsd-acad-0114-source.webp",
     "thumbnailWidth": 1535,
     "thumbnailHeight": 1189,
     "sourceAssetUrl": "https://www.frontiersin.org/files/Articles/1346696/xml-images/fnmol-17-1346696-g002.webp",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
     "rightsStatus": "publisher_cc_by",
-    "changes": "Exact publisher source asset copied locally without cropping, resizing, recompression or annotation. Original panel labels and scale bars retained.",
+    "changes": "Original complete research figure copied byte for byte to local storage; no crop, resizing or re-encoding. Original panels, annotations and scale bars retained.",
     "sourceDimensions": {
       "width": 1535,
       "height": 1189
     },
-    "sourceSha256": "ddae4ff9e41a1b9278908eaed3f675861f0e695d2cc5b6fdbd4072eb8907fc18",
+    "crop": null,
     "preserveSource": true,
-    "crop": null
+    "sourceSha256": "ddae4ff9e41a1b9278908eaed3f675861f0e695d2cc5b6fdbd4072eb8907fc18",
+    "fullBytes": 715644,
+    "sourceKind": "Microscopy and research figure"
   },
   "BTSD-ACAD-0116": {
-    "src": "/images/devices/btsd-acad-0116.webp",
+    "src": "/images/devices/btsd-acad-0116-source.webp",
     "width": 2000,
     "height": 1547,
     "kind": "Source figure",
@@ -7753,24 +7757,26 @@
     "sourceUrl": "https://www.frontiersin.org/journals/bioengineering-and-biotechnology/articles/10.3389/fbioe.2020.00492/full",
     "sourceLabel": "Frontiers in Bioengineering and Biotechnology · Figure 3",
     "versionNote": "Cullen Lab precursor tissue-engineered nerve graft, not a verified photograph of an Axonova commercial product.",
-    "thumbnail": "/images/devices/btsd-acad-0116.webp",
+    "thumbnail": "/images/devices/btsd-acad-0116-source.webp",
     "thumbnailWidth": 2000,
     "thumbnailHeight": 1547,
     "sourceAssetUrl": "https://www.frontiersin.org/files/Articles/532857/xml-images/fbioe-08-00492-g003.webp",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
     "rightsStatus": "publisher_cc_by",
-    "changes": "Exact publisher source asset copied locally without cropping, resizing, recompression or annotation. Original panel labels and scale bars retained.",
+    "changes": "Original complete research figure copied byte for byte to local storage; no crop, resizing or re-encoding. Original panels, annotations and scale bars retained.",
     "sourceDimensions": {
       "width": 2000,
       "height": 1547
     },
-    "sourceSha256": "4eb1640cec020633225329f58f67e0e01935cc1a8e12e3117b4c399da1288c3f",
+    "crop": null,
     "preserveSource": true,
-    "crop": null
+    "sourceSha256": "4eb1640cec020633225329f58f67e0e01935cc1a8e12e3117b4c399da1288c3f",
+    "fullBytes": 3247976,
+    "sourceKind": "Confocal microscopy"
   },
   "BTSD-ACAD-0112": {
-    "src": "/images/devices/btsd-acad-0112.webp",
+    "src": "/images/devices/btsd-acad-0112-source.webp",
     "width": 945,
     "height": 905,
     "kind": "Source figure",
@@ -7782,22 +7788,24 @@
     "versionNote": "One research assembly from NeuroNexus probe families (2014), not a representation of the company's entire product catalog.",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
-    "thumbnail": "/images/devices/btsd-acad-0112.webp",
+    "thumbnail": "/images/devices/btsd-acad-0112-source.webp",
     "thumbnailWidth": 945,
     "thumbnailHeight": 905,
     "sourceAssetUrl": "https://www.frontiersin.org/files/Articles/71276/xml-images/fncir-08-00004-g0001.webp",
     "rightsStatus": "publisher_cc_by",
-    "changes": "Exact publisher source asset copied locally without cropping, resizing, recompression or annotation. Original panel labels and scale bars retained.",
+    "changes": "Original complete research figure copied byte for byte to local storage; no crop, resizing or re-encoding. Original panels, annotations and scale bars retained.",
     "sourceDimensions": {
       "width": 945,
       "height": 905
     },
-    "sourceSha256": "359bf5a15505cfd4954589cc3e3f1aefb37f1f26a40d98e66aedd7f80b07a58c",
+    "crop": null,
     "preserveSource": true,
-    "crop": null
+    "sourceSha256": "359bf5a15505cfd4954589cc3e3f1aefb37f1f26a40d98e66aedd7f80b07a58c",
+    "fullBytes": 415654,
+    "sourceKind": "Research figure and photograph"
   },
   "BTSD-ACAD-0113": {
-    "src": "/images/devices/btsd-acad-0113.webp",
+    "src": "/images/devices/btsd-acad-0113-source.webp",
     "width": 1535,
     "height": 1502,
     "kind": "Source figure",
@@ -7809,22 +7817,24 @@
     "versionNote": "Related 2024 Cullen Lab bidirectional micro-TENN experiment; not the specific unidirectional 'living electrode' pictured in the 2018 publication.",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-    "thumbnail": "/images/devices/btsd-acad-0113.webp",
+    "thumbnail": "/images/devices/btsd-acad-0113-source.webp",
     "thumbnailWidth": 1535,
     "thumbnailHeight": 1502,
     "sourceAssetUrl": "https://www.frontiersin.org/files/Articles/1346696/xml-images/fnmol-17-1346696-g004.webp",
     "rightsStatus": "publisher_cc_by",
-    "changes": "Exact publisher source asset copied locally without cropping, resizing, recompression or annotation. Original panel labels and scale bars retained.",
+    "changes": "Original complete research figure copied byte for byte to local storage; no crop, resizing or re-encoding. Original panels, annotations and scale bars retained.",
     "sourceDimensions": {
       "width": 1535,
       "height": 1502
     },
-    "sourceSha256": "3f4dbfb723b743b787574181cda61ee0176f6f0a68989688e81cead1acaf349e",
+    "crop": null,
     "preserveSource": true,
-    "crop": null
+    "sourceSha256": "3f4dbfb723b743b787574181cda61ee0176f6f0a68989688e81cead1acaf349e",
+    "fullBytes": 589530,
+    "sourceKind": "Living neural construct microscopy"
   },
   "BTSD-ACAD-0115": {
-    "src": "/images/devices/btsd-acad-0115.png",
+    "src": "/images/devices/btsd-acad-0115-source.png",
     "width": 685,
     "height": 524,
     "kind": "Source figure",
@@ -7836,22 +7846,24 @@
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
     "versionNote": "Preclinical Cullen Lab nigrostriatal tissue-engineering research; NOT a photograph of an Innervace clinical product.",
-    "thumbnail": "/images/devices/btsd-acad-0115.png",
+    "thumbnail": "/images/devices/btsd-acad-0115-source.png",
     "thumbnailWidth": 685,
     "thumbnailHeight": 524,
     "sourceAssetUrl": "https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41531-019-0105-5/MediaObjects/41531_2019_105_Fig4_HTML.png",
     "rightsStatus": "publisher_cc_by",
-    "changes": "Exact publisher source asset copied locally without cropping, resizing, recompression or annotation. Original panel labels and scale bars retained.",
+    "changes": "Original complete research figure copied byte for byte to local storage; no crop, resizing or re-encoding. Original panels, annotations and scale bars retained.",
     "sourceDimensions": {
       "width": 685,
       "height": 524
     },
-    "sourceSha256": "d03630ea9ca327b4680653a6587591d623dd8907b94b83013ff47ffe3330ee53",
+    "crop": null,
     "preserveSource": true,
-    "crop": null
+    "sourceSha256": "d03630ea9ca327b4680653a6587591d623dd8907b94b83013ff47ffe3330ee53",
+    "fullBytes": 349953,
+    "sourceKind": "Open-access research microscopy and schematic"
   },
   "BTSD-IMBCI-0012": {
-    "src": "/images/devices/btsd-imbci-0012.png",
+    "src": "/images/devices/btsd-imbci-0012-source.png",
     "width": 700,
     "height": 467,
     "kind": "Photograph",
@@ -7863,23 +7875,25 @@
     "license": "CC BY-NC-ND 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
     "versionNote": "2022 research demonstration of ABILITY; not documented as the 2026 first-in-human hardware configuration. Image must remain unaltered. Site must remain noncommercial for licensed use.",
-    "thumbnail": "/images/devices/btsd-imbci-0012.png",
+    "thumbnail": "/images/devices/btsd-imbci-0012-source.png",
     "thumbnailWidth": 700,
     "thumbnailHeight": 467,
     "sourceAssetUrl": "https://mediasvc.eurekalert.org/Api/v1/Multimedia/b80870fb-635f-49aa-92b5-ca44b0ee3d68/Rendition/low-res/Content/Public",
     "rightsStatus": "publisher_cc_by_nc_nd",
-    "changes": "Exact publisher source asset copied locally without cropping, resizing, recompression or annotation.",
+    "changes": "Original source photograph copied byte for byte to local storage; no crop, resizing or re-encoding. Source credit retained.",
     "sourceDimensions": {
       "width": 700,
       "height": 467
     },
-    "sourceSha256": "2ced548b92ef93537ba7d3c7df50619c4e0acb5df69d366dc6c5622c06538dd2",
+    "crop": null,
     "preserveSource": true,
-    "crop": null
+    "sourceSha256": "2ced548b92ef93537ba7d3c7df50619c4e0acb5df69d366dc6c5622c06538dd2",
+    "fullBytes": 403704,
+    "sourceKind": "Manufacturer research system photograph"
   },
   "BTSD-IMBCI-0013": {
-    "src": "/images/devices/btsd-imbci-0013.jpg",
-    "thumbnail": "/images/devices/btsd-imbci-0013.jpg",
+    "src": "/images/devices/btsd-imbci-0013-source.jpg",
+    "thumbnail": "/images/devices/btsd-imbci-0013-source.jpg",
     "width": 1920,
     "height": 1080,
     "thumbnailWidth": 1920,
@@ -7894,14 +7908,16 @@
     "license": "Project-specific editorial reuse with photographer credit",
     "licenseUrl": "https://idw-online.de/de/image?id=413193&size=screen",
     "rightsStatus": "editorial_research_reporting",
-    "changes": "Exact publisher source asset copied locally without cropping, resizing, recompression or annotation.",
+    "changes": "Original source photograph copied byte for byte to local storage; no crop, resizing or re-encoding. Source credit retained.",
     "versionNote": "2025 TUM clinical implantation using four 64-channel Utah microelectrode arrays, not a close-up photograph of the implant. Permitted for reporting on this research project.",
     "sourceDimensions": {
       "width": 1920,
       "height": 1080
     },
-    "sourceSha256": "4f1f13db6c8ac0612759e92efd10b5ae37ce3aa6f998208222f8251e524e9c2c",
+    "crop": null,
     "preserveSource": true,
-    "crop": null
+    "sourceSha256": "4f1f13db6c8ac0612759e92efd10b5ae37ce3aa6f998208222f8251e524e9c2c",
+    "fullBytes": 431693,
+    "sourceKind": "Clinical procedure photograph"
   }
 }
