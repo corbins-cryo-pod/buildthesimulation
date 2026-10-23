@@ -41,6 +41,8 @@ export default defineConfig({
     '/simulations/interface-designer/guide': '/devices/designer/guide/',
   },
   vite: {
+    // Explicit host for the managed development preview; production is static.
+    server: { allowedHosts: ['terminal.local'] },
     // Prevent Vite from inlining built assets as data: URLs.
     // (Some browsers/extensions treat these strangely; we want a normal /_astro/*.js URL.)
     build: {

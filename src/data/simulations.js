@@ -1,5 +1,15 @@
 export const simulationGroups = [
   {
+    "title": "Design & Microfabrication",
+    "entries": [
+      {
+        "href": "/simulations/microfabrication/",
+        "title": "Microfabrication Laboratory",
+        "desc": "Build a flexible neural electrode one material layer at a time. Inspect masks and live cross-sections, change alignment and etching, then test continuity, isolation and exposed contact area."
+      }
+    ]
+  },
+  {
     "title": "Neural Interface Laboratories",
     "entries": [
       {
