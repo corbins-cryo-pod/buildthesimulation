@@ -220,6 +220,14 @@ def native_case(case):
     native_voltages = np.asarray([np.asarray(v).copy() for v in voltages]).T
     expected_times = np.asarray(case['timeMs'])
     expected_voltages = np.asarray(case['voltageMv']).reshape(len(expected_times), len(nodes))
+    endpoint_collected = False
+    # NEURON's scheduled sample can fall a few femtoseconds beyond the final
+    # accumulated h.t. Read the already-computed endpoint state in that case;
+    # do not advance, interpolate, or shift any voltage trace to manufacture it.
+    if len(native_times) + 1 == len(expected_times) and abs(float(h.t) - expected_times[-1]) < 1e-8:
+        native_times = np.append(native_times, float(h.t))
+        native_voltages = np.vstack((native_voltages, [native_nodes[i].v for i in range(len(nodes))]))
+        endpoint_collected = True
     if native_times.shape != expected_times.shape:
         raise RuntimeError(f"Native sample count {len(native_times)} != requested {len(expected_times)}")
     time_grid_error = float(np.max(abs(native_times - expected_times)))
@@ -260,17 +268,27 @@ def native_case(case):
                        'nativeVoltageMv': np.round(native_voltages[:, i], 9).tolist()})
     native_currents = np.zeros_like(native_voltages)
     for i, vector in current_vectors.items():
-        native_currents[:, i] = np.asarray(vector)
+        values = np.asarray(vector)
+        if endpoint_collected:
+            values = np.append(values, sections[i](0.5).i_membrane_)
+        native_currents[:, i] = values
     recorded = native_currents @ recording_matrix(geometry, settings).T
+    expected_recordings = np.asarray([recording['neuralUv'] for recording in case['recordings']]).T
+    recording_difference = recorded - expected_recordings
     max_current_balance = float(np.max(abs(native_currents.sum(axis=1))))
     result = {
         'id': case['id'], 'description': case['description'], 'settings': settings,
+        'inputSha256': case['inputSha256'],
         'counts': {'nativeSections': len(sections), 'electricalNodes': len(nodes), 'masslessJunctions': len(nodes) - len(sections), 'synapses': len(synapses), 'samples': len(native_times)},
         'comparison': {'membraneRmsErrorMv': all_rms, 'membraneMaximumAbsoluteErrorMv': all_max,
                        'worstMonitorRmsErrorMv': worst_trace_rms, 'maximumSpikeTimingErrorMs': spike_error_ms,
                        'spikeCountAgreement': spike_count_agreement,
                        'maximumTimeGridErrorMs': time_grid_error, 'independentAxialConductanceErrorUs': edge_error,
-                       'maximumNativeCurrentImbalanceNa': max_current_balance},
+                       'maximumNativeCurrentImbalanceNa': max_current_balance,
+                       'extracellularRmsErrorUv': float(np.sqrt(np.mean(recording_difference ** 2))),
+                       'extracellularMaximumAbsoluteErrorUv': float(np.max(abs(recording_difference)))},
+        'sampling': {'endpointCollectedDirectly': endpoint_collected,
+                     'explanation': 'An omitted terminal scheduled sample is read directly from the final native state when h.t and requested endpoint agree within 1e-8 ms; no integration step, time shift or interpolation is added.'},
         'nativePresynapticEventTimes': [{'synapseId': label, 'timesMs': list(vector)} for label, vector in event_records],
         'spikes': spike_comparisons, 'timeMs': expected_times.tolist(), 'traces': traces,
         'nativeRecordingUv': np.round(recorded.T, 9).tolist(),
@@ -303,6 +321,7 @@ def main():
             'spikeCounts': c['spikeCountAgreement'],
             'spikeTiming': c['maximumSpikeTimingErrorMs'] <= criteria['maximumSpikeTimingErrorMs'],
             'strictPointwiseDiagnostic': c['membraneMaximumAbsoluteErrorMv'] <= criteria['strictPointwiseVoltageMv'],
+            'extracellularForward': c['extracellularMaximumAbsoluteErrorUv'] <= criteria['extracellularMaximumErrorUv'],
         }
         result['acceptancePassed'] = all(value for key, value in result['checks'].items() if key != 'strictPointwiseDiagnostic')
         results.append(result)
@@ -324,14 +343,22 @@ def main():
         'strictPointwiseAllPassed': all(result['checks']['strictPointwiseDiagnostic'] for result in results),
         'retainedDiscrepancies': [{'caseId': result['id'], 'failedChecks': [key for key, passed in result['checks'].items() if not passed], 'comparison': result['comparison']}
                                   for result in results if not all(result['checks'].values())],
+        'developmentDiscrepancies': [{
+            'caseId': 'relay-dt0025',
+            'stage': 'Native reference sample collection, first run',
+            'observed': 'NEURON scheduled Vector.record returned 800 of 801 requested samples; accumulated h.t was within floating-point error of the 40 ms final boundary.',
+            'resolution': 'Read the final already-computed native state directly, only when h.t and the requested endpoint agree within 1e-8 ms.',
+            'impact': 'No model equation, numerical timestep, initial condition, voltage tolerance, waveform alignment, or synaptic timing was altered.'
+        }],
         'limitations': ['Agreement is with independently implemented numerical mechanisms, not measured graft recordings.',
+                        'Matched-timestep agreement verifies software equivalence; separate timestep and spatial refinement tests assess convergence toward the continuous equations.',
                         'Uniform prescribed disk current in an unbounded isotropic conductor does not model polarization or insulating substrates.',
                         'Native NetCon threshold/event delivery and JS interpolation/ceil delivery may differ by a numerical step; no timing alignment is applied.',
                         'The strict 0.5 mV pointwise diagnostic is retained even when RMS and spike-timing acceptance pass.'],
     }
     target = Path(args.output)
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps(output, indent=2) + '\n')
+    target.write_text(json.dumps(output, separators=(',', ':')) + '\n')
     print('OUTPUT', str(target), 'ACCEPTANCE', output['allAcceptancePassed'], 'STRICT_POINTWISE', output['strictPointwiseAllPassed'])
 
 if __name__ == '__main__':

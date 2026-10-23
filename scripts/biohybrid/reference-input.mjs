@@ -10,6 +10,7 @@ const criteria = {
   maximumSpikeTimingErrorMs: 0.1,
   spikeCountAgreement: true,
   strictPointwiseVoltageMv: 0.5,
+  extracellularMaximumErrorUv: 0.001,
   strictPointwiseRole: 'Preserved additional diagnostic; reported separately from RMS/timing acceptance, never discarded or loosened after an outcome.',
   alignment: 'Compare the same physical times. No voltage offset, time shift, waveform alignment, or rescaling.',
 };
@@ -24,9 +25,11 @@ const sourceSha256 = Object.fromEntries(await Promise.all(files.map(async path =
 const cases = [];
 for (const definition of definitions) {
   const result = runSimulation(definition.settings);
-  cases.push({ ...definition, settings: result.settings, geometry: result.geometry,
+  const inputSha256 = createHash('sha256').update(JSON.stringify({ settings: result.settings, geometry: result.geometry, restMv: result.diagnostics.restMv })).digest('hex');
+  cases.push({ ...definition, inputSha256, settings: result.settings, geometry: result.geometry,
     timeMs: Array.from(result.timeMs), voltageMv: Array.from(result.voltageMv),
     traces: result.traces.map(trace => ({ ...trace, values: Array.from(trace.values) })),
+    recordings: result.recordings.map(trace => ({ id: trace.id, neuralUv: Array.from(trace.neuralUv) })),
     spikes: result.spikes, synapticEvents: result.synapticEvents,
     metrics: result.metrics, diagnostics: result.diagnostics });
   console.log(definition.id, JSON.stringify({ nodes: result.geometry.nodes.length, spikes: result.spikes.length, elapsedMs: result.diagnostics.elapsedMs }));
