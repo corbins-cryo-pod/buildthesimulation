@@ -12,6 +12,9 @@ test('biohybrid exports: JSON preserves normalized physical settings and measure
  assert.deepEqual(doc.settings,normalizeSettings(DEFAULT_SETTINGS));
  assert.equal(doc.sampleCount,result.timeMs.length);assert.equal(doc.compartmentCount,result.geometry.nodes.length);
  assert.deepEqual(doc.metrics,result.metrics);assert.deepEqual(doc.spikes,result.spikes);
+ assert.equal(doc.metrics.successfulTransmission,true);assert.equal(doc.metrics.relayConsistentHosts,result.metrics.relayConsistentHosts);
+ assert.match(doc.metricDefinitions.successfulTransmission.evidence,/Temporal consistency only/);
+ assert.match(doc.metricDefinitions.relayConsistentHosts.meaning,/Number of distinct host cells/);
  assert.deepEqual(doc.units,{time:'ms',membrane:'mV',extracellular:'µV',stimulus:'µA',length:'µm',conductance:'µS',conductivity:'S/m'});
  assert.equal(doc.metrics.recruitedHosts,3);assert.ok(doc.metrics.firstHostSpikeMs>doc.metrics.firstGraftSpikeMs);
 });

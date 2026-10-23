@@ -7,7 +7,7 @@ export const PROTOCOL_AXES=Object.freeze([
   {id:'stimAmplitudeUa',label:'First-phase current',unit:'µA',min:-100,max:100,values:[-6,-12,-18,-24,-30]},
   {id:'synapticWeightUs',label:'Each synaptic connection',unit:'µS',min:0,max:.1,values:[0,.005,.01,.025,.05]},
   {id:'recordDistanceUm',label:'Recording contact height',unit:'µm',min:45,max:400,values:[60,100,150,200,300]},
-  {id:'axonDiameterUm',label:'Axon diameter',unit:'µm',min:.6,max:5,values:[.8,1.2,2,3,4]},
+  {id:'axonDiameterUm',label:'Shared axon diameter',unit:'µm',min:.6,max:5,values:[.8,1.2,2,3,4]},
   {id:'conductivitySPerM',label:'Tissue conductivity',unit:'S/m',min:.1,max:.6,values:[.15,.225,.3,.45,.6]},
 ].map(axis=>Object.freeze({...axis,values:Object.freeze(axis.values)})));
 export const DEFAULT_PROTOCOL=Object.freeze({kind:'causal',axis:'stimAmplitudeUa',values:PROTOCOL_AXES[0].values,paired:true});

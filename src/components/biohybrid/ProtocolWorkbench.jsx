@@ -8,7 +8,7 @@ const axisNotes = {
   stimAmplitudeUa: "Signed first-phase current. Negative values are cathodic first; every pulse retains its opposite, equal-duration second phase. The sampled response need not be monotone.",
   synapticWeightUs: "Each connection receives this peak conductance. Morphology, stimulus, time step and all other settings stay fixed. Zero conductance preserves the cable geometry.",
   recordDistanceUm: "Move only the passive recording disks. Electrical activity should remain unchanged while the known forward-model signals change.",
-  axonDiameterUm: "Change the engineered axon diameter and solve its altered membrane area and axial conductance. This is an idealized morphology study.",
+  axonDiameterUm: "Change the shared graft-trunk and host-axon diameter; graft-to-host terminal branches use 0.8× this diameter. The solver recalculates membrane area and axial conductance. This is an idealized morphology study.",
   conductivitySPerM: "Conductivity affects both the applied stimulus field and the recording transfer. This is a coupled experiment, not a fixed-source 1/\u03C3 test."
 };
 const conditions = {
@@ -269,6 +269,7 @@ function ProtocolResults({
     <ResponsePlot title="Host recruitment" subtitle={causal ? "Host soma spikes in three separately solved conditions." : "Number of host cells with a soma spike at each tested setting. Lines only connect tested points."} unit="cells" points={points} series={recruitment} xLabel={causal ? "Matched condition" : `${axis?.label} / ${axis?.unit}`} maxY={doc.baseSettings.hostCount} />
     <ResponsePlot title="Recording 2: known source contributions" subtitle="Each peak-to-peak amplitude uses its own extrema. Component amplitudes need not add to the combined amplitude." unit="µV p–p" points={points} series={signals} xLabel={causal ? "Matched condition" : `${axis?.label} / ${axis?.unit}`} />
   </div>
+  <p class="bh-protocol-fineprint">Tip − soma is the signed difference between the first upward 0 mV crossings at the engineered-1 tract tip and soma. A negative value means the tip crossed first. This event ordering must be interpreted alongside local voltages and matched synaptic controls.</p>
   <div class="bh-protocol-table">
     <table>
       <caption class="sr-only">
@@ -289,9 +290,9 @@ function ProtocolResults({
             {"Graft tip spikes"}
           </th>
           <th>
-            {"Trunk delay"}
+            {"Tip − soma"}
             <br />
-            {"ms"}
+            {"first crossings / ms"}
           </th>
           <th>
             {"Neural R2"}

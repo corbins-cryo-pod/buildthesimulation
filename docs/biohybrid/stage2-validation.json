@@ -8,11 +8,12 @@
   "sourceSha256": {
     "src/lib/biohybrid/model.js": "8555077e30fcc8461418edfbddf6bee5405925b5fb3b17ce88f8ab65b7818b70",
     "src/lib/biohybrid/geometry.js": "10686d756b315eff3d0b51c328ca48ab16d5117006e50635e3a2e6179cd70798",
-    "src/lib/biohybrid/protocols.js": "75f1229deb5a23fd7f75772ac2bae059fccae513bf66cf0246eddec5a3c582ae",
+    "src/lib/biohybrid/protocols.js": "20c32bd9c6b225cb1059d491112c51f322b576a841664febb88d722a931e60d3",
     "src/lib/biohybrid/protocol-worker.js": "98a1b3dc50da940f49ef07745f493a626f3126a140175fe3da6e1f831bfe7de9",
     "tests/biohybrid-sources.mjs": "7d0cddf1a19873a3bcaa9974de4124064d03a71673acd2793a06310ab9d8380c",
     "tests/biohybrid-protocols.mjs": "b3d956d8ee940c8957a90953b9b53301d4fd17e3c0c4539f324b8bbd55348da4",
-    "scripts/validate-biohybrid-stage2.mjs": "ec90b1d48e015a87c4f1ef7666d5e566e50f33c62d1e96b3b2db5d8dbeafa829"
+    "tests/biohybrid-response-boundary.mjs": "b832d0f65d4e10d3cc6b4e5db2bec85e1b717b624cb5b4559c78bbea959a87d8",
+    "scripts/validate-biohybrid-stage2.mjs": "8c06ed92d08c9ae90466443128734ee2a00bfe4821b64e75ba085525fcbce311"
   },
   "acceptance": {
     "sourceIdentityMaximumUv": 1e-10,
@@ -22,6 +23,19 @@
     "mixedLostHosts": 2,
     "mixedPersistentHosts": 1,
     "directPersistentHosts": 1,
+    "responseBoundary": {
+      "stimAmplitudeUa": [
+        -12,
+        -18
+      ],
+      "coarseDtMs": 0.005,
+      "fineDtMs": 0.0025,
+      "expectedRecruitedHosts": [
+        0,
+        3
+      ],
+      "requireSamePerHostSpikeCounts": true
+    },
     "provisionalStoredStateAbsoluteDiagnosticUv": 0.001
   },
   "checks": [
@@ -51,6 +65,10 @@
     },
     {
       "id": "all-five-default-sweep-grids-complete",
+      "passed": true
+    },
+    {
+      "id": "sampled-current-boundary-finer-step-counts",
       "passed": true
     },
     {
@@ -7430,6 +7448,301 @@
       ]
     }
   ],
+  "responseBoundaryRefinement": {
+    "definition": "At the fixed signed-current endpoints -12 and -18 µA, retain zero and three recruited host somata, respectively, at dt 0.005 and 0.0025 ms. All other settings, including geometry, duration and saved-time grid, remain identical. Each host soma spike count must also agree.",
+    "timingInterpretation": "Event-index-matched fine-minus-coarse time differences are reported without a separate timing acceptance threshold. These two endpoint checks neither estimate an exact stimulation threshold nor establish uniform convergence throughout the interval.",
+    "cases": [
+      {
+        "stimAmplitudeUa": -12,
+        "expectedRecruitedHosts": 0,
+        "settingsMatchExceptDt": true,
+        "coarse": {
+          "settings": {
+            "graftCount": 2,
+            "hostCount": 3,
+            "connectedHosts": 3,
+            "axonLengthUm": 1000,
+            "axonDiameterUm": 2,
+            "segmentLengthUm": 25,
+            "scaffoldRadiusUm": 90,
+            "axialResistivityOhmCm": 100,
+            "temperatureC": 6.3,
+            "sodiumScale": 1,
+            "potassiumScale": 1,
+            "conductivitySPerM": 0.3,
+            "stimAmplitudeUa": -12,
+            "stimStartMs": 5,
+            "pulseWidthMs": 0.4,
+            "pulseGapMs": 0.1,
+            "pulseCount": 2,
+            "pulseIntervalMs": 15,
+            "stimXUm": 0,
+            "stimYUm": 0,
+            "stimDistanceUm": 70,
+            "contactRadiusUm": 15,
+            "recordDistanceUm": 100,
+            "recordXOffsetUm": 0,
+            "recordRadiusUm": 12,
+            "synapticWeightUs": 0.025,
+            "synapticDelayMs": 0.7,
+            "synapticRiseMs": 0.3,
+            "synapticDecayMs": 3,
+            "durationMs": 40,
+            "dtMs": 0.005,
+            "sampleDtMs": 0.05,
+            "growthEnabled": false,
+            "seed": 4281
+          },
+          "diagnostics": {
+            "dtMs": 0.005,
+            "sampleDtMs": 0.05,
+            "segmentLengthUm": 25,
+            "steps": 8000,
+            "frames": 801,
+            "maxCurrentBalanceNa": 2.970977996496864e-12
+          },
+          "recruitedHosts": 0
+        },
+        "fine": {
+          "settings": {
+            "graftCount": 2,
+            "hostCount": 3,
+            "connectedHosts": 3,
+            "axonLengthUm": 1000,
+            "axonDiameterUm": 2,
+            "segmentLengthUm": 25,
+            "scaffoldRadiusUm": 90,
+            "axialResistivityOhmCm": 100,
+            "temperatureC": 6.3,
+            "sodiumScale": 1,
+            "potassiumScale": 1,
+            "conductivitySPerM": 0.3,
+            "stimAmplitudeUa": -12,
+            "stimStartMs": 5,
+            "pulseWidthMs": 0.4,
+            "pulseGapMs": 0.1,
+            "pulseCount": 2,
+            "pulseIntervalMs": 15,
+            "stimXUm": 0,
+            "stimYUm": 0,
+            "stimDistanceUm": 70,
+            "contactRadiusUm": 15,
+            "recordDistanceUm": 100,
+            "recordXOffsetUm": 0,
+            "recordRadiusUm": 12,
+            "synapticWeightUs": 0.025,
+            "synapticDelayMs": 0.7,
+            "synapticRiseMs": 0.3,
+            "synapticDecayMs": 3,
+            "durationMs": 40,
+            "dtMs": 0.0025,
+            "sampleDtMs": 0.05,
+            "growthEnabled": false,
+            "seed": 4281
+          },
+          "diagnostics": {
+            "dtMs": 0.0025,
+            "sampleDtMs": 0.05,
+            "segmentLengthUm": 25,
+            "steps": 16000,
+            "frames": 801,
+            "maxCurrentBalanceNa": 3.5099250166471113e-12
+          },
+          "recruitedHosts": 0
+        },
+        "hosts": [
+          {
+            "id": "host-1",
+            "coarseSomaSpikes": 0,
+            "fineSomaSpikes": 0,
+            "coarseSpikeTimesMs": [],
+            "fineSpikeTimesMs": [],
+            "coarseFirstSpikeMs": null,
+            "fineFirstSpikeMs": null,
+            "matchedSpikeTimeDifferencesMs": [],
+            "sameSpikeCount": true
+          },
+          {
+            "id": "host-2",
+            "coarseSomaSpikes": 0,
+            "fineSomaSpikes": 0,
+            "coarseSpikeTimesMs": [],
+            "fineSpikeTimesMs": [],
+            "coarseFirstSpikeMs": null,
+            "fineFirstSpikeMs": null,
+            "matchedSpikeTimeDifferencesMs": [],
+            "sameSpikeCount": true
+          },
+          {
+            "id": "host-3",
+            "coarseSomaSpikes": 0,
+            "fineSomaSpikes": 0,
+            "coarseSpikeTimesMs": [],
+            "fineSpikeTimesMs": [],
+            "coarseFirstSpikeMs": null,
+            "fineFirstSpikeMs": null,
+            "matchedSpikeTimeDifferencesMs": [],
+            "sameSpikeCount": true
+          }
+        ],
+        "passed": true
+      },
+      {
+        "stimAmplitudeUa": -18,
+        "expectedRecruitedHosts": 3,
+        "settingsMatchExceptDt": true,
+        "coarse": {
+          "settings": {
+            "graftCount": 2,
+            "hostCount": 3,
+            "connectedHosts": 3,
+            "axonLengthUm": 1000,
+            "axonDiameterUm": 2,
+            "segmentLengthUm": 25,
+            "scaffoldRadiusUm": 90,
+            "axialResistivityOhmCm": 100,
+            "temperatureC": 6.3,
+            "sodiumScale": 1,
+            "potassiumScale": 1,
+            "conductivitySPerM": 0.3,
+            "stimAmplitudeUa": -18,
+            "stimStartMs": 5,
+            "pulseWidthMs": 0.4,
+            "pulseGapMs": 0.1,
+            "pulseCount": 2,
+            "pulseIntervalMs": 15,
+            "stimXUm": 0,
+            "stimYUm": 0,
+            "stimDistanceUm": 70,
+            "contactRadiusUm": 15,
+            "recordDistanceUm": 100,
+            "recordXOffsetUm": 0,
+            "recordRadiusUm": 12,
+            "synapticWeightUs": 0.025,
+            "synapticDelayMs": 0.7,
+            "synapticRiseMs": 0.3,
+            "synapticDecayMs": 3,
+            "durationMs": 40,
+            "dtMs": 0.005,
+            "sampleDtMs": 0.05,
+            "growthEnabled": false,
+            "seed": 4281
+          },
+          "diagnostics": {
+            "dtMs": 0.005,
+            "sampleDtMs": 0.05,
+            "segmentLengthUm": 25,
+            "steps": 8000,
+            "frames": 801,
+            "maxCurrentBalanceNa": 3.325451242500166e-12
+          },
+          "recruitedHosts": 3
+        },
+        "fine": {
+          "settings": {
+            "graftCount": 2,
+            "hostCount": 3,
+            "connectedHosts": 3,
+            "axonLengthUm": 1000,
+            "axonDiameterUm": 2,
+            "segmentLengthUm": 25,
+            "scaffoldRadiusUm": 90,
+            "axialResistivityOhmCm": 100,
+            "temperatureC": 6.3,
+            "sodiumScale": 1,
+            "potassiumScale": 1,
+            "conductivitySPerM": 0.3,
+            "stimAmplitudeUa": -18,
+            "stimStartMs": 5,
+            "pulseWidthMs": 0.4,
+            "pulseGapMs": 0.1,
+            "pulseCount": 2,
+            "pulseIntervalMs": 15,
+            "stimXUm": 0,
+            "stimYUm": 0,
+            "stimDistanceUm": 70,
+            "contactRadiusUm": 15,
+            "recordDistanceUm": 100,
+            "recordXOffsetUm": 0,
+            "recordRadiusUm": 12,
+            "synapticWeightUs": 0.025,
+            "synapticDelayMs": 0.7,
+            "synapticRiseMs": 0.3,
+            "synapticDecayMs": 3,
+            "durationMs": 40,
+            "dtMs": 0.0025,
+            "sampleDtMs": 0.05,
+            "growthEnabled": false,
+            "seed": 4281
+          },
+          "diagnostics": {
+            "dtMs": 0.0025,
+            "sampleDtMs": 0.05,
+            "segmentLengthUm": 25,
+            "steps": 16000,
+            "frames": 801,
+            "maxCurrentBalanceNa": 3.578281768112923e-12
+          },
+          "recruitedHosts": 3
+        },
+        "hosts": [
+          {
+            "id": "host-1",
+            "coarseSomaSpikes": 1,
+            "fineSomaSpikes": 1,
+            "coarseSpikeTimesMs": [
+              11.48672969399167
+            ],
+            "fineSpikeTimesMs": [
+              11.469459266826716
+            ],
+            "coarseFirstSpikeMs": 11.48672969399167,
+            "fineFirstSpikeMs": 11.469459266826716,
+            "matchedSpikeTimeDifferencesMs": [
+              -0.017270427164953972
+            ],
+            "sameSpikeCount": true
+          },
+          {
+            "id": "host-2",
+            "coarseSomaSpikes": 1,
+            "fineSomaSpikes": 1,
+            "coarseSpikeTimesMs": [
+              11.3751220411865
+            ],
+            "fineSpikeTimesMs": [
+              11.355376193879765
+            ],
+            "coarseFirstSpikeMs": 11.3751220411865,
+            "fineFirstSpikeMs": 11.355376193879765,
+            "matchedSpikeTimeDifferencesMs": [
+              -0.019745847306735342
+            ],
+            "sameSpikeCount": true
+          },
+          {
+            "id": "host-3",
+            "coarseSomaSpikes": 1,
+            "fineSomaSpikes": 1,
+            "coarseSpikeTimesMs": [
+              11.50621149822847
+            ],
+            "fineSpikeTimesMs": [
+              11.486487812527823
+            ],
+            "coarseFirstSpikeMs": 11.50621149822847,
+            "fineFirstSpikeMs": 11.486487812527823,
+            "matchedSpikeTimeDifferencesMs": [
+              -0.01972368570064731
+            ],
+            "sameSpikeCount": true
+          }
+        ],
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
   "errorRetention": {
     "schemaVersion": "biohybrid-protocol/1.0.0",
     "modelVersion": "biohybrid-hh-cable/1.0.0",
@@ -8050,43 +8363,47 @@
     "measurements": [
       {
         "id": "default-audit",
-        "elapsedMs": 3654.8626900000004
+        "elapsedMs": 9492.768342000001
       },
       {
         "id": "mixed-activation-audit",
-        "elapsedMs": 2280.2579580000006
+        "elapsedMs": 3402.8861180000004
       },
       {
         "id": "direct-activation-audit",
-        "elapsedMs": 848.0766510000003
+        "elapsedMs": 1328.1154880000013
       },
       {
         "id": "sweep-stimAmplitudeUa",
-        "elapsedMs": 6676.547154000001
+        "elapsedMs": 8068.671853
       },
       {
         "id": "sweep-synapticWeightUs",
-        "elapsedMs": 6244.680308000001
+        "elapsedMs": 7926.591254999999
       },
       {
         "id": "sweep-recordDistanceUm",
-        "elapsedMs": 6510.351575000001
+        "elapsedMs": 9548.635067
       },
       {
         "id": "sweep-axonDiameterUm",
-        "elapsedMs": 7427.899636999999
+        "elapsedMs": 8729.88291
       },
       {
         "id": "sweep-conductivitySPerM",
-        "elapsedMs": 10274.397631
+        "elapsedMs": 7467.454229999996
+      },
+      {
+        "id": "current-boundary-finer-step",
+        "elapsedMs": 5584.085605999993
       },
       {
         "id": "unsupported-placement",
-        "elapsedMs": 2063.501182
+        "elapsedMs": 2294.690397999999
       },
       {
         "id": "source-reconstruction",
-        "elapsedMs": 2142.232735999998
+        "elapsedMs": 1532.5389399999985
       }
     ]
   }

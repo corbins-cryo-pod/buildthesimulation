@@ -98,3 +98,29 @@ test('biohybrid protocol export: nominal geometric phase density uses explicit p
  const corrupted=clone(audit);corrupted.cases[0].baseline.dose.absolutePhaseChargeDensityUcPerCm2*=1000;assert.throws(()=>protocolJSON(corrupted),/Charge metadata/);
  const units=clone(audit);units.units.chargeDensity='nC/cm²';assert.throws(()=>protocolCSV(units),/units/);
 });
+
+test('biohybrid protocol export: mixed activation retains negative first-crossing differences and explicit timing definitions',()=>{
+ const study=runProtocol({axonLengthUm:300,stimXUm:300,stimAmplitudeUa:-30,pulseCount:1,durationMs:25});
+ const run=study.cases[0].baseline,graft=run.grafts.find(cell=>cell.id==='graft-1');
+ const firstHost=Math.min(...run.hosts.filter(cell=>cell.firstSpikeMs!==null).map(cell=>cell.firstSpikeMs));
+ assert.equal(run.metrics.conductionDelayMs,graft.firstTerminalMs-graft.firstSomaMs);
+ assert.equal(run.metrics.relayDelayMs,firstHost-graft.firstSomaMs);
+ assert.ok(Math.abs(run.metrics.conductionDelayMs-(-.981562))<1e-6);
+ assert.ok(Math.abs(run.metrics.relayDelayMs-(-.713884))<1e-6);
+ const doc=JSON.parse(protocolJSON(study));
+ assert.equal(doc.cases[0].baseline.metrics.conductionDelayMs,run.metrics.conductionDelayMs);
+ assert.equal(doc.cases[0].baseline.metrics.relayDelayMs,run.metrics.relayDelayMs);
+ assert.match(doc.metricDefinitions.conductionDelayMs.label,/Signed/);
+ assert.match(doc.metricDefinitions.conductionDelayMs.expression,/First upward 0 mV crossing/);
+ assert.match(doc.metricDefinitions.conductionDelayMs.negativeMeaning,/tip crossed before its soma/);
+ assert.match(doc.metricDefinitions.relayDelayMs.negativeMeaning,/host soma crossed before the graft-1 soma/);
+ const rows=parseCSV(protocolCSV(study)),header=rows.shift(),value=name=>rows[0][header.indexOf(name)];
+ assert.equal(Number(value('trunk_delay_ms')),run.metrics.conductionDelayMs);
+ assert.equal(Number(value('relay_delay_ms')),run.metrics.relayDelayMs);
+ assert.deepEqual(JSON.parse(value('timing_definitions_json')),{conductionDelayMs:doc.metricDefinitions.conductionDelayMs,relayDelayMs:doc.metricDefinitions.relayDelayMs});
+ assert.equal(run.metrics.successfulTransmission,true);assert.equal(doc.cases[0].baseline.metrics.successfulTransmission,run.metrics.successfulTransmission);
+ assert.equal(doc.cases[0].baseline.metrics.relayConsistentHosts,run.metrics.relayConsistentHosts);
+ assert.match(doc.metricDefinitions.successfulTransmission.evidence,/does not establish synaptic dependence/);
+ assert.match(doc.metricDefinitions.successfulTransmission.meaning,/same host/);
+ assert.match(doc.metricDefinitions.relayConsistentHosts.evidence,/not a count of causally verified/);
+});

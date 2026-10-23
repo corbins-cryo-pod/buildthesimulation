@@ -39,6 +39,22 @@ Recruitment is a count of unique host soma identities. It is not a success proba
 
 The comparator checks that only the declared synaptic parameter differs. A missing or failed numerical run cannot produce a successful causal classification. Causal language remains restricted to the defined model and its specific initial conditions and inputs.
 
+### Signed timing summaries and mixed activation
+
+The retained summary fields describe first upward 0 mV crossings, with exact monitor identities:
+
+| Retained field | Defined quantity | Interpretation limit |
+| --- | --- | --- |
+| `conductionDelayMs` | First engineered-1 tip crossing minus first engineered-1 soma crossing | Signed first-crossing difference; it does not automatically match one propagating wavefront. |
+| `relayDelayMs` | Earliest host soma crossing minus first engineered-1 soma crossing | Signed first-crossing difference; the host can receive another graft's input or be activated directly. |
+| `conductionVelocityMPerS` | Engineered-1 monitored path length divided by a positive `conductionDelayMs`; otherwise null | Conditional apparent velocity. A physical conduction interpretation additionally requires matched propagation. |
+
+The keys remain compatible with the foundational export, but user-facing labels must describe these signed differences. A negative value means the distal monitor or host crossed before the reference soma. It is not a negative physical travel time, and taking an absolute value would erase information about activation order. A positive difference also does not establish a causal relay by itself. Missing monitor events produce unavailable differences, not a zero value.
+
+A reproduced mixed-activation example uses the default model with `axonLengthUm: 300`, `stimXUm: 300`, `stimAmplitudeUa: -30`, `pulseCount: 1`, and `durationMs: 25`. Engineered-1 tip crosses at **5.906975824913949 ms**, host-2 soma at **6.174653403903345 ms**, and engineered-1 soma at **6.888537880693696 ms**. The retained differences are therefore **−0.9815620557797473 ms** and **−0.7138844767903514 ms**, and the velocity field is **null**. These calculated events demonstrate why the displayed quantities need signed first-crossing labels. They do not uniquely establish the direction or initiation site of every wavefront.
+
+For a physical propagation measurement, identify the same traveling event at specified proximal/distal monitors in a specified direction. A per-pulse synaptic relay latency additionally needs a defined presynaptic event, local synaptic arrival, postsynaptic event and evidence from the matched intervention. The present summary fields do not perform that additional matching.
+
 ## 3. Source-resolved extracellular recording
 
 For contact k and source compartment i, let L[k,i] be the existing finite-contact transfer coefficient and I_m[i,t] the outward total membrane current. Partition the same current vector by anatomical population:
@@ -65,7 +81,7 @@ The initial workbench varies one parameter at a time:
 | Signed first-phase current | µA | Conditional stimulus response and recruitment. |
 | Each assigned host–graft connection's conductance | µS | Postsynaptic recruitment conditional on the fixed wiring and stimulus. |
 | Recording contact height | µm | Ideal readout changes while electrical activity is unchanged. Height is a coordinate, not every contact's shortest membrane separation. |
-| Engineered axon diameter | µm | Cable area/resistance and conduction changes within the unmyelinated surrogate. |
+| Shared axon diameter | µm | Changes graft trunks and host axons; graft terminal branches use 0.8 times this diameter. Recruitment or recording changes cannot be assigned exclusively to graft-trunk caliber. |
 | Tissue conductivity | S/m | Combined changes in the applied field, cell response and recording transfer. |
 
 Each sweep uses an ordered list of two to seven distinct values. Paired synapses-off controls can be requested. A full no-stimulus audit is a separate three-run protocol rather than an implied control at every sweep point. All settings, outcomes, failures and units are retained.
@@ -100,6 +116,7 @@ The analysis layer is checked separately from the underlying engine. Required ev
 - Every saved contact sample reconstructs from its source components to numerical precision.
 - The default matched audit loses host recruitment when synaptic conductance is removed, while graft behavior remains unchanged.
 - A deliberately direct-stimulation configuration retains host firing with synapses removed. This prevents the classifier from treating every host response as a successful bridge.
+- A distal-stimulation mixed-activation configuration retains negative first-crossing differences and an unavailable velocity. These values are checked against the stored spike times and are not relabeled as negative physical conduction times.
 - A disconnected condition preserves distant graft signal and small nonspiking host-current contributions.
 - Sampled response transitions, constant responses, nonmonotonicity, failed gaps and per-host identities are retained correctly.
 - A passive recording-position change leaves membrane voltages and spike events unchanged.

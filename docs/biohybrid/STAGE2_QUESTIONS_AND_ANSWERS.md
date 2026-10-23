@@ -103,7 +103,7 @@ Distinguish a functioning modeled relay from direct stimulation and distant elec
 
 #### 06. What evidence is sufficient to call a response dependent on the modeled synaptic relay?
 
-**Answer.** Temporal order is necessary but insufficient. Run the same geometry and stimulus with the graft-to-host synaptic conductances removed, and compare each receiving cell. If a host response disappears under that intervention while the graft still conducts, the response depends on the modeled junction under those conditions. This is a model counterfactual, not proof of a biological synapse.
+**Answer.** Observed spike order alone is insufficient. Run the same geometry and stimulus with the graft-to-host synaptic conductances removed, and compare each receiving cell. If a host response disappears under that intervention while the graft still conducts, the response depends on the modeled junction under those conditions. This is a model counterfactual, not proof of a biological synapse.
 
 **Evidence class:** Established equations or numerical method.
 
@@ -157,17 +157,17 @@ Distinguish a functioning modeled relay from direct stimulation and distant elec
 
 **Sources:** [Biohybrid Laboratory: Methods & validation](https://buildthesimulation.com/simulations/biohybrid-interface/methods/).
 
-#### 10. How should conduction delay and relay latency be measured?
+#### 10. How should the signed spike-timing differences be interpreted?
 
-**Answer.** A delay requires specified start and end events in specified structures. Axonal delay should match a proximal crossing to a subsequent terminal crossing on the same graft. Host latency should identify the graft event, local synaptic arrival and host soma response used. Subtracting two unrelated earliest spikes can create a plausible but misleading number when multiple cells or pulses are present.
+**Answer.** The current summaries subtract first upward 0 mV crossings: engineered 1 tip minus engineered 1 soma, and earliest host soma minus engineered 1 soma. These are signed timing differences. A negative value means that the tip or host crossed first; distal or mixed initiation can produce this without negative physical travel time. A positive difference also does not establish matched propagation. Physical conduction time requires identifying the same wavefront at specified monitors and in a specified direction.
 
 **Evidence class:** Explicit simulator or experiment-design choice.
 
-**Implementation consequence.** Retain per-cell event identities and distinguish conduction, configured synaptic delay and postsynaptic integration time.
+**Implementation consequence.** Retain legacy metric keys for data compatibility, but label their values as first-crossing differences and name the monitors. Do not clamp, take an absolute value or describe a negative difference as a physical conduction delay.
 
-**Verification.** Match events by cell, monitor and ordinal where justified; report absent or ambiguous events as unavailable rather than zero delay.
+**Verification.** Check the proximal benchmark and a distal-stimulation mixed-activation case against the stored spike times. Missing crossings yield unavailable differences; actual negative differences retain their signs.
 
-**Remaining uncertainty.** Overlapping responses or multiple upstream grafts can prevent a unique event-to-event assignment without additional interventions.
+**Remaining uncertainty.** These first-crossing summaries do not pair wavefronts across cells or pulses. Directional conduction time and per-pulse synaptic relay latency require additional event matching and causal evidence.
 
 **Sources:** [Biohybrid Laboratory: Methods & validation](https://buildthesimulation.com/simulations/biohybrid-interface/methods/); [Repository: numerical validation and retained discrepancies](https://github.com/corbins-cryo-pod/buildthesimulation/blob/main/docs/biohybrid/VALIDATION_HISTORY.md).
 
@@ -275,15 +275,15 @@ Interpret controlled parameter changes without inventing a universal threshold o
 
 #### 18. How do axon length and diameter affect conduction in this model?
 
-**Answer.** Length changes the physical path to be traversed, while diameter changes axial conductance and membrane area. Both enter the compartment equations rather than a preset animation speed. A velocity estimate must divide the actual monitored path length by its matched conduction delay, including any taper or offset represented in the geometry.
+**Answer.** Length changes the engineered tract path; the shared axon-diameter setting changes graft trunks and host axons, with graft terminal branches at 0.8 times that diameter. These changes enter membrane area and axial resistance. The retained velocity field divides path length by a positive first tip-minus-soma difference and is unavailable otherwise. That ratio is a conditional apparent velocity; physical conduction velocity requires matched propagation.
 
 **Evidence class:** Established equations or numerical method.
 
-**Implementation consequence.** Keep the existing conduction experiment and allow controlled comparisons with the same channel parameters and temperature.
+**Implementation consequence.** State the shared diameter scope when interpreting recruitment or recording changes. Keep channel parameters and temperature fixed for controlled comparisons, and distinguish the timing summary from a matched traveling event.
 
-**Verification.** Check event order, positive delay, path-length bookkeeping and temporal/spatial refinement for the tested geometries.
+**Verification.** Check physical path length and affected axon diameters. Require positive matched travel time only for a conduction interpretation; preserve signed first-crossing differences in mixed-activation cases and test temporal/spatial refinement.
 
-**Remaining uncertainty.** The unmyelinated HH surrogate does not include nodes of Ranvier, internodes, myelin remodeling or a calibrated mammalian diameter–velocity law.
+**Remaining uncertainty.** This sweep cannot attribute every response change solely to graft-trunk caliber. The unmyelinated HH surrogate has no nodes of Ranvier, myelin remodeling or calibrated mammalian diameter–velocity law.
 
 **Sources:** [Hodgkin AL (1952): A quantitative description of membrane current and its application to conduction and excitation in nerve](https://doi.org/10.1113/jphysiol.1952.sp004764); [Biohybrid Laboratory: Methods & validation](https://buildthesimulation.com/simulations/biohybrid-interface/methods/).
 

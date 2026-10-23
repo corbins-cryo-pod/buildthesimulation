@@ -1,3 +1,4 @@
+import {TIMING_DEFINITIONS,METRIC_DEFINITIONS} from './export.js';
 import {MODEL_VERSION, OBSERVATION_VERSION, normalizeSettings} from './model.js';
 import {PROTOCOL_VERSION, PROTOCOL_AXES, normalizeProtocol, compareControls, summarizeProtocol, stimulationDose} from './protocols.js';
 
@@ -90,7 +91,7 @@ export function protocolDocument(result){
  const rows=protocolRunRows(result);
  if(rows.length!==result.summary.totalRuns||rows.filter(r=>r.run.status==='error').length!==result.summary.failedRuns||rows.filter(r=>r.run.status==='ok').length!==result.summary.successfulRuns)throw new Error('Protocol run totals do not match exported data.');
  if(!sameJSON(result.summary,summarizeProtocol(result.cases,protocol)))throw new Error('Protocol summary is inconsistent with its calculated conditions.');
- return JSON.parse(JSON.stringify({...result,schema:PROTOCOL_EXPORT_SCHEMA,provenance:{methods:'/simulations/biohybrid-interface/methods/',questions:'/simulations/biohybrid-interface/questions/',interpretation:'Deterministic model responses at finite tested settings; not biological activation probability. Source attribution uses known simulated transmembrane currents, not inverse spike sorting. Nominal phase charge density uses geometric disk area and is not an electrochemical or clinical safety limit. No raw voltage frames are included; inspect a case to recalculate its full trace.'}}));
+ return JSON.parse(JSON.stringify({...result,schema:PROTOCOL_EXPORT_SCHEMA,metricDefinitions:METRIC_DEFINITIONS,provenance:{methods:'/simulations/biohybrid-interface/methods/',questions:'/simulations/biohybrid-interface/questions/',interpretation:'Deterministic model responses at finite tested settings; not biological activation probability. Source attribution uses known simulated transmembrane currents, not inverse spike sorting. Nominal phase charge density uses geometric disk area and is not an electrochemical or clinical safety limit. No raw voltage frames are included; inspect a case to recalculate its full trace.'}}));
 }
 export const protocolJSON=result=>JSON.stringify(protocolDocument(result),null,2);
 const csvCell=value=>{
@@ -104,13 +105,13 @@ export function protocolCSV(result){
  const doc=protocolDocument(result);
  const headers=['protocol_version','model_version','protocol_kind','axis','axis_value','axis_unit','case_id','case_status','condition','run_status','error','host_count_cells','recruited_hosts_cells','soma_spikes','trunk_delay_ms','relay_delay_ms','first_phase_charge_nC','absolute_phase_charge_nC','net_charge_nC','total_absolute_charge_nC','geometric_contact_area_um2','absolute_phase_charge_density_uC_per_cm2','dt_ms','segment_length_um',
  ...['rec-1','rec-2','rec-3'].flatMap(id=>[`${id}_neural_p2p_uV`,`${id}_graft_p2p_uV`,`${id}_host_p2p_uV`,`${id}_artifact_p2p_uV`,`${id}_total_p2p_uV`,`${id}_source_residual_uV`]),
- 'host_events_json','graft_events_json','causal_comparison_json','settings_json'];
+ 'host_events_json','graft_events_json','causal_comparison_json','settings_json','timing_definitions_json'];
  const rows=[headers];
  for(const {testCase,condition,run} of protocolRunRows(doc)){
   const ok=run.status==='ok',m=ok?run.metrics:null;
   rows.push([doc.schemaVersion,doc.modelVersion,doc.protocol.kind,doc.protocol.kind==='sweep'?doc.protocol.axis:'',testCase.value??'',doc.protocol.kind==='sweep'?(PROTOCOL_AXES.find(axis=>axis.id===doc.protocol.axis)?.unit??''):'',testCase.id,testCase.status,condition,run.status,run.error??'',m?.hostCount,m?.recruitedHosts,m?.somaSpikeCount,m?.conductionDelayMs,m?.relayDelayMs,run.dose?.firstPhaseChargeNc,run.dose?.absolutePhaseChargeNc,run.dose?.netChargeNc,run.dose?.totalAbsoluteChargeNc,run.dose?.geometricContactAreaUm2,run.dose?.absolutePhaseChargeDensityUcPerCm2,run.settings.dtMs,run.settings.segmentLengthUm,
    ...['rec-1','rec-2','rec-3'].flatMap(id=>{const recording=run.recordings?.find(r=>r.id===id);return ['neuralPeakToPeakUv','graftPeakToPeakUv','hostPeakToPeakUv','artifactPeakToPeakUv','totalPeakToPeakUv','sourceResidualMaxUv'].map(key=>recording?.[key]);}),
-   ok?run.hosts:null,ok?run.grafts:null,testCase.comparison,run.settings]);
+   ok?run.hosts:null,ok?run.grafts:null,testCase.comparison,run.settings,TIMING_DEFINITIONS]);
  }
  return rows.map(row=>row.map(csvCell).join(',')).join('\n')+'\n';
 }

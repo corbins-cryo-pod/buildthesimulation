@@ -7,6 +7,7 @@ import {runProtocol,PROTOCOL_AXES,PROTOCOL_VERSION} from '../src/lib/biohybrid/p
 const output=process.argv[2]??new URL('../docs/biohybrid/stage2-validation.json',import.meta.url);
 const acceptance={sourceIdentityMaximumUv:1e-10,savedStateFloatingPointAllowanceUv:1e-8,
   defaultRecruitedHosts:3,blockedRecruitedHosts:0,mixedLostHosts:2,mixedPersistentHosts:1,directPersistentHosts:1,
+  responseBoundary:{stimAmplitudeUa:[-12,-18],coarseDtMs:.005,fineDtMs:.0025,expectedRecruitedHosts:[0,3],requireSamePerHostSpikeCounts:true},
   provisionalStoredStateAbsoluteDiagnosticUv:.001};
 const timings=[];
 const measure=(id,calculate)=>{const start=performance.now(),result=calculate();timings.push({id,elapsedMs:performance.now()-start});return result;};
@@ -20,6 +21,39 @@ for(const axis of PROTOCOL_AXES){
   sweeps.push(result);
   console.log(`${axis.id}: ${result.cases.map(item=>`${item.value} => ${item.baseline.status==='ok'?item.baseline.metrics.recruitedHosts+' hosts':item.baseline.error}`).join('; ')}`);
 }
+// The chosen endpoints and count criterion are fixed above, before calculation.
+// Reuse the production-step current sweep; change only dt for the finer solves.
+// These two samples do not locate an exact threshold or validate every boundary.
+const currentSweep=sweeps.find(result=>result.protocol.axis==='stimAmplitudeUa');
+const boundaryFine=measure('current-boundary-finer-step',()=>runProtocol({dtMs:acceptance.responseBoundary.fineDtMs},
+  {kind:'sweep',axis:'stimAmplitudeUa',values:acceptance.responseBoundary.stimAmplitudeUa,paired:false}));
+const responseBoundaryRefinement={
+  definition:'At the fixed signed-current endpoints -12 and -18 µA, retain zero and three recruited host somata, respectively, at dt 0.005 and 0.0025 ms. All other settings, including geometry, duration and saved-time grid, remain identical. Each host soma spike count must also agree.',
+  timingInterpretation:'Event-index-matched fine-minus-coarse time differences are reported without a separate timing acceptance threshold. These two endpoint checks neither estimate an exact stimulation threshold nor establish uniform convergence throughout the interval.',
+  cases:acceptance.responseBoundary.stimAmplitudeUa.map((value,index)=>{
+    const coarse=currentSweep.cases.find(item=>item.value===value).baseline;
+    const fine=boundaryFine.cases[index].baseline;
+    if(coarse.status!=='ok'||fine.status!=='ok')return {stimAmplitudeUa:value,coarse,fine,passed:false,error:'A requested endpoint solve failed; no zero response was substituted.'};
+    const settingsMatchExceptDt=JSON.stringify({...fine.settings,dtMs:coarse.settings.dtMs})===JSON.stringify(coarse.settings);
+    const hosts=coarse.hosts.map(host=>{
+      const refined=fine.hosts.find(candidate=>candidate.id===host.id);
+      const sameSpikeCount=Boolean(refined&&host.somaSpikes===refined.somaSpikes);
+      return {id:host.id,coarseSomaSpikes:host.somaSpikes,fineSomaSpikes:refined?.somaSpikes??null,
+        coarseSpikeTimesMs:host.spikeTimesMs,fineSpikeTimesMs:refined?.spikeTimesMs??null,
+        coarseFirstSpikeMs:host.firstSpikeMs,fineFirstSpikeMs:refined?.firstSpikeMs??null,
+        matchedSpikeTimeDifferencesMs:sameSpikeCount?host.spikeTimesMs.map((time,event)=>refined.spikeTimesMs[event]-time):null,
+        sameSpikeCount};
+    });
+    const expected=acceptance.responseBoundary.expectedRecruitedHosts[index];
+    const passed=settingsMatchExceptDt&&coarse.settings.dtMs===acceptance.responseBoundary.coarseDtMs&&fine.settings.dtMs===acceptance.responseBoundary.fineDtMs
+      &&coarse.metrics.recruitedHosts===expected&&fine.metrics.recruitedHosts===expected
+      &&hosts.length===fine.hosts.length&&hosts.every(host=>host.sameSpikeCount);
+    return {stimAmplitudeUa:value,expectedRecruitedHosts:expected,settingsMatchExceptDt,
+      coarse:{settings:coarse.settings,diagnostics:coarse.diagnostics,recruitedHosts:coarse.metrics.recruitedHosts},
+      fine:{settings:fine.settings,diagnostics:fine.diagnostics,recruitedHosts:fine.metrics.recruitedHosts},hosts,passed};
+  })};
+responseBoundaryRefinement.passed=responseBoundaryRefinement.cases.every(item=>item.passed);
+console.log(`Current-boundary endpoint refinement: ${responseBoundaryRefinement.cases.map(item=>`${item.stimAmplitudeUa} µA ${item.passed?'passed':'FAILED'}`).join('; ')}`);
 const errorRetention=measure('unsupported-placement',()=>runProtocol({pulseCount:1,durationMs:25,recordXOffsetUm:-100},
   {kind:'sweep',axis:'recordDistanceUm',values:[45,60,150],paired:false}));
 const baseline=measure('source-reconstruction',()=>runSimulation());
@@ -85,10 +119,11 @@ const checks=[
   {id:'source-partition-identity',passed:sourceIdentity.maximumResidualUv<=acceptance.sourceIdentityMaximumUv},
   {id:'analytical-storage-precision-consistency',passed:storagePrecision.analyticalBoundPassed},
   {id:'all-five-default-sweep-grids-complete',passed:sweeps.every(result=>result.summary.failedRuns===0&&result.cases.length===5)},
+  {id:'sampled-current-boundary-finer-step-counts',passed:responseBoundaryRefinement.passed},
   {id:'unsupported-placement-error-retention',passed:errorRetention.cases.map(item=>item.status).join(',')==='ok,error,ok'&&errorRetention.cases[1].baseline.metrics===undefined&&errorRetention.summary.transitions.length===0},
 ];
 const sourcePaths=['src/lib/biohybrid/model.js','src/lib/biohybrid/geometry.js','src/lib/biohybrid/protocols.js','src/lib/biohybrid/protocol-worker.js',
-  'tests/biohybrid-sources.mjs','tests/biohybrid-protocols.mjs','scripts/validate-biohybrid-stage2.mjs'];
+  'tests/biohybrid-sources.mjs','tests/biohybrid-protocols.mjs','tests/biohybrid-response-boundary.mjs','scripts/validate-biohybrid-stage2.mjs'];
 const sourceSha256=Object.fromEntries(await Promise.all(sourcePaths.map(async path=>[path,createHash('sha256').update(await readFile(new URL(`../${path}`,import.meta.url))).digest('hex')])));
 const report={schema:'biohybrid-stage2-validation/1',modelVersion:MODEL_VERSION,observationVersion:OBSERVATION_VERSION,protocolVersion:PROTOCOL_VERSION,
   generator:'node scripts/validate-biohybrid-stage2.mjs',runtime:process.version,sourceSha256,acceptance,checks,
@@ -96,7 +131,7 @@ const report={schema:'biohybrid-stage2-validation/1',modelVersion:MODEL_VERSION,
     id:'stored-float32-current-reconstruction-absolute-error',criterionUv:storagePrecision.provisionalAbsoluteCriterionUv,
     measuredHostMaximumErrorUv:storagePrecision.populations.host.maximumErrorUv,passed:false,
     disposition:'Retained failed supplemental diagnostic. Original Float64 source recordings remain authoritative; the separate analytical quantization bound is reported independently.'}],
-  defaultAudit,mixedAudit,directAudit,sweeps,errorRetention,sourceIdentity,storagePrecision,
+  defaultAudit,mixedAudit,directAudit,sweeps,responseBoundaryRefinement,errorRetention,sourceIdentity,storagePrecision,
   timing:{scope:'Node execution wall time for actual calculations, excluding UI rendering and network; not a device-independent performance guarantee.',measurements:timings}};
 await mkdir(new URL('../docs/biohybrid/',import.meta.url),{recursive:true});
 await writeFile(output,JSON.stringify(report,null,2)+'\n');

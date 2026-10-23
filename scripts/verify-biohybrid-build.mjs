@@ -16,6 +16,9 @@ assert.ok(methods.includes('Retained failed supplemental diagnostic'),'Methods m
 assert.ok(methods.includes('Float64')&&methods.includes('Float32'),'Methods must distinguish recording and replay precision');
 assert.ok(methods.includes('0.001273'),'Methods must show the actual failed diagnostic, not only a pass summary');
 assert.ok(methods.includes('native NEURON'),'Methods must name the independently executed reference');
+assert.ok(methods.includes('signed differences')&&methods.includes('negative physical conduction time'),'Methods must distinguish first-event order from physical propagation');
+assert.ok(methods.includes('successfulTransmission')&&methods.includes('Neither field alone establishes synaptic dependence'),'Legacy temporal metrics need an explicit causal interpretation limit');
+assert.ok(methods.includes('shared graft/host axon-diameter'),'Diameter studies must disclose both affected populations');
 assert.equal(BIOHYBRID_QUESTIONS.length,34);
 for(const question of BIOHYBRID_QUESTIONS){
  assert.ok(questions.includes(`id="${question.id}"`),`Question ${question.id} not emitted`);
