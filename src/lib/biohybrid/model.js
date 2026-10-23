@@ -194,6 +194,9 @@ export function runSimulation(input={}, {onProgress}={}){
     }
     if(onProgress&&step%Math.max(1,Math.floor(steps/10))===0)onProgress(step/steps);
   }
+  // Several monitors can cross within one solver step. Their interpolated
+  // event times, rather than neuron iteration order, define chronological order.
+  spikes.sort((a,b)=>a.timeMs-b.timeMs);
   const first=(neuronId,kind)=>spikes.find(p=>p.neuronId===neuronId&&p.kind===kind)?.timeMs??null;
   const graft=geometry.neurons.find(n=>n.role==='graft'),firstSoma=first(graft.id,'soma'),firstTerminal=first(graft.id,'terminal');
   const hostSpikes=spikes.filter(p=>p.kind==='soma'&&p.neuronId.startsWith('host'));

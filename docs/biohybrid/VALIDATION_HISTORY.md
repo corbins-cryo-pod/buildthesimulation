@@ -90,6 +90,16 @@ is necessary to support causal attribution; the default control retains graft
 spikes and eliminates all host spikes. The temporal ordering test alone does
 not prove causation under every adjustable configuration.
 
+## Event ordering correction
+
+A five-host run at a 0.025 ms solver step exposed an instrumentation ordering
+bug: host 1's 11.148292 ms threshold crossing appeared before host 5's earlier
+11.136117 ms crossing because both occurred within one step and monitors were
+visited in neuron order. Event records are now sorted by their interpolated
+crossing times before first-event metrics and exports are formed. The numerical
+state is unchanged. A regression verifies chronological order and earliest-host
+latency in this actual configuration.
+
 ## Independent verification
 
 The native NEURON comparison is reported separately. This record and

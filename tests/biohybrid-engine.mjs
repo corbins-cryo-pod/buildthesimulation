@@ -146,3 +146,14 @@ test('biohybrid: current bookkeeping satisfies local Kirchhoff balance including
   geometry.nodes.forEach((node,i)=>{if(node.parent>=0){const axial=node.edgeUs*(c.voltageMv[i]-c.voltageMv[node.parent]);balance[i]+=axial;balance[node.parent]-=axial;}});
   assert.ok(maxAbs(balance)<1e-8);
 });
+
+
+test('biohybrid: crossings within one solver step remain chronologically ordered',()=>{
+  // Before the post-solve ordering correction, host-1 at 11.148292 ms preceded
+  // host-5 at 11.136117 ms in the event list because monitors iterated by ID.
+  const r=runSimulation({hostCount:5,connectedHosts:5,synapticWeightUs:.025,dtMs:.025,pulseCount:1,durationMs:25});
+  assert.ok(r.spikes.every((spike,i)=>i===0||spike.timeMs>=r.spikes[i-1].timeMs));
+  const host=r.spikes.filter(spike=>spike.kind==='soma'&&spike.neuronId.startsWith('host'));
+  assert.equal(host.length,5);assert.equal(r.metrics.firstHostSpikeMs,Math.min(...host.map(spike=>spike.timeMs)));
+  assert.equal(r.metrics.relayDelayMs,r.metrics.firstHostSpikeMs-r.metrics.firstGraftSpikeMs);
+});

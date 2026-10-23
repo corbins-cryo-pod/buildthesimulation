@@ -13,6 +13,11 @@ export const simulationGroups = [
     "title": "Neural Interface Laboratories",
     "entries": [
       {
+        "href": "/simulations/biohybrid-interface/",
+        "title": "Biohybrid Neural Interface Laboratory",
+        "desc": "Calculate an engineered living neural bridge: active branched cells, axonal propagation, host–graft synapses and finite-contact recordings. Compare seven experiments and a separate exploratory growth model."
+      },
+      {
         "href": "/cortex/interface/",
         "title": "Neural Interface Laboratory",
         "desc": "A single pointed test shank with eight finite surface contacts and twelve active human neurons. Follow voltage across every cell, stimulate selected pads, and inspect ideal recordings and somatic spike rasters."
