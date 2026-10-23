@@ -1,6 +1,27 @@
 # Biohybrid Laboratory — stage 2 release verification
 
-**Status: prepublication verification; production publication is pending.**
+**Current status: Stage 2 was merged and deployed successfully on 2026-10-23.**
+
+## Final release record
+
+| Item | Verified evidence |
+|---|---|
+| Pull request | [#333](https://github.com/corbins-cryo-pod/buildthesimulation/pull/333), merged |
+| Tested feature revision | `5f531d0db70ed53338727bb480ad61c17d375458` |
+| Production merge | `40ba6a50425057982eb7c36f0786563d1fe58405` |
+| Identical feature/merge tree | `871557ba3d1f40506dc13f3bc570c94d95655c9c` |
+| Final integrated CI | [Run 39981622061](https://github.com/corbins-cryo-pod/buildthesimulation/actions/runs/39981622061), completed successfully; release record reports 607 numerical/content tests and one mechanics browser test passing |
+| Separate Astro workflow | [Run 39981622037](https://github.com/corbins-cryo-pod/buildthesimulation/actions/runs/39981622037), successful; 511-page release build |
+| Cloudflare production | Deployment `6e32ed18-7a78-44c0-bb3b-c7498be08099`; completed successful check on `40ba6a5` |
+| Published laboratory | https://buildthesimulation.com/simulations/biohybrid-interface/ |
+| Browser follow-up | [Production browser verification](PRODUCTION_BROWSER_VERIFICATION.md): default causal audit, all six download types, settings reimport/recalculation, and 390/760 px responsive frames pass within the documented scope |
+| Still open | Direct GPU/3D and physical iOS/Android verification; biological calibration; the original failed Float32 reconstruction diagnostic remains failed |
+
+The successful CI and production check were read directly from GitHub during the follow-up. The live laboratory was exercised in the browser; it was not inferred solely from deployment status. Follow-up testing changes no model code, scientific tolerance, or validation result.
+
+## Historical preparation record — retained verbatim below
+
+The rest of this document is the prepublication checkpoint, including its then-pending items and failed runs. Those historical statuses are superseded by the final release table and follow-up above; they are preserved to retain the chronology and failure evidence.
 
 Prepared 2026-10-23 for `feature/biohybrid-stage2-causal-workbench`. The stage 1 base is `98ae75a826a536293158637360b173460f877602` (PR #331). The current saved checkpoint is `59bb741ccd979a61e4e706cf206a62e81849f5e5`, including the timing-interpretation, accessibility, and latest-main integration changes. Only the subsequent regression-check repair and verification-report changes remain in the working tree at this review. That checkpoint is not presented as the final tested or merged revision. The publication table below must identify the final revision and deployment.
 

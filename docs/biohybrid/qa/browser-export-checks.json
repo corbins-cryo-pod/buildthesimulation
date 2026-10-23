@@ -1,0 +1,57 @@
+{
+  "settings": {
+    "bytes": 7254,
+    "sha256": "78d91ec5304df7a268018357b0b240aed330efaed03ad0eb7d5eb69df4650c97"
+  },
+  "protocol_json": {
+    "bytes": 22682,
+    "sha256": "daa4261db8cbffca4ab8a5cd56a94b11a04b1380484c564e70e917ea3a3060e1"
+  },
+  "protocol_csv": {
+    "bytes": 11631,
+    "sha256": "a2ac58c9e6b6c6e0695e2710c39808ac93220137e30cb6bb558a68c6aa0494fc",
+    "rows": 3,
+    "columns": 47
+  },
+  "traces": {
+    "bytes": 257462,
+    "sha256": "4db7a5b96d0c2914f19e34d971e490ab4748ceb8bcc4c1a92ad8c7213c77fbe5",
+    "rows": 801,
+    "columns": 24,
+    "max_source_residual_after_csv_rounding_uV": 1.0000005268295808e-09
+  },
+  "compartments": {
+    "bytes": 7078547,
+    "sha256": "e8c35b63e4a17d49129cb8c45bc79c311bbb3940dbb64a27d519dffaf258c017",
+    "rows": 801,
+    "columns": 680
+  },
+  "spikes": {
+    "bytes": 685,
+    "sha256": "c8142fe376b3328c371be4e175e6de7ba4eeeef0bb43e4fe308c2594d091d9d2",
+    "rows": 20,
+    "columns": 3
+  },
+  "restored_settings": {
+    "bytes": 7257,
+    "sha256": "8bc77e680c92d59d160f46f5036c60497dbd7545b70df73b57c8a35fac9c294b"
+  },
+  "roundtrip": {
+    "exact_match": [
+      "settings",
+      "metrics",
+      "spikes",
+      "sampleCount",
+      "compartmentCount"
+    ],
+    "label_preserved": false
+  },
+  "audit": {
+    "hosts": [
+      3,
+      0,
+      0
+    ],
+    "failed": 0
+  }
+}

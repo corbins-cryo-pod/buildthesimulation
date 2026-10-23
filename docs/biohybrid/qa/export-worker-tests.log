@@ -1,0 +1,30 @@
+✔ biohybrid exports: JSON preserves normalized physical settings and measured event metadata (2.203867ms)
+✔ biohybrid exports: importing settings normalizes supported numeric values and restores deterministic calculations (1062.019618ms)
+✔ biohybrid exports: rejects wrong versions, malformed settings, unsupported physics, and truncated protocols (1.059799ms)
+✔ biohybrid exports: CSV columns, units, sample count, and every scientific channel reproduce computed data (18.960035ms)
+✔ biohybrid exports: complete compartment CSV retains the exact frame-to-node mapping (143.55498ms)
+✔ biohybrid exports: refuses incomplete or nonfinite samples instead of exporting plausible blanks (1.296919ms)
+✔ biohybrid exports: spike CSV preserves physical event times and rejects corrupted events (0.471243ms)
+✔ biohybrid exports: source components have explicit provenance and sample-wise additivity (12.289096ms)
+✔ biohybrid protocol export: JSON retains all exact settings, matched interventions and measured hosts (13.524407ms)
+✔ biohybrid protocol export: CSV has one row per solve and exact physical data for every source channel (7.929674ms)
+✔ biohybrid protocol export: actual sweep preserves explicit axis units, numeric order and errors without false zeros (802.092814ms)
+✔ biohybrid protocol export: failed solve explanations survive quoting and spreadsheet formula prefixes are neutralized (4.233347ms)
+✔ biohybrid protocol export: refuses missing controls, malformed versions and truncated case arrays (4.891297ms)
+✔ biohybrid protocol export: refuses nonfinite fields and unmatched interventions instead of altering data (4.027123ms)
+✔ biohybrid protocol export: rejects stale failed-run measurements and fabricated causal summaries (6.375554ms)
+✔ biohybrid protocol export: rejects impossible event chronology, conflicting dose and mislabelled units (5.098452ms)
+✔ biohybrid protocol export: nominal geometric phase density uses explicit physical conversion and cannot be relabelled as safety (3.929565ms)
+✔ biohybrid protocol export: mixed activation retains negative first-crossing differences and explicit timing definitions (1620.465122ms)
+✔ biohybrid workers: real transfer preserves source arrays, request identity and the original recording (2099.241207ms)
+✔ biohybrid workers: actual protocol worker delivers monotone progress and matched-control summaries (953.77743ms)
+✔ biohybrid workers: invalid solver and protocol requests return identified errors without fabricated results (98.715045ms)
+✔ biohybrid workers: terminating a real running protocol prevents a late completed result (286.640748ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3531.149814
