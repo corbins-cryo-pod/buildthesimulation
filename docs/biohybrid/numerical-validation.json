@@ -81,7 +81,7 @@
       "frames": 801,
       "maxCurrentBalanceNa": 3.5124821887860813e-12,
       "maxAbsVoltageMv": 97.38479623606189,
-      "elapsedMs": 978.7534979999999,
+      "elapsedMs": 949.445071,
       "quadrature": {
         "rings": 4,
         "angles": 12,
@@ -128,7 +128,8 @@
       "passed": true,
       "dtMs": [
         0.005,
-        0.0025
+        0.0025,
+        0.00125
       ],
       "rmsByTrace": [
         {
@@ -160,7 +161,156 @@
           "rmsMv": 0.2383772096820824
         }
       ],
-      "maxSpikeShiftMs": 0.01491311510436688
+      "maxSpikeShiftMs": 0.01491311510436688,
+      "adjacentComparisons": [
+        {
+          "dtMs": [
+            0.005,
+            0.0025
+          ],
+          "sampleDtMs": 0.05,
+          "sampleGridIdentical": true,
+          "spikeMatching": "Ordinal within each neuronId and monitor kind",
+          "spikeEventCountsMatch": true,
+          "spikeCounts": [
+            20,
+            20
+          ],
+          "rmsByTrace": [
+            {
+              "id": "graft-1",
+              "rmsMv": 0.20134026652989145
+            },
+            {
+              "id": "graft-2",
+              "rmsMv": 0.19883346302113303
+            },
+            {
+              "id": "host-1",
+              "rmsMv": 0.3747601464639359
+            },
+            {
+              "id": "host-2",
+              "rmsMv": 0.4350594628174235
+            },
+            {
+              "id": "host-3",
+              "rmsMv": 0.4536027897467449
+            },
+            {
+              "id": "graft-1:terminal",
+              "rmsMv": 0.242215997627799
+            },
+            {
+              "id": "graft-2:terminal",
+              "rmsMv": 0.2383772096820824
+            }
+          ],
+          "maxSpikeShiftMs": 0.01491311510436688,
+          "passed": true
+        },
+        {
+          "dtMs": [
+            0.0025,
+            0.00125
+          ],
+          "sampleDtMs": 0.05,
+          "sampleGridIdentical": true,
+          "spikeMatching": "Ordinal within each neuronId and monitor kind",
+          "spikeEventCountsMatch": true,
+          "spikeCounts": [
+            20,
+            20
+          ],
+          "rmsByTrace": [
+            {
+              "id": "graft-1",
+              "rmsMv": 0.1012327520199105
+            },
+            {
+              "id": "graft-2",
+              "rmsMv": 0.10004360125232299
+            },
+            {
+              "id": "host-1",
+              "rmsMv": 0.22730980405440632
+            },
+            {
+              "id": "host-2",
+              "rmsMv": 0.20714662880117207
+            },
+            {
+              "id": "host-3",
+              "rmsMv": 0.2174420413687017
+            },
+            {
+              "id": "graft-1:terminal",
+              "rmsMv": 0.1212121645779507
+            },
+            {
+              "id": "graft-2:terminal",
+              "rmsMv": 0.11934369055307975
+            }
+          ],
+          "maxSpikeShiftMs": 0.007465710721600516,
+          "passed": true
+        }
+      ],
+      "empiricalRmsConvergence": {
+        "definition": "differenceRatio = RMS(dt,dt/2) / RMS(dt/2,dt/4); differenceScalingExponent = log2(differenceRatio).",
+        "interpretation": "Observed scaling of differences between these three discrete solutions for this stimulus and morphology. It is not a measured error against an exact solution or a claim of formal/asymptotic solver order; nonlinear spike timing and delayed-event discretization contribute.",
+        "byTrace": [
+          {
+            "id": "graft-1",
+            "coarseToHalfRmsMv": 0.20134026652989145,
+            "halfToQuarterRmsMv": 0.1012327520199105,
+            "differenceRatio": 1.9888846496071921,
+            "differenceScalingExponent": 0.9919596058521912
+          },
+          {
+            "id": "graft-2",
+            "coarseToHalfRmsMv": 0.19883346302113303,
+            "halfToQuarterRmsMv": 0.10004360125232299,
+            "differenceRatio": 1.9874680692436204,
+            "differenceScalingExponent": 0.9909316821761474
+          },
+          {
+            "id": "host-1",
+            "coarseToHalfRmsMv": 0.3747601464639359,
+            "halfToQuarterRmsMv": 0.22730980405440632,
+            "differenceRatio": 1.6486756830525335,
+            "differenceScalingExponent": 0.7213076289336705
+          },
+          {
+            "id": "host-2",
+            "coarseToHalfRmsMv": 0.4350594628174235,
+            "halfToQuarterRmsMv": 0.20714662880117207,
+            "differenceRatio": 2.100248820534809,
+            "differenceScalingExponent": 1.070560256885083
+          },
+          {
+            "id": "host-3",
+            "coarseToHalfRmsMv": 0.4536027897467449,
+            "halfToQuarterRmsMv": 0.2174420413687017,
+            "differenceRatio": 2.086085960615139,
+            "differenceScalingExponent": 1.0607986077129123
+          },
+          {
+            "id": "graft-1:terminal",
+            "coarseToHalfRmsMv": 0.242215997627799,
+            "halfToQuarterRmsMv": 0.1212121645779507,
+            "differenceRatio": 1.9982812655080635,
+            "differenceScalingExponent": 0.998759662106693
+          },
+          {
+            "id": "graft-2:terminal",
+            "coarseToHalfRmsMv": 0.2383772096820824,
+            "halfToQuarterRmsMv": 0.11934369055307975,
+            "differenceRatio": 1.9974010236935051,
+            "differenceScalingExponent": 0.9981240157117721
+          }
+        ]
+      }
     },
     "spatialRefinement": {
       "passed": true,

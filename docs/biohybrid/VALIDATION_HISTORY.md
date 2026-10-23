@@ -66,6 +66,20 @@ At 25 µm, reducing the timestep from 0.005 to 0.0025 ms changes the seven
 monitored membrane waveforms by 0.199–0.454 mV RMS. The largest corresponding
 spike-time shift is 0.014914 ms. All specified gates pass.
 
+The final study also includes the predeclared quarter step, 0.00125 ms. The
+0.0025 → 0.00125 ms comparison has a maximum monitored RMS difference of
+0.227310 mV and maximum spike-time shift of 0.007466 ms. Both adjacent
+comparisons use identical 0.05 ms saved sample grids and preserve each
+neuron/monitor's event count: 20 soma/terminal threshold crossings in total at
+each resolution. Both comparisons pass the original tolerances unchanged.
+
+All seven monitored RMS differences decrease with the second halving. Their
+coarse-to-half versus half-to-quarter difference ratios range from 1.649 to
+2.100; corresponding log2 ratios range from 0.721 to 1.071. These are empirical
+differences between the three discrete solutions, not error estimates against
+an exact solution or proof of formal/asymptotic convergence order. Nonlinear
+spike timing and event-time quantization contribute to the unequal ratios.
+
 The canonical membrane's scalar equilibrium is −64.9740524516 mV. Starting at
 this voltage with equilibrium gates and no input, maximum trace drift over
 40 ms is 1.55e-11 mV, with zero spikes and effectively zero neural recording.
@@ -102,9 +116,27 @@ latency in this actual configuration.
 
 ## Independent verification
 
-The native NEURON comparison is reported separately. This record and
-`numerical-validation.json` do not claim agreement with an independent solver
-until that comparison is run and its quantitative results preserved.
+The native NEURON 9.0.1 comparison is preserved separately in
+`neuron-validation.json`. It covers rest, disconnection, the default relay at
+0.005 ms, and the relay at 0.0025 ms. All four cases pass the frozen RMS,
+spike-count, spike-timing, and neural-recording criteria. The additional
+0.5 mV pointwise diagnostic also passes in all cases; it remains separately
+reported from the native report's acceptance flag.
+
+Across these four cases, the largest full-membrane RMS difference is
+1.972e-6 mV, maximum absolute membrane difference is 3.815e-6 mV, maximum
+spike-timing difference is 5.742e-12 ms, and maximum neural-recording difference
+is 1.764e-11 µV. Full-membrane values include Float32 replay quantization. These
+small matched-step discrepancies reflect implementation agreement for the same
+discretized equations; the materially larger step-refinement differences above
+still apply. This is not agreement with experimental graft recordings.
+
+The native report also retains a reference-development sampling observation:
+the first half-step run returned 800 scheduled samples instead of 801 because
+the accumulated final native time differed by floating-point roundoff. Reading
+the already-computed final state when its time matches the requested endpoint
+within 1e-8 ms corrected the missing sample. No extra integration, waveform
+alignment, amplitude correction, or tolerance change was introduced.
 
 ## Reproduction
 

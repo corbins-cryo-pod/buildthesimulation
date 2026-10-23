@@ -40,7 +40,7 @@ function downloadGrowth(result, day) {
   const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));
   const a=document.createElement('a');
   a.href=url;a.download=`biohybrid-growth-seed-${result.settings.seed}.json`;a.click();
-  setTimeout(()=>URL.revokeObjectURL(url),1000);
+  setTimeout(()=>URL.revokeObjectURL(url),30000);
 }
 
 export default function GrowthPanel({geometry,onApply}) {
@@ -103,24 +103,24 @@ export default function GrowthPanel({geometry,onApply}) {
         <div class="bh-runbar"><div><span class="bh-label">Calculated growth</span><b>Seed {result.settings.seed} · {fmt(result.settings.speedUmPerDay,0)} µm/day</b></div></div>
         <svg viewBox={`0 0 ${chart.width} ${chart.height}`} role="img" aria-label={`Growth at day ${fmt(day)}: ${view.paths.length} trajectories, ${view.encounters.length} encounters, ${view.candidates.length} candidate connections. Top view with depth projected.`}>
           <text x="20" y="23">XY PROJECTION · DEPTH PROJECTED</text>
-          <text x="880" y="23" textAnchor="end">DAY {fmt(day,2)}</text>
-          <rect x={chart.left} y={chart.centerY-result.radiusUm*chart.scale} width={result.lengthUm*chart.scale} height={2*result.radiusUm*chart.scale} fill="none" stroke="currentColor" strokeOpacity=".35" strokeDasharray="5 4"/>
-          <line x1={chart.left} x2={chart.left+result.lengthUm*chart.scale} y1={chart.centerY} y2={chart.centerY} stroke="currentColor" strokeOpacity=".1" strokeDasharray="2 5"/>
+          <text x="880" y="23" text-anchor="end">DAY {fmt(day,2)}</text>
+          <rect x={chart.left} y={chart.centerY-result.radiusUm*chart.scale} width={result.lengthUm*chart.scale} height={2*result.radiusUm*chart.scale} fill="none" stroke="currentColor" stroke-opacity=".35" stroke-dasharray="5 4"/>
+          <line x1={chart.left} x2={chart.left+result.lengthUm*chart.scale} y1={chart.centerY} y2={chart.centerY} stroke="currentColor" stroke-opacity=".1" stroke-dasharray="2 5"/>
           {result.targets.map(target=>{
             const candidate=view.targetIds.has(target.id),encountered=view.encounteredIds.has(target.id);
-            return <g key={target.id}><circle cx={chart.x(target.positionUm)} cy={chart.y(target.positionUm)} r={Math.max(2,target.radiusUm*chart.scale)} fill={candidate?'#608a75':'none'} fillOpacity=".2" stroke={candidate?'#608a75':encountered?'#b36d28':'currentColor'} strokeOpacity={candidate||encountered?1:.35} strokeWidth={candidate?2:1}>
+            return <g key={target.id}><circle cx={chart.x(target.positionUm)} cy={chart.y(target.positionUm)} r={Math.max(2,target.radiusUm*chart.scale)} fill={candidate?'#608a75':'none'} fill-opacity=".2" stroke={candidate?'#608a75':encountered?'#b36d28':'currentColor'} stroke-opacity={candidate||encountered?1:.35} stroke-width={candidate?2:1}>
               <title>{target.id}: {candidate?'matured candidate, electrically unvalidated':encountered?'geometric encounter recorded':'not encountered at this day'}</title></circle>
               <text x={chart.x(target.positionUm)+target.radiusUm*chart.scale+7} y={chart.y(target.positionUm)+4}>{target.id.replace('host-','T')}</text></g>;
           })}
           {view.paths.map(path=><g key={path.id}>
-            <path d={path.points.map((p,i)=>`${i?'L':'M'}${chart.x(p.positionUm).toFixed(2)},${chart.y(p.positionUm).toFixed(2)}`).join(' ')} stroke={colorFor(path)} strokeWidth={path.parentId?1.2:1.9} fill="none" opacity={path.parentId ? .72 : 1}/>
+            <path d={path.points.map((p,i)=>`${i?'L':'M'}${chart.x(p.positionUm).toFixed(2)},${chart.y(p.positionUm).toFixed(2)}`).join(' ')} stroke={colorFor(path)} stroke-width={path.parentId?1.2:1.9} fill="none" opacity={path.parentId ? .72 : 1}/>
             <circle cx={chart.x(path.points[0].positionUm)} cy={chart.y(path.points[0].positionUm)} r={path.parentId?1.6:4} fill={colorFor(path)}/>
             <circle cx={chart.x(path.points.at(-1).positionUm)} cy={chart.y(path.points.at(-1).positionUm)} r="2.6" fill={colorFor(path)}><title>{path.id}: {fmt(path.lengthAtDayUm,1)} µm traveled by day {fmt(day,2)}</title></circle>
           </g>)}
-          {view.encounters.map(event=><circle key={event.id} cx={chart.x(event.positionUm)} cy={chart.y(event.positionUm)} r="4" fill="none" stroke="#b36d28" strokeWidth="1.5"><title>Encounter: {event.targetId}, day {fmt(event.day,3)}</title></circle>)}
+          {view.encounters.map(event=><circle key={event.id} cx={chart.x(event.positionUm)} cy={chart.y(event.positionUm)} r="4" fill="none" stroke="#b36d28" stroke-width="1.5"><title>Encounter: {event.targetId}, day {fmt(event.day,3)}</title></circle>)}
           {view.candidates.map(candidate=><rect key={candidate.id} x={chart.x(candidate.positionUm)-3} y={chart.y(candidate.positionUm)-3} width="6" height="6" fill="#608a75"><title>Candidate only: {candidate.targetId}, day {fmt(candidate.day,3)}. Not electrically validated.</title></rect>)}
-          <text x={chart.left} y="238">SCAFFOLD ENTRY</text><text x={chart.left+result.lengthUm*chart.scale} y="238" textAnchor="end">OUTLET · {fmt(result.lengthUm,0)} µm</text>
-          <line x1="20" x2={20+chart.scaleBar*chart.scale} y1="261" y2="261" stroke="currentColor" strokeWidth="2"/>
+          <text x={chart.left} y="238">SCAFFOLD ENTRY</text><text x={chart.left+result.lengthUm*chart.scale} y="238" text-anchor="end">OUTLET · {fmt(result.lengthUm,0)} µm</text>
+          <line x1="20" x2={20+chart.scaleBar*chart.scale} y1="261" y2="261" stroke="currentColor" stroke-width="2"/>
           <line x1="20" x2="20" y1="257" y2="265" stroke="currentColor"/><line x1={20+chart.scaleBar*chart.scale} x2={20+chart.scaleBar*chart.scale} y1="257" y2="265" stroke="currentColor"/>
           <text x={28+chart.scaleBar*chart.scale} y="265">{chart.scaleBar} µm</text>
         </svg>

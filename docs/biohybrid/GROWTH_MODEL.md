@@ -40,7 +40,7 @@ A Gaussian random vector is projected onto the plane perpendicular to `d_drift`,
 
 The intended extension is `speedUmPerDay × dtDays`. A ray/cylinder intersection resolves wall encounters, reflecting direction at the side wall and the entry plane. Reaching the far outlet stops that neurite. Saved trajectories include reflection points with their actual times, and recorded path length is the sum of traveled segment lengths. No endpoint is teleported to a target. A safety limit of 24 wall reflections per update prevents unbounded numerical work for extreme settings; any untraveled requested distance is reported. The output's total length sums parent and child path lengths without counting the parent's history again for a child.
 
-Targets are idealized encounter regions at the outlet, radially distributed within the cylinder. They are not reconstructed host dendrites. The UI maps selected candidate target counts into a separate electrical run; that transfer is an exploratory topology choice. It does not claim that the grown trajectory and electrical cable are identical.
+Targets are idealized encounter regions at the outlet, radially distributed within the cylinder. They are not reconstructed host dendrites. The UI maps selected unique candidate target counts into a separate electrical run; that transfer is an exploratory topology choice. It transfers a count rather than individual target identities, trajectories, or synaptic weights. The existing electrical connection pattern assigns the resulting count, so a candidate is not a reconstruction of an individual simulated electrical synapse. The grown trajectory and electrical cable are not identical.
 
 ## Branching and encounter trials
 
