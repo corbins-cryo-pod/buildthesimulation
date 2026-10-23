@@ -272,7 +272,14 @@ def native_case(case):
         if endpoint_collected:
             values = np.append(values, sections[i](0.5).i_membrane_)
         native_currents[:, i] = values
-    recorded = native_currents @ recording_matrix(geometry, settings).T
+    transfer = recording_matrix(geometry, settings)
+    recorded = native_currents @ transfer.T
+    graft_mask = np.asarray([node['role'] == 'graft' for node in nodes])
+    host_mask = np.asarray([node['role'] == 'host' for node in nodes])
+    graft_recorded = native_currents[:, graft_mask] @ transfer[:, graft_mask].T
+    host_recorded = native_currents[:, host_mask] @ transfer[:, host_mask].T
+    graft_expected = np.asarray([recording['graftUv'] for recording in case['recordings']]).T
+    host_expected = np.asarray([recording['hostUv'] for recording in case['recordings']]).T
     expected_recordings = np.asarray([recording['neuralUv'] for recording in case['recordings']]).T
     recording_difference = recorded - expected_recordings
     max_current_balance = float(np.max(abs(native_currents.sum(axis=1))))
@@ -286,12 +293,17 @@ def native_case(case):
                        'maximumTimeGridErrorMs': time_grid_error, 'independentAxialConductanceErrorUs': edge_error,
                        'maximumNativeCurrentImbalanceNa': max_current_balance,
                        'extracellularRmsErrorUv': float(np.sqrt(np.mean(recording_difference ** 2))),
-                       'extracellularMaximumAbsoluteErrorUv': float(np.max(abs(recording_difference)))},
+                       'extracellularMaximumAbsoluteErrorUv': float(np.max(abs(recording_difference))),
+                       'graftSourceMaximumErrorUv': float(np.max(abs(graft_recorded - graft_expected))),
+                       'hostSourceMaximumErrorUv': float(np.max(abs(host_recorded - host_expected))),
+                       'nativeSourcePartitionResidualUv': float(np.max(abs(recorded - graft_recorded - host_recorded)))},
         'sampling': {'endpointCollectedDirectly': endpoint_collected,
                      'explanation': 'An omitted terminal scheduled sample is read directly from the final native state when h.t and requested endpoint agree within 1e-8 ms; no integration step, time shift or interpolation is added.'},
         'nativePresynapticEventTimes': [{'synapseId': label, 'timesMs': list(vector)} for label, vector in event_records],
         'spikes': spike_comparisons, 'timeMs': expected_times.tolist(), 'traces': traces,
         'nativeRecordingUv': np.round(recorded.T, 9).tolist(),
+        'nativeGraftRecordingUv': np.round(graft_recorded.T, 9).tolist(),
+        'nativeHostRecordingUv': np.round(host_recorded.T, 9).tolist(),
         'elapsedSeconds': time.perf_counter() - started,
     }
     # Copy values before the native objects are deleted, then remove sections to
@@ -322,12 +334,14 @@ def main():
             'spikeTiming': c['maximumSpikeTimingErrorMs'] <= criteria['maximumSpikeTimingErrorMs'],
             'strictPointwiseDiagnostic': c['membraneMaximumAbsoluteErrorMv'] <= criteria['strictPointwiseVoltageMv'],
             'extracellularForward': c['extracellularMaximumAbsoluteErrorUv'] <= criteria['extracellularMaximumErrorUv'],
+            'graftSourceForward': c['graftSourceMaximumErrorUv'] <= criteria['sourceComponentMaximumErrorUv'],
+            'hostSourceForward': c['hostSourceMaximumErrorUv'] <= criteria['sourceComponentMaximumErrorUv'],
         }
         result['acceptancePassed'] = all(value for key, value in result['checks'].items() if key != 'strictPointwiseDiagnostic')
         results.append(result)
         print(result['id'], json.dumps({'comparison': c, 'checks': result['checks']}), flush=True)
     output = {
-        'schema': 'biohybrid-neuron-validation/1', 'modelVersion': payload['modelVersion'],
+        'schema': 'biohybrid-neuron-validation/1', 'modelVersion': payload['modelVersion'], 'observationVersion': payload['observationVersion'],
         'reference': {'name': 'NEURON', 'version': neuron.__version__, 'nativeVersion': h.nrnversion(), 'pythonVersion': platform.python_version(),
                       'voltageIntegrator': 'Native fixed-step backward Euler, secondorder=0',
                       'membrane': 'Native hh with usetable_hh=0, cm=1, ena=50, ek=-77, el=-54.3',

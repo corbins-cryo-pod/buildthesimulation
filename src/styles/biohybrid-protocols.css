@@ -370,3 +370,8 @@
   white-space: nowrap;
   border: 0;
 }
+
+.bh-protocol-example{display:flex;align-items:center;gap:18px;margin:-3px 0 20px;padding:12px 14px;border-left:2px solid var(--accent);background:var(--bh-soft)}
+.bh-protocol-example button{font-size:11px;flex:none}
+.bh-protocol-example p{font-size:12px;color:var(--muted);margin:0;max-width:100ch}
+@media(max-width:700px){.bh-protocol-example{align-items:flex-start;flex-direction:column;gap:10px}}
