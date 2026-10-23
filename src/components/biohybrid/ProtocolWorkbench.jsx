@@ -270,7 +270,7 @@ function ProtocolResults({
     <ResponsePlot title="Recording 2: known source contributions" subtitle="Each peak-to-peak amplitude uses its own extrema. Component amplitudes need not add to the combined amplitude." unit="µV p–p" points={points} series={signals} xLabel={causal ? "Matched condition" : `${axis?.label} / ${axis?.unit}`} />
   </div>
   <p class="bh-protocol-fineprint">Tip − soma is the signed difference between the first upward 0 mV crossings at the engineered-1 tract tip and soma. A negative value means the tip crossed first. This event ordering must be interpreted alongside local voltages and matched synaptic controls.</p>
-  <div class="bh-protocol-table">
+  <div class="bh-protocol-table" tabIndex={0} role="region" aria-label="Controlled study measurements; scroll horizontally for all columns">
     <table>
       <caption class="sr-only">
         {"Every completed or failed condition in this controlled experiment"}
@@ -454,7 +454,7 @@ function ProtocolResults({
         {entry.comparison.appearingHosts}
         {" appearing with block"}
       </summary>
-      <div class="bh-protocol-table">
+      <div class="bh-protocol-table" tabIndex={0} role="region" aria-label={`Host-by-host matched control for ${caseName(entry, doc)}; scroll horizontally for all columns`}>
         <table>
           <thead>
             <tr>
@@ -811,7 +811,7 @@ function ProtocolWorkbench({
     {config.error}
   </p>}
   {busy && <div class="bh-protocol-status" role="status">
-    <progress max="1" value={progress.progress} />
+    <progress max="1" value={progress.progress} aria-label="Controlled study progress" />
     <p>
       {progress.label}
       {" \xB7 "}

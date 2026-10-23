@@ -204,6 +204,10 @@
   overflow-x: auto;
   border: 1px solid var(--bh-rule);
 }
+.bh-protocol-table:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
 .bh-protocol-table table {
   font-size: 12px;
   min-width: 800px;
