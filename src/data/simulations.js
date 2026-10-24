@@ -3,6 +3,11 @@ export const simulationGroups = [
     "title": "Design & Microfabrication",
     "entries": [
       {
+        "href": "/simulations/neural-interface-studio/",
+        "title": "Neural Interface Studio",
+        "desc": "Design neural electrodes, fabricate them in a digital cleanroom, inspect connectivity and sheet resistance, and compare replayable runs."
+      },
+      {
         "href": "/simulations/microfabrication/",
         "title": "Microfabrication Laboratory",
         "desc": "Build a flexible neural electrode one material layer at a time. Inspect masks and live cross-sections, change alignment and etching, then test continuity, isolation and exposed contact area."
