@@ -36,7 +36,7 @@ const sameConfig = (a, b) => JSON.stringify(Object.keys(a || {}).sort().map(k =>
 function download(content, type, filename) {
   const url = URL.createObjectURL(new Blob([content], { type }));
   const link = document.createElement('a'); link.href = url; link.download = filename; document.body.appendChild(link); link.click(); link.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
 }
 
 function RangeField({ label, name, value, min = 0, max = 2, step = .05, unit = '×', note, onChange }) {
@@ -122,7 +122,7 @@ export default function CellGrowthLaboratory() {
       else if (data.type === 'export') {
         const extension = data.format === 'swc' ? 'swc' : data.format;
         download(data.content, data.format === 'json' ? 'application/json' : 'text/plain;charset=utf-8', `cell-growth-${data.format === 'swc' ? `cell-${Number(data.cellId) + 1}` : 'experiment'}.${extension}`);
-        setNotice(`${data.format.toUpperCase()} export downloaded.`);
+        setNotice(`${data.format.toUpperCase()} export download requested.`);
       } else if (data.type === 'compare-progress') { setCompareProgress(`${data.label} · ${Math.round(data.progress * 100)}%`); }
       else if (data.type === 'comparison') { setComparison(data.runs); setComparing(false); setCompareProgress(''); setNotice(data.runs.some(run => run.limits?.reached) ? 'A comparison arm stopped at its capacity limit. Read the reached times before comparing.' : 'Paired experiment complete. The displayed culture is preserved.'); }
     };
@@ -183,8 +183,8 @@ export default function CellGrowthLaboratory() {
 
     <div class="cg-toolbar">
       <div class="cg-run-buttons">
-        <button type="button" class="cg-primary" disabled={!state || (!running && (changed || state.timeHours >= until || state.limits.reached))} onClick={() => running ? pause() : send({ type: 'play', speed, until })}>{running ? 'Ⅱ Pause' : '▷ Run growth'}</button>
-        <button type="button" disabled={!state || running || changed || state.timeHours >= 168 || state.limits.reached} onClick={() => { setBusy(true); send({ type: 'advance', hours: 6 }); }}>+ 6 h</button>
+        <button type="button" class="cg-primary" disabled={!state || (!running && (changed || state.timeHours >= until - 1e-8 || state.limits.reached))} onClick={() => running ? pause() : send({ type: 'play', speed, until })}>{running ? 'Ⅱ Pause' : '▷ Run growth'}</button>
+        <button type="button" disabled={!state || running || changed || state.timeHours >= 168 - 1e-8 || state.limits.reached} onClick={() => { setBusy(true); send({ type: 'advance', hours: 6 }); }}>+ 6 h</button>
         <button type="button" onClick={() => initialize(state?.config || draft)}>Reset to 0 h</button>
       </div>
       <div class="cg-time-controls"><label>Stop at <select aria-label="Stop at model time" disabled={running} value={until} onChange={e => setUntil(Number(e.currentTarget.value))}><option value="48">48 h</option><option value="72">72 h</option><option value="120">120 h</option><option value="168">168 h</option></select></label><label>Playback <select aria-label="Playback speed" disabled={running} value={speed} onChange={e => setSpeed(Number(e.currentTarget.value))}><option value={.1}>Slow</option><option value={.5}>Normal</option><option value={1}>Fast</option></select></label><span class="cg-elapsed"><strong>{fmt(state?.timeHours, 1)}</strong> <span>h<br /><small>model time</small></span></span></div>
