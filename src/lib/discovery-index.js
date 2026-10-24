@@ -50,6 +50,8 @@ export async function buildDiscoveryIndex() {
       keywords: [model.deviceId, model.slug ?? '', ...(model.specs ?? []).flatMap(spec => spec)],
     })),
     ...[
+      ['Cochlear Implant Laboratory', '/simulations/cochlear-implant/', 'Sound processing, finite-contact fields, auditory-nerve cable dynamics and reproducible implant experiments', 'cochlear implant hearing auditory nerve Rattay CIS n-of-m vocoder electrode recruitment spike raster threshold'],
+      ['Cochlear Implant Methods and Validation', '/simulations/cochlear-implant/methods/', 'Model equations, independent numerical references, interpretation boundaries and experiment guide', 'cochlear auditory nerve methods validation finite disk Greenwood Rattay pulse charge numerical convergence'],
       ['RPNI Design & Testing Laboratory', '/simulations/rpni-design/', 'Muscle-graft geometry, nerve routing, finite bipolar contacts, synthetic EMG and controlled design studies', 'RPNI regenerative peripheral nerve interface muscle graft motor unit electrode design crosstalk recording oxygen transport'],
       ['RPNI Model and Evidence', '/simulations/rpni-design/methods/', 'Electrical forward model, transport assumptions, primary RPNI studies and numerical verification', 'RPNI methods evidence validation equations muscle graft human rat'],
       ['Biohybrid Neural Interface Laboratory', '/simulations/biohybrid-interface/', 'Active engineered axonal bridge, host–graft synapses, finite electrode contacts and calculated recordings', 'biohybrid living electrode micro-TENN neural tissue graft engineered axon bridge Hodgkin Huxley synapse stimulation recording growth'],

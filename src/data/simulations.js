@@ -22,6 +22,7 @@ export const simulationGroups = [
   {
     "title": "Neural Interface Laboratories",
     "entries": [
+      {"href":"/simulations/cochlear-implant/","title":"Cochlear Implant Laboratory","desc":"Follow sound through frequency bands, interleaved pulses, finite electrode fields and a 65-compartment auditory nerve model. Compare geometry, coding strategies, recruitment and acoustic vocoders."},
       {"href":"/simulations/optogenetics/","title":"Optogenetics Laboratory","desc":"Explore light delivery, ChR2 kinetics and reconstructed human-neuron responses. Compare expression patterns, photocurrents, pulse trains and response maps."},
       {
         "href": "/simulations/rpni-design/",

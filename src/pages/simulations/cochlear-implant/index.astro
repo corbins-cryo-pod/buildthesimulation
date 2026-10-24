@@ -1,0 +1,8 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CochlearLaboratory from '../../../components/CochlearLaboratory.jsx';
+---
+<Layout pageTitle="Cochlear Implant Laboratory" description="Explore cochlear sound processing, finite electrode fields and active auditory-nerve responses with reproducible experiments." wide={true} compactHeader={true}>
+  <CochlearLaboratory client:load />
+  <noscript><p>The interactive laboratory needs JavaScript. <a href="/simulations/cochlear-implant/methods/">Read the model and numerical verification.</a></p></noscript>
+</Layout>

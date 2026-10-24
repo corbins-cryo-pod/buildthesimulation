@@ -1,0 +1,214 @@
+{
+  "generatedAt": "2026-10-24T20:27:44.903Z",
+  "modelId": "rattay-2001-deterministic-65",
+  "compartmentCount": 65,
+  "authorReference": {
+    "source": "https://gitlab.lrz.de/tueibai-public/human-anf-models",
+    "sourceBlobSha1": {
+      "models/Rattay_2001.py": "b320016b7080fbae220ab968136840462d8b6485",
+      "functions/stimulation.py": "8362e8f172c4c90df3f8f46be25a97b872b33762",
+      "functions/calculations.py": "7d7731ae7bf61c30b1fa74803bba35d01e9a4fef"
+    },
+    "brianVersion": "2.10.1"
+  },
+  "interpretation": "Numerical implementation verification against published model behavior, not independent validation of human physiology or perception.",
+  "authorComparisons": [
+    {
+      "case": "single_mono",
+      "rmsDifferenceMv": 0.015706900012076502,
+      "maximumDifferenceMv": 0.17437183907714982,
+      "comparedSamples": 1025,
+      "browserSpikeTimesMs": [
+        1.9408095115320725
+      ],
+      "referenceSpikeTimesMs": [
+        1.9409043039132934
+      ],
+      "spikeThresholdMv": -5,
+      "referenceSampleIntervalUs": 20
+    },
+    {
+      "case": "single_biphasic",
+      "rmsDifferenceMv": 0.010532559052705335,
+      "maximumDifferenceMv": 0.12957305283935572,
+      "comparedSamples": 1030,
+      "browserSpikeTimesMs": [
+        1.8756121224660571
+      ],
+      "referenceSpikeTimesMs": [
+        1.875166482042985
+      ],
+      "spikeThresholdMv": -5,
+      "referenceSampleIntervalUs": 20
+    },
+    {
+      "case": "short_train",
+      "rmsDifferenceMv": 0.011320604311594174,
+      "maximumDifferenceMv": 0.12957305283935572,
+      "comparedSamples": 2030,
+      "browserSpikeTimesMs": [
+        1.8756121224660571,
+        3.8196093588266438,
+        5.819234797777072
+      ],
+      "referenceSpikeTimesMs": [
+        1.875166482042985,
+        3.8194733073207856,
+        5.819033264596275
+      ],
+      "spikeThresholdMv": -5,
+      "referenceSampleIntervalUs": 20
+    }
+  ],
+  "convergence": [
+    {
+      "dtUs": 0.5,
+      "referenceDtUs": 0.25,
+      "rmsDifferenceMv": 0.2372247677796817,
+      "maximumDifferenceMv": 2.6564851999282837,
+      "comparedSamples": 1203,
+      "spikeTimesMs": [
+        1.8756339977886083,
+        3.8201982284319116,
+        5.819871365102093
+      ],
+      "referenceSpikeTimesMs": [
+        1.8740021856570446,
+        3.8189318623744763,
+        5.818623790105783
+      ],
+      "maximumSpikeTimeDifferenceUs": 1.6318121315637146,
+      "spikeThresholdMv": 0
+    },
+    {
+      "dtUs": 1,
+      "referenceDtUs": 0.25,
+      "rmsDifferenceMv": 0.7159127252436736,
+      "maximumDifferenceMv": 7.812270164489746,
+      "comparedSamples": 1203,
+      "spikeTimesMs": [
+        1.8789433751979048,
+        3.8227655391907165,
+        5.822400075607156
+      ],
+      "referenceSpikeTimesMs": [
+        1.8740021856570446,
+        3.8189318623744763,
+        5.818623790105783
+      ],
+      "maximumSpikeTimeDifferenceUs": 4.9411895408602025,
+      "spikeThresholdMv": 0
+    },
+    {
+      "dtUs": 2,
+      "referenceDtUs": 0.25,
+      "rmsDifferenceMv": 1.683635900224656,
+      "maximumDifferenceMv": 17.175935745239258,
+      "comparedSamples": 1203,
+      "spikeTimesMs": [
+        1.885752924736391,
+        3.8280369200141937,
+        5.827587617149335
+      ],
+      "referenceSpikeTimesMs": [
+        1.8740021856570446,
+        3.8189318623744763,
+        5.818623790105783
+      ],
+      "maximumSpikeTimeDifferenceUs": 11.750739079346317,
+      "spikeThresholdMv": 0
+    },
+    {
+      "dtUs": 5,
+      "referenceDtUs": 0.25,
+      "rmsDifferenceMv": 4.659668447285494,
+      "maximumDifferenceMv": 41.98916530609131,
+      "comparedSamples": 1203,
+      "spikeTimesMs": [
+        1.9080004387229996,
+        3.8450756878214185,
+        5.844287160304804
+      ],
+      "referenceSpikeTimesMs": [
+        1.8740021856570446,
+        3.8189318623744763,
+        5.818623790105783
+      ],
+      "maximumSpikeTimeDifferenceUs": 33.998253065955055,
+      "spikeThresholdMv": 0
+    }
+  ],
+  "lookupComparison": {
+    "rmsDifferenceMv": 0.0000694746255393371,
+    "maximumDifferenceMv": 0.0009732246398925781,
+    "comparedSamples": 1203,
+    "maximumSpikeTimeDifferenceUs": 0.000530014352406738,
+    "voltageTableSpacingMv": 0.025,
+    "dtUs": 1
+  },
+  "thresholdChecks": [
+    {
+      "phaseWidthUs": 40,
+      "pulseForm": "mono",
+      "thresholdUA": 313.8657522201538,
+      "dtUs": 5,
+      "phaseGapUs": 0,
+      "spikesAt99_5Percent": 0,
+      "spikesAt100_5Percent": 1
+    },
+    {
+      "phaseWidthUs": 50,
+      "pulseForm": "mono",
+      "thresholdUA": 257.86888599395746,
+      "dtUs": 5,
+      "phaseGapUs": 0,
+      "spikesAt99_5Percent": 0,
+      "spikesAt100_5Percent": 1
+    },
+    {
+      "phaseWidthUs": 100,
+      "pulseForm": "mono",
+      "thresholdUA": 146.11027717590335,
+      "dtUs": 5,
+      "phaseGapUs": 0,
+      "spikesAt99_5Percent": 0,
+      "spikesAt100_5Percent": 1
+    },
+    {
+      "phaseWidthUs": 50,
+      "pulseForm": "bi",
+      "thresholdUA": 391.1433839797973,
+      "dtUs": 5,
+      "phaseGapUs": 0,
+      "spikesAt99_5Percent": 0,
+      "spikesAt100_5Percent": 1
+    },
+    {
+      "phaseWidthUs": 200,
+      "pulseForm": "bi",
+      "thresholdUA": 92.44431495666502,
+      "dtUs": 5,
+      "phaseGapUs": 0,
+      "spikesAt99_5Percent": 0,
+      "spikesAt100_5Percent": 1
+    },
+    {
+      "phaseWidthUs": 400,
+      "pulseForm": "bi",
+      "thresholdUA": 56.657977104187005,
+      "dtUs": 5,
+      "phaseGapUs": 0,
+      "spikesAt99_5Percent": 0,
+      "spikesAt100_5Percent": 1
+    }
+  ],
+  "recommendedTimestepUs": 1,
+  "limitations": [
+    "The neuron has deterministic channels and no added long-term adaptation mechanism.",
+    "Geometry and model parameters are generic, not individualized to a recipient.",
+    "The browser uses identical frustum axial conductances for membrane and extracellular coupling. The author stimulus generator uses midpoint-diameter resistance approximations for its extracellular drive; small waveform differences are therefore expected.",
+    "Published threshold reproduction uses the original 5 us numerical step. Smaller steps change thresholds as the numerical solution converges.",
+    "Reported waveform errors are unaligned point-by-point comparisons; steep action-potential edges amplify small latency differences.",
+    "A successful numerical benchmark does not validate speech understanding, perceived sound, clinical programming, or implant safety."
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "description": "Uniform-current circular disk in unbounded homogeneous conductor",
+  "conductivitySPerM": 0.3333333333333333,
+  "sourcePositionMm": [
+    0,
+    0,
+    0
+  ],
+  "sourceNormal": [
+    0,
+    0,
+    1
+  ],
+  "method": "Complete elliptic K angular integral + scipy.integrate.quad radial integral",
+  "greenFunction": "1/(4*pi*sigma*distance)",
+  "angularIntegral": "4*K(4*r*rho/((r+rho)^2+z^2))/sqrt((r+rho)^2+z^2)",
+  "potentialUnit": "mV/uA",
+  "cases": [
+    {
+      "radiusMm": 0.15,
+      "pointMm": [
+        0.1,
+        0,
+        0.5
+      ],
+      "expectedMvPerUa": 0.45899045533712846,
+      "estimatedAbsoluteErrorMvPerUa": 5.0958177159846456e-15
+    },
+    {
+      "radiusMm": 0.15,
+      "pointMm": [
+        0.5,
+        0,
+        0.5
+      ],
+      "expectedMvPerUa": 0.33663472723530197,
+      "estimatedAbsoluteErrorMvPerUa": 3.7373962506504145e-15
+    },
+    {
+      "radiusMm": 0.35,
+      "pointMm": [
+        0.2,
+        0,
+        0.1
+      ],
+      "expectedMvPerUa": 0.9265632011754256,
+      "estimatedAbsoluteErrorMvPerUa": 1.0286917798001565e-14
+    },
+    {
+      "radiusMm": 0.35,
+      "pointMm": [
+        0.35,
+        0,
+        0.1
+      ],
+      "expectedMvPerUa": 0.7074863640634426,
+      "estimatedAbsoluteErrorMvPerUa": 3.1697157589165425e-14
+    },
+    {
+      "radiusMm": 0.35,
+      "pointMm": [
+        0.5,
+        0,
+        0.1
+      ],
+      "expectedMvPerUa": 0.49586433505633476,
+      "estimatedAbsoluteErrorMvPerUa": 5.5052000186998606e-15
+    },
+    {
+      "radiusMm": 0.03,
+      "pointMm": [
+        0.05,
+        0,
+        0.1
+      ],
+      "expectedMvPerUa": 2.1086407499408932,
+      "estimatedAbsoluteErrorMvPerUa": 2.341061511247237e-14
+    },
+    {
+      "radiusMm": 0.35,
+      "pointMm": [
+        1.0,
+        0,
+        2.0
+      ],
+      "expectedMvPerUa": 0.10630806342494842,
+      "estimatedAbsoluteErrorMvPerUa": 1.1802565971768922e-15
+    },
+    {
+      "radiusMm": 0.15,
+      "pointMm": [
+        0.3,
+        0,
+        0.0
+      ],
+      "expectedMvPerUa": 0.8233336817737397,
+      "estimatedAbsoluteErrorMvPerUa": 9.140840104546073e-15
+    }
+  ]
+}
