@@ -1,0 +1,254 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { MODEL_VERSION, PHYSICAL_BASELINES, DEFAULT_CONFIG, PRESETS } from '../../../lib/cell-growth/engine.js';
+import verification from '../../../data/cell-growth-validation.json';
+const number = (value, digits=3) => Number(value).toFixed(digits);
+const baseline = PHYSICAL_BASELINES;
+const organoidSegmentBudget = PRESETS.find(preset=>preset.id==='organoid')?.config.maxSegments ?? DEFAULT_CONFIG.maxSegments;
+const biohybridSegmentBudget = PRESETS.find(preset=>preset.id==='biohybrid')?.config.maxSegments ?? DEFAULT_CONFIG.maxSegments;
+
+const references = [
+  {id:'clutch', author:'Pulido Cifuentes et al. · 2024', title:'A modified motor-clutch model reveals that neuronal growth cones respond faster to soft substrates', url:'https://pmc.ncbi.nlm.nih.gov/articles/PMC11064671/', doi:'10.1091/mbc.E23-09-0364', scope:'An experimentally constrained Aplysia motor-clutch model supports coupling between adhesion, traction and retrograde flow. Its parameter fit and effective substrate stiffness are specific to that preparation.'},
+  {id:'membrane', author:'Craig et al. · 2012', title:'Membrane tension, myosin force, and actin turnover maintain actin treadmill in the nerve growth cone', url:'https://pubmed.ncbi.nlm.nih.gov/22500750/', doi:'10.1016/j.bpj.2012.03.003', scope:'Aplysia measurements and modeling link membrane tension, myosin contraction and actin turnover. This motivates coupled mechanics, not a universal membrane-tension constant.'},
+  {id:'polarity', author:'Witte, Neukirchen & Bradke · 2008', title:'Microtubule stabilization specifies initial neuronal polarization', url:'https://pmc.ncbi.nlm.nih.gov/articles/PMC2234250/', doi:'10.1083/jcb.200707042', scope:'Cultured rodent hippocampal neurons support a role for local microtubule stabilization in axon specification. A developmental state rule is a reduction of these mechanisms.'},
+  {id:'dendrites', author:'Ferreira Castro et al. · 2020', title:'Achieving functional neuronal dendrite structure through sequential stochastic growth and retraction', url:'https://elifesciences.org/articles/60920', doi:'10.7554/eLife.60920', scope:'Time-lapse imaging and modeling of a Drosophila sensory neuron support growth and retraction as distinct contributors to arbor formation. This does not supply a human cortical branching-rate fit.'},
+  {id:'self-avoidance', author:'Lefebvre et al. · 2012', title:'Protocadherins mediate dendritic self-avoidance in the mammalian nervous system', url:'https://www.nature.com/articles/nature11305', doi:'10.1038/nature11305', scope:'Mouse retinal starburst amacrine and cerebellar Purkinje cells provide evidence for molecular self/non-self recognition. Self-avoidance and avoidance of other neurons are different rules.'},
+  {id:'three-d', author:'Santos et al. · 2020', title:'Axon growth of CNS neurons in three dimensions is amoeboid and independent of adhesions', url:'https://pubmed.ncbi.nlm.nih.gov/32698008/', doi:'10.1016/j.celrep.2020.107907', scope:'CNS axons extended in adhesion-inert 3D matrices. This establishes that mechanisms inferred from adhesive 2D plates cannot simply be assumed to apply to every 3D environment.'},
+  {id:'collision', author:'Franze et al. · 2009', title:'Neurite branch retraction is caused by a threshold-dependent mechanical impact', url:'https://pubmed.ncbi.nlm.nih.gov/19804718/', doi:'10.1016/j.bpj.2009.07.033', scope:'Mechanical loading can evoke calcium entry, growth-cone collapse and retraction. Contact responses depend on the assay; the lab does not apply its measured stress threshold universally.'},
+  {id:'branching', author:'Dent & Kalil · 2001', title:'Axon branching requires interactions between dynamic microtubules and actin filaments', url:'https://pubmed.ncbi.nlm.nih.gov/11739584/', doi:'10.1523/JNEUROSCI.21-24-09757.2001', scope:'Cortical-neuron imaging and perturbation distinguish cytoskeletal requirements for branching from those for elongation. A branch-rate control is not interchangeable with an extension-speed control.'},
+  {id:'human', author:'Ohara et al. · 2015', title:'Early-stage development of human induced pluripotent stem cell-derived neurons', url:'https://pubmed.ncbi.nlm.nih.gov/26346430/', doi:'10.1002/jnr.23666', scope:'Early human iPSC-derived neuronal polarization resembled the compared rat culture stages, while axons grew more slowly. Species, preparation and developmental clocks must remain explicit.'},
+  {id:'connections', author:'Barker et al. · 2008', title:'Developmental control of synaptic receptivity', url:'https://pmc.ncbi.nlm.nih.gov/articles/PMC2566963/', doi:'10.1523/JNEUROSCI.1744-08.2008', scope:'Developing retinal ganglion cells acquire synaptic receptivity through maturation and cell interactions. Dendrite growth and geometric contact alone do not establish functional synaptic transmission.'},
+];
+
+const evidence = [
+  ['Mechanism supported by experiments','Actin–adhesion coupling; microtubule-dependent polarity; membrane tension; recognition-dependent contact responses.','The experiments motivate a mechanism; their cell type and conditions still matter.'],
+  ['Mathematical model assumption','Effective force laws, reduced state variables, growth and branching rules, geometry and boundary conditions.','An implemented relation that can be inspected and tested, not a measurement.'],
+  ['Exploratory parameter','The default mechanical coefficients, source strength, developmental clock and contact delay.','Chosen to produce an inspectable experiment; not fitted to a particular human cell line.'],
+  ['Numerical verification','Geometry, reproducibility, state consistency and refinement checks.','Evidence that the implementation solves its specified model within tested conditions.'],
+  ['Future empirical calibration','Agreement with held-out time-lapse, force, morphology and contact-response data.','Required before claiming quantitative prediction of a culture or implant.'],
+];
+
+const contexts = [
+  ['In vitro plate','A surface-constrained population with explicit substrate interactions and finite obstacles.','Study polarity, dendritic exploration, axon alignment and obstacle encounters.','No medium chemistry, dish-wide diffusion, coating-specific binding kinetics or culture protocol is inferred.'],
+  ['Organoid volume','Cells and neurites occupy a three-dimensional bounded volume.','Study crowding, three-dimensional contact and the sensitivity of growth to the modeled microenvironment.','This is not a full organoid: no cortical layers, ventricular zones, vascularization, cell-fate patterning or tissue folding emerge from this release.'],
+  ['Nerve regeneration','A bounded guidance environment for growing processes.','Compare trajectories, obstruction, alignment, branching and reaching the far side of a gap.','Crossing a simulated gap does not establish target reinnervation, muscle recovery, scar remodeling or a clinical regeneration rate.'],
+  ['Biohybrid interface','Living processes grow around a defined scaffold/interface geometry.','Inspect contact, directionality and geometric integration.','A neurite beside a device is not an electrode seal, recording channel, functional living electrode or chronic integration result.'],
+];
+---
+
+<Layout pageTitle="Cell Growth Lab — Model & Methods" description="Mechanochemical neuron-growth equations, axon and dendrite behavior, collision interpretation, source evidence and empirical calibration limits for the Cell Growth Lab." compactHeader>
+  <article class="cg-methods">
+    <header class="cg-methods-heading">
+      <p class="eyebrow">Cell Growth Lab / {MODEL_VERSION}</p>
+      <h1>How a neuron grows</h1>
+      <p class="lead">The model, the evidence, and the experiments needed to connect them.</p>
+      <nav aria-label="Methods sections"><a href="/simulations/cell-growth/">← Open the laboratory</a><a href="#mechanics">Mechanics</a><a href="#arbors">Axons &amp; dendrites</a><a href="#contexts">Four environments</a><a href="#verification">Verification</a><a href="#references">Primary sources</a></nav>
+    </header>
+
+    <section class="callout" aria-label="Model interpretation">
+      <h2>What this laboratory represents</h2>
+      <p>This is an exploratory, coarse-grained mechanochemical model of neuronal morphology. A neurite grows through local decisions at a growth cone, constrained by its material supply, cytoskeletal state, surroundings and contact history. The visible geometry is the evolving simulated state.</p>
+      <p><strong>Biological realism is a calibration question.</strong> Literature supports the mechanisms below; this release has not been fitted to a particular human stem-cell line, organoid preparation, injured nerve or implant. Numerical verification and visually convincing morphology answer different questions.</p>
+    </section>
+
+    <section id="evidence">
+      <h2>01 / Evidence and model assumptions</h2>
+      <p>Mechanisms, parameter choices and validation claims are tracked separately. A measured response in one species can motivate a rule without supplying a transferable numerical constant. This matters especially when comparing a two-dimensional adhesive plate with a three-dimensional tissue-like environment.</p>
+      <div class="table-scroll"><table><thead><tr><th>Evidence class</th><th>Example</th><th>Interpretation</th></tr></thead><tbody>{evidence.map(row=><tr>{row.map(value=><td>{value}</td>)}</tr>)}</tbody></table></div>
+      <p>For example, the <a href="#clutch">motor-clutch study</a> constrains an Aplysia preparation, while the <a href="#three-d">3D CNS study</a> demonstrates extension without adhesive traction in its matrices. The laboratory uses a reduced model to explore mechanisms; it does not combine these results into a universal law of neuronal growth.</p>
+    </section>
+
+    <section id="mechanics">
+      <h2>02 / Membrane and cytoskeletal mechanics</h2>
+      <p>The membrane has a mechanical role: it surrounds a changing geometry and imposes a cost when growth demands additional surface. Actin-rich protrusions explore the local environment; microtubule support distinguishes an exploratory protrusion from maintained neurite extension. Adhesion transmits force between the cytoskeleton and the environment. <a href="#membrane">Craig et al.</a> and <a href="#clutch">Pulido Cifuentes et al.</a> motivate these coupled processes.</p>
+      <h3>Geometry and mechanical degrees of freedom</h3>
+      <p>Each soma has a fixed center, a nominal radius of 6.8–7.7 µm, and a triangulated surface with 42 vertices and 80 faces. Each neurite is a connected sequence of finite-radius segments. Only the soma surface is an elastic mesh; established neurite shafts are not a fully deformable elastic rod network. The model does not move whole somata or resolve cell division.</p>
+      <details class="equation-panel" open><summary>Growth-cone force balance</summary>
+      <p>Let a and u be the actin and microtubule controls, S the cell's dimensionless supply, R its membrane reserve, m the tip's microtubule support, and γ the effective membrane tension. Positive net force permits extension:</p>
+      <pre>v_poly = 64 a (0.65 + 0.35 S)                         [µm/h]
+F_actin = η max(0, v_poly − v_retro)                    [pN]
+F_MT = η v_MT min(a, 1) m                              [pN]
+F_membrane = 2π r_eff γ                               [pN]
+F_net = F_actin + F_MT − F_membrane                    [pN]
+v_tip = max(0, F_net / η) g_kind g_age m_support g_material
+
+η = 3 pN·h/µm; v_MT = 12 µm/h in organoid mode, 8 otherwise
+r_eff = 0.52 µm for axons; 0.85 µm for dendrites
+g_kind = 1 for axons; 0.58 for dendrites
+g_age = clamp((developmental age − 8 h) / 6 h, 0.2, 1)
+m_support = 0 when u = 0; otherwise m</pre>
+      <p>The material multiplier is min(S, R). Each attempted advance is additionally bounded by the remaining membrane-area budget divided by the current shaft's circumference. A depleted reserve cannot continue feeding extension simply because the tension control is zero.</p>
+      <p>The tip-support target is clamp(u(0.35 + 0.65S), 0, 1). Support relaxes exponentially toward it with a 1.8 h time constant, or 1 h when u is zero. Established shaft support relaxes toward min(1, uS) over 8 h. These equations are this lab's reduced closure. They are not a reimplementation of a fitted human growth-cone model. In particular, the zero-actin control also removes the modeled microtubule driving term, which is a model choice and not a universal statement about 3D axon growth.</p>
+      <p>The traction readout affects retrograde flow through the closure below. It is not added to the net force a second time. The effective radius in the tension force is a declared parameter; it is not a measured filopodial radius. Directional guidance is a separate steering rule.</p>
+      </details>
+      <details class="equation-panel"><summary>Quasi-steady motor-clutch closure</summary>
+      <pre>k_eff = k_substrate k_clutch / (k_substrate + k_clutch)
+f_bond = F_b log(1 + k_eff (v_retro/3600) / (k_off,0 F_b))
+k_off = k_off,0 exp(min(15, f_bond/F_b))
+occupancy = k_on / (k_on + k_off)
+F_traction = N_clutch adhesion occupancy f_bond
+v_target = v_unloaded / (1 + F_traction/F_stall)
+v_retro ← 0.5 v_retro + 0.5 v_target    (24 iterations)</pre>
+      <p>The iteration starts at v_unloaded. Speeds are converted from µm/h to µm/s for the bond calculation. The baseline values are {baseline.unloadedRetrogradeUmPerHour} µm/h, {baseline.clutchSpringPnPerUm} pN/µm for clutch stiffness, {baseline.clutchOnPerSecond} s⁻¹ for binding, {baseline.clutchOffPerSecond} s⁻¹ for unloaded unbinding, {baseline.bondForcePn} pN for the bond force scale, {baseline.motorStallPn} pN for the effective stall scale, and {baseline.clutchSites} available clutch sites.</p>
+      <p>This is a deterministic mean-field approximation inspired by the mechanism in <a href="#clutch">the source literature</a>. It does not track individual bonds or reproduce a published stochastic motor-clutch simulation. The model's substrate setting is an <strong>effective spring stiffness in pN/µm</strong>; it is not a Young's modulus in kPa.</p>
+      </details>
+      <details class="equation-panel"><summary>Soma shell and material supply</summary>
+      <pre>γ = 7 tensionGain [1 + 4(1 − R)²]                     [pN/µm]
+P = 2γ/r + 40 (V_target − V)/V_target                 [pN/µm²]
+F_vertex = −γ ∇A + P ∇V + F_edges + F_root
+E_edges = ½ Σ_edges 10 (length − restLength)²          [pN·µm]
+x_vertex ← x_vertex + 0.0025 F_vertex                  [µm]
+
+S_target = support(position) / [1 + 0.035 max(0, N_tips − 5)]
+S ← S + (S_target − S) [1 − exp(−0.5 Δt)]
+R ← R + (1 − R) [1 − exp(−0.8 membraneSupply Δt)]
+ΔA_extension = 2π r_segment Δlength                   [µm²]</pre>
+      <p>After initialization, shell relaxation occurs at the first solver step at least 0.25 simulated hours after its previous update. The positional coefficient is 0.0025 µm/pN per relaxation iteration. Vertex radii are numerically restricted to 94–106% of the nominal soma radius. Roots receive a small capped load from positive growth-cone net force and remain attached to the moving surface. The recorded elastic energy includes edge springs only. The model has no Helfrich bending term, membrane shear relaxation or lipid transport.</p>
+      <p>Each cell's extension budget has a capacity of 1.5 times its initial soma-mesh area. New length consumes the corresponding cylindrical area demand; 60% of withdrawn cylindrical area can return to available capacity during retraction. Initial seed processes are supplied as part of the starting construction. The saved state tracks supplied, used and recycled area. The shell's surface area and the extension reserve remain separate quantities; this budget does not resolve all lipids or radius changes in the whole cell.</p>
+      <p>Supply S is a generic capacity variable, not a measured molecule concentration. Outside organoid mode, support(position) is 1. Inside it, support is clamp(distance from center / 100 µm, 0.28, 1). This radial rule approximates reduced central support; it does not solve oxygen diffusion or metabolism. Extension also decreases S by 0.0007 per µm, with S constrained to [0, 1].</p>
+      </details>
+      <h3>Mechanical membrane is distinct from electrical membrane</h3>
+      <p>Surface area, tension, deformation and contact belong to the growth model. Membrane voltage, ion-channel currents, action potentials and extracellular recordings require a separate electrical model. This laboratory does not infer any of those signals from morphology or color. Its membrane visualization does not imply that a lipid bilayer, individual channels or molecular actin filaments are resolved.</p>
+      <h3>Why force balance is overdamped</h3>
+      <p>Growth is represented as directed, resisted movement. Contact changes the admissible direction, local forces or growth state. It is not modeled as a fast rigid-body impact with a coefficient of restitution. A stalled tip can continue probing; a retracting tip removes distal structure instead of creating a backwards extension.</p>
+      <p>Substrate stiffness is not a universal growth accelerator. Its effect depends on force transmission, adhesion and the other terms in the model. A parameter sweep should inspect extension, branching, contact and resource use together; a single attractive final arbor cannot identify the causal mechanism.</p>
+    </section>
+
+    <section id="development">
+      <h2>03 / From precursor to a polarized neuron</h2>
+      <p>The precursor starting state describes developmental competence in the model. It does not simulate reprogramming, gene regulation, pluripotency, lineage specification or the laboratory steps of a human differentiation protocol. Developmental stages gate when processes can emerge and acquire axonal or dendritic behavior.</p>
+      <p><a href="#polarity">Local microtubule stabilization</a> is one experimentally supported contributor to axon specification. The laboratory reduces this complex process to explicit developmental state rules. A rule that selects an axon is not proof that the model has recovered the entire polarity signaling network.</p>
+      <div class="table-scroll"><table><thead><tr><th>Starting state</th><th>Precursor begins</th><th>Initial neurites</th><th>Axon assignment</th><th>“Maturing” label</th></tr></thead><tbody>
+      <tr><td>Stem-like starting state</td><td>48 h</td><td>56 h</td><td>66 h</td><td>96 h</td></tr>
+      <tr><td>Neural precursor</td><td>0 h</td><td>8 h</td><td>18 h</td><td>48 h</td></tr>
+      <tr><td>Immature neuron</td><td>Earlier assumed stage</td><td>0 h</td><td>10 h</td><td>40 h</td></tr>
+      </tbody></table></div>
+      <p>Initiation creates four or five short processes per cell. At the assigned polarity time, the root arbor with the largest score, total arbor length + 6 µm × alignment with the cue direction, becomes the axon arbor. This is an explicit heuristic, not a molecular symmetry-breaking calculation. Its existing segments change identity together; the others retain dendritic behavior. The “maturing” label records developmental age and does not imply functional electrical maturity.</p>
+      <p>The developmental clock is an assumed model clock. <a href="#human">Human iPSC-derived neurons</a> can share early morphological stages with rodent cultures while following different growth kinetics. “24 h” in a displayed experiment therefore means 24 modeled hours under the selected rules, not a forecast that a stem cell becomes a mature human neuron in one day.</p>
+    </section>
+
+    <section id="arbors">
+      <h2>04 / Axons and dendrites need different rules</h2>
+      <p>A neuron's axon and dendrites share cytoskeletal machinery but serve different geometric roles. The lab treats process identity as part of the state, so differences in extension, steering, branching, taper and contact can be examined directly. These are representative behaviors, not a single morphology shared by every neuronal class.</p>
+      <div class="table-scroll"><table><thead><tr><th>Implemented rule</th><th>Axon</th><th>Dendrite</th></tr></thead><tbody>
+      <tr><td>Extension gain</td><td>1</td><td>0.58</td></tr>
+      <tr><td>Baseline branch hazard</td><td>0.012 h⁻¹</td><td>0.045 h⁻¹</td></tr>
+      <tr><td>New branch direction</td><td>0.48 rad from tip direction</td><td>0.68 rad from tip direction</td></tr>
+      <tr><td>Root / minimum shaft radius</td><td>0.52 / 0.23 µm</td><td>1.05 / 0.30 µm</td></tr>
+      <tr><td>Nearby-process steering</td><td>Adjustable alignment to another cell's axon</td><td>Adjustable avoidance of the cell's own processes</td></tr>
+      <tr><td>Low-growth retraction rate</td><td>1.5 µm/h</td><td>2.5 µm/h</td></tr>
+      </tbody></table></div>
+      <pre>λ = λ_kind branchingGain S m / (1 + 0.3 branchOrder)
+p_branch = 1 − exp(−λ Δt)</pre>
+      <p>Branching requires an extending tip at least 3 h old, microtubule support ≥0.45, reserve ≥0.2, nonzero actin and microtubule controls, and available tip capacity. Each event creates two tip continuations at a fixed branch node. This is <strong>tip bifurcation</strong>; the current engine does not initiate an interstitial collateral from an arbitrary mature shaft. Branch order is limited to five, and the default active-tip cap is {DEFAULT_CONFIG.maxTipsPerCell} per cell. Those limits are computational/model choices.</p>
+      <p>Steering combines the current direction with cue, nearby-process, obstacle and environment terms. Same-cell dendrite avoidance and other-cell axon alignment operate within 12 µm. Directional fluctuations use an Ornstein–Uhlenbeck process with a 1.5 h correlation time. These are dimensionless steering weights, not solved receptor kinetics or a three-dimensional tissue-stress field.</p>
+      <p>When calculated speed is below 0.02 µm/h for over 2 h, specified low-driver, low-reserve or negative-force conditions trigger retraction. Persistent non-neurite collision after 1.8 h triggers 2.2 µm/h retraction. The distal endpoint retreats along its existing path; a parent with surviving children is retained. The model does not implement activity-dependent pruning or branch survival determined by functional synapses.</p>
+      <h3>Read dendrite growth as a history</h3>
+      <p>An arbor's final branch count hides how it was assembled. Record branch births, retractions, surviving tips, cable length and the spatial distribution of branches. The <a href="#dendrites">growth-and-retraction study</a> demonstrates why pruning is part of development rather than merely a correction to an already completed tree.</p>
+      <p>Self-avoidance is cell-identity dependent. Branches from the same neuron can respond differently from processes belonging to a neighbor. <a href="#self-avoidance">Mammalian protocadherin experiments</a> support this distinction in specific cell classes. A global repulsion rule applied equally to every dendrite would erase it.</p>
+      <h3>Read axon growth as extension, guidance and branching</h3>
+      <p>Measure path length alongside displacement and tortuosity. An axon can accumulate cable while making little progress toward a target. Branch initiation must also be distinguished from extension: <a href="#branching">cytoskeletal perturbations in cortical neurons</a> can affect these processes differently.</p>
+      <p>An axon that follows an existing process has a different encounter history from one that turns away from an obstacle. Alignment is a geometric model behavior; it is not a molecular assay of a particular cell-adhesion molecule.</p>
+    </section>
+
+    <section id="contacts">
+      <h2>05 / Collision, recognition and connection</h2>
+      <p>Three questions must remain separate: do two finite structures physically intersect; how does a tip respond to that encounter; and does a biological connection eventually function? The first is geometry, the second is a modeled behavioral response, and the third requires evidence beyond geometry.</p>
+      <p>A spatial hash finds candidate segments over their full bounding boxes. Proposed extensions are checked along the complete swept path: sphere intersections for round obstacles and conservative soma envelopes, finite-capsule intersections for neurites, and slab intersections for expanded boxes. Expanded box corners are conservative; the soma exclusion envelope is 1.06 times its nominal radius, enclosing its bounded mesh. Nearby parent segments and shared branch junctions have explicit exclusions. A separate check on the proposed terminal-shaft chord prevents an endpoint update from cutting through a corner.</p>
+      <p>Rigid obstacles, somata and world boundaries exclude the effective <strong>growth-cone radius</strong>: 1.8 µm for axons and 2.1 µm for dendrites. Neurite–neurite exclusion uses the <strong>shaft radii</strong>, allowing the soft exploratory cone envelopes to overlap. The displayed fan and filopodia are not independently colliding membrane meshes. A collision clips growth before entry, turns direction toward a tangent, and accumulates a stall interval. Established shafts are not subsequently relaxed against each other as deformable rods.</p>
+      <p>Opposite-kind processes from different cells can produce an apposition record. Repeated encounter for {baseline.appositionHours} modeled hours promotes it to a candidate. Interrupted encounter resets the accumulated dwell interval. The current linked segments are checked every solver step: the record becomes lost if either segment disappears or their closest surface separation exceeds 0.5 µm. A renewed encounter after loss begins a new dwell interval. A candidate therefore requires continuing geometric proximity; no mechanical bond or synaptic machinery is solved. Neither axon–axon contact nor same-cell contact is counted as a candidate synapse.</p>
+      <p><a href="#collision">Mechanical-impact experiments</a> support collapse and retraction as possible growth-cone responses. They do not imply that every touch causes collapse or that a force threshold can be transferred between assays without a contact-area model.</p>
+      <p><strong>A candidate connection is an anatomical hypothesis.</strong> A stable apposition does not prove synaptic vesicle release, postsynaptic receptors, signal transmission, target specificity or useful network computation. <a href="#connections">Developmental synaptic receptivity</a> depends on maturation and interactions beyond dendrite extension alone. No electrical synapse is silently created by a crossing in this lab.</p>
+    </section>
+
+    <section id="contexts">
+      <h2>06 / Four environments, four interpretation limits</h2>
+      <div class="table-scroll"><table><thead><tr><th>Environment</th><th>Representation</th><th>Useful questions</th><th>Outside the model</th></tr></thead><tbody>{contexts.map(row=><tr>{row.map(value=><td>{value}</td>)}</tr>)}</tbody></table></div>
+      <p>Environmental presets are experiments with the same evolving cell representation. Agreement with plate data would not validate an organoid, a regeneration gap or a biohybrid construct. Each context needs its own geometry, boundary conditions, measured parameters and held-out comparison.</p>
+      <p>Myelination is deferred. The current experiment focuses on unmyelinated neurite development and contact. It does not solve oligodendrocyte or Schwann-cell wrapping, internode selection, g-ratio, saltatory conduction or remyelination.</p>
+    </section>
+
+    <section id="measurements">
+      <h2>07 / What to measure</h2>
+      <p>The engine records separate axonal and dendritic cable lengths, surviving branch nodes, active tips, branch-order counts, longest paths, radial reach, shaft area, mean cone speed, live/allocated segments, appositions and candidates, membrane area, tension and reserve. Longest paths begin at the neurite root on the soma surface; radial reach is measured from the soma center. Sholl intersections use exact segment–sphere crossings at radii of 15, 30, 45, 60, 90, 120, 160, 200 and 260 µm around each soma. The recorded profiles include combined processes, axons alone and dendrites alone; the workbench compares the two identities separately.</p>
+      <p>The default view is a rotatable orthographic projection of the solved three-dimensional coordinates with a scale bar; the optional WebGL surface view reads the same geometry. Radius settings of 2× and 3× enlarge only the display, leaving collisions and measurements unchanged. Nuclei and individual growth-cone filaments are schematic visual aids. A projected crossing does not by itself establish a physical contact.</p>
+      <p>Collision episodes combine consecutive hits by a tip on the same modeled object; changing object or a gap longer than 1.5 timesteps begins another episode. The internal collision-step counter and retraction-step counter remain update counts. None is a count of unique biological cell pairs. Tortuosity and full branch lifetimes can be analyzed separately from exported geometry and saved states.</p>
+      <p>The JSON preserves coordinates, topology and state; the CSV summarizes recorded history; SWC exports one selected cell's geometry for external analysis. SWC does not encode force states, a lipid surface, or validated electrical parameters. Shaft area is a cylindrical lateral-area sum and is separate from the triangulated soma area.</p>
+      <p>For a mechanical experiment, inspect membrane demand and the force terms that caused movement. Compare matched starting conditions, keep the seed, and change one mechanism at a time before testing interactions among controls. Summary history is sampled approximately hourly and retains at most 1,450 entries; the event log retains the latest 300 events. These are bounded summaries, not a full continuous microscopy movie.</p>
+      <p>Different seeds represent different realizations of the model's stochastic rules. They are not independent biological donors, and their spread is not a clinical confidence interval. A parameter sweep can reveal sensitivity inside the model without establishing how likely a real culture is to behave that way.</p>
+    </section>
+
+    <section id="verification">
+      <h2>08 / Verification and the next calibration experiment</h2>
+      <p>Numerical verification asks whether finite-radius obstacles are detected between timesteps, whether branch topology remains valid, whether states stay finite, whether resources constrain growth, and whether saving and resuming preserves an experiment. Refinement checks examine whether results change as a numerical step is reduced. These checks support implementation correctness within their tested conditions.</p>
+      <p>The generated release report records <strong>{verification.checks.filter(check=>check.passed).length} passing acceptance checks out of {verification.checks.length}</strong> for {verification.modelVersion}. Read the <a href="https://github.com/corbins-cryo-pod/buildthesimulation/blob/main/src/data/cell-growth-validation.json">quantitative report</a> and <a href="https://github.com/corbins-cryo-pod/buildthesimulation/blob/main/docs/cell-growth/VALIDATION.md">declared criteria</a>. Source hashes and the actual runtime are retained in the report.</p>
+      <div class="table-scroll"><table><thead><tr><th>Analytic geometry case</th><th>Absolute error</th><th>Acceptance</th></tr></thead><tbody>{verification.analyticGeometry.map(row=><tr><td>{row.geometry}</td><td>{row.absoluteErrorUm.toExponential(2)} µm</td><td>≤ {verification.acceptance.analyticGeometryUm} µm</td></tr>)}</tbody></table></div>
+      <h3>Environment studies and allocation limits</h3>
+      <div class="table-scroll"><table><thead><tr><th>Environment</th><th>Requested time</th><th>Simulated time</th><th>Segment budget</th><th>Termination</th></tr></thead><tbody>{verification.environments.map(row=><tr><td>{PRESETS.find(preset=>preset.id===row.mode)?.title ?? row.mode}</td><td>{number(row.requestedHours,1)} h</td><td>{number(row.simulatedHours,2)} h</td><td>{row.config.maxSegments.toLocaleString('en-US')}</td><td>{row.limits.reached ? row.limits.reason : 'Requested duration reached'}</td></tr>)}</tbody></table></div>
+      <p>These are the exact configurations retained in the generated report. An allocation cap is a computational stopping condition. A run that stops at its segment budget has not completed the remaining requested biological time.</p>
+      <h3>Deterministic timestep refinement</h3>
+      <div class="table-scroll"><table><thead><tr><th>Step</th><th>Final cable length</th><th>Condition</th></tr></thead><tbody>{verification.timestepRefinement.cases.map(row=><tr><td>{row.dtHours} h</td><td>{number(row.finalLengthUm,4)} µm</td><td>{verification.timestepRefinement.durationHours} h, one immature cell, branching and noise disabled</td></tr>)}</tbody></table></div>
+      <p>The coarse-to-finest length difference is {number(100*verification.timestepRefinement.relativeError,3)}%, against a {100*verification.acceptance.deterministicLengthRelativeError}% limit. The intermediate step is closer to the finest-step result. This is a bounded continuous-growth refinement study, not proof of convergence of every stochastic arbor, contact history or membrane shape. The finest solution is a numerical reference, not an exact analytic answer.</p>
+      <p>The same-seed and save/resume checks compare states inside the same JavaScript runtime. Cross-browser bit identity is not promised. Stochastic event sampling and the order of interacting tips can make individual trajectories diverge when the numerical step or population is changed.</p>
+      <pre>node --test tests/cell-growth.mjs
+node scripts/validate-cell-growth.mjs
+npm run build</pre>
+      <p>The default step is {DEFAULT_CONFIG.dtHours} h. A new shaft segment is created after its predecessor reaches approximately {baseline.shaftSegmentUm} µm; an individual advance can exceed that nominal length. Swept collision checks still examine the complete proposed movement. Geometry and branching can change at large steps, so the declared refinement result should not be generalized beyond its conditions. The global allocation budget is {DEFAULT_CONFIG.maxSegments.toLocaleString('en-US')} segments, used by the culture and regeneration presets. The organoid preset uses {organoidSegmentBudget.toLocaleString('en-US')} and the biohybrid preset uses {biohybridSegmentBudget.toLocaleString('en-US')}. These budgets include retired segments; reaching the chosen budget stops further stepping.</p>
+      <h3>A minimum empirical calibration plan</h3>
+      <ol>
+        <li><strong>Choose a preparation.</strong> Specify species, neuronal class, cell line, differentiation stage, matrix, coating, density and imaging interval. Do not pool unlike preparations into one default.</li>
+        <li><strong>Track development over time.</strong> Annotate somata, axons, dendrites, branch births and losses, extension/retraction velocities, turning angles and contact outcomes. Retain failed and stalled trajectories.</li>
+        <li><strong>Constrain mechanisms.</strong> Obtain membrane-area or tension measurements where feasible, actin-flow or traction measurements, and microtubule-state measurements. Morphology alone cannot uniquely identify all mechanical coefficients.</li>
+        <li><strong>Fit and test separately.</strong> Fit a limited parameter set to one subset of experiments, lock the model, and evaluate held-out cells, times and perturbations. Report residuals and uncertainty rather than only representative images.</li>
+        <li><strong>Validate the environment and the connection claim.</strong> Repeat the process for each context. Add paired electrophysiology or appropriately controlled functional imaging before assigning functional synapses to geometric appositions.</li>
+      </ol>
+      <p>A useful first acceptance target is simultaneous agreement with extension-speed distributions, branch lifetimes, Sholl profiles and encounter outcomes. Matching only total length is underconstrained: multiple wrong combinations of growth and retraction can produce the same length.</p>
+    </section>
+
+    <section id="references">
+      <h2>09 / Primary-source register</h2>
+      <p>These sources support specific mechanisms and interpretation boundaries. None independently validates this entire simulator.</p>
+      {references.map(r=><section class="source" id={r.id}><p class="eyebrow">{r.author}</p><h3><a href={r.url}>{r.title}</a></h3><p>{r.scope}</p><p class="doi">DOI {r.doi}</p></section>)}
+    </section>
+    <p class="return"><a href="/simulations/cell-growth/">Return to the Cell Growth Lab →</a></p>
+  </article>
+</Layout>
+
+<style>
+  @font-face{font-family:"Cell Schoolbook";src:url('/fonts/urw-base35/C059-Roman.otf') format('opentype');font-weight:400;font-display:swap}
+  @font-face{font-family:"Cell Schoolbook";src:url('/fonts/urw-base35/C059-Bold.otf') format('opentype');font-weight:700;font-display:swap}
+  @font-face{font-family:"Cell Schoolbook";src:url('/fonts/urw-base35/C059-Italic.otf') format('opentype');font-style:italic;font-weight:400;font-display:swap}
+  @font-face{font-family:"Cell Gothic";src:url('/fonts/urw-base35/URWGothic-Demi.otf') format('opentype');font-weight:600 800;font-display:swap}
+  .cg-methods{max-width:1050px;margin:40px auto 70px;color:var(--text);font:16px "Cell Schoolbook",serif;--cg-rule:color-mix(in srgb,var(--text) 28%,transparent)}
+  .cg-methods *{box-sizing:border-box;letter-spacing:0!important;line-height:1.42!important}
+  .cg-methods p{font-family:"Cell Schoolbook",serif;text-align:left;text-shadow:none;margin:13px 0}
+  .cg-methods h1,.cg-methods h2,.cg-methods h3{font-family:"Cell Gothic",sans-serif!important;font-style:normal;text-transform:none!important;text-align:left!important;line-height:1.15!important}
+  .cg-methods h1{font-size:clamp(34px,4vw,54px);margin:15px 0 12px}
+  .cg-methods h2{font-size:25px;margin:0 0 18px}
+  .cg-methods h3{font-size:18px;margin:25px 0 12px}
+  .cg-methods .eyebrow{font-family:"Cell Gothic",sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:.13em!important;color:var(--muted)}
+  .cg-methods .lead{font-size:20px;font-style:italic;color:var(--muted);max-width:65ch}
+  .cg-methods-heading{padding-bottom:25px;border-bottom:2px solid var(--text)}
+  .cg-methods nav{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:25px;font-family:"Cell Gothic",sans-serif;font-size:11px}
+  .cg-methods>section{border-bottom:1px solid var(--cg-rule);padding:30px 0;scroll-margin-top:24px}
+  .cg-methods>section.callout{border:1px solid var(--cg-rule);border-left:3px solid var(--accent);padding:20px 24px;margin:30px 0 0;background:color-mix(in srgb,var(--paper) 90%,var(--accent))}
+  .cg-methods .callout h2{font-size:20px;margin-bottom:10px}
+  .cg-methods table{width:100%;border-collapse:collapse;font-size:13px;margin:21px 0;text-align:left}
+  .cg-methods th,.cg-methods td{padding:11px 13px;vertical-align:top;border-bottom:1px solid var(--cg-rule);min-width:135px}
+  .cg-methods th{font-family:"Cell Gothic",sans-serif;font-size:11px;border-top:1px solid var(--cg-rule);background:color-mix(in srgb,var(--paper) 85%,var(--accent))}
+  .cg-methods td:first-child{font-family:"Cell Gothic",sans-serif;font-size:12px}
+  .table-scroll{overflow-x:auto}
+  .cg-methods pre{font-family:ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.6!important;border:1px solid var(--cg-rule);padding:18px;background:color-mix(in srgb,var(--paper) 88%,var(--outer));margin:18px 0}
+  .cg-methods code{font-family:ui-monospace,monospace;font-size:12px}
+  .equation-panel{border:1px solid var(--cg-rule);padding:16px 18px;margin:18px 0}
+  .equation-panel>summary{font-family:"Cell Gothic",sans-serif;font-size:13px;cursor:pointer}
+  .equation-panel[open]>summary{margin-bottom:15px}
+  .cg-methods ol{padding-left:22px}.cg-methods li{padding:0 0 13px 5px}
+  .cg-methods .source{padding:16px 0;border-top:1px solid var(--cg-rule);scroll-margin-top:24px}
+  .cg-methods .source h3{font-family:"Cell Schoolbook",serif!important;font-size:18px;margin:8px 0}
+  .cg-methods .source p{font-size:13px;margin:8px 0}
+  .cg-methods .source .eyebrow,.cg-methods .source .doi{font-family:"Cell Gothic",sans-serif;font-size:10px}
+  .cg-methods .doi{color:var(--muted)}
+  .cg-methods .return{font-family:"Cell Gothic",sans-serif;font-size:12px;margin-top:25px}
+  @media(max-width:700px){.cg-methods{margin-top:25px;font-size:15px}.cg-methods h2{font-size:22px}.cg-methods .lead{font-size:18px}.cg-methods .callout{padding:16px}.cg-methods table{min-width:650px}.cg-methods pre{font-size:11px}}
+</style>

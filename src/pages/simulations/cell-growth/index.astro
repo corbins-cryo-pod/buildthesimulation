@@ -1,0 +1,8 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CellGrowthLaboratory from '../../../components/CellGrowthLaboratory.jsx';
+---
+<Layout pageTitle="Cell Growth Laboratory" description="Grow and inspect neurons in a mechanochemical simulation of membranes, cytoskeletons, growth cones and physical encounters across culture plates, 3D microenvironments, regeneration scaffolds and biohybrid interfaces." wide compactHeader>
+  <CellGrowthLaboratory client:load />
+  <noscript><p>The Cell Growth Laboratory requires JavaScript to calculate development and display the growing cells. <a href="/simulations/cell-growth/methods/">Read the model, equations and evidence.</a></p></noscript>
+</Layout>
