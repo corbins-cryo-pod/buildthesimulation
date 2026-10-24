@@ -24,6 +24,8 @@ button, summary, input, select { accent-color: var(--accent); }
 :is(.model-card .eyebrow, .device-directory .familyLabel, .lab-app .lab-kicker, .nd .nd-kicker) { font-style: italic; text-transform: none; letter-spacing: .02em; }
 :is(.content, .guide) :is(h2, h3, h4) { font-family: var(--font-heading); font-weight: 400; }
 :is(.content, .guide) :is(th, td) { overflow-wrap: anywhere; }
+/* Label columns wrap at word boundaries; anywhere would break labels mid-word when the value column is long. */
+:is(.content, .guide) :is(th, td):first-child { overflow-wrap: break-word; }
 @media (max-width: 680px) {
   .device-directory .topRight { flex-wrap: wrap; }
 }
