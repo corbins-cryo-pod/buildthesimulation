@@ -34,6 +34,8 @@ jobs:
         run: node scripts/verify-biohybrid-build.mjs
       - name: Verify Cortex routes and worker artifacts
         run: node scripts/verify-cortex-build.mjs
+      - name: Verify cochlear laboratory routes and numerical worker
+        run: node scripts/verify-cochlear-build.mjs
       - name: Verify Finger Atlas geometry and published assets
         run: node scripts/verify-finger-atlas.mjs --build
       - name: Verify continuous V4 Finger Atlas and lightweight assets
