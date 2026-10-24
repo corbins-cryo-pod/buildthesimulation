@@ -1,6 +1,6 @@
 # Neural Interface Studio v2 reconstruction
 
-Route: `/simulations/neural-interface-studio/` (pending release).
+Route: `/simulations/neural-interface-studio/` (release candidate verified; production deployment recorded in PR #335).
 
 The original Studio source could not be recovered. `recovered-project-v1.json`
 is the surviving unmodified project export with six historical run records.
@@ -40,5 +40,19 @@ micrometres, yielding 10.309 ohm instead of 13.664 ohm at 2 micrometres. The UI
 warns about this. The 1 micrometre reference agrees with 2 micrometres within
 0.5%; arbitrary designs need their own refinement checks.
 
-Do not merge/publish this reconstruction until the pending browser checks are
-resolved. The previously published Microfabrication Laboratory is unchanged.
+## Release verification follow-up, 2026-10-24
+
+- Re-ran all 19 Studio tests successfully (zero failures).
+- Both GitHub verification workflows passed for 901f25c; Cloudflare preview deployed.
+- Preview reference run reproduced 13.664 ohms on all four channels.
+- Conductor SVG download succeeded with the patched helper.
+- Browser import of the preserved v1 project succeeded, retaining all six historical
+  reports and restoring the covered-contact recipe.
+- Responsive CSS reviewed: one-column workspace at 900 px, stacked views and
+  toolbar at 560 px, bounded horizontally scrolling result tables. This browser
+  API does not expose viewport resizing; phone/tablet visual and physical-device
+  checks remain unverified, not counted as passed.
+- User explicitly requested website deployment after the draft status review.
+  Remaining device QA is recorded as a release limitation.
+
+The previously published Microfabrication Laboratory is unchanged.
