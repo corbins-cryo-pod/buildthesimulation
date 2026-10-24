@@ -1,0 +1,42 @@
+{
+  "release": "opto-lab/0.2.0",
+  "date": "2026-10-24",
+  "publication": "Local review only; no remote writes",
+  "recoveredArtifact": "optogenetics-laboratory.html from user Library, not distributed unchanged",
+  "sourceModel": {
+    "id": "allen-human-571654895/1",
+    "commit": "750e7840cc1a9eb32492c924e79609a85a893b8a",
+    "sourceHashesAsRecordedInRecoveredAsset": {
+      "571654895.swc": "7ebb04f256f67f1ff9952fbb38889bfea481a59dd6cb2f0d70a41d3dd138d90a",
+      "optim_param_571654895.json": "c4333a5cc294fa0288698ccbff9d3059c9b1cc9942a79c8594e6add0bd325304",
+      "NaV.mod": "635605ba861c070f8fdc273365f3a0fca6eee24762afc9b102161fdd6e9cfc42",
+      "Ih.mod": "8616325d83add9a1a6546972352b4a62e57095ba25f3c6b5a57ab8b397e2d662",
+      "Im.mod": "e1c3bfb2186439bdb963ff2c53268efb824d8e00401aef0a14b7d2234071bb2c",
+      "K_Pst.mod": "79a56f1ffbcbdb8c82409cb9d1b84ed2bd5b0cb796b342446ba7d8ed8e0b6eb8",
+      "K_Tst.mod": "80b178e71783216f9c50c8503b105cbfe1c302d95613e5b55bb8a8aed331b206",
+      "Kv3_1.mod": "e636c3437a9d9ccb69a0a7efc09fcfe1f16ad97f0468615b70fdbc352fe0855c",
+      "Ca_HVA.mod": "021d34cf9ef3e76b0f2afee1a1eeab40eed56d0d3b1362b7e1019f4433273c71",
+      "Ca_LVA.mod": "a7a9ef262541dc96f5d19afd97778f9320808d01ce397350f1f2be3db30f920f",
+      "SK.mod": "079f1e3cac7444696d480b8e02853b215cd93e0c7b9986dbb54925fc49eddbeb",
+      "CaDynamics.mod": "f012def9758f7d0244b81c54291edea6597c15fad99b9f7b5725b121a3567f16"
+    },
+    "neuronVersionAsRecordedInRecoveredAsset": "9.0.1",
+    "freshSWCOrNEURONRun": false
+  },
+  "priorCortexSnapshot": "98ae75a826a536293158637360b173460f877602",
+  "retainedCellAssetSha256": "ed3059462e0bf25ca27d18e76219932e4fb3da4e0a98e9b7e8c1080dfca72359",
+  "retainedOpticalModuleSha256": "fef430058e6755794d830f34ce511379321e24528eb67d210b0c78c6ef1b4d26",
+  "currentIndependentReferences": [
+    "SciPy DOP853 channel ODE integration",
+    "Independent sparse frozen-state voltage matrix assembly and SuperLU solve"
+  ],
+  "notRecovered": [
+    "Original Monte Carlo generator",
+    "Raw independent photon-seed tallies",
+    "Original geometry generator and unmodified SWC/NMODL files as separate artifacts"
+  ],
+  "fonts": "CSS local() requests and system fallbacks only; no binary font files",
+  "license": "Allen Institute Software License; see docs/LICENSE-Allen.txt",
+  "chromiumTestMethod": "Playwright set_content, real Blob worker; not file-launch verification",
+  "recoveredArtifactSha256": "946188138a3c0ebfc44d98f5a9f18c8d5114aa7a9349507c3bf9a587bed3ebc1"
+}

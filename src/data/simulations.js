@@ -17,6 +17,7 @@ export const simulationGroups = [
   {
     "title": "Neural Interface Laboratories",
     "entries": [
+      {"href":"/simulations/optogenetics/","title":"Optogenetics Laboratory","desc":"Explore light delivery, ChR2 kinetics and reconstructed human-neuron responses. Compare expression patterns, photocurrents, pulse trains and response maps."},
       {
         "href": "/simulations/rpni-design/",
         "title": "RPNI Design & Testing Laboratory",

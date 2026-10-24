@@ -1,0 +1,115 @@
+{
+  "part": "core",
+  "browser": "144.0.7559.96",
+  "execution": "Playwright set_content, inline Blob worker; direct file/http navigation not exercised in policy-restricted review container",
+  "passed": 21,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Single-pulse browser solve",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "211 membrane compartments and 75 junctions",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Replay light is on during pulse",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Replay light is off after pulse",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Pulse event table from actual events",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "CSV contains all saved frames",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "JSON retains compartment recordings",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Reported bytes equal typed recording arrays",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Setup includes model provenance",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Parameter edit clears stale pulse table",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Parameter edit clears stale recording, retains baseline",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Setup JSON round trip",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Invalid import rejected without replacing setup",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cancel terminates calculation and leaves no stale result",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Run works after cancellation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Section-specific expression picks actual section",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Fiber target and local-exposure matching",
+      "passed": true,
+      "details": "1.000 mW/mm\u00b2 \u00b7 preview"
+    },
+    {
+      "name": "Ideal channel assay stays at requested holding voltage",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "State occupancy displayed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "No uncaught browser exceptions",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "No runtime network resource requests",
+      "passed": true,
+      "details": []
+    }
+  ],
+  "elapsedSeconds": 9.738540410995483
+}

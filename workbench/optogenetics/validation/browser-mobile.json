@@ -1,0 +1,53 @@
+{
+  "part": "mobile",
+  "browser": "144.0.7559.96",
+  "execution": "Playwright set_content, inline Blob worker; direct file/http navigation not exercised in policy-restricted review container",
+  "passed": 8,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Mobile controls disclose",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Mobile viewport has no document horizontal overflow",
+      "passed": true,
+      "details": {
+        "scroll": 390,
+        "width": 390
+      }
+    },
+    {
+      "name": "Dark appearance toggles",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Evidence accessible on mobile",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Evidence mobile no overflow",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Mobile map panel no document overflow",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "No uncaught browser exceptions",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "No runtime network resource requests",
+      "passed": true,
+      "details": []
+    }
+  ],
+  "elapsedSeconds": 1.4963209629058838
+}

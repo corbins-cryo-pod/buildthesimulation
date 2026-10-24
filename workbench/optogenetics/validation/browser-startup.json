@@ -1,0 +1,35 @@
+{
+  "part": "startup",
+  "browser": "144.0.7559.96",
+  "execution": "Playwright set_content; unmodified autostart and inline Blob worker",
+  "passed": 5,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Unmodified startup autocalculates",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Default browser train has three exactly-one events",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Current validation ledger embedded",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "No uncaught startup exceptions",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "No startup HTTP(S) requests",
+      "passed": true,
+      "details": []
+    }
+  ],
+  "elapsedSeconds": 13.176088809967041
+}

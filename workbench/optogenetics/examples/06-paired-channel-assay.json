@@ -1,0 +1,39 @@
+{
+  "schema": "opto-lab-setup/1",
+  "modelVersion": "opto-lab/0.2.0",
+  "modelId": "allen-human-571654895/1",
+  "sourceCommit": "750e7840cc1a9eb32492c924e79609a85a893b8a",
+  "config": {
+    "mode": "clamp",
+    "protocol": "paired",
+    "durationMs": 250,
+    "onsetMs": 30,
+    "pulseWidthMs": 20,
+    "frequencyHz": 20,
+    "trainDurationMs": 150,
+    "pairGapMs": 50,
+    "expression": "all",
+    "expressionSectionId": null,
+    "conductanceDensityScm2": 0.00035,
+    "clampMv": -60,
+    "dtMs": 0.005,
+    "sampleMs": 0.25,
+    "segmentLengthUm": 40,
+    "light": {
+      "kind": "uniform",
+      "irradianceMwMm2": 1,
+      "powerMw": 0.05,
+      "positionUm": [
+        -150,
+        0,
+        0
+      ],
+      "targetUm": [
+        0,
+        0,
+        0
+      ],
+      "wavelengthNm": 470
+    }
+  }
+}

@@ -1,0 +1,290 @@
+
+> buildthesimulation-optogenetics-review@0.2.0 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: default configuration validated with 0.005 ms solver step
+ok 1 - default configuration validated with 0.005 ms solver step
+  ---
+  duration_ms: 3.066254
+  type: 'test'
+  ...
+# Subtest: malformed configurations are rejected
+ok 2 - malformed configurations are rejected
+  ---
+  duration_ms: 0.562392
+  type: 'test'
+  ...
+# Subtest: source kernel limitations are enforced
+ok 3 - source kernel limitations are enforced
+  ---
+  duration_ms: 0.355075
+  type: 'test'
+  ...
+# Subtest: zero-axis fiber rejected
+ok 4 - zero-axis fiber rejected
+  ---
+  duration_ms: 0.14819
+  type: 'test'
+  ...
+# Subtest: clamp canonicalizes illumination and distribution
+ok 5 - clamp canonicalizes illumination and distribution
+  ---
+  duration_ms: 0.294966
+  type: 'test'
+  ...
+# Subtest: pulse intervals have exact half-open boundaries
+ok 6 - pulse intervals have exact half-open boundaries
+  ---
+  duration_ms: 1.240845
+  type: 'test'
+  ...
+# Subtest: train contains complete pulses only
+ok 7 - train contains complete pulses only
+  ---
+  duration_ms: 0.248096
+  type: 'test'
+  ...
+# Subtest: paired gap is dark interval, not onset-to-onset interval
+ok 8 - paired gap is dark interval, not onset-to-onset interval
+  ---
+  duration_ms: 0.121289
+  type: 'test'
+  ...
+# Subtest: invalid pulse program rejected rather than clipped
+ok 9 - invalid pulse program rejected rather than clipped
+  ---
+  duration_ms: 0.3857
+  type: 'test'
+  ...
+# Subtest: back-to-back train has continuous drive but distinct protocol intervals
+ok 10 - back-to-back train has continuous drive but distinct protocol intervals
+  ---
+  duration_ms: 0.321245
+  type: 'test'
+  ...
+# Subtest: a burst cannot masquerade as three followed pulses
+ok 11 - a burst cannot masquerade as three followed pulses
+  ---
+  duration_ms: 7.084967
+  type: 'test'
+  ...
+# Subtest: one-to-one association is half open at next onset
+ok 12 - one-to-one association is half open at next onset
+  ---
+  duration_ms: 0.465058
+  type: 'test'
+  ...
+# Subtest: events after association windows are explicitly extra
+ok 13 - events after association windows are explicitly extra
+  ---
+  duration_ms: 0.326583
+  type: 'test'
+  ...
+# Subtest: no-spike latency is null, not zero
+ok 14 - no-spike latency is null, not zero
+  ---
+  duration_ms: 0.46623
+  type: 'test'
+  ...
+# Subtest: documented meshes are retained
+ok 15 - documented meshes are retained
+  ---
+  duration_ms: 0.447251
+  type: 'test'
+  ...
+# Subtest: tree ordering and geometry are numerically valid
+ok 16 - tree ordering and geometry are numerically valid
+  ---
+  duration_ms: 2.634987
+  type: 'test'
+  ...
+# Subtest: zero-area junctions cannot express opsin
+ok 17 - zero-area junctions cannot express opsin
+  ---
+  duration_ms: 0.319392
+  type: 'test'
+  ...
+# Subtest: anatomical expression selectors are distinct
+ok 18 - anatomical expression selectors are distinct
+  ---
+  duration_ms: 0.10149
+  type: 'test'
+  ...
+# Subtest: section-restricted expression persists across meshes
+ok 19 - section-restricted expression persists across meshes
+  ---
+  duration_ms: 0.342447
+  type: 'test'
+  ...
+# Subtest: invalid section selection rejected early
+ok 20 - invalid section selection rejected early
+  ---
+  duration_ms: 0.098787
+  type: 'test'
+  ...
+# Subtest: dark ChR2 stays in dark-closed state
+ok 21 - dark ChR2 stays in dark-closed state
+  ---
+  duration_ms: 4.166902
+  type: 'test'
+  ...
+# Subtest: ChR2 probabilities nonnegative and normalized through bright pulses and recovery
+ok 22 - ChR2 probabilities nonnegative and normalized through bright pulses and recovery
+  ---
+  duration_ms: 14.26879
+  type: 'test'
+  ...
+# Subtest: invalid opsin steps rejected
+ok 23 - invalid opsin steps rejected
+  ---
+  duration_ms: 0.400762
+  type: 'test'
+  ...
+# Subtest: published current factor remains finite at zero mV
+ok 24 - published current factor remains finite at zero mV
+  ---
+  duration_ms: 0.090884
+  type: 'test'
+  ...
+# Subtest: tangent conductance is analytic derivative
+ok 25 - tangent conductance is analytic derivative
+  ---
+  duration_ms: 0.246695
+  type: 'test'
+  ...
+# Subtest: zero expression removes current without redefining illumination
+ok 26 - zero expression removes current without redefining illumination
+  ---
+  duration_ms: 3.657719
+  type: 'test'
+  ...
+# Subtest: irradiance sampling is uniform in prescribed uniform mode
+ok 27 - irradiance sampling is uniform in prescribed uniform mode
+  ---
+  duration_ms: 0.314816
+  type: 'test'
+  ...
+# Subtest: fiber field scales linearly with emitted optical power
+ok 28 - fiber field scales linearly with emitted optical power
+  ---
+  duration_ms: 1.090923
+  type: 'test'
+  ...
+# Subtest: fiber exposure rigid-translation invariant
+ok 29 - fiber exposure rigid-translation invariant
+  ---
+  duration_ms: 4.402099
+  type: 'test'
+  ...
+# Subtest: fiber exposure rigid-rotation invariant
+ok 30 - fiber exposure rigid-rotation invariant
+  ---
+  duration_ms: 0.637734
+  type: 'test'
+  ...
+# Subtest: stored optical boundaries explicit and interpolation nonnegative
+ok 31 - stored optical boundaries explicit and interpolation nonnegative
+  ---
+  duration_ms: 0.246445
+  type: 'test'
+  ...
+# Subtest: kernel-integrated absorption matches retained tally
+ok 32 - kernel-integrated absorption matches retained tally
+  ---
+  duration_ms: 4.193721
+  type: 'test'
+  ...
+# Subtest: source geometry refuses mismatched kernel geometry
+ok 33 - source geometry refuses mismatched kernel geometry
+  ---
+  duration_ms: 0.204973
+  type: 'test'
+  ...
+# Subtest: sweep parses finite unique bounded lists
+ok 34 - sweep parses finite unique bounded lists
+  ---
+  duration_ms: 1.184201
+  type: 'test'
+  ...
+# Subtest: sweep creates isolated uniform trials preserving expression and step
+ok 35 - sweep creates isolated uniform trials preserving expression and step
+  ---
+  duration_ms: 0.440211
+  type: 'test'
+  ...
+# Subtest: sweep capacity is bounded
+ok 36 - sweep capacity is bounded
+  ---
+  duration_ms: 0.17585
+  type: 'test'
+  ...
+# Subtest: full 250 ms default train: three distinct events and exact protocol dose
+ok 37 - full 250 ms default train: three distinct events and exact protocol dose
+  ---
+  duration_ms: 14939.252971
+  type: 'test'
+  ...
+# Subtest: zero-light control: no spikes, no current, resting voltage retained
+ok 38 - zero-light control: no spikes, no current, resting voltage retained
+  ---
+  duration_ms: 3672.77353
+  type: 'test'
+  ...
+# Subtest: zero-expression control: same membrane trajectory as zero light
+ok 39 - zero-expression control: same membrane trajectory as zero light
+  ---
+  duration_ms: 1433.352575
+  type: 'test'
+  ...
+# Subtest: single pulse and repeated runs are deterministic, including cached dark conditioning
+ok 40 - single pulse and repeated runs are deterministic, including cached dark conditioning
+  ---
+  duration_ms: 3582.776924
+  type: 'test'
+  ...
+# Subtest: fiber movement updates local exposure and actual computed currents
+ok 41 - fiber movement updates local exposure and actual computed currents
+  ---
+  duration_ms: 3516.642064
+  type: 'test'
+  ...
+# Subtest: apical expression: nonexpressing soma has no photocurrent but can have membrane response
+ok 42 - apical expression: nonexpressing soma has no photocurrent but can have membrane response
+  ---
+  duration_ms: 1579.284414
+  type: 'test'
+  ...
+# Subtest: ideal clamp: exact holding voltage and complete state trajectories
+ok 43 - ideal clamp: exact holding voltage and complete state trajectories
+  ---
+  duration_ms: 5.787008
+  type: 'test'
+  ...
+# Subtest: unsupported section and excessive local exposure fail rather than silently substituting a model
+ok 44 - unsupported section and excessive local exposure fail rather than silently substituting a model
+  ---
+  duration_ms: 0.440642
+  type: 'test'
+  ...
+# Subtest: 32 independent ChR2 reference protocols at 0.01 ms
+ok 45 - 32 independent ChR2 reference protocols at 0.01 ms
+  ---
+  duration_ms: 186.804912
+  type: 'test'
+  ...
+# Subtest: 32 independent ChR2 reference protocols at 0.005 ms
+ok 46 - 32 independent ChR2 reference protocols at 0.005 ms
+  ---
+  duration_ms: 331.085191
+  type: 'test'
+  ...
+1..46
+# tests 46
+# suites 0
+# pass 46
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 28867.241804

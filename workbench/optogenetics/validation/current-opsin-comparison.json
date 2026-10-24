@@ -1,0 +1,22 @@
+{
+  "referenceMethod": "SciPy solve_ivp DOP853; separate published RHS; rtol=2e-12, atol=2e-14; exact restart at pulse edges; max_step=0.5 ms",
+  "scope": "Independent numerical integration of the same published equations, not biological validation.",
+  "results": [
+    {
+      "dtMs": 0.01,
+      "cases": 32,
+      "maxStateError": 0.0000010627897343296056,
+      "maxCurrentErrorNaPerUs": 0.00005547574126630456,
+      "maxProbabilityError": 3.3306690738754696e-16,
+      "minProbability": 0
+    },
+    {
+      "dtMs": 0.005,
+      "cases": 32,
+      "maxStateError": 2.6569846600654756e-7,
+      "maxCurrentErrorNaPerUs": 0.000013869006184661426,
+      "maxProbabilityError": 2.220446049250313e-16,
+      "minProbability": 0
+    }
+  ]
+}
