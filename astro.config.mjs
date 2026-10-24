@@ -37,8 +37,8 @@ export default defineConfig({
     '/devices/54-seven-dof-arm-collinger-2013': '/applications/54-seven-dof-arm-collinger-2013/',
     '/devices/57-neuralink-prime-enrollment': '/applications/57-neuralink-prime-enrollment/',
     '/devices/62-stentrode-switch-study': '/applications/62-stentrode-switch-study/',
-    '/simulations/interface-designer': '/devices/designer/',
-    '/simulations/interface-designer/guide': '/devices/designer/guide/',
+    '/devices/designer': '/simulations/interface-designer/',
+    '/devices/designer/guide': '/simulations/interface-designer/guide/',
   },
   vite: {
     // Explicit host for the managed development preview; production is static.

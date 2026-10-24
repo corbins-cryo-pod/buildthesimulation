@@ -68,7 +68,7 @@ export async function buildDiscoveryIndex() {
       ['Peripheral Nerve Regeneration Laboratory', '/simulations/nerve-regeneration/', 'Degeneration, repair, axon growth, remyelination and reproducible experiments', 'peripheral nerve regeneration Schwann myelin Wallerian conduit graft axon repair'],
       ['Nerve Regeneration Model and Evidence', '/simulations/nerve-regeneration/methods/', 'Equations, primary studies, assumptions and numerical verification', 'nerve regeneration methods evidence sources validation equations'],
       ['Peripheral nerve sandbox', '/sim/', 'Nerve cross-sections and pulses', 'peripheral nerve cuff simulation'],
-      ['Neural interface designer', '/devices/designer/', 'Electrode geometry and routing', 'design electrode layout exports'],
+      ['Neural interface designer', '/simulations/interface-designer/', 'Electrode geometry and routing', 'design electrode layout exports'],
       ['3D model finder', '/devices/models/', 'Reference hardware geometry', 'models inspect implants'],
     ].map(([title, href, summary, keywords]) => ({
       type: 'Tools', title, href, detail: 'Interactive tool', summary, keywords: [keywords],
