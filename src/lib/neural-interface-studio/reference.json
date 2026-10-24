@@ -1,0 +1,322 @@
+{
+  "design": {
+    "id": "reference-strip",
+    "name": "Four-channel reference",
+    "revision": 1,
+    "units": "um",
+    "outline": [
+      [
+        160,
+        12
+      ],
+      [
+        296,
+        120
+      ],
+      [
+        296,
+        976
+      ],
+      [
+        24,
+        976
+      ],
+      [
+        24,
+        120
+      ]
+    ],
+    "sites": [
+      {
+        "id": "E01",
+        "shape": "circle",
+        "x": 64,
+        "y": 170,
+        "w": 48,
+        "h": 48,
+        "inner": 0,
+        "rotation": 0,
+        "netId": "N01"
+      },
+      {
+        "id": "E02",
+        "shape": "circle",
+        "x": 128,
+        "y": 170,
+        "w": 48,
+        "h": 48,
+        "inner": 0,
+        "rotation": 0,
+        "netId": "N02"
+      },
+      {
+        "id": "E03",
+        "shape": "circle",
+        "x": 192,
+        "y": 170,
+        "w": 48,
+        "h": 48,
+        "inner": 0,
+        "rotation": 0,
+        "netId": "N03"
+      },
+      {
+        "id": "E04",
+        "shape": "circle",
+        "x": 256,
+        "y": 170,
+        "w": 48,
+        "h": 48,
+        "inner": 0,
+        "rotation": 0,
+        "netId": "N04"
+      }
+    ],
+    "pads": [
+      {
+        "id": "P01",
+        "shape": "rect",
+        "x": 64,
+        "y": 900,
+        "w": 44,
+        "h": 72,
+        "inner": 0,
+        "rotation": 0,
+        "netId": "N01"
+      },
+      {
+        "id": "P02",
+        "shape": "rect",
+        "x": 128,
+        "y": 900,
+        "w": 44,
+        "h": 72,
+        "inner": 0,
+        "rotation": 0,
+        "netId": "N02"
+      },
+      {
+        "id": "P03",
+        "shape": "rect",
+        "x": 192,
+        "y": 900,
+        "w": 44,
+        "h": 72,
+        "inner": 0,
+        "rotation": 0,
+        "netId": "N03"
+      },
+      {
+        "id": "P04",
+        "shape": "rect",
+        "x": 256,
+        "y": 900,
+        "w": 44,
+        "h": 72,
+        "inner": 0,
+        "rotation": 0,
+        "netId": "N04"
+      }
+    ],
+    "traces": [
+      {
+        "id": "T01",
+        "netId": "N01",
+        "width": 12,
+        "points": [
+          [
+            64,
+            170
+          ],
+          [
+            64,
+            900
+          ]
+        ]
+      },
+      {
+        "id": "T02",
+        "netId": "N02",
+        "width": 12,
+        "points": [
+          [
+            128,
+            170
+          ],
+          [
+            128,
+            900
+          ]
+        ]
+      },
+      {
+        "id": "T03",
+        "netId": "N03",
+        "width": 12,
+        "points": [
+          [
+            192,
+            170
+          ],
+          [
+            192,
+            900
+          ]
+        ]
+      },
+      {
+        "id": "T04",
+        "netId": "N04",
+        "width": 12,
+        "points": [
+          [
+            256,
+            170
+          ],
+          [
+            256,
+            900
+          ]
+        ]
+      }
+    ],
+    "openings": [
+      {
+        "id": "O01",
+        "shape": "circle",
+        "x": 64,
+        "y": 170,
+        "w": 36,
+        "h": 36,
+        "inner": 0,
+        "rotation": 0,
+        "targetId": "E01",
+        "kind": "site"
+      },
+      {
+        "id": "OP01",
+        "shape": "rect",
+        "x": 64,
+        "y": 900,
+        "w": 36,
+        "h": 56,
+        "inner": 0,
+        "rotation": 0,
+        "targetId": "P01",
+        "kind": "pad"
+      },
+      {
+        "id": "O02",
+        "shape": "circle",
+        "x": 128,
+        "y": 170,
+        "w": 36,
+        "h": 36,
+        "inner": 0,
+        "rotation": 0,
+        "targetId": "E02",
+        "kind": "site"
+      },
+      {
+        "id": "OP02",
+        "shape": "rect",
+        "x": 128,
+        "y": 900,
+        "w": 36,
+        "h": 56,
+        "inner": 0,
+        "rotation": 0,
+        "targetId": "P02",
+        "kind": "pad"
+      },
+      {
+        "id": "O03",
+        "shape": "circle",
+        "x": 192,
+        "y": 170,
+        "w": 36,
+        "h": 36,
+        "inner": 0,
+        "rotation": 0,
+        "targetId": "E03",
+        "kind": "site"
+      },
+      {
+        "id": "OP03",
+        "shape": "rect",
+        "x": 192,
+        "y": 900,
+        "w": 36,
+        "h": 56,
+        "inner": 0,
+        "rotation": 0,
+        "targetId": "P03",
+        "kind": "pad"
+      },
+      {
+        "id": "O04",
+        "shape": "circle",
+        "x": 256,
+        "y": 170,
+        "w": 36,
+        "h": 36,
+        "inner": 0,
+        "rotation": 0,
+        "targetId": "E04",
+        "kind": "site"
+      },
+      {
+        "id": "OP04",
+        "shape": "rect",
+        "x": 256,
+        "y": 900,
+        "w": 36,
+        "h": 56,
+        "inner": 0,
+        "rotation": 0,
+        "targetId": "P04",
+        "kind": "pad"
+      }
+    ],
+    "nets": [
+      {
+        "id": "N01",
+        "siteId": "E01",
+        "padId": "P01"
+      },
+      {
+        "id": "N02",
+        "siteId": "E02",
+        "padId": "P02"
+      },
+      {
+        "id": "N03",
+        "siteId": "E03",
+        "padId": "P03"
+      },
+      {
+        "id": "N04",
+        "siteId": "E04",
+        "padId": "P04"
+      }
+    ]
+  },
+  "recipe": {
+    "baseThicknessUm": 10,
+    "metalThicknessUm": 0.2,
+    "topThicknessUm": 10,
+    "resistThicknessUm": 2,
+    "undercutUm": 1.2,
+    "depositionAngleDeg": 6,
+    "lithographyBiasUm": 0,
+    "overlayXUm": 0,
+    "overlayYUm": 0,
+    "overlayRotationDeg": 0,
+    "etchTimeMin": 12,
+    "etchRateUmMin": 1,
+    "maskThicknessUm": 6,
+    "etchSelectivity": 3,
+    "lateralRatio": 0.04,
+    "resistivityOhmM": 4.88e-08
+  }
+}

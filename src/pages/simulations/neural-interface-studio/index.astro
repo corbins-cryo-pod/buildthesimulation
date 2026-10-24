@@ -1,0 +1,8 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import NeuralInterfaceStudio from '../../../components/NeuralInterfaceStudio.jsx';
+---
+<Layout pageTitle="Neural Interface Studio" description="Design flexible neural electrodes, fabricate them in a digital cleanroom, and inspect connectivity, exposed contacts and sheet resistance." wide compactHeader>
+  <NeuralInterfaceStudio client:load />
+  <noscript>This interactive laboratory requires JavaScript. <a href="/simulations/neural-interface-studio/methods/">Read the model and verification notes.</a></noscript>
+</Layout>
