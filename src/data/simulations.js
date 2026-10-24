@@ -3,6 +3,11 @@ export const simulationGroups = [
     "title": "Design & Microfabrication",
     "entries": [
       {
+        "href": "/simulations/interface-designer/",
+        "title": "Neural Interface Designer",
+        "desc": "Create micrometer-scale electrode layouts with circle, square and ring contacts, array patterns, automatic lead routing and physical-scale exports."
+      },
+      {
         "href": "/simulations/neural-interface-studio/",
         "title": "Neural Interface Studio",
         "desc": "Design neural electrodes, fabricate them in a digital cleanroom, inspect connectivity and sheet resistance, and compare replayable runs."
