@@ -1,0 +1,981 @@
+[
+  {
+    "name": "Default train, current 0.005 ms timestep",
+    "config": {
+      "mode": "neuron",
+      "protocol": "train",
+      "durationMs": 250,
+      "onsetMs": 30,
+      "pulseWidthMs": 5,
+      "frequencyHz": 20,
+      "trainDurationMs": 150,
+      "pairGapMs": 50,
+      "expression": "all",
+      "expressionSectionId": null,
+      "conductanceDensityScm2": 0.00035,
+      "clampMv": -60,
+      "dtMs": 0.005,
+      "sampleMs": 0.25,
+      "segmentLengthUm": 40,
+      "light": {
+        "kind": "uniform",
+        "irradianceMwMm2": 1,
+        "powerMw": 0.05,
+        "positionUm": [
+          -150,
+          0,
+          0
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "wavelengthNm": 470
+      }
+    },
+    "spikes": [
+      {
+        "timeMs": 35.964709213729435,
+        "compartmentId": "soma[0]:0"
+      },
+      {
+        "timeMs": 85.12496436093123,
+        "compartmentId": "soma[0]:0"
+      },
+      {
+        "timeMs": 135.41236373120813,
+        "compartmentId": "soma[0]:0"
+      }
+    ],
+    "metrics": {
+      "pulseCount": 3,
+      "matchedPulses": 3,
+      "missedPulses": 0,
+      "extraEvents": 0,
+      "exactlyOnePulses": 3,
+      "exactlyOneFraction": 1,
+      "followingFraction": 1,
+      "meanLatencyMs": 5.5006791019562655,
+      "latencySdMs": 0.3484657400501567,
+      "associations": [
+        {
+          "pulse": 1,
+          "onsetMs": 30,
+          "windowEndMs": 50,
+          "eventTimeMs": 35.964709213729435,
+          "latencyMs": 5.964709213729435,
+          "matched": true,
+          "eventCount": 1,
+          "extraCount": 0
+        },
+        {
+          "pulse": 2,
+          "onsetMs": 80,
+          "windowEndMs": 100,
+          "eventTimeMs": 85.12496436093123,
+          "latencyMs": 5.12496436093123,
+          "matched": true,
+          "eventCount": 1,
+          "extraCount": 0
+        },
+        {
+          "pulse": 3,
+          "onsetMs": 130,
+          "windowEndMs": 150,
+          "eventTimeMs": 135.41236373120813,
+          "latencyMs": 5.412363731208131,
+          "matched": true,
+          "eventCount": 1,
+          "extraCount": 0
+        }
+      ],
+      "convention": "First upward −25 mV soma event in [onset, min(onset + 20 ms, next onset)); one-to-one temporal association, not proof of causation. Other events are extra events."
+    },
+    "diagnostics": {
+      "temperatureC": 34,
+      "conditioningMs": 100,
+      "outputBytes": 4619472,
+      "integrationSteps": 50000,
+      "maximumKclResidualNa": 2.014926420157437e-12,
+      "maximumLinearizedCurrentErrorNa": 0.0000829017020858129,
+      "maximumTruePhotocurrentNa": 0.0944965416477977,
+      "peakVoltageMv": 21.117038454276397,
+      "minVoltageMv": -93.89022301211699,
+      "peakInwardPhotocurrentNa": -1.5320244543287267,
+      "sourceEnergyUj": null,
+      "photonDoseScaleMs": 15,
+      "clampPatchAreaUm2": null,
+      "opticalKernelOutsideCount": 0,
+      "limitations": [
+        "Published human dendrites and fitted membrane channels; synthetic 60 µm axon stub. No complete human axon or independent optical-response validation.",
+        "ChR2 expression density and localization are user assumptions, not measurements from this specimen.",
+        "Selected mesh refinement (40 → 20 µm) shifted a single-pulse spike by 0.220 ms and changed soma waveform RMS by 2.80 mV. Thresholds and full traces are not globally mesh-converged.",
+        "Fixed 34 °C membrane mechanisms; one-photon 470 nm ChR2(H134R) only. No heating, synapses, detector electronics, or trial noise.",
+        "The Williams fit was characterized at −80 to −10 mV and 0.34–5.5 mW/mm², with temperature scaling fitted at 22 and 37 °C. This neuron's resting and action-potential voltages include mathematical extrapolation outside that voltage range."
+      ],
+      "conditioning": "computed",
+      "initialSomaVoltageMv": -92.26390815576467,
+      "spikeCount": 3,
+      "maxLocalLightMwMm2": 1,
+      "computationMs": 11723.185445000001,
+      "minimumProbability": 1.4323527136193827e-8,
+      "maximumProbabilitySumError": 1.1102230246251565e-16,
+      "opsinExtrapolation": {
+        "voltageFitRangeMv": [
+          -80,
+          -10
+        ],
+        "irradianceFitRangeMwMm2": [
+          0.34,
+          5.5
+        ],
+        "appliedCurrentFactorAtZeroMv": -4,
+        "statement": "Fit retained exactly, including voltage extrapolation and photon-loss factor 1.3. Not an experimentally calibrated optical threshold."
+      },
+      "eventDefinition": "Upward soma crossing of −25 mV, interpolated at integration resolution, with a 2 ms event refractory interval.",
+      "outputConvention": "States at saved physical times; lightDrive is right-continuous. Pulses split integration timesteps at their exact boundaries. Instantaneous nonlinear photocurrent is evaluated from saved channel state and voltage.",
+      "operatorConvention": "Native membrane state at t drives backward-Euler voltage at t+dt; opsin and native gates then advance using new voltage. ChR2 current is tangent-linearized at old voltage; its maximum current discrepancy is reported."
+    }
+  },
+  {
+    "name": "Zero light",
+    "config": {
+      "mode": "neuron",
+      "protocol": "single",
+      "durationMs": 80,
+      "onsetMs": 20,
+      "pulseWidthMs": 5,
+      "frequencyHz": 20,
+      "trainDurationMs": 150,
+      "pairGapMs": 50,
+      "expression": "all",
+      "expressionSectionId": null,
+      "conductanceDensityScm2": 0.00035,
+      "clampMv": -60,
+      "dtMs": 0.01,
+      "sampleMs": 0.25,
+      "segmentLengthUm": 40,
+      "light": {
+        "kind": "uniform",
+        "irradianceMwMm2": 0,
+        "powerMw": 0.05,
+        "positionUm": [
+          -150,
+          0,
+          0
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "wavelengthNm": 470
+      }
+    },
+    "spikes": [],
+    "metrics": {
+      "pulseCount": 1,
+      "matchedPulses": 0,
+      "missedPulses": 1,
+      "extraEvents": 0,
+      "exactlyOnePulses": 0,
+      "exactlyOneFraction": 0,
+      "followingFraction": 0,
+      "meanLatencyMs": null,
+      "latencySdMs": null,
+      "associations": [
+        {
+          "pulse": 1,
+          "onsetMs": 20,
+          "windowEndMs": 40,
+          "eventTimeMs": null,
+          "latencyMs": null,
+          "matched": false,
+          "eventCount": 0,
+          "extraCount": 0
+        }
+      ],
+      "convention": "First upward −25 mV soma event in [onset, min(onset + 20 ms, next onset)); one-to-one temporal association, not proof of causation. Other events are extra events."
+    },
+    "diagnostics": {
+      "temperatureC": 34,
+      "conditioningMs": 100,
+      "outputBytes": 1486032,
+      "integrationSteps": 8000,
+      "maximumKclResidualNa": 1.4478165845030477e-12,
+      "maximumLinearizedCurrentErrorNa": 0,
+      "maximumTruePhotocurrentNa": 0,
+      "peakVoltageMv": -92.26392886364616,
+      "minVoltageMv": -92.67952839141387,
+      "peakInwardPhotocurrentNa": 0,
+      "sourceEnergyUj": null,
+      "photonDoseScaleMs": 5,
+      "clampPatchAreaUm2": null,
+      "opticalKernelOutsideCount": 0,
+      "limitations": [
+        "Published human dendrites and fitted membrane channels; synthetic 60 µm axon stub. No complete human axon or independent optical-response validation.",
+        "ChR2 expression density and localization are user assumptions, not measurements from this specimen.",
+        "Selected mesh refinement (40 → 20 µm) shifted a single-pulse spike by 0.220 ms and changed soma waveform RMS by 2.80 mV. Thresholds and full traces are not globally mesh-converged.",
+        "Fixed 34 °C membrane mechanisms; one-photon 470 nm ChR2(H134R) only. No heating, synapses, detector electronics, or trial noise.",
+        "The Williams fit was characterized at −80 to −10 mV and 0.34–5.5 mW/mm², with temperature scaling fitted at 22 and 37 °C. This neuron's resting and action-potential voltages include mathematical extrapolation outside that voltage range."
+      ],
+      "conditioning": "computed",
+      "initialSomaVoltageMv": -92.26375612578317,
+      "spikeCount": 0,
+      "maxLocalLightMwMm2": 0,
+      "computationMs": 2633.109058,
+      "minimumProbability": 0,
+      "maximumProbabilitySumError": 0,
+      "opsinExtrapolation": {
+        "voltageFitRangeMv": [
+          -80,
+          -10
+        ],
+        "irradianceFitRangeMwMm2": [
+          0.34,
+          5.5
+        ],
+        "appliedCurrentFactorAtZeroMv": -4,
+        "statement": "Fit retained exactly, including voltage extrapolation and photon-loss factor 1.3. Not an experimentally calibrated optical threshold."
+      },
+      "eventDefinition": "Upward soma crossing of −25 mV, interpolated at integration resolution, with a 2 ms event refractory interval.",
+      "outputConvention": "States at saved physical times; lightDrive is right-continuous. Pulses split integration timesteps at their exact boundaries. Instantaneous nonlinear photocurrent is evaluated from saved channel state and voltage.",
+      "operatorConvention": "Native membrane state at t drives backward-Euler voltage at t+dt; opsin and native gates then advance using new voltage. ChR2 current is tangent-linearized at old voltage; its maximum current discrepancy is reported."
+    }
+  },
+  {
+    "name": "Zero opsin expression",
+    "config": {
+      "mode": "neuron",
+      "protocol": "single",
+      "durationMs": 80,
+      "onsetMs": 20,
+      "pulseWidthMs": 5,
+      "frequencyHz": 20,
+      "trainDurationMs": 150,
+      "pairGapMs": 50,
+      "expression": "all",
+      "expressionSectionId": null,
+      "conductanceDensityScm2": 0,
+      "clampMv": -60,
+      "dtMs": 0.01,
+      "sampleMs": 0.25,
+      "segmentLengthUm": 40,
+      "light": {
+        "kind": "uniform",
+        "irradianceMwMm2": 1,
+        "powerMw": 0.05,
+        "positionUm": [
+          -150,
+          0,
+          0
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "wavelengthNm": 470
+      }
+    },
+    "spikes": [],
+    "metrics": {
+      "pulseCount": 1,
+      "matchedPulses": 0,
+      "missedPulses": 1,
+      "extraEvents": 0,
+      "exactlyOnePulses": 0,
+      "exactlyOneFraction": 0,
+      "followingFraction": 0,
+      "meanLatencyMs": null,
+      "latencySdMs": null,
+      "associations": [
+        {
+          "pulse": 1,
+          "onsetMs": 20,
+          "windowEndMs": 40,
+          "eventTimeMs": null,
+          "latencyMs": null,
+          "matched": false,
+          "eventCount": 0,
+          "extraCount": 0
+        }
+      ],
+      "convention": "First upward −25 mV soma event in [onset, min(onset + 20 ms, next onset)); one-to-one temporal association, not proof of causation. Other events are extra events."
+    },
+    "diagnostics": {
+      "temperatureC": 34,
+      "conditioningMs": 100,
+      "outputBytes": 1486032,
+      "integrationSteps": 8000,
+      "maximumKclResidualNa": 1.4478165845030477e-12,
+      "maximumLinearizedCurrentErrorNa": 0,
+      "maximumTruePhotocurrentNa": 0,
+      "peakVoltageMv": -92.26392886364616,
+      "minVoltageMv": -92.67952839141387,
+      "peakInwardPhotocurrentNa": 0,
+      "sourceEnergyUj": null,
+      "photonDoseScaleMs": 5,
+      "clampPatchAreaUm2": null,
+      "opticalKernelOutsideCount": 0,
+      "limitations": [
+        "Published human dendrites and fitted membrane channels; synthetic 60 µm axon stub. No complete human axon or independent optical-response validation.",
+        "ChR2 expression density and localization are user assumptions, not measurements from this specimen.",
+        "Selected mesh refinement (40 → 20 µm) shifted a single-pulse spike by 0.220 ms and changed soma waveform RMS by 2.80 mV. Thresholds and full traces are not globally mesh-converged.",
+        "Fixed 34 °C membrane mechanisms; one-photon 470 nm ChR2(H134R) only. No heating, synapses, detector electronics, or trial noise.",
+        "The Williams fit was characterized at −80 to −10 mV and 0.34–5.5 mW/mm², with temperature scaling fitted at 22 and 37 °C. This neuron's resting and action-potential voltages include mathematical extrapolation outside that voltage range."
+      ],
+      "conditioning": "reused identical state",
+      "initialSomaVoltageMv": -92.26375612578317,
+      "spikeCount": 0,
+      "maxLocalLightMwMm2": 1,
+      "computationMs": 1022.7697250000001,
+      "minimumProbability": 0,
+      "maximumProbabilitySumError": 0,
+      "opsinExtrapolation": {
+        "voltageFitRangeMv": [
+          -80,
+          -10
+        ],
+        "irradianceFitRangeMwMm2": [
+          0.34,
+          5.5
+        ],
+        "appliedCurrentFactorAtZeroMv": -4,
+        "statement": "Fit retained exactly, including voltage extrapolation and photon-loss factor 1.3. Not an experimentally calibrated optical threshold."
+      },
+      "eventDefinition": "Upward soma crossing of −25 mV, interpolated at integration resolution, with a 2 ms event refractory interval.",
+      "outputConvention": "States at saved physical times; lightDrive is right-continuous. Pulses split integration timesteps at their exact boundaries. Instantaneous nonlinear photocurrent is evaluated from saved channel state and voltage.",
+      "operatorConvention": "Native membrane state at t drives backward-Euler voltage at t+dt; opsin and native gates then advance using new voltage. ChR2 current is tangent-linearized at old voltage; its maximum current discrepancy is reported."
+    }
+  },
+  {
+    "name": "Single pulse",
+    "config": {
+      "mode": "neuron",
+      "protocol": "single",
+      "durationMs": 80,
+      "onsetMs": 20,
+      "pulseWidthMs": 5,
+      "frequencyHz": 20,
+      "trainDurationMs": 150,
+      "pairGapMs": 50,
+      "expression": "all",
+      "expressionSectionId": null,
+      "conductanceDensityScm2": 0.00035,
+      "clampMv": -60,
+      "dtMs": 0.01,
+      "sampleMs": 0.25,
+      "segmentLengthUm": 40,
+      "light": {
+        "kind": "uniform",
+        "irradianceMwMm2": 1,
+        "powerMw": 0.05,
+        "positionUm": [
+          -150,
+          0,
+          0
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "wavelengthNm": 470
+      }
+    },
+    "spikes": [
+      {
+        "timeMs": 25.945420185710137,
+        "compartmentId": "soma[0]:0"
+      }
+    ],
+    "metrics": {
+      "pulseCount": 1,
+      "matchedPulses": 1,
+      "missedPulses": 0,
+      "extraEvents": 0,
+      "exactlyOnePulses": 1,
+      "exactlyOneFraction": 1,
+      "followingFraction": 1,
+      "meanLatencyMs": 5.945420185710137,
+      "latencySdMs": null,
+      "associations": [
+        {
+          "pulse": 1,
+          "onsetMs": 20,
+          "windowEndMs": 40,
+          "eventTimeMs": 25.945420185710137,
+          "latencyMs": 5.945420185710137,
+          "matched": true,
+          "eventCount": 1,
+          "extraCount": 0
+        }
+      ],
+      "convention": "First upward −25 mV soma event in [onset, min(onset + 20 ms, next onset)); one-to-one temporal association, not proof of causation. Other events are extra events."
+    },
+    "diagnostics": {
+      "temperatureC": 34,
+      "conditioningMs": 100,
+      "outputBytes": 1486032,
+      "integrationSteps": 8000,
+      "maximumKclResidualNa": 1.3304964768812155e-12,
+      "maximumLinearizedCurrentErrorNa": 0.0002172599726494428,
+      "maximumTruePhotocurrentNa": 0.09443594228864884,
+      "peakVoltageMv": 20.497071985941112,
+      "minVoltageMv": -92.51102048087378,
+      "peakInwardPhotocurrentNa": -1.5083811440533936,
+      "sourceEnergyUj": null,
+      "photonDoseScaleMs": 5,
+      "clampPatchAreaUm2": null,
+      "opticalKernelOutsideCount": 0,
+      "limitations": [
+        "Published human dendrites and fitted membrane channels; synthetic 60 µm axon stub. No complete human axon or independent optical-response validation.",
+        "ChR2 expression density and localization are user assumptions, not measurements from this specimen.",
+        "Selected mesh refinement (40 → 20 µm) shifted a single-pulse spike by 0.220 ms and changed soma waveform RMS by 2.80 mV. Thresholds and full traces are not globally mesh-converged.",
+        "Fixed 34 °C membrane mechanisms; one-photon 470 nm ChR2(H134R) only. No heating, synapses, detector electronics, or trial noise.",
+        "The Williams fit was characterized at −80 to −10 mV and 0.34–5.5 mW/mm², with temperature scaling fitted at 22 and 37 °C. This neuron's resting and action-potential voltages include mathematical extrapolation outside that voltage range."
+      ],
+      "conditioning": "reused identical state",
+      "initialSomaVoltageMv": -92.26375612578317,
+      "spikeCount": 1,
+      "maxLocalLightMwMm2": 1,
+      "computationMs": 1465.314166000002,
+      "minimumProbability": 0.000011861909254104792,
+      "maximumProbabilitySumError": 1.1102230246251565e-16,
+      "opsinExtrapolation": {
+        "voltageFitRangeMv": [
+          -80,
+          -10
+        ],
+        "irradianceFitRangeMwMm2": [
+          0.34,
+          5.5
+        ],
+        "appliedCurrentFactorAtZeroMv": -4,
+        "statement": "Fit retained exactly, including voltage extrapolation and photon-loss factor 1.3. Not an experimentally calibrated optical threshold."
+      },
+      "eventDefinition": "Upward soma crossing of −25 mV, interpolated at integration resolution, with a 2 ms event refractory interval.",
+      "outputConvention": "States at saved physical times; lightDrive is right-continuous. Pulses split integration timesteps at their exact boundaries. Instantaneous nonlinear photocurrent is evaluated from saved channel state and voltage.",
+      "operatorConvention": "Native membrane state at t drives backward-Euler voltage at t+dt; opsin and native gates then advance using new voltage. ChR2 current is tangent-linearized at old voltage; its maximum current discrepancy is reported."
+    }
+  },
+  {
+    "name": "Deterministic repeat",
+    "config": {
+      "mode": "neuron",
+      "protocol": "single",
+      "durationMs": 80,
+      "onsetMs": 20,
+      "pulseWidthMs": 5,
+      "frequencyHz": 20,
+      "trainDurationMs": 150,
+      "pairGapMs": 50,
+      "expression": "all",
+      "expressionSectionId": null,
+      "conductanceDensityScm2": 0.00035,
+      "clampMv": -60,
+      "dtMs": 0.01,
+      "sampleMs": 0.25,
+      "segmentLengthUm": 40,
+      "light": {
+        "kind": "uniform",
+        "irradianceMwMm2": 1,
+        "powerMw": 0.05,
+        "positionUm": [
+          -150,
+          0,
+          0
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "wavelengthNm": 470
+      }
+    },
+    "spikes": [
+      {
+        "timeMs": 25.945420185710137,
+        "compartmentId": "soma[0]:0"
+      }
+    ],
+    "metrics": {
+      "pulseCount": 1,
+      "matchedPulses": 1,
+      "missedPulses": 0,
+      "extraEvents": 0,
+      "exactlyOnePulses": 1,
+      "exactlyOneFraction": 1,
+      "followingFraction": 1,
+      "meanLatencyMs": 5.945420185710137,
+      "latencySdMs": null,
+      "associations": [
+        {
+          "pulse": 1,
+          "onsetMs": 20,
+          "windowEndMs": 40,
+          "eventTimeMs": 25.945420185710137,
+          "latencyMs": 5.945420185710137,
+          "matched": true,
+          "eventCount": 1,
+          "extraCount": 0
+        }
+      ],
+      "convention": "First upward −25 mV soma event in [onset, min(onset + 20 ms, next onset)); one-to-one temporal association, not proof of causation. Other events are extra events."
+    },
+    "diagnostics": {
+      "temperatureC": 34,
+      "conditioningMs": 100,
+      "outputBytes": 1486032,
+      "integrationSteps": 8000,
+      "maximumKclResidualNa": 1.3304964768812155e-12,
+      "maximumLinearizedCurrentErrorNa": 0.0002172599726494428,
+      "maximumTruePhotocurrentNa": 0.09443594228864884,
+      "peakVoltageMv": 20.497071985941112,
+      "minVoltageMv": -92.51102048087378,
+      "peakInwardPhotocurrentNa": -1.5083811440533936,
+      "sourceEnergyUj": null,
+      "photonDoseScaleMs": 5,
+      "clampPatchAreaUm2": null,
+      "opticalKernelOutsideCount": 0,
+      "limitations": [
+        "Published human dendrites and fitted membrane channels; synthetic 60 µm axon stub. No complete human axon or independent optical-response validation.",
+        "ChR2 expression density and localization are user assumptions, not measurements from this specimen.",
+        "Selected mesh refinement (40 → 20 µm) shifted a single-pulse spike by 0.220 ms and changed soma waveform RMS by 2.80 mV. Thresholds and full traces are not globally mesh-converged.",
+        "Fixed 34 °C membrane mechanisms; one-photon 470 nm ChR2(H134R) only. No heating, synapses, detector electronics, or trial noise.",
+        "The Williams fit was characterized at −80 to −10 mV and 0.34–5.5 mW/mm², with temperature scaling fitted at 22 and 37 °C. This neuron's resting and action-potential voltages include mathematical extrapolation outside that voltage range."
+      ],
+      "conditioning": "reused identical state",
+      "initialSomaVoltageMv": -92.26375612578317,
+      "spikeCount": 1,
+      "maxLocalLightMwMm2": 1,
+      "computationMs": 1434.4503110000005,
+      "minimumProbability": 0.000011861909254104792,
+      "maximumProbabilitySumError": 1.1102230246251565e-16,
+      "opsinExtrapolation": {
+        "voltageFitRangeMv": [
+          -80,
+          -10
+        ],
+        "irradianceFitRangeMwMm2": [
+          0.34,
+          5.5
+        ],
+        "appliedCurrentFactorAtZeroMv": -4,
+        "statement": "Fit retained exactly, including voltage extrapolation and photon-loss factor 1.3. Not an experimentally calibrated optical threshold."
+      },
+      "eventDefinition": "Upward soma crossing of −25 mV, interpolated at integration resolution, with a 2 ms event refractory interval.",
+      "outputConvention": "States at saved physical times; lightDrive is right-continuous. Pulses split integration timesteps at their exact boundaries. Instantaneous nonlinear photocurrent is evaluated from saved channel state and voltage.",
+      "operatorConvention": "Native membrane state at t drives backward-Euler voltage at t+dt; opsin and native gates then advance using new voltage. ChR2 current is tangent-linearized at old voltage; its maximum current discrepancy is reported."
+    }
+  },
+  {
+    "name": "Fiber toward soma",
+    "config": {
+      "mode": "neuron",
+      "protocol": "single",
+      "durationMs": 80,
+      "onsetMs": 20,
+      "pulseWidthMs": 5,
+      "frequencyHz": 20,
+      "trainDurationMs": 150,
+      "pairGapMs": 50,
+      "expression": "all",
+      "expressionSectionId": null,
+      "conductanceDensityScm2": 0.00035,
+      "clampMv": -60,
+      "dtMs": 0.01,
+      "sampleMs": 0.25,
+      "segmentLengthUm": 40,
+      "light": {
+        "kind": "fiber",
+        "irradianceMwMm2": 1,
+        "powerMw": 0.05,
+        "positionUm": [
+          -108,
+          -90,
+          51
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "wavelengthNm": 470
+      }
+    },
+    "spikes": [
+      {
+        "timeMs": 27.21865068324211,
+        "compartmentId": "soma[0]:0"
+      }
+    ],
+    "metrics": {
+      "pulseCount": 1,
+      "matchedPulses": 1,
+      "missedPulses": 0,
+      "extraEvents": 0,
+      "exactlyOnePulses": 1,
+      "exactlyOneFraction": 1,
+      "followingFraction": 1,
+      "meanLatencyMs": 7.21865068324211,
+      "latencySdMs": null,
+      "associations": [
+        {
+          "pulse": 1,
+          "onsetMs": 20,
+          "windowEndMs": 40,
+          "eventTimeMs": 27.21865068324211,
+          "latencyMs": 7.21865068324211,
+          "matched": true,
+          "eventCount": 1,
+          "extraCount": 0
+        }
+      ],
+      "convention": "First upward −25 mV soma event in [onset, min(onset + 20 ms, next onset)); one-to-one temporal association, not proof of causation. Other events are extra events."
+    },
+    "diagnostics": {
+      "temperatureC": 34,
+      "conditioningMs": 100,
+      "outputBytes": 1486032,
+      "integrationSteps": 8000,
+      "maximumKclResidualNa": 1.4909636025794981e-12,
+      "maximumLinearizedCurrentErrorNa": 0.0002943184823853539,
+      "maximumTruePhotocurrentNa": 0.17277052240526786,
+      "peakVoltageMv": 22.253808991763478,
+      "minVoltageMv": -92.51085280821421,
+      "peakInwardPhotocurrentNa": -1.2026422292508288,
+      "sourceEnergyUj": 0.25,
+      "photonDoseScaleMs": 5,
+      "clampPatchAreaUm2": null,
+      "opticalKernelOutsideCount": 0,
+      "limitations": [
+        "Published human dendrites and fitted membrane channels; synthetic 60 µm axon stub. No complete human axon or independent optical-response validation.",
+        "ChR2 expression density and localization are user assumptions, not measurements from this specimen.",
+        "Selected mesh refinement (40 → 20 µm) shifted a single-pulse spike by 0.220 ms and changed soma waveform RMS by 2.80 mV. Thresholds and full traces are not globally mesh-converged.",
+        "Fixed 34 °C membrane mechanisms; one-photon 470 nm ChR2(H134R) only. No heating, synapses, detector electronics, or trial noise.",
+        "The Williams fit was characterized at −80 to −10 mV and 0.34–5.5 mW/mm², with temperature scaling fitted at 22 and 37 °C. This neuron's resting and action-potential voltages include mathematical extrapolation outside that voltage range."
+      ],
+      "conditioning": "reused identical state",
+      "initialSomaVoltageMv": -92.26375612578317,
+      "spikeCount": 1,
+      "maxLocalLightMwMm2": 5.189184059730089,
+      "computationMs": 1406.2431610000021,
+      "minimumProbability": 2.1396934935370656e-7,
+      "maximumProbabilitySumError": 1.1102230246251565e-16,
+      "opsinExtrapolation": {
+        "voltageFitRangeMv": [
+          -80,
+          -10
+        ],
+        "irradianceFitRangeMwMm2": [
+          0.34,
+          5.5
+        ],
+        "appliedCurrentFactorAtZeroMv": -4,
+        "statement": "Fit retained exactly, including voltage extrapolation and photon-loss factor 1.3. Not an experimentally calibrated optical threshold."
+      },
+      "eventDefinition": "Upward soma crossing of −25 mV, interpolated at integration resolution, with a 2 ms event refractory interval.",
+      "outputConvention": "States at saved physical times; lightDrive is right-continuous. Pulses split integration timesteps at their exact boundaries. Instantaneous nonlinear photocurrent is evaluated from saved channel state and voltage.",
+      "operatorConvention": "Native membrane state at t drives backward-Euler voltage at t+dt; opsin and native gates then advance using new voltage. ChR2 current is tangent-linearized at old voltage; its maximum current discrepancy is reported."
+    }
+  },
+  {
+    "name": "Moved fiber",
+    "config": {
+      "mode": "neuron",
+      "protocol": "single",
+      "durationMs": 80,
+      "onsetMs": 20,
+      "pulseWidthMs": 5,
+      "frequencyHz": 20,
+      "trainDurationMs": 150,
+      "pairGapMs": 50,
+      "expression": "all",
+      "expressionSectionId": null,
+      "conductanceDensityScm2": 0.00035,
+      "clampMv": -60,
+      "dtMs": 0.01,
+      "sampleMs": 0.25,
+      "segmentLengthUm": 40,
+      "light": {
+        "kind": "fiber",
+        "irradianceMwMm2": 1,
+        "powerMw": 0.05,
+        "positionUm": [
+          -500,
+          -90,
+          51
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "wavelengthNm": 470
+      }
+    },
+    "spikes": [],
+    "metrics": {
+      "pulseCount": 1,
+      "matchedPulses": 0,
+      "missedPulses": 1,
+      "extraEvents": 0,
+      "exactlyOnePulses": 0,
+      "exactlyOneFraction": 0,
+      "followingFraction": 0,
+      "meanLatencyMs": null,
+      "latencySdMs": null,
+      "associations": [
+        {
+          "pulse": 1,
+          "onsetMs": 20,
+          "windowEndMs": 40,
+          "eventTimeMs": null,
+          "latencyMs": null,
+          "matched": false,
+          "eventCount": 0,
+          "extraCount": 0
+        }
+      ],
+      "convention": "First upward −25 mV soma event in [onset, min(onset + 20 ms, next onset)); one-to-one temporal association, not proof of causation. Other events are extra events."
+    },
+    "diagnostics": {
+      "temperatureC": 34,
+      "conditioningMs": 100,
+      "outputBytes": 1486032,
+      "integrationSteps": 8000,
+      "maximumKclResidualNa": 1.3040517016921216e-12,
+      "maximumLinearizedCurrentErrorNa": 1.5789568368063112e-9,
+      "maximumTruePhotocurrentNa": 0.02738286409407994,
+      "peakVoltageMv": -85.81208843179705,
+      "minVoltageMv": -92.51162779097862,
+      "peakInwardPhotocurrentNa": -0.34284556696821566,
+      "sourceEnergyUj": 0.25,
+      "photonDoseScaleMs": 5,
+      "clampPatchAreaUm2": null,
+      "opticalKernelOutsideCount": 0,
+      "limitations": [
+        "Published human dendrites and fitted membrane channels; synthetic 60 µm axon stub. No complete human axon or independent optical-response validation.",
+        "ChR2 expression density and localization are user assumptions, not measurements from this specimen.",
+        "Selected mesh refinement (40 → 20 µm) shifted a single-pulse spike by 0.220 ms and changed soma waveform RMS by 2.80 mV. Thresholds and full traces are not globally mesh-converged.",
+        "Fixed 34 °C membrane mechanisms; one-photon 470 nm ChR2(H134R) only. No heating, synapses, detector electronics, or trial noise.",
+        "The Williams fit was characterized at −80 to −10 mV and 0.34–5.5 mW/mm², with temperature scaling fitted at 22 and 37 °C. This neuron's resting and action-potential voltages include mathematical extrapolation outside that voltage range."
+      ],
+      "conditioning": "reused identical state",
+      "initialSomaVoltageMv": -92.26375612578317,
+      "spikeCount": 0,
+      "maxLocalLightMwMm2": 0.42935013567537994,
+      "computationMs": 1404.424046,
+      "minimumProbability": 4.2887059985387295e-7,
+      "maximumProbabilitySumError": 1.1102230246251565e-16,
+      "opsinExtrapolation": {
+        "voltageFitRangeMv": [
+          -80,
+          -10
+        ],
+        "irradianceFitRangeMwMm2": [
+          0.34,
+          5.5
+        ],
+        "appliedCurrentFactorAtZeroMv": -4,
+        "statement": "Fit retained exactly, including voltage extrapolation and photon-loss factor 1.3. Not an experimentally calibrated optical threshold."
+      },
+      "eventDefinition": "Upward soma crossing of −25 mV, interpolated at integration resolution, with a 2 ms event refractory interval.",
+      "outputConvention": "States at saved physical times; lightDrive is right-continuous. Pulses split integration timesteps at their exact boundaries. Instantaneous nonlinear photocurrent is evaluated from saved channel state and voltage.",
+      "operatorConvention": "Native membrane state at t drives backward-Euler voltage at t+dt; opsin and native gates then advance using new voltage. ChR2 current is tangent-linearized at old voltage; its maximum current discrepancy is reported."
+    }
+  },
+  {
+    "name": "Apical expression",
+    "config": {
+      "mode": "neuron",
+      "protocol": "single",
+      "durationMs": 80,
+      "onsetMs": 20,
+      "pulseWidthMs": 5,
+      "frequencyHz": 20,
+      "trainDurationMs": 150,
+      "pairGapMs": 50,
+      "expression": "apical",
+      "expressionSectionId": null,
+      "conductanceDensityScm2": 0.00035,
+      "clampMv": -60,
+      "dtMs": 0.01,
+      "sampleMs": 0.25,
+      "segmentLengthUm": 40,
+      "light": {
+        "kind": "uniform",
+        "irradianceMwMm2": 1,
+        "powerMw": 0.05,
+        "positionUm": [
+          -150,
+          0,
+          0
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "wavelengthNm": 470
+      }
+    },
+    "spikes": [],
+    "metrics": {
+      "pulseCount": 1,
+      "matchedPulses": 0,
+      "missedPulses": 1,
+      "extraEvents": 0,
+      "exactlyOnePulses": 0,
+      "exactlyOneFraction": 0,
+      "followingFraction": 0,
+      "meanLatencyMs": null,
+      "latencySdMs": null,
+      "associations": [
+        {
+          "pulse": 1,
+          "onsetMs": 20,
+          "windowEndMs": 40,
+          "eventTimeMs": null,
+          "latencyMs": null,
+          "matched": false,
+          "eventCount": 0,
+          "extraCount": 0
+        }
+      ],
+      "convention": "First upward −25 mV soma event in [onset, min(onset + 20 ms, next onset)); one-to-one temporal association, not proof of causation. Other events are extra events."
+    },
+    "diagnostics": {
+      "temperatureC": 34,
+      "conditioningMs": 100,
+      "outputBytes": 1486032,
+      "integrationSteps": 8000,
+      "maximumKclResidualNa": 1.4857004515533845e-12,
+      "maximumLinearizedCurrentErrorNa": 0.00006593998191505674,
+      "maximumTruePhotocurrentNa": 0.03252187630976849,
+      "peakVoltageMv": -79.19140811062175,
+      "minVoltageMv": -92.51129474566322,
+      "peakInwardPhotocurrentNa": -0.9065315064776416,
+      "sourceEnergyUj": null,
+      "photonDoseScaleMs": 5,
+      "clampPatchAreaUm2": null,
+      "opticalKernelOutsideCount": 0,
+      "limitations": [
+        "Published human dendrites and fitted membrane channels; synthetic 60 µm axon stub. No complete human axon or independent optical-response validation.",
+        "ChR2 expression density and localization are user assumptions, not measurements from this specimen.",
+        "Selected mesh refinement (40 → 20 µm) shifted a single-pulse spike by 0.220 ms and changed soma waveform RMS by 2.80 mV. Thresholds and full traces are not globally mesh-converged.",
+        "Fixed 34 °C membrane mechanisms; one-photon 470 nm ChR2(H134R) only. No heating, synapses, detector electronics, or trial noise.",
+        "The Williams fit was characterized at −80 to −10 mV and 0.34–5.5 mW/mm², with temperature scaling fitted at 22 and 37 °C. This neuron's resting and action-potential voltages include mathematical extrapolation outside that voltage range."
+      ],
+      "conditioning": "reused identical state",
+      "initialSomaVoltageMv": -92.26375612578317,
+      "spikeCount": 0,
+      "maxLocalLightMwMm2": 1,
+      "computationMs": 1340.6185719999994,
+      "minimumProbability": 0.000011779745332162552,
+      "maximumProbabilitySumError": 1.1102230246251565e-16,
+      "opsinExtrapolation": {
+        "voltageFitRangeMv": [
+          -80,
+          -10
+        ],
+        "irradianceFitRangeMwMm2": [
+          0.34,
+          5.5
+        ],
+        "appliedCurrentFactorAtZeroMv": -4,
+        "statement": "Fit retained exactly, including voltage extrapolation and photon-loss factor 1.3. Not an experimentally calibrated optical threshold."
+      },
+      "eventDefinition": "Upward soma crossing of −25 mV, interpolated at integration resolution, with a 2 ms event refractory interval.",
+      "outputConvention": "States at saved physical times; lightDrive is right-continuous. Pulses split integration timesteps at their exact boundaries. Instantaneous nonlinear photocurrent is evaluated from saved channel state and voltage.",
+      "operatorConvention": "Native membrane state at t drives backward-Euler voltage at t+dt; opsin and native gates then advance using new voltage. ChR2 current is tangent-linearized at old voltage; its maximum current discrepancy is reported."
+    }
+  },
+  {
+    "name": "Paired-pulse clamp",
+    "config": {
+      "mode": "clamp",
+      "protocol": "paired",
+      "durationMs": 80,
+      "onsetMs": 20,
+      "pulseWidthMs": 5,
+      "frequencyHz": 20,
+      "trainDurationMs": 150,
+      "pairGapMs": 20,
+      "expression": "all",
+      "expressionSectionId": null,
+      "conductanceDensityScm2": 0.00035,
+      "clampMv": -60,
+      "dtMs": 0.01,
+      "sampleMs": 0.25,
+      "segmentLengthUm": 40,
+      "light": {
+        "kind": "uniform",
+        "irradianceMwMm2": 1,
+        "powerMw": 0.05,
+        "positionUm": [
+          -150,
+          0,
+          0
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "wavelengthNm": 470
+      }
+    },
+    "spikes": [],
+    "metrics": null,
+    "diagnostics": {
+      "temperatureC": 34,
+      "conditioningMs": 0,
+      "outputBytes": 28272,
+      "integrationSteps": 8000,
+      "maximumKclResidualNa": 0,
+      "maximumLinearizedCurrentErrorNa": 0,
+      "maximumTruePhotocurrentNa": 0.06167377232370435,
+      "peakVoltageMv": -60,
+      "minVoltageMv": -60,
+      "peakInwardPhotocurrentNa": -0.06167377232370435,
+      "sourceEnergyUj": null,
+      "photonDoseScaleMs": 10,
+      "clampPatchAreaUm2": 843.3559741984596,
+      "opticalKernelOutsideCount": 0,
+      "limitations": [
+        "Ideal isopotential membrane patch with the source soma area; not a space-clamped branched cell. Clamp irradiance is uniform and expression is uniform within this patch.",
+        "Published human dendrites and fitted membrane channels; synthetic 60 µm axon stub. No complete human axon or independent optical-response validation.",
+        "ChR2 expression density and localization are user assumptions, not measurements from this specimen.",
+        "Selected mesh refinement (40 → 20 µm) shifted a single-pulse spike by 0.220 ms and changed soma waveform RMS by 2.80 mV. Thresholds and full traces are not globally mesh-converged.",
+        "Fixed 34 °C membrane mechanisms; one-photon 470 nm ChR2(H134R) only. No heating, synapses, detector electronics, or trial noise.",
+        "The Williams fit was characterized at −80 to −10 mV and 0.34–5.5 mW/mm², with temperature scaling fitted at 22 and 37 °C. This neuron's resting and action-potential voltages include mathematical extrapolation outside that voltage range."
+      ],
+      "initialSomaVoltageMv": -60,
+      "spikeCount": 0,
+      "maxLocalLightMwMm2": 1,
+      "computationMs": 6.022549000001163,
+      "minimumProbability": 0.00035592499061244345,
+      "maximumProbabilitySumError": 0,
+      "opsinExtrapolation": {
+        "voltageFitRangeMv": [
+          -80,
+          -10
+        ],
+        "irradianceFitRangeMwMm2": [
+          0.34,
+          5.5
+        ],
+        "appliedCurrentFactorAtZeroMv": -4,
+        "statement": "Fit retained exactly, including voltage extrapolation and photon-loss factor 1.3. Not an experimentally calibrated optical threshold."
+      },
+      "eventDefinition": "Upward soma crossing of −25 mV, interpolated at integration resolution, with a 2 ms event refractory interval.",
+      "outputConvention": "States at saved physical times; lightDrive is right-continuous. Pulses split integration timesteps at their exact boundaries. Instantaneous nonlinear photocurrent is evaluated from saved channel state and voltage.",
+      "operatorConvention": "Native membrane state at t drives backward-Euler voltage at t+dt; opsin and native gates then advance using new voltage. ChR2 current is tangent-linearized at old voltage; its maximum current discrepancy is reported."
+    }
+  }
+]

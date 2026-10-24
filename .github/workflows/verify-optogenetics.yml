@@ -1,0 +1,27 @@
+name: Verify Optogenetics Laboratory
+on:
+  pull_request:
+    paths:
+      - 'workbench/optogenetics/**'
+      - 'public/simulations/optogenetics/**'
+      - '.github/workflows/verify-optogenetics.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test channel kinetics, optics and active neuron experiments
+        run: node --test workbench/optogenetics/tests/*.test.mjs
+      - name: Verify published HTML matches editable source
+        run: |
+          python3 workbench/optogenetics/tools/build.py
+          cmp workbench/optogenetics/optogenetics-laboratory.html public/simulations/optogenetics/index.html

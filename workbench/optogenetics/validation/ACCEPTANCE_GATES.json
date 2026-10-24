@@ -1,0 +1,15 @@
+{
+  "declared_before_current_comparisons": true,
+  "scope": "Numerical implementation checks, not biological validation.",
+  "opsin_maximum_state_error_dt_0p01": 0.000002,
+  "opsin_maximum_state_error_dt_0p005": 0.000001,
+  "markov_probability_sum_error": 0.00000000001,
+  "optical_absorption_integral_absolute_error": 0.00000001,
+  "cable_KCL_residual_nA": 0.00000001,
+  "independent_linear_solve_max_error_mV": 0.00000001,
+  "default_train_expected_events": 3,
+  "no_light_expected_events": 0,
+  "no_expression_expected_events": 0,
+  "refinement": "Report waveform and spike-time differences. Do not infer global convergence from selected cases.",
+  "browser": "No uncaught application errors; 390px viewport no horizontal document overflow; real input, replay, export, sweep and cancel paths exercised."
+}

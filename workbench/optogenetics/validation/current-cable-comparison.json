@@ -1,0 +1,55 @@
+{
+  "scope": "One frozen-state linear solve, not independent native-channel dynamics or a full optical-neuron reference",
+  "reference": "Independent sparse matrix assembly in Python; SciPy SuperLU solve",
+  "passed": 6,
+  "comparisons": [
+    {
+      "name": "rest-40",
+      "nodes": 286,
+      "maxErrorMv": 2.2737367544323206e-13,
+      "rmsErrorMv": 3.7785724914476064e-14,
+      "maxResidualNa": 1.1368683772161603e-13,
+      "gateMv": 1e-08
+    },
+    {
+      "name": "photocurrent-40",
+      "nodes": 286,
+      "maxErrorMv": 1.9895196601282805e-13,
+      "rmsErrorMv": 3.08519152005453e-14,
+      "maxResidualNa": 2.2737367544323206e-13,
+      "gateMv": 1e-08
+    },
+    {
+      "name": "optical-and-spatial-drive-40",
+      "nodes": 286,
+      "maxErrorMv": 1.9895196601282805e-13,
+      "rmsErrorMv": 2.8458951258255755e-14,
+      "maxResidualNa": 5.684341886080802e-14,
+      "gateMv": 1e-08
+    },
+    {
+      "name": "rest-20",
+      "nodes": 444,
+      "maxErrorMv": 9.947598300641403e-14,
+      "rmsErrorMv": 2.3777395339237556e-14,
+      "maxResidualNa": 7.389644451905042e-13,
+      "gateMv": 1e-08
+    },
+    {
+      "name": "photocurrent-20",
+      "nodes": 444,
+      "maxErrorMv": 2.1316282072803006e-13,
+      "rmsErrorMv": 4.333623282434872e-14,
+      "maxResidualNa": 1.9184653865522705e-13,
+      "gateMv": 1e-08
+    },
+    {
+      "name": "optical-and-spatial-drive-20",
+      "nodes": 444,
+      "maxErrorMv": 2.1316282072803006e-13,
+      "rmsErrorMv": 3.940582939762906e-14,
+      "maxResidualNa": 1.1368683772161603e-13,
+      "gateMv": 1e-08
+    }
+  ]
+}

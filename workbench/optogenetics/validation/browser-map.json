@@ -1,0 +1,70 @@
+{
+  "part": "map",
+  "browser": "144.0.7559.96",
+  "execution": "Playwright set_content, inline Blob worker; direct file/http navigation not exercised in policy-restricted review container",
+  "passed": 12,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Four independent map trials completed",
+      "passed": true,
+      "details": "4 computed trials retained. Select a cell to open its actual voltage, current and compartment recordings."
+    },
+    {
+      "name": "No-light map trials have no spikes",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Map retains actual recordings for every point",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Completed cells are accessible buttons",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Map export contains one configuration per trial",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Selecting map cell opens that exact trace",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Map selection updates experiment controls",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Overlarge maps rejected without starting computation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cancellation retains usable completed map cells",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "Cancelled-map completed trace can be reopened",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "No uncaught browser exceptions",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "No runtime network resource requests",
+      "passed": true,
+      "details": []
+    }
+  ],
+  "elapsedSeconds": 10.839212894439697
+}

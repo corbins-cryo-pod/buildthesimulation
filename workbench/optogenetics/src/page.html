@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="light dark" name="color-scheme"/>
+<title>Optogenetics Laboratory · BuildTheSimulation</title>
+<meta content="A self-contained optical stimulation laboratory: reconstructed human neuron, ChR2(H134R), Monte Carlo fiber illumination, and computed membrane recordings." name="description"/>
+</head>
+<body>
+<nav aria-label="Website navigation" style="padding:10px 20px"><a href="/">BuildTheSimulation</a> · <a href="/simulations/">All simulations</a></nav>
+<div id="lab">
+<header class="masthead">
+<a class="wordmark" href="https://buildthesimulation.com" rel="noopener" target="_blank">BuildTheSimulation</a>
+<span class="edition">Laboratory · review edition 0.2</span>
+<button aria-label="Switch to light appearance" class="quiet" id="theme" type="button">Dark</button>
+</header>
+<div class="title-block">
+<p class="eyebrow">Cellular electrophysiology / optical stimulation</p>
+<h1>OPTOGENETICS LABORATORY</h1>
+<p class="subtitle">Place light. Express channels. Measure the response.</p>
+</div>
+<nav aria-label="Laboratory workspace" class="workspaces">
+<button aria-pressed="true" class="active" id="tab-neuron" type="button">01 <span>Neuron experiment</span></button>
+<button aria-pressed="false" id="tab-clamp" type="button">02 <span>Channel assay</span></button>
+<button aria-pressed="false" id="tab-sweep" type="button">03 <span>Response map</span></button><button aria-pressed="false" id="tab-evidence" type="button">04 <span>Model &amp; evidence</span></button>
+</nav>
+<section aria-labelledby="evidence-title" hidden="" id="evidence-panel">
+<div class="evidence-heading"><p class="eyebrow">Equations, provenance &amp; numerical checks</p><h2 id="evidence-title">What this experiment calculates</h2></div>
+<div class="evidence-grid">
+<article><h3>A reconstructed human cell</h3><p>Allen specimen <strong>571654895</strong>, a human middle temporal gyrus layer-2 spiny cell, with published fitted active membrane parameters. The 40 µm mesh has 211 membrane compartments and 75 zero-area junctions. A 20 µm mesh is available for refinement.</p><p>Dendritic geometry comes from the source reconstruction. The active axon is the source-prescribed <strong>60 µm synthetic stub</strong>. The morphology does not establish a full biological axon or its initiation site.</p><a href="https://github.com/AllenInstitute/Human_all_active_models_EAP" rel="noopener" target="_blank">Allen / Mosher–Wei model source ↗</a></article>
+<article><h3>Light-sensitive membrane current</h3><p>ChR2(H134R) follows the Williams et al. four-state model with its activation variable, voltage dependence, temperature factors, and current–voltage fit. Each expressing membrane compartment has its own state. Conductance density is an <strong>assumed experimental input</strong>, not measured expression in this specimen.</p><p>The source fit was characterized at approximately −80 to −10 mV. This cell rests near −92 mV after conditioning and crosses positive voltages during a spike, so both regions use the mathematical extrapolation. All neuron experiments use 34 °C, matching the native channel model.</p><a href="https://doi.org/10.1371/journal.pcbi.1003220" rel="noopener" target="_blank">Williams et al., 2013 ↗</a></article>
+<article><h3>A computed optical field</h3><p>Uniform illumination provides a controlled local-exposure experiment. The fiber uses a seeded Monte Carlo field for a <strong>100 µm core, NA 0.22, 470 nm</strong> source in homogeneous bulk tissue. Power scales the field; its orientation and position determine compartment exposure.</p><p>There is no tissue surface, implant obstruction, blood-vessel geometry, or thermal solver. The displayed cone indicates source direction; the light overlay samples the computed field.</p><a href="https://doi.org/10.1364/BOE.6.004859" rel="noopener" target="_blank">OptogenSIM optical-property reference ↗</a></article>
+<article><h3>Computed traces and reproducibility</h3><p>Native membrane channels and opsin current enter the compartmental cable solve. The neuron conditions for 100 ms before the displayed experiment. Somatic events are detected at the solver timestep; the replay uses saved samples.</p><p>Each export includes the full experiment configuration. The CSV contains computed traces and local exposure; it is not an experimental recording. Channel assay is one ideal isopotential membrane patch, not a perfect voltage clamp of the branched cell.</p><a href="https://doi.org/10.1016/j.celrep.2020.02.027" rel="noopener" target="_blank">Human-cell model publication ↗</a></article>
+</div>
+<section class="verification"><h3>Verification ledger</h3><div id="validation-summary"></div></section><article class="scope-note"><h3>Optical quantity and calibration boundary</h3><p>The fiber kernel is <strong>scalar fluence rate</strong>, integrated over photon directions, in mW/mm² per mW emitted. It is not directional irradiance at a flat detector. Uniform light is a prescribed local exposure. Passing a diffuse fluence rate to an opsin model characterized with irradiance assumes a matching effective photon exposure; that calibration is not established for this human specimen.</p><p>The original 1.3 photon-loss factor in the Williams fit is retained even with tissue attenuation. Its transfer from channel characterization to tissue fluence is an explicit coupling assumption, not a measured tissue correction. Optical energy and integrated fluence are not tissue temperature or safety estimates.</p><p>The current fit is evaluated as ḡ(O₁ + 0.1 O₂)[10.6408 − 14.6408 exp(V / −42.7671)]. This removes the division by V in the published form. The fitted current is not forced to zero at V = 0; positive-voltage and resting-voltage use is extrapolation.</p></article>
+<p class="scope-note">This is a computational research and learning model. Numerical checks and source attribution are distinct from experimental validation of the combined optical–neuron prediction. Chloride inhibition, other opsins, connected networks, and heating remain separate extensions.</p>
+<details><summary>Attribution and bundled licenses</summary><p>Human neuron data and channel mechanisms: Allen Institute / Mosher, Wei et al.; source commit 750e7840cc1a9eb32492c924e79609a85a893b8a. Cable implementation recovered from the earlier BuildTheSimulation review snapshot (98ae75a826a536293158637360b173460f877602). Allen material has a noncommercial redistribution condition. ChR2 equations: Williams et al. (2013), independently implemented here. Installed C059 / Century Schoolbook and URW Gothic are used when available, with system fallbacks; no font binaries are included. The package contains source, notices and executable numerical tests.</p></details>
+<details><summary>Full Allen Institute license</summary><pre style="white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.5 monospace">Allen Institute Software License - This software license is the 2-clause BSD
+license plus a third clause that prohibits redistribution for commercial
+purposes without further permission.
+
+Copyright 2020. Allen Institute. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice,
+this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the documentation
+and/or other materials provided with the distribution.
+
+3. Redistributions for commercial purposes are not permitted without the
+Allen Institute's written permission.
+For purposes of this license, commercial purposes is the incorporation of the
+Allen Institute's software into anything for which you will charge fees or
+other compensation. Contact terms@alleninstitute.org for commercial licensing
+opportunities.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+</pre></details></section>
+<section aria-labelledby="sweep-title" hidden="" id="sweep-panel">
+<div class="evidence-heading"><p class="eyebrow">Single-neuron response surface</p><h2 id="sweep-title">When does a pulse produce one spike?</h2><p>Scan local light and pulse width. Select a completed cell to inspect its actual compartment recordings.</p></div>
+<div class="sweep-controls"><div><label for="sweep-levels">Local light levels · mW/mm²</label><input autocomplete="off" id="sweep-levels" value="0.2, 1, 5"/></div><div><label for="sweep-widths">Pulse widths · ms</label><input autocomplete="off" id="sweep-widths" value="1, 5, 10"/></div><button class="primary" id="run-sweep" type="button">Calculate response map</button><button hidden="" id="cancel-sweep" type="button">Cancel map</button><button disabled="" id="export-sweep" type="button">Export map · CSV</button></div>
+<p class="fine" id="sweep-contract">Uses the current cell, expression, mesh and timestep. Each trial starts from the same dark-conditioned state. Uniform light, one pulse at 20 ms, at least 50 ms after pulse offset; no trial noise or spike-probability claim. Maximum 16 trials.</p>
+<p aria-live="polite" id="sweep-status" role="status">No response map yet. The main neuron setup supplies expression and numerical settings.</p><div class="table-scroll" id="response-map"></div>
+<p class="sweep-key"><span class="map-none">0 · no event</span><span class="map-one">1 · one event</span><span class="map-many">2+ · multiple events</span><span>Numbers count post-onset somatic threshold crossings in the recorded window.</span></p>
+</section><main id="experiment-panel">
+<div class="experiment-grid">
+<button aria-controls="experiment-controls" aria-expanded="false" class="mobile-controls-toggle" id="toggle-controls" type="button">Experiment controls +</button>
+<aside aria-label="Experiment parameters" class="controls" data-expanded="false" id="experiment-controls">
+<section class="control-section">
+<div class="section-label"><span>01</span><h2>Experiment</h2></div>
+<label for="preset">Starting experiment</label>
+<select id="preset"><option value="pulse">First optical spike</option><option value="train">Follow a pulse train</option><option value="fiber">Fiber aimed at soma</option><option value="pair">Paired-pulse recovery</option><option value="step">Sustained illumination</option><option value="control">No-expression control</option></select>
+<p class="field-note" id="preset-note">Three complete pulses at 20 Hz in the starting setup. Change the controls to test following and extra events.</p>
+<div class="specimen" id="neuron-identity"><span class="tech">Human temporal L2 · 571654895</span><span>Reconstructed dendrites · fitted active channels</span></div>
+<div hidden="" id="clamp-settings"><label for="clamp-mv">Holding voltage <output id="clamp-mv-value">−60 mV</output></label><input id="clamp-mv" max="-10" min="-80" step="5" type="range" value="-60"/><p class="field-note">Ideal 843.36 µm² patch. Uniform local light. 34 °C.</p></div>
+</section>
+<section class="control-section">
+<div class="section-label"><span>02</span><h2>Light delivery</h2></div>
+<div id="source-select"><label for="source">Source</label><select id="source"><option value="uniform">Uniform illumination</option><option value="fiber">Optical fiber · Monte Carlo</option></select></div>
+<div id="uniform-input"><label for="irradiance">Local illumination <output id="irradiance-value">1.00 mW/mm²</output></label><input id="irradiance" max="5.5" min="0" step="0.05" type="range" value="1"/></div>
+<div hidden="" id="fiber-input">
+<label for="power">Emitted optical power <output id="power-value">0.050 mW</output></label><input id="power" max="0.5" min="0" step="0.005" type="range" value="0.05"/>
+<label for="aim">Aim at</label><select id="aim"><option value="soma">Soma</option><option value="apical">Apical dendrite</option><option value="basal">Basal dendrite</option></select>
+<label for="distance">Tip-to-target distance <output id="distance-value">150 µm</output></label><input id="distance" max="600" min="50" step="10" type="range" value="150"/>
+<div class="paired-fields"><div><label for="azimuth">Azimuth <output id="azimuth-value">180°</output></label><input id="azimuth" max="180" min="-180" step="10" type="range" value="-140"/></div><div><label for="elevation">Elevation <output id="elevation-value">0°</output></label><input id="elevation" max="60" min="-60" step="10" type="range" value="20"/></div></div>
+<p class="field-note">100 µm core · NA 0.22 · homogeneous tissue</p>
+</div>
+<div class="spec-row"><span>Wavelength</span><span>470 nm</span></div>
+</section>
+<section class="control-section">
+<div class="section-label"><span>03</span><h2>Opsin expression</h2></div>
+<div class="spec-row"><span>Channel</span><strong>ChR2(H134R)</strong></div>
+<label for="expression">Membrane distribution</label><select id="expression"><option value="all">All membrane compartments</option><option value="soma">Soma only</option><option value="dendrites">Dendrites only</option><option value="apical">Apical dendrites only</option><option value="basal">Basal dendrites only</option><option value="axon">Synthetic axon stub only</option><option value="section">Selected anatomical section</option></select><p class="fine" id="expression-note">Spatial expression is independent of illumination.</p>
+<label for="density">Assumed conductance density <output id="density-value">0.35 mS/cm²</output></label><input id="density" max="5" min="0" step="0.01" type="range" value="1"/><p class="field-note">Zero density provides an opsin-negative control.</p>
+</section>
+<section class="control-section">
+<div class="section-label"><span>04</span><h2>Pulse program</h2></div>
+<label for="protocol">Protocol</label><select id="protocol"><option value="single">Single pulse</option><option value="train">Pulse train</option><option value="paired">Paired pulses</option><option value="step">Sustained step</option></select>
+<label for="width">Pulse / step duration <output id="width-value">5.0 ms</output></label><input id="width" max="50" min="1" step="1" type="range" value="5"/>
+<div id="frequency-field"><label for="frequency">Frequency <output id="frequency-value">20 Hz</output></label><input id="frequency" max="60" min="2" step="1" type="range" value="20"/></div>
+<div hidden="" id="gap-field"><label for="gap">Dark interval <output id="gap-value">50.0 ms</output></label><input id="gap" max="500" min="5" step="5" type="range" value="50"/></div>
+<div class="spec-row"><span>Stimulus onset / record</span><span id="timing-caption">30 / 250 ms</span></div><details class="timing-edit"><summary>Timing &amp; acquisition</summary>
+<label for="onset">Onset <output id="onset-value">30 ms</output></label><input id="onset" max="200" min="0" step="1" type="range" value="30"/>
+<div id="epoch-field"><label for="epoch">Train / step epoch <output id="epoch-value">150 ms</output></label><input id="epoch" max="700" min="1" step="1" type="range" value="150"/></div>
+<label for="record-duration">Recording length <output id="record-duration-value">250 ms</output></label><input id="record-duration" max="1000" min="50" step="10" type="range" value="250"/>
+<p class="fine">Only complete pulses fit into a train. Edges are resolved at the solver timestep; recorded samples may be coarser.</p></details>
+</section>
+<details class="numerics"><summary>Numerical resolution</summary><label for="mesh">Maximum segment length</label><select id="mesh"><option value="40">40 µm · 211 compartments</option><option value="20">20 µm · 369 compartments</option></select><label for="timestep">Integration timestep</label><select id="timestep"><option value="0.01">0.01 ms</option><option value="0.005">0.005 ms · finer</option></select><p class="field-note">Native neuron kinetics: 34 °C. Conditioning: 100 ms. Replay samples: 0.25 ms.</p></details>
+<div class="run-area"><button class="primary" id="run" type="button">Run experiment <span aria-hidden="true">→</span></button><button hidden="" id="cancel" type="button">Cancel calculation</button><div class="progress-track" hidden="" id="progress-track"><div id="progress-fill" style="width: 100%;"></div></div><p aria-live="polite" id="run-status" role="status">Preparing the laboratory…</p><p hidden="" id="error" role="alert"></p></div>
+</aside>
+<div class="workspace">
+<section aria-label="Three-dimensional neuron workspace" class="scene-panel">
+<div class="panel-head"><div><p class="tech" id="scene-kicker">Reconstructed human neuron</p><h2 id="scene-title">Light and membrane</h2></div><div aria-label="Camera view" class="view-buttons" role="group"><button aria-pressed="true" class="quiet" data-view="oblique" type="button">3D</button><button aria-pressed="false" class="quiet" data-view="front" type="button">Front</button><button aria-pressed="false" class="quiet" data-view="side" type="button">Side</button><button class="quiet" id="fit-view" type="button">Fit</button></div></div>
+<div class="scene-toolbar"><label for="overlay">Color by</label><select id="overlay"><option value="voltage">Membrane voltage</option><option value="light">Local light field</option><option value="conductance">Effective opsin opening</option><option value="expression">Opsin distribution</option></select><label class="field-choice"><input id="field-peak" type="checkbox"/> Show peak field</label><span class="state-label" id="scene-state">Setup · no recording</span></div>
+<div class="scene-wrap"><canvas aria-label="Interactive three-dimensional reconstructed human neuron. Drag to orbit; scroll to zoom; select a branch to inspect its computed recording." height="520" id="neuron-scene" style="touch-action: none; cursor: grab;" width="966">Three-dimensional view of the reconstructed human cell.</canvas><div class="scene-help">Drag to orbit · scroll to zoom · click a branch</div><div hidden="" id="scene-scale"></div></div>
+<div class="scene-legend"><div class="legend-gradient voltage" id="legend-gradient" style="background: linear-gradient(90deg, rgb(55, 93, 129), rgb(89, 132, 146), rgb(156, 155, 105), rgb(194, 140, 67), rgb(209, 95, 59), rgb(239, 64, 47));"></div><span id="legend-low">≤ −90</span><span id="legend-label">Membrane voltage · mV</span><span id="legend-high">≥ +40</span></div>
+<div class="geometry-note" id="geometry-note">Physical coordinates · fine branches enlarged · synthetic axon stub · light overlay shows peak exposure</div>
+<div class="replay"><button aria-label="Play computed recording" class="quiet" disabled="" id="play" type="button">Play</button><input aria-label="Recording time" disabled="" id="scrubber" max="1" min="0" step="1" type="range" value="0"/><output id="replay-time">0.00 ms</output><select aria-label="Replay speed" id="speed"><option value="0.05">0.05×</option><option selected="" value="0.1">0.1×</option><option value="0.25">0.25×</option><option value="1">1×</option></select></div>
+<div class="inspection"><label class="tech" for="compartment">Inspect compartment</label><select id="compartment"></select><span id="compartment-value">Run to inspect voltage</span></div><div class="target-actions"><button id="aim-selected" type="button">Aim fiber at this compartment</button><button id="express-selected" type="button">Express this section</button><button id="match-exposure" type="button">Match selected exposure</button><span class="fine">Match uses the uniform-light value as the target at this compartment only.</span></div>
+<div aria-live="polite" class="local-grid" id="local-readouts"><div><span>Local light now</span><strong id="local-light">—</strong></div><div><span>Radiant exposure · full protocol</span><strong id="local-dose">—</strong></div><div><span>Effective opening now</span><strong id="local-open">—</strong></div><div><span>Emitted optical energy</span><strong id="source-energy">—</strong></div></div>
+</section>
+<section aria-label="Experiment results" class="readouts">
+<div><span class="tech" id="metric-a-label">Soma spikes</span><strong id="metric-a">—</strong><span id="metric-a-detail">Upward −25 mV crossing · 2 ms refractory</span></div>
+<div><span class="tech" id="metric-b-label">Pulse association</span><strong id="metric-b">—</strong><span id="metric-b-detail">0 extra events · 20 ms windows</span></div>
+<div><span class="tech" id="metric-c-label">First pulse latency</span><strong id="metric-c">—</strong><span id="metric-c-detail">First associated event after pulse 1</span></div>
+<div><span class="tech" id="metric-d-label">Peak photocurrent</span><strong id="metric-d">—</strong><span id="metric-d-detail">Total inward magnitude · all compartments</span></div>
+</section>
+<section aria-label="Calculated recordings" class="recording-panel">
+<div class="panel-head"><div><p class="tech">Synchronized measurements</p><h2>Recordings</h2></div><button class="quiet" disabled="" id="pin" type="button">Pin baseline</button></div>
+<div class="trace-legend"><span><i class="line-swatch soma"></i>Soma / patch</span><span><i class="line-swatch selected"></i>Selected compartment</span><span hidden="" id="baseline-key"><i class="line-swatch baseline"></i>Pinned baseline <button aria-label="Clear pinned baseline" id="clear-baseline" type="button">×</button></span></div>
+<div aria-label="Programmed illumination trace" class="plot" id="plot-light"></div>
+<div aria-label="Computed photocurrent trace" class="plot" id="plot-photo"></div>
+<div aria-label="Computed membrane voltage trace" class="plot" id="plot-voltage"></div>
+<div aria-label="Somatic spike event raster" class="raster" id="plot-spikes"></div>
+<p class="trace-note" id="trace-note">Run an experiment to calculate membrane voltage and photocurrent.</p><section hidden="" id="channel-states"><h3>Channel-state occupancy</h3><p class="fine">C₁ / O₁ / O₂ / C₂ are probabilities; p is the separate activation variable. Current weights O₂ by 0.1.</p><div class="state-probabilities" id="state-probabilities"></div></section>
+<details class="event-details" id="events-panel"><summary>Pulse-by-pulse outcome</summary><div class="table-scroll"><table><thead><tr><th>Pulse</th><th>Onset · ms</th><th>Events in window</th><th>First latency · ms</th><th>Outcome</th></tr></thead><tbody id="pulse-table-body"></tbody></table></div><p class="fine" id="pulse-table-note"></p></details>
+<details class="diagnostics"><summary>Numerical diagnostics &amp; model warnings</summary><div id="diagnostic-detail"></div></details>
+</section>
+<section aria-label="Save experiment" class="export-bar"><span class="tech">Experiment notebook</span><button id="export-config" type="button">Save setup</button><button id="import-config" type="button">Load setup</button><input accept="application/json,.json" hidden="" id="import-file" type="file"/><button disabled="" id="export-csv" type="button">Export traces · CSV</button><button disabled="" id="export-result" type="button">Export result · JSON</button></section>
+</div>
+</div>
+</main>
+<footer class="footer"><span class="tech">BuildTheSimulation · Optogenetics Laboratory</span><span>Source-linked biophysical model · offline review build</span></footer>
+</div>
+<!-- Code injected by live-server -->
+</body></html>
