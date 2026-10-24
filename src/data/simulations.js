@@ -59,6 +59,11 @@ export const simulationGroups = [
     "title": "Cell Models & Electrophysiology",
     "entries": [
       {
+        "href": "/simulations/cell-growth/",
+        "title": "Cell Growth Laboratory",
+        "desc": "Grow neurons from precursor states through membrane mechanics, cytoskeletal support, branching and physical encounters. Inspect axons and dendrites in culture plates, 3D organoid environments, regeneration scaffolds and biohybrid interfaces."
+      },
+      {
         "href": "/cortex/population/",
         "title": "Cortex Population Laboratory",
         "desc": "Place distinct human neuron models in seeded random distance clouds, shells or grids. Shuffle angles, apply shared electrode stimulation, and inspect population voltage replay and recordings."

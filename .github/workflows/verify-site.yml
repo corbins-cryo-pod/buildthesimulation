@@ -32,6 +32,8 @@ jobs:
         run: npm run build --ignore-scripts
       - name: Verify Biohybrid routes, scientific disclosures and worker artifacts
         run: node scripts/verify-biohybrid-build.mjs
+      - name: Verify Cell Growth Lab routes, worker and numerical evidence
+        run: node scripts/verify-cell-growth-build.mjs
       - name: Verify Cortex routes and worker artifacts
         run: node scripts/verify-cortex-build.mjs
       - name: Verify Finger Atlas geometry and published assets
