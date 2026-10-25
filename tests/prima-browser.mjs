@@ -39,7 +39,7 @@ test('PRIMA browser: real workers, WebGL, seven presets, native editing, files a
   astro.stdout.on('data', value => { serverLog += value; });
   astro.stderr.on('data', value => { serverLog += value; });
   const browser = spawn(chrome, ['--headless=new', '--no-sandbox', '--disable-dev-shm-usage', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', `--remote-debugging-port=${debugPort}`, `--user-data-dir=${profile}`, 'about:blank'], { stdio: 'ignore' });
-  const errors = []; let socket, captureFailure, evaluateFailure;
+  const errors = [], consoleErrors = []; let socket, captureFailure, evaluateFailure, inspectGraphicsFailure;
   try {
     const origin = `http://127.0.0.1:${httpPort}`, url = `${origin}/simulations/retinal-implant/prima/`;
     await until(async () => (await fetch(url)).ok, 45000, 'the PRIMA development route');
@@ -53,6 +53,7 @@ test('PRIMA browser: real workers, WebGL, seven presets, native editing, files a
         const task = pending.get(message.id);
         if (task) { pending.delete(message.id); message.error ? task.reject(new Error(JSON.stringify(message.error))) : task.resolve(message.result); }
       } else if (message.method === 'Runtime.exceptionThrown') errors.push(message.params.exceptionDetails.exception?.description || message.params.exceptionDetails.text);
+      else if (message.method === 'Runtime.consoleAPICalled' && message.params.type === 'error') consoleErrors.push(message.params.args.map(argument => argument.description ?? argument.value ?? argument.type).join(' '));
     });
     const command = (method, params = {}) => new Promise((resolve, reject) => {
       const id = ++counter; pending.set(id, { resolve, reject }); socket.send(JSON.stringify({ id, method, params }));
@@ -63,6 +64,12 @@ test('PRIMA browser: real workers, WebGL, seven presets, native editing, files a
       return result.result.value;
     };
     evaluateFailure = evaluate;
+    const inspectGraphics = () => evaluate(`(() => {
+      const canvas = document.querySelector('[data-prima-webgl]'), host = document.querySelector('.pr-three-host');
+      const box = element => { if (!element) return null; const r = element.getBoundingClientRect(), style = getComputedStyle(element); return {x:r.x,y:r.y,width:r.width,height:r.height,display:style.display,visibility:style.visibility,opacity:style.opacity,connected:element.isConnected}; };
+      return { canvas: box(canvas), host: box(host), buffer: canvas ? {width:canvas.width,height:canvas.height} : null, scene: canvas?.primaSceneDiagnostics ?? null, view: document.querySelector('[data-prima-view][aria-pressed="true"]')?.dataset.primaView, viewport: {width:innerWidth,height:innerHeight,scrollX,scrollY}, documentVisibility:document.visibilityState };
+    })()`);
+    inspectGraphicsFailure = inspectGraphics;
     const click = selector => evaluate(`(() => { const element = document.querySelector(${JSON.stringify(selector)}); if (!element) throw new Error('Missing control: ' + ${JSON.stringify(selector)}); if (element.disabled) throw new Error('Disabled control: ' + ${JSON.stringify(selector)}); element.click(); return true; })()`);
     const setControl = (name, value, event = 'change') => evaluate(`(() => { const element = document.querySelector(${JSON.stringify(`[data-prima-setting="${name}"]`)}); if (!element) throw new Error('Missing setting: ' + ${JSON.stringify(name)}); element.value = ${JSON.stringify(String(value))}; element.dispatchEvent(new Event(${JSON.stringify(event)}, {bubbles:true})); return true; })()`);
     const completedRuns = () => evaluate('window.__primaWorkerAudit.completed');
@@ -184,6 +191,8 @@ test('PRIMA browser: real workers, WebGL, seven presets, native editing, files a
     const pixels = spawnSync('python', ['-c', 'from PIL import Image\nimport sys,json\nim=Image.open(sys.argv[1]).convert("RGB")\ncolors=im.getcolors(im.width*im.height)\nbackground=max(n for n,c in colors)\nprint(json.dumps({"colors":len(colors),"variation":1-background/(im.width*im.height)}))', cropPath], { encoding: 'utf8' });
     assert.equal(pixels.status, 0, pixels.stderr);
     const colorStats = JSON.parse(pixels.stdout);
+    const webglState = await inspectGraphics();
+    writeFileSync(join(artifacts, 'prima-webgl-state.json'), JSON.stringify({ graphics: webglState, runtimeErrors: errors, consoleErrors, colorStats }, null, 2));
     assert(colorStats.colors > 250 && colorStats.variation > .08, `The cropped 3D scene must render implant structure: ${JSON.stringify(colorStats)}`);
     assert(await capture('prima-desktop.png') > 25000);
     await click('[data-prima-scene="projection"]');
@@ -364,11 +373,14 @@ test('PRIMA browser: real workers, WebGL, seven presets, native editing, files a
       initial: base, nativeEdit: edited, staleCanvasChecks: { before: beforeEdit, after: afterEdit }, selectedPixel: selected,
       csv: { fieldRows: fieldRows.length - 1, waveformRows: waveformRows.length - 1 }, presets: presetResults,
       customImage, restored, zeroOpticalDrive, zeroCaption, recovered, webglScreenshot: colorStats,
-      mobile, contextLossFallback: true, workerAudit, runtimeErrors: errors,
+      mobile, contextLossFallback: true, workerAudit, runtimeErrors: errors, consoleErrors, webglState,
     }, null, 2));
   } catch (error) {
     try { await captureFailure?.('prima-failure.png'); } catch {}
-    try { writeFileSync(join(artifacts, 'failure-state.json'), JSON.stringify(await evaluateFailure?.(`({state:document.querySelector('[data-prima-lab]')?.dataset.primaState,status:document.querySelector('.pr-run-status')?.textContent,errors:Array.from(document.querySelectorAll('[role="alert"]'),e=>e.textContent),workers:window.__primaWorkerAudit})`), null, 2)); } catch {}
+    try {
+      const state = await evaluateFailure?.(`({state:document.querySelector('[data-prima-lab]')?.dataset.primaState,status:document.querySelector('.pr-run-status')?.textContent,errors:Array.from(document.querySelectorAll('[role="alert"]'),e=>e.textContent),workers:window.__primaWorkerAudit})`);
+      writeFileSync(join(artifacts, 'failure-state.json'), JSON.stringify({ ...state, graphics: await inspectGraphicsFailure?.(), runtimeErrors: errors, consoleErrors }, null, 2));
+    } catch {}
     writeFileSync(join(artifacts, 'astro.log'), serverLog);
     throw new Error(`${error.stack || error.message}\nAstro log:\n${serverLog.slice(-3500)}`);
   } finally {
