@@ -210,6 +210,11 @@ node scripts/retinal-reference/field_benchmark.mjs
 ```
 
 Python needs NumPy and SciPy; the shared pinned requirements file supplies them.
+The checked-in fixture records the Python major/minor series (`3.12`) and the
+exact NumPy/SciPy versions. Python maintenance-release numbers are excluded from
+that deterministic fixture metadata; the numerical values and comparison
+tolerances are unchanged. Regenerate with the shared pinned requirements so the
+recorded numerical-library versions match those actually used.
 Reference data are independently regenerated rather than copied from the
 implementation being tested. Execution times can vary while numerical fixture
 values remain reproducible within the specified numerical environment.

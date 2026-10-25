@@ -136,7 +136,11 @@ if __name__ == '__main__':
     args = parser.parse_args()
     data = dict(schema='retinal-field-independent-reference-v1', method='Analytical complete-elliptic angular integration and adaptive radial quadrature.',
                 model='Uniform source disks in homogeneous isotropic full space; no insulating backing.', referenceTolerances=dict(absolute=2e-11, relative=2e-11),
-                referenceEnvironment=dict(python=platform.python_version(), numpy=np.__version__, scipy=scipy.__version__), cases=fixtures())
+                # The reproducible fixture identifies the Python language/runtime
+                # series used by CI, while numerical libraries remain exact pins.
+                # A Python maintenance release must not alter numerical evidence
+                # solely by changing a provenance string.
+                referenceEnvironment=dict(python='.'.join(platform.python_version_tuple()[:2]), numpy=np.__version__, scipy=scipy.__version__), cases=fixtures())
     destination = Path(args.output); destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(json.dumps(data, indent=2)+'\n')
     print(f'Wrote {len(data["cases"])} independently computed finite-disk fixtures.')

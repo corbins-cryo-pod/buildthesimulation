@@ -86,9 +86,16 @@ test('retinal browser: native input, scientific workers, WebGL, presets, exports
     for (const id of presetIds) { await click(`[data-ri-preset="${id}"]`); await ready(); const report = await exportJSON(); assert.equal(report.allFinite, true); assert(Math.abs(report.metric.netSourceCurrentUa) < 1e-7); assert(Math.abs(report.metric.netChargeNc) < 1e-7); presetResults.push({ id, settings: report.settings, metrics: report.metric }); }
     assert.equal(presetResults.length, 7);
 
-    // Restore the exported JSON through the actual file input and recompute.
+    // Start dirty so ready() cannot accept the pre-import result while File.text() resolves.
+    const expectedRestore = presetResults.at(-1).settings;
+    const changedGap = expectedRestore.gapUm < 1000 ? expectedRestore.gapUm + 25 : expectedRestore.gapUm - 25;
+    await evaluate(`(() => { const e = document.querySelector('[data-ri-setting="gapUm"]'); e.value=${JSON.stringify(String(changedGap))}; e.dispatchEvent(new Event('input',{bubbles:true})); return true; })()`);
+    assert.equal(await evaluate(`document.querySelector('[data-retinal-lab]').dataset.riState`), 'dirty');
+    assert.equal(await evaluate(`document.querySelector('[data-ri="export-json"]').disabled`), true);
+
+    // Restore the exported JSON through the actual file input and verify every setting.
     await evaluate(`(() => { const file = new File([window.__retinalSavedExperiment], 'retinal-roundtrip.json', {type:'application/json'}); const list = new DataTransfer(); list.items.add(file); const input = document.querySelector('input[type=file]'); input.files=list.files; input.dispatchEvent(new Event('change',{bubbles:true})); return true; })()`); await ready();
-    const restored = await exportJSON(); assert.equal(restored.settings.pattern, presetResults.at(-1).settings.pattern);
+    const restored = await exportJSON(); assert.deepEqual(restored.settings, expectedRestore);
 
     // Blank drive is exactly zero; it must not retain prior maps or a fabricated centroid.
     await click('[data-ri-tab="stimulus"]'); await evaluate(`(() => { const e=document.querySelector('[data-ri-setting="pattern"]'); e.value='blank'; e.dispatchEvent(new Event('change',{bubbles:true})); return true; })()`); await click('[data-ri="run"]'); await ready();
