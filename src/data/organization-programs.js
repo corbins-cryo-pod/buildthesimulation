@@ -1169,5 +1169,17 @@ export default {
         "Noninvasive"
       ]
     }
+  ],
+  "90-coherence-neuro-company-brief": [
+    {
+      "name": "Implantable brain-tumor sensing and neuromodulation",
+      "stage": 3,
+      "regulatory": "R",
+      "evidenceUrl": "https://insidebci.com/market/2026-10-22-coherence-neuro-45-million-openai-startup-fund-founders-fund-brain-tumour-implant/",
+      "notes": "First human use reported as brief intraoperative ECoG recordings in three brain-tumor surgery patients at the Royal Melbourne Hospital (2026); no chronic implant or therapy claim yet.",
+      "interfaces": [
+        "Cortical surface"
+      ]
+    }
   ]
 };

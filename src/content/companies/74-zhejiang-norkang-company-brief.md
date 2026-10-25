@@ -2,9 +2,9 @@
 title: "诺尔康 (Zhejiang Nurotron) (company brief)"
 order: 74
 pubDate: 2026-10-09
-updatedDate: 2026-10-11
-lastVerified: 2026-10-09
-description: "Hangzhou neural-electronics company founded in 2006 that makes cochlear implants and, with Shanghai Ninth People's Hospital, a domestic auditory brainstem implant now in a ChiCTR phase III trial."
+updatedDate: 2026-10-24
+lastVerified: 2026-10-24
+description: "Hangzhou neural-electronics company founded in 2006 that makes cochlear implants; its auditory brainstem implant, developed with Shanghai Ninth People's Hospital, received NMPA approval in October 2026, a Chinese first."
 region: "Chinese"
 kind: "Company"
 website: "https://www.nurotron.com/"
@@ -29,6 +29,14 @@ draft: false
 
 The NF2 auditory brainstem implant registry identifies Wu Hao at Shanghai Ninth People's Hospital as study leader, with sponsor funding and Zhejiang Norkang named as manufacturer in the English record. This is a single-arm phase III protocol; its planned dates do not establish trial completion. Source: [ChiCTR2300070545](https://www.chictr.org.cn/showproj.html?proj=195656).
 
+### NMPA approval (October 2026)
+
+On Oct 20, 2026, the National Medical Products Administration announced approval of Zhejiang Nurotron's "auditory brainstem implant" (听觉脑干植入体) innovative-product registration. Per the regulator's announcement, the product consists of a stimulator, receiver coil, intracranial electrode array, extracranial plate electrode, extracranial ring electrode and internal magnet, and works with the company's cochlear-implant speech processor. It is indicated for prelingually deaf patients aged 2 up to 6 with non-tumor, non-syndromic deafness and severe inner-ear malformation (Michel deformity, common cavity, cochlear aplasia or severe dysplasia) or cochlear-nerve absence that rules out a cochlear implant. The NMPA describes it as China's first ABI and the country's first product performing electrical stimulation and neural-signal extraction in the brainstem region. Sixth Tone's English coverage names the device Nurotron WH-01A and dates the approval Oct 19; the NMPA notice itself is dated Oct 20. Science and Technology Daily reports the registration trial launched in 2022, completed all implant surgeries and follow-up in 2024, and gives a 12-month total effective rate of 96.67% (hospital and company reporting; no data tables published).
+
+- NMPA announcement, reproduced by the China Medical Information Platform (Chinese): <https://www.dayi.org.cn/information/503.html>
+- Sixth Tone (English): <https://www.sixthtone.com/news/1019153>
+- Science and Technology Daily (Chinese): <https://www.stdaily.com/web/gdxw/2026-10/21/content_600099.html>
+
 ### Limits
 
-Product claims above are the company's. The NMPA review notice, the trial results and any approval status are not covered.
+Product claims above are the company's. The special-review notice itself was not opened, and no peer-reviewed trial results or data tables are published; the 96.67% figure is hospital and company reporting.
