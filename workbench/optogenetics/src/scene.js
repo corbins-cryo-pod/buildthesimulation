@@ -1,3 +1,4 @@
+import { basis } from './advanced/optics.js';
 /**
  * Orthographic 3-D viewer for measured neuronal paths.
  * All world coordinates are micrometres. Line widths have a subpixel visibility
@@ -43,7 +44,7 @@ const VOLTAGE_STOPS = [
   const ctx = canvas.getContext('2d', { alpha: false });
   if (!ctx) throw new Error('This browser does not provide the required canvas renderer.');
   const state = {
-    nodes: [], segments: [], values: null, overlay: 'voltage', max: 1,
+    nodes: [], segments: [], device: null, values: null, overlay: 'voltage', max: 1,
     light: { kind: 'uniform', irradianceMwMm2: 1 }, sampler: null,
     selected: 0, theme: 'light', width: 640, height: 440, dpr: 1,
     yaw: -0.31, pitch: 0.18, roll: Math.PI, zoom: 1, baseScale: 1,
@@ -191,6 +192,23 @@ const VOLTAGE_STOPS = [
     ctx.fillText('Fiber tip · 100 µm', tx, ty);
   }
 
+  function drawDevice(pal) {
+    if (!state.device) return;
+    const devices = state.device.emitters ?? [];
+    for (const e of devices) {
+      const b=basis(e.normal,e.rotationDeg??0),p=e.positionUm;
+      const corners=[[-1,-1],[1,-1],[1,1],[-1,1]].map(([x,y])=>project(p.map((v,k)=>v+x*b.u[k]*e.widthUm/2+y*b.v[k]*e.heightUm/2)));
+      const back=corners.map((_,j)=>project(p.map((v,k)=>v+([[-1,-1],[1,-1],[1,1],[-1,1]][j][0])*b.u[k]*e.widthUm/2+([[-1,-1],[1,-1],[1,1],[-1,1]][j][1])*b.v[k]*e.heightUm/2-e.normal[k]*8)));
+      const path=points=>{ctx.beginPath();points.forEach((v,i)=>i?ctx.lineTo(v[0],v[1]):ctx.moveTo(v[0],v[1]));ctx.closePath();};
+      ctx.fillStyle=state.theme==='dark'?'#454943':'#b7beb4';ctx.strokeStyle=pal.ink;ctx.lineWidth=.7;
+      for(let j=0;j<4;j++){path([corners[j],corners[(j+1)%4],back[(j+1)%4],back[j]]);ctx.fill();ctx.stroke();}
+      path(corners);ctx.fillStyle=!e.enabled?'#747971':e.wavelengthNm>550?'#d7835b':'#63a7bd';ctx.globalAlpha=e.enabled?.55+.45*state.fieldDrive:.45;ctx.fill();ctx.globalAlpha=1;ctx.stroke();
+      const q=project(p),tip=project(p.map((v,k)=>v+e.normal[k]*45));ctx.setLineDash([2,3]);ctx.strokeStyle=pal.brass;ctx.beginPath();ctx.moveTo(q[0],q[1]);ctx.lineTo(tip[0],tip[1]);ctx.stroke();ctx.setLineDash([]);
+      ctx.font='10px Arial';ctx.fillStyle=pal.ink;ctx.fillText(e.id,q[0]+8,q[1]-10);
+    }
+    for(const c of state.device.contacts??[]){const q=project(c.positionUm);ctx.strokeStyle=pal.brass;ctx.lineWidth=1.4;ctx.strokeRect(q[0]-3,q[1]-3,6,6);}
+  }
+
   function drawNeuron(pal) {
     const scale = state.baseScale * state.zoom;
     state.projected = state.segments.map((seg) => {
@@ -210,8 +228,8 @@ const VOLTAGE_STOPS = [
       ctx.lineWidth = width;
       ctx.beginPath(); ctx.moveTo(s.pa[0], s.pa[1]); ctx.lineTo(s.pb[0], s.pb[1]); ctx.stroke();
     }
-    const soma = state.nodes.findIndex((n) => n.sectionType === 'soma' && n.areaUm2 > 0);
-    if (soma >= 0) {
+    for (let soma = 0; soma < state.nodes.length; soma++) {
+      if (state.nodes[soma].sectionType !== 'soma' || !(state.nodes[soma].areaUm2 > 0)) continue;
       const n = state.nodes[soma], p = project(n.centerUm), radius = Math.max(3, (n.diameterUm ?? 16) * scale / 2);
       ctx.beginPath(); ctx.arc(p[0], p[1], radius, 0, 2 * Math.PI);
       ctx.fillStyle = overlayColor(state.values?.[soma], state.overlay, { max: state.max, theme: state.theme }); ctx.fill();
@@ -230,9 +248,9 @@ const VOLTAGE_STOPS = [
   function drawChrome(pal) {
     ctx.font = '12px "URW Gothic", "Century Gothic", sans-serif';
     ctx.fillStyle = pal.muted;
-    ctx.fillText(state.light.kind === 'uniform' ? 'Uniform illumination' : (state.field.length && state.fieldVisible ? 'Computed light · soma plane' : 'Fiber orientation guide'), 15, 24);
+    ctx.fillText(state.light.kind === 'uniform' ? 'Uniform illumination' : (state.field.length && state.fieldVisible ? 'Computed light · soma plane' : state.light.kind==='microled'?'Finite emitter array':'Fiber orientation guide'), 15, 24);
     if (state.light.kind !== 'uniform' && state.width > 390) {
-      ctx.textAlign = 'right'; ctx.fillText('Dashed beam: geometry guide', state.width - 15, 24); ctx.textAlign = 'left';
+      ctx.textAlign = 'right'; ctx.fillText(state.light.kind==='microled'?'MicroLED faces · 8 µm display thickness':'Dashed beam: geometry guide', state.width - 15, 24); ctx.textAlign = 'left';
     }
     const pxPerUm = state.baseScale * state.zoom;
     const maxWidth = Math.min(105, state.width / 3);
@@ -263,7 +281,7 @@ const VOLTAGE_STOPS = [
     const pal = palette();
     ctx.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
     ctx.fillStyle = pal.paper; ctx.fillRect(0, 0, state.width, state.height);
-    drawField(pal); drawFiber(pal); drawNeuron(pal); drawChrome(pal);
+    drawField(pal); if(state.light.kind==='microled')drawDevice(pal);else drawFiber(pal); drawNeuron(pal); drawChrome(pal);
   }
 
   function resize() {
@@ -352,6 +370,7 @@ const VOLTAGE_STOPS = [
       if (!nodes[state.selected]?.areaUm2) state.selected = 0;
       computeFit(); sampleField(); schedule();
     },
+    setDevice(device) { state.device=device; sampleField(); schedule(); },
     setLight(light) { state.light = { ...light }; sampleField(); schedule(); },
     setIllumination(drive) {state.fieldDrive=clamp(drive,0,1);schedule();},
     setLightSampler(fn) { state.sampler = fn; sampleField(); schedule(); },

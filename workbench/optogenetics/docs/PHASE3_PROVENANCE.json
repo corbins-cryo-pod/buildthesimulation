@@ -1,0 +1,24 @@
+{
+  "build": "opto-lab/0.3.0",
+  "basis": "User-supplied optogenetics-laboratory-review.zip",
+  "basisSha256": "8ec1e3f5d61a16762e3ca5153c61897f5a9af3a783d6f7fd06be1d602ae77b43",
+  "newModules": [
+    "opsins",
+    "chloride",
+    "device",
+    "optics",
+    "thermal",
+    "config",
+    "engine",
+    "worker",
+    "plots",
+    "app"
+  ],
+  "importContractRepository": "corbins-cryo-pod/buildthesimulation",
+  "inspectedRepositoryCommit": "b59adb6fe3f2c9f3d646528a3c9a5712eb6ef74a",
+  "designerPath": "src/lib/designer/model.js",
+  "cleanroomPath": "src/components/MicrofabricationLaboratory.jsx",
+  "networkAtRuntime": false,
+  "githubChanges": false,
+  "fontBinariesIncluded": false
+}

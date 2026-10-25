@@ -1,0 +1,2209 @@
+[
+  {
+    "name": "Short somatic chloride inhibition",
+    "config": {
+      "schema": "bts-opto-experiment/3",
+      "version": "opto-lab/0.3.0",
+      "experiment": {
+        "mode": "neuron",
+        "protocol": "step",
+        "durationMs": 80,
+        "onsetMs": 20,
+        "pulseWidthMs": 5,
+        "frequencyHz": 20,
+        "trainDurationMs": 40,
+        "pairGapMs": 50,
+        "expression": "soma",
+        "expressionSectionId": null,
+        "conductanceDensityScm2": 0.003,
+        "clampMv": -60,
+        "dtMs": 0.01,
+        "sampleMs": 0.5,
+        "segmentLengthUm": 40,
+        "light": {
+          "kind": "uniform",
+          "irradianceMwMm2": 1,
+          "powerMw": 0.05,
+          "positionUm": [
+            -150,
+            0,
+            0
+          ],
+          "targetUm": [
+            0,
+            0,
+            0
+          ],
+          "wavelengthNm": 470
+        }
+      },
+      "opsin": "gtacr2",
+      "kinetics": {},
+      "chloride": {
+        "dynamic": true,
+        "insideMm": 5,
+        "axonMm": 20,
+        "outsideMm": 130,
+        "recoveryMs": 10000,
+        "volumeFraction": 1
+      },
+      "drive": {
+        "currentNa": 0.3,
+        "startMs": 10,
+        "endMs": 75
+      },
+      "source": {
+        "kind": "uniform",
+        "irradianceMwMm2": 1,
+        "wavelengthNm": 470,
+        "powerMw": 0.05,
+        "positionUm": [
+          -150,
+          0,
+          0
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "absorptionMmInv": 0.07,
+        "lossMmInv": 3
+      },
+      "device": {
+        "schema": "bts-opto-device/1",
+        "units": "um",
+        "name": "Three-site optical shank · assumed device",
+        "emitters": [
+          {
+            "id": "LED-1",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              -100,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          },
+          {
+            "id": "LED-2",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              0,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          },
+          {
+            "id": "LED-3",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              100,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          }
+        ],
+        "contacts": [],
+        "metadata": {}
+      },
+      "population": {
+        "count": 1,
+        "spacingUm": 160,
+        "seed": 17,
+        "expressionVariation": 0,
+        "layout": "line",
+        "cells": [
+          {
+            "id": "cell-1",
+            "offsetUm": [
+              0,
+              0,
+              0
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "expressionScale": 1
+          }
+        ]
+      },
+      "thermal": {
+        "enabled": false,
+        "gridN": 25,
+        "spacingUm": 80,
+        "centerUm": [
+          0,
+          0,
+          0
+        ],
+        "dtMs": 0.5,
+        "conductivityWmK": 0.6,
+        "densityKgM3": 1057,
+        "heatCapacityJkgK": 3600,
+        "perfusionPerS": 0.008,
+        "deviceHeatFraction": 1
+      },
+      "matchedControl": true
+    },
+    "summaries": [
+      {
+        "cellId": "cell-1",
+        "opsin": "gtacr2",
+        "somaExposureMwMm2": 1,
+        "maxExposureMwMm2": 1,
+        "spikes": 0,
+        "matchedDarkSpikes": 3,
+        "illuminatedEvents": 0,
+        "baselineEpochEvents": 2,
+        "eventReductionFraction": 1,
+        "exactlyOnePulses": 0
+      }
+    ],
+    "cells": [
+      {
+        "spikes": [],
+        "diagnostics": {
+          "maximumKclResidualNa": 1.2224448883713102e-12,
+          "maximumLinearizationErrorNa": 4.163336342344337e-16,
+          "minimumChlorideMm": 5,
+          "maximumChlorideMm": 20,
+          "peakVoltageMv": -75.70837912168949,
+          "peakAbsPhotocurrentNa": 0.19901151810763287,
+          "minimumProbability": 0.06484336469254008,
+          "maximumProbabilitySumError": 6.750155989720952e-14,
+          "maximumLocalExposureMwMm2": 1,
+          "expressingSitesAboveWilliamsLightRange": null,
+          "opsinEvidence": "Exploratory 3-state anion-channel model. Approximate 40 ms off-scale from ACR literature; other rates and spectrum are assumed. Soma targeting is a separate expression control, not a different ionic mechanism.",
+          "opsinParameters": {
+            "id": "gtacr2",
+            "name": "GtACR2-like chloride · reduced",
+            "ion": "chloride",
+            "peakNm": 470,
+            "sigmaNm": 32,
+            "tauOnMs": 1,
+            "tauOffMs": 40,
+            "halfMwMm2": 0.1,
+            "tauDesMs": 500,
+            "tauRecMs": 1500,
+            "reference": "Mahn et al. 2018; Messier et al. 2018; Govorunova et al. 2018",
+            "evidence": "Exploratory 3-state anion-channel model. Approximate 40 ms off-scale from ACR literature; other rates and spectrum are assumed. Soma targeting is a separate expression control, not a different ionic mechanism."
+          },
+          "retainedAllCompartments": true,
+          "integrationSteps": 8000
+        },
+        "finalSomaCl": 5.048277271147075,
+        "finalSomaECl": -85.98141641139998
+      }
+    ],
+    "diagnostics": {
+      "computationMs": 8687.813274,
+      "sourcePowers": {
+        "opticalMw": null,
+        "electricalMw": null,
+        "deviceHeatMw": 0
+      },
+      "cellCount": 1,
+      "independentCells": true,
+      "temperatureFeedback": false,
+      "limitations": [
+        "Cells are rotated/translated copies of one fitted human model, not distinct biological cell types. No synapses, ephaptic coupling or collision physics.",
+        "The original cell has a synthetic axon stub; chloride in that stub is an assumption, not measured anatomy.",
+        "Reduced opsin kinetics and off-peak action spectra are exploratory, not independently fitted experimental models.",
+        "Chloride uses independent well-mixed local pools, finite geometry-derived volume and a relaxation surrogate for transport; no axial ionic diffusion, bicarbonate or extracellular depletion.",
+        "Event reduction compares counts inside the illuminated intervals with an identical-drive dark control. Negative reduction means more events; it does not prove causal inhibition or account for all post-light effects.",
+        "Williams ChR2 was characterized at −80 to −10 mV and 0.34–5.5 mW/mm². Rest/AP voltages and some LED-site exposures extrapolate the fit; no recruitment accuracy is established.",
+        "The inherited 40→20 µm voltage/spike convergence limitation remains. Thermal feedback is not included."
+      ]
+    }
+  },
+  {
+    "name": "Zero expression with current drive",
+    "config": {
+      "schema": "bts-opto-experiment/3",
+      "version": "opto-lab/0.3.0",
+      "experiment": {
+        "mode": "neuron",
+        "protocol": "step",
+        "durationMs": 80,
+        "onsetMs": 20,
+        "pulseWidthMs": 5,
+        "frequencyHz": 20,
+        "trainDurationMs": 40,
+        "pairGapMs": 50,
+        "expression": "soma",
+        "expressionSectionId": null,
+        "conductanceDensityScm2": 0,
+        "clampMv": -60,
+        "dtMs": 0.01,
+        "sampleMs": 0.5,
+        "segmentLengthUm": 40,
+        "light": {
+          "kind": "uniform",
+          "irradianceMwMm2": 1,
+          "powerMw": 0.05,
+          "positionUm": [
+            -150,
+            0,
+            0
+          ],
+          "targetUm": [
+            0,
+            0,
+            0
+          ],
+          "wavelengthNm": 470
+        }
+      },
+      "opsin": "gtacr2",
+      "kinetics": {},
+      "chloride": {
+        "dynamic": true,
+        "insideMm": 5,
+        "axonMm": 20,
+        "outsideMm": 130,
+        "recoveryMs": 10000,
+        "volumeFraction": 1
+      },
+      "drive": {
+        "currentNa": 0.3,
+        "startMs": 10,
+        "endMs": 75
+      },
+      "source": {
+        "kind": "uniform",
+        "irradianceMwMm2": 1,
+        "wavelengthNm": 470,
+        "powerMw": 0.05,
+        "positionUm": [
+          -150,
+          0,
+          0
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "absorptionMmInv": 0.07,
+        "lossMmInv": 3
+      },
+      "device": {
+        "schema": "bts-opto-device/1",
+        "units": "um",
+        "name": "Three-site optical shank · assumed device",
+        "emitters": [
+          {
+            "id": "LED-1",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              -100,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          },
+          {
+            "id": "LED-2",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              0,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          },
+          {
+            "id": "LED-3",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              100,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          }
+        ],
+        "contacts": [],
+        "metadata": {}
+      },
+      "population": {
+        "count": 1,
+        "spacingUm": 160,
+        "seed": 17,
+        "expressionVariation": 0,
+        "layout": "line",
+        "cells": [
+          {
+            "id": "cell-1",
+            "offsetUm": [
+              0,
+              0,
+              0
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "expressionScale": 1
+          }
+        ]
+      },
+      "thermal": {
+        "enabled": false,
+        "gridN": 25,
+        "spacingUm": 80,
+        "centerUm": [
+          0,
+          0,
+          0
+        ],
+        "dtMs": 0.5,
+        "conductivityWmK": 0.6,
+        "densityKgM3": 1057,
+        "heatCapacityJkgK": 3600,
+        "perfusionPerS": 0.008,
+        "deviceHeatFraction": 1
+      },
+      "matchedControl": true
+    },
+    "summaries": [
+      {
+        "cellId": "cell-1",
+        "opsin": "gtacr2",
+        "somaExposureMwMm2": 1,
+        "maxExposureMwMm2": 1,
+        "spikes": 3,
+        "matchedDarkSpikes": 3,
+        "illuminatedEvents": 2,
+        "baselineEpochEvents": 2,
+        "eventReductionFraction": 0,
+        "exactlyOnePulses": 1
+      }
+    ],
+    "cells": [
+      {
+        "spikes": [
+          {
+            "timeMs": 33.35927952638733,
+            "compartmentId": "soma[0]:0"
+          },
+          {
+            "timeMs": 44.713775144957765,
+            "compartmentId": "soma[0]:0"
+          },
+          {
+            "timeMs": 61.51065521885982,
+            "compartmentId": "soma[0]:0"
+          }
+        ],
+        "diagnostics": {
+          "maximumKclResidualNa": 1.2224448883713102e-12,
+          "maximumLinearizationErrorNa": 0,
+          "minimumChlorideMm": 5,
+          "maximumChlorideMm": 20,
+          "peakVoltageMv": 22.325526326230303,
+          "peakAbsPhotocurrentNa": 0,
+          "minimumProbability": 1,
+          "maximumProbabilitySumError": 0,
+          "maximumLocalExposureMwMm2": 1,
+          "expressingSitesAboveWilliamsLightRange": null,
+          "opsinEvidence": "Exploratory 3-state anion-channel model. Approximate 40 ms off-scale from ACR literature; other rates and spectrum are assumed. Soma targeting is a separate expression control, not a different ionic mechanism.",
+          "opsinParameters": {
+            "id": "gtacr2",
+            "name": "GtACR2-like chloride · reduced",
+            "ion": "chloride",
+            "peakNm": 470,
+            "sigmaNm": 32,
+            "tauOnMs": 1,
+            "tauOffMs": 40,
+            "halfMwMm2": 0.1,
+            "tauDesMs": 500,
+            "tauRecMs": 1500,
+            "reference": "Mahn et al. 2018; Messier et al. 2018; Govorunova et al. 2018",
+            "evidence": "Exploratory 3-state anion-channel model. Approximate 40 ms off-scale from ACR literature; other rates and spectrum are assumed. Soma targeting is a separate expression control, not a different ionic mechanism."
+          },
+          "retainedAllCompartments": true,
+          "integrationSteps": 8000
+        },
+        "finalSomaCl": 5,
+        "finalSomaECl": -86.23575241877536
+      }
+    ],
+    "diagnostics": {
+      "computationMs": 5329.370231999999,
+      "sourcePowers": {
+        "opticalMw": null,
+        "electricalMw": null,
+        "deviceHeatMw": 0
+      },
+      "cellCount": 1,
+      "independentCells": true,
+      "temperatureFeedback": false,
+      "limitations": [
+        "Cells are rotated/translated copies of one fitted human model, not distinct biological cell types. No synapses, ephaptic coupling or collision physics.",
+        "The original cell has a synthetic axon stub; chloride in that stub is an assumption, not measured anatomy.",
+        "Reduced opsin kinetics and off-peak action spectra are exploratory, not independently fitted experimental models.",
+        "Chloride uses independent well-mixed local pools, finite geometry-derived volume and a relaxation surrogate for transport; no axial ionic diffusion, bicarbonate or extracellular depletion.",
+        "Event reduction compares counts inside the illuminated intervals with an identical-drive dark control. Negative reduction means more events; it does not prove causal inhibition or account for all post-light effects.",
+        "Williams ChR2 was characterized at −80 to −10 mV and 0.34–5.5 mW/mm². Rest/AP voltages and some LED-site exposures extrapolate the fit; no recruitment accuracy is established.",
+        "The inherited 40→20 µm voltage/spike convergence limitation remains. Thermal feedback is not included."
+      ]
+    }
+  },
+  {
+    "name": "Zero illumination with current drive",
+    "config": {
+      "schema": "bts-opto-experiment/3",
+      "version": "opto-lab/0.3.0",
+      "experiment": {
+        "mode": "neuron",
+        "protocol": "step",
+        "durationMs": 80,
+        "onsetMs": 20,
+        "pulseWidthMs": 5,
+        "frequencyHz": 20,
+        "trainDurationMs": 40,
+        "pairGapMs": 50,
+        "expression": "soma",
+        "expressionSectionId": null,
+        "conductanceDensityScm2": 0.003,
+        "clampMv": -60,
+        "dtMs": 0.01,
+        "sampleMs": 0.5,
+        "segmentLengthUm": 40,
+        "light": {
+          "kind": "uniform",
+          "irradianceMwMm2": 1,
+          "powerMw": 0.05,
+          "positionUm": [
+            -150,
+            0,
+            0
+          ],
+          "targetUm": [
+            0,
+            0,
+            0
+          ],
+          "wavelengthNm": 470
+        }
+      },
+      "opsin": "gtacr2",
+      "kinetics": {},
+      "chloride": {
+        "dynamic": true,
+        "insideMm": 5,
+        "axonMm": 20,
+        "outsideMm": 130,
+        "recoveryMs": 10000,
+        "volumeFraction": 1
+      },
+      "drive": {
+        "currentNa": 0.3,
+        "startMs": 10,
+        "endMs": 75
+      },
+      "source": {
+        "kind": "uniform",
+        "irradianceMwMm2": 0,
+        "wavelengthNm": 470,
+        "powerMw": 0.05,
+        "positionUm": [
+          -150,
+          0,
+          0
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "absorptionMmInv": 0.07,
+        "lossMmInv": 3
+      },
+      "device": {
+        "schema": "bts-opto-device/1",
+        "units": "um",
+        "name": "Three-site optical shank · assumed device",
+        "emitters": [
+          {
+            "id": "LED-1",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              -100,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          },
+          {
+            "id": "LED-2",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              0,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          },
+          {
+            "id": "LED-3",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              100,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          }
+        ],
+        "contacts": [],
+        "metadata": {}
+      },
+      "population": {
+        "count": 1,
+        "spacingUm": 160,
+        "seed": 17,
+        "expressionVariation": 0,
+        "layout": "line",
+        "cells": [
+          {
+            "id": "cell-1",
+            "offsetUm": [
+              0,
+              0,
+              0
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "expressionScale": 1
+          }
+        ]
+      },
+      "thermal": {
+        "enabled": false,
+        "gridN": 25,
+        "spacingUm": 80,
+        "centerUm": [
+          0,
+          0,
+          0
+        ],
+        "dtMs": 0.5,
+        "conductivityWmK": 0.6,
+        "densityKgM3": 1057,
+        "heatCapacityJkgK": 3600,
+        "perfusionPerS": 0.008,
+        "deviceHeatFraction": 1
+      },
+      "matchedControl": true
+    },
+    "summaries": [
+      {
+        "cellId": "cell-1",
+        "opsin": "gtacr2",
+        "somaExposureMwMm2": 0,
+        "maxExposureMwMm2": 0,
+        "spikes": 3,
+        "matchedDarkSpikes": 3,
+        "illuminatedEvents": 2,
+        "baselineEpochEvents": 2,
+        "eventReductionFraction": 0,
+        "exactlyOnePulses": 1
+      }
+    ],
+    "cells": [
+      {
+        "spikes": [
+          {
+            "timeMs": 33.35927952638733,
+            "compartmentId": "soma[0]:0"
+          },
+          {
+            "timeMs": 44.713775144957765,
+            "compartmentId": "soma[0]:0"
+          },
+          {
+            "timeMs": 61.51065521885982,
+            "compartmentId": "soma[0]:0"
+          }
+        ],
+        "diagnostics": {
+          "maximumKclResidualNa": 1.2224448883713102e-12,
+          "maximumLinearizationErrorNa": 0,
+          "minimumChlorideMm": 5,
+          "maximumChlorideMm": 20,
+          "peakVoltageMv": 22.325526326230303,
+          "peakAbsPhotocurrentNa": 0,
+          "minimumProbability": 0,
+          "maximumProbabilitySumError": 7.105427357601002e-15,
+          "maximumLocalExposureMwMm2": 0,
+          "expressingSitesAboveWilliamsLightRange": null,
+          "opsinEvidence": "Exploratory 3-state anion-channel model. Approximate 40 ms off-scale from ACR literature; other rates and spectrum are assumed. Soma targeting is a separate expression control, not a different ionic mechanism.",
+          "opsinParameters": {
+            "id": "gtacr2",
+            "name": "GtACR2-like chloride · reduced",
+            "ion": "chloride",
+            "peakNm": 470,
+            "sigmaNm": 32,
+            "tauOnMs": 1,
+            "tauOffMs": 40,
+            "halfMwMm2": 0.1,
+            "tauDesMs": 500,
+            "tauRecMs": 1500,
+            "reference": "Mahn et al. 2018; Messier et al. 2018; Govorunova et al. 2018",
+            "evidence": "Exploratory 3-state anion-channel model. Approximate 40 ms off-scale from ACR literature; other rates and spectrum are assumed. Soma targeting is a separate expression control, not a different ionic mechanism."
+          },
+          "retainedAllCompartments": true,
+          "integrationSteps": 8000
+        },
+        "finalSomaCl": 5,
+        "finalSomaECl": -86.23575241877536
+      }
+    ],
+    "diagnostics": {
+      "computationMs": 5833.472607999998,
+      "sourcePowers": {
+        "opticalMw": null,
+        "electricalMw": null,
+        "deviceHeatMw": 0
+      },
+      "cellCount": 1,
+      "independentCells": true,
+      "temperatureFeedback": false,
+      "limitations": [
+        "Cells are rotated/translated copies of one fitted human model, not distinct biological cell types. No synapses, ephaptic coupling or collision physics.",
+        "The original cell has a synthetic axon stub; chloride in that stub is an assumption, not measured anatomy.",
+        "Reduced opsin kinetics and off-peak action spectra are exploratory, not independently fitted experimental models.",
+        "Chloride uses independent well-mixed local pools, finite geometry-derived volume and a relaxation surrogate for transport; no axial ionic diffusion, bicarbonate or extracellular depletion.",
+        "Event reduction compares counts inside the illuminated intervals with an identical-drive dark control. Negative reduction means more events; it does not prove causal inhibition or account for all post-light effects.",
+        "Williams ChR2 was characterized at −80 to −10 mV and 0.34–5.5 mW/mm². Rest/AP voltages and some LED-site exposures extrapolate the fit; no recruitment accuracy is established.",
+        "The inherited 40→20 µm voltage/spike convergence limitation remains. Thermal feedback is not included."
+      ]
+    }
+  },
+  {
+    "name": "Fixed chloride pool",
+    "config": {
+      "schema": "bts-opto-experiment/3",
+      "version": "opto-lab/0.3.0",
+      "experiment": {
+        "mode": "neuron",
+        "protocol": "step",
+        "durationMs": 80,
+        "onsetMs": 20,
+        "pulseWidthMs": 5,
+        "frequencyHz": 20,
+        "trainDurationMs": 40,
+        "pairGapMs": 50,
+        "expression": "soma",
+        "expressionSectionId": null,
+        "conductanceDensityScm2": 0.003,
+        "clampMv": -60,
+        "dtMs": 0.01,
+        "sampleMs": 0.5,
+        "segmentLengthUm": 40,
+        "light": {
+          "kind": "uniform",
+          "irradianceMwMm2": 1,
+          "powerMw": 0.05,
+          "positionUm": [
+            -150,
+            0,
+            0
+          ],
+          "targetUm": [
+            0,
+            0,
+            0
+          ],
+          "wavelengthNm": 470
+        }
+      },
+      "opsin": "gtacr2",
+      "kinetics": {},
+      "chloride": {
+        "dynamic": false,
+        "insideMm": 5,
+        "axonMm": 20,
+        "outsideMm": 130,
+        "recoveryMs": 10000,
+        "volumeFraction": 1
+      },
+      "drive": {
+        "currentNa": 0.3,
+        "startMs": 10,
+        "endMs": 75
+      },
+      "source": {
+        "kind": "uniform",
+        "irradianceMwMm2": 1,
+        "wavelengthNm": 470,
+        "powerMw": 0.05,
+        "positionUm": [
+          -150,
+          0,
+          0
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "absorptionMmInv": 0.07,
+        "lossMmInv": 3
+      },
+      "device": {
+        "schema": "bts-opto-device/1",
+        "units": "um",
+        "name": "Three-site optical shank · assumed device",
+        "emitters": [
+          {
+            "id": "LED-1",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              -100,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          },
+          {
+            "id": "LED-2",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              0,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          },
+          {
+            "id": "LED-3",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              100,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          }
+        ],
+        "contacts": [],
+        "metadata": {}
+      },
+      "population": {
+        "count": 1,
+        "spacingUm": 160,
+        "seed": 17,
+        "expressionVariation": 0,
+        "layout": "line",
+        "cells": [
+          {
+            "id": "cell-1",
+            "offsetUm": [
+              0,
+              0,
+              0
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "expressionScale": 1
+          }
+        ]
+      },
+      "thermal": {
+        "enabled": false,
+        "gridN": 25,
+        "spacingUm": 80,
+        "centerUm": [
+          0,
+          0,
+          0
+        ],
+        "dtMs": 0.5,
+        "conductivityWmK": 0.6,
+        "densityKgM3": 1057,
+        "heatCapacityJkgK": 3600,
+        "perfusionPerS": 0.008,
+        "deviceHeatFraction": 1
+      },
+      "matchedControl": false
+    },
+    "summaries": [
+      {
+        "cellId": "cell-1",
+        "opsin": "gtacr2",
+        "somaExposureMwMm2": 1,
+        "maxExposureMwMm2": 1,
+        "spikes": 0,
+        "matchedDarkSpikes": null,
+        "illuminatedEvents": 0,
+        "baselineEpochEvents": null,
+        "eventReductionFraction": null,
+        "exactlyOnePulses": 0
+      }
+    ],
+    "cells": [
+      {
+        "spikes": [],
+        "diagnostics": {
+          "maximumKclResidualNa": 1.2224448883713102e-12,
+          "maximumLinearizationErrorNa": 4.440892098500626e-16,
+          "minimumChlorideMm": 5,
+          "maximumChlorideMm": 20,
+          "peakVoltageMv": -75.87126585445814,
+          "peakAbsPhotocurrentNa": 0.200254028472888,
+          "minimumProbability": 0.06484336469254008,
+          "maximumProbabilitySumError": 6.750155989720952e-14,
+          "maximumLocalExposureMwMm2": 1,
+          "expressingSitesAboveWilliamsLightRange": null,
+          "opsinEvidence": "Exploratory 3-state anion-channel model. Approximate 40 ms off-scale from ACR literature; other rates and spectrum are assumed. Soma targeting is a separate expression control, not a different ionic mechanism.",
+          "opsinParameters": {
+            "id": "gtacr2",
+            "name": "GtACR2-like chloride · reduced",
+            "ion": "chloride",
+            "peakNm": 470,
+            "sigmaNm": 32,
+            "tauOnMs": 1,
+            "tauOffMs": 40,
+            "halfMwMm2": 0.1,
+            "tauDesMs": 500,
+            "tauRecMs": 1500,
+            "reference": "Mahn et al. 2018; Messier et al. 2018; Govorunova et al. 2018",
+            "evidence": "Exploratory 3-state anion-channel model. Approximate 40 ms off-scale from ACR literature; other rates and spectrum are assumed. Soma targeting is a separate expression control, not a different ionic mechanism."
+          },
+          "retainedAllCompartments": true,
+          "integrationSteps": 8000
+        },
+        "finalSomaCl": 5,
+        "finalSomaECl": -86.23575241877536
+      }
+    ],
+    "diagnostics": {
+      "computationMs": 3081.102493999999,
+      "sourcePowers": {
+        "opticalMw": null,
+        "electricalMw": null,
+        "deviceHeatMw": 0
+      },
+      "cellCount": 1,
+      "independentCells": true,
+      "temperatureFeedback": false,
+      "limitations": [
+        "Cells are rotated/translated copies of one fitted human model, not distinct biological cell types. No synapses, ephaptic coupling or collision physics.",
+        "The original cell has a synthetic axon stub; chloride in that stub is an assumption, not measured anatomy.",
+        "Reduced opsin kinetics and off-peak action spectra are exploratory, not independently fitted experimental models.",
+        "Chloride uses independent well-mixed local pools, finite geometry-derived volume and a relaxation surrogate for transport; no axial ionic diffusion, bicarbonate or extracellular depletion.",
+        "Event reduction compares counts inside the illuminated intervals with an identical-drive dark control. Negative reduction means more events; it does not prove causal inhibition or account for all post-light effects.",
+        "Williams ChR2 was characterized at −80 to −10 mV and 0.34–5.5 mW/mm². Rest/AP voltages and some LED-site exposures extrapolate the fit; no recruitment accuracy is established.",
+        "The inherited 40→20 µm voltage/spike convergence limitation remains. Thermal feedback is not included."
+      ]
+    }
+  },
+  {
+    "name": "Clamp chloride 5 mM",
+    "config": {
+      "schema": "bts-opto-experiment/3",
+      "version": "opto-lab/0.3.0",
+      "experiment": {
+        "mode": "clamp",
+        "protocol": "step",
+        "durationMs": 80,
+        "onsetMs": 20,
+        "pulseWidthMs": 5,
+        "frequencyHz": 20,
+        "trainDurationMs": 40,
+        "pairGapMs": 50,
+        "expression": "soma",
+        "expressionSectionId": null,
+        "conductanceDensityScm2": 0.003,
+        "clampMv": -60,
+        "dtMs": 0.01,
+        "sampleMs": 0.5,
+        "segmentLengthUm": 40,
+        "light": {
+          "kind": "uniform",
+          "irradianceMwMm2": 1,
+          "powerMw": 0.05,
+          "positionUm": [
+            -150,
+            0,
+            0
+          ],
+          "targetUm": [
+            0,
+            0,
+            0
+          ],
+          "wavelengthNm": 470
+        }
+      },
+      "opsin": "gtacr2",
+      "kinetics": {},
+      "chloride": {
+        "dynamic": true,
+        "insideMm": 5,
+        "axonMm": 20,
+        "outsideMm": 130,
+        "recoveryMs": 10000,
+        "volumeFraction": 1
+      },
+      "drive": {
+        "currentNa": 0,
+        "startMs": 10,
+        "endMs": 75
+      },
+      "source": {
+        "kind": "uniform",
+        "irradianceMwMm2": 1,
+        "wavelengthNm": 470,
+        "powerMw": 0.05,
+        "positionUm": [
+          -150,
+          0,
+          0
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "absorptionMmInv": 0.07,
+        "lossMmInv": 3
+      },
+      "device": {
+        "schema": "bts-opto-device/1",
+        "units": "um",
+        "name": "Three-site optical shank · assumed device",
+        "emitters": [
+          {
+            "id": "LED-1",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              -100,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          },
+          {
+            "id": "LED-2",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              0,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          },
+          {
+            "id": "LED-3",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              100,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          }
+        ],
+        "contacts": [],
+        "metadata": {}
+      },
+      "population": {
+        "count": 1,
+        "spacingUm": 160,
+        "seed": 17,
+        "expressionVariation": 0,
+        "layout": "line",
+        "cells": [
+          {
+            "id": "cell-1",
+            "offsetUm": [
+              0,
+              0,
+              0
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "expressionScale": 1
+          }
+        ]
+      },
+      "thermal": {
+        "enabled": false,
+        "gridN": 25,
+        "spacingUm": 80,
+        "centerUm": [
+          0,
+          0,
+          0
+        ],
+        "dtMs": 0.5,
+        "conductivityWmK": 0.6,
+        "densityKgM3": 1057,
+        "heatCapacityJkgK": 3600,
+        "perfusionPerS": 0.008,
+        "deviceHeatFraction": 1
+      },
+      "matchedControl": false
+    },
+    "summaries": [
+      {
+        "cellId": "cell-1",
+        "opsin": "gtacr2",
+        "somaExposureMwMm2": 1,
+        "maxExposureMwMm2": 1,
+        "spikes": 0,
+        "matchedDarkSpikes": null,
+        "illuminatedEvents": 0,
+        "baselineEpochEvents": null,
+        "eventReductionFraction": null,
+        "exactlyOnePulses": null
+      }
+    ],
+    "cells": [
+      {
+        "spikes": [],
+        "diagnostics": {
+          "maximumKclResidualNa": 0,
+          "maximumLinearizationErrorNa": 2.220446049250313e-16,
+          "minimumChlorideMm": 5,
+          "maximumChlorideMm": 5.1493715139188945,
+          "peakVoltageMv": -60,
+          "peakAbsPhotocurrentNa": 0.6363080705204724,
+          "minimumProbability": 0.06484336469254008,
+          "maximumProbabilitySumError": 6.750155989720952e-14,
+          "maximumLocalExposureMwMm2": 1,
+          "expressingSitesAboveWilliamsLightRange": null,
+          "opsinEvidence": "Exploratory 3-state anion-channel model. Approximate 40 ms off-scale from ACR literature; other rates and spectrum are assumed. Soma targeting is a separate expression control, not a different ionic mechanism.",
+          "opsinParameters": {
+            "id": "gtacr2",
+            "name": "GtACR2-like chloride · reduced",
+            "ion": "chloride",
+            "peakNm": 470,
+            "sigmaNm": 32,
+            "tauOnMs": 1,
+            "tauOffMs": 40,
+            "halfMwMm2": 0.1,
+            "tauDesMs": 500,
+            "tauRecMs": 1500,
+            "reference": "Mahn et al. 2018; Messier et al. 2018; Govorunova et al. 2018",
+            "evidence": "Exploratory 3-state anion-channel model. Approximate 40 ms off-scale from ACR literature; other rates and spectrum are assumed. Soma targeting is a separate expression control, not a different ionic mechanism."
+          },
+          "retainedAllCompartments": true,
+          "integrationSteps": 8000
+        },
+        "finalSomaCl": 5.1493715139188945,
+        "finalSomaECl": -85.45661619540464
+      }
+    ],
+    "diagnostics": {
+      "computationMs": 44.79203499999858,
+      "sourcePowers": {
+        "opticalMw": null,
+        "electricalMw": null,
+        "deviceHeatMw": 0
+      },
+      "cellCount": 1,
+      "independentCells": true,
+      "temperatureFeedback": false,
+      "limitations": [
+        "Cells are rotated/translated copies of one fitted human model, not distinct biological cell types. No synapses, ephaptic coupling or collision physics.",
+        "The original cell has a synthetic axon stub; chloride in that stub is an assumption, not measured anatomy.",
+        "Reduced opsin kinetics and off-peak action spectra are exploratory, not independently fitted experimental models.",
+        "Chloride uses independent well-mixed local pools, finite geometry-derived volume and a relaxation surrogate for transport; no axial ionic diffusion, bicarbonate or extracellular depletion.",
+        "Event reduction compares counts inside the illuminated intervals with an identical-drive dark control. Negative reduction means more events; it does not prove causal inhibition or account for all post-light effects.",
+        "Williams ChR2 was characterized at −80 to −10 mV and 0.34–5.5 mW/mm². Rest/AP voltages and some LED-site exposures extrapolate the fit; no recruitment accuracy is established.",
+        "The inherited 40→20 µm voltage/spike convergence limitation remains. Thermal feedback is not included."
+      ]
+    }
+  },
+  {
+    "name": "Clamp chloride 30 mM",
+    "config": {
+      "schema": "bts-opto-experiment/3",
+      "version": "opto-lab/0.3.0",
+      "experiment": {
+        "mode": "clamp",
+        "protocol": "step",
+        "durationMs": 80,
+        "onsetMs": 20,
+        "pulseWidthMs": 5,
+        "frequencyHz": 20,
+        "trainDurationMs": 40,
+        "pairGapMs": 50,
+        "expression": "soma",
+        "expressionSectionId": null,
+        "conductanceDensityScm2": 0.003,
+        "clampMv": -60,
+        "dtMs": 0.01,
+        "sampleMs": 0.5,
+        "segmentLengthUm": 40,
+        "light": {
+          "kind": "uniform",
+          "irradianceMwMm2": 1,
+          "powerMw": 0.05,
+          "positionUm": [
+            -150,
+            0,
+            0
+          ],
+          "targetUm": [
+            0,
+            0,
+            0
+          ],
+          "wavelengthNm": 470
+        }
+      },
+      "opsin": "gtacr2",
+      "kinetics": {},
+      "chloride": {
+        "dynamic": true,
+        "insideMm": 30,
+        "axonMm": 20,
+        "outsideMm": 130,
+        "recoveryMs": 10000,
+        "volumeFraction": 1
+      },
+      "drive": {
+        "currentNa": 0,
+        "startMs": 10,
+        "endMs": 75
+      },
+      "source": {
+        "kind": "uniform",
+        "irradianceMwMm2": 1,
+        "wavelengthNm": 470,
+        "powerMw": 0.05,
+        "positionUm": [
+          -150,
+          0,
+          0
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "absorptionMmInv": 0.07,
+        "lossMmInv": 3
+      },
+      "device": {
+        "schema": "bts-opto-device/1",
+        "units": "um",
+        "name": "Three-site optical shank · assumed device",
+        "emitters": [
+          {
+            "id": "LED-1",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              -100,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          },
+          {
+            "id": "LED-2",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              0,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          },
+          {
+            "id": "LED-3",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              100,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          }
+        ],
+        "contacts": [],
+        "metadata": {}
+      },
+      "population": {
+        "count": 1,
+        "spacingUm": 160,
+        "seed": 17,
+        "expressionVariation": 0,
+        "layout": "line",
+        "cells": [
+          {
+            "id": "cell-1",
+            "offsetUm": [
+              0,
+              0,
+              0
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "expressionScale": 1
+          }
+        ]
+      },
+      "thermal": {
+        "enabled": false,
+        "gridN": 25,
+        "spacingUm": 80,
+        "centerUm": [
+          0,
+          0,
+          0
+        ],
+        "dtMs": 0.5,
+        "conductivityWmK": 0.6,
+        "densityKgM3": 1057,
+        "heatCapacityJkgK": 3600,
+        "perfusionPerS": 0.008,
+        "deviceHeatFraction": 1
+      },
+      "matchedControl": false
+    },
+    "summaries": [
+      {
+        "cellId": "cell-1",
+        "opsin": "gtacr2",
+        "somaExposureMwMm2": 1,
+        "maxExposureMwMm2": 1,
+        "spikes": 0,
+        "matchedDarkSpikes": null,
+        "illuminatedEvents": 0,
+        "baselineEpochEvents": null,
+        "eventReductionFraction": null,
+        "exactlyOnePulses": null
+      }
+    ],
+    "cells": [
+      {
+        "spikes": [],
+        "diagnostics": {
+          "maximumKclResidualNa": 0,
+          "maximumLinearizationErrorNa": 5.551115123125783e-17,
+          "minimumChlorideMm": 29.877835447418597,
+          "maximumChlorideMm": 30,
+          "peakVoltageMv": -60,
+          "peakAbsPhotocurrentNa": 0.5152569454841869,
+          "minimumProbability": 0.06484336469254008,
+          "maximumProbabilitySumError": 6.750155989720952e-14,
+          "maximumLocalExposureMwMm2": 1,
+          "expressingSitesAboveWilliamsLightRange": null,
+          "opsinEvidence": "Exploratory 3-state anion-channel model. Approximate 40 ms off-scale from ACR literature; other rates and spectrum are assumed. Soma targeting is a separate expression control, not a different ionic mechanism.",
+          "opsinParameters": {
+            "id": "gtacr2",
+            "name": "GtACR2-like chloride · reduced",
+            "ion": "chloride",
+            "peakNm": 470,
+            "sigmaNm": 32,
+            "tauOnMs": 1,
+            "tauOffMs": 40,
+            "halfMwMm2": 0.1,
+            "tauDesMs": 500,
+            "tauRecMs": 1500,
+            "reference": "Mahn et al. 2018; Messier et al. 2018; Govorunova et al. 2018",
+            "evidence": "Exploratory 3-state anion-channel model. Approximate 40 ms off-scale from ACR literature; other rates and spectrum are assumed. Soma targeting is a separate expression control, not a different ionic mechanism."
+          },
+          "retainedAllCompartments": true,
+          "integrationSteps": 8000
+        },
+        "finalSomaCl": 29.877835447418597,
+        "finalSomaECl": -38.91921585602718
+      }
+    ],
+    "diagnostics": {
+      "computationMs": 34.533746000000974,
+      "sourcePowers": {
+        "opticalMw": null,
+        "electricalMw": null,
+        "deviceHeatMw": 0
+      },
+      "cellCount": 1,
+      "independentCells": true,
+      "temperatureFeedback": false,
+      "limitations": [
+        "Cells are rotated/translated copies of one fitted human model, not distinct biological cell types. No synapses, ephaptic coupling or collision physics.",
+        "The original cell has a synthetic axon stub; chloride in that stub is an assumption, not measured anatomy.",
+        "Reduced opsin kinetics and off-peak action spectra are exploratory, not independently fitted experimental models.",
+        "Chloride uses independent well-mixed local pools, finite geometry-derived volume and a relaxation surrogate for transport; no axial ionic diffusion, bicarbonate or extracellular depletion.",
+        "Event reduction compares counts inside the illuminated intervals with an identical-drive dark control. Negative reduction means more events; it does not prove causal inhibition or account for all post-light effects.",
+        "Williams ChR2 was characterized at −80 to −10 mV and 0.34–5.5 mW/mm². Rest/AP voltages and some LED-site exposures extrapolate the fit; no recruitment accuracy is established.",
+        "The inherited 40→20 µm voltage/spike convergence limitation remains. Thermal feedback is not included."
+      ]
+    }
+  },
+  {
+    "name": "Two independent identical cells",
+    "config": {
+      "schema": "bts-opto-experiment/3",
+      "version": "opto-lab/0.3.0",
+      "experiment": {
+        "mode": "neuron",
+        "protocol": "step",
+        "durationMs": 80,
+        "onsetMs": 20,
+        "pulseWidthMs": 5,
+        "frequencyHz": 20,
+        "trainDurationMs": 40,
+        "pairGapMs": 50,
+        "expression": "all",
+        "expressionSectionId": null,
+        "conductanceDensityScm2": 0.003,
+        "clampMv": -60,
+        "dtMs": 0.01,
+        "sampleMs": 0.5,
+        "segmentLengthUm": 40,
+        "light": {
+          "kind": "uniform",
+          "irradianceMwMm2": 1,
+          "powerMw": 0.05,
+          "positionUm": [
+            -150,
+            0,
+            0
+          ],
+          "targetUm": [
+            0,
+            0,
+            0
+          ],
+          "wavelengthNm": 470
+        }
+      },
+      "opsin": "chronos",
+      "kinetics": {},
+      "chloride": {
+        "dynamic": true,
+        "insideMm": 5,
+        "axonMm": 20,
+        "outsideMm": 130,
+        "recoveryMs": 10000,
+        "volumeFraction": 1
+      },
+      "drive": {
+        "currentNa": 0,
+        "startMs": 10,
+        "endMs": 75
+      },
+      "source": {
+        "kind": "uniform",
+        "irradianceMwMm2": 1,
+        "wavelengthNm": 470,
+        "powerMw": 0.05,
+        "positionUm": [
+          -150,
+          0,
+          0
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "absorptionMmInv": 0.07,
+        "lossMmInv": 3
+      },
+      "device": {
+        "schema": "bts-opto-device/1",
+        "units": "um",
+        "name": "Three-site optical shank · assumed device",
+        "emitters": [
+          {
+            "id": "LED-1",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              -100,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          },
+          {
+            "id": "LED-2",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              0,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          },
+          {
+            "id": "LED-3",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              100,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          }
+        ],
+        "contacts": [],
+        "metadata": {}
+      },
+      "population": {
+        "count": 2,
+        "spacingUm": 160,
+        "seed": 17,
+        "expressionVariation": 0,
+        "layout": "line",
+        "cells": [
+          {
+            "id": "cell-1",
+            "offsetUm": [
+              -100,
+              0,
+              0
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "expressionScale": 1
+          },
+          {
+            "id": "cell-2",
+            "offsetUm": [
+              100,
+              0,
+              0
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "expressionScale": 1
+          }
+        ]
+      },
+      "thermal": {
+        "enabled": false,
+        "gridN": 25,
+        "spacingUm": 80,
+        "centerUm": [
+          0,
+          0,
+          0
+        ],
+        "dtMs": 0.5,
+        "conductivityWmK": 0.6,
+        "densityKgM3": 1057,
+        "heatCapacityJkgK": 3600,
+        "perfusionPerS": 0.008,
+        "deviceHeatFraction": 1
+      },
+      "matchedControl": false
+    },
+    "summaries": [
+      {
+        "cellId": "cell-1",
+        "opsin": "chronos",
+        "somaExposureMwMm2": 1,
+        "maxExposureMwMm2": 1,
+        "spikes": 1,
+        "matchedDarkSpikes": null,
+        "illuminatedEvents": 1,
+        "baselineEpochEvents": null,
+        "eventReductionFraction": null,
+        "exactlyOnePulses": 1
+      },
+      {
+        "cellId": "cell-2",
+        "opsin": "chronos",
+        "somaExposureMwMm2": 1,
+        "maxExposureMwMm2": 1,
+        "spikes": 1,
+        "matchedDarkSpikes": null,
+        "illuminatedEvents": 1,
+        "baselineEpochEvents": null,
+        "eventReductionFraction": null,
+        "exactlyOnePulses": 1
+      }
+    ],
+    "cells": [
+      {
+        "spikes": [
+          {
+            "timeMs": 21.547977386959122,
+            "compartmentId": "soma[0]:0"
+          }
+        ],
+        "diagnostics": {
+          "maximumKclResidualNa": 1.2224448883713102e-12,
+          "maximumLinearizationErrorNa": 0,
+          "minimumChlorideMm": 5,
+          "maximumChlorideMm": 20,
+          "peakVoltageMv": 22.227828372453164,
+          "peakAbsPhotocurrentNa": 6.830365455626946,
+          "minimumProbability": 0.0017589805426939781,
+          "maximumProbabilitySumError": 3.0542235407438056e-13,
+          "maximumLocalExposureMwMm2": 1,
+          "expressingSitesAboveWilliamsLightRange": null,
+          "opsinEvidence": "Exploratory 3-state model, not a fitted reproduction. On/off time scales use published values; sensitivity, desensitization, recovery and spectrum are assumptions. No temperature extrapolation.",
+          "opsinParameters": {
+            "id": "chronos",
+            "name": "Chronos-like · reduced",
+            "ion": "cation",
+            "peakNm": 500,
+            "sigmaNm": 40,
+            "tauOnMs": 2.3,
+            "tauOffMs": 3.6,
+            "halfMwMm2": 0.3,
+            "tauDesMs": 100,
+            "tauRecMs": 500,
+            "reference": "Klapoetke et al. 2014; kinetics context: 10.1117/1.NPh.5.2.025009",
+            "evidence": "Exploratory 3-state model, not a fitted reproduction. On/off time scales use published values; sensitivity, desensitization, recovery and spectrum are assumptions. No temperature extrapolation."
+          },
+          "retainedAllCompartments": true,
+          "integrationSteps": 8000
+        },
+        "finalSomaCl": 5,
+        "finalSomaECl": -86.23575241877536
+      },
+      {
+        "spikes": [
+          {
+            "timeMs": 21.547977386959122,
+            "compartmentId": "soma[0]:0"
+          }
+        ],
+        "diagnostics": {
+          "maximumKclResidualNa": 1.2224448883713102e-12,
+          "maximumLinearizationErrorNa": 0,
+          "minimumChlorideMm": 5,
+          "maximumChlorideMm": 20,
+          "peakVoltageMv": 22.227828372453164,
+          "peakAbsPhotocurrentNa": 6.830365455626946,
+          "minimumProbability": 0.0017589805426939781,
+          "maximumProbabilitySumError": 3.0542235407438056e-13,
+          "maximumLocalExposureMwMm2": 1,
+          "expressingSitesAboveWilliamsLightRange": null,
+          "opsinEvidence": "Exploratory 3-state model, not a fitted reproduction. On/off time scales use published values; sensitivity, desensitization, recovery and spectrum are assumptions. No temperature extrapolation.",
+          "opsinParameters": {
+            "id": "chronos",
+            "name": "Chronos-like · reduced",
+            "ion": "cation",
+            "peakNm": 500,
+            "sigmaNm": 40,
+            "tauOnMs": 2.3,
+            "tauOffMs": 3.6,
+            "halfMwMm2": 0.3,
+            "tauDesMs": 100,
+            "tauRecMs": 500,
+            "reference": "Klapoetke et al. 2014; kinetics context: 10.1117/1.NPh.5.2.025009",
+            "evidence": "Exploratory 3-state model, not a fitted reproduction. On/off time scales use published values; sensitivity, desensitization, recovery and spectrum are assumptions. No temperature extrapolation."
+          },
+          "retainedAllCompartments": true,
+          "integrationSteps": 8000
+        },
+        "finalSomaCl": 5,
+        "finalSomaECl": -86.23575241877536
+      }
+    ],
+    "diagnostics": {
+      "computationMs": 7722.894456000002,
+      "sourcePowers": {
+        "opticalMw": null,
+        "electricalMw": null,
+        "deviceHeatMw": 0
+      },
+      "cellCount": 2,
+      "independentCells": true,
+      "temperatureFeedback": false,
+      "limitations": [
+        "Cells are rotated/translated copies of one fitted human model, not distinct biological cell types. No synapses, ephaptic coupling or collision physics.",
+        "The original cell has a synthetic axon stub; chloride in that stub is an assumption, not measured anatomy.",
+        "Reduced opsin kinetics and off-peak action spectra are exploratory, not independently fitted experimental models.",
+        "Chloride uses independent well-mixed local pools, finite geometry-derived volume and a relaxation surrogate for transport; no axial ionic diffusion, bicarbonate or extracellular depletion.",
+        "Event reduction compares counts inside the illuminated intervals with an identical-drive dark control. Negative reduction means more events; it does not prove causal inhibition or account for all post-light effects.",
+        "Williams ChR2 was characterized at −80 to −10 mV and 0.34–5.5 mW/mm². Rest/AP voltages and some LED-site exposures extrapolate the fit; no recruitment accuracy is established.",
+        "The inherited 40→20 µm voltage/spike convergence limitation remains. Thermal feedback is not included."
+      ]
+    }
+  },
+  {
+    "name": "Population expression control",
+    "config": {
+      "schema": "bts-opto-experiment/3",
+      "version": "opto-lab/0.3.0",
+      "experiment": {
+        "mode": "neuron",
+        "protocol": "step",
+        "durationMs": 80,
+        "onsetMs": 20,
+        "pulseWidthMs": 5,
+        "frequencyHz": 20,
+        "trainDurationMs": 40,
+        "pairGapMs": 50,
+        "expression": "soma",
+        "expressionSectionId": null,
+        "conductanceDensityScm2": 0.003,
+        "clampMv": -60,
+        "dtMs": 0.01,
+        "sampleMs": 0.5,
+        "segmentLengthUm": 40,
+        "light": {
+          "kind": "uniform",
+          "irradianceMwMm2": 1,
+          "powerMw": 0.05,
+          "positionUm": [
+            -150,
+            0,
+            0
+          ],
+          "targetUm": [
+            0,
+            0,
+            0
+          ],
+          "wavelengthNm": 470
+        }
+      },
+      "opsin": "chrimsonr",
+      "kinetics": {},
+      "chloride": {
+        "dynamic": true,
+        "insideMm": 5,
+        "axonMm": 20,
+        "outsideMm": 130,
+        "recoveryMs": 10000,
+        "volumeFraction": 1
+      },
+      "drive": {
+        "currentNa": 0,
+        "startMs": 10,
+        "endMs": 75
+      },
+      "source": {
+        "kind": "uniform",
+        "irradianceMwMm2": 1,
+        "wavelengthNm": 590,
+        "powerMw": 0.05,
+        "positionUm": [
+          -150,
+          0,
+          0
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "absorptionMmInv": 0.07,
+        "lossMmInv": 3
+      },
+      "device": {
+        "schema": "bts-opto-device/1",
+        "units": "um",
+        "name": "Three-site optical shank · assumed device",
+        "emitters": [
+          {
+            "id": "LED-1",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              -100,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          },
+          {
+            "id": "LED-2",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              0,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          },
+          {
+            "id": "LED-3",
+            "enabled": true,
+            "positionUm": [
+              -70,
+              100,
+              0
+            ],
+            "normal": [
+              1,
+              0,
+              0
+            ],
+            "widthUm": 22,
+            "heightUm": 22,
+            "rotationDeg": 0,
+            "powerMw": 0.02,
+            "wavelengthNm": 470,
+            "efficiency": 0.065
+          }
+        ],
+        "contacts": [],
+        "metadata": {}
+      },
+      "population": {
+        "count": 2,
+        "spacingUm": 160,
+        "seed": 17,
+        "expressionVariation": 0,
+        "layout": "line",
+        "cells": [
+          {
+            "id": "cell-1",
+            "offsetUm": [
+              -80,
+              0,
+              0
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "expressionScale": 1
+          },
+          {
+            "id": "cell-2",
+            "offsetUm": [
+              80,
+              0,
+              0
+            ],
+            "rotationDeg": [
+              0,
+              0,
+              0
+            ],
+            "expressionScale": 0
+          }
+        ]
+      },
+      "thermal": {
+        "enabled": false,
+        "gridN": 25,
+        "spacingUm": 80,
+        "centerUm": [
+          0,
+          0,
+          0
+        ],
+        "dtMs": 0.5,
+        "conductivityWmK": 0.6,
+        "densityKgM3": 1057,
+        "heatCapacityJkgK": 3600,
+        "perfusionPerS": 0.008,
+        "deviceHeatFraction": 1
+      },
+      "matchedControl": false
+    },
+    "summaries": [
+      {
+        "cellId": "cell-1",
+        "opsin": "chrimsonr",
+        "somaExposureMwMm2": 1,
+        "maxExposureMwMm2": 1,
+        "spikes": 8,
+        "matchedDarkSpikes": null,
+        "illuminatedEvents": 7,
+        "baselineEpochEvents": null,
+        "eventReductionFraction": null,
+        "exactlyOnePulses": 0
+      },
+      {
+        "cellId": "cell-2",
+        "opsin": "chrimsonr",
+        "somaExposureMwMm2": 1,
+        "maxExposureMwMm2": 1,
+        "spikes": 0,
+        "matchedDarkSpikes": null,
+        "illuminatedEvents": 0,
+        "baselineEpochEvents": null,
+        "eventReductionFraction": null,
+        "exactlyOnePulses": 0
+      }
+    ],
+    "cells": [
+      {
+        "spikes": [
+          {
+            "timeMs": 27.643426858241998,
+            "compartmentId": "soma[0]:0"
+          },
+          {
+            "timeMs": 32.08216873258528,
+            "compartmentId": "soma[0]:0"
+          },
+          {
+            "timeMs": 36.385012251218804,
+            "compartmentId": "soma[0]:0"
+          },
+          {
+            "timeMs": 40.92746143576597,
+            "compartmentId": "soma[0]:0"
+          },
+          {
+            "timeMs": 46.03578083233334,
+            "compartmentId": "soma[0]:0"
+          },
+          {
+            "timeMs": 51.960731689644696,
+            "compartmentId": "soma[0]:0"
+          },
+          {
+            "timeMs": 58.85517656581754,
+            "compartmentId": "soma[0]:0"
+          },
+          {
+            "timeMs": 69.99929202729193,
+            "compartmentId": "soma[0]:0"
+          }
+        ],
+        "diagnostics": {
+          "maximumKclResidualNa": 1.2224448883713102e-12,
+          "maximumLinearizationErrorNa": 0,
+          "minimumChlorideMm": 5,
+          "maximumChlorideMm": 20,
+          "peakVoltageMv": 21.472967234829103,
+          "peakAbsPhotocurrentNa": 1.0969026070608003,
+          "minimumProbability": 0.07937042430219014,
+          "maximumProbabilitySumError": 2.5202062658991053e-13,
+          "maximumLocalExposureMwMm2": 1,
+          "expressingSitesAboveWilliamsLightRange": null,
+          "opsinEvidence": "Exploratory red-sensitive 3-state model. All quantitative parameters, including blue cross-activation, are design assumptions, not a calibrated ChrimsonR fit.",
+          "opsinParameters": {
+            "id": "chrimsonr",
+            "name": "ChrimsonR-like · reduced",
+            "ion": "cation",
+            "peakNm": 590,
+            "sigmaNm": 45,
+            "tauOnMs": 4,
+            "tauOffMs": 16,
+            "halfMwMm2": 0.5,
+            "tauDesMs": 200,
+            "tauRecMs": 1000,
+            "blueShoulder": 0.22,
+            "reference": "Klapoetke et al. 2014 · 10.1038/nmeth.2836",
+            "evidence": "Exploratory red-sensitive 3-state model. All quantitative parameters, including blue cross-activation, are design assumptions, not a calibrated ChrimsonR fit."
+          },
+          "retainedAllCompartments": true,
+          "integrationSteps": 8000
+        },
+        "finalSomaCl": 5,
+        "finalSomaECl": -86.23575241877536
+      },
+      {
+        "spikes": [],
+        "diagnostics": {
+          "maximumKclResidualNa": 1.2224448883713102e-12,
+          "maximumLinearizationErrorNa": 0,
+          "minimumChlorideMm": 5,
+          "maximumChlorideMm": 20,
+          "peakVoltageMv": -92.26392886364616,
+          "peakAbsPhotocurrentNa": 0,
+          "minimumProbability": 1,
+          "maximumProbabilitySumError": 0,
+          "maximumLocalExposureMwMm2": 1,
+          "expressingSitesAboveWilliamsLightRange": null,
+          "opsinEvidence": "Exploratory red-sensitive 3-state model. All quantitative parameters, including blue cross-activation, are design assumptions, not a calibrated ChrimsonR fit.",
+          "opsinParameters": {
+            "id": "chrimsonr",
+            "name": "ChrimsonR-like · reduced",
+            "ion": "cation",
+            "peakNm": 590,
+            "sigmaNm": 45,
+            "tauOnMs": 4,
+            "tauOffMs": 16,
+            "halfMwMm2": 0.5,
+            "tauDesMs": 200,
+            "tauRecMs": 1000,
+            "blueShoulder": 0.22,
+            "reference": "Klapoetke et al. 2014 · 10.1038/nmeth.2836",
+            "evidence": "Exploratory red-sensitive 3-state model. All quantitative parameters, including blue cross-activation, are design assumptions, not a calibrated ChrimsonR fit."
+          },
+          "retainedAllCompartments": true,
+          "integrationSteps": 8000
+        },
+        "finalSomaCl": 5,
+        "finalSomaECl": -86.23575241877536
+      }
+    ],
+    "diagnostics": {
+      "computationMs": 6557.591568,
+      "sourcePowers": {
+        "opticalMw": null,
+        "electricalMw": null,
+        "deviceHeatMw": 0
+      },
+      "cellCount": 2,
+      "independentCells": true,
+      "temperatureFeedback": false,
+      "limitations": [
+        "Cells are rotated/translated copies of one fitted human model, not distinct biological cell types. No synapses, ephaptic coupling or collision physics.",
+        "The original cell has a synthetic axon stub; chloride in that stub is an assumption, not measured anatomy.",
+        "Reduced opsin kinetics and off-peak action spectra are exploratory, not independently fitted experimental models.",
+        "Chloride uses independent well-mixed local pools, finite geometry-derived volume and a relaxation surrogate for transport; no axial ionic diffusion, bicarbonate or extracellular depletion.",
+        "Event reduction compares counts inside the illuminated intervals with an identical-drive dark control. Negative reduction means more events; it does not prove causal inhibition or account for all post-light effects.",
+        "Williams ChR2 was characterized at −80 to −10 mV and 0.34–5.5 mW/mm². Rest/AP voltages and some LED-site exposures extrapolate the fit; no recruitment accuracy is established.",
+        "The inherited 40→20 µm voltage/spike convergence limitation remains. Thermal feedback is not included."
+      ]
+    }
+  }
+]

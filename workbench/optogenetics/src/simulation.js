@@ -358,4 +358,4 @@ function prepareResult(model, config, nodes, light, pulses) {
 
 
 
-export { MODEL_VERSION, TEMPERATURE_C, CONDITIONING_MS, SPIKE_THRESHOLD_MV, EVENT_REFRACTORY_MS, DEFAULT_CONFIG, validateConfig, pulseIntervals, pulseAt, resolveNodes, expressionFactor, analyzePulses, runExperiment };
+export { MODEL_VERSION, TEMPERATURE_C, CONDITIONING_MS, SPIKE_THRESHOLD_MV, EVENT_REFRACTORY_MS, DEFAULT_CONFIG, validateConfig, pulseIntervals, pulseAt, resolveNodes, expressionFactor, analyzePulses, runExperiment, conditionCable };
