@@ -57,26 +57,26 @@ and stress must not be interchanged: their units are pN, pN/µm and pN/µm²,
 respectively. An effective spring stiffness in pN/µm is not an elastic modulus
 in kPa without a specified geometry.
 
-### Representation
+### Representation (V2)
 
-Positions have three components, with y as the vertical coordinate. Plate
-neurites are constrained to y=0. Somata have fixed centers and nominal radii of
-6.8–7.7 µm. A soma surface has 42 vertices and 80 triangular faces, obtained by
-one subdivision of an icosahedron. The calculated mesh area and enclosed volume,
-not the analytical area of a sphere, initialize its targets.
+Each soma is a **moving, deformable 162-vertex / 320-face closed cortex**. Its
+nominal radius remains 6.8–7.7 µm; the culture initialization is flattened with
+small fixed cell-to-cell shape differences. The membrane coordinates, nucleus
+position, polarity, actin/MT fields, adhesion occupancies, contact reactions and
+migration history are numerical state. No path or final cluster layout is given.
+Neurites remain finite-radius trees. Their root vertices are attached to the
+actual cortex; distal shafts remain substrate-anchored instead of translating
+an entire arbor with its cell. Positive root stretching consumes extension
+reserve and shortening recycles it under the same ledger as growth/retraction.
 
-Neurites are finite-radius, straight segments linked as trees. A tip carries
-direction, identity, age, microtubule support, noise state, stall history and force
-diagnostics. Only soma membranes are elastic meshes. Existing neurites are not
-fully deformable beams or elastic rods; somata do not migrate, divide or pack
-through a tissue-mechanics solver.
-
-The default view is a rotatable orthographic projection of the solved 3D
-coordinates with a scale bar. An optional WebGL surface view reads the same
-geometry. The 2× and 3× radius settings enlarge the display only; collision
-geometry and measurements retain the simulated radii. Nuclei and individual
-growth-cone filaments are schematic visual aids, not resolved subcellular
-mechanical state. Visual overlap in a projection does not establish contact.
+WebGL renders the solved cortex, spherical nucleus, overlapping finite-radius
+shaft capsules and force-dependent growth-cone surfaces. A rotatable software
+3D renderer uses the same state automatically when WebGL is unavailable.
+Structural, brightfield-inspired, fluorescence-inspired and mechanical views
+are color/lighting conventions, **not optical image-formation predictions**.
+Individual internal filament lines are illustrative representations of coarse
+MT support; they are not individually simulated polymers. Display radius gains
+apply only to neurites/cones; measurements and collisions use physical radii.
 
 ### Quasi-steady clutch closure
 
@@ -181,29 +181,83 @@ budget. Therefore this is explicit extension-resource accounting, not a complete
 whole-cell lipid balance. The radial organoid multiplier is phenomenological; no
 oxygen, nutrient reaction-diffusion or metabolic model is solved.
 
-### Soma shell relaxation
+### Deformable membrane, cortex and nucleus (V2)
 
-For mesh area A, volume V and nominal radius r:
+The numerical implementation is `mechanics.js`. With fixed graph topology, edge
+lengths l, initial rest lengths l0 and umbrella graph Laplacian L:
 
 ```text
-P = 2*gamma/r + 40*(V_target-V)/V_target          pN/µm²
-F_i = -gamma*grad_i(A) + P*grad_i(V) + F_edges + F_root
-E_edges = 0.5 * sum_edges 10*(length-restLength)^2  pN µm
-x_i <- x_i + 0.0025*F_i                         µm
+E = gamma A + KA/(2 A0) (A-A0)^2 + KV/(2 V0) (V-V0)^2
+    - p0 (V-V0) + sum_edges ke/2 (l-l0)^2 + kb/2 sum_i |Lx_i|^2
+p0 = 2 gamma / cbrt(3 V0 / (4 pi))
+F_passive = -gradient(E)
 ```
 
-Edge stiffness is 10 pN/µm and rest lengths derive from the initial mesh. For each
-active tip, a vertex near its root direction receives a radial force of
-`0.13*min(20,max(0,F_net))` pN. After initialization, relaxation occurs at the
-first solver step at least 0.25 h after its previous update and uses one iteration
-with displacement coefficient 0.0025 µm/pN. Vertex radii are
-restricted to `[0.94*r,1.06*r]`. That radial restriction is a numerical/model
-constraint, not a measured limit of membrane strain.
+KA=45 pN/µm; KV=180 pN/µm²; ke=48 × cortexStiffness pN/µm;
+kb=24 × bending pN/µm. The curvature regularizer uses the **full L-transpose L
+force**, is rotation/translation invariant, and is verified by finite differences.
+It is not a continuum Helfrich discretization or a mesh-independent bending
+modulus. Pressure p0 approximately balances baseline tension; penalty stiffness
+controls the residual volume error. Area/volume targets are the actual initial
+mesh values. The old 94–106% radial clamp has been removed.
 
-Root starts are reattached to the resulting surface by directional interpolation.
-The reported `elasticEnergy` contains only edge spring energy. There is no
-Helfrich bending energy, fluid membrane shear relaxation or cell-volume growth
-law. This is a membrane/cortex surrogate, not a quantitatively calibrated bilayer.
+The overdamped vertex update is x += dt F / zeta with zeta=3 pN h/µm and
+substeps no larger than 0.0125 h. A line search rejects reversed faces, quality
+below 0.10, volume below 65% of target, infeasible rooted processes, insufficient
+root-stretch material, and penetrating conservative contact envelopes. This is
+an explicit constrained solver, not a claim of unconditional stability. The
+rejected-step count is retained in JSON. Mesh quality is 4 sqrt(3) A_triangle /
+sum(edge²), with 1 for an equilateral triangle.
+
+A rigid spherical nucleus of radius 0.38 times the nominal radius has a separate
+position, drag 45 pN h/µm and 70 pN/µm centroid tether. Coarse MT spokes are radial
+springs with stiffness 0.9 m_i pN/µm. Both tether and spokes apply equal/opposite
+forces to nucleus and cortex. Outward face-plane constraints contain the nucleus.
+This does not resolve nuclear envelope deformation or chromatin mechanics.
+
+### Active cortex, adhesion and locomotion
+
+Each vertex tracks actin, MT support and adhesion occupancy. Frontness is the
+positive projection of its radial direction on a persistent cell polarity.
+Actin relaxes to 0.12+0.88 front² over 1.2 h; MT support relaxes to
+clamp(microtubules × (0.2+0.7 front),0,1) over 3 h. The active radial load is
+18 × motility × actinControl × stageGain × (actin_i - 0.42 contractility rear).
+Its mean is subtracted from all vertices: these internal protrusive/contractile
+forces **cannot translate an isolated cell by themselves**.
+
+Adhesion is integrated analytically during each substep:
+
+```text
+access = exp(-gap_to_dish / 2 µm) in culture, otherwise 1
+on  = 5 adhesion (0.15 + front) access             h^-1
+off = 0.8 (1 + 4 rear contractility)               h^-1
+b_next = on/(on+off) + (b-on/(on+off)) exp(-(on+off) dt)
+```
+
+The substrate contact term is -3 b gap exp(-gap/2) pN along vertical y, with
+impenetrable dish plane y=-5.8 µm. Transmitted motor traction is along polarity:
+
+```text
+T_i = gain Fmotor b_i front² stiffness/(stiffness+100) / (1+2 adhesion²)
+gain = motility actinControl stageGain
+Fmotor = 620 pN on the dish, 110 pN in the embedded-matrix modes
+stageGain = 1 stem/precursor, 0.45 immature, 0.20 polarized, 0.08 maturing
+```
+
+85% of total traction is distributed through the cortical network, 15% remains
+local. This is a declared coarse transmission closure. It is counted only once.
+At zero adhesion there is no net motor traction. Rear detachment is faster, and
+contact inhibition/cue steering rotates polarity; no random displacement is
+added. Matrix-mode traction is a phenomenological effective coupling, not a
+validated transfer of dish adhesion kinetics to organoids.
+
+Short-range cell adhesion acts only within 7 µm between conservative soma
+envelopes, with force 900 × cellAdhesion × (1-gap/7) pN. There is no prescribed
+cluster center. Envelopes conservatively enclose every shell vertex and exclude
+other cells, foreign shafts and solids. This prevents penetration but does not
+resolve exact triangle-to-triangle cell contact or cells squeezing through gaps
+smaller than their bounding envelope. Contact-turning, constraints and deformation
+change subsequent movement. Functional synapses are not inferred.
 
 ## 4. Developmental state
 
@@ -220,7 +274,7 @@ stage reached at a displayed hour with the completion of a human stem-cell
 differentiation protocol.
 
 The internal developmental age is elapsed age plus an offset: -48 h for stem,
-0 for precursor and +8 h for immature. At internal age 8 h, four or five
+0 for precursor and +8 h for immature. At internal age 8 h, three to five
 2.5-µm seed processes are created. At 18 h one root arbor is assigned axonal
 identity; at 48 h the state label becomes maturing. Thus stem-like starts initiate
 at elapsed 56 h and polarize at 66 h, while precursor starts initiate at 8 h and
@@ -309,13 +363,12 @@ The narrow phase uses swept point/sphere, point/capsule and expanded-box
 intersections. Sphere
 and capsule intersections are analytic. A box expanded independently along all
 axes is conservative at its corners. Somata use a conservative spherical
-envelope at 1.06 times nominal radius, rather than exact triangle collision.
+envelope equal to the greater of the maximum solved vertex radius and 1.06 times nominal radius, rather than exact triangle collision.
 Adjacent parents and shared branch junctions have explicit geometric exclusions.
 
 For rigid obstacles, somata and world boundaries, the effective moving cone
-radius is 1.8 µm for axons or 2.1 µm for dendrites. Neurite–neurite exclusion uses
-the shaft radii; soft exploratory cone envelopes can overlap. The visual fan of
-a cone is not an independently solved colliding membrane mesh. An additional
+radius is the maximum radius of the solved growth-cone rim (initial values 1.8 µm for axons and 2.1 µm for dendrites). Neurite–neurite exclusion uses
+the shaft radii. Moving cones exclude foreign shafts and foreign active cones using their current rim envelopes; local constraints compress the rim. Shared same-cell branch junctions are excluded. The cone rim has twelve overdamped radial degrees of freedom driven by its actin, MT and membrane state; the collision envelope remains conservative. An additional
 check of the proposed terminal-shaft chord prevents corner cutting by an
 endpoint update. The accepted extension stops short of first contact;
 direction turns toward a tangent with a small outward contribution. The solver
@@ -380,8 +433,9 @@ It records the model version, exact conditions, acceptance criteria, measured
 results, source SHA-256 hashes and Node runtime. Reproduce it using:
 
 ```sh
-node --test tests/cell-growth.mjs
+node --test tests/cell-growth.mjs tests/cell-growth-mechanics.mjs
 node scripts/validate-cell-growth.mjs
+node scripts/validate-cell-growth-mechanics.mjs
 npm run build
 ```
 
@@ -477,3 +531,43 @@ grown tree. These are future directions, not implemented capabilities.
 10. Barker AJ et al. (2008). *Developmental control of synaptic receptivity.*
     Journal of Neuroscience 28:8150–8160.
     [Full text](https://pmc.ncbi.nlm.nih.gov/articles/PMC2566963/).
+
+## V2 evidence additions
+
+- Vargas et al. (2020), *Modeling of Mechanosensing Mechanisms Reveals Distinct
+  Cell Migration Modes…*, https://doi.org/10.3389/fbioe.2020.00459. A triangulated
+  cortex with internal counterforce and dynamic adhesion motivates the architecture.
+  V2 is not a reproduction of that model or its fitted parameters.
+- Koch et al. (2012), *Strength in the periphery*, https://pubmed.ncbi.nlm.nih.gov/22325267/.
+  Hippocampal and DRG growth cones differ in retrograde flow and traction. Values
+  belong to their reported culture/substrate conditions; they do not calibrate the
+  current generic neuron.
+- Betz et al. (2011), *Growth cones as soft and weak force generators*,
+  https://pmc.ncbi.nlm.nih.gov/articles/PMC3158236/. NG108-15 retrograde flow was
+  reported as 1.46 ± 0.60 µm/min (SEM), compared with this model's exploratory
+  unloaded baseline 1.10 µm/min. Similar order of magnitude is not validation.
+
+Read `V2_VERIFICATION.md` for the mechanics checks and remaining limitations.
+
+
+### V2 exploratory protrusions and contact stabilization
+
+Each active cone has five finite-radius (0.08 µm) sensing protrusions. Their lengths
+relax over 0.4 h toward `(0.6 + 2.1 min(actin,1.5))/(1 + 0.015 F_membrane)` µm.
+Swept tests clip each probe against solids, foreign neurites, soma envelopes and
+world boundaries. A blocked direction adds an opposite steering weight of 0.16.
+These are solved geometric sensing variables, not molecular actin polymers or
+retained cable. Rendered probes use these endpoints. Cone radius and probe length
+remain distinct from retained shaft geometry and its membrane-area ledger.
+
+At heterocellular axon–dendrite contact, a cell-adhesion gain of at least 0.3
+stabilizes an apposed tip. It remains held while the current shaft/cone surfaces
+are within 0.5 µm; separation or loss of geometry invalidates the contact.
+Continuous apposition for 0.3 h yields a structural candidate, never a functional
+synapse. The gain threshold and dwell time are explicit exploratory rules.
+
+Actual mechanical-step refinement uses 0.0125, 0.00625 and 0.003125 h in a
+four-hour, isolated polarized-cell control. The `maxStepHours` argument of
+`advanceCellMechanics` is used to vary the actual integrator step for that check;
+normal runs use the default 0.0125 h cap. A separate outer-step test establishes
+subcycling invariance. Neither is a spatial mesh-convergence study.

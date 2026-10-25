@@ -123,67 +123,31 @@ release's validation scope.
 | [Lefebvre et al., 2012](https://pmc.ncbi.nlm.nih.gov/articles/PMC3427422/) | Cell-identity-dependent dendritic self-recognition in specific mammalian neuron types | Self-avoidance is not a universal fixed rule for every neuron type. |
 | [Franze et al., 2009](https://pubmed.ncbi.nlm.nih.gov/19804718/) | Growth-cone mechanical responses, collapse and retraction | A collision in the coarse model does not reproduce every molecular or calcium response to load. |
 
-## Release evidence: model 1.0.0
+## Release evidence: model 2.0.0
 
-The final frozen engine passes **30 individual numerical tests** and **20
-quantitative report gates**. The report verifies that its source files did not
-change during calculation. The engine SHA-256 is
-`9c342067ebe0725a65362bf7450103d51fbf29805d06b1fe930ed9844a403931`.
+Current, source-hashed outcomes live in
+[`cell-growth-validation.json`](../../src/data/cell-growth-validation.json) and
+[`cell-growth-mechanics-validation.json`](../../src/data/cell-growth-mechanics-validation.json).
+The build verifier rejects stale source hashes and a failed gate in either report.
+See [V2 verification](V2_VERIFICATION.md) for the mechanical criteria, browser
+checks and interpretation limits. The V1 results remain available in Git history;
+they are not reused as evidence for V2.
 
-All four preset studies used seed `314` and reached the requested `72 h` without
-exhausting their segment budgets. Segment counts include inactive segments
-retained for history and stable identifiers; length and contact metrics use live
-geometry.
-
-| Environment | Cells | Simulated time | Stored segments | Live branch points | Candidate contacts |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| In vitro culture | 12 | 72 h | 7,423 | 60 | 11 |
-| Organoid volume | 18 | 72 h | 19,819 | 132 | 0 |
-| Nerve regeneration | 12 | 72 h | 14,927 | 85 | 5 |
-| Biohybrid interface | 14 | 72 h | 19,012 | 148 | 9 |
-
-The final whole-tree audits found **zero solid penetrations, zero other-cell
-soma penetrations, zero world-boundary violations, and zero unrelated-shaft
-penetrations**. The shaft audit checked 881,045 nearby segment pairs. This audit
-does not classify the shared material at a same-cell branch junction as a
-collision. Same-cell near-neighbor recognition is a separate model rule.
-
-The deterministic 4-hour refinement study produced total lengths of
-`58.5195096`, `58.1977368`, and `58.0363653 µm` at timesteps of `0.05`, `0.025`,
-and `0.0125 h`. The coarse-to-fine difference was `0.8325%`; the intermediate
-error was smaller. Playback chunking preserved segment and branch counts, with
-a maximum corresponding endpoint difference of `1.6742 × 10⁻¹¹ µm`.
-
-The no-supply, zero-tension depletion experiment retained a neurite membrane
-reserve ledger residual of `5.6843 × 10⁻¹³ µm²`. Across the four 72-hour studies,
-the largest per-cell ledger residual was `8.7312 × 10⁻¹¹ µm²`. The synthetic
-contact experiment formed its candidate only after `0.3 h` of continuous
-apposition and removed it after separation. The `0.3 h` threshold remains a
-model assumption rather than a fitted biological measurement.
-
-Five matched initial seeds (`101`, `202`, `303`, `404`, `505`) were run for each
-of six 24-hour culture conditions, with four cells per experiment:
-
-| Condition | Mean live total length | Mean live branch points |
-| --- | ---: | ---: |
-| Baseline | 3,741.15 µm | 13.2 |
-| Actin drive set to zero | 2.48 µm | 0 |
-| Microtubule support set to zero | 3.01 µm | 0 |
-| Membrane replenishment set to zero | 497.93 µm | 1.2 |
-| Membrane tension multiplier set to 3 | 2.76 µm | 0 |
-| Branching hazard set to zero | 3,226.92 µm | 0 |
-
-These are causal responses of the implemented equations. Residual length in the
-zero-driver cases is retained initial geometry after retraction. The table does
-not estimate treatment effects in biological neurons. Matched initial seeds
-preserve initial cell placement; subsequent stochastic event streams can diverge
-after an intervention.
+The four environment studies run the complete moving-cell engine for 72 model
+hours. Full-tree audits include finite shafts, conservative soma envelopes,
+solids, world bounds, foreign growth cones and material accounting. The matched
+24-hour neurite interventions clamp soma motion in both arms to isolate tip
+extension from mechanical stretching of an attached root. The separate mechanics
+report studies freely moving cells. A clamped fixture is identified in the report
+and must not be interpreted as a migration experiment.
 
 ## Reproduction
 
-Run `node --test tests/cell-growth.mjs` for the numerical unit and integration
+Run `node --test tests/cell-growth.mjs tests/cell-growth-mechanics.mjs` for the numerical unit and integration
 suite. Run `node scripts/validate-cell-growth.mjs` for the quantitative release
-report saved in `src/data/cell-growth-validation.json`.
+report saved in `src/data/cell-growth-validation.json`. Run
+`node scripts/validate-cell-growth-mechanics.mjs` for the independent mechanical
+report.
 
 The quantitative report records the exact model version, input conditions,
 acceptance criteria, numerical outcomes, source-file hashes, and runtime. Its
