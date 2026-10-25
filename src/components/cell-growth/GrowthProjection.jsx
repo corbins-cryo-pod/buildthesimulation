@@ -1,4 +1,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
+import { coneSurface, VIEW_MODES } from '../../lib/cell-growth/render-geometry.js';
+const hex=n=>`#${n.toString(16).padStart(6,'0')}`;
+const rgb=n=>[(n>>16)&255,(n>>8)&255,n&255];
 
 const mix = (a,b,t) => a+(b-a)*t;
 const distance = (a,b) => Math.hypot(...a.map((v,i)=>v-b[i]));
@@ -8,17 +11,17 @@ const add = (a,b)=>a.map((v,i)=>v+b[i]);
 const mul = (a,s)=>a.map(v=>v*s);
 
 /** Orthographic projection of the solved 3D geometry. No optics/PSF claim. */
-export default function GrowthProjection({ state, selectedCell, selectedTip, onSelect, isolate, showMembrane, showCytoskeleton, showForces, colorMode, thickness=1, cameraAction }) {
+export default function GrowthProjection({ state, selectedCell, selectedTip, onSelect, isolate, showMembrane, showCytoskeleton, showForces, colorMode, thickness=1, cameraAction, inspectionMode='structural',showTrails=true }) {
   const canvas = useRef(null), latest = useRef(null), view = useRef({ yaw:0,pitch:Math.PI/2,center:[0,0,0],extent:300 }), draw = useRef(()=>{}), points=useRef([]), drag=useRef(null);
   const [viewName,setViewName]=useState('Orthographic projection');
-  latest.current={state,selectedCell,selectedTip,onSelect,isolate,showMembrane,showCytoskeleton,showForces,colorMode,thickness};
+  latest.current={state,selectedCell,selectedTip,onSelect,isolate,showMembrane,showCytoskeleton,showForces,colorMode,thickness,inspectionMode,showTrails};
   useEffect(()=>{
     const el=canvas.current;if(!el)return;
     const context=el.getContext('2d');
     draw.current=()=>{
       const d=latest.current,s=d.state,rect=el.getBoundingClientRect(),w=rect.width,h=rect.height;if(!w||!h)return;
       const ratio=Math.min(window.devicePixelRatio||1,2);el.width=Math.round(w*ratio);el.height=Math.round(h*ratio);context.setTransform(ratio,0,0,ratio,0,0);
-      const ctx=context;ctx.fillStyle='#151d1a';ctx.fillRect(0,0,w,h);if(!s)return;
+      const ctx=context,theme=VIEW_MODES[d.inspectionMode]||VIEW_MODES.structural;ctx.fillStyle=hex(theme.background);ctx.fillRect(0,0,w,h);if(!s)return;
       const v=view.current,scale=Math.min(w-50,h-92)/(2*v.extent),cy=Math.cos(v.yaw),sy=Math.sin(v.yaw),cp=Math.cos(v.pitch),sp=Math.sin(v.pitch);
       const project=p=>{const q=p.map((x,i)=>x-v.center[i]),x=q[0]*cy-q[2]*sy,z=q[0]*sy+q[2]*cy;return {x:w/2+x*scale,y:h/2+(z*sp-q[1]*cp)*scale,z:z*cp+q[1]*sp};};
       const path=(vertices,close=false)=>{ctx.beginPath();vertices.forEach((p,i)=>{const a=project(p);i?ctx.lineTo(a.x,a.y):ctx.moveTo(a.x,a.y);});if(close)ctx.closePath();};
@@ -44,26 +47,39 @@ export default function GrowthProjection({ state, selectedCell, selectedTip, onS
       for(const segment of visible){
         const a=project(segment.start),b=project(segment.end),selected=segment.cellId===d.selectedCell;
         const depthFade=s.world.planar?1:.5+.5*Math.max(0,Math.min(1,((a.z+b.z)/2-min[1])/(max[1]-min[1]||1)));
-        const rgb=d.colorMode==='microtubules'?[Math.round(mix(206,124,segment.mt||0)),Math.round(mix(151,201,segment.mt||0)),Math.round(mix(92,154,segment.mt||0))]:segment.kind==='axon'?[143,216,201]:[227,193,131];
+        const shaftRgb=d.inspectionMode==='brightfield'?[98,128,111]:d.colorMode==='microtubules'?[Math.round(mix(206,124,segment.mt||0)),Math.round(mix(151,201,segment.mt||0)),Math.round(mix(92,154,segment.mt||0))]:segment.kind==='axon'?[143,216,201]:[227,193,131];
         const alpha=(selected?1:.7)*depthFade,diameter=Math.max(.45,2*segment.radius*scale*d.thickness);
         records.push({z:(a.z+b.z)/2,draw:()=>{
           ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.lineCap='round';
-          ctx.strokeStyle=`rgba(${rgb.join(',')},${alpha*.13})`;ctx.lineWidth=diameter+2.2;ctx.stroke();
-          ctx.strokeStyle=`rgba(${rgb.join(',')},${alpha})`;ctx.lineWidth=diameter;ctx.stroke();
+          ctx.strokeStyle=`rgba(${shaftRgb.join(',')},${alpha*.13})`;ctx.lineWidth=diameter+2.2;ctx.stroke();
+          ctx.strokeStyle=`rgba(${shaftRgb.join(',')},${alpha})`;ctx.lineWidth=diameter;ctx.stroke();
           if(d.showCytoskeleton&&diameter>1.4){ctx.strokeStyle=`rgba(242,228,171,${alpha*.72})`;ctx.lineWidth=Math.max(.3,diameter*.2);ctx.stroke();}
         }});
         if(selected||segment.parentId===-1)points.current.push({x:(a.x+b.x)/2,y:(a.y+b.y)/2,cellId:segment.cellId,tipId:null});
       }
       for(const cell of s.cells){
         if(d.isolate&&cell.id!==d.selectedCell)continue;
-        const p=project(cell.position),r=cell.radius*scale;
+        const p=project(cell.position),r=(cell.mechanics?.collisionRadius||cell.radius)*scale,selected=cell.id===d.selectedCell;
+        if(d.showTrails&&cell.mechanics?.trail.length>1){path(cell.mechanics.trail.map(q=>q.position));ctx.strokeStyle=d.inspectionMode==='brightfield'?'rgba(70,95,83,.4)':'rgba(135,174,159,.4)';ctx.lineWidth=1;ctx.stroke();}
         records.push({z:p.z,draw:()=>{
-          if(d.showMembrane){
-            const triangles=(cell.membrane?.triangles||[]).map(t=>{const projected=t.map(i=>project(cell.membrane.vertices[i]));return {projected,z:projected.reduce((a,b)=>a+b.z,0)/3};}).sort((a,b)=>a.z-b.z);
-            for(const triangle of triangles){const a=triangle.projected;ctx.beginPath();ctx.moveTo(a[0].x,a[0].y);ctx.lineTo(a[1].x,a[1].y);ctx.lineTo(a[2].x,a[2].y);ctx.closePath();ctx.fillStyle=cell.id===d.selectedCell?'rgba(211,187,131,.22)':'rgba(166,188,152,.17)';ctx.fill();if(d.showCytoskeleton&&r>8){ctx.strokeStyle='rgba(205,210,162,.16)';ctx.lineWidth=.5;ctx.stroke();}}
-          }
-          const nucleus=ctx.createRadialGradient(p.x-r*.18,p.y-r*.2,0,p.x,p.y,r*.5);nucleus.addColorStop(0,cell.id===d.selectedCell?'#cfc29a':'#adbd9b');nucleus.addColorStop(1,'#4a6351');ctx.fillStyle=nucleus;ctx.beginPath();ctx.ellipse(p.x,p.y,r*.46,r*.37,-.4,0,Math.PI*2);ctx.fill();
-          if(cell.id===d.selectedCell){ctx.beginPath();ctx.arc(p.x,p.y,r*1.3+2,0,2*Math.PI);ctx.strokeStyle='rgba(230,219,171,.8)';ctx.lineWidth=.75;ctx.setLineDash([3,4]);ctx.stroke();ctx.setLineDash([]);ctx.font='10px sans-serif';ctx.fillStyle='#e9e3cd';ctx.fillText(`Cell ${String(cell.id+1).padStart(2,'0')}`,p.x+r+6,p.y-6);}
+          const m=cell.membrane,base=rgb(theme.membrane),act=rgb(theme.actin);
+          const triangles=m.triangles.map(t=>{const verts=t.map(i=>m.vertices[i]),projected=verts.map(project),a=verts[0],b=verts[1],c=verts[2],normal=unit(cross(b.map((x,k)=>x-a[k]),c.map((x,k)=>x-a[k]))),light=.4+.6*Math.max(0,normal[0]*.35+normal[1]*.8+normal[2]*.48),activity=t.reduce((sum,i)=>sum+m.actin[i],0)/3;
+            return {t,projected,light,activity,z:projected.reduce((a,b)=>a+b.z,0)/3};}).sort((a,b)=>a.z-b.z);
+          const paint=triangle=>{const a=triangle.projected;ctx.beginPath();ctx.moveTo(a[0].x,a[0].y);ctx.lineTo(a[1].x,a[1].y);ctx.lineTo(a[2].x,a[2].y);ctx.closePath();
+            const amt=d.inspectionMode==='fluorescence'?triangle.activity*.7:triangle.activity*.13;
+            const color=base.map((x,k)=>Math.round(mix(x,act[k],amt)*(.6+.4*triangle.light)));
+            if(d.inspectionMode==='mechanics'){const force=triangle.t.reduce((sum,i)=>sum+Math.hypot(...(m.forces?.[i]||[0,0,0])),0)/3,q=Math.min(1,force/35);color[0]=Math.round(110+125*q);color[1]=Math.round(190-70*q);color[2]=Math.round(194-100*q);}
+            ctx.fillStyle=`rgba(${color.join(',')},${d.showMembrane?(d.inspectionMode==='fluorescence'?.2:d.inspectionMode==='mechanics'?.6:.34):.04})`;ctx.fill();
+            if(d.inspectionMode==='mechanics'&&selected){ctx.strokeStyle='rgba(213,204,175,.22)';ctx.lineWidth=.5;ctx.stroke();}
+          };
+          triangles.filter(t=>t.z<p.z).forEach(paint);
+          const np=project(cell.nucleus?.position||cell.position),nr=(cell.nucleus?.radius||cell.radius*.38)*scale;
+          const nucleus=ctx.createRadialGradient(np.x-nr*.3,np.y-nr*.35,0,np.x,np.y,nr);nucleus.addColorStop(0,hex(theme.nucleus));nucleus.addColorStop(.65,hex(theme.nucleus));nucleus.addColorStop(1,d.inspectionMode==='brightfield'?'#535e65':'#293742');ctx.fillStyle=nucleus;ctx.beginPath();ctx.arc(np.x,np.y,nr,0,Math.PI*2);ctx.fill();ctx.strokeStyle=d.inspectionMode==='fluorescence'?'rgba(123,156,255,.8)':'rgba(160,184,193,.5)';ctx.lineWidth=.8;ctx.stroke();
+          if(d.showCytoskeleton&&selected){for(let i=0;i<m.vertices.length;i+=7){const a=cell.nucleus.position,b=m.vertices[i],fraction=m.mt[i];path([a,a.map((v,k)=>v+(b[k]-v)*(.55+.35*fraction))]);ctx.strokeStyle=`rgba(${rgb(theme.core).join(',')},${.18+.3*fraction})`;ctx.lineWidth=.65;ctx.stroke();}}
+          triangles.filter(t=>t.z>=p.z).forEach(paint);
+          if(d.inspectionMode==='mechanics'){ctx.fillStyle='#ee9079';for(const i of m.contactVertices||[]){const q=project(m.vertices[i]);ctx.beginPath();ctx.arc(q.x,q.y,2,0,Math.PI*2);ctx.fill();}}
+          if(selected){ctx.beginPath();ctx.arc(p.x,p.y,r+3,0,2*Math.PI);ctx.strokeStyle=d.inspectionMode==='brightfield'?'rgba(60,84,71,.65)':'rgba(230,219,171,.55)';ctx.lineWidth=.75;ctx.setLineDash([3,4]);ctx.stroke();ctx.setLineDash([]);ctx.font='10px sans-serif';ctx.fillStyle=d.inspectionMode==='brightfield'?'#354e40':'#e9e3cd';ctx.fillText(`Cell ${String(cell.id+1).padStart(2,'0')}`,p.x+r+6,p.y-6);}
+          if(selected&&(d.showForces||d.inspectionMode==='mechanics')){const f=cell.mechanics.traction,mag=Math.hypot(...f);if(mag>1e-8){const q=project(add(cell.position,mul(f,Math.min(18,mag*.015)/mag)));ctx.strokeStyle='#89cfb2';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();ctx.beginPath();ctx.arc(q.x,q.y,2.5,0,Math.PI*2);ctx.fillStyle='#89cfb2';ctx.fill();}}
         }});
         points.current.push({x:p.x,y:p.y,r:Math.max(r,8),cellId:cell.id,tipId:null});
       }
@@ -72,8 +88,10 @@ export default function GrowthProjection({ state, selectedCell, selectedTip, onS
         const segment=s.segments[tip.segmentId];if(!segment?.alive)continue;
         const p=project(segment.end),end=project(add(segment.end,tip.direction)),angle=Math.atan2(end.y-p.y,end.x-p.x),r=Math.max(.8,tip.radius*scale*d.thickness),selected=tip.id===d.selectedTip;
         records.push({z:p.z+.1,draw:()=>{
-          const color=tip.kind==='axon'?'143,216,201':'227,193,131';ctx.save();ctx.translate(p.x,p.y);ctx.rotate(angle);ctx.fillStyle=`rgba(${color},.38)`;ctx.strokeStyle=`rgba(${color},.72)`;ctx.lineWidth=.55;ctx.beginPath();ctx.ellipse(0,0,r*1.6,r*.85,0,0,2*Math.PI);ctx.fill();
-          if(r>1.2){for(let i=0;i<7;i++){const a=-1.15+i/6*2.3;ctx.beginPath();ctx.moveTo(Math.cos(a)*r*.5,Math.sin(a)*r*.5);ctx.lineTo(Math.cos(a)*r*(2+((tip.id+i*7)%7)/12),Math.sin(a)*r*2.1);ctx.stroke();}}ctx.restore();
+          const color=d.inspectionMode==='brightfield'?'103,137,115':tip.kind==='axon'?'143,216,201':'227,193,131',shape=coneSurface(tip),z=unit(tip.direction),x=unit(cross(Math.abs(z[1])<.9?[0,1,0]:[1,0,0],z)),y=cross(z,x);
+          const vertices=shape.vertices.map(q=>add(segment.end,add(mul(x,q[0]*d.thickness),add(mul(y,q[1]*d.thickness),mul(z,q[2]*d.thickness)))));
+          for(const f of shape.triangles){path(f.map(i=>vertices[i]),true);ctx.fillStyle=`rgba(${color},.3)`;ctx.fill();}
+          for(const probe of tip.filopodia||[]){if(probe.length<.02)continue;path([probe.start,probe.end]);ctx.strokeStyle=probe.blocked?'#ea9f86':hex(theme.actin);ctx.lineWidth=Math.max(.5,2*probe.radius*scale*d.thickness);ctx.lineCap='round';ctx.stroke();}
           if(selected&&d.showForces){const dir=unit([end.x-p.x,end.y-p.y,0]),drawArrow=(sign,pn,color,offset)=>{if(pn<=1e-12)return;const l=Math.max(6,Math.min(45,pn*.3));const start=[p.x,p.y+offset],finish=[start[0]+dir[0]*l*sign,start[1]+dir[1]*l*sign];ctx.beginPath();ctx.moveTo(...start);ctx.lineTo(...finish);ctx.strokeStyle=color;ctx.lineWidth=1.5;ctx.stroke();ctx.beginPath();ctx.moveTo(finish[0]-dir[0]*5*sign-dir[1]*2.5,finish[1]-dir[1]*5*sign+dir[0]*2.5);ctx.lineTo(...finish);ctx.lineTo(finish[0]-dir[0]*5*sign+dir[1]*2.5,finish[1]-dir[1]*5*sign-dir[0]*2.5);ctx.stroke();};drawArrow(1,tip.forces.traction||0,'#b1e5c3',-2);drawArrow(-1,tip.forces.membrane||0,'#e3a087',2);}
         }});points.current.push({x:p.x,y:p.y,r:Math.max(5,r),cellId:tip.cellId,tipId:tip.id});
       }
@@ -81,18 +99,18 @@ export default function GrowthProjection({ state, selectedCell, selectedTip, onS
       for(const contact of s.contacts.filter(c=>c.candidate&&c.status==='candidate'&&(!d.isolate||c.sourceCellId===d.selectedCell||c.targetCellId===d.selectedCell))){const p=project(contact.position);ctx.fillStyle='#e1bde6';ctx.beginPath();ctx.arc(p.x,p.y,2.2,0,2*Math.PI);ctx.fill();}
       if(s.world.cue?.position&&s.config.guidance>0){const p=project(s.world.cue.position);ctx.strokeStyle='rgba(191,157,195,.45)';ctx.lineWidth=.7;for(const radius of [6,12,20]){ctx.beginPath();ctx.arc(p.x,p.y,radius*scale,0,2*Math.PI);ctx.stroke();}ctx.fillStyle='#c2a6c8';ctx.beginPath();ctx.arc(p.x,p.y,1.5,0,2*Math.PI);ctx.fill();}
       const scaleBar=[1,2,5,10,20,50,100,200].filter(n=>n*scale<100).at(-1)||1;
-      ctx.strokeStyle='#bccab7';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(w-25-scaleBar*scale,h-58);ctx.lineTo(w-25,h-58);ctx.stroke();ctx.fillStyle='#b7c6b2';ctx.font='10px sans-serif';ctx.textAlign='right';ctx.fillText(`${scaleBar} µm`,w-25,h-65);ctx.textAlign='left';
+      ctx.strokeStyle=d.inspectionMode==='brightfield'?'#405849':'#bccab7';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(w-25-scaleBar*scale,h-58);ctx.lineTo(w-25,h-58);ctx.stroke();ctx.fillStyle=d.inspectionMode==='brightfield'?'#405849':'#b7c6b2';ctx.font='10px sans-serif';ctx.textAlign='right';ctx.fillText(`${scaleBar} µm`,w-25,h-65);ctx.textAlign='left';
     };
     const resize=new ResizeObserver(()=>draw.current());resize.observe(el);draw.current();
     const wheel=event=>{event.preventDefault();view.current.extent=Math.max(10,Math.min(1500,view.current.extent*Math.exp(event.deltaY*.001)));draw.current();};el.addEventListener('wheel',wheel,{passive:false});
     return()=>{resize.disconnect();el.removeEventListener('wheel',wheel);};
   },[]);
-  useEffect(()=>draw.current(),[state,selectedCell,selectedTip,isolate,showMembrane,showCytoskeleton,showForces,colorMode,thickness]);
+  useEffect(()=>draw.current(),[state,selectedCell,selectedTip,isolate,showMembrane,showCytoskeleton,showForces,colorMode,thickness,inspectionMode,showTrails]);
   useEffect(()=>{
     if(!state)return;const action=cameraAction?.type||'fit',v=view.current;
-    if(action==='cell'){const c=state.cells.find(c=>c.id===selectedCell);if(c)v.center=[...c.position];const ends=state.segments.filter(s=>s.alive&&s.cellId===selectedCell).map(s=>distance(s.end,v.center));v.extent=Math.max(25,Math.min(160,ends.length?Math.max(...ends)*1.1:30));}
+    if(action==='cell'){const c=state.cells.find(c=>c.id===selectedCell);if(c)v.center=[...c.position];const ends=state.segments.filter(s=>s.alive&&s.cellId===selectedCell).map(s=>distance(s.end,v.center));v.extent=14;}
     else if(action==='tip'){const t=state.tips.find(t=>t.id===selectedTip)||state.tips.find(t=>t.cellId===selectedCell&&t.active),s=t&&state.segments[t.segmentId];if(s)v.center=[...s.end];v.extent=18;}
-    else {const {min,max}=state.world.bounds;v.center=min.map((n,i)=>(n+max[i])/2);v.extent=Math.max(max[0]-min[0],max[2]-min[2])*.55;v.yaw=0;v.pitch=action==='top'||state.world.planar?Math.PI/2:.68;}
+    else {const {min,max}=state.world.bounds;v.center=min.map((n,i)=>(n+max[i])/2);const all=[...state.cells.map(c=>c.position),...state.segments.filter(s=>s.alive).map(s=>s.end)];const lo=[0,1,2].map(k=>Math.min(...all.map(p=>p[k]))),hi=[0,1,2].map(k=>Math.max(...all.map(p=>p[k])));v.center=lo.map((x,k)=>(x+hi[k])/2);v.extent=Math.max(35,Math.max(...hi.map((x,k)=>x-lo[k]))*.6+15);v.yaw=0;v.pitch=action==='top'||state.world.planar?Math.PI/2:.68;}
     setViewName(action==='top'||state.world.planar?'Plan projection · x–z':'Volume projection · rotatable');draw.current();
   },[cameraAction,state?.config.mode,state?.config.seed]);
   return <><canvas class="cg-projection" ref={canvas} role="img" aria-label="Measured orthographic projection of the solved neuron geometry. Drag to rotate, shift-drag to pan, scroll to zoom, or click a cell to inspect it."
