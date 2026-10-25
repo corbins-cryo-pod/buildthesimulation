@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 // Anatomy is display context. The conductor model uses an explicitly labeled plane.
+const displayRadiusMm = { x: 7.2, y: 5.8 };
+const insideDisplayEllipse = ([xUm, yUm]) => (xUm / (displayRadiusMm.x * 1000)) ** 2 + (yUm / (displayRadiusMm.y * 1000)) ** 2 <= 1;
 const curvature = (x, y) => (x * x + y * y) / 24;
 const position = (xUm, yUm, gapUm = 0) => new THREE.Vector3(xUm / 1000, yUm / 1000, curvature(xUm / 1000, yUm / 1000) + gapUm / 1000);
 
@@ -41,11 +43,15 @@ export function createRetinalScene(host, { onSelect = () => {}, onUnavailable = 
 
   function buildAnatomy(data, eye) {
     release(anatomy); release(labels);
-    const n = 80, vertices = [], indices = [];
-    for (let iy = 0; iy <= n; iy++) for (let ix = 0; ix <= n; ix++) { const x = -7.2 + ix / n * 14.4, y = -5.8 + iy / n * 11.6; vertices.push(x, y, curvature(x, y)); }
-    for (let iy = 0; iy < n; iy++) for (let ix = 0; ix < n; ix++) {
-      const x = -7.2 + (ix + .5) / n * 14.4, y = -5.8 + (iy + .5) / n * 11.6; if (x * x / 7.2 ** 2 + y * y / 5.8 ** 2 > 1) continue;
-      const a = iy * (n + 1) + ix, b = a + 1, c = a + n + 1, d = c + 1; indices.push(a, b, d, a, d, c);
+    const rings = 40, sectors = 160, vertices = [0, 0, curvature(0, 0)], indices = [];
+    for (let ring = 1; ring <= rings; ring++) for (let sector = 0; sector < sectors; sector++) {
+      const angle = sector / sectors * Math.PI * 2, radius = ring / rings;
+      const x = displayRadiusMm.x * radius * Math.cos(angle), y = displayRadiusMm.y * radius * Math.sin(angle); vertices.push(x, y, curvature(x, y));
+    }
+    for (let sector = 0; sector < sectors; sector++) indices.push(0, 1 + sector, 1 + (sector + 1) % sectors);
+    for (let ring = 1; ring < rings; ring++) for (let sector = 0; sector < sectors; sector++) {
+      const inner = 1 + (ring - 1) * sectors, outer = inner + sectors, next = (sector + 1) % sectors;
+      indices.push(inner + sector, outer + sector, outer + next, inner + sector, outer + next, inner + next);
     }
     const surface = new THREE.BufferGeometry(); surface.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3)); surface.setIndex(indices); surface.computeVertexNormals();
     anatomy.add(new THREE.Mesh(surface, new THREE.MeshStandardMaterial({ color: '#8d7e58', roughness: .95, side: THREE.DoubleSide, transparent: true, opacity: .55, depthWrite: false })));
@@ -62,7 +68,7 @@ export function createRetinalScene(host, { onSelect = () => {}, onUnavailable = 
   function buildFibers(data, eye) {
     release(fibers); const paths = data?.bundles ?? data?.paths ?? [], points = [], mirror = (data?.eye ?? 'RE') !== eye ? -1 : 1;
     for (const item of paths) { const path = Array.isArray(item) ? item : item.points ?? [];
-      for (let i = 1; i < path.length; i++) { const a = path[i - 1], b = path[i]; if (Math.abs(a[0]) > 7200 || Math.abs(b[0]) > 7200 || Math.abs(a[1]) > 5800 || Math.abs(b[1]) > 5800) continue; const p = position(a[0] * mirror, a[1], 9), q = position(b[0] * mirror, b[1], 9); points.push(p.x, p.y, p.z, q.x, q.y, q.z); }
+      for (let i = 1; i < path.length; i++) { const a = path[i - 1], b = path[i]; if (!insideDisplayEllipse(a) || !insideDisplayEllipse(b)) continue; const p = position(a[0] * mirror, a[1], 9), q = position(b[0] * mirror, b[1], 9); points.push(p.x, p.y, p.z, q.x, q.y, q.z); }
     }
     const geometry = new THREE.BufferGeometry(); geometry.setAttribute('position', new THREE.Float32BufferAttribute(points, 3)); fibers.add(new THREE.LineSegments(geometry, new THREE.LineBasicMaterial({ color: '#dcc38b', opacity: .43, transparent: true, depthWrite: false })));
   }

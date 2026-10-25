@@ -71,8 +71,27 @@ test('exports validate versions/settings, ignore imported results and reject sta
 test('all seven presets calculate finite outputs and restore to the same settings',async()=>{
   for(const preset of PRESETS){const config=c(preset.config),r=await simulateExperiment(config,reference);assert(r.field.potentialMv.every(Number.isFinite),preset.id);assert(r.percept.brightness.every(Number.isFinite),preset.id);close(r.metrics.netSourceCurrentUa,0,1e-8);assert.deepEqual(parseExperiment(JSON.stringify(exportExperiment(config,r))),config);}
 });
-test('worker cancellation rejects the old promise and ignores stale messages',async()=>{
-  const workers=[];class FakeWorker{constructor(){workers.push(this);}postMessage(message){this.message=message;}terminate(){this.terminated=true;}}
-  const client=createRetinalClient({workerFactory:()=>new FakeWorker()});const first=client.run(DEFAULT_CONFIG);const rejection=assert.rejects(first,{name:'AbortError'});client.cancel();await rejection;assert(workers[0].terminated);
-  const next=client.run(DEFAULT_CONFIG);workers[0].onmessage({data:{type:'result',id:1,result:'stale'}});workers[1].onmessage({data:{type:'result',id:2,result:'fresh'}});assert.equal(await next,'fresh');client.dispose();await assert.rejects(()=>client.run(DEFAULT_CONFIG),/disposed/);
+test('idle cancellation retains the completed worker; active cancellation rejects and ignores stale messages',async()=>{
+  const workers=[];class FakeWorker{constructor(){this.terminated=false;workers.push(this);}postMessage(message){this.message=message;}terminate(){this.terminated=true;}}
+  const client=createRetinalClient({workerFactory:()=>new FakeWorker()});
+
+  const first=client.run(DEFAULT_CONFIG),cachedWorker=workers[0];
+  cachedWorker.onmessage({data:{type:'result',id:cachedWorker.message.id,result:'first'}});
+  assert.equal(await first,'first');
+  client.cancel();client.cancel(); // Editing settings and then running both request cancellation.
+  assert.equal(cachedWorker.terminated,false,'Idle cancellation must preserve the worker and its checked reference caches.');
+  const second=client.run({...DEFAULT_CONFIG,gapUm:250});
+  assert.equal(workers.length,1,'A subsequent run must reuse the completed worker.');
+  cachedWorker.onmessage({data:{type:'result',id:cachedWorker.message.id,result:'second'}});
+  assert.equal(await second,'second');
+
+  const cancelled=client.run(DEFAULT_CONFIG),cancelledId=cachedWorker.message.id;
+  const rejection=assert.rejects(cancelled,{name:'AbortError'});client.cancel();await rejection;
+  assert.equal(cachedWorker.terminated,true,'Cancelling active work must terminate its worker.');
+  const next=client.run(DEFAULT_CONFIG);assert.equal(workers.length,2);
+  cachedWorker.onmessage({data:{type:'result',id:cancelledId,result:'stale'}});
+  workers[1].onmessage({data:{type:'result',id:workers[1].message.id,result:'fresh'}});
+  assert.equal(await next,'fresh');
+  client.dispose();assert.equal(workers[1].terminated,true,'Disposal must terminate even an idle worker.');
+  await assert.rejects(()=>client.run(DEFAULT_CONFIG),/disposed/);
 });

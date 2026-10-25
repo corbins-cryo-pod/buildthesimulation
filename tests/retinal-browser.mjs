@@ -83,7 +83,16 @@ test('retinal browser: native input, scientific workers, WebGL, presets, exports
     // Every launch experiment executes through the browser's actual numerical worker.
     const presetIds = await evaluate(`Array.from(document.querySelectorAll('[data-ri-preset]'), e => e.dataset.riPreset)`);
     const presetResults = [];
-    for (const id of presetIds) { await click(`[data-ri-preset="${id}"]`); await ready(); const report = await exportJSON(); assert.equal(report.allFinite, true); assert(Math.abs(report.metric.netSourceCurrentUa) < 1e-7); assert(Math.abs(report.metric.netChargeNc) < 1e-7); presetResults.push({ id, settings: report.settings, metrics: report.metric }); }
+    for (const id of presetIds) {
+      await click(`[data-ri-preset="${id}"]`); await ready(); const report = await exportJSON();
+      assert.equal(report.allFinite, true); assert(Math.abs(report.metric.netSourceCurrentUa) < 1e-7); assert(Math.abs(report.metric.netChargeNc) < 1e-7);
+      const scaleCaption = await evaluate(`document.querySelector('.ri-comparison-scale').textContent`);
+      if (report.settings.perceptModel === 'biphasic') {
+        assert.match(scaleCaption, /Brightness is not comparable across these model families/);
+        assert.match(scaleCaption, /empirical model units/); assert.match(scaleCaption, /spatial drive units/);
+      } else assert.doesNotMatch(scaleCaption, /Brightness is not comparable/);
+      presetResults.push({ id, settings: report.settings, metrics: report.metric });
+    }
     assert.equal(presetResults.length, 7);
 
     // Start dirty so ready() cannot accept the pre-import result while File.text() resolves.
