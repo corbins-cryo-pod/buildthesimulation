@@ -12,7 +12,8 @@ def bundle(entry):
         def imp(m):
             dep=posixpath.normpath(posixpath.join(posixpath.dirname(name),m[2]))
             add(dep)
-            return 'const '+m[1]+' = __require('+json.dumps(dep)+');'
+            names=re.sub(r'\b(\w+)\s+as\s+(\w+)\b', r'\1: \2', m[1])
+            return 'const '+names+' = __require('+json.dumps(dep)+');'
         source=re.sub(r'import (\{[^;]+\}) from [\'\"]([^\'\"]+)[\'\"];',imp,source)
         def exp(m):
             out=[]
@@ -31,7 +32,7 @@ def bundle(entry):
     out.append('return __require('+json.dumps(entry)+');})();')
     return '\n'.join(out)
 def main():
-    page=(ROOT/'src/page.html').read_text()
+    page=(ROOT/'src/page.html').read_text().replace('<!--ADVANCED_WORKSPACE-->',(ROOT/'src/advanced/workspace.html').read_text())
     style=(ROOT/'src/styles.css').read_text()
     if 'data:font' in style or 'base64,' in style:raise ValueError('Do not bundle font programs')
     page=page.replace('</head>','<style>\n'+style+'\n</style>\n</head>')
@@ -41,6 +42,7 @@ def main():
     audit=ROOT/'validation/current-summary.json'
     if audit.exists():content.append('<script id="current-validation-data" type="application/json">'+audit.read_text().replace('</','<\\/')+'</script>')
     content.append('<script id="worker-source" type="text/plain">'+bundle('src/worker.js').replace('</script','<\\/script')+'</script>')
+    content.append('<script id="advanced-worker-source" type="text/plain">'+bundle('src/advanced/worker.js').replace('</script','<\\/script')+'</script>')
     content.append('<script>'+bundle('src/app.js').replace('</script','<\\/script')+'</script>')
     page=page.replace('</body>','\n'.join(content)+'\n</body>')
     (ROOT/'optogenetics-laboratory.html').write_text(page)

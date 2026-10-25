@@ -1,0 +1,14 @@
+{
+  "schema": "microfabrication-1",
+  "config": {
+    "traceWidthUm": 12,
+    "siteDiameterUm": 48,
+    "openingDiameterUm": 36,
+    "pitchUm": 64,
+    "metalThicknessNm": 200,
+    "baseThicknessUm": 10,
+    "topThicknessUm": 10
+  },
+  "stage": 9,
+  "assumptions": "Example provenance record only, not a computed fabrication result. It supplies no LED output, efficiency, spectrum, fabricated dimensions or heat path."
+}

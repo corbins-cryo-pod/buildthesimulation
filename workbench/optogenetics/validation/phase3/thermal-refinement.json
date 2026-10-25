@@ -1,0 +1,81 @@
+{
+  "manufacturedContinuumMode": [
+    {
+      "n": 17,
+      "spacingUm": 40,
+      "dtMs": 0.025,
+      "expected": 0.5653512351488025,
+      "actual": 0.5663402314085374,
+      "error": 0.00098899625973492
+    },
+    {
+      "n": 25,
+      "spacingUm": 26.666666666666668,
+      "dtMs": 0.025,
+      "expected": 0.5653512351488025,
+      "actual": 0.5657653410402981,
+      "error": 0.0004141058914955975
+    },
+    {
+      "n": 33,
+      "spacingUm": 20,
+      "dtMs": 0.025,
+      "expected": 0.5653512351488025,
+      "actual": 0.5655640733413058,
+      "error": 0.00021283819250328406
+    }
+  ],
+  "microledRefinement": [
+    {
+      "n": 25,
+      "spacingUm": 80,
+      "dtMs": 0.5,
+      "extentUm": 1920,
+      "maximumC": 0.5570018003697438,
+      "somaPeakC": 0.13747738301753998,
+      "energyResidualJ": 1.5223680147609687e-19,
+      "opticalAbsorbedMw": 0.0011081400697136934
+    },
+    {
+      "n": 25,
+      "spacingUm": 80,
+      "dtMs": 0.25,
+      "extentUm": 1920,
+      "maximumC": 0.5523623161558294,
+      "somaPeakC": 0.1372399479150772,
+      "energyResidualJ": 6.779886629117385e-19,
+      "opticalAbsorbedMw": 0.0011081400697136934
+    },
+    {
+      "n": 33,
+      "spacingUm": 60,
+      "dtMs": 0.5,
+      "extentUm": 1920,
+      "maximumC": 0.9769043192387444,
+      "somaPeakC": 0.151362344622612,
+      "energyResidualJ": 2.692559747824423e-19,
+      "opticalAbsorbedMw": 0.0017884380803839424
+    },
+    {
+      "n": 41,
+      "spacingUm": 48,
+      "dtMs": 0.5,
+      "extentUm": 1920,
+      "maximumC": 1.0122928944692797,
+      "somaPeakC": 0.1735992431640625,
+      "energyResidualJ": 4.1641512806838243e-19,
+      "opticalAbsorbedMw": 0.0014060438082591116
+    },
+    {
+      "n": 33,
+      "spacingUm": 80,
+      "dtMs": 0.5,
+      "extentUm": 2560,
+      "maximumC": 0.5570018003698057,
+      "somaPeakC": 0.13747738301753998,
+      "energyResidualJ": 2.63857380514615e-19,
+      "opticalAbsorbedMw": 0.001135615224128675
+    }
+  ],
+  "interpretation": "Continuum diffusion test verifies spatial discretization. LED hotspot peaks are unresolved and grid-deposition dependent, not converged device/tissue temperatures."
+}

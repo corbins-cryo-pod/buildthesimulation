@@ -1,0 +1,49 @@
+{
+  "schema": "bts-neural-interface",
+  "version": 1,
+  "units": "um",
+  "name": "Four contacts for explicit optical conversion",
+  "contacts": [
+    {
+      "id": "E1",
+      "x": -120,
+      "y": 0,
+      "shape": "square",
+      "w": 22,
+      "h": 22,
+      "rotation": 0
+    },
+    {
+      "id": "E2",
+      "x": -40,
+      "y": 0,
+      "shape": "square",
+      "w": 22,
+      "h": 22,
+      "rotation": 0
+    },
+    {
+      "id": "E3",
+      "x": 40,
+      "y": 0,
+      "shape": "square",
+      "w": 22,
+      "h": 22,
+      "rotation": 0
+    },
+    {
+      "id": "E4",
+      "x": 120,
+      "y": 0,
+      "shape": "square",
+      "w": 22,
+      "h": 22,
+      "rotation": 0
+    }
+  ],
+  "routing": {
+    "material": "Au",
+    "dielectric": "Parylene-C",
+    "substrateThickness": 10
+  }
+}

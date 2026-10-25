@@ -1,0 +1,65 @@
+{
+  "schema": "bts-opto-device/1",
+  "units": "um",
+  "name": "Explicit two-color optical device",
+  "emitters": [
+    {
+      "id": "LED-1",
+      "enabled": true,
+      "positionUm": [
+        -70,
+        -60,
+        0
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "widthUm": 22,
+      "heightUm": 22,
+      "rotationDeg": 0,
+      "powerMw": 0.02,
+      "wavelengthNm": 470,
+      "efficiency": 0.065
+    },
+    {
+      "id": "LED-2",
+      "enabled": true,
+      "positionUm": [
+        -70,
+        60,
+        0
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "widthUm": 22,
+      "heightUm": 22,
+      "rotationDeg": 0,
+      "powerMw": 0.02,
+      "wavelengthNm": 590,
+      "efficiency": 0.065
+    }
+  ],
+  "contacts": [
+    {
+      "id": "REC-1",
+      "positionUm": [
+        -70,
+        0,
+        0
+      ],
+      "widthUm": 20,
+      "heightUm": 20,
+      "shape": "square",
+      "rotationDeg": 0
+    }
+  ],
+  "metadata": {
+    "notice": "Generic assumed emitter properties; recording contact is a display marker only.",
+    "wallPlugEfficiency": "Uncalibrated assumed fraction; not evidence for this color/device."
+  }
+}
