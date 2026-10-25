@@ -40,7 +40,13 @@ export function runExperiment(input, uploaded = null, onProgress = () => {}) {
   const surviving = fibers.filter(x => x.alive), recruited = surviving.filter(x => x.spikeTimesMs.length), spikeCount = surviving.reduce((sum, f) => sum + f.spikeTimesMs.length, 0);
   const allocation = processor.bands.map((band, index) => ({ ...band, label: geometry.contacts[index].label, positionMm: geometry.contacts[index].positionMm[0], placeHz: geometry.contacts[index].placeHz, mismatchSemitones: frequencyMismatchSemitones(geometry.contacts[index].placeHz, band.centerHz) }));
   return { version: MODEL_VERSION, settings, audio: { ...audio, fingerprint: audioFingerprint(audio.samples, audio.sampleRate) }, processor, geometry, leadFields, fibers, allocation, durationMs,
-    model: { ...NERVE_PROVENANCE, compartmentCount: model.compartmentCount, positionsMm: model.positionsMm, type: model.type, somaIndex: model.somaIndex, detectionIndex: model.detectionIndex, stimulationNodeIndex: model.stimulationNodeIndex },
+    // The completed result replaces the draft model in the anatomical views.
+    // Preserve its actual physical geometry across the worker transfer; these
+    // are output metadata from the solved model, not new solver parameters.
+    model: { ...NERVE_PROVENANCE, compartmentCount: model.compartmentCount,
+      positionsMm: model.positionsMm, lengthMm: model.lengthMm, edgeDiameterMm: model.edgeDiameterMm,
+      totalLengthMm: model.totalLengthMm, type: model.type, somaIndex: model.somaIndex, somaIndices: model.somaIndices,
+      detectionIndex: model.detectionIndex, stimulationNodeIndex: model.stimulationNodeIndex },
     metrics: { surviving: surviving.length, recruited: recruited.length, modeled: fibers.length, spikeCount, recruitmentFraction: surviving.length ? recruited.length / surviving.length : null, elapsedMs: performance.now() - started, totalCompartments: surviving.length * model.compartmentCount } };
 }
 export function scanChannels(input, onProgress = () => {}) {
