@@ -142,7 +142,7 @@ export function createNeuronAnatomyScene(geometry, model, selectedFiber = 0) {
   const scene = {
     mode: 'neuron', units: 'mm', up: [0, 1, 0],
     title: 'Spiral-ganglion neuron',
-    subtitle: `${somaIndices.length} soma compartments · ${(somaLength * 1000).toFixed(0)} µm model soma · physical scale`,
+    subtitle: `${somaIndices.length} soma compartments · ${(somaLength * 1000).toFixed(0)} micrometre model soma · physical scale`,
     provenanceLabel: 'Published cable dimensions; reconstructed glial and myelin context',
     meshes: [], paths: [], markers: [], labels: [], legend: [], notes: [],
     sources: NEURON_ANATOMY_SOURCES,
