@@ -11,6 +11,13 @@ const directory = 'dist/models/devices';
 await fs.mkdir(directory, {recursive:true});
 const index = [];
 for (const model of Object.values(deviceModels)) {
+  if (model.licensedGlb) {
+    // Licensed mesh: ship the third-party GLB unchanged instead of a procedural export.
+    const licensed = await fs.readFile(path.join('public', model.licensedGlb));
+    await fs.writeFile(path.join(directory, `${model.id}.glb`), licensed);
+    index.push({deviceId:model.deviceId, id:model.id, name:model.name, revision:model.revision, visualRevision:model.visualRevision ?? model.revision, scope:model.modeledScope ?? model.specs[0][1], glb:`/models/devices/${model.id}.glb`, geometry:null, preview:`/models/devices/${model.id}.webp`, glbUnits:'meters', licensed:{source:model.licensedModel.source, mesh:model.licensedModel.meshName, license:model.licensedModel.license, url:model.licensedModel.url}});
+    continue;
+  }
   const {group} = buildDeviceMesh(model);
   try {
     const bytes = await exportDeviceGlb(group);

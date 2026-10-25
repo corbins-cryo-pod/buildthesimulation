@@ -51,7 +51,24 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       host.append(renderer.domElement);
       cleanup = () => { renderer.dispose?.(); renderer.domElement.remove(); };
       const scene = new THREE.Scene();
-      const { group, bodies, contacts } = buildDeviceMesh(model);
+      let group: any, bodies: any, contacts: any;
+      if (model.licensedGlb) {
+        // Licensed third-party mesh (see model.licensedModel): GLB authored in
+        // meters, converted unchanged from the published mesh. Scaled to the
+        // viewer's millimeter convention; contact/insulation split by mesh name.
+        const { GLTFLoader } = await import('three/addons/loaders/GLTFLoader.js');
+        const gltf = await new GLTFLoader().loadAsync(model.licensedGlb);
+        group = gltf.scene;
+        group.scale.setScalar(1000);
+        bodies = new THREE.Group(); contacts = new THREE.Group();
+        for (const child of [...group.children]) {
+          if (child.isMesh) (child.name.startsWith('contact-') ? contacts : bodies).add(child);
+        }
+        group.add(bodies, contacts);
+        group.traverse((object: any) => { if (object.isMesh && !object.geometry.attributes.normal) object.geometry.computeVertexNormals(); });
+      } else {
+        ({ group, bodies, contacts } = buildDeviceMesh(model));
+      }
       scene.add(group);
       let environment: any;
       cleanup = () => { disposeDeviceMesh(group); environment?.dispose(); renderer.dispose?.(); renderer.domElement.remove(); };
@@ -74,7 +91,18 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
       const center = bounds.getCenter(new THREE.Vector3());
       const extent = bounds.getSize(new THREE.Vector3()).length();
       const viewBounds = { min: bounds.min.toArray(), max: bounds.max.toArray() };
-      const sites = getContactGeometry(model);
+      const sites = model.licensedGlb
+        ? (() => {
+            group.updateMatrixWorld(true);
+            const derived: any[] = [];
+            contacts.traverse((object: any) => {
+              if (!object.isMesh) return;
+              const box = new THREE.Box3().setFromObject(object);
+              derived.push({ positionMm: box.getCenter(new THREE.Vector3()).toArray() });
+            });
+            return derived;
+          })()
+        : getContactGeometry(model);
       const camera = new THREE.PerspectiveCamera(MODEL_FOV, 1, 0.0001, 500);
       camera.up.set(0, 0, 1);
       const controls = new OrbitControls(camera, renderer.domElement);
@@ -171,7 +199,7 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
 
   if (!model) return null;
   return <section class="device-model" id="model-3d" aria-label="3D device geometry">
-    <div class="model-heading"><span class="model-kicker">3D GEOMETRY · REFERENCE MODEL</span><h3>{model.name}</h3><p>{model.modeledScope ?? (model.kind === 'chip-envelope' ? 'Package envelope only' : model.id === 'neuropixels-opto-electrical-window' ? 'Electrical crop only; optics omitted' : 'Electrode-bearing structure')} · dimensions in millimeters</p></div>
+    <div class="model-heading"><span class="model-kicker">{model.licensedGlb ? '3D GEOMETRY · LICENSED REFERENCE MESH' : '3D GEOMETRY · REFERENCE MODEL'}</span><h3>{model.name}</h3><p>{model.modeledScope ?? (model.kind === 'chip-envelope' ? 'Package envelope only' : model.id === 'neuropixels-opto-electrical-window' ? 'Electrical crop only; optics omitted' : 'Electrode-bearing structure')} · dimensions in millimeters</p></div>
     <div class="model-stage">
       <div ref={mount} class="model-canvas" />
       <div class="model-view-label" aria-hidden="true"><span />{viewLabel}</div>
@@ -203,9 +231,10 @@ export default function DeviceModelViewer({ deviceId }: { deviceId: string }) {
     <p class="model-note"><strong>Model fidelity.</strong> {model.notes}</p>
     <p class="model-finish-note">Color, transparency and surface finish approximate the references. Use Highlight contacts to inspect electrode locations.</p>
     <div class="model-controls">
-      <button onClick={() => download(JSON.stringify(exportGeometry(model), null, 2), `${model.id}.json`, 'application/json')}>Download geometry JSON</button>
-      <a class="model-download" href={`/models/devices/${model.id}.glb`} download>Download 3D model (.glb)</a>
+      {!model.licensedGlb && <button onClick={() => download(JSON.stringify(exportGeometry(model), null, 2), `${model.id}.json`, 'application/json')}>Download geometry JSON</button>}
+      <a class="model-download" href={model.licensedGlb ?? `/models/devices/${model.id}.glb`} download>Download 3D model (.glb)</a>
     </div>
+    {model.licensedModel && <p class="model-note"><strong>Model license.</strong> Interactive geometry and GLB: {model.licensedModel.meshName} mesh from the <a href={model.licensedModel.url} target="_blank" rel="noopener noreferrer">{model.licensedModel.source}</a> (<a href={model.licensedModel.site} target="_blank" rel="noopener noreferrer">lead-dbs.org</a>), {model.licensedModel.license}. Converted from the published mesh without geometric changes; not manufacturer CAD. Meshes are named contact-1…N and insulation-1…N; contacts highlight above. Full-lead model; the documented measurements in the specs table come from the cited manufacturer and FDA sources.</p>}
     {(model.kind === 'surface-grid' || (implantedKinds.has(model.kind) && model.kind !== 'exposed-wire')) && <p class="model-note">Contact meshes use a 10 nm display separation to prevent surface flicker in 3D exports. Geometry JSON retains the nominal measured surfaces.</p>}
     <details class="model-sources"><summary>Sources &amp; reference images</summary>
       <p>Dimensions come from the linked specifications; images guide shape only. Reference images remain on their owners’ websites.</p>
