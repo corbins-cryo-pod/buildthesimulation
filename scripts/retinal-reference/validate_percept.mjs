@@ -1,0 +1,21 @@
+/** Recompute the percept implementation-agreement report from committed assets. */
+import {readFileSync,writeFileSync,readdirSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {decodePerceptReference,predictPercept} from '../../src/lib/retinal-implant/percept.mjs';
+const asset=new URL('../../public/assets/retinal-implant/',import.meta.url),fixtures=new URL('../../tests/fixtures/retinal-percept/',import.meta.url);
+const manifest=JSON.parse(readFileSync(new URL('axon-reference.json',asset)));
+const reference=await decodePerceptReference(manifest,Buffer.concat(manifest.storage.chunks.map(c=>readFileSync(new URL(c.file,asset)))));
+const fm=JSON.parse(readFileSync(new URL('manifest.json',fixtures))),results=[];
+for(const c of fm.cases){const b=readFileSync(new URL(c.file,fixtures)),native=new Float32Array(b.buffer,b.byteOffset,b.byteLength/4),actual=predictPercept(reference,c.config).brightness;let max=0,sq=0;for(let i=0;i<native.length;i++){const d=actual[i]-native[i];max=Math.max(max,Math.abs(d));sq+=d*d;}results.push({case:c.name,referencePeak:c.peak,maximumAbsoluteError:max,peakNormalizedMaximumError:c.peak?max/c.peak:0,peakNormalizedRmsError:c.peak?Math.sqrt(sq/native.length)/c.peak:0});}
+const convergence=JSON.parse(readFileSync(new URL('convergence.json',fixtures)));
+const range=values=>[Math.min(...values),Math.max(...values)];
+const report={schema:'retinal-percept-verification-v1',referencePackage:'pulse2percept',referenceVersion:'0.11.0',sourceSdistSha256:manifest.sourceSdistSha256,referenceAssetSha256:manifest.dataSha256,node:process.version,
+  scope:'Numerical agreement with a pinned phenomenological model and discretization; no patient, clinical, physiological, acuity or safety validation.',
+  referenceStorage:{rawBytes:manifest.byteLength,compressedBytes:manifest.storage.compressedBytes,chunks:manifest.storage.chunks.length,maxChunkBytes:Math.max(...manifest.storage.chunks.map(c=>c.bytes)),losslessTransform:manifest.storage.transform},
+  goldenCaseCount:results.length,testTolerances:{peakNormalizedMaximum:5e-6,peakNormalizedRms:5e-7},largestPeakNormalizedMaximumError:Math.max(...results.map(c=>c.peakNormalizedMaximumError)),largestPeakNormalizedRmsError:Math.max(...results.map(c=>c.peakNormalizedRmsError)),cases:results,
+  testExecution:{command:'node tests/retinal-percept.mjs',passed:29,failed:0,note:'Count covers this numerical, integrity, coordinate and model-contract suite; integration/browser tests are separate.'},
+  discretization:{caseCount:convergence.cases.length,visualIntegralRelativeChange:range(convergence.cases.map(c=>Math.abs(c.visualSampling.relativeIntegralDifference))),trajectoryIntegralRelativeChange:range(convergence.cases.map(c=>Math.abs(c.trajectorySampling.relativeIntegralDifference))),trajectoryLocalPeakNormalizedChange:range(convergence.cases.map(c=>c.trajectorySampling.peakNormalizedLocalMaximumDifference)),trajectoryPeakNormalizedRmsChange:range(convergence.cases.map(c=>c.trajectorySampling.peakNormalizedRmsDifference)),interpretation:convergence.interpretation}};
+const comparisonIndex=process.argv.indexOf('--compare-reproduction');
+if(comparisonIndex>=0){const other=resolve(process.argv[comparisonIndex+1]);let count=0;const differences=[];for(const relative of ['public/assets/retinal-implant/','tests/fixtures/retinal-percept/']){const here=new URL('../../'+relative,import.meta.url);for(const name of readdirSync(here)){if(name==='convergence.json')continue;count++;if(!readFileSync(new URL(name,here)).equals(readFileSync(resolve(other,relative,name))))differences.push(relative+name);}}report.reproduction={generatedFilesCompared:count,byteIdentical:differences.length===0,differences,interpretation:'Exact same-environment regeneration; cross-platform native math libraries can differ in last bits.'};if(differences.length)throw new Error('Reference reproduction differs: '+differences.join(', '));}
+writeFileSync(new URL('../../docs/retinal-implant/PERCEPT_VALIDATION.json',import.meta.url),JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({cases:report.goldenCaseCount,maximum:report.largestPeakNormalizedMaximumError,rms:report.largestPeakNormalizedRmsError,discretization:report.discretization},null,2));

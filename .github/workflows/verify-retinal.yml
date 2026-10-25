@@ -1,0 +1,64 @@
+name: Verify retinal laboratory
+on:
+  pull_request:
+    paths:
+      - 'src/lib/retinal-implant/**'
+      - 'src/components/RetinalImplantLaboratory.jsx'
+      - 'src/styles/retinal-implant.css'
+      - 'src/pages/simulations/retinal-implant/**'
+      - 'public/assets/retinal-implant/**'
+      - 'tests/retinal-*.mjs'
+      - 'tests/fixtures/retinal-*/**'
+      - 'scripts/retinal-reference/**'
+      - 'scripts/verify-retinal-build.mjs'
+      - 'docs/retinal-implant/**'
+      - '.github/workflows/verify-retinal.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reference-and-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: scripts/retinal-reference/requirements.txt
+      - name: Install application and pinned references
+        run: |
+          npm ci
+          python -m pip install -r scripts/retinal-reference/requirements.txt
+      - name: Reproduce independent scientific references
+        run: |
+          python scripts/retinal-reference/generate.py
+          python -W error scripts/retinal-reference/field_reference.py
+          python -W error -m unittest discover -s scripts/retinal-reference -p 'test_field_reference.py' -v
+          git diff --exit-code -- public/assets/retinal-implant tests/fixtures/retinal-percept tests/fixtures/retinal-field/independent-reference.json
+      - name: Verify complete numerical experiments
+        run: node --test tests/retinal-field.mjs tests/retinal-percept.mjs tests/retinal-experiment.mjs
+      - name: Verify real workers, WebGL and responsive controls
+        env:
+          RETINAL_REQUIRE_BROWSER: '1'
+          RETINAL_QA_DIR: retinal-browser-artifacts
+        run: node --test tests/retinal-browser.mjs
+      - name: Verify production build and reference assets
+        run: |
+          npx astro build
+          node scripts/verify-retinal-build.mjs
+      - name: Save browser verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: retinal-browser-verification
+          path: retinal-browser-artifacts
+          if-no-files-found: ignore

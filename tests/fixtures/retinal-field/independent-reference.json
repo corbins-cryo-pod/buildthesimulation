@@ -1,0 +1,2090 @@
+{
+  "schema": "retinal-field-independent-reference-v1",
+  "method": "Analytical complete-elliptic angular integration and adaptive radial quadrature.",
+  "model": "Uniform source disks in homogeneous isotropic full space; no insulating backing.",
+  "referenceTolerances": {
+    "absolute": 2e-11,
+    "relative": 2e-11
+  },
+  "referenceEnvironment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "cases": [
+    {
+      "name": "unit-h0.025-r0",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 2.5,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 620.9031906620173,
+        "exVm": 0.0,
+        "eyVm": 0.0,
+        "ezVm": -6207.092493202061,
+        "currentDensityAm2": 1241.4184986404123
+      }
+    },
+    {
+      "name": "unit-h0.025-r0.25",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 2.5,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 25.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 610.8461933753331,
+        "exVm": 814.3477937444836,
+        "eyVm": 0.0,
+        "ezVm": -6199.18009619051,
+        "currentDensityAm2": 1250.4878439102251
+      }
+    },
+    {
+      "name": "unit-h0.025-r0.5",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 2.5,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 50.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 579.0722588434304,
+        "exVm": 1766.8142099113802,
+        "eyVm": 0.0,
+        "ezVm": -6168.090496400737,
+        "currentDensityAm2": 1283.2298753400946
+      }
+    },
+    {
+      "name": "unit-h0.025-r0.8",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 2.5,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 80.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 501.8177192872877,
+        "exVm": 3625.5978349377547,
+        "eyVm": 0.0,
+        "ezVm": -6008.513807169103,
+        "currentDensityAm2": 1403.526954948099
+      }
+    },
+    {
+      "name": "unit-h0.025-r0.95",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 2.5,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 95.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 432.38316702411714,
+        "exVm": 6114.10888540039,
+        "eyVm": 0.0,
+        "ezVm": -5296.864508201862,
+        "currentDensityAm2": 1617.888761080694
+      }
+    },
+    {
+      "name": "unit-h0.025-r1",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 2.5,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 100,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 397.52545734363036,
+        "exVm": 7637.50547266727,
+        "eyVm": 0.0,
+        "ezVm": -3036.990301792303,
+        "currentDensityAm2": 1643.834540800296
+      }
+    },
+    {
+      "name": "unit-h0.025-r1.05",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 2.5,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 105.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 363.24235192306907,
+        "exVm": 5914.160000083193,
+        "eyVm": 0.0,
+        "ezVm": -817.6151842194882,
+        "currentDensityAm2": 1194.081791102273
+      }
+    },
+    {
+      "name": "unit-h0.025-r1.2",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 2.5,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 120.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 298.06612428588375,
+        "exVm": 3318.7872753895936,
+        "eyVm": 0.0,
+        "ezVm": -168.3413345620151,
+        "currentDensityAm2": 664.610796909289
+      }
+    },
+    {
+      "name": "unit-h0.025-r1.5",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 2.5,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 150.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 226.53794670847182,
+        "exVm": 1747.2668818383277,
+        "eyVm": 0.0,
+        "ezVm": -45.25846504374282,
+        "currentDensityAm2": 349.5705871509872
+      }
+    },
+    {
+      "name": "unit-h0.025-r3",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 2.5,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 300,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 107.63796507659517,
+        "exVm": 369.4825294225668,
+        "eyVm": 0.0,
+        "ezVm": -3.3633746210684166,
+        "currentDensityAm2": 73.89956747839317
+      }
+    },
+    {
+      "name": "unit-h0.025-r10",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 2.5,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 1000,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 31.87082674163363,
+        "exVm": 31.950802256499795,
+        "eyVm": 0.0,
+        "ezVm": -0.08048136992668511,
+        "currentDensityAm2": 6.390180723844538
+      }
+    },
+    {
+      "name": "unit-h0.1-r0",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 10.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 576.1329757872905,
+        "exVm": 0.0,
+        "eyVm": 0.0,
+        "ezVm": -5732.737374147055,
+        "currentDensityAm2": 1146.547474829411
+      }
+    },
+    {
+      "name": "unit-h0.1-r0.25",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 10.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 25.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 566.2224729709743,
+        "exVm": 801.9097365681579,
+        "eyVm": 0.0,
+        "ezVm": -5701.877835996899,
+        "currentDensityAm2": 1151.5983689157517
+      }
+    },
+    {
+      "name": "unit-h0.1-r0.5",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 10.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 50.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 535.0209706434536,
+        "exVm": 1729.3095955105052,
+        "eyVm": 0.0,
+        "ezVm": -5581.9543138636345,
+        "currentDensityAm2": 1168.7382194347124
+      }
+    },
+    {
+      "name": "unit-h0.1-r0.8",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 10.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 80.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 460.58018156366825,
+        "exVm": 3403.6397299884447,
+        "eyVm": 0.0,
+        "ezVm": -5016.493002934453,
+        "currentDensityAm2": 1212.4349955366042
+      }
+    },
+    {
+      "name": "unit-h0.1-r0.95",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 10.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 95.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 399.9239629348077,
+        "exVm": 4687.152406363874,
+        "eyVm": 0.0,
+        "ezVm": -3676.673738022313,
+        "currentDensityAm2": 1191.4248185487093
+      }
+    },
+    {
+      "name": "unit-h0.1-r1",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 10.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 100,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 375.9264350363592,
+        "exVm": 4842.368425373378,
+        "eyVm": 0.0,
+        "ezVm": -2739.320619951303,
+        "currentDensityAm2": 1112.6977923217687
+      }
+    },
+    {
+      "name": "unit-h0.1-r1.05",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 10.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 105.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 352.27033784912305,
+        "exVm": 4555.739217039356,
+        "eyVm": 0.0,
+        "ezVm": -1823.6948335364198,
+        "currentDensityAm2": 981.4402204828941
+      }
+    },
+    {
+      "name": "unit-h0.1-r1.2",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 10.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 120.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 295.0543829311326,
+        "exVm": 3134.51480159117,
+        "eyVm": 0.0,
+        "ezVm": -614.1860343494938,
+        "currentDensityAm2": 638.8241550280982
+      }
+    },
+    {
+      "name": "unit-h0.1-r1.5",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 10.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 150.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 225.6977037966365,
+        "exVm": 1720.9350024468727,
+        "eyVm": 0.0,
+        "ezVm": -177.49766169909944,
+        "currentDensityAm2": 346.0128727406231
+      }
+    },
+    {
+      "name": "unit-h0.1-r3",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 10.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 300,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 107.57496404088224,
+        "exVm": 368.79432979009584,
+        "eyVm": 0.0,
+        "ezVm": -13.426959585445765,
+        "currentDensityAm2": 73.80773426383855
+      }
+    },
+    {
+      "name": "unit-h0.1-r10",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 10.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 1000,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 31.869317824195324,
+        "exVm": 31.94624147525589,
+        "eyVm": 0.0,
+        "ezVm": -0.3218792958285881,
+        "currentDensityAm2": 6.38957260128232
+      }
+    },
+    {
+      "name": "unit-h0.25-r0",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 25.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 497.057698115157,
+        "exVm": 0.0,
+        "eyVm": 0.0,
+        "ezVm": -4822.167979659221,
+        "currentDensityAm2": 964.4335959318441
+      }
+    },
+    {
+      "name": "unit-h0.25-r0.25",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 25.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 25.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 487.9038697806555,
+        "exVm": 738.0553720422771,
+        "eyVm": 0.0,
+        "ezVm": -4754.864859485327,
+        "currentDensityAm2": 962.3609627196831
+      }
+    },
+    {
+      "name": "unit-h0.25-r0.5",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 25.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 50.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 459.5650811403795,
+        "exVm": 1546.992257815682,
+        "eyVm": 0.0,
+        "ezVm": -4506.748870595668,
+        "currentDensityAm2": 952.9736707455668
+      }
+    },
+    {
+      "name": "unit-h0.25-r0.8",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 25.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 80.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 396.6646934806721,
+        "exVm": 2657.4580247177173,
+        "eyVm": 0.0,
+        "ezVm": -3634.478228213703,
+        "currentDensityAm2": 900.4779873932736
+      }
+    },
+    {
+      "name": "unit-h0.25-r0.95",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 25.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 95.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 353.4773288686931,
+        "exVm": 3035.2744437959777,
+        "eyVm": 0.0,
+        "ezVm": -2687.1636857627946,
+        "currentDensityAm2": 810.7709818004902
+      }
+    },
+    {
+      "name": "unit-h0.25-r1",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 25.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 100,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 338.2472151416378,
+        "exVm": 3044.3079228692727,
+        "eyVm": 0.0,
+        "ezVm": -2307.6376752021342,
+        "currentDensityAm2": 764.015768665986
+      }
+    },
+    {
+      "name": "unit-h0.25-r1.05",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 25.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 105.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 323.15776702583213,
+        "exVm": 2979.825628311651,
+        "eyVm": 0.0,
+        "ezVm": -1936.4436682771072,
+        "currentDensityAm2": 710.7510071903782
+      }
+    },
+    {
+      "name": "unit-h0.25-r1.2",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 25.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 120.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 281.67094761530427,
+        "exVm": 2510.2164153526664,
+        "eyVm": 0.0,
+        "ezVm": -1082.7424174689816,
+        "currentDensityAm2": 546.754701653038
+      }
+    },
+    {
+      "name": "unit-h0.25-r1.5",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 25.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 150.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 221.27235537722143,
+        "exVm": 1590.803638650503,
+        "eyVm": 0.0,
+        "ezVm": -400.888971742731,
+        "currentDensityAm2": 328.10779840830514
+      }
+    },
+    {
+      "name": "unit-h0.25-r3",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 25.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 300,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 107.22444023180196,
+        "exVm": 364.98416719541086,
+        "eyVm": 0.0,
+        "ezVm": -33.20028525188503,
+        "currentDensityAm2": 73.29821314169511
+      }
+    },
+    {
+      "name": "unit-h0.25-r10",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 25.0,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 1000,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 31.860871885255666,
+        "exVm": 31.92072134103299,
+        "eyVm": 0.0,
+        "ezVm": -0.8040521802273457,
+        "currentDensityAm2": 6.386169276930913
+      }
+    },
+    {
+      "name": "unit-h1-r0",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 100,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 263.6965437895248,
+        "exVm": 0.0,
+        "eyVm": 0.0,
+        "ezVm": -1864.6161428902835,
+        "currentDensityAm2": 372.92322857805675
+      }
+    },
+    {
+      "name": "unit-h1-r0.25",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 100,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 25.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 260.21078727011354,
+        "exVm": 276.3572285686435,
+        "eyVm": 0.0,
+        "ezVm": -1812.1371018945342,
+        "currentDensityAm2": 366.617740642477
+      }
+    },
+    {
+      "name": "unit-h1-r0.5",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 100,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 50.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 250.13469620694474,
+        "exVm": 521.8839584622546,
+        "eyVm": 0.0,
+        "ezVm": -1658.73269364751,
+        "currentDensityAm2": 347.77906866718456
+      }
+    },
+    {
+      "name": "unit-h1-r0.8",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 100,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 80.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 231.0606345346283,
+        "exVm": 730.1019222673596,
+        "eyVm": 0.0,
+        "ezVm": -1366.6504097775442,
+        "currentDensityAm2": 309.8891517587296
+      }
+    },
+    {
+      "name": "unit-h1-r0.95",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 100,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 95.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 219.64792861861065,
+        "exVm": 785.8229748235791,
+        "eyVm": 0.0,
+        "ezVm": -1195.5037142649594,
+        "currentDensityAm2": 286.129123200131
+      }
+    },
+    {
+      "name": "unit-h1-r1",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 100,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 100,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 215.68995302045775,
+        "exVm": 796.739428236066,
+        "eyVm": 0.0,
+        "ezVm": -1137.5195884117236,
+        "currentDensityAm2": 277.75849441745686
+      }
+    },
+    {
+      "name": "unit-h1-r1.05",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 100,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 105.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 211.68671282623862,
+        "exVm": 803.9506096047808,
+        "eyVm": 0.0,
+        "ezVm": -1079.8048587374824,
+        "currentDensityAm2": 269.24450714077517
+      }
+    },
+    {
+      "name": "unit-h1-r1.2",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 100,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 120.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 199.58218397914325,
+        "exVm": 805.1583531009055,
+        "eyVm": 0.0,
+        "ezVm": -912.2628799583664,
+        "currentDensityAm2": 243.35188807306142
+      }
+    },
+    {
+      "name": "unit-h1-r1.5",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 100,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 150.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 176.23439984994693,
+        "exVm": 739.9053888180779,
+        "eyVm": 0.0,
+        "ezVm": -627.2795347014212,
+        "currentDensityAm2": 194.00408233408518
+      }
+    },
+    {
+      "name": "unit-h1-r3",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 100,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 300,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 101.54326880642111,
+        "exVm": 307.4570682918043,
+        "eyVm": 0.0,
+        "ezVm": -110.80833743216313,
+        "currentDensityAm2": 65.36308942731253
+      }
+    },
+    {
+      "name": "unit-h1-r10",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 100,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 1000,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 31.71118432082385,
+        "exVm": 31.470718712392674,
+        "eyVm": 0.0,
+        "ezVm": -3.1706430821722043,
+        "currentDensityAm2": 6.326006999139565
+      }
+    },
+    {
+      "name": "unit-h4-r0",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 400,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 78.37147535788375,
+        "exVm": 0.0,
+        "eyVm": 0.0,
+        "ezVm": -190.07874760943903,
+        "currentDensityAm2": 38.015749521887805
+      }
+    },
+    {
+      "name": "unit-h4-r0.25",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 400,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 25.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 78.22992243459214,
+        "exVm": 11.295384482081712,
+        "eyVm": 0.0,
+        "ezVm": -189.08111317879926,
+        "currentDensityAm2": 37.88363925049015
+      }
+    },
+    {
+      "name": "unit-h4-r0.5",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 400,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 50.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 77.80955693760905,
+        "exVm": 22.249568776777043,
+        "eyVm": 0.0,
+        "ezVm": -186.1368902192012,
+        "currentDensityAm2": 37.492391340765394
+      }
+    },
+    {
+      "name": "unit-h4-r0.8",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 400,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 80.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 76.95527824791867,
+        "exVm": 34.50427496341128,
+        "eyVm": 0.0,
+        "ezVm": -180.23847590886572,
+        "currentDensityAm2": 36.702290494573475
+      }
+    },
+    {
+      "name": "unit-h4-r0.95",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 400,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 95.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 76.39502872541071,
+        "exVm": 40.13351396798334,
+        "eyVm": 0.0,
+        "ezVm": -176.43198620370097,
+        "currentDensityAm2": 36.1878126994165
+      }
+    },
+    {
+      "name": "unit-h4-r1",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 400,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 100,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 76.18986518735562,
+        "exVm": 41.92449462939787,
+        "eyVm": 0.0,
+        "ezVm": -175.05028542577767,
+        "currentDensityAm2": 36.00014759835112
+      }
+    },
+    {
+      "name": "unit-h4-r1.05",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 400,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 105.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 75.97585896106226,
+        "exVm": 43.67037011387377,
+        "eyVm": 0.0,
+        "ezVm": -173.61601979098197,
+        "currentDensityAm2": 35.804817303790486
+      }
+    },
+    {
+      "name": "unit-h4-r1.2",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 400,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 120.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 75.28310054608437,
+        "exVm": 48.62541997531777,
+        "eyVm": 0.0,
+        "ezVm": -169.02206801549593,
+        "currentDensityAm2": 35.17549769030196
+      }
+    },
+    {
+      "name": "unit-h4-r1.5",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 400,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 150.0,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 73.69131243402639,
+        "exVm": 57.18617142929001,
+        "eyVm": 0.0,
+        "ezVm": -158.74891276410133,
+        "currentDensityAm2": 33.746985350709124
+      }
+    },
+    {
+      "name": "unit-h4-r3",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 400,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 300,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 63.36628997851389,
+        "exVm": 73.89317961586143,
+        "eyVm": 0.0,
+        "ezVm": -101.50381403039292,
+        "currentDensityAm2": 25.11033751781011
+      }
+    },
+    {
+      "name": "unit-h4-r10",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 0,
+          "yUm": 0,
+          "zUm": 400,
+          "radiusUm": 100,
+          "currentUa": 80
+        }
+      ],
+      "point": {
+        "xUm": 1000,
+        "yUm": 0,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": 29.57298352860767,
+        "exVm": 25.5031938558689,
+        "eyVm": 0.0,
+        "ezVm": -10.267652099114308,
+        "currentDensityAm2": 5.49850007357816
+      }
+    },
+    {
+      "name": "rotated-physical-0",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 125,
+          "yUm": -250,
+          "zUm": 25,
+          "radiusUm": 50,
+          "currentUa": -80
+        }
+      ],
+      "point": {
+        "xUm": 169.35922000427297,
+        "yUm": -239.87529750498769,
+        "zUm": 0
+      },
+      "conductivitySm": 0.05,
+      "expected": {
+        "potentialMv": -2427.757819418502,
+        "exVm": -27633.90431553969,
+        "eyVm": -6307.2583319437545,
+        "ezVm": 33495.46255078629,
+        "currentDensityAm2": 2193.9463227694314
+      }
+    },
+    {
+      "name": "rotated-physical-1",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 125,
+          "yUm": -250,
+          "zUm": 75,
+          "radiusUm": 75,
+          "currentUa": -70
+        }
+      ],
+      "point": {
+        "xUm": 178.35999867844305,
+        "yUm": -207.44682102314144,
+        "zUm": 0
+      },
+      "conductivitySm": 0.1,
+      "expected": {
+        "potentialMv": -519.7945554726875,
+        "exVm": -1883.5040413799918,
+        "eyVm": -1502.0443508530063,
+        "ezVm": 3863.3496772785343,
+        "currentDensityAm2": 455.29326191755075
+      }
+    },
+    {
+      "name": "rotated-physical-2",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 125,
+          "yUm": -250,
+          "zUm": 125,
+          "radiusUm": 112.5,
+          "currentUa": -60
+        }
+      ],
+      "point": {
+        "xUm": 169.41884779216002,
+        "yUm": -157.76331214848983,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": -139.77360264161192,
+        "exVm": -169.24912532256153,
+        "eyVm": -351.44943008345183,
+        "ezVm": 664.0302528687989,
+        "currentDensityAm2": 154.02573097420267
+      }
+    },
+    {
+      "name": "rotated-physical-3",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 125,
+          "yUm": -250,
+          "zUm": 175,
+          "radiusUm": 150,
+          "currentUa": -50
+        }
+      ],
+      "point": {
+        "xUm": 125.00000000000001,
+        "yUm": -113.5,
+        "zUm": 0
+      },
+      "conductivitySm": 0.3,
+      "expected": {
+        "potentialMv": -56.55245130402001,
+        "exVm": 0.0,
+        "eyVm": -112.6451768851063,
+        "ezVm": 197.37510825756598,
+        "currentDensityAm2": 68.17718262853526
+      }
+    },
+    {
+      "name": "rotated-physical-4",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 125,
+          "yUm": -250,
+          "zUm": 225,
+          "radiusUm": 200,
+          "currentUa": -40
+        }
+      ],
+      "point": {
+        "xUm": 46.03315948060444,
+        "yUm": -86.02366604175972,
+        "zUm": 0
+      },
+      "conductivitySm": 0.5,
+      "expected": {
+        "potentialMv": -20.81138504908881,
+        "exVm": 13.999364300102405,
+        "eyVm": -29.06997950757356,
+        "ezVm": 55.32625948575571,
+        "currentDensityAm2": 32.02358856399023
+      }
+    },
+    {
+      "name": "rotated-physical-5",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 125,
+          "yUm": -250,
+          "zUm": 275,
+          "radiusUm": 225,
+          "currentUa": -30
+        }
+      ],
+      "point": {
+        "xUm": -35.07999603532903,
+        "yUm": -122.34046306942423,
+        "zUm": 0
+      },
+      "conductivitySm": 0.7,
+      "expected": {
+        "potentialMv": -9.419591406428363,
+        "exVm": 9.314195406997294,
+        "eyVm": -7.427822975931063,
+        "ezVm": 21.47300188373578,
+        "currentDensityAm2": 17.189477422795765
+      }
+    },
+    {
+      "name": "rotated-physical-6",
+      "sources": [
+        {
+          "id": "S",
+          "xUm": 125,
+          "yUm": -250,
+          "zUm": 325,
+          "radiusUm": 250,
+          "currentUa": -20
+        }
+      ],
+      "point": {
+        "xUm": -96.79610002136491,
+        "yUm": -199.37648752493854,
+        "zUm": 0
+      },
+      "conductivitySm": 1,
+      "expected": {
+        "potentialMv": -3.8036406332426007,
+        "exVm": 3.9477658153864152,
+        "eyVm": -0.9010517857824577,
+        "ezVm": 7.585898292620907,
+        "currentDensityAm2": 8.598988438170162
+      }
+    },
+    {
+      "name": "balanced-multiple-0",
+      "sources": [
+        {
+          "id": "S0",
+          "xUm": -350,
+          "yUm": 175,
+          "zUm": 25,
+          "radiusUm": 100,
+          "currentUa": -80
+        },
+        {
+          "id": "S1",
+          "xUm": 225,
+          "yUm": -150,
+          "zUm": 25,
+          "radiusUm": 112.5,
+          "currentUa": -40
+        },
+        {
+          "id": "R",
+          "xUm": 12000,
+          "yUm": 0,
+          "zUm": 25,
+          "radiusUm": 250,
+          "currentUa": 120
+        }
+      ],
+      "point": {
+        "xUm": -250,
+        "yUm": -125,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": -131.366601434353,
+        "exVm": -32.41534653330043,
+        "eyVm": 306.8830500171319,
+        "ezVm": 31.9251497199442,
+        "currentDensityAm2": 62.047458050538154
+      }
+    },
+    {
+      "name": "balanced-multiple-1",
+      "sources": [
+        {
+          "id": "S0",
+          "xUm": -350,
+          "yUm": 175,
+          "zUm": 75,
+          "radiusUm": 100,
+          "currentUa": -80
+        },
+        {
+          "id": "S1",
+          "xUm": 225,
+          "yUm": -150,
+          "zUm": 75,
+          "radiusUm": 112.5,
+          "currentUa": -40
+        },
+        {
+          "id": "R0",
+          "xUm": 6000.0,
+          "yUm": 0.0,
+          "zUm": 75,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R1",
+          "xUm": 4242.640687119286,
+          "yUm": 4242.640687119285,
+          "zUm": 75,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R2",
+          "xUm": 3.6739403974420595e-13,
+          "yUm": 6000.0,
+          "zUm": 75,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R3",
+          "xUm": -4242.640687119285,
+          "yUm": 4242.640687119286,
+          "zUm": 75,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R4",
+          "xUm": -6000.0,
+          "yUm": 7.347880794884119e-13,
+          "zUm": 75,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R5",
+          "xUm": -4242.640687119286,
+          "yUm": -4242.640687119285,
+          "zUm": 75,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R6",
+          "xUm": -1.1021821192326177e-12,
+          "yUm": -6000.0,
+          "zUm": 75,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R7",
+          "xUm": 4242.640687119284,
+          "yUm": -4242.640687119286,
+          "zUm": 75,
+          "radiusUm": 250,
+          "currentUa": 15
+        }
+      ],
+      "point": {
+        "xUm": -150,
+        "yUm": -75,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": -131.03265690873798,
+        "exVm": -80.2581562230894,
+        "eyVm": 209.01621955452015,
+        "ezVm": 96.15554523085557,
+        "currentDensityAm2": 48.73398836780602
+      }
+    },
+    {
+      "name": "balanced-multiple-2",
+      "sources": [
+        {
+          "id": "S0",
+          "xUm": -350,
+          "yUm": 175,
+          "zUm": 125,
+          "radiusUm": 100,
+          "currentUa": -80
+        },
+        {
+          "id": "S1",
+          "xUm": 225,
+          "yUm": -150,
+          "zUm": 125,
+          "radiusUm": 112.5,
+          "currentUa": -40
+        },
+        {
+          "id": "R",
+          "xUm": 12000,
+          "yUm": 0,
+          "zUm": 125,
+          "radiusUm": 250,
+          "currentUa": 120
+        }
+      ],
+      "point": {
+        "xUm": -50,
+        "yUm": -25,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": -129.01601104174424,
+        "exVm": -47.68342358587242,
+        "eyVm": 58.39719544146896,
+        "ezVm": 139.42478909387518,
+        "currentDensityAm2": 31.700607649804084
+      }
+    },
+    {
+      "name": "balanced-multiple-3",
+      "sources": [
+        {
+          "id": "S0",
+          "xUm": -350,
+          "yUm": 175,
+          "zUm": 175,
+          "radiusUm": 100,
+          "currentUa": -80
+        },
+        {
+          "id": "S1",
+          "xUm": 225,
+          "yUm": -150,
+          "zUm": 175,
+          "radiusUm": 112.5,
+          "currentUa": -40
+        },
+        {
+          "id": "R0",
+          "xUm": 6000.0,
+          "yUm": 0.0,
+          "zUm": 175,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R1",
+          "xUm": 4242.640687119286,
+          "yUm": 4242.640687119285,
+          "zUm": 175,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R2",
+          "xUm": 3.6739403974420595e-13,
+          "yUm": 6000.0,
+          "zUm": 175,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R3",
+          "xUm": -4242.640687119285,
+          "yUm": 4242.640687119286,
+          "zUm": 175,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R4",
+          "xUm": -6000.0,
+          "yUm": 7.347880794884119e-13,
+          "zUm": 175,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R5",
+          "xUm": -4242.640687119286,
+          "yUm": -4242.640687119285,
+          "zUm": 175,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R6",
+          "xUm": -1.1021821192326177e-12,
+          "yUm": -6000.0,
+          "zUm": 175,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R7",
+          "xUm": 4242.640687119284,
+          "yUm": -4242.640687119286,
+          "zUm": 175,
+          "radiusUm": 250,
+          "currentUa": 15
+        }
+      ],
+      "point": {
+        "xUm": 50,
+        "yUm": 25,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": -113.67892893484962,
+        "exVm": -34.037318550542444,
+        "eyVm": -47.22537496391701,
+        "ezVm": 165.53412530976425,
+        "currentDensityAm2": 35.0943424139347
+      }
+    },
+    {
+      "name": "balanced-multiple-4",
+      "sources": [
+        {
+          "id": "S0",
+          "xUm": -350,
+          "yUm": 175,
+          "zUm": 225,
+          "radiusUm": 100,
+          "currentUa": -80
+        },
+        {
+          "id": "S1",
+          "xUm": 225,
+          "yUm": -150,
+          "zUm": 225,
+          "radiusUm": 112.5,
+          "currentUa": -40
+        },
+        {
+          "id": "R",
+          "xUm": 12000,
+          "yUm": 0,
+          "zUm": 225,
+          "radiusUm": 250,
+          "currentUa": 120
+        }
+      ],
+      "point": {
+        "xUm": 150,
+        "yUm": 75,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": -101.54546688448816,
+        "exVm": -60.46231601017968,
+        "eyVm": -77.56768814466345,
+        "ezVm": 147.36504419148093,
+        "currentDensityAm2": 35.43382234587724
+      }
+    },
+    {
+      "name": "balanced-multiple-5",
+      "sources": [
+        {
+          "id": "S0",
+          "xUm": -350,
+          "yUm": 175,
+          "zUm": 275,
+          "radiusUm": 100,
+          "currentUa": -80
+        },
+        {
+          "id": "S1",
+          "xUm": 225,
+          "yUm": -150,
+          "zUm": 275,
+          "radiusUm": 112.5,
+          "currentUa": -40
+        },
+        {
+          "id": "R0",
+          "xUm": 6000.0,
+          "yUm": 0.0,
+          "zUm": 275,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R1",
+          "xUm": 4242.640687119286,
+          "yUm": 4242.640687119285,
+          "zUm": 275,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R2",
+          "xUm": 3.6739403974420595e-13,
+          "yUm": 6000.0,
+          "zUm": 275,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R3",
+          "xUm": -4242.640687119285,
+          "yUm": 4242.640687119286,
+          "zUm": 275,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R4",
+          "xUm": -6000.0,
+          "yUm": 7.347880794884119e-13,
+          "zUm": 275,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R5",
+          "xUm": -4242.640687119286,
+          "yUm": -4242.640687119285,
+          "zUm": 275,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R6",
+          "xUm": -1.1021821192326177e-12,
+          "yUm": -6000.0,
+          "zUm": 275,
+          "radiusUm": 250,
+          "currentUa": 15
+        },
+        {
+          "id": "R7",
+          "xUm": 4242.640687119284,
+          "yUm": -4242.640687119286,
+          "zUm": 275,
+          "radiusUm": 250,
+          "currentUa": 15
+        }
+      ],
+      "point": {
+        "xUm": 250,
+        "yUm": 125,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": -80.81483595759072,
+        "exVm": -72.35774128643318,
+        "eyVm": -64.94405571314438,
+        "ezVm": 105.63469675169945,
+        "currentDensityAm2": 28.71380312976315
+      }
+    },
+    {
+      "name": "balanced-multiple-6",
+      "sources": [
+        {
+          "id": "S0",
+          "xUm": -350,
+          "yUm": 175,
+          "zUm": 325,
+          "radiusUm": 100,
+          "currentUa": -80
+        },
+        {
+          "id": "S1",
+          "xUm": 225,
+          "yUm": -150,
+          "zUm": 325,
+          "radiusUm": 112.5,
+          "currentUa": -40
+        },
+        {
+          "id": "R",
+          "xUm": 12000,
+          "yUm": 0,
+          "zUm": 325,
+          "radiusUm": 250,
+          "currentUa": 120
+        }
+      ],
+      "point": {
+        "xUm": 350,
+        "yUm": 175,
+        "zUm": 0
+      },
+      "conductivitySm": 0.2,
+      "expected": {
+        "potentialMv": -70.50395272659186,
+        "exVm": -66.74118687113386,
+        "eyVm": -46.498829635530626,
+        "ezVm": 71.28824947573507,
+        "currentDensityAm2": 21.631959408020677
+      }
+    }
+  ]
+}

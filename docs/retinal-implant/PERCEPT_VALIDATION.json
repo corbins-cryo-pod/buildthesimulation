@@ -1,0 +1,169 @@
+{
+  "schema": "retinal-percept-verification-v1",
+  "referencePackage": "pulse2percept",
+  "referenceVersion": "0.11.0",
+  "sourceSdistSha256": "8a9ba4997212ca1b9e386814808c4aadf2a6ba5427664f3961911ab461104b34",
+  "referenceAssetSha256": "3e0a5a4e8ebf3aa6e1576452b2d19e97ebdaca701414b6df25049b907ef2a79d",
+  "node": "v24.22.1",
+  "scope": "Numerical agreement with a pinned phenomenological model and discretization; no patient, clinical, physiological, acuity or safety validation.",
+  "referenceStorage": {
+    "rawBytes": 4647808,
+    "compressedBytes": 2017055,
+    "chunks": 31,
+    "maxChunkBytes": 65536,
+    "losslessTransform": "xor-halves-byte-shuffle-8"
+  },
+  "goldenCaseCount": 16,
+  "testTolerances": {
+    "peakNormalizedMaximum": 0.000005,
+    "peakNormalizedRms": 5e-7
+  },
+  "largestPeakNormalizedMaximumError": 2.2415257438110913e-7,
+  "largestPeakNormalizedRmsError": 2.74314382612078e-8,
+  "cases": [
+    {
+      "case": "scoreboard-center",
+      "referencePeak": 100,
+      "maximumAbsoluteError": 0.000003814697265625,
+      "peakNormalizedMaximumError": 3.814697265625e-8,
+      "peakNormalizedRmsError": 2.522615287976219e-9
+    },
+    {
+      "case": "axon-center-detailed",
+      "referencePeak": 99.92469787597656,
+      "maximumAbsoluteError": 0.00000762939453125,
+      "peakNormalizedMaximumError": 7.635143956821733e-8,
+      "peakNormalizedRmsError": 4.17505522170125e-9
+    },
+    {
+      "case": "axon-asymmetric-right",
+      "referencePeak": 118.84580993652344,
+      "maximumAbsoluteError": 0.00000762939453125,
+      "peakNormalizedMaximumError": 6.419573845577665e-8,
+      "peakNormalizedRmsError": 5.806832417518482e-9
+    },
+    {
+      "case": "axon-asymmetric-left",
+      "referencePeak": 119.15447998046875,
+      "maximumAbsoluteError": 0.00000762939453125,
+      "peakNormalizedMaximumError": 6.402943919943736e-8,
+      "peakNormalizedRmsError": 5.57182857089199e-9
+    },
+    {
+      "case": "axon-peripheral-streak",
+      "referencePeak": 118.07886505126953,
+      "maximumAbsoluteError": 0.00000762939453125,
+      "peakNormalizedMaximumError": 6.461270209480195e-8,
+      "peakNormalizedRmsError": 5.6444293670898496e-9
+    },
+    {
+      "case": "axon-dense-pattern",
+      "referencePeak": 136.14645385742188,
+      "maximumAbsoluteError": 0.000030517578125,
+      "peakNormalizedMaximumError": 2.2415257438110913e-7,
+      "peakNormalizedRmsError": 2.74314382612078e-8
+    },
+    {
+      "case": "axon-edge-clipped",
+      "referencePeak": 99.92141723632812,
+      "maximumAbsoluteError": 0.00000762939453125,
+      "peakNormalizedMaximumError": 7.635394635371729e-8,
+      "peakNormalizedRmsError": 5.419246582093367e-9
+    },
+    {
+      "case": "axon-zero",
+      "referencePeak": 0,
+      "maximumAbsoluteError": 0,
+      "peakNormalizedMaximumError": 0,
+      "peakNormalizedRmsError": 0
+    },
+    {
+      "case": "biphasic-center",
+      "referencePeak": 0.624971866607666,
+      "maximumAbsoluteError": 2.9802322387695312e-8,
+      "peakNormalizedMaximumError": 4.768586232443019e-8,
+      "peakNormalizedRmsError": 5.029022080377273e-9
+    },
+    {
+      "case": "biphasic-short-phase",
+      "referencePeak": 0.40520724654197693,
+      "maximumAbsoluteError": 5.960464477539063e-8,
+      "peakNormalizedMaximumError": 1.470966901111823e-7,
+      "peakNormalizedRmsError": 7.533497352234813e-9
+    },
+    {
+      "case": "biphasic-long-phase",
+      "referencePeak": 0.9063501954078674,
+      "maximumAbsoluteError": 5.960464477539063e-8,
+      "peakNormalizedMaximumError": 6.57633716828051e-8,
+      "peakNormalizedRmsError": 7.3225322923126105e-9
+    },
+    {
+      "case": "biphasic-frequency",
+      "referencePeak": 1.6076267957687378,
+      "maximumAbsoluteError": 1.1920928955078125e-7,
+      "peakNormalizedMaximumError": 7.415234049627641e-8,
+      "peakNormalizedRmsError": 5.19607875185369e-9
+    },
+    {
+      "case": "biphasic-asymmetric-right",
+      "referencePeak": 0.598813533782959,
+      "maximumAbsoluteError": 5.960464477539063e-8,
+      "peakNormalizedMaximumError": 9.953790522876597e-8,
+      "peakNormalizedRmsError": 9.370382460806838e-9
+    },
+    {
+      "case": "biphasic-asymmetric-left-detailed",
+      "referencePeak": 0.6006239652633667,
+      "maximumAbsoluteError": 5.960464477539063e-8,
+      "peakNormalizedMaximumError": 9.923787298306466e-8,
+      "peakNormalizedRmsError": 9.82224953709479e-9
+    },
+    {
+      "case": "biphasic-scoreboard",
+      "referencePeak": 0.5992743968963623,
+      "maximumAbsoluteError": 5.960464477539063e-8,
+      "peakNormalizedMaximumError": 9.946135707462665e-8,
+      "peakNormalizedRmsError": 8.32652606118152e-9
+    },
+    {
+      "case": "biphasic-zero-frequency",
+      "referencePeak": 0,
+      "maximumAbsoluteError": 0,
+      "peakNormalizedMaximumError": 0,
+      "peakNormalizedRmsError": 0
+    }
+  ],
+  "testExecution": {
+    "command": "node tests/retinal-percept.mjs",
+    "passed": 29,
+    "failed": 0,
+    "note": "Count covers this numerical, integrity, coordinate and model-contract suite; integration/browser tests are separate."
+  },
+  "discretization": {
+    "caseCount": 3,
+    "visualIntegralRelativeChange": [
+      0.0002851276469352691,
+      0.006405948100294198
+    ],
+    "trajectoryIntegralRelativeChange": [
+      0.0012054767731944015,
+      0.011637125632991283
+    ],
+    "trajectoryLocalPeakNormalizedChange": [
+      0.18087728610408704,
+      0.2684083849712664
+    ],
+    "trajectoryPeakNormalizedRmsChange": [
+      0.005577575047307169,
+      0.009648442607903698
+    ],
+    "interpretation": "Reproducing a pinned discrete model is distinct from convergence. Nearest-bundle assignments can cause large local changes under trajectory refinement even when aggregate integrals change little. No uniform pointwise convergence or patient validation is established."
+  },
+  "reproduction": {
+    "generatedFilesCompared": 52,
+    "byteIdentical": true,
+    "differences": [],
+    "interpretation": "Exact same-environment regeneration; cross-platform native math libraries can differ in last bits."
+  }
+}
