@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createNeuronAnatomyScene } from '../src/lib/cochlear/neuronAnatomy.js';
+import { createAnatomyScene } from '../src/lib/cochlear/anatomy.js';
 import { createNerveModel } from '../src/lib/cochlear/nerve.js';
 import { createGeometry } from '../src/lib/cochlear/geometry.js';
 import { normalizeSettings } from '../src/lib/cochlear/config.js';
@@ -131,4 +132,54 @@ test('preparing a neuron view preserves the solver and survival mask and explain
   assert.match(removed.notes.join(' '), /no simulated neural response/);
   const referenceCore = removed.meshes.filter(mesh => mesh.compartmentIndex !== undefined);
   assert.deepEqual(referenceCore.map(mesh => mesh.positions), coreMeshes.map(mesh => mesh.positions));
+});
+
+test('a completed worker result retains exact model morphology through transfer and opens the neuron view', async () => {
+  // Exercise the real worker handler and its transfer list. Directly passing a
+  // newly constructed model hid the production-only failure after a run.
+  const previousSelf = globalThis.self;
+  const messages = [];
+  globalThis.self = {
+    postMessage(message, transfer = []) {
+      messages.push(structuredClone(message, { transfer }));
+    },
+  };
+  try {
+    await import('../src/lib/cochlear/worker.js?neuron-anatomy-transfer-regression');
+    globalThis.self.onmessage({ data: {
+      id: 19,
+      task: 'run',
+      settings: { durationMs: 10, fiberCount: 9, dtUs: 5 },
+    } });
+  } finally {
+    if (previousSelf === undefined) delete globalThis.self;
+    else globalThis.self = previousSelf;
+  }
+  assert.equal(messages.some(message => message.type === 'error'), false);
+  const message = messages.find(item => item.type === 'result');
+  assert.ok(message, 'The worker must deliver the completed experiment.');
+  assert.equal(message.id, 19);
+  const result = message.result;
+  const transferredScene = createAnatomyScene(result.geometry, result.model, {
+    mode: 'neuron', selectedFiber: 4,
+  });
+  assert.equal(transferredScene.mode, 'neuron');
+  assert.equal(transferredScene.inspection.fiberIndex, 4);
+  for (const field of ['positionsMm', 'lengthMm', 'edgeDiameterMm']) {
+    assert.ok(result.model[field] instanceof Float64Array, field);
+    assert.deepEqual(result.model[field], model[field], field);
+  }
+  assert.deepEqual(result.model.somaIndices, model.somaIndices);
+  near(result.model.totalLengthMm, 12.715);
+  assert.equal(result.model.gNaUs, undefined, 'The payload needs physical metadata, not a duplicate solver.');
+  const expectedScene = createNeuronAnatomyScene(result.geometry, model, 4);
+  assert.deepEqual(transferredScene.meshes.map(mesh => mesh.positions), expectedScene.meshes.map(mesh => mesh.positions));
+  const response = result.fibers[4].response;
+  assert.ok(response.replayTimesMs.length > 1);
+  assert.equal(response.compartmentCount, result.model.compartmentCount);
+  assert.equal(response.replayMv.length, response.replayTimesMs.length * result.model.compartmentCount);
+  for (const mesh of transferredScene.meshes.filter(item => item.compartmentIndex !== undefined)) {
+    assert.equal(mesh.fiberIndex, 4);
+    assert.ok(Number.isFinite(response.replayMv[mesh.compartmentIndex]));
+  }
 });

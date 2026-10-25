@@ -546,7 +546,12 @@ export function createAnatomyViewer(host, callbacks = {}) {
   }
   let pointerStart = null, multiTouch = false;
   const activePointers = new Set();
-  const down = event => { activePointers.add(event.pointerId); if (activePointers.size > 1) multiTouch = true; else { pointerStart = [event.clientX, event.clientY]; multiTouch = false; } };
+  const down = event => {
+    // Keep keyboard orbit controls available without native focus scrolling
+    // the large anatomical canvas into the centre of the document.
+    if (event.isPrimary !== false) { event.preventDefault(); canvas.focus({ preventScroll: true }); }
+    activePointers.add(event.pointerId); if (activePointers.size > 1) multiTouch = true; else { pointerStart = [event.clientX, event.clientY]; multiTouch = false; }
+  };
   const up = event => { activePointers.delete(event.pointerId); if (!multiTouch && pointerStart && Math.hypot(event.clientX - pointerStart[0], event.clientY - pointerStart[1]) < 5) pick(event); if (!activePointers.size) pointerStart = null; };
   const pointerCancel = event => { activePointers.delete(event.pointerId); pointerStart = null; };
   const keydown = event => {

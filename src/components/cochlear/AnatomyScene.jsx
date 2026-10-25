@@ -94,7 +94,7 @@ export default function AnatomyScene({
   const notes = Array.isArray(scene?.notes) ? scene.notes : scene?.notes ? [scene.notes] : [];
   const provenance = scene?.provenanceLabel ?? (atlasStatus === 'ready' ? 'Human CT + serial-section atlas' : 'Illustrative reference anatomy');
   return <div class="coch-anatomy" data-anatomy-mode={anatomyMode} data-anatomy-renderer={renderer || 'initializing'} data-anatomy-atlas={atlasStatus} style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
-    <div ref={host} class="coch-anatomy-stage" style={{ position: 'absolute', inset: 0, visibility: error ? 'hidden' : 'visible' }} />
+    <div ref={host} class="coch-anatomy-stage" style={{ position: 'absolute', inset: 0, zIndex: 0, visibility: error ? 'hidden' : 'visible' }} />
     <div class="coch-anatomy-heading" style={{ position: 'absolute', top: 17, left: 20, pointerEvents: 'none', maxWidth: '58%' }}>
       <p>{scene?.subtitle ?? SUBTITLES[anatomyMode] ?? SUBTITLES.cutaway}</p>
       <h3>{scene?.title ?? TITLES[anatomyMode] ?? TITLES.cutaway}</h3>
