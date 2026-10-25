@@ -39,6 +39,7 @@ jobs:
           cache: pip
           cache-dependency-path: scripts/prima-reference/requirements.txt
       - name: Install application and pinned scientific dependencies
+        id: dependencies
         run: |
           npm ci
           python -m pip install -r scripts/prima-reference/requirements.txt
@@ -49,13 +50,16 @@ jobs:
           node scripts/prima-reference/verify_percept.mjs
           git diff --exit-code -- tests/fixtures/prima-percept public/assets/prima docs/prima/PERCEPT_VALIDATION.json
       - name: Verify numerical models and complete experiments
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node --test tests/prima-percept.test.mjs tests/prima-physics.test.mjs tests/prima-experiment.mjs
       - name: Verify real workers, WebGL, files and responsive controls
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         env:
           PRIMA_REQUIRE_BROWSER: '1'
           PRIMA_QA_DIR: prima-browser-artifacts
         run: node --test tests/prima-browser.mjs
       - name: Verify production routes and scientific disclosures
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
           npx astro build
           node scripts/verify-prima-build.mjs
