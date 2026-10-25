@@ -41,12 +41,13 @@ const normalized = entries.map((p) => ({
 >
   <section class="catalog-heading">
     <h3><a href="/devices/models/">3D Model Gallery</a></h3>
+    <h3><a href="/recordings/">Recording Library</a></h3>
   </section>
   <DevicesDirectory client:load entries={normalized} />
 </Layout>
 
 <style>
-  .catalog-heading { margin: 26px 0 18px; }
+  .catalog-heading { display:flex; flex-wrap:wrap; gap:16px 28px; margin: 26px 0 18px; }
   .catalog-heading h3 { font-size: var(--title-card); font-style: italic; margin: 0; }
   .catalog-heading a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 </style>

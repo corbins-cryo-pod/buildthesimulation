@@ -1,0 +1,67 @@
+{
+  "checks": [
+    "Pure numpy decompression exactly equals official mtscomp1.0.2 read_chunk for all385 channels of both fetched chunks.",
+    "Independent spikeglx conversion agrees: AP2.34375µV/ADC and LF4.6875µV/ADC.",
+    "Every exported calibrated sample roundtrips to its original signed int16 ADC value.",
+    "Source coordinate matrix length384 equals rawInd mapping length384; selected raw indices200–207 each uniquely mapped.",
+    "AP sample count7500 and LF2500 verified; metadata sampling rates equal compression headers.",
+    "HTTP Range206 + Content-Range and expected byte count verified before reading."
+  ],
+  "excerptSha256": "a3de04751773879ea15f9d24295b90a5f25a7c13447449f5168dfc467110a3e1",
+  "sizeBytes": 691460,
+  "newFiltersApplied": false,
+  "sourceChunk100": [
+    {
+      "band": "ap",
+      "sourceChunkIndex": 100,
+      "sourceChunkSamples": [
+        3000000,
+        3030000
+      ],
+      "exportSamples": 7500,
+      "channels": [
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207
+      ],
+      "adcRoundtripExact": true,
+      "rangeByteCount": 8226020,
+      "decodedShape": [
+        30000,
+        385
+      ],
+      "gain": 500
+    },
+    {
+      "band": "lf",
+      "sourceChunkIndex": 100,
+      "sourceChunkSamples": [
+        250000,
+        252500
+      ],
+      "exportSamples": 2500,
+      "channels": [
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207
+      ],
+      "adcRoundtripExact": true,
+      "rangeByteCount": 607864,
+      "decodedShape": [
+        2500,
+        385
+      ],
+      "gain": 250
+    }
+  ]
+}
