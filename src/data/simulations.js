@@ -121,6 +121,10 @@ export const simulationGroups = [
         "desc": "Original sandbox with electrodes, pulse visualization, zoom/pan, and experiment export/import."
       }
     ]
+  },
+  {
+    title: "Measured Recordings",
+    entries: [{href: "/recordings/", title: "Neural Interface Recording Library", desc: "Inspect measured Neuropixels, Utah-array, WIMAGINE, peripheral nerve, RPNI and retinal data. Select channels, zoom through real samples and follow source events; published observations remain distinct from simulation predictions."}]
   }
 ];
 
