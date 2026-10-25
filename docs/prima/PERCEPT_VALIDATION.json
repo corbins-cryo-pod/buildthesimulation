@@ -1,0 +1,315 @@
+{
+  "schema": "bts.prima.percept.validation.v1",
+  "reference": {
+    "doi": "10.5281/zenodo.19212252",
+    "tag": "v2.0.0",
+    "archiveSha256": "c3cecdeeb2cb4afcd14ba591a3b285354c6be45d719fc3244912363fef0f9a13",
+    "filesSha256": {
+      "image_processing.py": "00318dde83a2ae1e1f386de32393398c53a1287cea7920998970e840b2ea60d0",
+      "prosthetic_vision.py": "7c00aea805065df17c84e880f283f219c6be81d52e26dbd66860fd8af087c799",
+      "utils.py": "e3d41eb8d46bac04f756e7db2bed43ce5fa7cd51569c052fee1955158c403b51",
+      "LICENSE": "f19ec7244b4068cfc4660243034b99b196233de4d9f350d075dc9756fa7b6dfa"
+    },
+    "execution": "Unmodified numerical function AST bodies from published files; unrelated imports omitted."
+  },
+  "referenceVersions": {
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "scikit-image": "0.25.0"
+  },
+  "comparedImages": 18,
+  "comparedSamples": 626688,
+  "maxAbsoluteError": 1.6431300764452317e-14,
+  "acceptanceAbsoluteError": 5e-12,
+  "meaning": "Numerical agreement with published percept approximation; not patient validation.",
+  "cases": [
+    {
+      "name": "blank-gamma",
+      "size": 64,
+      "mask": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 6.022935801282942e-18
+      },
+      "spatial": {
+        "maxAbsolute": 0,
+        "rootMeanSquare": 0
+      },
+      "percept": {
+        "maxAbsolute": 0,
+        "rootMeanSquare": 0
+      }
+    },
+    {
+      "name": "blank-sigmoid",
+      "size": 64,
+      "mask": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 6.022935801282942e-18
+      },
+      "spatial": {
+        "maxAbsolute": 0,
+        "rootMeanSquare": 0
+      },
+      "percept": {
+        "maxAbsolute": 0,
+        "rootMeanSquare": 0
+      }
+    },
+    {
+      "name": "white",
+      "size": 64,
+      "mask": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 6.022935801282942e-18
+      },
+      "spatial": {
+        "maxAbsolute": 0,
+        "rootMeanSquare": 0
+      },
+      "percept": {
+        "maxAbsolute": 0,
+        "rootMeanSquare": 0
+      }
+    },
+    {
+      "name": "gray-signed-gamma",
+      "size": 64,
+      "mask": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 6.022935801282942e-18
+      },
+      "spatial": {
+        "maxAbsolute": 0,
+        "rootMeanSquare": 0
+      },
+      "percept": {
+        "maxAbsolute": 0,
+        "rootMeanSquare": 0
+      }
+    },
+    {
+      "name": "gradient-gamma",
+      "size": 64,
+      "mask": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 6.022935801282942e-18
+      },
+      "spatial": {
+        "maxAbsolute": 6.661338147750939e-16,
+        "rootMeanSquare": 1.6927937778323365e-16
+      },
+      "percept": {
+        "maxAbsolute": 1.6653345369377348e-15,
+        "rootMeanSquare": 2.100788805793296e-16
+      }
+    },
+    {
+      "name": "gradient-sigmoid",
+      "size": 64,
+      "mask": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 6.022935801282942e-18
+      },
+      "spatial": {
+        "maxAbsolute": 6.661338147750939e-16,
+        "rootMeanSquare": 1.6927937778323365e-16
+      },
+      "percept": {
+        "maxAbsolute": 1.7763568394002505e-15,
+        "rootMeanSquare": 2.3564993173047946e-16
+      }
+    },
+    {
+      "name": "landolt-128",
+      "size": 128,
+      "mask": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 3.011467900641471e-18
+      },
+      "spatial": {
+        "maxAbsolute": 2.4424906541753444e-15,
+        "rootMeanSquare": 2.449191606470282e-16
+      },
+      "percept": {
+        "maxAbsolute": 5.88418203051333e-15,
+        "rootMeanSquare": 4.314562350237295e-16
+      }
+    },
+    {
+      "name": "default-ui-landolt-256",
+      "size": 256,
+      "mask": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 1.5057339503207355e-18
+      },
+      "spatial": {
+        "maxAbsolute": 6.5503158452884236e-15,
+        "rootMeanSquare": 7.223019596763512e-16
+      },
+      "percept": {
+        "maxAbsolute": 1.6431300764452317e-14,
+        "rootMeanSquare": 1.2457008885673816e-15
+      }
+    },
+    {
+      "name": "shifted-edge-sigmoid-256",
+      "size": 256,
+      "mask": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 1.5057339503207355e-18
+      },
+      "spatial": {
+        "maxAbsolute": 3.497202527569243e-15,
+        "rootMeanSquare": 1.3655614669473305e-15
+      },
+      "percept": {
+        "maxAbsolute": 1.2434497875801753e-14,
+        "rootMeanSquare": 1.8890852431961e-15
+      }
+    },
+    {
+      "name": "low-frequency",
+      "size": 64,
+      "mask": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 6.022935801282942e-18
+      },
+      "spatial": {
+        "maxAbsolute": 2.220446049250313e-16,
+        "rootMeanSquare": 1.0838898772828417e-16
+      },
+      "percept": {
+        "maxAbsolute": 2.220446049250313e-16,
+        "rootMeanSquare": 1.0838898772828417e-16
+      }
+    },
+    {
+      "name": "transition-frequency",
+      "size": 64,
+      "mask": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 6.022935801282942e-18
+      },
+      "spatial": {
+        "maxAbsolute": 3.885780586188048e-16,
+        "rootMeanSquare": 1.699674944388148e-16
+      },
+      "percept": {
+        "maxAbsolute": 3.885780586188048e-16,
+        "rootMeanSquare": 1.699674944388148e-16
+      }
+    },
+    {
+      "name": "high-frequency",
+      "size": 64,
+      "mask": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 6.022935801282942e-18
+      },
+      "spatial": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 6.509259464525837e-17
+      },
+      "percept": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 6.509259464525837e-17
+      }
+    },
+    {
+      "name": "diagonal-frequency",
+      "size": 64,
+      "mask": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 6.022935801282942e-18
+      },
+      "spatial": {
+        "maxAbsolute": 7.771561172376096e-16,
+        "rootMeanSquare": 2.9005307956508164e-16
+      },
+      "percept": {
+        "maxAbsolute": 7.771561172376096e-16,
+        "rootMeanSquare": 2.9005307956508164e-16
+      }
+    },
+    {
+      "name": "checkerboard",
+      "size": 64,
+      "mask": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 6.022935801282942e-18
+      },
+      "spatial": {
+        "maxAbsolute": 2.220446049250313e-16,
+        "rootMeanSquare": 1.0659731080981682e-16
+      },
+      "percept": {
+        "maxAbsolute": 8.326672684688674e-16,
+        "rootMeanSquare": 2.334605264839407e-16
+      }
+    },
+    {
+      "name": "impulse",
+      "size": 64,
+      "mask": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 6.022935801282942e-18
+      },
+      "spatial": {
+        "maxAbsolute": 8.326672684688674e-17,
+        "rootMeanSquare": 4.0204088948902895e-18
+      },
+      "percept": {
+        "maxAbsolute": 8.326672684688674e-17,
+        "rootMeanSquare": 4.0204088948902895e-18
+      }
+    },
+    {
+      "name": "fractional-cutoff",
+      "size": 64,
+      "mask": {
+        "maxAbsolute": 1.3322676295501878e-15,
+        "rootMeanSquare": 1.5795214522426836e-16
+      },
+      "spatial": {
+        "maxAbsolute": 4.440892098500626e-16,
+        "rootMeanSquare": 1.685497503179842e-16
+      },
+      "percept": {
+        "maxAbsolute": 4.440892098500626e-16,
+        "rootMeanSquare": 1.685497503179842e-16
+      }
+    },
+    {
+      "name": "hann-window",
+      "size": 64,
+      "mask": {
+        "maxAbsolute": 1.1102230246251565e-16,
+        "rootMeanSquare": 1.510756073161617e-17
+      },
+      "spatial": {
+        "maxAbsolute": 4.440892098500626e-16,
+        "rootMeanSquare": 1.6455903281435785e-16
+      },
+      "percept": {
+        "maxAbsolute": 4.440892098500626e-16,
+        "rootMeanSquare": 1.6455903281435785e-16
+      }
+    },
+    {
+      "name": "boxcar-window",
+      "size": 64,
+      "mask": {
+        "maxAbsolute": 0,
+        "rootMeanSquare": 0
+      },
+      "spatial": {
+        "maxAbsolute": 6.661338147750939e-16,
+        "rootMeanSquare": 2.3188263547506343e-16
+      },
+      "percept": {
+        "maxAbsolute": 6.661338147750939e-16,
+        "rootMeanSquare": 2.3188263547506343e-16
+      }
+    }
+  ]
+}

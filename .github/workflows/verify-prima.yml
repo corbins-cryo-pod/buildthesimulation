@@ -1,0 +1,68 @@
+name: Verify PRIMA laboratory
+
+on:
+  pull_request:
+    paths:
+      - 'src/lib/prima/**'
+      - 'src/components/PrimaLaboratory.jsx'
+      - 'src/styles/prima.css'
+      - 'src/pages/simulations/retinal-implant/prima/**'
+      - 'src/content/designs/177-science-prima-subretinal-photovoltaic-implant.md'
+      - 'public/assets/prima/**'
+      - 'tests/prima-*.mjs'
+      - 'tests/fixtures/prima-percept/**'
+      - 'scripts/prima-reference/**'
+      - 'scripts/verify-prima-build.mjs'
+      - 'docs/prima/**'
+      - '.github/workflows/verify-prima.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reference-and-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: scripts/prima-reference/requirements.txt
+      - name: Install application and pinned scientific dependencies
+        run: |
+          npm ci
+          python -m pip install -r scripts/prima-reference/requirements.txt
+      - name: Reproduce independent percept and physics references
+        run: |
+          python scripts/prima-reference/percept_reference.py --check
+          python scripts/prima-reference/physics_reference.py --check
+          node scripts/prima-reference/verify_percept.mjs
+          git diff --exit-code -- tests/fixtures/prima-percept public/assets/prima docs/prima/PERCEPT_VALIDATION.json
+      - name: Verify numerical models and complete experiments
+        run: node --test tests/prima-percept.test.mjs tests/prima-physics.test.mjs tests/prima-experiment.mjs
+      - name: Verify real workers, WebGL, files and responsive controls
+        env:
+          PRIMA_REQUIRE_BROWSER: '1'
+          PRIMA_QA_DIR: prima-browser-artifacts
+        run: node --test tests/prima-browser.mjs
+      - name: Verify production routes and scientific disclosures
+        run: |
+          npx astro build
+          node scripts/verify-prima-build.mjs
+      - name: Save browser verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: prima-browser-verification
+          path: prima-browser-artifacts
+          if-no-files-found: ignore

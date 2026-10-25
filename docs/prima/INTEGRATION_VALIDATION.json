@@ -1,0 +1,102 @@
+{
+  "schema": "bts.prima.integration.validation.v1",
+  "modelVersion": "prima-1.0.0",
+  "presets": [
+    {
+      "preset": "native",
+      "experimentId": "PRIMA-96F92F54",
+      "selectedPixel": "P142",
+      "illuminatedPixels": 44,
+      "peakArrayCurrentUa": 111.99556122281614,
+      "sampledPotentialMaximumMv": 37.25320020151527,
+      "maximumKclResidualPa": 0.198937676672887,
+      "averageProjectionPowerMw": 0.0981016845703125,
+      "averageArrayIncidentPowerMw": 0.09785575173013797,
+      "circuitTimeSteps": 2001
+    },
+    {
+      "preset": "magnification",
+      "experimentId": "PRIMA-E4E34AF9",
+      "selectedPixel": "P145",
+      "illuminatedPixels": 119,
+      "peakArrayCurrentUa": 447.6759979509094,
+      "sampledPotentialMaximumMv": 31.248391386423105,
+      "maximumKclResidualPa": 0.19973006636004362,
+      "averageProjectionPowerMw": 0.3908994140625,
+      "averageArrayIncidentPowerMw": 0.3911449676603293,
+      "circuitTimeSteps": 2001
+    },
+    {
+      "preset": "reading",
+      "experimentId": "PRIMA-9E6554BF",
+      "selectedPixel": "P178",
+      "illuminatedPixels": 48,
+      "peakArrayCurrentUa": 174.867708132294,
+      "sampledPotentialMaximumMv": 40.179442809065705,
+      "maximumKclResidualPa": 0.19968620095892503,
+      "averageProjectionPowerMw": 0.1532625732421875,
+      "averageArrayIncidentPowerMw": 0.1527879330950952,
+      "circuitTimeSteps": 2001
+    },
+    {
+      "preset": "contrast",
+      "experimentId": "PRIMA-A3F95E6D",
+      "selectedPixel": "P180",
+      "illuminatedPixels": 378,
+      "peakArrayCurrentUa": 1090.7785966131162,
+      "sampledPotentialMaximumMv": 8.564437810320248,
+      "maximumKclResidualPa": 0.19969577740754757,
+      "averageProjectionPowerMw": 1.1760000000000002,
+      "averageArrayIncidentPowerMw": 0.9526268640827017,
+      "circuitTimeSteps": 2001
+    },
+    {
+      "preset": "spot",
+      "experimentId": "PRIMA-67D84009",
+      "selectedPixel": "P180",
+      "illuminatedPixels": 4,
+      "peakArrayCurrentUa": 8.838636007668132,
+      "sampledPotentialMaximumMv": 29.845966200384726,
+      "maximumKclResidualPa": 0.19616527714049187,
+      "averageProjectionPowerMw": 0.00782373046875,
+      "averageArrayIncidentPowerMw": 0.007722670509349809,
+      "circuitTimeSteps": 2001
+    },
+    {
+      "preset": "alignment",
+      "experimentId": "PRIMA-B153DF91",
+      "selectedPixel": "P203",
+      "illuminatedPixels": 52,
+      "peakArrayCurrentUa": 166.51193180826237,
+      "sampledPotentialMaximumMv": 38.99158548056023,
+      "maximumKclResidualPa": 0.19808501857982996,
+      "averageProjectionPowerMw": 0.15077728271484375,
+      "averageArrayIncidentPowerMw": 0.14544564361047008,
+      "circuitTimeSteps": 2001
+    },
+    {
+      "preset": "recovery",
+      "experimentId": "PRIMA-E1664683",
+      "selectedPixel": "P180",
+      "illuminatedPixels": 14,
+      "peakArrayCurrentUa": 43.7191378877025,
+      "sampledPotentialMaximumMv": 89.27677287537188,
+      "maximumKclResidualPa": 0.19979896587285784,
+      "averageProjectionPowerMw": 0.004535430908203126,
+      "averageArrayIncidentPowerMw": 0.0045295718055258,
+      "circuitTimeSteps": 3335
+    }
+  ],
+  "checks": [
+    "378-pixel full numerical pipeline",
+    "optical raster orientation and area averaging",
+    "sampling and magnification units",
+    "projection versus occupied-array optical power",
+    "zero electrical drive versus conditional percept",
+    "strict input and rounded time-step limits",
+    "nested image content identifiers",
+    "definition-only JSON restore and stale export rejection",
+    "worker reuse, cancellation, disposal and stale events"
+  ],
+  "interpretation": "Integration and numerical behavior checks; sampled fields and geometric sampling are not clinical predictions."
+}
