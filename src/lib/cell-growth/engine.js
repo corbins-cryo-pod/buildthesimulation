@@ -5,8 +5,10 @@
  */
 import {add,sub,scale,dot,cross,length,distance,clamp,unit,lerp,closestSegmentPoints,pointSegmentDistance,segmentSphereHit,segmentBoxHit,segmentCapsuleHit,SpatialHash} from './geometry.js';
 
-export const MODEL_VERSION='cell-growth/1.0.0';
-export const DEFAULT_CONFIG=Object.freeze({mode:'culture',source:'precursor',cellCount:12,seed:714,dtHours:.05,actin:1,microtubules:1,tension:1,adhesion:.65,stiffness:100,guidance:.6,branching:1,noise:.35,selfAvoidance:1,fasciculation:.55,membraneSupply:1,maxSegments:18000,maxTipsPerCell:32});
+import {createSoftCell, advanceCellMechanics, updateConeShape, populationMechanics, SHELL} from './mechanics.js';
+
+export const MODEL_VERSION='cell-growth/2.0.0';
+export const DEFAULT_CONFIG=Object.freeze({mode:'culture',source:'precursor',cellCount:12,seed:714,dtHours:.05,actin:1,microtubules:1,tension:1,adhesion:.65,stiffness:100,guidance:.6,branching:1,noise:.35,selfAvoidance:1,fasciculation:.55,membraneSupply:1,maxSegments:18000,maxTipsPerCell:32,motility:1,contractility:1,cortexStiffness:1,bending:1,cellAdhesion:.35,contactInhibition:1,density:1});
 export const PRESETS=Object.freeze([
   {id:'culture',title:'In vitro plate',description:'A planar neural culture on an adhesive substrate with cell-scale obstacles and a localized trophic cue.',config:{mode:'culture',source:'precursor',cellCount:12}},
   {id:'organoid',title:'Organoid environment',description:'A three-dimensional spherical tissue volume, a lumen, reduced central support, and local radial organization.',config:{mode:'organoid',source:'precursor',cellCount:18,adhesion:.45,guidance:.45,maxSegments:26000}},
@@ -16,7 +18,7 @@ export const PRESETS=Object.freeze([
 export const PHYSICAL_BASELINES=Object.freeze({polymerizationUmPerHour:64,unloadedRetrogradeUmPerHour:66,dragPnHoursPerUm:3,membraneTensionPnPerUm:7,clutchSpringPnPerUm:600,clutchOnPerSecond:.4,clutchOffPerSecond:.12,bondForcePn:2.5,motorStallPn:55,clutchSites:42,shaftSegmentUm:2.5,appositionHours:.3});
 const MAX_DURATION=720;
 const clone=x=>JSON.parse(JSON.stringify(x));
-const RANGES={cellCount:[1,36],seed:[0,4294967295],dtHours:[.005,.25],actin:[0,3],microtubules:[0,3],tension:[0,4],adhesion:[0,1],stiffness:[1,10000],guidance:[0,3],branching:[0,3],noise:[0,2],selfAvoidance:[0,2],fasciculation:[0,1],membraneSupply:[0,3],maxSegments:[100,30000],maxTipsPerCell:[1,48]};
+const RANGES={cellCount:[1,36],seed:[0,4294967295],dtHours:[.005,.25],actin:[0,3],microtubules:[0,3],tension:[0,4],adhesion:[0,1],stiffness:[1,10000],guidance:[0,3],branching:[0,3],noise:[0,2],selfAvoidance:[0,2],fasciculation:[0,1],membraneSupply:[0,3],maxSegments:[100,30000],maxTipsPerCell:[1,48],motility:[0,3],contractility:[0,3],cortexStiffness:[.2,3],bending:[0,3],cellAdhesion:[0,1],contactInhibition:[0,2],density:[.5,3]};
 export function normalizeConfig(input={}) {
   const c={};
   for(const key of Object.keys(DEFAULT_CONFIG)) c[key]=input[key]??DEFAULT_CONFIG[key];
@@ -35,6 +37,7 @@ function event(sim,type,detail={}){sim.events.push({timeHours:sim.timeHours,type
 function worldFor(mode){
   const w={mode,bounds:{min:[-280,-80,-220],max:[280,80,220]},sphereRadius:null,planar:mode==='culture',obstacles:[],cue:{position:[190,0,30],strength:1},labels:[]};
   if(mode==='culture') {
+    w.substrateY=-5.8;
     w.bounds={min:[-280,-15,-220],max:[280,15,220]};
     w.obstacles=[{id:'bead-1',shape:'sphere',position:[25,0,-10],radius:22},{id:'bead-2',shape:'sphere',position:[-85,0,90],radius:16},{id:'island',shape:'box',position:[95,0,85],size:[22,32,75]}];
   } else if(mode==='organoid') {
@@ -53,30 +56,11 @@ function worldFor(mode){
   return w;
 }
 
-function unitMembrane(){
-  const t=(1+Math.sqrt(5))/2;
-  let v=[[-1,t,0],[1,t,0],[-1,-t,0],[1,-t,0],[0,-1,t],[0,1,t],[0,-1,-t],[0,1,-t],[t,0,-1],[t,0,1],[-t,0,-1],[-t,0,1]].map(unit);
-  const f=[[0,11,5],[0,5,1],[0,1,7],[0,7,10],[0,10,11],[1,5,9],[5,11,4],[11,10,2],[10,7,6],[7,1,8],[3,9,4],[3,4,2],[3,2,6],[3,6,8],[3,8,9],[4,9,5],[2,4,11],[6,2,10],[8,6,7],[9,8,1]],cache=new Map(),faces=[];
-  const midpoint=(a,b)=>{const key=[Math.min(a,b),Math.max(a,b)].join(':');if(cache.has(key))return cache.get(key);const i=v.length;v.push(unit(add(v[a],v[b])));cache.set(key,i);return i;};
-  for(const [a,b,c]of f){const ab=midpoint(a,b),bc=midpoint(b,c),ca=midpoint(c,a);faces.push([a,ab,ca],[b,bc,ab],[c,ca,bc],[ab,bc,ca]);}
-  const edges=[],seen=new Set();for(const f of faces)for(let j=0;j<3;j++){const a=Math.min(f[j],f[(j+1)%3]),b=Math.max(f[j],f[(j+1)%3]),key=`${a}:${b}`;if(!seen.has(key)){seen.add(key);edges.push([a,b,distance(v[a],v[b])]);}}
-  return {vertices:v,triangles:faces,edges};
-}
-const MEMBRANE=unitMembrane();
-function surfaceGeometry(vertices,triangles,center){
-  let area=0,volume=0;
-  for(const [ia,ib,ic]of triangles){const a=sub(vertices[ia],center),b=sub(vertices[ib],center),c=sub(vertices[ic],center);area+=.5*length(cross(sub(b,a),sub(c,a)));volume+=dot(a,cross(b,c))/6;}
-  return {area,volume:Math.abs(volume)};
-}
-function makeMembrane(position,radius){
-  const vertices=MEMBRANE.vertices.map(v=>add(position,scale(v,radius))),triangles=MEMBRANE.triangles.map(f=>[...f]),g=surfaceGeometry(vertices,triangles,position);
-  return {vertices,triangles,area:g.area,volume:g.volume,targetArea:g.area,targetVolume:g.volume,reserve:1,reserveCapacity:g.area*1.5,suppliedArea:0,usedArea:0,recycledArea:0,tension:PHYSICAL_BASELINES.membraneTensionPnPerUm,elasticEnergy:0,lastSolveHours:-1};
-}
 function placementFree(p,r,sim){
   if(sim.world.sphereRadius&&length(p)>sim.world.sphereRadius-r-8)return false;
   if(p.some((v,i)=>v<sim.world.bounds.min[i]+r+3||v>sim.world.bounds.max[i]-r-3))return false;
   for(const o of sim.world.obstacles)if(o.shape==='sphere'?distance(p,o.position)<r+o.radius+7:p.every((v,i)=>Math.abs(v-o.position[i])<o.size[i]/2+r+7))return false;
-  return sim.cells.every(c=>distance(p,c.position)>r+c.radius+18);
+  return sim.cells.every(c=>distance(p,c.position)>r+(c.mechanics?.collisionRadius??c.radius)+5);
 }
 function placeCell(sim,i){
   const mode=sim.config.mode;
@@ -85,7 +69,7 @@ function placeCell(sim,i){
     if(mode==='organoid'){const dir=randomDirection(sim),r=55+Math.pow(random(sim),.55)*100;p=scale(dir,r);}
     else if(mode==='regeneration'){const distal=i>=Math.ceil(sim.config.cellCount*.7);p=[distal?200+random(sim)*35:-225+random(sim)*65,(random(sim)-.5)*50,(random(sim)-.5)*132];}
     else if(mode==='biohybrid'){const host=i>=Math.ceil(sim.config.cellCount*.6);p=[host?155+random(sim)*75:-220+random(sim)*80,(random(sim)-.5)*32,(random(sim)-.5)*230];}
-    else p=[(random(sim)-.5)*390,0,(random(sim)-.5)*295];
+    else p=[(random(sim)-.5)*390/sim.config.density,0,(random(sim)-.5)*295/sim.config.density];
     if(placementFree(p,7.3,sim))return p;
   }
   throw new Error('Unable to place cells without overlap; reduce cell count.');
@@ -96,7 +80,8 @@ function stageFor(age){return age<0?'stem':age<8?'precursor':age<18?'immature':a
 export function createSimulation(input={}){
   const config=normalizeConfig(input),sim={version:MODEL_VERSION,config,timeHours:0,stepCount:0,rngState:config.seed>>>0,cells:[],segments:[],tips:[],contacts:[],world:worldFor(config.mode),history:[],events:[],limits:{reached:false,reason:null,segmentCap:config.maxSegments,tipCap:config.maxTipsPerCell,tipLimitedCount:0},counters:{collisions:0,collisionSteps:0,branches:0,retractions:0,contacts:0},nextHistoryHours:0};
   for(let i=0;i<config.cellCount;i++){
-    const position=placeCell(sim,i),radius=6.8+random(sim)*.9,stage=stageFor(config.source==='immature'?8:config.source==='stem'?-48:0),cell={id:i,position,radius,baseRadius:radius,stage,ageHours:0,supply:1,axonRootId:null,initialized:false,membrane:makeMembrane(position,radius),group:config.mode==='biohybrid'?(i<Math.ceil(config.cellCount*.6)?'graft':'host'):config.mode==='regeneration'?(i<Math.ceil(config.cellCount*.7)?'proximal':'distal'):'neuron'};
+    const position=placeCell(sim,i),radius=6.8+random(sim)*.9,stage=stageFor(config.source==='immature'?8:config.source==='stem'?-48:0),cell={id:i,position,radius,baseRadius:radius,stage,ageHours:0,supply:1,axonRootId:null,initialized:false,group:config.mode==='biohybrid'?(i<Math.ceil(config.cellCount*.6)?'graft':'host'):config.mode==='regeneration'?(i<Math.ceil(config.cellCount*.7)?'proximal':'distal'):'neuron'};
+    const polarity=randomDirection(sim,sim.world.planar);Object.assign(cell,createSoftCell(position,radius,i,sim.world.planar,polarity));
     sim.cells.push(cell);if(stage==='immature')initializeNeurites(sim,cell);
   }
   recordHistory(sim);return sim;
@@ -111,12 +96,23 @@ function makeTip(sim,cell,segment,direction,order=0){
 }
 function initializeNeurites(sim,cell){
   if(cell.initialized)return;cell.initialized=true;
-  const count=Math.min(4+(cell.id%2),sim.config.maxTipsPerCell),phase=random(sim)*Math.PI*2;
-  for(let i=0;i<count;i++){
-    let dir;if(sim.world.planar)dir=[Math.cos(phase+i*2*Math.PI/count),0,Math.sin(phase+i*2*Math.PI/count)];else {const yy=1-2*(i+.5)/count,rr=Math.sqrt(1-yy*yy),angle=phase+i*2.399963;dir=[Math.cos(angle)*rr,yy,Math.sin(angle)*rr];}
-    if((sim.config.mode==='regeneration'&&cell.group==='proximal')||(sim.config.mode==='biohybrid'&&cell.group==='graft'))dir=unit(add(dir,[.55,0,0]));
-    const start=add(cell.position,scale(dir,cell.radius)),end=add(start,scale(dir,2.5));
-    const segment=makeSegment(sim,cell,'dendrite',start,end);if(segment)makeTip(sim,cell,segment,dir);
+  const count=Math.min(3+(cell.id%3),sim.config.maxTipsPerCell),chosen=[];
+  // Persistent actin-rich membrane patches seed processes. Spatial inhibition
+  // prevents identical radial stars; the solved deformed surface is the origin.
+  for(let k=0;k<count;k++){
+    let best=-1,score=-Infinity;
+    for(let i=0;i<cell.membrane.vertices.length;i++){
+      const direction=unit(sub(cell.membrane.vertices[i],cell.position));
+      if(sim.world.planar&&Math.abs(direction[1])>.12)continue;
+      if(chosen.some(j=>dot(direction,unit(sub(cell.membrane.vertices[j],cell.position)))>.40))continue;
+      const q=(cell.membrane.actin[i]+.4*cell.membrane.mt[i])*(.65+.7*random(sim));
+      if(q>score){score=q;best=i;}
+    }
+    if(best<0)break;chosen.push(best);
+    const start=[...cell.membrane.vertices[best]],dir=unit(sub(start,cell.position));
+    if(sim.world.planar){dir[1]=0;start[1]=cell.membrane.vertices[best][1];}
+    const end=add(start,scale(unit(dir),2.5)),segment=makeSegment(sim,cell,'dendrite',start,end);
+    if(segment){segment.anchorVertex=best;makeTip(sim,cell,segment,dir);}
   }
   event(sim,'neurite-initiation',{cellId:cell.id});
 }
@@ -168,30 +164,6 @@ function materialBalance(sim,cell,dt){
   cell.membrane.tension=PHYSICAL_BASELINES.membraneTensionPnPerUm*sim.config.tension*(1+4*deficit*deficit);
 }
 
-/** Quasi-static triangulated membrane: area tension, volume pressure, edge elasticity. */
-function relaxMembrane(sim,cell){
-  const m=cell.membrane,r=cell.radius,v=m.vertices,n=v.length,vertexForces=Array.from({length:n},()=>[0,0,0]);
-  const g=surfaceGeometry(v,m.triangles,cell.position),pressure=2*m.tension/r+40*(m.targetVolume-g.volume)/m.targetVolume;
-  for(const [ia,ib,ic]of m.triangles){
-    const a=sub(v[ia],cell.position),b=sub(v[ib],cell.position),c=sub(v[ic],cell.position),normal=unit(cross(sub(b,a),sub(c,a)));
-    for(const [idx,u,w] of [[ia,b,c],[ib,c,a],[ic,a,b]]){
-      const gradArea=scale(cross(sub(u,w),normal),.5),gradVolume=scale(cross(u,w),1/6);
-      vertexForces[idx]=add(vertexForces[idx],add(scale(gradArea,-m.tension),scale(gradVolume,pressure)));
-    }
-  }
-  let energy=0;
-  for(const [ia,ib,rest]of MEMBRANE.edges){const delta=sub(v[ib],v[ia]),len=length(delta),extension=len-rest*r,k=10;energy+=.5*k*extension*extension;const f=scale(unit(delta),k*extension);vertexForces[ia]=add(vertexForces[ia],f);vertexForces[ib]=sub(vertexForces[ib],f);}
-  for(const tip of sim.tips)if(tip.active&&tip.cellId===cell.id){const root=sim.segments[sim.segments[tip.segmentId].rootId],dir=unit(sub(root.start,cell.position));let best=0,projection=-2;for(let i=0;i<n;i++){const q=dot(MEMBRANE.vertices[i],dir);if(q>projection){projection=q;best=i;}}vertexForces[best]=add(vertexForces[best],scale(dir,Math.min(20,Math.max(0,tip.forces.net))*.13));}
-  for(let i=0;i<n;i++){
-    let p=add(v[i],scale(vertexForces[i],.0025)),radial=sub(p,cell.position),len=length(radial);
-    p=add(cell.position,scale(unit(radial),clamp(len,r*.94,r*1.06)));
-    v[i]=p;
-  }
-  const next=surfaceGeometry(v,m.triangles,cell.position);m.area=next.area;m.volume=next.volume;m.elasticEnergy=energy;m.lastSolveHours=sim.timeHours;
-  // Branch roots remain attached to the actual moving membrane surface.
-  for(const s of sim.segments)if(s.alive&&s.cellId===cell.id&&s.parentId===-1){const dir=unit(sub(s.start,cell.position));let radius=0,weight=0;for(let i=0;i<n;i++){const q=Math.pow(Math.max(0,dot(dir,MEMBRANE.vertices[i])),12);radius+=length(sub(v[i],cell.position))*q;weight+=q;}s.start=add(cell.position,scale(dir,weight?radius/weight:r));}
-}
-
 function nearbyDirection(sim,tip,point,index,dt){
   const c=sim.config,s=sim.segments[tip.segmentId],cell=sim.cells[tip.cellId];let steer=[0,0,0];
   const cue=unit(sub(sim.world.cue.position,point));
@@ -221,9 +193,9 @@ function firstCollision(sim,tip,a,b,index,shaftOnly=false){
   const accept=(h,type,id)=>{if(h&&(!hit||h.t<hit.t))hit={...h,type,id};};
   for(const o of sim.world.obstacles)accept(o.shape==='sphere'?segmentSphereHit(a,b,o.position,o.radius+solidRadius+.02):segmentBoxHit(a,b,o.position,o.size,solidRadius+.02),'obstacle',o.id);
   for(const other of sim.cells){
-    if(other.id===cell.id&&distance(a,cell.position)<cell.radius+5)continue;
-    // Bounding shell is deliberately conservative by 6%, matching the membrane constraint.
-    accept(segmentSphereHit(a,b,other.position,other.radius*1.06+solidRadius+.02),'soma',other.id);
+    if(other.id===cell.id&&distance(a,cell.position)<(cell.mechanics?.collisionRadius??cell.radius)+5)continue;
+    // Conservative envelope encloses the actual deforming soma surface.
+    accept(segmentSphereHit(a,b,other.position,(other.mechanics?.collisionRadius??other.radius*1.06)+solidRadius+.02),'soma',other.id);
   }
   for(const id of index.query(a,b,radius+1.2)){
     const other=sim.segments[id];if(!other?.alive||ancestors.has(id))continue;
@@ -300,7 +272,7 @@ function branchTip(sim,tip,dt){
 
 function advanceTip(sim,tip,dt,index){
   if(!tip.active)return;const cell=sim.cells[tip.cellId],s=sim.segments[tip.segmentId];if(!s.alive){tip.active=false;return;}
-  tip.ageHours+=dt;
+  tip.ageHours+=dt;updateConeShape(tip,dt,sim.config);
   const speed=coneForces(sim,tip,cell,dt),old=[...s.end];tip.direction=nearbyDirection(sim,tip,old,index,dt);
   if(speed<.02){tip.status='stalled';tip.stallHours+=dt;if(tip.stallHours>2&&(sim.config.actin===0||sim.config.microtubules===0||cell.membrane.reserve<.08||tip.forces.net<0))retractTip(sim,tip,dt*(tip.kind==='axon'?1.5:2.5));return;}
   const availableLength=cell.membrane.reserve*cell.membrane.reserveCapacity/(2*Math.PI*s.radius),amount=Math.min(speed*dt,availableLength),target=add(old,scale(tip.direction,amount)),hit=firstCollision(sim,tip,old,target,index);
@@ -323,11 +295,18 @@ function advanceTip(sim,tip,dt,index){
 
 function internalStep(sim,dt){
   for(const cell of sim.cells){cell.ageHours+=dt;const previous=cell.stage;cell.stage=stageFor(lineageAge(cell,sim));if(!cell.initialized&&lineageAge(cell,sim)>=8)initializeNeurites(sim,cell);if(lineageAge(cell,sim)>=18)polarize(sim,cell);if(previous!==cell.stage)event(sim,'developmental-stage',{cellId:cell.id,stage:cell.stage});materialBalance(sim,cell,dt);}
+  const previousIndex=new SpatialHash(16);for(const s of sim.segments)if(s.alive)previousIndex.insert(s.id,s.start,s.end,s.radius);
+  for(const cell of sim.cells){
+    const roots=sim.segments.filter(s=>s.alive&&s.cellId===cell.id&&s.parentId===-1),ids=new Set(previousIndex.query(cell.position,cell.position,cell.mechanics.collisionRadius+5));
+    for(const root of roots)for(const id of previousIndex.query(root.start,root.end,3))ids.add(id);
+    advanceCellMechanics(sim,cell,dt,[...ids].map(i=>sim.segments[i]).filter(s=>s.alive),roots);
+    for(const root of roots)previousIndex.insert(root.id,root.start,root.end,root.radius);
+  }
   const index=new SpatialHash(16);for(const s of sim.segments)if(s.alive){s.ageHours+=dt;const target=Math.min(1,sim.config.microtubules*sim.cells[s.cellId].supply);s.mt+=(target-s.mt)*(-Math.expm1(-dt/8));index.insert(s.id,s.start,s.end,s.radius);}
   const count=sim.tips.length;
   for(let i=0;i<count;i++)advanceTip(sim,sim.tips[i],dt,index);
-  sim.timeHours+=dt;sim.stepCount++;
-  for(const cell of sim.cells)if(sim.timeHours-cell.membrane.lastSolveHours>=.25-1e-10)relaxMembrane(sim,cell);
+  sim.timeHours=Number((sim.timeHours+dt).toFixed(12));sim.stepCount++;
+
   for(const c of sim.contacts){const a=sim.segments[c.axonSegmentId],b=sim.segments[c.dendriteSegmentId];if(!a?.alive||!b?.alive||closestSegmentPoints(a.start,a.end,b.start,b.end).distance>a.radius+b.radius+.5){c.candidate=false;c.status='lost';}}
   if(sim.timeHours>=sim.nextHistoryHours-1e-9)recordHistory(sim);
 }
@@ -336,7 +315,7 @@ export function stepSimulation(sim,durationHours=.25){
   if(typeof durationHours!=='number'||!Number.isFinite(durationHours)||durationHours<0||durationHours>MAX_DURATION)throw new Error('Advance duration must be between 0 and 720 hours.');
   if(sim.timeHours+durationHours>MAX_DURATION+1e-8)throw new Error('This experiment is limited to 720 simulated hours.');
   let left=durationHours;
-  while(left>1e-10&&!sim.limits.reached){const dt=Math.min(sim.config.dtHours,left);internalStep(sim,dt);left-=dt;}
+  while(left>1e-10&&!sim.limits.reached){const dt=left>=sim.config.dtHours-1e-9?sim.config.dtHours:left;internalStep(sim,dt);left-=dt;}
   return sim;
 }
 
@@ -348,15 +327,26 @@ function shollFor(segments,center){
     return {radius,intersections};
   });
 }
+function branchAngles(segments,children){
+  const result=[];for(const s of segments)if((children.get(s.id)||0)>1){const child=segments.filter(c=>c.parentId===s.id);for(let i=0;i<child.length;i++)for(let j=i+1;j<child.length;j++){const a=sub(child[i].end,child[i].start),b=sub(child[j].end,child[j].start);if(length(a)>1e-8&&length(b)>1e-8)result.push(Math.acos(clamp(dot(unit(a),unit(b)),-1,1))*180/Math.PI);}}
+  return result;
+}
+function fieldArea(segments){
+  // Convex hull of x/z projection; explicitly a projected coverage measurement.
+  const pts=segments.flatMap(s=>[s.start,s.end]).map(p=>[p[0],p[2]]).sort((a,b)=>a[0]-b[0]||a[1]-b[1]);if(pts.length<3)return 0;
+  const turn=(a,b,c)=>(b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]),lower=[],upper=[];
+  for(const p of pts){while(lower.length>1&&turn(lower.at(-2),lower.at(-1),p)<=0)lower.pop();lower.push(p);}for(const p of [...pts].reverse()){while(upper.length>1&&turn(upper.at(-2),upper.at(-1),p)<=0)upper.pop();upper.push(p);}
+  const hull=lower.slice(0,-1).concat(upper.slice(0,-1));return Math.abs(hull.reduce((a,p,i)=>a+p[0]*hull[(i+1)%hull.length][1]-p[1]*hull[(i+1)%hull.length][0],0))*.5;
+}
 export function getMetrics(sim){
   const live=sim.segments.filter(s=>s.alive),children=new Map();for(const s of live)if(s.parentId>=0)children.set(s.parentId,(children.get(s.parentId)||0)+1);
   const perCell=sim.cells.map(cell=>{
     const segments=live.filter(s=>s.cellId===cell.id),paths=new Map(),active=sim.tips.filter(t=>t.active&&t.cellId===cell.id),branchOrders={};let axonLength=0,dendriteLength=0,branches=0,longestAxonPath=0,longestDendritePath=0,axonReach=0,dendriteReach=0,shaftArea=0;
     for(const s of segments){const l=distance(s.start,s.end),path=l+(paths.get(s.parentId)||0),reach=distance(s.end,cell.position);paths.set(s.id,path);shaftArea+=2*Math.PI*s.radius*l;if(s.kind==='axon'){axonLength+=l;longestAxonPath=Math.max(longestAxonPath,path);axonReach=Math.max(axonReach,reach);}else{dendriteLength+=l;longestDendritePath=Math.max(longestDendritePath,path);dendriteReach=Math.max(dendriteReach,reach);}if((children.get(s.id)||0)>1){branches++;branchOrders[s.branchOrder]=(branchOrders[s.branchOrder]||0)+1;}}
-    return {id:cell.id,stage:cell.stage,axonLength,dendriteLength,totalLength:axonLength+dendriteLength,branches,activeTips:active.length,axonTips:active.filter(t=>t.kind==='axon').length,dendriteTips:active.filter(t=>t.kind==='dendrite').length,longestAxonPath,longestDendritePath,axonReach,dendriteReach,branchOrders,shaftArea,meanConeSpeed:active.reduce((a,t)=>a+t.forces.speed,0)/Math.max(1,active.length),membraneArea:cell.membrane.area,tension:cell.membrane.tension,reserve:cell.membrane.reserve,supply:cell.supply,sholl:shollFor(segments,cell.position),shollAxon:shollFor(segments.filter(s=>s.kind==='axon'),cell.position),shollDendrite:shollFor(segments.filter(s=>s.kind==='dendrite'),cell.position)};
+    return {id:cell.id,stage:cell.stage,displacement:cell.mechanics.displacement,cellSpeed:length(cell.mechanics.velocity),pathLength:cell.mechanics.pathLength,areaStrain:cell.membrane.areaStrain,volumeStrain:cell.membrane.volumeStrain,meshQuality:cell.membrane.minQuality,branchAngles:branchAngles(segments,children),dendriticFieldArea:fieldArea(segments.filter(s=>s.kind==='dendrite')),stage:cell.stage,axonLength,dendriteLength,totalLength:axonLength+dendriteLength,branches,activeTips:active.length,axonTips:active.filter(t=>t.kind==='axon').length,dendriteTips:active.filter(t=>t.kind==='dendrite').length,longestAxonPath,longestDendritePath,axonReach,dendriteReach,branchOrders,shaftArea,meanConeSpeed:active.reduce((a,t)=>a+t.forces.speed,0)/Math.max(1,active.length),membraneArea:cell.membrane.area,tension:cell.membrane.tension,reserve:cell.membrane.reserve,supply:cell.supply,sholl:shollFor(segments,cell.position),shollAxon:shollFor(segments.filter(s=>s.kind==='axon'),cell.position),shollDendrite:shollFor(segments.filter(s=>s.kind==='dendrite'),cell.position)};
   });
   const totalAxonLength=perCell.reduce((a,c)=>a+c.axonLength,0),totalDendriteLength=perCell.reduce((a,c)=>a+c.dendriteLength,0);
-  return {timeHours:sim.timeHours,cellCount:sim.cells.length,totalAxonLength,totalDendriteLength,totalLength:totalAxonLength+totalDendriteLength,branches:perCell.reduce((a,c)=>a+c.branches,0),activeTips:sim.tips.filter(t=>t.active).length,liveSegments:live.length,totalSegments:sim.segments.length,contacts:sim.contacts.filter(c=>c.candidate&&c.status==='candidate').length,appositions:sim.contacts.filter(c=>c.status==='apposition').length,collisionEvents:sim.counters.collisions,retractionSteps:sim.counters.retractions,meanTension:sim.cells.reduce((a,c)=>a+c.membrane.tension,0)/sim.cells.length,meanReserve:sim.cells.reduce((a,c)=>a+c.membrane.reserve,0)/sim.cells.length,perCell};
+  return {...populationMechanics(sim),timeHours:sim.timeHours,cellCount:sim.cells.length,totalAxonLength,totalDendriteLength,totalLength:totalAxonLength+totalDendriteLength,branches:perCell.reduce((a,c)=>a+c.branches,0),activeTips:sim.tips.filter(t=>t.active).length,liveSegments:live.length,totalSegments:sim.segments.length,contacts:sim.contacts.filter(c=>c.candidate&&c.status==='candidate').length,appositions:sim.contacts.filter(c=>c.status==='apposition').length,collisionEvents:sim.counters.collisions,retractionSteps:sim.counters.retractions,meanTension:sim.cells.reduce((a,c)=>a+c.membrane.tension,0)/sim.cells.length,meanReserve:sim.cells.reduce((a,c)=>a+c.membrane.reserve,0)/sim.cells.length,perCell};
 }
 function recordHistory(sim){
   const metrics=getMetrics(sim);delete metrics.perCell;sim.history.push(metrics);if(sim.history.length>1450)sim.history.shift();sim.nextHistoryHours=Math.floor(sim.timeHours)+1;
@@ -368,7 +358,7 @@ export function exportSWC(sim,cellId=0){
   return rows.join('\n')+'\n';
 }
 export function exportCSV(sim){
-  const keys=['timeHours','totalAxonLength','totalDendriteLength','totalLength','branches','activeTips','contacts','appositions','collisionEvents','meanTension','meanReserve'];
+  const keys=['timeHours','totalAxonLength','totalDendriteLength','totalLength','branches','activeTips','contacts','appositions','collisionEvents','meanTension','meanReserve','meanDisplacement','meanCellSpeed','cellContacts','clusters','largestCluster'];
   const rows=[...sim.history];if(!rows.length||Math.abs(rows.at(-1).timeHours-sim.timeHours)>1e-8)rows.push(getMetrics(sim));
   return keys.join(',')+'\n'+rows.map(row=>keys.map(k=>Number(row[k]).toFixed(6)).join(',')).join('\n')+'\n';
 }
@@ -379,23 +369,29 @@ function validPoint(p){return Array.isArray(p)&&p.length===3&&p.every(x=>finiteN
 export function restoreSimulation(data){
   const s=typeof data==='string'?JSON.parse(data):data;
   if(!s||s.version!==MODEL_VERSION)throw new Error('Unsupported Cell Growth Lab file version.');
-  normalizeConfig(s.config);
+  const normalized=normalizeConfig(s.config);if(Object.keys(normalized).some(k=>s.config[k]!==normalized[k]))throw new Error('Incomplete experiment configuration.');
   if(!finiteNumber(s.timeHours)||s.timeHours<0||s.timeHours>MAX_DURATION||!Number.isSafeInteger(s.stepCount)||s.stepCount<0||!Number.isInteger(s.rngState)||s.rngState<0||s.rngState>4294967295)throw new Error('Invalid experiment clock or random state.');
   if(!Array.isArray(s.cells)||s.cells.length!==s.config.cellCount||!Array.isArray(s.segments)||s.segments.length>s.config.maxSegments||!Array.isArray(s.tips)||s.tips.length>5000||!Array.isArray(s.contacts)||s.contacts.length>2000||!Array.isArray(s.history)||s.history.length>1450||!Array.isArray(s.events)||s.events.length>300)throw new Error('Invalid or oversized simulation arrays.');
   for(let i=0;i<s.cells.length;i++){
     const c=s.cells[i],m=c?.membrane;
-    if(c?.id!==i||!validPoint(c.position)||!finiteNumber(c.radius)||c.radius<=0||c.radius>50||!finiteNumber(c.ageHours)||c.ageHours<0||!finiteNumber(c.supply)||c.supply<0||c.supply>1||!['stem','precursor','immature','polarized','maturing'].includes(c.stage)||!m||!Array.isArray(m.vertices)||m.vertices.length!==42||!m.vertices.every(validPoint)||!Array.isArray(m.triangles)||m.triangles.length!==80||m.triangles.some(f=>!Array.isArray(f)||f.length!==3||f.some(v=>!Number.isInteger(v)||v<0||v>=42)))throw new Error('Invalid cell or membrane geometry.');
+    if(c?.id!==i||!validPoint(c.position)||!finiteNumber(c.radius)||c.radius<=0||c.radius>50||!finiteNumber(c.ageHours)||c.ageHours<0||!finiteNumber(c.supply)||c.supply<0||c.supply>1||!['stem','precursor','immature','polarized','maturing'].includes(c.stage)||!m||!Array.isArray(m.vertices)||m.vertices.length!==SHELL.vertices.length||!m.vertices.every(validPoint)||!Array.isArray(m.triangles)||m.triangles.length!==SHELL.triangles.length||m.triangles.some(f=>!Array.isArray(f)||f.length!==3||f.some(v=>!Number.isInteger(v)||v<0||v>=SHELL.vertices.length)))throw new Error('Invalid cell or membrane geometry.');
+    if(!validPoint(c.nucleus?.position)||!finiteNumber(c.nucleus.radius)||c.nucleus.radius<=0||c.nucleus.radius>=c.radius||!validPoint(c.mechanics?.polarity)||!validPoint(c.mechanics?.velocity)||!validPoint(c.mechanics?.initialPosition)||!Array.isArray(c.mechanics.trail)||c.mechanics.trail.length>1500)throw new Error('Invalid cell mechanics or nucleus.');
+    for(const key of ['actin','mt','adhesions'])if(!Array.isArray(m[key])||m[key].length!==SHELL.vertices.length||m[key].some(x=>!finiteNumber(x)||x<0||x>1))throw new Error('Invalid cortical state.');
+    if(!Array.isArray(m.restLengths)||m.restLengths.length!==SHELL.edges.length||m.restLengths.some(x=>!finiteNumber(x)||x<=0)||m.triangles.some((f,j)=>f.some((v,k)=>v!==SHELL.triangles[j][k])))throw new Error('Invalid membrane topology.');
+    if(!finiteNumber(c.mechanics.collisionRadius)||c.mechanics.collisionRadius<c.radius||!m.vertices.every(v=>distance(v,c.position)<=c.mechanics.collisionRadius+1e-7))throw new Error('Invalid soma contact envelope.');
     for(const k of ['area','volume','targetArea','targetVolume','reserve','reserveCapacity','suppliedArea','usedArea','recycledArea','tension','elasticEnergy','lastSolveHours'])if(!finiteNumber(m[k]))throw new Error('Invalid membrane state.');
     if(m.area<=0||m.targetArea<=0||m.volume<=0||m.targetVolume<=0||m.reserve<0||m.reserve>1||m.reserveCapacity<=0||m.suppliedArea<0||m.usedArea<0||m.recycledArea<0||m.tension<0)throw new Error('Invalid membrane material.');
     if(!finiteNumber(c.baseRadius)||c.baseRadius<=0||typeof c.initialized!=='boolean'||!['neuron','graft','host','proximal','distal'].includes(c.group)||(c.axonRootId!==null&&(!Number.isInteger(c.axonRootId)||!s.segments[c.axonRootId]||s.segments[c.axonRootId].cellId!==i)))throw new Error('Invalid cell developmental state.');
   }
   for(let i=0;i<s.segments.length;i++){
     const n=s.segments[i];if(n?.id!==i||!Number.isInteger(n.cellId)||!s.cells[n.cellId]||!Number.isInteger(n.parentId)||n.parentId< -1||n.parentId>=i||!Number.isInteger(n.rootId)||n.rootId<0||n.rootId>i||!validPoint(n.start)||!validPoint(n.end)||!finiteNumber(n.radius)||n.radius<=0||n.radius>5||!['axon','dendrite'].includes(n.kind)||typeof n.alive!=='boolean'||!finiteNumber(n.ageHours)||n.ageHours<0||!finiteNumber(n.mt)||n.mt<0||n.mt>1||!Number.isInteger(n.branchOrder)||n.branchOrder<0||n.branchOrder>6)throw new Error('Invalid neurite topology or geometry.');
+    if(n.parentId===-1&&(!Number.isInteger(n.anchorVertex)||n.anchorVertex<0||n.anchorVertex>=SHELL.vertices.length))throw new Error('Invalid root membrane attachment.');
     if(n.parentId>=0&&s.segments[n.parentId].cellId!==n.cellId)throw new Error('A neurite parent belongs to another cell.');
     if(s.segments[n.rootId].cellId!==n.cellId||s.segments[n.rootId].parentId!==-1||(n.alive&&n.parentId>=0&&!s.segments[n.parentId].alive))throw new Error('Invalid neurite ancestry.');
   }
   for(let i=0;i<s.tips.length;i++){
     const t=s.tips[i];if(t?.id!==i||!Number.isInteger(t.segmentId)||!s.segments[t.segmentId]||t.cellId!==s.segments[t.segmentId].cellId||!validPoint(t.direction)||!validPoint(t.noiseState)||typeof t.active!=='boolean'||!finiteNumber(t.radius)||t.radius<=0||t.radius>10||!finiteNumber(t.mt)||t.mt<0||t.mt>1||!finiteNumber(t.clutch)||t.clutch<0||t.clutch>1||!finiteNumber(t.ageHours)||t.ageHours<0||!finiteNumber(t.stallHours)||t.stallHours<0||!t.forces||Object.values(t.forces).some(v=>!finiteNumber(v)))throw new Error('Invalid growth cone state.');
+    if(t.shape&&(!Array.isArray(t.shape.radii)||t.shape.radii.length!==12||t.shape.radii.some(x=>!finiteNumber(x)||x<=0||x>10)))throw new Error('Invalid growth cone membrane.');
     if(t.kind!==s.segments[t.segmentId].kind||(t.active&&!s.segments[t.segmentId].alive)||length(t.direction)<.5||length(t.direction)>1.5||!['extending','stalled','contact','retracting','retracted','stabilized'].includes(t.status)||['actin','traction','microtubule','membrane','net','retrograde','speed','clutch'].some(k=>!finiteNumber(t.forces[k])))throw new Error('Invalid growth cone identity or direction.');
   }
   for(const c of s.contacts)if(!s.cells[c.sourceCellId]||!s.cells[c.targetCellId]||c.sourceCellId===c.targetCellId||!s.segments[c.axonSegmentId]||!s.segments[c.dendriteSegmentId]||!validPoint(c.position)||!finiteNumber(c.dwellHours)||!finiteNumber(c.lastTime))throw new Error('Invalid candidate contact.');
