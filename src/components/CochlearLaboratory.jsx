@@ -5,12 +5,11 @@ import { createNerveModel } from '../lib/cochlear/nerve.js';
 import { validateProcessorConfig, runProcessor } from '../lib/cochlear/processor.js';
 import { synthesizeVocoder } from '../lib/cochlear/audio.js';
 import { prepareAudio, pulsesCSV, spikesCSV, membraneCSV } from '../lib/cochlear/experiment.js';
-import CochleaScene, { replayValue } from './cochlear/Scene.jsx';
+import CochlearAnatomyWorkspace from './cochlear/CochlearAnatomyWorkspace.jsx';
 import { SignalPlot, Electrodogram, MembranePlot, NeuralRaster, RecruitmentPlot, OverlapMatrix } from './cochlear/Charts.jsx';
 import '../styles/cochlear.css';
 
 const fmt = (n, d = 1) => Number.isFinite(n) ? n.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }) : '—';
-const hz = n => n >= 1000 ? `${fmt(n / 1000, 2)} kHz` : `${fmt(n, 0)} Hz`;
 function download(text, name, type = 'text/plain') { const url = URL.createObjectURL(new Blob([text], { type })); const a = document.createElement('a'); a.href = url; a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
 function clampAudioOffset(full, offset, durationMs) {
   const duration = Number.isFinite(durationMs) ? Math.max(0, durationMs) : 0;
@@ -34,10 +33,10 @@ function Metric({ label, value, note }) { return <div class="coch-metric"><span>
 export default function CochlearLaboratory() {
   const [settings, setSettings] = useState({ ...DEFAULT_SETTINGS, activeMask: [...DEFAULT_SETTINGS.activeMask] });
   const [result, setResult] = useState(null), [baseline, setBaseline] = useState(null), [scan, setScan] = useState(null), [threshold, setThreshold] = useState(null);
-  const [preset, setPreset] = useState('tone'), [tab, setTab] = useState('sound'), [view, setView] = useState('coiled');
+  const [preset, setPreset] = useState('tone'), [tab, setTab] = useState('sound');
   const [busy, setBusy] = useState(''), [progress, setProgress] = useState({ fraction: 0, stage: '' }), [error, setError] = useState('');
   const [selectedContact, setContact] = useState(6), [selectedFiber, setFiber] = useState(16), [time, setTime] = useState(0), [playing, setPlaying] = useState(false);
-  const [uploaded, setUploaded] = useState(null), [theme, setTheme] = useState('light'), [unavailable, setUnavailable] = useState('');
+  const [uploaded, setUploaded] = useState(null), [theme, setTheme] = useState('light');
   const [audioStatus, setAudioStatus] = useState(''), [audioBusy, setAudioBusy] = useState(false), [vocoderShift, setVocoderShift] = useState(0);
   const [uploadOffsetMs, setUploadOffset] = useState(0), [fullUpload, setFullUpload] = useState(null);
   const worker = useRef(null), runId = useRef(0), activeTask = useRef(''), mediaGeneration = useRef(0), sourceFile = useRef(null), experimentFile = useRef(null), audioContext = useRef(null), audioSource = useRef(null);
@@ -52,7 +51,7 @@ export default function CochlearLaboratory() {
   const geometry = result?.geometry ?? draftScene.geometry, model = result?.model ?? nerveModel;
   const contactIndex = Math.min(selectedContact, geometry.contacts.length - 1), fiberIndex = Math.min(selectedFiber, geometry.fibers.length - 1);
   const chosenPreset = PRESETS.find(p => p.id === preset);
-  const fiber = result?.fibers[fiberIndex], contact = result?.allocation[contactIndex];
+  const fiber = result?.fibers[fiberIndex];
   const stopAudio = () => { ++mediaGeneration.current; try { audioSource.current?.stop(); } catch {} audioSource.current = null; setAudioStatus(''); setAudioBusy(false); };
   const cancel = () => { ++runId.current; worker.current?.terminate(); worker.current = null; activeTask.current = ''; setBusy(''); setPlaying(false); stopAudio(); };
   const change = (name, value) => {
@@ -185,11 +184,22 @@ export default function CochlearLaboratory() {
     finally { input.value = ''; }
   };
 
+  const useChannelCount = channelCount => {
+    cancel(); setError(''); setPreset('custom'); setResult(null); setScan(null); setThreshold(null); setTime(0); setTab('implant');
+    const maxima = Math.min(8, channelCount);
+    const finite = (name) => Number.isFinite(settings[name]) ? settings[name] : DEFAULT_SETTINGS[name];
+    const slotSeconds = Math.max(20, 2 * finite('phaseWidthUs') + finite('gapUs') + finite('guardUs')) * 1e-6;
+    const frameRateHz = Math.max(100, Math.min(600, Math.floor(.9 / (maxima * slotSeconds) / 50) * 50));
+    setSettings(old => ({ ...old, channelCount, activeMask: Array(channelCount).fill(true), maxima, strategy: 'nofm', frameRateHz }));
+    return { maxima, frameRateHz };
+  };
   const traceSeries = fiber?.response ? ['Peripheral node', 'Soma', 'Distal axon'].map((label, index) => ({ label, values: fiber.response.membraneMv[index], color: ['var(--coch-blue)', 'var(--coch-brass)', 'var(--coch-red)'][index] })) : [];
   const computedSettings = result?.settings ?? draftScene.settings;
   return <div class="coch-lab" data-model-version={MODEL_VERSION} data-coch-status={busy || (result ? 'complete' : 'ready')}>
-    <header class="coch-heading"><div><p class="coch-kicker">Neural Interface Laboratories / Auditory systems</p><h1>Cochlear Implant Laboratory</h1><p class="coch-intro">Follow a sound from its frequency bands to a propagated nerve response.</p></div><a href="/simulations/cochlear-implant/methods/" class="coch-method-link">Methods &amp; validation ↗</a></header>
-    <div class="coch-model-strip"><span>Calculated model</span><p>Finite circular contacts · homogeneous conductor · Rattay auditory nerve · 65 compartments per fiber</p></div>
+    <header class="coch-heading"><div><p class="coch-kicker">Neural Interface Laboratories / Auditory systems</p><h1>Cochlear Implant Laboratory</h1><p class="coch-intro">Explore human cochlear anatomy, implant construction, and the sound-to-nerve calculation.</p></div><a href="/simulations/cochlear-implant/methods/" class="coch-method-link">Methods &amp; validation ↗</a></header>
+    <div class="coch-model-strip"><span>Anatomy &amp; biophysics</span><p>Measured human cochlear chambers · five implant references · organ of Corti · active auditory nerve fibers</p></div>
+    <CochlearAnatomyWorkspace geometry={geometry} model={model} fibers={result?.fibers} settings={computedSettings} result={result} theme={theme} busy={busy} selectedContact={contactIndex} selectedFiber={fiberIndex} onContact={selectContact} onFiber={selectFiber} timeMs={time} playing={playing} durationMs={result?.durationMs ?? settings.durationMs} onTime={scrub} onToggleReplay={() => { if (time >= result.durationMs) setTime(0); setPlaying(value => !value); }} onUseChannelCount={useChannelCount} />
+    <header class="coch-experiment-heading"><div><p class="coch-kicker">Reference electrical experiment</p><h2>From sound to a propagated response</h2></div><p>Finite circular sources in an unrolled homogeneous conductor · 65 compartments per modeled fiber</p></header>
     <div class="coch-experiment-bar"><label><span class="coch-label">Experiment</span><select aria-label="Saved experiment" value={preset} onChange={e => choose(e.currentTarget.value)}>{preset === 'custom' && <option value="custom">Custom experiment</option>}{PRESETS.map(p => <option value={p.id} key={p.id}>{p.title}</option>)}</select></label><p>{chosenPreset?.question ?? 'Change a parameter, calculate the response, and compare it with a pinned run.'}</p><div class="coch-actions"><button disabled={!result || !!busy} onClick={() => setBaseline(result)}>{baseline ? 'Replace baseline' : 'Pin baseline'}</button>{baseline && <button onClick={() => setBaseline(null)}>Clear baseline</button>}</div></div>
     <div class="coch-workbench">
       <aside class="coch-controls"><div class="coch-panel-title"><h2>Experiment settings</h2><span>{result ? 'Calculated' : 'Draft'}</span></div>
@@ -212,7 +222,7 @@ export default function CochlearLaboratory() {
             <p class="coch-note">Digital sound level maps to current through a documented compression curve. It is not a clinical loudness map.</p>
           </>}
           {tab === 'implant' && <>
-            <Select name="channelCount" label="Contacts / analysis bands" value={String(settings.channelCount)} onChange={change} options={[[ '8', '8 contacts' ], ['12', '12 contacts'], ['16', '16 contacts'], ['24', '24 contacts']]} />
+            <Select name="channelCount" label="Contacts / analysis bands" value={String(settings.channelCount)} onChange={change} options={[[ '8', '8 contacts' ], ['12', '12 contacts'], ['16', '16 contacts'], ['22', '22 contacts'], ['24', '24 contacts']]} />
             {field('arraySpanMm', 'Fixed contact span', 'mm on reference path', 8, 22, .5)}
             {field('apicalDepthMm', 'Apical map position', 'mm from base', 16, 32, .5)}
             {field('radialDistanceMm', 'Contact-to-nerve separation', 'mm', .1, 2, .05)}
@@ -245,12 +255,6 @@ export default function CochlearLaboratory() {
         <div class="coch-status-row" aria-live="polite"><span class={`coch-status ${busy ? 'is-busy' : ''}`} />{busy ? progress.stage : result ? `Calculated · ${result.metrics.totalCompartments.toLocaleString()} compartments · ${fmt(result.metrics.elapsedMs / 1000, 1)} s` : 'Ready to calculate'}<span class="coch-version">Model {MODEL_VERSION}</span></div>
         {busy && <progress class="coch-progress" max="1" value={progress.fraction || undefined} aria-label="Calculation progress" />}
         {error && <p role="alert" class="coch-error">{error}</p>}
-        <div class="coch-viewbar"><div>{[['coiled', 'Coiled view'], ['unrolled', 'Calculation space'], ['field', 'Contact field']].map(([id, title]) => <button key={id} aria-pressed={view === id} disabled={id === 'coiled' && !!unavailable} onClick={() => setView(id)}>{title}</button>)}</div><label>Contact<select aria-label="Inspect contact" value={contactIndex} onChange={e => selectContact(Number(e.currentTarget.value))}>{geometry.contacts.map((c, i) => <option value={i} key={i}>{c.label}</option>)}</select></label></div>
-        <div class="coch-viewport"><CochleaScene {...{ geometry, model, theme, timeMs: time, selectedContact: contactIndex, selectedFiber: fiberIndex, view }} fibers={result?.fibers} settings={computedSettings} onContact={selectContact} onFiber={selectFiber} onUnavailable={message => { setUnavailable(message); setView('unrolled'); }} /></div>
-        <div class="coch-view-caption"><p>{view === 'coiled' ? 'Drag to orbit · select a contact or fiber. Coiled geometry is an anatomical illustration; the electrical calculation uses the unrolled coordinates.' : view === 'unrolled' ? 'Physical calculation coordinates. Electrode projections are above the nerve plane; compartment diameters are exaggerated for visibility.' : 'Uniform-source disk potential in an unbounded conductor. No bony walls, scala boundaries, or patient anatomy are included.'}</p>{view !== 'field' && <div class="coch-voltage-legend"><span>Membrane</span><i /><span>−80</span><span>+30 mV</span></div>}</div>
-        {unavailable && <p class="coch-note">{unavailable}</p>}
-        <div class="coch-replay"><button disabled={!result} onClick={() => { if (time >= result.durationMs) setTime(0); setPlaying(v => !v); }}>{playing ? 'Pause replay' : 'Play replay'}</button><input type="range" aria-label="Shared simulation time" min="0" max={result?.durationMs ?? settings.durationMs} step=".02" value={time} disabled={!result} onInput={e => scrub(Number(e.currentTarget.value))} /><output>{fmt(time, 2)} ms</output></div>
-        <div class="coch-selection"><div><span class="coch-label">{geometry.contacts[contactIndex].label} · frequency allocation</span><strong>{contact ? `${hz(contact.lowHz)}–${hz(contact.highHz)}` : 'Calculated after a run'}</strong><small>Reference place: {hz(geometry.contacts[contactIndex].placeHz)}{contact ? ` · ${contact.mismatchSemitones >= 0 ? '+' : ''}${fmt(contact.mismatchSemitones, 1)} semitones (place − band)` : ''}</small></div><label class="coch-fiber-select"><span class="coch-label">Inspect auditory nerve</span><select aria-label="Inspect auditory nerve fiber" value={fiberIndex} onChange={e => selectFiber(Number(e.currentTarget.value))}>{geometry.fibers.map((f, i) => <option value={i} key={i}>{f.label} · {fmt(f.placeMm, 1)} mm{!f.alive ? ' · removed' : ''}</option>)}</select><small>{fiber ? `${fiber.spikeTimesMs.length} propagated spikes in this run` : '65 membrane compartments per surviving fiber'}</small></label></div>
         <div class="coch-metrics"><Metric label="Fibers recruited" value={result ? `${result.metrics.recruited} / ${result.metrics.surviving}` : '—'} note="Surviving modeled fibers" /><Metric label="Propagated spikes" value={result ? result.metrics.spikeCount : '—'} note="Distal axon · 0 mV crossing" /><Metric label="Delivered pulses" value={result ? result.processor.metrics.totalPulses.toLocaleString() : '—'} note={result ? `${fmt(result.processor.metrics.actualOccupancy * 100, 1)}% occupied time` : 'Exact sequential schedule'} /><Metric label="Largest phase charge" value={result ? `${fmt(result.processor.metrics.chargePerPhaseMaxNC, 2)} nC` : '—'} note="Current × phase duration" /></div>
         {!result && <div class="coch-empty">{busy ? 'Solving the electrical and membrane equations. Geometry is available while the calculation runs.' : 'Run the experiment to calculate the sound bands, delivered pulses, and nerve responses.'}</div>}
         {result && <div class="coch-plot-grid"><SignalPlot samples={result.audio.samples} sampleRate={result.audio.sampleRate} timeMs={time} onTime={scrub} /><Electrodogram processor={result.processor} timeMs={time} selectedContact={contactIndex} onContact={selectContact} onTime={scrub} />{fiber?.response ? <MembranePlot timeMs={fiber.response.timeMs} series={traceSeries} cursorMs={time} onTime={scrub} /> : <div class="coch-plot coch-empty">This fiber was removed from the modeled surviving population. Select another fiber to inspect membrane voltage.</div>}<NeuralRaster fibers={result.fibers} durationMs={result.durationMs} timeMs={time} selectedFiber={fiberIndex} onFiber={selectFiber} onTime={scrub} /><RecruitmentPlot fibers={result.fibers} baselineFibers={baseline?.fibers} /></div>}
