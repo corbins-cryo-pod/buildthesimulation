@@ -1,0 +1,15 @@
+/* Scoped next-stage controls; preserve site fonts and light/dark tokens. */
+.nis-transfer{border-left:3px solid var(--borderStrong,currentColor)}
+.nis-transfer-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:780px}
+.nis-transfer-report{margin-top:20px;padding-top:12px;border-top:1px solid var(--line)}
+.nis-transfer-report li{margin:8px 0;font-size:.9rem}
+.nis .nis-wide-layout{grid-template-columns:1fr}
+.nis .nis-wide-layout figure{max-width:none;width:100%}
+.nis .nis-wide-layout svg{max-height:450px;min-height:170px}
+.nis .nis-viewhead span{overflow-wrap:anywhere;text-align:right}
+.nis .nis-head .nis-actions{font-size:.85rem;max-width:320px}
+.nis .nis-note,.nis .nis-warning,.nis .nis-status,.nis .nis-panel,.nis button,.nis input,.nis select,.nis textarea,.nis svg{border-radius:0}
+.nis svg [role=button]{cursor:pointer}
+.nis button:disabled{cursor:not-allowed}
+@media(max-width:560px){.nis-transfer-options{grid-template-columns:1fr;gap:0}.nis .nis-viewhead{flex-wrap:wrap}.nis .nis-viewhead span{text-align:left}.nis-transfer-report ul{padding-left:20px}.nis .nis-wide-layout svg{min-height:140px}}
+@media(prefers-reduced-motion:reduce){.nis *{scroll-behavior:auto}}

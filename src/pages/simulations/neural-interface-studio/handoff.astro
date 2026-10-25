@@ -1,0 +1,42 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+<Layout pageTitle="Designer to Cleanroom" description="Exact-coordinate Designer import, compatibility boundaries, numerical resolution and verification for Neural Interface Studio 2.1.">
+ <article class="handoff">
+  <p><a href="/simulations/neural-interface-studio/">← Open Neural Interface Studio</a></p>
+  <p class="eyebrow">Neural Interface Studio · Stage 2.1</p><h1>Designer to Cleanroom</h1>
+  <p class="lede">Fabricate your saved layout—not a replacement four-channel template. The handoff preserves contact positions, saved lead paths, widths, connector mapping and the rounded substrate envelope in physical micrometres.</p>
+  <h2>Start with a saved design</h2>
+  <p>Export Design JSON from the Neural Interface Designer after routing completes. In Studio, choose <strong>Import from Designer</strong>, select the file, and review the transfer preview. Set an explicit opening axis inset, assumed metal thickness and grid. Accepting creates a new draft; recorded notebook runs remain intact. Review the recipe and select <strong>Fabricate &amp; test</strong>.</p>
+  <p>The example menu includes three transfer demos: a split-bank planar array, annular contacts with side-entry leads, and an orthogonal routed coupon. Each passes through the same importer as a user file.</p>
+  <h2>What the transfer does—and does not do</h2>
+  <div class="table"><table><thead><tr><th>Input</th><th>Treatment</th></tr></thead><tbody>
+   <tr><td>Coordinates and paths</td><td>Preserved without geometric scaling or rerouting. Negative coordinates are supported. The observation window expands around the saved layout.</td></tr>
+   <tr><td>Channel identity</td><td>Source contact, pad and channel identifiers are retained in a mapping to Studio net IDs. Connectivity is recalculated from the resulting material.</td></tr>
+   <tr><td>Electrode shapes</td><td>Circles, rectangles, squares, rotated ellipses and annuli. Ring holes remain holes unless a saved trace actually crosses them.</td></tr>
+   <tr><td>Trace corners</td><td>Saved round joins remain round. Manhattan leads use miter joins with SVG's default miter limit of four; sharp corners fall back to bevels.</td></tr>
+   <tr><td>Substrate</td><td>Designer envelope bounds and rounded corner radius are preserved analytically. Ribbon substrates are rejected, not converted into envelopes.</td></tr>
+   <tr><td>Metal layers</td><td>Only occupied metal plane 1. Multilayer routing, vias and unsupported dielectrics are rejected explicitly.</td></tr>
+   <tr><td>Opening masks</td><td>New process assumptions, not recovered fabrication masks. Each terminal gets a smaller opening with the chosen axis inset. The inner annular opening grows by the same inset.</td></tr>
+   <tr><td>Physical process</td><td>Single-metal Polyimide teaching process with ideal metal etch stops. No experimental calibration, chemistry, adhesion, mechanical release or implant-performance prediction is added.</td></tr>
+  </tbody></table></div>
+  <h2>Electrical assumptions stay consistent</h2>
+  <p>The imported effective resistivity is defined by <strong>ρ = R<sub>sheet</sub> × t</strong>, where the Designer supplies its assumed sheet resistance and you explicitly choose the metal thickness. Thus a transfer does not silently substitute the Studio's default conductor value. The metal name is preserved as a label; this is not a measured thin-film resistivity.</p>
+  <p>Changing thickness later in the Studio recipe holds effective resistivity fixed and changes sheet resistance. Importing the same Designer assumption at a different thickness instead derives a different effective resistivity to preserve that supplied sheet resistance.</p>
+  <p>The solver uses equipotential full-metal terminal footprints. Its resistance is distinct from electrode–electrolyte impedance and excludes contact resistance. A geometrically continuous channel may still have covered or partly exposed terminals.</p>
+  <h2>Resolution and work limits</h2>
+  <p>This release accepts 1–16 contacts, up to 256 saved points per route and 1,024 total route points. Grids are explicitly 1, 2 or 4 µm, with a maximum of 640,000 cells and a 20,000 µm maximum window side. Oversized work is rejected before material arrays are allocated. Geometry is never rescaled or silently coarsened to fit.</p>
+  <p>A warning appears when a trace is fewer than four grid cells wide. This is a screening heuristic, not a convergence guarantee. Compare refinement results for each design. Rotation, fine gaps, rings and narrow traces remain sensitive to cell-centre rasterization. An axis inset of an ellipse is not a constant-distance geometric erosion.</p>
+  <h2>Reproducible projects</h2>
+  <p>Version 3 project files include the physical window, rotation pivot, source mapping and transfer assumptions. Versions 1 and 2 remain readable. Historical reports are retained as historical rather than silently relabeled as results of the new engine. SVG exports include millimetre width and height and the original micrometre coordinate origin; they are teaching geometry, not qualified production masks.</p>
+  <h2>Validation and interpretation</h2>
+  <p>New checks cover coordinate and mapping preservation, three complete fabrication examples, negative-origin translation invariance, annular holes, rounded substrates, miter corners, geometric failures, resistance consistency, explicit refinement and unsupported-input rejection. Repository tests and the retained verification report distinguish numerical checks from browser observations and experimental evidence.</p>
+  <p>Compatibility checks are not a full fabrication design-rule sign-off. Width, spacing, overlap and enclosure checks are separate operations; see <a href="https://www.klayout.de/doc/manual/drc_basic.html" target="_blank" rel="noopener noreferrer">KLayout's official DRC documentation</a> for that distinction. This Studio does not run KLayout.</p>
+  <h2>Next milestones</h2>
+  <p>Next: parameter sweeps with frozen baseline comparisons and per-design refinement reports; then conformal ribbon footprints and more complete geometric design-rule checks. Multilayer fabrication requires explicit dielectric stacks and via/opening access before it can be supported. Electrochemical and mechanical tests remain separate future models.</p>
+  <p><a href="/simulations/neural-interface-studio/methods/">Read the underlying process model and its limitations →</a></p>
+ </article>
+</Layout>
+<style>
+ .handoff{max-width:960px;margin:24px auto;padding:24px;border:1px solid var(--border);line-height:1.5}.handoff h1{line-height:1.1}.handoff h2{margin-top:32px}.lede{font-size:1.2em}.eyebrow{font-family:var(--font-label,sans-serif);text-transform:uppercase;letter-spacing:.1em;font-size:.8em}.table{overflow:auto}.table table{border-collapse:collapse;width:100%;min-width:540px}.table td,.table th{padding:12px;border:1px solid var(--border);text-align:left;vertical-align:top}@media(max-width:560px){.handoff{padding:16px;margin:12px 0}}
+</style>
