@@ -1,0 +1,128 @@
+{
+  "status": "PASS",
+  "tests": [
+    {
+      "test": "Standalone HTML initializes with browser networking disabled",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "View preset iso",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "View preset front",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "View preset side",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "View preset head",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "View preset shank",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "View preset tip",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "View preset array",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "View preset electrode",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Reference full-flex view",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "All 960 site nodes available in viewer",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Drag rotates model",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Scroll zooms model",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Shift-drag pans",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Wireframe toggle",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Evidence legend toggle",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Dark palette",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Export GLB creates a real binary model",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Embedded engineering sheet opens offline",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Source and limitation panel opens",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Mobile viewport has no document-level horizontal overflow",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Mobile controls open",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "No JavaScript page errors",
+      "passed": true,
+      "details": []
+    },
+    {
+      "test": "No external network asset requests",
+      "passed": true,
+      "details": []
+    }
+  ],
+  "count": 24,
+  "browser": "Chromium 144 / software OpenGL on Xvfb, WebGL 2",
+  "method": "Standalone HTML loaded into browser DOM with networking disabled. Direct file:// navigation is blocked by this environment policy; not tested here. All assets are inline, with no fetch or module imports."
+}

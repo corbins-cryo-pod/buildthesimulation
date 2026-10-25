@@ -1,0 +1,48 @@
+---
+const root = '/models/neuropixels-engineering';
+---
+<section id="engineering-model" class="engineering" aria-labelledby="engineering-title">
+  <p class="eyebrow">Interactive engineering reference</p>
+  <h2 id="engineering-title">Neuropixels 1.0 — 3D Engineering Model</h2>
+  <p>Explore the connector, gold interconnects, silicon shank, chisel tip and porous electrode detail. Switch between the drawing-matched study and reconstructed reference assembly inside the original viewer.</p>
+  <a class="launch" href={`${root}/neuropixels-3d-viewer.html`} target="_blank" rel="noopener">Open full-screen 3D viewer ↗</a>
+  <details class="embedded">
+    <summary>Open interactive viewer on this page</summary>
+    <iframe data-src={`${root}/neuropixels-3d-viewer.html`} title="Detailed Neuropixels 1.0 engineering model viewer" allow="fullscreen" loading="lazy"></iframe>
+  </details>
+  <a href={`${root}/neuropixels-3d-viewer.html`} aria-label="Open the Neuropixels engineering viewer">
+    <img src={`${root}/drawings/neuropixels-model-preview.png`} alt="Technical views rendered from the original Neuropixels models, including the assembly, shank and electrode detail" width="2800" loading="lazy" />
+  </a>
+  <p class="limits">Nominal shank dimensions and 960 recording sites are documented. Connector routing, component placement and pore morphology include reconstructions; the drawing-matched head is a concept. Reference models — not for fabrication.</p>
+  <h3>Models, drawings and source</h3>
+  <ul>
+    <li><a href={`${root}/models/neuropixels-reference-assembly.glb`} download>Reference assembly · GLB</a></li>
+    <li><a href={`${root}/models/neuropixels-blueprint-study.glb`} download>Drawing-matched study · GLB</a></li>
+    <li><a href={`${root}/models/neuropixels-electrode-detail.glb`} download>High-resolution electrode detail · GLB</a></li>
+    <li><a href={`${root}/models/neuropixels-shank-with-sites.step`} download>Shank with recording sites · STEP</a></li>
+    <li><a href={`${root}/drawings/neuropixels-technical-drawings.pdf`}>Technical drawing set · PDF</a></li>
+    <li><a href={`${root}/neuropixels-3d-viewer.html`} download>Offline interactive viewer · HTML</a></li>
+    <li><a href={`${root}/neuropixels-3d-model-package.tar.xz`} download>Complete original models, viewer and source · TAR.XZ (10 MB)</a></li>
+  </ul>
+</section>
+<script>
+  document.querySelectorAll<HTMLDetailsElement>('.embedded').forEach(details => {
+    details.addEventListener('toggle', () => {
+      const frame = details.querySelector('iframe');
+      if (details.open && frame && !frame.hasAttribute('src')) frame.src = frame.dataset.src!;
+    });
+  });
+</script>
+<style>
+  .engineering { margin: 28px 0; padding: 22px 0; border-block: 1px solid var(--border); scroll-margin-top: 24px; }
+  .eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: .14em; }
+  h2 { font-size: clamp(24px, 4vw, 34px); line-height: 1.2; }
+  p, li { line-height: 1.5; }
+  .launch { display: inline-block; padding: 12px 16px; border: 1px solid var(--border); margin: 8px 0 16px; }
+  a { color: inherit; text-underline-offset: 3px; }
+  img { display: block; width: 100%; height: auto; margin: 18px 0; }
+  summary { cursor: pointer; padding: 12px 0; }
+  iframe { width: 100%; height: min(850px, 85vh); min-height: 520px; border: 1px solid var(--border); }
+  .limits { font-size: 14px; opacity: .8; }
+  li { margin-block: 8px; }
+</style>

@@ -9,6 +9,7 @@ import { getDeviceFamily } from "../../lib/device-families.js";
 import { getDeviceModel } from "../../lib/devices/catalog.js";
 import { getDevicePhoto, getDevicePhotoReference } from "../../lib/device-photos.js";
 import { buildDeviceCodes } from "../../lib/device-code.js";
+import NeuropixelsEngineering from "../../components/NeuropixelsEngineering.astro";
 import DevicePhotoGallery from "../../components/DevicePhotoGallery.astro";
 
 export async function getStaticPaths() {
@@ -82,6 +83,8 @@ const photoReference = getDevicePhotoReference(entry.data.device_id);
     {outline.length > 0 && <nav class="sheetOutline" aria-label="Specification sheet sections">
       {outline.map(h => <a href={`#${h.slug}`}>{h.text.replaceAll("—", "-")}</a>)}
     </nav>}
+
+    {entry.slug === "04-neuropixels-probe" && <NeuropixelsEngineering />}
 
     <section class="content"><Content /></section>
 

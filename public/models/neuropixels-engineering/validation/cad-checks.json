@@ -1,0 +1,14 @@
+{
+  "cad_shank_valid": true,
+  "round_trip_valid": true,
+  "bbox_mm": [
+    0.07,
+    10.000000000000007,
+    0.024
+  ],
+  "volume_mm3": 0.016652999999997815,
+  "expected_volume_mm3": 0.016653,
+  "site_solids": 960,
+  "units": "mm",
+  "notes": "The 0.24 um pad relief and absolute site origin are reconstruction assumptions. STEP slots/pores and internal layers omitted."
+}

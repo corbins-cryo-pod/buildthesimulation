@@ -1,0 +1,275 @@
+{
+  "status": "PASS",
+  "assertions_passed": 1024,
+  "summary_tests": 45,
+  "checks": [
+    {
+      "test": "Exactly 960 distinct recording-site centres",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Exactly 480 two-site rows",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Four columns, 16 um lateral spacing",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "20 um longitudinal row spacing",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "12 um footprints remain inside 70 um shank",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Sites lie proximal to 175 um tip and below 10 mm base",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "First site origin is explicitly marked assumed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Checkerboard alternates correctly",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-blueprint-study.glb valid GLB header",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-blueprint-study.glb binary length",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-blueprint-study.glb standard physical metre scale",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-blueprint-study.glb finite geometry / unit normals / index bounds",
+      "passed": true,
+      "details": {
+        "unique_triangles": 4938,
+        "invalid_meshes": []
+      }
+    },
+    {
+      "test": "neuropixels-blueprint-study.glb contains all 960 site instances",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-blueprint-study.glb unique site ids",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-blueprint-study.glb 12 x 12 um mesh footprint",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-blueprint-study.glb independent trimesh import",
+      "passed": true,
+      "details": {
+        "extent_in_metres": [
+          0.001899999976158142,
+          0.013100000381469726,
+          0.00013599999621510508
+        ]
+      }
+    },
+    {
+      "test": "neuropixels-electrode-detail.glb valid GLB header",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-electrode-detail.glb binary length",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-electrode-detail.glb standard physical metre scale",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-electrode-detail.glb finite geometry / unit normals / index bounds",
+      "passed": true,
+      "details": {
+        "unique_triangles": 52482,
+        "invalid_meshes": []
+      }
+    },
+    {
+      "test": "neuropixels-electrode-detail.glb independent trimesh import",
+      "passed": true,
+      "details": {
+        "extent_in_metres": [
+          1.2000000104308128e-05,
+          1.2000000104308128e-05,
+          2.5799687136895954e-07
+        ]
+      }
+    },
+    {
+      "test": "neuropixels-reference-assembly.glb valid GLB header",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-reference-assembly.glb binary length",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-reference-assembly.glb standard physical metre scale",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-reference-assembly.glb finite geometry / unit normals / index bounds",
+      "passed": true,
+      "details": {
+        "unique_triangles": 14002,
+        "invalid_meshes": []
+      }
+    },
+    {
+      "test": "neuropixels-reference-assembly.glb contains all 960 site instances",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-reference-assembly.glb unique site ids",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-reference-assembly.glb 12 x 12 um mesh footprint",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-reference-assembly.glb independent trimesh import",
+      "passed": true,
+      "details": {
+        "extent_in_metres": [
+          0.009399999618530273,
+          0.07181216430664063,
+          0.006351824134588242
+        ]
+      }
+    },
+    {
+      "test": "neuropixels-shank.glb valid GLB header",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-shank.glb binary length",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-shank.glb standard physical metre scale",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-shank.glb finite geometry / unit normals / index bounds",
+      "passed": true,
+      "details": {
+        "unique_triangles": 1842,
+        "invalid_meshes": []
+      }
+    },
+    {
+      "test": "neuropixels-shank.glb contains all 960 site instances",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-shank.glb unique site ids",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-shank.glb 12 x 12 um mesh footprint",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-shank.glb independent trimesh import",
+      "passed": true,
+      "details": {
+        "extent_in_metres": [
+          7.000000029802322e-05,
+          0.01,
+          2.425789214367978e-05
+        ]
+      }
+    },
+    {
+      "test": "neuropixels-shank.glb valid GLB header",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "neuropixels-shank.glb binary length",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Assembled shank surface is watertight",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "Mesh shank bounds 0.070 x 10 x 0.024 mm",
+      "passed": true,
+      "details": [
+        0.07000000029802322,
+        10.0,
+        0.024000000208616257
+      ]
+    },
+    {
+      "test": "Mesh shank volume matches polygon analytic volume",
+      "passed": true,
+      "details": 0.016653000218156726
+    },
+    {
+      "test": "STEP solid valid before and after round trip",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "STEP bounds agree with mesh",
+      "passed": true,
+      "details": null
+    },
+    {
+      "test": "All GLB buffer-view bounds",
+      "passed": true,
+      "details": {
+        "buffer_views_checked": 980
+      }
+    }
+  ],
+  "scope": "Software geometry and file consistency, not biological/electrochemical/manufacturing validation."
+}

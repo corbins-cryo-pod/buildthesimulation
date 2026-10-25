@@ -1,0 +1,86 @@
+{
+  "name": "Neuropixels 1.0 reference reconstruction",
+  "revision": "BTS-NPX1-R1",
+  "date": "2026-10-25",
+  "coordinate_system": "X transverse; Y proximal from distal tip; Z toward recording face. Builder mm; GLB metres.",
+  "documented_nominal": {
+    "shank_length_mm": 10.0,
+    "shank_width_mm": 0.07,
+    "shank_thickness_mm": 0.024,
+    "tip_length_mm": 0.175,
+    "site_size_mm": 0.012,
+    "site_count": 960,
+    "simultaneous_channels": 384,
+    "row_pitch_mm": 0.02,
+    "column_pitch_mm": 0.016,
+    "probe_base_width_mm": 6.2,
+    "probe_base_length_mm": 10.7,
+    "smd_base_width_mm": 7.2,
+    "smd_base_length_mm": 12.2,
+    "silicon_cap_width_mm": 3.9,
+    "silicon_cap_length_mm": 8.5,
+    "package_thickness_approx_mm": 1.2,
+    "flex_width_mm": 4.3,
+    "flex_length_mm": 39.5,
+    "flex_thickness_mm": 0.08,
+    "mating_zif_contact_count": 45
+  },
+  "documented_materials": {
+    "sites": "porous TiN",
+    "front": "silicon nitride",
+    "back": "silicon dioxide",
+    "sidewall": "silicon / silicon dioxide",
+    "black_epoxy": "EPO-TEK H70E"
+  },
+  "reconstruction_assumptions": {
+    "first_site_center_from_tip_mm": 0.2,
+    "lateral_site_centers_mm": [
+      -0.024,
+      -0.008,
+      0.008,
+      0.024
+    ],
+    "site_numbering": "geometric row order, NOT an electrical channel map",
+    "tip_profile": "symmetric straight-sided 175 um taper, 22.62 deg derived included angle; datasheet ~20 deg is approximate",
+    "electrode_relief_mm": 0.00024,
+    "slot_count_per_site": 5,
+    "slot_width_mm": 0.0005,
+    "slot_length_mm": 0.0086,
+    "slot_depth_mm": 0.00014,
+    "slot_geometry_status": "SEM-inspired. Slot dimensions are NOT published metrology.",
+    "porosity": "Seeded procedural relief and normal texture, NOT measured pore dimensions, porosity, or electrochemistry.",
+    "tip_reference_outline": "SEM-inspired, unmeasured outline",
+    "assembly": "Published envelope dimensions; local outlines, component placements, layer thicknesses, trace routing and terminal outline reconstructed.",
+    "flex_bend_deg": 18.0,
+    "terminal_pitch_mm": 0.2,
+    "terminal_width_mm": 9.4,
+    "gold": "Gold-coloured appearance, not a verified metallization stack or conductor netlist.",
+    "illustration_head": "Separate drawing-matched concept head. Outline, pad layout and traces are NOT verified Neuropixels hardware."
+  },
+  "limitations": [
+    "Reference and visualisation only; not for fabrication or implantation.",
+    "No proprietary CMOS layout or internal layer stack reconstructed.",
+    "No electrical or electrochemical simulation.",
+    "No measurement of manufacturing tolerances.",
+    "A reconstruction, not a manufacturer CAD model or a photogrammetric scan."
+  ],
+  "sources": [
+    {
+      "id": "IMEC-2020",
+      "title": "Neuropixels 1.0 fully-integrated CMOS digital neural probe; imec datasheet, 13 February 2020",
+      "url": "https://www.bio-signal.com/static/upload/file/20240927/1727441617543747.pdf",
+      "pages": "3: shank, sites, SEM; 4: package and flex",
+      "origin": "Manufacturer-authored document, distributor-hosted copy"
+    },
+    {
+      "id": "NP-SUPPORT",
+      "title": "Neuropixels official support and design files",
+      "url": "https://www.neuropixels.org/support"
+    },
+    {
+      "id": "NP-SEM",
+      "title": "Manufacturer SEM of Neuropixels 1.0 tip",
+      "url": "https://www.neuropixels.org/probe1-0"
+    }
+  ]
+}
