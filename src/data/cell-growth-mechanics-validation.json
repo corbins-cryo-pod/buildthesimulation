@@ -1,16 +1,18 @@
 {
   "schema": "cell-growth-mechanics-verification/2",
-  "modelVersion": "cell-growth/2.0.0",
+  "modelVersion": "cell-growth/2.1.0",
   "runtime": "v24.22.1",
   "empiricalCalibration": false,
   "sourceSha256": {
-    "src/lib/cell-growth/engine.js": "6b4f59fa609b89ba385f611ac10100d67e7acf525538596885cc46ab93d46985",
-    "src/lib/cell-growth/mechanics.js": "2f00955df2fb681332b0c2f91ad4fe6a5c04424ffb96a22183a8e1d86bcf69f1",
-    "src/lib/cell-growth/exploration.js": "64420fc84ddb5f3ddd0edfe11954d1880d318f585309effdf2a8e441458c7323",
+    "src/lib/cell-growth/engine.js": "ec89b70838b1201427e2382a5e1cc262bfa16527b945ba2334b348dad250b124",
+    "src/lib/cell-growth/behavior.js": "7f2e067330b0a2c3803ae4ce5ad2eadd9c903a29d532175a0abb48d86251346c",
+    "tests/cell-growth-behavior.mjs": "1cf9be4fbcfd90688deb94617d0db774aa62a479c65b81f3b791a5c080215163",
+    "src/lib/cell-growth/mechanics.js": "af8849413444de001215fbfe7b123370d4ffaceb41528ea7e3d80bb1fb919ad7",
+    "src/lib/cell-growth/exploration.js": "ab8e024cba21d655b724863c0e8c534d13004d8b3b3eabef87e68189f772b034",
     "src/lib/cell-growth/geometry.js": "97a1269bf12765443dc2b275ee5b1ad3f7943cf5de442ebf82785b3c924e24f4",
     "src/lib/cell-growth/render-geometry.js": "09a1cc596cc53e26630cdce5471784feaa322b211a60034342fcbda7ca9509b7",
-    "tests/cell-growth-mechanics.mjs": "4859f6b19c28790b07b7f2be082c23fa90828299880020f3873392fbf3a44117",
-    "scripts/validate-cell-growth-mechanics.mjs": "d10b1754bb9a8d3cd1ad09bc7b1621ecbbc15c1f3ec0efa3e439626338b01fbc"
+    "tests/cell-growth-mechanics.mjs": "8d7633fe6b6d712d03cb36f96577d154b1452a898489fcbedbaab6f91010f680",
+    "scripts/validate-cell-growth-mechanics.mjs": "d50e9abff9397210402415577063bcd4338c375aaa27c656544d8d5f2a78da6f"
   },
   "checks": [
     {
@@ -182,6 +184,7 @@
         "guidance": 0,
         "branching": 0,
         "noise": 0,
+        "growthPulses": 1,
         "selfAvoidance": 1,
         "fasciculation": 0.55,
         "membraneSupply": 1,
@@ -196,7 +199,7 @@
         "density": 1
       },
       "hours": 8,
-      "wallMs": 610.40315,
+      "wallMs": 1736.048364,
       "displacementUm": [
         19.436004112248234
       ],
@@ -228,6 +231,7 @@
         "guidance": 0,
         "branching": 0,
         "noise": 0,
+        "growthPulses": 1,
         "selfAvoidance": 1,
         "fasciculation": 0.55,
         "membraneSupply": 1,
@@ -242,7 +246,7 @@
         "density": 1
       },
       "hours": 8,
-      "wallMs": 402.27596700000004,
+      "wallMs": 1107.6036800000002,
       "displacementUm": [
         0.000006077920991841441
       ],
@@ -274,6 +278,7 @@
         "guidance": 0,
         "branching": 0,
         "noise": 0,
+        "growthPulses": 1,
         "selfAvoidance": 1,
         "fasciculation": 0.55,
         "membraneSupply": 1,
@@ -288,7 +293,7 @@
         "density": 1
       },
       "hours": 8,
-      "wallMs": 412.9367379999999,
+      "wallMs": 1028.622113,
       "displacementUm": [
         0.017862046313387617
       ],
@@ -320,6 +325,7 @@
         "guidance": 0,
         "branching": 0,
         "noise": 0,
+        "growthPulses": 1,
         "selfAvoidance": 1,
         "fasciculation": 0.55,
         "membraneSupply": 1,
@@ -334,7 +340,7 @@
         "density": 1
       },
       "hours": 4,
-      "wallMs": 146.94784200000004,
+      "wallMs": 338.4466139999995,
       "displacementUm": [
         8.30405362773511
       ],
@@ -366,6 +372,7 @@
         "guidance": 0,
         "branching": 0,
         "noise": 0,
+        "growthPulses": 1,
         "selfAvoidance": 1,
         "fasciculation": 0.55,
         "membraneSupply": 1,
@@ -380,7 +387,7 @@
         "density": 1
       },
       "hours": 4,
-      "wallMs": 141.11151300000006,
+      "wallMs": 381.83549700000003,
       "displacementUm": [
         8.30405362773511
       ],
@@ -412,6 +419,7 @@
         "guidance": 0,
         "branching": 0,
         "noise": 0,
+        "growthPulses": 1,
         "selfAvoidance": 1,
         "fasciculation": 0.55,
         "membraneSupply": 1,
@@ -426,7 +434,7 @@
         "density": 1
       },
       "hours": 4,
-      "wallMs": 183.81215500000008,
+      "wallMs": 400.8644549999999,
       "displacementUm": [
         8.30405362773511
       ],
@@ -458,6 +466,7 @@
         "guidance": 0,
         "branching": 0,
         "noise": 0,
+        "growthPulses": 1,
         "selfAvoidance": 1,
         "fasciculation": 0.55,
         "membraneSupply": 1,
@@ -472,7 +481,7 @@
         "density": 1.8
       },
       "hours": 2,
-      "wallMs": 98.77130899999975,
+      "wallMs": 214.2136440000004,
       "displacementUm": [
         3.190724489748529
       ],
@@ -504,6 +513,7 @@
         "guidance": 0,
         "branching": 0,
         "noise": 0,
+        "growthPulses": 1,
         "selfAvoidance": 1,
         "fasciculation": 0.55,
         "membraneSupply": 1,
@@ -518,7 +528,7 @@
         "density": 1.8
       },
       "hours": 2,
-      "wallMs": 558.688416,
+      "wallMs": 1334.9022240000004,
       "displacementUm": [
         3.3277234826972104,
         3.517801968061687,
@@ -570,6 +580,7 @@
         "guidance": 0,
         "branching": 0,
         "noise": 0,
+        "growthPulses": 1,
         "selfAvoidance": 1,
         "fasciculation": 0.55,
         "membraneSupply": 1,
@@ -584,7 +595,7 @@
         "density": 1.8
       },
       "hours": 2,
-      "wallMs": 1108.400673,
+      "wallMs": 1803.505924,
       "displacementUm": [
         3.3277234826972104,
         3.517801968061687,
@@ -660,6 +671,7 @@
         "guidance": 0,
         "branching": 0,
         "noise": 0,
+        "growthPulses": 1,
         "selfAvoidance": 1,
         "fasciculation": 0.55,
         "membraneSupply": 1,
@@ -674,7 +686,7 @@
         "density": 1.8
       },
       "hours": 2,
-      "wallMs": 1948.126241,
+      "wallMs": 2789.113292,
       "displacementUm": [
         3.7763527165290243,
         3.517801968061687,
@@ -798,6 +810,7 @@
         "guidance": 0,
         "branching": 0,
         "noise": 0,
+        "growthPulses": 1,
         "selfAvoidance": 1,
         "fasciculation": 0.55,
         "membraneSupply": 1,
@@ -812,7 +825,7 @@
         "density": 1
       },
       "hours": 4,
-      "wallMs": 286.0940730000002,
+      "wallMs": 431.7888039999998,
       "displacementUm": [
         1.335881479729588
       ],
@@ -844,6 +857,7 @@
         "guidance": 0,
         "branching": 0,
         "noise": 0,
+        "growthPulses": 1,
         "selfAvoidance": 1,
         "fasciculation": 0.55,
         "membraneSupply": 1,
@@ -858,7 +872,7 @@
         "density": 1
       },
       "hours": 4,
-      "wallMs": 152.66780500000004,
+      "wallMs": 177.28505600000062,
       "displacementUm": [
         29.305611233720107
       ],
@@ -890,6 +904,7 @@
         "guidance": 0,
         "branching": 0,
         "noise": 0,
+        "growthPulses": 1,
         "selfAvoidance": 1,
         "fasciculation": 0.55,
         "membraneSupply": 1,
@@ -904,7 +919,7 @@
         "density": 1
       },
       "hours": 4,
-      "wallMs": 125.9064929999995,
+      "wallMs": 202.67123300000094,
       "displacementUm": [
         0.08793299476028973
       ],

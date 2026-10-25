@@ -212,6 +212,7 @@ export default function CellGrowthLaboratory() {
             <label class="cg-seed-field">Random seed<input type="number" aria-label="Random seed" min="0" max="4294967295" step="1" value={draft.seed} onChange={e => { const n = Number(e.currentTarget.value); if (Number.isFinite(n)) update('seed', Math.max(0, Math.min(4294967295, Math.round(n)))); }} /></label>
             <div class="cg-control-rule" />
             <RangeField label="Membrane supply" name="membraneSupply" value={draft.membraneSupply} max={2} note="Area reserve available to extend processes." onChange={update} />
+            <RangeField label="Growth episodes" name="growthPulses" value={draft.growthPulses} max={1} note="Independent bursts, pauses and brief retractions at each tip. Zero gives continuous drive." onChange={update} />
             <RangeField label="Branch initiation" name="branching" value={draft.branching} max={2} note="Scales axon and dendrite branch hazards separately." onChange={update} />
             <div class="cg-mini-note"><b>Developmental sequence</b><p>Precursor → immature processes → polarization → arbor elaboration.</p></div>
           </>}

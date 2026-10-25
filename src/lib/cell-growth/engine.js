@@ -5,11 +5,12 @@
  */
 import {add,sub,scale,dot,cross,length,distance,clamp,unit,lerp,closestSegmentPoints,pointSegmentDistance,segmentSphereHit,segmentBoxHit,segmentCapsuleHit,SpatialHash} from './geometry.js';
 
+import {createTipBehavior,advanceTipBehavior,plateDirection} from './behavior.js';
 import {constrainCone,sampleFilopodia} from './exploration.js';
 import {createSoftCell, advanceCellMechanics, updateConeShape, populationMechanics, signedObstacle, SHELL} from './mechanics.js';
 
-export const MODEL_VERSION='cell-growth/2.0.0';
-export const DEFAULT_CONFIG=Object.freeze({mode:'culture',source:'precursor',cellCount:12,seed:714,dtHours:.05,actin:1,microtubules:1,tension:1,adhesion:.65,stiffness:100,guidance:.6,branching:1,noise:.35,selfAvoidance:1,fasciculation:.55,membraneSupply:1,maxSegments:18000,maxTipsPerCell:32,motility:1,contractility:1,cortexStiffness:1,bending:1,cellAdhesion:.35,contactInhibition:1,density:1});
+export const MODEL_VERSION='cell-growth/2.1.0';
+export const DEFAULT_CONFIG=Object.freeze({mode:'culture',source:'precursor',cellCount:12,seed:714,dtHours:.05,actin:1,microtubules:1,tension:1,adhesion:.65,stiffness:100,guidance:.6,branching:1,noise:.35,growthPulses:1,selfAvoidance:1,fasciculation:.55,membraneSupply:1,maxSegments:18000,maxTipsPerCell:32,motility:1,contractility:1,cortexStiffness:1,bending:1,cellAdhesion:.35,contactInhibition:1,density:1});
 export const PRESETS=Object.freeze([
   {id:'culture',title:'In vitro plate',description:'A planar neural culture on an adhesive substrate with cell-scale obstacles and a localized trophic cue.',config:{mode:'culture',source:'precursor',cellCount:12}},
   {id:'organoid',title:'Organoid environment',description:'A three-dimensional spherical tissue volume, a lumen, reduced central support, and local radial organization.',config:{mode:'organoid',source:'precursor',cellCount:18,adhesion:.45,guidance:.45,maxSegments:26000}},
@@ -19,7 +20,7 @@ export const PRESETS=Object.freeze([
 export const PHYSICAL_BASELINES=Object.freeze({polymerizationUmPerHour:64,unloadedRetrogradeUmPerHour:66,dragPnHoursPerUm:3,membraneTensionPnPerUm:7,clutchSpringPnPerUm:600,clutchOnPerSecond:.4,clutchOffPerSecond:.12,bondForcePn:2.5,motorStallPn:55,clutchSites:42,shaftSegmentUm:2.5,appositionHours:.3});
 const MAX_DURATION=720;
 const clone=x=>JSON.parse(JSON.stringify(x));
-const RANGES={cellCount:[1,36],seed:[0,4294967295],dtHours:[.005,.25],actin:[0,3],microtubules:[0,3],tension:[0,4],adhesion:[0,1],stiffness:[1,10000],guidance:[0,3],branching:[0,3],noise:[0,2],selfAvoidance:[0,2],fasciculation:[0,1],membraneSupply:[0,3],maxSegments:[100,30000],maxTipsPerCell:[1,48],motility:[0,3],contractility:[0,3],cortexStiffness:[.2,3],bending:[0,3],cellAdhesion:[0,1],contactInhibition:[0,2],density:[.5,3]};
+const RANGES={cellCount:[1,36],seed:[0,4294967295],dtHours:[.005,.25],actin:[0,3],microtubules:[0,3],tension:[0,4],adhesion:[0,1],stiffness:[1,10000],guidance:[0,3],branching:[0,3],noise:[0,2],growthPulses:[0,1],selfAvoidance:[0,2],fasciculation:[0,1],membraneSupply:[0,3],maxSegments:[100,30000],maxTipsPerCell:[1,48],motility:[0,3],contractility:[0,3],cortexStiffness:[.2,3],bending:[0,3],cellAdhesion:[0,1],contactInhibition:[0,2],density:[.5,3]};
 export function normalizeConfig(input={}) {
   const c={};
   for(const key of Object.keys(DEFAULT_CONFIG)) c[key]=input[key]??DEFAULT_CONFIG[key];
@@ -93,7 +94,7 @@ function makeSegment(sim,cell,kind,start,end,parentId=-1,order=0){
   const s={id:sim.segments.length,cellId:cell.id,parentId,rootId:parent?parent.rootId:sim.segments.length,kind,start:[...start],end:[...end],radius,ageHours:0,mt:.3,alive:true,branchOrder:order};sim.segments.push(s);return s;
 }
 function makeTip(sim,cell,segment,direction,order=0){
-  const t={id:sim.tips.length,cellId:cell.id,segmentId:segment.id,kind:segment.kind,direction:unit(direction),active:true,status:'extending',radius:segment.kind==='axon'?1.8:2.1,ageHours:0,stallHours:0,branchOrder:order,mt:.3,clutch:.5,branchClock:0,noiseState:[0,0,0],forces:{actin:0,traction:0,microtubule:0,membrane:0,net:0,retrograde:0,speed:0,clutch:.5},lastContact:null};sim.tips.push(t);return t;
+  const t={id:sim.tips.length,cellId:cell.id,segmentId:segment.id,kind:segment.kind,direction:unit(direction),active:true,status:'extending',radius:segment.kind==='axon'?1.8:2.1,ageHours:0,stallHours:0,branchOrder:order,mt:.3,clutch:.5,branchClock:0,noiseState:[0,0,0],forces:{actin:0,traction:0,microtubule:0,membrane:0,net:0,retrograde:0,speed:0,clutch:.5},lastContact:null,behavior:createTipBehavior(sim.config.seed,sim.tips.length,segment.end[1])};sim.tips.push(t);return t;
 }
 function initializeNeurites(sim,cell){
   if(cell.initialized)return;cell.initialized=true;
@@ -196,7 +197,7 @@ function nearbyDirection(sim,tip,point,index,dt){
   }
   // Ornstein-Uhlenbeck directional fluctuations, with deterministic zero-noise limit.
   if(c.noise>0){const decay=Math.exp(-dt/1.5),sigma=c.noise*.32*Math.sqrt(1-decay*decay);for(let i=0;i<3;i++)tip.noiseState[i]=tip.noiseState[i]*decay+(sim.world.planar&&i===1?0:sigma*normal(sim));steer=add(steer,tip.noiseState);}
-  let d=unit(add(tip.direction,scale(steer,dt*.8)));if(sim.world.planar)d=unit([d[0],0,d[2]]);return d;
+  let d=unit(add(tip.direction,scale(steer,dt*.8)));if(sim.world.planar)d=plateDirection(sim,tip,point,d,index);return d;
 }
 function localAncestors(sim,id,range){const set=new Set();let l=0,steps=0;while(id>=0&&steps++<20){const s=sim.segments[id];if(!s)break;set.add(id);l+=distance(s.start,s.end);if(l>range)break;id=s.parentId;}return set;}
 function firstCollision(sim,tip,a,b,index,shaftOnly=false){
@@ -284,17 +285,30 @@ function branchTip(sim,tip,dt,index){
   if(active>=c.maxTipsPerCell){sim.limits.tipLimitedCount++;return;}
   let perpendicular=sim.world.planar?[-tip.direction[2],0,tip.direction[0]]:unit(cross(tip.direction,Math.abs(tip.direction[1])<.85?[0,1,0]:[1,0,0]));
   perpendicular=scale(perpendicular,random(sim)<.5?-1:1);
-  const angle=(tip.kind==='axon'?.48:.68),newDirection=unit(add(scale(tip.direction,Math.cos(angle)),scale(perpendicular,Math.sin(angle))));
+  const angle=.35+random(sim)*(tip.kind==='axon'?.65:1),newDirection=unit(add(scale(tip.direction,Math.cos(angle)),scale(perpendicular,Math.sin(angle))));
+  // Lateral buds arise at retained shaft nodes; the leading tip continues.
+  const candidates=[];let node=s;
+  for(let i=0;i<24&&node.parentId>=0;i++){
+    node=sim.segments[node.parentId];
+    if(node.parentId>=0&&node.ageHours>1&&node.branchOrder<5&&distance(node.end,s.end)>7&&sim.segments.filter(n=>n.alive&&n.parentId===node.id).length===1)candidates.push(node);
+  }
+  if(candidates.length&&random(sim)<.6){
+    const origin=candidates[Math.floor(random(sim)*candidates.length)],axis=unit(sub(origin.end,origin.start)),side=sim.world.planar?[-axis[2],0,axis[0]]:perpendicular;
+    const direction=unit(add(scale(axis,Math.cos(angle)),scale(side,(random(sim)<.5?-1:1)*Math.sin(angle))));
+    const bud=makeSegment(sim,cell,tip.kind,origin.end,origin.end,origin.id,origin.branchOrder+1);
+    if(!bud)return;const child=makeTip(sim,cell,bud,direction,origin.branchOrder+1);index.insert(bud.id,bud.start,bud.end,bud.radius);index.cones.set(bud.id,child);
+    tip.ageHours=0;sim.counters.branches++;event(sim,'branch',{cellId:cell.id,kind:tip.kind,mode:'lateral',segmentId:origin.id});return;
+  }
   const next=makeSegment(sim,cell,tip.kind,s.end,s.end,s.id,tip.branchOrder+1);if(!next)return;const child=makeTip(sim,cell,next,newDirection,tip.branchOrder+1);index.insert(next.id,next.start,next.end,next.radius);index.cones.set(next.id,child);
   // Existing tip continues in a sister branch so the branch node stays fixed.
   const continuation=makeSegment(sim,cell,tip.kind,s.end,s.end,s.id,tip.branchOrder+1);if(continuation){index.cones.delete(tip.segmentId);tip.segmentId=continuation.id;index.insert(continuation.id,continuation.start,continuation.end,continuation.radius);index.cones.set(continuation.id,tip);tip.branchOrder++;tip.direction=unit(add(tip.direction,scale(perpendicular,-.2)));tip.ageHours=0;}
-  sim.counters.branches++;event(sim,'branch',{cellId:cell.id,kind:tip.kind});
+  sim.counters.branches++;event(sim,'branch',{cellId:cell.id,kind:tip.kind,mode:'tip'});
 }
 
 function advanceTip(sim,tip,dt,index){
   if(!tip.active)return;const cell=sim.cells[tip.cellId],s=sim.segments[tip.segmentId];if(!s.alive){tip.active=false;return;}
-  tip.ageHours+=dt;updateConeShape(tip,dt,sim.config);constrainCone(sim,tip,index);
-  const speed=coneForces(sim,tip,cell,dt),old=[...s.end];tip.direction=nearbyDirection(sim,tip,old,index,dt);
+  tip.ageHours+=dt;const episode=advanceTipBehavior(tip,dt,sim.config.growthPulses);updateConeShape(tip,dt,sim.config);constrainCone(sim,tip,index);
+  const speed=coneForces(sim,tip,cell,dt)*Math.max(0,episode),old=[...s.end];tip.direction=nearbyDirection(sim,tip,old,index,dt);
   const apposition=sim.contacts.find(c=>c.id===tip.lastContact&&c.status!=='lost');
   if(apposition&&sim.config.cellAdhesion>=.3){
     const other=sim.segments[apposition.axonSegmentId===s.id?apposition.dendriteSegmentId:apposition.axonSegmentId];
@@ -302,7 +316,8 @@ function advanceTip(sim,tip,dt,index){
       apposition.dwellHours+=dt;apposition.lastTime=sim.timeHours;apposition.candidate=apposition.dwellHours>=PHYSICAL_BASELINES.appositionHours;apposition.status=apposition.candidate?'candidate':'apposition';tip.status='stabilized';tip.forces.speed=0;sampleFilopodia(sim,tip,index,dt);return;
     }
   }
-  if(speed<.02){tip.status='stalled';tip.stallHours+=dt;if(tip.stallHours>2&&(sim.config.actin===0||sim.config.microtubules===0||cell.membrane.reserve<.08||tip.forces.net<0))tip.forces.speed=-retractTip(sim,tip,dt*(tip.kind==='axon'?1.5:2.5))/dt;sampleFilopodia(sim,tip,index,dt);return;}
+  if(episode<0&&sim.config.actin>0&&sim.config.microtubules>0&&tip.forces.net>0){tip.status='retracting';tip.forces.speed=-retractTip(sim,tip,dt*(-episode)*3)/dt;sampleFilopodia(sim,tip,index,dt);return;}
+  if(speed<.02){tip.status='stalled';tip.forces.speed=0;tip.stallHours+=dt;if(tip.stallHours>2&&(sim.config.actin===0||sim.config.microtubules===0||cell.membrane.reserve<.08||tip.forces.net<0))tip.forces.speed=-retractTip(sim,tip,dt*(tip.kind==='axon'?1.5:2.5))/dt;sampleFilopodia(sim,tip,index,dt);return;}
   const availableLength=cell.membrane.reserve*cell.membrane.reserveCapacity/(2*Math.PI*s.radius),amount=Math.min(speed*dt,availableLength),target=add(old,scale(tip.direction,amount)),hit=firstCollision(sim,tip,old,target,index);
   let added=0,retracted=0;
   if(hit){
@@ -424,6 +439,7 @@ export function restoreSimulation(data){
   }
   for(let i=0;i<s.tips.length;i++){
     const t=s.tips[i];if(t?.id!==i||!Number.isInteger(t.segmentId)||!s.segments[t.segmentId]||t.cellId!==s.segments[t.segmentId].cellId||!validPoint(t.direction)||!validPoint(t.noiseState)||typeof t.active!=='boolean'||!finiteNumber(t.radius)||t.radius<=0||t.radius>10||!finiteNumber(t.mt)||t.mt<0||t.mt>1||!finiteNumber(t.clutch)||t.clutch<0||t.clutch>1||!finiteNumber(t.ageHours)||t.ageHours<0||!finiteNumber(t.stallHours)||t.stallHours<0||!t.forces||Object.values(t.forces).some(v=>!finiteNumber(v)))throw new Error('Invalid growth cone state.');
+    const b=t.behavior;if(!b||!Number.isInteger(b.rng)||b.rng<0||b.rng>4294967295||!['growing','paused','retracting'].includes(b.phase)||!finiteNumber(b.remaining)||b.remaining<0||b.remaining>2||!finiteNumber(b.gain)||b.gain<-.31||b.gain>1.81||!finiteNumber(b.clock)||b.clock<0||!finiteNumber(b.baseHeight)||Math.abs(b.baseHeight)>1e5)throw new Error('Invalid local growth episode.');
     if(t.filopodia&&(!Array.isArray(t.filopodia)||t.filopodia.length!==5||t.filopodia.some(p=>!validPoint(p.start)||!validPoint(p.end)||!validPoint(p.direction)||!finiteNumber(p.length)||p.length<0||p.length>10||p.radius!==.08||typeof p.blocked!=='boolean')))throw new Error('Invalid exploratory protrusion.');
     if(t.shape&&(!Array.isArray(t.shape.radii)||t.shape.radii.length!==12||t.shape.radii.some(x=>!finiteNumber(x)||x<=0||x>10)))throw new Error('Invalid growth cone membrane.');
     if(t.kind!==s.segments[t.segmentId].kind||(t.active&&!s.segments[t.segmentId].alive)||length(t.direction)<.5||length(t.direction)>1.5||!['extending','stalled','contact','retracting','retracted','stabilized'].includes(t.status)||['actin','traction','microtubule','membrane','net','retrograde','speed','clutch'].some(k=>!finiteNumber(t.forces[k])))throw new Error('Invalid growth cone identity or direction.');

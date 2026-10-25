@@ -220,7 +220,7 @@ export function updateConeShape(tip,dt,config){
   const count=12,base=tip.kind==='axon'?1.6:1.85;
   tip.shape??={radii:Array(count).fill(base),height:.45,actinRim:Array(count).fill(0),maxRadius:base};
   for(let i=0;i<count;i++){
-    const a=i/count*Math.PI*2,front=.3+.7*Math.max(0,Math.cos(a)),activity=config.actin*front*(.4+.6*tip.clutch);
+    const a=i/count*Math.PI*2,front=.3+.7*Math.max(0,Math.cos(a)),activity=config.actin*front*(.4+.6*tip.clutch)*(.65+.35*Math.sin((tip.behavior?.clock??tip.ageHours)*(1.2+i*.13)+i*1.7+tip.id))*(.6+.4*Math.max(0,tip.behavior?.gain??1));
     const load=tip.status==='contact'?.5:1,rest=base*(.65+.25*tip.mt),target=rest+load*.65*activity/(1+.025*tip.forces.membrane);
     tip.shape.radii[i]+=(target-tip.shape.radii[i])*(-Math.expm1(-dt/.3));tip.shape.actinRim[i]=activity;
   }

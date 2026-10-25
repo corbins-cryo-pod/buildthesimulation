@@ -23,8 +23,8 @@ export function sampleFilopodia(sim,tip,index,dt){
   const segment=sim.segments[tip.segmentId],origin=segment.end,dir=unit(tip.direction),side=unit(cross(Math.abs(dir[1])<.9?[0,1,0]:[1,0,0],dir));
   const old=tip.filopodia||[],probes=[];
   for(let i=0;i<5;i++){
-    const angle=-1+i*.5,u=unit(add(scale(dir,Math.cos(angle)),scale(side,Math.sin(angle)))),start=add(origin,scale(u,tip.radius*.95));
-    const targetLength=(.6+2.1*Math.min(1.5,sim.config.actin))/(1+.015*tip.forces.membrane),previous=old[i]?.length??.2;
+    const clock=tip.behavior?.clock??tip.ageHours,phase=tip.id*2.399+i*1.73,angle=-1+i*.5+.22*Math.sin(clock*(1.1+i*.21)+phase),u=unit(add(scale(dir,Math.cos(angle)),scale(side,Math.sin(angle)))),start=add(origin,scale(u,tip.radius*.95));
+    const local=.18+.82*Math.pow(.5+.5*Math.sin(clock*(1.5+i*.37)+phase),2),targetLength=local*(.6+2.1*Math.min(1.5,sim.config.actin))/(1+.015*tip.forces.membrane),previous=old[i]?.length??.2;
     const extension=previous+(targetLength-previous)*(-Math.expm1(-dt/.4)),end=add(start,scale(u,extension));let first=null;
     const accept=h=>{if(h&&(!first||h.t<first.t))first=h;};
     for(const o of sim.world.obstacles)accept(o.shape==='sphere'?segmentSphereHit(start,end,o.position,o.radius+.08):segmentBoxHit(start,end,o.position,o.size,.08));

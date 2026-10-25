@@ -102,7 +102,7 @@ test('V2 filopodial sensing stops at a thin barrier and at the modeled boundary'
  const {sampleFilopodia}=await import('../src/lib/cell-growth/exploration.js');const {SpatialHash}=await import('../src/lib/cell-growth/geometry.js');
  const s=createSimulation({source:'immature',cellCount:1,actin:1}),t=s.tips[0],segment=s.segments[t.segmentId];segment.end=[0,0,0];t.direction=[1,0,0];t.radius=1;t.forces.membrane=0;
  const hash=new SpatialHash(16);s.world.obstacles=[{id:'thin',shape:'box',position:[2.5,0,0],size:[.1,5,1]}];sampleFilopodia(s,t,hash,1);
- assert.ok(t.filopodia[2].blocked);assert.ok(t.filopodia[2].end[0]<2.5-.05-.08);assert.ok(t.filopodia.some(p=>!p.blocked));
+ let sensed=false;for(let i=0;i<30;i++){t.behavior.clock=i*.15;sampleFilopodia(s,t,hash,.15);for(const p of t.filopodia)if(p.blocked){sensed=true;assert.ok(p.end[0]<2.5-.05-.08);} }assert.ok(sensed);assert.ok(t.filopodia.some(p=>!p.blocked));
  s.world.obstacles=[];s.world.bounds.max[0]=2;sampleFilopodia(s,t,hash,1);for(const p of t.filopodia)assert.ok(p.end[0]<=1.92+1e-8);
 });
 
