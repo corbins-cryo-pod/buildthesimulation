@@ -1,0 +1,301 @@
+{
+  "schema": "retinal-field-convergence-v1",
+  "method": "Independent elliptic/adaptive reference versus raw Gauss-Legendre/periodic source quadrature.",
+  "observationRadii": [
+    0.0,
+    0.04838709677419355,
+    0.0967741935483871,
+    0.14516129032258063,
+    0.1935483870967742,
+    0.24193548387096775,
+    0.29032258064516125,
+    0.3387096774193548,
+    0.3870967741935484,
+    0.43548387096774194,
+    0.4838709677419355,
+    0.5,
+    0.532258064516129,
+    0.5806451612903225,
+    0.6290322580645161,
+    0.6774193548387096,
+    0.7258064516129032,
+    0.7741935483870968,
+    0.8225806451612903,
+    0.8709677419354839,
+    0.9193548387096774,
+    0.967741935483871,
+    1.0161290322580645,
+    1.064516129032258,
+    1.1129032258064515,
+    1.161290322580645,
+    1.2096774193548387,
+    1.2580645161290323,
+    1.3064516129032258,
+    1.3548387096774193,
+    1.4032258064516128,
+    1.4516129032258065,
+    1.5,
+    1.5483870967741935,
+    1.596774193548387,
+    1.6451612903225805,
+    1.6935483870967742,
+    1.7419354838709677,
+    1.7903225806451613,
+    1.8387096774193548,
+    1.8870967741935483,
+    1.935483870967742,
+    1.9838709677419355,
+    2.032258064516129,
+    2.0806451612903225,
+    2.129032258064516,
+    2.1774193548387095,
+    2.225806451612903,
+    2.2741935483870965,
+    2.32258064516129,
+    2.370967741935484,
+    2.4193548387096775,
+    2.467741935483871,
+    2.5161290322580645,
+    2.564516129032258,
+    2.6129032258064515,
+    2.661290322580645,
+    2.7096774193548385,
+    2.758064516129032,
+    2.8064516129032255,
+    2.8548387096774195,
+    2.903225806451613,
+    2.9516129032258065,
+    3.0
+  ],
+  "angularAlignments": [
+    0.0,
+    0.5
+  ],
+  "rows": [
+    {
+      "gapOverRadius": 0.1,
+      "radialOrder": 16,
+      "angularOrder": 64,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 5.2814509344134564e-05,
+      "maximumRelativeVectorError": 0.0031234278548065053
+    },
+    {
+      "gapOverRadius": 0.1,
+      "radialOrder": 24,
+      "angularOrder": 96,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 1.4772570640086968e-06,
+      "maximumRelativeVectorError": 0.00013004522384460303
+    },
+    {
+      "gapOverRadius": 0.1,
+      "radialOrder": 32,
+      "angularOrder": 128,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 4.630700778385233e-08,
+      "maximumRelativeVectorError": 5.413622191337702e-06
+    },
+    {
+      "gapOverRadius": 0.1,
+      "radialOrder": 48,
+      "angularOrder": 192,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 5.371414424359955e-11,
+      "maximumRelativeVectorError": 9.38103579838946e-09
+    },
+    {
+      "gapOverRadius": 0.125,
+      "radialOrder": 16,
+      "angularOrder": 64,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 1.0998915485060934e-05,
+      "maximumRelativeVectorError": 0.0006487883493951333
+    },
+    {
+      "gapOverRadius": 0.125,
+      "radialOrder": 24,
+      "angularOrder": 96,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 1.4091063760268696e-07,
+      "maximumRelativeVectorError": 1.2376113580935708e-05
+    },
+    {
+      "gapOverRadius": 0.125,
+      "radialOrder": 32,
+      "angularOrder": 128,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 2.0235503273013933e-09,
+      "maximumRelativeVectorError": 2.3608031851668718e-07
+    },
+    {
+      "gapOverRadius": 0.125,
+      "radialOrder": 48,
+      "angularOrder": 192,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 4.943823128655822e-13,
+      "maximumRelativeVectorError": 8.589911782697614e-11
+    },
+    {
+      "gapOverRadius": 0.25,
+      "radialOrder": 16,
+      "angularOrder": 64,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 6.209381675503778e-09,
+      "maximumRelativeVectorError": 3.581152616627784e-07
+    },
+    {
+      "gapOverRadius": 0.25,
+      "radialOrder": 24,
+      "angularOrder": 96,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 1.886713008047991e-12,
+      "maximumRelativeVectorError": 1.623136516307287e-10
+    },
+    {
+      "gapOverRadius": 0.25,
+      "radialOrder": 32,
+      "angularOrder": 128,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 1.1102230246251565e-15,
+      "maximumRelativeVectorError": 7.455205377018536e-14
+    },
+    {
+      "gapOverRadius": 0.25,
+      "radialOrder": 48,
+      "angularOrder": 192,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 1.6653345369377348e-15,
+      "maximumRelativeVectorError": 4.044001841999304e-15
+    },
+    {
+      "gapOverRadius": 0.5,
+      "radialOrder": 16,
+      "angularOrder": 64,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 2.020605904817785e-14,
+      "maximumRelativeVectorError": 1.0589254210476967e-12
+    },
+    {
+      "gapOverRadius": 0.5,
+      "radialOrder": 24,
+      "angularOrder": 96,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 4.440892098500626e-16,
+      "maximumRelativeVectorError": 8.436501401103108e-16
+    },
+    {
+      "gapOverRadius": 0.5,
+      "radialOrder": 32,
+      "angularOrder": 128,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 5.551115123125783e-16,
+      "maximumRelativeVectorError": 8.60405262017253e-16
+    },
+    {
+      "gapOverRadius": 0.5,
+      "radialOrder": 48,
+      "angularOrder": 192,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 1.2212453270876722e-15,
+      "maximumRelativeVectorError": 2.9633091452177266e-15
+    },
+    {
+      "gapOverRadius": 1,
+      "radialOrder": 16,
+      "angularOrder": 64,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 4.440892098500626e-16,
+      "maximumRelativeVectorError": 5.118768860004248e-16
+    },
+    {
+      "gapOverRadius": 1,
+      "radialOrder": 24,
+      "angularOrder": 96,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 4.440892098500626e-16,
+      "maximumRelativeVectorError": 6.256005237805586e-16
+    },
+    {
+      "gapOverRadius": 1,
+      "radialOrder": 32,
+      "angularOrder": 128,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 4.440892098500626e-16,
+      "maximumRelativeVectorError": 8.058950830664809e-16
+    },
+    {
+      "gapOverRadius": 1,
+      "radialOrder": 48,
+      "angularOrder": 192,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 7.771561172376096e-16,
+      "maximumRelativeVectorError": 2.0319851574479026e-15
+    },
+    {
+      "gapOverRadius": 2,
+      "radialOrder": 16,
+      "angularOrder": 64,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 3.3306690738754696e-16,
+      "maximumRelativeVectorError": 7.043869102771715e-16
+    },
+    {
+      "gapOverRadius": 2,
+      "radialOrder": 24,
+      "angularOrder": 96,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 3.3306690738754696e-16,
+      "maximumRelativeVectorError": 6.975931844120025e-16
+    },
+    {
+      "gapOverRadius": 2,
+      "radialOrder": 32,
+      "angularOrder": 128,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 4.440892098500626e-16,
+      "maximumRelativeVectorError": 6.942078794224128e-16
+    },
+    {
+      "gapOverRadius": 2,
+      "radialOrder": 48,
+      "angularOrder": 192,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 5.551115123125783e-16,
+      "maximumRelativeVectorError": 1.0705533327005829e-15
+    },
+    {
+      "gapOverRadius": 4,
+      "radialOrder": 16,
+      "angularOrder": 64,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 4.440892098500626e-16,
+      "maximumRelativeVectorError": 1.8540977528168838e-15
+    },
+    {
+      "gapOverRadius": 4,
+      "radialOrder": 24,
+      "angularOrder": 96,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 5.551115123125783e-16,
+      "maximumRelativeVectorError": 1.8540977528168838e-15
+    },
+    {
+      "gapOverRadius": 4,
+      "radialOrder": 32,
+      "angularOrder": 128,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 4.440892098500626e-16,
+      "maximumRelativeVectorError": 1.850494728645975e-15
+    },
+    {
+      "gapOverRadius": 4,
+      "radialOrder": 48,
+      "angularOrder": 192,
+      "evaluations": 128,
+      "maximumRelativePotentialError": 4.440892098500626e-16,
+      "maximumRelativeVectorError": 1.8468918169231963e-15
+    }
+  ],
+  "limitation": "Measured values on the listed samples are not a global error bound; observation-grid peak sampling is a separate issue."
+}

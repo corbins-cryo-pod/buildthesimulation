@@ -1,0 +1,171 @@
+{
+  "schema": "retinal-field-numerical-report-v1",
+  "measuredAtUtc": "2026-10-25T15:23:04.059Z",
+  "node": "v24.22.1",
+  "referenceEnvironment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "fixtureCases": 69,
+  "maximumRelativeFixtureError": {
+    "direct": {
+      "potential": 4.6306842894834115e-8,
+      "vectorField": 0.000005413585665081992,
+      "worstPotential": "unit-h0.1-r0.5",
+      "worstField": "unit-h0.1-r0.5"
+    },
+    "cached": {
+      "potential": 4.4720797941081926e-8,
+      "vectorField": 0.000009649800042100855,
+      "worstPotential": "unit-h0.1-r0.5",
+      "worstField": "unit-h0.1-r0.95"
+    }
+  },
+  "benchmarks": [
+    {
+      "label": "60 stimulating contacts, 61² grid",
+      "sourceCount": 61,
+      "outputPoints": 3721,
+      "coldMs": 93.92847199999994,
+      "repeatMs": 6.498825000000011,
+      "repeatMaximumAbsoluteDifference": 0,
+      "currentBalanceUa": 0,
+      "numerical": {
+        "model": "uniform-current-disk-full-space-v1",
+        "netCurrentUa": 0,
+        "absoluteCurrentUa": 9600,
+        "balanceToleranceUa": 9.6e-8,
+        "currentBalanced": true,
+        "returnInterpretation": "Explicit balanced finite sources and returns.",
+        "conductivitySm": 0.2,
+        "radialOrderRequested": 32,
+        "maximumRadialOrderUsed": 32,
+        "maximumAngularOrderUsed": 128,
+        "minimumGapOverRadius": 0.8,
+        "interpolation": "Radial cubic Hermite; Er is the negative derivative of the potential interpolant.",
+        "radialInterpolationBaseStep": 0.015,
+        "sourceTransfersReused": 0,
+        "sourceTransfersCalculated": 61,
+        "sourceCount": 61,
+        "observationCount": 3721,
+        "geometry": "Uniform current-source sheets in homogeneous isotropic full space; no insulating backing.",
+        "accuracyStatus": "See independent fixture tests; numerical agreement is not physiological validation."
+      },
+      "cache": {
+        "radialHits": 59,
+        "radialMisses": 2,
+        "transferHits": 61,
+        "transferMisses": 61,
+        "radialTables": 2,
+        "quadratureRules": 1,
+        "observationSets": 1,
+        "sourceTransfers": 61,
+        "transferCacheBytes": 7263392,
+        "transferCacheMiB": 6.926910400390625,
+        "transferLimitMiB": 128
+      }
+    },
+    {
+      "label": "60 stimulating contacts, 241² grid",
+      "sourceCount": 61,
+      "outputPoints": 58081,
+      "coldMs": 982.3994270000001,
+      "repeatMs": 39.790686999999934,
+      "repeatMaximumAbsoluteDifference": 0,
+      "currentBalanceUa": 0,
+      "numerical": {
+        "model": "uniform-current-disk-full-space-v1",
+        "netCurrentUa": 0,
+        "absoluteCurrentUa": 9600,
+        "balanceToleranceUa": 9.6e-8,
+        "currentBalanced": true,
+        "returnInterpretation": "Explicit balanced finite sources and returns.",
+        "conductivitySm": 0.2,
+        "radialOrderRequested": 32,
+        "maximumRadialOrderUsed": 32,
+        "maximumAngularOrderUsed": 128,
+        "minimumGapOverRadius": 0.8,
+        "interpolation": "Radial cubic Hermite; Er is the negative derivative of the potential interpolant.",
+        "radialInterpolationBaseStep": 0.015,
+        "sourceTransfersReused": 0,
+        "sourceTransfersCalculated": 61,
+        "sourceCount": 61,
+        "observationCount": 58081,
+        "geometry": "Uniform current-source sheets in homogeneous isotropic full space; no insulating backing.",
+        "accuracyStatus": "See independent fixture tests; numerical agreement is not physiological validation."
+      },
+      "cache": {
+        "radialHits": 59,
+        "radialMisses": 2,
+        "transferHits": 61,
+        "transferMisses": 61,
+        "radialTables": 2,
+        "quadratureRules": 1,
+        "observationSets": 1,
+        "sourceTransfers": 61,
+        "transferCacheBytes": 113374112,
+        "transferCacheMiB": 108.12197875976562,
+        "transferLimitMiB": 128
+      }
+    },
+    {
+      "label": "256 stimulating contacts + 8 returns, 241² stress case",
+      "sourceCount": 264,
+      "outputPoints": 58081,
+      "coldMs": 2619.664077,
+      "repeatMs": 2615.5985849999997,
+      "repeatMaximumAbsoluteDifference": 0,
+      "currentBalanceUa": 0,
+      "numerical": {
+        "model": "uniform-current-disk-full-space-v1",
+        "netCurrentUa": 0,
+        "absoluteCurrentUa": 153600,
+        "balanceToleranceUa": 0.000001536,
+        "currentBalanced": true,
+        "returnInterpretation": "Explicit balanced finite sources and returns.",
+        "conductivitySm": 0.2,
+        "radialOrderRequested": 32,
+        "maximumRadialOrderUsed": 32,
+        "maximumAngularOrderUsed": 128,
+        "minimumGapOverRadius": 0.1,
+        "interpolation": "Radial cubic Hermite; Er is the negative derivative of the potential interpolant.",
+        "radialInterpolationBaseStep": 0.015,
+        "sourceTransfersReused": 0,
+        "sourceTransfersCalculated": 264,
+        "sourceCount": 264,
+        "observationCount": 58081,
+        "geometry": "Uniform current-source sheets in homogeneous isotropic full space; no insulating backing.",
+        "accuracyStatus": "See independent fixture tests; numerical agreement is not physiological validation."
+      },
+      "cache": {
+        "radialHits": 526,
+        "radialMisses": 2,
+        "transferHits": 0,
+        "transferMisses": 528,
+        "radialTables": 2,
+        "quadratureRules": 1,
+        "observationSets": 1,
+        "sourceTransfers": 72,
+        "transferCacheBytes": 133818624,
+        "transferCacheMiB": 127.619384765625,
+        "transferLimitMiB": 128
+      }
+    }
+  ],
+  "samplingExample": {
+    "source": {
+      "id": "S",
+      "xUm": 250,
+      "yUm": 250,
+      "zUm": 25,
+      "radiusUm": 50,
+      "currentUa": 80
+    },
+    "grid": "61×61 over ±5000 µm",
+    "axisFieldVm": 14076.590200028424,
+    "sampledPeakVm": 2326.906325847742,
+    "sampledFractionOfAxis": 0.16530326540606713
+  },
+  "interpretation": "Observed agreement with the stated mathematical model, not physiological validation or a universal error bound. Timing depends on host; dense cases can exceed the transfer cache."
+}

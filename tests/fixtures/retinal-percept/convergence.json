@@ -1,0 +1,530 @@
+{
+  "referenceVersion": "0.11.0",
+  "baseline": {
+    "gridStepDeg": 0.5,
+    "bundles": 1000,
+    "radialSamples": 500
+  },
+  "visualComparison": {
+    "gridStepDeg": 0.25
+  },
+  "trajectoryComparison": {
+    "bundles": 2000,
+    "radialSamples": 1000
+  },
+  "cases": [
+    {
+      "case": "biphasic-center",
+      "config": {
+        "model": "biphasic",
+        "eye": "RE",
+        "gridStepDeg": 0.5,
+        "rhoUm": 300,
+        "lambdaUm": 700,
+        "frequencyHz": 20,
+        "phaseDurationMs": 0.45,
+        "electrodes": [
+          {
+            "id": "E01",
+            "xUm": 0,
+            "yUm": 0,
+            "amplitudeUa": 100,
+            "thresholdUa": 50
+          }
+        ]
+      },
+      "visualSampling": {
+        "integralBaseline": 9.343601830402514,
+        "integralComparison": 9.349103357047193,
+        "relativeIntegralDifference": 0.0005888014862510181
+      },
+      "trajectorySampling": {
+        "integralBaseline": 9.343601830402514,
+        "integralComparison": 9.452334498767556,
+        "relativeIntegralDifference": 0.011637125632991283,
+        "peakNormalizedLocalMaximumDifference": 0.2371064104295466,
+        "peakNormalizedRmsDifference": 0.005577575047307169
+      }
+    },
+    {
+      "case": "axon-dense-pattern",
+      "config": {
+        "model": "axon",
+        "eye": "RE",
+        "gridStepDeg": 0.5,
+        "rhoUm": 300,
+        "lambdaUm": 700,
+        "frequencyHz": 20,
+        "phaseDurationMs": 0.45,
+        "electrodes": [
+          {
+            "id": "E01",
+            "xUm": -2587.5,
+            "yUm": 1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E02",
+            "xUm": -2012.5,
+            "yUm": 1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E03",
+            "xUm": -1437.5,
+            "yUm": 1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E04",
+            "xUm": -862.5,
+            "yUm": 1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E05",
+            "xUm": -287.5,
+            "yUm": 1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E06",
+            "xUm": 287.5,
+            "yUm": 1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E07",
+            "xUm": 862.5,
+            "yUm": 1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E08",
+            "xUm": 1437.5,
+            "yUm": 1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E09",
+            "xUm": 2012.5,
+            "yUm": 1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E10",
+            "xUm": 2587.5,
+            "yUm": 1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E11",
+            "xUm": -2587.5,
+            "yUm": 862.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E12",
+            "xUm": -2012.5,
+            "yUm": 862.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E13",
+            "xUm": -1437.5,
+            "yUm": 862.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E14",
+            "xUm": -862.5,
+            "yUm": 862.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E15",
+            "xUm": -287.5,
+            "yUm": 862.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E16",
+            "xUm": 287.5,
+            "yUm": 862.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E17",
+            "xUm": 862.5,
+            "yUm": 862.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E18",
+            "xUm": 1437.5,
+            "yUm": 862.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E19",
+            "xUm": 2012.5,
+            "yUm": 862.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E20",
+            "xUm": 2587.5,
+            "yUm": 862.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E21",
+            "xUm": -2587.5,
+            "yUm": 287.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E22",
+            "xUm": -2012.5,
+            "yUm": 287.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E23",
+            "xUm": -1437.5,
+            "yUm": 287.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E24",
+            "xUm": -862.5,
+            "yUm": 287.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E25",
+            "xUm": -287.5,
+            "yUm": 287.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E26",
+            "xUm": 287.5,
+            "yUm": 287.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E27",
+            "xUm": 862.5,
+            "yUm": 287.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E28",
+            "xUm": 1437.5,
+            "yUm": 287.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E29",
+            "xUm": 2012.5,
+            "yUm": 287.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E30",
+            "xUm": 2587.5,
+            "yUm": 287.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E31",
+            "xUm": -2587.5,
+            "yUm": -287.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E32",
+            "xUm": -2012.5,
+            "yUm": -287.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E33",
+            "xUm": -1437.5,
+            "yUm": -287.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E34",
+            "xUm": -862.5,
+            "yUm": -287.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E35",
+            "xUm": -287.5,
+            "yUm": -287.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E36",
+            "xUm": 287.5,
+            "yUm": -287.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E37",
+            "xUm": 862.5,
+            "yUm": -287.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E38",
+            "xUm": 1437.5,
+            "yUm": -287.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E39",
+            "xUm": 2012.5,
+            "yUm": -287.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E40",
+            "xUm": 2587.5,
+            "yUm": -287.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E41",
+            "xUm": -2587.5,
+            "yUm": -862.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E42",
+            "xUm": -2012.5,
+            "yUm": -862.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E43",
+            "xUm": -1437.5,
+            "yUm": -862.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E44",
+            "xUm": -862.5,
+            "yUm": -862.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E45",
+            "xUm": -287.5,
+            "yUm": -862.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E46",
+            "xUm": 287.5,
+            "yUm": -862.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E47",
+            "xUm": 862.5,
+            "yUm": -862.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E48",
+            "xUm": 1437.5,
+            "yUm": -862.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E49",
+            "xUm": 2012.5,
+            "yUm": -862.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E50",
+            "xUm": 2587.5,
+            "yUm": -862.5,
+            "amplitudeUa": 0,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E51",
+            "xUm": -2587.5,
+            "yUm": -1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E52",
+            "xUm": -2012.5,
+            "yUm": -1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E53",
+            "xUm": -1437.5,
+            "yUm": -1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E54",
+            "xUm": -862.5,
+            "yUm": -1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E55",
+            "xUm": -287.5,
+            "yUm": -1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E56",
+            "xUm": 287.5,
+            "yUm": -1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E57",
+            "xUm": 862.5,
+            "yUm": -1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E58",
+            "xUm": 1437.5,
+            "yUm": -1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E59",
+            "xUm": 2012.5,
+            "yUm": -1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          },
+          {
+            "id": "E60",
+            "xUm": 2587.5,
+            "yUm": -1437.5,
+            "amplitudeUa": 80,
+            "thresholdUa": 60
+          }
+        ]
+      },
+      "visualSampling": {
+        "integralBaseline": 25061.499567884817,
+        "integralComparison": 25068.645294285277,
+        "relativeIntegralDifference": 0.0002851276469352691
+      },
+      "trajectorySampling": {
+        "integralBaseline": 25061.499567884817,
+        "integralComparison": 25161.15955191324,
+        "relativeIntegralDifference": 0.003976616952168791,
+        "peakNormalizedLocalMaximumDifference": 0.18087728610408704,
+        "peakNormalizedRmsDifference": 0.009648442607903698
+      }
+    },
+    {
+      "case": "axon-peripheral-streak",
+      "config": {
+        "model": "axon",
+        "eye": "RE",
+        "gridStepDeg": 0.5,
+        "rhoUm": 300,
+        "lambdaUm": 1300,
+        "frequencyHz": 20,
+        "phaseDurationMs": 0.45,
+        "electrodes": [
+          {
+            "id": "P",
+            "xUm": -2500,
+            "yUm": 1600,
+            "amplitudeUa": 120,
+            "thresholdUa": 50
+          }
+        ]
+      },
+      "visualSampling": {
+        "integralBaseline": 2302.6540618221193,
+        "integralComparison": 2287.903379409155,
+        "relativeIntegralDifference": -0.006405948100294198
+      },
+      "trajectorySampling": {
+        "integralBaseline": 2302.6540618221193,
+        "integralComparison": 2305.4298578103476,
+        "relativeIntegralDifference": 0.0012054767731944015,
+        "peakNormalizedLocalMaximumDifference": 0.2684083849712664,
+        "peakNormalizedRmsDifference": 0.006900146523830629
+      }
+    }
+  ],
+  "interpretation": "Reproducing a pinned discrete model is distinct from convergence. Nearest-bundle assignments can cause large local changes under trajectory refinement even when aggregate integrals change little. No uniform pointwise convergence or patient validation is established."
+}
