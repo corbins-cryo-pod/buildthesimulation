@@ -68,6 +68,21 @@ shafts for obstacle, soma, boundary and unrelated-shaft penetration, and all
 active cones for solid, foreign-soma, foreign-shaft and foreign-cone separation.
 It reports an explicit allocation stop if a segment budget is exhausted.
 
+The release reports pass all 34 combined gates. All four presets reached 72 h
+without reaching their allocation cap. Audits found zero penetrations in all
+listed classes across 324,133 nearby foreign-shaft pairs; the largest per-cell
+reserve-ledger residual was 1.77 × 10⁻¹⁰ µm².
+
+| Environment | Stored segments | Structural candidates at 72 h |
+| --- | ---: | ---: |
+| Culture | 4,570 | 34 |
+| Organoid microenvironment | 16,430 | 25 |
+| Regeneration | 10,544 | 62 |
+| Biohybrid | 13,460 | 106 |
+
+Counts include repeated candidate relationships and are not counts of unique
+functional connections. Retired segments remain allocated for reproducible IDs.
+
 The neurite reserve ledger is
 `remaining = initial + supplied + recycled − used`, including changes in a
 moving membrane-attached root. It does not conserve whole-cell lipid area:
