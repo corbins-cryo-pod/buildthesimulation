@@ -6,7 +6,7 @@
 import {add,sub,scale,dot,cross,length,distance,clamp,unit,lerp,closestSegmentPoints,pointSegmentDistance,segmentSphereHit,segmentBoxHit,segmentCapsuleHit,SpatialHash} from './geometry.js';
 
 import {constrainCone,sampleFilopodia} from './exploration.js';
-import {createSoftCell, advanceCellMechanics, updateConeShape, populationMechanics, SHELL} from './mechanics.js';
+import {createSoftCell, advanceCellMechanics, updateConeShape, populationMechanics, signedObstacle, SHELL} from './mechanics.js';
 
 export const MODEL_VERSION='cell-growth/2.0.0';
 export const DEFAULT_CONFIG=Object.freeze({mode:'culture',source:'precursor',cellCount:12,seed:714,dtHours:.05,actin:1,microtubules:1,tension:1,adhesion:.65,stiffness:100,guidance:.6,branching:1,noise:.35,selfAvoidance:1,fasciculation:.55,membraneSupply:1,maxSegments:18000,maxTipsPerCell:32,motility:1,contractility:1,cortexStiffness:1,bending:1,cellAdhesion:.35,contactInhibition:1,density:1});
@@ -112,7 +112,16 @@ function initializeNeurites(sim,cell){
     if(best<0)break;chosen.push(best);
     const start=[...cell.membrane.vertices[best]],dir=unit(sub(start,cell.position));
     if(sim.world.planar){dir[1]=0;start[1]=cell.membrane.vertices[best][1];}
-    const end=add(start,scale(unit(dir),2.5)),segment=makeSegment(sim,cell,'dendrite',start,end);
+    const end=add(start,scale(unit(dir),2.5));
+    // A new process is physical geometry too: do not seed a shaft or its cone
+    // through a solid after a motile precursor has approached that solid.
+    const blocked=sim.world.obstacles.some(o=>(o.shape==='sphere'?segmentSphereHit(start,end,o.position,o.radius+1.075):segmentBoxHit(start,end,o.position,o.size,1.075))||signedObstacle(end,o).gap<2.125)
+      ||sim.cells.some(o=>o.id!==cell.id&&(segmentSphereHit(start,end,o.position,o.mechanics.collisionRadius+1.075)||distance(end,o.position)<o.mechanics.collisionRadius+2.125))
+      ||sim.segments.some(n=>n.alive&&n.cellId!==cell.id&&segmentCapsuleHit(start,end,n.start,n.end,n.radius+2.125))
+      ||end.some((v,i)=>!(sim.world.planar&&i===1)&&(v<sim.world.bounds.min[i]+2.125||v>sim.world.bounds.max[i]-2.125))
+      ||(sim.world.sphereRadius&&length(end)>sim.world.sphereRadius-2.125);
+    if(blocked)continue;
+    const segment=makeSegment(sim,cell,'dendrite',start,end);
     if(segment){segment.anchorVertex=best;makeTip(sim,cell,segment,dir);}
   }
   event(sim,'neurite-initiation',{cellId:cell.id});

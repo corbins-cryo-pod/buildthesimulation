@@ -118,3 +118,13 @@ test('V2 reducing the actual mechanical integration step converges cell motion a
  const error=c=>distance(c.position,states[2].position),shapeError=c=>Math.sqrt(c.membrane.vertices.reduce((sum,v,i)=>sum+distance(v,states[2].membrane.vertices[i])**2,0)/162);
  assert.ok(error(states[1])<error(states[0]));assert.ok(error(states[0])<.05);assert.ok(shapeError(states[1])<shapeError(states[0]));assert.ok(shapeError(states[0])<.05);
 });
+
+
+test('V2 neurite initiation cannot seed retained geometry through a nearby thin obstacle',()=>{
+ const s=make({source:'precursor'}),c=s.cells[0];move(c,[0,0,0]);c.ageHours=7.99;c.membrane.lastSolveHours=720;
+ const wall={id:'initiation-wall',shape:'box',position:[9.8,0,0],size:[.1,30,40]};s.world.obstacles=[wall];stepSimulation(s,.05);
+ assert.ok(c.initialized);assert.ok(s.segments.length>0);for(const n of s.segments.filter(n=>n.alive)){
+   assert.ok(n.start[0]<=9.75-n.radius&&n.end[0]<=9.75-n.radius,'initial shaft crosses the barrier');
+ }
+ for(const t of s.tips.filter(t=>t.active))assert.ok(signedObstacle(s.segments[t.segmentId].end,wall).gap>=t.radius-1e-7);
+});
