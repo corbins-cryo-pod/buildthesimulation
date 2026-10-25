@@ -2,12 +2,12 @@
 title: "Nurotron WH-01A auditory brainstem implant (Shanghai Ninth People's Hospital)"
 order: 190
 pubDate: 2026-10-09
-updatedDate: 2026-10-09
+updatedDate: 2026-10-24
 device_id: "BTSD-ACAD-0092"
 interface_class: "brainstem"
 status: "human"
-last_updated: 2026-10-09
-description: "Domestic Chinese auditory brainstem implant with 16 electrodes on a 5.5 x 3.5 mm silicone paddle, developed from Wu Hao's team at Shanghai Ninth People's Hospital. First implant January 26, 2022; NMPA innovative-device special review entry March 2024 (company report); phase III NF2 trial registered."
+last_updated: 2026-10-24
+description: "Domestic Chinese auditory brainstem implant with 16 electrodes on a 5.5 x 3.5 mm silicone paddle, developed from Wu Hao's team at Shanghai Ninth People's Hospital. First implant January 26, 2022; NMPA innovative-device special review entry March 2024 (company report); NMPA approved the registration October 2026, a Chinese first for this device class."
 modality: "Other"
 website: "https://nurotron.com/news/560.html"
 axis: ["other"]
@@ -32,7 +32,7 @@ Specifications below are Nurotron's own statements unless marked otherwise. Neit
 | Model | WH-01A; the first-patient model is called WH-01A (SD) [1][2] |
 | Origin | Wu Hao's team at Shanghai Ninth People's Hospital, Shanghai Jiao Tong University School of Medicine, with Nurotron [1][2][3] |
 | Interface class | Paddle array on the cochlear nucleus of the brainstem [1] |
-| Regulatory status | NMPA innovative-device special review notice 2024 No. 3 published March 15, 2024 lists the project (per Nurotron; the notice itself was not opened). ChiCTR2300070545 registers a phase III trial in NF2 patients [1][4] |
+| Regulatory status | NMPA approved the WH-01A innovative-product registration in October 2026 (NMPA notice dated Oct 20; Sixth Tone dates the approval Oct 19), described by the regulator as China's first auditory brainstem implant [5][6]. Earlier: NMPA innovative-device special review notice 2024 No. 3 published March 15, 2024 lists the project (per Nurotron; the notice itself was not opened). ChiCTR2300070545 registers a phase III trial in NF2 patients [1][4] |
 
 ## Geometry and architecture
 
@@ -74,3 +74,5 @@ No impedance, charge limits or outcome data are published in the sources read. "
 2. Nurotron (Chinese), [首例诺尔康新型听觉脑干植入（ABI）用户顺利开机, 1 March 2022](https://www.nurotron.com/news/378.html).
 3. Shanghai Jiao Tong University News (Chinese), [听觉脑干植入系统不再依赖进口, 13 July 2021](https://news.sjtu.edu.cn/jdyw/20210713/155359.html).
 4. [ChiCTR2300070545](https://www.chictr.org.cn/showproj.html?proj=195656).
+5. NMPA announcement reproduced by China Medical Information Platform (Chinese), [听觉脑干植入体获批上市, 20 October 2026](https://www.dayi.org.cn/information/503.html).
+6. Sixth Tone, [China Approves Nation’s First Brainstem Implant for Deafness, 22 October 2026](https://www.sixthtone.com/news/1019153).
