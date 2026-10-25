@@ -143,14 +143,15 @@ T_i = gain Fmotor b_i front² stiffness/(stiffness+100)
       <div class="table-scroll"><table><thead><tr><th>Implemented rule</th><th>Axon</th><th>Dendrite</th></tr></thead><tbody>
       <tr><td>Extension gain</td><td>1</td><td>0.58</td></tr>
       <tr><td>Baseline branch hazard</td><td>0.012 h⁻¹</td><td>0.045 h⁻¹</td></tr>
-      <tr><td>New branch direction</td><td>0.48 rad from tip direction</td><td>0.68 rad from tip direction</td></tr>
+      <tr><td>New branch direction</td><td>0.35–1.00 rad from local direction</td><td>0.35–1.35 rad from local direction</td></tr>
       <tr><td>Root / minimum shaft radius</td><td>0.52 / 0.23 µm</td><td>1.05 / 0.30 µm</td></tr>
       <tr><td>Nearby-process steering</td><td>Adjustable alignment to another cell's axon</td><td>Adjustable avoidance of the cell's own processes</td></tr>
       <tr><td>Low-growth retraction rate</td><td>1.5 µm/h</td><td>2.5 µm/h</td></tr>
       </tbody></table></div>
       <pre>λ = λ_kind branchingGain S m / (1 + 0.3 branchOrder)
 p_branch = 1 − exp(−λ Δt)</pre>
-      <p>Branching requires an extending tip at least 3 h old, microtubule support ≥0.45, reserve ≥0.2, nonzero actin and microtubule controls, and available tip capacity. Each event creates two tip continuations at a fixed branch node. This is <strong>tip bifurcation</strong>; the current engine does not initiate an interstitial collateral from an arbitrary mature shaft. Branch order is limited to five, and the default active-tip cap is {DEFAULT_CONFIG.maxTipsPerCell} per cell. Those limits are computational/model choices.</p>
+      <p>Independent local growth episodes alternate advance, pauses and brief retractions. The Growth episodes control blends from continuous drive to asynchronous activity. Exploratory projections and cone rims change shape locally. Plate-grown tips can follow a raised route over an established shaft, subject to finite-radius collision checks; distal shafts remain anchored. These video-informed rules are not fitted rates or a biochemical actin-wave solver.</p>
+      <p>Branching requires an extending tip at least 3 h old, microtubule support ≥0.45, reserve ≥0.2, nonzero actin and microtubule controls, and available tip capacity. Events can bifurcate the leading tip or create a lateral bud at an eligible retained shaft node more than 7 µm behind it. Lateral events preserve the leading process; branch angles vary. These rules are qualitative approximations, not measured event frequencies. Branch order is limited to five, and the default active-tip cap is {DEFAULT_CONFIG.maxTipsPerCell} per cell. Those limits are computational/model choices.</p>
       <p>Steering combines the current direction with cue, nearby-process, obstacle and environment terms. Same-cell dendrite avoidance and other-cell axon alignment operate within 12 µm. Directional fluctuations use an Ornstein–Uhlenbeck process with a 1.5 h correlation time. These are dimensionless steering weights, not solved receptor kinetics or a three-dimensional tissue-stress field.</p>
       <p>When calculated speed is below 0.02 µm/h for over 2 h, specified low-driver, low-reserve or negative-force conditions trigger retraction. Persistent non-neurite collision after 1.8 h triggers 2.2 µm/h retraction. The distal endpoint retreats along its existing path; a parent with surviving children is retained. The model does not implement activity-dependent pruning or branch survival determined by functional synapses.</p>
       <h3>Read dendrite growth as a history</h3>

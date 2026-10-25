@@ -33,7 +33,7 @@ const workers = [...new Set(component.match(/worker-[A-Za-z0-9_-]+\.js/g) || [])
 assert.ok(workers.length >= 1, 'Numerical worker must be emitted as an asset.');
 for (const name of workers) {
   const code = await read(`dist/_astro/${name}`);
-  assert.match(code, /cell-growth\/2\.0\.0/);
+  assert.match(code, /cell-growth\/2\.1\.0/);
   assert.match(code, /microtubules/);
 }
 console.log(`Cell Growth Lab integration verified: two routes, directory entry, hydrated component, ${workers.length} worker, and ${report.checks.length + mechanics.checks.length} current numerical acceptance gates.`);

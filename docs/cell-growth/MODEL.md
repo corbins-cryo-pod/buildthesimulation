@@ -322,7 +322,7 @@ requires matched measurements.
 | --- | --- | --- |
 | Extension gain | 1 | 0.58 |
 | Baseline branch hazard | 0.012 h⁻¹ | 0.045 h⁻¹ |
-| Branch angle | 0.48 rad | 0.68 rad |
+| Branch angle | 0.35–1.00 rad | 0.35–1.35 rad |
 | Initial shaft radius | 0.52 µm | 1.05 µm |
 | Minimum shaft radius | 0.23 µm | 0.30 µm |
 | Low-driver retraction rate | 1.5 µm/h | 2.5 µm/h |
@@ -331,11 +331,44 @@ requires matched measurements.
 Branch hazard is multiplied by `branching*S*m/(1+0.3*branchOrder)`, and each step
 uses `p=1-exp(-hazard*dt)`. Branching requires age≥3 h, support m≥0.45, reserve≥0.2,
 an extending state, nonzero actin/MT controls, order<5 and remaining tip capacity.
-Each event creates two continuations from the current tip. It is tip bifurcation,
-not arbitrary interstitial branching along an existing shaft. The default active
+Events either bifurcate the tip or, when an eligible retained node exists, select
+a lateral bud with probability 0.6. Eligible nodes are more than 7 µm behind
+the tip, at least 1 h old, non-root, and have exactly one live continuation.
+The search spans at most 24 ancestral segments. Lateral budding preserves the
+leading tip and adds one higher-order branch; a variable angle replaces the
+previous fixed branch angle. These are exploratory rules, not fitted frequencies. The default active
 tip cap is 32 per cell. Radius tapers by 0.996 between ordinary segments and by
 0.79 on a higher-order branch, subject to the minimum and identity-specific root
 radius.
+
+### Local growth episodes and exploratory contacts (2.1)
+
+Uploaded microscopy recordings (172638, 172736 and 172913, 2026-10-25) were
+reviewed as frame sequences. They motivate unequal local advance, changing
+exploratory tips and asymmetric branching; they do not establish calibrated
+rates, molecular signals, neurite identity or functional synapses.
+
+Each tip has an independent seeded random stream and saved episode clock.
+Growing intervals last 0.3–1.5 h, followed by pauses of 0.2–1.7 h or, with
+probability 0.16, brief retraction intervals of 0.1–0.35 h. These illustrative
+model durations are not biological measurements. The growth multiplier relaxes
+with a 0.12 h time constant toward 1.8, 0, or -0.3. Its step-average is integrated
+analytically, including transitions inside a timestep. Negative drive retracts
+at up to 0.9 µm/h when material drivers are present. Growth episodes = 0 restores
+continuous drive. This local activity proxy does not simulate a traveling actin
+wave or a measured biochemical pathway. Existing material and force limits apply.
+
+Five exploratory projections change direction and length on different local
+clocks; the twelve-point cone rim also changes asymmetrically. All retain solid
+intersection checks. In plate cultures, a short-range transverse-shaft lookahead
+can raise the growing path above a retained shaft and return it toward its root
+height afterward. Active tips remain available for contact. This is a geometric
+routing approximation, not a solved vertical adhesion or bending mechanism;
+every proposed motion still passes finite-radius collision tests. Projection
+crossings are not automatically contacts. Existing distal shafts remain anchored.
+
+The save version is 2.1.0. Earlier 2.0 files are rejected explicitly because they
+lack the independent local episode state required for exact replay.
 
 Nearby-process steering acts within 12 µm. Same-cell repulsion is applied to
 dendritic tips; alignment applies to axon tips near another cell's axon. The hard

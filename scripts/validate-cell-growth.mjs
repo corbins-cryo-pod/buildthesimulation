@@ -8,7 +8,7 @@ import {
 import { signedObstacle } from '../src/lib/cell-growth/mechanics.js';
 import { segmentSphereHit, segmentBoxHit, segmentCapsuleHit, closestSegmentPoints, SpatialHash } from '../src/lib/cell-growth/geometry.js';
 
-const sourceFiles = ['src/lib/cell-growth/engine.js', 'src/lib/cell-growth/geometry.js', 'src/lib/cell-growth/mechanics.js', 'src/lib/cell-growth/exploration.js', 'src/lib/cell-growth/render-geometry.js', 'tests/cell-growth-mechanics.mjs', 'tests/cell-growth.mjs', 'scripts/validate-cell-growth.mjs'];
+const sourceFiles = ['src/lib/cell-growth/engine.js', 'src/lib/cell-growth/behavior.js', 'tests/cell-growth-behavior.mjs', 'src/lib/cell-growth/geometry.js', 'src/lib/cell-growth/mechanics.js', 'src/lib/cell-growth/exploration.js', 'src/lib/cell-growth/render-geometry.js', 'tests/cell-growth-mechanics.mjs', 'tests/cell-growth.mjs', 'scripts/validate-cell-growth.mjs'];
 const hashSources = async () => Object.fromEntries(await Promise.all(sourceFiles.map(async path => [path,
   createHash('sha256').update(await readFile(new URL(`../${path}`, import.meta.url))).digest('hex')])));
 const initialSourceSha256 = await hashSources();
