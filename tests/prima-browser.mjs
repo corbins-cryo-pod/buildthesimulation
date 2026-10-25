@@ -184,6 +184,7 @@ test('PRIMA browser: real workers, WebGL, seven presets, native editing, files a
     assert.equal(await evaluate(`document.querySelector('[data-prima-view="3d"]').disabled`), false);
     await evaluate(`document.querySelector('.pr-anatomy-viewport').scrollIntoView({block:'center'}); true`);
     await paint(); await pause(200);
+    await until(() => evaluate(`document.querySelector('[data-prima-webgl]')?.primaSceneDiagnostics?.renderedExperimentId === ${JSON.stringify(base.experimentId)}`), 45000, 'the completed experiment to be rendered in 3D');
     const rectangle = await evaluate(`(() => { const r = document.querySelector('.pr-anatomy-viewport').getBoundingClientRect(); return {x:r.x,y:r.y+window.scrollY,width:r.width,height:r.height,scale:1}; })()`);
     const crop = await command('Page.captureScreenshot', { format: 'png', clip: rectangle, captureBeyondViewport: true });
     const cropPath = join(artifacts, 'prima-webgl.png');

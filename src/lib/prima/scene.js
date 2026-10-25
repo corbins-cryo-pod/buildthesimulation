@@ -62,18 +62,27 @@ export function createPrimaScene(host, { onSelect = () => {}, onUnavailable = ()
   const device = new THREE.Group(), anatomy = new THREE.Group(), projection = new THREE.Group(), labels = new THREE.Group(); scene.add(device, anatomy, projection, labels);
   const pickable = [], raycaster = new THREE.Raycaster(), pointer = new THREE.Vector2(), abort = new AbortController();
   let disposed = false, shown = true, inView = true, frame = 0, down = null, state = null, deviceKey = '', anatomyKey = '', projectionKey = '';
-  let renderAttempts = 0, renderedFrames = 0;
+  let renderAttempts = 0, renderedFrames = 0, renderedExperimentId = null;
   // Read-only diagnostics let browser QA distinguish scheduling, scene, and GPU
   // failures without changing the rendered image or the numerical calculation.
   Object.defineProperty(renderer.domElement, 'primaSceneDiagnostics', { get: () => ({
-    disposed, shown, inView, framePending: Boolean(frame), renderAttempts, renderedFrames,
+    disposed, shown, inView, framePending: Boolean(frame), renderAttempts, renderedFrames, renderedExperimentId,
     experimentId: state?.experimentId ?? null,
     host: { width: host.clientWidth, height: host.clientHeight },
     camera: { position: camera.position.toArray(), quaternion: camera.quaternion.toArray(), aspect: camera.aspect, near: camera.near, far: camera.far },
     groups: Object.fromEntries(Object.entries({ device, anatomy, projection, labels }).map(([name, group]) => [name, { children: group.children.length, visible: group.visible }])),
     render: { ...renderer.info.render }, contextLost: renderer.getContext().isContextLost(),
   }) });
-  const invalidate = () => { if (!disposed && !frame) frame = requestAnimationFrame(() => { frame = 0; if (shown && inView && host.clientWidth) { renderAttempts++; renderer.render(scene, camera); renderedFrames++; } }); };
+  const invalidate = () => { if (!disposed && !frame) frame = requestAnimationFrame(() => {
+    frame = 0;
+    // IntersectionObserver is asynchronous: its cached offscreen result can
+    // outlive a scroll or resize. It may request a repaint, but must not veto
+    // one after setSize has cleared the buffer or a calculation has completed.
+    if (shown && host.clientWidth > 0 && host.clientHeight > 0) {
+      renderAttempts++; renderer.render(scene, camera); renderedFrames++;
+      renderedExperimentId = state?.experimentId ?? null;
+    }
+  }); };
   const resize = () => { const w = Math.max(host.clientWidth, 1), h = Math.max(host.clientHeight, 1); renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); invalidate(); };
   const resizer = new ResizeObserver(resize); resizer.observe(host);
   const observer = new IntersectionObserver(entries => { inView = entries[0]?.isIntersecting ?? true; if (inView) invalidate(); }); observer.observe(host);
