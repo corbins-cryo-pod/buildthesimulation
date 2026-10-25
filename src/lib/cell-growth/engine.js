@@ -5,6 +5,7 @@
  */
 import {add,sub,scale,dot,cross,length,distance,clamp,unit,lerp,closestSegmentPoints,pointSegmentDistance,segmentSphereHit,segmentBoxHit,segmentCapsuleHit,SpatialHash} from './geometry.js';
 
+import {constrainCone,sampleFilopodia} from './exploration.js';
 import {createSoftCell, advanceCellMechanics, updateConeShape, populationMechanics, SHELL} from './mechanics.js';
 
 export const MODEL_VERSION='cell-growth/2.0.0';
@@ -166,6 +167,7 @@ function materialBalance(sim,cell,dt){
 
 function nearbyDirection(sim,tip,point,index,dt){
   const c=sim.config,s=sim.segments[tip.segmentId],cell=sim.cells[tip.cellId];let steer=[0,0,0];
+  for(const probe of tip.filopodia||[])if(probe.blocked)steer=sub(steer,scale(probe.direction,.16));
   const cue=unit(sub(sim.world.cue.position,point));
   if(sim.world.mode==='organoid'){
     const radial=unit(point),toward=tip.kind==='axon'?scale(radial,-1):radial;steer=add(steer,scale(toward,c.guidance*.45));
@@ -197,10 +199,12 @@ function firstCollision(sim,tip,a,b,index,shaftOnly=false){
     // Conservative envelope encloses the actual deforming soma surface.
     accept(segmentSphereHit(a,b,other.position,(other.mechanics?.collisionRadius??other.radius*1.06)+solidRadius+.02),'soma',other.id);
   }
-  for(const id of index.query(a,b,radius+1.2)){
+  for(const id of index.query(a,b,radius+8)){
     const other=sim.segments[id];if(!other?.alive||ancestors.has(id))continue;
     if(other.cellId===tip.cellId&&other.parentId===segment.parentId&&distance(a,segment.start)<3&&distance(other.start,segment.start)<1e-8)continue;
-    const h=segmentCapsuleHit(a,b,other.start,other.end,radius+other.radius+.025);
+    const otherCone=index.cones?.get(id);
+    if(otherCone&&other.cellId!==tip.cellId)accept(segmentSphereHit(a,b,other.end,solidRadius+otherCone.radius+.025),'growth-cone',id);
+    const h=segmentCapsuleHit(a,b,other.start,other.end,(other.cellId!==tip.cellId?solidRadius:radius)+other.radius+.025);
     // Adjacent branch junctions share material; they are not self-intersections.
     if(h&&h.t===0&&distance(a,other.end)<3&&ancestors.has(other.parentId))continue;
     accept(h,'neurite',id);
@@ -216,8 +220,16 @@ function firstCollision(sim,tip,a,b,index,shaftOnly=false){
   return hit;
 }
 
+function contactPersists(sim,contact){
+  const a=sim.segments[contact.axonSegmentId],b=sim.segments[contact.dendriteSegmentId];if(!a?.alive||!b?.alive)return false;
+  const ta=sim.tips.find(t=>t.active&&t.segmentId===a.id),tb=sim.tips.find(t=>t.active&&t.segmentId===b.id);
+  if(ta&&tb&&distance(a.end,b.end)<=ta.radius+tb.radius+.5)return true;
+  if(ta&&pointSegmentDistance(a.end,b.start,b.end).distance<=Math.max(a.radius,ta.radius)+b.radius+.5)return true;
+  if(tb&&pointSegmentDistance(b.end,a.start,a.end).distance<=a.radius+Math.max(b.radius,tb.radius)+.5)return true;
+  return closestSegmentPoints(a.start,a.end,b.start,b.end).distance<=a.radius+b.radius+.5;
+}
 function registerContact(sim,tip,hit,dt){
-  if(hit.type!=='neurite')return;
+  if(!['neurite','growth-cone'].includes(hit.type))return;
   const a=sim.segments[tip.segmentId],b=sim.segments[hit.id];if(!b||a.cellId===b.cellId||a.kind===b.kind)return;
   const axon=a.kind==='axon'?a:b,dendrite=a.kind==='dendrite'?a:b,key=`${tip.id}:${b.cellId}`;
   let contact=sim.contacts.find(c=>c.id===key);
@@ -237,25 +249,25 @@ function appendGrowth(sim,tip,point,index){
   const shortensShaft=distance(s.start,point)<len-1e-10;
   let added=distance(last,point);
   if(len>=PHYSICAL_BASELINES.shaftSegmentUm||cutsCorner||shortensShaft){
-    const next=makeSegment(sim,cell,tip.kind,s.end,point,s.id,tip.branchOrder);if(!next)return 0;next.mt=tip.mt;tip.segmentId=next.id;addedRadius=next.radius;index.insert(next.id,next.start,next.end,next.radius);
+    const next=makeSegment(sim,cell,tip.kind,s.end,point,s.id,tip.branchOrder);if(!next)return 0;next.mt=tip.mt;index.cones?.delete(tip.segmentId);tip.segmentId=next.id;index.cones?.set(next.id,tip);addedRadius=next.radius;index.insert(next.id,next.start,next.end,next.radius);
   }else{added=Math.max(0,distance(s.start,point)-len);s.end=[...point];s.mt=tip.mt;index.insert(s.id,s.start,s.end,s.radius);}
   const consumption=2*Math.PI*addedRadius*added;
   cell.membrane.reserve=clamp(cell.membrane.reserve-consumption/cell.membrane.reserveCapacity,0,1);cell.membrane.usedArea+=consumption;
   cell.supply=clamp(cell.supply-added*.0007,0,1);return added;
 }
 function retractTip(sim,tip,amount){
-  let remaining=amount,removedArea=0;
+  let remaining=amount,removedArea=0,removedLength=0;
   while(remaining>1e-9){
     const s=sim.segments[tip.segmentId],l=distance(s.start,s.end),children=sim.segments.filter(n=>n.alive&&n.parentId===s.id);
     if(children.length){tip.active=false;tip.status='stabilized';break;}
-    if(l>remaining+.1){removedArea+=2*Math.PI*s.radius*remaining;s.end=lerp(s.end,s.start,remaining/l);remaining=0;}
-    else if(s.parentId>=0){removedArea+=2*Math.PI*s.radius*l;s.alive=false;remaining-=l;tip.segmentId=s.parentId;}
+    if(l>remaining+.1){removedArea+=2*Math.PI*s.radius*remaining;removedLength+=remaining;s.end=lerp(s.end,s.start,remaining/l);remaining=0;}
+    else if(s.parentId>=0){removedArea+=2*Math.PI*s.radius*l;removedLength+=l;s.alive=false;remaining-=l;tip.segmentId=s.parentId;}
     else {tip.active=false;tip.status='retracted';break;}
   }
   const membrane=sim.cells[tip.cellId].membrane,recycled=Math.min(removedArea*.6,(1-membrane.reserve)*membrane.reserveCapacity);membrane.reserve+=recycled/membrane.reserveCapacity;membrane.recycledArea+=recycled;
-  sim.counters.retractions++;
+  sim.counters.retractions++;return removedLength;
 }
-function branchTip(sim,tip,dt){
+function branchTip(sim,tip,dt,index){
   const c=sim.config,cell=sim.cells[tip.cellId],s=sim.segments[tip.segmentId],active=sim.tips.filter(t=>t.active&&t.cellId===tip.cellId).length;
   if(c.branching===0||c.actin===0||c.microtubules===0||tip.ageHours<3||tip.branchOrder>=5||tip.mt<.45||cell.membrane.reserve<.2||tip.status!=='extending')return;
   const rate=(tip.kind==='axon'?.012:.045)*c.branching*cell.supply*tip.mt/(1+.3*tip.branchOrder),prob=-Math.expm1(-rate*dt);
@@ -264,19 +276,26 @@ function branchTip(sim,tip,dt){
   let perpendicular=sim.world.planar?[-tip.direction[2],0,tip.direction[0]]:unit(cross(tip.direction,Math.abs(tip.direction[1])<.85?[0,1,0]:[1,0,0]));
   perpendicular=scale(perpendicular,random(sim)<.5?-1:1);
   const angle=(tip.kind==='axon'?.48:.68),newDirection=unit(add(scale(tip.direction,Math.cos(angle)),scale(perpendicular,Math.sin(angle))));
-  const next=makeSegment(sim,cell,tip.kind,s.end,s.end,s.id,tip.branchOrder+1);if(!next)return;makeTip(sim,cell,next,newDirection,tip.branchOrder+1);
+  const next=makeSegment(sim,cell,tip.kind,s.end,s.end,s.id,tip.branchOrder+1);if(!next)return;const child=makeTip(sim,cell,next,newDirection,tip.branchOrder+1);index.insert(next.id,next.start,next.end,next.radius);index.cones.set(next.id,child);
   // Existing tip continues in a sister branch so the branch node stays fixed.
-  const continuation=makeSegment(sim,cell,tip.kind,s.end,s.end,s.id,tip.branchOrder+1);if(continuation){tip.segmentId=continuation.id;tip.branchOrder++;tip.direction=unit(add(tip.direction,scale(perpendicular,-.2)));tip.ageHours=0;}
+  const continuation=makeSegment(sim,cell,tip.kind,s.end,s.end,s.id,tip.branchOrder+1);if(continuation){index.cones.delete(tip.segmentId);tip.segmentId=continuation.id;index.insert(continuation.id,continuation.start,continuation.end,continuation.radius);index.cones.set(continuation.id,tip);tip.branchOrder++;tip.direction=unit(add(tip.direction,scale(perpendicular,-.2)));tip.ageHours=0;}
   sim.counters.branches++;event(sim,'branch',{cellId:cell.id,kind:tip.kind});
 }
 
 function advanceTip(sim,tip,dt,index){
   if(!tip.active)return;const cell=sim.cells[tip.cellId],s=sim.segments[tip.segmentId];if(!s.alive){tip.active=false;return;}
-  tip.ageHours+=dt;updateConeShape(tip,dt,sim.config);
+  tip.ageHours+=dt;updateConeShape(tip,dt,sim.config);constrainCone(sim,tip,index);
   const speed=coneForces(sim,tip,cell,dt),old=[...s.end];tip.direction=nearbyDirection(sim,tip,old,index,dt);
-  if(speed<.02){tip.status='stalled';tip.stallHours+=dt;if(tip.stallHours>2&&(sim.config.actin===0||sim.config.microtubules===0||cell.membrane.reserve<.08||tip.forces.net<0))retractTip(sim,tip,dt*(tip.kind==='axon'?1.5:2.5));return;}
+  const apposition=sim.contacts.find(c=>c.id===tip.lastContact&&c.status!=='lost');
+  if(apposition&&sim.config.cellAdhesion>=.3){
+    const other=sim.segments[apposition.axonSegmentId===s.id?apposition.dendriteSegmentId:apposition.axonSegmentId];
+    if(other?.alive&&contactPersists(sim,apposition)){
+      apposition.dwellHours+=dt;apposition.lastTime=sim.timeHours;apposition.candidate=apposition.dwellHours>=PHYSICAL_BASELINES.appositionHours;apposition.status=apposition.candidate?'candidate':'apposition';tip.status='stabilized';tip.forces.speed=0;sampleFilopodia(sim,tip,index,dt);return;
+    }
+  }
+  if(speed<.02){tip.status='stalled';tip.stallHours+=dt;if(tip.stallHours>2&&(sim.config.actin===0||sim.config.microtubules===0||cell.membrane.reserve<.08||tip.forces.net<0))tip.forces.speed=-retractTip(sim,tip,dt*(tip.kind==='axon'?1.5:2.5))/dt;sampleFilopodia(sim,tip,index,dt);return;}
   const availableLength=cell.membrane.reserve*cell.membrane.reserveCapacity/(2*Math.PI*s.radius),amount=Math.min(speed*dt,availableLength),target=add(old,scale(tip.direction,amount)),hit=firstCollision(sim,tip,old,target,index);
-  let added=0;
+  let added=0,retracted=0;
   if(hit){
     const collisionKey=`${hit.type}:${hit.id}`;sim.counters.collisionSteps++;
     if(tip.lastCollisionKey!==collisionKey||sim.timeHours-(tip.lastCollisionHours??-100)>dt*1.5){sim.counters.collisions++;event(sim,'collision',{cellId:tip.cellId,kind:tip.kind,object:hit.type});}
@@ -287,10 +306,10 @@ function advanceTip(sim,tip,dt,index){
     if(length(tangent)<.05){let side=sim.world.planar?[-normal[2],0,normal[0]]:cross(normal,Math.abs(normal[1])<.9?[0,1,0]:[1,0,0]);side=scale(unit(side),(tip.id%2?1:-1));tip.direction=unit(add(side,scale(normal,.12)));}
     else tip.direction=unit(add(tangent,scale(normal,.08)));
     if(sim.world.planar)tip.direction=unit([tip.direction[0],0,tip.direction[2]]);
-    if(tip.stallHours>1.8&&hit.type!=='neurite'){tip.status='retracting';retractTip(sim,tip,dt*2.2);}
+    if(tip.stallHours>1.8&&hit.type!=='neurite'){tip.status='retracting';retracted=retractTip(sim,tip,dt*2.2);}
   } else {added=appendGrowth(sim,tip,target,index);tip.status='extending';tip.stallHours=Math.max(0,tip.stallHours-dt*.8);}
-  tip.forces.speed=added/dt;
-  if(tip.active)branchTip(sim,tip,dt);
+  tip.forces.speed=(added-retracted)/dt;sampleFilopodia(sim,tip,index,dt);
+  if(tip.active)branchTip(sim,tip,dt,index);
 }
 
 function internalStep(sim,dt){
@@ -303,11 +322,16 @@ function internalStep(sim,dt){
     for(const root of roots)previousIndex.insert(root.id,root.start,root.end,root.radius);
   }
   const index=new SpatialHash(16);for(const s of sim.segments)if(s.alive){s.ageHours+=dt;const target=Math.min(1,sim.config.microtubules*sim.cells[s.cellId].supply);s.mt+=(target-s.mt)*(-Math.expm1(-dt/8));index.insert(s.id,s.start,s.end,s.radius);}
+  index.cones=new Map(sim.tips.filter(t=>t.active).map(t=>[t.segmentId,t]));
   const count=sim.tips.length;
-  for(let i=0;i<count;i++)advanceTip(sim,sim.tips[i],dt,index);
+  for(let i=0;i<count;i++){
+    const tip=sim.tips[i],old=tip.segmentId;advanceTip(sim,tip,dt,index);
+    if(old!==tip.segmentId||!tip.active)index.cones.delete(old);
+    if(tip.active)index.cones.set(tip.segmentId,tip);
+  }
   sim.timeHours=Number((sim.timeHours+dt).toFixed(12));sim.stepCount++;
 
-  for(const c of sim.contacts){const a=sim.segments[c.axonSegmentId],b=sim.segments[c.dendriteSegmentId];if(!a?.alive||!b?.alive||closestSegmentPoints(a.start,a.end,b.start,b.end).distance>a.radius+b.radius+.5){c.candidate=false;c.status='lost';}}
+  for(const c of sim.contacts){if(!contactPersists(sim,c)){c.candidate=false;c.status='lost';}}
   if(sim.timeHours>=sim.nextHistoryHours-1e-9)recordHistory(sim);
 }
 export function stepSimulation(sim,durationHours=.25){
@@ -343,7 +367,7 @@ export function getMetrics(sim){
   const perCell=sim.cells.map(cell=>{
     const segments=live.filter(s=>s.cellId===cell.id),paths=new Map(),active=sim.tips.filter(t=>t.active&&t.cellId===cell.id),branchOrders={};let axonLength=0,dendriteLength=0,branches=0,longestAxonPath=0,longestDendritePath=0,axonReach=0,dendriteReach=0,shaftArea=0;
     for(const s of segments){const l=distance(s.start,s.end),path=l+(paths.get(s.parentId)||0),reach=distance(s.end,cell.position);paths.set(s.id,path);shaftArea+=2*Math.PI*s.radius*l;if(s.kind==='axon'){axonLength+=l;longestAxonPath=Math.max(longestAxonPath,path);axonReach=Math.max(axonReach,reach);}else{dendriteLength+=l;longestDendritePath=Math.max(longestDendritePath,path);dendriteReach=Math.max(dendriteReach,reach);}if((children.get(s.id)||0)>1){branches++;branchOrders[s.branchOrder]=(branchOrders[s.branchOrder]||0)+1;}}
-    return {id:cell.id,stage:cell.stage,displacement:cell.mechanics.displacement,cellSpeed:length(cell.mechanics.velocity),pathLength:cell.mechanics.pathLength,areaStrain:cell.membrane.areaStrain,volumeStrain:cell.membrane.volumeStrain,meshQuality:cell.membrane.minQuality,branchAngles:branchAngles(segments,children),dendriticFieldArea:fieldArea(segments.filter(s=>s.kind==='dendrite')),stage:cell.stage,axonLength,dendriteLength,totalLength:axonLength+dendriteLength,branches,activeTips:active.length,axonTips:active.filter(t=>t.kind==='axon').length,dendriteTips:active.filter(t=>t.kind==='dendrite').length,longestAxonPath,longestDendritePath,axonReach,dendriteReach,branchOrders,shaftArea,meanConeSpeed:active.reduce((a,t)=>a+t.forces.speed,0)/Math.max(1,active.length),membraneArea:cell.membrane.area,tension:cell.membrane.tension,reserve:cell.membrane.reserve,supply:cell.supply,sholl:shollFor(segments,cell.position),shollAxon:shollFor(segments.filter(s=>s.kind==='axon'),cell.position),shollDendrite:shollFor(segments.filter(s=>s.kind==='dendrite'),cell.position)};
+    return {id:cell.id,stage:cell.stage,displacement:cell.mechanics.displacement,cellSpeed:length(cell.mechanics.velocity),pathLength:cell.mechanics.pathLength,areaStrain:cell.membrane.areaStrain,volumeStrain:cell.membrane.volumeStrain,meshQuality:cell.membrane.minQuality,branchAngles:branchAngles(segments,children),dendriticFieldArea:fieldArea(segments.filter(s=>s.kind==='dendrite')),axonLength,dendriteLength,totalLength:axonLength+dendriteLength,branches,activeTips:active.length,axonTips:active.filter(t=>t.kind==='axon').length,dendriteTips:active.filter(t=>t.kind==='dendrite').length,longestAxonPath,longestDendritePath,axonReach,dendriteReach,branchOrders,shaftArea,extensionRate:active.reduce((a,t)=>a+Math.max(0,t.forces.speed),0),retractionRate:active.reduce((a,t)=>a+Math.max(0,-t.forces.speed),0),meanConeSpeed:active.reduce((a,t)=>a+t.forces.speed,0)/Math.max(1,active.length),membraneArea:cell.membrane.area,tension:cell.membrane.tension,reserve:cell.membrane.reserve,supply:cell.supply,sholl:shollFor(segments,cell.position),shollAxon:shollFor(segments.filter(s=>s.kind==='axon'),cell.position),shollDendrite:shollFor(segments.filter(s=>s.kind==='dendrite'),cell.position)};
   });
   const totalAxonLength=perCell.reduce((a,c)=>a+c.axonLength,0),totalDendriteLength=perCell.reduce((a,c)=>a+c.dendriteLength,0);
   return {...populationMechanics(sim),timeHours:sim.timeHours,cellCount:sim.cells.length,totalAxonLength,totalDendriteLength,totalLength:totalAxonLength+totalDendriteLength,branches:perCell.reduce((a,c)=>a+c.branches,0),activeTips:sim.tips.filter(t=>t.active).length,liveSegments:live.length,totalSegments:sim.segments.length,contacts:sim.contacts.filter(c=>c.candidate&&c.status==='candidate').length,appositions:sim.contacts.filter(c=>c.status==='apposition').length,collisionEvents:sim.counters.collisions,retractionSteps:sim.counters.retractions,meanTension:sim.cells.reduce((a,c)=>a+c.membrane.tension,0)/sim.cells.length,meanReserve:sim.cells.reduce((a,c)=>a+c.membrane.reserve,0)/sim.cells.length,perCell};
@@ -391,6 +415,7 @@ export function restoreSimulation(data){
   }
   for(let i=0;i<s.tips.length;i++){
     const t=s.tips[i];if(t?.id!==i||!Number.isInteger(t.segmentId)||!s.segments[t.segmentId]||t.cellId!==s.segments[t.segmentId].cellId||!validPoint(t.direction)||!validPoint(t.noiseState)||typeof t.active!=='boolean'||!finiteNumber(t.radius)||t.radius<=0||t.radius>10||!finiteNumber(t.mt)||t.mt<0||t.mt>1||!finiteNumber(t.clutch)||t.clutch<0||t.clutch>1||!finiteNumber(t.ageHours)||t.ageHours<0||!finiteNumber(t.stallHours)||t.stallHours<0||!t.forces||Object.values(t.forces).some(v=>!finiteNumber(v)))throw new Error('Invalid growth cone state.');
+    if(t.filopodia&&(!Array.isArray(t.filopodia)||t.filopodia.length!==5||t.filopodia.some(p=>!validPoint(p.start)||!validPoint(p.end)||!validPoint(p.direction)||!finiteNumber(p.length)||p.length<0||p.length>10||p.radius!==.08||typeof p.blocked!=='boolean')))throw new Error('Invalid exploratory protrusion.');
     if(t.shape&&(!Array.isArray(t.shape.radii)||t.shape.radii.length!==12||t.shape.radii.some(x=>!finiteNumber(x)||x<=0||x>10)))throw new Error('Invalid growth cone membrane.');
     if(t.kind!==s.segments[t.segmentId].kind||(t.active&&!s.segments[t.segmentId].alive)||length(t.direction)<.5||length(t.direction)>1.5||!['extending','stalled','contact','retracting','retracted','stabilized'].includes(t.status)||['actin','traction','microtubule','membrane','net','retrograde','speed','clutch'].some(k=>!finiteNumber(t.forces[k])))throw new Error('Invalid growth cone identity or direction.');
   }

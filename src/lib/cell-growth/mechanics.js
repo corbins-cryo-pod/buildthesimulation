@@ -146,10 +146,10 @@ function projectWorld(sim,old,p,contacts,i) {
   return x;
 }
 
-export function advanceCellMechanics(sim,cell,duration,segments,roots) {
+export function advanceCellMechanics(sim,cell,duration,segments,roots,maxStepHours=MECHANICS.maxStepHours) {
   const m=cell.membrane,c=sim.config,mech=cell.mechanics,n=m.vertices.length;
   if(m.lastSolveHours>sim.timeHours+1e-8)return; // explicit frozen diagnostic fixtures
-  const totalSteps=Math.max(1,Math.ceil(duration/MECHANICS.maxStepHours-1e-9)),dt=duration/totalSteps;
+  const totalSteps=Math.max(1,Math.ceil(duration/maxStepHours-1e-9)),dt=duration/totalSteps;
   for(let step=0;step<totalSteps;step++) {
     const previous=m.vertices,oldCenter=[...cell.position],oldNucleus=[...cell.nucleus.position],external=externalCellForces(sim,cell);
     movePolarity(sim,cell,external.turn,dt);

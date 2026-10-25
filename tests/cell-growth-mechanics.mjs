@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createSimulation,stepSimulation,serializeSimulation,restoreSimulation,getMetrics,exportCSV} from '../src/lib/cell-growth/engine.js';
-import {SHELL,passiveMembrane,surfaceGeometry,signedObstacle,MECHANICS} from '../src/lib/cell-growth/mechanics.js';
+import {advanceCellMechanics,SHELL,passiveMembrane,surfaceGeometry,signedObstacle,MECHANICS} from '../src/lib/cell-growth/mechanics.js';
 import {coneSurface} from '../src/lib/cell-growth/render-geometry.js';
 import {add,sub,scale,dot,cross,unit,length,distance,pointSegmentDistance} from '../src/lib/cell-growth/geometry.js';
 const close=(a,b,t=1e-7)=>assert.ok(Math.abs(a-b)<=t,`${a} vs ${b}; tolerance ${t}`);
@@ -47,7 +47,7 @@ test('V2 adhesion occupancy turns over rather than instantaneously resetting',()
  const s=make();stepSimulation(s,2);const c=s.cells[0],before=[...c.membrane.adhesions];s.config.adhesion=0;stepSimulation(s,.05);assert.ok(c.membrane.adhesions.some(x=>x>0));assert.ok(c.membrane.adhesions.every((x,i)=>x<=before[i]));stepSimulation(s,5);assert.ok(c.mechanics.adhesionMean<.02);
 });
 
-test('V2 locomotion and shell geometry converge under independent outer timestep refinement',()=>{
+test('V2 outer timestep refinement preserves the internally subcycled locomotion and shell geometry',()=>{
  const runs=[.05,.025,.0125].map(dtHours=>{const s=make({dtHours});s.cells[0].mechanics.polarity=[1,0,0];stepSimulation(s,4);return s.cells[0];});
  for(const c of runs.slice(0,2)){assert.ok(distance(c.position,runs[2].position)<.01);assert.ok(Math.abs(c.membrane.volume-runs[2].membrane.volume)/runs[2].membrane.volume<.001);}
 });
@@ -85,4 +85,36 @@ test('V2 growth-cone membrane is a closed finite-radius reconstruction of its so
 
 test('V2 morphology metrics include measured branch angles and projected dendritic coverage',()=>{
  const s=createSimulation({cellCount:2,source:'immature',branching:2});stepSimulation(s,18);const metrics=getMetrics(s);for(const c of metrics.perCell){assert.ok(c.dendriticFieldArea>=0);assert.ok(c.branchAngles.every(a=>a>=0&&a<=180));assert.ok(c.displacement>=0);assert.ok(c.pathLength+1e-6>=c.displacement);}
+});
+
+test('V2 approaching foreign growth cones remain separate and stabilize without a prescribed target layout',()=>{
+ const s=createSimulation({source:'immature',cellCount:2,guidance:0,noise:0,branching:0,actin:2,tension:0,cellAdhesion:1,selfAvoidance:0,fasciculation:0});s.world.obstacles=[];
+ for(const t of s.tips)t.active=false;for(const n of s.segments)n.alive=false;
+ const a=s.segments[0],b=s.segments.find(n=>n.cellId===1),ta=s.tips[0],tb=s.tips.find(t=>t.cellId===1);
+ Object.assign(a,{start:[-12,0,0],end:[-4,0,0],radius:.5,kind:'axon',alive:true});Object.assign(b,{start:[12,0,0],end:[4,0,0],radius:.5,kind:'dendrite',alive:true});
+ Object.assign(ta,{active:true,direction:[1,0,0],kind:'axon',mt:1});Object.assign(tb,{active:true,direction:[-1,0,0],kind:'dendrite',mt:1});
+ s.cells.forEach((c,i)=>{c.position=[i?100:-100,0,0];c.ageHours=20;c.membrane.lastSolveHours=720;c.axonRootId=i?b.id:a.id;});
+ for(let i=0;i<30;i++){stepSimulation(s,.05);assert.ok(distance(s.segments[ta.segmentId].end,s.segments[tb.segmentId].end)>=ta.radius+tb.radius-1e-7,'growth cone envelopes overlap');}
+ assert.ok(s.contacts.some(c=>c.candidate));assert.ok([ta,tb].some(t=>t.status==='stabilized'));
+});
+
+test('V2 filopodial sensing stops at a thin barrier and at the modeled boundary',async()=>{
+ const {sampleFilopodia}=await import('../src/lib/cell-growth/exploration.js');const {SpatialHash}=await import('../src/lib/cell-growth/geometry.js');
+ const s=createSimulation({source:'immature',cellCount:1,actin:1}),t=s.tips[0],segment=s.segments[t.segmentId];segment.end=[0,0,0];t.direction=[1,0,0];t.radius=1;t.forces.membrane=0;
+ const hash=new SpatialHash(16);s.world.obstacles=[{id:'thin',shape:'box',position:[2.5,0,0],size:[.1,5,1]}];sampleFilopodia(s,t,hash,1);
+ assert.ok(t.filopodia[2].blocked);assert.ok(t.filopodia[2].end[0]<2.5-.05-.08);assert.ok(t.filopodia.some(p=>!p.blocked));
+ s.world.obstacles=[];s.world.bounds.max[0]=2;sampleFilopodia(s,t,hash,1);for(const p of t.filopodia)assert.ok(p.end[0]<=1.92+1e-8);
+});
+
+test('V2 retraction reports a signed physical rate and preserves the material ledger',()=>{
+ const s=createSimulation({source:'immature',cellCount:1,guidance:0,noise:0,branching:0});s.world.obstacles=[];s.cells[0].membrane.lastSolveHours=720;stepSimulation(s,4);s.config.actin=0;
+ let observed=false;for(let i=0;i<100;i++){stepSimulation(s,.05);if(s.tips.some(t=>t.active&&t.forces.speed<0)){observed=true;assert.ok(getMetrics(s).perCell[0].retractionRate>0);break;}}
+ assert.ok(observed);const m=s.cells[0].membrane;close(m.reserve*m.reserveCapacity,m.reserveCapacity+m.suppliedArea+m.recycledArea-m.usedArea,1e-6);
+});
+
+
+test('V2 reducing the actual mechanical integration step converges cell motion and shell geometry',()=>{
+ const states=[.0125,.00625,.003125].map(h=>{const s=make();s.cells[0].mechanics.polarity=[1,0,0];for(let k=0;k<80;k++){advanceCellMechanics(s,s.cells[0],.05,[],[],h);s.timeHours=Number(((k+1)*.05).toFixed(12));}return s.cells[0];});
+ const error=c=>distance(c.position,states[2].position),shapeError=c=>Math.sqrt(c.membrane.vertices.reduce((sum,v,i)=>sum+distance(v,states[2].membrane.vertices[i])**2,0)/162);
+ assert.ok(error(states[1])<error(states[0]));assert.ok(error(states[0])<.05);assert.ok(shapeError(states[1])<shapeError(states[0]));assert.ok(shapeError(states[0])<.05);
 });
