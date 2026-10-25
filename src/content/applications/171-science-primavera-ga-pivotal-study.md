@@ -4,11 +4,11 @@ order: 171
 pubDate: 2026-10-25
 updatedDate: 2026-10-25
 application_id: "BTSD-APP-0078"
-interface_class: "retinal"
+interface_class: "other"
 status: "human"
 last_updated: 2026-10-25
 description: "PRIMAvera, the 38-participant European pivotal study of Science Corporation's PRIMA subretinal photovoltaic implant for geographic atrophy, published in NEJM. Registry and journal verified; later results are company-reported."
-modality: "Retinal"
+modality: "Other"
 website: "https://clinicaltrials.gov/study/NCT04676854"
 tags: ["retinal implant", "photovoltaic", "geographic atrophy", "AMD", "visual prosthesis"]
 devices: ["177-science-prima-subretinal-photovoltaic-implant"]
