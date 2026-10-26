@@ -60,7 +60,7 @@ jobs:
           git diff --exit-code -- public/assets/retinal-implant tests/fixtures/retinal-percept tests/fixtures/retinal-field/independent-reference.json
       - name: Verify complete numerical experiments
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node --test tests/retinal-field.mjs tests/retinal-percept.mjs tests/retinal-experiment.mjs tests/retina-unified.mjs
+        run: node --test tests/retinal-field.mjs tests/retinal-percept.mjs tests/retinal-experiment.mjs tests/retina-unified.mjs tests/retinal-implant-geometry.mjs
       - name: Verify real workers, WebGL and responsive controls
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         env:

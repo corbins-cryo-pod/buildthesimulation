@@ -27,6 +27,23 @@ The implementation includes all three tiers (a selected cable for Tier 3), both 
 
 ## Rendered verification evidence
 
+### Implant assembly rendering
+
+All backing, contacts, photodiodes and return-grid geometry use one active-face
+mapping. PRIMA is a rigid planar display plate tangent to the modeled inner
+retinal reference at the placement anchor; the electrical substrate and contacts
+share the curved retinal display mapping. Backing extents cover the actual
+contacts, including asymmetric imported arrays. Microscopic views clip the same
+assembly to the 850 × 500 µm tissue window instead of recentering a replacement
+board. Clipped or hidden contacts cannot be selected.
+
+This is display geometry, not an implant–tissue mechanics solution. PRIMA's gap
+is anchored at placement; local separation varies against curved undeformed
+tissue, and tissue can intersect the rigid plate. No surgical tissue displacement
+is modeled. The existing planar conductive fields and numerical references are
+unchanged. `tests/retinal-implant-geometry.mjs` verifies attachment, rigid PRIMA
+planarity, placement, clipping consistency and imported-array backing bounds.
+
 ![Graphics-enabled CI rendering of the microscopic retina and epiretinal contacts](retinal-webgl.png)
 
 Actual WebGL output from verification run [40344318997](https://github.com/corbins-cryo-pod/buildthesimulation/actions/runs/40344318997), at migration commit `a00aaf67a8b9c131cdc00cbbde4657a3d4c3bc4c`. The artifact includes desktop/mobile/theme screenshots and exported experiment checks. The displayed geometry is procedural and density-reduced, as described in the methods.
