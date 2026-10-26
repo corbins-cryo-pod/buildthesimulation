@@ -4,13 +4,22 @@
  * sharp is already supplied by the Astro image pipeline.
  */
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import sharp from 'sharp';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { deviceModels, getContactGeometry } from '../src/lib/devices/catalog.js';
 import { buildDeviceMesh, disposeDeviceMesh } from '../src/lib/devices/geometry.js';
 import { modelView, modelScaleBar, fitModelView, MODEL_FOV } from '../src/lib/devices/model-view.js';
 const output = path.resolve(process.argv[2] ?? 'dist/models/devices');
+async function licensedGroup(model) {
+  const data = await readFile(path.join('public', model.licensedGlb));
+  const gltf = await new Promise((resolve, reject) => new GLTFLoader().parse(data.buffer.slice(data.byteOffset, data.byteOffset + data.byteLength), '', resolve, reject));
+  const group = gltf.scene;
+  group.scale.setScalar(1000); // licensed GLBs are authored in meters; previews work in mm
+  group.traverse(object => { if (object.isMesh && !object.geometry.attributes.normal) object.geometry.computeVertexNormals(); });
+  return group;
+}
 const sparseFilms = new Set(['ptnrgrid-1024-recording-patch', 'ucsd-graphene-2024-256-recording-patch', 'cibr-agel-1024-bare-contact-patch']);
 const previewView = model => ['flat-cuff', 'nerve-cuff'].includes(model.kind) ? 'cutaway' : 'default';
 const width = 720, height = 460, samples = 2, W = width * samples, H = height * samples;
@@ -116,8 +125,11 @@ function rasterize(model, group, pose) {
 await mkdir(output,{recursive:true});
 const entries=[];
 for (const model of Object.values(deviceModels)) {
-  const {group}=buildDeviceMesh(model), box=new THREE.Box3().setFromObject(group);
-  const sites = getContactGeometry(model);
+  const licensed = Boolean(model.licensedGlb);
+  const group = licensed ? await licensedGroup(model) : buildDeviceMesh(model).group;
+  group.updateMatrixWorld(true);
+  const box=new THREE.Box3().setFromObject(group);
+  const sites = licensed ? (() => { const derived=[]; group.traverse(o => { if (o.isMesh && o.name.startsWith('contact-')) { const b=new THREE.Box3().setFromObject(o); derived.push({positionMm:b.getCenter(new THREE.Vector3()).toArray()}); } }); return derived; })() : getContactGeometry(model);
   let pose=modelView(model,{min:box.min.toArray(),max:box.max.toArray()},sites,previewView(model),W/H);
   if (model.kind === 'nerve-cuff') {
     const center = sites[Math.floor(sites.length / 2)].positionMm, size = [model.innerDiameter * 1.2, model.innerDiameter * 1.2, model.contacts[0].length * 1.8];
