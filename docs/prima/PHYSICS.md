@@ -287,9 +287,11 @@ A separate complete 378-pixel experiment checks the full implementation.
 
 The fixture also includes six Hankel-integral Green-function checks, current
 redistribution, port passivity, charge recovery, derivatives, and separate
-time-step and return-basis refinement. The output is rounded to ten significant
-digits for deterministic committed reference files. Reference source, pinned
-dependencies, fixture provenance, and the numerical report are retained.
+time-step and return-basis refinement. The retained output is rounded to ten
+significant digits. Reference source, pinned dependencies, fixture provenance,
+and the numerical report are retained. Adaptive solutions can still differ in
+their final digits across NumPy CPU instruction paths; the narrow verification
+allowances below handle that variation without replacing the retained evidence.
 
 For late currents near zero, a relative error divided by that tiny value can
 be misleading. The report therefore records absolute current error and both
@@ -303,11 +305,53 @@ not validate a commercial implant, retinal tissue parameters, cell activation,
 or patient outcomes. In particular, increasing the return quadrature order
 does not remove the regularized-source and lumped-interface model assumptions.
 
+### Portable verification of the retained reference
+
+The default NumPy execution path reproduces the retained fixture and report
+byte-for-byte in the development environment. Disabling AVX2, FMA3 and AVX512F
+in pinned NumPy 1.26.4 changes 40 numerical leaves, all in the low-capacitance
+seven-pixel adaptive solution and its derived temporal-error summaries. The
+largest observed current change is 4.2675 × 10⁻¹⁶ A, voltage change is
+6.05 × 10⁻¹² V, and light-phase charge change is approximately 10⁻¹⁹ C.
+The full-array circuit, fields, Green integrals, return matrices, spatial
+refinement and other three small-network cases remain identical in that check.
+
+`--check` therefore compares only the explicitly named adaptive quantities and
+the derived `convergence.time` error fields with these **absolute** allowances;
+the relative tolerance is zero:
+
+| Quantity | Absolute allowance |
+|---|---:|
+| Adaptive current | 10⁻¹⁵ A (0.001 pA) |
+| Adaptive voltage | 10⁻¹¹ V |
+| Adaptive instantaneous, phase and final charge | 10⁻¹⁸ C |
+| Temporal phase-charge error divided by reference peak charge | 10⁻¹¹ |
+| Temporal absolute snapshot-current error and reference peak current | 10⁻⁹ µA |
+| Temporal current error divided by peak photocurrent | 10⁻⁹ |
+| Temporal current error divided by peak snapshot current | 10⁻⁶ |
+
+The last ratio is especially sensitive when the reference late current is
+near zero; its allowance applies to the reported ratio, not to a physical
+current. These are portability allowances for independent reference
+regeneration. They do not change the JavaScript solver's comparison gates or
+its 0.2 pA Kirchhoff residual requirement.
+
+Object keys, array dimensions, provenance, numerical settings and all
+non-adaptive solver data remain exact. Nonfinite values are rejected. Each
+report must exactly summarize its own fixture and its `fixtureSha256` must
+match that fixture's actual bytes. The retained report continues to identify
+the retained fixture; a regenerated digest may differ only after the named
+numerical comparisons pass. `--check` never overwrites either retained file.
+Focused positive and negative tests exercise the measured CPU variant,
+out-of-bound drift, exact-field changes, malformed structures and corrupted
+metadata or checksums.
+
 ### Reproduce
 
 ```bash
 python -m pip install -r scripts/prima-reference/requirements.txt
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python scripts/prima-reference/physics_reference.py --check
+python -m unittest discover -s scripts/prima-reference -p 'test_physics_reference.py' -v
 node tests/prima-physics.test.mjs
 ```
 

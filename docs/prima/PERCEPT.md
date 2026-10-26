@@ -150,14 +150,37 @@ dimensions and four-sample antialiasing; it is also checked against the browser
 stimulus generator.
 For each case, the full window, spatial image, and final percept are compared.
 Fixtures contain losslessly compressed little-endian float64 arrays. The
-absolute acceptance tolerance is 5×10⁻¹² on the [0,1] scale.
+JavaScript-versus-reference absolute acceptance tolerance is 5×10⁻¹² on the
+[0,1] scale.
 
 The exact reference JSON is stored in `tests/fixtures/prima-percept/` as
 40 ASCII chunks of at most 64 KiB. Its manifest records chunk order, byte
 counts, per-chunk SHA-256 checksums, and the reconstructed JSON checksum.
 The loader checks all bytes before parsing; this packaging does not change
-any image samples, source metadata, or numerical tolerances. The Python
-`--check` command independently reproduces every chunk and the manifest.
+any image samples or source metadata. The Python `--check` command verifies
+every stored chunk checksum and the reconstructed JSON checksum, then checks
+that repackaging those stored bytes reproduces the manifest and all chunks
+exactly. These stored bytes and hashes remain unchanged.
+
+Independent Python regeneration requires exact metadata and exact decompressed
+float64 bytes for input images, masks, spatial FFT results, and identity-mode
+outputs. Only the final gamma and sigmoid arrays permit an absolute difference
+of 1×10⁻¹⁵, with zero relative tolerance. All arrays must have their declared
+length and finite values. This separate, much tighter regeneration bound
+accounts for demonstrated NumPy CPU-dispatch roundoff: with the pinned packages,
+disabling `AVX512F` changes five tone-curve arrays by at most
+2.220446049250313×10⁻¹⁶ while leaving all metadata and upstream arrays byte-for-byte
+identical. Disabling `AVX2`, `FMA3`, and `AVX512F` together produces the same
+alternate arrays.
+The unmodified published functions and the JavaScript acceptance tolerance
+remain unchanged. Differences in zlib encoding alone are accepted only when
+the decompressed arrays meet these same checks.
+
+The check logs Python/package/zlib versions and CPU features, the stored and
+regenerated payload hashes, and compressed/raw equality, maximum absolute
+difference, and changed-value count for each differing array. Reproduce the
+CPU-dispatch comparison with
+`NPY_DISABLE_CPU_FEATURES=AVX2,FMA3,AVX512F python scripts/prima-reference/percept_reference.py --check`.
 
 Additional tests check the documented padding offset, frequency attenuation,
 signed gamma, sigmoid black level, image coordinates, optical translation,
@@ -168,6 +191,7 @@ Reproduce in an isolated Python environment:
 ```sh
 python -m pip install -r scripts/prima-reference/requirements.txt
 python scripts/prima-reference/percept_reference.py --check
+python scripts/prima-reference/test_percept_reference.py
 node tests/prima-percept.test.mjs
 node scripts/prima-reference/verify_percept.mjs
 ```

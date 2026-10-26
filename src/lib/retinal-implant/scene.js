@@ -34,7 +34,9 @@ export function createRetinalScene(host, { onSelect = () => {}, onUnavailable = 
   const anatomy = new THREE.Group(), fibers = new THREE.Group(), implant = new THREE.Group(), labels = new THREE.Group(); scene.add(anatomy, fibers, implant, labels);
   let state = null, disposed = false, frame = 0, shown = true, inView = true, meshes = [], down = null, geometryKey = '', fiberKey = '';
   const raycaster = new THREE.Raycaster(), pointer = new THREE.Vector2(), abort = new AbortController();
-  const paint = () => { frame = 0; if (!disposed && shown && inView && host.clientWidth > 0) renderer.render(scene, camera); };
+  // A cached IntersectionObserver result can lag a scroll or resize. Use it to
+  // request redraws, never to veto one after setSize has cleared the buffer.
+  const paint = () => { frame = 0; if (!disposed && shown && host.clientWidth > 0 && host.clientHeight > 0) renderer.render(scene, camera); };
   const invalidate = () => { if (!disposed && !frame) frame = requestAnimationFrame(paint); };
   const resize = () => { const w = Math.max(1, host.clientWidth), h = Math.max(1, host.clientHeight); camera.aspect = w / h; camera.updateProjectionMatrix(); renderer.setSize(w, h, false); invalidate(); };
   const resizer = new ResizeObserver(resize); resizer.observe(host);

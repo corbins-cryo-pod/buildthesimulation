@@ -14,12 +14,17 @@ function disposeGroup(group) {
   group.clear(); geometries.forEach(item => item.dispose()); materials.forEach(item => item.dispose()); textures.forEach(item => item.dispose());
 }
 
-function textLabel(text, width = 1.0, color = '#e8dec1') {
-  const canvas = document.createElement('canvas'); canvas.width = 768; canvas.height = 80;
-  const ctx = canvas.getContext('2d'); ctx.fillStyle = color; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.font = '28px Arial'; ctx.fillText(text, 384, 40);
+function textLabel(text, color = '#e8dec1') {
+  const canvas = document.createElement('canvas'), ctx = canvas.getContext('2d'), font = '48px Arial', padding = 6;
+  ctx.font = font;
+  const metrics = ctx.measureText(text), ascent = Math.ceil(metrics.actualBoundingBoxAscent || 38), descent = Math.ceil(metrics.actualBoundingBoxDescent || 0), glyphHeight = ascent + descent;
+  canvas.width = Math.ceil(metrics.width) + 2 * padding; canvas.height = glyphHeight + 2 * padding;
+  ctx.font = font; ctx.fillStyle = color; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; ctx.fillText(text, padding, padding + ascent);
   const texture = new THREE.CanvasTexture(canvas); texture.colorSpace = THREE.SRGBColorSpace;
-  const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: texture, transparent: true, depthTest: false, depthWrite: false }));
-  sprite.scale.set(width, width / 9.6, 1); sprite.renderOrder = 10; return sprite;
+  const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: texture, transparent: true, depthTest: false, depthWrite: false, toneMapped: false }));
+  // Preserve glyph height instead of squeezing every phrase into a fixed width.
+  const height = .085 * canvas.height / glyphHeight, width = height * canvas.width / canvas.height;
+  sprite.userData.labelSize = [width, height]; sprite.scale.set(width, height, 1); sprite.renderOrder = 10; return sprite;
 }
 
 function roundedSquare(size, radius) {
@@ -79,6 +84,11 @@ export function createPrimaScene(host, { onSelect = () => {}, onUnavailable = ()
     // outlive a scroll or resize. It may request a repaint, but must not veto
     // one after setSize has cleared the buffer or a calculation has completed.
     if (shown && host.clientWidth > 0 && host.clientHeight > 0) {
+      // Keep the default-camera labels legible in the shorter mobile viewport.
+      const labelScale = Math.max(1, 500 / host.clientHeight);
+      for (const group of [labels, projection]) for (const item of group.children) if (item.userData.labelSize) {
+        const [width, height] = item.userData.labelSize; item.scale.set(width * labelScale, height * labelScale, 1);
+      }
       renderAttempts++; renderer.render(scene, camera); renderedFrames++;
       renderedExperimentId = state?.experimentId ?? null;
     }
@@ -136,9 +146,9 @@ export function createPrimaScene(host, { onSelect = () => {}, onUnavailable = ()
     const top = depth(gap + .08), plane = new THREE.Mesh(new THREE.PlaneGeometry(2.65, 2.65), new THREE.MeshBasicMaterial({ color: '#6f958a', transparent: true, opacity: .045, depthWrite: false, side: THREE.DoubleSide })); plane.position.z = top; anatomy.add(plane);
     const scaleLine = line([[-1, -1.19, -.02], [1, -1.19, -.02]], '#e1ce99'); labels.add(scaleLine);
     labels.add(line([[-1, -1.14, -.02], [-1, -1.24, -.02]], '#e1ce99')); labels.add(line([[1, -1.14, -.02], [1, -1.24, -.02]], '#e1ce99'));
-    const scaleLabel = textLabel('2 mm', .48); scaleLabel.position.set(0, -1.37, -.02); labels.add(scaleLabel);
-    const chipLabel = textLabel('Photovoltaic array · 30 μm thick', 1.45); chipLabel.position.set(-.12, -.98, -.15); labels.add(chipLabel);
-    const tissueLabel = textLabel('Bipolar-cell region · schematic', 1.5, '#b6c8b2'); tissueLabel.position.set(.05, 1.26, top + .035); labels.add(tissueLabel);
+    const scaleLabel = textLabel('2 mm'); scaleLabel.position.set(0, -1.37, -.02); labels.add(scaleLabel);
+    const chipLabel = textLabel('Photovoltaic array · 30 μm thick'); chipLabel.position.set(.9, -1.18, -.32); labels.add(chipLabel);
+    const tissueLabel = textLabel('Bipolar-cell region · schematic', '#b6c8b2'); tissueLabel.position.set(.3, 1.26, top + .035); labels.add(tissueLabel);
   }
 
   function buildProjection(next) {
@@ -147,7 +157,7 @@ export function createPrimaScene(host, { onSelect = () => {}, onUnavailable = ()
     if (texture) { const screen = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), new THREE.MeshBasicMaterial({ map: texture, transparent: true, depthWrite: false, side: THREE.DoubleSide })); screen.position.z = z; projection.add(screen); }
     for (const [x, y] of [[-1, -1], [1, -1], [1, 1], [-1, 1]]) projection.add(line([[x, y, z], [x, y, .008]], '#7da8ac', .2));
     projection.add(line([[-1, -1, z], [1, -1, z], [1, 1, z], [-1, 1, z], [-1, -1, z]], '#92bbb8', .45));
-    const title = textLabel('880 nm optical projection', 1.32, '#b4d5d0'); title.position.set(0, .98, z + .12); projection.add(title);
+    const title = textLabel('880 nm optical projection', '#b4d5d0'); title.position.set(0, .98, z + .28); projection.add(title);
   }
 
   renderer.domElement.addEventListener('pointerdown', e => { down = [e.clientX, e.clientY]; }, { signal: abort.signal });

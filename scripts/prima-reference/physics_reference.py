@@ -328,6 +328,120 @@ def generate():
     return clean(result)
 
 
+ADAPTIVE_ABSOLUTE_TOLERANCES = {
+    'currentA': 1e-15,
+    'voltageV': 1e-11,
+    'chargeC': 1e-18,
+    'phaseChargeC': 1e-18,
+    'finalChargeC': 1e-18,
+}
+TIME_SUMMARY_ABSOLUTE_TOLERANCES = {
+    'maxPhaseChargeErrorRelativeToPeak': 1e-11,
+    'maxSnapshotCurrentErrorUa': 1e-9,
+    'referencePeakSnapshotCurrentUa': 1e-9,
+    'maxSnapshotCurrentErrorRelativeToPeakPhotocurrent': 1e-9,
+    'maxSnapshotCurrentErrorRelativeToPeak': 1e-6,
+}
+
+
+def adaptive_absolute_tolerance(path):
+    """Only the named adaptive data leaves have a CPU-portability allowance.
+
+    All tolerances are absolute, in the units named by the JSON key; rtol=0.
+    Full-array/backward-Euler data, fields, geometry, matrices and provenance
+    remain exact. Array lengths and object keys are checked independently.
+    """
+    if (len(path) == 6 and path[0] == 'smallCircuits'
+            and isinstance(path[1], int) and path[2:4] == ('adaptive', 'snapshot')
+            and isinstance(path[5], int)):
+        return ADAPTIVE_ABSOLUTE_TOLERANCES.get(path[4], 0.0)
+    if (len(path) == 5 and path[0] == 'smallCircuits'
+            and isinstance(path[1], int) and path[2] == 'adaptive'
+            and path[3] in ('phaseChargeC', 'finalChargeC')
+            and isinstance(path[4], int)):
+        return ADAPTIVE_ABSOLUTE_TOLERANCES[path[3]]
+    if (len(path) == 4 and path[:2] == ('convergence', 'time')
+            and isinstance(path[2], int)):
+        return TIME_SUMMARY_ABSOLUTE_TOLERANCES.get(path[3], 0.0)
+    return 0.0
+
+
+def _strict_json(content):
+    def reject_constant(value):
+        raise ValueError(f'Nonfinite JSON value: {value}')
+
+    def unique_object(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f'Duplicate JSON key: {key}')
+            result[key] = value
+        return result
+
+    return json.loads(content, parse_constant=reject_constant,
+                      object_pairs_hook=unique_object)
+
+
+def _compare_values(stored, regenerated, path=(), tolerance=None, ignore_digest=False):
+    label = '/' + '/'.join(map(str, path))
+    if type(stored) is not type(regenerated):
+        raise ValueError(f'{label}: JSON types differ')
+    if isinstance(stored, dict):
+        if stored.keys() != regenerated.keys():
+            raise ValueError(f'{label}: object keys differ')
+        for key in stored:
+            _compare_values(stored[key], regenerated[key], path + (key,), tolerance, ignore_digest)
+    elif isinstance(stored, list):
+        if len(stored) != len(regenerated):
+            raise ValueError(f'{label}: array lengths differ')
+        for index, (left, right) in enumerate(zip(stored, regenerated)):
+            _compare_values(left, right, path + (index,), tolerance, ignore_digest)
+    elif type(stored) in (float, int):
+        if not math.isfinite(stored) or not math.isfinite(regenerated):
+            raise ValueError(f'{label}: nonfinite numeric value')
+        bound = tolerance(path) if tolerance else 0.0
+        error = abs(stored - regenerated)
+        if error > bound:
+            raise ValueError(f'{label}: absolute difference {error:.12g} exceeds {bound:.12g}')
+    elif ignore_digest and path == ('fixtureSha256',):
+        # Both digests have already been checked against their respective
+        # fixture bytes. No other metadata is exempt from exact comparison.
+        return
+    elif stored != regenerated:
+        raise ValueError(f'{label}: exact value differs')
+
+
+def validation_report(data, fixture_bytes):
+    """A report describes and hashes these exact fixture bytes."""
+    return dict(schema='bts.prima.physics-validation.v1',
+                fixtureSha256=hashlib.sha256(fixture_bytes).hexdigest(),
+                provenance=data['provenance'],
+                validationScope='Independent numerical verification of the reduced circuit and source basis; no commercial device or patient validation',
+                referenceCases=dict(hankelIntegrals=len(data['greenCases']), independentSmallNetworks=len(data['smallCircuits']), fullArrayPixels=len(data['fullCircuit']['centersUm'])),
+                browserResidualGatePa=.2,
+                productionDiscretization=dict(maximumTimeStepMs=.05, returnSegmentsPerHexSide=16),
+                minFullArrayPortResistanceEigenvalueOhm=data['fullCircuit']['minPortResistanceEigenvalueOhm'],
+                convergence=data['convergence'])
+
+
+def check_reference(stored_bytes, regenerated_bytes, stored_report_bytes, regenerated_report_bytes):
+    """Verify retained evidence without rewriting fixtures or weakening JS gates.
+
+    Exact metadata, structure and non-adaptive numerical data are required.
+    Every report must exactly describe its own fixture, including its checksum.
+    A regenerated digest may differ only after the numerical comparison passes.
+    """
+    stored, regenerated = _strict_json(stored_bytes), _strict_json(regenerated_bytes)
+    stored_report = _strict_json(stored_report_bytes)
+    regenerated_report = _strict_json(regenerated_report_bytes)
+    _compare_values(stored, regenerated, tolerance=adaptive_absolute_tolerance)
+    _compare_values(stored_report, validation_report(stored, stored_bytes))
+    _compare_values(regenerated_report, validation_report(regenerated, regenerated_bytes))
+    _compare_values(stored_report, regenerated_report,
+                    tolerance=adaptive_absolute_tolerance, ignore_digest=True)
+    return stored_bytes == regenerated_bytes and stored_report_bytes == regenerated_report_bytes
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--check', action='store_true')
@@ -336,22 +450,19 @@ def main():
     args = parser.parse_args()
     data = generate()
     content = json.dumps(data, indent=2, ensure_ascii=False, allow_nan=False) + '\n'
-    report = dict(schema='bts.prima.physics-validation.v1',
-                  fixtureSha256=hashlib.sha256(content.encode()).hexdigest(),
-                  provenance=data['provenance'],
-                  validationScope='Independent numerical verification of the reduced circuit and source basis; no commercial device or patient validation',
-                  referenceCases=dict(hankelIntegrals=len(data['greenCases']), independentSmallNetworks=len(data['smallCircuits']), fullArrayPixels=len(data['fullCircuit']['centersUm'])),
-                  browserResidualGatePa=.2,
-                  productionDiscretization=dict(maximumTimeStepMs=.05, returnSegmentsPerHexSide=16),
-                  minFullArrayPortResistanceEigenvalueOhm=data['fullCircuit']['minPortResistanceEigenvalueOhm'],
-                  convergence=data['convergence'])
+    report = validation_report(data, content.encode())
     report_content = json.dumps(report, indent=2, ensure_ascii=False, allow_nan=False) + '\n'
     if args.check:
-        if not args.output.exists() or args.output.read_text() != content:
-            raise SystemExit(f'Reference differs from {args.output}')
-        if not args.report_output.exists() or args.report_output.read_text() != report_content:
-            raise SystemExit(f'Validation report differs from {args.report_output}')
-        print('Physics reference is byte-identical.', flush=True)
+        if not args.output.exists() or not args.report_output.exists():
+            raise SystemExit('The retained physics fixture and validation report are required.')
+        try:
+            identical = check_reference(args.output.read_bytes(), content.encode(),
+                                        args.report_output.read_bytes(), report_content.encode())
+        except (ValueError, KeyError, TypeError) as error:
+            raise SystemExit(f'Physics reference verification failed: {error}') from error
+        print('Physics reference and report are byte-identical.' if identical else
+              'Physics reference matches within declared adaptive CPU tolerances; stored fixture checksum verified.',
+              flush=True)
     else:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(content)

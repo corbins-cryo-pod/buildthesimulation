@@ -12,14 +12,22 @@ Use Python 3.12 from the repository root:
 ```sh
 python3 -m venv /tmp/retinal-reference-venv
 /tmp/retinal-reference-venv/bin/python -m pip install -r scripts/retinal-reference/requirements.txt
-/tmp/retinal-reference-venv/bin/python scripts/retinal-reference/generate.py
-/tmp/retinal-reference-venv/bin/python scripts/retinal-reference/convergence.py
+retinal_output=$(mktemp -d)
+/tmp/retinal-reference-venv/bin/python scripts/retinal-reference/generate.py --repo "$retinal_output"
+/tmp/retinal-reference-venv/bin/python -W error scripts/retinal-reference/field_reference.py --output "$retinal_output/tests/fixtures/retinal-field/independent-reference.json"
+/tmp/retinal-reference-venv/bin/python scripts/retinal-reference/verify_reproduction.py --generated "$retinal_output"
+/tmp/retinal-reference-venv/bin/python scripts/retinal-reference/test_reproduction.py
 node tests/retinal-percept.mjs
 node scripts/retinal-reference/validate_percept.mjs
 ```
 
 `generate.py --repo /tmp/independent-output` writes a separate copy for a
-reproduction comparison. Follow with `node scripts/retinal-reference/validate_percept.mjs --compare-reproduction /tmp/independent-output` to record the comparison. During recovery all 52 generated assets/fixtures reproduced byte-for-byte in a separate output directory. The source archive was downloaded from the official
+reproduction comparison. `verify_reproduction.py` checks this copy without
+overwriting committed references. The older
+`node scripts/retinal-reference/validate_percept.mjs --compare-reproduction /tmp/independent-output`
+remains an optional strict byte comparison for matching native math libraries
+and CPU dispatch. During recovery all 52 generated assets/fixtures reproduced
+byte-for-byte in a separate output directory. The source archive was downloaded from the official
 PyPI release and checked against its published SHA-256:
 
 `8a9ba4997212ca1b9e386814808c4aadf2a6ba5427664f3961911ab461104b34`
@@ -27,9 +35,50 @@ PyPI release and checked against its published SHA-256:
 Pinned dependencies, source checksum, geometry checksum and generator checksum
 are recorded in `tests/fixtures/retinal-percept/provenance.json`. The complete
 upstream BSD-3-Clause license is distributed with the assets. Different native
-math-library/compiler platforms can differ in final floating-point bits; the
-JavaScript comparison uses explicit numerical tolerances, while reference-asset
-integrity uses exact checksums.
+math-library/compiler platforms can differ in floating-point results; numerical
+reproduction and reference-asset integrity therefore have separate checks.
+
+### Portable native reproduction
+
+Both committed and regenerated chunk checksums, byte counts, reconstructed
+geometry checksums, and percept-array checksums must match their own manifests
+exactly. Source/generator/dependency provenance, licenses, model settings,
+input configurations, coordinate samples, array shapes/dtypes/layouts, padding,
+and integer bundle/segment assignments must agree exactly across reproductions.
+The original generator files and committed numerical bytes remain unchanged.
+
+The native comparison permits only these floating-point differences:
+
+| Quantity | Native-versus-native acceptance bound |
+| --- | --- |
+| Geometry coordinates, arc lengths, distances, and display paths | Absolute 0.004 μm; zero relative tolerance |
+| Nonzero percept output | Maximum error / stored peak ≤2×10⁻⁶; RMS error / stored peak ≤1×10⁻⁷ |
+| Zero percept controls | Exact bytes |
+| Electrical potential and field-vector components | Exact values |
+| Current density, calculated from the field-vector norm | Relative 1×10⁻¹⁵; zero remains exact |
+
+All numerical arrays must have the declared length and finite values. These
+native percept bounds are stricter than the unchanged JavaScript comparison
+limits of 5×10⁻⁶ maximum and 5×10⁻⁷ RMS relative to the reference peak.
+
+The bounds follow reproduced CPU-dispatch differences with the pinned packages.
+Disabling NumPy 2.5.4 dispatch features `X86_V4,AVX512_ICL,AVX512_SPR` reproduces
+the failing CI geometry checksum
+`4d70194b9dc6ee14584693ea47b0c4c037898baa936209d31b2d9ebd2d1b499e`
+and the complete native percept manifest exactly. Geometry differences are at
+most 0.002960 μm; additionally disabling `X86_V3` gives a maximum of 0.002967 μm.
+Across these modes the largest peak-normalized percept difference is
+1.259948×10⁻⁶ maximum and 8.509695×10⁻⁸ RMS. Integer assignments, dimensions,
+coordinate samples, and zero controls do not change.
+
+Separately, `OPENBLAS_CORETYPE=Haswell` reproduces the same three current-density
+differences seen in CI, with maximum relative error 2.112×10⁻¹⁶. All potential
+and field-vector values stay exact. This is a vector-norm rounding difference;
+the elliptic-integral calculations are still compared exactly. The 16 verifier
+regression tests exercise these separate acceptance rules and reject corrupted
+storage, provenance changes, topology/input changes, nonfinite values, and
+errors beyond each bound. `convergence.py` remains a separate discretization
+study, described below.
 
 ## Implemented models
 

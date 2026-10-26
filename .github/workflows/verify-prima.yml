@@ -43,12 +43,20 @@ jobs:
         run: |
           npm ci
           python -m pip install -r scripts/prima-reference/requirements.txt
-      - name: Reproduce independent percept and physics references
+      - name: Verify reference-check regression guards
+        run: python -m unittest discover -s scripts/prima-reference -p 'test_*reference.py' -v
+      - name: Reproduce the independent percept reference
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
           python scripts/prima-reference/percept_reference.py --check
-          python scripts/prima-reference/physics_reference.py --check
+          NPY_DISABLE_CPU_FEATURES=AVX2,FMA3,AVX512F python scripts/prima-reference/percept_reference.py --check
           node scripts/prima-reference/verify_percept.mjs
           git diff --exit-code -- tests/fixtures/prima-percept public/assets/prima docs/prima/PERCEPT_VALIDATION.json
+      - name: Reproduce the independent physics reference
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: |
+          python scripts/prima-reference/physics_reference.py --check
+          NPY_DISABLE_CPU_FEATURES=AVX2,FMA3,AVX512F python scripts/prima-reference/physics_reference.py --check
       - name: Verify numerical models and complete experiments
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node --test tests/prima-percept.test.mjs tests/prima-physics.test.mjs tests/prima-experiment.mjs
