@@ -1,0 +1,225 @@
+{
+  "modelVersion": "neural-interface-studio/2.1.0",
+  "baseCommit": "b59adb6fe3f2c9f3d646528a3c9a5712eb6ef74a",
+  "nodeTests": {
+    "passed": 44,
+    "failed": 0,
+    "skipped": 0
+  },
+  "unchangedLegacyFrames": 90,
+  "independentGeometry": [
+    {
+      "demo": "split-bank",
+      "cells": 112640,
+      "metalMaskDifferences": 0,
+      "interiorDifferencesBeyond1nm": 0,
+      "bodyMaskDifferences": 0,
+      "method": "Independent Shapely 2D buffered paths, miter limit 4, rotated terminal shapes, rounded envelope, 256 segments per quadrant"
+    },
+    {
+      "demo": "annular",
+      "cells": 112000,
+      "metalMaskDifferences": 0,
+      "interiorDifferencesBeyond1nm": 0,
+      "bodyMaskDifferences": 0,
+      "method": "Independent Shapely 2D buffered paths, miter limit 4, rotated terminal shapes, rounded envelope, 256 segments per quadrant"
+    },
+    {
+      "demo": "bent",
+      "cells": 98400,
+      "metalMaskDifferences": 0,
+      "interiorDifferencesBeyond1nm": 0,
+      "bodyMaskDifferences": 0,
+      "method": "Independent Shapely 2D buffered paths, miter limit 4, rotated terminal shapes, rounded envelope, 256 segments per quadrant"
+    }
+  ],
+  "refinement": [
+    {
+      "id": "split-bank",
+      "window": {
+        "minX": -640,
+        "minY": -176,
+        "widthUm": 1280,
+        "heightUm": 352,
+        "pivotX": 0,
+        "pivotY": 0
+      },
+      "firstNetResults": [
+        {
+          "cellUm": 4,
+          "resistanceOhm": 4.599999999999957,
+          "accessible": true,
+          "solversConverged": true
+        },
+        {
+          "cellUm": 2,
+          "resistanceOhm": 6.099999999999912,
+          "accessible": true,
+          "solversConverged": true
+        },
+        {
+          "cellUm": 1,
+          "resistanceOhm": 6.084450975724762,
+          "accessible": true,
+          "solversConverged": true
+        }
+      ]
+    },
+    {
+      "id": "annular",
+      "window": {
+        "minX": -260,
+        "minY": -280,
+        "widthUm": 800,
+        "heightUm": 560,
+        "pivotX": 141,
+        "pivotY": 0
+      },
+      "firstNetResults": [
+        {
+          "cellUm": 4,
+          "resistanceOhm": 6.799999999999974,
+          "accessible": true,
+          "solversConverged": true
+        },
+        {
+          "cellUm": 2,
+          "resistanceOhm": 8.999999999999584,
+          "accessible": true,
+          "solversConverged": true
+        },
+        {
+          "cellUm": 1,
+          "resistanceOhm": 8.984450975725352,
+          "accessible": true,
+          "solversConverged": true
+        }
+      ]
+    },
+    {
+      "id": "bent",
+      "window": {
+        "minX": -260,
+        "minY": -236,
+        "widthUm": 800,
+        "heightUm": 492,
+        "pivotX": 141.60769515458674,
+        "pivotY": 0
+      },
+      "firstNetResults": [
+        {
+          "cellUm": 4,
+          "resistanceOhm": 8.026622461413668,
+          "accessible": true,
+          "solversConverged": true
+        },
+        {
+          "cellUm": 2,
+          "resistanceOhm": 10.72189498158438,
+          "accessible": true,
+          "solversConverged": true
+        },
+        {
+          "cellUm": 1,
+          "resistanceOhm": 10.682903939181275,
+          "accessible": true,
+          "solversConverged": true
+        }
+      ]
+    }
+  ],
+  "browserEngineHarness": {
+    "scope": "Owned, in-memory bundled numerical engine/worker harness on about:blank; NOT production Preact UI or ES-module loading verification. Local HTTP navigation is blocked by browser policy. No policy or security configuration was changed.",
+    "browser": "144.0.7559.96",
+    "cases": [
+      {
+        "case": "split-bank bundled engine worker",
+        "pass": true,
+        "channels": [
+          {
+            "id": "N01",
+            "status": "accessible",
+            "R": 6.099999999999912
+          },
+          {
+            "id": "N02",
+            "status": "accessible",
+            "R": 6.0999999999997465
+          },
+          {
+            "id": "N03",
+            "status": "accessible",
+            "R": 6.099999999999912
+          },
+          {
+            "id": "N04",
+            "status": "accessible",
+            "R": 6.0999999999997465
+          }
+        ]
+      },
+      {
+        "case": "annular bundled engine worker",
+        "pass": true,
+        "channels": [
+          {
+            "id": "N01",
+            "status": "accessible",
+            "R": 8.999999999999584
+          },
+          {
+            "id": "N02",
+            "status": "accessible",
+            "R": 8.999999999999584
+          },
+          {
+            "id": "N03",
+            "status": "accessible",
+            "R": 8.999999999999584
+          },
+          {
+            "id": "N04",
+            "status": "accessible",
+            "R": 8.999999999999584
+          }
+        ]
+      },
+      {
+        "case": "bent bundled engine worker",
+        "pass": true,
+        "channels": [
+          {
+            "id": "N01",
+            "status": "accessible",
+            "R": 10.72189498158438
+          },
+          {
+            "id": "N02",
+            "status": "accessible",
+            "R": 10.72189498158438
+          }
+        ]
+      },
+      {
+        "case": "browser SVG download physical dimensions and origin",
+        "pass": true,
+        "bytes": 4253
+      },
+      {
+        "case": "v3 file-picker input and recomputation",
+        "pass": true
+      },
+      {
+        "case": "worker cancellation without stale result",
+        "pass": true
+      },
+      {
+        "case": "restart after cancellation",
+        "pass": true
+      }
+    ],
+    "uncaughtErrors": []
+  },
+  "productionPreactBrowserVerified": false,
+  "experimentalCalibration": false
+}

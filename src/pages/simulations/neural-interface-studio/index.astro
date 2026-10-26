@@ -1,8 +1,14 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import SimHero from '../../../components/SimHero.jsx';
 import NeuralInterfaceStudio from '../../../components/NeuralInterfaceStudio.jsx';
 ---
 <Layout pageTitle="Neural Interface Studio" description="Design flexible neural electrodes, fabricate them in a digital cleanroom, and inspect connectivity, exposed contacts and sheet resistance." wide compactHeader>
+  <SimHero kicker="Design & microfabrication / Digital cleanroom" title="Neural Interface Studio" intro="Design flexible neural electrodes, fabricate them in a digital cleanroom, and inspect connectivity, exposed contacts and sheet resistance." links={[{ href: '/simulations/neural-interface-studio/methods/', label: 'Process model & verification' }, { href: '/simulations/neural-interface-studio/handoff/', label: 'Designer to cleanroom' }]} family={[{ href: '/simulations/interface-designer/', label: 'Neural Interface Designer' }, { label: 'Neural Interface Studio', current: true }]} />
   <NeuralInterfaceStudio client:load />
-  <noscript>This interactive laboratory requires JavaScript. <a href="/simulations/neural-interface-studio/methods/">Read the model and verification notes.</a></noscript>
+  <noscript><p class="intro">This interactive laboratory requires JavaScript. The <a href="/simulations/neural-interface-studio/methods/">model and verification notes</a> work without it.</p></noscript>
 </Layout>
+<style>
+  .intro { margin: 14px 0 0; opacity: 0.82; line-height: 1.6; max-width: 85ch; font-size: 17px; }
+  .intro a { color: inherit; text-underline-offset: 3px; }
+</style>
