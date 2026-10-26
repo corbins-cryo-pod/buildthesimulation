@@ -22,8 +22,7 @@ export const simulationGroups = [
   {
     "title": "Neural Interface Laboratories",
     "entries": [
-      {"href":"/simulations/retinal-implant/","title":"Retinal Implant Laboratory","desc":"Design an epiretinal array, calculate finite-contact electrical fields and published axon-map percepts, inspect charge-balanced pulse trains, and compare reproducible experiments with independent numerical references."},
-      {"href":"/simulations/retinal-implant/prima/","title":"PRIMA Photovoltaic Laboratory","desc":"Project images onto a reconstructed subretinal array. Explore photovoltaic circuit dynamics, shared-return fields, electrode recovery and the published ProViSim appearance model."},
+      {"href":"/simulations/retinal-implant/","title":"Retina Laboratory","desc":"Place electrical, PRIMA photovoltaic and optogenetic devices in one retinal model. Inspect fields, neural response, published percept baselines and matched experiments."},
       {"href":"/simulations/cochlear-implant/","title":"Cochlear Implant Laboratory","desc":"Follow sound through frequency bands, interleaved pulses, finite electrode fields and a 65-compartment auditory nerve model. Compare geometry, coding strategies, recruitment and acoustic vocoders."},
       {"href":"/simulations/optogenetics/","title":"Optogenetics Laboratory","desc":"Explore light delivery, ChR2 kinetics and reconstructed human-neuron responses. Compare expression patterns, photocurrents, pulse trains and response maps."},
       {

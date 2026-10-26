@@ -323,6 +323,15 @@ summaries. The largest observed current and voltage changes are respectively
 identical. The focused tests retain both observed Haswell variants, including
 the combination observed in continuous integration.
 
+CI pins the OpenBLAS kernel to `Haswell` for both physics-reference runs,
+while exercising ordinary and disabled NumPy SIMD dispatch separately.
+An unpinned hosted runner changed the low-capacitance backward-Euler snapshot
+current by 10⁻²⁰ A, one last stored decimal digit, and correctly failed the
+exact non-adaptive comparison. Pinning the numerical execution environment
+keeps that exact gate and every retained fixture unchanged; no new tolerance
+is introduced for backward-Euler currents. Unpinned execution can still fail
+the byte-exact portions of this reproducibility check on other CPU kernels.
+
 `--check` therefore compares only the explicitly named adaptive quantities and
 the derived `convergence.time` error fields with these **absolute** allowances;
 the relative tolerance is zero:
@@ -358,7 +367,8 @@ metadata or checksums.
 
 ```bash
 python -m pip install -r scripts/prima-reference/requirements.txt
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python scripts/prima-reference/physics_reference.py --check
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 OPENBLAS_CORETYPE=Haswell python scripts/prima-reference/physics_reference.py --check
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 OPENBLAS_CORETYPE=Haswell NPY_DISABLE_CPU_FEATURES=AVX2,FMA3,AVX512F python scripts/prima-reference/physics_reference.py --check
 python -m unittest discover -s scripts/prima-reference -p 'test_physics_reference.py' -v
 node tests/prima-physics.test.mjs
 ```

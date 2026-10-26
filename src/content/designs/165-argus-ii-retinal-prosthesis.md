@@ -26,6 +26,8 @@ The first retinal prosthesis to reach routine clinical use in the US, and a case
 
 Company brief: [Second Sight](/companies/23-second-sight-medical-products-company-brief/), [Cortigent](/companies/24-cortigent-company-brief/).
 
+Interactive research model: [Retina Laboratory: electrical stimulation](/simulations/retinal-implant/?technology=electrical) · [models and verification](/simulations/retinal-implant/methods/).
+
 ## Identity
 
 | Field | Value and source scope |

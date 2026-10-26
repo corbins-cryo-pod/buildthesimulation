@@ -4,7 +4,7 @@ import {decodePerceptReference} from '../src/lib/retinal-implant/percept.mjs';
 const root=new URL('../',import.meta.url),read=p=>readFileSync(new URL(p,root));
 const html=read('dist/simulations/retinal-implant/index.html').toString();
 const methods=read('dist/simulations/retinal-implant/methods/index.html').toString();
-assert.match(html,/Retinal Implant Laboratory/i);assert.match(html,/astro-island/);
+assert.match(html,/Retina Laboratory/i);assert.match(html,/astro-island/);
 assert.match(methods,/pulse2percept 0\.11\.0/);assert.match(methods,/18\.09–26\.84%/);assert.match(methods,/patient validation/);assert.match(methods,/full-space/);
 const manifest=JSON.parse(read('dist/assets/retinal-implant/axon-reference.json'));
 const chunks=manifest.storage.chunks.map(c=>{const a=read('dist/assets/retinal-implant/'+c.file);assert.deepEqual(a,read('public/assets/retinal-implant/'+c.file));assert(a.length<=65536);return a;});
@@ -13,6 +13,8 @@ assert.match(read('dist/assets/retinal-implant/PULSE2PERCEPT-LICENSE.txt').toStr
 assert.doesNotThrow(()=>JSON.parse(read('dist/assets/retinal-implant/axon-display.json')));
 const files=readdirSync(new URL('dist/_astro/',root)).filter(f=>f.endsWith('.js'));
 assert(files.some(f=>/^worker[-.]/.test(f)&&read('dist/_astro/'+f).toString().includes('retinal-1.0.0')),'Numerical worker must be emitted');
-assert(files.some(f=>f.includes('RetinalImplantLaboratory')),'Hydrated UI must be emitted');
+assert(files.some(f=>f.includes('UnifiedRetinaLaboratory')),'Hydrated UI must be emitted');
 assert.match(read('dist/simulations/index.html').toString(),/\/simulations\/retinal-implant\//);
+assert.match(html,/data-retina-lab/);assert.match(methods,/new biological coupling is a research prototype/i);
+assert(!files.some(f=>f.includes('RetinalImplantLaboratory')),'Retired electrical UI must not be bundled');
 console.log('Retinal build verified: routes, hydration, worker, catalog, all compressed chunks, reconstructed checksum and upstream license.');

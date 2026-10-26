@@ -24,7 +24,7 @@ PRIMA is a 2 x 2 mm, 30 um thick silicon implant of 378 photovoltaic pixels plac
 
 Company brief: [Science Corporation](/companies/06-science-corporation-company-brief/).
 
-Interactive research model: [PRIMA Photovoltaic Laboratory](/simulations/retinal-implant/prima/) · [model assumptions and verification](/simulations/retinal-implant/prima/methods/). The laboratory uses an idealized array and reduced device equations; it is not a manufacturer-calibrated digital twin.
+Interactive research model: [Retina Laboratory: PRIMA](/simulations/retinal-implant/?technology=photovoltaic) · [model assumptions and verification](/simulations/retinal-implant/prima/methods/). The laboratory uses an idealized array and reduced device equations; it is not a manufacturer-calibrated digital twin.
 
 ## Identity
 

@@ -265,7 +265,7 @@ export function evaluateFields(model, geometry, activeCurrentsA, points) {
   });
 }
 
-export function solvePhysics(input = {}, illumination, onProgress) {
+export function solvePhysics(input = {}, illumination, onProgress, { onSample } = {}) {
   const c = normalizePhysicsConfig(input), geometry = createPrimaGeometry(c), n = geometry.count;
   if (!(Array.isArray(illumination) || ArrayBuffer.isView(illumination)) || illumination.length !== n || !Array.from(illumination).every(x => typeof x === 'number' && Number.isFinite(x) && x >= 0 && x <= 1)) throw new Error('Illumination must contain 378 finite values from 0 to 1.');
   onProgress?.({ stage: 'physics', progress: 0.05, message: 'Constructing the shared-return circuit' });
@@ -277,6 +277,9 @@ export function solvePhysics(input = {}, illumination, onProgress) {
   let snapshot, phaseStart, phaseEnd, maxResidualA = 0, maxSweeps = 0;
   const peakCurrentA = new Float64Array(n), waveform = { timeMs: [], irradianceMwMm2: [], currentUa: [], polarizationMv: [], diodeVoltageV: [], arrayCurrentUa: [], returnCurrentUa: [] };
   const capture = (t, lit) => {
+    // Optional read-only observer for the unified retinal cable coupling.
+    // Copying is the observer's responsibility; the numerical equations are unchanged.
+    onSample?.(t, state.currentA, lit);
     const total = state.currentA.reduce((a, b) => a + b, 0);
     waveform.timeMs.push(t); waveform.irradianceMwMm2.push(lit ? c.irradianceMwMm2 * illumination[selectedIndex] : 0);
     waveform.currentUa.push(state.currentA[selectedIndex] * 1e6);
