@@ -1,0 +1,184 @@
+{
+  "schema": "bts-opto-experiment/3",
+  "modelId": "allen-human-571654895/1",
+  "sourceCommit": "750e7840cc1a9eb32492c924e79609a85a893b8a",
+  "config": {
+    "schema": "bts-opto-experiment/3",
+    "version": "opto-lab/0.3.0",
+    "experiment": {
+      "mode": "neuron",
+      "protocol": "train",
+      "durationMs": 220,
+      "onsetMs": 20,
+      "pulseWidthMs": 5,
+      "frequencyHz": 20,
+      "trainDurationMs": 150,
+      "pairGapMs": 50,
+      "expression": "all",
+      "expressionSectionId": null,
+      "conductanceDensityScm2": 0.001,
+      "clampMv": -60,
+      "dtMs": 0.005,
+      "sampleMs": 0.5,
+      "segmentLengthUm": 40,
+      "light": {
+        "kind": "uniform",
+        "irradianceMwMm2": 1,
+        "powerMw": 0.05,
+        "positionUm": [
+          -150,
+          0,
+          0
+        ],
+        "targetUm": [
+          0,
+          0,
+          0
+        ],
+        "wavelengthNm": 470
+      }
+    },
+    "opsin": "chronos",
+    "kinetics": {},
+    "chloride": {
+      "dynamic": true,
+      "insideMm": 5,
+      "axonMm": 20,
+      "outsideMm": 130,
+      "recoveryMs": 10000,
+      "volumeFraction": 1
+    },
+    "drive": {
+      "currentNa": 0,
+      "startMs": 10,
+      "endMs": 210
+    },
+    "source": {
+      "kind": "uniform",
+      "irradianceMwMm2": 1,
+      "wavelengthNm": 500,
+      "powerMw": 0.05,
+      "positionUm": [
+        -150,
+        0,
+        0
+      ],
+      "targetUm": [
+        0,
+        0,
+        0
+      ],
+      "absorptionMmInv": 0.07,
+      "lossMmInv": 3
+    },
+    "device": {
+      "schema": "bts-opto-device/1",
+      "units": "um",
+      "name": "Three-site optical shank · assumed device",
+      "emitters": [
+        {
+          "id": "LED-1",
+          "enabled": true,
+          "positionUm": [
+            -70,
+            -100,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "widthUm": 22,
+          "heightUm": 22,
+          "rotationDeg": 0,
+          "powerMw": 0.02,
+          "wavelengthNm": 470,
+          "efficiency": 0.065
+        },
+        {
+          "id": "LED-2",
+          "enabled": true,
+          "positionUm": [
+            -70,
+            0,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "widthUm": 22,
+          "heightUm": 22,
+          "rotationDeg": 0,
+          "powerMw": 0.02,
+          "wavelengthNm": 470,
+          "efficiency": 0.065
+        },
+        {
+          "id": "LED-3",
+          "enabled": true,
+          "positionUm": [
+            -70,
+            100,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ],
+          "widthUm": 22,
+          "heightUm": 22,
+          "rotationDeg": 0,
+          "powerMw": 0.02,
+          "wavelengthNm": 470,
+          "efficiency": 0.065
+        }
+      ],
+      "contacts": [],
+      "metadata": {}
+    },
+    "population": {
+      "count": 1,
+      "spacingUm": 160,
+      "seed": 17,
+      "expressionVariation": 0,
+      "layout": "line",
+      "cells": [
+        {
+          "id": "cell-1",
+          "offsetUm": [
+            0,
+            0,
+            0
+          ],
+          "rotationDeg": [
+            0,
+            0,
+            0
+          ],
+          "expressionScale": 1
+        }
+      ]
+    },
+    "thermal": {
+      "enabled": false,
+      "gridN": 25,
+      "spacingUm": 80,
+      "centerUm": [
+        0,
+        0,
+        0
+      ],
+      "dtMs": 0.5,
+      "conductivityWmK": 0.6,
+      "densityKgM3": 1057,
+      "heatCapacityJkgK": 3600,
+      "perfusionPerS": 0.008,
+      "deviceHeatFraction": 1
+    },
+    "matchedControl": false
+  }
+}

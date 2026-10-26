@@ -1,24 +1,8 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
+import SimHero from "../../../components/SimHero.jsx";
 ---
 
-<Layout pageTitle="Simulations" subtitle="Peripheral nerve cross-section" description="Run the nerve cross-section sim and find the quick-start guide.">
-  <section class="card">
-    <p>
-      Run the nerve cross-section simulator → <a href="/sim">/sim</a>
-    </p>
-    <p style="margin-top:10px;">
-      How to use it (quick guide) → <a href="/simulations/nerve-cross-section/guide/">/simulations/nerve-cross-section/guide/</a>
-    </p>
-  </section>
+<Layout pageTitle="Peripheral Nerve Cross-Section" description="Run the nerve cross-section sim and find the quick-start guide." compactHeader={true}>
+  <SimHero kicker="Anatomy & pathways / Cross-section sandbox" title="Peripheral Nerve Cross-Section" intro="The site's first simulation: a peripheral nerve cross-section sandbox, preserved as released." links={[{ href: '/sim/', label: 'Run the simulator' }, { href: '/simulations/nerve-cross-section/guide/', label: 'Quick guide' }]} />
 </Layout>
-
-<style>
-  .card {
-    margin-top: 14px;
-    padding: 22px 22px;
-    border-radius:0;
-    border: 1px solid var(--border);
-    background: var(--panel);
-  }
-</style>

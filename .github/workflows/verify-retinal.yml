@@ -35,23 +35,31 @@ jobs:
           cache: pip
           cache-dependency-path: scripts/retinal-reference/requirements.txt
       - name: Install application and pinned references
+        id: dependencies
         run: |
           npm ci
           python -m pip install -r scripts/retinal-reference/requirements.txt
+      - name: Verify independent reference-check guards
+        run: python -W error -m unittest discover -s scripts/retinal-reference -p 'test_*.py' -v
       - name: Reproduce independent scientific references
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
-          python scripts/retinal-reference/generate.py
-          python -W error scripts/retinal-reference/field_reference.py
-          python -W error -m unittest discover -s scripts/retinal-reference -p 'test_field_reference.py' -v
+          retinal_reference_dir="$(mktemp -d)"
+          python scripts/retinal-reference/generate.py --repo "$retinal_reference_dir"
+          python -W error scripts/retinal-reference/field_reference.py --output "$retinal_reference_dir/tests/fixtures/retinal-field/independent-reference.json"
+          python scripts/retinal-reference/verify_reproduction.py --generated "$retinal_reference_dir"
           git diff --exit-code -- public/assets/retinal-implant tests/fixtures/retinal-percept tests/fixtures/retinal-field/independent-reference.json
       - name: Verify complete numerical experiments
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node --test tests/retinal-field.mjs tests/retinal-percept.mjs tests/retinal-experiment.mjs
       - name: Verify real workers, WebGL and responsive controls
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         env:
           RETINAL_REQUIRE_BROWSER: '1'
           RETINAL_QA_DIR: retinal-browser-artifacts
         run: node --test tests/retinal-browser.mjs
       - name: Verify production build and reference assets
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
           npx astro build
           node scripts/verify-retinal-build.mjs

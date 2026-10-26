@@ -1,11 +1,11 @@
 {
   "schemaVersion": "cortex-targeted-refinement/1",
   "status": "completed",
-  "generatedAt": "2026-10-18T16:03:40.258Z",
-  "sourceCommit": "2b62408a00a7f1e8d6a5cf444286d2b957ecf290",
+  "generatedAt": "2026-10-26T04:11:33.445Z",
+  "sourceCommit": "136c1ad2b12405329a89e5e00aa7d0442649aa50",
   "runtime": {
-    "node": "v24.19.0",
-    "cpu": "AMD EPYC 9V74 80-Core Processor"
+    "node": "v22.23.3",
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.60GHz"
   },
   "sourceHashes": {
     "scripts/cortex-targeted-refinement-study.mjs": "615e9ecb4f1cc5a5740af1cc8f61830ba7d7edc268b3c6814a70e203219e9338",
@@ -189,7 +189,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 18353.828767,
+      "elapsedMs": 12667.69764,
       "conditioning": "computed",
       "anyLocalCrossing": false,
       "firstLocalCrossing": null,
@@ -334,7 +334,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 30522.45959099999,
+      "elapsedMs": 22027.527175000003,
       "conditioning": "computed",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -489,7 +489,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 55525.25739699998,
+      "elapsedMs": 38829.83362399999,
       "conditioning": "computed",
       "anyLocalCrossing": false,
       "firstLocalCrossing": null,
@@ -634,7 +634,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 9168.468917999999,
+      "elapsedMs": 6775.359549000015,
       "conditioning": "reused",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -692,7 +692,7 @@
             1188.7625307723056
           ],
           "initialMv": -92.54611444739072,
-          "peakMv": 23.97276164693151,
+          "peakMv": 23.972761646931506,
           "minimumMv": -104.61824404874002,
           "finalMv": -86.35823596954923
         },
@@ -791,7 +791,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 9593.930920999992,
+      "elapsedMs": 6838.132373999979,
       "conditioning": "reused",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -810,7 +810,7 @@
       ],
       "peakSomaMv": 30.655907956478373,
       "maxKclResidualNa": 4.929390229335695e-12,
-      "maxConservationResidualNa": 4.656552921034063e-12,
+      "maxConservationResidualNa": 4.322847635407356e-12,
       "currentAccountingPass": true,
       "frames": 401,
       "probes": [
@@ -838,7 +838,7 @@
           "initialMv": -92.2788612677552,
           "peakMv": 30.28489226618469,
           "minimumMv": -115.32226506589322,
-          "finalMv": -88.23793505411241
+          "finalMv": -88.2379350541124
         },
         {
           "sectionId": "apic[8]",
@@ -849,7 +849,7 @@
             1188.7625307723056
           ],
           "initialMv": -92.54611444739072,
-          "peakMv": 23.489321395631436,
+          "peakMv": 23.48932139563146,
           "minimumMv": -107.74334226009971,
           "finalMv": -90.31408619079312
         },
@@ -948,7 +948,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 105833.92203899997,
+      "elapsedMs": 74187.67318400001,
       "conditioning": "computed",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -965,7 +965,7 @@
       "somaCrossingTimesMs": [],
       "peakSomaMv": -91.05322783847602,
       "maxKclResidualNa": 3.4852361881915206e-12,
-      "maxConservationResidualNa": 3.4325588229547517e-12,
+      "maxConservationResidualNa": 3.432558768744643e-12,
       "currentAccountingPass": true,
       "frames": 401,
       "probes": [
@@ -1103,7 +1103,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 18503.23498899996,
+      "elapsedMs": 12922.309557,
       "conditioning": "reused",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -1260,7 +1260,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 16656.53850699996,
+      "elapsedMs": 12937.382082999975,
       "conditioning": "reused",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -1279,7 +1279,7 @@
       ],
       "peakSomaMv": 30.653078896547495,
       "maxKclResidualNa": 3.835598505474991e-12,
-      "maxConservationResidualNa": 3.696903894123693e-12,
+      "maxConservationResidualNa": 3.700262318773184e-12,
       "currentAccountingPass": true,
       "frames": 401,
       "probes": [
@@ -1318,7 +1318,7 @@
             1188.7625307723056
           ],
           "initialMv": -92.54611863182387,
-          "peakMv": 23.583553273099533,
+          "peakMv": 23.58355327309951,
           "minimumMv": -107.7451181780516,
           "finalMv": -90.3324985186328
         },
@@ -1417,7 +1417,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 111410.16861299996,
+      "elapsedMs": 103974.55168599996,
       "conditioning": "computed",
       "anyLocalCrossing": false,
       "firstLocalCrossing": null,
@@ -1562,7 +1562,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 17931.948269999935,
+      "elapsedMs": 24398.626823000028,
       "conditioning": "reused",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -1719,7 +1719,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 17645.810589,
+      "elapsedMs": 17254.81290800008,
       "conditioning": "reused",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -1737,8 +1737,8 @@
         5.38673024245893
       ],
       "peakSomaMv": 30.70328797343486,
-      "maxKclResidualNa": 7.294609360997129e-12,
-      "maxConservationResidualNa": 7.780887045782947e-12,
+      "maxKclResidualNa": 7.294831405602054e-12,
+      "maxConservationResidualNa": 7.732203766153134e-12,
       "currentAccountingPass": true,
       "frames": 401,
       "probes": [
@@ -1765,7 +1765,7 @@
           ],
           "initialMv": -92.2788802740877,
           "peakMv": 30.491508299709334,
-          "minimumMv": -115.35434013008187,
+          "minimumMv": -115.35434013008177,
           "finalMv": -88.25100643061438
         },
         {
@@ -1777,7 +1777,7 @@
             1188.7625307723056
           ],
           "initialMv": -92.54612627779535,
-          "peakMv": 23.32275040677311,
+          "peakMv": 23.32275040677309,
           "minimumMv": -107.72882526837576,
           "finalMv": -90.32175111193675
         },
@@ -1876,7 +1876,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 174348.72796199995,
+      "elapsedMs": 150102.53994499997,
       "conditioning": "computed",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -2031,7 +2031,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 28727.69896999991,
+      "elapsedMs": 25683.805463999975,
       "conditioning": "reused",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -2076,7 +2076,7 @@
             1513.120437057931
           ],
           "initialMv": -92.27886590347748,
-          "peakMv": 20.12038716808438,
+          "peakMv": 20.120387168084378,
           "minimumMv": -92.35810775939795,
           "finalMv": -79.76716909245478
         },
@@ -2188,7 +2188,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 30275.218307000003,
+      "elapsedMs": 25615.078986999928,
       "conditioning": "reused",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -2206,8 +2206,8 @@
         5.386882220948066
       ],
       "peakSomaMv": 30.70083997467483,
-      "maxKclResidualNa": 7.1460615203022826e-12,
-      "maxConservationResidualNa": 7.178665322772615e-12,
+      "maxKclResidualNa": 7.048265833822787e-12,
+      "maxConservationResidualNa": 7.17865448075089e-12,
       "currentAccountingPass": true,
       "frames": 401,
       "probes": [
@@ -2221,7 +2221,7 @@
           ],
           "initialMv": -92.2644625470455,
           "peakMv": 30.582146308133005,
-          "minimumMv": -131.46681075051984,
+          "minimumMv": -131.46681075052,
           "finalMv": -88.24198903448251
         },
         {
@@ -2234,7 +2234,7 @@
           ],
           "initialMv": -92.27886590347748,
           "peakMv": 30.47892128848288,
-          "minimumMv": -115.34471339697646,
+          "minimumMv": -115.34471339697654,
           "finalMv": -88.27687422762355
         },
         {
@@ -2246,7 +2246,7 @@
             1188.7625307723056
           ],
           "initialMv": -92.54613046248689,
-          "peakMv": 23.424807845101256,
+          "peakMv": 23.42480784510123,
           "minimumMv": -107.73063811611583,
           "finalMv": -90.33860154539597
         },
@@ -2260,7 +2260,7 @@
           ],
           "initialMv": -92.26394099344334,
           "peakMv": 30.995852471402937,
-          "minimumMv": -135.29325444739163,
+          "minimumMv": -135.2932544473918,
           "finalMv": -88.23701510728499
         }
       ]
@@ -2345,7 +2345,7 @@
           "settleMs": 100
         }
       },
-      "elapsedMs": 328825.71045799996,
+      "elapsedMs": 290028.34881500003,
       "conditioning": "computed",
       "anyLocalCrossing": true,
       "firstLocalCrossing": {
@@ -2587,7 +2587,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2453.195943999999,
+          "elapsedMs": 1663.611195999998,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -2731,7 +2731,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 757.796825999998,
+          "elapsedMs": 593.3014949999997,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -2885,7 +2885,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 838.1875349999973,
+          "elapsedMs": 615.8799690000014,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -3039,7 +3039,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2436.962016999998,
+          "elapsedMs": 1668.7324480000025,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -3183,7 +3183,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2267.6392940000005,
+          "elapsedMs": 1716.6977469999983,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -3327,7 +3327,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2195.510116999998,
+          "elapsedMs": 1646.5320429999992,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -3471,7 +3471,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2494.9476150000046,
+          "elapsedMs": 1675.8976859999966,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -3615,7 +3615,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2456.3943779999972,
+          "elapsedMs": 1733.898122999999,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -3759,7 +3759,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 914.4692240000004,
+          "elapsedMs": 654.3337289999981,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -3913,7 +3913,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 944.4182769999898,
+          "elapsedMs": 616.2983309999981,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -4067,7 +4067,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2499.965068999998,
+          "elapsedMs": 1626.5835480000023,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -4211,7 +4211,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2398.530605000007,
+          "elapsedMs": 1658.6619090000022,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -4355,7 +4355,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 1000.6245449999988,
+          "elapsedMs": 649.2142410000015,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -4597,14 +4597,14 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 3984.4381189999986,
+          "elapsedMs": 2819.5940450000053,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
           "somaCrossingTimesMs": [],
           "peakSomaMv": -92.26433975402963,
           "maxKclResidualNa": 3.546085083558359e-12,
-          "maxConservationResidualNa": 3.1695802259939024e-12,
+          "maxConservationResidualNa": 3.1695802124413752e-12,
           "currentAccountingPass": true,
           "frames": 1,
           "probes": [
@@ -4741,7 +4741,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 1053.5893979999964,
+          "elapsedMs": 958.7141169999959,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -4758,7 +4758,7 @@
           "somaCrossingTimesMs": [],
           "peakSomaMv": -92.26433975402963,
           "maxKclResidualNa": 3.047758660029709e-12,
-          "maxConservationResidualNa": 3.1695802259939024e-12,
+          "maxConservationResidualNa": 3.1695802124413752e-12,
           "currentAccountingPass": true,
           "frames": 1,
           "probes": [
@@ -4895,7 +4895,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 1116.692253000001,
+          "elapsedMs": 990.0070299999934,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -4912,7 +4912,7 @@
           "somaCrossingTimesMs": [],
           "peakSomaMv": -92.26433975402963,
           "maxKclResidualNa": 3.047758660029709e-12,
-          "maxConservationResidualNa": 3.1695802259939024e-12,
+          "maxConservationResidualNa": 3.1695802124413752e-12,
           "currentAccountingPass": true,
           "frames": 1,
           "probes": [
@@ -5049,7 +5049,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 3976.8087610000075,
+          "elapsedMs": 2849.584508,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -5193,14 +5193,14 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 4219.7997890000115,
+          "elapsedMs": 2827.331247000009,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
           "somaCrossingTimesMs": [],
           "peakSomaMv": -91.59287614714785,
           "maxKclResidualNa": 3.073667839345595e-12,
-          "maxConservationResidualNa": 3.1695802259939024e-12,
+          "maxConservationResidualNa": 3.1695802124413752e-12,
           "currentAccountingPass": true,
           "frames": 1,
           "probes": [
@@ -5337,14 +5337,14 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 3923.9123210000107,
+          "elapsedMs": 2876.38017199999,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
           "somaCrossingTimesMs": [],
           "peakSomaMv": -91.3520234173825,
           "maxKclResidualNa": 3.1141064119749595e-12,
-          "maxConservationResidualNa": 3.1695802259939024e-12,
+          "maxConservationResidualNa": 3.1695802124413752e-12,
           "currentAccountingPass": true,
           "frames": 1,
           "probes": [
@@ -5481,7 +5481,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 1338.6988270000002,
+          "elapsedMs": 976.0516300000018,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -5498,7 +5498,7 @@
           "somaCrossingTimesMs": [],
           "peakSomaMv": -92.26433975402963,
           "maxKclResidualNa": 3.047758660029709e-12,
-          "maxConservationResidualNa": 3.1695802259939024e-12,
+          "maxConservationResidualNa": 3.1695802124413752e-12,
           "currentAccountingPass": true,
           "frames": 1,
           "probes": [
@@ -5635,7 +5635,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 3947.346982999996,
+          "elapsedMs": 2761.3923420000065,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -5779,7 +5779,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 3899.9589500000147,
+          "elapsedMs": 2779.165949999995,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -5923,7 +5923,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 3968.2984580000048,
+          "elapsedMs": 2812.5457619999943,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -6067,7 +6067,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 1397.7947779999813,
+          "elapsedMs": 975.2782199999929,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -6084,7 +6084,7 @@
           "somaCrossingTimesMs": [],
           "peakSomaMv": -92.26433975402963,
           "maxKclResidualNa": 3.047758660029709e-12,
-          "maxConservationResidualNa": 3.1695802259939024e-12,
+          "maxConservationResidualNa": 3.1695802124413752e-12,
           "currentAccountingPass": true,
           "frames": 1,
           "probes": [
@@ -6221,7 +6221,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 3889.4183669999766,
+          "elapsedMs": 2842.5696480000042,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -6365,7 +6365,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 4203.254405000014,
+          "elapsedMs": 2794.2129410000052,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -6597,7 +6597,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7071.569423000008,
+          "elapsedMs": 5198.244535999984,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -6741,7 +6741,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2110.1807810000028,
+          "elapsedMs": 1708.4172060000128,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -6895,7 +6895,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2327.2787680000183,
+          "elapsedMs": 1765.1431140000059,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -7049,7 +7049,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7309.577642999997,
+          "elapsedMs": 5271.773794999986,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -7193,7 +7193,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7289.23020000002,
+          "elapsedMs": 5222.73232499999,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -7337,7 +7337,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7006.642994999973,
+          "elapsedMs": 5187.813934000005,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -7481,7 +7481,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7320.488305000006,
+          "elapsedMs": 5208.6090149999945,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -7625,7 +7625,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2342.7256549999584,
+          "elapsedMs": 1829.3378040000098,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -7779,7 +7779,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7130.113876999996,
+          "elapsedMs": 5027.862460000004,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -7923,7 +7923,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2490.7859590000007,
+          "elapsedMs": 1771.368101,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -8077,7 +8077,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7715.746840000036,
+          "elapsedMs": 5010.632187999989,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -8221,7 +8221,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 2647.6110459999763,
+          "elapsedMs": 1832.1960739999777,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -8375,7 +8375,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7577.931037999981,
+          "elapsedMs": 5151.290649999981,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -8607,7 +8607,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 13341.175518999982,
+          "elapsedMs": 9564.948298999981,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -8751,7 +8751,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 3967.8435840000166,
+          "elapsedMs": 3207.6473339999793,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -8905,7 +8905,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 4585.487084000022,
+          "elapsedMs": 3321.7118209999753,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -9059,7 +9059,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 13528.509757999971,
+          "elapsedMs": 9690.929884000041,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -9203,7 +9203,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 13017.147143999988,
+          "elapsedMs": 9649.426204999967,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -9347,7 +9347,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 12420.984146000003,
+          "elapsedMs": 9910.345053000026,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -9491,7 +9491,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 13043.578934999998,
+          "elapsedMs": 9845.218714000017,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -9635,7 +9635,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 4509.709714000055,
+          "elapsedMs": 3422.848468000011,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -9789,7 +9789,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 4462.696947999997,
+          "elapsedMs": 3464.978697000013,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -9943,7 +9943,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 13388.746357999975,
+          "elapsedMs": 9936.829234999954,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -10087,7 +10087,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 4284.519907000009,
+          "elapsedMs": 3549.6738590000314,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -10241,7 +10241,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 12812.704215000034,
+          "elapsedMs": 9954.73570400005,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -10385,7 +10385,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 5043.565095000085,
+          "elapsedMs": 3476.871158999973,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -10627,7 +10627,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 13747.485654999968,
+          "elapsedMs": 13504.280107000028,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -10771,7 +10771,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 5018.1933150000405,
+          "elapsedMs": 4277.968456999981,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -10925,7 +10925,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 5150.592148000025,
+          "elapsedMs": 4421.619899000041,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -11079,7 +11079,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 13978.724558000104,
+          "elapsedMs": 11890.084853000008,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -11223,7 +11223,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 11894.777202999918,
+          "elapsedMs": 10906.992805999937,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -11367,7 +11367,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 11512.004736999981,
+          "elapsedMs": 12358.445334000047,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -11511,7 +11511,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 11118.731137000024,
+          "elapsedMs": 14143.63319199998,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -11655,7 +11655,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 3853.4305869999807,
+          "elapsedMs": 4216.664076999994,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -11809,7 +11809,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 11027.740791000077,
+          "elapsedMs": 11403.189945999999,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -11953,7 +11953,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 3771.5762360000517,
+          "elapsedMs": 3767.493241999997,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -12107,7 +12107,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 4443.451240000082,
+          "elapsedMs": 3741.3905729999533,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -12261,7 +12261,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 15075.094473000034,
+          "elapsedMs": 10617.956601000042,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -12405,7 +12405,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 15256.89129900001,
+          "elapsedMs": 10356.621143999975,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -12637,7 +12637,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 21429.40677100001,
+          "elapsedMs": 18971.257128000027,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -12781,7 +12781,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 6895.081597999902,
+          "elapsedMs": 6386.248564000009,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -12935,7 +12935,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 6749.815931000048,
+          "elapsedMs": 6569.997485999949,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -13089,7 +13089,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 20853.743010999868,
+          "elapsedMs": 18817.967333999928,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -13233,7 +13233,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 21836.99499899987,
+          "elapsedMs": 19503.337059999933,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -13377,7 +13377,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 22520.418748999946,
+          "elapsedMs": 19017.988705999916,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -13521,7 +13521,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 23319.188846000005,
+          "elapsedMs": 19245.678287999937,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -13665,7 +13665,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7889.333096999908,
+          "elapsedMs": 6840.882261999999,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -13819,7 +13819,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7680.512184999883,
+          "elapsedMs": 6495.949020000058,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -13973,7 +13973,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 21125.068813999882,
+          "elapsedMs": 18640.28231300006,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -14117,7 +14117,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7437.766515000025,
+          "elapsedMs": 6476.96983200009,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -14271,7 +14271,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7453.889528000029,
+          "elapsedMs": 6576.045093000052,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -14425,7 +14425,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 7949.856193999993,
+          "elapsedMs": 6525.9552370000165,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -14667,7 +14667,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 44428.87807900016,
+          "elapsedMs": 38689.12635499984,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -14811,7 +14811,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 13919.049165999983,
+          "elapsedMs": 13104.729088000022,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -14965,7 +14965,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 12967.157277999911,
+          "elapsedMs": 13079.865474000107,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -15119,7 +15119,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 41753.67675599991,
+          "elapsedMs": 37642.98763199989,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -15263,7 +15263,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 41725.103974000085,
+          "elapsedMs": 38581.193755999906,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -15407,7 +15407,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 39776.713057999965,
+          "elapsedMs": 39516.661259999964,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -15551,7 +15551,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 40886.26686199987,
+          "elapsedMs": 38588.03745200019,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -15695,7 +15695,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 14974.799679999938,
+          "elapsedMs": 13449.701738999924,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -15849,7 +15849,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 14472.180353000062,
+          "elapsedMs": 13644.342989000026,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -16003,14 +16003,14 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 41773.73465800006,
+          "elapsedMs": 38833.203606999945,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
           "somaCrossingTimesMs": [],
           "peakSomaMv": -91.08588054401251,
           "maxKclResidualNa": 7.855466277462142e-12,
-          "maxConservationResidualNa": 8.102698952061876e-12,
+          "maxConservationResidualNa": 8.102698948673744e-12,
           "currentAccountingPass": true,
           "frames": 1,
           "probes": [
@@ -16147,7 +16147,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 14368.232425000053,
+          "elapsedMs": 13715.168963999953,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -16301,7 +16301,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 41592.39540000004,
+          "elapsedMs": 38978.86503600003,
           "conditioning": "reused",
           "anyLocalCrossing": false,
           "firstLocalCrossing": null,
@@ -16445,7 +16445,7 @@
               "settleMs": 100
             }
           },
-          "elapsedMs": 14331.30710399989,
+          "elapsedMs": 13449.742831000127,
           "conditioning": "reused",
           "anyLocalCrossing": true,
           "firstLocalCrossing": {
@@ -16816,45 +16816,45 @@
         {
           "sectionId": "soma[0]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.20202137075147694,
-          "maximumMv": 2.863813333496388,
+          "rmsMv": 0.2020213707514775,
+          "maximumMv": 2.8638133334963913,
           "pass": true
         },
         {
           "sectionId": "axon_stub[0]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.10204712553670829,
+          "rmsMv": 0.10204712553670879,
           "maximumMv": 1.2623415451028492,
           "pass": true
         },
         {
           "sectionId": "apic[8]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.2102498138009708,
+          "rmsMv": 0.21024981380096922,
           "maximumMv": 2.3870158356221083,
           "pass": true
         },
         {
           "sectionId": "dend[11]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.17178070384593014,
-          "maximumMv": 2.5621324180095377,
+          "rmsMv": 0.17178070384593078,
+          "maximumMv": 2.56213241800954,
           "pass": true
         }
       ],
       "neural": [
         {
-          "rmsUv": 0.006884009521237142,
-          "maximumUv": 0.04966511358317982,
-          "denominatorUv": 4.891580360684351,
-          "normalizedRms": 0.0014073180881513806,
+          "rmsUv": 0.006884009521236577,
+          "maximumUv": 0.049665113583190146,
+          "denominatorUv": 4.891580360684319,
+          "normalizedRms": 0.0014073180881512743,
           "pass": true
         },
         {
-          "rmsUv": 0.0006451851339683442,
-          "maximumUv": 0.006106183840879353,
-          "denominatorUv": 1.293486982022269,
-          "normalizedRms": 0.0004987952278882978,
+          "rmsUv": 0.0006451851339682213,
+          "maximumUv": 0.006106183840877577,
+          "denominatorUv": 1.293486982022271,
+          "normalizedRms": 0.000498795227888202,
           "pass": true
         }
       ],
@@ -16889,45 +16889,45 @@
         {
           "sectionId": "soma[0]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.1125985917665521,
-          "maximumMv": 1.4689520289962976,
+          "rmsMv": 0.11259859176655104,
+          "maximumMv": 1.468952028996294,
           "pass": true
         },
         {
           "sectionId": "axon_stub[0]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.10735218065402255,
+          "rmsMv": 0.10735218065402105,
           "maximumMv": 1.597771823705017,
           "pass": true
         },
         {
           "sectionId": "apic[8]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.3205384337002271,
+          "rmsMv": 0.32053843370022833,
           "maximumMv": 3.5851501358901814,
           "pass": true
         },
         {
           "sectionId": "dend[11]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.10595094827871737,
-          "maximumMv": 1.4563209224751499,
+          "rmsMv": 0.10595094827871639,
+          "maximumMv": 1.4563209224751474,
           "pass": true
         }
       ],
       "neural": [
         {
-          "rmsUv": 0.005591022352800729,
-          "maximumUv": 0.05790711917025293,
-          "denominatorUv": 4.889994264096643,
-          "normalizedRms": 0.0011433596955013178,
+          "rmsUv": 0.005591022352798854,
+          "maximumUv": 0.05790711917015612,
+          "denominatorUv": 4.889994264096601,
+          "normalizedRms": 0.0011433596955009442,
           "pass": true
         },
         {
-          "rmsUv": 0.0005577152375734188,
+          "rmsUv": 0.0005577152375761649,
           "maximumUv": 0.004509538330257357,
-          "denominatorUv": 1.3009217875163326,
-          "normalizedRms": 0.0004287077385629664,
+          "denominatorUv": 1.3009217875163306,
+          "normalizedRms": 0.0004287077385650779,
           "pass": true
         }
       ],
@@ -16962,45 +16962,45 @@
         {
           "sectionId": "soma[0]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.09168411936914247,
-          "maximumMv": 0.5141979664342635,
+          "rmsMv": 0.09168411936914583,
+          "maximumMv": 0.5141979664342422,
           "pass": true
         },
         {
           "sectionId": "axon_stub[0]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.10600922497245832,
+          "rmsMv": 0.10600922497245491,
           "maximumMv": 1.1300856916048092,
           "pass": true
         },
         {
           "sectionId": "apic[8]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.0580458992080833,
-          "maximumMv": 0.6192198737628303,
+          "rmsMv": 0.05804589920809179,
+          "maximumMv": 0.619219873762944,
           "pass": true
         },
         {
           "sectionId": "dend[11]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.08905870771457197,
+          "rmsMv": 0.08905870771457665,
           "maximumMv": 0.4912325466854597,
           "pass": true
         }
       ],
       "neural": [
         {
-          "rmsUv": 0.00017851642399094672,
-          "maximumUv": 0.0010278390157869854,
-          "denominatorUv": 0.10602805205506846,
-          "normalizedRms": 0.0016836716371836154,
+          "rmsUv": 0.00017851642398603545,
+          "maximumUv": 0.0010278390157870965,
+          "denominatorUv": 0.10602805205507519,
+          "normalizedRms": 0.0016836716371371881,
           "pass": true
         },
         {
-          "rmsUv": 0.00008488337039269451,
-          "maximumUv": 0.0004690030637582998,
-          "denominatorUv": 0.01635587349235683,
-          "normalizedRms": 0.00518977909876601,
+          "rmsUv": 0.0000848833703945598,
+          "maximumUv": 0.00046900306378250267,
+          "denominatorUv": 0.01635587349235605,
+          "normalizedRms": 0.005189779098880302,
           "pass": true
         }
       ],
@@ -17035,45 +17035,45 @@
         {
           "sectionId": "soma[0]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.060368103425864676,
+          "rmsMv": 0.06036810342585855,
           "maximumMv": 0.7298477755120008,
           "pass": true
         },
         {
           "sectionId": "axon_stub[0]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.12000345273046743,
+          "rmsMv": 0.12000345273046452,
           "maximumMv": 1.9793162897051604,
           "pass": true
         },
         {
           "sectionId": "apic[8]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.1581651462017542,
-          "maximumMv": 1.6880682498010202,
+          "rmsMv": 0.1581651462017566,
+          "maximumMv": 1.6880682498010628,
           "pass": true
         },
         {
           "sectionId": "dend[11]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.055914480462087336,
+          "rmsMv": 0.05591448046208058,
           "maximumMv": 0.5853787550171106,
           "pass": true
         }
       ],
       "neural": [
         {
-          "rmsUv": 0.00006713536583955037,
+          "rmsUv": 0.00006713536583884152,
           "maximumUv": 0.0006114383905031079,
-          "denominatorUv": 0.10587963066615318,
-          "normalizedRms": 0.0006340725351718828,
+          "denominatorUv": 0.10587963066618537,
+          "normalizedRms": 0.0006340725351649951,
           "pass": true
         },
         {
-          "rmsUv": 0.00003550063982151291,
-          "maximumUv": 0.0003262789274210143,
+          "rmsUv": 0.00003550063982327437,
+          "maximumUv": 0.0003262789274232347,
           "denominatorUv": 0.01642822991866008,
-          "normalizedRms": 0.002160953431823434,
+          "normalizedRms": 0.002160953431930655,
           "pass": true
         }
       ],
@@ -17179,45 +17179,45 @@
         {
           "sectionId": "soma[0]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.11218593303857892,
+          "rmsMv": 0.11218593303857838,
           "maximumMv": 1.597398449091736,
           "pass": true
         },
         {
           "sectionId": "axon_stub[0]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.11411114462976138,
-          "maximumMv": 1.7770591000750393,
+          "rmsMv": 0.11411114462976092,
+          "maximumMv": 1.7770591000750358,
           "pass": true
         },
         {
           "sectionId": "apic[8]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.31828446842518127,
+          "rmsMv": 0.31828446842517993,
           "maximumMv": 3.3896622186931538,
           "pass": true
         },
         {
           "sectionId": "dend[11]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.10537232472705763,
+          "rmsMv": 0.10537232472705692,
           "maximumMv": 1.5279778424689163,
           "pass": true
         }
       ],
       "neural": [
         {
-          "rmsUv": 0.00557202096616483,
-          "maximumUv": 0.05689778297236048,
-          "denominatorUv": 4.897773735379116,
-          "normalizedRms": 0.0011376640219035198,
+          "rmsUv": 0.0055720209661702215,
+          "maximumUv": 0.056897782972430644,
+          "denominatorUv": 4.897773735379146,
+          "normalizedRms": 0.0011376640219046136,
           "pass": true
         },
         {
-          "rmsUv": 0.0005640953458310545,
+          "rmsUv": 0.0005640953458291854,
           "maximumUv": 0.004481101948662358,
-          "denominatorUv": 1.2972540392531842,
-          "normalizedRms": 0.00043483799530568307,
+          "denominatorUv": 1.2972540392531773,
+          "normalizedRms": 0.00043483799530424455,
           "pass": true
         }
       ],
@@ -17252,45 +17252,45 @@
         {
           "sectionId": "soma[0]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.05900903262243489,
+          "rmsMv": 0.05900903262243592,
           "maximumMv": 0.7253486862147707,
           "pass": true
         },
         {
           "sectionId": "axon_stub[0]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.11904434524167264,
+          "rmsMv": 0.11904434524167297,
           "maximumMv": 1.9174346080291849,
           "pass": true
         },
         {
           "sectionId": "apic[8]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.15791933319673945,
-          "maximumMv": 1.6645935725325742,
+          "rmsMv": 0.15791933319674017,
+          "maximumMv": 1.6645935725326169,
           "pass": true
         },
         {
           "sectionId": "dend[11]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.054580820989708616,
+          "rmsMv": 0.05458082098971006,
           "maximumMv": 0.5914884770220805,
           "pass": true
         }
       ],
       "neural": [
         {
-          "rmsUv": 0.0000689520671198972,
+          "rmsUv": 0.00006895206712132022,
           "maximumUv": 0.000597088041602585,
-          "denominatorUv": 0.10598534676409158,
-          "normalizedRms": 0.0006505811343276988,
+          "denominatorUv": 0.1059853467641021,
+          "normalizedRms": 0.0006505811343410609,
           "pass": true
         },
         {
-          "rmsUv": 0.0000397170552887876,
-          "maximumUv": 0.0003334016443239385,
+          "rmsUv": 0.000039717055288779176,
+          "maximumUv": 0.00033340164432246744,
           "denominatorUv": 0.01633467400545087,
-          "normalizedRms": 0.002431456867491451,
+          "normalizedRms": 0.0024314568674909352,
           "pass": true
         }
       ],
@@ -17396,45 +17396,45 @@
         {
           "sectionId": "soma[0]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.2035708419077145,
+          "rmsMv": 0.20357084190771532,
           "maximumMv": 2.7353669134009495,
           "pass": true
         },
         {
           "sectionId": "axon_stub[0]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.09759732953380951,
-          "maximumMv": 1.0830542687328268,
+          "rmsMv": 0.0975973295338127,
+          "maximumMv": 1.0830542687328304,
           "pass": true
         },
         {
           "sectionId": "apic[8]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.21360935397131756,
+          "rmsMv": 0.21360935397132025,
           "maximumMv": 2.5971302638593343,
           "pass": true
         },
         {
           "sectionId": "dend[11]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.17303825862993613,
+          "rmsMv": 0.17303825862993708,
           "maximumMv": 2.4904754980157713,
           "pass": true
         }
       ],
       "neural": [
         {
-          "rmsUv": 0.007123540525596292,
-          "maximumUv": 0.058574766542951906,
-          "denominatorUv": 4.897773735379116,
-          "normalizedRms": 0.001454444592680819,
+          "rmsUv": 0.007123540525597818,
+          "maximumUv": 0.0585747665429287,
+          "denominatorUv": 4.897773735379146,
+          "normalizedRms": 0.0014544445926811217,
           "pass": true
         },
         {
-          "rmsUv": 0.0006546341826201607,
-          "maximumUv": 0.006413716123856883,
-          "denominatorUv": 1.2972540392531842,
-          "normalizedRms": 0.0005046306758829033,
+          "rmsUv": 0.0006546341826177575,
+          "maximumUv": 0.006413716123862878,
+          "denominatorUv": 1.2972540392531773,
+          "normalizedRms": 0.0005046306758810534,
           "pass": true
         }
       ],
@@ -17469,45 +17469,45 @@
         {
           "sectionId": "soma[0]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.09021948365185445,
+          "rmsMv": 0.09021948365186944,
           "maximumMv": 0.5146023013995222,
           "pass": true
         },
         {
           "sectionId": "axon_stub[0]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.11571192044449864,
+          "rmsMv": 0.11571192044450668,
           "maximumMv": 1.1919673732807847,
           "pass": true
         },
         {
           "sectionId": "apic[8]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.05840863275600259,
-          "maximumMv": 0.6426945510312763,
+          "rmsMv": 0.058408632756014135,
+          "maximumMv": 0.64269455103139,
           "pass": true
         },
         {
           "sectionId": "dend[11]",
           "positionDifferenceUm": 0,
-          "rmsMv": 0.08746075677578828,
-          "maximumMv": 0.49155862050310617,
+          "rmsMv": 0.0874607567758042,
+          "maximumMv": 0.4915586205031488,
           "pass": true
         }
       ],
       "neural": [
         {
-          "rmsUv": 0.00018856740843274905,
-          "maximumUv": 0.0010333143568643788,
-          "denominatorUv": 0.10598534676409158,
-          "normalizedRms": 0.0017791837663415253,
+          "rmsUv": 0.00018856740842882757,
+          "maximumUv": 0.0010333143568647118,
+          "denominatorUv": 0.1059853467641021,
+          "normalizedRms": 0.0017791837663043485,
           "pass": true
         },
         {
-          "rmsUv": 0.00009217499694384325,
-          "maximumUv": 0.0005482098973916411,
+          "rmsUv": 0.00009217499694682071,
+          "maximumUv": 0.0005482098973557305,
           "denominatorUv": 0.01633467400545087,
-          "normalizedRms": 0.005642903979172435,
+          "normalizedRms": 0.005642903979354714,
           "pass": true
         }
       ],
@@ -17665,9 +17665,9 @@
     }
   ],
   "nativeMeshProvenance": {
-    "fileSha256": "f221454047c919d7f572313bb2527a39e6eb3d5ff57c8e8f5dff8e65d2b51180",
+    "fileSha256": "61388589a8611a6b52be7128b5627fc57b83d9dea8c1be3c6bfa670ae58c77c9",
     "generator": {
-      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "python": "3.12.15 (main, Oct 14 2026, 01:05:27) [Clang 23.1.3 ]",
       "neuronBuild": "NEURON -- VERSION 9.0.1 HEAD (b12a541+) 2025-11-14",
       "versions": {
         "neuron": "9.0.1",
@@ -17692,7 +17692,7 @@
         "six": "1.17.0"
       },
       "modelGeneratorSha256": "7c71d7ddd39b600571e8dcdc37394187b30da6e7a740ced1319b3f25764998db",
-      "mechanismLibrarySha256": "df6a69aa656b78377ec7aae71198dc27e7534e908f8404e3ac8fba928753471e",
+      "mechanismLibrarySha256": "b0204e0bea0c4efc58002379cefaa2005bd8ef10572447a2c149bbe668062892",
       "sourceHashes": {
         "571654895.swc": "7ebb04f256f67f1ff9952fbb38889bfea481a59dd6cb2f0d70a41d3dd138d90a",
         "optim_param_571654895.json": "c4333a5cc294fa0288698ccbff9d3059c9b1cc9942a79c8594e6add0bd325304",
@@ -17837,7 +17837,7 @@
     "pass": true
   },
   "sourceUnchangedDuringStudy": true,
-  "totalWallMs": 1946661.931934,
+  "totalWallMs": 1659212.316965,
   "summary": {
     "geometryPass": true,
     "harnessProductionPass": true,

@@ -1,0 +1,167 @@
+{
+  "description": "Derivation checks for the OpenEar ZETA display asset, not clinical validation. Distances are exact point-to-triangle minima for an area-weighted random surface sample, not a full Hausdorff bound.",
+  "sampleSeed": 24520,
+  "surfaceSamplesPerDirection": 1500,
+  "meshes": [
+    {
+      "id": "scala-tympani",
+      "originalTriangles": 15996,
+      "displayTriangles": 8500,
+      "originalWatertight": true,
+      "displayWatertight": true,
+      "originalBoundsMm": [
+        [
+          19.460241317749023,
+          19.21343994140625,
+          34.448883056640625
+        ],
+        [
+          24.511680603027344,
+          26.023880004882812,
+          42.931732177734375
+        ]
+      ],
+      "displayBoundsMm": [
+        [
+          19.46024,
+          19.21378,
+          34.44911
+        ],
+        [
+          24.51219,
+          26.02388,
+          42.93208
+        ]
+      ],
+      "maximumBoundDifferenceMm": 0.0005093969726566172,
+      "originalVolumeMm3": 34.0277859337134,
+      "displayVolumeMm3": 34.01514396171566,
+      "relativeVolumeChangePercent": -0.03715190880291264,
+      "originalToDisplayDistance": {
+        "meanMm": 0.0007510075185456543,
+        "rmsMm": 0.0010187387089905797,
+        "p95Mm": 0.0020771229065970403,
+        "maximumSampledMm": 0.00322175773183743
+      },
+      "displayToOriginalDistance": {
+        "meanMm": 0.0007296350143625873,
+        "rmsMm": 0.0010052866307484123,
+        "p95Mm": 0.002023416811157525,
+        "maximumSampledMm": 0.005319136673397994
+      }
+    },
+    {
+      "id": "scala-vestibuli-vestibular-labyrinth",
+      "originalTriangles": 20008,
+      "displayTriangles": 9500,
+      "originalWatertight": true,
+      "displayWatertight": true,
+      "originalBoundsMm": [
+        [
+          12.726767539978027,
+          11.672273635864258,
+          27.8431339263916
+        ],
+        [
+          24.895729064941406,
+          26.290767669677734,
+          42.962860107421875
+        ]
+      ],
+      "displayBoundsMm": [
+        [
+          12.72639,
+          11.67363,
+          27.83851
+        ],
+        [
+          24.89537,
+          26.29077,
+          42.9607
+        ]
+      ],
+      "maximumBoundDifferenceMm": 0.00462392639160214,
+      "originalVolumeMm3": 149.9993450718058,
+      "displayVolumeMm3": 149.90132409995758,
+      "relativeVolumeChangePercent": -0.0653475998853903,
+      "originalToDisplayDistance": {
+        "meanMm": 0.0023288625184136836,
+        "rmsMm": 0.002977802521676531,
+        "p95Mm": 0.0058467551931236355,
+        "maximumSampledMm": 0.010619819453906013
+      },
+      "displayToOriginalDistance": {
+        "meanMm": 0.002292141634744747,
+        "rmsMm": 0.002986800025153146,
+        "p95Mm": 0.006154972514341282,
+        "maximumSampledMm": 0.01475462634335392
+      }
+    },
+    {
+      "id": "cochleovestibular-nerve",
+      "originalTriangles": 16018,
+      "displayTriangles": 4500,
+      "originalWatertight": true,
+      "displayWatertight": true,
+      "originalBoundsMm": [
+        [
+          10.116247177124023,
+          16.85695457458496,
+          35.4941291809082
+        ],
+        [
+          23.19479751586914,
+          24.770923614501953,
+          53.25688171386719
+        ]
+      ],
+      "displayBoundsMm": [
+        [
+          10.11895,
+          16.85723,
+          35.49191
+        ],
+        [
+          23.19393,
+          24.77669,
+          53.25191
+        ]
+      ],
+      "maximumBoundDifferenceMm": 0.005766385498045423,
+      "originalVolumeMm3": 227.4805563257863,
+      "displayVolumeMm3": 227.3181651690369,
+      "relativeVolumeChangePercent": -0.07138682943822472,
+      "originalToDisplayDistance": {
+        "meanMm": 0.00299444770178324,
+        "rmsMm": 0.003881878958960895,
+        "p95Mm": 0.007777823460494688,
+        "maximumSampledMm": 0.014818028614616426
+      },
+      "displayToOriginalDistance": {
+        "meanMm": 0.002999340536059737,
+        "rmsMm": 0.003936622367703861,
+        "p95Mm": 0.007968300470443977,
+        "maximumSampledMm": 0.017629891104082786
+      }
+    }
+  ],
+  "centerline": {
+    "lengthMm": 22.247394472632234,
+    "storedPoints": 181,
+    "testedPolylineSamples": 1981,
+    "allInsideOriginalST": true,
+    "minimumAbsoluteWindingNumber": 0.9999999999999997,
+    "maximumAbsoluteWindingNumber": 1.0000000000000004,
+    "minimumDistanceToOriginalSTSurfaceMm": 0.19865416203231412,
+    "medianDistanceToOriginalSTSurfaceMm": 0.4409602272859322,
+    "storedMinimumSurfaceClearanceMm": 0.19866,
+    "storedMinimumConservativeClearanceMm": 0.13686,
+    "storedMinimumVoxelClearanceMm": 0.23593,
+    "method": "Signed solid-angle winding number on the original closed15,996-triangle ST mesh;11 uniformly spaced samples per one of the180 centreline segments and final endpoint. Exact sampled point-to-triangle distance. Finite sampling does not prove all possible interpolants are contained."
+  },
+  "rigidTransform": {
+    "rotationDeterminant": 1.0000000002198548,
+    "maximumOrthonormalResidual": 7.921685529765909e-10,
+    "maximumCenterlineTransformResidualMm": 1.0311430506004804e-05
+  }
+}

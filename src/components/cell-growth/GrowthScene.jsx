@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import * as THREE from 'three';
+import { coneSurface, VIEW_MODES } from '../../lib/cell-growth/render-geometry.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 const AXON = 0x8ecfc5;
@@ -56,17 +57,18 @@ function buildWorld(state) {
   return group;
 }
 
-export default function GrowthScene({ state, selectedCell, selectedTip, onSelect, isolate, showMembrane, showCytoskeleton, showForces, colorMode, thickness = 1, cameraAction }) {
+export default function GrowthScene({ state, selectedCell, selectedTip, onSelect, isolate, showMembrane, showCytoskeleton, showForces, colorMode, thickness = 1, cameraAction, inspectionMode = 'structural', showTrails = true, onUnavailable }) {
   const container = useRef(null), api = useRef(null), latest = useRef(null);
   const [error, setError] = useState('');
-  latest.current = { state, selectedCell, selectedTip, onSelect, isolate, showMembrane, showCytoskeleton, showForces, colorMode, thickness };
+  const scaleBar=useRef(null),scaleText=useRef(null);
+  latest.current = { state, selectedCell, selectedTip, onSelect, isolate, showMembrane, showCytoskeleton, showForces, colorMode, thickness, inspectionMode, showTrails };
 
   useEffect(() => {
     if (!container.current) return;
     const host = container.current;
     let renderer;
     try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' }); }
-    catch { setError('The 3D view requires WebGL. The numerical model, measurements and downloads are still available.'); return; }
+    catch { onUnavailable?.();setError('The 3D view requires WebGL. The numerical model, measurements and downloads are still available.'); return; }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.8));
     renderer.setClearColor(0x151d1a);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -83,12 +85,14 @@ export default function GrowthScene({ state, selectedCell, selectedTip, onSelect
     controls.enableDamping = true; controls.dampingFactor = .12; controls.minDistance = 12; controls.maxDistance = 4000;
     const cellsGroup = new THREE.Group(), conesGroup = new THREE.Group(), forcesGroup = new THREE.Group(), contactGroup = new THREE.Group();
     scene.add(cellsGroup, conesGroup, forcesGroup, contactGroup);
-    const rodGeometry = new THREE.CylinderGeometry(1, 1, 1, 7, 1);
+    const rodGeometry = new THREE.CylinderGeometry(.996, 1, 1, 10, 1);
     const rods = new THREE.InstancedMesh(rodGeometry, new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .48, metalness: .03, transparent: true, opacity: .9 }), 30000);
     rods.instanceMatrix.setUsage(THREE.DynamicDrawUsage); rods.count = 0; rods.frustumCulled = false;
     const cores = new THREE.InstancedMesh(rodGeometry.clone(), new THREE.MeshBasicMaterial({ color: 0xf4e4ad, transparent: true, opacity: .85 }), 30000);
     cores.instanceMatrix.setUsage(THREE.DynamicDrawUsage); cores.count = 0; cores.frustumCulled = false;
-    scene.add(rods, cores);
+    const joints = new THREE.InstancedMesh(new THREE.SphereGeometry(1,10,7), rods.material.clone(),30000);
+    joints.instanceMatrix.setUsage(THREE.DynamicDrawUsage);joints.count=0;joints.frustumCulled=false;
+    scene.add(rods, cores, joints);
     let frame, worldGroup = null, worldKey = null, active = true;
     const raycaster = new THREE.Raycaster(), pointer = new THREE.Vector2();
     let startPointer = null;
@@ -112,8 +116,13 @@ export default function GrowthScene({ state, selectedCell, selectedTip, onSelect
       renderer.setSize(rect.width, rect.height, false); camera.aspect = rect.width / rect.height; camera.updateProjectionMatrix();
     };
     const observer = new ResizeObserver(resize); observer.observe(host); resize();
-    const render = () => { if (!active) return; controls.update(); renderer.render(scene, camera); frame = requestAnimationFrame(render); };
-    api.current = { renderer, scene, camera, controls, cellsGroup, conesGroup, forcesGroup, contactGroup, rods, cores, segmentMap: [],
+    const render = () => { if (!active) return; controls.update();
+      const umPerPixel=2*camera.position.distanceTo(controls.target)*Math.tan(camera.fov*Math.PI/360)/Math.max(1,host.clientHeight),target=umPerPixel*95;
+      const power=10**Math.floor(Math.log10(target)),bar=[1,2,5,10].map(x=>x*power).find(x=>x>=target)||power*10;
+      if(scaleBar.current)scaleBar.current.style.width=`${bar/umPerPixel}px`;
+      if(scaleText.current)scaleText.current.textContent=`${bar<1?bar.toFixed(1):bar} µm`;
+      renderer.render(scene, camera); frame = requestAnimationFrame(render); };
+    api.current = { renderer, scene, camera, controls, cellsGroup, conesGroup, forcesGroup, contactGroup, rods, cores, joints, cellCache:new Map(), segmentMap: [],
       setWorld: (data) => { const key = JSON.stringify([data.config.mode, data.config.seed, data.world]); if (key === worldKey) return; if (worldGroup) { scene.remove(worldGroup); dispose(worldGroup); } worldGroup = buildWorld(data); scene.add(worldGroup); worldKey = key; },
     };
     render();
@@ -126,9 +135,14 @@ export default function GrowthScene({ state, selectedCell, selectedTip, onSelect
 
   useEffect(() => {
     if (!state || !api.current) return;
-    const { cellsGroup, conesGroup, forcesGroup, contactGroup, rods, cores } = api.current;
+    const { cellsGroup, conesGroup, forcesGroup, contactGroup, rods, cores, joints, cellCache } = api.current;
     api.current.setWorld(state);
-    [cellsGroup, conesGroup, forcesGroup, contactGroup].forEach(dispose);
+    [conesGroup, forcesGroup, contactGroup].forEach(dispose);
+    const theme=VIEW_MODES[inspectionMode]||VIEW_MODES.structural;
+    api.current.renderer.setClearColor(theme.background);
+    rods.material.opacity=inspectionMode==='fluorescence'?.74:.93;joints.material.opacity=rods.material.opacity;
+    cores.material.color.set(theme.core);
+    for(const [id,entry] of cellCache)if(!state.cells.some(c=>c.id===id)||isolate&&id!==selectedCell){cellsGroup.remove(entry.group);dispose(entry.group);cellCache.delete(id);}
     const matrix = new THREE.Matrix4(), quaternion = new THREE.Quaternion(), up = new THREE.Vector3(0, 1, 0), scale = new THREE.Vector3();
     const segments = state.segments.filter(s => s.alive !== false && (!isolate || s.cellId === selectedCell));
     const visibleSegments = segments.slice(0, 30000);
@@ -143,30 +157,51 @@ export default function GrowthScene({ state, selectedCell, selectedTip, onSelect
       const color = colorFor(segment, colorMode);
       if (!isolate && selectedCell != null && segment.cellId !== selectedCell) color.multiplyScalar(.64);
       else if (segment.cellId === selectedCell) color.lerp(selectedColor, .08);
-      rods.setColorAt(index, color);
+      if(inspectionMode==='brightfield')color.set(0x7f8e82);
+      rods.setColorAt(index, color);joints.setColorAt(index,color);
+      matrix.compose(end,new THREE.Quaternion(),new THREE.Vector3(r,r,r));joints.setMatrixAt(index,matrix);
       scale.set(r * .23, Math.max(.0001, length), r * .23); matrix.compose(start.clone().add(end).multiplyScalar(.5), quaternion, scale); cores.setMatrixAt(index, matrix);
     }
+    joints.count=visibleSegments.length;joints.instanceMatrix.needsUpdate=true;if(joints.instanceColor)joints.instanceColor.needsUpdate=true;
     rods.count = visibleSegments.length; cores.count = showCytoskeleton ? visibleSegments.length : 0;
     rods.instanceMatrix.needsUpdate = true; if (rods.instanceColor) rods.instanceColor.needsUpdate = true; cores.instanceMatrix.needsUpdate = true;
     for (const cell of state.cells) {
-      if (isolate && cell.id !== selectedCell) continue;
-      const selected = cell.id === selectedCell;
-      const membrane = cell.membrane;
-      if (membrane?.vertices?.length && membrane?.triangles?.length) {
-        const geo = new THREE.BufferGeometry();
-        geo.setAttribute('position', new THREE.Float32BufferAttribute(membrane.vertices.flat(), 3)); geo.setIndex(membrane.triangles.flat()); geo.computeVertexNormals();
-        const mesh = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: selected ? 0xf0d69e : SOMA, roughness: .65, transparent: true, opacity: showMembrane ? .58 : .12, side: THREE.DoubleSide, depthWrite: false }));
-        mesh.userData = { cellId: cell.id }; cellsGroup.add(mesh);
-        if (showCytoskeleton) {
-          const net = new THREE.LineSegments(new THREE.WireframeGeometry(geo), new THREE.LineBasicMaterial({ color: 0xc1ad79, transparent: true, opacity: selected ? .22 : .08, depthWrite: false }));
-          cellsGroup.add(net);
-        }
+      if(isolate&&cell.id!==selectedCell)continue;
+      const selected=cell.id===selectedCell,m=cell.membrane;
+      let entry=cellCache.get(cell.id);
+      if(!entry){
+        const group=new THREE.Group(),geo=new THREE.BufferGeometry();
+        geo.setAttribute('position',new THREE.Float32BufferAttribute(m.vertices.flat(),3));geo.setAttribute('color',new THREE.Float32BufferAttribute(new Float32Array(m.vertices.length*3),3));geo.setIndex(m.triangles.flat());
+        const material=new THREE.MeshPhysicalMaterial({color:0xffffff,vertexColors:true,roughness:.4,metalness:0,transparent:true,opacity:theme.opacity,side:THREE.DoubleSide,depthWrite:false,clearcoat:.35});
+        const mesh=new THREE.Mesh(geo,material);mesh.userData={cellId:cell.id};group.add(mesh);
+        const nucleus=new THREE.Mesh(new THREE.SphereGeometry(1,32,24),new THREE.MeshStandardMaterial({roughness:.48,transparent:true,opacity:.84}));nucleus.userData={cellId:cell.id};group.add(nucleus);
+        const internal=new THREE.Group();group.add(internal);cellsGroup.add(group);entry={group,mesh,nucleus,internal};cellCache.set(cell.id,entry);
       }
-      const nucleus = new THREE.Mesh(new THREE.SphereGeometry(cell.radius * .42, 18, 14), new THREE.MeshStandardMaterial({ color: selected ? 0xbca281 : 0x86988b, roughness: .5, transparent: true, opacity: .64 }));
-      nucleus.position.copy(asVector(cell.position)); nucleus.scale.set(1, .88, 1.1); nucleus.userData = { cellId: cell.id }; cellsGroup.add(nucleus);
-      if (selected) {
-        const points = new THREE.EllipseCurve(0, 0, cell.radius * 1.3, cell.radius * 1.3, 0, Math.PI * 2).getPoints(60);
-        cellsGroup.add(line(points.map(p => [p.x + cell.position[0], cell.position[1], p.y + cell.position[2]]), 0xf3e9cb, .65));
+      const {mesh,nucleus,internal}=entry,position=mesh.geometry.attributes.position,colors=mesh.geometry.attributes.color;
+      dispose(internal);
+      for(let i=0;i<m.vertices.length;i++){
+        position.setXYZ(i,...m.vertices[i]);const color=new THREE.Color(theme.membrane);
+        if(inspectionMode==='mechanics'){const magnitude=Math.hypot(...(m.forces?.[i]||[0,0,0]));color.setHSL(.52-.48*Math.min(1,magnitude/35),.48,.57);}
+        else if(inspectionMode==='fluorescence')color.lerp(new THREE.Color(theme.actin),.7*(m.actin?.[i]??0));
+        else color.lerp(new THREE.Color(theme.actin),.22*(m.actin?.[i]??0));
+        colors.setXYZ(i,color.r,color.g,color.b);
+      }
+      position.needsUpdate=true;colors.needsUpdate=true;mesh.geometry.computeVertexNormals();mesh.geometry.computeBoundingSphere();
+      mesh.material.opacity=showMembrane?theme.opacity:.07;
+      nucleus.position.copy(asVector(cell.nucleus?.position||cell.position));nucleus.scale.setScalar(cell.nucleus?.radius||cell.radius*.38);nucleus.material.color.set(theme.nucleus);
+      if(showCytoskeleton&&selected){
+        // These spokes depict coarse MT support, not individually tracked polymers.
+        for(let i=0;i<m.vertices.length;i+=7){const fraction=m.mt?.[i]??.3;if(fraction<.1)continue;const origin=cell.nucleus?.position||cell.position,end=m.vertices[i];internal.add(line([origin,origin.map((v,k)=>v+(end[k]-v)*(.55+.35*fraction))],theme.core,.18+.45*fraction));}
+        if(inspectionMode==='mechanics'){const wire=new THREE.LineSegments(new THREE.WireframeGeometry(mesh.geometry),new THREE.LineBasicMaterial({color:0xd5c6a6,transparent:true,opacity:.2}));internal.add(wire);}
+      }
+      if(selected){
+        const r=cell.mechanics?.collisionRadius||cell.radius;
+        const ring=new THREE.EllipseCurve(0,0,r+1.8,r+1.8,0,Math.PI*2).getPoints(64);internal.add(line(ring.map(p=>[p.x+cell.position[0],cell.position[1],p.y+cell.position[2]]),inspectionMode==='brightfield'?0x556d61:0xd5c6a0,.48));
+      }
+      if(showTrails&&cell.mechanics?.trail.length>1)internal.add(line(cell.mechanics.trail.map(p=>p.position),inspectionMode==='brightfield'?0x6a817b:0x7d9d9b,selected?.65:.25));
+      if(inspectionMode==='mechanics'||showForces){
+        for(const i of m.contactVertices||[]){const point=new THREE.Mesh(new THREE.SphereGeometry(.25,6,4),new THREE.MeshBasicMaterial({color:0xee9079}));point.position.copy(asVector(m.vertices[i]));internal.add(point);}
+        if(selected&&cell.mechanics){const traction=asVector(cell.mechanics.traction),mag=traction.length();if(mag>1e-8)internal.add(new THREE.ArrowHelper(traction.normalize(),asVector(cell.position),Math.min(20,mag*.018),0x8bd4b7,1.8,1));}
       }
     }
     const visibleTips = state.tips.filter(t => t.active && (!isolate || t.cellId === selectedCell));
@@ -177,15 +212,22 @@ export default function GrowthScene({ state, selectedCell, selectedTip, onSelect
       const radius = (tip.radius || 1.9) * thickness;
       const group = new THREE.Group(), color = tip.kind === 'axon' ? AXON : DENDRITE;
       group.position.copy(asVector(segment.end));
-      group.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), asVector(tip.direction).normalize());
-      const cone = new THREE.Mesh(new THREE.SphereGeometry(radius, 14, 10), new THREE.MeshStandardMaterial({ color: selected ? 0xf4e6b7 : color, transparent: true, opacity: .6, roughness: .6, depthWrite: false }));
-      cone.scale.set(1.3, .32, 1.7); cone.userData = { cellId: tip.cellId, tipId: tip.id }; group.add(cone);
-      // Filopodia illustrate the effective tip; individual actin filaments are not solved.
-      for (let i = 0; i < 7; i++) {
-        const angle = -1.1 + i / 6 * 2.2, extent = radius * (2 + ((tip.id * 17 + i * 7) % 9) / 16);
-        group.add(line([[Math.sin(angle) * radius * .6, 0, Math.cos(angle) * radius * .6], [Math.sin(angle) * extent, .08 * radius, Math.cos(angle) * extent]], color, .65));
+      const z=asVector(tip.direction).normalize(),x=new THREE.Vector3().crossVectors(Math.abs(z.y)<.9?new THREE.Vector3(0,1,0):new THREE.Vector3(1,0,0),z).normalize(),y=new THREE.Vector3().crossVectors(z,x);
+      group.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(x,y,z));
+      const solved=coneSurface(tip),geometry=new THREE.BufferGeometry();
+      geometry.setAttribute('position',new THREE.Float32BufferAttribute(solved.vertices.flat().map(v=>v*thickness),3));geometry.setIndex(solved.triangles.flat());geometry.computeVertexNormals();
+      const cone=new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({color:inspectionMode==='brightfield'?0x859b8d:selected?theme.actin:color,transparent:true,opacity:.65,roughness:.5,side:THREE.DoubleSide,depthWrite:false}));
+      cone.userData={cellId:tip.cellId,tipId:tip.id};group.add(cone);
+      if(showCytoskeleton&&selected){
+        const radii=tip.shape?.radii||Array(12).fill(radius);
+        for(let i=0;i<radii.length;i++){const a=i/radii.length*Math.PI*2;group.add(line([[0,0,0],[Math.sin(a)*radii[i]*.95*thickness,0,Math.cos(a)*radii[i]*.95*thickness]],theme.actin,.55));}
       }
       conesGroup.add(group);
+      for(const probe of tip.filopodia||[]){if(probe.length<.02)continue;
+        const a=asVector(probe.start),b=asVector(probe.end),delta=b.clone().sub(a);
+        const stalk=new THREE.Mesh(new THREE.CylinderGeometry(probe.radius*thickness,probe.radius*thickness,delta.length(),6),new THREE.MeshStandardMaterial({color:probe.blocked?0xea9f86:theme.actin,roughness:.7}));
+        stalk.position.copy(a.add(b).multiplyScalar(.5));stalk.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),delta.normalize());stalk.userData={cellId:tip.cellId,tipId:tip.id};conesGroup.add(stalk);
+      }
     }
     if (showForces) {
       const tip = state.tips.find(t => t.id === selectedTip && t.active) || state.tips.find(t => t.cellId === selectedCell && t.active);
@@ -202,7 +244,7 @@ export default function GrowthScene({ state, selectedCell, selectedTip, onSelect
       const point = new THREE.Mesh(new THREE.SphereGeometry(1.5, 8, 6), new THREE.MeshBasicMaterial({ color: 0xdbbae1 }));
       point.position.copy(asVector(contact.position)); contactGroup.add(point);
     }
-  }, [state, selectedCell, selectedTip, isolate, showMembrane, showCytoskeleton, showForces, colorMode, thickness]);
+  }, [state, selectedCell, selectedTip, isolate, showMembrane, showCytoskeleton, showForces, colorMode, thickness,inspectionMode,showTrails]);
 
   useEffect(() => {
     if (!api.current || !state) return;
@@ -213,7 +255,7 @@ export default function GrowthScene({ state, selectedCell, selectedTip, onSelect
       const cell = state.cells.find(c => c.id === selectedCell);
       if (cell) center.copy(asVector(cell.position));
       const distances = state.segments.filter(s => s.cellId === selectedCell && s.alive !== false).map(s => asVector(s.end).distanceTo(center));
-      extent = Math.max(36, Math.min(180, distances.length ? Math.max(...distances) : 36));
+      extent = 14;
     } else if (action === 'tip') {
       const tip = state.tips.find(t => t.id === selectedTip) || state.tips.find(t => t.cellId === selectedCell && t.active);
       const segment = tip && state.segments.find(s => s.id === tip.segmentId);
@@ -221,7 +263,8 @@ export default function GrowthScene({ state, selectedCell, selectedTip, onSelect
     } else {
       const min = state.world.bounds?.min || [-250,-100,-250], max = state.world.bounds?.max || [250,100,250];
       center.set((min[0]+max[0])/2,(min[1]+max[1])/2,(min[2]+max[2])/2);
-      extent = Math.max(max[0]-min[0],max[1]-min[1],max[2]-min[2]) * .66;
+      const box=new THREE.Box3();for(const cell of state.cells)box.expandByPoint(asVector(cell.position));for(const segment of state.segments)if(segment.alive)box.expandByPoint(asVector(segment.end));
+      box.getCenter(center);const size=box.getSize(new THREE.Vector3());extent=Math.max(45,Math.max(size.x,size.y,size.z)*.53+20);
     }
     controls.target.copy(center);
     const top = action === 'top';
@@ -229,5 +272,5 @@ export default function GrowthScene({ state, selectedCell, selectedTip, onSelect
     controls.update();
   }, [cameraAction, state?.config.mode, state?.config.seed]);
 
-  return <div class="cg-scene" ref={container}>{error && <div class="cg-scene-fallback" role="status">{error}</div>}</div>;
+  return <div class="cg-scene" ref={container}><div class="cg-scale"><span ref={scaleText}>50 µm</span><i ref={scaleBar}/></div>{error && <div class="cg-scene-fallback" role="status">{error}</div>}</div>;
 }

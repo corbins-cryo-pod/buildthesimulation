@@ -1,3 +1,4 @@
+import { initAdvanced } from './advanced/app.js';
 import { DEFAULT_CONFIG, MODEL_VERSION, validateConfig, pulseIntervals, resolveNodes, expressionFactor } from "./simulation.js";
 import { createSweep, summarizeTrial } from "./sweep.js";
 import { lightAt } from "./optics.js";
@@ -388,7 +389,9 @@ function editControl(id) {
   try { validateConfig(config); } catch (error) { showError(error.message); }
 }
 function switchWorkspace(mode) {
-  if (['evidence','sweep'].includes(mode)) {
+  $('advanced-panel').hidden=mode!=='advanced';
+  if(mode==='advanced'){if(busy)stopCalculation();pause();currentWorkspace=mode;$('experiment-panel').hidden=true;$('evidence-panel').hidden=true;$('sweep-panel').hidden=true;}
+  else if (['evidence','sweep'].includes(mode)) {
     currentWorkspace=mode; $('experiment-panel').hidden=true; $('evidence-panel').hidden=mode!=='evidence'; $('sweep-panel').hidden=mode!=='sweep';
     if(mode==='sweep')renderSweep();
 
@@ -408,7 +411,7 @@ function switchWorkspace(mode) {
     currentWorkspace = mode; $('sweep-panel').hidden=true; $('experiment-panel').hidden = false; $('evidence-panel').hidden = true;
     requestAnimationFrame(() => { refreshPlots(); refreshScene(); });
   }
-  for (const name of ['neuron', 'clamp', 'sweep', 'evidence']) {
+  for (const name of ['neuron', 'clamp', 'sweep', 'evidence','advanced']) {
     $('tab-' + name).classList.toggle('active', name === mode); $('tab-' + name).setAttribute('aria-pressed', String(name === mode));
   }
 }
@@ -634,8 +637,9 @@ $('theme').addEventListener('click', () => {
 document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); });
 window.addEventListener('beforeunload', () => { worker?.terminate(); if (workerUrl) URL.revokeObjectURL(workerUrl); });
 applyTheme(); syncControls(); updateNodes(); scene.setLight(config.light); renderEvidence(); invalidate('Ready. Calculating the starting pulse train…');
-if(!globalThis.OPTO_REVIEW_OPTIONS?.disableAutoRun)setTimeout(run, 180);else setText('run-status','Ready. Run to calculate the first recording.');
+if(globalThis.OPTO_REVIEW_OPTIONS?.legacyAutoRun)setTimeout(run, 180);else setText('run-status','Ready. Run to calculate the first recording.');
 // Documented inspection API for automated regression and embedding; all edits validate and invalidate old output.
 globalThis.OptoLab=Object.freeze({version:MODEL_VERSION, getConfig:()=>copy(config),getResult:()=>result,getSweep:()=>sweepResults.slice(),isBusy:()=>busy,run,cancel:stopCalculation,
 setConfig(input){if(busy)throw new Error('Cancel the active calculation first.');const next=validateConfig(input);if(next.mode!==config.mode)switchWorkspace(next.mode);config=next;currentPreset='custom';syncControls();invalidate('Setup loaded through the validated API. Run to calculate.',true);},
 setTime(time){pause();setFrame(frameAtTime(time,true));}});
+initAdvanced(model,()=>switchWorkspace('advanced'));

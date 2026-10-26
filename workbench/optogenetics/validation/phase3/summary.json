@@ -1,0 +1,72 @@
+{
+  "release": "opto-lab/0.3.0",
+  "date": "2026-10-25",
+  "publicationStatus": "Local review only; no GitHub writes or deployment",
+  "automatedTests": {
+    "passed": 100,
+    "failed": 0,
+    "legacyCoreTests": 46,
+    "advancedUnitTests": 43,
+    "advancedEngineTests": 11,
+    "evidence": "all-tests.tap"
+  },
+  "browserAssertions": {
+    "passed": 65,
+    "failed": 0,
+    "flows": [
+      "core",
+      "connections",
+      "population"
+    ],
+    "browser": "144.0.7559.96",
+    "execution": "Playwright set_content; real Chromium JavaScript and inline Blob workers; physical iPhone/Safari not tested",
+    "flowSeconds": {
+      "core": 9.957212686538696,
+      "connections": 2.2120559215545654,
+      "population": 14.947068929672241
+    }
+  },
+  "independentReferences": {
+    "newOpsinMatrixExponentialCases": 48,
+    "chlorideDOP853Cases": 9,
+    "errors": {
+      "chronosReferenceError": 9.325873406851315e-15,
+      "chrimsonrReferenceError": 3.552713678800501e-15,
+      "gtacr2ReferenceError": 9.769962616701378e-15,
+      "chlorideReferenceErrorMm": 5.595524044110789e-14,
+      "integratedFarFieldMw": 0.0200000513291957,
+      "thermalEnergyResidualJ": 1.0731182107712353e-20
+    }
+  },
+  "inhibitionRefinement": {
+    "dtMs": [
+      0.01,
+      0.005
+    ],
+    "maximumSomaClDifferenceMm": 1.5558576906826715e-06,
+    "maximumSomaVoltageDifferenceMv": 0.002391468745202019,
+    "spikes": [
+      0,
+      0
+    ]
+  },
+  "demoIds": [
+    "chloride",
+    "chloride-high",
+    "chloride-fixed",
+    "microled",
+    "population",
+    "heat-control",
+    "chronos",
+    "chrimsonr"
+  ],
+  "remainingGates": [
+    "No combined optical/neuronal experimental validation",
+    "Reduced opsins and spectra not fitted",
+    "LED optics not Monte Carlo tissue transport",
+    "Unresolved thermal hotspots and no temperature-feedback electrophysiology",
+    "No new NEURON reference for chloride extension",
+    "Safari and physical iPhone untested",
+    "No connected network or direct as-fabricated cleanroom physics import"
+  ]
+}

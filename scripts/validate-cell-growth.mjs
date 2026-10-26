@@ -5,9 +5,10 @@ import {
   MODEL_VERSION, PRESETS, createSimulation, stepSimulation, getMetrics,
   serializeSimulation, restoreSimulation,
 } from '../src/lib/cell-growth/engine.js';
+import { signedObstacle } from '../src/lib/cell-growth/mechanics.js';
 import { segmentSphereHit, segmentBoxHit, segmentCapsuleHit, closestSegmentPoints, SpatialHash } from '../src/lib/cell-growth/geometry.js';
 
-const sourceFiles = ['src/lib/cell-growth/engine.js', 'src/lib/cell-growth/geometry.js', 'tests/cell-growth.mjs', 'scripts/validate-cell-growth.mjs'];
+const sourceFiles = ['src/lib/cell-growth/engine.js', 'src/lib/cell-growth/behavior.js', 'tests/cell-growth-behavior.mjs', 'src/lib/cell-growth/geometry.js', 'src/lib/cell-growth/mechanics.js', 'src/lib/cell-growth/exploration.js', 'src/lib/cell-growth/render-geometry.js', 'tests/cell-growth-mechanics.mjs', 'tests/cell-growth.mjs', 'scripts/validate-cell-growth.mjs'];
 const hashSources = async () => Object.fromEntries(await Promise.all(sourceFiles.map(async path => [path,
   createHash('sha256').update(await readFile(new URL(`../${path}`, import.meta.url))).digest('hex')])));
 const initialSourceSha256 = await hashSources();
@@ -28,16 +29,17 @@ const distance = (a, b) => Math.hypot(...a.map((x, i) => x - b[i]));
 const geometricLength = sim => sim.segments.filter(s => s.alive)
   .reduce((sum, s) => sum + distance(s.start, s.end), 0);
 const checks = [], timings = [];
-function run(id, config, hours, clearObstacles = false) {
+function run(id, config, hours, clearObstacles = false, clampedSomata = false) {
   const t = performance.now(), sim = createSimulation(config);
   if (clearObstacles) {
     sim.world.obstacles = [];
     if (sim.world.cue) sim.world.cue.strength = 0;
   }
+  if(clampedSomata)for(const cell of sim.cells)cell.membrane.lastSolveHours=720;
   const initialLengthUm = geometricLength(sim);
   stepSimulation(sim, hours);
   const elapsedMs = performance.now() - t;
-  timings.push({ id, elapsedMs, simulatedHours: hours, cellCount: sim.cells.length, segmentCount: sim.segments.length });
+  timings.push({ id, elapsedMs, simulatedHours: hours, clampedSomata, cellCount: sim.cells.length, segmentCount: sim.segments.length });
   return { sim, initialLengthUm, finalLengthUm: geometricLength(sim), addedLengthUm: geometricLength(sim) - initialLengthUm, metrics: getMetrics(sim) };
 }
 const summary = r => ({ config: r.sim.config, initialLengthUm: r.initialLengthUm,
@@ -66,13 +68,13 @@ function entersBox(s, box) {
 function auditGeometry(sim) {
   const live = sim.segments.filter(s => s.alive), hash = new SpatialHash(16);
   const result = { liveSegments: live.length, solidPenetrations: 0, somaPenetrations: 0, boundaryViolations: 0,
-    unrelatedShaftPenetrations: 0, shaftPairsChecked: 0, maximumMembraneBudgetResidualUm2: 0 };
+    unrelatedShaftPenetrations: 0, coneSolidPenetrations: 0, coneSomaPenetrations: 0, coneShaftPenetrations: 0, coneConePenetrations: 0, shaftPairsChecked: 0, maximumMembraneBudgetResidualUm2: 0 };
   for (const s of live) hash.insert(s.id, s.start, s.end, s.radius);
   for (const s of live) {
     for (const o of sim.world.obstacles) {
       if (o.shape === 'sphere' ? pointToSegment(o.position, s.start, s.end) < o.radius + s.radius - 1e-7 : entersBox(s, o)) result.solidPenetrations++;
     }
-    for (const c of sim.cells) if (c.id !== s.cellId && pointToSegment(c.position, s.start, s.end) < c.radius * 1.06 + s.radius - 1e-7) result.somaPenetrations++;
+    for (const c of sim.cells) if (c.id !== s.cellId && pointToSegment(c.position, s.start, s.end) < (c.mechanics?.collisionRadius??c.radius*1.06) + s.radius - 1e-7) result.somaPenetrations++;
     for (const p of [s.start, s.end]) {
       if (sim.world.sphereRadius && Math.hypot(...p) > sim.world.sphereRadius - s.radius + 1e-7) result.boundaryViolations++;
       for (let i = 0; i < 3; i++) if (!(sim.world.planar && i === 1) && (p[i] < sim.world.bounds.min[i] + s.radius - 1e-7 || p[i] > sim.world.bounds.max[i] - s.radius + 1e-7)) result.boundaryViolations++;
@@ -82,6 +84,14 @@ function auditGeometry(sim) {
       result.shaftPairsChecked++;
       if (closestSegmentPoints(s.start, s.end, b.start, b.end).distance < s.radius + b.radius - 1e-7) result.unrelatedShaftPenetrations++;
     }
+  }
+  const tips=sim.tips.filter(t=>t.active);
+  for(const t of tips){
+    const p=sim.segments[t.segmentId].end;
+    for(const o of sim.world.obstacles)if(signedObstacle(p,o).gap<t.radius-1e-7)result.coneSolidPenetrations++;
+    for(const c of sim.cells)if(c.id!==t.cellId&&distance(p,c.position)<c.mechanics.collisionRadius+t.radius-1e-7)result.coneSomaPenetrations++;
+    for(const id of hash.query(p,p,t.radius+1.2)){const n=sim.segments[id];if(n.alive&&n.cellId!==t.cellId&&pointToSegment(p,n.start,n.end)<t.radius+n.radius-1e-7)result.coneShaftPenetrations++;}
+    for(const other of tips)if(other.id>t.id&&other.cellId!==t.cellId&&distance(p,sim.segments[other.segmentId].end)<t.radius+other.radius-1e-7)result.coneConePenetrations++;
   }
   for (const c of sim.cells) {
     const m = c.membrane;
@@ -102,12 +112,12 @@ const analyticGeometry = [
 ].map(row => ({ ...row, absoluteErrorUm: row.actualXUm === null ? null : Math.abs(row.actualXUm - row.expectedXUm) }));
 checks.push({ id: 'analytic-swept-collision', passed: analyticGeometry.every(r => r.absoluteErrorUm !== null && r.absoluteErrorUm <= tolerance.analyticGeometryUm) });
 
-const baseline = run('positive-driver', controlled, 8, true);
+const baseline = run('positive-driver', controlled, 8, true, true);
 checks.push({ id: 'positive-driver-extension', passed: baseline.addedLengthUm > 1 });
 const blocked = [
   ['zero-actin', { actin: 0 }],
   ['zero-microtubules', { microtubules: 0 }],
-].map(([id, override]) => ({ id, ...summary(run(id, { ...controlled, ...override }, 8, true)) }));
+].map(([id, override]) => ({ id, ...summary(run(id, { ...controlled, ...override }, 8, true, true)) }));
 for (const result of blocked) checks.push({ id: result.id, passed: result.addedLengthUm <= tolerance.zeroDriverAddedLengthUm });
 
 const refinement = [.05, .025, .0125].map(dtHours => {
@@ -194,6 +204,7 @@ checks.push({ id: 'four-environment-finite-state', passed: environments.every(r 
 checks.push({ id: '72h-presets-complete-or-explicitly-capped', passed: environments.every(r => Math.abs(r.simulatedHours - 72) < 1e-7 || (r.simulatedHours < 72 && r.limits.reached && r.metrics.totalSegments <= r.config.maxSegments)) });
 checks.push({ id: 'full-tree-solid-soma-boundary-separation', passed: environments.every(r => r.geometryAudit.solidPenetrations === 0 && r.geometryAudit.somaPenetrations === 0 && r.geometryAudit.boundaryViolations === 0) });
 checks.push({ id: 'full-tree-unrelated-shaft-separation', passed: environments.every(r => r.geometryAudit.unrelatedShaftPenetrations === 0) });
+checks.push({ id: 'growth-cone-envelope-separation', passed: environments.every(r => ['coneSolidPenetrations','coneSomaPenetrations','coneShaftPenetrations','coneConePenetrations'].every(key=>r.geometryAudit[key]===0)) });
 checks.push({ id: 'four-environment-membrane-budget', passed: environments.every(r => r.geometryAudit.maximumMembraneBudgetResidualUm2 < 1e-6) });
 
 // Independent seeds characterize model variability; they are not biological confidence intervals.
@@ -206,7 +217,7 @@ const interventions = [
   { id: 'no-branching', override: { branching: 0 } },
 ];
 const interventionCases = interventions.map(intervention => ({ ...intervention, cases: seeds.map(seed => {
-  const r = run(`ensemble-${intervention.id}-${seed}`, { mode: 'culture', source: 'immature', cellCount: 4, seed, ...intervention.override }, 24);
+  const r = run(`ensemble-${intervention.id}-${seed}`, { mode: 'culture', source: 'immature', cellCount: 4, seed, ...intervention.override }, 24, false, true);
   return { seed, initialLengthUm: r.initialLengthUm, finalLengthUm: r.finalLengthUm, addedLengthUm: r.addedLengthUm,
     totalAxonLengthUm: r.metrics.totalAxonLength, totalDendriteLengthUm: r.metrics.totalDendriteLength,
     branches: r.metrics.branches, contacts: r.metrics.contacts, collisionEvents: r.metrics.collisionEvents, retractionSteps: r.metrics.retractionSteps };
@@ -225,7 +236,7 @@ const sourceSha256 = await hashSources();
 const sourceUnchangedDuringRun = JSON.stringify(sourceSha256) === JSON.stringify(initialSourceSha256);
 checks.push({ id: 'source-unchanged-during-verification', passed: sourceUnchangedDuringRun });
 const report = {
-  schema: 'cell-growth-verification/1', modelVersion: MODEL_VERSION,
+  schema: 'cell-growth-verification/2', modelVersion: MODEL_VERSION,
   generator: 'node scripts/validate-cell-growth.mjs', runtime: process.version,
   scope: 'Numerical and causal verification of an exploratory coarse-grained model; not an empirical fit or validation of human cell development.',
   empiricalCalibration: false, functionalConnectivityValidated: false,
@@ -237,7 +248,7 @@ const report = {
   environments, ensemble: { seeds, durationHours: 24, cellCount: 4, cases: ensemble, summary: ensembleSummary,
     interpretation: 'Seed-to-seed variation inside this model, not a biological or clinical confidence interval.' },
   interventions: { durationHours: 24, cellCount: 4, seeds, cases: interventionCases,
-    interpretation: 'Matched initial seeds and cell positions. Event streams may diverge after interventions; these are model causal controls, not biological effect estimates.' },
+    interpretation: 'Matched initial seeds and clamped soma surfaces isolate growth-cone interventions from elastic root stretching. Event streams may diverge after interventions; these are model causal controls, not biological effect estimates.' },
   performance: { scope: 'Actual Node engine wall time excluding browser rendering, page load and network. Hardware dependent.', measurements: timings },
   knownLimits: [
     'Human differentiation timing, growth velocities and model force parameters have not been fitted to a specified cell protocol.',

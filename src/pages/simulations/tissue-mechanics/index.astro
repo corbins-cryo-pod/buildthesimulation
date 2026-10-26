@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import TissueMechanicsLaboratory from '../../../components/TissueMechanicsLaboratory.astro';
 ---
-<Layout pageTitle="Brain Tissue Mechanics Laboratory" subtitle="Experimental finite-strain tissue mechanics with explicit accuracy limits." description="Phase 2 brain tissue mechanics: mixed finite elements, nonlinear material laws, physical-time relaxation and creep, source-specific fits and experimental comparisons." wide={true}>
+<Layout pageTitle="Brain Tissue Mechanics Laboratory" description="Phase 2 brain tissue mechanics: mixed finite elements, nonlinear material laws, physical-time relaxation and creep, source-specific fits and experimental comparisons." wide={true} compactHeader={true}>
   <TissueMechanicsLaboratory />
+  <noscript><p>The Brain Tissue Mechanics Laboratory requires JavaScript to solve the finite-element field. The <a href="/simulations/tissue-mechanics/methods/">methods and validation notes</a> are available without it.</p></noscript>
 </Layout>

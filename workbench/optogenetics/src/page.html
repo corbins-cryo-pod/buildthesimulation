@@ -5,36 +5,44 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="light dark" name="color-scheme"/>
 <title>Optogenetics Laboratory · BuildTheSimulation</title>
-<meta content="A self-contained optical stimulation laboratory: reconstructed human neuron, ChR2(H134R), Monte Carlo fiber illumination, and computed membrane recordings." name="description"/>
+<meta content="Optical stimulation with a reconstructed human neuron, chloride-dependent inhibition, microLEDs, independent populations, and diagnostic heating." name="description"/>
 </head>
 <body>
 <nav aria-label="Website navigation" style="padding:10px 20px"><a href="/">BuildTheSimulation</a> · <a href="/simulations/">All simulations</a></nav>
 <div id="lab">
 <header class="masthead">
 <a class="wordmark" href="https://buildthesimulation.com" rel="noopener" target="_blank">BuildTheSimulation</a>
-<span class="edition">Laboratory · review edition 0.2</span>
+<span class="edition">Laboratory · edition 0.3</span>
 <button aria-label="Switch to light appearance" class="quiet" id="theme" type="button">Dark</button>
 </header>
 <div class="title-block">
+<div class="title-block-main">
 <p class="eyebrow">Cellular electrophysiology / optical stimulation</p>
 <h1>OPTOGENETICS LABORATORY</h1>
 <p class="subtitle">Place light. Express channels. Measure the response.</p>
+</div>
+<nav aria-label="Laboratory resources" class="title-block-links">
+<a href="/simulations/">All simulations <span aria-hidden="true">↗</span></a>
+<a href="/simulations/cellular-electrophysiology/">Cellular Electrophysiology <span aria-hidden="true">↗</span></a>
+<a href="/simulations/cortical-stimulation/">Cortical Stimulation <span aria-hidden="true">↗</span></a>
+</nav>
 </div>
 <nav aria-label="Laboratory workspace" class="workspaces">
 <button aria-pressed="true" class="active" id="tab-neuron" type="button">01 <span>Neuron experiment</span></button>
 <button aria-pressed="false" id="tab-clamp" type="button">02 <span>Channel assay</span></button>
 <button aria-pressed="false" id="tab-sweep" type="button">03 <span>Response map</span></button><button aria-pressed="false" id="tab-evidence" type="button">04 <span>Model &amp; evidence</span></button>
-</nav>
+<button aria-pressed="false" id="tab-advanced" type="button">05 <span>Expanded laboratory</span></button></nav>
+<!--ADVANCED_WORKSPACE-->
 <section aria-labelledby="evidence-title" hidden="" id="evidence-panel">
-<div class="evidence-heading"><p class="eyebrow">Equations, provenance &amp; numerical checks</p><h2 id="evidence-title">What this experiment calculates</h2></div>
-<div class="evidence-grid">
+<div class="evidence-heading"><p class="eyebrow">Equations, provenance &amp; numerical checks</p><h2 id="evidence-title">Core ChR2 evidence &amp; provenance</h2></div>
+<p class="scope-note"><strong>Scope:</strong> the following ledger describes the retained single-neuron ChR2/fiber core. New chloride, reduced opsin, microLED, population and thermal assumptions are documented in the Expanded Laboratory and its exported diagnostics.</p><div class="evidence-grid">
 <article><h3>A reconstructed human cell</h3><p>Allen specimen <strong>571654895</strong>, a human middle temporal gyrus layer-2 spiny cell, with published fitted active membrane parameters. The 40 µm mesh has 211 membrane compartments and 75 zero-area junctions. A 20 µm mesh is available for refinement.</p><p>Dendritic geometry comes from the source reconstruction. The active axon is the source-prescribed <strong>60 µm synthetic stub</strong>. The morphology does not establish a full biological axon or its initiation site.</p><a href="https://github.com/AllenInstitute/Human_all_active_models_EAP" rel="noopener" target="_blank">Allen / Mosher–Wei model source ↗</a></article>
 <article><h3>Light-sensitive membrane current</h3><p>ChR2(H134R) follows the Williams et al. four-state model with its activation variable, voltage dependence, temperature factors, and current–voltage fit. Each expressing membrane compartment has its own state. Conductance density is an <strong>assumed experimental input</strong>, not measured expression in this specimen.</p><p>The source fit was characterized at approximately −80 to −10 mV. This cell rests near −92 mV after conditioning and crosses positive voltages during a spike, so both regions use the mathematical extrapolation. All neuron experiments use 34 °C, matching the native channel model.</p><a href="https://doi.org/10.1371/journal.pcbi.1003220" rel="noopener" target="_blank">Williams et al., 2013 ↗</a></article>
 <article><h3>A computed optical field</h3><p>Uniform illumination provides a controlled local-exposure experiment. The fiber uses a seeded Monte Carlo field for a <strong>100 µm core, NA 0.22, 470 nm</strong> source in homogeneous bulk tissue. Power scales the field; its orientation and position determine compartment exposure.</p><p>There is no tissue surface, implant obstruction, blood-vessel geometry, or thermal solver. The displayed cone indicates source direction; the light overlay samples the computed field.</p><a href="https://doi.org/10.1364/BOE.6.004859" rel="noopener" target="_blank">OptogenSIM optical-property reference ↗</a></article>
 <article><h3>Computed traces and reproducibility</h3><p>Native membrane channels and opsin current enter the compartmental cable solve. The neuron conditions for 100 ms before the displayed experiment. Somatic events are detected at the solver timestep; the replay uses saved samples.</p><p>Each export includes the full experiment configuration. The CSV contains computed traces and local exposure; it is not an experimental recording. Channel assay is one ideal isopotential membrane patch, not a perfect voltage clamp of the branched cell.</p><a href="https://doi.org/10.1016/j.celrep.2020.02.027" rel="noopener" target="_blank">Human-cell model publication ↗</a></article>
 </div>
 <section class="verification"><h3>Verification ledger</h3><div id="validation-summary"></div></section><article class="scope-note"><h3>Optical quantity and calibration boundary</h3><p>The fiber kernel is <strong>scalar fluence rate</strong>, integrated over photon directions, in mW/mm² per mW emitted. It is not directional irradiance at a flat detector. Uniform light is a prescribed local exposure. Passing a diffuse fluence rate to an opsin model characterized with irradiance assumes a matching effective photon exposure; that calibration is not established for this human specimen.</p><p>The original 1.3 photon-loss factor in the Williams fit is retained even with tissue attenuation. Its transfer from channel characterization to tissue fluence is an explicit coupling assumption, not a measured tissue correction. Optical energy and integrated fluence are not tissue temperature or safety estimates.</p><p>The current fit is evaluated as ḡ(O₁ + 0.1 O₂)[10.6408 − 14.6408 exp(V / −42.7671)]. This removes the division by V in the published form. The fitted current is not forced to zero at V = 0; positive-voltage and resting-voltage use is extrapolation.</p></article>
-<p class="scope-note">This is a computational research and learning model. Numerical checks and source attribution are distinct from experimental validation of the combined optical–neuron prediction. Chloride inhibition, other opsins, connected networks, and heating remain separate extensions.</p>
+<p class="scope-note">This is a computational research and learning model. Numerical checks and source attribution are distinct from experimental validation of the combined optical–neuron prediction. The Expanded Laboratory adds exploratory chloride, opsin, microLED, independent-population and diagnostic heating models. Connected networks and experimental validation remain outside this review.</p>
 <details><summary>Attribution and bundled licenses</summary><p>Human neuron data and channel mechanisms: Allen Institute / Mosher, Wei et al.; source commit 750e7840cc1a9eb32492c924e79609a85a893b8a. Cable implementation recovered from the earlier BuildTheSimulation review snapshot (98ae75a826a536293158637360b173460f877602). Allen material has a noncommercial redistribution condition. ChR2 equations: Williams et al. (2013), independently implemented here. Installed C059 / Century Schoolbook and URW Gothic are used when available, with system fallbacks; no font binaries are included. The package contains source, notices and executable numerical tests.</p></details>
 <details><summary>Full Allen Institute license</summary><pre style="white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.5 monospace">Allen Institute Software License - This software license is the 2-clause BSD
 license plus a third clause that prohibits redistribution for commercial

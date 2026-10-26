@@ -157,6 +157,8 @@ test('cell-growth metrics reconstruct live geometric length independently', () =
 test('cell-growth zero actin and zero microtubule support cannot add stable shaft length', () => {
   for (const blocked of [{ actin: 0 }, { microtubules: 0 }]) {
     const sim = createSimulation({ ...controlled, ...blocked });
+    // Isolate tip growth: moving membrane anchors can elastically stretch a root.
+    for (const c of sim.cells) c.membrane.lastSolveHours = 720;
     const initial = length(sim);
     stepSimulation(sim, 8);
     assert.ok(length(sim) <= initial + 1e-7, `blocked extension: ${JSON.stringify(blocked)}`);

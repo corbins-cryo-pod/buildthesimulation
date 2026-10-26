@@ -22,6 +22,7 @@ with sync_playwright() as p:
     page.evaluate('window.OPTO_REVIEW_OPTIONS={disableAutoRun:true}')
     page.set_content((ROOT/'optogenetics-laboratory.html').read_text())
     page.wait_for_function('!!window.OptoLab')
+    page.click('#tab-neuron')
     def cfg(changes):
         page.evaluate('(d)=>{const c=OptoLab.getConfig();OptoLab.setConfig({...c,...d,light:{...c.light,...(d.light||{})}})}',changes)
     def run():

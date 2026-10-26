@@ -1,0 +1,11 @@
+# Core numerical versions are the upstream ProViSim v2.0.0 pins.
+numpy==1.26.4
+scipy==1.13.1
+Pillow==11.3.0
+scikit-image==0.25.0
+# Transitive dependencies pinned for reproducible reference regeneration.
+lazy_loader==0.4
+packaging==25.0
+networkx==3.5
+imageio==2.37.0
+tifffile==2025.6.11

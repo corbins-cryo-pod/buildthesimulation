@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
+import RecordingLibrary from "../../components/recordings/RecordingLibrary.jsx";
+import { recordingsForDevice } from "../../data/recordings.js";
 import RealRecordingExplorer from "../../components/RealRecordingExplorer";
 import HandwritingDecoder from "../../components/HandwritingDecoder";
 import NeuropixelsExplorer from "../../components/NeuropixelsExplorer";
@@ -32,6 +34,7 @@ const outline = headings.filter(h => h.depth === 2 || h.depth === 3);
 const subtitle = entry.data.description ?? "BCI device entry.";
 const titleNoPrefix = entry.data.title.replace(/^\d+\s*—\s*/, "");
 const deviceCodes = buildDeviceCodes(await getCollection("companies"), await getCollection("designs"), await getCollection("applications"));
+const measuredRecordings = recordingsForDevice(entry.data.device_id);
 const photo = getDevicePhoto(entry.data.device_id);
 const photoReference = getDevicePhotoReference(entry.data.device_id);
 ---
@@ -81,12 +84,15 @@ const photoReference = getDevicePhotoReference(entry.data.device_id);
     </section>}
 
     {outline.length > 0 && <nav class="sheetOutline" aria-label="Specification sheet sections">
+      {measuredRecordings.length > 0 && <a href="#measured-recordings">Measured recordings</a>}
       {outline.map(h => <a href={`#${h.slug}`}>{h.text.replaceAll("—", "-")}</a>)}
     </nav>}
 
     {entry.slug === "04-neuropixels-probe" && <NeuropixelsEngineering />}
 
     <section class="content"><Content /></section>
+
+    {measuredRecordings.length > 0 && <section id="measured-recordings" aria-label="Measured recordings for this interface"><RecordingLibrary entries={measuredRecordings} deviceId={entry.data.device_id} client:visible /></section>}
 
     {(getDeviceModel(entry.data.device_id) || ["BTSD-0001","BTSD-0004"].includes(entry.data.device_id)) && <details class="supplement"><summary>Models and reference visualizations</summary>
     {getDeviceModel(entry.data.device_id) && <DeviceModelViewer deviceId={entry.data.device_id} client:visible />}

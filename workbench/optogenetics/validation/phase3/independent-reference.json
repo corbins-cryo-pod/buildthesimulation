@@ -1,0 +1,808 @@
+{
+  "method": "SciPy expm (Pad\u00e9) for 48 frozen-generator cases; DOP853 for 9 chloride mass/relaxation cases",
+  "opsin": [
+    {
+      "opsin": "chronos",
+      "irradiance": 0,
+      "durationMs": 0.005,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.40048827367768214,
+        0.3495142263098179,
+        0.24999750001249996
+      ]
+    },
+    {
+      "opsin": "chronos",
+      "irradiance": 0,
+      "durationMs": 0.5,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.4456362209999696,
+        0.30461365404168667,
+        0.24975012495834376
+      ]
+    },
+    {
+      "opsin": "chronos",
+      "irradiance": 0,
+      "durationMs": 40,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.7692156825348574,
+        5.2308684836735075e-06,
+        0.23077908659665894
+      ]
+    },
+    {
+      "opsin": "chronos",
+      "irradiance": 0,
+      "durationMs": 500,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.9080301397071394,
+        1.6803122836217424e-61,
+        0.09196986029286058
+      ]
+    },
+    {
+      "opsin": "chronos",
+      "irradiance": 0.01,
+      "durationMs": 0.005,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.400460226135041,
+        0.34954170970883025,
+        0.2499980641561287
+      ]
+    },
+    {
+      "opsin": "chronos",
+      "irradiance": 0.01,
+      "durationMs": 0.5,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.44286672019928025,
+        0.30733025512395956,
+        0.2498030246767602
+      ]
+    },
+    {
+      "opsin": "chronos",
+      "irradiance": 0.01,
+      "durationMs": 40,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.7316255179803608,
+        0.036821908481642567,
+        0.23155257353799627
+      ]
+    },
+    {
+      "opsin": "chronos",
+      "irradiance": 0.01,
+      "durationMs": 500,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.8603778895498264,
+        0.043359813771872965,
+        0.09626229667830075
+      ]
+    },
+    {
+      "opsin": "chronos",
+      "irradiance": 0.5,
+      "durationMs": 0.005,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.3999452023451442,
+        0.3500463594723135,
+        0.2500084381825423
+      ]
+    },
+    {
+      "opsin": "chronos",
+      "irradiance": 0.5,
+      "durationMs": 0.5,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.3951490426789048,
+        0.3540010604390588,
+        0.2508498968820363
+      ]
+    },
+    {
+      "opsin": "chronos",
+      "irradiance": 0.5,
+      "durationMs": 40,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.34874118266266474,
+        0.3362086787381202,
+        0.31505013859921555
+      ]
+    },
+    {
+      "opsin": "chronos",
+      "irradiance": 0.5,
+      "durationMs": 500,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.2163000459345916,
+        0.20718821960403436,
+        0.5765117344613784
+      ]
+    },
+    {
+      "opsin": "chronos",
+      "irradiance": 10,
+      "durationMs": 0.005,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.3996449845838267,
+        0.3503405169274048,
+        0.2500144984887685
+      ]
+    },
+    {
+      "opsin": "chronos",
+      "irradiance": 10,
+      "durationMs": 0.5,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.36990094286995834,
+        0.3785771925381897,
+        0.251521864591852
+      ]
+    },
+    {
+      "opsin": "chronos",
+      "irradiance": 10,
+      "durationMs": 40,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.2481216175018706,
+        0.37024320135599065,
+        0.38163518114213935
+      ]
+    },
+    {
+      "opsin": "chronos",
+      "irradiance": 10,
+      "durationMs": 500,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.10811713696512418,
+        0.15891020523139246,
+        0.732972657803487
+      ]
+    },
+    {
+      "opsin": "chrimsonr",
+      "irradiance": 0,
+      "durationMs": 0.005,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.4001106079088113,
+        0.3498906420880637,
+        0.249998750003125
+      ]
+    },
+    {
+      "opsin": "chrimsonr",
+      "irradiance": 0,
+      "durationMs": 0.5,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.41089333668848727,
+        0.3392316320667204,
+        0.24987503124479232
+      ]
+    },
+    {
+      "opsin": "chrimsonr",
+      "irradiance": 0,
+      "durationMs": 40,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.7310728906935543,
+        0.028729749518364944,
+        0.2401973597880808
+      ]
+    },
+    {
+      "opsin": "chrimsonr",
+      "irradiance": 0,
+      "durationMs": 500,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.8483673350718323,
+        9.383513537236311e-15,
+        0.15163266492815836
+      ]
+    },
+    {
+      "opsin": "chrimsonr",
+      "irradiance": 0.01,
+      "durationMs": 0.005,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.4001008042572862,
+        0.34990027419583414,
+        0.24999892154687958
+      ]
+    },
+    {
+      "opsin": "chrimsonr",
+      "irradiance": 0.01,
+      "durationMs": 0.5,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.4099157536887831,
+        0.34019230418970403,
+        0.24989194212151286
+      ]
+    },
+    {
+      "opsin": "chrimsonr",
+      "irradiance": 0.01,
+      "durationMs": 40,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.684440594257659,
+        0.07476267852437558,
+        0.2407967272179654
+      ]
+    },
+    {
+      "opsin": "chrimsonr",
+      "irradiance": 0.01,
+      "durationMs": 500,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.784588152830825,
+        0.061265484916599694,
+        0.1541463622525737
+      ]
+    },
+    {
+      "opsin": "chrimsonr",
+      "irradiance": 0.5,
+      "durationMs": 0.005,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.3998606898312147,
+        0.35013618432531035,
+        0.25000312584347495
+      ]
+    },
+    {
+      "opsin": "chrimsonr",
+      "irradiance": 0.5,
+      "durationMs": 0.5,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.38669113327267357,
+        0.3629881980036465,
+        0.2503206687236799
+      ]
+    },
+    {
+      "opsin": "chrimsonr",
+      "irradiance": 0.5,
+      "durationMs": 40,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.2412378747481004,
+        0.4728929988322878,
+        0.28586912641961165
+      ]
+    },
+    {
+      "opsin": "chrimsonr",
+      "irradiance": 0.5,
+      "durationMs": 500,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.16211997224470123,
+        0.31446649610869876,
+        0.523413531646602
+      ]
+    },
+    {
+      "opsin": "chrimsonr",
+      "irradiance": 10,
+      "durationMs": 0.005,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.39963470801538065,
+        0.3503582044035614,
+        0.25000708758105794
+      ]
+    },
+    {
+      "opsin": "chrimsonr",
+      "irradiance": 10,
+      "durationMs": 0.5,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.3660472529895518,
+        0.38320404579008804,
+        0.25074870122036014
+      ]
+    },
+    {
+      "opsin": "chrimsonr",
+      "irradiance": 10,
+      "durationMs": 40,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.1397852828828013,
+        0.5199604170604659,
+        0.3402543000567325
+      ]
+    },
+    {
+      "opsin": "chrimsonr",
+      "irradiance": 10,
+      "durationMs": 500,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.057098041491441084,
+        0.20491755674726828,
+        0.7379844017612877
+      ]
+    },
+    {
+      "opsin": "gtacr2",
+      "irradiance": 0,
+      "durationMs": 0.005,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.4000445805976834,
+        0.34995625273426106,
+        0.24999916666805555
+      ]
+    },
+    {
+      "opsin": "gtacr2",
+      "irradiance": 0,
+      "durationMs": 0.5,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.4044310892731291,
+        0.3456522301728585,
+        0.24991668055401248
+      ]
+    },
+    {
+      "opsin": "gtacr2",
+      "irradiance": 0,
+      "durationMs": 40,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.6278207582517089,
+        0.1287578044100048,
+        0.24342143733828625
+      ]
+    },
+    {
+      "opsin": "gtacr2",
+      "irradiance": 0,
+      "durationMs": 500,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.8208658680279425,
+        1.3043286102275348e-06,
+        0.17913282764344732
+      ]
+    },
+    {
+      "opsin": "gtacr2",
+      "irradiance": 0.01,
+      "durationMs": 0.005,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.39986280494208015,
+        0.350137710145975,
+        0.24999948491194493
+      ]
+    },
+    {
+      "opsin": "gtacr2",
+      "irradiance": 0.01,
+      "durationMs": 0.5,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.38666691701239425,
+        0.3633839753926754,
+        0.24994910759493033
+      ]
+    },
+    {
+      "opsin": "gtacr2",
+      "irradiance": 0.01,
+      "durationMs": 40,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.1659607357679471,
+        0.5867576412631462,
+        0.24728162296890682
+      ]
+    },
+    {
+      "opsin": "gtacr2",
+      "irradiance": 0.01,
+      "durationMs": 500,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.16835735306492233,
+        0.6065423351318083,
+        0.22510031180326978
+      ]
+    },
+    {
+      "opsin": "gtacr2",
+      "irradiance": 0.5,
+      "durationMs": 0.005,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.3983813922862986,
+        0.3516165176435244,
+        0.250002090070177
+      ]
+    },
+    {
+      "opsin": "gtacr2",
+      "irradiance": 0.5,
+      "durationMs": 0.5,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.26810965934537084,
+        0.48162327965615925,
+        0.2502670609984699
+      ]
+    },
+    {
+      "opsin": "gtacr2",
+      "irradiance": 0.5,
+      "durationMs": 40,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.020955431424582643,
+        0.689711126175697,
+        0.28933344239971953
+      ]
+    },
+    {
+      "opsin": "gtacr2",
+      "irradiance": 0.5,
+      "durationMs": 500,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.013216266901322696,
+        0.4251862573711884,
+        0.5615974757274829
+      ]
+    },
+    {
+      "opsin": "gtacr2",
+      "irradiance": 10,
+      "durationMs": 0.005,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.39806928895476573,
+        0.3519280694834311,
+        0.2500026415618032
+      ]
+    },
+    {
+      "opsin": "gtacr2",
+      "irradiance": 10,
+      "durationMs": 0.5,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.24820331968920664,
+        0.5014522142839836,
+        0.25034446602680976
+      ]
+    },
+    {
+      "opsin": "gtacr2",
+      "irradiance": 10,
+      "durationMs": 40,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.01751171876707994,
+        0.684474406117148,
+        0.2980138751157717
+      ]
+    },
+    {
+      "opsin": "gtacr2",
+      "irradiance": 10,
+      "durationMs": 500,
+      "initial": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "expected": [
+        0.010051954092744411,
+        0.38153650953653223,
+        0.6084115363707239
+      ]
+    }
+  ],
+  "chloride": [
+    {
+      "currentNa": -0.05,
+      "durationMs": 0.005,
+      "volumeUm3": 1000.0,
+      "initialMm": 8.0,
+      "targetMm": 5.0,
+      "tauMs": 400.0,
+      "expectedMm": 7.999959909183154
+    },
+    {
+      "currentNa": -0.05,
+      "durationMs": 100,
+      "volumeUm3": 1000.0,
+      "initialMm": 8.0,
+      "targetMm": 5.0,
+      "tauMs": 400.0,
+      "expectedMm": 7.290550982572617
+    },
+    {
+      "currentNa": -0.05,
+      "durationMs": 1000,
+      "volumeUm3": 1000.0,
+      "initialMm": 8.0,
+      "targetMm": 5.0,
+      "tauMs": 400.0,
+      "expectedMm": 5.055984623949418
+    },
+    {
+      "currentNa": 0,
+      "durationMs": 0.005,
+      "volumeUm3": 1000.0,
+      "initialMm": 8.0,
+      "targetMm": 5.0,
+      "tauMs": 400.0,
+      "expectedMm": 7.999962500234374
+    },
+    {
+      "currentNa": 0,
+      "durationMs": 100,
+      "volumeUm3": 1000.0,
+      "initialMm": 8.0,
+      "targetMm": 5.0,
+      "tauMs": 400.0,
+      "expectedMm": 7.3364023492142225
+    },
+    {
+      "currentNa": 0,
+      "durationMs": 1000,
+      "volumeUm3": 1000.0,
+      "initialMm": 8.0,
+      "targetMm": 5.0,
+      "tauMs": 400.0,
+      "expectedMm": 5.246254995871753
+    },
+    {
+      "currentNa": 0.4,
+      "durationMs": 0.005,
+      "volumeUm3": 1000.0,
+      "initialMm": 8.0,
+      "targetMm": 5.0,
+      "tauMs": 400.0,
+      "expectedMm": 7.999983228644134
+    },
+    {
+      "currentNa": 0.4,
+      "durationMs": 100,
+      "volumeUm3": 1000.0,
+      "initialMm": 8.0,
+      "targetMm": 5.0,
+      "tauMs": 400.0,
+      "expectedMm": 7.70321328234712
+    },
+    {
+      "currentNa": 0.4,
+      "durationMs": 1000,
+      "volumeUm3": 1000.0,
+      "initialMm": 8.0,
+      "targetMm": 5.0,
+      "tauMs": 400.0,
+      "expectedMm": 6.7684179712504005
+    }
+  ]
+}

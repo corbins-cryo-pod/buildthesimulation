@@ -1,0 +1,48 @@
+{
+  "checkedOn": "2026-10-25",
+  "checks": [
+    {
+      "id": "p1-s1-trial6",
+      "samplesExact": 32000,
+      "cueMatchesCSV": true
+    },
+    {
+      "id": "p1-s1-trial11",
+      "samplesExact": 32000,
+      "cueMatchesCSV": true
+    },
+    {
+      "id": "p1-s1-trial16",
+      "samplesExact": 32000,
+      "cueMatchesCSV": true
+    },
+    {
+      "id": "cuff-300ua",
+      "samplesExact": 10000,
+      "rateMatchesABF": true
+    },
+    {
+      "id": "cuff-500ua",
+      "samplesExact": 10000,
+      "rateMatchesABF": true
+    },
+    {
+      "id": "cuff-700ua",
+      "samplesExact": 10000,
+      "rateMatchesABF": true
+    }
+  ],
+  "numericSamplesVerified": 126000,
+  "allFinite": true,
+  "pyABFVersion": "2.3.8",
+  "files": {
+    "mirpni.json": {
+      "bytes": 1029742,
+      "sha256": "9f005c56e58451b96eba85278f4f32b8770281b261c4cc4057c1c085a738580f"
+    },
+    "sparc-cuff.json": {
+      "bytes": 408291,
+      "sha256": "f8f3d58f4d094759e59257cd9cd40c581acce3802931e01287fa8d3d022d9e15"
+    }
+  }
+}

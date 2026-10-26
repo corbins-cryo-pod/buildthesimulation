@@ -1,0 +1,958 @@
+{
+  "schema": "cell-growth-mechanics-verification/2",
+  "modelVersion": "cell-growth/2.1.0",
+  "runtime": "v24.22.1",
+  "empiricalCalibration": false,
+  "sourceSha256": {
+    "src/lib/cell-growth/engine.js": "ec89b70838b1201427e2382a5e1cc262bfa16527b945ba2334b348dad250b124",
+    "src/lib/cell-growth/behavior.js": "7f2e067330b0a2c3803ae4ce5ad2eadd9c903a29d532175a0abb48d86251346c",
+    "tests/cell-growth-behavior.mjs": "1cf9be4fbcfd90688deb94617d0db774aa62a479c65b81f3b791a5c080215163",
+    "src/lib/cell-growth/mechanics.js": "af8849413444de001215fbfe7b123370d4ffaceb41528ea7e3d80bb1fb919ad7",
+    "src/lib/cell-growth/exploration.js": "ab8e024cba21d655b724863c0e8c534d13004d8b3b3eabef87e68189f772b034",
+    "src/lib/cell-growth/geometry.js": "97a1269bf12765443dc2b275ee5b1ad3f7943cf5de442ebf82785b3c924e24f4",
+    "src/lib/cell-growth/render-geometry.js": "09a1cc596cc53e26630cdce5471784feaa322b211a60034342fcbda7ca9509b7",
+    "tests/cell-growth-mechanics.mjs": "8d7633fe6b6d712d03cb36f96577d154b1452a898489fcbedbaab6f91010f680",
+    "scripts/validate-cell-growth-mechanics.mjs": "d50e9abff9397210402415577063bcd4338c375aaa27c656544d8d5f2a78da6f"
+  },
+  "checks": [
+    {
+      "id": "analytic-energy-gradient",
+      "passed": true,
+      "value": 1.6281164327835995e-7,
+      "limit": 0.00002,
+      "unit": "pN"
+    },
+    {
+      "id": "polarized-locomotion",
+      "passed": true,
+      "value": 19.436004112248234,
+      "unit": "µm over 8 h"
+    },
+    {
+      "id": "zero-active-no-propulsion",
+      "passed": true,
+      "value": 0.000006077920991841441,
+      "unit": "µm"
+    },
+    {
+      "id": "zero-adhesion-no-motor-traction",
+      "passed": true,
+      "value": 0.017862046313387617,
+      "unit": "µm"
+    },
+    {
+      "id": "default-volume-and-area-constraints",
+      "passed": true,
+      "value": {
+        "volume": 0.005810063917115471,
+        "area": -0.003677885716567908
+      }
+    },
+    {
+      "id": "outer-timestep-subcycling-invariance",
+      "passed": true,
+      "value": 0,
+      "limit": 0.01,
+      "unit": "µm"
+    },
+    {
+      "id": "nucleus-contained",
+      "passed": true,
+      "value": 0,
+      "unit": "µm"
+    },
+    {
+      "id": "mechanical-save-resume",
+      "passed": true
+    },
+    {
+      "id": "stress-mesh-11",
+      "passed": true,
+      "value": {
+        "quality": 0.10005004336209872,
+        "rejectedSteps": 288,
+        "areaStrain": [
+          0.29008431797512824
+        ],
+        "volumeStrain": [
+          0.014653163352811527
+        ]
+      }
+    },
+    {
+      "id": "stress-mesh-12",
+      "passed": true,
+      "value": {
+        "quality": 0.6066188625575019,
+        "rejectedSteps": 0,
+        "areaStrain": [
+          0.06568080089389627
+        ],
+        "volumeStrain": [
+          0.010046381970471918
+        ]
+      }
+    },
+    {
+      "id": "stress-mesh-13",
+      "passed": true,
+      "value": {
+        "quality": 0.8808014247684531,
+        "rejectedSteps": 0,
+        "areaStrain": [
+          -0.03324725023226083
+        ],
+        "volumeStrain": [
+          0.005126543213118895
+        ]
+      }
+    },
+    {
+      "id": "actual-mechanics-step-refinement",
+      "passed": true,
+      "value": [
+        {
+          "maxStepHours": 0.0125,
+          "centroidDifferenceUm": 0.013582359605466915,
+          "vertexRmsDifferenceUm": 0.013651671719695875
+        },
+        {
+          "maxStepHours": 0.00625,
+          "centroidDifferenceUm": 0.004533343513984328,
+          "vertexRmsDifferenceUm": 0.00455649007021017
+        },
+        {
+          "maxStepHours": 0.003125,
+          "centroidDifferenceUm": 0,
+          "vertexRmsDifferenceUm": 0
+        }
+      ]
+    },
+    {
+      "id": "source-unchanged",
+      "passed": true
+    }
+  ],
+  "allAcceptancePassed": true,
+  "mechanicsConstants": {
+    "maxStepHours": 0.0125,
+    "vertexDrag": 3,
+    "nucleusDrag": 45,
+    "areaModulus": 45,
+    "volumeModulus": 180,
+    "cortexSpring": 48,
+    "bendingSpring": 24,
+    "nucleusSpring": 70,
+    "protrusionPn": 18,
+    "tractionPn": 620,
+    "adhesionOn": 5,
+    "adhesionOff": 0.8,
+    "cellAdhesionRange": 7,
+    "cellAdhesionPn": 900
+  },
+  "mechanicalStepResults": [
+    {
+      "maxStepHours": 0.0125,
+      "centroidDifferenceUm": 0.013582359605466915,
+      "vertexRmsDifferenceUm": 0.013651671719695875
+    },
+    {
+      "maxStepHours": 0.00625,
+      "centroidDifferenceUm": 0.004533343513984328,
+      "vertexRmsDifferenceUm": 0.00455649007021017
+    },
+    {
+      "maxStepHours": 0.003125,
+      "centroidDifferenceUm": 0,
+      "vertexRmsDifferenceUm": 0
+    }
+  ],
+  "measurements": [
+    {
+      "id": "polarized-cell",
+      "config": {
+        "mode": "culture",
+        "source": "stem",
+        "cellCount": 1,
+        "seed": 714,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 0,
+        "noise": 0,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1
+      },
+      "hours": 8,
+      "wallMs": 1736.048364,
+      "displacementUm": [
+        19.436004112248234
+      ],
+      "speedUmPerHour": [
+        2.833264353288776
+      ],
+      "areaStrain": [
+        -0.003677885716567908
+      ],
+      "volumeStrain": [
+        0.005810063917115471
+      ],
+      "minimumTriangleQuality": 0.8162174139950633,
+      "rejectedSteps": 0
+    },
+    {
+      "id": "no-active-cortex",
+      "config": {
+        "mode": "culture",
+        "source": "stem",
+        "cellCount": 1,
+        "seed": 714,
+        "dtHours": 0.05,
+        "actin": 0,
+        "microtubules": 0,
+        "tension": 1,
+        "adhesion": 0,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 0,
+        "noise": 0,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 0,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1
+      },
+      "hours": 8,
+      "wallMs": 1107.6036800000002,
+      "displacementUm": [
+        0.000006077920991841441
+      ],
+      "speedUmPerHour": [
+        0.000001990175396061936
+      ],
+      "areaStrain": [
+        -0.02376972679020961
+      ],
+      "volumeStrain": [
+        0.0035474728038484837
+      ],
+      "minimumTriangleQuality": 0.8537824532430035,
+      "rejectedSteps": 0
+    },
+    {
+      "id": "no-substrate-adhesion",
+      "config": {
+        "mode": "culture",
+        "source": "stem",
+        "cellCount": 1,
+        "seed": 714,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 0,
+        "noise": 0,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1
+      },
+      "hours": 8,
+      "wallMs": 1028.622113,
+      "displacementUm": [
+        0.017862046313387617
+      ],
+      "speedUmPerHour": [
+        0.00042160584837959067
+      ],
+      "areaStrain": [
+        -0.011466350325438412
+      ],
+      "volumeStrain": [
+        0.005813134134103448
+      ],
+      "minimumTriangleQuality": 0.8311419372653851,
+      "rejectedSteps": 0
+    },
+    {
+      "id": "locomotion-dt-0.05",
+      "config": {
+        "mode": "culture",
+        "source": "stem",
+        "cellCount": 1,
+        "seed": 714,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 0,
+        "noise": 0,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1
+      },
+      "hours": 4,
+      "wallMs": 338.4466139999995,
+      "displacementUm": [
+        8.30405362773511
+      ],
+      "speedUmPerHour": [
+        2.693846595195688
+      ],
+      "areaStrain": [
+        -0.0030069945813988586
+      ],
+      "volumeStrain": [
+        0.005789239713656524
+      ],
+      "minimumTriangleQuality": 0.8169238911522134,
+      "rejectedSteps": 0
+    },
+    {
+      "id": "locomotion-dt-0.025",
+      "config": {
+        "mode": "culture",
+        "source": "stem",
+        "cellCount": 1,
+        "seed": 714,
+        "dtHours": 0.025,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 0,
+        "noise": 0,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1
+      },
+      "hours": 4,
+      "wallMs": 381.83549700000003,
+      "displacementUm": [
+        8.30405362773511
+      ],
+      "speedUmPerHour": [
+        2.693846595195688
+      ],
+      "areaStrain": [
+        -0.0030069945813988586
+      ],
+      "volumeStrain": [
+        0.005789239713656524
+      ],
+      "minimumTriangleQuality": 0.8169238911522134,
+      "rejectedSteps": 0
+    },
+    {
+      "id": "locomotion-dt-0.0125",
+      "config": {
+        "mode": "culture",
+        "source": "stem",
+        "cellCount": 1,
+        "seed": 714,
+        "dtHours": 0.0125,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 0,
+        "noise": 0,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1
+      },
+      "hours": 4,
+      "wallMs": 400.8644549999999,
+      "displacementUm": [
+        8.30405362773511
+      ],
+      "speedUmPerHour": [
+        2.693846595195688
+      ],
+      "areaStrain": [
+        -0.0030069945813988586
+      ],
+      "volumeStrain": [
+        0.005789239713656524
+      ],
+      "minimumTriangleQuality": 0.8169238911522134,
+      "rejectedSteps": 0
+    },
+    {
+      "id": "scaling-1",
+      "config": {
+        "mode": "culture",
+        "source": "stem",
+        "cellCount": 1,
+        "seed": 714,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 0,
+        "noise": 0,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1.8
+      },
+      "hours": 2,
+      "wallMs": 214.2136440000004,
+      "displacementUm": [
+        3.190724489748529
+      ],
+      "speedUmPerHour": [
+        2.3325827618832964
+      ],
+      "areaStrain": [
+        -0.002216766119118363
+      ],
+      "volumeStrain": [
+        0.0062094766604186
+      ],
+      "minimumTriangleQuality": 0.8062919620832251,
+      "rejectedSteps": 0
+    },
+    {
+      "id": "scaling-6",
+      "config": {
+        "mode": "culture",
+        "source": "stem",
+        "cellCount": 6,
+        "seed": 714,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 0,
+        "noise": 0,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1.8
+      },
+      "hours": 2,
+      "wallMs": 1334.9022240000004,
+      "displacementUm": [
+        3.3277234826972104,
+        3.517801968061687,
+        3.5426016388109143,
+        3.3377692286449046,
+        3.3429151913366426,
+        3.286047920780922
+      ],
+      "speedUmPerHour": [
+        2.410596804151538,
+        2.5114563353767863,
+        2.523330048758323,
+        2.419958456893282,
+        2.4206878155635834,
+        2.3922959330886564
+      ],
+      "areaStrain": [
+        -0.0013094617960193178,
+        -0.0031429623332437373,
+        -0.0030177140357329213,
+        -0.0011835710159993074,
+        -0.001954835410525546,
+        -0.0012256189670788453
+      ],
+      "volumeStrain": [
+        0.00595377557188459,
+        0.00538661055206191,
+        0.0052835903743517765,
+        0.0059394482293260165,
+        0.005940480715821206,
+        0.006218309436554659
+      ],
+      "minimumTriangleQuality": 0.7781467663833717,
+      "rejectedSteps": 0
+    },
+    {
+      "id": "scaling-12",
+      "config": {
+        "mode": "culture",
+        "source": "stem",
+        "cellCount": 12,
+        "seed": 714,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 0,
+        "noise": 0,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1.8
+      },
+      "hours": 2,
+      "wallMs": 1803.505924,
+      "displacementUm": [
+        3.3277234826972104,
+        3.517801968061687,
+        3.5426016388109143,
+        3.3377692286449046,
+        3.3429151913366426,
+        3.286047920780922,
+        3.4530733623402226,
+        3.535181501571391,
+        3.4581622192806467,
+        3.658498376248989,
+        3.504040548903975,
+        3.6155850076981966
+      ],
+      "speedUmPerHour": [
+        2.410596804151538,
+        2.5114563353767863,
+        2.523330048758323,
+        2.419958456893282,
+        2.4206878155635834,
+        2.3922959330886564,
+        2.4755055043289733,
+        2.526677740428174,
+        2.48578475928204,
+        2.6374608261184873,
+        2.513042132358639,
+        2.7193603001888085
+      ],
+      "areaStrain": [
+        -0.0013094617960193178,
+        -0.0031429623332437373,
+        -0.0030177140357329213,
+        -0.0011835710159993074,
+        -0.001954835410525546,
+        -0.0012256189670788453,
+        -0.0021444397907396384,
+        -0.003009909143350753,
+        -0.003341368190017624,
+        -0.0035247169575414183,
+        -0.002831353379876944,
+        -0.0013743662476539686
+      ],
+      "volumeStrain": [
+        0.00595377557188459,
+        0.00538661055206191,
+        0.0052835903743517765,
+        0.0059394482293260165,
+        0.005940480715821206,
+        0.006218309436554659,
+        0.00552200882108167,
+        0.0054424048913519485,
+        0.005737180263346131,
+        0.005349913105182846,
+        0.005560962401420122,
+        0.005879345881949938
+      ],
+      "minimumTriangleQuality": 0.7781467663833717,
+      "rejectedSteps": 0
+    },
+    {
+      "id": "scaling-24",
+      "config": {
+        "mode": "culture",
+        "source": "stem",
+        "cellCount": 24,
+        "seed": 714,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 0,
+        "noise": 0,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1.8
+      },
+      "hours": 2,
+      "wallMs": 2789.113292,
+      "displacementUm": [
+        3.7763527165290243,
+        3.517801968061687,
+        3.5426016388109143,
+        3.3377692286449046,
+        2.9500483842152865,
+        3.597263392611636,
+        3.8173402075257727,
+        3.535181501571391,
+        3.4581622192806467,
+        3.658498376248989,
+        3.504040548903975,
+        3.6155850076981966,
+        3.389876499855767,
+        3.3072019655610325,
+        2.754271867236085,
+        3.41126381898967,
+        4.136259295823287,
+        3.5331392702124433,
+        3.403952551329698,
+        3.2923454187122903,
+        3.300781672090691,
+        3.4659450534848384,
+        3.3852828779876396,
+        3.4584963039252505
+      ],
+      "speedUmPerHour": [
+        0.17901592011489753,
+        2.5114563353767863,
+        2.523330048758323,
+        2.419958456893282,
+        2.0651743081999316,
+        2.744882133281726,
+        2.838255454603296,
+        2.526677740428174,
+        2.48578475928204,
+        2.6374608261184873,
+        2.513042132358639,
+        2.7193603001888085,
+        2.4108589487465197,
+        2.333858893912004,
+        1.88285400692238,
+        2.462074980209558,
+        3.006831987234179,
+        2.5199533302743444,
+        2.4535892522499796,
+        2.3928829780341245,
+        2.4053643455566664,
+        2.487658038376961,
+        2.440535774552319,
+        2.4821431855166667
+      ],
+      "areaStrain": [
+        -0.0013884530485079871,
+        -0.0031429623332437373,
+        -0.0030177140357329213,
+        -0.0011835710159993074,
+        -0.0019213916373821416,
+        -0.0012651801538944296,
+        -0.002185732990287348,
+        -0.003009909143350753,
+        -0.003341368190017624,
+        -0.0035247169575414183,
+        -0.002831353379876944,
+        -0.0013743662476539686,
+        -0.0028854065139528595,
+        -0.0027917043507867945,
+        -0.002910132752096284,
+        -0.0028910222233679006,
+        -0.002756308032364485,
+        -0.00292332576371257,
+        -0.0018995802228993774,
+        -0.001532454526693372,
+        -0.0013185455921604916,
+        -0.002544085753891978,
+        -0.001697198757313445,
+        -0.0023716929087227445
+      ],
+      "volumeStrain": [
+        0.005975370902772781,
+        0.00538661055206191,
+        0.0052835903743517765,
+        0.0059394482293260165,
+        0.0059457300889429465,
+        0.006211795159067002,
+        0.0055164256959958635,
+        0.0054424048913519485,
+        0.005737180263346131,
+        0.005349913105182846,
+        0.005560962401420122,
+        0.005879345881949938,
+        0.005716630774140308,
+        0.005643260322718335,
+        0.005373776890660986,
+        0.005869500352477353,
+        0.005795382171043473,
+        0.005336367323883318,
+        0.005685070252909208,
+        0.00612617714451269,
+        0.006246750960568814,
+        0.005532911380460526,
+        0.005738141180269052,
+        0.005568615051227743
+      ],
+      "minimumTriangleQuality": 0.7781467663833717,
+      "rejectedSteps": 0
+    },
+    {
+      "id": "stress-case",
+      "config": {
+        "mode": "culture",
+        "source": "stem",
+        "cellCount": 1,
+        "seed": 714,
+        "dtHours": 0.05,
+        "actin": 3,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 0,
+        "noise": 0,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 3,
+        "contractility": 1,
+        "cortexStiffness": 0.2,
+        "bending": 0,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1
+      },
+      "hours": 4,
+      "wallMs": 431.7888039999998,
+      "displacementUm": [
+        1.335881479729588
+      ],
+      "speedUmPerHour": [
+        0
+      ],
+      "areaStrain": [
+        0.29008431797512824
+      ],
+      "volumeStrain": [
+        0.014653163352811527
+      ],
+      "minimumTriangleQuality": 0.10005004336209872,
+      "rejectedSteps": 288
+    },
+    {
+      "id": "stress-case",
+      "config": {
+        "mode": "culture",
+        "source": "stem",
+        "cellCount": 1,
+        "seed": 714,
+        "dtHours": 0.05,
+        "actin": 2,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 0,
+        "noise": 0,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 3,
+        "contractility": 1,
+        "cortexStiffness": 3,
+        "bending": 3,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1
+      },
+      "hours": 4,
+      "wallMs": 177.28505600000062,
+      "displacementUm": [
+        29.305611233720107
+      ],
+      "speedUmPerHour": [
+        9.36835348958059
+      ],
+      "areaStrain": [
+        0.06568080089389627
+      ],
+      "volumeStrain": [
+        0.010046381970471918
+      ],
+      "minimumTriangleQuality": 0.6066188625575019,
+      "rejectedSteps": 0
+    },
+    {
+      "id": "stress-case",
+      "config": {
+        "mode": "culture",
+        "source": "stem",
+        "cellCount": 1,
+        "seed": 714,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 4,
+        "adhesion": 1,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 0,
+        "noise": 0,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 0,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1
+      },
+      "hours": 4,
+      "wallMs": 202.67123300000094,
+      "displacementUm": [
+        0.08793299476028973
+      ],
+      "speedUmPerHour": [
+        0.017091304635843168
+      ],
+      "areaStrain": [
+        -0.03324725023226083
+      ],
+      "volumeStrain": [
+        0.005126543213118895
+      ],
+      "minimumTriangleQuality": 0.8808014247684531,
+      "rejectedSteps": 0
+    }
+  ],
+  "scope": "Numerical controls of a reduced membrane–cortex model. The fixed 162-node topology is not a spatial convergence study; no population-specific biological calibration is claimed.",
+  "comparisonContext": {
+    "growthConeFlow": {
+      "modelUnloadedUmPerMinute": 1.1,
+      "NG108_15MeasuredUmPerMinute": 1.46,
+      "NG108_15SEM": 0.6,
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3158236/",
+      "interpretation": "Unlike preparations and a model unloaded parameter versus measured flow; scale context only, not a validation score."
+    }
+  },
+  "limitations": [
+    "Fixed triangulation and umbrella curvature regularizer, not molecular membrane or continuum mesh convergence.",
+    "Conservative enclosing soma contacts may prevent passage through gaps that a deforming real cell could traverse.",
+    "Spherical constrained nucleus; no nuclear envelope/chromatin model.",
+    "Phenomenological motility, polarity and differentiation kinetics; 3D coupling is not calibrated organoid morphogenesis.",
+    "Anchored distal neurites, not an elastic beam network.",
+    "Whole-cell lipid conservation is not claimed; the extension reserve ledger includes moving root length.",
+    "Microscopy-inspired rendering, not optical image-formation physics."
+  ]
+}
