@@ -1,0 +1,228 @@
+{
+  "schema": "bts.prima.physics-validation.v1",
+  "fixtureSha256": "930394ddb4c78e11be43c0a7e145e14e33c3b261b41b5fd7127e066fbb85c6ee",
+  "provenance": {
+    "pythonSeries": "3.12",
+    "numpy": "1.26.4",
+    "scipy": "1.13.1",
+    "generator": "Independent augmented shared-return solve, global Newton/Cholesky, adaptive DOP853",
+    "roundedSignificantDigits": 10,
+    "scope": "Numerical verification of the documented reduced model; not measured PRIMA device data"
+  },
+  "validationScope": "Independent numerical verification of the reduced circuit and source basis; no commercial device or patient validation",
+  "referenceCases": {
+    "hankelIntegrals": 6,
+    "independentSmallNetworks": 4,
+    "fullArrayPixels": 378
+  },
+  "browserResidualGatePa": 0.2,
+  "productionDiscretization": {
+    "maximumTimeStepMs": 0.05,
+    "returnSegmentsPerHexSide": 16
+  },
+  "minFullArrayPortResistanceEigenvalueOhm": 70610.99009,
+  "convergence": {
+    "time": [
+      {
+        "case": "seven-center",
+        "timeStepMs": 0.2,
+        "maxPhaseChargeErrorRelativeToPeak": 0.004852364468,
+        "maxSnapshotCurrentErrorRelativeToPeak": 0.05986528165,
+        "maxSnapshotCurrentErrorUa": 0.1472218562,
+        "maxSnapshotCurrentErrorRelativeToPeakPhotocurrent": 0.02416168139,
+        "referencePeakSnapshotCurrentUa": 2.459219302
+      },
+      {
+        "case": "seven-center",
+        "timeStepMs": 0.1,
+        "maxPhaseChargeErrorRelativeToPeak": 0.002389251614,
+        "maxSnapshotCurrentErrorRelativeToPeak": 0.03053888214,
+        "maxSnapshotCurrentErrorUa": 0.07510180842,
+        "maxSnapshotCurrentErrorRelativeToPeakPhotocurrent": 0.01232552023,
+        "referencePeakSnapshotCurrentUa": 2.459219302
+      },
+      {
+        "case": "seven-center",
+        "timeStepMs": 0.05,
+        "maxPhaseChargeErrorRelativeToPeak": 0.001184760555,
+        "maxSnapshotCurrentErrorRelativeToPeak": 0.01542729375,
+        "maxSnapshotCurrentErrorUa": 0.03793909857,
+        "maxSnapshotCurrentErrorRelativeToPeakPhotocurrent": 0.0062264696,
+        "referencePeakSnapshotCurrentUa": 2.459219302
+      },
+      {
+        "case": "seven-center",
+        "timeStepMs": 0.025,
+        "maxPhaseChargeErrorRelativeToPeak": 0.0005898301368,
+        "maxSnapshotCurrentErrorRelativeToPeak": 0.007753951789,
+        "maxSnapshotCurrentErrorUa": 0.01906866791,
+        "maxSnapshotCurrentErrorRelativeToPeakPhotocurrent": 0.003129501899,
+        "referencePeakSnapshotCurrentUa": 2.459219302
+      },
+      {
+        "case": "seven-pattern",
+        "timeStepMs": 0.2,
+        "maxPhaseChargeErrorRelativeToPeak": 0.007342738841,
+        "maxSnapshotCurrentErrorRelativeToPeak": 0.0001931107223,
+        "maxSnapshotCurrentErrorUa": 0.0006039977658,
+        "maxSnapshotCurrentErrorRelativeToPeakPhotocurrent": 0.0001734715444,
+        "referencePeakSnapshotCurrentUa": 3.127727754
+      },
+      {
+        "case": "seven-pattern",
+        "timeStepMs": 0.1,
+        "maxPhaseChargeErrorRelativeToPeak": 0.003690543535,
+        "maxSnapshotCurrentErrorRelativeToPeak": 9.707504403e-05,
+        "maxSnapshotCurrentErrorUa": 0.0003036243094,
+        "maxSnapshotCurrentErrorRelativeToPeakPhotocurrent": 8.72026038e-05,
+        "referencePeakSnapshotCurrentUa": 3.127727754
+      },
+      {
+        "case": "seven-pattern",
+        "timeStepMs": 0.05,
+        "maxPhaseChargeErrorRelativeToPeak": 0.002110876336,
+        "maxSnapshotCurrentErrorRelativeToPeak": 5.834755355e-05,
+        "maxSnapshotCurrentErrorUa": 0.0001824952626,
+        "maxSnapshotCurrentErrorRelativeToPeakPhotocurrent": 5.24136625e-05,
+        "referencePeakSnapshotCurrentUa": 3.127727754
+      },
+      {
+        "case": "seven-pattern",
+        "timeStepMs": 0.025,
+        "maxPhaseChargeErrorRelativeToPeak": 0.001057012098,
+        "maxSnapshotCurrentErrorRelativeToPeak": 2.922734784e-05,
+        "maxSnapshotCurrentErrorUa": 9.141518701e-05,
+        "maxSnapshotCurrentErrorRelativeToPeakPhotocurrent": 2.625495419e-05,
+        "referencePeakSnapshotCurrentUa": 3.127727754
+      },
+      {
+        "case": "seven-low-conductivity",
+        "timeStepMs": 0.2,
+        "maxPhaseChargeErrorRelativeToPeak": 0.01178145467,
+        "maxSnapshotCurrentErrorRelativeToPeak": 0.01992898214,
+        "maxSnapshotCurrentErrorUa": 0.03632230439,
+        "maxSnapshotCurrentErrorRelativeToPeakPhotocurrent": 0.005961125399,
+        "referencePeakSnapshotCurrentUa": 1.822587032
+      },
+      {
+        "case": "seven-low-conductivity",
+        "timeStepMs": 0.1,
+        "maxPhaseChargeErrorRelativeToPeak": 0.005938211558,
+        "maxSnapshotCurrentErrorRelativeToPeak": 0.01008542405,
+        "maxSnapshotCurrentErrorUa": 0.01838156307,
+        "maxSnapshotCurrentErrorRelativeToPeakPhotocurrent": 0.003016735979,
+        "referencePeakSnapshotCurrentUa": 1.822587032
+      },
+      {
+        "case": "seven-low-conductivity",
+        "timeStepMs": 0.05,
+        "maxPhaseChargeErrorRelativeToPeak": 0.002981138013,
+        "maxSnapshotCurrentErrorRelativeToPeak": 0.005073588401,
+        "maxSnapshotCurrentErrorUa": 0.009247056423,
+        "maxSnapshotCurrentErrorRelativeToPeakPhotocurrent": 0.001517603682,
+        "referencePeakSnapshotCurrentUa": 1.822587032
+      },
+      {
+        "case": "seven-low-conductivity",
+        "timeStepMs": 0.025,
+        "maxPhaseChargeErrorRelativeToPeak": 0.001493597565,
+        "maxSnapshotCurrentErrorRelativeToPeak": 0.002544595925,
+        "maxSnapshotCurrentErrorUa": 0.004637747534,
+        "maxSnapshotCurrentErrorRelativeToPeakPhotocurrent": 0.0007611354807,
+        "referencePeakSnapshotCurrentUa": 1.822587032
+      },
+      {
+        "case": "seven-low-capacitance",
+        "timeStepMs": 0.2,
+        "maxPhaseChargeErrorRelativeToPeak": 1.078625522e-07,
+        "maxSnapshotCurrentErrorRelativeToPeak": 2.019134291,
+        "maxSnapshotCurrentErrorUa": 0.0001397411572,
+        "maxSnapshotCurrentErrorRelativeToPeakPhotocurrent": 2.293396786e-05,
+        "referencePeakSnapshotCurrentUa": 6.920845131e-05
+      },
+      {
+        "case": "seven-low-capacitance",
+        "timeStepMs": 0.1,
+        "maxPhaseChargeErrorRelativeToPeak": 3.14813009e-08,
+        "maxSnapshotCurrentErrorRelativeToPeak": 0.8389820484,
+        "maxSnapshotCurrentErrorUa": 5.806464825e-05,
+        "maxSnapshotCurrentErrorRelativeToPeakPhotocurrent": 9.529424281e-06,
+        "referencePeakSnapshotCurrentUa": 6.920845131e-05
+      },
+      {
+        "case": "seven-low-capacitance",
+        "timeStepMs": 0.05,
+        "maxPhaseChargeErrorRelativeToPeak": 1.171268402e-08,
+        "maxSnapshotCurrentErrorRelativeToPeak": 0.37588388,
+        "maxSnapshotCurrentErrorUa": 2.601434121e-05,
+        "maxSnapshotCurrentErrorRelativeToPeakPhotocurrent": 4.269408362e-06,
+        "referencePeakSnapshotCurrentUa": 6.920845131e-05
+      },
+      {
+        "case": "seven-low-capacitance",
+        "timeStepMs": 0.025,
+        "maxPhaseChargeErrorRelativeToPeak": 5.05190526e-09,
+        "maxSnapshotCurrentErrorRelativeToPeak": 0.1775352855,
+        "maxSnapshotCurrentErrorUa": 1.228694216e-05,
+        "maxSnapshotCurrentErrorRelativeToPeakPhotocurrent": 2.016502097e-06,
+        "referencePeakSnapshotCurrentUa": 6.920845131e-05
+      }
+    ],
+    "fullArrayTime": {
+      "coarseStepMs": 0.05,
+      "fineStepMs": 0.025,
+      "phaseChargeChangeRelativeToFinePeak": 0.0005740110334,
+      "snapshotCurrentChangeRelativeToFinePeak": 0.009616802855
+    },
+    "returnBasis": [
+      {
+        "returnSegmentsPerSide": 4,
+        "potentialMv": [
+          4.726087254,
+          4.900700292,
+          35.18512983,
+          25.083245,
+          12.98776459,
+          -2.772104507
+        ],
+        "potentialChangeRelativeToPeak": null
+      },
+      {
+        "returnSegmentsPerSide": 8,
+        "potentialMv": [
+          3.724854798,
+          3.932895346,
+          31.76369632,
+          22.82472583,
+          11.51211178,
+          -2.487100495
+        ],
+        "potentialChangeRelativeToPeak": 0.1077152194
+      },
+      {
+        "returnSegmentsPerSide": 16,
+        "potentialMv": [
+          3.606790116,
+          3.824526,
+          31.34295249,
+          22.54416469,
+          11.33464066,
+          -2.452261855
+        ],
+        "potentialChangeRelativeToPeak": 0.0134238735
+      },
+      {
+        "returnSegmentsPerSide": 32,
+        "potentialMv": [
+          3.604456413,
+          3.823383286,
+          31.33552821,
+          22.53880561,
+          11.33168103,
+          -2.451611068
+        ],
+        "potentialChangeRelativeToPeak": 0.0002369285001
+      }
+    ]
+  }
+}

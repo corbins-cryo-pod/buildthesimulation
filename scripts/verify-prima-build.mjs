@@ -1,0 +1,35 @@
+import assert from 'node:assert/strict';
+import { readFileSync, readdirSync } from 'node:fs';
+
+const root = new URL('../', import.meta.url);
+const read = path => readFileSync(new URL(path, root), 'utf8');
+const route = '/simulations/retinal-implant/prima/';
+const html = read(`dist${route}index.html`);
+const methods = read(`dist${route}methods/index.html`);
+assert.match(html, /PRIMA Laboratory/);
+assert.match(html, /astro-island/);
+assert.match(html, /data-prima-lab/);
+assert.match(html, /378/);
+assert.match(html, /100 μm/);
+assert.match(html, /880 nm/);
+assert.match(html, /independently/);
+assert.match(methods, /ProViSim v2\.0\.0/);
+assert.match(methods, /homogeneous.*half-space/);
+assert.match(methods, /noncompact spatial tails/);
+assert.match(methods, /not patient validation/);
+assert.match(methods, /20\/417/);
+assert.match(methods, /non-cryptographic label/);
+assert.match(methods, /26 serious adverse events in 19 participants/);
+assert.match(methods, /10\.5281\/zenodo\.19212252/);
+
+const files = readdirSync(new URL('dist/_astro/', root)).filter(path => path.endsWith('.js'));
+assert(files.some(path => path.includes('PrimaLaboratory')), 'Hydrated PRIMA UI must be emitted.');
+assert(files.some(path => /^worker[-.]/.test(path) && read('dist/_astro/' + path).includes('prima-1.0.0')), 'The PRIMA numerical worker must be emitted.');
+assert(files.some(path => read('dist/_astro/' + path).includes('pr-webgl')), 'The three-dimensional PRIMA renderer must be emitted.');
+assert(read('dist/simulations/index.html').includes(route), 'The laboratory must appear in the simulation catalog.');
+assert(read('dist/simulations/retinal-implant/index.html').includes(route), 'The epiretinal laboratory must link to the PRIMA model family.');
+assert(read('dist/devices/177-science-prima-subretinal-photovoltaic-implant/index.html').includes(route), 'The published device sheet must link to the laboratory.');
+assert(read('dist/search-index.json').includes(route), 'Site search must include the laboratory.');
+assert.match(read('scripts/prima-reference/vendor/provisim/LICENSE'), /MIT License/);
+assert.match(read('scripts/prima-reference/vendor/provisim/PROVENANCE.md'), /c3cecdeeb2cb4afcd14ba591a3b285354c6be45d719fc3244912363fef0f9a13/);
+console.log('PRIMA build verified: routes, scientific disclosures, hydration, numerical worker, 3D renderer, catalog, search, cross-links and retained reference license.');
