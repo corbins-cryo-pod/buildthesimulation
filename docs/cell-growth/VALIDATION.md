@@ -130,6 +130,7 @@ Current, source-hashed outcomes live in
 [cell-growth-cohort-validation.json](../../src/data/cell-growth-cohort-validation.json).
 The build verifier rejects stale source hashes and a failed gate in the numerical reports or an incomplete/failed cohort study.
 See [V3 research](V3_RESEARCH.md) for microscopy observations and modeling limits.
+[V3 verification](V3_VERIFICATION.md) records the release review and browser limits.
 [V2 verification](V2_VERIFICATION.md) is a historical record, not evidence for the
 current model. Current reports must be regenerated after relevant source changes.
 
@@ -172,6 +173,14 @@ on a parent with a surviving daughter. A later advance could then detach that
 daughter. The corrected transition deactivates the tip at that junction. A
 constructed regression verifies the parent's endpoint remains unchanged after
 renewed actin drive.
+
+A later organoid seed exposed a finite-root boundary error: mechanical motion
+kept the membrane attachment vertex inside the sphere while part of the attached
+shaft's radius crossed its boundary. Root capsules now participate in the
+mechanical line search for both spherical and rectangular world bounds. A
+constructed outward-traction test checks both shapes, a free-cell control,
+attachment continuity and the membrane ledger. Initiation also checks the
+starting attachment's shaft clearance.
 
 The cohort runner uses 16 predeclared seeds (`101 + i × 104729`, i = 0…15) in
 each of four public environments. Each independent run is requested to 72 hours

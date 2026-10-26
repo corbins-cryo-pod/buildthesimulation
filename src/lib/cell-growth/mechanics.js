@@ -120,6 +120,13 @@ function admissibleShell(sim,cell,vertices,segments,roots) {
   for(const other of sim.cells)if(other.id!==cell.id){const minimum=r+other.mechanics.collisionRadius+.015;if(distance(center,other.position)<minimum&&distance(center,other.position)<distance(old,other.position)+r-cell.mechanics.collisionRadius-1e-9)return false;}
   for(const s of segments)if(s.cellId!==cell.id){if(pointSegmentDistance(center,s.start,s.end).distance<r+s.radius+.015)return false;const h=segmentCapsuleHit(old,center,s.start,s.end,Math.max(r,cell.mechanics.collisionRadius)+s.radius+.01);if(h&&h.t>1e-9)return false;}
   for(const root of roots){const start=vertices[root.anchorVertex],end=root.end;
+    // The membrane vertex can fit while its attached finite-radius shaft does
+    // not. Both world shapes are convex, so endpoint clearance contains the
+    // entire root capsule. Apply this inside the existing mechanical line search.
+    for(const p of [start,end]){
+      if(sim.world.sphereRadius&&length(p)+root.radius>sim.world.sphereRadius)return false;
+      for(let k=0;k<3;k++)if(!(sim.world.planar&&k===1)&&(p[k]<sim.world.bounds.min[k]+root.radius||p[k]>sim.world.bounds.max[k]-root.radius))return false;
+    }
     for(const o of sim.world.obstacles)if(o.shape==='sphere'?segmentSphereHit(start,end,o.position,o.radius+root.radius+.01):segmentBoxHit(start,end,o.position,o.size,root.radius+.01))return false;
     for(const other of sim.cells)if(other.id!==cell.id&&segmentSphereHit(start,end,other.position,other.mechanics.collisionRadius+root.radius+.01))return false;
     for(const s of segments)if(s.cellId!==cell.id&&segmentCapsuleHit(start,end,s.start,s.end,s.radius+root.radius+.01))return false;

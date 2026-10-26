@@ -122,6 +122,8 @@ function initializeNeurites(sim,cell){
     const blocked=sim.world.obstacles.some(o=>(o.shape==='sphere'?segmentSphereHit(start,end,o.position,o.radius+1.075):segmentBoxHit(start,end,o.position,o.size,1.075))||signedObstacle(end,o).gap<2.125)
       ||sim.cells.some(o=>o.id!==cell.id&&(segmentSphereHit(start,end,o.position,o.mechanics.collisionRadius+1.075)||distance(end,o.position)<o.mechanics.collisionRadius+2.125))
       ||sim.segments.some(n=>n.alive&&n.cellId!==cell.id&&segmentCapsuleHit(start,end,n.start,n.end,n.radius+2.125))
+      ||start.some((v,i)=>!(sim.world.planar&&i===1)&&(v<sim.world.bounds.min[i]+1.075||v>sim.world.bounds.max[i]-1.075))
+      ||(sim.world.sphereRadius&&length(start)>sim.world.sphereRadius-1.075)
       ||end.some((v,i)=>!(sim.world.planar&&i===1)&&(v<sim.world.bounds.min[i]+2.125||v>sim.world.bounds.max[i]-2.125))
       ||(sim.world.sphereRadius&&length(end)>sim.world.sphereRadius-2.125);
     if(blocked)continue;

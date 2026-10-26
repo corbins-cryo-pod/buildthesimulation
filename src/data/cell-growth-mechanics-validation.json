@@ -9,14 +9,14 @@
     "src/lib/cell-growth/microscopy-render.js": "8a01989ec9c468cd64d88083be7898e4bf0c9f481526b9adea00ec6fbc2ec1de",
     "src/lib/cell-growth/presentation.js": "24d53d86a6c1094d52302f78511ef8bf5b397260cb5c1260e4aeaf09b8f93f2f",
     "tests/cell-growth-morphogenesis.mjs": "c5526a04964823d696aaa444579264b8ca50059283a99a0aeb3e4ef7a665fadd",
-    "src/lib/cell-growth/engine.js": "57dc9f4005e1b7774b9016fa5f82b090e7cad84af4562f0986b5eab718b479aa",
+    "src/lib/cell-growth/engine.js": "687db185598eebf94ead52ce1396cb7fd9441293f6ee3ddcb89b5311dd5b1178",
     "src/lib/cell-growth/behavior.js": "7f2e067330b0a2c3803ae4ce5ad2eadd9c903a29d532175a0abb48d86251346c",
     "tests/cell-growth-behavior.mjs": "1cf9be4fbcfd90688deb94617d0db774aa62a479c65b81f3b791a5c080215163",
-    "src/lib/cell-growth/mechanics.js": "bbe365cd38e76b8cc6aeec8a6bb8b676a8f603dd72268208c487413c1384db8d",
+    "src/lib/cell-growth/mechanics.js": "4ccceaa3f4620f53647932d1ba9cb0bdc38f0633518cb81aef18b80bb262c7f9",
     "src/lib/cell-growth/exploration.js": "005924673e547155b77f42db24b456c75926d82a74a56a5d16ee1c78c1bfb58a",
     "src/lib/cell-growth/geometry.js": "97a1269bf12765443dc2b275ee5b1ad3f7943cf5de442ebf82785b3c924e24f4",
     "src/lib/cell-growth/render-geometry.js": "09a1cc596cc53e26630cdce5471784feaa322b211a60034342fcbda7ca9509b7",
-    "tests/cell-growth-mechanics.mjs": "8d7633fe6b6d712d03cb36f96577d154b1452a898489fcbedbaab6f91010f680",
+    "tests/cell-growth-mechanics.mjs": "a5526d4ef1bdab35fb0f30916039d2dbd6559f113b4314693e523dbe4eb54e48",
     "scripts/validate-cell-growth-mechanics.mjs": "a382552ac0b61e1764026b96246986c1155b93958dad3226e15fc3f0a3a4efe9"
   },
   "checks": [
@@ -205,7 +205,7 @@
         "cultureLayout": "plain"
       },
       "hours": 8,
-      "wallMs": 457.53662600000007,
+      "wallMs": 494.92695000000003,
       "displacementUm": [
         20.33439341782275
       ],
@@ -253,7 +253,7 @@
         "cultureLayout": "plain"
       },
       "hours": 8,
-      "wallMs": 355.18154200000004,
+      "wallMs": 421.855546,
       "displacementUm": [
         0.00001304278973179862
       ],
@@ -301,7 +301,7 @@
         "cultureLayout": "plain"
       },
       "hours": 8,
-      "wallMs": 255.64007000000004,
+      "wallMs": 301.186138,
       "displacementUm": [
         0.02092275783763343
       ],
@@ -349,7 +349,7 @@
         "cultureLayout": "plain"
       },
       "hours": 4,
-      "wallMs": 128.39356500000008,
+      "wallMs": 205.06134700000007,
       "displacementUm": [
         8.731463615937372
       ],
@@ -397,7 +397,7 @@
         "cultureLayout": "plain"
       },
       "hours": 4,
-      "wallMs": 140.06799300000011,
+      "wallMs": 212.03488599999991,
       "displacementUm": [
         8.731463615937372
       ],
@@ -445,7 +445,7 @@
         "cultureLayout": "plain"
       },
       "hours": 4,
-      "wallMs": 126.2208740000001,
+      "wallMs": 179.87522400000012,
       "displacementUm": [
         8.731463615937372
       ],
@@ -493,7 +493,7 @@
         "cultureLayout": "plain"
       },
       "hours": 2,
-      "wallMs": 66.44600100000002,
+      "wallMs": 112.6974710000004,
       "displacementUm": [
         3.357995016061514
       ],
@@ -541,7 +541,7 @@
         "cultureLayout": "plain"
       },
       "hours": 2,
-      "wallMs": 436.51343999999995,
+      "wallMs": 651.9756769999999,
       "displacementUm": [
         2.954129978628516,
         3.2145791239498145,
@@ -609,7 +609,7 @@
         "cultureLayout": "plain"
       },
       "hours": 2,
-      "wallMs": 898.9366559999999,
+      "wallMs": 1038.1505069999998,
       "displacementUm": [
         2.954129978628516,
         3.2145791239498145,
@@ -701,7 +701,7 @@
         "cultureLayout": "plain"
       },
       "hours": 2,
-      "wallMs": 1712.434897,
+      "wallMs": 2059.483451,
       "displacementUm": [
         2.954129978628516,
         3.2145791239498145,
@@ -841,7 +841,7 @@
         "cultureLayout": "plain"
       },
       "hours": 4,
-      "wallMs": 246.37073099999998,
+      "wallMs": 237.36131599999953,
       "displacementUm": [
         0.9786967487033458
       ],
@@ -889,7 +889,7 @@
         "cultureLayout": "plain"
       },
       "hours": 4,
-      "wallMs": 275.8141310000001,
+      "wallMs": 238.28126300000076,
       "displacementUm": [
         8.411032238311206
       ],
@@ -937,7 +937,7 @@
         "cultureLayout": "plain"
       },
       "hours": 4,
-      "wallMs": 144.5191960000002,
+      "wallMs": 197.24136,
       "displacementUm": [
         0.14030516511412908
       ],

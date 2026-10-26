@@ -64,7 +64,7 @@ async function runOne(seed,preset){
  const replay=JSON.stringify(restored)===JSON.stringify(sim),m=getMetrics(sim);
  const scalarMetrics={totalAxonLength:m.totalAxonLength,totalDendriteLength:m.totalDendriteLength,branches:m.branches,activeTips:m.activeTips,contacts:m.contacts,meanDisplacement:m.meanDisplacement,liveSegments:m.liveSegments};
  const run={mode:preset.id,seed,config:sim.config,requestedHours:72,reachedHours:sim.timeHours,limits:sim.limits,wallSeconds:(performance.now()-started)/1000,checkpoints,metrics:scalarMetrics,counters:sim.counters,exactRoundTrip:replay,passed:replay&&checkpoints.every(x=>x.audit.passed)};
- if(!run.passed){await writeFile(`/tmp/cell-growth-failure-${preset.id}-${seed}.json`,JSON.stringify(sim));throw new Error(`Cohort geometry failed: ${preset.id}, seed ${seed}. Snapshot preserved in /tmp.`);}
+ if(!run.passed)await writeFile(`/tmp/cell-growth-failure-${preset.id}-${seed}.json`,JSON.stringify(sim));
  return run;
 }
 if(!isMainThread){
@@ -88,6 +88,7 @@ if(!isMainThread){
    if(JSON.stringify(await hashes())!==JSON.stringify(sourceSha256))throw new Error('Source changed during cohort study; regenerate from the final source.');
    // One queued write chain avoids concurrent workers overwriting newer results.
    await queueSave();
+   if(!run.passed)throw new Error(`Cohort geometry failed: ${run.mode}, seed ${run.seed}. Failed result recorded; snapshot preserved in /tmp.`);
   }
  };
  let saving=Promise.resolve();

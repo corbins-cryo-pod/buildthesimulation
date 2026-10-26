@@ -27,6 +27,7 @@ it must never be presented as output of this simulation.
 | [Winans, Collins & Meyer, eLife 2016](https://elifesciences.org/articles/12387), [figures and videos](https://elifesciences.org/articles/12387/figures): Videos 1, 2, 3, 7 and 9 | Early cultured rat hippocampal neurites show anterograde actin-associated waves and intermittent extension; later growth is less wave dependent. DIV1 wave speeds are reported as 2–3 µm/min. | Saved packets travel through the actual tree at 120–180 µm/h and transiently increase local tip drive. Stage-dependent weights reduce their influence later. A packet selects one daughter at a junction. This does not solve actin–microtubule feedback or molecular transport. |
 | [Fuchs & Eickholt, J Cell Sci 2021: Precursor types predict the stability of neuronal branches](https://journals.biologists.com/jcs/article/134/23/jcs258983/273627/Precursor-types-predict-the-stability-of-neuronal), Movie 1 | Mouse hippocampal time-lapse cultures show substantial protrusion/branch turnover and precursor-dependent retention. | Visible shaft buds may withdraw or consolidate into retained branches. The numerical probabilities and lifetimes are declared model choices, not recovered study estimates. |
 | [Marchenko et al., Mol Biol Cell 2017](https://pubmed.ncbi.nlm.nih.gov/28228546/), abstract and figure captions | Dendritic filopodia have heterogeneous extension/retraction dynamics associated with actomyosin and adhesion. | Independent saved renewal processes replace synchronized sinusoidal spokes. Growth-cone filopodia are not equated quantitatively to dendritic filopodia, and the paper's PDE model is not reproduced. |
+| [Szebenyi et al., J Neurosci 1998](https://pubmed.ncbi.nlm.nih.gov/9742160/), abstract and figure captions | Long-term cortical-neuron imaging relates delayed shaft branching to earlier growth-cone pausing and residual filopodial or lamellar activity. | This supports inspecting branch precursors and their history, not only a final arbor. V3 has visible precursors and retention, but does not implement a spatial memory of prior growth-cone pauses or the study's target-recognition hypothesis. |
 | [Lin et al., Nature 2026](https://www.nature.com/articles/s41586-026-10755-6), main text and Figure 1 | The authors report soma-initiated actin dynamics, coordinated pre-polarization extension/retraction, and later persistent axonal growth. | This establishes an explicit limit: V3 uses reduced local wave clocks and developmental selection, and does **not** implement the reported soma-wide ARP2/3/actomyosin oscillator or global inhibitory competition. |
 
 For the eLife videos, the source captions identify the acquisition intervals and
@@ -40,6 +41,19 @@ The existing mechanics references remain in [MODEL.md](MODEL.md) and the public
 [methods page](../../src/pages/simulations/cell-growth/methods.astro). Different
 preparations support different regimes; results from adhesive 2D culture cannot
 establish the same mechanism in an adhesion-inert 3D matrix.
+
+## Simulation systems considered
+
+The following systems were reviewed through their primary documentation and
+papers. They were not installed, benchmarked, or used to generate the V3 results.
+
+| System and reviewed source | Relevant level of description | Integration assessment for this revision |
+| --- | --- | --- |
+| [NeuroDevSim growth documentation](https://cns-oist.github.io/NeuroDevSim/growth.html) and [De Schutter 2023](https://www.frontiersin.org/journals/neuroinformatics/articles/10.3389/fninf.2023.1212384/full) | Phenomenological growth fronts, terminal/interstitial branching, pruning, collision-limited migration and environmental interactions | A useful comparison for tree topology and population growth. Its growth rules still need preparation-specific choices; using the framework alone would not establish microscopy fidelity. V3 retains the existing browser worker and its coupled membrane/material solver. |
+| [Cytosim overview](https://cytosim.org/) and [EMBL training overview](https://www.embl.org/training/self-paced-learning/simulating-cytoskeleton-cytosim/) | Flexible cytoskeletal filaments, molecular motors and network mechanics at intracellular scales | Relevant to a future explicitly resolved growth-cone model. V3's coarse actin/MT fields and packets are not a Cytosim calculation, and decorative filament lines must not imply that resolution. A coupled filament model would require its own parameters, interface and numerical/experimental checks. |
+
+These are architectural assessments, not comparative performance measurements.
+No external framework's biological validation is transferred to this model.
 
 ## Changes driven by the observations
 
@@ -90,6 +104,10 @@ Slow uses approximately 280 ms. Normal and Fast group multiple whole solver
 steps. Display interpolation respects reduced-motion preference, never
 extrapolates beyond the next completed state, and never feeds screen-space motion
 into the solver. Pausing reveals the completed state.
+
+The default three-minute state interval and the chosen protrusion clocks are a
+coarse representation. Sub-minute membrane ruffling and molecular fluctuations
+are not resolved, and smooth playback does not recover those missing dynamics.
 
 ## What must still be established experimentally
 
