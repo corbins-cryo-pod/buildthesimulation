@@ -1,0 +1,74 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import '../../../styles/peripheral-nerve.css';
+---
+<Layout pageTitle="Peripheral Nerve Laboratory — Model & Evidence" description="Equations, parameter provenance, numerical verification and limitations of the peripheral nerve field and passive cable laboratory." compactHeader>
+<article class="pn-methods">
+  <p class="pn-kicker">Peripheral Nerve Laboratory / Model 1.0.0</p>
+  <h1>From a contact to a polarized fiber.</h1>
+  <p><a href="/simulations/peripheral-nerve/">← Open the laboratory</a> · <a href="/sim/">The original cross-section sandbox</a></p>
+  <p>This version connects a synthetic multi-fascicle nerve, distributed electrode sources, an anisotropic volume conductor and a passive nodal cable. The calculated outputs are extracellular potential, axial driving current and passive membrane polarization. It does not calculate action potentials, recruitment, recording signals or clinical performance.</p>
+
+  <h2>Three useful experiments</h2>
+  <ol>
+    <li><strong>Rotate a directional cuff.</strong> Choose Directional cuff, select a fiber and pin the run. Change cuff rotation, then apply. Compare the field and that same fiber’s voltage trace. The model isolates geometry within one uniform conductor.</li>
+    <li><strong>Find the bipolar symmetry plane.</strong> Choose Bipolar rings and color fibers by extracellular potential. Move the section from the cathode plane to z = 0: equal, opposite rings cancel at their midplane. The potential away from that plane remains nonzero.</li>
+    <li><strong>Separate current from pulse duration.</strong> Keep the selected fiber and anatomy fixed. Pin the run, change only current or phase duration, and calculate again. Current scales this linear model; duration changes its transient response.</li>
+  </ol>
+
+  <h2>Geometry and provenance</h2>
+  <p>Seven circular fascicles and 168 representative myelinated fibers are generated from a saved seed. There are 24 fibers per fascicle, with outer diameters sampled uniformly from 4–16 µm. This is an inspectable teaching geometry, not a measured nerve, a realistic diameter distribution or a count of its axons. Fiber identities do not imply motor, sensory or autonomic function.</p>
+  <p>The centerlines are straight and parallel to z. The g-ratio is fixed at 0.6, node length at 1 µm, and node spacing at 100 times outer fiber diameter. These are explicit simplifying assumptions, not a reproduction of a published mammalian axon model. A node offset from the seed avoids aligning every fiber’s node with the source. Endpoints extend to approximately ±12 mm; the scene shows only the central 10 mm.</p>
+  <p>The section and 3D model share physical centerlines, contact positions and fascicle radii. Fiber widths are enlarged ×3 for visibility, small section markers have a minimum size, and nodes are enlarged. The automatic 2D fallback uses an oblique projection with transverse dimensions enlarged ×1.6. These display changes do not enter the equations.</p>
+
+  <h2>Distributed contact sources</h2>
+  <table><thead><tr><th>Layout</th><th>First-phase sources</th></tr></thead><tbody>
+    <tr><td>Directional cuff</td><td>Two opposed 60° cylindrical patches, each 0.5 mm wide along z. Weights −1 and +1 at z = 0.</td></tr>
+    <tr><td>Bipolar rings</td><td>Full rings at z = −spacing/2 and +spacing/2. Weights −1 and +1.</td></tr>
+    <tr><td>Tripolar rings</td><td>A central −1 ring and +0.5 returns at z = ±spacing.</td></tr>
+    <tr><td>Intrafascicular disk</td><td>A 40 µm radius disk in the transverse plane, wholly within a fascicle. Weight −1; the return is at infinity.</td></tr>
+  </tbody></table>
+  <p>Each contact prescribes uniform current density over its source surface. The default cuff quadrature uses 32 angular × 8 axial midpoint samples. The disk uses 32 angular × 4 equal-area radial samples. Source weights sum to each contact’s assigned current. This is not an equipotential electrode boundary solution; the insulating cuff body, metal leads and tissue interfaces do not reshape the field.</p>
+
+  <h2>Extracellular field</h2>
+  <p>The conductor is infinite and homogeneous, with conductivity tensor diag(σt, σt, σl). A regularized anisotropic Green function is integrated over the contact samples:</p>
+  <pre>Ve(r) = Σ Ij / [4π σt √σl √((dx² + dy² + a²)/σt + dz²/σl)]</pre>
+  <p>With distance in mm, current in µA and conductivity in S/m, this expression returns mV. The source core a = 0.025 mm is fixed. It removes singularities but changes the near field: it is an explicit approximation, not an electrode radius or a parameter that shrinks with quadrature refinement. Electrode-nearby values must therefore be interpreted as a softened source model.</p>
+  <p>The optional section color is either Ve or its centered longitudinal second difference, using h = 0.05 mm. It is evaluated at the chosen section during the first phase. This geometric field-curvature map is not a membrane solve for the entire population. Its color scale changes with the displayed section; inspect the numeric legend before comparing colors.</p>
+  <p>Perineurium, epineurium and fascicle shapes are visible anatomical structures only in this release. They have no separate conductivity or boundary conditions. Published work shows that perineurium and fascicle dimensions can materially change stimulation thresholds; this model cannot reproduce those effects.</p>
+
+  <h2>Passive nodal cable</h2>
+  <p>One selected fiber is solved as a chain of nodes with axial resistors and perfectly insulating internodes. Let U be the change in transmembrane voltage from rest. At node i:</p>
+  <pre>C dUi/dt = −gL Ui + ga Σneighbors [(Uj + Vej) − (Ui + Vei)]</pre>
+  <p>Only existing neighbors contribute at the sealed ends; no exterior voltage is fixed there. Adding a spatially uniform constant to Ve cannot change the response. The axial drive plot shows ga times the discrete neighbor differences of Ve, in nA. It is not divided by nodal spacing squared because the spacing is already present in axial conductance.</p>
+  <table><thead><tr><th>Parameter</th><th>Value</th><th>Status</th></tr></thead><tbody>
+    <tr><td>Nodal capacitance density</td><td>2 µF/cm²</td><td>Exploratory fixed assumption</td></tr>
+    <tr><td>Passive leak density</td><td>1 mS/cm²</td><td>Exploratory fixed assumption; isolated-node time constant 2 ms</td></tr>
+    <tr><td>Axoplasmic resistivity</td><td>0.7 Ω m</td><td>Exploratory fixed assumption</td></tr>
+    <tr><td>Default transverse / longitudinal conductivity</td><td>0.2 / 0.6 S/m</td><td>Editable homogeneous tissue assumptions</td></tr>
+    <tr><td>Membrane surface area</td><td>π × inner axon diameter × node length</td><td>Calculated from the selected fiber</td></tr>
+    <tr><td>Axial conductance</td><td>π × inner diameter² / (4 × resistivity × node spacing)</td><td>Calculated in SI, converted to µS</td></tr>
+  </tbody></table>
+  <p>Backward Euler and a tridiagonal solve advance the membrane from U = 0. The standard step is 0.002 ms, with 0.001 and 0.0005 ms options. Pulse overlap is integrated exactly over each step, so off-grid pulse edges do not introduce a net-charge error. The recorded window is 1.2 ms. Replay traverses these saved samples; it does not create additional events.</p>
+  <p>The first phase begins at 0.1 ms. Its duration and the gap are adjustable; the second phase has equal duration and reversed current. Charge balance does not require the passive membrane to return immediately to rest. Large polarization can be calculated mathematically, but this passive small-signal model has no nonlinear channels to limit or amplify it.</p>
+
+  <h2>What has been verified</h2>
+  <p>The accompanying 15-test suite checks geometry containment and non-overlap, deterministic seeds, SI units, contact-current normalization, ring symmetry, an independently integrated ring potential, exact pulse charge balance, zero-input and uniform-field controls, gauge invariance, sign and amplitude scaling, current conservation, numerical refinement, bounded inputs, and full experiment round-trips.</p>
+  <p>The cable is compared against an independent continuous-time spectral solution of the sealed discrete cable, using cosine eigenvectors instead of the production tridiagonal algorithm. The three supported time steps show first-order convergence in that test. The four default presets’ peak polarization changes by less than 1% when simultaneously refining source quadrature from 32 to 128 and the time step from 0.002 to 0.0005 ms. That is a selected numerical check, not a guarantee for every editable configuration.</p>
+  <p>These checks establish consistency with the stated equations. They do not establish physiological validity. Cable-length convergence, heterogeneous-conductor validation and comparison with measured nerve responses remain separate requirements.</p>
+
+  <h2>Reproducibility</h2>
+  <p>Experiment JSON saves all applied parameters, model version, random seed and selected fiber. Import validates the complete document before recalculating. Draft edits are not exported until applied. The original sandbox’s files use different units and cannot be imported here. CSV contains every solved node and time point, with z in mm, time in ms, applied Ve in mV and passive ΔVm in mV. The CSV field is the instantaneous pulse value at that timestamp; the integrator uses its exact step average.</p>
+  <p>A pinned run overlays Ve and the selected node’s time trace. Changing the selected fiber clears the pin; changing the anatomy displays a comparison warning. Display choices, camera position, slice location and pinned results are not restored by the experiment JSON.</p>
+
+  <h2>Primary scientific context</h2>
+  <ul>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/3770787/">Rattay (1986), Analysis of models for external stimulation of axons.</a> DOI: 10.1109/TBME.1986.325670. Context for extracellular potential differences as the cable drive.</li>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/2744791/">Rattay (1989), Analysis of models for extracellular fiber stimulation.</a> DOI: 10.1109/10.32099. Context for geometry-dependent extracellular stimulation.</li>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/11826063/">McIntyre, Richardson & Grill (2002), Modeling the excitability of mammalian nerve fibers.</a> DOI: 10.1152/jn.00353.2001. An active double-cable model and an appropriate direction for a future excitability stage. This release is not an implementation of MRG.</li>
+    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10410695/">Davis, Musselman, Grill & Pelot (2023), Fibers in smaller fascicles have lower activation thresholds with cuff electrodes due to thinner perineurium and smaller cross-sectional area.</a> DOI: 10.1088/1741-2552/acc42b. Evidence that the omitted fascicular boundaries matter.</li>
+  </ul>
+  <h2>The next scientific stage</h2>
+  <p>Replace the uniform conductor with a verified heterogeneous nerve-and-cuff solve, add a published mammalian myelinated axon model, establish propagation and threshold convergence, then calculate extracellular recordings from membrane currents. Recruitment, selectivity and compound responses should follow those validations.</p>
+</article>
+</Layout>

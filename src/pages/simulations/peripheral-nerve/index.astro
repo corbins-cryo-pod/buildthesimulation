@@ -1,0 +1,8 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import PeripheralNerveLaboratory from '../../../components/PeripheralNerveLaboratory.jsx';
+---
+<Layout pageTitle="Peripheral Nerve Laboratory" description="Explore a multi-fascicle peripheral nerve, compare cuff and intrafascicular contacts, and calculate extracellular fields and passive nodal polarization." wide compactHeader>
+  <PeripheralNerveLaboratory client:load />
+  <noscript><p>The interactive laboratory requires JavaScript. <a href="/simulations/peripheral-nerve/methods/">Read the model and evidence</a> or <a href="/sim/">visit the original simulation</a>.</p></noscript>
+</Layout>

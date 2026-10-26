@@ -1,0 +1,35 @@
+{
+  "model": "1.0.0",
+  "date": "2026-10-25",
+  "scope": "Default presets only; numerical comparison, not biological validation.",
+  "results": [
+    {
+      "layout": "directional",
+      "selectedFiber": 0,
+      "defaultPeakMv": 0.4524334411432161,
+      "refinedPeakMv": 0.45271596022964206,
+      "relativeDifference": 0.0006240537362160804
+    },
+    {
+      "layout": "bipolar",
+      "selectedFiber": 0,
+      "defaultPeakMv": 2.518048790188113,
+      "refinedPeakMv": 2.5191843973739276,
+      "relativeDifference": 0.0004507836691106911
+    },
+    {
+      "layout": "tripolar",
+      "selectedFiber": 0,
+      "defaultPeakMv": 2.1060164100193437,
+      "refinedPeakMv": 2.1066095913576453,
+      "relativeDifference": 0.00028158104887354306
+    },
+    {
+      "layout": "intra",
+      "selectedFiber": 0,
+      "defaultPeakMv": 1.697754094759041,
+      "refinedPeakMv": 1.698512106574241,
+      "relativeDifference": 0.0004462799012535821
+    }
+  ]
+}
