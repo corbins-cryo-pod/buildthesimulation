@@ -316,14 +316,21 @@ largest observed current change is 4.2675 × 10⁻¹⁶ A, voltage change is
 The full-array circuit, fields, Green integrals, return matrices, spatial
 refinement and other three small-network cases remain identical in that check.
 
+Selecting the Haswell OpenBLAS path, with and without the disabled NumPy SIMD
+features, produces 43 changed leaves in adaptive output and temporal-error
+summaries. The largest observed current and voltage changes are respectively
+1.10926 × 10⁻¹⁵ A and 1.629 × 10⁻¹¹ V. All exact/non-adaptive data remain
+identical. The focused tests retain both observed Haswell variants, including
+the combination observed in continuous integration.
+
 `--check` therefore compares only the explicitly named adaptive quantities and
 the derived `convergence.time` error fields with these **absolute** allowances;
 the relative tolerance is zero:
 
 | Quantity | Absolute allowance |
 |---|---:|
-| Adaptive current | 10⁻¹⁵ A (0.001 pA) |
-| Adaptive voltage | 10⁻¹¹ V |
+| Adaptive current | 10⁻¹⁴ A (0.01 pA) |
+| Adaptive voltage | 10⁻¹⁰ V |
 | Adaptive instantaneous, phase and final charge | 10⁻¹⁸ C |
 | Temporal phase-charge error divided by reference peak charge | 10⁻¹¹ |
 | Temporal absolute snapshot-current error and reference peak current | 10⁻⁹ µA |
@@ -334,7 +341,8 @@ The last ratio is especially sensitive when the reference late current is
 near zero; its allowance applies to the reported ratio, not to a physical
 current. These are portability allowances for independent reference
 regeneration. They do not change the JavaScript solver's comparison gates or
-its 0.2 pA Kirchhoff residual requirement.
+its 0.2 pA Kirchhoff residual requirement. The adaptive-reference current
+allowance remains twenty times smaller than that residual requirement.
 
 Object keys, array dimensions, provenance, numerical settings and all
 non-adaptive solver data remain exact. Nonfinite values are rejected. Each

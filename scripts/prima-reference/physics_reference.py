@@ -329,8 +329,8 @@ def generate():
 
 
 ADAPTIVE_ABSOLUTE_TOLERANCES = {
-    'currentA': 1e-15,
-    'voltageV': 1e-11,
+    'currentA': 1e-14,
+    'voltageV': 1e-10,
     'chargeC': 1e-18,
     'phaseChargeC': 1e-18,
     'finalChargeC': 1e-18,

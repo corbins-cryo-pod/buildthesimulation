@@ -56,7 +56,7 @@ jobs:
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
           python scripts/prima-reference/physics_reference.py --check
-          NPY_DISABLE_CPU_FEATURES=AVX2,FMA3,AVX512F python scripts/prima-reference/physics_reference.py --check
+          OPENBLAS_CORETYPE=Haswell NPY_DISABLE_CPU_FEATURES=AVX2,FMA3,AVX512F python scripts/prima-reference/physics_reference.py --check
       - name: Verify numerical models and complete experiments
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: node --test tests/prima-percept.test.mjs tests/prima-physics.test.mjs tests/prima-experiment.mjs
