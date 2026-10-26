@@ -34,7 +34,7 @@ exactly within one JavaScript runtime; exact bit equality across different
 JavaScript engines is not promised.
 
 Timestep refinement is assessed in a deterministic, uncrowded configuration with
-branching and angular noise disabled. The same initial state is used at `0.05`,
+branching, growth episodes and angular noise disabled. The same initial state is used at `0.05`,
 `0.025`, and `0.0125 h`. Continuous length error must decrease with refinement;
 the coarse-to-fine difference must be below 5% of the fine reference length.
 Stochastic arbors are assessed across seeds, because changing the timestep also
@@ -123,15 +123,15 @@ release's validation scope.
 | [Lefebvre et al., 2012](https://pmc.ncbi.nlm.nih.gov/articles/PMC3427422/) | Cell-identity-dependent dendritic self-recognition in specific mammalian neuron types | Self-avoidance is not a universal fixed rule for every neuron type. |
 | [Franze et al., 2009](https://pubmed.ncbi.nlm.nih.gov/19804718/) | Growth-cone mechanical responses, collapse and retraction | A collision in the coarse model does not reproduce every molecular or calcium response to load. |
 
-## Release evidence: model 2.0.0
+## Release evidence: model 3.0.0
 
 Current, source-hashed outcomes live in
-[`cell-growth-validation.json`](../../src/data/cell-growth-validation.json) and
-[`cell-growth-mechanics-validation.json`](../../src/data/cell-growth-mechanics-validation.json).
-The build verifier rejects stale source hashes and a failed gate in either report.
-See [V2 verification](V2_VERIFICATION.md) for the mechanical criteria, browser
-checks and interpretation limits. The V1 results remain available in Git history;
-they are not reused as evidence for V2.
+[`cell-growth-validation.json`](../../src/data/cell-growth-validation.json) [cell-growth-mechanics-validation.json](../../src/data/cell-growth-mechanics-validation.json), and
+[cell-growth-cohort-validation.json](../../src/data/cell-growth-cohort-validation.json).
+The build verifier rejects stale source hashes and a failed gate in the numerical reports or an incomplete/failed cohort study.
+See [V3 research](V3_RESEARCH.md) for microscopy observations and modeling limits.
+[V2 verification](V2_VERIFICATION.md) is a historical record, not evidence for the
+current model. Current reports must be regenerated after relevant source changes.
 
 The four environment studies run the complete moving-cell engine for 72 model
 hours. Full-tree audits include finite shafts, conservative soma envelopes,
@@ -143,13 +143,53 @@ and must not be interpreted as a migration experiment.
 
 ## Reproduction
 
-Run `node --test tests/cell-growth.mjs tests/cell-growth-mechanics.mjs` for the numerical unit and integration
+Run `node --test tests/cell-growth*.mjs` for the numerical unit and integration
 suite. Run `node scripts/validate-cell-growth.mjs` for the quantitative release
 report saved in `src/data/cell-growth-validation.json`. Run
 `node scripts/validate-cell-growth-mechanics.mjs` for the independent mechanical
-report.
+report. Run `node scripts/validate-cell-growth-cohort.mjs 16` for the 64-run
+cohort study, and `node scripts/verify-cell-growth-build.mjs` after building.
 
 The quantitative report records the exact model version, input conditions,
 acceptance criteria, numerical outcomes, source-file hashes, and runtime. Its
 measured timings exclude browser rendering and network overhead and should not
 be interpreted as a guarantee for every device.
+
+## V3 morphology and motion criteria
+
+New tests check finite-speed wave transport through a bent tree, non-duplicating
+branch selection, zero-driver suppression, continuous episode-control blending,
+independent filopodial extension/retraction and renewal-stream timestep partition.
+They check young-joint displacement bounds, preservation of parent/child joints,
+anchoring of established shafts, a swept thin-barrier case, surface-budget
+accounting, display taper inside collision envelopes, the true mesh silhouette,
+and immutable display interpolation with exact endpoints. New local random
+streams and transient buds must survive JSON save/resume exactly.
+
+A 72-hour culture study found a junction-withdrawal failure: a short terminal
+segment could retire within the withdrawal tolerance while leaving its tip active
+on a parent with a surviving daughter. A later advance could then detach that
+daughter. The corrected transition deactivates the tip at that junction. A
+constructed regression verifies the parent's endpoint remains unchanged after
+renewed actin drive.
+
+The cohort runner uses 16 predeclared seeds (`101 + i × 104729`, i = 0…15) in
+each of four public environments. Each independent run is requested to 72 hours
+and is audited every 12 hours. The runner records actual reached times and any
+capacity stop. Criteria are zero disconnected parent links, solid penetrations,
+foreign-soma penetrations, unrelated-shaft penetrations, boundary violations,
+and out-of-envelope taper; maximum membrane-ledger residual must be below
+`1e-6 µm²`. Every final state must round-trip exactly through JSON restoration.
+Four isolated workers improve throughput without sharing simulation or random
+state. Report source hashes include the runner itself.
+
+These checkpoint checks do not prove continuous-time collision freedom or
+biological realism. Growth-cone-envelope checks also remain in the independent
+four-preset quantitative report. Appearance and browser interaction require a
+separate visual review; numeric gates alone cannot certify them.
+
+A slow-playback regression additionally compares all four UI speed choices from
+the same 12-hour saved state through 14 hours. The complete resulting states
+(including all random streams) must be deeply equal. Slow playback uses whole
+configured solver steps and longer display intervals, not a smaller numerical
+timestep. This prevents a viewing preference from changing the experiment.

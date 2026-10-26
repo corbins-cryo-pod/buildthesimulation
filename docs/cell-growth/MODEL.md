@@ -57,7 +57,7 @@ and stress must not be interchanged: their units are pN, pN/µm and pN/µm²,
 respectively. An effective spring stiffness in pN/µm is not an elastic modulus
 in kPa without a specified geometry.
 
-### Representation (V2)
+### Representation (version 3)
 
 Each soma is a **moving, deformable 162-vertex / 320-face closed cortex**. Its
 nominal radius remains 6.8–7.7 µm; the culture initialization is flattened with
@@ -146,7 +146,7 @@ direction plus `0.8*dt` times cue, environment, avoidance, alignment and noise
 terms. These are dimensionless steering weights, not solved receptor kinetics or
 a tissue traction-stress field. Noise is an Ornstein–Uhlenbeck state with
 correlation time 1.5 h and innovation standard deviation
-`noise*0.32*sqrt(1-exp(-2*dt/1.5))`. Plate y noise is zero.
+`noise*0.65*sqrt(1-exp(-2*dt/1.5))`. Plate y noise is zero.
 
 ### Material accounting
 
@@ -274,7 +274,7 @@ stage reached at a displayed hour with the completion of a human stem-cell
 differentiation protocol.
 
 The internal developmental age is elapsed age plus an offset: -48 h for stem,
-0 for precursor and +8 h for immature. At internal age 8 h, three to five
+0 for precursor and +8 h for immature. At internal age 8 h, four to six
 2.5-µm seed processes are created. At 18 h one root arbor is assigned axonal
 identity; at 48 h the state label becomes maturing. Thus stem-like starts initiate
 at elapsed 56 h and polarize at 66 h, while precursor starts initiate at 8 h and
@@ -321,7 +321,7 @@ requires matched measurements.
 | Rule | Axon | Dendrite |
 | --- | --- | --- |
 | Extension gain | 1 | 0.58 |
-| Baseline branch hazard | 0.012 h⁻¹ | 0.045 h⁻¹ |
+| Baseline tip-splitting hazard | 0.005 h⁻¹ | 0.012 h⁻¹ |
 | Branch angle | 0.35–1.00 rad | 0.35–1.35 rad |
 | Initial shaft radius | 0.52 µm | 1.05 µm |
 | Minimum shaft radius | 0.23 µm | 0.30 µm |
@@ -331,44 +331,78 @@ requires matched measurements.
 Branch hazard is multiplied by `branching*S*m/(1+0.3*branchOrder)`, and each step
 uses `p=1-exp(-hazard*dt)`. Branching requires age≥3 h, support m≥0.45, reserve≥0.2,
 an extending state, nonzero actin/MT controls, order<5 and remaining tip capacity.
-Events either bifurcate the tip or, when an eligible retained node exists, select
-a lateral bud with probability 0.6. Eligible nodes are more than 7 µm behind
-the tip, at least 1 h old, non-root, and have exactly one live continuation.
-The search spans at most 24 ancestral segments. Lateral budding preserves the
-leading tip and adds one higher-order branch; a variable angle replaces the
-previous fixed branch angle. These are exploratory rules, not fitted frequencies. The default active
-tip cap is 32 per cell. Radius tapers by 0.996 between ordinary segments and by
-0.79 on a higher-order branch, subject to the minimum and identity-specific root
-radius.
+Tip splitting is rare. Collateral branches instead start as visible shaft buds.
+The per-cell bud hazard is `0.12 * branching * min(5, eligibleLength/70)` h⁻¹,
+integrated as a saved exponential-hazard clock. Eligible non-root nodes are at
+least 1 h old, have one continuation, lie outside the soma envelope plus 6 µm,
+and have branch order below five. A bud starts at 0.1 µm, aims for 2.3–4.7 µm,
+extends at `4*actin` µm/h and retracts at 5 µm/h. It must exceed 2 µm, survive
+0.65–2.35 h, and have local MT support >0.45 and reserve >0.25 to consolidate.
+The retained branch then extends through the ordinary swept growth solver.
+Transient buds are sensing/protrusion geometry outside the retained-shaft area
+ledger, as are exploratory filopodia; whole-cell lipid conservation is not claimed.
 
-### Local growth episodes and exploratory contacts (2.1)
+Filopodial precursors are chosen with probability 0.65. Their illustrative
+persistent fraction is 0.62, versus 0.34 for lamellar precursors. Nonpersistent
+lifetimes are 0.2–1 h; persistent lifetimes allow the consolidation delay plus
+1 h. New retained branches receive stability factors 0.82 or 0.45 respectively.
+For the first five hours their pruning hazard is `(1-stability)*0.10` h⁻¹ for
+axons or `(1-stability)*0.24` for dendrites. These are exploratory choices inspired
+by precursor-dependent branch survival, not fitted hazard ratios. No more than
+eight unresolved buds and 32 active tips per cell are admitted by default.
 
-Uploaded microscopy recordings (172638, 172736 and 172913, 2026-10-25) were
-reviewed as frame sequences. They motivate unequal local advance, changing
-exploratory tips and asymmetric branching; they do not establish calibrated
-rates, molecular signals, neurite identity or functional synapses.
+Physical capsule radius tapers by 0.996 between ordinary segments and by 0.79 on
+a higher-order branch, with identity-specific bounds. A continuous visual
+profile is reconstructed inside those conservative capsules; it is explicitly
+separate from the cylindrical material ledger and SWC radius.
 
-Each tip has an independent seeded random stream and saved episode clock.
-Growing intervals last 0.3–1.5 h, followed by pauses of 0.2–1.7 h or, with
-probability 0.16, brief retraction intervals of 0.1–0.35 h. These illustrative
-model durations are not biological measurements. The growth multiplier relaxes
-with a 0.12 h time constant toward 1.8, 0, or -0.3. Its step-average is integrated
-analytically, including transitions inside a timestep. Negative drive retracts
-at up to 0.9 µm/h when material drivers are present. Growth episodes = 0 restores
-continuous drive. This local activity proxy does not simulate a traveling actin
-wave or a measured biochemical pathway. Existing material and force limits apply.
+### Local growth, traveling packets and exploratory contacts (3.0)
 
-Five exploratory projections change direction and length on different local
-clocks; the twelve-point cone rim also changes asymmetrically. All retain solid
-intersection checks. In plate cultures, a short-range transverse-shaft lookahead
-can raise the growing path above a retained shaft and return it toward its root
-height afterward. Active tips remain available for contact. This is a geometric
-routing approximation, not a solved vertical adhesion or bending mechanism;
-every proposed motion still passes finite-radius collision tests. Projection
-crossings are not automatically contacts. Existing distal shafts remain anchored.
+The supplied recordings (172638, 172736 and 172913, 2026-10-25) and primary
+research movies were inspected as time-ordered frame sequences. See
+[V3_RESEARCH.md](V3_RESEARCH.md) for the observation-to-implementation record.
+Unknown recording species, scale and time intervals are not inferred.
 
-The save version is 2.1.0. Earlier 2.0 files are rejected explicitly because they
-lack the independent local episode state required for exact replay.
+Independent tip episodes retain the 2.1 growth/pause/retraction process: growing
+intervals 0.3–1.5 h, pauses 0.2–1.7 h, occasional retractions 0.1–0.35 h, and an
+analytically integrated 0.12 h relaxation toward gains 1.8, 0 or −0.3. They are
+now combined with finite-speed actin-associated packets. Each root has its own
+saved source RNG and waiting time. Immature roots launch at 1.4 h⁻¹, polarized
+roots at 0.77 h⁻¹ and maturing roots at 0.35 h⁻¹. Speeds are sampled over
+120–180 µm/h, anchored to the 2–3 µm/min range reported by Winans et al. for
+DIV1 rat hippocampal culture. The source frequency and its stage multipliers
+are model choices, not a universal measured rate.
+
+Packets traverse the actual retained tree and choose one daughter, rather than
+stimulating all tips together. Arrival adds 0.65–1 to a local pulse (cap 1.6)
+that decays with a 0.42 h time constant. The episodic/wave mixture weights the
+wave term by 0.88, 0.48 or 0.12 with developmental stage. Growth episodes = 0
+restores continuous drive and removes packets. Negative local episodes retract
+at up to 0.9 µm/h, scaled by the control. Zero actin or zero MT support prevents
+packets and stable extension. This is a transport/activity proxy, not a
+reaction–diffusion model, vesicle tracker or electrophysiological simulation.
+
+Nine filopodia and twelve lamellar sectors have individually saved renewal
+streams. Filopodia have exploratory lengths up to 7 µm, free extension speed
+26 µm/h and faster withdrawal; membrane load shortens the visible length.
+Extension and withdrawal durations have separate exponential draws and directions
+renew near collapse, so the cone is not a rotating or breathing star. Every
+protrusion sweeps finite geometry against obstacles, foreign shafts/cones,
+somata and boundaries. The rates are exploratory. Sector activity relaxes with
+a 0.075 h time constant and drives the asymmetric membrane rim.
+
+Young unbranched shaft joints within ten ancestors of an active tip relax
+locally toward the straight chord, with 0.22 h⁻¹ mobility attenuated by adhesion
+and age, and a 0.6 µm/h displacement ceiling. Shafts aged 12 h or more and branch
+junctions remain anchored. Expanded candidate envelopes contain the entire
+joint sweep, and positive/negative area changes consume/recycle the membrane
+reserve. This is a local overdamped reduction, not a whole-tree elastic solver.
+Plate crossing routes remain a geometric approximation checked by the same
+finite collision constraints.
+
+The save version is 3.0.0. Earlier versions are rejected explicitly because their
+stochastic state and growth rules differ. Display interpolation never enters
+physics, measurements, random streams or exported state.
 
 Nearby-process steering acts within 12 µm. Same-cell repulsion is applied to
 dendritic tips; alignment applies to axon tips near another cell's axon. The hard
@@ -437,7 +471,9 @@ Candidate counts are distinct from the total count of apposition records.
 | Nerve regeneration | How do guidance geometry, obstruction, extension and branching affect traversal? | No clinical recovery, functional target reinnervation, scar remodeling or patient regeneration rate. |
 | Biohybrid interface | How do living processes approach and organize around a scaffold or interface? | No electrode seal, recording sensitivity, functional living electrode or chronic integration prediction. |
 
-The plate has finite sphere/box obstacles and a localized cue direction. The
+The default plate is unpatterned, spans ±900 µm in x and z, and has zero
+imposed guidance. Selecting the obstacle assay adds finite sphere/box solids;
+a localized cue direction matters only when guidance gain is positive. The
 organoid domain is a sphere of radius 185 µm with a 29-µm central lumen; inward
 axon and outward dendrite radial steering are prescribed, not emergent cortical
 organization. Regeneration initializes proximal/distal groups, conduit walls and
@@ -466,10 +502,12 @@ It records the model version, exact conditions, acceptance criteria, measured
 results, source SHA-256 hashes and Node runtime. Reproduce it using:
 
 ```sh
-node --test tests/cell-growth.mjs tests/cell-growth-mechanics.mjs
+node --test tests/cell-growth*.mjs
 node scripts/validate-cell-growth.mjs
 node scripts/validate-cell-growth-mechanics.mjs
+node scripts/validate-cell-growth-cohort.mjs 16
 npm run build
+node scripts/verify-cell-growth-build.mjs
 ```
 
 The default growth step is 0.05 h. A new segment is created once its predecessor
@@ -583,24 +621,9 @@ grown tree. These are future directions, not implemented capabilities.
 Read `V2_VERIFICATION.md` for the mechanics checks and remaining limitations.
 
 
-### V2 exploratory protrusions and contact stabilization
+### Exploratory protrusions and contact stabilization
 
-Each active cone has five finite-radius (0.08 µm) sensing protrusions. Their lengths
-relax over 0.4 h toward `(0.6 + 2.1 min(actin,1.5))/(1 + 0.015 F_membrane)` µm.
-Swept tests clip each probe against solids, foreign neurites, soma envelopes and
-world boundaries. A blocked direction adds an opposite steering weight of 0.16.
-These are solved geometric sensing variables, not molecular actin polymers or
-retained cable. Rendered probes use these endpoints. Cone radius and probe length
-remain distinct from retained shaft geometry and its membrane-area ledger.
-
-At heterocellular axon–dendrite contact, a cell-adhesion gain of at least 0.3
-stabilizes an apposed tip. It remains held while the current shaft/cone surfaces
-are within 0.5 µm; separation or loss of geometry invalidates the contact.
-Continuous apposition for 0.3 h yields a structural candidate, never a functional
-synapse. The gain threshold and dwell time are explicit exploratory rules.
-
-Actual mechanical-step refinement uses 0.0125, 0.00625 and 0.003125 h in a
-four-hour, isolated polarized-cell control. The `maxStepHours` argument of
-`advanceCellMechanics` is used to vary the actual integrator step for that check;
-normal runs use the default 0.0125 h cap. A separate outer-step test establishes
-subcycling invariance. Neither is a spatial mesh-convergence study.
+Version 3 replaces the five sinusoidal probes with nine independent renewal
+processes described above. The geometric contact-stabilization rule remains:
+heterocellular axon–dendrite apposition can hold a tip at cellAdhesion ≥0.3,
+requires continuous proximity and does not create a functional synapse.

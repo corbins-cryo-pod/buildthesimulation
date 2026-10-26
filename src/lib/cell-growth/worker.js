@@ -1,4 +1,5 @@
 import { createSimulation, stepSimulation, getMetrics, serializeSimulation, restoreSimulation, exportCSV, exportSWC } from './engine.js';
+import {playbackStep} from './playback.js';
 
 let sim = null;
 let generation = 0;
@@ -19,16 +20,17 @@ async function advance(hours, token, preview = false) {
     }
     await yieldThread();
   }
-  if (token === generation) send({ busy: false, preview: false });
+  if (token === generation) send({ busy: false, preview: false, previewComplete: preview });
 }
 
 async function play(token, speed, until) {
   while (playing && token === generation && sim.timeHours < until - 1e-8) {
     const before = sim.timeHours;
-    stepSimulation(sim, Math.min(speed, until - sim.timeHours));
-    send();
+    const frame=playbackStep(sim.config.dtHours,speed,until-sim.timeHours);
+    stepSimulation(sim, frame.hours);
+    send({frameDuration:frame.frameDuration});
     if (sim.timeHours <= before || sim.limits.reached) break;
-    await yieldThread(250);
+    await yieldThread(frame.frameDuration);
   }
   if (token === generation) { playing = false; send({ busy: false }); }
 }
@@ -46,7 +48,7 @@ self.onmessage = async ({ data }) => {
       await advance(Math.min(168 - sim.timeHours, Math.max(0, data.hours)), token);
     } else if (data.type === 'play' && sim) {
       const token = ++generation; playing = true;
-      await play(token, Math.max(.1, Math.min(2, data.speed || .5)), Math.min(168, data.until || 72));
+      await play(token, Math.max(.005, Math.min(2, data.speed || .1)), Math.min(168, data.until || 72));
     } else if (data.type === 'pause') {
       ++generation; playing = false;
       if (sim) send({ busy: false });

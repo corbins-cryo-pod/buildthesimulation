@@ -2,6 +2,7 @@
  * individual actin polymers. They steer the cone but do not become retained shafts. */
 import {add,sub,scale,unit,cross,distance,length,lerp,segmentSphereHit,segmentBoxHit,segmentCapsuleHit,pointSegmentDistance} from './geometry.js';
 import {signedObstacle} from './mechanics.js';
+import {createExploration,advanceExploration} from './morphogenesis.js';
 
 export function constrainCone(sim,tip,index){
   const segment=sim.segments[tip.segmentId],p=segment.end;
@@ -21,15 +22,19 @@ export function constrainCone(sim,tip,index){
 
 export function sampleFilopodia(sim,tip,index,dt){
   const segment=sim.segments[tip.segmentId],origin=segment.end,dir=unit(tip.direction),side=unit(cross(Math.abs(dir[1])<.9?[0,1,0]:[1,0,0],dir));
-  const old=tip.filopodia||[],probes=[];
-  for(let i=0;i<5;i++){
-    const clock=tip.behavior?.clock??tip.ageHours,phase=tip.id*2.399+i*1.73,angle=-1+i*.5+.22*Math.sin(clock*(1.1+i*.21)+phase),u=unit(add(scale(dir,Math.cos(angle)),scale(side,Math.sin(angle)))),start=add(origin,scale(u,tip.radius*.95));
-    const local=.18+.82*Math.pow(.5+.5*Math.sin(clock*(1.5+i*.37)+phase),2),targetLength=local*(.6+2.1*Math.min(1.5,sim.config.actin))/(1+.015*tip.forces.membrane),previous=old[i]?.length??.2;
-    const extension=previous+(targetLength-previous)*(-Math.expm1(-dt/.4)),end=add(start,scale(u,extension));let first=null;
+  tip.exploration??=createExploration(sim.config.seed,tip.id);
+  advanceExploration(tip,dt,sim.config);
+  const probes=[];
+  for(const local of tip.exploration.probes){
+    const angle=local.angle,u=unit(add(scale(dir,Math.cos(angle)),scale(side,Math.sin(angle))));
+    const rim=tip.shape?.radii,sector=((angle/(2*Math.PI)+1)%1)*(rim?.length||12),i=Math.floor(sector),f=sector-i;
+    const radius=rim?rim[i]*(1-f)+rim[(i+1)%rim.length]*f:tip.radius;
+    const start=add(origin,scale(u,radius*.96));
+    const extension=local.length/(1+.012*tip.forces.membrane),end=add(start,scale(u,extension));let first=null;
     const accept=h=>{if(h&&(!first||h.t<first.t))first=h;};
     for(const o of sim.world.obstacles)accept(o.shape==='sphere'?segmentSphereHit(start,end,o.position,o.radius+.08):segmentBoxHit(start,end,o.position,o.size,.08));
     for(const c of sim.cells)if(c.id!==tip.cellId)accept(segmentSphereHit(start,end,c.position,c.mechanics.collisionRadius+.08));
-    for(const id of index.query(start,end,1.2)){const other=sim.segments[id];if(other.alive&&other.cellId!==tip.cellId)accept(segmentCapsuleHit(start,end,other.start,other.end,other.radius+.08));}
+    for(const id of index.query(start,end,8)){const other=sim.segments[id];if(other.alive&&other.cellId!==tip.cellId){accept(segmentCapsuleHit(start,end,other.start,other.end,other.radius+.08));const cone=index.cones?.get(id);if(cone)accept(segmentSphereHit(start,end,other.end,cone.radius+.08));}}
     for(let k=0;k<3;k++)if(!(sim.world.planar&&k===1)){
       const lo=sim.world.bounds.min[k]+.08,hi=sim.world.bounds.max[k]-.08;
       if(end[k]<lo||end[k]>hi){const edge=end[k]<lo?lo:hi;accept({t:Math.max(0,(edge-start[k])/(end[k]-start[k]))});}
@@ -39,7 +44,7 @@ export function sampleFilopodia(sim,tip,index,dt){
       accept({t:Math.max(0,Math.min(1,(-bb+Math.sqrt(Math.max(0,bb*bb-aa*cc)))/aa))});
     }
     const point=first?lerp(start,end,Math.max(0,first.t-.01/Math.max(.01,extension))):end;
-    probes.push({start,end:point,direction:u,length:distance(start,point),radius:.08,blocked:Boolean(first)});
+    probes.push({start,end:point,direction:u,length:distance(start,point),radius:.08,blocked:Boolean(first),phase:local.phase});
   }
   tip.filopodia=probes;
 }

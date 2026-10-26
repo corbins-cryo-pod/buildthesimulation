@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { coneSurface, VIEW_MODES } from '../../lib/cell-growth/render-geometry.js';
+import { interpolateMorphology } from '../../lib/cell-growth/presentation.js';
+import { drawMicroscopy } from '../../lib/cell-growth/microscopy-render.js';
+import { shaftProfile, wavePosition } from '../../lib/cell-growth/morphogenesis.js';
 const hex=n=>`#${n.toString(16).padStart(6,'0')}`;
 const rgb=n=>[(n>>16)&255,(n>>8)&255,n&255];
 
@@ -11,19 +14,30 @@ const add = (a,b)=>a.map((v,i)=>v+b[i]);
 const mul = (a,s)=>a.map(v=>v*s);
 
 /** Orthographic projection of the solved 3D geometry. No optics/PSF claim. */
-export default function GrowthProjection({ state, selectedCell, selectedTip, onSelect, isolate, showMembrane, showCytoskeleton, showForces, colorMode, thickness=1, cameraAction, inspectionMode='structural',showTrails=true }) {
+export default function GrowthProjection({ state, selectedCell, selectedTip, onSelect, isolate, showMembrane, showCytoskeleton, showForces, colorMode, thickness=1, cameraAction, inspectionMode='structural',showTrails=true,animating=false,frameDuration=140 }) {
   const canvas = useRef(null), latest = useRef(null), view = useRef({ yaw:0,pitch:Math.PI/2,center:[0,0,0],extent:300 }), draw = useRef(()=>{}), points=useRef([]), drag=useRef(null);
+  const transition=useRef(null),previousFrame=useRef(null),animation=useRef(0);
   const [viewName,setViewName]=useState('Orthographic projection');
-  latest.current={state,selectedCell,selectedTip,onSelect,isolate,showMembrane,showCytoskeleton,showForces,colorMode,thickness,inspectionMode,showTrails};
+  latest.current={state,selectedCell,selectedTip,onSelect,isolate,showMembrane,showCytoskeleton,showForces,colorMode,thickness,inspectionMode,showTrails,animating};
   useEffect(()=>{
     const el=canvas.current;if(!el)return;
     const context=el.getContext('2d');
     draw.current=()=>{
-      const d=latest.current,s=d.state,rect=el.getBoundingClientRect(),w=rect.width,h=rect.height;if(!w||!h)return;
-      const ratio=Math.min(window.devicePixelRatio||1,2);el.width=Math.round(w*ratio);el.height=Math.round(h*ratio);context.setTransform(ratio,0,0,ratio,0,0);
+      const d=latest.current,tr=transition.current;
+      const amount=tr?Math.min(1,(performance.now()-tr.started)/tr.duration):1;
+      const s=tr&&d.animating?interpolateMorphology(tr.from,d.state,amount):d.state,rect=el.getBoundingClientRect(),w=rect.width,h=rect.height;if(!w||!h)return;
+      const ratio=Math.min(window.devicePixelRatio||1,2);if(el.width!==Math.round(w*ratio)||el.height!==Math.round(h*ratio)){el.width=Math.round(w*ratio);el.height=Math.round(h*ratio);}context.setTransform(ratio,0,0,ratio,0,0);
       const ctx=context,theme=VIEW_MODES[d.inspectionMode]||VIEW_MODES.structural;ctx.fillStyle=hex(theme.background);ctx.fillRect(0,0,w,h);if(!s)return;
-      const v=view.current,scale=Math.min(w-50,h-92)/(2*v.extent),cy=Math.cos(v.yaw),sy=Math.sin(v.yaw),cp=Math.cos(v.pitch),sp=Math.sin(v.pitch);
+      const v=view.current;
+      if(v.followTip){
+        const tip=s.tips.find(t=>t.id===d.selectedTip)||s.tips.find(t=>t.cellId===d.selectedCell&&t.active),segment=tip&&s.segments[tip.segmentId];
+        if(segment?.alive)v.center=[...segment.end];
+      }
+      const scale=Math.min(w-50,h-92)/(2*v.extent),cy=Math.cos(v.yaw),sy=Math.sin(v.yaw),cp=Math.cos(v.pitch),sp=Math.sin(v.pitch);
       const project=p=>{const q=p.map((x,i)=>x-v.center[i]),x=q[0]*cy-q[2]*sy,z=q[0]*sy+q[2]*cy;return {x:w/2+x*scale,y:h/2+(z*sp-q[1]*cp)*scale,z:z*cp+q[1]*sp};};
+      if(d.inspectionMode==='brightfield'||d.inspectionMode==='fluorescence'){
+        points.current=drawMicroscopy(ctx,s,d,project,scale,w,h);return;
+      }
       const path=(vertices,close=false)=>{ctx.beginPath();vertices.forEach((p,i)=>{const a=project(p);i?ctx.lineTo(a.x,a.y):ctx.moveTo(a.x,a.y);});if(close)ctx.closePath();};
       const min=s.world.bounds.min,max=s.world.bounds.max;
       const gridStep=50;
@@ -42,13 +56,13 @@ export default function GrowthProjection({ state, selectedCell, selectedTip, onS
           for(const face of [[0,1,3,2],[4,6,7,5],[0,4,5,1],[2,3,7,6],[0,2,6,4],[1,5,7,3]])records.push({z:face.reduce((sum,i)=>sum+project(vertices[i]).z,0)/4,draw:()=>{path(face.map(i=>vertices[i]),true);ctx.fillStyle=s.config.mode==='biohybrid'?'rgba(155,133,83,.2)':'rgba(104,119,99,.17)';ctx.strokeStyle=s.config.mode==='biohybrid'?'rgba(198,168,104,.65)':'rgba(155,175,148,.38)';ctx.lineWidth=.7;ctx.fill();ctx.stroke();}});
         }
       }
-      const visible=s.segments.filter(segment=>segment.alive&&(!d.isolate||segment.cellId===d.selectedCell));
+      const visible=s.segments.filter(segment=>segment.alive&&(!d.isolate||segment.cellId===d.selectedCell)),profiles=shaftProfile(s);
       points.current=[];
       for(const segment of visible){
         const a=project(segment.start),b=project(segment.end),selected=segment.cellId===d.selectedCell;
         const depthFade=s.world.planar?1:.5+.5*Math.max(0,Math.min(1,((a.z+b.z)/2-min[1])/(max[1]-min[1]||1)));
         const shaftRgb=d.inspectionMode==='brightfield'?[98,128,111]:d.colorMode==='microtubules'?[Math.round(mix(206,124,segment.mt||0)),Math.round(mix(151,201,segment.mt||0)),Math.round(mix(92,154,segment.mt||0))]:segment.kind==='axon'?[143,216,201]:[227,193,131];
-        const alpha=(selected?1:.7)*depthFade,diameter=Math.max(.45,2*segment.radius*scale*d.thickness);
+        const shape=profiles.get(segment.id),alpha=(selected?1:.7)*depthFade,diameter=Math.max(.35,(d.inspectionMode==='mechanics'?2*segment.radius:shape.r0+shape.r1)*scale*d.thickness);
         records.push({z:(a.z+b.z)/2,draw:()=>{
           ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.lineCap='round';
           ctx.strokeStyle=`rgba(${shaftRgb.join(',')},${alpha*.13})`;ctx.lineWidth=diameter+2.2;ctx.stroke();
@@ -95,6 +109,14 @@ export default function GrowthProjection({ state, selectedCell, selectedTip, onS
           if(selected&&d.showForces){const dir=unit([end.x-p.x,end.y-p.y,0]),drawArrow=(sign,pn,color,offset)=>{if(pn<=1e-12)return;const l=Math.max(6,Math.min(45,pn*.3));const start=[p.x,p.y+offset],finish=[start[0]+dir[0]*l*sign,start[1]+dir[1]*l*sign];ctx.beginPath();ctx.moveTo(...start);ctx.lineTo(...finish);ctx.strokeStyle=color;ctx.lineWidth=1.5;ctx.stroke();ctx.beginPath();ctx.moveTo(finish[0]-dir[0]*5*sign-dir[1]*2.5,finish[1]-dir[1]*5*sign+dir[0]*2.5);ctx.lineTo(...finish);ctx.lineTo(finish[0]-dir[0]*5*sign+dir[1]*2.5,finish[1]-dir[1]*5*sign-dir[0]*2.5);ctx.stroke();};drawArrow(1,tip.forces.traction||0,'#b1e5c3',-2);drawArrow(-1,tip.forces.membrane||0,'#e3a087',2);}
         }});points.current.push({x:p.x,y:p.y,r:Math.max(5,r),cellId:tip.cellId,tipId:tip.id});
       }
+      for(const bud of s.buds||[]){
+        if(bud.length<.02||d.isolate&&bud.cellId!==d.selectedCell)continue;
+        const p=project(bud.end);records.push({z:p.z,draw:()=>{path([bud.start,bud.end]);ctx.strokeStyle=hex(theme.actin);ctx.lineWidth=Math.max(.5,(bud.precursor==='lamellipodium'?.5:.16)*scale*d.thickness);ctx.stroke();}});
+      }
+      if(d.showCytoskeleton)for(const wave of s.waves||[]){
+        if(d.isolate&&wave.cellId!==d.selectedCell)continue;const pos=wavePosition(s,wave);if(!pos)continue;const p=project(pos);
+        records.push({z:p.z+.2,draw:()=>{ctx.beginPath();ctx.arc(p.x,p.y,Math.max(.7,.8*scale),0,Math.PI*2);ctx.fillStyle=hex(theme.actin);ctx.fill();}});
+      }
       records.sort((a,b)=>a.z-b.z).forEach(record=>record.draw());
       for(const contact of s.contacts.filter(c=>c.candidate&&c.status==='candidate'&&(!d.isolate||c.sourceCellId===d.selectedCell||c.targetCellId===d.selectedCell))){const p=project(contact.position);ctx.fillStyle='#e1bde6';ctx.beginPath();ctx.arc(p.x,p.y,2.2,0,2*Math.PI);ctx.fill();}
       if(s.world.cue?.position&&s.config.guidance>0){const p=project(s.world.cue.position);ctx.strokeStyle='rgba(191,157,195,.45)';ctx.lineWidth=.7;for(const radius of [6,12,20]){ctx.beginPath();ctx.arc(p.x,p.y,radius*scale,0,2*Math.PI);ctx.stroke();}ctx.fillStyle='#c2a6c8';ctx.beginPath();ctx.arc(p.x,p.y,1.5,0,2*Math.PI);ctx.fill();}
@@ -103,19 +125,31 @@ export default function GrowthProjection({ state, selectedCell, selectedTip, onS
     };
     const resize=new ResizeObserver(()=>draw.current());resize.observe(el);draw.current();
     const wheel=event=>{event.preventDefault();view.current.extent=Math.max(10,Math.min(1500,view.current.extent*Math.exp(event.deltaY*.001)));draw.current();};el.addEventListener('wheel',wheel,{passive:false});
-    return()=>{resize.disconnect();el.removeEventListener('wheel',wheel);};
+    return()=>{resize.disconnect();el.removeEventListener('wheel',wheel);cancelAnimationFrame(animation.current);};
   },[]);
-  useEffect(()=>draw.current(),[state,selectedCell,selectedTip,isolate,showMembrane,showCytoskeleton,showForces,colorMode,thickness,inspectionMode,showTrails]);
   useEffect(()=>{
-    if(!state)return;const action=cameraAction?.type||'fit',v=view.current;
-    if(action==='cell'){const c=state.cells.find(c=>c.id===selectedCell);if(c)v.center=[...c.position];const ends=state.segments.filter(s=>s.alive&&s.cellId===selectedCell).map(s=>distance(s.end,v.center));v.extent=14;}
+    const before=previousFrame.current;cancelAnimationFrame(animation.current);
+    if(animating&&before&&state&&state.timeHours>before.timeHours&&state.config.seed===before.config.seed&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      transition.current={from:before,started:performance.now(),duration:frameDuration};
+      const frame=()=>{draw.current();if(performance.now()-transition.current.started<transition.current.duration)animation.current=requestAnimationFrame(frame);};
+      animation.current=requestAnimationFrame(frame);
+    }else transition.current=null;
+    previousFrame.current=state;draw.current();
+  },[state,animating,frameDuration]);
+  useEffect(()=>draw.current(),[selectedCell,selectedTip,isolate,showMembrane,showCytoskeleton,showForces,colorMode,thickness,inspectionMode,showTrails]);
+  useEffect(()=>{
+    if(!state)return;const action=cameraAction?.type||'fit',v=view.current;v.followTip=action==='tip';
+    if(action==='cell'){
+      const c=state.cells.find(c=>c.id===selectedCell),points=[...(c?[c.position]:[]),...state.segments.filter(s=>s.alive&&s.cellId===selectedCell).map(s=>s.end)];
+      if(points.length){const lo=[0,1,2].map(k=>Math.min(...points.map(p=>p[k]))),hi=[0,1,2].map(k=>Math.max(...points.map(p=>p[k])));v.center=lo.map((x,k)=>(x+hi[k])/2);v.extent=Math.max(35,...points.map(p=>distance(p,v.center)*1.12));}
+    }
     else if(action==='tip'){const t=state.tips.find(t=>t.id===selectedTip)||state.tips.find(t=>t.cellId===selectedCell&&t.active),s=t&&state.segments[t.segmentId];if(s)v.center=[...s.end];v.extent=18;}
     else {const {min,max}=state.world.bounds;v.center=min.map((n,i)=>(n+max[i])/2);const all=[...state.cells.map(c=>c.position),...state.segments.filter(s=>s.alive).map(s=>s.end)];const lo=[0,1,2].map(k=>Math.min(...all.map(p=>p[k]))),hi=[0,1,2].map(k=>Math.max(...all.map(p=>p[k])));v.center=lo.map((x,k)=>(x+hi[k])/2);v.extent=Math.max(35,Math.max(...hi.map((x,k)=>x-lo[k]))*.6+15);v.yaw=0;v.pitch=action==='top'||state.world.planar?Math.PI/2:.68;}
-    setViewName(action==='top'||state.world.planar?'Plan projection · x–z':'Volume projection · rotatable');draw.current();
+    setViewName(action==='tip'?'Following selected growth cone':action==='top'||state.world.planar?'Plan projection · x–z':'Volume projection · rotatable');draw.current();
   },[cameraAction,state?.config.mode,state?.config.seed]);
   return <><canvas class="cg-projection" ref={canvas} role="img" aria-label="Measured orthographic projection of the solved neuron geometry. Drag to rotate, shift-drag to pan, scroll to zoom, or click a cell to inspect it."
     onPointerDown={e=>{drag.current={x:e.clientX,y:e.clientY,startX:e.clientX,startY:e.clientY,shift:e.shiftKey};e.currentTarget.setPointerCapture(e.pointerId);}}
-    onPointerMove={e=>{const old=drag.current;if(!old)return;const dx=e.clientX-old.x,dy=e.clientY-old.y;if(old.shift){const rect=e.currentTarget.getBoundingClientRect(),scale=Math.min(rect.width-50,rect.height-92)/(2*view.current.extent);const yaw=view.current.yaw,pitch=view.current.pitch,right=[Math.cos(yaw),0,-Math.sin(yaw)],down=[Math.sin(yaw)*Math.sin(pitch),-Math.cos(pitch),Math.cos(yaw)*Math.sin(pitch)];view.current.center=view.current.center.map((value,i)=>value-(dx*right[i]+dy*down[i])/scale);}else{view.current.yaw-=dx*.006;view.current.pitch=Math.max(-1.55,Math.min(1.57,view.current.pitch-dy*.006));setViewName('Volume projection · rotatable');}old.x=e.clientX;old.y=e.clientY;draw.current();}}
+    onPointerMove={e=>{const old=drag.current;if(!old)return;const dx=e.clientX-old.x,dy=e.clientY-old.y;if(old.shift){view.current.followTip=false;setViewName('Manual framing');const rect=e.currentTarget.getBoundingClientRect(),scale=Math.min(rect.width-50,rect.height-92)/(2*view.current.extent);const yaw=view.current.yaw,pitch=view.current.pitch,right=[Math.cos(yaw),0,-Math.sin(yaw)],down=[Math.sin(yaw)*Math.sin(pitch),-Math.cos(pitch),Math.cos(yaw)*Math.sin(pitch)];view.current.center=view.current.center.map((value,i)=>value-(dx*right[i]+dy*down[i])/scale);}else{view.current.yaw-=dx*.006;view.current.pitch=Math.max(-1.55,Math.min(1.57,view.current.pitch-dy*.006));setViewName('Volume projection · rotatable');}old.x=e.clientX;old.y=e.clientY;draw.current();}}
     onPointerUp={e=>{const old=drag.current;drag.current=null;if(!old||Math.hypot(e.clientX-old.startX,e.clientY-old.startY)>5)return;const rect=e.currentTarget.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top;const hit=points.current.map(p=>({...p,d:Math.hypot(x-p.x,y-p.y)})).filter(p=>p.d<(p.r||7)+3).sort((a,b)=>a.d-b.d)[0];if(hit)onSelect(hit.cellId,hit.tipId);}}
     onPointerCancel={()=>drag.current=null}
   /><span class="cg-projection-label">{viewName}</span></>;

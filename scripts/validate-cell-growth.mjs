@@ -8,7 +8,7 @@ import {
 import { signedObstacle } from '../src/lib/cell-growth/mechanics.js';
 import { segmentSphereHit, segmentBoxHit, segmentCapsuleHit, closestSegmentPoints, SpatialHash } from '../src/lib/cell-growth/geometry.js';
 
-const sourceFiles = ['src/lib/cell-growth/engine.js', 'src/lib/cell-growth/behavior.js', 'tests/cell-growth-behavior.mjs', 'src/lib/cell-growth/geometry.js', 'src/lib/cell-growth/mechanics.js', 'src/lib/cell-growth/exploration.js', 'src/lib/cell-growth/render-geometry.js', 'tests/cell-growth-mechanics.mjs', 'tests/cell-growth.mjs', 'scripts/validate-cell-growth.mjs'];
+const sourceFiles = ['src/lib/cell-growth/morphogenesis.js','src/lib/cell-growth/shaft-mechanics.js','src/lib/cell-growth/microscopy-render.js','src/lib/cell-growth/presentation.js','tests/cell-growth-morphogenesis.mjs','src/lib/cell-growth/engine.js', 'src/lib/cell-growth/behavior.js', 'tests/cell-growth-behavior.mjs', 'src/lib/cell-growth/geometry.js', 'src/lib/cell-growth/mechanics.js', 'src/lib/cell-growth/exploration.js', 'src/lib/cell-growth/render-geometry.js', 'tests/cell-growth-mechanics.mjs', 'tests/cell-growth.mjs', 'scripts/validate-cell-growth.mjs'];
 const hashSources = async () => Object.fromEntries(await Promise.all(sourceFiles.map(async path => [path,
   createHash('sha256').update(await readFile(new URL(`../${path}`, import.meta.url))).digest('hex')])));
 const initialSourceSha256 = await hashSources();
@@ -23,7 +23,7 @@ const tolerance = {
 };
 const controlled = {
   mode: 'culture', source: 'immature', cellCount: 1, seed: 714,
-  branching: 0, noise: 0, guidance: 0, selfAvoidance: 0, fasciculation: 0,
+  branching: 0, noise: 0, guidance: 0, selfAvoidance: 0, fasciculation: 0, growthPulses: 0,
 };
 const distance = (a, b) => Math.hypot(...a.map((x, i) => x - b[i]));
 const geometricLength = sim => sim.segments.filter(s => s.alive)

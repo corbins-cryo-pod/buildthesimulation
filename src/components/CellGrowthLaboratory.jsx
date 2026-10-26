@@ -99,19 +99,22 @@ function ConeDiagram({ tip }) {
   </svg>;
 }
 
+const OBSERVATION_START = {...DEFAULT_CONFIG,source:'immature',cellCount:1,seed:101,motility:.25,branching:1.3};
+
 export default function CellGrowthLaboratory() {
   const worker = useRef(null), fileInput = useRef(null), mounted = useRef(true);
-  const [draft, setDraft] = useState({ ...DEFAULT_CONFIG });
+  const [draft, setDraft] = useState({ ...OBSERVATION_START });
   const [state, setState] = useState(null), [metrics, setMetrics] = useState(null);
-  const [busy, setBusy] = useState(true), [playing, setPlaying] = useState(false), [error, setError] = useState(''), [notice, setNotice] = useState('Preparing a precursor culture at model time zero…');
+  const [busy, setBusy] = useState(true), [playing, setPlaying] = useState(false), [error, setError] = useState(''), [notice, setNotice] = useState('Growing a branched-neuron observation from time zero…');
   const [selectedCell, setSelectedCell] = useState(0), [selectedTip, setSelectedTip] = useState(null);
   const [controlTab, setControlTab] = useState('cells'), [analysisTab, setAnalysisTab] = useState('growth');
-  const [isolate, setIsolate] = useState(false), [showMembrane, setShowMembrane] = useState(true), [showCytoskeleton, setShowCytoskeleton] = useState(true), [showForces, setShowForces] = useState(false);
+  const [isolate, setIsolate] = useState(false), [showMembrane, setShowMembrane] = useState(true), [showCytoskeleton, setShowCytoskeleton] = useState(false), [showForces, setShowForces] = useState(false);
   const [colorMode, setColorMode] = useState('identity'), [thickness, setThickness] = useState(1), [cameraAction, setCameraAction] = useState({ type: 'fit', count: 0 });
   const [webglUnavailable,setWebglUnavailable]=useState(false);
-  const [inspectionMode,setInspectionMode]=useState('structural'),[showTrails,setShowTrails]=useState(true);
-  const [viewBackend, setViewBackend] = useState('3d');
-  const [speed, setSpeed] = useState(.5), [until, setUntil] = useState(72);
+  const [inspectionMode,setInspectionMode]=useState('brightfield'),[showTrails,setShowTrails]=useState(false);
+  const [viewBackend, setViewBackend] = useState('projection');
+  const [frameDuration,setFrameDuration]=useState(140);
+  const [speed, setSpeed] = useState(.1), [until, setUntil] = useState(72);
   const [comparisonIndex, setComparisonIndex] = useState(0), [comparisonHours, setComparisonHours] = useState(48), [comparison, setComparison] = useState(null), [comparing, setComparing] = useState(false), [compareProgress, setCompareProgress] = useState('');
 
   useEffect(() => {
@@ -120,10 +123,12 @@ export default function CellGrowthLaboratory() {
     instance.onmessage = ({ data }) => {
       if (!mounted.current) return;
       if (data.type === 'state') {
-        setState(data.state); setMetrics(data.metrics); setPlaying(Boolean(data.playing));
+        setState(data.state); setFrameDuration(data.frameDuration??140); setMetrics(data.metrics); setPlaying(Boolean(data.playing));
         if ('busy' in data) setBusy(data.busy);
         if (!data.busy && !data.playing) setNotice('Paused · inspect the culture or continue growth.');
-        if (data.preview) setNotice('Calculating the 24-hour reference culture…');
+        if (data.playing) setNotice('Growing · local tip motion and retained morphology evolve together.');
+        if (data.previewComplete) setCameraAction(old => ({ type: 'fit', count: old.count + 1 }));
+        if (data.preview) setNotice('Growing the reference culture from its initial state…');
         if (data.restored) { setComparison(null); setCompareProgress(''); setComparing(false); setDraft({ ...data.state.config }); setSelectedCell(data.state.cells[0]?.id ?? 0); setSelectedTip(null); setNotice('Experiment restored, including its random state and growth history.'); setCameraAction(old => ({ type: 'fit', count: old.count + 1 })); }
       } else if (data.type === 'error') { setError(data.message); setBusy(false); setPlaying(false); setComparing(false); }
       else if (data.type === 'export') {
@@ -134,7 +139,7 @@ export default function CellGrowthLaboratory() {
       else if (data.type === 'comparison') { setComparison(data.runs); setComparing(false); setCompareProgress(''); setNotice(data.runs.some(run => run.limits?.reached) ? 'A comparison arm stopped at its capacity limit. Read the reached times before comparing.' : 'Paired experiment complete. The displayed culture is preserved.'); }
     };
     instance.onerror = event => { setError(event.message || 'The simulation worker could not start. Reload the page to try again.'); setBusy(false); setPlaying(false); setComparing(false); };
-    instance.postMessage({ type: 'init', config: DEFAULT_CONFIG, previewHours: 0 });
+    instance.postMessage({ type: 'init', config: OBSERVATION_START, previewHours: 48 });
     return () => { mounted.current = false; instance.terminate(); worker.current = null; };
   }, []);
 
@@ -162,6 +167,7 @@ export default function CellGrowthLaboratory() {
     initialize({ ...DEFAULT_CONFIG, ...(preset?.config || {}), mode: id, seed: draft.seed }, 0);
   };
   const running = busy || playing || comparing;
+  const microscopy = inspectionMode==='brightfield'||inspectionMode==='fluorescence';
   const pause = () => { send({ type: 'pause' }); setBusy(false); setPlaying(false); setComparing(false); setNotice('Paused.'); };
   const importFile = async event => {
     const input = event.currentTarget, file = input.files?.[0]; if (!file) return;
@@ -180,7 +186,7 @@ export default function CellGrowthLaboratory() {
 
   return <section class="cg-lab" aria-label="Cell Growth Laboratory">
     <header class="cg-heading">
-      <div><p class="cg-kicker">Development &amp; morphogenesis <span>Version 2</span></p><h1>Cell Growth Laboratory</h1><p class="cg-lede">Living cells. Moving membranes. Emerging neural arbors.</p></div>
+      <div><p class="cg-kicker">Development &amp; morphogenesis <span>Version 3</span></p><h1>Cell Growth Laboratory</h1><p class="cg-lede">Watch a neuron explore, extend, branch, and retract.</p></div>
       <div class="cg-heading-links"><a href="/simulations/cell-growth/methods/">Model &amp; evidence ↗</a><span>Membrane · cytoskeleton · contact</span></div>
     </header>
 
@@ -194,7 +200,7 @@ export default function CellGrowthLaboratory() {
         <button type="button" disabled={!state || running || changed || state.timeHours >= 168 - 1e-8 || state.limits.reached} onClick={() => { setBusy(true); send({ type: 'advance', hours: 6 }); }}>+ 6 h</button>
         <button type="button" onClick={() => initialize(state?.config || draft)}>Reset to 0 h</button>
       </div>
-      <div class="cg-time-controls"><label>Stop at <select aria-label="Stop at model time" disabled={running} value={until} onChange={e => setUntil(Number(e.currentTarget.value))}><option value="48">48 h</option><option value="72">72 h</option><option value="120">120 h</option><option value="168">168 h</option></select></label><label>Playback <select aria-label="Playback speed" disabled={running} value={speed} onChange={e => setSpeed(Number(e.currentTarget.value))}><option value={.1}>Slow</option><option value={.5}>Normal</option><option value={1}>Fast</option></select></label><span class="cg-elapsed"><strong>{fmt(state?.timeHours, 1)}</strong> <span>h<br /><small>model time</small></span></span></div>
+      <div class="cg-time-controls"><label>Stop at <select aria-label="Stop at model time" disabled={running} value={until} onChange={e => setUntil(Number(e.currentTarget.value))}><option value="48">48 h</option><option value="72">72 h</option><option value="120">120 h</option><option value="168">168 h</option></select></label><label>Playback <select aria-label="Playback speed" disabled={running} value={speed} onChange={e => setSpeed(Number(e.currentTarget.value))}><option value={.005}>Tip study · detailed motion</option><option value={.025}>Slow growth</option><option value={.1}>Normal growth</option><option value={.5}>Fast growth</option></select></label><span class="cg-elapsed"><strong>{fmt(state?.timeHours, speed<.05?2:1)}</strong> <span>h<br /><small>model time</small></span></span></div>
     </div>
     <div class="cg-status-line" role="status" aria-live="polite"><span class={running ? 'cg-state-dot running' : 'cg-state-dot'} />{comparing ? compareProgress || 'Starting paired experiment…' : changed ? 'Settings changed. Apply and restart to calculate a new culture.' : notice}<span class="cg-version">Mechanistic exploratory model</span></div>
     {error && <div class="cg-alert" role="alert">{error}</div>}
@@ -209,10 +215,11 @@ export default function CellGrowthLaboratory() {
             <p class="cg-help">The starting state controls the developmental lag. These clocks are illustrative; they are not a human differentiation protocol.</p>
             <RangeField label="Population" name="cellCount" value={draft.cellCount} min={1} max={24} step={1} unit="cells" onChange={update} />
             <RangeField label="Culture density" name="density" value={draft.density} min={.5} max={3} note="Changes the initial spread on a plate; cell count stays fixed." onChange={update} />
+            {draft.mode==='culture'&&<label class="cg-select-field">Plate layout<select aria-label="Plate layout" value={draft.cultureLayout} onChange={e=>update('cultureLayout',e.currentTarget.value)}><option value="plain">Unpatterned culture</option><option value="obstacles">Obstacle assay</option></select></label>}
             <label class="cg-seed-field">Random seed<input type="number" aria-label="Random seed" min="0" max="4294967295" step="1" value={draft.seed} onChange={e => { const n = Number(e.currentTarget.value); if (Number.isFinite(n)) update('seed', Math.max(0, Math.min(4294967295, Math.round(n)))); }} /></label>
             <div class="cg-control-rule" />
             <RangeField label="Membrane supply" name="membraneSupply" value={draft.membraneSupply} max={2} note="Area reserve available to extend processes." onChange={update} />
-            <RangeField label="Growth episodes" name="growthPulses" value={draft.growthPulses} max={1} note="Independent bursts, pauses and brief retractions at each tip. Zero gives continuous drive." onChange={update} />
+            <RangeField label="Growth episodes" name="growthPulses" value={draft.growthPulses} max={1} note="Traveling actin-associated waves and independent local episodes. Zero gives continuous drive." onChange={update} />
             <RangeField label="Branch initiation" name="branching" value={draft.branching} max={2} note="Scales axon and dendrite branch hazards separately." onChange={update} />
             <div class="cg-mini-note"><b>Developmental sequence</b><p>Precursor → immature processes → polarization → arbor elaboration.</p></div>
           </>}
@@ -241,17 +248,18 @@ export default function CellGrowthLaboratory() {
       </aside>
 
       <main class="cg-specimen">
-        <div class="cg-view-header"><label>View <select aria-label="Geometry view" value={viewBackend} onChange={e => { setViewBackend(e.currentTarget.value); camera('fit'); }}><option value="projection">Software 3D</option><option value="3d" disabled={webglUnavailable}>WebGL surface</option></select></label><div class="cg-view-buttons"><button type="button" onClick={() => camera('fit')}>Fit</button><button type="button" onClick={() => camera('top')}>Top</button><button type="button" disabled={!cell} onClick={() => camera('cell')}>Cell</button><button type="button" disabled={!tip} onClick={() => { setSelectedTip(tip.id); camera('tip'); }}>Tip</button></div></div>
-        <div class="cg-inspection-modes" aria-label="Cell visualization mode">{[['structural','Structural 3D'],['brightfield','Brightfield'],['fluorescence','Fluorescence'],['mechanics','Mechanics']].map(([id,label])=><button type="button" aria-pressed={inspectionMode===id} class={inspectionMode===id?'active':''} onClick={()=>{setInspectionMode(id);setViewBackend(webglUnavailable?'projection':'3d');}}>{label}</button>)}</div>
+        <div class="cg-reference-starts" aria-label="Microscopy experiments"><span>Observe growth</span><button type="button" disabled={running} onClick={()=>initialize(OBSERVATION_START,12)}>Single neuron · 12 h</button><button type="button" disabled={running} onClick={()=>initialize(OBSERVATION_START,48)}>Branched neuron · 48 h</button><button type="button" disabled={running} onClick={()=>initialize({...DEFAULT_CONFIG,source:'immature',cellCount:6,seed:714,motility:.25,branching:1.3,density:1.3},24)}>Sparse culture · 24 h</button><small>Calculated from time zero</small></div>
+        <div class="cg-view-header"><label>View <select aria-label="Geometry view" disabled={microscopy} value={viewBackend} onChange={e => { setViewBackend(e.currentTarget.value); camera('fit'); }}><option value="projection">{microscopy?'Microscopy projection':'Software 3D'}</option><option value="3d" disabled={webglUnavailable}>WebGL surface</option></select></label><div class="cg-view-buttons"><button type="button" onClick={() => camera('fit')}>Fit</button><button type="button" onClick={() => camera('top')}>Top</button><button type="button" disabled={!cell} onClick={() => camera('cell')}>Cell</button><button type="button" disabled={!tip} onClick={() => { setSelectedTip(tip.id); camera('tip'); }}>Tip</button></div></div>
+        <div class="cg-inspection-modes" aria-label="Cell visualization mode">{[['brightfield','Phase contrast'],['fluorescence','Fluorescence'],['structural','Structural 3D'],['mechanics','Mechanics']].map(([id,label])=><button type="button" aria-pressed={inspectionMode===id} class={inspectionMode===id?'active':''} onClick={()=>{setInspectionMode(id);setViewBackend(id==='brightfield'||id==='fluorescence'||webglUnavailable?'projection':'3d');}}>{label}</button>)}</div>
         <div class={`cg-viewport cg-appearance-${inspectionMode}`}>
-          {viewBackend === '3d' ? <GrowthScene state={state} selectedCell={cell?.id ?? selectedCell} selectedTip={tip?.id ?? selectedTip} onSelect={select} isolate={isolate} showMembrane={showMembrane} showCytoskeleton={showCytoskeleton} showForces={showForces} colorMode={colorMode} thickness={thickness} cameraAction={cameraAction} inspectionMode={inspectionMode} showTrails={showTrails} onUnavailable={()=>{setWebglUnavailable(true);setViewBackend('projection');}} /> : <GrowthProjection state={state} selectedCell={cell?.id ?? selectedCell} selectedTip={tip?.id ?? selectedTip} onSelect={select} isolate={isolate} showMembrane={showMembrane} showCytoskeleton={showCytoskeleton} showForces={showForces} colorMode={colorMode} thickness={thickness} cameraAction={cameraAction} inspectionMode={inspectionMode} showTrails={showTrails} />}
+          {viewBackend === '3d' && !['brightfield','fluorescence'].includes(inspectionMode) ? <GrowthScene state={state} selectedCell={cell?.id ?? selectedCell} selectedTip={tip?.id ?? selectedTip} onSelect={select} isolate={isolate} showMembrane={showMembrane} showCytoskeleton={showCytoskeleton} showForces={showForces} colorMode={colorMode} thickness={thickness} cameraAction={cameraAction} inspectionMode={inspectionMode} showTrails={showTrails} onUnavailable={()=>{setWebglUnavailable(true);setViewBackend('projection');}} /> : <GrowthProjection state={state} animating={playing} frameDuration={frameDuration} selectedCell={cell?.id ?? selectedCell} selectedTip={tip?.id ?? selectedTip} onSelect={select} isolate={isolate} showMembrane={showMembrane} showCytoskeleton={showCytoskeleton} showForces={showForces} colorMode={colorMode} thickness={thickness} cameraAction={cameraAction} inspectionMode={inspectionMode} showTrails={showTrails} />}
           <div class="cg-scene-caption"><span>{state ? `${state.cells.length} cells · ${state.segments.filter(s => s.alive !== false).length.toLocaleString()} retained elements` : 'Initializing culture'}</span><small>Drag to orbit · scroll to zoom · click a cell</small></div>
-          <div class="cg-scene-legend">{colorMode === 'identity' ? <><span><i class="axon" />Axon</span><span><i class="dendrite" />Dendrite</span></> : <><span><i class="dendrite" />Low MT support</span><span><i class="support" />High MT support</span></>}<span><i class="contact" />Contact candidate</span><span><i class="cue" />Guidance cue</span></div>
+          <div class="cg-scene-legend" hidden={inspectionMode==='brightfield'||inspectionMode==='fluorescence'}>{colorMode === 'identity' ? <><span><i class="axon" />Axon</span><span><i class="dendrite" />Dendrite</span></> : <><span><i class="dendrite" />Low MT support</span><span><i class="support" />High MT support</span></>}<span><i class="contact" />Contact candidate</span><span><i class="cue" />Guidance cue</span></div>
         </div>
-        <div class="cg-view-options"><label><input type="checkbox" checked={isolate} onChange={e => setIsolate(e.currentTarget.checked)} /> Isolate cell</label><label><input type="checkbox" checked={showMembrane} onChange={e => setShowMembrane(e.currentTarget.checked)} /> Membrane</label><label><input type="checkbox" checked={showCytoskeleton} onChange={e => setShowCytoskeleton(e.currentTarget.checked)} /> Cytoskeleton</label><label><input type="checkbox" checked={showForces} onChange={e => setShowForces(e.currentTarget.checked)} /> Forces</label><label><input type="checkbox" checked={showTrails} onChange={e=>setShowTrails(e.currentTarget.checked)}/> Migration tracks</label><label>Color<select aria-label="Neurite color" value={colorMode} onChange={e => setColorMode(e.currentTarget.value)}><option value="identity">Axon / dendrite</option><option value="microtubules">MT support</option></select></label><label>Radius<select aria-label="Display radius scale" value={thickness} onChange={e => setThickness(Number(e.currentTarget.value))}><option value="1">1×</option><option value="2">2× display</option><option value="3">3× display</option></select></label></div>
-        <p class="cg-view-note">Microscopy-inspired color, not predicted image formation. Shells and nuclei follow the solver; internal filament lines illustrate coarse cytoskeletal support.</p>
-        {colorMode === 'microtubules' && <p class="cg-view-note">Shaft colors show microtubule support: amber → green means low → high. Growth-cone colors retain axon / dendrite identity. Display color does not change growth.</p>}
-        {showForces && <p class="cg-view-note">Arrows show cell traction and growth-cone traction (green), plus cone membrane opposition (coral). Arrow lengths are scaled for inspection; use the pN readouts for force values.</p>}
+        <div class="cg-view-options"><label><input type="checkbox" checked={isolate} onChange={e => setIsolate(e.currentTarget.checked)} /> Isolate cell</label><label><input type="checkbox" disabled={microscopy} checked={showMembrane} onChange={e => setShowMembrane(e.currentTarget.checked)} /> Membrane</label><label><input type="checkbox" disabled={microscopy} checked={showCytoskeleton} onChange={e => setShowCytoskeleton(e.currentTarget.checked)} /> Cytoskeleton</label><label><input type="checkbox" disabled={microscopy} checked={showForces} onChange={e => setShowForces(e.currentTarget.checked)} /> Forces</label><label><input type="checkbox" disabled={microscopy} checked={showTrails} onChange={e=>setShowTrails(e.currentTarget.checked)}/> Migration tracks</label><label>Color<select aria-label="Neurite color" disabled={microscopy} value={colorMode} onChange={e => setColorMode(e.currentTarget.value)}><option value="identity">Axon / dendrite</option><option value="microtubules">MT support</option></select></label><label>{microscopy?'Shaft radius':'Display radius'}<select aria-label="Display radius scale" value={thickness} onChange={e => setThickness(Number(e.currentTarget.value))}><option value="1">1×</option><option value="2">2× display</option><option value="3">3× display</option></select></label></div>
+        <p class="cg-view-note"><a href="/simulations/cell-growth/methods/#microscopy">Microscopy evidence →</a> Microscopy views show the solved morphology with approximate contrast. Moving tips, side buds, and traveling actin-associated signals come from the model. Contrast and intracellular texture are illustrative; Mechanics shows the collision envelopes. Playback smooths between computed frames; pause shows the completed solver state.</p>
+        {!microscopy && colorMode === 'microtubules' && <p class="cg-view-note">Shaft colors show microtubule support: amber → green means low → high. Growth-cone colors retain axon / dendrite identity. Display color does not change growth.</p>}
+        {!microscopy && showForces && <p class="cg-view-note">Arrows show cell traction and growth-cone traction (green), plus cone membrane opposition (coral). Arrow lengths are scaled for inspection; use the pN readouts for force values.</p>}
         <div class="cg-metrics-strip"><div><span>Axonal length</span><strong>{fmt(metricValue(metrics, 'totalAxonLength'), 0)} <small>µm</small></strong></div><div><span>Dendritic length</span><strong>{fmt(metricValue(metrics, 'totalDendriteLength'), 0)} <small>µm</small></strong></div><div><span>Active tips</span><strong>{fmt(metrics?.activeTips, 0)}</strong></div><div><span>Branch points</span><strong>{fmt(metrics?.branches, 0)}</strong></div></div>
       </main>
 
@@ -262,6 +270,7 @@ export default function CellGrowthLaboratory() {
         <dl class="cg-readings"><div><dt>Axon length</dt><dd>{fmt(cellMetrics.axonLength)} µm</dd></div><div><dt>Dendrite length</dt><dd>{fmt(cellMetrics.dendriteLength)} µm</dd></div><div><dt>Branches / tips</dt><dd>{fmt(cellMetrics.branches, 0)} / {tips.length}</dd></div><div><dt>Membrane tension</dt><dd>{fmt(cell?.membrane?.tension, 2)} pN/µm</dd></div><div><dt>Membrane reserve</dt><dd>{fmt((cell?.membrane?.reserve || 0) * 100, 0)}%</dd></div><div><dt>Cytoskeletal supply</dt><dd>{fmt((cell?.supply || 0) * 100, 0)}%</dd></div></dl>
         <details class="cg-cell-mechanics" open><summary>Why this cell moves</summary><p class="cg-help">{(cell?.mechanics?.contactCount||0)>0?'Contact constraints are resisting or redirecting the cortex.':(cellMetrics.cellSpeed||0)>.05?'Polarized actin and substrate coupling generate traction; the nucleus follows through an internal tether.':'The cell is settling, weakly coupled, or constrained by its established processes.'}</p><dl class="cg-readings"><div><dt>Speed</dt><dd>{fmt(cellMetrics.cellSpeed,2)} µm/h</dd></div><div><dt>Displacement / path</dt><dd>{fmt(cellMetrics.displacement)} / {fmt(cellMetrics.pathLength)} µm</dd></div><div><dt>Cell traction</dt><dd>{fmt(Math.hypot(...(cell?.mechanics?.traction||[0,0,0])),0)} pN</dd></div><div><dt>Adhesion engaged</dt><dd>{fmt((cell?.mechanics?.adhesionMean||0)*100,0)}%</dd></div><div><dt>Area / volume strain</dt><dd>{fmt((cellMetrics.areaStrain||0)*100)} / {fmt((cellMetrics.volumeStrain||0)*100)}%</dd></div><div><dt>Mesh quality</dt><dd>{fmt(cellMetrics.meshQuality,2)}</dd></div><div><dt>Constrained steps</dt><dd>{cell?.mechanics?.rejectedSteps||0}</dd></div></dl></details>
         <div class="cg-tip-heading"><b>Growth-cone mechanics</b><label><select aria-label="Selected growth cone" value={tip?.id ?? ''} disabled={!tips.length} onChange={e => setSelectedTip(Number(e.currentTarget.value))}>{tips.length ? tips.map(item => <option value={item.id}>{item.kind === 'axon' ? 'Axon' : 'Dendrite'} tip {item.id + 1} · {item.status || 'growing'}</option>) : <option value="">No active growth cone</option>}</select></label></div>
+        <dl class="cg-readings cg-local-behavior"><div><dt>Tip behavior</dt><dd>{tip?.status==='retracting'?'Retracting':tip?.status==='contact'?'Contact-limited':tip?.forces?.speed>.5?((tip?.exploration?.pulse||0)>.5?'Wave-associated extension':'Extending'):'Exploring / paused'}</dd></div><div><dt>Wave arrivals at this tip</dt><dd>{tip?.exploration?.arrivals??0}</dd></div><div><dt>Temporary side buds</dt><dd>{state?.buds?.filter(b=>b.cellId===cell?.id).length??0}</dd></div></dl>
         <ConeDiagram tip={tip} />
         <small class="cg-diagram-note">Effective cone organization. Individual filaments are schematic.</small>
         {tip ? <ForceBudget tip={tip} /> : <p class="cg-no-tip">Advance the experiment to grow processes, then select a tip to inspect its force balance.</p>}

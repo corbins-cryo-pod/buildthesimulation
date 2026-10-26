@@ -38,9 +38,11 @@ export function surfaceGeometry(vertices,triangles=SHELL.triangles) {
 
 export function createSoftCell(position,radius,id,planar,polarity) {
   const vertices=SHELL.vertices.map((u,i)=>{
-    // Seed-independent cell-id variation is fixed initial geometry, never an animation.
-    const variation=1+.025*Math.sin(i*2.13+id*1.7)*Math.sin(i*.83);
-    const p=scale(u,radius*variation);if(planar){p[0]*=1.16;p[1]*=.74;p[2]*=1.16;}
+    // Smooth, cell-specific lobes in the initial cortex, subsequently solved by
+    // the same membrane forces. Avoid a noisy vertex-level surface texture.
+    const angle=Math.atan2(u[2],u[0]),equator=1-u[1]*u[1];
+    const variation=1+equator*(.075*Math.sin(3*angle+id*1.7)+.045*Math.cos(2*angle-id*.9));
+    const p=scale(u,radius*variation);if(planar){p[0]*=1.22;p[1]*=.66;p[2]*=1.08;}
     return add(position,p);
   });
   const center=centroid(vertices),g=surfaceGeometry(vertices),n=vertices.length;
@@ -217,14 +219,20 @@ export function advanceCellMechanics(sim,cell,duration,segments,roots,maxStepHou
 }
 
 export function updateConeShape(tip,dt,config){
-  const count=12,base=tip.kind==='axon'?1.6:1.85;
+  const count=12,base=tip.kind==='axon'?1.75:1.55;
   tip.shape??={radii:Array(count).fill(base),height:.45,actinRim:Array(count).fill(0),maxRadius:base};
   for(let i=0;i<count;i++){
-    const a=i/count*Math.PI*2,front=.3+.7*Math.max(0,Math.cos(a)),activity=config.actin*front*(.4+.6*tip.clutch)*(.65+.35*Math.sin((tip.behavior?.clock??tip.ageHours)*(1.2+i*.13)+i*1.7+tip.id))*(.6+.4*Math.max(0,tip.behavior?.gain??1));
-    const load=tip.status==='contact'?.5:1,rest=base*(.65+.25*tip.mt),target=rest+load*.65*activity/(1+.025*tip.forces.membrane);
-    tip.shape.radii[i]+=(target-tip.shape.radii[i])*(-Math.expm1(-dt/.3));tip.shape.actinRim[i]=activity;
+    const a=i/count*Math.PI*2,front=Math.max(0,Math.cos(a)),lateral=Math.abs(Math.sin(a));
+    const sector=tip.exploration?.sectors?.[i]?.activity??.4;
+    const neighbor=((tip.exploration?.sectors?.[(i+1)%count]?.activity??sector)+(tip.exploration?.sectors?.[(i+count-1)%count]?.activity??sector))*.5;
+    const activity=config.actin*(.18+.82*front)*(.4+.6*tip.clutch)*(.3+.7*(.7*sector+.3*neighbor))*(.6+.5*(tip.exploration?.pulse??0));
+    const load=tip.status==='retracting'?.25:tip.status==='contact'?.55:1;
+    // A narrow trailing neck and an unequal sheet-like leading margin, rather
+    // than a circular puck. All dimensions remain inside the collision sphere.
+    const rest=base*(.24+.42*front+.34*lateral),target=rest+load*(.3+1.4*front+.5*lateral)*activity/(1+.025*tip.forces.membrane);
+    tip.shape.radii[i]+=(target-tip.shape.radii[i])*(-Math.expm1(-dt/.12));tip.shape.actinRim[i]=activity;
   }
-  tip.shape.height=.28+.28*tip.mt;tip.shape.maxRadius=Math.max(...tip.shape.radii);tip.radius=tip.shape.maxRadius;
+  tip.shape.height=.18+.22*tip.mt;tip.shape.maxRadius=Math.max(...tip.shape.radii);tip.radius=tip.shape.maxRadius;
 }
 
 export function populationMechanics(sim){
