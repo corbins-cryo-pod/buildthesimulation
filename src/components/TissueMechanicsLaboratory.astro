@@ -1,4 +1,5 @@
 ---
+import SimHero from './SimHero.jsx';
 import '../styles/tissue-mechanics.css';
 import '../styles/tissue-phase2.css';
 import { STATIC_FITS } from '../lib/tissue-mechanics/calibration-presets.mjs';
@@ -6,11 +7,7 @@ import { PRESETS } from '../lib/tissue-mechanics/phase2-material.mjs';
 const { cellular = false } = Astro.props;
 ---
 <section class="tm-lab" data-tissue-lab data-cellular={String(cellular)}>
-  <div class="tm-masthead">
-    <div><span class="tm-eyebrow">Mechanics / Phase 2 • Physical time</span><h2>{cellular ? 'Inside the deforming tissue' : 'The tissue is the experiment.'}</h2>
-      <p>{cellular ? 'An 80 µm native-position crop of measured H01 neurites, carried by the same finite-element displacement field.' : 'Pull, compress, shear and indent a three-dimensional tissue sample. Explore a bonded implant in a pre-existing tract.'}</p></div>
-    <nav aria-label="Mechanics laboratories"><a aria-current={!cellular ? 'page' : undefined} href="/simulations/tissue-mechanics/">Tissue</a><a aria-current={cellular ? 'page' : undefined} href="/simulations/cellular-mechanics/">Cellular</a><a href="/simulations/tissue-mechanics/methods/">Methods &amp; validation</a></nav>
-  </div>
+  <SimHero kicker="Tissue mechanics / Phase 2 · Physical time" title={cellular ? 'Cellular Tissue Mechanics Laboratory' : 'Brain Tissue Mechanics Laboratory'} intro={cellular ? 'An 80 µm native-position crop of measured H01 neurites, carried by the same finite-element displacement field.' : 'Pull, compress, shear and indent a three-dimensional tissue sample. Explore a bonded implant in a pre-existing tract.'} links={[{ href: '/simulations/tissue-mechanics/methods/', label: 'Methods & validation' }]} family={[{ href: '/simulations/tissue-mechanics/', label: 'Tissue', current: !cellular }, { href: '/simulations/cellular-mechanics/', label: 'Cellular', current: cellular }]} />
   <p class="tm-disclosure"><strong>Study-specific viscoelastic mechanics, not an injury predictor.</strong> Mixed macrocell pressure, three nonlinear laws and finite-strain material history. Published presets include poor fits in some loading modes; read the evidence panel. No pia rupture or cutting.</p>
   <div class="tm-workspace">
     <aside class="tm-controls" aria-label="Experiment controls">

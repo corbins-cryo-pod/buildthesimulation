@@ -1,3 +1,4 @@
+import SimHero from './SimHero.jsx';
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { DEFAULT_SETTINGS, MODEL_VERSION, PRESETS, normalizeSettings, presetSettings, serializeExperiment, parseExperiment } from '../lib/cochlear/config.js';
 import { createGeometry, greenwoodHz } from '../lib/cochlear/geometry.js';
@@ -196,7 +197,7 @@ export default function CochlearLaboratory() {
   const traceSeries = fiber?.response ? ['Peripheral node', 'Soma', 'Distal axon'].map((label, index) => ({ label, values: fiber.response.membraneMv[index], color: ['var(--coch-blue)', 'var(--coch-brass)', 'var(--coch-red)'][index] })) : [];
   const computedSettings = result?.settings ?? draftScene.settings;
   return <div class="coch-lab" data-model-version={MODEL_VERSION} data-coch-status={busy || (result ? 'complete' : 'ready')}>
-    <header class="coch-heading"><div><p class="coch-kicker">Neural Interface Laboratories / Auditory systems</p><h1>Cochlear Implant Laboratory</h1><p class="coch-intro">Explore human cochlear anatomy, implant construction, and the sound-to-nerve calculation.</p></div><a href="/simulations/cochlear-implant/methods/" class="coch-method-link">Methods &amp; validation ↗</a></header>
+    <SimHero kicker="Neural interface laboratories / Auditory systems" title="Cochlear Implant Laboratory" intro="Explore human cochlear anatomy, implant construction, and the sound-to-nerve calculation." links={[{ href: '/simulations/cochlear-implant/methods/', label: 'Methods & validation' }]} />
     <div class="coch-model-strip"><span>Anatomy &amp; biophysics</span><p>Measured human cochlear chambers · five implant references · organ of Corti · active auditory nerve fibers</p></div>
     <CochlearAnatomyWorkspace geometry={geometry} model={model} fibers={result?.fibers} settings={computedSettings} result={result} theme={theme} busy={busy} selectedContact={contactIndex} selectedFiber={fiberIndex} onContact={selectContact} onFiber={selectFiber} timeMs={time} playing={playing} durationMs={result?.durationMs ?? settings.durationMs} onTime={scrub} onToggleReplay={() => { if (time >= result.durationMs) setTime(0); setPlaying(value => !value); }} onUseChannelCount={useChannelCount} />
     <header class="coch-experiment-heading"><div><p class="coch-kicker">Reference electrical experiment</p><h2>From sound to a propagated response</h2></div><p>Finite circular sources in an unrolled homogeneous conductor · 65 compartments per modeled fiber</p></header>

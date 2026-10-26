@@ -1,3 +1,4 @@
+import SimHero from './SimHero.jsx';
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { DEFAULT_CONFIG, PRESETS, MODEL_VERSION } from '../lib/cell-growth/engine.js';
 import GrowthScene from './cell-growth/GrowthScene.jsx';
@@ -179,10 +180,7 @@ export default function CellGrowthLaboratory() {
   };
 
   return <section class="cg-lab" aria-label="Cell Growth Laboratory">
-    <header class="cg-heading">
-      <div><p class="cg-kicker">Development &amp; morphogenesis <span>Version 2</span></p><h1>Cell Growth Laboratory</h1><p class="cg-lede">Living cells. Moving membranes. Emerging neural arbors.</p></div>
-      <div class="cg-heading-links"><a href="/simulations/cell-growth/methods/">Model &amp; evidence ↗</a><span>Membrane · cytoskeleton · contact</span></div>
-    </header>
+    <SimHero kicker="Development & morphogenesis / Version 2" title="Cell Growth Laboratory" intro="Living cells. Moving membranes. Emerging neural arbors." links={[{ href: '/simulations/cell-growth/methods/', label: 'Model & evidence' }]} note="Membrane · cytoskeleton · contact" />
 
     <nav class="cg-environments" aria-label="Growth environment">{MODES.map(item => <button type="button" key={item.id} class={item.id === (state?.config.mode || draft.mode) ? 'active' : ''} aria-pressed={item.id === (state?.config.mode || draft.mode)} onClick={() => selectMode(item.id)}>
       <span>{item.number}</span><b>{item.title}</b><small>{item.detail}</small>

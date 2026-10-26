@@ -1,3 +1,4 @@
+import SimHero from './SimHero.jsx';
 import {useEffect,useMemo,useRef,useState} from 'preact/hooks';
 import {DEFAULT_SETTINGS,normalizeSettings,createGeometry} from '../lib/biohybrid/model.js';
 import {PRESETS} from '../lib/biohybrid/presets.js';
@@ -48,7 +49,7 @@ export default function BiohybridLaboratory(){
  const node=Number.isInteger(selected)?geometry.nodes[selected]:null,m=result?.metrics;
  const f=(name,label,unit,min,max,step=1)=><Field key={name} name={name} label={label} unit={unit} min={min} max={max} step={step} value={settings[name]} onChange={update}/>;
  return <div class="bh" data-model-version={MODEL_VERSION}>
-  <header class="bh-heading"><div><p class="bh-kicker">Neural Interface Laboratories / Experimental Series 02</p><h1>Biohybrid Neural<br/>Interface Laboratory</h1><p class="bh-intro">An engineered living bridge between electronics and neural tissue.</p></div><div class="bh-heading-links"><a class="bh-method-link" href="/simulations/biohybrid-interface/questions/">34 crucial questions &amp; answers <span>↗</span></a><a class="bh-method-link" href="/simulations/biohybrid-interface/methods/">Methods &amp; validation <span>↗</span></a></div></header>
+  <SimHero kicker="Neural interface laboratories / Experimental series 02" title="Biohybrid Neural Interface Laboratory" intro="An engineered living bridge between electronics and neural tissue." links={[{ href: '/simulations/biohybrid-interface/questions/', label: '34 crucial questions & answers' }, { href: '/simulations/biohybrid-interface/methods/', label: 'Methods & validation' }]} />
   <div class="bh-model-note"><span class="bh-label">Model boundary</span><p>Active branched cables · canonical Hodgkin–Huxley at {fmt(result?.settings.temperatureC??settings.temperatureC,1)} °C · synthetic morphology. Electrical behavior is calculated; graft-specific biology is uncalibrated.</p></div>
   <nav class="bh-stage-nav" aria-label="Laboratory sections"><a href="#living-bridge">Living bridge</a><a href="#recording-sources">Signal sources</a><a href="#controlled-experiments">Controlled experiments</a><a href="#growth">Growth model</a></nav>
   <nav class="bh-experiments" aria-label="Biohybrid experiments">{PRESETS.map(p=><button key={p.id} aria-pressed={p.id===preset} onClick={()=>choose(p)}><span>{p.number}</span>{p.title}</button>)}</nav>

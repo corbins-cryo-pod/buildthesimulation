@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import TissueMechanicsLaboratory from '../../../components/TissueMechanicsLaboratory.astro';
 ---
-<Layout pageTitle="Cellular Tissue Mechanics Laboratory" subtitle="A measured H01 neurite crop carried by the shared finite-element tissue field." description="Deform an authentic H01 human temporal-cortex neurite crop with a shared finite-element tissue field. Phase 2 physical-time deformation, sparse skeleton-derived anatomy and explicit provenance." wide={true}>
+<Layout pageTitle="Cellular Tissue Mechanics Laboratory" description="Deform an authentic H01 human temporal-cortex neurite crop with a shared finite-element tissue field. Phase 2 physical-time deformation, sparse skeleton-derived anatomy and explicit provenance." wide={true} compactHeader={true}>
   <TissueMechanicsLaboratory cellular={true} />
+  <noscript><p>The Cellular Tissue Mechanics Laboratory requires JavaScript to solve the finite-element field. The <a href="/simulations/tissue-mechanics/methods/">methods and validation notes</a> are available without it.</p></noscript>
 </Layout>

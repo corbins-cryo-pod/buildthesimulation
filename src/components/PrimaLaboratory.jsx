@@ -1,3 +1,4 @@
+import SimHero from './SimHero.jsx';
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { DEFAULT_CONFIG, PRESETS, normalizeConfig, validateConfig } from '../lib/prima/model.mjs';
 import { createPrimaClient } from '../lib/prima/client.mjs';
@@ -193,8 +194,7 @@ export default function PrimaLaboratory() {
   const fieldMaximum = absolutePeak(fieldValues);
 
   return <article class="pr-lab" data-prima-lab data-prima-state={busy ? 'busy' : error ? 'error' : result ? 'complete' : 'dirty'}>
-    <header class="pr-heading"><div><p class="pr-eyebrow">Retinal implant laboratory / Photovoltaic systems</p><h1>PRIMA Laboratory</h1><p class="pr-intro">Project an image. Follow the current. Explore the limits of prosthetic vision.</p></div><nav class="pr-heading-links" aria-label="PRIMA resources"><a href="/simulations/retinal-implant/prima/methods/">Science &amp; verification <span>↗</span></a><a href="/devices/177-science-prima-subretinal-photovoltaic-implant/">Science PRIMA device sheet <span>↗</span></a></nav></header>
-    <nav class="pr-family-nav" aria-label="Retinal model family"><a href="/simulations/retinal-implant/">Epiretinal laboratory</a><span aria-current="page">PRIMA · subretinal photovoltaic</span><span class="pr-family-note">Independent research simulation</span></nav>
+    <SimHero kicker="Retinal implant laboratory / Photovoltaic systems" title="PRIMA Laboratory" intro="Project an image. Follow the current. Explore the limits of prosthetic vision." links={[{ href: '/simulations/retinal-implant/prima/methods/', label: 'Science & verification' }, { href: '/devices/177-science-prima-subretinal-photovoltaic-implant/', label: 'Science PRIMA device sheet' }]} family={[{ href: '/simulations/retinal-implant/', label: 'Epiretinal laboratory' }, { label: 'PRIMA · subretinal photovoltaic', current: true }]} familyNote="Independent research simulation" />
     <div class="pr-facts"><span><b>378</b> reconstructed pixels</span><span><b>100 μm</b> nominal width</span><span><b>2 × 2 mm</b> implant</span><span><b>880 nm</b> optical input</span></div>
 
     <section class="pr-experiments" aria-label="Example experiments"><div class="pr-section-label"><span class="pr-eyebrow">Choose an experiment</span><span>Seven starting points · all settings remain editable</span></div><div class="pr-preset-list">{PRESETS.map((item, i) => <button key={item.id} data-prima-preset={item.id} aria-pressed={presetId === item.id} onClick={() => preset(item)}><span>{String(i + 1).padStart(2, '0')}</span>{item.title}</button>)}</div></section>

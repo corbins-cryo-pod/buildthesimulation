@@ -2,5 +2,7 @@
 import Layout from '../../../../layouts/Layout.astro';
 import PrimaLaboratory from '../../../../components/PrimaLaboratory.jsx';
 ---
-<Layout pageTitle="PRIMA Photovoltaic Laboratory" description="Explore a PRIMA-derived subretinal array, coupled photovoltaic circuits, shared-return electrical fields and a ProViSim appearance approximation checked against the published code." wide={true} compactHeader={true}><PrimaLaboratory client:load /></Layout>
+<Layout pageTitle="PRIMA Photovoltaic Laboratory" description="Explore a PRIMA-derived subretinal array, coupled photovoltaic circuits, shared-return electrical fields and a ProViSim appearance approximation checked against the published code." wide={true} compactHeader={true}><PrimaLaboratory client:load />
+  <noscript><p>The PRIMA Laboratory requires JavaScript to run the photovoltaic and percept calculations. The <a href="/simulations/retinal-implant/prima/methods/">science and verification notes</a> are available without it.</p></noscript>
+</Layout>
 
