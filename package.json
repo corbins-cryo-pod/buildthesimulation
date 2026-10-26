@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "test": "node --test tests/*.mjs",
-    "prebuild": "npm test"
+    "verify": "npm test && npm run build"
   },
   "dependencies": {
     "@astrojs/preact": "^4.1.3",
