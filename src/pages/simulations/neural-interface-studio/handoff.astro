@@ -1,11 +1,10 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import SimHero from '../../../components/SimHero.jsx';
 ---
 <Layout pageTitle="Designer to Cleanroom" description="Exact-coordinate Designer import, compatibility boundaries, numerical resolution and verification for Neural Interface Studio 2.1.">
+ <SimHero kicker="Neural Interface Studio / Stage 2.1" title="Designer to Cleanroom" intro="Fabricate your saved layout, not a replacement four-channel template. The handoff preserves contact positions, saved lead paths, widths, connector mapping and the rounded substrate envelope in physical micrometres." links={[{ href: '/simulations/neural-interface-studio/', label: 'Open the Studio' }, { href: '/simulations/neural-interface-studio/methods/', label: 'Process model & verification' }]} />
  <article class="handoff">
-  <p><a href="/simulations/neural-interface-studio/">← Open Neural Interface Studio</a></p>
-  <p class="eyebrow">Neural Interface Studio · Stage 2.1</p><h1>Designer to Cleanroom</h1>
-  <p class="lede">Fabricate your saved layout—not a replacement four-channel template. The handoff preserves contact positions, saved lead paths, widths, connector mapping and the rounded substrate envelope in physical micrometres.</p>
   <h2>Start with a saved design</h2>
   <p>Export Design JSON from the Neural Interface Designer after routing completes. In Studio, choose <strong>Import from Designer</strong>, select the file, and review the transfer preview. Set an explicit opening axis inset, assumed metal thickness and grid. Accepting creates a new draft; recorded notebook runs remain intact. Review the recipe and select <strong>Fabricate &amp; test</strong>.</p>
   <p>The example menu includes three transfer demos: a split-bank planar array, annular contacts with side-entry leads, and an orthogonal routed coupon. Each passes through the same importer as a user file.</p>
