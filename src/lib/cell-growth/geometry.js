@@ -96,6 +96,6 @@ export class SpatialHash {
     for(let x=lo[0];x<=hi[0];x++)for(let y=lo[1];y<=hi[1];y++)for(let z=lo[2];z<=hi[2];z++)keys.push(`${x},${y},${z}`);
     return keys;
   }
-  insert(id,a,b,r=0){for(const key of this.keys(a,b,r)){let bucket=this.buckets.get(key);if(!bucket)this.buckets.set(key,bucket=[]);bucket.push(id);}}
+  insert(id,a,b,r=0){for(const key of this.keys(a,b,r)){let bucket=this.buckets.get(key);if(!bucket)this.buckets.set(key,bucket=new Set());bucket.add(id);}}
   query(a,b,r=0){const ids=new Set();for(const key of this.keys(a,b,r))for(const id of this.buckets.get(key)||[])ids.add(id);return [...ids];}
 }

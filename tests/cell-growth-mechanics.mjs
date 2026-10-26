@@ -70,6 +70,32 @@ test('V2 mature membrane attachments remain connected and their moving-root area
  for(const c of s.cells){for(const r of s.segments.filter(r=>r.alive&&r.parentId===-1&&r.cellId===c.id))close(distance(r.start,c.membrane.vertices[r.anchorVertex]),0,1e-9);const m=c.membrane;close(m.reserve*m.reserveCapacity,m.reserveCapacity+m.suppliedArea+m.recycledArea-m.usedArea,1e-6);withinNucleus(c);}
 });
 
+test('moving membrane attachments keep the full root radius inside spherical and box worlds',()=>{
+ for(const spherical of [false,true]){
+  const s=make({mode:'organoid',motility:3,stiffness:1000,adhesion:1,contractility:.3}),c=s.cells[0];
+  move(c,[0,0,0]);c.mechanics.polarity=[1,0,0];
+  s.world.sphereRadius=spherical?185:null;
+  s.world.bounds={min:[-185,-185,-185],max:[185,185,185]};
+  const anchor=c.membrane.vertices.reduce((best,v,i)=>v[0]>c.membrane.vertices[best][0]?i:best,0);
+  const radius=1.05,v=c.membrane.vertices[anchor],target=spherical?Math.sqrt((185-radius-.05)**2-v[1]**2-v[2]**2):185-radius-.05;
+  move(c,[target-v[0],0,0]);
+  const start=[...c.membrane.vertices[anchor]],root={id:0,cellId:0,parentId:-1,anchorVertex:anchor,radius,start,end:add(start,[-3,0,0])};
+  const unconstrained=structuredClone(s),free=unconstrained.cells[0];
+  for(let i=0;i<80;i++){
+   advanceCellMechanics(s,c,.05,[],[root]);s.timeHours+=.05;
+   advanceCellMechanics(unconstrained,free,.05,[],[]);unconstrained.timeHours+=.05;
+   for(const p of [root.start,root.end]){
+    assert.ok(p[0]+radius<=185+1e-7,'moving root crosses the box boundary');
+    if(spherical)assert.ok(length(p)+radius<=185+1e-7,'moving root crosses the spherical boundary');
+   }
+   close(distance(root.start,c.membrane.vertices[anchor]),0,1e-9);
+  }
+  const freeAnchor=free.membrane.vertices[anchor];
+  assert.ok((spherical?length(freeAnchor):freeAnchor[0])+radius>185+.1,'the unrooted control must press into the excluded radius');
+  const m=c.membrane;close(m.reserve*m.reserveCapacity,m.reserveCapacity+m.suppliedArea+m.recycledArea-m.usedArea,1e-6);
+ }
+});
+
 test('V2 full mechanics, mesh, nucleus, cortex and random state resume exactly',()=>{
  const a=make({cellCount:2});stepSimulation(a,2);const b=restoreSimulation(JSON.stringify(serializeSimulation(a)));stepSimulation(a,2);stepSimulation(b,2);assert.deepEqual(serializeSimulation(a),serializeSimulation(b));assert.match(exportCSV(a),/meanDisplacement/);
 });
@@ -87,15 +113,16 @@ test('V2 morphology metrics include measured branch angles and projected dendrit
  const s=createSimulation({cellCount:2,source:'immature',branching:2});stepSimulation(s,18);const metrics=getMetrics(s);for(const c of metrics.perCell){assert.ok(c.dendriticFieldArea>=0);assert.ok(c.branchAngles.every(a=>a>=0&&a<=180));assert.ok(c.displacement>=0);assert.ok(c.pathLength+1e-6>=c.displacement);}
 });
 
-test('V2 approaching foreign growth cones remain separate and stabilize without a prescribed target layout',()=>{
+test('approaching foreign cones remain separate, pause for recognition, and retain contact sites',()=>{
  const s=createSimulation({source:'immature',cellCount:2,guidance:0,noise:0,branching:0,actin:2,tension:0,cellAdhesion:1,selfAvoidance:0,fasciculation:0});s.world.obstacles=[];
  for(const t of s.tips)t.active=false;for(const n of s.segments)n.alive=false;
  const a=s.segments[0],b=s.segments.find(n=>n.cellId===1),ta=s.tips[0],tb=s.tips.find(t=>t.cellId===1);
  Object.assign(a,{start:[-12,0,0],end:[-4,0,0],radius:.5,kind:'axon',alive:true});Object.assign(b,{start:[12,0,0],end:[4,0,0],radius:.5,kind:'dendrite',alive:true});
  Object.assign(ta,{active:true,direction:[1,0,0],kind:'axon',mt:1});Object.assign(tb,{active:true,direction:[-1,0,0],kind:'dendrite',mt:1});
  s.cells.forEach((c,i)=>{c.position=[i?100:-100,0,0];c.ageHours=20;c.membrane.lastSolveHours=720;c.axonRootId=i?b.id:a.id;});
- for(let i=0;i<30;i++){stepSimulation(s,.05);assert.ok(distance(s.segments[ta.segmentId].end,s.segments[tb.segmentId].end)>=ta.radius+tb.radius-1e-7,'growth cone envelopes overlap');}
- assert.ok(s.contacts.some(c=>c.candidate));assert.ok([ta,tb].some(t=>t.status==='stabilized'));
+ let recognitionPause=false;
+ for(let i=0;i<30;i++){stepSimulation(s,.05);recognitionPause ||= [ta,tb].some(t=>t.status==='stabilized');assert.ok(distance(s.segments[ta.segmentId].end,s.segments[tb.segmentId].end)>=ta.radius+tb.radius-1e-7,'growth cone envelopes overlap');}
+ assert.ok(s.contacts.some(c=>c.candidate));assert.ok(recognitionPause);assert.ok(s.segments.some(n=>n.hasContactSite));
 });
 
 test('V2 filopodial sensing stops at a thin barrier and at the modeled boundary',async()=>{

@@ -4,7 +4,8 @@
  * Passive forces are negative analytic energy gradients; motor traction is active.
  */
 import {add, sub, scale, dot, cross, length, distance, unit, clamp, lerp,
-  pointSegmentDistance, segmentSphereHit, segmentBoxHit, segmentCapsuleHit} from './geometry.js';
+  pointSegmentDistance, segmentSphereHit, segmentBoxHit, segmentCapsuleHit, SpatialHash} from './geometry.js';
+import {prepareNeuriteGraph,neuriteForces,advanceNeuriteNodes,settlementGain,NEURITE_MECHANICS} from './neurite-mechanics.js';
 
 export const MECHANICS = Object.freeze({maxStepHours:.0125, vertexDrag:3, nucleusDrag:45,
   areaModulus:45, volumeModulus:180, cortexSpring:48, bendingSpring:24,
@@ -38,9 +39,11 @@ export function surfaceGeometry(vertices,triangles=SHELL.triangles) {
 
 export function createSoftCell(position,radius,id,planar,polarity) {
   const vertices=SHELL.vertices.map((u,i)=>{
-    // Seed-independent cell-id variation is fixed initial geometry, never an animation.
-    const variation=1+.025*Math.sin(i*2.13+id*1.7)*Math.sin(i*.83);
-    const p=scale(u,radius*variation);if(planar){p[0]*=1.16;p[1]*=.74;p[2]*=1.16;}
+    // Smooth, cell-specific lobes in the initial cortex, subsequently solved by
+    // the same membrane forces. Avoid a noisy vertex-level surface texture.
+    const angle=Math.atan2(u[2],u[0]),equator=1-u[1]*u[1];
+    const variation=1+equator*(.075*Math.sin(3*angle+id*1.7)+.045*Math.cos(2*angle-id*.9));
+    const p=scale(u,radius*variation);if(planar){p[0]*=1.22;p[1]*=.66;p[2]*=1.08;}
     return add(position,p);
   });
   const center=centroid(vertices),g=surfaceGeometry(vertices),n=vertices.length;
@@ -118,6 +121,17 @@ function admissibleShell(sim,cell,vertices,segments,roots) {
   for(const other of sim.cells)if(other.id!==cell.id){const minimum=r+other.mechanics.collisionRadius+.015;if(distance(center,other.position)<minimum&&distance(center,other.position)<distance(old,other.position)+r-cell.mechanics.collisionRadius-1e-9)return false;}
   for(const s of segments)if(s.cellId!==cell.id){if(pointSegmentDistance(center,s.start,s.end).distance<r+s.radius+.015)return false;const h=segmentCapsuleHit(old,center,s.start,s.end,Math.max(r,cell.mechanics.collisionRadius)+s.radius+.01);if(h&&h.t>1e-9)return false;}
   for(const root of roots){const start=vertices[root.anchorVertex],end=root.end;
+    if((sim.config.neuriteCoupling??1)>0&&root.material){
+      const rest=Math.max(.25,root.material.restLength),strain=Math.abs(distance(start,end)-root.material.restLength);
+      if(strain>NEURITE_MECHANICS.maxElasticStrain*rest&&strain>Math.abs(distance(root.start,end)-root.material.restLength)+1e-10)return false;
+    }
+    // The membrane vertex can fit while its attached finite-radius shaft does
+    // not. Both world shapes are convex, so endpoint clearance contains the
+    // entire root capsule. Apply this inside the existing mechanical line search.
+    for(const p of [start,end]){
+      if(sim.world.sphereRadius&&length(p)+root.radius>sim.world.sphereRadius)return false;
+      for(let k=0;k<3;k++)if(!(sim.world.planar&&k===1)&&(p[k]<sim.world.bounds.min[k]+root.radius||p[k]>sim.world.bounds.max[k]-root.radius))return false;
+    }
     for(const o of sim.world.obstacles)if(o.shape==='sphere'?segmentSphereHit(start,end,o.position,o.radius+root.radius+.01):segmentBoxHit(start,end,o.position,o.size,root.radius+.01))return false;
     for(const other of sim.cells)if(other.id!==cell.id&&segmentSphereHit(start,end,other.position,other.mechanics.collisionRadius+root.radius+.01))return false;
     for(const s of segments)if(s.cellId!==cell.id&&segmentCapsuleHit(start,end,s.start,s.end,s.radius+root.radius+.01))return false;
@@ -146,16 +160,20 @@ function projectWorld(sim,old,p,contacts,i) {
   return x;
 }
 
-export function advanceCellMechanics(sim,cell,duration,segments,roots,maxStepHours=MECHANICS.maxStepHours) {
+export function advanceCellMechanics(sim,cell,duration,segments,roots,maxStepHours=MECHANICS.maxStepHours,shaftIndex=null) {
   const m=cell.membrane,c=sim.config,mech=cell.mechanics,n=m.vertices.length;
   if(m.lastSolveHours>sim.timeHours+1e-8)return; // explicit frozen diagnostic fixtures
+  const graph=prepareNeuriteGraph(sim,cell);
+  if(!shaftIndex){shaftIndex=new SpatialHash(16);for(const s of sim.segments)if(s.alive)shaftIndex.insert(s.id,s.start,s.end,s.radius);}
   const totalSteps=Math.max(1,Math.ceil(duration/maxStepHours-1e-9)),dt=duration/totalSteps;
   for(let step=0;step<totalSteps;step++) {
     const previous=m.vertices,oldCenter=[...cell.position],oldNucleus=[...cell.nucleus.position],external=externalCellForces(sim,cell);
     movePolarity(sim,cell,external.turn,dt);
     const passive=passiveMembrane(m,c),f=passive.forces,act=zeros(n),p=mech.polarity,traction=[0,0,0];
     const stageGain=cell.stage==='maturing'?.08:cell.stage==='polarized'?.20:cell.stage==='immature'?.45:1;
-    const gain=c.motility*c.actin*stageGain,meanActive=[0,0,0];let binding=0,activeSquared=0;
+    const settled=settlementGain(sim,graph),shaftForces=neuriteForces(sim,cell,graph);
+    mech.settlementGain=settled;
+    const gain=c.motility*c.actin*stageGain*settled,meanActive=[0,0,0];let binding=0,activeSquared=0;
     for(let i=0;i<n;i++){
       const radial=unit(sub(previous[i],oldCenter)),front=Math.max(0,dot(radial,p)),rear=Math.max(0,-dot(radial,p));
       const desired=.12+.88*front*front;
@@ -183,6 +201,7 @@ export function advanceCellMechanics(sim,cell,duration,segments,roots,maxStepHou
       const support=scale(unit(delta),-kmt*(len-rest));plus(f[i],support);plus(nucleusForce,support,-1);
     }
     for(let i=0;i<n;i++){plus(f[i],traction,.85/n);plus(f[i],motors[i],.15);}
+    for(const [vertex,force] of shaftForces.roots)plus(f[vertex],force);
     const contacts=new Set(),raw=previous.map((v,i)=>add(v,scale(f[i],dt/MECHANICS.vertexDrag)));
     let candidate=raw.map((v,i)=>projectWorld(sim,previous[i],v,contacts,i));
     // Line search guards multi-contact/mesh inversion and the existing rooted tree.
@@ -204,7 +223,9 @@ export function advanceCellMechanics(sim,cell,duration,segments,roots,maxStepHou
     for(const root of roots){const next=candidate[root.anchorVertex],dl=distance(next,root.end)-distance(root.start,root.end),area=2*Math.PI*root.radius*dl;
       if(area>0){m.reserve-=area/m.reserveCapacity;m.usedArea+=area;}else{const recycled=Math.min(-area*.6,(1-m.reserve)*m.reserveCapacity);m.reserve+=recycled/m.reserveCapacity;m.recycledArea+=recycled;}
       root.start=[...next];
+      shaftIndex.insert(root.id,root.start,root.end,root.radius);
     }
+    advanceNeuriteNodes(sim,cell,graph,shaftForces,dt,shaftIndex);
     m.reserve=clamp(m.reserve,0,1);m.area=g.area;m.volume=g.volume;m.minQuality=g.minQuality;m.areaStrain=g.area/m.targetArea-1;m.volumeStrain=g.volume/m.targetVolume-1;
     m.energies=passive.energies;m.elasticEnergy=passive.energies.cortex+passive.energies.bending;m.forces=f;m.contactVertices=[...contacts];
     const delta=sub(cell.position,oldCenter);mech.velocity=scale(delta,1/dt);mech.pathLength+=length(delta);mech.displacement=distance(cell.position,mech.initialPosition);
@@ -217,14 +238,20 @@ export function advanceCellMechanics(sim,cell,duration,segments,roots,maxStepHou
 }
 
 export function updateConeShape(tip,dt,config){
-  const count=12,base=tip.kind==='axon'?1.6:1.85;
+  const count=12,base=tip.kind==='axon'?1.75:1.55;
   tip.shape??={radii:Array(count).fill(base),height:.45,actinRim:Array(count).fill(0),maxRadius:base};
   for(let i=0;i<count;i++){
-    const a=i/count*Math.PI*2,front=.3+.7*Math.max(0,Math.cos(a)),activity=config.actin*front*(.4+.6*tip.clutch)*(.65+.35*Math.sin((tip.behavior?.clock??tip.ageHours)*(1.2+i*.13)+i*1.7+tip.id))*(.6+.4*Math.max(0,tip.behavior?.gain??1));
-    const load=tip.status==='contact'?.5:1,rest=base*(.65+.25*tip.mt),target=rest+load*.65*activity/(1+.025*tip.forces.membrane);
-    tip.shape.radii[i]+=(target-tip.shape.radii[i])*(-Math.expm1(-dt/.3));tip.shape.actinRim[i]=activity;
+    const a=i/count*Math.PI*2,front=Math.max(0,Math.cos(a)),lateral=Math.abs(Math.sin(a));
+    const sector=tip.exploration?.sectors?.[i]?.activity??.4;
+    const neighbor=((tip.exploration?.sectors?.[(i+1)%count]?.activity??sector)+(tip.exploration?.sectors?.[(i+count-1)%count]?.activity??sector))*.5;
+    const activity=config.actin*(.18+.82*front)*(.4+.6*tip.clutch)*(.3+.7*(.7*sector+.3*neighbor))*(.6+.5*(tip.exploration?.pulse??0));
+    const load=tip.status==='retracting'?.25:tip.status==='contact'?.55:1;
+    // A narrow trailing neck and an unequal sheet-like leading margin, rather
+    // than a circular puck. All dimensions remain inside the collision sphere.
+    const rest=base*(.24+.42*front+.34*lateral),target=rest+load*(.3+1.4*front+.5*lateral)*activity/(1+.025*tip.forces.membrane);
+    tip.shape.radii[i]+=(target-tip.shape.radii[i])*(-Math.expm1(-dt/.12));tip.shape.actinRim[i]=activity;
   }
-  tip.shape.height=.28+.28*tip.mt;tip.shape.maxRadius=Math.max(...tip.shape.radii);tip.radius=tip.shape.maxRadius;
+  tip.shape.height=.18+.22*tip.mt;tip.shape.maxRadius=Math.max(...tip.shape.radii);tip.radius=tip.shape.maxRadius;
 }
 
 export function populationMechanics(sim){
