@@ -478,3 +478,36 @@ test("new results export round-trips settings, rejects stale results and ignores
   c.optical.expression = 0.3;
   assert.throws(() => exportExperiment(c, r), /changed settings/);
 });
+
+test("thermal exposure ends with the actual photovoltaic train and resolves pulse edges", () => {
+  const o = {
+    ...cloneDefaults().optical,
+    pulseMs: 7.3,
+    frequencyHz: 30,
+    trainDurationMs: 2000 / 30,
+  };
+  const r = thermalTrace(o, 200, 0.1),
+    expected =
+      (o.irradianceMwMm2 *
+        1e-3 *
+        (1 - Math.exp((-o.absorptionMmInv * o.tissueThicknessUm) / 1000)) *
+        2 *
+        o.pulseMs) /
+      1000;
+  close(r.absorbedEnergyJMm2, expected, 1e-12);
+  const nearEnd = r.timeMs.findIndex((t) => t >= o.trainDurationMs);
+  assert(r.deltaK.at(-1) < r.deltaK[nearEnd]);
+});
+
+test("sampled video inputs use the specified frame and preserve common scene orientation", () => {
+  const c = fast("optogenetic"),
+    black = { width: 16, height: 16, values: Array(256).fill(0) },
+    white = { width: 16, height: 16, values: Array(256).fill(1) };
+  c.scene.stimulus = "video";
+  c.scene.frames = [black, white];
+  c.scene.frameMs = 100;
+  assert.equal(max(sceneImage(c).values), 0);
+  c.scene.frameIndex = 1;
+  assert.equal(max(sceneImage(c).values), 1);
+  assert.deepEqual(normalize(c).scene.frames, [black, white]);
+});

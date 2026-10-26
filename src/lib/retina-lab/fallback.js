@@ -48,6 +48,10 @@ export function createFallback(host, { onSelect = () => {} } = {}) {
           radiusUm: 15,
         }))
       : (result?.electrical?.contacts ??
+        c.customContacts?.map((p) => ({
+          ...p,
+          ...placePoint(p, c.placement),
+        })) ??
         generateContacts({ ...c.electrical, ...c.placement }));
     ctx.font = "10px Arial";
     ctx.fillStyle = "#9caeac";

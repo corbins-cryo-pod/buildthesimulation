@@ -438,6 +438,7 @@ export default function UnifiedRetinaLaboratory() {
     [overlay, setOverlay] = useState("none"),
     [frame, setFrame] = useState(0),
     [playing, setPlaying] = useState(false),
+    [timeView, setTimeView] = useState(false),
     [layers, setLayers] = useState({}),
     [comparison, setComparison] = useState(null),
     [otherMode, setOtherMode] = useState("photovoltaic"),
@@ -471,6 +472,7 @@ export default function UnifiedRetinaLaboratory() {
     setResult(null);
     setClip([]);
     setFrame(0);
+    setTimeView(false);
     setPlaying(false);
     setState("running");
     try {
@@ -491,7 +493,7 @@ export default function UnifiedRetinaLaboratory() {
       next = section
         ? { ...current, [section]: { ...current[section], [key]: value } }
         : { ...current, [key]: value };
-    if (section === "scene") next.inputMode = "shared";
+    if (section === "scene" || key === "modality") next.inputMode = "shared";
     invalidate(next);
   }
   function invalidate(next) {
@@ -507,6 +509,7 @@ export default function UnifiedRetinaLaboratory() {
     setResult(null);
     setClip([]);
     setFrame(0);
+    setTimeView(false);
     setPlaying(false);
     setError("");
     setState("dirty");
@@ -612,10 +615,10 @@ export default function UnifiedRetinaLaboratory() {
     setState("running");
     setError("");
     setSweep([]);
-    const c = normalize(configRef.current),
-      gaps = pv ? [10, 25, 50, 75, 100] : [25, 75, 150, 300, 600],
-      rows = [];
     try {
+      const c = normalize(configRef.current),
+        gaps = pv ? [10, 25, 50, 75, 100] : [25, 75, 150, 300, 600],
+        rows = [];
       for (const gap of gaps) {
         const next = structuredClone(c);
         next[pv ? "photovoltaic" : "electrical"].gapUm = gap;
@@ -646,10 +649,10 @@ export default function UnifiedRetinaLaboratory() {
     setState("running");
     setError("");
     setClip([]);
-    const c = normalize(configRef.current),
-      count = c.scene.frames?.length ?? 8,
-      frames = [];
     try {
+      const c = normalize(configRef.current),
+        count = c.scene.frames?.length ?? 8,
+        frames = [];
       for (let i = 0; i < count; i++) {
         const next = structuredClone(c);
         next.scene.frameIndex = i;
@@ -761,7 +764,7 @@ export default function UnifiedRetinaLaboratory() {
   const currentFrame =
       active?.neural.frames[Math.min(frame, active.neural.frames.length - 1)],
     responseFrame =
-      active && (playing || frame > 0)
+      active && timeView
         ? decodeResponse(active.config, active.neural, currentFrame)
         : active?.response;
   const selectedCell = active?.neural.cells[active.config.neural.selectedIndex],
@@ -873,6 +876,7 @@ export default function UnifiedRetinaLaboratory() {
             Run experiment <span>↗</span>
           </button>
           <button
+            data-rtl="cancel"
             disabled={!busy}
             onClick={() => {
               counter.current++;
@@ -1593,6 +1597,44 @@ export default function UnifiedRetinaLaboratory() {
               />
             )}
           </dl>
+          <details>
+            <summary>Selected device & cell</summary>
+            <dl class="rtl-metrics">
+              <Metric
+                label="Contact-to-soma distance"
+                value={active?.metrics.selectedContactToSomaUm}
+                unit="µm · planar chart"
+              />
+              <Metric
+                label="Bounding device footprint"
+                value={active?.metrics.boundingFootprintMm2}
+                unit="mm² · axis-aligned"
+              />
+            </dl>
+            {selectedCell && (
+              <p class="rtl-note">
+                {selectedCell.id} · {selectedCell.on ? "ON" : "OFF"}{" "}
+                {selectedCell.kind} sample. Soma ({fmt(selectedCell.xUm)},{" "}
+                {fmt(selectedCell.yUm)}) µm; depth {fmt(selectedCell.depthUm)}{" "}
+                µm. Visual location ({fmt(selectedCell.xDeg)},{" "}
+                {fmt(selectedCell.yDeg)})°.
+              </p>
+            )}
+            {contact && (
+              <p class="rtl-note">
+                {contact.id}: ({fmt(contact.xUm)}, {fmt(contact.yUm)}) µm;{" "}
+                {fmt(contact.amplitudeUa)} µA peak. Material:{" "}
+                {contact.material ?? "platinum reference contact"}.
+              </p>
+            )}
+            {pixel && (
+              <p class="rtl-note">
+                {pixel.id}: {fmt(pixel.illumination * 100)}% relative
+                illumination, {fmt(pixel.polarizationMv)} mV interface
+                polarization.
+              </p>
+            )}
+          </details>
           <details open>
             <summary>Tissue & surviving pathways</summary>
             <div class="rtl-fields">
@@ -1839,7 +1881,7 @@ export default function UnifiedRetinaLaboratory() {
             [
               "04",
               "Predicted percept",
-              config.percept === "coupled" && (playing || frame > 0)
+              config.percept === "coupled" && timeView
                 ? responseFrame
                 : active?.percept,
               active?.percept.model ?? "Select a model and run an experiment.",
@@ -2028,7 +2070,10 @@ export default function UnifiedRetinaLaboratory() {
             <button
               disabled={!active}
               aria-pressed={playing}
-              onClick={() => setPlaying(!playing)}
+              onClick={() => {
+                setTimeView(true);
+                setPlaying(!playing);
+              }}
             >
               {playing ? "Pause" : "Play response"}
             </button>
@@ -2043,10 +2088,15 @@ export default function UnifiedRetinaLaboratory() {
                 disabled={!active}
                 onInput={(e) => {
                   setPlaying(false);
+                  setTimeView(true);
                   setFrame(+e.currentTarget.value);
                 }}
               />
-              <output>{fmt(currentFrame?.timeMs, 1)} ms</output>
+              <output>
+                {timeView
+                  ? `${fmt(currentFrame?.timeMs, 1)} ms`
+                  : "Trial summary"}
+              </output>
             </label>
           </div>
         </div>
@@ -2056,7 +2106,7 @@ export default function UnifiedRetinaLaboratory() {
               label="Recorded quantity"
               value={recording}
               options={[
-                ["current", "Selected electrode current"],
+                ["current", "Selected contact current"],
                 ["photovoltage", "Photovoltaic diode voltage"],
                 ["voltage", "Selected membrane voltage"],
                 ["photocurrent", "Selected opsin photocurrent"],
@@ -2185,6 +2235,16 @@ export default function UnifiedRetinaLaboratory() {
                 <tbody>
                   {[
                     [
+                      "Bounding device footprint",
+                      (r) =>
+                        `${fmt(r.metrics.boundingFootprintMm2)} mm² · axis-aligned`,
+                    ],
+                    [
+                      "Sampled response area",
+                      (r) =>
+                        `${fmt(r.metrics.sampledResponseAreaDeg2)} deg² · nonzero samples`,
+                    ],
+                    [
                       "Mean response",
                       (r) => `${fmt(r.metrics.meanResponse)} ${r.neural.units}`,
                     ],
@@ -2207,6 +2267,13 @@ export default function UnifiedRetinaLaboratory() {
                       (r) =>
                         r.photovoltaic
                           ? `${fmt(r.photovoltaic.metrics.averageIncidentPowerMw)} mW`
+                          : "Not calculated for this device",
+                    ],
+                    [
+                      "Incident energy over optical train",
+                      (r) =>
+                        r.photovoltaic
+                          ? `${fmt(r.metrics.incidentTrainEnergyUj)} µJ`
                           : "Not calculated for this device",
                     ],
                     [

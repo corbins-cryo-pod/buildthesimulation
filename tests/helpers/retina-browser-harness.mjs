@@ -322,6 +322,52 @@ export async function verifyRetinaBrowser(mode = "electrical") {
     await ready();
     const cable = await exportJSON();
     assert(cable.cable.compartments > 50 && Number.isFinite(cable.cable.peak));
+    await click('[data-rtl="run"]');
+    await until(
+      () =>
+        evaluate(
+          `document.querySelector('[data-retina-lab]').dataset.state==='running'`,
+        ),
+      10000,
+    );
+    await click('[data-rtl="cancel"]');
+    assert.equal(
+      await evaluate(
+        `document.querySelector('[data-retina-lab]').dataset.state`,
+      ),
+      "dirty",
+    );
+    assert.equal(
+      await evaluate(
+        `document.querySelector('[data-rtl="export-json"]').disabled`,
+      ),
+      true,
+    );
+    await run();
+    // A real local file input must decode image pixels and invalidate prior output.
+    await evaluate(
+      `(()=>{const svg='<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128"><rect width="128" height="128" fill="white"/></svg>';const file=new File([svg],'white.svg',{type:'image/svg+xml'}),d=new DataTransfer();d.items.add(file);const e=document.querySelector('input[aria-label="Upload local image or video"]');e.files=d.files;e.dispatchEvent(new Event('change',{bubbles:true}));return true})()`,
+    );
+    await until(() =>
+      evaluate(
+        `document.querySelector('[data-retina-lab]').dataset.state==='dirty'`,
+      ),
+    );
+    await run();
+    const uploaded = await exportJSON();
+    assert.equal(uploaded.settings.scene.stimulus, "image");
+    assert(uploaded.settings.scene.customImage.values.every((v) => v > 0.99));
+    // Reject unsupported Designer shapes without overwriting a valid experiment.
+    await evaluate(
+      `(()=>{const file=new File([JSON.stringify({schema:'bts-neural-interface',version:1,units:'µm',contacts:[{id:'test',x:0,y:0,w:50,shape:'square'}]})],'unsupported.json',{type:'application/json'}),d=new DataTransfer();d.items.add(file);const e=document.querySelector('input[aria-label="Import Designer geometry"]');e.files=d.files;e.dispatchEvent(new Event('change',{bubbles:true}));return true})()`,
+    );
+    await until(() =>
+      evaluate(
+        `document.querySelector('[role="alert"]')?.textContent.includes('circular')`,
+      ),
+    );
+    await click('[data-rtl-preset="cable"]');
+    await ready();
     for (const view of ["whole", "section", "plan", "tissue"])
       await click(`[data-rtl-view="${view}"]`);
     await select('select[aria-label="Anatomical overlay"]', "voltage");
@@ -355,7 +401,9 @@ export async function verifyRetinaBrowser(mode = "electrical") {
     await evaluate(`scrollTo(0,0);true`);
     await capture(mode + "-mobile.png");
     const workers = await evaluate(`window.__retinaWorkers`);
-    assert(workers.started > 0 && workers.completed >= 12);
+    assert(
+      workers.started > 0 && workers.completed >= 12 && workers.terminated > 0,
+    );
     assert.deepEqual(errors, []);
     const methods = await fetch(
       origin + "/simulations/retinal-implant/methods/",

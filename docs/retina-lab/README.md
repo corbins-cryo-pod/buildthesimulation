@@ -17,10 +17,16 @@ Work started from main commit `ea663c2360b315d5a846e6a0aba5cdf254f82ed7` on `fea
 
 `npm ci`; `npm test`; `npm run build`; `node scripts/verify-retinal-build.mjs`; `node scripts/verify-prima-build.mjs`.
 
-`tests/retina-unified.mjs` adds 21 scientific and migration checks. `RETINAL_REQUIRE_BROWSER=1 node --test tests/retinal-browser.mjs` and `PRIMA_REQUIRE_BROWSER=1 node --test tests/prima-browser.mjs` are graphics-enabled CI checks. Local visual QA uses the managed Sites preview. Its browser has WebGL disabled; the anatomical canvas fallback was inspected there, and full WebGL is checked separately in CI.
+`tests/retina-unified.mjs` adds 23 scientific and migration checks. `RETINAL_REQUIRE_BROWSER=1 node --test tests/retinal-browser.mjs` and `PRIMA_REQUIRE_BROWSER=1 node --test tests/prima-browser.mjs` are graphics-enabled CI checks. Local visual QA uses the managed Sites preview. Its browser has WebGL disabled; the anatomical canvas fallback was inspected there, and full WebGL is checked separately in CI.
 
 ## Model status
 
 Read [SCIENCE.md](SCIENCE.md) for equations, units, parameter provenance and the explicit difference between numerical verification, biological validation and perceptual validation. New coupling, procedural anatomy and optical/thermal approximations are research prototypes. There is no claim of human retinal or clinical validation.
 
 The implementation includes all three tiers (a selected cable for Tier 3), both retained appearance baselines, common-input comparisons, disease survival, rigid placement, imported circular arrays, sampled media, synchronized recordings, gap sweeps and reproducible exports. Limitations are listed in the UI and methods: custom photovoltaic geometry, authentic traced neurons, layered/anisotropic conduction, calibrated diffuse optics, continuous video state and patient outcome fitting remain incomplete.
+
+## Rendered verification evidence
+
+![Graphics-enabled CI rendering of the microscopic retina and epiretinal contacts](retinal-webgl.png)
+
+Actual WebGL output from verification run [40344318997](https://github.com/corbins-cryo-pod/buildthesimulation/actions/runs/40344318997), at migration commit `a00aaf67a8b9c131cdc00cbbde4657a3d4c3bc4c`. The artifact includes desktop/mobile/theme screenshots and exported experiment checks. The displayed geometry is procedural and density-reduced, as described in the methods.

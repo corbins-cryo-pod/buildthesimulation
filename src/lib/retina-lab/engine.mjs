@@ -370,6 +370,24 @@ export async function simulate(
     warnings = [ANATOMY_NOTE],
     report = (progress, message) => onProgress({ progress, message });
   report(0.02, "Registering anatomy, visual scene and device placement");
+  if (c.inputMode === "legacy-electrical") {
+    const original = createStimulusRaster({ ...c.electrical, ...c.placement });
+    Object.assign(scene, {
+      width: original.width,
+      height: original.height,
+      values: original.brightness,
+      fieldDeg: 30,
+    });
+  } else if (c.inputMode === "legacy-prima") {
+    const original = renderInput(c.photovoltaic, c.photovoltaic.imageSize);
+    Object.assign(
+      scene,
+      raster(128, c.scene.fieldDeg, (x, y) => {
+        const p = localPoint(visualToRetinal(x, y), c.placement);
+        return sampleRaster(original, p.xUm, p.yUm, 2000);
+      }),
+    );
+  }
   const ganglionMv = new Float64Array(n),
     bipolarMv = new Float64Array(n),
     optical = new Float64Array(n),
@@ -638,6 +656,7 @@ export async function simulate(
         pulseMs: p.pulseDurationMs,
         frequencyHz: p.frequencyHz,
         delayMs: 0,
+        trainDurationMs: (p.cycles * 1000) / p.frequencyHz,
       },
       c.neural.durationMs,
     );
@@ -671,7 +690,7 @@ export async function simulate(
         local = localPoint(p, c.placement);
       if (Math.abs(local.xUm) <= 2000 && Math.abs(local.yUm) <= 2000)
         optical[i] =
-          native[i] *
+          sampleRetinal(scene, p.xUm, p.yUm, c.scene.fieldDeg) *
           c.optical.irradianceMwMm2 *
           opticalTransmission(
             c.optical.target === "ganglion" ? p.depthUm : p.bipolarDepthUm,
@@ -761,6 +780,48 @@ export async function simulate(
     selectedNetworkSpikeCount: neural.counts[c.neural.selectedIndex],
     elapsedMs: performance.now() - start,
   };
+  const selectedCell = cells[c.neural.selectedIndex];
+  const selectedContact = electrical?.contacts.find(
+    (p) => p.id === c.electrical.selectedId,
+  );
+  const selectedPixel = photovoltaic?.geometry.pixels.find(
+    (p) => p.id === c.photovoltaic.selectedPixelId,
+  );
+  if (selectedContact)
+    metrics.selectedContactToSomaUm = Math.hypot(
+      selectedContact.xUm - selectedCell.xUm,
+      selectedContact.yUm - selectedCell.yUm,
+      c.electrical.gapUm + selectedCell.depthUm,
+    );
+  else if (selectedPixel) {
+    const p = placePoint(selectedPixel, c.placement);
+    metrics.selectedContactToSomaUm = Math.hypot(
+      p.xUm - selectedCell.xUm,
+      p.yUm - selectedCell.yUm,
+      layersAt(selectedCell.xUm, selectedCell.yUm).find((l) => l.id === "INL")
+        .bottom +
+        c.photovoltaic.gapUm -
+        selectedCell.depthUm,
+    );
+  } else metrics.selectedContactToSomaUm = null;
+  metrics.sampledResponseAreaDeg2 =
+    (metrics.respondingSamples * c.scene.fieldDeg ** 2) / n;
+  metrics.incidentTrainEnergyUj = photovoltaic
+    ? (photovoltaic.metrics.averageIncidentPowerMw *
+        c.photovoltaic.cycles *
+        1000) /
+      c.photovoltaic.frequencyHz
+    : null;
+  const physicalContacts = electrical?.contacts;
+  metrics.boundingFootprintMm2 = physicalContacts
+    ? ((Math.max(...physicalContacts.map((p) => p.xUm + p.radiusUm)) -
+        Math.min(...physicalContacts.map((p) => p.xUm - p.radiusUm))) *
+        (Math.max(...physicalContacts.map((p) => p.yUm + p.radiusUm)) -
+          Math.min(...physicalContacts.map((p) => p.yUm - p.radiusUm)))) /
+      1e6
+    : photovoltaic
+      ? 4
+      : 16;
   report(1, "Experiment complete");
   return {
     config: c,
@@ -780,20 +841,18 @@ export async function simulate(
       ganglionMv,
       bipolarMv,
       optical,
-      incidentLight: Float64Array.from(cells, (p) =>
-        photovoltaic
-          ? sampleRaster(
-              photovoltaic.projection,
-              ...Object.values(localPoint(p, c.placement)),
-              2000,
-            ) * c.photovoltaic.irradianceMwMm2
-          : sampleRetinal(
-              deviceInput ?? scene,
-              p.xUm,
-              p.yUm,
-              c.scene.fieldDeg,
-            ) * c.optical.irradianceMwMm2,
-      ),
+      incidentLight: Float64Array.from(cells, (p) => {
+        const xy = localPoint(p, c.placement);
+        return photovoltaic
+          ? sampleRaster(photovoltaic.projection, xy.xUm, xy.yUm, 2000) *
+              c.photovoltaic.irradianceMwMm2
+          : enabled(c, "optogenetic") &&
+              Math.abs(xy.xUm) <= 2000 &&
+              Math.abs(xy.yUm) <= 2000
+            ? sampleRetinal(scene, p.xUm, p.yUm, c.scene.fieldDeg) *
+              c.optical.irradianceMwMm2
+            : 0;
+      }),
     },
     metrics,
     warnings,
@@ -803,7 +862,7 @@ export async function simulate(
       neural: neural.note,
       percept: percept.model,
       referenceSha256: reference?.manifest.dataSha256 ?? null,
-      sourceCommit: "ea663c2360b315d5a846e6a0aba5cdf254f82ed7",
+      retainedSourceCommit: "ea663c2360b315d5a846e6a0aba5cdf254f82ed7",
       thermal: thermal?.model ?? "No optical input",
       createdAt: new Date().toISOString(),
     },

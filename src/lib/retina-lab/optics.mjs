@@ -28,6 +28,7 @@ export function thermalTrace(
     pulseMs,
     frequencyHz,
     delayMs = 0,
+    trainDurationMs = Infinity,
   },
   durationMs,
   dt = 0.1,
@@ -40,12 +41,23 @@ export function thermalTrace(
   let value = 0,
     energyJMm2 = 0;
   for (let t = 0; t < durationMs - 1e-10; ) {
-    const h = Math.min(dt, durationMs - t),
-      power =
-        irradianceMwMm2 *
-        1e-3 *
-        absorbedFraction *
-        pulseAt(t + h / 2, pulseMs, frequencyHz, delayMs);
+    const period = 1000 / frequencyHz;
+    const cycle = Math.floor((t - delayMs + 1e-9) / period);
+    const lit =
+      t >= delayMs &&
+      t < trainDurationMs &&
+      t - delayMs - cycle * period < pulseMs - 1e-9;
+    const edge =
+      t < delayMs
+        ? delayMs
+        : t >= trainDurationMs
+          ? durationMs
+          : Math.min(
+              trainDurationMs,
+              delayMs + cycle * period + (lit ? pulseMs : period),
+            );
+    const h = Math.min(dt, durationMs - t, Math.max(1e-9, edge - t)),
+      power = irradianceMwMm2 * 1e-3 * absorbedFraction * Number(lit);
     const steady = (power * (coolingMs / 1000)) / capacity;
     value = steady + (value - steady) * Math.exp(-h / coolingMs);
     energyJMm2 += (power * h) / 1000;
