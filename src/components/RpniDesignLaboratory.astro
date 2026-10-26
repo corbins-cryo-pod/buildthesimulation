@@ -1,4 +1,5 @@
 ---
+import SimHero from './SimHero.jsx';
 import { DEFAULT_CONFIG, MODEL_VERSION, PARAMETER_META, PRESETS } from '../lib/rpni-design/model.mjs';
 const groups = [
  {title:'Graft geometry',open:true,keys:['moduleCount','graftLengthMm','graftWidthMm','graftThicknessMm','moduleGapMm'],note:'Each module is a separate free muscle graft. Dimensions describe an idealized rectangular tissue volume; grafts share the selected geometry.'},
@@ -13,7 +14,7 @@ const groups = [
 const sweepOptions=[['moduleGapMm','Spacing between grafts'],['electrodeSpacingMm','Bipolar contact spacing'],['electrodeDepthMm','Contact depth'],['electrodeOffsetMm','Contact axial offset'],['contactRadiusMm','Contact radius'],['graftThicknessMm','Graft thickness'],['routingFidelity','Source routing fidelity'],['sigmaTransverseSm','Transverse conductivity'],['observationDay','Recording day']];
 ---
 <div class="rp-lab" data-rpni-lab>
- <header class="rp-heading"><div><span class="rp-eyebrow">Neural interface laboratories / Design &amp; testing</span><h1>Regenerative peripheral nerve interfaces</h1><p>Design the muscle graft. Route the nerve. Position the contacts. Test the signals your assumptions produce.</p></div><nav aria-label="Related laboratories"><a href="/simulations/">All simulations</a><a href="/simulations/nerve-regeneration/">Nerve regeneration</a><a href="/simulations/rpni-design/methods/">Model &amp; evidence →</a></nav></header>
+ <SimHero kicker="Neural interface laboratories / Design & testing" title="Regenerative Peripheral Nerve Interfaces" intro="Design the muscle graft. Route the nerve. Position the contacts. Test the signals your assumptions produce." links={[{ href: '/simulations/', label: 'All simulations' }, { href: '/simulations/nerve-regeneration/', label: 'Nerve regeneration' }, { href: '/simulations/rpni-design/methods/', label: 'Model & evidence' }]} />
  <div class="rp-model-note"><span class="rp-badge">Mechanistic design model</span><p>A muscle-graft RPNI forward model with calculated electrical pickup and an independent transport diagnostic. Synthetic motor units; uncalibrated tissue parameters. No clinical outcome, graft-survival or prosthesis-performance prediction.</p></div>
  <section class="rp-presets" aria-label="Design experiments"><span class="rp-section-label">Choose a starting design</span><div>{PRESETS.map(p=><button type="button" data-rp-preset={p.id} aria-pressed="false">{p.label}</button>)}</div></section>
  <div class="rp-workspace">

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import SimHero from '../../components/SimHero.jsx';
 import MembraneExplorer from '../../components/MembraneExplorer.jsx';
 import CurrentClampExplorer from '../../components/CurrentClampExplorer.jsx';
 import CableExplorer from '../../components/CableExplorer.jsx';
@@ -10,7 +11,9 @@ const fit=JSON.parse(readFileSync('public/models/cortex/allen571654895/optim_par
 const soma=Object.fromEntries(fit.genome.filter(p=>p.section==='soma').map(p=>[p.name,p.value]));
 const sections=['soma','axon','apic','dend'];
 ---
-<Layout pageTitle="Cellular Electrophysiology" subtitle="Current clamp, membrane biophysics and passive cable spread in one laboratory." description="Three complete electrophysiology explorers with their original controls, plots, fitted parameters, source references and numerical limitations.">
+<Layout pageTitle="Cellular Electrophysiology Laboratory" description="Three complete electrophysiology explorers with their original controls, plots, fitted parameters, source references and numerical limitations." compactHeader={true}>
+ <SimHero kicker="Cell models & electrophysiology / Specimen 571654895" title="Cellular Electrophysiology Laboratory" intro="Current clamp, membrane biophysics and passive cable spread in one laboratory." links={[{ href: '/cells/', label: 'Cell model atlas' }, { href: '/cortex/', label: 'Cortex laboratory' }]} />
+ <noscript><p>The Cellular Electrophysiology Laboratory requires JavaScript to solve the membrane equations and draw the traces.</p></noscript>
  <nav id="top" class="local" aria-label="Laboratory sections"><a href="#current-clamp">01 · Current Clamp</a><a href="#membrane">02 · Membrane Biophysics</a><a href="#cable">03 · Cable Explorer</a><a href="/cells/">Cell Model Atlas</a><a href="/cortex/">Cortex Laboratory</a></nav>
  <section id="current-clamp" class="experiment" aria-labelledby="current-clamp-title">
   <header class="experiment-heading"><p class="experiment-number">Experiment 01</p><h2 id="current-clamp-title">Current Clamp</h2><p>Current steps through the pinned soma mechanisms of specimen 571654895: voltage traces, steady-state IV and f-I.</p></header>
