@@ -618,7 +618,9 @@ grown tree. These are future directions, not implemented capabilities.
   reported as 1.46 ± 0.60 µm/min (SEM), compared with this model's exploratory
   unloaded baseline 1.10 µm/min. Similar order of magnitude is not validation.
 
-Read `V2_VERIFICATION.md` for the mechanics checks and remaining limitations.
+Read [V3_VERIFICATION.md](V3_VERIFICATION.md) for current checks and remaining
+limitations. [V2_VERIFICATION.md](V2_VERIFICATION.md) preserves the historical
+review of the original membrane-mechanics implementation.
 
 
 ### Exploratory protrusions and contact stabilization

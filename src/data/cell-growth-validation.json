@@ -10,20 +10,20 @@
     "src/lib/cell-growth/morphogenesis.js": "0c4f810d719c41750895e4e95bddf7f0706823921fb0c75887c8144f406f2745",
     "src/lib/cell-growth/shaft-mechanics.js": "8c1409709bcc7648f375dfd6bb05214102a59725a672f3ddf0575dda83d43be5",
     "src/lib/cell-growth/microscopy-render.js": "8a01989ec9c468cd64d88083be7898e4bf0c9f481526b9adea00ec6fbc2ec1de",
-    "src/lib/cell-growth/presentation.js": "b04f1a2f04fc1ca06ec69728c5f68470c99c069463f15f24fa72ce78bf671d02",
-    "tests/cell-growth-morphogenesis.mjs": "b0a667cf8a5dc62caa0784ebfcd086e7e5b6d0ef4134543606856ed460928880",
-    "src/lib/cell-growth/engine.js": "57dc9f4005e1b7774b9016fa5f82b090e7cad84af4562f0986b5eab718b479aa",
+    "src/lib/cell-growth/presentation.js": "24d53d86a6c1094d52302f78511ef8bf5b397260cb5c1260e4aeaf09b8f93f2f",
+    "tests/cell-growth-morphogenesis.mjs": "c5526a04964823d696aaa444579264b8ca50059283a99a0aeb3e4ef7a665fadd",
+    "src/lib/cell-growth/engine.js": "687db185598eebf94ead52ce1396cb7fd9441293f6ee3ddcb89b5311dd5b1178",
     "src/lib/cell-growth/behavior.js": "7f2e067330b0a2c3803ae4ce5ad2eadd9c903a29d532175a0abb48d86251346c",
     "tests/cell-growth-behavior.mjs": "1cf9be4fbcfd90688deb94617d0db774aa62a479c65b81f3b791a5c080215163",
     "src/lib/cell-growth/geometry.js": "97a1269bf12765443dc2b275ee5b1ad3f7943cf5de442ebf82785b3c924e24f4",
-    "src/lib/cell-growth/mechanics.js": "bbe365cd38e76b8cc6aeec8a6bb8b676a8f603dd72268208c487413c1384db8d",
+    "src/lib/cell-growth/mechanics.js": "4ccceaa3f4620f53647932d1ba9cb0bdc38f0633518cb81aef18b80bb262c7f9",
     "src/lib/cell-growth/exploration.js": "005924673e547155b77f42db24b456c75926d82a74a56a5d16ee1c78c1bfb58a",
     "src/lib/cell-growth/render-geometry.js": "09a1cc596cc53e26630cdce5471784feaa322b211a60034342fcbda7ca9509b7",
-    "tests/cell-growth-mechanics.mjs": "8d7633fe6b6d712d03cb36f96577d154b1452a898489fcbedbaab6f91010f680",
+    "tests/cell-growth-mechanics.mjs": "a5526d4ef1bdab35fb0f30916039d2dbd6559f113b4314693e523dbe4eb54e48",
     "tests/cell-growth.mjs": "61312f28b0b2784b728b2e1002bfe0c5d80910e3bae2ddfe7d80799812f3e563",
     "scripts/validate-cell-growth.mjs": "9303daf7d12b6d45d5c77d5bc20f3971112f355ba2634564fbcdff36e4d3f98d"
   },
-  "sourceUnchangedDuringRun": false,
+  "sourceUnchangedDuringRun": true,
   "acceptance": {
     "analyticGeometryUm": 1e-9,
     "zeroDriverAddedLengthUm": 1e-7,
@@ -115,10 +115,10 @@
     },
     {
       "id": "source-unchanged-during-verification",
-      "passed": false
+      "passed": true
     }
   ],
-  "allAcceptancePassed": false,
+  "allAcceptancePassed": true,
   "analyticGeometry": [
     {
       "geometry": "sphere crossing",
@@ -11331,7 +11331,7 @@
     "measurements": [
       {
         "id": "positive-driver",
-        "elapsedMs": 110.01187,
+        "elapsedMs": 104.183927,
         "simulatedHours": 8,
         "clampedSomata": true,
         "cellCount": 1,
@@ -11339,7 +11339,7 @@
       },
       {
         "id": "zero-actin",
-        "elapsedMs": 19.768993000000023,
+        "elapsedMs": 30.237156000000027,
         "simulatedHours": 8,
         "clampedSomata": true,
         "cellCount": 1,
@@ -11347,7 +11347,7 @@
       },
       {
         "id": "zero-microtubules",
-        "elapsedMs": 15.718534999999974,
+        "elapsedMs": 26.534513000000004,
         "simulatedHours": 8,
         "clampedSomata": true,
         "cellCount": 1,
@@ -11355,7 +11355,7 @@
       },
       {
         "id": "dt-0.05",
-        "elapsedMs": 238.10174000000004,
+        "elapsedMs": 368.67931699999997,
         "simulatedHours": 4,
         "clampedSomata": false,
         "cellCount": 1,
@@ -11363,7 +11363,7 @@
       },
       {
         "id": "dt-0.025",
-        "elapsedMs": 240.89097300000003,
+        "elapsedMs": 418.599151,
         "simulatedHours": 4,
         "clampedSomata": false,
         "cellCount": 1,
@@ -11371,7 +11371,7 @@
       },
       {
         "id": "dt-0.0125",
-        "elapsedMs": 257.217578,
+        "elapsedMs": 325.382662,
         "simulatedHours": 4,
         "clampedSomata": false,
         "cellCount": 1,
@@ -11379,7 +11379,7 @@
       },
       {
         "id": "membrane-supply-0",
-        "elapsedMs": 1110.699107,
+        "elapsedMs": 1374.64275,
         "simulatedHours": 24,
         "clampedSomata": false,
         "cellCount": 1,
@@ -11387,7 +11387,7 @@
       },
       {
         "id": "membrane-supply-1",
-        "elapsedMs": 1060.334835,
+        "elapsedMs": 1270.9710459999997,
         "simulatedHours": 24,
         "clampedSomata": false,
         "cellCount": 1,
@@ -11395,7 +11395,7 @@
       },
       {
         "id": "zero-supply-zero-tension-area-budget",
-        "elapsedMs": 2741.9972300000004,
+        "elapsedMs": 3239.56036,
         "simulatedHours": 48,
         "clampedSomata": false,
         "cellCount": 1,
@@ -11403,7 +11403,7 @@
       },
       {
         "id": "seeded-replay-a",
-        "elapsedMs": 1160.1124529999997,
+        "elapsedMs": 1236.3557289999999,
         "simulatedHours": 8,
         "clampedSomata": false,
         "cellCount": 3,
@@ -11411,7 +11411,7 @@
       },
       {
         "id": "seeded-replay-b",
-        "elapsedMs": 1106.9383239999997,
+        "elapsedMs": 1366.164334000001,
         "simulatedHours": 8,
         "clampedSomata": false,
         "cellCount": 3,
@@ -11419,7 +11419,7 @@
       },
       {
         "id": "environment-culture-72h",
-        "elapsedMs": 176622.833016,
+        "elapsedMs": 224396.734474,
         "simulatedHours": 72,
         "clampedSomata": false,
         "cellCount": 12,
@@ -11427,7 +11427,7 @@
       },
       {
         "id": "environment-organoid-72h",
-        "elapsedMs": 174117.660926,
+        "elapsedMs": 217806.12525500002,
         "simulatedHours": 72,
         "clampedSomata": false,
         "cellCount": 18,
@@ -11435,7 +11435,7 @@
       },
       {
         "id": "environment-regeneration-72h",
-        "elapsedMs": 228024.354637,
+        "elapsedMs": 243753.45384800003,
         "simulatedHours": 72,
         "clampedSomata": false,
         "cellCount": 12,
@@ -11443,7 +11443,7 @@
       },
       {
         "id": "environment-biohybrid-72h",
-        "elapsedMs": 340136.58999600005,
+        "elapsedMs": 323080.8296439999,
         "simulatedHours": 72,
         "clampedSomata": false,
         "cellCount": 14,
@@ -11451,7 +11451,7 @@
       },
       {
         "id": "ensemble-baseline-101",
-        "elapsedMs": 3991.158003000077,
+        "elapsedMs": 3222.905204999959,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11459,7 +11459,7 @@
       },
       {
         "id": "ensemble-baseline-202",
-        "elapsedMs": 3735.235339000006,
+        "elapsedMs": 3437.3691189999226,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11467,7 +11467,7 @@
       },
       {
         "id": "ensemble-baseline-303",
-        "elapsedMs": 2493.1116099999053,
+        "elapsedMs": 2682.8817489999346,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11475,7 +11475,7 @@
       },
       {
         "id": "ensemble-baseline-404",
-        "elapsedMs": 3865.4657429999206,
+        "elapsedMs": 3511.5764520000666,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11483,7 +11483,7 @@
       },
       {
         "id": "ensemble-baseline-505",
-        "elapsedMs": 3936.695577999926,
+        "elapsedMs": 3150.3297139999922,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11491,7 +11491,7 @@
       },
       {
         "id": "ensemble-no-actin-101",
-        "elapsedMs": 76.3582930000266,
+        "elapsedMs": 55.574412000132725,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11499,7 +11499,7 @@
       },
       {
         "id": "ensemble-no-actin-202",
-        "elapsedMs": 76.08455799997319,
+        "elapsedMs": 61.82145100017078,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11507,7 +11507,7 @@
       },
       {
         "id": "ensemble-no-actin-303",
-        "elapsedMs": 83.54138099995907,
+        "elapsedMs": 75.4099990001414,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11515,7 +11515,7 @@
       },
       {
         "id": "ensemble-no-actin-404",
-        "elapsedMs": 84.46065100003034,
+        "elapsedMs": 61.03231699997559,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11523,7 +11523,7 @@
       },
       {
         "id": "ensemble-no-actin-505",
-        "elapsedMs": 74.89243100001477,
+        "elapsedMs": 60.952593999914825,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11531,7 +11531,7 @@
       },
       {
         "id": "ensemble-no-microtubules-101",
-        "elapsedMs": 60.963578999973834,
+        "elapsedMs": 56.84227699995972,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11539,7 +11539,7 @@
       },
       {
         "id": "ensemble-no-microtubules-202",
-        "elapsedMs": 80.42962199996691,
+        "elapsedMs": 57.302021000068635,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11547,7 +11547,7 @@
       },
       {
         "id": "ensemble-no-microtubules-303",
-        "elapsedMs": 90.01470099994913,
+        "elapsedMs": 82.81142499996349,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11555,7 +11555,7 @@
       },
       {
         "id": "ensemble-no-microtubules-404",
-        "elapsedMs": 84.94973400002345,
+        "elapsedMs": 78.07253699982539,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11563,7 +11563,7 @@
       },
       {
         "id": "ensemble-no-microtubules-505",
-        "elapsedMs": 69.74825100007001,
+        "elapsedMs": 83.76421099994332,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11571,7 +11571,7 @@
       },
       {
         "id": "ensemble-no-membrane-supply-101",
-        "elapsedMs": 1119.6747630001046,
+        "elapsedMs": 1255.671216999879,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11579,7 +11579,7 @@
       },
       {
         "id": "ensemble-no-membrane-supply-202",
-        "elapsedMs": 1216.283182999934,
+        "elapsedMs": 1240.4530870001763,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11587,7 +11587,7 @@
       },
       {
         "id": "ensemble-no-membrane-supply-303",
-        "elapsedMs": 1363.1238700000104,
+        "elapsedMs": 1343.2439920001198,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11595,7 +11595,7 @@
       },
       {
         "id": "ensemble-no-membrane-supply-404",
-        "elapsedMs": 1268.0741189999972,
+        "elapsedMs": 1330.1661910000257,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11603,7 +11603,7 @@
       },
       {
         "id": "ensemble-no-membrane-supply-505",
-        "elapsedMs": 1200.9136609999696,
+        "elapsedMs": 1445.7592029999942,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11611,7 +11611,7 @@
       },
       {
         "id": "ensemble-high-membrane-tension-101",
-        "elapsedMs": 57.9252629999537,
+        "elapsedMs": 54.753279000055045,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11619,7 +11619,7 @@
       },
       {
         "id": "ensemble-high-membrane-tension-202",
-        "elapsedMs": 51.18815199995879,
+        "elapsedMs": 53.39578599995002,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11627,7 +11627,7 @@
       },
       {
         "id": "ensemble-high-membrane-tension-303",
-        "elapsedMs": 58.43989399995189,
+        "elapsedMs": 59.9794619998429,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11635,7 +11635,7 @@
       },
       {
         "id": "ensemble-high-membrane-tension-404",
-        "elapsedMs": 74.25692399998661,
+        "elapsedMs": 53.63820400019176,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11643,7 +11643,7 @@
       },
       {
         "id": "ensemble-high-membrane-tension-505",
-        "elapsedMs": 87.59067800000776,
+        "elapsedMs": 85.08621799992397,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11651,7 +11651,7 @@
       },
       {
         "id": "ensemble-no-branching-101",
-        "elapsedMs": 2733.74029300001,
+        "elapsedMs": 3346.037173999939,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11659,7 +11659,7 @@
       },
       {
         "id": "ensemble-no-branching-202",
-        "elapsedMs": 2496.451448000036,
+        "elapsedMs": 2433.0097839999944,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11667,7 +11667,7 @@
       },
       {
         "id": "ensemble-no-branching-303",
-        "elapsedMs": 3673.535725999973,
+        "elapsedMs": 2592.367234000005,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11675,7 +11675,7 @@
       },
       {
         "id": "ensemble-no-branching-404",
-        "elapsedMs": 2446.885833999957,
+        "elapsedMs": 2343.0407460001297,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,
@@ -11683,7 +11683,7 @@
       },
       {
         "id": "ensemble-no-branching-505",
-        "elapsedMs": 3285.8826389999595,
+        "elapsedMs": 2145.8377640000544,
         "simulatedHours": 24,
         "clampedSomata": true,
         "cellCount": 4,

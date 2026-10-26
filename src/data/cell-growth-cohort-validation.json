@@ -1,19 +1,19 @@
 {
   "concurrency": 4,
-  "wallSeconds": 2140.555397502,
+  "wallSeconds": 4110.44672239,
   "schema": "cell-growth-cohort-verification/1",
   "modelVersion": "cell-growth/3.0.0",
   "empiricalCalibration": false,
   "runtime": "v24.22.1",
   "sourceSha256": {
-    "src/lib/cell-growth/engine.js": "57dc9f4005e1b7774b9016fa5f82b090e7cad84af4562f0986b5eab718b479aa",
+    "src/lib/cell-growth/engine.js": "687db185598eebf94ead52ce1396cb7fd9441293f6ee3ddcb89b5311dd5b1178",
     "src/lib/cell-growth/geometry.js": "97a1269bf12765443dc2b275ee5b1ad3f7943cf5de442ebf82785b3c924e24f4",
-    "src/lib/cell-growth/mechanics.js": "bbe365cd38e76b8cc6aeec8a6bb8b676a8f603dd72268208c487413c1384db8d",
+    "src/lib/cell-growth/mechanics.js": "4ccceaa3f4620f53647932d1ba9cb0bdc38f0633518cb81aef18b80bb262c7f9",
     "src/lib/cell-growth/behavior.js": "7f2e067330b0a2c3803ae4ce5ad2eadd9c903a29d532175a0abb48d86251346c",
     "src/lib/cell-growth/exploration.js": "005924673e547155b77f42db24b456c75926d82a74a56a5d16ee1c78c1bfb58a",
     "src/lib/cell-growth/morphogenesis.js": "0c4f810d719c41750895e4e95bddf7f0706823921fb0c75887c8144f406f2745",
     "src/lib/cell-growth/shaft-mechanics.js": "8c1409709bcc7648f375dfd6bb05214102a59725a672f3ddf0575dda83d43be5",
-    "scripts/validate-cell-growth-cohort.mjs": "5522f5775a1b38b2090b05de484a66ccefdeb03e8c443b945917794fcc438c0b"
+    "scripts/validate-cell-growth-cohort.mjs": "f2cfe3aca4ec4c6b61175f95a1df704d07b955088ee31acc55df8a699b509f4b"
   },
   "seedCount": 16,
   "seeds": [
@@ -78,7 +78,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 172.48936825299998,
+      "wallSeconds": 194.801966451,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -254,7 +254,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 223.453768434,
+      "wallSeconds": 243.068357483,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -430,7 +430,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 245.027379601,
+      "wallSeconds": 262.37367210499997,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -606,7 +606,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 376.264195493,
+      "wallSeconds": 390.14344336799996,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -782,7 +782,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 183.45320592099998,
+      "wallSeconds": 194.989123481,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -958,7 +958,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 224.078500672,
+      "wallSeconds": 226.430816362,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -1134,7 +1134,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 283.80326683699997,
+      "wallSeconds": 284.573501022,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -1310,7 +1310,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 425.18339199,
+      "wallSeconds": 423.05452289500005,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -1486,7 +1486,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 202.98352657200002,
+      "wallSeconds": 199.75808662899996,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -1662,7 +1662,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 213.79955289299997,
+      "wallSeconds": 199.91538026900002,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -1838,7 +1838,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 265.53302802799993,
+      "wallSeconds": 255.39366582300002,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -2014,7 +2014,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 349.413239572,
+      "wallSeconds": 358.98720489399994,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -2190,7 +2190,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 182.79425592499996,
+      "wallSeconds": 176.39893763400008,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -2366,7 +2366,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 187.44066030500002,
+      "wallSeconds": 187.130352371,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -2542,7 +2542,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 230.980700251,
+      "wallSeconds": 224.62893034500001,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -2718,7 +2718,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 323.91717616200003,
+      "wallSeconds": 307.56001495999993,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -2894,7 +2894,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 170.46154753899992,
+      "wallSeconds": 180.19321228300012,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -3070,7 +3070,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 196.38296669000002,
+      "wallSeconds": 206.0996785530001,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -3246,7 +3246,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 228.17986244199994,
+      "wallSeconds": 250.52459903699997,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -3422,7 +3422,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 340.822939398,
+      "wallSeconds": 346.2494128050001,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -3598,7 +3598,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 170.57875291699986,
+      "wallSeconds": 167.82335882700002,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -3774,7 +3774,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 200.42120655800005,
+      "wallSeconds": 206.62210583700008,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -3950,7 +3950,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 247.86538029,
+      "wallSeconds": 253.73566246300004,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -4126,7 +4126,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 315.889516722,
+      "wallSeconds": 322.68383697100006,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -4302,7 +4302,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 206.23495171999977,
+      "wallSeconds": 212.49828713900013,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -4478,7 +4478,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 193.47981636300008,
+      "wallSeconds": 201.21521007200005,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -4654,7 +4654,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 233.9631744929999,
+      "wallSeconds": 238.54911080599996,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -4830,7 +4830,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 358.6439206700001,
+      "wallSeconds": 347.6569586159999,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -5006,7 +5006,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 205.87529363700003,
+      "wallSeconds": 203.686801892,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -5182,7 +5182,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 217.89738675499987,
+      "wallSeconds": 205.46178321699983,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -5358,7 +5358,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 257.9613774549998,
+      "wallSeconds": 252.0844798659999,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -5494,6 +5494,182 @@
       "passed": true
     },
     {
+      "mode": "biohybrid",
+      "seed": 733204,
+      "config": {
+        "mode": "biohybrid",
+        "source": "immature",
+        "cellCount": 14,
+        "seed": 733204,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0.8,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.7,
+        "membraneSupply": 1,
+        "maxSegments": 26000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 26000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 362.68104335399994,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.0686562745831907e-11,
+            "shaftPairsChecked": 4775,
+            "passed": true
+          },
+          "totalLengthUm": 4526.657145909282,
+          "branches": 15,
+          "activeTips": 84,
+          "liveSegments": 1650
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.5697667044587433e-11,
+            "shaftPairsChecked": 21117,
+            "passed": true
+          },
+          "totalLengthUm": 10734.001628245085,
+          "branches": 58,
+          "activeTips": 125,
+          "liveSegments": 3911
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.4001247917767614e-11,
+            "shaftPairsChecked": 42110,
+            "passed": true
+          },
+          "totalLengthUm": 17264.864977328263,
+          "branches": 102,
+          "activeTips": 169,
+          "liveSegments": 6324
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.877609510207549e-11,
+            "shaftPairsChecked": 74025,
+            "passed": true
+          },
+          "totalLengthUm": 24820.23334750886,
+          "branches": 144,
+          "activeTips": 211,
+          "liveSegments": 9138
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.911715561524034e-11,
+            "shaftPairsChecked": 119251,
+            "passed": true
+          },
+          "totalLengthUm": 32383.007283485193,
+          "branches": 186,
+          "activeTips": 253,
+          "liveSegments": 11984
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.127773430198431e-10,
+            "shaftPairsChecked": 178730,
+            "passed": true
+          },
+          "totalLengthUm": 39183.17514990661,
+          "branches": 232,
+          "activeTips": 299,
+          "liveSegments": 14591
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 17632.787441455483,
+        "totalDendriteLength": 21550.387708451126,
+        "branches": 232,
+        "activeTips": 299,
+        "contacts": 92,
+        "meanDisplacement": 10.06957157980492,
+        "liveSegments": 14591
+      },
+      "counters": {
+        "collisions": 1185,
+        "collisionSteps": 2559,
+        "branches": 314,
+        "retractions": 3989,
+        "contacts": 94,
+        "wavesLaunched": 3468,
+        "waveArrivals": 3372,
+        "budsBorn": 520,
+        "budsResorbed": 242,
+        "shaftRelaxations": 1735625
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
       "mode": "culture",
       "seed": 837933,
       "config": {
@@ -5534,7 +5710,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 173.47049060499995,
+      "wallSeconds": 169.05869100900017,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -5710,7 +5886,7 @@
         "tipCap": 32,
         "tipLimitedCount": 0
       },
-      "wallSeconds": 206.36642262399988,
+      "wallSeconds": 198.28051375199993,
       "checkpoints": [
         {
           "timeHours": 12,
@@ -5844,9 +6020,5289 @@
       },
       "exactRoundTrip": true,
       "passed": true
+    },
+    {
+      "mode": "regeneration",
+      "seed": 837933,
+      "config": {
+        "mode": "regeneration",
+        "source": "immature",
+        "cellCount": 12,
+        "seed": 837933,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 1,
+        "branching": 0.65,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.8,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 18000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 245.19869469499983,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.2732925824820995e-11,
+            "shaftPairsChecked": 3571,
+            "passed": true
+          },
+          "totalLengthUm": 3903.501227477229,
+          "branches": 3,
+          "activeTips": 63,
+          "liveSegments": 1423
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.581135388230905e-11,
+            "shaftPairsChecked": 12183,
+            "passed": true
+          },
+          "totalLengthUm": 9192.748171581052,
+          "branches": 35,
+          "activeTips": 94,
+          "liveSegments": 3319
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.707079253625125e-11,
+            "shaftPairsChecked": 27319,
+            "passed": true
+          },
+          "totalLengthUm": 14922.546107137461,
+          "branches": 51,
+          "activeTips": 110,
+          "liveSegments": 5396
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 8.765255188336596e-11,
+            "shaftPairsChecked": 56419,
+            "passed": true
+          },
+          "totalLengthUm": 21609.2032176179,
+          "branches": 64,
+          "activeTips": 122,
+          "liveSegments": 7806
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.191438059322536e-10,
+            "shaftPairsChecked": 93616,
+            "passed": true
+          },
+          "totalLengthUm": 27480.4500372943,
+          "branches": 87,
+          "activeTips": 145,
+          "liveSegments": 9960
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.3926637620897964e-10,
+            "shaftPairsChecked": 127640,
+            "passed": true
+          },
+          "totalLengthUm": 32740.044885801006,
+          "branches": 111,
+          "activeTips": 169,
+          "liveSegments": 11901
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 13161.835827322671,
+        "totalDendriteLength": 19578.209058478333,
+        "branches": 111,
+        "activeTips": 169,
+        "contacts": 48,
+        "meanDisplacement": 11.171731985204588,
+        "liveSegments": 11901
+      },
+      "counters": {
+        "collisions": 1527,
+        "collisionSteps": 4627,
+        "branches": 147,
+        "retractions": 3452,
+        "contacts": 51,
+        "wavesLaunched": 3012,
+        "waveArrivals": 2941,
+        "budsBorn": 274,
+        "budsResorbed": 138,
+        "shaftRelaxations": 1214643
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "biohybrid",
+      "seed": 837933,
+      "config": {
+        "mode": "biohybrid",
+        "source": "immature",
+        "cellCount": 14,
+        "seed": 837933,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0.8,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.7,
+        "membraneSupply": 1,
+        "maxSegments": 26000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 26000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 329.2628139790001,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.4210854715202004e-11,
+            "shaftPairsChecked": 2487,
+            "passed": true
+          },
+          "totalLengthUm": 4552.92701913853,
+          "branches": 14,
+          "activeTips": 83,
+          "liveSegments": 1673
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.4783730623312294e-11,
+            "shaftPairsChecked": 12309,
+            "passed": true
+          },
+          "totalLengthUm": 10973.661473424474,
+          "branches": 49,
+          "activeTips": 118,
+          "liveSegments": 3977
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.149125404888764e-11,
+            "shaftPairsChecked": 30254,
+            "passed": true
+          },
+          "totalLengthUm": 17914.573459610976,
+          "branches": 84,
+          "activeTips": 153,
+          "liveSegments": 6520
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.809397407574579e-11,
+            "shaftPairsChecked": 64074,
+            "passed": true
+          },
+          "totalLengthUm": 25740.13331115971,
+          "branches": 128,
+          "activeTips": 197,
+          "liveSegments": 9404
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 6.991740519879386e-11,
+            "shaftPairsChecked": 111963,
+            "passed": true
+          },
+          "totalLengthUm": 33530.22364448475,
+          "branches": 163,
+          "activeTips": 232,
+          "liveSegments": 12268
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.709850039333105e-10,
+            "shaftPairsChecked": 166471,
+            "passed": true
+          },
+          "totalLengthUm": 40198.48592961231,
+          "branches": 202,
+          "activeTips": 271,
+          "liveSegments": 14767
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 18978.07273426772,
+        "totalDendriteLength": 21220.41319534459,
+        "branches": 202,
+        "activeTips": 271,
+        "contacts": 92,
+        "meanDisplacement": 12.143743667925568,
+        "liveSegments": 14767
+      },
+      "counters": {
+        "collisions": 1563,
+        "collisionSteps": 2494,
+        "branches": 292,
+        "retractions": 6018,
+        "contacts": 95,
+        "wavesLaunched": 3454,
+        "waveArrivals": 3425,
+        "budsBorn": 480,
+        "budsResorbed": 220,
+        "shaftRelaxations": 1669335
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "culture",
+      "seed": 942662,
+      "config": {
+        "mode": "culture",
+        "source": "precursor",
+        "cellCount": 12,
+        "seed": 942662,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 18000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 170.320384695,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.751665644813329e-12,
+            "shaftPairsChecked": 145,
+            "passed": true
+          },
+          "totalLengthUm": 788.6731347543762,
+          "branches": 0,
+          "activeTips": 54,
+          "liveSegments": 287
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.6257217794191092e-11,
+            "shaftPairsChecked": 5812,
+            "passed": true
+          },
+          "totalLengthUm": 5784.89251082437,
+          "branches": 18,
+          "activeTips": 72,
+          "liveSegments": 1925
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.6497916628140956e-11,
+            "shaftPairsChecked": 19351,
+            "passed": true
+          },
+          "totalLengthUm": 11261.224514377815,
+          "branches": 58,
+          "activeTips": 112,
+          "liveSegments": 3830
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.8771653382573277e-11,
+            "shaftPairsChecked": 43440,
+            "passed": true
+          },
+          "totalLengthUm": 17002.244435647466,
+          "branches": 100,
+          "activeTips": 154,
+          "liveSegments": 5907
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.5706550483591855e-11,
+            "shaftPairsChecked": 81275,
+            "passed": true
+          },
+          "totalLengthUm": 24058.845824396238,
+          "branches": 129,
+          "activeTips": 182,
+          "liveSegments": 8515
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.0084022505907342e-10,
+            "shaftPairsChecked": 118969,
+            "passed": true
+          },
+          "totalLengthUm": 30593.257164628965,
+          "branches": 174,
+          "activeTips": 226,
+          "liveSegments": 10972
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 13541.405023766938,
+        "totalDendriteLength": 17051.852140862025,
+        "branches": 174,
+        "activeTips": 226,
+        "contacts": 50,
+        "meanDisplacement": 43.8476877971475,
+        "liveSegments": 10972
+      },
+      "counters": {
+        "collisions": 432,
+        "collisionSteps": 3301,
+        "branches": 241,
+        "retractions": 3650,
+        "contacts": 56,
+        "wavesLaunched": 2531,
+        "waveArrivals": 2501,
+        "budsBorn": 398,
+        "budsResorbed": 186,
+        "shaftRelaxations": 1192293
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "organoid",
+      "seed": 942662,
+      "config": {
+        "mode": "organoid",
+        "source": "precursor",
+        "cellCount": 18,
+        "seed": 942662,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.45,
+        "stiffness": 100,
+        "guidance": 0.45,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 26000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 26000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 196.65429285900015,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.3874235921539366e-12,
+            "shaftPairsChecked": 54,
+            "passed": true
+          },
+          "totalLengthUm": 860.9172191574429,
+          "branches": 2,
+          "activeTips": 92,
+          "liveSegments": 386
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.2737367544323206e-11,
+            "shaftPairsChecked": 1542,
+            "passed": true
+          },
+          "totalLengthUm": 6924.602288925285,
+          "branches": 26,
+          "activeTips": 114,
+          "liveSegments": 2499
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.75210981676355e-11,
+            "shaftPairsChecked": 6021,
+            "passed": true
+          },
+          "totalLengthUm": 13788.565311901026,
+          "branches": 71,
+          "activeTips": 158,
+          "liveSegments": 4985
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.808953235624358e-11,
+            "shaftPairsChecked": 14909,
+            "passed": true
+          },
+          "totalLengthUm": 21008.63390273931,
+          "branches": 123,
+          "activeTips": 210,
+          "liveSegments": 7664
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 7.241851562866941e-11,
+            "shaftPairsChecked": 34901,
+            "passed": true
+          },
+          "totalLengthUm": 29854.344931306532,
+          "branches": 183,
+          "activeTips": 270,
+          "liveSegments": 11011
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 8.981260180007666e-11,
+            "shaftPairsChecked": 60118,
+            "passed": true
+          },
+          "totalLengthUm": 38095.593831633276,
+          "branches": 232,
+          "activeTips": 319,
+          "liveSegments": 14151
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 18979.61929884961,
+        "totalDendriteLength": 19115.97453278366,
+        "branches": 232,
+        "activeTips": 319,
+        "contacts": 30,
+        "meanDisplacement": 24.113866544253103,
+        "liveSegments": 14151
+      },
+      "counters": {
+        "collisions": 2854,
+        "collisionSteps": 4334,
+        "branches": 319,
+        "retractions": 3289,
+        "contacts": 33,
+        "wavesLaunched": 4197,
+        "waveArrivals": 4063,
+        "budsBorn": 548,
+        "budsResorbed": 265,
+        "shaftRelaxations": 1706173
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "regeneration",
+      "seed": 942662,
+      "config": {
+        "mode": "regeneration",
+        "source": "immature",
+        "cellCount": 12,
+        "seed": 942662,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 1,
+        "branching": 0.65,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.8,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 18000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 237.4674088390004,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 6.821210263296962e-12,
+            "shaftPairsChecked": 7090,
+            "passed": true
+          },
+          "totalLengthUm": 3883.4824165689397,
+          "branches": 4,
+          "activeTips": 64,
+          "liveSegments": 1424
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.978150976356119e-11,
+            "shaftPairsChecked": 21627,
+            "passed": true
+          },
+          "totalLengthUm": 9213.804275042366,
+          "branches": 22,
+          "activeTips": 82,
+          "liveSegments": 3330
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.83124643121846e-11,
+            "shaftPairsChecked": 40282,
+            "passed": true
+          },
+          "totalLengthUm": 14344.22163769606,
+          "branches": 51,
+          "activeTips": 111,
+          "liveSegments": 5201
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.7066350816749036e-11,
+            "shaftPairsChecked": 70962,
+            "passed": true
+          },
+          "totalLengthUm": 19962.74647674898,
+          "branches": 68,
+          "activeTips": 127,
+          "liveSegments": 7250
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 9.15179043659009e-11,
+            "shaftPairsChecked": 110221,
+            "passed": true
+          },
+          "totalLengthUm": 25264.903596345408,
+          "branches": 86,
+          "activeTips": 145,
+          "liveSegments": 9211
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 7.617018127348274e-11,
+            "shaftPairsChecked": 140236,
+            "passed": true
+          },
+          "totalLengthUm": 29932.880396847926,
+          "branches": 110,
+          "activeTips": 169,
+          "liveSegments": 10942
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 9555.649203326811,
+        "totalDendriteLength": 20377.231193521115,
+        "branches": 110,
+        "activeTips": 169,
+        "contacts": 71,
+        "meanDisplacement": 9.943615012524818,
+        "liveSegments": 10942
+      },
+      "counters": {
+        "collisions": 1336,
+        "collisionSteps": 1489,
+        "branches": 158,
+        "retractions": 3652,
+        "contacts": 73,
+        "wavesLaunched": 2966,
+        "waveArrivals": 2924,
+        "budsBorn": 285,
+        "budsResorbed": 143,
+        "shaftRelaxations": 1118295
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "biohybrid",
+      "seed": 942662,
+      "config": {
+        "mode": "biohybrid",
+        "source": "immature",
+        "cellCount": 14,
+        "seed": 942662,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0.8,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.7,
+        "membraneSupply": 1,
+        "maxSegments": 26000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 26000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 361.8235086440002,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 9.208633855450898e-12,
+            "shaftPairsChecked": 4117,
+            "passed": true
+          },
+          "totalLengthUm": 4531.91600807726,
+          "branches": 7,
+          "activeTips": 76,
+          "liveSegments": 1658
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.864464138634503e-11,
+            "shaftPairsChecked": 13709,
+            "passed": true
+          },
+          "totalLengthUm": 10759.405097538613,
+          "branches": 46,
+          "activeTips": 115,
+          "liveSegments": 3903
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.092281986027956e-11,
+            "shaftPairsChecked": 36647,
+            "passed": true
+          },
+          "totalLengthUm": 17442.748254321737,
+          "branches": 89,
+          "activeTips": 157,
+          "liveSegments": 6375
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.7975845518521965e-11,
+            "shaftPairsChecked": 76797,
+            "passed": true
+          },
+          "totalLengthUm": 24981.922321053004,
+          "branches": 132,
+          "activeTips": 200,
+          "liveSegments": 9177
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 8.333245204994455e-11,
+            "shaftPairsChecked": 127108,
+            "passed": true
+          },
+          "totalLengthUm": 32309.538387849247,
+          "branches": 178,
+          "activeTips": 246,
+          "liveSegments": 11914
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.3039880286669359e-10,
+            "shaftPairsChecked": 178354,
+            "passed": true
+          },
+          "totalLengthUm": 38601.67288929004,
+          "branches": 219,
+          "activeTips": 287,
+          "liveSegments": 14311
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 16049.411916601299,
+        "totalDendriteLength": 22552.260972688746,
+        "branches": 219,
+        "activeTips": 287,
+        "contacts": 102,
+        "meanDisplacement": 10.650436455050526,
+        "liveSegments": 14311
+      },
+      "counters": {
+        "collisions": 2127,
+        "collisionSteps": 3317,
+        "branches": 298,
+        "retractions": 3598,
+        "contacts": 103,
+        "wavesLaunched": 3395,
+        "waveArrivals": 3332,
+        "budsBorn": 539,
+        "budsResorbed": 261,
+        "shaftRelaxations": 1681013
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "culture",
+      "seed": 1047391,
+      "config": {
+        "mode": "culture",
+        "source": "precursor",
+        "cellCount": 12,
+        "seed": 1047391,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 18000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 174.9010597430002,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.296918293926865e-12,
+            "shaftPairsChecked": 100,
+            "passed": true
+          },
+          "totalLengthUm": 816.8642110720834,
+          "branches": 1,
+          "activeTips": 58,
+          "liveSegments": 287
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.978150976356119e-11,
+            "shaftPairsChecked": 6945,
+            "passed": true
+          },
+          "totalLengthUm": 5663.754914795262,
+          "branches": 13,
+          "activeTips": 69,
+          "liveSegments": 1855
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.9667822925839573e-11,
+            "shaftPairsChecked": 23469,
+            "passed": true
+          },
+          "totalLengthUm": 10812.60306034936,
+          "branches": 53,
+          "activeTips": 109,
+          "liveSegments": 3672
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.9331204132176936e-11,
+            "shaftPairsChecked": 50123,
+            "passed": true
+          },
+          "totalLengthUm": 16461.314667594437,
+          "branches": 88,
+          "activeTips": 142,
+          "liveSegments": 5736
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 6.980371836107224e-11,
+            "shaftPairsChecked": 90873,
+            "passed": true
+          },
+          "totalLengthUm": 23481.29791233372,
+          "branches": 125,
+          "activeTips": 179,
+          "liveSegments": 8316
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.8771653382573277e-11,
+            "shaftPairsChecked": 132342,
+            "passed": true
+          },
+          "totalLengthUm": 29648.33931437125,
+          "branches": 153,
+          "activeTips": 207,
+          "liveSegments": 10626
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 11976.799505160052,
+        "totalDendriteLength": 17671.539809211197,
+        "branches": 153,
+        "activeTips": 207,
+        "contacts": 54,
+        "meanDisplacement": 45.52988610363772,
+        "liveSegments": 10626
+      },
+      "counters": {
+        "collisions": 610,
+        "collisionSteps": 2411,
+        "branches": 211,
+        "retractions": 3745,
+        "contacts": 56,
+        "wavesLaunched": 2667,
+        "waveArrivals": 2565,
+        "budsBorn": 367,
+        "budsResorbed": 175,
+        "shaftRelaxations": 1153206
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "organoid",
+      "seed": 1047391,
+      "config": {
+        "mode": "organoid",
+        "source": "precursor",
+        "cellCount": 18,
+        "seed": 1047391,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.45,
+        "stiffness": 100,
+        "guidance": 0.45,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 26000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 26000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 206.29997977099987,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.637978807091713e-12,
+            "shaftPairsChecked": 91,
+            "passed": true
+          },
+          "totalLengthUm": 957.9494050861452,
+          "branches": 1,
+          "activeTips": 91,
+          "liveSegments": 426
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.4783730623312294e-11,
+            "shaftPairsChecked": 1688,
+            "passed": true
+          },
+          "totalLengthUm": 7635.232743375426,
+          "branches": 22,
+          "activeTips": 112,
+          "liveSegments": 2768
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.6261659513693303e-11,
+            "shaftPairsChecked": 7402,
+            "passed": true
+          },
+          "totalLengthUm": 14937.539771485157,
+          "branches": 81,
+          "activeTips": 168,
+          "liveSegments": 5415
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 9.015366231324151e-11,
+            "shaftPairsChecked": 16944,
+            "passed": true
+          },
+          "totalLengthUm": 22485.415605152128,
+          "branches": 141,
+          "activeTips": 228,
+          "liveSegments": 8207
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.0857093002414331e-10,
+            "shaftPairsChecked": 37703,
+            "passed": true
+          },
+          "totalLengthUm": 31536.934522412186,
+          "branches": 185,
+          "activeTips": 272,
+          "liveSegments": 11582
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.0857093002414331e-10,
+            "shaftPairsChecked": 67471,
+            "passed": true
+          },
+          "totalLengthUm": 40202.54372374396,
+          "branches": 228,
+          "activeTips": 315,
+          "liveSegments": 14867
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 17731.053699926466,
+        "totalDendriteLength": 22471.490023817496,
+        "branches": 228,
+        "activeTips": 315,
+        "contacts": 24,
+        "meanDisplacement": 24.257596158374135,
+        "liveSegments": 14867
+      },
+      "counters": {
+        "collisions": 3377,
+        "collisionSteps": 4326,
+        "branches": 330,
+        "retractions": 5150,
+        "contacts": 28,
+        "wavesLaunched": 4189,
+        "waveArrivals": 4099,
+        "budsBorn": 562,
+        "budsResorbed": 262,
+        "shaftRelaxations": 1775562
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "regeneration",
+      "seed": 1047391,
+      "config": {
+        "mode": "regeneration",
+        "source": "immature",
+        "cellCount": 12,
+        "seed": 1047391,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 1,
+        "branching": 0.65,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.8,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 18000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 246.8555369020002,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.751665644813329e-12,
+            "shaftPairsChecked": 4494,
+            "passed": true
+          },
+          "totalLengthUm": 3746.5699978204893,
+          "branches": 5,
+          "activeTips": 65,
+          "liveSegments": 1366
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.3983481039758772e-11,
+            "shaftPairsChecked": 15871,
+            "passed": true
+          },
+          "totalLengthUm": 8638.331306482563,
+          "branches": 30,
+          "activeTips": 89,
+          "liveSegments": 3124
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.615685611497611e-11,
+            "shaftPairsChecked": 35955,
+            "passed": true
+          },
+          "totalLengthUm": 14189.493099017716,
+          "branches": 64,
+          "activeTips": 122,
+          "liveSegments": 5147
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.888534022029489e-11,
+            "shaftPairsChecked": 63363,
+            "passed": true
+          },
+          "totalLengthUm": 20201.73490815238,
+          "branches": 80,
+          "activeTips": 137,
+          "liveSegments": 7305
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.752553988713771e-11,
+            "shaftPairsChecked": 97180,
+            "passed": true
+          },
+          "totalLengthUm": 25850.31198936909,
+          "branches": 105,
+          "activeTips": 162,
+          "liveSegments": 9353
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 7.776179700158536e-11,
+            "shaftPairsChecked": 128593,
+            "passed": true
+          },
+          "totalLengthUm": 29983.380178413216,
+          "branches": 130,
+          "activeTips": 187,
+          "liveSegments": 10895
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 12869.47400323404,
+        "totalDendriteLength": 17113.906175179174,
+        "branches": 130,
+        "activeTips": 187,
+        "contacts": 90,
+        "meanDisplacement": 9.57072134419097,
+        "liveSegments": 10895
+      },
+      "counters": {
+        "collisions": 1023,
+        "collisionSteps": 1951,
+        "branches": 191,
+        "retractions": 4590,
+        "contacts": 93,
+        "wavesLaunched": 2971,
+        "waveArrivals": 2902,
+        "budsBorn": 290,
+        "budsResorbed": 121,
+        "shaftRelaxations": 1178559
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "biohybrid",
+      "seed": 1047391,
+      "config": {
+        "mode": "biohybrid",
+        "source": "immature",
+        "cellCount": 14,
+        "seed": 1047391,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0.8,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.7,
+        "membraneSupply": 1,
+        "maxSegments": 26000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 26000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 310.55017983699963,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.0118128557223827e-11,
+            "shaftPairsChecked": 3506,
+            "passed": true
+          },
+          "totalLengthUm": 4359.7222448281955,
+          "branches": 9,
+          "activeTips": 78,
+          "liveSegments": 1597
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.3073986337985843e-11,
+            "shaftPairsChecked": 13851,
+            "passed": true
+          },
+          "totalLengthUm": 9972.995906357777,
+          "branches": 52,
+          "activeTips": 119,
+          "liveSegments": 3628
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.5925040720030665e-11,
+            "shaftPairsChecked": 29089,
+            "passed": true
+          },
+          "totalLengthUm": 15633.38385537581,
+          "branches": 91,
+          "activeTips": 156,
+          "liveSegments": 5728
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 7.969447324285284e-11,
+            "shaftPairsChecked": 52393,
+            "passed": true
+          },
+          "totalLengthUm": 22532.804444390888,
+          "branches": 129,
+          "activeTips": 192,
+          "liveSegments": 8281
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 8.481038094032556e-11,
+            "shaftPairsChecked": 83222,
+            "passed": true
+          },
+          "totalLengthUm": 30136.44990042985,
+          "branches": 164,
+          "activeTips": 227,
+          "liveSegments": 11093
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.0913936421275139e-10,
+            "shaftPairsChecked": 127045,
+            "passed": true
+          },
+          "totalLengthUm": 37090.13185587285,
+          "branches": 199,
+          "activeTips": 261,
+          "liveSegments": 13722
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 15892.356878287352,
+        "totalDendriteLength": 21197.774977585505,
+        "branches": 199,
+        "activeTips": 261,
+        "contacts": 80,
+        "meanDisplacement": 10.304890620656625,
+        "liveSegments": 13722
+      },
+      "counters": {
+        "collisions": 1034,
+        "collisionSteps": 2053,
+        "branches": 290,
+        "retractions": 6714,
+        "contacts": 89,
+        "wavesLaunched": 3406,
+        "waveArrivals": 3262,
+        "budsBorn": 512,
+        "budsResorbed": 245,
+        "shaftRelaxations": 1588936
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "culture",
+      "seed": 1152120,
+      "config": {
+        "mode": "culture",
+        "source": "precursor",
+        "cellCount": 12,
+        "seed": 1152120,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 18000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 193.5281880669999,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.3642420526593924e-12,
+            "shaftPairsChecked": 21,
+            "passed": true
+          },
+          "totalLengthUm": 812.2489463970946,
+          "branches": 0,
+          "activeTips": 57,
+          "liveSegments": 291
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.1254996934439987e-11,
+            "shaftPairsChecked": 9723,
+            "passed": true
+          },
+          "totalLengthUm": 5677.712979075439,
+          "branches": 17,
+          "activeTips": 74,
+          "liveSegments": 1896
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.399236447876319e-11,
+            "shaftPairsChecked": 31203,
+            "passed": true
+          },
+          "totalLengthUm": 11400.561409830261,
+          "branches": 58,
+          "activeTips": 114,
+          "liveSegments": 3947
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 6.343725544866174e-11,
+            "shaftPairsChecked": 60855,
+            "passed": true
+          },
+          "totalLengthUm": 17363.01732989763,
+          "branches": 104,
+          "activeTips": 160,
+          "liveSegments": 6138
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.1382008930668235e-11,
+            "shaftPairsChecked": 116627,
+            "passed": true
+          },
+          "totalLengthUm": 24986.870031075647,
+          "branches": 141,
+          "activeTips": 197,
+          "liveSegments": 8951
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 7.878497854107991e-11,
+            "shaftPairsChecked": 170417,
+            "passed": true
+          },
+          "totalLengthUm": 31684.545352904293,
+          "branches": 189,
+          "activeTips": 245,
+          "liveSegments": 11478
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 15622.613075607298,
+        "totalDendriteLength": 16061.932277296994,
+        "branches": 189,
+        "activeTips": 245,
+        "contacts": 62,
+        "meanDisplacement": 41.38368881484865,
+        "liveSegments": 11478
+      },
+      "counters": {
+        "collisions": 790,
+        "collisionSteps": 7562,
+        "branches": 243,
+        "retractions": 2236,
+        "contacts": 64,
+        "wavesLaunched": 2713,
+        "waveArrivals": 2656,
+        "budsBorn": 388,
+        "budsResorbed": 166,
+        "shaftRelaxations": 1243731
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "organoid",
+      "seed": 1152120,
+      "config": {
+        "mode": "organoid",
+        "source": "precursor",
+        "cellCount": 18,
+        "seed": 1152120,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.45,
+        "stiffness": 100,
+        "guidance": 0.45,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 26000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 26000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 203.97002877900005,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.410605131648481e-12,
+            "shaftPairsChecked": 0,
+            "passed": true
+          },
+          "totalLengthUm": 953.8675455792543,
+          "branches": 0,
+          "activeTips": 90,
+          "liveSegments": 420
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.7621459846850485e-11,
+            "shaftPairsChecked": 2807,
+            "passed": true
+          },
+          "totalLengthUm": 7766.903108524402,
+          "branches": 32,
+          "activeTips": 122,
+          "liveSegments": 2799
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.297362465877086e-11,
+            "shaftPairsChecked": 8221,
+            "passed": true
+          },
+          "totalLengthUm": 15085.658866995354,
+          "branches": 83,
+          "activeTips": 173,
+          "liveSegments": 5445
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 8.799361239653081e-11,
+            "shaftPairsChecked": 18510,
+            "passed": true
+          },
+          "totalLengthUm": 22043.77301181771,
+          "branches": 128,
+          "activeTips": 218,
+          "liveSegments": 8021
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.1084466677857563e-10,
+            "shaftPairsChecked": 30979,
+            "passed": true
+          },
+          "totalLengthUm": 30444.825928748898,
+          "branches": 179,
+          "activeTips": 267,
+          "liveSegments": 11168
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.198259269585833e-10,
+            "shaftPairsChecked": 48207,
+            "passed": true
+          },
+          "totalLengthUm": 38538.54356335753,
+          "branches": 228,
+          "activeTips": 315,
+          "liveSegments": 14271
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 15871.634179907534,
+        "totalDendriteLength": 22666.909383449998,
+        "branches": 228,
+        "activeTips": 315,
+        "contacts": 33,
+        "meanDisplacement": 24.544239010710985,
+        "liveSegments": 14271
+      },
+      "counters": {
+        "collisions": 2951,
+        "collisionSteps": 4225,
+        "branches": 314,
+        "retractions": 5473,
+        "contacts": 34,
+        "wavesLaunched": 4229,
+        "waveArrivals": 4170,
+        "budsBorn": 548,
+        "budsResorbed": 273,
+        "shaftRelaxations": 1740478
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "regeneration",
+      "seed": 1152120,
+      "config": {
+        "mode": "regeneration",
+        "source": "immature",
+        "cellCount": 12,
+        "seed": 1152120,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 1,
+        "branching": 0.65,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.8,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 18000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 244.70386655599995,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 9.663381206337363e-12,
+            "shaftPairsChecked": 4955,
+            "passed": true
+          },
+          "totalLengthUm": 3812.3103047450986,
+          "branches": 1,
+          "activeTips": 61,
+          "liveSegments": 1392
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.660272002685815e-11,
+            "shaftPairsChecked": 18872,
+            "passed": true
+          },
+          "totalLengthUm": 8955.564057211512,
+          "branches": 30,
+          "activeTips": 90,
+          "liveSegments": 3243
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.547917680814862e-11,
+            "shaftPairsChecked": 37687,
+            "passed": true
+          },
+          "totalLengthUm": 14185.628606205031,
+          "branches": 44,
+          "activeTips": 104,
+          "liveSegments": 5140
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.95719029661268e-11,
+            "shaftPairsChecked": 64801,
+            "passed": true
+          },
+          "totalLengthUm": 20533.322182935783,
+          "branches": 71,
+          "activeTips": 131,
+          "liveSegments": 7445
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.1254996934439987e-10,
+            "shaftPairsChecked": 104080,
+            "passed": true
+          },
+          "totalLengthUm": 26663.46005963056,
+          "branches": 95,
+          "activeTips": 155,
+          "liveSegments": 9709
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.567741492181085e-10,
+            "shaftPairsChecked": 138558,
+            "passed": true
+          },
+          "totalLengthUm": 31479.446788423895,
+          "branches": 115,
+          "activeTips": 175,
+          "liveSegments": 11525
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 10081.812852555991,
+        "totalDendriteLength": 21397.633935867903,
+        "branches": 115,
+        "activeTips": 175,
+        "contacts": 68,
+        "meanDisplacement": 11.190667829936698,
+        "liveSegments": 11525
+      },
+      "counters": {
+        "collisions": 1417,
+        "collisionSteps": 2280,
+        "branches": 151,
+        "retractions": 1565,
+        "contacts": 72,
+        "wavesLaunched": 3023,
+        "waveArrivals": 2980,
+        "budsBorn": 289,
+        "budsResorbed": 145,
+        "shaftRelaxations": 1226355
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "biohybrid",
+      "seed": 1152120,
+      "config": {
+        "mode": "biohybrid",
+        "source": "immature",
+        "cellCount": 14,
+        "seed": 1152120,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0.8,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.7,
+        "membraneSupply": 1,
+        "maxSegments": 26000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 26000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 354.3155558099998,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 7.617018127348274e-12,
+            "shaftPairsChecked": 4759,
+            "passed": true
+          },
+          "totalLengthUm": 4519.717513276282,
+          "branches": 9,
+          "activeTips": 78,
+          "liveSegments": 1645
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.4783730623312294e-11,
+            "shaftPairsChecked": 17317,
+            "passed": true
+          },
+          "totalLengthUm": 10937.846967545556,
+          "branches": 47,
+          "activeTips": 116,
+          "liveSegments": 3951
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.069544618483633e-11,
+            "shaftPairsChecked": 38406,
+            "passed": true
+          },
+          "totalLengthUm": 17765.03798210831,
+          "branches": 88,
+          "activeTips": 156,
+          "liveSegments": 6475
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.968558980384842e-11,
+            "shaftPairsChecked": 64955,
+            "passed": true
+          },
+          "totalLengthUm": 25824.804736404163,
+          "branches": 133,
+          "activeTips": 201,
+          "liveSegments": 9450
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 9.43600753089413e-11,
+            "shaftPairsChecked": 107196,
+            "passed": true
+          },
+          "totalLengthUm": 33505.43682163535,
+          "branches": 187,
+          "activeTips": 255,
+          "liveSegments": 12344
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.0982148523908108e-10,
+            "shaftPairsChecked": 149047,
+            "passed": true
+          },
+          "totalLengthUm": 40287.344967259676,
+          "branches": 237,
+          "activeTips": 305,
+          "liveSegments": 14936
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 18285.753273910388,
+        "totalDendriteLength": 22001.591693349288,
+        "branches": 237,
+        "activeTips": 305,
+        "contacts": 95,
+        "meanDisplacement": 10.955469946053645,
+        "liveSegments": 14936
+      },
+      "counters": {
+        "collisions": 1632,
+        "collisionSteps": 2637,
+        "branches": 305,
+        "retractions": 5334,
+        "contacts": 99,
+        "wavesLaunched": 3459,
+        "waveArrivals": 3398,
+        "budsBorn": 514,
+        "budsResorbed": 239,
+        "shaftRelaxations": 1754757
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "culture",
+      "seed": 1256849,
+      "config": {
+        "mode": "culture",
+        "source": "precursor",
+        "cellCount": 12,
+        "seed": 1256849,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 18000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 187.41841254199994,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.9558577807620168e-12,
+            "shaftPairsChecked": 55,
+            "passed": true
+          },
+          "totalLengthUm": 849.8868746994087,
+          "branches": 0,
+          "activeTips": 58,
+          "liveSegments": 304
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.921307557495311e-11,
+            "shaftPairsChecked": 6703,
+            "passed": true
+          },
+          "totalLengthUm": 5852.407002286179,
+          "branches": 17,
+          "activeTips": 75,
+          "liveSegments": 1933
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.012701199622825e-11,
+            "shaftPairsChecked": 26255,
+            "passed": true
+          },
+          "totalLengthUm": 11795.178752039454,
+          "branches": 61,
+          "activeTips": 119,
+          "liveSegments": 4009
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.7407411329913884e-11,
+            "shaftPairsChecked": 54114,
+            "passed": true
+          },
+          "totalLengthUm": 17805.377796834477,
+          "branches": 94,
+          "activeTips": 151,
+          "liveSegments": 6204
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.297806637827307e-11,
+            "shaftPairsChecked": 95323,
+            "passed": true
+          },
+          "totalLengthUm": 25223.9121727987,
+          "branches": 124,
+          "activeTips": 181,
+          "liveSegments": 8925
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 9.890754881780595e-11,
+            "shaftPairsChecked": 136067,
+            "passed": true
+          },
+          "totalLengthUm": 32112.94257609333,
+          "branches": 151,
+          "activeTips": 208,
+          "liveSegments": 11480
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 15608.674102016825,
+        "totalDendriteLength": 16504.268474076507,
+        "branches": 151,
+        "activeTips": 208,
+        "contacts": 41,
+        "meanDisplacement": 45.127449620192095,
+        "liveSegments": 11480
+      },
+      "counters": {
+        "collisions": 627,
+        "collisionSteps": 5576,
+        "branches": 208,
+        "retractions": 2454,
+        "contacts": 47,
+        "wavesLaunched": 2681,
+        "waveArrivals": 2637,
+        "budsBorn": 369,
+        "budsResorbed": 181,
+        "shaftRelaxations": 1215099
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "organoid",
+      "seed": 1256849,
+      "config": {
+        "mode": "organoid",
+        "source": "precursor",
+        "cellCount": 18,
+        "seed": 1256849,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.45,
+        "stiffness": 100,
+        "guidance": 0.45,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 26000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 26000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 225.981057302,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.1600499167107046e-12,
+            "shaftPairsChecked": 43,
+            "passed": true
+          },
+          "totalLengthUm": 959.0850986890285,
+          "branches": 0,
+          "activeTips": 90,
+          "liveSegments": 422
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.7053025658242404e-11,
+            "shaftPairsChecked": 2527,
+            "passed": true
+          },
+          "totalLengthUm": 7636.406854104886,
+          "branches": 27,
+          "activeTips": 116,
+          "liveSegments": 2755
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.773958840407431e-11,
+            "shaftPairsChecked": 10050,
+            "passed": true
+          },
+          "totalLengthUm": 15321.458663784846,
+          "branches": 91,
+          "activeTips": 180,
+          "liveSegments": 5540
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 6.161826604511589e-11,
+            "shaftPairsChecked": 23590,
+            "passed": true
+          },
+          "totalLengthUm": 22972.80335219304,
+          "branches": 142,
+          "activeTips": 231,
+          "liveSegments": 8380
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 9.413270163349807e-11,
+            "shaftPairsChecked": 44005,
+            "passed": true
+          },
+          "totalLengthUm": 32237.490697857957,
+          "branches": 199,
+          "activeTips": 287,
+          "liveSegments": 11865
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 9.5042196335271e-11,
+            "shaftPairsChecked": 69373,
+            "passed": true
+          },
+          "totalLengthUm": 40821.84786410726,
+          "branches": 250,
+          "activeTips": 338,
+          "liveSegments": 15126
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 20098.968694252733,
+        "totalDendriteLength": 20722.879169854525,
+        "branches": 250,
+        "activeTips": 338,
+        "contacts": 42,
+        "meanDisplacement": 25.128546622442006,
+        "liveSegments": 15126
+      },
+      "counters": {
+        "collisions": 2797,
+        "collisionSteps": 3380,
+        "branches": 351,
+        "retractions": 4611,
+        "contacts": 42,
+        "wavesLaunched": 4149,
+        "waveArrivals": 4075,
+        "budsBorn": 585,
+        "budsResorbed": 280,
+        "shaftRelaxations": 1840989
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "regeneration",
+      "seed": 1256849,
+      "config": {
+        "mode": "regeneration",
+        "source": "immature",
+        "cellCount": 12,
+        "seed": 1256849,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 1,
+        "branching": 0.65,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.8,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 18000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 271.78644872999985,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 7.73070496506989e-12,
+            "shaftPairsChecked": 7990,
+            "passed": true
+          },
+          "totalLengthUm": 3750.4081562917695,
+          "branches": 4,
+          "activeTips": 64,
+          "liveSegments": 1382
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.9103830456733704e-11,
+            "shaftPairsChecked": 20109,
+            "passed": true
+          },
+          "totalLengthUm": 9005.620952756268,
+          "branches": 28,
+          "activeTips": 88,
+          "liveSegments": 3264
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 6.434675015043467e-11,
+            "shaftPairsChecked": 43656,
+            "passed": true
+          },
+          "totalLengthUm": 14727.722127952893,
+          "branches": 54,
+          "activeTips": 113,
+          "liveSegments": 5358
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 7.685230229981244e-11,
+            "shaftPairsChecked": 74000,
+            "passed": true
+          },
+          "totalLengthUm": 21013.021200093248,
+          "branches": 78,
+          "activeTips": 137,
+          "liveSegments": 7640
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 7.571543392259628e-11,
+            "shaftPairsChecked": 112483,
+            "passed": true
+          },
+          "totalLengthUm": 26857.521978969242,
+          "branches": 104,
+          "activeTips": 163,
+          "liveSegments": 9792
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.3960743672214448e-10,
+            "shaftPairsChecked": 156892,
+            "passed": true
+          },
+          "totalLengthUm": 31789.940999084247,
+          "branches": 128,
+          "activeTips": 187,
+          "liveSegments": 11637
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 13329.96512429947,
+        "totalDendriteLength": 18459.975874784777,
+        "branches": 128,
+        "activeTips": 187,
+        "contacts": 79,
+        "meanDisplacement": 9.437855870218685,
+        "liveSegments": 11637
+      },
+      "counters": {
+        "collisions": 1553,
+        "collisionSteps": 3072,
+        "branches": 173,
+        "retractions": 2773,
+        "contacts": 84,
+        "wavesLaunched": 2929,
+        "waveArrivals": 2877,
+        "budsBorn": 314,
+        "budsResorbed": 151,
+        "shaftRelaxations": 1207401
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "biohybrid",
+      "seed": 1256849,
+      "config": {
+        "mode": "biohybrid",
+        "source": "immature",
+        "cellCount": 14,
+        "seed": 1256849,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0.8,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.7,
+        "membraneSupply": 1,
+        "maxSegments": 26000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 26000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 323.59277297600033,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 8.640199666842818e-12,
+            "shaftPairsChecked": 2346,
+            "passed": true
+          },
+          "totalLengthUm": 4406.354951683857,
+          "branches": 10,
+          "activeTips": 78,
+          "liveSegments": 1616
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.5693225325085223e-11,
+            "shaftPairsChecked": 14502,
+            "passed": true
+          },
+          "totalLengthUm": 10956.492617426571,
+          "branches": 54,
+          "activeTips": 121,
+          "liveSegments": 3978
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.2864379540551454e-11,
+            "shaftPairsChecked": 31819,
+            "passed": true
+          },
+          "totalLengthUm": 17231.913689416637,
+          "branches": 83,
+          "activeTips": 150,
+          "liveSegments": 6273
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 7.207745511550456e-11,
+            "shaftPairsChecked": 58999,
+            "passed": true
+          },
+          "totalLengthUm": 24553.691891669223,
+          "branches": 126,
+          "activeTips": 193,
+          "liveSegments": 8963
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 9.57243173616007e-11,
+            "shaftPairsChecked": 101778,
+            "passed": true
+          },
+          "totalLengthUm": 31827.032094112314,
+          "branches": 166,
+          "activeTips": 233,
+          "liveSegments": 11689
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 9.526957001071423e-11,
+            "shaftPairsChecked": 151550,
+            "passed": true
+          },
+          "totalLengthUm": 38340.403648327105,
+          "branches": 219,
+          "activeTips": 286,
+          "liveSegments": 14169
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 15590.81742166185,
+        "totalDendriteLength": 22749.586226665255,
+        "branches": 219,
+        "activeTips": 286,
+        "contacts": 88,
+        "meanDisplacement": 11.484984046142708,
+        "liveSegments": 14169
+      },
+      "counters": {
+        "collisions": 1252,
+        "collisionSteps": 2214,
+        "branches": 320,
+        "retractions": 5529,
+        "contacts": 90,
+        "wavesLaunched": 3380,
+        "waveArrivals": 3276,
+        "budsBorn": 529,
+        "budsResorbed": 251,
+        "shaftRelaxations": 1660770
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "culture",
+      "seed": 1361578,
+      "config": {
+        "mode": "culture",
+        "source": "precursor",
+        "cellCount": 12,
+        "seed": 1361578,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 18000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 196.48867087499983,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.3874235921539366e-12,
+            "shaftPairsChecked": 129,
+            "passed": true
+          },
+          "totalLengthUm": 833.9810399972868,
+          "branches": 1,
+          "activeTips": 59,
+          "liveSegments": 305
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.4210854715202004e-11,
+            "shaftPairsChecked": 7814,
+            "passed": true
+          },
+          "totalLengthUm": 5705.170919530743,
+          "branches": 19,
+          "activeTips": 76,
+          "liveSegments": 1924
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.034994395216927e-11,
+            "shaftPairsChecked": 25485,
+            "passed": true
+          },
+          "totalLengthUm": 11357.997989856682,
+          "branches": 57,
+          "activeTips": 114,
+          "liveSegments": 3962
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 6.866684998385608e-11,
+            "shaftPairsChecked": 51099,
+            "passed": true
+          },
+          "totalLengthUm": 17195.424610558275,
+          "branches": 86,
+          "activeTips": 143,
+          "liveSegments": 6089
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 6.684786058031023e-11,
+            "shaftPairsChecked": 91467,
+            "passed": true
+          },
+          "totalLengthUm": 24234.45115159543,
+          "branches": 126,
+          "activeTips": 183,
+          "liveSegments": 8681
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.0811618267325684e-10,
+            "shaftPairsChecked": 137183,
+            "passed": true
+          },
+          "totalLengthUm": 31009.629415544703,
+          "branches": 163,
+          "activeTips": 220,
+          "liveSegments": 11221
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 12973.226891615885,
+        "totalDendriteLength": 18036.40252392882,
+        "branches": 163,
+        "activeTips": 220,
+        "contacts": 27,
+        "meanDisplacement": 40.0790266744869,
+        "liveSegments": 11221
+      },
+      "counters": {
+        "collisions": 548,
+        "collisionSteps": 8139,
+        "branches": 223,
+        "retractions": 2582,
+        "contacts": 33,
+        "wavesLaunched": 2700,
+        "waveArrivals": 2644,
+        "budsBorn": 374,
+        "budsResorbed": 175,
+        "shaftRelaxations": 1224436
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "organoid",
+      "seed": 1361578,
+      "config": {
+        "mode": "organoid",
+        "source": "precursor",
+        "cellCount": 18,
+        "seed": 1361578,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.45,
+        "stiffness": 100,
+        "guidance": 0.45,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 26000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 26000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 214.6741471239999,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.183231456205249e-12,
+            "shaftPairsChecked": 10,
+            "passed": true
+          },
+          "totalLengthUm": 963.8745942345352,
+          "branches": 0,
+          "activeTips": 90,
+          "liveSegments": 423
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.5575096767861396e-11,
+            "shaftPairsChecked": 2713,
+            "passed": true
+          },
+          "totalLengthUm": 7507.117951523476,
+          "branches": 25,
+          "activeTips": 113,
+          "liveSegments": 2706
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.091837814077735e-11,
+            "shaftPairsChecked": 9243,
+            "passed": true
+          },
+          "totalLengthUm": 14754.84317632486,
+          "branches": 74,
+          "activeTips": 161,
+          "liveSegments": 5327
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.865796654485166e-11,
+            "shaftPairsChecked": 20352,
+            "passed": true
+          },
+          "totalLengthUm": 22167.81015834662,
+          "branches": 122,
+          "activeTips": 208,
+          "liveSegments": 8080
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 6.468781066359952e-11,
+            "shaftPairsChecked": 41505,
+            "passed": true
+          },
+          "totalLengthUm": 31035.860932256517,
+          "branches": 179,
+          "activeTips": 265,
+          "liveSegments": 11383
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.0629719326971099e-10,
+            "shaftPairsChecked": 62295,
+            "passed": true
+          },
+          "totalLengthUm": 39184.53412402664,
+          "branches": 239,
+          "activeTips": 323,
+          "liveSegments": 14491
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 18663.42155303128,
+        "totalDendriteLength": 20521.112570995363,
+        "branches": 239,
+        "activeTips": 323,
+        "contacts": 48,
+        "meanDisplacement": 24.65072403732427,
+        "liveSegments": 14491
+      },
+      "counters": {
+        "collisions": 3042,
+        "collisionSteps": 3922,
+        "branches": 324,
+        "retractions": 4608,
+        "contacts": 50,
+        "wavesLaunched": 4216,
+        "waveArrivals": 4072,
+        "budsBorn": 583,
+        "budsResorbed": 291,
+        "shaftRelaxations": 1730491
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "regeneration",
+      "seed": 1361578,
+      "config": {
+        "mode": "regeneration",
+        "source": "immature",
+        "cellCount": 12,
+        "seed": 1361578,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 1,
+        "branching": 0.65,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.8,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 18000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 237.84563650400005,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 7.73070496506989e-12,
+            "shaftPairsChecked": 5316,
+            "passed": true
+          },
+          "totalLengthUm": 3788.890592917246,
+          "branches": 2,
+          "activeTips": 62,
+          "liveSegments": 1386
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.6711965145077556e-11,
+            "shaftPairsChecked": 16330,
+            "passed": true
+          },
+          "totalLengthUm": 8872.570679130451,
+          "branches": 26,
+          "activeTips": 85,
+          "liveSegments": 3210
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.240074875066057e-11,
+            "shaftPairsChecked": 33032,
+            "passed": true
+          },
+          "totalLengthUm": 14176.26837826586,
+          "branches": 45,
+          "activeTips": 104,
+          "liveSegments": 5135
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 7.264588930411264e-11,
+            "shaftPairsChecked": 59481,
+            "passed": true
+          },
+          "totalLengthUm": 19906.52566788705,
+          "branches": 71,
+          "activeTips": 130,
+          "liveSegments": 7232
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 6.74162947689183e-11,
+            "shaftPairsChecked": 100506,
+            "passed": true
+          },
+          "totalLengthUm": 26307.104087848784,
+          "branches": 98,
+          "activeTips": 157,
+          "liveSegments": 9571
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.1800693755503744e-10,
+            "shaftPairsChecked": 146098,
+            "passed": true
+          },
+          "totalLengthUm": 31624.66822666589,
+          "branches": 122,
+          "activeTips": 181,
+          "liveSegments": 11548
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 11453.24698709707,
+        "totalDendriteLength": 20171.42123956882,
+        "branches": 122,
+        "activeTips": 181,
+        "contacts": 63,
+        "meanDisplacement": 10.460041890690016,
+        "liveSegments": 11548
+      },
+      "counters": {
+        "collisions": 1485,
+        "collisionSteps": 2602,
+        "branches": 154,
+        "retractions": 1689,
+        "contacts": 68,
+        "wavesLaunched": 2966,
+        "waveArrivals": 2901,
+        "budsBorn": 303,
+        "budsResorbed": 163,
+        "shaftRelaxations": 1200925
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "biohybrid",
+      "seed": 1361578,
+      "config": {
+        "mode": "biohybrid",
+        "source": "immature",
+        "cellCount": 14,
+        "seed": 1361578,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0.8,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.7,
+        "membraneSupply": 1,
+        "maxSegments": 26000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 26000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 328.05902644099996,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 8.981260180007666e-12,
+            "shaftPairsChecked": 3837,
+            "passed": true
+          },
+          "totalLengthUm": 4423.14768328316,
+          "branches": 8,
+          "activeTips": 77,
+          "liveSegments": 1620
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.77351466845721e-11,
+            "shaftPairsChecked": 15101,
+            "passed": true
+          },
+          "totalLengthUm": 10597.131488028846,
+          "branches": 47,
+          "activeTips": 115,
+          "liveSegments": 3857
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.320099833421409e-11,
+            "shaftPairsChecked": 36525,
+            "passed": true
+          },
+          "totalLengthUm": 17170.29835097998,
+          "branches": 93,
+          "activeTips": 161,
+          "liveSegments": 6284
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.582023732131347e-11,
+            "shaftPairsChecked": 64643,
+            "passed": true
+          },
+          "totalLengthUm": 24398.57851331363,
+          "branches": 133,
+          "activeTips": 201,
+          "liveSegments": 8953
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 8.708411769475788e-11,
+            "shaftPairsChecked": 96608,
+            "passed": true
+          },
+          "totalLengthUm": 30670.655618234465,
+          "branches": 171,
+          "activeTips": 239,
+          "liveSegments": 11302
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.2494183465605602e-10,
+            "shaftPairsChecked": 131472,
+            "passed": true
+          },
+          "totalLengthUm": 36395.48209153896,
+          "branches": 223,
+          "activeTips": 290,
+          "liveSegments": 13499
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 14407.343116315786,
+        "totalDendriteLength": 21988.138975223173,
+        "branches": 223,
+        "activeTips": 290,
+        "contacts": 115,
+        "meanDisplacement": 10.91120722160207,
+        "liveSegments": 13499
+      },
+      "counters": {
+        "collisions": 1068,
+        "collisionSteps": 1452,
+        "branches": 304,
+        "retractions": 4389,
+        "contacts": 117,
+        "wavesLaunched": 3450,
+        "waveArrivals": 3382,
+        "budsBorn": 536,
+        "budsResorbed": 270,
+        "shaftRelaxations": 1602791
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "culture",
+      "seed": 1466307,
+      "config": {
+        "mode": "culture",
+        "source": "precursor",
+        "cellCount": 12,
+        "seed": 1466307,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 18000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 194.42570773799997,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.296918293926865e-12,
+            "shaftPairsChecked": 139,
+            "passed": true
+          },
+          "totalLengthUm": 804.4832094078042,
+          "branches": 2,
+          "activeTips": 58,
+          "liveSegments": 297
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.9326762412674725e-11,
+            "shaftPairsChecked": 7696,
+            "passed": true
+          },
+          "totalLengthUm": 5690.335849188573,
+          "branches": 25,
+          "activeTips": 80,
+          "liveSegments": 1896
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.637534635141492e-11,
+            "shaftPairsChecked": 28634,
+            "passed": true
+          },
+          "totalLengthUm": 11029.414286610143,
+          "branches": 55,
+          "activeTips": 110,
+          "liveSegments": 3784
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.581135388230905e-11,
+            "shaftPairsChecked": 56119,
+            "passed": true
+          },
+          "totalLengthUm": 16480.80458452576,
+          "branches": 101,
+          "activeTips": 156,
+          "liveSegments": 5798
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.672529030358419e-11,
+            "shaftPairsChecked": 93957,
+            "passed": true
+          },
+          "totalLengthUm": 23017.81125896882,
+          "branches": 133,
+          "activeTips": 188,
+          "liveSegments": 8213
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 9.617906471248716e-11,
+            "shaftPairsChecked": 137532,
+            "passed": true
+          },
+          "totalLengthUm": 29251.748803728282,
+          "branches": 165,
+          "activeTips": 220,
+          "liveSegments": 10548
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 12268.395243136169,
+        "totalDendriteLength": 16983.353560592113,
+        "branches": 165,
+        "activeTips": 220,
+        "contacts": 53,
+        "meanDisplacement": 40.23377495712759,
+        "liveSegments": 10548
+      },
+      "counters": {
+        "collisions": 581,
+        "collisionSteps": 7188,
+        "branches": 224,
+        "retractions": 2262,
+        "contacts": 58,
+        "wavesLaunched": 2543,
+        "waveArrivals": 2494,
+        "budsBorn": 402,
+        "budsResorbed": 195,
+        "shaftRelaxations": 1168517
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "organoid",
+      "seed": 1466307,
+      "config": {
+        "mode": "organoid",
+        "source": "precursor",
+        "cellCount": 18,
+        "seed": 1466307,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.45,
+        "stiffness": 100,
+        "guidance": 0.45,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 26000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 26000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 203.1632254949999,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.069544618483633e-12,
+            "shaftPairsChecked": 18,
+            "passed": true
+          },
+          "totalLengthUm": 973.6154316399503,
+          "branches": 0,
+          "activeTips": 90,
+          "liveSegments": 426
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.77351466845721e-11,
+            "shaftPairsChecked": 1531,
+            "passed": true
+          },
+          "totalLengthUm": 7590.797863742924,
+          "branches": 19,
+          "activeTips": 108,
+          "liveSegments": 2725
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.956301952712238e-11,
+            "shaftPairsChecked": 6402,
+            "passed": true
+          },
+          "totalLengthUm": 15230.522456814175,
+          "branches": 64,
+          "activeTips": 152,
+          "liveSegments": 5475
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.5933924159035087e-11,
+            "shaftPairsChecked": 14603,
+            "passed": true
+          },
+          "totalLengthUm": 23446.150919241343,
+          "branches": 119,
+          "activeTips": 206,
+          "liveSegments": 8492
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.1141310096718371e-10,
+            "shaftPairsChecked": 28869,
+            "passed": true
+          },
+          "totalLengthUm": 33726.17348513519,
+          "branches": 172,
+          "activeTips": 259,
+          "liveSegments": 12288
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.7826096154749393e-10,
+            "shaftPairsChecked": 52684,
+            "passed": true
+          },
+          "totalLengthUm": 43339.82521380075,
+          "branches": 233,
+          "activeTips": 320,
+          "liveSegments": 15905
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 22148.06858709855,
+        "totalDendriteLength": 21191.7566267022,
+        "branches": 233,
+        "activeTips": 320,
+        "contacts": 43,
+        "meanDisplacement": 24.995505434734017,
+        "liveSegments": 15905
+      },
+      "counters": {
+        "collisions": 3182,
+        "collisionSteps": 3959,
+        "branches": 311,
+        "retractions": 3662,
+        "contacts": 43,
+        "wavesLaunched": 4147,
+        "waveArrivals": 4054,
+        "budsBorn": 583,
+        "budsResorbed": 294,
+        "shaftRelaxations": 1767044
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "regeneration",
+      "seed": 1466307,
+      "config": {
+        "mode": "regeneration",
+        "source": "immature",
+        "cellCount": 12,
+        "seed": 1466307,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 1,
+        "branching": 0.65,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.8,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 18000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 254.7922038060003,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.6843418860808015e-12,
+            "shaftPairsChecked": 5150,
+            "passed": true
+          },
+          "totalLengthUm": 3814.480707288804,
+          "branches": 4,
+          "activeTips": 64,
+          "liveSegments": 1379
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.2282620193436742e-11,
+            "shaftPairsChecked": 16177,
+            "passed": true
+          },
+          "totalLengthUm": 8891.707880881282,
+          "branches": 23,
+          "activeTips": 80,
+          "liveSegments": 3190
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.582023732131347e-11,
+            "shaftPairsChecked": 28706,
+            "passed": true
+          },
+          "totalLengthUm": 14070.57041511393,
+          "branches": 49,
+          "activeTips": 106,
+          "liveSegments": 5071
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 6.559730536537245e-11,
+            "shaftPairsChecked": 51011,
+            "passed": true
+          },
+          "totalLengthUm": 19948.62976623269,
+          "branches": 76,
+          "activeTips": 133,
+          "liveSegments": 7198
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.0561507224338129e-10,
+            "shaftPairsChecked": 84595,
+            "passed": true
+          },
+          "totalLengthUm": 25792.807291874644,
+          "branches": 109,
+          "activeTips": 166,
+          "liveSegments": 9346
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.2073542166035622e-10,
+            "shaftPairsChecked": 122536,
+            "passed": true
+          },
+          "totalLengthUm": 31086.72966715645,
+          "branches": 132,
+          "activeTips": 189,
+          "liveSegments": 11318
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 11235.786781796414,
+        "totalDendriteLength": 19850.942885360037,
+        "branches": 132,
+        "activeTips": 189,
+        "contacts": 77,
+        "meanDisplacement": 9.753895938544323,
+        "liveSegments": 11318
+      },
+      "counters": {
+        "collisions": 1048,
+        "collisionSteps": 1143,
+        "branches": 175,
+        "retractions": 2345,
+        "contacts": 79,
+        "wavesLaunched": 2912,
+        "waveArrivals": 2775,
+        "budsBorn": 314,
+        "budsResorbed": 154,
+        "shaftRelaxations": 1161916
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "biohybrid",
+      "seed": 1466307,
+      "config": {
+        "mode": "biohybrid",
+        "source": "immature",
+        "cellCount": 14,
+        "seed": 1466307,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0.8,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.7,
+        "membraneSupply": 1,
+        "maxSegments": 26000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 26000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 351.7852849460002,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 9.663381206337363e-12,
+            "shaftPairsChecked": 4642,
+            "passed": true
+          },
+          "totalLengthUm": 4367.157171340665,
+          "branches": 7,
+          "activeTips": 75,
+          "liveSegments": 1593
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.7057467377744615e-11,
+            "shaftPairsChecked": 13152,
+            "passed": true
+          },
+          "totalLengthUm": 10441.419190676294,
+          "branches": 43,
+          "activeTips": 110,
+          "liveSegments": 3795
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.127276381244883e-11,
+            "shaftPairsChecked": 31956,
+            "passed": true
+          },
+          "totalLengthUm": 17068.47110625651,
+          "branches": 91,
+          "activeTips": 158,
+          "liveSegments": 6234
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.4788172342814505e-11,
+            "shaftPairsChecked": 62715,
+            "passed": true
+          },
+          "totalLengthUm": 24314.07316006598,
+          "branches": 130,
+          "activeTips": 197,
+          "liveSegments": 8926
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.1823431123048067e-10,
+            "shaftPairsChecked": 102942,
+            "passed": true
+          },
+          "totalLengthUm": 31289.78254856907,
+          "branches": 178,
+          "activeTips": 245,
+          "liveSegments": 11552
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.0390976967755705e-10,
+            "shaftPairsChecked": 155315,
+            "passed": true
+          },
+          "totalLengthUm": 37341.64048679253,
+          "branches": 218,
+          "activeTips": 285,
+          "liveSegments": 13855
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 13871.838257977319,
+        "totalDendriteLength": 23469.802228815213,
+        "branches": 218,
+        "activeTips": 285,
+        "contacts": 88,
+        "meanDisplacement": 10.516264438890857,
+        "liveSegments": 13855
+      },
+      "counters": {
+        "collisions": 1235,
+        "collisionSteps": 2773,
+        "branches": 299,
+        "retractions": 4460,
+        "contacts": 91,
+        "wavesLaunched": 3367,
+        "waveArrivals": 3278,
+        "budsBorn": 516,
+        "budsResorbed": 252,
+        "shaftRelaxations": 1671451
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "culture",
+      "seed": 1571036,
+      "config": {
+        "mode": "culture",
+        "source": "precursor",
+        "cellCount": 12,
+        "seed": 1571036,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 18000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 183.94117977500008,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.069544618483633e-12,
+            "shaftPairsChecked": 108,
+            "passed": true
+          },
+          "totalLengthUm": 791.7274802951431,
+          "branches": 0,
+          "activeTips": 57,
+          "liveSegments": 280
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.2391865311656147e-11,
+            "shaftPairsChecked": 6195,
+            "passed": true
+          },
+          "totalLengthUm": 5713.2139935458445,
+          "branches": 12,
+          "activeTips": 69,
+          "liveSegments": 1901
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.955857780762017e-11,
+            "shaftPairsChecked": 21465,
+            "passed": true
+          },
+          "totalLengthUm": 11307.10832554008,
+          "branches": 46,
+          "activeTips": 103,
+          "liveSegments": 3862
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.934452929068357e-11,
+            "shaftPairsChecked": 42639,
+            "passed": true
+          },
+          "totalLengthUm": 17304.583610006244,
+          "branches": 91,
+          "activeTips": 148,
+          "liveSegments": 6031
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 6.991740519879386e-11,
+            "shaftPairsChecked": 78554,
+            "passed": true
+          },
+          "totalLengthUm": 24676.652887809756,
+          "branches": 125,
+          "activeTips": 182,
+          "liveSegments": 8750
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 9.379164112033322e-11,
+            "shaftPairsChecked": 121757,
+            "passed": true
+          },
+          "totalLengthUm": 31677.15050015891,
+          "branches": 164,
+          "activeTips": 221,
+          "liveSegments": 11393
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 13806.644868263023,
+        "totalDendriteLength": 17870.50563189589,
+        "branches": 164,
+        "activeTips": 221,
+        "contacts": 34,
+        "meanDisplacement": 44.8284230566177,
+        "liveSegments": 11393
+      },
+      "counters": {
+        "collisions": 568,
+        "collisionSteps": 5412,
+        "branches": 214,
+        "retractions": 1748,
+        "contacts": 38,
+        "wavesLaunched": 2599,
+        "waveArrivals": 2567,
+        "budsBorn": 398,
+        "budsResorbed": 196,
+        "shaftRelaxations": 1219248
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "organoid",
+      "seed": 1571036,
+      "config": {
+        "mode": "organoid",
+        "source": "precursor",
+        "cellCount": 18,
+        "seed": 1571036,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.45,
+        "stiffness": 100,
+        "guidance": 0.45,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.55,
+        "membraneSupply": 1,
+        "maxSegments": 26000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 26000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 197.14533747299993,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.865352482534945e-12,
+            "shaftPairsChecked": 12,
+            "passed": true
+          },
+          "totalLengthUm": 831.0688748953177,
+          "branches": 0,
+          "activeTips": 90,
+          "liveSegments": 365
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 9.777068044058979e-12,
+            "shaftPairsChecked": 383,
+            "passed": true
+          },
+          "totalLengthUm": 6559.3807723305345,
+          "branches": 19,
+          "activeTips": 108,
+          "liveSegments": 2364
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.0245140553452075e-11,
+            "shaftPairsChecked": 2566,
+            "passed": true
+          },
+          "totalLengthUm": 12913.26178304083,
+          "branches": 60,
+          "activeTips": 149,
+          "liveSegments": 4651
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.149569576838985e-11,
+            "shaftPairsChecked": 8250,
+            "passed": true
+          },
+          "totalLengthUm": 19383.54739516804,
+          "branches": 115,
+          "activeTips": 203,
+          "liveSegments": 7033
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.1164047464262694e-10,
+            "shaftPairsChecked": 19675,
+            "passed": true
+          },
+          "totalLengthUm": 27689.37457938856,
+          "branches": 170,
+          "activeTips": 258,
+          "liveSegments": 10120
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 9.890754881780595e-11,
+            "shaftPairsChecked": 34527,
+            "passed": true
+          },
+          "totalLengthUm": 35139.18727883362,
+          "branches": 209,
+          "activeTips": 296,
+          "liveSegments": 12946
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 18229.27453741874,
+        "totalDendriteLength": 16909.912741414875,
+        "branches": 209,
+        "activeTips": 296,
+        "contacts": 38,
+        "meanDisplacement": 24.899549170084786,
+        "liveSegments": 12946
+      },
+      "counters": {
+        "collisions": 2145,
+        "collisionSteps": 4745,
+        "branches": 290,
+        "retractions": 3518,
+        "contacts": 41,
+        "wavesLaunched": 4155,
+        "waveArrivals": 4085,
+        "budsBorn": 516,
+        "budsResorbed": 247,
+        "shaftRelaxations": 1519218
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "regeneration",
+      "seed": 1571036,
+      "config": {
+        "mode": "regeneration",
+        "source": "immature",
+        "cellCount": 12,
+        "seed": 1571036,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 1,
+        "branching": 0.65,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.8,
+        "membraneSupply": 1,
+        "maxSegments": 18000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 18000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 248.98748028400027,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 7.048583938740194e-12,
+            "shaftPairsChecked": 5557,
+            "passed": true
+          },
+          "totalLengthUm": 3792.145797921273,
+          "branches": 5,
+          "activeTips": 65,
+          "liveSegments": 1388
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 2.523847797419876e-11,
+            "shaftPairsChecked": 17825,
+            "passed": true
+          },
+          "totalLengthUm": 9269.895658508629,
+          "branches": 30,
+          "activeTips": 89,
+          "liveSegments": 3366
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 6.195932655828074e-11,
+            "shaftPairsChecked": 31957,
+            "passed": true
+          },
+          "totalLengthUm": 14913.360591977904,
+          "branches": 48,
+          "activeTips": 107,
+          "liveSegments": 5431
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 4.5361048250924796e-11,
+            "shaftPairsChecked": 60223,
+            "passed": true
+          },
+          "totalLengthUm": 21529.563163024206,
+          "branches": 77,
+          "activeTips": 136,
+          "liveSegments": 7834
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 6.59383658785373e-11,
+            "shaftPairsChecked": 98926,
+            "passed": true
+          },
+          "totalLengthUm": 27396.33345437359,
+          "branches": 95,
+          "activeTips": 153,
+          "liveSegments": 9992
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.226680979016237e-10,
+            "shaftPairsChecked": 152818,
+            "passed": true
+          },
+          "totalLengthUm": 32679.327864848954,
+          "branches": 117,
+          "activeTips": 175,
+          "liveSegments": 11950
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 14007.200455136375,
+        "totalDendriteLength": 18672.12740971258,
+        "branches": 117,
+        "activeTips": 175,
+        "contacts": 68,
+        "meanDisplacement": 7.4955512530626685,
+        "liveSegments": 11950
+      },
+      "counters": {
+        "collisions": 1574,
+        "collisionSteps": 2167,
+        "branches": 174,
+        "retractions": 3460,
+        "contacts": 72,
+        "wavesLaunched": 2916,
+        "waveArrivals": 2856,
+        "budsBorn": 278,
+        "budsResorbed": 127,
+        "shaftRelaxations": 1200005
+      },
+      "exactRoundTrip": true,
+      "passed": true
+    },
+    {
+      "mode": "biohybrid",
+      "seed": 1571036,
+      "config": {
+        "mode": "biohybrid",
+        "source": "immature",
+        "cellCount": 14,
+        "seed": 1571036,
+        "dtHours": 0.05,
+        "actin": 1,
+        "microtubules": 1,
+        "tension": 1,
+        "adhesion": 0.65,
+        "stiffness": 100,
+        "guidance": 0.8,
+        "branching": 1,
+        "noise": 0.65,
+        "growthPulses": 1,
+        "selfAvoidance": 1,
+        "fasciculation": 0.7,
+        "membraneSupply": 1,
+        "maxSegments": 26000,
+        "maxTipsPerCell": 32,
+        "motility": 1,
+        "contractility": 1,
+        "cortexStiffness": 1,
+        "bending": 1,
+        "cellAdhesion": 0.35,
+        "contactInhibition": 1,
+        "density": 1,
+        "cultureLayout": "plain"
+      },
+      "requestedHours": 72,
+      "reachedHours": 72,
+      "limits": {
+        "reached": false,
+        "reason": null,
+        "segmentCap": 26000,
+        "tipCap": 32,
+        "tipLimitedCount": 0
+      },
+      "wallSeconds": 338.0814583419999,
+      "checkpoints": [
+        {
+          "timeHours": 12,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 6.934897101018578e-12,
+            "shaftPairsChecked": 4646,
+            "passed": true
+          },
+          "totalLengthUm": 4453.299736181912,
+          "branches": 9,
+          "activeTips": 78,
+          "liveSegments": 1630
+        },
+        {
+          "timeHours": 24,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 3.3310243452433497e-11,
+            "shaftPairsChecked": 16540,
+            "passed": true
+          },
+          "totalLengthUm": 10671.587688806383,
+          "branches": 46,
+          "activeTips": 115,
+          "liveSegments": 3869
+        },
+        {
+          "timeHours": 36,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 6.434675015043467e-11,
+            "shaftPairsChecked": 35871,
+            "passed": true
+          },
+          "totalLengthUm": 17339.561565264,
+          "branches": 93,
+          "activeTips": 162,
+          "liveSegments": 6334
+        },
+        {
+          "timeHours": 48,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.0249582272954285e-11,
+            "shaftPairsChecked": 68162,
+            "passed": true
+          },
+          "totalLengthUm": 24459.776303393068,
+          "branches": 126,
+          "activeTips": 195,
+          "liveSegments": 8967
+        },
+        {
+          "timeHours": 60,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 5.263700586510822e-11,
+            "shaftPairsChecked": 107134,
+            "passed": true
+          },
+          "totalLengthUm": 30971.58892170108,
+          "branches": 174,
+          "activeTips": 243,
+          "liveSegments": 11425
+        },
+        {
+          "timeHours": 72,
+          "audit": {
+            "topology": 0,
+            "solids": 0,
+            "foreignSomata": 0,
+            "foreignShafts": 0,
+            "boundaries": 0,
+            "taper": 0,
+            "budgetResidualUm2": 1.1664269550237805e-10,
+            "shaftPairsChecked": 147234,
+            "passed": true
+          },
+          "totalLengthUm": 36604.13369160071,
+          "branches": 208,
+          "activeTips": 276,
+          "liveSegments": 13570
+        }
+      ],
+      "metrics": {
+        "totalAxonLength": 13742.752969940739,
+        "totalDendriteLength": 22861.380721659978,
+        "branches": 208,
+        "activeTips": 276,
+        "contacts": 107,
+        "meanDisplacement": 9.965254362210294,
+        "liveSegments": 13570
+      },
+      "counters": {
+        "collisions": 1052,
+        "collisionSteps": 1141,
+        "branches": 287,
+        "retractions": 4761,
+        "contacts": 110,
+        "wavesLaunched": 3335,
+        "waveArrivals": 3300,
+        "budsBorn": 494,
+        "budsResorbed": 248,
+        "shaftRelaxations": 1619529
+      },
+      "exactRoundTrip": true,
+      "passed": true
     }
   ],
-  "completed": false,
-  "allAcceptancePassed": false,
+  "completed": true,
+  "allAcceptancePassed": true,
   "scope": "Numerical robustness across seeds and four declared environments. Geometry checks are discrete checkpoints, not continuous-time proof or a match to recorded neurons. Capacity-limited runs retain their actual reached time."
 }

@@ -22,10 +22,10 @@ The source-hashed reports are the authoritative numerical record:
 
 The cohort requests 72 model hours for each of 64 independently seeded runs,
 with full-tree audits every 12 hours. It checks connectivity, obstacles, foreign
-somata and shafts, bounds, taper envelopes, material accounting, and exact JSON
-state restoration. The source hashes include the runner. A failed run is
-recorded explicitly and stops the study; incomplete or stale reports cannot pass
-the build verifier. These are discrete numerical checks, not biological data.
+somata and shafts, bounds, taper envelopes and material accounting, plus exact
+JSON state restoration at the end of each run. The source hashes include the
+runner. Failed, interrupted, incomplete or stale studies cannot pass the build
+verifier. These are discrete numerical checks, not biological data.
 
 Two failures discovered during this study now have constructed regressions:
 
@@ -59,6 +59,9 @@ The integrated laboratory was inspected in the cloud Chrome browser:
   Cell framing includes the complete, unequal arbor; cell isolation works.
 - Pause, reset, six-hour advance, parameter application, obstacle selection,
   and JSON import were exercised through the interface.
+- All four environment selectors initialize their declared populations. Hosted
+  six-hour advances complete in regeneration and biohybrid modes, and the
+  organoid view reaches 12 hours with 18 cells.
 - Publisher reference footage and the local computed motion example load and
   play. The latter is explicitly labeled as accelerated model output.
 - Structural rendering recovers through the software fallback when WebGL is
@@ -112,4 +115,27 @@ exactly the same states. Regenerating the computed motion sequence produced
 400 byte-identical PNG frames, confirming that the shipped movie still depicts
 the final implementation.
 
-The final numerical/cohort and published-preview results are pending completion.
+All three JSON reports are shipped as static evidence routes and linked from
+the methods page. The build verifier compares them with the input reports, so a
+branch preview cannot silently link numerical results from a different version
+on the repository's main branch.
+
+The regenerated numerical reports pass **21 neurite/population gates** and
+**13 mechanical gates**, with all recorded source hashes current. The exact
+organoid seed that exposed the moving-root error also completes 72 hours with
+zero violations at all six checkpoints.
+
+All **64 cohort runs** completed **72 model hours**, with **384 passing full-tree
+checkpoints**, no capacity stops and exact final-state JSON restoration in every
+run. No audited topology, solid, foreign-soma, foreign-shaft, boundary or taper
+violation was found. The largest membrane-ledger residual was
+**2.013e-10 µm²**, below the declared `1e-6 µm²` threshold. All recorded source
+hashes remain current.
+
+The combined build, including the current main-branch device updates, passes
+the Cell Growth, Biohybrid, Cortex, cochlear and both Finger Atlas artifact
+verifiers. The Cell Growth gate verifies all 34 numerical gates, all 64 runs,
+the compiled worker and all three exact-build evidence routes.
+
+The final GitHub checks and published-preview verification are recorded in
+[PR #356](https://github.com/corbins-cryo-pod/buildthesimulation/pull/356).

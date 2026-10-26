@@ -12,6 +12,10 @@ const [index, methods, directory, reportText, mechanicsText, cohortText] = await
   read('src/data/cell-growth-cohort-validation.json'),
 ]);
 const report = JSON.parse(reportText), mechanics = JSON.parse(mechanicsText), cohort = JSON.parse(cohortText);
+for (const [name, evidence] of [['cell-growth-validation', report], ['cell-growth-mechanics-validation', mechanics], ['cell-growth-cohort-validation', cohort]]) {
+  assert.deepEqual(JSON.parse(await read(`dist/simulations/cell-growth/evidence/${name}.json`)), evidence, 'Published evidence must match the reports included in this build.');
+  assert.ok(methods.includes(`/simulations/cell-growth/evidence/${name}.json`), 'Methods must link the same deployment’s evidence.');
+}
 assert.match(index, /Cell Growth Laboratory/);
 assert.match(index, /simulations\/cell-growth\/methods\//);
 assert.match(directory, /href="\/simulations\/cell-growth\/"/);
