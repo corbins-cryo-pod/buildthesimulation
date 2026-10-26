@@ -64,7 +64,9 @@ jobs:
       - name: Reproduce the independent physics reference
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         run: |
-          python scripts/prima-reference/physics_reference.py --check
+          # Keep the BLAS kernel reproducible across hosted runner CPUs while
+          # exercising both NumPy dispatch paths. Exact nonadaptive gates remain.
+          OPENBLAS_CORETYPE=Haswell python scripts/prima-reference/physics_reference.py --check
           OPENBLAS_CORETYPE=Haswell NPY_DISABLE_CPU_FEATURES=AVX2,FMA3,AVX512F python scripts/prima-reference/physics_reference.py --check
       - name: Verify numerical models and complete experiments
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
