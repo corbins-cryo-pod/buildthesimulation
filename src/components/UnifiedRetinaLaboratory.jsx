@@ -1506,6 +1506,12 @@ export default function UnifiedRetinaLaboratory() {
               registers every device and response; the conductive solvers retain
               their documented planar domains.
             </p>
+            <p>
+              Implant parts share one surface: a flat PRIMA plate or a curved
+              electrical array. Close-up views crop the implant at the tissue
+              window. Gap is referenced at placement; tissue displacement around
+              an implant is not simulated. Hide Device to inspect obscured cells.
+            </p>
           </div>
           <div class="rtl-pipeline">
             <span>Scene</span>

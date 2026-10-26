@@ -225,6 +225,13 @@ export async function verifyRetinaBrowser(mode = "electrical") {
       JSON.stringify(graphics),
     );
     await capture(mode + "-desktop.png");
+    // Preserve side-on and en-face evidence of the assembled implant, not just
+    // the initial perspective that can conceal detached contacts or backing.
+    for (const view of ['section', 'plan', 'whole', 'tissue']) {
+      await evaluate(`document.querySelector('[data-rtl-view="${view}"]').click();true`);
+      await pause(350);
+      await capture(mode + '-assembly-' + view + '.png');
+    }
     // Native keyboard events, not programmatic state mutation, verify immediate invalidation.
     const field =
         mode === "photovoltaic" ? "photovoltaic.gapUm" : "electrical.gapUm",

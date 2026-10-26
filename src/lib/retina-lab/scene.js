@@ -9,8 +9,7 @@ import {
   population,
   cellWorld,
 } from "./anatomy.mjs";
-import { createPrimaGeometry } from "../prima/geometry.mjs";
-import { generateContacts } from "../retinal-implant/model.mjs";
+import { buildImplantGeometry, microscopeClipPlanes } from "./implant-geometry.mjs";
 import { createFallback } from "./fallback.js";
 
 const point = (x, y, depth = 0) =>
@@ -169,6 +168,7 @@ export function createScene(
   } catch {
     return createFallback(host, { onSelect });
   }
+  renderer.localClippingEnabled = true;
   renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.6));
   renderer.setClearColor("#151b1c");
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -545,102 +545,15 @@ export function createScene(
     );
   }
   function buildDevice(c, result) {
-    pickable = [];
-    const pv = c.modality === "photovoltaic",
-      whole = latest.view === "whole",
-      { x: cx, y: cy } = center();
-    if (c.modality === "optogenetic") return;
-    const contacts = pv
-      ? createPrimaGeometry(c.photovoltaic).pixels.map((p) => ({
-          ...p,
-          ...placePoint(p, c.placement),
-          radiusUm: c.photovoltaic.activeRadiusUm,
-        }))
-      : (result?.electrical?.contacts ??
-        c.customContacts?.map((p) => ({
-          ...p,
-          ...placePoint(p, c.placement),
-        })) ??
-        generateContacts({ ...c.electrical, ...c.placement }));
-    const depthAt = (x, y) =>
-      pv
-        ? layersAt(x, y).find((l) => l.id === "INL").bottom +
-          c.photovoltaic.gapUm
-        : -c.electrical.gapUm;
-    const depth = depthAt(c.placement.xUm, c.placement.yUm),
-      span = pv
-        ? 2000
-        : Math.max(c.electrical.cols * c.electrical.pitchUm, 1000),
-      height = pv
-        ? 2000
-        : Math.max(c.electrical.rows * c.electrical.pitchUm, 1000);
-    const visible = whole
-      ? contacts
-      : contacts.filter(
-          (p) => Math.abs(p.xUm - cx) < 530 && Math.abs(p.yUm - cy) < 350,
-        );
-    const board = new THREE.Mesh(
-      new THREE.BoxGeometry(
-        (whole ? span : Math.min(span, 1000)) / 1000,
-        (whole ? height : Math.min(height, 650)) / 1000,
-        pv ? 0.03 : 0.015,
-      ),
-      mat(pv ? "#2b343f" : "#6c7c74", {
-        transparent: !pv,
-        opacity: pv ? 1 : 0.22,
-        metalness: pv ? 0.5 : 0.1,
-      }),
-    );
-    board.position.copy(
-      point(
-        whole ? c.placement.xUm : cx,
-        whole ? c.placement.yUm : cy,
-        depth + (pv ? 15 : -8),
-      ),
-    );
-    board.rotation.z = (c.placement.rotationDeg * Math.PI) / 180;
-    groups.device.add(board);
-    const outline = [];
-    for (const p of visible) {
-      const z = depthAt(p.xUm, p.yUm),
-        mesh = new THREE.Mesh(
-          new THREE.CylinderGeometry(
-            p.radiusUm / 1000,
-            p.radiusUm / 1000,
-            0.003,
-            whole ? 20 : 32,
-          ),
-          mat(pv ? "#dac797" : "#d4c7aa", { metalness: 0.75, roughness: 0.25 }),
-        );
-      mesh.rotation.x = Math.PI / 2;
-      mesh.position.copy(point(p.xUm, p.yUm, z));
-      mesh.userData.contactId = p.id;
-      groups.device.add(mesh);
-      pickable.push(mesh);
-      if (pv) {
-        const local = createPrimaGeometry().pixels.find((q) => q.id === p.id);
-        for (let i = 0; i < 6; i++) {
-          const a = placePoint(local.vertices[i], c.placement),
-            b = placePoint(local.vertices[(i + 1) % 6], c.placement);
-          outline.push([[a.xUm, a.yUm, z], [b.xUm, b.yUm, z], 1.5]);
-        }
-        for (const side of [-1, 1]) {
-          const tile = new THREE.Mesh(
-              new THREE.BoxGeometry(0.026, 0.044, 0.001),
-              mat("#5a6381", { metalness: 0.6, roughness: 0.24 }),
-            ),
-            xy = placePoint(
-              { xUm: local.xUm + side * 24, yUm: local.yUm },
-              c.placement,
-            );
-          tile.position.copy(point(xy.xUm, xy.yUm, z - 1));
-          tile.rotation.z = (c.placement.rotationDeg * Math.PI) / 180;
-          groups.device.add(tile);
-        }
-      }
-    }
-    segments(groups.device, outline, "#9e998b");
+    const { x, y } = center();
+    const assembly = buildImplantGeometry(c, {
+      contacts: result?.electrical?.contacts,
+      clipPlanes: latest.view === "whole" ? [] : microscopeClipPlanes(x, y),
+    });
+    groups.device.add(assembly.group);
+    pickable = assembly.pickable;
   }
+
   function overlay(c, result) {
     clear(groups.overlay);
     if (!result || latest.overlay === "none") return;
@@ -874,7 +787,9 @@ export function createScene(
       drag = null;
       controls.enabled = true;
     } else {
-      const hits = ray.intersectObjects(pickable);
+      const hits = groups.device.visible ? ray.intersectObjects(pickable).filter(hit =>
+        (hit.object.material.clippingPlanes ?? []).every(p => p.distanceToPoint(hit.point) >= 0)
+      ) : [];
       if (hits.length) onSelect(hits[0].object.userData.contactId);
     }
   };
