@@ -2,6 +2,15 @@ name: Verify retinal laboratory
 on:
   pull_request:
     paths:
+      - 'src/lib/retina-lab/**'
+      - 'src/components/UnifiedRetinaLaboratory.jsx'
+      - 'src/styles/retina-lab.css'
+      - 'tests/retina-unified.mjs'
+      - 'tests/helpers/retina-browser-harness.mjs'
+      - 'docs/retina-lab/**'
+      - 'src/data/simulations.js'
+      - 'src/lib/discovery-index.js'
+      - 'public/_redirects'
       - 'src/lib/retinal-implant/**'
       - 'src/components/RetinalImplantLaboratory.jsx'
       - 'src/styles/retinal-implant.css'
@@ -51,7 +60,7 @@ jobs:
           git diff --exit-code -- public/assets/retinal-implant tests/fixtures/retinal-percept tests/fixtures/retinal-field/independent-reference.json
       - name: Verify complete numerical experiments
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
-        run: node --test tests/retinal-field.mjs tests/retinal-percept.mjs tests/retinal-experiment.mjs
+        run: node --test tests/retinal-field.mjs tests/retinal-percept.mjs tests/retinal-experiment.mjs tests/retina-unified.mjs
       - name: Verify real workers, WebGL and responsive controls
         if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
         env:
