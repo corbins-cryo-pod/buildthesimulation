@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import * as THREE from 'three';
 import { coneSurface, VIEW_MODES } from '../../lib/cell-growth/render-geometry.js';
+import { shaftProfile, wavePosition } from '../../lib/cell-growth/morphogenesis.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 const AXON = 0x8ecfc5;
@@ -85,9 +86,18 @@ export default function GrowthScene({ state, selectedCell, selectedTip, onSelect
     controls.enableDamping = true; controls.dampingFactor = .12; controls.minDistance = 12; controls.maxDistance = 4000;
     const cellsGroup = new THREE.Group(), conesGroup = new THREE.Group(), forcesGroup = new THREE.Group(), contactGroup = new THREE.Group();
     scene.add(cellsGroup, conesGroup, forcesGroup, contactGroup);
-    const rodGeometry = new THREE.CylinderGeometry(.996, 1, 1, 10, 1);
+    const rodGeometry = new THREE.CylinderGeometry(1, 1, 1, 10, 1);
+    rodGeometry.setAttribute('radiusRatio',new THREE.InstancedBufferAttribute(new Float32Array(30000).fill(1),1));
     const rods = new THREE.InstancedMesh(rodGeometry, new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .48, metalness: .03, transparent: true, opacity: .9 }), 30000);
     rods.instanceMatrix.setUsage(THREE.DynamicDrawUsage); rods.count = 0; rods.frustumCulled = false;
+    rods.material.roughness=.78;rods.material.metalness=0;
+    rods.material.onBeforeCompile=shader=>{
+      shader.vertexShader='attribute float radiusRatio;\n'+shader.vertexShader;
+      // Match the normals to the frustum slope. Instance normal scaling then
+      // accounts for the segment's physical length and proximal radius.
+      shader.vertexShader=shader.vertexShader.replace('#include <beginnormal_vertex>','#include <beginnormal_vertex>\n objectNormal.y += (1.0 - radiusRatio) * length(objectNormal.xz);');
+      shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n transformed.xz *= mix(1.0, radiusRatio, position.y + 0.5);');
+    };
     const cores = new THREE.InstancedMesh(rodGeometry.clone(), new THREE.MeshBasicMaterial({ color: 0xf4e4ad, transparent: true, opacity: .85 }), 30000);
     cores.instanceMatrix.setUsage(THREE.DynamicDrawUsage); cores.count = 0; cores.frustumCulled = false;
     const joints = new THREE.InstancedMesh(new THREE.SphereGeometry(1,10,7), rods.material.clone(),30000);
@@ -144,14 +154,15 @@ export default function GrowthScene({ state, selectedCell, selectedTip, onSelect
     cores.material.color.set(theme.core);
     for(const [id,entry] of cellCache)if(!state.cells.some(c=>c.id===id)||isolate&&id!==selectedCell){cellsGroup.remove(entry.group);dispose(entry.group);cellCache.delete(id);}
     const matrix = new THREE.Matrix4(), quaternion = new THREE.Quaternion(), up = new THREE.Vector3(0, 1, 0), scale = new THREE.Vector3();
-    const segments = state.segments.filter(s => s.alive !== false && (!isolate || s.cellId === selectedCell));
+    const segments = state.segments.filter(s => s.alive !== false && (!isolate || s.cellId === selectedCell)),profiles=shaftProfile(state);
     const visibleSegments = segments.slice(0, 30000);
     api.current.segmentMap = visibleSegments;
     const selectedColor = new THREE.Color(0xffecc1);
     for (let index = 0; index < visibleSegments.length; index++) {
       const segment = visibleSegments[index], start = asVector(segment.start), end = asVector(segment.end), direction = end.clone().sub(start), length = direction.length();
       quaternion.setFromUnitVectors(up, length > 1e-8 ? direction.normalize() : up);
-      const r = Math.max(.08, segment.radius * thickness);
+      const profile=profiles.get(segment.id),r=Math.max(.05,(inspectionMode==='mechanics'?segment.radius:profile.r0)*thickness),endRadius=Math.max(.05,(inspectionMode==='mechanics'?segment.radius:profile.r1)*thickness);
+      rods.geometry.attributes.radiusRatio.setX(index,endRadius/r);
       scale.set(r, Math.max(.0001, length), r);
       matrix.compose(start.clone().add(end).multiplyScalar(.5), quaternion, scale); rods.setMatrixAt(index, matrix);
       const color = colorFor(segment, colorMode);
@@ -159,9 +170,10 @@ export default function GrowthScene({ state, selectedCell, selectedTip, onSelect
       else if (segment.cellId === selectedCell) color.lerp(selectedColor, .08);
       if(inspectionMode==='brightfield')color.set(0x7f8e82);
       rods.setColorAt(index, color);joints.setColorAt(index,color);
-      matrix.compose(end,new THREE.Quaternion(),new THREE.Vector3(r,r,r));joints.setMatrixAt(index,matrix);
+      matrix.compose(end,new THREE.Quaternion(),new THREE.Vector3(endRadius,endRadius,endRadius));joints.setMatrixAt(index,matrix);
       scale.set(r * .23, Math.max(.0001, length), r * .23); matrix.compose(start.clone().add(end).multiplyScalar(.5), quaternion, scale); cores.setMatrixAt(index, matrix);
     }
+    rods.geometry.attributes.radiusRatio.needsUpdate=true;
     joints.count=visibleSegments.length;joints.instanceMatrix.needsUpdate=true;if(joints.instanceColor)joints.instanceColor.needsUpdate=true;
     rods.count = visibleSegments.length; cores.count = showCytoskeleton ? visibleSegments.length : 0;
     rods.instanceMatrix.needsUpdate = true; if (rods.instanceColor) rods.instanceColor.needsUpdate = true; cores.instanceMatrix.needsUpdate = true;
@@ -172,7 +184,7 @@ export default function GrowthScene({ state, selectedCell, selectedTip, onSelect
       if(!entry){
         const group=new THREE.Group(),geo=new THREE.BufferGeometry();
         geo.setAttribute('position',new THREE.Float32BufferAttribute(m.vertices.flat(),3));geo.setAttribute('color',new THREE.Float32BufferAttribute(new Float32Array(m.vertices.length*3),3));geo.setIndex(m.triangles.flat());
-        const material=new THREE.MeshPhysicalMaterial({color:0xffffff,vertexColors:true,roughness:.4,metalness:0,transparent:true,opacity:theme.opacity,side:THREE.DoubleSide,depthWrite:false,clearcoat:.35});
+        const material=new THREE.MeshPhysicalMaterial({color:0xffffff,vertexColors:true,roughness:.82,metalness:0,transparent:true,opacity:theme.opacity,side:THREE.DoubleSide,depthWrite:false,clearcoat:0});
         const mesh=new THREE.Mesh(geo,material);mesh.userData={cellId:cell.id};group.add(mesh);
         const nucleus=new THREE.Mesh(new THREE.SphereGeometry(1,32,24),new THREE.MeshStandardMaterial({roughness:.48,transparent:true,opacity:.84}));nucleus.userData={cellId:cell.id};group.add(nucleus);
         const internal=new THREE.Group();group.add(internal);cellsGroup.add(group);entry={group,mesh,nucleus,internal};cellCache.set(cell.id,entry);
@@ -203,6 +215,17 @@ export default function GrowthScene({ state, selectedCell, selectedTip, onSelect
         for(const i of m.contactVertices||[]){const point=new THREE.Mesh(new THREE.SphereGeometry(.25,6,4),new THREE.MeshBasicMaterial({color:0xee9079}));point.position.copy(asVector(m.vertices[i]));internal.add(point);}
         if(selected&&cell.mechanics){const traction=asVector(cell.mechanics.traction),mag=traction.length();if(mag>1e-8)internal.add(new THREE.ArrowHelper(traction.normalize(),asVector(cell.position),Math.min(20,mag*.018),0x8bd4b7,1.8,1));}
       }
+    }
+    for(const bud of state.buds||[]){
+      if(bud.length<.02||isolate&&bud.cellId!==selectedCell)continue;
+      const a=asVector(bud.start),b=asVector(bud.end),delta=b.clone().sub(a);
+      const stalk=new THREE.Mesh(new THREE.CylinderGeometry(.08*thickness,(bud.precursor==='lamellipodium'?.3:.1)*thickness,delta.length(),6),new THREE.MeshStandardMaterial({color:theme.actin,roughness:.85,transparent:true,opacity:.65}));
+      stalk.position.copy(a.add(b).multiplyScalar(.5));stalk.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),delta.normalize());stalk.userData={cellId:bud.cellId};conesGroup.add(stalk);
+    }
+    if(showCytoskeleton)for(const wave of state.waves||[]){
+      if(isolate&&wave.cellId!==selectedCell)continue;const p=wavePosition(state,wave);if(!p)continue;
+      const marker=new THREE.Mesh(new THREE.SphereGeometry(.8,8,6),new THREE.MeshBasicMaterial({color:theme.actin,transparent:true,opacity:.72}));
+      marker.position.copy(asVector(p));marker.userData={cellId:wave.cellId};conesGroup.add(marker);
     }
     const visibleTips = state.tips.filter(t => t.active && (!isolate || t.cellId === selectedCell));
     for (const tip of visibleTips) {
@@ -240,8 +263,8 @@ export default function GrowthScene({ state, selectedCell, selectedTip, onSelect
         if ((tip.forces?.membrane || 0) > 1e-12) forcesGroup.add(new THREE.ArrowHelper(direction.clone().negate(), origin.clone().add(new THREE.Vector3(0, 1.5, 0)), backward, 0xea9f86, 2.5, 1.6));
       }
     }
-    for (const contact of (state.contacts || []).filter(c => c.candidate && c.status === 'candidate' && c.position && (!isolate || c.sourceCellId === selectedCell || c.targetCellId === selectedCell)).slice(0, 200)) {
-      const point = new THREE.Mesh(new THREE.SphereGeometry(1.5, 8, 6), new THREE.MeshBasicMaterial({ color: 0xdbbae1 }));
+    for (const contact of (state.contacts || []).filter(c => c.candidate && c.status !== 'lost' && c.position && (!isolate || c.sourceCellId === selectedCell || c.targetCellId === selectedCell)).slice(0, 200)) {
+      const point = new THREE.Mesh(new THREE.SphereGeometry(1.5, 8, 6), new THREE.MeshBasicMaterial({ color: contact.status==='functional'?0x79c8a4:contact.status==='structural'?0xd7b577:0xdbbae1 }));
       point.position.copy(asVector(contact.position)); contactGroup.add(point);
     }
   }, [state, selectedCell, selectedTip, isolate, showMembrane, showCytoskeleton, showForces, colorMode, thickness,inspectionMode,showTrails]);
@@ -253,9 +276,9 @@ export default function GrowthScene({ state, selectedCell, selectedTip, onSelect
     let center = new THREE.Vector3(), extent = 350;
     if (action === 'cell') {
       const cell = state.cells.find(c => c.id === selectedCell);
-      if (cell) center.copy(asVector(cell.position));
-      const distances = state.segments.filter(s => s.cellId === selectedCell && s.alive !== false).map(s => asVector(s.end).distanceTo(center));
-      extent = 14;
+      const points = [...(cell ? [asVector(cell.position)] : []), ...state.segments.filter(s => s.cellId === selectedCell && s.alive !== false).map(s => asVector(s.end))];
+      if (points.length) new THREE.Box3().setFromPoints(points).getCenter(center);
+      extent = Math.max(35,...points.map(point=>point.distanceTo(center)*1.12));
     } else if (action === 'tip') {
       const tip = state.tips.find(t => t.id === selectedTip) || state.tips.find(t => t.cellId === selectedCell && t.active);
       const segment = tip && state.segments.find(s => s.id === tip.segmentId);

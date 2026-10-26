@@ -269,7 +269,9 @@ test('cell-growth rewriting a short shaft preserves an obstacle-avoiding corner'
   Object.assign(segment, { start: [0, 0, 0], end: [2, 0, 0], radius: .23, kind: 'axon', alive: true });
   Object.assign(tip, { direction: [0, 0, 1], kind: 'axon', active: true, mt: 1, radius: .23 });
   cell.ageHours = 20; cell.axonRootId = 0; cell.position = [-100, 0, 0];
-  cell.membrane.lastSolveHours = 0; sim.world.obstacles = [];
+  // Freeze the deliberately relocated diagnostic soma; this test isolates a
+  // short-shaft chord rewrite, not membrane reattachment to the original mesh.
+  cell.membrane.lastSolveHours = 1e6; sim.world.obstacles = [];
   const free = serializeSimulation(sim);
   stepSimulation(free, .05);
   const proposed = free.segments[free.tips[0].segmentId].end;
