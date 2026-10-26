@@ -101,3 +101,7 @@
   .sim-hero-note { text-align: left; }
   .sim-hero-family-note { width: 100%; margin-left: 0; }
 }
+
+/* Out-specify the global centered-h1 rule and per-lab link chrome inside the masthead. */
+body .sim-hero .sim-hero-title { text-align: left !important; margin-inline: 0; }
+body .sim-hero-family a { border: 0 !important; padding: 0 !important; background: none !important; box-shadow: none !important; }
