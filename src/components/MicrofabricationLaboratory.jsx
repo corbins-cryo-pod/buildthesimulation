@@ -1,3 +1,4 @@
+import SimHero from './SimHero.jsx';
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { DEFAULT_CONFIG, STAGES, SCENARIOS, normalizeConfig, createExperiment } from '../lib/microfabrication/model.js';
 import '../styles/microfabrication.css';
@@ -251,7 +252,7 @@ export default function MicrofabricationLaboratory() {
   const passes = experiment.channels.filter(c => c.connected && !c.shortedWith?.length && c.exposedAreaUm2 > 0).length;
 
   return <section class="mf" aria-label="Microfabrication Laboratory">
-    <header class="mf-heading"><div><p class="mf-kicker">Fabrication series 01 · Flexible neural interfaces</p><h1>Microfabrication Laboratory</h1><p class="mf-intro">Build a neural electrode, one material layer at a time.</p></div><a class="mf-method-link" href="/simulations/microfabrication/methods/">Process &amp; model notes <span aria-hidden="true">↗</span></a></header>
+    <SimHero kicker="Fabrication series 01 / Flexible neural interfaces" title="Microfabrication Laboratory" intro="Build a neural electrode, one material layer at a time." links={[{ href: '/simulations/microfabrication/methods/', label: 'Process & model notes' }]} />
     <div class="mf-runbar"><div class="mf-run-select"><span class="mf-label">Experiment</span><select aria-label="Experiment scenario" value={scenario} onChange={e => chooseScenario(e.currentTarget.value)}>
       {scenario === 'custom' && <option value="custom">Custom process</option>}
       {SCENARIOS.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}

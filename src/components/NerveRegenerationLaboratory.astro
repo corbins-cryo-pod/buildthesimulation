@@ -1,4 +1,5 @@
 ---
+import SimHero from './SimHero.jsx';
 import { DEFAULT_CONFIG, MODEL_VERSION, PRESETS } from '../lib/nerve-regeneration/model.mjs';
 const sliders = [
  {key:'elongationMmDay',label:'Unimpeded elongation',unit:'mm/day',min:0,max:5,step:.1,note:'Potential arc-length advance before local environmental resistance.'},
@@ -17,7 +18,7 @@ const sliders = [
 const sweepKeys=[['elongationMmDay','Unimpeded elongation / mm per day'],['gapMm','Gap length / mm'],['distalMm','Distal distance / mm'],['delayDays','Repair delay / days'],['alignment','Track alignment / 0–1'],['schwannSupport','Schwann support / 0–1'],['supportHalfLifeDays','Distal support half-life / days'],['scar','Scar burden / 0–1']];
 ---
 <div class="nr-lab" data-nerve-regeneration>
- <header class="nr-heading"><div><span class="nr-eyebrow">Anatomy &amp; pathways / Computational laboratory</span><h1>Peripheral nerve regeneration</h1><p>Follow individual axons through degeneration, repair, distal advance and remyelination. Change the assumptions. Inspect the consequences.</p></div><nav><a href="/simulations/">All simulations</a><a href="/simulations/nerve-regeneration/methods/">Model &amp; evidence →</a></nav></header>
+ <SimHero kicker="Anatomy & pathways / Computational laboratory" title="Peripheral Nerve Regeneration" intro="Follow individual axons through degeneration, repair, distal advance and remyelination. Change the assumptions. Inspect the consequences." links={[{ href: '/simulations/', label: 'All simulations' }, { href: '/simulations/nerve-regeneration/methods/', label: 'Model & evidence' }]} />
  <div class="nr-model-note"><span class="nr-badge">Exploratory mechanistic model</span><p>Literature-informed mechanisms with explicit, adjustable assumptions. Synthetic anatomy. Outcomes describe this model; human recovery and treatment efficacy are not calibrated.</p></div>
  <section class="nr-presets" aria-label="Example experiments"><span class="nr-section-label">Start with an example</span><div>{PRESETS.map(p=><button type="button" data-nr-preset={p.id} aria-pressed="false">{p.label}</button>)}</div></section>
  <div class="nr-workspace">

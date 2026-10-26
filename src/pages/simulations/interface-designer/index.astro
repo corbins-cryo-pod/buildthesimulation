@@ -1,9 +1,10 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import SimHero from '../../../components/SimHero.jsx';
 import NeuralInterfaceDesigner from '../../../components/NeuralInterfaceDesigner.jsx';
 ---
-<Layout pageTitle="Neural interface designer" subtitle="" description="Micrometer-scale electrode layout designer with circle, square and ring contacts, array generators, automatic lead routing, multilayer concept stacks and physical-scale exports.">
-  <p class="intro">Read the guide for this tool <a href="/simulations/interface-designer/guide/">here →</a></p>
+<Layout pageTitle="Neural Interface Designer" description="Micrometer-scale electrode layout designer with circle, square and ring contacts, array generators, automatic lead routing, multilayer concept stacks and physical-scale exports." wide={true} compactHeader={true}>
+  <SimHero kicker="Design & microfabrication / Thin-film layout" title="Neural Interface Designer" intro="Create micrometer-scale electrode layouts with circle, square and ring contacts, array patterns, automatic lead routing and physical-scale exports." links={[{ href: '/simulations/interface-designer/guide/', label: 'Design guide' }]} />
   <NeuralInterfaceDesigner client:load />
   <noscript><p class="intro">The designer needs JavaScript. The <a href="/simulations/interface-designer/guide/">guide</a> works without it.</p></noscript>
 </Layout>
