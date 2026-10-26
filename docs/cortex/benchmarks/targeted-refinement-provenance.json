@@ -1,8 +1,8 @@
 {
   "schemaVersion": "cortex-targeted-provenance/1",
   "captureMode": "before-run-full-graph",
-  "capturedAt": "2026-10-18T16:03:40.014Z",
-  "verifiedAt": "2026-10-18T16:36:06.996Z",
+  "capturedAt": "2026-10-26T04:11:33.355Z",
+  "verifiedAt": "2026-10-26T05:14:19.985Z",
   "captureScope": "Full static local-import graph before study execution.",
   "importedFiles": {
     "scripts/cortex-targeted-refinement-study.mjs": "615e9ecb4f1cc5a5740af1cc8f61830ba7d7edc268b3c6814a70e203219e9338",
@@ -13,7 +13,7 @@
     "src/lib/cortex/implants.js": "fa664d2d1f812cd59937f6370785b60abf4897725f4f105c4f8a12304ccf84e2",
     "src/lib/devices/catalog.js": "d03e6ea3d2933bb9cdb17f3de6743ffcaabc320b4939150cdc7a1f2a56e54f0a",
     "src/lib/devices/models-probes.js": "bdeeaeedf06ff70caed084a7519657430236a8dfb09f96eb084e4b7b8bb9e470",
-    "src/lib/devices/models-leads.js": "760e392e83a5281757496106f14a49becd868e3531fa70b61bd87bfcde01c369",
+    "src/lib/devices/models-leads.js": "87bd16f52f683e4597bc5a4f6c9af515c28629417b3c7bbeace1a1319e178156",
     "src/lib/devices/models-surface.js": "1c161eaa826048c8bf88c3fb7527b3ae42bdba40550c1bb2aac359eaaa6ba905",
     "src/lib/devices/models-peripheral.js": "e1bcbcb39b13cdc63d81bbaa9415fb6b5da27a8a99b08e00473c93652bf6716a",
     "src/lib/devices/implant-contacts.js": "f7d54a614e07881c3bd3ccfb1fefe58e26133b80ced193fb2b4e4178a02d440e",
@@ -40,7 +40,7 @@
     "src/lib/cortex/implants.js": "fa664d2d1f812cd59937f6370785b60abf4897725f4f105c4f8a12304ccf84e2",
     "src/lib/devices/catalog.js": "d03e6ea3d2933bb9cdb17f3de6743ffcaabc320b4939150cdc7a1f2a56e54f0a",
     "src/lib/devices/models-probes.js": "bdeeaeedf06ff70caed084a7519657430236a8dfb09f96eb084e4b7b8bb9e470",
-    "src/lib/devices/models-leads.js": "760e392e83a5281757496106f14a49becd868e3531fa70b61bd87bfcde01c369",
+    "src/lib/devices/models-leads.js": "87bd16f52f683e4597bc5a4f6c9af515c28629417b3c7bbeace1a1319e178156",
     "src/lib/devices/models-surface.js": "1c161eaa826048c8bf88c3fb7527b3ae42bdba40550c1bb2aac359eaaa6ba905",
     "src/lib/devices/models-peripheral.js": "e1bcbcb39b13cdc63d81bbaa9415fb6b5da27a8a99b08e00473c93652bf6716a",
     "src/lib/devices/implant-contacts.js": "f7d54a614e07881c3bd3ccfb1fefe58e26133b80ced193fb2b4e4178a02d440e",
@@ -66,7 +66,7 @@
   "pulseHelpersUnchanged": true,
   "initialSnapshotCoverage": "Complete local import graph captured before and checked after execution.",
   "generatorSha256": "5f38f95852f4fc6483807f45f80b0122cb65809c0a778443c74fc1cfadda7744",
-  "studyReportSha256": "3f1e2a987d499b3236866c2c9aeac09a56d561de28241783332957c0f9a65d44",
+  "studyReportSha256": "16bc5a2fefe3ad03846dcac5e5349dd6661c1a977282b14a94520f3a5ef79d5d",
   "studySourceHashesMatch": true,
   "criteriaSha256": "0af69cdefbaa089c45edad62b05472d28d659cb5aed57e68721851a5c08f2dbf",
   "pass": true
