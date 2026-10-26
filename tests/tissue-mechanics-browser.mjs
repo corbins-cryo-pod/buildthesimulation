@@ -1,4 +1,4 @@
-/** Runs in CI when Chrome and npm dependencies are installed; otherwise explicitly skips. */
+/** Opt-in graphics gate, run separately from numerical tests by GitHub CI. */
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {existsSync,mkdtempSync,mkdirSync,writeFileSync,rmSync} from 'node:fs';
@@ -8,11 +8,14 @@ import {join} from 'node:path';
 import {createServer} from 'node:net';
 const chrome=['/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium'].find(existsSync);
 const available=chrome&&existsSync('node_modules/astro/astro.js');
-if(process.env.TISSUE_REQUIRE_BROWSER==='1'&&!available)throw new Error('Required browser verification cannot be skipped: install Astro and Chrome.');
+// Cloudflare's npm prebuild runs the CPU-heavy numerical pool. Merely finding
+// Chrome there must not start a competing WebGL/worker test with wall-clock limits.
+const required=process.env.TISSUE_REQUIRE_BROWSER==='1';
+if(required&&!available)throw new Error('Required browser verification cannot be skipped: install Astro and Chrome.');
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 async function port(){const s=createServer();await new Promise(r=>s.listen(0,'127.0.0.1',r));const p=s.address().port;await new Promise(r=>s.close(r));return p;}
 async function wait(fn,limit=45000){const start=Date.now();let last;while(Date.now()-start<limit){try{const value=await fn();if(value)return value;}catch(e){last=e;}await sleep(150);}throw new Error(`Timed out${last?`: ${last.message}`:''}`);}
-test('browser: both mechanics pages solve, H01 loads, controls and cleanup work',{skip:available?false:'Chrome and installed Astro required; not a numerical test failure',timeout:240000},async()=>{
+test('browser: both mechanics pages solve, H01 loads, controls and cleanup work',{skip:required?false:'Graphics CI gate; run separately with TISSUE_REQUIRE_BROWSER=1',timeout:240000},async()=>{
  const http=await port(),debug=await port(),profile=mkdtempSync(join(tmpdir(),'bts-tissue-')),errors=[];
  const artifactDir=process.env.TISSUE_QA_DIR||profile;mkdirSync(artifactDir,{recursive:true});
  const astro=spawn(process.execPath,['node_modules/astro/astro.js','dev','--host','127.0.0.1','--port',String(http)],{stdio:['ignore','pipe','pipe']});
