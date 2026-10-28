@@ -23,6 +23,8 @@ draft: false
 
 The tables use the same field framework as the other implant-device sheets. Values belong to the named study or configuration. A blank cell means the reviewed sources do not establish a value, not that the device lacks that property.
 
+The [Clinatec exoskeleton trial (NCT02550522)](/applications/174-wimagine-clinatec-exoskeleton-trial/) covers the registry record and the published exoskeleton results.
+
 ## Identity
 
 | Field | Value and source scope |

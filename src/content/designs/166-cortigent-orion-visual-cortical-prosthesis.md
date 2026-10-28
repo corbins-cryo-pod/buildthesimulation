@@ -23,7 +23,7 @@ draft: false
 
 Orion is an investigational visual cortical prosthesis: a 60-electrode array on the medial occipital lobe driven by a wirelessly powered implant and camera glasses. It is not FDA approved. This sheet comes from the ClinicalTrials.gov record and company releases, so results are company-reported and electrode geometry is left blank.
 
-Company brief: [Cortigent](/companies/24-cortigent-company-brief/).
+Company brief: [Cortigent](/companies/24-cortigent-company-brief/). The [Orion early feasibility study (NCT03344848)](/applications/175-cortigent-orion-early-feasibility-study/) covers the registry record and the reported results.
 
 ## Identity
 
