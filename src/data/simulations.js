@@ -66,6 +66,11 @@ export const simulationGroups = [
         "desc": "Grow neurons from precursor states through membrane mechanics, cytoskeletal support, branching and physical encounters. Inspect axons and dendrites in culture plates, 3D organoid environments, regeneration scaffolds and biohybrid interfaces."
       },
       {
+        "href": "/simulations/soft-neural-generator/",
+        "title": "Soft Neural Generator",
+        "desc": "Independent experimental soft-cell model: adhesive spreading, flexible internal scaffolds, local actin-like waves and exploratory neurite growth. Separate from the Cell Growth Laboratory; whole-cell crawling remains a work in progress."
+      },
+      {
         "href": "/cortex/population/",
         "title": "Cortex Population Laboratory",
         "desc": "Place distinct human neuron models in seeded random distance clouds, shells or grids. Shuffle angles, apply shared electrode stimulation, and inspect population voltage replay and recordings."
