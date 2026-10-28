@@ -2,18 +2,18 @@
   "schema": "cell-growth-mechanics-connectivity/1",
   "modelVersion": "cell-growth/4.0.0",
   "empiricalCalibration": false,
-  "runtime": "v24.22.1",
-  "wallSeconds": 451.32270520500003,
+  "runtime": "v22.23.4",
+  "wallSeconds": 287.655268883,
   "sourceSha256": {
-    "src/lib/cell-growth/engine.js": "73796f6816249e5198a3e44685240fef4fb2e4be194b993505ed6654de971cd3",
+    "src/lib/cell-growth/engine.js": "2a575b9ce70dd861abd6601a47e04f762f9fce2d6c1495d11ddec53eb05c2b24",
     "src/lib/cell-growth/geometry.js": "29a90386fd364169909251cb142d01c33eddcf4cf997736befee9254b25b27c6",
     "src/lib/cell-growth/mechanics.js": "3ee44ed74b28bd12d1b2b41d8a022e2aff53e13bd2e703421bb853caa119b6bc",
     "src/lib/cell-growth/behavior.js": "7f2e067330b0a2c3803ae4ce5ad2eadd9c903a29d532175a0abb48d86251346c",
     "src/lib/cell-growth/exploration.js": "8c9b786371653246d45dae75dd765d6424f7b786b86fc801fa36894bf08adefe",
     "src/lib/cell-growth/morphogenesis.js": "0c4f810d719c41750895e4e95bddf7f0706823921fb0c75887c8144f406f2745",
-    "src/lib/cell-growth/neurite-mechanics.js": "00cf4630fed79c61e438b2ec72207ffd4e2c92bf3acc1a70fe43e09c4daba109",
+    "src/lib/cell-growth/neurite-mechanics.js": "e1b594cc0c3bc571ecac35df7ba5e8f0b632cb34a27485a44ad32cb2745de4da",
     "src/lib/cell-growth/connectivity.js": "4542ac19af781192a6f6eaa5af06855860b8d0d8e41f11659d19fef11485306c",
-    "tests/cell-growth-connectivity.mjs": "b4189a71ea0c03a0235aafb6e7fa04bbb6c8733fb667690820045bcbaf01202e",
+    "tests/cell-growth-connectivity.mjs": "c3231f78dd84a11d9a2bf357db3ff3fe9bc5d6c3f8025cebde09fb8dc29c0956",
     "scripts/validate-cell-growth-connectivity.mjs": "cf05a7b77640b5c52865b173751daeff8505fe9715b28a8a42350da329d9202f"
   },
   "checks": [
@@ -134,15 +134,15 @@
       },
       "timeHours": 24,
       "rootLengthsUm": [
-        4.864564609940767,
-        3.0036482072078434,
-        3.043440215464681,
-        4.781453836431674
+        4.791009807548335,
+        2.9906937723436453,
+        3.0502044750620905,
+        4.7930884565682685
       ],
-      "maximumRootLengthUm": 4.864564609940767,
-      "displacementUm": 12.725255583186764,
-      "maximumStrain": 0.3988236497219795,
-      "materialLedgerResidualUm2": 4.320099833421409e-11
+      "maximumRootLengthUm": 4.7930884565682685,
+      "displacementUm": 12.65206124826468,
+      "maximumStrain": 0.3989773427838909,
+      "materialLedgerResidualUm2": 3.61524143954739e-11
     },
     {
       "label": "coupled-and-settling",
@@ -182,15 +182,15 @@
       },
       "timeHours": 24,
       "rootLengthsUm": [
-        2.644756815868231,
-        2.645856409498277,
-        2.7327486239025793,
-        3.387987519630555
+        2.6290282361976,
+        2.643591561178854,
+        2.7586900077783176,
+        3.4864801683386037
       ],
-      "maximumRootLengthUm": 3.387987519630555,
-      "displacementUm": 7.691158671660687,
-      "maximumStrain": 0.1484073162371901,
-      "materialLedgerResidualUm2": 8.810729923425242e-11
+      "maximumRootLengthUm": 3.4864801683386037,
+      "displacementUm": 7.640061014625147,
+      "maximumStrain": 0.16521643812994172,
+      "materialLedgerResidualUm2": 3.444711182964966e-11
     }
   ],
   "culture": {
@@ -236,160 +236,162 @@
         "structuralSynapses": 0,
         "functionalSynapses": 0,
         "lostContacts": 0,
-        "segments": 375
+        "segments": 373
       },
       {
         "timeHours": 12,
-        "contacts": 1,
+        "contacts": 2,
         "appositions": 0,
         "structuralSynapses": 0,
         "functionalSynapses": 0,
         "lostContacts": 0,
-        "segments": 949
+        "segments": 944
       },
       {
         "timeHours": 18,
-        "contacts": 3,
+        "contacts": 7,
         "appositions": 0,
-        "structuralSynapses": 3,
+        "structuralSynapses": 5,
         "functionalSynapses": 0,
         "lostContacts": 0,
-        "segments": 1596
+        "segments": 1587
       },
       {
         "timeHours": 24,
-        "contacts": 6,
-        "appositions": 0,
-        "structuralSynapses": 5,
+        "contacts": 22,
+        "appositions": 1,
+        "structuralSynapses": 20,
         "functionalSynapses": 1,
-        "lostContacts": 2,
-        "segments": 2306
+        "lostContacts": 0,
+        "segments": 2282
       },
       {
         "timeHours": 30,
-        "contacts": 13,
-        "appositions": 0,
-        "structuralSynapses": 11,
-        "functionalSynapses": 3,
-        "lostContacts": 3,
-        "segments": 3076
+        "contacts": 42,
+        "appositions": 1,
+        "structuralSynapses": 37,
+        "functionalSynapses": 6,
+        "lostContacts": 2,
+        "segments": 3047
       },
       {
         "timeHours": 36,
-        "contacts": 21,
+        "contacts": 51,
         "appositions": 0,
-        "structuralSynapses": 18,
-        "functionalSynapses": 5,
-        "lostContacts": 3,
-        "segments": 3921
+        "structuralSynapses": 48,
+        "functionalSynapses": 22,
+        "lostContacts": 2,
+        "segments": 3852
       },
       {
         "timeHours": 42,
-        "contacts": 36,
-        "appositions": 1,
-        "structuralSynapses": 28,
-        "functionalSynapses": 16,
+        "contacts": 68,
+        "appositions": 0,
+        "structuralSynapses": 61,
+        "functionalSynapses": 45,
         "lostContacts": 3,
-        "segments": 4861
+        "segments": 4747
       },
       {
         "timeHours": 48,
-        "contacts": 59,
-        "appositions": 1,
-        "structuralSynapses": 50,
-        "functionalSynapses": 35,
-        "lostContacts": 4,
-        "segments": 5970
+        "contacts": 76,
+        "appositions": 2,
+        "structuralSynapses": 74,
+        "functionalSynapses": 67,
+        "lostContacts": 3,
+        "segments": 5796
       }
     ],
     "metrics": {
       "cellContacts": 0,
       "clusters": 0,
       "largestCluster": 1,
-      "meanDisplacement": 1.3852259741169082,
-      "meanCellSpeed": 0.005175955489416167,
+      "meanDisplacement": 1.326441149956173,
+      "meanCellSpeed": 0.004811240939066821,
       "timeHours": 48,
       "cellCount": 8,
-      "totalAxonLength": 6948.572797415248,
-      "totalDendriteLength": 8779.035330250543,
-      "totalLength": 15727.60812766579,
-      "branches": 90,
-      "activeTips": 127,
-      "liveSegments": 5875,
-      "totalSegments": 5970,
-      "contacts": 59,
-      "appositions": 1,
-      "structuralSynapses": 50,
-      "functionalSynapses": 35,
-      "lostContacts": 4,
-      "maxNeuriteStrain": 0.39956629101907815,
+      "totalAxonLength": 6699.92220931477,
+      "totalDendriteLength": 8547.420339315446,
+      "totalLength": 15247.342548630215,
+      "branches": 74,
+      "activeTips": 111,
+      "liveSegments": 5660,
+      "totalSegments": 5796,
+      "contacts": 76,
+      "appositions": 2,
+      "structuralSynapses": 74,
+      "functionalSynapses": 67,
+      "lostContacts": 3,
+      "maxNeuriteStrain": 0.03805184664365091,
       "meanSettlement": 0.0668222292640437,
-      "collisionEvents": 449,
-      "retractionSteps": 983,
-      "meanTension": 8.499620299935497,
-      "meanReserve": 0.7621189882853108,
+      "collisionEvents": 572,
+      "retractionSteps": 1337,
+      "meanTension": 8.283190579061475,
+      "meanReserve": 0.7798737621681123,
       "perCell": [
         {
           "id": 0,
           "stage": "maturing",
-          "displacement": 1.6218219934249214,
-          "cellSpeed": 0.009127663208143363,
-          "pathLength": 1.8807116830939692,
-          "areaStrain": -0.029715789801939896,
-          "volumeStrain": 0.004700062347894773,
-          "meshQuality": 0.8069935646707577,
+          "displacement": 1.6081424551390187,
+          "cellSpeed": 0.005791234640105617,
+          "pathLength": 1.8145719390500104,
+          "areaStrain": -0.028579992831900825,
+          "volumeStrain": 0.004550222552357708,
+          "meshQuality": 0.8067363357808216,
           "branchAngles": [
-            77.97906725994461,
-            64.7351280729884,
-            71.69963270633768,
-            67.86511436605048,
-            80.34861000578776,
-            74.910411182456,
-            68.23631756903775,
-            82.28850996756982,
-            26.075351984855587
+            71.79765501460882,
+            58.38028687348945,
+            78.84062005370187,
+            51.99841366016216,
+            66.2064404992561,
+            70.21983020579117,
+            61.73371523905591,
+            93.15256805203563,
+            59.2582511789027,
+            67.06153938627585,
+            64.18542180496402,
+            89.46139698334993
           ],
-          "dendriticFieldArea": 40467.79429778186,
-          "axonLength": 1011.3647535375707,
-          "dendriteLength": 920.2669554036654,
-          "totalLength": 1931.631708941236,
-          "branches": 10,
-          "activeTips": 14,
+          "dendriticFieldArea": 30246.041666897458,
+          "axonLength": 1038.5772365052908,
+          "dendriteLength": 915.5627892618272,
+          "totalLength": 1954.140025767118,
+          "branches": 12,
+          "activeTips": 16,
           "axonTips": 6,
-          "dendriteTips": 8,
-          "longestAxonPath": 474.2381330648983,
-          "longestDendritePath": 247.02593442653432,
-          "axonReach": 290.24094367227116,
-          "dendriteReach": 207.0981507717508,
+          "dendriteTips": 10,
+          "longestAxonPath": 437.9080418349682,
+          "longestDendritePath": 229.73103349301888,
+          "axonReach": 318.4627285077683,
+          "dendriteReach": 169.15921681130652,
           "branchOrders": {
-            "0": 8,
-            "1": 1,
-            "2": 1
+            "0": 9,
+            "1": 3
           },
-          "shaftArea": 7106.850415559424,
-          "extensionRate": 53.95348532050008,
-          "retractionRate": 0.025370409381500255,
-          "meanConeSpeed": 3.852008207937041,
-          "membraneArea": 562.5505199490148,
-          "tension": 8.917267525532267,
-          "reserve": 0.7305759899897115,
-          "supply": 0.6850606671714372,
+          "shaftArea": 6946.198442819424,
+          "extensionRate": 52.44076903932372,
+          "retractionRate": 0,
+          "meanConeSpeed": 3.2775480649577324,
+          "membraneArea": 563.2090313102597,
+          "tension": 8.445985075310638,
+          "reserve": 0.7645622581983741,
+          "supply": 0.6495466869676293,
           "sholl": [
             {
               "radius": 15,
-              "intersections": 8
+              "intersections": 4
             },
             {
               "radius": 30,
-              "intersections": 8
-            },
-            {
-              "radius": 45,
               "intersections": 7
             },
             {
+              "radius": 45,
+              "intersections": 10
+            },
+            {
               "radius": 60,
-              "intersections": 6
+              "intersections": 10
             },
             {
               "radius": 90,
@@ -397,11 +399,11 @@
             },
             {
               "radius": 120,
-              "intersections": 9
+              "intersections": 5
             },
             {
               "radius": 160,
-              "intersections": 7
+              "intersections": 5
             },
             {
               "radius": 200,
@@ -409,7 +411,7 @@
             },
             {
               "radius": 260,
-              "intersections": 1
+              "intersections": 3
             }
           ],
           "shollAxon": [
@@ -423,53 +425,53 @@
             },
             {
               "radius": 45,
-              "intersections": 2
+              "intersections": 4
             },
             {
               "radius": 60,
-              "intersections": 2
-            },
-            {
-              "radius": 90,
               "intersections": 3
             },
             {
-              "radius": 120,
-              "intersections": 7
-            },
-            {
-              "radius": 160,
-              "intersections": 6
-            },
-            {
-              "radius": 200,
+              "radius": 90,
               "intersections": 2
             },
             {
+              "radius": 120,
+              "intersections": 3
+            },
+            {
+              "radius": 160,
+              "intersections": 2
+            },
+            {
+              "radius": 200,
+              "intersections": 3
+            },
+            {
               "radius": 260,
-              "intersections": 1
+              "intersections": 3
             }
           ],
           "shollDendrite": [
             {
               "radius": 15,
-              "intersections": 7
+              "intersections": 3
             },
             {
               "radius": 30,
-              "intersections": 7
+              "intersections": 6
             },
             {
               "radius": 45,
-              "intersections": 5
+              "intersections": 6
             },
             {
               "radius": 60,
-              "intersections": 4
+              "intersections": 7
             },
             {
               "radius": 90,
-              "intersections": 3
+              "intersections": 4
             },
             {
               "radius": 120,
@@ -477,11 +479,11 @@
             },
             {
               "radius": 160,
-              "intersections": 1
+              "intersections": 3
             },
             {
               "radius": 200,
-              "intersections": 1
+              "intersections": 0
             },
             {
               "radius": 260,
@@ -492,65 +494,58 @@
         {
           "id": 1,
           "stage": "maturing",
-          "displacement": 1.0366080122069357,
-          "cellSpeed": 0.0029600541733191673,
-          "pathLength": 1.183356374497178,
-          "areaStrain": -0.028902004340143006,
-          "volumeStrain": 0.004140641413270307,
-          "meshQuality": 0.7907354680259072,
+          "displacement": 0.8720971133563064,
+          "cellSpeed": 0.003336589813596742,
+          "pathLength": 1.122420341246978,
+          "areaStrain": -0.02913522049263817,
+          "volumeStrain": 0.00422569567497777,
+          "meshQuality": 0.7933816571532858,
           "branchAngles": [
-            95.91814706305955,
-            56.40376356527255,
-            86.06748519584515,
-            73.42825221739506,
-            54.22061741934512,
-            73.00248873012816,
-            54.7781947844894,
-            56.8528646952713,
-            137.14153633418078,
-            77.8883435469879,
-            52.840615624235085,
-            65.25164135377939,
-            29.523720228917032,
-            57.69495935822751,
-            50.10835168573847
+            86.27802212080374,
+            77.11158257960786,
+            69.61586814686525,
+            96.34360826183244,
+            39.97700517233144,
+            47.731205271984315,
+            37.36176494839325,
+            77.45174830277917
           ],
-          "dendriticFieldArea": 46478.53421647472,
-          "axonLength": 1023.3688057947076,
-          "dendriteLength": 1084.4646495212487,
-          "totalLength": 2107.833455315956,
-          "branches": 15,
-          "activeTips": 20,
-          "axonTips": 9,
-          "dendriteTips": 11,
-          "longestAxonPath": 408.6567410513386,
-          "longestDendritePath": 234.61780279095643,
-          "axonReach": 334.11754476988926,
-          "dendriteReach": 178.5648175319671,
+          "dendriticFieldArea": 30789.068714854842,
+          "axonLength": 847.8721048720715,
+          "dendriteLength": 1254.2379869831916,
+          "totalLength": 2102.110091855263,
+          "branches": 8,
+          "activeTips": 13,
+          "axonTips": 3,
+          "dendriteTips": 10,
+          "longestAxonPath": 408.55532788845886,
+          "longestDendritePath": 241.8658352662607,
+          "axonReach": 251.28736855461116,
+          "dendriteReach": 203.67718957869076,
           "branchOrders": {
-            "0": 13,
-            "1": 2
+            "0": 7,
+            "1": 1
           },
-          "shaftArea": 8185.272132738763,
-          "extensionRate": 62.105619901896794,
+          "shaftArea": 8374.043281033435,
+          "extensionRate": 40.8465848378706,
           "retractionRate": 0,
-          "meanConeSpeed": 3.10528099509484,
-          "membraneArea": 679.640928951859,
-          "tension": 7.89959545227816,
-          "reserve": 0.8132536440057672,
-          "supply": 0.5801039345328958,
+          "meanConeSpeed": 3.1420449875285077,
+          "membraneArea": 679.4777083055012,
+          "tension": 8.024214999192854,
+          "reserve": 0.8025600216969374,
+          "supply": 0.7036521057178028,
           "sholl": [
             {
               "radius": 15,
-              "intersections": 9
+              "intersections": 5
             },
             {
               "radius": 30,
-              "intersections": 8
+              "intersections": 6
             },
             {
               "radius": 45,
-              "intersections": 7
+              "intersections": 8
             },
             {
               "radius": 60,
@@ -558,61 +553,61 @@
             },
             {
               "radius": 90,
-              "intersections": 9
+              "intersections": 11
             },
             {
               "radius": 120,
-              "intersections": 9
+              "intersections": 5
             },
             {
               "radius": 160,
-              "intersections": 4
+              "intersections": 3
             },
             {
               "radius": 200,
-              "intersections": 1
+              "intersections": 3
             },
             {
               "radius": 260,
-              "intersections": 2
+              "intersections": 0
             }
           ],
           "shollAxon": [
             {
               "radius": 15,
-              "intersections": 5
+              "intersections": 1
             },
             {
               "radius": 30,
-              "intersections": 4
+              "intersections": 1
             },
             {
               "radius": 45,
-              "intersections": 3
+              "intersections": 1
             },
             {
               "radius": 60,
-              "intersections": 5
+              "intersections": 1
             },
             {
               "radius": 90,
-              "intersections": 3
+              "intersections": 1
             },
             {
               "radius": 120,
-              "intersections": 1
+              "intersections": 4
             },
             {
               "radius": 160,
-              "intersections": 1
+              "intersections": 2
             },
             {
               "radius": 200,
-              "intersections": 1
+              "intersections": 2
             },
             {
               "radius": 260,
-              "intersections": 2
+              "intersections": 0
             }
           ],
           "shollDendrite": [
@@ -622,31 +617,31 @@
             },
             {
               "radius": 30,
-              "intersections": 4
+              "intersections": 5
             },
             {
               "radius": 45,
-              "intersections": 4
+              "intersections": 7
             },
             {
               "radius": 60,
-              "intersections": 4
-            },
-            {
-              "radius": 90,
-              "intersections": 6
-            },
-            {
-              "radius": 120,
               "intersections": 8
             },
             {
+              "radius": 90,
+              "intersections": 10
+            },
+            {
+              "radius": 120,
+              "intersections": 1
+            },
+            {
               "radius": 160,
-              "intersections": 3
+              "intersections": 1
             },
             {
               "radius": 200,
-              "intersections": 0
+              "intersections": 1
             },
             {
               "radius": 260,
@@ -657,45 +652,47 @@
         {
           "id": 2,
           "stage": "maturing",
-          "displacement": 1.1366488500298604,
-          "cellSpeed": 0.0031448306572475263,
-          "pathLength": 1.3036442632558565,
-          "areaStrain": -0.030242805149180207,
-          "volumeStrain": 0.004301888602680881,
-          "meshQuality": 0.7979336311503602,
+          "displacement": 1.0368311087867026,
+          "cellSpeed": 0.0006646252403728539,
+          "pathLength": 1.2312563361021032,
+          "areaStrain": -0.029566771807212455,
+          "volumeStrain": 0.004229318168593732,
+          "meshQuality": 0.7991437485080853,
           "branchAngles": [
-            77.62467603866054,
-            84.83160582690648,
-            61.803380692999475,
-            59.89141083570746,
-            59.73917322648842,
-            82.01330770554087,
-            116.18233283957947,
-            96.3690948905452
+            57.475294590738415,
+            87.203019255567,
+            70.32612124432383,
+            61.307508847150245,
+            105.07482306104856,
+            55.17351948357995,
+            85.55237764887877,
+            100.17994209815788,
+            74.56775037909279
           ],
-          "dendriticFieldArea": 41286.99875518104,
-          "axonLength": 560.5050903724433,
-          "dendriteLength": 1317.8459633039317,
-          "totalLength": 1878.3510536763752,
-          "branches": 8,
-          "activeTips": 13,
-          "axonTips": 2,
+          "dendriticFieldArea": 35612.595995306925,
+          "axonLength": 706.0108433763103,
+          "dendriteLength": 1192.3829259996626,
+          "totalLength": 1898.3937693759729,
+          "branches": 9,
+          "activeTips": 14,
+          "axonTips": 3,
           "dendriteTips": 11,
-          "longestAxonPath": 560.3432888754119,
-          "longestDendritePath": 288.71925090149233,
-          "axonReach": 239.67439233451051,
-          "dendriteReach": 223.74528520783,
+          "longestAxonPath": 512.2206691371504,
+          "longestDendritePath": 256.08139623991735,
+          "axonReach": 334.35657290421915,
+          "dendriteReach": 191.84707836998652,
           "branchOrders": {
-            "0": 8
+            "0": 6,
+            "1": 3
           },
-          "shaftArea": 8225.906642377646,
-          "extensionRate": 44.74194378440938,
-          "retractionRate": 5,
-          "meanConeSpeed": 3.0570725988007217,
-          "membraneArea": 674.5351085825477,
-          "tension": 8.28160063763121,
-          "reserve": 0.778191929840978,
-          "supply": 0.7425004942938004,
+          "shaftArea": 7828.8932893324845,
+          "extensionRate": 52.69379560765507,
+          "retractionRate": 10,
+          "meanConeSpeed": 3.0495568291182193,
+          "membraneArea": 675.0053378586499,
+          "tension": 7.975141853675482,
+          "reserve": 0.8072812434510358,
+          "supply": 0.7095146084661709,
           "sholl": [
             {
               "radius": 15,
@@ -703,7 +700,7 @@
             },
             {
               "radius": 30,
-              "intersections": 5
+              "intersections": 6
             },
             {
               "radius": 45,
@@ -715,23 +712,23 @@
             },
             {
               "radius": 90,
-              "intersections": 6
+              "intersections": 10
             },
             {
               "radius": 120,
-              "intersections": 9
+              "intersections": 2
             },
             {
               "radius": 160,
-              "intersections": 6
+              "intersections": 2
             },
             {
               "radius": 200,
-              "intersections": 4
+              "intersections": 1
             },
             {
               "radius": 260,
-              "intersections": 0
+              "intersections": 2
             }
           ],
           "shollAxon": [
@@ -757,19 +754,19 @@
             },
             {
               "radius": 120,
-              "intersections": 3
+              "intersections": 1
             },
             {
               "radius": 160,
-              "intersections": 2
+              "intersections": 1
             },
             {
               "radius": 200,
-              "intersections": 2
+              "intersections": 1
             },
             {
               "radius": 260,
-              "intersections": 0
+              "intersections": 2
             }
           ],
           "shollDendrite": [
@@ -779,7 +776,7 @@
             },
             {
               "radius": 30,
-              "intersections": 4
+              "intersections": 5
             },
             {
               "radius": 45,
@@ -791,19 +788,19 @@
             },
             {
               "radius": 90,
-              "intersections": 5
+              "intersections": 9
             },
             {
               "radius": 120,
-              "intersections": 6
+              "intersections": 1
             },
             {
               "radius": 160,
-              "intersections": 4
+              "intersections": 1
             },
             {
               "radius": 200,
-              "intersections": 2
+              "intersections": 0
             },
             {
               "radius": 260,
@@ -814,52 +811,46 @@
         {
           "id": 3,
           "stage": "maturing",
-          "displacement": 1.6244239151764737,
-          "cellSpeed": 0.0062063930262912575,
-          "pathLength": 1.8848707540614333,
-          "areaStrain": -0.030411720935640707,
-          "volumeStrain": 0.0047711621872015275,
-          "meshQuality": 0.8032765600915235,
+          "displacement": 1.55478636186955,
+          "cellSpeed": 0.006449382039603881,
+          "pathLength": 1.8458746055652087,
+          "areaStrain": -0.029428966485542385,
+          "volumeStrain": 0.004630945757294169,
+          "meshQuality": 0.801023122159994,
           "branchAngles": [
-            61.72975715127706,
-            78.19342068229533,
-            74.51734037821136,
-            59.87232434001232,
-            76.23258191176694,
-            56.19199363321662,
-            50.20668633711931,
-            72.69620889449796,
-            63.04811394230703,
-            99.51418881111124,
-            47.45372668286291,
-            46.815653100462946,
-            50.04519075028433,
-            0.8140422978936633
+            58.9633556364241,
+            46.661887292868165,
+            54.784828279283005,
+            72.1929557722036,
+            82.59181926936735,
+            74.71029086982442,
+            87.21907430797762,
+            115.48018385984679,
+            51.98185726728365
           ],
-          "dendriticFieldArea": 27428.620914935338,
-          "axonLength": 1008.0892788875598,
-          "dendriteLength": 957.0806747301248,
-          "totalLength": 1965.1699536176845,
-          "branches": 14,
-          "activeTips": 18,
-          "axonTips": 7,
-          "dendriteTips": 11,
-          "longestAxonPath": 399.3786162281114,
-          "longestDendritePath": 199.0306581873005,
-          "axonReach": 323.8866321173701,
-          "dendriteReach": 186.50464382197592,
+          "dendriticFieldArea": 41785.01903463867,
+          "axonLength": 688.0759088134712,
+          "dendriteLength": 886.8826421951401,
+          "totalLength": 1574.9585510086113,
+          "branches": 9,
+          "activeTips": 13,
+          "axonTips": 3,
+          "dendriteTips": 10,
+          "longestAxonPath": 463.63022325219197,
+          "longestDendritePath": 238.34229646723708,
+          "axonReach": 123.50722196322627,
+          "dendriteReach": 206.52309415737182,
           "branchOrders": {
-            "0": 9,
-            "1": 5
+            "0": 9
           },
-          "shaftArea": 7331.088907353935,
-          "extensionRate": 59.94554034967162,
+          "shaftArea": 6464.828009597886,
+          "extensionRate": 71.60921828883525,
           "retractionRate": 0,
-          "meanConeSpeed": 3.3303077972039787,
-          "membraneArea": 547.4154314077126,
-          "tension": 8.870933864324652,
-          "reserve": 0.7310236468425104,
-          "supply": 0.6104279548315911,
+          "meanConeSpeed": 5.508401406833481,
+          "membraneArea": 547.9702802676716,
+          "tension": 8.62779757205868,
+          "reserve": 0.7473886731851147,
+          "supply": 0.7036852907353087,
           "sholl": [
             {
               "radius": 15,
@@ -867,19 +858,19 @@
             },
             {
               "radius": 30,
-              "intersections": 13
+              "intersections": 9
             },
             {
               "radius": 45,
-              "intersections": 15
+              "intersections": 8
             },
             {
               "radius": 60,
-              "intersections": 10
+              "intersections": 8
             },
             {
               "radius": 90,
-              "intersections": 6
+              "intersections": 7
             },
             {
               "radius": 120,
@@ -887,15 +878,15 @@
             },
             {
               "radius": 160,
-              "intersections": 3
+              "intersections": 6
             },
             {
               "radius": 200,
-              "intersections": 2
+              "intersections": 1
             },
             {
               "radius": 260,
-              "intersections": 1
+              "intersections": 0
             }
           ],
           "shollAxon": [
@@ -905,19 +896,19 @@
             },
             {
               "radius": 30,
-              "intersections": 8
+              "intersections": 5
             },
             {
               "radius": 45,
-              "intersections": 7
+              "intersections": 5
             },
             {
               "radius": 60,
-              "intersections": 4
+              "intersections": 5
             },
             {
               "radius": 90,
-              "intersections": 2
+              "intersections": 4
             },
             {
               "radius": 120,
@@ -925,15 +916,15 @@
             },
             {
               "radius": 160,
-              "intersections": 1
+              "intersections": 0
             },
             {
               "radius": 200,
-              "intersections": 2
+              "intersections": 0
             },
             {
               "radius": 260,
-              "intersections": 1
+              "intersections": 0
             }
           ],
           "shollDendrite": [
@@ -943,19 +934,19 @@
             },
             {
               "radius": 30,
-              "intersections": 5
+              "intersections": 4
             },
             {
               "radius": 45,
-              "intersections": 8
+              "intersections": 3
             },
             {
               "radius": 60,
-              "intersections": 6
+              "intersections": 3
             },
             {
               "radius": 90,
-              "intersections": 4
+              "intersections": 3
             },
             {
               "radius": 120,
@@ -963,11 +954,11 @@
             },
             {
               "radius": 160,
-              "intersections": 2
+              "intersections": 6
             },
             {
               "radius": 200,
-              "intersections": 0
+              "intersections": 1
             },
             {
               "radius": 260,
@@ -978,58 +969,57 @@
         {
           "id": 4,
           "stage": "maturing",
-          "displacement": 1.3812017995113148,
-          "cellSpeed": 0.0030395408084755095,
-          "pathLength": 1.645730957678355,
-          "areaStrain": -0.030835503967368227,
-          "volumeStrain": 0.004731721278486978,
-          "meshQuality": 0.7977105330050231,
+          "displacement": 1.374923024955888,
+          "cellSpeed": 0.00827323274011538,
+          "pathLength": 1.630424896019395,
+          "areaStrain": -0.03035451870213779,
+          "volumeStrain": 0.00468939636658261,
+          "meshQuality": 0.7970213118641003,
           "branchAngles": [
-            59.13037360866657,
-            42.526471824562314,
-            90.33789869666961,
-            43.694919845908224,
-            53.40164633711528,
-            88.62966132039219,
-            61.301000392588925,
-            95.88405937385184,
-            64.10228298363714
+            73.06398580711884,
+            48.88175994659414,
+            43.897876383789594,
+            101.87781371644904,
+            102.91080263336202,
+            109.87589111437083,
+            50.31994453679945
           ],
-          "dendriticFieldArea": 21980.741420387058,
-          "axonLength": 999.5267619951377,
-          "dendriteLength": 1109.3734470737486,
-          "totalLength": 2108.9002090688864,
-          "branches": 9,
-          "activeTips": 14,
+          "dendriticFieldArea": 45315.419522645345,
+          "axonLength": 645.0235097154065,
+          "dendriteLength": 1192.1454425259603,
+          "totalLength": 1837.1689522413667,
+          "branches": 7,
+          "activeTips": 12,
           "axonTips": 4,
-          "dendriteTips": 10,
-          "longestAxonPath": 436.7299353203538,
-          "longestDendritePath": 219.4703051503235,
-          "axonReach": 292.30869144730093,
-          "dendriteReach": 168.9341704553525,
+          "dendriteTips": 8,
+          "longestAxonPath": 505.59502427856427,
+          "longestDendritePath": 254.21600408682173,
+          "axonReach": 277.37079540594505,
+          "dendriteReach": 205.04323877908686,
           "branchOrders": {
-            "0": 9
+            "0": 5,
+            "1": 2
           },
-          "shaftArea": 8297.598139300168,
-          "extensionRate": 59.71435618422161,
-          "retractionRate": 0.176237190827797,
-          "meanConeSpeed": 4.2527227852424145,
-          "membraneArea": 581.4205953955951,
-          "tension": 8.739169951316855,
-          "reserve": 0.7418223635411739,
-          "supply": 0.6970752885777496,
+          "shaftArea": 7677.970847188561,
+          "extensionRate": 57.8714120775593,
+          "retractionRate": 0,
+          "meanConeSpeed": 4.822617673129941,
+          "membraneArea": 581.7091477934921,
+          "tension": 8.982337663843186,
+          "reserve": 0.724426428093,
+          "supply": 0.7593663927047654,
           "sholl": [
             {
               "radius": 15,
-              "intersections": 8
+              "intersections": 6
             },
             {
               "radius": 30,
-              "intersections": 10
+              "intersections": 6
             },
             {
               "radius": 45,
-              "intersections": 11
+              "intersections": 7
             },
             {
               "radius": 60,
@@ -1037,11 +1027,11 @@
             },
             {
               "radius": 90,
-              "intersections": 6
+              "intersections": 12
             },
             {
               "radius": 120,
-              "intersections": 4
+              "intersections": 7
             },
             {
               "radius": 160,
@@ -1049,7 +1039,7 @@
             },
             {
               "radius": 200,
-              "intersections": 3
+              "intersections": 2
             },
             {
               "radius": 260,
@@ -1059,35 +1049,35 @@
           "shollAxon": [
             {
               "radius": 15,
-              "intersections": 4
+              "intersections": 1
             },
             {
               "radius": 30,
-              "intersections": 4
+              "intersections": 1
             },
             {
               "radius": 45,
-              "intersections": 5
+              "intersections": 2
             },
             {
               "radius": 60,
-              "intersections": 1
+              "intersections": 2
             },
             {
               "radius": 90,
-              "intersections": 1
+              "intersections": 3
             },
             {
               "radius": 120,
-              "intersections": 2
+              "intersections": 4
             },
             {
               "radius": 160,
-              "intersections": 2
+              "intersections": 1
             },
             {
               "radius": 200,
-              "intersections": 3
+              "intersections": 1
             },
             {
               "radius": 260,
@@ -1097,35 +1087,35 @@
           "shollDendrite": [
             {
               "radius": 15,
-              "intersections": 4
-            },
-            {
-              "radius": 30,
-              "intersections": 6
-            },
-            {
-              "radius": 45,
-              "intersections": 6
-            },
-            {
-              "radius": 60,
-              "intersections": 7
-            },
-            {
-              "radius": 90,
               "intersections": 5
             },
             {
+              "radius": 30,
+              "intersections": 5
+            },
+            {
+              "radius": 45,
+              "intersections": 5
+            },
+            {
+              "radius": 60,
+              "intersections": 6
+            },
+            {
+              "radius": 90,
+              "intersections": 9
+            },
+            {
               "radius": 120,
-              "intersections": 2
+              "intersections": 3
             },
             {
               "radius": 160,
-              "intersections": 1
+              "intersections": 2
             },
             {
               "radius": 200,
-              "intersections": 0
+              "intersections": 1
             },
             {
               "radius": 260,
@@ -1136,72 +1126,65 @@
         {
           "id": 5,
           "stage": "maturing",
-          "displacement": 1.3899546434728405,
-          "cellSpeed": 0.001303179063033249,
-          "pathLength": 1.6035649955502853,
-          "areaStrain": -0.029456330867740577,
-          "volumeStrain": 0.0045590311632961456,
-          "meshQuality": 0.7939473104894634,
+          "displacement": 1.361889087781771,
+          "cellSpeed": 0.0022424708617813363,
+          "pathLength": 1.5763451819256782,
+          "areaStrain": -0.028333650600102622,
+          "volumeStrain": 0.004417787329526135,
+          "meshQuality": 0.794019141641396,
           "branchAngles": [
-            87.24241413155563,
-            84.02771138836506,
-            61.46533618689776,
-            72.81289657373598,
-            43.25810097787069,
-            85.19864250921746,
-            67.40005525163893,
-            111.6513601397699,
-            94.02033777737405,
-            83.9887671408651,
-            68.54924944528808,
-            50.34269135433098,
-            54.83749619078063,
-            52.284157490497925
+            82.67256270176067,
+            63.21423218181737,
+            40.44021122688581,
+            68.70567323205977,
+            58.10381467692768,
+            32.48999648066052,
+            67.93098074407838
           ],
-          "dendriticFieldArea": 42073.59440493054,
-          "axonLength": 551.8055387952188,
-          "dendriteLength": 1229.599151614547,
-          "totalLength": 1781.4046904097659,
-          "branches": 14,
-          "activeTips": 19,
-          "axonTips": 5,
-          "dendriteTips": 14,
-          "longestAxonPath": 332.14265354195084,
-          "longestDendritePath": 211.4868671417366,
-          "axonReach": 172.5400033547656,
-          "dendriteReach": 201.5817193270791,
+          "dendriticFieldArea": 41414.24228519014,
+          "axonLength": 724.5316152727587,
+          "dendriteLength": 1005.5579196024647,
+          "totalLength": 1730.0895348752233,
+          "branches": 7,
+          "activeTips": 12,
+          "axonTips": 4,
+          "dendriteTips": 8,
+          "longestAxonPath": 367.681350356417,
+          "longestDendritePath": 250.30829060040006,
+          "axonReach": 319.9171729962995,
+          "dendriteReach": 175.1865387195648,
           "branchOrders": {
-            "0": 12,
+            "0": 5,
             "1": 2
           },
-          "shaftArea": 7674.829922230317,
-          "extensionRate": 38.14734884507219,
-          "retractionRate": 0,
-          "meanConeSpeed": 2.0077552023722203,
-          "membraneArea": 575.5030370581029,
-          "tension": 8.382823755499189,
-          "reserve": 0.7703698544779156,
-          "supply": 0.6175439780152813,
+          "shaftArea": 6871.530129670133,
+          "extensionRate": 50.26256805833251,
+          "retractionRate": 10,
+          "meanConeSpeed": 3.355214004861043,
+          "membraneArea": 576.1687524959755,
+          "tension": 8.048289892539504,
+          "reserve": 0.802039601840056,
+          "supply": 0.735680714397939,
           "sholl": [
             {
               "radius": 15,
-              "intersections": 7
+              "intersections": 5
             },
             {
               "radius": 30,
-              "intersections": 9
+              "intersections": 6
             },
             {
               "radius": 45,
-              "intersections": 10
+              "intersections": 6
             },
             {
               "radius": 60,
-              "intersections": 13
+              "intersections": 7
             },
             {
               "radius": 90,
-              "intersections": 9
+              "intersections": 6
             },
             {
               "radius": 120,
@@ -1209,15 +1192,15 @@
             },
             {
               "radius": 160,
-              "intersections": 3
+              "intersections": 4
             },
             {
               "radius": 200,
-              "intersections": 1
+              "intersections": 4
             },
             {
               "radius": 260,
-              "intersections": 0
+              "intersections": 2
             }
           ],
           "shollAxon": [
@@ -1227,19 +1210,19 @@
             },
             {
               "radius": 30,
-              "intersections": 3
+              "intersections": 1
             },
             {
               "radius": 45,
-              "intersections": 3
+              "intersections": 1
             },
             {
               "radius": 60,
-              "intersections": 3
+              "intersections": 1
             },
             {
               "radius": 90,
-              "intersections": 3
+              "intersections": 1
             },
             {
               "radius": 120,
@@ -1247,37 +1230,37 @@
             },
             {
               "radius": 160,
-              "intersections": 1
+              "intersections": 2
             },
             {
               "radius": 200,
-              "intersections": 0
+              "intersections": 4
             },
             {
               "radius": 260,
-              "intersections": 0
+              "intersections": 2
             }
           ],
           "shollDendrite": [
             {
               "radius": 15,
-              "intersections": 6
+              "intersections": 4
             },
             {
               "radius": 30,
-              "intersections": 6
+              "intersections": 5
             },
             {
               "radius": 45,
-              "intersections": 7
+              "intersections": 5
             },
             {
               "radius": 60,
-              "intersections": 10
+              "intersections": 6
             },
             {
               "radius": 90,
-              "intersections": 6
+              "intersections": 5
             },
             {
               "radius": 120,
@@ -1289,7 +1272,7 @@
             },
             {
               "radius": 200,
-              "intersections": 1
+              "intersections": 0
             },
             {
               "radius": 260,
@@ -1300,51 +1283,51 @@
         {
           "id": 6,
           "stage": "maturing",
-          "displacement": 1.3876852312885675,
-          "cellSpeed": 0.005498681624865602,
-          "pathLength": 1.5719791125682083,
-          "areaStrain": -0.029519808193885888,
-          "volumeStrain": 0.00431354481024071,
-          "meshQuality": 0.7980601862966841,
+          "displacement": 1.369648801216804,
+          "cellSpeed": 0.006034289102739589,
+          "pathLength": 1.5137189718783608,
+          "areaStrain": -0.029214034009692136,
+          "volumeStrain": 0.004298020789815338,
+          "meshQuality": 0.7973991978138809,
           "branchAngles": [
-            90.95571748003812,
-            50.72192896441728,
-            67.46069326816522,
-            75.77420615395849,
-            64.91708852021445,
-            72.39855739633859,
-            86.27791117828949,
-            69.71083129677749,
-            61.575304510723484,
-            81.85406101318472,
-            144.61017395128897,
-            72.82495593889817,
-            55.51519264129647
+            91.70436394345364,
+            97.81585797237717,
+            59.60722333418659,
+            79.75168420708782,
+            65.29444529100908,
+            36.55420345821091,
+            43.53898627196131,
+            65.26702971778086,
+            66.27662750154715,
+            83.74512943695589,
+            104.65044418895783,
+            93.37200882968814,
+            43.053174456371586
           ],
-          "dendriticFieldArea": 24792.93200401203,
-          "axonLength": 1098.3215660366734,
-          "dendriteLength": 915.6016581935623,
-          "totalLength": 2013.9232242302357,
+          "dendriticFieldArea": 20416.505858669057,
+          "axonLength": 1238.0590141638072,
+          "dendriteLength": 925.5126425360139,
+          "totalLength": 2163.5716566998212,
           "branches": 13,
           "activeTips": 17,
-          "axonTips": 7,
-          "dendriteTips": 10,
-          "longestAxonPath": 481.1432421270317,
-          "longestDendritePath": 261.03391291699074,
-          "axonReach": 291.11433985641725,
-          "dendriteReach": 178.31650019757586,
+          "axonTips": 9,
+          "dendriteTips": 8,
+          "longestAxonPath": 434.1812987085127,
+          "longestDendritePath": 237.27693891156954,
+          "axonReach": 287.22074308952784,
+          "dendriteReach": 202.72033285567994,
           "branchOrders": {
-            "0": 9,
-            "1": 4
+            "0": 10,
+            "1": 3
           },
-          "shaftArea": 7149.854947755756,
-          "extensionRate": 62.76586886449253,
-          "retractionRate": 5,
-          "meanConeSpeed": 3.3979922861466196,
-          "membraneArea": 661.6921500782862,
-          "tension": 8.101107178740039,
-          "reserve": 0.7949865133027859,
-          "supply": 0.6333202769840078,
+          "shaftArea": 7594.814111202575,
+          "extensionRate": 44.324762696387786,
+          "retractionRate": 0,
+          "meanConeSpeed": 2.6073389821404582,
+          "membraneArea": 661.9006328263998,
+          "tension": 7.967132858502245,
+          "reserve": 0.8080737795805812,
+          "supply": 0.6205991728573452,
           "sholl": [
             {
               "radius": 15,
@@ -1352,31 +1335,31 @@
             },
             {
               "radius": 30,
-              "intersections": 4
+              "intersections": 5
             },
             {
               "radius": 45,
-              "intersections": 4
+              "intersections": 5
             },
             {
               "radius": 60,
-              "intersections": 7
+              "intersections": 5
             },
             {
               "radius": 90,
-              "intersections": 6
+              "intersections": 12
             },
             {
               "radius": 120,
-              "intersections": 9
+              "intersections": 8
             },
             {
               "radius": 160,
-              "intersections": 10
+              "intersections": 12
             },
             {
               "radius": 200,
-              "intersections": 1
+              "intersections": 3
             },
             {
               "radius": 260,
@@ -1402,19 +1385,19 @@
             },
             {
               "radius": 90,
-              "intersections": 1
+              "intersections": 3
             },
             {
               "radius": 120,
-              "intersections": 4
+              "intersections": 3
             },
             {
               "radius": 160,
-              "intersections": 8
+              "intersections": 11
             },
             {
               "radius": 200,
-              "intersections": 1
+              "intersections": 2
             },
             {
               "radius": 260,
@@ -1428,19 +1411,19 @@
             },
             {
               "radius": 30,
-              "intersections": 3
+              "intersections": 4
             },
             {
               "radius": 45,
-              "intersections": 3
+              "intersections": 4
             },
             {
               "radius": 60,
-              "intersections": 6
+              "intersections": 4
             },
             {
               "radius": 90,
-              "intersections": 5
+              "intersections": 9
             },
             {
               "radius": 120,
@@ -1448,11 +1431,11 @@
             },
             {
               "radius": 160,
-              "intersections": 2
+              "intersections": 1
             },
             {
               "radius": 200,
-              "intersections": 0
+              "intersections": 1
             },
             {
               "radius": 260,
@@ -1463,45 +1446,47 @@
         {
           "id": 7,
           "stage": "maturing",
-          "displacement": 1.5034633478243504,
-          "cellSpeed": 0.010127301353953665,
-          "pathLength": 1.722223275546006,
-          "areaStrain": -0.03026695472349583,
-          "volumeStrain": 0.0045351593449958205,
-          "meshQuality": 0.7881777919302684,
+          "displacement": 1.4332112465433446,
+          "cellSpeed": 0.005698103074219166,
+          "pathLength": 1.6295649341789367,
+          "areaStrain": -0.028984959801110377,
+          "volumeStrain": 0.00437748565641316,
+          "meshQuality": 0.7872037537435237,
           "branchAngles": [
-            63.133649616635545,
-            50.186680239068664,
-            76.74154377831515,
-            80.16733783665696,
-            109.07967821584256,
-            66.3913484882121,
-            39.71044390430885
+            89.24748470592381,
+            71.09110446029246,
+            80.23957218069837,
+            85.65644958011968,
+            73.19669017817778,
+            80.26015580064771,
+            67.22121610959344,
+            98.52529167820418,
+            57.74905638502345
           ],
-          "dendriticFieldArea": 22583.102070234425,
-          "axonLength": 695.5910019959366,
-          "dendriteLength": 1244.802830409714,
-          "totalLength": 1940.3938324056508,
-          "branches": 7,
-          "activeTips": 12,
-          "axonTips": 3,
-          "dendriteTips": 9,
-          "longestAxonPath": 474.3965305124057,
-          "longestDendritePath": 243.67904649931782,
-          "axonReach": 297.0222574751706,
-          "dendriteReach": 148.50246165490873,
+          "dendriticFieldArea": 22436.478659111057,
+          "axonLength": 811.7719765956548,
+          "dendriteLength": 1175.1379902111848,
+          "totalLength": 1986.9099668068397,
+          "branches": 9,
+          "activeTips": 14,
+          "axonTips": 4,
+          "dendriteTips": 10,
+          "longestAxonPath": 406.00840675332313,
+          "longestDendritePath": 199.2593793799754,
+          "axonReach": 222.49172342960958,
+          "dendriteReach": 156.73843812789582,
           "branchOrders": {
-            "0": 5,
+            "0": 7,
             "1": 2
           },
-          "shaftArea": 7864.107141333284,
-          "extensionRate": 70.15728860230293,
+          "shaftArea": 7895.443630074312,
+          "extensionRate": 72.05982443735097,
           "retractionRate": 0,
-          "meanConeSpeed": 5.846440716858577,
-          "membraneArea": 606.3417668426221,
-          "tension": 8.804464034161613,
-          "reserve": 0.736727964281644,
-          "supply": 0.7238421529276658,
+          "meanConeSpeed": 5.147130316953641,
+          "membraneArea": 607.143355558309,
+          "tension": 8.194624717369216,
+          "reserve": 0.7826580912997999,
+          "supply": 0.6677468309623109,
           "sholl": [
             {
               "radius": 15,
@@ -1509,11 +1494,11 @@
             },
             {
               "radius": 30,
-              "intersections": 9
+              "intersections": 5
             },
             {
               "radius": 45,
-              "intersections": 9
+              "intersections": 8
             },
             {
               "radius": 60,
@@ -1525,19 +1510,19 @@
             },
             {
               "radius": 120,
-              "intersections": 8
+              "intersections": 3
             },
             {
               "radius": 160,
-              "intersections": 2
+              "intersections": 3
             },
             {
               "radius": 200,
-              "intersections": 1
+              "intersections": 3
             },
             {
               "radius": 260,
-              "intersections": 3
+              "intersections": 0
             }
           ],
           "shollAxon": [
@@ -1555,27 +1540,27 @@
             },
             {
               "radius": 60,
-              "intersections": 2
-            },
-            {
-              "radius": 90,
-              "intersections": 2
-            },
-            {
-              "radius": 120,
-              "intersections": 2
-            },
-            {
-              "radius": 160,
-              "intersections": 2
-            },
-            {
-              "radius": 200,
               "intersections": 1
             },
             {
-              "radius": 260,
+              "radius": 90,
+              "intersections": 1
+            },
+            {
+              "radius": 120,
+              "intersections": 1
+            },
+            {
+              "radius": 160,
               "intersections": 3
+            },
+            {
+              "radius": 200,
+              "intersections": 3
+            },
+            {
+              "radius": 260,
+              "intersections": 0
             }
           ],
           "shollDendrite": [
@@ -1585,23 +1570,23 @@
             },
             {
               "radius": 30,
-              "intersections": 8
+              "intersections": 4
             },
             {
               "radius": 45,
-              "intersections": 8
+              "intersections": 7
             },
             {
               "radius": 60,
-              "intersections": 8
+              "intersections": 9
             },
             {
               "radius": 90,
-              "intersections": 6
+              "intersections": 7
             },
             {
               "radius": 120,
-              "intersections": 6
+              "intersections": 2
             },
             {
               "radius": 160,
@@ -1621,279 +1606,55 @@
     },
     "assays": [
       {
-        "sourceCellId": 5,
-        "deliveries": 45,
-        "edges": 35,
-        "targetResponses": [
-          {
-            "cellId": 0,
-            "depolarizationMV": 0,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 1,
-            "depolarizationMV": 0,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 2,
-            "depolarizationMV": 5.655951885455316,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 3,
-            "depolarizationMV": 0,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 4,
-            "depolarizationMV": 5.449598926092989,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 6,
-            "depolarizationMV": 13.431729704273565,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 7,
-            "depolarizationMV": 14.234565219782866,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          }
-        ]
-      },
-      {
-        "sourceCellId": 1,
-        "deliveries": 46,
-        "edges": 35,
-        "targetResponses": [
-          {
-            "cellId": 0,
-            "depolarizationMV": 5.290590193341103,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 2,
-            "depolarizationMV": 15.002533048934431,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 3,
-            "depolarizationMV": 0,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 4,
-            "depolarizationMV": 13.97646072075397,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 5,
-            "depolarizationMV": 2.018000318946413,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 6,
-            "depolarizationMV": 0,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 7,
-            "depolarizationMV": 4.8180537025480845,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          }
-        ]
-      },
-      {
-        "sourceCellId": 3,
-        "deliveries": 51,
-        "edges": 35,
-        "targetResponses": [
-          {
-            "cellId": 0,
-            "depolarizationMV": 0,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 1,
-            "depolarizationMV": 0,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 2,
-            "depolarizationMV": 0,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 4,
-            "depolarizationMV": 15.031644532585645,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 5,
-            "depolarizationMV": 0,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 6,
-            "depolarizationMV": 5.4906294070071695,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 7,
-            "depolarizationMV": 13.736078828411735,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          }
-        ]
-      },
-      {
         "sourceCellId": 2,
-        "deliveries": 5,
-        "edges": 35,
+        "deliveries": 173,
+        "edges": 67,
         "targetResponses": [
           {
             "cellId": 0,
-            "depolarizationMV": 0,
+            "depolarizationMV": 15.015331190873674,
             "hyperpolarizationMV": 0,
             "blockedDepolarizationMV": 0,
             "blockedHyperpolarizationMV": 0
           },
           {
             "cellId": 1,
-            "depolarizationMV": 0,
+            "depolarizationMV": 3.8709496789751796,
             "hyperpolarizationMV": 0,
             "blockedDepolarizationMV": 0,
             "blockedHyperpolarizationMV": 0
           },
           {
             "cellId": 3,
-            "depolarizationMV": 0,
+            "depolarizationMV": 15.02681269247001,
             "hyperpolarizationMV": 0,
             "blockedDepolarizationMV": 0,
             "blockedHyperpolarizationMV": 0
           },
           {
             "cellId": 4,
-            "depolarizationMV": 0,
+            "depolarizationMV": 5.377616700172524,
             "hyperpolarizationMV": 0,
             "blockedDepolarizationMV": 0,
             "blockedHyperpolarizationMV": 0
           },
           {
             "cellId": 5,
-            "depolarizationMV": 5.511963292159692,
+            "depolarizationMV": 15.472674847717087,
             "hyperpolarizationMV": 0,
             "blockedDepolarizationMV": 0,
             "blockedHyperpolarizationMV": 0
           },
           {
             "cellId": 6,
-            "depolarizationMV": 0,
+            "depolarizationMV": 1.8883697258991674,
             "hyperpolarizationMV": 0,
             "blockedDepolarizationMV": 0,
             "blockedHyperpolarizationMV": 0
           },
           {
             "cellId": 7,
-            "depolarizationMV": 0,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          }
-        ]
-      },
-      {
-        "sourceCellId": 4,
-        "deliveries": 5,
-        "edges": 35,
-        "targetResponses": [
-          {
-            "cellId": 0,
-            "depolarizationMV": 0,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 1,
-            "depolarizationMV": 0,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 2,
-            "depolarizationMV": 0,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 3,
-            "depolarizationMV": 0,
-            "hyperpolarizationMV": -1.486970629318023,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 5,
-            "depolarizationMV": 0,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 6,
-            "depolarizationMV": 0,
-            "hyperpolarizationMV": 0,
-            "blockedDepolarizationMV": 0,
-            "blockedHyperpolarizationMV": 0
-          },
-          {
-            "cellId": 7,
-            "depolarizationMV": 0,
+            "depolarizationMV": 8.10658536918276,
             "hyperpolarizationMV": 0,
             "blockedDepolarizationMV": 0,
             "blockedHyperpolarizationMV": 0
@@ -1902,12 +1663,12 @@
       },
       {
         "sourceCellId": 0,
-        "deliveries": 15,
-        "edges": 35,
+        "deliveries": 20,
+        "edges": 67,
         "targetResponses": [
           {
             "cellId": 1,
-            "depolarizationMV": 10.13366701464011,
+            "depolarizationMV": 10.094091481693347,
             "hyperpolarizationMV": 0,
             "blockedDepolarizationMV": 0,
             "blockedHyperpolarizationMV": 0
@@ -1928,7 +1689,7 @@
           },
           {
             "cellId": 4,
-            "depolarizationMV": 0,
+            "depolarizationMV": 9.774668335088947,
             "hyperpolarizationMV": 0,
             "blockedDepolarizationMV": 0,
             "blockedHyperpolarizationMV": 0
@@ -1942,7 +1703,7 @@
           },
           {
             "cellId": 6,
-            "depolarizationMV": 4.734688742650107,
+            "depolarizationMV": 0,
             "hyperpolarizationMV": 0,
             "blockedDepolarizationMV": 0,
             "blockedHyperpolarizationMV": 0
@@ -1958,12 +1719,12 @@
       },
       {
         "sourceCellId": 6,
-        "deliveries": 10,
-        "edges": 35,
+        "deliveries": 5,
+        "edges": 67,
         "targetResponses": [
           {
             "cellId": 0,
-            "depolarizationMV": 4.253738289078214,
+            "depolarizationMV": 0,
             "hyperpolarizationMV": 0,
             "blockedDepolarizationMV": 0,
             "blockedHyperpolarizationMV": 0
@@ -1998,7 +1759,231 @@
           },
           {
             "cellId": 5,
-            "depolarizationMV": 3.313237831187344,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 7,
+            "depolarizationMV": 5.633736424019183,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          }
+        ]
+      },
+      {
+        "sourceCellId": 4,
+        "deliveries": 45,
+        "edges": 67,
+        "targetResponses": [
+          {
+            "cellId": 0,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": -1.0024630610560763,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 1,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": -2.178823096665866,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 2,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 3,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": -3.586988904067141,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 5,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 6,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": -2.831479047978732,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 7,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          }
+        ]
+      },
+      {
+        "sourceCellId": 3,
+        "deliveries": 130,
+        "edges": 67,
+        "targetResponses": [
+          {
+            "cellId": 0,
+            "depolarizationMV": 15.157872614011161,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 1,
+            "depolarizationMV": 10.43579246863824,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 2,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 4,
+            "depolarizationMV": 14.16521901698745,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 5,
+            "depolarizationMV": 14.417192716428403,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 6,
+            "depolarizationMV": 5.174832743347935,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 7,
+            "depolarizationMV": 15.012837355540476,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          }
+        ]
+      },
+      {
+        "sourceCellId": 1,
+        "deliveries": 20,
+        "edges": 67,
+        "targetResponses": [
+          {
+            "cellId": 0,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 2,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 3,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 4,
+            "depolarizationMV": 4.997016238432849,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 5,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 6,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 7,
+            "depolarizationMV": 14.546742668722949,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          }
+        ]
+      },
+      {
+        "sourceCellId": 5,
+        "deliveries": 10,
+        "edges": 67,
+        "targetResponses": [
+          {
+            "cellId": 0,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 1,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 2,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 3,
+            "depolarizationMV": 9.211188521027132,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 4,
+            "depolarizationMV": 0,
+            "hyperpolarizationMV": 0,
+            "blockedDepolarizationMV": 0,
+            "blockedHyperpolarizationMV": 0
+          },
+          {
+            "cellId": 6,
+            "depolarizationMV": 0,
             "hyperpolarizationMV": 0,
             "blockedDepolarizationMV": 0,
             "blockedHyperpolarizationMV": 0
