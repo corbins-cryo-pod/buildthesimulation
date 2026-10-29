@@ -22,7 +22,7 @@ draft: false
 
 ARC-IM is ONWARD's investigational implanted spinal cord stimulation system, an IPG with a thoracic epidural lead, being tested for blood pressure instability after spinal cord injury. It is not approved. Hardware dimensions and contact counts are left blank because the sources read do not give them. The external ARC-EX system is out of scope.
 
-Company brief: [ONWARD Medical N.V.](/companies/64-onward-medical-company-brief/).
+Company brief: [ONWARD Medical N.V.](/companies/64-onward-medical-company-brief/). The [Empower BP pivotal study (NCT07147296)](/applications/176-onward-empower-bp-arc-im-pivotal/) page covers the registry record and the feasibility evidence.
 
 ## Identity
 
