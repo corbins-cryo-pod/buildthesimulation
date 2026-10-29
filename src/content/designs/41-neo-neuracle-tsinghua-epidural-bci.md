@@ -22,7 +22,7 @@ draft: false
 
 # NEO wireless epidural BCI (Neuracle, Tsinghua)
 
-NEO (Neural Electronic Opportunity) is a battery-free epidural ECoG implant for hand function after cervical spinal cord injury. Prof. Bo Hong's team at Tsinghua proposed the minimally invasive design in 2013, and Neuracle Medical Technology (Shanghai) developed the product. It was reported as the first implantable BCI to receive market approval, in China in 2026. China is a secondary region in this catalog. The 100% grasp-function improvement rate comes from the trial leads' press account, not a peer-reviewed paper checked here. Compare the epidural wireless [WIMAGINE implant](/devices/07-wimagine-cea-clinatec-epidural-wireless-ecog/) from France.
+NEO (Neural Electronic Opportunity) is a battery-free epidural ECoG implant for hand function after cervical spinal cord injury. Prof. Bo Hong's team at Tsinghua proposed the minimally invasive design in 2013, and Neuracle Medical Technology (Shanghai) developed the product. It was reported as the first implantable BCI to receive market approval, in China in 2026. China is a secondary region in this catalog. The 100% grasp-function improvement rate comes from the trial leads' press account, not a peer-reviewed paper checked here. Compare the epidural wireless [WIMAGINE implant](/devices/07-wimagine-cea-clinatec-epidural-wireless-ecog/) from France. The [NEO tetraplegia trials and NMPA registration](/applications/177-neo-neuracle-tetraplegia-registration-trial/) page covers the registry records and the approval reporting.
 
 ## Identity
 
