@@ -21,7 +21,7 @@ draft: false
 
 # StairMed WRS ultra-flexible wireless BCI
 
-StairMed's WRS pairs ultra-flexible penetrating electrodes with a wireless implant. This sheet separates three kinds of source: the ClinicalTrials.gov records, the Nature Communications 2026 intraoperative paper, and company or press statements. The registry gives only the model name WRS64. Chinese-language company disclosures resolve the channel question: the first-generation WRS01 chronic implant has 64 channels and the 256-channel figure belongs to the newer WRS02.
+StairMed's WRS pairs ultra-flexible penetrating electrodes with a wireless implant. This sheet separates three kinds of source: the ClinicalTrials.gov records, the Nature Communications 2026 intraoperative paper, and company or press statements. The registry gives only the model name WRS64. Chinese-language company disclosures resolve the channel question: the first-generation WRS01 chronic implant has 64 channels and the 256-channel figure belongs to the newer WRS02. The [WRS early human trials](/applications/179-stairmed-wrs-early-human-trials/) page covers the three registered studies.
 
 Company brief: [StairMed](/companies/12-stairmed-company-brief/).
 
