@@ -21,7 +21,7 @@ draft: false
 
 # High-density subdural ECoG array with percutaneous connector (PMT array, Blackrock connector)
 
-A clinical-style surface grid, laid on the pial surface and wired out through the skull. Two speech studies describe it in the same terms and differ in electrode count and spacing.
+A clinical-style surface grid, laid on the pial surface and wired out through the skull. Two speech studies describe it in the same terms and differ in electrode count and spacing. The [UCSF ECoG speech neuroprosthesis study](/applications/181-ucsf-ecog-speech-neuroprosthesis-study/) page covers the registered trial behind both papers.
 
 ## Identity
 
