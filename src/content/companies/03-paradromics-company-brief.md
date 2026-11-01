@@ -2,7 +2,7 @@
 title: "Paradromics (company brief)"
 order: 3
 pubDate: 2026-02-02
-updatedDate: 2026-10-24
+updatedDate: 2026-11-01
 lastVerified: 2026-10-24
 description: "Paradromics’ Connexus BCI: high-channel-count intracortical recording aimed at restoring speech and computer control, plus what’s known publicly about the company."
 region: "American"
@@ -118,3 +118,4 @@ Paradromics looks like a classic “high‑bandwidth intracortical” bet:
 - *Speech (Sep 14, 2026):* the company reports the first participant used Connexus for real-time speech. Source: <https://paradromics.com/news/paradromics-achieves-real-time-speech-connexus-brain-computer-interface/>
 - *Durability (Oct 8, 2026, company press release):* Paradromics reports more than four years of stable neural recording and decoding in two sheep implanted with cortical modules described as representative of the electrode technology in the Connexus BCI. The release says spike signal-to-noise ratio stayed stable in both animals, no electrode-array migration was observed, and the animals remain healthy. A separate ongoing study of the full platform in six sheep shows stable spike SNR for nearly two years. This is preclinical, from two animals, and company-reported; no data tables were published in the release. Source: <https://paradromics.com/news/paradromics-demonstrates-four-years-of-stable-neural-recording-in-major-brain-computer-interface-durability-milestone/>
 - *Imaging partnership (Oct 19, 2026):* Paradromics and Siemens Healthineers announced a strategic initiative to develop an end-to-end multimodal imaging workflow intended to support patient assessment, surgical planning, BCI implantation and long-term outcome monitoring. Specific imaging modalities were not disclosed in the announcement. Sources: <https://paradromics.com/news/paradromics-siemens-healthineers-launch-strategic-initiative-build-advanced-imaging-foundation-for-the-future-of-brain-computer-interfaces/> and <https://www.fiercebiotech.com/medtech/siemens-healthineers-partners-paradromics-build-out-new-imaging-system-support-bcis>
+- *Recruitment expansion (Oct 26, 2026, company announcement):* the FDA approved a Connect-One protocol amendment removing the requirement that participants live within a four-hour drive of a study site, opening recruitment nationwide. Sites remain UC Davis, Mass General Brigham and University of Michigan. The FDA does not publish early-feasibility protocol amendments, so this is company-announced. Sources: <https://www.businesswire.com/news/home/20261026275192/en/Paradromics-Receives-FDA-Approval-to-Expand-Connexus-Brain-Computer-Interface-Clinical-Study-Recruitment-Nationwide> and <https://www.mobihealthnews.com/news/paradromics-gets-fda-nod-expand-brain-implant-study-recruitment>
