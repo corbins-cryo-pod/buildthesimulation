@@ -2,7 +2,7 @@
 title: "Precision Neuroscience (company brief)"
 order: 5
 pubDate: 2026-02-02
-updatedDate: 2026-10-17
+updatedDate: 2026-11-01
 lastVerified: 2026-10-17
 description: "Precision Neuroscience’s Layer 7 Cortical Interface: a high-density, thin-film cortical surface array aimed at minimally invasive, removable, high-bandwidth BCI."
 region: "American"
@@ -106,3 +106,7 @@ Precision’s own history highlights:
 
 - *Leadership (Oct 15, 2026, company press release):* Konstantinos Alataris, founder and former CEO of Nevro and a Precision board member since May 2025, joined as president. Katherine Neuenfeldt, who led the U.S. launch and market access strategy for Nevro's Senza spinal cord stimulation system, joined as senior vice president, commercial strategies. The release frames both hires around commercialization and reimbursement following the Series D. Source: <https://www.globenewswire.com/news-release/2026/10/15/3381700/0/en/precision-neuroscience-appoints-nevro-founder-konstantinos-alataris-as-president-and-katherine-neuenfeldt-as-senior-vice-president-commercial-strategies.html>
 - *Valuation (reported, not confirmed by the company):* The New York Times reported the Series D valued Precision at about $1 billion, per The Next Web (Sep 24, 2026). Neither company release used here states a valuation. Source: <https://thenextweb.com/news/precision-neuroscience-250m-series-d-1bn-valuation-ackman>
+
+### Oct 29, 2026 update: first international site (reviewed Nov 1, 2026)
+
+- *Abu Dhabi MOU (Oct 29, 2026, company press release):* Precision announced its first international clinical research site, a two-year memorandum of understanding with Cleveland Clinic Abu Dhabi, signed Oct 21 at the Abu Dhabi Future Health Summit, to evaluate the Layer 7 Cortical Interface in collaborative research. The same release updates the patient count to more than 110 patient procedures across 18 medical institutions (the earlier figure was more than 100). Company-reported; no independent coverage found yet. Source: <https://www.globenewswire.com/news-release/2026/10/29/3391322/0/en/precision-neuroscience-expands-clinical-network-beyond-the-u-s-with-first-international-site-in-abu-dhabi.html>
