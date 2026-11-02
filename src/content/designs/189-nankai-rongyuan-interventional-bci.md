@@ -23,7 +23,7 @@ draft: false
 
 Company brief: [Tianjin Rongyuan](/companies/73-tianjin-rongyuan-company-brief/).
 
-This is a different system from the [Stentrode](/devices/03-stentrode-synchron/); the Chinese group describes its own "interventional BCI" sensors, stents, catheters and wireless unit as independently developed. Nearly everything below comes from Nankai University news pages and one peer-reviewed abstract. No paper describing the human device's electrode geometry, materials or channel count was found, so those cells are blank.
+This is a different system from the [Stentrode](/devices/03-stentrode-synchron/); the Chinese group describes its own "interventional BCI" sensors, stents, catheters and wireless unit as independently developed. Nearly everything below comes from Nankai University news pages and one peer-reviewed abstract. No paper describing the human device's electrode geometry, materials or channel count was found, so those cells are blank. The [first-in-human safety study](/applications/183-nankai-rongyuan-interventional-bci-first-in-human/) page covers the registry record.
 
 ## Identity
 
