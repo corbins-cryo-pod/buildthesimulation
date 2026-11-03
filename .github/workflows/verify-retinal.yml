@@ -27,7 +27,10 @@ permissions:
   contents: read
 jobs:
   reference-and-browser:
-    runs-on: ubuntu-latest
+    # The native Jansonius reference calls glibc tanhf. Newer libm versions
+    # change float32 trajectories beyond the immutable reference tolerance.
+    # Upgrade this runtime only after a separate reference compatibility study.
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     env:
       OPENBLAS_NUM_THREADS: '1'

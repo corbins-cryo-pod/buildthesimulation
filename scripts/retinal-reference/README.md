@@ -7,7 +7,9 @@ package, and the reference generator never imports the JavaScript implementation
 
 ## Reproduce
 
-Use Python 3.12 from the repository root:
+Use Python 3.12 on **Ubuntu 24.04 (glibc 2.39)** from the repository root.
+The workflow pins that OS because the upstream native model also depends on
+system `libm`, which is not pinned by `requirements.txt`:
 
 ```sh
 python3 -m venv /tmp/retinal-reference-venv
@@ -74,11 +76,57 @@ coordinate samples, and zero controls do not change.
 Separately, `OPENBLAS_CORETYPE=Haswell` reproduces the same three current-density
 differences seen in CI, with maximum relative error 2.112×10⁻¹⁶. All potential
 and field-vector values stay exact. This is a vector-norm rounding difference;
-the elliptic-integral calculations are still compared exactly. The 16 verifier
+the elliptic-integral calculations are still compared exactly. The verifier
 regression tests exercise these separate acceptance rules and reject corrupted
 storage, provenance changes, topology/input changes, nonfinite values, and
 errors beyond each bound. `convergence.py` remains a separate discretization
 study, described below.
+
+See [the reproducible runtime investigation](../../docs/retinal-implant/NATIVE_RUNTIME.md)
+for library hashes, exact commands, and selective-function controls.
+
+### System math-library compatibility
+
+Run 41675963989 (merge `1a21c8b`) failed after `ubuntu-latest` moved to
+Ubuntu 26.04: `RE.xy` differed by 0.0079345703125 μm, above 0.004 μm.
+The retinal generator, assets, fixtures and pinned numerical dependencies were
+unchanged from passing run 40363750602 on Ubuntu 24.04. This was native reference
+reproduction, before the browser/GPU comparison.
+
+A controlled local reproduction with Python 3.12.14, the pinned dependencies,
+and an AMD EPYC 9V45 isolated the difference to system `libm`. The unmodified
+upstream `fast_jansonius` calls float32 `tanhf` when calculating the Jansonius
+coefficients `b` and `c`; those coefficients feed the radial power and angle
+calculation. For example, the actual coefficient input 2.0864861011505127 returns
+0.9696546792984009 with Ubuntu 24.04's `tanhf` and 0.9696547389030457 with
+Ubuntu 26.04's. These small coefficient changes propagate into the trajectories.
+
+| Controlled generation | Maximum RE.xy difference (μm) | Full native verifier |
+| --- | ---: | --- |
+| Host glibc 2.41 or Ubuntu 26.04 libm | 0.0079345703125 | Reject |
+| Ubuntu 24.04 libm, otherwise identical process | 0 | Pass |
+| Only `tanhf` substituted from Ubuntu 24.04 | 0 | Pass |
+| Only `expf`, `sinf`, or `cosf` substituted, separately | 0.0079345703125 | Reject |
+| Ubuntu 24.04 libm, NumPy AVX-512 dispatch disabled | 0.001953125 | Pass |
+| Ubuntu 26.04 libm, NumPy AVX-512 dispatch disabled | 0.007080078125 | Reject |
+
+The Ubuntu 24.04 library restored the exact stored geometry SHA-256
+`3e0a5a4e8ebf3aa6e1576452b2d19e97ebdaca701414b6df25049b907ef2a79d`.
+Disabling `X86_V4,AVX512_ICL,AVX512_SPR` with that library restored the exact
+older CI checksum `4d70194b9dc6ee14584693ea47b0c4c037898baa936209d31b2d9ebd2d1b499e`.
+The newer library's local checksum was
+`b584732ea5e4027bc8b879d830eb7681867752b38a5629d79b3700d29ed82700`;
+the failing CI checksum was different, so identical bytes on that runner are
+not claimed. Substitution here was a diagnostic experiment, not a production
+patch to the independent upstream model.
+
+The workflow therefore explicitly uses `ubuntu-24.04`; it does not widen any
+bound, regenerate the goldens, or modify the upstream mathematics. A newer
+math library is not necessarily less accurate, but adopting its numerical
+reference requires a separate compatibility study. Future OS upgrades must
+recheck this reference contract. The verifier reports libc/platform information,
+and a regression test ensures the observed 0.0079345703125 μm drift remains
+rejected.
 
 ## Implemented models
 
