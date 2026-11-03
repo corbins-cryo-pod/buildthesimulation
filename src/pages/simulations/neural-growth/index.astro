@@ -1,0 +1,14 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+<Layout pageTitle="Neural Growth Laboratory · V5" subtitle="" description="A unified neural growth laboratory: deformable cells, branching neurites, transported material, tissue fields, checkpoint replay and matched experiments." wide compactHeader>
+  <section class="v5-page">
+    <div class="lab-top"><div><span class="kicker">Experimental biology / Neural Growth V5</span><h1>One cell. One continuous model.</h1></div><a href="/labs/neural-growth-v5/index.html" target="_blank" rel="noopener">Open full workspace ↗</a></div>
+    <p class="intro">Grow, perturb and inspect neurons in one unified laboratory. Follow the same geometry from the microscope to structural inspection, then compare matched experiments on complete saved states.</p>
+    <iframe src="/labs/neural-growth-v5/index.html" title="Neural Growth V5 simulation" allow="fullscreen" loading="eager"></iframe>
+    <div class="notes"><p>Exploratory mechanochemical model. Phase and fluorescence are illustrative renderings. Software verification is distinct from biological calibration.</p><p><a href="/labs/neural-growth-v5/MODEL.md">Model, equations &amp; limitations</a> · <a href="/labs/neural-growth-v5/verification.json">Verification results</a> · <a href="/simulations/">All simulations</a></p></div>
+  </section>
+</Layout>
+<style>
+  .v5-page{padding-top:18px}.lab-top{display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--border);padding-top:18px}.kicker{font:11px var(--font-heading);text-transform:uppercase;letter-spacing:.1em}.lab-top h1{font-size:clamp(25px,3vw,38px);margin:8px 0 12px}.lab-top>a{font:11px var(--font-heading);white-space:nowrap;text-underline-offset:4px}.intro{max-width:100ch;font:17px/1.5 var(--font-body);margin:0 0 22px}iframe{width:100%;height:1430px;border:1px solid var(--border);display:block;background:#f5f1e6}.notes{display:flex;gap:24px;justify-content:space-between;font-size:12px;line-height:1.5;padding:8px 0}.notes p{max-width:80ch}.notes a{color:inherit;text-underline-offset:3px}@media(max-width:900px){iframe{height:1850px}.lab-top{align-items:flex-start}.notes{display:block}}@media(max-width:650px){iframe{height:2630px}.lab-top{display:block}.lab-top>a{display:inline-block;margin-bottom:14px}.intro{font-size:15px}}
+</style>
