@@ -330,14 +330,15 @@ export async function verifyRetinaBrowser(mode = "electrical") {
     const cable = await exportJSON();
     assert(cable.cable.compartments > 50 && Number.isFinite(cable.cable.peak));
     await click('[data-rtl="run"]');
+    // Check and cancel in the same browser task. A worker can finish between
+    // separate CDP round trips, turning the cancellation check into a race.
     await until(
       () =>
         evaluate(
-          `document.querySelector('[data-retina-lab]').dataset.state==='running'`,
+          `(()=>{if(document.querySelector('[data-retina-lab]').dataset.state!=='running')return false;document.querySelector('[data-rtl="cancel"]').click();return true})()`,
         ),
       10000,
     );
-    await click('[data-rtl="cancel"]');
     assert.equal(
       await evaluate(
         `document.querySelector('[data-retina-lab]').dataset.state`,

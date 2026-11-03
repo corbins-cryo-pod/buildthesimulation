@@ -101,6 +101,18 @@ class ReferenceReproductionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Geometry difference exceeds"):
             self.compare(candidate)
 
+    def test_observed_new_libm_coordinate_drift_is_rejected(self):
+        # Ubuntu 26.04 CI reported this exact float32 RE.xy discrepancy.
+        # A runtime compatibility fix must not quietly accept it as roundoff.
+        candidate = self.candidate()
+        values = candidate["arrays"]["RE.xy"]
+        index = np.argmin(np.abs(values))
+        values[index] += np.float32(0.0079345703125)
+        self.assertGreater(abs(float(values[index]) - float(self.stored["arrays"]["RE.xy"][index])),
+                           verification.GEOMETRY_ABSOLUTE_UM)
+        with self.assertRaisesRegex(ValueError, "Geometry difference exceeds 0.004 um: RE.xy"):
+            self.compare(candidate)
+
     def test_percept_maximum_above_bound_is_rejected(self):
         candidate = self.candidate()
         values = candidate["percepts"]["scoreboard-center"]

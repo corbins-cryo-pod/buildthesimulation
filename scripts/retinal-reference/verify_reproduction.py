@@ -201,6 +201,7 @@ def main():
     args = parser.parse_args()
     require(args.generated.resolve() != ROOT, "Regenerate into a separate directory, preserving committed references")
     print("Reference runtime: " + canonical(dict(python=platform.python_version(), numpy=np.__version__,
+          platform=platform.platform(), libc=platform.libc_ver(),
           disabledCpuFeatures=os.environ.get("NPY_DISABLE_CPU_FEATURES", ""),
           openblasCoreType=os.environ.get("OPENBLAS_CORETYPE", ""))))
     stored, regenerated = load_reference(ROOT), load_reference(args.generated)
