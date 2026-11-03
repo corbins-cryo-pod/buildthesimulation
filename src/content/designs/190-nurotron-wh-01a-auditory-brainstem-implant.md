@@ -22,7 +22,7 @@ draft: false
 
 Company brief: [Zhejiang Nurotron](/companies/74-zhejiang-norkang-company-brief/). General class entry: [Auditory brainstem implant](/devices/55-auditory-brainstem-implant/).
 
-Specifications below are Nurotron's own statements unless marked otherwise. Neither company page nor the hospital release links a peer-reviewed engineering paper.
+Specifications below are Nurotron's own statements unless marked otherwise. The [NF2 phase III trial](/applications/184-nurotron-wh-01a-abi-nf2-phase-iii/) page covers the registry record and the approval. Neither company page nor the hospital release links a peer-reviewed engineering paper.
 
 ## Identity
 
