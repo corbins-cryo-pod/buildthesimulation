@@ -1,0 +1,976 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Cell Behavior Laboratory · V3</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+/* Layout: a microscope workstation. The coverslip (live stage) fills the left; the rail on the right holds
+   scenarios, channels and overlays, the selected cell (side view, stage, supply), culture readouts, the
+   spike raster and the parameters. Stacks into one column on phones. Deliberately single dark theme. */
+:root {
+  color-scheme: dark;
+  --bg: #0a0d10; --rail: #10151a; --rail-2: #151c22; --line: #222b33;
+  --fg: #d9dfe4; --muted: #8593a0; --faint: #56636e;
+  --mt: #6fd8bf; --actin: #ff5d8f; --adh: #f0b74a; --sel: #9fbaff;
+  --minor: #88aed3; --axon: #d79ce6; --dend: #8fd6a9; --glia: #d6a86a; --ca: #5cf08f;
+  --f-ui: "Barlow", "Segoe UI", system-ui, sans-serif;
+  --f-label: "Barlow Semi Condensed", "Arial Narrow", "Segoe UI", sans-serif;
+  --f-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --r: 10px;
+}
+html, body { height: 100%; }
+[hidden] { display: none !important; }
+body { background: var(--bg); color: var(--fg); font-family: var(--f-ui); font-size: 14px; line-height: 1.45; }
+* { box-sizing: border-box; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--sel); outline-offset: 2px; }
+.app { height: 100%; display: grid; grid-template-columns: minmax(0, 1fr) 364px; gap: 14px; padding-block: 14px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* stage */
+.stage { position: relative; min-width: 0; min-height: 0; border-radius: var(--r); overflow: hidden; background: #0c131a; border: 1px solid var(--line); }
+.stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
+.stage canvas.dragging { cursor: grabbing; }
+.hud { position: absolute; pointer-events: none; font-family: var(--f-data); font-size: 12px; color: #e9eef2; text-shadow: 0 1px 2px rgba(0,0,0,.65); }
+.hud.tl { top: 12px; left: 14px; display: grid; gap: 2px; }
+.hud .clock { font-size: 20px; font-weight: 500; letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+.hud .chan { color: #b9c4cd; text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
+.hud.tr { top: 12px; right: 14px; text-align: right; color: #b9c4cd; font-variant-numeric: tabular-nums; }
+.hud .hint { margin-top: 4px; font-size: 11px; color: #a9b5bf; }
+.legend { position: absolute; top: 64px; left: 14px; display: flex; flex-wrap: wrap; gap: 4px 12px; font-family: var(--f-data); font-size: 11px; color: #c5ced6; pointer-events: none; max-width: 60%; text-shadow: 0 1px 2px rgba(0,0,0,.7); }
+.legend i { display: inline-block; width: 14px; height: 3px; border-radius: 2px; vertical-align: 3px; margin-right: 5px; }
+.brief { position: absolute; left: 12px; right: 150px; bottom: 12px; pointer-events: none; }
+.brief p { margin: 0; max-width: 66ch; background: rgba(8,12,16,.74); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.07); border-radius: 8px; padding: 8px 11px; color: #cfd8df; font-size: 13px; pointer-events: auto; }
+.brief p b { font-family: var(--f-label); font-weight: 600; letter-spacing: .03em; color: #fff; margin-right: 6px; }
+.busy { position: absolute; left: 50%; top: 14px; transform: translateX(-50%); font-family: var(--f-data); font-size: 12px; background: rgba(8,12,16,.8); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; color: var(--mt); }
+
+/* rail */
+.rail { min-width: 0; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-right: 2px; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+.block { background: var(--rail); border: 1px solid var(--line); border-radius: var(--r); padding: 12px; display: grid; gap: 10px; }
+.brand { display: grid; gap: 4px; padding: 2px 2px 4px; }
+.brand h1 { margin: 0; font-family: var(--f-label); font-weight: 700; font-size: 22px; line-height: 1.1; text-wrap: balance; }
+.brand h1 span { color: var(--mt); }
+.brand p { margin: 0; color: var(--muted); font-size: 13px; }
+.label { font-family: var(--f-label); font-weight: 600; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.label small { font-family: var(--f-data); letter-spacing: 0; text-transform: none; font-weight: 400; color: var(--faint); font-size: 11px; }
+.groups { display: grid; gap: 8px; }
+.grp h4 { margin: 0 0 4px; font-family: var(--f-data); font-weight: 400; font-size: 10.5px; color: var(--faint); letter-spacing: .05em; text-transform: uppercase; }
+.scen { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.scen button { text-align: left; background: var(--rail-2); border: 1px solid var(--line); border-radius: 7px; padding: 5px 8px; cursor: pointer; display: grid; grid-template-columns: auto 1fr; gap: 0 7px; align-items: baseline; }
+.scen button span:first-child { font-family: var(--f-data); font-size: 10.5px; color: var(--faint); }
+.scen button span:last-child { font-family: var(--f-label); font-weight: 600; font-size: 13.5px; }
+.scen button:hover { border-color: #33414d; }
+.scen button[aria-pressed="true"] { border-color: var(--mt); background: rgba(111,216,191,.09); }
+.scen button[aria-pressed="true"] span:first-child { color: var(--mt); }
+.transport { display: grid; grid-template-columns: auto auto auto 1fr; gap: 6px; align-items: center; }
+.btn { background: var(--rail-2); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; cursor: pointer; font-family: var(--f-label); font-weight: 600; font-size: 13px; white-space: nowrap; }
+.btn:hover { border-color: #3a4855; }
+.btn.primary { background: var(--mt); color: #06221b; border-color: var(--mt); min-width: 60px; }
+.btn.small { padding: 3px 9px; font-size: 12px; }
+.speed { display: grid; gap: 2px; min-width: 0; }
+.seg { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--rail-2); border: 1px solid var(--line); border-radius: 8px; padding: 3px; gap: 3px; }
+.seg button { border: 0; background: transparent; border-radius: 6px; padding: 5px 2px; cursor: pointer; font-family: var(--f-label); font-weight: 600; font-size: 12.5px; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: #24303a; color: var(--fg); }
+.chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.chip { border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 2px 9px 2px 7px; cursor: pointer; font-size: 12px; color: var(--muted); display: inline-flex; gap: 6px; align-items: center; }
+.chip i { width: 8px; height: 8px; border-radius: 50%; background: var(--c, var(--faint)); opacity: .3; }
+.chip[aria-pressed="true"] { color: var(--fg); border-color: #34424e; }
+.chip[aria-pressed="true"] i { opacity: 1; }
+.side canvas { width: 100%; height: 120px; display: block; border-radius: 8px; background: #0b1117; }
+.kv { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 10px; margin: 0; }
+.kv div { display: grid; min-width: 0; }
+.kv dt { font-family: var(--f-label); font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--faint); }
+.kv dd { margin: 0; font-family: var(--f-data); font-size: 14px; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.stageline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; }
+.stageline div { border-radius: 4px; padding: 3px 4px 2px; background: var(--rail-2); border: 1px solid var(--line); font-family: var(--f-data); font-size: 10px; color: var(--faint); line-height: 1.25; min-width: 0; }
+.stageline div b { display: block; font-family: var(--f-label); font-size: 12px; color: var(--muted); font-weight: 600; }
+.stageline div.on { border-color: var(--mt); color: var(--fg); }
+.stageline div.on b { color: var(--mt); }
+.stageline div.now { background: rgba(111,216,191,.12); }
+.bars { display: grid; gap: 5px; }
+.bar { display: grid; grid-template-columns: 92px 1fr 46px; gap: 8px; align-items: center; font-size: 12px; color: var(--muted); }
+.bar span:last-child { font-family: var(--f-data); font-size: 11px; text-align: right; }
+.bar .track { height: 6px; border-radius: 3px; background: var(--rail-2); overflow: hidden; }
+.bar .track i { display: block; height: 100%; width: 0; background: var(--c, var(--mt)); }
+.cellname { font-family: var(--f-label); font-weight: 600; font-size: 15px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.cellname small { font-family: var(--f-data); font-weight: 400; font-size: 11px; color: var(--muted); }
+.rowbtns { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.note { font-size: 12px; color: var(--muted); font-family: var(--f-data); }
+#sholl, #raster { width: 100%; display: block; border-radius: 6px; background: #0b1117; }
+#sholl { height: 74px; } #raster { height: 120px; }
+details.params { padding: 0; gap: 0; }
+details.params > summary { list-style: none; cursor: pointer; padding: 12px; display: flex; justify-content: space-between; align-items: baseline; }
+details.params > summary::-webkit-details-marker { display: none; }
+details.params > summary::after { content: "＋"; color: var(--faint); font-family: var(--f-data); }
+details.params[open] > summary::after { content: "－"; }
+.pgroup { border-top: 1px solid var(--line); padding: 10px 12px 12px; display: grid; gap: 7px; }
+.pgroup h3 { margin: 0; font-family: var(--f-label); font-weight: 600; font-size: 13px; color: #c3ccd4; }
+.prow { display: grid; grid-template-columns: 118px minmax(0, 1fr) 70px; gap: 8px; align-items: center; }
+.prow label { font-size: 13px; color: #b6c1ca; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.prow output { font-family: var(--f-data); font-size: 11.5px; text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+input[type=range] { width: 100%; accent-color: var(--mt); height: 18px; margin: 0; }
+input[type=checkbox] { accent-color: var(--mt); width: 16px; height: 16px; margin: 0; justify-self: start; }
+select { background: var(--rail-2); border: 1px solid var(--line); border-radius: 6px; padding: 3px 6px; font-size: 12.5px; }
+.notes { color: #b4bfc8; font-size: 13px; }
+.notes ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.notes b { color: var(--fg); font-weight: 600; }
+.notes a { color: var(--mt); }
+textarea#swcout { width: 100%; height: 70px; font-family: var(--f-data); font-size: 11px; background: #0b1117; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; }
+@media (max-width: 900px) {
+  html, body { height: auto; }
+  .app { height: auto; grid-template-columns: minmax(0, 1fr); }
+  .stage { height: 64vh; min-height: 360px; }
+  .rail { overflow: visible; }
+  .brief { right: 12px; bottom: 40px; } .brief p { font-size: 12px; }
+  .hud .hint, .legend { display: none; }
+}
+@media (max-width: 520px) { .hud.tr { display: none; } .stageline div { font-size: 9.5px; } }
+</style>
+<style id="site-lab-adaptation">
+@font-face{font-family:LabLabels;src:url('/fonts/twentieth-century/Twentieth-Century-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+html,body{margin:0;min-width:0} [hidden]{display:none!important}
+:root{--f-label:LabLabels,'Arial Narrow',sans-serif;--f-display:LabLabels,'Arial Narrow',sans-serif;--r:3px}
+.brand h1,.brand{letter-spacing:.045em;text-transform:uppercase}.label,.sec h2{letter-spacing:.08em}
+.block,.stage,.btn,.run,.scen button{border-radius:3px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #bca47f;outline-offset:3px}
+.provenance{padding:10px 12px;border:1px solid #65583f;background:#211d16;color:#ead8b9;font:12px/1.5 system-ui,sans-serif;margin:0}
+#provenanceBanner{margin:8px 0}.brand p{max-width:50ch}
+@media(max-width:860px){.panel,.rail{overflow:visible}.app{height:auto;min-height:100%}body{height:auto}}
+</style>
+</head><body>
+
+<div class="app">
+  <section class="stage" id="stage" aria-label="Simulation stage">
+    <canvas id="cv"></canvas>
+    <div class="hud tl"><span class="clock" id="clock">00:00:00</span><span class="chan" id="chan">Anatomy</span></div>
+    <div class="hud tr"><div id="perf">–</div><div class="hint">drag pan · wheel zoom · click select · double-click drop a cell · Alt-click cut a neurite</div></div>
+    <div class="legend" id="legend"></div>
+    <div class="busy" id="busy" hidden></div>
+    <div class="brief"><p id="blurb"></p></div>
+  </section>
+
+  <aside class="rail">
+    <div class="brand">
+      <h1>Cell Behavior <span>V3</span></h1>
+      <p>Supply-limited growth, neurite identity and cell types, motor-clutch cones, a patterned coverslip, glia, death and electrical activity.</p>
+    </div>
+
+    <div class="block">
+      <div class="label">Scenario <small>15 presets</small></div>
+      <div class="groups" id="scen"></div>
+      <div class="transport">
+        <button class="btn primary" id="play">Pause</button>
+        <button class="btn" id="ff" title="Fast-forward six simulated hours">+6 h</button>
+        <button class="btn" id="reset">Reset</button>
+        <div class="speed">
+          <div class="label"><span>Speed</span><small id="speedv">8 min/s</small></div>
+          <input type="range" id="speed" min="0" max="100" step="1" value="50" aria-label="Simulated minutes per second">
+        </div>
+      </div>
+      <div class="prow" id="countrow" hidden><label for="count">Cells seeded</label><input type="range" id="count" min="20" max="400" step="10" value="150"><output id="countv">150</output></div>
+      <div class="prow"><label for="droptype">Double-click drops</label><select id="droptype"></select><span></span></div>
+    </div>
+
+    <div class="block">
+      <div class="label">Channel</div>
+      <div class="seg" id="mode">
+        <button data-m="anatomy" aria-pressed="true">Anatomy</button>
+        <button data-m="phase" aria-pressed="false">Phase</button>
+        <button data-m="fluo" aria-pressed="false">Actin/EB1</button>
+        <button data-m="calcium" aria-pressed="false">Calcium</button>
+      </div>
+      <div class="chips" id="chips">
+        <button class="chip" data-k="mts" aria-pressed="true" style="--c: var(--mt)"><i></i>Microtubules</button>
+        <button class="chip" data-k="probes" aria-pressed="true" style="--c: var(--mt)"><i></i>Probes</button>
+        <button class="chip" data-k="waves" aria-pressed="true" style="--c: var(--actin)"><i></i>Actin</button>
+        <button class="chip" data-k="adh" aria-pressed="false" style="--c: var(--adh)"><i></i>Adhesions</button>
+        <button class="chip" data-k="substrate" aria-pressed="true" style="--c: #8a9a5b"><i></i>Substrate</button>
+        <button class="chip" data-k="field" aria-pressed="true" style="--c: #f2c14e"><i></i>Cues</button>
+        <button class="chip" data-k="stiffness" aria-pressed="false" style="--c: #6aa0ff"><i></i>Stiffness</button>
+        <button class="chip" data-k="graph" aria-pressed="false" style="--c: var(--ca)"><i></i>Synapse graph</button>
+        <button class="chip" data-k="follow" aria-pressed="false" style="--c: var(--sel)"><i></i>Follow</button>
+      </div>
+    </div>
+
+    <div class="block side">
+      <div class="cellname"><span id="cname">No cell selected</span><small id="cmeta"></small></div>
+      <canvas id="sidecv" aria-label="Cross-section of the selected cell on glass"></canvas>
+      <div class="stageline" id="stageline"></div>
+      <div class="bars" id="cbars"></div>
+      <dl class="kv" id="ckv"></dl>
+      <canvas id="sholl" aria-label="Sholl profile of the selected cell"></canvas>
+      <div class="rowbtns"><button class="btn small" id="cutbtn" title="Transect the selected cell's axon 10 µm from the soma">Cut axon</button><button class="btn small" id="swcbtn">Copy SWC</button><span class="note" id="swcnote">Sholl: crossings per 10 µm ring</span></div>
+      <textarea id="swcout" hidden readonly></textarea>
+    </div>
+
+    <div class="block">
+      <div class="label">Culture <small id="ms">–</small></div>
+      <dl class="kv" id="pkv"></dl>
+    </div>
+
+    <div class="block" id="rasterblock">
+      <div class="label">Spike raster <small id="rastercap">electrical time</small></div>
+      <canvas id="raster" aria-label="Spike raster of the culture"></canvas>
+      <div class="note" id="rasternote"></div>
+    </div>
+
+    <details class="block params" id="params">
+      <summary class="label">Parameters <small>live</small></summary>
+      <div id="pgroups"></div>
+    </details>
+
+    <details class="block params">
+      <summary class="label">What changed in v3</summary>
+      <div class="pgroup notes">
+        <ul>
+          <li><b>Axon identity is revocable.</b> A sibling that out-grows the axon by 12 µm for 150 min takes over. Cutting an axon clears its label, so the longest remaining neurite becomes the new axon (Cut axon button, Alt-click, or the Axon transection scenario).</li>
+          <li><b>Stages follow growth.</b> Dendrites start once the axon is long enough and spines once the dendrites are, instead of on fixed timers. Stage 3 is dated from the start of the winning neurite's lead, as time-lapse studies date it.</li>
+          <li><b>Calibration, not validation.</b> Approximate, author-selected targets inspired by Dotti et al. 1988: axon about 19 h, slow dendrites (≈12 µm a day each) and an axon several times longer than any dendrite.</li>
+          <li><b>Death is a hazard.</b> Starved neurons die at random, sooner the deeper the deficit, instead of in one timed wave.</li>
+          <li><b>Glia act at a distance.</b> Astrocytes support nearby neurons through a diffusible factor, and Feeder layer adds uniform support as in the Banker sandwich culture.</li>
+          <li><b>Stiffness matters.</b> A slipping clutch wastes the tip's tubulin, so DRG axons grow longest at intermediate stiffness.</li>
+          <li><b>Step-size consistent.</b> Mechanics now advance in simulated time, so changing the time step no longer changes neurite lengths.</li>
+          <li><b>Turning assay.</b> The pipette sits about 45° off the axons' path, as in Ming et al. 1997, so turning can be measured against each axon's own heading.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="block params">
+      <summary class="label">From v2</summary>
+      <div class="pgroup notes">
+        <ul>
+          <li><b>Supply.</b> The soma makes tubulin at a fixed rate; tips draw on it through diffusion plus kinesin transport that waves boost. Neurites compete, so one wins and becomes the axon.</li>
+          <li><b>Identity.</b> Minor neurites become an axon or dendrites (lilac and green). Stages 1 to 5 are tracked per cell and compared with the classic culture timeline.</li>
+          <li><b>Cell types.</b> Each cell reads a genome: layout of primaries, speeds, branching mode, self-avoidance, tiling, migration and firing class.</li>
+          <li><b>Clutch.</b> Cone traction and retrograde flow come from a precomputed motor-clutch model, so stiffness and coating change growth.</li>
+          <li><b>Coverslip.</b> Coatings, stiffness maps, PDMS walls, cue fields with noisy gradient sensing, radial-glia fibers.</li>
+          <li><b>Life cycle.</b> Trophic support, apoptosis, dividing astrocytes, neurogenesis and migration modes.</li>
+          <li><b>Activity.</b> Spiking neurons, synaptic weights with STDP and depression, calcium-stalled cones and homeostatic synapse turnover.</li>
+          <li><b>Tools.</b> Sholl profile, stage timing, SWC export; the engine runs in a background worker.</li>
+        </ul>
+      </div>
+    </details>
+  </aside>
+</div>
+
+<script id="ne2">
+/*__ENGINE__*/
+</script>
+<script type="text/plain" id="ne2w">
+/*__WORKER__*/
+</script>
+<script>
+(function () {
+'use strict';
+const NE2 = self.NE2;
+const { SCENARIOS, CellTypes } = NE2;
+const TYPE_KEYS = CellTypes.typeKeys();
+const NR = NE2.NeuriteEngine.NR, K = NE2.NeuriteEngine.KIND, PS = NE2.NeuriteEngine.PROBE;
+const $ = (id) => document.getElementById(id);
+const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
+const STAGE_NAMES = ['', 'Spread', 'Minor', 'Axon', 'Dendrites', 'Spines'];
+const STAGE_REF_H = [0, 0.25 * 24, 13, 19, 4 * 24, 7 * 24];   // Author-selected Dotti-inspired calibration targets; digitization not independently verified
+const IDCOL = ['#88aed3', '#88aed3', '#d79ce6', '#8fd6a9'];
+
+// ------------------------------------------------------------------ sprites
+function sprite(r, stops) { const c = document.createElement('canvas'); c.width = c.height = r * 2; const g = c.getContext('2d'); const gr = g.createRadialGradient(r, r, 0, r, r, r); for (const [o, col] of stops) gr.addColorStop(o, col); g.fillStyle = gr; g.fillRect(0, 0, 2 * r, 2 * r); return c; }
+const SPR = {
+  actin: sprite(32, [[0, 'rgba(255,140,185,0.95)'], [0.35, 'rgba(255,80,140,0.5)'], [1, 'rgba(255,60,120,0)']]),
+  actinF: sprite(32, [[0, 'rgba(255,215,232,1)'], [0.25, 'rgba(255,70,130,0.75)'], [1, 'rgba(255,40,100,0)']]),
+  eb1: sprite(16, [[0, 'rgba(235,255,248,1)'], [0.35, 'rgba(120,235,200,0.75)'], [1, 'rgba(80,220,170,0)']]),
+  eb1F: sprite(16, [[0, 'rgba(200,255,220,1)'], [0.35, 'rgba(60,255,140,0.75)'], [1, 'rgba(40,230,110,0)']]),
+  halo: sprite(64, [[0, 'rgba(255,255,255,0)'], [0.62, 'rgba(255,255,255,0)'], [0.74, 'rgba(255,255,255,0.9)'], [1, 'rgba(255,255,255,0)']]),
+  glow: sprite(32, [[0, 'rgba(255,222,140,1)'], [0.35, 'rgba(240,183,74,0.55)'], [1, 'rgba(240,183,74,0)']]),
+  ca: sprite(32, [[0, 'rgba(200,255,215,1)'], [0.3, 'rgba(92,240,143,0.7)'], [1, 'rgba(60,220,120,0)']]),
+  dome: sprite(32, [[0, 'rgba(160,200,235,0.30)'], [1, 'rgba(160,200,235,0)']]),
+  ball: (() => { const r = 32, c = document.createElement('canvas'); c.width = c.height = 2 * r; const g = c.getContext('2d'); const gr = g.createRadialGradient(r * 0.7, r * 0.6, 2, r, r, r); gr.addColorStop(0, '#dbe8f5'); gr.addColorStop(0.45, '#6f8fae'); gr.addColorStop(0.92, '#26394c'); gr.addColorStop(1, 'rgba(38,57,76,0)'); g.fillStyle = gr; g.beginPath(); g.arc(r, r, r, 0, 6.2832); g.fill(); return c; })(),
+};
+function noisePattern(ctx) { const c = document.createElement('canvas'); c.width = c.height = 160; const g = c.getContext('2d'); const im = g.createImageData(160, 160); for (let i = 0; i < im.data.length; i += 4) { const v = 110 + Math.random() * 40 | 0; im.data[i] = im.data[i + 1] = im.data[i + 2] = v; im.data[i + 3] = 255; } g.putImageData(im, 0, 0); return ctx.createPattern(c, 'repeat'); }
+
+// ------------------------------------------------------------------ view model from a worker snapshot
+function buildView(s, prev) {
+  const v = { t: s.t, W: s.W, H: s.H, N: s.nodes, cells: [], neurites: [], probes: [], bonds: [], byId: new Map() };
+  const C = s.cells, CS = C.CS;
+  for (let k = 0; k < C.n; k++) {
+    const f = C.f, o = k * CS;
+    const c = { alive: true, id: f[o], x: f[o + 1], y: f[o + 2], rOut: f[o + 3], R0: f[o + 4], z: f[o + 5], a: f[o + 6], h: f[o + 7], theta: f[o + 8], Rcap: f[o + 9], hue: f[o + 10],
+      type: TYPE_KEYS[f[o + 11]], stage: f[o + 12], ca: f[o + 13], troph: f[o + 14], dying: f[o + 15], migrating: f[o + 16] > 0, nuc: f[o + 17], box: [f[o + 18], f[o + 19], f[o + 20], f[o + 21]],
+      conn: f[o + 22], glia: f[o + 23] > 0, mitosis: f[o + 24], rate: f[o + 25], Qf: f[o + 26], adh: f[o + 27], inhib: f[o + 28] > 0, age: f[o + 29], spk: f[o + 30], pulse: f[o + 31],
+      ring: C.ring.subarray(k * NR, k * NR + NR), neur: [], probes: [] };
+    v.cells.push(c); v.byId.set(c.id, c);
+  }
+  const Nn = s.neurites;
+  for (let k = 0; k < Nn.n; k++) {
+    const m = Nn.meta, o = k * Nn.NM, f = Nn.f, q = k * Nn.NF;
+    const nr = { id: m[o], slot: k, cell: m[o + 1], parent: m[o + 2], base: m[o + 3], ident: m[o + 4], state: m[o + 5], nodes: Nn.nodes.subarray(m[o + 6], m[o + 6] + m[o + 7]),
+      apical: m[o + 8] > 0, dying: (m[o + 9] & 1) > 0, order: m[o + 9] >> 1, gc: f[q], len: f[q + 1], hx: f[q + 2], hy: f[q + 3], S: f[q + 4], Tf: f[q + 5], nwaves: f[q + 6], vNow: f[q + 7], probes: [] };
+    v.neurites.push(nr); v.cells[nr.cell].neur.push(k);
+  }
+  const P = s.probes;
+  for (let k = 0; k < P.n; k++) {
+    const f = P.f, o = k * P.PS;
+    const p = { base: f[o], tip: [f[o + 1], f[o + 2]], st: f[o + 3], kind: f[o + 4], len: f[o + 5], ph: f[o + 6], owner: f[o + 7] };
+    v.probes.push(p);
+    if (p.owner >= 0) { const nr = v.neurites[p.owner]; if (nr) nr.probes.push(k); } else { const c = v.cells[-1 - p.owner]; if (c) c.probes.push(k); }
+  }
+  const B = s.bonds;
+  for (let k = 0; k < B.n; k++) { const f = B.f, o = k * B.BS; v.bonds.push({ alive: true, id: k, a: f[o], b: f[o + 1], w: f[o + 2], inhib: f[o + 3] > 0, ca: f[o + 4], cb: f[o + 5] }); }
+  v.probeTip = (p) => p.tip;
+  v.cellAt = (x, y, r = 12) => { let best = null, bd = 1e18; for (const c of v.cells) { const d = (c.x - x) ** 2 + (c.y - y) ** 2; if (d < bd && d < (c.rOut + r) ** 2) { bd = d; best = c; } } return best; };
+  return v;
+}
+
+// ------------------------------------------------------------------ environment overlays (static layers)
+function envLayers(env) {
+  const L = { env };
+  const mk = (w, h) => { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; };
+  // substrate: coatings and walls
+  {
+    const c = mk(env.gw, env.gh), g = c.getContext('2d'), im = g.createImageData(env.gw, env.gh);
+    const COL = { 0: [40, 52, 64, 110], 1: [30, 44, 56, 90], 2: [96, 112, 46, 120], 3: [120, 40, 60, 120] };
+    const counts = [0, 0, 0, 0]; for (let q = 0; q < env.coat.length; q++) counts[env.coat[q]]++;
+    const dominant = counts.indexOf(Math.max(...counts));
+    let any = false;
+    for (let q = 0; q < env.gw * env.gh; q++) {
+      const o = q * 4;
+      if (env.wall[q]) { const i = q % env.gw, j = (q / env.gw) | 0; const hatch = ((i + j) % 6) < 2; im.data[o] = hatch ? 92 : 70; im.data[o + 1] = hatch ? 100 : 76; im.data[o + 2] = hatch ? 110 : 86; im.data[o + 3] = 235; any = true; continue; }
+      const col = COL[env.coat[q]] || COL[1]; im.data[o] = col[0]; im.data[o + 1] = col[1]; im.data[o + 2] = col[2]; im.data[o + 3] = env.coat[q] === dominant ? 0 : col[3];
+      if (env.coat[q] !== dominant) any = true;
+    }
+    g.putImageData(im, 0, 0); L.substrate = any ? c : null;
+  }
+  // stiffness heat (log scale 0.1 kPa .. 1 MPa); glass shows as neutral
+  {
+    const c = mk(env.gw, env.gh), g = c.getContext('2d'), im = g.createImageData(env.gw, env.gh);
+    let varied = false; const s0 = env.stiff[0];
+    for (let q = 0; q < env.gw * env.gh; q++) {
+      const E = env.stiff[q]; if (E !== s0) varied = true;
+      const t = clamp((Math.log10(E) + 1) / 4, 0, 1), o = q * 4;
+      im.data[o] = 40 + 200 * t; im.data[o + 1] = 90 + 60 * Math.sin(Math.PI * t); im.data[o + 2] = 230 - 190 * t; im.data[o + 3] = E > 5e4 ? 0 : 90;
+    }
+    g.putImageData(im, 0, 0); L.stiffness = varied ? c : null;
+  }
+  // cue fields: tinted concentration with contour bands
+  L.fields = env.fields.map((f) => {
+    const U = 4, w = f.gw * U, h = f.gh * U, c = mk(w, h), g = c.getContext('2d'), im = g.createImageData(w, h);
+    const col = f.color.match(/\w\w/g).map((hx) => parseInt(hx, 16));
+    const at = (i, j) => f.c[Math.min(f.gw - 1, Math.max(0, i)) + Math.min(f.gh - 1, Math.max(0, j)) * f.gw];
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+      const fx = x / U - 0.5, fy = y / U - 0.5, i = Math.floor(fx), j = Math.floor(fy), tx = fx - i, ty = fy - j;
+      const val = at(i, j) * (1 - tx) * (1 - ty) + at(i + 1, j) * tx * (1 - ty) + at(i, j + 1) * (1 - tx) * ty + at(i + 1, j + 1) * tx * ty;
+      const t = f.max > 0 ? val / f.max : 0, o = (x + y * w) * 4, lv = Math.log10(Math.max(1e-4, t)) * 4, band = lv - Math.floor(lv);
+      im.data[o] = col[0]; im.data[o + 1] = col[1]; im.data[o + 2] = col[2];
+      im.data[o + 3] = 255 * Math.min(0.5, 0.26 * Math.sqrt(t) + (t > 0.02 && (band < 0.03 || band > 0.97) ? 0.12 : 0));
+    }
+    g.putImageData(im, 0, 0); return { canvas: c, res: f.res / U, ox: -f.res, label: f.label, color: f.color };
+  });
+  return L;
+}
+
+// ------------------------------------------------------------------ stage renderer
+class Stage {
+  constructor(cv) {
+    this.cv = cv; this.ctx = cv.getContext('2d'); this.cam = { x: 0, y: 0, s: 2 }; this.mode = 'anatomy';
+    this.show = { mts: true, probes: true, waves: true, adh: false, substrate: true, field: true, stiffness: false, graph: false, follow: false };
+    this.selId = -1; this.flashes = []; this.noise = noisePattern(this.ctx); this.arc = new Float64Array(1024); this.layers = null; this.labels = []; this.overlay = null;
+    this.resize();
+  }
+  resize() { const r = this.cv.getBoundingClientRect(); this.dpr = Math.min(2, window.devicePixelRatio || 1); this.cw = Math.max(1, r.width); this.ch = Math.max(1, r.height); this.cv.width = Math.round(this.cw * this.dpr); this.cv.height = Math.round(this.ch * this.dpr); }
+  frame(x0, y0, x1, y1) { this.cam.s = Math.min(this.cw / (x1 - x0), this.ch / (y1 - y0)); this.cam.x = (x0 + x1) / 2; this.cam.y = (y0 + y1) / 2; }
+  toWorld(px, py) { return [(px - this.cw / 2) / this.cam.s + this.cam.x, (py - this.ch / 2) / this.cam.s + this.cam.y]; }
+  applyCam() { const s = this.cam.s * this.dpr; this.ctx.setTransform(s, 0, 0, s, this.cv.width / 2 - this.cam.x * s, this.cv.height / 2 - this.cam.y * s); }
+  view() { const a = this.toWorld(0, 0), b = this.toWorld(this.cw, this.ch); return [a[0], a[1], b[0], b[1]]; }
+  draw(v, now) {
+    const ctx = this.ctx, mode = this.mode;
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
+    if (mode === 'phase') { ctx.fillStyle = '#8a8f93'; ctx.fillRect(0, 0, this.cv.width, this.cv.height); ctx.globalAlpha = 0.35; ctx.fillStyle = this.noise; ctx.fillRect(0, 0, this.cv.width, this.cv.height); ctx.globalAlpha = 1; }
+    else if (mode === 'fluo' || mode === 'calcium') { ctx.fillStyle = '#030405'; ctx.fillRect(0, 0, this.cv.width, this.cv.height); }
+    else { ctx.fillStyle = '#0c131a'; ctx.fillRect(0, 0, this.cv.width, this.cv.height); }
+    if (!v) return;
+    this.applyCam();
+    this.px = 1 / this.cam.s; this.detail = this.cam.s >= 1.15;
+    this.glass(v); this.envOverlays(v);
+    const vb = this.view(), pad = 4, cells = [];
+    for (const c of v.cells) { const b = c.box; if (b[2] < vb[0] - pad || b[0] > vb[2] + pad || b[3] < vb[1] - pad || b[1] > vb[3] + pad) continue; cells.push(c); }
+    if (this.show.graph && mode !== 'calcium') this.graph(v, 0.5);
+    if (mode === 'anatomy') this.anatomy(v, cells, now);
+    else if (mode === 'phase') this.phase(v, cells, now);
+    else if (mode === 'fluo') this.fluo(v, cells, now);
+    else this.calcium(v, cells, now);
+    this.drawLabels();
+    this.drawFlashes(now); this.selection(v, now); this.scaleBar();
+  }
+  glass(v) {
+    const ctx = this.ctx, px = this.px, m = this.mode;
+    ctx.lineWidth = 1.5 * px; ctx.strokeStyle = m === 'phase' ? 'rgba(0,0,0,0.25)' : 'rgba(150,185,215,0.18)'; ctx.strokeRect(0, 0, v.W, v.H);
+    const step = 100; if (step * this.cam.s < 36) return;
+    ctx.lineWidth = px; ctx.strokeStyle = m === 'phase' ? 'rgba(0,0,0,0.07)' : m === 'anatomy' ? 'rgba(130,170,205,0.07)' : 'rgba(255,255,255,0.025)';
+    ctx.beginPath(); for (let x = step; x < v.W; x += step) { ctx.moveTo(x, 0); ctx.lineTo(x, v.H); } for (let y = step; y < v.H; y += step) { ctx.moveTo(0, y); ctx.lineTo(v.W, y); } ctx.stroke();
+  }
+  envOverlays(v) {
+    const L = this.layers; if (!L) return;
+    const ctx = this.ctx, env = L.env, px = this.px;
+    ctx.imageSmoothingEnabled = false;
+    ctx.imageSmoothingEnabled = true;
+    if (this.show.stiffness && L.stiffness) { ctx.globalAlpha = 0.8; ctx.drawImage(L.stiffness, 0, 0, env.gw * env.res, env.gh * env.res); }
+    if (this.show.field) for (const f of L.fields) { ctx.globalAlpha = this.mode === 'phase' ? 0.6 : 1; ctx.drawImage(f.canvas, f.ox, f.ox, f.canvas.width * f.res, f.canvas.height * f.res); }
+    ctx.imageSmoothingEnabled = false;
+    if (this.show.substrate && L.substrate) { ctx.globalAlpha = this.mode === 'anatomy' ? 1 : this.mode === 'phase' ? 0.55 : 0.4; ctx.drawImage(L.substrate, 0, 0, env.gw * env.res, env.gh * env.res); }
+    ctx.imageSmoothingEnabled = true;
+    ctx.globalAlpha = 1;
+    // scaffolds (radial glia fibers) and zones
+    if (env.fibers.length) {
+      ctx.strokeStyle = this.mode === 'phase' ? 'rgba(40,40,40,0.35)' : 'rgba(214,168,106,0.35)'; ctx.lineCap = 'round';
+      for (const f of env.fibers) { ctx.lineWidth = Math.max(1.6, 2.2 * px); ctx.beginPath(); f.pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.stroke(); }
+    }
+    for (const z of env.zones) {
+      ctx.fillStyle = z.key === 'stop' ? 'rgba(111,216,191,0.06)' : 'rgba(214,168,106,0.07)'; ctx.fillRect(z.x0, z.y0, z.x1 - z.x0, z.y1 - z.y0);
+      ctx.fillStyle = z.key === 'stop' ? 'rgba(111,216,191,0.7)' : 'rgba(214,168,106,0.8)'; ctx.font = `${11 * px}px "IBM Plex Mono", monospace`;
+      ctx.textAlign = 'right'; ctx.fillText(z.key === 'stop' ? 'pial surface · neurons settle here' : 'ventricular zone · neurons are born here', z.x1 - 8 * px, z.key === 'stop' ? z.y0 + 16 * px : z.y1 - 8 * px); ctx.textAlign = 'left';
+    }
+  }
+  drawLabels() {
+    if (!this.labels.length) return;
+    const ctx = this.ctx, px = this.px; ctx.font = `600 ${13 * px}px "Barlow Semi Condensed", sans-serif`;
+    ctx.fillStyle = this.mode === 'phase' ? 'rgba(20,20,20,0.75)' : 'rgba(220,230,238,0.8)';
+    for (const l of this.labels) ctx.fillText(l.text, l.x, l.y);
+  }
+  // ---------- helpers
+  somaPath(v, c, pad) {
+    const N = v.N, ctx = this.ctx, nx = N.x[c.nuc], ny = N.y[c.nuc];
+    const P = this._pts || (this._pts = new Float64Array(NR * 2));
+    for (let k = 0; k < NR; k++) { const i = c.ring[k]; let dx = N.x[i] - nx, dy = N.y[i] - ny; const l = Math.sqrt(dx * dx + dy * dy) || 1; P[2 * k] = N.x[i] + dx / l * pad; P[2 * k + 1] = N.y[i] + dy / l * pad; }
+    ctx.beginPath(); ctx.moveTo((P[2 * (NR - 1)] + P[0]) / 2, (P[2 * (NR - 1) + 1] + P[1]) / 2);
+    for (let k = 0; k < NR; k++) { const j = (k + 1) % NR; ctx.quadraticCurveTo(P[2 * k], P[2 * k + 1], (P[2 * k] + P[2 * j]) / 2, (P[2 * k + 1] + P[2 * j + 1]) / 2); }
+    ctx.closePath();
+  }
+  tube(v, nr, pad, minPx, scaleW) {
+    const N = v.N, ctx = this.ctx, nodes = nr.nodes, px = this.px;
+    if (!this.detail || nr.dying) {
+      let w = 0; for (const i of nodes) w += N.w[i]; w = w / nodes.length;
+      ctx.lineWidth = Math.max(minPx * px, 2 * (w * scaleW + pad));
+      if (nr.dying) ctx.setLineDash([Math.max(1.2, 2 * px), Math.max(1.2, 2.5 * px)]);
+      ctx.beginPath(); ctx.moveTo(N.x[nr.base], N.y[nr.base]); for (const i of nodes) ctx.lineTo(N.x[i], N.y[i]); ctx.stroke();
+      if (nr.dying) ctx.setLineDash([]);
+      return;
+    }
+    const fillWas = ctx.fillStyle; ctx.fillStyle = ctx.strokeStyle; const minW = minPx * px / 2;
+    ctx.beginPath(); let a = nr.base;
+    for (let k = 0; k < nodes.length; k++) {
+      const b = nodes[k], ax = N.x[a], ay = N.y[a], bx = N.x[b], by = N.y[b];
+      const wa = Math.max(minW, (N.kind[a] === K.RING ? N.w[b] : N.w[a]) * scaleW + pad), wb = Math.max(minW, N.w[b] * scaleW + pad);
+      let ux = bx - ax, uy = by - ay; const L = Math.sqrt(ux * ux + uy * uy) || 1e-6; ux /= L; uy /= L; const nx = -uy, ny = ux;
+      ctx.moveTo(ax - nx * wa, ay - ny * wa); ctx.lineTo(bx - nx * wb, by - ny * wb); ctx.lineTo(bx + nx * wb, by + ny * wb); ctx.lineTo(ax + nx * wa, ay + ny * wa); ctx.closePath();
+      ctx.moveTo(bx + wb, by); ctx.arc(bx, by, wb, 0, 6.2832); a = b;
+    }
+    ctx.fill(); ctx.fillStyle = fillWas;
+  }
+  spindle(x0, y0, x1, y1, w0, w1, bend) {
+    const ctx = this.ctx; let dx = x1 - x0, dy = y1 - y0; const L = Math.sqrt(dx * dx + dy * dy) || 1e-6; const nx = -dy / L, ny = dx / L;
+    const mx = (x0 + x1) / 2 + nx * bend, my = (y0 + y1) / 2 + ny * bend, wm = (w0 + w1) / 2;
+    ctx.beginPath(); ctx.moveTo(x0 + nx * w0, y0 + ny * w0); ctx.quadraticCurveTo(mx + nx * wm, my + ny * wm, x1 + nx * w1, y1 + ny * w1); ctx.lineTo(x1 - nx * w1, y1 - ny * w1); ctx.quadraticCurveTo(mx - nx * wm, my - ny * wm, x0 - nx * w0, y0 - ny * w0); ctx.closePath(); ctx.fill();
+  }
+  forProbes(v, c, fn) { for (const k of c.probes) fn(v.probes[k]); for (const s of c.neur) { const nr = v.neurites[s]; for (const k of nr.probes) fn(v.probes[k], nr); } }
+  coneVeil(v, nr, pad) {
+    const N = v.N, ctx = this.ctx, tip = nr.nodes[nr.nodes.length - 1], tx = N.x[tip], ty = N.y[tip], pts = [];
+    for (const k of nr.probes) { const p = v.probes[k]; if (p.base !== tip) continue; const r = Math.min(p.len, 5) * (0.4 + 0.3 * nr.gc); pts.push([Math.atan2(p.tip[1] - ty, p.tip[0] - tx), r]); }
+    ctx.beginPath(); ctx.arc(tx, ty, N.w[tip] + 1.1 * nr.gc + pad, 0, 6.2832); ctx.fill();
+    if (pts.length < 2) return; pts.sort((a, b) => a[0] - b[0]);
+    ctx.beginPath(); pts.forEach(([a, r], k) => { const x = tx + Math.cos(a) * (r + pad), y = ty + Math.sin(a) * (r + pad); if (k === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); }); ctx.closePath(); ctx.fill();
+  }
+  arcs(v, nr) { const N = v.N; if (this.arc.length < nr.nodes.length + 2) this.arc = new Float64Array(nr.nodes.length * 2 + 8); const A = this.arc; let px = N.x[nr.base], py = N.y[nr.base], s = 0; A[0] = 0; for (let k = 0; k < nr.nodes.length; k++) { const i = nr.nodes[k]; s += Math.hypot(N.x[i] - px, N.y[i] - py); A[k + 1] = s; px = N.x[i]; py = N.y[i]; } return s; }
+  pointAt(v, nr, s, out) {
+    const N = v.N, A = this.arc, nodes = nr.nodes; let k = 1; while (k < nodes.length && A[k + 1] < s) k++;
+    const a = k === 1 ? nr.base : nodes[k - 2], b = nodes[Math.min(k - 1, nodes.length - 1)], s0 = A[k - 1], s1 = A[k], f = s1 > s0 ? clamp((s - s0) / (s1 - s0), 0, 1) : 0;
+    out[0] = N.x[a] + (N.x[b] - N.x[a]) * f; out[1] = N.y[a] + (N.y[b] - N.y[a]) * f; out[2] = N.x[b] - N.x[a]; out[3] = N.y[b] - N.y[a]; out[4] = N.mt[b]; return out;
+  }
+  centrosome(v, c) {
+    const N = v.N; let lead = null; for (const s of c.neur) { const nr = v.neurites[s]; if (nr.parent < 0 && (!lead || (nr.ident === 2) > (lead.ident === 2) || nr.len > lead.len)) lead = nr; }
+    let x = N.x[c.nuc], y = N.y[c.nuc]; if (lead) { const b = lead.base; const dx = N.x[b] - x, dy = N.y[b] - y, l = Math.hypot(dx, dy) || 1, r = Math.min(4, c.rOut * 0.4); x += dx / l * r; y += dy / l * r; } return [x, y];
+  }
+  falling(c) { const ctx = this.ctx, R = c.R0, z = c.z, off = z * 0.18; ctx.globalAlpha = clamp(0.5 - z / 600, 0.12, 0.5); ctx.fillStyle = '#000'; ctx.beginPath(); ctx.ellipse(c.x + off, c.y + off * 1.3, R * 1.05, R * 0.95, 0, 0, 6.2832); ctx.fill(); ctx.globalAlpha = clamp(1 - z / 500, 0.45, 1); const r = R * (1 + z / 400); ctx.drawImage(SPR.ball, c.x - r, c.y - r, 2 * r, 2 * r); ctx.globalAlpha = 1; }
+  cellColors(c) {
+    if (this.overlay === 'birth' && !c.glia) { const h = Math.round(c.hue * 360); return [`hsl(${h} 70% 72%)`, `hsl(${h} 40% 18%)`]; }
+    if (c.glia) return c.type === 'sphere' ? ['#88aed3', '#172739'] : ['#d6a86a', '#2a2216'];
+    if (c.dying >= 0) return ['#c77b7b', '#2a1a1d'];
+    return ['#88aed3', '#172739'];
+  }
+  // ---------- Anatomy
+  anatomy(v, cells, now) {
+    const N = v.N, ctx = this.ctx, px = this.px, det = this.detail, sh = this.show;
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    if (sh.adh && this.cam.s > 1.6) {
+      ctx.fillStyle = 'rgba(240,183,74,0.55)'; const r = Math.max(0.28, 0.9 * px);
+      for (const c of cells) { if (c.z > 0) continue; for (const i of c.ring) if (N.anc[i]) ctx.fillRect(N.ax[i] - r, N.ay[i] - r, 2 * r, 2 * r); for (const s of c.neur) for (const i of v.neurites[s].nodes) if (N.anc[i]) ctx.fillRect(N.ax[i] - r, N.ay[i] - r, 2 * r, 2 * r); }
+    }
+    for (const c of cells) if (c.z > 0) this.falling(c);
+    // two passes = one continuous membrane: outline colour (by identity), then cytoplasm
+    for (let pass = 0; pass < 2; pass++) {
+      const pad = pass === 0 ? Math.max(0.32, 1.25 * px) : 0;
+      for (const c of cells) {
+        if (c.z > 0) continue;
+        const [outC, fillC] = this.cellColors(c);
+        const birth = this.overlay === 'birth' && !c.glia;
+        ctx.fillStyle = ctx.strokeStyle = pass === 0 ? outC : fillC;
+        this.somaPath(v, c, pad); ctx.fill();
+        for (const s of c.neur) {
+          const nr = v.neurites[s];
+          if (pass === 0) ctx.fillStyle = ctx.strokeStyle = (c.dying >= 0 || birth) ? outC : IDCOL[nr.ident];
+          this.tube(v, nr, pad, pass === 0 ? 1.6 : 0.8, 1);
+          if (det && !nr.dying) this.coneVeil(v, nr, pad);
+        }
+        if (pass === 0) ctx.fillStyle = outC;
+        if (sh.probes && det) this.forProbes(v, c, (p) => { const b = p.base; this.spindle(N.x[b], N.y[b], p.tip[0], p.tip[1], (p.kind === PS.SOMA ? 0.55 : 0.42) + pad, 0.1 + pad, Math.sin(p.ph + now * 0.0011) * p.len * 0.07); });
+      }
+    }
+    for (const c of cells) {
+      if (c.z > 0) continue;
+      const nx = N.x[c.nuc], ny = N.y[c.nuc];
+      const dome = clamp(c.h / (2 * c.R0), 0.1, 1); ctx.globalAlpha = dome; const dr = c.rOut * 1.05; ctx.drawImage(SPR.dome, nx - dr, ny - dr, 2 * dr, 2 * dr); ctx.globalAlpha = 1;
+      const rn = Math.min(c.glia ? 5 : 4.3, c.rOut * 0.5);
+      ctx.fillStyle = c.glia && c.type !== 'sphere' ? '#4a3a22' : '#243b55'; ctx.strokeStyle = c.glia && c.type !== 'sphere' ? '#8a6a3a' : '#4b7299'; ctx.lineWidth = Math.max(0.2, 0.9 * px);
+      ctx.beginPath(); ctx.ellipse(nx, ny, rn, rn * 0.9, (c.id * 0.7) % 3, 0, 6.2832); ctx.fill(); ctx.stroke();
+      if (c.mitosis >= 0) { ctx.strokeStyle = 'rgba(240,183,74,0.8)'; ctx.setLineDash([1, 1]); ctx.beginPath(); ctx.moveTo(nx - rn, ny); ctx.lineTo(nx + rn, ny); ctx.stroke(); ctx.setLineDash([]); }
+      if (!det) continue;
+      const [cx, cy] = this.centrosome(v, c);
+      if (sh.mts && !c.glia) {
+        ctx.strokeStyle = 'rgba(111,216,191,0.42)'; ctx.lineWidth = Math.max(0.1, 0.65 * px); ctx.beginPath();
+        for (let k = 0; k < NR; k++) { const i = c.ring[k], ex = N.x[i] * 0.88 + nx * 0.12, ey = N.y[i] * 0.88 + ny * 0.12, mx = (cx + ex) / 2, my = (cy + ey) / 2, w = Math.sin(now * 0.0007 + k * 1.7 + c.id) * 1.4, dx = ex - cx, dy = ey - cy, l = Math.hypot(dx, dy) || 1; ctx.moveTo(cx, cy); ctx.quadraticCurveTo(mx - dy / l * w, my + dx / l * w, ex, ey); }
+        ctx.stroke(); ctx.fillStyle = '#b9fff0'; ctx.beginPath(); ctx.arc(cx, cy, 0.7, 0, 6.2832); ctx.fill();
+      }
+      for (const s of c.neur) this.neuriteInterior(v, c, v.neurites[s], cx, cy, now);
+      if (sh.probes) this.forProbes(v, c, (p) => {
+        const b = p.base, tx = p.tip[0], ty = p.tip[1], dx = tx - N.x[b], dy = ty - N.y[b], L = Math.hypot(dx, dy) || 1e-6, back = Math.min(2.2, N.w[b] + 0.8);
+        ctx.strokeStyle = p.st === PS.SHRINK ? 'rgba(111,216,191,0.45)' : 'rgba(150,240,215,0.95)'; ctx.lineWidth = Math.max(0.13, 0.75 * px);
+        const bend = Math.sin(p.ph + now * 0.0011) * p.len * 0.07;
+        ctx.beginPath(); ctx.moveTo(N.x[b] - dx / L * back, N.y[b] - dy / L * back); ctx.quadraticCurveTo((N.x[b] + tx) / 2 - dy / L * bend, (N.y[b] + ty) / 2 + dx / L * bend, N.x[b] + dx * 0.96, N.y[b] + dy * 0.96); ctx.stroke();
+        if (p.st === PS.STUCK) { ctx.fillStyle = '#f0b74a'; ctx.beginPath(); ctx.arc(tx, ty, 0.5, 0, 6.2832); ctx.fill(); }
+        else if (p.st === PS.BOUND) { ctx.fillStyle = '#ff8a4c'; ctx.beginPath(); ctx.arc(tx, ty, 0.7, 0, 6.2832); ctx.fill(); }
+        else if (p.st === PS.GROW) { const r = 0.9; ctx.drawImage(SPR.eb1, tx - r, ty - r, 2 * r, 2 * r); }
+      });
+    }
+    if (!det && sh.probes && this.cam.s > 0.5) { ctx.strokeStyle = 'rgba(136,174,211,0.55)'; ctx.lineWidth = 0.8 * px; ctx.beginPath(); for (const c of cells) if (c.z === 0) this.forProbes(v, c, (p) => { ctx.moveTo(N.x[p.base], N.y[p.base]); ctx.lineTo(p.tip[0], p.tip[1]); }); ctx.stroke(); }
+    if (!det && sh.waves) this.waveGlow(v, cells, SPR.actin, 0.9, 2.2);
+    this.bonds(v, now);
+  }
+  neuriteInterior(v, c, nr, cx, cy, now) {
+    const N = v.N, ctx = this.ctx, px = this.px, sh = this.show, nodes = nr.nodes;
+    const len = this.arcs(v, nr);
+    // spines on mature dendrites
+    if (nr.ident === 3 && c.stage >= 5 && this.cam.s > 2.2) {
+      ctx.strokeStyle = 'rgba(143,214,169,0.85)'; ctx.fillStyle = 'rgba(143,214,169,0.95)'; ctx.lineWidth = Math.max(0.12, 0.6 * px);
+      for (let k = 1; k < nodes.length - 1; k++) {
+        const i = nodes[k], j = nodes[k - 1], h = (i * 2654435761 >>> 0) / 4294967296; if (h > 0.75) continue;
+        const dx = N.x[i] - N.x[j], dy = N.y[i] - N.y[j], l = Math.hypot(dx, dy) || 1, side = h < 0.375 ? 1 : -1, nxx = -dy / l * side, nyy = dx / l * side, w = N.w[i];
+        const sx = N.x[i] + nxx * w, sy = N.y[i] + nyy * w, ex = sx + nxx * 1.1, ey = sy + nyy * 1.1;
+        ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(ex, ey); ctx.stroke(); ctx.beginPath(); ctx.arc(ex, ey, 0.42, 0, 6.2832); ctx.fill();
+      }
+    }
+    if (sh.mts) {
+      for (let j = 0; j < 3; j++) {
+        const off = (j - 1) * 0.42; ctx.beginPath();
+        if (nr.parent < 0) ctx.moveTo(cx, cy); else ctx.moveTo(N.x[nr.base], N.y[nr.base]);
+        let a = nr.base, mtSum = 0;
+        for (let k = 0; k < nodes.length; k++) {
+          const i = nodes[k], nxt = nodes[Math.min(k + 1, nodes.length - 1)]; let tx = N.x[nxt] - N.x[a], ty = N.y[nxt] - N.y[a]; const tl = Math.hypot(tx, ty) || 1;
+          const s = this.arc[k + 1], wob = Math.sin(now * 0.0009 * (j + 1) + s * 0.21 + j * 2.1 + nr.id) * 0.22, o = N.w[i] * (off + wob) * (k === nodes.length - 1 ? 0.3 : 1);
+          ctx.lineTo(N.x[i] - ty / tl * o, N.y[i] + tx / tl * o); mtSum += N.mt[i]; a = i;
+        }
+        const mt = mtSum / nodes.length; ctx.strokeStyle = `rgba(111,216,191,${clamp(0.25 + 0.45 * mt, 0.2, 0.9).toFixed(3)})`; ctx.lineWidth = Math.max(0.12, 0.7 * px); ctx.stroke();
+      }
+      if (this.cam.s > 2 && len > 3) {
+        const out = this._o || (this._o = new Float64Array(5)); let mt = 0; for (const i of nodes) mt += N.mt[i]; mt /= nodes.length;
+        const n = Math.min(40, Math.floor(len / 7 * (0.4 + mt))), T = v.t * 20.4;
+        for (let q = 0; q < n; q++) {
+          // axons: MT plus ends all point out; dendrites: mixed polarity, some comets run home
+          const inward = nr.ident === 3 && (q % 2 === 1);
+          let s = (T + q * len / n + nr.id * 13.7 + (q * 7.31 % 5)) % len; if (inward) s = len - s;
+          this.pointAt(v, nr, s, out); const l = Math.hypot(out[2], out[3]) || 1, side = ((q * 0.618) % 1 - 0.5) * 0.9;
+          ctx.globalAlpha = clamp(0.35 + 0.4 * out[4], 0, 1); const r = 0.75; ctx.drawImage(SPR.eb1, out[0] - out[3] / l * side - r, out[1] + out[2] / l * side - r, 2 * r, 2 * r);
+        }
+        ctx.globalAlpha = 1;
+      }
+    }
+    if (sh.waves) { for (const i of nodes) { const a = N.act[i]; if (a < 0.1) continue; const r = N.w[i] + 2.2 * Math.min(a, 1.4); ctx.globalAlpha = clamp(a * 0.75, 0, 0.85); ctx.drawImage(SPR.actin, N.x[i] - r, N.y[i] - r, 2 * r, 2 * r); } ctx.globalAlpha = 1; }
+  }
+  waveGlow(v, cells, spr, alpha, size) {
+    const N = v.N, ctx = this.ctx, px = this.px;
+    for (const c of cells) for (const s of c.neur) for (const i of v.neurites[s].nodes) { const a = N.act[i]; if (a < 0.2) continue; const r = Math.max(N.w[i] + size * a, 3 * px); ctx.globalAlpha = clamp(a * alpha, 0, 1); ctx.drawImage(spr, N.x[i] - r, N.y[i] - r, 2 * r, 2 * r); }
+    ctx.globalAlpha = 1;
+  }
+  bonds(v, now) {
+    const N = v.N, ctx = this.ctx, px = this.px;
+    if (this.mode === 'phase') { ctx.fillStyle = 'rgba(25,27,30,0.9)'; ctx.beginPath(); for (const b of v.bonds) { const r = Math.max(0.8, 1.6 * px); ctx.moveTo(N.x[b.a] + r, N.y[b.a]); ctx.arc(N.x[b.a], N.y[b.a], r, 0, 6.2832); } ctx.fill(); return; }
+    for (const b of v.bonds) {
+      const x = N.x[b.a], y = N.y[b.a], r = Math.max(1.4, 3.5 * px) * (0.6 + b.w);
+      ctx.globalAlpha = 0.85; ctx.drawImage(SPR.glow, x - r * 1.8, y - r * 1.8, r * 3.6, r * 3.6);
+      ctx.globalAlpha = 1; ctx.fillStyle = b.inhib ? '#ff9a8a' : '#ffd98a'; ctx.beginPath(); ctx.arc(x, y, Math.max(0.6, 1.3 * px), 0, 6.2832); ctx.fill();
+    }
+  }
+  graph(v, alpha) {
+    const ctx = this.ctx, px = this.px;
+    ctx.lineWidth = Math.max(0.6, 1.4 * px);
+    for (const b of v.bonds) {
+      const a = v.byId.get(b.ca), c = v.byId.get(b.cb); if (!a || !c) continue;
+      ctx.strokeStyle = b.inhib ? `rgba(255,120,110,${(alpha * (0.25 + b.w)).toFixed(2)})` : `rgba(92,240,143,${(alpha * (0.25 + b.w)).toFixed(2)})`;
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(c.x, c.y); ctx.stroke();
+    }
+  }
+  // ---------- Phase contrast
+  phase(v, cells, now) {
+    const N = v.N, ctx = this.ctx, px = this.px, det = this.detail;
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    for (const c of cells) if (c.z > 0) { const r = c.R0 * (1.4 + c.z / 90); ctx.globalAlpha = clamp(1 - c.z / 400, 0.25, 0.9); ctx.drawImage(SPR.halo, c.x - r * 1.4, c.y - r * 1.4, r * 2.8, r * 2.8); ctx.fillStyle = 'rgba(245,248,250,0.55)'; ctx.beginPath(); ctx.arc(c.x, c.y, c.R0 * 0.8, 0, 6.2832); ctx.fill(); ctx.globalAlpha = 1; }
+    // flat glia first: dark, grainy carpets
+    for (const c of cells) if (c.z === 0 && c.glia && c.type !== 'sphere') { this.somaPath(v, c, 0); ctx.fillStyle = 'rgba(70,74,78,0.45)'; ctx.fill(); ctx.lineWidth = Math.max(0.3, 1 * px); ctx.strokeStyle = 'rgba(255,255,255,0.25)'; ctx.stroke(); }
+    for (let pass = 0; pass < 2; pass++) {
+      ctx.strokeStyle = pass === 0 ? 'rgba(255,255,255,0.16)' : '#2b2f33';
+      for (const c of cells) { if (c.z > 0) continue; for (const s of c.neur) this.tube(v, v.neurites[s], pass === 0 ? 0.7 : 0, pass === 0 ? 2.4 : 1.1, 0.75); }
+    }
+    ctx.fillStyle = '#26292c'; ctx.strokeStyle = 'rgba(38,41,44,0.85)';
+    for (const c of cells) {
+      if (c.z > 0) continue;
+      if (det) for (const s of c.neur) this.coneVeil(v, v.neurites[s], 0);
+      if (this.show.probes && this.cam.s > 0.5) { ctx.lineWidth = Math.max(0.25, 0.9 * px); ctx.beginPath(); this.forProbes(v, c, (p) => { ctx.moveTo(N.x[p.base], N.y[p.base]); ctx.lineTo(p.tip[0], p.tip[1]); }); ctx.stroke(); }
+    }
+    for (const c of cells) {
+      if (c.z > 0 || (c.glia && c.type !== 'sphere')) continue;
+      const tall = clamp(c.h / (1.7 * c.R0), 0, 1), nx = N.x[c.nuc], ny = N.y[c.nuc], hr = c.rOut / 0.66;
+      ctx.globalAlpha = 0.45 + 0.55 * tall; ctx.drawImage(SPR.halo, nx - hr, ny - hr, 2 * hr, 2 * hr); ctx.globalAlpha = 1;
+      this.somaPath(v, c, 0); const g = Math.round(70 + 150 * tall); ctx.fillStyle = c.dying >= 0 ? 'rgb(235,236,238)' : `rgb(${g},${g + 3},${g + 6})`; ctx.fill();
+      ctx.lineWidth = Math.max(0.3, 1.2 * px); ctx.strokeStyle = 'rgba(255,255,255,0.55)'; ctx.stroke();
+      ctx.fillStyle = `rgba(30,32,35,${(0.25 + 0.3 * (1 - tall)).toFixed(2)})`; ctx.beginPath(); ctx.arc(nx, ny, Math.min(4, c.rOut * 0.45), 0, 6.2832); ctx.fill();
+    }
+    this.bonds(v, now);
+  }
+  // ---------- F-actin / EB1 fluorescence
+  fluo(v, cells, now) {
+    const N = v.N, ctx = this.ctx, px = this.px;
+    ctx.globalCompositeOperation = 'lighter'; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    for (const c of cells) {
+      if (c.z > 0) { const r = c.R0 * 1.3; ctx.globalAlpha = 0.6; ctx.drawImage(SPR.actinF, c.x - r, c.y - r, 2 * r, 2 * r); ctx.globalAlpha = 1; continue; }
+      this.somaPath(v, c, 0); ctx.fillStyle = c.glia ? 'rgba(255,60,110,0.08)' : 'rgba(255,60,110,0.20)'; ctx.fill(); ctx.lineWidth = Math.max(0.6, 1.6 * px); ctx.strokeStyle = 'rgba(255,90,140,0.55)'; ctx.stroke();
+      ctx.strokeStyle = 'rgba(255,60,110,0.42)';
+      for (const s of c.neur) { const nr = v.neurites[s]; let w = 0; for (const i of nr.nodes) w += N.w[i]; w /= nr.nodes.length; ctx.lineWidth = Math.max(1.0 * px, 1.6 * w); ctx.beginPath(); ctx.moveTo(N.x[nr.base], N.y[nr.base]); for (const i of nr.nodes) ctx.lineTo(N.x[i], N.y[i]); ctx.stroke(); }
+      if (this.show.probes && this.cam.s > 0.5) { ctx.strokeStyle = 'rgba(255,110,160,0.55)'; ctx.lineWidth = Math.max(0.2, 0.9 * px); ctx.beginPath(); this.forProbes(v, c, (p) => { ctx.moveTo(N.x[p.base], N.y[p.base]); ctx.lineTo(p.tip[0], p.tip[1]); }); ctx.stroke(); }
+    }
+    this.waveGlow(v, cells, SPR.actinF, 1.0, 3.2);
+    for (const c of cells) for (const s of c.neur) { const nr = v.neurites[s], t = nr.nodes[nr.nodes.length - 1], r = Math.max(2 + 3 * nr.gc, 4 * px); ctx.globalAlpha = clamp(0.35 + 0.5 * nr.gc, 0, 1); ctx.drawImage(SPR.actinF, N.x[t] - r, N.y[t] - r, 2 * r, 2 * r); }
+    ctx.globalAlpha = 1;
+    if (this.show.mts && this.cam.s > 0.9) {
+      const out = this._o || (this._o = new Float64Array(5)), T = v.t * 20.4;
+      for (const c of cells) for (const s of c.neur) {
+        const nr = v.neurites[s], len = this.arcs(v, nr); if (len < 3) continue; let mt = 0; for (const i of nr.nodes) mt += N.mt[i]; mt /= nr.nodes.length;
+        const n = Math.min(40, Math.floor(len / 8 * (0.3 + mt)));
+        for (let q = 0; q < n; q++) { const s2 = (T + q * len / n + nr.id * 13.7) % len; this.pointAt(v, nr, s2, out); const r = Math.max(0.9, 2.2 * px); ctx.globalAlpha = clamp(0.3 + 0.5 * out[4], 0, 1); ctx.drawImage(SPR.eb1F, out[0] - r, out[1] - r, 2 * r, 2 * r); }
+      }
+      ctx.globalAlpha = 1;
+    }
+    ctx.globalCompositeOperation = 'source-over'; this.bonds(v, now);
+  }
+  // ---------- Calcium imaging (GCaMP-like)
+  calcium(v, cells, now) {
+    const N = v.N, ctx = this.ctx, px = this.px;
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    if (this.show.graph) this.graph(v, 0.7);
+    ctx.strokeStyle = 'rgba(80,200,140,0.16)';
+    for (const c of cells) { if (c.z > 0) continue; for (const s of c.neur) { const nr = v.neurites[s]; ctx.lineWidth = Math.max(0.8 * px, 1.0); ctx.beginPath(); ctx.moveTo(N.x[nr.base], N.y[nr.base]); for (const i of nr.nodes) ctx.lineTo(N.x[i], N.y[i]); ctx.stroke(); } }
+    ctx.globalCompositeOperation = 'lighter';
+    for (const c of cells) {
+      if (c.z > 0) continue;
+      this.somaPath(v, c, 0); ctx.fillStyle = c.glia ? 'rgba(60,90,70,0.12)' : c.stage >= 3 ? 'rgba(60,200,120,0.26)' : 'rgba(60,200,120,0.12)'; ctx.fill();
+      if (c.glia) continue;
+      const level = clamp(c.ca * 1.5 + c.rate / 12, 0, 1), r = c.rOut * (1.8 + 1.8 * level);
+      if (level > 0.02) { ctx.globalAlpha = level; ctx.drawImage(SPR.ca, c.x - r, c.y - r, 2 * r, 2 * r); ctx.globalAlpha = 1; }
+      if (c.inhib) { ctx.strokeStyle = 'rgba(255,140,120,0.6)'; ctx.lineWidth = Math.max(0.5, 1.2 * px); this.somaPath(v, c, 1); ctx.stroke(); }
+    }
+    ctx.globalCompositeOperation = 'source-over';
+  }
+  drawFlashes(now) {
+    const ctx = this.ctx, px = this.px;
+    for (let k = this.flashes.length - 1; k >= 0; k--) {
+      const f = this.flashes[k], age = (now - f.t0) / 1000; if (age > 1.4) { this.flashes.splice(k, 1); continue; }
+      const col = f.type === 'synapse' ? '240,183,74' : f.type === 'death' || f.type === 'dying' || f.type === 'unsynapse' ? '230,110,110' : f.type === 'axon' || f.type === 'stage' ? '215,156,230' : f.type === 'divide' || f.type === 'born' ? '214,168,106' : f.type === 'branch' ? '159,186,255' : f.type === 'sprout' || f.type === 'settle' ? '111,216,191' : '255,93,143';
+      const big = f.type === 'synapse' || f.type === 'axon' || f.type === 'death' || f.type === 'divide' || f.type === 'settle';
+      const r = (big ? 3 : 1.2) + age * (big ? 14 : 4);
+      ctx.strokeStyle = `rgba(${col},${(1 - age / 1.4) * (big ? 0.9 : 0.5)})`; ctx.lineWidth = Math.max(0.2, (big ? 1.6 : 1) * px);
+      ctx.beginPath(); ctx.arc(f.x, f.y, Math.max(r, (big ? 6 : 3) * px * (1 + age * 2)), 0, 6.2832); ctx.stroke();
+    }
+  }
+  selection(v, now) {
+    const c = v.byId.get(this.selId); if (!c) return;
+    const ctx = this.ctx, px = this.px, r = (c.z > 0 ? c.R0 : c.rOut) + Math.max(3, 8 * px);
+    ctx.setLineDash([4 * px, 4 * px]); ctx.lineDashOffset = -now * 0.01 * px; ctx.strokeStyle = this.mode === 'phase' ? 'rgba(30,60,140,0.85)' : 'rgba(159,186,255,0.85)'; ctx.lineWidth = 1.3 * px;
+    ctx.beginPath(); ctx.arc(c.x, c.y, r, 0, 6.2832); ctx.stroke(); ctx.setLineDash([]);
+  }
+  scaleBar() {
+    const ctx = this.ctx; ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    const opts = [2, 5, 10, 20, 50, 100, 200, 500, 1000]; let L = opts[0]; for (const o of opts) if (o * this.cam.s <= 140) L = o;
+    const w = L * this.cam.s, x1 = this.cw - 16, x0 = x1 - w, y = this.ch - 18;
+    ctx.fillStyle = this.mode !== 'phase' ? '#f2f5f7' : '#111'; ctx.fillRect(x0, y, w, 3);
+    ctx.font = '500 11px "IBM Plex Mono", monospace'; ctx.textAlign = 'right'; ctx.fillText(L + ' µm', x1, y - 6); ctx.textAlign = 'left';
+  }
+}
+
+// ------------------------------------------------------------------ side view
+function drawSide(cv, c) {
+  const dpr = Math.min(2, window.devicePixelRatio || 1), W = cv.clientWidth, H = cv.clientHeight;
+  if (cv.width !== Math.round(W * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); }
+  const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+  const gy = H - 22; ctx.fillStyle = '#16232e'; ctx.fillRect(0, gy, W, H - gy); ctx.fillStyle = 'rgba(150,190,220,0.25)'; ctx.fillRect(0, gy, W, 1);
+  ctx.font = '500 10px "IBM Plex Mono", monospace'; ctx.fillStyle = '#5d7385'; ctx.fillText('glass', 8, H - 7);
+  if (!c) { ctx.fillStyle = '#56636e'; ctx.fillText('click a cell to inspect it', 8, 16); return; }
+  const R0 = c.R0, a = c.a, h = c.h, span = Math.max(2 * a, 2 * R0) + 26, s = Math.min(W / span, (gy - 18) / (2 * R0 + 2)), cx = W / 2, ys = (z) => gy - z * s;
+  if (c.prim + c.br > 0) { ctx.strokeStyle = '#88aed3'; ctx.lineWidth = Math.max(1.5, 1.2 * s); ctx.lineCap = 'round'; for (const side of [-1, 1]) { const x0 = cx + side * Math.max(a, 2) * s; ctx.beginPath(); ctx.moveTo(x0, ys(0.6)); ctx.lineTo(side < 0 ? 0 : W, ys(0.6)); ctx.stroke(); } }
+  ctx.beginPath();
+  if (c.z > 0 || a < 0.05) { const z = Math.min(c.z, (gy - 6) / s - 2 * R0); ctx.arc(cx, ys(z + R0), R0 * s, 0, 6.2832); }
+  else { const Rc = c.Rcap, th = c.theta, zc = h - Rc; for (let k = 0; k <= 64; k++) { const ph = -th + 2 * th * k / 64, x = cx + Rc * Math.sin(ph) * s, y = ys(zc + Rc * Math.cos(ph)); if (k === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y); } ctx.closePath(); }
+  const glia = c.glia && c.type !== 'sphere';
+  ctx.fillStyle = glia ? '#2a2216' : '#172739'; ctx.fill(); ctx.strokeStyle = glia ? '#d6a86a' : '#88aed3'; ctx.lineWidth = 1.6; ctx.stroke();
+  const zc0 = c.z > 0 ? c.z + R0 : Math.min(h * 0.48, R0), rx = Math.min(4.2, c.z > 0 ? R0 * 0.55 : Math.max(1.2, a * 0.5)) * s, ry = Math.min(3.6, c.z > 0 ? R0 * 0.5 : Math.max(0.3, h * 0.36)) * s;
+  ctx.fillStyle = '#243b55'; ctx.strokeStyle = '#4b7299'; ctx.beginPath(); ctx.ellipse(cx, ys(zc0), rx, ry, 0, 0, 6.2832); ctx.fill(); ctx.stroke();
+  if (c.z === 0 && a > 0.05) { ctx.fillStyle = '#f0b74a'; ctx.fillRect(cx - a * s, gy - 1, 2 * a * s, 2.5); }
+  ctx.fillStyle = '#c9d3db'; ctx.textAlign = 'right';
+  ctx.fillText(c.z > 0 ? `falling · ${c.z.toFixed(0)} µm above glass` : `θ ${(c.theta * 180 / Math.PI).toFixed(0)}°   h ${h.toFixed(1)} µm   ⌀ ${(2 * a).toFixed(1)} µm`, W - 8, 14); ctx.textAlign = 'left';
+}
+function drawSholl(cv, sholl) {
+  const dpr = Math.min(2, window.devicePixelRatio || 1), W = cv.clientWidth, H = cv.clientHeight;
+  if (cv.width !== Math.round(W * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); }
+  const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+  ctx.font = '500 10px "IBM Plex Mono", monospace'; ctx.fillStyle = '#56636e';
+  if (!sholl || !sholl.length) { ctx.fillText('no neurites yet', 8, 16); return; }
+  const n = sholl.length, mx = Math.max(2, ...sholl.map((d) => d.n)), l = 26, b = H - 16, w = (W - l - 8) / n;
+  ctx.strokeStyle = 'rgba(255,255,255,0.06)'; ctx.beginPath(); for (let k = 0; k <= 2; k++) { const y = b - (b - 8) * k / 2; ctx.moveTo(l, y); ctx.lineTo(W - 8, y); } ctx.stroke();
+  ctx.fillStyle = '#56636e'; ctx.fillText(String(mx), 4, 12); ctx.fillText('0', 12, b + 3); ctx.textAlign = 'right'; ctx.fillText(sholl[n - 1].r + ' µm', W - 8, H - 3); ctx.textAlign = 'left';
+  ctx.fillStyle = 'rgba(143,214,169,0.75)';
+  sholl.forEach((d, k) => { const hh = (b - 8) * d.n / mx; ctx.fillRect(l + k * w + 0.5, b - hh, Math.max(1, w - 1), hh); });
+}
+const raster = { buf: [], tEnd: 0, span: 20000 };
+function drawRaster(cv) {
+  const dpr = Math.min(2, window.devicePixelRatio || 1), W = cv.clientWidth, H = cv.clientHeight;
+  if (cv.width !== Math.round(W * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); }
+  const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+  const t1 = raster.tEnd, t0 = t1 - raster.span, rows = 64;
+  ctx.fillStyle = 'rgba(92,240,143,0.85)';
+  for (let k = 0; k < raster.buf.length; k += 2) { const c = raster.buf[k], t = raster.buf[k + 1]; if (t < t0) continue; const row = c % rows; ctx.fillRect(4 + (t - t0) / raster.span * (W - 8), 4 + row * (H - 8) / rows, 1.2, Math.max(1, (H - 8) / rows - 0.4)); }
+  ctx.font = '500 10px "IBM Plex Mono", monospace'; ctx.fillStyle = '#56636e'; ctx.textAlign = 'right'; ctx.fillText(`last ${raster.span / 1000} s of electrical time`, W - 6, H - 5); ctx.textAlign = 'left';
+}
+
+// ------------------------------------------------------------------ parameters
+const PARAMS = [
+  ['Body', [['softnessScale', 'Softness ×', 0.2, 1.6, 0.02, (v) => v.toFixed(2)], ['stickiness', 'Stickiness', 0.2, 2.5, 0.05, (v) => v.toFixed(2) + '×'], ['cortexNoise', 'Cortex flicker', 0, 3, 0.05, (v) => v.toFixed(2) + '×']]],
+  ['Growth and supply', [['growthSpeed', 'Growth speed ×', 0.2, 3, 0.05, (v) => v.toFixed(2)], ['supply', 'Tubulin supply ×', 0, 3, 0.05, (v) => v.toFixed(2)], ['polarity', 'Transport feedback', 0, 2, 0.05, (v) => v.toFixed(2)], ['maxAxons', 'Axons allowed', 1, 4, 1, (v) => v.toFixed(0)], ['contractility', 'Tension', 0, 0.12, 0.002, (v) => v.toFixed(3)], ['stiffness', 'MT stiffness', 0.1, 3, 0.05, (v) => v.toFixed(2) + '×'], ['retractDelay', 'Retract after', 5, 150, 1, (v) => v.toFixed(0) + ' min']]],
+  ['Actin waves', [['waveRate', 'Wave rate', 0, 8, 0.1, (v) => v.toFixed(1) + ' /h'], ['waveSpeed', 'Wave speed', 0.5, 8, 0.1, (v) => v.toFixed(1) + ' µm/min']]],
+  ['Microtubule probes', [['probesScale', 'Number ×', 0, 3, 0.05, (v) => v.toFixed(2)], ['catastrophe', 'Catastrophe', 0.05, 3, 0.05, (v) => v.toFixed(2) + ' /min'], ['probeWander', 'Wander', 0, 2, 0.05, (v) => v.toFixed(2)], ['glassStick', 'Grip substrate', 0, 3, 0.05, (v) => v.toFixed(2) + ' /min'], ['cellStick', 'Grip cells', 0, 20, 0.5, (v) => v.toFixed(1) + ' /min']]],
+  ['Branching and avoidance', [['branchRate', 'Branching ×', 0, 3, 0.05, (v) => v.toFixed(2)], ['severing', 'MT severing', 0, 3, 0.05, (v) => v.toFixed(2)], ['selfAvoid', 'Self-avoidance ×', 0, 3, 0.05, (v) => v.toFixed(2)], ['tiling', 'Tiling ×', 0, 3, 0.05, (v) => v.toFixed(2)]]],
+  ['Guidance', [['seek', 'Seek other cells', 0, 2, 0.05, (v) => v.toFixed(2)], ['fieldGain', 'Cue sensitivity', 0, 3, 0.05, (v) => v.toFixed(2)], ['senseNoise', 'Gradient noise', 0, 2, 0.05, (v) => v.toFixed(2) + ' rad'], ['cAMP', 'cAMP level', 0, 1, 0.01, (v) => v.toFixed(2) + (v < 0.5 ? ' repel' : ' attract')], ['fiberGuide', 'Scaffold guidance', 0, 4, 0.1, (v) => v.toFixed(1)]]],
+  ['Life cycle', [['serum', 'Serum', 0, 1.5, 0.05, (v) => v.toFixed(2)], ['feeder', 'Feeder layer', 0, 1, 0.05, (v) => v.toFixed(2)], ['gliaDiffuse', 'Glial factor', 0, 1.5, 0.05, (v) => v.toFixed(2)], ['deathThreshold', 'Death threshold', 0, 0.6, 0.01, (v) => v.toFixed(2)], ['deathDelay', 'Starved survival', 60, 2880, 30, (v) => (v / 60).toFixed(1) + ' h'], ['apoptosis', 'Apoptosis', 'bool'], ['division', 'Glia divide', 'bool']]],
+  ['Activity and plasticity', [['activity', 'Electrical activity', 'bool'], ['ephysDrive', 'Excitability', 0, 6, 0.1, (v) => v.toFixed(1)], ['ephysNoise', 'Noise', 0, 10, 0.1, (v) => v.toFixed(1)], ['synGain', 'Synaptic gain', 0, 30, 0.5, (v) => v.toFixed(1)], ['stdp', 'STDP', 0, 4, 0.1, (v) => v.toFixed(1)], ['targetRate', 'Target rate', 0.2, 8, 0.1, (v) => v.toFixed(1) + ' Hz'], ['msp', 'Structural plasticity', 0, 3, 0.05, (v) => v.toFixed(2)], ['synapses', 'Form synapses', 'bool']]],
+  ['Migration', [['pulsePeriod', 'Pulse period', 0, 40, 1, (v) => v === 0 ? 'cell type' : v.toFixed(0) + ' min'], ['pulseStrength', 'Nucleokinesis', 0, 1.5, 0.05, (v) => v === 0 ? 'cell type' : v.toFixed(2)]]],
+];
+const inputs = {};
+function buildParams() {
+  const host = $('pgroups'); host.innerHTML = '';
+  for (const [g, items] of PARAMS) {
+    const sec = document.createElement('div'); sec.className = 'pgroup'; sec.innerHTML = `<h3>${g}</h3>`;
+    for (const [key, label, min, max, step, fmt] of items) {
+      const row = document.createElement('div'); row.className = 'prow'; const id = 'p-' + key;
+      if (min === 'bool') {
+        row.innerHTML = `<label for="${id}">${label}</label><input type="checkbox" id="${id}"><output></output>`;
+        const inp = row.querySelector('input'); inp.addEventListener('change', () => send({ type: 'params', p: { [key]: inp.checked } })); inputs[key] = { inp, bool: true };
+      } else {
+        row.innerHTML = `<label for="${id}">${label}</label><input type="range" id="${id}" min="${min}" max="${max}" step="${step}"><output></output>`;
+        const inp = row.querySelector('input'), out = row.querySelector('output');
+        inp.addEventListener('input', () => { const v = +inp.value; out.textContent = fmt(v); send({ type: 'params', p: { [key]: key === 'retractDelay' && v >= 150 ? 1e9 : v } }); });
+        inputs[key] = { inp, out, fmt };
+      }
+      sec.appendChild(row);
+    }
+    host.appendChild(sec);
+  }
+}
+function syncParams(p) { for (const k in inputs) { const it = inputs[k]; let v = p[k]; if (it.bool) { it.inp.checked = !!v; continue; } if (k === 'retractDelay' && v > 150) v = 150; it.inp.value = v; it.out.textContent = it.fmt(+it.inp.value); } }
+
+// ------------------------------------------------------------------ engine runner (worker, with a main-thread fallback)
+let runner = null, usingWorker = false;
+function startRunner() {
+  const glue = $('ne2w').textContent;
+  try {
+    const src = $('ne2').textContent + '\n' + glue;
+    const w = new Worker(URL.createObjectURL(new Blob([src], { type: 'text/javascript' })));
+    w.onmessage = onMsg; w.onerror = () => { if (!usingWorker) return; usingWorker = false; fallback(glue); };
+    runner = w; usingWorker = true;
+    setTimeout(() => { if (!gotLoaded && usingWorker) { usingWorker = false; try { w.terminate(); } catch (e) {} fallback(glue); } }, 12000);   // slow devices can take a while to parse and build
+  } catch (err) { fallback(glue); }
+}
+function fallback(glue) {
+  const fake = { NE2: self.NE2, performance: self.performance, postMessage: (m) => onMsg({ data: m }) };
+  new Function('self', glue)(fake);
+  runner = { postMessage: (d) => setTimeout(() => fake.onmessage({ data: d }), 0) };
+  if (lastLoad) send(lastLoad);
+}
+function send(m) { if (m.type === 'run') { running=!!m.on; $('play').textContent=running?'Pause':'Play'; } if (m.type === 'load') lastLoad = m; if (runner) runner.postMessage(m); }
+
+// ------------------------------------------------------------------ app state
+const stage = new Stage($('cv'));
+let view = null, scenario = 'stages', running = true, speed = 8, gotLoaded = false, lastLoad = null, popCount = 150, lastStats = null, lastSel = null;
+let fps = 60, lastNow = performance.now(), lastSnapT = 0, simRate = 0, metricsT = 0, metricsData = null;
+const speedFromSlider = (x) => Math.round(Math.pow(10, -0.3 + 2.68 * x / 100) * 10) / 10;   // 0.5 .. 240 min/s
+const sliderFromSpeed = (s) => clamp(Math.round((Math.log10(s) + 0.3) / 2.68 * 100), 0, 100);
+const ORDER = ['sphere', 'worm', 'first', 'stages', 'lesion', 'types', 'tiling', 'cortex', 'stripes', 'turning', 'channels', 'stiffness', 'glia', 'activity', 'population'];
+
+function buildScenarios() {
+  const host = $('scen'); const groups = {};
+  ORDER.forEach((k, i) => {
+    const S = SCENARIOS[k]; let g = groups[S.group];
+    if (!g) { g = document.createElement('div'); g.className = 'grp'; g.innerHTML = `<h4>${S.group}</h4><div class="scen"></div>`; host.appendChild(g); groups[S.group] = g; }
+    const b = document.createElement('button'); b.dataset.k = k; b.setAttribute('aria-pressed', 'false');
+    b.innerHTML = `<span>${i + 1}</span><span>${S.label}</span>`; b.addEventListener('click', () => load(k));
+    g.querySelector('.scen').appendChild(b);
+  });
+  const sel = $('droptype'); for (const k of TYPE_KEYS) { if (k === 'sphere' || k === 'radialMigrant') continue; const o = document.createElement('option'); o.value = k; o.textContent = CellTypes.getType(k).label; sel.appendChild(o); }
+  sel.value = 'hippocampal';
+}
+function load(k) {
+  const prevScenario = scenario;
+  for (const b of $('scen').querySelectorAll('button')) b.setAttribute('aria-pressed', String(b.dataset.k === k));
+  $('countrow').hidden = !(k === 'population' || k === 'activity');
+  if (k !== scenario || !gotLoaded) { if (k === 'activity') $('count').value = 60; if (k === 'population') $('count').value = 150; $('countv').textContent = $('count').value; }
+  scenario = k; gotLoaded = false; void prevScenario;
+  const count = k === 'population' || k === 'activity' ? +$('count').value : undefined;
+  send({ type: 'load', scenario: k, opts: { seed: (Math.random() * 1e9) | 0, count } });
+  $('blurb').innerHTML = `<b>${SCENARIOS[k].label}</b>${SCENARIOS[k].blurb}`;
+  stage.flashes = []; raster.buf = []; raster.tEnd = 0; metricsData = null; stage.selId = -1;
+}
+function onLoaded(d) {
+  gotLoaded = true;
+  stage.layers = envLayers(d.env); stage.labels = d.labels || [];
+  const vw = d.view || {};
+  setMode(vw.mode || 'anatomy'); stage.overlay = vw.overlay || null;
+  stage.show.follow = !!vw.follow; stage.show.stiffness = vw.overlay === 'stiffness'; stage.show.graph = vw.mode === 'calcium';
+  syncChips();
+  speed = vw.speed || 8; $('speed').value = sliderFromSpeed(speed); $('speedv').textContent = speed + ' min/s'; send({ type: 'speed', minPerSec: speed });
+  stage.resize();
+  if (vw.frame === 'fit' || !vw.frame) stage.frame(-6, -6, d.W + 6, d.H + 6);
+  else { const [x, y] = vw.center || [d.W / 2, d.H / 2]; const f = vw.frame; stage.frame(x - f / 2, y - f / 2, x + f / 2, y + f / 2); }
+  stage._autoSel = true;
+  syncParams(d.params);
+  $('rasterblock').hidden = !d.params.activity;
+  legend(d);
+  if (vw.ff) send({ type: 'ff', minutes: vw.ff });
+}
+function legend(d) {
+  const items = [['#88aed3', 'minor neurite'], ['#d79ce6', 'axon'], ['#8fd6a9', 'dendrite']];
+  if (d.env.fields.length) for (const f of d.env.fields) items.push([f.color, f.label]);
+  if (stage.layers.substrate) { const used = new Set(d.env.coat); if (used.has(2)) items.push(['#60702e', 'laminin']); if (used.has(3)) items.push(['#78283c', 'repellent']); if (d.env.wall.some((x) => x)) items.push(['#5c646e', 'PDMS wall']); }
+  if (stage.overlay === 'birth') items.push(['linear-gradient(90deg,hsl(270 70% 72%),hsl(0 70% 72%))', 'birth time: violet early → red late']);
+  $('legend').innerHTML = items.map(([c, t]) => `<span><i style="background:${c}"></i>${t}</span>`).join('');
+}
+function setMode(m) {
+  stage.mode = m; for (const b of $('mode').children) b.setAttribute('aria-pressed', String(b.dataset.m === m));
+  $('chan').textContent = m === 'anatomy' ? 'Anatomy · membrane / MT / actin' : m === 'phase' ? 'Phase contrast' : m === 'fluo' ? 'F-tractin · YFP-EB1' : 'Calcium (GCaMP-like)';
+  $('stage').style.background = m === 'phase' ? '#8a8f93' : m === 'anatomy' ? '#0c131a' : '#030405';
+}
+function syncChips() { for (const b of $('chips').children) b.setAttribute('aria-pressed', String(!!stage.show[b.dataset.k])); }
+
+function onMsg(m) {
+  const d = m.data;
+  if (d.type === 'loaded') onLoaded(d);
+  else if (d.type === 'frame') {
+    const now = performance.now();
+    if (view && lastSnapT) simRate = simRate * 0.9 + ((d.snap.t - view.t) / Math.max(1e-3, (now - lastSnapT) / 1000)) * 0.1;
+    lastSnapT = now;
+    view = buildView(d.snap, view); lastStats = d.stats; lastSel = d.sel;
+    for (const ev of d.snap.events) if (['synapse', 'axon', 'death', 'divide', 'settle', 'dying'].includes(ev.type) || (ev.type === 'wave' ? stage.cam.s > 2.5 : stage.cam.s > 1.3)) { if (stage.flashes.length < 80) stage.flashes.push({ x: ev.x, y: ev.y, type: ev.type, t0: now }); }
+    if (d.spikes && d.spikes.length) { for (let k = 0; k < d.spikes.length; k++) raster.buf.push(d.spikes[k]); raster.tEnd = d.spikes[d.spikes.length - 1]; if (raster.buf.length > 40000) raster.buf.splice(0, raster.buf.length - 30000); }
+    if (stage._autoSel && view.cells.length) {
+      let best = null, bd = 1e18; for (const c of view.cells) { if (c.glia && scenario !== 'sphere') continue; const dd = (c.x - stage.cam.x) ** 2 + (c.y - stage.cam.y) ** 2; if (dd < bd) { bd = dd; best = c; } }
+      if (best) { stage.selId = best.id; send({ type: 'select', id: best.id }); stage._autoSel = false; }
+    }
+  } else if (d.type === 'metrics') { metricsData = d; }
+  else if (d.type === 'swc') { const ta = $('swcout'); ta.value = d.text; ta.hidden = false; const lines = d.text.trim().split('\n').length - 2; const done = () => { $('swcnote').textContent = `Copied ${lines} SWC points`; }; try { navigator.clipboard.writeText(d.text).then(done, () => { ta.select(); $('swcnote').textContent = 'Select the text below and copy it'; }); } catch (e) { ta.select(); } }
+  else if (d.type === 'ff') { const b = $('busy'); b.hidden = !!d.done; b.textContent = `fast-forwarding · ${Math.round(d.progress * 100)}%`; }
+}
+
+// ------------------------------------------------------------------ input
+(function wire() {
+  const cv = $('cv'); const pts = new Map(); let moved = 0, pinch = null, downAt = null;
+  cv.addEventListener('pointerdown', (ev) => { cv.setPointerCapture(ev.pointerId); pts.set(ev.pointerId, [ev.clientX, ev.clientY]); moved = 0; downAt = [ev.clientX, ev.clientY]; cv.classList.add('dragging'); if (pts.size === 2) { const [a, b] = [...pts.values()]; pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]), s: stage.cam.s }; } });
+  cv.addEventListener('pointermove', (ev) => {
+    if (!pts.has(ev.pointerId)) return; const prev = pts.get(ev.pointerId), dx = ev.clientX - prev[0], dy = ev.clientY - prev[1]; pts.set(ev.pointerId, [ev.clientX, ev.clientY]);
+    if (pts.size === 2 && pinch) { const [a, b] = [...pts.values()]; stage.cam.s = clamp(pinch.s * Math.hypot(a[0] - b[0], a[1] - b[1]) / pinch.d, 0.1, 40); moved += 10; return; }
+    moved += Math.abs(dx) + Math.abs(dy); stage.cam.x -= dx / stage.cam.s; stage.cam.y -= dy / stage.cam.s;
+    if (moved > 6 && stage.show.follow) { stage.show.follow = false; syncChips(); }
+  });
+  const up = (ev) => {
+    pts.delete(ev.pointerId); if (pts.size < 2) pinch = null; cv.classList.remove('dragging');
+    if (moved < 6 && downAt && ev.type === 'pointerup' && view && ev.altKey) { const r = cv.getBoundingClientRect(); const [x, y] = stage.toWorld(ev.clientX - r.left, ev.clientY - r.top); send({ type: 'cutAt', x, y, r: 6 / stage.cam.s + 2 }); downAt = null; return; }
+    if (moved < 6 && downAt && ev.type === 'pointerup' && view) { const r = cv.getBoundingClientRect(); const [x, y] = stage.toWorld(ev.clientX - r.left, ev.clientY - r.top); const c = view.cellAt(x, y, 10 / stage.cam.s + 6); if (c) { stage.selId = c.id; send({ type: 'select', id: c.id }); metricsT = 0; $('swcout').hidden = true; } }
+    downAt = null;
+  };
+  cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up);
+  cv.addEventListener('wheel', (ev) => { ev.preventDefault(); const r = cv.getBoundingClientRect(), mx = ev.clientX - r.left, my = ev.clientY - r.top; const [wx, wy] = stage.toWorld(mx, my); stage.cam.s = clamp(stage.cam.s * Math.exp(-ev.deltaY * 0.0015), 0.1, 40); const [wx2, wy2] = stage.toWorld(mx, my); stage.cam.x += wx - wx2; stage.cam.y += wy - wy2; }, { passive: false });
+  cv.addEventListener('dblclick', (ev) => { if (!view) return; const r = cv.getBoundingClientRect(); const [x, y] = stage.toWorld(ev.clientX - r.left, ev.clientY - r.top); if (x < 10 || y < 10 || x > view.W - 10 || y > view.H - 10) return; send({ type: 'add', x, y, cellType: $('droptype').value }); stage._pendingSel = true; });
+  $('mode').addEventListener('click', (ev) => { const b = ev.target.closest('button'); if (b) setMode(b.dataset.m); });
+  $('chips').addEventListener('click', (ev) => { const b = ev.target.closest('button'); if (!b) return; stage.show[b.dataset.k] = !stage.show[b.dataset.k]; syncChips(); });
+  $('play').addEventListener('click', () => { running = !running; $('play').textContent = running ? 'Pause' : 'Play'; send({ type: 'run', on: running }); });
+  $('ff').addEventListener('click', () => send({ type: 'ff', minutes: 360 }));
+  $('reset').addEventListener('click', () => load(scenario));
+  $('speed').addEventListener('input', () => { speed = speedFromSlider(+$('speed').value); $('speedv').textContent = speed + ' min/s'; send({ type: 'speed', minPerSec: speed }); });
+  $('count').addEventListener('input', () => { $('countv').textContent = $('count').value; });
+  $('count').addEventListener('change', () => load(scenario));
+  $('swcbtn').addEventListener('click', () => { if (stage.selId >= 0) send({ type: 'swc', id: stage.selId }); });
+  $('cutbtn').addEventListener('click', () => { if (stage.selId >= 0) send({ type: 'cut', id: stage.selId, stump: 10 }); });
+  window.addEventListener('keydown', (ev) => { if (ev.code === 'Space' && ev.target === document.body) { ev.preventDefault(); $('play').click(); } });
+  new ResizeObserver(() => stage.resize()).observe($('stage'));
+})();
+
+// ------------------------------------------------------------------ panels
+function fmtClock(min) { const s = Math.floor(min * 60), h = Math.floor(s / 3600), m = Math.floor(s / 60) % 60, ss = s % 60; return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(ss).padStart(2, '0')}`; }
+const kvHTML = (rows) => rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+const bar = (label, f, txt, col) => `<div class="bar" style="--c:${col}"><span>${label}</span><span class="track"><i style="width:${(clamp(f, 0, 1) * 100).toFixed(0)}%"></i></span><span>${txt}</span></div>`;
+function updatePanels(now) {
+  if (!lastStats || !view) return;
+  const s = lastStats;
+  $('perf').textContent = `${fps.toFixed(0)} fps · ${simRate.toFixed(1)} sim-min/s · ${usingWorker ? 'worker' : 'main thread'}`;
+  $('ms').textContent = `${s.nodes.toLocaleString()} nodes`;
+  $('pkv').innerHTML = kvHTML([['Cells', `${s.neurons}${s.glia ? ' + ' + s.glia + 'g' : ''}`], ['Neurites', s.neurites], ['Axons', s.axons], ['Synapses', s.synapses], ['Cluster', s.largestCluster], ['Deaths', s.deaths],
+    ['Mean rate', s.active ? s.meanRate.toFixed(1) + ' Hz' : '–'], ['Bursts', s.bursts || '–'], ['Divisions', s.divisions]]);
+  const c = lastSel, vc = c ? view.byId.get(c.id) : null;
+  if (c && vc) {
+    $('cname').textContent = `${c.label} · cell ${c.id}`;
+    $('cmeta').textContent = c.dying >= 0 ? 'apoptosis' : c.mitosis >= 0 ? 'dividing' : c.migrating ? 'migrating' : c.glia ? 'glia' : `stage ${c.stage}`;
+    drawSide($('sidecv'), Object.assign({}, vc, { prim: c.prim, br: c.br, glia: c.glia, type: c.type }));
+    if (!c.glia) {
+      $('stageline').hidden = false;
+      $('stageline').innerHTML = [1, 2, 3, 4, 5].map((k) => { const t = c.stageT[k]; const at = t >= 0 ? ((t - c.born) / 60).toFixed(1) + ' h' : '–'; const rh = STAGE_REF_H[k], ref = rh < 48 ? rh.toFixed(rh % 1 ? 1 : 0) + ' h' : (rh / 24).toFixed(0) + ' d'; return `<div class="${t >= 0 ? 'on' : ''} ${c.stage === k ? 'now' : ''}" title="Calibration target, not experimental uncertainty: ${ref}"><b>${k} ${STAGE_NAMES[k]}</b>${at}<br>target ${ref}</div>`; }).join('');
+      $('cbars').innerHTML = bar('Tubulin store', c.Q, (c.Q * 100).toFixed(0) + '%', 'var(--mt)') + bar('Trophic support', c.troph / 0.8, c.troph.toFixed(2), c.troph < 0.25 ? '#e07070' : 'var(--adh)') + (c.rate > 0 ? bar('Firing rate', c.rate / 8, c.rate.toFixed(1) + ' Hz', 'var(--ca)') : '');
+      $('ckv').innerHTML = kvHTML([['Axon', c.axon.toFixed(0) + ' µm'], ['Dendrites', c.dend.toFixed(0) + ' µm'], ['Minor', c.minor.toFixed(0) + ' µm'], ['Neurites', `${c.prim} + ${c.br} br`], ['Synapses', `${c.out} out · ${c.inn} in`], ['Waves', c.waves], ['Axon changes', c.switches + c.lesions ? `${c.switches} switch · ${c.lesions} cut` : '–']]);
+    } else { $('stageline').hidden = true; $('cbars').innerHTML = ''; $('ckv').innerHTML = kvHTML([['Footprint', (2 * c.a).toFixed(0) + ' µm'], ['Height', c.h.toFixed(1) + ' µm'], ['Contact', (c.theta * 180 / Math.PI).toFixed(0) + '°']]); }
+    if (now - metricsT > 1200) { metricsT = now; send({ type: 'metrics', id: c.id }); }
+    drawSholl($('sholl'), metricsData && metricsData.cell && metricsData.cell.id === c.id ? metricsData.cell.sholl : null);
+  } else { $('cname').textContent = 'No cell selected'; $('cmeta').textContent = ''; drawSide($('sidecv'), null); $('stageline').hidden = true; $('cbars').innerHTML = ''; $('ckv').innerHTML = ''; drawSholl($('sholl'), null); }
+  const act = s.active > 0 || raster.buf.length;
+  $('rasterblock').hidden = !act;
+  if (act) { drawRaster($('raster')); $('rasternote').textContent = s.active ? `${s.active} active neurons · rows wrap at 64 cells · one 200 ms window per structural step` : ''; }
+}
+
+// ------------------------------------------------------------------ loop
+let panelT = 0;
+function tick(now) {
+  const dtReal = Math.min(0.1, (now - lastNow) / 1000); lastNow = now; fps = fps * 0.95 + (1 / Math.max(dtReal, 1e-3)) * 0.05;
+  if (view && stage.show.follow) { const c = view.byId.get(stage.selId); if (c) { stage.cam.x += (c.x - stage.cam.x) * 0.06; stage.cam.y += (c.y - stage.cam.y) * 0.06; } }
+  if (view && stage._pendingSel) { let mx = -1, best = null; for (const c of view.cells) if (c.id > mx) { mx = c.id; best = c; } if (best) { stage.selId = best.id; stage._pendingSel = false; } }
+  stage.draw(view, now);
+  if (view) { $('clock').textContent = fmtClock(view.t); }
+  if (now - panelT > 250) { panelT = now; updatePanels(now); }
+  send({ type: 'frame' });
+  requestAnimationFrame(tick);
+}
+
+buildScenarios(); buildParams(); startRunner(); load('stages');
+window.neuronApp = { get view() { return view; }, stage, load, setMode, send, get stats() { return lastStats; } };
+requestAnimationFrame(tick);
+})();
+</script>
+
+<script>document.addEventListener('visibilitychange',()=>{if(document.hidden&&window.neuronApp)neuronApp.send({type:'run',on:false});});</script></body></html>

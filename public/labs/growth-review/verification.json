@@ -1,0 +1,447 @@
+{
+  "date": "2026-11-03T15:54:40.357Z",
+  "modelRevision": "neurotissue-v4.1-review-2026-11-03",
+  "scope": "Numerical and software verification, not experimental validation",
+  "checks": [
+    {
+      "name": "v3 sphere startup / finite state",
+      "pass": true,
+      "ms": 22.8,
+      "data": {
+        "t": 10.000000000000007,
+        "nodes": 19
+      }
+    },
+    {
+      "name": "v3 worm startup / finite state",
+      "pass": true,
+      "ms": 77.8,
+      "data": {
+        "t": 30.00000000000029,
+        "nodes": 19
+      }
+    },
+    {
+      "name": "v3 first startup / finite state",
+      "pass": true,
+      "ms": 12.9,
+      "data": {
+        "t": 10.000000000000007,
+        "nodes": 19
+      }
+    },
+    {
+      "name": "v3 stages startup / finite state",
+      "pass": true,
+      "ms": 32.1,
+      "data": {
+        "t": 10.000000000000007,
+        "nodes": 19
+      }
+    },
+    {
+      "name": "v3 lesion startup / finite state",
+      "pass": true,
+      "ms": 19.5,
+      "data": {
+        "t": 10.000000000000007,
+        "nodes": 19
+      }
+    },
+    {
+      "name": "v3 types startup / finite state",
+      "pass": true,
+      "ms": 391,
+      "data": {
+        "t": 69.99999999999817,
+        "nodes": 165
+      }
+    },
+    {
+      "name": "v3 tiling startup / finite state",
+      "pass": true,
+      "ms": 18.3,
+      "data": {
+        "t": 10.000000000000007,
+        "nodes": 171
+      }
+    },
+    {
+      "name": "v3 cortex startup / finite state",
+      "pass": true,
+      "ms": 14.5,
+      "data": {
+        "t": 20.000000000000014,
+        "nodes": 19
+      }
+    },
+    {
+      "name": "v3 stripes startup / finite state",
+      "pass": true,
+      "ms": 45.9,
+      "data": {
+        "t": 10.000000000000007,
+        "nodes": 133
+      }
+    },
+    {
+      "name": "v3 turning startup / finite state",
+      "pass": true,
+      "ms": 267.6,
+      "data": {
+        "t": 10.000000000000007,
+        "nodes": 114
+      }
+    },
+    {
+      "name": "v3 channels startup / finite state",
+      "pass": true,
+      "ms": 648.4,
+      "data": {
+        "t": 10.000000000000007,
+        "nodes": 228
+      }
+    },
+    {
+      "name": "v3 stiffness startup / finite state",
+      "pass": true,
+      "ms": 36.3,
+      "data": {
+        "t": 10.000000000000007,
+        "nodes": 285
+      }
+    },
+    {
+      "name": "v3 glia startup / finite state",
+      "pass": true,
+      "ms": 151,
+      "data": {
+        "t": 16.00000000000001,
+        "nodes": 1102
+      }
+    },
+    {
+      "name": "v3 activity startup / finite state",
+      "pass": true,
+      "ms": 79.1,
+      "data": {
+        "t": 10.000000000000007,
+        "nodes": 1140
+      }
+    },
+    {
+      "name": "v3 population startup / finite state",
+      "pass": true,
+      "ms": 75.2,
+      "data": {
+        "t": 16.00000000000001,
+        "nodes": 760
+      }
+    },
+    {
+      "name": "v3 seeded reproducibility",
+      "pass": true,
+      "ms": 13.5
+    },
+    {
+      "name": "v4 dish startup / finite state",
+      "pass": true,
+      "ms": 8.1,
+      "data": {
+        "t": 10.000000000000007,
+        "nodes": 6
+      }
+    },
+    {
+      "name": "v4 gel startup / finite state",
+      "pass": true,
+      "ms": 8,
+      "data": {
+        "t": 20.000000000000014,
+        "nodes": 12
+      }
+    },
+    {
+      "name": "v4 gelSurface startup / finite state",
+      "pass": true,
+      "ms": 3.1,
+      "data": {
+        "t": 20.000000000000014,
+        "nodes": 12
+      }
+    },
+    {
+      "name": "v4 conduit startup / finite state",
+      "pass": true,
+      "ms": 2264.1,
+      "data": {
+        "t": 1000,
+        "nodes": 2863
+      }
+    },
+    {
+      "name": "v4 seeded reproducibility",
+      "pass": true,
+      "ms": 19
+    },
+    {
+      "name": "Exact exponential decay at 75, 15, 5 and 1-minute steps",
+      "pass": true,
+      "ms": 0.5,
+      "data": [
+        {
+          "dt": 75,
+          "value": 0.08208499848842621,
+          "exact": 0.0820849986238988,
+          "absoluteError": 1.354725914781696e-10
+        },
+        {
+          "dt": 15,
+          "value": 0.08208499848842621,
+          "exact": 0.0820849986238988,
+          "absoluteError": 1.354725914781696e-10
+        },
+        {
+          "dt": 5,
+          "value": 0.0820850059390068,
+          "exact": 0.0820849986238988,
+          "absoluteError": 7.3151080054456585e-9
+        },
+        {
+          "dt": 1,
+          "value": 0.08208499103784561,
+          "exact": 0.0820849986238988,
+          "absoluteError": 7.586053188401998e-9
+        }
+      ]
+    },
+    {
+      "name": "Exact constant source plus decay",
+      "pass": true,
+      "ms": 0.2,
+      "data": {
+        "value": 0.6164169907569885,
+        "exact": 0.6164169997247797
+      }
+    },
+    {
+      "name": "No-flux diffusion: constant and mass in box and masked tube",
+      "pass": true,
+      "ms": 0.5,
+      "data": [
+        {
+          "space": "volume",
+          "massRelativeError": 6.51925802230835e-9
+        },
+        {
+          "space": "tube",
+          "massRelativeError": 7.450580596923828e-9
+        }
+      ]
+    },
+    {
+      "name": "Diffusion transient temporal refinement against discrete analytic mode",
+      "pass": true,
+      "ms": 5.1,
+      "data": [
+        {
+          "dt": 25,
+          "maxAbsError": 0.02211195389849152
+        },
+        {
+          "dt": 5,
+          "maxAbsError": 0.004947723551811722
+        },
+        {
+          "dt": 1,
+          "maxAbsError": 0.001014234229149369
+        },
+        {
+          "dt": 0.2,
+          "maxAbsError": 0.00020384947878315796
+        }
+      ]
+    },
+    {
+      "name": "Diffusion spatial refinement against continuous no-flux cosine mode",
+      "pass": true,
+      "ms": 10.1,
+      "data": [
+        {
+          "h": 40,
+          "maxAbsError": 0.002999259753413974
+        },
+        {
+          "h": 20,
+          "maxAbsError": 0.0007932843285491931
+        },
+        {
+          "h": 10,
+          "maxAbsError": 0.00020961264555485748
+        }
+      ]
+    },
+    {
+      "name": "Dead cells release the live-population cap",
+      "pass": true,
+      "ms": 1.1,
+      "data": {
+        "living": 1,
+        "allocatedRecords": 4
+      }
+    },
+    {
+      "name": "Allocation cap is a distinct explicit memory guard",
+      "pass": true,
+      "ms": 0.6
+    },
+    {
+      "name": "Unknown and invalid engine parameters fail early",
+      "pass": true,
+      "ms": 0.1
+    },
+    {
+      "name": "Raw rows remain immutable; current bridge can reverse",
+      "pass": true,
+      "ms": 0.2
+    },
+    {
+      "name": "10 mm non-crossing is a mismatch, not a pass",
+      "pass": true,
+      "ms": 0.4
+    },
+    {
+      "name": "Endpoint crossing is not replaced by an earlier transient crossing",
+      "pass": true,
+      "ms": 0
+    },
+    {
+      "name": "Decode every frame: runs/conduit-10mm.bin",
+      "pass": true,
+      "ms": 69.3,
+      "data": {
+        "frames": 181,
+        "revision": "original-v4"
+      }
+    },
+    {
+      "name": "Decode every frame: runs/conduit-15mm.bin",
+      "pass": true,
+      "ms": 84.4,
+      "data": {
+        "frames": 181,
+        "revision": "original-v4"
+      }
+    },
+    {
+      "name": "Decode every frame: runs/conduit-8mm.bin",
+      "pass": true,
+      "ms": 55.6,
+      "data": {
+        "frames": 181,
+        "rawBridgeReversals": 13
+      }
+    },
+    {
+      "name": "Decode every frame: runs/conduit-graft.bin",
+      "pass": true,
+      "ms": 36.8,
+      "data": {
+        "frames": 169,
+        "revision": "original-v4"
+      }
+    },
+    {
+      "name": "Decode every frame: runs/dish-hippocampal.bin",
+      "pass": true,
+      "ms": 11.9,
+      "data": {
+        "frames": 169,
+        "revision": "original-v4"
+      }
+    },
+    {
+      "name": "Decode every frame: runs/gel-0.5.bin",
+      "pass": true,
+      "ms": 1.3,
+      "data": {
+        "frames": 97,
+        "revision": "original-v4"
+      }
+    },
+    {
+      "name": "Decode every frame: runs/gel-2.bin",
+      "pass": true,
+      "ms": 1.1,
+      "data": {
+        "frames": 97,
+        "revision": "original-v4"
+      }
+    },
+    {
+      "name": "Decode every frame: runs/gelsurface-2.bin",
+      "pass": true,
+      "ms": 1.3,
+      "data": {
+        "frames": 97,
+        "revision": "original-v4"
+      }
+    },
+    {
+      "name": "Decode every frame: runs-corrected/gel-soft.bin",
+      "pass": true,
+      "ms": 0.7,
+      "data": {
+        "frames": 49,
+        "revision": "neurotissue-v4.1-review-2026-11-03"
+      }
+    },
+    {
+      "name": "Decode every frame: runs-corrected/gel-stiff.bin",
+      "pass": true,
+      "ms": 0.7,
+      "data": {
+        "frames": 49,
+        "revision": "neurotissue-v4.1-review-2026-11-03"
+      }
+    },
+    {
+      "name": "Decode every frame: runs-corrected/gel-surface.bin",
+      "pass": true,
+      "ms": 1.7,
+      "data": {
+        "frames": 49,
+        "revision": "neurotissue-v4.1-review-2026-11-03"
+      }
+    },
+    {
+      "name": "Decode every frame: runs-corrected/hippocampal-7days.bin",
+      "pass": true,
+      "ms": 1.4,
+      "data": {
+        "frames": 57,
+        "revision": "neurotissue-v4.1-review-2026-11-03"
+      }
+    },
+    {
+      "name": "Corrected recording round-trip includes model revision",
+      "pass": true,
+      "ms": 2.8
+    },
+    {
+      "name": "V3 calibration typo rejected before simulation",
+      "pass": true,
+      "ms": 42.1
+    }
+  ],
+  "diagnostics": {},
+  "limitations": [
+    "Full coupled growth/field/spatial convergence is not established.",
+    "Original recordings use the original solver and remain explicitly archived.",
+    "No held-out biological validation or clinical/device-performance validation."
+  ],
+  "summary": {
+    "passed": 46,
+    "failed": 0
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "hippocampal",
+  "days": 7,
+  "note": "v3 targets from Dotti, Sullivan & Banker (1988): Table 1 means for stages 2-3 (13 h, 19 h), stage 4 at about day 4, axon ~40 um a day after initiation then ~70 um/day (~250 um at day 4, 300-460 um at day 7), dendrites ~12 um/day each from day 4-5 and up to 75 um by day 7 (5-6 dendrites, ~270 um in total). Replace with your own measurements.",
+  "fit": [
+    { "path": "production", "min": 0.5, "max": 1.0 },
+    { "path": "axon.speed", "min": 0.12, "max": 0.4 },
+    { "path": "dendrite.speed", "min": 0.03, "max": 0.12 },
+    { "path": "minorRestrain", "min": 0.05, "max": 0.4 }
+  ],
+  "targets": {
+    "stage2_h": [13, 0.4],
+    "stage3_h": [19, 0.3],
+    "stage4_h": [96, 0.25],
+    "axon_um@4d": [250, 0.3],
+    "axon_um@7d": [420, 0.25],
+    "dendrite_um@7d": [270, 0.3]
+  }
+}
