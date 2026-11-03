@@ -82,6 +82,9 @@ storage, provenance changes, topology/input changes, nonfinite values, and
 errors beyond each bound. `convergence.py` remains a separate discretization
 study, described below.
 
+See [the reproducible runtime investigation](../../docs/retinal-implant/NATIVE_RUNTIME.md)
+for library hashes, exact commands, and selective-function controls.
+
 ### System math-library compatibility
 
 Run 41675963989 (merge `1a21c8b`) failed after `ubuntu-latest` moved to
