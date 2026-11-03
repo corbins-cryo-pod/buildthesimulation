@@ -1,0 +1,217 @@
+{
+  "environment": "Headless Chromium; offline route fulfillment; Canvas fallback; no WebGL",
+  "checks": [
+    {
+      "name": "V3 starts with a live worker",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V3 preset sphere",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V3 preset worm",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V3 preset first",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V3 preset stages",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V3 completes two-day fast forward",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V3 desktop has no horizontal overflow",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V3 desktop no script exceptions",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "V3 mobile 390px viewport",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V3 mobile no horizontal overflow",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V3 mobile no script exceptions",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "V4 starts with corrected recording",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 Canvas fallback active in this environment",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 fallback disables unavailable field glow",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 loads corrected-hippocampal-7days",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 loads corrected-gel-surface",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 loads corrected-gel-stiff",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 loads corrected-gel-soft",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 loads conduit-8mm",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 retains 13 raw bridge reversals",
+      "passed": true,
+      "details": 13
+    },
+    {
+      "name": "V4 archived provenance visible",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 loads conduit-10mm",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 10mm mismatch visible",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 loads conduit-15mm",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 loads conduit-graft",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 loads gel-0.5",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 loads gel-2",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 loads gelsurface-2",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 loads dish-hippocampal",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 playback advances time",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 scrubs to recorded frame",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 export separates raw rows and history",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 export includes revision",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 camera preset responds",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "V4 rejects fractional seed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 live corrected worker advances",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 live pause stops simulation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 returns from live to recorded mode",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 desktop no horizontal overflow",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 desktop no script exceptions",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "V4 mobile no horizontal overflow",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "V4 mobile no script exceptions",
+      "passed": true,
+      "details": []
+    }
+  ],
+  "passed": 42,
+  "failed": 0
+}

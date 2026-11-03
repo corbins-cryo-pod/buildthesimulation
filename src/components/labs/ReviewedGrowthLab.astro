@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+const {title,edition,description,app,otherHref,otherTitle,mode}=Astro.props;
+const isV3=mode==='cell';
+const ready=existsSync(join(process.cwd(),'public',app));
+---
+<Layout pageTitle={title} subtitle="" description={description} wide compactHeader>
+  <section class="growth-lab" aria-labelledby="growth-lab-title">
+    <header class="lab-heading">
+      <div class="lab-kicker">Experimental biology / {edition} / independent laboratory</div>
+      <h1 id="growth-lab-title">{title}</h1>
+      <p class="lab-deck">{description}</p>
+      <nav class="lab-actions" aria-label="Laboratory tools">
+        <a href="/simulations/">All simulations</a>
+        <a href={otherHref}>{otherTitle}</a>
+        <a href="#model-evidence">Model &amp; evidence</a>
+        <a href={app} target="_blank" rel="noopener">Open full workspace ↗</a>
+        <button type="button" data-lab-expand>Expand workspace</button>
+      </nav>
+    </header>
+    <div class="workspace-frame" data-lab-frame>
+      <!-- The draft branch may exist before its verified asset bundle is imported. -->
+      {ready?<iframe src={app} title={title+' interactive workspace'} allow="fullscreen" loading="eager"></iframe>:<p class="staging-notice">This staging branch has not received the verified simulation bundle yet. The laboratory is not deployed.</p>}
+    </div>
+    <div class="lab-status"><span>{isV3?'Original V3 canvas and cell mechanics retained':'Raw state and historical measurements kept separate'}</span><span>Exploratory model · not a validated biological predictor</span></div>
+    <section id="model-evidence" class="lab-evidence">
+      <div><h2>{isV3?'A detailed cell, not a tissue-scale replacement':'A tissue-scale model, not a V3 replacement'}</h2>
+      <p>{isV3?'The original 15 presets, deformable soma, neurite growth, worker-based calculation and simplified electrical-network module remain available. The interface uses the site’s manual-style typography without changing the cell renderer.':'This engine adds surfaces, 3-D gels and cylindrical nerve-repair environments. Its soma agents are simpler than V3 and it does not include V3’s electrical-network module. Distal-stump crossing does not establish conduction, reinnervation or functional recovery.'}</p>
+      <p>{isV3?'Begin with Soft sphere, Worm crawl and First neurite. The stage and length references are calibration targets rather than independent validation.':'The original eight recordings are preserved as explicitly labelled archived runs. Corrected recordings and live runs carry a new model revision. Solver changes are not applied retroactively to old recordings.'}</p></div>
+      <div><h2>What was corrected</h2>
+      <p>{isV3?'Responsive viewport handling, site typography and navigation, transparent calibration labels, and fail-fast validation of calibration inputs. The scientific growth engine and canvas drawing code are preserved.':'Exact local source/decay updates, bounded fibrin accumulation, field/reaction substeps, separate living-cell and allocation caps, and independent day-4/day-7 comparisons. Raw Schwann-front reversals are no longer hidden.'}</p>
+      {!isV3&&<p>The 10 mm, both-stumps condition is compared against reported regeneration—not relabelled as an expected failure. Full coupled-model convergence and independent biological validation remain outstanding.</p>}
+      <p><a href="/labs/growth-review/verification.json">Executed verification results</a> · <a href="/labs/growth-review/REVIEW.md">Changes, provenance and limitations</a></p></div>
+    </section>
+    <section class="lab-sources"><h2>Primary evidence</h2>
+      <p><a href="https://pubmed.ncbi.nlm.nih.gov/3282038/" target="_blank" rel="noopener">Dotti, Sullivan &amp; Banker (1988): neuronal polarity</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/7095058/" target="_blank" rel="noopener">Lundborg et al. (1982): gap length and distal stump</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/11352088/" target="_blank" rel="noopener">Balgude et al. (2001): agarose stiffness and outgrowth</a>. Parameter fits, qualitative comparisons and numerical verification are distinct evidence categories.</p>
+    </section>
+  </section>
+</Layout>
+<script>
+ const frame=document.querySelector('[data-lab-frame]');
+ const button=document.querySelector('[data-lab-expand]');
+ button?.addEventListener('click',async()=>{
+  if(!frame)return;
+  try{if(document.fullscreenElement)await document.exitFullscreen();else await frame.requestFullscreen();}
+  catch{frame.classList.toggle('expanded');button.textContent=frame.classList.contains('expanded')?'Restore workspace':'Expand workspace';}
+ });
+ document.addEventListener('fullscreenchange',()=>{if(button)button.textContent=document.fullscreenElement?'Restore workspace':'Expand workspace';});
+</script>
+<style>
+.growth-lab{--lab-line:var(--border,#bca47f);margin:0 auto}.lab-heading{padding:20px 0 18px;border-top:1px solid var(--lab-line)}
+.lab-kicker{font-family:var(--font-heading,Arial,sans-serif);font-size:12px;text-transform:uppercase;letter-spacing:.11em!important;opacity:.7}
+.lab-heading h1{font-family:var(--font-heading,Arial,sans-serif);font-size:clamp(28px,3.4vw,51px);text-transform:uppercase;letter-spacing:.035em!important;margin:10px 0}
+.lab-deck{font-family:var(--font-body,Georgia,serif);max-width:104ch;font-size:17px;line-height:1.4!important;margin:0 0 15px}
+.lab-actions{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}.lab-actions a,.lab-actions button{font-family:var(--font-heading,Arial,sans-serif);text-transform:uppercase;letter-spacing:.055em!important;font-size:12px;color:inherit}.lab-actions button{background:transparent;border:1px solid var(--lab-line);padding:7px 10px;cursor:pointer}.lab-actions a{text-underline-offset:4px}
+.workspace-frame{height:max(690px,calc(100dvh - 205px));max-height:1150px;border:1px solid var(--lab-line);background:#0a0d10}.workspace-frame iframe{border:0;display:block;width:100%;height:100%;color-scheme:dark}.workspace-frame:fullscreen,.workspace-frame.expanded{height:100dvh;max-height:none;width:100%;background:#0a0d10}
+.lab-status{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid var(--lab-line);font-size:12px;opacity:.8}.lab-evidence{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin:28px 0}.lab-evidence h2,.lab-sources h2{font:700 16px var(--font-heading,Arial,sans-serif);text-transform:uppercase;letter-spacing:.055em!important}.lab-evidence p,.lab-sources p{font-size:16px;line-height:1.5!important}.lab-sources{border-top:1px solid var(--lab-line);padding-top:12px}.lab-evidence a,.lab-sources a{color:inherit;text-underline-offset:3px}
+@media(max-width:860px){.lab-evidence{grid-template-columns:1fr;gap:10px}.workspace-frame{height:1000px;max-height:none}.lab-heading{padding-top:12px}.lab-heading h1{font-size:29px}.lab-deck{font-size:16px}.lab-actions{gap:10px 15px}.lab-status{font-size:11px}}
+</style>

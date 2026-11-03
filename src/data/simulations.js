@@ -60,6 +60,8 @@ export const simulationGroups = [
   {
     "title": "Cell Models & Electrophysiology",
     "entries": [
+      {"href":"/simulations/neuron-growth/","title":"Cell Behavior Laboratory · V3","desc":"The detailed coverslip engine: soft-cell spreading and crawling, pulsatile neurite growth, branching, lesions and simplified electrical networks. Original V3 appearance and renderer retained."},
+      {"href":"/simulations/neural-tissue/","title":"Tissue Growth & Nerve Repair · V4","desc":"Explore 3-D gels, nerve conduits and grafts with corrected field integration, raw measurements and explicit evidence limits. Original recordings remain labelled separately from corrected-solver runs."},
       {
         "href": "/simulations/cell-growth/",
         "title": "Cell Growth Laboratory",
