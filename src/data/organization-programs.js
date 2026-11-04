@@ -1181,5 +1181,17 @@ export default {
         "Cortical surface"
       ]
     }
+  ],
+  "91-arbor-neuroscience-company-brief": [
+    {
+      "name": "Functional ultrasound imaging and neuromodulation research platform",
+      "stage": 3,
+      "regulatory": "R",
+      "evidenceUrl": "https://www.plymouth.ac.uk/research/psychology/brain-research-and-imaging-centre/transcranial-ultrasound-stimulation/next-generation-brain-machine-interface-for-whole-brain-input-output",
+      "notes": "First human study underway with BHR University Hospitals NHS Trust and University of Plymouth (ARIA-funded, from March 2025): safety and tolerability of the Forest 1 wearable fUSI device in up to 30 participants with prior craniectomies, plus mood-circuit measurement and modulation; research instrument, no therapy claim.",
+      "interfaces": [
+        "Noninvasive"
+      ]
+    }
   ]
 };
