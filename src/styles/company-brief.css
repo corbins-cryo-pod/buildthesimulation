@@ -104,9 +104,9 @@ main.wrap:has(.company-brief) { padding: 28px 24px 36px; }
 .brief-source-heading h2 { font: 400 50px/1 var(--font-heading); }
 .brief-source-heading > p { font-size: 16px; font-style: italic; line-height: 1.45; color: var(--muted); max-width: 38ch; justify-self: end; }
 .brief-source-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--brief-rule); column-gap: 35px; }
-.brief-source-list > li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 12px; padding: 21px 0; border-bottom: 1px solid var(--brief-rule); }
+.brief-source-list > li { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 12px; padding: 21px 0; border-bottom: 1px solid var(--brief-rule); }
 .brief-source-list > li:target { outline: 1px solid var(--brief-rule); outline-offset: 7px; background: var(--panel); }
-.brief-source-number { color: var(--brief-accent); font: 400 29px/1 var(--font-heading); padding-top: 3px; }
+.brief-source-number { color: var(--brief-accent); font: 400 29px/1 var(--font-heading); padding-top: 3px; white-space: nowrap; }
 .brief-source-meta { font-size: 12px; line-height: 1.45; color: var(--muted); }
 .brief-source-meta > span { color: var(--brief-accent); }
 .brief-source-meta > span:first-child { margin: 0 5px; }
