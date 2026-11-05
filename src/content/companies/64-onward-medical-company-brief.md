@@ -2,8 +2,8 @@
 title: "ONWARD Medical N.V. (company brief)"
 order: 64
 pubDate: 2026-10-09
-updatedDate: 2026-10-12
-lastVerified: 2026-10-12
+updatedDate: 2026-11-05
+lastVerified: 2026-11-05
 description: "ONWARD Medical says it was formed in 2015 by neuroscience researchers at EPFL and is headquartered in Eindhoven, with an engineering center in Lausanne (company statement)."
 region: "European"
 kind: "Company"
@@ -29,9 +29,17 @@ ONWARD Medical develops spinal cord stimulation therapies for movement after spi
 
 - Headcount and the per-product revenue split were not read here. ARC-IM is investigational and not marketed.
 
+## Q3 2026 update (Nov 3, 2026, company press release)
+
+- Q3 2026 revenue of EUR 2.5 million; cash balance of EUR 73.4 million as of September 30, 2026.
+- 88 ARC-EX systems sold or supplied via paid evaluation in the quarter (the company states 120% year-over-year unit growth); ARC-EX available in more than 170 clinics worldwide, including 150 US rehabilitation clinics and Veterans Affairs facilities.
+- Empower BP global pivotal study (ARC-IM): 31 participants enrolled, with 16 clinical sites recruiting across the US, Canada and Germany.
+- Feasibility milestones the company names for the quarter: first subacute implant in the EIGER study (ARC-IM to restore mobility after spinal cord injury); first-in-human use of ARC-IM Therapy to restore bladder control after spinal cord injury; and two additional implants in an ongoing feasibility study addressing blood-pressure instability in Parkinson's disease. All figures and milestones are company-reported.
+
 ## Primary sources
 
 - FY2025 results: <https://live.euronext.com/en/products/equities/company-news/2026-03-31-onward-medical-reports-full-year-2025-financial-and>
+- Q3 2026 business update (Nov 3, 2026): <https://www.globenewswire.com/news-release/2026/11/03/3393903/0/en/onward-medical-delivers-revenue-of-eur-2-5m-in-q3-2026-with-sustained-commercial-momentum-and-strong-clinical-execution.html>
 
 ### Device entries
 

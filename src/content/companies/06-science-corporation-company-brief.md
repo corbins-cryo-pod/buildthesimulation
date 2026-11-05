@@ -2,8 +2,8 @@
 title: "Science Corporation (company brief)"
 order: 6
 pubDate: 2026-02-02
-updatedDate: 2026-10-17
-lastVerified: 2026-10-17
+updatedDate: 2026-11-05
+lastVerified: 2026-11-05
 description: "Science Corporation’s BCI work with an emphasis on its biohybrid neural interface concept (neurons-as-the-interface), plus its PRIMA retinal prosthesis program."
 region: "American"
 kind: "Company"
@@ -118,6 +118,10 @@ But the credibility hinge is the same as always: can they make it *reliable, saf
 ### Oct 13, 2026 update: first Stargardt patient (reviewed Oct 17, 2026)
 
 - *First Stargardt patient (Oct 13, 2026, company update):* Science reported that its first patient with Stargardt disease received the PRIMA implant in *May 2026* in the PRIMAlia trial (NCT07266584) at Sydney Eye Hospital under Dr. Matthew Simunovic. Per the company, during his first rehabilitation session he saw a letter, and during his second session he read a word (single patient, company-reported, not peer reviewed). TechCrunch covered the announcement the same day from TechCrunch Disrupt, where CEO Max Hodak said a next-generation PRIMA implant is being worked on that he expects "in humans in the next year" (his statement). Sources: <https://science.xyz/news/stargardt-first-rehab/> (company) and <https://techcrunch.com/2026/10/13/science-corporation-implants-its-vision-restoring-chip-in-its-first-stargardt-disease-patient/> (secondary)
+
+### Nov 5, 2026 update: first post-approval PRIMA implant (reviewed Nov 5, 2026)
+
+- *First post-CE-mark implant (Oct 9, 2026, hospital announcement):* the University Medical Center Schleswig-Holstein (UKSH), Lübeck Campus, announced what it calls the world's first PRIMA implant since the chip's July approval for routine clinical use in Europe - an 80-year-old patient blind from geographic atrophy, implanted subretinally by Prof. Salvatore Grisanti's team. Per the hospital, the patient has since shown a marked visual-acuity increase, and Grisanti expects her to regain the ability to read medium-sized letters (single patient, hospital-reported, not peer reviewed). Deutsches Ärzteblatt covered the implant on Nov 4 from the hospital's press release. Sources: <https://zip.uksh.de/international_department/en/News/2026/World+Premiere+at+UKSH_+Retinal+Implant+Enables+Blind+Patient+to+See+Again-p-9999.html> (hospital) and <https://www.aerzteblatt.de/news/erstmals-nach-zulassung-netzhautchip-gegen-geografische-atrophie-eingesetzt-51f7b7b0-6e2a-476f-a2ed-cae1c1af6c85> (secondary)
 
 ### Device entries
 
