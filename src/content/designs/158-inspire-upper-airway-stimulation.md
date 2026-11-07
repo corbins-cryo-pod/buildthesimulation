@@ -24,6 +24,8 @@ Inspire is an implanted hypoglossal nerve stimulator with a sensing lead that tr
 
 Company brief: [Inspire Medical Systems, Inc.](/companies/58-inspire-medical-systems-company-brief/).
 
+The [STAR pivotal trial](/applications/186-inspire-star-trial-upper-airway-stimulation/) page covers the published human evidence behind the 2014 approval.
+
 ## Identity
 
 | Field | Value and source scope |
