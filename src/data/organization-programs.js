@@ -1193,5 +1193,27 @@ export default {
         "Noninvasive"
       ]
     }
+  ],
+  "92-nanochap-company-brief": [
+    {
+      "name": "E-BCI retinal visual prosthesis",
+      "stage": 3,
+      "regulatory": "R",
+      "evidenceUrl": "https://insidebci.com/market/2026-11-04-nanochap-rmb-500-million-series-c-plus-gaorong-retinal-vision-bci-hangzhou/",
+      "notes": "Registration trial underway at three Chinese hospitals, first implant May 19, 2026; a registration trial is not NMPA market approval. Company targets a 2027 approval application.",
+      "interfaces": [
+        "Other"
+      ]
+    },
+    {
+      "name": "V-BCI visual-cortex implant",
+      "stage": 2,
+      "regulatory": "R",
+      "evidenceUrl": "https://www.nanochap.com/product/2.html",
+      "notes": "Subdural visual-cortex array in animal studies; company plans a first-in-human trial in 2026 and has not reported one.",
+      "interfaces": [
+        "Cortical surface"
+      ]
+    }
   ]
 };
