@@ -846,6 +846,18 @@ export default {
   ],
   "64-onward-medical-company-brief": [
     {
+      "name": "ARC-EX transcutaneous spinal stimulation",
+      "stage": 4,
+      "regulatory": "A",
+      "evidenceUrl": "/devices/219-onward-arc-ex-transcutaneous-spinal-stimulation/",
+      "notes": "FDA De Novo marketing authorization for the external system, not PMA approval; separate from the investigational implanted ARC-IM.",
+      "authorizationLabel": "FDA De Novo DEN240014",
+      "authorizationUrl": "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfPMN/denovo.cfm?knumber=DEN240014&start_search=1",
+      "interfaces": [
+        "Noninvasive"
+      ]
+    },
+    {
       "name": "ARC-IM implantable spinal stimulation",
       "stage": 3,
       "regulatory": "R",
