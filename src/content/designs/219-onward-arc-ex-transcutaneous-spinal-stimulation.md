@@ -78,9 +78,10 @@ Company brief: [ONWARD Medical N.V.](/companies/64-onward-medical-company-brief/
 
 | Field | Value and source scope |
 | --- | --- |
-| US pathway | FDA De Novo DEN240014, decision December 19, 2024; a marketing authorization, not PMA approval [2] |
-| Scope | Clinic use; at announcement the company anticipated home-use authorization in mid-2025 and a CE mark submission in the second half of 2025 (company statements, December 2024) [5] |
-| Europe | The company publishes an EU indication-for-use statement on its product page (company statement) [1] |
+| US initial authorization | FDA De Novo DEN240014, decision December 19, 2024; clinic use. A De Novo grant is a marketing authorization, not PMA approval [2] |
+| US home use | FDA 510(k) K251821, decision November 14, 2025 (substantially equivalent; product code SDO), announced November 17, 2025. The US indication now covers clinic use with functional task practice and take-home exercises at home, for adults 18-75 with chronic, non-progressive incomplete SCI at C2-C8 [6] |
+| Europe | CE mark under the EU Medical Device Regulation announced September 8, 2025, covering marketing for clinic and home use in the EU, with a streamlined pathway in the UK and Switzerland; phased launch starting in Germany, first European sales expected Q4 2025 (company announcement) [7] |
+| US commercialization | More than 60 US clinics had purchased ARC-EX systems year-to-date as of November 2025 (company statement) [6] |
 
 ## Primary sources
 
