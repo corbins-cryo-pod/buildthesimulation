@@ -2,11 +2,11 @@
 title: "ONWARD Up-LIFT pivotal trial of ARC-EX non-invasive spinal stimulation (NCT04697472)"
 order: 187
 pubDate: 2026-11-09
-updatedDate: 2026-11-09
+updatedDate: 2026-11-10
 application_id: "BTSD-APP-0094"
 interface_class: "scs"
 status: "human"
-last_updated: 2026-11-09
+last_updated: 2026-11-10
 description: "Up-LIFT, ONWARD Medical's completed pivotal, single-arm, multicenter trial of the non-invasive ARC-EX transcutaneous cervical spinal stimulation system for hand and arm function in chronic tetraplegia, NCT04697472. Results peer reviewed in Nature Medicine; basis for FDA De Novo DEN240014 (December 19, 2024), the first US authorization of a non-invasive spinal cord stimulation system for chronic spinal cord injury."
 modality: "Other"
 website: "https://clinicaltrials.gov/study/NCT04697472"
@@ -49,8 +49,8 @@ The completed pivotal trial of ONWARD's ARC-EX system - external electrical stim
 | Field | Value and source scope |
 | --- | --- |
 | FDA pathway | De Novo DEN240014, ARC-EX System, Onward Medical, Inc.; decision December 19, 2024 [3] |
-| Scope | Authorization covers use of ARC-EX in clinics [3][4] |
-| Company plans at announcement | Home-use authorization anticipated mid-2025; CE mark submission planned for the second half of 2025 (company statements, December 2024) [4] |
+| Initial scope | Clinic use (December 2024) [3][4] |
+| Later decisions | FDA 510(k) K251821 (decision November 14, 2025) expanded the US indication to home use; CE mark under the EU MDR announced September 8, 2025 (company announcement). The December 2024 plans for home use and Europe were realized on this timeline [5][6] |
 
 ## Primary sources
 
@@ -58,3 +58,5 @@ The completed pivotal trial of ONWARD's ARC-EX system - external electrical stim
 2. [Moritz C, Field-Fote EC, Tefertiller C, et al., Non-invasive spinal cord electrical stimulation for arm and hand function in chronic tetraplegia: a safety and efficacy trial, Nature Medicine 2024;30(5):1276-1283](https://pubmed.ncbi.nlm.nih.gov/38769431/). Peer reviewed; PMID 38769431; open access PMC11108781.
 3. [FDA De Novo database, DEN240014 (ARC-EX System)](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfPMN/denovo.cfm?knumber=DEN240014&start_search=1). Decision date December 19, 2024.
 4. [MassDevice (December 19, 2024, FDA authorization coverage with company statements)](https://www.massdevice.com/onward-fda-clearance-non-invasive-spinal-cord-stim/).
+5. [FDA 510(k) database, K251821 (ARC-EX System home-use expansion)](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K251821). Decision date November 14, 2025.
+6. [ONWARD Medical press release (September 8, 2025, CE Mark for ARC-EX)](https://ir.onwd.com/static-files/a535cfdb-3cdf-4e12-b0fb-a22805640da0). Company announcement.
