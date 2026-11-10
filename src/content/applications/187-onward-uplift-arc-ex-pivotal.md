@@ -11,7 +11,7 @@ description: "Up-LIFT, ONWARD Medical's completed pivotal, single-arm, multicent
 modality: "Other"
 website: "https://clinicaltrials.gov/study/NCT04697472"
 tags: ["ONWARD", "ARC-EX", "spinal cord stimulation", "transcutaneous", "pivotal", "spinal cord injury", "tetraplegia", "De Novo"]
-devices: []
+devices: ["219-onward-arc-ex-transcutaneous-spinal-stimulation"]
 orgs: ["64-onward-medical-company-brief"]
 draft: false
 ---
