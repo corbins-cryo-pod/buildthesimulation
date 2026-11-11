@@ -21,6 +21,7 @@ const custom = [
   ['armNodeCount',6,'true nodes / arm',6,12,'estimated','At least three distal monitors outside the local initiation region and away from the terminal node.'],
   ['passiveSegments',3,'subsegments / passive section',1,5,'estimated','Explicit myelinated-section spatial subdivision; new topology requires its own refinement.'],
   ['stemSegments',3,'segments / stem',1,5,'estimated','Explicit spatial subdivision of each unmyelinated stem; no silent geometry repair.'],
+  ['somaSegments',5,'axial soma bands',1,5,'estimated','Explicit spherical-band subdivision. The 1→3 and 3→5 field-coupled comparisons failed; 5→9 and 9→13 passed the tested spatial gates. Coarse 1/3 remain diagnostic choices, not certified defaults. Final coupled field/time reports remain authoritative.'],
   ['somaDiameterUm',20,'µm',15,25,'hypothetical','Explicit spherical-band soma with lumped area-matched cable approximation, not a fitted SGN.'],
   ['somaActiveScale',.1,'relative MRG nodal density',0,1,'hypothetical','Declared active-density hypothesis on the soma; no change to myelinated nodal conductances.'],
   ['stemActiveScale',.1,'relative MRG nodal density',0,1,'hypothetical','Declared active-density hypothesis on the two unmyelinated stems.'],
@@ -47,12 +48,12 @@ export const STAGE1_PARAMETER_REGISTER = Object.freeze([...common,...custom].map
 export const STAGE1_ENUM_REGISTER = Object.freeze([
   {key:'mode',default:STAGE1_MODE,values:[STAGE1_MODE],evidence:'hypothetical',provenance:'Separate fixed-topology complete-replacement experiment.'},
   {key:'topologyAssumption',default:'complete-resection-fixed-engineered-projections',values:['complete-resection-fixed-engineered-projections'],evidence:'hypothetical',provenance:'Original identities are disconnected; E processes are assumed present to electrical observation planes. No biological target-innervation yield.'},
-  {key:'nativeStumpAssumption',default:'viable-disconnected-no-device-proxy',values:['viable-disconnected-no-device-proxy'],evidence:'hypothetical',provenance:'Instantaneous excitable stump state in the no-device comparator; survival and degeneration are not predicted.'},
+  {key:'nativeStumpAssumption',default:'absent-in-both-matched-conditions',values:['absent-in-both-matched-conditions'],evidence:'hypothetical',provenance:'Original remnant processes are absent in BOTH B3 and matched no-device. Separate viable-stump diagnostics do not change this common anatomical input.'},
   {key:'includeElectrodeOnlyControl',default:false,values:[false,true],evidence:'estimated',provenance:'Explicit additional counterfactual. Never substituted for true no-device or silently omitted to fit a budget.'}
 ].map(p=>Object.freeze({...p,values:Object.freeze(p.values)})));
 export const DEFAULT_STAGE1_SETTINGS = Object.freeze(Object.fromEntries([...STAGE1_PARAMETER_REGISTER,...STAGE1_ENUM_REGISTER].map(p=>[p.key,p.default])));
 export const STAGE1_BUDGET = Object.freeze({maxCableSolves:CORE_BUDGET.maxCableSolves,maxCompartmentSteps:2.4e9,maxSavedValues:CORE_BUDGET.maxSavedValues,maxEventsPerNodePerSolve:CORE_BUDGET.maxEventsPerNodePerSolve});
-const integerKeys = new Set(['seed','axonCount','channelCount','armNodeCount','passiveSegments','stemSegments','fieldAngularSegments','wellAngularSegments','fieldRadialRefinement','fieldAxialRefinement']);
+const integerKeys = new Set(['seed','axonCount','channelCount','armNodeCount','passiveSegments','stemSegments','somaSegments','fieldAngularSegments','wellAngularSegments','fieldRadialRefinement','fieldAxialRefinement']);
 const diameters = [5.7,7.3,8.7,10,11.5,12.8,14,15,16];
 
 export function normalizeStage1Settings(input={}) {
@@ -62,7 +63,7 @@ export function normalizeStage1Settings(input={}) {
   for(const p of STAGE1_PARAMETER_REGISTER){const value=s[p.key];if(typeof value!=='number'||!Number.isFinite(value)||value<p.min||value>p.max||(integerKeys.has(p.key)&&!Number.isInteger(value)))throw new Error(`${p.key} must be ${integerKeys.has(p.key)?'an integer':'a finite number'} between ${p.min} and ${p.max} ${p.units}.`);}
   for(const p of STAGE1_ENUM_REGISTER)if(!p.values.includes(s[p.key]))throw new Error(`Unsupported ${p.key}; select an explicit supported Stage 1 value.`);
   for(const key of ['peripheralFiberDiameterUm','centralFiberDiameterUm'])if(!diameters.includes(s[key]))throw new Error(`${key} must be a published MRG tabulated diameter.`);
-  for(const key of ['passiveSegments','stemSegments'])if(![1,3,5].includes(s[key]))throw new Error(`${key} must be 1, 3, or 5.`);
+  for(const key of ['passiveSegments','stemSegments','somaSegments'])if(![1,3,5].includes(s[key]))throw new Error(`${key} must be 1, 3, or 5.`);
   if(s.wellInnerRadiusUm<=s.somaDiameterUm/2)throw new Error('The soma does not fit inside the well cavity with positive fluid clearance.');
   if(s.wellApertureRadiusUm<=Math.max(s.peripheralFiberDiameterUm,s.centralFiberDiameterUm,s.peripheralStemDiameterUm,s.centralStemDiameterUm)/2)throw new Error('The aperture must have positive clearance around the exposed neurite envelope.');
   if(s.wellApertureRadiusUm>=s.wellInnerRadiusUm)throw new Error('The end-cap aperture must be smaller than the cavity radius.');
@@ -83,11 +84,11 @@ export function validateStage1Budget(input,morphology,stumps) {
   const samples=Math.floor(observationSteps/stride)+1+(observationSteps%stride?1:0),prepSteps=Math.round(s.equilibrationMs/s.dtMs);
   const c=m.compartments.length,nativeC=arms.reduce((sum,a)=>sum+a.compartments.length,0);
   const active=m.eventSiteCount??m.activeSiteIndices?.length??m.nodeIndices.length,nativeA=arms.reduce((sum,a)=>sum+(a.eventSiteCount??a.activeSiteIndices?.length??a.nodeIndices.length),0);
-  const eSolves=3*pairs+3,nativeDriven=s.includeElectrodeOnlyControl?pairs:0,cableSolves=eSolves+2+2*nativeDriven;
+  const eSolves=4*pairs+4,nativeDriven=s.includeElectrodeOnlyControl?pairs:0,cableSolves=eSolves+2+2*nativeDriven;
   const preparationCompartmentSteps=prepSteps*(c+nativeC);
   const compartmentSteps=observationSteps*(eSolves*c+(1+nativeDriven)*nativeC)+preparationCompartmentSteps;
   const monitorCount=1+m.armMonitors.central.compartmentIndices.length+m.armMonitors.peripheral.compartmentIndices.length;
-  const traceValues=(pairs+1)*samples*(active+2*monitorCount+3)+(nativeDriven+1)*samples*(nativeA+2);
+  const traceValues=(pairs+1)*samples*(active+3*monitorCount+4)+(nativeDriven+1)*samples*(nativeA+2);
   const transferValues=pairs*(c+(s.includeElectrodeOnlyControl?nativeC:0));
   const maxEventRecords=(eSolves*active+(1+nativeDriven)*nativeA)*STAGE1_BUDGET.maxEventsPerNodePerSolve;
   const recordingValues=s.channelCount*samples*(s.includeElectrodeOnlyControl?18:8);
@@ -104,9 +105,10 @@ export const STAGE1_LIMITATIONS=Object.freeze([
   'Engineered projections are assumed present to electrical observation planes. Growth, correct target reinnervation and survival are not simulated.',
   'The bipolar soma/stem/axon parameterization is an explicit electrical hypothesis, not a calibrated human spiral-ganglion neuron.',
   'Complete resection disconnects every original neuron. Original-host Y=0 is a consequence of that topology, not a postoperative forecast.',
-  'True no-device removes implanted cells, well walls and contacts, has no implant drive, and retains explicitly disconnected native-stump electrical proxies. An intact native context is a different anatomy.',
-  'Native-stump viability in the comparator is imposed at the modeled electrical instant; degeneration and chronic survival are not predicted.',
-  'Local active-conductance dependence plus early initiation location is conditional electrical evidence. Whole-cell silencing alone cannot establish soma mediation.',
+  'B3 and matched no-device both assume original remnants absent within the modeled domain. This is a fixed hypothetical anatomical state, not a simulated degeneration or survival history.',
+  'True no-device removes only implanted cells, well walls and contacts and their drive. Its empty excitable population and zero-source field have an exact analytical zero; no membrane trace is fabricated.',
+  'Viable disconnected native stumps are a separately executed diagnostic with a different explicitly hypothetical population. They are never substituted for matched no-device or used to estimate implant benefit.',
+  'Regional conductance dependence plus early observed threshold-crossing location is conditional electrical evidence. Threshold-crossing order does not localize the source of depolarization; whole-cell silencing alone cannot establish soma mediation.',
   'Junction block is not applicable because B3 has no engineered-to-host junction. No numerical intervention or passing score is invented.',
   'Numerical acceptance is attached to declared sources, settings and fixtures. Biological calibration, device safety and clinical outcomes are not established.'
 ]);

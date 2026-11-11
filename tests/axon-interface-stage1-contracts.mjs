@@ -15,6 +15,8 @@ test('Stage 1: each original identity is distinct from the fixed engineered outp
   assert.ok(ledger.original.every(item=>item.postoperativeContinuity===false));
   assert.ok(ledger.engineered.every(item=>item.originalHostIdentity===null&&item.targetReinnervationValidated===false&&item.survivalYield===null));
   assert.ok(ledger.nativeRemnants.every(item=>item.connectedAcrossResection===false&&item.survivalForecast===null));
+  assert.ok(ledger.nativeRemnants.every(item=>item.presentInB3===false&&item.presentInMatchedNoDevice===false));
+  assert.equal(ledger.remnantStateAssumption.b3,ledger.remnantStateAssumption.noDevice);assert.equal(ledger.remnantStateAssumption.matched,true);
   assert.equal(new Set([...ledger.original,...ledger.engineered,...ledger.nativeRemnants].map(item=>item.id)).size,16);
   assert.equal(ledger.intactNativeContext.continuousOriginalCount,4);
   const raw=selectivityMetrics([[1,0,0,0]],[[0,0,0,0]],[0,0,0,0],4,{initiationEligible:[[1,0,0,0]]});
@@ -55,9 +57,9 @@ test('Stage 1: obsolete core inputs, malformed settings and intersecting geometr
 });
 
 test('Stage 1: morphology contains a soma, two distinct stems and two own arms; native stumps cannot conduct across the gap',()=>{
-  const m=buildStage1Morphology(SMALL),stumps=createNativeStumpMorphologies(m),gap=assertDisconnectedNativeStumps(stumps);
-  assert.equal(m.type,'bipolar-projecting-neuron');assert.equal(m.compartments.length,319);assert.equal(m.nodeIndices.length,12);assert.equal(m.activeSiteIndices.length,19);
-  assert.equal(m.somaIndices.length,1);assert.ok(!m.nodeIndices.includes(m.somaIndex));
+  const s=normalizeStage1Settings(SMALL),m=buildStage1Morphology(s),stumps=createNativeStumpMorphologies(m),gap=assertDisconnectedNativeStumps(stumps);
+  assert.equal(m.type,'bipolar-projecting-neuron');assert.equal(m.compartments.length,312+2*s.stemSegments+s.somaSegments);assert.equal(m.nodeIndices.length,12);assert.equal(m.activeSiteIndices.length,12+2*s.stemSegments+s.somaSegments);
+  assert.equal(m.somaIndices.length,s.somaSegments);assert.ok(!m.nodeIndices.includes(m.somaIndex));
   assert.equal(m.roleIndices.peripheralStem.length,3);assert.equal(m.roleIndices.centralStem.length,3);
   assert.ok(m.parameters.peripheralStemLengthUm!==m.parameters.centralStemLengthUm);
   for(const arm of ['peripheral','central']){
@@ -87,10 +89,11 @@ test('Stage 1: three-node outward propagation and soma/stem initiation are separ
 
 test('Stage 1: budgets explicitly include independent stump preparation and every requested condition',async()=>{
   const s=normalizeStage1Settings(),m=buildStage1Morphology(s),stumps=createNativeStumpMorphologies(m),budget=validateStage1Budget(s,m,stumps);
-  assert.equal(budget.engineeredSolves,771);assert.equal(budget.nativeStumpSolves,2);assert.equal(budget.cableSolves,773);
+  assert.equal(budget.engineeredSolves,1028);assert.equal(budget.nativeStumpSolves,2);assert.equal(budget.cableSolves,1030);
   assert.ok(budget.compartmentSteps>1.2e9&&budget.compartmentSteps<STAGE1_BUDGET.maxCompartmentSteps);
-  const extra=validateStage1Budget({...s,includeElectrodeOnlyControl:true},m,stumps);
-  assert.equal(extra.nativeStumpSolves,514);assert.ok(extra.compartmentSteps>budget.compartmentSteps);assert.ok(extra.savedValues>budget.savedValues);
+  assert.throws(()=>validateStage1Budget({...s,includeElectrodeOnlyControl:true},m,stumps),/work budget/);
+  const small=normalizeStage1Settings(SMALL),baseSmall=validateStage1Budget(small,m,stumps),extra=validateStage1Budget({...small,includeElectrodeOnlyControl:true},m,stumps);
+  assert.equal(extra.nativeStumpSolves,10);assert.ok(extra.compartmentSteps>baseSmall.compartmentSteps);assert.ok(extra.savedValues>baseSmall.savedValues);
   await assert.rejects(runStage1Protocol(SMALL,{shouldCancel:()=>true}),/cancelled/);
   let began=false;await assert.rejects(runStage1Study(s,'amplitude',{onProgress:()=>began=true}),/budget/);assert.equal(began,false);
 });

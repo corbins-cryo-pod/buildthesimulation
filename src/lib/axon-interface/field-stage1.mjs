@@ -38,15 +38,19 @@ function surfacesOf(m){
  if(!m?.compartments?.length)fail('explicit well field requires morphology.compartment sampling surfaces');
  return m.compartments.map(c=>{const q=c.samplingSurface;if(!q||!['cylinder','sphere-band'].includes(q.type))fail('every membrane compartment requires a supported samplingSurface');
   for(const k of ['radiusUm','zMinUm','zMaxUm'])if(!Number.isFinite(q[k]))fail(`nonfinite samplingSurface ${k}`);
-  if(q.radiusUm<=0||q.zMaxUm<=q.zMinUm)fail('invalid membrane surface');return q;});
+  if(q.radiusUm<=0||q.zMaxUm<=q.zMinUm)fail('invalid membrane surface');
+  if(!Array.isArray(q.centerUm)||q.centerUm.length!==3||!q.centerUm.every(Number.isFinite)||q.centerUm[0]!==0||q.centerUm[1]!==0)fail('shared morphology surfaces require finite local centers with x=y=0; cell translation is supplied separately');
+  return q;});
 }
 function profileFrom(surfaces){
  const raw=surfaces.map(q=>({type:q.type,radius:q.radiusUm,a:q.zMinUm,b:q.zMaxUm,cz:q.centerUm?.[2]??0})),segments=[];
- for(const q of raw){const p=segments.at(-1);if(p&&p.type==='cylinder'&&q.type==='cylinder'&&p.radius===q.radius&&Math.abs(p.b-q.a)<1e-7)p.b=q.b;else segments.push({...q});}
+ for(const q of raw){const p=segments.at(-1);if(p&&p.type===q.type&&p.radius===q.radius&&(q.type==='cylinder'||p.cz===q.cz)&&Math.abs(p.b-q.a)<1e-7)p.b=q.b;else segments.push({...q});}
  function at(z){
-  const q=segments.find(q=>z>=q.a-1e-9&&z<=q.b+1e-9);
-  if(!q)return raw[z<raw[0].a?0:raw.length-1].radius;
-  return q.type==='sphere-band'?Math.sqrt(Math.max(1e-8,q.radius*q.radius-(z-q.cz)**2)):q.radius;
+  let radius=Infinity;for(const q of segments)if(z>=q.a-1e-9&&z<=q.b+1e-9)radius=Math.min(radius,q.type==='sphere-band'?Math.sqrt(Math.max(1e-8,q.radius*q.radius-(z-q.cz)**2)):q.radius);
+  // At an abrupt diameter step use the smaller radius at the shared plane.
+  // The interpolated exclusion then stays inside the physical cell envelope,
+  // so valid membrane quadrature never lies inside an artificial oversized hole.
+  return Number.isFinite(radius)?radius:raw[z<raw[0].a?0:raw.length-1].radius;
  }
  return {segments,at};
 }
@@ -56,11 +60,13 @@ function checkedGeometry(geometry,settings){
  const {cells,wells,morphology}=geometry;
  if(!Array.isArray(cells)||!Array.isArray(wells)||!cells.length||cells.length!==wells.length)fail('each represented engineered cell needs exactly one explicit well');
  if(cells.length>STAGE1_FIELD_LIMITS.maxCells)fail('cell census exceeds256 declared field budget');
+ const cellIds=new Set();for(const c of cells){if(typeof c.id!=='string'||!c.id||cellIds.has(c.id)||!Number.isFinite(c.xUm)||!Number.isFinite(c.yUm))fail('cell ids must be unique and positions finite');cellIds.add(c.id);}
  const seen=new Set(),surface=surfacesOf(morphology),profile=profileFrom(surface);
  const ws=wells.map((q,i)=>{
   const w={...q,center:q.center??[cells[i].xUm,cells[i].yUm,0],index:i};
   if(!w.id||seen.has(w.id))fail('well ids must be unique');seen.add(w.id);
   if(!Array.isArray(w.center)||w.center.length!==3||!w.center.every(Number.isFinite)||w.center[2]!==0)fail('well center must be a finite[x,y,0] coordinate');
+  if(w.cellId!==cells[i].id||w.center[0]!==cells[i].xUm||w.center[1]!==cells[i].yUm)fail('each well must match its indexed cell identity and center exactly');
   for(const k of ['innerRadiusUm','halfLengthUm','wallThicknessUm','apertureRadiusUm','contactHalfWidthUm','contactHalfHeightUm','contactSeparationUm'])positive(w[k],k);
   if(w.apertureRadiusUm>=w.innerRadiusUm)fail('aperture must fit within well inner radius');
   if(w.contactSeparationUm<=2*w.contactHalfHeightUm)fail('finite source/return patches overlap');
@@ -114,6 +120,7 @@ function createCrossSection(s,g){
   return {well:-1,region:r<s.fascicleRadiusUm?0:r<peri?1:r<s.epineuriumRadiusUm?2:3};
  });
  const neighbours=Array.from({length:points.length},()=>new Set());for(const t of triangles)for(const i of t)for(const j of t)neighbours[i].add(j);
+ for(const local of wellIndices)local.apertureTriangles=[];for(let ti=0;ti<classes.length;ti++)if(classes[ti].well>=0&&classes[ti].band===1)wellIndices[classes[ti].well].apertureTriangles.push(ti);
  return {points,meta,triangles,classes,neighbours:neighbours.map(v=>[...v].sort((a,b)=>a-b)),wellIndices,rings};
 }
 function axialGrid(s,g){
@@ -285,7 +292,31 @@ export function solveStage1Channel(model,channel={},options={}){
  const load=new Float64Array(model.points.length);for(const [i,v]of source.load)load[i]+=v;for(const [i,v]of sink.load)load[i]-=v;
  const solution=solveStage1Load(model,load,options);solution.channel={...channel,wellId,sourceContactId:source.id,returnContactId:sink.id};
  solution.pairArtifactMvPerUa=source.load.reduce((s,[i,w])=>s+w*solution.potentialMvPerUa[i],0)-sink.load.reduce((s,[i,w])=>s+w*solution.potentialMvPerUa[i],0);
- solution.diagnostics.contactAreasUm2={source:source.areaUm2,return:sink.areaUm2};solution.diagnostics.pairArtifactMvPerUa=solution.pairArtifactMvPerUa;return solution;
+ solution.diagnostics.contactAreasUm2={source:source.areaUm2,return:sink.areaUm2};solution.diagnostics.pairArtifactMvPerUa=solution.pairArtifactMvPerUa;
+ solution.diagnostics.apertures=stage1ApertureDiagnostics(solution);return solution;
+}
+/** Discrete flux across graph cuts wholly inside each resolved annular bore. */
+export function stage1ApertureDiagnostics(solution){
+ const m=solution.model,C=m.crossSection.points.length,phi=solution.potentialMvPerUa,result=[];
+ function planeMean(local,zi){let A=0,V=0;for(const ti of local.apertureTriangles){const ids=m.crossSection.triangles[ti].map(i=>m.rawToActive[zi*C+i]);if(ids.some(i=>i<0))fail('aperture cross-section contains missing conductor');const a=area(m.points,ids);A+=a;V+=a*sum(ids.map(i=>phi[i]))/3;}return {areaUm2:A,meanMvPerUa:V/A};}
+ for(let wi=0;wi<m.geometry.wells.length;wi++){
+  const w=m.geometry.wells[wi],local=m.crossSection.wellIndices[wi],crossIds=local.rings.filter(q=>q.zone<=2).flatMap(q=>q.ids);
+  for(const direction of [-1,1]){
+   const inner=direction*(w.halfLengthUm-w.wallThicknessUm),outer=direction*w.halfLengthUm,min=Math.min(inner,outer),max=Math.max(inner,outer),zi=m.axial.findIndex(z=>Math.abs(z-inner)<1e-7),zo=m.axial.findIndex(z=>Math.abs(z-outer)<1e-7);
+   if(zi<0||zo<0)fail('aperture endpoints are not explicit mesh planes');const a=planeMean(local,zi),b=planeMean(local,zo),fluxes=[];
+   for(let zl=Math.min(zi,zo);zl<Math.max(zi,zo);zl++){
+    let current=0;for(const c of crossIds){const i=m.rawToActive[zl*C+c];if(i<0)continue;
+     for(let p=m.rowPtr[i];p<m.rowPtr[i+1];p++){const j=m.col[p],q=m.points[j];if(Math.abs(q[2]-m.axial[zl+1])>1e-7||Math.hypot(q[0]-w.center[0],q[1]-w.center[1])>w.apertureRadiusUm+1e-7)continue;current-=m.values[p]*(phi[i]-phi[j])/1000;}
+    }fluxes.push(direction*current);
+   }
+   const current=sum(fluxes)/fluxes.length,drop=a.meanMvPerUa-b.meanMvPerUa;
+   result.push({wellId:w.id,cellId:w.cellId,direction:direction<0?'peripheral':'central',boreInnerZUm:inner,boreOuterZUm:outer,conductingAreaUm2:a.areaUm2,boreLengthUm:max-min,
+    outwardCurrentUaPerUa:current,cutCurrentsUaPerUa:fluxes,currentSpreadUaPerUa:Math.max(...fluxes)-Math.min(...fluxes),meanPotentialDropMvPerUa:drop,
+    measuredBoreResistanceMvPerUa:Math.abs(current)>1e-12?drop/current:null,uniformAnnulusResistanceMvPerUa:1000*(max-min)/(m.settings.sigmaWellFluid*a.areaUm2),
+    meaning:'Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio.'});
+  }
+ }
+ return result;
 }
 export function locateStage1Point(model,point){
  if(!Array.isArray(point)||point.length!==3||!point.every(Number.isFinite))fail('sample point must contain three finite coordinates');
@@ -305,12 +336,14 @@ export function sampleStage1Points(solution,points){
  if(!solution.model.geometry?.constructPresent)return sampleTransfer(solution,points);
  return Float64Array.from(points,p=>{const q=locateStage1Point(solution.model,p);return q.ids.reduce((s,id,i)=>s+q.weights[i]*solution.potentialMvPerUa[id],0);});
 }
-function surfaceQuadrature(surface,cell,nTheta=12,nAxial=3){
+function surfaceQuadrature(surface,cell,nTheta=12,nAxial=5){
  const centre=surface.centerUm??[0,0,0],cx=cell.xUm??cell.center?.[0]??0,cy=cell.yUm??cell.center?.[1]??0;
  const points=[],weights=[];
  // Uniform z is uniform area measure on both a cylinder and spherical band.
- const abscissa=nAxial===3?[-Math.sqrt(3/5),0,Math.sqrt(3/5)]:[-1/Math.sqrt(3),1/Math.sqrt(3)];
- const wz=nAxial===3?[5/18,4/9,5/18]:[.5,.5];
+ const rules={3:[[-Math.sqrt(3/5),0,Math.sqrt(3/5)],[5/18,4/9,5/18]],
+  5:[[-.906179845938664,-.5384693101056831,0,.5384693101056831,.906179845938664],[.11846344252809454,.23931433524968324,.28444444444444444,.23931433524968324,.11846344252809454]],
+  7:[[-.9491079123427585,-.7415311855993945,-.4058451513773972,0,.4058451513773972,.7415311855993945,.9491079123427585],[.06474248308443485,.13985269574463834,.19091502525255947,.2089795918367347,.19091502525255947,.13985269574463834,.06474248308443485]]};
+ const [abscissa,wz]=rules[nAxial];
  for(let a=0;a<abscissa.length;a++){
   const z=(surface.zMinUm+surface.zMaxUm)/2+abscissa[a]*(surface.zMaxUm-surface.zMinUm)/2;
   const r=surface.type==='sphere-band'?Math.sqrt(Math.max(0,surface.radiusUm**2-(z-centre[2])**2)):surface.radiusUm;
@@ -321,9 +354,10 @@ function surfaceQuadrature(surface,cell,nTheta=12,nAxial=3){
 export function prepareMembraneSampling(model,morphology,cell,options={}){
  if(!model.geometry?.constructPresent)fail('engineered membrane sampling is unavailable in true no-device');
  const surfaces=surfacesOf(morphology),nTheta=options.angularSamples??12;
+ const nAxial=options.axialSamples??5;if(![3,5,7].includes(nAxial))fail('membrane axial quadrature supports3,5,7 points');
  if(!Number.isInteger(nTheta)||nTheta<8||nTheta>64)fail('membrane surface quadrature angular samples must be8..64');
  return surfaces.map(surface=>{
-  const q=surfaceQuadrature(surface,cell,nTheta),combined=new Map();
+  const q=surfaceQuadrature(surface,cell,nTheta,nAxial),combined=new Map();
   for(let k=0;k<q.points.length;k++){const found=locateStage1Point(model,q.points[k]);for(let j=0;j<4;j++)combined.set(found.ids[j],(combined.get(found.ids[j])||0)+q.weights[k]*found.weights[j]);}
   const entries=[...combined],total=entries.reduce((s,[,v])=>s+v,0);if(Math.abs(total-1)>1e-12)fail('membrane current projection does not conserve unit source');
   return entries;

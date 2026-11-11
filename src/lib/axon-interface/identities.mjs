@@ -4,7 +4,7 @@ const tag=(prefix,i)=>prefix+String(i+1).padStart(4,'0');
 
 export function createStage1Cohort(input) {
   const s=normalizeStage1Settings(input),random=randomStream(s.seed,'anatomy'),candidates=[];
-  const radius=s.fascicleRadiusUm-s.somaDiameterUm/2-s.wellWallUm-10,dy=s.wellPitchUm*Math.sqrt(3)/2,n=Math.ceil(radius/dy);
+  const radius=s.fascicleRadiusUm-s.wellInnerRadiusUm-s.wellWallUm-10,dy=s.wellPitchUm*Math.sqrt(3)/2,n=Math.ceil(radius/dy);
   for(let row=-n;row<=n;row++)for(let col=-n*2;col<=n*2;col++){
     const x=(col+(Math.abs(row)%2)*.5)*s.wellPitchUm+(random()-.5)*s.positionJitter*s.wellPitchUm;
     const y=row*dy+(random()-.5)*s.positionJitter*s.wellPitchUm;
@@ -44,9 +44,10 @@ export function createIdentityLedger(input,cohort=createStage1Cohort(input)) {
   const engineered=cohort.cells.map((cell,i)=>Object.freeze({id:cell.id,index:i,slotId:cell.slotId,originalHostIdentity:null,ownsBothProjections:true,
     projectionContinuity:'fixed assumed path to electrical observation planes',targetReinnervationValidated:false,survivalYield:null,evidence:'hypothetical'}));
   const nativeRemnants=original.flatMap(item=>['peripheral','central'].map(arm=>Object.freeze({id:item[arm+'RemnantId'],originalHostIdentity:item.id,slotId:item.slotId,arm,connectedAcrossResection:false,
-    membraneState:'explicit instantaneous viable electrical proxy',survivalForecast:null,evidence:'hypothetical'})));
+    condition:'separate viable-stump diagnostic only',presentInB3:false,presentInMatchedNoDevice:false,membraneState:'explicit instantaneous viable electrical proxy',survivalForecast:null,evidence:'hypothetical'})));
   return Object.freeze({originalCensus:s.axonCount,original:Object.freeze(original),engineered:Object.freeze(engineered),nativeRemnants:Object.freeze(nativeRemnants),
-    mainTopology:'complete replacement with fixed engineered projections',noDeviceTopology:'same complete resection with disconnected native remnants and no implanted cells/walls/contacts',
+    mainTopology:'complete replacement with fixed engineered projections and no original remnants in the modeled domain',noDeviceTopology:'same absent-original-remnant state, with implanted cells/walls/contacts removed',
+    remnantStateAssumption:Object.freeze({b3:'Original remnant processes absent from modeled domain.',noDevice:'Original remnant processes absent from modeled domain.',matched:true,comparison:'The same fixed hypothetical original-remnant state is held in B3 and no-device. No degeneration, chronology or survival forecast is inferred.',viableStumpDiagnostic:'A separate alternative population, not the matched no-device control.'}),
     intactNativeContext:Object.freeze({continuousOriginalCount:s.axonCount,assumption:'Different assumed preoperative/intact anatomy; not the matched postoperative comparator.'}),
     seed:s.seed,denominatorMeaning:'The immutable declared original H census is retained in every postoperative condition; E identities never inherit H identity.',biologicalGrowthSolved:false});
 }
@@ -55,11 +56,16 @@ export function applyB3IdentityMetrics(electrical,ledger,{auditValid=electrical.
   if(!Number.isInteger(ledger?.originalCensus)||ledger.originalCensus<1||ledger.original.length!==ledger.originalCensus)throw new Error('A complete original identity ledger is required.');
   if(ledger.original.some(item=>item.postoperativeContinuity!==false)||ledger.engineered.some(item=>item.originalHostIdentity!==null))throw new Error('This metric requires explicit complete replacement and distinct engineered identities.');
   const valid=auditValid===true&&electrical.auditValid===true,N=ledger.originalCensus;
-  return {...electrical,originalHostCensus:N,originalHostPreservedCount:0,originalHostUniqueCount:0,originalHostY:0,
+  const {hypotheticalCompleteB3,...rest}=electrical;
+  return {...rest,status:valid?'Fixed-topology B3 electrical metrics; biological outcome prediction unavailable':'Electrical metrics withheld after audit failure; original-host structural zero remains defined',
+    denominatorMeaning:'Declared original H census retained across the two fixed postoperative conditions. Local E-cohort fractions and original-census-normalized engineered fractions are labelled separately.',
+    originalHostCensus:N,originalHostPreservedCount:0,originalHostUniqueCount:0,originalHostY:0,
     originalHostYBasis:'Structural zero: all H identities are disconnected by the declared complete-resection topology. This does not depend on the electrical audit passing and is not a postoperative forecast.',
     originalHostMeaning:'Fixed synthetic preoperative census; no introduced E output is counted as an original axon.',
     noDeviceOriginalPreservedCount:0,noDeviceOriginalY:0,
     engineeredCensus:ledger.engineered.length,engineeredOriginalCensusDenominator:N,
+    engineeredOutputMeaning:'Distinct introduced E identities in the explicitly assumed projecting topology; none is an original H identity.',
+    causalMeaning:'Conditional electrical diagnostic: earliest observed upward crossings lie in the regional intervention set and output is lost under regional conductance removal. Threshold-crossing order does not identify the source of depolarization or prove soma initiation.',
     engineeredConditionedExclusiveY:valid?electrical.engineeredExclusiveCount/N:null,
     engineeredConditionedCausalY:valid&&electrical.engineeredCausalExclusiveCount!==null?electrical.engineeredCausalExclusiveCount/N:null,
     engineeredYieldMeaning:'Electrical fraction over the retained original census, conditional on fixed assumed E projections. No growth, target-reinnervation or survival success is asserted.',

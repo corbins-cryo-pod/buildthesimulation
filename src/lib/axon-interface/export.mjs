@@ -1,4 +1,5 @@
 import { MODEL_VERSION, EXPORT_SCHEMA, DEFAULT_SETTINGS, normalizeSettings } from './settings.mjs';
+import { STAGE1_MODEL_VERSION, STAGE1_EXPORT_SCHEMA, DEFAULT_STAGE1_SETTINGS, normalizeStage1Settings } from './stage1-settings.mjs';
 
 /** Reconstructed export contract. Source text did not survive the executor reset. */
 export const MAX_IMPORT_BYTES = 256 * 1024 * 1024;
@@ -24,10 +25,12 @@ function assertFinite(value, path = 'result', active = new WeakSet()) {
 }
 function complete(result) {
   if (!result || typeof result !== 'object' || result.auditComplete !== true) throw new Error('Export requires a completed experiment, including its matched controls.');
-  if (result.modelVersion !== MODEL_VERSION) throw new Error('Export model version does not match this implementation.');
+  const stage1 = result.modelVersion === STAGE1_MODEL_VERSION;
+  if (!stage1 && result.modelVersion !== MODEL_VERSION) throw new Error('Export model version does not match this implementation.');
   if (typeof result.auditValid !== 'boolean') throw new Error('Completed result must retain an explicit audit-valid flag.');
-  if (!result.settings || Object.keys(DEFAULT_SETTINGS).some(key => !Object.hasOwn(result.settings, key))) throw new Error('Completed result is missing normalized settings.');
-  normalizeSettings(result.settings);
+  if (!result.settings || Object.keys(stage1 ? DEFAULT_STAGE1_SETTINGS : DEFAULT_SETTINGS).some(key => !Object.hasOwn(result.settings, key))) throw new Error('Completed result is missing normalized settings.');
+  (stage1 ? normalizeStage1Settings : normalizeSettings)(result.settings);
+  if (stage1 && (!result.identities || !result.comparators?.noDevice)) throw new Error('Stage 1 export requires the original identity ledger and the no-device comparator.');
   assertFinite(result);
   return result;
 }
@@ -35,7 +38,7 @@ const replacer = (_key, value) => ArrayBuffer.isView(value) ? Array.from(value) 
 
 export function resultJSON(result) {
   const r = complete(result);
-  const envelope = { ...r, schema: EXPORT_SCHEMA, quantityUnits: QUANTITY_UNITS,
+  const envelope = { ...r, schema: r.modelVersion === STAGE1_MODEL_VERSION ? STAGE1_EXPORT_SCHEMA : EXPORT_SCHEMA, quantityUnits: QUANTITY_UNITS,
     exportScope: 'Complete retained result at its original normalized settings. Import restores settings for a new calculation and does not certify imported results.',
     resultStatus: r.auditValid ? 'completed_electrical_audit' : 'raw_diagnostic_audit_failed' };
   return JSON.stringify(envelope, replacer, 2);
@@ -47,12 +50,13 @@ export function importSettings(text) {
   let parsed;
   try { parsed = JSON.parse(text); } catch { throw new Error('Settings import is not valid JSON.'); }
   if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw new Error('Settings import must be a JSON object.');
-  if (parsed.schema !== EXPORT_SCHEMA) throw new Error(`Unsupported export schema; expected ${EXPORT_SCHEMA}.`);
-  if (parsed.modelVersion !== MODEL_VERSION) throw new Error(`Unsupported model version; expected ${MODEL_VERSION}.`);
+  const stage1 = parsed.schema === STAGE1_EXPORT_SCHEMA;
+  if (!stage1 && parsed.schema !== EXPORT_SCHEMA) throw new Error('Unsupported axon laboratory export schema.');
+  if (parsed.modelVersion !== (stage1 ? STAGE1_MODEL_VERSION : MODEL_VERSION)) throw new Error('Unsupported model version for this export schema.');
   const settings = parsed.settings;
   if (!settings || typeof settings !== 'object' || Array.isArray(settings)) throw new Error('Missing normalized settings object.');
-  for (const key of Object.keys(DEFAULT_SETTINGS)) if (!Object.hasOwn(settings, key)) throw new Error(`Missing ${key}: an import must contain every normalized setting.`);
-  return normalizeSettings(settings);
+  for (const key of Object.keys(stage1 ? DEFAULT_STAGE1_SETTINGS : DEFAULT_SETTINGS)) if (!Object.hasOwn(settings, key)) throw new Error(`Missing ${key}: an import must contain every normalized setting.`);
+  return (stage1 ? normalizeStage1Settings : normalizeSettings)(settings);
 }
 
 function csvCell(value) {
@@ -67,9 +71,9 @@ const COMMON = ['model_version', 'audit_valid', 'result_status', 'seed', 'cohort
 const common = r => [r.modelVersion, r.auditValid, r.auditValid ? 'completed_electrical_audit' : 'raw_diagnostic_audit_failed',
   r.settings.seed, r.settings.axonCount, r.settings.channelCount, r.settings.dtMs, r.settings.durationMs, r.settings.amplitudeUa];
 function metadata(r) {
-  return JSON.stringify({ schema: EXPORT_SCHEMA, settings: r.settings, controls: r.controls, limitations: r.limitations,
+  return JSON.stringify({ schema: r.modelVersion === STAGE1_MODEL_VERSION ? STAGE1_EXPORT_SCHEMA : EXPORT_SCHEMA, settings: r.settings, controls: r.controls, limitations: r.limitations,
     quantityUnits: QUANTITY_UNITS, numericalContract: r.numericalContract ?? null,
-    originalHostMeaning: 'No original-host cohort or postoperative continuity experiment is instantiated.' }, replacer);
+    originalHostMeaning: r.metrics.originalHostMeaning ?? 'No original-host cohort or postoperative continuity experiment is instantiated.' }, replacer);
 }
 
 export function matrixCSV(result) {

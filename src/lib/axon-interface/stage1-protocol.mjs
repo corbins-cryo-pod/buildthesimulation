@@ -3,11 +3,12 @@ import { createStage1Cohort, createIdentityLedger, applyB3IdentityMetrics, asser
 import { createBipolarMorphology, createNativeStumpMorphologies, BIPOLAR_VERSION, BIPOLAR_DEFAULTS } from './bipolar.mjs';
 import { simulateCable, MRG_VERSION } from './mrg.mjs';
 import { selectivityMetrics, orderedAmplitudeSweep, bracketThreshold } from './metrics.mjs';
+import * as defaultFieldAPI from './field-stage1.mjs';
 
 const now=()=>typeof performance!=='undefined'?performance.now():Date.now();
 const overlap=(a,b,c,d)=>Math.max(0,Math.min(b,d)-Math.max(a,c));
 export function stage1PhaseAverage(s,t){const h=s.dtMs,a=s.stimulusStartMs,b=a+s.phaseWidthMs,c=b+s.phaseGapMs,d=c+s.phaseWidthMs;return s.amplitudeUa*(overlap(t,t+h,c,d)-overlap(t,t+h,a,b))/h;}
-export function buildStage1Morphology(input){const s=normalizeStage1Settings(input);return createBipolarMorphology(Object.fromEntries(Object.keys(BIPOLAR_DEFAULTS).map(key=>[key,s[key]])));}
+export function buildStage1Morphology(input){const s=normalizeStage1Settings(input),parameters=Object.fromEntries([...new Set([...Object.keys(BIPOLAR_DEFAULTS),'somaSegments'])].map(key=>[key,s[key]])),m=createBipolarMorphology(parameters);if(m.somaIndices?.length!==s.somaSegments)throw new Error('The bipolar solver does not implement the requested soma subdivision; no coarse fallback was used.');return m;}
 export function stage1FieldSettings(s,m){
   const span=Math.max(...m.compartments.map(q=>Math.abs(q.zUm)+q.lengthUm/2))+1500;
   return {fascicleRadiusUm:s.fascicleRadiusUm,perineuriumThicknessUm:2*s.fascicleRadiusUm*s.perineuriumThicknessFraction,
@@ -46,7 +47,9 @@ function compactTrace(run,m,notBeforeMs=0){
     siteLabels:run.recordIndices.map(index=>{const c=m.compartments[index],ordinal=m.nodeIndices.indexOf(index);return ordinal>=0?`${c.arm??'axon'} node ${ordinal+1}`:(c.role??c.kind);}),
     voltageMv:run.membraneMv,events:run.events,propagation:propagatedArmOutput(run,m,primary,{notBeforeMs}),
     armPropagation:Object.fromEntries(armNames.map(arm=>[arm,propagatedArmOutput(run,m,arm,{notBeforeMs})])),
-    initiatingNode:first?.nodeOrdinal??null,initiatingSite:first?{compartmentIndex:first.compartmentIndex,role:first.role??m.compartments[first.compartmentIndex].role,timeMs:first.timeMs}:null,diagnostics:run.diagnostics};
+    initiatingNode:first?.nodeOrdinal??null,firstCrossingNode:first?.nodeOrdinal??null,
+    initiatingSite:first?{compartmentIndex:first.compartmentIndex,role:first.role??m.compartments[first.compartmentIndex].role,timeMs:first.timeMs}:null,
+    firstCrossingMeaning:'First observed upward threshold crossing. It need not be the source of depolarization or the compartment that initiated a traveling event.',diagnostics:run.diagnostics};
 }
 function finiteAudit(run,currentRequired){const d=run.diagnostics;return Number.isFinite(d.minMv)&&Number.isFinite(d.maxMv)&&(currentRequired?Number.isFinite(d.maxCurrentResidualNa):(d.maxCurrentResidualNa===null||Number.isFinite(d.maxCurrentResidualNa)));}
 function drift(run){let largest=0;for(const row of run.membraneMv)for(const value of row)largest=Math.max(largest,Math.abs(value-row[0]));return largest;}
@@ -70,7 +73,7 @@ export async function runStage1Protocol(input=DEFAULT_STAGE1_SETTINGS,{onProgres
   const started=now(),s=normalizeStage1Settings(input),geometry=createStage1Cohort(s),ledger=createIdentityLedger(s,geometry),m=buildStage1Morphology(s),stumps=createNativeStumpMorphologies(m);
   const disconnected=assertDisconnectedNativeStumps(stumps),budget=validateStage1Budget(s,m,stumps),check=()=>{if(shouldCancel())throw new Error('Stage 1 calculation cancelled; no partial result was published.');};
   onProgress({phase:'Checking fixed B3 identities, anatomy and total work budget',fraction:.005});check();
-  const api=fieldAPI??await import('./field-stage1.mjs');
+  const api=fieldAPI??defaultFieldAPI;
   for(const key of ['createStage1FieldModel','solveStage1Channel','sampleMembraneTransfer'])if(typeof api[key]!=='function')throw new Error(`Stage 1 field implementation is missing ${key}.`);
   if(typeof api.FIELD_STAGE1_VERSION!=='string')throw new Error('Stage 1 field implementation must expose its version.');
   if(s.includeElectrodeOnlyControl&&(typeof api.createExternalTestFieldModel!=='function'||typeof api.solveExternalTestChannel!=='function'))throw new Error('The additional electrode-only fixture is not implemented by this field API. True no-device remains available; the requested extra condition was not silently removed.');
@@ -81,7 +84,8 @@ export async function runStage1Protocol(input=DEFAULT_STAGE1_SETTINGS,{onProgres
   const zero=simulateCable({...eBase,recordIndices:m.activeSiteIndices});eventBudget(zero);
   const localZero=simulateCable({...eBase,initialState:zero.initialState,silencedCompartments:m.initiationRegionIndices});eventBudget(localZero);
   const wholeZero=simulateCable({...eBase,initialState:zero.initialState,silencedCompartments:m.activeSiteIndices});eventBudget(wholeZero);
-  for(const run of [zero,localZero,wholeZero])if(!finiteAudit(run,false))throw new Error('Nonfinite engineered zero-input or silencing baseline.');
+  const somaZero=simulateCable({...eBase,initialState:zero.initialState,silencedCompartments:m.somaIndices});eventBudget(somaZero);
+  for(const run of [zero,localZero,wholeZero,somaZero])if(!finiteAudit(run,false))throw new Error('Nonfinite engineered zero-input or silencing baseline.');
   const nativeZero={};for(const arm of ['peripheral','central']){check();nativeZero[arm]=simulateCable({...common,morphology:stumps[arm],recordIndices:stumps[arm].activeSiteIndices});eventBudget(nativeZero[arm]);if(!finiteAudit(nativeZero[arm],false))throw new Error(`Nonfinite ${arm} native-stump baseline.`);}
   const zeroDrift=drift(zero),nativeDrift=Object.fromEntries(['peripheral','central'].map(arm=>[arm,drift(nativeZero[arm])]));
   const baselineValid=zero.events.length===0&&zeroDrift<=.1,nativeBaselineValid=Object.values(nativeZero).every(run=>run.events.length===0)&&Object.values(nativeDrift).every(value=>value<=.1);
@@ -92,16 +96,16 @@ export async function runStage1Protocol(input=DEFAULT_STAGE1_SETTINGS,{onProgres
   const noDeviceField=await api.createStage1FieldModel(fs,{cells:[],wells:[],morphology:null,constructPresent:false,isCancelled:shouldCancel});
   if(!Array.isArray(noDeviceField.contacts)||noDeviceField.contacts.length)throw new Error('True no-device field must have no implanted contacts.');
   let externalField=null;if(s.includeElectrodeOnlyControl)externalField=await api.createExternalTestFieldModel(fs,{nativeStumps:stumps,originalCells:ledger.original,geometry,morphology:m,isCancelled:shouldCancel});
-  const matrices={assigned:[],localSilenced:[],wholeSilenced:[]},initiationEligibility=[],pairTraces=[],events=[],recordings=[],fieldDiagnostics=[],transferMatrix=[],coupling=[],currentResiduals=[];
+  const matrices={assigned:[],localSilenced:[],wholeSilenced:[],somaSilenced:[]},initiationEligibility=[],pairTraces=[],events=[],recordings=[],fieldDiagnostics=[],transferMatrix=[],coupling=[],currentResiduals=[];
   const nativeDriven=s.includeElectrodeOnlyControl?{pairTraces:[],matrices:{peripheral:[],central:[]},recordings:[],fieldDiagnostics:[]}:null;
-  const total=s.axonCount*s.channelCount*(3+(s.includeElectrodeOnlyControl?2:0));let done=0;
+  const total=s.axonCount*s.channelCount*(4+(s.includeElectrodeOnlyControl?2:0));let done=0;
   const progress=phase=>onProgress({phase,fraction:.06+.9*done/total});
   const appendEvents=(run,channel,cell,intervention,morph)=>{for(const e of run.events)events.push({channel,cell,intervention,compartment:e.compartmentIndex,timeMs:e.timeMs,zUm:e.zUm,role:e.role??morph.compartments[e.compartmentIndex].role,
     direction:'unclassified local crossing',criterion:'0 mV upward crossing at an active membrane site; not an individual propagation or direction classification'});};
   const signalTemplate=(channel,reference)=>{
     const previous=t=>Math.max(0,Math.round(t/s.dtMs)-1)*s.dtMs;
     return {channel,timeMs:[...reference.timesMs],appliedStepStartMs:reference.timesMs.map(previous),appliedStepEndMs:[...reference.timesMs],stimulusUa:reference.timesMs.map(t=>t===0?0:stage1PhaseAverage(s,previous(t))),artifactUv:[],engineeredUv:reference.timesMs.map(()=>0),hostUv:reference.timesMs.map(()=>0),totalUv:[],
-      samplingMeaning:'State at timeMs; drive and artifact are averages over the canonical preceding solver step. Initial sample has no applied interval.',hostMeaning:'No native source population is present in the fixed complete-replacement B3 domain. Disconnected native proxies are separately simulated in the no-device comparator.'};
+      samplingMeaning:'State at timeMs; drive and artifact are averages over the canonical preceding solver step. Initial sample has no applied interval.',hostMeaning:'Original native processes are absent in BOTH B3 and matched no-device. Viable disconnected native proxies are separately simulated only in an additional diagnostic.'};
   };
   for(const channel of geometry.channels){
     check();progress(`Finite surface source–return solve · ${channel.id}`);
@@ -110,11 +114,11 @@ export async function runStage1Protocol(input=DEFAULT_STAGE1_SETTINGS,{onProgres
     const transfers=[];for(let i=0;i<geometry.cells.length;i++)transfers.push(checkTransfer(await api.sampleMembraneTransfer(solution,m,geometry.cells[i],samplingPlans?{prepared:samplingPlans[i]}:{}),m));
     fieldDiagnostics.push({channel:channel.id,...solution.diagnostics});transferMatrix.push(transfers.map(t=>Array.from(t)));coupling.push(transfers.map(t=>Math.max(...t)-Math.min(...t)));
     const signal=signalTemplate(channel.id,zero);signal.artifactUv=signal.stimulusUa.map(a=>a*solution.pairArtifactMvPerUa*1000);
-    const counts={assigned:[],localSilenced:[],wholeSilenced:[]},initiations=[];
+    const counts={assigned:[],localSilenced:[],wholeSilenced:[],somaSilenced:[]},initiations=[];
     for(let i=0;i<s.axonCount;i++){
       const pair={channel:channel.index,cell:i};
-      for(const intervention of ['assigned','localSilenced','wholeSilenced']){
-        check();const assigned=intervention==='assigned',silenced=intervention==='localSilenced'?m.initiationRegionIndices:intervention==='wholeSilenced'?m.activeSiteIndices:[];
+      for(const intervention of ['assigned','localSilenced','wholeSilenced','somaSilenced']){
+        check();const assigned=intervention==='assigned',silenced=intervention==='localSilenced'?m.initiationRegionIndices:intervention==='wholeSilenced'?m.activeSiteIndices:intervention==='somaSilenced'?m.somaIndices:[];
         const run=simulateCable({...eBase,transferMvPerUa:transfers[i],waveform:t=>stage1PhaseAverage(s,t),initialState:zero.initialState,silencedCompartments:silenced,recordIndices:assigned?m.activeSiteIndices:monitors,saveCurrents:assigned});
         eventBudget(run);if(!finiteAudit(run,assigned))throw new Error(`Nonfinite required diagnostics at ${channel.id}/${geometry.cells[i].id}/${intervention}; no voltage was clipped.`);
         counts[intervention].push(propagatedArmOutput(run,m,'central',{notBeforeMs:s.stimulusStartMs}).recruited);
@@ -123,6 +127,8 @@ export async function runStage1Protocol(input=DEFAULT_STAGE1_SETTINGS,{onProgres
           for(let t=0;t<run.timesMs.length;t++)for(let j=0;j<m.compartments.length;j++)signal.engineeredUv[t]+=run.outerCurrentsNa[t][j]*transfers[i][j];}
         done++;progress(`B3 matched interventions · ${channel.id} · ${geometry.cells[i].id} · ${intervention}`);
       }
+      pair.somaActiveConductanceNecessary=pair.assigned.propagation.recruited&&!pair.somaSilenced.propagation.recruited;
+      pair.somaNecessityMeaning='Output dependence on active somatic conductances in this matched intervention, not proof that the soma initiated the action potential.';
       pairTraces.push(pair);
     }
     for(const key of Object.keys(matrices))matrices[key].push(counts[key]);initiationEligibility.push(initiations);
@@ -151,24 +157,37 @@ export async function runStage1Protocol(input=DEFAULT_STAGE1_SETTINGS,{onProgres
   }
   check();
   const wholeValid=matrices.wholeSilenced.every(row=>row.every(value=>!value))&&wholeZero.events.length===0;
-  const auditValid=baselineValid&&localZero.events.length===0&&wholeValid&&nativeBaselineValid;
+  const matchedNoDeviceValid=noDeviceField.contacts.length===0&&ledger.remnantStateAssumption.matched===true;
+  const auditValid=baselineValid&&localZero.events.length===0&&somaZero.events.length===0&&wholeValid&&matchedNoDeviceValid;
   const electrical=selectivityMetrics(matrices.assigned,matrices.localSilenced,Array(s.axonCount).fill(propagatedArmOutput(zero,m).recruited),s.axonCount,{auditValid,initiationEligible:initiationEligibility});
   const metrics=applyB3IdentityMetrics(electrical,ledger,{auditValid});
-  const noDevice={condition:'same complete resection, no implanted construct',originalCensus:ledger.originalCensus,continuousOriginalCount:0,originalHostY:0,
+  const somaDependentExclusive=new Set();for(let k=0;k<matrices.assigned.length;k++){const members=matrices.assigned[k].flatMap((value,i)=>value?[i]:[]);if(members.length===1&&!matrices.somaSilenced[k][members[0]])somaDependentExclusive.add(members[0]);}
+  metrics.engineeredSomaDependentExclusiveCount=auditValid?somaDependentExclusive.size:null;
+  metrics.somaNecessityMeaning='Exclusive outputs lost with soma-only active-conductance removal. This is intervention necessity, not proof of somatic initiation or source localization.';
+  const noDevice={condition:'matched fixed post-resection state, no implanted construct',originalCensus:ledger.originalCensus,continuousOriginalCount:0,originalHostY:0,
     implantedCellIds:[],wellIds:[],contactIds:[],implantDriveUa:0,field:{settings:noDeviceField.settings??fs,diagnostics:noDeviceField.diagnostics??{},solution:'exact zero potential under zero sources and homogeneous zero-Dirichlet boundary',contacts:[]},
+    nativeRemnantIds:[],excitablePopulationCount:0,sourceCurrentNa:0,fieldPotentialMv:0,evokedOutputCount:0,membraneTraces:[],recording:null,
+    evaluation:'Analytical zero: no excitable cells or current sources, with homogeneous grounded outer boundaries. No numerical membrane trajectory exists or is manufactured.',
+    changedFromB3:['implanted engineered cells removed','well walls/end caps removed','implant contacts removed','implant drive absent'],
+    heldFromB3:['original remnants absent in modeled domain','original census and identity ledger','seed and macroscopic tissue conductor','temperature and declared observation window'],
+    remnantStateComparison:ledger.remnantStateAssumption,
+    comparisonMeaning:'The original-remnant state is identical in B3 and no-device. Only the implanted construct and its drive are removed. Structural original-host Y=0 follows the fixed assumption; no repair or degeneration forecast is made.'};
+  const viableStumpDiagnostic={condition:'separate hypothetical viable disconnected original remnants',status:nativeBaselineValid?'completed; zero-input diagnostic passed':'completed; zero-input diagnostic failed',
+    isMatchedNoDevice:false,usedToEstimateImplantBenefit:false,originalCensus:ledger.originalCensus,continuousOriginalCount:0,implantDriveUa:0,
     nativeStumpMorphologies:{peripheral:descriptor(stumps.peripheral),central:descriptor(stumps.central)},disconnected,
     baselineTraces:Object.fromEntries(['peripheral','central'].map(arm=>[arm,compactTrace(nativeZero[arm],stumps[arm])])),baselineDriftMv:nativeDrift,
     nativeRemnantIds:ledger.nativeRemnants.map(item=>item.id),baselineValid:nativeBaselineValid,
     reuseMeaning:'Every original identity has the same declared stump morphology and zero imposed field. Two exact position-independent reference trajectories are shared without population subsampling.',
     anatomicalAssumption:'All original somas/stems are absent and peripheral/central graphs are disconnected. Stumps are assumed electrically viable at the modeled instant; no growth, survival or degeneration is predicted.',
-    comparisonMeaning:'Device removal changes the conductor, cells and drive by definition. This is not a same-field mechanism intervention or an intact native comparator.'};
+    comparisonMeaning:'This explicitly different viable-remnant population is not the matched no-device condition and does not estimate the benefit of implantation.'};
   const controls=[
     {id:'junction',name:'Junction block',status:'not applicable',reason:'B3 cells own both projections and contain no engineered-to-host junction. No fictitious block or passing score is generated.'},
     {id:'zero',name:'Zero stimulus',status:baselineValid?'passed':'failed',spikes:zero.events.length,driftMv:zeroDrift,reason:'Identical engineered morphology, 37 °C kinetics, equilibrated state, dt and observation window; drive set to zero.'},
     {id:'isolation',name:'Channel isolation',status:'completed',reason:'Every row uses only its named finite contact pair. All declared cells and matched interventions are explicitly solved.'},
     {id:'local',name:'Soma and initiation-region silencing',status:localZero.events.length===0?'completed':'failed',compartmentIndices:[...m.initiationRegionIndices],zeroDriveEvents:localZero.events.length,reason:'Active conductances at the explicit soma, both stems and proximal heminodes are removed; distal active membrane, extracellular field and initial state are unchanged. Conditional initiation eligibility is checked separately.'},
     {id:'whole',name:'Whole engineered-cell silencing',status:wholeValid?'passed':'failed',compartmentIndices:[...m.activeSiteIndices],zeroDriveEvents:wholeZero.events.length,reason:'Every engineered active membrane site is silenced while passive membranes and the imposed field remain. This test alone does not establish soma initiation.'},
-    {id:'no-construct',name:'True no-device after the same resection',status:nativeBaselineValid?'passed':'failed',reason:'Implanted neurons, wells and electrodes are absent, with no implant drive. Original proximal/distal stumps are separately solved and disconnected. Zero original continuity follows the fixed resection; this is not a repair forecast.'}
+    {id:'soma',name:'Soma-only active-conductance necessity',status:somaZero.events.length===0?'completed':'failed',compartmentIndices:[...m.somaIndices],zeroDriveEvents:somaZero.events.length,reason:'Only active somatic conductances are removed; stems, heminodes, distal membrane, imposed field and initial state are unchanged. Loss shows conditional somatic-conductance necessity, not the origin of depolarization or proof of somatic initiation.'},
+    {id:'no-construct',name:'Matched true no-device',status:matchedNoDeviceValid?'passed':'failed',evaluation:'analytical empty-population zero',reason:'Original remnants are absent in BOTH matched conditions. Removing only implanted neurons, wells and electrodes leaves no excitable population or drive, so field/current and evoked output are analytically zero. No membrane trace or repair outcome is invented. The viable-stump diagnostic is separate.'}
   ];
   if(nativeDriven)controls.push({id:'electrode-only',name:'Additional electrode-only counterfactual',status:'completed',reason:'A separately declared external test fixture drives disconnected native stumps. It is additional to, and never substituted for, true no-device.'});
   const chargeNc=s.amplitudeUa*s.phaseWidthMs,qUc=chargeNc/1000,chargeByContact=areas.flatMap(a=>['source','return'].map(role=>{const area=a[role+'AreaUm2'],density=qUc/(area*1e-8);return {channel:a.channel,role,areaUm2:area,chargePerPhaseNc:chargeNc,geometricChargeDensityUcCm2:density,shannonK:qUc>0?Math.log10(qUc)+Math.log10(density):null};}));
@@ -186,15 +205,16 @@ export async function runStage1Protocol(input=DEFAULT_STAGE1_SETTINGS,{onProgres
     {label:'Biologically appropriate target reinnervation',count:null,denominator:s.axonCount,status:'not simulated; electrical observation planes are assumed'},
     {label:'At least one channel recruits engineered central output',count:metrics.anyRecruitment,denominator:s.axonCount,status:auditValid?'calculated after electrical controls':'withheld: audit failed'},
     {label:'Exclusive engineered outputs',count:metrics.engineeredExclusiveCount,denominator:s.axonCount,status:auditValid?'calculated at the stated amplitude':'withheld: audit failed'},
-    {label:'Exclusive with conditional local-initiation evidence',count:metrics.engineeredCausalExclusiveCount,denominator:s.axonCount,status:auditValid?'earliest regional initiation plus loss under local silencing':'withheld: audit failed'},
+    {label:'Exclusive with conditional local-initiation evidence',count:metrics.engineeredCausalExclusiveCount,denominator:s.axonCount,status:auditValid?'earliest observed regional threshold crossings plus loss under local silencing; no source-localization proof':'withheld: audit failed'},
+    {label:'Exclusive outputs requiring active somatic conductances',count:metrics.engineeredSomaDependentExclusiveCount,denominator:s.axonCount,status:auditValid?'matched soma-only necessity; not proof of soma initiation':'withheld: audit failed'},
     {label:'Chronic survival',count:null,denominator:s.axonCount,status:'not simulated'}
   ];
   const confinement=coupling.map(row=>row.map((value,i)=>{const denominator=Math.max(...row.filter((_,j)=>j!==i));return denominator>0?value/denominator:null;}));
   const result={modelVersion:STAGE1_MODEL_VERSION,mode:s.mode,modelComponents:{membrane:MRG_VERSION,bipolar:BIPOLAR_VERSION,field:api.FIELD_STAGE1_VERSION},settings:s,geometry,identities:ledger,morphology:descriptor(m),workBudget:budget,
-    auditComplete:true,auditValid,controls,baseline:compactTrace(zero,m),localSilencedBaseline:compactTrace(localZero,m),wholeSilencedBaseline:compactTrace(wholeZero,m),metrics,matrices,initiationEligibility,pairTraces,events,recordings,cascade,geometryDiagnostics,
+    auditComplete:true,auditValid,controls,baseline:compactTrace(zero,m),localSilencedBaseline:compactTrace(localZero,m),wholeSilencedBaseline:compactTrace(wholeZero,m),somaSilencedBaseline:compactTrace(somaZero,m),metrics,matrices,initiationEligibility,pairTraces,events,recordings,cascade,geometryDiagnostics,
     sharedInitialState:{engineered:zero.initialState,nativePeripheral:nativeZero.peripheral.initialState,nativeCentral:nativeZero.central.initialState},
-    comparators:{noDevice,electrodeOnly:nativeDriven?{...nativeDriven,status:'calculated separate external-test fixture',originalContinuity:0,biologicalRepairForecast:null}:null,intactNativeContext:ledger.intactNativeContext},
-    field:{settings:field.settings??fs,diagnostics:fieldDiagnostics,contacts:areas,transferMatrixMvPerUa:transferMatrix,compartmentOrder:'morphology.compartments',couplingMvPerUa:coupling,confinement,maxCouplingMvPerUa:coupling.map(row=>Math.max(...row)),
+    comparators:{noDevice,viableStumpDiagnostic,electrodeOnly:nativeDriven?{...nativeDriven,status:'calculated separate external-test fixture and viable-stump population; not matched no-device',originalContinuity:0,biologicalRepairForecast:null}:null,intactNativeContext:ledger.intactNativeContext},
+    field:{settings:field.settings??fs,limits:api.STAGE1_FIELD_LIMITS??null,diagnostics:fieldDiagnostics,contacts:areas,transferMatrixMvPerUa:transferMatrix,compartmentOrder:'morphology.compartments',couplingMvPerUa:coupling,confinement,maxCouplingMvPerUa:coupling.map(row=>Math.max(...row)),
       confinementDefinition:'Potential range along one cable divided by the largest range along another cable. This is not a threshold or a recruitment probability.'},
     numericalContract:{equilibrationMs:s.equilibrationMs,eventThresholdMv:0,baselineMaximumDriftMv:.1,propagationMinSegmentVelocityMps:1,propagationMaxSegmentVelocityMps:200,propagationMaxVelocityRatio:2,initiationTimingUncertaintyMs:s.dtMs,evidence:'estimated',source:'Declared numerical diagnostics; new model verification is reported separately.'},
     diagnostics:{elapsedMs:now()-started,zeroInputDriftMv:zeroDrift,maxMembraneCurrentResidualNa:Math.max(...currentResiduals),sampledCells:s.axonCount,screening:'none; every declared driven cell and requested intervention is resolved',
@@ -206,12 +226,22 @@ export async function runStage1Protocol(input=DEFAULT_STAGE1_SETTINGS,{onProgres
 }
 
 export async function runStage1Study(input,kind,options={}){
-  const s=normalizeStage1Settings(input),values=kind==='amplitude'?orderedAmplitudeSweep(s.amplitudeUa):kind==='perineurium'?[400,1149,3750]:null;
-  if(!values)throw new Error('Unsupported Stage 1 study.');
-  const key=kind==='amplitude'?'amplitudeUa':'perineuriumResistivityOhmM',settings=values.map(value=>normalizeStage1Settings({...s,[key]:value}));
-  const m=buildStage1Morphology(s),stumps=createNativeStumpMorphologies(m),plan=validateStage1Budget(s,m,stumps),total={cableSolves:plan.cableSolves*values.length,compartmentSteps:plan.compartmentSteps*values.length,savedValues:plan.retainedValues*values.length+plan.peakTransientValues};
+  const s=normalizeStage1Settings(input),definition={
+    amplitude:{key:'amplitudeUa',unit:'µA',values:orderedAmplitudeSweep(s.amplitudeUa)},
+    perineurium:{key:'perineuriumResistivityOhmM',unit:'Ω m',values:[400,1149,3750]},
+    aperture:{key:'wellApertureRadiusUm',unit:'µm',values:[3.1,3.5,5]},
+    'soma-density':{key:'somaActiveScale',unit:'relative nodal conductance',values:[0,.03,.1,.3,1]},
+    'stem-density':{key:'stemActiveScale',unit:'relative nodal conductance',values:[0,.03,.1,.3,1]},
+    'soma-diameter':{key:'somaDiameterUm',unit:'µm',values:[15,20,25]}
+  }[kind];
+  if(!definition)throw new Error('Unsupported Stage 1 study.');
+  const {key,unit,values}=definition,settings=values.map(value=>normalizeStage1Settings({...s,[key]:value}));
+  // Preflight every requested anatomical state and its actual morphology budget.
+  // Invalid points are errors, never filtered from a sensitivity curve.
+  const plans=settings.map(config=>{createStage1Cohort(config);const m=buildStage1Morphology(config),stumps=createNativeStumpMorphologies(m);assertDisconnectedNativeStumps(stumps);return validateStage1Budget(config,m,stumps);});
+  const total={cableSolves:plans.reduce((sum,p)=>sum+p.cableSolves,0),compartmentSteps:plans.reduce((sum,p)=>sum+p.compartmentSteps,0),savedValues:plans.reduce((sum,p)=>sum+p.retainedValues,0)+Math.max(...plans.map(p=>p.peakTransientValues))};
   if(total.cableSolves>STAGE1_BUDGET.maxCableSolves||total.compartmentSteps>STAGE1_BUDGET.maxCompartmentSteps||total.savedValues>STAGE1_BUDGET.maxSavedValues)throw new Error('The complete Stage 1 study exceeds a declared total work budget. Explicitly reduce census or channels; no resolution or requested point was removed.');
   const runs=[];for(let i=0;i<settings.length;i++)runs.push(await runStage1Protocol(settings[i],{...options,onProgress:p=>options.onProgress?.({...p,phase:`Study ${i+1}/${values.length}: ${p.phase}`,fraction:(i+p.fraction)/values.length})}));
   const valid=runs.every(run=>run.auditValid),brackets=kind==='amplitude'&&valid?Array.from({length:s.channelCount},(_,k)=>Array.from({length:s.axonCount},(_,i)=>bracketThreshold(values,runs.map(run=>run.matrices.assigned[k][i])))):null;
-  return {kind,values,settings:s,modelVersion:STAGE1_MODEL_VERSION,runs,brackets,bracketStatus:kind!=='amplitude'?'not applicable':valid?'calculated from valid sampled conditions':'withheld: at least one matched audit failed',workBudget:total,rule:'Finite predeclared samples, identical identity ledger and complete controls at every point; no interpolation or amplitude optimization.'};
+  return {kind,values,parameterKey:key,parameterUnit:unit,settings:s,modelVersion:STAGE1_MODEL_VERSION,runs,brackets,bracketStatus:kind!=='amplitude'?'not applicable':valid?'calculated from valid sampled conditions':'withheld: at least one matched audit failed',workBudget:total,rule:'Every predeclared point and its actual geometry were preflighted. Complete controls at every point; no invalid-point filtering, interpolation, geometry retuning or amplitude optimization.'};
 }

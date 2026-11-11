@@ -1,5 +1,6 @@
 import {useEffect,useMemo,useRef,useState} from 'preact/hooks';
 import {cellColor,voltageColor} from './Anatomy.jsx';
+import {siteLabel} from './presentation.mjs';
 export function TracePlot({times=[],series=[],unit='mV',label='Membrane voltage'}){
  const finite=series.flatMap(s=>s.values).filter(Number.isFinite),lo=finite.length?Math.min(...finite):0,hi=finite.length?Math.max(...finite):1,pad=Math.max((hi-lo)*.12,.1),min=lo-pad,max=hi+pad;
  const w=680,h=205,l=54,r=16,t=18,b=33,x=v=>l+(w-l-r)*(v-(times[0]??0))/((times.at(-1)??1)-(times[0]??0)||1),y=v=>t+(h-t-b)*(max-v)/(max-min);
@@ -9,8 +10,20 @@ export function NodalReplay({result,pair,frame=0}){
  const trace=pair?.assigned,extent=useMemo(()=>{const values=trace?.voltageMv.flat()??[];return {min:Math.min(-90,...values)-5,max:Math.max(-70,...values)+5};},[trace]);
  if(!trace)return null;
  const positions=trace.indices.map(i=>result.morphology.compartments[i].zUm/1000),values=trace.voltageMv.map(row=>row[frame]),w=800,h=185,l=50,r=22,t=20,b=39;
- const x=z=>l+(w-l-r)*(z-positions[0])/(positions.at(-1)-positions[0]),y=v=>t+(h-t-b)*(extent.max-v)/(extent.max-extent.min);
- return <div class="ax-nodal-replay"><div class="ax-plot-header"><h3>{result.geometry.cells[pair.cell].id} · saved nodal voltages</h3><span>{trace.timeMs[frame].toFixed(3)} ms · assigned channel {result.geometry.channels[pair.channel].id}</span></div><svg viewBox={'0 0 '+w+' '+h} role="img" aria-label={'Membrane voltage at every saved node of '+result.geometry.cells[pair.cell].id+' at '+trace.timeMs[frame].toFixed(3)+' milliseconds'}><text x="6" y="12">mV</text>{[0,.5,1].map(f=>{const v=extent.min+(extent.max-extent.min)*f;return <g><line x1={l} x2={w-r} y1={y(v)} y2={y(v)} class="ax-gridline"/><text x={l-9} y={y(v)+4} text-anchor="end">{v.toFixed(0)}</text></g>;})}<path d={values.map((v,i)=>(i?'L':'M')+x(positions[i])+','+y(v)).join(' ')} fill="none" stroke="#84918e" stroke-width="1"/>{values.map((v,i)=><g><circle cx={x(positions[i])} cy={y(v)} r="4" fill={voltageColor(v)} stroke="#415b62" stroke-width=".7"><title>Node {trace.nodeOrdinals[i]+1}: {v.toFixed(6)} mV at z={positions[i].toFixed(6)} mm</title></circle><text x={x(positions[i])} y={h-20} text-anchor="middle">{Math.abs(positions[i])<1e-9?'0.0':positions[i].toFixed(1)}</text></g>)}<text x={w-r} y={h-3} text-anchor="end">z / mm · full modeled cable</text></svg><p class="ax-fine">Every plotted point is a stored nodal voltage; connecting lines are a visual guide. Replay advances through saved samples only. Waveforms and solver time steps are unchanged.</p><details class="ax-inspection"><summary>Exact voltages at the displayed sample</summary><div class="ax-table-scroll"><table><thead><tr><th>Node</th><th>z / µm</th><th>Time / ms</th><th>Voltage / mV</th></tr></thead><tbody>{values.map((v,i)=><tr><td>{trace.nodeOrdinals[i]+1}</td><td>{(positions[i]*1000).toPrecision(12)}</td><td>{trace.timeMs[frame]}</td><td>{v.toPrecision(12)}</td></tr>)}</tbody></table></div></details></div>;
+ const x=z=>l+(w-l-r)*(z-positions[0])/(positions.at(-1)-positions[0]),y=v=>t+(h-t-b)*(extent.max-v)/(extent.max-extent.min),bipolar=result.morphology.somaIndex!=null;
+ return <div class="ax-nodal-replay">
+  <div class="ax-plot-header"><h3>{result.geometry.cells[pair.cell].id} · {bipolar?'saved soma, stem & nodal voltages':'saved nodal voltages'}</h3><span>{trace.timeMs[frame].toFixed(3)} ms · assigned channel {result.geometry.channels[pair.channel].id}</span></div>
+  <svg viewBox={'0 0 '+w+' '+h} role="img" aria-label={'Membrane voltage at every saved active site of '+result.geometry.cells[pair.cell].id+' at '+trace.timeMs[frame].toFixed(3)+' milliseconds'}>
+   <text x="6" y="12">mV</text>
+   {[0,.5,1].map(f=>{const v=extent.min+(extent.max-extent.min)*f;return <g><line x1={l} x2={w-r} y1={y(v)} y2={y(v)} class="ax-gridline"/><text x={l-9} y={y(v)+4} text-anchor="end">{v.toFixed(0)}</text></g>;})}
+   <path d={values.map((v,i)=>(i?'L':'M')+x(positions[i])+','+y(v)).join(' ')} fill="none" stroke="#84918e" stroke-width="1"/>
+   {values.map((v,i)=><circle cx={x(positions[i])} cy={y(v)} r="4" fill={voltageColor(v)} stroke="#415b62" stroke-width=".7"><title>{siteLabel(trace,i)}: {v.toFixed(6)} mV at z={positions[i].toFixed(6)} mm</title></circle>)}
+   {[0,.25,.5,.75,1].map(f=>{const z=positions[0]+f*(positions.at(-1)-positions[0]);return <text x={x(z)} y={h-20} text-anchor="middle">{z.toFixed(2)}</text>;})}
+   <text x={w-r} y={h-3} text-anchor="end">z / mm · full modeled cable</text>
+  </svg>
+  <p class="ax-fine">Every plotted point is a stored membrane voltage at its named compartment; connecting lines are a visual guide. Replay advances through saved samples only. Waveforms and solver time steps are unchanged.</p>
+  <details class="ax-inspection"><summary>Exact voltages at the displayed sample</summary><div class="ax-table-scroll"><table><thead><tr><th>Site</th><th>Compartment</th><th>z / µm</th><th>Time / ms</th><th>Voltage / mV</th></tr></thead><tbody>{values.map((v,i)=><tr><td>{siteLabel(trace,i)}</td><td>{trace.indices[i]}</td><td>{(positions[i]*1000).toPrecision(12)}</td><td>{trace.timeMs[frame]}</td><td>{v.toPrecision(12)}</td></tr>)}</tbody></table></div></details>
+ </div>;
 }
 export function Matrix({result,channel,selected,onSelect,onChannel}){
  const ref=useRef(null),[sort,setSort]=useState('identity'),[zoom,setZoom]=useState(1);
