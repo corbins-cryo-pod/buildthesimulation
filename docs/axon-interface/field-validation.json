@@ -1,0 +1,232 @@
+{
+  "schema": "axon-interface-field-validation/1",
+  "modelVersion": "axon-interface-field/0.1.0",
+  "started": "2026-11-11T22:18:53.290Z",
+  "completed": "2026-11-11T22:19:10.118Z",
+  "status": "pass",
+  "acceptanceFile": "field-acceptance.json",
+  "results": [
+    {
+      "name": "Default PCG true relative residual",
+      "value": 1.7966148949955344e-12,
+      "tolerance": 1e-10,
+      "status": "pass"
+    },
+    {
+      "name": "Matched source/return current imbalance",
+      "value": 3.436920886779049e-16,
+      "tolerance": 1e-12,
+      "status": "pass"
+    },
+    {
+      "name": "Global current conservation",
+      "value": 8.394884567686e-13,
+      "tolerance": 1e-9,
+      "status": "pass"
+    },
+    {
+      "name": "Zero current field is exactly zero",
+      "value": 0,
+      "tolerance": 0,
+      "status": "pass"
+    },
+    {
+      "name": "Discrete field superposition",
+      "value": 2.237087960556613e-13,
+      "tolerance": 1e-9,
+      "status": "pass"
+    },
+    {
+      "name": "Discrete reciprocity",
+      "value": 2.914028585825101e-13,
+      "tolerance": 1e-9,
+      "status": "pass",
+      "sourceToReturnAB": 0.27050467223219343,
+      "sourceToReturnBA": 0.2705046722321146
+    },
+    {
+      "name": "Independent scipy maximum node potential error, microvolt",
+      "value": 4.566791389493119e-9,
+      "tolerance": 0.001,
+      "status": "pass",
+      "runtime": {
+        "python": "3.12.14",
+        "numpy": "2.3.5",
+        "scipy": "1.17.0",
+        "machine": "x86_64",
+        "processor": ""
+      },
+      "durationSeconds": 4.762895717999982
+    },
+    {
+      "name": "Homogeneous analytic point-source benchmark outside finite sources",
+      "value": 0.04739630618252908,
+      "tolerance": 0.12,
+      "status": "pass",
+      "sampleCount": 30,
+      "boundary": "Exact infinite-medium analytic Dirichlet data applied at finite boundary; no baseline fit",
+      "sourceRadiusUm": 75,
+      "minimumSampleRadiusUm": 100
+    },
+    {
+      "name": "Layered-cylinder radial analytic benchmark",
+      "value": 0.02412482491389517,
+      "tolerance": 0.03,
+      "status": "pass",
+      "innerRadiusUm": 50,
+      "perineuriumThicknessUm": 15,
+      "boundary": "Exact radial Dirichlet at inner radius, outer surface and axial ends",
+      "sampleCount": 33
+    },
+    {
+      "name": "Field refinement radial",
+      "value": 0.024475556497016132,
+      "tolerance": 0.1,
+      "status": "pass",
+      "sampleCount": 32,
+      "nodes": 42661,
+      "tetrahedra": 245376
+    },
+    {
+      "name": "Field refinement angular",
+      "value": 0.011323793566377048,
+      "tolerance": 0.1,
+      "status": "pass",
+      "sampleCount": 32,
+      "nodes": 42661,
+      "tetrahedra": 241920
+    },
+    {
+      "name": "Field refinement axial",
+      "value": 0.02003085688511701,
+      "tolerance": 0.1,
+      "status": "pass",
+      "sampleCount": 32,
+      "nodes": 42121,
+      "tetrahedra": 241920
+    }
+  ],
+  "retainedFailures": [
+    {
+      "recoveredFromConversation": true,
+      "originalTimestamp": null,
+      "recoveryNote": "Original file bytes were lost after executor reset. This measured failure is recovered from the retained tool output, not rerun on the corrected source.",
+      "name": "Field refinement radial",
+      "value": 0.19583526442000895,
+      "tolerance": 0.1,
+      "status": "fail",
+      "sampleCount": 32,
+      "nodes": 40293,
+      "tetrahedra": 231552
+    },
+    {
+      "recoveredFromConversation": true,
+      "originalTimestamp": null,
+      "event": "correction",
+      "originalFailure": "Field refinement radial",
+      "originalValue": 0.19583526442000895,
+      "unchangedTolerance": 0.1,
+      "cause": "Lumped nodal-volume source quadrature biased the physical Gaussian electrode toward neighboring coarse bath cells.",
+      "correction": "Replaced source integration with fixed physical Gauss-Hermite points and P1 shape weights; added an explicitly declared bath radius at500um.",
+      "historicallyObservedCorrectedValue": 0.024475556497016132,
+      "originalFailurePreserved": true,
+      "recoveryNote": "Historical corrected result is not substituted for fresh verification after recovery."
+    }
+  ],
+  "perineuriumSensitivity": [
+    {
+      "perineuriumConductivityMultiplier": 0.1,
+      "sigmaPerineurium": 0.00008703220191470844,
+      "potentialMvPerUa": [
+        0.006803823525852372,
+        0.0322556515366775,
+        -0.008407939473271868,
+        -0.03262368813256219
+      ]
+    },
+    {
+      "perineuriumConductivityMultiplier": 1,
+      "sigmaPerineurium": 0.0008703220191470844,
+      "potentialMvPerUa": [
+        0.046587677391757086,
+        0.27227804098175784,
+        -0.05099897904019699,
+        -0.26473439379562397
+      ]
+    },
+    {
+      "perineuriumConductivityMultiplier": 10,
+      "sigmaPerineurium": 0.008703220191470844,
+      "potentialMvPerUa": [
+        0.14098192695538161,
+        1.2617195070615814,
+        -0.14462691037574074,
+        -1.191354522121287
+      ]
+    }
+  ],
+  "defaultMesh": {
+    "nodes": 21349,
+    "tetrahedra": 120960,
+    "perineuriumElementsRadially": 2,
+    "regionTetrahedra": [
+      65664,
+      13824,
+      20736,
+      20736
+    ],
+    "discretization": "conforming P1 tetrahedral finite elements",
+    "outerBoundary": "zero Dirichlet on cylindrical outer surface and both ends",
+    "electrodeModel": "Gaussian volumetric source/sink, sigma=radius/3, 5-point Gauss-Hermite tensor quadrature truncated to sphere, normalized ±1 uA",
+    "electrodeResolutionWarning": "Finite source support and P1 interpolation do not resolve a metal interface, an insulating well, or an aperture. Microscale selectivity is mesh-dependent; field refinement is required.",
+    "iterations": 490,
+    "relativeResidual": 1.7966148949955344e-12,
+    "sourceReturnImbalanceUa": -3.436920886779049e-16,
+    "boundaryReactionUa": 8.39832148857278e-13,
+    "globalCurrentClosureUa": 8.394884567686e-13,
+    "summedInteriorResidualUa": -8.386662573188096e-13,
+    "units": {
+      "coordinates": "um",
+      "potential": "mV/uA",
+      "current": "uA",
+      "conductivity": "S/m"
+    },
+    "sourceSupportNodes": 46,
+    "returnSupportNodes": 46,
+    "sourceSupportSpanUm": [
+      235,
+      288.925991435643,
+      200
+    ],
+    "returnSupportSpanUm": [
+      235,
+      288.925991435643,
+      200
+    ],
+    "sourceMaxElementEdgeUm": 135.31772921057987,
+    "returnMaxElementEdgeUm": 135.31772921057987,
+    "sourceQuadraturePoints": 33,
+    "sourceReturnSeparationUm": 600,
+    "electrodeRadiusUm": 75
+  },
+  "sourceHashes": {
+    "src/lib/axon-interface/field.mjs": "c55565795085e37bc1804c99c152f79d563e8cad678f2eafc2e41dc3ce5a9734",
+    "scripts/axon-interface/field-reference.py": "b94d959e2aef5f6a54e530d389b362cd416eab216a0da5f1f9292cabebcf425a",
+    "scripts/axon-interface/field-validate.mjs": "57cfb386a746f6cead9fcc99011862016f836e69caa03667850c26997a38e6e8",
+    "docs/axon-interface/field-acceptance.json": "93f9471d7435aa54b0fd5a7bc4222b7c32c80fa9ad6109cb8f5b7835030e6b53"
+  },
+  "runtime": {
+    "node": "v24.22.1",
+    "platform": "linux",
+    "arch": "x64",
+    "cpus": "AMD EPYC 9V74 80-Core Processor",
+    "memoryBytes": 10451427328
+  },
+  "limitations": [
+    "Same-mesh Python agreement verifies implementation, not biology or continuous-field accuracy.",
+    "Gaussian volumetric current sources do not model metal contact boundary conditions or well aperture shielding.",
+    "All results use a finite grounded cylindrical boundary; infinite-domain convergence is not established by the analytic-Dirichlet benchmark.",
+    "Perineurium is purely resistive; capacitive dispersion, inhomogeneous subject anatomy and electrode impedance are absent.",
+    "Only one synthetic straight fascicle is represented."
+  ]
+}
