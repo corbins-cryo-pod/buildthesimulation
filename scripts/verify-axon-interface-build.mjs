@@ -5,7 +5,10 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {spawnSync} from 'node:child_process';
-import {MODEL_VERSION} from '../src/lib/axon-interface/settings.mjs';
+import {MODEL_VERSION as BENCHMARK_MODEL_VERSION} from '../src/lib/axon-interface/settings.mjs';
+import {STAGE1_MODEL_VERSION} from '../src/lib/axon-interface/stage1-settings.mjs';
+import {BIPOLAR_VERSION} from '../src/lib/axon-interface/bipolar.mjs';
+import {FIELD_STAGE1_VERSION} from '../src/lib/axon-interface/field-stage1.mjs';
 import {MRG_VERSION,MRG_SOURCE} from '../src/lib/axon-interface/mrg.mjs';
 import {FIELD_VERSION} from '../src/lib/axon-interface/field.mjs';
 import {scientificQuestions} from '../src/lib/axon-interface/evidence.mjs';
@@ -36,63 +39,126 @@ for(const suffix of ['methods/','questions/','validation.json'])assert.ok(lab.in
 assert.equal((questions.match(/class="ax-question"/g)||[]).length,scientificQuestions.length,'The built questions page omits registered questions.');
 assert.ok(/href="https:\/\//.test(questions),'The questions page lost its source links.');
 const published=JSON.parse(validationText);
-assert.equal(published.modelVersion,MODEL_VERSION,'Published model version differs from the laboratory.');
-assert.equal(published.completeStage1,false,'This release must not claim complete biological Stage 1.');
-assert.equal(published.physiologicalDiameterRelationValidated,false,'The unresolved physiological relation must remain disclosed.');
-assert.ok(/development/i.test(published.status),'The published status must retain its development boundary.');
+assert.equal(published.modelVersion,STAGE1_MODEL_VERSION,'Published model version differs from the laboratory.');
+assert.equal(published.benchmarkModelVersion,BENCHMARK_MODEL_VERSION,'The motor benchmark version is missing.');
+assert.equal(published.completeStage1,true,'Final Stage 1 release gates have not passed. Regenerate frozen evidence, then rebuild.');
+assert.equal(published.biologicalValidation,false,'Numerical implementation is not biological validation.');
+assert.equal(published.humanSpiralGanglionCalibration,false,'The hypothetical neuron must not claim human SG calibration.');
+assert.equal(published.physiologicalDiameterRelationValidated,false,'The unresolved species relation must remain disclosed.');
+assert.ok(/conditional/i.test(published.status),'The release status must retain its conditional model boundary.');
+assert.ok(/not biological|not.*clinical/i.test(published.completeStage1Meaning),'The completion flag must define its numerical scope.');
 assert.ok(Array.isArray(published.limitations)&&published.limitations.length>0,'Published limitations are missing.');
-const reportFiles={membrane:'mrg-numerical-report.json',field:'field-validation.json',coupled:'mrg-coupled-report.json',integration:'integration-validation.json',reproduction:'reproduction-report.json'};
+assert.deepEqual(published.missingOrFailingReports,[],'Required evidence is absent or failing.');
+assert.deepEqual(published.sourceMismatches,[],'Published source provenance is stale.');
+const reportFiles={membrane:'mrg-numerical-report.json',field:'field-validation.json',coupled:'mrg-coupled-report.json',integration:'integration-validation.json',
+ bipolar:'bipolar-numerical-report.json',somaSpatial:'bipolar-soma-spatial-report.json',bipolarCoupled:'bipolar-coupled-report.json',
+ wellField:'field-stage1-validation.json',denseWells:'field-stage1-dense-validation.json',wellBoundary:'field-stage1-domain-validation.json',
+ protocol:'stage1-protocol-validation.json',reproduction:'reproduction-report.json'};
 for(const [key,filename] of Object.entries(reportFiles)){
-  assert.ok(published[key],`The validation endpoint omits ${key} evidence.`);
-  const current=JSON.parse(await readFile(path.join(root,'docs/axon-interface',filename),'utf8'));
-  assert.ok(JSON.stringify(published[key])===JSON.stringify(current),`Published ${key} evidence is stale. Rebuild after the final ${filename} is generated.`);
+ assert.ok(published[key],`The validation endpoint omits ${key} evidence.`);
+ const current=JSON.parse(await readFile(path.join(root,'docs/axon-interface',filename),'utf8'));
+ assert.deepEqual(published[key],current,`Published ${key} evidence is stale. Rebuild after ${filename} is generated.`);
 }
-const {membrane,field,coupled,integration,reproduction}=published;
+const unchanged=value=>Array.isArray(value)?value.length===0:value===false;
+async function verifyHashes(report,label){
+ assert.ok(report.sourceHashes&&Object.keys(report.sourceHashes).length>0,`${label} source hashes are missing.`);
+ assert.ok(unchanged(report.sourceChangedDuringRun),`${label} sources changed during verification.`);
+ for(const [relative,expected] of Object.entries(report.sourceHashes)){
+  const actual=createHash('sha256').update(await readFile(inside(root,relative))).digest('hex');
+  assert.equal(actual,expected,`${label} source changed after verification: ${relative}`);
+ }
+}
+const {membrane,field,coupled,integration,bipolar,somaSpatial,bipolarCoupled,wellField,denseWells,wellBoundary,protocol,reproduction}=published;
 assert.equal(membrane.modelVersion,MRG_VERSION,'Published membrane version differs from the bundled solver.');
-assert.equal(membrane.summary.requiredFail,0,'A required membrane gate is failing.');
-assert.equal(membrane.summary.numericalGatePassed,true,'Membrane numerical verification did not pass.');
+assert.equal(membrane.summary.requiredFail,0,'A required motor-membrane gate is failing.');
+assert.equal(membrane.summary.numericalGatePassed,true,'Motor-membrane numerical verification did not pass.');
 assert.equal(membrane.summary.biologicalValidation,false,'Equation verification cannot be published as biological validation.');
-assert.equal(membrane.summary.activeSomaValidated,false,'The failed active-soma model cannot be relabeled validated.');
+assert.equal(membrane.summary.activeSomaValidated,false,'The historical enlarged active-node failure cannot be relabeled validated.');
 assert.equal(membrane.summary.publishedDiameterRelationValidated,false,'The species-relation limitation was lost.');
-assert.ok(membrane.tests.some(t=>t.required!==false)&&membrane.tests.filter(t=>t.required!==false).every(t=>t.status==='pass'),'Membrane required rows are absent or failing.');
-assert.ok(membrane.retainedFailures.length>0&&membrane.tests.some(t=>t.required===false&&t.status==='fail'),'Retained failed membrane studies must remain published.');
+assert.ok(membrane.tests.filter(t=>t.required!==false).length>0&&membrane.tests.filter(t=>t.required!==false).every(t=>t.status==='pass'),'Motor-membrane required rows are absent or failing.');
+assert.ok(membrane.retainedFailures.length>0&&membrane.tests.some(t=>t.required===false&&t.status==='fail'),'Retained failed motor studies must remain published.');
 assert.ok(Array.isArray(membrane.conductionLiteratureComparison)&&membrane.conductionLiteratureComparison.length>0,'The measured species-relation discrepancy is missing.');
-assert.equal(field.modelVersion,FIELD_VERSION,'Published field version differs from the bundled solver.');
-assert.equal(field.status,'pass','The field report did not pass.');
-assert.ok(field.results.length>0&&field.results.every(t=>t.status==='pass'),'The field report has missing or failed current rows.');
+assert.equal(field.modelVersion,FIELD_VERSION,'Published benchmark field version differs from the solver.');
+assert.equal(field.status,'pass','The benchmark field report did not pass.');
+assert.ok(field.results.length>0&&field.results.every(t=>t.status==='pass'),'Benchmark field rows are absent or failing.');
 assert.ok(field.retainedFailures.length>0,'The initial field-refinement failure must remain published.');
-assert.equal(coupled.passed,true,'The production FEM/native NEURON comparison did not pass.');
+assert.equal(coupled.passed,true,'The motor/FEM native comparison did not pass.');
 for(const intervention of ['assigned','proximal-silenced','whole-silenced']){
-  const row=coupled.rows.find(r=>r.intervention===intervention);
-  assert.ok(row&&row.status==='pass'&&row.exactObservationTimestamps===true,`Coupled ${intervention} evidence is missing, failing or uses transformed timestamps.`);
+ const row=coupled.rows.find(r=>r.intervention===intervention);
+ assert.ok(row&&row.status==='pass'&&row.exactObservationTimestamps===true,`Motor coupled ${intervention} evidence is absent, failing or time-transformed.`);
 }
+assert.equal(bipolar.modelVersion,BIPOLAR_VERSION,'Bipolar evidence does not describe the emitted morphology.');
+assert.equal(bipolar.complete,true,'The bipolar component study is incomplete.');
+assert.equal(bipolar.summary.requiredFail,0,'A required bipolar component gate failed.');
+assert.equal(bipolar.summary.numericalGatePassed,true,'Bipolar component verification did not pass.');
+assert.equal(bipolar.summary.biologicalValidation,false,'Bipolar equations are not biological validation.');
+assert.equal(bipolar.supportedSomaSegments,5,'The default five-band approximation lacks component evidence.');
+assert.ok(bipolar.tests.some(t=>t.required)&&bipolar.tests.filter(t=>t.required).every(t=>t.status==='pass'),'Bipolar required rows are absent or failing.');
+assert.ok(bipolar.nativeComparisons.some(row=>row.id==='soma-only-silenced'),'The independent matched soma-only control is missing.');
+assert.ok(bipolar.retainedFailures.some(study=>study.retainedFailedStudy?.some(row=>row.status==='fail')),'The failed coarse time step was discarded.');
+assert.ok(bipolar.retainedFailures.some(study=>study.retainedComparisons?.some(row=>!row.passed)),'The failed coarse soma approximation was discarded.');
+assert.equal(somaSpatial.complete,true,'The actual-well soma study is incomplete.');
+assert.equal(somaSpatial.authoritative,true,'Exploratory soma refinement cannot authorize release.');
+assert.equal(somaSpatial.fieldValidated,true,'The soma study lacks current verified field evidence.');
+assert.equal(somaSpatial.supportedSomaSegments,5,'The five-band production soma has not met its declared refinement selection.');
+const selected=somaSpatial.comparisons.findIndex(row=>row.from===somaSpatial.supportedSomaSegments);
+assert.ok(selected>=0&&somaSpatial.comparisons[selected].passed&&somaSpatial.comparisons[selected+1]?.passed,'Two successive supported soma refinements must pass.');
+for(const level of somaSpatial.levels)assert.equal(level.cases.length,somaSpatial.acceptance.amplitudeGridUa.length*somaSpatial.acceptance.controls.length,'The soma study omitted an amplitude/intervention.');
+assert.equal(bipolarCoupled.passed,true,'The actual-well native/time comparison did not pass.');
+assert.equal(bipolarCoupled.fieldValidated,true,'The actual-well comparison used unverified field sources.');
+assert.equal(bipolarCoupled.summary.biologicalValidation,false,'Native agreement must not claim biology.');
+assert.equal(bipolarCoupled.rows.length,bipolarCoupled.acceptance.nativeAmplitudeGridUa.length*bipolarCoupled.acceptance.controls.length,'A declared native case is absent.');
+assert.equal(bipolarCoupled.temporalRows.length,bipolarCoupled.acceptance.temporalAmplitudeGridUa.length*bipolarCoupled.acceptance.controls.length*(bipolarCoupled.acceptance.timeStepsMs.length-1),'A declared temporal comparison is absent.');
+for(const row of [...bipolarCoupled.rows,...bipolarCoupled.temporalRows])assert.ok(row.status==='pass'&&row.exactObservationTimestamps===true&&row.identicalCrossingCounts===true,'A coupled reference comparison is failing or uses altered observation times.');
+assert.ok(bipolarCoupled.rows.every(row=>row.exactSharedInitialState===true),'Matched native cases do not share the unmodified equilibrium.');
+assert.equal(bipolarCoupled.outcomes.length,bipolarCoupled.acceptance.nativeAmplitudeGridUa.length,'Causal outcomes, including negative results, are missing.');
+for(const [name,report] of [['well field',wellField],['dense wells',denseWells],['well boundary',wellBoundary]]){
+ assert.equal(report.modelVersion,FIELD_STAGE1_VERSION,`${name} describes a different field implementation.`);
+ assert.equal(report.status,'pass',`${name} numerical study did not pass.`);
+ assert.ok(report.results.length>0&&report.results.every(row=>row.status==='pass'),`${name} contains absent or failed numerical rows.`);
+ await verifyHashes(report,name);
+}
+assert.ok(wellField.sourceHashes['src/lib/axon-interface/vendor/cdt2d.mjs'],'The field meshing dependency is absent from provenance.');
 assert.equal(integration.status,'pass','The integration/worker report did not pass.');
 assert.equal(integration.summary.failed,0,'Integration includes failed current checks.');
 assert.equal(integration.summary.skipped,0,'Required integration checks were skipped.');
-assert.ok(integration.summary.passed>0,'Integration evidence has no executed passing checks.');
-assert.equal(reproduction.status,'pass','Full reproduction is not passing. Regenerate on frozen source, then rebuild.');
-assert.equal(reproduction.scope,'full-numerical-and-integration','Reproduction must include both independent numerical references and integration.');
-assert.equal(reproduction.acceptanceChanged,false,'The reproduction reports changed acceptance criteria.');
-assert.deepEqual(reproduction.sourceChangedDuringRun,[],'Source changed during the published reproduction.');
-assert.ok(reproduction.stages.length>0&&reproduction.stages.every(s=>s.status==='pass'),'Reproduction contains a failed or unexecuted stage.');
-// A separate source-stability stage is emitted only on failure. Successful
-// stability is established by the empty change list and exact hashes.
-for(const name of ['native-mechanism-build','field-numerical-studies','mrg-numerical-studies','coupled-fem-neuron-reference','integration-tests'])assert.ok(reproduction.stages.some(s=>s.name===name&&s.status==='pass'),`Reproduction omits ${name}.`);
-assert.ok(Object.keys(reproduction.sourceHashes).length>0,'Reproduction source hashes are missing.');
-for(const [relative,expected] of Object.entries(reproduction.sourceHashes)){
-  const actual=createHash('sha256').update(await readFile(inside(root,relative))).digest('hex');
-  assert.equal(actual,expected,`Numerical source changed after reproduction: ${relative}`);
+assert.ok(integration.summary.passed>0,'Integration has no executed passing checks.');
+assert.equal(protocol.status,'pass','The full Stage 1 protocol report did not pass.');
+assert.ok(protocol.tests.length>0&&protocol.tests.every(row=>row.status==='pass'),'Protocol conditions include an absent or failed check.');
+for(const [name,cohort] of [['small cohort',protocol.smallCohort],['full cohort',protocol.fullCohort]]){
+ assert.equal(cohort?.status,'pass',`${name} was not completed successfully.`);
+ assert.equal(cohort.auditValid,true,`${name} does not satisfy its matched audit.`);
+ assert.equal(cohort.physicalWellCount,cohort.cohortCount,`${name} dropped physical wells.`);
+ assert.equal(cohort.resolvedCellChannelPairs,cohort.cohortCount*cohort.channelCount,`${name} omitted driven cells.`);
+ assert.equal(cohort.completedInterventionSolves,4*cohort.resolvedCellChannelPairs,`${name} omitted matched interventions.`);
+ assert.equal(cohort.noSkippedCells,true,`${name} skipped cells.`);assert.equal(cohort.noSkippedControls,true,`${name} skipped controls.`);
+ assert.ok(unchanged(cohort.sourceChangedDuringRun),`${name} sources changed during execution.`);
 }
+assert.ok(protocol.fullCohort.cohortCount>=200,'The complete Stage 1 release lacks an executed few-hundred-cell protocol.');
+assert.equal(reproduction.status,'pass','Full reproduction is not passing. Regenerate on frozen source, then rebuild.');
+assert.equal(reproduction.scope,'stage1-complete-numerical-and-integration','Reproduction must include the complete Stage 1 scope.');
+assert.equal(reproduction.acceptanceChanged,false,'The reproduction reports changed acceptance criteria.');
+assert.ok(reproduction.stages.length>0&&reproduction.stages.every(stage=>stage.status==='pass'),'Reproduction contains a failed or unexecuted stage.');
+for(const script of ['field-validate.mjs','mrg-validate.mjs','mrg-coupled-validate.mjs','bipolar-validate.mjs','field-stage1-validate.mjs','field-stage1-dense-validate.mjs','field-stage1-domain-validate.mjs','bipolar-soma-spatial.mjs','bipolar-coupled-validate.mjs','stage1-protocol-validate.mjs']){
+ assert.ok(reproduction.stages.some(stage=>stage.status==='pass'&&stage.arguments?.some(argument=>path.basename(argument)===script)),`Reproduction did not execute ${script}.`);
+}
+assert.ok(reproduction.stages.some(stage=>stage.name==='native-mechanism-build'&&stage.status==='pass'),'Native mechanisms were not rebuilt.');
+assert.ok(reproduction.stages.some(stage=>stage.name==='integration-tests'&&stage.status==='pass'),'Production integration/worker tests were not executed.');
+// Successful source stability is represented by the empty change list plus
+// exact hashes, not by a fabricated passing source-stability stage.
+for(const [label,report] of [['bipolar',bipolar],['soma spatial',somaSpatial],['well/native coupling',bipolarCoupled],['protocol',protocol],['reproduction',reproduction]])await verifyHashes(report,label);
+assert.ok(reproduction.sourceHashes['src/lib/axon-interface/vendor/cdt2d.mjs'],'Reproduction omits the meshing vendor.');
 const labText=plain(lab),methodText=plain(methods);
 assert.ok(!methodText.includes('[object Object]'),'The rendered parameter register contains object placeholders.');
-assert.ok(/model boundary/i.test(labText)&&/development/i.test(labText),'The laboratory lost its model/development boundary.');
-assert.ok(/Stage\s*1[^.]{0,180}(?:not yet|not established|incomplete|unmet)/i.test(methodText),'Methods must explain that complete Stage 1 remains unmet.');
-assert.ok(/original.host[^.]{0,150}not modeled|original.host ratio is not modeled/i.test(methodText),'Original-host addressability must remain distinct from calculated outputs.');
+assert.ok(/model boundary/i.test(labText)&&/conditional/i.test(labText),'The laboratory lost its conditional model boundary.');
+assert.ok(/hypothetical/i.test(methodText)&&/circumferential/i.test(methodText)&&/(?:not|no|un)calibrat|not[^.]{0,60}biological/i.test(methodText),'Methods must disclose hypothetical biology and the unresolved circumferential approximation.');
+assert.ok(/original/i.test(methodText)&&/identity|identities/i.test(methodText)&&/resection/i.test(methodText)&&/new E|engineered/i.test(methodText),'Original identities and replacement outputs must remain distinct.');
+assert.ok(/Y_original=0|Y_original = 0/.test(published.originalHostEndpoint),'The strict original-host endpoint must follow the complete-resection topology.');
 assert.ok(/(?:native\s+NEURON|NEURON[^.]{0,80}own cable solver)/i.test(methodText)&&/independent\s+Python/i.test(methodText),'Independent-reference provenance is missing.');
 assert.ok(/ModelDB/i.test(methodText)&&methodText.includes(MRG_SOURCE.commit),'The pinned primary model source must remain visible.');
 assert.ok(/diameter relation/i.test(methodText)&&/cat/i.test(methodText)&&/slower/i.test(methodText),'The physiological-calibration discrepancy is missing.');
 assert.ok(/retained failures/i.test(methodText)&&/spontaneous/i.test(methodText),'Convergence and active-soma failures must remain visible in methods.');
-assert.ok(/µm|micromet(?:er|re)/i.test(labText)&&/markers\s*×\s*2/i.test(labText),'Anatomy must disclose physical units and marker enlargement.');
+assert.ok(/µm|micromet(?:er|re)/i.test(labText),'Anatomy must disclose physical units.');
 const component=lab.match(/component-url="(\/_astro\/AxonInterfaceLaboratory\.[^"\s]+\.js)"/)?.[1];
 assert.ok(component,'The laboratory hydration component is not emitted.');
 const visited=new Set(),chunks=[];
@@ -104,7 +170,10 @@ async function inspectModule(asset){
 }
 await inspectModule(component);
 const javascript=decodeCode(chunks.join('\n'));
-assert.ok(/saved nodal voltages|stored nodal voltage/i.test(javascript)&&/replay/i.test(javascript),'Saved-voltage replay disclosure is missing from the emitted client.');
+assert.ok(/stored membrane voltage|saved.*voltages/i.test(javascript)&&/replay/i.test(javascript),'Saved-voltage replay disclosure is missing from the emitted client.');
+assert.ok(/physical scale|cells, wells & contacts/i.test(javascript)&&/×1/.test(javascript),'Actual bipolar well/cell scale disclosure is missing.');
+assert.ok(/Central soma.band|central soma.band/i.test(javascript),'A local soma band must not be labeled as the whole-body mean.');
+assert.ok(/threshold crossing/i.test(javascript)&&/source of depolarization/i.test(javascript),'First crossing must not be presented as causal localization.');
 assert.ok(/full modeled cable|full modelled cable/i.test(javascript)&&/Central 2\.4 mm window/i.test(javascript),'Anatomy and full-cable replay require distinct extent labels.');
 assert.ok(/Color saturation only/i.test(javascript)&&/milliseconds|\bms\b/i.test(javascript),'Replay must distinguish electrical time and color saturation from solver clipping.');
 const workers=[...new Set([...javascript.matchAll(/["'](\/_astro\/[^"']*worker[^"']*\.js)["']/gi)].map(m=>m[1]))];
@@ -113,9 +182,9 @@ assert.ok(!/new Worker\([^)]*["'](?:data:|blob:)/i.test(javascript),'The worker 
 for(const worker of workers){
   const workerPath=inside(dist,worker),info=await stat(workerPath),code=await readArtifact(worker);
   assert.ok(info.size>1000&&!/^\s*<(?:!doctype|html)/i.test(code),`${worker} is not a JavaScript numerical worker.`);
-  for(const version of [MODEL_VERSION,MRG_VERSION,FIELD_VERSION])assert.ok(code.includes(version),`${worker} is missing ${version}.`);
+  for(const version of [STAGE1_MODEL_VERSION,BENCHMARK_MODEL_VERSION,BIPOLAR_VERSION,MRG_VERSION,FIELD_VERSION,FIELD_STAGE1_VERSION])assert.ok(code.includes(version),`${worker} is missing ${version}.`);
   assert.ok(/onmessage/.test(code)&&/postMessage/.test(code),`${worker} lacks the worker message contract.`);
   const syntax=spawnSync(process.execPath,['--check',workerPath],{encoding:'utf8'});
   assert.equal(syntax.status,0,`${worker} cannot be parsed as JavaScript: ${syntax.stderr}`);
 }
-console.log(`Axon-interface build checks passed: laboratory, methods, ${scientificQuestions.length} questions, current numerical/coupled/integration/reproduction reports, frozen source hashes, scientific boundaries, anatomy/replay disclosures and ${workers.length} emitted worker asset.`);
+console.log(`Axon-interface build checks passed: laboratory, methods, ${scientificQuestions.length} questions, current motor/bipolar/well/reference/full-cohort evidence, frozen source hashes, scientific boundaries, anatomy/replay disclosures and ${workers.length} emitted worker asset.`);

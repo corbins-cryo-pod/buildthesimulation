@@ -16,3 +16,6 @@
 .ax-comparator p{font-size:12px}.ax-comparator h3{font-size:18px}
 .ax-contact-table{margin:20px 0 0;padding-top:15px;border-top:1px solid var(--ax-rule)}
 @media(max-width:760px){.ax-well-detail{padding:12px}.ax-well-detail dl{grid-template-columns:1fr;gap:4px}.ax-well-detail dd{margin-bottom:9px}.ax-well-detail .ax-plot-header{align-items:start;flex-direction:column}.ax-study-actions select{max-width:100%;font-size:10px}.ax-directionality{font-size:12px}.ax-comparator{padding:12px}}
+.ax-validation-block{margin:22px 0!important;padding:18px 0;border-top:1px solid var(--ax-rule)}
+.ax-validation-block h3{font-size:21px;margin-bottom:10px}.ax-validation-block>p{font-size:14px}
+.ax-validation-block td{overflow-wrap:anywhere}.ax-study-failure{display:block;max-width:38ch;font-size:10px;color:#a35e4a;margin-top:5px}
