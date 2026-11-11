@@ -1,0 +1,31 @@
+{
+  "schema": "buildthesimulation.stage1-field.acceptance.v1",
+  "declaration": "Frozen before implementing and testing the explicit well/aperture field extension. Historical core gates remain unchanged.",
+  "declaredAt": "2026-11-11",
+  "limits": {
+    "independentPythonMaxErrorUv": 0.001,
+    "linearSolveRelativeResidual": 1e-10,
+    "sourceReturnImbalanceUa": 1e-12,
+    "currentClosureUa": 1e-9,
+    "superpositionRelative": 1e-9,
+    "reciprocityRelative": 1e-9,
+    "constantPotentialErrorMv": 1e-8,
+    "straightBoreResistanceRelative": 0.05,
+    "isolatedAccessResistanceRelative": 0.1,
+    "radialRefinementRelativeRms": 0.1,
+    "angularRefinementRelativeRms": 0.1,
+    "axialRefinementRelativeRms": 0.1,
+    "wellContactFluxRelative": 1e-8,
+    "conservedMembraneProjection": 1e-12
+  },
+  "mandatory": [
+    "Independently assembled same-mesh Python reference with independently integrated surface contacts",
+    "Zero drive and linear field/current algebra",
+    "Explicit insulated wall boundary and physical open aperture topology",
+    "Finite annular straight bore with analytic Ohm resistance",
+    "Isolated circular aperture access convergence",
+    "Radial/angular/axial field refinement at fixed physical source/contact geometry",
+    "128 explicit cells and wells resource measurement with no dropped cell or hidden geometry substitution"
+  ],
+  "failurePolicy": "Append all failed studies; do not relax thresholds. Resource failure withholds large-cohort eligibility. Independent same-mesh agreement alone does not establish continuous accuracy or biology."
+}

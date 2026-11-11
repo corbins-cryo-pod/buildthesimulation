@@ -1,0 +1,42 @@
+{
+  "schema": "buildthesimulation.bipolar.resolution-correction.v1",
+  "declaredAt": "2026-11-11T22:40:35.381761+00:00",
+  "failureId": "BIPOLAR-TIME-001",
+  "retainedFailedStudy": [
+    {
+      "name": "Temporal 0.00125\u21920.000625: maximum active-site RMS",
+      "status": "fail",
+      "measured": 1.1150423977735597,
+      "nonFinite": false,
+      "limit": 1,
+      "unit": "mV",
+      "required": true,
+      "rmsPerSiteMv": [
+        1.1150423977735597,
+        0.8976030264341913,
+        0.7724279752805291,
+        0.713034402489992,
+        0.6598469214963711,
+        0.5560078443218405,
+        0.5520116503764042,
+        0.5376842804111983,
+        0.5206060351878525,
+        0.5121650940057003,
+        0.5170328538624231,
+        0.5276278620823918,
+        0.5361006372720863,
+        0.5371497808447604,
+        0.6471348977561554,
+        0.7013149090778625,
+        0.7603885137233033,
+        0.8836265151801961,
+        1.096611992851587
+      ]
+    }
+  ],
+  "productionCandidateDtMs": 0.000625,
+  "additionalTimeStepMs": 0.00015625,
+  "unchangedRmsLimitMv": 1,
+  "unchangedBiophysicalParameters": true,
+  "reason": "Refine numerical integration after the maximum per-site error exceeded the unchanged 1 mV criterion; retain the endpoint and the failed study. No channel or geometry parameter was adjusted to pass."
+}

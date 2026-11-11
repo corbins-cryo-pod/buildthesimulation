@@ -1,0 +1,1478 @@
+{
+  "schema": "buildthesimulation.bipolar.numerical.v1",
+  "modelVersion": "bipolar-projecting-neuron-1.0.0-hypothesis",
+  "membraneVersion": "mrg-double-cable-2.1.0-bipolar",
+  "generatedAt": "2026-11-11T22:38:20.333Z",
+  "complete": true,
+  "acceptance": {
+    "schema": "buildthesimulation.bipolar.acceptance.v1",
+    "declaredAt": "2026-11-11T22:27:03.058913+00:00",
+    "declaration": "Written before the first solve of the explicit bipolar morphology; no human or engineered-cell calibration is claimed.",
+    "defaultHypothesis": {
+      "somaDiameterUm": 20,
+      "peripheralStemLengthUm": 30,
+      "peripheralStemDiameterUm": 1.5,
+      "centralStemLengthUm": 50,
+      "centralStemDiameterUm": 2.5,
+      "peripheralFiberDiameterUm": 5.7,
+      "centralFiberDiameterUm": 5.7,
+      "armNodeCount": 6,
+      "passiveSegments": 3,
+      "stemSegments": 3,
+      "somaActiveScale": 0.1,
+      "stemActiveScale": 0.1,
+      "temperatureC": 37,
+      "equilibrationMs": 50,
+      "dtMs": 0.00125,
+      "durationMs": 6
+    },
+    "parameterRationale": "The bipolar topology and soma range follow the requested architecture. Stem geometry is explicitly hypothetical. Each arm uses a tabulated MRG motor-fiber geometry rather than extrapolating that table. Soma and stems use 10% of the nodal active conductance densities as a declared distributed-membrane hypothesis; it is not a measured density or a fitted value. Published nodal leak and reversal potentials are unchanged. The density grid tests this assumption, including the original nodal-density extreme. Fifty milliseconds is a declared numerical preparation, not a balancing current.",
+    "sensitivity": {
+      "somaDiameterUm": [
+        15,
+        20,
+        25
+      ],
+      "somaActiveScale": [
+        0,
+        0.03,
+        0.1,
+        0.3,
+        1
+      ],
+      "stemActiveScale": [
+        0,
+        0.03,
+        0.1,
+        0.3,
+        1
+      ],
+      "stemLengthMultiplier": [
+        0.5,
+        1,
+        2
+      ],
+      "stemDiameterMultiplier": [
+        0.75,
+        1,
+        1.25
+      ]
+    },
+    "limits": {
+      "zeroInputDriftMv": 0.1,
+      "zeroInputCrossings": 0,
+      "timeHalvingMaxSiteRmsMv": 1,
+      "timeHalvingCrossingTimeMs": 0.1,
+      "spatialConductionRelative": 0.05,
+      "spatialRecordingPeakToPeakRelative": 0.1,
+      "nativeMaxSiteRmsMv": 1,
+      "nativeCrossingTimeMs": 0.1,
+      "nativeRecordingMaxErrorUv": 0.001,
+      "chargeConservationNa": 1e-8
+    },
+    "numericalStudies": {
+      "timeStepsMs": [
+        0.00125,
+        0.000625,
+        0.0003125
+      ],
+      "spatialSubdivisions": [
+        3,
+        5,
+        7
+      ],
+      "nominalSomaticIntracellularPulse": {
+        "onsetMs": 0.5,
+        "durationMs": 0.1,
+        "amplitudeNa": 10
+      },
+      "somaCurrentGridNa": [
+        0.5,
+        1,
+        2,
+        5,
+        10,
+        20
+      ]
+    },
+    "controls": "Unmodified shared equilibrium, zero drive, local active-conductance removal in soma/both stems/one heminode each arm, all active sites removed, and separately disconnected native-arm stumps. A missing relay junction is not fabricated. Negative causal results are retained, not forced to pass.",
+    "failurePolicy": "Every failed numerical attempt and every spontaneous or nonrecruited sensitivity case remains recorded. Physiological feasibility is not a numerical pass criterion. Numerical limits will not be relaxed to hide a failure."
+  },
+  "sourceHashes": {
+    "src/lib/axon-interface/mrg.mjs": "5e9a17e272adf1328817f1801e36ca5a6d6cb99a88970975e55c5f4094b1c535",
+    "src/lib/axon-interface/bipolar.mjs": "58e952c8c07e5ba007eb71a45f3f34fe03c47e6ee46697eafbf6d828ecb763d4",
+    "scripts/axon-interface/bipolar-validate.mjs": "26cef6430dfcc099221178c53caade90c997cf6374950e0f170d603cc221375f",
+    "scripts/axon-interface/bipolar-reference.py": "c53618851a638ce1af877ffa12355bb47404170c2a2e7aad208ec46e31422197",
+    "scripts/axon-interface/mrg-motor-baseline.mjs": "cbaa91ed8e8cbe5acc56d55f229ddcd0bbbe32a4272d4b8280eded3aff772405",
+    "scripts/axon-interface/mrg-modeldb/AXNODE.mod": "e0fa400a469aa2beba491fabffaa4f6bc03c629015a2c0f2ddc471fb3e687bd3",
+    "docs/axon-interface/bipolar-acceptance.json": "9d0bf929490004022deccdce7d28260cf4de8a5f78dee82da92fc7c4b16a94d0"
+  },
+  "sourceChangedDuringRun": [],
+  "tests": [
+    {
+      "name": "Original motor membrane/current/event outputs remain bit-for-bit unchanged",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true,
+      "baselineSha256": "cbaa91ed8e8cbe5acc56d55f229ddcd0bbbe32a4272d4b8280eded3aff772405"
+    },
+    {
+      "name": "Nominal bipolar zero-input drift",
+      "status": "pass",
+      "measured": 0.005134539238227376,
+      "nonFinite": false,
+      "limit": 0.1,
+      "unit": "mV",
+      "required": true,
+      "preparationMs": 50
+    },
+    {
+      "name": "Nominal bipolar zero-input crossings at all active sites",
+      "status": "pass",
+      "measured": 0,
+      "nonFinite": false,
+      "limit": 0,
+      "unit": "crossings",
+      "required": true
+    },
+    {
+      "name": "Nominal cable current balance",
+      "status": "pass",
+      "measured": 9.191357663461999e-12,
+      "nonFinite": false,
+      "limit": 1e-8,
+      "unit": "nA",
+      "required": true
+    },
+    {
+      "name": "Somatic 10 nA benchmark has ordered peripheral propagation",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true,
+      "diagnostic": {
+        "ordered": true,
+        "timesMs": [
+          0.939720351066466,
+          0.9603052052655177,
+          0.976528912405242
+        ],
+        "delayMs": 0.03680856133877597
+      }
+    },
+    {
+      "name": "Somatic 10 nA benchmark has ordered central propagation",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true,
+      "diagnostic": {
+        "ordered": true,
+        "timesMs": [
+          0.9401216408089108,
+          0.9606799280348817,
+          0.9769066034580162
+        ],
+        "delayMs": 0.03678496264910536
+      }
+    },
+    {
+      "name": "Temporal 0.00125→0.000625: maximum active-site RMS",
+      "status": "fail",
+      "measured": 1.1150423977735597,
+      "nonFinite": false,
+      "limit": 1,
+      "unit": "mV",
+      "required": true,
+      "rmsPerSiteMv": [
+        1.1150423977735597,
+        0.8976030264341913,
+        0.7724279752805291,
+        0.713034402489992,
+        0.6598469214963711,
+        0.5560078443218405,
+        0.5520116503764042,
+        0.5376842804111983,
+        0.5206060351878525,
+        0.5121650940057003,
+        0.5170328538624231,
+        0.5276278620823918,
+        0.5361006372720863,
+        0.5371497808447604,
+        0.6471348977561554,
+        0.7013149090778625,
+        0.7603885137233033,
+        0.8836265151801961,
+        1.096611992851587
+      ]
+    },
+    {
+      "name": "Temporal level 1: identical all-site crossing counts",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true
+    },
+    {
+      "name": "Temporal level 1: crossing timing",
+      "status": "pass",
+      "measured": 0.004238531670951562,
+      "nonFinite": false,
+      "limit": 0.1,
+      "unit": "ms",
+      "required": true
+    },
+    {
+      "name": "Temporal 0.000625→0.0003125: maximum active-site RMS",
+      "status": "pass",
+      "measured": 0.5564363078457069,
+      "nonFinite": false,
+      "limit": 1,
+      "unit": "mV",
+      "required": true,
+      "rmsPerSiteMv": [
+        0.5564363078457069,
+        0.44753929496429956,
+        0.38544669588779834,
+        0.355735491887217,
+        0.3288182514183963,
+        0.27519230059202054,
+        0.2733263289540149,
+        0.26619796845052185,
+        0.2575985270608675,
+        0.2533444307497046,
+        0.25580632618141097,
+        0.2611568700213517,
+        0.26536901042331634,
+        0.26577491373273915,
+        0.32233088040095975,
+        0.34969546571189153,
+        0.3792040062541613,
+        0.440476486084045,
+        0.5485880073810615
+      ]
+    },
+    {
+      "name": "Temporal level 2: identical all-site crossing counts",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true
+    },
+    {
+      "name": "Temporal level 2: crossing timing",
+      "status": "pass",
+      "measured": 0.002090682365247565,
+      "nonFinite": false,
+      "limit": 0.1,
+      "unit": "ms",
+      "required": true
+    },
+    {
+      "name": "Spatial 3→5: peripheral conduction delay",
+      "status": "pass",
+      "measured": 0.0236544024038781,
+      "nonFinite": false,
+      "limit": 0.05,
+      "unit": "fraction",
+      "required": true,
+      "delaysMs": [
+        0.03651242324379478,
+        0.037397027582950826
+      ]
+    },
+    {
+      "name": "Spatial 3→5: central conduction delay",
+      "status": "pass",
+      "measured": 0.023695999610822197,
+      "nonFinite": false,
+      "limit": 0.05,
+      "unit": "fraction",
+      "required": true,
+      "delaysMs": [
+        0.03649077861218186,
+        0.03737645098005926
+      ]
+    },
+    {
+      "name": "Spatial 3→5: reciprocal recording",
+      "status": "pass",
+      "measured": 0.003542316877707369,
+      "nonFinite": false,
+      "limit": 0.1,
+      "unit": "fraction",
+      "required": true,
+      "peaksUv": [
+        4.888841640634228,
+        4.906221030195251
+      ]
+    },
+    {
+      "name": "Spatial 5→7: peripheral conduction delay",
+      "status": "pass",
+      "measured": 0.008028594641033632,
+      "nonFinite": false,
+      "limit": 0.05,
+      "unit": "fraction",
+      "required": true,
+      "delaysMs": [
+        0.037397027582950826,
+        0.03769970321817684
+      ]
+    },
+    {
+      "name": "Spatial 5→7: central conduction delay",
+      "status": "pass",
+      "measured": 0.00803032478343578,
+      "nonFinite": false,
+      "limit": 0.05,
+      "unit": "fraction",
+      "required": true,
+      "delaysMs": [
+        0.03737645098005926,
+        0.03767902579471427
+      ]
+    },
+    {
+      "name": "Spatial 5→7: reciprocal recording",
+      "status": "pass",
+      "measured": 0.004164835053676067,
+      "nonFinite": false,
+      "limit": 0.1,
+      "unit": "fraction",
+      "required": true,
+      "peaksUv": [
+        4.906221030195251,
+        4.885872178478543
+      ]
+    },
+    {
+      "name": "No-construct peripheral stump zero-input drift",
+      "status": "pass",
+      "measured": 0.00011927758585272841,
+      "nonFinite": false,
+      "limit": 0.1,
+      "unit": "mV",
+      "required": true
+    },
+    {
+      "name": "No-construct peripheral stump zero-input crossings",
+      "status": "pass",
+      "measured": 0,
+      "nonFinite": false,
+      "limit": 0,
+      "unit": "crossings",
+      "required": true
+    },
+    {
+      "name": "No-construct peripheral stump has no connection across removed region",
+      "status": "pass",
+      "measured": false,
+      "nonFinite": false,
+      "limit": false,
+      "unit": "boolean",
+      "required": true
+    },
+    {
+      "name": "No-construct central stump zero-input drift",
+      "status": "pass",
+      "measured": 0.00011927758585272841,
+      "nonFinite": false,
+      "limit": 0.1,
+      "unit": "mV",
+      "required": true
+    },
+    {
+      "name": "No-construct central stump zero-input crossings",
+      "status": "pass",
+      "measured": 0,
+      "nonFinite": false,
+      "limit": 0,
+      "unit": "crossings",
+      "required": true
+    },
+    {
+      "name": "No-construct central stump has no connection across removed region",
+      "status": "pass",
+      "measured": false,
+      "nonFinite": false,
+      "limit": false,
+      "unit": "boolean",
+      "required": true
+    },
+    {
+      "name": "Native NEURON nominal-soma-injected: all-site RMS",
+      "status": "pass",
+      "measured": 4.073472674456397e-9,
+      "nonFinite": false,
+      "limit": 1,
+      "unit": "mV",
+      "required": true
+    },
+    {
+      "name": "Native NEURON nominal-soma-injected: all-site crossing counts",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true
+    },
+    {
+      "name": "Native NEURON nominal-soma-injected: crossing times",
+      "status": "pass",
+      "measured": 1.6279755321590983e-11,
+      "nonFinite": false,
+      "limit": 0.1,
+      "unit": "ms",
+      "required": true
+    },
+    {
+      "name": "Native NEURON nominal-soma-injected: reciprocal recording",
+      "status": "pass",
+      "measured": 2.4363480122246983e-9,
+      "nonFinite": false,
+      "limit": 0.001,
+      "unit": "uV",
+      "required": true
+    },
+    {
+      "name": "Native NEURON nominal-extracellular: all-site RMS",
+      "status": "pass",
+      "measured": 9.638689994755638e-9,
+      "nonFinite": false,
+      "limit": 1,
+      "unit": "mV",
+      "required": true
+    },
+    {
+      "name": "Native NEURON nominal-extracellular: all-site crossing counts",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true
+    },
+    {
+      "name": "Native NEURON nominal-extracellular: crossing times",
+      "status": "pass",
+      "measured": 1.9748980228939672e-10,
+      "nonFinite": false,
+      "limit": 0.1,
+      "unit": "ms",
+      "required": true
+    },
+    {
+      "name": "Native NEURON nominal-extracellular: reciprocal recording",
+      "status": "pass",
+      "measured": 5.9895346460336896e-9,
+      "nonFinite": false,
+      "limit": 0.001,
+      "unit": "uV",
+      "required": true
+    },
+    {
+      "name": "Native NEURON initiation-region-silenced: all-site RMS",
+      "status": "pass",
+      "measured": 2.3148727912620608e-10,
+      "nonFinite": false,
+      "limit": 1,
+      "unit": "mV",
+      "required": true
+    },
+    {
+      "name": "Native NEURON initiation-region-silenced: all-site crossing counts",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true
+    },
+    {
+      "name": "Native NEURON initiation-region-silenced: crossing times",
+      "status": "pass",
+      "measured": 0,
+      "nonFinite": false,
+      "limit": 0.1,
+      "unit": "ms",
+      "required": true
+    },
+    {
+      "name": "Native NEURON initiation-region-silenced: reciprocal recording",
+      "status": "pass",
+      "measured": 1.1637316110757467e-11,
+      "nonFinite": false,
+      "limit": 0.001,
+      "unit": "uV",
+      "required": true
+    },
+    {
+      "name": "Native NEURON whole-cell-silenced: all-site RMS",
+      "status": "pass",
+      "measured": 9.108482164643028e-10,
+      "nonFinite": false,
+      "limit": 1,
+      "unit": "mV",
+      "required": true
+    },
+    {
+      "name": "Native NEURON whole-cell-silenced: all-site crossing counts",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true
+    },
+    {
+      "name": "Native NEURON whole-cell-silenced: crossing times",
+      "status": "pass",
+      "measured": 0,
+      "nonFinite": false,
+      "limit": 0.1,
+      "unit": "ms",
+      "required": true
+    },
+    {
+      "name": "Native NEURON whole-cell-silenced: reciprocal recording",
+      "status": "pass",
+      "measured": 1.325377307903608e-11,
+      "nonFinite": false,
+      "limit": 0.001,
+      "unit": "uV",
+      "required": true
+    },
+    {
+      "name": "Native NEURON passive-soma: all-site RMS",
+      "status": "pass",
+      "measured": 1.9353932630529328e-10,
+      "nonFinite": false,
+      "limit": 1,
+      "unit": "mV",
+      "required": true
+    },
+    {
+      "name": "Native NEURON passive-soma: all-site crossing counts",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true
+    },
+    {
+      "name": "Native NEURON passive-soma: crossing times",
+      "status": "pass",
+      "measured": 0,
+      "nonFinite": false,
+      "limit": 0.1,
+      "unit": "ms",
+      "required": true
+    },
+    {
+      "name": "Native NEURON passive-soma: reciprocal recording",
+      "status": "pass",
+      "measured": 1.0277556583559999e-11,
+      "nonFinite": false,
+      "limit": 0.001,
+      "unit": "uV",
+      "required": true
+    },
+    {
+      "name": "Native NEURON native-central-stump: all-site RMS",
+      "status": "pass",
+      "measured": 6.78066304895279e-9,
+      "nonFinite": false,
+      "limit": 1,
+      "unit": "mV",
+      "required": true
+    },
+    {
+      "name": "Native NEURON native-central-stump: all-site crossing counts",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true
+    },
+    {
+      "name": "Native NEURON native-central-stump: crossing times",
+      "status": "pass",
+      "measured": 2.769584561690408e-11,
+      "nonFinite": false,
+      "limit": 0.1,
+      "unit": "ms",
+      "required": true
+    },
+    {
+      "name": "Native NEURON native-central-stump: reciprocal recording",
+      "status": "pass",
+      "measured": 4.584018442610471e-9,
+      "nonFinite": false,
+      "limit": 0.001,
+      "unit": "uV",
+      "required": true
+    }
+  ],
+  "sensitivity": [
+    {
+      "key": "somaDiameterUm",
+      "value": 15,
+      "settings": {
+        "somaDiameterUm": 15
+      },
+      "zeroInputDriftMv": 0.004865815065059564,
+      "zeroInputCrossings": 0,
+      "quiescent": true,
+      "central": {
+        "ordered": true,
+        "timesMs": [
+          0.7073230817870977,
+          0.7287183669225491,
+          0.7455155186786402
+        ],
+        "delayMs": 0.0381924368915425
+      },
+      "peripheral": {
+        "ordered": true,
+        "timesMs": [
+          0.7023346830284618,
+          0.723688856755019,
+          0.7404534976621765
+        ],
+        "delayMs": 0.03811881463371469
+      },
+      "drivenCrossings": 19,
+      "somaCrossings": 1,
+      "status": "computed"
+    },
+    {
+      "key": "somaDiameterUm",
+      "value": 25,
+      "settings": {
+        "somaDiameterUm": 25
+      },
+      "zeroInputDriftMv": 0.005315503578231073,
+      "zeroInputCrossings": 0,
+      "quiescent": true,
+      "central": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "peripheral": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "drivenCrossings": 0,
+      "somaCrossings": 0,
+      "status": "computed"
+    },
+    {
+      "key": "somaActiveScale",
+      "value": 0,
+      "settings": {
+        "somaActiveScale": 0
+      },
+      "zeroInputDriftMv": 0.005232551827162979,
+      "zeroInputCrossings": 0,
+      "quiescent": true,
+      "central": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "peripheral": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "drivenCrossings": 0,
+      "somaCrossings": 0,
+      "status": "computed"
+    },
+    {
+      "key": "somaActiveScale",
+      "value": 0.03,
+      "settings": {
+        "somaActiveScale": 0.03
+      },
+      "zeroInputDriftMv": 0.0052114732409194175,
+      "zeroInputCrossings": 0,
+      "quiescent": true,
+      "central": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "peripheral": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "drivenCrossings": 0,
+      "somaCrossings": 0,
+      "status": "computed"
+    },
+    {
+      "key": "somaActiveScale",
+      "value": 0.3,
+      "settings": {
+        "somaActiveScale": 0.3
+      },
+      "zeroInputDriftMv": 0.0046768400071783844,
+      "zeroInputCrossings": 0,
+      "quiescent": true,
+      "central": {
+        "ordered": true,
+        "timesMs": [
+          0.743729331438787,
+          0.7652125755125868,
+          0.7820356964594338
+        ],
+        "delayMs": 0.03830636502064688
+      },
+      "peripheral": {
+        "ordered": true,
+        "timesMs": [
+          0.7388554132865123,
+          0.760324029561503,
+          0.7771254157930745
+        ],
+        "delayMs": 0.038270002506562206
+      },
+      "drivenCrossings": 19,
+      "somaCrossings": 1,
+      "status": "computed"
+    },
+    {
+      "key": "somaActiveScale",
+      "value": 1,
+      "settings": {
+        "somaActiveScale": 1
+      },
+      "zeroInputDriftMv": 0.014589025246550591,
+      "zeroInputCrossings": 0,
+      "quiescent": true,
+      "central": {
+        "ordered": true,
+        "timesMs": [
+          0.6874761303960666,
+          0.7092487837652964,
+          0.7262044159413276
+        ],
+        "delayMs": 0.038728285545260976
+      },
+      "peripheral": {
+        "ordered": true,
+        "timesMs": [
+          0.6819990913195105,
+          0.7037636802305374,
+          0.7207069041859872
+        ],
+        "delayMs": 0.03870781286647662
+      },
+      "drivenCrossings": 38,
+      "somaCrossings": 2,
+      "status": "computed"
+    },
+    {
+      "key": "stemActiveScale",
+      "value": 0,
+      "settings": {
+        "stemActiveScale": 0
+      },
+      "zeroInputDriftMv": 0.0052277086657142036,
+      "zeroInputCrossings": 0,
+      "quiescent": true,
+      "central": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "peripheral": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "drivenCrossings": 0,
+      "somaCrossings": 0,
+      "status": "computed"
+    },
+    {
+      "key": "stemActiveScale",
+      "value": 0.03,
+      "settings": {
+        "stemActiveScale": 0.03
+      },
+      "zeroInputDriftMv": 0.005201921442633761,
+      "zeroInputCrossings": 0,
+      "quiescent": true,
+      "central": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "peripheral": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "drivenCrossings": 0,
+      "somaCrossings": 0,
+      "status": "computed"
+    },
+    {
+      "key": "stemActiveScale",
+      "value": 0.3,
+      "settings": {
+        "stemActiveScale": 0.3
+      },
+      "zeroInputDriftMv": 0.004883469666197016,
+      "zeroInputCrossings": 0,
+      "quiescent": true,
+      "central": {
+        "ordered": true,
+        "timesMs": [
+          0.7923598510100829,
+          0.8135840582701163,
+          0.8302586481057918
+        ],
+        "delayMs": 0.03789879709570887
+      },
+      "peripheral": {
+        "ordered": true,
+        "timesMs": [
+          0.8010889158131553,
+          0.8222351397069088,
+          0.8388455229235554
+        ],
+        "delayMs": 0.037756607110400076
+      },
+      "drivenCrossings": 19,
+      "somaCrossings": 1,
+      "status": "computed"
+    },
+    {
+      "key": "stemActiveScale",
+      "value": 1,
+      "settings": {
+        "stemActiveScale": 1
+      },
+      "zeroInputDriftMv": 0.003289621687969202,
+      "zeroInputCrossings": 0,
+      "quiescent": true,
+      "central": {
+        "ordered": true,
+        "timesMs": [
+          0.7103126953570945,
+          0.7320881613776323,
+          0.7490594390253209
+        ],
+        "delayMs": 0.03874674366822639
+      },
+      "peripheral": {
+        "ordered": true,
+        "timesMs": [
+          0.7130244613433079,
+          0.7347048368124576,
+          0.7516176060024168
+        ],
+        "delayMs": 0.0385931446591089
+      },
+      "drivenCrossings": 19,
+      "somaCrossings": 1,
+      "status": "computed"
+    },
+    {
+      "key": "stemLengthMultiplier",
+      "value": 0.5,
+      "settings": {
+        "peripheralStemLengthUm": 15,
+        "centralStemLengthUm": 25
+      },
+      "zeroInputDriftMv": 0.00504021102638319,
+      "zeroInputCrossings": 0,
+      "quiescent": true,
+      "central": {
+        "ordered": true,
+        "timesMs": [
+          0.7786012895008317,
+          0.7994441620144753,
+          0.8159133057711325
+        ],
+        "delayMs": 0.037312016270300785
+      },
+      "peripheral": {
+        "ordered": true,
+        "timesMs": [
+          0.7781090438550861,
+          0.7989648447585741,
+          0.8154376604934499
+        ],
+        "delayMs": 0.03732861663836384
+      },
+      "drivenCrossings": 19,
+      "somaCrossings": 1,
+      "status": "computed"
+    },
+    {
+      "key": "stemLengthMultiplier",
+      "value": 2,
+      "settings": {
+        "peripheralStemLengthUm": 60,
+        "centralStemLengthUm": 100
+      },
+      "zeroInputDriftMv": 0.005264037959847201,
+      "zeroInputCrossings": 0,
+      "quiescent": true,
+      "central": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "peripheral": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "drivenCrossings": 0,
+      "somaCrossings": 0,
+      "status": "computed"
+    },
+    {
+      "key": "stemDiameterMultiplier",
+      "value": 0.75,
+      "settings": {
+        "peripheralStemDiameterUm": 1.125,
+        "centralStemDiameterUm": 1.875
+      },
+      "zeroInputDriftMv": 0.005043039523528137,
+      "zeroInputCrossings": 0,
+      "quiescent": true,
+      "central": {
+        "ordered": true,
+        "timesMs": [
+          0.8223575709161846,
+          0.8434196968534675,
+          0.8599887212406954
+        ],
+        "delayMs": 0.03763115032451081
+      },
+      "peripheral": {
+        "ordered": true,
+        "timesMs": [
+          0.8193746280287791,
+          0.8404250348552104,
+          0.8569598986178935
+        ],
+        "delayMs": 0.03758527058911432
+      },
+      "drivenCrossings": 19,
+      "somaCrossings": 1,
+      "status": "computed"
+    },
+    {
+      "key": "stemDiameterMultiplier",
+      "value": 1.25,
+      "settings": {
+        "peripheralStemDiameterUm": 1.875,
+        "centralStemDiameterUm": 3.125
+      },
+      "zeroInputDriftMv": 0.0051938753390885495,
+      "zeroInputCrossings": 0,
+      "quiescent": true,
+      "central": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "peripheral": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "drivenCrossings": 0,
+      "somaCrossings": 0,
+      "status": "computed"
+    }
+  ],
+  "thresholdGrid": [
+    {
+      "amplitudeNa": 0.5,
+      "central": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "peripheral": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "crossings": 0,
+      "somaCrossings": 0,
+      "firstEventRole": null
+    },
+    {
+      "amplitudeNa": 1,
+      "central": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "peripheral": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "crossings": 0,
+      "somaCrossings": 0,
+      "firstEventRole": null
+    },
+    {
+      "amplitudeNa": 2,
+      "central": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "peripheral": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "crossings": 0,
+      "somaCrossings": 0,
+      "firstEventRole": null
+    },
+    {
+      "amplitudeNa": 5,
+      "central": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "peripheral": {
+        "ordered": false,
+        "timesMs": [
+          null,
+          null,
+          null
+        ],
+        "delayMs": null
+      },
+      "crossings": 0,
+      "somaCrossings": 0,
+      "firstEventRole": null
+    },
+    {
+      "amplitudeNa": 10,
+      "central": {
+        "ordered": true,
+        "timesMs": [
+          0.9401216408089108,
+          0.9606799280348817,
+          0.9769066034580162
+        ],
+        "delayMs": 0.03678496264910536
+      },
+      "peripheral": {
+        "ordered": true,
+        "timesMs": [
+          0.939720351066466,
+          0.9603052052655177,
+          0.976528912405242
+        ],
+        "delayMs": 0.03680856133877597
+      },
+      "crossings": 19,
+      "somaCrossings": 1,
+      "firstEventRole": "peripheral_node"
+    },
+    {
+      "amplitudeNa": 20,
+      "central": {
+        "ordered": true,
+        "timesMs": [
+          0.6685484424222595,
+          0.6902182962659837,
+          0.7071719176519905
+        ],
+        "delayMs": 0.038623475229730975
+      },
+      "peripheral": {
+        "ordered": true,
+        "timesMs": [
+          0.6630610213098638,
+          0.6846988246949524,
+          0.7016307375603976
+        ],
+        "delayMs": 0.03856971625053385
+      },
+      "crossings": 19,
+      "somaCrossings": 1,
+      "firstEventRole": "soma"
+    }
+  ],
+  "nativeComparisons": [
+    {
+      "id": "nominal-soma-injected",
+      "exactObservationTimestamps": true,
+      "maximumSiteRmsMv": 4.073472674456397e-9,
+      "rmsPerSiteMv": [
+        3.7719352642095135e-9,
+        3.1931901161410436e-9,
+        2.211276837701132e-9,
+        1.2673737467646552e-9,
+        4.854740830411559e-10,
+        2.2893291699933274e-9,
+        3.8468833955148214e-10,
+        2.0993701892171166e-10,
+        1.0057606526776312e-10,
+        1.0519916962323432e-10,
+        9.994854000000084e-11,
+        1.2395241673410531e-10,
+        2.1304074818661747e-10,
+        2.3125838802263623e-9,
+        5.707619796909942e-10,
+        1.4548465892540799e-9,
+        2.416687546121272e-9,
+        3.4318887424866294e-9,
+        4.073472674456397e-9
+      ],
+      "identicalCrossingCounts": true,
+      "maximumCrossingTimeErrorMs": 1.6279755321590983e-11,
+      "maxRecordingErrorUv": 2.4363480122246983e-9,
+      "jsCrossings": 19,
+      "nativeCrossings": 19,
+      "runtime": {
+        "python": "3.12.14",
+        "neuron": "8.2.7+",
+        "integration": "native fixed-step NEURON, extracellular and unchanged AXNODE.mod cnexp"
+      },
+      "silencedCompartments": []
+    },
+    {
+      "id": "nominal-extracellular",
+      "exactObservationTimestamps": true,
+      "maximumSiteRmsMv": 9.638689994755638e-9,
+      "rmsPerSiteMv": [
+        9.573132761147e-9,
+        7.912017046408132e-9,
+        6.311480395746346e-9,
+        4.55626813043103e-9,
+        2.1058807655885475e-9,
+        4.707507304817952e-9,
+        2.256343483390326e-9,
+        1.9891698931156095e-9,
+        2.167814039450158e-9,
+        2.588078468575648e-9,
+        2.254351069773185e-9,
+        1.6273521833827948e-9,
+        1.3295152483781024e-9,
+        2.7881242953792556e-9,
+        2.4982597160635397e-9,
+        4.716098008457809e-9,
+        6.380719535401707e-9,
+        7.959871283589706e-9,
+        9.638689994755638e-9
+      ],
+      "identicalCrossingCounts": true,
+      "maximumCrossingTimeErrorMs": 1.9748980228939672e-10,
+      "maxRecordingErrorUv": 5.9895346460336896e-9,
+      "jsCrossings": 19,
+      "nativeCrossings": 19,
+      "runtime": {
+        "python": "3.12.14",
+        "neuron": "8.2.7+",
+        "integration": "native fixed-step NEURON, extracellular and unchanged AXNODE.mod cnexp"
+      },
+      "silencedCompartments": []
+    },
+    {
+      "id": "initiation-region-silenced",
+      "exactObservationTimestamps": true,
+      "maximumSiteRmsMv": 2.3148727912620608e-10,
+      "rmsPerSiteMv": [
+        2.0012235442534462e-10,
+        1.4204523455409608e-10,
+        1.166016301148517e-10,
+        8.414709484723493e-11,
+        1.2473779822817215e-10,
+        1.4692090663135304e-10,
+        8.370799820856873e-11,
+        7.387578970190225e-11,
+        6.573640509076565e-11,
+        6.301650312259225e-11,
+        6.740042616246598e-11,
+        7.962033561986724e-11,
+        9.37457628430482e-11,
+        1.55575139415156e-10,
+        1.4491764663250846e-10,
+        1.3690023621023418e-10,
+        1.5968734938499592e-10,
+        1.7624229364959336e-10,
+        2.3148727912620608e-10
+      ],
+      "identicalCrossingCounts": true,
+      "maximumCrossingTimeErrorMs": 0,
+      "maxRecordingErrorUv": 1.1637316110757467e-11,
+      "jsCrossings": 0,
+      "nativeCrossings": 0,
+      "runtime": {
+        "python": "3.12.14",
+        "neuron": "8.2.7+",
+        "integration": "native fixed-step NEURON, extracellular and unchanged AXNODE.mod cnexp"
+      },
+      "silencedCompartments": [
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163
+      ]
+    },
+    {
+      "id": "whole-cell-silenced",
+      "exactObservationTimestamps": true,
+      "maximumSiteRmsMv": 9.108482164643028e-10,
+      "rmsPerSiteMv": [
+        9.108482164643028e-10,
+        7.151456437699276e-10,
+        4.315468282322507e-10,
+        4.338720223781017e-10,
+        2.491521164209839e-10,
+        1.5046266552587167e-10,
+        6.050953603675723e-11,
+        4.966947641303696e-11,
+        4.018093730361891e-11,
+        3.7121084558859374e-11,
+        3.8205683792275955e-11,
+        4.4683882133101277e-11,
+        5.2358202866956293e-11,
+        1.6362515160017685e-10,
+        1.7715500676580416e-10,
+        1.542470865282112e-10,
+        1.405106970818818e-10,
+        1.1856900319814518e-10,
+        9.215840847040846e-11
+      ],
+      "identicalCrossingCounts": true,
+      "maximumCrossingTimeErrorMs": 0,
+      "maxRecordingErrorUv": 1.325377307903608e-11,
+      "jsCrossings": 0,
+      "nativeCrossings": 0,
+      "runtime": {
+        "python": "3.12.14",
+        "neuron": "8.2.7+",
+        "integration": "native fixed-step NEURON, extracellular and unchanged AXNODE.mod cnexp"
+      },
+      "silencedCompartments": [
+        0,
+        31,
+        62,
+        93,
+        124,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        194,
+        225,
+        256,
+        287,
+        318
+      ]
+    },
+    {
+      "id": "passive-soma",
+      "exactObservationTimestamps": true,
+      "maximumSiteRmsMv": 1.9353932630529328e-10,
+      "rmsPerSiteMv": [
+        1.9259610854697648e-10,
+        1.3791423746427996e-10,
+        1.135312342144828e-10,
+        8.599442887161337e-11,
+        1.442996891788962e-10,
+        1.327025219568219e-10,
+        6.416570447590102e-11,
+        5.2664239604698955e-11,
+        4.392350667467534e-11,
+        4.0614013908088065e-11,
+        4.110789522362665e-11,
+        4.6608629707589345e-11,
+        5.4710019900772825e-11,
+        1.463421489553498e-10,
+        1.5255974763546264e-10,
+        8.370823552243233e-11,
+        1.1130690903728857e-10,
+        1.353355147677721e-10,
+        1.9353932630529328e-10
+      ],
+      "identicalCrossingCounts": true,
+      "maximumCrossingTimeErrorMs": 0,
+      "maxRecordingErrorUv": 1.0277556583559999e-11,
+      "jsCrossings": 0,
+      "nativeCrossings": 0,
+      "runtime": {
+        "python": "3.12.14",
+        "neuron": "8.2.7+",
+        "integration": "native fixed-step NEURON, extracellular and unchanged AXNODE.mod cnexp"
+      },
+      "silencedCompartments": []
+    },
+    {
+      "id": "native-central-stump",
+      "exactObservationTimestamps": true,
+      "maximumSiteRmsMv": 6.78066304895279e-9,
+      "rmsPerSiteMv": [
+        1.5571337560769727e-9,
+        3.055060406574426e-9,
+        3.7171103044876797e-9,
+        4.447268492122829e-9,
+        5.622128629009045e-9,
+        6.78066304895279e-9
+      ],
+      "identicalCrossingCounts": true,
+      "maximumCrossingTimeErrorMs": 2.769584561690408e-11,
+      "maxRecordingErrorUv": 4.584018442610471e-9,
+      "jsCrossings": 6,
+      "nativeCrossings": 6,
+      "runtime": {
+        "python": "3.12.14",
+        "neuron": "8.2.7+",
+        "integration": "native fixed-step NEURON, extracellular and unchanged AXNODE.mod cnexp"
+      },
+      "silencedCompartments": []
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "requiredPass": 47,
+    "requiredFail": 1,
+    "numericalGatePassed": false,
+    "biologicalValidation": false,
+    "humanSgCalibration": false
+  },
+  "runtime": {
+    "node": "v24.22.1",
+    "platform": "linux",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "elapsedSeconds": 59.578723292
+  },
+  "limitations": [
+    "Soma/stem geometry and channel densities are explicit hypothetical choices, not human or engineered-cell fits.",
+    "The soma is a lumped equivalent cylinder with exposed spherical-band area; circumferential nonlinear membrane polarization is unresolved.",
+    "Native NEURON agreement verifies the stated equations; negative sensitivity or causal outcomes are not suppressed.",
+    "Analytic extracellular coefficients in this component test do not replace the separate insulating-well/FEM reference fixture."
+  ]
+}
