@@ -1,0 +1,94 @@
+{
+  "schema": "buildthesimulation.bipolar.acceptance.v1",
+  "declaredAt": "2026-11-11T22:27:03.058913+00:00",
+  "declaration": "Written before the first solve of the explicit bipolar morphology; no human or engineered-cell calibration is claimed.",
+  "defaultHypothesis": {
+    "somaDiameterUm": 20,
+    "peripheralStemLengthUm": 30,
+    "peripheralStemDiameterUm": 1.5,
+    "centralStemLengthUm": 50,
+    "centralStemDiameterUm": 2.5,
+    "peripheralFiberDiameterUm": 5.7,
+    "centralFiberDiameterUm": 5.7,
+    "armNodeCount": 6,
+    "passiveSegments": 3,
+    "stemSegments": 3,
+    "somaActiveScale": 0.1,
+    "stemActiveScale": 0.1,
+    "temperatureC": 37,
+    "equilibrationMs": 50,
+    "dtMs": 0.00125,
+    "durationMs": 6
+  },
+  "parameterRationale": "The bipolar topology and soma range follow the requested architecture. Stem geometry is explicitly hypothetical. Each arm uses a tabulated MRG motor-fiber geometry rather than extrapolating that table. Soma and stems use 10% of the nodal active conductance densities as a declared distributed-membrane hypothesis; it is not a measured density or a fitted value. Published nodal leak and reversal potentials are unchanged. The density grid tests this assumption, including the original nodal-density extreme. Fifty milliseconds is a declared numerical preparation, not a balancing current.",
+  "sensitivity": {
+    "somaDiameterUm": [
+      15,
+      20,
+      25
+    ],
+    "somaActiveScale": [
+      0,
+      0.03,
+      0.1,
+      0.3,
+      1
+    ],
+    "stemActiveScale": [
+      0,
+      0.03,
+      0.1,
+      0.3,
+      1
+    ],
+    "stemLengthMultiplier": [
+      0.5,
+      1,
+      2
+    ],
+    "stemDiameterMultiplier": [
+      0.75,
+      1,
+      1.25
+    ]
+  },
+  "limits": {
+    "zeroInputDriftMv": 0.1,
+    "zeroInputCrossings": 0,
+    "timeHalvingMaxSiteRmsMv": 1,
+    "timeHalvingCrossingTimeMs": 0.1,
+    "spatialConductionRelative": 0.05,
+    "spatialRecordingPeakToPeakRelative": 0.1,
+    "nativeMaxSiteRmsMv": 1,
+    "nativeCrossingTimeMs": 0.1,
+    "nativeRecordingMaxErrorUv": 0.001,
+    "chargeConservationNa": 1e-08
+  },
+  "numericalStudies": {
+    "timeStepsMs": [
+      0.00125,
+      0.000625,
+      0.0003125
+    ],
+    "spatialSubdivisions": [
+      3,
+      5,
+      7
+    ],
+    "nominalSomaticIntracellularPulse": {
+      "onsetMs": 0.5,
+      "durationMs": 0.1,
+      "amplitudeNa": 10
+    },
+    "somaCurrentGridNa": [
+      0.5,
+      1,
+      2,
+      5,
+      10,
+      20
+    ]
+  },
+  "controls": "Unmodified shared equilibrium, zero drive, local active-conductance removal in soma/both stems/one heminode each arm, all active sites removed, and separately disconnected native-arm stumps. A missing relay junction is not fabricated. Negative causal results are retained, not forced to pass.",
+  "failurePolicy": "Every failed numerical attempt and every spontaneous or nonrecruited sensitivity case remains recorded. Physiological feasibility is not a numerical pass criterion. Numerical limits will not be relaxed to hide a failure."
+}

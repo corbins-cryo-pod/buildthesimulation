@@ -1,0 +1,192 @@
+{
+  "derivedSummary": true,
+  "scope": "Read-only summary of the executed final protocol report and its exact full JSON export; no additional simulation or acceptance test.",
+  "derivedFrom": {
+    "report": "stage1-protocol-validation.json",
+    "reportSha256": "51bcdca1a5418fd63cd5aee06c8030e974959128a4b90b0cddf6c9d2ce3bed01",
+    "rawJsonSha256": "8f26798a8126364ce74b27ed111fdc8c5d15634069a538b4678abb273bdc205b"
+  },
+  "status": "pass",
+  "checks": {
+    "passed": 28,
+    "failed": 0,
+    "notRun": 0
+  },
+  "sourceHashCount": 16,
+  "sourceChangedDuringRun": false,
+  "settings": {
+    "seed": 2048,
+    "axonCount": 256,
+    "channelCount": 1,
+    "fascicleRadiusUm": 350,
+    "amplitudeUa": 0.5,
+    "dtMs": 0.000625,
+    "durationMs": 4,
+    "sampleDtMs": 0.025,
+    "equilibrationMs": 50,
+    "somaSegments": 5,
+    "stemSegments": 3,
+    "passiveSegments": 3
+  },
+  "metrics": {
+    "originalHostCensus": 256,
+    "originalHostPreservedCount": 0,
+    "originalHostY": 0,
+    "anyRecruitment": 1,
+    "engineeredExclusiveCount": 1,
+    "engineeredCausalExclusiveCount": 1,
+    "engineeredSomaDependentExclusiveCount": 0,
+    "engineeredConditionedExclusiveY": 0.00390625,
+    "engineeredConditionedCausalY": 0.00390625,
+    "matrixRank": 1,
+    "uniformSingleChannelInformationBits": 0,
+    "biologicalTargetReinnervationYield": null,
+    "biologicalSurvivalYield": null
+  },
+  "matrixCounts": {
+    "assigned": [
+      1
+    ],
+    "localSilenced": [
+      0
+    ],
+    "wholeSilenced": [
+      0
+    ],
+    "somaSilenced": [
+      1
+    ]
+  },
+  "respondingIdentity": "E0001",
+  "firstObservedCrossing": {
+    "compartmentIndex": 157,
+    "role": "peripheral_stem",
+    "timeMs": 0.5446355065820938
+  },
+  "propagationTimesMs": {
+    "peripheral": [
+      0.6383419798423102,
+      0.6598703276424073,
+      0.6768293412447084
+    ],
+    "central": [
+      0.7116486108070649,
+      0.7320615490419357,
+      0.7483643104885019
+    ]
+  },
+  "localRegionEligible": true,
+  "somaActiveConductanceNecessary": false,
+  "mesh": {
+    "nodes": 1409165,
+    "tetrahedra": 6778368,
+    "nonzeros": 28211861,
+    "estimatedBytes": 955026068,
+    "iterations": 2610,
+    "relativeResidual": 1.998058048612611e-12,
+    "globalCurrentClosureUa": -5.821247300949647e-13,
+    "meshBuildSeconds": 16.598966159,
+    "solveSeconds": 418.521483496,
+    "contactAreasUm2": {
+      "source": 35.92017155167645,
+      "return": 35.92017155167645
+    },
+    "pairArtifactMvPerUa": 566.5151357296045
+  },
+  "membrane": {
+    "compartments": 323,
+    "activeSites": 23,
+    "observationSteps": 6400,
+    "sampleCount": 161,
+    "maxCurrentResidualNa": 9.881470641737167e-12,
+    "zeroDriftMv": 0.003819488010748273
+  },
+  "work": {
+    "cableSolves": 1030,
+    "engineeredSolves": 1028,
+    "nativeStumpSolves": 2,
+    "compartmentSteps": 2177878400,
+    "preparationCompartmentSteps": 50800000,
+    "retainedValues": 3806854,
+    "peakTransientValues": 186694,
+    "savedValues": 3993548,
+    "samplesPerTrace": 161,
+    "maxEventRecords": 189248,
+    "caps": {
+      "maxCableSolves": 4096,
+      "maxCompartmentSteps": 2400000000,
+      "maxSavedValues": 5000000,
+      "maxEventsPerNodePerSolve": 8
+    },
+    "scope": "Two exact zero-field stump reference trajectories are reused only because their dynamics are position-independent under zero imposed field. Every driven cell and requested intervention is resolved.",
+    "actualRetainedValues": 2153032
+  },
+  "runtimeSeconds": 663.7091022709999,
+  "peakRSSBytes": 1861058560,
+  "peakRSSGiB": 1.733245849609375,
+  "recording": {
+    "channel": "C1",
+    "peakToPeakUv": {
+      "artifactUv": 566515.1357295924,
+      "engineeredUv": 4864.604091868665,
+      "hostUv": 0,
+      "totalUv": 567192.1036801722
+    },
+    "instantaneousSumMaximumErrorUv": 2.432898327242583e-11,
+    "hostMeaning": "Original native processes are absent in BOTH B3 and matched no-device. Viable disconnected native proxies are separately simulated only in an additional diagnostic."
+  },
+  "noDevice": {
+    "originalCensus": 256,
+    "continuousOriginalCount": 0,
+    "excitablePopulationCount": 0,
+    "sourceCurrentNa": 0,
+    "fieldPotentialMv": 0,
+    "evokedOutputCount": 0,
+    "membraneTraces": [],
+    "recording": null,
+    "heldFromB3": [
+      "original remnants absent in modeled domain",
+      "original census and identity ledger",
+      "seed and macroscopic tissue conductor",
+      "temperature and declared observation window"
+    ],
+    "changedFromB3": [
+      "implanted engineered cells removed",
+      "well walls/end caps removed",
+      "implant contacts removed",
+      "implant drive absent"
+    ]
+  },
+  "rawResult": {
+    "path": "/workspace/scratch/00f6a4fc6cf7/stage1-final-results/full-cohort-result.json.gz",
+    "compression": "gzip",
+    "sha256": "bfb7fc2e455456cf9f52e21d24835a45cdb6f95f3c376c40dee6d18d254a4cf3",
+    "uncompressedSha256": "8f26798a8126364ce74b27ed111fdc8c5d15634069a538b4678abb273bdc205b",
+    "compressedBytes": 16715682,
+    "uncompressedBytes": 69383539,
+    "committed": false,
+    "regeneration": "Run this validator with the same source hashes and settings."
+  },
+  "csvExports": {
+    "matrix": {
+      "sha256": "8819ec81e885f24387d189717fbe8d0427187e5774c00b28416c9c7d51f3f016",
+      "bytes": 30028,
+      "dataRows": 4
+    },
+    "events": {
+      "sha256": "91a257018b9ebf77996453ba1e31fae27b8cc1080ec2b0f61d0a8b1fd3deaf7a",
+      "bytes": 344575,
+      "dataRows": 51
+    },
+    "timeseries": {
+      "sha256": "bb7a11e7722b302bba6bebb291360303432213d3c5803b32c23b96570ef1108c",
+      "bytes": 1115355,
+      "dataRows": 161
+    },
+    "cascade": {
+      "sha256": "c34b5f3a0ba16c15cd2b5c0f89dba60a5a799e3085c8c3d3f33f4c550c37b1ba",
+      "bytes": 79998,
+      "dataRows": 12
+    }
+  }
+}

@@ -1,5 +1,11 @@
 # Reproduce the electrical-core release
 
+This page retains the original motor-fiber electrical-core workflow. The
+complete explicit-well, five-band bipolar Stage 1 workflow is documented in
+[STAGE1_REPRODUCTION.md](STAGE1_REPRODUCTION.md), with its separate
+`reproduce-stage1.py` entry point and `reproduction-stage1-report.json` aggregate.
+The historical core report is not relabeled as a current full Stage 1 run.
+
 The single entry point rebuilds the native NEURON mechanism, regenerates the
 independently assembled Python field reference, executes the membrane and
 field numerical studies, and executes the software/Worker integration tests.

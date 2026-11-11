@@ -1,0 +1,62 @@
+{
+  "schema": "buildthesimulation.mrg.source-refresh-execution.v1",
+  "mode": "separately-executed-current-source-studies",
+  "startedAt": "2026-11-11T23:25:56.623209+00:00",
+  "completedAt": "2026-11-11T23:26:59.454937+00:00",
+  "status": "pass",
+  "commands": [
+    {
+      "arguments": [
+        "node",
+        "scripts/axon-interface/mrg-validate.mjs"
+      ],
+      "workingDirectory": "/workspace/scratch/00f6a4fc6cf7/buildthesimulation",
+      "environment": {
+        "MRG_PYTHON": "/workspace/scratch/00f6a4fc6cf7/mrg-venv/bin/python"
+      },
+      "startedAt": "2026-11-11T23:25:56.626319+00:00",
+      "completedAt": "2026-11-11T23:26:59.454205+00:00",
+      "elapsedSeconds": 62.82790678299989,
+      "exitCode": 0,
+      "status": "pass",
+      "log": "docs/axon-interface/mrg-validate-current-source-refresh.log"
+    },
+    {
+      "arguments": [
+        "node",
+        "scripts/axon-interface/mrg-coupled-validate.mjs"
+      ],
+      "workingDirectory": "/workspace/scratch/00f6a4fc6cf7/buildthesimulation",
+      "environment": {
+        "MRG_PYTHON": "/workspace/scratch/00f6a4fc6cf7/mrg-venv/bin/python"
+      },
+      "startedAt": "2026-11-11T23:25:56.626567+00:00",
+      "completedAt": "2026-11-11T23:26:07.365371+00:00",
+      "elapsedSeconds": 10.738819885999874,
+      "exitCode": 0,
+      "status": "pass",
+      "log": "docs/axon-interface/mrg-coupled-validate-current-source-refresh.log"
+    }
+  ],
+  "membraneSourceSha256": "182b94c586591599dbcea42b63ececba486d42e4a72f7923abb53a171fe752f5",
+  "sourceChangedDuringRun": [],
+  "nativeMechanismPolicy": "Previously compiled unchanged pinned AXNODE.mod; no mechanism rebuild was claimed by this refresh. Aggregate reproduction records its separate native rebuild provenance.",
+  "sourceHashes": {
+    "src/lib/axon-interface/mrg.mjs": "182b94c586591599dbcea42b63ececba486d42e4a72f7923abb53a171fe752f5",
+    "scripts/axon-interface/mrg-reference.py": "3cd715216d95241eaade5e99c7d6cdeec4dc414d47eadf7f60649f4ee3d2d9a1",
+    "scripts/axon-interface/mrg-validate.mjs": "26acd20e3861fe28ef74466f468a718ac8f1ac3398eedfbf7e5fad2ab909fbd4",
+    "scripts/axon-interface/mrg-modeldb/AXNODE.mod": "e0fa400a469aa2beba491fabffaa4f6bc03c629015a2c0f2ddc471fb3e687bd3",
+    "scripts/axon-interface/mrg-modeldb/MRGaxon.hoc": "73da0790cdbbb1a7db036e9806729a74fcc0606e62d716daabeddbe8c1999014",
+    "docs/axon-interface/mrg-acceptance.json": "a565c572245357e51dbbb960594befb3142a1983a5c743d705f300cc146c0274",
+    "src/lib/axon-interface/settings.mjs": "7649d5e2e69c6ea470fd5d03373ca2b15094188291a0b416e206f13866d3718a",
+    "src/lib/axon-interface/geometry.mjs": "0a41a23b84627dbbc3185eebe881e7aa91d09b2a01f5f213aefec070b41f2d8b",
+    "src/lib/axon-interface/protocol.mjs": "33961ca40833a0bdc40203b8dccb4e41a61580462ff3cc8eb6b6ea0e7562ab4b",
+    "src/lib/axon-interface/field.mjs": "c55565795085e37bc1804c99c152f79d563e8cad678f2eafc2e41dc3ce5a9734",
+    "scripts/axon-interface/mrg-coupled-validate.mjs": "5083a2933ece1b93ce78983769dca700d64abeaa59dfcf5329cca3774199ca30"
+  },
+  "reportFiles": [
+    "mrg-numerical-report.json",
+    "mrg-coupled-report.json"
+  ],
+  "scope": "Two separately executed legacy numerical references against the current generic membrane implementation; no biological validation is claimed."
+}

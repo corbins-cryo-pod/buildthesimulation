@@ -4,7 +4,7 @@
  * The independent NEURON studies must be rerun for this revision.
  * Units: um, ms, mV, nA, nF and uS. No voltage or current clipping is used.
  */
-export const MRG_VERSION='mrg-double-cable-2.0.0-recovery';
+export const MRG_VERSION='mrg-double-cable-2.1.0-bipolar';
 export const MRG_SOURCE=Object.freeze({
   repository:'https://github.com/ModelDBRepository/3810',
   commit:'b15daeda6ea368df0198d257f339cf5e840cf31c',
@@ -98,7 +98,7 @@ function rates(v){
 }
 function freshState(morphology){
   const n=morphology.compartments.length,v=new Float64Array(n).fill(-80),w=new Float64Array(n),gates=Array.from({length:4},()=>new Float64Array(n));
-  const r=rates(-80);for(const i of morphology.nodeIndices)for(let k=0;k<4;k++)gates[k][i]=r[k][0];
+  const r=rates(-80);for(const i of morphology.activeSiteIndices??morphology.nodeIndices)for(let k=0;k<4;k++)gates[k][i]=r[k][0];
   return {v,w,gates};
 }
 function publicState(s){return {v:Array.from(s.v),periaxonal:Array.from(s.w),gates:{mp:Array.from(s.gates[0]),m:Array.from(s.gates[1]),h:Array.from(s.gates[2]),s:Array.from(s.gates[3])}};}
@@ -113,6 +113,7 @@ export function clearEquilibriumCache(){equilibriumCache.clear();}
 
 function makeStepper(morphology,dtMs,state,silenced){
   const cs=morphology.compartments,n=cs.length,gi=morphology.axialUs,gp=morphology.periaxonalUs;
+  const activeSites=morphology.activeSiteIndices??morphology.nodeIndices,activeMask=new Uint8Array(n);for(const i of activeSites)activeMask[i]=1;
   const invA=new Float64Array(n),invB=new Float64Array(n),invC=new Float64Array(n),uv=new Float64Array(n),uw=new Float64Array(n);
   const phi=new Float64Array(n),injected=new Float64Array(n),dvphi=new Float64Array(n),dwphi=new Float64Array(n),oldV=new Float64Array(n),oldW=new Float64Array(n);
   let maxResidual=0;
@@ -122,7 +123,7 @@ function makeStepper(morphology,dtMs,state,silenced){
     for(let i=0;i<n;i++){
       const c=cs[i],dl=i?gi[i-1]:0,dr=i<n-1?gi[i]:0,pl=i?gp[i-1]:0,pr=i<n-1?gp[i]:0;
       let g=c.leakUs,ge=g*c.leakReversalMv;
-      if(c.kind==='NODE'&&!silenced.has(i)&&c.activeScale>0){
+      if(activeMask[i]&&!silenced.has(i)&&c.activeScale>0){
         const scale=c.areaCm2*1e6*c.activeScale;
         const gn=scale*(3*gates[1][i]**3*gates[2][i]+.01*gates[0][i]**3),gk=scale*.08*gates[3][i];
         g+=gn+gk;ge+=gn*50-gk*90;
@@ -140,7 +141,7 @@ function makeStepper(morphology,dtMs,state,silenced){
       v[i]=uv[i]+invA[i]*rv+invB[i]*rw;w[i]=uw[i]+invB[i]*rv+invC[i]*rw;
       if(!Number.isFinite(v[i])||!Number.isFinite(w[i])||v[i]<-250||v[i]>150)throw new Error(`Unsupported membrane state at compartment ${i}: ${v[i]} mV; no clipping applied.`);
     }
-    for(const i of morphology.nodeIndices){const r=rates(v[i]);for(let k=0;k<4;k++)gates[k][i]=r[k][0]+(gates[k][i]-r[k][0])*Math.exp(-dtMs*r[k][1]);}
+    for(const i of activeSites){const r=rates(v[i]);for(let k=0;k<4;k++)gates[k][i]=r[k][0]+(gates[k][i]-r[k][0])*Math.exp(-dtMs*r[k][1]);}
   }
   function currents(checkResidual=true){
     const axial=Float64Array.from(injected),outer=Float64Array.from(injected),{v,w}=state;
@@ -157,7 +158,8 @@ function makeStepper(morphology,dtMs,state,silenced){
 function propagation(morphology,nodeEventTimes){
   const center=(morphology.nodes-1)/2;
   function arm(direction){
-    const ordinals=[1,2,3].map(k=>center+direction*k).filter(k=>k>=0&&k<morphology.nodes),indices=ordinals.map(k=>morphology.nodeIndices[k]);
+    const declared=morphology.armMonitors?.[direction>0?'central':'peripheral'];
+    const ordinals=morphology.armMonitors?(declared?.nodeOrdinals??[]):[1,2,3].map(k=>center+direction*k).filter(k=>k>=0&&k<morphology.nodes),indices=ordinals.map(k=>morphology.nodeIndices[k]);
     const times=ordinals.map(k=>nodeEventTimes[k][0]??null),valid=times.length===3&&times.every(Number.isFinite)&&times.every((t,i)=>!i||t>times[i-1]);
     const velocity=valid?Math.abs(morphology.compartments[indices[2]].zUm-morphology.compartments[indices[0]].zUm)/(times[2]-times[0])*1e-3:null;
     return {nodeOrdinals:ordinals,compartmentIndices:indices,timesMs:times,propagated:valid,velocityMps:velocity};
@@ -167,11 +169,12 @@ function propagation(morphology,nodeEventTimes){
   return {firstCrossingNode,firstCrossingTimeMs:Number.isFinite(first)?first:null,leftArm,rightArm,leftVelocityMps:leftArm.velocityMps,rightVelocityMps:rightArm.velocityMps,propagated:leftArm.propagated||rightArm.propagated};
 }
 
-export function simulateCable({morphology=createMorphology(),dtMs=.00125,durationMs=6,equilibrationMs=20,transferMvPerUa=null,waveform=null,extracellularMv=null,injectedCurrentNa=null,silencedCompartments=[],recordIndices=null,traceStride=1,saveCurrents=true,initialState=null,maxNodeSteps=Infinity,maxSavedValues=Infinity,maxEventsPerNode=Infinity}={}){
+export function simulateCable({morphology=createMorphology(),dtMs,durationMs=6,equilibrationMs,transferMvPerUa=null,waveform=null,extracellularMv=null,injectedCurrentNa=null,silencedCompartments=[],recordIndices=null,traceStride=1,saveCurrents=true,initialState=null,maxNodeSteps=Infinity,maxSavedValues=Infinity,maxEventsPerNode=Infinity}={}){
+  dtMs??=morphology.numericalDefaults?.dtMs??.00125;equilibrationMs??=morphology.numericalDefaults?.equilibrationMs??20;
   positive(dtMs,'dtMs');positive(durationMs,'durationMs');finite(equilibrationMs,'equilibrationMs');if(equilibrationMs<0)throw new Error('equilibrationMs cannot be negative.');integer(traceStride,'traceStride');
   const n=morphology.compartments.length,steps=Math.round(durationMs/dtMs),preSteps=Math.round(equilibrationMs/dtMs);
   if(Math.abs(steps*dtMs-durationMs)>1e-9||Math.abs(preSteps*dtMs-equilibrationMs)>1e-9)throw new Error('Duration and equilibration must be integer multiples of dtMs.');
-  const indices=recordIndices===null?[...morphology.nodeIndices]:Array.from(recordIndices);
+  const indices=recordIndices===null?[...(morphology.recordingIndices??morphology.nodeIndices)]:Array.from(recordIndices);
   if(new Set(indices).size!==indices.length||indices.some(i=>!Number.isInteger(i)||i<0||i>=n))throw new Error('recordIndices must be unique valid compartment indices.');
   const silenced=new Set(silencedCompartments);if([...silenced].some(i=>!Number.isInteger(i)||i<0||i>=n))throw new Error('Invalid silenced compartment.');
   if(maxEventsPerNode!==Infinity)integer(maxEventsPerNode,'maxEventsPerNode');
@@ -179,13 +182,16 @@ export function simulateCable({morphology=createMorphology(),dtMs=.00125,duratio
   if(steps*n>maxNodeSteps)throw new Error(`Cable work budget exceeded: ${steps*n} compartment steps.`);
   if(saved>maxSavedValues)throw new Error(`Saved-value budget exceeded: ${saved} values.`);
   if(transferMvPerUa&&(transferMvPerUa.length!==n||!Array.from(transferMvPerUa).every(Number.isFinite)))throw new Error('Transfer array must contain one finite mV/uA coefficient per compartment.');
-  const key=JSON.stringify([morphology.fiberDiameterUm,morphology.nodes,morphology.passiveSegments,morphology.somaDiameterUm,morphology.somaActiveScale,dtMs,equilibrationMs]);
+  const key=JSON.stringify([morphology.equilibriumKey??[morphology.fiberDiameterUm,morphology.nodes,morphology.passiveSegments,morphology.somaDiameterUm,morphology.somaActiveScale],dtMs,equilibrationMs]);
   let state;
   if(initialState)state=copyState(initialState,morphology);
   else if(equilibriumCache.has(key))state=copyState(equilibriumCache.get(key),morphology);
   else{state=freshState(morphology);const prep=makeStepper(morphology,dtMs,state,new Set());for(let k=0;k<preSteps;k++)prep.step();equilibriumCache.set(key,publicState(state));}
   const started=publicState(state),advance=makeStepper(morphology,dtMs,state,silenced),timesMs=[],membraneMv=indices.map(()=>[]),periaxonalMv=indices.map(()=>[]),outerCurrentsNa=saveCurrents?[]:null,axolemmaCurrentsNa=saveCurrents?[]:null;
-  const events=[],nodeEventTimes=morphology.nodeIndices.map(()=>[]);let minMv=Infinity,maxMv=-Infinity,maxZeroInputDriftMv=0;
+  const events=[],nodeEventTimes=morphology.nodeIndices.map(()=>[]),activeSites=morphology.activeSiteIndices??morphology.nodeIndices;
+  const nodeOrdinalByIndex=new Map(morphology.nodeIndices.map((index,ordinal)=>[index,ordinal]));
+  const activeSiteEventTimes=activeSites.map(i=>nodeOrdinalByIndex.has(i)?nodeEventTimes[nodeOrdinalByIndex.get(i)]:[]);
+  let minMv=Infinity,maxMv=-Infinity,maxZeroInputDriftMv=0;
   function save(t,checkResidual){timesMs.push(t);for(let r=0;r<indices.length;r++){membraneMv[r].push(state.v[indices[r]]);periaxonalMv[r].push(state.w[indices[r]]);}if(saveCurrents){const c=advance.currents(checkResidual);outerCurrentsNa.push(c.outer);axolemmaCurrentsNa.push(c.axolemma);}}
   save(0,false);
   for(let k=0;k<steps;k++){
@@ -196,14 +202,14 @@ export function simulateCable({morphology=createMorphology(),dtMs=.00125,duratio
     }
     advance.step();
     for(let i=0;i<n;i++){minMv=Math.min(minMv,state.v[i]);maxMv=Math.max(maxMv,state.v[i]);maxZeroInputDriftMv=Math.max(maxZeroInputDriftMv,Math.abs(state.v[i]-started.v[i]));}
-    for(let ordinal=0;ordinal<morphology.nodeIndices.length;ordinal++){
-      const i=morphology.nodeIndices[ordinal],a=advance.oldV[i],b=state.v[i];
-      if(a<0&&b>=0){if(nodeEventTimes[ordinal].length>=maxEventsPerNode)throw new Error(`Event-output budget exceeded at node ${ordinal}; no events were truncated.`);
-        const timeMs=t+dtMs*(-a)/(b-a);nodeEventTimes[ordinal].push(timeMs);events.push({compartmentIndex:i,nodeOrdinal:ordinal,timeMs,zUm:morphology.compartments[i].zUm});}
+    for(let site=0;site<activeSites.length;site++){
+      const i=activeSites[site],ordinal=nodeOrdinalByIndex.get(i)??null,a=advance.oldV[i],b=state.v[i];
+      if(a<0&&b>=0){if(activeSiteEventTimes[site].length>=maxEventsPerNode)throw new Error(`Event-output budget exceeded at active compartment ${i}; no events were truncated.`);
+        const timeMs=t+dtMs*(-a)/(b-a);activeSiteEventTimes[site].push(timeMs);events.push({compartmentIndex:i,nodeOrdinal:ordinal,timeMs,zUm:morphology.compartments[i].zUm,...(morphology.compartments[i].role?{role:morphology.compartments[i].role}:{})});}
     }
     if((k+1)%traceStride===0||k+1===steps)save((k+1)*dtMs,true);
   }
-  return {modelVersion:MRG_VERSION,dtMs,durationMs,equilibrationMs,traceStride,recordIndices:indices,timesMs,membraneMv,periaxonalMv,outerCurrentsNa,axolemmaCurrentsNa,events,nodeEventTimes,initialState:started,finalState:publicState(state),propagation:propagation(morphology,nodeEventTimes),
+  return {modelVersion:MRG_VERSION,dtMs,durationMs,equilibrationMs,traceStride,recordIndices:indices,timesMs,membraneMv,periaxonalMv,outerCurrentsNa,axolemmaCurrentsNa,events,nodeEventTimes,...(morphology.activeSiteIndices?{activeSiteIndices:[...activeSites],activeSiteEventTimes}:{}),initialState:started,finalState:publicState(state),propagation:propagation(morphology,nodeEventTimes),
     diagnostics:{minMv,maxMv,maxZeroInputDriftMv,maxCurrentResidualNa:saveCurrents?advance.maxResidual:null,compartmentSteps:steps*n,savedValues:saved,equilibratedMs:equilibrationMs,voltageClipping:false}};
 }
 

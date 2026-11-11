@@ -1,0 +1,722 @@
+{
+  "schema": "explicit-well-dense-validation/1",
+  "modelVersion": "explicit-well-fem/1.0.0",
+  "startedAt": "2026-11-11T23:13:27.587Z",
+  "completedAt": "2026-11-11T23:14:51.270Z",
+  "status": "pass",
+  "acceptance": {
+    "schema": "explicit-well-dense-acceptance/1",
+    "declaredAt": "2026-11-11",
+    "declaration": "Declared before the first dense four-well study; retains the main10% field refinement gate and applies it to every cell separately, including all three off-target neighbors.",
+    "pitchUm": 35,
+    "maximumPerCellRelativeRmsChange": 0.1,
+    "maximumPerApertureFluxRelativeChange": 0.1,
+    "geometricDomainChangedBySomaSegmentation": 0,
+    "wallOrCellInteriorPointAccepted": 0,
+    "apertureFluidPointRejected": 0,
+    "failurePolicy": "Keep every failure and source hash. Do not normalize away or pool small neighbor fields into the driven cell's amplitude."
+  },
+  "fixture": {
+    "pitchUm": 35,
+    "cells": [
+      {
+        "id": "E0001",
+        "index": 0,
+        "xUm": -26.25,
+        "yUm": -15.155444566227676,
+        "zUm": 0,
+        "somaDiameterUm": 20
+      },
+      {
+        "id": "E0002",
+        "index": 1,
+        "xUm": 8.75,
+        "yUm": -15.155444566227676,
+        "zUm": 0,
+        "somaDiameterUm": 20
+      },
+      {
+        "id": "E0003",
+        "index": 2,
+        "xUm": -8.75,
+        "yUm": 15.155444566227676,
+        "zUm": 0,
+        "somaDiameterUm": 20
+      },
+      {
+        "id": "E0004",
+        "index": 3,
+        "xUm": 26.25,
+        "yUm": 15.155444566227676,
+        "zUm": 0,
+        "somaDiameterUm": 20
+      }
+    ],
+    "wells": [
+      {
+        "id": "W1",
+        "index": 0,
+        "cellId": "E0001",
+        "cellIndex": 0,
+        "center": [
+          -26.25,
+          -15.155444566227676,
+          0
+        ],
+        "innerRadiusUm": 13,
+        "halfLengthUm": 70,
+        "wallThicknessUm": 2.5,
+        "apertureRadiusUm": 3.5,
+        "contactHalfWidthUm": 3,
+        "contactHalfHeightUm": 3,
+        "contactSeparationUm": 30
+      },
+      {
+        "id": "W2",
+        "index": 1,
+        "cellId": "E0002",
+        "cellIndex": 1,
+        "center": [
+          8.75,
+          -15.155444566227676,
+          0
+        ],
+        "innerRadiusUm": 13,
+        "halfLengthUm": 70,
+        "wallThicknessUm": 2.5,
+        "apertureRadiusUm": 3.5,
+        "contactHalfWidthUm": 3,
+        "contactHalfHeightUm": 3,
+        "contactSeparationUm": 30
+      },
+      {
+        "id": "W3",
+        "index": 2,
+        "cellId": "E0003",
+        "cellIndex": 2,
+        "center": [
+          -8.75,
+          15.155444566227676,
+          0
+        ],
+        "innerRadiusUm": 13,
+        "halfLengthUm": 70,
+        "wallThicknessUm": 2.5,
+        "apertureRadiusUm": 3.5,
+        "contactHalfWidthUm": 3,
+        "contactHalfHeightUm": 3,
+        "contactSeparationUm": 30
+      },
+      {
+        "id": "W4",
+        "index": 3,
+        "cellId": "E0004",
+        "cellIndex": 3,
+        "center": [
+          26.25,
+          15.155444566227676,
+          0
+        ],
+        "innerRadiusUm": 13,
+        "halfLengthUm": 70,
+        "wallThicknessUm": 2.5,
+        "apertureRadiusUm": 3.5,
+        "contactHalfWidthUm": 3,
+        "contactHalfHeightUm": 3,
+        "contactSeparationUm": 30
+      }
+    ]
+  },
+  "results": [
+    {
+      "name": "Dense radial maximum per-cell field change",
+      "value": 0.053598574750390135,
+      "tolerance": 0.1,
+      "status": "pass",
+      "byCell": [
+        {
+          "cellId": "E0001",
+          "relativeRmsChange": 0.016649923792601044,
+          "absoluteRmsChangeUv": 448.4823502387768
+        },
+        {
+          "cellId": "E0002",
+          "relativeRmsChange": 0.01456464986913126,
+          "absoluteRmsChangeUv": 2.175528807440721
+        },
+        {
+          "cellId": "E0003",
+          "relativeRmsChange": 0.0154651035822621,
+          "absoluteRmsChangeUv": 2.2950886071939305
+        },
+        {
+          "cellId": "E0004",
+          "relativeRmsChange": 0.053598574750390135,
+          "absoluteRmsChangeUv": 4.466559016369675
+        }
+      ]
+    },
+    {
+      "name": "Dense radial maximum aperture-flux change",
+      "value": 0.04711486300534158,
+      "tolerance": 0.1,
+      "status": "pass",
+      "byAperture": [
+        {
+          "wellId": "W1",
+          "direction": "peripheral",
+          "relativeChange": 0.028829374216863615
+        },
+        {
+          "wellId": "W1",
+          "direction": "central",
+          "relativeChange": 0.02882937421444457
+        },
+        {
+          "wellId": "W2",
+          "direction": "peripheral",
+          "relativeChange": 0.024777096374611736
+        },
+        {
+          "wellId": "W2",
+          "direction": "central",
+          "relativeChange": 0.024777096291950837
+        },
+        {
+          "wellId": "W3",
+          "direction": "peripheral",
+          "relativeChange": 0.02961443278825152
+        },
+        {
+          "wellId": "W3",
+          "direction": "central",
+          "relativeChange": 0.029614432979734477
+        },
+        {
+          "wellId": "W4",
+          "direction": "peripheral",
+          "relativeChange": 0.04711486298510011
+        },
+        {
+          "wellId": "W4",
+          "direction": "central",
+          "relativeChange": 0.04711486300534158
+        }
+      ]
+    },
+    {
+      "name": "Dense angular maximum per-cell field change",
+      "value": 0.024792797509196475,
+      "tolerance": 0.1,
+      "status": "pass",
+      "byCell": [
+        {
+          "cellId": "E0001",
+          "relativeRmsChange": 0.024792797509196475,
+          "absoluteRmsChangeUv": 641.4415792401376
+        },
+        {
+          "cellId": "E0002",
+          "relativeRmsChange": 0.010513669168328209,
+          "absoluteRmsChangeUv": 1.5806660802307804
+        },
+        {
+          "cellId": "E0003",
+          "relativeRmsChange": 0.019691912771468246,
+          "absoluteRmsChangeUv": 2.9801906083000134
+        },
+        {
+          "cellId": "E0004",
+          "relativeRmsChange": 0.009650167423780828,
+          "absoluteRmsChangeUv": 0.7856316671825594
+        }
+      ]
+    },
+    {
+      "name": "Dense angular maximum aperture-flux change",
+      "value": 0.04770892090212929,
+      "tolerance": 0.1,
+      "status": "pass",
+      "byAperture": [
+        {
+          "wellId": "W1",
+          "direction": "peripheral",
+          "relativeChange": 0.0023791906619663895
+        },
+        {
+          "wellId": "W1",
+          "direction": "central",
+          "relativeChange": 0.0023791906655391596
+        },
+        {
+          "wellId": "W2",
+          "direction": "peripheral",
+          "relativeChange": 0.03635690720473971
+        },
+        {
+          "wellId": "W2",
+          "direction": "central",
+          "relativeChange": 0.03635690726327124
+        },
+        {
+          "wellId": "W3",
+          "direction": "peripheral",
+          "relativeChange": 0.04770892090212929
+        },
+        {
+          "wellId": "W3",
+          "direction": "central",
+          "relativeChange": 0.04770892084719073
+        },
+        {
+          "wellId": "W4",
+          "direction": "peripheral",
+          "relativeChange": 0.020532298151017817
+        },
+        {
+          "wellId": "W4",
+          "direction": "central",
+          "relativeChange": 0.020532298173836127
+        }
+      ]
+    },
+    {
+      "name": "Dense axial maximum per-cell field change",
+      "value": 0.04795166069970975,
+      "tolerance": 0.1,
+      "status": "pass",
+      "byCell": [
+        {
+          "cellId": "E0001",
+          "relativeRmsChange": 0.04483024664221566,
+          "absoluteRmsChangeUv": 1243.1209410354566
+        },
+        {
+          "cellId": "E0002",
+          "relativeRmsChange": 0.04592568236411564,
+          "absoluteRmsChangeUv": 7.000520965455823
+        },
+        {
+          "cellId": "E0003",
+          "relativeRmsChange": 0.04795166069970975,
+          "absoluteRmsChangeUv": 7.311631585583348
+        },
+        {
+          "cellId": "E0004",
+          "relativeRmsChange": 0.03652160530921648,
+          "absoluteRmsChangeUv": 2.9842149764717534
+        }
+      ]
+    },
+    {
+      "name": "Dense axial maximum aperture-flux change",
+      "value": 0.04020826128277618,
+      "tolerance": 0.1,
+      "status": "pass",
+      "byAperture": [
+        {
+          "wellId": "W1",
+          "direction": "peripheral",
+          "relativeChange": 0.006576132144753166
+        },
+        {
+          "wellId": "W1",
+          "direction": "central",
+          "relativeChange": 0.0065761321478820444
+        },
+        {
+          "wellId": "W2",
+          "direction": "peripheral",
+          "relativeChange": 0.0028037302871687523
+        },
+        {
+          "wellId": "W2",
+          "direction": "central",
+          "relativeChange": 0.0028037299863209004
+        },
+        {
+          "wellId": "W3",
+          "direction": "peripheral",
+          "relativeChange": 0.005084318397192314
+        },
+        {
+          "wellId": "W3",
+          "direction": "central",
+          "relativeChange": 0.005084318381753751
+        },
+        {
+          "wellId": "W4",
+          "direction": "peripheral",
+          "relativeChange": 0.04020826128277618
+        },
+        {
+          "wellId": "W4",
+          "direction": "central",
+          "relativeChange": 0.04020825994877099
+        }
+      ]
+    },
+    {
+      "name": "Dense local-domain-extension maximum per-cell field change",
+      "value": 0.004943928301342361,
+      "tolerance": 0.1,
+      "status": "pass",
+      "byCell": [
+        {
+          "cellId": "E0001",
+          "relativeRmsChange": 0.002121244423674458,
+          "absoluteRmsChangeUv": 56.276948880237846
+        },
+        {
+          "cellId": "E0002",
+          "relativeRmsChange": 0.004704836903626043,
+          "absoluteRmsChangeUv": 0.7010960829629679
+        },
+        {
+          "cellId": "E0003",
+          "relativeRmsChange": 0.004943928301342361,
+          "absoluteRmsChangeUv": 0.7370370007177494
+        },
+        {
+          "cellId": "E0004",
+          "relativeRmsChange": 0.003988945084736426,
+          "absoluteRmsChangeUv": 0.32352269004840534
+        }
+      ]
+    },
+    {
+      "name": "Dense local-domain-extension maximum aperture-flux change",
+      "value": 0.009259592858349546,
+      "tolerance": 0.1,
+      "status": "pass",
+      "byAperture": [
+        {
+          "wellId": "W1",
+          "direction": "peripheral",
+          "relativeChange": 0.0023586135994557414
+        },
+        {
+          "wellId": "W1",
+          "direction": "central",
+          "relativeChange": 0.002358613599936076
+        },
+        {
+          "wellId": "W2",
+          "direction": "peripheral",
+          "relativeChange": 0.004093908472955192
+        },
+        {
+          "wellId": "W2",
+          "direction": "central",
+          "relativeChange": 0.004093908482937129
+        },
+        {
+          "wellId": "W3",
+          "direction": "peripheral",
+          "relativeChange": 0.0019527848339140888
+        },
+        {
+          "wellId": "W3",
+          "direction": "central",
+          "relativeChange": 0.0019527848616684017
+        },
+        {
+          "wellId": "W4",
+          "direction": "peripheral",
+          "relativeChange": 0.009259592858349546
+        },
+        {
+          "wellId": "W4",
+          "direction": "central",
+          "relativeChange": 0.009259592830804455
+        }
+      ]
+    },
+    {
+      "name": "Soma subdivision preserves the exact physical field mesh",
+      "value": 0,
+      "tolerance": 0,
+      "status": "pass"
+    },
+    {
+      "name": "Cell and insulating-wall interiors reject field samples",
+      "value": 0,
+      "tolerance": 0,
+      "status": "pass"
+    },
+    {
+      "name": "Explicit annular aperture fluid accepts field samples",
+      "value": 0,
+      "tolerance": 0,
+      "status": "pass"
+    }
+  ],
+  "baseline": {
+    "discretization": "conforming P1 tetrahedral FEM with explicit removed insulating volumes",
+    "nodes": 48655,
+    "tetrahedra": 256848,
+    "excludedInsulatorOrCellTetrahedra": 26544,
+    "rawNodes": 49075,
+    "nonzeros": 981147,
+    "estimatedBytes": 33586748,
+    "explicitCells": 4,
+    "explicitWells": 4,
+    "regionTetrahedra": [
+      99408,
+      24576,
+      36864,
+      36864,
+      59136
+    ],
+    "constructPresent": true,
+    "sourceModel": "finite surface current density on explicit inner-wall patches",
+    "wallBoundary": "natural zero normal flux; no conductive wall tetrahedra retained",
+    "apertureModel": "explicit annular conducting bore and access volume",
+    "outerBoundary": "zero Dirichlet on outer cylindrical polygon and both ends",
+    "localToEffectiveBoundaryUm": [
+      90,
+      90,
+      90,
+      90
+    ],
+    "cellRepresentation": "Explicit soma/stem/near-well neurite exclusion; distal cables embedded in effective endoneurial tensor",
+    "meshBuildSeconds": 0.8580692700000001,
+    "iterations": 958,
+    "relativeResidual": 2.031834127958102e-12,
+    "sourceReturnImbalanceUa": -2.0816681711721685e-17,
+    "boundaryReactionUa": 5.461336150223543e-13,
+    "globalCurrentClosureUa": 5.461127983406426e-13,
+    "summedInteriorResidualUa": -5.318160313224064e-13,
+    "preconditioner": {
+      "kind": "IC(0)",
+      "diagonalShift": 0.01,
+      "constructionSeconds": 0.12321160299999998,
+      "failedShifts": [
+        {
+          "shift": 0,
+          "firstNonPositivePivot": 12259
+        },
+        {
+          "shift": 1e-8,
+          "firstNonPositivePivot": 12259
+        },
+        {
+          "shift": 0.000001,
+          "firstNonPositivePivot": 12259
+        },
+        {
+          "shift": 0.0001,
+          "firstNonPositivePivot": 12334
+        },
+        {
+          "shift": 0.001,
+          "firstNonPositivePivot": 12334
+        }
+      ]
+    },
+    "solveSeconds": 4.406343185000001,
+    "units": {
+      "potential": "mV/uA",
+      "current": "uA",
+      "coordinates": "um",
+      "conductivity": "S/m"
+    },
+    "contactAreasUm2": {
+      "source": 35.92017155167653,
+      "return": 35.92017155167653
+    },
+    "pairArtifactMvPerUa": 560.8708153146981,
+    "apertures": [
+      {
+        "wellId": "W1",
+        "cellId": "E0001",
+        "direction": "peripheral",
+        "boreInnerZUm": -67.5,
+        "boreOuterZUm": -70,
+        "conductingAreaUm2": 12.454272688646991,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": 0.10140348394041043,
+        "cutCurrentsUaPerUa": [
+          0.10140348394040886,
+          0.101403483940412
+        ],
+        "currentSpreadUaPerUa": 3.1363800445660672e-15,
+        "meanPotentialDropMvPerUa": 67.8505324206576,
+        "measuredBoreResistanceMvPerUa": 669.114410906531,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065314,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W1",
+        "cellId": "E0001",
+        "direction": "central",
+        "boreInnerZUm": 67.5,
+        "boreOuterZUm": 70,
+        "conductingAreaUm2": 12.454272688646991,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": -0.10140348394053869,
+        "cutCurrentsUaPerUa": [
+          -0.10140348394053882,
+          -0.10140348394053858
+        ],
+        "currentSpreadUaPerUa": 2.3592239273284576e-16,
+        "meanPotentialDropMvPerUa": -67.85053242074355,
+        "measuredBoreResistanceMvPerUa": 669.1144109065323,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065314,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W2",
+        "cellId": "E0002",
+        "direction": "peripheral",
+        "boreInnerZUm": -67.5,
+        "boreOuterZUm": -70,
+        "conductingAreaUm2": 12.454272688646997,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": -0.0005191358969231707,
+        "cutCurrentsUaPerUa": [
+          -0.0005191358969190475,
+          -0.000519135896927294
+        ],
+        "currentSpreadUaPerUa": 8.246550144141995e-15,
+        "meanPotentialDropMvPerUa": -0.3473613098501811,
+        "measuredBoreResistanceMvPerUa": 669.1144109065312,
+        "uniformAnnulusResistanceMvPerUa": 669.114410906531,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W2",
+        "cellId": "E0002",
+        "direction": "central",
+        "boreInnerZUm": 67.5,
+        "boreOuterZUm": 70,
+        "conductingAreaUm2": 12.454272688646997,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": 0.000519135896892686,
+        "cutCurrentsUaPerUa": [
+          0.0005191358968906615,
+          0.0005191358968947105
+        ],
+        "currentSpreadUaPerUa": 4.049061433364365e-15,
+        "meanPotentialDropMvPerUa": 0.3473613098297832,
+        "measuredBoreResistanceMvPerUa": 669.114410906531,
+        "uniformAnnulusResistanceMvPerUa": 669.114410906531,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W3",
+        "cellId": "E0003",
+        "direction": "peripheral",
+        "boreInnerZUm": -67.5,
+        "boreOuterZUm": -70,
+        "conductingAreaUm2": 12.454272688646986,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": -0.0005169215038974907,
+        "cutCurrentsUaPerUa": [
+          -0.0005169215039001402,
+          -0.0005169215038948413
+        ],
+        "currentSpreadUaPerUa": 5.298929697805654e-15,
+        "meanPotentialDropMvPerUa": -0.345879627565288,
+        "measuredBoreResistanceMvPerUa": 669.1144109065318,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065316,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W3",
+        "cellId": "E0003",
+        "direction": "central",
+        "boreInnerZUm": 67.5,
+        "boreOuterZUm": 70,
+        "conductingAreaUm2": 12.454272688646986,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": 0.0005169215039679403,
+        "cutCurrentsUaPerUa": [
+          0.00051692150395964,
+          0.0005169215039762407
+        ],
+        "currentSpreadUaPerUa": 1.6600653143794553e-14,
+        "meanPotentialDropMvPerUa": 0.34587962761242685,
+        "measuredBoreResistanceMvPerUa": 669.1144109065318,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065316,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W4",
+        "cellId": "E0004",
+        "direction": "peripheral",
+        "boreInnerZUm": -67.5,
+        "boreOuterZUm": -70,
+        "conductingAreaUm2": 12.454272688646986,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": -0.0001956239340662126,
+        "cutCurrentsUaPerUa": [
+          -0.00019562393406585943,
+          -0.0001956239340665658
+        ],
+        "currentSpreadUaPerUa": 7.063577153743061e-16,
+        "meanPotentialDropMvPerUa": -0.13089479340193194,
+        "measuredBoreResistanceMvPerUa": 669.1144109065311,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065316,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W4",
+        "cellId": "E0004",
+        "direction": "central",
+        "boreInnerZUm": 67.5,
+        "boreOuterZUm": 70,
+        "conductingAreaUm2": 12.454272688646986,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": 0.00019562393405749343,
+        "cutCurrentsUaPerUa": [
+          0.00019562393405892577,
+          0.00019562393405606111
+        ],
+        "currentSpreadUaPerUa": 2.8646518750868877e-15,
+        "meanPotentialDropMvPerUa": 0.13089479339609766,
+        "measuredBoreResistanceMvPerUa": 669.1144109065305,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065316,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      }
+    ]
+  },
+  "transferSummary": [
+    {
+      "cellId": "E0001",
+      "rmsMvPerUa": 26.508742383593106,
+      "minimumMvPerUa": -122.10569864746702,
+      "maximumMvPerUa": 124.24946274221448
+    },
+    {
+      "cellId": "E0002",
+      "rmsMvPerUa": 0.14902172047761889,
+      "minimumMvPerUa": -0.7157476113110796,
+      "maximumMvPerUa": 0.7067378293236353
+    },
+    {
+      "cellId": "E0003",
+      "rmsMvPerUa": 0.14891874951221334,
+      "minimumMvPerUa": -0.7122733518976451,
+      "maximumMvPerUa": 0.7037387701766258
+    },
+    {
+      "cellId": "E0004",
+      "rmsMvPerUa": 0.081170420078176,
+      "minimumMvPerUa": -0.30022821770018354,
+      "maximumMvPerUa": 0.29831173342128015
+    }
+  ],
+  "sourceHashes": {
+    "src/lib/axon-interface/field-stage1.mjs": "dd60139ae3bff6673e3b1bb7d0361694d41715f53de70207c9fa069c2cc34653",
+    "src/lib/axon-interface/bipolar.mjs": "d47f6717b3faa87ae775c67e1fee4ce0f222e5e954cdba6c765d3d7dffb22098",
+    "src/lib/axon-interface/mrg.mjs": "182b94c586591599dbcea42b63ececba486d42e4a72f7923abb53a171fe752f5",
+    "scripts/axon-interface/field-stage1-dense-validate.mjs": "a47ea7e8ef0408240ac0e48afd052786a6a6a230ac1cf2ad46d49450a4e82e00",
+    "docs/axon-interface/field-stage1-dense-acceptance.json": "58c0d5effa596270d5bc3fb2f058ca8ff2d800dd9e2e1a8232e439b3fc1b5402"
+  },
+  "sourceChangedDuringRun": [],
+  "limitations": [
+    "Four adjacent wells test local dense coupling; no assertion of full128/256 continuous convergence is substituted for this fixture.",
+    "Every neighbor receives its own relative field-error gate; tiny neighbor signals are not hidden by pooling with the driven cell."
+  ]
+}

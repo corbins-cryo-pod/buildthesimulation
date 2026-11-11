@@ -1,0 +1,44 @@
+{
+  "schema": "buildthesimulation.mrg.source-refresh-execution.v1",
+  "mode": "separately-executed-current-source-studies",
+  "startedAt": "2026-11-11T23:25:56.623209+00:00",
+  "completedAt": "2026-11-11T23:26:59.454937+00:00",
+  "status": "pass",
+  "commands": [
+    {
+      "arguments": [
+        "node",
+        "scripts/axon-interface/mrg-validate.mjs"
+      ],
+      "workingDirectory": "/workspace/scratch/00f6a4fc6cf7/buildthesimulation",
+      "environment": {
+        "MRG_PYTHON": "/workspace/scratch/00f6a4fc6cf7/mrg-venv/bin/python"
+      },
+      "startedAt": "2026-11-11T23:25:56.626319+00:00",
+      "completedAt": "2026-11-11T23:26:59.454205+00:00",
+      "elapsedSeconds": 62.82790678299989,
+      "exitCode": 0,
+      "status": "pass",
+      "log": "docs/axon-interface/mrg-validate-current-source-refresh.log"
+    },
+    {
+      "arguments": [
+        "node",
+        "scripts/axon-interface/mrg-coupled-validate.mjs"
+      ],
+      "workingDirectory": "/workspace/scratch/00f6a4fc6cf7/buildthesimulation",
+      "environment": {
+        "MRG_PYTHON": "/workspace/scratch/00f6a4fc6cf7/mrg-venv/bin/python"
+      },
+      "startedAt": "2026-11-11T23:25:56.626567+00:00",
+      "completedAt": "2026-11-11T23:26:07.365371+00:00",
+      "elapsedSeconds": 10.738819885999874,
+      "exitCode": 0,
+      "status": "pass",
+      "log": "docs/axon-interface/mrg-coupled-validate-current-source-refresh.log"
+    }
+  ],
+  "membraneSourceSha256": "182b94c586591599dbcea42b63ececba486d42e4a72f7923abb53a171fe752f5",
+  "sourceChangedDuringRun": false,
+  "nativeMechanismPolicy": "Previously compiled unchanged pinned AXNODE.mod; no mechanism rebuild was claimed by this refresh. Aggregate reproduction records its separate native rebuild provenance."
+}

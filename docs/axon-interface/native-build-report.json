@@ -1,0 +1,55 @@
+{
+  "schema": "buildthesimulation.axon-interface.native-build.v1",
+  "status": "pass",
+  "startedAt": "2026-11-11T23:28:52.267658+00:00",
+  "completedAt": "2026-11-11T23:28:53.148103+00:00",
+  "execution": {
+    "name": "stage1-native-mechanism-build",
+    "arguments": [
+      "/workspace/scratch/00f6a4fc6cf7/mrg-venv/bin/nrnivmodl"
+    ],
+    "status": "pass",
+    "exitCode": 0,
+    "elapsedSeconds": 0.8802774759997192,
+    "log": "scripts/axon-interface/.reproduction/stage1-native-mechanism-build.log",
+    "startedAt": "2026-11-11T23:28:52.267658+00:00",
+    "completedAt": "2026-11-11T23:28:53.148103+00:00",
+    "cwd": "scripts/axon-interface/mrg-modeldb",
+    "mode": "executed",
+    "executedByThisInvocation": true,
+    "referenceEnvironment": {
+      "MRG_PYTHON": "/workspace/scratch/00f6a4fc6cf7/mrg-venv/bin/python",
+      "AXON_REFERENCE_PYTHON": "/workspace/scratch/00f6a4fc6cf7/mrg-venv/bin/python",
+      "STAGE1_FIELD_EXPLORATORY": "false",
+      "CC": "/usr/bin/gcc",
+      "CXX": "/usr/bin/g++"
+    }
+  },
+  "referencePython": {
+    "python": "3.12.14",
+    "executable": "/workspace/scratch/00f6a4fc6cf7/mrg-venv/bin/python",
+    "packages": {
+      "neuron": "8.2.7",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0"
+    },
+    "cCompiler": "gcc (Debian 14.2.0-19) 14.2.0",
+    "cxxCompiler": "g++ (Debian 14.2.0-19) 14.2.0"
+  },
+  "sourceHashes": {
+    "scripts/axon-interface/mrg-modeldb/AXNODE.mod": "e0fa400a469aa2beba491fabffaa4f6bc03c629015a2c0f2ddc471fb3e687bd3",
+    "scripts/axon-interface/mrg-modeldb/MRGaxon.hoc": "73da0790cdbbb1a7db036e9806729a74fcc0606e62d716daabeddbe8c1999014",
+    "scripts/axon-interface/mrg-modeldb/README": "847ce5ac51b3b1be75d0d34a7003ce7a7e14ec06a5cf47acbf545274b5ec369a",
+    "scripts/axon-interface/requirements.txt": "ffb7284d1b58d117c3305be00f92f6a2aa9655b9908b043e9704d959b75e8559",
+    "scripts/axon-interface/reproduce-stage1.py": "519a492fa4b861a3a84d47386d5615ee49ea3bc61a0b62a2755d62f31bca7305",
+    "scripts/axon-interface/reproduce.py": "e3df95c12f6244801e60b50bb8e198c1c9df7180264bb6e12f0007a9b5fb54aa"
+  },
+  "sourceChangedDuringRun": [],
+  "buildProducts": {
+    "scripts/axon-interface/mrg-modeldb/x86_64/libnrnmech.so": "c82054674bd94f5d62e9e4d56b51af082554a94cb522367aa7a1e5963eab76fb",
+    "scripts/axon-interface/mrg-modeldb/x86_64/.libs/libnrnmech.so": "c82054674bd94f5d62e9e4d56b51af082554a94cb522367aa7a1e5963eab76fb"
+  },
+  "freshBuildDirectory": true,
+  "previousBuildArchived": "scripts/axon-interface/.reproduction/native-build-before-1794439732267167894",
+  "meaning": "Actual fresh compilation of pinned mechanism sources. Generated binaries are local build products, not committed evidence or prerequisites for a fresh clone."
+}
