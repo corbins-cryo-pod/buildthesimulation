@@ -8,7 +8,7 @@
     "doi": "10.1152/jn.00353.2001",
     "scope": "Published MRG somatic motor-fiber benchmark; not spiral-ganglion or engineered-cell calibration."
   },
-  "generatedAt": "2026-11-11T22:13:20.209Z",
+  "generatedAt": "2026-11-11T22:20:13.420Z",
   "acceptance": {
     "schema": "buildthesimulation.mrg.acceptance.v2-recovery",
     "declaredAt": "2026-11-11T22:09:55.799632+00:00",
@@ -60,7 +60,7 @@
     "arch": "x64",
     "cpu": "AMD EPYC 9V74 80-Core Processor",
     "logicalCpus": 9,
-    "elapsedSeconds": 57.659633303
+    "elapsedSeconds": 63.170924561
   },
   "sourceHashes": {
     "src/lib/axon-interface/mrg.mjs": "cbaa91ed8e8cbe5acc56d55f229ddcd0bbbe32a4272d4b8280eded3aff772405",
