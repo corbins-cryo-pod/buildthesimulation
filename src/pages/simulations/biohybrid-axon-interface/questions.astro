@@ -1,0 +1,12 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import SimHero from '../../../components/SimHero.jsx';
+import {questions,references} from '../../../lib/axon-interface/evidence.mjs';
+import '../../../styles/axon-interface.css';
+---
+<Layout pageTitle="Axon-Resolution Laboratory · Scientific Questions" description="Fifteen scientific questions separating computed electrical behavior from hypothetical biological integration." wide compactHeader><div class="ax-lab ax-methods">
+<SimHero kicker="Axon resolution / Scientific questions" title="Fifteen questions before a claim" intro="Mechanisms, evidence and experiments that could falsify the design." links={[{href:'/simulations/biohybrid-axon-interface/',label:'Open laboratory'},{href:'/simulations/biohybrid-axon-interface/methods/',label:'Methods & numerical evidence'}]}/>
+<div class="ax-boundary"><span class="ax-kicker">Evidence boundary</span><p>Published observations retain their preparation and species. Conditional model outputs are not evidence of a functional human biohybrid junction or appropriate reinnervation.</p></div>
+{questions.map((q,i)=><article class="ax-question" id={q.id}><span class="ax-kicker">{String(i+1).padStart(2,'0')} · {q.evidence}</span><h2>{q.title}</h2>{(Array.isArray(q.answer)?q.answer:[q.answer]).map(p=><p>{p}</p>)}<p class="ax-fine">{q.referenceIds.map((id,j)=>{const r=references.find(x=>x.id===id);return r&&<span><a href={r.url}>{r.title}</a>{j < q.referenceIds.length - 1 ? ' · ' : ''}</span>;})}</p></article>)}
+</div></Layout>
+

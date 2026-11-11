@@ -1,0 +1,14 @@
+.venv/
+.reproduction/
+__pycache__/
+*.pyc
+mrg-modeldb/x86_64/
+mrg-modeldb/aarch64/
+mrg-modeldb/arm64/
+mrg-modeldb/i686/
+mrg-modeldb/special
+mrg-modeldb/special.nrn
+mrg-modeldb/*.so
+mrg-modeldb/*.dylib
+mrg-modeldb/*.dll
+mrg-modeldb/*.o
