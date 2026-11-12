@@ -1,0 +1,62 @@
+{
+  "entry": "cdt2d@1.0.0",
+  "source": "https://github.com/mikolalysenko/cdt2d",
+  "lockfile": "package-lock.json",
+  "bundler": "esbuild",
+  "dependencies": [
+    {
+      "name": "binary-search-bounds",
+      "version": "2.0.5",
+      "license": "MIT",
+      "packageJsonSha256": "8ef06e9d247c16d962c83a579dad0965adacfbedbefdc947c3a997b5adf27026"
+    },
+    {
+      "name": "cdt2d",
+      "version": "1.0.0",
+      "license": "MIT",
+      "packageJsonSha256": "b4879eb3f141f5ba8069e72bb4208f01691cfca625f09995397d9cce342755a4"
+    },
+    {
+      "name": "robust-in-sphere",
+      "version": "1.2.1",
+      "license": "MIT",
+      "packageJsonSha256": "04feb23bf50c8d15d49d2367b1c5ee6e35c350570d7f3b0b5c0ffb7b710ee36f"
+    },
+    {
+      "name": "robust-orientation",
+      "version": "1.2.1",
+      "license": "MIT",
+      "packageJsonSha256": "f5c6eac4bd866e9feb9640c27dc90197e95214bcf65b9add69e957f0e514a73f"
+    },
+    {
+      "name": "robust-scale",
+      "version": "1.0.2",
+      "license": "MIT",
+      "packageJsonSha256": "37fce0656c9371dcafc081e239913512d27f4694642608c0bf50e777bd481b12"
+    },
+    {
+      "name": "robust-subtract",
+      "version": "1.0.0",
+      "license": "MIT",
+      "packageJsonSha256": "2adb6913326e92358e10537620b522a70621efee37f0a06665dc8f95ec026182"
+    },
+    {
+      "name": "robust-sum",
+      "version": "1.0.0",
+      "license": "MIT",
+      "packageJsonSha256": "ca0aaed057adacc0a49e3f1e29a6eb0dc2c65b8b771ac949de1d5ad80d991a2f"
+    },
+    {
+      "name": "two-product",
+      "version": "1.0.2",
+      "license": "MIT",
+      "packageJsonSha256": "30cd9d9bd735295dec0cb4ab9e21119bd7af4c77aeb00990d5dc8e2822434c24"
+    },
+    {
+      "name": "two-sum",
+      "version": "1.0.0",
+      "license": "MIT",
+      "packageJsonSha256": "1f4371a5c3042138737aa3c4497337cbf93a964e9963972a04f6d46ba9956715"
+    }
+  ]
+}

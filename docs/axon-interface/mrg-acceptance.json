@@ -1,0 +1,45 @@
+{
+  "schema": "buildthesimulation.mrg.acceptance.v2-recovery",
+  "declaredAt": "2026-11-11T22:09:55.799632+00:00",
+  "declaration": "Written before testing the reconstructed solver. Earlier source and raw reports were lost when the executor expired; historical measurements are not fresh verification.",
+  "temperatureC": 37,
+  "equilibrationMs": 20,
+  "durationMs": 6,
+  "productionDtMs": 0.00125,
+  "productionPassiveSegments": 3,
+  "limits": {
+    "zeroInputDriftMv": 0.1,
+    "zeroInputCrossings": 0,
+    "timeHalvingMaxNodeRmsMv": 1,
+    "timeHalvingCrossingTimeMs": 0.1,
+    "spatialConductionRelative": 0.05,
+    "spatialRecordingPeakToPeakRelative": 0.1,
+    "nativeMaxNodeRmsMv": 1,
+    "nativeCrossingTimeMs": 0.1,
+    "nativeRecordingMaxErrorUv": 0.001,
+    "chargeConservationNa": 1e-08
+  },
+  "requiredComparisons": [
+    "zero drive straight cable",
+    "zero drive passive central load",
+    "1.25 to 0.625 us",
+    "0.625 to 0.3125 us",
+    "passive subdivision 3 to 5",
+    "passive subdivision 5 to 7",
+    "native NEURON intracellular",
+    "native NEURON extracellular",
+    "native NEURON 5.7 um",
+    "native NEURON passive soma",
+    "native NEURON proximal silencing",
+    "native NEURON whole silencing"
+  ],
+  "diagnosticComparisons": [
+    "5 to 2.5 us",
+    "2.5 to 1.25 us",
+    "passive subdivision 1 to 3",
+    "active 20 um central load zero input",
+    "published cat diameter velocity relation"
+  ],
+  "timestampPolicy": "Exact canonical observation grid; no shifts, alignment, baseline correction, amplitude scaling, or time interpolation for native comparisons.",
+  "failurePolicy": "Retain every failed attempt. Numerical equivalence does not establish physiological calibration, active-soma validity or complete Stage 1."
+}

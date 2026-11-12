@@ -1,0 +1,617 @@
+{
+  "schema": "buildthesimulation.bipolar.coupled.v1",
+  "generatedAt": "2026-11-11T23:16:54.240Z",
+  "complete": true,
+  "exploratory": false,
+  "status": "fail",
+  "passed": false,
+  "numericalComparisonsPassed": false,
+  "modelVersion": "bipolar-projecting-neuron-1.1.0-axial-soma-hypothesis",
+  "membraneVersion": "mrg-double-cable-2.1.0-bipolar",
+  "fieldVersion": "explicit-well-fem/1.0.0",
+  "modelDbSource": {
+    "repository": "https://github.com/ModelDBRepository/3810",
+    "commit": "b15daeda6ea368df0198d257f339cf5e840cf31c",
+    "channelBlob": "d1db4d2276a0e4ecdc8293d0dfe5a0e16e2e633c",
+    "morphologyBlob": "aea3c2ce9537c007f4bdd47bf284a6d7632b1942",
+    "doi": "10.1152/jn.00353.2001",
+    "scope": "Published MRG somatic motor-fiber benchmark; not spiral-ganglion or engineered-cell calibration."
+  },
+  "fieldValidated": true,
+  "fieldEvidence": {
+    "validated": true,
+    "reports": [
+      {
+        "file": "docs/axon-interface/field-stage1-validation.json",
+        "sha256": "a2b431943d6e0d2c0187606d8fd965fb796b84944cd288098541310b03e27461",
+        "status": "pass",
+        "modelVersion": "explicit-well-fem/1.0.0",
+        "requiredRows": 21,
+        "sourceHashes": {
+          "src/lib/axon-interface/field-stage1.mjs": "dd60139ae3bff6673e3b1bb7d0361694d41715f53de70207c9fa069c2cc34653",
+          "src/lib/axon-interface/vendor/cdt2d.mjs": "645d096429082510865735501c2fcfd9d3b6e7211e8c631f855b811f83dad185",
+          "src/lib/axon-interface/bipolar.mjs": "d47f6717b3faa87ae775c67e1fee4ce0f222e5e954cdba6c765d3d7dffb22098",
+          "src/lib/axon-interface/mrg.mjs": "182b94c586591599dbcea42b63ececba486d42e4a72f7923abb53a171fe752f5",
+          "scripts/axon-interface/field-stage1-validate.mjs": "1d30bc114c3eda879471e44bcc50931833e1c5a2dac2ba04a77fc639aff4698b",
+          "scripts/axon-interface/field-stage1-reference.py": "141197e0bd7b7222283d762671ff87e54ce38f1311748c8c1aaf32d34f122058",
+          "scripts/axon-interface/field-stage1-fixtures.mjs": "2558872ff170a0b598332b33cec44bc2016d0dbca26c4b597f97522aeff67483",
+          "scripts/axon-interface/field-stage1-benchmarks.mjs": "ab58ed967b0dcc3927c26268669c2f8e9e606e2874b2b8e533e190d4be3efc5b",
+          "docs/axon-interface/field-stage1-acceptance.json": "ae35cf03dc5c67061e5e3d9feddb8ffe174c65efb30f2166eb8f0bc4cab02f33"
+        },
+        "problems": []
+      },
+      {
+        "file": "docs/axon-interface/field-stage1-dense-validation.json",
+        "sha256": "1369ae937602424709539eb3b7993b702461697b6bafe1a3e82d246ee5192553",
+        "status": "pass",
+        "modelVersion": "explicit-well-fem/1.0.0",
+        "requiredRows": 11,
+        "sourceHashes": {
+          "src/lib/axon-interface/field-stage1.mjs": "dd60139ae3bff6673e3b1bb7d0361694d41715f53de70207c9fa069c2cc34653",
+          "src/lib/axon-interface/bipolar.mjs": "d47f6717b3faa87ae775c67e1fee4ce0f222e5e954cdba6c765d3d7dffb22098",
+          "src/lib/axon-interface/mrg.mjs": "182b94c586591599dbcea42b63ececba486d42e4a72f7923abb53a171fe752f5",
+          "scripts/axon-interface/field-stage1-dense-validate.mjs": "a47ea7e8ef0408240ac0e48afd052786a6a6a230ac1cf2ad46d49450a4e82e00",
+          "docs/axon-interface/field-stage1-dense-acceptance.json": "58c0d5effa596270d5bc3fb2f058ca8ff2d800dd9e2e1a8232e439b3fc1b5402"
+        },
+        "problems": []
+      },
+      {
+        "file": "docs/axon-interface/field-stage1-domain-validation.json",
+        "sha256": "4c4166060fd677f90c4bdbea41e5dd96f5e4331e6a2ab2b5961b4398af128653",
+        "status": "pass",
+        "modelVersion": "explicit-well-fem/1.0.0",
+        "requiredRows": 2,
+        "sourceHashes": {
+          "src/lib/axon-interface/field-stage1.mjs": "dd60139ae3bff6673e3b1bb7d0361694d41715f53de70207c9fa069c2cc34653",
+          "src/lib/axon-interface/bipolar.mjs": "d47f6717b3faa87ae775c67e1fee4ce0f222e5e954cdba6c765d3d7dffb22098",
+          "src/lib/axon-interface/mrg.mjs": "182b94c586591599dbcea42b63ececba486d42e4a72f7923abb53a171fe752f5",
+          "scripts/axon-interface/field-stage1-domain-validate.mjs": "feb47c74fd0bc87998650361cd7bcf83b0367a08a1d3743cf1d8031ff1ed9080",
+          "docs/axon-interface/field-stage1-domain-acceptance.json": "6bff51700c832aad7662560a211383a0cf0857e926a8bd06cf75984571e46f5d"
+        },
+        "problems": []
+      }
+    ],
+    "failures": []
+  },
+  "acceptance": {
+    "schema": "buildthesimulation.bipolar.coupled-acceptance.v1",
+    "declaredAt": "2026-11-11T23:13:07.663552+00:00",
+    "declaration": "Written before running the five-band bipolar native-reference or time-refinement fixture in the finalized actual insulating-well field. Numerical tolerances are unchanged from the component gates.",
+    "fixture": {
+      "seed": 2048,
+      "axonCount": 4,
+      "channelCount": 1,
+      "cellId": "E0001",
+      "channelId": "C1",
+      "somaSegments": 5,
+      "equilibrationMs": 50,
+      "durationMs": 4,
+      "sampleDtMs": 0.005,
+      "onsetMs": 0.5,
+      "phaseWidthMs": 0.1,
+      "phaseGapMs": 0.025,
+      "intervalAverage": true
+    },
+    "nativeAmplitudeGridUa": [
+      0,
+      0.3,
+      1
+    ],
+    "temporalAmplitudeGridUa": [
+      0.3,
+      1
+    ],
+    "timeStepsMs": [
+      0.000625,
+      0.0003125,
+      0.00015625
+    ],
+    "controls": [
+      "assigned",
+      "soma-only-silenced",
+      "initiation-region-silenced",
+      "whole-cell-silenced"
+    ],
+    "limits": {
+      "nativeMaximumSiteRmsMv": 1,
+      "nativeMaximumCrossingTimeMs": 0.1,
+      "nativeRecordingMaximumErrorUv": 0.001,
+      "timeHalvingMaximumSiteRmsMv": 1,
+      "timeHalvingMaximumCrossingTimeMs": 0.1,
+      "zeroInputDriftMv": 0.1,
+      "zeroInputCrossings": 0,
+      "currentBalanceNa": 1e-8,
+      "independentGeometryErrorUm": 1e-8
+    },
+    "required": [
+      "Field standard/dense/domain reports pass and identify exactly current source and meshing-vendor hashes",
+      "Native NEURON independently constructs the five-band morphology and uses unchanged pinned AXNODE.mod",
+      "All stored observation timestamps match exactly with no interpolation, alignment, shift or rescaling",
+      "All active-site crossing counts match the native reference and time-refined run",
+      "Native reciprocal recording uses the exact physical field transfer vector and each model own outer membrane currents",
+      "Every intervention starts from the unmodified equilibrium for that dt; no intervention-specific reequilibration",
+      "Two consecutive dt-halving comparisons meet unchanged all-site RMS/timing/count criteria for every declared driven case"
+    ],
+    "biologicalOutcomePolicy": "Arm propagation, local-region dependence and soma-active necessity are measured outcomes, never pass criteria forced to favor an implant. A 0 mV crossing may be passive under strong drive. Lack of soma necessity is reported explicitly. Only ordered true distal-node events enter the protocol propagation classifier.",
+    "failurePolicy": "Retain every failed run and all report/source hashes. A failed numerical gate withholds authority; no threshold change, time manipulation, voltage clipping or hidden parameter tuning is permitted."
+  },
+  "settings": {
+    "seed": 2048,
+    "axonCount": 4,
+    "channelCount": 1,
+    "fascicleRadiusUm": 250,
+    "wellPitchUm": 35,
+    "wellWallUm": 2.5,
+    "positionJitter": 0.04,
+    "perineuriumResistivityOhmM": 1149,
+    "perineuriumThicknessFraction": 0.03,
+    "endoneuriumLongitudinalSPerM": 0.571,
+    "endoneuriumTransverseSPerM": 0.083,
+    "epineuriumSPerM": 0.083,
+    "surroundingSPerM": 0.3,
+    "amplitudeUa": 1,
+    "phaseWidthMs": 0.1,
+    "phaseGapMs": 0.025,
+    "stimulusStartMs": 0.5,
+    "durationMs": 4,
+    "dtMs": 0.000625,
+    "sampleDtMs": 0.005,
+    "temperatureC": 37,
+    "seedingLambda": 1,
+    "peripheralFiberDiameterUm": 5.7,
+    "centralFiberDiameterUm": 5.7,
+    "armNodeCount": 6,
+    "passiveSegments": 3,
+    "stemSegments": 3,
+    "somaSegments": 5,
+    "somaDiameterUm": 20,
+    "somaActiveScale": 0.1,
+    "stemActiveScale": 0.1,
+    "peripheralStemLengthUm": 30,
+    "peripheralStemDiameterUm": 1.5,
+    "centralStemLengthUm": 50,
+    "centralStemDiameterUm": 2.5,
+    "equilibrationMs": 50,
+    "wellFluidSPerM": 0.3,
+    "fieldAngularSegments": 32,
+    "wellAngularSegments": 12,
+    "fieldRadialRefinement": 1,
+    "fieldAxialRefinement": 1,
+    "localAxialStepUm": 10,
+    "resolvedCellExtensionUm": 20,
+    "wellInnerRadiusUm": 13,
+    "wellHalfLengthUm": 70,
+    "wellApertureRadiusUm": 3.5,
+    "wellContactHalfWidthUm": 3,
+    "wellContactHalfHeightUm": 3,
+    "wellContactSeparationUm": 30,
+    "mode": "b3-fixed-topology",
+    "topologyAssumption": "complete-resection-fixed-engineered-projections",
+    "nativeStumpAssumption": "absent-in-both-matched-conditions",
+    "includeElectrodeOnlyControl": false
+  },
+  "morphology": {
+    "parameters": {
+      "somaDiameterUm": 20,
+      "peripheralStemLengthUm": 30,
+      "peripheralStemDiameterUm": 1.5,
+      "centralStemLengthUm": 50,
+      "centralStemDiameterUm": 2.5,
+      "peripheralFiberDiameterUm": 5.7,
+      "centralFiberDiameterUm": 5.7,
+      "armNodeCount": 6,
+      "passiveSegments": 3,
+      "stemSegments": 3,
+      "somaSegments": 5,
+      "somaActiveScale": 0.1,
+      "stemActiveScale": 0.1,
+      "temperatureC": 37,
+      "equilibrationMs": 50
+    },
+    "compartments": 323,
+    "activeSites": 23,
+    "trueNodes": 12,
+    "somaIndices": [
+      159,
+      160,
+      161,
+      162,
+      163
+    ],
+    "armMonitors": {
+      "peripheral": {
+        "compartmentIndices": [
+          93,
+          62,
+          31
+        ],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "direction": "-z"
+      },
+      "central": {
+        "compartmentIndices": [
+          229,
+          260,
+          291
+        ],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "direction": "+z"
+      }
+    }
+  },
+  "cell": {
+    "id": "E0001",
+    "index": 0,
+    "slotId": "S0001",
+    "xUm": -35.19878311250359,
+    "yUm": -60.01598740056043,
+    "zUm": 0,
+    "fiberDiameterUm": 5.7,
+    "peripheralFiberDiameterUm": 5.7,
+    "centralFiberDiameterUm": 5.7,
+    "somaDiameterUm": 20,
+    "peripheralStemLengthUm": 30,
+    "peripheralStemDiameterUm": 1.5,
+    "centralStemLengthUm": 50,
+    "centralStemDiameterUm": 2.5,
+    "class": "hypothetical bipolar projecting neuron",
+    "fascicle": 1,
+    "origin": "introduced-engineered-identity",
+    "originalHostIdentity": null,
+    "topology": "own peripheral and central projections; fixed assumed geometry"
+  },
+  "channel": {
+    "id": "C1",
+    "index": 0,
+    "wellId": "W1",
+    "targetCellId": "E0001",
+    "source": [
+      -22.19878311250359,
+      -60.01598740056043,
+      -15
+    ],
+    "return": [
+      -22.19878311250359,
+      -60.01598740056043,
+      15
+    ],
+    "sourceContactId": "W1:source",
+    "returnContactId": "W1:return",
+    "contactMeaning": "Proposed finite rectangular inner-sidewall patches; actual contact topology and area are returned by the field mesh."
+  },
+  "fieldSettings": {
+    "fascicleRadiusUm": 250,
+    "perineuriumThicknessUm": 15,
+    "epineuriumRadiusUm": 400,
+    "outerRadiusUm": 1200,
+    "halfLengthUm": 8000,
+    "sigmaEndoTransverse": 0.083,
+    "sigmaEndoLongitudinal": 0.571,
+    "sigmaPerineurium": 0.0008703220191470844,
+    "sigmaEpineurium": 0.083,
+    "sigmaSurrounding": 0.3,
+    "angularSegments": 32,
+    "radialRefinement": 1,
+    "axialRefinement": 1,
+    "sigmaWellFluid": 0.3,
+    "wellAngularSegments": 12,
+    "localAxialStepUm": 10,
+    "resolvedCellExtensionUm": 20
+  },
+  "fieldDiagnostics": {
+    "discretization": "conforming P1 tetrahedral FEM with explicit removed insulating volumes",
+    "nodes": 48590,
+    "tetrahedra": 256464,
+    "excludedInsulatorOrCellTetrahedra": 26544,
+    "rawNodes": 49010,
+    "nonzeros": 979796,
+    "estimatedBytes": 33540224,
+    "explicitCells": 4,
+    "explicitWells": 4,
+    "regionTetrahedra": [
+      99024,
+      24576,
+      36864,
+      36864,
+      59136
+    ],
+    "constructPresent": true,
+    "sourceModel": "finite surface current density on explicit inner-wall patches",
+    "wallBoundary": "natural zero normal flux; no conductive wall tetrahedra retained",
+    "apertureModel": "explicit annular conducting bore and access volume",
+    "outerBoundary": "zero Dirichlet on outer cylindrical polygon and both ends",
+    "localToEffectiveBoundaryUm": [
+      90,
+      90,
+      90,
+      90
+    ],
+    "cellRepresentation": "Explicit soma/stem/near-well neurite exclusion; distal cables embedded in effective endoneurial tensor",
+    "meshBuildSeconds": 1.5505914920000001,
+    "iterations": 918,
+    "relativeResidual": 1.9655351287919964e-12,
+    "sourceReturnImbalanceUa": -1.942890293094024e-16,
+    "boundaryReactionUa": 2.6883866500626364e-12,
+    "globalCurrentClosureUa": 2.688192361033327e-12,
+    "summedInteriorResidualUa": -2.6168288314729633e-12,
+    "preconditioner": {
+      "kind": "IC(0)",
+      "diagonalShift": 0.01,
+      "constructionSeconds": 0.13753766599999995,
+      "failedShifts": [
+        {
+          "shift": 0,
+          "firstNonPositivePivot": 12398
+        },
+        {
+          "shift": 1e-8,
+          "firstNonPositivePivot": 12398
+        },
+        {
+          "shift": 0.000001,
+          "firstNonPositivePivot": 12398
+        },
+        {
+          "shift": 0.0001,
+          "firstNonPositivePivot": 12398
+        },
+        {
+          "shift": 0.001,
+          "firstNonPositivePivot": 12398
+        }
+      ]
+    },
+    "solveSeconds": 6.076472267,
+    "units": {
+      "potential": "mV/uA",
+      "current": "uA",
+      "coordinates": "um",
+      "conductivity": "S/m"
+    },
+    "contactAreasUm2": {
+      "source": 35.920171551676496,
+      "return": 35.920171551676496
+    },
+    "pairArtifactMvPerUa": 575.8225986527782,
+    "apertures": [
+      {
+        "wellId": "W1",
+        "cellId": "E0001",
+        "direction": "peripheral",
+        "boreInnerZUm": -67.5,
+        "boreOuterZUm": -70,
+        "conductingAreaUm2": 12.454272688646986,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": 0.10166400896399949,
+        "cutCurrentsUaPerUa": [
+          0.10166400896400238,
+          0.10166400896399659
+        ],
+        "currentSpreadUaPerUa": 5.7870375158586285e-15,
+        "meanPotentialDropMvPerUa": 68.02485346834284,
+        "measuredBoreResistanceMvPerUa": 669.1144109065314,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065316,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W1",
+        "cellId": "E0001",
+        "direction": "central",
+        "boreInnerZUm": 67.5,
+        "boreOuterZUm": 70,
+        "conductingAreaUm2": 12.454272688646986,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": -0.10166400896408243,
+        "cutCurrentsUaPerUa": [
+          -0.10166400896407962,
+          -0.10166400896408524
+        ],
+        "currentSpreadUaPerUa": 5.620504062164855e-15,
+        "meanPotentialDropMvPerUa": -68.02485346839836,
+        "measuredBoreResistanceMvPerUa": 669.1144109065316,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065316,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W2",
+        "cellId": "E0002",
+        "direction": "peripheral",
+        "boreInnerZUm": -67.5,
+        "boreOuterZUm": -70,
+        "conductingAreaUm2": 12.454272688646972,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": -0.00013280114564074666,
+        "cutCurrentsUaPerUa": [
+          -0.00013280114564181435,
+          -0.00013280114563967896
+        ],
+        "currentSpreadUaPerUa": 2.1353903888188253e-15,
+        "meanPotentialDropMvPerUa": -0.08885916033312076,
+        "measuredBoreResistanceMvPerUa": 669.114410906532,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065324,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W2",
+        "cellId": "E0002",
+        "direction": "central",
+        "boreInnerZUm": 67.5,
+        "boreOuterZUm": 70,
+        "conductingAreaUm2": 12.454272688646972,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": 0.00013280114564496955,
+        "cutCurrentsUaPerUa": [
+          0.00013280114564251513,
+          0.000132801145647424
+        ],
+        "currentSpreadUaPerUa": 4.908860861199682e-15,
+        "meanPotentialDropMvPerUa": 0.08885916033594651,
+        "measuredBoreResistanceMvPerUa": 669.1144109065332,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065324,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W3",
+        "cellId": "E0003",
+        "direction": "peripheral",
+        "boreInnerZUm": -67.5,
+        "boreOuterZUm": -70,
+        "conductingAreaUm2": 12.454272688646975,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": -0.00007513385767637302,
+        "cutCurrentsUaPerUa": [
+          -0.00007513385767757822,
+          -0.00007513385767516783
+        ],
+        "currentSpreadUaPerUa": 2.4103982698697735e-15,
+        "meanPotentialDropMvPerUa": -0.05027314691826158,
+        "measuredBoreResistanceMvPerUa": 669.1144109065324,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065322,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W3",
+        "cellId": "E0003",
+        "direction": "central",
+        "boreInnerZUm": 67.5,
+        "boreOuterZUm": 70,
+        "conductingAreaUm2": 12.454272688646975,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": 0.00007513385767102159,
+        "cutCurrentsUaPerUa": [
+          0.00007513385767172215,
+          0.00007513385767032102
+        ],
+        "currentSpreadUaPerUa": 1.4011280200301734e-15,
+        "meanPotentialDropMvPerUa": 0.05027314691468084,
+        "measuredBoreResistanceMvPerUa": 669.1144109065322,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065322,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W4",
+        "cellId": "E0004",
+        "direction": "peripheral",
+        "boreInnerZUm": -67.5,
+        "boreOuterZUm": -70,
+        "conductingAreaUm2": 12.454272688647032,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": -0.00001992732560663711,
+        "cutCurrentsUaPerUa": [
+          -0.000019927325607523824,
+          -0.000019927325605750394
+        ],
+        "currentSpreadUaPerUa": 1.7734294935345396e-15,
+        "meanPotentialDropMvPerUa": -0.013333660734227586,
+        "measuredBoreResistanceMvPerUa": 669.1144109065293,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065291,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W4",
+        "cellId": "E0004",
+        "direction": "central",
+        "boreInnerZUm": 67.5,
+        "boreOuterZUm": 70,
+        "conductingAreaUm2": 12.454272688647032,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": 0.00001992732560056014,
+        "cutCurrentsUaPerUa": [
+          0.000019927325600306354,
+          0.000019927325600813924
+        ],
+        "currentSpreadUaPerUa": 5.075692470490889e-16,
+        "meanPotentialDropMvPerUa": 0.013333660730161396,
+        "measuredBoreResistanceMvPerUa": 669.1144109065292,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065291,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      }
+    ]
+  },
+  "transferSummary": {
+    "length": 323,
+    "rmsMvPerUa": 26.51212219967498,
+    "minimumMvPerUa": -122.26390768057324,
+    "maximumMvPerUa": 124.35551805535464,
+    "somaBandsMvPerUa": [
+      94.06659172575397,
+      50.87429661804083,
+      -0.7215047519851538,
+      -51.902620467808056,
+      -94.00370121181759
+    ],
+    "sha256": "1d18f4edfd0aa890515cb1aabec49cf804e3e8fceb2233d02625c85aefc3808e"
+  },
+  "pairArtifactMvPerUa": 575.8225986527782,
+  "zeroRows": [],
+  "rows": [],
+  "temporalRows": [],
+  "outcomes": [],
+  "errors": [
+    {
+      "message": "zeroInputDriftMv is not defined",
+      "stack": "ReferenceError: zeroInputDriftMv is not defined\n    at runCase (file:///workspace/scratch/00f6a4fc6cf7/recovered-mrg/stage1/scripts/axon-interface/bipolar-coupled-validate.mjs:41:121)\n    at file:///workspace/scratch/00f6a4fc6cf7/recovered-mrg/stage1/scripts/axon-interface/bipolar-coupled-validate.mjs:70:16"
+    }
+  ],
+  "sourceHashes": {
+    "src/lib/axon-interface/mrg.mjs": "182b94c586591599dbcea42b63ececba486d42e4a72f7923abb53a171fe752f5",
+    "src/lib/axon-interface/bipolar.mjs": "d47f6717b3faa87ae775c67e1fee4ce0f222e5e954cdba6c765d3d7dffb22098",
+    "scripts/axon-interface/bipolar-coupled-validate.mjs": "bdd73f2a62f1cb3cb4da133773795ea2b46266f326a450aeab51c19632a9a2d3",
+    "scripts/axon-interface/bipolar-validation-utils.mjs": "0715ec3a46ff84b3b19d0f24256d2fe03f2746301026ee4e1f3fcbc96bcd1cfd",
+    "scripts/axon-interface/bipolar-reference.py": "da5c3ac4384cedf57095425f83073073bfd79b0b210bf7c10e09c5acedbc9955",
+    "scripts/axon-interface/mrg-modeldb/AXNODE.mod": "e0fa400a469aa2beba491fabffaa4f6bc03c629015a2c0f2ddc471fb3e687bd3",
+    "scripts/axon-interface/mrg-modeldb/MRGaxon.hoc": "73da0790cdbbb1a7db036e9806729a74fcc0606e62d716daabeddbe8c1999014",
+    "docs/axon-interface/bipolar-coupled-acceptance.json": "957d45e22de2c6e34ea4b175ff7f83bd073e824cb49f49aca33de63919d98b8a",
+    "src/lib/axon-interface/field-stage1.mjs": "dd60139ae3bff6673e3b1bb7d0361694d41715f53de70207c9fa069c2cc34653",
+    "src/lib/axon-interface/stage1-settings.mjs": "b952da4823fc88e863afd729408b9fa1b4424af4011c5b6e46c9cf18ad8d6c62",
+    "src/lib/axon-interface/stage1-protocol.mjs": "036ca37b4bf031286829174aec17e135cc22a0664aaca6afa8af77666b6eb7e1",
+    "src/lib/axon-interface/settings.mjs": "7649d5e2e69c6ea470fd5d03373ca2b15094188291a0b416e206f13866d3718a",
+    "src/lib/axon-interface/identities.mjs": "06140ccd7ad743f12874cfdb339d46a9213979a409f9f60aef2981660c89c339",
+    "src/lib/axon-interface/metrics.mjs": "636ab52f4ab4fe4e7fc110dfcc13cb84bd11a75ba7c22fbf60cfd5ea0970c78d",
+    "docs/axon-interface/field-stage1-validation.json": "a2b431943d6e0d2c0187606d8fd965fb796b84944cd288098541310b03e27461",
+    "src/lib/axon-interface/vendor/cdt2d.mjs": "645d096429082510865735501c2fcfd9d3b6e7211e8c631f855b811f83dad185",
+    "scripts/axon-interface/field-stage1-validate.mjs": "1d30bc114c3eda879471e44bcc50931833e1c5a2dac2ba04a77fc639aff4698b",
+    "scripts/axon-interface/field-stage1-reference.py": "141197e0bd7b7222283d762671ff87e54ce38f1311748c8c1aaf32d34f122058",
+    "scripts/axon-interface/field-stage1-fixtures.mjs": "2558872ff170a0b598332b33cec44bc2016d0dbca26c4b597f97522aeff67483",
+    "scripts/axon-interface/field-stage1-benchmarks.mjs": "ab58ed967b0dcc3927c26268669c2f8e9e606e2874b2b8e533e190d4be3efc5b",
+    "docs/axon-interface/field-stage1-acceptance.json": "ae35cf03dc5c67061e5e3d9feddb8ffe174c65efb30f2166eb8f0bc4cab02f33",
+    "docs/axon-interface/field-stage1-dense-validation.json": "1369ae937602424709539eb3b7993b702461697b6bafe1a3e82d246ee5192553",
+    "scripts/axon-interface/field-stage1-dense-validate.mjs": "a47ea7e8ef0408240ac0e48afd052786a6a6a230ac1cf2ad46d49450a4e82e00",
+    "docs/axon-interface/field-stage1-dense-acceptance.json": "58c0d5effa596270d5bc3fb2f058ca8ff2d800dd9e2e1a8232e439b3fc1b5402",
+    "docs/axon-interface/field-stage1-domain-validation.json": "4c4166060fd677f90c4bdbea41e5dd96f5e4331e6a2ab2b5961b4398af128653",
+    "scripts/axon-interface/field-stage1-domain-validate.mjs": "feb47c74fd0bc87998650361cd7bcf83b0367a08a1d3743cf1d8031ff1ed9080",
+    "docs/axon-interface/field-stage1-domain-acceptance.json": "6bff51700c832aad7662560a211383a0cf0857e926a8bd06cf75984571e46f5d",
+    "src/lib/axon-interface/field.mjs": "c55565795085e37bc1804c99c152f79d563e8cad678f2eafc2e41dc3ce5a9734"
+  },
+  "sourceChangedDuringRun": [],
+  "summary": {
+    "nativePass": 0,
+    "nativeFail": 0,
+    "timePass": 0,
+    "timeFail": 0,
+    "numericalGatePassed": false,
+    "biologicalValidation": false,
+    "humanSgCalibration": false
+  },
+  "runtime": {
+    "node": "v24.22.1",
+    "platform": "linux",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "elapsedSeconds": 9.298279231
+  },
+  "limitations": [
+    "Native NEURON agreement verifies the declared equations and production transfer units; it is not human SG or engineered-cell calibration.",
+    "The soma has five axial spherical surface bands but no independent circumferential nonlinear membrane patches.",
+    "A raw upward 0 mV crossing may be passive; the separately reported three-node propagation classification is a temporal criterion, not proof of one traveling event.",
+    "The soma-only matched intervention tests active-soma necessity, not exclusive causal origin. A negative result remains visible.",
+    "The reciprocal source recording uses each model own computed outer currents. The finite contact artifact is a separate linear voltage."
+  ]
+}

@@ -1,0 +1,564 @@
+{
+  "schema": "explicit-well-domain-validation/1",
+  "modelVersion": "explicit-well-fem/1.0.0",
+  "startedAt": "2026-11-11T23:13:27.627Z",
+  "completedAt": "2026-11-11T23:13:40.981Z",
+  "status": "pass",
+  "acceptance": {
+    "schema": "explicit-well-domain-acceptance/1",
+    "declaredAt": "2026-11-11",
+    "declaration": "Declared before the production zero-Dirichlet boundary expansion study. The existing10% field-refinement limit is retained.",
+    "outerRadiusExpansion": 1.5,
+    "halfLengthExpansion": 1.5,
+    "maximumPerCellMembraneTransferRelativeRms": 0.1,
+    "maximumPerWellDifferentialContactCouplingRelative": 0.1,
+    "scope": "Dense four-well fixture at35um pitch, unchanged local anatomy/materials/contact source, comparing actual grounded domains. This is not an analytic-Dirichlet substitute or proof for every user configuration.",
+    "failurePolicy": "Retain failures and hashes. No offset, common-mode subtraction, amplitude rescaling, or tolerance adjustment."
+  },
+  "results": [
+    {
+      "name": "Grounded-domain expansion: maximum per-cell membrane transfer change",
+      "value": 0.0007930704464262748,
+      "tolerance": 0.1,
+      "status": "pass",
+      "byCell": [
+        {
+          "cellId": "E0001",
+          "relativeRms": 0.0000022720043073868294,
+          "absoluteRmsUv": 0.06022797771572732,
+          "maximumAbsoluteUv": 0.09599269961257928
+        },
+        {
+          "cellId": "E0002",
+          "relativeRms": 0.0004131295862356859,
+          "absoluteRmsUv": 0.06157339778317608,
+          "maximumAbsoluteUv": 0.09693312197633919
+        },
+        {
+          "cellId": "E0003",
+          "relativeRms": 0.0004250228854316117,
+          "absoluteRmsUv": 0.06330239870003085,
+          "maximumAbsoluteUv": 0.09955386649537074
+        },
+        {
+          "cellId": "E0004",
+          "relativeRms": 0.0007930704464262748,
+          "absoluteRmsUv": 0.06439902795925005,
+          "maximumAbsoluteUv": 0.10039857495838106
+        }
+      ],
+      "baseDomain": {
+        "outerRadiusUm": 1200,
+        "halfLengthUm": 8000
+      },
+      "expandedDomain": {
+        "outerRadiusUm": 1800,
+        "halfLengthUm": 12000
+      }
+    },
+    {
+      "name": "Grounded-domain expansion: maximum differential-contact coupling change",
+      "value": 0.00003621628146324294,
+      "tolerance": 0.1,
+      "status": "pass",
+      "byWell": [
+        {
+          "wellId": "W1",
+          "baseMvPerUa": 560.8708153146981,
+          "expandedMvPerUa": 560.8708173608991,
+          "relativeChange": 3.648257135549709e-9
+        },
+        {
+          "wellId": "W2",
+          "baseMvPerUa": 0.15458616986169849,
+          "expandedMvPerUa": 0.15458828320077397,
+          "relativeChange": 0.000013670758428329323
+        },
+        {
+          "wellId": "W3",
+          "baseMvPerUa": 0.15401820331488164,
+          "expandedMvPerUa": 0.1540203319566309,
+          "relativeChange": 0.000013820524356838562
+        },
+        {
+          "wellId": "W4",
+          "baseMvPerUa": 0.058266516722255635,
+          "expandedMvPerUa": 0.05826862699525137,
+          "relativeChange": 0.00003621628146324294
+        }
+      ]
+    }
+  ],
+  "baseDiagnostics": {
+    "discretization": "conforming P1 tetrahedral FEM with explicit removed insulating volumes",
+    "nodes": 48655,
+    "tetrahedra": 256848,
+    "excludedInsulatorOrCellTetrahedra": 26544,
+    "rawNodes": 49075,
+    "nonzeros": 981147,
+    "estimatedBytes": 33586748,
+    "explicitCells": 4,
+    "explicitWells": 4,
+    "regionTetrahedra": [
+      99408,
+      24576,
+      36864,
+      36864,
+      59136
+    ],
+    "constructPresent": true,
+    "sourceModel": "finite surface current density on explicit inner-wall patches",
+    "wallBoundary": "natural zero normal flux; no conductive wall tetrahedra retained",
+    "apertureModel": "explicit annular conducting bore and access volume",
+    "outerBoundary": "zero Dirichlet on outer cylindrical polygon and both ends",
+    "localToEffectiveBoundaryUm": [
+      90,
+      90,
+      90,
+      90
+    ],
+    "cellRepresentation": "Explicit soma/stem/near-well neurite exclusion; distal cables embedded in effective endoneurial tensor",
+    "meshBuildSeconds": 0.968452095,
+    "iterations": 958,
+    "relativeResidual": 2.031834127958102e-12,
+    "sourceReturnImbalanceUa": -2.0816681711721685e-17,
+    "boundaryReactionUa": 5.461336150223543e-13,
+    "globalCurrentClosureUa": 5.461127983406426e-13,
+    "summedInteriorResidualUa": -5.318160313224064e-13,
+    "preconditioner": {
+      "kind": "IC(0)",
+      "diagonalShift": 0.01,
+      "constructionSeconds": 0.1159032340000001,
+      "failedShifts": [
+        {
+          "shift": 0,
+          "firstNonPositivePivot": 12259
+        },
+        {
+          "shift": 1e-8,
+          "firstNonPositivePivot": 12259
+        },
+        {
+          "shift": 0.000001,
+          "firstNonPositivePivot": 12259
+        },
+        {
+          "shift": 0.0001,
+          "firstNonPositivePivot": 12334
+        },
+        {
+          "shift": 0.001,
+          "firstNonPositivePivot": 12334
+        }
+      ]
+    },
+    "solveSeconds": 4.89592596,
+    "units": {
+      "potential": "mV/uA",
+      "current": "uA",
+      "coordinates": "um",
+      "conductivity": "S/m"
+    },
+    "contactAreasUm2": {
+      "source": 35.92017155167653,
+      "return": 35.92017155167653
+    },
+    "pairArtifactMvPerUa": 560.8708153146981,
+    "apertures": [
+      {
+        "wellId": "W1",
+        "cellId": "E0001",
+        "direction": "peripheral",
+        "boreInnerZUm": -67.5,
+        "boreOuterZUm": -70,
+        "conductingAreaUm2": 12.454272688646991,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": 0.10140348394041043,
+        "cutCurrentsUaPerUa": [
+          0.10140348394040886,
+          0.101403483940412
+        ],
+        "currentSpreadUaPerUa": 3.1363800445660672e-15,
+        "meanPotentialDropMvPerUa": 67.8505324206576,
+        "measuredBoreResistanceMvPerUa": 669.114410906531,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065314,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W1",
+        "cellId": "E0001",
+        "direction": "central",
+        "boreInnerZUm": 67.5,
+        "boreOuterZUm": 70,
+        "conductingAreaUm2": 12.454272688646991,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": -0.10140348394053869,
+        "cutCurrentsUaPerUa": [
+          -0.10140348394053882,
+          -0.10140348394053858
+        ],
+        "currentSpreadUaPerUa": 2.3592239273284576e-16,
+        "meanPotentialDropMvPerUa": -67.85053242074355,
+        "measuredBoreResistanceMvPerUa": 669.1144109065323,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065314,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W2",
+        "cellId": "E0002",
+        "direction": "peripheral",
+        "boreInnerZUm": -67.5,
+        "boreOuterZUm": -70,
+        "conductingAreaUm2": 12.454272688646997,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": -0.0005191358969231707,
+        "cutCurrentsUaPerUa": [
+          -0.0005191358969190475,
+          -0.000519135896927294
+        ],
+        "currentSpreadUaPerUa": 8.246550144141995e-15,
+        "meanPotentialDropMvPerUa": -0.3473613098501811,
+        "measuredBoreResistanceMvPerUa": 669.1144109065312,
+        "uniformAnnulusResistanceMvPerUa": 669.114410906531,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W2",
+        "cellId": "E0002",
+        "direction": "central",
+        "boreInnerZUm": 67.5,
+        "boreOuterZUm": 70,
+        "conductingAreaUm2": 12.454272688646997,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": 0.000519135896892686,
+        "cutCurrentsUaPerUa": [
+          0.0005191358968906615,
+          0.0005191358968947105
+        ],
+        "currentSpreadUaPerUa": 4.049061433364365e-15,
+        "meanPotentialDropMvPerUa": 0.3473613098297832,
+        "measuredBoreResistanceMvPerUa": 669.114410906531,
+        "uniformAnnulusResistanceMvPerUa": 669.114410906531,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W3",
+        "cellId": "E0003",
+        "direction": "peripheral",
+        "boreInnerZUm": -67.5,
+        "boreOuterZUm": -70,
+        "conductingAreaUm2": 12.454272688646986,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": -0.0005169215038974907,
+        "cutCurrentsUaPerUa": [
+          -0.0005169215039001402,
+          -0.0005169215038948413
+        ],
+        "currentSpreadUaPerUa": 5.298929697805654e-15,
+        "meanPotentialDropMvPerUa": -0.345879627565288,
+        "measuredBoreResistanceMvPerUa": 669.1144109065318,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065316,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W3",
+        "cellId": "E0003",
+        "direction": "central",
+        "boreInnerZUm": 67.5,
+        "boreOuterZUm": 70,
+        "conductingAreaUm2": 12.454272688646986,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": 0.0005169215039679403,
+        "cutCurrentsUaPerUa": [
+          0.00051692150395964,
+          0.0005169215039762407
+        ],
+        "currentSpreadUaPerUa": 1.6600653143794553e-14,
+        "meanPotentialDropMvPerUa": 0.34587962761242685,
+        "measuredBoreResistanceMvPerUa": 669.1144109065318,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065316,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W4",
+        "cellId": "E0004",
+        "direction": "peripheral",
+        "boreInnerZUm": -67.5,
+        "boreOuterZUm": -70,
+        "conductingAreaUm2": 12.454272688646986,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": -0.0001956239340662126,
+        "cutCurrentsUaPerUa": [
+          -0.00019562393406585943,
+          -0.0001956239340665658
+        ],
+        "currentSpreadUaPerUa": 7.063577153743061e-16,
+        "meanPotentialDropMvPerUa": -0.13089479340193194,
+        "measuredBoreResistanceMvPerUa": 669.1144109065311,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065316,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W4",
+        "cellId": "E0004",
+        "direction": "central",
+        "boreInnerZUm": 67.5,
+        "boreOuterZUm": 70,
+        "conductingAreaUm2": 12.454272688646986,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": 0.00019562393405749343,
+        "cutCurrentsUaPerUa": [
+          0.00019562393405892577,
+          0.00019562393405606111
+        ],
+        "currentSpreadUaPerUa": 2.8646518750868877e-15,
+        "meanPotentialDropMvPerUa": 0.13089479339609766,
+        "measuredBoreResistanceMvPerUa": 669.1144109065305,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065316,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      }
+    ]
+  },
+  "expandedDiagnostics": {
+    "discretization": "conforming P1 tetrahedral FEM with explicit removed insulating volumes",
+    "nodes": 48655,
+    "tetrahedra": 256848,
+    "excludedInsulatorOrCellTetrahedra": 26544,
+    "rawNodes": 49075,
+    "nonzeros": 981147,
+    "estimatedBytes": 33586748,
+    "explicitCells": 4,
+    "explicitWells": 4,
+    "regionTetrahedra": [
+      99408,
+      24576,
+      36864,
+      36864,
+      59136
+    ],
+    "constructPresent": true,
+    "sourceModel": "finite surface current density on explicit inner-wall patches",
+    "wallBoundary": "natural zero normal flux; no conductive wall tetrahedra retained",
+    "apertureModel": "explicit annular conducting bore and access volume",
+    "outerBoundary": "zero Dirichlet on outer cylindrical polygon and both ends",
+    "localToEffectiveBoundaryUm": [
+      90,
+      90,
+      90,
+      90
+    ],
+    "cellRepresentation": "Explicit soma/stem/near-well neurite exclusion; distal cables embedded in effective endoneurial tensor",
+    "meshBuildSeconds": 1.1689901980000004,
+    "iterations": 952,
+    "relativeResidual": 2.0258032110171474e-12,
+    "sourceReturnImbalanceUa": -2.0816681711721685e-17,
+    "boundaryReactionUa": 4.274283048691262e-12,
+    "globalCurrentClosureUa": 4.27426223200955e-12,
+    "summedInteriorResidualUa": -4.251591465242759e-12,
+    "preconditioner": {
+      "kind": "IC(0)",
+      "diagonalShift": 0.01,
+      "constructionSeconds": 0.10404812500000025,
+      "failedShifts": [
+        {
+          "shift": 0,
+          "firstNonPositivePivot": 12259
+        },
+        {
+          "shift": 1e-8,
+          "firstNonPositivePivot": 12259
+        },
+        {
+          "shift": 0.000001,
+          "firstNonPositivePivot": 12259
+        },
+        {
+          "shift": 0.0001,
+          "firstNonPositivePivot": 12334
+        },
+        {
+          "shift": 0.001,
+          "firstNonPositivePivot": 12334
+        }
+      ]
+    },
+    "solveSeconds": 4.558521088,
+    "units": {
+      "potential": "mV/uA",
+      "current": "uA",
+      "coordinates": "um",
+      "conductivity": "S/m"
+    },
+    "contactAreasUm2": {
+      "source": 35.92017155167653,
+      "return": 35.92017155167653
+    },
+    "pairArtifactMvPerUa": 560.8708173608991,
+    "apertures": [
+      {
+        "wellId": "W1",
+        "cellId": "E0001",
+        "direction": "peripheral",
+        "boreInnerZUm": -67.5,
+        "boreOuterZUm": -70,
+        "conductingAreaUm2": 12.454272688646991,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": 0.1014034770697265,
+        "cutCurrentsUaPerUa": [
+          0.10140347706972494,
+          0.10140347706972805
+        ],
+        "currentSpreadUaPerUa": 3.1086244689504383e-15,
+        "meanPotentialDropMvPerUa": 67.850527823384,
+        "measuredBoreResistanceMvPerUa": 669.1144109065314,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065314,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W1",
+        "cellId": "E0001",
+        "direction": "central",
+        "boreInnerZUm": 67.5,
+        "boreOuterZUm": 70,
+        "conductingAreaUm2": 12.454272688646991,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": -0.10140347706983285,
+        "cutCurrentsUaPerUa": [
+          -0.10140347706983117,
+          -0.10140347706983452
+        ],
+        "currentSpreadUaPerUa": 3.344546861683284e-15,
+        "meanPotentialDropMvPerUa": -67.85052782345524,
+        "measuredBoreResistanceMvPerUa": 669.114410906532,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065314,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W2",
+        "cellId": "E0002",
+        "direction": "peripheral",
+        "boreInnerZUm": -67.5,
+        "boreOuterZUm": -70,
+        "conductingAreaUm2": 12.454272688646997,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": -0.0005191429926223409,
+        "cutCurrentsUaPerUa": [
+          -0.0005191429926252604,
+          -0.0005191429926194213
+        ],
+        "currentSpreadUaPerUa": 5.839079220137933e-15,
+        "meanPotentialDropMvPerUa": -0.347366057684751,
+        "measuredBoreResistanceMvPerUa": 669.1144109065306,
+        "uniformAnnulusResistanceMvPerUa": 669.114410906531,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W2",
+        "cellId": "E0002",
+        "direction": "central",
+        "boreInnerZUm": 67.5,
+        "boreOuterZUm": 70,
+        "conductingAreaUm2": 12.454272688646997,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": 0.0005191429925049435,
+        "cutCurrentsUaPerUa": [
+          0.0005191429925058642,
+          0.0005191429925040229
+        ],
+        "currentSpreadUaPerUa": 1.841300549532132e-15,
+        "meanPotentialDropMvPerUa": 0.347366057606199,
+        "measuredBoreResistanceMvPerUa": 669.1144109065312,
+        "uniformAnnulusResistanceMvPerUa": 669.114410906531,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W3",
+        "cellId": "E0003",
+        "direction": "peripheral",
+        "boreInnerZUm": -67.5,
+        "boreOuterZUm": -70,
+        "conductingAreaUm2": 12.454272688646986,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": -0.0005169286469576453,
+        "cutCurrentsUaPerUa": [
+          -0.0005169286469577358,
+          -0.0005169286469575549
+        ],
+        "currentSpreadUaPerUa": 1.809533425878307e-16,
+        "meanPotentialDropMvPerUa": -0.3458844070897755,
+        "measuredBoreResistanceMvPerUa": 669.1144109065322,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065316,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W3",
+        "cellId": "E0003",
+        "direction": "central",
+        "boreInnerZUm": 67.5,
+        "boreOuterZUm": 70,
+        "conductingAreaUm2": 12.454272688646986,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": 0.0005169286474496857,
+        "cutCurrentsUaPerUa": [
+          0.0005169286474526248,
+          0.0005169286474467468
+        ],
+        "currentSpreadUaPerUa": 5.878002078130162e-15,
+        "meanPotentialDropMvPerUa": 0.34588440741900695,
+        "measuredBoreResistanceMvPerUa": 669.1144109065323,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065316,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W4",
+        "cellId": "E0004",
+        "direction": "peripheral",
+        "boreInnerZUm": -67.5,
+        "boreOuterZUm": -70,
+        "conductingAreaUm2": 12.454272688646986,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": -0.0001956310179075374,
+        "cutCurrentsUaPerUa": [
+          -0.0001956310179074691,
+          -0.00019563101790760567
+        ],
+        "currentSpreadUaPerUa": 1.3655526362454928e-16,
+        "meanPotentialDropMvPerUa": -0.130899533302247,
+        "measuredBoreResistanceMvPerUa": 669.1144109065315,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065316,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      },
+      {
+        "wellId": "W4",
+        "cellId": "E0004",
+        "direction": "central",
+        "boreInnerZUm": 67.5,
+        "boreOuterZUm": 70,
+        "conductingAreaUm2": 12.454272688646986,
+        "boreLengthUm": 2.5,
+        "outwardCurrentUaPerUa": 0.0001956310179095473,
+        "cutCurrentsUaPerUa": [
+          0.00019563101790949524,
+          0.0001956310179095994
+        ],
+        "currentSpreadUaPerUa": 1.0416472372154484e-16,
+        "meanPotentialDropMvPerUa": 0.13089953330359194,
+        "measuredBoreResistanceMvPerUa": 669.1144109065319,
+        "uniformAnnulusResistanceMvPerUa": 669.1144109065316,
+        "meaning": "Resolved bore voltage drop divided by discrete aperture current; source/access impedance is separate. Null resistance means current too small for a stable ratio."
+      }
+    ]
+  },
+  "sourceHashes": {
+    "src/lib/axon-interface/field-stage1.mjs": "dd60139ae3bff6673e3b1bb7d0361694d41715f53de70207c9fa069c2cc34653",
+    "src/lib/axon-interface/bipolar.mjs": "d47f6717b3faa87ae775c67e1fee4ce0f222e5e954cdba6c765d3d7dffb22098",
+    "src/lib/axon-interface/mrg.mjs": "182b94c586591599dbcea42b63ececba486d42e4a72f7923abb53a171fe752f5",
+    "scripts/axon-interface/field-stage1-domain-validate.mjs": "feb47c74fd0bc87998650361cd7bcf83b0367a08a1d3743cf1d8031ff1ed9080",
+    "docs/axon-interface/field-stage1-domain-acceptance.json": "6bff51700c832aad7662560a211383a0cf0857e926a8bd06cf75984571e46f5d"
+  },
+  "sourceChangedDuringRun": [],
+  "limitations": [
+    "This measured expansion sensitivity concerns the declared dense fixture and actual grounded boundary. It does not prove infinite-domain convergence for all geometries or parameter settings.",
+    "The two domains share the local explicit wells and effective outer-tissue assumptions. No field alignment, baseline subtraction, or amplitude adjustment is performed."
+  ]
+}

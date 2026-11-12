@@ -1,0 +1,172 @@
+{
+  "schema": "buildthesimulation.axon-interface.reproduction.v1",
+  "startedAt": "2026-11-11T22:18:52.200494+00:00",
+  "scope": "full-numerical-and-integration",
+  "acceptanceChanged": false,
+  "stages": [
+    {
+      "name": "native-mechanism-build",
+      "arguments": [
+        "/workspace/scratch/00f6a4fc6cf7/mrg-venv/bin/nrnivmodl"
+      ],
+      "status": "pass",
+      "exitCode": 0,
+      "elapsedSeconds": 0.9395427810000001,
+      "log": "scripts/axon-interface/.reproduction/native-mechanism-build.log"
+    },
+    {
+      "name": "field-numerical-studies",
+      "arguments": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "/workspace/scratch/00f6a4fc6cf7/buildthesimulation/scripts/axon-interface/field-validate.mjs"
+      ],
+      "status": "pass",
+      "exitCode": 0,
+      "elapsedSeconds": 16.95009892500002,
+      "log": "scripts/axon-interface/.reproduction/field-numerical-studies.log"
+    },
+    {
+      "name": "mrg-numerical-studies",
+      "arguments": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "/workspace/scratch/00f6a4fc6cf7/buildthesimulation/scripts/axon-interface/mrg-validate.mjs"
+      ],
+      "status": "pass",
+      "exitCode": 0,
+      "elapsedSeconds": 63.30885370099986,
+      "log": "scripts/axon-interface/.reproduction/mrg-numerical-studies.log"
+    },
+    {
+      "name": "coupled-fem-neuron-reference",
+      "arguments": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "/workspace/scratch/00f6a4fc6cf7/buildthesimulation/scripts/axon-interface/mrg-coupled-validate.mjs"
+      ],
+      "status": "pass",
+      "exitCode": 0,
+      "elapsedSeconds": 11.645809076999967,
+      "log": "scripts/axon-interface/.reproduction/coupled-fem-neuron-reference.log"
+    },
+    {
+      "name": "integration-tests",
+      "arguments": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "--test-concurrency=1",
+        "--test-reporter=junit",
+        "--test-reporter-destination=/workspace/scratch/00f6a4fc6cf7/buildthesimulation/scripts/axon-interface/.reproduction/integration-tests.xml",
+        "tests/axon-interface-contracts.mjs",
+        "scripts/axon-interface/field-contract-tests.mjs"
+      ],
+      "status": "pass",
+      "exitCode": 0,
+      "elapsedSeconds": 8.10689158199989,
+      "log": "scripts/axon-interface/.reproduction/integration-tests.log"
+    }
+  ],
+  "sourceHashes": {
+    "docs/axon-interface/field-acceptance.json": "93f9471d7435aa54b0fd5a7bc4222b7c32c80fa9ad6109cb8f5b7835030e6b53",
+    "docs/axon-interface/mrg-acceptance.json": "a565c572245357e51dbbb960594befb3142a1983a5c743d705f300cc146c0274",
+    "scripts/axon-interface/field-contract-tests.mjs": "abdb272bf4cab304adf28439f7f2c9f564d1c72523949248174efd4af1eece06",
+    "scripts/axon-interface/field-reference.py": "b94d959e2aef5f6a54e530d389b362cd416eab216a0da5f1f9292cabebcf425a",
+    "scripts/axon-interface/field-requirements.txt": "1668a3152e33680d94637b13421c15e68bd97cd8701f7f555c691f5bc5c0b9f3",
+    "scripts/axon-interface/field-validate.mjs": "57cfb386a746f6cead9fcc99011862016f836e69caa03667850c26997a38e6e8",
+    "scripts/axon-interface/mrg-coupled-validate.mjs": "5083a2933ece1b93ce78983769dca700d64abeaa59dfcf5329cca3774199ca30",
+    "scripts/axon-interface/mrg-modeldb/AXNODE.mod": "e0fa400a469aa2beba491fabffaa4f6bc03c629015a2c0f2ddc471fb3e687bd3",
+    "scripts/axon-interface/mrg-modeldb/MRGaxon.hoc": "73da0790cdbbb1a7db036e9806729a74fcc0606e62d716daabeddbe8c1999014",
+    "scripts/axon-interface/mrg-modeldb/README": "847ce5ac51b3b1be75d0d34a7003ce7a7e14ec06a5cf47acbf545274b5ec369a",
+    "scripts/axon-interface/mrg-reference.py": "3cd715216d95241eaade5e99c7d6cdeec4dc414d47eadf7f60649f4ee3d2d9a1",
+    "scripts/axon-interface/mrg-reproduce.sh": "9c496cdb3ce8ba91a1e82dfce0797cd89d1bd518101e16de7385fdd3f4f8dbff",
+    "scripts/axon-interface/mrg-requirements.txt": "48762d17f9a0d6d5ff28457a9113a4de402556efa225dfc8fdb238186def2c7b",
+    "scripts/axon-interface/mrg-validate.mjs": "26acd20e3861fe28ef74466f468a718ac8f1ac3398eedfbf7e5fad2ab909fbd4",
+    "scripts/axon-interface/reproduce.py": "e3df95c12f6244801e60b50bb8e198c1c9df7180264bb6e12f0007a9b5fb54aa",
+    "scripts/axon-interface/requirements.txt": "ffb7284d1b58d117c3305be00f92f6a2aa9655b9908b043e9704d959b75e8559",
+    "src/lib/axon-interface/evidence.mjs": "2dbed68e8a07c304243d628d613a6f0050fa175690d7e89782cd2fbce78ddbed",
+    "src/lib/axon-interface/export.mjs": "ce8629555b0a5f26056274217efd488488d8d8c8371fe60401561c0b87782c08",
+    "src/lib/axon-interface/field.mjs": "c55565795085e37bc1804c99c152f79d563e8cad678f2eafc2e41dc3ce5a9734",
+    "src/lib/axon-interface/geometry.mjs": "0a41a23b84627dbbc3185eebe881e7aa91d09b2a01f5f213aefec070b41f2d8b",
+    "src/lib/axon-interface/metrics.mjs": "636ab52f4ab4fe4e7fc110dfcc13cb84bd11a75ba7c22fbf60cfd5ea0970c78d",
+    "src/lib/axon-interface/mrg.mjs": "cbaa91ed8e8cbe5acc56d55f229ddcd0bbbe32a4272d4b8280eded3aff772405",
+    "src/lib/axon-interface/protocol.mjs": "33961ca40833a0bdc40203b8dccb4e41a61580462ff3cc8eb6b6ea0e7562ab4b",
+    "src/lib/axon-interface/requests.mjs": "6cb2207f90a1b0f3c01422c97dd80e3a3791a84b973066a4fb71cc487762ff8a",
+    "src/lib/axon-interface/settings.mjs": "7649d5e2e69c6ea470fd5d03373ca2b15094188291a0b416e206f13866d3718a",
+    "src/lib/axon-interface/worker.mjs": "8bb2cea796fcba7048850f2463feb7a4e78dbd5eef8217207425560620eefb54",
+    "tests/axon-interface-contracts.mjs": "1086b4d25fa68b33c6f75891728c6b9796bfa7d52dd280814dfc08a51a8cb338",
+    "tests/helpers/axon-interface-worker-harness.mjs": "639ca2abb5955e5f82090f04e676d0531595bca7a898dded8f3d79844020cbed"
+  },
+  "runtime": {
+    "hostPython": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "machine": "x86_64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "logicalCpus": 9,
+    "memoryBytes": 10451427328,
+    "node": "v24.22.1",
+    "referencePython": {
+      "python": "3.12.14",
+      "executable": "/workspace/scratch/00f6a4fc6cf7/mrg-venv/bin/python",
+      "packages": {
+        "neuron": "8.2.7",
+        "numpy": "2.3.5",
+        "scipy": "1.17.0"
+      }
+    },
+    "cCompiler": "gcc (Debian 14.2.0-19) 14.2.0",
+    "cxxCompiler": "g++ (Debian 14.2.0-19) 14.2.0"
+  },
+  "limitations": [
+    "Numerical verification concerns the stated equations, not human biology, clinical performance, or device safety.",
+    "Retained exploratory-model failures remain in their reports even when required numerical gates pass."
+  ],
+  "integrationSummary": {
+    "passed": 15,
+    "failed": 0,
+    "skipped": 0
+  },
+  "sourceChangedDuringRun": [],
+  "status": "pass",
+  "completedAt": "2026-11-11T22:20:33.251861+00:00",
+  "retainedFailures": [
+    {
+      "recoveredFromConversation": true,
+      "originalTimestamp": null,
+      "event": "failed-reproduction",
+      "scope": "full-numerical-and-integration",
+      "error": "PackageNotFoundError: neuron after the explicitly supplied virtual-environment Python was resolved to its base-interpreter symlink target.",
+      "cause": "Path.resolve dereferenced the environment executable and selected an interpreter without the pinned NEURON package.",
+      "correction": "Preserve the supplied executable as an absolute path without dereferencing its symlink; verify all pinned dependencies in that executable.",
+      "recoveryNote": "Original report bytes were lost during the execution environment reset. This failure and correction are recovered from retained conversation output."
+    },
+    {
+      "recoveredFromConversation": true,
+      "originalTimestamp": null,
+      "event": "failed-reproduction",
+      "scope": "full-numerical-and-integration",
+      "failedStages": [
+        {
+          "name": "source-stability",
+          "status": "fail",
+          "changedFiles": [
+            "src/lib/axon-interface/geometry.mjs",
+            "src/lib/axon-interface/settings.mjs"
+          ]
+        }
+      ],
+      "context": "Numerical stages passed, but production source changed during the run, so the overall reproduction correctly failed. A later run used frozen sources.",
+      "recoveryNote": "This historical event is not verification of the recovered or reconstructed production modules."
+    },
+    {
+      "recoveredFromConversation": true,
+      "originalTimestamp": null,
+      "event": "interrupted-reproduction",
+      "scope": "full-numerical-and-integration",
+      "completedStages": [
+        "native-mechanism-build"
+      ],
+      "interruptedStage": "field-numerical-studies",
+      "status": "incomplete",
+      "successClaimed": false,
+      "recoveryNote": "A historical attempt was interrupted before a final report. No success is inferred from the incomplete run, and no exact original timing is available."
+    }
+  ]
+}

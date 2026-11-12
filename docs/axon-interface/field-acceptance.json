@@ -1,0 +1,24 @@
+{
+  "schema": "axon-interface-field-acceptance/1",
+  "declaredBeforeStudies": "2026-11-11",
+  "immutableAcceptance": true,
+  "studies": {
+    "independentPythonPotentialMaxMicrovolt": 0.001,
+    "linearSolveRelativeResidual": 1e-10,
+    "superpositionRelativeMax": 1e-9,
+    "reciprocityRelative": 1e-9,
+    "matchedSourceReturnRelativeImbalance": 1e-12,
+    "globalCurrentConservationRelativeResidual": 1e-9,
+    "homogeneousFiniteDomainAnalyticRelativeRms": 0.12,
+    "layeredRadialAnalyticRelativeRms": 0.03,
+    "fieldRefinementRelativeRms": 0.10
+  },
+  "justification": {
+    "independentPythonPotentialMaxMicrovolt": "The prompt's absolute implementation-agreement gate. Compare the same FE discretization with independently assembled scipy sparse equations and a direct sparse solve, without offset, scale or coordinate adjustment.",
+    "linearSolveRelativeResidual": "A backward-error gate for PCG. This verifies the discrete linear solve, not continuous field accuracy.",
+    "analytic": "Continuous analytic benchmarks bound discretization error separately from algebraic correctness. The homogeneous comparison excludes points inside the finite source support and includes the specified analytic Dirichlet boundary to separate domain truncation from discretization.",
+    "layered": "An exact cylindrical radial flux solution with piecewise radial conductivity and prescribed inner/outer potentials tests explicitly resolved perineurial interfaces. It is not a validation of an arbitrary microscopic electrode near a well aperture.",
+    "refinement": "A 10% relative RMS field change gate is a starting discretization gate, not the tighter membrane-waveform gate. No successful algebraic benchmark licenses underresolved electrode or cell geometry."
+  },
+  "retainedFailures": "Every failing numerical run is appended to field-history.jsonl. Acceptance values are not relaxed after observing results."
+}

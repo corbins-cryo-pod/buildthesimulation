@@ -1,0 +1,12 @@
+{
+  "schema": "explicit-well-dense-acceptance/1",
+  "declaredAt": "2026-11-11",
+  "declaration": "Declared before the first dense four-well study; retains the main10% field refinement gate and applies it to every cell separately, including all three off-target neighbors.",
+  "pitchUm": 35,
+  "maximumPerCellRelativeRmsChange": 0.1,
+  "maximumPerApertureFluxRelativeChange": 0.1,
+  "geometricDomainChangedBySomaSegmentation": 0,
+  "wallOrCellInteriorPointAccepted": 0,
+  "apertureFluidPointRejected": 0,
+  "failurePolicy": "Keep every failure and source hash. Do not normalize away or pool small neighbor fields into the driven cell's amplitude."
+}

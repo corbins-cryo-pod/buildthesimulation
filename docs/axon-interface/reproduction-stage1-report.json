@@ -1,0 +1,535 @@
+{
+  "schema": "buildthesimulation.axon-interface.stage1-reproduction.v1",
+  "scope": "stage1-complete-numerical-and-integration",
+  "mode": "verified-existing-evidence",
+  "startedAt": "2026-11-11T23:33:28.900176+00:00",
+  "status": "pass",
+  "sourceHashes": {
+    "docs/axon-interface/bipolar-acceptance.json": "9d0bf929490004022deccdce7d28260cf4de8a5f78dee82da92fc7c4b16a94d0",
+    "docs/axon-interface/bipolar-coupled-acceptance.json": "957d45e22de2c6e34ea4b175ff7f83bd073e824cb49f49aca33de63919d98b8a",
+    "docs/axon-interface/bipolar-resolution-correction.json": "fe5d1c9b499b78e79220e207f26dc5892d03855f861529d99ecd18e0d5692f1e",
+    "docs/axon-interface/bipolar-soma-resolution-correction.json": "7756463dfefc8f1644fcea144a2ad87b1d090ac171a0bd03bcc3655762e36472",
+    "docs/axon-interface/bipolar-soma-spatial-acceptance.json": "bc9f1f00780d1b87ba5d4e5955744c3dcfd34cfe579dd42e97853bfbdf8e461c",
+    "docs/axon-interface/field-acceptance.json": "93f9471d7435aa54b0fd5a7bc4222b7c32c80fa9ad6109cb8f5b7835030e6b53",
+    "docs/axon-interface/field-stage1-acceptance.json": "ae35cf03dc5c67061e5e3d9feddb8ffe174c65efb30f2166eb8f0bc4cab02f33",
+    "docs/axon-interface/field-stage1-dense-acceptance.json": "58c0d5effa596270d5bc3fb2f058ca8ff2d800dd9e2e1a8232e439b3fc1b5402",
+    "docs/axon-interface/field-stage1-domain-acceptance.json": "6bff51700c832aad7662560a211383a0cf0857e926a8bd06cf75984571e46f5d",
+    "docs/axon-interface/mrg-acceptance.json": "a565c572245357e51dbbb960594befb3142a1983a5c743d705f300cc146c0274",
+    "scripts/axon-interface/bipolar-coupled-validate.mjs": "8a3983a056592b9253277be5e3576694aec223d9a559a94eb97067812db696c1",
+    "scripts/axon-interface/bipolar-reference.py": "da5c3ac4384cedf57095425f83073073bfd79b0b210bf7c10e09c5acedbc9955",
+    "scripts/axon-interface/bipolar-soma-spatial.mjs": "12bdf0625fdc5b2e6d974a6b0c64d95846df6887043b9c30e4204cc5ef0fb2aa",
+    "scripts/axon-interface/bipolar-validate.mjs": "4235ab1c25f4a3abb6b1fe50998fca12fb0c949d11e2b3d6a20ded16c4c1b992",
+    "scripts/axon-interface/bipolar-validation-utils.mjs": "0715ec3a46ff84b3b19d0f24256d2fe03f2746301026ee4e1f3fcbc96bcd1cfd",
+    "scripts/axon-interface/field-contract-tests.mjs": "abdb272bf4cab304adf28439f7f2c9f564d1c72523949248174efd4af1eece06",
+    "scripts/axon-interface/field-reference.py": "b94d959e2aef5f6a54e530d389b362cd416eab216a0da5f1f9292cabebcf425a",
+    "scripts/axon-interface/field-requirements.txt": "1668a3152e33680d94637b13421c15e68bd97cd8701f7f555c691f5bc5c0b9f3",
+    "scripts/axon-interface/field-stage1-benchmarks.mjs": "ab58ed967b0dcc3927c26268669c2f8e9e606e2874b2b8e533e190d4be3efc5b",
+    "scripts/axon-interface/field-stage1-dense-validate.mjs": "a47ea7e8ef0408240ac0e48afd052786a6a6a230ac1cf2ad46d49450a4e82e00",
+    "scripts/axon-interface/field-stage1-domain-validate.mjs": "feb47c74fd0bc87998650361cd7bcf83b0367a08a1d3743cf1d8031ff1ed9080",
+    "scripts/axon-interface/field-stage1-fixtures.mjs": "2558872ff170a0b598332b33cec44bc2016d0dbca26c4b597f97522aeff67483",
+    "scripts/axon-interface/field-stage1-reference.py": "141197e0bd7b7222283d762671ff87e54ce38f1311748c8c1aaf32d34f122058",
+    "scripts/axon-interface/field-stage1-resources.mjs": "44fa2b8ce3b44f489fff637444a62210413e4605a384fc641d5f9d99edf32fb7",
+    "scripts/axon-interface/field-stage1-validate.mjs": "1d30bc114c3eda879471e44bcc50931833e1c5a2dac2ba04a77fc639aff4698b",
+    "scripts/axon-interface/field-validate.mjs": "57cfb386a746f6cead9fcc99011862016f836e69caa03667850c26997a38e6e8",
+    "scripts/axon-interface/mrg-coupled-validate.mjs": "5083a2933ece1b93ce78983769dca700d64abeaa59dfcf5329cca3774199ca30",
+    "scripts/axon-interface/mrg-modeldb/AXNODE.mod": "e0fa400a469aa2beba491fabffaa4f6bc03c629015a2c0f2ddc471fb3e687bd3",
+    "scripts/axon-interface/mrg-modeldb/MRGaxon.hoc": "73da0790cdbbb1a7db036e9806729a74fcc0606e62d716daabeddbe8c1999014",
+    "scripts/axon-interface/mrg-modeldb/README": "847ce5ac51b3b1be75d0d34a7003ce7a7e14ec06a5cf47acbf545274b5ec369a",
+    "scripts/axon-interface/mrg-motor-baseline.mjs": "cbaa91ed8e8cbe5acc56d55f229ddcd0bbbe32a4272d4b8280eded3aff772405",
+    "scripts/axon-interface/mrg-reference.py": "3cd715216d95241eaade5e99c7d6cdeec4dc414d47eadf7f60649f4ee3d2d9a1",
+    "scripts/axon-interface/mrg-reproduce.sh": "9c496cdb3ce8ba91a1e82dfce0797cd89d1bd518101e16de7385fdd3f4f8dbff",
+    "scripts/axon-interface/mrg-requirements.txt": "48762d17f9a0d6d5ff28457a9113a4de402556efa225dfc8fdb238186def2c7b",
+    "scripts/axon-interface/mrg-validate.mjs": "26acd20e3861fe28ef74466f468a718ac8f1ac3398eedfbf7e5fad2ab909fbd4",
+    "scripts/axon-interface/reproduce-stage1.py": "519a492fa4b861a3a84d47386d5615ee49ea3bc61a0b62a2755d62f31bca7305",
+    "scripts/axon-interface/reproduce.py": "e3df95c12f6244801e60b50bb8e198c1c9df7180264bb6e12f0007a9b5fb54aa",
+    "scripts/axon-interface/requirements.txt": "ffb7284d1b58d117c3305be00f92f6a2aa9655b9908b043e9704d959b75e8559",
+    "scripts/axon-interface/stage1-protocol-validate.mjs": "087bf01c4e0265c9d9d7151bc0e461510f1484d39a3260b8539cf2f93cc40f6f",
+    "src/lib/axon-interface/bipolar.mjs": "d47f6717b3faa87ae775c67e1fee4ce0f222e5e954cdba6c765d3d7dffb22098",
+    "src/lib/axon-interface/evidence.mjs": "cdc46f15b0bb61056da09e44d255ddcacb653cc113ac9d5c87fd0fa9212cef4b",
+    "src/lib/axon-interface/export.mjs": "f2a5bb1396cc3e2abf757faa35c85babe02d96bf234117a9aae9633071a8b5dc",
+    "src/lib/axon-interface/field-stage1.mjs": "dd60139ae3bff6673e3b1bb7d0361694d41715f53de70207c9fa069c2cc34653",
+    "src/lib/axon-interface/field.mjs": "c55565795085e37bc1804c99c152f79d563e8cad678f2eafc2e41dc3ce5a9734",
+    "src/lib/axon-interface/geometry.mjs": "0a41a23b84627dbbc3185eebe881e7aa91d09b2a01f5f213aefec070b41f2d8b",
+    "src/lib/axon-interface/identities.mjs": "06140ccd7ad743f12874cfdb339d46a9213979a409f9f60aef2981660c89c339",
+    "src/lib/axon-interface/metrics.mjs": "636ab52f4ab4fe4e7fc110dfcc13cb84bd11a75ba7c22fbf60cfd5ea0970c78d",
+    "src/lib/axon-interface/mrg.mjs": "182b94c586591599dbcea42b63ececba486d42e4a72f7923abb53a171fe752f5",
+    "src/lib/axon-interface/protocol.mjs": "33961ca40833a0bdc40203b8dccb4e41a61580462ff3cc8eb6b6ea0e7562ab4b",
+    "src/lib/axon-interface/requests.mjs": "6cb2207f90a1b0f3c01422c97dd80e3a3791a84b973066a4fb71cc487762ff8a",
+    "src/lib/axon-interface/settings.mjs": "7649d5e2e69c6ea470fd5d03373ca2b15094188291a0b416e206f13866d3718a",
+    "src/lib/axon-interface/stage1-protocol.mjs": "036ca37b4bf031286829174aec17e135cc22a0664aaca6afa8af77666b6eb7e1",
+    "src/lib/axon-interface/stage1-settings.mjs": "b952da4823fc88e863afd729408b9fa1b4424af4011c5b6e46c9cf18ad8d6c62",
+    "src/lib/axon-interface/vendor/THIRD_PARTY_LICENSES.md": "899045234e0daf5c167f08f5813da91af3d711f1d14894c475d69e4f869db1f4",
+    "src/lib/axon-interface/vendor/cdt2d-package-lock.json": "307d67afc94d179ba050a2950f5724c51fd7159cf7488f27b229fb499f504be1",
+    "src/lib/axon-interface/vendor/cdt2d-source-pins.json": "05adc096c593b846d4a6ac6c1b5a3a19b0d7da3d78d1de76977ed0859717c660",
+    "src/lib/axon-interface/vendor/cdt2d.mjs": "645d096429082510865735501c2fcfd9d3b6e7211e8c631f855b811f83dad185",
+    "src/lib/axon-interface/worker.mjs": "53d188ceed2ff450b49c5c372573a4b810db2d7fff50e8b552a2b15bac77373d",
+    "tests/axon-interface-contracts.mjs": "1086b4d25fa68b33c6f75891728c6b9796bfa7d52dd280814dfc08a51a8cb338",
+    "tests/axon-interface-stage1-contracts.mjs": "9a4d0dc914e64edd1e5a3916146caf46d194f805fc5e4f574f7460dba947f9e2",
+    "tests/helpers/axon-interface-worker-harness.mjs": "639ca2abb5955e5f82090f04e676d0531595bca7a898dded8f3d79844020cbed"
+  },
+  "commandsExecutedThisInvocation": [],
+  "measurementsRegenerated": false,
+  "acceptanceChanged": false,
+  "evidence": [
+    {
+      "name": "nativeBuild",
+      "report": "docs/axon-interface/native-build-report.json",
+      "mode": "verified-from-existing",
+      "executedByThisInvocation": false,
+      "reportSha256": "76f6ed49d724df4e2edc92561a441a3573d3d40363ecfb6f11a2d9c9028e9765",
+      "sourceHashCount": 6,
+      "status": "pass",
+      "measurementStartedAt": "2026-11-11T23:28:52.267658+00:00",
+      "measurementCompletedAt": "2026-11-11T23:28:53.148103+00:00",
+      "capturedExecution": {
+        "name": "stage1-native-mechanism-build",
+        "arguments": [
+          "/workspace/scratch/00f6a4fc6cf7/mrg-venv/bin/nrnivmodl"
+        ],
+        "status": "pass",
+        "exitCode": 0,
+        "elapsedSeconds": 0.8802774759997192,
+        "log": "scripts/axon-interface/.reproduction/stage1-native-mechanism-build.log",
+        "startedAt": "2026-11-11T23:28:52.267658+00:00",
+        "completedAt": "2026-11-11T23:28:53.148103+00:00",
+        "cwd": "scripts/axon-interface/mrg-modeldb",
+        "mode": "executed",
+        "executedByThisInvocation": true,
+        "referenceEnvironment": {
+          "MRG_PYTHON": "/workspace/scratch/00f6a4fc6cf7/mrg-venv/bin/python",
+          "AXON_REFERENCE_PYTHON": "/workspace/scratch/00f6a4fc6cf7/mrg-venv/bin/python",
+          "STAGE1_FIELD_EXPLORATORY": "false",
+          "CC": "/usr/bin/gcc",
+          "CXX": "/usr/bin/g++"
+        }
+      },
+      "capturedExecutionMeaning": "Retained earlier command record; not executed by this verification invocation."
+    },
+    {
+      "name": "field",
+      "report": "docs/axon-interface/field-validation.json",
+      "mode": "verified-from-existing",
+      "executedByThisInvocation": false,
+      "reportSha256": "9ac5f2a9ddcfef89fadd345bba797578ccf134b3f5f11140de794e6967c8d192",
+      "sourceHashCount": 4,
+      "producerCommand": [
+        "node",
+        "scripts/axon-interface/field-validate.mjs"
+      ],
+      "producerCommandMeaning": "Canonical producing validator identified by the retained report source hash; exact original shell invocation is not asserted unless a captured execution is included.",
+      "requiredEnvironment": {},
+      "status": "pass",
+      "measurementStartedAt": "2026-11-11T22:18:53.290Z",
+      "measurementCompletedAt": "2026-11-11T22:19:10.118Z",
+      "stabilityScope": "This legacy validator records final source hashes but does not separately record a before/after source-stability field. All current files match; aggregate commands separately enforce fixed sources when executed together."
+    },
+    {
+      "name": "membrane",
+      "report": "docs/axon-interface/mrg-numerical-report.json",
+      "mode": "verified-from-existing",
+      "executedByThisInvocation": false,
+      "reportSha256": "e8fd0eb4baa75720e148d31d7253c23d7a3ff1aa226df4621fdf7cf1e80cd49a",
+      "sourceHashCount": 6,
+      "producerCommand": [
+        "node",
+        "scripts/axon-interface/mrg-validate.mjs"
+      ],
+      "producerCommandMeaning": "Canonical producing validator identified by the retained report source hash; exact original shell invocation is not asserted unless a captured execution is included.",
+      "requiredEnvironment": {},
+      "status": "pass",
+      "measurementStartedAt": null,
+      "measurementCompletedAt": "2026-11-11T23:26:59.412Z"
+    },
+    {
+      "name": "motorCoupled",
+      "report": "docs/axon-interface/mrg-coupled-report.json",
+      "mode": "verified-from-existing",
+      "executedByThisInvocation": false,
+      "reportSha256": "7108ee35b47c704767462a901818af91d9dc2f7468c87647c83751c5eb08bc97",
+      "sourceHashCount": 10,
+      "producerCommand": [
+        "node",
+        "scripts/axon-interface/mrg-coupled-validate.mjs"
+      ],
+      "producerCommandMeaning": "Canonical producing validator identified by the retained report source hash; exact original shell invocation is not asserted unless a captured execution is included.",
+      "requiredEnvironment": {},
+      "status": "pass",
+      "measurementStartedAt": null,
+      "measurementCompletedAt": "2026-11-11T23:26:07.335Z"
+    },
+    {
+      "name": "wellField",
+      "report": "docs/axon-interface/field-stage1-validation.json",
+      "mode": "verified-from-existing",
+      "executedByThisInvocation": false,
+      "reportSha256": "a2b431943d6e0d2c0187606d8fd965fb796b84944cd288098541310b03e27461",
+      "sourceHashCount": 9,
+      "producerCommand": [
+        "node",
+        "scripts/axon-interface/field-stage1-validate.mjs"
+      ],
+      "producerCommandMeaning": "Canonical producing validator identified by the retained report source hash; exact original shell invocation is not asserted unless a captured execution is included.",
+      "requiredEnvironment": {},
+      "status": "pass",
+      "measurementStartedAt": "2026-11-11T23:13:27.617Z",
+      "measurementCompletedAt": "2026-11-11T23:15:22.762Z"
+    },
+    {
+      "name": "denseWells",
+      "report": "docs/axon-interface/field-stage1-dense-validation.json",
+      "mode": "verified-from-existing",
+      "executedByThisInvocation": false,
+      "reportSha256": "1369ae937602424709539eb3b7993b702461697b6bafe1a3e82d246ee5192553",
+      "sourceHashCount": 5,
+      "producerCommand": [
+        "node",
+        "scripts/axon-interface/field-stage1-dense-validate.mjs"
+      ],
+      "producerCommandMeaning": "Canonical producing validator identified by the retained report source hash; exact original shell invocation is not asserted unless a captured execution is included.",
+      "requiredEnvironment": {},
+      "status": "pass",
+      "measurementStartedAt": "2026-11-11T23:13:27.587Z",
+      "measurementCompletedAt": "2026-11-11T23:14:51.270Z"
+    },
+    {
+      "name": "wellBoundary",
+      "report": "docs/axon-interface/field-stage1-domain-validation.json",
+      "mode": "verified-from-existing",
+      "executedByThisInvocation": false,
+      "reportSha256": "4c4166060fd677f90c4bdbea41e5dd96f5e4331e6a2ab2b5961b4398af128653",
+      "sourceHashCount": 5,
+      "producerCommand": [
+        "node",
+        "scripts/axon-interface/field-stage1-domain-validate.mjs"
+      ],
+      "producerCommandMeaning": "Canonical producing validator identified by the retained report source hash; exact original shell invocation is not asserted unless a captured execution is included.",
+      "requiredEnvironment": {},
+      "status": "pass",
+      "measurementStartedAt": "2026-11-11T23:13:27.627Z",
+      "measurementCompletedAt": "2026-11-11T23:13:40.981Z"
+    },
+    {
+      "name": "bipolar",
+      "report": "docs/axon-interface/bipolar-numerical-report.json",
+      "mode": "verified-from-existing",
+      "executedByThisInvocation": false,
+      "reportSha256": "9150c3a9fcb23ca4882d64d4651877470c61eaf959da05bfaad9286f9123df91",
+      "sourceHashCount": 9,
+      "producerCommand": [
+        "node",
+        "scripts/axon-interface/bipolar-validate.mjs"
+      ],
+      "producerCommandMeaning": "Canonical producing validator identified by the retained report source hash; exact original shell invocation is not asserted unless a captured execution is included.",
+      "requiredEnvironment": {},
+      "status": "pass",
+      "measurementStartedAt": null,
+      "measurementCompletedAt": "2026-11-11T23:13:11.260Z"
+    },
+    {
+      "name": "somaSpatial",
+      "report": "docs/axon-interface/bipolar-soma-spatial-report.json",
+      "mode": "verified-from-existing",
+      "executedByThisInvocation": false,
+      "reportSha256": "756a48f6018038d28a369ced2eb30e129dc5dcb65f05ed81dedf2ed0291415f3",
+      "sourceHashCount": 25,
+      "producerCommand": [
+        "node",
+        "scripts/axon-interface/bipolar-soma-spatial.mjs"
+      ],
+      "producerCommandMeaning": "Canonical producing validator identified by the retained report source hash; exact original shell invocation is not asserted unless a captured execution is included.",
+      "requiredEnvironment": {
+        "STAGE1_FIELD_EXPLORATORY": "false"
+      },
+      "status": "pass",
+      "measurementStartedAt": null,
+      "measurementCompletedAt": "2026-11-11T23:17:25.699Z"
+    },
+    {
+      "name": "bipolarCoupled",
+      "report": "docs/axon-interface/bipolar-coupled-report.json",
+      "mode": "verified-from-existing",
+      "executedByThisInvocation": false,
+      "reportSha256": "38e6d522f2aab158e20a70026c3eb191836922879165357799d77e3d4e803107",
+      "sourceHashCount": 28,
+      "producerCommand": [
+        "node",
+        "scripts/axon-interface/bipolar-coupled-validate.mjs"
+      ],
+      "producerCommandMeaning": "Canonical producing validator identified by the retained report source hash; exact original shell invocation is not asserted unless a captured execution is included.",
+      "requiredEnvironment": {
+        "STAGE1_FIELD_EXPLORATORY": "false"
+      },
+      "status": "pass",
+      "measurementStartedAt": null,
+      "measurementCompletedAt": "2026-11-11T23:19:45.204Z"
+    },
+    {
+      "name": "protocol",
+      "report": "docs/axon-interface/stage1-protocol-validation.json",
+      "mode": "verified-from-existing",
+      "executedByThisInvocation": false,
+      "reportSha256": "51bcdca1a5418fd63cd5aee06c8030e974959128a4b90b0cddf6c9d2ce3bed01",
+      "sourceHashCount": 16,
+      "producerCommand": [
+        "node",
+        "scripts/axon-interface/stage1-protocol-validate.mjs"
+      ],
+      "producerCommandMeaning": "Canonical producing validator identified by the retained report source hash; exact original shell invocation is not asserted unless a captured execution is included.",
+      "requiredEnvironment": {},
+      "status": "pass",
+      "measurementStartedAt": "2026-11-11T23:21:25.641Z",
+      "measurementCompletedAt": "2026-11-11T23:32:47.078Z",
+      "fullCohort": {
+        "cohortCount": 256,
+        "physicalWellCount": 256,
+        "channelCount": 1,
+        "resolvedCellChannelPairs": 256,
+        "completedInterventionSolves": 1024,
+        "membraneCompartmentCount": 323,
+        "noSkippedCells": true,
+        "noSkippedControls": true,
+        "auditValid": true,
+        "runtimeMs": 663709.1022709999,
+        "peakRSSBytes": 1861058560
+      }
+    },
+    {
+      "name": "integration",
+      "report": "docs/axon-interface/integration-validation.json",
+      "mode": "verified-from-existing",
+      "executedByThisInvocation": false,
+      "reportSha256": "66e68cda8ccd8fc3dcfbe89d3bfd924baba4517c08d785765bd2dcba26efdb7d",
+      "sourceHashCount": 61,
+      "status": "pass",
+      "measurementStartedAt": null,
+      "measurementCompletedAt": "2026-11-11T23:29:03.593168+00:00",
+      "capturedExecution": {
+        "name": "stage1-all-integration-tests",
+        "arguments": [
+          "node",
+          "--test",
+          "--test-concurrency=1",
+          "--test-reporter=junit",
+          "--test-reporter-destination=/workspace/scratch/00f6a4fc6cf7/buildthesimulation/scripts/axon-interface/.reproduction/stage1-all-integration-tests.xml",
+          "tests/axon-interface-contracts.mjs",
+          "scripts/axon-interface/field-contract-tests.mjs",
+          "tests/axon-interface-stage1-contracts.mjs"
+        ],
+        "status": "pass",
+        "exitCode": 0,
+        "elapsedSeconds": 10.434170792999794,
+        "log": "scripts/axon-interface/.reproduction/stage1-all-integration-tests.log",
+        "startedAt": "2026-11-11T23:28:53.153172+00:00",
+        "completedAt": "2026-11-11T23:29:03.587543+00:00",
+        "cwd": ".",
+        "mode": "executed",
+        "executedByThisInvocation": true
+      },
+      "capturedExecutionMeaning": "Retained earlier command record; not executed by this verification invocation."
+    }
+  ],
+  "frozenAcceptance": {
+    "docs/axon-interface/field-acceptance.json": {
+      "sha256": "93f9471d7435aa54b0fd5a7bc4222b7c32c80fa9ad6109cb8f5b7835030e6b53",
+      "expectedSha256": "93f9471d7435aa54b0fd5a7bc4222b7c32c80fa9ad6109cb8f5b7835030e6b53",
+      "status": "pass"
+    },
+    "docs/axon-interface/mrg-acceptance.json": {
+      "sha256": "a565c572245357e51dbbb960594befb3142a1983a5c743d705f300cc146c0274",
+      "expectedSha256": "a565c572245357e51dbbb960594befb3142a1983a5c743d705f300cc146c0274",
+      "status": "pass"
+    },
+    "docs/axon-interface/field-stage1-acceptance.json": {
+      "sha256": "ae35cf03dc5c67061e5e3d9feddb8ffe174c65efb30f2166eb8f0bc4cab02f33",
+      "expectedSha256": "ae35cf03dc5c67061e5e3d9feddb8ffe174c65efb30f2166eb8f0bc4cab02f33",
+      "status": "pass"
+    },
+    "docs/axon-interface/field-stage1-dense-acceptance.json": {
+      "sha256": "58c0d5effa596270d5bc3fb2f058ca8ff2d800dd9e2e1a8232e439b3fc1b5402",
+      "expectedSha256": "58c0d5effa596270d5bc3fb2f058ca8ff2d800dd9e2e1a8232e439b3fc1b5402",
+      "status": "pass"
+    },
+    "docs/axon-interface/field-stage1-domain-acceptance.json": {
+      "sha256": "6bff51700c832aad7662560a211383a0cf0857e926a8bd06cf75984571e46f5d",
+      "expectedSha256": "6bff51700c832aad7662560a211383a0cf0857e926a8bd06cf75984571e46f5d",
+      "status": "pass"
+    },
+    "docs/axon-interface/bipolar-acceptance.json": {
+      "sha256": "9d0bf929490004022deccdce7d28260cf4de8a5f78dee82da92fc7c4b16a94d0",
+      "expectedSha256": "9d0bf929490004022deccdce7d28260cf4de8a5f78dee82da92fc7c4b16a94d0",
+      "status": "pass"
+    },
+    "docs/axon-interface/bipolar-resolution-correction.json": {
+      "sha256": "fe5d1c9b499b78e79220e207f26dc5892d03855f861529d99ecd18e0d5692f1e",
+      "expectedSha256": "fe5d1c9b499b78e79220e207f26dc5892d03855f861529d99ecd18e0d5692f1e",
+      "status": "pass"
+    },
+    "docs/axon-interface/bipolar-soma-resolution-correction.json": {
+      "sha256": "7756463dfefc8f1644fcea144a2ad87b1d090ac171a0bd03bcc3655762e36472",
+      "expectedSha256": "7756463dfefc8f1644fcea144a2ad87b1d090ac171a0bd03bcc3655762e36472",
+      "status": "pass"
+    },
+    "docs/axon-interface/bipolar-soma-spatial-acceptance.json": {
+      "sha256": "bc9f1f00780d1b87ba5d4e5955744c3dcfd34cfe579dd42e97853bfbdf8e461c",
+      "expectedSha256": "bc9f1f00780d1b87ba5d4e5955744c3dcfd34cfe579dd42e97853bfbdf8e461c",
+      "status": "pass"
+    },
+    "docs/axon-interface/bipolar-coupled-acceptance.json": {
+      "sha256": "957d45e22de2c6e34ea4b175ff7f83bd073e824cb49f49aca33de63919d98b8a",
+      "expectedSha256": "957d45e22de2c6e34ea4b175ff7f83bd073e824cb49f49aca33de63919d98b8a",
+      "status": "pass"
+    }
+  },
+  "runtime": {
+    "hostPython": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "logicalCpus": 9,
+    "memoryBytes": 10451427328
+  },
+  "meaning": "This invocation verifies separately executed retained reports; their original timestamps and commands remain separate. No numerical study or full population was rerun.",
+  "limitations": [
+    "Numerical verification is conditional on the stated geometry, membrane and volume-conductor hypotheses; it is not biological calibration, reinnervation, clinical performance or device safety.",
+    "Failed coarse resolution and exploratory physiological comparisons remain retained. Their existence is not hidden by passing supported-resolution gates.",
+    "Raw arrays and architecture-specific native binaries are regenerable outputs, not fixed repository inputs."
+  ],
+  "separateLegacyRefresh": {
+    "path": "docs/axon-interface/legacy-membrane-refresh.json",
+    "sha256": "16a44f94391b58daa1a40e555e22ccf6119bec219ebd77a54e26c83bc8507d1b",
+    "meaning": "Supplementary captured commands from the separately executed legacy refresh; numerical acceptance is determined from the required current reports above.",
+    "executionRecord": {
+      "schema": "buildthesimulation.mrg.source-refresh-execution.v1",
+      "mode": "separately-executed-current-source-studies",
+      "startedAt": "2026-11-11T23:25:56.623209+00:00",
+      "completedAt": "2026-11-11T23:26:59.454937+00:00",
+      "status": "pass",
+      "commands": [
+        {
+          "arguments": [
+            "node",
+            "scripts/axon-interface/mrg-validate.mjs"
+          ],
+          "workingDirectory": "/workspace/scratch/00f6a4fc6cf7/buildthesimulation",
+          "environment": {
+            "MRG_PYTHON": "/workspace/scratch/00f6a4fc6cf7/mrg-venv/bin/python"
+          },
+          "startedAt": "2026-11-11T23:25:56.626319+00:00",
+          "completedAt": "2026-11-11T23:26:59.454205+00:00",
+          "elapsedSeconds": 62.82790678299989,
+          "exitCode": 0,
+          "status": "pass",
+          "log": "docs/axon-interface/mrg-validate-current-source-refresh.log"
+        },
+        {
+          "arguments": [
+            "node",
+            "scripts/axon-interface/mrg-coupled-validate.mjs"
+          ],
+          "workingDirectory": "/workspace/scratch/00f6a4fc6cf7/buildthesimulation",
+          "environment": {
+            "MRG_PYTHON": "/workspace/scratch/00f6a4fc6cf7/mrg-venv/bin/python"
+          },
+          "startedAt": "2026-11-11T23:25:56.626567+00:00",
+          "completedAt": "2026-11-11T23:26:07.365371+00:00",
+          "elapsedSeconds": 10.738819885999874,
+          "exitCode": 0,
+          "status": "pass",
+          "log": "docs/axon-interface/mrg-coupled-validate-current-source-refresh.log"
+        }
+      ],
+      "membraneSourceSha256": "182b94c586591599dbcea42b63ececba486d42e4a72f7923abb53a171fe752f5",
+      "sourceChangedDuringRun": [],
+      "nativeMechanismPolicy": "Previously compiled unchanged pinned AXNODE.mod; no mechanism rebuild was claimed by this refresh. Aggregate reproduction records its separate native rebuild provenance.",
+      "sourceHashes": {
+        "src/lib/axon-interface/mrg.mjs": "182b94c586591599dbcea42b63ececba486d42e4a72f7923abb53a171fe752f5",
+        "scripts/axon-interface/mrg-reference.py": "3cd715216d95241eaade5e99c7d6cdeec4dc414d47eadf7f60649f4ee3d2d9a1",
+        "scripts/axon-interface/mrg-validate.mjs": "26acd20e3861fe28ef74466f468a718ac8f1ac3398eedfbf7e5fad2ab909fbd4",
+        "scripts/axon-interface/mrg-modeldb/AXNODE.mod": "e0fa400a469aa2beba491fabffaa4f6bc03c629015a2c0f2ddc471fb3e687bd3",
+        "scripts/axon-interface/mrg-modeldb/MRGaxon.hoc": "73da0790cdbbb1a7db036e9806729a74fcc0606e62d716daabeddbe8c1999014",
+        "docs/axon-interface/mrg-acceptance.json": "a565c572245357e51dbbb960594befb3142a1983a5c743d705f300cc146c0274",
+        "src/lib/axon-interface/settings.mjs": "7649d5e2e69c6ea470fd5d03373ca2b15094188291a0b416e206f13866d3718a",
+        "src/lib/axon-interface/geometry.mjs": "0a41a23b84627dbbc3185eebe881e7aa91d09b2a01f5f213aefec070b41f2d8b",
+        "src/lib/axon-interface/protocol.mjs": "33961ca40833a0bdc40203b8dccb4e41a61580462ff3cc8eb6b6ea0e7562ab4b",
+        "src/lib/axon-interface/field.mjs": "c55565795085e37bc1804c99c152f79d563e8cad678f2eafc2e41dc3ce5a9734",
+        "scripts/axon-interface/mrg-coupled-validate.mjs": "5083a2933ece1b93ce78983769dca700d64abeaa59dfcf5329cca3774199ca30"
+      },
+      "reportFiles": [
+        "mrg-numerical-report.json",
+        "mrg-coupled-report.json"
+      ],
+      "scope": "Two separately executed legacy numerical references against the current generic membrane implementation; no biological validation is claimed."
+    }
+  },
+  "sourceChangedDuringRun": [],
+  "sourceHashesAfter": {
+    "docs/axon-interface/bipolar-acceptance.json": "9d0bf929490004022deccdce7d28260cf4de8a5f78dee82da92fc7c4b16a94d0",
+    "docs/axon-interface/bipolar-coupled-acceptance.json": "957d45e22de2c6e34ea4b175ff7f83bd073e824cb49f49aca33de63919d98b8a",
+    "docs/axon-interface/bipolar-resolution-correction.json": "fe5d1c9b499b78e79220e207f26dc5892d03855f861529d99ecd18e0d5692f1e",
+    "docs/axon-interface/bipolar-soma-resolution-correction.json": "7756463dfefc8f1644fcea144a2ad87b1d090ac171a0bd03bcc3655762e36472",
+    "docs/axon-interface/bipolar-soma-spatial-acceptance.json": "bc9f1f00780d1b87ba5d4e5955744c3dcfd34cfe579dd42e97853bfbdf8e461c",
+    "docs/axon-interface/field-acceptance.json": "93f9471d7435aa54b0fd5a7bc4222b7c32c80fa9ad6109cb8f5b7835030e6b53",
+    "docs/axon-interface/field-stage1-acceptance.json": "ae35cf03dc5c67061e5e3d9feddb8ffe174c65efb30f2166eb8f0bc4cab02f33",
+    "docs/axon-interface/field-stage1-dense-acceptance.json": "58c0d5effa596270d5bc3fb2f058ca8ff2d800dd9e2e1a8232e439b3fc1b5402",
+    "docs/axon-interface/field-stage1-domain-acceptance.json": "6bff51700c832aad7662560a211383a0cf0857e926a8bd06cf75984571e46f5d",
+    "docs/axon-interface/mrg-acceptance.json": "a565c572245357e51dbbb960594befb3142a1983a5c743d705f300cc146c0274",
+    "scripts/axon-interface/bipolar-coupled-validate.mjs": "8a3983a056592b9253277be5e3576694aec223d9a559a94eb97067812db696c1",
+    "scripts/axon-interface/bipolar-reference.py": "da5c3ac4384cedf57095425f83073073bfd79b0b210bf7c10e09c5acedbc9955",
+    "scripts/axon-interface/bipolar-soma-spatial.mjs": "12bdf0625fdc5b2e6d974a6b0c64d95846df6887043b9c30e4204cc5ef0fb2aa",
+    "scripts/axon-interface/bipolar-validate.mjs": "4235ab1c25f4a3abb6b1fe50998fca12fb0c949d11e2b3d6a20ded16c4c1b992",
+    "scripts/axon-interface/bipolar-validation-utils.mjs": "0715ec3a46ff84b3b19d0f24256d2fe03f2746301026ee4e1f3fcbc96bcd1cfd",
+    "scripts/axon-interface/field-contract-tests.mjs": "abdb272bf4cab304adf28439f7f2c9f564d1c72523949248174efd4af1eece06",
+    "scripts/axon-interface/field-reference.py": "b94d959e2aef5f6a54e530d389b362cd416eab216a0da5f1f9292cabebcf425a",
+    "scripts/axon-interface/field-requirements.txt": "1668a3152e33680d94637b13421c15e68bd97cd8701f7f555c691f5bc5c0b9f3",
+    "scripts/axon-interface/field-stage1-benchmarks.mjs": "ab58ed967b0dcc3927c26268669c2f8e9e606e2874b2b8e533e190d4be3efc5b",
+    "scripts/axon-interface/field-stage1-dense-validate.mjs": "a47ea7e8ef0408240ac0e48afd052786a6a6a230ac1cf2ad46d49450a4e82e00",
+    "scripts/axon-interface/field-stage1-domain-validate.mjs": "feb47c74fd0bc87998650361cd7bcf83b0367a08a1d3743cf1d8031ff1ed9080",
+    "scripts/axon-interface/field-stage1-fixtures.mjs": "2558872ff170a0b598332b33cec44bc2016d0dbca26c4b597f97522aeff67483",
+    "scripts/axon-interface/field-stage1-reference.py": "141197e0bd7b7222283d762671ff87e54ce38f1311748c8c1aaf32d34f122058",
+    "scripts/axon-interface/field-stage1-resources.mjs": "44fa2b8ce3b44f489fff637444a62210413e4605a384fc641d5f9d99edf32fb7",
+    "scripts/axon-interface/field-stage1-validate.mjs": "1d30bc114c3eda879471e44bcc50931833e1c5a2dac2ba04a77fc639aff4698b",
+    "scripts/axon-interface/field-validate.mjs": "57cfb386a746f6cead9fcc99011862016f836e69caa03667850c26997a38e6e8",
+    "scripts/axon-interface/mrg-coupled-validate.mjs": "5083a2933ece1b93ce78983769dca700d64abeaa59dfcf5329cca3774199ca30",
+    "scripts/axon-interface/mrg-modeldb/AXNODE.mod": "e0fa400a469aa2beba491fabffaa4f6bc03c629015a2c0f2ddc471fb3e687bd3",
+    "scripts/axon-interface/mrg-modeldb/MRGaxon.hoc": "73da0790cdbbb1a7db036e9806729a74fcc0606e62d716daabeddbe8c1999014",
+    "scripts/axon-interface/mrg-modeldb/README": "847ce5ac51b3b1be75d0d34a7003ce7a7e14ec06a5cf47acbf545274b5ec369a",
+    "scripts/axon-interface/mrg-motor-baseline.mjs": "cbaa91ed8e8cbe5acc56d55f229ddcd0bbbe32a4272d4b8280eded3aff772405",
+    "scripts/axon-interface/mrg-reference.py": "3cd715216d95241eaade5e99c7d6cdeec4dc414d47eadf7f60649f4ee3d2d9a1",
+    "scripts/axon-interface/mrg-reproduce.sh": "9c496cdb3ce8ba91a1e82dfce0797cd89d1bd518101e16de7385fdd3f4f8dbff",
+    "scripts/axon-interface/mrg-requirements.txt": "48762d17f9a0d6d5ff28457a9113a4de402556efa225dfc8fdb238186def2c7b",
+    "scripts/axon-interface/mrg-validate.mjs": "26acd20e3861fe28ef74466f468a718ac8f1ac3398eedfbf7e5fad2ab909fbd4",
+    "scripts/axon-interface/reproduce-stage1.py": "519a492fa4b861a3a84d47386d5615ee49ea3bc61a0b62a2755d62f31bca7305",
+    "scripts/axon-interface/reproduce.py": "e3df95c12f6244801e60b50bb8e198c1c9df7180264bb6e12f0007a9b5fb54aa",
+    "scripts/axon-interface/requirements.txt": "ffb7284d1b58d117c3305be00f92f6a2aa9655b9908b043e9704d959b75e8559",
+    "scripts/axon-interface/stage1-protocol-validate.mjs": "087bf01c4e0265c9d9d7151bc0e461510f1484d39a3260b8539cf2f93cc40f6f",
+    "src/lib/axon-interface/bipolar.mjs": "d47f6717b3faa87ae775c67e1fee4ce0f222e5e954cdba6c765d3d7dffb22098",
+    "src/lib/axon-interface/evidence.mjs": "cdc46f15b0bb61056da09e44d255ddcacb653cc113ac9d5c87fd0fa9212cef4b",
+    "src/lib/axon-interface/export.mjs": "f2a5bb1396cc3e2abf757faa35c85babe02d96bf234117a9aae9633071a8b5dc",
+    "src/lib/axon-interface/field-stage1.mjs": "dd60139ae3bff6673e3b1bb7d0361694d41715f53de70207c9fa069c2cc34653",
+    "src/lib/axon-interface/field.mjs": "c55565795085e37bc1804c99c152f79d563e8cad678f2eafc2e41dc3ce5a9734",
+    "src/lib/axon-interface/geometry.mjs": "0a41a23b84627dbbc3185eebe881e7aa91d09b2a01f5f213aefec070b41f2d8b",
+    "src/lib/axon-interface/identities.mjs": "06140ccd7ad743f12874cfdb339d46a9213979a409f9f60aef2981660c89c339",
+    "src/lib/axon-interface/metrics.mjs": "636ab52f4ab4fe4e7fc110dfcc13cb84bd11a75ba7c22fbf60cfd5ea0970c78d",
+    "src/lib/axon-interface/mrg.mjs": "182b94c586591599dbcea42b63ececba486d42e4a72f7923abb53a171fe752f5",
+    "src/lib/axon-interface/protocol.mjs": "33961ca40833a0bdc40203b8dccb4e41a61580462ff3cc8eb6b6ea0e7562ab4b",
+    "src/lib/axon-interface/requests.mjs": "6cb2207f90a1b0f3c01422c97dd80e3a3791a84b973066a4fb71cc487762ff8a",
+    "src/lib/axon-interface/settings.mjs": "7649d5e2e69c6ea470fd5d03373ca2b15094188291a0b416e206f13866d3718a",
+    "src/lib/axon-interface/stage1-protocol.mjs": "036ca37b4bf031286829174aec17e135cc22a0664aaca6afa8af77666b6eb7e1",
+    "src/lib/axon-interface/stage1-settings.mjs": "b952da4823fc88e863afd729408b9fa1b4424af4011c5b6e46c9cf18ad8d6c62",
+    "src/lib/axon-interface/vendor/THIRD_PARTY_LICENSES.md": "899045234e0daf5c167f08f5813da91af3d711f1d14894c475d69e4f869db1f4",
+    "src/lib/axon-interface/vendor/cdt2d-package-lock.json": "307d67afc94d179ba050a2950f5724c51fd7159cf7488f27b229fb499f504be1",
+    "src/lib/axon-interface/vendor/cdt2d-source-pins.json": "05adc096c593b846d4a6ac6c1b5a3a19b0d7da3d78d1de76977ed0859717c660",
+    "src/lib/axon-interface/vendor/cdt2d.mjs": "645d096429082510865735501c2fcfd9d3b6e7211e8c631f855b811f83dad185",
+    "src/lib/axon-interface/worker.mjs": "53d188ceed2ff450b49c5c372573a4b810db2d7fff50e8b552a2b15bac77373d",
+    "tests/axon-interface-contracts.mjs": "1086b4d25fa68b33c6f75891728c6b9796bfa7d52dd280814dfc08a51a8cb338",
+    "tests/axon-interface-stage1-contracts.mjs": "9a4d0dc914e64edd1e5a3916146caf46d194f805fc5e4f574f7460dba947f9e2",
+    "tests/helpers/axon-interface-worker-harness.mjs": "639ca2abb5955e5f82090f04e676d0531595bca7a898dded8f3d79844020cbed"
+  },
+  "completedAt": "2026-11-11T23:33:28.969095+00:00",
+  "summary": {
+    "passed": 12,
+    "failed": 0,
+    "requiredEvidenceCount": 12,
+    "commandsExecuted": 0
+  },
+  "retainedFailures": []
+}

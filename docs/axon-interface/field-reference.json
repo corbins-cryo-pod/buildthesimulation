@@ -1,0 +1,343 @@
+{
+  "schema": "axon-interface-field-reference/1",
+  "independent": true,
+  "method": "Independent numpy affine-basis inversion, scipy sparse tetrahedral assembly and SuperLU direct solve; no JS matrices imported",
+  "maximumAbsoluteMicrovolt": 4.566791389493119e-09,
+  "rmsMicrovolt": 1.1368700431646024e-09,
+  "maximumSourceLoadDisagreementUa": 3.885780586188048e-16,
+  "referenceRelativeResidual": 8.795573766671633e-15,
+  "samples": [
+    {
+      "point": [
+        0,
+        0,
+        -800
+      ],
+      "referenceMvPerUa": 0.06247993267033894,
+      "javascriptMvPerUa": 0.062479932669175696,
+      "absoluteMicrovolt": 1.1632431129449117e-09
+    },
+    {
+      "point": [
+        0,
+        0,
+        -400
+      ],
+      "referenceMvPerUa": 0.06945400443422989,
+      "javascriptMvPerUa": 0.06945400443207557,
+      "absoluteMicrovolt": 2.154318390346077e-09
+    },
+    {
+      "point": [
+        0,
+        0,
+        -100
+      ],
+      "referenceMvPerUa": 0.05722696673166893,
+      "javascriptMvPerUa": 0.05722696672956279,
+      "absoluteMicrovolt": 2.1061416499712493e-09
+    },
+    {
+      "point": [
+        0,
+        0,
+        0
+      ],
+      "referenceMvPerUa": 0.04658767739407885,
+      "javascriptMvPerUa": 0.046587677391757086,
+      "absoluteMicrovolt": 2.3217608391412625e-09
+    },
+    {
+      "point": [
+        0,
+        0,
+        100
+      ],
+      "referenceMvPerUa": 0.03276673174741389,
+      "javascriptMvPerUa": 0.032766731745307705,
+      "absoluteMicrovolt": 2.1061832833346728e-09
+    },
+    {
+      "point": [
+        0,
+        0,
+        300
+      ],
+      "referenceMvPerUa": -0.0018815160970679721,
+      "javascriptMvPerUa": -0.0018815160985177978,
+      "absoluteMicrovolt": 1.4498257195488806e-09
+    },
+    {
+      "point": [
+        0,
+        0,
+        600
+      ],
+      "referenceMvPerUa": -0.050998979039147796,
+      "javascriptMvPerUa": -0.05099897904019699,
+      "absoluteMicrovolt": 1.0491954527402925e-09
+    },
+    {
+      "point": [
+        0,
+        0,
+        900
+      ],
+      "referenceMvPerUa": -0.07032418028982973,
+      "javascriptMvPerUa": -0.07032418029023185,
+      "absoluteMicrovolt": 4.021227795192317e-10
+    },
+    {
+      "point": [
+        75,
+        0,
+        -800
+      ],
+      "referenceMvPerUa": 0.0706463173565194,
+      "javascriptMvPerUa": 0.07064631735601953,
+      "absoluteMicrovolt": 4.998640390496689e-10
+    },
+    {
+      "point": [
+        75,
+        0,
+        -400
+      ],
+      "referenceMvPerUa": 0.09045911426025754,
+      "javascriptMvPerUa": 0.0904591142592319,
+      "absoluteMicrovolt": 1.0256517857243352e-09
+    },
+    {
+      "point": [
+        75,
+        0,
+        -100
+      ],
+      "referenceMvPerUa": 0.08655688160787518,
+      "javascriptMvPerUa": 0.08655688160728996,
+      "absoluteMicrovolt": 5.852263118555356e-10
+    },
+    {
+      "point": [
+        75,
+        0,
+        0
+      ],
+      "referenceMvPerUa": 0.07365141270268576,
+      "javascriptMvPerUa": 0.07365141270210086,
+      "absoluteMicrovolt": 5.848932449481481e-10
+    },
+    {
+      "point": [
+        75,
+        0,
+        100
+      ],
+      "referenceMvPerUa": 0.05375849577802738,
+      "javascriptMvPerUa": 0.053758495777595575,
+      "absoluteMicrovolt": 4.318073676401468e-10
+    },
+    {
+      "point": [
+        75,
+        0,
+        300
+      ],
+      "referenceMvPerUa": -0.0014332153026687697,
+      "javascriptMvPerUa": -0.0014332153030357023,
+      "absoluteMicrovolt": 3.669326127664352e-10
+    },
+    {
+      "point": [
+        75,
+        0,
+        600
+      ],
+      "referenceMvPerUa": -0.07795596866352544,
+      "javascriptMvPerUa": -0.0779559686641421,
+      "absoluteMicrovolt": 6.166595012402354e-10
+    },
+    {
+      "point": [
+        75,
+        0,
+        900
+      ],
+      "referenceMvPerUa": -0.09287910940614053,
+      "javascriptMvPerUa": -0.0928791094062031,
+      "absoluteMicrovolt": 6.257494522543539e-11
+    },
+    {
+      "point": [
+        150,
+        0,
+        -800
+      ],
+      "referenceMvPerUa": 0.07912504331938175,
+      "javascriptMvPerUa": 0.07912504331877539,
+      "absoluteMicrovolt": 6.063621826868371e-10
+    },
+    {
+      "point": [
+        150,
+        0,
+        -400
+      ],
+      "referenceMvPerUa": 0.12106281660347606,
+      "javascriptMvPerUa": 0.12106281660356889,
+      "absoluteMicrovolt": 9.28285226464709e-11
+    },
+    {
+      "point": [
+        150,
+        0,
+        -100
+      ],
+      "referenceMvPerUa": 0.145369801527221,
+      "javascriptMvPerUa": 0.14536980152936943,
+      "absoluteMicrovolt": 2.148420330527756e-09
+    },
+    {
+      "point": [
+        150,
+        0,
+        0
+      ],
+      "referenceMvPerUa": 0.1322567698623191,
+      "javascriptMvPerUa": 0.13225676986502025,
+      "absoluteMicrovolt": 2.7011448633373902e-09
+    },
+    {
+      "point": [
+        150,
+        0,
+        100
+      ],
+      "referenceMvPerUa": 0.10023910991077625,
+      "javascriptMvPerUa": 0.10023910991304602,
+      "absoluteMicrovolt": 2.2697677071192857e-09
+    },
+    {
+      "point": [
+        150,
+        0,
+        300
+      ],
+      "referenceMvPerUa": -0.0002163656009546688,
+      "javascriptMvPerUa": -0.00021636559966806135,
+      "absoluteMicrovolt": 1.2866074579429704e-09
+    },
+    {
+      "point": [
+        150,
+        0,
+        600
+      ],
+      "referenceMvPerUa": -0.13474688864617207,
+      "javascriptMvPerUa": -0.13474688864613546,
+      "absoluteMicrovolt": 3.660960423701454e-11
+    },
+    {
+      "point": [
+        150,
+        0,
+        900
+      ],
+      "referenceMvPerUa": -0.12897754158564437,
+      "javascriptMvPerUa": -0.12897754158506156,
+      "absoluteMicrovolt": 5.828115767769759e-10
+    },
+    {
+      "point": [
+        220,
+        0,
+        -800
+      ],
+      "referenceMvPerUa": 0.08507702011940234,
+      "javascriptMvPerUa": 0.08507702011857111,
+      "absoluteMicrovolt": 8.312239785368547e-10
+    },
+    {
+      "point": [
+        220,
+        0,
+        -400
+      ],
+      "referenceMvPerUa": 0.15514456038503643,
+      "javascriptMvPerUa": 0.1551445603854269,
+      "absoluteMicrovolt": 3.9046543776066756e-10
+    },
+    {
+      "point": [
+        220,
+        0,
+        -100
+      ],
+      "referenceMvPerUa": 0.2631047576460371,
+      "javascriptMvPerUa": 0.26310475764923996,
+      "absoluteMicrovolt": 3.202882403741114e-09
+    },
+    {
+      "point": [
+        220,
+        0,
+        0
+      ],
+      "referenceMvPerUa": 0.2722780409777525,
+      "javascriptMvPerUa": 0.27227804098175784,
+      "absoluteMicrovolt": 4.005351605940177e-09
+    },
+    {
+      "point": [
+        220,
+        0,
+        100
+      ],
+      "referenceMvPerUa": 0.2071086301962979,
+      "javascriptMvPerUa": 0.20710863019960807,
+      "absoluteMicrovolt": 3.31015770349552e-09
+    },
+    {
+      "point": [
+        220,
+        0,
+        300
+      ],
+      "referenceMvPerUa": 0.005151084878191191,
+      "javascriptMvPerUa": 0.005151084880314235,
+      "absoluteMicrovolt": 2.1230439281594293e-09
+    },
+    {
+      "point": [
+        220,
+        0,
+        600
+      ],
+      "referenceMvPerUa": -0.2647343937972722,
+      "javascriptMvPerUa": -0.26473439379562397,
+      "absoluteMicrovolt": 1.6482371023585074e-09
+    },
+    {
+      "point": [
+        220,
+        0,
+        900
+      ],
+      "referenceMvPerUa": -0.18554266954898946,
+      "javascriptMvPerUa": -0.1855426695478656,
+      "absoluteMicrovolt": 1.1238510122524303e-09
+    }
+  ],
+  "durationSeconds": 4.762895717999982,
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "machine": "x86_64",
+    "processor": ""
+  },
+  "limitations": [
+    "Agreement verifies the same discretized equations, not the continuous field or biological prediction.",
+    "The finite outer domain and ideal volumetric electrode are shared declared modeling assumptions."
+  ]
+}
