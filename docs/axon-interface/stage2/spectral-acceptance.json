@@ -1,0 +1,19 @@
+{
+  "schema":"axon-stage2-spectral-acceptance/1",
+  "declaredBeforeExecution":true,
+  "independentStateAbsolute":1e-10,
+  "independentCurrentNaAbsolute":1e-10,
+  "independentPhotonFluxRelative":2e-14,
+  "nativeMaximumSiteRmsMv":1,
+  "nativeMaximumSpikeTimeMs":0.1,
+  "nativeSpikeCounts":"identical at every active site",
+  "timeMaximumSiteRmsMv":1,
+  "timeMaximumSpikeTimeMs":0.1,
+  "spaceConductionDelayRelative":0.05,
+  "spaceRecordingPeakToPeakRelative":0.1,
+  "dtMs":[0.000625,0.0003125,0.00015625],
+  "levels":[{"soma":5,"stem":3,"passive":3},{"soma":9,"stem":5,"passive":5},{"soma":13,"stem":7,"passive":7}],
+  "fixtureGrid":{"wholeCellExpressionMultiplier":10,"localIrradianceMwMm2":[0,0.1,1,10,100],"wavelengthsNm":[470,550],"pulseStartMs":0.5,"pulseWidthMs":2},
+  "selection":"Retain every grid probe. For propagation verification use the lowest declared positive grid sample that propagates to both arms for each opsin. The same absolute stimulus is used for every time, spatial and native comparison; no amplitude fitting, baseline correction, normalization of current or time shift.",
+  "scope":"Published kinetic sets plus an explicitly hypothetical fourth construct. No claim of biological calibration or an automatic channel multiplier."
+}

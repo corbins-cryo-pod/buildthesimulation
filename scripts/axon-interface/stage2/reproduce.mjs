@@ -1,4 +1,5 @@
 /** Reproduce a checkpoint without turning missing/failed scientific gates green. */
+import {VERSION} from '../../../src/lib/axon-interface/stage2/settings.mjs';
 import fs from 'node:fs';import path from 'node:path';import os from 'node:os';import crypto from 'node:crypto';import {spawnSync} from 'node:child_process';
 const root=path.resolve(new URL('../../..',import.meta.url).pathname);process.chdir(root);
 const dir='docs/axon-interface/stage2',python=process.env.MRG_PYTHON??'python3',collect=process.argv.includes('--collect'),start=performance.now(),stages=[];
@@ -14,20 +15,20 @@ if(!collect){
  run('component-reference',python,['reference/verify.py'],{cwd:path.join(root,'labs/axon-stage2')});
  const bin=spawnSync(python,['-c','import sys,pathlib;print(pathlib.Path(sys.executable).parent)'],{encoding:'utf8'}).stdout?.trim();
  for(const d of ['scripts/axon-interface/mrg-modeldb','scripts/axon-interface/stage2/mechanisms'])run(d.endsWith('mrg-modeldb')?'compile-native':'compile-opsin',path.join(bin??'', 'nrnivmodl'),[],{cwd:path.join(root,d),env:{...process.env,CC:'gcc',CXX:'g++'}});
- for(const name of ['coupling','surface','spatial','induction','magnetic-path','magnetic-coupling','magnetic-policy','protocol'])run(name,process.execPath,['scripts/axon-interface/stage2/'+name+'-check.mjs'],{env:{...process.env,MRG_PYTHON:python}});
+ for(const name of ['coupling','surface','spatial','induction','magnetic-path','magnetic-coupling','magnetic-policy','protocol','spectral-component','spectral-coupling','spectral-spatial','spectral-protocol','spectral-crosstalk'])run(name,process.execPath,['scripts/axon-interface/stage2/'+name+'-check.mjs'],{env:{...process.env,MRG_PYTHON:python}});
 }
-const component=read('labs/axon-stage2/reports/independent-reference.json'),coupled=Object.fromEntries(['coupling','surface','spatial','induction','magnetic-path','magnetic-coupling','magnetic-policy','protocol'].map(k=>[k,read(dir+'/'+k+'-validation.json')])),browser=read(dir+'/browser-validation.json');
+const component=read('labs/axon-stage2/reports/independent-reference.json'),coupled=Object.fromEntries(['coupling','surface','spatial','induction','magnetic-path','magnetic-coupling','magnetic-policy','magnetic-propagation','induction-conservative-independent','protocol','spectral-component','spectral-coupling','spectral-spatial','spectral-protocol','spectral-crosstalk'].map(k=>[k,read(dir+'/'+k+'-validation.json')])),browser=read(dir+'/browser-validation.json');
 const gates=Object.entries(coupled).filter(([k,r])=>!r?.complete||!r?.passed).map(([k])=>k+' numerical qualification remains incomplete or failed.');
 if(component?.requiredFail!==0||component?.requiredPass!==65)gates.push('Independent component reference is missing or failing.');
-if(!browser?.passed||!browser?.hosted)gates.push('Final hosted browser verification remains pending.');
-gates.push('Fully coupled, wavelength-dependent multi-opsin cohort experiments are not implemented; spectral assays remain component-only.');
-gates.push('Magnetic propagating-response, spatial-delay and recording convergence remain unqualified. Native and time-step checks cover only the stated nonfiring fixtures with an unqualified field.');
+if(!browser?.passed||!browser?.hosted||browser?.modelVersion!==VERSION)gates.push('Final hosted browser verification remains pending.');
+const software=read(dir+'/software-checkpoint.json');if(!software?.passed||software?.modelVersion!==VERSION)gates.push('Current-version complete site build and repository regression evidence remains pending.');
+
 const after=snapshot(),changed=files.filter(p=>before[p]!==after[p]);if(changed.length)gates.push('Scientific source changed during reproduction.');
-const report={schema:'axon-stage2-validation/1',generatedAt:new Date().toISOString(),status:gates.length?'development-checkpoint':'qualified',completeStage2:false,biologicalValidation:false,
+const report={schema:'axon-stage2-validation/1',generatedAt:new Date().toISOString(),status:gates.length?'development-checkpoint':'qualified',completeStage2:gates.length===0,modelVersion:VERSION,biologicalValidation:false,
  evidenceCollectionMode:collect?'Aggregate existing study outputs; not a claim of a new all-studies rerun.':'Fresh studies from one entry point.',sourceChangedDuringRun:collect?null:changed,sourceHashes:after,
  runtime:{node:process.version,platform:os.platform(),architecture:os.arch(),cpu:os.cpus()[0]?.model,logicalCpus:os.cpus().length,totalMemoryBytes:os.totalmem(),seconds:(performance.now()-start)/1000},stages,
  components:{requiredPass:component?.requiredPass??0,requiredFail:component?.requiredFail??null,unresolved:component?.unresolved??null},studies:Object.fromEntries(Object.entries(coupled).map(([k,r])=>[k,{complete:r?.complete??false,passed:r?.passed??false,checks:r?.rows?.length??0,sha256:fs.existsSync(dir+'/'+k+'-validation.json')?hash(dir+'/'+k+'-validation.json'):null}])),browser,openReleaseGates:gates,
- nextStage:'Stage 3 integration is not advanced by this checkpoint. Existing PR #390 remains a separate unqualified development draft; the sequential release is blocked by Stage 2 gates.',
+ nextStage:gates.length?'Stage 3 remains blocked by Stage 2 release gates; PR #390 is preserved as a separate unqualified draft.':'Numerical Stage 2 is complete within its published model limits. Stage 3 may be reviewed next; existing PR #390 is not automatically qualified or merged.',
  limitations:['Source hashes identify this checkpoint. Passing rows verify stated equations only.','The original-host win condition is zero under complete resection; introduced outputs never replace original identities.','Retained failures and supplemental diagnostics stay separate from required release gates.']};
 fs.writeFileSync(dir+'/validation.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({status:report.status,studies:report.studies,openReleaseGates:gates},null,2));
 if(!collect&&gates.length)process.exitCode=1;

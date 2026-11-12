@@ -1,8 +1,9 @@
 {
   "schema": "axon-stage2-validation/1",
-  "generatedAt": "2026-11-12T12:48:17.358Z",
+  "generatedAt": "2026-11-12T13:37:34.902Z",
   "status": "development-checkpoint",
   "completeStage2": false,
+  "modelVersion": "axon-modalities-coupled-0.3.0",
   "biologicalValidation": false,
   "evidenceCollectionMode": "Aggregate existing study outputs; not a claim of a new all-studies rerun.",
   "sourceChangedDuringRun": null,
@@ -18,22 +19,34 @@
     "public/simulations/biohybrid-axon-interface/stage2/modules/selectivity.mjs": "ae3020363dc8cdf23ef80d080db66faad25de42ad338821b6f40d16969d85e39",
     "public/simulations/biohybrid-axon-interface/stage2/modules/spectral.mjs": "9d565090c79bf4767255f9e88e4d2d957c57709a41d109e010fe4f6398c5f5a4",
     "public/simulations/biohybrid-axon-interface/stage2/modules/worker.mjs": "34f950da0c175cf46b257e65b909f5d9087a43a8ce038d9c72b6a0bc75a09926",
-    "scripts/axon-interface/stage2/compare-browser-export.mjs": "566f9eba1d65070bb50251f07da873494271c0bdd56669f8e9fc0e680ef55f22",
+    "scripts/axon-interface/stage2/compare-browser-export.mjs": "0a0d719997d98cf19c89601de3c53311fc0d63eb5f1b902a57ca8e5382147481",
     "scripts/axon-interface/stage2/coupling-check.mjs": "c09c2dbb39dc030d911f31faa2c29cd94646c233d98360f0dfc8a19a28c95894",
     "scripts/axon-interface/stage2/induction-check.mjs": "044f3266f92c9c6f274142ee8479a274c8bae0a9e13975a444dd00c69d81e246",
+    "scripts/axon-interface/stage2/induction-conservative-check.mjs": "fd24ce215bbe936034019c9e140137b7778664c83668c7c92f02922312c6a567",
+    "scripts/axon-interface/stage2/induction-conservative-independent-check.mjs": "2a7545256c16b1d22e7ba16e34f439cebb1ee8fffb4a1cdc1087d92bdbe0d818",
+    "scripts/axon-interface/stage2/induction-conservative-reference.py": "a5b4c703f274aa226b6b32c3f896a134303858e389d56aa5da1d2ce2c445f7a8",
     "scripts/axon-interface/stage2/induction-direct-refinement.mjs": "a6e008917882ffcb01aba0ee44466123657588e168c8accaf81a99d131903a9d",
     "scripts/axon-interface/stage2/induction-quadrature-check.mjs": "d7756cc147ed6d16f6c426da69e5c8ebebba51a49d80a14afd61ebeafa6dd926",
     "scripts/axon-interface/stage2/induction-reference.py": "43a732eed6edd2db7b7bff667f9fbe3bb6d842b1566339105af3bb3f0013810f",
     "scripts/axon-interface/stage2/magnetic-coupling-check.mjs": "e76968d1094ed7a8b7d00cb874ce0c7b52f5ebc11e6bd64b64744ea474f84718",
     "scripts/axon-interface/stage2/magnetic-path-check.mjs": "5c64eba009ad99c7cdcd2f1ec46196ebdcd56fe55c2e09f9fbb273429a986514",
     "scripts/axon-interface/stage2/magnetic-policy-check.mjs": "5c0a107b81c14d04e82bb69a4d141115021e8fa5edebff249acc3d40f8e297e3",
+    "scripts/axon-interface/stage2/magnetic-propagation-check.mjs": "42f499d2611582ea687c97eb8e8bb43e50d775a3f33c58247855b3e1ddc73303",
+    "scripts/axon-interface/stage2/magnetic-propagation-probe.mjs": "36b5b7f62eb389e214efb51f6abde1400e98feee95622a4666da6019e8f34ee8",
     "scripts/axon-interface/stage2/mechanisms/axon_chr2.mod": "9e820573f19aa1ad938d35d2a18967f78eed649083f4e0b668f1d4bc6c96abf1",
-    "scripts/axon-interface/stage2/native-reference.py": "07319140563c6bf1f5d4c18e787057d8fe572da3bd488330c8c34add82d16179",
+    "scripts/axon-interface/stage2/mechanisms/axon_spectral.mod": "1fc2b21416fdc3579f9a9c0e05d3cfa88be72d0319c40d0764bc5201235d567d",
+    "scripts/axon-interface/stage2/native-reference.py": "e398dcd528255d715f92e25696e054246ac4656f77493beae8d456353baaf58a",
     "scripts/axon-interface/stage2/probe-optical.mjs": "1d3f57bda9e4fb292119744e18d29b218acbb7ed79f8ba869243a63386a43ca6",
     "scripts/axon-interface/stage2/protocol-check.mjs": "9bfeebfa4aafdcfdb1a60878d55bacb9ad9ec08bac530286db98ca900bbc30d9",
-    "scripts/axon-interface/stage2/reproduce.mjs": "ec83a1e4611b949ee29d81e1df69b586fc6026d180f1a8f4b78c4b400efa9556",
+    "scripts/axon-interface/stage2/reproduce.mjs": "6fac0318bee9da20e65484076b97bc6d8eaad5d366690d7cd1f4e1926b82f213",
     "scripts/axon-interface/stage2/requirements.txt": "092475ddcda41189dfb7f813c113f3e5dc98dc26a9872459d5bdeb662305f72d",
     "scripts/axon-interface/stage2/spatial-check.mjs": "ba01d2f39c7bc95fb4010e05f85f81aa1c124929974c26191d822b0dfab35632",
+    "scripts/axon-interface/stage2/spectral-component-check.mjs": "e2e3a194ebc3ecd554d5a8d8cd06d1a7b4ae3bb350e0cb4a57742f75df3d7e6a",
+    "scripts/axon-interface/stage2/spectral-coupling-check.mjs": "15ff46e6d73e2d52804d617c325d1eff9860e694c60a5f99ec3b38a19e8b124b",
+    "scripts/axon-interface/stage2/spectral-crosstalk-check.mjs": "d2d7da33b79154eb997c942d375c78ce045a6149bfa2da5b0924b747b4bcf937",
+    "scripts/axon-interface/stage2/spectral-protocol-check.mjs": "a0bd8ea51efb3db07cc45b26004a3786208e948d82dbdcee8c89cd15c7ca87aa",
+    "scripts/axon-interface/stage2/spectral-spatial-check.mjs": "2263810bfdc83ddd79f7444eaf0b4b1be8aff970edadc7a5a0b04e07c282fd16",
+    "scripts/axon-interface/stage2/spectral_reference.py": "1194be93203d082ea52d5feb643774cc6fb25a3f0efd18194b55efed04cfe3a9",
     "scripts/axon-interface/stage2/surface-check.mjs": "a644055606b81af0bd2a9272eb528153bdd1286cea99dcce53b1af7ac722e11b",
     "scripts/axon-interface/stage2/surface-probe.mjs": "3bd4180a7e2ecd5dae06e5812f0038d0ae8c5f09895d31d80c1a975c7ad76c04",
     "src/lib/axon-interface/bipolar.mjs": "d47f6717b3faa87ae775c67e1fee4ce0f222e5e954cdba6c765d3d7dffb22098",
@@ -53,6 +66,7 @@
     "src/lib/axon-interface/stage2/causal-selectivity.mjs": "dc5efe6a7e435abb4e2f6f726a0c9332318369f3fd4ef24c0a6992108bd791c7",
     "src/lib/axon-interface/stage2/confinement.mjs": "8c01e4b0016757f53998373ba05f08551a25d0daf9a6e66eda9be745db8eec20",
     "src/lib/axon-interface/stage2/exports.mjs": "c22303f95317a5d17386d67bd8d86f2fb04b776eb6fa6fe2540692a5c4fdd7df",
+    "src/lib/axon-interface/stage2/induction-conservative-load.mjs": "9e3d7506dddc11f2a5af88690ed1287118fd734e446b7220560581a0ee45c1f1",
     "src/lib/axon-interface/stage2/induction-quadrature.mjs": "5035bc6757e707558e82abdd2fc41d78e8f286eae85ec21bf58bdd029c517bef",
     "src/lib/axon-interface/stage2/induction-solve.mjs": "da2764b95ac4e9a7c053869bbec9c95c18d2febc26ddb1f2facf06443396986c",
     "src/lib/axon-interface/stage2/magnetic-coupling.mjs": "59199944c150c7e43a2d6e875efae20486592e54b169987b15f7d7976b662db3",
@@ -60,9 +74,11 @@
     "src/lib/axon-interface/stage2/optical-surface.mjs": "70e2dd67af7e81c50688010bd2a2b7773fbe0d4d44027d8122eac83535c18c01",
     "src/lib/axon-interface/stage2/parameters.mjs": "ed740a722a76182df7b1367e8ae4bbc885d94f0e6e8a7f7ecd8456dbe2bebeaf",
     "src/lib/axon-interface/stage2/photocurrent.mjs": "080dd48ad14c4ac893882576489a1eae4f75f29277d9b533e7aec7792edd95cd",
-    "src/lib/axon-interface/stage2/protocol.mjs": "30a7c38f94e20ae1a6a769f6066f59f82e1ca7bc513cda6efe0414714e445334",
+    "src/lib/axon-interface/stage2/protocol.mjs": "8ee76def8e13a219c3022525dec4b1f0a39844f7c93330ee8cdc1ee6ec71b466",
     "src/lib/axon-interface/stage2/reordered-solve.mjs": "d3f72808a727d86f78a54f2a7909401cf5d9381ae944cb1843e2859a26877790",
-    "src/lib/axon-interface/stage2/settings.mjs": "3bc15420e29d3d4ab38b887aa6af9f6489c7a63632140f36f1e30a33292f3b29",
+    "src/lib/axon-interface/stage2/settings.mjs": "d9b28ce015fb8b20bc43d5bf171d61fa93d5f82456d632349a7e5d41f98cf73e",
+    "src/lib/axon-interface/stage2/spectral-opsin.mjs": "68b573c350fd64f2a9a0f2144d66623db17f1c30632b15f81fbd76347deca770",
+    "src/lib/axon-interface/stage2/spectral-protocol.mjs": "14a41ffba409db2e44ec4b80820f49ae48282662b626f9646d1ed7c9e13a0a8c",
     "src/lib/axon-interface/stage2/worker.mjs": "9396d68545ca111a84ab915342b2fe7badcb48ed17a20bc230acbb4e26713cb6",
     "src/lib/axon-interface/vendor/cdt2d-package-lock.json": "307d67afc94d179ba050a2950f5724c51fd7159cf7488f27b229fb499f504be1",
     "src/lib/axon-interface/vendor/cdt2d-source-pins.json": "05adc096c593b846d4a6ac6c1b5a3a19b0d7da3d78d1de76977ed0859717c660",
@@ -76,7 +92,7 @@
     "cpu": "AMD EPYC 9V74 80-Core Processor",
     "logicalCpus": 9,
     "totalMemoryBytes": 10451427328,
-    "seconds": 0.008920045000000001
+    "seconds": 0.026748818999999997
   },
   "stages": [],
   "components": {
@@ -89,7 +105,7 @@
       "complete": true,
       "passed": true,
       "checks": 19,
-      "sha256": "0793b37e441bd17511efdd09e31e49ec00ae18b8eb333998be9c37478519d7e0"
+      "sha256": "30d3c8dc67c6ca838a0639dd3162641f26e9904aed90ac8078a8ae11b3ecb1a7"
     },
     "surface": {
       "complete": true,
@@ -127,11 +143,53 @@
       "checks": 5,
       "sha256": "422da795a64f3283920ec4e777f9310f271c84d762153e59c9dea2b005078042"
     },
+    "magnetic-propagation": {
+      "complete": true,
+      "passed": true,
+      "checks": 15,
+      "sha256": "51b1158fa0874c1f44cad7fd755bed425d51bbace9701b45fbe8322314b59930"
+    },
+    "induction-conservative-independent": {
+      "complete": true,
+      "passed": false,
+      "checks": 2,
+      "sha256": "304a67b84d78353aff08be4a7f5cfdc70b878114532237fdc726d7ff61f3ebde"
+    },
     "protocol": {
       "complete": true,
       "passed": true,
       "checks": 37,
       "sha256": "038452a8a8194a74dde9b7509cd5edfb212d9693c460c67dc1f3ab17c750371c"
+    },
+    "spectral-component": {
+      "complete": true,
+      "passed": true,
+      "checks": 51,
+      "sha256": "347549813ac571e3ae3fa8c25f2b54d85de93c143d8395e7522a6417a55801a6"
+    },
+    "spectral-coupling": {
+      "complete": true,
+      "passed": true,
+      "checks": 52,
+      "sha256": "2b2e4ba9e768970c18c7e70db539e478edd90625df0cfb4050b05c1517703cb9"
+    },
+    "spectral-spatial": {
+      "complete": true,
+      "passed": true,
+      "checks": 40,
+      "sha256": "5a692cd51c2456d7d75cd25cb417693074e747df88e5399e59cada2327fd748c"
+    },
+    "spectral-protocol": {
+      "complete": true,
+      "passed": true,
+      "checks": 34,
+      "sha256": "b6af388d4cafd7e99a03ddeb120e3a7a83f303fccd0c376bfe8ebf00cfa5a4d7"
+    },
+    "spectral-crosstalk": {
+      "complete": false,
+      "passed": false,
+      "checks": 0,
+      "sha256": null
     }
   },
   "browser": {
@@ -368,10 +426,12 @@
   },
   "openReleaseGates": [
     "induction numerical qualification remains incomplete or failed.",
-    "Fully coupled, wavelength-dependent multi-opsin cohort experiments are not implemented; spectral assays remain component-only.",
-    "Magnetic propagating-response, spatial-delay and recording convergence remain unqualified. Native and time-step checks cover only the stated nonfiring fixtures with an unqualified field."
+    "induction-conservative-independent numerical qualification remains incomplete or failed.",
+    "spectral-crosstalk numerical qualification remains incomplete or failed.",
+    "Final hosted browser verification remains pending.",
+    "Current-version complete site build and repository regression evidence remains pending."
   ],
-  "nextStage": "Stage 3 integration is not advanced by this checkpoint. Existing PR #390 remains a separate unqualified development draft; the sequential release is blocked by Stage 2 gates.",
+  "nextStage": "Stage 3 remains blocked by Stage 2 release gates; PR #390 is preserved as a separate unqualified draft.",
   "limitations": [
     "Source hashes identify this checkpoint. Passing rows verify stated equations only.",
     "The original-host win condition is zero under complete resection; introduced outputs never replace original identities.",

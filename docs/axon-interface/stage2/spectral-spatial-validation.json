@@ -1,0 +1,1123 @@
+{
+  "schema": "axon-stage2-spectral-spatial-validation/1",
+  "complete": true,
+  "passed": true,
+  "rows": [
+    {
+      "name": "chr2 propagates at soma 5",
+      "pass": true
+    },
+    {
+      "name": "chr2 actual transported field native NEURON",
+      "exactObservationTimestamps": true,
+      "maximumSiteRmsMv": 0.18575411915548434,
+      "rmsPerSiteMv": [
+        0.18575411915548434,
+        0.13703174435064566,
+        0.1223501996541275,
+        0.11435934882610324,
+        0.10494313867999461,
+        0.08721341757553473,
+        0.08641494807495076,
+        0.08397995079186127,
+        0.0810533981859241,
+        0.07955968033344063,
+        0.07955666640179161,
+        0.07955745182119825,
+        0.07956227864261295,
+        0.07957089723491678,
+        0.08121865575425252,
+        0.08429427254410689,
+        0.08650181904824897,
+        0.08692748751327628,
+        0.10403282963443354,
+        0.11266677478779875,
+        0.1199654058322512,
+        0.1415549372599079,
+        0.15971660903872237
+      ],
+      "identicalCrossingCounts": true,
+      "unmatchedCrossings": 0,
+      "maximumCrossingTimeErrorMs": 0.0006613985893646479,
+      "pass": true
+    },
+    {
+      "name": "chrimson propagates at soma 5",
+      "pass": true
+    },
+    {
+      "name": "chrimson actual transported field native NEURON",
+      "exactObservationTimestamps": true,
+      "maximumSiteRmsMv": 0.11743818455985933,
+      "rmsPerSiteMv": [
+        0.11743818455985933,
+        0.09180527769315339,
+        0.08046427692121122,
+        0.07367503417037784,
+        0.06790022858303532,
+        0.057488777599295215,
+        0.056919710243646025,
+        0.05499346874631268,
+        0.052546958617615755,
+        0.051256723288961185,
+        0.051254238550330934,
+        0.051254970433521,
+        0.05125892825622528,
+        0.051266099540094326,
+        0.05269537284993768,
+        0.05540390346955785,
+        0.05732595216331947,
+        0.05757610729834487,
+        0.0674205530264336,
+        0.07258566455212044,
+        0.07890510326192243,
+        0.0951259238784918,
+        0.10551655503761027
+      ],
+      "identicalCrossingCounts": true,
+      "unmatchedCrossings": 0,
+      "maximumCrossingTimeErrorMs": 0.000411458873157855,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson propagates at soma 5",
+      "pass": true
+    },
+    {
+      "name": "vfchrimson actual transported field native NEURON",
+      "exactObservationTimestamps": true,
+      "maximumSiteRmsMv": 0.11627303958594583,
+      "rmsPerSiteMv": [
+        0.11627303958594583,
+        0.08110666388432809,
+        0.07676279999708989,
+        0.07414148689724093,
+        0.0726571074687706,
+        0.06971187429947771,
+        0.06894704176129389,
+        0.06529546431446079,
+        0.06080577496141998,
+        0.05854388692834748,
+        0.05853842318877992,
+        0.058537893481611994,
+        0.05854306058004373,
+        0.058553137566977595,
+        0.060731262012847786,
+        0.06526065433622152,
+        0.06855610445346443,
+        0.06885804143718675,
+        0.07565296435751451,
+        0.07386030089999486,
+        0.07414190886507929,
+        0.0871944482959765,
+        0.08819506164214783
+      ],
+      "identicalCrossingCounts": true,
+      "unmatchedCrossings": 0,
+      "maximumCrossingTimeErrorMs": 0.0003776224377232129,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green propagates at soma 5",
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green actual transported field native NEURON",
+      "exactObservationTimestamps": true,
+      "maximumSiteRmsMv": 0.11328982335434575,
+      "rmsPerSiteMv": [
+        0.11328982335434575,
+        0.08355948153475816,
+        0.07685103246612061,
+        0.07366186620263176,
+        0.07060262218417443,
+        0.060742036270678305,
+        0.060237213007167924,
+        0.058291218179783055,
+        0.05574296437666435,
+        0.05439327440227604,
+        0.05439055494511684,
+        0.054391186881486364,
+        0.054395274905861726,
+        0.05440271019180863,
+        0.05587244653891977,
+        0.058663304543334356,
+        0.06059601413511892,
+        0.06076663777693682,
+        0.06978298594057843,
+        0.07188814471471947,
+        0.07431930226659268,
+        0.08768947543661977,
+        0.09190387111826219
+      ],
+      "identicalCrossingCounts": true,
+      "unmatchedCrossings": 0,
+      "maximumCrossingTimeErrorMs": 0.0003945090795749451,
+      "pass": true
+    },
+    {
+      "name": "chr2 propagates at soma 9",
+      "pass": true
+    },
+    {
+      "name": "chr2 central delay 5 -> 9",
+      "relative": 0.02362922463041294,
+      "pass": true
+    },
+    {
+      "name": "chr2 peripheral delay 5 -> 9",
+      "relative": 0.023631707564834646,
+      "pass": true
+    },
+    {
+      "name": "chr2 reciprocal recording 5 -> 9",
+      "relative": 0.027813823202231525,
+      "pass": true
+    },
+    {
+      "name": "chrimson propagates at soma 9",
+      "pass": true
+    },
+    {
+      "name": "chrimson central delay 5 -> 9",
+      "relative": 0.022850081666433018,
+      "pass": true
+    },
+    {
+      "name": "chrimson peripheral delay 5 -> 9",
+      "relative": 0.022851735411918716,
+      "pass": true
+    },
+    {
+      "name": "chrimson reciprocal recording 5 -> 9",
+      "relative": 0.05097631392691123,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson propagates at soma 9",
+      "pass": true
+    },
+    {
+      "name": "vfchrimson central delay 5 -> 9",
+      "relative": 0.022686622443294013,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson peripheral delay 5 -> 9",
+      "relative": 0.02267184508068202,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson reciprocal recording 5 -> 9",
+      "relative": 0.01353820611289081,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green propagates at soma 9",
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green central delay 5 -> 9",
+      "relative": 0.022894566492448306,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green peripheral delay 5 -> 9",
+      "relative": 0.022898024898511178,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green reciprocal recording 5 -> 9",
+      "relative": 0.07405946353452399,
+      "pass": true
+    },
+    {
+      "name": "chr2 propagates at soma 13",
+      "pass": true
+    },
+    {
+      "name": "chr2 central delay 9 -> 13",
+      "relative": 0.008164216153910083,
+      "pass": true
+    },
+    {
+      "name": "chr2 peripheral delay 9 -> 13",
+      "relative": 0.008166579028205367,
+      "pass": true
+    },
+    {
+      "name": "chr2 reciprocal recording 9 -> 13",
+      "relative": 0.022447066836238375,
+      "pass": true
+    },
+    {
+      "name": "chrimson propagates at soma 13",
+      "pass": true
+    },
+    {
+      "name": "chrimson central delay 9 -> 13",
+      "relative": 0.007916167079763071,
+      "pass": true
+    },
+    {
+      "name": "chrimson peripheral delay 9 -> 13",
+      "relative": 0.007919920680423338,
+      "pass": true
+    },
+    {
+      "name": "chrimson reciprocal recording 9 -> 13",
+      "relative": 0.016166238061151177,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson propagates at soma 13",
+      "pass": true
+    },
+    {
+      "name": "vfchrimson central delay 9 -> 13",
+      "relative": 0.00790405332707892,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson peripheral delay 9 -> 13",
+      "relative": 0.007899283074372774,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson reciprocal recording 9 -> 13",
+      "relative": 0.0041642606948222366,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green propagates at soma 13",
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green central delay 9 -> 13",
+      "relative": 0.007932437390509087,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green peripheral delay 9 -> 13",
+      "relative": 0.007922716800456583,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green reciprocal recording 9 -> 13",
+      "relative": 0.0031756284592672247,
+      "pass": true
+    }
+  ],
+  "runs": [
+    {
+      "modelId": "chr2",
+      "level": {
+        "soma": 5,
+        "stem": 3,
+        "passive": 3
+      },
+      "emittedMw": 0.002,
+      "expressionMultiplier": 20,
+      "central": {
+        "recruited": true,
+        "times": [
+          3.5635350916050164,
+          3.5830033599042728,
+          3.5981679237863347
+        ],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          229,
+          260,
+          291
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [
+          25.682818436352555,
+          32.97160431968959
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": true,
+        "times": [
+          3.561457975088963,
+          3.5809372951825567,
+          3.5960898714251566
+        ],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          93,
+          62,
+          31
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [
+          25.668247022873988,
+          32.99768910545401
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "recordingPeakToPeakUv": 100.44996119199587
+    },
+    {
+      "modelId": "chrimson",
+      "level": {
+        "soma": 5,
+        "stem": 3,
+        "passive": 3
+      },
+      "emittedMw": 0.002,
+      "expressionMultiplier": 20,
+      "central": {
+        "recruited": true,
+        "times": [
+          2.4031524179895496,
+          2.4232723924481507,
+          2.4391128971854874
+        ],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          229,
+          260,
+          291
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [
+          24.85092617929513,
+          31.564650766555534
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": true,
+        "times": [
+          2.4002549189286215,
+          2.420369842910657,
+          2.4361927713727165
+        ],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          93,
+          62,
+          31
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [
+          24.85716577634358,
+          31.599713112455994
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "recordingPeakToPeakUv": 202.9751554729828
+    },
+    {
+      "modelId": "vfchrimson",
+      "level": {
+        "soma": 5,
+        "stem": 3,
+        "passive": 3
+      },
+      "emittedMw": 0.002,
+      "expressionMultiplier": 10,
+      "central": {
+        "recruited": true,
+        "times": [
+          1.0321326368563113,
+          1.0528292356569287,
+          1.0692461038593373
+        ],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          229,
+          260,
+          291
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [
+          24.15855884422352,
+          30.456478899345882
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": true,
+        "times": [
+          1.028060316457582,
+          1.048735281770578,
+          1.0651281181761352
+        ],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          93,
+          62,
+          31
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [
+          24.18383742998136,
+          30.501127909170066
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "recordingPeakToPeakUv": 384.639586146298
+    },
+    {
+      "modelId": "hypothetical-green",
+      "level": {
+        "soma": 5,
+        "stem": 3,
+        "passive": 3
+      },
+      "emittedMw": 0.002,
+      "expressionMultiplier": 10,
+      "central": {
+        "recruited": true,
+        "times": [
+          2.3829684206670247,
+          2.403044636548627,
+          2.418844325978386
+        ],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          229,
+          260,
+          291
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [
+          24.905091823514187,
+          31.646191668694627
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": true,
+        "times": [
+          2.3801752597917956,
+          2.400248626995464,
+          2.416031632291554
+        ],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          93,
+          62,
+          31
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [
+          24.908626187470254,
+          31.679644695035634
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "recordingPeakToPeakUv": 190.90756679353146
+    },
+    {
+      "modelId": "chr2",
+      "level": {
+        "soma": 9,
+        "stem": 5,
+        "passive": 5
+      },
+      "emittedMw": 0.002,
+      "expressionMultiplier": 20,
+      "central": {
+        "recruited": true,
+        "times": [
+          3.583734133161514,
+          3.6036808847554087,
+          3.619205117192359
+        ],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          377,
+          428,
+          479
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [
+          25.066738192750964,
+          32.20771152652381
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": true,
+        "times": [
+          3.5818224968224484,
+          3.601780936220989,
+          3.617292612561068
+        ],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          153,
+          102,
+          51
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [
+          25.052058931850038,
+          32.23378241254913
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "recordingPeakToPeakUv": 97.73166980673254
+    },
+    {
+      "modelId": "chrimson",
+      "level": {
+        "soma": 9,
+        "stem": 5,
+        "passive": 5
+      },
+      "emittedMw": 0.002,
+      "expressionMultiplier": 20,
+      "central": {
+        "recruited": true,
+        "times": [
+          2.4063272235337467,
+          2.4269195089606095,
+          2.4431286175892923
+        ],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          377,
+          428,
+          479
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [
+          24.280937721839436,
+          30.846853547222253
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": true,
+        "times": [
+          2.403576557908775,
+          2.4241639633186063,
+          2.4403548583432997
+        ],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          153,
+          102,
+          51
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [
+          24.286693249904346,
+          30.88155406093523
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "recordingPeakToPeakUv": 193.13009511563402
+    },
+    {
+      "modelId": "vfchrimson",
+      "level": {
+        "soma": 9,
+        "stem": 5,
+        "passive": 5
+      },
+      "emittedMw": 0.002,
+      "expressionMultiplier": 10,
+      "central": {
+        "recruited": true,
+        "times": [
+          1.0340193951690342,
+          1.0551995097708846,
+          1.0719943864618067
+        ],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          377,
+          428,
+          479
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [
+          23.60704884742754,
+          29.770983687558477
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": true,
+        "times": [
+          1.0300902064830249,
+          1.051247561518758,
+          1.0680178989699085
+        ],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          153,
+          102,
+          51
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [
+          23.632443618568352,
+          29.814546156654337
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "recordingPeakToPeakUv": 379.50181238994725
+    },
+    {
+      "modelId": "hypothetical-green",
+      "level": {
+        "soma": 9,
+        "stem": 5,
+        "passive": 5
+      },
+      "emittedMw": 0.002,
+      "expressionMultiplier": 10,
+      "central": {
+        "recruited": true,
+        "times": [
+          2.387377135680712,
+          2.4079261356643946,
+          2.424093649662807
+        ],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          377,
+          428,
+          479
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [
+          24.332084305661045,
+          30.926214138369737
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": true,
+        "times": [
+          2.3847314340553973,
+          2.405277502809374,
+          2.4214280874380028
+        ],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          153,
+          102,
+          51
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [
+          24.33555567184703,
+          30.958631622145127
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "recordingPeakToPeakUv": 177.7439455403067
+    },
+    {
+      "modelId": "chr2",
+      "level": {
+        "soma": 13,
+        "stem": 7,
+        "passive": 7
+      },
+      "emittedMw": 0.002,
+      "expressionMultiplier": 20,
+      "central": {
+        "recruited": true,
+        "times": [
+          3.5894381870913503,
+          3.6095538250340127,
+          3.6252011476626027
+        ],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          525,
+          596,
+          667
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [
+          24.85628352554383,
+          31.95434847661596
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": true,
+        "times": [
+          3.5875791426407835,
+          3.6077065880278725,
+          3.6233413129696137
+        ],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          213,
+          142,
+          71
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [
+          24.841701983736797,
+          31.98009570767147
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "recordingPeakToPeakUv": 95.58604349968356
+    },
+    {
+      "modelId": "chrimson",
+      "level": {
+        "soma": 13,
+        "stem": 7,
+        "passive": 7
+      },
+      "emittedMw": 0.002,
+      "expressionMultiplier": 20,
+      "central": {
+        "recruited": true,
+        "times": [
+          2.4073029739970107,
+          2.42806208713051,
+          2.444398018623652
+        ],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          525,
+          596,
+          667
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [
+          24.085807364917816,
+          30.60737615176162
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": true,
+        "times": [
+          2.4045982744365473,
+          2.4253524837234646,
+          2.4416701814339636
+        ],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          213,
+          142,
+          71
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [
+          24.091498408237833,
+          30.641577560190658
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "recordingPeakToPeakUv": 190.05757904742725
+    },
+    {
+      "modelId": "vfchrimson",
+      "level": {
+        "soma": 13,
+        "stem": 7,
+        "passive": 7
+      },
+      "emittedMw": 0.002,
+      "expressionMultiplier": 10,
+      "central": {
+        "recruited": true,
+        "times": [
+          1.0346256903133535,
+          1.0559766497438887,
+          1.0729032293156293
+        ],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          525,
+          596,
+          667
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [
+          23.418151377540642,
+          29.53934064946993
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": true,
+        "times": [
+          1.0307404740450645,
+          1.0520688152159572,
+          1.0689701535925362
+        ],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          213,
+          142,
+          71
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [
+          23.442985837190452,
+          29.583455987892403
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "recordingPeakToPeakUv": 377.92802158419227
+    },
+    {
+      "modelId": "hypothetical-green",
+      "level": {
+        "soma": 13,
+        "stem": 7,
+        "passive": 7
+      },
+      "emittedMw": 0.002,
+      "expressionMultiplier": 10,
+      "central": {
+        "recruited": true,
+        "times": [
+          2.388684725011974,
+          2.4094004667738376,
+          2.4256948192494248
+        ],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          525,
+          596,
+          667
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [
+          24.136234451448587,
+          30.68547834282602
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": true,
+        "times": [
+          2.386085864951825,
+          2.406798653409026,
+          2.4230755773502937
+        ],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          213,
+          142,
+          71
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [
+          24.139675883483665,
+          30.7183348527135
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "recordingPeakToPeakUv": 178.31019246206665
+    }
+  ],
+  "selected": {
+    "chr2": 0.002,
+    "chrimson": 0.002,
+    "vfchrimson": 0.002,
+    "hypothetical-green": 0.002
+  },
+  "acceptance": {
+    "schema": "axon-stage2-spectral-acceptance/1",
+    "declaredBeforeExecution": true,
+    "independentStateAbsolute": 1e-10,
+    "independentCurrentNaAbsolute": 1e-10,
+    "independentPhotonFluxRelative": 2e-14,
+    "nativeMaximumSiteRmsMv": 1,
+    "nativeMaximumSpikeTimeMs": 0.1,
+    "nativeSpikeCounts": "identical at every active site",
+    "timeMaximumSiteRmsMv": 1,
+    "timeMaximumSpikeTimeMs": 0.1,
+    "spaceConductionDelayRelative": 0.05,
+    "spaceRecordingPeakToPeakRelative": 0.1,
+    "dtMs": [
+      0.000625,
+      0.0003125,
+      0.00015625
+    ],
+    "levels": [
+      {
+        "soma": 5,
+        "stem": 3,
+        "passive": 3
+      },
+      {
+        "soma": 9,
+        "stem": 5,
+        "passive": 5
+      },
+      {
+        "soma": 13,
+        "stem": 7,
+        "passive": 7
+      }
+    ],
+    "fixtureGrid": {
+      "wholeCellExpressionMultiplier": 10,
+      "localIrradianceMwMm2": [
+        0,
+        0.1,
+        1,
+        10,
+        100
+      ],
+      "wavelengthsNm": [
+        470,
+        550
+      ],
+      "pulseStartMs": 0.5,
+      "pulseWidthMs": 2
+    },
+    "selection": "Retain every grid probe. For propagation verification use the lowest declared positive grid sample that propagates to both arms for each opsin. The same absolute stimulus is used for every time, spatial and native comparison; no amplitude fitting, baseline correction, normalization of current or time shift.",
+    "scope": "Published kinetic sets plus an explicitly hypothetical fourth construct. No claim of biological calibration or an automatic channel multiplier.",
+    "emittedGrid": [
+      0.002,
+      0.005,
+      0.01
+    ],
+    "photons": 128000,
+    "expressionByModel": {
+      "chr2": 20,
+      "chrimson": 20,
+      "vfchrimson": 10,
+      "hypothetical-green": 10
+    }
+  },
+  "sourceHashes": {
+    "src/lib/axon-interface/stage2/spectral-opsin.mjs": "68b573c350fd64f2a9a0f2144d66623db17f1c30632b15f81fbd76347deca770",
+    "src/lib/axon-interface/stage2/optical-surface.mjs": "70e2dd67af7e81c50688010bd2a2b7773fbe0d4d44027d8122eac83535c18c01",
+    "scripts/axon-interface/stage2/spectral-spatial-check.mjs": "2263810bfdc83ddd79f7444eaf0b4b1be8aff970edadc7a5a0b04e07c282fd16"
+  },
+  "runtimeSeconds": 357.742823051
+}

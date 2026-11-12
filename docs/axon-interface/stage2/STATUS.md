@@ -46,3 +46,13 @@ npm run build
 The reproduction entry compiles pinned native mechanisms, executes studies, records logs and returns a failing release status while required gates are missing or failing. `--collect` only aggregates existing study outputs and states that mode explicitly. It does not claim a fresh combined rerun. Large raw arrays and platform-specific native binaries are regenerated, not committed.
 
 The workflow named **Axon Stage 2 software checkpoint** verifies software and build integrity. Its success is deliberately separate from scientific release qualification.
+
+## Spectral continuation (0.3.0)
+
+The coupled spectral mode now resolves 2–4 explicit families, each physical source at each supported wavelength, area-conserving whole-cell conductance, independent four-state kinetics and wavelength-dependent transport. ChR2/Chrimson are the two-family baseline; vf-Chrimson is a distinct kinetic model with similar spectral overlap; the fourth construct is explicitly hypothetical. Original-host recovery remains zero.
+
+51 independent SciPy assays, 52 native/time-step cable comparisons, 40 nonuniform-field/spatial checks and 34 whole-cohort checks passed. The baseline expression-10 grid is retained even where it never fires. Stronger predeclared expression fixtures are implementation checks, not biological fits. A two-source crosstalk study is also being run. The actual browser worker completed a 32,000-photon two-family run in 79.3 seconds. All exported matrices and nonnumeric fields match Node; the maximum voltage difference is 2.82e-11 mV.
+
+The magnetic positive stress fixture passes 15 native/time/spatial checks without changing any acceptance limit. It uses 100 million amperes solely to stress the weakly coupled axial-coil implementation; it is excluded from the 0–100 A interface and all feasibility or operating-point claims. The same absolute physical stimulus is used on both sides of every comparison.
+
+Conservative interface-flux assembly and a 2→4 tissue-mesh refinement are under evaluation. They have not replaced production induction. The initial conservative 1→2 attempt failed the current-balance/5% refinement checks and is retained. The independent coarse conservative solve agrees to 8.72e-12 relative L2; an initial fine ILUT factorization was singular and is retained while the independent solver is corrected. Stage 2 is not yet marked complete.

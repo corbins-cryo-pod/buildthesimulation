@@ -1,0 +1,11 @@
+{
+ "schema":"axon-stage2-spectral-propagation-acceptance/1",
+ "declaredBeforeExecution":true,
+ "reason":"The initial expression multiplier 10 grid produced no propagating response for ChR2 or Chrimson. Retain that grid and extend the declared hypothetical expression grid for positive implementation tests.",
+ "expressionMultipliers":[10,20,50],
+ "localIrradianceMwMm2":[0,0.1,1,10,100],
+ "selection":"Lowest expression multiplier, then lowest local irradiance with both arms recruited. Every grid probe is retained. Freeze the chosen absolute stimulus for native, time and spatial checks.",
+ "acceptanceFile":"spectral-acceptance.json",
+ "acceptanceUnchanged":true,
+ "biologicalCalibration":false
+}

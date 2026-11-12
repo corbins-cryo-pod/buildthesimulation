@@ -1,0 +1,23 @@
+import fs from 'node:fs';import {spawnSync} from 'node:child_process';import crypto from 'node:crypto';
+import {normalizeStage1Settings} from '../../../src/lib/axon-interface/stage1-settings.mjs';
+import {createStage1Cohort} from '../../../src/lib/axon-interface/identities.mjs';
+import {createBipolarMorphology} from '../../../src/lib/axon-interface/bipolar.mjs';
+import {stage1FieldSettings} from '../../../src/lib/axon-interface/stage1-protocol.mjs';
+import {createStage1FieldModel} from '../../../src/lib/axon-interface/field-stage1.mjs';
+import {embeddedCoil} from '../../../src/lib/axon-interface/stage2/magnetic-coupling.mjs';
+import {conservativeInductionLoad} from '../../../src/lib/axon-interface/stage2/induction-conservative-load.mjs';
+import {solveInductionLoad} from '../../../src/lib/axon-interface/stage2/induction-solve.mjs';
+const s=normalizeStage1Settings({axonCount:4,channelCount:1}),g=createStage1Cohort(s),m=createBipolarMorphology(s),coil=embeddedCoil(g.wells[0]),rows=[];
+// Preserve the existing absolute criterion and add a meaningful relative check
+// because these per-unit-slew fields are far smaller than the absolute bound.
+const acceptance={maximumPotentialUvPerAperS:.001,potentialRelativeL2:1e-6,loadRelativeL2:1e-8,trueResidual:1e-9};
+fs.writeFileSync('/tmp/conservative-independent-predeclared.json',JSON.stringify(acceptance));
+for(const refinement of [1,2]){
+ console.log('Independent fixture',refinement);const model=createStage1FieldModel({...stage1FieldSettings(s,m),radialRefinement:refinement,axialRefinement:refinement},{...g,morphology:m,constructPresent:true}),load=conservativeInductionLoad(model,coil,{faceOrder:8,volumeRule:'tetra11'}),solution=solveInductionLoad(model,load.rhsMicroampPerSlew);
+ const input='/tmp/axon-conservative-fixture-'+refinement+'.json',output='/tmp/axon-conservative-reference-'+refinement+'.json';
+ fs.writeFileSync(input,JSON.stringify({points:model.points,tetrahedra:Array.from(model.tetrahedra),regions:Array.from(model.regions),conductivityByRegion:load.conductivityByRegion,boundary:model.boundary,segments:coil.segments,potentialMvPerAperS:Array.from(solution.potentialMvPerUa),loadMicroampPerSlew:Array.from(load.rhsMicroampPerSlew)}));
+ const p=spawnSync(process.env.MRG_PYTHON??'python3',['scripts/axon-interface/stage2/induction-conservative-reference.py',input,output],{encoding:'utf8',env:{...process.env,OPENBLAS_NUM_THREADS:'1',OMP_NUM_THREADS:'1'}});
+ if(p.status!==0){rows.push({name:'Independent conservative field '+refinement,pass:false,exitCode:p.status,error:p.stderr??p.error?.message??'Reference failed'});console.log(p.stdout,p.stderr);continue;}
+ const r=JSON.parse(fs.readFileSync(output));rows.push({name:'Independent conservative field '+refinement,...r,pass:r.maximumPotentialErrorUvPerAperS<=acceptance.maximumPotentialUvPerAperS&&r.potentialRelativeL2<=acceptance.potentialRelativeL2&&r.loadRelativeL2<=acceptance.loadRelativeL2&&r.relativeResidual<=acceptance.trueResidual});console.log(rows.at(-1));
+}
+const paths=['scripts/axon-interface/stage2/induction-conservative-reference.py','src/lib/axon-interface/stage2/induction-conservative-load.mjs','src/lib/axon-interface/stage2/induction-solve.mjs'],report={schema:'axon-stage2-conservative-independent-validation/1',complete:true,passed:rows.every(r=>r.pass),rows,acceptance,sourceHashes:Object.fromEntries(paths.map(p=>[p,crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex')]))};fs.writeFileSync('docs/axon-interface/stage2/induction-conservative-independent-validation.json',JSON.stringify(report,null,2)+'\n');if(!report.passed)process.exitCode=1;

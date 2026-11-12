@@ -9,6 +9,7 @@ on:
       - 'public/simulations/biohybrid-axon-interface/**'
       - 'tests/axon-interface-stage2-contracts.mjs'
       - 'tests/axon-interface-induction-solve.mjs'
+      - 'tests/axon-interface-spectral.mjs'
       - 'scripts/axon-interface/stage2/**'
   workflow_dispatch:
 permissions:
@@ -34,7 +35,7 @@ jobs:
           path: axon-stage2-source.tar.gz
           retention-days: 7
       - name: Coupled contracts
-        run: node --test tests/axon-interface-stage2-contracts.mjs tests/axon-interface-induction-solve.mjs
+        run: node --test tests/axon-interface-stage2-contracts.mjs tests/axon-interface-induction-solve.mjs tests/axon-interface-spectral.mjs
       - name: Component contracts
         run: node --test labs/axon-stage2/tests/components.test.mjs
       - name: Build complete site

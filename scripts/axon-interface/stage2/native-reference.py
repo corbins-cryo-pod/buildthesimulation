@@ -7,6 +7,7 @@ the sampled current waveform. Original AXNODE.mod is compiled unchanged.
 """
 import json,math,pathlib,platform,sys
 from neuron import h,load_mechanisms,__version__ as neuron_version
+from spectral_reference import PARAMETERS as SPECTRAL_PARAMETERS, photon_flux
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 load_mechanisms(str(ROOT/'mrg-modeldb'))
 load_mechanisms(str(ROOT/'stage2/mechanisms'))
@@ -71,6 +72,18 @@ def simulate(case):
     if photo:
         for sec in {segs[i].sec for i in photo['expressionIndices']}:sec.insert('axon_chr2')
         for i in photo['expressionIndices']:segs[i].axon_chr2.gmax=photo['gmaxMsCm2']
+    spectral=case.get('spectral')
+    if spectral:
+        p=SPECTRAL_PARAMETERS[spectral['modelId']];indices=spectral['expressionIndices']
+        for sec in {segs[i].sec for i in indices}:sec.insert('axon_spectral')
+        total_area=sum(h.area(segs[i].x,sec=segs[i].sec) for i in indices)
+        names=dict(Gd1='gd1',Gd2='gd2',Gr0='gr0',k1='k1',k2='k2',Gf0='gf0',Gb0='gb0',kf='kf',kb='kb',phim='phim',p='powerp',q='powerq',gamma='gamma',E='reversal')
+        for i in indices:
+            op=segs[i].axon_spectral
+            for key,name in names.items():setattr(op,name,p[key])
+            op.gbar=0 if spectral.get('blocked') else p['g0']*.1*spectral.get('expressionMultiplier',1)/total_area
+            op.rate_scale=spectral.get('rateScale',1)
+        spectral_flux={i:photon_flux(spectral['modelId'],[dict(nm=b['nm'],irradianceMwMm2=b['fluencePerMw'][i]*spectral['emittedMw']) for b in spectral['bins']],spectral.get('convention','declared')) for i in indices}
     dt=case['dtMs'];duration=case['durationMs'];h.dt=dt;h.steps_per_ms=1/dt
     injection_index=case.get('injectedCompartment',next((i for i,r in enumerate(roles) if r=='soma'),nodes[0]))
     stim=h.IClamp(segs[injection_index]);stim.delay=0;stim.dur=1e9;stim.amp=0
@@ -93,6 +106,10 @@ def simulate(case):
             t=k*dt;start=photo['pulseStartMs'];end=start+photo['pulseWidthMs']
             fraction=max(0,min(t+dt,end)-max(t,start))/dt
             for i in photo['expressionIndices']:segs[i].axon_chr2.light=photo['fluencePerMw'][i]*photo['emittedMw']*fraction
+        if spectral:
+            t=k*dt;start=spectral['pulseStartMs'];end=start+spectral['pulseWidthMs']
+            fraction=max(0,min(t+dt,end)-max(t,start))/dt
+            for i in spectral['expressionIndices']:segs[i].axon_spectral.flux=spectral_flux[i]*fraction
         stim.amp=injected[k] if injected else 0;h.fadvance();now=[float(segs[i].v) for i in active]
         for j in range(len(active)):
             if old[j]<0<=now[j]:events[j].append(k*dt+dt*(-old[j])/(now[j]-old[j]))
