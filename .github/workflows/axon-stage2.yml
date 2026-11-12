@@ -1,0 +1,32 @@
+name: Axon Stage 2 development
+on:
+  push:
+    branches: [feature/axon-resolution-stage2]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-and-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Package reproducible source
+        run: git archive --format=tar.gz --output=axon-stage2-source.tar.gz HEAD src scripts docs tests package.json package-lock.json astro.config.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: axon-stage2-source
+          path: axon-stage2-source.tar.gz
+          retention-days: 7
+      - name: Stage 2 contracts when present
+        run: |
+          if [ -f tests/axon-interface-stage2-contracts.mjs ]; then
+            node --test tests/axon-interface-stage2-contracts.mjs
+          else
+            echo 'Stage 2 implementation is not yet present; this is a source checkpoint, not a verified release.'
+          fi
