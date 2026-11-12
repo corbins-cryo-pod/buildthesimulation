@@ -44,6 +44,7 @@ test('Stage 1: obsolete core inputs, malformed settings and intersecting geometr
   for(const value of [null,[],true])assert.throws(()=>normalizeStage1Settings(value));
   for(const value of [{nodeCount:11},{fiberDiameterUm:10},{electrodeRadiusUm:75},{contactAreaUm2:1000},JSON.parse('{"constructor":3}')])assert.throws(()=>normalizeStage1Settings(value),/Unknown Stage 1/);
   assert.throws(()=>normalizeStage1Settings({mode:'straight-cable'}),/Unsupported mode/);
+  assert.throws(()=>normalizeStage1Settings({axonCount:4,channelCount:8}),/channelCount/);
   assert.throws(()=>normalizeStage1Settings({dtMs:'0.000625'}),/finite number/);
   assert.throws(()=>normalizeStage1Settings({peripheralFiberDiameterUm:6}),/tabulated/);
   assert.throws(()=>normalizeStage1Settings({somaDiameterUm:30}),/somaDiameterUm/);
@@ -112,4 +113,20 @@ test('Stage 1: actual disconnected native stump baselines are simulated with no 
     assert.equal(run.timesMs[0],0);assert.equal(run.timesMs.at(-1),s.durationMs);
     const drift=Math.max(...run.membraneMv.flatMap(row=>row.map(value=>Math.abs(value-row[0]))));assert.ok(drift<=.1,`${arm} drift ${drift}`);
   }
+});
+
+
+test('Stage 1: study failures remain on the predeclared grid and never become threshold evidence',async()=>{
+  await assert.rejects(runStage1Study(SMALL,'constructor'),/Unsupported Stage 1 study/);
+  let attempts=0;
+  const fieldAPI={FIELD_STAGE1_VERSION:'deliberate-contract-failure',createStage1FieldModel(){attempts++;throw new Error('Deliberate field assembly failure for failure-retention contract.');},solveStage1Channel(){throw new Error('not reached');},sampleMembraneTransfer(){throw new Error('not reached');}};
+  const study=await runStage1Study(SMALL,'perineurium',{fieldAPI});
+  assert.equal(attempts,3);assert.deepEqual(study.values,[400,1149,3750]);assert.equal(study.runs.length,3);
+  for(const [i,run] of study.runs.entries()){
+    assert.equal(run.settings.perineuriumResistivityOhmM,study.values[i]);
+    assert.equal(run.auditComplete,false);assert.equal(run.auditValid,false);assert.equal(run.matrices,null);
+    assert.equal(run.metrics.anyRecruitment,null);assert.deepEqual(run.controls,[]);
+    assert.match(run.failure.message,/Deliberate field assembly failure/);
+  }
+  assert.equal(study.brackets,null);
 });

@@ -1,0 +1,49 @@
+{
+  "schema": "buildthesimulation.bipolar.soma-spatial-acceptance.v1",
+  "declaredAt": "2026-11-11T22:54:15.479621+00:00",
+  "reason": "The actual well has opposite source/return potentials across the soma. A one-compartment surface mean can cancel spatial polarization; test axial spherical bands before certifying the coupled model. This adds axial resolution, not circumferential nonlinear patches.",
+  "somaSubdivisions": [
+    1,
+    3,
+    5,
+    9,
+    13
+  ],
+  "fixedDtMs": 0.000625,
+  "equilibrationMs": 50,
+  "durationMs": 4,
+  "amplitudeGridUa": [
+    0,
+    0.01,
+    0.03,
+    0.1,
+    0.3,
+    1
+  ],
+  "waveform": {
+    "onsetMs": 0.5,
+    "phaseWidthMs": 0.1,
+    "phaseGapMs": 0.025,
+    "firstPhaseSign": -1,
+    "intervalAverage": true
+  },
+  "controls": [
+    "assigned",
+    "soma-only-silenced",
+    "initiation-region-silenced",
+    "whole-cell-silenced"
+  ],
+  "limits": {
+    "recruitmentAndNecessityClassificationEqual": true,
+    "trueNodeCrossingCountsEqual": true,
+    "commonNodeWaveformRmsMv": 1,
+    "commonNodeCrossingTimeMs": 0.1,
+    "orderedConductionDelayRelative": 0.05,
+    "recordingPeakToPeakRelative": 0.1,
+    "recordingAbsoluteToleranceUv": 1e-06,
+    "firstCrossingRoleFamilyEqual": true
+  },
+  "selection": "Keep every amplitude and intervention. A supported soma resolution requires two consecutive declared refinement comparisons to meet all applicable limits, without changing the density/geometry hypothesis or tolerances. Nonrecruitment is a valid biological outcome; a numerical comparison cannot omit its differing recruitment result.",
+  "fieldPolicy": "Identical external soma/neurite exclusion geometry and field solve for every soma subdivision; only surface-band averages and electrical axial segmentation change. The final report must identify frozen field/production sources; prototype results are exploratory.",
+  "failurePolicy": "Preserve every failed soma comparison and any numerical-source failure. Do not certify the one-compartment approximation solely because its independent native solver agrees."
+}

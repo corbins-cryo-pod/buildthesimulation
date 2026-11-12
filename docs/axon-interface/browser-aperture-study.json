@@ -1,0 +1,365 @@
+{
+  "schema": "buildthesimulation.axon-interface.browser-aperture-study.v1",
+  "observedAt": "2026-11-11T23:37:26.400126+00:00",
+  "status": "completed",
+  "execution": "Actual production browser Web Worker through the laboratory aperture-study control; full study downloaded and parsed. This is a parameter sensitivity result, not an additional numerical-validation gate.",
+  "grid": [
+    3.1,
+    3.5,
+    5
+  ],
+  "channel": "C1",
+  "cell": "E0001",
+  "cohortCount": 4,
+  "sourceHashes": {
+    "src/lib/axon-interface/stage1-settings.mjs": "b952da4823fc88e863afd729408b9fa1b4424af4011c5b6e46c9cf18ad8d6c62",
+    "src/lib/axon-interface/identities.mjs": "06140ccd7ad743f12874cfdb339d46a9213979a409f9f60aef2981660c89c339",
+    "src/lib/axon-interface/stage1-protocol.mjs": "036ca37b4bf031286829174aec17e135cc22a0664aaca6afa8af77666b6eb7e1",
+    "src/lib/axon-interface/settings.mjs": "7649d5e2e69c6ea470fd5d03373ca2b15094188291a0b416e206f13866d3718a",
+    "src/lib/axon-interface/geometry.mjs": "0a41a23b84627dbbc3185eebe881e7aa91d09b2a01f5f213aefec070b41f2d8b",
+    "src/lib/axon-interface/metrics.mjs": "636ab52f4ab4fe4e7fc110dfcc13cb84bd11a75ba7c22fbf60cfd5ea0970c78d",
+    "src/lib/axon-interface/mrg.mjs": "182b94c586591599dbcea42b63ececba486d42e4a72f7923abb53a171fe752f5",
+    "src/lib/axon-interface/bipolar.mjs": "d47f6717b3faa87ae775c67e1fee4ce0f222e5e954cdba6c765d3d7dffb22098",
+    "src/lib/axon-interface/field.mjs": "c55565795085e37bc1804c99c152f79d563e8cad678f2eafc2e41dc3ce5a9734",
+    "src/lib/axon-interface/field-stage1.mjs": "dd60139ae3bff6673e3b1bb7d0361694d41715f53de70207c9fa069c2cc34653",
+    "src/lib/axon-interface/vendor/cdt2d.mjs": "645d096429082510865735501c2fcfd9d3b6e7211e8c631f855b811f83dad185",
+    "src/lib/axon-interface/vendor/cdt2d-source-pins.json": "05adc096c593b846d4a6ac6c1b5a3a19b0d7da3d78d1de76977ed0859717c660",
+    "src/lib/axon-interface/vendor/THIRD_PARTY_LICENSES.md": "899045234e0daf5c167f08f5813da91af3d711f1d14894c475d69e4f869db1f4",
+    "src/lib/axon-interface/export.mjs": "f2a5bb1396cc3e2abf757faa35c85babe02d96bf234117a9aae9633071a8b5dc",
+    "tests/axon-interface-stage1-contracts.mjs": "9a4d0dc914e64edd1e5a3916146caf46d194f805fc5e4f574f7460dba947f9e2",
+    "scripts/axon-interface/stage1-protocol-validate.mjs": "087bf01c4e0265c9d9d7151bc0e461510f1484d39a3260b8539cf2f93cc40f6f"
+  },
+  "browserWorker": {
+    "file": "worker-BPv-96U7.js",
+    "sha256": "15e985b4813eeb0011fd37b9d1cd62a051ffd9296efb0007c0f77fc8843b1646"
+  },
+  "fullStudyExport": {
+    "bytes": 6488735,
+    "sha256": "224cb602dc63aa158843738d35239d34b13dffd66ea7f7943b819d7b25eee977",
+    "regeneration": "Four-cell experiment; amplitude0.5\u00b5A; Run hypothesis sensitivity, Aperture3.1/3.5/5\u00b5m; export full study JSON."
+  },
+  "rows": [
+    {
+      "apertureRadiusUm": 3.1,
+      "settings": {
+        "seed": 2048,
+        "axonCount": 4,
+        "channelCount": 1,
+        "fascicleRadiusUm": 250,
+        "wellPitchUm": 35,
+        "wellWallUm": 2.5,
+        "positionJitter": 0.04,
+        "perineuriumResistivityOhmM": 1149,
+        "perineuriumThicknessFraction": 0.03,
+        "endoneuriumLongitudinalSPerM": 0.571,
+        "endoneuriumTransverseSPerM": 0.083,
+        "epineuriumSPerM": 0.083,
+        "surroundingSPerM": 0.3,
+        "amplitudeUa": 0.5,
+        "phaseWidthMs": 0.1,
+        "phaseGapMs": 0.025,
+        "stimulusStartMs": 0.5,
+        "durationMs": 4,
+        "dtMs": 0.000625,
+        "sampleDtMs": 0.025,
+        "temperatureC": 37,
+        "seedingLambda": 1,
+        "peripheralFiberDiameterUm": 5.7,
+        "centralFiberDiameterUm": 5.7,
+        "armNodeCount": 6,
+        "passiveSegments": 3,
+        "stemSegments": 3,
+        "somaSegments": 5,
+        "somaDiameterUm": 20,
+        "somaActiveScale": 0.1,
+        "stemActiveScale": 0.1,
+        "peripheralStemLengthUm": 30,
+        "peripheralStemDiameterUm": 1.5,
+        "centralStemLengthUm": 50,
+        "centralStemDiameterUm": 2.5,
+        "equilibrationMs": 50,
+        "wellFluidSPerM": 0.3,
+        "fieldAngularSegments": 32,
+        "wellAngularSegments": 12,
+        "fieldRadialRefinement": 1,
+        "fieldAxialRefinement": 1,
+        "localAxialStepUm": 10,
+        "resolvedCellExtensionUm": 20,
+        "wellInnerRadiusUm": 13,
+        "wellHalfLengthUm": 70,
+        "wellApertureRadiusUm": 3.1,
+        "wellContactHalfWidthUm": 3,
+        "wellContactHalfHeightUm": 3,
+        "wellContactSeparationUm": 30,
+        "mode": "b3-fixed-topology",
+        "topologyAssumption": "complete-resection-fixed-engineered-projections",
+        "nativeStumpAssumption": "absent-in-both-matched-conditions",
+        "includeElectrodeOnlyControl": false
+      },
+      "auditComplete": true,
+      "auditValid": true,
+      "originalHostY": 0,
+      "exclusiveEngineeredOutputs": 1,
+      "somaDependentExclusiveOutputs": 0,
+      "matrices": {
+        "assigned": [
+          [
+            true,
+            false,
+            false,
+            false
+          ]
+        ],
+        "localSilenced": [
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wholeSilenced": [
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "somaSilenced": [
+          [
+            true,
+            false,
+            false,
+            false
+          ]
+        ]
+      },
+      "boreResistanceKOhm": 1856.651920011229,
+      "outwardCurrentUaPerUa": 0.05574767927928785,
+      "driveToOutwardCurrentRatio": 17.937966439645745,
+      "pairResponseKOhm": 573.0677782389281,
+      "targetToLargestOtherPotentialRange": 1172.0661447238856,
+      "fieldRelativeResidual": 2.0318806703397493e-12,
+      "fieldCurrentClosureUa": -1.3584729670539387e-13,
+      "completedRuntimeMs": 17339.599999999627
+    },
+    {
+      "apertureRadiusUm": 3.5,
+      "settings": {
+        "seed": 2048,
+        "axonCount": 4,
+        "channelCount": 1,
+        "fascicleRadiusUm": 250,
+        "wellPitchUm": 35,
+        "wellWallUm": 2.5,
+        "positionJitter": 0.04,
+        "perineuriumResistivityOhmM": 1149,
+        "perineuriumThicknessFraction": 0.03,
+        "endoneuriumLongitudinalSPerM": 0.571,
+        "endoneuriumTransverseSPerM": 0.083,
+        "epineuriumSPerM": 0.083,
+        "surroundingSPerM": 0.3,
+        "amplitudeUa": 0.5,
+        "phaseWidthMs": 0.1,
+        "phaseGapMs": 0.025,
+        "stimulusStartMs": 0.5,
+        "durationMs": 4,
+        "dtMs": 0.000625,
+        "sampleDtMs": 0.025,
+        "temperatureC": 37,
+        "seedingLambda": 1,
+        "peripheralFiberDiameterUm": 5.7,
+        "centralFiberDiameterUm": 5.7,
+        "armNodeCount": 6,
+        "passiveSegments": 3,
+        "stemSegments": 3,
+        "somaSegments": 5,
+        "somaDiameterUm": 20,
+        "somaActiveScale": 0.1,
+        "stemActiveScale": 0.1,
+        "peripheralStemLengthUm": 30,
+        "peripheralStemDiameterUm": 1.5,
+        "centralStemLengthUm": 50,
+        "centralStemDiameterUm": 2.5,
+        "equilibrationMs": 50,
+        "wellFluidSPerM": 0.3,
+        "fieldAngularSegments": 32,
+        "wellAngularSegments": 12,
+        "fieldRadialRefinement": 1,
+        "fieldAxialRefinement": 1,
+        "localAxialStepUm": 10,
+        "resolvedCellExtensionUm": 20,
+        "wellInnerRadiusUm": 13,
+        "wellHalfLengthUm": 70,
+        "wellApertureRadiusUm": 3.5,
+        "wellContactHalfWidthUm": 3,
+        "wellContactHalfHeightUm": 3,
+        "wellContactSeparationUm": 30,
+        "mode": "b3-fixed-topology",
+        "topologyAssumption": "complete-resection-fixed-engineered-projections",
+        "nativeStumpAssumption": "absent-in-both-matched-conditions",
+        "includeElectrodeOnlyControl": false
+      },
+      "auditComplete": true,
+      "auditValid": true,
+      "originalHostY": 0,
+      "exclusiveEngineeredOutputs": 1,
+      "somaDependentExclusiveOutputs": 0,
+      "matrices": {
+        "assigned": [
+          [
+            true,
+            false,
+            false,
+            false
+          ]
+        ],
+        "localSilenced": [
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wholeSilenced": [
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "somaSilenced": [
+          [
+            true,
+            false,
+            false,
+            false
+          ]
+        ]
+      },
+      "boreResistanceKOhm": 669.1144109065318,
+      "outwardCurrentUaPerUa": 0.10175406613976673,
+      "driveToOutwardCurrentRatio": 9.827617096170153,
+      "pairResponseKOhm": 577.4264860102803,
+      "targetToLargestOtherPotentialRange": 596.1888120216006,
+      "fieldRelativeResidual": 1.955916428774303e-12,
+      "fieldCurrentClosureUa": 4.013590559045815e-12,
+      "completedRuntimeMs": 10277.099999999627
+    },
+    {
+      "apertureRadiusUm": 5,
+      "settings": {
+        "seed": 2048,
+        "axonCount": 4,
+        "channelCount": 1,
+        "fascicleRadiusUm": 250,
+        "wellPitchUm": 35,
+        "wellWallUm": 2.5,
+        "positionJitter": 0.04,
+        "perineuriumResistivityOhmM": 1149,
+        "perineuriumThicknessFraction": 0.03,
+        "endoneuriumLongitudinalSPerM": 0.571,
+        "endoneuriumTransverseSPerM": 0.083,
+        "epineuriumSPerM": 0.083,
+        "surroundingSPerM": 0.3,
+        "amplitudeUa": 0.5,
+        "phaseWidthMs": 0.1,
+        "phaseGapMs": 0.025,
+        "stimulusStartMs": 0.5,
+        "durationMs": 4,
+        "dtMs": 0.000625,
+        "sampleDtMs": 0.025,
+        "temperatureC": 37,
+        "seedingLambda": 1,
+        "peripheralFiberDiameterUm": 5.7,
+        "centralFiberDiameterUm": 5.7,
+        "armNodeCount": 6,
+        "passiveSegments": 3,
+        "stemSegments": 3,
+        "somaSegments": 5,
+        "somaDiameterUm": 20,
+        "somaActiveScale": 0.1,
+        "stemActiveScale": 0.1,
+        "peripheralStemLengthUm": 30,
+        "peripheralStemDiameterUm": 1.5,
+        "centralStemLengthUm": 50,
+        "centralStemDiameterUm": 2.5,
+        "equilibrationMs": 50,
+        "wellFluidSPerM": 0.3,
+        "fieldAngularSegments": 32,
+        "wellAngularSegments": 12,
+        "fieldRadialRefinement": 1,
+        "fieldAxialRefinement": 1,
+        "localAxialStepUm": 10,
+        "resolvedCellExtensionUm": 20,
+        "wellInnerRadiusUm": 13,
+        "wellHalfLengthUm": 70,
+        "wellApertureRadiusUm": 5,
+        "wellContactHalfWidthUm": 3,
+        "wellContactHalfHeightUm": 3,
+        "wellContactSeparationUm": 30,
+        "mode": "b3-fixed-topology",
+        "topologyAssumption": "complete-resection-fixed-engineered-projections",
+        "nativeStumpAssumption": "absent-in-both-matched-conditions",
+        "includeElectrodeOnlyControl": false
+      },
+      "auditComplete": true,
+      "auditValid": true,
+      "originalHostY": 0,
+      "exclusiveEngineeredOutputs": 1,
+      "somaDependentExclusiveOutputs": 0,
+      "matrices": {
+        "assigned": [
+          [
+            true,
+            false,
+            false,
+            false
+          ]
+        ],
+        "localSilenced": [
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "wholeSilenced": [
+          [
+            false,
+            false,
+            false,
+            false
+          ]
+        ],
+        "somaSilenced": [
+          [
+            true,
+            false,
+            false,
+            false
+          ]
+        ]
+      },
+      "boreResistanceKOhm": 163.63618610675218,
+      "outwardCurrentUaPerUa": 0.16797401067148626,
+      "driveToOutwardCurrentRatio": 5.953301918567281,
+      "pairResponseKOhm": 564.246756005514,
+      "targetToLargestOtherPotentialRange": 326.2086296148326,
+      "fieldRelativeResidual": 1.9895221753106373e-12,
+      "fieldCurrentClosureUa": -4.300633889527927e-13,
+      "completedRuntimeMs": 9317.5
+    }
+  ],
+  "failures": [],
+  "interpretation": [
+    "Narrower tested apertures increase bore resistance and the target-to-largest-off-target potential-range ratio.",
+    "A chosen outward bore current requires more source current at the narrower tested apertures in this linear-conductor model.",
+    "Every tested point retained one exclusive engineered central output and zero soma-dependent exclusive outputs.",
+    "Original-host yield remains a structural zero. This grid is not a threshold search or biological calibration."
+  ]
+}

@@ -1,151 +1,281 @@
 {
-  "schema": "buildthesimulation.axon-interface.integration-validation.v1",
-  "generatedAt": "2026-11-11T22:20:33.244540+00:00",
-  "scope": "Executed solver integration and production Worker contracts; browser layout is checked separately.",
+  "schema": "buildthesimulation.axon-interface.integration-validation.v2",
+  "generatedAt": "2026-11-11T23:29:03.593168+00:00",
+  "scope": "Executed current core, field, Stage 1 and production Worker contracts.",
   "status": "pass",
   "summary": {
-    "passed": 15,
+    "passed": 24,
     "failed": 0,
     "skipped": 0
+  },
+  "suites": {
+    "legacy-core-and-field": {
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0
+    },
+    "stage1": {
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0
+    }
   },
   "tests": [
     {
       "name": "Malformed conductivities, colliding regions and unknown settings are rejected",
       "className": "test",
-      "durationSeconds": 0.001362,
-      "status": "pass"
+      "durationSeconds": 0.001168,
+      "status": "pass",
+      "suite": "legacy-core-and-field"
     },
     {
       "name": "Work budget is rejected before a large matrix is built",
       "className": "test",
-      "durationSeconds": 0.007077,
-      "status": "pass"
+      "durationSeconds": 0.006124,
+      "status": "pass",
+      "suite": "legacy-core-and-field"
     },
     {
       "name": "Finite source, sampling, cancellation and reciprocal units preserve contracts",
       "className": "test",
-      "durationSeconds": 1.391023,
-      "status": "pass"
+      "durationSeconds": 1.18303,
+      "status": "pass",
+      "suite": "legacy-core-and-field"
     },
     {
       "name": "axon interface: deterministic anatomy is independent of stimulus, conductivity and occupancy controls",
       "className": "test",
-      "durationSeconds": 0.006287,
-      "status": "pass"
+      "durationSeconds": 0.004902,
+      "status": "pass",
+      "suite": "legacy-core-and-field"
     },
     {
       "name": "axon interface: malformed imports and unsupported scientific settings are rejected",
       "className": "test",
-      "durationSeconds": 0.009004,
-      "status": "pass"
+      "durationSeconds": 0.001167,
+      "status": "pass",
+      "suite": "legacy-core-and-field"
     },
     {
       "name": "axon interface: co-recruitment, duplicate channels and failed audits cannot inflate exclusive yield",
       "className": "test",
-      "durationSeconds": 0.000986,
-      "status": "pass"
+      "durationSeconds": 0.001014,
+      "status": "pass",
+      "suite": "legacy-core-and-field"
     },
     {
       "name": "axon interface: sampled thresholds retain nonmonotonicity and reject failed samples",
       "className": "test",
-      "durationSeconds": 0.000353,
-      "status": "pass"
+      "durationSeconds": 0.000399,
+      "status": "pass",
+      "suite": "legacy-core-and-field"
     },
     {
       "name": "axon interface: charge-balanced phases integrate correctly without requiring display alignment",
       "className": "test",
-      "durationSeconds": 0.000604,
-      "status": "pass"
+      "durationSeconds": 0.000648,
+      "status": "pass",
+      "suite": "legacy-core-and-field"
     },
     {
       "name": "axon interface: explicit work budgets and cancellation reject before partial results exist",
       "className": "test",
-      "durationSeconds": 0.01879,
-      "status": "pass"
+      "durationSeconds": 0.015985,
+      "status": "pass",
+      "suite": "legacy-core-and-field"
     },
     {
       "name": "axon interface: propagation diagnostics reject simultaneous and implausibly fast crossings",
       "className": "test",
-      "durationSeconds": 0.000704,
-      "status": "pass"
+      "durationSeconds": 0.000518,
+      "status": "pass",
+      "suite": "legacy-core-and-field"
     },
     {
       "name": "axon interface: complete small-cohort protocol keeps controls, geometry and source decomposition matched",
       "className": "test",
-      "durationSeconds": 2.810198,
-      "status": "pass"
+      "durationSeconds": 1.89044,
+      "status": "pass",
+      "suite": "legacy-core-and-field"
     },
     {
       "name": "axon interface: JSON and CSV retain original settings, limits, controls, units and missing biological quantities",
       "className": "test",
-      "durationSeconds": 0.049291,
-      "status": "pass"
+      "durationSeconds": 0.024099,
+      "status": "pass",
+      "suite": "legacy-core-and-field"
     },
     {
       "name": "axon interface: production request guard rejects malformed and superseded messages",
       "className": "test",
-      "durationSeconds": 0.000402,
-      "status": "pass"
+      "durationSeconds": 0.000328,
+      "status": "pass",
+      "suite": "legacy-core-and-field"
     },
     {
       "name": "axon interface: real Worker replay matches direct calculation and late results fail the production request guard",
       "className": "test",
-      "durationSeconds": 2.681352,
-      "status": "pass"
+      "durationSeconds": 1.897518,
+      "status": "pass",
+      "suite": "legacy-core-and-field"
     },
     {
       "name": "axon interface: terminating the actual running Worker prevents a late completed result",
       "className": "test",
-      "durationSeconds": 0.671894,
-      "status": "pass"
+      "durationSeconds": 0.426053,
+      "status": "pass",
+      "suite": "legacy-core-and-field"
+    },
+    {
+      "name": "Stage 1: each original identity is distinct from the fixed engineered output and its disconnected remnants",
+      "className": "test",
+      "durationSeconds": 0.003832,
+      "status": "pass",
+      "suite": "stage1"
+    },
+    {
+      "name": "Stage 1: full physical well array and named anatomy are invariant under drive or conductivity changes",
+      "className": "test",
+      "durationSeconds": 0.012398,
+      "status": "pass",
+      "suite": "stage1"
+    },
+    {
+      "name": "Stage 1: obsolete core inputs, malformed settings and intersecting geometries are rejected",
+      "className": "test",
+      "durationSeconds": 0.000749,
+      "status": "pass",
+      "suite": "stage1"
+    },
+    {
+      "name": "Stage 1: morphology contains a soma, two distinct stems and two own arms; native stumps cannot conduct across the gap",
+      "className": "test",
+      "durationSeconds": 0.003676,
+      "status": "pass",
+      "suite": "stage1"
+    },
+    {
+      "name": "Stage 1: three-node outward propagation and soma/stem initiation are separate diagnostics",
+      "className": "test",
+      "durationSeconds": 0.00174,
+      "status": "pass",
+      "suite": "stage1"
+    },
+    {
+      "name": "Stage 1: budgets explicitly include independent stump preparation and every requested condition",
+      "className": "test",
+      "durationSeconds": 0.021085,
+      "status": "pass",
+      "suite": "stage1"
+    },
+    {
+      "name": "Stage 1: phase integration remains charge balanced on the actual solver grid",
+      "className": "test",
+      "durationSeconds": 0.002045,
+      "status": "pass",
+      "suite": "stage1"
+    },
+    {
+      "name": "Stage 1: actual disconnected native stump baselines are simulated with no stimulus and remain quiescent",
+      "className": "test",
+      "durationSeconds": 1.24699,
+      "status": "pass",
+      "suite": "stage1"
+    },
+    {
+      "name": "Stage 1: study failures remain on the predeclared grid and never become threshold evidence",
+      "className": "test",
+      "durationSeconds": 3.30103,
+      "status": "pass",
+      "suite": "stage1"
     }
   ],
   "execution": {
-    "name": "integration-tests",
+    "name": "stage1-all-integration-tests",
     "arguments": [
-      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "node",
       "--test",
       "--test-concurrency=1",
       "--test-reporter=junit",
-      "--test-reporter-destination=/workspace/scratch/00f6a4fc6cf7/buildthesimulation/scripts/axon-interface/.reproduction/integration-tests.xml",
+      "--test-reporter-destination=/workspace/scratch/00f6a4fc6cf7/buildthesimulation/scripts/axon-interface/.reproduction/stage1-all-integration-tests.xml",
       "tests/axon-interface-contracts.mjs",
-      "scripts/axon-interface/field-contract-tests.mjs"
+      "scripts/axon-interface/field-contract-tests.mjs",
+      "tests/axon-interface-stage1-contracts.mjs"
     ],
     "status": "pass",
     "exitCode": 0,
-    "elapsedSeconds": 8.10689158199989,
-    "log": "scripts/axon-interface/.reproduction/integration-tests.log"
+    "elapsedSeconds": 10.434170792999794,
+    "log": "scripts/axon-interface/.reproduction/stage1-all-integration-tests.log",
+    "startedAt": "2026-11-11T23:28:53.153172+00:00",
+    "completedAt": "2026-11-11T23:29:03.587543+00:00",
+    "cwd": ".",
+    "mode": "executed",
+    "executedByThisInvocation": true
   },
   "sourceHashes": {
+    "docs/axon-interface/bipolar-acceptance.json": "9d0bf929490004022deccdce7d28260cf4de8a5f78dee82da92fc7c4b16a94d0",
+    "docs/axon-interface/bipolar-coupled-acceptance.json": "957d45e22de2c6e34ea4b175ff7f83bd073e824cb49f49aca33de63919d98b8a",
+    "docs/axon-interface/bipolar-resolution-correction.json": "fe5d1c9b499b78e79220e207f26dc5892d03855f861529d99ecd18e0d5692f1e",
+    "docs/axon-interface/bipolar-soma-resolution-correction.json": "7756463dfefc8f1644fcea144a2ad87b1d090ac171a0bd03bcc3655762e36472",
+    "docs/axon-interface/bipolar-soma-spatial-acceptance.json": "bc9f1f00780d1b87ba5d4e5955744c3dcfd34cfe579dd42e97853bfbdf8e461c",
     "docs/axon-interface/field-acceptance.json": "93f9471d7435aa54b0fd5a7bc4222b7c32c80fa9ad6109cb8f5b7835030e6b53",
+    "docs/axon-interface/field-stage1-acceptance.json": "ae35cf03dc5c67061e5e3d9feddb8ffe174c65efb30f2166eb8f0bc4cab02f33",
+    "docs/axon-interface/field-stage1-dense-acceptance.json": "58c0d5effa596270d5bc3fb2f058ca8ff2d800dd9e2e1a8232e439b3fc1b5402",
+    "docs/axon-interface/field-stage1-domain-acceptance.json": "6bff51700c832aad7662560a211383a0cf0857e926a8bd06cf75984571e46f5d",
     "docs/axon-interface/mrg-acceptance.json": "a565c572245357e51dbbb960594befb3142a1983a5c743d705f300cc146c0274",
+    "scripts/axon-interface/bipolar-coupled-validate.mjs": "8a3983a056592b9253277be5e3576694aec223d9a559a94eb97067812db696c1",
+    "scripts/axon-interface/bipolar-reference.py": "da5c3ac4384cedf57095425f83073073bfd79b0b210bf7c10e09c5acedbc9955",
+    "scripts/axon-interface/bipolar-soma-spatial.mjs": "12bdf0625fdc5b2e6d974a6b0c64d95846df6887043b9c30e4204cc5ef0fb2aa",
+    "scripts/axon-interface/bipolar-validate.mjs": "4235ab1c25f4a3abb6b1fe50998fca12fb0c949d11e2b3d6a20ded16c4c1b992",
+    "scripts/axon-interface/bipolar-validation-utils.mjs": "0715ec3a46ff84b3b19d0f24256d2fe03f2746301026ee4e1f3fcbc96bcd1cfd",
     "scripts/axon-interface/field-contract-tests.mjs": "abdb272bf4cab304adf28439f7f2c9f564d1c72523949248174efd4af1eece06",
     "scripts/axon-interface/field-reference.py": "b94d959e2aef5f6a54e530d389b362cd416eab216a0da5f1f9292cabebcf425a",
     "scripts/axon-interface/field-requirements.txt": "1668a3152e33680d94637b13421c15e68bd97cd8701f7f555c691f5bc5c0b9f3",
+    "scripts/axon-interface/field-stage1-benchmarks.mjs": "ab58ed967b0dcc3927c26268669c2f8e9e606e2874b2b8e533e190d4be3efc5b",
+    "scripts/axon-interface/field-stage1-dense-validate.mjs": "a47ea7e8ef0408240ac0e48afd052786a6a6a230ac1cf2ad46d49450a4e82e00",
+    "scripts/axon-interface/field-stage1-domain-validate.mjs": "feb47c74fd0bc87998650361cd7bcf83b0367a08a1d3743cf1d8031ff1ed9080",
+    "scripts/axon-interface/field-stage1-fixtures.mjs": "2558872ff170a0b598332b33cec44bc2016d0dbca26c4b597f97522aeff67483",
+    "scripts/axon-interface/field-stage1-reference.py": "141197e0bd7b7222283d762671ff87e54ce38f1311748c8c1aaf32d34f122058",
+    "scripts/axon-interface/field-stage1-resources.mjs": "44fa2b8ce3b44f489fff637444a62210413e4605a384fc641d5f9d99edf32fb7",
+    "scripts/axon-interface/field-stage1-validate.mjs": "1d30bc114c3eda879471e44bcc50931833e1c5a2dac2ba04a77fc639aff4698b",
     "scripts/axon-interface/field-validate.mjs": "57cfb386a746f6cead9fcc99011862016f836e69caa03667850c26997a38e6e8",
     "scripts/axon-interface/mrg-coupled-validate.mjs": "5083a2933ece1b93ce78983769dca700d64abeaa59dfcf5329cca3774199ca30",
     "scripts/axon-interface/mrg-modeldb/AXNODE.mod": "e0fa400a469aa2beba491fabffaa4f6bc03c629015a2c0f2ddc471fb3e687bd3",
     "scripts/axon-interface/mrg-modeldb/MRGaxon.hoc": "73da0790cdbbb1a7db036e9806729a74fcc0606e62d716daabeddbe8c1999014",
     "scripts/axon-interface/mrg-modeldb/README": "847ce5ac51b3b1be75d0d34a7003ce7a7e14ec06a5cf47acbf545274b5ec369a",
+    "scripts/axon-interface/mrg-motor-baseline.mjs": "cbaa91ed8e8cbe5acc56d55f229ddcd0bbbe32a4272d4b8280eded3aff772405",
     "scripts/axon-interface/mrg-reference.py": "3cd715216d95241eaade5e99c7d6cdeec4dc414d47eadf7f60649f4ee3d2d9a1",
     "scripts/axon-interface/mrg-reproduce.sh": "9c496cdb3ce8ba91a1e82dfce0797cd89d1bd518101e16de7385fdd3f4f8dbff",
     "scripts/axon-interface/mrg-requirements.txt": "48762d17f9a0d6d5ff28457a9113a4de402556efa225dfc8fdb238186def2c7b",
     "scripts/axon-interface/mrg-validate.mjs": "26acd20e3861fe28ef74466f468a718ac8f1ac3398eedfbf7e5fad2ab909fbd4",
+    "scripts/axon-interface/reproduce-stage1.py": "519a492fa4b861a3a84d47386d5615ee49ea3bc61a0b62a2755d62f31bca7305",
     "scripts/axon-interface/reproduce.py": "e3df95c12f6244801e60b50bb8e198c1c9df7180264bb6e12f0007a9b5fb54aa",
     "scripts/axon-interface/requirements.txt": "ffb7284d1b58d117c3305be00f92f6a2aa9655b9908b043e9704d959b75e8559",
-    "src/lib/axon-interface/evidence.mjs": "2dbed68e8a07c304243d628d613a6f0050fa175690d7e89782cd2fbce78ddbed",
-    "src/lib/axon-interface/export.mjs": "ce8629555b0a5f26056274217efd488488d8d8c8371fe60401561c0b87782c08",
+    "scripts/axon-interface/stage1-protocol-validate.mjs": "087bf01c4e0265c9d9d7151bc0e461510f1484d39a3260b8539cf2f93cc40f6f",
+    "src/lib/axon-interface/bipolar.mjs": "d47f6717b3faa87ae775c67e1fee4ce0f222e5e954cdba6c765d3d7dffb22098",
+    "src/lib/axon-interface/evidence.mjs": "cdc46f15b0bb61056da09e44d255ddcacb653cc113ac9d5c87fd0fa9212cef4b",
+    "src/lib/axon-interface/export.mjs": "f2a5bb1396cc3e2abf757faa35c85babe02d96bf234117a9aae9633071a8b5dc",
+    "src/lib/axon-interface/field-stage1.mjs": "dd60139ae3bff6673e3b1bb7d0361694d41715f53de70207c9fa069c2cc34653",
     "src/lib/axon-interface/field.mjs": "c55565795085e37bc1804c99c152f79d563e8cad678f2eafc2e41dc3ce5a9734",
     "src/lib/axon-interface/geometry.mjs": "0a41a23b84627dbbc3185eebe881e7aa91d09b2a01f5f213aefec070b41f2d8b",
+    "src/lib/axon-interface/identities.mjs": "06140ccd7ad743f12874cfdb339d46a9213979a409f9f60aef2981660c89c339",
     "src/lib/axon-interface/metrics.mjs": "636ab52f4ab4fe4e7fc110dfcc13cb84bd11a75ba7c22fbf60cfd5ea0970c78d",
-    "src/lib/axon-interface/mrg.mjs": "cbaa91ed8e8cbe5acc56d55f229ddcd0bbbe32a4272d4b8280eded3aff772405",
+    "src/lib/axon-interface/mrg.mjs": "182b94c586591599dbcea42b63ececba486d42e4a72f7923abb53a171fe752f5",
     "src/lib/axon-interface/protocol.mjs": "33961ca40833a0bdc40203b8dccb4e41a61580462ff3cc8eb6b6ea0e7562ab4b",
     "src/lib/axon-interface/requests.mjs": "6cb2207f90a1b0f3c01422c97dd80e3a3791a84b973066a4fb71cc487762ff8a",
     "src/lib/axon-interface/settings.mjs": "7649d5e2e69c6ea470fd5d03373ca2b15094188291a0b416e206f13866d3718a",
-    "src/lib/axon-interface/worker.mjs": "8bb2cea796fcba7048850f2463feb7a4e78dbd5eef8217207425560620eefb54",
+    "src/lib/axon-interface/stage1-protocol.mjs": "036ca37b4bf031286829174aec17e135cc22a0664aaca6afa8af77666b6eb7e1",
+    "src/lib/axon-interface/stage1-settings.mjs": "b952da4823fc88e863afd729408b9fa1b4424af4011c5b6e46c9cf18ad8d6c62",
+    "src/lib/axon-interface/vendor/THIRD_PARTY_LICENSES.md": "899045234e0daf5c167f08f5813da91af3d711f1d14894c475d69e4f869db1f4",
+    "src/lib/axon-interface/vendor/cdt2d-package-lock.json": "307d67afc94d179ba050a2950f5724c51fd7159cf7488f27b229fb499f504be1",
+    "src/lib/axon-interface/vendor/cdt2d-source-pins.json": "05adc096c593b846d4a6ac6c1b5a3a19b0d7da3d78d1de76977ed0859717c660",
+    "src/lib/axon-interface/vendor/cdt2d.mjs": "645d096429082510865735501c2fcfd9d3b6e7211e8c631f855b811f83dad185",
+    "src/lib/axon-interface/worker.mjs": "53d188ceed2ff450b49c5c372573a4b810db2d7fff50e8b552a2b15bac77373d",
     "tests/axon-interface-contracts.mjs": "1086b4d25fa68b33c6f75891728c6b9796bfa7d52dd280814dfc08a51a8cb338",
+    "tests/axon-interface-stage1-contracts.mjs": "9a4d0dc914e64edd1e5a3916146caf46d194f805fc5e4f574f7460dba947f9e2",
     "tests/helpers/axon-interface-worker-harness.mjs": "639ca2abb5955e5f82090f04e676d0531595bca7a898dded8f3d79844020cbed"
   },
+  "sourceChangedDuringRun": [],
   "retainedFailures": [
     {
       "recoveredFromConversation": true,
@@ -176,7 +306,7 @@
     }
   ],
   "limitations": [
-    "Passing software tests does not validate a ganglion-replacement architecture or a biological junction.",
-    "The executed small cohort is not a full human nerve census."
+    "These software contracts do not establish biological repair or device safety.",
+    "The separate protocol report must contain its actual complete 256-cell fixture."
   ]
 }

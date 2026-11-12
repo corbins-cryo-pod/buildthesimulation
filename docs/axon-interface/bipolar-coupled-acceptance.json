@@ -1,0 +1,62 @@
+{
+  "schema": "buildthesimulation.bipolar.coupled-acceptance.v1",
+  "declaredAt": "2026-11-11T23:13:07.663552+00:00",
+  "declaration": "Written before running the five-band bipolar native-reference or time-refinement fixture in the finalized actual insulating-well field. Numerical tolerances are unchanged from the component gates.",
+  "fixture": {
+    "seed": 2048,
+    "axonCount": 4,
+    "channelCount": 1,
+    "cellId": "E0001",
+    "channelId": "C1",
+    "somaSegments": 5,
+    "equilibrationMs": 50,
+    "durationMs": 4,
+    "sampleDtMs": 0.005,
+    "onsetMs": 0.5,
+    "phaseWidthMs": 0.1,
+    "phaseGapMs": 0.025,
+    "intervalAverage": true
+  },
+  "nativeAmplitudeGridUa": [
+    0,
+    0.3,
+    1
+  ],
+  "temporalAmplitudeGridUa": [
+    0.3,
+    1
+  ],
+  "timeStepsMs": [
+    0.000625,
+    0.0003125,
+    0.00015625
+  ],
+  "controls": [
+    "assigned",
+    "soma-only-silenced",
+    "initiation-region-silenced",
+    "whole-cell-silenced"
+  ],
+  "limits": {
+    "nativeMaximumSiteRmsMv": 1,
+    "nativeMaximumCrossingTimeMs": 0.1,
+    "nativeRecordingMaximumErrorUv": 0.001,
+    "timeHalvingMaximumSiteRmsMv": 1,
+    "timeHalvingMaximumCrossingTimeMs": 0.1,
+    "zeroInputDriftMv": 0.1,
+    "zeroInputCrossings": 0,
+    "currentBalanceNa": 1e-08,
+    "independentGeometryErrorUm": 1e-08
+  },
+  "required": [
+    "Field standard/dense/domain reports pass and identify exactly current source and meshing-vendor hashes",
+    "Native NEURON independently constructs the five-band morphology and uses unchanged pinned AXNODE.mod",
+    "All stored observation timestamps match exactly with no interpolation, alignment, shift or rescaling",
+    "All active-site crossing counts match the native reference and time-refined run",
+    "Native reciprocal recording uses the exact physical field transfer vector and each model own outer membrane currents",
+    "Every intervention starts from the unmodified equilibrium for that dt; no intervention-specific reequilibration",
+    "Two consecutive dt-halving comparisons meet unchanged all-site RMS/timing/count criteria for every declared driven case"
+  ],
+  "biologicalOutcomePolicy": "Arm propagation, local-region dependence and soma-active necessity are measured outcomes, never pass criteria forced to favor an implant. A 0 mV crossing may be passive under strong drive. Lack of soma necessity is reported explicitly. Only ordered true distal-node events enter the protocol propagation classifier.",
+  "failurePolicy": "Retain every failed run and all report/source hashes. A failed numerical gate withholds authority; no threshold change, time manipulation, voltage clipping or hidden parameter tuning is permitted."
+}

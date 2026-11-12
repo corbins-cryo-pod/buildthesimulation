@@ -13,7 +13,7 @@ h.load_file('stdrun.hoc');h.celsius=37;h.secondorder=0
 TABLE={5.7:(3.4,1.9,500,35,80),7.3:(4.6,2.4,750,38,100),8.7:(5.8,2.8,1000,40,110),10:(6.9,3.3,1150,46,120),
        11.5:(8.1,3.7,1250,50,130),12.8:(9.2,4.2,1350,54,135),14:(10.4,4.7,1400,56,140),15:(11.5,5,1450,58,145),16:(12.7,5.5,1500,60,150)}
 DEFAULTS=dict(somaDiameterUm=20,peripheralStemLengthUm=30,peripheralStemDiameterUm=1.5,centralStemLengthUm=50,centralStemDiameterUm=2.5,
-              peripheralFiberDiameterUm=5.7,centralFiberDiameterUm=5.7,armNodeCount=6,passiveSegments=3,stemSegments=3,somaActiveScale=.1,stemActiveScale=.1)
+              peripheralFiberDiameterUm=5.7,centralFiberDiameterUm=5.7,armNodeCount=6,passiveSegments=3,stemSegments=3,somaSegments=5,somaActiveScale=.1,stemActiveScale=.1)
 
 def build(case):
     p={**DEFAULTS,**case.get('parameters',{})};raw=[]
@@ -30,7 +30,7 @@ def build(case):
     arm('peripheral');left_length=sum(d['L'] for d in raw)
     def exposed(kind,L,d,nseg,scale,name,role):raw.append(dict(kind=kind,L=L,inner=d,outer=d,gap=0,lam=0,nseg=nseg,scale=scale,arm=name,role=role))
     exposed('STEM',p['peripheralStemLengthUm'],p['peripheralStemDiameterUm'],p['stemSegments'],p['stemActiveScale'],'peripheral','peripheral_stem')
-    exposed('SOMA',right-left,p['somaDiameterUm'],1,p['somaActiveScale'],None,'soma')
+    exposed('SOMA',right-left,p['somaDiameterUm'],p['somaSegments'],p['somaActiveScale'],None,'soma')
     exposed('STEM',p['centralStemLengthUm'],p['centralStemDiameterUm'],p['stemSegments'],p['stemActiveScale'],'central','central_stem')
     arm('central')
     z=left-p['peripheralStemLengthUm']-left_length;sections=[];segments=[];nodes=[];active=[];physical=[];roles=[];positions=[]

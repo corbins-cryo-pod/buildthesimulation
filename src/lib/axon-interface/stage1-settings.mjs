@@ -62,6 +62,7 @@ export function normalizeStage1Settings(input={}) {
   const s={...DEFAULT_STAGE1_SETTINGS,...input};
   for(const p of STAGE1_PARAMETER_REGISTER){const value=s[p.key];if(typeof value!=='number'||!Number.isFinite(value)||value<p.min||value>p.max||(integerKeys.has(p.key)&&!Number.isInteger(value)))throw new Error(`${p.key} must be ${integerKeys.has(p.key)?'an integer':'a finite number'} between ${p.min} and ${p.max} ${p.units}.`);}
   for(const p of STAGE1_ENUM_REGISTER)if(!p.values.includes(s[p.key]))throw new Error(`Unsupported ${p.key}; select an explicit supported Stage 1 value.`);
+  if(s.channelCount>s.axonCount)throw new Error('Each addressed channel needs a distinct existing well; channelCount cannot exceed axonCount.');
   for(const key of ['peripheralFiberDiameterUm','centralFiberDiameterUm'])if(!diameters.includes(s[key]))throw new Error(`${key} must be a published MRG tabulated diameter.`);
   for(const key of ['passiveSegments','stemSegments','somaSegments'])if(![1,3,5].includes(s[key]))throw new Error(`${key} must be 1, 3, or 5.`);
   if(s.wellInnerRadiusUm<=s.somaDiameterUm/2)throw new Error('The soma does not fit inside the well cavity with positive fluid clearance.');

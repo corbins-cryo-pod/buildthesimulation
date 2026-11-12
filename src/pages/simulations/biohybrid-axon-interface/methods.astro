@@ -44,7 +44,7 @@ const retained=[...(mrg?.retainedFailures??[]),...(evidence.bipolar?.retainedFai
 <tr><td>Independent numerical verification</td><td>Python field assembly, native NEURON and refinement studies</td><td>{evidence.completeStage1?'The final evidence agrees with the frozen numerical source.':'Final source-stable reproduction remains a release gate.'}</td></tr>
 <tr><td>Physiological diameter relation</td><td>Published cat relation compared explicitly</td><td>Unresolved discrepancy remains disclosed; numerical agreement is not physiological calibration.</td></tr>
 </tbody></table></div>
-<p>Model version: <code>{STAGE1_MODEL_VERSION}</code>. Bipolar component: <code>{BIPOLAR_VERSION}</code>. The separate straight-cable benchmark retains its own settings and result meaning under <code>{CORE_VERSION}</code>. Coil/optical fields, growth, whole-nerve screening, oxygen, fabrication, interconnect, chronic change and refinement belong to later build stages.</p>
+<p>Model version: <code>{STAGE1_MODEL_VERSION}</code>. Bipolar component: <code>{BIPOLAR_VERSION}</code>. The separate straight-cable benchmark retains its own settings and result meaning under <code>{CORE_VERSION}</code>. Coil/optical fields, growth, whole-nerve screening, oxygen, fabrication, interconnect, chronic change and design refinement belong to later build stages.</p>
 </section>
 
 <section id="identities">
@@ -111,6 +111,8 @@ mV / µA = kΩ
 Uniform-annulus comparison: R = L / (σ A)</pre>
 <p>The reported bore ratio comes from the solved field and conservative cuts inside the cap. Access and near-field effects are included in the full electrode-pair solution but are not folded into that bore-only ratio. A near-zero bore current produces a null ratio rather than an unstable resistance estimate. Current leaving one end returns through the other; summing their absolute values would double-count the path.</p>
 <p>The aperture sensitivity study recalculates every field and matched membrane intervention. Narrowing an aperture changes both confinement and the potential required to drive a given escape current. Neither the geometry nor a sampled potential-range ratio alone establishes single-cell recruitment.</p>
+{evidence.apertureStudy&&<><h3>Executed four-cell aperture sensitivity</h3><p>The production browser worker completed the declared 3.1, 3.5 and 5 µm aperture-radius grid at 0.5 µA. Each point retained one exclusive engineered output and no soma-dependent exclusive output. These are sampled conditional responses, not a threshold search.</p><div class="ax-table-scroll"><table><thead><tr><th>Aperture radius / µm</th><th>Bore resistance / kΩ</th><th>Target / largest other potential range</th><th>|Drive| / |outward bore current|</th></tr></thead><tbody>{evidence.apertureStudy.rows.map(row=><tr><td>{row.apertureRadiusUm}</td><td>{format(row.boreResistanceKOhm)}</td><td>{format(row.targetToLargestOtherPotentialRange)}</td><td>{format(row.driveToOutwardCurrentRatio)}</td></tr>)}</tbody></table></div><p>Narrowing the tested aperture improved the field-range ratio while increasing the source-current magnitude required for a chosen outward bore-current magnitude. This is a linear-conductor comparison; it does not imply a host-axon threshold or a recommended drive. The peripheral aperture is counted once, without adding the opposite return path.</p><details class="ax-inspection"><summary>Browser study settings, matrices and source/export hashes</summary><pre>{JSON.stringify(evidence.apertureStudy,null,2)}</pre></details></>}
+
 </section>
 
 <section id="controls">
@@ -146,6 +148,7 @@ V_total(t) = V_imposed(t) + V_engineered(t) + V_original(t)</pre>
 <p>Acceptance files are declared before the corresponding studies. A failed comparison triggers a recorded correction or a retained failing diagnostic; tolerances are not loosened to obtain a pass. Native comparisons use exact observation times without time shifts, baseline corrections or amplitude rescaling. Every result below applies to its recorded fixture and source revision.</p>
 <p class="ax-callout-small">{evidence.status}. {evidence.sourceMismatches.length>0?'The latest aggregate reproduction does not yet match every current numerical source.':''}</p>
 <ValidationTable title="Explicit bipolar membrane and native NEURON" report={evidence.bipolar} description="The current component report contains quiescence, time/space refinement, both-arm diagnostics, conductance/geometry sensitivities and independently compiled native mechanisms."/>
+<p><strong>Measured necessity result in the current coupled fixture:</strong> at both 0.3 and 1 µA, the assigned case met the ordered distal-node propagation criterion in both arms. Removing active conductances only from the soma retained both responses. Regional removal abolished both at 0.3 µA; at 1 µA it abolished the central response but retained the peripheral response. Whole-cell active removal abolished both-arm recruitment. These are conditional electrical outcomes, and they do not support an active-soma necessity claim at these tested points.</p>
 <h3>Actual well field · soma resolution</h3>
 {evidence.somaSpatial?<><p>Supported soma resolution: {evidence.somaSpatial.supportedSomaSegments} axial bands. Earlier failed discretizations remain in the same report. A source-stable authoritative field-coupled comparison is required for release.</p><div class="ax-table-scroll"><table><thead><tr><th>Refinement</th><th>Worst shared-node RMS / mV</th><th>Worst recording peak-to-peak change</th><th>All declared checks</th></tr></thead><tbody>{(evidence.somaSpatial.comparisons??[]).map(c=><tr><td>{c.from} → {c.to} bands</td><td>{format(maximum(c.details??[],'commonNodeMaxRmsMv'))}</td><td>{percentMaximum(c.details??[],'recordingPeakToPeakRelative')}</td><td>{c.passed?'pass':'fail · retained'}</td></tr>)}</tbody></table></div><details class="ax-inspection"><summary>Every amplitude/intervention and crossing classification</summary><pre>{JSON.stringify(evidence.somaSpatial,null,2)}</pre></details></>:<p>Final actual-field soma evidence is pending. The one-band component is not substituted for this check.</p>}
 <ValidationTable title="Five-band cell with the actual well field · native and temporal comparisons" report={evidence.bipolarCoupled}/>
@@ -190,7 +193,7 @@ node scripts/verify-axon-interface-build.mjs</pre>
 
 <section id="limits">
 <h2>10 · Standing limitations</h2>
-<ul>{STAGE1_LIMITATIONS.map(text=><li>{text}</li>)}</ul>
+<ul>{evidence.limitations.map(text=><li>{text}</li>)}</ul>
 <p>Passing these tests establishes agreement with the stated numerical equations at the stated fixtures. It does not establish an implanted organoid’s biology, a functional host-shaft junction, appropriate reinnervation, sensation quality or a device lifetime. No output is a device specification, surgical recommendation or prediction of human recovery.</p>
 </section>
 

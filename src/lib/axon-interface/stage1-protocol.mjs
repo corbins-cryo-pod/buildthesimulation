@@ -94,7 +94,7 @@ export async function runStage1Protocol(input=DEFAULT_STAGE1_SETTINGS,{onProgres
   check();const areas=geometry.channels.map(channel=>contactSummary(field,channel));
   const samplingPlans=typeof api.prepareMembraneSampling==='function'?geometry.cells.map(cell=>api.prepareMembraneSampling(field,m,cell)):null;
   const noDeviceField=await api.createStage1FieldModel(fs,{cells:[],wells:[],morphology:null,constructPresent:false,isCancelled:shouldCancel});
-  if(!Array.isArray(noDeviceField.contacts)||noDeviceField.contacts.length)throw new Error('True no-device field must have no implanted contacts.');
+  if(!Array.isArray(noDeviceField.contacts)||noDeviceField.contacts.length||noDeviceField.geometry?.constructPresent!==false||noDeviceField.geometry.cells?.length!==0||noDeviceField.geometry.wells?.length!==0)throw new Error('True no-device field must explicitly contain no implanted cells, wells or contacts.');
   let externalField=null;if(s.includeElectrodeOnlyControl)externalField=await api.createExternalTestFieldModel(fs,{nativeStumps:stumps,originalCells:ledger.original,geometry,morphology:m,isCancelled:shouldCancel});
   const matrices={assigned:[],localSilenced:[],wholeSilenced:[],somaSilenced:[]},initiationEligibility=[],pairTraces=[],events=[],recordings=[],fieldDiagnostics=[],transferMatrix=[],coupling=[],currentResiduals=[];
   const nativeDriven=s.includeElectrodeOnlyControl?{pairTraces:[],matrices:{peripheral:[],central:[]},recordings:[],fieldDiagnostics:[]}:null;
@@ -226,22 +226,35 @@ export async function runStage1Protocol(input=DEFAULT_STAGE1_SETTINGS,{onProgres
 }
 
 export async function runStage1Study(input,kind,options={}){
-  const s=normalizeStage1Settings(input),definition={
+  const s=normalizeStage1Settings(input),definitions={
     amplitude:{key:'amplitudeUa',unit:'µA',values:orderedAmplitudeSweep(s.amplitudeUa)},
     perineurium:{key:'perineuriumResistivityOhmM',unit:'Ω m',values:[400,1149,3750]},
     aperture:{key:'wellApertureRadiusUm',unit:'µm',values:[3.1,3.5,5]},
     'soma-density':{key:'somaActiveScale',unit:'relative nodal conductance',values:[0,.03,.1,.3,1]},
     'stem-density':{key:'stemActiveScale',unit:'relative nodal conductance',values:[0,.03,.1,.3,1]},
     'soma-diameter':{key:'somaDiameterUm',unit:'µm',values:[15,20,25]}
-  }[kind];
-  if(!definition)throw new Error('Unsupported Stage 1 study.');
-  const {key,unit,values}=definition,settings=values.map(value=>normalizeStage1Settings({...s,[key]:value}));
+  };
+  if(!Object.hasOwn(definitions,kind))throw new Error('Unsupported Stage 1 study.');
+  const {key,unit,values}=definitions[kind],settings=values.map(value=>normalizeStage1Settings({...s,[key]:value}));
   // Preflight every requested anatomical state and its actual morphology budget.
   // Invalid points are errors, never filtered from a sensitivity curve.
   const plans=settings.map(config=>{createStage1Cohort(config);const m=buildStage1Morphology(config),stumps=createNativeStumpMorphologies(m);assertDisconnectedNativeStumps(stumps);return validateStage1Budget(config,m,stumps);});
   const total={cableSolves:plans.reduce((sum,p)=>sum+p.cableSolves,0),compartmentSteps:plans.reduce((sum,p)=>sum+p.compartmentSteps,0),savedValues:plans.reduce((sum,p)=>sum+p.retainedValues,0)+Math.max(...plans.map(p=>p.peakTransientValues))};
   if(total.cableSolves>STAGE1_BUDGET.maxCableSolves||total.compartmentSteps>STAGE1_BUDGET.maxCompartmentSteps||total.savedValues>STAGE1_BUDGET.maxSavedValues)throw new Error('The complete Stage 1 study exceeds a declared total work budget. Explicitly reduce census or channels; no resolution or requested point was removed.');
-  const runs=[];for(let i=0;i<settings.length;i++)runs.push(await runStage1Protocol(settings[i],{...options,onProgress:p=>options.onProgress?.({...p,phase:`Study ${i+1}/${values.length}: ${p.phase}`,fraction:(i+p.fraction)/values.length})}));
-  const valid=runs.every(run=>run.auditValid),brackets=kind==='amplitude'&&valid?Array.from({length:s.channelCount},(_,k)=>Array.from({length:s.axonCount},(_,i)=>bracketThreshold(values,runs.map(run=>run.matrices.assigned[k][i])))):null;
-  return {kind,values,parameterKey:key,parameterUnit:unit,settings:s,modelVersion:STAGE1_MODEL_VERSION,runs,brackets,bracketStatus:kind!=='amplitude'?'not applicable':valid?'calculated from valid sampled conditions':'withheld: at least one matched audit failed',workBudget:total,rule:'Every predeclared point and its actual geometry were preflighted. Complete controls at every point; no invalid-point filtering, interpolation, geometry retuning or amplitude optimization.'};
+  const runs=[];
+  for(let i=0;i<settings.length;i++){
+    if(options.shouldCancel?.())throw new Error('Stage 1 study cancelled; no partial result was published.');
+    try{
+      runs.push(await runStage1Protocol(settings[i],{...options,onProgress:p=>options.onProgress?.({...p,phase:`Study ${i+1}/${values.length}: ${p.phase}`,fraction:(i+p.fraction)/values.length})}));
+    }catch(error){
+      if(options.shouldCancel?.()||/cancelled/i.test(String(error?.message)))throw error;
+      runs.push({modelVersion:STAGE1_MODEL_VERSION,mode:s.mode,settings:settings[i],auditComplete:false,auditValid:false,
+        failure:{stage:'execution',name:error?.name??'Error',message:String(error?.message??error)},workBudget:plans[i],
+        metrics:{anyRecruitment:null,engineeredExclusiveCount:null,engineeredCausalExclusiveCount:null,engineeredSomaDependentExclusiveCount:null},
+        matrices:null,controls:[],reason:'Requested point failed during execution. No recruitment value, completed control or replacement numerical result is inferred.'});
+      options.onProgress?.({phase:`Study ${i+1}/${values.length}: failed point retained (${String(error?.message??error)})`,fraction:(i+1)/values.length});
+    }
+  }
+  const valid=runs.every(run=>run.auditComplete&&run.auditValid),brackets=kind==='amplitude'&&valid?Array.from({length:s.channelCount},(_,k)=>Array.from({length:s.axonCount},(_,i)=>bracketThreshold(values,runs.map(run=>run.matrices.assigned[k][i])))):null;
+  return {kind,values,parameterKey:key,parameterUnit:unit,settings:s,modelVersion:STAGE1_MODEL_VERSION,runs,brackets,bracketStatus:kind!=='amplitude'?'not applicable':valid?'calculated from valid sampled conditions':'withheld: at least one requested execution or matched audit failed',workBudget:total,rule:'Every predeclared point and its actual geometry were preflighted. Complete controls are attempted at each point. Execution failures remain at their requested values with metrics withheld; no invalid-point filtering, interpolation, geometry retuning or amplitude optimization.'};
 }

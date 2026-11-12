@@ -1,6 +1,22 @@
 import {TracePlot} from './Charts.jsx';
 const fmt=(n,d=5)=>Number.isFinite(n)?n.toLocaleString('en-US',{maximumFractionDigits:d}):'—';
 
+export function ApertureStudyTable({study,channel=0}){
+ if(study?.kind!=='aperture')return null;
+ const rows=study.runs.map((run,index)=>{
+  const pair=run.geometry?.channels[channel],cell=run.geometry?.cells.findIndex(c=>c.id===pair?.targetCellId);
+  const field=run.field?.diagnostics.find(d=>d.channel===pair?.id),bore=field?.apertures.find(a=>a.wellId===pair?.wellId&&a.direction==='peripheral');
+  const outward=bore?.outwardCurrentUaPerUa;
+  return {radius:study.values[index],pair,bore,ratio:run.field?.confinement[channel]?.[cell],outward,driveRatio:Number.isFinite(outward)&&Math.abs(outward)>1e-12?1/Math.abs(outward):null};
+ });
+ return <article class="ax-contact-table">
+  <h3>Aperture confinement and escape-current cost</h3>
+  <p class="ax-fine">{rows.find(r=>r.pair)?.pair.id??'Selected channel'} · driven well, peripheral aperture. Computed rows use their recalculated physical field; unavailable coefficients are shown as dashes.</p>
+  <div class="ax-table-scroll"><table><thead><tr><th>Aperture radius / µm</th><th>Target / largest off-target potential range</th><th>Outward bore current / µA per +1 µA drive</th><th>|Drive| / |outward bore current|</th><th>Bore resistance / kΩ</th></tr></thead><tbody>{rows.map(r=><tr><td>{r.radius}</td><td>{fmt(r.ratio,3)}</td><td>{fmt(r.outward,6)}</td><td>{fmt(r.driveRatio,3)}</td><td>{fmt(r.bore?.measuredBoreResistanceMvPerUa,3)}</td></tr>)}</tbody></table></div>
+  <p class="ax-fine">The potential-range ratio describes field confinement, not recruitment. The magnitude ratio is the dimensionless factor required to obtain a chosen outward bore-current magnitude in the stated linear conductor. It is not a host-axon threshold or a recommended operating amplitude. The opposite aperture carries the return path; its magnitude is not added again.</p>
+ </article>;
+}
+
 export function NoDeviceAudit({result}){
  const comparator=result?.comparators?.noDevice,ledger=result?.identities;
  if(!comparator||!ledger)return null;

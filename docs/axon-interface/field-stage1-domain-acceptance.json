@@ -1,0 +1,11 @@
+{
+  "schema": "explicit-well-domain-acceptance/1",
+  "declaredAt": "2026-11-11",
+  "declaration": "Declared before the production zero-Dirichlet boundary expansion study. The existing10% field-refinement limit is retained.",
+  "outerRadiusExpansion": 1.5,
+  "halfLengthExpansion": 1.5,
+  "maximumPerCellMembraneTransferRelativeRms": 0.1,
+  "maximumPerWellDifferentialContactCouplingRelative": 0.1,
+  "scope": "Dense four-well fixture at35um pitch, unchanged local anatomy/materials/contact source, comparing actual grounded domains. This is not an analytic-Dirichlet substitute or proof for every user configuration.",
+  "failurePolicy": "Retain failures and hashes. No offset, common-mode subtraction, amplitude rescaling, or tolerance adjustment."
+}

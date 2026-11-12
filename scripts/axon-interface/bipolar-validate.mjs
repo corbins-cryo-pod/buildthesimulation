@@ -11,7 +11,8 @@ import * as baselineMotor from './mrg-motor-baseline.mjs';
 const here=path.dirname(fileURLToPath(import.meta.url)),root=path.resolve(here,'../..'),dir=path.join(root,'docs/axon-interface'),raw=path.join(dir,'bipolar-reference-data');fs.mkdirSync(raw,{recursive:true});
 const acceptance=JSON.parse(fs.readFileSync(path.join(dir,'bipolar-acceptance.json'))),limits=acceptance.limits;
 const correction=JSON.parse(fs.readFileSync(path.join(dir,'bipolar-resolution-correction.json'))),BASE_DT=correction.productionCandidateDtMs;
-const sources=['src/lib/axon-interface/mrg.mjs','src/lib/axon-interface/bipolar.mjs','scripts/axon-interface/bipolar-validate.mjs','scripts/axon-interface/bipolar-reference.py','scripts/axon-interface/mrg-motor-baseline.mjs','scripts/axon-interface/mrg-modeldb/AXNODE.mod','docs/axon-interface/bipolar-acceptance.json','docs/axon-interface/bipolar-resolution-correction.json'];
+const somaCorrection=JSON.parse(fs.readFileSync(path.join(dir,'bipolar-soma-resolution-correction.json')));
+const sources=['src/lib/axon-interface/mrg.mjs','src/lib/axon-interface/bipolar.mjs','scripts/axon-interface/bipolar-validate.mjs','scripts/axon-interface/bipolar-reference.py','scripts/axon-interface/mrg-motor-baseline.mjs','scripts/axon-interface/mrg-modeldb/AXNODE.mod','docs/axon-interface/bipolar-acceptance.json','docs/axon-interface/bipolar-resolution-correction.json','docs/axon-interface/bipolar-soma-resolution-correction.json'];
 const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(path.join(root,p))).digest('hex'),sourceHashes=Object.fromEntries(sources.map(p=>[p,sha(p)]));
 const tests=[],sensitivity=[],thresholdGrid=[],nativeComparisons=[],errors=[],started=performance.now();let finished=false;
 for(const failed of correction.retainedFailedStudy)tests.push({...failed,required:false,retainedFailureId:correction.failureId});
@@ -19,10 +20,10 @@ const sum=a=>a.reduce((s,v)=>s+v,0),ptp=a=>Math.max(...a)-Math.min(...a);
 function add(name,value,limit,unit,details={},required=true){const pass=typeof limit==='number'?Number.isFinite(value)&&value<=limit:value===limit;tests.push({name,status:pass?'pass':'fail',measured:typeof value==='number'&&!Number.isFinite(value)?null:value,nonFinite:typeof value==='number'&&!Number.isFinite(value),limit,unit,required,...details});}
 function save(){
   const changed=sources.filter(p=>sourceHashes[p]!==sha(p));
-  const report={schema:'buildthesimulation.bipolar.numerical.v1',modelVersion:BIPOLAR_VERSION,membraneVersion:MRG_VERSION,generatedAt:new Date().toISOString(),complete:finished,acceptance,resolutionCorrection:correction,supportedDtMs:BASE_DT,retainedFailures:[correction],sourceHashes,sourceChangedDuringRun:changed,tests,sensitivity,thresholdGrid,nativeComparisons,errors,
+  const report={schema:'buildthesimulation.bipolar.numerical.v1',modelVersion:BIPOLAR_VERSION,membraneVersion:MRG_VERSION,generatedAt:new Date().toISOString(),complete:finished,acceptance,resolutionCorrection:correction,supportedDtMs:BASE_DT,supportedSomaSegments:somaCorrection.productionCandidateSomaSegments,somaResolutionCorrection:somaCorrection,retainedFailures:[correction,somaCorrection],sourceHashes,sourceChangedDuringRun:changed,tests,sensitivity,thresholdGrid,nativeComparisons,errors,
     summary:{requiredPass:tests.filter(t=>t.required&&t.status==='pass').length,requiredFail:tests.filter(t=>t.required&&t.status==='fail').length,numericalGatePassed:finished&&errors.length===0&&changed.length===0&&tests.every(t=>!t.required||t.status==='pass'),biologicalValidation:false,humanSgCalibration:false},
     runtime:{node:process.version,platform:os.platform(),cpu:os.cpus()[0]?.model,elapsedSeconds:(performance.now()-started)/1000},
-    limitations:['Soma/stem geometry and channel densities are explicit hypothetical choices, not human or engineered-cell fits.','The soma is a lumped equivalent cylinder with exposed spherical-band area; circumferential nonlinear membrane polarization is unresolved.','Native NEURON agreement verifies the stated equations; negative sensitivity or causal outcomes are not suppressed.','Analytic extracellular coefficients in this component test do not replace the separate insulating-well/FEM reference fixture.']};
+    limitations:['Soma/stem geometry and channel densities are explicit hypothetical choices, not human or engineered-cell fits.','The soma is represented by five axial equivalent-cylinder segments with areas matched to spherical surface bands; circumferential nonlinear membrane polarization is unresolved.','Native NEURON agreement verifies the stated equations; negative sensitivity or causal outcomes are not suppressed.','Analytic extracellular coefficients in this component test do not replace the separate insulating-well/FEM reference fixture.']};
   fs.writeFileSync(path.join(dir,'bipolar-numerical-report.json'),JSON.stringify(report,null,2)+'\n');
   if(finished||errors.length)fs.appendFileSync(path.join(dir,'bipolar-validation-history.jsonl'),JSON.stringify(report)+'\n');
   return report;
@@ -38,8 +39,8 @@ function compare(a,b){
   if(!exactObservationTimestamps)throw new Error('Reference grids differ; no interpolation, alignment or timestamp transformation is allowed.');
   const rms=a.membraneMv.map((v,n)=>Math.sqrt(sum(v.map((x,k)=>(x-b.membraneMv[n][k])**2))/v.length));
   const aa=a.activeSiteEventTimes??a.nodeEventTimes,bb=b.activeSiteEventTimes??b.nodeEventTimes,counts=aa.length===bb.length&&aa.every((v,n)=>v.length===bb[n].length);
-  let timing=0;for(let n=0;n<aa.length;n++)for(let k=0;k<aa[n].length;k++)timing=Math.max(timing,Math.abs(aa[n][k]-(bb[n]?.[k]??1e99)));
-  return {exactObservationTimestamps,maximumSiteRmsMv:Math.max(...rms),rmsPerSiteMv:rms,identicalCrossingCounts:counts,maximumCrossingTimeErrorMs:timing};
+  let timing=counts?0:null;let unmatchedCrossings=0;for(let n=0;n<Math.max(aa.length,bb.length);n++){unmatchedCrossings+=Math.abs((aa[n]?.length??0)-(bb[n]?.length??0));if(counts)for(let k=0;k<aa[n].length;k++)timing=Math.max(timing,Math.abs(aa[n][k]-bb[n][k]));}
+  return {exactObservationTimestamps,maximumSiteRmsMv:Math.max(...rms),rmsPerSiteMv:rms,identicalCrossingCounts:counts,unmatchedCrossings,maximumCrossingTimeErrorMs:timing};
 }
 function recording(m,r){const weights=m.compartments.map(c=>1000/(4*Math.PI*.3*Math.hypot(100,c.zUm-1000)));return r.outerCurrentsNa.map(a=>sum(a.map((v,i)=>v*weights[i])));}
 function drift(r){return Math.max(...r.membraneMv.map(a=>Math.max(...a.map(v=>Math.abs(v-a[0])))));}
@@ -50,7 +51,7 @@ try{
   const motorOptions=m=>({morphology:m,dtMs:.00125,durationMs:3,traceStride:4,equilibrationMs:20,injectedCurrentNa:(t,i)=>i===m.nodeIndices[5]&&t>=.5&&t<.6?2:0,saveCurrents:true});
   const old=baselineMotor.simulateCable(motorOptions(oldM)),current=simulateCable(motorOptions(newM));
   add('Original motor membrane/current/event outputs remain bit-for-bit unchanged',JSON.stringify([old.membraneMv,old.outerCurrentsNa,old.nodeEventTimes,old.initialState])===JSON.stringify([current.membraneMv,current.outerCurrentsNa,current.nodeEventTimes,current.initialState]),true,'boolean',{baselineSha256:sha('scripts/axon-interface/mrg-motor-baseline.mjs')});
-  const m=createBipolarMorphology(),rest=run(m,BASE_DT,{mode:'zero',saveCurrents:false}),nominal=run(m);
+  const m=createBipolarMorphology({somaSegments:somaCorrection.productionCandidateSomaSegments}),rest=run(m,BASE_DT,{mode:'zero',saveCurrents:false}),nominal=run(m);
   add('Nominal bipolar zero-input drift',drift(rest),limits.zeroInputDriftMv,'mV',{preparationMs:50});add('Nominal bipolar zero-input crossings at all active sites',rest.events.length,0,'crossings');
   add('Nominal cable current balance',nominal.diagnostics.maxCurrentResidualNa,limits.chargeConservationNa,'nA');
   for(const arm of ['peripheral','central'])add(`Somatic 10 nA benchmark has ordered ${arm} propagation`,armResult(m,nominal,arm).ordered,true,'boolean',{diagnostic:armResult(m,nominal,arm)});
@@ -66,20 +67,21 @@ try{
       add(`Spatial ${a.m.passiveSegments}→${b.m.passiveSegments}: ${arm} conduction delay`,error,limits.spatialConductionRelative,'fraction',{delaysMs:[da.delayMs,db.delayMs]});}
     const pa=ptp(recording(a.m,a.r)),pb=ptp(recording(b.m,b.r));add(`Spatial ${a.m.passiveSegments}→${b.m.passiveSegments}: reciprocal recording`,Math.abs(pa-pb)/Math.abs(pb),limits.spatialRecordingPeakToPeakRelative,'fraction',{peaksUv:[pa,pb]});
   }
-  for(const amplitudeNa of acceptance.numericalStudies.somaCurrentGridNa){const r=run(m,BASE_DT,{amplitudeNa,saveCurrents:false,initialState:rest.initialState});thresholdGrid.push({amplitudeNa,central:armResult(m,r,'central'),peripheral:armResult(m,r,'peripheral'),crossings:r.events.length,somaCrossings:r.events.filter(e=>e.compartmentIndex===m.somaIndex).length,firstEventRole:r.events.length?r.events.reduce((a,b)=>a.timeMs<b.timeMs?a:b).role:null});}
+  for(const amplitudeNa of acceptance.numericalStudies.somaCurrentGridNa){const r=run(m,BASE_DT,{amplitudeNa,saveCurrents:false,initialState:rest.initialState});thresholdGrid.push({amplitudeNa,central:armResult(m,r,'central'),peripheral:armResult(m,r,'peripheral'),crossings:r.events.length,somaCrossings:r.events.filter(e=>m.somaIndices.includes(e.compartmentIndex)).length,firstEventRole:r.events.length?r.events.reduce((a,b)=>a.timeMs<b.timeMs?a:b).role:null});}
   const hypotheses=[];
   for(const key of ['somaDiameterUm','somaActiveScale','stemActiveScale'])for(const value of acceptance.sensitivity[key])if(value!==m.parameters[key])hypotheses.push({key,value,settings:{[key]:value}});
   for(const mult of acceptance.sensitivity.stemLengthMultiplier)if(mult!==1)hypotheses.push({key:'stemLengthMultiplier',value:mult,settings:{peripheralStemLengthUm:30*mult,centralStemLengthUm:50*mult}});
   for(const mult of acceptance.sensitivity.stemDiameterMultiplier)if(mult!==1)hypotheses.push({key:'stemDiameterMultiplier',value:mult,settings:{peripheralStemDiameterUm:1.5*mult,centralStemDiameterUm:2.5*mult}});
   for(const hypothesis of hypotheses){
     try{const mh=createBipolarMorphology(hypothesis.settings),zero=run(mh,BASE_DT,{mode:'zero',saveCurrents:false}),drive=run(mh,BASE_DT,{initialState:zero.initialState,saveCurrents:false});
-      sensitivity.push({...hypothesis,zeroInputDriftMv:drift(zero),zeroInputCrossings:zero.events.length,quiescent:drift(zero)<=limits.zeroInputDriftMv&&zero.events.length===0,central:armResult(mh,drive,'central'),peripheral:armResult(mh,drive,'peripheral'),drivenCrossings:drive.events.length,somaCrossings:drive.events.filter(e=>e.compartmentIndex===mh.somaIndex).length,status:'computed'});
+      sensitivity.push({...hypothesis,zeroInputDriftMv:drift(zero),zeroInputCrossings:zero.events.length,quiescent:drift(zero)<=limits.zeroInputDriftMv&&zero.events.length===0,central:armResult(mh,drive,'central'),peripheral:armResult(mh,drive,'peripheral'),drivenCrossings:drive.events.length,somaCrossings:drive.events.filter(e=>mh.somaIndices.includes(e.compartmentIndex)).length,status:'computed'});
     }catch(error){sensitivity.push({...hypothesis,status:'failed hypothesis',error:error.message});}
     save();
   }
   const stumps=createNativeStumpMorphologies(m);
   for(const [arm,stump] of Object.entries(stumps)){const zero=run(stump,BASE_DT,{mode:'zero',saveCurrents:false});add(`No-construct ${arm} stump zero-input drift`,drift(zero),limits.zeroInputDriftMv,'mV');add(`No-construct ${arm} stump zero-input crossings`,zero.events.length,0,'crossings');add(`No-construct ${arm} stump has no connection across removed region`,stump.connectedAcrossRemovedRegion,false,'boolean');}
   const referenceCases=[{id:'nominal-soma-injected',m,mode:'injected'},{id:'nominal-extracellular',m,mode:'field'},
+    {id:'soma-only-silenced',m,mode:'injected',silencedCompartments:m.somaIndices},
     {id:'initiation-region-silenced',m,mode:'injected',silencedCompartments:m.initiationRegionIndices},
     {id:'whole-cell-silenced',m,mode:'injected',silencedCompartments:m.activeSiteIndices},
     {id:'passive-soma',m:createBipolarMorphology({somaActiveScale:0}),mode:'injected'},
@@ -92,8 +94,11 @@ try{
     const child=spawnSync(process.env.MRG_PYTHON||'python3',[path.join(here,'bipolar-reference.py'),input,output],{encoding:'utf8',timeout:120000});
     if(child.status!==0){add(`Native NEURON ${rc.id} executed`,false,true,'boolean',{error:child.stderr||child.error?.message||child.stdout});continue;}
     const native=JSON.parse(fs.readFileSync(output)),js=run(rc.m,dt,{mode:rc.mode,silencedCompartments:rc.silencedCompartments??[]}),q=compare(js,native),a=recording(rc.m,js),b=recording(rc.m,native),recordingError=Math.max(...a.map((v,k)=>Math.abs(v-b[k])));
+    const geometryError=Math.max(...native.positionsUm.map((z,i)=>Math.abs(z-rc.m.compartments[i].zUm)));
+    add(`Native NEURON ${rc.id}: independently constructed compartment positions`,geometryError,1e-8,'um');
+    add(`Native NEURON ${rc.id}: active-site and true-node correspondence`,JSON.stringify([native.activeSiteIndices,native.nodeIndices])===JSON.stringify([rc.m.activeSiteIndices,rc.m.nodeIndices]),true,'boolean');
     add(`Native NEURON ${rc.id}: all-site RMS`,q.maximumSiteRmsMv,limits.nativeMaxSiteRmsMv,'mV');add(`Native NEURON ${rc.id}: all-site crossing counts`,q.identicalCrossingCounts,true,'boolean');add(`Native NEURON ${rc.id}: crossing times`,q.maximumCrossingTimeErrorMs,limits.nativeCrossingTimeMs,'ms');add(`Native NEURON ${rc.id}: reciprocal recording`,recordingError,limits.nativeRecordingMaxErrorUv,'uV');
-    nativeComparisons.push({id:rc.id,...q,maxRecordingErrorUv:recordingError,jsCrossings:js.events.length,nativeCrossings:sum(native.activeSiteEventTimes.map(a=>a.length)),runtime:native.runtime,silencedCompartments:fixture.silencedCompartments});
+    nativeComparisons.push({id:rc.id,...q,maximumGeometryErrorUm:geometryError,somaSegments:rc.m.somaSegments??0,maxRecordingErrorUv:recordingError,jsCrossings:js.events.length,nativeCrossings:sum(native.activeSiteEventTimes.map(a=>a.length)),runtime:native.runtime,silencedCompartments:fixture.silencedCompartments});
     fs.writeFileSync(path.join(raw,rc.id+'-comparison.json'),JSON.stringify({timesMs:js.timesMs,recordIndices:js.recordIndices,jsMembraneMv:js.membraneMv,nativeMembraneMv:native.membraneMv,jsRecordingUv:a,nativeRecordingUv:b}));save();
   }
   finished=true;

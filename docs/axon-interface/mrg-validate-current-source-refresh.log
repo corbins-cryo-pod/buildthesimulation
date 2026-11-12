@@ -1,0 +1,371 @@
+{
+  "summary": {
+    "requiredPass": 55,
+    "requiredFail": 0,
+    "numericalGatePassed": true,
+    "biologicalValidation": false,
+    "activeSomaValidated": false,
+    "publishedDiameterRelationValidated": false
+  },
+  "tests": [
+    {
+      "name": "Original MRG: zero-input drift, 6 ms",
+      "status": "pass",
+      "value": 0.001296324429816309
+    },
+    {
+      "name": "Original MRG: zero-input crossings",
+      "status": "pass",
+      "value": 0
+    },
+    {
+      "name": "Retained: original2.5 to1.25µs endpoint RMS",
+      "status": "fail",
+      "value": 1.1291993447221498
+    },
+    {
+      "name": "Time refinement 1.25 to 0.625 µs: every node membrane RMS",
+      "status": "pass",
+      "value": 0.40947880537870296
+    },
+    {
+      "name": "Time refinement 1.25 to 0.625 µs: identical crossing counts",
+      "status": "pass",
+      "value": true
+    },
+    {
+      "name": "Time refinement 1.25 to 0.625 µs: event timing",
+      "status": "pass",
+      "value": 0.0016826989805514003
+    },
+    {
+      "name": "Time refinement 0.625 to 0.3125 µs: every node membrane RMS",
+      "status": "pass",
+      "value": 0.20557613104202327
+    },
+    {
+      "name": "Time refinement 0.625 to 0.3125 µs: identical crossing counts",
+      "status": "pass",
+      "value": true
+    },
+    {
+      "name": "Time refinement 0.625 to 0.3125 µs: event timing",
+      "status": "pass",
+      "value": 0.0008382960086096292
+    },
+    {
+      "name": "Spatial refinement 1 to 3: conduction delay",
+      "status": "fail",
+      "value": 0.12438560265723017
+    },
+    {
+      "name": "Spatial refinement 1 to 3: recording peak-to-peak",
+      "status": "fail",
+      "value": 0.23065105845028744
+    },
+    {
+      "name": "Spatial refinement 3 to 5: conduction delay",
+      "status": "pass",
+      "value": 0.02217262933330911
+    },
+    {
+      "name": "Spatial refinement 3 to 5: recording peak-to-peak",
+      "status": "pass",
+      "value": 0.007319147429372259
+    },
+    {
+      "name": "Spatial refinement 5 to 7: conduction delay",
+      "status": "pass",
+      "value": 0.009202388301833418
+    },
+    {
+      "name": "Spatial refinement 5 to 7: recording peak-to-peak",
+      "status": "pass",
+      "value": 0.002080948915162263
+    },
+    {
+      "name": "Deterministic same-runtime replay",
+      "status": "pass",
+      "value": true
+    },
+    {
+      "name": "Cable KCL residual",
+      "status": "pass",
+      "value": 5.118648763611797e-11
+    },
+    {
+      "name": "Source-current global conservation",
+      "status": "pass",
+      "value": 1.7763568394002505e-15
+    },
+    {
+      "name": "Exploratory passive soma: zero-input drift",
+      "status": "pass",
+      "value": 0.07062166320926622
+    },
+    {
+      "name": "Exploratory passive soma: zero-input crossings",
+      "status": "pass",
+      "value": 0
+    },
+    {
+      "name": "Extracellular motor 1.25→0.625µs: every node membrane RMS",
+      "status": "pass",
+      "value": 0.35041436413282306
+    },
+    {
+      "name": "Extracellular motor 1.25→0.625µs: identical crossing counts",
+      "status": "pass",
+      "value": true
+    },
+    {
+      "name": "Extracellular motor 1.25→0.625µs: event timing",
+      "status": "pass",
+      "value": 0.0014528264301815197
+    },
+    {
+      "name": "Extracellular motor 0.625→0.3125µs: every node membrane RMS",
+      "status": "pass",
+      "value": 0.177071933893017
+    },
+    {
+      "name": "Extracellular motor 0.625→0.3125µs: identical crossing counts",
+      "status": "pass",
+      "value": true
+    },
+    {
+      "name": "Extracellular motor 0.625→0.3125µs: event timing",
+      "status": "pass",
+      "value": 0.000726922592635737
+    },
+    {
+      "name": "Extracellular passive-soma 1.25→0.625µs: every node membrane RMS",
+      "status": "pass",
+      "value": 0.41955914851215387
+    },
+    {
+      "name": "Extracellular passive-soma 1.25→0.625µs: identical crossing counts",
+      "status": "pass",
+      "value": true
+    },
+    {
+      "name": "Extracellular passive-soma 1.25→0.625µs: event timing",
+      "status": "pass",
+      "value": 0.0016433605034765764
+    },
+    {
+      "name": "Extracellular passive-soma 0.625→0.3125µs: every node membrane RMS",
+      "status": "pass",
+      "value": 0.214999051876956
+    },
+    {
+      "name": "Extracellular passive-soma 0.625→0.3125µs: identical crossing counts",
+      "status": "pass",
+      "value": true
+    },
+    {
+      "name": "Extracellular passive-soma 0.625→0.3125µs: event timing",
+      "status": "pass",
+      "value": 0.0008212666146641956
+    },
+    {
+      "name": "Independent NEURON motor-10-intracellular: every node membrane RMS",
+      "status": "pass",
+      "value": 5.5439336585569355e-9
+    },
+    {
+      "name": "Independent NEURON motor-10-intracellular: identical crossing counts",
+      "status": "pass",
+      "value": true
+    },
+    {
+      "name": "Independent NEURON motor-10-intracellular: event timing",
+      "status": "pass",
+      "value": 2.3125168446824773e-11
+    },
+    {
+      "name": "Independent Python reciprocal recording motor-10-intracellular",
+      "status": "pass",
+      "value": 2.5487766341925067e-9
+    },
+    {
+      "name": "Independent NEURON motor-10-extracellular: every node membrane RMS",
+      "status": "pass",
+      "value": 1.0495116885376237e-8
+    },
+    {
+      "name": "Independent NEURON motor-10-extracellular: identical crossing counts",
+      "status": "pass",
+      "value": true
+    },
+    {
+      "name": "Independent NEURON motor-10-extracellular: event timing",
+      "status": "pass",
+      "value": 4.355182880999564e-11
+    },
+    {
+      "name": "Independent Python reciprocal recording motor-10-extracellular",
+      "status": "pass",
+      "value": 4.558685207101121e-9
+    },
+    {
+      "name": "Independent NEURON motor-5p7-extracellular: every node membrane RMS",
+      "status": "pass",
+      "value": 9.890634739467469e-9
+    },
+    {
+      "name": "Independent NEURON motor-5p7-extracellular: identical crossing counts",
+      "status": "pass",
+      "value": true
+    },
+    {
+      "name": "Independent NEURON motor-5p7-extracellular: event timing",
+      "status": "pass",
+      "value": 4.09514644417186e-11
+    },
+    {
+      "name": "Independent Python reciprocal recording motor-5p7-extracellular",
+      "status": "pass",
+      "value": 7.198911244898909e-9
+    },
+    {
+      "name": "Independent NEURON passive-soma-20-extracellular: every node membrane RMS",
+      "status": "pass",
+      "value": 6.933245285710499e-9
+    },
+    {
+      "name": "Independent NEURON passive-soma-20-extracellular: identical crossing counts",
+      "status": "pass",
+      "value": true
+    },
+    {
+      "name": "Independent NEURON passive-soma-20-extracellular: event timing",
+      "status": "pass",
+      "value": 2.811206822883605e-11
+    },
+    {
+      "name": "Independent Python reciprocal recording passive-soma-20-extracellular",
+      "status": "pass",
+      "value": 2.805857768350961e-9
+    },
+    {
+      "name": "Independent NEURON motor-proximal-silenced: every node membrane RMS",
+      "status": "pass",
+      "value": 1.8297327519345704e-9
+    },
+    {
+      "name": "Independent NEURON motor-proximal-silenced: identical crossing counts",
+      "status": "pass",
+      "value": true
+    },
+    {
+      "name": "Independent NEURON motor-proximal-silenced: event timing",
+      "status": "pass",
+      "value": 0
+    },
+    {
+      "name": "Independent Python reciprocal recording motor-proximal-silenced",
+      "status": "pass",
+      "value": 1.1585266079805479e-10
+    },
+    {
+      "name": "Independent NEURON motor-all-silenced: every node membrane RMS",
+      "status": "pass",
+      "value": 1.8569441502578453e-9
+    },
+    {
+      "name": "Independent NEURON motor-all-silenced: identical crossing counts",
+      "status": "pass",
+      "value": true
+    },
+    {
+      "name": "Independent NEURON motor-all-silenced: event timing",
+      "status": "pass",
+      "value": 0
+    },
+    {
+      "name": "Independent Python reciprocal recording motor-all-silenced",
+      "status": "pass",
+      "value": 1.1934386812129105e-10
+    },
+    {
+      "name": "Diameter 10 µm: published Aβ diameter/conduction band",
+      "status": "pass",
+      "value": true
+    },
+    {
+      "name": "Diameter 16 µm: published Aα diameter/conduction band",
+      "status": "pass",
+      "value": true
+    },
+    {
+      "name": "Retained: 16 µm 2 nA benchmark did not establish conduction",
+      "status": "fail",
+      "value": false
+    }
+  ],
+  "retainedFailures": [
+    {
+      "id": "MRG-TIME-001",
+      "originalComparisonMs": [
+        0.005,
+        0.0025
+      ],
+      "originalMaximumNodeRmsMv": 2.1281643553885274,
+      "originalRmsAcrossNodesMv": 1.5068865013729857,
+      "criterionMv": 1,
+      "cause": "First-order integration at 5 µs is too coarse for these action-potential waveforms.",
+      "correction": "Production default uses 1.25 µs; retain this failure and verify 1.25→0.625→0.3125 µs without relaxing 1 mV."
+    },
+    {
+      "id": "MRG-TIME-002",
+      "originalComparisonMs": [
+        0.0025,
+        0.00125
+      ],
+      "originalMaximumNodeRmsMv": 1.1291993447221498,
+      "criterionMv": 1,
+      "cause": "An across-node aggregate RMS hid a1.129mV endpoint error; acceptance applies to every recorded node.",
+      "correction": "Restrict verified calculation to dt≤.00125ms; use per-node maxima for acceptance."
+    },
+    {
+      "id": "MRG-SPACE-001",
+      "originalPassiveSegments": [
+        1,
+        3
+      ],
+      "conductionRelativeError": 0.12438560265723017,
+      "recordingRelativeError": 0.23065105845028744,
+      "limits": {
+        "conduction": 0.05,
+        "recording": 0.1
+      },
+      "cause": "Original single-segment passive sections do not meet the requested refinement gates for this experiment.",
+      "correction": "Production default uses3 segments per passive section (311 compartments for11nodes);3→5 and5→7 are published. Original failed comparisons remain in tests."
+    },
+    {
+      "id": "MRG-SOMA-001",
+      "somaDiameterUm": 20,
+      "somaActiveScale": 1,
+      "measuredDriftMv": 110.52481479717088,
+      "upwardCrossings": 29,
+      "observationMs": 6,
+      "equilibrationMs": 20,
+      "criterionMv": 0.1,
+      "criterionSpikes": 0,
+      "cause": "Unmodified nodal MRG conductance densities are not soma physiology; enlarging the node generates spontaneous activity.",
+      "correction": "Original straight motor-fiber benchmark remains default. An explicitly passive synthetic soma (scale=0) is a distinct exploratory loading model; it does not repair or validate the failed active-soma model."
+    },
+    {
+      "id": "MRG-CV-001",
+      "fiberDiameterUm": 16,
+      "injectedPulseNa": 2,
+      "observedPropagation": false,
+      "measuredVelocityMps": null,
+      "upwardCrossings": 0,
+      "cause": "The original 10 µm 2 nA verification stimulus was subthreshold for the 16 µm cable; no velocity can be computed.",
+      "correction": "This experiment is rerun on the reconstruction; a separate declared 10 nA suprathreshold experiment measures conduction."
+    }
+  ],
+  "seconds": 62.687435181
+}

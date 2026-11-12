@@ -15,6 +15,9 @@
     "radialRefinementRelativeRms": 0.1,
     "angularRefinementRelativeRms": 0.1,
     "axialRefinementRelativeRms": 0.1,
+    "localDomainExtensionRelativeRms": 0.1,
+    "membraneSurfaceQuadratureRelativeRms": 0.01,
+    "membraneAxialQuadratureRelativeRms": 0.01,
     "wellContactFluxRelative": 1e-8,
     "conservedMembraneProjection": 1e-12
   },
@@ -25,6 +28,7 @@
     "Finite annular straight bore with analytic Ohm resistance",
     "Isolated circular aperture access convergence",
     "Radial/angular/axial field refinement at fixed physical source/contact geometry",
+    "Local explicit-cell to effective-tissue domain extension and membrane surface quadrature",
     "128 explicit cells and wells resource measurement with no dropped cell or hidden geometry substitution"
   ],
   "failurePolicy": "Append all failed studies; do not relax thresholds. Resource failure withholds large-cohort eligibility. Independent same-mesh agreement alone does not establish continuous accuracy or biology."

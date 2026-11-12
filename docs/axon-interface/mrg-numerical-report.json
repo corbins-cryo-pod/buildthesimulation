@@ -1,5 +1,5 @@
 {
-  "modelVersion": "mrg-double-cable-2.0.0-recovery",
+  "modelVersion": "mrg-double-cable-2.1.0-bipolar",
   "source": {
     "repository": "https://github.com/ModelDBRepository/3810",
     "commit": "b15daeda6ea368df0198d257f339cf5e840cf31c",
@@ -8,7 +8,7 @@
     "doi": "10.1152/jn.00353.2001",
     "scope": "Published MRG somatic motor-fiber benchmark; not spiral-ganglion or engineered-cell calibration."
   },
-  "generatedAt": "2026-11-11T22:20:13.420Z",
+  "generatedAt": "2026-11-11T23:26:59.412Z",
   "acceptance": {
     "schema": "buildthesimulation.mrg.acceptance.v2-recovery",
     "declaredAt": "2026-11-11T22:09:55.799632+00:00",
@@ -60,10 +60,10 @@
     "arch": "x64",
     "cpu": "AMD EPYC 9V74 80-Core Processor",
     "logicalCpus": 9,
-    "elapsedSeconds": 63.170924561
+    "elapsedSeconds": 62.687435181
   },
   "sourceHashes": {
-    "src/lib/axon-interface/mrg.mjs": "cbaa91ed8e8cbe5acc56d55f229ddcd0bbbe32a4272d4b8280eded3aff772405",
+    "src/lib/axon-interface/mrg.mjs": "182b94c586591599dbcea42b63ececba486d42e4a72f7923abb53a171fe752f5",
     "scripts/axon-interface/mrg-reference.py": "3cd715216d95241eaade5e99c7d6cdeec4dc414d47eadf7f60649f4ee3d2d9a1",
     "scripts/axon-interface/mrg-validate.mjs": "26acd20e3861fe28ef74466f468a718ac8f1ac3398eedfbf7e5fad2ab909fbd4",
     "scripts/axon-interface/mrg-modeldb/AXNODE.mod": "e0fa400a469aa2beba491fabffaa4f6bc03c629015a2c0f2ddc471fb3e687bd3",

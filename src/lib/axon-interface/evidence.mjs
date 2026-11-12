@@ -28,40 +28,244 @@ export const references = Object.freeze([
 ].map(Object.freeze));
 
 const questionData = [
-  { id: 'identities', title: 'What does the original-host addressability fraction count?', evidence: 'mathematical', referenceIds: ['chen2012'], answer: 'It counts original pre-intervention axon identities that remain continuous to their relevant targets, show propagating recruitment, satisfy an architecture-appropriate mechanism intervention, and have an isolated channel that recruits no other axon at the declared drive. It is an intersection of identity sets, not a product of assumed marginal yields. Complete B3 replacement introduces new neuronal identities; strict original-host yield would therefore be zero by definition, while engineered-output yield is a separate endpoint. The present cable benchmark instantiates neither an original census nor a replacement operation, so its original-host yield is null, not zero. The animal transplantation result is motivation for research and does not settle that identity accounting.' },
-  { id: 'mrg-scope', title: 'Is a 37 °C MRG cable a human spiral-ganglion neuron?', evidence: 'mathematical', referenceIds: ['mrg2002', 'modeldb3810', 'potrusil2012', 'pelot2021'], answer: 'No. MRG provides a myelinated motor-fiber benchmark with defined nodal, paranodal and internodal mechanisms. This implementation supports its nine tabulated diameters without silent interpolation. The default addressed region is a node, not an active ganglion soma. Enlarging one compartment does not supply the membrane distribution, myelination pattern or process asymmetry of a human SGN. It also does not create a DRG neuron or an unmyelinated C fiber. Those require separately declared morphology and membrane models. Numerically matching the original MRG implementation establishes agreement with those equations, not a change in neuron identity.' },
-  { id: 'ganglion-topology', title: 'Which additional geometry would make the ganglion hypothesis explicit?', evidence: 'hypothetical', referenceIds: ['potrusil2012', 'rattay2013', 'farooqui2024'], answer: 'A bipolar SGN hypothesis needs distinguishable peripheral and central processes, presomatic and postsomatic regions, an explicit soma and an appropriate membrane/myelin prescription. A DRG hypothesis instead needs its pseudounipolar stem and branch point, with conduction and filtering through that junction measured. Published models show why these topologies cannot be represented by renaming a straight cable. Rattay’s SGN model is a useful candidate reference but uses a different temperature-fitted Hodgkin–Huxley formulation; copying its soma diameter into MRG is not a justified physiological hybrid. Estimated parameters can support a declared exploratory model, provided its scope and sensitivity are explicit.' },
-  { id: 'matched-controls', title: 'What can the matched controls actually establish?', evidence: 'mathematical', referenceIds: ['rattay1986', 'chen2024'], answer: 'The matched runs preserve geometry, extracellular field, temperature, numerical resolution and the equilibrated initial state. Zero input tests baseline stability. Isolated channels define each recruitment row. Local silencing removes active conductances only at the central node and its immediate nodal neighbors, leaving distal excitability intact; whole-cell silencing removes active nodal conductances everywhere. Whole-cell loss alone cannot distinguish local initiation from direct excitation of the same cell’s distal axon. Local loss can also arise from conduction block, so conditional initiation evidence requires the earliest observed crossings to occur in the intervention region. No junction exists here: junction block is not applicable, never passed. Postoperative no-construct preservation remains unmodeled.' },
-  { id: 'propagation', title: 'When is an output classified as a propagating response?', evidence: 'estimated', referenceIds: ['mrg2002', 'rattay1986'], answer: 'The current protocol looks for same-ordinal upward crossings on three unsilenced distal nodes after stimulus onset, strictly positive inter-node delays, segment velocities between 1 and 200 m/s, and at most a twofold discrepancy between those velocities. These are explicit temporal diagnostic choices, not a fitted physiological acceptance band. A simultaneous field deflection or one local voltage excursion is insufficient. Even three ordered crossings do not prove that one uniquely identified traveling event caused them, nor do they establish anatomical continuity to a biological target. Full traces, local crossing events, intervention results and the observation window are retained so the classification can be inspected.' },
-  { id: 'perineurium', title: 'Why are anisotropy and the perineurial shell part of the solve?', evidence: 'estimated', referenceIds: ['pelot2019', 'horn2023'], answer: 'The conductor solves a three-dimensional field with distinct endoneurial, perineurial, epineurial and bath regions. Endoneurial longitudinal and transverse conductivities differ; a low-conductivity shell changes current access and spatial spread. The finite-element mesh explicitly spans the sheath rather than multiplying a homogeneous solution by an unexplained confinement factor. Default conductivities are effective exploratory values. The 1149 Ω m sheath value is an adjusted literature estimate. Canine room-temperature spectroscopy also shows frequency-dependent tissue response, which the present ohmic model omits. Geometry, temperature, preparation and frequency therefore belong in parameter provenance and uncertainty, not in a claim of human calibration.' },
-  { id: 'electrode-wells', title: 'Do finite Gaussian sources simulate individually insulated electrode wells?', evidence: 'mathematical', referenceIds: ['pelot2019', 'rattay1986'], answer: 'No. Each channel currently uses a finite Gaussian volume source and matched sink, normalized to equal and opposite current. The 75 µm radius denotes the truncated three-standard-deviation support; it is not a metal contact radius. Contact area used for charge arithmetic is a separate declared input. The field does not impose equipotential metal surfaces, solve electrode polarization, or resolve insulating microwell walls and aperture access resistance. Drawn walls and geometric pitch do not add that physics. A true well-selectivity claim requires a field model containing the proposed walls, openings and electrode boundary conditions, with its own resolution and reference studies.' },
-  { id: 'recording', title: 'Does a clean extracellular trace prove selective neural activation?', evidence: 'mathematical', referenceIds: ['rattay1986', 'pelot2019'], answer: 'No. The model keeps the applied-field artifact, modeled membrane-current contribution, absent host-source contribution and instantaneous total separate. The known source partition is a forward calculation, not spike sorting or recovery of unknown sources. Host-source zero means that no distinct host population is instantiated; it is not evidence of preserved silent host axons. Voltages sum at each time sample, but separate peak-to-peak amplitudes generally do not. Recruitment instead requires the membrane propagation diagnostic and matched controls. The saved stimulus and artifact refer to the precise solver interval ending at the saved state, without shifting a waveform to improve agreement.' },
-  { id: 'matrix-information', title: 'What do exclusivity, matrix rank and information quantify?', evidence: 'mathematical', referenceIds: ['shannon1948'], answer: 'An exclusive output must have at least one isolated-channel row with exactly one recruited identity. Duplicate channels do not create additional unique axons, and outputs recruited only in shared sets stay in a separate tier. The binary recruitment matrix’s real-number rank is a linear-algebra descriptor; nonlinear simultaneous stimulation need not span those patterns. The information diagnostic is the entropy of deterministic recruitment patterns under a uniform prior over the isolated input channels. It includes duplicate and empty patterns and assumes no trial noise. It is not a measured bit rate, usable percept count, or channel capacity. Failed audits withhold these derived metrics rather than converting missing evidence to successful selectivity.' },
-  { id: 'conduction-calibration', title: 'Does a plausible conduction speed establish biological calibration?', evidence: 'estimated', referenceIds: ['boydkalu1979', 'mrg2002'], answer: 'A broad class-band check is only a diagnostic. The original MRG comparison includes a large-cat-fiber relation of about 5.66 times total fiber diameter in µm to obtain speed in m/s. The refined production discretization must be compared with that stated target at an explicit stimulation site and away from initiation and sealed-end effects. Pre-reset long-cable diagnostics were about 49.13 m/s at 10 µm and 82.22 m/s at 16 µm, below that line by about 13.2% and 9.2%. Those historical observations are not verification of reconstructed code. Same-discretization agreement with native NEURON verifies the equations; neither agreement nor broad-band membership establishes a human sensory fit.' },
-  { id: 'retained-failures', title: 'Why keep failed soma and convergence experiments visible?', evidence: 'mathematical', referenceIds: ['mrg2002', 'modeldb3810', 'modeldb2017'], answer: 'Failure records prevent a changed model or resolution from being mistaken for a previously successful experiment. Before the reset, an enlarged 20 µm central compartment with full MRG nodal conductance produced zero-input activity; using a passive central load is a different hypothesis, not a repair that validates that active soma. Coarse time-step comparisons exceeded the frozen per-node RMS tolerance, and one-to-three passive subdivisions exceeded delay and recording tolerances. Finer settings were tested with the same criteria. Recovery creates a new source identity and requires fresh reports; historical passing counts are never copied into a current passing report. Retained failures, causes, settings and source hashes remain part of the evidence.' },
-  { id: 'biological-yields', title: 'Can geometric capacity or electrical activity predict regeneration and survival?', evidence: 'hypothetical', referenceIds: ['chen2012', 'arthurfarraj2012'], answer: 'The current core provides no such prediction. A geometric candidate-position bound and the analytic Poisson exactly-one occupancy probability describe specified placement assumptions, not fabricated wells or measured cell yield. Fate, growth, target selection, oxygen supply, immune response and chronic survival are unimplemented and remain null. Their absence is never entered as a yield of one. Peripheral axon regrowth, Schwann-cell repair-state programming and new neuron differentiation are different processes; repair-state glia do not establish routine division of mature neurons. A later biological cascade must carry actual identity sets through conditional gates and validate each stage against relevant observations.' },
-  { id: 'optic-nerve', title: 'Can a retinal ganglion preset use peripheral regeneration assumptions?', evidence: 'experimental', referenceIds: ['cns2024'], answer: 'Retinal ganglion cells and the optic nerve are CNS structures. Their names do not make them a peripheral sensory ganglion. Adult mammalian optic-nerve regeneration is ordinarily limited, although experimental interventions demonstrate that regrowth is not categorically impossible. A future optic-nerve preset can therefore illustrate census and geometry while explicitly disabling unsupported peripheral repair dynamics. It cannot inherit an automatic regenerative yield from a PNS model or present an experimental molecular intervention as a demonstrated engineered interface. The current core contains neither retinal biology nor a CNS growth model.' },
-  { id: 'safety', title: 'Does charge balance or a Shannon number identify safe settings?', evidence: 'estimated', referenceIds: ['shannon1992', 'horn2023'], answer: 'Charge balance, charge per phase and charge divided by a declared geometric area are electrical descriptors. They do not calculate electrode potential, electrochemical reactions, actual current-density hot spots, tissue injury, stimulation train effects or long-term safety. An empirical Shannon relation has its own preparation and parameter scope and is not a universal safety classifier. Source support radius and metal area are kept separate to avoid a false geometry conversion. The displayed arithmetic must remain a diagnostic without a safe/unsafe label, recommended implant drive, or clinical claim.' },
-  { id: 'stage-one', title: 'What remains before the requested Stage 1 is complete?', evidence: 'hypothetical', referenceIds: ['rattay2013', 'potrusil2012', 'pelot2019', 'chen2024'], answer: 'The current deliverable is an electrical-core development checkpoint. Completing the requested ganglion-replacement stage requires an explicit stable bipolar ganglion model with declared membrane assumptions, physically modeled electrode wells and apertures, identity-aware engineered versus original-host endpoints, and architecture-appropriate matched controls. Junction block stays not applicable in a junction-free architecture; no-construct postoperative preservation cannot be invented. The actual coupled geometry then needs frozen-tolerance convergence, independent membrane and field comparisons, and complete exported reproduction evidence. Coil and optical modalities, growth, whole-nerve census, fabrication, oxygen, heating and chronic adaptation belong to later stages and should remain unavailable until implemented.' }
+  {
+    "id": "identities",
+    "title": "What does the original-host addressability fraction count?",
+    "evidence": "mathematical",
+    "referenceIds": [
+      "chen2012"
+    ],
+    "answer": "The denominator is the declared original pre-intervention identity census. The strict endpoint counts original identities that remain continuous, propagate, satisfy the architecture-specific mechanism test, and have an isolated channel that recruits no other identity at the declared operating point. It is an intersection of identity sets, not a product of assumed yields. In the fixed B3 complete-resection model every original H identity loses continuity, so original-host Y is exactly zero by topology. Newly introduced E identities own their two projections and cannot inherit H identity. Unique engineered electrical outputs divided by the retained original census are reported separately, conditional on the assumed pre-grown topology and valid controls. Neither endpoint predicts target reinnervation or survival. The retained straight-cable benchmark has no original identity census, so its original-host yield remains null. Animal transplantation evidence motivates replacement research without changing this accounting."
+  },
+  {
+    "id": "mrg-scope",
+    "title": "Is a 37 °C MRG cable a human spiral-ganglion neuron?",
+    "evidence": "mathematical",
+    "referenceIds": [
+      "mrg2002",
+      "modeldb3810",
+      "potrusil2012",
+      "pelot2021"
+    ],
+    "answer": "No. MRG is a myelinated motor-fiber model with specified nodal, paranodal and internodal mechanisms. The retained straight-cable experiment verifies this published numerical benchmark at 37 °C and its nine tabulated diameters. The separate B3 experiment explicitly adds a spherical-band soma, two unmyelinated stems and myelinated peripheral and central arms, assigning declared fractions of MRG nodal active conductance to the new soma and stems. That is a hypothetical electrical model, not measured engineered tissue or a fitted human spiral-ganglion neuron. Its axial soma bands average the extracellular field over each membrane surface; they do not resolve circumferential channel patches or full three-dimensional intracellular voltage. Matching native NEURON verifies implementation of these equations. It does not establish sensory identity, represent a pseudounipolar DRG branch, or turn a myelinated cable into an unmyelinated C fiber."
+  },
+  {
+    "id": "ganglion-topology",
+    "title": "Which ganglion geometry does the B3 hypothesis represent?",
+    "evidence": "hypothetical",
+    "referenceIds": [
+      "potrusil2012",
+      "rattay2013",
+      "farooqui2024"
+    ],
+    "answer": "The B3 candidate now has distinct peripheral and central projections belonging to each introduced neuron, an explicit 20 µm soma, unequal 30/50 µm unmyelinated stems with 1.5/2.5 µm diameters, and six true myelinated nodes on each arm by default. These dimensions and active-density choices are declared hypotheses. Soma subdivision is a numerical choice: five axial bands are the current supported candidate after retained coarse-resolution failures. Both arms are assumed to reach electrical observation planes; no correct biological target connection is manufactured. Human morphometry and published SGN models motivate distinguishing these regions, but do not validate this exact parameterization. Rattay’s SGN kinetics and temperature treatment differ from MRG. A DRG model would instead require its own pseudounipolar stem, branch point and filtering tests. Names and compartment size alone cannot substitute for that topology."
+  },
+  {
+    "id": "matched-controls",
+    "title": "What can the matched controls actually establish?",
+    "evidence": "mathematical",
+    "referenceIds": [
+      "rattay1986",
+      "chen2024"
+    ],
+    "answer": "Each isolated contact pair is tested against the complete declared engineered population. Assigned, local-region silenced, whole-cell silenced and soma-only silenced runs preserve geometry, field, temperature, time resolution and the same equilibrated state. Local silencing removes active soma, stem and proximal-heminode conductances while leaving distal excitability; soma-only silencing removes all somatic bands. Loss under either intervention establishes conditional conductance necessity and may also reflect propagation block. Earliest observed crossings help classify the response but do not prove the source of depolarization. Zero-drive variants audit stability. B3 has no engineered-to-host junction, so junction block is not applicable, never passed. In the matched no-device condition the original remnants are absent exactly as in B3; only introduced cells, wells, contacts and implant drive are removed. The resulting empty population and source-free field have analytical zero output, with no fabricated membrane trace. Actual viable disconnected-stump simulations are a separately labeled diagnostic with different anatomy, never the matched comparator or evidence of implant benefit."
+  },
+  {
+    "id": "propagation",
+    "title": "When is an output classified as a propagating response?",
+    "evidence": "estimated",
+    "referenceIds": [
+      "mrg2002",
+      "rattay1986"
+    ],
+    "answer": "Each arm has three true distal-node monitors outside the local intervention region. The diagnostic requires same-ordinal upward crossings after stimulus onset, strictly positive outward inter-node delays, segment speeds between 1 and 200 m/s, and at most a twofold speed discrepancy. These are declared temporal diagnostics, not a fitted human physiological band. The central-arm result defines the reported output matrix; both arm results and all active-site crossing events remain inspectable. A simultaneous field deflection or single local voltage excursion is insufficient. Three ordered crossings still do not prove that a uniquely identified traveling event caused them, or that the arm reaches an appropriate biological target. The earliest observed threshold crossing is reported as such: it is not necessarily the location at which depolarization began. Full traces, intervention results and the fixed observation window remain part of the exported evidence."
+  },
+  {
+    "id": "perineurium",
+    "title": "Why are anisotropy and the perineurial shell part of the solve?",
+    "evidence": "estimated",
+    "referenceIds": [
+      "pelot2019",
+      "horn2023"
+    ],
+    "answer": "The conductor solves a three-dimensional field with endoneurial, perineurial, epineurial and surrounding regions. Longitudinal and transverse endoneurial conductivities differ, and the explicitly meshed low-conductivity sheath changes current access and spatial spread. The B3 solve also resolves insulating well walls, end caps, open apertures, cavity fluid and the local cell surfaces. Default material values remain effective exploratory choices rather than preparation-specific human fits. The 1149 Ω m perineurial resistivity is an adjusted literature estimate. Canine room-temperature spectroscopy shows frequency-dependent tissue response that the present ohmic conductor omits. Species, preparation, temperature, frequency and geometry therefore belong in provenance and uncertainty. A numerically converged field does not remove those material uncertainties."
+  },
+  {
+    "id": "electrode-wells",
+    "title": "What distinguishes explicit electrode wells from the retained Gaussian benchmark?",
+    "evidence": "mathematical",
+    "referenceIds": [
+      "pelot2019",
+      "rattay1986"
+    ],
+    "answer": "The retained motor benchmark uses finite Gaussian volume source and sink distributions; its 75 µm support radius is not metal contact area and it cannot establish insulating-well selectivity. The separate B3 model now explicitly meshes every declared well, including unaddressed wells, its wall and end-cap insulation, open apertures, cavity fluid and finite rectangular source/return surface patches. Each solved channel imposes balanced current flux on its named pair, and the actual mesh-integrated patch area is exported. It does not impose equipotential metal or calculate electrode polarization. Local neuronal surfaces are resolved around the soma and stems before transitioning to effective bulk endoneurial material along distal arms. Field refinement, independent sparse-solver comparison, domain checks and membrane-surface quadrature tests apply to this new geometry; the legacy Gaussian-field validation cannot certify it."
+  },
+  {
+    "id": "recording",
+    "title": "Does a clean extracellular trace prove selective neural activation?",
+    "evidence": "mathematical",
+    "referenceIds": [
+      "rattay1986",
+      "pelot2019"
+    ],
+    "answer": "No. The forward calculation separates applied-field artifact, engineered membrane-current contribution, the modeled host contribution and their instantaneous sum. The known source partition is not spike sorting or recovery of unknown sources. In fixed B3, host current is zero because original remnants are explicitly absent in both matched anatomical states; it is not evidence of preserved silent host axons. The engineered signal uses the same membrane-surface transfer weights as stimulation in the ohmic reciprocal conductor. Cells are driven independently by the imposed stimulus field; their computed membrane-current fields contribute to recording but are not fed back into other cells, so self-consistent ephaptic interaction is absent. True no-device has no contacts, so it has no electrode recording object; a zero voltage trace at imaginary implanted contacts is not manufactured. Voltages sum sample by sample, while separate peak-to-peak amplitudes generally do not. Recruitment comes from membrane propagation and controls. Saved stimulus and artifact values refer to the exact solver interval ending at each saved state."
+  },
+  {
+    "id": "matrix-information",
+    "title": "What do exclusivity, matrix rank and information quantify?",
+    "evidence": "mathematical",
+    "referenceIds": [
+      "shannon1948"
+    ],
+    "answer": "A uniquely addressed engineered output needs at least one isolated-channel row recruiting exactly that identity. Duplicate rows do not create additional unique outputs; cells recruited only in shared sets remain a separate tier. Every declared cell and physical well participates in each row, but only explicitly tested contact pairs are represented as input channels. Testing one channel in a 256-well array does not establish 256 independent channels. Matrix rank is a real-number linear-algebra descriptor; nonlinear simultaneous stimulation need not reproduce that span. The information diagnostic is the entropy of deterministic recruitment patterns under a uniform prior over the tested isolated inputs, including duplicate and empty patterns and assuming no trial noise. It is not measured communication capacity, bit rate or percept count. Failed electrical audits withhold derived selectivity and information metrics. Original-host structural zero remains a separate consequence of the declared replacement topology."
+  },
+  {
+    "id": "conduction-calibration",
+    "title": "Does a plausible conduction speed establish biological calibration?",
+    "evidence": "estimated",
+    "referenceIds": [
+      "boydkalu1979",
+      "mrg2002"
+    ],
+    "answer": "A plausible speed is a diagnostic rather than biological calibration. MRG’s published comparison includes an approximately 5.66D large-cat-fiber relation, with D in µm and speed in m/s; Boyd and Kalu report class-dependent cat afferent relations. Refined long-cable diagnostics for the retained motor benchmark were about 49.13 m/s at 10 µm and 82.22 m/s at 16 µm, roughly 13.2% and 9.2% below that comparison line. Such values must be tied to the source hashes, discretization, stimulation site and measurement interval in their report; historical results cannot certify changed code. Same-discretization native NEURON agreement verifies the implemented equations. The new B3 soma and stems require their own coupled tests and do not inherit a human SGN fit from the motor benchmark, a broad velocity band, or a selected diameter label."
+  },
+  {
+    "id": "retained-failures",
+    "title": "Why keep failed soma and convergence experiments visible?",
+    "evidence": "mathematical",
+    "referenceIds": [
+      "mrg2002",
+      "modeldb3810",
+      "modeldb2017"
+    ],
+    "answer": "A failed model or coarse discretization stays visible when a new candidate is introduced. The original enlarged 20 µm cylindrical MRG node with full nodal density produced zero-input activity; a passive load is a different hypothesis, not a successful repair of that active-soma model. Original motor time and passive-section refinement failures and the earlier Gaussian-field quadrature failure are retained with unchanged tolerances. In the new bipolar model, the 1.25-to-0.625 µs comparison exceeded the frozen 1 mV maximum-site RMS gate at about 1.115 mV. The soma 1-to-3 and 3-to-5 band comparisons also failed actual-well spatial gates; the 5-to-9 and 9-to-13 comparisons passed the tested cases and motivated the explicit five-band candidate. Final coupled reports determine its accepted scope. A historical one-band amplitude probe retained a 2 µA membrane-domain rejection without clipping, while all lower tested points remain recorded. A later pass does not erase any of these failures or expand the tested biological claims."
+  },
+  {
+    "id": "biological-yields",
+    "title": "Can geometric capacity or electrical activity predict regeneration and survival?",
+    "evidence": "hypothetical",
+    "referenceIds": [
+      "chen2012",
+      "arthurfarraj2012"
+    ],
+    "answer": "No. The fixed B3 population is an assumed anatomical input: a specified number of introduced neurons and pre-existing projections to observation planes. It is not a fabrication, loading, differentiation, survival or target-innervation yield of one. Geometric well capacity and a Poisson single-occupancy calculation are separate arithmetic diagnostics and are never multiplied into observed electrical recruitment. Both matched conditions assume original remnants absent within the modeled domain; that common assumption does not predict degeneration after resection. Viable-stump diagnostics use a separately stated hypothetical population. Experimental otic-cell transplantation and Schwann-cell repair biology motivate further models, but neither supplies unmeasured probabilities for this construct. Growth, cell fate, oxygen transport, chronic survival and correct target recognition remain unimplemented and their output fields remain null."
+  },
+  {
+    "id": "optic-nerve",
+    "title": "Can a retinal ganglion preset use peripheral regeneration assumptions?",
+    "evidence": "experimental",
+    "referenceIds": [
+      "cns2024"
+    ],
+    "answer": "Retinal ganglion cells and the optic nerve are CNS structures. Their names do not make them a peripheral sensory ganglion. Adult mammalian optic-nerve regeneration is ordinarily limited, although experimental interventions demonstrate that regrowth is not categorically impossible. A future optic-nerve preset may illustrate a stated census or geometry while disabling unsupported peripheral repair dynamics. It cannot inherit an automatic regenerative yield from a PNS model or present an experimental molecular intervention as a demonstrated engineered interface. Neither the retained motor benchmark nor the fixed B3 bipolar hypothesis implements retinal physiology, optic-nerve injury biology or a CNS growth model."
+  },
+  {
+    "id": "safety",
+    "title": "Does charge balance or a Shannon number identify safe settings?",
+    "evidence": "estimated",
+    "referenceIds": [
+      "shannon1992",
+      "horn2023"
+    ],
+    "answer": "Charge balance, charge per phase and charge divided by actual mesh-integrated surface-patch area are electrical descriptors. They do not calculate electrode polarization, electrochemical products, local injury, stimulation-train effects or chronic safety. An empirical Shannon relation retains its original experimental scope and is not a universal safe/unsafe classifier. In B3, contact area comes from the finite surface mesh; in the retained Gaussian benchmark, source support and any declared metal area are separate quantities. Neither an ohmic current-flux boundary nor a charge-balanced pulse specifies real electrode material or its permissible potential excursion. Displayed arithmetic remains a diagnostic, without a recommended implant current, safety certification or clinical claim."
+  },
+  {
+    "id": "stage-one",
+    "title": "What does the implemented Stage 1 candidate establish?",
+    "evidence": "hypothetical",
+    "referenceIds": [
+      "rattay2013",
+      "potrusil2012",
+      "pelot2019",
+      "chen2024"
+    ],
+    "answer": "The Stage 1 candidate now implements a fixed-topology B3 electrical experiment: explicit hypothetical bipolar cells, every declared insulating well and aperture, finite surface contact pairs, distinct original and engineered identities, propagation diagnostics and matched electrical controls. A correct no-device comparator removes the construct under the same original-remnant assumption; junction block stays not applicable. Completion of the computational stage depends on the current source-hashed independent field and membrane comparisons, unchanged-tolerance convergence, coupled controls, full declared population execution and export/reproduction checks. Those reports, rather than this prose or the retained motor benchmark, determine verification status. This stage tests electrical consequences of assumed anatomy. It does not validate human SGN physiology, cell manufacture, survival, regeneration or target repair. Distinct coil and optical modalities, growth, whole-nerve scaling, transport, fabrication, routing, heating and chronic adaptation remain later stages until implemented and independently assessed."
+  }
 ];
 
 export const questions = Object.freeze(questionData.map(item => Object.freeze({ ...item, question: item.title, referenceIds: Object.freeze([...item.referenceIds]) })));
 export const scientificQuestions = questions;
 
-export const biologicalBoundary = Object.freeze({
-  status: 'Electrical-core development checkpoint; complete Stage 1 not implemented.',
-  evidence: 'hypothetical',
-  implemented: Object.freeze(['Synthetic straight myelinated motor-axon cohort at 37 °C', 'Optional hypothetical enlarged central electrical load', 'Layered anisotropic ohmic finite-element conductor', 'Finite source–return electrode modality', 'Named numerical controls and diagnostic recruitment']),
-  unimplemented: Object.freeze(['Biologically specified bipolar SGN soma and processes', 'Individual insulating wells and aperture boundary physics', 'Original-host postoperative continuity and target identity', 'Organoid–host junctions', 'Growth, cell fate, oxygen, survival, fabrication, routing and chronic biology'])
-});
+const boundary = {
+  "status": "Fixed-topology B3 electrical candidate; current source-hashed numerical and protocol reports determine verification status.",
+  "evidence": "hypothetical",
+  "implemented": [
+    "Explicit spherical-band soma, unequal unmyelinated stems and two myelinated arms at 37 °C with declared conductance-density hypotheses",
+    "Every declared insulating well, its end caps and open apertures, local cell exclusions and finite balanced surface-current contact pairs",
+    "Layered anisotropic ohmic field coupled to compartment membrane dynamics and reciprocal source-resolved recording",
+    "Original H census retained separately from introduced E identities; strict original-host structural Y=0 under complete replacement",
+    "Isolated channels, zero drive, local-region, whole-cell and all-somatic-band conductance interventions",
+    "Matched no-device analytical zero under the same absent-original-remnant assumption; separate explicitly simulated viable-stump diagnostic",
+    "Fixed-window traces, complete recruitment matrices, source hashes, work budgets and inspectable numerical failures"
+  ],
+  "assumed": [
+    "Engineered cells and both projections already exist to electrical observation planes",
+    "Original remnant processes are absent in both matched B3 and no-device states",
+    "All chosen morphology and soma/stem membrane-density values are declared hypotheses, not fitted human SGN parameters"
+  ],
+  "retainedBenchmark": [
+    "Original MRG straight motor cable and hypothetical enlarged load experiments",
+    "Legacy layered conductor with finite Gaussian volume sources; its validation is distinct from the explicit-well field"
+  ],
+  "unimplemented": [
+    "Measured human SGN calibration or engineered-cell physiology",
+    "Electrode metal polarization, electrochemistry and injury prediction",
+    "Self-consistent ephaptic feedback between independently solved cells, or circumferential nonlinear membrane polarization",
+    "Growth, correct biological target reinnervation, cell fate, survival and oxygen transport",
+    "Organoid-to-host junctions in this junction-free B3 architecture",
+    "Coil and optical modalities, chronic adaptation, fabrication, routing and whole-nerve biological forecasts"
+  ]
+};
+export const implementationBoundary = Object.freeze(Object.fromEntries(Object.entries(boundary).map(([key,value])=>[key,Array.isArray(value)?Object.freeze(value):value])));
+export const biologicalBoundary = implementationBoundary;
 
 export const futureRequirements = Object.freeze([
-  { stage: 1, requirement: 'Declare the actual bipolar ganglion topology, membrane kinetics, temperature treatment and dual identity endpoints.', status: 'unimplemented', evidence: 'hypothetical' },
-  { stage: 1, requirement: 'Resolve the proposed well walls, apertures and electrode boundary conditions in the field model.', status: 'unimplemented', evidence: 'hypothetical' },
-  { stage: 1, requirement: 'Validate the coupled ganglion/well experiment, architecture-specific interventions and exported propagation evidence with frozen tolerances.', status: 'unimplemented', evidence: 'hypothetical' },
-  { stage: 2, requirement: 'Implement physically distinct coil and optical modalities and comparable operating-point studies.', status: 'unimplemented', evidence: 'hypothetical' },
-  { stage: 3, requirement: 'Implement explicitly calibrated growth and identity-aware target contact.', status: 'unimplemented', evidence: 'hypothetical' },
-  { stage: 4, requirement: 'Represent a full census and validate any screening approximation.', status: 'unimplemented', evidence: 'hypothetical' },
-  { stage: 5, requirement: 'Implement transport, fabrication, routing, thermal and chronic mechanisms.', status: 'unimplemented', evidence: 'hypothetical' },
-  { stage: 6, requirement: 'Implement and independently assess activity-dependent refinement.', status: 'unimplemented', evidence: 'hypothetical' }
+  {
+    "stage": 1,
+    "requirement": "Maintain the explicit bipolar/well equations, fixed identity assumptions and matched comparator definitions with source-specific numerical evidence.",
+    "status": "implemented candidate; verification determined by current reports",
+    "evidence": "hypothetical"
+  },
+  {
+    "stage": 1,
+    "requirement": "Retain independent reference, time/space convergence, coupled intervention and actual full-population protocol evidence without relabeling historical failures.",
+    "status": "current report gates; no inherited benchmark certification",
+    "evidence": "mathematical"
+  },
+  {
+    "stage": 1,
+    "requirement": "Fit and validate the model against a named biological preparation before making human SGN or engineered-cell predictions.",
+    "status": "not established; outside numerical verification",
+    "evidence": "experimental"
+  },
+  {
+    "stage": 2,
+    "requirement": "Implement physically distinct coil and optical modalities and comparable operating-point studies.",
+    "status": "unimplemented",
+    "evidence": "hypothetical"
+  },
+  {
+    "stage": 3,
+    "requirement": "Implement explicitly calibrated growth and identity-aware target contact.",
+    "status": "unimplemented",
+    "evidence": "hypothetical"
+  },
+  {
+    "stage": 4,
+    "requirement": "Represent a biologically justified full nerve census and validate any screening approximation; a few-hundred-cell electrical fixture does not supply a whole human nerve.",
+    "status": "unimplemented",
+    "evidence": "hypothetical"
+  },
+  {
+    "stage": 5,
+    "requirement": "Implement transport, fabrication, routing, thermal and chronic mechanisms.",
+    "status": "unimplemented",
+    "evidence": "hypothetical"
+  },
+  {
+    "stage": 6,
+    "requirement": "Implement and independently assess activity-dependent refinement.",
+    "status": "unimplemented",
+    "evidence": "hypothetical"
+  }
 ].map(Object.freeze));

@@ -1,11 +1,56 @@
 /** Explicit local soma/stem/well FEM, coupled to an effective outer nerve. */
 import cdt2d from './vendor/cdt2d.mjs';
-import {FIELD_DEFAULTS,normalizeFieldSettings,createFieldModel,solveChannel,sampleTransfer} from './field.mjs';
+import {FIELD_DEFAULTS,normalizeFieldSettings,createFieldModel,sampleTransfer} from './field.mjs';
 
-export const STAGE1_FIELD_VERSION='explicit-well-fem/1.0.0-development';
+export const STAGE1_FIELD_VERSION='explicit-well-fem/1.0.0';
 export const FIELD_STAGE1_VERSION=STAGE1_FIELD_VERSION;
 export const STAGE1_FIELD_LIMITS=Object.freeze({maxCells:256,maxNodes:1800000,maxTetrahedra:11000000,maxNonzeros:60000000,maxEstimatedBytes:2100000000,maxIterations:16000,relativeTolerance:2e-12});
-export const STAGE1_FIELD_DEFAULTS=Object.freeze({...FIELD_DEFAULTS,sigmaWellFluid:.3,wellAngularSegments:12,localAxialStepUm:10,resolvedCellExtensionUm:20});
+const {electrodeRadiusUm:unusedLegacyGaussianRadius,...BASE_FIELD_DEFAULTS}=FIELD_DEFAULTS;
+export const STAGE1_FIELD_DEFAULTS=Object.freeze({...BASE_FIELD_DEFAULTS,sigmaWellFluid:.3,wellAngularSegments:12,localAxialStepUm:10,resolvedCellExtensionUm:20});
+export const FIELD_STAGE1_SOURCE_PINS=Object.freeze({
+ constrainedTriangulation:Object.freeze({package:'cdt2d',version:'1.0.0',repository:'https://github.com/mikolalysenko/cdt2d',license:'MIT',
+  bundledSha256:'645d096429082510865735501c2fcfd9d3b6e7211e8c631f855b811f83dad185',
+  dependencyLock:'src/lib/axon-interface/vendor/cdt2d-package-lock.json',dependencyPins:'src/lib/axon-interface/vendor/cdt2d-source-pins.json',licenses:'src/lib/axon-interface/vendor/THIRD_PARTY_LICENSES.md'}),
+ accessResistanceReference:'https://pmc.ncbi.nlm.nih.gov/articles/PMC2226214/',
+ effectiveTissueContext:'https://pmc.ncbi.nlm.nih.gov/articles/PMC7309635/'
+});
+const methodParameter=(key,value,units,evidence,provenance)=>({key,default:value,units,evidence,provenance});
+export const FIELD_STAGE1_PARAMETERS=Object.freeze([
+ ...Object.entries(STAGE1_FIELD_DEFAULTS).map(([key,value])=>methodParameter(key,value,key.startsWith('sigma')?'S/m':key.endsWith('Um')?'um':'dimensionless','estimated',
+  key==='sigmaWellFluid'?'Exploratory effective cavity-fluid conductivity; not measured engineered tissue.':key.startsWith('sigma')?'Preparation-, temperature- and frequency-dependent effective ohmic literature context (Pelot et al., PMC7309635); no fitted human or engineered preparation is claimed.':'Explicit conductor geometry or numerical resolution choice; actual well/cell dimensions are separate hypothetical inputs.')),
+ ...Object.entries(STAGE1_FIELD_LIMITS).map(([key,value])=>methodParameter(key,value,key==='maxEstimatedBytes'?'bytes':key==='relativeTolerance'?'dimensionless':'count','estimated','Declared implementation budget or iterative-solve target. Exceeding it raises an error; it is not biological capacity.')),
+ methodParameter('formulation','conforming P1 tetrahedral FEM','method','mathematical','Element conductance V grad(N_i)^T sigma grad(N_j); symmetric assembled weak volume-conductor equation.'),
+ methodParameter('sourceBoundary','uniform surface current density','boundary condition','estimated','Ideal prescribed Neumann current over a finite meshed rectangular pad; metal equipotential and electrode-interface impedance are not modeled.'),
+ methodParameter('wallBoundary','zero normal current','boundary condition','hypothetical','Perfectly insulating sidewalls/endcaps and local neuronal interiors are excluded from the conducting mesh. No finite wall leakage or dielectric dispersion is inferred.'),
+ methodParameter('outerDirichletMv',0,'mV','estimated','Finite grounded outer cylinder and end planes. The measured1.5x expansion study bounds only its declared fixture.'),
+ methodParameter('sourceNormalizationUa',1,'uA','mathematical','Unit source and matched return define linear transfer coefficients in mV/uA, not a proposed operating stimulus.'),
+ methodParameter('surfaceTriangleLoadFraction',1/3,'per vertex','mathematical','Exact integral of each affine shape function on a flat triangular contact face.'),
+ methodParameter('perineuriumRadialBands',2,'bands before refinement','estimated','Two explicit radial element bands across the declared shell; radialRefinement multiplies them.'),
+ methodParameter('epineuriumRadialBands',3,'bands before refinement','estimated','Three explicit radial bands between perineurial and epineurial boundaries.'),
+ methodParameter('surroundingRadialFractions',[.125,.5,1],'fraction of outer gap','estimated','Fixed graded radial boundaries from epineurium to grounded outer surface.'),
+ methodParameter('wellRadialBoundaries',['neurite','mid clearance','aperture','mid cavity','inner wall','outer wall'],'mesh construction','estimated','Constrained concentric loops warp inside the physical soma/stem envelope; radialRefinement subdivides intervals.'),
+ methodParameter('farAxialCoordinatesUm',[120,250,500,1000,2500,5000],'um, mirrored','estimated','Preserved when outside the explicit local region; domain ends and all critical local planes are also included.'),
+ methodParameter('somaAxialRadiusFractions',[-.8,-.5,0,.5,.8],'fraction of soma radius','estimated','Additional geometric planes sample the spherical radius profile, independently of electrical soma segmentation.'),
+ methodParameter('diameterStepHalfWidthUm',.1,'um / axialRefinement','estimated','Inscribed transition near abrupt diameter changes; the smaller interface radius prevents a valid physical membrane surface entering an oversized numerical exclusion.'),
+ methodParameter('apertureMeshClearanceIncrementUm',.1,'um maximum','estimated','Moves an internal mesh ring outward around the soma where the aperture-radius ring would otherwise lie inside the cell; it does not alter the physical aperture at the caps.'),
+ methodParameter('coordinateDecimalPlaces',9,'decimal places in um','estimated','Deterministic axial-plane deduplication precision; not a claim of fabricated or solved physical resolution.'),
+ methodParameter('backgroundPointPitchUm',40,'um / radialRefinement','estimated','Additional endoneurial triangulation vertices outside explicit local well loops.'),
+ methodParameter('pointLocationBinSizeUm',25,'um','estimated','Spatial lookup acceleration only; no change to tetrahedral shape functions.'),
+ methodParameter('pointLocationTolerance',1e-7,'barycentric / um checks','estimated','Roundoff tolerance at conforming faces; no outside-domain extrapolation.'),
+ methodParameter('trueResidualGate',1e-10,'dimensionless','estimated','Final explicitly recomputed algebraic residual, distinct from continuous discretization error.'),
+ methodParameter('residualRecomputeInterval',100,'PCG iterations','estimated','Recompute the true residual and emit progress; recurrence residual alone is not accepted.'),
+ methodParameter('preconditioner','incomplete Cholesky IC(0)','method','mathematical','Sparse triangular preconditioner; no shifted or fitted term enters the physical stiffness equation.'),
+ methodParameter('preconditionerDiagonalShifts',[0,1e-8,1e-6,1e-4,.001,.01,.1,1],'fraction of diagonal','estimated','Try fixed shifts only for a positive preconditioner. Record each rejected pivot and the chosen shift.'),
+ methodParameter('membraneAngularQuadrature',12,'samples','estimated','Uniform periodic surface angles; the24-sample refinement is separately tested.'),
+ methodParameter('membraneAxialQuadrature',5,'Gauss-Legendre points','estimated','Uniform z is uniform area on a cylinder or spherical band. Three, five and seven points are supported;5-to7 is tested.'),
+ methodParameter('membraneProjectionTolerance',1e-12,'unit-current error','estimated','Each normalized surface source must sum to one in the same P1 basis used for reciprocal sampling.'),
+ methodParameter('apertureResistanceMinimumCurrentUa',1e-12,'uA per unit drive','estimated','Below this magnitude, display null resistance rather than divide by a numerically tiny current.'),
+ methodParameter('memoryEstimateBytesPerNode',160,'bytes','estimated','Conservative working-memory accounting term; actual measured peakRSS is reported separately.'),
+ methodParameter('memoryEstimateBytesPerMatrixSlot',20,'bytes','estimated','Accounts for CSR values/indices and preconditioner storage; not a browser-memory guarantee.'),
+ methodParameter('memoryEstimateBytesPerTetrahedron',21,'bytes','estimated','Explicit cell connectivity/material accounting term.'),
+ methodParameter('memoryEstimateBytesPerRawVertex',16,'bytes','estimated','Additional mapping and temporary construction accounting term.'),
+ methodParameter('triangulationPackage','cdt2d@1.0.0','source pin','estimated','Bundled MIT code, exact SHA-256 and locked dependency integrities exported in FIELD_STAGE1_SOURCE_PINS.')
+].map(Object.freeze));
 const fail=s=>{throw new Error(`Stage1 field calculation error: ${s}`);};
 const positive=(x,k)=>{if(!Number.isFinite(x)||x<=0)fail(`${k} must be finite and positive`);};
 const sum=a=>a.reduce((s,v)=>s+v,0);
@@ -26,12 +71,13 @@ function area(points,ids){const [a,b,c]=ids.map(i=>points[i]);return norm(cross(
 export function normalizeStage1FieldSettings(input={}){
  if(!input||typeof input!=='object'||Array.isArray(input))fail('settings must be an object');
  const special=['sigmaWellFluid','wellAngularSegments','localAxialStepUm','resolvedCellExtensionUm'];
- for(const k of Object.keys(input))if(!Object.hasOwn(FIELD_DEFAULTS,k)&&!special.includes(k)&&k!=='axialCoordinatesUm')fail(`unsupported setting ${k}`);
- const base=normalizeFieldSettings(Object.fromEntries(Object.entries(input).filter(([k])=>!special.includes(k))));
+ for(const k of Object.keys(input))if(!Object.hasOwn(BASE_FIELD_DEFAULTS,k)&&!special.includes(k)&&k!=='axialCoordinatesUm')fail(`unsupported setting ${k}`);
+ const {electrodeRadiusUm:unusedRadius,...base}=normalizeFieldSettings(Object.fromEntries(Object.entries(input).filter(([k])=>!special.includes(k))));
  const s={...STAGE1_FIELD_DEFAULTS,...base,...Object.fromEntries(special.filter(k=>k in input).map(k=>[k,input[k]]))};
  for(const k of special)positive(s[k],k);
  if(!Number.isInteger(s.wellAngularSegments)||s.wellAngularSegments<8||s.wellAngularSegments>48)fail('wellAngularSegments must be an integer from8 through48');
- if(s.resolvedCellExtensionUm>100)fail('resolvedCellExtensionUm exceeds100 um declared domain-extension budget');
+ if(s.localAxialStepUm<.5||s.localAxialStepUm>50)fail('localAxialStepUm must be 0.5–50 um before mesh work is allocated');
+ if(s.resolvedCellExtensionUm<1||s.resolvedCellExtensionUm>100)fail('resolvedCellExtensionUm must be 1–100 um');
  return Object.freeze(s);
 }
 function surfacesOf(m){
@@ -82,7 +128,7 @@ function checkedGeometry(geometry,settings){
  for(let i=0;i<ws.length;i++)for(let j=0;j<i;j++)if(Math.hypot(ws[i].center[0]-ws[j].center[0],ws[i].center[1]-ws[j].center[1])<=ws[i].innerRadiusUm+ws[i].wallThicknessUm+ws[j].innerRadiusUm+ws[j].wallThicknessUm)fail(`walls of ${ws[i].id} and ${ws[j].id} overlap`);
  return {constructPresent:true,cells:cells.map(c=>({...c})),wells:ws,morphology,surfaces:surface,profile};
 }
-function createCrossSection(s,g){
+function createCrossSection(s,g,axialLayers){
  const points=[],meta=[],edges=[],rings=[],wellIndices=[];
  function loop(coords,tags){const ids=coords.map((p,i)=>{const id=points.length;points.push(p);meta.push(tags[i]);return id;});for(let i=0;i<ids.length;i++)edges.push([ids[i],ids[(i+1)%ids.length]]);return ids;}
  const peri=s.fascicleRadiusUm+s.perineuriumThicknessUm;
@@ -106,6 +152,9 @@ function createCrossSection(s,g){
   if(Math.hypot(x,y)>=s.fascicleRadiusUm-pitch/4||g.wells.some(w=>Math.hypot(x-w.center[0],y-w.center[1])<w.innerRadiusUm+w.wallThicknessUm+pitch/5))continue;
   points.push([x,y]);meta.push({well:-1,radius:Math.hypot(x,y)});
  }
+ const conservativeNodes=points.length*axialLayers,conservativeTetrahedra=6*points.length*(axialLayers-1);
+ if(conservativeNodes>STAGE1_FIELD_LIMITS.maxNodes||conservativeTetrahedra>STAGE1_FIELD_LIMITS.maxTetrahedra)fail(`declared mesh budget exceeded before triangulation: ${conservativeNodes} vertices and at most ${conservativeTetrahedra} tetrahedra; no cell was omitted`);
+ const pointKeys=new Set();for(const p of points){const key=`${p[0]},${p[1]}`;if(pointKeys.has(key))fail('duplicate mesh vertices from unresolved geometry');pointKeys.add(key);}
  const triangles=cdt2d(points,edges,{interior:true,exterior:true,infinity:false}).filter(t=>Math.hypot(...[0,1].map(k=>sum(t.map(i=>points[i][k]))/3))<s.outerRadiusUm);
  const classes=triangles.map(t=>{
   const ms=t.map(i=>meta[i]);
@@ -165,8 +214,8 @@ function indexInRow(rowPtr,col,i,j){let lo=rowPtr[i],hi=rowPtr[i+1]-1;while(lo<=
 
 export function createStage1FieldModel(input={},geometry){
  const start=performance.now(),settings=normalizeStage1FieldSettings(input),g=checkedGeometry(geometry,settings),s=settings;
- if(!g.constructPresent){const base=Object.fromEntries(Object.keys(FIELD_DEFAULTS).map(k=>[k,s[k]]));const m=createFieldModel(base);return {...m,stage1:true,version:STAGE1_FIELD_VERSION,geometry:g,contacts:[],diagnostics:{...m.diagnostics,constructPresent:false,explicitWells:0,explicitCells:0,scope:'No engineered cells, walls or local contacts; zero implant drive.'}};}
- const crossSection=createCrossSection(s,g),axial=axialGrid(s,g),C=crossSection.points.length,T=crossSection.triangles.length,rawCount=C*axial.length;
+ if(!g.constructPresent){const base=Object.fromEntries(Object.keys(BASE_FIELD_DEFAULTS).map(k=>[k,s[k]]));const m=createFieldModel(base);return {...m,settings:s,stage1:true,version:STAGE1_FIELD_VERSION,geometry:g,contacts:[],diagnostics:{...m.diagnostics,constructPresent:false,explicitWells:0,explicitCells:0,scope:'No engineered cells, walls or local contacts; zero implant drive.'}};}
+ const axial=axialGrid(s,g),crossSection=createCrossSection(s,g,axial.length),C=crossSection.points.length,T=crossSection.triangles.length,rawCount=C*axial.length;
  const maxTets=3*T*(axial.length-1);
  if(rawCount>STAGE1_FIELD_LIMITS.maxNodes||maxTets>STAGE1_FIELD_LIMITS.maxTetrahedra)fail(`declared mesh budget exceeded before assembly: ${rawCount} vertices, at most ${maxTets} tetrahedra; no wells were removed`);
  const rawPoints=Array.from({length:rawCount},(_,id)=>atCross(s,g,crossSection,id%C,axial[Math.floor(id/C)]));
@@ -285,10 +334,12 @@ export function solveStage1Load(model,inputLoad,options={}){
 }
 export function solveStage1Channel(model,channel={},options={}){
  if(!model.geometry?.constructPresent)fail('true no-device contains no implant contacts; zero implant drive is required');
- const wellId=channel.wellId??model.geometry.wells[channel.index??0]?.id;
+ if(!channel||typeof channel!=='object'||Array.isArray(channel))fail('channel must be an explicit contact-pair object');
+ const wellId=channel.wellId??model.contacts.find(c=>c.id===channel.sourceContactId)?.wellId??model.geometry.wells[channel.index??0]?.id;
  const sourceId=channel.sourceContactId??`${wellId}:source`,returnId=channel.returnContactId??`${wellId}:return`;
  const source=model.contacts.find(q=>q.id===sourceId),sink=model.contacts.find(q=>q.id===returnId);
  if(!source||!sink||source===sink)fail('explicit source and return contact ids are required');
+ if(source.wellId!==wellId||sink.wellId!==wellId)fail('both contact ids must belong to the declared addressed well');
  const load=new Float64Array(model.points.length);for(const [i,v]of source.load)load[i]+=v;for(const [i,v]of sink.load)load[i]-=v;
  const solution=solveStage1Load(model,load,options);solution.channel={...channel,wellId,sourceContactId:source.id,returnContactId:sink.id};
  solution.pairArtifactMvPerUa=source.load.reduce((s,[i,w])=>s+w*solution.potentialMvPerUa[i],0)-sink.load.reduce((s,[i,w])=>s+w*solution.potentialMvPerUa[i],0);
@@ -353,18 +404,21 @@ function surfaceQuadrature(surface,cell,nTheta=12,nAxial=5){
 }
 export function prepareMembraneSampling(model,morphology,cell,options={}){
  if(!model.geometry?.constructPresent)fail('engineered membrane sampling is unavailable in true no-device');
+ const represented=model.geometry.cells.find(c=>c.id===cell.id);if(!represented||represented.xUm!==cell.xUm||represented.yUm!==cell.yUm)fail('membrane sampling must match an explicitly represented cell identity and position');
  const surfaces=surfacesOf(morphology),nTheta=options.angularSamples??12;
  const nAxial=options.axialSamples??5;if(![3,5,7].includes(nAxial))fail('membrane axial quadrature supports3,5,7 points');
  if(!Number.isInteger(nTheta)||nTheta<8||nTheta>64)fail('membrane surface quadrature angular samples must be8..64');
- return surfaces.map(surface=>{
+ const prepared=surfaces.map(surface=>{
   const q=surfaceQuadrature(surface,cell,nTheta,nAxial),combined=new Map();
   for(let k=0;k<q.points.length;k++){const found=locateStage1Point(model,q.points[k]);for(let j=0;j<4;j++)combined.set(found.ids[j],(combined.get(found.ids[j])||0)+q.weights[k]*found.weights[j]);}
   const entries=[...combined],total=entries.reduce((s,[,v])=>s+v,0);if(Math.abs(total-1)>1e-12)fail('membrane current projection does not conserve unit source');
   return entries;
  });
+ Object.defineProperties(prepared,{model:{value:model},morphology:{value:morphology},cellId:{value:cell.id}});return prepared;
 }
 export function sampleMembraneTransfer(solution,morphology,cell,options={}){
  const prepared=options.prepared??prepareMembraneSampling(solution.model,morphology,cell,options);
+ if(prepared.model!==solution.model||prepared.morphology!==morphology||prepared.cellId!==cell.id||prepared.length!==morphology.compartments.length)fail('prepared membrane samples belong to another model, morphology or cell');
  return Float64Array.from(prepared,entries=>entries.reduce((s,[id,w])=>s+w*solution.potentialMvPerUa[id],0));
 }
 export function exportStage1FieldFixture(model,solution){

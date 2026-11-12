@@ -1,8 +1,8 @@
 {
   "schema": "buildthesimulation.bipolar.numerical.v1",
-  "modelVersion": "bipolar-projecting-neuron-1.0.0-hypothesis",
+  "modelVersion": "bipolar-projecting-neuron-1.1.0-axial-soma-hypothesis",
   "membraneVersion": "mrg-double-cable-2.1.0-bipolar",
-  "generatedAt": "2026-11-11T22:42:20.827Z",
+  "generatedAt": "2026-11-11T23:13:11.260Z",
   "complete": true,
   "acceptance": {
     "schema": "buildthesimulation.bipolar.acceptance.v1",
@@ -141,6 +141,1450 @@
     "reason": "Refine numerical integration after the maximum per-site error exceeded the unchanged 1 mV criterion; retain the endpoint and the failed study. No channel or geometry parameter was adjusted to pass."
   },
   "supportedDtMs": 0.000625,
+  "supportedSomaSegments": 5,
+  "somaResolutionCorrection": {
+    "schema": "buildthesimulation.bipolar.soma-resolution-correction.v1",
+    "declaredAt": "2026-11-11T23:11:11.485665+00:00",
+    "failureId": "BIPOLAR-SOMA-SPATIAL-001",
+    "reason": "The declared actual-well axial refinement study failed at one and three bands. Five bands were the first candidate with two consecutive passing comparisons. This is a numerical resolution change, not a change to anatomical dimensions, conductance densities or acceptance tolerances.",
+    "previousSomaSegments": 1,
+    "productionCandidateSomaSegments": 5,
+    "prototypeReportSha256": "f2e1b8f3e1963d6860dcc957bbdeb604b4e3c1fb4d9ca0135575d99f8f0bbb11",
+    "prototypeFieldStatus": "exploratory; final field reference and same-grid refinement required before authoritative certification",
+    "retainedComparisons": [
+      {
+        "from": 1,
+        "to": 3,
+        "passed": false,
+        "details": [
+          {
+            "case": "0/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0002635789228394826,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.004698673398539111,
+            "recordingPeakDifferenceUv": 0.000007330715698250501
+          },
+          {
+            "case": "0/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0002830017588227244,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0033065386188099975,
+            "recordingPeakDifferenceUv": 0.0006261175123427609
+          },
+          {
+            "case": "0/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0002657010946564669,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.004106848185073263,
+            "recordingPeakDifferenceUv": 0.000167045673184818
+          },
+          {
+            "case": "0/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00025423459174950074,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.005373174190622088,
+            "recordingPeakDifferenceUv": 0.00038310350117454206
+          },
+          {
+            "case": "0.01/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0005630811155834203,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.07046591459136423,
+            "recordingPeakDifferenceUv": 11.003907122130101
+          },
+          {
+            "case": "0.01/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0005830135825526253,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0691041305549212,
+            "recordingPeakDifferenceUv": 10.774956519179739
+          },
+          {
+            "case": "0.01/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000575142486797404,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.06917502535348904,
+            "recordingPeakDifferenceUv": 10.775925335666386
+          },
+          {
+            "case": "0.01/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0005700506108584618,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.06917659776284683,
+            "recordingPeakDifferenceUv": 10.775910929005533
+          },
+          {
+            "case": "0.03/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0017367653861217465,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.07052039113760174,
+            "recordingPeakDifferenceUv": 33.042282153004805
+          },
+          {
+            "case": "0.03/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0015554192852491155,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.06909922313035684,
+            "recordingPeakDifferenceUv": 32.32521721368141
+          },
+          {
+            "case": "0.03/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0015531788805719655,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.06917527782110279,
+            "recordingPeakDifferenceUv": 32.327760449886
+          },
+          {
+            "case": "0.03/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0015516575845894093,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.06917634166417498,
+            "recordingPeakDifferenceUv": 32.32773767701781
+          },
+          {
+            "case": "0.1/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.014291308191683252,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.07090422759857366,
+            "recordingPeakDifferenceUv": 110.94676927984938
+          },
+          {
+            "case": "0.1/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.005119743606766211,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0690149902957281,
+            "recordingPeakDifferenceUv": 107.76214703237292
+          },
+          {
+            "case": "0.1/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.005107723426255398,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.06917541576641113,
+            "recordingPeakDifferenceUv": 107.7591692295698
+          },
+          {
+            "case": "0.1/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.005108663153340491,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.06917625202979498,
+            "recordingPeakDifferenceUv": 107.75913129453716
+          },
+          {
+            "case": "0.3/assigned",
+            "passed": false,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 4.481280917674705,
+            "commonNodeMaxCrossingDeltaMs": 0.026589851223228544,
+            "conductionRelative": {
+              "peripheral": 0.000561876519308203,
+              "central": 0.002521570816853538
+            },
+            "recordingPeakToPeakRelative": 0.08469537580350447,
+            "recordingPeakDifferenceUv": 557.32952521064
+          },
+          {
+            "case": "0.3/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.04579829807533059,
+            "commonNodeMaxCrossingDeltaMs": 0.00029314763862509086,
+            "conductionRelative": {
+              "peripheral": 0.00005585176711173531,
+              "central": 0.00011337333236216988
+            },
+            "recordingPeakToPeakRelative": 0.027858813944958205,
+            "recordingPeakDifferenceUv": 208.8139229590106
+          },
+          {
+            "case": "0.3/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.015301272735841165,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.06917578949957913,
+            "recordingPeakDifferenceUv": 323.27712594090826
+          },
+          {
+            "case": "0.3/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.015309144620445405,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.06917622641997262,
+            "recordingPeakDifferenceUv": 323.27739877294243
+          },
+          {
+            "case": "1/assigned",
+            "passed": false,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": false,
+            "commonNodeMaxRmsMv": 25.44004153991051,
+            "commonNodeMaxCrossingDeltaMs": 1e+99,
+            "conductionRelative": {
+              "peripheral": 0.005276670631181342,
+              "central": 0.05210518882142764
+            },
+            "recordingPeakToPeakRelative": 0.18692691104709191,
+            "recordingPeakDifferenceUv": 3588.695149282914
+          },
+          {
+            "case": "1/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.13264690196281803,
+            "commonNodeMaxCrossingDeltaMs": 0.0001922491833378226,
+            "conductionRelative": {
+              "peripheral": 0.0002106559506655664,
+              "central": 0.0013639966533608102
+            },
+            "recordingPeakToPeakRelative": 0.04953714836270602,
+            "recordingPeakDifferenceUv": 814.3213426512611
+          },
+          {
+            "case": "1/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.4208107711302872,
+            "commonNodeMaxCrossingDeltaMs": 0.0016445078864183449,
+            "conductionRelative": {
+              "peripheral": 0.0018271180538546397
+            },
+            "recordingPeakToPeakRelative": 0.06920372946530073,
+            "recordingPeakDifferenceUv": 1077.721778546931
+          },
+          {
+            "case": "1/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.05102411785080409,
+            "commonNodeMaxCrossingDeltaMs": 0.00007096126333472341,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.06917621745655882,
+            "recordingPeakDifferenceUv": 1077.591334947685
+          }
+        ]
+      },
+      {
+        "from": 3,
+        "to": 5,
+        "passed": false,
+        "details": [
+          {
+            "case": "0/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000021093226948959486,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.000056331391206532236,
+            "recordingPeakDifferenceUv": 8.789133487674405e-8
+          },
+          {
+            "case": "0/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00002264776448831246,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0000727461069579844,
+            "recordingPeakDifferenceUv": 0.00001377401071067652
+          },
+          {
+            "case": "0/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000021263312999242054,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.000031032840114534204,
+            "recordingPeakDifferenceUv": 0.0000012622970975151304
+          },
+          {
+            "case": "0/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000020345725200142314,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.00011288678667275476,
+            "recordingPeakDifferenceUv": 0.000008049656363029456
+          },
+          {
+            "case": "0.01/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00004342908422079062,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.004845700970987947,
+            "recordingPeakDifferenceUv": 0.7603858207013445
+          },
+          {
+            "case": "0.01/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00004471658157101061,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0047547269192410166,
+            "recordingPeakDifferenceUv": 0.7449154372266094
+          },
+          {
+            "case": "0.01/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0000440534823300605,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.004759596599704981,
+            "recordingPeakDifferenceUv": 0.7449847686158932
+          },
+          {
+            "case": "0.01/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0000436268153048013,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.004759708303353648,
+            "recordingPeakDifferenceUv": 0.7449844062176965
+          },
+          {
+            "case": "0.03/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0001331188936483821,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.004851889258930489,
+            "recordingPeakDifferenceUv": 2.284433288068442
+          },
+          {
+            "case": "0.03/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00011787215881487436,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.004754366110657882,
+            "recordingPeakDifferenceUv": 2.234758653897984
+          },
+          {
+            "case": "0.03/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00011768415795539843,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.004759615108983045,
+            "recordingPeakDifferenceUv": 2.2349538063499494
+          },
+          {
+            "case": "0.03/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00011755085552179736,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.004759689828965928,
+            "recordingPeakDifferenceUv": 2.2349531144774915
+          },
+          {
+            "case": "0.1/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0015720077215938101,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.004939318336035039,
+            "recordingPeakDifferenceUv": 7.767119391642609
+          },
+          {
+            "case": "0.1/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00038632711705434436,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.004748386454516781,
+            "recordingPeakDifferenceUv": 7.449651753876196
+          },
+          {
+            "case": "0.1/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00038641138483415334,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.004759624996633303,
+            "recordingPeakDifferenceUv": 7.449844484516461
+          },
+          {
+            "case": "0.1/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00038645893467217386,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0047596833632619125,
+            "recordingPeakDifferenceUv": 7.449843593853075
+          },
+          {
+            "case": "0.3/assigned",
+            "passed": false,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 1.3279260954343488,
+            "commonNodeMaxCrossingDeltaMs": 0.006500585840764628,
+            "conductionRelative": {
+              "peripheral": 0.00015090400730168404,
+              "central": 0.0020339337521376654
+            },
+            "recordingPeakToPeakRelative": 0.00956083769802497,
+            "recordingPeakDifferenceUv": 62.31832933998885
+          },
+          {
+            "case": "0.3/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.003559365189206717,
+            "commonNodeMaxCrossingDeltaMs": 0.000018747263761942357,
+            "conductionRelative": {
+              "peripheral": 0.000005572839245513505,
+              "central": 0.000010403523888510093
+            },
+            "recordingPeakToPeakRelative": 0.0019391048062817845,
+            "recordingPeakDifferenceUv": 14.562672153690073
+          },
+          {
+            "case": "0.3/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.001157697648167223,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.004759650718524777,
+            "recordingPeakDifferenceUv": 22.349507672791333
+          },
+          {
+            "case": "0.3/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.001157948182294159,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.004759681515985876,
+            "recordingPeakDifferenceUv": 22.34953067808783
+          },
+          {
+            "case": "1/assigned",
+            "passed": false,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": false,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.6271440962475754,
+            "commonNodeMaxCrossingDeltaMs": 0.00275067187271838,
+            "conductionRelative": {
+              "peripheral": 0.0006418904548041465,
+              "central": 0.0011422834810468057
+            },
+            "recordingPeakToPeakRelative": 0.03621980316479779,
+            "recordingPeakDifferenceUv": 721.4941692592656
+          },
+          {
+            "case": "1/soma-only-silenced",
+            "passed": false,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": false,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.007626670150526354,
+            "commonNodeMaxCrossingDeltaMs": 0.00001261153594056541,
+            "conductionRelative": {
+              "peripheral": 0.000018086018335773986,
+              "central": 0.000078723651341985
+            },
+            "recordingPeakToPeakRelative": 0.004506688047484309,
+            "recordingPeakDifferenceUv": 74.41902323791874
+          },
+          {
+            "case": "1/initiation-region-silenced",
+            "passed": false,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": false,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.029170659198453495,
+            "commonNodeMaxCrossingDeltaMs": 0.00011193718631852256,
+            "conductionRelative": {
+              "peripheral": 0.0001118302337061013
+            },
+            "recordingPeakToPeakRelative": 0.004761405593019378,
+            "recordingPeakDifferenceUv": 74.50495007047539
+          },
+          {
+            "case": "1/whole-cell-silenced",
+            "passed": false,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": false,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.003859285558992773,
+            "commonNodeMaxCrossingDeltaMs": 0.000007332810616822449,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.004759680869446209,
+            "recordingPeakDifferenceUv": 74.49843547301498
+          }
+        ]
+      },
+      {
+        "from": 5,
+        "to": 9,
+        "passed": true,
+        "details": [
+          {
+            "case": "0/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00000820320673860683,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0003785148315816612,
+            "recordingPeakDifferenceUv": 5.908032869594848e-7
+          },
+          {
+            "case": "0/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000008807681219681234,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.00023792335053399017,
+            "recordingPeakDifferenceUv": 0.000045038551043541375
+          },
+          {
+            "case": "0/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000008269220720991538,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0003416785768361681,
+            "recordingPeakDifferenceUv": 0.000013902926400799487
+          },
+          {
+            "case": "0/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000007912387254467705,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0003943307092319884,
+            "recordingPeakDifferenceUv": 0.000028129765981876886
+          },
+          {
+            "case": "0.01/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000017613727733737945,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0017515165428564857,
+            "recordingPeakDifferenceUv": 0.2753296508063272
+          },
+          {
+            "case": "0.01/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000018453694667930103,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0017181288387085416,
+            "recordingPeakDifferenceUv": 0.2696397641867634
+          },
+          {
+            "case": "0.01/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00001821635207185545,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0017198981602212589,
+            "recordingPeakDifferenceUv": 0.2696668519439811
+          },
+          {
+            "case": "0.01/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000018060938450899008,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0017199328548206572,
+            "recordingPeakDifferenceUv": 0.2696658411554438
+          },
+          {
+            "case": "0.03/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000050654262733310734,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.001753793828529319,
+            "recordingPeakDifferenceUv": 0.8271960830393255
+          },
+          {
+            "case": "0.03/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00004946037516879651,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0017180344894767437,
+            "recordingPeakDifferenceUv": 0.8089406482779395
+          },
+          {
+            "case": "0.03/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00004939150151609572,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0017199030870157863,
+            "recordingPeakDifferenceUv": 0.8089995504041667
+          },
+          {
+            "case": "0.03/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00004934766487031758,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0017199273736525804,
+            "recordingPeakDifferenceUv": 0.8089980432163202
+          },
+          {
+            "case": "0.1/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0005612134591919364,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0017860187264316478,
+            "recordingPeakDifferenceUv": 2.8135544449710324
+          },
+          {
+            "case": "0.1/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00016357649257156518,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0017161924579899121,
+            "recordingPeakDifferenceUv": 2.6971299789236127
+          },
+          {
+            "case": "0.1/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00016251068686270188,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0017199059627765073,
+            "recordingPeakDifferenceUv": 2.696663526441398
+          },
+          {
+            "case": "0.1/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0001625598088105687,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.00171992545507353,
+            "recordingPeakDifferenceUv": 2.696660750146293
+          },
+          {
+            "case": "0.3/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.46208079290964094,
+            "commonNodeMaxCrossingDeltaMs": 0.0031454788910968423,
+            "conductionRelative": {
+              "peripheral": 0.00005284121240457501,
+              "central": 0.0006131008993612413
+            },
+            "recordingPeakToPeakRelative": 0.007475663024825307,
+            "recordingPeakDifferenceUv": 49.09399888611006
+          },
+          {
+            "case": "0.3/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0012864185631946351,
+            "commonNodeMaxCrossingDeltaMs": 0.000011650523204620455,
+            "conductionRelative": {
+              "peripheral": 2.890270008146624e-7,
+              "central": 0.000002417993400515563
+            },
+            "recordingPeakToPeakRelative": 0.000699686753015152,
+            "recordingPeakDifferenceUv": 5.258324912392709
+          },
+          {
+            "case": "0.3/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0004866384925132559,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0017199145241964268,
+            "recordingPeakDifferenceUv": 8.089977867609377
+          },
+          {
+            "case": "0.3/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0004871683399692696,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.001719924906701049,
+            "recordingPeakDifferenceUv": 8.089982768966365
+          },
+          {
+            "case": "1/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.13049193703752107,
+            "commonNodeMaxCrossingDeltaMs": 0.0004148799319962926,
+            "conductionRelative": {
+              "peripheral": 0.00019183268119608895,
+              "central": 0.0005225352951300176
+            },
+            "recordingPeakToPeakRelative": 0.007977981414308367,
+            "recordingPeakDifferenceUv": 160.19850114010478
+          },
+          {
+            "case": "1/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.006084443369788512,
+            "commonNodeMaxCrossingDeltaMs": 0.000008199396710817375,
+            "conductionRelative": {
+              "peripheral": 0.000003941543460284844,
+              "central": 0.00006449470779267802
+            },
+            "recordingPeakToPeakRelative": 0.0016318142454238033,
+            "recordingPeakDifferenceUv": 26.990221901105542
+          },
+          {
+            "case": "1/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.012221284418579519,
+            "commonNodeMaxCrossingDeltaMs": 0.00004581451826746186,
+            "conductionRelative": {
+              "peripheral": 0.00004126492458881499
+            },
+            "recordingPeakToPeakRelative": 0.0017209559557795817,
+            "recordingPeakDifferenceUv": 26.97539118907298
+          },
+          {
+            "case": "1/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0016237026806117686,
+            "commonNodeMaxCrossingDeltaMs": 1.5280759435576385e-7,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0017199247148145397,
+            "recordingPeakDifferenceUv": 26.96660983552465
+          }
+        ]
+      },
+      {
+        "from": 9,
+        "to": 13,
+        "passed": true,
+        "details": [
+          {
+            "case": "0/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0000019069527844563184,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0000538392656974422,
+            "recordingPeakDifferenceUv": 8.403931661682407e-8
+          },
+          {
+            "case": "0/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000002047752956338661,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.00003541888460627086,
+            "recordingPeakDifferenceUv": 0.000006704506892329931
+          },
+          {
+            "case": "0/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0000019225408051967424,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.00004818270607831848,
+            "recordingPeakDifferenceUv": 0.000001960652320720513
+          },
+          {
+            "case": "0/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0000018394870099062383,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.00005829000627179882,
+            "recordingPeakDifferenceUv": 0.000004158387312713785
+          },
+          {
+            "case": "0.01/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000003826079456263473,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0004340248439770548,
+            "recordingPeakDifferenceUv": 0.06825616216482899
+          },
+          {
+            "case": "0.01/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000004002681213766527,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.00042574135332345024,
+            "recordingPeakDifferenceUv": 0.06684346952795295
+          },
+          {
+            "case": "0.01/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000003942530330251514,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0004261772922337613,
+            "recordingPeakDifferenceUv": 0.06684982350265045
+          },
+          {
+            "case": "0.01/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000003903466214890928,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0004261865132057815,
+            "recordingPeakDifferenceUv": 0.06684967141262632
+          },
+          {
+            "case": "0.03/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000011345341491614294,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0004345423337324495,
+            "recordingPeakDifferenceUv": 0.20504575590348395
+          },
+          {
+            "case": "0.03/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000010522086721082826,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.00042571391571678054,
+            "recordingPeakDifferenceUv": 0.20053378538966626
+          },
+          {
+            "case": "0.03/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000010503563950578997,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.00042617871280100625,
+            "recordingPeakDifferenceUv": 0.2005493155452882
+          },
+          {
+            "case": "0.03/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00001049153921013472,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0004261850259983221,
+            "recordingPeakDifferenceUv": 0.2005490820742466
+          },
+          {
+            "case": "0.1/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00013287804798511416,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.00044148277432069587,
+            "recordingPeakDifferenceUv": 0.6957846675704786
+          },
+          {
+            "case": "0.1/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000034627961349827495,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.00042522181874454985,
+            "recordingPeakDifferenceUv": 0.6685534567607192
+          },
+          {
+            "case": "0.1/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.000034472115902823076,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0004261795045190401,
+            "recordingPeakDifferenceUv": 0.6684974361880904
+          },
+          {
+            "case": "0.1/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00003447966371615445,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.00042618450524446267,
+            "recordingPeakDifferenceUv": 0.6684970190226522
+          },
+          {
+            "case": "0.3/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.1039453677427639,
+            "commonNodeMaxCrossingDeltaMs": 0.0007003000406776705,
+            "conductionRelative": {
+              "peripheral": 0.0000018527424777914296,
+              "central": 0.0001189210545892441
+            },
+            "recordingPeakToPeakRelative": 0.00168828726379006,
+            "recordingPeakDifferenceUv": 11.106030692672903
+          },
+          {
+            "case": "0.3/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00030427704567835757,
+            "commonNodeMaxCrossingDeltaMs": 0.000002297416928032092,
+            "conductionRelative": {
+              "peripheral": 2.479262980663343e-7,
+              "central": 7.284249123076467e-7
+            },
+            "recordingPeakToPeakRelative": 0.00017270990023705106,
+            "recordingPeakDifferenceUv": 1.2981832845343888
+          },
+          {
+            "case": "0.3/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00010322663291705324,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.0004261817164527528,
+            "recordingPeakDifferenceUv": 2.0054895875646253
+          },
+          {
+            "case": "0.3/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00010330847907043374,
+            "commonNodeMaxCrossingDeltaMs": 0,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.00042618435678298366,
+            "recordingPeakDifferenceUv": 2.005491126119523
+          },
+          {
+            "case": "1/assigned",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.030190851426619095,
+            "commonNodeMaxCrossingDeltaMs": 0.00009823888573889938,
+            "conductionRelative": {
+              "peripheral": 0.000010681241364099234,
+              "central": 0.00020840559301104586
+            },
+            "recordingPeakToPeakRelative": 0.0019219549499636178,
+            "recordingPeakDifferenceUv": 38.66732506949484
+          },
+          {
+            "case": "1/soma-only-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.0011330293897330304,
+            "commonNodeMaxCrossingDeltaMs": 0.0000015921549573194582,
+            "conductionRelative": {
+              "peripheral": 0.0000012150900513451065,
+              "central": 0.000011947938087817486
+            },
+            "recordingPeakToPeakRelative": 0.0004040294758933842,
+            "recordingPeakDifferenceUv": 6.685352146705554
+          },
+          {
+            "case": "1/initiation-region-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.002755715188103501,
+            "commonNodeMaxCrossingDeltaMs": 0.000010503629428781913,
+            "conductionRelative": {
+              "peripheral": 0.000010161492479472399
+            },
+            "recordingPeakToPeakRelative": 0.00042639504012464513,
+            "recordingPeakDifferenceUv": 6.686446292511391
+          },
+          {
+            "case": "1/whole-cell-silenced",
+            "passed": true,
+            "exactObservationTimestamps": true,
+            "classificationEqual": true,
+            "somaNecessityEqual": true,
+            "firstCrossingRoleFamilyEqual": true,
+            "trueNodeCrossingCountsEqual": true,
+            "commonNodeMaxRmsMv": 0.00034431240666654055,
+            "commonNodeMaxCrossingDeltaMs": 2.9444094318265e-7,
+            "conductionRelative": {},
+            "recordingPeakToPeakRelative": 0.00042618430468308787,
+            "recordingPeakDifferenceUv": 6.684970498787152
+          }
+        ]
+      }
+    ],
+    "fixedBiophysicalParameters": true,
+    "unchangedAcceptanceLimits": true,
+    "priorComponentFixture": "bipolar-attempts/002/bipolar-numerical-report.json"
+  },
   "retainedFailures": [
     {
       "schema": "buildthesimulation.bipolar.resolution-correction.v1",
@@ -183,17 +1627,1461 @@
       "unchangedRmsLimitMv": 1,
       "unchangedBiophysicalParameters": true,
       "reason": "Refine numerical integration after the maximum per-site error exceeded the unchanged 1 mV criterion; retain the endpoint and the failed study. No channel or geometry parameter was adjusted to pass."
+    },
+    {
+      "schema": "buildthesimulation.bipolar.soma-resolution-correction.v1",
+      "declaredAt": "2026-11-11T23:11:11.485665+00:00",
+      "failureId": "BIPOLAR-SOMA-SPATIAL-001",
+      "reason": "The declared actual-well axial refinement study failed at one and three bands. Five bands were the first candidate with two consecutive passing comparisons. This is a numerical resolution change, not a change to anatomical dimensions, conductance densities or acceptance tolerances.",
+      "previousSomaSegments": 1,
+      "productionCandidateSomaSegments": 5,
+      "prototypeReportSha256": "f2e1b8f3e1963d6860dcc957bbdeb604b4e3c1fb4d9ca0135575d99f8f0bbb11",
+      "prototypeFieldStatus": "exploratory; final field reference and same-grid refinement required before authoritative certification",
+      "retainedComparisons": [
+        {
+          "from": 1,
+          "to": 3,
+          "passed": false,
+          "details": [
+            {
+              "case": "0/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0002635789228394826,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.004698673398539111,
+              "recordingPeakDifferenceUv": 0.000007330715698250501
+            },
+            {
+              "case": "0/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0002830017588227244,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0033065386188099975,
+              "recordingPeakDifferenceUv": 0.0006261175123427609
+            },
+            {
+              "case": "0/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0002657010946564669,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.004106848185073263,
+              "recordingPeakDifferenceUv": 0.000167045673184818
+            },
+            {
+              "case": "0/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00025423459174950074,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.005373174190622088,
+              "recordingPeakDifferenceUv": 0.00038310350117454206
+            },
+            {
+              "case": "0.01/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0005630811155834203,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.07046591459136423,
+              "recordingPeakDifferenceUv": 11.003907122130101
+            },
+            {
+              "case": "0.01/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0005830135825526253,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0691041305549212,
+              "recordingPeakDifferenceUv": 10.774956519179739
+            },
+            {
+              "case": "0.01/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000575142486797404,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.06917502535348904,
+              "recordingPeakDifferenceUv": 10.775925335666386
+            },
+            {
+              "case": "0.01/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0005700506108584618,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.06917659776284683,
+              "recordingPeakDifferenceUv": 10.775910929005533
+            },
+            {
+              "case": "0.03/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0017367653861217465,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.07052039113760174,
+              "recordingPeakDifferenceUv": 33.042282153004805
+            },
+            {
+              "case": "0.03/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0015554192852491155,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.06909922313035684,
+              "recordingPeakDifferenceUv": 32.32521721368141
+            },
+            {
+              "case": "0.03/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0015531788805719655,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.06917527782110279,
+              "recordingPeakDifferenceUv": 32.327760449886
+            },
+            {
+              "case": "0.03/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0015516575845894093,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.06917634166417498,
+              "recordingPeakDifferenceUv": 32.32773767701781
+            },
+            {
+              "case": "0.1/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.014291308191683252,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.07090422759857366,
+              "recordingPeakDifferenceUv": 110.94676927984938
+            },
+            {
+              "case": "0.1/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.005119743606766211,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0690149902957281,
+              "recordingPeakDifferenceUv": 107.76214703237292
+            },
+            {
+              "case": "0.1/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.005107723426255398,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.06917541576641113,
+              "recordingPeakDifferenceUv": 107.7591692295698
+            },
+            {
+              "case": "0.1/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.005108663153340491,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.06917625202979498,
+              "recordingPeakDifferenceUv": 107.75913129453716
+            },
+            {
+              "case": "0.3/assigned",
+              "passed": false,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 4.481280917674705,
+              "commonNodeMaxCrossingDeltaMs": 0.026589851223228544,
+              "conductionRelative": {
+                "peripheral": 0.000561876519308203,
+                "central": 0.002521570816853538
+              },
+              "recordingPeakToPeakRelative": 0.08469537580350447,
+              "recordingPeakDifferenceUv": 557.32952521064
+            },
+            {
+              "case": "0.3/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.04579829807533059,
+              "commonNodeMaxCrossingDeltaMs": 0.00029314763862509086,
+              "conductionRelative": {
+                "peripheral": 0.00005585176711173531,
+                "central": 0.00011337333236216988
+              },
+              "recordingPeakToPeakRelative": 0.027858813944958205,
+              "recordingPeakDifferenceUv": 208.8139229590106
+            },
+            {
+              "case": "0.3/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.015301272735841165,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.06917578949957913,
+              "recordingPeakDifferenceUv": 323.27712594090826
+            },
+            {
+              "case": "0.3/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.015309144620445405,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.06917622641997262,
+              "recordingPeakDifferenceUv": 323.27739877294243
+            },
+            {
+              "case": "1/assigned",
+              "passed": false,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": false,
+              "commonNodeMaxRmsMv": 25.44004153991051,
+              "commonNodeMaxCrossingDeltaMs": 1e+99,
+              "conductionRelative": {
+                "peripheral": 0.005276670631181342,
+                "central": 0.05210518882142764
+              },
+              "recordingPeakToPeakRelative": 0.18692691104709191,
+              "recordingPeakDifferenceUv": 3588.695149282914
+            },
+            {
+              "case": "1/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.13264690196281803,
+              "commonNodeMaxCrossingDeltaMs": 0.0001922491833378226,
+              "conductionRelative": {
+                "peripheral": 0.0002106559506655664,
+                "central": 0.0013639966533608102
+              },
+              "recordingPeakToPeakRelative": 0.04953714836270602,
+              "recordingPeakDifferenceUv": 814.3213426512611
+            },
+            {
+              "case": "1/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.4208107711302872,
+              "commonNodeMaxCrossingDeltaMs": 0.0016445078864183449,
+              "conductionRelative": {
+                "peripheral": 0.0018271180538546397
+              },
+              "recordingPeakToPeakRelative": 0.06920372946530073,
+              "recordingPeakDifferenceUv": 1077.721778546931
+            },
+            {
+              "case": "1/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.05102411785080409,
+              "commonNodeMaxCrossingDeltaMs": 0.00007096126333472341,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.06917621745655882,
+              "recordingPeakDifferenceUv": 1077.591334947685
+            }
+          ]
+        },
+        {
+          "from": 3,
+          "to": 5,
+          "passed": false,
+          "details": [
+            {
+              "case": "0/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000021093226948959486,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.000056331391206532236,
+              "recordingPeakDifferenceUv": 8.789133487674405e-8
+            },
+            {
+              "case": "0/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00002264776448831246,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0000727461069579844,
+              "recordingPeakDifferenceUv": 0.00001377401071067652
+            },
+            {
+              "case": "0/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000021263312999242054,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.000031032840114534204,
+              "recordingPeakDifferenceUv": 0.0000012622970975151304
+            },
+            {
+              "case": "0/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000020345725200142314,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.00011288678667275476,
+              "recordingPeakDifferenceUv": 0.000008049656363029456
+            },
+            {
+              "case": "0.01/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00004342908422079062,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.004845700970987947,
+              "recordingPeakDifferenceUv": 0.7603858207013445
+            },
+            {
+              "case": "0.01/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00004471658157101061,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0047547269192410166,
+              "recordingPeakDifferenceUv": 0.7449154372266094
+            },
+            {
+              "case": "0.01/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0000440534823300605,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.004759596599704981,
+              "recordingPeakDifferenceUv": 0.7449847686158932
+            },
+            {
+              "case": "0.01/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0000436268153048013,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.004759708303353648,
+              "recordingPeakDifferenceUv": 0.7449844062176965
+            },
+            {
+              "case": "0.03/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0001331188936483821,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.004851889258930489,
+              "recordingPeakDifferenceUv": 2.284433288068442
+            },
+            {
+              "case": "0.03/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00011787215881487436,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.004754366110657882,
+              "recordingPeakDifferenceUv": 2.234758653897984
+            },
+            {
+              "case": "0.03/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00011768415795539843,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.004759615108983045,
+              "recordingPeakDifferenceUv": 2.2349538063499494
+            },
+            {
+              "case": "0.03/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00011755085552179736,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.004759689828965928,
+              "recordingPeakDifferenceUv": 2.2349531144774915
+            },
+            {
+              "case": "0.1/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0015720077215938101,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.004939318336035039,
+              "recordingPeakDifferenceUv": 7.767119391642609
+            },
+            {
+              "case": "0.1/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00038632711705434436,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.004748386454516781,
+              "recordingPeakDifferenceUv": 7.449651753876196
+            },
+            {
+              "case": "0.1/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00038641138483415334,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.004759624996633303,
+              "recordingPeakDifferenceUv": 7.449844484516461
+            },
+            {
+              "case": "0.1/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00038645893467217386,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0047596833632619125,
+              "recordingPeakDifferenceUv": 7.449843593853075
+            },
+            {
+              "case": "0.3/assigned",
+              "passed": false,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 1.3279260954343488,
+              "commonNodeMaxCrossingDeltaMs": 0.006500585840764628,
+              "conductionRelative": {
+                "peripheral": 0.00015090400730168404,
+                "central": 0.0020339337521376654
+              },
+              "recordingPeakToPeakRelative": 0.00956083769802497,
+              "recordingPeakDifferenceUv": 62.31832933998885
+            },
+            {
+              "case": "0.3/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.003559365189206717,
+              "commonNodeMaxCrossingDeltaMs": 0.000018747263761942357,
+              "conductionRelative": {
+                "peripheral": 0.000005572839245513505,
+                "central": 0.000010403523888510093
+              },
+              "recordingPeakToPeakRelative": 0.0019391048062817845,
+              "recordingPeakDifferenceUv": 14.562672153690073
+            },
+            {
+              "case": "0.3/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.001157697648167223,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.004759650718524777,
+              "recordingPeakDifferenceUv": 22.349507672791333
+            },
+            {
+              "case": "0.3/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.001157948182294159,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.004759681515985876,
+              "recordingPeakDifferenceUv": 22.34953067808783
+            },
+            {
+              "case": "1/assigned",
+              "passed": false,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": false,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.6271440962475754,
+              "commonNodeMaxCrossingDeltaMs": 0.00275067187271838,
+              "conductionRelative": {
+                "peripheral": 0.0006418904548041465,
+                "central": 0.0011422834810468057
+              },
+              "recordingPeakToPeakRelative": 0.03621980316479779,
+              "recordingPeakDifferenceUv": 721.4941692592656
+            },
+            {
+              "case": "1/soma-only-silenced",
+              "passed": false,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": false,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.007626670150526354,
+              "commonNodeMaxCrossingDeltaMs": 0.00001261153594056541,
+              "conductionRelative": {
+                "peripheral": 0.000018086018335773986,
+                "central": 0.000078723651341985
+              },
+              "recordingPeakToPeakRelative": 0.004506688047484309,
+              "recordingPeakDifferenceUv": 74.41902323791874
+            },
+            {
+              "case": "1/initiation-region-silenced",
+              "passed": false,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": false,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.029170659198453495,
+              "commonNodeMaxCrossingDeltaMs": 0.00011193718631852256,
+              "conductionRelative": {
+                "peripheral": 0.0001118302337061013
+              },
+              "recordingPeakToPeakRelative": 0.004761405593019378,
+              "recordingPeakDifferenceUv": 74.50495007047539
+            },
+            {
+              "case": "1/whole-cell-silenced",
+              "passed": false,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": false,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.003859285558992773,
+              "commonNodeMaxCrossingDeltaMs": 0.000007332810616822449,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.004759680869446209,
+              "recordingPeakDifferenceUv": 74.49843547301498
+            }
+          ]
+        },
+        {
+          "from": 5,
+          "to": 9,
+          "passed": true,
+          "details": [
+            {
+              "case": "0/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00000820320673860683,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0003785148315816612,
+              "recordingPeakDifferenceUv": 5.908032869594848e-7
+            },
+            {
+              "case": "0/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000008807681219681234,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.00023792335053399017,
+              "recordingPeakDifferenceUv": 0.000045038551043541375
+            },
+            {
+              "case": "0/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000008269220720991538,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0003416785768361681,
+              "recordingPeakDifferenceUv": 0.000013902926400799487
+            },
+            {
+              "case": "0/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000007912387254467705,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0003943307092319884,
+              "recordingPeakDifferenceUv": 0.000028129765981876886
+            },
+            {
+              "case": "0.01/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000017613727733737945,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0017515165428564857,
+              "recordingPeakDifferenceUv": 0.2753296508063272
+            },
+            {
+              "case": "0.01/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000018453694667930103,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0017181288387085416,
+              "recordingPeakDifferenceUv": 0.2696397641867634
+            },
+            {
+              "case": "0.01/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00001821635207185545,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0017198981602212589,
+              "recordingPeakDifferenceUv": 0.2696668519439811
+            },
+            {
+              "case": "0.01/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000018060938450899008,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0017199328548206572,
+              "recordingPeakDifferenceUv": 0.2696658411554438
+            },
+            {
+              "case": "0.03/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000050654262733310734,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.001753793828529319,
+              "recordingPeakDifferenceUv": 0.8271960830393255
+            },
+            {
+              "case": "0.03/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00004946037516879651,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0017180344894767437,
+              "recordingPeakDifferenceUv": 0.8089406482779395
+            },
+            {
+              "case": "0.03/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00004939150151609572,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0017199030870157863,
+              "recordingPeakDifferenceUv": 0.8089995504041667
+            },
+            {
+              "case": "0.03/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00004934766487031758,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0017199273736525804,
+              "recordingPeakDifferenceUv": 0.8089980432163202
+            },
+            {
+              "case": "0.1/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0005612134591919364,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0017860187264316478,
+              "recordingPeakDifferenceUv": 2.8135544449710324
+            },
+            {
+              "case": "0.1/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00016357649257156518,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0017161924579899121,
+              "recordingPeakDifferenceUv": 2.6971299789236127
+            },
+            {
+              "case": "0.1/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00016251068686270188,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0017199059627765073,
+              "recordingPeakDifferenceUv": 2.696663526441398
+            },
+            {
+              "case": "0.1/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0001625598088105687,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.00171992545507353,
+              "recordingPeakDifferenceUv": 2.696660750146293
+            },
+            {
+              "case": "0.3/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.46208079290964094,
+              "commonNodeMaxCrossingDeltaMs": 0.0031454788910968423,
+              "conductionRelative": {
+                "peripheral": 0.00005284121240457501,
+                "central": 0.0006131008993612413
+              },
+              "recordingPeakToPeakRelative": 0.007475663024825307,
+              "recordingPeakDifferenceUv": 49.09399888611006
+            },
+            {
+              "case": "0.3/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0012864185631946351,
+              "commonNodeMaxCrossingDeltaMs": 0.000011650523204620455,
+              "conductionRelative": {
+                "peripheral": 2.890270008146624e-7,
+                "central": 0.000002417993400515563
+              },
+              "recordingPeakToPeakRelative": 0.000699686753015152,
+              "recordingPeakDifferenceUv": 5.258324912392709
+            },
+            {
+              "case": "0.3/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0004866384925132559,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0017199145241964268,
+              "recordingPeakDifferenceUv": 8.089977867609377
+            },
+            {
+              "case": "0.3/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0004871683399692696,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.001719924906701049,
+              "recordingPeakDifferenceUv": 8.089982768966365
+            },
+            {
+              "case": "1/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.13049193703752107,
+              "commonNodeMaxCrossingDeltaMs": 0.0004148799319962926,
+              "conductionRelative": {
+                "peripheral": 0.00019183268119608895,
+                "central": 0.0005225352951300176
+              },
+              "recordingPeakToPeakRelative": 0.007977981414308367,
+              "recordingPeakDifferenceUv": 160.19850114010478
+            },
+            {
+              "case": "1/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.006084443369788512,
+              "commonNodeMaxCrossingDeltaMs": 0.000008199396710817375,
+              "conductionRelative": {
+                "peripheral": 0.000003941543460284844,
+                "central": 0.00006449470779267802
+              },
+              "recordingPeakToPeakRelative": 0.0016318142454238033,
+              "recordingPeakDifferenceUv": 26.990221901105542
+            },
+            {
+              "case": "1/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.012221284418579519,
+              "commonNodeMaxCrossingDeltaMs": 0.00004581451826746186,
+              "conductionRelative": {
+                "peripheral": 0.00004126492458881499
+              },
+              "recordingPeakToPeakRelative": 0.0017209559557795817,
+              "recordingPeakDifferenceUv": 26.97539118907298
+            },
+            {
+              "case": "1/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0016237026806117686,
+              "commonNodeMaxCrossingDeltaMs": 1.5280759435576385e-7,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0017199247148145397,
+              "recordingPeakDifferenceUv": 26.96660983552465
+            }
+          ]
+        },
+        {
+          "from": 9,
+          "to": 13,
+          "passed": true,
+          "details": [
+            {
+              "case": "0/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0000019069527844563184,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0000538392656974422,
+              "recordingPeakDifferenceUv": 8.403931661682407e-8
+            },
+            {
+              "case": "0/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000002047752956338661,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.00003541888460627086,
+              "recordingPeakDifferenceUv": 0.000006704506892329931
+            },
+            {
+              "case": "0/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0000019225408051967424,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.00004818270607831848,
+              "recordingPeakDifferenceUv": 0.000001960652320720513
+            },
+            {
+              "case": "0/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0000018394870099062383,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.00005829000627179882,
+              "recordingPeakDifferenceUv": 0.000004158387312713785
+            },
+            {
+              "case": "0.01/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000003826079456263473,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0004340248439770548,
+              "recordingPeakDifferenceUv": 0.06825616216482899
+            },
+            {
+              "case": "0.01/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000004002681213766527,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.00042574135332345024,
+              "recordingPeakDifferenceUv": 0.06684346952795295
+            },
+            {
+              "case": "0.01/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000003942530330251514,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0004261772922337613,
+              "recordingPeakDifferenceUv": 0.06684982350265045
+            },
+            {
+              "case": "0.01/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000003903466214890928,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0004261865132057815,
+              "recordingPeakDifferenceUv": 0.06684967141262632
+            },
+            {
+              "case": "0.03/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000011345341491614294,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0004345423337324495,
+              "recordingPeakDifferenceUv": 0.20504575590348395
+            },
+            {
+              "case": "0.03/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000010522086721082826,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.00042571391571678054,
+              "recordingPeakDifferenceUv": 0.20053378538966626
+            },
+            {
+              "case": "0.03/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000010503563950578997,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.00042617871280100625,
+              "recordingPeakDifferenceUv": 0.2005493155452882
+            },
+            {
+              "case": "0.03/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00001049153921013472,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0004261850259983221,
+              "recordingPeakDifferenceUv": 0.2005490820742466
+            },
+            {
+              "case": "0.1/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00013287804798511416,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.00044148277432069587,
+              "recordingPeakDifferenceUv": 0.6957846675704786
+            },
+            {
+              "case": "0.1/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000034627961349827495,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.00042522181874454985,
+              "recordingPeakDifferenceUv": 0.6685534567607192
+            },
+            {
+              "case": "0.1/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.000034472115902823076,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0004261795045190401,
+              "recordingPeakDifferenceUv": 0.6684974361880904
+            },
+            {
+              "case": "0.1/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00003447966371615445,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.00042618450524446267,
+              "recordingPeakDifferenceUv": 0.6684970190226522
+            },
+            {
+              "case": "0.3/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.1039453677427639,
+              "commonNodeMaxCrossingDeltaMs": 0.0007003000406776705,
+              "conductionRelative": {
+                "peripheral": 0.0000018527424777914296,
+                "central": 0.0001189210545892441
+              },
+              "recordingPeakToPeakRelative": 0.00168828726379006,
+              "recordingPeakDifferenceUv": 11.106030692672903
+            },
+            {
+              "case": "0.3/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00030427704567835757,
+              "commonNodeMaxCrossingDeltaMs": 0.000002297416928032092,
+              "conductionRelative": {
+                "peripheral": 2.479262980663343e-7,
+                "central": 7.284249123076467e-7
+              },
+              "recordingPeakToPeakRelative": 0.00017270990023705106,
+              "recordingPeakDifferenceUv": 1.2981832845343888
+            },
+            {
+              "case": "0.3/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00010322663291705324,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.0004261817164527528,
+              "recordingPeakDifferenceUv": 2.0054895875646253
+            },
+            {
+              "case": "0.3/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00010330847907043374,
+              "commonNodeMaxCrossingDeltaMs": 0,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.00042618435678298366,
+              "recordingPeakDifferenceUv": 2.005491126119523
+            },
+            {
+              "case": "1/assigned",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.030190851426619095,
+              "commonNodeMaxCrossingDeltaMs": 0.00009823888573889938,
+              "conductionRelative": {
+                "peripheral": 0.000010681241364099234,
+                "central": 0.00020840559301104586
+              },
+              "recordingPeakToPeakRelative": 0.0019219549499636178,
+              "recordingPeakDifferenceUv": 38.66732506949484
+            },
+            {
+              "case": "1/soma-only-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.0011330293897330304,
+              "commonNodeMaxCrossingDeltaMs": 0.0000015921549573194582,
+              "conductionRelative": {
+                "peripheral": 0.0000012150900513451065,
+                "central": 0.000011947938087817486
+              },
+              "recordingPeakToPeakRelative": 0.0004040294758933842,
+              "recordingPeakDifferenceUv": 6.685352146705554
+            },
+            {
+              "case": "1/initiation-region-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.002755715188103501,
+              "commonNodeMaxCrossingDeltaMs": 0.000010503629428781913,
+              "conductionRelative": {
+                "peripheral": 0.000010161492479472399
+              },
+              "recordingPeakToPeakRelative": 0.00042639504012464513,
+              "recordingPeakDifferenceUv": 6.686446292511391
+            },
+            {
+              "case": "1/whole-cell-silenced",
+              "passed": true,
+              "exactObservationTimestamps": true,
+              "classificationEqual": true,
+              "somaNecessityEqual": true,
+              "firstCrossingRoleFamilyEqual": true,
+              "trueNodeCrossingCountsEqual": true,
+              "commonNodeMaxRmsMv": 0.00034431240666654055,
+              "commonNodeMaxCrossingDeltaMs": 2.9444094318265e-7,
+              "conductionRelative": {},
+              "recordingPeakToPeakRelative": 0.00042618430468308787,
+              "recordingPeakDifferenceUv": 6.684970498787152
+            }
+          ]
+        }
+      ],
+      "fixedBiophysicalParameters": true,
+      "unchangedAcceptanceLimits": true,
+      "priorComponentFixture": "bipolar-attempts/002/bipolar-numerical-report.json"
     }
   ],
   "sourceHashes": {
     "src/lib/axon-interface/mrg.mjs": "182b94c586591599dbcea42b63ececba486d42e4a72f7923abb53a171fe752f5",
-    "src/lib/axon-interface/bipolar.mjs": "adc8f889c865aa4ab3f2a5c27b3d3595442e47fbcfeaa2e37bf373d011e1e4be",
-    "scripts/axon-interface/bipolar-validate.mjs": "a32ce02ec94c4f91b425550068e6272bbb57321b67205284797a2a82c55208d4",
-    "scripts/axon-interface/bipolar-reference.py": "c53618851a638ce1af877ffa12355bb47404170c2a2e7aad208ec46e31422197",
+    "src/lib/axon-interface/bipolar.mjs": "d47f6717b3faa87ae775c67e1fee4ce0f222e5e954cdba6c765d3d7dffb22098",
+    "scripts/axon-interface/bipolar-validate.mjs": "4235ab1c25f4a3abb6b1fe50998fca12fb0c949d11e2b3d6a20ded16c4c1b992",
+    "scripts/axon-interface/bipolar-reference.py": "da5c3ac4384cedf57095425f83073073bfd79b0b210bf7c10e09c5acedbc9955",
     "scripts/axon-interface/mrg-motor-baseline.mjs": "cbaa91ed8e8cbe5acc56d55f229ddcd0bbbe32a4272d4b8280eded3aff772405",
     "scripts/axon-interface/mrg-modeldb/AXNODE.mod": "e0fa400a469aa2beba491fabffaa4f6bc03c629015a2c0f2ddc471fb3e687bd3",
     "docs/axon-interface/bipolar-acceptance.json": "9d0bf929490004022deccdce7d28260cf4de8a5f78dee82da92fc7c4b16a94d0",
-    "docs/axon-interface/bipolar-resolution-correction.json": "fe5d1c9b499b78e79220e207f26dc5892d03855f861529d99ecd18e0d5692f1e"
+    "docs/axon-interface/bipolar-resolution-correction.json": "fe5d1c9b499b78e79220e207f26dc5892d03855f861529d99ecd18e0d5692f1e",
+    "docs/axon-interface/bipolar-soma-resolution-correction.json": "7756463dfefc8f1644fcea144a2ad87b1d090ac171a0bd03bcc3655762e36472"
   },
   "sourceChangedDuringRun": [],
   "tests": [
@@ -241,7 +3129,7 @@
     {
       "name": "Nominal bipolar zero-input drift",
       "status": "pass",
-      "measured": 0.005133885571709129,
+      "measured": 0.005133957131775446,
       "nonFinite": false,
       "limit": 0.1,
       "unit": "mV",
@@ -260,7 +3148,7 @@
     {
       "name": "Nominal cable current balance",
       "status": "pass",
-      "measured": 5.826765624992165e-12,
+      "measured": 8.960283903736155e-12,
       "nonFinite": false,
       "limit": 1e-8,
       "unit": "nA",
@@ -277,11 +3165,11 @@
       "diagnostic": {
         "ordered": true,
         "timesMs": [
-          0.9357779574904956,
-          0.9561400430019695,
-          0.9722903807342904
+          0.9358472060406404,
+          0.9562082064150186,
+          0.9723586489084648
         ],
-        "delayMs": 0.03651242324379478
+        "delayMs": 0.03651144286782437
       }
     },
     {
@@ -295,41 +3183,45 @@
       "diagnostic": {
         "ordered": true,
         "timesMs": [
-          0.9362508710998416,
-          0.9565875714365579,
-          0.9727416497120235
+          0.9363135363026579,
+          0.9566488815525587,
+          0.9728026429384795
         ],
-        "delayMs": 0.03649077861218186
+        "delayMs": 0.03648910663582161
       }
     },
     {
       "name": "Temporal 0.000625→0.0003125: maximum active-site RMS",
       "status": "pass",
-      "measured": 0.5564363078457069,
+      "measured": 0.5567146450817901,
       "nonFinite": false,
       "limit": 1,
       "unit": "mV",
       "required": true,
       "rmsPerSiteMv": [
-        0.5564363078457069,
-        0.44753929496429956,
-        0.38544669588779834,
-        0.355735491887217,
-        0.3288182514183963,
-        0.27519230059202054,
-        0.2733263289540149,
-        0.26619796845052185,
-        0.2575985270608675,
-        0.2533444307497046,
-        0.25580632618141097,
-        0.2611568700213517,
-        0.26536901042331634,
-        0.26577491373273915,
-        0.32233088040095975,
-        0.34969546571189153,
-        0.3792040062541613,
-        0.440476486084045,
-        0.5485880073810615
+        0.5567146450817901,
+        0.44774369857743757,
+        0.385620745465801,
+        0.355907440287318,
+        0.3289797261349998,
+        0.27530495689223716,
+        0.2734373124796166,
+        0.2663085114512275,
+        0.2577120483338368,
+        0.2534985114261248,
+        0.2534872371795378,
+        0.25348322938363227,
+        0.2534865078300449,
+        0.25349706420727897,
+        0.2559181838694941,
+        0.26126244274247945,
+        0.2654719580894302,
+        0.2658789092992568,
+        0.32248560218272176,
+        0.3498645740411149,
+        0.37937757562400276,
+        0.44070038207318885,
+        0.5490907682790652
       ]
     },
     {
@@ -344,7 +3236,7 @@
     {
       "name": "Temporal level 1: crossing timing",
       "status": "pass",
-      "measured": 0.002090682365247565,
+      "measured": 0.0020916617035495744,
       "nonFinite": false,
       "limit": 0.1,
       "unit": "ms",
@@ -353,31 +3245,35 @@
     {
       "name": "Temporal 0.0003125→0.00015625: maximum active-site RMS",
       "status": "pass",
-      "measured": 0.2829590455457502,
+      "measured": 0.28280125700540953,
       "nonFinite": false,
       "limit": 1,
       "unit": "mV",
       "required": true,
       "rmsPerSiteMv": [
-        0.2829590455457502,
-        0.22369035603071508,
-        0.19237680807271185,
-        0.17749111409524265,
-        0.16397266935197927,
-        0.13687697684986164,
-        0.13598007071266768,
-        0.1324297698439684,
-        0.1281187344968645,
-        0.12598498241442196,
-        0.12722216821821503,
-        0.12990876828506645,
-        0.13200617595179956,
-        0.13217812295998388,
-        0.16077049657996342,
-        0.17451074492556465,
-        0.1893056328957567,
-        0.21993596303466842,
-        0.27624559712029045
+        0.28280125700540953,
+        0.22377162382866445,
+        0.192474146554619,
+        0.1775844294982649,
+        0.16405845324450558,
+        0.13693239506342714,
+        0.13603462923388118,
+        0.1324841008971921,
+        0.12817461342674644,
+        0.1260612566987965,
+        0.12605560920774495,
+        0.1260536080291503,
+        0.12605526310241363,
+        0.12606057057871373,
+        0.12727724360781476,
+        0.1299606581329876,
+        0.13205674365012915,
+        0.13222925631226365,
+        0.1608538037425431,
+        0.1746029229198625,
+        0.18940057454384523,
+        0.22002008247467408,
+        0.2761233314887926
       ]
     },
     {
@@ -392,7 +3288,7 @@
     {
       "name": "Temporal level 2: crossing timing",
       "status": "pass",
-      "measured": 0.0010385197767531773,
+      "measured": 0.0010390223359751927,
       "nonFinite": false,
       "limit": 0.1,
       "unit": "ms",
@@ -401,79 +3297,79 @@
     {
       "name": "Spatial 3→5: peripheral conduction delay",
       "status": "pass",
-      "measured": 0.0236544024038781,
+      "measured": 0.02366277392347188,
       "nonFinite": false,
       "limit": 0.05,
       "unit": "fraction",
       "required": true,
       "delaysMs": [
-        0.03651242324379478,
-        0.037397027582950826
+        0.03651144286782437,
+        0.03739634410391979
       ]
     },
     {
       "name": "Spatial 3→5: central conduction delay",
       "status": "pass",
-      "measured": 0.023695999610822197,
+      "measured": 0.023705169676563994,
       "nonFinite": false,
       "limit": 0.05,
       "unit": "fraction",
       "required": true,
       "delaysMs": [
-        0.03649077861218186,
-        0.03737645098005926
+        0.03648910663582161,
+        0.037375089473466905
       ]
     },
     {
       "name": "Spatial 3→5: reciprocal recording",
       "status": "pass",
-      "measured": 0.003542316877707369,
+      "measured": 0.003514915870432513,
       "nonFinite": false,
       "limit": 0.1,
       "unit": "fraction",
       "required": true,
       "peaksUv": [
-        4.888841640634228,
-        4.906221030195251
+        4.889063960993948,
+        4.906309225154693
       ]
     },
     {
       "name": "Spatial 5→7: peripheral conduction delay",
       "status": "pass",
-      "measured": 0.008028594641033632,
+      "measured": 0.008029226502340607,
       "nonFinite": false,
       "limit": 0.05,
       "unit": "fraction",
       "required": true,
       "delaysMs": [
-        0.037397027582950826,
-        0.03769970321817684
+        0.03739634410391979,
+        0.0376990382207143
       ]
     },
     {
       "name": "Spatial 5→7: central conduction delay",
       "status": "pass",
-      "measured": 0.00803032478343578,
+      "measured": 0.008047855029414205,
       "nonFinite": false,
       "limit": 0.05,
       "unit": "fraction",
       "required": true,
       "delaysMs": [
-        0.03737645098005926,
-        0.03767902579471427
+        0.037375089473466905,
+        0.03767831912352504
       ]
     },
     {
       "name": "Spatial 5→7: reciprocal recording",
       "status": "pass",
-      "measured": 0.004164835053676067,
+      "measured": 0.00461496107046144,
       "nonFinite": false,
       "limit": 0.1,
       "unit": "fraction",
       "required": true,
       "peaksUv": [
-        4.906221030195251,
-        4.885872178478543
+        4.906309225154693,
+        4.883770812975754
       ]
     },
     {
@@ -531,9 +3427,27 @@
       "required": true
     },
     {
+      "name": "Native NEURON nominal-soma-injected: independently constructed compartment positions",
+      "status": "pass",
+      "measured": 9.094947017729282e-13,
+      "nonFinite": false,
+      "limit": 1e-8,
+      "unit": "um",
+      "required": true
+    },
+    {
+      "name": "Native NEURON nominal-soma-injected: active-site and true-node correspondence",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true
+    },
+    {
       "name": "Native NEURON nominal-soma-injected: all-site RMS",
       "status": "pass",
-      "measured": 3.1217460578745426e-9,
+      "measured": 3.1316041404186064e-9,
       "nonFinite": false,
       "limit": 1,
       "unit": "mV",
@@ -551,7 +3465,7 @@
     {
       "name": "Native NEURON nominal-soma-injected: crossing times",
       "status": "pass",
-      "measured": 1.9527490735526953e-11,
+      "measured": 1.9510726367855113e-11,
       "nonFinite": false,
       "limit": 0.1,
       "unit": "ms",
@@ -560,16 +3474,34 @@
     {
       "name": "Native NEURON nominal-soma-injected: reciprocal recording",
       "status": "pass",
-      "measured": 1.5843878431454073e-9,
+      "measured": 1.5844611178650325e-9,
       "nonFinite": false,
       "limit": 0.001,
       "unit": "uV",
       "required": true
     },
     {
+      "name": "Native NEURON nominal-extracellular: independently constructed compartment positions",
+      "status": "pass",
+      "measured": 9.094947017729282e-13,
+      "nonFinite": false,
+      "limit": 1e-8,
+      "unit": "um",
+      "required": true
+    },
+    {
+      "name": "Native NEURON nominal-extracellular: active-site and true-node correspondence",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true
+    },
+    {
       "name": "Native NEURON nominal-extracellular: all-site RMS",
       "status": "pass",
-      "measured": 1.003745699669979e-8,
+      "measured": 1.5908011015366127e-8,
       "nonFinite": false,
       "limit": 1,
       "unit": "mV",
@@ -587,7 +3519,7 @@
     {
       "name": "Native NEURON nominal-extracellular: crossing times",
       "status": "pass",
-      "measured": 1.349940159656171e-10,
+      "measured": 1.1634471164256865e-10,
       "nonFinite": false,
       "limit": 0.1,
       "unit": "ms",
@@ -596,16 +3528,88 @@
     {
       "name": "Native NEURON nominal-extracellular: reciprocal recording",
       "status": "pass",
-      "measured": 6.42361897007504e-9,
+      "measured": 6.063384017096496e-9,
       "nonFinite": false,
       "limit": 0.001,
       "unit": "uV",
       "required": true
     },
     {
+      "name": "Native NEURON soma-only-silenced: independently constructed compartment positions",
+      "status": "pass",
+      "measured": 9.094947017729282e-13,
+      "nonFinite": false,
+      "limit": 1e-8,
+      "unit": "um",
+      "required": true
+    },
+    {
+      "name": "Native NEURON soma-only-silenced: active-site and true-node correspondence",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true
+    },
+    {
+      "name": "Native NEURON soma-only-silenced: all-site RMS",
+      "status": "pass",
+      "measured": 1.9978347756701576e-10,
+      "nonFinite": false,
+      "limit": 1,
+      "unit": "mV",
+      "required": true
+    },
+    {
+      "name": "Native NEURON soma-only-silenced: all-site crossing counts",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true
+    },
+    {
+      "name": "Native NEURON soma-only-silenced: crossing times",
+      "status": "pass",
+      "measured": 0,
+      "nonFinite": false,
+      "limit": 0.1,
+      "unit": "ms",
+      "required": true
+    },
+    {
+      "name": "Native NEURON soma-only-silenced: reciprocal recording",
+      "status": "pass",
+      "measured": 1.2373047031388751e-11,
+      "nonFinite": false,
+      "limit": 0.001,
+      "unit": "uV",
+      "required": true
+    },
+    {
+      "name": "Native NEURON initiation-region-silenced: independently constructed compartment positions",
+      "status": "pass",
+      "measured": 9.094947017729282e-13,
+      "nonFinite": false,
+      "limit": 1e-8,
+      "unit": "um",
+      "required": true
+    },
+    {
+      "name": "Native NEURON initiation-region-silenced: active-site and true-node correspondence",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true
+    },
+    {
       "name": "Native NEURON initiation-region-silenced: all-site RMS",
       "status": "pass",
-      "measured": 2.1513626926145549e-10,
+      "measured": 2.1154453232003215e-10,
       "nonFinite": false,
       "limit": 1,
       "unit": "mV",
@@ -632,16 +3636,34 @@
     {
       "name": "Native NEURON initiation-region-silenced: reciprocal recording",
       "status": "pass",
-      "measured": 1.0882961198888097e-11,
+      "measured": 1.0655629156808288e-11,
       "nonFinite": false,
       "limit": 0.001,
       "unit": "uV",
       "required": true
     },
     {
+      "name": "Native NEURON whole-cell-silenced: independently constructed compartment positions",
+      "status": "pass",
+      "measured": 9.094947017729282e-13,
+      "nonFinite": false,
+      "limit": 1e-8,
+      "unit": "um",
+      "required": true
+    },
+    {
+      "name": "Native NEURON whole-cell-silenced: active-site and true-node correspondence",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true
+    },
+    {
       "name": "Native NEURON whole-cell-silenced: all-site RMS",
       "status": "pass",
-      "measured": 4.262507591999974e-10,
+      "measured": 4.1800422325272334e-10,
       "nonFinite": false,
       "limit": 1,
       "unit": "mV",
@@ -668,16 +3690,34 @@
     {
       "name": "Native NEURON whole-cell-silenced: reciprocal recording",
       "status": "pass",
-      "measured": 8.556266806181156e-12,
+      "measured": 1.0097950253751264e-11,
       "nonFinite": false,
       "limit": 0.001,
       "unit": "uV",
       "required": true
     },
     {
+      "name": "Native NEURON passive-soma: independently constructed compartment positions",
+      "status": "pass",
+      "measured": 9.094947017729282e-13,
+      "nonFinite": false,
+      "limit": 1e-8,
+      "unit": "um",
+      "required": true
+    },
+    {
+      "name": "Native NEURON passive-soma: active-site and true-node correspondence",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
+      "required": true
+    },
+    {
       "name": "Native NEURON passive-soma: all-site RMS",
       "status": "pass",
-      "measured": 1.9663436754340316e-10,
+      "measured": 2.0096265922415203e-10,
       "nonFinite": false,
       "limit": 1,
       "unit": "mV",
@@ -704,10 +3744,28 @@
     {
       "name": "Native NEURON passive-soma: reciprocal recording",
       "status": "pass",
-      "measured": 1.1725634352366399e-11,
+      "measured": 1.1276368727664021e-11,
       "nonFinite": false,
       "limit": 0.001,
       "unit": "uV",
+      "required": true
+    },
+    {
+      "name": "Native NEURON native-central-stump: independently constructed compartment positions",
+      "status": "pass",
+      "measured": 9.094947017729282e-13,
+      "nonFinite": false,
+      "limit": 1e-8,
+      "unit": "um",
+      "required": true
+    },
+    {
+      "name": "Native NEURON native-central-stump: active-site and true-node correspondence",
+      "status": "pass",
+      "measured": true,
+      "nonFinite": false,
+      "limit": true,
+      "unit": "boolean",
       "required": true
     },
     {
@@ -754,29 +3812,29 @@
       "settings": {
         "somaDiameterUm": 15
       },
-      "zeroInputDriftMv": 0.004865156916338265,
+      "zeroInputDriftMv": 0.004865218241405955,
       "zeroInputCrossings": 0,
       "quiescent": true,
       "central": {
         "ordered": true,
         "timesMs": [
-          0.7061287609730398,
-          0.727289614802692,
-          0.743995924118837
+          0.7061248504832666,
+          0.7272853280737572,
+          0.7439914655073052
         ],
-        "delayMs": 0.03786716314579719
+        "delayMs": 0.03786661502403865
       },
       "peripheral": {
         "ordered": true,
         "timesMs": [
-          0.7010890815513395,
-          0.7222095259597836,
-          0.7388842428136395
+          0.701084958796624,
+          0.7222049768988243,
+          0.7388795122638792
         ],
-        "delayMs": 0.03779516126229998
+        "delayMs": 0.03779455346725513
       },
-      "drivenCrossings": 19,
-      "somaCrossings": 1,
+      "drivenCrossings": 23,
+      "somaCrossings": 5,
       "status": "computed"
     },
     {
@@ -785,7 +3843,7 @@
       "settings": {
         "somaDiameterUm": 25
       },
-      "zeroInputDriftMv": 0.0053148538192999695,
+      "zeroInputDriftMv": 0.005314927220481991,
       "zeroInputCrossings": 0,
       "quiescent": true,
       "central": {
@@ -816,7 +3874,7 @@
       "settings": {
         "somaActiveScale": 0
       },
-      "zeroInputDriftMv": 0.005231922557399571,
+      "zeroInputDriftMv": 0.0052320785586772445,
       "zeroInputCrossings": 0,
       "quiescent": true,
       "central": {
@@ -847,7 +3905,7 @@
       "settings": {
         "somaActiveScale": 0.03
       },
-      "zeroInputDriftMv": 0.005210836913519756,
+      "zeroInputDriftMv": 0.005210968656101045,
       "zeroInputCrossings": 0,
       "quiescent": true,
       "central": {
@@ -878,29 +3936,29 @@
       "settings": {
         "somaActiveScale": 0.3
       },
-      "zeroInputDriftMv": 0.004676131955079654,
+      "zeroInputDriftMv": 0.004675999551778887,
       "zeroInputCrossings": 0,
       "quiescent": true,
       "central": {
         "ordered": true,
         "timesMs": [
-          0.7424239159902162,
-          0.7636690384164713,
-          0.780405570738945
+          0.7424163161016875,
+          0.7636613462161486,
+          0.7803978069730737
         ],
-        "delayMs": 0.03798165474872883
+        "delayMs": 0.03798149087138625
       },
       "peripheral": {
         "ordered": true,
         "timesMs": [
-          0.7375121266298365,
-          0.7587443665855229,
-          0.775461226090062
+          0.737505226296135,
+          0.7587374586173405,
+          0.7754542320626071
         ],
-        "delayMs": 0.03794909946022551
+        "delayMs": 0.03794900576647209
       },
-      "drivenCrossings": 19,
-      "somaCrossings": 1,
+      "drivenCrossings": 23,
+      "somaCrossings": 5,
       "status": "computed"
     },
     {
@@ -909,29 +3967,29 @@
       "settings": {
         "somaActiveScale": 1
       },
-      "zeroInputDriftMv": 0.014589449857027148,
+      "zeroInputDriftMv": 0.014589232341165825,
       "zeroInputCrossings": 0,
       "quiescent": true,
       "central": {
         "ordered": true,
         "timesMs": [
-          0.6863160080973764,
-          0.7078502719180981,
-          0.7247177087844827
+          0.686285600835627,
+          0.7078204300155387,
+          0.7246879964807093
         ],
-        "delayMs": 0.038401700687106355
+        "delayMs": 0.0384023956450823
       },
       "peripheral": {
         "ordered": true,
         "timesMs": [
-          0.6808081364873579,
-          0.7023418902929557,
-          0.7191961159397461
+          0.6807795549727492,
+          0.7023137932909725,
+          0.7191680407247467
         ],
-        "delayMs": 0.03838797945238814
+        "delayMs": 0.03838848575199749
       },
-      "drivenCrossings": 38,
-      "somaCrossings": 2,
+      "drivenCrossings": 46,
+      "somaCrossings": 10,
       "status": "computed"
     },
     {
@@ -940,7 +3998,7 @@
       "settings": {
         "stemActiveScale": 0
       },
-      "zeroInputDriftMv": 0.005227067982019662,
+      "zeroInputDriftMv": 0.005227060988715948,
       "zeroInputCrossings": 0,
       "quiescent": true,
       "central": {
@@ -971,7 +4029,7 @@
       "settings": {
         "stemActiveScale": 0.03
       },
-      "zeroInputDriftMv": 0.005201276901715346,
+      "zeroInputDriftMv": 0.005201292048937489,
       "zeroInputCrossings": 0,
       "quiescent": true,
       "central": {
@@ -1002,29 +4060,29 @@
       "settings": {
         "stemActiveScale": 0.3
       },
-      "zeroInputDriftMv": 0.004882788846984454,
+      "zeroInputDriftMv": 0.004883061522448884,
       "zeroInputCrossings": 0,
       "quiescent": true,
       "central": {
         "ordered": true,
         "timesMs": [
-          0.7904330821908709,
-          0.8114243454202529,
-          0.8280100674234552
+          0.7904387339681475,
+          0.8114297296273025,
+          0.8280153239625752
         ],
-        "delayMs": 0.03757698523258424
+        "delayMs": 0.0375765899944277
       },
       "peripheral": {
         "ordered": true,
         "timesMs": [
-          0.7991187890920635,
-          0.8200316906468448,
-          0.8365553719080575
+          0.7991460475173433,
+          0.8200588274437625,
+          0.8365820830642219
         ],
-        "delayMs": 0.037436582815994046
+        "delayMs": 0.03743603554687858
       },
-      "drivenCrossings": 19,
-      "somaCrossings": 1,
+      "drivenCrossings": 23,
+      "somaCrossings": 5,
       "status": "computed"
     },
     {
@@ -1033,29 +4091,29 @@
       "settings": {
         "stemActiveScale": 1
       },
-      "zeroInputDriftMv": 0.0032888335218359543,
+      "zeroInputDriftMv": 0.0032903506628088053,
       "zeroInputCrossings": 0,
       "quiescent": true,
       "central": {
         "ordered": true,
         "timesMs": [
-          0.7088765015172903,
-          0.7304160213844249,
-          0.7472960582166633
+          0.708890051057004,
+          0.730429297139045,
+          0.7473093181469226
         ],
-        "delayMs": 0.038419556699373025
+        "delayMs": 0.03841926708991861
       },
       "peripheral": {
         "ordered": true,
         "timesMs": [
-          0.7114853367122577,
-          0.7329323188564932,
-          0.7497549805603679
+          0.711512434186022,
+          0.7329589910598692,
+          0.7497816047081204
         ],
-        "delayMs": 0.03826964384811027
+        "delayMs": 0.03826917052209844
       },
-      "drivenCrossings": 19,
-      "somaCrossings": 1,
+      "drivenCrossings": 23,
+      "somaCrossings": 5,
       "status": "computed"
     },
     {
@@ -1065,29 +4123,29 @@
         "peripheralStemLengthUm": 15,
         "centralStemLengthUm": 25
       },
-      "zeroInputDriftMv": 0.005039556506915233,
+      "zeroInputDriftMv": 0.005039632976789221,
       "zeroInputCrossings": 0,
       "quiescent": true,
       "central": {
         "ordered": true,
         "timesMs": [
-          0.7769717135291512,
-          0.7975802592693301,
-          0.8139678821889137
+          0.7769651209717743,
+          0.7975735399297603,
+          0.8139611928758954
         ],
-        "delayMs": 0.03699616865976252
+        "delayMs": 0.03699607190412113
       },
       "peripheral": {
         "ordered": true,
         "timesMs": [
-          0.7764468933470364,
-          0.7970728739640932,
-          0.8134621522172193
+          0.7764406907767365,
+          0.797066551157414,
+          0.8134558224438074
         ],
-        "delayMs": 0.037015258870182866
+        "delayMs": 0.03701513166707093
       },
-      "drivenCrossings": 19,
-      "somaCrossings": 1,
+      "drivenCrossings": 23,
+      "somaCrossings": 5,
       "status": "computed"
     },
     {
@@ -1097,7 +4155,7 @@
         "peripheralStemLengthUm": 60,
         "centralStemLengthUm": 100
       },
-      "zeroInputDriftMv": 0.0052633857838912945,
+      "zeroInputDriftMv": 0.005263443406633428,
       "zeroInputCrossings": 0,
       "quiescent": true,
       "central": {
@@ -1129,29 +4187,29 @@
         "peripheralStemDiameterUm": 1.125,
         "centralStemDiameterUm": 1.875
       },
-      "zeroInputDriftMv": 0.005042380722059647,
+      "zeroInputDriftMv": 0.00504248084708081,
       "zeroInputCrossings": 0,
       "quiescent": true,
       "central": {
         "ordered": true,
         "timesMs": [
-          0.8204976307578286,
-          0.8413278639728125,
-          0.8578110080060589
+          0.8204811695736127,
+          0.8413110313721752,
+          0.8577942321158774
         ],
-        "delayMs": 0.03731337724823036
+        "delayMs": 0.03731306254226463
       },
       "peripheral": {
         "ordered": true,
         "timesMs": [
-          0.8174365644264472,
-          0.8382587391610968,
-          0.8547140347743889
+          0.8174223867421283,
+          0.8382442101852683,
+          0.8546994973814802
         ],
-        "delayMs": 0.03727747034794171
+        "delayMs": 0.03727711063935191
       },
-      "drivenCrossings": 19,
-      "somaCrossings": 1,
+      "drivenCrossings": 23,
+      "somaCrossings": 5,
       "status": "computed"
     },
     {
@@ -1161,7 +4219,7 @@
         "peripheralStemDiameterUm": 1.875,
         "centralStemDiameterUm": 3.125
       },
-      "zeroInputDriftMv": 0.005193224810881247,
+      "zeroInputDriftMv": 0.005193278107370247,
       "zeroInputCrossings": 0,
       "quiescent": true,
       "central": {
@@ -1289,23 +4347,23 @@
       "central": {
         "ordered": true,
         "timesMs": [
-          0.9362508710998416,
-          0.9565875714365579,
-          0.9727416497120235
+          0.9363135363026579,
+          0.9566488815525587,
+          0.9728026429384795
         ],
-        "delayMs": 0.03649077861218186
+        "delayMs": 0.03648910663582161
       },
       "peripheral": {
         "ordered": true,
         "timesMs": [
-          0.9357779574904956,
-          0.9561400430019695,
-          0.9722903807342904
+          0.9358472060406404,
+          0.9562082064150186,
+          0.9723586489084648
         ],
-        "delayMs": 0.03651242324379478
+        "delayMs": 0.03651144286782437
       },
-      "crossings": 19,
-      "somaCrossings": 1,
+      "crossings": 23,
+      "somaCrossings": 5,
       "firstEventRole": "peripheral_node"
     },
     {
@@ -1313,23 +4371,23 @@
       "central": {
         "ordered": true,
         "timesMs": [
-          0.6675243211660543,
-          0.6889548983351915,
-          0.7058187507851439
+          0.6675058703546929,
+          0.6889367531080776,
+          0.705800789155305
         ],
-        "delayMs": 0.038294429619089576
+        "delayMs": 0.03829491880061209
       },
       "peripheral": {
         "ordered": true,
         "timesMs": [
-          0.6619965699525002,
-          0.6833997246075418,
-          0.7002396829325414
+          0.6619777812830044,
+          0.6833812181207453,
+          0.7002213276580596
         ],
-        "delayMs": 0.03824311298004113
+        "delayMs": 0.038243546375055115
       },
-      "crossings": 19,
-      "somaCrossings": 1,
+      "crossings": 23,
+      "somaCrossings": 5,
       "firstEventRole": "soma"
     }
   ],
@@ -1337,33 +4395,40 @@
     {
       "id": "nominal-soma-injected",
       "exactObservationTimestamps": true,
-      "maximumSiteRmsMv": 3.1217460578745426e-9,
+      "maximumSiteRmsMv": 3.1316041404186064e-9,
       "rmsPerSiteMv": [
-        2.780802870455788e-9,
-        2.3497188183158807e-9,
-        1.4668495492121045e-9,
-        5.978588859851264e-10,
-        8.010409918671481e-10,
-        2.921689505563581e-9,
-        8.264617446633136e-10,
-        6.777348738834595e-10,
-        5.454377411117871e-10,
-        4.89605490560442e-10,
-        5.117249685279628e-10,
-        5.683694107294108e-10,
-        6.393171327833549e-10,
-        2.9130625138542597e-9,
-        6.933938494994508e-10,
-        7.756252699296246e-10,
-        1.684989421775984e-9,
-        2.6078459228858783e-9,
-        3.1217460578745426e-9
+        2.7718781585605935e-9,
+        2.3417517928213017e-9,
+        1.4604861254113253e-9,
+        5.925078434799897e-10,
+        8.056608198082294e-10,
+        2.9244931098759685e-9,
+        8.281149356742716e-10,
+        6.785473731941882e-10,
+        5.452160055289191e-10,
+        4.893521043110909e-10,
+        4.891784315557385e-10,
+        4.890588602328946e-10,
+        4.891052155298069e-10,
+        4.892068035271996e-10,
+        5.110387186966622e-10,
+        5.677487040484639e-10,
+        6.387399554742676e-10,
+        2.9134963994061414e-9,
+        6.917044341677197e-10,
+        7.796299834884977e-10,
+        1.691754928369017e-9,
+        2.61565230610774e-9,
+        3.1316041404186064e-9
       ],
       "identicalCrossingCounts": true,
-      "maximumCrossingTimeErrorMs": 1.9527490735526953e-11,
-      "maxRecordingErrorUv": 1.5843878431454073e-9,
-      "jsCrossings": 19,
-      "nativeCrossings": 19,
+      "unmatchedCrossings": 0,
+      "maximumCrossingTimeErrorMs": 1.9510726367855113e-11,
+      "maximumGeometryErrorUm": 9.094947017729282e-13,
+      "somaSegments": 5,
+      "maxRecordingErrorUv": 1.5844611178650325e-9,
+      "jsCrossings": 23,
+      "nativeCrossings": 23,
       "runtime": {
         "python": "3.12.14",
         "neuron": "8.2.7+",
@@ -1374,33 +4439,40 @@
     {
       "id": "nominal-extracellular",
       "exactObservationTimestamps": true,
-      "maximumSiteRmsMv": 1.003745699669979e-8,
+      "maximumSiteRmsMv": 1.5908011015366127e-8,
       "rmsPerSiteMv": [
-        9.629263099655771e-9,
-        7.76659995392269e-9,
-        6.182750120217387e-9,
-        4.475893990966666e-9,
-        2.1559234576055043e-9,
-        6.2190720958145835e-9,
-        2.5327439890664922e-9,
-        2.588853652645199e-9,
-        3.2843038552746895e-9,
-        3.790649440436233e-9,
-        4.561200682634233e-9,
-        6.103483029529584e-9,
-        7.1275561060845794e-9,
-        1.003745699669979e-8,
-        4.35875688690828e-9,
-        5.039871741630878e-9,
-        6.371478011122321e-9,
-        7.857711888866216e-9,
-        9.675822797065606e-9
+        9.592612308767081e-9,
+        7.88544919336405e-9,
+        6.34712855266729e-9,
+        4.898948710215144e-9,
+        4.309581814812975e-9,
+        6.620429968020111e-9,
+        8.07056400666266e-9,
+        9.431081798945287e-9,
+        1.230476999051782e-8,
+        1.4615080787242003e-8,
+        1.462448009414168e-8,
+        1.4632337974882347e-8,
+        1.463854204252735e-8,
+        1.4643130807215666e-8,
+        1.5079114656964212e-8,
+        1.5699283250461748e-8,
+        1.5908011015366127e-8,
+        1.4186917167303711e-8,
+        8.555853873426135e-9,
+        6.2922681292377415e-9,
+        6.757941546222641e-9,
+        8.086420694485975e-9,
+        9.775746624836002e-9
       ],
       "identicalCrossingCounts": true,
-      "maximumCrossingTimeErrorMs": 1.349940159656171e-10,
-      "maxRecordingErrorUv": 6.42361897007504e-9,
-      "jsCrossings": 19,
-      "nativeCrossings": 19,
+      "unmatchedCrossings": 0,
+      "maximumCrossingTimeErrorMs": 1.1634471164256865e-10,
+      "maximumGeometryErrorUm": 9.094947017729282e-13,
+      "somaSegments": 5,
+      "maxRecordingErrorUv": 6.063384017096496e-9,
+      "jsCrossings": 23,
+      "nativeCrossings": 23,
       "runtime": {
         "python": "3.12.14",
         "neuron": "8.2.7+",
@@ -1409,33 +4481,90 @@
       "silencedCompartments": []
     },
     {
-      "id": "initiation-region-silenced",
+      "id": "soma-only-silenced",
       "exactObservationTimestamps": true,
-      "maximumSiteRmsMv": 2.1513626926145549e-10,
+      "maximumSiteRmsMv": 1.9978347756701576e-10,
       "rmsPerSiteMv": [
-        4.144975901923463e-11,
-        6.157949476563905e-11,
-        7.158588176342758e-11,
-        1.0273315355176052e-10,
-        1.7951348915477607e-10,
-        1.6621472710417873e-10,
-        3.148837064555831e-11,
-        2.4497787711871818e-11,
-        1.8728163906692185e-11,
-        1.8869812374076496e-11,
-        1.8067759224032587e-11,
-        2.3926581457528766e-11,
-        3.0140663919651037e-11,
-        1.7681543227385959e-10,
-        2.1513626926145549e-10,
-        1.2881163288657686e-10,
-        8.833785152173493e-11,
-        7.239807891550514e-11,
-        3.900908773332623e-11
+        4.1062273724455526e-11,
+        5.216912778385315e-11,
+        6.442856084623941e-11,
+        1.0230802165906094e-10,
+        1.8814202349030076e-10,
+        1.6046098847807085e-10,
+        2.9190312298580274e-11,
+        2.258680374675227e-11,
+        2.0966275346048374e-11,
+        1.584734381127376e-11,
+        1.586061638235818e-11,
+        1.58767449538943e-11,
+        1.5850060545313272e-11,
+        1.5818502470791744e-11,
+        1.9070986888258642e-11,
+        2.1593935563207863e-11,
+        2.8046858309163515e-11,
+        1.709079783433886e-10,
+        1.9978347756701576e-10,
+        1.1073713777321778e-10,
+        7.349839826607743e-11,
+        6.353951573481582e-11,
+        4.249698433203078e-11
       ],
       "identicalCrossingCounts": true,
+      "unmatchedCrossings": 0,
       "maximumCrossingTimeErrorMs": 0,
-      "maxRecordingErrorUv": 1.0882961198888097e-11,
+      "maximumGeometryErrorUm": 9.094947017729282e-13,
+      "somaSegments": 5,
+      "maxRecordingErrorUv": 1.2373047031388751e-11,
+      "jsCrossings": 0,
+      "nativeCrossings": 0,
+      "runtime": {
+        "python": "3.12.14",
+        "neuron": "8.2.7+",
+        "integration": "native fixed-step NEURON, extracellular and unchanged AXNODE.mod cnexp"
+      },
+      "silencedCompartments": [
+        159,
+        160,
+        161,
+        162,
+        163
+      ]
+    },
+    {
+      "id": "initiation-region-silenced",
+      "exactObservationTimestamps": true,
+      "maximumSiteRmsMv": 2.1154453232003215e-10,
+      "rmsPerSiteMv": [
+        3.758914440641095e-11,
+        6.208474835315579e-11,
+        7.624854298565054e-11,
+        1.1067791449193833e-10,
+        1.9000590686056557e-10,
+        1.7775897672202742e-10,
+        2.6900913696616592e-11,
+        2.1473842103061996e-11,
+        1.883943878356448e-11,
+        2.0949264541628163e-11,
+        2.0953858576380414e-11,
+        2.0945909763406764e-11,
+        2.0916941843170455e-11,
+        2.088572847806724e-11,
+        1.9113473674180815e-11,
+        2.2675367838196953e-11,
+        2.723737167357509e-11,
+        1.8928855430177586e-10,
+        2.1154453232003215e-10,
+        1.2843171730212334e-10,
+        8.904848253614269e-11,
+        7.507452172706492e-11,
+        4.192659281255757e-11
+      ],
+      "identicalCrossingCounts": true,
+      "unmatchedCrossings": 0,
+      "maximumCrossingTimeErrorMs": 0,
+      "maximumGeometryErrorUm": 9.094947017729282e-13,
+      "somaSegments": 5,
+      "maxRecordingErrorUv": 1.0655629156808288e-11,
       "jsCrossings": 0,
       "nativeCrossings": 0,
       "runtime": {
@@ -1452,37 +4581,48 @@
         160,
         161,
         162,
-        163
+        163,
+        164,
+        165,
+        166,
+        167
       ]
     },
     {
       "id": "whole-cell-silenced",
       "exactObservationTimestamps": true,
-      "maximumSiteRmsMv": 4.262507591999974e-10,
+      "maximumSiteRmsMv": 4.1800422325272334e-10,
       "rmsPerSiteMv": [
-        4.262507591999974e-10,
-        3.236375760470894e-10,
-        2.8542589991590913e-10,
-        1.321996030894591e-10,
-        1.244990008561014e-10,
-        1.6324904244486084e-10,
-        3.338039679022538e-11,
-        2.282293859937196e-11,
-        1.4026157097633404e-11,
-        1.4459225550242802e-11,
-        1.3307713209648742e-11,
-        2.0783913083132397e-11,
-        2.8156296936167407e-11,
-        1.945989313106961e-10,
-        3.440596536772225e-10,
-        2.058487631965856e-10,
-        2.0948172367874453e-10,
-        2.76564048534148e-10,
-        2.647449019611599e-10
+        4.1800422325272334e-10,
+        3.1449339790827754e-10,
+        2.738742233233225e-10,
+        1.1713465296673783e-10,
+        1.2279921901749094e-10,
+        1.8182498650917379e-10,
+        3.0295124137868465e-11,
+        3.1634335840265834e-11,
+        3.792284717363512e-11,
+        4.34136705674324e-11,
+        4.3421639679212774e-11,
+        4.342539492185042e-11,
+        4.341716858648978e-11,
+        4.338780581601661e-11,
+        4.1643358092988967e-11,
+        4.207166090472861e-11,
+        4.3860769906586115e-11,
+        2.0809862157441093e-10,
+        2.5814378423925616e-10,
+        2.1020402944732175e-10,
+        2.1482225752312008e-10,
+        2.8132784917162627e-10,
+        2.6919024993937025e-10
       ],
       "identicalCrossingCounts": true,
+      "unmatchedCrossings": 0,
       "maximumCrossingTimeErrorMs": 0,
-      "maxRecordingErrorUv": 8.556266806181156e-12,
+      "maximumGeometryErrorUm": 9.094947017729282e-13,
+      "somaSegments": 5,
+      "maxRecordingErrorUv": 1.0097950253751264e-11,
       "jsCrossings": 0,
       "nativeCrossings": 0,
       "runtime": {
@@ -1505,41 +4645,52 @@
         161,
         162,
         163,
-        194,
-        225,
-        256,
-        287,
-        318
+        164,
+        165,
+        166,
+        167,
+        198,
+        229,
+        260,
+        291,
+        322
       ]
     },
     {
       "id": "passive-soma",
       "exactObservationTimestamps": true,
-      "maximumSiteRmsMv": 1.9663436754340316e-10,
+      "maximumSiteRmsMv": 2.0096265922415203e-10,
       "rmsPerSiteMv": [
-        3.966791130931363e-11,
-        5.321950437299369e-11,
-        6.558507192544068e-11,
-        1.008276054203842e-10,
-        1.8543198530408274e-10,
-        1.5719974089674073e-10,
-        3.213592294414408e-11,
-        2.575273019822801e-11,
-        2.3718912557187244e-11,
-        1.7169980962126223e-11,
-        2.1839099766469972e-11,
-        2.4283088767913947e-11,
-        3.0381402953773986e-11,
-        1.676455393431724e-10,
-        1.9663436754340316e-10,
-        1.0925273176362365e-10,
-        7.294472822855928e-11,
-        6.257005797930277e-11,
-        4.521367687375677e-11
+        4.268985490537389e-11,
+        5.790149986824138e-11,
+        7.05571501783117e-11,
+        1.0819512655156066e-10,
+        1.9315379129291168e-10,
+        1.6318010663277388e-10,
+        2.6725656989855413e-11,
+        2.0229687716558325e-11,
+        1.9093329865689713e-11,
+        1.3184778538574132e-11,
+        1.320227733162009e-11,
+        1.3221086889817098e-11,
+        1.3187520984160334e-11,
+        1.3148728488530114e-11,
+        1.7225611633656662e-11,
+        1.984402446667391e-11,
+        2.6641863176845102e-11,
+        1.7247369106469898e-10,
+        2.0096265922415203e-10,
+        1.1256933555687186e-10,
+        7.601917626959853e-11,
+        6.514099404083934e-11,
+        4.399427217578526e-11
       ],
       "identicalCrossingCounts": true,
+      "unmatchedCrossings": 0,
       "maximumCrossingTimeErrorMs": 0,
-      "maxRecordingErrorUv": 1.1725634352366399e-11,
+      "maximumGeometryErrorUm": 9.094947017729282e-13,
+      "somaSegments": 5,
+      "maxRecordingErrorUv": 1.1276368727664021e-11,
       "jsCrossings": 0,
       "nativeCrossings": 0,
       "runtime": {
@@ -1562,7 +4713,10 @@
         6.748270885500137e-9
       ],
       "identicalCrossingCounts": true,
+      "unmatchedCrossings": 0,
       "maximumCrossingTimeErrorMs": 2.7116087153444823e-11,
+      "maximumGeometryErrorUm": 9.094947017729282e-13,
+      "somaSegments": 0,
       "maxRecordingErrorUv": 4.5601757925339825e-9,
       "jsCrossings": 6,
       "nativeCrossings": 6,
@@ -1576,7 +4730,7 @@
   ],
   "errors": [],
   "summary": {
-    "requiredPass": 48,
+    "requiredPass": 66,
     "requiredFail": 0,
     "numericalGatePassed": true,
     "biologicalValidation": false,
@@ -1586,11 +4740,11 @@
     "node": "v24.22.1",
     "platform": "linux",
     "cpu": "AMD EPYC 9V74 80-Core Processor",
-    "elapsedSeconds": 104.55053215500001
+    "elapsedSeconds": 119.58570914
   },
   "limitations": [
     "Soma/stem geometry and channel densities are explicit hypothetical choices, not human or engineered-cell fits.",
-    "The soma is a lumped equivalent cylinder with exposed spherical-band area; circumferential nonlinear membrane polarization is unresolved.",
+    "The soma is represented by five axial equivalent-cylinder segments with areas matched to spherical surface bands; circumferential nonlinear membrane polarization is unresolved.",
     "Native NEURON agreement verifies the stated equations; negative sensitivity or causal outcomes are not suppressed.",
     "Analytic extracellular coefficients in this component test do not replace the separate insulating-well/FEM reference fixture."
   ]

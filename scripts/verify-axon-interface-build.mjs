@@ -50,10 +50,11 @@ assert.ok(/not biological|not.*clinical/i.test(published.completeStage1Meaning),
 assert.ok(Array.isArray(published.limitations)&&published.limitations.length>0,'Published limitations are missing.');
 assert.deepEqual(published.missingOrFailingReports,[],'Required evidence is absent or failing.');
 assert.deepEqual(published.sourceMismatches,[],'Published source provenance is stale.');
-const reportFiles={membrane:'mrg-numerical-report.json',field:'field-validation.json',coupled:'mrg-coupled-report.json',integration:'integration-validation.json',
+assert.deepEqual(published.evidenceMismatches,[],'Published evidence differs from the verified aggregate.');
+const reportFiles={nativeBuild:'native-build-report.json',membrane:'mrg-numerical-report.json',field:'field-validation.json',coupled:'mrg-coupled-report.json',integration:'integration-validation.json',
  bipolar:'bipolar-numerical-report.json',somaSpatial:'bipolar-soma-spatial-report.json',bipolarCoupled:'bipolar-coupled-report.json',
  wellField:'field-stage1-validation.json',denseWells:'field-stage1-dense-validation.json',wellBoundary:'field-stage1-domain-validation.json',
- protocol:'stage1-protocol-validation.json',reproduction:'reproduction-report.json'};
+ protocol:'stage1-protocol-validation.json',reproduction:'reproduction-stage1-report.json'};
 for(const [key,filename] of Object.entries(reportFiles)){
  assert.ok(published[key],`The validation endpoint omits ${key} evidence.`);
  const current=JSON.parse(await readFile(path.join(root,'docs/axon-interface',filename),'utf8'));
@@ -137,16 +138,37 @@ for(const [name,cohort] of [['small cohort',protocol.smallCohort],['full cohort'
 assert.ok(protocol.fullCohort.cohortCount>=200,'The complete Stage 1 release lacks an executed few-hundred-cell protocol.');
 assert.equal(reproduction.status,'pass','Full reproduction is not passing. Regenerate on frozen source, then rebuild.');
 assert.equal(reproduction.scope,'stage1-complete-numerical-and-integration','Reproduction must include the complete Stage 1 scope.');
-assert.equal(reproduction.acceptanceChanged,false,'The reproduction reports changed acceptance criteria.');
-assert.ok(reproduction.stages.length>0&&reproduction.stages.every(stage=>stage.status==='pass'),'Reproduction contains a failed or unexecuted stage.');
-for(const script of ['field-validate.mjs','mrg-validate.mjs','mrg-coupled-validate.mjs','bipolar-validate.mjs','field-stage1-validate.mjs','field-stage1-dense-validate.mjs','field-stage1-domain-validate.mjs','bipolar-soma-spatial.mjs','bipolar-coupled-validate.mjs','stage1-protocol-validate.mjs']){
- assert.ok(reproduction.stages.some(stage=>stage.status==='pass'&&stage.arguments?.some(argument=>path.basename(argument)===script)),`Reproduction did not execute ${script}.`);
+assert.ok(['executed','verified-existing-evidence'].includes(reproduction.mode),'The aggregate must disclose whether evidence was regenerated or verified from existing reports.');
+assert.equal(reproduction.summary.failed,0,'A required aggregate evidence check failed.');
+assert.equal(reproduction.summary.requiredEvidenceCount,12,'The complete evidence set must retain all twelve required components.');
+assert.equal(reproduction.evidence.length,12,'Required evidence entries are missing.');
+assert.ok(Object.keys(reproduction.frozenAcceptance).length>=8&&Object.values(reproduction.frozenAcceptance).every(row=>row.status==='pass'&&row.sha256===row.expectedSha256),'A frozen acceptance file was changed or omitted.');
+for(const entry of reproduction.evidence){
+ assert.equal(entry.status,'pass',`Aggregate evidence failed: ${entry.name}`);
+ assert.ok(entry.sourceHashCount>0,`Evidence lacks source provenance: ${entry.name}`);
+ const reportPath=inside(root,entry.report),bytes=await readFile(reportPath);
+ assert.equal(createHash('sha256').update(bytes).digest('hex'),entry.reportSha256,`Evidence changed after aggregate verification: ${entry.report}`);
+ assert.ok(entry.measurementCompletedAt,`Evidence lacks its original measurement timestamp: ${entry.name}`);
+ const producingCommand=entry.producerCommand??entry.capturedExecution?.arguments;
+ assert.ok(Array.isArray(producingCommand)&&producingCommand.length>0,`Evidence lacks a reproducible producer command: ${entry.name}`);
 }
-assert.ok(reproduction.stages.some(stage=>stage.name==='native-mechanism-build'&&stage.status==='pass'),'Native mechanisms were not rebuilt.');
-assert.ok(reproduction.stages.some(stage=>stage.name==='integration-tests'&&stage.status==='pass'),'Production integration/worker tests were not executed.');
+if(reproduction.mode==='verified-existing-evidence'){
+ assert.equal(reproduction.measurementsRegenerated,false,'Verification of existing evidence must not claim regenerated measurements.');
+ assert.deepEqual(reproduction.commandsExecutedThisInvocation,[],'Existing-evidence aggregation must not invent executed study commands.');
+ assert.ok(reproduction.evidence.every(entry=>entry.mode==='verified-from-existing'&&entry.executedByThisInvocation===false),'Existing evidence must retain its actual execution provenance.');
+}else{
+ assert.equal(reproduction.measurementsRegenerated,true,'Executed reproduction must regenerate measurements.');
+ assert.ok(reproduction.commandsExecutedThisInvocation.length>=12&&reproduction.commandsExecutedThisInvocation.every(command=>command.status==='pass'),'Executed reproduction contains failed or absent required commands.');
+ assert.ok(reproduction.evidence.every(entry=>entry.mode==='executed'&&entry.executedByThisInvocation===true),'Executed evidence must identify this invocation.');
+}
+for(const script of ['field-validate.mjs','mrg-validate.mjs','mrg-coupled-validate.mjs','bipolar-validate.mjs','field-stage1-validate.mjs','field-stage1-dense-validate.mjs','field-stage1-domain-validate.mjs','bipolar-soma-spatial.mjs','bipolar-coupled-validate.mjs','stage1-protocol-validate.mjs']){
+ assert.ok(reproduction.evidence.some(entry=>entry.producerCommand?.some(argument=>path.basename(argument)===script)),`The aggregate omits evidence produced by ${script}.`);
+}
+for(const name of ['nativeBuild','integration'])assert.ok(reproduction.evidence.some(entry=>entry.name===name&&entry.status==='pass'),`Missing current ${name} evidence.`);
+assert.equal(published.nativeBuild.status,'pass','Native mechanisms were not rebuilt on the recorded source.');
 // Successful source stability is represented by the empty change list plus
 // exact hashes, not by a fabricated passing source-stability stage.
-for(const [label,report] of [['bipolar',bipolar],['soma spatial',somaSpatial],['well/native coupling',bipolarCoupled],['protocol',protocol],['reproduction',reproduction]])await verifyHashes(report,label);
+for(const [label,report] of [['native build',published.nativeBuild],['motor membrane',membrane],['motor coupling',coupled],['integration',integration],['bipolar',bipolar],['soma spatial',somaSpatial],['well/native coupling',bipolarCoupled],['protocol',protocol],['reproduction',reproduction]])await verifyHashes(report,label);
 assert.ok(reproduction.sourceHashes['src/lib/axon-interface/vendor/cdt2d.mjs'],'Reproduction omits the meshing vendor.');
 const labText=plain(lab),methodText=plain(methods);
 assert.ok(!methodText.includes('[object Object]'),'The rendered parameter register contains object placeholders.');

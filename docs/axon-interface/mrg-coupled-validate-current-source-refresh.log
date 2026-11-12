@@ -1,0 +1,161 @@
+{
+  "passed": true,
+  "rows": [
+    {
+      "intervention": "assigned",
+      "status": "pass",
+      "exactObservationTimestamps": true,
+      "membraneMaxNodeRmsMv": 7.773830257819484e-9,
+      "rmsPerNodeMv": [
+        7.773830257819484e-9,
+        6.490039432508768e-9,
+        5.247924246403576e-9,
+        3.770953523563091e-9,
+        2.0635519143213975e-9,
+        2.4636891911928537e-9,
+        3.4387133981658956e-9,
+        2.4947269402545633e-9,
+        3.6433058153531163e-9,
+        5.840556516066809e-9,
+        7.63583679371551e-9
+      ],
+      "identicalCrossingCounts": true,
+      "maxCrossingTimeErrorMs": 2.6491697724395635e-11,
+      "maxRecordingErrorUv": 1.4315260088437753e-10,
+      "jsCrossings": 12,
+      "neuronCrossings": 12,
+      "propagation": {
+        "recruited": true,
+        "times": [
+          0.6577341267531444,
+          0.6881640293692644,
+          0.7102524939900867
+        ],
+        "nodeOrdinals": [
+          7,
+          8,
+          9
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [
+          37.791773917501594,
+          52.06337424267676
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three unsilenced distal nodes, positive delays, 1–200 m/s segment velocities, at most twofold velocity mismatch. Temporal evidence is not proof of a single travelling event."
+      },
+      "expectedControl": true,
+      "transformations": {
+        "timeShiftMs": 0,
+        "baselineSubtraction": false,
+        "amplitudeScaling": false,
+        "timestampTransformation": false
+      },
+      "runtime": {
+        "python": "3.12.14",
+        "neuron": "8.2.7+",
+        "integration": "native fixed-step NEURON, secondorder=0, extracellular + unchanged AXNODE cnexp"
+      }
+    },
+    {
+      "intervention": "proximal-silenced",
+      "status": "pass",
+      "exactObservationTimestamps": true,
+      "membraneMaxNodeRmsMv": 1.8000635343724381e-9,
+      "rmsPerNodeMv": [
+        1.8684589479923835e-10,
+        2.4894574325495095e-10,
+        2.568849498001366e-10,
+        2.5004827978021255e-10,
+        9.974609545917984e-10,
+        1.15512188093733e-9,
+        1.8000635343724381e-9,
+        5.95616105520577e-10,
+        4.759007041136222e-10,
+        4.458327141420083e-10,
+        3.702081899725127e-10
+      ],
+      "identicalCrossingCounts": true,
+      "maxCrossingTimeErrorMs": 0,
+      "maxRecordingErrorUv": 5.380873524529761e-11,
+      "jsCrossings": 0,
+      "neuronCrossings": 0,
+      "propagation": {
+        "recruited": false,
+        "times": [],
+        "nodeOrdinals": [
+          7,
+          8,
+          9
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three unsilenced distal nodes, positive delays, 1–200 m/s segment velocities, at most twofold velocity mismatch. Temporal evidence is not proof of a single travelling event."
+      },
+      "expectedControl": true,
+      "transformations": {
+        "timeShiftMs": 0,
+        "baselineSubtraction": false,
+        "amplitudeScaling": false,
+        "timestampTransformation": false
+      },
+      "runtime": {
+        "python": "3.12.14",
+        "neuron": "8.2.7+",
+        "integration": "native fixed-step NEURON, secondorder=0, extracellular + unchanged AXNODE cnexp"
+      }
+    },
+    {
+      "intervention": "whole-silenced",
+      "status": "pass",
+      "exactObservationTimestamps": true,
+      "membraneMaxNodeRmsMv": 1.812965870736819e-9,
+      "rmsPerNodeMv": [
+        7.899386032986509e-10,
+        1.0981471307214225e-9,
+        1.1435605693049617e-9,
+        8.20075364533362e-10,
+        1.0509945482787026e-9,
+        1.1455663019141582e-9,
+        1.812965870736819e-9,
+        6.639632134571592e-10,
+        5.873952133351921e-10,
+        6.16299179634309e-10,
+        5.748944469583282e-10
+      ],
+      "identicalCrossingCounts": true,
+      "maxCrossingTimeErrorMs": 0,
+      "maxRecordingErrorUv": 5.241723721738367e-11,
+      "jsCrossings": 0,
+      "neuronCrossings": 0,
+      "propagation": {
+        "recruited": false,
+        "times": [],
+        "nodeOrdinals": [
+          7,
+          8,
+          9
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three unsilenced distal nodes, positive delays, 1–200 m/s segment velocities, at most twofold velocity mismatch. Temporal evidence is not proof of a single travelling event."
+      },
+      "expectedControl": true,
+      "transformations": {
+        "timeShiftMs": 0,
+        "baselineSubtraction": false,
+        "amplitudeScaling": false,
+        "timestampTransformation": false
+      },
+      "runtime": {
+        "python": "3.12.14",
+        "neuron": "8.2.7+",
+        "integration": "native fixed-step NEURON, secondorder=0, extracellular + unchanged AXNODE cnexp"
+      }
+    }
+  ],
+  "sourceChangedDuringRun": [],
+  "seconds": 10.608891376999999
+}

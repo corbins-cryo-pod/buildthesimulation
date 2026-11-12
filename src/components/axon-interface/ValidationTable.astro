@@ -2,12 +2,25 @@
 const {title,report,description=''}=Astro.props;
 const rows=report?.tests??report?.results??report?.rows??[];
 const format=value=>value==null?'—':typeof value==='number'?(value!==0&&Math.abs(value)<.0001?value.toExponential(6):value.toLocaleString('en-US',{maximumFractionDigits:8})):typeof value==='object'?JSON.stringify(value):String(value);
+const label=t=>[t.name??t.case??t.intervention??t.id??'Declared comparison',t.amplitudeUa!=null?t.amplitudeUa+' µA':null,t.fromDtMs!=null?t.fromDtMs+' → '+t.toDtMs+' ms':null].filter(Boolean).join(' · ');
+const measured=t=>{
+ const value=t.measured??t.value??t.observed??t.maxNodeRmsMv??t.maximumNodeRmsMv;
+ if(value!=null)return format(value)+(t.unit??t.units?' '+(t.unit??t.units):'');
+ if(t.maximumSiteRmsMv!=null)return ['RMS '+format(t.maximumSiteRmsMv)+' mV',t.maximumCrossingTimeErrorMs!=null?'crossing '+format(t.maximumCrossingTimeErrorMs)+' ms':null,t.maximumRecordingErrorUv!=null?'recording '+format(t.maximumRecordingErrorUv)+' µV':null].filter(Boolean).join('; ');
+ return 'Detailed values in the complete report';
+};
+const limit=t=>{
+ if(t.limit!=null||t.tolerance!=null)return format(t.limit??t.tolerance);
+ const limits=report?.acceptance?.limits;
+ if(t.maximumSiteRmsMv!=null&&limits)return 'RMS ≤ '+format(t.fromDtMs!=null?limits.timeHalvingMaximumSiteRmsMv:limits.nativeMaximumSiteRmsMv)+' mV; crossing ≤ '+format(t.fromDtMs!=null?limits.timeHalvingMaximumCrossingTimeMs:limits.nativeMaximumCrossingTimeMs)+' ms'+(t.maximumRecordingErrorUv!=null?'; recording ≤ '+format(limits.nativeRecordingMaximumErrorUv)+' µV':'');
+ return 'Declared contract';
+};
 ---
 <section class="ax-validation-block">
 <h3>{title}</h3>
 {description&&<p>{description}</p>}
 {report?<><p class="ax-fine">Recorded result: {report.status??(report.passed?'pass':report.summary?.numericalGatePassed?'required numerical gates pass':'see individual results')}. Source hashes and untransformed comparison details are included in the machine-readable report.</p>
-{rows.length>0&&<div class="ax-table-scroll"><table><thead><tr><th>Executed check / case</th><th>Measured</th><th>Limit</th><th>Status</th></tr></thead><tbody>{rows.map(t=><tr><td>{t.name??t.case??t.intervention??t.id??'Declared comparison'}{t.required===false?' · diagnostic':''}</td><td>{format(t.measured??t.value??t.observed??t.maxNodeRmsMv??t.maximumNodeRmsMv??t)} {t.unit??t.units??''}</td><td>{format(t.limit??t.tolerance)}</td><td>{t.status??(t.passed===true?'pass':t.passed===false?'fail':'see report')}</td></tr>)}</tbody></table></div>}
+{rows.length>0&&<div class="ax-table-scroll"><table><thead><tr><th>Executed check / case</th><th>Measured</th><th>Limit</th><th>Status</th></tr></thead><tbody>{rows.map(t=><tr><td>{label(t)}{t.required===false?' · diagnostic':''}</td><td>{measured(t)}</td><td>{limit(t)}</td><td>{t.status??(t.passed===true?'pass':t.passed===false?'fail':'see report')}</td></tr>)}</tbody></table></div>}
 <details class="ax-inspection"><summary>Complete executed report</summary><pre>{JSON.stringify(report,null,2)}</pre></details>
 </>:<p class="ax-callout-small">Final executed evidence for this component is pending. No pass is inferred from an absent report.</p>}
 </section>
