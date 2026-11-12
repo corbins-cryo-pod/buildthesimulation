@@ -1,0 +1,265 @@
+{
+  "schema": "axon-stage2-execution-interruption/1",
+  "recordedDate": "2026-11-12",
+  "completeStage2": false,
+  "releaseQualified": false,
+  "status": "blocked-field-convergence-and-execution-unavailable",
+  "baseCommit": "62f80fdef34bcb8642121ef3bebbbeff239c8af4",
+  "modelVersion": "axon-modalities-coupled-0.4.3",
+  "branch": "feature/axon-resolution-stage2",
+  "pullRequest": 391,
+  "evidenceBoundary": "GitHub commit, CI results and committed status were re-read after execution became unavailable. Numerical results below are observations preserved from the preceding work session, not newly retrieved raw reports or a new qualification run.",
+  "verifiedRemoteEvidence": {
+    "checkRuns": [
+      {
+        "name": "Cloudflare Pages",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/corbins-cryo-pod/buildthesimulation/runs/131298365348"
+      },
+      {
+        "name": "astro-build",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/corbins-cryo-pod/buildthesimulation/actions/runs/43251114886/job/131296843646"
+      },
+      {
+        "name": "reference-and-browser",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/corbins-cryo-pod/buildthesimulation/actions/runs/43251114911/job/131296842803"
+      },
+      {
+        "name": "source-and-tests",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/corbins-cryo-pod/buildthesimulation/actions/runs/43251115106/job/131296841839"
+      },
+      {
+        "name": "build",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/corbins-cryo-pod/buildthesimulation/actions/runs/43251114957/job/131296841652"
+      },
+      {
+        "name": "reference-and-browser",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/corbins-cryo-pod/buildthesimulation/actions/runs/43251114664/job/131296841402"
+      },
+      {
+        "name": "source-and-tests",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/corbins-cryo-pod/buildthesimulation/actions/runs/43251101486/job/131296792043"
+      }
+    ],
+    "fullSiteTestJob": {
+      "url": "https://github.com/corbins-cryo-pod/buildthesimulation/actions/runs/43251114957/job/131296841652",
+      "main": {
+        "tests": 1060,
+        "pass": 1058,
+        "fail": 0,
+        "skip": 2
+      },
+      "requiredBrowser": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "skip": 0
+      }
+    },
+    "deployedPreview": "https://f1036f7c.buildthesimulation.pages.dev/simulations/biohybrid-axon-interface/stage2/"
+  },
+  "unchangedAcceptance": {
+    "perCellInductionTransferRelativeL2": 0.05,
+    "productionOriginalEquationRelativeResidual": 1e-10,
+    "productionRecurrenceResidual": 2e-12,
+    "productionIterationCap": 16000,
+    "independentOriginalEquationRelativeResidual": 1e-9,
+    "independentPotentialRelativeL2": 0.000001,
+    "independentLoadRelativeL2": 1e-8,
+    "independentPotentialAbsoluteUvPerAmperePerSecond": 0.001,
+    "zeroInputDriftMv": 0.1,
+    "zeroInputSpikes": 0,
+    "nativeAndTimePerSiteRmsMv": 1,
+    "nativeAndTimeSpikeTimingMs": 0.1,
+    "identicalCrossingCounts": true,
+    "cableSpatialDelayRelative": 0.05,
+    "cableSpatialRecordingPeakToPeakRelative": 0.1
+  },
+  "observationsBeforeInterruption": {
+    "radial4To5AtAxial4": {
+      "status": "failed",
+      "perCellRelativeL2": [
+        0.00157595191196,
+        0.03715712832775,
+        0.0672702439016,
+        0.06117051255058
+      ],
+      "fineSolve": {
+        "iterations": 7747,
+        "trueResidual": 8.2966917e-11,
+        "recurrenceResidual": 1.9840076e-12
+      },
+      "report": "docs/axon-interface/stage2/retained/induction-4-to-5-radial-failure.json"
+    },
+    "nestedMeshContracts": {
+      "checksPassed": 7,
+      "affineFieldAbsoluteErrorMv": 1.136868e-13,
+      "relativeContactAreaError": 0,
+      "eachContactFacetConductingTetCount": 1
+    },
+    "nestedPlanar1Axial1": {
+      "unknowns": 419093,
+      "rawNodes": 438945,
+      "tetrahedra": 2401728,
+      "nnz": 8562101,
+      "iterations": 4733,
+      "trueResidual": 1.10942712358e-11,
+      "independent": {
+        "status": "passed-for-this-fixture-only",
+        "iterations": 5236,
+        "residualCorrections": 0,
+        "trueResidual": 4.870867963112304e-11,
+        "potentialRelativeL2": 2.897801261285902e-11,
+        "loadRelativeL2": 6.805031125074468e-13,
+        "maxPotentialAbsoluteErrorUvPerAmperePerSecond": 1.638358e-17
+      },
+      "releaseQualified": false
+    },
+    "nestedAxial1To2AtPlanar1": {
+      "status": "failed",
+      "perCellRelativeL2": [
+        0.00405511504327,
+        0.0251588827766,
+        0.01169470968849,
+        0.05725177920054
+      ],
+      "diagnosticNote": "The fourth listed cell exceeds 5%; no passing axial qualification was observed."
+    },
+    "nestedPlanar1To2AtAxial1": {
+      "status": "completion-unknown",
+      "lastObserved": "Planar-2 mesh built; source assembly/solve pending.",
+      "fineMesh": {
+        "unknowns": 1657037,
+        "rawNodes": 1751425,
+        "tetrahedra": 9606912,
+        "nnz": 34063933
+      },
+      "sessionId": 31514,
+      "log": "/tmp/nested-induction-study.log"
+    },
+    "independentConservativeField3": {
+      "status": "passed-for-this-fixture-only",
+      "trueResidual": 2.8136087248399515e-14,
+      "potentialRelativeL2": 4.782370254333377e-11,
+      "loadRelativeL2": 6.789386663884683e-13,
+      "iterations": 10242,
+      "residualCorrections": 1,
+      "priorFailedTrueResidual": 1.7357269e-9
+    },
+    "fullProtocol043": {
+      "status": "canceled-no-current-magnetic-result",
+      "exitCode": 130,
+      "reason": "Superseded after radial 4-to-5 convergence failure.",
+      "log": "/tmp/stage2-043-protocol.log"
+    },
+    "spectralProtocol043": {
+      "checksPassed": 34,
+      "families": [
+        2,
+        3,
+        4
+      ],
+      "sameRuntimeReplay": "exact"
+    },
+    "hostedSpectral043": {
+      "status": "observed-complete-raw-export-currently-inaccessible",
+      "elapsedSeconds": 82.9532,
+      "settings": {
+        "families": 2,
+        "axonCount": 4,
+        "physicalSourceCount": 1,
+        "seed": 4079,
+        "amplitudes": [
+          0,
+          0.002
+        ],
+        "photons": 32000,
+        "expressionMultiplier": 20,
+        "view": "2D cross-section"
+      },
+      "nodeComparison": {
+        "allDiscreteMatricesExact": true,
+        "settingsExact": true,
+        "nonNumericDifferences": 0,
+        "maximumVoltageDifferenceMv": 2.8180124900245573e-11,
+        "exportsBitwiseEqual": false
+      },
+      "browserExportSha256": "1fba38c09716e7a12a5e04f49d6b21ddc5ac2254aac57a7b41dddb8eda9b8d74",
+      "nodeExportSha256": "90f35fd81ef0377d609f0ef3f1009a10a09459e714faa4585ef760e78720eebf",
+      "rawExport": "/workspace/shared/axon-stage2-spectral-043.json",
+      "screenshot": "/workspace/shared/axon-stage2-spectral-043.jpg",
+      "comparison": "/tmp/spectral-043-browser-comparison.json",
+      "qualificationLimitation": "Does not verify magnetic operation or qualify a future mesh change."
+    }
+  },
+  "observedSourceHashes": {
+    "src/lib/axon-interface/field-stage1.mjs": "dd60139ae3bff6673e3b1bb7d0361694d41715f53de70207c9fa069c2cc34653",
+    "src/lib/axon-interface/stage2/induction-conservative-load.mjs": "9e3d7506dddc11f2a5af88690ed1287118fd734e446b7220560581a0ee45c1f1",
+    "src/lib/axon-interface/stage2/induction-precision-solve.mjs": "26163d03c6b87f1802603b6afc863ef9f7cf5af1a5751de1f1ea32be2ff4a633",
+    "src/lib/axon-interface/stage2/nested-field.mjs": "5a2335ed6118421bbbaf928fa0ef79a82cd5e10a135304430ea5228e66c85f5e"
+  },
+  "proposedNextStudy": {
+    "status": "proposal-not-executed-or-qualified",
+    "productionCandidate": {
+      "baseRadial": 2,
+      "planarRefinement": 1,
+      "axialRefinement": 2
+    },
+    "axialReference": {
+      "baseRadial": 2,
+      "planarRefinement": 1,
+      "axialRefinement": 3
+    },
+    "planarReference": {
+      "baseRadial": 2,
+      "planarRefinement": 2,
+      "axialRefinement": 2
+    },
+    "note": "Assess the unresolved planar-2/axial-1 study first. A larger offline reference requires separately predeclared resource admission; it must not change browser limits, physical equations or acceptance thresholds."
+  },
+  "recovery": {
+    "originalCheckout": "/workspace/scratch/9c5c18551577/buildthesimulation",
+    "runtime": {
+      "node": "24.22.1",
+      "python": "3.12.14",
+      "neuron": "8.2.7",
+      "numpy": "2.3.5",
+      "scipy": "1.17",
+      "memoryApproximatelyGb": 10
+    },
+    "sourceNotYetConfirmedInGit": [
+      "scripts/axon-interface/stage2/generate-nested-field.py",
+      "src/lib/axon-interface/stage2/nested-field.mjs",
+      "scripts/axon-interface/stage2/nested-induction-run.mjs",
+      "scripts/axon-interface/stage2/nested-induction-check.mjs",
+      "scripts/axon-interface/stage2/nested-mesh-contract-check.mjs",
+      "scripts/axon-interface/stage2/nested-independent-check.mjs"
+    ],
+    "reportsNotYetConfirmedInGit": [
+      "docs/axon-interface/stage2/nested-refinement-plan.json",
+      "docs/axon-interface/stage2/nested-field-1-1.json",
+      "docs/axon-interface/stage2/nested-field-1-2.json",
+      "docs/axon-interface/stage2/nested-field-2-1.json",
+      "docs/axon-interface/stage2/nested-induction-validation.json",
+      "docs/axon-interface/stage2/nested-independent-validation.json",
+      "docs/axon-interface/stage2/nested-mesh-contract-validation.json",
+      "docs/axon-interface/stage2/retained/induction-4-to-5-radial-failure.json",
+      "docs/axon-interface/stage2/retained/field4-full-protocol-superseded.json"
+    ],
+    "instruction": "Inspect the recovered checkout before any reset or clean. Preserve uncommitted sources, plans, reports and logs. If they cannot be recovered, recreate and re-run; do not synthesize raw validation reports from these observations.",
+    "largeStudies": "Run large FEM and independent-reference studies serially; overlapping allocations exceeded the environment memory."
+  }
+}
