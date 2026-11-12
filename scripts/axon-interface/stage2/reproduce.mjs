@@ -14,9 +14,9 @@ if(!collect){
  run('component-reference',python,['reference/verify.py'],{cwd:path.join(root,'labs/axon-stage2')});
  const bin=spawnSync(python,['-c','import sys,pathlib;print(pathlib.Path(sys.executable).parent)'],{encoding:'utf8'}).stdout?.trim();
  for(const d of ['scripts/axon-interface/mrg-modeldb','scripts/axon-interface/stage2/mechanisms'])run(d.endsWith('mrg-modeldb')?'compile-native':'compile-opsin',path.join(bin??'', 'nrnivmodl'),[],{cwd:path.join(root,d),env:{...process.env,CC:'gcc',CXX:'g++'}});
- for(const name of ['coupling','surface','spatial','induction','magnetic-coupling','magnetic-policy','protocol'])run(name,process.execPath,['scripts/axon-interface/stage2/'+name+'-check.mjs'],{env:{...process.env,MRG_PYTHON:python}});
+ for(const name of ['coupling','surface','spatial','induction','magnetic-path','magnetic-coupling','magnetic-policy','protocol'])run(name,process.execPath,['scripts/axon-interface/stage2/'+name+'-check.mjs'],{env:{...process.env,MRG_PYTHON:python}});
 }
-const component=read('labs/axon-stage2/reports/independent-reference.json'),coupled=Object.fromEntries(['coupling','surface','spatial','induction','magnetic-coupling','magnetic-policy','protocol'].map(k=>[k,read(dir+'/'+k+'-validation.json')])),browser=read(dir+'/browser-validation.json');
+const component=read('labs/axon-stage2/reports/independent-reference.json'),coupled=Object.fromEntries(['coupling','surface','spatial','induction','magnetic-path','magnetic-coupling','magnetic-policy','protocol'].map(k=>[k,read(dir+'/'+k+'-validation.json')])),browser=read(dir+'/browser-validation.json');
 const gates=Object.entries(coupled).filter(([k,r])=>!r?.complete||!r?.passed).map(([k])=>k+' numerical qualification remains incomplete or failed.');
 if(component?.requiredFail!==0||component?.requiredPass!==65)gates.push('Independent component reference is missing or failing.');
 if(!browser?.passed||!browser?.hosted)gates.push('Final hosted browser verification remains pending.');

@@ -9,7 +9,7 @@ This extends the verified conditional Stage 1 branch without replacing its membr
 - Full declared cohorts and isolated channels are resolved across a finite amplitude grid. Regional, whole-cell, soma-only and applicable opsin-block interventions retain the same initial state, morphology, field and parameters.
 - Exclusive/shared counts, exact real rank and isolated-input information remain distinct. Mechanism-dependent exclusivity is checked against the complete assigned row, including every off-target.
 - Source-separated reciprocal recording, field confinement, drive energy, voltage replay, comparison, settings import and complete JSON/matrix/event/yield/time-series exports are integrated.
-- Independent NEURON current-clamp references, time halving, actual nonuniform optical coupling, spatial and optical shell/domain studies, 37 protocol checks, 12 conditional magnetic membrane checks and 52 software contracts are available with retained failures.
+- Independent NEURON current-clamp references, time halving, actual nonuniform optical coupling, spatial and optical shell/domain studies, 37 protocol checks, 12 conditional magnetic membrane checks, 8 cable-path quadrature checks and 52 software contracts are available with retained failures.
 
 ## Observed fixture
 
@@ -28,9 +28,11 @@ Hosted verification passed at commit `0d4238b`: the four-cell, one-channel optic
 
 A separate unqualified Stage 3 development draft already exists in PR #390 on `feature/axon-resolution-stage3-growth`. It is preserved. This checkpoint does not certify that draft or integrate its identity manifest into the electrical geometry. The original prompt requires verified stages in order; do not claim a sequential Stage 3 release or all six stages complete while Stage 2 gates remain open.
 
+Eight cable-path quadrature checks pass the original 1% criterion for 8→16 and 16→32 subdivisions per link. The same unqualified fine scalar field is held fixed; these checks do not repair tissue-mesh convergence.
+
 ## Current continuation
 
-This milestone separates the corrected algebra, failed field discretization and conditional nonfiring membrane checks. Supplemental source-integration diagnostics and their original source hashes are retained. Passing software checks are not a Stage 2 scientific release.
+This milestone separates the corrected algebra, failed field discretization and conditional nonfiring membrane checks. The complete local repository suite passed: 1,049 passes, 3 skips and no failures. The deployed 0.2.1 magnetic worker at commit `37e36d7` completed in 45.9 s; its full export exactly matches the local browser export except execution times. The maximum browser-versus-Node voltage difference is 5.48e-8 mV, with identical recruitment matrices and nonnumeric data. WebGL was unavailable, so the same-coordinate 2D fallback was verified. Supplemental source-integration diagnostics and their original source hashes are retained. Passing software checks are not a Stage 2 scientific release.
 
 ## Reproduce
 

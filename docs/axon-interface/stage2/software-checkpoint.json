@@ -1,6 +1,6 @@
 {
   "schema": "axon-stage2-software-checkpoint/1",
-  "recordedAt": "2026-11-12T12:40:01.565008+00:00",
+  "recordedAt": "2026-11-12T12:46:02.178663+00:00",
   "focusedContracts": {
     "passed": 52,
     "failed": 0,
@@ -11,9 +11,20 @@
     "command": "npm run build"
   },
   "fullRepositoryTests": {
-    "status": "running",
+    "status": "passed",
     "command": "npm test",
-    "claim": "Not represented as passed."
+    "tests": 1052,
+    "passed": 1049,
+    "failed": 0,
+    "skipped": 3,
+    "durationMs": 927985.488172
   },
-  "scientificRelease": false
+  "scientificRelease": false,
+  "github": {
+    "testedCommit": "37e36d76b276760c9df3a4afbe7685f626c5a4a9",
+    "stage2Software": "passed",
+    "astroRendering": "passed",
+    "verifySite": "running",
+    "cloudflareDeployment": "passed"
+  }
 }

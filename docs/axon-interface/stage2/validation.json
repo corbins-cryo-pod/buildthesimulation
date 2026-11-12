@@ -1,6 +1,6 @@
 {
   "schema": "axon-stage2-validation/1",
-  "generatedAt": "2026-11-12T12:40:01.747Z",
+  "generatedAt": "2026-11-12T12:48:17.358Z",
   "status": "development-checkpoint",
   "completeStage2": false,
   "biologicalValidation": false,
@@ -25,12 +25,13 @@
     "scripts/axon-interface/stage2/induction-quadrature-check.mjs": "d7756cc147ed6d16f6c426da69e5c8ebebba51a49d80a14afd61ebeafa6dd926",
     "scripts/axon-interface/stage2/induction-reference.py": "43a732eed6edd2db7b7bff667f9fbe3bb6d842b1566339105af3bb3f0013810f",
     "scripts/axon-interface/stage2/magnetic-coupling-check.mjs": "e76968d1094ed7a8b7d00cb874ce0c7b52f5ebc11e6bd64b64744ea474f84718",
+    "scripts/axon-interface/stage2/magnetic-path-check.mjs": "5c64eba009ad99c7cdcd2f1ec46196ebdcd56fe55c2e09f9fbb273429a986514",
     "scripts/axon-interface/stage2/magnetic-policy-check.mjs": "5c0a107b81c14d04e82bb69a4d141115021e8fa5edebff249acc3d40f8e297e3",
     "scripts/axon-interface/stage2/mechanisms/axon_chr2.mod": "9e820573f19aa1ad938d35d2a18967f78eed649083f4e0b668f1d4bc6c96abf1",
     "scripts/axon-interface/stage2/native-reference.py": "07319140563c6bf1f5d4c18e787057d8fe572da3bd488330c8c34add82d16179",
     "scripts/axon-interface/stage2/probe-optical.mjs": "1d3f57bda9e4fb292119744e18d29b218acbb7ed79f8ba869243a63386a43ca6",
     "scripts/axon-interface/stage2/protocol-check.mjs": "9bfeebfa4aafdcfdb1a60878d55bacb9ad9ec08bac530286db98ca900bbc30d9",
-    "scripts/axon-interface/stage2/reproduce.mjs": "a88257e5bff1f33cfdd9990684458276dc1ef110122d26fa29da71ea54527212",
+    "scripts/axon-interface/stage2/reproduce.mjs": "ec83a1e4611b949ee29d81e1df69b586fc6026d180f1a8f4b78c4b400efa9556",
     "scripts/axon-interface/stage2/requirements.txt": "092475ddcda41189dfb7f813c113f3e5dc98dc26a9872459d5bdeb662305f72d",
     "scripts/axon-interface/stage2/spatial-check.mjs": "ba01d2f39c7bc95fb4010e05f85f81aa1c124929974c26191d822b0dfab35632",
     "scripts/axon-interface/stage2/surface-check.mjs": "a644055606b81af0bd2a9272eb528153bdd1286cea99dcce53b1af7ac722e11b",
@@ -75,7 +76,7 @@
     "cpu": "AMD EPYC 9V74 80-Core Processor",
     "logicalCpus": 9,
     "totalMemoryBytes": 10451427328,
-    "seconds": 0.031142217999999985
+    "seconds": 0.008920045000000001
   },
   "stages": [],
   "components": {
@@ -108,6 +109,12 @@
       "checks": 7,
       "sha256": "50b21f65942e5623645bc91ea3951100083d4ac5c72bca580aacdcfab6ed2ac5"
     },
+    "magnetic-path": {
+      "complete": true,
+      "passed": true,
+      "checks": 8,
+      "sha256": "82132d17659fa25905680357a94100efc0148e536ac6233e2558baf011daabf1"
+    },
     "magnetic-coupling": {
       "complete": true,
       "passed": true,
@@ -130,11 +137,11 @@
   "browser": {
     "schema": "axon-stage2-browser-validation/2",
     "passed": true,
-    "hosted": false,
-    "surface": "Managed Chrome, actual local bundled worker",
-    "url": "http://127.0.0.1:4173/simulations/biohybrid-axon-interface/stage2/",
+    "hosted": true,
+    "surface": "Managed Chrome, deployed Cloudflare worker",
+    "url": "https://cf55b233.buildthesimulation.pages.dev/simulations/biohybrid-axon-interface/stage2/",
     "modelVersion": "axon-modalities-coupled-0.2.1",
-    "recordedAt": "2026-11-12T12:40:01.563827+00:00",
+    "recordedAt": "2026-11-12T12:48:17.238710+00:00",
     "settings": {
       "modality": "magnetic",
       "axonCount": 4,
@@ -157,7 +164,7 @@
       "coilRiseMs": 0.05,
       "wellApertureRadiusUm": 3.5
     },
-    "elapsedSeconds": 47.171300000000045,
+    "elapsedSeconds": 45.86179999999981,
     "checks": [
       {
         "name": "Final 0.2.1 worker completed four-cell magnetic grid and matched controls",
@@ -190,6 +197,18 @@
       {
         "name": "Exported settings and nonnumeric data exactly match the Node run",
         "pass": true
+      },
+      {
+        "name": "Deployed 0.2.1 worker completes magnetic grid and matched controls",
+        "pass": true
+      },
+      {
+        "name": "Hosted and local exports are exactly equal except execution times",
+        "pass": true
+      },
+      {
+        "name": "Hosted qualification warning and retained nominal matrix visibly rendered",
+        "pass": true
       }
     ],
     "sourceHashes": {
@@ -202,7 +221,7 @@
       "schema": "axon-stage2-browser-export-comparison/1",
       "browserVersion": "axon-modalities-coupled-0.2.1",
       "nodeVersion": "axon-modalities-coupled-0.2.1",
-      "browserElapsedSeconds": 47.171300000000045,
+      "browserElapsedSeconds": 45.86179999999981,
       "nodeElapsedSeconds": 51.032585452,
       "settingsEqual": true,
       "allMatricesExactlyEqual": true,
@@ -220,25 +239,135 @@
         ]
       },
       "sha256": {
-        "browser": "8710fa617ebf4862a72263272ba2fe7b0eb430f1e2445e8c36fd8cecd4fda7d5",
+        "browser": "3a9226a00b3db84c2d2c732d44ab55a8e964aca55d2abf0830c55030be76fc57",
         "node": "4aec093747d06d1c24481e6cb56e3556b36717a18473b503741c5abd0c46301e"
       },
       "meaning": "Bitwise export equivalence is reported separately from discrete-output agreement. Voltage differences are measured, not assigned a new post-hoc acceptance tolerance. This does not qualify the unconverged physical field."
     },
     "screenshots": [
-      "local-magnetic-result.jpg"
+      "hosted-magnetic-audit.jpg"
     ],
     "limitations": [
-      "Current hosted browser verification pending.",
       "WebGL context creation failed; same-coordinate 2D fallback was tested.",
       "Narrow layout and Safari remain untested.",
       "Browser versus Node export is not bitwise identical. Maximum observed voltage difference is 5.48e-8 mV; discrete matrices and all nonnumeric fields agree. This comparison does not qualify the physical field.",
-      "Earlier hosted optical verification is retained in retained/browser-before-equilibration.json."
-    ]
+      "Earlier hosted optical verification is retained in retained/browser-before-equilibration.json.",
+      "The evidence follow-up adds a cable-path quadrature study and reports; it does not change the tested worker or membrane equations."
+    ],
+    "localEvidence": {
+      "schema": "axon-stage2-browser-validation/2",
+      "passed": true,
+      "hosted": false,
+      "surface": "Managed Chrome, actual local bundled worker",
+      "url": "http://127.0.0.1:4173/simulations/biohybrid-axon-interface/stage2/",
+      "modelVersion": "axon-modalities-coupled-0.2.1",
+      "recordedAt": "2026-11-12T12:40:01.563827+00:00",
+      "settings": {
+        "modality": "magnetic",
+        "axonCount": 4,
+        "channelCount": 1,
+        "seed": 4079,
+        "amplitudes": [
+          0,
+          10,
+          100
+        ],
+        "dtMs": 0.000625,
+        "durationMs": 6,
+        "sampleDtMs": 0.01,
+        "photons": 128000,
+        "shellThicknessUm": 0.5,
+        "gmaxMsCm2": 5,
+        "opticalPulseMs": 2,
+        "reflectivity": 0.85,
+        "coilLayers": 6,
+        "coilRiseMs": 0.05,
+        "wellApertureRadiusUm": 3.5
+      },
+      "elapsedSeconds": 47.171300000000045,
+      "checks": [
+        {
+          "name": "Final 0.2.1 worker completed four-cell magnetic grid and matched controls",
+          "pass": true
+        },
+        {
+          "name": "Unqualified magnetic headlines and operating sample visibly withheld",
+          "pass": true
+        },
+        {
+          "name": "Non-optical exposure-probe column says not applicable",
+          "pass": true
+        },
+        {
+          "name": "Export retains null threshold brackets and nominal diagnostic brackets",
+          "pass": true
+        },
+        {
+          "name": "Pin and current comparison both display withheld selection",
+          "pass": true
+        },
+        {
+          "name": "Cancellation preserves the previous completed result",
+          "pass": true
+        },
+        {
+          "name": "All exported recruitment matrices exactly match the Node run",
+          "pass": true
+        },
+        {
+          "name": "Exported settings and nonnumeric data exactly match the Node run",
+          "pass": true
+        }
+      ],
+      "sourceHashes": {
+        "src/components/AxonStage2Laboratory.jsx": "b239bb7037814139c4578de5155b45b191e7a2a7472d60b94245d71a9afad6f5",
+        "src/lib/axon-interface/stage2/settings.mjs": "3bc15420e29d3d4ab38b887aa6af9f6489c7a63632140f36f1e30a33292f3b29",
+        "src/lib/axon-interface/stage2/protocol.mjs": "30a7c38f94e20ae1a6a769f6066f59f82e1ca7bc513cda6efe0414714e445334",
+        "src/lib/axon-interface/stage2/induction-solve.mjs": "da2764b95ac4e9a7c053869bbec9c95c18d2febc26ddb1f2facf06443396986c"
+      },
+      "exportComparison": {
+        "schema": "axon-stage2-browser-export-comparison/1",
+        "browserVersion": "axon-modalities-coupled-0.2.1",
+        "nodeVersion": "axon-modalities-coupled-0.2.1",
+        "browserElapsedSeconds": 47.171300000000045,
+        "nodeElapsedSeconds": 51.032585452,
+        "settingsEqual": true,
+        "allMatricesExactlyEqual": true,
+        "bothWithholdUnqualifiedMagneticClaims": true,
+        "nonNumericDifferences": [],
+        "numericDifferences": 621859,
+        "exactExportMatchExcludingTiming": false,
+        "maximumVoltageDifferenceMv": 5.4754494271946896e-8,
+        "fieldResiduals": {
+          "browser": [
+            6.79286433653871e-11
+          ],
+          "node": [
+            6.754376691716948e-11
+          ]
+        },
+        "sha256": {
+          "browser": "8710fa617ebf4862a72263272ba2fe7b0eb430f1e2445e8c36fd8cecd4fda7d5",
+          "node": "4aec093747d06d1c24481e6cb56e3556b36717a18473b503741c5abd0c46301e"
+        },
+        "meaning": "Bitwise export equivalence is reported separately from discrete-output agreement. Voltage differences are measured, not assigned a new post-hoc acceptance tolerance. This does not qualify the unconverged physical field."
+      },
+      "screenshots": [
+        "local-magnetic-result.jpg"
+      ],
+      "limitations": [
+        "Current hosted browser verification pending.",
+        "WebGL context creation failed; same-coordinate 2D fallback was tested.",
+        "Narrow layout and Safari remain untested.",
+        "Browser versus Node export is not bitwise identical. Maximum observed voltage difference is 5.48e-8 mV; discrete matrices and all nonnumeric fields agree. This comparison does not qualify the physical field.",
+        "Earlier hosted optical verification is retained in retained/browser-before-equilibration.json."
+      ]
+    },
+    "testedCommit": "37e36d76b276760c9df3a4afbe7685f626c5a4a9",
+    "hostedVersusLocalExactExceptTiming": true
   },
   "openReleaseGates": [
     "induction numerical qualification remains incomplete or failed.",
-    "Final hosted browser verification remains pending.",
     "Fully coupled, wavelength-dependent multi-opsin cohort experiments are not implemented; spectral assays remain component-only.",
     "Magnetic propagating-response, spatial-delay and recording convergence remain unqualified. Native and time-step checks cover only the stated nonfiring fixtures with an unqualified field."
   ],
