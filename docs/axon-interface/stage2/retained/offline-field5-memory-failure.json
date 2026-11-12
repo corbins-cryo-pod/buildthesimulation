@@ -1,0 +1,13 @@
+{
+  "schema": "axon-stage2-offline-reference-memory-failure/1",
+  "complete": false,
+  "passed": false,
+  "radialRefinement": 5,
+  "axialRefinement": 4,
+  "exitCode": 137,
+  "lastObservedIterations": 2000,
+  "lastObservedTrueResidual": 0.00040337572951236315,
+  "cause": "Executor terminated the offline solve while several large calculations overlapped. No completed reference or numerical conclusion.",
+  "correction": "Repeat the unchanged physical solve with bounded concurrent memory, reusing source assembly only after exact physical-matrix and source-hash checks.",
+  "acceptanceUnchanged": true
+}

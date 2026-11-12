@@ -44,3 +44,5 @@ test('Matrix export preserves every declared sample, cell and control',()=>{
  const p={amplitude:.001,matrices:{assigned:[[1,0]],regionalSilenced:[[0,0]]},pairs:[{channelIndex:0,cellIndex:0,channelId:'C1',cellId:'E1'},{channelIndex:0,cellIndex:1,channelId:'C1',cellId:'E2'}]},r={points:[p],units:{amplitude:'mW emitted'}};
  const csv=exportCsv(r,'matrix');assert.equal(csv.trim().split('\n').length,3);assert.match(csv,/C1,E1,1,0/);assert.match(csv,/C1,E2,0,0/);assert.throws(()=>exportCsv(r,'unknown'));
 });
+
+test('Every modality initializes inherited anatomy without leaking its field-resolution override',()=>{for(const modality of ['electrode','magnetic','optical','spectral']){const {anatomy}=normalize({modality});assert.doesNotThrow(()=>createBipolarMorphology(anatomy),modality);assert.doesNotThrow(()=>createStage1Cohort(anatomy),modality);}});

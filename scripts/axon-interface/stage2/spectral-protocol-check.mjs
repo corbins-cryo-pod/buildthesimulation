@@ -1,6 +1,7 @@
 import fs from 'node:fs';import crypto from 'node:crypto';
 import {runProtocol} from '../../../src/lib/axon-interface/stage2/protocol.mjs';
 import {exportCsv} from '../../../src/lib/axon-interface/stage2/exports.mjs';
+const paths=['src/lib/axon-interface/stage2/protocol.mjs','src/lib/axon-interface/stage2/spectral-protocol.mjs','src/lib/axon-interface/stage2/settings.mjs','src/lib/axon-interface/stage2/spectral-opsin.mjs'];const hashSources=()=>Object.fromEntries(paths.map(p=>[p,crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex')])),sourceHashes=hashSources();
 const rows=[],runs=[],dir='docs/axon-interface/stage2',start=performance.now();
 for(const spectralFamilyCount of [2,3,4]){
  const settings={modality:'spectral',spectralFamilyCount,axonCount:4,channelCount:1,amplitudes:[0,.002],photons:32000,spectralExpression:20};
@@ -21,4 +22,4 @@ for(const spectralFamilyCount of [2,3,4]){
  fs.writeFileSync('/tmp/spectral-'+spectralFamilyCount+'-full-result.json',JSON.stringify(result));console.log('Completed spectral families',spectralFamilyCount,result.elapsedSeconds);
  if(spectralFamilyCount===2){const again=await runProtocol(settings);delete again.elapsedSeconds;const first={...result};delete first.elapsedSeconds;add('Same-runtime exact full replay',JSON.stringify(first)===JSON.stringify(again));}
 }
-const paths=['src/lib/axon-interface/stage2/protocol.mjs','src/lib/axon-interface/stage2/spectral-protocol.mjs','src/lib/axon-interface/stage2/settings.mjs','src/lib/axon-interface/stage2/spectral-opsin.mjs'];const r={schema:'axon-stage2-spectral-protocol-validation/1',complete:true,passed:rows.every(r=>r.pass),rows,runs,runtimeSeconds:(performance.now()-start)/1000,sourceHashes:Object.fromEntries(paths.map(p=>[p,crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex')]))};fs.writeFileSync(dir+'/spectral-protocol-validation.json',JSON.stringify(r,null,2)+'\n');console.log(JSON.stringify({passed:r.passed,checks:rows.length,failed:rows.filter(r=>!r.pass)}));if(!r.passed)process.exitCode=1;
+const r={schema:'axon-stage2-spectral-protocol-validation/1',complete:true,passed:rows.every(r=>r.pass)&&JSON.stringify(sourceHashes)===JSON.stringify(hashSources()),rows,runs,runtimeSeconds:(performance.now()-start)/1000,sourceHashes,sourceChanged:JSON.stringify(sourceHashes)!==JSON.stringify(hashSources())};fs.writeFileSync(dir+'/spectral-protocol-validation.json',JSON.stringify(r,null,2)+'\n');console.log(JSON.stringify({passed:r.passed,checks:rows.length,failed:rows.filter(r=>!r.pass)}));if(!r.passed)process.exitCode=1;
