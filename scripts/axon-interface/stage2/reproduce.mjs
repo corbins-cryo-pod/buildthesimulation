@@ -8,20 +8,20 @@ const files=[...walk('src/lib/axon-interface').filter(p=>p.endsWith('.mjs')||p.e
 const snapshot=()=>Object.fromEntries(files.sort().map(p=>[p,hash(p)])),before=snapshot();
 function run(name,cmd,args,options={}){const begin=performance.now(),result=spawnSync(cmd,args,{cwd:root,encoding:'utf8',maxBuffer:8e6,timeout:1200000,...options});fs.mkdirSync(dir+'/logs',{recursive:true});fs.writeFileSync(dir+'/logs/'+name+'.log',(result.stdout??'')+(result.stderr??'')+(result.error?'\n'+String(result.error):''));stages.push({name,command:[cmd,...args],exitCode:result.status,pass:result.status===0,seconds:(performance.now()-begin)/1000});console.log(name,result.status===0?'passed':'failed');}
 if(!collect){
- run('contracts',process.execPath,['--test','tests/axon-interface-stage2-contracts.mjs']);
+ run('contracts',process.execPath,['--test','tests/axon-interface-stage2-contracts.mjs','tests/axon-interface-induction-solve.mjs']);
  run('components',process.execPath,['--test','tests/components.test.mjs'],{cwd:path.join(root,'labs/axon-stage2')});
  run('component-fixtures',process.execPath,['scripts/reference-fixtures.mjs'],{cwd:path.join(root,'labs/axon-stage2')});
  run('component-reference',python,['reference/verify.py'],{cwd:path.join(root,'labs/axon-stage2')});
  const bin=spawnSync(python,['-c','import sys,pathlib;print(pathlib.Path(sys.executable).parent)'],{encoding:'utf8'}).stdout?.trim();
  for(const d of ['scripts/axon-interface/mrg-modeldb','scripts/axon-interface/stage2/mechanisms'])run(d.endsWith('mrg-modeldb')?'compile-native':'compile-opsin',path.join(bin??'', 'nrnivmodl'),[],{cwd:path.join(root,d),env:{...process.env,CC:'gcc',CXX:'g++'}});
- for(const name of ['coupling','surface','spatial','induction','protocol'])run(name,process.execPath,['scripts/axon-interface/stage2/'+name+'-check.mjs'],{env:{...process.env,MRG_PYTHON:python}});
+ for(const name of ['coupling','surface','spatial','induction','magnetic-coupling','magnetic-policy','protocol'])run(name,process.execPath,['scripts/axon-interface/stage2/'+name+'-check.mjs'],{env:{...process.env,MRG_PYTHON:python}});
 }
-const component=read('labs/axon-stage2/reports/independent-reference.json'),coupled=Object.fromEntries(['coupling','surface','spatial','induction','protocol'].map(k=>[k,read(dir+'/'+k+'-validation.json')])),browser=read(dir+'/browser-validation.json');
+const component=read('labs/axon-stage2/reports/independent-reference.json'),coupled=Object.fromEntries(['coupling','surface','spatial','induction','magnetic-coupling','magnetic-policy','protocol'].map(k=>[k,read(dir+'/'+k+'-validation.json')])),browser=read(dir+'/browser-validation.json');
 const gates=Object.entries(coupled).filter(([k,r])=>!r?.complete||!r?.passed).map(([k])=>k+' numerical qualification remains incomplete or failed.');
 if(component?.requiredFail!==0||component?.requiredPass!==65)gates.push('Independent component reference is missing or failing.');
 if(!browser?.passed||!browser?.hosted)gates.push('Final hosted browser verification remains pending.');
 gates.push('Fully coupled, wavelength-dependent multi-opsin cohort experiments are not implemented; spectral assays remain component-only.');
-gates.push('Magnetic membrane time/spatial and independent-native convergence fixtures remain unqualified.');
+gates.push('Magnetic propagating-response, spatial-delay and recording convergence remain unqualified. Native and time-step checks cover only the stated nonfiring fixtures with an unqualified field.');
 const after=snapshot(),changed=files.filter(p=>before[p]!==after[p]);if(changed.length)gates.push('Scientific source changed during reproduction.');
 const report={schema:'axon-stage2-validation/1',generatedAt:new Date().toISOString(),status:gates.length?'development-checkpoint':'qualified',completeStage2:false,biologicalValidation:false,
  evidenceCollectionMode:collect?'Aggregate existing study outputs; not a claim of a new all-studies rerun.':'Fresh studies from one entry point.',sourceChangedDuringRun:collect?null:changed,sourceHashes:after,

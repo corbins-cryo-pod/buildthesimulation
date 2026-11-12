@@ -1,0 +1,60 @@
+{
+  "schema": "axon-stage2-induction-validation/1",
+  "complete": true,
+  "passed": false,
+  "settings": {
+    "seed": 2048,
+    "axonCount": 4,
+    "channelCount": 1,
+    "radialRefinements": [
+      1,
+      2
+    ],
+    "axialRefinements": [
+      1,
+      2
+    ]
+  },
+  "executionMode": "Retained execution output: coarse solution and original finer-solve failure; correction attempt recorded separately.",
+  "rows": [
+    {
+      "name": "Independent coarse NumPy/SciPy potential",
+      "pass": true,
+      "schema": "axon-stage2-induction-reference/1",
+      "maximumPotentialErrorUvPerAperS": 1.7830395091463357e-18,
+      "maximumLoadErrorMicroampPerSlew": 1.0152854420360642e-23,
+      "loadSum": 8.683780844672898e-27,
+      "seconds": 11.009999975000028,
+      "runtime": {
+        "python": "3.12.14",
+        "numpy": "2.3.5",
+        "scipy": "1.17.0"
+      },
+      "method": "Independently reconstructed finite-segment A, NumPy affine inversion and tensor load, SciPy sparse direct solution; no JS stiffness or load imported into the solve."
+    },
+    {
+      "name": "Coarse summed induction current",
+      "pass": true,
+      "value": -1.401540204319808e-26,
+      "nodes": 48590
+    },
+    {
+      "name": "Finer original-order browser solve",
+      "pass": false,
+      "relativeResidual": 1.3595969434732396e-05,
+      "gate": 1e-10,
+      "iterations": 16000
+    },
+    {
+      "name": "Finer reverse Cuthill\u2013McKee correction",
+      "pass": false,
+      "relativeResidual": 0.26948198599014733,
+      "gate": 1e-10,
+      "iterations": 16000
+    }
+  ],
+  "transferRefinement": {
+    "status": "not qualified: no accepted finer browser solve"
+  },
+  "biologicalValidation": false
+}

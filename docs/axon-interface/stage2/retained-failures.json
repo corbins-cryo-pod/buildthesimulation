@@ -15,13 +15,13 @@
     "id": "coupled-003",
     "scope": "finer induction mesh",
     "failure": "Original PCG residual 1.3595969434732396e-5 after 16000 iterations, fixed gate 1e-10.",
-    "correction": "Unresolved. The browser calculation rejects the solve; no tolerance change."
+    "correction": "Algebra corrected with symmetric equilibration and true-residual observation without breaking PCG recurrence. The finer fixture now passes 1e-10, exposing a separate 14.0\u201339.7% mesh-transfer discrepancy; the original failure report is retained."
   },
   {
     "id": "coupled-004",
     "scope": "algebraic correction attempt",
     "failure": "Reverse Cuthill\u2013McKee ordering still failed: residual 0.26948198599014733 after 16000 iterations.",
-    "correction": "Rejected correction. Production continues to use the original ordering; finer induction qualification remains blocked."
+    "correction": "RCM remains rejected. Production preserves the original ordering and uses the separately verified equilibrated solver; physical matrix and acceptance tolerances are unchanged."
   },
   {
     "id": "component-archive",
@@ -34,5 +34,29 @@
     "scope": "supplemental fine direct solve",
     "failure": "The combined process exited without a fine report. A separate Python run also terminated with exit code 137 before a report was written.",
     "correction": "No numerical conclusion. Matrix refinement remains unqualified; process termination does not justify relaxing a tolerance."
+  },
+  {
+    "id": "coupled-006",
+    "scope": "converged algebra, unconverged discretization",
+    "failure": "After the algebraic correction, per-cell coarse/fine transfer relative L2 errors are 0.1403458256, 0.3973348249, 0.3822908875 and 0.3281912394 against the unchanged 0.05 limit.",
+    "correction": "Retained as a failed required gate. Magnetic headlines, threshold brackets and operating-point selection are withheld; complete nominal matrices, traces and controls remain diagnostics."
+  },
+  {
+    "id": "coupled-007",
+    "scope": "source quadrature diagnostic",
+    "failure": "Four-point tetrahedral integration reduces per-cell mesh errors to 0.0056415, 0.0449371, 0.1055674 and 0.0604411; two of four still fail.",
+    "correction": "Diagnostic only, not promoted to production. Both the original vertex-average rule and this rejected correction are retained."
+  },
+  {
+    "id": "coupled-008",
+    "scope": "chunked independent finer direct solve",
+    "failure": "Independent NumPy assembly with 25000-element chunks and SuperLU symmetric minimum-degree ordering terminated with exit code 137 before writing a fine result.",
+    "correction": "No numerical conclusion. Neither the mesh criterion nor independent-reference requirement is relaxed."
+  },
+  {
+    "id": "coupled-009",
+    "scope": "higher-order source quadrature diagnostic",
+    "failure": "Eleven-point Keast degree-four source integration gives transfer refinement errors 0.00549765, 0.05282858, 0.10095172 and 0.06121572. Three cells exceed the unchanged 0.05 gate.",
+    "correction": "Not promoted. Exact polynomial moments through degree four pass analytic simplex-integral checks. Source integration alone does not resolve the mesh discrepancy."
   }
 ]

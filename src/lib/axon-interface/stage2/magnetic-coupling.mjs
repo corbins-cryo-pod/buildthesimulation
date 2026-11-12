@@ -1,4 +1,5 @@
 import {solveReorderedLoad} from './reordered-solve.mjs';
+import {solveInductionLoad} from './induction-solve.mjs';
 import {makeCoil,integrateCableLink,coilDrive,inductanceEstimate} from '../../../../public/simulations/biohybrid-axon-interface/stage2/modules/magnetic.mjs';
 import {prepareInductionLoad} from '../../../../public/simulations/biohybrid-axon-interface/stage2/modules/induction.mjs';
 import {solveStage1Load,sampleMembraneTransfer} from '../field-stage1.mjs';
@@ -17,7 +18,7 @@ export function embeddedCoil(well,{layers=6,segmentsPerTurn=48,layerPitchUm=5,tr
 }
 export function solveMagneticChannel(model,morphology,geometry,channelIndex,{coilOptions={},lineSubdivisions=8,reorder=false,onProgress=()=>{},shouldCancel=()=>false}={}){
  const coil=embeddedCoil(geometry.wells[channelIndex],coilOptions);onProgress({phase:'Assembling primary induction and tissue charge redistribution'});
- const load=prepareInductionLoad(model,coil),solution=(reorder?solveReorderedLoad:solveStage1Load)(model,load.rhsMicroampPerSlew,{isCancelled:shouldCancel});
+ const load=prepareInductionLoad(model,coil),solution=(reorder?solveReorderedLoad:solveInductionLoad)(model,load.rhsMicroampPerSlew,{isCancelled:shouldCancel,onProgress});
  const transfers=geometry.cells.map(cell=>{
   const scalar=sampleMembraneTransfer(solution,morphology,cell),centers=morphology.compartments.map(c=>[c.positionUm[0]+cell.xUm,c.positionUm[1]+cell.yUm,c.positionUm[2]+(cell.zUm??0)]);
   const path=new Float64Array(centers.length);for(let i=1;i<path.length;i++)path[i]=path[i-1]+1000*integrateCableLink(coil,centers[i-1].map(x=>x*1e-6),centers[i].map(x=>x*1e-6),lineSubdivisions);

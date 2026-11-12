@@ -146,6 +146,10 @@
     {
       "name": "magnetic full-cohort sweep no zero-input events",
       "pass": true
+    },
+    {
+      "name": "magnetic full-cohort sweep unconverged fields cannot produce qualified headlines or operating points",
+      "pass": true
     }
   ],
   "runs": [
@@ -188,7 +192,7 @@
         },
         "screening": "none; every declared cell is resolved"
       },
-      "elapsedSeconds": 34.104661174,
+      "elapsedSeconds": 36.028267,
       "zeroInput": {
         "maximumDriftMv": 0.005133957131775446,
         "eventsByControl": {
@@ -566,7 +570,7 @@
           "intervalMethod": "Two-sided empirical Bernstein interval for independent bounded photon-history contributions; Bonferroni allocation over all requested channels and soma bands. Includes worst-case discarded-weight tail. Bounds refer to the finite shell transport model, not to biological calibration."
         }
       ],
-      "fullResultSha256": "cb619452c657c45d17826b1fbb99dad1bd26d2b49689ab2ba69a7b75d87f88eb"
+      "fullResultSha256": "7895268fa7d9b3a40d485c97dc8b0959663f9364aa7b30200f881a8b6aa71192"
     },
     {
       "label": "optical full-cohort sweep",
@@ -608,7 +612,7 @@
         },
         "screening": "none; every declared cell is resolved"
       },
-      "elapsedSeconds": 328.197877819,
+      "elapsedSeconds": 346.262531494,
       "zeroInput": {
         "maximumDriftMv": 0.005133957131775446,
         "eventsByControl": {
@@ -1945,7 +1949,7 @@
           "intervalMethod": "Two-sided empirical Bernstein interval for independent bounded photon-history contributions; Bonferroni allocation over all requested channels and soma bands. Includes worst-case discarded-weight tail. Bounds refer to the finite shell transport model, not to biological calibration."
         }
       ],
-      "fullResultSha256": "fc1cc92956208725d30ef29f3824ca099cf9ba3f5a4d612934fda7a369d3c78d"
+      "fullResultSha256": "6960678d50f15b0f3ed96f8ac20e72de1e26ab528ec612db4cc5952cb7198351"
     },
     {
       "label": "electrode full-cohort sweep",
@@ -1987,7 +1991,7 @@
         },
         "screening": "none; every declared cell is resolved"
       },
-      "elapsedSeconds": 22.476706125999975,
+      "elapsedSeconds": 23.340486590000044,
       "zeroInput": {
         "maximumDriftMv": 0.005133957131775446,
         "eventsByControl": {
@@ -2513,7 +2517,7 @@
               90
             ],
             "cellRepresentation": "Explicit soma/stem/near-well neurite exclusion; distal cables embedded in effective endoneurial tensor",
-            "meshBuildSeconds": 0.7855122750000446,
+            "meshBuildSeconds": 0.5784102979999735,
             "iterations": 913,
             "relativeResidual": 1.868930267638282e-12,
             "sourceReturnImbalanceUa": 1.3877787807814457e-17,
@@ -2523,7 +2527,7 @@
             "preconditioner": {
               "kind": "IC(0)",
               "diagonalShift": 0.01,
-              "constructionSeconds": 0.05388264700002037,
+              "constructionSeconds": 0.11027681100001792,
               "failedShifts": [
                 {
                   "shift": 0,
@@ -2547,7 +2551,7 @@
                 }
               ]
             },
-            "solveSeconds": 5.807394924999971,
+            "solveSeconds": 6.018623109999986,
             "units": {
               "potential": "mV/uA",
               "current": "uA",
@@ -2716,7 +2720,7 @@
           }
         }
       ],
-      "fullResultSha256": "6bae5a0e1e8558614e2586a1784cb9e87199143443144a35de55299ba7d998a3"
+      "fullResultSha256": "257245d5ff9063b9cf858ff68258ac7756d6fe4e12a79f44ca8dc4b75ae059f8"
     },
     {
       "label": "magnetic full-cohort sweep",
@@ -2758,7 +2762,7 @@
         },
         "screening": "none; every declared cell is resolved"
       },
-      "elapsedSeconds": 51.12566847800004,
+      "elapsedSeconds": 48.815305743,
       "zeroInput": {
         "maximumDriftMv": 0.005133957131775446,
         "eventsByControl": {
@@ -2826,26 +2830,7 @@
               "headlinesEnabled": true,
               "recalculatedBiologicalControls": false
             },
-            "headline": {
-              "exclusiveCount": 0,
-              "exclusiveCoverageOfOriginalCensus": 0,
-              "exclusiveAmongRecruited": null,
-              "sharedOnlyCount": 0,
-              "regionalAndWholeCellDependentExclusiveCount": 0,
-              "exclusiveIds": [],
-              "sharedOnlyIds": [],
-              "criteria": [
-                "regionalSilenced",
-                "wholeSilenced"
-              ],
-              "rows": [
-                {
-                  "members": [],
-                  "dependentMembers": [],
-                  "exclusive": false
-                }
-              ]
-            },
+            "headline": null,
             "descriptive": {
               "exclusiveIds": [],
               "sharedOnlyIds": [],
@@ -2913,7 +2898,7 @@
               "sharedOnlyCount": 0,
               "regionalAndWholeCellDependentExclusiveCount": 0
             },
-            "headlineMeaning": "Conditional on the declared field and membrane model. Required mechanism-removal controls must abolish the output."
+            "headlineMeaning": "Withheld: the induction field fails the fixed 5% mesh-refinement criterion. Nominal matrices and traces are diagnostic only; no magnetic selectivity or threshold is qualified."
           },
           "exposureProbeAgreement": true,
           "energy": [
@@ -2983,26 +2968,7 @@
               "headlinesEnabled": true,
               "recalculatedBiologicalControls": false
             },
-            "headline": {
-              "exclusiveCount": 0,
-              "exclusiveCoverageOfOriginalCensus": 0,
-              "exclusiveAmongRecruited": null,
-              "sharedOnlyCount": 0,
-              "regionalAndWholeCellDependentExclusiveCount": 0,
-              "exclusiveIds": [],
-              "sharedOnlyIds": [],
-              "criteria": [
-                "regionalSilenced",
-                "wholeSilenced"
-              ],
-              "rows": [
-                {
-                  "members": [],
-                  "dependentMembers": [],
-                  "exclusive": false
-                }
-              ]
-            },
+            "headline": null,
             "descriptive": {
               "exclusiveIds": [],
               "sharedOnlyIds": [],
@@ -3070,7 +3036,7 @@
               "sharedOnlyCount": 0,
               "regionalAndWholeCellDependentExclusiveCount": 0
             },
-            "headlineMeaning": "Conditional on the declared field and membrane model. Required mechanism-removal controls must abolish the output."
+            "headlineMeaning": "Withheld: the induction field fails the fixed 5% mesh-refinement criterion. Nominal matrices and traces are diagnostic only; no magnetic selectivity or threshold is qualified."
           },
           "exposureProbeAgreement": true,
           "energy": [
@@ -3140,26 +3106,7 @@
               "headlinesEnabled": true,
               "recalculatedBiologicalControls": false
             },
-            "headline": {
-              "exclusiveCount": 0,
-              "exclusiveCoverageOfOriginalCensus": 0,
-              "exclusiveAmongRecruited": null,
-              "sharedOnlyCount": 0,
-              "regionalAndWholeCellDependentExclusiveCount": 0,
-              "exclusiveIds": [],
-              "sharedOnlyIds": [],
-              "criteria": [
-                "regionalSilenced",
-                "wholeSilenced"
-              ],
-              "rows": [
-                {
-                  "members": [],
-                  "dependentMembers": [],
-                  "exclusive": false
-                }
-              ]
-            },
+            "headline": null,
             "descriptive": {
               "exclusiveIds": [],
               "sharedOnlyIds": [],
@@ -3227,7 +3174,7 @@
               "sharedOnlyCount": 0,
               "regionalAndWholeCellDependentExclusiveCount": 0
             },
-            "headlineMeaning": "Conditional on the declared field and membrane model. Required mechanism-removal controls must abolish the output."
+            "headlineMeaning": "Withheld: the induction field fails the fixed 5% mesh-refinement criterion. Nominal matrices and traces are diagnostic only; no magnetic selectivity or threshold is qualified."
           },
           "exposureProbeAgreement": true,
           "energy": [
@@ -3255,14 +3202,14 @@
             "quantity": "Maximum magnitude of the nonuniform-grid axial electric-field gradient",
             "units": "V/m2 per (A/s)",
             "values": [
-              0.0016713352000366003,
-              0.0007080919222205176,
-              0.000039006772618708586,
-              0.000011200662027324211
+              0.0016713352000267713,
+              0.0007080919224918328,
+              0.000039006772617519515,
+              0.000011200662117671074
             ],
             "target": 0,
-            "maximumOffTarget": 0.0007080919222205176,
-            "ratio": 2.3603364868157675,
+            "maximumOffTarget": 0.0007080919224918328,
+            "ratio": 2.3603364858974913,
             "reason": null,
             "conservativeExposureRatio": null,
             "interpretation": "Modality-specific field ratio; not a common energy unit or a recruitment/selectivity guarantee."
@@ -3296,17 +3243,18 @@
               90
             ],
             "cellRepresentation": "Explicit soma/stem/near-well neurite exclusion; distal cables embedded in effective endoneurial tensor",
-            "meshBuildSeconds": 0.5128155109999935,
-            "iterations": 1039,
-            "relativeResidual": 1.3527012974954527e-11,
+            "meshBuildSeconds": 0.558851920999994,
+            "iterations": 958,
+            "relativeResidual": 6.754376691716948e-11,
+            "recurrenceResidual": 1.6899053272810064e-12,
+            "restarts": 0,
             "sourceReturnImbalanceUa": 1.650364806456399e-26,
-            "boundaryReactionUa": -8.061532845834153e-23,
-            "globalCurrentClosureUa": -8.059882481027696e-23,
-            "summedInteriorResidualUa": -1.6560004717238305e-22,
+            "boundaryReactionUa": -1.3481818717074121e-22,
+            "globalCurrentClosureUa": -1.3480168352267665e-22,
+            "summedInteriorResidualUa": -7.615424366296088e-23,
             "preconditioner": {
-              "kind": "IC(0)",
+              "kind": "symmetrically equilibrated IC(0)",
               "diagonalShift": 0.01,
-              "constructionSeconds": 0.07577409299998544,
               "failedShifts": [
                 {
                   "shift": 0,
@@ -3330,7 +3278,7 @@
                 }
               ]
             },
-            "solveSeconds": 4.907733889000025,
+            "solveSeconds": 2.873326100999955,
             "units": {
               "transfer": "mV per (A/s)",
               "load": "uA per (A/s)"
@@ -3339,14 +3287,14 @@
           }
         }
       ],
-      "fullResultSha256": "52a9ee248a5d2d0ce12ccbe71f166be51ac822ad221c6af51e8960407c9bfeeb"
+      "fullResultSha256": "4a5036f2f119aef2c70044365473cf359305d04f667657102d626b362263af09"
     }
   ],
   "runtime": {
     "node": "v24.22.1",
     "cpu": "AMD EPYC 9V74 80-Core Processor",
     "logicalCpus": 9,
-    "seconds": 477.438477428
+    "seconds": 499.065713747
   },
   "biologicalValidation": false
 }

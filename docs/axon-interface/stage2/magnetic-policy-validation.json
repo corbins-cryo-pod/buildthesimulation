@@ -1,0 +1,58 @@
+{
+  "schema": "axon-stage2-magnetic-policy-validation/1",
+  "modelVersion": "axon-modalities-coupled-0.2.1",
+  "complete": true,
+  "passed": true,
+  "rows": [
+    {
+      "name": "No qualified magnetic headline at any amplitude",
+      "pass": true
+    },
+    {
+      "name": "No selected magnetic operating amplitude",
+      "pass": true
+    },
+    {
+      "name": "No qualified magnetic threshold brackets",
+      "pass": true
+    },
+    {
+      "name": "Nominal matrices and transition diagnostics remain available",
+      "pass": true
+    },
+    {
+      "name": "No scientific source change during run",
+      "pass": true
+    }
+  ],
+  "sourceHashes": {
+    "src/lib/axon-interface/stage2/settings.mjs": "3bc15420e29d3d4ab38b887aa6af9f6489c7a63632140f36f1e30a33292f3b29",
+    "src/lib/axon-interface/stage2/protocol.mjs": "30a7c38f94e20ae1a6a769f6066f59f82e1ca7bc513cda6efe0414714e445334",
+    "src/lib/axon-interface/stage2/induction-solve.mjs": "da2764b95ac4e9a7c053869bbec9c95c18d2febc26ddb1f2facf06443396986c",
+    "scripts/axon-interface/stage2/magnetic-policy-check.mjs": "5c0a107b81c14d04e82bb69a4d141115021e8fa5edebff249acc3d40f8e297e3"
+  },
+  "seconds": 51.318812833,
+  "settings": {
+    "modality": "magnetic",
+    "axonCount": 4,
+    "channelCount": 1,
+    "seed": 4079,
+    "amplitudes": [
+      0,
+      10,
+      100
+    ],
+    "dtMs": 0.000625,
+    "durationMs": 6,
+    "sampleDtMs": 0.01,
+    "photons": 128000,
+    "shellThicknessUm": 0.5,
+    "gmaxMsCm2": 5,
+    "opticalPulseMs": 2,
+    "reflectivity": 0.85,
+    "coilLayers": 6,
+    "coilRiseMs": 0.05,
+    "wellApertureRadiusUm": 3.5
+  },
+  "scope": "Export and user-facing qualification guards, not a physical field qualification."
+}

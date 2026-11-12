@@ -1,6 +1,6 @@
 {
   "schema": "axon-stage2-validation/1",
-  "generatedAt": "2026-11-12T02:01:13.648Z",
+  "generatedAt": "2026-11-12T12:40:01.747Z",
   "status": "development-checkpoint",
   "completeStage2": false,
   "biologicalValidation": false,
@@ -18,15 +18,19 @@
     "public/simulations/biohybrid-axon-interface/stage2/modules/selectivity.mjs": "ae3020363dc8cdf23ef80d080db66faad25de42ad338821b6f40d16969d85e39",
     "public/simulations/biohybrid-axon-interface/stage2/modules/spectral.mjs": "9d565090c79bf4767255f9e88e4d2d957c57709a41d109e010fe4f6398c5f5a4",
     "public/simulations/biohybrid-axon-interface/stage2/modules/worker.mjs": "34f950da0c175cf46b257e65b909f5d9087a43a8ce038d9c72b6a0bc75a09926",
+    "scripts/axon-interface/stage2/compare-browser-export.mjs": "566f9eba1d65070bb50251f07da873494271c0bdd56669f8e9fc0e680ef55f22",
     "scripts/axon-interface/stage2/coupling-check.mjs": "c09c2dbb39dc030d911f31faa2c29cd94646c233d98360f0dfc8a19a28c95894",
     "scripts/axon-interface/stage2/induction-check.mjs": "044f3266f92c9c6f274142ee8479a274c8bae0a9e13975a444dd00c69d81e246",
     "scripts/axon-interface/stage2/induction-direct-refinement.mjs": "a6e008917882ffcb01aba0ee44466123657588e168c8accaf81a99d131903a9d",
-    "scripts/axon-interface/stage2/induction-reference.py": "697b4d182d3cdd0a6e7ac7a5c065aef000ef54e66413965aae5bed309cd16223",
+    "scripts/axon-interface/stage2/induction-quadrature-check.mjs": "d7756cc147ed6d16f6c426da69e5c8ebebba51a49d80a14afd61ebeafa6dd926",
+    "scripts/axon-interface/stage2/induction-reference.py": "43a732eed6edd2db7b7bff667f9fbe3bb6d842b1566339105af3bb3f0013810f",
+    "scripts/axon-interface/stage2/magnetic-coupling-check.mjs": "e76968d1094ed7a8b7d00cb874ce0c7b52f5ebc11e6bd64b64744ea474f84718",
+    "scripts/axon-interface/stage2/magnetic-policy-check.mjs": "5c0a107b81c14d04e82bb69a4d141115021e8fa5edebff249acc3d40f8e297e3",
     "scripts/axon-interface/stage2/mechanisms/axon_chr2.mod": "9e820573f19aa1ad938d35d2a18967f78eed649083f4e0b668f1d4bc6c96abf1",
     "scripts/axon-interface/stage2/native-reference.py": "07319140563c6bf1f5d4c18e787057d8fe572da3bd488330c8c34add82d16179",
     "scripts/axon-interface/stage2/probe-optical.mjs": "1d3f57bda9e4fb292119744e18d29b218acbb7ed79f8ba869243a63386a43ca6",
-    "scripts/axon-interface/stage2/protocol-check.mjs": "2d1de7f60becdfa37b9175a97cee0bc144b97161e376923508f2c9d91acbc6d3",
-    "scripts/axon-interface/stage2/reproduce.mjs": "0a624a3d503719063040f88cbc73ddfb4fa8eefd27369e29fdb712f9bea02814",
+    "scripts/axon-interface/stage2/protocol-check.mjs": "9bfeebfa4aafdcfdb1a60878d55bacb9ad9ec08bac530286db98ca900bbc30d9",
+    "scripts/axon-interface/stage2/reproduce.mjs": "a88257e5bff1f33cfdd9990684458276dc1ef110122d26fa29da71ea54527212",
     "scripts/axon-interface/stage2/requirements.txt": "092475ddcda41189dfb7f813c113f3e5dc98dc26a9872459d5bdeb662305f72d",
     "scripts/axon-interface/stage2/spatial-check.mjs": "ba01d2f39c7bc95fb4010e05f85f81aa1c124929974c26191d822b0dfab35632",
     "scripts/axon-interface/stage2/surface-check.mjs": "a644055606b81af0bd2a9272eb528153bdd1286cea99dcce53b1af7ac722e11b",
@@ -48,14 +52,16 @@
     "src/lib/axon-interface/stage2/causal-selectivity.mjs": "dc5efe6a7e435abb4e2f6f726a0c9332318369f3fd4ef24c0a6992108bd791c7",
     "src/lib/axon-interface/stage2/confinement.mjs": "8c01e4b0016757f53998373ba05f08551a25d0daf9a6e66eda9be745db8eec20",
     "src/lib/axon-interface/stage2/exports.mjs": "c22303f95317a5d17386d67bd8d86f2fb04b776eb6fa6fe2540692a5c4fdd7df",
-    "src/lib/axon-interface/stage2/magnetic-coupling.mjs": "d9de4285e42ab8b2aef48dbe9cd1b2783b21fb493f7a883b49316972efe47a74",
+    "src/lib/axon-interface/stage2/induction-quadrature.mjs": "5035bc6757e707558e82abdd2fc41d78e8f286eae85ec21bf58bdd029c517bef",
+    "src/lib/axon-interface/stage2/induction-solve.mjs": "da2764b95ac4e9a7c053869bbec9c95c18d2febc26ddb1f2facf06443396986c",
+    "src/lib/axon-interface/stage2/magnetic-coupling.mjs": "59199944c150c7e43a2d6e875efae20486592e54b169987b15f7d7976b662db3",
     "src/lib/axon-interface/stage2/membrane.mjs": "59a1f175bf0c31b3d7b3f93eabfcbb18ab2c4db530a147ac0682988d03da2515",
     "src/lib/axon-interface/stage2/optical-surface.mjs": "70e2dd67af7e81c50688010bd2a2b7773fbe0d4d44027d8122eac83535c18c01",
-    "src/lib/axon-interface/stage2/parameters.mjs": "4df72a5d08b5ed978de11cb7be1dfc8ad6855ff2c32db5a93ea7af25698300ad",
+    "src/lib/axon-interface/stage2/parameters.mjs": "ed740a722a76182df7b1367e8ae4bbc885d94f0e6e8a7f7ecd8456dbe2bebeaf",
     "src/lib/axon-interface/stage2/photocurrent.mjs": "080dd48ad14c4ac893882576489a1eae4f75f29277d9b533e7aec7792edd95cd",
-    "src/lib/axon-interface/stage2/protocol.mjs": "ad5b4ea51705e23c67478ee4c52d9e37fad26cdc4c0710e951a239fbfc70fa89",
+    "src/lib/axon-interface/stage2/protocol.mjs": "30a7c38f94e20ae1a6a769f6066f59f82e1ca7bc513cda6efe0414714e445334",
     "src/lib/axon-interface/stage2/reordered-solve.mjs": "d3f72808a727d86f78a54f2a7909401cf5d9381ae944cb1843e2859a26877790",
-    "src/lib/axon-interface/stage2/settings.mjs": "77ec77e16cebd9fa6ac4a9a8800cb7bed681cc141c781b92a6a13582c04a18ef",
+    "src/lib/axon-interface/stage2/settings.mjs": "3bc15420e29d3d4ab38b887aa6af9f6489c7a63632140f36f1e30a33292f3b29",
     "src/lib/axon-interface/stage2/worker.mjs": "9396d68545ca111a84ab915342b2fe7badcb48ed17a20bc230acbb4e26713cb6",
     "src/lib/axon-interface/vendor/cdt2d-package-lock.json": "307d67afc94d179ba050a2950f5724c51fd7159cf7488f27b229fb499f504be1",
     "src/lib/axon-interface/vendor/cdt2d-source-pins.json": "05adc096c593b846d4a6ac6c1b5a3a19b0d7da3d78d1de76977ed0859717c660",
@@ -69,7 +75,7 @@
     "cpu": "AMD EPYC 9V74 80-Core Processor",
     "logicalCpus": 9,
     "totalMemoryBytes": 10451427328,
-    "seconds": 0.0067317489999999935
+    "seconds": 0.031142217999999985
   },
   "stages": [],
   "components": {
@@ -99,31 +105,45 @@
     "induction": {
       "complete": true,
       "passed": false,
-      "checks": 4,
-      "sha256": "de66556ec8baf795cc0fa218eca07ba30aaf022bd621799b16823b06f1fe7112"
+      "checks": 7,
+      "sha256": "50b21f65942e5623645bc91ea3951100083d4ac5c72bca580aacdcfab6ed2ac5"
+    },
+    "magnetic-coupling": {
+      "complete": true,
+      "passed": true,
+      "checks": 12,
+      "sha256": "f0bdf8c7946bb14f152c9aae5576dacb04ac09b18ef3b8f0de9a0bf521160836"
+    },
+    "magnetic-policy": {
+      "complete": true,
+      "passed": true,
+      "checks": 5,
+      "sha256": "422da795a64f3283920ec4e777f9310f271c84d762153e59c9dea2b005078042"
     },
     "protocol": {
       "complete": true,
       "passed": true,
-      "checks": 36,
-      "sha256": "140856afa20bbcb7b6fe462fd98a07952589418437b2b105c928c231cf9c757f"
+      "checks": 37,
+      "sha256": "038452a8a8194a74dde9b7509cd5edfb212d9693c460c67dc1f3ab17c750371c"
     }
   },
   "browser": {
-    "schema": "axon-stage2-browser-validation/1",
+    "schema": "axon-stage2-browser-validation/2",
     "passed": true,
-    "surface": "Managed Chrome: local preview and deployed Cloudflare preview, actual bundled workers",
-    "hosted": true,
-    "url": "https://f93c1dc3.buildthesimulation.pages.dev/simulations/biohybrid-axon-interface/stage2/",
+    "hosted": false,
+    "surface": "Managed Chrome, actual local bundled worker",
+    "url": "http://127.0.0.1:4173/simulations/biohybrid-axon-interface/stage2/",
+    "modelVersion": "axon-modalities-coupled-0.2.1",
+    "recordedAt": "2026-11-12T12:40:01.563827+00:00",
     "settings": {
-      "modality": "optical",
+      "modality": "magnetic",
       "axonCount": 4,
       "channelCount": 1,
       "seed": 4079,
       "amplitudes": [
         0,
-        0.001,
-        0.002
+        10,
+        100
       ],
       "dtMs": 0.000625,
       "durationMs": 6,
@@ -137,189 +157,90 @@
       "coilRiseMs": 0.05,
       "wellApertureRadiusUm": 3.5
     },
-    "elapsedSeconds": 61.898900000000374,
+    "elapsedSeconds": 47.171300000000045,
     "checks": [
       {
-        "name": "Real browser worker completed retained optical settings",
-        "pass": true,
-        "surface": "local preview"
+        "name": "Final 0.2.1 worker completed four-cell magnetic grid and matched controls",
+        "pass": true
       },
       {
-        "name": "Completed export retains every matched intervention",
-        "pass": true,
-        "surface": "local preview"
+        "name": "Unqualified magnetic headlines and operating sample visibly withheld",
+        "pass": true
       },
       {
-        "name": "Saved voltage replay has all 23 active sites",
-        "pass": true,
-        "surface": "local preview"
+        "name": "Non-optical exposure-probe column says not applicable",
+        "pass": true
       },
       {
-        "name": "Exported sources sum exactly",
-        "pass": true,
-        "surface": "local preview"
+        "name": "Export retains null threshold brackets and nominal diagnostic brackets",
+        "pass": true
       },
       {
-        "name": "Cancellation terminated calculation",
-        "pass": true,
-        "evidence": "Observed through browser UI",
-        "surface": "local preview"
+        "name": "Pin and current comparison both display withheld selection",
+        "pass": true
       },
       {
-        "name": "New request replaced prior worker; cancellation kept completed result",
-        "pass": true,
-        "evidence": "Observed through browser UI",
-        "surface": "local preview"
+        "name": "Cancellation preserves the previous completed result",
+        "pass": true
       },
       {
-        "name": "Malformed amplitude produced visible error while preserving result",
-        "pass": true,
-        "evidence": "Observed through browser UI",
-        "surface": "local preview"
+        "name": "All exported recruitment matrices exactly match the Node run",
+        "pass": true
       },
       {
-        "name": "Pin and edited seed kept completed seed 4079",
-        "pass": true,
-        "evidence": "Observed through browser UI",
-        "surface": "local preview"
-      },
-      {
-        "name": "JSON import restored seed and grid",
-        "pass": true,
-        "evidence": "Observed through browser UI",
-        "surface": "local preview"
-      },
-      {
-        "name": "Soma-only control selected and saved replay advanced to 1.2 ms",
-        "pass": true,
-        "evidence": "Observed through browser UI",
-        "surface": "local preview"
-      },
-      {
-        "name": "Deployed worker completes the exact declared optical cohort and matched controls",
-        "pass": true,
-        "surface": "Cloudflare preview"
-      },
-      {
-        "name": "Hosted and local complete exports are exactly equal except elapsedSeconds",
-        "pass": true,
-        "surface": "Export comparison; every field and numeric array checked"
-      },
-      {
-        "name": "Conservative optical exposure ratio and rare-event limitation visible",
-        "pass": true,
-        "surface": "Cloudflare preview",
-        "displayedRatio": 6.744,
-        "definition": "target lower confidence bound / largest off-target upper bound"
-      },
-      {
-        "name": "Completed settings, recruitment matrix and causal audit visible",
-        "pass": true,
-        "surface": "Cloudflare preview",
-        "screenshots": [
-          "hosted-overview.jpg",
-          "hosted-audit.jpg"
-        ]
+        "name": "Exported settings and nonnumeric data exactly match the Node run",
+        "pass": true
       }
     ],
-    "resultSha256": "fdca160218042b93655529579e2c54706b1e4fa1ca2631c591a6fb33d0619bd0",
-    "limitations": [
-      "WebGL context creation failed in this browser; same-data 2D fallback was exercised on both surfaces.",
-      "Narrow viewport and Safari were not tested.",
-      "This hosted fixture has four cells and one channel; the four-channel and non-optical cohorts were verified in numerical protocol checks, not repeated in the hosted UI.",
-      "The tested deployment identifies the computational source; this evidence-only follow-up does not claim a new all-studies rerun."
-    ],
-    "testedCommit": "0d4238b49b83a7deb5e35b62922a09cb8f3379b1",
-    "recordedAt": "2026-11-12T02:01:13.436854+00:00",
-    "localEvidence": {
-      "schema": "axon-stage2-browser-validation/1",
-      "passed": true,
-      "surface": "Local managed Chrome preview; actual bundled worker",
-      "hosted": false,
-      "url": "http://127.0.0.1:4173/simulations/biohybrid-axon-interface/stage2/",
-      "settings": {
-        "modality": "optical",
-        "axonCount": 4,
-        "channelCount": 1,
-        "seed": 4079,
-        "amplitudes": [
-          0,
-          0.001,
-          0.002
+    "sourceHashes": {
+      "src/components/AxonStage2Laboratory.jsx": "b239bb7037814139c4578de5155b45b191e7a2a7472d60b94245d71a9afad6f5",
+      "src/lib/axon-interface/stage2/settings.mjs": "3bc15420e29d3d4ab38b887aa6af9f6489c7a63632140f36f1e30a33292f3b29",
+      "src/lib/axon-interface/stage2/protocol.mjs": "30a7c38f94e20ae1a6a769f6066f59f82e1ca7bc513cda6efe0414714e445334",
+      "src/lib/axon-interface/stage2/induction-solve.mjs": "da2764b95ac4e9a7c053869bbec9c95c18d2febc26ddb1f2facf06443396986c"
+    },
+    "exportComparison": {
+      "schema": "axon-stage2-browser-export-comparison/1",
+      "browserVersion": "axon-modalities-coupled-0.2.1",
+      "nodeVersion": "axon-modalities-coupled-0.2.1",
+      "browserElapsedSeconds": 47.171300000000045,
+      "nodeElapsedSeconds": 51.032585452,
+      "settingsEqual": true,
+      "allMatricesExactlyEqual": true,
+      "bothWithholdUnqualifiedMagneticClaims": true,
+      "nonNumericDifferences": [],
+      "numericDifferences": 621859,
+      "exactExportMatchExcludingTiming": false,
+      "maximumVoltageDifferenceMv": 5.4754494271946896e-8,
+      "fieldResiduals": {
+        "browser": [
+          6.79286433653871e-11
         ],
-        "dtMs": 0.000625,
-        "durationMs": 6,
-        "sampleDtMs": 0.01,
-        "photons": 128000,
-        "shellThicknessUm": 0.5,
-        "gmaxMsCm2": 5,
-        "opticalPulseMs": 2,
-        "reflectivity": 0.85,
-        "coilLayers": 6,
-        "coilRiseMs": 0.05,
-        "wellApertureRadiusUm": 3.5
+        "node": [
+          6.754376691716948e-11
+        ]
       },
-      "elapsedSeconds": 72.46559999999963,
-      "checks": [
-        {
-          "name": "Real browser worker completed retained optical settings",
-          "pass": true
-        },
-        {
-          "name": "Completed export retains every matched intervention",
-          "pass": true
-        },
-        {
-          "name": "Saved voltage replay has all 23 active sites",
-          "pass": true
-        },
-        {
-          "name": "Exported sources sum exactly",
-          "pass": true
-        },
-        {
-          "name": "Cancellation terminated calculation",
-          "pass": true,
-          "evidence": "Observed through browser UI"
-        },
-        {
-          "name": "New request replaced prior worker; cancellation kept completed result",
-          "pass": true,
-          "evidence": "Observed through browser UI"
-        },
-        {
-          "name": "Malformed amplitude produced visible error while preserving result",
-          "pass": true,
-          "evidence": "Observed through browser UI"
-        },
-        {
-          "name": "Pin and edited seed kept completed seed 4079",
-          "pass": true,
-          "evidence": "Observed through browser UI"
-        },
-        {
-          "name": "JSON import restored seed and grid",
-          "pass": true,
-          "evidence": "Observed through browser UI"
-        },
-        {
-          "name": "Soma-only control selected and saved replay advanced to 1.2 ms",
-          "pass": true,
-          "evidence": "Observed through browser UI"
-        }
-      ],
-      "resultSha256": "0871f1e5ae64e1f3cbc4650a81fcf0989c3737610dcec7307d4c4ee984c899b7",
-      "limitations": [
-        "WebGL failed in this browser; same-data 2D fallback was exercised.",
-        "Hosted production navigation and narrow viewport not yet checked.",
-        "Conservative optical-ratio presentation was adjusted after this run; physical solver and saved result unchanged."
-      ]
-    }
+      "sha256": {
+        "browser": "8710fa617ebf4862a72263272ba2fe7b0eb430f1e2445e8c36fd8cecd4fda7d5",
+        "node": "4aec093747d06d1c24481e6cb56e3556b36717a18473b503741c5abd0c46301e"
+      },
+      "meaning": "Bitwise export equivalence is reported separately from discrete-output agreement. Voltage differences are measured, not assigned a new post-hoc acceptance tolerance. This does not qualify the unconverged physical field."
+    },
+    "screenshots": [
+      "local-magnetic-result.jpg"
+    ],
+    "limitations": [
+      "Current hosted browser verification pending.",
+      "WebGL context creation failed; same-coordinate 2D fallback was tested.",
+      "Narrow layout and Safari remain untested.",
+      "Browser versus Node export is not bitwise identical. Maximum observed voltage difference is 5.48e-8 mV; discrete matrices and all nonnumeric fields agree. This comparison does not qualify the physical field.",
+      "Earlier hosted optical verification is retained in retained/browser-before-equilibration.json."
+    ]
   },
   "openReleaseGates": [
     "induction numerical qualification remains incomplete or failed.",
+    "Final hosted browser verification remains pending.",
     "Fully coupled, wavelength-dependent multi-opsin cohort experiments are not implemented; spectral assays remain component-only.",
-    "Magnetic membrane time/spatial and independent-native convergence fixtures remain unqualified."
+    "Magnetic propagating-response, spatial-delay and recording convergence remain unqualified. Native and time-step checks cover only the stated nonfiring fixtures with an unqualified field."
   ],
   "nextStage": "Stage 3 integration is not advanced by this checkpoint. Existing PR #390 remains a separate unqualified development draft; the sequential release is blocked by Stage 2 gates.",
   "limitations": [
