@@ -1,0 +1,54 @@
+{
+  "report": {
+    "schema": "axon-stage2-conservative-independent-validation/1",
+    "complete": true,
+    "passed": false,
+    "rows": [
+      {
+        "name": "Independent conservative field 3",
+        "schema": "axon-stage2-conservative-reference/1",
+        "maximumPotentialErrorUvPerAperS": 2.493983797294617e-17,
+        "potentialRelativeL2": 5.655317852517017e-11,
+        "maximumLoadErrorMicroampPerSlew": 6.836637397118479e-25,
+        "loadRelativeL2": 6.789386663884683e-13,
+        "relativeResidual": 1.7357268858311625e-09,
+        "loadSum": 2.6481637255972672e-18,
+        "factorNonzeros": 2088010,
+        "iterations": 5055,
+        "nodes": 543681,
+        "peakRssBytes": 1130700800,
+        "seconds": 379.80336122099834,
+        "method": "SciPy CG with independently built coordinate-column SuperLU blocks, symmetric equilibration and unit-norm algebraic RHS",
+        "preconditionerAttempts": [
+          {
+            "kind": "independent coordinate-column SuperLU blocks",
+            "shift": 0,
+            "success": true
+          }
+        ],
+        "runtime": {
+          "python": "3.12.14",
+          "numpy": "2.3.5",
+          "scipy": "1.17.0"
+        },
+        "pass": false
+      }
+    ],
+    "acceptance": {
+      "maximumPotentialUvPerAperS": 0.001,
+      "potentialRelativeL2": 1e-06,
+      "loadRelativeL2": 1e-08,
+      "trueResidual": 1e-09
+    },
+    "sourceHashes": {
+      "scripts/axon-interface/stage2/induction-conservative-reference.py": "06017eb12cd1bc93bd2d5e89374b4fa67bf913d655dfc211c7cb5bfcd8dc7760",
+      "src/lib/axon-interface/stage2/induction-conservative-load.mjs": "9e3d7506dddc11f2a5af88690ed1287118fd734e446b7220560581a0ee45c1f1",
+      "src/lib/axon-interface/stage2/induction-precision-solve.mjs": "26163d03c6b87f1802603b6afc863ef9f7cf5af1a5751de1f1ea32be2ff4a633",
+      "scripts/axon-interface/stage2/induction-conservative-independent-check.mjs": "1b53780776ce46f5005279cef8b0790d34a9564f4d7a23e1b6a7faf36dc3bba3"
+    },
+    "sourceChanged": false,
+    "evidenceCollectionMode": "Independent Python reconstruction from the saved physical field-3 fixture; unchanged JS physical-source hashes and exact fixture hash verified."
+  },
+  "executedReferenceSource": "\"\"\"Independent tensor stiffness and conservative induction source, NumPy/SciPy.\nOnly physical geometry enters assembly; JS load and potential are comparisons.\nFaces are grouped by a vectorized sort, not the JS streaming face-map algorithm.\n\"\"\"\nimport json,sys,time,platform,resource,itertools\nimport numpy as np\nimport scipy\nfrom scipy.sparse import coo_matrix,csr_matrix,diags,eye,save_npz\nfrom scipy.sparse.linalg import splu,spilu,bicgstab,cg,LinearOperator\nfrom numpy.polynomial.legendre import leggauss\nt0=time.perf_counter();data=json.load(open(sys.argv[1]));points=np.array(data['points']);cells=np.array(data['tetrahedra'],dtype=np.int32).reshape(-1,4);regions=np.array(data['regions']);conductivity=np.array(data['conductivityByRegion']);n=len(points)\ndel data['points'],data['tetrahedra'],data['regions']\n\ndef vector_potential(p,axial_only=False):\n    out=np.zeros_like(p)\n    for e in data['segments']:\n        a=np.array(e['a']);b=np.array(e['b']);u=b-a;length=np.linalg.norm(u);u/=length\n        if axial_only and u[2]==0:continue\n        r=p-a;s=np.einsum('ij,j->i',r,u);rho=np.linalg.norm(r-s[:,None]*u,axis=1);near=np.clip(s,0,length)\n        if np.any(np.linalg.norm(r-near[:,None]*u,axis=1)<=e['exclusionRadiusM']):raise ValueError('Conductor intersection')\n        good=rho>1e-16;line=np.empty(len(p));line[good]=np.arcsinh(s[good]/rho[good])-np.arcsinh((s[good]-length)/rho[good]);far=~good\n        line[far]=np.log(np.maximum(abs(s[far]),abs(length-s[far]))/np.minimum(abs(s[far]),abs(length-s[far])))\n        out+=1e-7*line[:,None]*u\n    return out\n\nweights=[-.078933333333333333]+[.045733333333333333]*4+[.149333333333333333]*6\nbary=[[.25]*4]+[[11/14 if i==j else 1/14 for j in range(4)] for i in range(4)]+[[.3994035761667992 if k in pair else .1005964238332008 for k in range(4)] for pair in itertools.combinations(range(4),2)]\nbary=np.array(bary);K=csr_matrix((n,n));rhs=np.zeros(n)\nfor start in range(0,len(cells),15000):\n    ids=cells[start:start+15000];xyz=points[ids];sigma=conductivity[regions[start:start+15000]]\n    affine=np.ones((len(ids),4,4));affine[:,:,1:]=xyz;inverse=np.linalg.inv(affine);grad=inverse[:,1:,:].transpose(0,2,1);vol=abs(np.linalg.det(affine))/6\n    local=np.einsum('eia,ea,eja,e->eij',grad,sigma,grad,vol)\n    K+=coo_matrix((local.ravel(),(np.repeat(ids,4,axis=1).ravel(),np.tile(ids,(1,4)).ravel())),shape=(n,n)).tocsr()\n    delta=sigma[:,2]-sigma[:,0];active=delta!=0\n    if np.any(active):\n        q=np.einsum('qa,eac->eqc',bary,xyz[active])*1e-6\n        az=vector_potential(q.reshape(-1,3),True)[:,2].reshape(-1,11)@np.array(weights)\n        force=-grad[active,:,2]*(vol[active]*delta[active]*az*1e-6)[:,None]\n        np.add.at(rhs,ids[active].ravel(),force.ravel())\nprint('Independent stiffness/anisotropic source assembled',flush=True)\n# All four oriented faces, sorted by vertex triple; cancel equal-conductivity\n# face flux before quadrature, including the removed insulating boundaries.\nfaces=np.concatenate([np.sort(np.delete(cells,j,axis=1),axis=1) for j in range(4)]);opposite=np.concatenate([cells[:,j] for j in range(4)]);sigma=np.tile(conductivity[regions,0],4)\norder=np.lexsort((faces[:,2],faces[:,1],faces[:,0]));faces=faces[order];opposite=opposite[order];sigma=sigma[order]\nstarts=np.r_[0,1+np.flatnonzero(np.any(faces[1:]!=faces[:-1],axis=1))];ends=np.r_[starts[1:],len(faces)];counts=ends-starts\nif np.any(counts>2):raise ValueError('Nonmanifold tetrahedral face')\n# Cancel equal-conductivity pairs using incidence, before allocating physical\n# coordinates. Paired outward normals are exact opposites on a shared face.\ncoefficient=sigma[starts].copy();paired=counts==2;coefficient[paired]-=sigma[ends[paired]-1];keep=coefficient!=0\nunique=faces[starts[keep]].copy();opp=opposite[starts[keep]].copy();coefficient=coefficient[keep]\ndel faces,opposite,sigma,order,starts,ends,counts,paired,keep\nxyz=points[unique];normal=np.cross(xyz[:,1]-xyz[:,0],xyz[:,2]-xyz[:,0])/2\nnormal[np.einsum('ij,ij->i',normal,points[opp]-xyz[:,0])>0]*=-1\ncombined=normal*coefficient[:,None]\ndel xyz,normal,opp,coefficient\ng,w=leggauss(8);g=(g+1)/2;w=w/2\nq=np.array([[1-u,u*(1-v),u*v] for u in g for v in g]);qw=np.array([2*u*wu*wv for u,wu in zip(g,w) for v,wv in zip(g,w)])\nfor start in range(0,len(unique),512):\n    ids=unique[start:start+512];xyz=points[ids];samples=np.einsum('qa,eac->eqc',q,xyz)*1e-6\n    a=vector_potential(samples.reshape(-1,3)).reshape(-1,64,3)\n    flux=-1e-6*np.einsum('eqc,ec->eq',a,combined[start:start+512])*qw\n    force=flux@q;np.add.at(rhs,ids.ravel(),force.ravel())\nprint('Independent interface source assembled',flush=True)\nfree=np.flatnonzero(~np.array(data['boundary'],dtype=bool));v=np.zeros(n);A=K[free,:][:,free].tocsc();b=rhs[free]\niterations=0\nif n<100000:\n    factor=splu(A,permc_spec='MMD_AT_PLUS_A',diag_pivot_thresh=0.);v[free]=factor.solve(b);nnz=factor.L.nnz+factor.U.nnz;method='SuperLU direct, symmetric minimum-degree ordering'\nelse:\n    scale=1/np.sqrt(A.diagonal());D=diags(scale);scaled=(D@A@D).tocsc();scaled_rhs=b*scale\n    save_npz('/tmp/conservative-independent-scaled.npz',scaled);np.save('/tmp/conservative-independent-rhs.npy',scaled_rhs);np.save('/tmp/conservative-independent-scale.npy',scale)\n    # Exact axial-column blocks are only a preconditioner. The independently\n    # assembled full physical matrix remains the equation solved by SciPy CG.\n    # Build incidence from physical x/y coordinates, independently of JS's\n    # column traversal and Cholesky implementation.\n    _,column=np.unique(points[free,:2],axis=0,return_inverse=True)\n    coo=scaled.tocoo();keep=column[coo.row]==column[coo.col]\n    block=coo_matrix((coo.data[keep],(coo.row[keep],coo.col[keep])),shape=scaled.shape).tocsc()\n    del coo,keep,column\n    factor=splu(block,permc_spec='NATURAL',diag_pivot_thresh=0.)\n    attempts=[dict(kind='independent coordinate-column SuperLU blocks',shift=0,success=True)]\n    print('Independent axial preconditioner ready',flush=True)\n    M=LinearOperator(A.shape,matvec=factor.solve)\n    def progress(x):\n        global iterations\n        iterations+=1\n        if iterations%1000==0:print('Independent CG iterations '+str(iterations),flush=True)\n    rhs_norm=np.linalg.norm(scaled_rhs)\n    y,info=cg(scaled,scaled_rhs/rhs_norm,rtol=2e-13,atol=0,maxiter=20000,M=M,callback=progress)\n    if info!=0:raise RuntimeError('Independent CG failed: '+str(info))\n    v[free]=scale*y*rhs_norm;nnz=factor.L.nnz+factor.U.nnz;method='SciPy CG with independently built coordinate-column SuperLU blocks, symmetric equilibration and unit-norm algebraic RHS'\n\nrelative=np.linalg.norm((K@v-rhs)[free])/np.linalg.norm(rhs[free]);mv=v*1000;reference=np.array(data['potentialMvPerAperS']);expected_load=np.array(data['loadMicroampPerSlew'])\nreport=dict(schema='axon-stage2-conservative-reference/1',maximumPotentialErrorUvPerAperS=float(abs(mv-reference).max()*1000),potentialRelativeL2=float(np.linalg.norm(mv-reference)/np.linalg.norm(mv)),maximumLoadErrorMicroampPerSlew=float(abs(rhs-expected_load).max()),loadRelativeL2=float(np.linalg.norm(rhs-expected_load)/np.linalg.norm(rhs)),relativeResidual=float(relative),loadSum=float(rhs.sum()),factorNonzeros=int(nnz),iterations=iterations,nodes=n,peakRssBytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024,seconds=time.perf_counter()-t0,method=method,preconditionerAttempts=attempts if n>=100000 else [],runtime=dict(python=platform.python_version(),numpy=np.__version__,scipy=scipy.__version__))\njson.dump(report,open(sys.argv[2],'w'),indent=2);print(json.dumps(report))\n",
+  "reason": "Independent potential and load comparisons pass, but the true residual 1.7357268858311625e-9 exceeds the unchanged 1e-9 limit. No qualification."
+}

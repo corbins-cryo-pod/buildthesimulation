@@ -106,5 +106,35 @@
     "scope": "independent field-3 reference memory",
     "failure": "The independent child terminated after physical stiffness assembly and before writing a result. No numerical conclusion.",
     "correction": "The reference now cancels equal-conductivity internal faces by sorted incidence before allocating face coordinates. Earlier failure remains retained. All original comparison tolerances are unchanged."
+  },
+  {
+    "id": "coupled-018",
+    "scope": "directional radial refinement at axial factor 4",
+    "failure": "Cell 2 radial 3-to-4 transfer relative L2 is 5.59463639%, exceeding the unchanged 5% criterion. The separate axial 3-to-4 rows are below 0.9%.",
+    "correction": "The full failed radial and passing axial rows remain in induction-conservative-3-4-to-4-4-failure.json. Production is genuinely remeshed at radial 4/axial 4 and compared against an offline radial-5/axial-4 reference."
+  },
+  {
+    "id": "coupled-019",
+    "scope": "Stage 2 integration with inherited anatomy validation",
+    "failure": "Version 0.4.1 placed the factor-4 field setting into inherited Stage 1 anatomy settings, whose UI validator admits only 1\u20133. Both the deployed worker and full protocol rejected initialization.",
+    "correction": "Version 0.4.2 keeps inherited anatomy settings valid and applies factor 4 explicitly when assembling the Stage 2 field. The export reports the actual field resolution. A regression initializes all four modalities. The observed failure is retained in retained/field4-anatomy-initialization-failure.json."
+  },
+  {
+    "id": "coupled-020",
+    "scope": "offline radial-5 reference resource limit",
+    "failure": "The first fine-reference solve was killed with exit 137 while other large studies overlapped. It completed no numerical result.",
+    "correction": "The failure is retained in retained/offline-field5-memory-failure.json. The independent reference is rerun with constrained concurrency. Cached source assembly is admitted only after source-hash checks and exact equality of every rebuilt physical matrix coefficient. Original residual, recurrence, iteration and mesh-transfer limits are unchanged."
+  },
+  {
+    "id": "coupled-021",
+    "scope": "independent fine reference runtime",
+    "failure": "The generic ILUT reference was interrupted after approximately 36 minutes without producing a comparison. It is not an accepted numerical result.",
+    "correction": "An independent coordinate-grouped block preconditioner replaces ILUT. SciPy CG still solves the original independently assembled physical equation under the same comparison limits. The interruption and source commit are retained in retained/independent-field3-ilut-interrupted.json."
+  },
+  {
+    "id": "coupled-022",
+    "scope": "reciprocal recording field runtime",
+    "failure": "The inherited reciprocal recording solve at factor 4 remained in the initial field phase for over ten minutes. Node and hosted attempts were cancelled before a result was released.",
+    "correction": "The Stage 2 precision solver now receives the identical finite contact load and physical matrix. Four coarse-field transfer comparisons against the inherited solver passed a predeclared 1e-8 relative bound. The production sweep and spatial recording tests must pass before qualification. The interruption remains in retained/reciprocal-field4-interrupted.json."
   }
 ]

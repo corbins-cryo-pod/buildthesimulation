@@ -15,7 +15,7 @@ if(!collect){
  run('component-reference',python,['reference/verify.py'],{cwd:path.join(root,'labs/axon-stage2')});
  const bin=spawnSync(python,['-c','import sys,pathlib;print(pathlib.Path(sys.executable).parent)'],{encoding:'utf8'}).stdout?.trim();
  for(const d of ['scripts/axon-interface/mrg-modeldb','scripts/axon-interface/stage2/mechanisms'])run(d.endsWith('mrg-modeldb')?'compile-native':'compile-opsin',path.join(bin??'', 'nrnivmodl'),[],{cwd:path.join(root,d),env:{...process.env,CC:'gcc',CXX:'g++'}});
- for(const name of ['coupling','surface','spatial','induction','magnetic-path','magnetic-coupling','magnetic-policy','protocol','spectral-component','spectral-coupling','spectral-spatial','spectral-protocol','spectral-crosstalk'])run(name,process.execPath,['scripts/axon-interface/stage2/'+name+'-check.mjs'],{env:{...process.env,MRG_PYTHON:python},...(name==='induction'?{timeout:14400000}:{})});
+ for(const name of ['coupling','surface','spatial','recording-field','induction','magnetic-path','magnetic-coupling','magnetic-policy','protocol','spectral-component','spectral-coupling','spectral-spatial','spectral-protocol','spectral-crosstalk'])run(name,process.execPath,['scripts/axon-interface/stage2/'+name+'-check.mjs'],{env:{...process.env,MRG_PYTHON:python},...(name==='induction'?{timeout:14400000}:{})});
  // These depend on the production-refinement field and independently built
  // physical fixture emitted by induction; no pre-existing /tmp file is needed.
  run('magnetic-propagation-probe',process.execPath,['scripts/axon-interface/stage2/magnetic-propagation-probe.mjs']);
@@ -23,9 +23,10 @@ if(!collect){
  const tests=run('repository-tests','npm',['test'],{timeout:3600000}),build=run('site-build','npm',['run','build']);
  fs.writeFileSync(dir+'/software-checkpoint.json',JSON.stringify({schema:'axon-stage2-software-checkpoint/2',modelVersion:VERSION,recordedAt:new Date().toISOString(),passed:tests.pass&&build.pass,fullRepositoryTests:tests,siteBuild:build},null,2)+'\n');
 }
-const component=read('labs/axon-stage2/reports/independent-reference.json'),coupled=Object.fromEntries(['coupling','surface','spatial','induction','magnetic-path','magnetic-coupling','magnetic-policy','magnetic-propagation','induction-conservative-independent','protocol','spectral-component','spectral-coupling','spectral-spatial','spectral-protocol','spectral-crosstalk'].map(k=>[k,read(dir+'/'+k+'-validation.json')])),browser=read(dir+'/browser-validation.json');
+const component=read('labs/axon-stage2/reports/independent-reference.json'),coupled=Object.fromEntries(['coupling','surface','spatial','recording-field','induction','magnetic-path','magnetic-coupling','magnetic-policy','magnetic-propagation','induction-conservative-independent','protocol','spectral-component','spectral-coupling','spectral-spatial','spectral-protocol','spectral-crosstalk'].map(k=>[k,read(dir+'/'+k+'-validation.json')])),browser=read(dir+'/browser-validation.json');
 const gates=Object.entries(coupled).filter(([k,r])=>!r?.complete||!r?.passed).map(([k])=>k+' numerical qualification remains incomplete or failed.');
 for(const [name,r] of Object.entries(coupled)){const stale=Object.entries(r?.sourceHashes??{}).filter(([p,h])=>!fs.existsSync(p)||hash(p)!==h).map(([p])=>p);if(stale.length)gates.push(name+' evidence has stale source hashes: '+stale.join(', '));}
+if(coupled.protocol?.modelVersion!==VERSION||!Object.keys(coupled.protocol?.sourceHashes??{}).length)gates.push('Current-version, source-identified complete cohort protocol remains pending.');
 for(const s of stages)if(!s.pass)gates.push(s.name+' failed during this reproduction; an older report cannot substitute for it.');
 if(component?.requiredFail!==0||component?.requiredPass!==65)gates.push('Independent component reference is missing or failing.');
 if(!browser?.passed||!browser?.hosted||browser?.modelVersion!==VERSION)gates.push('Final hosted browser verification remains pending.');

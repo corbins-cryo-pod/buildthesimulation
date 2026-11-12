@@ -6,7 +6,7 @@ import json,sys,time,platform,resource,itertools
 import numpy as np
 import scipy
 from scipy.sparse import coo_matrix,csr_matrix,diags,eye,save_npz
-from scipy.sparse.linalg import splu,spilu,bicgstab,LinearOperator
+from scipy.sparse.linalg import splu,spilu,bicgstab,cg,LinearOperator
 from numpy.polynomial.legendre import leggauss
 t0=time.perf_counter();data=json.load(open(sys.argv[1]));points=np.array(data['points']);cells=np.array(data['tetrahedra'],dtype=np.int32).reshape(-1,4);regions=np.array(data['regions']);conductivity=np.array(data['conductivityByRegion']);n=len(points)
 del data['points'],data['tetrahedra'],data['regions']
@@ -62,33 +62,49 @@ for start in range(0,len(unique),512):
     force=flux@q;np.add.at(rhs,ids.ravel(),force.ravel())
 print('Independent interface source assembled',flush=True)
 free=np.flatnonzero(~np.array(data['boundary'],dtype=bool));v=np.zeros(n);A=K[free,:][:,free].tocsc();b=rhs[free]
-iterations=0
+iterations=0;refinements=0;refinementResiduals=[];residual_matrix=K
 if n<100000:
     factor=splu(A,permc_spec='MMD_AT_PLUS_A',diag_pivot_thresh=0.);v[free]=factor.solve(b);nnz=factor.L.nnz+factor.U.nnz;method='SuperLU direct, symmetric minimum-degree ordering'
 else:
     scale=1/np.sqrt(A.diagonal());D=diags(scale);scaled=(D@A@D).tocsc();scaled_rhs=b*scale
     save_npz('/tmp/conservative-independent-scaled.npz',scaled);np.save('/tmp/conservative-independent-rhs.npy',scaled_rhs);np.save('/tmp/conservative-independent-scale.npy',scale)
-    # The shift changes only the approximate inverse. BiCGSTAB still solves
-    # the original unshifted physical matrix, and its true residual is checked.
-    factor=None;attempts=[]
-    for shift in [0,1e-8,1e-6,1e-4,.001,.01,.1]:
-        try:
-            factor=spilu(scaled+shift*eye(len(free),format='csc'),drop_tol=1e-6,fill_factor=8,permc_spec='MMD_AT_PLUS_A',diag_pivot_thresh=0.)
-            attempts.append(dict(shift=shift,success=True));break
-        except RuntimeError as error:attempts.append(dict(shift=shift,success=False,error=str(error)))
-    if factor is None:raise RuntimeError('All independent preconditioners failed')
-    print('Independent ILUT ready '+str(attempts),flush=True)
+    # Exact axial-column blocks are only a preconditioner. The independently
+    # assembled full physical matrix remains the equation solved by SciPy CG.
+    # Build incidence from physical x/y coordinates, independently of JS's
+    # column traversal and Cholesky implementation.
+    _,column=np.unique(points[free,:2],axis=0,return_inverse=True)
+    coo=scaled.tocoo();keep=column[coo.row]==column[coo.col]
+    block=coo_matrix((coo.data[keep],(coo.row[keep],coo.col[keep])),shape=scaled.shape).tocsc()
+    del coo,keep,column
+    factor=splu(block,permc_spec='NATURAL',diag_pivot_thresh=0.)
+    attempts=[dict(kind='independent coordinate-column SuperLU blocks',shift=0,success=True)]
+    print('Independent axial preconditioner ready',flush=True)
     M=LinearOperator(A.shape,matvec=factor.solve)
     def progress(x):
         global iterations
         iterations+=1
-    # A per-unit-slew load is approximately 1e-12. Normalize the algebraic
-    # RHS to avoid BiCGSTAB's absolute rho-breakdown threshold. Restore its
-    # physical magnitude before checking the original unscaled equation.
+        if iterations%1000==0:print('Independent CG iterations '+str(iterations),flush=True)
     rhs_norm=np.linalg.norm(scaled_rhs)
-    y,info=bicgstab(scaled,scaled_rhs/rhs_norm,rtol=1e-12,atol=0,maxiter=20000,M=M,callback=progress)
-    if info!=0:raise RuntimeError('Independent BiCGSTAB failed: '+str(info))
-    v[free]=scale*y*rhs_norm;nnz=factor.L.nnz+factor.U.nnz;method='SciPy BiCGSTAB with independently built ILUT, symmetric equilibration and unit-norm algebraic RHS'
-relative=np.linalg.norm((K@v-rhs)[free])/np.linalg.norm(rhs[free]);mv=v*1000;reference=np.array(data['potentialMvPerAperS']);expected_load=np.array(data['loadMicroampPerSlew'])
-report=dict(schema='axon-stage2-conservative-reference/1',maximumPotentialErrorUvPerAperS=float(abs(mv-reference).max()*1000),potentialRelativeL2=float(np.linalg.norm(mv-reference)/np.linalg.norm(mv)),maximumLoadErrorMicroampPerSlew=float(abs(rhs-expected_load).max()),loadRelativeL2=float(np.linalg.norm(rhs-expected_load)/np.linalg.norm(rhs)),relativeResidual=float(relative),loadSum=float(rhs.sum()),factorNonzeros=int(nnz),iterations=iterations,nodes=n,peakRssBytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024,seconds=time.perf_counter()-t0,method=method,preconditionerAttempts=attempts if n>=100000 else [],runtime=dict(python=platform.python_version(),numpy=np.__version__,scipy=scipy.__version__))
+    y,info=cg(scaled,scaled_rhs/rhs_norm,rtol=2e-13,atol=0,maxiter=20000,M=M,callback=progress)
+    if info!=0:raise RuntimeError('Independent CG failed: '+str(info))
+    v[free]=scale*y*rhs_norm;nnz=factor.L.nnz+factor.U.nnz
+    # Correct using the ORIGINAL independently assembled physical equation.
+    # Long-double observation/state avoids cancellation in this thin-layer
+    # matrix; the scaled CG recurrence and the unchanged 20000 total cap remain.
+    residual_matrix=K.astype(np.longdouble);v=v.astype(np.longdouble)
+    physical_norm=np.linalg.norm(rhs[free])
+    while True:
+        residual=(rhs.astype(np.longdouble)-residual_matrix@v)[free]
+        observed=float(np.linalg.norm(residual)/physical_norm);refinementResiduals.append(observed)
+        print('Independent original-equation residual '+str(observed),flush=True)
+        if observed<=2e-10 or refinements>=3 or iterations>=20000:break
+        correction_rhs=np.asarray(residual*scale,dtype=float);correction_norm=np.linalg.norm(correction_rhs)
+        correction,info=cg(scaled,correction_rhs/correction_norm,rtol=2e-13,atol=0,maxiter=20000-iterations,M=M,callback=progress)
+        if info!=0:raise RuntimeError('Independent correction CG failed: '+str(info))
+        v[free]+=scale.astype(np.longdouble)*correction.astype(np.longdouble)*np.longdouble(correction_norm);refinements+=1
+    method='Independent NumPy/SciPy physical assembly; coordinate-column SuperLU preconditioning and CG with long-double original-equation residual correction'
+
+
+relative=np.linalg.norm((residual_matrix@v-rhs)[free])/np.linalg.norm(rhs[free]);mv=v*1000;reference=np.array(data['potentialMvPerAperS']);expected_load=np.array(data['loadMicroampPerSlew'])
+report=dict(schema='axon-stage2-conservative-reference/1',maximumPotentialErrorUvPerAperS=float(abs(mv-reference).max()*1000),potentialRelativeL2=float(np.linalg.norm(mv-reference)/np.linalg.norm(mv)),maximumLoadErrorMicroampPerSlew=float(abs(rhs-expected_load).max()),loadRelativeL2=float(np.linalg.norm(rhs-expected_load)/np.linalg.norm(rhs)),relativeResidual=float(relative),loadSum=float(rhs.sum()),factorNonzeros=int(nnz),iterations=iterations,refinements=refinements,refinementResiduals=refinementResiduals,nodes=n,peakRssBytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024,seconds=time.perf_counter()-t0,method=method,preconditionerAttempts=attempts if n>=100000 else [],runtime=dict(python=platform.python_version(),numpy=np.__version__,scipy=scipy.__version__))
 json.dump(report,open(sys.argv[2],'w'),indent=2);print(json.dumps(report))

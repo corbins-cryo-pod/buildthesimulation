@@ -2548,7 +2548,7 @@
         },
         "screening": "none; every declared cell is resolved"
       },
-      "elapsedSeconds": 177.17623129999998
+      "elapsedSeconds": 106.330865825
     },
     {
       "settings": {
@@ -5056,7 +5056,7 @@
         },
         "screening": "none; every declared cell is resolved"
       },
-      "elapsedSeconds": 165.36297657100002
+      "elapsedSeconds": 141.04783363500002
     },
     {
       "settings": {
@@ -7663,14 +7663,15 @@
         },
         "screening": "none; every declared cell is resolved"
       },
-      "elapsedSeconds": 200.06303581699996
+      "elapsedSeconds": 188.279431678
     }
   ],
-  "runtimeSeconds": 661.2030017339999,
+  "runtimeSeconds": 533.911310299,
   "sourceHashes": {
-    "src/lib/axon-interface/stage2/protocol.mjs": "2e4ce53e6113d456599a41b8bef92786f1493e08da223c2c4e72963141bedb12",
+    "src/lib/axon-interface/stage2/protocol.mjs": "c3e071c741fdc4101b784bbbbce77658cceb83022b8b21676248d9a77d6e48be",
     "src/lib/axon-interface/stage2/spectral-protocol.mjs": "14a41ffba409db2e44ec4b80820f49ae48282662b626f9646d1ed7c9e13a0a8c",
-    "src/lib/axon-interface/stage2/settings.mjs": "57bd78731bc16b609979226037a91c56cde8171a31e0d0d929d872e6e61d3c08",
+    "src/lib/axon-interface/stage2/settings.mjs": "4a6bbce253d7b97a28e036a2c0824fd89c245580e2ae823aa51d41711ca8a479",
     "src/lib/axon-interface/stage2/spectral-opsin.mjs": "68b573c350fd64f2a9a0f2144d66623db17f1c30632b15f81fbd76347deca770"
-  }
+  },
+  "sourceChanged": false
 }

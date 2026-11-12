@@ -1,17 +1,19 @@
 {
   "schema": "axon-stage2-software-checkpoint/2",
-  "modelVersion": "axon-modalities-coupled-0.4.2",
-  "recordedAt": "2026-11-12T15:22:34.694866+00:00",
+  "modelVersion": "axon-modalities-coupled-0.4.3",
+  "recordedAt": "2026-11-12T15:43:42.675768+00:00",
   "testedRuntimeCommit": "80c8f6ed4704e63c36e4c74e3c99b20cd7046fe4",
   "passed": true,
   "focusedContracts": {
     "passed": 61,
     "failed": 0,
-    "commands": [
-      "node --test tests/axon-interface-stage2-contracts.mjs tests/axon-interface-induction-solve.mjs tests/axon-interface-induction-reference.mjs tests/axon-interface-spectral.mjs",
-      "node --test labs/axon-stage2/tests/components.test.mjs"
+    "contracts": 22,
+    "components": 39,
+    "logs": [
+      "/tmp/stage2-043-contracts.log",
+      "/tmp/stage2-043-components.log"
     ],
-    "modelVersion": "axon-modalities-coupled-0.4.2"
+    "modelVersion": "axon-modalities-coupled-0.4.3"
   },
   "fullRepositoryTests": {
     "command": "npm test",
@@ -24,10 +26,10 @@
     "testedRuntimeCommit": "80c8f6ed4704e63c36e4c74e3c99b20cd7046fe4"
   },
   "siteBuild": {
-    "command": "npm run build",
     "passed": true,
-    "modelVersion": "axon-modalities-coupled-0.4.2"
+    "modelVersion": "axon-modalities-coupled-0.4.3",
+    "log": "/tmp/stage2-043-build.log"
   },
   "scientificRelease": "Separate fixed numerical gates; software success cannot qualify a failed field.",
-  "interveningChanges": "Production magnetic mesh is 4/4. A new integration regression verifies that all modalities initialize inherited anatomy. The current 61 focused checks and complete site build pass. The full repository result retains its actual 0.4.0 tested snapshot; current magnetic numerical/protocol/browser studies are required separately."
+  "interveningChanges": "The fine magnetic recording field now uses the precision solver on the identical finite-contact load and matrix; four transfer comparisons pass. Current 22 contracts, 39 component checks and complete site build pass. Full repository results retain their actual earlier tested snapshot; the current complete cohort and hosted studies remain required."
 }

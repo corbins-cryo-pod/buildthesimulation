@@ -21,9 +21,9 @@ The laboratory is `/simulations/biohybrid-axon-interface/stage2/`, with adjacent
 | Two-to-four-family cohort protocol | 34 | Full matrices, controls, identity, export and exact same-runtime replay |
 | Nonlinear two-source spectral crosstalk | 8 | Blue activation of a red-sensitive target; no output-count multiplier |
 | Positive magnetic stress fixture | 15 | Native/time/spatial implementation checks, separate from field qualification |
-| Focused software contracts | 60 | Geometry, units, matching, malformed inputs, budgets and exports |
+| Focused software contracts | 61 | Geometry, units, matching, malformed inputs, budgets and exports |
 
-The H134R native/time regression also passes all 19 checks. The complete repository suite at the spectral milestone passed 1,055 tests, with three skips and no failures. The current site build and inherited Stage 1 emitted-artifact verifier pass. Exact commands, source hashes and runtime evidence are retained in the reports.
+The H134R native/time regression also passes all 19 checks. The complete repository suite at the 0.4.0 checkpoint passed 1,057 tests, with three skips and no failures. The current site build and inherited Stage 1 emitted-artifact verifier pass. Exact commands, source hashes and runtime evidence are retained in the reports.
 
 The two-source spectral fixture has three nonzero source–wavelength rows but only two distinct exclusive engineered outputs and rank two. The first supplemental assertion wrongly called one output shared-only; its failure and the unchanged-run reanalysis are retained. The scientific implementation and acceptance limits did not change.
 
@@ -33,11 +33,11 @@ The four-cell magnetic production sweep at seed 4079 completes the 0/10/100 A gr
 
 The original vertex-load mesh, four-point and eleven-point volume-only attempts remain rejected. Conservative flux assembly cancels internal equal-conductivity faces before quadrature and retains only the longitudinal anisotropic volume term. The production solver preserves the original stiffness and load, uses diagonal equilibration, uses exact axial-column block preconditioning and observes the original physical residual with two-component state and error-free products, and restarts refinement from the original equation. Its true-residual limit remains 1e-10, recurrence target 2e-12 and iteration cap 16,000.
 
-The independent NumPy/SciPy program rebuilds stiffness, source integrals and interface cancellation from physical geometry. It does not solve a JavaScript-generated matrix. A unit-norm algebraic RHS avoids BiCGSTAB's absolute breakdown threshold; physical magnitude is restored before comparison. Earlier singular, breakdown, memory-limit and finest-mesh residual failures remain visible. Passing replacement studies qualify the replacement algorithm and mesh, never the rejected ones.
+The independent NumPy/SciPy program rebuilds stiffness, source integrals and interface cancellation from physical geometry. It does not solve a JavaScript-generated matrix. The reference uses independent coordinate-column SuperLU blocks with SciPy CG. A unit-norm algebraic RHS is restored to physical magnitude before comparison, and long-double original-equation residual correction retains the total 20,000-iteration cap and all comparison limits. Earlier ILUT/BiCGSTAB attempts remain archived. Earlier singular, breakdown, memory-limit and finest-mesh residual failures remain visible. Passing replacement studies qualify the replacement algorithm and mesh, never the rejected ones.
 
 ## Browser evidence
 
-The deployed 0.3.0 spectral worker completed the two-family fixture in 80.5 seconds. Its full export exactly matches the local browser except runtime. All discrete matrices and nonnumeric fields match Node; the maximum observed voltage difference is 2.82e-11 mV. Exposure-dependent classification correctly withholds the selectivity headline. The named pair audit and complete export were tested. WebGL was unavailable, so the same-coordinate 2D fallback was verified. Current 0.4.1 hosted verification remains a release gate.
+The deployed 0.3.0 spectral worker completed the two-family fixture in 80.5 seconds. Its full export exactly matches the local browser except runtime. All discrete matrices and nonnumeric fields match Node; the maximum observed voltage difference is 2.82e-11 mV. Exposure-dependent classification correctly withholds the selectivity headline. The named pair audit and complete export were tested. WebGL was unavailable, so the same-coordinate 2D fallback was verified. Current 0.4.3 hosted verification remains a release gate.
 
 ## Reproduction
 
@@ -47,7 +47,7 @@ Use Node 24.22.1 and Python 3.12.14. Install `scripts/axon-interface/stage2/requ
 MRG_PYTHON=/absolute/path/to/venv/bin/python node scripts/axon-interface/stage2/reproduce.mjs
 ```
 
-The entry compiles the pinned native mechanisms, runs component, field, independent-reference, native/time/spatial and full-cohort studies, then repository tests and the site build. The field studies generate the physical fixtures consumed by the propagation studies; a fresh checkout does not require old `/tmp` files. Large raw arrays and platform-specific binaries are regenerated rather than committed. Long field solves have explicit iteration and process limits.
+The entry compiles the pinned native mechanisms, runs component, field, independent-reference, native/time/spatial and full-cohort studies, then repository tests and the site build. The field studies generate the physical fixtures consumed by the propagation studies; a fresh checkout does not require old `/tmp` files. Large raw arrays and platform-specific binaries are regenerated rather than committed. Run the large independent and finer-field studies sequentially; overlapping them exceeded this 10 GB environment. Long field solves have explicit iteration and process limits.
 
 `--collect` aggregates existing study outputs and labels that mode. Required field aggregation verifies study source hashes. A failed new command cannot be replaced by an older passing report. Source changes, stale browser evidence, missing studies or failed gates prevent completion.
 

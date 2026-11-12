@@ -1,3 +1,4 @@
+import {solvePrecisionContact,samplePrecisionContact} from './precision-contact-solve.mjs';
 import {experimentChannels,wavelengthTransport,spectralPhoto,spectralAssignment} from './spectral-protocol.mjs';
 import {confinement} from './confinement.mjs';
 import {qualifySelectivity} from './causal-selectivity.mjs';
@@ -27,7 +28,7 @@ export async function runProtocol(input,{onProgress=()=>{},shouldCancel=()=>fals
  if(!baselineValid)throw new Error('Matched no-drive audit failed; recruitment withheld.');
  onProgress({phase:'Meshing physical wells and reciprocal recording contacts',fraction:.03});
  const fieldSettings={...stage1FieldSettings(anatomy,m),...(s.modality==='magnetic'?{radialRefinement:MAGNETIC_FIELD_METHOD.radialRefinement,axialRefinement:MAGNETIC_FIELD_METHOD.axialRefinement}:{})};
- const field=createStage1FieldModel(fieldSettings,{...g,morphology:m,constructPresent:true}),readout=solveStage1Channel(field,g.channels[0]),recordTransfers=g.cells.map(c=>sampleMembraneTransfer(readout,m,c));
+ const field=createStage1FieldModel(fieldSettings,{...g,morphology:m,constructPresent:true}),readout=s.modality==='magnetic'?solvePrecisionContact(field,g.channels[0],{isCancelled:shouldCancel,onProgress:p=>onProgress({...p,phase:'Solving reciprocal recording field'})}):solveStage1Channel(field,g.channels[0]),recordTransfers=g.cells.map(c=>s.modality==='magnetic'?samplePrecisionContact(readout,m,c):sampleMembraneTransfer(readout,m,c));
  const points=s.amplitudes.map(amplitude=>({amplitude,matrices:Object.fromEntries(controls.map(c=>[c,[]])),pairs:[],recordings:[],auditValid:false})),fieldReports=[],units={electrode:'uA',magnetic:'A peak',optical:'mW emitted',spectral:'mW emitted'};
  let completed=0;const total=channels.length*s.amplitudes.length*s.axonCount;
  for(let k=0;k<channels.length;k++){
@@ -83,7 +84,7 @@ export async function runProtocol(input,{onProgress=()=>{},shouldCancel=()=>fals
  const nominalSweep=analyzeSweep(points.map(p=>({amplitude:p.amplitude,auditValid:p.auditValid,assigned:p.matrices.assigned})));
  const sweep=nominalSweep;
  const candidates=points.filter(p=>p.metrics.headline),chosen=[...candidates].sort((a,b)=>b.metrics.headline.exclusiveCount-a.metrics.headline.exclusiveCount||a.amplitude-b.amplitude)[0];
- return {schema:'axon-stage2.coupled-result.v1',modelVersion:VERSION,settings:clone(s),anatomySettings:clone({...anatomy,fieldRadialRefinement:fieldSettings.radialRefinement,fieldAxialRefinement:fieldSettings.axialRefinement}),units:{amplitude:units[s.modality],voltage:'mV',electricalTime:'ms',recording:'uV',coordinate:'um'},geometry:{...g,channels},spectral:spectralAssignment(s,g),identities,morphology:{parameters:m.parameters,compartments:m.compartments.map(c=>({index:c.index,kind:c.kind,role:c.role,zUm:c.zUm,lengthUm:c.lengthUm,diameterUm:c.diameterUm})),recordIndices:m.activeSiteIndices,somaIndices:m.somaIndices},work,points,sweep,fieldReports,
+ return {schema:'axon-stage2.coupled-result.v1',modelVersion:VERSION,settings:clone(s),anatomySettings:clone({...anatomy,fieldRadialRefinement:fieldSettings.radialRefinement,fieldAxialRefinement:fieldSettings.axialRefinement}),units:{amplitude:units[s.modality],voltage:'mV',electricalTime:'ms',recording:'uV',coordinate:'um'},geometry:{...g,channels},spectral:spectralAssignment(s,g),identities,morphology:{parameters:m.parameters,compartments:m.compartments.map(c=>({index:c.index,kind:c.kind,role:c.role,zUm:c.zUm,lengthUm:c.lengthUm,diameterUm:c.diameterUm})),recordIndices:m.activeSiteIndices,somaIndices:m.somaIndices},work,points,sweep,fieldReports,...(s.modality==='magnetic'?{recordingField:{diagnostics:readout.diagnostics,channel:readout.channel}}:{}),
   zeroInput:{maximumDriftMv:zeroDrift,eventsByControl:Object.fromEntries(Object.entries(zeroByControl).map(([c,r])=>[c,r.events.length])),initialState:base.initialState},auditComplete:true,auditValid:points.every(p=>p.auditValid),
   operatingPoint:{amplitude:chosen?.amplitude??null,rule:'Greatest conditional exclusive count on the declared valid grid; lowest amplitude breaks ties. No interpolation or threshold extrapolation.'},
   originalHost:{census:s.axonCount,preserved:0,uniquelyAddressed:0,y:0,reason:'Complete resection in the declared B3 topology. E identities are not H identities.'},
