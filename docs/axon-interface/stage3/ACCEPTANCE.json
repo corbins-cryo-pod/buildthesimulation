@@ -1,0 +1,24 @@
+{
+  "schema": "buildthesimulation.growth-acceptance.v1",
+  "declaredBeforeValidation": true,
+  "scope": "Mathematical components and software contracts only. Not biological calibration or whole stochastic-model convergence.",
+  "gates": {
+    "diffusionAnalyticRelativeToBath": 0.001,
+    "diffusionDenseReferenceNgMl": 1e-8,
+    "diffusionRefinementMinimumOrder": 1.8,
+    "wellExchangeAbsoluteNgMl": 1e-9,
+    "hazardIntegralAbsolute": 1e-9,
+    "fateIndependentAbsoluteAtDefaultStep": 0.01,
+    "fateHalvingMaximumDifference": 0.01,
+    "poissonMeanAbsoluteAt100000Samples": 0.015,
+    "poissonSingleFractionAbsoluteAt100000Samples": 0.008,
+    "rngMeanAbsoluteAt100000Samples": 0.005,
+    "reflectionLengthAbsoluteUm": 2e-5,
+    "determinism": "Exact JSON equality in the same runtime",
+    "junctionStreamIsolation": "Exact geometry and trajectory equality when only transmission assumption changes",
+    "zeroGrowth": "No extension when growthUmDay=0",
+    "handoff": "Explicit confirmation; no relabeling host IDs; no electrical claims or geometry substitution",
+    "invalidInput": "Visible error, no clipping, silent parameter coercion or work reduction"
+  },
+  "unverified": ["Full stochastic path convergence / ensemble uncertainty", "3D molecular transport", "Biological fate, survival, synaptic function and reinnervation", "Electrical coupling of grown paths", "Stage 2 modalities"]
+}

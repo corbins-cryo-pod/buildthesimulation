@@ -1,0 +1,160 @@
+{
+  "schema": "buildthesimulation.axon-growth-verification.v1",
+  "modelVersion": "axon-growth/0.1.0-dev.1",
+  "status": "Component mathematics and software contracts verified; development preview only",
+  "contractTests": {
+    "passed": 33,
+    "failed": 0,
+    "skipped": 0
+  },
+  "referenceChecks": {
+    "scope": "Component-equation verification only. No whole stochastic-model convergence or biological calibration.",
+    "environment": {
+      "python": "3.13.5",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0"
+    },
+    "passed": 17,
+    "total": 17,
+    "checks": [
+      {
+        "name": "Dense independent matrix, 21 nodes",
+        "measured": 5.329070518200751e-15,
+        "criterion": "<=",
+        "limit": 1e-08,
+        "pass": true
+      },
+      {
+        "name": "Dense independent matrix, 41 nodes",
+        "measured": 5.3290705182007514e-14,
+        "criterion": "<=",
+        "limit": 1e-08,
+        "pass": true
+      },
+      {
+        "name": "Default slab against analytic cosh solution",
+        "measured": 1.6182302195666408e-05,
+        "criterion": "<=",
+        "limit": 0.001,
+        "pass": true
+      },
+      {
+        "name": "Dense independent matrix, 81 nodes",
+        "measured": 9.947598300641403e-14,
+        "criterion": "<=",
+        "limit": 1e-08,
+        "pass": true
+      },
+      {
+        "name": "Dense independent matrix, 161 nodes",
+        "measured": 4.725109192804666e-13,
+        "criterion": "<=",
+        "limit": 1e-08,
+        "pass": true
+      },
+      {
+        "name": "Slab refinement order 21 to 41",
+        "measured": 1.9986570835049318,
+        "criterion": ">=",
+        "limit": 1.8,
+        "pass": true
+      },
+      {
+        "name": "Slab refinement order 41 to 81",
+        "measured": 1.9996639469762318,
+        "criterion": ">=",
+        "limit": 1.8,
+        "pass": true
+      },
+      {
+        "name": "Slab refinement order 81 to 161",
+        "measured": 1.9999159703831182,
+        "criterion": ">=",
+        "limit": 1.8,
+        "pass": true
+      },
+      {
+        "name": "Well exchange ODE 0",
+        "measured": 2.1405099914773018e-13,
+        "criterion": "<=",
+        "limit": 1e-09,
+        "pass": true
+      },
+      {
+        "name": "Hazard numerical quadrature 0",
+        "measured": 0.0,
+        "criterion": "<=",
+        "limit": 1e-09,
+        "pass": true
+      },
+      {
+        "name": "Well exchange ODE 1",
+        "measured": 9.614531393253856e-13,
+        "criterion": "<=",
+        "limit": 1e-09,
+        "pass": true
+      },
+      {
+        "name": "Hazard numerical quadrature 1",
+        "measured": 0.0,
+        "criterion": "<=",
+        "limit": 1e-09,
+        "pass": true
+      },
+      {
+        "name": "Well exchange ODE 2",
+        "measured": 0.0,
+        "criterion": "<=",
+        "limit": 1e-09,
+        "pass": true
+      },
+      {
+        "name": "Hazard numerical quadrature 2",
+        "measured": 0.0,
+        "criterion": "<=",
+        "limit": 1e-09,
+        "pass": true
+      },
+      {
+        "name": "Default marker step against independent continuous ODE",
+        "measured": 0.0034326061987179635,
+        "criterion": "<=",
+        "limit": 0.01,
+        "pass": true
+      },
+      {
+        "name": "Marker time refinement 0.1 to 0.05",
+        "measured": 0.0017282349154596477,
+        "criterion": "<=",
+        "limit": 0.01,
+        "pass": true
+      },
+      {
+        "name": "Marker time refinement 0.05 to 0.025",
+        "measured": 0.0008552025762293136,
+        "criterion": "<=",
+        "limit": 0.01,
+        "pass": true
+      }
+    ]
+  },
+  "sourceHashes": {
+    "public/axon-stage3/engine.mjs": "f61ef049aa5736f1917a413d6e104b0914d9a547eb02be9d358122e04bc83d2e",
+    "public/axon-stage3/ui.mjs": "b8316da49a3df8d340784cce3ebc24d0dc845119ab8ab1a211dad0d512b39065",
+    "public/axon-stage3/index.html": "aa206e0f51ebd1e36d11d9efbc0aa3bbe5cf934d540fdce068f5e12d04f91b79",
+    "tests/axon-interface-stage3-contracts.mjs": "53a8039bea74fe12ad476751948a415bdce76003fd96c82380c8033340d970aa",
+    "scripts/axon-interface-stage3/reference.py": "a1cd55c43a905417d3246e26c3f32c7342e0c510edd0021babca5705645d227d",
+    "scripts/axon-interface-stage3/reproduce.py": "ffb2edd4f9b541884f7f9060063621873b3ae4271e490dccf0f55605a1aa34c7",
+    "docs/axon-interface/stage3/ACCEPTANCE.json": "e53d5204d207ae1213864f313c14cca9e6b26b4f81ff849b6a8648894c8184df"
+  },
+  "frozenAcceptanceSha256": "e53d5204d207ae1213864f313c14cca9e6b26b4f81ff849b6a8648894c8184df",
+  "biologicalValidation": false,
+  "fullStochasticConvergence": false,
+  "electricalCouplingValidated": false,
+  "stage2Complete": false,
+  "runtime": {
+    "node": "v22.16.0",
+    "python": "3.13.5"
+  },
+  "scope": "The checks concern explicitly stated numerical components. They do not validate developmental rates, tissue mechanics, fate prediction, functional integration or electrical selectivity."
+}
