@@ -1,9 +1,9 @@
 {
   "schema": "axon-stage2-browser-validation/1",
   "passed": true,
-  "surface": "Local managed Chrome preview; actual bundled worker",
-  "hosted": false,
-  "url": "http://127.0.0.1:4173/simulations/biohybrid-axon-interface/stage2/",
+  "surface": "Managed Chrome: local preview and deployed Cloudflare preview, actual bundled workers",
+  "hosted": true,
+  "url": "https://f93c1dc3.buildthesimulation.pages.dev/simulations/biohybrid-axon-interface/stage2/",
   "settings": {
     "modality": "optical",
     "axonCount": 4,
@@ -26,59 +26,182 @@
     "coilRiseMs": 0.05,
     "wellApertureRadiusUm": 3.5
   },
-  "elapsedSeconds": 72.46559999999963,
+  "elapsedSeconds": 61.898900000000374,
   "checks": [
     {
       "name": "Real browser worker completed retained optical settings",
-      "pass": true
+      "pass": true,
+      "surface": "local preview"
     },
     {
       "name": "Completed export retains every matched intervention",
-      "pass": true
+      "pass": true,
+      "surface": "local preview"
     },
     {
       "name": "Saved voltage replay has all 23 active sites",
-      "pass": true
+      "pass": true,
+      "surface": "local preview"
     },
     {
       "name": "Exported sources sum exactly",
-      "pass": true
+      "pass": true,
+      "surface": "local preview"
     },
     {
       "name": "Cancellation terminated calculation",
       "pass": true,
-      "evidence": "Observed through browser UI"
+      "evidence": "Observed through browser UI",
+      "surface": "local preview"
     },
     {
       "name": "New request replaced prior worker; cancellation kept completed result",
       "pass": true,
-      "evidence": "Observed through browser UI"
+      "evidence": "Observed through browser UI",
+      "surface": "local preview"
     },
     {
       "name": "Malformed amplitude produced visible error while preserving result",
       "pass": true,
-      "evidence": "Observed through browser UI"
+      "evidence": "Observed through browser UI",
+      "surface": "local preview"
     },
     {
       "name": "Pin and edited seed kept completed seed 4079",
       "pass": true,
-      "evidence": "Observed through browser UI"
+      "evidence": "Observed through browser UI",
+      "surface": "local preview"
     },
     {
       "name": "JSON import restored seed and grid",
       "pass": true,
-      "evidence": "Observed through browser UI"
+      "evidence": "Observed through browser UI",
+      "surface": "local preview"
     },
     {
       "name": "Soma-only control selected and saved replay advanced to 1.2 ms",
       "pass": true,
-      "evidence": "Observed through browser UI"
+      "evidence": "Observed through browser UI",
+      "surface": "local preview"
+    },
+    {
+      "name": "Deployed worker completes the exact declared optical cohort and matched controls",
+      "pass": true,
+      "surface": "Cloudflare preview"
+    },
+    {
+      "name": "Hosted and local complete exports are exactly equal except elapsedSeconds",
+      "pass": true,
+      "surface": "Export comparison; every field and numeric array checked"
+    },
+    {
+      "name": "Conservative optical exposure ratio and rare-event limitation visible",
+      "pass": true,
+      "surface": "Cloudflare preview",
+      "displayedRatio": 6.744,
+      "definition": "target lower confidence bound / largest off-target upper bound"
+    },
+    {
+      "name": "Completed settings, recruitment matrix and causal audit visible",
+      "pass": true,
+      "surface": "Cloudflare preview",
+      "screenshots": [
+        "hosted-overview.jpg",
+        "hosted-audit.jpg"
+      ]
     }
   ],
-  "resultSha256": "0871f1e5ae64e1f3cbc4650a81fcf0989c3737610dcec7307d4c4ee984c899b7",
+  "resultSha256": "fdca160218042b93655529579e2c54706b1e4fa1ca2631c591a6fb33d0619bd0",
   "limitations": [
-    "WebGL failed in this browser; same-data 2D fallback was exercised.",
-    "Hosted production navigation and narrow viewport not yet checked.",
-    "Conservative optical-ratio presentation was adjusted after this run; physical solver and saved result unchanged."
-  ]
+    "WebGL context creation failed in this browser; same-data 2D fallback was exercised on both surfaces.",
+    "Narrow viewport and Safari were not tested.",
+    "This hosted fixture has four cells and one channel; the four-channel and non-optical cohorts were verified in numerical protocol checks, not repeated in the hosted UI.",
+    "The tested deployment identifies the computational source; this evidence-only follow-up does not claim a new all-studies rerun."
+  ],
+  "testedCommit": "0d4238b49b83a7deb5e35b62922a09cb8f3379b1",
+  "recordedAt": "2026-11-12T02:01:13.436854+00:00",
+  "localEvidence": {
+    "schema": "axon-stage2-browser-validation/1",
+    "passed": true,
+    "surface": "Local managed Chrome preview; actual bundled worker",
+    "hosted": false,
+    "url": "http://127.0.0.1:4173/simulations/biohybrid-axon-interface/stage2/",
+    "settings": {
+      "modality": "optical",
+      "axonCount": 4,
+      "channelCount": 1,
+      "seed": 4079,
+      "amplitudes": [
+        0,
+        0.001,
+        0.002
+      ],
+      "dtMs": 0.000625,
+      "durationMs": 6,
+      "sampleDtMs": 0.01,
+      "photons": 128000,
+      "shellThicknessUm": 0.5,
+      "gmaxMsCm2": 5,
+      "opticalPulseMs": 2,
+      "reflectivity": 0.85,
+      "coilLayers": 6,
+      "coilRiseMs": 0.05,
+      "wellApertureRadiusUm": 3.5
+    },
+    "elapsedSeconds": 72.46559999999963,
+    "checks": [
+      {
+        "name": "Real browser worker completed retained optical settings",
+        "pass": true
+      },
+      {
+        "name": "Completed export retains every matched intervention",
+        "pass": true
+      },
+      {
+        "name": "Saved voltage replay has all 23 active sites",
+        "pass": true
+      },
+      {
+        "name": "Exported sources sum exactly",
+        "pass": true
+      },
+      {
+        "name": "Cancellation terminated calculation",
+        "pass": true,
+        "evidence": "Observed through browser UI"
+      },
+      {
+        "name": "New request replaced prior worker; cancellation kept completed result",
+        "pass": true,
+        "evidence": "Observed through browser UI"
+      },
+      {
+        "name": "Malformed amplitude produced visible error while preserving result",
+        "pass": true,
+        "evidence": "Observed through browser UI"
+      },
+      {
+        "name": "Pin and edited seed kept completed seed 4079",
+        "pass": true,
+        "evidence": "Observed through browser UI"
+      },
+      {
+        "name": "JSON import restored seed and grid",
+        "pass": true,
+        "evidence": "Observed through browser UI"
+      },
+      {
+        "name": "Soma-only control selected and saved replay advanced to 1.2 ms",
+        "pass": true,
+        "evidence": "Observed through browser UI"
+      }
+    ],
+    "resultSha256": "0871f1e5ae64e1f3cbc4650a81fcf0989c3737610dcec7307d4c4ee984c899b7",
+    "limitations": [
+      "WebGL failed in this browser; same-data 2D fallback was exercised.",
+      "Hosted production navigation and narrow viewport not yet checked.",
+      "Conservative optical-ratio presentation was adjusted after this run; physical solver and saved result unchanged."
+    ]
+  }
 }
