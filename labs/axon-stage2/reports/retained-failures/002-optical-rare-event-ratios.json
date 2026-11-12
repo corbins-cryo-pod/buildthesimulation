@@ -1,0 +1,398 @@
+{
+  "cause": "A finite nonzero off-target estimate based on 1\u20133 packet hits produced a very large unstable ratio. Batch standard error is not a robust rare-event bound.",
+  "originalRuns": [
+    {
+      "schema": "axon-stage2.optical-transport.v1",
+      "modelVersion": "axon-modalities-0.1.0-component-preview",
+      "settings": {
+        "cells": 4,
+        "pitchUm": 40,
+        "somaRadiusUm": 10,
+        "wellRadiusUm": 13,
+        "wallUm": 2.5,
+        "halfLengthUm": 70,
+        "apertureRadiusUm": 3.5,
+        "boxHalfUm": 180,
+        "emitterRadiusUm": 2,
+        "reflectivity": 0.85,
+        "muAbsPerMm": 0.2,
+        "muScatterPerMm": 10,
+        "anisotropy": 0.9,
+        "photons": 16000,
+        "batches": 8,
+        "maxEvents": 400,
+        "seed": 2048
+      },
+      "scene": {
+        "settings": {
+          "cells": 4,
+          "pitchUm": 40,
+          "somaRadiusUm": 10,
+          "wellRadiusUm": 13,
+          "wallUm": 2.5,
+          "halfLengthUm": 70,
+          "apertureRadiusUm": 3.5,
+          "boxHalfUm": 180,
+          "emitterRadiusUm": 2,
+          "reflectivity": 0.85,
+          "muAbsPerMm": 0.2,
+          "muScatterPerMm": 10,
+          "anisotropy": 0.9,
+          "photons": 16000,
+          "batches": 8,
+          "maxEvents": 400,
+          "seed": 2048
+        },
+        "wells": [
+          {
+            "id": "W0001",
+            "x": -20,
+            "y": -20,
+            "r": 13,
+            "outer": 15.5,
+            "half": 70,
+            "wall": 2.5,
+            "ap": 3.5
+          },
+          {
+            "id": "W0002",
+            "x": 20,
+            "y": -20,
+            "r": 13,
+            "outer": 15.5,
+            "half": 70,
+            "wall": 2.5,
+            "ap": 3.5
+          },
+          {
+            "id": "W0003",
+            "x": -20,
+            "y": 20,
+            "r": 13,
+            "outer": 15.5,
+            "half": 70,
+            "wall": 2.5,
+            "ap": 3.5
+          },
+          {
+            "id": "W0004",
+            "x": 20,
+            "y": 20,
+            "r": 13,
+            "outer": 15.5,
+            "half": 70,
+            "wall": 2.5,
+            "ap": 3.5
+          }
+        ],
+        "detectors": [
+          {
+            "id": "E0001",
+            "center": [
+              -20,
+              -20,
+              0
+            ],
+            "radius": 10
+          },
+          {
+            "id": "E0002",
+            "center": [
+              20,
+              -20,
+              0
+            ],
+            "radius": 10
+          },
+          {
+            "id": "E0003",
+            "center": [
+              -20,
+              20,
+              0
+            ],
+            "radius": 10
+          },
+          {
+            "id": "E0004",
+            "center": [
+              20,
+              20,
+              0
+            ],
+            "radius": 10
+          }
+        ],
+        "source": {
+          "center": [
+            -7.5,
+            -20,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "radius": 2,
+          "angular": "lambertian"
+        },
+        "boxHalfUm": 180
+      },
+      "perCell": [
+        {
+          "id": "E0001",
+          "meanFluencePerMw": 4071.977519457185,
+          "batchStandardError": 48.81476762324365,
+          "photonsIntersecting": 15525
+        },
+        {
+          "id": "E0002",
+          "meanFluencePerMw": 0.0010168516241379464,
+          "batchStandardError": 0.0009670725849635737,
+          "photonsIntersecting": 3
+        },
+        {
+          "id": "E0003",
+          "meanFluencePerMw": 0,
+          "batchStandardError": 0,
+          "photonsIntersecting": 0
+        },
+        {
+          "id": "E0004",
+          "meanFluencePerMw": 0,
+          "batchStandardError": 0,
+          "photonsIntersecting": 0
+        }
+      ],
+      "batchSeeds": [
+        3145224197,
+        3128446578,
+        3111668959,
+        3094891340,
+        3078113721,
+        3061336102,
+        3044558483,
+        3027780864
+      ],
+      "energy": {
+        "absorbed": 0.03090751957367771,
+        "wallAbsorbed": 0.939943434942954,
+        "escaped": 0.029149045483085487,
+        "truncated": 4.14010933670582e-13
+      },
+      "energyResidual": 1.312283615106935e-13,
+      "confinement": {
+        "estimate": 4004495.2702999064,
+        "status": "Sampled fluence ratio; uncertainty and membrane recruitment not established."
+      },
+      "recruitment": null,
+      "limits": [
+        "Volume-mean soma detector fluence, not a converged membrane-surface irradiance estimator.",
+        "Uniform optical properties are hypothetical and identical in tissue and cavity; no refractive-index contrast or Fresnel boundaries.",
+        "Finite wall/endcap geometry, opaque specular liner, open apertures. Liner reflectivity is an assumption, not a measurement.",
+        "Somata do not displace or refract optical paths; optically homogeneous detector volumes.",
+        "Photons leaving the finite box are lost. Domain-size and photon-budget convergence are not yet release-qualified.",
+        "Zero detector hits do not establish zero crosstalk. Truncated photon weight is counted as unresolved, not absorbed heat.",
+        "Electrical safety, full bioheat and neural recruitment are not computed by this assay."
+      ]
+    },
+    {
+      "schema": "axon-stage2.optical-transport.v1",
+      "modelVersion": "axon-modalities-0.1.0-component-preview",
+      "settings": {
+        "cells": 4,
+        "pitchUm": 40,
+        "somaRadiusUm": 10,
+        "wellRadiusUm": 13,
+        "wallUm": 2.5,
+        "halfLengthUm": 70,
+        "apertureRadiusUm": 3.5,
+        "boxHalfUm": 180,
+        "emitterRadiusUm": 2,
+        "reflectivity": 0.85,
+        "muAbsPerMm": 0.2,
+        "muScatterPerMm": 10,
+        "anisotropy": 0.9,
+        "photons": 32000,
+        "batches": 8,
+        "maxEvents": 400,
+        "seed": 2819
+      },
+      "scene": {
+        "settings": {
+          "cells": 4,
+          "pitchUm": 40,
+          "somaRadiusUm": 10,
+          "wellRadiusUm": 13,
+          "wallUm": 2.5,
+          "halfLengthUm": 70,
+          "apertureRadiusUm": 3.5,
+          "boxHalfUm": 180,
+          "emitterRadiusUm": 2,
+          "reflectivity": 0.85,
+          "muAbsPerMm": 0.2,
+          "muScatterPerMm": 10,
+          "anisotropy": 0.9,
+          "photons": 32000,
+          "batches": 8,
+          "maxEvents": 400,
+          "seed": 2819
+        },
+        "wells": [
+          {
+            "id": "W0001",
+            "x": -20,
+            "y": -20,
+            "r": 13,
+            "outer": 15.5,
+            "half": 70,
+            "wall": 2.5,
+            "ap": 3.5
+          },
+          {
+            "id": "W0002",
+            "x": 20,
+            "y": -20,
+            "r": 13,
+            "outer": 15.5,
+            "half": 70,
+            "wall": 2.5,
+            "ap": 3.5
+          },
+          {
+            "id": "W0003",
+            "x": -20,
+            "y": 20,
+            "r": 13,
+            "outer": 15.5,
+            "half": 70,
+            "wall": 2.5,
+            "ap": 3.5
+          },
+          {
+            "id": "W0004",
+            "x": 20,
+            "y": 20,
+            "r": 13,
+            "outer": 15.5,
+            "half": 70,
+            "wall": 2.5,
+            "ap": 3.5
+          }
+        ],
+        "detectors": [
+          {
+            "id": "E0001",
+            "center": [
+              -20,
+              -20,
+              0
+            ],
+            "radius": 10
+          },
+          {
+            "id": "E0002",
+            "center": [
+              20,
+              -20,
+              0
+            ],
+            "radius": 10
+          },
+          {
+            "id": "E0003",
+            "center": [
+              -20,
+              20,
+              0
+            ],
+            "radius": 10
+          },
+          {
+            "id": "E0004",
+            "center": [
+              20,
+              20,
+              0
+            ],
+            "radius": 10
+          }
+        ],
+        "source": {
+          "center": [
+            -7.5,
+            -20,
+            0
+          ],
+          "normal": [
+            -1,
+            0,
+            0
+          ],
+          "radius": 2,
+          "angular": "lambertian"
+        },
+        "boxHalfUm": 180
+      },
+      "perCell": [
+        {
+          "id": "E0001",
+          "meanFluencePerMw": 4133.373175305782,
+          "batchStandardError": 15.274423902884827,
+          "photonsIntersecting": 31070
+        },
+        {
+          "id": "E0002",
+          "meanFluencePerMw": 0,
+          "batchStandardError": 0,
+          "photonsIntersecting": 0
+        },
+        {
+          "id": "E0003",
+          "meanFluencePerMw": 3.0737558854220235e-09,
+          "batchStandardError": 3.0737558854220235e-09,
+          "photonsIntersecting": 1
+        },
+        {
+          "id": "E0004",
+          "meanFluencePerMw": 6.598937886299255e-12,
+          "batchStandardError": 6.598937886299254e-12,
+          "photonsIntersecting": 1
+        }
+      ],
+      "batchSeeds": [
+        1506425604,
+        1523203223,
+        1539980842,
+        1556758461,
+        1439315128,
+        1456092747,
+        1472870366,
+        1489647985
+      ],
+      "energy": {
+        "absorbed": 0.03102173189387191,
+        "wallAbsorbed": 0.9396844876836916,
+        "escaped": 0.029293780422040942,
+        "truncated": 4.17473572851918e-13
+      },
+      "energyResidual": 2.19824158875781e-14,
+      "confinement": {
+        "estimate": 1344730463114.9243,
+        "status": "Sampled fluence ratio; uncertainty and membrane recruitment not established."
+      },
+      "recruitment": null,
+      "limits": [
+        "Volume-mean soma detector fluence, not a converged membrane-surface irradiance estimator.",
+        "Uniform optical properties are hypothetical and identical in tissue and cavity; no refractive-index contrast or Fresnel boundaries.",
+        "Finite wall/endcap geometry, opaque specular liner, open apertures. Liner reflectivity is an assumption, not a measurement.",
+        "Somata do not displace or refract optical paths; optically homogeneous detector volumes.",
+        "Photons leaving the finite box are lost. Domain-size and photon-budget convergence are not yet release-qualified.",
+        "Zero detector hits do not establish zero crosstalk. Truncated photon weight is counted as unresolved, not absorbed heat.",
+        "Electrical safety, full bioheat and neural recruitment are not computed by this assay."
+      ]
+    }
+  ],
+  "correction": "Retain raw ratio in detailed export but withhold confinement headline until all off-target detectors have >=100 intersecting histories and batch relative standard error <=20%. These are conservative estimated display-adequacy criteria, not a release or convergence qualification."
+}

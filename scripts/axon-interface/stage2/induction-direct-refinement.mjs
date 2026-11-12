@@ -1,0 +1,22 @@
+/** Supplemental diagnostic after the retained browser-PCG failures. This does
+ * not replace or convert those failed browser refinement gates into a pass. */
+import fs from 'node:fs';import {spawnSync} from 'node:child_process';
+import {normalize} from '../../../src/lib/axon-interface/stage2/settings.mjs';import {createStage1Cohort} from '../../../src/lib/axon-interface/identities.mjs';import {createBipolarMorphology} from '../../../src/lib/axon-interface/bipolar.mjs';import {stage1FieldSettings} from '../../../src/lib/axon-interface/stage1-protocol.mjs';
+import {createStage1FieldModel,solveStage1Load,sampleMembraneTransfer} from '../../../src/lib/axon-interface/field-stage1.mjs';import {embeddedCoil} from '../../../src/lib/axon-interface/stage2/magnetic-coupling.mjs';import {prepareInductionLoad} from '../../../public/simulations/biohybrid-axon-interface/stage2/modules/induction.mjs';import {integrateCableLink} from '../../../public/simulations/biohybrid-axon-interface/stage2/modules/magnetic.mjs';
+const {anatomy:s}=normalize({axonCount:4}),g=createStage1Cohort(s),m=createBipolarMorphology(s),coil=embeddedCoil(g.wells[0]),rows=[],runs=[],started=performance.now();
+const relative=(a,b)=>Math.sqrt(a.reduce((e,x,i)=>e+(x-b[i])**2,0)/b.reduce((e,x)=>e+x*x,0));
+for(const refinement of [1,2]){
+ const model=createStage1FieldModel({...stage1FieldSettings(s,m),radialRefinement:refinement,axialRefinement:refinement},{...g,morphology:m,constructPresent:true}),load=prepareInductionLoad(model,coil),solution=refinement===1?solveStage1Load(model,load.rhsMicroampPerSlew):null;
+ console.log('Independent direct mesh',refinement,model.points.length);
+ const fixture='/tmp/axon-direct-fixture-'+refinement+'.json',report='/tmp/axon-direct-report-'+refinement+'.json',potentials='/tmp/axon-direct-potentials-'+refinement+'.json';
+ fs.writeFileSync(fixture,JSON.stringify({points:model.points,tetrahedra:Array.from(model.tetrahedra),regions:Array.from(model.regions),conductivityByRegion:load.conductivityByRegion,boundary:model.boundary,segments:coil.segments,potentialMvPerAperS:solution?Array.from(solution.potentialMvPerUa):Array(model.points.length).fill(0),loadMicroampPerSlew:Array.from(load.rhsMicroampPerSlew)}));
+ const python=spawnSync(process.env.MRG_PYTHON??'python3',['scripts/axon-interface/stage2/induction-reference.py',fixture,report,potentials],{encoding:'utf8',maxBuffer:1e6});if(python.status!==0)throw new Error('Independent reference process failed: '+JSON.stringify({status:python.status,signal:python.signal,error:String(python.error??''),stderr:python.stderr}));
+ const reference=JSON.parse(fs.readFileSync(report)),native=JSON.parse(fs.readFileSync(potentials)),sol={model,potentialMvPerUa:Float64Array.from(native.potentialMvPerAperS)};
+ if(refinement===1)rows.push({name:'Coarse browser solution versus independent SciPy assembly',pass:reference.maximumPotentialErrorUvPerAperS<=.001,...reference});
+ rows.push({name:`Direct reference residual refinement ${refinement}`,pass:native.relativeResidual<=1e-10,relativeResidual:native.relativeResidual});
+ const transfers=g.cells.map(cell=>{const scalar=sampleMembraneTransfer(sol,m,cell),centers=m.compartments.map(c=>[c.positionUm[0]+cell.xUm,c.positionUm[1]+cell.yUm,c.positionUm[2]]),integrate=n=>{const path=new Float64Array(centers.length);for(let i=1;i<path.length;i++)path[i]=path[i-1]+1000*integrateCableLink(coil,centers[i-1].map(x=>x*1e-6),centers[i].map(x=>x*1e-6),n);const ref=scalar[m.somaIndex]+path[m.somaIndex];return Array.from(scalar,(v,i)=>v+path[i]-ref);},a=integrate(8),b=integrate(16);rows.push({name:`Cell ${cell.id} cable quadrature at mesh ${refinement}`,pass:relative(a,b)<=.01,relativeL2:relative(a,b)});return b;});
+ runs.push({refinement,nodes:model.points.length,transfers,referenceResidual:native.relativeResidual});
+}
+for(let j=0;j<g.cells.length;j++){const e=relative(runs[0].transfers[j],runs[1].transfers[j]);rows.push({name:`Cell ${g.cells[j].id} direct-reference mesh refinement`,pass:e<=.05,relativeL2:e});}
+const result={schema:'axon-stage2-induction-direct-diagnostic/1',complete:true,passed:rows.every(x=>x.pass),rows,runs,runtimeSeconds:(performance.now()-started)/1000,meaning:'Supplemental independent direct-solver diagnostic. The failed finer browser solve remains failed and still blocks release.'};
+fs.writeFileSync('docs/axon-interface/stage2/induction-direct-diagnostic.json',JSON.stringify(result,null,2)+'\n');console.log(rows);if(!result.passed)process.exitCode=1;

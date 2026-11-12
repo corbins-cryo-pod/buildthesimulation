@@ -1,0 +1,20 @@
+{
+  "declaredBeforeExecution": true,
+  "scope": "Stage 2 component increment, not coupled neural release",
+  "exactRankAndMetrics": "exact equality on enumerated fixtures and independent SymPy ranks",
+  "segmentVectorPotentialRelative": 1e-10,
+  "segmentMagneticFieldRelative": 1e-9,
+  "loopAxisFieldRelative": 0.001,
+  "coilRotationAbsolute": 1e-14,
+  "inductionRhsCurrentSumAbsoluteMicroampPerRate": 1e-15,
+  "opsinStateVsScipyAbsolute": 0.000002,
+  "opsinCurrentVsScipyAbsoluteNanoamp": 0.000002,
+  "opsinMassAbsolute": 1e-10,
+  "opsinMinimumOccupancy": -1e-12,
+  "opticalEnergyBalanceAbsolute": 1e-10,
+  "opticalBeerLambertAbsolute": 0.015,
+  "photonBatchCompatibilityStandardErrors": 5,
+  "determinism": "exact equality, same runtime and seed",
+  "releaseRequires": ["coupled 37 C membrane integration", "same-geometry modality experiments", "matched intervention runs for each modality", "independent native membrane comparison with new drives", "induction field production-mesh refinement", "optical membrane-surface estimator convergence", "stochastic threshold uncertainty", "site build and hosted browser tests"],
+  "completeStage2": false
+}

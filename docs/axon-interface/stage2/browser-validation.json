@@ -1,0 +1,84 @@
+{
+  "schema": "axon-stage2-browser-validation/1",
+  "passed": true,
+  "surface": "Local managed Chrome preview; actual bundled worker",
+  "hosted": false,
+  "url": "http://127.0.0.1:4173/simulations/biohybrid-axon-interface/stage2/",
+  "settings": {
+    "modality": "optical",
+    "axonCount": 4,
+    "channelCount": 1,
+    "seed": 4079,
+    "amplitudes": [
+      0,
+      0.001,
+      0.002
+    ],
+    "dtMs": 0.000625,
+    "durationMs": 6,
+    "sampleDtMs": 0.01,
+    "photons": 128000,
+    "shellThicknessUm": 0.5,
+    "gmaxMsCm2": 5,
+    "opticalPulseMs": 2,
+    "reflectivity": 0.85,
+    "coilLayers": 6,
+    "coilRiseMs": 0.05,
+    "wellApertureRadiusUm": 3.5
+  },
+  "elapsedSeconds": 72.46559999999963,
+  "checks": [
+    {
+      "name": "Real browser worker completed retained optical settings",
+      "pass": true
+    },
+    {
+      "name": "Completed export retains every matched intervention",
+      "pass": true
+    },
+    {
+      "name": "Saved voltage replay has all 23 active sites",
+      "pass": true
+    },
+    {
+      "name": "Exported sources sum exactly",
+      "pass": true
+    },
+    {
+      "name": "Cancellation terminated calculation",
+      "pass": true,
+      "evidence": "Observed through browser UI"
+    },
+    {
+      "name": "New request replaced prior worker; cancellation kept completed result",
+      "pass": true,
+      "evidence": "Observed through browser UI"
+    },
+    {
+      "name": "Malformed amplitude produced visible error while preserving result",
+      "pass": true,
+      "evidence": "Observed through browser UI"
+    },
+    {
+      "name": "Pin and edited seed kept completed seed 4079",
+      "pass": true,
+      "evidence": "Observed through browser UI"
+    },
+    {
+      "name": "JSON import restored seed and grid",
+      "pass": true,
+      "evidence": "Observed through browser UI"
+    },
+    {
+      "name": "Soma-only control selected and saved replay advanced to 1.2 ms",
+      "pass": true,
+      "evidence": "Observed through browser UI"
+    }
+  ],
+  "resultSha256": "0871f1e5ae64e1f3cbc4650a81fcf0989c3737610dcec7307d4c4ee984c899b7",
+  "limitations": [
+    "WebGL failed in this browser; same-data 2D fallback was exercised.",
+    "Hosted production navigation and narrow viewport not yet checked.",
+    "Conservative optical-ratio presentation was adjusted after this run; physical solver and saved result unchanged."
+  ]
+}

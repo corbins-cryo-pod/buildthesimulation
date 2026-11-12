@@ -1,0 +1,26 @@
+import fs from 'node:fs';import os from 'node:os';import crypto from 'node:crypto';
+import {runProtocol} from '../../../src/lib/axon-interface/stage2/protocol.mjs';
+import {exportCsv} from '../../../src/lib/axon-interface/stage2/exports.mjs';
+const started=performance.now(),rows=[],runs=[];
+const add=(name,pass,detail={})=>rows.push({name,pass,...detail});
+function finiteTree(x){if(typeof x==='number')return Number.isFinite(x);if(x&&typeof x==='object')return Object.values(x).every(finiteTree);return true;}
+function stable(r){const copy=structuredClone(r);delete copy.elapsedSeconds;for(const f of copy.fieldReports){for(const k of ['solveSeconds','meshBuildSeconds'])delete f.diagnostics?.[k];if(f.diagnostics?.preconditioner)delete f.diagnostics.preconditioner.constructionSeconds;}return JSON.stringify(copy);}
+function audit(r,label){
+ add(label+' every matrix has complete declared dimensions',r.points.every(p=>Object.values(p.matrices).every(a=>a.length===r.settings.channelCount&&a.every(row=>row.length===r.settings.axonCount))));
+ add(label+' exact matched initial states',r.auditValid&&r.points.every(p=>p.pairs.every(q=>Object.values(q.interventions).every(t=>t.initialStateExact))));
+ add(label+' complete finite JSON',finiteTree(r));const round=JSON.parse(JSON.stringify(r));add(label+' JSON round trip',JSON.stringify(round)===JSON.stringify(r));
+ add(label+' source sums and unknown coil artifact',r.points.every(p=>p.recordings.every(t=>t.totalUv===null?r.settings.modality==='magnetic':t.totalUv.every((v,i)=>Math.abs(v-t.engineeredSourceUv[i]-t.originalHostSourceUv[i]-t.imposedFieldArtifactUv[i])<1e-9))));
+ add(label+' original identities never replaced',r.originalHost.y===0&&r.originalHost.preserved===0&&r.noDevice.implantedCells===0&&r.noDevice.wells===0);
+ add(label+' CSV includes all channel/cell/amplitude rows',exportCsv(r,'matrix').trim().split('\n').length===1+r.settings.amplitudes.length*r.settings.channelCount*r.settings.axonCount);
+ add(label+' no zero-input events',r.zeroInput.maximumDriftMv<=.1&&Object.values(r.zeroInput.eventsByControl).every(x=>x===0));
+ if(r.settings.modality==='optical')add(label+' opsin states conserved in every intervention',r.points.every(p=>p.pairs.every(q=>Object.values(q.interventions).every(t=>t.opsin.massError<=1e-8&&t.opsin.minOccupancy>=-1e-12))));
+ runs.push({label,settings:r.settings,work:r.work,elapsedSeconds:r.elapsedSeconds,zeroInput:{maximumDriftMv:r.zeroInput.maximumDriftMv,eventsByControl:r.zeroInput.eventsByControl},originalHost:r.originalHost,points:r.points.map(p=>({amplitude:p.amplitude,matrices:p.matrices,metrics:p.metrics,exposureProbeAgreement:p.exposureProbeAgreement,energy:p.energy})),fieldSummaries:r.fieldReports.map(f=>({channel:f.channel,confinement:f.confinement,diagnostics:f.diagnostics,energy:f.energy,energyResidual:f.energyResidual,settings:f.settings,intervalMethod:f.intervalMethod})),fullResultSha256:crypto.createHash('sha256').update(JSON.stringify(r)).digest('hex')});
+}
+const fast={modality:'optical',axonCount:4,channelCount:1,amplitudes:[0,.001],photons:8000};
+const a=await runProtocol(fast),b=await runProtocol(fast);audit(a,'deterministic optical fixture');add('Exact repeated optical fixture excluding execution times',stable(a)===stable(b));
+try{await runProtocol(fast,{shouldCancel:()=>true});add('Pre-solve cancellation rejects',false);}catch(e){add('Pre-solve cancellation rejects',/cancelled/.test(e.message));}
+for(const settings of [{modality:'optical',axonCount:4,channelCount:4,amplitudes:[0,.001,.002],photons:128000},{modality:'electrode',axonCount:4,channelCount:1,amplitudes:[0,.25,.5]},{modality:'magnetic',axonCount:4,channelCount:1,amplitudes:[0,10,100]}]){
+ console.log('Starting',settings.modality,settings.channelCount,'channels');const r=await runProtocol(settings);audit(r,settings.modality+' full-cohort sweep');if(process.env.STAGE2_RAW)fs.writeFileSync(process.env.STAGE2_RAW+'/'+settings.modality+'-protocol.json',JSON.stringify(r));
+}
+const report={schema:'axon-stage2-protocol-validation/1',complete:true,passed:rows.every(r=>r.pass),rows,runs,runtime:{node:process.version,cpu:os.cpus()[0]?.model,logicalCpus:os.cpus().length,seconds:(performance.now()-started)/1000},biologicalValidation:false};
+fs.writeFileSync('docs/axon-interface/stage2/protocol-validation.json',JSON.stringify(report,null,2)+'\n');fs.appendFileSync('docs/axon-interface/stage2/protocol-history.jsonl',JSON.stringify(report)+'\n');console.log(JSON.stringify({passed:report.passed,rows,runtime:report.runtime}));if(!report.passed)process.exitCode=1;

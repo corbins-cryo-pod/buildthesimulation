@@ -1,7 +1,14 @@
-name: Axon Stage 2 development
+name: Axon Stage 2 software checkpoint
 on:
   push:
     branches: [feature/axon-resolution-stage2]
+  pull_request:
+    paths:
+      - 'src/**/axon-interface/**'
+      - 'src/components/AxonStage2Laboratory.jsx'
+      - 'public/simulations/biohybrid-axon-interface/**'
+      - 'tests/axon-interface-stage2-contracts.mjs'
+      - 'scripts/axon-interface/stage2/**'
   workflow_dispatch:
 permissions:
   contents: read
@@ -15,18 +22,21 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24.22.1'
+          cache: npm
+      - run: npm ci
       - name: Package reproducible source
-        run: git archive --format=tar.gz --output=axon-stage2-source.tar.gz HEAD src scripts docs tests package.json package-lock.json astro.config.mjs
+        run: git archive --format=tar.gz --output=axon-stage2-source.tar.gz HEAD src scripts docs tests public labs/axon-stage2 package.json package-lock.json astro.config.mjs
       - uses: actions/upload-artifact@v4
         with:
           name: axon-stage2-source
           path: axon-stage2-source.tar.gz
           retention-days: 7
-      - name: Stage 2 contracts when present
-        run: |
-          if [ -f tests/axon-interface-stage2-contracts.mjs ]; then
-            node --test tests/axon-interface-stage2-contracts.mjs
-          else
-            echo 'Stage 2 implementation is not yet present; this is a source checkpoint, not a verified release.'
-          fi
+      - name: Coupled contracts
+        run: node --test tests/axon-interface-stage2-contracts.mjs
+      - name: Component contracts
+        run: node --test labs/axon-stage2/tests/components.test.mjs
+      - name: Build complete site
+        run: npm run build
+      - name: Show scientific release status separately
+        run: node -e "const r=require('./docs/axon-interface/stage2/validation.json'); console.log(JSON.stringify({completeStage2:r.completeStage2,openReleaseGates:r.openReleaseGates},null,2))"

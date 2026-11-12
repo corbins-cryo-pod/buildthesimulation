@@ -1,0 +1,714 @@
+{
+  "scope": "component increment; no experimental engineered-human parameter class claimed",
+  "parameters": [
+    {
+      "group": "coil",
+      "key": "radiusUm",
+      "default": 25,
+      "units": "µm",
+      "evidence": "hypothetical",
+      "provenance": "Proposed closed multilayer winding geometry; not a manufactured implant"
+    },
+    {
+      "group": "coil",
+      "key": "layers",
+      "default": 6,
+      "units": "dimensionless / count",
+      "evidence": "hypothetical",
+      "provenance": "Proposed closed multilayer winding geometry; not a manufactured implant"
+    },
+    {
+      "group": "coil",
+      "key": "layerPitchUm",
+      "default": 5,
+      "units": "µm",
+      "evidence": "hypothetical",
+      "provenance": "Proposed closed multilayer winding geometry; not a manufactured implant"
+    },
+    {
+      "group": "coil",
+      "key": "segmentsPerTurn",
+      "default": 48,
+      "units": "dimensionless / count",
+      "evidence": "estimated",
+      "provenance": "Explicit polygon discretization; analytic loop check and source-segment reference"
+    },
+    {
+      "group": "coil",
+      "key": "trackWidthUm",
+      "default": 2,
+      "units": "µm",
+      "evidence": "hypothetical",
+      "provenance": "Proposed closed multilayer winding geometry; not a manufactured implant"
+    },
+    {
+      "group": "coil",
+      "key": "trackThicknessUm",
+      "default": 1,
+      "units": "µm",
+      "evidence": "hypothetical",
+      "provenance": "Proposed closed multilayer winding geometry; not a manufactured implant"
+    },
+    {
+      "group": "coil",
+      "key": "viaRadiusUm",
+      "default": 1,
+      "units": "µm",
+      "evidence": "hypothetical",
+      "provenance": "Proposed closed multilayer winding geometry; not a manufactured implant"
+    },
+    {
+      "group": "coil",
+      "key": "gapRad",
+      "default": 0.2,
+      "units": "dimensionless / count",
+      "evidence": "hypothetical",
+      "provenance": "Proposed closed multilayer winding geometry; not a manufactured implant"
+    },
+    {
+      "group": "coil",
+      "key": "returnRadiusUm",
+      "default": 40,
+      "units": "µm",
+      "evidence": "hypothetical",
+      "provenance": "Proposed closed multilayer winding geometry; not a manufactured implant"
+    },
+    {
+      "group": "coil",
+      "key": "centerUm",
+      "default": [
+        60,
+        0,
+        0
+      ],
+      "units": "µm",
+      "evidence": "hypothetical",
+      "provenance": "Proposed closed multilayer winding geometry; not a manufactured implant"
+    },
+    {
+      "group": "coil",
+      "key": "axis",
+      "default": [
+        0,
+        1,
+        0
+      ],
+      "units": "dimensionless / count",
+      "evidence": "hypothetical",
+      "provenance": "Proposed closed multilayer winding geometry; not a manufactured implant"
+    },
+    {
+      "group": "coil",
+      "key": "resistivityOhmM",
+      "default": 1.68e-8,
+      "units": "Ω m",
+      "evidence": "estimated",
+      "provenance": "Nominal bulk-copper approximation, not a thin-film measurement"
+    },
+    {
+      "group": "optical",
+      "key": "cells",
+      "default": 4,
+      "units": "dimensionless / count",
+      "evidence": "hypothetical",
+      "provenance": "Declared homogeneous tissue/well component fixture; no fit to implanted engineered tissue"
+    },
+    {
+      "group": "optical",
+      "key": "pitchUm",
+      "default": 40,
+      "units": "µm",
+      "evidence": "hypothetical",
+      "provenance": "Declared homogeneous tissue/well component fixture; no fit to implanted engineered tissue"
+    },
+    {
+      "group": "optical",
+      "key": "somaRadiusUm",
+      "default": 10,
+      "units": "µm",
+      "evidence": "hypothetical",
+      "provenance": "Declared homogeneous tissue/well component fixture; no fit to implanted engineered tissue"
+    },
+    {
+      "group": "optical",
+      "key": "wellRadiusUm",
+      "default": 13,
+      "units": "µm",
+      "evidence": "hypothetical",
+      "provenance": "Declared homogeneous tissue/well component fixture; no fit to implanted engineered tissue"
+    },
+    {
+      "group": "optical",
+      "key": "wallUm",
+      "default": 2.5,
+      "units": "µm",
+      "evidence": "hypothetical",
+      "provenance": "Declared homogeneous tissue/well component fixture; no fit to implanted engineered tissue"
+    },
+    {
+      "group": "optical",
+      "key": "halfLengthUm",
+      "default": 70,
+      "units": "µm",
+      "evidence": "hypothetical",
+      "provenance": "Declared homogeneous tissue/well component fixture; no fit to implanted engineered tissue"
+    },
+    {
+      "group": "optical",
+      "key": "apertureRadiusUm",
+      "default": 3.5,
+      "units": "µm",
+      "evidence": "hypothetical",
+      "provenance": "Declared homogeneous tissue/well component fixture; no fit to implanted engineered tissue"
+    },
+    {
+      "group": "optical",
+      "key": "boxHalfUm",
+      "default": 180,
+      "units": "µm",
+      "evidence": "hypothetical",
+      "provenance": "Declared homogeneous tissue/well component fixture; no fit to implanted engineered tissue"
+    },
+    {
+      "group": "optical",
+      "key": "emitterRadiusUm",
+      "default": 2,
+      "units": "µm",
+      "evidence": "hypothetical",
+      "provenance": "Declared homogeneous tissue/well component fixture; no fit to implanted engineered tissue"
+    },
+    {
+      "group": "optical",
+      "key": "reflectivity",
+      "default": 0.85,
+      "units": "dimensionless / count",
+      "evidence": "hypothetical",
+      "provenance": "Declared homogeneous tissue/well component fixture; no fit to implanted engineered tissue"
+    },
+    {
+      "group": "optical",
+      "key": "muAbsPerMm",
+      "default": 0.2,
+      "units": "mm^-1",
+      "evidence": "hypothetical",
+      "provenance": "Declared homogeneous tissue/well component fixture; no fit to implanted engineered tissue"
+    },
+    {
+      "group": "optical",
+      "key": "muScatterPerMm",
+      "default": 10,
+      "units": "mm^-1",
+      "evidence": "hypothetical",
+      "provenance": "Declared homogeneous tissue/well component fixture; no fit to implanted engineered tissue"
+    },
+    {
+      "group": "optical",
+      "key": "anisotropy",
+      "default": 0.9,
+      "units": "dimensionless / count",
+      "evidence": "hypothetical",
+      "provenance": "Declared homogeneous tissue/well component fixture; no fit to implanted engineered tissue"
+    },
+    {
+      "group": "optical",
+      "key": "photons",
+      "default": 16000,
+      "units": "dimensionless / count",
+      "evidence": "estimated",
+      "provenance": "Declared homogeneous tissue/well component fixture; no fit to implanted engineered tissue"
+    },
+    {
+      "group": "optical",
+      "key": "batches",
+      "default": 8,
+      "units": "dimensionless / count",
+      "evidence": "estimated",
+      "provenance": "Declared homogeneous tissue/well component fixture; no fit to implanted engineered tissue"
+    },
+    {
+      "group": "optical",
+      "key": "maxEvents",
+      "default": 400,
+      "units": "dimensionless / count",
+      "evidence": "estimated",
+      "provenance": "Declared homogeneous tissue/well component fixture; no fit to implanted engineered tissue"
+    },
+    {
+      "group": "optical",
+      "key": "seed",
+      "default": 2048,
+      "units": "dimensionless / count",
+      "evidence": "estimated",
+      "provenance": "Declared homogeneous tissue/well component fixture; no fit to implanted engineered tissue"
+    },
+    {
+      "group": "opsin",
+      "key": "temperatureC",
+      "default": 37,
+      "units": "°C",
+      "evidence": "estimated",
+      "provenance": "Declared voltage-clamp protocol or engineered expression assumption, not a cell calibration"
+    },
+    {
+      "group": "opsin",
+      "key": "voltageMv",
+      "default": -80,
+      "units": "mV",
+      "evidence": "estimated",
+      "provenance": "Declared voltage-clamp protocol or engineered expression assumption, not a cell calibration"
+    },
+    {
+      "group": "opsin",
+      "key": "irradianceMwMm2",
+      "default": 1,
+      "units": "mW/mm²",
+      "evidence": "estimated",
+      "provenance": "Declared voltage-clamp protocol or engineered expression assumption, not a cell calibration"
+    },
+    {
+      "group": "opsin",
+      "key": "gmaxMsCm2",
+      "default": 0.4,
+      "units": "mS/cm²",
+      "evidence": "hypothetical",
+      "provenance": "Declared voltage-clamp protocol or engineered expression assumption, not a cell calibration"
+    },
+    {
+      "group": "opsin",
+      "key": "areaUm2",
+      "default": 1256.6370614359173,
+      "units": "µm²",
+      "evidence": "hypothetical",
+      "provenance": "Declared voltage-clamp protocol or engineered expression assumption, not a cell calibration"
+    },
+    {
+      "group": "opsin",
+      "key": "onsetMs",
+      "default": 5,
+      "units": "ms",
+      "evidence": "estimated",
+      "provenance": "Declared voltage-clamp protocol or engineered expression assumption, not a cell calibration"
+    },
+    {
+      "group": "opsin",
+      "key": "pulseMs",
+      "default": 20,
+      "units": "ms",
+      "evidence": "estimated",
+      "provenance": "Declared voltage-clamp protocol or engineered expression assumption, not a cell calibration"
+    },
+    {
+      "group": "opsin",
+      "key": "gapMs",
+      "default": 20,
+      "units": "ms",
+      "evidence": "estimated",
+      "provenance": "Declared voltage-clamp protocol or engineered expression assumption, not a cell calibration"
+    },
+    {
+      "group": "opsin",
+      "key": "pulses",
+      "default": 2,
+      "units": "dimensionless / count",
+      "evidence": "estimated",
+      "provenance": "Declared voltage-clamp protocol or engineered expression assumption, not a cell calibration"
+    },
+    {
+      "group": "opsin",
+      "key": "durationMs",
+      "default": 100,
+      "units": "ms",
+      "evidence": "estimated",
+      "provenance": "Declared voltage-clamp protocol or engineered expression assumption, not a cell calibration"
+    },
+    {
+      "group": "opsin",
+      "key": "dtMs",
+      "default": 0.01,
+      "units": "ms",
+      "evidence": "estimated",
+      "provenance": "Declared voltage-clamp protocol or engineered expression assumption, not a cell calibration"
+    },
+    {
+      "group": "opsin",
+      "key": "lossDivisor",
+      "default": 1.3,
+      "units": "dimensionless / count",
+      "evidence": "mathematical",
+      "provenance": "Williams / ModelDB244414 mechanism effective photon-loss term; do not double count transport loss"
+    },
+    {
+      "group": "opsin source constants",
+      "key": "gd1",
+      "default": [
+        0.075,
+        0.043,
+        20,
+        20,
+        1.97
+      ],
+      "units": "model-specific; see equations/source",
+      "evidence": "mathematical",
+      "provenance": "Literal transferred Williams2013 / ModelDB244414 equations; no engineered SGN fit. Recovery uses mechanism coefficient 4.34587e-5."
+    },
+    {
+      "group": "opsin source constants",
+      "key": "gd2",
+      "default": [
+        0.05,
+        1.77
+      ],
+      "units": "model-specific; see equations/source",
+      "evidence": "mathematical",
+      "provenance": "Literal transferred Williams2013 / ModelDB244414 equations; no engineered SGN fit. Recovery uses mechanism coefficient 4.34587e-5."
+    },
+    {
+      "group": "opsin source constants",
+      "key": "recovery",
+      "default": [
+        0.0000434587,
+        -0.0211539274,
+        2.56
+      ],
+      "units": "model-specific; see equations/source",
+      "evidence": "mathematical",
+      "provenance": "Literal transferred Williams2013 / ModelDB244414 equations; no engineered SGN fit. Recovery uses mechanism coefficient 4.34587e-5."
+    },
+    {
+      "group": "opsin source constants",
+      "key": "e12",
+      "default": [
+        0.011,
+        1.1,
+        0.005,
+        0.024
+      ],
+      "units": "model-specific; see equations/source",
+      "evidence": "mathematical",
+      "provenance": "Literal transferred Williams2013 / ModelDB244414 equations; no engineered SGN fit. Recovery uses mechanism coefficient 4.34587e-5."
+    },
+    {
+      "group": "opsin source constants",
+      "key": "e21",
+      "default": [
+        0.008,
+        1.95,
+        0.004,
+        0.024
+      ],
+      "units": "model-specific; see equations/source",
+      "evidence": "mathematical",
+      "provenance": "Literal transferred Williams2013 / ModelDB244414 equations; no engineered SGN fit. Recovery uses mechanism coefficient 4.34587e-5."
+    },
+    {
+      "group": "opsin source constants",
+      "key": "epsilon1",
+      "default": [
+        0.8535,
+        1.46
+      ],
+      "units": "model-specific; see equations/source",
+      "evidence": "mathematical",
+      "provenance": "Literal transferred Williams2013 / ModelDB244414 equations; no engineered SGN fit. Recovery uses mechanism coefficient 4.34587e-5."
+    },
+    {
+      "group": "opsin source constants",
+      "key": "epsilon2",
+      "default": [
+        0.14,
+        2.77
+      ],
+      "units": "model-specific; see equations/source",
+      "evidence": "mathematical",
+      "provenance": "Literal transferred Williams2013 / ModelDB244414 equations; no engineered SGN fit. Recovery uses mechanism coefficient 4.34587e-5."
+    },
+    {
+      "group": "opsin source constants",
+      "key": "temperatureReferenceC",
+      "default": 22,
+      "units": "model-specific; see equations/source",
+      "evidence": "mathematical",
+      "provenance": "Literal transferred Williams2013 / ModelDB244414 equations; no engineered SGN fit. Recovery uses mechanism coefficient 4.34587e-5."
+    },
+    {
+      "group": "opsin source constants",
+      "key": "activation",
+      "default": [
+        120,
+        100,
+        0.1,
+        1.3
+      ],
+      "units": "model-specific; see equations/source",
+      "evidence": "mathematical",
+      "provenance": "Literal transferred Williams2013 / ModelDB244414 equations; no engineered SGN fit. Recovery uses mechanism coefficient 4.34587e-5."
+    },
+    {
+      "group": "opsin source constants",
+      "key": "crossSectionM2",
+      "default": 1.2e-19,
+      "units": "model-specific; see equations/source",
+      "evidence": "mathematical",
+      "provenance": "Literal transferred Williams2013 / ModelDB244414 equations; no engineered SGN fit. Recovery uses mechanism coefficient 4.34587e-5."
+    },
+    {
+      "group": "opsin source constants",
+      "key": "wavelengthNm",
+      "default": 470,
+      "units": "model-specific; see equations/source",
+      "evidence": "mathematical",
+      "provenance": "Literal transferred Williams2013 / ModelDB244414 equations; no engineered SGN fit. Recovery uses mechanism coefficient 4.34587e-5."
+    },
+    {
+      "group": "opsin source constants",
+      "key": "hcJm",
+      "default": 1.986446e-25,
+      "units": "model-specific; see equations/source",
+      "evidence": "mathematical",
+      "provenance": "Literal transferred Williams2013 / ModelDB244414 equations; no engineered SGN fit. Recovery uses mechanism coefficient 4.34587e-5."
+    },
+    {
+      "group": "opsin source constants",
+      "key": "IVproduct",
+      "default": [
+        10.6408,
+        14.6408,
+        42.7671
+      ],
+      "units": "model-specific; see equations/source",
+      "evidence": "mathematical",
+      "provenance": "Literal transferred Williams2013 / ModelDB244414 equations; no engineered SGN fit. Recovery uses mechanism coefficient 4.34587e-5."
+    },
+    {
+      "group": "opsin source constants",
+      "key": "open2Weight",
+      "default": 0.1,
+      "units": "model-specific; see equations/source",
+      "evidence": "mathematical",
+      "provenance": "Literal transferred Williams2013 / ModelDB244414 equations; no engineered SGN fit. Recovery uses mechanism coefficient 4.34587e-5."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "maximumMatrixChannels",
+      "default": 64,
+      "units": "count",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "maximumMatrixOutputs",
+      "default": 1024,
+      "units": "count",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "previewImportMaxMiB",
+      "default": 64,
+      "units": "MiB",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "maximumInductionNodes",
+      "default": 300000,
+      "units": "count",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "maximumInductionTetrahedra",
+      "default": 2000000,
+      "units": "count",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "maximumOpticalDetectorEventBudget",
+      "default": 150000000,
+      "units": "photons × events × detectors",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "opticalMinimumAdequateOffTargetIntersections",
+      "default": 100,
+      "units": "count",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "opticalMaximumAdequateBatchRelativeSE",
+      "default": 0.2,
+      "units": "fraction",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "rayBoundaryOffsetUm",
+      "default": 2e-7,
+      "units": "µm",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "wallIntersectionToleranceUm",
+      "default": 1e-7,
+      "units": "µm",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "photonWeightTermination",
+      "default": 1e-12,
+      "units": "fraction",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "inductanceMaxSegments",
+      "default": 900,
+      "units": "count",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "lineQuadraturePoints",
+      "default": 4,
+      "units": "count",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "profileSamples",
+      "default": 121,
+      "units": "count",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "profileZBoundsUm",
+      "default": [
+        -150,
+        150
+      ],
+      "units": "µm",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "profileSlewAperS",
+      "default": 100000,
+      "units": "A/s",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "markovPoissonTail",
+      "default": 1e-17,
+      "units": "weight",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "markovMaxTerms",
+      "default": 160,
+      "units": "count",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "markovMaxSplits",
+      "default": 512,
+      "units": "count",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "defaultCoilDrive",
+      "default": [
+        1,
+        0.01,
+        0,
+        20,
+        1
+      ],
+      "units": "A, ms rise, ms hold, Hz, simultaneous count",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "defaultLED",
+      "default": [
+        0.01,
+        5,
+        0.2,
+        20,
+        1
+      ],
+      "units": "mW, ms, efficiency, Hz, count",
+      "evidence": "estimated",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "hypotheticalSpectralPeaks",
+      "default": [
+        470,
+        535,
+        590,
+        650
+      ],
+      "units": "nm",
+      "evidence": "hypothetical",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "hypotheticalSpectralWidths",
+      "default": [
+        35,
+        55
+      ],
+      "units": "nm",
+      "evidence": "hypothetical",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "numerical/assay choices",
+      "key": "hypotheticalBlueTailAmplitude",
+      "default": 0.18,
+      "units": "fraction",
+      "evidence": "hypothetical",
+      "provenance": "Explicit component or implementation choice. Range checks and work budgets are encoded in the corresponding module. No measured biological value claimed."
+    },
+    {
+      "group": "magnetic law",
+      "key": "mu0Over4pi",
+      "default": 1e-7,
+      "units": "H/m",
+      "evidence": "mathematical",
+      "provenance": "Conventional vacuum permeability value for engineering quasi-static approximation."
+    }
+  ]
+}

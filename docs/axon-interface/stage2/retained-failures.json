@@ -1,0 +1,38 @@
+[
+  {
+    "id": "coupled-001",
+    "scope": "software contract",
+    "failure": "UI offered one cell but inherited anatomy requires at least four. Contract initialization rejected it.",
+    "correction": "Removed the unsupported UI option and require at least four cells. All eight coupled contracts then passed."
+  },
+  {
+    "id": "coupled-002",
+    "scope": "causal accounting",
+    "failure": "Initial integration retained descriptive exclusive counts without requiring optical opsin-block loss.",
+    "correction": "Dedicated causal qualifier requires regional, whole-cell and applicable opsin-block loss and always checks exclusivity against the entire assigned row. Regression tests preserve off-targets."
+  },
+  {
+    "id": "coupled-003",
+    "scope": "finer induction mesh",
+    "failure": "Original PCG residual 1.3595969434732396e-5 after 16000 iterations, fixed gate 1e-10.",
+    "correction": "Unresolved. The browser calculation rejects the solve; no tolerance change."
+  },
+  {
+    "id": "coupled-004",
+    "scope": "algebraic correction attempt",
+    "failure": "Reverse Cuthill\u2013McKee ordering still failed: residual 0.26948198599014733 after 16000 iterations.",
+    "correction": "Rejected correction. Production continues to use the original ordering; finer induction qualification remains blocked."
+  },
+  {
+    "id": "component-archive",
+    "scope": "recovered component studies",
+    "failure": "Original wire/lead intersection and three insufficiently sampled off-target estimates.",
+    "correction": "Exact original reports retained under labs/axon-stage2/reports/retained-failures. New finite-shell evidence does not erase these failures."
+  },
+  {
+    "id": "coupled-005",
+    "scope": "supplemental fine direct solve",
+    "failure": "The combined process exited without a fine report. A separate Python run also terminated with exit code 137 before a report was written.",
+    "correction": "No numerical conclusion. Matrix refinement remains unqualified; process termination does not justify relaxing a tolerance."
+  }
+]

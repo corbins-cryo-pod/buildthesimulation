@@ -1,0 +1,24 @@
+import {normalizeStage1Settings} from '../stage1-settings.mjs';
+export const VERSION='axon-modalities-coupled-0.2.0';
+export const DEFAULTS=Object.freeze({modality:'optical',axonCount:4,channelCount:1,seed:4079,amplitudes:[0,.0005,.001,.002],dtMs:.000625,durationMs:6,sampleDtMs:.01,photons:128000,shellThicknessUm:.5,gmaxMsCm2:5,opticalPulseMs:2,reflectivity:.85,coilLayers:6,coilRiseMs:.05,wellApertureRadiusUm:3.5});
+export const LIMITS=Object.freeze({maxCells:16,maxChannels:4,maxAmplitudes:8,maxCableSolves:512,maxCompartmentSteps:2.4e9,maxSavedScalars:12000000,maxPhotonHistories:4096000});
+export const PARAMETERS=Object.freeze(Object.entries(DEFAULTS).map(([key,value])=>({key,default:value,units: key==='amplitudes'?'modality-specific: uA / A / mW':key.endsWith('Ms')?'ms':key.endsWith('Um')?'um':key==='gmaxMsCm2'?'mS/cm2':'dimensionless',evidence:['gmaxMsCm2','reflectivity','coilLayers'].includes(key)?'hypothetical':'estimated',provenance:key==='gmaxMsCm2'?'Exploratory H134R membrane density. Williams kinetics do not fit engineered ganglion expression.':'Declared reduced-cohort experiment setting; see coupled methods. No clinical calibration.'})));
+export function normalize(input={}){
+ if(!input||typeof input!=='object'||Array.isArray(input))throw new Error('Settings must be an object.');for(const k of Object.keys(input))if(!(k in DEFAULTS))throw new Error('Unknown Stage 2 setting: '+k);
+ const s={...DEFAULTS,...input};if(!['electrode','magnetic','optical'].includes(s.modality))throw new Error('Select electrode, magnetic or optical.');
+ if(!Array.isArray(s.amplitudes)||s.amplitudes.length<2||s.amplitudes.length>LIMITS.maxAmplitudes||s.amplitudes.some((a,i)=>!Number.isFinite(a)||a<0||(i&&a<=s.amplitudes[i-1])))throw new Error('Use 2–8 finite nonnegative strictly increasing amplitudes.');
+ const ceiling={electrode:2,magnetic:100,optical:.02}[s.modality];if(s.amplitudes.at(-1)>ceiling)throw new Error('Amplitude exceeds the declared exploratory work/voltage range.');
+ for(const [key,min,max,int] of [['axonCount',4,16,true],['channelCount',1,4,true],['seed',0,4294967295,true],['photons',8000,1024000,true],['shellThicknessUm',.125,1,false],['gmaxMsCm2',0,20,false],['opticalPulseMs',.1,3,false],['reflectivity',0,.99,false],['coilLayers',1,8,true],['coilRiseMs',.01,.2,false]])if(!Number.isFinite(s[key])||s[key]<min||s[key]>max||(int&&!Number.isInteger(s[key])))throw new Error('Invalid '+key);
+ if(![.000625,.0003125].includes(s.dtMs))throw new Error('Unsupported explicit time step.');if(s.channelCount>s.axonCount)throw new Error('Every channel requires an existing cell.');
+ const anatomy=normalizeStage1Settings({axonCount:s.axonCount,channelCount:s.channelCount,seed:s.seed,dtMs:s.dtMs,durationMs:s.durationMs,sampleDtMs:s.sampleDtMs,wellApertureRadiusUm:s.wellApertureRadiusUm});
+ if(.5+s.opticalPulseMs>=s.durationMs||.5+2*s.coilRiseMs>=s.durationMs)throw new Error('Stimulus must fit in the observation window.');
+ for(const t of [s.opticalPulseMs,s.coilRiseMs])if(Math.abs(t/s.dtMs-Math.round(t/s.dtMs))>1e-7)throw new Error('Pulse edges must align with the declared time step.');
+ return {settings:Object.freeze({...s,amplitudes:Object.freeze([...s.amplitudes])}),anatomy};
+}
+export function budget(s,m){
+ const conditions=s.modality==='optical'?7:4,solves=s.axonCount*s.channelCount*s.amplitudes.length*conditions+(s.modality==='optical'?5:4);
+ const steps=solves*Math.round(s.durationMs/s.dtMs)*m.compartments.length+Math.round(50/s.dtMs)*m.compartments.length;
+ const saved=solves*(Math.round(s.durationMs/s.sampleDtMs)+1)*(m.activeSiteIndices.length+1+(s.modality==='optical'?6*m.somaIndices.length:0)),photons=s.modality==='optical'?s.channelCount*s.photons:0;
+ if(solves>LIMITS.maxCableSolves||steps>LIMITS.maxCompartmentSteps||saved>LIMITS.maxSavedScalars||photons>LIMITS.maxPhotonHistories)throw new Error(`Explicit budget exceeded: ${solves} solves, ${steps} compartment steps, ${saved} saved scalars, ${photons} photons. Reduce declared cohort/channels/grid; no resolution was reduced.`);
+ return {solves,compartmentSteps:steps,savedScalars:saved,photonHistories:photons,limits:LIMITS,screening:'none; every declared cell is resolved'};
+}

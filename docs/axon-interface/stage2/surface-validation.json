@@ -1,0 +1,1228 @@
+{
+  "schema": "axon-stage2-surface-validation/1",
+  "complete": true,
+  "passed": true,
+  "rows": [
+    {
+      "name": "Central chord through spherical shell",
+      "pass": true
+    },
+    {
+      "name": "Full spherical shell volume",
+      "pass": true
+    },
+    {
+      "name": "Zero-hit confidence has positive upper bound",
+      "pass": true
+    },
+    {
+      "name": "Photon energy shell 1",
+      "pass": true,
+      "residual": 1.8756662889529707e-11
+    },
+    {
+      "name": "Photon energy shell 0.5",
+      "pass": true,
+      "residual": 1.8756662889529707e-11
+    },
+    {
+      "name": "Photon energy shell 0.25",
+      "pass": true,
+      "residual": 1.8756662889529707e-11
+    },
+    {
+      "name": "Target shell 1->0.5",
+      "pass": true,
+      "maximumRelativeDifference": 0.0021025110211430474
+    },
+    {
+      "name": "Target shell 0.5->0.25",
+      "pass": true,
+      "maximumRelativeDifference": 0.0020992561661499574
+    },
+    {
+      "name": "Expanded optical domain target compatibility",
+      "pass": true,
+      "maximumStandardErrors": 0.8384286633646335
+    }
+  ],
+  "runs": [
+    {
+      "modelVersion": "soma-shell-transport-1.0",
+      "bands": [
+        {
+          "cell": "E0001",
+          "compartment": 159,
+          "mean": 3224.4642583501245,
+          "lower": 2760.4815214942178,
+          "upper": 3688.4469959890857,
+          "hits": 114380,
+          "standardError": 16.418647658080822
+        },
+        {
+          "cell": "E0001",
+          "compartment": 160,
+          "mean": 4305.829888082831,
+          "lower": 3826.4532330686898,
+          "upper": 4785.206543858869,
+          "hits": 115965,
+          "standardError": 21.8528528963436
+        },
+        {
+          "cell": "E0001",
+          "compartment": 161,
+          "mean": 6113.440375601146,
+          "lower": 5588.142074755735,
+          "upper": 6638.738677208455,
+          "hits": 119742,
+          "standardError": 31.516914075145248
+        },
+        {
+          "cell": "E0001",
+          "compartment": 162,
+          "mean": 4354.39604925621,
+          "lower": 3872.9395451199007,
+          "upper": 4835.852554154417,
+          "hits": 115939,
+          "standardError": 22.290550387264606
+        },
+        {
+          "cell": "E0001",
+          "compartment": 163,
+          "mean": 3234.0200378982277,
+          "lower": 2772.8465858405534,
+          "upper": 3695.1934907345644,
+          "hits": 114461,
+          "standardError": 16.28299522652517
+        },
+        {
+          "cell": "E0002",
+          "compartment": 159,
+          "mean": 0.00012516988955443926,
+          "lower": 0,
+          "upper": 385.9653957392802,
+          "hits": 2,
+          "standardError": 0.00012516988949676724
+        },
+        {
+          "cell": "E0002",
+          "compartment": 160,
+          "mean": 0.000166167302337856,
+          "lower": 0,
+          "upper": 375.5373157703078,
+          "hits": 1,
+          "standardError": 0.000166167302337856
+        },
+        {
+          "cell": "E0002",
+          "compartment": 161,
+          "mean": 0.0001217879449983154,
+          "lower": 0,
+          "upper": 375.5370605093043,
+          "hits": 2,
+          "standardError": 0.00012178794494220161
+        },
+        {
+          "cell": "E0002",
+          "compartment": 162,
+          "mean": 1.1601964984667474e-13,
+          "lower": 0,
+          "upper": 375.5363600099085,
+          "hits": 1,
+          "standardError": 1.1601964984667474e-13
+        },
+        {
+          "cell": "E0002",
+          "compartment": 163,
+          "mean": 0.00011384133754656849,
+          "lower": 0,
+          "upper": 383.8006384388345,
+          "hits": 2,
+          "standardError": 0.0001138413374916612
+        },
+        {
+          "cell": "E0003",
+          "compartment": 159,
+          "mean": 0,
+          "lower": 0,
+          "upper": 385.96467578762883,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0003",
+          "compartment": 160,
+          "mean": 0,
+          "lower": 0,
+          "upper": 375.53636000990736,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0003",
+          "compartment": 161,
+          "mean": 0,
+          "lower": 0,
+          "upper": 375.53636000990764,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0003",
+          "compartment": 162,
+          "mean": 0,
+          "lower": 0,
+          "upper": 375.5363600099078,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0003",
+          "compartment": 163,
+          "mean": 0,
+          "lower": 0,
+          "upper": 383.79998364670155,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0004",
+          "compartment": 159,
+          "mean": 0,
+          "lower": 0,
+          "upper": 385.96467578762883,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0004",
+          "compartment": 160,
+          "mean": 0,
+          "lower": 0,
+          "upper": 375.53636000990736,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0004",
+          "compartment": 161,
+          "mean": 0,
+          "lower": 0,
+          "upper": 375.53636000990764,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0004",
+          "compartment": 162,
+          "mean": 0,
+          "lower": 0,
+          "upper": 375.5363600099078,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0004",
+          "compartment": 163,
+          "mean": 0,
+          "lower": 0,
+          "upper": 383.79998364670155,
+          "hits": 0,
+          "standardError": 0
+        }
+      ],
+      "energy": {
+        "absorbed": 0.03373523492393667,
+        "wallAbsorbed": 0.9393319295272896,
+        "escaped": 0.0269328355295995,
+        "truncated": 4.1754190062614896e-13
+      },
+      "energyResidual": 1.8756662889529707e-11,
+      "settings": {
+        "photons": 128000,
+        "seed": 2048,
+        "muAbsPerMm": 0.2,
+        "muScatterPerMm": 10,
+        "anisotropy": 0.9,
+        "reflectivity": 0.85,
+        "maxEvents": 400,
+        "familyAlpha": 0.001,
+        "totalChannels": 1,
+        "shellThicknessUm": 1,
+        "boxHalfUm": 500
+      },
+      "events": 18299743,
+      "intervalMethod": "Two-sided empirical Bernstein interval for independent bounded photon-history contributions; Bonferroni allocation over all requested channels and soma bands. Includes worst-case discarded-weight tail. Bounds refer to the finite shell transport model, not to biological calibration.",
+      "limitations": [
+        "Scalar fluence in a thin spherical shell; angular membrane absorption is homogenized.",
+        "Optical coefficients are hypothetical uniform effective values; somata do not refract or occlude rays.",
+        "Opaque specular liner; geometric apertures. No wavelength-dependent dielectric layers.",
+        "Finite-domain escape is lost; shell and domain convergence require separate tests.",
+        "Confidence intervals quantify Monte Carlo sampling only; deterministic shell and biological errors remain."
+      ]
+    },
+    {
+      "modelVersion": "soma-shell-transport-1.0",
+      "bands": [
+        {
+          "cell": "E0001",
+          "compartment": 159,
+          "mean": 3220.8942143564427,
+          "lower": 2599.234898377198,
+          "upper": 3842.553531426426,
+          "hits": 112759,
+          "standardError": 17.685550226143267
+        },
+        {
+          "cell": "E0001",
+          "compartment": 160,
+          "mean": 4314.902017128997,
+          "lower": 3670.8303888436394,
+          "upper": 4958.973646491839,
+          "hits": 114093,
+          "standardError": 23.776908640649623
+        },
+        {
+          "cell": "E0001",
+          "compartment": 161,
+          "mean": 6115.176991282152,
+          "lower": 5421.685374787496,
+          "upper": 6808.668608854293,
+          "hits": 117909,
+          "standardError": 34.17718460778619
+        },
+        {
+          "cell": "E0001",
+          "compartment": 162,
+          "mean": 4356.3789891966,
+          "lower": 3710.3798406934993,
+          "upper": 5002.378138777185,
+          "hits": 113974,
+          "standardError": 24.182549008507745
+        },
+        {
+          "cell": "E0001",
+          "compartment": 163,
+          "mean": 3233.5897691977507,
+          "lower": 2614.9459924239195,
+          "upper": 3852.233547056942,
+          "hits": 112918,
+          "standardError": 17.608841298221495
+        },
+        {
+          "cell": "E0002",
+          "compartment": 159,
+          "mean": 0.00012239846000994478,
+          "lower": 0,
+          "upper": 537.6218968607016,
+          "hits": 2,
+          "standardError": 0.00012239845995315338
+        },
+        {
+          "cell": "E0002",
+          "compartment": 160,
+          "mean": 0.0001660323338492338,
+          "lower": 0,
+          "upper": 531.0895684743253,
+          "hits": 1,
+          "standardError": 0.0001660323338492338
+        },
+        {
+          "cell": "E0002",
+          "compartment": 161,
+          "mean": 0.00012091120901587893,
+          "lower": 0,
+          "upper": 531.0893089468263,
+          "hits": 2,
+          "standardError": 0.0001209112089597776
+        },
+        {
+          "cell": "E0002",
+          "compartment": 162,
+          "mean": 1.1493983911491855e-13,
+          "lower": 0,
+          "upper": 531.0886134902368,
+          "hits": 1,
+          "standardError": 1.1493983911491855e-13
+        },
+        {
+          "cell": "E0002",
+          "compartment": 163,
+          "mean": 0.00013890141184285418,
+          "lower": 0,
+          "upper": 534.9709577370957,
+          "hits": 2,
+          "standardError": 0.00013890141179953322
+        },
+        {
+          "cell": "E0003",
+          "compartment": 159,
+          "mean": 0,
+          "lower": 0,
+          "upper": 537.6211928497471,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0003",
+          "compartment": 160,
+          "mean": 0,
+          "lower": 0,
+          "upper": 531.0886134902361,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0003",
+          "compartment": 161,
+          "mean": 0,
+          "lower": 0,
+          "upper": 531.0886134902361,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0003",
+          "compartment": 162,
+          "mean": 0,
+          "lower": 0,
+          "upper": 531.0886134902361,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0003",
+          "compartment": 163,
+          "mean": 0,
+          "lower": 0,
+          "upper": 534.9701588045314,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0004",
+          "compartment": 159,
+          "mean": 0,
+          "lower": 0,
+          "upper": 537.6211928497471,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0004",
+          "compartment": 160,
+          "mean": 0,
+          "lower": 0,
+          "upper": 531.0886134902361,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0004",
+          "compartment": 161,
+          "mean": 0,
+          "lower": 0,
+          "upper": 531.0886134902361,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0004",
+          "compartment": 162,
+          "mean": 0,
+          "lower": 0,
+          "upper": 531.0886134902361,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0004",
+          "compartment": 163,
+          "mean": 0,
+          "lower": 0,
+          "upper": 534.9701588045314,
+          "hits": 0,
+          "standardError": 0
+        }
+      ],
+      "energy": {
+        "absorbed": 0.03373523492393667,
+        "wallAbsorbed": 0.9393319295272896,
+        "escaped": 0.0269328355295995,
+        "truncated": 4.1754190062614896e-13
+      },
+      "energyResidual": 1.8756662889529707e-11,
+      "settings": {
+        "photons": 128000,
+        "seed": 2048,
+        "muAbsPerMm": 0.2,
+        "muScatterPerMm": 10,
+        "anisotropy": 0.9,
+        "reflectivity": 0.85,
+        "maxEvents": 400,
+        "familyAlpha": 0.001,
+        "totalChannels": 1,
+        "shellThicknessUm": 0.5,
+        "boxHalfUm": 500
+      },
+      "events": 18299743,
+      "intervalMethod": "Two-sided empirical Bernstein interval for independent bounded photon-history contributions; Bonferroni allocation over all requested channels and soma bands. Includes worst-case discarded-weight tail. Bounds refer to the finite shell transport model, not to biological calibration.",
+      "limitations": [
+        "Scalar fluence in a thin spherical shell; angular membrane absorption is homogenized.",
+        "Optical coefficients are hypothetical uniform effective values; somata do not refract or occlude rays.",
+        "Opaque specular liner; geometric apertures. No wavelength-dependent dielectric layers.",
+        "Finite-domain escape is lost; shell and domain convergence require separate tests.",
+        "Confidence intervals quantify Monte Carlo sampling only; deterministic shell and biological errors remain."
+      ]
+    },
+    {
+      "modelVersion": "soma-shell-transport-1.0",
+      "bands": [
+        {
+          "cell": "E0001",
+          "compartment": 159,
+          "mean": 3218.12086714346,
+          "lower": 2373.8545500078717,
+          "upper": 4062.387185809992,
+          "hits": 111870,
+          "standardError": 18.870689364926754
+        },
+        {
+          "cell": "E0001",
+          "compartment": 160,
+          "mean": 4320.5653774901175,
+          "lower": 3447.7651518946977,
+          "upper": 5193.365604609331,
+          "hits": 113029,
+          "standardError": 25.617158410958695
+        },
+        {
+          "cell": "E0001",
+          "compartment": 161,
+          "mean": 6111.953519431633,
+          "lower": 5188.903806557322,
+          "upper": 7035.003233829738,
+          "hits": 116844,
+          "standardError": 36.191999762483974
+        },
+        {
+          "cell": "E0001",
+          "compartment": 162,
+          "mean": 4347.252991548278,
+          "lower": 3473.328908038544,
+          "upper": 5221.177076581806,
+          "hits": 112793,
+          "standardError": 25.853670657930916
+        },
+        {
+          "cell": "E0001",
+          "compartment": 163,
+          "mean": 3230.3047157833466,
+          "lower": 2388.6079660166156,
+          "upper": 4072.0014670755163,
+          "hits": 112056,
+          "standardError": 18.90093763742483
+        },
+        {
+          "cell": "E0002",
+          "compartment": 159,
+          "mean": 0.00012126679037294061,
+          "lower": 0,
+          "upper": 754.5973527033773,
+          "hits": 2,
+          "standardError": 0.00012126679031657918
+        },
+        {
+          "cell": "E0002",
+          "compartment": 160,
+          "mean": 0.00016599883410933406,
+          "lower": 0,
+          "upper": 751.0736748112215,
+          "hits": 1,
+          "standardError": 0.00016599883410933406
+        },
+        {
+          "cell": "E0002",
+          "compartment": 161,
+          "mean": 0.00012070047947555436,
+          "lower": 0,
+          "upper": 751.073414264333,
+          "hits": 2,
+          "standardError": 0.00012070047941945613
+        },
+        {
+          "cell": "E0002",
+          "compartment": 162,
+          "mean": 1.146829157756872e-13,
+          "lower": 0,
+          "upper": 751.0727200198166,
+          "hits": 1,
+          "standardError": 1.146829157756872e-13
+        },
+        {
+          "cell": "E0002",
+          "compartment": 163,
+          "mean": 0.0001661779969870862,
+          "lower": 0,
+          "upper": 751.8843100332942,
+          "hits": 2,
+          "standardError": 0.00016617799696148127
+        },
+        {
+          "cell": "E0003",
+          "compartment": 159,
+          "mean": 0,
+          "lower": 0,
+          "upper": 754.5966552015556,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0003",
+          "compartment": 160,
+          "mean": 0,
+          "lower": 0,
+          "upper": 751.072720019816,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0003",
+          "compartment": 161,
+          "mean": 0,
+          "lower": 0,
+          "upper": 751.072720019816,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0003",
+          "compartment": 162,
+          "mean": 0,
+          "lower": 0,
+          "upper": 751.072720019816,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0003",
+          "compartment": 163,
+          "mean": 0,
+          "lower": 0,
+          "upper": 751.8833542113804,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0004",
+          "compartment": 159,
+          "mean": 0,
+          "lower": 0,
+          "upper": 754.5966552015556,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0004",
+          "compartment": 160,
+          "mean": 0,
+          "lower": 0,
+          "upper": 751.072720019816,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0004",
+          "compartment": 161,
+          "mean": 0,
+          "lower": 0,
+          "upper": 751.072720019816,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0004",
+          "compartment": 162,
+          "mean": 0,
+          "lower": 0,
+          "upper": 751.072720019816,
+          "hits": 0,
+          "standardError": 0
+        },
+        {
+          "cell": "E0004",
+          "compartment": 163,
+          "mean": 0,
+          "lower": 0,
+          "upper": 751.8833542113804,
+          "hits": 0,
+          "standardError": 0
+        }
+      ],
+      "energy": {
+        "absorbed": 0.03373523492393667,
+        "wallAbsorbed": 0.9393319295272896,
+        "escaped": 0.0269328355295995,
+        "truncated": 4.1754190062614896e-13
+      },
+      "energyResidual": 1.8756662889529707e-11,
+      "settings": {
+        "photons": 128000,
+        "seed": 2048,
+        "muAbsPerMm": 0.2,
+        "muScatterPerMm": 10,
+        "anisotropy": 0.9,
+        "reflectivity": 0.85,
+        "maxEvents": 400,
+        "familyAlpha": 0.001,
+        "totalChannels": 1,
+        "shellThicknessUm": 0.25,
+        "boxHalfUm": 500
+      },
+      "events": 18299743,
+      "intervalMethod": "Two-sided empirical Bernstein interval for independent bounded photon-history contributions; Bonferroni allocation over all requested channels and soma bands. Includes worst-case discarded-weight tail. Bounds refer to the finite shell transport model, not to biological calibration.",
+      "limitations": [
+        "Scalar fluence in a thin spherical shell; angular membrane absorption is homogenized.",
+        "Optical coefficients are hypothetical uniform effective values; somata do not refract or occlude rays.",
+        "Opaque specular liner; geometric apertures. No wavelength-dependent dielectric layers.",
+        "Finite-domain escape is lost; shell and domain convergence require separate tests.",
+        "Confidence intervals quantify Monte Carlo sampling only; deterministic shell and biological errors remain."
+      ]
+    }
+  ],
+  "expanded": {
+    "modelVersion": "soma-shell-transport-1.0",
+    "bands": [
+      {
+        "compartmentIndex": 159,
+        "z0": -9.971835337589653,
+        "z1": -5.993154786773296,
+        "cellIndex": 0,
+        "cellId": "E0001",
+        "center": [
+          -35.19878311250359,
+          -60.01598740056043,
+          0
+        ],
+        "r": 10,
+        "volume": 123.47514754188381,
+        "mean": 3201.5908146719953,
+        "standardError": 17.53060356698543,
+        "lower": 2580.667773585152,
+        "upper": 3822.513856850479,
+        "radius": 620.9230410868432,
+        "delta": 0.00005,
+        "bound": 2612285.368825037,
+        "hits": 112727,
+        "truncationUpperBias": 0.0000010916407818344751,
+        "units": "mW/mm2 per emitted mW",
+        "status": "sampled"
+      },
+      {
+        "compartmentIndex": 160,
+        "z0": -5.993154786773298,
+        "z1": -2.0144742359569414,
+        "cellIndex": 0,
+        "cellId": "E0001",
+        "center": [
+          -35.19878311250359,
+          -60.01598740056043,
+          0
+        ],
+        "r": 10,
+        "volume": 124.99393589425267,
+        "mean": 4293.727175114955,
+        "standardError": 23.72674463132913,
+        "lower": 3649.8939159610495,
+        "upper": 4937.560435347236,
+        "radius": 643.8332591539051,
+        "delta": 0.00005,
+        "bound": 2580543.7602193872,
+        "hits": 114168,
+        "truncationUpperBias": 0.000001078376367904637,
+        "units": "mW/mm2 per emitted mW",
+        "status": "sampled"
+      },
+      {
+        "compartmentIndex": 161,
+        "z0": -2.014474235956941,
+        "z1": 1.9642063148594149,
+        "cellIndex": 0,
+        "cellId": "E0001",
+        "center": [
+          -35.19878311250359,
+          -60.01598740056043,
+          0
+        ],
+        "r": 10,
+        "volume": 124.99393589425267,
+        "mean": 6120.941384046399,
+        "standardError": 33.916645757358275,
+        "lower": 5428.687794980717,
+        "upper": 6813.194974190458,
+        "radius": 692.2535890656823,
+        "delta": 0.00005,
+        "bound": 2580543.7602193872,
+        "hits": 118131,
+        "truncationUpperBias": 0.000001078376367904637,
+        "units": "mW/mm2 per emitted mW",
+        "status": "sampled"
+      },
+      {
+        "compartmentIndex": 162,
+        "z0": 1.9642063148594149,
+        "z1": 5.942886865675771,
+        "cellIndex": 0,
+        "cellId": "E0001",
+        "center": [
+          -35.19878311250359,
+          -60.01598740056043,
+          0
+        ],
+        "r": 10,
+        "volume": 124.99393589425267,
+        "mean": 4379.460547274085,
+        "standardError": 24.05578002284287,
+        "lower": 3734.063779111339,
+        "upper": 5024.8573165152075,
+        "radius": 645.3967681627461,
+        "delta": 0.00005,
+        "bound": 2580543.7602193872,
+        "hits": 114268,
+        "truncationUpperBias": 0.000001078376367904637,
+        "units": "mW/mm2 per emitted mW",
+        "status": "sampled"
+      },
+      {
+        "compartmentIndex": 163,
+        "z0": 5.942886865675771,
+        "z1": 9.921567416492127,
+        "cellIndex": 0,
+        "cellId": "E0001",
+        "center": [
+          -35.19878311250359,
+          -60.01598740056043,
+          0
+        ],
+        "r": 10,
+        "volume": 124.08702619433626,
+        "mean": 3212.833368974061,
+        "standardError": 17.401253169811394,
+        "lower": 2595.1760086079134,
+        "upper": 3830.4907304264666,
+        "radius": 617.6573603661478,
+        "delta": 0.00005,
+        "bound": 2599404.0733317067,
+        "hits": 112779,
+        "truncationUpperBias": 0.0000010862578525223899,
+        "units": "mW/mm2 per emitted mW",
+        "status": "sampled"
+      },
+      {
+        "compartmentIndex": 159,
+        "z0": -9.971835337589653,
+        "z1": -5.993154786773296,
+        "cellIndex": 1,
+        "cellId": "E0002",
+        "center": [
+          35.617502665426585,
+          -60.75399980776829,
+          0
+        ],
+        "r": 10,
+        "volume": 123.47514754188381,
+        "mean": 1.9286315331272926e-9,
+        "standardError": 1.9286315331272926e-9,
+        "lower": 0,
+        "upper": 537.6211928617423,
+        "radius": 537.6211917681729,
+        "delta": 0.00005,
+        "bound": 2612285.368825037,
+        "hits": 1,
+        "truncationUpperBias": 0.0000010916407818344751,
+        "units": "mW/mm2 per emitted mW",
+        "status": "rare event; upper bound retained"
+      },
+      {
+        "compartmentIndex": 160,
+        "z0": -5.993154786773298,
+        "z1": -2.0144742359569414,
+        "cellIndex": 1,
+        "cellId": "E0002",
+        "center": [
+          35.617502665426585,
+          -60.75399980776829,
+          0
+        ],
+        "r": 10,
+        "volume": 124.99393589425267,
+        "mean": 0,
+        "standardError": 0,
+        "lower": 0,
+        "upper": 531.0886134911273,
+        "radius": 531.0886124127509,
+        "delta": 0.00005,
+        "bound": 2580543.7602193872,
+        "hits": 0,
+        "truncationUpperBias": 0.000001078376367904637,
+        "units": "mW/mm2 per emitted mW",
+        "status": "rare event; upper bound retained"
+      },
+      {
+        "compartmentIndex": 161,
+        "z0": -2.014474235956941,
+        "z1": 1.9642063148594149,
+        "cellIndex": 1,
+        "cellId": "E0002",
+        "center": [
+          35.617502665426585,
+          -60.75399980776829,
+          0
+        ],
+        "r": 10,
+        "volume": 124.99393589425267,
+        "mean": 2.5263816223813305e-9,
+        "standardError": 2.5263816223813305e-9,
+        "lower": 0,
+        "upper": 531.0886135056585,
+        "radius": 531.0886124247558,
+        "delta": 0.00005,
+        "bound": 2580543.7602193872,
+        "hits": 1,
+        "truncationUpperBias": 0.000001078376367904637,
+        "units": "mW/mm2 per emitted mW",
+        "status": "rare event; upper bound retained"
+      },
+      {
+        "compartmentIndex": 162,
+        "z0": 1.9642063148594149,
+        "z1": 5.942886865675771,
+        "cellIndex": 1,
+        "cellId": "E0002",
+        "center": [
+          35.617502665426585,
+          -60.75399980776829,
+          0
+        ],
+        "r": 10,
+        "volume": 124.99393589425267,
+        "mean": 6.037830513119375e-9,
+        "standardError": 6.037830513119375e-9,
+        "lower": 0,
+        "upper": 531.0886135258556,
+        "radius": 531.0886124414415,
+        "delta": 0.00005,
+        "bound": 2580543.7602193872,
+        "hits": 1,
+        "truncationUpperBias": 0.000001078376367904637,
+        "units": "mW/mm2 per emitted mW",
+        "status": "rare event; upper bound retained"
+      },
+      {
+        "compartmentIndex": 163,
+        "z0": 5.942886865675771,
+        "z1": 9.921567416492127,
+        "cellIndex": 1,
+        "cellId": "E0002",
+        "center": [
+          35.617502665426585,
+          -60.75399980776829,
+          0
+        ],
+        "r": 10,
+        "volume": 124.08702619433626,
+        "mean": 1.7379822492442182e-9,
+        "standardError": 1.7379822492442182e-9,
+        "lower": 0,
+        "upper": 534.9701588154255,
+        "radius": 534.9701577274298,
+        "delta": 0.00005,
+        "bound": 2599404.0733317067,
+        "hits": 1,
+        "truncationUpperBias": 0.0000010862578525223899,
+        "units": "mW/mm2 per emitted mW",
+        "status": "rare event; upper bound retained"
+      },
+      {
+        "compartmentIndex": 159,
+        "z0": -9.971835337589653,
+        "z1": -5.993154786773296,
+        "cellIndex": 2,
+        "cellId": "E0003",
+        "center": [
+          -17.610526779480278,
+          29.863907859329494,
+          0
+        ],
+        "r": 10,
+        "volume": 123.47514754188381,
+        "mean": 0,
+        "standardError": 0,
+        "lower": 0,
+        "upper": 537.6211928506493,
+        "radius": 537.6211917590085,
+        "delta": 0.00005,
+        "bound": 2612285.368825037,
+        "hits": 0,
+        "truncationUpperBias": 0.0000010916407818344751,
+        "units": "mW/mm2 per emitted mW",
+        "status": "rare event; upper bound retained"
+      },
+      {
+        "compartmentIndex": 160,
+        "z0": -5.993154786773298,
+        "z1": -2.0144742359569414,
+        "cellIndex": 2,
+        "cellId": "E0003",
+        "center": [
+          -17.610526779480278,
+          29.863907859329494,
+          0
+        ],
+        "r": 10,
+        "volume": 124.99393589425267,
+        "mean": 0.00003746859586717076,
+        "standardError": 0.00003746859586717076,
+        "lower": 0,
+        "upper": 531.0888290028416,
+        "radius": 531.0887904558693,
+        "delta": 0.00005,
+        "bound": 2580543.7602193872,
+        "hits": 1,
+        "truncationUpperBias": 0.000001078376367904637,
+        "units": "mW/mm2 per emitted mW",
+        "status": "rare event; upper bound retained"
+      },
+      {
+        "compartmentIndex": 161,
+        "z0": -2.014474235956941,
+        "z1": 1.9642063148594149,
+        "cellIndex": 2,
+        "cellId": "E0003",
+        "center": [
+          -17.610526779480278,
+          29.863907859329494,
+          0
+        ],
+        "r": 10,
+        "volume": 124.99393589425267,
+        "mean": 0,
+        "standardError": 0,
+        "lower": 0,
+        "upper": 531.0886134911273,
+        "radius": 531.0886124127509,
+        "delta": 0.00005,
+        "bound": 2580543.7602193872,
+        "hits": 0,
+        "truncationUpperBias": 0.000001078376367904637,
+        "units": "mW/mm2 per emitted mW",
+        "status": "rare event; upper bound retained"
+      },
+      {
+        "compartmentIndex": 162,
+        "z0": 1.9642063148594149,
+        "z1": 5.942886865675771,
+        "cellIndex": 2,
+        "cellId": "E0003",
+        "center": [
+          -17.610526779480278,
+          29.863907859329494,
+          0
+        ],
+        "r": 10,
+        "volume": 124.99393589425267,
+        "mean": 0,
+        "standardError": 0,
+        "lower": 0,
+        "upper": 531.0886134911273,
+        "radius": 531.0886124127509,
+        "delta": 0.00005,
+        "bound": 2580543.7602193872,
+        "hits": 0,
+        "truncationUpperBias": 0.000001078376367904637,
+        "units": "mW/mm2 per emitted mW",
+        "status": "rare event; upper bound retained"
+      },
+      {
+        "compartmentIndex": 163,
+        "z0": 5.942886865675771,
+        "z1": 9.921567416492127,
+        "cellIndex": 2,
+        "cellId": "E0003",
+        "center": [
+          -17.610526779480278,
+          29.863907859329494,
+          0
+        ],
+        "r": 10,
+        "volume": 124.08702619433626,
+        "mean": 0.00003774244103919516,
+        "standardError": 0.00003774244103919516,
+        "lower": 0,
+        "upper": 534.9703758922449,
+        "radius": 534.970337063546,
+        "delta": 0.00005,
+        "bound": 2599404.0733317067,
+        "hits": 1,
+        "truncationUpperBias": 0.0000010862578525223899,
+        "units": "mW/mm2 per emitted mW",
+        "status": "rare event; upper bound retained"
+      },
+      {
+        "compartmentIndex": 159,
+        "z0": -9.971835337589653,
+        "z1": -5.993154786773296,
+        "cellIndex": 3,
+        "cellId": "E0004",
+        "center": [
+          -87.41363375894726,
+          91.27040784497109,
+          0
+        ],
+        "r": 10,
+        "volume": 123.47514754188381,
+        "mean": 0.011689793472589253,
+        "standardError": 0.01168836512719488,
+        "lower": 0,
+        "upper": 537.68842336906,
+        "radius": 537.6767324839467,
+        "delta": 0.00005,
+        "bound": 2612285.368825037,
+        "hits": 2,
+        "truncationUpperBias": 0.0000010916407818344751,
+        "units": "mW/mm2 per emitted mW",
+        "status": "rare event; upper bound retained"
+      },
+      {
+        "compartmentIndex": 160,
+        "z0": -5.993154786773298,
+        "z1": -2.0144742359569414,
+        "cellIndex": 3,
+        "cellId": "E0004",
+        "center": [
+          -87.41363375894726,
+          91.27040784497109,
+          0
+        ],
+        "r": 10,
+        "volume": 124.99393589425267,
+        "mean": 0.009399186030877462,
+        "standardError": 0.009388668407322344,
+        "lower": 0,
+        "upper": 531.14262571276,
+        "radius": 531.1332254483527,
+        "delta": 0.00005,
+        "bound": 2580543.7602193872,
+        "hits": 2,
+        "truncationUpperBias": 0.000001078376367904637,
+        "units": "mW/mm2 per emitted mW",
+        "status": "rare event; upper bound retained"
+      },
+      {
+        "compartmentIndex": 161,
+        "z0": -2.014474235956941,
+        "z1": 1.9642063148594149,
+        "cellIndex": 3,
+        "cellId": "E0004",
+        "center": [
+          -87.41363375894726,
+          91.27040784497109,
+          0
+        ],
+        "r": 10,
+        "volume": 124.99393589425267,
+        "mean": 0.0006619334132718803,
+        "standardError": 0.0006603556299381149,
+        "lower": 0,
+        "upper": 531.0924132996844,
+        "radius": 531.0917502878947,
+        "delta": 0.00005,
+        "bound": 2580543.7602193872,
+        "hits": 2,
+        "truncationUpperBias": 0.000001078376367904637,
+        "units": "mW/mm2 per emitted mW",
+        "status": "rare event; upper bound retained"
+      },
+      {
+        "compartmentIndex": 162,
+        "z0": 1.9642063148594149,
+        "z1": 5.942886865675771,
+        "cellIndex": 3,
+        "cellId": "E0004",
+        "center": [
+          -87.41363375894726,
+          91.27040784497109,
+          0
+        ],
+        "r": 10,
+        "volume": 124.99393589425267,
+        "mean": 0.03692906120653263,
+        "standardError": 0.03692043414251952,
+        "lower": 0,
+        "upper": 531.3009809181782,
+        "radius": 531.2640507785953,
+        "delta": 0.00005,
+        "bound": 2580543.7602193872,
+        "hits": 2,
+        "truncationUpperBias": 0.000001078376367904637,
+        "units": "mW/mm2 per emitted mW",
+        "status": "rare event; upper bound retained"
+      },
+      {
+        "compartmentIndex": 163,
+        "z0": 5.942886865675771,
+        "z1": 9.921567416492127,
+        "cellIndex": 3,
+        "cellId": "E0004",
+        "center": [
+          -87.41363375894726,
+          91.27040784497109,
+          0
+        ],
+        "r": 10,
+        "volume": 124.08702619433626,
+        "mean": 0.01846233543340895,
+        "standardError": 0.018460727039564157,
+        "lower": 0,
+        "upper": 535.0763427470499,
+        "radius": 535.0578793253587,
+        "delta": 0.00005,
+        "bound": 2599404.0733317067,
+        "hits": 2,
+        "truncationUpperBias": 0.0000010862578525223899,
+        "units": "mW/mm2 per emitted mW",
+        "status": "rare event; upper bound retained"
+      }
+    ],
+    "energy": {
+      "absorbed": 0.036204798162488144,
+      "wallAbsorbed": 0.940244743474853,
+      "escaped": 0.023550458343540324,
+      "truncated": 4.178872625717294e-13
+    },
+    "energyResidual": 1.87007076490886e-11,
+    "settings": {
+      "photons": 128000,
+      "seed": 2049,
+      "muAbsPerMm": 0.2,
+      "muScatterPerMm": 10,
+      "anisotropy": 0.9,
+      "reflectivity": 0.85,
+      "maxEvents": 400,
+      "familyAlpha": 0.001,
+      "totalChannels": 1,
+      "shellThicknessUm": 0.5,
+      "boxHalfUm": 800
+    },
+    "events": 18727205,
+    "intervalMethod": "Two-sided empirical Bernstein interval for independent bounded photon-history contributions; Bonferroni allocation over all requested channels and soma bands. Includes worst-case discarded-weight tail. Bounds refer to the finite shell transport model, not to biological calibration.",
+    "limitations": [
+      "Scalar fluence in a thin spherical shell; angular membrane absorption is homogenized.",
+      "Optical coefficients are hypothetical uniform effective values; somata do not refract or occlude rays.",
+      "Opaque specular liner; geometric apertures. No wavelength-dependent dielectric layers.",
+      "Finite-domain escape is lost; shell and domain convergence require separate tests.",
+      "Confidence intervals quantify Monte Carlo sampling only; deterministic shell and biological errors remain."
+    ]
+  },
+  "oldVolumeDetectorRareEventComparisons": "Retained unresolved in original component report. Shell convergence and finite confidence bounds are new evidence, not relabeling those failures."
+}

@@ -8,7 +8,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "test": "node --test tests/*.mjs",
-    "verify": "npm test && npm run build"
+    "verify": "npm test && npm run build",
+    "test:axon-stage2": "node --test tests/axon-interface-stage2-contracts.mjs",
+    "verify:axon-stage2": "node scripts/axon-interface/stage2/reproduce.mjs"
   },
   "dependencies": {
     "@astrojs/preact": "^4.1.3",

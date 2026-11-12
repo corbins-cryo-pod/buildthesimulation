@@ -1,0 +1,489 @@
+{
+  "schema": "axon-stage2.independent-component-reference.v1",
+  "status": "pass",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "tests": [
+    {
+      "name": "exact real rank / fixture 0",
+      "measured": 2.0,
+      "limit": 2.0,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "isolated protocol information / fixture 0",
+      "measured": 0.0,
+      "limit": 1e-12,
+      "unit": "bit/trial",
+      "passed": true
+    },
+    {
+      "name": "exact real rank / fixture 1",
+      "measured": 2.0,
+      "limit": 2.0,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "isolated protocol information / fixture 1",
+      "measured": 0.0,
+      "limit": 1e-12,
+      "unit": "bit/trial",
+      "passed": true
+    },
+    {
+      "name": "exact real rank / fixture 2",
+      "measured": 4.0,
+      "limit": 4.0,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "isolated protocol information / fixture 2",
+      "measured": 0.0,
+      "limit": 1e-12,
+      "unit": "bit/trial",
+      "passed": true
+    },
+    {
+      "name": "exact real rank / fixture 3",
+      "measured": 5.0,
+      "limit": 5.0,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "isolated protocol information / fixture 3",
+      "measured": 0.0,
+      "limit": 1e-12,
+      "unit": "bit/trial",
+      "passed": true
+    },
+    {
+      "name": "exact real rank / fixture 4",
+      "measured": 6.0,
+      "limit": 6.0,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "isolated protocol information / fixture 4",
+      "measured": 0.0,
+      "limit": 1e-12,
+      "unit": "bit/trial",
+      "passed": true
+    },
+    {
+      "name": "exact real rank / fixture 5",
+      "measured": 7.0,
+      "limit": 7.0,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "isolated protocol information / fixture 5",
+      "measured": 0.0,
+      "limit": 1e-12,
+      "unit": "bit/trial",
+      "passed": true
+    },
+    {
+      "name": "exact real rank / fixture 6",
+      "measured": 8.0,
+      "limit": 8.0,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "isolated protocol information / fixture 6",
+      "measured": 0.0,
+      "limit": 1e-12,
+      "unit": "bit/trial",
+      "passed": true
+    },
+    {
+      "name": "exact real rank / fixture 7",
+      "measured": 2.0,
+      "limit": 2.0,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "isolated protocol information / fixture 7",
+      "measured": 0.0,
+      "limit": 1e-12,
+      "unit": "bit/trial",
+      "passed": true
+    },
+    {
+      "name": "exact real rank / fixture 8",
+      "measured": 3.0,
+      "limit": 3.0,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "isolated protocol information / fixture 8",
+      "measured": 0.0,
+      "limit": 1e-12,
+      "unit": "bit/trial",
+      "passed": true
+    },
+    {
+      "name": "exact real rank / fixture 9",
+      "measured": 2.0,
+      "limit": 2.0,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "isolated protocol information / fixture 9",
+      "measured": 0.0,
+      "limit": 1e-12,
+      "unit": "bit/trial",
+      "passed": true
+    },
+    {
+      "name": "exact real rank / fixture 10",
+      "measured": 3.0,
+      "limit": 3.0,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "isolated protocol information / fixture 10",
+      "measured": 0.0,
+      "limit": 1e-12,
+      "unit": "bit/trial",
+      "passed": true
+    },
+    {
+      "name": "exact real rank / fixture 11",
+      "measured": 5.0,
+      "limit": 5.0,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "isolated protocol information / fixture 11",
+      "measured": 4.440892098500626e-16,
+      "limit": 1e-12,
+      "unit": "bit/trial",
+      "passed": true
+    },
+    {
+      "name": "exact real rank / fixture 12",
+      "measured": 5.0,
+      "limit": 5.0,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "isolated protocol information / fixture 12",
+      "measured": 0.0,
+      "limit": 1e-12,
+      "unit": "bit/trial",
+      "passed": true
+    },
+    {
+      "name": "exact real rank / fixture 13",
+      "measured": 7.0,
+      "limit": 7.0,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "isolated protocol information / fixture 13",
+      "measured": 0.0,
+      "limit": 1e-12,
+      "unit": "bit/trial",
+      "passed": true
+    },
+    {
+      "name": "exact real rank / fixture 14",
+      "measured": 2.0,
+      "limit": 2.0,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "isolated protocol information / fixture 14",
+      "measured": 0.0,
+      "limit": 1e-12,
+      "unit": "bit/trial",
+      "passed": true
+    },
+    {
+      "name": "exact real rank / fixture 15",
+      "measured": 3.0,
+      "limit": 3.0,
+      "unit": "",
+      "passed": true
+    },
+    {
+      "name": "isolated protocol information / fixture 15",
+      "measured": 0.0,
+      "limit": 1e-12,
+      "unit": "bit/trial",
+      "passed": true
+    },
+    {
+      "name": "segment vector potential / fixture 0",
+      "measured": 2.594970800593595e-16,
+      "limit": 1e-10,
+      "unit": "relative L2",
+      "passed": true
+    },
+    {
+      "name": "segment magnetic field / fixture 0",
+      "measured": 5.880790372975377e-16,
+      "limit": 1e-09,
+      "unit": "relative L2",
+      "passed": true
+    },
+    {
+      "name": "segment vector potential / fixture 1",
+      "measured": 9.32880501824412e-17,
+      "limit": 1e-10,
+      "unit": "relative L2",
+      "passed": true
+    },
+    {
+      "name": "segment magnetic field / fixture 1",
+      "measured": 1.6274643166085933e-16,
+      "limit": 1e-09,
+      "unit": "relative L2",
+      "passed": true
+    },
+    {
+      "name": "segment vector potential / fixture 2",
+      "measured": 7.702238650256886e-17,
+      "limit": 1e-10,
+      "unit": "relative L2",
+      "passed": true
+    },
+    {
+      "name": "segment magnetic field / fixture 2",
+      "measured": 1.3148664609826332e-16,
+      "limit": 1e-09,
+      "unit": "relative L2",
+      "passed": true
+    },
+    {
+      "name": "segment vector potential / fixture 3",
+      "measured": 1.3521021871780448e-15,
+      "limit": 1e-10,
+      "unit": "relative L2",
+      "passed": true
+    },
+    {
+      "name": "segment magnetic field / fixture 3",
+      "measured": 2.065851679624198e-15,
+      "limit": 1e-09,
+      "unit": "relative L2",
+      "passed": true
+    },
+    {
+      "name": "induction independent weak-load assembly",
+      "measured": 4.235164736271502e-22,
+      "limit": 1e-15,
+      "unit": "uA/(A/s)",
+      "passed": true
+    },
+    {
+      "name": "induction conservative summed source",
+      "measured": 4.235164736271502e-22,
+      "limit": 1e-15,
+      "unit": "uA/(A/s)",
+      "passed": true
+    },
+    {
+      "name": "opsin independent five-state integration / fixture 0",
+      "measured": 8.985447941256552e-09,
+      "limit": 2e-06,
+      "unit": "absolute occupancy / activation",
+      "passed": true
+    },
+    {
+      "name": "opsin independent photocurrent / fixture 0",
+      "measured": 2.857699268193903e-09,
+      "limit": 2e-06,
+      "unit": "nA",
+      "passed": true
+    },
+    {
+      "name": "opsin probability conservation / fixture 0",
+      "measured": 2.2670754162845697e-13,
+      "limit": 1e-10,
+      "unit": "absolute",
+      "passed": true
+    },
+    {
+      "name": "opsin independent five-state integration / fixture 1",
+      "measured": 5.8871238550750604e-08,
+      "limit": 2e-06,
+      "unit": "absolute occupancy / activation",
+      "passed": true
+    },
+    {
+      "name": "opsin independent photocurrent / fixture 1",
+      "measured": 2.1083931531218347e-08,
+      "limit": 2e-06,
+      "unit": "nA",
+      "passed": true
+    },
+    {
+      "name": "opsin probability conservation / fixture 1",
+      "measured": 4.6407322429331543e-14,
+      "limit": 1e-10,
+      "unit": "absolute",
+      "passed": true
+    },
+    {
+      "name": "opsin independent five-state integration / fixture 2",
+      "measured": 2.006514080443722e-07,
+      "limit": 2e-06,
+      "unit": "absolute occupancy / activation",
+      "passed": true
+    },
+    {
+      "name": "opsin independent photocurrent / fixture 2",
+      "measured": 2.2054466749382717e-08,
+      "limit": 2e-06,
+      "unit": "nA",
+      "passed": true
+    },
+    {
+      "name": "opsin probability conservation / fixture 2",
+      "measured": 1.6153745008296028e-13,
+      "limit": 1e-10,
+      "unit": "absolute",
+      "passed": true
+    },
+    {
+      "name": "opsin independent five-state integration / fixture 3",
+      "measured": 3.5012549526314274e-09,
+      "limit": 2e-06,
+      "unit": "absolute occupancy / activation",
+      "passed": true
+    },
+    {
+      "name": "opsin independent photocurrent / fixture 3",
+      "measured": 5.69061889624245e-10,
+      "limit": 2e-06,
+      "unit": "nA",
+      "passed": true
+    },
+    {
+      "name": "opsin probability conservation / fixture 3",
+      "measured": 6.750155989720952e-14,
+      "limit": 1e-10,
+      "unit": "absolute",
+      "passed": true
+    },
+    {
+      "name": "opsin independent five-state integration / fixture 4",
+      "measured": 2.328085468850105e-08,
+      "limit": 2e-06,
+      "unit": "absolute occupancy / activation",
+      "passed": true
+    },
+    {
+      "name": "opsin independent photocurrent / fixture 4",
+      "measured": 5.039544531681983e-09,
+      "limit": 2e-06,
+      "unit": "nA",
+      "passed": true
+    },
+    {
+      "name": "opsin probability conservation / fixture 4",
+      "measured": 1.7008616737257398e-13,
+      "limit": 1e-10,
+      "unit": "absolute",
+      "passed": true
+    },
+    {
+      "name": "opsin independent five-state integration / fixture 5",
+      "measured": 1.0719827825411699e-07,
+      "limit": 2e-06,
+      "unit": "absolute occupancy / activation",
+      "passed": true
+    },
+    {
+      "name": "opsin independent photocurrent / fixture 5",
+      "measured": 1.3522321734571463e-08,
+      "limit": 2e-06,
+      "unit": "nA",
+      "passed": true
+    },
+    {
+      "name": "opsin probability conservation / fixture 5",
+      "measured": 1.6897594434794883e-13,
+      "limit": 1e-10,
+      "unit": "absolute",
+      "passed": true
+    },
+    {
+      "name": "optical collimated Beer-Lambert escape",
+      "measured": 0.001970907296309221,
+      "limit": 0.015,
+      "unit": "absolute fraction",
+      "passed": true
+    },
+    {
+      "name": "optical Beer-Lambert energy balance",
+      "measured": 0.0,
+      "limit": 1e-10,
+      "unit": "fraction",
+      "passed": true
+    },
+    {
+      "name": "optical full-well energy balance / budget 16000",
+      "measured": 1.312283615106935e-13,
+      "limit": 1e-10,
+      "unit": "fraction",
+      "passed": true
+    },
+    {
+      "name": "optical full-well energy balance / budget 32000",
+      "measured": 2.19824158875781e-14,
+      "limit": 1e-10,
+      "unit": "fraction",
+      "passed": true
+    },
+    {
+      "name": "photon-budget compatibility / E0001",
+      "measured": 1.2003365723586437,
+      "limit": 5.0,
+      "unit": "combined standard errors",
+      "passed": true
+    },
+    {
+      "name": "photon-budget compatibility / E0002",
+      "passed": null,
+      "status": "unresolved: insufficient rare-event detections; compatibility is not evidence of isolation"
+    },
+    {
+      "name": "photon-budget compatibility / E0003",
+      "passed": null,
+      "status": "unresolved: insufficient rare-event detections; compatibility is not evidence of isolation"
+    },
+    {
+      "name": "photon-budget compatibility / E0004",
+      "passed": null,
+      "status": "unresolved: insufficient rare-event detections; compatibility is not evidence of isolation"
+    }
+  ],
+  "requiredPass": 65,
+  "requiredFail": 0,
+  "unresolved": 3,
+  "completeStage2": false,
+  "biologicalValidation": false,
+  "limitations": [
+    "Independent integration of component equations, not a coupled neuron reference.",
+    "Photon compatibility is a two-budget diagnostic, not proof of membrane-surface or domain convergence.",
+    "No native NEURON optical/magnetic experiment was executed."
+  ]
+}
