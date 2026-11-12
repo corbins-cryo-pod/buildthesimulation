@@ -4,8 +4,8 @@ import {simulateCable} from '../../../src/lib/axon-interface/stage2/membrane.mjs
 import {coilSlew} from '../../../src/lib/axon-interface/stage2/magnetic-coupling.mjs';
 import {compareTraces} from '../bipolar-validation-utils.mjs';
 const dir='docs/axon-interface/stage2',evidence=JSON.parse(fs.readFileSync(dir+'/induction-validation.json')),
- m=createBipolarMorphology(),transfer=evidence.transfers?.[1]?.[0],rows=[],started=performance.now();
-if(!transfer||transfer.length!==m.compartments.length)throw new Error('Fine induction transfer fixture unavailable.');
+ m=createBipolarMorphology(),transfer=evidence.transfers?.[0]?.[0],rows=[],started=performance.now();
+if(!transfer||transfer.length!==m.compartments.length)throw new Error('Production induction transfer fixture unavailable.');
 const paths=['src/lib/axon-interface/stage2/membrane.mjs','src/lib/axon-interface/stage2/magnetic-coupling.mjs','src/lib/axon-interface/bipolar.mjs','scripts/axon-interface/stage2/native-reference.py','scripts/axon-interface/stage2/magnetic-coupling-check.mjs',dir+'/induction-validation.json',dir+'/coupling-acceptance.json'];
 const hashes=()=>Object.fromEntries(paths.map(p=>[p,crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex')])),before=hashes();
 const acceptance=JSON.parse(fs.readFileSync(dir+'/coupling-acceptance.json'));
@@ -24,5 +24,5 @@ for(const variant of [{name:'zero',peakA:0},{name:'10 A',peakA:10},{name:'100 A'
  }
  console.log('Completed',variant.name);
 }
-const report={schema:'axon-stage2-magnetic-membrane-validation/1',complete:true,passed:rows.every(r=>r.pass)&&JSON.stringify(before)===JSON.stringify(hashes()),rows,acceptance,sourceHashes:before,sourceChanged:JSON.stringify(before)!==JSON.stringify(hashes()),runtimeSeconds:(performance.now()-started)/1000,fieldQualified:false,scope:'Conditional membrane implementation check using the saved finer induction coefficients. The field mesh itself remains unqualified. No propagating output is assumed; a negative fixture cannot qualify propagation delay or recording spatial convergence.'};
+const report={schema:'axon-stage2-magnetic-membrane-validation/1',complete:true,passed:rows.every(r=>r.pass)&&JSON.stringify(before)===JSON.stringify(hashes()),rows,acceptance,sourceHashes:before,sourceChanged:JSON.stringify(before)!==JSON.stringify(hashes()),runtimeSeconds:(performance.now()-started)/1000,fieldQualified:evidence.passed===true,scope:'Membrane implementation check using the production-refinement coefficients. Field qualification is a separate required study. These nonfiring fixtures do not qualify propagation delay or recording spatial convergence; the positive stress study supplies those checks.'};
 fs.writeFileSync(dir+'/magnetic-coupling-validation.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:report.passed,rows}));if(!report.passed)process.exitCode=1;

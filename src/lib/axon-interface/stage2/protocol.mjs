@@ -9,7 +9,7 @@ import {createStage1FieldModel,solveStage1Channel,sampleMembraneTransfer} from '
 import {simulateCable} from './membrane.mjs';
 import {createPhotocurrent} from './photocurrent.mjs';
 import {surfaceScene,surfaceTransport,surfaceCoefficients} from './optical-surface.mjs';
-import {solveMagneticChannel,coilSlew,coilDrive} from './magnetic-coupling.mjs';
+import {solveMagneticChannel,coilSlew,coilDrive,MAGNETIC_FIELD_METHOD} from './magnetic-coupling.mjs';
 import {analyzeMatrix,analyzeSweep} from '../../../../public/simulations/biohybrid-axon-interface/stage2/modules/selectivity.mjs';
 import {ledEnergy} from '../../../../public/simulations/biohybrid-axon-interface/stage2/modules/optics.mjs';
 const clone=x=>JSON.parse(JSON.stringify(x));
@@ -26,14 +26,15 @@ export async function runProtocol(input,{onProgress=()=>{},shouldCancel=()=>fals
  const zeroDrift=Math.max(...base.membraneMv.map(v=>Math.max(...v.map(x=>Math.abs(x-v[0]))))),baselineValid=zeroDrift<=.1&&Object.values(zeroByControl).every(r=>r.events.length===0);
  if(!baselineValid)throw new Error('Matched no-drive audit failed; recruitment withheld.');
  onProgress({phase:'Meshing physical wells and reciprocal recording contacts',fraction:.03});
- const field=createStage1FieldModel(stage1FieldSettings(anatomy,m),{...g,morphology:m,constructPresent:true}),readout=solveStage1Channel(field,g.channels[0]),recordTransfers=g.cells.map(c=>sampleMembraneTransfer(readout,m,c));
+ const fieldSettings={...stage1FieldSettings(anatomy,m),...(s.modality==='magnetic'?{radialRefinement:MAGNETIC_FIELD_METHOD.radialRefinement,axialRefinement:MAGNETIC_FIELD_METHOD.axialRefinement}:{})};
+ const field=createStage1FieldModel(fieldSettings,{...g,morphology:m,constructPresent:true}),readout=solveStage1Channel(field,g.channels[0]),recordTransfers=g.cells.map(c=>sampleMembraneTransfer(readout,m,c));
  const points=s.amplitudes.map(amplitude=>({amplitude,matrices:Object.fromEntries(controls.map(c=>[c,[]])),pairs:[],recordings:[],auditValid:false})),fieldReports=[],units={electrode:'uA',magnetic:'A peak',optical:'mW emitted',spectral:'mW emitted'};
  let completed=0;const total=channels.length*s.amplitudes.length*s.axonCount;
  for(let k=0;k<channels.length;k++){
   const channel=channels[k],sourceIndex=channel.sourceIndex;
   check();let transfer=null,magnetic=null,optical=null,stimSolution=null;
   if(s.modality==='electrode'){stimSolution=k===0?readout:solveStage1Channel(field,g.channels[k]);transfer=g.cells.map(c=>Array.from(sampleMembraneTransfer(stimSolution,m,c)));fieldReports.push({channel:g.channels[k].id,transfers:transfer,diagnostics:stimSolution.diagnostics});}
-  if(s.modality==='magnetic'){magnetic=solveMagneticChannel(field,m,g,k,{coilOptions:{layers:s.coilLayers},shouldCancel,onProgress});transfer=magnetic.transfers.map(t=>t.effective);fieldReports.push({channel:g.channels[k].id,transfers:magnetic.transfers,coil:magnetic.coil,inductance:magnetic.inductance,diagnostics:magnetic.diagnostics,limitations:magnetic.limitations});}
+  if(s.modality==='magnetic'){magnetic=solveMagneticChannel(field,m,g,k,{coilOptions:{layers:s.coilLayers},shouldCancel,onProgress});transfer=magnetic.transfers.map(t=>t.effective);fieldReports.push({channel:g.channels[k].id,transfers:magnetic.transfers,coil:magnetic.coil,inductance:magnetic.inductance,diagnostics:magnetic.diagnostics,assembly:magnetic.assembly,fieldMethod:magnetic.fieldMethod,limitations:magnetic.limitations});}
   if(light){const transport=s.modality==='spectral'?wavelengthTransport(s,channel.wavelengthNm):{};optical={...surfaceTransport(surfaceScene(g,m,sourceIndex,{shellThicknessUm:s.shellThicknessUm}),{photons:s.photons,seed:(s.seed+1009*k)>>>0,reflectivity:s.reflectivity,totalChannels:channels.length,...transport},p=>{check();onProgress({...p,fraction:.05+.9*(completed/total)});}),...(s.modality==='spectral'?{wavelengthNm:channel.wavelengthNm,transportProvenance:transport.provenance}:{})};fieldReports.push({channel:channel.id,sourceIndex,...optical});}
   fieldReports[k].confinement=confinement(s.modality,fieldReports[k],m,sourceIndex);
   for(const point of points){
@@ -77,10 +78,10 @@ export async function runProtocol(input,{onProgress=()=>{},shouldCancel=()=>fals
   point.exposureProbeAgreement=point.pairs.every(p=>!p.exposureSensitivity||p.exposureSensitivity.sameClassificationAtThreeProbes);
   const qualified=qualifySelectivity(point.matrices,g.cells.map(c=>c.id));
   const headline=analysis.headline?{...analysis.headline,...qualified,exclusiveCoverageOfOriginalCensus:qualified.exclusiveCount/s.axonCount}:null;
-  point.metrics={...analysis,nominalHeadline:headline,descriptiveUncontrolledCounts:analysis.headline,headline:s.modality!=='magnetic'&&point.exposureProbeAgreement?headline:null,headlineMeaning:s.modality==='magnetic'?'Withheld: the induction field fails the fixed 5% mesh-refinement criterion. Nominal matrices and traces are diagnostic only; no magnetic selectivity or threshold is qualified.':light?(point.exposureProbeAgreement?'Conditional on the nominal finite-shell light field; the three exposure probes agree. This is not a rigorous uncertainty-certified firing result.':'Withheld: optical exposure probes change a recruitment classification. Nominal descriptive results remain visible.'):'Conditional on the declared field and membrane model. Required mechanism-removal controls must abolish the output.'};
+  point.metrics={...analysis,nominalHeadline:headline,descriptiveUncontrolledCounts:analysis.headline,headline:point.exposureProbeAgreement?headline:null,headlineMeaning:s.modality==='magnetic'?'Conditional on the declared conservative induction and membrane model. The published benchmark is refined separately; this is not an error certificate for arbitrary geometry or a feasibility claim.':light?(point.exposureProbeAgreement?'Conditional on the nominal finite-shell light field; the three exposure probes agree. This is not a rigorous uncertainty-certified firing result.':'Withheld: optical exposure probes change a recruitment classification. Nominal descriptive results remain visible.'):'Conditional on the declared field and membrane model. Required mechanism-removal controls must abolish the output.'};
  }
  const nominalSweep=analyzeSweep(points.map(p=>({amplitude:p.amplitude,auditValid:p.auditValid,assigned:p.matrices.assigned})));
- const sweep=s.modality==='magnetic'?{...nominalSweep,nominalBrackets:nominalSweep.brackets,brackets:null,allPointsValid:false,meaning:'Magnetic threshold brackets withheld because the field mesh is unqualified. Nominal patterns remain diagnostics.'}:nominalSweep;
+ const sweep=nominalSweep;
  const candidates=points.filter(p=>p.metrics.headline),chosen=[...candidates].sort((a,b)=>b.metrics.headline.exclusiveCount-a.metrics.headline.exclusiveCount||a.amplitude-b.amplitude)[0];
  return {schema:'axon-stage2.coupled-result.v1',modelVersion:VERSION,settings:clone(s),anatomySettings:clone(anatomy),units:{amplitude:units[s.modality],voltage:'mV',electricalTime:'ms',recording:'uV',coordinate:'um'},geometry:{...g,channels},spectral:spectralAssignment(s,g),identities,morphology:{parameters:m.parameters,compartments:m.compartments.map(c=>({index:c.index,kind:c.kind,role:c.role,zUm:c.zUm,lengthUm:c.lengthUm,diameterUm:c.diameterUm})),recordIndices:m.activeSiteIndices,somaIndices:m.somaIndices},work,points,sweep,fieldReports,
   zeroInput:{maximumDriftMv:zeroDrift,eventsByControl:Object.fromEntries(Object.entries(zeroByControl).map(([c,r])=>[c,r.events.length])),initialState:base.initialState},auditComplete:true,auditValid:points.every(p=>p.auditValid),

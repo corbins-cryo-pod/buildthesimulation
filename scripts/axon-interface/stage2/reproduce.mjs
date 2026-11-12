@@ -5,22 +5,31 @@ const root=path.resolve(new URL('../../..',import.meta.url).pathname);process.ch
 const dir='docs/axon-interface/stage2',python=process.env.MRG_PYTHON??'python3',collect=process.argv.includes('--collect'),start=performance.now(),stages=[];
 const read=p=>{try{return JSON.parse(fs.readFileSync(p));}catch{return null;}},hash=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 function walk(d){return fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(d+'/'+e.name):[d+'/'+e.name]);}
-const files=[...walk('src/lib/axon-interface').filter(p=>p.endsWith('.mjs')||p.endsWith('.json')),...walk('public/simulations/biohybrid-axon-interface/stage2/modules'),...walk('scripts/axon-interface/stage2').filter(p=>/\.(mjs|py|mod|txt)$/.test(p)&&!p.includes('/x86_64/')),dir+'/coupling-acceptance.json',dir+'/spatial-acceptance.json','package-lock.json'];
+const files=[...walk('src/lib/axon-interface').filter(p=>p.endsWith('.mjs')||p.endsWith('.json')),...walk('public/simulations/biohybrid-axon-interface/stage2/modules'),...walk('scripts/axon-interface/stage2').filter(p=>/\.(mjs|py|mod|txt)$/.test(p)&&!p.includes('/x86_64/')),...walk('src/pages/simulations/biohybrid-axon-interface/stage2'),'src/pages/simulations/biohybrid-axon-interface/stage2.astro','src/components/AxonStage2Laboratory.jsx','src/lib/axon-interface-stage2-publication.mjs',dir+'/coupling-acceptance.json',dir+'/spatial-acceptance.json','package-lock.json'];
 const snapshot=()=>Object.fromEntries(files.sort().map(p=>[p,hash(p)])),before=snapshot();
-function run(name,cmd,args,options={}){const begin=performance.now(),result=spawnSync(cmd,args,{cwd:root,encoding:'utf8',maxBuffer:8e6,timeout:1200000,...options});fs.mkdirSync(dir+'/logs',{recursive:true});fs.writeFileSync(dir+'/logs/'+name+'.log',(result.stdout??'')+(result.stderr??'')+(result.error?'\n'+String(result.error):''));stages.push({name,command:[cmd,...args],exitCode:result.status,pass:result.status===0,seconds:(performance.now()-begin)/1000});console.log(name,result.status===0?'passed':'failed');}
+function run(name,cmd,args,options={}){const begin=performance.now(),result=spawnSync(cmd,args,{cwd:root,encoding:'utf8',maxBuffer:8e6,timeout:1200000,...options});fs.mkdirSync(dir+'/logs',{recursive:true});fs.writeFileSync(dir+'/logs/'+name+'.log',(result.stdout??'')+(result.stderr??'')+(result.error?'\n'+String(result.error):''));const stage={name,command:[cmd,...args],exitCode:result.status,pass:result.status===0,seconds:(performance.now()-begin)/1000};stages.push(stage);console.log(name,result.status===0?'passed':'failed');return stage;}
 if(!collect){
- run('contracts',process.execPath,['--test','tests/axon-interface-stage2-contracts.mjs','tests/axon-interface-induction-solve.mjs']);
+ run('contracts',process.execPath,['--test','tests/axon-interface-stage2-contracts.mjs','tests/axon-interface-induction-solve.mjs','tests/axon-interface-induction-reference.mjs','tests/axon-interface-spectral.mjs']);
  run('components',process.execPath,['--test','tests/components.test.mjs'],{cwd:path.join(root,'labs/axon-stage2')});
  run('component-fixtures',process.execPath,['scripts/reference-fixtures.mjs'],{cwd:path.join(root,'labs/axon-stage2')});
  run('component-reference',python,['reference/verify.py'],{cwd:path.join(root,'labs/axon-stage2')});
  const bin=spawnSync(python,['-c','import sys,pathlib;print(pathlib.Path(sys.executable).parent)'],{encoding:'utf8'}).stdout?.trim();
  for(const d of ['scripts/axon-interface/mrg-modeldb','scripts/axon-interface/stage2/mechanisms'])run(d.endsWith('mrg-modeldb')?'compile-native':'compile-opsin',path.join(bin??'', 'nrnivmodl'),[],{cwd:path.join(root,d),env:{...process.env,CC:'gcc',CXX:'g++'}});
- for(const name of ['coupling','surface','spatial','induction','magnetic-path','magnetic-coupling','magnetic-policy','protocol','spectral-component','spectral-coupling','spectral-spatial','spectral-protocol','spectral-crosstalk'])run(name,process.execPath,['scripts/axon-interface/stage2/'+name+'-check.mjs'],{env:{...process.env,MRG_PYTHON:python}});
+ for(const name of ['coupling','surface','spatial','induction','magnetic-path','magnetic-coupling','magnetic-policy','protocol','spectral-component','spectral-coupling','spectral-spatial','spectral-protocol','spectral-crosstalk'])run(name,process.execPath,['scripts/axon-interface/stage2/'+name+'-check.mjs'],{env:{...process.env,MRG_PYTHON:python},...(name==='induction'?{timeout:14400000}:{})});
+ // These depend on the production-refinement field and independently built
+ // physical fixture emitted by induction; no pre-existing /tmp file is needed.
+ run('magnetic-propagation-probe',process.execPath,['scripts/axon-interface/stage2/magnetic-propagation-probe.mjs']);
+ run('magnetic-propagation',process.execPath,['scripts/axon-interface/stage2/magnetic-propagation-check.mjs'],{env:{...process.env,MRG_PYTHON:python}});
+ const tests=run('repository-tests','npm',['test'],{timeout:3600000}),build=run('site-build','npm',['run','build']);
+ fs.writeFileSync(dir+'/software-checkpoint.json',JSON.stringify({schema:'axon-stage2-software-checkpoint/2',modelVersion:VERSION,recordedAt:new Date().toISOString(),passed:tests.pass&&build.pass,fullRepositoryTests:tests,siteBuild:build},null,2)+'\n');
 }
 const component=read('labs/axon-stage2/reports/independent-reference.json'),coupled=Object.fromEntries(['coupling','surface','spatial','induction','magnetic-path','magnetic-coupling','magnetic-policy','magnetic-propagation','induction-conservative-independent','protocol','spectral-component','spectral-coupling','spectral-spatial','spectral-protocol','spectral-crosstalk'].map(k=>[k,read(dir+'/'+k+'-validation.json')])),browser=read(dir+'/browser-validation.json');
 const gates=Object.entries(coupled).filter(([k,r])=>!r?.complete||!r?.passed).map(([k])=>k+' numerical qualification remains incomplete or failed.');
+for(const [name,r] of Object.entries(coupled)){const stale=Object.entries(r?.sourceHashes??{}).filter(([p,h])=>!fs.existsSync(p)||hash(p)!==h).map(([p])=>p);if(stale.length)gates.push(name+' evidence has stale source hashes: '+stale.join(', '));}
+for(const s of stages)if(!s.pass)gates.push(s.name+' failed during this reproduction; an older report cannot substitute for it.');
 if(component?.requiredFail!==0||component?.requiredPass!==65)gates.push('Independent component reference is missing or failing.');
 if(!browser?.passed||!browser?.hosted||browser?.modelVersion!==VERSION)gates.push('Final hosted browser verification remains pending.');
+if(browser?.sourceHashes&&Object.entries(browser.sourceHashes).some(([p,h])=>!fs.existsSync(p)||hash(p)!==h))gates.push('Hosted browser evidence does not match the current tested source.');
 const software=read(dir+'/software-checkpoint.json');if(!software?.passed||software?.modelVersion!==VERSION)gates.push('Current-version complete site build and repository regression evidence remains pending.');
 
 const after=snapshot(),changed=files.filter(p=>before[p]!==after[p]);if(changed.length)gates.push('Scientific source changed during reproduction.');

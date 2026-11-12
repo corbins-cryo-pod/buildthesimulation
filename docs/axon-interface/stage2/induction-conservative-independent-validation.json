@@ -1,13 +1,13 @@
 {
   "schema": "axon-stage2-conservative-independent-validation/1",
   "complete": true,
-  "passed": false,
+  "passed": true,
   "rows": [
     {
       "name": "Independent conservative field 1",
       "schema": "axon-stage2-conservative-reference/1",
-      "maximumPotentialErrorUvPerAperS": 4.275631962801244e-18,
-      "potentialRelativeL2": 8.71376952080141e-12,
+      "maximumPotentialErrorUvPerAperS": 4.3004732305719775e-18,
+      "potentialRelativeL2": 8.8361161525104e-12,
       "maximumLoadErrorMicroampPerSlew": 1.806163306819545e-24,
       "loadRelativeL2": 7.221146299154098e-13,
       "relativeResidual": 6.902180798788276e-12,
@@ -15,9 +15,10 @@
       "factorNonzeros": 34589193,
       "iterations": 0,
       "nodes": 48590,
-      "peakRssBytes": 2453975040,
-      "seconds": 149.64235945200016,
+      "peakRssBytes": 2452475904,
+      "seconds": 153.30014627000037,
       "method": "SuperLU direct, symmetric minimum-degree ordering",
+      "preconditionerAttempts": [],
       "runtime": {
         "python": "3.12.14",
         "numpy": "2.3.5",
@@ -27,9 +28,31 @@
     },
     {
       "name": "Independent conservative field 2",
-      "pass": false,
-      "exitCode": 1,
-      "error": "Traceback (most recent call last):\n  File \"/workspace/scratch/9c5c18551577/buildthesimulation/scripts/axon-interface/stage2/induction-conservative-reference.py\", line 62, in <module>\n    factor=spilu(scaled,drop_tol=1e-5,fill_factor=8,permc_spec='COLAMD');M=LinearOperator(A.shape,matvec=factor.solve)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/9c5c18551577/buildthesimulation/.venv/lib/python3.12/site-packages/scipy/sparse/linalg/_dsolve/linsolve.py\", line 535, in spilu\n    return _superlu.gstrf(N, A.nnz, A.data, indices, indptr,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Factor is exactly singular\n"
+      "schema": "axon-stage2-conservative-reference/1",
+      "maximumPotentialErrorUvPerAperS": 3.560065802980323e-17,
+      "potentialRelativeL2": 1.1373444341150837e-10,
+      "maximumLoadErrorMicroampPerSlew": 1.0643689986476397e-24,
+      "loadRelativeL2": 7.196436653821604e-13,
+      "relativeResidual": 4.537825960081878e-10,
+      "loadSum": -3.4199511621289546e-18,
+      "factorNonzeros": 22745310,
+      "iterations": 3446,
+      "nodes": 212077,
+      "peakRssBytes": 1555968000,
+      "seconds": 537.7948582079998,
+      "method": "SciPy BiCGSTAB with independently built ILUT, symmetric equilibration and unit-norm algebraic RHS",
+      "preconditionerAttempts": [
+        {
+          "shift": 0,
+          "success": true
+        }
+      ],
+      "runtime": {
+        "python": "3.12.14",
+        "numpy": "2.3.5",
+        "scipy": "1.17.0"
+      },
+      "pass": true
     }
   ],
   "acceptance": {
@@ -39,8 +62,10 @@
     "trueResidual": 1e-9
   },
   "sourceHashes": {
-    "scripts/axon-interface/stage2/induction-conservative-reference.py": "a892f0a195bc97b6ac8584fced3ef378f4631f1d952f671e0d98a97fdfff0bbb",
+    "scripts/axon-interface/stage2/induction-conservative-reference.py": "ca4488f4a3677ed960a74767738217bb5b1de4c88157c1175e084573f443610f",
     "src/lib/axon-interface/stage2/induction-conservative-load.mjs": "9e3d7506dddc11f2a5af88690ed1287118fd734e446b7220560581a0ee45c1f1",
-    "src/lib/axon-interface/stage2/induction-solve.mjs": "da2764b95ac4e9a7c053869bbec9c95c18d2febc26ddb1f2facf06443396986c"
-  }
+    "src/lib/axon-interface/stage2/induction-solve.mjs": "575f8516215f11091e8425e57399ba2d31c8cc6de7e9d1404f56575dd908deca",
+    "scripts/axon-interface/stage2/induction-conservative-independent-check.mjs": "a0222f89b4086eab0f2194a340a79a9250f1121ac1e293a4aa7ca2e8b7abba93"
+  },
+  "sourceChanged": false
 }

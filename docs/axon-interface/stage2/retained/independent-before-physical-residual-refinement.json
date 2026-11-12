@@ -1,0 +1,70 @@
+{
+  "schema": "axon-stage2-conservative-independent-validation/1",
+  "complete": true,
+  "passed": true,
+  "rows": [
+    {
+      "name": "Independent conservative field 1",
+      "schema": "axon-stage2-conservative-reference/1",
+      "maximumPotentialErrorUvPerAperS": 4.275631962801244e-18,
+      "potentialRelativeL2": 8.71376952080141e-12,
+      "maximumLoadErrorMicroampPerSlew": 1.806163306819545e-24,
+      "loadRelativeL2": 7.221146299154098e-13,
+      "relativeResidual": 6.902180798788276e-12,
+      "loadSum": -1.2713292058907125e-16,
+      "factorNonzeros": 34589193,
+      "iterations": 0,
+      "nodes": 48590,
+      "peakRssBytes": 2449567744,
+      "seconds": 148.2464872569999,
+      "method": "SuperLU direct, symmetric minimum-degree ordering",
+      "preconditionerAttempts": [],
+      "runtime": {
+        "python": "3.12.14",
+        "numpy": "2.3.5",
+        "scipy": "1.17.0"
+      },
+      "pass": true
+    },
+    {
+      "name": "Independent conservative field 2",
+      "schema": "axon-stage2-conservative-reference/1",
+      "maximumPotentialErrorUvPerAperS": 3.5604619449455535e-17,
+      "potentialRelativeL2": 1.1363395033754813e-10,
+      "maximumLoadErrorMicroampPerSlew": 1.0643689986476397e-24,
+      "loadRelativeL2": 7.196436653821604e-13,
+      "relativeResidual": 4.537825960081878e-10,
+      "loadSum": -3.4199511621289546e-18,
+      "factorNonzeros": 22745310,
+      "iterations": 3446,
+      "nodes": 212077,
+      "peakRssBytes": 1552609280,
+      "seconds": 526.7701994500003,
+      "method": "SciPy BiCGSTAB with independently built ILUT, symmetric equilibration and unit-norm algebraic RHS",
+      "preconditionerAttempts": [
+        {
+          "shift": 0,
+          "success": true
+        }
+      ],
+      "runtime": {
+        "python": "3.12.14",
+        "numpy": "2.3.5",
+        "scipy": "1.17.0"
+      },
+      "pass": true
+    }
+  ],
+  "acceptance": {
+    "maximumPotentialUvPerAperS": 0.001,
+    "potentialRelativeL2": 1e-06,
+    "loadRelativeL2": 1e-08,
+    "trueResidual": 1e-09
+  },
+  "sourceHashes": {
+    "scripts/axon-interface/stage2/induction-conservative-reference.py": "ca4488f4a3677ed960a74767738217bb5b1de4c88157c1175e084573f443610f",
+    "src/lib/axon-interface/stage2/induction-conservative-load.mjs": "9e3d7506dddc11f2a5af88690ed1287118fd734e446b7220560581a0ee45c1f1",
+    "src/lib/axon-interface/stage2/induction-solve.mjs": "da2764b95ac4e9a7c053869bbec9c95c18d2febc26ddb1f2facf06443396986c"
+  },
+  "scope": "Independent normalized reference completed against the preceding JS solver. Physical-residual refinement changed during the external solve; this archived report records the actual imported solver hash and is not the current production qualification."
+}

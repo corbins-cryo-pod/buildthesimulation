@@ -58,5 +58,41 @@
     "scope": "higher-order source quadrature diagnostic",
     "failure": "Eleven-point Keast degree-four source integration gives transfer refinement errors 0.00549765, 0.05282858, 0.10095172 and 0.06121572. Three cells exceed the unchanged 0.05 gate.",
     "correction": "Not promoted. Exact polynomial moments through degree four pass analytic simplex-integral checks. Source integration alone does not resolve the mesh discrepancy."
+  },
+  {
+    "id": "coupled-010",
+    "scope": "conservative source, original coarse mesh",
+    "failure": "The first conservative 1\u21922 mesh attempt failed current balance (\u22121.3177e\u221214 versus 1e\u221215) and transfer refinement (11.51%, 5.19%, 10.03%, 6.18% versus 5%).",
+    "correction": "Original report retained in induction-conservative-initial-failure.json. Higher-order face/volume quadrature and a genuinely finer baseline are being qualified; a different passing fixture cannot certify the old mesh."
+  },
+  {
+    "id": "coupled-011",
+    "scope": "independent finer induction solver",
+    "failure": "Initial ILUT factorization was singular. A different ordering successfully factored but BiCGSTAB returned breakdown \u221210 with a per-unit-slew RHS norm of 3.035e\u221212.",
+    "correction": "Both failed attempts are retained. Normalizing the algebraic RHS and restoring its physical magnitude avoids BiCGSTAB breakdown. The independent physical reference then passes at both mesh sizes; it is refreshed again after the production solver correction. No stimulus, physical field, trace amplitude, timing or acceptance tolerance is fitted."
+  },
+  {
+    "id": "coupled-012",
+    "scope": "spectral crosstalk test interpretation",
+    "failure": "The initial supplemental assertion incorrectly expected a shared-only output from duplicate exclusive rows. The calculated matrix correctly contained three nonzero rows recruiting two distinct cells.",
+    "correction": "The original failure is retained in spectral-crosstalk-initial-assertion-failure.json. Reanalysis of the unchanged raw run checks the established metric: E0002 counts once, distinct exclusive outputs = 2 and rank = 2. No model, stimulus or numerical tolerance changed."
+  },
+  {
+    "id": "coupled-013",
+    "scope": "finest conservative mesh algebra",
+    "failure": "The first refinement-4 solve reached the unchanged 16000-iteration cap at true residual 1.756456346689821e\u221210 versus the 1e\u221210 gate; it produced no qualified fine transfer.",
+    "correction": "The full failure and coarse result are retained in induction-conservative-refinement-algebra-failure.json. Compensated residual observation and refinement from the original physical equation replace restart from the rounded equilibrated coefficients. The same physical matrix, load and acceptance limits are retained."
+  },
+  {
+    "id": "coupled-014",
+    "scope": "physical-residual refinement in binary64",
+    "failure": "The finest mesh still failed at residual 1.3315927995857793e-10 after 16000 iterations with 4376 restarts.",
+    "correction": "Retained in induction-conservative-physical-residual-failure.json. Two-component physical state and residual, error-free products and exact axial-column block preconditioning pass the same matrix and unchanged gates."
+  },
+  {
+    "id": "coupled-015",
+    "scope": "conservative refinement 2 versus 4",
+    "failure": "Relative transfer errors are 0.8357%, 3.8994%, 3.6748% and 5.3361%. The fourth exceeds the unchanged 5% limit.",
+    "correction": "Factor 2 remains rejected in induction-conservative-2-to-4-failure.json. Production is actually remeshed at factor 3 and compared against factor 4, with a new independent physical reference. The change was declared in induction-resolution-correction.json before execution."
   }
 ]

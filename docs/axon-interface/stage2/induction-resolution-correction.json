@@ -1,0 +1,16 @@
+{
+  "schema": "axon-stage2-induction-resolution-correction/1",
+  "declaredBeforeExecution": true,
+  "reason": "Conservative refinement 2 versus 4 gives 0.8357%, 3.8994%, 3.6748% and 5.3361% transfer differences. The last cell fails the unchanged 5% criterion; refinement 2 is not qualified.",
+  "production": {"radialRefinement":3,"axialRefinement":3},
+  "reference": {"radialRefinement":4,"axialRefinement":4},
+  "inductionTransferRefinementRelativeL2": 0.05,
+  "trueResidual": 1e-10,
+  "recurrenceResidual": 2e-12,
+  "maximumIterations": 16000,
+  "sourceQuadrature": {"faceOrder":8,"volumeRule":"tetra11"},
+  "algebra": "Two-component solution and physical residual with error-free products; exact axial-column block Cholesky preconditioner. No physical matrix shift.",
+  "required": ["Every cell passes production 3 versus reference 4", "Independent physical NumPy/SciPy assembly agrees at production 3", "Repeat native/time/spatial magnetic checks at production 3", "Full production cohort protocol and hosted worker pass"],
+  "retained": "The failed 2-versus-4 result remains rejected even if the genuinely finer production mesh passes. This is a mesh change, not a tolerance change or rescaling.",
+  "scope": "Numerical refinement of the same fixed physical geometry and source. Benchmarks do not certify arbitrary future geometries or biological validity."
+}

@@ -1,8 +1,13 @@
 import {PARAMETERS,LIMITS} from './settings.mjs';
 const p=(key,value,units,evidence,provenance)=>({key,default:value,units,evidence,provenance});
 export const COUPLED_PARAMETERS=[...PARAMETERS,
- p('inductionLinearSolver','diagonally equilibrated IC(0)-PCG','method','mathematical','Solve D K D y = D b with Dii = 1/sqrt(Kii), then phi = D y. No diagonal change enters K. Exact structural zero slots are omitted from the preconditioner pattern.'),
- p('inductionResidualRestart',2e-12,'relative scaled residual','estimated','Retain the inherited PCG target. Recompute the original-equation residual for acceptance at 1e-10; if it fails after recurrence convergence, restart from the explicitly recomputed scaled residual.'),
+ p('initialOpticalAmplitudeGrid',[0,.001,.002],'mW emitted','estimated','The opening UI uses the three-sample optical preset. The engine fallback amplitudes entry remains separately listed.'),
+ p('inductionLinearSolver','diagonally equilibrated axial-block PCG','method','mathematical','Solve D K D y = D b with Dii = 1/sqrt(Kii), then phi = D y. No diagonal change enters K. Each axial column is factored exactly; the physical state and original residual use two-component arithmetic.'),
+ p('inductionResidualRestart',2e-12,'relative scaled residual','estimated','Retain the inherited PCG target. Observe the original physical equation with error-free products and two-component accumulation for acceptance at 1e-10; if needed, restart from that physical residual multiplied by D.'),
+ p('magneticRadialRefinement',3,'mesh factor','estimated','Production magnetic mesh uses radial factor 3; the required field study compares against factor 4.'),
+ p('magneticAxialRefinement',3,'mesh factor','estimated','Production magnetic mesh uses axial factor 3; the required field study compares against factor 4.'),
+ p('inductionFaceQuadrature',8,'Gauss points per triangle coordinate','estimated','8×8 Gauss–Duffy rule after internal equal-conductivity face cancellation.'),
+ p('inductionVolumeQuadrature','Keast 11-point degree four','rule','mathematical','Applied only to the longitudinal anisotropic volume term; closed-winding divergence gives the remaining interface flux exactly before quadrature.'),
  p('inductionProgressInterval',100,'iterations','estimated','Observe the true residual without replacing the active Krylov recurrence. Cancellation is checked every iteration.'),
  ...Object.entries(LIMITS).map(([k,v])=>p(k,v,k.includes('Steps')?'compartment steps':'count','estimated','Explicit runtime budget; rejected before solving, never silently reduced.')),
  p('pulseStartMs',.5,'ms','estimated','Fixed observation-time onset for all modalities.'),p('equilibrationMs',50,'ms','estimated','Inherited matched dark preparation; identical saved initial state for interventions.'),

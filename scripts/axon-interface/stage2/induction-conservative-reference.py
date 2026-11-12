@@ -74,9 +74,13 @@ else:
     def progress(x):
         global iterations
         iterations+=1
-    y,info=bicgstab(scaled,scaled_rhs,rtol=1e-12,atol=0,maxiter=20000,M=M,callback=progress)
+    # A per-unit-slew load is approximately 1e-12. Normalize the algebraic
+    # RHS to avoid BiCGSTAB's absolute rho-breakdown threshold. Restore its
+    # physical magnitude before checking the original unscaled equation.
+    rhs_norm=np.linalg.norm(scaled_rhs)
+    y,info=bicgstab(scaled,scaled_rhs/rhs_norm,rtol=1e-12,atol=0,maxiter=20000,M=M,callback=progress)
     if info!=0:raise RuntimeError('Independent BiCGSTAB failed: '+str(info))
-    v[free]=scale*y;nnz=factor.L.nnz+factor.U.nnz;method='SciPy BiCGSTAB with independently built ILUT on symmetrically equilibrated system'
+    v[free]=scale*y*rhs_norm;nnz=factor.L.nnz+factor.U.nnz;method='SciPy BiCGSTAB with independently built ILUT, symmetric equilibration and unit-norm algebraic RHS'
 relative=np.linalg.norm((K@v-rhs)[free])/np.linalg.norm(rhs[free]);mv=v*1000;reference=np.array(data['potentialMvPerAperS']);expected_load=np.array(data['loadMicroampPerSlew'])
 report=dict(schema='axon-stage2-conservative-reference/1',maximumPotentialErrorUvPerAperS=float(abs(mv-reference).max()*1000),potentialRelativeL2=float(np.linalg.norm(mv-reference)/np.linalg.norm(mv)),maximumLoadErrorMicroampPerSlew=float(abs(rhs-expected_load).max()),loadRelativeL2=float(np.linalg.norm(rhs-expected_load)/np.linalg.norm(rhs)),relativeResidual=float(relative),loadSum=float(rhs.sum()),factorNonzeros=int(nnz),iterations=iterations,nodes=n,peakRssBytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024,seconds=time.perf_counter()-t0,method=method,preconditionerAttempts=attempts if n>=100000 else [],runtime=dict(python=platform.python_version(),numpy=np.__version__,scipy=scipy.__version__))
 json.dump(report,open(sys.argv[2],'w'),indent=2);print(json.dumps(report))
