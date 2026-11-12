@@ -1,0 +1,27 @@
+{
+  "schema": "axon-stage2-conservative-independent-validation/1",
+  "complete": true,
+  "passed": false,
+  "rows": [
+    {
+      "name": "Independent conservative field 3",
+      "pass": false,
+      "exitCode": null,
+      "error": ""
+    }
+  ],
+  "acceptance": {
+    "maximumPotentialUvPerAperS": 0.001,
+    "potentialRelativeL2": 1e-06,
+    "loadRelativeL2": 1e-08,
+    "trueResidual": 1e-09
+  },
+  "sourceHashes": {
+    "scripts/axon-interface/stage2/induction-conservative-reference.py": "ca4488f4a3677ed960a74767738217bb5b1de4c88157c1175e084573f443610f",
+    "src/lib/axon-interface/stage2/induction-conservative-load.mjs": "9e3d7506dddc11f2a5af88690ed1287118fd734e446b7220560581a0ee45c1f1",
+    "src/lib/axon-interface/stage2/induction-precision-solve.mjs": "26163d03c6b87f1802603b6afc863ef9f7cf5af1a5751de1f1ea32be2ff4a633",
+    "scripts/axon-interface/stage2/induction-conservative-independent-check.mjs": "17a82d50b903f1a843ae31bea5360a2efabe75ee171d83acd46464520a328802"
+  },
+  "sourceChanged": false,
+  "retainedCause": "Reference child terminated after stiffness assembly, before a completed field report. No numerical conclusion. Full face-coordinate arrays are replaced by topology-first cancellation to reduce peak memory."
+}

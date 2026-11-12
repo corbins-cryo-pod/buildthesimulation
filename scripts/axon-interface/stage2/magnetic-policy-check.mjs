@@ -11,7 +11,7 @@ const result=file?JSON.parse(fs.readFileSync(file)):await runProtocol({modality:
 const round=JSON.parse(JSON.stringify(result));
 const rows=[
  {name:'Current complete production fixture',pass:round.modelVersion===VERSION&&round.settings.modality==='magnetic'&&round.settings.axonCount===4&&round.settings.channelCount===1&&JSON.stringify(round.settings.amplitudes)==='[0,10,100]'},
- {name:'Finer production mesh and fixed original residual',pass:round.fieldReports.every(f=>f.fieldMethod.radialRefinement===3&&f.fieldMethod.axialRefinement===3&&f.diagnostics.relativeResidual<=1e-10&&f.diagnostics.recurrenceResidual<=2e-12)},
+ {name:'Finer production mesh and fixed original residual',pass:round.fieldReports.every(f=>f.fieldMethod.radialRefinement===4&&f.fieldMethod.axialRefinement===4&&f.diagnostics.relativeResidual<=1e-10&&f.diagnostics.recurrenceResidual<=2e-12)},
  {name:'All tested amplitudes resolve every cell without fabricated recruitment',pass:round.points.every(p=>p.matrices.assigned.length===1&&p.matrices.assigned[0].length===4&&p.matrices.assigned[0].every(x=>x===0))},
  {name:'Magnetic metrics remain conditional on the declared model',pass:round.points.every(p=>/Conditional/.test(p.metrics.headlineMeaning)&&/not an error certificate/.test(p.metrics.headlineMeaning))},
  {name:'Missing measurement loop cannot yield an artifact or total recording',pass:round.points.every(p=>p.recordings.every(r=>r.totalUv===null&&r.imposedFieldArtifactUv===null))},

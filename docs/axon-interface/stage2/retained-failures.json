@@ -94,5 +94,17 @@
     "scope": "conservative refinement 2 versus 4",
     "failure": "Relative transfer errors are 0.8357%, 3.8994%, 3.6748% and 5.3361%. The fourth exceeds the unchanged 5% limit.",
     "correction": "Factor 2 remains rejected in induction-conservative-2-to-4-failure.json. Production is actually remeshed at factor 3 and compared against factor 4, with a new independent physical reference. The change was declared in induction-resolution-correction.json before execution."
+  },
+  {
+    "id": "coupled-016",
+    "scope": "conservative factor 3 versus factor 4",
+    "failure": "Cell 2 transfer relative L2 is 5.522489595%, exceeding the unchanged 5% criterion.",
+    "correction": "All original rows retained in induction-conservative-3-to-4-failure.json. A separately predeclared axial refinement separates axial and radial contributions."
+  },
+  {
+    "id": "coupled-017",
+    "scope": "independent field-3 reference memory",
+    "failure": "The independent child terminated after physical stiffness assembly and before writing a result. No numerical conclusion.",
+    "correction": "The reference now cancels equal-conductivity internal faces by sorted incidence before allocating face coordinates. Earlier failure remains retained. All original comparison tolerances are unchanged."
   }
 ]

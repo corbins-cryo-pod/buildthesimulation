@@ -1,30 +1,33 @@
 {
-  "schema": "axon-stage2-software-checkpoint/1",
-  "recordedAt": "2026-11-12T12:46:02.178663+00:00",
+  "schema": "axon-stage2-software-checkpoint/2",
+  "modelVersion": "axon-modalities-coupled-0.4.1",
+  "recordedAt": "2026-11-12T15:10:21.428010+00:00",
+  "testedRuntimeCommit": "80c8f6ed4704e63c36e4c74e3c99b20cd7046fe4",
+  "passed": true,
   "focusedContracts": {
-    "passed": 52,
+    "passed": 60,
     "failed": 0,
-    "command": "node --test tests/axon-interface-induction-solve.mjs tests/axon-interface-stage2-contracts.mjs labs/axon-stage2/tests/components.test.mjs"
-  },
-  "siteBuild": {
-    "passed": true,
-    "command": "npm run build"
+    "commands": [
+      "node --test tests/axon-interface-stage2-contracts.mjs tests/axon-interface-induction-solve.mjs tests/axon-interface-induction-reference.mjs tests/axon-interface-spectral.mjs",
+      "node --test labs/axon-stage2/tests/components.test.mjs"
+    ],
+    "modelVersion": "axon-modalities-coupled-0.4.1"
   },
   "fullRepositoryTests": {
-    "status": "passed",
     "command": "npm test",
-    "tests": 1052,
-    "passed": 1049,
+    "tests": 1060,
+    "passed": 1057,
     "failed": 0,
     "skipped": 3,
-    "durationMs": 927985.488172
+    "durationMs": 1042829.008322,
+    "modelVersion": "axon-modalities-coupled-0.4.0",
+    "testedRuntimeCommit": "80c8f6ed4704e63c36e4c74e3c99b20cd7046fe4"
   },
-  "scientificRelease": false,
-  "github": {
-    "testedCommit": "37e36d76b276760c9df3a4afbe7685f626c5a4a9",
-    "stage2Software": "passed",
-    "astroRendering": "passed",
-    "verifySite": "running",
-    "cloudflareDeployment": "passed"
-  }
+  "siteBuild": {
+    "command": "npm run build",
+    "passed": true,
+    "modelVersion": "axon-modalities-coupled-0.4.1"
+  },
+  "scientificRelease": "Separate fixed numerical gates; software success cannot qualify a failed field.",
+  "interveningChanges": "The fixed magnetic mesh changes from 3/3 to 4/4 and the version advances. Current 60 focused checks and the complete site build pass; magnetic numerical and full-protocol checks are separate required gates. The complete repository count is retained at its actual tested snapshot."
 }

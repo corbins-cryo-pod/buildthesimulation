@@ -1,58 +1,13 @@
 {
   "schema": "axon-stage2-conservative-independent-validation/1",
   "complete": true,
-  "passed": true,
+  "passed": false,
   "rows": [
     {
-      "name": "Independent conservative field 1",
-      "schema": "axon-stage2-conservative-reference/1",
-      "maximumPotentialErrorUvPerAperS": 4.3004732305719775e-18,
-      "potentialRelativeL2": 8.8361161525104e-12,
-      "maximumLoadErrorMicroampPerSlew": 1.806163306819545e-24,
-      "loadRelativeL2": 7.221146299154098e-13,
-      "relativeResidual": 6.902180798788276e-12,
-      "loadSum": -1.2713292058907125e-16,
-      "factorNonzeros": 34589193,
-      "iterations": 0,
-      "nodes": 48590,
-      "peakRssBytes": 2452475904,
-      "seconds": 153.30014627000037,
-      "method": "SuperLU direct, symmetric minimum-degree ordering",
-      "preconditionerAttempts": [],
-      "runtime": {
-        "python": "3.12.14",
-        "numpy": "2.3.5",
-        "scipy": "1.17.0"
-      },
-      "pass": true
-    },
-    {
-      "name": "Independent conservative field 2",
-      "schema": "axon-stage2-conservative-reference/1",
-      "maximumPotentialErrorUvPerAperS": 3.560065802980323e-17,
-      "potentialRelativeL2": 1.1373444341150837e-10,
-      "maximumLoadErrorMicroampPerSlew": 1.0643689986476397e-24,
-      "loadRelativeL2": 7.196436653821604e-13,
-      "relativeResidual": 4.537825960081878e-10,
-      "loadSum": -3.4199511621289546e-18,
-      "factorNonzeros": 22745310,
-      "iterations": 3446,
-      "nodes": 212077,
-      "peakRssBytes": 1555968000,
-      "seconds": 537.7948582079998,
-      "method": "SciPy BiCGSTAB with independently built ILUT, symmetric equilibration and unit-norm algebraic RHS",
-      "preconditionerAttempts": [
-        {
-          "shift": 0,
-          "success": true
-        }
-      ],
-      "runtime": {
-        "python": "3.12.14",
-        "numpy": "2.3.5",
-        "scipy": "1.17.0"
-      },
-      "pass": true
+      "name": "Independent conservative field 3",
+      "pass": false,
+      "exitCode": null,
+      "error": ""
     }
   ],
   "acceptance": {
@@ -64,8 +19,8 @@
   "sourceHashes": {
     "scripts/axon-interface/stage2/induction-conservative-reference.py": "ca4488f4a3677ed960a74767738217bb5b1de4c88157c1175e084573f443610f",
     "src/lib/axon-interface/stage2/induction-conservative-load.mjs": "9e3d7506dddc11f2a5af88690ed1287118fd734e446b7220560581a0ee45c1f1",
-    "src/lib/axon-interface/stage2/induction-solve.mjs": "575f8516215f11091e8425e57399ba2d31c8cc6de7e9d1404f56575dd908deca",
-    "scripts/axon-interface/stage2/induction-conservative-independent-check.mjs": "a0222f89b4086eab0f2194a340a79a9250f1121ac1e293a4aa7ca2e8b7abba93"
+    "src/lib/axon-interface/stage2/induction-precision-solve.mjs": "26163d03c6b87f1802603b6afc863ef9f7cf5af1a5751de1f1ea32be2ff4a633",
+    "scripts/axon-interface/stage2/induction-conservative-independent-check.mjs": "17a82d50b903f1a843ae31bea5360a2efabe75ee171d83acd46464520a328802"
   },
   "sourceChanged": false
 }

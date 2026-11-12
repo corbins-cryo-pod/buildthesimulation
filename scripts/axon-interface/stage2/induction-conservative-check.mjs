@@ -15,7 +15,7 @@ const primary=g.cells.map(cell=>{const c=m.compartments.map(q=>[q.positionUm[0]+
 const reusedReference=process.argv.includes('--reuse-verified-reference')?JSON.parse(fs.readFileSync('docs/axon-interface/stage2/induction-fine4-precision-reference.json')):null;
 if(reusedReference){for(const [p,h] of Object.entries(reusedReference.sourceHashes)){if(crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex')!==h)throw new Error('Reference source changed: '+p);}if(!reusedReference.relocationProof.normalizedSourcesIdentical||reusedReference.solve.relativeResidual>1e-10||reusedReference.solve.recurrenceResidual>2e-12)throw new Error('Unqualified reference');}
 for(const refinement of reusedReference?[3]:[3,4]){
- console.log('Building',refinement);const model=createStage1FieldModel({...stage1FieldSettings(s,m),radialRefinement:refinement,axialRefinement:refinement},{...g,morphology:m,constructPresent:true});
+ console.log('Building',refinement);const model=createStage1FieldModel({...stage1FieldSettings(s,m),radialRefinement:refinement,axialRefinement:4},{...g,morphology:m,constructPresent:true});
  console.log('Mesh built',refinement,model.diagnostics);
  const load=conservativeInductionLoad(model,coil,{faceOrder:8,volumeRule:'tetra11'});
  console.log('Source assembled',refinement,load.diagnostics);
@@ -25,11 +25,13 @@ for(const refinement of reusedReference?[3]:[3,4]){
  fs.writeFileSync('/tmp/induction-conservative-assembled-'+refinement+'.v8',v8.serialize({model:{rowPtr,col,values,diag,boundary,diagnostics},load,sourceHashes}));
  const solver=solveInductionReference;
  const solution=solver(model,load.rhsMicroampPerSlew,{onProgress:p=>{if(p.iterations%1000===0)console.log('PCG',refinement,p);}}),transfers=g.cells.map((cell,j)=>{const high=sampleMembraneTransfer(solution,m,cell),low=solution.potentialLowMvPerUa?sampleMembraneTransfer({...solution,potentialMvPerUa:solution.potentialLowMvPerUa},m,cell):new Float64Array(high.length),scalar=Float64Array.from(high,(v,i)=>v+low[i]),p=primary[j],ref=scalar[m.somaIndex]+p[m.somaIndex];return Array.from(scalar,(v,i)=>v+p[i]-ref);});
- runs.push({refinement,transfers,assembly:load.diagnostics,solve:solution.diagnostics,arithmetic:'Production two-component solution/residual with exact axial-column block preconditioner'});console.log('Solved',refinement,load.diagnostics,solution.diagnostics.relativeResidual);
+ runs.push({refinement,axialRefinement:4,transfers,assembly:load.diagnostics,solve:solution.diagnostics,arithmetic:'Production two-component solution/residual with exact axial-column block preconditioner'});console.log('Solved',refinement,load.diagnostics,solution.diagnostics.relativeResidual);
  rows.push({name:'Current balance '+refinement,pass:Math.abs(load.diagnostics.loadSumMicroampPerSlew)<=1e-15,value:load.diagnostics.loadSumMicroampPerSlew});
  fs.writeFileSync('/tmp/induction-conservative-progress.json',JSON.stringify(runs));
 }
 if(reusedReference)runs.push(reusedReference);
 for(let j=0;j<4;j++){const a=runs[0].transfers[j],b=runs[1].transfers[j],error=Math.sqrt(a.reduce((q,x,i)=>q+(x-b[i])**2,0)/b.reduce((q,x)=>q+x*x,0));rows.push({name:'Cell '+j+' transfer refinement',relativeL2:error,pass:error<=.05});}
-const report={schema:'axon-stage2-conservative-induction-diagnostic/1',complete:true,passed:rows.every(r=>r.pass),rows,runs,sourceHashes,evidenceCollectionMode:reusedReference?'Fresh production 3; reuse of executed fine 4 with identical algorithm and physical-source hashes.':'Fresh production 3 and reference 4.',seconds:(performance.now()-started)/1000};
+const prior=JSON.parse(fs.readFileSync('docs/axon-interface/stage2/induction-conservative-3-to-4-failure.json'));
+for(let j=0;j<4;j++){const a=prior.runs[0].transfers[j],b=runs[0].transfers[j],error=Math.sqrt(a.reduce((q,x,i)=>q+(x-b[i])**2,0)/b.reduce((q,x)=>q+x*x,0));rows.push({name:'Cell '+j+' axial 3-to-4 refinement at radial 3',relativeL2:error,pass:error<=.05});}
+const report={schema:'axon-stage2-conservative-induction-diagnostic/1',complete:true,passed:rows.every(r=>r.pass),rows,runs,sourceHashes,evidenceCollectionMode:reusedReference?'Fresh production radial 3 / axial 4; reuse of executed fine 4 with identical algorithm and physical-source hashes.':'Fresh production 3/4 and reference 4/4.',seconds:(performance.now()-started)/1000};
 fs.writeFileSync('docs/axon-interface/stage2/induction-conservative-diagnostic.json',JSON.stringify(report,null,2)+'\n');console.log(rows);

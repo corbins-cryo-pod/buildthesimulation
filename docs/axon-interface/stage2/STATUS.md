@@ -5,7 +5,7 @@ The laboratory is `/simulations/biohybrid-axon-interface/stage2/`, with adjacent
 ## Implemented behavior
 
 - Every declared cell and isolated channel is resolved at every sampled amplitude. No population is screened, omitted or silently downsampled. Matched dark, regional, whole-cell and soma-only controls share the same native initial state; optical experiments also remove the opsin current while retaining light and native conductances.
-- Electrode drive uses finite source/return contacts and the inherited anisotropic conductor. Magnetic drive uses the complete closed winding, conservative interface-flux assembly and an actual radial-3/axial-3 production mesh. Its required refinement compares against radial-4/axial-4 under the unchanged 5% transfer criterion.
+- Electrode drive uses finite source/return contacts and the inherited anisotropic conductor. Magnetic drive uses the complete closed winding, conservative interface-flux assembly and an actual radial-4/axial-4 production mesh. Its required refinement compares against radial-5/axial-4 under the unchanged 5% transfer criterion.
 - H134R illumination uses finite-shell photon transport and voltage-dependent four-state kinetics inside the cable solver. Spectral experiments use separate ChR2, Chrimson and vf-Chrimson parameter sets; the fourth green construct is explicitly hypothetical. Each source is tested at each supported wavelength, with real spectral overlap and no assumed channel multiplier.
 - Whole-cell spectral conductance is distributed by soma area. Every spectral pair includes photon-exposure, expression, kinetic-rate and action-normalization sensitivity probes. Room-temperature rates, engineered expression and optical coefficients remain conditional assumptions at a 37 °C cable temperature.
 - Exclusive outputs, shared-only outputs, exact real matrix rank and isolated-input information remain separate. Duplicate exclusive rows count the same output once. Full matrices, causal traces, source-separated reciprocal recording, confinement, drive energy, replay, comparison and JSON/CSV exports remain available.
@@ -37,7 +37,7 @@ The independent NumPy/SciPy program rebuilds stiffness, source integrals and int
 
 ## Browser evidence
 
-The deployed 0.3.0 spectral worker completed the two-family fixture in 80.5 seconds. Its full export exactly matches the local browser except runtime. All discrete matrices and nonnumeric fields match Node; the maximum observed voltage difference is 2.82e-11 mV. Exposure-dependent classification correctly withholds the selectivity headline. The named pair audit and complete export were tested. WebGL was unavailable, so the same-coordinate 2D fallback was verified. Current 0.4.0 hosted verification remains a release gate.
+The deployed 0.3.0 spectral worker completed the two-family fixture in 80.5 seconds. Its full export exactly matches the local browser except runtime. All discrete matrices and nonnumeric fields match Node; the maximum observed voltage difference is 2.82e-11 mV. Exposure-dependent classification correctly withholds the selectivity headline. The named pair audit and complete export were tested. WebGL was unavailable, so the same-coordinate 2D fallback was verified. Current 0.4.1 hosted verification remains a release gate.
 
 ## Reproduction
 

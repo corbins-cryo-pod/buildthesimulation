@@ -9,6 +9,7 @@ from scipy.sparse import coo_matrix,csr_matrix,diags,eye,save_npz
 from scipy.sparse.linalg import splu,spilu,bicgstab,LinearOperator
 from numpy.polynomial.legendre import leggauss
 t0=time.perf_counter();data=json.load(open(sys.argv[1]));points=np.array(data['points']);cells=np.array(data['tetrahedra'],dtype=np.int32).reshape(-1,4);regions=np.array(data['regions']);conductivity=np.array(data['conductivityByRegion']);n=len(points)
+del data['points'],data['tetrahedra'],data['regions']
 
 def vector_potential(p,axial_only=False):
     out=np.zeros_like(p)
@@ -41,10 +42,17 @@ print('Independent stiffness/anisotropic source assembled',flush=True)
 # face flux before quadrature, including the removed insulating boundaries.
 faces=np.concatenate([np.sort(np.delete(cells,j,axis=1),axis=1) for j in range(4)]);opposite=np.concatenate([cells[:,j] for j in range(4)]);sigma=np.tile(conductivity[regions,0],4)
 order=np.lexsort((faces[:,2],faces[:,1],faces[:,0]));faces=faces[order];opposite=opposite[order];sigma=sigma[order]
-xyz=points[faces];normal=np.cross(xyz[:,1]-xyz[:,0],xyz[:,2]-xyz[:,0])/2
-normal[np.einsum('ij,ij->i',normal,points[opposite]-xyz[:,0])>0]*=-1
-starts=np.r_[0,1+np.flatnonzero(np.any(faces[1:]!=faces[:-1],axis=1))];combined=np.add.reduceat(normal*sigma[:,None],starts,axis=0);unique=faces[starts];keep=np.linalg.norm(combined,axis=1)>1e-30;combined=combined[keep];unique=unique[keep]
-del faces,opposite,sigma,order,xyz,normal
+starts=np.r_[0,1+np.flatnonzero(np.any(faces[1:]!=faces[:-1],axis=1))];ends=np.r_[starts[1:],len(faces)];counts=ends-starts
+if np.any(counts>2):raise ValueError('Nonmanifold tetrahedral face')
+# Cancel equal-conductivity pairs using incidence, before allocating physical
+# coordinates. Paired outward normals are exact opposites on a shared face.
+coefficient=sigma[starts].copy();paired=counts==2;coefficient[paired]-=sigma[ends[paired]-1];keep=coefficient!=0
+unique=faces[starts[keep]].copy();opp=opposite[starts[keep]].copy();coefficient=coefficient[keep]
+del faces,opposite,sigma,order,starts,ends,counts,paired,keep
+xyz=points[unique];normal=np.cross(xyz[:,1]-xyz[:,0],xyz[:,2]-xyz[:,0])/2
+normal[np.einsum('ij,ij->i',normal,points[opp]-xyz[:,0])>0]*=-1
+combined=normal*coefficient[:,None]
+del xyz,normal,opp,coefficient
 g,w=leggauss(8);g=(g+1)/2;w=w/2
 q=np.array([[1-u,u*(1-v),u*v] for u in g for v in g]);qw=np.array([2*u*wu*wv for u,wu in zip(g,w) for v,wv in zip(g,w)])
 for start in range(0,len(unique),512):

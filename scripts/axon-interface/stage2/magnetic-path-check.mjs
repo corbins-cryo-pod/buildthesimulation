@@ -16,8 +16,8 @@ for(const [cellIndex,cell] of geometry.cells.entries()){
   const field=new Float64Array(centers.length);for(let i=1;i<field.length;i++)field[i]=field[i-1]+1000*integrateCableLink(coil,centers[i-1],centers[i],subdivisions);
   const reference=field[morphology.somaIndex];return Array.from(field,x=>x-reference);
  });
- const transfers=fields.map(p=>p.map((x,i)=>fixture.transfers[1][cellIndex][i]+x-fields[0][i]));
+ const transfers=fields.map(p=>p.map((x,i)=>fixture.transfers[0][cellIndex][i]+x-fields[0][i]));
  for(let j=1;j<transfers.length;j++){const error=relative(transfers[j-1],transfers[j]);rows.push({name:`Cell ${cellIndex}: ${[8,16][j-1]} to ${[16,32][j-1]} subdivisions per link`,relativeL2:error,pass:error<=acceptance.inductionCableQuadratureRelativeL2});}
 }
-const report={schema:'axon-stage2-magnetic-path-validation/1',complete:true,passed:rows.every(r=>r.pass)&&JSON.stringify(before)===JSON.stringify(hashes()),rows,relativeL2Limit:acceptance.inductionCableQuadratureRelativeL2,sourceHashes:before,sourceChanged:JSON.stringify(before)!==JSON.stringify(hashes()),seconds:(performance.now()-start)/1000,fieldQualified:fixture.passed===true,scope:'Only the cable line integral is refined. The same finer tissue scalar field is held fixed. Tissue-mesh convergence is verified in its separate required study.'};
+const report={schema:'axon-stage2-magnetic-path-validation/1',complete:true,passed:rows.every(r=>r.pass)&&JSON.stringify(before)===JSON.stringify(hashes()),rows,relativeL2Limit:acceptance.inductionCableQuadratureRelativeL2,sourceHashes:before,sourceChanged:JSON.stringify(before)!==JSON.stringify(hashes()),seconds:(performance.now()-start)/1000,fieldQualified:fixture.passed===true,scope:'Only the cable line integral is refined. The same production-refinement tissue scalar field is held fixed. Tissue-mesh convergence is verified in its separate required study.'};
 fs.writeFileSync(dir+'/magnetic-path-validation.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));if(!report.passed)process.exitCode=1;
