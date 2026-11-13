@@ -2,6 +2,8 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import {DEFAULTS,normalize,budget} from '../src/lib/axon-interface/stage2/settings.mjs';
 import {createBipolarMorphology} from '../src/lib/axon-interface/bipolar.mjs';
 import {createStage1Cohort} from '../src/lib/axon-interface/identities.mjs';
+import {normalizeStage1Settings} from '../src/lib/axon-interface/stage1-settings.mjs';
+import {stage1FieldSettings} from '../src/lib/axon-interface/stage1-protocol.mjs';
 import {simulateCable as old} from '../src/lib/axon-interface/mrg.mjs';
 import {simulateCable} from '../src/lib/axon-interface/stage2/membrane.mjs';
 import {createPhotocurrent} from '../src/lib/axon-interface/stage2/photocurrent.mjs';
@@ -46,3 +48,12 @@ test('Matrix export preserves every declared sample, cell and control',()=>{
 });
 
 test('Every modality initializes inherited anatomy without leaking its field-resolution override',()=>{for(const modality of ['electrode','magnetic','optical','spectral']){const {anatomy}=normalize({modality});assert.doesNotThrow(()=>createBipolarMorphology(anatomy),modality);assert.doesNotThrow(()=>createStage1Cohort(anatomy),modality);}});
+
+test('Field qualification cohorts match the public magnetic geometry without substituting morphology',()=>{
+ for(const seed of [2048,4079]){
+  const fixture=normalizeStage1Settings({seed,axonCount:4,channelCount:1}),runtime=normalize({seed,modality:'magnetic',axonCount:4,channelCount:1}).anatomy;
+  const a=createBipolarMorphology(fixture),b=createBipolarMorphology(runtime);
+  assert.deepEqual(createStage1Cohort(fixture),createStage1Cohort(runtime));
+  assert.deepEqual(a,b);assert.deepEqual(stage1FieldSettings(fixture,a),stage1FieldSettings(runtime,b));
+ }
+});
