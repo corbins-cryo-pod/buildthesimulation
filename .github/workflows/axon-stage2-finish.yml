@@ -1,0 +1,141 @@
+name: Stage 2 completion and evidence recovery
+on:
+  push:
+    branches: [feature/axon-resolution-stage2]
+    paths: ['.github/workflows/axon-stage2-finish.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  finish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      ORIGINAL_RUN_ID: '43440643904'
+      EXPECTED_ORIGINAL_COMMIT: 99bfb0803aad7fd3e84c4421028fa8cc72af0085
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.1'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.14'
+      - name: Install the pinned environment and compile native mechanisms
+        run: |
+          npm ci
+          python -m venv "$RUNNER_TEMP/stage2-reference"
+          "$RUNNER_TEMP/stage2-reference/bin/python" -m pip install -r scripts/axon-interface/stage2/requirements.txt
+          echo "MRG_PYTHON=$RUNNER_TEMP/stage2-reference/bin/python" >> "$GITHUB_ENV"
+          for directory in scripts/axon-interface/mrg-modeldb scripts/axon-interface/stage2/mechanisms; do
+            (cd "$directory" && CC=gcc CXX=g++ "$RUNNER_TEMP/stage2-reference/bin/nrnivmodl")
+          done
+          mkdir -p docs/axon-interface/stage2/logs
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';import os from 'node:os';
+          if(os.totalmem()<9*1024**3)throw Error('Insufficient memory for unchanged production field.');
+          fs.writeFileSync('docs/axon-interface/stage2/finish-ci-runner.json',JSON.stringify({commit:process.env.GITHUB_SHA,node:process.version,cpu:os.cpus()[0]?.model,totalMemoryBytes:os.totalmem(),workflowRun:process.env.GITHUB_RUN_ID,startedAt:new Date().toISOString(),scope:'Resume interrupted studies on preserved source; no numerical criteria changed.'},null,2)+'\n');
+          JS
+      - name: Download the pinned original candidate
+        uses: actions/download-artifact@v4
+        with:
+          name: stage2-original-candidate
+          path: ${{ runner.temp }}/stage2-original-candidate
+          run-id: 43440643904
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify candidate source and physical fixture before reuse
+        run: python scripts/axon-interface/stage2/import-ci-evidence.py candidate "$RUNNER_TEMP/stage2-original-candidate"
+      - name: Repeat the interrupted positive magnetic native and spatial study
+        timeout-minutes: 30
+        run: |
+          node scripts/axon-interface/stage2/magnetic-propagation-probe.mjs > docs/axon-interface/stage2/logs/finish-magnetic-probe.log 2>&1
+          node scripts/axon-interface/stage2/magnetic-propagation-check.mjs > docs/axon-interface/stage2/logs/finish-magnetic-propagation.log 2>&1
+      - name: Wait at most two hours for the independent original-cohort workflow
+        timeout-minutes: 121
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python -u - <<'PY'
+          import json,os,time,urllib.request
+          url="https://api.github.com/repos/"+os.environ["GITHUB_REPOSITORY"]+"/actions/runs/"+os.environ["ORIGINAL_RUN_ID"]
+          deadline=time.monotonic()+7200;previous=None
+          while time.monotonic()<deadline:
+              request=urllib.request.Request(url,headers={"Authorization":"Bearer "+os.environ["GH_TOKEN"],"Accept":"application/vnd.github+json"})
+              with urllib.request.urlopen(request,timeout=30) as response:r=json.load(response)
+              assert r["head_sha"]==os.environ["EXPECTED_ORIGINAL_COMMIT"],"Original-cohort source changed"
+              state=(r["status"],r["conclusion"])
+              if state!=previous:print("Original-cohort workflow:",state,flush=True);previous=state
+              if r["status"]=="completed":
+                  assert r["conclusion"]=="success","Original-cohort workflow did not qualify"
+                  break
+              time.sleep(30)
+          else:raise SystemExit("Original-cohort workflow did not finish within the declared wait")
+          PY
+      - name: Download all original-cohort evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: stage2-original-cohort-evidence
+          path: ${{ runner.temp }}/stage2-original-complete
+          run-id: 43440643904
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify every imported file, source hash and fixed acceptance limit
+        run: python scripts/axon-interface/stage2/import-ci-evidence.py complete "$RUNNER_TEMP/stage2-original-complete"
+      - name: Complete production induction, path and magnetic membrane qualification
+        timeout-minutes: 30
+        run: |
+          node scripts/axon-interface/stage2/induction-check.mjs --collect > docs/axon-interface/stage2/logs/finish-induction.log 2>&1
+          node scripts/axon-interface/stage2/magnetic-path-check.mjs > docs/axon-interface/stage2/logs/finish-magnetic-path.log 2>&1
+          node scripts/axon-interface/stage2/magnetic-coupling-check.mjs > docs/axon-interface/stage2/logs/finish-magnetic-coupling.log 2>&1
+          node scripts/axon-interface/stage2/reproduce.mjs --collect > docs/axon-interface/stage2/logs/finish-preflight.log
+          node scripts/axon-interface/stage2/finish-ci-report.mjs capture
+      - name: Run full repository numerical and content tests
+        timeout-minutes: 35
+        shell: bash
+        run: |
+          mapfile -t tests < <(find tests -maxdepth 1 -name '*.mjs' ! -name 'tissue-mechanics-browser.mjs' | sort)
+          node --test "${tests[@]}" | tee docs/axon-interface/stage2/logs/finish-repository-tests.log
+      - name: Run the separately required mechanics browser test
+        env:
+          TISSUE_REQUIRE_BROWSER: '1'
+        run: node --test tests/tissue-mechanics-browser.mjs | tee docs/axon-interface/stage2/logs/finish-required-browser.log
+      - name: Verify Stage 2 contracts and independent component contracts
+        run: |
+          node --test tests/axon-interface-stage2-contracts.mjs tests/axon-interface-stage2-publication.mjs tests/axon-interface-induction-solve.mjs tests/axon-interface-induction-reference.mjs tests/axon-interface-spectral.mjs | tee docs/axon-interface/stage2/logs/finish-contracts.log
+          node --test labs/axon-stage2/tests/components.test.mjs | tee docs/axon-interface/stage2/logs/finish-components.log
+      - name: Build and verify the current site
+        run: |
+          npm run build | tee docs/axon-interface/stage2/logs/finish-site-build.log
+          node scripts/verify-axon-stage2-build.mjs | tee docs/axon-interface/stage2/logs/finish-build-verification.log
+      - name: Collect current software evidence and close only verified numerical gates
+        run: |
+          node scripts/axon-interface/stage2/finish-ci-report.mjs software
+          node scripts/axon-interface/stage2/reproduce.mjs --collect > docs/axon-interface/stage2/logs/finish-final-collection.log
+          node scripts/axon-interface/stage2/finish-ci-report.mjs status
+      - name: Verify the actual qualified build
+        run: |
+          npm run build > docs/axon-interface/stage2/logs/finish-qualified-build.log 2>&1
+          node scripts/verify-axon-stage2-build.mjs
+          node scripts/verify-axon-interface-build.mjs
+      - name: Preserve verified evidence on the existing branch without overwriting changes
+        run: |
+          branch=feature/axon-resolution-stage2
+          remote_head=$(git ls-remote origin "refs/heads/$branch" | cut -f1)
+          test "$remote_head" = "$GITHUB_SHA"
+          git add docs/axon-interface/stage2
+          git diff --cached --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Record independently verified Stage 2 release evidence'
+          git push origin "HEAD:refs/heads/$branch"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: stage2-completion-evidence
+          path: docs/axon-interface/stage2/
+          retention-days: 14
+          compression-level: 6

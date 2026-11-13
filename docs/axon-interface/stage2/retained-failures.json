@@ -15,12 +15,12 @@
     "id": "coupled-003",
     "scope": "finer induction mesh",
     "failure": "Original PCG residual 1.3595969434732396e-5 after 16000 iterations, fixed gate 1e-10.",
-    "correction": "Algebra corrected with symmetric equilibration and true-residual observation without breaking PCG recurrence. The finer fixture now passes 1e-10, exposing a separate 14.0\u201339.7% mesh-transfer discrepancy; the original failure report is retained."
+    "correction": "Algebra corrected with symmetric equilibration and true-residual observation without breaking PCG recurrence. The finer fixture now passes 1e-10, exposing a separate 14.0–39.7% mesh-transfer discrepancy; the original failure report is retained."
   },
   {
     "id": "coupled-004",
     "scope": "algebraic correction attempt",
-    "failure": "Reverse Cuthill\u2013McKee ordering still failed: residual 0.26948198599014733 after 16000 iterations.",
+    "failure": "Reverse Cuthill–McKee ordering still failed: residual 0.26948198599014733 after 16000 iterations.",
     "correction": "RCM remains rejected. Production preserves the original ordering and uses the separately verified equilibrated solver; physical matrix and acceptance tolerances are unchanged."
   },
   {
@@ -62,13 +62,13 @@
   {
     "id": "coupled-010",
     "scope": "conservative source, original coarse mesh",
-    "failure": "The first conservative 1\u21922 mesh attempt failed current balance (\u22121.3177e\u221214 versus 1e\u221215) and transfer refinement (11.51%, 5.19%, 10.03%, 6.18% versus 5%).",
+    "failure": "The first conservative 1→2 mesh attempt failed current balance (−1.3177e−14 versus 1e−15) and transfer refinement (11.51%, 5.19%, 10.03%, 6.18% versus 5%).",
     "correction": "Original report retained in induction-conservative-initial-failure.json. Higher-order face/volume quadrature and a genuinely finer baseline are being qualified; a different passing fixture cannot certify the old mesh."
   },
   {
     "id": "coupled-011",
     "scope": "independent finer induction solver",
-    "failure": "Initial ILUT factorization was singular. A different ordering successfully factored but BiCGSTAB returned breakdown \u221210 with a per-unit-slew RHS norm of 3.035e\u221212.",
+    "failure": "Initial ILUT factorization was singular. A different ordering successfully factored but BiCGSTAB returned breakdown −10 with a per-unit-slew RHS norm of 3.035e−12.",
     "correction": "Both failed attempts are retained. Normalizing the algebraic RHS and restoring its physical magnitude avoids BiCGSTAB breakdown. The independent physical reference then passes at both mesh sizes; it is refreshed again after the production solver correction. No stimulus, physical field, trace amplitude, timing or acceptance tolerance is fitted."
   },
   {
@@ -80,7 +80,7 @@
   {
     "id": "coupled-013",
     "scope": "finest conservative mesh algebra",
-    "failure": "The first refinement-4 solve reached the unchanged 16000-iteration cap at true residual 1.756456346689821e\u221210 versus the 1e\u221210 gate; it produced no qualified fine transfer.",
+    "failure": "The first refinement-4 solve reached the unchanged 16000-iteration cap at true residual 1.756456346689821e−10 versus the 1e−10 gate; it produced no qualified fine transfer.",
     "correction": "The full failure and coarse result are retained in induction-conservative-refinement-algebra-failure.json. Compensated residual observation and refinement from the original physical equation replace restart from the rounded equilibrated coefficients. The same physical matrix, load and acceptance limits are retained."
   },
   {
@@ -116,7 +116,7 @@
   {
     "id": "coupled-019",
     "scope": "Stage 2 integration with inherited anatomy validation",
-    "failure": "Version 0.4.1 placed the factor-4 field setting into inherited Stage 1 anatomy settings, whose UI validator admits only 1\u20133. Both the deployed worker and full protocol rejected initialization.",
+    "failure": "Version 0.4.1 placed the factor-4 field setting into inherited Stage 1 anatomy settings, whose UI validator admits only 1–3. Both the deployed worker and full protocol rejected initialization.",
     "correction": "Version 0.4.2 keeps inherited anatomy settings valid and applies factor 4 explicitly when assembling the Stage 2 field. The export reports the actual field resolution. A regression initializes all four modalities. The observed failure is retained in retained/field4-anatomy-initialization-failure.json."
   },
   {
@@ -184,5 +184,11 @@
     "scope": "Reconstructed seed-4079 axial-1 diagnostic",
     "failure": "The coarse planar-1/axial-1 field differs from axial 2 by 7.068860706% for E0002 and 14.461042555% for E0004, exceeding the unchanged 5% transfer limit.",
     "correction": "Raw fields and all four comparisons remain retained in nested-recovery-field-1-1.json and retained/nested-recovery-axial1-failure.json. The actual production candidate uses axial 2 and passes its separate axial-3 and planar-2 comparisons. The original seed-2048 study remains independently required."
+  },
+  {
+    "id": "coupled-031",
+    "scope": "13 November execution-workspace interruption",
+    "failure": "The local execution workspace became unavailable after the source-current full protocol, policy and hosted export comparison had passed. The positive magnetic study had not produced a completed report. No successful local result is inferred from its partial progress.",
+    "correction": "Completed source and evidence are preserved at f7bd528d6f035eb6428eef3095f3d2896d752984. The isolated completion workflow verifies the pinned original-cohort physical fixture and repeats the interrupted positive study, then imports independently verified field evidence and executes the remaining path/membrane/software checks."
   }
 ]
