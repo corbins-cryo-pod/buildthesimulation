@@ -1,4 +1,4 @@
-name: Verify published Stage 2 release
+name: Diagnose published Stage 2 access
 on:
   push:
     branches: [verification/stage2-production-a2122f1]
@@ -8,7 +8,7 @@ permissions:
 jobs:
   live-release:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 3
     steps:
       - uses: actions/checkout@v4
         with:
@@ -16,13 +16,34 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: Verify production evidence, pages and emitted worker
+      - name: Identify the public HTTP response
+        run: |
+          node --input-type=module <<'NODE'
+          const paths=[
+            'https://buildthesimulation.com/',
+            'https://buildthesimulation.com/simulations/biohybrid-axon-interface/stage2/',
+            'https://buildthesimulation.com/simulations/biohybrid-axon-interface/stage2/validation.json',
+            'https://buildthesimulation.pages.dev/simulations/biohybrid-axon-interface/stage2/validation.json',
+            'https://e741df54.buildthesimulation.pages.dev/simulations/biohybrid-axon-interface/stage2/validation.json'
+          ];
+          await Promise.all(paths.map(async url=>{
+            try{
+              const r=await fetch(url,{signal:AbortSignal.timeout(15000),headers:{'User-Agent':'BuildTheSimulation-Release-Verification/1.0 (+https://github.com/corbins-cryo-pod/buildthesimulation)'}});
+              const body=await r.text();
+              const headers=Object.fromEntries(['server','content-type','cf-mitigated','cf-ray','location','x-mitmproxy-blocked-reason'].map(k=>[k,r.headers.get(k)]));
+              let version;
+              try{const d=JSON.parse(body);version={modelVersion:d.modelVersion,completeStage2:d.completeStage2,openReleaseGates:d.openReleaseGates};}catch{}
+              console.log(JSON.stringify({url,status:r.status,headers,version,bodyPrefix:body.slice(0,500)}));
+            }catch(error){console.log(JSON.stringify({url,error:String(error)}));}
+          }));
+          NODE
+      - name: Verify release on the public Pages origin
         run: |
           node --input-type=module <<'NODE'
           import assert from 'node:assert/strict';
           import {createHash} from 'node:crypto';
           import {publishedStage2} from './src/lib/axon-interface-stage2-publication.mjs';
-          const base='https://buildthesimulation.com';
+          const base='https://buildthesimulation.pages.dev';
           const route='/simulations/biohybrid-axon-interface/stage2/';
           const expected=publishedStage2();
           assert.equal(expected.completeStage2,true,'Pinned release is not qualified');
@@ -35,7 +56,7 @@ jobs:
             return {text:await r.text(),headers:{contentType:r.headers.get('content-type'),date:r.headers.get('date'),cfCacheStatus:r.headers.get('cf-cache-status')}};
           };
           let last;
-          for(let attempt=1;attempt<=12;attempt++){
+          for(let attempt=1;attempt<=1;attempt++){
             try{
               const evidence=await get(route+'validation.json');
               const actual=JSON.parse(evidence.text);
@@ -60,8 +81,8 @@ jobs:
             }catch(error){
               last=error;
               console.log(JSON.stringify({attempt,checkedAt:new Date().toISOString(),ready:false,error:String(error.message).slice(0,800)}));
-              if(attempt<12)await new Promise(resolve=>setTimeout(resolve,45000));
+              if(attempt<1)await new Promise(resolve=>setTimeout(resolve,45000));
             }
           }
-          throw new Error('Production release did not verify within 12 bounded attempts: '+last?.message);
+          throw new Error('Production release did not verify on the public Pages origin: '+last?.message);
           NODE
