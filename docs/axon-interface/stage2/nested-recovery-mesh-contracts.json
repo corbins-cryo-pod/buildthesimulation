@@ -1,0 +1,44 @@
+{
+  "schema": "axon-stage2-nested-recovery-mesh-contracts/1",
+  "complete": true,
+  "passed": true,
+  "rows": [
+    {
+      "name": "Unrefined generated matrix equals immutable Stage 1 matrix",
+      "pass": true
+    },
+    {
+      "name": "Subdivision preserves finite contact area",
+      "pass": true,
+      "maximumRelativeError": 1.9781162089882512e-16
+    },
+    {
+      "name": "Every finite contact facet borders exactly one conducting element",
+      "pass": true,
+      "facets": 128
+    },
+    {
+      "name": "Finite contact loads conserve unit current",
+      "pass": true
+    },
+    {
+      "name": "Membrane projection reproduces affine potential",
+      "pass": true,
+      "maximumAbsoluteErrorMv": 2.6645352591003757e-15
+    },
+    {
+      "name": "Membrane projections conserve source",
+      "pass": true
+    },
+    {
+      "name": "Refined grounded outer boundary remains explicit",
+      "pass": true
+    }
+  ],
+  "sourceHashes": {
+    "scripts/axon-interface/stage2/generate-nested-field.py": "384e04df20f4c03e2f6d9324e9a882e41039b7adaced0501775120b8850f2e07",
+    "scripts/axon-interface/stage2/nested-mesh-contract-check.mjs": "c56e2678d63ead4168fffb18c877cf60bdf71a6f9ce2a2632b7c2cee8a46ea4c",
+    "src/lib/axon-interface/field-stage1.mjs": "dd60139ae3bff6673e3b1bb7d0361694d41715f53de70207c9fa069c2cc34653",
+    "src/lib/axon-interface/stage2/nested-field.mjs": "43a705fcd0c6d4bd2cee3a7a9389c7cfb58001bc74acc07583c061091076cdd2"
+  }
+}

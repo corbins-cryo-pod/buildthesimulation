@@ -1,0 +1,10 @@
+{
+  "schema": "axon-stage2-retained-setup-failure/1",
+  "observedOn": "2026-11-13",
+  "script": "scripts/axon-interface/stage2/nested-mesh-contract-check.mjs",
+  "failure": "axonCount must be an integer between 4 and 256 cells.",
+  "attemptedInput": {"axonCount": 1, "channelCount": 1},
+  "cause": "The reconstructed mesh-contract fixture requested a census below the existing normalization limit.",
+  "correction": "Run the same geometric contracts on the supported four-cell cohort. No normalization limit, geometric tolerance or scientific acceptance was changed.",
+  "scientificConclusion": "None; the unsupported setup failed before mesh assembly."
+}

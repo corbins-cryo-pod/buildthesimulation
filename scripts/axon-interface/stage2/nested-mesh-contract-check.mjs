@@ -1,0 +1,25 @@
+import fs from 'node:fs';import crypto from 'node:crypto';import assert from 'node:assert/strict';
+import {normalizeStage1Settings} from '../../../src/lib/axon-interface/stage1-settings.mjs';
+import {createStage1Cohort} from '../../../src/lib/axon-interface/identities.mjs';
+import {createBipolarMorphology} from '../../../src/lib/axon-interface/bipolar.mjs';
+import {stage1FieldSettings} from '../../../src/lib/axon-interface/stage1-protocol.mjs';
+import {createStage1FieldModel as original} from '../../../src/lib/axon-interface/field-stage1.mjs';
+import {createStage1FieldModel,prepareMembraneSampling,sampleMembraneTransfer} from '../../../src/lib/axon-interface/stage2/nested-field.mjs';
+const s=normalizeStage1Settings({axonCount:4,channelCount:1}),g=createStage1Cohort(s),m=createBipolarMorphology(s),settings={...stage1FieldSettings(s,m),radialRefinement:1,axialRefinement:1},geometry={...g,morphology:m,constructPresent:true},rows=[];
+const check=(name,pass,details={})=>{rows.push({name,pass,...details});assert.ok(pass,name);};
+const baseline=original(settings,geometry),unchanged=createStage1FieldModel(settings,geometry,{planarRefinement:0}),fine=createStage1FieldModel(settings,geometry,{planarRefinement:1});
+check('Unrefined generated matrix equals immutable Stage 1 matrix',baseline.values.length===unchanged.values.length&&baseline.values.every((v,i)=>v===unchanged.values[i]));
+const areaError=Math.max(...fine.contacts.map((c,i)=>Math.abs(c.areaUm2-baseline.contacts[i].areaUm2)/baseline.contacts[i].areaUm2));
+check('Subdivision preserves finite contact area',areaError<=1e-12,{maximumRelativeError:areaError});
+const wanted=new Map(fine.contacts.flatMap(c=>c.facets.map(f=>[[...f].sort((a,b)=>a-b).join(','),0])));
+for(let i=0;i<fine.regions.length;i++){const ids=Array.from(fine.tetrahedra.subarray(4*i,4*i+4));for(let k=0;k<4;k++){const key=ids.filter((_,j)=>j!==k).sort((a,b)=>a-b).join(',');if(wanted.has(key))wanted.set(key,wanted.get(key)+1);}}
+check('Every finite contact facet borders exactly one conducting element',[...wanted.values()].every(n=>n===1),{facets:wanted.size});
+check('Finite contact loads conserve unit current',fine.contacts.every(c=>Math.abs(c.load.reduce((a,[,w])=>a+w,0)-1)<=1e-12));
+const prepared=prepareMembraneSampling(fine,m,g.cells[0]),phi=Float64Array.from(fine.points,p=>3+.2*p[0]-.07*p[1]+.003*p[2]),samples=sampleMembraneTransfer({model:fine,potentialMvPerUa:phi},m,g.cells[0],{prepared});
+const error=Math.max(...samples.map((v,i)=>Math.abs(v-(3+.2*g.cells[0].xUm-.07*g.cells[0].yUm+.003*(m.compartments[i].samplingSurface.zMinUm+m.compartments[i].samplingSurface.zMaxUm)/2))));
+check('Membrane projection reproduces affine potential',error<=1e-10,{maximumAbsoluteErrorMv:error});
+check('Membrane projections conserve source',prepared.every(entries=>Math.abs(entries.reduce((a,[,w])=>a+w,0)-1)<=1e-12));
+const outer=fine.points.filter((p,i)=>fine.boundary[i]&&Math.abs(p[2])<fine.settings.halfLengthUm);check('Refined grounded outer boundary remains explicit',outer.length>baseline.points.filter((p,i)=>baseline.boundary[i]&&Math.abs(p[2])<baseline.settings.halfLengthUm).length);
+const paths=['scripts/axon-interface/stage2/generate-nested-field.py','scripts/axon-interface/stage2/nested-mesh-contract-check.mjs','src/lib/axon-interface/field-stage1.mjs','src/lib/axon-interface/stage2/nested-field.mjs'];
+const report={schema:'axon-stage2-nested-recovery-mesh-contracts/1',complete:true,passed:rows.every(x=>x.pass),rows,sourceHashes:Object.fromEntries(paths.map(p=>[p,crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex')]))};
+fs.writeFileSync('docs/axon-interface/stage2/nested-recovery-mesh-contracts.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
