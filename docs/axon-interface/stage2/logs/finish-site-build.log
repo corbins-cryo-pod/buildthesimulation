@@ -1,0 +1,871 @@
+
+> celestial-cluster@0.0.1 build
+> astro build && node scripts/export-device-models.mjs && node scripts/render-device-previews.mjs
+
+[2m15:56:25[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+[2m15:56:25[22m [34m[content][39m Syncing content
+[2m15:56:29[22m [34m[content][39m Synced content
+[2m15:56:29[22m [34m[types][39m Generated [2m4.20s[22m
+[2m15:56:29[22m [34m[build][39m output: [34m"static"[39m
+[2m15:56:29[22m [34m[build][39m mode: [34m"static"[39m
+[2m15:56:29[22m [34m[build][39m directory: [34m/home/runner/work/buildthesimulation/buildthesimulation/dist/[39m
+[2m15:56:29[22m [34m[build][39m Collecting build info...
+[2m15:56:29[22m [34m[build][39m [32m✓ Completed in 4.23s.[39m
+[2m15:56:29[22m [34m[build][39m Building static entrypoints...
+[2m15:56:39[22m [34m[vite][39m [32m✓ built in 9.91s[39m
+[2m15:56:39[22m [34m[build][39m [32m✓ Completed in 9.94s.[39m
+
+[42m[30m building client (vite) [39m[49m
+[2m15:56:39[22m [34m[vite][39m transforming...
+[2m15:56:47[22m [34m[vite][39m [32m✓[39m 311 modules transformed.
+[2m15:56:47[22m [34m[vite][39m rendering chunks...
+[2m15:56:48[22m [34m[vite][39m computing gzip size...
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mlayers.BWBAp2CZ.png                                                           [39m[1m[2m    0.70 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mgallery-worker-ocbJC-SN.js                                                    [39m[1m[2m    1.12 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mlayers-2x.Bpkbi35X.png                                                        [39m[1m[2m    1.26 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mmarker-icon.hN30_KVU.png                                                      [39m[1m[2m    1.47 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32manatomy-worker-DzoAzSPC.js                                                    [39m[1m[2m    5.20 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mworker-DypkNi65.js                                                            [39m[1m[2m   13.90 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mworker-DU8Xvah0.js                                                            [39m[1m[2m   14.75 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mworker-DaIAs6XI.js                                                            [39m[1m[2m   18.11 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mworker-DxwXbjW_.js                                                            [39m[1m[2m   19.46 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mworker-BQpw-AFs.js                                                            [39m[1m[2m   20.91 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mworker-BEpgjTWG.js                                                            [39m[1m[2m   25.09 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mprotocol-worker-Cby85uPp.js                                                   [39m[1m[2m   27.69 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mworker-D7WSKsek.js                                                            [39m[1m[2m   31.47 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mworker-tQhaG4si.js                                                            [39m[1m[2m   32.11 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mworker-B_stDsRm.js                                                            [39m[1m[2m   33.16 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mworker-BvIYTP_y.js                                                            [39m[1m[2m   83.15 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mworker-BFW_lqya.js                                                            [39m[1m[2m  104.98 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mworker-BPv-96U7.js                                                            [39m[1m[2m  182.17 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mworker-CXxDt36l.js                                                            [39m[1m[2m  205.80 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32minterface-worker-BuWwdOYs.js                                                  [39m[1m[2m2,574.92 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mfinite-worker-BeWsaQmi.js                                                     [39m[1m[2m2,658.59 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[32mworker-CDyaeaKR.js                                                            [39m[1m[2m2,666.30 kB[22m[1m[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mNeuropixelsEngineering.astro_astro_type_script_index_0_lang.BNSs8-S6.js       [39m[1m[2m    0.18 kB[22m[1m[22m[2m │ gzip:   0.16 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mCorticalStimulationLab.MwVuov_E.js                                            [39m[1m[2m    0.23 kB[22m[1m[22m[2m │ gzip:   0.18 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mDeviceModelViewer.DvS7x8X6.js                                                 [39m[1m[2m    0.26 kB[22m[1m[22m[2m │ gzip:   0.19 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mfinite-contact.astro_astro_type_script_index_0_lang.D3Eqi5mv.js               [39m[1m[2m    0.29 kB[22m[1m[22m[2m │ gzip:   0.21 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mUnifiedRetinaLaboratory.DyZzr_an.js                                           [39m[1m[2m    0.33 kB[22m[1m[22m[2m │ gzip:   0.21 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mBiohybridLaboratory.Be-JMq-F.js                                               [39m[1m[2m    0.37 kB[22m[1m[22m[2m │ gzip:   0.21 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mCortexLaboratory.BLhD_8Dg.js                                                  [39m[1m[2m    0.37 kB[22m[1m[22m[2m │ gzip:   0.24 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mjsxRuntime.module.BSCWCfwz.js                                                 [39m[1m[2m    0.42 kB[22m[1m[22m[2m │ gzip:   0.30 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mmodels.astro_astro_type_script_index_0_lang.CZsSQEy6.js                       [39m[1m[2m    0.43 kB[22m[1m[22m[2m │ gzip:   0.28 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mcatalog-csv._edG1kyV.js                                                       [39m[1m[2m    0.48 kB[22m[1m[22m[2m │ gzip:   0.36 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mReviewedGrowthLab.astro_astro_type_script_index_0_lang.CG9vWQxV.js            [39m[1m[2m    0.50 kB[22m[1m[22m[2m │ gzip:   0.26 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mindex.astro_astro_type_script_index_0_lang.D1m9Q6K5.js                        [39m[1m[2m    0.51 kB[22m[1m[22m[2m │ gzip:   0.32 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mCompanyBrief.astro_astro_type_script_index_0_lang.DNceVsqY.js                 [39m[1m[2m    0.56 kB[22m[1m[22m[2m │ gzip:   0.36 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mCompanyBrief.astro_astro_type_script_index_1_lang.DEaqHsin.js                 [39m[1m[2m    0.61 kB[22m[1m[22m[2m │ gzip:   0.39 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mDevicePhotograph.astro_astro_type_script_index_0_lang.JyPsDWru.js             [39m[1m[2m    0.66 kB[22m[1m[22m[2m │ gzip:   0.39 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mDevicePhotoGallery.astro_astro_type_script_index_0_lang.pBgGrxGx.js           [39m[1m[2m    0.68 kB[22m[1m[22m[2m │ gzip:   0.40 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mSimHero.Cp1wfWrL.js                                                           [39m[1m[2m    1.04 kB[22m[1m[22m[2m │ gzip:   0.47 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mpreload-helper.BlTxHScW.js                                                    [39m[1m[2m    1.11 kB[22m[1m[22m[2m │ gzip:   0.65 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mclient.xYLaPe9S.js                                                            [39m[1m[2m    1.25 kB[22m[1m[22m[2m │ gzip:   0.72 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mreferences.astro_astro_type_script_index_0_lang.Crk2rhyS.js                   [39m[1m[2m    1.30 kB[22m[1m[22m[2m │ gzip:   0.56 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mFingerAtlasPage.astro_astro_type_script_index_0_lang.rZTWY3rb.js              [39m[1m[2m    1.58 kB[22m[1m[22m[2m │ gzip:   0.84 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mindex.astro_astro_type_script_index_0_lang.BstRdLft.js                        [39m[1m[2m    1.78 kB[22m[1m[22m[2m │ gzip:   0.77 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mRoomEnvironment.C4tbK1oW.js                                                   [39m[1m[2m    2.10 kB[22m[1m[22m[2m │ gzip:   0.90 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mhooks.module.DoeyybfT.js                                                      [39m[1m[2m    3.02 kB[22m[1m[22m[2m │ gzip:   1.30 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mfflate.module.C8a6xEvh.js                                                     [39m[1m[2m    4.25 kB[22m[1m[22m[2m │ gzip:   2.24 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mactive-channels.BrxJEXRc.js                                                   [39m[1m[2m    4.57 kB[22m[1m[22m[2m │ gzip:   2.11 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mBufferGeometryUtils.BSQxKYXg.js                                               [39m[1m[2m    4.90 kB[22m[1m[22m[2m │ gzip:   1.49 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mSiteSearch.BjXf5NDn.js                                                        [39m[1m[2m    5.44 kB[22m[1m[22m[2m │ gzip:   2.44 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mCortexWorkspace.COM3IJiG.js                                                   [39m[1m[2m    5.57 kB[22m[1m[22m[2m │ gzip:   2.33 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mfields.astro_astro_type_script_index_0_lang.DVKFNCUW.js                       [39m[1m[2m    5.73 kB[22m[1m[22m[2m │ gzip:   2.78 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mmodel-registry.BxGX_Fyo.js                                                    [39m[1m[2m    6.38 kB[22m[1m[22m[2m │ gzip:   1.94 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mMembraneExplorer.BB0ehVo7.js                                                  [39m[1m[2m    6.59 kB[22m[1m[22m[2m │ gzip:   2.69 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36msignals.module.hbgQOVSI.js                                                    [39m[1m[2m    7.52 kB[22m[1m[22m[2m │ gzip:   2.87 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mview.Ce0_InU6.js                                                              [39m[1m[2m    9.92 kB[22m[1m[22m[2m │ gzip:   4.73 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mRealRecordingExplorer.Cy9vwJ8Y.js                                             [39m[1m[2m   10.10 kB[22m[1m[22m[2m │ gzip:   4.22 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mpreact.module.IsPPbktY.js                                                     [39m[1m[2m   10.45 kB[22m[1m[22m[2m │ gzip:   4.45 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mCableExplorer.BcIEulkJ.js                                                     [39m[1m[2m   10.73 kB[22m[1m[22m[2m │ gzip:   4.42 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mNeuropixelsExplorer.Cg9XiyRy.js                                               [39m[1m[2m   11.42 kB[22m[1m[22m[2m │ gzip:   4.83 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mscene.Cm-onALU.js                                                             [39m[1m[2m   11.46 kB[22m[1m[22m[2m │ gzip:   5.34 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36minterface-scene.CzH_1077.js                                                   [39m[1m[2m   11.68 kB[22m[1m[22m[2m │ gzip:   5.49 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mHandwritingDecoder.Bd2ZFiz7.js                                                [39m[1m[2m   11.79 kB[22m[1m[22m[2m │ gzip:   5.03 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mCurrentClampExplorer.Cfb6mQIo.js                                              [39m[1m[2m   13.24 kB[22m[1m[22m[2m │ gzip:   5.70 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mscene.B7QSYEcM.js                                                             [39m[1m[2m   15.02 kB[22m[1m[22m[2m │ gzip:   6.28 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mscene.By5kc_yw.js                                                             [39m[1m[2m   15.24 kB[22m[1m[22m[2m │ gzip:   6.57 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mgeometry.DgceILFC.js                                                          [39m[1m[2m   15.62 kB[22m[1m[22m[2m │ gzip:   5.62 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mmodel.NKkTx7Ps.js                                                             [39m[1m[2m   15.79 kB[22m[1m[22m[2m │ gzip:   6.62 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mSVGRenderer.B6giv2B-.js                                                       [39m[1m[2m   16.46 kB[22m[1m[22m[2m │ gzip:   5.74 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mAtlasExplorer.CnzASsWq.js                                                     [39m[1m[2m   18.88 kB[22m[1m[22m[2m │ gzip:   7.06 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mOrbitControls.BFDlzJj-.js                                                     [39m[1m[2m   19.24 kB[22m[1m[22m[2m │ gzip:   4.37 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36msim.astro_astro_type_script_index_0_lang.Dc8iIcEO.js                          [39m[1m[2m   20.90 kB[22m[1m[22m[2m │ gzip:   7.91 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mDeviceModelViewer.Bw1h0mo_.js                                                 [39m[1m[2m   22.21 kB[22m[1m[22m[2m │ gzip:   7.99 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mRecordingLibrary.DSQTYJXc.js                                                  [39m[1m[2m   22.82 kB[22m[1m[22m[2m │ gzip:   8.12 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mfinite-ui.7VchqEi3.js                                                         [39m[1m[2m   23.24 kB[22m[1m[22m[2m │ gzip:   9.95 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mTissueMechanicsLaboratory.astro_astro_type_script_index_0_lang.DJW4_WvW.js    [39m[1m[2m   24.17 kB[22m[1m[22m[2m │ gzip:  10.65 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mDevicesDirectory.BEXzjgEN.js                                                  [39m[1m[2m   24.48 kB[22m[1m[22m[2m │ gzip:   8.43 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mMicrofabricationLaboratory._2n2m--K.js                                        [39m[1m[2m   26.45 kB[22m[1m[22m[2m │ gzip:   9.91 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mAxonStage2Laboratory.C5kBPQOv.js                                              [39m[1m[2m   27.31 kB[22m[1m[22m[2m │ gzip:   9.29 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mscene.DlZBd_Xj.js                                                             [39m[1m[2m   27.96 kB[22m[1m[22m[2m │ gzip:  12.21 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mviewer.Bx99Kfyb.js                                                            [39m[1m[2m   31.93 kB[22m[1m[22m[2m │ gzip:  13.14 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mNerveRegenerationLaboratory.astro_astro_type_script_index_0_lang.Meov3DsR.js  [39m[1m[2m   36.22 kB[22m[1m[22m[2m │ gzip:  13.72 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mNeuralInterfaceStudio.DqmI7W0y.js                                             [39m[1m[2m   37.73 kB[22m[1m[22m[2m │ gzip:  13.54 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mCorticalStimulationLab.BFPfz1AN.js                                            [39m[1m[2m   41.12 kB[22m[1m[22m[2m │ gzip:  14.99 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mviewer.OSq-Yl1n.js                                                            [39m[1m[2m   42.36 kB[22m[1m[22m[2m │ gzip:  16.00 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mNeuralInterfaceDesigner.Bq5jIwcG.js                                           [39m[1m[2m   42.96 kB[22m[1m[22m[2m │ gzip:  15.44 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mGLTFLoader.N-nDSj15.js                                                        [39m[1m[2m   43.97 kB[22m[1m[22m[2m │ gzip:  12.96 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mAxonInterfaceLaboratory.C-EXj2Kq.js                                           [39m[1m[2m   47.83 kB[22m[1m[22m[2m │ gzip:  15.99 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36midentities.CCT-1vsF.js                                                        [39m[1m[2m   48.26 kB[22m[1m[22m[2m │ gzip:  16.94 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mRpniDesignLaboratory.astro_astro_type_script_index_0_lang.BOBhrIr3.js         [39m[1m[2m   57.86 kB[22m[1m[22m[2m │ gzip:  21.28 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mCortexInterfaceLaboratory.C9066ab9.js                                         [39m[1m[2m   64.63 kB[22m[1m[22m[2m │ gzip:  23.00 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mUnifiedRetinaLaboratory.uSPP3iZx.js                                           [39m[1m[2m   67.86 kB[22m[1m[22m[2m │ gzip:  22.73 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mcatalog.dZfplrab.js                                                           [39m[1m[2m   83.55 kB[22m[1m[22m[2m │ gzip:  25.61 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mCellGrowthLaboratory.BAqWiZGK.js                                              [39m[1m[2m   93.91 kB[22m[1m[22m[2m │ gzip:  32.16 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mBiohybridLaboratory.EhNVI7BT.js                                               [39m[1m[2m  102.27 kB[22m[1m[22m[2m │ gzip:  34.83 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mCortexLaboratory.DsUW1ByG.js                                                  [39m[1m[2m  119.36 kB[22m[1m[22m[2m │ gzip:  39.97 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mleaflet-src.CzM8vlq-.js                                                       [39m[1m[2m  150.12 kB[22m[1m[22m[2m │ gzip:  43.59 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mCochlearLaboratory.CVd351lh.js                                                [39m[1m[2m  211.35 kB[22m[1m[22m[2m │ gzip:  80.03 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mviewer.astro_astro_type_script_index_0_lang.Cvw-lbnJ.js                       [39m[1m[2m  308.44 kB[22m[1m[22m[2m │ gzip:  82.24 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mthree.module.Cdgdr6RF.js                                                      [39m[1m[2m  351.43 kB[22m[1m[22m[2m │ gzip:  88.15 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mthree.core.BaqhjvoA.js                                                        [39m[1m[2m  375.41 kB[22m[1m[22m[2m │ gzip: 102.52 kB[22m
+[2m15:56:48[22m [34m[vite][39m [2mdist/[22m[2m_astro/[22m[36mactive-morphology.DbE00gCe.js                                                 [39m[1m[33m2,571.34 kB[39m[22m[2m │ gzip: 768.20 kB[22m
+[33m[1m15:56:48[22m [WARN] [vite][39m [33m
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+[2m15:56:48[22m [34m[vite][39m [32m✓ built in 8.75s[39m
+
+[42m[30m generating static routes [39m[49m
+[2m15:56:48[22m [32m▶[39m src/pages/applications/[slug].astro
+[2m15:56:48[22m   [34m├─[39m [2m/applications/101-microseeg-acute-human-cortical-recording-2024/index.html[22m [2m(+18ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/103-neurotassel-mouse-learning-chronic-recording-2019/index.html[22m [2m(+7ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/108-neuropixels-opto-mouse-optotagging-2026/index.html[22m [2m(+7ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/105-neuropixels-quad-base-mouse-sequences-2026/index.html[22m [2m(+10ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/110-chime-acute-mouse-olfactory-bulb-2020/index.html[22m [2m(+7ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/112-stimdust-acute-rat-sciatic-stimulation-2020/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/114-mebit-rat-pig-nerve-stimulation-2022/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/116-magnetoelectric-network-pig-spinal-stimulation-2025/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/118-dot-acute-human-motor-stimulation-2024/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/119-dot-chronic-pig-cortical-stimulation-2024/index.html[22m [2m(+11ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/121-endocisternal-sheep-stimulation-recording-study/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/123-mnm-rat-reflex-severed-nerve-study/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/125-puf-me-hydra-rat-stimulation-study/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/127-magni-hydra-muscle-stimulation-2020/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/131-singer-mfb-rat-place-preference-2020/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/130-singer-stn-parkinsonian-rat-rotation-2020/index.html[22m [2m(+7ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/133-mend-vta-reward-and-photometry-2024/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/134-mend-stn-mouse-rotation-2024/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/136-mote-mouse-cortical-recording-2025/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/138-scope-mouse-bidirectional-optical-tests/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/141-neuropixels-opto-cortical-activation-inhibition/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/139-scope-macaque-reach-speed-decoding/index.html[22m [2m(+7ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/142-neuropixels-opto-parallel-optotagging/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/145-mit-fiber-mouse-recording-optogenetics-2015/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/147-mit-fiber-projection-mapping-mouse-2017/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/148-zju-first-chinese-human-utah-array-robotic-arm-2020/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/149-zju-chinese-handwriting-trajectory-decoding-2025/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/150-ufine-human-intraoperative-single-neuron-recording-2026/index.html[22m [2m(+7ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/151-jiangsu-cervical-sci-epidural-stimulation-protocol/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/152-uc-davis-speech-neuroprosthesis-als-2024/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/153-utrecht-fully-implanted-ecog-bci-als-2016/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/154-completely-locked-in-als-intracortical-speller-2022/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/155-cwru-ibci-controlled-fes-reach-grasp-2017/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/156-caltech-internal-speech-smg-single-neurons-2024/index.html[22m [2m(+7ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/157-patterned-icms-tactile-edges-motion-2025/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/158-bci-neural-constraints-on-learning-macaque-2014/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/159-intrecom-fully-implantable-communication-bci-study/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/160-bridge-neurotech-first-human-fusi-study/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/161-ceregate-freezing-of-gait-software-clinical-investigation/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/162-cortec-brain-interchange-first-in-human-stroke-study/index.html[22m [2m(+6ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/164-upenn-living-electrodes-axonal-tract-modulation-2021/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/163-uf-ibrain-meg-imagined-spoken-phrase-decoding-2020/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/165-utah-cortical-visual-prosthesis-96-channel-2021/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/167-optogenetic-living-electrodes-synaptic-bmi-2020/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/166-upenn-micro-tenn-brain-transplant-2016/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/169-inbrain-graphene-fih-brain-mapping/index.html[22m [2m(+7ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/168-beinao-1-gcp-registration-trial-2026/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/170-neuroxess-256-ecog-mandarin-speech-decoding-2025/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/171-science-primavera-ga-pivotal-study/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/172-mindtrix-cortical-visual-reconstruction-iit-2025/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/173-axoft-finesse-fih-soft-probe-2025/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/174-wimagine-clinatec-exoskeleton-trial/index.html[22m [2m(+7ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/175-cortigent-orion-early-feasibility-study/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/176-onward-empower-bp-arc-im-pivotal/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/177-neo-neuracle-tetraplegia-registration-trial/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/178-motif-xcs-trd-early-feasibility-study/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/179-stairmed-wrs-early-human-trials/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/180-neuroxess-triple-f-registration-trial/index.html[22m [2m(+7ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/181-ucsf-ecog-speech-neuroprosthesis-study/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/182-shenfu-jianxing-brain-spine-interface-study/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/183-nankai-rongyuan-interventional-bci-first-in-human/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/184-nurotron-wh-01a-abi-nf2-phase-iii/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/185-neuropace-rns-pivotal-trial-nine-year-follow-up/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/186-inspire-star-trial-upper-airway-stimulation/index.html[22m [2m(+6ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/187-onward-uplift-arc-ex-pivotal/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/188-saluda-evoke-ecap-closed-loop-pivotal/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/37-braingate-pilot-2006/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/189-nevro-senza-rct-hf10-pivotal/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/40-paradromics-connect-one-study/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/44-synchron-command-study/index.html[22m [2m(+6ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/46-ucsf-speech-neuroprosthesis-2023/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/47-intracortical-speech-bci-willett-2023/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/48-brain-spine-interface-lorach-2023/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/49-handwriting-bci-willett-2021/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/50-neural-robotic-arm-reach-grasp-2012/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/51-moses-speech-neuroprosthesis-anarthria-2021/index.html[22m [2m(+6ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/52-bidirectional-bci-tactile-feedback-flesher-2021/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/53-ibci-typing-pandarinath-2017/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/54-seven-dof-arm-collinger-2013/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/57-neuralink-prime-enrollment/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/62-stentrode-switch-study/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/70-utah-array-failure-analysis-barrese-2013/index.html[22m [2m(+6ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/72-precision-cortical-array-feasibility-2025/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/75-ptnrgrid-human-mapping-2022/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/78-neurochemical-probe-rat-modulation-2024/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/80-hydrogel-fiber-mouse-circuit-study-2021/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/82-neurostring-brain-gut-sensing-2022/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/84-neuropixels-ultra-animal-recordings-2025/index.html[22m [2m(+6ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/86-neuropixels-nhp-macaque-recordings-2025/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/87-neuropixels-2017-rodent-recordings-limits/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/91-flex2chip-slice-seizure-mapping-2023/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/89-neuropixels-20-chronic-tracking-2021/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/93-ufte-rodent-longitudinal-tracking-2024/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/95-argo-rat-spikes-sheep-surface-mapping-2021/index.html[22m [2m(+6ms)[22m 
+[2m15:56:48[22m   [34m├─[39m [2m/applications/97-microwire-cmos-retina-mouse-recording-2020/index.html[22m [2m(+4ms)[22m 
+[2m15:56:48[22m   [34m└─[39m [2m/applications/99-stimnet-chronic-mouse-microstimulation-2023/index.html[22m [2m(+3ms)[22m 
+[2m15:56:48[22m [32m▶[39m src/pages/applications/index.astro
+[2m15:56:48[22m   [34m└─[39m [2m/applications/index.html[22m [2m(+8ms)[22m 
+[2m15:56:48[22m [32m▶[39m src/pages/cells/index.astro
+[2m15:56:48[22m   [34m└─[39m [2m/cells/index.html[22m [31m(+1.04s)[39m 
+[2m15:56:49[22m [32m▶[39m src/pages/companies/classification.astro
+[2m15:56:49[22m   [34m└─[39m [2m/companies/classification/index.html[22m [2m(+38ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/cortex/fields.astro
+[2m15:56:50[22m   [34m└─[39m [2m/cortex/fields/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/cortex/finite-contact.astro
+[2m15:56:50[22m   [34m└─[39m [2m/cortex/finite-contact/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/cortex/interface/methods.astro
+[2m15:56:50[22m   [34m└─[39m [2m/cortex/interface/methods/index.html[22m [2m(+2ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/cortex/population/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/cortex/population/index.html[22m [2m(+68ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/demos/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/demos/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/designs/[slug].astro
+[2m15:56:50[22m   [34m├─[39m [2m/designs/01-utah-microelectrode-array/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/02-neuralink-n1/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/03-stentrode-synchron/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/04-neuropixels-probe/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/05-utah-slanted-electrode-array-usea/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/06-time-transverse-intrafascicular-multichannel-electrode/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/07-wimagine-cea-clinatec-epidural-wireless-ecog/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/08-neurotrophic-electrode-kennedy-cone/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/09-paradromics-connexus-acute-first-in-human/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/10-spiral-nerve-cuff-electrode-helical/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/100-microseeg-flexible-stylet-depth-electrode/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/102-neurotassel-elastocapillary-filament-arrays/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/104-neuropixels-20-quad-base-probe/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/106-neuropixels-nxt-np30-prototype/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/107-neuropixels-opto-photonic-prototype/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/111-stimdust-ultrasonic-nerve-stimulator/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/113-mebit-magnetoelectric-endovascular-stimulator/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/109-chime-glass-gold-microwire-cmos/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/115-magnetoelectric-network-spinal-stimulators-2025/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/117-dot-magnetoelectric-epidural-stimulator-2024/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/12-actigait-implantable-drop-foot-stimulator/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/120-endocisternal-catheter-me-interface/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/122-self-rectifying-magnetoelectric-metamaterial/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/124-puf-addressed-magnetoelectric-multisite-stimulator/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/126-magni-current-controlled-magnetoelectric-implant/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/128-singer-pvdf-two-film-headstage-2020/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/129-singer-pzt-fully-implanted-stimulator-2020/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/13-cwru-spiral-cuff-radial-nerve-sensory-amputees/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/132-mend-magnetoelectric-nanodiscs-2024/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/135-mote-optoelectronic-tetherless-recorder-2025/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/137-scope-subdural-cmos-optical-probe/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/14-fine-flat-interface-nerve-electrode/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/143-mit-drawn-multimodal-polymer-fiber-2015/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/144-mit-drawn-tin-multielectrode-fiber-2015/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/146-mit-graphite-polymer-multifunctional-fiber-2017/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/15-life-longitudinal-intrafascicular-electrode/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/150-neuropace-rns-system/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/151-medtronic-percept-sensight-dbs/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/152-abbott-liberta-rc-dbs/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/155-nevro-senza-hfx-iq-scs/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/153-boston-scientific-vercise-genus-dbs/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/157-livanova-vns-therapy-sentiva/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/158-inspire-upper-airway-stimulation/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/159-setpoint-vagus-nerve-stimulation-ra/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/156-saluda-evoke-closed-loop-scs/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/16-hyperflexible-regenerative-sieve-electrode-veith-2021/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/160-axonics-sacral-neuromodulation/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/161-cochlear-nucleus-implant-system/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/154-medtronic-inceptiv-closed-loop-scs/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/162-neuros-altius-hfac-nerve-block/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/163-bluewind-revi-tibial-neuromodulation/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/164-spr-sprint-percutaneous-pns/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/167-onward-arc-im-implantable-spinal-stimulation/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/165-argus-ii-retinal-prosthesis/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/168-med-el-cochlear-implant-system/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/166-cortigent-orion-visual-cortical-prosthesis/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/169-advanced-bionics-hires-ultra-3d-cochlear-implant/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/17-macro-sieve-electrode-macewan-2016/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/170-abbott-proclaim-xr-spinal-cord-stimulation/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/171-boston-scientific-wavewriter-spinal-cord-stimulation/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/172-nalu-neurostimulation-system-pns/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/173-bioness-stimrouter-pns/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/174-axoft-fleuron-ultrasoft-neural-probe/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/175-motif-dot-magnetoelectric-brain-stimulator/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/176-inbrain-graphene-cortical-interface/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/177-science-prima-subretinal-photovoltaic-implant/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/178-stairmed-wrs-ultraflexible-wireless-bci/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/179-neuroxess-flexible-ecog-256-channel-bci/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/18-microchannel-regenerative-scaffold-srinivasan-2015/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/180-neuroxess-triple-f-fully-implanted-subdural-bci/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/181-stairmed-wrs02-256-channel-wireless-bci/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/182-shenfu-jianxing-brain-spine-interface-fudan/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/183-mindtrix-cortical-visual-reconstruction-system/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/184-zhiran-ultra-100-channel-flexible-bci-leap/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/185-merf-ultraflexible-nhp-array-cebsit/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/186-simit-mosquito-mouthpart-bionic-neural-probe/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/187-simit-silk-intraventricular-interface/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/188-simit-256-channel-high-density-uecog/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/189-nankai-rongyuan-interventional-bci/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/19-teeni-rpni/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/190-nurotron-wh-01a-auditory-brainstem-implant/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/191-siat-neuroworm-movable-fibre-electrode/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/192-tsinghua-neurocam-4096-channel-tft-ecog/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/194-siat-liquid-crystal-mxene-pedot-fibre-electrode/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/193-tsinghua-sz-chip-hydrogel-ecog/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/195-cibr-umbrella-type-stretchable-electrode-array/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/196-aircas-multitransm-dopamine-electrophysiology-mea/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/197-cibr-agel-hydrogel-micro-ecog/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/198-fudan-mnis-silicon-transistor-multimodal-ecog/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/199-cibr-kirigami-microelectrode-array-ki-mea/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/20-science-biohybrid-cortical-engraftment-microwell/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/200-siat-laser-induced-graphene-multimodal-electrode/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/201-semi-cas-silicon-microneedle-array-local-deinsulation/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/202-siat-ferroelectric-bioelectronic-vagus-cuff/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/204-sinano-neuron-scale-all-hydrogel-fibre-array/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/205-sjtu-implantable-nanoscale-neural-probe-innp/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/206-sjtu-opto-electrophysiology-nanotube-probe/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/207-fudan-pedot-pss-mri-compatible-fiber-electrode/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/208-itis-33-contact-spiral-cuff/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/209-tu-delft-transfer-free-multilayer-graphene-mea/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/210-cortec-brain-interchange-closed-loop-bci/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/211-ability-neurotech-fully-implantable-communication-bci/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/21-science-biohybrid-neuronal-embedded-penetrating-probe/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/213-neuronexus-silicon-probe-array-families/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/212-bridge-neurotech-fusi-noninvasive-bci/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/214-tum-256-microelectrode-custom-bci-implant/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/215-upenn-cullen-living-electrodes-axonal-tracts/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/216-upenn-micro-tenn-living-neural-networks/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/217-innervace-tissue-engineered-nigrostriatal-pathway/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/218-axonova-tissue-engineered-nerve-graft/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/219-onward-arc-ex-transcutaneous-spinal-stimulation/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/22-neural-dust-ultrasonic-backscatter-mote/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/23-syringe-injectable-mesh-electronics/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/24-neurogrid-pedot-pss-surface-array/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/25-neurograins-wireless-microimplant-network/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/26-carbon-fiber-electrode-arrays-michigan/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/27-nanoelectronic-thread-net-probes/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/28-e-dura-electronic-dura-mater/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/29-active-matrix-flexible-ecog-array-viventi/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/30-injectable-micro-iled-optoelectronics/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/31-bioresorbable-silicon-brain-sensors/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/32-brown-implantable-wireless-neural-interface-borton/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/33-wireless-neurosensor-yin-2014/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/34-dobelle-cortical-visual-prosthesis/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/35-wise-integrated-circuit-microprobe-1970/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/41-neo-neuracle-tsinghua-epidural-bci/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/42-precision-layer-7-cortical-interface/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/43-neuralink-blindsight/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/45-beinao-1-cibr-neucyber/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/55-auditory-brainstem-implant/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/63-pmt-high-density-ecog-array-percutaneous-connector/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/64-neuroroots-independent-flexible-tendrils/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/65-active-microecog-auditory-cortex-array/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/66-sewing-machine-polymer-electrode-threads/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/67-modular-polymer-probe-recording-system/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/68-clear-transparent-graphene-microecog/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/69-ucsd-high-density-transparent-graphene-array/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/71-modular-net-high-density-arrays/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/74-ptnrgrid-platinum-nanorod-surface-arrays/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/73-bisc-wireless-subdural-cmos-array/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/76-ieeg-microdisplay-ptnr-led-array/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/77-flexible-neurochemical-recording-probe/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/79-hydrogel-hybrid-multifunctional-fiber-probe/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/81-neurostring-neurochemical-sensor/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/83-neuropixels-ultra-high-density-probe/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/85-neuropixels-10-nhp-long-shank/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/88-neuropixels-20-alpha-probe/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/90-flex2chip-cmos-flexible-interface/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/92-ultra-flexible-tentacle-electrodes/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/94-argo-microwire-cmos-recording-system/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/designs/96-stanford-microwire-cmos-bundles-2020/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m   [34m└─[39m [2m/designs/98-stimnet-ultraflexible-stimulation-thread/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/designs/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/designs/index.html[22m [2m(+0ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/devices/models.astro
+[2m15:56:50[22m   [34m└─[39m [2m/devices/models/index.html[22m [2m(+2ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/recordings/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/recordings/index.html[22m [2m(+2ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/sim.astro
+[2m15:56:50[22m   [34m└─[39m [2m/sim/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/biohybrid-axon-interface/questions.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/biohybrid-axon-interface/questions/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/biohybrid-axon-interface/stage2/questions.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/biohybrid-axon-interface/stage2/questions/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [35mλ[39m src/pages/simulations/biohybrid-axon-interface/stage2/validation.json.js
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/biohybrid-axon-interface/stage2/validation.json[22m [2m(+24ms)[22m 
+[2m15:56:50[22m [35mλ[39m src/pages/simulations/biohybrid-axon-interface/validation.json.js
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/biohybrid-axon-interface/validation.json[22m [2m(+39ms)[22m 
+[2m15:56:50[22m [35mλ[39m src/pages/simulations/cell-growth/evidence/cell-growth-cohort-validation.json.ts
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/cell-growth/evidence/cell-growth-cohort-validation.json[22m [2m(+2ms)[22m 
+[2m15:56:50[22m [35mλ[39m src/pages/simulations/cell-growth/evidence/cell-growth-connectivity-validation.json.ts
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/cell-growth/evidence/cell-growth-connectivity-validation.json[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [35mλ[39m src/pages/simulations/cell-growth/evidence/cell-growth-mechanics-validation.json.ts
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/cell-growth/evidence/cell-growth-mechanics-validation.json[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [35mλ[39m src/pages/simulations/cell-growth/evidence/cell-growth-validation.json.ts
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/cell-growth/evidence/cell-growth-validation.json[22m [2m(+2ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/cell-growth/methods.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/cell-growth/methods/index.html[22m [2m(+3ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/cellular-mechanics/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/cellular-mechanics/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/cortex-slab/guide.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/cortex-slab/guide/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/cortex-slab/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/cortex-slab/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/cortical-stimulation/guide.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/cortical-stimulation/guide/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/finger-pathway-atlas/v3/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/finger-pathway-atlas/v3/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/finger-pathway-atlas/v4/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/finger-pathway-atlas/v4/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/finger-pathway-atlas/viewer.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/finger-pathway-atlas/viewer/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/finger-pathway-atlas/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/finger-pathway-atlas/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/interface-designer/guide.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/interface-designer/guide/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/microfabrication/methods.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/microfabrication/methods/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/nerve-cross-section/guide.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/nerve-cross-section/guide/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/nerve-cross-section/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/nerve-cross-section/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/neural-interface-studio/handoff.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/neural-interface-studio/handoff/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/neural-interface-studio/methods.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/neural-interface-studio/methods/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/neural-tissue/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/neural-tissue/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/neuron-growth/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/neuron-growth/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/retinal-implant/prima/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/retinal-implant/prima/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/tissue-mechanics/methods.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/tissue-mechanics/methods/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/tissue-mechanics/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/tissue-mechanics/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/companies/[slug].astro
+[2m15:56:50[22m   [34m├─[39m [2m/companies/01-neuralink-company-brief/index.html[22m [2m(+11ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/02-synchron-company-brief/index.html[22m [2m(+6ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/03-paradromics-company-brief/index.html[22m [2m(+5ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/04-blackrock-neurotech-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/06-science-corporation-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/08-axoft-company-brief/index.html[22m [2m(+7ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/07-inbrain-neuroelectronics-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/05-precision-neuroscience-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/09-cortec-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/10-neuroxess-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/11-neucyber-beinao-1-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/12-stairmed-company-brief/index.html[22m [2m(+5ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/14-cea-clinatec-wimagine-lab-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/13-braingate-consortium-lab-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/15-technical-university-of-munich-bci-lab-brief/index.html[22m [2m(+3ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/16-university-of-utah-neural-engineering-lab-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/17-university-of-michigan-neural-engineering-lab-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/18-upenn-cullenlab-neuroengineering-lab-brief/index.html[22m [2m(+6ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/20-axogen-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/19-uflorida-neural-engineering-lab-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/21-stanford-neural-engineering-bci-ecosystem-lab-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/22-mit-neural-engineering-neurotech-ecosystem-lab-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/23-second-sight-medical-products-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/24-cortigent-company-brief/index.html[22m [2m(+6ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/25-neuronexus-technologies-company-brief/index.html[22m [2m(+3ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/26-merge-labs-company-brief/index.html[22m [2m(+3ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/27-harvard-lieber-group-lab-brief/index.html[22m [2m(+3ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/28-nyu-buzsaki-lab-lab-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/29-ucsf-chang-lab-lab-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/30-duke-viventi-lab-lab-brief/index.html[22m [2m(+6ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/31-neuracle-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/32-uc-berkeley-neural-dust-lab-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/35-ut-austin-nanoelectronic-thread-lab-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/34-epfl-neuroprosthetics-lab-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/33-brown-nurmikko-neurograins-lab-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/36-cochlear-corporation-company-brief/index.html[22m [2m(+5ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/37-livanova-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/38-pitt-rehab-neural-engineering-labs-lab-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/40-rice-ultraflexible-neural-interface-labs/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/39-jhu-apl-modular-prosthetic-limb-lab-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/42-jhu-harris-high-capacity-electrophysiology-lab/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/41-ucsd-integrated-electronics-biointerfaces-lab/index.html[22m [2m(+5ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/43-rice-magnetoelectric-bioelectronics-labs/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/44-cornell-mote-neurotechnology-collaboration/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/45-columbia-shepard-optical-and-electrical-interfaces/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/46-allen-ucl-neuropixels-opto-collaboration/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/48-rice-yang-lab/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/47-rice-xie-lab/index.html[22m [2m(+5ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/49-cornell-xu-group/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/50-ucl-carandini-lab/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/51-imec/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/52-neuropace-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/53-medtronic-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/54-abbott-company-brief/index.html[22m [2m(+6ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/55-boston-scientific-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/56-nevro-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/57-saluda-medical-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/58-inspire-medical-systems-company-brief/index.html[22m [2m(+5ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/59-setpoint-medical-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/60-axonics-company-brief/index.html[22m [2m(+6ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/61-neuros-medical-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/62-bluewind-medical-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/64-onward-medical-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/63-spr-therapeutics-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/65-med-el-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/66-advanced-bionics-company-brief/index.html[22m [2m(+5ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/67-nalu-medical-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/68-bioness-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/69-motif-neurotech-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/70-shenfu-jianxing-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/71-mindtrix-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/72-zhiran-medical-company-brief/index.html[22m [2m(+5ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/73-tianjin-rongyuan-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/74-zhejiang-norkang-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/75-fudan-university-neural-interface-groups/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/76-northwestern-rogers-research-group/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/77-hhmi-janelia-neuropixels-program/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/78-uc-davis-brandman-stavisky-group/index.html[22m [2m(+5ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/79-umc-utrecht-ramsey-group/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/80-university-of-tubingen-birbaumer-group/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/81-wyss-center-bio-and-neuroengineering/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/82-case-western-cleveland-fes-center/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/83-caltech-andersen-lab/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/84-university-of-chicago-bensmaia-lab/index.html[22m [2m(+6ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/85-carnegie-mellon-yu-and-chase-groups/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/86-radboud-donders-institute/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/87-ceregate-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/88-ability-neurotech-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/89-bridge-neurotech-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/90-coherence-neuro-company-brief/index.html[22m [2m(+5ms)[22m 
+[2m15:56:50[22m   [34m├─[39m [2m/companies/91-arbor-neuroscience-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m   [34m└─[39m [2m/companies/92-nanochap-company-brief/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/cortex/methods.astro
+[2m15:56:50[22m   [34m└─[39m [2m/cortex/methods/index.html[22m [2m(+2ms)[22m 
+[2m15:56:50[22m [35mλ[39m src/pages/search-index.json.ts
+[2m15:56:50[22m   [34m└─[39m [2m/search-index.json[22m [2m(+28ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/biohybrid-interface/questions.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/biohybrid-interface/questions/index.html[22m [2m(+2ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/finger-pathway-atlas/references.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/finger-pathway-atlas/references/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/microfabrication/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/microfabrication/index.html[22m [2m(+115ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/nerve-regeneration/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/nerve-regeneration/index.html[22m [2m(+2ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/retinal-implant/prima/methods.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/retinal-implant/prima/methods/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/rpni-design/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/rpni-design/index.html[22m [2m(+2ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/tissue-mechanics/validation.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/tissue-mechanics/validation/index.html[22m [2m(+11ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/companies/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/companies/index.html[22m [2m(+30ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/cortex/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/cortex/index.html[22m [2m(+28ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/biohybrid-axon-interface/stage2.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/biohybrid-axon-interface/stage2/index.html[22m [2m(+31ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/cochlear-implant/methods.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/cochlear-implant/methods/index.html[22m [2m(+2ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/cortical-stimulation/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/cortical-stimulation/index.html[22m [2m(+4ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/nerve-regeneration/methods.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/nerve-regeneration/methods/index.html[22m [2m(+2ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/retinal-implant/methods.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/retinal-implant/methods/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/simulations/rpni-design/methods.astro
+[2m15:56:50[22m   [34m└─[39m [2m/simulations/rpni-design/methods/index.html[22m [2m(+3ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/cortex/validation.astro
+[2m15:56:50[22m   [34m└─[39m [2m/cortex/validation/index.html[22m [2m(+1ms)[22m 
+[2m15:56:50[22m [32m▶[39m src/pages/devices/index.astro
+[2m15:56:50[22m   [34m└─[39m [2m/devices/index.html[22m [2m(+67ms)[22m 
+[2m15:56:51[22m [32m▶[39m src/pages/simulations/biohybrid-interface/methods.astro
+[2m15:56:51[22m   [34m└─[39m [2m/simulations/biohybrid-interface/methods/index.html[22m [2m(+3ms)[22m 
+[2m15:56:51[22m [32m▶[39m src/pages/index.astro
+[2m15:56:51[22m   [34m└─[39m [2m/index.html[22m [2m(+11ms)[22m 
+[2m15:56:51[22m [32m▶[39m src/pages/simulations/biohybrid-axon-interface/stage2/methods.astro
+[2m15:56:51[22m   [34m└─[39m [2m/simulations/biohybrid-axon-interface/stage2/methods/index.html[22m [2m(+17ms)[22m 
+[2m15:56:51[22m [32m▶[39m src/pages/simulations/biohybrid-axon-interface/index.astro
+[2m15:56:51[22m   [34m└─[39m [2m/simulations/biohybrid-axon-interface/index.html[22m [2m(+11ms)[22m 
+[2m15:56:51[22m [32m▶[39m src/pages/simulations/interface-designer/index.astro
+[2m15:56:51[22m   [34m└─[39m [2m/simulations/interface-designer/index.html[22m [2m(+4ms)[22m 
+[2m15:56:51[22m [32m▶[39m src/pages/simulations/biohybrid-axon-interface/methods.astro
+[2m15:56:51[22m   [34m└─[39m [2m/simulations/biohybrid-axon-interface/methods/index.html[22m [2m(+70ms)[22m 
+[2m15:56:51[22m [32m▶[39m src/pages/simulations/neural-interface-studio/index.astro
+[2m15:56:51[22m   [34m└─[39m [2m/simulations/neural-interface-studio/index.html[22m [2m(+4ms)[22m 
+[2m15:56:51[22m [32m▶[39m src/pages/devices/[slug].astro
+[2m15:56:51[22m   [34m├─[39m [2m/devices/01-utah-microelectrode-array/index.html[22m [2m(+38ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/02-neuralink-n1/index.html[22m [2m(+30ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/03-stentrode-synchron/index.html[22m [2m(+28ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/04-neuropixels-probe/index.html[22m [2m(+29ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/05-utah-slanted-electrode-array-usea/index.html[22m [2m(+26ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/06-time-transverse-intrafascicular-multichannel-electrode/index.html[22m [2m(+27ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/07-wimagine-cea-clinatec-epidural-wireless-ecog/index.html[22m [2m(+25ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/08-neurotrophic-electrode-kennedy-cone/index.html[22m [2m(+26ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/09-paradromics-connexus-acute-first-in-human/index.html[22m [2m(+26ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/10-spiral-nerve-cuff-electrode-helical/index.html[22m [2m(+34ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/100-microseeg-flexible-stylet-depth-electrode/index.html[22m [2m(+26ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/102-neurotassel-elastocapillary-filament-arrays/index.html[22m [2m(+27ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/104-neuropixels-20-quad-base-probe/index.html[22m [2m(+26ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/106-neuropixels-nxt-np30-prototype/index.html[22m [2m(+27ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/107-neuropixels-opto-photonic-prototype/index.html[22m [2m(+25ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/111-stimdust-ultrasonic-nerve-stimulator/index.html[22m [2m(+27ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/113-mebit-magnetoelectric-endovascular-stimulator/index.html[22m [2m(+25ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/109-chime-glass-gold-microwire-cmos/index.html[22m [2m(+26ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/115-magnetoelectric-network-spinal-stimulators-2025/index.html[22m [2m(+25ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/117-dot-magnetoelectric-epidural-stimulator-2024/index.html[22m [2m(+26ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/12-actigait-implantable-drop-foot-stimulator/index.html[22m [2m(+26ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/120-endocisternal-catheter-me-interface/index.html[22m [2m(+26ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/122-self-rectifying-magnetoelectric-metamaterial/index.html[22m [2m(+25ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/124-puf-addressed-magnetoelectric-multisite-stimulator/index.html[22m [2m(+26ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/126-magni-current-controlled-magnetoelectric-implant/index.html[22m [2m(+25ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/128-singer-pvdf-two-film-headstage-2020/index.html[22m [2m(+26ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/129-singer-pzt-fully-implanted-stimulator-2020/index.html[22m [2m(+25ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/13-cwru-spiral-cuff-radial-nerve-sensory-amputees/index.html[22m [2m(+26ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/132-mend-magnetoelectric-nanodiscs-2024/index.html[22m [2m(+25ms)[22m 
+[2m15:56:51[22m   [34m├─[39m [2m/devices/135-mote-optoelectronic-tetherless-recorder-2025/index.html[22m [2m(+26ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/137-scope-subdural-cmos-optical-probe/index.html[22m [2m(+25ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/14-fine-flat-interface-nerve-electrode/index.html[22m [2m(+26ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/143-mit-drawn-multimodal-polymer-fiber-2015/index.html[22m [2m(+25ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/144-mit-drawn-tin-multielectrode-fiber-2015/index.html[22m [2m(+26ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/146-mit-graphite-polymer-multifunctional-fiber-2017/index.html[22m [2m(+25ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/15-life-longitudinal-intrafascicular-electrode/index.html[22m [2m(+26ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/150-neuropace-rns-system/index.html[22m [2m(+25ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/151-medtronic-percept-sensight-dbs/index.html[22m [2m(+27ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/152-abbott-liberta-rc-dbs/index.html[22m [2m(+25ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/155-nevro-senza-hfx-iq-scs/index.html[22m [2m(+26ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/153-boston-scientific-vercise-genus-dbs/index.html[22m [2m(+25ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/157-livanova-vns-therapy-sentiva/index.html[22m [2m(+26ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/158-inspire-upper-airway-stimulation/index.html[22m [2m(+25ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/159-setpoint-vagus-nerve-stimulation-ra/index.html[22m [2m(+26ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/156-saluda-evoke-closed-loop-scs/index.html[22m [2m(+26ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/16-hyperflexible-regenerative-sieve-electrode-veith-2021/index.html[22m [2m(+28ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/160-axonics-sacral-neuromodulation/index.html[22m [2m(+25ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/161-cochlear-nucleus-implant-system/index.html[22m [2m(+27ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/154-medtronic-inceptiv-closed-loop-scs/index.html[22m [2m(+34ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/162-neuros-altius-hfac-nerve-block/index.html[22m [2m(+27ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/163-bluewind-revi-tibial-neuromodulation/index.html[22m [2m(+25ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/164-spr-sprint-percutaneous-pns/index.html[22m [2m(+26ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/167-onward-arc-im-implantable-spinal-stimulation/index.html[22m [2m(+25ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/165-argus-ii-retinal-prosthesis/index.html[22m [2m(+27ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/168-med-el-cochlear-implant-system/index.html[22m [2m(+25ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/166-cortigent-orion-visual-cortical-prosthesis/index.html[22m [2m(+26ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/169-advanced-bionics-hires-ultra-3d-cochlear-implant/index.html[22m [2m(+25ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/17-macro-sieve-electrode-macewan-2016/index.html[22m [2m(+26ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/170-abbott-proclaim-xr-spinal-cord-stimulation/index.html[22m [2m(+26ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/171-boston-scientific-wavewriter-spinal-cord-stimulation/index.html[22m [2m(+26ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/172-nalu-neurostimulation-system-pns/index.html[22m [2m(+25ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/173-bioness-stimrouter-pns/index.html[22m [2m(+26ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/174-axoft-fleuron-ultrasoft-neural-probe/index.html[22m [2m(+25ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/175-motif-dot-magnetoelectric-brain-stimulator/index.html[22m [2m(+26ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/176-inbrain-graphene-cortical-interface/index.html[22m [2m(+25ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/177-science-prima-subretinal-photovoltaic-implant/index.html[22m [2m(+26ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/178-stairmed-wrs-ultraflexible-wireless-bci/index.html[22m [2m(+25ms)[22m 
+[2m15:56:52[22m   [34m├─[39m [2m/devices/179-neuroxess-flexible-ecog-256-channel-bci/index.html[22m [2m(+27ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/18-microchannel-regenerative-scaffold-srinivasan-2015/index.html[22m [2m(+26ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/180-neuroxess-triple-f-fully-implanted-subdural-bci/index.html[22m [2m(+27ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/181-stairmed-wrs02-256-channel-wireless-bci/index.html[22m [2m(+25ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/182-shenfu-jianxing-brain-spine-interface-fudan/index.html[22m [2m(+27ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/183-mindtrix-cortical-visual-reconstruction-system/index.html[22m [2m(+26ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/184-zhiran-ultra-100-channel-flexible-bci-leap/index.html[22m [2m(+27ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/185-merf-ultraflexible-nhp-array-cebsit/index.html[22m [2m(+26ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/186-simit-mosquito-mouthpart-bionic-neural-probe/index.html[22m [2m(+26ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/187-simit-silk-intraventricular-interface/index.html[22m [2m(+25ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/188-simit-256-channel-high-density-uecog/index.html[22m [2m(+27ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/189-nankai-rongyuan-interventional-bci/index.html[22m [2m(+25ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/19-teeni-rpni/index.html[22m [2m(+26ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/190-nurotron-wh-01a-auditory-brainstem-implant/index.html[22m [2m(+25ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/191-siat-neuroworm-movable-fibre-electrode/index.html[22m [2m(+26ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/192-tsinghua-neurocam-4096-channel-tft-ecog/index.html[22m [2m(+25ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/194-siat-liquid-crystal-mxene-pedot-fibre-electrode/index.html[22m [2m(+27ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/193-tsinghua-sz-chip-hydrogel-ecog/index.html[22m [2m(+26ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/195-cibr-umbrella-type-stretchable-electrode-array/index.html[22m [2m(+27ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/196-aircas-multitransm-dopamine-electrophysiology-mea/index.html[22m [2m(+26ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/197-cibr-agel-hydrogel-micro-ecog/index.html[22m [2m(+27ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/198-fudan-mnis-silicon-transistor-multimodal-ecog/index.html[22m [2m(+26ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/199-cibr-kirigami-microelectrode-array-ki-mea/index.html[22m [2m(+27ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/20-science-biohybrid-cortical-engraftment-microwell/index.html[22m [2m(+25ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/200-siat-laser-induced-graphene-multimodal-electrode/index.html[22m [2m(+26ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/201-semi-cas-silicon-microneedle-array-local-deinsulation/index.html[22m [2m(+25ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/202-siat-ferroelectric-bioelectronic-vagus-cuff/index.html[22m [2m(+26ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/204-sinano-neuron-scale-all-hydrogel-fibre-array/index.html[22m [2m(+25ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/205-sjtu-implantable-nanoscale-neural-probe-innp/index.html[22m [2m(+27ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/206-sjtu-opto-electrophysiology-nanotube-probe/index.html[22m [2m(+26ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/207-fudan-pedot-pss-mri-compatible-fiber-electrode/index.html[22m [2m(+27ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/208-itis-33-contact-spiral-cuff/index.html[22m [2m(+26ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/209-tu-delft-transfer-free-multilayer-graphene-mea/index.html[22m [2m(+27ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/210-cortec-brain-interchange-closed-loop-bci/index.html[22m [2m(+25ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/211-ability-neurotech-fully-implantable-communication-bci/index.html[22m [2m(+27ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/21-science-biohybrid-neuronal-embedded-penetrating-probe/index.html[22m [2m(+26ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/213-neuronexus-silicon-probe-array-families/index.html[22m [2m(+28ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/212-bridge-neurotech-fusi-noninvasive-bci/index.html[22m [2m(+25ms)[22m 
+[2m15:56:53[22m   [34m├─[39m [2m/devices/214-tum-256-microelectrode-custom-bci-implant/index.html[22m [2m(+27ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/215-upenn-cullen-living-electrodes-axonal-tracts/index.html[22m [2m(+31ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/216-upenn-micro-tenn-living-neural-networks/index.html[22m [2m(+26ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/217-innervace-tissue-engineered-nigrostriatal-pathway/index.html[22m [2m(+25ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/218-axonova-tissue-engineered-nerve-graft/index.html[22m [2m(+26ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/219-onward-arc-ex-transcutaneous-spinal-stimulation/index.html[22m [2m(+25ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/22-neural-dust-ultrasonic-backscatter-mote/index.html[22m [2m(+26ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/23-syringe-injectable-mesh-electronics/index.html[22m [2m(+25ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/24-neurogrid-pedot-pss-surface-array/index.html[22m [2m(+27ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/25-neurograins-wireless-microimplant-network/index.html[22m [2m(+27ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/26-carbon-fiber-electrode-arrays-michigan/index.html[22m [2m(+27ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/27-nanoelectronic-thread-net-probes/index.html[22m [2m(+25ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/28-e-dura-electronic-dura-mater/index.html[22m [2m(+26ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/29-active-matrix-flexible-ecog-array-viventi/index.html[22m [2m(+26ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/30-injectable-micro-iled-optoelectronics/index.html[22m [2m(+27ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/31-bioresorbable-silicon-brain-sensors/index.html[22m [2m(+25ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/32-brown-implantable-wireless-neural-interface-borton/index.html[22m [2m(+36ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/33-wireless-neurosensor-yin-2014/index.html[22m [2m(+25ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/34-dobelle-cortical-visual-prosthesis/index.html[22m [2m(+26ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/35-wise-integrated-circuit-microprobe-1970/index.html[22m [2m(+25ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/41-neo-neuracle-tsinghua-epidural-bci/index.html[22m [2m(+27ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/42-precision-layer-7-cortical-interface/index.html[22m [2m(+29ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/43-neuralink-blindsight/index.html[22m [2m(+35ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/45-beinao-1-cibr-neucyber/index.html[22m [2m(+25ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/55-auditory-brainstem-implant/index.html[22m [2m(+27ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/63-pmt-high-density-ecog-array-percutaneous-connector/index.html[22m [2m(+26ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/64-neuroroots-independent-flexible-tendrils/index.html[22m [2m(+26ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/65-active-microecog-auditory-cortex-array/index.html[22m [2m(+26ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/66-sewing-machine-polymer-electrode-threads/index.html[22m [2m(+26ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/67-modular-polymer-probe-recording-system/index.html[22m [2m(+26ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/68-clear-transparent-graphene-microecog/index.html[22m [2m(+27ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/69-ucsd-high-density-transparent-graphene-array/index.html[22m [2m(+26ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/71-modular-net-high-density-arrays/index.html[22m [2m(+26ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/74-ptnrgrid-platinum-nanorod-surface-arrays/index.html[22m [2m(+25ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/73-bisc-wireless-subdural-cmos-array/index.html[22m [2m(+26ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/76-ieeg-microdisplay-ptnr-led-array/index.html[22m [2m(+26ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/77-flexible-neurochemical-recording-probe/index.html[22m [2m(+27ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/79-hydrogel-hybrid-multifunctional-fiber-probe/index.html[22m [2m(+26ms)[22m 
+[2m15:56:54[22m   [34m├─[39m [2m/devices/81-neurostring-neurochemical-sensor/index.html[22m [2m(+26ms)[22m 
+[2m15:56:55[22m   [34m├─[39m [2m/devices/83-neuropixels-ultra-high-density-probe/index.html[22m [2m(+25ms)[22m 
+[2m15:56:55[22m   [34m├─[39m [2m/devices/85-neuropixels-10-nhp-long-shank/index.html[22m [2m(+26ms)[22m 
+[2m15:56:55[22m   [34m├─[39m [2m/devices/88-neuropixels-20-alpha-probe/index.html[22m [2m(+25ms)[22m 
+[2m15:56:55[22m   [34m├─[39m [2m/devices/90-flex2chip-cmos-flexible-interface/index.html[22m [2m(+26ms)[22m 
+[2m15:56:55[22m   [34m├─[39m [2m/devices/92-ultra-flexible-tentacle-electrodes/index.html[22m [2m(+25ms)[22m 
+[2m15:56:55[22m   [34m├─[39m [2m/devices/94-argo-microwire-cmos-recording-system/index.html[22m [2m(+26ms)[22m 
+[2m15:56:55[22m   [34m├─[39m [2m/devices/96-stanford-microwire-cmos-bundles-2020/index.html[22m [2m(+25ms)[22m 
+[2m15:56:55[22m   [34m└─[39m [2m/devices/98-stimnet-ultraflexible-stimulation-thread/index.html[22m [2m(+27ms)[22m 
+[2m15:56:55[22m [32m▶[39m src/pages/cortex/interface/index.astro
+[2m15:56:55[22m   [34m└─[39m [2m/cortex/interface/index.html[22m [2m(+4ms)[22m 
+[2m15:56:55[22m [32m▶[39m src/pages/simulations/cell-growth/index.astro
+[2m15:56:55[22m   [34m└─[39m [2m/simulations/cell-growth/index.html[22m [2m(+7ms)[22m 
+[2m15:56:55[22m [32m▶[39m src/pages/simulations/cellular-electrophysiology.astro
+[2m15:56:55[22m   [34m└─[39m [2m/simulations/cellular-electrophysiology/index.html[22m [2m(+10ms)[22m 
+[2m15:56:55[22m [32m▶[39m src/pages/simulations/cochlear-implant/index.astro
+[2m15:56:55[22m   [34m└─[39m [2m/simulations/cochlear-implant/index.html[22m [2m(+15ms)[22m 
+[2m15:56:55[22m [32m▶[39m src/pages/simulations/retinal-implant/index.astro
+[2m15:56:55[22m   [34m└─[39m [2m/simulations/retinal-implant/index.html[22m [2m(+7ms)[22m 
+[2m15:56:55[22m [32m▶[39m src/pages/simulations/biohybrid-interface/index.astro
+[2m15:56:55[22m   [34m└─[39m [2m/simulations/biohybrid-interface/index.html[22m [2m(+7ms)[22m 
+[2m15:56:55[22m [32m▶[39m /biology/cable
+[2m15:56:55[22m   [34m└─[39m [2m/biology/cable/index.html[22m [2m(+1ms)[22m 
+[2m15:56:55[22m [32m▶[39m /biology/current-clamp
+[2m15:56:55[22m   [34m└─[39m [2m/biology/current-clamp/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /biology/membrane
+[2m15:56:55[22m   [34m└─[39m [2m/biology/membrane/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /biology
+[2m15:56:55[22m   [34m└─[39m [2m/biology/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /china
+[2m15:56:55[22m   [34m└─[39m [2m/china/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /companies/map
+[2m15:56:55[22m   [34m└─[39m [2m/companies/map/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/140-neuropixels-opto-prototype-2026
+[2m15:56:55[22m   [34m└─[39m [2m/devices/140-neuropixels-opto-prototype-2026/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/36-neuropixels-2-0
+[2m15:56:55[22m   [34m└─[39m [2m/devices/36-neuropixels-2-0/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/37-braingate-pilot-2006
+[2m15:56:55[22m   [34m└─[39m [2m/devices/37-braingate-pilot-2006/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/38-argus-ii-retinal-prosthesis
+[2m15:56:55[22m   [34m└─[39m [2m/devices/38-argus-ii-retinal-prosthesis/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/40-paradromics-connect-one-study
+[2m15:56:55[22m   [34m└─[39m [2m/devices/40-paradromics-connect-one-study/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/44-synchron-command-study
+[2m15:56:55[22m   [34m└─[39m [2m/devices/44-synchron-command-study/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/46-ucsf-speech-neuroprosthesis-2023
+[2m15:56:55[22m   [34m└─[39m [2m/devices/46-ucsf-speech-neuroprosthesis-2023/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/47-intracortical-speech-bci-willett-2023
+[2m15:56:55[22m   [34m└─[39m [2m/devices/47-intracortical-speech-bci-willett-2023/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/48-brain-spine-interface-lorach-2023
+[2m15:56:55[22m   [34m└─[39m [2m/devices/48-brain-spine-interface-lorach-2023/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/49-handwriting-bci-willett-2021
+[2m15:56:55[22m   [34m└─[39m [2m/devices/49-handwriting-bci-willett-2021/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/50-neural-robotic-arm-reach-grasp-2012
+[2m15:56:55[22m   [34m└─[39m [2m/devices/50-neural-robotic-arm-reach-grasp-2012/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/51-moses-speech-neuroprosthesis-anarthria-2021
+[2m15:56:55[22m   [34m└─[39m [2m/devices/51-moses-speech-neuroprosthesis-anarthria-2021/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/52-bidirectional-bci-tactile-feedback-flesher-2021
+[2m15:56:55[22m   [34m└─[39m [2m/devices/52-bidirectional-bci-tactile-feedback-flesher-2021/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/53-ibci-typing-pandarinath-2017
+[2m15:56:55[22m   [34m└─[39m [2m/devices/53-ibci-typing-pandarinath-2017/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/54-seven-dof-arm-collinger-2013
+[2m15:56:55[22m   [34m└─[39m [2m/devices/54-seven-dof-arm-collinger-2013/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/57-neuralink-prime-enrollment
+[2m15:56:55[22m   [34m└─[39m [2m/devices/57-neuralink-prime-enrollment/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/62-stentrode-switch-study
+[2m15:56:55[22m   [34m└─[39m [2m/devices/62-stentrode-switch-study/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/designer/guide
+[2m15:56:55[22m   [34m└─[39m [2m/devices/designer/guide/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /devices/designer
+[2m15:56:55[22m   [34m└─[39m [2m/devices/designer/index.html[22m [2m(+1ms)[22m 
+[2m15:56:55[22m [32m▶[39m /simulations/cable
+[2m15:56:55[22m   [34m└─[39m [2m/simulations/cable/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /simulations/current-clamp
+[2m15:56:55[22m   [34m└─[39m [2m/simulations/current-clamp/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m▶[39m /simulations/membrane
+[2m15:56:55[22m   [34m└─[39m [2m/simulations/membrane/index.html[22m [2m(+0ms)[22m 
+[2m15:56:55[22m [32m✓ Completed in 6.88s.
+[39m
+[2m15:56:55[22m [34m[build][39m 558 page(s) built in [1m29.85s[22m
+[2m15:56:55[22m [34m[build][39m [1mComplete![22m
+Exported 36 dimensioned implant GLBs and geometry JSON files.
+Rendered fine-2013-eight-contact-lumen.webp
+Rendered life-2015-dime-single-wire-window.webp
+Rendered time4h-one-side-seven-contact-window.webp
+Rendered itis-2018-single-triplet-cuff-reference.webp
+Rendered viventi-2011-360-recording-patch.webp
+Rendered simit-2025-256-recording-patch.webp
+Rendered cibr-agel-1024-bare-contact-patch.webp
+Rendered ucsd-graphene-2024-256-recording-patch.webp
+Rendered clear-rat-2016-16-recording-patch.webp
+Rendered pmt-speech-2021-128-envelope.webp
+Rendered bisc-2025-1024-dense-contact-window.webp
+Rendered sensight-b33005-contact-window.webp
+Rendered abbott-6172-contact-window.webp
+Rendered vercise-cartesia-db2202-contact-window.webp
+Rendered vectris-977a2-contact-window.webp
+Rendered nevro-lead1058-contact-window.webp
+Rendered saluda-evoke-12-contact-window.webp
+Rendered avista-sc2408-contact-window.webp
+Rendered rns-dl330-10-contact-window.webp
+Rendered neuropixels-2p0-alpha-four-shank.webp
+Rendered neuropixels-2p0-quad-base-shanks.webp
+Rendered neuropixels-nxt-four-shank-reference.webp
+Rendered neuropixels-nhp-long-np1032-shank.webp
+Rendered neuropixels-opto-electrical-window.webp
+Rendered neuropixels-ultra-dense-window.webp
+Rendered ptnrgrid-1024-recording-patch.webp
+Rendered active-microecog-196-recording-patch.webp
+Rendered neurograin-packaged-envelope.webp
+Rendered carbon-fiber-eight-fiber-row.webp
+Rendered neurogrid-256-recording-patch.webp
+Rendered connexus-421-cortical-reference.webp
+Rendered neuralink-n1-64x16-2024-reference.webp
+Rendered stentrode-16-500um-reference.webp
+Rendered utah-10x10-1p5.webp
+Rendered usea-10x10-0p5-1p5.webp
+Rendered neuropixels-1p0-shank.webp

@@ -6,210 +6,210 @@
     {
       "name": "propagating time step 0.000625 -> 0.0003125",
       "exactObservationTimestamps": true,
-      "maximumSiteRmsMv": 0.17325883090569674,
+      "maximumSiteRmsMv": 0.17288729329519187,
       "rmsPerSiteMv": [
-        0.17325883090569674,
-        0.12221190452378701,
-        0.09861822167547503,
-        0.06729391200408308,
-        0.05554859594609674,
-        0.013967248287775865,
-        0.013539560774899066,
-        0.012516857580302439,
-        0.011580578815006052,
-        0.010690199622654181,
-        0.010685181775711313,
-        0.010677535389890901,
-        0.010667455880287972,
-        0.010655171407145716,
-        0.01215926637532758,
-        0.015508751390690254,
-        0.018646654138738304,
-        0.019609674085147362,
-        0.06715404515942174,
-        0.08206611516154473,
-        0.11533491326273572,
-        0.14761323435563836,
-        0.15168143010791305
+        0.17288729329519187,
+        0.12260863725903924,
+        0.09901950890348374,
+        0.0675804574808125,
+        0.05556161718772431,
+        0.012521468084762587,
+        0.01201624779668398,
+        0.010753120906265148,
+        0.009869616214389837,
+        0.008989085229604597,
+        0.008983341688657474,
+        0.008974334358394395,
+        0.008962296011774331,
+        0.00894750379956589,
+        0.01071849566461591,
+        0.014280655389194985,
+        0.017513223943057894,
+        0.018528592719808855,
+        0.06606113265291011,
+        0.08229949517088879,
+        0.11549011253568012,
+        0.14723918790956309,
+        0.14921916591512394
       ],
       "identicalCrossingCounts": true,
       "unmatchedCrossings": 0,
-      "maximumCrossingTimeErrorMs": 0.0006695209511335953,
+      "maximumCrossingTimeErrorMs": 0.0006673614292138641,
       "pass": true,
       "spikeCount": 10
     },
     {
       "name": "propagating native NEURON",
       "exactObservationTimestamps": true,
-      "maximumSiteRmsMv": 5.006633809293759e-9,
+      "maximumSiteRmsMv": 4.954063740870216e-9,
       "rmsPerSiteMv": [
-        4.088186943498291e-9,
-        2.8877328665571536e-9,
-        1.8269735256727646e-9,
-        1.632220289468414e-9,
-        4.247034718073755e-9,
-        3.1325332303338284e-9,
-        3.4211151677175077e-9,
-        3.1875339957482516e-9,
-        2.996595515007011e-9,
-        2.9280956768851265e-9,
-        2.9278411164646016e-9,
-        2.9276960273753237e-9,
-        2.9276271439808764e-9,
-        2.927626826520415e-9,
-        2.9388761664893274e-9,
-        2.967776207087934e-9,
-        2.9895676229886943e-9,
-        2.870444641817783e-9,
-        2.9741831538356137e-9,
-        1.8525034062123516e-9,
-        3.617883318217016e-9,
-        5.006633809293759e-9,
-        4.9550240364606885e-9
+        4.097891301532804e-9,
+        2.899458901180594e-9,
+        1.83203394593311e-9,
+        1.6134993510021697e-9,
+        4.2124082678276565e-9,
+        3.0936798321669567e-9,
+        3.386732555522926e-9,
+        3.139459791200693e-9,
+        2.936704292990296e-9,
+        2.8639298542427004e-9,
+        2.8636659018532074e-9,
+        2.8635080531620037e-9,
+        2.8634277470270583e-9,
+        2.8634159406471387e-9,
+        2.873863034093926e-9,
+        2.901191284710056e-9,
+        2.9220596306951125e-9,
+        2.810326072440621e-9,
+        2.9561072895224498e-9,
+        1.828856265277159e-9,
+        3.579859644577665e-9,
+        4.954063740870216e-9,
+        4.941805766664887e-9
       ],
       "identicalCrossingCounts": true,
       "unmatchedCrossings": 0,
-      "maximumCrossingTimeErrorMs": 2.238753626926382e-11,
+      "maximumCrossingTimeErrorMs": 2.2267410137999377e-11,
       "pass": true,
       "spikeCount": 10
     },
     {
       "name": "propagating time step 0.0003125 -> 0.00015625",
       "exactObservationTimestamps": true,
-      "maximumSiteRmsMv": 0.09150412965735018,
+      "maximumSiteRmsMv": 0.09135050001951467,
       "rmsPerSiteMv": [
-        0.09150412965735018,
-        0.06051721235182071,
-        0.04898484980122914,
-        0.03370413268517658,
-        0.028450957441252544,
-        0.007382683183390702,
-        0.007195368627006093,
-        0.006695292858333558,
-        0.006202867086732159,
-        0.00583162064928032,
-        0.005829413149793151,
-        0.005826018183898887,
-        0.0058215181398270565,
-        0.005816010271973502,
-        0.006419062018158757,
-        0.008149974296945516,
-        0.009667094287268167,
-        0.010118335300928481,
-        0.03269932666305901,
-        0.04118116999567285,
-        0.05833862637394408,
-        0.07397856460225495,
-        0.0730808530619351
+        0.09135050001951467,
+        0.060700483382130965,
+        0.049197693925419485,
+        0.03383711959379508,
+        0.0284505372931852,
+        0.0065788025830765835,
+        0.0063534873533058695,
+        0.005745767066828637,
+        0.005274404184629997,
+        0.004909074365308178,
+        0.004906554604611549,
+        0.004902561442976737,
+        0.004897192945991867,
+        0.004890567127879844,
+        0.0056010726596319215,
+        0.007461676679063686,
+        0.009031224725271726,
+        0.009508952533135334,
+        0.03212854076524334,
+        0.04141092818382417,
+        0.05829869504967261,
+        0.07358785653280786,
+        0.07262900946516654
       ],
       "identicalCrossingCounts": true,
       "unmatchedCrossings": 0,
-      "maximumCrossingTimeErrorMs": 0.00033371884927657636,
+      "maximumCrossingTimeErrorMs": 0.00033278493060995284,
       "pass": true,
       "spikeCount": 10
     },
     {
       "name": "whole-cell-block time step 0.000625 -> 0.0003125",
       "exactObservationTimestamps": true,
-      "maximumSiteRmsMv": 0.04161623804299779,
+      "maximumSiteRmsMv": 0.04156325370664159,
       "rmsPerSiteMv": [
-        0.005134522963726437,
-        0.004139593183535872,
-        0.0064489861334402826,
-        0.02460347769102705,
-        0.04161623804299779,
-        0.011100796724544913,
-        0.010517324078390433,
-        0.008420166317158712,
-        0.005475540859854846,
-        0.0024928011616715804,
-        0.0024701579822168727,
-        0.002438323567491727,
-        0.002397709515762641,
-        0.0023488428422722214,
-        0.006685613302344791,
-        0.011868057223516526,
-        0.015064387958965513,
-        0.015498917863425181,
-        0.04130749780387189,
-        0.0237491451832298,
-        0.006224683697799733,
-        0.004215347572155053,
-        0.00516592561778076
+        0.005101939297750913,
+        0.004113229179087164,
+        0.0064648331053455505,
+        0.024666212815134387,
+        0.04153950834985144,
+        0.010397233122083668,
+        0.009862618585356434,
+        0.007775434896179067,
+        0.005159284903358133,
+        0.0025157127581336798,
+        0.002494166903550297,
+        0.002463050920379923,
+        0.002422776639894683,
+        0.0023738800901827116,
+        0.00672238786806009,
+        0.011711970157493777,
+        0.014781825131868489,
+        0.015218980822416907,
+        0.04156325370664159,
+        0.02399056048073027,
+        0.006304266955190254,
+        0.0042262736151119805,
+        0.005184099517227298
       ],
       "identicalCrossingCounts": true,
       "unmatchedCrossings": 0,
-      "maximumCrossingTimeErrorMs": 0.0001551379975567313,
+      "maximumCrossingTimeErrorMs": 0.00015472976244101933,
       "pass": true,
       "spikeCount": 2
     },
     {
       "name": "whole-cell-block native NEURON",
       "exactObservationTimestamps": true,
-      "maximumSiteRmsMv": 2.2951876429367075e-9,
+      "maximumSiteRmsMv": 2.308035356815366e-9,
       "rmsPerSiteMv": [
-        3.3474925336605504e-10,
-        2.638787963187262e-10,
-        2.7326028483124117e-10,
-        4.884260952921993e-10,
-        2.2905097609729467e-9,
-        2.3642953034524e-10,
-        1.670666195458743e-10,
-        8.903147041418727e-11,
-        8.589499643013283e-11,
-        8.26672503218965e-11,
-        7.893536416756412e-11,
-        7.70575749203321e-11,
-        7.580576061124539e-11,
-        7.415120446106416e-11,
-        1.1014955686658377e-10,
-        1.0921886702577855e-10,
-        9.46589679801331e-11,
-        4.209700134110842e-10,
-        2.2951876429367075e-9,
-        5.055875138255779e-10,
-        2.5780669466717134e-10,
-        2.6208538820470815e-10,
-        3.5234521608337376e-10
+        3.3344877976839596e-10,
+        2.6290557370316077e-10,
+        2.7217250417479557e-10,
+        4.872956384592696e-10,
+        2.284699178548458e-9,
+        2.4758055952082554e-10,
+        1.7453001693255885e-10,
+        9.212154112434301e-11,
+        8.376895049705699e-11,
+        8.25391506667799e-11,
+        7.910911232084805e-11,
+        7.735914595072374e-11,
+        7.590785251308359e-11,
+        7.403983064152166e-11,
+        1.1080164682821335e-10,
+        1.0830438740047024e-10,
+        9.315230605744955e-11,
+        4.0618007461378173e-10,
+        2.308035356815366e-9,
+        5.098265389503269e-10,
+        2.5859641602508716e-10,
+        2.6325060719637396e-10,
+        3.5394008890806344e-10
       ],
       "identicalCrossingCounts": true,
       "unmatchedCrossings": 0,
-      "maximumCrossingTimeErrorMs": 1.2755241307615961e-11,
+      "maximumCrossingTimeErrorMs": 1.2573941887694673e-11,
       "pass": true,
       "spikeCount": 2
     },
     {
       "name": "whole-cell-block time step 0.0003125 -> 0.00015625",
       "exactObservationTimestamps": true,
-      "maximumSiteRmsMv": 0.020414357562499225,
+      "maximumSiteRmsMv": 0.0204030722798175,
       "rmsPerSiteMv": [
-        0.002621636036938715,
-        0.0020633169320453527,
-        0.003297751091557177,
-        0.01237213139069063,
-        0.020414357562499225,
-        0.005612887487972076,
-        0.0053100709760282114,
-        0.004229052702450381,
-        0.0026543452133934164,
-        0.0012508018224261302,
-        0.0012399541507627922,
-        0.0012246141582914006,
-        0.0012049615293148754,
-        0.0011812304955275293,
-        0.0031597043274651663,
-        0.0060155598202544505,
-        0.007613759375808983,
-        0.007826192308489348,
-        0.020279674447864965,
-        0.011949400306989452,
-        0.0031732528760230203,
-        0.00210391420120624,
-        0.002635484396313187
+        0.002605488724983336,
+        0.00204983654083965,
+        0.003307567230673004,
+        0.012404804001424633,
+        0.02037168804077978,
+        0.005253147142892076,
+        0.0049721820470545915,
+        0.0039087648531902705,
+        0.0025029967600782503,
+        0.0012619320148913396,
+        0.0012516319274085011,
+        0.001236660867272434,
+        0.0012171985080887036,
+        0.0011934829978886856,
+        0.003173559866056738,
+        0.0059369085412680055,
+        0.007471143135115149,
+        0.007685219364425485,
+        0.0204030722798175,
+        0.012070541810230663,
+        0.003214892935575493,
+        0.002109080750138591,
+        0.002644967566937776
       ],
       "identicalCrossingCounts": true,
       "unmatchedCrossings": 0,
-      "maximumCrossingTimeErrorMs": 0.00007747461971197023,
+      "maximumCrossingTimeErrorMs": 0.00007676870392359092,
       "pass": true,
       "spikeCount": 2
     },
@@ -223,17 +223,17 @@
     },
     {
       "name": "central delay 5 -> 9",
-      "relative": 0.014612360494674381,
+      "relative": 0.014789215179492231,
       "pass": true
     },
     {
       "name": "peripheral delay 5 -> 9",
-      "relative": 0.01869459704992945,
+      "relative": 0.01870697856921754,
       "pass": true
     },
     {
       "name": "Reciprocal recording 5 -> 9",
-      "relative": 0.055982548872716746,
+      "relative": 0.057995276976415225,
       "pass": true
     },
     {
@@ -242,17 +242,17 @@
     },
     {
       "name": "central delay 9 -> 13",
-      "relative": 0.0065795127490770695,
+      "relative": 0.006678101773725698,
       "pass": true
     },
     {
       "name": "peripheral delay 9 -> 13",
-      "relative": 0.006996929014901379,
+      "relative": 0.0070013851203012435,
       "pass": true
     },
     {
       "name": "Reciprocal recording 9 -> 13",
-      "relative": 0.011567227308408779,
+      "relative": 0.012095904618287549,
       "pass": true
     }
   ],
@@ -266,9 +266,9 @@
       "central": {
         "recruited": true,
         "times": [
-          0.6037328271093858,
-          0.6301395558987704,
-          0.6487611848434305
+          0.6033959221438544,
+          0.6298943594779862,
+          0.6485286970306557
         ],
         "nodeOrdinals": [
           8,
@@ -282,8 +282,8 @@
         ],
         "direction": "+z",
         "segmentVelocityMps": [
-          18.93456792728524,
-          26.850497423501647
+          18.86903720756265,
+          26.83218539895835
         ],
         "diagnosticOnly": true,
         "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
@@ -291,9 +291,9 @@
       "peripheral": {
         "recruited": true,
         "times": [
-          0.533924068633649,
-          0.5574834762785621,
-          0.5751492325003285
+          0.5339606509636191,
+          0.557530590366212,
+          0.5751874022119171
         ],
         "nodeOrdinals": [
           3,
@@ -307,13 +307,13 @@
         ],
         "direction": "-z",
         "segmentVelocityMps": [
-          21.22294446176199,
-          28.30334539451754
+          21.213461411996516,
+          28.317682963905046
         ],
         "diagnosticOnly": true,
         "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
       },
-      "recordingPeakToPeakUv": 2835.8741065971008
+      "recordingPeakToPeakUv": 2766.538856351796
     },
     {
       "level": {
@@ -324,9 +324,9 @@
       "central": {
         "recruited": true,
         "times": [
-          0.6032710780204701,
-          0.6300641185616311,
-          0.6489671634276803
+          0.6029192701092472,
+          0.6298139254249385,
+          0.6487295429789498
         ],
         "nodeOrdinals": [
           8,
@@ -340,8 +340,8 @@
         ],
         "direction": "+z",
         "segmentVelocityMps": [
-          18.661562476713563,
-          26.450765130332037
+          18.591054398391105,
+          26.433184038126512
         ],
         "diagnosticOnly": true,
         "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
@@ -349,9 +349,9 @@
       "peripheral": {
         "recruited": true,
         "times": [
-          0.5344260024893887,
-          0.5584719332834096,
-          0.5764365363586055
+          0.5344632063105282,
+          0.558519865646845,
+          0.5764758878928216
         ],
         "nodeOrdinals": [
           3,
@@ -365,13 +365,13 @@
         ],
         "direction": "-z",
         "segmentVelocityMps": [
-          20.793539010114838,
-          27.832510292997092
+          20.784265720767795,
+          27.845810901244093
         ],
         "diagnosticOnly": true,
         "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
       },
-      "recordingPeakToPeakUv": 2685.531223621503
+      "recordingPeakToPeakUv": 2614.8877188356932
     },
     {
       "level": {
@@ -382,9 +382,9 @@
       "central": {
         "recruited": true,
         "times": [
-          0.6030757208122783,
-          0.6300584389068296,
-          0.6490744554806808
+          0.6027157626929214,
+          0.6298056622819067,
+          0.6488340179649573
         ],
         "nodeOrdinals": [
           8,
@@ -398,8 +398,8 @@
         ],
         "direction": "+z",
         "segmentVelocityMps": [
-          18.530379268979974,
-          26.2936245379356
+          18.45706361360236,
+          26.276574199491982
         ],
         "diagnosticOnly": true,
         "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
@@ -407,9 +407,9 @@
       "peripheral": {
         "recruited": true,
         "times": [
-          0.5345832714109215,
-          0.5588144484166694,
-          0.5768898212059194
+          0.5346203211146561,
+          0.5588622846949619,
+          0.5769292236173883
         ],
         "nodeOrdinals": [
           3,
@@ -423,13 +423,13 @@
         ],
         "direction": "-z",
         "segmentVelocityMps": [
-          20.634573379633952,
-          27.66194677309058
+          20.625391930140616,
+          27.67485970627573
         ],
         "diagnosticOnly": true,
         "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
       },
-      "recordingPeakToPeakUv": 2654.8222907212994
+      "recordingPeakToPeakUv": 2583.6363005755857
     }
   ],
   "peakA": 100000000,
@@ -475,13 +475,23 @@
     "selection": "Retain every declared grid probe, including unstable cases. Select the lowest absolute peak current with qualifying propagation in both arms. Freeze it across native, time and spatial comparisons.",
     "scope": "Extreme unphysical current is an implementation stress fixture only. It is excluded from the supported 0–100 A interface, energy/feasibility claims and qualified operating thresholds. No transfer, waveform, voltage or time is rescaled between a simulation and its reference. The actual modeled axial microcoil may fail to recruit within its declared operating grid."
   },
-  "fieldRefinement": 2,
+  "fieldMethod": {
+    "radialRefinement": 2,
+    "axialRefinement": 2,
+    "planarRefinement": 1
+  },
+  "seed": 2048,
   "fieldQualification": "Separate required conservative field study. Passing this stress fixture cannot qualify the field.",
   "sourceHashes": {
+    "src/lib/axon-interface/stage2/nested-field.mjs": "43a705fcd0c6d4bd2cee3a7a9389c7cfb58001bc74acc07583c061091076cdd2",
+    "src/lib/axon-interface/stage2/embedded-coil.mjs": "6807b3e74bad7ab5e6cf4e5962c858065a6661d5d649c3537aedb306c6f4a63a",
+    "docs/axon-interface/stage2/nested-original-field-1-2.json": "6baa8a6e70cb2c62048c5cf9e8fd938af7fabe3dfe2957de343b9f32dc42e304",
+    "scripts/axon-interface/stage2/magnetic-propagation-check.mjs": "996ae427f17bac6e8fe94cb0af298cfb4750b6644ec28145c2bdb7b26f31ded3",
     "src/lib/axon-interface/stage2/membrane.mjs": "59a1f175bf0c31b3d7b3f93eabfcbb18ab2c4db530a147ac0682988d03da2515",
-    "src/lib/axon-interface/stage2/magnetic-coupling.mjs": "59199944c150c7e43a2d6e875efae20486592e54b169987b15f7d7976b662db3",
+    "src/lib/axon-interface/stage2/magnetic-coupling.mjs": "4b5114254bccc49408dfbbbcf83b4f257c2a07cc11aceb0554b9e9af693d0d97",
+    "src/lib/axon-interface/stage2/precision-contact-solve.mjs": "0b8433f92cf7c06f4387046768c3fbb125b4fea8ea3c2c42e3e2e40590da1108",
     "scripts/axon-interface/stage2/native-reference.py": "e398dcd528255d715f92e25696e054246ac4656f77493beae8d456353baaf58a",
     "docs/axon-interface/stage2/magnetic-propagation-acceptance.json": "4ade596ba7ec8b1e2d42ce15d377607507c7f2226caeec4aabaa6692c4566f14"
   },
-  "runtimeSeconds": 196.54517873500004
+  "runtimeSeconds": 300.02016799
 }

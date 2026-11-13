@@ -1,0 +1,330 @@
+Building 1-3 { offline: false }
+Mesh 1-3 {
+  planarRefinement: 1,
+  discretization: 'conforming P1 tetrahedral FEM with explicit removed insulating volumes',
+  nodes: 1239397,
+  tetrahedra: 7205184,
+  excludedInsulatorOrCellTetrahedra: 536256,
+  rawNodes: 1303329,
+  nonzeros: 25553381,
+  estimatedBytes: 881533268,
+  explicitCells: 4,
+  explicitWells: 4,
+  regionTetrahedra: [ 3426624, 589824, 884736, 884736, 1419264 ],
+  constructPresent: true,
+  sourceModel: 'finite surface current density on explicit inner-wall patches',
+  wallBoundary: 'natural zero normal flux; no conductive wall tetrahedra retained',
+  apertureModel: 'explicit annular conducting bore and access volume',
+  outerBoundary: 'zero Dirichlet on outer cylindrical polygon and both ends',
+  localToEffectiveBoundaryUm: [ 90, 90, 90, 90 ],
+  cellRepresentation: 'Explicit soma/stem/near-well neurite exclusion; distal cables embedded in effective endoneurial tensor',
+  meshBuildSeconds: 16.699467483999996
+}
+Source 1-3 {
+  formulation: 'closed-winding divergence-free boundary flux plus longitudinal anisotropic volume term',
+  faceOrder: 8,
+  volumeRule: 'tetra11',
+  integratedFaces: 233600,
+  anisotropicTetrahedra: 3426624,
+  loadSumMicroampPerSlew: 1.1205940586996048e-22,
+  assemblySeconds: 595.394150028
+}
+PCG 1-3 {
+  iterations: 1000,
+  relativeResidual: 0.0029871550698620714,
+  recurrenceResidual: 0.0005307401032909409
+}
+PCG 1-3 {
+  iterations: 2000,
+  relativeResidual: 0.000011404168864057929,
+  recurrenceResidual: 0.000002069649990585179
+}
+PCG 1-3 {
+  iterations: 3000,
+  relativeResidual: 0.0000014604951409852647,
+  recurrenceResidual: 2.533341084074438e-7
+}
+PCG 1-3 {
+  iterations: 4000,
+  relativeResidual: 7.167172056864446e-8,
+  recurrenceResidual: 1.2114274946891289e-8
+}
+PCG 1-3 {
+  iterations: 5000,
+  relativeResidual: 1.7654069084944052e-10,
+  recurrenceResidual: 2.8647844218868858e-11
+}
+Solved 1-3 3.746643936923773e-11 5785
+{"key":"1-3","complete":true,"passed":true,"seconds":999.203767584}
+Building 2-2 { offline: true }
+Mesh 2-2 {
+  planarRefinement: 2,
+  discretization: 'conforming P1 tetrahedral FEM with explicit removed insulating volumes',
+  nodes: 3278053,
+  tetrahedra: 19213824,
+  excludedInsulatorOrCellTetrahedra: 1430016,
+  rawNodes: 3475905,
+  nonzeros: 67867717,
+  estimatedBytes: 2340947604,
+  explicitCells: 4,
+  explicitWells: 4,
+  regionTetrahedra: [ 9137664, 1572864, 2359296, 2359296, 3784704 ],
+  constructPresent: true,
+  sourceModel: 'finite surface current density on explicit inner-wall patches',
+  wallBoundary: 'natural zero normal flux; no conductive wall tetrahedra retained',
+  apertureModel: 'explicit annular conducting bore and access volume',
+  outerBoundary: 'zero Dirichlet on outer cylindrical polygon and both ends',
+  localToEffectiveBoundaryUm: [ 90, 90, 90, 90 ],
+  cellRepresentation: 'Explicit soma/stem/near-well neurite exclusion; distal cables embedded in effective endoneurial tensor',
+  meshBuildSeconds: 43.494913247
+}
+Source 2-2 {
+  formulation: 'closed-winding divergence-free boundary flux plus longitudinal anisotropic volume term',
+  faceOrder: 8,
+  volumeRule: 'tetra11',
+  integratedFaces: 417792,
+  anisotropicTetrahedra: 9137664,
+  loadSumMicroampPerSlew: 9.521300506734708e-22,
+  assemblySeconds: 716.415351361
+}
+PCG 2-2 {
+  iterations: 1000,
+  relativeResidual: 0.006819872874501502,
+  recurrenceResidual: 0.001190299971410239
+}
+PCG 2-2 {
+  iterations: 2000,
+  relativeResidual: 0.0032265505795802505,
+  recurrenceResidual: 0.0005262869817075559
+}
+PCG 2-2 {
+  iterations: 3000,
+  relativeResidual: 0.00012343108470710493,
+  recurrenceResidual: 0.000019567078822134476
+}
+PCG 2-2 {
+  iterations: 4000,
+  relativeResidual: 0.000005251738605634152,
+  recurrenceResidual: 8.128660278076427e-7
+}
+PCG 2-2 {
+  iterations: 5000,
+  relativeResidual: 0.000004685462180459852,
+  recurrenceResidual: 7.562360043328704e-7
+}
+PCG 2-2 {
+  iterations: 6000,
+  relativeResidual: 2.706547139715204e-7,
+  recurrenceResidual: 4.172345494912295e-8
+}
+PCG 2-2 {
+  iterations: 7000,
+  relativeResidual: 3.454246660340251e-8,
+  recurrenceResidual: 5.647072882733548e-9
+}
+PCG 2-2 {
+  iterations: 8000,
+  relativeResidual: 1.175477349895102e-8,
+  recurrenceResidual: 1.788137034812687e-9
+}
+PCG 2-2 {
+  iterations: 9000,
+  relativeResidual: 1.8862962503778593e-10,
+  recurrenceResidual: 2.954107011302357e-11
+}
+PCG 2-2 {
+  iterations: 10000,
+  relativeResidual: 6.997951351483963e-11,
+  recurrenceResidual: 1.0724010169579859e-11
+}
+Solved 2-2 1.3457094465536133e-11 10400
+{"key":"2-2","complete":true,"passed":true,"seconds":2615.287060431}
+Building 1-1 { offline: false }
+Mesh 1-1 {
+  planarRefinement: 1,
+  discretization: 'conforming P1 tetrahedral FEM with explicit removed insulating volumes',
+  nodes: 419093,
+  tetrahedra: 2401728,
+  excludedInsulatorOrCellTetrahedra: 178752,
+  rawNodes: 438945,
+  nonzeros: 8562101,
+  estimatedBytes: 295756308,
+  explicitCells: 4,
+  explicitWells: 4,
+  regionTetrahedra: [ 1142208, 196608, 294912, 294912, 473088 ],
+  constructPresent: true,
+  sourceModel: 'finite surface current density on explicit inner-wall patches',
+  wallBoundary: 'natural zero normal flux; no conductive wall tetrahedra retained',
+  apertureModel: 'explicit annular conducting bore and access volume',
+  outerBoundary: 'zero Dirichlet on outer cylindrical polygon and both ends',
+  localToEffectiveBoundaryUm: [ 90, 90, 90, 90 ],
+  cellRepresentation: 'Explicit soma/stem/near-well neurite exclusion; distal cables embedded in effective endoneurial tensor',
+  meshBuildSeconds: 6.248754503
+}
+Source 1-1 {
+  formulation: 'closed-winding divergence-free boundary flux plus longitudinal anisotropic volume term',
+  faceOrder: 8,
+  volumeRule: 'tetra11',
+  integratedFaces: 104448,
+  anisotropicTetrahedra: 1142208,
+  loadSumMicroampPerSlew: 1.1969729258042214e-19,
+  assemblySeconds: 273.427468381
+}
+PCG 1-1 {
+  iterations: 1000,
+  relativeResidual: 0.0018937802012003544,
+  recurrenceResidual: 0.0003612551431808628
+}
+PCG 1-1 {
+  iterations: 2000,
+  relativeResidual: 0.000004236358384845991,
+  recurrenceResidual: 7.94077512013619e-7
+}
+PCG 1-1 {
+  iterations: 3000,
+  relativeResidual: 5.133090811440117e-8,
+  recurrenceResidual: 9.052706891357666e-9
+}
+PCG 1-1 {
+  iterations: 4000,
+  relativeResidual: 8.209233015134718e-10,
+  recurrenceResidual: 1.5921992202405996e-10
+}
+Solved 1-1 1.1094271235800229e-11 4733
+{"key":"1-1","complete":true,"passed":true,"seconds":402.484098297}
+{
+  "schema": "axon-stage2-nested-recovery-convergence/1",
+  "complete": true,
+  "passed": true,
+  "rows": [
+    {
+      "name": "Executed and source-current field 1-2",
+      "pass": true
+    },
+    {
+      "name": "Executed and source-current field 1-3",
+      "pass": true
+    },
+    {
+      "name": "Executed and source-current field 2-2",
+      "pass": true
+    },
+    {
+      "name": "Executed and source-current field 1-1",
+      "pass": true
+    },
+    {
+      "name": "Cell 0 axial refinement",
+      "cell": 0,
+      "axis": "axial",
+      "relativeL2": 0.001766670574595144,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 1 axial refinement",
+      "cell": 1,
+      "axis": "axial",
+      "relativeL2": 0.008650375327307811,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 2 axial refinement",
+      "cell": 2,
+      "axis": "axial",
+      "relativeL2": 0.0035157161316111706,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 3 axial refinement",
+      "cell": 3,
+      "axis": "axial",
+      "relativeL2": 0.017626594534014755,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 0 planar refinement",
+      "cell": 0,
+      "axis": "planar",
+      "relativeL2": 0.003421608427788985,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 1 planar refinement",
+      "cell": 1,
+      "axis": "planar",
+      "relativeL2": 0.014789789062128493,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 2 planar refinement",
+      "cell": 2,
+      "axis": "planar",
+      "relativeL2": 0.023624769410292783,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 3 planar refinement",
+      "cell": 3,
+      "axis": "planar",
+      "relativeL2": 0.013914296303875329,
+      "limit": 0.05,
+      "pass": true
+    }
+  ],
+  "retainedDiagnostic": [
+    {
+      "name": "Cell 0 rejected-candidate axial 1-to-2",
+      "relativeL2": 0.004055115043270812,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 1 rejected-candidate axial 1-to-2",
+      "relativeL2": 0.02515888277660086,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 2 rejected-candidate axial 1-to-2",
+      "relativeL2": 0.011694709688489976,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 3 rejected-candidate axial 1-to-2",
+      "relativeL2": 0.05725177920053804,
+      "limit": 0.05,
+      "pass": false
+    }
+  ],
+  "sourceHashes": {
+    "docs/axon-interface/stage2/nested-original-cohort-plan.json": "266087e258c2878457c8a3f65ba68d4d6eed76c20e0f0bda6b2c7919ec52dc20",
+    "scripts/axon-interface/stage2/nested-original-induction-check.mjs": "f63979fb1dd33f8da168bb14aa8e660b42c12343bf659ff567db22a85ec508fc"
+  },
+  "runFiles": [
+    {
+      "path": "docs/axon-interface/stage2/nested-original-field-1-2.json",
+      "sha256": "6baa8a6e70cb2c62048c5cf9e8fd938af7fabe3dfe2957de343b9f32dc42e304"
+    },
+    {
+      "path": "docs/axon-interface/stage2/nested-original-field-1-3.json",
+      "sha256": "a8f331357a833d0727941bc9679e33b0682f7da33726dbb547665790c7920038"
+    },
+    {
+      "path": "docs/axon-interface/stage2/nested-original-field-2-2.json",
+      "sha256": "843f6e63cb8f0249e1cd3788026070eecafaaa3bfad21f77d75022e40c4eee9b"
+    },
+    {
+      "path": "docs/axon-interface/stage2/nested-original-field-1-1.json",
+      "sha256": "c093253d1d3fc88f1ccdb78298ee0f1332e779b7948e8762d2b0cecf2a0c77df"
+    }
+  ],
+  "generatedAt": "2026-11-13T15:29:42.970Z"
+}

@@ -1,13 +1,14 @@
 {
   "schema": "axon-stage2-validation/1",
-  "generatedAt": "2026-11-13T15:09:32.691Z",
-  "status": "development-checkpoint",
-  "completeStage2": false,
+  "generatedAt": "2026-11-13T15:57:11.842Z",
+  "status": "qualified",
+  "completeStage2": true,
   "modelVersion": "axon-modalities-coupled-0.4.4",
   "biologicalValidation": false,
   "evidenceCollectionMode": "Aggregate existing study outputs; not a claim of a new all-studies rerun.",
   "sourceChangedDuringRun": null,
   "sourceHashes": {
+    ".github/workflows/axon-stage2-finish.yml": "64fd244e66832e547451f214ee394a41ecd5324f0cee947e1f46ed034bc7ee53",
     ".github/workflows/axon-stage2.yml": "9d03f7615068712559d6be930208086c795922c8548e4c7ff27c0b007f1c8641",
     "docs/axon-interface/stage2/coupling-acceptance.json": "a571a31de835a5a61b69ffec1b5e441fde907c80be8542fa4229cbb4e34de0ce",
     "docs/axon-interface/stage2/spatial-acceptance.json": "ab0ba2cdc70f06406b9ceb93e229358d003bb485ffd2e583ca4e07009a0815c6",
@@ -28,7 +29,9 @@
     "scripts/axon-interface/stage2/component-reference-check.mjs": "e58dfd3b5be5cf6b0ed27bd55ffe991ca9280e00fb52795bc8811a85a0940c1f",
     "scripts/axon-interface/stage2/coupling-check.mjs": "c09c2dbb39dc030d911f31faa2c29cd94646c233d98360f0dfc8a19a28c95894",
     "scripts/axon-interface/stage2/extended-field-reference.mjs": "5a1039fc5e52fa14ff9da19318e4fe0a315e5dc28985eff3339caa7dd4bb9220",
+    "scripts/axon-interface/stage2/finish-ci-report.mjs": "5252813db1c2d5bef8b71180d5cd373fce5c4231a1ea2add9ebb74ba77b2aacc",
     "scripts/axon-interface/stage2/generate-nested-field.py": "384e04df20f4c03e2f6d9324e9a882e41039b7adaced0501775120b8850f2e07",
+    "scripts/axon-interface/stage2/import-ci-evidence.py": "53ca1af8ee1270fd4c197a3219b55ec2981d6b4d2b366498e6f964c720407175",
     "scripts/axon-interface/stage2/induction-check.mjs": "c8ce5dabec038c274abe37f9061a069c93319d714d1823be61264fa3b18e47c9",
     "scripts/axon-interface/stage2/induction-conservative-check.mjs": "bcb3f211fe1620e42743d757fdaa54340a6daa3a749941d09a0b4178150c840d",
     "scripts/axon-interface/stage2/induction-conservative-independent-check.mjs": "1b53780776ce46f5005279cef8b0790d34a9564f4d7a23e1b6a7faf36dc3bba3",
@@ -58,7 +61,7 @@
     "scripts/axon-interface/stage2/probe-optical.mjs": "1d3f57bda9e4fb292119744e18d29b218acbb7ed79f8ba869243a63386a43ca6",
     "scripts/axon-interface/stage2/protocol-check.mjs": "066dac8ba1aa78cce402a97e0c2853ab0e8012534bfd0045d20e784b9275b3b2",
     "scripts/axon-interface/stage2/recording-field-check.mjs": "a1fb86b92d71ade10e7193daec8cf689bb78a89c5eee14858ae057b1785a2267",
-    "scripts/axon-interface/stage2/reproduce.mjs": "c67301ceb7bf41da2d52e8d634e517873990aac55322bdebe81901e430cd5443",
+    "scripts/axon-interface/stage2/reproduce.mjs": "e41d30af879b69e13146bea9ee0391698bfe06e14a71b23810fc27da50195fe0",
     "scripts/axon-interface/stage2/requirements.txt": "092475ddcda41189dfb7f813c113f3e5dc98dc26a9872459d5bdeb662305f72d",
     "scripts/axon-interface/stage2/spatial-check.mjs": "3f3cfaf65afcdbcf560b37f902cde3b69e49eed44c66ed76f21f00bad18e1722",
     "scripts/axon-interface/stage2/spectral-component-check.mjs": "e2e3a194ebc3ecd554d5a8d8cd06d1a7b4ae3bb350e0cb4a57742f75df3d7e6a",
@@ -127,9 +130,9 @@
     "platform": "linux",
     "architecture": "x64",
     "cpu": "AMD EPYC 9V74 80-Core Processor",
-    "logicalCpus": 9,
-    "totalMemoryBytes": 10451427328,
-    "seconds": 0.067497543
+    "logicalCpus": 4,
+    "totalMemoryBytes": 16759427072,
+    "seconds": 0.025406083
   },
   "stages": [],
   "components": {
@@ -163,22 +166,22 @@
       "sha256": "da792dae7741994d2f552d3785ae862df7ada3aad80f8a51f48d9d2cb0a93822"
     },
     "induction": {
-      "complete": false,
-      "passed": false,
-      "checks": 12,
-      "sha256": "9383ddbe1ea269ad1183fb75cd8d7c61db03f0a285cc21918389f1563d9dfbd4"
+      "complete": true,
+      "passed": true,
+      "checks": 16,
+      "sha256": "e97756d93f52eab0f232e0bee1884a959e705b503061a20c00dc8c088dd933d2"
     },
     "magnetic-path": {
       "complete": true,
       "passed": true,
       "checks": 8,
-      "sha256": "82132d17659fa25905680357a94100efc0148e536ac6233e2558baf011daabf1"
+      "sha256": "732b49d7e67b01a9593c8ef904de21bddf5561ffd2a405a2e4f8569fc50b355e"
     },
     "magnetic-coupling": {
       "complete": true,
       "passed": true,
       "checks": 12,
-      "sha256": "f0bdf8c7946bb14f152c9aae5576dacb04ac09b18ef3b8f0de9a0bf521160836"
+      "sha256": "5367c4f3bf0e250e78a4d1807d7e02d6c78e307780e0c394aa59f3c50914984a"
     },
     "magnetic-policy": {
       "complete": true,
@@ -190,7 +193,7 @@
       "complete": true,
       "passed": true,
       "checks": 15,
-      "sha256": "51b1158fa0874c1f44cad7fd755bed425d51bbace9701b45fbe8322314b59930"
+      "sha256": "547abf5b7c44e8472e126b7074cdbff667f1f2a1069ed368725d5b94a4fee7d1"
     },
     "nested-mesh": {
       "complete": true,
@@ -205,10 +208,10 @@
       "sha256": "e31de19a0863c8e484c50e88d2398a0ffea57ea8285fc0e369ff46c7d70ffbef"
     },
     "nested-original": {
-      "complete": false,
-      "passed": false,
-      "checks": 0,
-      "sha256": null
+      "complete": true,
+      "passed": true,
+      "checks": 12,
+      "sha256": "14d81a7f46b8e55b27925cf1b69fff63dda7641d165e99e9a68b87d76206eb22"
     },
     "nested-recovery-independent": {
       "complete": true,
@@ -217,10 +220,10 @@
       "sha256": "c42a74faf1a6cadb97e5fb9f19fbc0417323f6c5a74c68eca5ca5626aa7d1f81"
     },
     "nested-original-independent": {
-      "complete": false,
-      "passed": false,
-      "checks": 0,
-      "sha256": null
+      "complete": true,
+      "passed": true,
+      "checks": 4,
+      "sha256": "0e801bcdbc5550183f22134002b4ec68c6e133a71f7268820ee01fe2b6b14dac"
     },
     "protocol": {
       "complete": true,
@@ -2768,16 +2771,16 @@
     "docs/axon-interface/stage2/surface-validation.json": "b324daf0ccd2edafc6ea1273f4944530a2e2ed218cb49703420c4df777cb4d03",
     "docs/axon-interface/stage2/spatial-validation.json": "61ea2ecc010139ef2e97ed6874e75a7a703730328adb9280428aa4c35e2bc6c0",
     "docs/axon-interface/stage2/recording-field-validation.json": "da792dae7741994d2f552d3785ae862df7ada3aad80f8a51f48d9d2cb0a93822",
-    "docs/axon-interface/stage2/induction-validation.json": "9383ddbe1ea269ad1183fb75cd8d7c61db03f0a285cc21918389f1563d9dfbd4",
-    "docs/axon-interface/stage2/magnetic-path-validation.json": "82132d17659fa25905680357a94100efc0148e536ac6233e2558baf011daabf1",
-    "docs/axon-interface/stage2/magnetic-coupling-validation.json": "f0bdf8c7946bb14f152c9aae5576dacb04ac09b18ef3b8f0de9a0bf521160836",
+    "docs/axon-interface/stage2/induction-validation.json": "e97756d93f52eab0f232e0bee1884a959e705b503061a20c00dc8c088dd933d2",
+    "docs/axon-interface/stage2/magnetic-path-validation.json": "732b49d7e67b01a9593c8ef904de21bddf5561ffd2a405a2e4f8569fc50b355e",
+    "docs/axon-interface/stage2/magnetic-coupling-validation.json": "5367c4f3bf0e250e78a4d1807d7e02d6c78e307780e0c394aa59f3c50914984a",
     "docs/axon-interface/stage2/magnetic-policy-validation.json": "96fa992b2f3af154a2fcd422b25d94cdcd9b99cc8e658d2071cd1fe02bfb9f7c",
-    "docs/axon-interface/stage2/magnetic-propagation-validation.json": "51b1158fa0874c1f44cad7fd755bed425d51bbace9701b45fbe8322314b59930",
+    "docs/axon-interface/stage2/magnetic-propagation-validation.json": "547abf5b7c44e8472e126b7074cdbff667f1f2a1069ed368725d5b94a4fee7d1",
     "docs/axon-interface/stage2/nested-recovery-mesh-contracts.json": "e90c90903f7339b5f8755c0da9d083b7c74a2abf2ca71f60e78b15fa9ab0fb88",
     "docs/axon-interface/stage2/nested-recovery-validation.json": "e31de19a0863c8e484c50e88d2398a0ffea57ea8285fc0e369ff46c7d70ffbef",
-    "docs/axon-interface/stage2/nested-original-validation.json": null,
+    "docs/axon-interface/stage2/nested-original-validation.json": "14d81a7f46b8e55b27925cf1b69fff63dda7641d165e99e9a68b87d76206eb22",
     "docs/axon-interface/stage2/nested-recovery-independent-validation.json": "c42a74faf1a6cadb97e5fb9f19fbc0417323f6c5a74c68eca5ca5626aa7d1f81",
-    "docs/axon-interface/stage2/nested-original-independent-validation.json": null,
+    "docs/axon-interface/stage2/nested-original-independent-validation.json": "0e801bcdbc5550183f22134002b4ec68c6e133a71f7268820ee01fe2b6b14dac",
     "docs/axon-interface/stage2/protocol-validation.json": "3395e582d18c44f60d9326a0c0625920095f9f13a6be595b1444e1ec08e25980",
     "docs/axon-interface/stage2/spectral-component-validation.json": "347549813ac571e3ae3fa8c25f2b54d85de93c143d8395e7522a6417a55801a6",
     "docs/axon-interface/stage2/spectral-coupling-validation.json": "2b2e4ba9e768970c18c7e70db539e478edd90625df0cfb4050b05c1517703cb9",
@@ -2785,22 +2788,11 @@
     "docs/axon-interface/stage2/spectral-protocol-validation.json": "12d01ee266a23c9f439976fe5d9b78bf07a12928d3246d089e6c931cefb9db3e",
     "docs/axon-interface/stage2/spectral-crosstalk-validation.json": "159a86325ee9c2b8b481bdfae5fe54466c9f4ab1f266e8e06fb50bfc9369fa35",
     "docs/axon-interface/stage2/browser-validation.json": "0c99ff0ab147d6d94ffae77cc979f3e8e9735a508d51f263b94c0b202aa05a14",
-    "docs/axon-interface/stage2/software-checkpoint.json": "55bac376a4ca185e72ddb59865b46003f8c8abc93fc3f226613b2466faf740e9",
+    "docs/axon-interface/stage2/software-checkpoint.json": "235310468f8019ed244dc5ceb0ba8bf63c47d445620f854589dfb30e28774742",
     "labs/axon-stage2/reports/independent-reference.json": "8548f27e25c532ca2c5598d81b8f3cefb1003859b1e327092c0df5733e0b4260"
   },
-  "openReleaseGates": [
-    "induction numerical qualification remains incomplete or failed.",
-    "nested-original numerical qualification remains incomplete or failed.",
-    "nested-original-independent numerical qualification remains incomplete or failed.",
-    "magnetic-path evidence has missing or stale source hashes: scripts/axon-interface/stage2/magnetic-path-check.mjs, src/lib/axon-interface/stage2/magnetic-coupling.mjs, docs/axon-interface/stage2/induction-validation.json",
-    "magnetic-coupling evidence has missing or stale source hashes: src/lib/axon-interface/stage2/magnetic-coupling.mjs, scripts/axon-interface/stage2/native-reference.py, scripts/axon-interface/stage2/magnetic-coupling-check.mjs, docs/axon-interface/stage2/induction-validation.json",
-    "magnetic-propagation evidence has missing or stale source hashes: src/lib/axon-interface/stage2/magnetic-coupling.mjs",
-    "nested-original evidence has missing or stale source hashes: ",
-    "nested-original-independent evidence has missing or stale source hashes: ",
-    "Current-version complete site build and repository regression evidence remains pending.",
-    "Software verification source changed after tests/build."
-  ],
-  "nextStage": "Stage 3 remains blocked by Stage 2 release gates; PR #390 is preserved as a separate unqualified draft.",
+  "openReleaseGates": [],
+  "nextStage": "Numerical Stage 2 is complete within its published model limits. Stage 3 may be reviewed next; existing PR #390 is not automatically qualified or merged.",
   "limitations": [
     "Source hashes identify this checkpoint. Passing rows verify stated equations only.",
     "The original-host win condition is zero under complete resection; introduced outputs never replace original identities.",

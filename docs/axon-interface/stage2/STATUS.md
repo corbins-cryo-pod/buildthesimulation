@@ -1,55 +1,54 @@
 # Stage 2 — coupled modalities and selectivity
 
-The laboratory is `/simulations/biohybrid-axon-interface/stage2/`, with adjacent methods, scientific questions and machine-readable validation routes. `validation.json` is the authoritative release aggregate. Qualification remains pending for the original-cohort magnetic field references, the dependent magnetic studies, and final software evidence. The current full-cohort protocol and hosted browser verification are complete. Earlier failed field methods remain rejected. Execution access was restored on 13 November in a fresh workspace; the committed checkpoint was recovered, but the unpublished source and temporary raw artifacts had to be reconstructed and re-executed. See [the 12 November recovery checkpoint](./EXECUTION_CHECKPOINT_2026-11-12.md) for observed results, evidence boundaries and remaining work; a successful calculation alone does not complete a release.
+Numerical Stage 2 is qualified at runtime axon-modalities-coupled-0.4.4. The authoritative aggregate is [validation.json](./validation.json); every required study is complete, source-current and sealed by report-file hashes. Production publication is verified separately after merging PR #391.
 
 ## Implemented behavior
 
-- Every declared cell and isolated channel is resolved at every sampled amplitude. No population is screened, omitted or silently downsampled. Matched dark, regional, whole-cell and soma-only controls share the same native initial state; optical experiments also remove the opsin current while retaining light and native conductances.
-- Electrode drive uses finite source/return contacts and the inherited anisotropic conductor. Magnetic drive uses the complete closed winding and conservative interface-flux assembly. The 0.4.4 candidate uses a fixed radial-2 parent mesh, planar subdivision 1 and axial factor 2. Separate planar-2 and axial-3 references are required for both the original seed-2048 cohort and the UI-default seed-4079 cohort. The seed-4079 axial comparison passes for all four cells (0.678%, 1.649%, 1.099% and 3.788% relative L2), as does the separate planar comparison (0.279%, 0.139%, 0.116% and 1.106%). Its independent reconstruction passes: original-equation residual 7.230e-15, potential relative L2 2.013e-11 and source-load relative L2 2.583e-13. The original seed-2048 qualification remains pending. The separately retained coarse axial-1 diagnostic fails two cells at 7.069% and 14.461%. The rejected radial-4/axial-4 method and its 6.7270%/6.1171% refinement failures remain retained.
-- H134R illumination uses finite-shell photon transport and voltage-dependent four-state kinetics inside the cable solver. Spectral experiments use separate ChR2, Chrimson and vf-Chrimson parameter sets; the fourth green construct is explicitly hypothetical. Each source is tested at each supported wavelength, with real spectral overlap and no assumed channel multiplier.
-- Whole-cell spectral conductance is distributed by soma area. Every spectral pair includes photon-exposure, expression, kinetic-rate and action-normalization sensitivity probes. Room-temperature rates, engineered expression and optical coefficients remain conditional assumptions at a 37 °C cable temperature.
-- Exclusive outputs, shared-only outputs, exact real matrix rank and isolated-input information remain separate. Duplicate exclusive rows count the same output once. Full matrices, causal traces, source-separated reciprocal recording, confinement, drive energy, replay, comparison and JSON/CSV exports remain available.
-- Original host H identities and introduced E identities remain separate. The complete-resection B3 assumption makes original-host continuity and addressability zero even when an E cell fires.
+The laboratory at /simulations/biohybrid-axon-interface/stage2/ runs complete electrode, magnetic, optical and spectral experiments on matched bipolar-cell cohorts. Every declared cell, isolated channel, amplitude and required intervention is retained. Named causal audits, voltage replay, reciprocal recordings, comparison and full JSON/CSV exports remain available. Original H identities and engineered E identities stay separate; complete resection leaves original-host continuity and addressability at zero.
 
-## Measured evidence
+## Required numerical evidence
 
-| Study | Passing checks | Meaning |
+| Study | Checks | Result |
 |---|---:|---|
-| Spectral independent SciPy matrix exponential | 51 | Occupancies, photon conversion and currents |
-| Spectral native NEURON and time halving | 52 | Same physical stimulus, no amplitude/time fitting |
-| Spectral nonuniform illumination and cable refinement | 40 | Both-arm propagation delay and reciprocal recording |
-| Two-to-four-family cohort protocol | 34 | Full matrices, controls, identity, export and exact same-runtime replay |
-| Nonlinear two-source spectral crosstalk | 8 | Blue activation of a red-sensitive target; no output-count multiplier |
-| UI-default field refinement | 12 | Four completed field cases and eight per-cell directional comparisons; independent assembly remains required |
-| Earlier magnetic stress fixture | 15 | Historical implementation evidence; current candidate must repeat these checks |
-| Focused software contracts | 67 | Geometry, units, matching, malformed inputs, budgets and exports |
+| coupling | 19 | Passed |
+| surface | 9 | Passed |
+| spatial | 11 | Passed |
+| recording-field | 4 | Passed |
+| induction | 16 | Passed |
+| magnetic-path | 8 | Passed |
+| magnetic-coupling | 12 | Passed |
+| magnetic-policy | 7 | Passed |
+| magnetic-propagation | 15 | Passed |
+| nested-mesh | 7 | Passed |
+| nested-default | 12 | Passed |
+| nested-original | 12 | Passed |
+| nested-recovery-independent | 4 | Passed |
+| nested-original-independent | 4 | Passed |
+| protocol | 37 | Passed |
+| spectral-component | 51 | Passed |
+| spectral-coupling | 52 | Passed |
+| spectral-spatial | 40 | Passed |
+| spectral-protocol | 34 | Passed |
+| spectral-crosstalk | 8 | Passed |
 
-The H134R native/time regression also passes all 19 checks. Historical CI for runtime commit `62f80fdef34bcb8642121ef3bebbbeff239c8af4` reports 1,058 passing tests, two skips and no failures in the main test step, plus one passing required browser test. All seven check runs, the site build and Cloudflare deployment succeeded. This historical software checkpoint does not establish field convergence or verify later source changes. The 0.4.4 candidate has separately passed all 62 focused contracts and the complete site build. Its two-to-four-family protocol was re-executed and passes all 34 checks, including exact replay. All seven checks at the subsequent 0.4.4 checkpoint `947c997` pass: 1,059 repository tests, two skips, no failures, and one required browser test. A final source-current software checkpoint and the remaining magnetic release studies are still required. Exact commands, source hashes and runtime evidence are retained in the reports.
+The independent component reference additionally passes 65 required checks. Its three unresolved rare-event diagnostics remain explicitly unresolved. Historical failures remain in retained-failures.json and the 12 November checkpoint; replacement studies do not relabel rejected methods.
 
-The two-source spectral fixture has three nonzero source–wavelength rows but only two distinct exclusive engineered outputs and rank two. The first supplemental assertion wrongly called one output shared-only; its failure and the unchanged-run reanalysis are retained. The scientific implementation and acceptance limits did not change.
+## Field qualification
 
-The current source-identified 0.4.4 full protocol passes all 37 checks across complete optical, electrode and magnetic cohorts. Its four-cell magnetic sweep at seed 4079 completes the 0/10/100 A grid with no qualifying propagation. The current magnetic policy audit passes seven checks. The earlier 0.4.3 full protocol was canceled after its field-refinement failure and has no completed magnetic result. A separate predeclared stress grid reaches a positive response only at 100 million A in this weak axial-coil geometry. That deliberately unphysical drive is excluded from the 0–100 A interface and supplies no feasibility or operating-threshold claim.
+The magnetic production field uses the fixed radial-2 parent, planar subdivision 1 and axial factor 2. Separate planar-2 and axial-3 references pass every per-cell 5% comparison for both seed 2048 and seed 4079. Both candidates pass independent NumPy/SciPy reconstruction from physical points, tetrahedra, tensors and the closed winding. No production matrix or source vector is used as the reference assembly. Production true residual remains 1e-10, recurrence target 2e-12 and iteration cap 16,000. Independent residual, potential L2, load L2 and absolute-potential limits remain 1e-9, 1e-6, 1e-8 and 0.001 uV/(A/s).
 
-## Numerical integrity
+The polygonal well boundary retains 12 angular sectors plus contact-edge angles. Refinement verifies this declared polygonal model, not exact-circle geometry or arbitrary new parameter choices. Offline reference resource admission differs from the unchanged browser budget; equations and tolerances do not.
 
-The original vertex-load mesh, four-point and eleven-point volume-only attempts remain rejected. Conservative flux assembly cancels internal equal-conductivity faces before quadrature and retains only the longitudinal anisotropic volume term. The production solver preserves the original stiffness and load, uses diagonal equilibration, uses exact axial-column block preconditioning and observes the original physical residual with two-component state and error-free products, and restarts refinement from the original equation. Its true-residual limit remains 1e-10, recurrence target 2e-12 and iteration cap 16,000.
+## Browser and software evidence
 
-The independent NumPy/SciPy program rebuilds stiffness, source integrals and interface cancellation from physical geometry. It does not solve a JavaScript-generated matrix. The reference uses independent coordinate-column SuperLU blocks with SciPy CG. A unit-norm algebraic RHS is restored to physical magnitude before comparison, and long-double original-equation residual correction retains the total 20,000-iteration cap and all comparison limits. Earlier ILUT/BiCGSTAB attempts remain archived. Earlier singular, breakdown, memory-limit and finest-mesh residual failures remain visible. Passing replacement studies qualify the replacement algorithm and mesh, never the rejected ones.
+Hosted spectral and magnetic workers completed their full fixtures. Settings, matrices and nonnumeric fields match Node. Maximum observed voltage differences are 2.818e-11 mV for spectral and 4.679714038502425e-8 mV for magnetic; numeric exports are not bitwise identical. Budget rejection and cancellation preserve the completed export. WebGL was unavailable, so the same-coordinate 2D fallback was tested.
 
-## Browser evidence
+The current software checkpoint reports 1064 repository test passes, 2 skips, zero failures, one separately required browser test and 67 focused contract/component passes. The complete site and published evidence/worker checks pass. Source, test counts, log hashes and runner links are recorded in software-checkpoint.json.
 
-The deployed 0.3.0 spectral worker completed the two-family fixture in 80.5 seconds. Its full export exactly matches the local browser except runtime. All discrete matrices and nonnumeric fields match Node; the maximum observed voltage difference is 2.82e-11 mV. Exposure-dependent classification correctly withholds the selectivity headline. The named pair audit and complete export were tested. WebGL was unavailable, so the same-coordinate 2D fallback was verified. A subsequent hosted 0.4.3 spectral worker completed in 82.9532 seconds; its matrices, settings and nonnumeric fields match Node, with maximum voltage difference 2.818e-11 mV. Those observations and export hashes are preserved in the recovery checkpoint, but the raw export is currently inaccessible. The raw 0.4.3 download was not recovered. Fresh hosted spectral 0.4.4 verification completed in 71.9882 seconds on deployed commit `d9538ce920ab5382caa07c9ab451727b06ae9e07`. Its complete export has identical settings, matrices and nonnumeric fields to Node, with maximum observed voltage difference 2.818e-11 mV. The full comparison, source hashes, audit observations and screenshot are saved in `browser-spectral-044-validation.json`. Hosted magnetic 0.4.4 execution completed in 743.8942 seconds. Both recording and induction solves pass their residual gates; all four cells remain silent at 0, 10 and 100 A. Budget rejection and cancellation preserve the completed export byte-for-byte. `browser-magnetic-044-observations.json` records these eight passing UI checks. Its complete export matches Node settings, all recruitment matrices and all nonnumeric fields. The maximum voltage difference is 4.680e-8 mV; numeric output is not bitwise identical. Both exports pass the unchanged field residual gate. The final browser aggregate passes all six required checks, with export hashes and current source provenance.
+## Interpretation and reproduction
 
-## Reproduction
+The 0–100 A magnetic sweep remains nonfiring in this weak axial-coil geometry. The positive stress fixture at 100 million A is deliberately unphysical and outside the supported interface; it verifies native, time-step and spatial implementation without supplying a feasibility or operating-threshold claim. Magnetic pickup and total recording are withheld when the lead loop is unspecified. Spectral overlap, exposure-dependent classification and sensitivity to expression, kinetics and action-normalization remain visible.
 
-Use Node 24.22.1 and Python 3.12.14. Install `scripts/axon-interface/stage2/requirements.txt` into a virtual environment, then run:
+Use Node 24.22.1 and Python 3.12.14 with scripts/axon-interface/stage2/requirements.txt. Run MRG_PYTHON=/absolute/path/to/venv/bin/python node scripts/axon-interface/stage2/reproduce.mjs. Large field studies run serially per machine. The original-cohort and completion workflows retain their source-verified reports and physical-fixture artifacts. The completion runner resumes the interrupted checks, not an invented successful local run. The --collect option explicitly aggregates separately executed evidence.
 
-```bash
-MRG_PYTHON=/absolute/path/to/venv/bin/python node scripts/axon-interface/stage2/reproduce.mjs
-```
-
-The entry compiles the pinned native mechanisms, runs component, field, independent-reference, native/time/spatial and full-cohort studies, then repository tests and the site build. The field entry runs both predeclared subdivision cohorts and their independent Python reconstructions serially. It generates the exact production fixtures consumed by the propagation studies; a fresh checkout does not require old `/tmp` files. The current protocol export is checked by hash and source provenance before the policy audit can reuse it. Large raw arrays and platform-specific binaries are regenerated rather than committed. Run the large independent and finer-field studies sequentially within each machine; overlapping them exceeded this 10 GB environment. The original seed-2048 cohort also has an isolated CI workflow, with a memory preflight and candidate/complete evidence artifacts. Imports verify the tested source commit, every source hash, physical-fixture hash and fixed comparison limits. Separate machines can execute the two cohorts concurrently without sharing memory. Long field solves have explicit iteration and process limits.
-
-`--collect` aggregates existing study outputs and labels that mode. Required aggregation verifies nonempty study source manifests, linked raw-report hashes and sealed report-file hashes. Fresh surface, spatial, crosstalk and independent component reruns now retain their source identity. The publication and build guards withdraw qualification if an input, report or required artifact changes; five isolated regression tests exercise these cases. A failed new command cannot be replaced by an older passing report. Source changes, stale browser evidence, missing studies or failed gates prevent completion.
-
-Numerical verification establishes the declared equations, not measured engineered-ganglion physiology, biological integration, survival, safety, manufacturing or clinical recovery. PR #390 remains a separate unqualified Stage 3 draft; it is not automatically advanced by this work.
+Publication is withdrawn when a required source, raw linked report or sealed report file changes. Numerical verification establishes the stated equations, not measured engineered-ganglion physiology, biological integration, survival, safety, manufacturing or clinical recovery. Stage 3 PR #390 remains a separate unqualified draft.

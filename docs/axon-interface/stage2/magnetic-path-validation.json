@@ -5,55 +5,55 @@
   "rows": [
     {
       "name": "Cell 0: 8 to 16 subdivisions per link",
-      "relativeL2": 3.1016341491134714e-14,
+      "relativeL2": 3.1053718184379516e-14,
       "pass": true
     },
     {
       "name": "Cell 0: 16 to 32 subdivisions per link",
-      "relativeL2": 1.3698574857932448e-14,
+      "relativeL2": 1.369140424036131e-14,
       "pass": true
     },
     {
       "name": "Cell 1: 8 to 16 subdivisions per link",
-      "relativeL2": 5.456338619792958e-14,
+      "relativeL2": 5.920217179904372e-14,
       "pass": true
     },
     {
       "name": "Cell 1: 16 to 32 subdivisions per link",
-      "relativeL2": 2.235117568532033e-14,
+      "relativeL2": 2.423982192697209e-14,
       "pass": true
     },
     {
       "name": "Cell 2: 8 to 16 subdivisions per link",
-      "relativeL2": 3.923443347378167e-14,
+      "relativeL2": 3.923684998637257e-14,
       "pass": true
     },
     {
       "name": "Cell 2: 16 to 32 subdivisions per link",
-      "relativeL2": 1.3234746514303429e-14,
+      "relativeL2": 1.325132273134503e-14,
       "pass": true
     },
     {
       "name": "Cell 3: 8 to 16 subdivisions per link",
-      "relativeL2": 6.065802365215445e-14,
+      "relativeL2": 6.824390118006922e-14,
       "pass": true
     },
     {
       "name": "Cell 3: 16 to 32 subdivisions per link",
-      "relativeL2": 2.283188442351406e-14,
+      "relativeL2": 2.5663455269286755e-14,
       "pass": true
     }
   ],
   "relativeL2Limit": 0.01,
   "sourceHashes": {
-    "scripts/axon-interface/stage2/magnetic-path-check.mjs": "5c64eba009ad99c7cdcd2f1ec46196ebdcd56fe55c2e09f9fbb273429a986514",
+    "scripts/axon-interface/stage2/magnetic-path-check.mjs": "5b714f3843b931fa61b18a26b6383eb3c763a6f27c6baaf6f7825e5fe7b40e0d",
     "public/simulations/biohybrid-axon-interface/stage2/modules/magnetic.mjs": "c193a53ead9e4c31d2eab3b7dc9f383c7606b777637f53bf231a2c6e5dbfa794",
-    "src/lib/axon-interface/stage2/magnetic-coupling.mjs": "59199944c150c7e43a2d6e875efae20486592e54b169987b15f7d7976b662db3",
-    "docs/axon-interface/stage2/induction-validation.json": "50b21f65942e5623645bc91ea3951100083d4ac5c72bca580aacdcfab6ed2ac5",
+    "src/lib/axon-interface/stage2/magnetic-coupling.mjs": "4b5114254bccc49408dfbbbcf83b4f257c2a07cc11aceb0554b9e9af693d0d97",
+    "docs/axon-interface/stage2/induction-validation.json": "e97756d93f52eab0f232e0bee1884a959e705b503061a20c00dc8c088dd933d2",
     "docs/axon-interface/stage2/coupling-acceptance.json": "a571a31de835a5a61b69ffec1b5e441fde907c80be8542fa4229cbb4e34de0ce"
   },
   "sourceChanged": false,
-  "seconds": 73.146269779,
-  "fieldQualified": false,
-  "scope": "Only the cable line integral is refined. The same unqualified finer tissue scalar field is held fixed. Passing this study cannot repair mesh convergence."
+  "seconds": 56.633486079,
+  "fieldQualified": true,
+  "scope": "Only the cable line integral is refined. The same production-refinement tissue scalar field is held fixed. Tissue-mesh convergence is verified in its separate required study."
 }

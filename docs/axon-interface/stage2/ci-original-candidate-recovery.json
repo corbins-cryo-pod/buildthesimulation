@@ -1,0 +1,25 @@
+{
+  "schema": "axon-stage2-ci-evidence-import/2",
+  "passed": true,
+  "mode": "candidate",
+  "testedCommit": "99bfb0803aad7fd3e84c4421028fa8cc72af0085",
+  "workflowRun": 43440643904,
+  "workflowUrl": "https://github.com/corbins-cryo-pod/buildthesimulation/actions/runs/43440643904",
+  "runner": {
+    "commit": "99bfb0803aad7fd3e84c4421028fa8cc72af0085",
+    "node": "v24.22.1",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "logicalCpus": 4,
+    "totalMemoryBytes": 16759439360,
+    "startedAt": "2026-11-13T14:13:40.214Z",
+    "execution": "Serial cases on an isolated runner; original seed 2048, unchanged predeclared acceptance limits."
+  },
+  "fixtureSha256": "e32f86459c4de57e1b0c007027579968a37f1938cb088ead9c7b9a7957e945a6",
+  "importedAt": "2026-11-13T15:18:17.177941+00:00",
+  "checks": [
+    "Pinned runner, candidate bytes, physical fixture and all physical source hashes match"
+  ],
+  "files": {
+    "nested-original-field-1-2.json": "6baa8a6e70cb2c62048c5cf9e8fd938af7fabe3dfe2957de343b9f32dc42e304"
+  }
+}
