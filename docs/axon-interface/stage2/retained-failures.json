@@ -178,5 +178,11 @@
     "scope": "Full 0.4.3 protocol superseded",
     "failure": "The current full magnetic protocol was canceled with exit 130 after its mesh-refinement failure, without a completed magnetic result.",
     "correction": "The interruption record retains this status. The 0.4.4 protocol and hosted comparison must execute with the selected production mesh; old passing exports cannot substitute."
+  },
+  {
+    "id": "coupled-030",
+    "scope": "Reconstructed seed-4079 axial-1 diagnostic",
+    "failure": "The coarse planar-1/axial-1 field differs from axial 2 by 7.068860706% for E0002 and 14.461042555% for E0004, exceeding the unchanged 5% transfer limit.",
+    "correction": "Raw fields and all four comparisons remain retained in nested-recovery-field-1-1.json and retained/nested-recovery-axial1-failure.json. The actual production candidate uses axial 2 and passes its separate axial-3 and planar-2 comparisons. The original seed-2048 study remains independently required."
   }
 ]
