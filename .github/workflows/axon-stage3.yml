@@ -1,0 +1,41 @@
+name: Axon Stage 3 growth development
+on:
+  push:
+    branches: [feature/axon-resolution-stage3-growth]
+  pull_request:
+    paths:
+      - 'public/axon-stage3/**'
+      - 'scripts/axon-interface-stage3/**'
+      - 'tests/axon-interface-stage3-contracts.mjs'
+      - 'docs/axon-interface/stage3/**'
+      - '.github/workflows/axon-stage3.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  components-and-contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.5'
+      - name: Install pinned independent reference dependencies
+        run: python -m pip install -r scripts/axon-interface-stage3/requirements.txt
+      - name: Verify software contracts and mathematical components
+        run: python scripts/axon-interface-stage3/reproduce.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: axon-stage3-verification
+          path: |
+            public/axon-stage3/validation.json
+            docs/axon-interface/stage3/reference-report.json
+            docs/axon-interface/stage3/test-report.tap
+            axon-stage3-laboratory.html
+          retention-days: 14
