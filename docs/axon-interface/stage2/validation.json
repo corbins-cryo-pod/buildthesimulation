@@ -1,6 +1,6 @@
 {
   "schema": "axon-stage2-validation/1",
-  "generatedAt": "2026-11-13T14:52:20.945Z",
+  "generatedAt": "2026-11-13T14:58:33.770Z",
   "status": "development-checkpoint",
   "completeStage2": false,
   "modelVersion": "axon-modalities-coupled-0.4.4",
@@ -8,6 +8,7 @@
   "evidenceCollectionMode": "Aggregate existing study outputs; not a claim of a new all-studies rerun.",
   "sourceChangedDuringRun": null,
   "sourceHashes": {
+    ".github/workflows/axon-stage2.yml": "9d03f7615068712559d6be930208086c795922c8548e4c7ff27c0b007f1c8641",
     "docs/axon-interface/stage2/coupling-acceptance.json": "a571a31de835a5a61b69ffec1b5e441fde907c80be8542fa4229cbb4e34de0ce",
     "docs/axon-interface/stage2/spatial-acceptance.json": "ab0ba2cdc70f06406b9ceb93e229358d003bb485ffd2e583ca4e07009a0815c6",
     "labs/axon-stage2/docs/acceptance.json": "6e3fcf8d39fb7917060edc59f4b4e879c4bc034dba7e9b76180625f7fda41f28",
@@ -57,7 +58,7 @@
     "scripts/axon-interface/stage2/probe-optical.mjs": "1d3f57bda9e4fb292119744e18d29b218acbb7ed79f8ba869243a63386a43ca6",
     "scripts/axon-interface/stage2/protocol-check.mjs": "066dac8ba1aa78cce402a97e0c2853ab0e8012534bfd0045d20e784b9275b3b2",
     "scripts/axon-interface/stage2/recording-field-check.mjs": "a1fb86b92d71ade10e7193daec8cf689bb78a89c5eee14858ae057b1785a2267",
-    "scripts/axon-interface/stage2/reproduce.mjs": "9532eff27373abb9fe0bf40378a206647a976c4664ed371432078921328d358a",
+    "scripts/axon-interface/stage2/reproduce.mjs": "c67301ceb7bf41da2d52e8d634e517873990aac55322bdebe81901e430cd5443",
     "scripts/axon-interface/stage2/requirements.txt": "092475ddcda41189dfb7f813c113f3e5dc98dc26a9872459d5bdeb662305f72d",
     "scripts/axon-interface/stage2/spatial-check.mjs": "3f3cfaf65afcdbcf560b37f902cde3b69e49eed44c66ed76f21f00bad18e1722",
     "scripts/axon-interface/stage2/spectral-component-check.mjs": "e2e3a194ebc3ecd554d5a8d8cd06d1a7b4ae3bb350e0cb4a57742f75df3d7e6a",
@@ -69,6 +70,7 @@
     "scripts/axon-interface/stage2/study-provenance.mjs": "b6ad783476e9e9473430f88dc2f83df702fad2b985c08ffcb3c9bc0b890d2e09",
     "scripts/axon-interface/stage2/surface-check.mjs": "4e8dd628f799afac6b55a43058f62221817d07da8d0bbedc648fd03e7c18578d",
     "scripts/axon-interface/stage2/surface-probe.mjs": "3bd4180a7e2ecd5dae06e5812f0038d0ae8c5f09895d31d80c1a975c7ad76c04",
+    "scripts/verify-axon-stage2-build.mjs": "73764bf79c581f5b9fddaf013d85734a98c56b080a697b7e6ff9b8cae9dd6f04",
     "src/components/AxonStage2Laboratory.jsx": "826bc9dca964c2400461b14e1df40af6e7b18d73c0d9294d770e8a63603e0276",
     "src/lib/axon-interface-stage2-publication.mjs": "0feeae25a76366dbc9746f20fa282490d6abca5956afea4bcd656f7bd0d0d176",
     "src/lib/axon-interface/bipolar.mjs": "d47f6717b3faa87ae775c67e1fee4ce0f222e5e954cdba6c765d3d7dffb22098",
@@ -127,7 +129,7 @@
     "cpu": "AMD EPYC 9V74 80-Core Processor",
     "logicalCpus": 9,
     "totalMemoryBytes": 10451427328,
-    "seconds": 0.04525608499999999
+    "seconds": 0.054568307
   },
   "stages": [],
   "components": {
@@ -152,7 +154,7 @@
       "complete": true,
       "passed": true,
       "checks": 11,
-      "sha256": "b3d09f7247a59357ce1ddf71a40a33d80cc47fdd8fb4a44cda3a3e83d454c856"
+      "sha256": "61ea2ecc010139ef2e97ed6874e75a7a703730328adb9280428aa4c35e2bc6c0"
     },
     "recording-field": {
       "complete": true,
@@ -254,7 +256,7 @@
       "complete": true,
       "passed": true,
       "checks": 8,
-      "sha256": "96436928a66ffe851de96620e457b5cea6dabf5220ae4205fab25cba223c39fb"
+      "sha256": "159a86325ee9c2b8b481bdfae5fe54466c9f4ab1f266e8e06fb50bfc9369fa35"
     }
   },
   "browser": {
@@ -320,7 +322,7 @@
   "evidenceFiles": {
     "docs/axon-interface/stage2/coupling-validation.json": "30d3c8dc67c6ca838a0639dd3162641f26e9904aed90ac8078a8ae11b3ecb1a7",
     "docs/axon-interface/stage2/surface-validation.json": "b324daf0ccd2edafc6ea1273f4944530a2e2ed218cb49703420c4df777cb4d03",
-    "docs/axon-interface/stage2/spatial-validation.json": "b3d09f7247a59357ce1ddf71a40a33d80cc47fdd8fb4a44cda3a3e83d454c856",
+    "docs/axon-interface/stage2/spatial-validation.json": "61ea2ecc010139ef2e97ed6874e75a7a703730328adb9280428aa4c35e2bc6c0",
     "docs/axon-interface/stage2/recording-field-validation.json": "da792dae7741994d2f552d3785ae862df7ada3aad80f8a51f48d9d2cb0a93822",
     "docs/axon-interface/stage2/induction-validation.json": "9383ddbe1ea269ad1183fb75cd8d7c61db03f0a285cc21918389f1563d9dfbd4",
     "docs/axon-interface/stage2/magnetic-path-validation.json": "82132d17659fa25905680357a94100efc0148e536ac6233e2558baf011daabf1",
@@ -337,16 +339,15 @@
     "docs/axon-interface/stage2/spectral-coupling-validation.json": "2b2e4ba9e768970c18c7e70db539e478edd90625df0cfb4050b05c1517703cb9",
     "docs/axon-interface/stage2/spectral-spatial-validation.json": "5a692cd51c2456d7d75cd25cb417693074e747df88e5399e59cada2327fd748c",
     "docs/axon-interface/stage2/spectral-protocol-validation.json": "12d01ee266a23c9f439976fe5d9b78bf07a12928d3246d089e6c931cefb9db3e",
-    "docs/axon-interface/stage2/spectral-crosstalk-validation.json": "96436928a66ffe851de96620e457b5cea6dabf5220ae4205fab25cba223c39fb",
+    "docs/axon-interface/stage2/spectral-crosstalk-validation.json": "159a86325ee9c2b8b481bdfae5fe54466c9f4ab1f266e8e06fb50bfc9369fa35",
     "docs/axon-interface/stage2/browser-validation.json": "8124ce5eb77ac96e6c49952f8e0aa6bf3b927202fde5f6229b54fe5fd5d3912c",
     "docs/axon-interface/stage2/software-checkpoint.json": "55bac376a4ca185e72ddb59865b46003f8c8abc93fc3f226613b2466faf740e9",
-    "labs/axon-stage2/reports/independent-reference.json": "9a88350fc4a201a40210c45650f869f8107b5ee027927be9d5cd90c0bc431e61"
+    "labs/axon-stage2/reports/independent-reference.json": "8548f27e25c532ca2c5598d81b8f3cefb1003859b1e327092c0df5733e0b4260"
   },
   "openReleaseGates": [
     "induction numerical qualification remains incomplete or failed.",
     "nested-original numerical qualification remains incomplete or failed.",
     "nested-original-independent numerical qualification remains incomplete or failed.",
-    "spatial evidence has missing or stale source hashes: ",
     "magnetic-path evidence has missing or stale source hashes: scripts/axon-interface/stage2/magnetic-path-check.mjs, src/lib/axon-interface/stage2/magnetic-coupling.mjs, docs/axon-interface/stage2/induction-validation.json",
     "magnetic-coupling evidence has missing or stale source hashes: src/lib/axon-interface/stage2/magnetic-coupling.mjs, scripts/axon-interface/stage2/native-reference.py, scripts/axon-interface/stage2/magnetic-coupling-check.mjs, docs/axon-interface/stage2/induction-validation.json",
     "magnetic-policy evidence has missing or stale source hashes: src/lib/axon-interface/stage2/settings.mjs, src/lib/axon-interface/stage2/protocol.mjs, src/lib/axon-interface/stage2/induction-solve.mjs, scripts/axon-interface/stage2/magnetic-policy-check.mjs",
@@ -354,9 +355,7 @@
     "nested-original evidence has missing or stale source hashes: ",
     "nested-original-independent evidence has missing or stale source hashes: ",
     "protocol evidence has missing or stale source hashes: ",
-    "spectral-crosstalk evidence has missing or stale source hashes: ",
     "Current-version, source-identified complete cohort protocol remains pending.",
-    "Independent component source provenance is missing or stale.",
     "Final hosted browser verification remains pending.",
     "Current-version complete site build and repository regression evidence remains pending.",
     "Software verification source changed after tests/build."
