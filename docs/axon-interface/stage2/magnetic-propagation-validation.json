@@ -1,0 +1,497 @@
+{
+  "schema": "axon-stage2-magnetic-propagation-validation/1",
+  "complete": true,
+  "passed": true,
+  "rows": [
+    {
+      "name": "propagating time step 0.000625 -> 0.0003125",
+      "exactObservationTimestamps": true,
+      "maximumSiteRmsMv": 0.17288729329519187,
+      "rmsPerSiteMv": [
+        0.17288729329519187,
+        0.12260863725903924,
+        0.09901950890348374,
+        0.0675804574808125,
+        0.05556161718772431,
+        0.012521468084762587,
+        0.01201624779668398,
+        0.010753120906265148,
+        0.009869616214389837,
+        0.008989085229604597,
+        0.008983341688657474,
+        0.008974334358394395,
+        0.008962296011774331,
+        0.00894750379956589,
+        0.01071849566461591,
+        0.014280655389194985,
+        0.017513223943057894,
+        0.018528592719808855,
+        0.06606113265291011,
+        0.08229949517088879,
+        0.11549011253568012,
+        0.14723918790956309,
+        0.14921916591512394
+      ],
+      "identicalCrossingCounts": true,
+      "unmatchedCrossings": 0,
+      "maximumCrossingTimeErrorMs": 0.0006673614292138641,
+      "pass": true,
+      "spikeCount": 10
+    },
+    {
+      "name": "propagating native NEURON",
+      "exactObservationTimestamps": true,
+      "maximumSiteRmsMv": 4.954063740870216e-9,
+      "rmsPerSiteMv": [
+        4.097891301532804e-9,
+        2.899458901180594e-9,
+        1.83203394593311e-9,
+        1.6134993510021697e-9,
+        4.2124082678276565e-9,
+        3.0936798321669567e-9,
+        3.386732555522926e-9,
+        3.139459791200693e-9,
+        2.936704292990296e-9,
+        2.8639298542427004e-9,
+        2.8636659018532074e-9,
+        2.8635080531620037e-9,
+        2.8634277470270583e-9,
+        2.8634159406471387e-9,
+        2.873863034093926e-9,
+        2.901191284710056e-9,
+        2.9220596306951125e-9,
+        2.810326072440621e-9,
+        2.9561072895224498e-9,
+        1.828856265277159e-9,
+        3.579859644577665e-9,
+        4.954063740870216e-9,
+        4.941805766664887e-9
+      ],
+      "identicalCrossingCounts": true,
+      "unmatchedCrossings": 0,
+      "maximumCrossingTimeErrorMs": 2.2267410137999377e-11,
+      "pass": true,
+      "spikeCount": 10
+    },
+    {
+      "name": "propagating time step 0.0003125 -> 0.00015625",
+      "exactObservationTimestamps": true,
+      "maximumSiteRmsMv": 0.09135050001951467,
+      "rmsPerSiteMv": [
+        0.09135050001951467,
+        0.060700483382130965,
+        0.049197693925419485,
+        0.03383711959379508,
+        0.0284505372931852,
+        0.0065788025830765835,
+        0.0063534873533058695,
+        0.005745767066828637,
+        0.005274404184629997,
+        0.004909074365308178,
+        0.004906554604611549,
+        0.004902561442976737,
+        0.004897192945991867,
+        0.004890567127879844,
+        0.0056010726596319215,
+        0.007461676679063686,
+        0.009031224725271726,
+        0.009508952533135334,
+        0.03212854076524334,
+        0.04141092818382417,
+        0.05829869504967261,
+        0.07358785653280786,
+        0.07262900946516654
+      ],
+      "identicalCrossingCounts": true,
+      "unmatchedCrossings": 0,
+      "maximumCrossingTimeErrorMs": 0.00033278493060995284,
+      "pass": true,
+      "spikeCount": 10
+    },
+    {
+      "name": "whole-cell-block time step 0.000625 -> 0.0003125",
+      "exactObservationTimestamps": true,
+      "maximumSiteRmsMv": 0.04156325370664159,
+      "rmsPerSiteMv": [
+        0.005101939297750913,
+        0.004113229179087164,
+        0.0064648331053455505,
+        0.024666212815134387,
+        0.04153950834985144,
+        0.010397233122083668,
+        0.009862618585356434,
+        0.007775434896179067,
+        0.005159284903358133,
+        0.0025157127581336798,
+        0.002494166903550297,
+        0.002463050920379923,
+        0.002422776639894683,
+        0.0023738800901827116,
+        0.00672238786806009,
+        0.011711970157493777,
+        0.014781825131868489,
+        0.015218980822416907,
+        0.04156325370664159,
+        0.02399056048073027,
+        0.006304266955190254,
+        0.0042262736151119805,
+        0.005184099517227298
+      ],
+      "identicalCrossingCounts": true,
+      "unmatchedCrossings": 0,
+      "maximumCrossingTimeErrorMs": 0.00015472976244101933,
+      "pass": true,
+      "spikeCount": 2
+    },
+    {
+      "name": "whole-cell-block native NEURON",
+      "exactObservationTimestamps": true,
+      "maximumSiteRmsMv": 2.308035356815366e-9,
+      "rmsPerSiteMv": [
+        3.3344877976839596e-10,
+        2.6290557370316077e-10,
+        2.7217250417479557e-10,
+        4.872956384592696e-10,
+        2.284699178548458e-9,
+        2.4758055952082554e-10,
+        1.7453001693255885e-10,
+        9.212154112434301e-11,
+        8.376895049705699e-11,
+        8.25391506667799e-11,
+        7.910911232084805e-11,
+        7.735914595072374e-11,
+        7.590785251308359e-11,
+        7.403983064152166e-11,
+        1.1080164682821335e-10,
+        1.0830438740047024e-10,
+        9.315230605744955e-11,
+        4.0618007461378173e-10,
+        2.308035356815366e-9,
+        5.098265389503269e-10,
+        2.5859641602508716e-10,
+        2.6325060719637396e-10,
+        3.5394008890806344e-10
+      ],
+      "identicalCrossingCounts": true,
+      "unmatchedCrossings": 0,
+      "maximumCrossingTimeErrorMs": 1.2573941887694673e-11,
+      "pass": true,
+      "spikeCount": 2
+    },
+    {
+      "name": "whole-cell-block time step 0.0003125 -> 0.00015625",
+      "exactObservationTimestamps": true,
+      "maximumSiteRmsMv": 0.0204030722798175,
+      "rmsPerSiteMv": [
+        0.002605488724983336,
+        0.00204983654083965,
+        0.003307567230673004,
+        0.012404804001424633,
+        0.02037168804077978,
+        0.005253147142892076,
+        0.0049721820470545915,
+        0.0039087648531902705,
+        0.0025029967600782503,
+        0.0012619320148913396,
+        0.0012516319274085011,
+        0.001236660867272434,
+        0.0012171985080887036,
+        0.0011934829978886856,
+        0.003173559866056738,
+        0.0059369085412680055,
+        0.007471143135115149,
+        0.007685219364425485,
+        0.0204030722798175,
+        0.012070541810230663,
+        0.003214892935575493,
+        0.002109080750138591,
+        0.002644967566937776
+      ],
+      "identicalCrossingCounts": true,
+      "unmatchedCrossings": 0,
+      "maximumCrossingTimeErrorMs": 0.00007676870392359092,
+      "pass": true,
+      "spikeCount": 2
+    },
+    {
+      "name": "Stress propagation at soma 5",
+      "pass": true
+    },
+    {
+      "name": "Stress propagation at soma 9",
+      "pass": true
+    },
+    {
+      "name": "central delay 5 -> 9",
+      "relative": 0.014789215179492231,
+      "pass": true
+    },
+    {
+      "name": "peripheral delay 5 -> 9",
+      "relative": 0.01870697856921754,
+      "pass": true
+    },
+    {
+      "name": "Reciprocal recording 5 -> 9",
+      "relative": 0.057995276976415225,
+      "pass": true
+    },
+    {
+      "name": "Stress propagation at soma 13",
+      "pass": true
+    },
+    {
+      "name": "central delay 9 -> 13",
+      "relative": 0.006678101773725698,
+      "pass": true
+    },
+    {
+      "name": "peripheral delay 9 -> 13",
+      "relative": 0.0070013851203012435,
+      "pass": true
+    },
+    {
+      "name": "Reciprocal recording 9 -> 13",
+      "relative": 0.012095904618287549,
+      "pass": true
+    }
+  ],
+  "runs": [
+    {
+      "level": {
+        "soma": 5,
+        "stem": 3,
+        "passive": 3
+      },
+      "central": {
+        "recruited": true,
+        "times": [
+          0.6033959221438544,
+          0.6298943594779862,
+          0.6485286970306557
+        ],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          229,
+          260,
+          291
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [
+          18.86903720756265,
+          26.83218539895835
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": true,
+        "times": [
+          0.5339606509636191,
+          0.557530590366212,
+          0.5751874022119171
+        ],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          93,
+          62,
+          31
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [
+          21.213461411996516,
+          28.317682963905046
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "recordingPeakToPeakUv": 2766.538856351796
+    },
+    {
+      "level": {
+        "soma": 9,
+        "stem": 5,
+        "passive": 5
+      },
+      "central": {
+        "recruited": true,
+        "times": [
+          0.6029192701092472,
+          0.6298139254249385,
+          0.6487295429789498
+        ],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          377,
+          428,
+          479
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [
+          18.591054398391105,
+          26.433184038126512
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": true,
+        "times": [
+          0.5344632063105282,
+          0.558519865646845,
+          0.5764758878928216
+        ],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          153,
+          102,
+          51
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [
+          20.784265720767795,
+          27.845810901244093
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "recordingPeakToPeakUv": 2614.8877188356932
+    },
+    {
+      "level": {
+        "soma": 13,
+        "stem": 7,
+        "passive": 7
+      },
+      "central": {
+        "recruited": true,
+        "times": [
+          0.6027157626929214,
+          0.6298056622819067,
+          0.6488340179649573
+        ],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          525,
+          596,
+          667
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [
+          18.45706361360236,
+          26.276574199491982
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": true,
+        "times": [
+          0.5346203211146561,
+          0.5588622846949619,
+          0.5769292236173883
+        ],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          213,
+          142,
+          71
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [
+          20.625391930140616,
+          27.67485970627573
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "recordingPeakToPeakUv": 2583.6363005755857
+    }
+  ],
+  "peakA": 100000000,
+  "acceptance": {
+    "schema": "axon-stage2-magnetic-propagation-acceptance/1",
+    "declaredBeforeExecution": true,
+    "peakAmpereGrid": [
+      0,
+      10000,
+      100000,
+      1000000,
+      10000000,
+      100000000
+    ],
+    "riseMs": 0.05,
+    "dtMs": [
+      0.000625,
+      0.0003125,
+      0.00015625
+    ],
+    "levels": [
+      {
+        "soma": 5,
+        "stem": 3,
+        "passive": 3
+      },
+      {
+        "soma": 9,
+        "stem": 5,
+        "passive": 5
+      },
+      {
+        "soma": 13,
+        "stem": 7,
+        "passive": 7
+      }
+    ],
+    "maximumSiteRmsMv": 1,
+    "maximumCrossingTimeMs": 0.1,
+    "counts": "identical at every active site",
+    "conductionDelayRelative": 0.05,
+    "recordingPeakToPeakRelative": 0.1,
+    "selection": "Retain every declared grid probe, including unstable cases. Select the lowest absolute peak current with qualifying propagation in both arms. Freeze it across native, time and spatial comparisons.",
+    "scope": "Extreme unphysical current is an implementation stress fixture only. It is excluded from the supported 0–100 A interface, energy/feasibility claims and qualified operating thresholds. No transfer, waveform, voltage or time is rescaled between a simulation and its reference. The actual modeled axial microcoil may fail to recruit within its declared operating grid."
+  },
+  "fieldMethod": {
+    "radialRefinement": 2,
+    "axialRefinement": 2,
+    "planarRefinement": 1
+  },
+  "seed": 2048,
+  "fieldQualification": "Separate required conservative field study. Passing this stress fixture cannot qualify the field.",
+  "sourceHashes": {
+    "src/lib/axon-interface/stage2/nested-field.mjs": "43a705fcd0c6d4bd2cee3a7a9389c7cfb58001bc74acc07583c061091076cdd2",
+    "src/lib/axon-interface/stage2/embedded-coil.mjs": "6807b3e74bad7ab5e6cf4e5962c858065a6661d5d649c3537aedb306c6f4a63a",
+    "docs/axon-interface/stage2/nested-original-field-1-2.json": "6baa8a6e70cb2c62048c5cf9e8fd938af7fabe3dfe2957de343b9f32dc42e304",
+    "scripts/axon-interface/stage2/magnetic-propagation-check.mjs": "996ae427f17bac6e8fe94cb0af298cfb4750b6644ec28145c2bdb7b26f31ded3",
+    "src/lib/axon-interface/stage2/membrane.mjs": "59a1f175bf0c31b3d7b3f93eabfcbb18ab2c4db530a147ac0682988d03da2515",
+    "src/lib/axon-interface/stage2/magnetic-coupling.mjs": "4b5114254bccc49408dfbbbcf83b4f257c2a07cc11aceb0554b9e9af693d0d97",
+    "src/lib/axon-interface/stage2/precision-contact-solve.mjs": "0b8433f92cf7c06f4387046768c3fbb125b4fea8ea3c2c42e3e2e40590da1108",
+    "scripts/axon-interface/stage2/native-reference.py": "e398dcd528255d715f92e25696e054246ac4656f77493beae8d456353baaf58a",
+    "docs/axon-interface/stage2/magnetic-propagation-acceptance.json": "4ade596ba7ec8b1e2d42ce15d377607507c7f2226caeec4aabaa6692c4566f14"
+  },
+  "runtimeSeconds": 300.02016799
+}

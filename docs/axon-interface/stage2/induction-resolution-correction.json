@@ -1,0 +1,62 @@
+{
+  "schema": "axon-stage2-induction-resolution-correction/1",
+  "declaredBeforeExecution": true,
+  "reason": "Conservative refinement 2 versus 4 gives 0.8357%, 3.8994%, 3.6748% and 5.3361% transfer differences. The last cell fails the unchanged 5% criterion; refinement 2 is not qualified.",
+  "production": {
+    "radialRefinement": 3,
+    "axialRefinement": 3
+  },
+  "reference": {
+    "radialRefinement": 4,
+    "axialRefinement": 4
+  },
+  "inductionTransferRefinementRelativeL2": 0.05,
+  "trueResidual": 1e-10,
+  "recurrenceResidual": 2e-12,
+  "maximumIterations": 16000,
+  "sourceQuadrature": {
+    "faceOrder": 8,
+    "volumeRule": "tetra11"
+  },
+  "algebra": "Two-component solution and physical residual with error-free products; exact axial-column block Cholesky preconditioner. No physical matrix shift.",
+  "required": [
+    "Every cell passes production 3 versus reference 4",
+    "Independent physical NumPy/SciPy assembly agrees at production 3",
+    "Repeat native/time/spatial magnetic checks at production 3",
+    "Full production cohort protocol and hosted worker pass"
+  ],
+  "retained": "The failed 2-versus-4 result remains rejected even if the genuinely finer production mesh passes. This is a mesh change, not a tolerance change or rescaling.",
+  "scope": "Numerical refinement of the same fixed physical geometry and source. Benchmarks do not certify arbitrary future geometries or biological validity.",
+  "followup": {
+    "declaredBeforeExecution": true,
+    "reason": "3/3 versus 4/4 fails at cell 2 (5.522489595%). Refine the axial production direction to 4, then check both the 3/3-to-3/4 axial change and 3/4-to-4/4 radial change at every cell.",
+    "production": {
+      "radialRefinement": 3,
+      "axialRefinement": 4
+    },
+    "reference": {
+      "radialRefinement": 4,
+      "axialRefinement": 4
+    },
+    "additionalRequired": "Every cell in the 3/3-to-3/4 axial comparison also remains below the same 5% limit.",
+    "limitsUnchanged": true
+  },
+  "radialCorrection": {
+    "declaredBeforeExecution": true,
+    "production": {
+      "radialRefinement": 4,
+      "axialRefinement": 4
+    },
+    "reference": {
+      "radialRefinement": 5,
+      "axialRefinement": 4
+    },
+    "reason": "Axial 3-to-4 errors are 0.13%, 0.31%, 0.17%, 0.89%; radial 3-to-4 still gives 5.5946% for cell 2. Refine the unresolved radial direction.",
+    "admission": "Offline reference admits radial factor 5 only. Stage 1 source, physical assembly, memory budgets and all acceptance limits are unchanged.",
+    "required": [
+      "Every cell radial 4-to-5 transfer relative L2 <= 0.05",
+      "Retain passing axial 3-to-4 comparisons and every failed radial mesh",
+      "Independent physical assembly and production-4 membrane/propagation/browser checks"
+    ]
+  }
+}

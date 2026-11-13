@@ -1,0 +1,47 @@
+✔ binary matrices reject missing, ragged and nonbinary values (2.669481ms)
+✔ exact rank is over the reals, not GF(2) (0.29821ms)
+✔ exclusive coverage, shared outputs and dependence are distinct (0.645512ms)
+✔ failed or incomplete causal audits withhold headlines (0.280524ms)
+✔ duplicate channels do not increase real rank (3.377746ms)
+✔ information is declared protocol entropy, not number of outputs or rate (0.248016ms)
+✔ identities and census must remain consistent (0.229679ms)
+✔ Stage 1 result import preserves declared settings, not certification (0.400201ms)
+✔ amplitude brackets do not bridge a failed point (0.417165ms)
+✔ sweeps reject reordering and retain nonmonotonicity (0.27136ms)
+✔ coil path is closed and electrical resistance is geometric (0.928771ms)
+✔ finite conductor intersections and malformed winding inputs rejected (1.259569ms)
+✔ straight-segment field, reversal and collinear external limit (0.166336ms)
+✔ coil rotation/translation covariance at free-space sample (1.196165ms)
+✔ circular-loop polygon converges to analytic on-axis B (0.858397ms)
+✔ electric induction follows slew; cable line integral changes sign with path (6.245669ms)
+✔ coil power arithmetic is separate from thermal safety (3.968377ms)
+✔ P1 gradients partition unity and volume is exact (0.239824ms)
+✔ induction weak load conserves current and respects anisotropy (0.254506ms)
+✔ opsin dark state remains closed without probability clipping (22.408937ms)
+✔ opsin lit assay conserves occupancy and remains positive (30.491708ms)
+✔ zero expression is zero photocurrent, not forced zero states (11.642245ms)
+✔ literal I-V product is finite at zero; no fabricated reversal correction (0.187958ms)
+✔ opsin malformed states, settings and edge timing rejected (0.309377ms)
+✔ uniformization stationary generator leaves arbitrary distribution unchanged (0.165294ms)
+✔ well rays distinguish open aperture, endcap and cylindrical side wall (0.335826ms)
+✔ virtual detector track-length integral is geometric (0.120688ms)
+✔ Henyey-Greenstein mean cosine matches supplied anisotropy (21.689665ms)
+✔ photon histories are deterministic and conserve all energy categories (55.568293ms)
+✔ finite photon evidence does not claim infinite confinement (3.043873ms)
+✔ truncation is unresolved optical energy, never heat (2.329198ms)
+✔ optical geometry and computational caps reject rather than downsample (0.329536ms)
+✔ LED emitted energy, electrical input and junction heat are separate (0.532116ms)
+✔ spectral interpolation refuses unsupported extrapolation (0.232764ms)
+✔ photon weighting depends on wavelength, not power alone (0.145975ms)
+✔ spectral example remains hypothetical with blue crosstalk (0.663479ms)
+✔ worker dispatch returns explicit nonrelease status and errors unknown jobs (0.307974ms)
+✔ seed streams are reproducible and independently named (0.150162ms)
+✔ exports refuse NaN and preserve null unknown quantities (0.235508ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 243.065599

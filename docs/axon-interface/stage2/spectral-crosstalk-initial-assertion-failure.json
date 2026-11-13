@@ -1,0 +1,674 @@
+{
+  "schema": "axon-stage2-spectral-crosstalk-validation/1",
+  "complete": true,
+  "passed": false,
+  "rows": [
+    {
+      "name": "Four distinct physical-source/wavelength rows",
+      "pass": true
+    },
+    {
+      "name": "Both wavelengths reuse each declared source location",
+      "pass": true
+    },
+    {
+      "name": "Red-family target actually receives blue and green trials",
+      "pass": true
+    },
+    {
+      "name": "Blue crosstalk is present in the nonlinear output",
+      "pass": true
+    },
+    {
+      "name": "Shared red output is not counted as two unique outputs",
+      "pass": false
+    },
+    {
+      "name": "All 16 channel-cell pairs audited at both amplitudes",
+      "pass": true
+    },
+    {
+      "name": "Opsin removal retains light but abolishes output",
+      "pass": true
+    },
+    {
+      "name": "Original host census has no fabricated recovery",
+      "pass": true
+    }
+  ],
+  "settings": {
+    "modality": "spectral",
+    "axonCount": 4,
+    "channelCount": 2,
+    "seed": 4079,
+    "amplitudes": [
+      0,
+      0.002
+    ],
+    "dtMs": 0.000625,
+    "durationMs": 6,
+    "sampleDtMs": 0.01,
+    "photons": 32000,
+    "shellThicknessUm": 0.5,
+    "gmaxMsCm2": 5,
+    "opticalPulseMs": 2,
+    "reflectivity": 0.85,
+    "coilLayers": 6,
+    "coilRiseMs": 0.05,
+    "wellApertureRadiusUm": 3.5,
+    "spectralFamilyCount": 2,
+    "spectralExpression": 20,
+    "spectralRateScale": 1,
+    "muAbs470PerMm": 0.2,
+    "muScatter470PerMm": 10,
+    "absorptionExponent": 0,
+    "scatteringExponent": 1
+  },
+  "matrices": [
+    {
+      "amplitude": 0,
+      "matrices": {
+        "assigned": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "regionalSilenced": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "wholeSilenced": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "somaSilenced": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "opsinBlocked": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "metrics": {
+        "schema": "axon-stage2.selectivity.v1",
+        "modelVersion": "axon-modalities-0.1.0-component-preview",
+        "provenance": "New full-cohort nonlinear solves at the retained amplitude.",
+        "census": 4,
+        "resolvedOutputs": 4,
+        "testedChannels": 4,
+        "audit": {
+          "sourceClaimsComplete": true,
+          "sourceClaimsValid": true,
+          "matchedMatricesPresent": true,
+          "headlinesEnabled": true,
+          "recalculatedBiologicalControls": false
+        },
+        "headline": {
+          "exclusiveCount": 0,
+          "exclusiveCoverageOfOriginalCensus": 0,
+          "exclusiveAmongRecruited": null,
+          "sharedOnlyCount": 0,
+          "regionalAndWholeCellDependentExclusiveCount": 0,
+          "exclusiveIds": [],
+          "sharedOnlyIds": [],
+          "criteria": [
+            "regionalSilenced",
+            "wholeSilenced",
+            "opsinBlocked"
+          ],
+          "rows": [
+            {
+              "members": [],
+              "dependentMembers": [],
+              "exclusive": false
+            },
+            {
+              "members": [],
+              "dependentMembers": [],
+              "exclusive": false
+            },
+            {
+              "members": [],
+              "dependentMembers": [],
+              "exclusive": false
+            },
+            {
+              "members": [],
+              "dependentMembers": [],
+              "exclusive": false
+            }
+          ]
+        },
+        "descriptive": {
+          "exclusiveIds": [],
+          "sharedOnlyIds": [],
+          "anyRecruitedIds": [],
+          "exactRealRank": 0,
+          "isolatedInputInformation": {
+            "bitsPerTrial": 0,
+            "inputEntropyBits": 2.321928094887362,
+            "conditionalEntropyBits": 0,
+            "distinctSupportedOutputs": 1,
+            "inputProbabilities": [
+              0.2,
+              0.2,
+              0.2,
+              0.2,
+              0.2
+            ],
+            "protocol": "One channel alone or all channels off; declared probabilities; deterministic saved response per input.",
+            "interpretation": "Not bits/second, physical communication capacity, a noise-robust estimate, or evidence that simultaneous input combinations superpose."
+          }
+        },
+        "channelRows": [
+          {
+            "channelId": "C1-470nm",
+            "members": [],
+            "exclusive": false
+          },
+          {
+            "channelId": "C1-550nm",
+            "members": [],
+            "exclusive": false
+          },
+          {
+            "channelId": "C2-470nm",
+            "members": [],
+            "exclusive": false
+          },
+          {
+            "channelId": "C2-550nm",
+            "members": [],
+            "exclusive": false
+          }
+        ],
+        "classifications": [
+          [
+            "silent in both",
+            "silent in both",
+            "silent in both",
+            "silent in both"
+          ],
+          [
+            "silent in both",
+            "silent in both",
+            "silent in both",
+            "silent in both"
+          ],
+          [
+            "silent in both",
+            "silent in both",
+            "silent in both",
+            "silent in both"
+          ],
+          [
+            "silent in both",
+            "silent in both",
+            "silent in both",
+            "silent in both"
+          ]
+        ],
+        "limitations": [
+          "Import checks data structure; it does not rerun or certify the source calculation.",
+          "Coverage is conditional on the channels and amplitudes actually tested, not a population-wide design yield.",
+          "Exact real-valued rank describes a binary table; it is not a proof of independently commandable patterns for nonlinear neurons.",
+          "Lost-with-block is intervention dependence, not proof of the anatomical origin of depolarization.",
+          "No original-host preservation or restoration is inferred from introduced-cell recruitment."
+        ],
+        "nominalHeadline": {
+          "exclusiveCount": 0,
+          "exclusiveCoverageOfOriginalCensus": 0,
+          "exclusiveAmongRecruited": null,
+          "sharedOnlyCount": 0,
+          "regionalAndWholeCellDependentExclusiveCount": 0,
+          "exclusiveIds": [],
+          "sharedOnlyIds": [],
+          "criteria": [
+            "regionalSilenced",
+            "wholeSilenced",
+            "opsinBlocked"
+          ],
+          "rows": [
+            {
+              "members": [],
+              "dependentMembers": [],
+              "exclusive": false
+            },
+            {
+              "members": [],
+              "dependentMembers": [],
+              "exclusive": false
+            },
+            {
+              "members": [],
+              "dependentMembers": [],
+              "exclusive": false
+            },
+            {
+              "members": [],
+              "dependentMembers": [],
+              "exclusive": false
+            }
+          ]
+        },
+        "descriptiveUncontrolledCounts": {
+          "exclusiveCount": 0,
+          "exclusiveCoverageOfOriginalCensus": 0,
+          "exclusiveAmongRecruited": null,
+          "sharedOnlyCount": 0,
+          "regionalAndWholeCellDependentExclusiveCount": 0
+        },
+        "headlineMeaning": "Conditional on the nominal finite-shell light field; the three exposure probes agree. This is not a rigorous uncertainty-certified firing result."
+      }
+    },
+    {
+      "amplitude": 0.002,
+      "matrices": {
+        "assigned": [
+          [
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        "regionalSilenced": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "wholeSilenced": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "somaSilenced": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0
+          ]
+        ],
+        "opsinBlocked": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "metrics": {
+        "schema": "axon-stage2.selectivity.v1",
+        "modelVersion": "axon-modalities-0.1.0-component-preview",
+        "provenance": "New full-cohort nonlinear solves at the retained amplitude.",
+        "census": 4,
+        "resolvedOutputs": 4,
+        "testedChannels": 4,
+        "audit": {
+          "sourceClaimsComplete": true,
+          "sourceClaimsValid": true,
+          "matchedMatricesPresent": true,
+          "headlinesEnabled": true,
+          "recalculatedBiologicalControls": false
+        },
+        "headline": null,
+        "descriptive": {
+          "exclusiveIds": [
+            "E0001",
+            "E0002"
+          ],
+          "sharedOnlyIds": [],
+          "anyRecruitedIds": [
+            "E0001",
+            "E0002"
+          ],
+          "exactRealRank": 2,
+          "isolatedInputInformation": {
+            "bitsPerTrial": 1.5219280948873621,
+            "inputEntropyBits": 2.321928094887362,
+            "conditionalEntropyBits": 0,
+            "distinctSupportedOutputs": 3,
+            "inputProbabilities": [
+              0.2,
+              0.2,
+              0.2,
+              0.2,
+              0.2
+            ],
+            "protocol": "One channel alone or all channels off; declared probabilities; deterministic saved response per input.",
+            "interpretation": "Not bits/second, physical communication capacity, a noise-robust estimate, or evidence that simultaneous input combinations superpose."
+          }
+        },
+        "channelRows": [
+          {
+            "channelId": "C1-470nm",
+            "members": [
+              "E0001"
+            ],
+            "exclusive": true
+          },
+          {
+            "channelId": "C1-550nm",
+            "members": [],
+            "exclusive": false
+          },
+          {
+            "channelId": "C2-470nm",
+            "members": [
+              "E0002"
+            ],
+            "exclusive": true
+          },
+          {
+            "channelId": "C2-550nm",
+            "members": [
+              "E0002"
+            ],
+            "exclusive": true
+          }
+        ],
+        "classifications": [
+          [
+            "lost with block",
+            "silent in both",
+            "silent in both",
+            "silent in both"
+          ],
+          [
+            "silent in both",
+            "silent in both",
+            "silent in both",
+            "silent in both"
+          ],
+          [
+            "silent in both",
+            "lost with block",
+            "silent in both",
+            "silent in both"
+          ],
+          [
+            "silent in both",
+            "lost with block",
+            "silent in both",
+            "silent in both"
+          ]
+        ],
+        "limitations": [
+          "Import checks data structure; it does not rerun or certify the source calculation.",
+          "Coverage is conditional on the channels and amplitudes actually tested, not a population-wide design yield.",
+          "Exact real-valued rank describes a binary table; it is not a proof of independently commandable patterns for nonlinear neurons.",
+          "Lost-with-block is intervention dependence, not proof of the anatomical origin of depolarization.",
+          "No original-host preservation or restoration is inferred from introduced-cell recruitment."
+        ],
+        "nominalHeadline": {
+          "exclusiveCount": 2,
+          "exclusiveCoverageOfOriginalCensus": 0.5,
+          "exclusiveAmongRecruited": 1,
+          "sharedOnlyCount": 0,
+          "regionalAndWholeCellDependentExclusiveCount": 2,
+          "exclusiveIds": [
+            "E0001",
+            "E0002"
+          ],
+          "sharedOnlyIds": [],
+          "criteria": [
+            "regionalSilenced",
+            "wholeSilenced",
+            "opsinBlocked"
+          ],
+          "rows": [
+            {
+              "members": [
+                "E0001"
+              ],
+              "dependentMembers": [
+                "E0001"
+              ],
+              "exclusive": true
+            },
+            {
+              "members": [],
+              "dependentMembers": [],
+              "exclusive": false
+            },
+            {
+              "members": [
+                "E0002"
+              ],
+              "dependentMembers": [
+                "E0002"
+              ],
+              "exclusive": true
+            },
+            {
+              "members": [
+                "E0002"
+              ],
+              "dependentMembers": [
+                "E0002"
+              ],
+              "exclusive": true
+            }
+          ]
+        },
+        "descriptiveUncontrolledCounts": {
+          "exclusiveCount": 2,
+          "exclusiveCoverageOfOriginalCensus": 0.5,
+          "exclusiveAmongRecruited": 1,
+          "sharedOnlyCount": 0,
+          "regionalAndWholeCellDependentExclusiveCount": 2
+        },
+        "headlineMeaning": "Withheld: optical exposure probes change a recruitment classification. Nominal descriptive results remain visible."
+      }
+    }
+  ],
+  "elapsedSeconds": 194.38629651
+}

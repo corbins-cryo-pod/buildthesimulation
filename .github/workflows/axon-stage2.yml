@@ -1,0 +1,49 @@
+name: Axon Stage 2 software checkpoint
+on:
+  push:
+    branches: [feature/axon-resolution-stage2]
+  pull_request:
+    paths:
+      - 'src/**/axon-interface/**'
+      - 'src/components/AxonStage2Laboratory.jsx'
+      - 'public/simulations/biohybrid-axon-interface/**'
+      - 'tests/axon-interface-stage2*.mjs'
+      - 'src/lib/axon-interface-stage2-publication.mjs'
+      - 'scripts/verify-axon-stage2-build.mjs'
+      - 'tests/axon-interface-induction-solve.mjs'
+      - 'tests/axon-interface-spectral.mjs'
+      - 'tests/axon-interface-induction-reference.mjs'
+      - 'scripts/axon-interface/stage2/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-and-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.1'
+          cache: npm
+      - run: npm ci
+      - name: Package reproducible source
+        run: git archive --format=tar.gz --output=axon-stage2-source.tar.gz HEAD src scripts docs tests public labs/axon-stage2 package.json package-lock.json astro.config.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: axon-stage2-source
+          path: axon-stage2-source.tar.gz
+          retention-days: 7
+      - name: Coupled contracts
+        run: node --test tests/axon-interface-stage2-contracts.mjs tests/axon-interface-stage2-publication.mjs tests/axon-interface-induction-solve.mjs tests/axon-interface-induction-reference.mjs tests/axon-interface-spectral.mjs
+      - name: Component contracts
+        run: node --test labs/axon-stage2/tests/components.test.mjs
+      - name: Build complete site
+        run: npm run build
+      - name: Verify published Stage 2 evidence and worker
+        run: node scripts/verify-axon-stage2-build.mjs
+      - name: Show scientific release status separately
+        run: node -e "const r=require('./docs/axon-interface/stage2/validation.json'); console.log(JSON.stringify({completeStage2:r.completeStage2,openReleaseGates:r.openReleaseGates},null,2))"

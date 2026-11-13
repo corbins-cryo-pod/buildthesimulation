@@ -1,0 +1,16 @@
+# Stage 2 scientific questions
+
+1. **Can a channel uniquely recruit one engineered output?** A singleton row in an actual controlled neural experiment can support conditional selectivity. This increment analyzes supplied tables; fields and photocurrents do not answer that question alone.
+2. **Does1/256 mean a0.39% effective design?** No. One selective output from one tested channel establishes only tested coverage. It does not reveal what the other255 channels would do.
+3. **Does a full-rank recruitment matrix imply arbitrary independent commands?** No. Matrix rank is descriptive; simultaneous nonlinear recruitment, refractory history and drive constraints require separate experiments.
+4. **What does information per trial mean here?** It is I(X;Y) under off/one-channel trials and declared input probabilities. Neither a biological channel capacity nor bits per second is computed.
+5. **Why compute the actual return lead of a coil?** It contributes to the vector potential, magnetic field, resistance and inductance. Omitting it can change the along-cable drive. The first geometry test exposed a lead/cable intersection.
+6. **Do electrical well walls shield magnetic stimulation?** They are not modeled as a magnetic attenuation multiplier. Insulating interfaces can change charge redistribution and therefore the total induced electric field; the source primary field and tissue correction are separate calculations.
+7. **Can coil drive be represented by an electrode field with a new scale factor?** No. This implementation starts from the winding vector potential and dI/dt; the future tissue-corrected cable drive must retain that distinction.
+8. **Is a large confinement ratio automatically strong evidence?** No. The default optical estimates had too few off-target photon intersections. The headline is withheld, with raw diagnostic ratios retained.
+9. **Is detector fluence the same as membrane irradiance?** No. The current detector is a homogeneous virtual sphere. Surface-resolved averaging and optical-to-channel coupling are unfinished release gates.
+10. **Does photocurrent imply an action potential?** No. The assay clamps voltage and computes current. A regenerative cable solution with propagated-event criteria is required.
+11. **Does two-color illumination double the channel count?** Not by itself. Real action spectra overlap, and kinetics and expression must be specified. The supplied examples are hypothetical and make no channel-gain claim.
+12. **Can numerical verification establish biology?** No. These tests compare stated equations, data contracts, energy bookkeeping and implementation behavior. Engineered-cell identity, growth, survival and correct target projections remain assumptions or later-stage work.
+13. **Does calculated dissipated power establish safety?** No. Geometry-dependent heat transfer, implant conditions and biological injury mechanisms have not been calculated here.
+14. **What must happen before Stage2 is called complete?** Same-neuron, same-geometry modality experiments; independently verified coupling; matched controls; finite declared amplitude sweeps; uncertainty-aware selectivity; reproducible reports; and a tested site build.

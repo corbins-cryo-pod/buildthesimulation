@@ -1,0 +1,17 @@
+Independent stiffness/anisotropic source assembled
+Independent interface source assembled
+Independent axial preconditioner ready
+Independent CG iterations 1000
+Independent CG iterations 2000
+Independent CG iterations 3000
+Independent CG iterations 4000
+Independent CG iterations 5000
+Independent original-equation residual 2.8943127347169205e-10
+Independent CG iterations 6000
+Independent CG iterations 7000
+Independent CG iterations 8000
+Independent CG iterations 9000
+Independent CG iterations 10000
+Independent CG iterations 11000
+Independent original-equation residual 5.00601120953927e-15
+{"schema": "axon-stage2-conservative-reference/1", "maximumPotentialErrorUvPerAperS": 6.31661297881164e-18, "potentialRelativeL2": 1.7158661152756104e-11, "maximumLoadErrorMicroampPerSlew": 4.77795695352452e-25, "loadRelativeL2": 6.39715748786018e-13, "relativeResidual": 5.00601120953927e-15, "loadSum": -1.6097758669720204e-21, "factorNonzeros": 3153554, "iterations": 11837, "refinements": 1, "refinementResiduals": [2.8943127347169205e-10, 5.00601120953927e-15], "nodes": 829245, "peakRssBytes": 1629245440, "seconds": 598.5593572589996, "method": "Independent NumPy/SciPy physical assembly; coordinate-column SuperLU preconditioning and CG with long-double original-equation residual correction", "preconditionerAttempts": [{"kind": "independent coordinate-column SuperLU blocks", "shift": 0, "success": true}], "runtime": {"python": "3.12.14", "numpy": "2.3.5", "scipy": "1.17.0"}}

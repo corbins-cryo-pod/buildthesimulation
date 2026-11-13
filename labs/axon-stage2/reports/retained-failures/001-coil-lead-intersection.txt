@@ -1,0 +1,63 @@
+✔ binary matrices reject missing, ragged and nonbinary values (2.106729ms)
+✔ exact rank is over the reals, not GF(2) (0.57336ms)
+✔ exclusive coverage, shared outputs and dependence are distinct (1.026339ms)
+✔ failed or incomplete causal audits withhold headlines (0.372288ms)
+✔ duplicate channels do not increase real rank (0.11973ms)
+✔ information is declared protocol entropy, not number of outputs or rate (0.372318ms)
+✔ identities and census must remain consistent (0.243705ms)
+✔ Stage 1 result import preserves declared settings, not certification (0.707691ms)
+✔ amplitude brackets do not bridge a failed point (0.610956ms)
+✔ sweeps reject reordering and retain nonmonotonicity (0.569744ms)
+✔ coil path is closed and electrical resistance is geometric (2.378356ms)
+✔ finite conductor intersections and malformed winding inputs rejected (1.966829ms)
+✔ straight-segment field, reversal and collinear external limit (0.254963ms)
+✔ coil rotation/translation covariance at free-space sample (2.981792ms)
+✔ circular-loop polygon converges to analytic on-axis B (1.493569ms)
+✖ electric induction follows slew; cable line integral changes sign with path (9.70906ms)
+✔ coil power arithmetic is separate from thermal safety (5.183543ms)
+✔ P1 gradients partition unity and volume is exact (0.348923ms)
+✔ induction weak load conserves current and respects anisotropy (0.377967ms)
+✔ opsin dark state remains closed without probability clipping (38.066062ms)
+✔ opsin lit assay conserves occupancy and remains positive (35.787957ms)
+✔ zero expression is zero photocurrent, not forced zero states (12.132813ms)
+✔ literal I-V product is finite at zero; no fabricated reversal correction (0.106359ms)
+✔ opsin malformed states, settings and edge timing rejected (0.266309ms)
+✔ uniformization stationary generator leaves arbitrary distribution unchanged (0.362043ms)
+✔ well rays distinguish open aperture, endcap and cylindrical side wall (0.447722ms)
+✔ virtual detector track-length integral is geometric (0.221913ms)
+✔ Henyey-Greenstein mean cosine matches supplied anisotropy (25.872708ms)
+✔ photon histories are deterministic and conserve all energy categories (70.029254ms)
+✔ finite photon evidence does not claim infinite confinement (3.531095ms)
+✔ truncation is unresolved optical energy, never heat (2.919338ms)
+✔ optical geometry and computational caps reject rather than downsample (0.368122ms)
+✔ LED emitted energy, electrical input and junction heat are separate (0.339168ms)
+✔ spectral interpolation refuses unsupported extrapolation (0.201743ms)
+✔ photon weighting depends on wavelength, not power alone (0.189083ms)
+✔ spectral example remains hypothetical with blue crosstalk (0.591877ms)
+✔ worker dispatch returns explicit nonrelease status and errors unknown jobs (0.249484ms)
+✔ seed streams are reproducible and independently named (0.187231ms)
+✔ exports refuse NaN and preserve null unknown quantities (0.23331ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 38
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 356.826981
+
+✖ failing tests:
+
+test at tests/components.test.mjs:29:1
+✖ electric induction follows slew; cable line integral changes sign with path (9.70906ms)
+  Error: Field sample intersects finite conductor; no singularity softening used.
+      at segmentField (file:///mnt/data/biohybrid-stage2/overlay/public/simulations/biohybrid-axon-interface/stage2/modules/magnetic.mjs:35:48)
+      at coilField (file:///mnt/data/biohybrid-stage2/overlay/public/simulations/biohybrid-axon-interface/stage2/modules/magnetic.mjs:40:100)
+      at primaryElectric (file:///mnt/data/biohybrid-stage2/overlay/public/simulations/biohybrid-axon-interface/stage2/modules/magnetic.mjs:41:91)
+      at file:///mnt/data/biohybrid-stage2/overlay/public/simulations/biohybrid-axon-interface/stage2/modules/magnetic.mjs:51:27
+      at Array.map (<anonymous>)
+      at primaryCableProfile (file:///mnt/data/biohybrid-stage2/overlay/public/simulations/biohybrid-axon-interface/stage2/modules/magnetic.mjs:51:20)
+      at TestContext.<anonymous> (file:///mnt/data/biohybrid-stage2/tests/components.test.mjs:29:358)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)

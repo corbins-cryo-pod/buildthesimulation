@@ -1,0 +1,29 @@
+{
+  "schema": "axon-stage2-browser-export-comparison/1",
+  "browserVersion": "axon-modalities-coupled-0.4.4",
+  "nodeVersion": "axon-modalities-coupled-0.4.4",
+  "browserElapsedSeconds": 71.98819999999995,
+  "nodeElapsedSeconds": 91.056303587,
+  "settingsEqual": true,
+  "allMatricesExactlyEqual": true,
+  "bothRetainConditionalMagneticMeaning": null,
+  "nonNumericDifferences": [],
+  "numericDifferences": 1108507,
+  "exactExportMatchExcludingTiming": false,
+  "maximumVoltageDifferenceMv": 2.8180124900245573e-11,
+  "fieldResiduals": {
+    "browser": [
+      null,
+      null
+    ],
+    "node": [
+      null,
+      null
+    ]
+  },
+  "sha256": {
+    "browser": "1de9784f3849c51a78a5723e9d30fb088034a2a70aaad796808ee3243d367e86",
+    "node": "fea533f40ee5a5e9126ae6d1d2221f055bf4e16b325d00169e57fec83fe08957"
+  },
+  "meaning": "Bitwise export equivalence is reported separately from discrete-output agreement. Voltage differences are measured, not assigned a new post-hoc acceptance tolerance. This does not replace physical field, membrane or spatial qualification."
+}

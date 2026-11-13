@@ -1,0 +1,315 @@
+{
+  "acceptance": {
+    "schema": "axon-stage2-magnetic-propagation-acceptance/1",
+    "declaredBeforeExecution": true,
+    "peakAmpereGrid": [
+      0,
+      10000,
+      100000,
+      1000000,
+      10000000,
+      100000000
+    ],
+    "riseMs": 0.05,
+    "dtMs": [
+      0.000625,
+      0.0003125,
+      0.00015625
+    ],
+    "levels": [
+      {
+        "soma": 5,
+        "stem": 3,
+        "passive": 3
+      },
+      {
+        "soma": 9,
+        "stem": 5,
+        "passive": 5
+      },
+      {
+        "soma": 13,
+        "stem": 7,
+        "passive": 7
+      }
+    ],
+    "maximumSiteRmsMv": 1,
+    "maximumCrossingTimeMs": 0.1,
+    "counts": "identical at every active site",
+    "conductionDelayRelative": 0.05,
+    "recordingPeakToPeakRelative": 0.1,
+    "selection": "Retain every declared grid probe, including unstable cases. Select the lowest absolute peak current with qualifying propagation in both arms. Freeze it across native, time and spatial comparisons.",
+    "scope": "Extreme unphysical current is an implementation stress fixture only. It is excluded from the supported 0–100 A interface, energy/feasibility claims and qualified operating thresholds. No transfer, waveform, voltage or time is rescaled between a simulation and its reference. The actual modeled axial microcoil may fail to recruit within its declared operating grid."
+  },
+  "rows": [
+    {
+      "peakA": 0,
+      "central": {
+        "recruited": false,
+        "times": [],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          229,
+          260,
+          291
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": false,
+        "times": [],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          93,
+          62,
+          31
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "events": 0,
+      "minMv": -89.043208941659,
+      "maxMv": -80.53000020468552
+    },
+    {
+      "peakA": 10000,
+      "central": {
+        "recruited": false,
+        "times": [],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          229,
+          260,
+          291
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": false,
+        "times": [],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          93,
+          62,
+          31
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "events": 0,
+      "minMv": -89.04414135908107,
+      "maxMv": -80.53000020468552
+    },
+    {
+      "peakA": 100000,
+      "central": {
+        "recruited": false,
+        "times": [],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          229,
+          260,
+          291
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": false,
+        "times": [],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          93,
+          62,
+          31
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "events": 0,
+      "minMv": -89.06086876205838,
+      "maxMv": -80.53000020468552
+    },
+    {
+      "peakA": 1000000,
+      "central": {
+        "recruited": false,
+        "times": [],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          229,
+          260,
+          291
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": false,
+        "times": [],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          93,
+          62,
+          31
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "events": 0,
+      "minMv": -89.22812098303116,
+      "maxMv": -80.53000020468552
+    },
+    {
+      "peakA": 10000000,
+      "central": {
+        "recruited": false,
+        "times": [],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          229,
+          260,
+          291
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": false,
+        "times": [],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          93,
+          62,
+          31
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "events": 0,
+      "minMv": -98.92559975566327,
+      "maxMv": -74.63915987297943
+    },
+    {
+      "peakA": 100000000,
+      "central": {
+        "recruited": true,
+        "times": [
+          0.6039402782038857,
+          0.6305100744619452,
+          0.6491960584598696
+        ],
+        "nodeOrdinals": [
+          8,
+          9,
+          10
+        ],
+        "compartmentIndices": [
+          229,
+          260,
+          291
+        ],
+        "direction": "+z",
+        "segmentVelocityMps": [
+          18.818360334559774,
+          26.758023556882993
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "peripheral": {
+        "recruited": true,
+        "times": [
+          0.5343519400515382,
+          0.558113515061453,
+          0.5758019441646324
+        ],
+        "nodeOrdinals": [
+          3,
+          2,
+          1
+        ],
+        "compartmentIndices": [
+          93,
+          62,
+          31
+        ],
+        "direction": "-z",
+        "segmentVelocityMps": [
+          21.042376180508615,
+          28.26706640162462
+        ],
+        "diagnosticOnly": true,
+        "criterion": "Same-ordinal upward crossings on three distal true nodes, positive outward delays, 1–200 m/s segment velocities and at most twofold velocity mismatch. Temporal evidence is not proof of one traveling event."
+      },
+      "events": 10,
+      "minMv": -206.54155800246488,
+      "maxMv": 53.72208186470402
+    }
+  ],
+  "selected": 100000000,
+  "fieldQualified": false,
+  "scope": "Candidate conservative field; selection diagnostic, not a release claim."
+}

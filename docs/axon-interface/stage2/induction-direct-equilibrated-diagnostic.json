@@ -1,0 +1,21 @@
+{
+  "schema": "axon-stage2-induction-direct-diagnostic/2",
+  "generatedAt": "2026-11-12T12:27:44.220403+00:00",
+  "complete": false,
+  "passed": false,
+  "fixture": {
+    "seed": 2048,
+    "axonCount": 4,
+    "channelCount": 1,
+    "nodes": 212077,
+    "tetrahedra": 1200864,
+    "rule": "vertex"
+  },
+  "command": "OPENBLAS_NUM_THREADS=1 .venv/bin/python scripts/axon-interface/stage2/induction-reference.py /tmp/axon-induction-fine.json /tmp/axon-induction-fine-reference.json",
+  "exitCode": 137,
+  "numericalConclusion": null,
+  "sourceHashes": {
+    "scripts/axon-interface/stage2/induction-reference.py": "43a732eed6edd2db7b7bff667f9fbe3bb6d842b1566339105af3bb3f0013810f"
+  },
+  "meaning": "Process killed before producing output. Chunked independent assembly and lower-fill ordering did not yield a fine direct reference in this environment. Original direct-solve failure remains in induction-direct-diagnostic.json."
+}

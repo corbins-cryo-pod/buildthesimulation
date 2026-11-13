@@ -1,0 +1,58 @@
+Building 1-2 { offline: false }
+Mesh 1-2 {
+  planarRefinement: 1,
+  discretization: 'conforming P1 tetrahedral FEM with explicit removed insulating volumes',
+  nodes: 829245,
+  tetrahedra: 4803456,
+  excludedInsulatorOrCellTetrahedra: 357504,
+  rawNodes: 871137,
+  nonzeros: 17057741,
+  estimatedBytes: 588644788,
+  explicitCells: 4,
+  explicitWells: 4,
+  regionTetrahedra: [ 2284416, 393216, 589824, 589824, 946176 ],
+  constructPresent: true,
+  sourceModel: 'finite surface current density on explicit inner-wall patches',
+  wallBoundary: 'natural zero normal flux; no conductive wall tetrahedra retained',
+  apertureModel: 'explicit annular conducting bore and access volume',
+  outerBoundary: 'zero Dirichlet on outer cylindrical polygon and both ends',
+  localToEffectiveBoundaryUm: [ 90, 90, 90, 90 ],
+  cellRepresentation: 'Explicit soma/stem/near-well neurite exclusion; distal cables embedded in effective endoneurial tensor',
+  meshBuildSeconds: 11.565049499999999
+}
+Source 1-2 {
+  formulation: 'closed-winding divergence-free boundary flux plus longitudinal anisotropic volume term',
+  faceOrder: 8,
+  volumeRule: 'tetra11',
+  integratedFaces: 169024,
+  anisotropicTetrahedra: 2284416,
+  loadSumMicroampPerSlew: -1.6134797776832334e-21,
+  assemblySeconds: 259.356666286
+}
+PCG 1-2 {
+  iterations: 1000,
+  relativeResidual: 0.004727622503827218,
+  recurrenceResidual: 0.0008708975279627478
+}
+PCG 1-2 {
+  iterations: 2000,
+  relativeResidual: 0.000007010463867702226,
+  recurrenceResidual: 0.0000012384218799494068
+}
+PCG 1-2 {
+  iterations: 3000,
+  relativeResidual: 2.6358791900864065e-7,
+  recurrenceResidual: 4.8011449742768426e-8
+}
+PCG 1-2 {
+  iterations: 4000,
+  relativeResidual: 9.905891141512116e-9,
+  recurrenceResidual: 1.7784121469768086e-9
+}
+PCG 1-2 {
+  iterations: 5000,
+  relativeResidual: 9.234710059020063e-11,
+  recurrenceResidual: 1.6224497231287917e-11
+}
+Solved 1-2 1.2563890156486661e-11 5254
+{"key":"1-2","complete":true,"passed":true,"seconds":510.376724075}

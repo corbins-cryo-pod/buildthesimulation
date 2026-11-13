@@ -1,0 +1,142 @@
+{
+  "schema": "axon-stage2-nested-recovery-convergence/1",
+  "complete": true,
+  "passed": true,
+  "cohort": {
+    "axonCount": 4,
+    "channelCount": 1,
+    "seed": 4079
+  },
+  "rows": [
+    {
+      "name": "Executed and source-current field 1-2",
+      "pass": true
+    },
+    {
+      "name": "Executed and source-current field 1-3",
+      "pass": true
+    },
+    {
+      "name": "Executed and source-current field 2-2",
+      "pass": true
+    },
+    {
+      "name": "Executed and source-current field 1-1",
+      "pass": true
+    },
+    {
+      "name": "Cell 0 axial refinement",
+      "cell": 0,
+      "axis": "axial",
+      "relativeL2": 0.006776845237713828,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 1 axial refinement",
+      "cell": 1,
+      "axis": "axial",
+      "relativeL2": 0.016487268864181278,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 2 axial refinement",
+      "cell": 2,
+      "axis": "axial",
+      "relativeL2": 0.010987423946572816,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 3 axial refinement",
+      "cell": 3,
+      "axis": "axial",
+      "relativeL2": 0.03788166341109769,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 0 planar refinement",
+      "cell": 0,
+      "axis": "planar",
+      "relativeL2": 0.0027851930681944918,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 1 planar refinement",
+      "cell": 1,
+      "axis": "planar",
+      "relativeL2": 0.0013916324672675927,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 2 planar refinement",
+      "cell": 2,
+      "axis": "planar",
+      "relativeL2": 0.0011574470229172948,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 3 planar refinement",
+      "cell": 3,
+      "axis": "planar",
+      "relativeL2": 0.011063646715631712,
+      "limit": 0.05,
+      "pass": true
+    }
+  ],
+  "retainedDiagnostic": [
+    {
+      "name": "Cell 0 rejected-candidate axial 1-to-2",
+      "relativeL2": 0.031789710985907306,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 1 rejected-candidate axial 1-to-2",
+      "relativeL2": 0.07068860705959992,
+      "limit": 0.05,
+      "pass": false
+    },
+    {
+      "name": "Cell 2 rejected-candidate axial 1-to-2",
+      "relativeL2": 0.03914328635325284,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 3 rejected-candidate axial 1-to-2",
+      "relativeL2": 0.14461042554986134,
+      "limit": 0.05,
+      "pass": false
+    }
+  ],
+  "diagnosticScope": "The retained axial-1 diagnostic here uses seed 4079. The historical 5.7252% observation referred to seed 2048; its separate original-cohort study must also pass. This report does not replace or reconstruct that lost raw observation.",
+  "sourceHashes": {
+    "docs/axon-interface/stage2/nested-recovery-plan.json": "f1818c75c673c2efa56d62131e2d68ecf4d915fbb9bd8b7d94a27d7b56dae984",
+    "scripts/axon-interface/stage2/nested-induction-check.mjs": "c1ca5a4362400a23803c00ca4bd0ead4c9233fec611a54d9a00f6a88110e2606"
+  },
+  "runFiles": [
+    {
+      "path": "docs/axon-interface/stage2/nested-recovery-field-1-2.json",
+      "sha256": "82cdc7d8dc7bd1acd6b171851fce24b605c1a5979fce11b87b0a2e8f3e06cb1b"
+    },
+    {
+      "path": "docs/axon-interface/stage2/nested-recovery-field-1-3.json",
+      "sha256": "d6cb2f94020911476659c786353a04d455661b5727f95c45a837313755653986"
+    },
+    {
+      "path": "docs/axon-interface/stage2/nested-recovery-field-2-2.json",
+      "sha256": "8b345a5c6a567f5722537365ce77ba5d0b24270939106ba481062517893ddbfd"
+    },
+    {
+      "path": "docs/axon-interface/stage2/nested-recovery-field-1-1.json",
+      "sha256": "696ae2442cab2c62e5c0d20d4a60d1d162673c02c9ab1505ddfd2ff6350660c7"
+    }
+  ],
+  "generatedAt": "2026-11-13T14:37:36.317Z"
+}

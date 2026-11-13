@@ -1,0 +1,31 @@
+Completed magnetic stress propagating
+Completed magnetic stress whole-cell-block
+Stress readout {
+  iterations: 1000,
+  relativeResidual: 0.0026160184688802566,
+  recurrenceResidual: 0.00032144189666162115
+}
+Stress readout {
+  iterations: 2000,
+  relativeResidual: 0.00005479560242743628,
+  recurrenceResidual: 0.000005454410838078142
+}
+Stress readout {
+  iterations: 3000,
+  relativeResidual: 2.6679569249717893e-7,
+  recurrenceResidual: 2.501020412408947e-8
+}
+Stress readout {
+  iterations: 4000,
+  relativeResidual: 4.5516124871124555e-9,
+  recurrenceResidual: 4.0925237917207116e-10
+}
+Stress readout {
+  iterations: 5000,
+  relativeResidual: 4.2302237119129e-11,
+  recurrenceResidual: 3.710735672785036e-12
+}
+Completed magnetic stress spatial { soma: 5, stem: 3, passive: 3 }
+Completed magnetic stress spatial { soma: 9, stem: 5, passive: 5 }
+Completed magnetic stress spatial { soma: 13, stem: 7, passive: 7 }
+{"passed":true,"checks":15,"failed":[]}

@@ -1,0 +1,415 @@
+{
+  "schema": "axon-stage2-spectral-component-validation/1",
+  "complete": true,
+  "passed": true,
+  "rows": [
+    {
+      "name": "chr2 declared 0 mW/mm2",
+      "stateError": 0,
+      "currentError": 0,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chr2 declared 0.01 mW/mm2",
+      "stateError": 1.765254609153999e-14,
+      "currentError": 5.377642775528102e-17,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chr2 declared 0.1 mW/mm2",
+      "stateError": 1.532107773982716e-14,
+      "currentError": 3.5388358909926865e-16,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chr2 declared 1 mW/mm2",
+      "stateError": 4.068967385251199e-14,
+      "currentError": 1.6653345369377348e-15,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chr2 declared 10 mW/mm2",
+      "stateError": 4.4853010194856324e-14,
+      "currentError": 2.8449465006019636e-15,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chr2 declared 100 mW/mm2",
+      "stateError": 3.774758283725532e-14,
+      "currentError": 1.9984014443252818e-15,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chr2 alternate 0 mW/mm2",
+      "stateError": 0,
+      "currentError": 0,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chr2 alternate 0.01 mW/mm2",
+      "stateError": 1.5987211554602254e-14,
+      "currentError": 5.377642775528102e-17,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chr2 alternate 0.1 mW/mm2",
+      "stateError": 1.63202784619898e-14,
+      "currentError": 3.5388358909926865e-16,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chr2 alternate 1 mW/mm2",
+      "stateError": 4.068967385251199e-14,
+      "currentError": 1.6653345369377348e-15,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chr2 alternate 10 mW/mm2",
+      "stateError": 4.4853010194856324e-14,
+      "currentError": 2.040034807748725e-15,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chr2 alternate 100 mW/mm2",
+      "stateError": 3.774758283725532e-14,
+      "currentError": 1.915134717478395e-15,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chrimson declared 0 mW/mm2",
+      "stateError": 0,
+      "currentError": 0,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chrimson declared 0.01 mW/mm2",
+      "stateError": 3.885780586188048e-15,
+      "currentError": 1.0408340855860843e-15,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chrimson declared 0.1 mW/mm2",
+      "stateError": 4.574118861455645e-14,
+      "currentError": 2.2815083156046967e-14,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chrimson declared 1 mW/mm2",
+      "stateError": 2.1649348980190553e-14,
+      "currentError": 2.220446049250313e-14,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chrimson declared 10 mW/mm2",
+      "stateError": 3.042011087472929e-14,
+      "currentError": 3.785860513971784e-14,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chrimson declared 100 mW/mm2",
+      "stateError": 4.984901380566953e-14,
+      "currentError": 5.395683899678261e-14,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chrimson alternate 0 mW/mm2",
+      "stateError": 0,
+      "currentError": 0,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chrimson alternate 0.01 mW/mm2",
+      "stateError": 3.885780586188048e-15,
+      "currentError": 1.0408340855860843e-15,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chrimson alternate 0.1 mW/mm2",
+      "stateError": 4.574118861455645e-14,
+      "currentError": 2.2815083156046967e-14,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chrimson alternate 1 mW/mm2",
+      "stateError": 2.1649348980190553e-14,
+      "currentError": 2.220446049250313e-14,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chrimson alternate 10 mW/mm2",
+      "stateError": 3.042011087472929e-14,
+      "currentError": 3.785860513971784e-14,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "chrimson alternate 100 mW/mm2",
+      "stateError": 4.984901380566953e-14,
+      "currentError": 5.395683899678261e-14,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson declared 0 mW/mm2",
+      "stateError": 0,
+      "currentError": 0,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson declared 0.01 mW/mm2",
+      "stateError": 2.7200464103316335e-14,
+      "currentError": 4.718447854656915e-16,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson declared 0.1 mW/mm2",
+      "stateError": 3.0309088572266774e-14,
+      "currentError": 4.85722573273506e-15,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson declared 1 mW/mm2",
+      "stateError": 2.631228568361621e-14,
+      "currentError": 1.7763568394002505e-14,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson declared 10 mW/mm2",
+      "stateError": 1.2545520178264269e-14,
+      "currentError": 7.105427357601002e-15,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson declared 100 mW/mm2",
+      "stateError": 6.050715484207103e-14,
+      "currentError": 1.6209256159527285e-14,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson alternate 0 mW/mm2",
+      "stateError": 0,
+      "currentError": 0,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson alternate 0.01 mW/mm2",
+      "stateError": 2.7200464103316335e-14,
+      "currentError": 4.718447854656915e-16,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson alternate 0.1 mW/mm2",
+      "stateError": 3.0309088572266774e-14,
+      "currentError": 4.85722573273506e-15,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson alternate 1 mW/mm2",
+      "stateError": 2.631228568361621e-14,
+      "currentError": 1.7763568394002505e-14,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson alternate 10 mW/mm2",
+      "stateError": 1.2545520178264269e-14,
+      "currentError": 7.105427357601002e-15,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "vfchrimson alternate 100 mW/mm2",
+      "stateError": 6.050715484207103e-14,
+      "currentError": 1.6209256159527285e-14,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green declared 0 mW/mm2",
+      "stateError": 0,
+      "currentError": 0,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green declared 0.01 mW/mm2",
+      "stateError": 2.4202861936828413e-14,
+      "currentError": 2.8275992658421956e-16,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green declared 0.1 mW/mm2",
+      "stateError": 7.077671781985373e-15,
+      "currentError": 3.885780586188048e-16,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green declared 1 mW/mm2",
+      "stateError": 2.5202062658991053e-14,
+      "currentError": 3.4139358007223564e-15,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green declared 10 mW/mm2",
+      "stateError": 3.952393967665557e-14,
+      "currentError": 1.7208456881689926e-15,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green declared 100 mW/mm2",
+      "stateError": 4.568567746332519e-14,
+      "currentError": 1.432187701766452e-14,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green alternate 0 mW/mm2",
+      "stateError": 0,
+      "currentError": 0,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green alternate 0.01 mW/mm2",
+      "stateError": 2.4202861936828413e-14,
+      "currentError": 2.8275992658421956e-16,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green alternate 0.1 mW/mm2",
+      "stateError": 7.077671781985373e-15,
+      "currentError": 3.885780586188048e-16,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green alternate 1 mW/mm2",
+      "stateError": 2.5202062658991053e-14,
+      "currentError": 3.4139358007223564e-15,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green alternate 10 mW/mm2",
+      "stateError": 3.952393967665557e-14,
+      "currentError": 1.7208456881689926e-15,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "hypothetical-green alternate 100 mW/mm2",
+      "stateError": 4.568567746332519e-14,
+      "currentError": 1.432187701766452e-14,
+      "fluxError": 0,
+      "pass": true
+    },
+    {
+      "name": "Measured blue activation of red opsin retained",
+      "pass": true
+    },
+    {
+      "name": "Unmeasured ChR2 red tail is not extrapolated",
+      "pass": true
+    },
+    {
+      "name": "Independent whole-cell conductances and distinct kinetic sets",
+      "pass": true
+    }
+  ],
+  "acceptance": {
+    "schema": "axon-stage2-spectral-acceptance/1",
+    "declaredBeforeExecution": true,
+    "independentStateAbsolute": 1e-10,
+    "independentCurrentNaAbsolute": 1e-10,
+    "independentPhotonFluxRelative": 2e-14,
+    "nativeMaximumSiteRmsMv": 1,
+    "nativeMaximumSpikeTimeMs": 0.1,
+    "nativeSpikeCounts": "identical at every active site",
+    "timeMaximumSiteRmsMv": 1,
+    "timeMaximumSpikeTimeMs": 0.1,
+    "spaceConductionDelayRelative": 0.05,
+    "spaceRecordingPeakToPeakRelative": 0.1,
+    "dtMs": [
+      0.000625,
+      0.0003125,
+      0.00015625
+    ],
+    "levels": [
+      {
+        "soma": 5,
+        "stem": 3,
+        "passive": 3
+      },
+      {
+        "soma": 9,
+        "stem": 5,
+        "passive": 5
+      },
+      {
+        "soma": 13,
+        "stem": 7,
+        "passive": 7
+      }
+    ],
+    "fixtureGrid": {
+      "wholeCellExpressionMultiplier": 10,
+      "localIrradianceMwMm2": [
+        0,
+        0.1,
+        1,
+        10,
+        100
+      ],
+      "wavelengthsNm": [
+        470,
+        550
+      ],
+      "pulseStartMs": 0.5,
+      "pulseWidthMs": 2
+    },
+    "selection": "Retain every grid probe. For propagation verification use the lowest declared positive grid sample that propagates to both arms for each opsin. The same absolute stimulus is used for every time, spatial and native comparison; no amplitude fitting, baseline correction, normalization of current or time shift.",
+    "scope": "Published kinetic sets plus an explicitly hypothetical fourth construct. No claim of biological calibration or an automatic channel multiplier."
+  },
+  "sourceHashes": {
+    "src/lib/axon-interface/stage2/spectral-opsin.mjs": "68b573c350fd64f2a9a0f2144d66623db17f1c30632b15f81fbd76347deca770",
+    "scripts/axon-interface/stage2/spectral_reference.py": "1194be93203d082ea52d5feb643774cc6fb25a3f0efd18194b55efed04cfe3a9",
+    "docs/axon-interface/stage2/spectral-acceptance.json": "9faf3043350b8c56c5645b15b10fda0fda780f13d88c4746d1e68f6fa5228a83"
+  },
+  "reference": "Independent transcribed Python tables, physical photon conversion and SciPy 4x4 matrix exponential; mixed-color pulses, recovery and four clamp voltages. No reference fitting."
+}

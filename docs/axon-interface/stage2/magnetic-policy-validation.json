@@ -1,0 +1,78 @@
+{
+  "schema": "axon-stage2-magnetic-policy-validation/2",
+  "modelVersion": "axon-modalities-coupled-0.4.4",
+  "complete": true,
+  "passed": true,
+  "rows": [
+    {
+      "name": "Current complete production fixture",
+      "pass": true
+    },
+    {
+      "name": "Finer production mesh and fixed original residual",
+      "pass": true
+    },
+    {
+      "name": "All tested amplitudes resolve every cell without fabricated recruitment",
+      "pass": true
+    },
+    {
+      "name": "Magnetic metrics remain conditional on the declared model",
+      "pass": true
+    },
+    {
+      "name": "Missing measurement loop cannot yield an artifact or total recording",
+      "pass": true
+    },
+    {
+      "name": "Original-host win condition remains zero",
+      "pass": true
+    },
+    {
+      "name": "No scientific source change during audit",
+      "pass": true
+    }
+  ],
+  "sourceHashes": {
+    "src/lib/axon-interface/stage2/settings.mjs": "a9ac899f0630f923c303e6e343f5ae286e8ff27d1b29f2aff698865d0f8e912e",
+    "src/lib/axon-interface/stage2/nested-field.mjs": "43a705fcd0c6d4bd2cee3a7a9389c7cfb58001bc74acc07583c061091076cdd2",
+    "src/lib/axon-interface/stage2/embedded-coil.mjs": "6807b3e74bad7ab5e6cf4e5962c858065a6661d5d649c3537aedb306c6f4a63a",
+    "src/lib/axon-interface/stage2/induction-conservative-load.mjs": "9e3d7506dddc11f2a5af88690ed1287118fd734e446b7220560581a0ee45c1f1",
+    "src/lib/axon-interface/stage2/protocol.mjs": "1c60241184116a14cda06d49c90a23d5ffaa8461126facb75933c42e47796d3a",
+    "src/lib/axon-interface/stage2/magnetic-coupling.mjs": "4b5114254bccc49408dfbbbcf83b4f257c2a07cc11aceb0554b9e9af693d0d97",
+    "src/lib/axon-interface/stage2/induction-precision-solve.mjs": "26163d03c6b87f1802603b6afc863ef9f7cf5af1a5751de1f1ea32be2ff4a633",
+    "scripts/axon-interface/stage2/magnetic-policy-check.mjs": "f0275f1bff91c311ac93d0911375a30a81cbfc7b7ab34295da1db0868a263c2f"
+  },
+  "seconds": 0.26602099999999995,
+  "settings": {
+    "modality": "magnetic",
+    "axonCount": 4,
+    "channelCount": 1,
+    "seed": 4079,
+    "amplitudes": [
+      0,
+      10,
+      100
+    ],
+    "dtMs": 0.000625,
+    "durationMs": 6,
+    "sampleDtMs": 0.01,
+    "photons": 128000,
+    "shellThicknessUm": 0.5,
+    "gmaxMsCm2": 5,
+    "opticalPulseMs": 2,
+    "reflectivity": 0.85,
+    "coilLayers": 6,
+    "coilRiseMs": 0.05,
+    "wellApertureRadiusUm": 3.5,
+    "spectralFamilyCount": 2,
+    "spectralExpression": 10,
+    "spectralRateScale": 1,
+    "muAbs470PerMm": 0.2,
+    "muScatter470PerMm": 10,
+    "absorptionExponent": 0,
+    "scatteringExponent": 1
+  },
+  "evidenceCollectionMode": "Audit complete export produced by current protocol study.",
+  "scope": "Export and interpretation checks. Physical refinement is a separate required study."
+}

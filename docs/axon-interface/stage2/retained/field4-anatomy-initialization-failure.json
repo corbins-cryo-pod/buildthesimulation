@@ -1,0 +1,10 @@
+{
+  "schema": "axon-stage2-integration-failure/1",
+  "testedCommit": "708b75d80f305fffe003153f3e470894c2b6834f",
+  "modelVersion": "axon-modalities-coupled-0.4.1",
+  "browserObservedError": "fieldRadialRefinement must be an integer between 1 and 3 factor.",
+  "cause": "The higher field resolution was passed into inherited morphology/cohort validation before the dedicated field override.",
+  "correction": "Keep inherited anatomical initialization within its unchanged contract; apply the actual factor-4 field resolution only to the FEM and export the actual field settings. New regression instantiates all four modalities.",
+  "scope": "Input integration failure, before a magnetic result was calculated. No tolerance or physical model changed.",
+  "supersededRuns": "The 0.4.1 full protocol failed at magnetic initialization with the same error. Its optical and electrode portions completed. The unfinished spectral job was stopped after the fix. Neither is final-release evidence."
+}

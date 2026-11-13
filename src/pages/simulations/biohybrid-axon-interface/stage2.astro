@@ -1,0 +1,7 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import AxonStage2Laboratory from '../../../components/AxonStage2Laboratory.jsx';
+import {publishedStage2} from '../../../lib/axon-interface-stage2-publication.mjs';
+const release=publishedStage2();
+---
+<Layout pageTitle="Axon-Resolution Laboratory · Modalities and Selectivity" description="Matched electrode, coil and optical experiments on the same bipolar-neuron model, with finite amplitude sweeps and explicit uncertainty." wide compactHeader><AxonStage2Laboratory numericalStage2Complete={release.completeStage2} client:load /></Layout>

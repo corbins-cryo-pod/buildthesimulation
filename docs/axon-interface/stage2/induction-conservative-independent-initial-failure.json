@@ -1,0 +1,46 @@
+{
+  "schema": "axon-stage2-conservative-independent-validation/1",
+  "complete": true,
+  "passed": false,
+  "rows": [
+    {
+      "name": "Independent conservative field 1",
+      "schema": "axon-stage2-conservative-reference/1",
+      "maximumPotentialErrorUvPerAperS": 4.275631962801244e-18,
+      "potentialRelativeL2": 8.71376952080141e-12,
+      "maximumLoadErrorMicroampPerSlew": 1.806163306819545e-24,
+      "loadRelativeL2": 7.221146299154098e-13,
+      "relativeResidual": 6.902180798788276e-12,
+      "loadSum": -1.2713292058907125e-16,
+      "factorNonzeros": 34589193,
+      "iterations": 0,
+      "nodes": 48590,
+      "peakRssBytes": 2453975040,
+      "seconds": 149.64235945200016,
+      "method": "SuperLU direct, symmetric minimum-degree ordering",
+      "runtime": {
+        "python": "3.12.14",
+        "numpy": "2.3.5",
+        "scipy": "1.17.0"
+      },
+      "pass": true
+    },
+    {
+      "name": "Independent conservative field 2",
+      "pass": false,
+      "exitCode": 1,
+      "error": "Traceback (most recent call last):\n  File \"/workspace/scratch/9c5c18551577/buildthesimulation/scripts/axon-interface/stage2/induction-conservative-reference.py\", line 62, in <module>\n    factor=spilu(scaled,drop_tol=1e-5,fill_factor=8,permc_spec='COLAMD');M=LinearOperator(A.shape,matvec=factor.solve)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/9c5c18551577/buildthesimulation/.venv/lib/python3.12/site-packages/scipy/sparse/linalg/_dsolve/linsolve.py\", line 535, in spilu\n    return _superlu.gstrf(N, A.nnz, A.data, indices, indptr,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Factor is exactly singular\n"
+    }
+  ],
+  "acceptance": {
+    "maximumPotentialUvPerAperS": 0.001,
+    "potentialRelativeL2": 0.000001,
+    "loadRelativeL2": 1e-8,
+    "trueResidual": 1e-9
+  },
+  "sourceHashes": {
+    "scripts/axon-interface/stage2/induction-conservative-reference.py": "a892f0a195bc97b6ac8584fced3ef378f4631f1d952f671e0d98a97fdfff0bbb",
+    "src/lib/axon-interface/stage2/induction-conservative-load.mjs": "9e3d7506dddc11f2a5af88690ed1287118fd734e446b7220560581a0ee45c1f1",
+    "src/lib/axon-interface/stage2/induction-solve.mjs": "da2764b95ac4e9a7c053869bbec9c95c18d2febc26ddb1f2facf06443396986c"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "axon-stage2-induction-direct-diagnostic/1",
+  "complete": false,
+  "passed": false,
+  "settings": {
+    "seed": 4079,
+    "axonCount": 4,
+    "channelCount": 1,
+    "coarseNodes": 48525,
+    "fineNodes": 212077
+  },
+  "rows": [
+    {
+      "name": "Default-seed coarse field versus independent direct assembly",
+      "pass": true,
+      "schema": "axon-stage2-induction-reference/1",
+      "maximumPotentialErrorUvPerAperS": 3.527201529502679e-18,
+      "maximumLoadErrorMicroampPerSlew": 1.0171105506263835e-23,
+      "loadSum": -3.473512337869159e-26,
+      "seconds": 12.116623346999404,
+      "runtime": {
+        "python": "3.12.14",
+        "numpy": "2.3.5",
+        "scipy": "1.17.0"
+      },
+      "method": "Independently reconstructed finite-segment A, NumPy affine inversion and tensor load, SciPy sparse direct solution; no JS stiffness or load imported into the solve."
+    },
+    {
+      "name": "Fine independent direct solve",
+      "pass": false,
+      "status": "Process terminated with exit code 137 before writing a result",
+      "numericalConclusion": null
+    }
+  ],
+  "meaning": "Supplemental diagnostic only. No accepted fine result exists; neither browser-PCG failure nor mesh-convergence gate is converted to a pass."
+}

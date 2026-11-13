@@ -1,0 +1,15 @@
+{
+ "schema":"axon-stage2-magnetic-propagation-acceptance/1",
+ "declaredBeforeExecution":true,
+ "peakAmpereGrid":[0,10000,100000,1000000,10000000,100000000],
+ "riseMs":0.05,
+ "dtMs":[0.000625,0.0003125,0.00015625],
+ "levels":[{"soma":5,"stem":3,"passive":3},{"soma":9,"stem":5,"passive":5},{"soma":13,"stem":7,"passive":7}],
+ "maximumSiteRmsMv":1,
+ "maximumCrossingTimeMs":0.1,
+ "counts":"identical at every active site",
+ "conductionDelayRelative":0.05,
+ "recordingPeakToPeakRelative":0.1,
+ "selection":"Retain every declared grid probe, including unstable cases. Select the lowest absolute peak current with qualifying propagation in both arms. Freeze it across native, time and spatial comparisons.",
+ "scope":"Extreme unphysical current is an implementation stress fixture only. It is excluded from the supported 0–100 A interface, energy/feasibility claims and qualified operating thresholds. No transfer, waveform, voltage or time is rescaled between a simulation and its reference. The actual modeled axial microcoil may fail to recruit within its declared operating grid."
+}

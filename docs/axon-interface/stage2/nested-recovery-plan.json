@@ -1,0 +1,29 @@
+{
+  "schema": "axon-stage2-nested-recovery-plan/1",
+  "declaredOn": "2026-11-13",
+  "status": "predeclared-before-execution",
+  "reason": "Reconstruct the lost unpublished subdivision experiment. Earlier failures stay retained; no old raw result is synthesized.",
+  "baseRadialRefinement": 2,
+  "candidate": {"planarRefinement": 1, "axialRefinement": 2},
+  "references": [
+    {"planarRefinement": 1, "axialRefinement": 3, "axis": "axial"},
+    {"planarRefinement": 2, "axialRefinement": 2, "axis": "planar"}
+  ],
+  "retainedDiagnostic": {"planarRefinement": 1, "axialRefinement": 1, "reason": "Reproduce the previously observed axial failure with newly recovered source."},
+  "acceptance": {
+    "eachCellEachDirectionTransferRelativeL2": 0.05,
+    "productionTrueResidual": 1e-10,
+    "recurrenceResidual": 2e-12,
+    "maximumIterations": 16000,
+    "independentTrueResidual": 1e-9,
+    "independentPotentialRelativeL2": 1e-6,
+    "independentLoadRelativeL2": 1e-8,
+    "independentAbsolutePotentialUvPerAperS": 0.001
+  },
+  "browserAdmission": {"maxNodes": 1800000, "maxTetrahedra": 11000000, "maxNonzeros": 60000000, "maxEstimatedBytes": 2100000000},
+  "offlineReferenceAdmission": {"maxNodes": 3600000, "maxTetrahedra": 22000000, "maxNonzeros": 75000000, "maxEstimatedBytes": 2700000000},
+  "referenceAdmissionMeaning": "Only resource admission differs. Original stiffness, source quadrature, physical geometry and all numerical acceptance thresholds remain unchanged.",
+  "cohort": {"axonCount": 4, "channelCount": 1, "seed": 4079},
+  "quadrature": {"faceOrder": 8, "volumeRule": "tetra11", "primaryLineSubdivisions": 8},
+  "execution": "Serial large studies. Per-process time limit 7200 seconds. Preserve failed or interrupted results and source hashes. No automatic promotion of a failed candidate."
+}

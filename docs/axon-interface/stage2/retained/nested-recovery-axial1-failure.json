@@ -1,0 +1,51 @@
+{
+  "schema": "axon-stage2-retained-axial1-diagnostic/1",
+  "cohort": {
+    "axonCount": 4,
+    "channelCount": 1,
+    "seed": 4079
+  },
+  "scope": "Fresh seed-4079 fixed-parent planar-1 axial-1 comparison against the selected axial-2 candidate; separate from the lost historical seed-2048 observation.",
+  "passed": false,
+  "rows": [
+    {
+      "name": "Cell 0 rejected-candidate axial 1-to-2",
+      "relativeL2": 0.031789710985907306,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 1 rejected-candidate axial 1-to-2",
+      "relativeL2": 0.07068860705959992,
+      "limit": 0.05,
+      "pass": false
+    },
+    {
+      "name": "Cell 2 rejected-candidate axial 1-to-2",
+      "relativeL2": 0.03914328635325284,
+      "limit": 0.05,
+      "pass": true
+    },
+    {
+      "name": "Cell 3 rejected-candidate axial 1-to-2",
+      "relativeL2": 0.14461042554986134,
+      "limit": 0.05,
+      "pass": false
+    }
+  ],
+  "fieldReports": [
+    {
+      "path": "docs/axon-interface/stage2/nested-recovery-field-1-2.json",
+      "sha256": "82cdc7d8dc7bd1acd6b171851fce24b605c1a5979fce11b87b0a2e8f3e06cb1b"
+    },
+    {
+      "path": "docs/axon-interface/stage2/nested-recovery-field-1-1.json",
+      "sha256": "696ae2442cab2c62e5c0d20d4a60d1d162673c02c9ab1505ddfd2ff6350660c7"
+    }
+  ],
+  "sourceHashes": {
+    "docs/axon-interface/stage2/nested-recovery-plan.json": "f1818c75c673c2efa56d62131e2d68ecf4d915fbb9bd8b7d94a27d7b56dae984",
+    "scripts/axon-interface/stage2/nested-induction-check.mjs": "c1ca5a4362400a23803c00ca4bd0ead4c9233fec611a54d9a00f6a88110e2606"
+  },
+  "meaning": "The coarse axial-1 candidate remains rejected. Passing production-candidate refinements do not relabel its failure."
+}

@@ -1,0 +1,134 @@
+{
+  "schema": "axon-stage2-browser-validation/3",
+  "passed": true,
+  "hosted": true,
+  "modelVersion": "axon-modalities-coupled-0.3.0",
+  "testedCommit": "3dd1d8bcfa4ad4903545dcf11d497c593c30117c",
+  "recordedAt": "2026-11-12T13:51:53.726225+00:00",
+  "surface": "Managed Chrome, deployed Cloudflare worker",
+  "url": "https://92a0eb4c.buildthesimulation.pages.dev/simulations/biohybrid-axon-interface/stage2/",
+  "settings": {
+    "modality": "spectral",
+    "axonCount": 4,
+    "channelCount": 1,
+    "seed": 4079,
+    "amplitudes": [
+      0,
+      0.002
+    ],
+    "dtMs": 0.000625,
+    "durationMs": 6,
+    "sampleDtMs": 0.01,
+    "photons": 32000,
+    "shellThicknessUm": 0.5,
+    "gmaxMsCm2": 5,
+    "opticalPulseMs": 2,
+    "reflectivity": 0.85,
+    "coilLayers": 6,
+    "coilRiseMs": 0.05,
+    "wellApertureRadiusUm": 3.5,
+    "spectralFamilyCount": 2,
+    "spectralExpression": 20,
+    "spectralRateScale": 1,
+    "muAbs470PerMm": 0.2,
+    "muScatter470PerMm": 10,
+    "absorptionExponent": 0,
+    "scatteringExponent": 1
+  },
+  "elapsedSeconds": 80.49770000000018,
+  "sourceHashes": {
+    "src/components/AxonStage2Laboratory.jsx": "bc17497e2572aacdb221b605c81c55bb4d7220c45605e9bd219620eebe8dd164",
+    "src/lib/axon-interface/stage2/settings.mjs": "d9b28ce015fb8b20bc43d5bf171d61fa93d5f82456d632349a7e5d41f98cf73e",
+    "src/lib/axon-interface/stage2/protocol.mjs": "8ee76def8e13a219c3022525dec4b1f0a39844f7c93330ee8cdc1ee6ec71b466",
+    "src/lib/axon-interface/stage2/spectral-opsin.mjs": "68b573c350fd64f2a9a0f2144d66623db17f1c30632b15f81fbd76347deca770",
+    "src/lib/axon-interface/stage2/spectral-protocol.mjs": "14a41ffba409db2e44ec4b80820f49ae48282662b626f9646d1ed7c9e13a0a8c"
+  },
+  "checks": [
+    {
+      "name": "Two-family wavelength table includes every cell and opsin identity",
+      "pass": true
+    },
+    {
+      "name": "Assigned positive response lost with regional, whole-cell, soma-only and opsin removal",
+      "pass": true
+    },
+    {
+      "name": "Exposure-sensitive result visibly withholds exclusive-output headline",
+      "pass": true
+    },
+    {
+      "name": "Selecting a source\u2013cell pair updates the named causal audit",
+      "pass": true
+    },
+    {
+      "name": "Export completes and matches local browser exactly except execution timing",
+      "pass": true
+    }
+  ],
+  "hostedVersusLocal": {
+    "schema": "axon-stage2-browser-export-comparison/1",
+    "browserVersion": "axon-modalities-coupled-0.3.0",
+    "nodeVersion": "axon-modalities-coupled-0.3.0",
+    "browserElapsedSeconds": 80.49770000000018,
+    "nodeElapsedSeconds": 79.26609999999962,
+    "settingsEqual": true,
+    "allMatricesExactlyEqual": true,
+    "bothWithholdUnqualifiedMagneticClaims": null,
+    "nonNumericDifferences": [],
+    "numericDifferences": 0,
+    "exactExportMatchExcludingTiming": true,
+    "maximumVoltageDifferenceMv": 0,
+    "fieldResiduals": {
+      "browser": [
+        null,
+        null
+      ],
+      "node": [
+        null,
+        null
+      ]
+    },
+    "sha256": {
+      "browser": "18be43a73ff9078bb86b838b73050a8f5951f446bdad5c87c2af313241fe4747",
+      "node": "fdc8bcc27d81c07236dfe604508b226912d0722f7083aab877428e98c7e84cf8"
+    },
+    "meaning": "Bitwise export equivalence is reported separately from discrete-output agreement. Voltage differences are measured, not assigned a new post-hoc acceptance tolerance. This does not replace physical field, membrane or spatial qualification."
+  },
+  "nodeVersusLocal": {
+    "schema": "axon-stage2-browser-export-comparison/1",
+    "browserVersion": "axon-modalities-coupled-0.3.0",
+    "nodeVersion": "axon-modalities-coupled-0.3.0",
+    "browserElapsedSeconds": 79.26609999999962,
+    "nodeElapsedSeconds": 99.326689313,
+    "settingsEqual": true,
+    "allMatricesExactlyEqual": true,
+    "bothWithholdUnqualifiedMagneticClaims": null,
+    "nonNumericDifferences": [],
+    "numericDifferences": 1108507,
+    "exactExportMatchExcludingTiming": false,
+    "maximumVoltageDifferenceMv": 2.8180124900245573e-11,
+    "fieldResiduals": {
+      "browser": [
+        null,
+        null
+      ],
+      "node": [
+        null,
+        null
+      ]
+    },
+    "sha256": {
+      "browser": "fdc8bcc27d81c07236dfe604508b226912d0722f7083aab877428e98c7e84cf8",
+      "node": "fd2201a745c733a2ed15f95ffcc0a44da729e4b6c555366a226538c8fb5e08d4"
+    },
+    "meaning": "Bitwise export equivalence is reported separately from discrete-output agreement. Voltage differences are measured, not assigned a new post-hoc acceptance tolerance. This does not replace physical field, membrane or spatial qualification."
+  },
+  "screenshots": [
+    "browser-spectral-hosted.jpg"
+  ],
+  "limitations": [
+    "WebGL unavailable; same-coordinate 2D fallback verified.",
+    "This verifies deployed software behavior, not biological calibration or a magnetic field gate.",
+    "Narrow layout and Safari untested."
+  ]
+}

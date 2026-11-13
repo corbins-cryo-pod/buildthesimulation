@@ -1,0 +1,36 @@
+✔ Extended reference solves a manufactured thin-layer system without changing its matrix (10.404533ms)
+✔ Extended reference preserves zero input and rejects cancelled or malformed solves (1.843981ms)
+✔ Equilibration solves the original strongly scaled equation and boundary reactions (4.482016ms)
+✔ Induction solve preserves zero input and linear sign/amplitude scaling (2.305954ms)
+✔ Invalid induction input and cancellation cannot return a partial solution (0.594338ms)
+✔ Tetrahedral source quadrature integrates every claimed barycentric moment (1.480615ms)
+✔ Finite-segment vector potential matches the analytic perpendicular-bisector integral (0.335726ms)
+✔ Photon conversion uses one spectral weight and retains blue crosstalk (1.593802ms)
+✔ Physical sources multiply trial rows, never the original-host census (15.367018ms)
+✔ Whole-cell conductance and current survive soma mesh refinement (35.589027ms)
+✔ Spectral block removes current without removing optical exposure or occupancy (6.565171ms)
+✔ Triangle surface quadrature reproduces independent analytic simplex moments (3.249937ms)
+✔ Conservative induction rejects an open winding before any mesh solve (0.610922ms)
+✔ Malformed settings, unsupported pulse timing and unsafe work never silently repair (1.651348ms)
+✔ Normalization is immutable and cannot relabel a completed grid (0.239974ms)
+✔ No mechanism exactly preserves Stage 1 voltages, membrane currents and state (2262.28188ms)
+✔ An outward transmembrane current changes the membrane, and an opsin block preserves photons (15.200146ms)
+✔ Seed reproduces independent photon histories; zero hits retain nonzero upper confidence (39.25317ms)
+✔ Closed finite winding is contained; complete ramp has zero net current change (2.457257ms)
+✔ Causal filtering never erases an off-target to invent an exclusive channel (0.343547ms)
+✔ Matrix export preserves every declared sample, cell and control (0.523943ms)
+✔ Every modality initializes inherited anatomy without leaking its field-resolution override (4.618988ms)
+✔ Field qualification cohorts match the public magnetic geometry without substituting morphology (6.617688ms)
+✔ Published qualification requires all sealed passing studies and current sources (10.362686ms)
+✔ Editing a passing report after collection withdraws the published qualification (4.842368ms)
+✔ Changed per-study source is rejected even when the top-level manifest is unchanged (5.756116ms)
+✔ Missing browser evidence and changed underlying field outputs cannot remain qualified (6.481007ms)
+✔ Legacy manifests without evidence hashes remain explicitly unverified (5.827662ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2511.649458

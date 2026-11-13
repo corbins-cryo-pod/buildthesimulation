@@ -1,0 +1,70 @@
+{
+  "complete": true,
+  "passed": true,
+  "rows": [
+    {
+      "name": "nested-recovery-mesh-contracts.json complete and passes unchanged limits",
+      "pass": true
+    },
+    {
+      "name": "nested-recovery-mesh-contracts.json source is current",
+      "pass": true
+    },
+    {
+      "name": "nested-recovery-validation.json complete and passes unchanged limits",
+      "pass": true
+    },
+    {
+      "name": "nested-recovery-validation.json source is current",
+      "pass": true
+    },
+    {
+      "name": "nested-recovery-validation.json underlying executed reports match",
+      "pass": true
+    },
+    {
+      "name": "nested-original-validation.json complete and passes unchanged limits",
+      "pass": true
+    },
+    {
+      "name": "nested-original-validation.json source is current",
+      "pass": true
+    },
+    {
+      "name": "nested-original-validation.json underlying executed reports match",
+      "pass": true
+    },
+    {
+      "name": "nested-recovery-independent-validation.json complete and passes unchanged limits",
+      "pass": true
+    },
+    {
+      "name": "nested-recovery-independent-validation.json source is current",
+      "pass": true
+    },
+    {
+      "name": "nested-recovery-independent-validation.json fixture source is current",
+      "pass": true
+    },
+    {
+      "name": "nested-original-independent-validation.json complete and passes unchanged limits",
+      "pass": true
+    },
+    {
+      "name": "nested-original-independent-validation.json source is current",
+      "pass": true
+    },
+    {
+      "name": "nested-original-independent-validation.json fixture source is current",
+      "pass": true
+    },
+    {
+      "name": "Production uses the actual tested mesh and source rule",
+      "pass": true
+    },
+    {
+      "name": "Original benchmark and UI-default cohorts remain distinct required studies",
+      "pass": true
+    }
+  ]
+}

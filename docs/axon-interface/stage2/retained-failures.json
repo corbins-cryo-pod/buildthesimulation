@@ -1,0 +1,194 @@
+[
+  {
+    "id": "coupled-001",
+    "scope": "software contract",
+    "failure": "UI offered one cell but inherited anatomy requires at least four. Contract initialization rejected it.",
+    "correction": "Removed the unsupported UI option and require at least four cells. All eight coupled contracts then passed."
+  },
+  {
+    "id": "coupled-002",
+    "scope": "causal accounting",
+    "failure": "Initial integration retained descriptive exclusive counts without requiring optical opsin-block loss.",
+    "correction": "Dedicated causal qualifier requires regional, whole-cell and applicable opsin-block loss and always checks exclusivity against the entire assigned row. Regression tests preserve off-targets."
+  },
+  {
+    "id": "coupled-003",
+    "scope": "finer induction mesh",
+    "failure": "Original PCG residual 1.3595969434732396e-5 after 16000 iterations, fixed gate 1e-10.",
+    "correction": "Algebra corrected with symmetric equilibration and true-residual observation without breaking PCG recurrence. The finer fixture now passes 1e-10, exposing a separate 14.0–39.7% mesh-transfer discrepancy; the original failure report is retained."
+  },
+  {
+    "id": "coupled-004",
+    "scope": "algebraic correction attempt",
+    "failure": "Reverse Cuthill–McKee ordering still failed: residual 0.26948198599014733 after 16000 iterations.",
+    "correction": "RCM remains rejected. Production preserves the original ordering and uses the separately verified equilibrated solver; physical matrix and acceptance tolerances are unchanged."
+  },
+  {
+    "id": "component-archive",
+    "scope": "recovered component studies",
+    "failure": "Original wire/lead intersection and three insufficiently sampled off-target estimates.",
+    "correction": "Exact original reports retained under labs/axon-stage2/reports/retained-failures. New finite-shell evidence does not erase these failures."
+  },
+  {
+    "id": "coupled-005",
+    "scope": "supplemental fine direct solve",
+    "failure": "The combined process exited without a fine report. A separate Python run also terminated with exit code 137 before a report was written.",
+    "correction": "No numerical conclusion. Matrix refinement remains unqualified; process termination does not justify relaxing a tolerance."
+  },
+  {
+    "id": "coupled-006",
+    "scope": "converged algebra, unconverged discretization",
+    "failure": "After the algebraic correction, per-cell coarse/fine transfer relative L2 errors are 0.1403458256, 0.3973348249, 0.3822908875 and 0.3281912394 against the unchanged 0.05 limit.",
+    "correction": "Retained as a failed required gate. Magnetic headlines, threshold brackets and operating-point selection are withheld; complete nominal matrices, traces and controls remain diagnostics."
+  },
+  {
+    "id": "coupled-007",
+    "scope": "source quadrature diagnostic",
+    "failure": "Four-point tetrahedral integration reduces per-cell mesh errors to 0.0056415, 0.0449371, 0.1055674 and 0.0604411; two of four still fail.",
+    "correction": "Diagnostic only, not promoted to production. Both the original vertex-average rule and this rejected correction are retained."
+  },
+  {
+    "id": "coupled-008",
+    "scope": "chunked independent finer direct solve",
+    "failure": "Independent NumPy assembly with 25000-element chunks and SuperLU symmetric minimum-degree ordering terminated with exit code 137 before writing a fine result.",
+    "correction": "No numerical conclusion. Neither the mesh criterion nor independent-reference requirement is relaxed."
+  },
+  {
+    "id": "coupled-009",
+    "scope": "higher-order source quadrature diagnostic",
+    "failure": "Eleven-point Keast degree-four source integration gives transfer refinement errors 0.00549765, 0.05282858, 0.10095172 and 0.06121572. Three cells exceed the unchanged 0.05 gate.",
+    "correction": "Not promoted. Exact polynomial moments through degree four pass analytic simplex-integral checks. Source integration alone does not resolve the mesh discrepancy."
+  },
+  {
+    "id": "coupled-010",
+    "scope": "conservative source, original coarse mesh",
+    "failure": "The first conservative 1→2 mesh attempt failed current balance (−1.3177e−14 versus 1e−15) and transfer refinement (11.51%, 5.19%, 10.03%, 6.18% versus 5%).",
+    "correction": "Original report retained in induction-conservative-initial-failure.json. Higher-order face/volume quadrature and a genuinely finer baseline are being qualified; a different passing fixture cannot certify the old mesh."
+  },
+  {
+    "id": "coupled-011",
+    "scope": "independent finer induction solver",
+    "failure": "Initial ILUT factorization was singular. A different ordering successfully factored but BiCGSTAB returned breakdown −10 with a per-unit-slew RHS norm of 3.035e−12.",
+    "correction": "Both failed attempts are retained. Normalizing the algebraic RHS and restoring its physical magnitude avoids BiCGSTAB breakdown. The independent physical reference then passes at both mesh sizes; it is refreshed again after the production solver correction. No stimulus, physical field, trace amplitude, timing or acceptance tolerance is fitted."
+  },
+  {
+    "id": "coupled-012",
+    "scope": "spectral crosstalk test interpretation",
+    "failure": "The initial supplemental assertion incorrectly expected a shared-only output from duplicate exclusive rows. The calculated matrix correctly contained three nonzero rows recruiting two distinct cells.",
+    "correction": "The original failure is retained in spectral-crosstalk-initial-assertion-failure.json. Reanalysis of the unchanged raw run checks the established metric: E0002 counts once, distinct exclusive outputs = 2 and rank = 2. No model, stimulus or numerical tolerance changed."
+  },
+  {
+    "id": "coupled-013",
+    "scope": "finest conservative mesh algebra",
+    "failure": "The first refinement-4 solve reached the unchanged 16000-iteration cap at true residual 1.756456346689821e−10 versus the 1e−10 gate; it produced no qualified fine transfer.",
+    "correction": "The full failure and coarse result are retained in induction-conservative-refinement-algebra-failure.json. Compensated residual observation and refinement from the original physical equation replace restart from the rounded equilibrated coefficients. The same physical matrix, load and acceptance limits are retained."
+  },
+  {
+    "id": "coupled-014",
+    "scope": "physical-residual refinement in binary64",
+    "failure": "The finest mesh still failed at residual 1.3315927995857793e-10 after 16000 iterations with 4376 restarts.",
+    "correction": "Retained in induction-conservative-physical-residual-failure.json. Two-component physical state and residual, error-free products and exact axial-column block preconditioning pass the same matrix and unchanged gates."
+  },
+  {
+    "id": "coupled-015",
+    "scope": "conservative refinement 2 versus 4",
+    "failure": "Relative transfer errors are 0.8357%, 3.8994%, 3.6748% and 5.3361%. The fourth exceeds the unchanged 5% limit.",
+    "correction": "Factor 2 remains rejected in induction-conservative-2-to-4-failure.json. Production is actually remeshed at factor 3 and compared against factor 4, with a new independent physical reference. The change was declared in induction-resolution-correction.json before execution."
+  },
+  {
+    "id": "coupled-016",
+    "scope": "conservative factor 3 versus factor 4",
+    "failure": "Cell 2 transfer relative L2 is 5.522489595%, exceeding the unchanged 5% criterion.",
+    "correction": "All original rows retained in induction-conservative-3-to-4-failure.json. A separately predeclared axial refinement separates axial and radial contributions."
+  },
+  {
+    "id": "coupled-017",
+    "scope": "independent field-3 reference memory",
+    "failure": "The independent child terminated after physical stiffness assembly and before writing a result. No numerical conclusion.",
+    "correction": "The reference now cancels equal-conductivity internal faces by sorted incidence before allocating face coordinates. Earlier failure remains retained. All original comparison tolerances are unchanged."
+  },
+  {
+    "id": "coupled-018",
+    "scope": "directional radial refinement at axial factor 4",
+    "failure": "Cell 2 radial 3-to-4 transfer relative L2 is 5.59463639%, exceeding the unchanged 5% criterion. The separate axial 3-to-4 rows are below 0.9%.",
+    "correction": "The full failed radial and passing axial rows remain in induction-conservative-3-4-to-4-4-failure.json. Production is genuinely remeshed at radial 4/axial 4 and compared against an offline radial-5/axial-4 reference."
+  },
+  {
+    "id": "coupled-019",
+    "scope": "Stage 2 integration with inherited anatomy validation",
+    "failure": "Version 0.4.1 placed the factor-4 field setting into inherited Stage 1 anatomy settings, whose UI validator admits only 1–3. Both the deployed worker and full protocol rejected initialization.",
+    "correction": "Version 0.4.2 keeps inherited anatomy settings valid and applies factor 4 explicitly when assembling the Stage 2 field. The export reports the actual field resolution. A regression initializes all four modalities. The observed failure is retained in retained/field4-anatomy-initialization-failure.json."
+  },
+  {
+    "id": "coupled-020",
+    "scope": "offline radial-5 reference resource limit",
+    "failure": "The first fine-reference solve was killed with exit 137 while other large studies overlapped. It completed no numerical result.",
+    "correction": "The failure is retained in retained/offline-field5-memory-failure.json. The independent reference is rerun with constrained concurrency. Cached source assembly is admitted only after source-hash checks and exact equality of every rebuilt physical matrix coefficient. Original residual, recurrence, iteration and mesh-transfer limits are unchanged."
+  },
+  {
+    "id": "coupled-021",
+    "scope": "independent fine reference runtime",
+    "failure": "The generic ILUT reference was interrupted after approximately 36 minutes without producing a comparison. It is not an accepted numerical result.",
+    "correction": "An independent coordinate-grouped block preconditioner replaces ILUT. SciPy CG still solves the original independently assembled physical equation under the same comparison limits. The interruption and source commit are retained in retained/independent-field3-ilut-interrupted.json."
+  },
+  {
+    "id": "coupled-022",
+    "scope": "reciprocal recording field runtime",
+    "failure": "The inherited reciprocal recording solve at factor 4 remained in the initial field phase for over ten minutes. Node and hosted attempts were cancelled before a result was released.",
+    "correction": "The Stage 2 precision solver now receives the identical finite contact load and physical matrix. Four coarse-field transfer comparisons against the inherited solver passed a predeclared 1e-8 relative bound. The production sweep and spatial recording tests must pass before qualification. The interruption remains in retained/reciprocal-field4-interrupted.json."
+  },
+  {
+    "id": "coupled-023",
+    "scope": "Independent coordinate-column CG residual",
+    "failure": "The original independent attempt reported a physical relative residual of 1.7357269e-9, exceeding 1e-9 despite close potential agreement.",
+    "correction": "The exact earlier report remains in retained/independent-coordinate-cg-residual-failure.json. Long-double residual correction was subsequently observed to pass, but lost temporary raw output is not recreated from the observation. Fresh independent references must pass for each selected candidate."
+  },
+  {
+    "id": "coupled-024",
+    "scope": "Radial 4-to-5 field convergence",
+    "failure": "Two cells differed by 6.727024390160% and 6.117051255058%, exceeding the unchanged 5% transfer limit.",
+    "correction": "The observation is preserved in execution-interruption-2026-11-12.json; its final temporary raw report was not recovered. This mesh is rejected. The reconstructed planar-subdivision method must earn its own directional qualification."
+  },
+  {
+    "id": "coupled-025",
+    "scope": "Unpublished subdivision axial comparison",
+    "failure": "The earlier planar-1 / axial-1 candidate had an observed 5.725177920054% axial difference for one cell.",
+    "correction": "This historical observation remains a failure. Source and raw arrays were lost. The reconstructed original-seed study retains a fresh low-axial-resolution diagnostic and tests a finer candidate; the separate UI-default seed does not replace it."
+  },
+  {
+    "id": "coupled-026",
+    "scope": "Execution interruption and unrecovered artifacts",
+    "failure": "The execution workspace became unavailable while the finer planar reference was running. Its completion and outcome were not observed.",
+    "correction": "Committed code was recovered from GitHub. New source hashes identify reconstructed subdivision source. Missing raw reports are rerun, never synthesized from recovery notes."
+  },
+  {
+    "id": "coupled-027",
+    "scope": "Recovery mesh-contract setup",
+    "failure": "A one-cell fixture was rejected by the existing 4-to-256-cell validator before mesh assembly.",
+    "correction": "The geometry contracts now use four cells. All seven pass under unchanged tolerances; retained/nested-recovery-invalid-census.json preserves the setup error."
+  },
+  {
+    "id": "coupled-028",
+    "scope": "Native mechanism compilation in restored environment",
+    "failure": "The NEURON wheel defaulted to clang++, which was unavailable; both mechanism builds failed before execution.",
+    "correction": "Rebuilt successfully using installed gcc/g++ through CC=gcc and CXX=g++, as already specified by reproduction. No channel equations or numerical criteria changed."
+  },
+  {
+    "id": "coupled-029",
+    "scope": "Full 0.4.3 protocol superseded",
+    "failure": "The current full magnetic protocol was canceled with exit 130 after its mesh-refinement failure, without a completed magnetic result.",
+    "correction": "The interruption record retains this status. The 0.4.4 protocol and hosted comparison must execute with the selected production mesh; old passing exports cannot substitute."
+  },
+  {
+    "id": "coupled-030",
+    "scope": "Reconstructed seed-4079 axial-1 diagnostic",
+    "failure": "The coarse planar-1/axial-1 field differs from axial 2 by 7.068860706% for E0002 and 14.461042555% for E0004, exceeding the unchanged 5% transfer limit.",
+    "correction": "Raw fields and all four comparisons remain retained in nested-recovery-field-1-1.json and retained/nested-recovery-axial1-failure.json. The actual production candidate uses axial 2 and passes its separate axial-3 and planar-2 comparisons. The original seed-2048 study remains independently required."
+  },
+  {
+    "id": "coupled-031",
+    "scope": "13 November execution-workspace interruption",
+    "failure": "The local execution workspace became unavailable after the source-current full protocol, policy and hosted export comparison had passed. The positive magnetic study had not produced a completed report. No successful local result is inferred from its partial progress.",
+    "correction": "Completed source and evidence are preserved at f7bd528d6f035eb6428eef3095f3d2896d752984. The isolated completion workflow verifies the pinned original-cohort physical fixture and repeats the interrupted positive study, then imports independently verified field evidence and executes the remaining path/membrane/software checks."
+  }
+]

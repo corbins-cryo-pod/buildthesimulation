@@ -1,0 +1,12 @@
+import fs from 'node:fs';import crypto from 'node:crypto';
+import {normalizeStage1Settings} from '../../../src/lib/axon-interface/stage1-settings.mjs';
+import {createStage1Cohort} from '../../../src/lib/axon-interface/identities.mjs';
+import {createBipolarMorphology} from '../../../src/lib/axon-interface/bipolar.mjs';
+import {stage1FieldSettings} from '../../../src/lib/axon-interface/stage1-protocol.mjs';
+import {createStage1FieldModel,solveStage1Channel,sampleMembraneTransfer} from '../../../src/lib/axon-interface/field-stage1.mjs';
+import {solvePrecisionContact,samplePrecisionContact} from '../../../src/lib/axon-interface/stage2/precision-contact-solve.mjs';
+const s=normalizeStage1Settings({axonCount:4,channelCount:1}),g=createStage1Cohort(s),m=createBipolarMorphology(s),field=createStage1FieldModel({...stage1FieldSettings(s,m),radialRefinement:1,axialRefinement:1},{...g,morphology:m,constructPresent:true}),old=solveStage1Channel(field,g.channels[0]),now=solvePrecisionContact(field,g.channels[0]);
+const rows=g.cells.map(c=>{const a=sampleMembraneTransfer(old,m,c),b=samplePrecisionContact(now,m,c),e=Math.sqrt(a.reduce((s,x,i)=>s+(x-b[i])**2,0)/b.reduce((s,x)=>s+x*x,0));return {cell:c.id,relative:e,pass:e<=1e-8};});
+console.log({passed:rows.every(r=>r.pass),rows,previousResidual:old.diagnostics.relativeResidual,currentResidual:now.diagnostics.relativeResidual});
+const paths=['src/lib/axon-interface/stage2/precision-contact-solve.mjs','src/lib/axon-interface/stage2/induction-precision-solve.mjs','src/lib/axon-interface/field-stage1.mjs','scripts/axon-interface/stage2/recording-field-check.mjs'];
+fs.writeFileSync('docs/axon-interface/stage2/recording-field-validation.json',JSON.stringify({schema:'axon-stage2-recording-field-validation/1',complete:true,passed:rows.every(r=>r.pass),rows,relativeL2Limit:1e-8,old:old.diagnostics,current:now.diagnostics,sourceHashes:Object.fromEntries(paths.map(p=>[p,crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex')])),scope:'Same finite source/return contact load and physical matrix. Coarse field cross-check against the inherited qualified solver; production reciprocal recording is additionally exercised by the full protocol and spatial tests.'},null,2)+'\n');if(!rows.every(r=>r.pass))process.exitCode=1;

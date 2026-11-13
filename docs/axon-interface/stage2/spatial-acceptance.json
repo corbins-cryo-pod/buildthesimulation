@@ -1,0 +1,12 @@
+{
+  "schema":"axon-stage2-spatial-acceptance/1",
+  "declaredBeforeExecution":true,
+  "levels":[{"soma":5,"stem":3,"passive":3},{"soma":9,"stem":5,"passive":5},{"soma":13,"stem":7,"passive":7}],
+  "dtMs":0.0003125,
+  "emittedMw":0.002,
+  "photons":128000,
+  "conductionDelayRelative":0.05,
+  "recordingPeakToPeakRelative":0.1,
+  "propagation":"same recruited classification on each arm",
+  "source":"Original prompt Stage J spatial gates; actual soma-surface transport and unchanged physical FEM geometry. No amplitude fitting, time shift, rescaling or tolerance adjustment."
+}

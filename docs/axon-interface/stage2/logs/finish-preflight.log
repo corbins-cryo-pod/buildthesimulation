@@ -1,0 +1,129 @@
+{
+  "status": "development-checkpoint",
+  "studies": {
+    "coupling": {
+      "complete": true,
+      "passed": true,
+      "checks": 19,
+      "sha256": "30d3c8dc67c6ca838a0639dd3162641f26e9904aed90ac8078a8ae11b3ecb1a7"
+    },
+    "surface": {
+      "complete": true,
+      "passed": true,
+      "checks": 9,
+      "sha256": "b324daf0ccd2edafc6ea1273f4944530a2e2ed218cb49703420c4df777cb4d03"
+    },
+    "spatial": {
+      "complete": true,
+      "passed": true,
+      "checks": 11,
+      "sha256": "61ea2ecc010139ef2e97ed6874e75a7a703730328adb9280428aa4c35e2bc6c0"
+    },
+    "recording-field": {
+      "complete": true,
+      "passed": true,
+      "checks": 4,
+      "sha256": "da792dae7741994d2f552d3785ae862df7ada3aad80f8a51f48d9d2cb0a93822"
+    },
+    "induction": {
+      "complete": true,
+      "passed": true,
+      "checks": 16,
+      "sha256": "e97756d93f52eab0f232e0bee1884a959e705b503061a20c00dc8c088dd933d2"
+    },
+    "magnetic-path": {
+      "complete": true,
+      "passed": true,
+      "checks": 8,
+      "sha256": "732b49d7e67b01a9593c8ef904de21bddf5561ffd2a405a2e4f8569fc50b355e"
+    },
+    "magnetic-coupling": {
+      "complete": true,
+      "passed": true,
+      "checks": 12,
+      "sha256": "5367c4f3bf0e250e78a4d1807d7e02d6c78e307780e0c394aa59f3c50914984a"
+    },
+    "magnetic-policy": {
+      "complete": true,
+      "passed": true,
+      "checks": 7,
+      "sha256": "96fa992b2f3af154a2fcd422b25d94cdcd9b99cc8e658d2071cd1fe02bfb9f7c"
+    },
+    "magnetic-propagation": {
+      "complete": true,
+      "passed": true,
+      "checks": 15,
+      "sha256": "547abf5b7c44e8472e126b7074cdbff667f1f2a1069ed368725d5b94a4fee7d1"
+    },
+    "nested-mesh": {
+      "complete": true,
+      "passed": true,
+      "checks": 7,
+      "sha256": "e90c90903f7339b5f8755c0da9d083b7c74a2abf2ca71f60e78b15fa9ab0fb88"
+    },
+    "nested-default": {
+      "complete": true,
+      "passed": true,
+      "checks": 12,
+      "sha256": "e31de19a0863c8e484c50e88d2398a0ffea57ea8285fc0e369ff46c7d70ffbef"
+    },
+    "nested-original": {
+      "complete": true,
+      "passed": true,
+      "checks": 12,
+      "sha256": "14d81a7f46b8e55b27925cf1b69fff63dda7641d165e99e9a68b87d76206eb22"
+    },
+    "nested-recovery-independent": {
+      "complete": true,
+      "passed": true,
+      "checks": 4,
+      "sha256": "c42a74faf1a6cadb97e5fb9f19fbc0417323f6c5a74c68eca5ca5626aa7d1f81"
+    },
+    "nested-original-independent": {
+      "complete": true,
+      "passed": true,
+      "checks": 4,
+      "sha256": "0e801bcdbc5550183f22134002b4ec68c6e133a71f7268820ee01fe2b6b14dac"
+    },
+    "protocol": {
+      "complete": true,
+      "passed": true,
+      "checks": 37,
+      "sha256": "3395e582d18c44f60d9326a0c0625920095f9f13a6be595b1444e1ec08e25980"
+    },
+    "spectral-component": {
+      "complete": true,
+      "passed": true,
+      "checks": 51,
+      "sha256": "347549813ac571e3ae3fa8c25f2b54d85de93c143d8395e7522a6417a55801a6"
+    },
+    "spectral-coupling": {
+      "complete": true,
+      "passed": true,
+      "checks": 52,
+      "sha256": "2b2e4ba9e768970c18c7e70db539e478edd90625df0cfb4050b05c1517703cb9"
+    },
+    "spectral-spatial": {
+      "complete": true,
+      "passed": true,
+      "checks": 40,
+      "sha256": "5a692cd51c2456d7d75cd25cb417693074e747df88e5399e59cada2327fd748c"
+    },
+    "spectral-protocol": {
+      "complete": true,
+      "passed": true,
+      "checks": 34,
+      "sha256": "12d01ee266a23c9f439976fe5d9b78bf07a12928d3246d089e6c931cefb9db3e"
+    },
+    "spectral-crosstalk": {
+      "complete": true,
+      "passed": true,
+      "checks": 8,
+      "sha256": "159a86325ee9c2b8b481bdfae5fe54466c9f4ab1f266e8e06fb50bfc9369fa35"
+    }
+  },
+  "openReleaseGates": [
+    "Current-version complete site build and repository regression evidence remains pending.",
+    "Software verification source changed after tests/build."
+  ]
+}

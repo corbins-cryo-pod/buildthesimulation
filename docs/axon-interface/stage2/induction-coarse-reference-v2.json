@@ -1,0 +1,22 @@
+{
+  "schema": "axon-stage2-induction-reference/2",
+  "maximumPotentialErrorUvPerAperS": 2.285913622790292e-18,
+  "maximumLoadErrorMicroampPerSlew": 1.0152854420360642e-23,
+  "loadSum": 8.683780844672898e-27,
+  "relativeResidual": 6.16341711488153e-12,
+  "factorNonzeros": 35079304,
+  "peakRssBytes": 2379190272,
+  "seconds": 94.89169109,
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "method": "Independent finite-segment A, chunked NumPy affine inversion and tensor assembly, SciPy SuperLU with symmetric minimum-degree ordering; no JavaScript stiffness or load imported into solve.",
+  "complete": true,
+  "passed": true,
+  "scope": "Coarse seed-2048 reference only. Does not qualify the fine direct solve or transfer refinement.",
+  "sourceHashes": {
+    "scripts/axon-interface/stage2/induction-reference.py": "43a732eed6edd2db7b7bff667f9fbe3bb6d842b1566339105af3bb3f0013810f"
+  }
+}

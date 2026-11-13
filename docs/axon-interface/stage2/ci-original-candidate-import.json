@@ -1,0 +1,32 @@
+{
+  "schema": "axon-stage2-ci-evidence-import/1",
+  "passed": true,
+  "scope": "candidate",
+  "testedCommit": "99bfb0803aad7fd3e84c4421028fa8cc72af0085",
+  "workflowRun": 43440643904,
+  "workflowUrl": "https://github.com/corbins-cryo-pod/buildthesimulation/actions/runs/43440643904",
+  "runner": {
+    "commit": "99bfb0803aad7fd3e84c4421028fa8cc72af0085",
+    "node": "v24.22.1",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "logicalCpus": 4,
+    "totalMemoryBytes": 16759439360,
+    "startedAt": "2026-11-13T14:13:40.214Z",
+    "execution": "Serial cases on an isolated runner; original seed 2048, unchanged predeclared acceptance limits."
+  },
+  "archiveSha256": "bf135bac3603027369eb3d63a5ce2e02be599e8326d5061460c70aca58d5009f",
+  "fixtureSha256": "e32f86459c4de57e1b0c007027579968a37f1938cb088ead9c7b9a7957e945a6",
+  "importedAt": "2026-11-13T14:24:15.331751+00:00",
+  "checks": [
+    "Artifact source commit and Node version match",
+    "Every physical source hash matches this checkout",
+    "Candidate fixture hash matches both generation and independent provenance",
+    "Original true-residual and recurrence limits are unchanged"
+  ],
+  "files": {
+    "runner.json": "6748dbff0f8b9db53e5d43bc58c388db843edea24d6feb8d714e907f9e4572a4",
+    "axon-nested-original-fixture.json": "e32f86459c4de57e1b0c007027579968a37f1938cb088ead9c7b9a7957e945a6",
+    "axon-nested-original-provenance.json": "b186efaa50440e9905da723c52705b5954fda49b1b30e8482f4018988977718e",
+    "nested-original-field-1-2.json": "6baa8a6e70cb2c62048c5cf9e8fd938af7fabe3dfe2957de343b9f32dc42e304"
+  }
+}
