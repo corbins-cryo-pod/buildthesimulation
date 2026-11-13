@@ -1,0 +1,67 @@
+name: Verify published Stage 2 release
+on:
+  push:
+    branches: [verification/stage2-production-a2122f1]
+    paths: [.github/workflows/axon-stage2-production-probe.yml]
+permissions:
+  contents: read
+jobs:
+  live-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: a2122f1eb4c3ef2ed5c7e34a10e3ca8fb29648ae
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify production evidence, pages and emitted worker
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import {createHash} from 'node:crypto';
+          import {publishedStage2} from './src/lib/axon-interface-stage2-publication.mjs';
+          const base='https://buildthesimulation.com';
+          const route='/simulations/biohybrid-axon-interface/stage2/';
+          const expected=publishedStage2();
+          assert.equal(expected.completeStage2,true,'Pinned release is not qualified');
+          const get=async pathname=>{
+            const url=new URL(pathname,base);
+            assert.equal(url.origin,base,'Only the production origin may be inspected');
+            url.searchParams.set('verifyStage2','a2122f1-'+Date.now());
+            const r=await fetch(url,{signal:AbortSignal.timeout(20000),headers:{'Cache-Control':'no-cache'}});
+            assert.equal(r.status,200,pathname+' HTTP status');
+            return {text:await r.text(),headers:{contentType:r.headers.get('content-type'),date:r.headers.get('date'),cfCacheStatus:r.headers.get('cf-cache-status')}};
+          };
+          let last;
+          for(let attempt=1;attempt<=12;attempt++){
+            try{
+              const evidence=await get(route+'validation.json');
+              const actual=JSON.parse(evidence.text);
+              assert.deepEqual(actual,expected,'Production evidence differs from the verified release');
+              const [lab,methods,questions]=await Promise.all([get(route),get(route+'methods/'),get(route+'questions/')]);
+              assert.ok(lab.text.includes('Numerical Stage 2 complete.'),'Laboratory qualification label');
+              assert.ok(methods.text.includes('Numerical Stage 2 release gates passed.'),'Methods qualification label');
+              const client=lab.text.match(/component-url="(\/_astro\/AxonStage2Laboratory\.[^"]+\.js)"/)?.[1];
+              assert.ok(client,'Hydration component is absent');
+              const clientFile=await get(client);
+              const workers=[...clientFile.text.matchAll(/["'](\/_astro\/[^"']*worker[^"']*\.js)["']/gi)].map(m=>m[1]);
+              assert.ok(workers.length,'Numerical worker is absent');
+              const workerEvidence=[];
+              for(const asset of [...new Set(workers)]){
+                const worker=await get(asset);
+                assert.ok(worker.text.includes(expected.modelVersion),'Wrong worker version');
+                assert.ok(worker.text.includes('postMessage')&&worker.text.includes('onmessage'),'Wrong worker protocol');
+                workerEvidence.push({asset,sha256:createHash('sha256').update(worker.text).digest('hex')});
+              }
+              console.log(JSON.stringify({passed:true,checkedAt:new Date().toISOString(),releaseCommit:'a2122f1eb4c3ef2ed5c7e34a10e3ca8fb29648ae',url:base+route,modelVersion:actual.modelVersion,completeStage2:actual.completeStage2,openReleaseGates:actual.openReleaseGates,requiredStudies:Object.keys(actual.studies).length,exactEvidenceMatch:true,validationSha256:createHash('sha256').update(evidence.text).digest('hex'),pages:[route,route+'methods/',route+'questions/'],workerEvidence,headers:evidence.headers}));
+              process.exit(0);
+            }catch(error){
+              last=error;
+              console.log(JSON.stringify({attempt,checkedAt:new Date().toISOString(),ready:false,error:String(error.message).slice(0,800)}));
+              if(attempt<12)await new Promise(resolve=>setTimeout(resolve,45000));
+            }
+          }
+          throw new Error('Production release did not verify within 12 bounded attempts: '+last?.message);
+          NODE
