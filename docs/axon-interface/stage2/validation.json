@@ -1,6 +1,6 @@
 {
   "schema": "axon-stage2-validation/1",
-  "generatedAt": "2026-11-13T13:40:37.318Z",
+  "generatedAt": "2026-11-13T14:52:20.945Z",
   "status": "development-checkpoint",
   "completeStage2": false,
   "modelVersion": "axon-modalities-coupled-0.4.4",
@@ -10,6 +10,10 @@
   "sourceHashes": {
     "docs/axon-interface/stage2/coupling-acceptance.json": "a571a31de835a5a61b69ffec1b5e441fde907c80be8542fa4229cbb4e34de0ce",
     "docs/axon-interface/stage2/spatial-acceptance.json": "ab0ba2cdc70f06406b9ceb93e229358d003bb485ffd2e583ca4e07009a0815c6",
+    "labs/axon-stage2/docs/acceptance.json": "6e3fcf8d39fb7917060edc59f4b4e879c4bc034dba7e9b76180625f7fda41f28",
+    "labs/axon-stage2/reference/requirements.txt": "f7308e5b60ea62603b458da5fadbb55614b46fbb4d083200fa2cc9843085ceef",
+    "labs/axon-stage2/reference/verify.py": "f0ee3584b070cf7bb9254a575f5fbf9b637a3967216e19797ad871c908850052",
+    "labs/axon-stage2/scripts/reference-fixtures.mjs": "5aba60921e3203092260f67b182e4926026ee4d4a2b8b8097dfc0e266116b111",
     "package-lock.json": "9731260f3009250a125d83c73613202d32540e7f743c519a5e9fdec157519d08",
     "public/simulations/biohybrid-axon-interface/stage2/modules/common.mjs": "5afd8bdf262e21e8b065bba67a43a36d64616b2b830955f4c69f468b3849711c",
     "public/simulations/biohybrid-axon-interface/stage2/modules/induction.mjs": "3cb8e02969a0ed185a7ebf3ed092d7035c0673bea7e675195ecc2675ab4fc681",
@@ -20,6 +24,7 @@
     "public/simulations/biohybrid-axon-interface/stage2/modules/spectral.mjs": "9d565090c79bf4767255f9e88e4d2d957c57709a41d109e010fe4f6398c5f5a4",
     "public/simulations/biohybrid-axon-interface/stage2/modules/worker.mjs": "34f950da0c175cf46b257e65b909f5d9087a43a8ce038d9c72b6a0bc75a09926",
     "scripts/axon-interface/stage2/compare-browser-export.mjs": "62ccf0ce7356de4431ff0d028b15a06f722924ede4eada41eb99be5706f1455e",
+    "scripts/axon-interface/stage2/component-reference-check.mjs": "e58dfd3b5be5cf6b0ed27bd55ffe991ca9280e00fb52795bc8811a85a0940c1f",
     "scripts/axon-interface/stage2/coupling-check.mjs": "c09c2dbb39dc030d911f31faa2c29cd94646c233d98360f0dfc8a19a28c95894",
     "scripts/axon-interface/stage2/extended-field-reference.mjs": "5a1039fc5e52fa14ff9da19318e4fe0a315e5dc28985eff3339caa7dd4bb9220",
     "scripts/axon-interface/stage2/generate-nested-field.py": "384e04df20f4c03e2f6d9324e9a882e41039b7adaced0501775120b8850f2e07",
@@ -42,7 +47,7 @@
     "scripts/axon-interface/stage2/mechanisms/axon_spectral.mod": "1fc2b21416fdc3579f9a9c0e05d3cfa88be72d0319c40d0764bc5201235d567d",
     "scripts/axon-interface/stage2/native-reference.py": "e398dcd528255d715f92e25696e054246ac4656f77493beae8d456353baaf58a",
     "scripts/axon-interface/stage2/nested-independent-check.mjs": "eba21aa30247907d7cb1f971da11113a44332052f1ccdc3676333eaaf400f3e4",
-    "scripts/axon-interface/stage2/nested-induction-check.mjs": "af6e0742430b15ed83d4bbd2575e1cc52c19194ac0f7254619530cd195edc590",
+    "scripts/axon-interface/stage2/nested-induction-check.mjs": "c1ca5a4362400a23803c00ca4bd0ead4c9233fec611a54d9a00f6a88110e2606",
     "scripts/axon-interface/stage2/nested-induction-run.mjs": "46d721b1166846fa0f64a18cff1d5355db135f3f013823660259197cc1535184",
     "scripts/axon-interface/stage2/nested-mesh-contract-check.mjs": "c56e2678d63ead4168fffb18c877cf60bdf71a6f9ce2a2632b7c2cee8a46ea4c",
     "scripts/axon-interface/stage2/nested-offline-field.mjs": "1e1328c0f5e62c28750f96cdf362e47a594581eb55daf1b5f28d61af06b676b0",
@@ -52,19 +57,20 @@
     "scripts/axon-interface/stage2/probe-optical.mjs": "1d3f57bda9e4fb292119744e18d29b218acbb7ed79f8ba869243a63386a43ca6",
     "scripts/axon-interface/stage2/protocol-check.mjs": "066dac8ba1aa78cce402a97e0c2853ab0e8012534bfd0045d20e784b9275b3b2",
     "scripts/axon-interface/stage2/recording-field-check.mjs": "a1fb86b92d71ade10e7193daec8cf689bb78a89c5eee14858ae057b1785a2267",
-    "scripts/axon-interface/stage2/reproduce.mjs": "69392f028e2a5c205bf368eb7d34ce4434967181db4d4242879a9c76b9cfba2f",
+    "scripts/axon-interface/stage2/reproduce.mjs": "9532eff27373abb9fe0bf40378a206647a976c4664ed371432078921328d358a",
     "scripts/axon-interface/stage2/requirements.txt": "092475ddcda41189dfb7f813c113f3e5dc98dc26a9872459d5bdeb662305f72d",
-    "scripts/axon-interface/stage2/spatial-check.mjs": "ba01d2f39c7bc95fb4010e05f85f81aa1c124929974c26191d822b0dfab35632",
+    "scripts/axon-interface/stage2/spatial-check.mjs": "3f3cfaf65afcdbcf560b37f902cde3b69e49eed44c66ed76f21f00bad18e1722",
     "scripts/axon-interface/stage2/spectral-component-check.mjs": "e2e3a194ebc3ecd554d5a8d8cd06d1a7b4ae3bb350e0cb4a57742f75df3d7e6a",
     "scripts/axon-interface/stage2/spectral-coupling-check.mjs": "15ff46e6d73e2d52804d617c325d1eff9860e694c60a5f99ec3b38a19e8b124b",
-    "scripts/axon-interface/stage2/spectral-crosstalk-check.mjs": "e7dd04bb4e676d735453d4eb9bc6f07bf7f0de80accdebd4296c36c95648a50b",
+    "scripts/axon-interface/stage2/spectral-crosstalk-check.mjs": "90d7752b3739a6c11092ac83fd71128c354700d8bf3c592268798eea4db84017",
     "scripts/axon-interface/stage2/spectral-protocol-check.mjs": "ba6499be1d399c11ff2cda372ea796687fc98e76db9586bb02b30af7f2060c9b",
     "scripts/axon-interface/stage2/spectral-spatial-check.mjs": "2263810bfdc83ddd79f7444eaf0b4b1be8aff970edadc7a5a0b04e07c282fd16",
     "scripts/axon-interface/stage2/spectral_reference.py": "1194be93203d082ea52d5feb643774cc6fb25a3f0efd18194b55efed04cfe3a9",
-    "scripts/axon-interface/stage2/surface-check.mjs": "a644055606b81af0bd2a9272eb528153bdd1286cea99dcce53b1af7ac722e11b",
+    "scripts/axon-interface/stage2/study-provenance.mjs": "b6ad783476e9e9473430f88dc2f83df702fad2b985c08ffcb3c9bc0b890d2e09",
+    "scripts/axon-interface/stage2/surface-check.mjs": "4e8dd628f799afac6b55a43058f62221817d07da8d0bbedc648fd03e7c18578d",
     "scripts/axon-interface/stage2/surface-probe.mjs": "3bd4180a7e2ecd5dae06e5812f0038d0ae8c5f09895d31d80c1a975c7ad76c04",
     "src/components/AxonStage2Laboratory.jsx": "826bc9dca964c2400461b14e1df40af6e7b18d73c0d9294d770e8a63603e0276",
-    "src/lib/axon-interface-stage2-publication.mjs": "60c7359517bc1705809b22b5c2189339bf2fd60a94a2754c573fe4d8d1afbea4",
+    "src/lib/axon-interface-stage2-publication.mjs": "0feeae25a76366dbc9746f20fa282490d6abca5956afea4bcd656f7bd0d0d176",
     "src/lib/axon-interface/bipolar.mjs": "d47f6717b3faa87ae775c67e1fee4ce0f222e5e954cdba6c765d3d7dffb22098",
     "src/lib/axon-interface/evidence.mjs": "cdc46f15b0bb61056da09e44d255ddcacb653cc113ac9d5c87fd0fa9212cef4b",
     "src/lib/axon-interface/export.mjs": "f2a5bb1396cc3e2abf757faa35c85babe02d96bf234117a9aae9633071a8b5dc",
@@ -105,9 +111,14 @@
     "src/lib/axon-interface/vendor/cdt2d.mjs": "645d096429082510865735501c2fcfd9d3b6e7211e8c631f855b811f83dad185",
     "src/lib/axon-interface/worker.mjs": "53d188ceed2ff450b49c5c372573a4b810db2d7fff50e8b552a2b15bac77373d",
     "src/pages/simulations/biohybrid-axon-interface/stage2.astro": "2ed8f42e3f233ee5daa48c91e15b795af193ca36a6c5dff5ee0409967e15ca91",
-    "src/pages/simulations/biohybrid-axon-interface/stage2/methods.astro": "73dae961ca50baa5feeaa7a71a6b60d1fda35da14f97eb14743c1299816a85e9",
+    "src/pages/simulations/biohybrid-axon-interface/stage2/methods.astro": "9a252d15eab62d05ad7a97337e4ddbdc525c4eaf61650ceae6522b858187ef7f",
     "src/pages/simulations/biohybrid-axon-interface/stage2/questions.astro": "4f5473c8f6bfec54a0a36ac0633eee975d66c2eecc64025a27009a15a797b21a",
-    "src/pages/simulations/biohybrid-axon-interface/stage2/validation.json.js": "59f793d37437f57b7d7840630b4e83aaa368a030280f91b6ee5b9df78b6ab525"
+    "src/pages/simulations/biohybrid-axon-interface/stage2/validation.json.js": "59f793d37437f57b7d7840630b4e83aaa368a030280f91b6ee5b9df78b6ab525",
+    "tests/axon-interface-induction-reference.mjs": "8b5d1e997c47f457aba5bde3aa3b54467a207079f6b3018dfb0fc1fdccf21e36",
+    "tests/axon-interface-induction-solve.mjs": "10543ae1781eaa1f69db2ea8adf4c3d9979efb77ea7402caa6d272c2b944f0c8",
+    "tests/axon-interface-spectral.mjs": "fbda832f76cfecf959ca00e37eaf7013d6d5bf64acbf562194299210e7bceb8d",
+    "tests/axon-interface-stage2-contracts.mjs": "715dd04a5ef4aa05a8716e2fba8387c978c006e77b5cb43464eea56d8f5e3c29",
+    "tests/axon-interface-stage2-publication.mjs": "c2d9d504b4107e6d93a984bf77fef76ed4ebdf311c4036c348e45c6f3b832b1e"
   },
   "runtime": {
     "node": "v24.22.1",
@@ -116,7 +127,7 @@
     "cpu": "AMD EPYC 9V74 80-Core Processor",
     "logicalCpus": 9,
     "totalMemoryBytes": 10451427328,
-    "seconds": 0.011918654000000004
+    "seconds": 0.04525608499999999
   },
   "stages": [],
   "components": {
@@ -135,7 +146,7 @@
       "complete": true,
       "passed": true,
       "checks": 9,
-      "sha256": "1b908a7a418480ac8686c43924f1066257eed875f48efcbf48785a994c6d4e0d"
+      "sha256": "b324daf0ccd2edafc6ea1273f4944530a2e2ed218cb49703420c4df777cb4d03"
     },
     "spatial": {
       "complete": true,
@@ -179,11 +190,29 @@
       "checks": 15,
       "sha256": "51b1158fa0874c1f44cad7fd755bed425d51bbace9701b45fbe8322314b59930"
     },
-    "nested-recovery-independent": {
+    "nested-mesh": {
+      "complete": true,
+      "passed": true,
+      "checks": 7,
+      "sha256": "e90c90903f7339b5f8755c0da9d083b7c74a2abf2ca71f60e78b15fa9ab0fb88"
+    },
+    "nested-default": {
+      "complete": true,
+      "passed": true,
+      "checks": 12,
+      "sha256": "e31de19a0863c8e484c50e88d2398a0ffea57ea8285fc0e369ff46c7d70ffbef"
+    },
+    "nested-original": {
       "complete": false,
       "passed": false,
       "checks": 0,
       "sha256": null
+    },
+    "nested-recovery-independent": {
+      "complete": true,
+      "passed": true,
+      "checks": 4,
+      "sha256": "c42a74faf1a6cadb97e5fb9f19fbc0417323f6c5a74c68eca5ca5626aa7d1f81"
     },
     "nested-original-independent": {
       "complete": false,
@@ -219,7 +248,7 @@
       "complete": true,
       "passed": true,
       "checks": 34,
-      "sha256": "b44c802d3c6b6b0d51c9c682182291c3fc60cb262c25a5adb051eb2e11a4cf08"
+      "sha256": "12d01ee266a23c9f439976fe5d9b78bf07a12928d3246d089e6c931cefb9db3e"
     },
     "spectral-crosstalk": {
       "complete": true,
@@ -229,250 +258,108 @@
     }
   },
   "browser": {
-    "schema": "axon-stage2-browser-validation/2",
-    "passed": true,
+    "schema": "axon-stage2-browser-validation/3",
+    "complete": false,
+    "passed": false,
     "hosted": true,
-    "surface": "Managed Chrome, deployed Cloudflare worker",
-    "url": "https://cf55b233.buildthesimulation.pages.dev/simulations/biohybrid-axon-interface/stage2/",
-    "modelVersion": "axon-modalities-coupled-0.2.1",
-    "recordedAt": "2026-11-12T12:48:17.238710+00:00",
-    "settings": {
-      "modality": "magnetic",
-      "axonCount": 4,
-      "channelCount": 1,
-      "seed": 4079,
-      "amplitudes": [
-        0,
-        10,
-        100
-      ],
-      "dtMs": 0.000625,
-      "durationMs": 6,
-      "sampleDtMs": 0.01,
-      "photons": 128000,
-      "shellThicknessUm": 0.5,
-      "gmaxMsCm2": 5,
-      "opticalPulseMs": 2,
-      "reflectivity": 0.85,
-      "coilLayers": 6,
-      "coilRiseMs": 0.05,
-      "wellApertureRadiusUm": 3.5
-    },
-    "elapsedSeconds": 45.86179999999981,
-    "checks": [
-      {
-        "name": "Final 0.2.1 worker completed four-cell magnetic grid and matched controls",
-        "pass": true
-      },
-      {
-        "name": "Unqualified magnetic headlines and operating sample visibly withheld",
-        "pass": true
-      },
-      {
-        "name": "Non-optical exposure-probe column says not applicable",
-        "pass": true
-      },
-      {
-        "name": "Export retains null threshold brackets and nominal diagnostic brackets",
-        "pass": true
-      },
-      {
-        "name": "Pin and current comparison both display withheld selection",
-        "pass": true
-      },
-      {
-        "name": "Cancellation preserves the previous completed result",
-        "pass": true
-      },
-      {
-        "name": "All exported recruitment matrices exactly match the Node run",
-        "pass": true
-      },
-      {
-        "name": "Exported settings and nonnumeric data exactly match the Node run",
-        "pass": true
-      },
-      {
-        "name": "Deployed 0.2.1 worker completes magnetic grid and matched controls",
-        "pass": true
-      },
-      {
-        "name": "Hosted and local exports are exactly equal except execution times",
-        "pass": true
-      },
-      {
-        "name": "Hosted qualification warning and retained nominal matrix visibly rendered",
-        "pass": true
-      }
-    ],
+    "modelVersion": "axon-modalities-coupled-0.4.4",
+    "url": "https://d7d0d1bc.buildthesimulation.pages.dev/simulations/biohybrid-axon-interface/stage2/",
+    "testedCommit": "d9538ce920ab5382caa07c9ab451727b06ae9e07",
+    "recordedAt": "2026-11-13T14:06:00.576420+00:00",
     "sourceHashes": {
-      "src/components/AxonStage2Laboratory.jsx": "b239bb7037814139c4578de5155b45b191e7a2a7472d60b94245d71a9afad6f5",
-      "src/lib/axon-interface/stage2/settings.mjs": "3bc15420e29d3d4ab38b887aa6af9f6489c7a63632140f36f1e30a33292f3b29",
-      "src/lib/axon-interface/stage2/protocol.mjs": "30a7c38f94e20ae1a6a769f6066f59f82e1ca7bc513cda6efe0414714e445334",
-      "src/lib/axon-interface/stage2/induction-solve.mjs": "da2764b95ac4e9a7c053869bbec9c95c18d2febc26ddb1f2facf06443396986c"
+      "public/simulations/biohybrid-axon-interface/stage2/modules/common.mjs": "5afd8bdf262e21e8b065bba67a43a36d64616b2b830955f4c69f468b3849711c",
+      "public/simulations/biohybrid-axon-interface/stage2/modules/induction.mjs": "3cb8e02969a0ed185a7ebf3ed092d7035c0673bea7e675195ecc2675ab4fc681",
+      "public/simulations/biohybrid-axon-interface/stage2/modules/magnetic.mjs": "c193a53ead9e4c31d2eab3b7dc9f383c7606b777637f53bf231a2c6e5dbfa794",
+      "public/simulations/biohybrid-axon-interface/stage2/modules/opsin.mjs": "0c9b4ab9506233c9c0e77a9f9b78df245388c1f9c10202e9eb3cdb8547262a05",
+      "public/simulations/biohybrid-axon-interface/stage2/modules/optics.mjs": "540fba65c3074a5de5ec6859bf2eb808db7922e6f334049a549afa0eb47cc91a",
+      "public/simulations/biohybrid-axon-interface/stage2/modules/selectivity.mjs": "ae3020363dc8cdf23ef80d080db66faad25de42ad338821b6f40d16969d85e39",
+      "public/simulations/biohybrid-axon-interface/stage2/modules/spectral.mjs": "9d565090c79bf4767255f9e88e4d2d957c57709a41d109e010fe4f6398c5f5a4",
+      "public/simulations/biohybrid-axon-interface/stage2/modules/worker.mjs": "34f950da0c175cf46b257e65b909f5d9087a43a8ce038d9c72b6a0bc75a09926",
+      "src/components/AxonStage2Laboratory.jsx": "826bc9dca964c2400461b14e1df40af6e7b18d73c0d9294d770e8a63603e0276",
+      "src/lib/axon-interface/stage2/causal-selectivity.mjs": "dc5efe6a7e435abb4e2f6f726a0c9332318369f3fd4ef24c0a6992108bd791c7",
+      "src/lib/axon-interface/stage2/confinement.mjs": "8c01e4b0016757f53998373ba05f08551a25d0daf9a6e66eda9be745db8eec20",
+      "src/lib/axon-interface/stage2/embedded-coil.mjs": "6807b3e74bad7ab5e6cf4e5962c858065a6661d5d649c3537aedb306c6f4a63a",
+      "src/lib/axon-interface/stage2/exports.mjs": "c22303f95317a5d17386d67bd8d86f2fb04b776eb6fa6fe2540692a5c4fdd7df",
+      "src/lib/axon-interface/stage2/induction-conservative-load.mjs": "9e3d7506dddc11f2a5af88690ed1287118fd734e446b7220560581a0ee45c1f1",
+      "src/lib/axon-interface/stage2/induction-precision-solve.mjs": "26163d03c6b87f1802603b6afc863ef9f7cf5af1a5751de1f1ea32be2ff4a633",
+      "src/lib/axon-interface/stage2/induction-quadrature.mjs": "5035bc6757e707558e82abdd2fc41d78e8f286eae85ec21bf58bdd029c517bef",
+      "src/lib/axon-interface/stage2/induction-solve.mjs": "575f8516215f11091e8425e57399ba2d31c8cc6de7e9d1404f56575dd908deca",
+      "src/lib/axon-interface/stage2/magnetic-coupling.mjs": "4b5114254bccc49408dfbbbcf83b4f257c2a07cc11aceb0554b9e9af693d0d97",
+      "src/lib/axon-interface/stage2/membrane.mjs": "59a1f175bf0c31b3d7b3f93eabfcbb18ab2c4db530a147ac0682988d03da2515",
+      "src/lib/axon-interface/stage2/nested-field.mjs": "43a705fcd0c6d4bd2cee3a7a9389c7cfb58001bc74acc07583c061091076cdd2",
+      "src/lib/axon-interface/stage2/optical-surface.mjs": "70e2dd67af7e81c50688010bd2a2b7773fbe0d4d44027d8122eac83535c18c01",
+      "src/lib/axon-interface/stage2/parameters.mjs": "ecf659ae7259496ba771f39f782f80bc803869b1771a7fdeac71a053589798e4",
+      "src/lib/axon-interface/stage2/photocurrent.mjs": "080dd48ad14c4ac893882576489a1eae4f75f29277d9b533e7aec7792edd95cd",
+      "src/lib/axon-interface/stage2/precision-contact-solve.mjs": "0b8433f92cf7c06f4387046768c3fbb125b4fea8ea3c2c42e3e2e40590da1108",
+      "src/lib/axon-interface/stage2/protocol.mjs": "1c60241184116a14cda06d49c90a23d5ffaa8461126facb75933c42e47796d3a",
+      "src/lib/axon-interface/stage2/reordered-solve.mjs": "d3f72808a727d86f78a54f2a7909401cf5d9381ae944cb1843e2859a26877790",
+      "src/lib/axon-interface/stage2/settings.mjs": "a9ac899f0630f923c303e6e343f5ae286e8ff27d1b29f2aff698865d0f8e912e",
+      "src/lib/axon-interface/stage2/spectral-opsin.mjs": "68b573c350fd64f2a9a0f2144d66623db17f1c30632b15f81fbd76347deca770",
+      "src/lib/axon-interface/stage2/spectral-protocol.mjs": "14a41ffba409db2e44ec4b80820f49ae48282662b626f9646d1ed7c9e13a0a8c",
+      "src/lib/axon-interface/stage2/worker.mjs": "9396d68545ca111a84ab915342b2fe7badcb48ed17a20bc230acbb4e26713cb6"
     },
-    "exportComparison": {
-      "schema": "axon-stage2-browser-export-comparison/1",
-      "browserVersion": "axon-modalities-coupled-0.2.1",
-      "nodeVersion": "axon-modalities-coupled-0.2.1",
-      "browserElapsedSeconds": 45.86179999999981,
-      "nodeElapsedSeconds": 51.032585452,
-      "settingsEqual": true,
-      "allMatricesExactlyEqual": true,
-      "bothWithholdUnqualifiedMagneticClaims": true,
-      "nonNumericDifferences": [],
-      "numericDifferences": 621859,
-      "exactExportMatchExcludingTiming": false,
-      "maximumVoltageDifferenceMv": 5.4754494271946896e-8,
-      "fieldResiduals": {
-        "browser": [
-          6.79286433653871e-11
-        ],
-        "node": [
-          6.754376691716948e-11
-        ]
-      },
-      "sha256": {
-        "browser": "3a9226a00b3db84c2d2c732d44ab55a8e964aca55d2abf0830c55030be76fc57",
-        "node": "4aec093747d06d1c24481e6cb56e3556b36717a18473b503741c5abd0c46301e"
-      },
-      "meaning": "Bitwise export equivalence is reported separately from discrete-output agreement. Voltage differences are measured, not assigned a new post-hoc acceptance tolerance. This does not qualify the unconverged physical field."
+    "spectral": {
+      "path": "docs/axon-interface/stage2/browser-spectral-044-validation.json",
+      "sha256": "15ff454a69962c05b2353f744ea46fb722268c20676e710f095b25fd350a46c5",
+      "passed": true
     },
-    "screenshots": [
-      "hosted-magnetic-audit.jpg"
+    "magnetic": {
+      "path": "docs/axon-interface/stage2/browser-magnetic-044-observations.json",
+      "sha256": "b653d7b3a71a38652bc453044699c58b05c29454e76d8122b153a10a317f45eb",
+      "hostedChecksPassed": true,
+      "nodeComparisonPending": true
+    },
+    "openGates": [
+      "Current full Node magnetic protocol and full exported-result comparison remain pending."
     ],
-    "limitations": [
-      "WebGL context creation failed; same-coordinate 2D fallback was tested.",
-      "Narrow layout and Safari remain untested.",
-      "Browser versus Node export is not bitwise identical. Maximum observed voltage difference is 5.48e-8 mV; discrete matrices and all nonnumeric fields agree. This comparison does not qualify the physical field.",
-      "Earlier hosted optical verification is retained in retained/browser-before-equilibration.json.",
-      "The evidence follow-up adds a cable-path quadrature study and reports; it does not change the tested worker or membrane equations."
-    ],
-    "localEvidence": {
-      "schema": "axon-stage2-browser-validation/2",
-      "passed": true,
-      "hosted": false,
-      "surface": "Managed Chrome, actual local bundled worker",
-      "url": "http://127.0.0.1:4173/simulations/biohybrid-axon-interface/stage2/",
-      "modelVersion": "axon-modalities-coupled-0.2.1",
-      "recordedAt": "2026-11-12T12:40:01.563827+00:00",
-      "settings": {
-        "modality": "magnetic",
-        "axonCount": 4,
-        "channelCount": 1,
-        "seed": 4079,
-        "amplitudes": [
-          0,
-          10,
-          100
-        ],
-        "dtMs": 0.000625,
-        "durationMs": 6,
-        "sampleDtMs": 0.01,
-        "photons": 128000,
-        "shellThicknessUm": 0.5,
-        "gmaxMsCm2": 5,
-        "opticalPulseMs": 2,
-        "reflectivity": 0.85,
-        "coilLayers": 6,
-        "coilRiseMs": 0.05,
-        "wellApertureRadiusUm": 3.5
-      },
-      "elapsedSeconds": 47.171300000000045,
-      "checks": [
-        {
-          "name": "Final 0.2.1 worker completed four-cell magnetic grid and matched controls",
-          "pass": true
-        },
-        {
-          "name": "Unqualified magnetic headlines and operating sample visibly withheld",
-          "pass": true
-        },
-        {
-          "name": "Non-optical exposure-probe column says not applicable",
-          "pass": true
-        },
-        {
-          "name": "Export retains null threshold brackets and nominal diagnostic brackets",
-          "pass": true
-        },
-        {
-          "name": "Pin and current comparison both display withheld selection",
-          "pass": true
-        },
-        {
-          "name": "Cancellation preserves the previous completed result",
-          "pass": true
-        },
-        {
-          "name": "All exported recruitment matrices exactly match the Node run",
-          "pass": true
-        },
-        {
-          "name": "Exported settings and nonnumeric data exactly match the Node run",
-          "pass": true
-        }
-      ],
-      "sourceHashes": {
-        "src/components/AxonStage2Laboratory.jsx": "b239bb7037814139c4578de5155b45b191e7a2a7472d60b94245d71a9afad6f5",
-        "src/lib/axon-interface/stage2/settings.mjs": "3bc15420e29d3d4ab38b887aa6af9f6489c7a63632140f36f1e30a33292f3b29",
-        "src/lib/axon-interface/stage2/protocol.mjs": "30a7c38f94e20ae1a6a769f6066f59f82e1ca7bc513cda6efe0414714e445334",
-        "src/lib/axon-interface/stage2/induction-solve.mjs": "da2764b95ac4e9a7c053869bbec9c95c18d2febc26ddb1f2facf06443396986c"
-      },
-      "exportComparison": {
-        "schema": "axon-stage2-browser-export-comparison/1",
-        "browserVersion": "axon-modalities-coupled-0.2.1",
-        "nodeVersion": "axon-modalities-coupled-0.2.1",
-        "browserElapsedSeconds": 47.171300000000045,
-        "nodeElapsedSeconds": 51.032585452,
-        "settingsEqual": true,
-        "allMatricesExactlyEqual": true,
-        "bothWithholdUnqualifiedMagneticClaims": true,
-        "nonNumericDifferences": [],
-        "numericDifferences": 621859,
-        "exactExportMatchExcludingTiming": false,
-        "maximumVoltageDifferenceMv": 5.4754494271946896e-8,
-        "fieldResiduals": {
-          "browser": [
-            6.79286433653871e-11
-          ],
-          "node": [
-            6.754376691716948e-11
-          ]
-        },
-        "sha256": {
-          "browser": "8710fa617ebf4862a72263272ba2fe7b0eb430f1e2445e8c36fd8cecd4fda7d5",
-          "node": "4aec093747d06d1c24481e6cb56e3556b36717a18473b503741c5abd0c46301e"
-        },
-        "meaning": "Bitwise export equivalence is reported separately from discrete-output agreement. Voltage differences are measured, not assigned a new post-hoc acceptance tolerance. This does not qualify the unconverged physical field."
-      },
-      "screenshots": [
-        "local-magnetic-result.jpg"
-      ],
-      "limitations": [
-        "Current hosted browser verification pending.",
-        "WebGL context creation failed; same-coordinate 2D fallback was tested.",
-        "Narrow layout and Safari remain untested.",
-        "Browser versus Node export is not bitwise identical. Maximum observed voltage difference is 5.48e-8 mV; discrete matrices and all nonnumeric fields agree. This comparison does not qualify the physical field.",
-        "Earlier hosted optical verification is retained in retained/browser-before-equilibration.json."
-      ]
-    },
-    "testedCommit": "37e36d76b276760c9df3a4afbe7685f626c5a4a9",
-    "hostedVersusLocalExactExceptTiming": true
+    "limits": [
+      "WebGL was unavailable; the same-coordinate 2D fallback was tested.",
+      "Hosted browser execution does not qualify field discretization or biology."
+    ]
+  },
+  "evidenceFiles": {
+    "docs/axon-interface/stage2/coupling-validation.json": "30d3c8dc67c6ca838a0639dd3162641f26e9904aed90ac8078a8ae11b3ecb1a7",
+    "docs/axon-interface/stage2/surface-validation.json": "b324daf0ccd2edafc6ea1273f4944530a2e2ed218cb49703420c4df777cb4d03",
+    "docs/axon-interface/stage2/spatial-validation.json": "b3d09f7247a59357ce1ddf71a40a33d80cc47fdd8fb4a44cda3a3e83d454c856",
+    "docs/axon-interface/stage2/recording-field-validation.json": "da792dae7741994d2f552d3785ae862df7ada3aad80f8a51f48d9d2cb0a93822",
+    "docs/axon-interface/stage2/induction-validation.json": "9383ddbe1ea269ad1183fb75cd8d7c61db03f0a285cc21918389f1563d9dfbd4",
+    "docs/axon-interface/stage2/magnetic-path-validation.json": "82132d17659fa25905680357a94100efc0148e536ac6233e2558baf011daabf1",
+    "docs/axon-interface/stage2/magnetic-coupling-validation.json": "f0bdf8c7946bb14f152c9aae5576dacb04ac09b18ef3b8f0de9a0bf521160836",
+    "docs/axon-interface/stage2/magnetic-policy-validation.json": "422da795a64f3283920ec4e777f9310f271c84d762153e59c9dea2b005078042",
+    "docs/axon-interface/stage2/magnetic-propagation-validation.json": "51b1158fa0874c1f44cad7fd755bed425d51bbace9701b45fbe8322314b59930",
+    "docs/axon-interface/stage2/nested-recovery-mesh-contracts.json": "e90c90903f7339b5f8755c0da9d083b7c74a2abf2ca71f60e78b15fa9ab0fb88",
+    "docs/axon-interface/stage2/nested-recovery-validation.json": "e31de19a0863c8e484c50e88d2398a0ffea57ea8285fc0e369ff46c7d70ffbef",
+    "docs/axon-interface/stage2/nested-original-validation.json": null,
+    "docs/axon-interface/stage2/nested-recovery-independent-validation.json": "c42a74faf1a6cadb97e5fb9f19fbc0417323f6c5a74c68eca5ca5626aa7d1f81",
+    "docs/axon-interface/stage2/nested-original-independent-validation.json": null,
+    "docs/axon-interface/stage2/protocol-validation.json": "038452a8a8194a74dde9b7509cd5edfb212d9693c460c67dc1f3ab17c750371c",
+    "docs/axon-interface/stage2/spectral-component-validation.json": "347549813ac571e3ae3fa8c25f2b54d85de93c143d8395e7522a6417a55801a6",
+    "docs/axon-interface/stage2/spectral-coupling-validation.json": "2b2e4ba9e768970c18c7e70db539e478edd90625df0cfb4050b05c1517703cb9",
+    "docs/axon-interface/stage2/spectral-spatial-validation.json": "5a692cd51c2456d7d75cd25cb417693074e747df88e5399e59cada2327fd748c",
+    "docs/axon-interface/stage2/spectral-protocol-validation.json": "12d01ee266a23c9f439976fe5d9b78bf07a12928d3246d089e6c931cefb9db3e",
+    "docs/axon-interface/stage2/spectral-crosstalk-validation.json": "96436928a66ffe851de96620e457b5cea6dabf5220ae4205fab25cba223c39fb",
+    "docs/axon-interface/stage2/browser-validation.json": "8124ce5eb77ac96e6c49952f8e0aa6bf3b927202fde5f6229b54fe5fd5d3912c",
+    "docs/axon-interface/stage2/software-checkpoint.json": "55bac376a4ca185e72ddb59865b46003f8c8abc93fc3f226613b2466faf740e9",
+    "labs/axon-stage2/reports/independent-reference.json": "9a88350fc4a201a40210c45650f869f8107b5ee027927be9d5cd90c0bc431e61"
   },
   "openReleaseGates": [
     "induction numerical qualification remains incomplete or failed.",
-    "nested-recovery-independent numerical qualification remains incomplete or failed.",
+    "nested-original numerical qualification remains incomplete or failed.",
     "nested-original-independent numerical qualification remains incomplete or failed.",
-    "magnetic-path evidence has stale source hashes: scripts/axon-interface/stage2/magnetic-path-check.mjs, src/lib/axon-interface/stage2/magnetic-coupling.mjs, docs/axon-interface/stage2/induction-validation.json",
-    "magnetic-coupling evidence has stale source hashes: src/lib/axon-interface/stage2/magnetic-coupling.mjs, scripts/axon-interface/stage2/native-reference.py, scripts/axon-interface/stage2/magnetic-coupling-check.mjs, docs/axon-interface/stage2/induction-validation.json",
-    "magnetic-policy evidence has stale source hashes: src/lib/axon-interface/stage2/settings.mjs, src/lib/axon-interface/stage2/protocol.mjs, src/lib/axon-interface/stage2/induction-solve.mjs, scripts/axon-interface/stage2/magnetic-policy-check.mjs",
-    "magnetic-propagation evidence has stale source hashes: src/lib/axon-interface/stage2/magnetic-coupling.mjs",
-    "spectral-protocol evidence has stale source hashes: src/lib/axon-interface/stage2/protocol.mjs, src/lib/axon-interface/stage2/settings.mjs",
+    "spatial evidence has missing or stale source hashes: ",
+    "magnetic-path evidence has missing or stale source hashes: scripts/axon-interface/stage2/magnetic-path-check.mjs, src/lib/axon-interface/stage2/magnetic-coupling.mjs, docs/axon-interface/stage2/induction-validation.json",
+    "magnetic-coupling evidence has missing or stale source hashes: src/lib/axon-interface/stage2/magnetic-coupling.mjs, scripts/axon-interface/stage2/native-reference.py, scripts/axon-interface/stage2/magnetic-coupling-check.mjs, docs/axon-interface/stage2/induction-validation.json",
+    "magnetic-policy evidence has missing or stale source hashes: src/lib/axon-interface/stage2/settings.mjs, src/lib/axon-interface/stage2/protocol.mjs, src/lib/axon-interface/stage2/induction-solve.mjs, scripts/axon-interface/stage2/magnetic-policy-check.mjs",
+    "magnetic-propagation evidence has missing or stale source hashes: src/lib/axon-interface/stage2/magnetic-coupling.mjs",
+    "nested-original evidence has missing or stale source hashes: ",
+    "nested-original-independent evidence has missing or stale source hashes: ",
+    "protocol evidence has missing or stale source hashes: ",
+    "spectral-crosstalk evidence has missing or stale source hashes: ",
     "Current-version, source-identified complete cohort protocol remains pending.",
+    "Independent component source provenance is missing or stale.",
     "Final hosted browser verification remains pending.",
-    "Hosted browser evidence does not match the current tested source.",
-    "Current-version complete site build and repository regression evidence remains pending."
+    "Current-version complete site build and repository regression evidence remains pending.",
+    "Software verification source changed after tests/build."
   ],
   "nextStage": "Stage 3 remains blocked by Stage 2 release gates; PR #390 is preserved as a separate unqualified draft.",
   "limitations": [

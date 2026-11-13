@@ -1,3 +1,4 @@
+import {beginStudy} from './study-provenance.mjs';
 import fs from 'node:fs';import path from 'node:path';import {spawnSync} from 'node:child_process';
 import {normalize} from '../../../src/lib/axon-interface/stage2/settings.mjs';
 import {createBipolarMorphology} from '../../../src/lib/axon-interface/bipolar.mjs';
@@ -8,6 +9,7 @@ import {surfaceTransport,surfaceScene,surfaceCoefficients} from '../../../src/li
 import {createPhotocurrent} from '../../../src/lib/axon-interface/stage2/photocurrent.mjs';
 import {simulateCable} from '../../../src/lib/axon-interface/stage2/membrane.mjs';
 import {compareTraces} from '../bipolar-validation-utils.mjs';
+const provenance=beginStudy(['scripts/axon-interface/stage2/spatial-check.mjs','scripts/axon-interface/stage2/native-reference.py','scripts/axon-interface/stage2/mechanisms/axon_chr2.mod','scripts/axon-interface/mrg-modeldb/AXNODE.mod','scripts/axon-interface/bipolar-validation-utils.mjs','docs/axon-interface/stage2/spatial-acceptance.json']);
 const dir='docs/axon-interface/stage2',a=JSON.parse(fs.readFileSync(dir+'/spatial-acceptance.json')),{anatomy:s}=normalize({axonCount:4}),g=createStage1Cohort(s),base=createBipolarMorphology(s),field=createStage1FieldModel(stage1FieldSettings(s,base),{...g,morphology:base,constructPresent:true}),readout=solveStage1Channel(field,g.channels[0]),rows=[],runs=[],start=performance.now();
 const ptp=x=>Math.max(...x)-Math.min(...x),add=(name,pass,detail)=>rows.push({name,pass,...detail});let previous;
 for(const level of a.levels){
@@ -24,4 +26,4 @@ for(const level of a.levels){
   const native=spawnSync(process.env.MRG_PYTHON??'python3',['scripts/axon-interface/stage2/native-reference.py',input,output],{encoding:'utf8'});if(native.status)throw new Error(native.stderr);const comparison=compareTraces(r,JSON.parse(fs.readFileSync(output)));add('Actual nonuniform surface exposure versus native NEURON',comparison.maximumSiteRmsMv<=1&&comparison.maximumCrossingTimeErrorMs<=.1&&comparison.identicalCrossingCounts,comparison);
  }previous=current;console.log('Completed spatial level',level,current);
 }
-const report={schema:'axon-stage2-spatial-validation/1',complete:true,passed:rows.every(x=>x.pass),rows,runs,acceptance:a,runtimeSeconds:(performance.now()-start)/1000};fs.writeFileSync(dir+'/spatial-validation.json',JSON.stringify(report,null,2)+'\n');fs.appendFileSync(dir+'/spatial-history.jsonl',JSON.stringify(report)+'\n');console.log(rows);if(!report.passed)process.exitCode=1;
+const report={...provenance.finish(),schema:'axon-stage2-spatial-validation/1',complete:true,passed:rows.every(x=>x.pass),rows,runs,acceptance:a,runtimeSeconds:(performance.now()-start)/1000};fs.writeFileSync(dir+'/spatial-validation.json',JSON.stringify(report,null,2)+'\n');fs.appendFileSync(dir+'/spatial-history.jsonl',JSON.stringify(report)+'\n');console.log(rows);if(!report.passed)process.exitCode=1;
