@@ -7,7 +7,9 @@ on:
       - 'src/**/axon-interface/**'
       - 'src/components/AxonStage2Laboratory.jsx'
       - 'public/simulations/biohybrid-axon-interface/**'
-      - 'tests/axon-interface-stage2-contracts.mjs'
+      - 'tests/axon-interface-stage2*.mjs'
+      - 'src/lib/axon-interface-stage2-publication.mjs'
+      - 'scripts/verify-axon-stage2-build.mjs'
       - 'tests/axon-interface-induction-solve.mjs'
       - 'tests/axon-interface-spectral.mjs'
       - 'tests/axon-interface-induction-reference.mjs'
@@ -36,10 +38,12 @@ jobs:
           path: axon-stage2-source.tar.gz
           retention-days: 7
       - name: Coupled contracts
-        run: node --test tests/axon-interface-stage2-contracts.mjs tests/axon-interface-induction-solve.mjs tests/axon-interface-induction-reference.mjs tests/axon-interface-spectral.mjs
+        run: node --test tests/axon-interface-stage2-contracts.mjs tests/axon-interface-stage2-publication.mjs tests/axon-interface-induction-solve.mjs tests/axon-interface-induction-reference.mjs tests/axon-interface-spectral.mjs
       - name: Component contracts
         run: node --test labs/axon-stage2/tests/components.test.mjs
       - name: Build complete site
         run: npm run build
+      - name: Verify published Stage 2 evidence and worker
+        run: node scripts/verify-axon-stage2-build.mjs
       - name: Show scientific release status separately
         run: node -e "const r=require('./docs/axon-interface/stage2/validation.json'); console.log(JSON.stringify({completeStage2:r.completeStage2,openReleaseGates:r.openReleaseGates},null,2))"
