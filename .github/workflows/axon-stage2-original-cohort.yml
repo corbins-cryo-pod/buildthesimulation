@@ -1,0 +1,92 @@
+name: Stage 2 original-cohort field qualification
+
+on:
+  push:
+    branches: [feature/axon-resolution-stage2]
+    paths: ['.github/workflows/axon-stage2-original-cohort.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-cohort:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.1'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.14'
+      - name: Record the isolated runner and source
+        run: |
+          mkdir -p stage2-original-evidence docs/axon-interface/stage2/logs
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import os from 'node:os';
+          import {execFileSync} from 'node:child_process';
+          const report={commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),node:process.version,cpu:os.cpus()[0]?.model,logicalCpus:os.cpus().length,totalMemoryBytes:os.totalmem(),startedAt:new Date().toISOString(),execution:'Serial cases on an isolated runner; original seed 2048, unchanged predeclared acceptance limits.'};
+          fs.writeFileSync('stage2-original-evidence/runner.json',JSON.stringify(report,null,2)+'\n');
+          console.log(report);
+          if(report.totalMemoryBytes<9*1024**3)throw new Error('This reference needs at least 9 GiB; no numerical limits or mesh resolution were reduced.');
+          JS
+      - name: Install pinned reference dependencies
+        run: |
+          npm ci
+          python -m venv "$RUNNER_TEMP/stage2-reference"
+          "$RUNNER_TEMP/stage2-reference/bin/python" -m pip install -r scripts/axon-interface/stage2/requirements.txt
+      - name: Execute the original-cohort candidate
+        timeout-minutes: 120
+        run: node --expose-gc --max-old-space-size=6144 scripts/axon-interface/stage2/nested-original-induction-run.mjs 1 2 > docs/axon-interface/stage2/logs/ci-original-candidate.log 2>&1
+      - name: Package the candidate for separate membrane verification
+        run: |
+          mkdir -p stage2-original-candidate
+          cp /tmp/axon-nested-original-fixture.json /tmp/axon-nested-original-provenance.json docs/axon-interface/stage2/nested-original-field-1-2.json stage2-original-evidence/runner.json stage2-original-candidate/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stage2-original-candidate
+          path: stage2-original-candidate/
+          retention-days: 14
+          compression-level: 6
+          if-no-files-found: error
+      - name: Execute the predeclared original-cohort references serially
+        run: |
+          for pair in '1 3' '2 2' '1 1'; do
+            read -r planar axial <<< "$pair"
+            timeout 7200s node --expose-gc --max-old-space-size=6144 scripts/axon-interface/stage2/nested-original-induction-run.mjs "$planar" "$axial" >> docs/axon-interface/stage2/logs/ci-original-convergence.log 2>&1
+          done
+          node scripts/axon-interface/stage2/nested-original-induction-check.mjs --collect >> docs/axon-interface/stage2/logs/ci-original-convergence.log 2>&1
+      - name: Independently reconstruct the candidate in NumPy and SciPy
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+          OMP_NUM_THREADS: '1'
+        run: MRG_PYTHON="$RUNNER_TEMP/stage2-reference/bin/python" node scripts/axon-interface/stage2/nested-original-independent-check.mjs > docs/axon-interface/stage2/logs/ci-original-independent.log 2>&1
+      - name: Retain complete, failed and interrupted evidence
+        if: always()
+        run: |
+          python - <<'PY'
+          import pathlib,shutil,json,hashlib
+          out=pathlib.Path('stage2-original-evidence');out.mkdir(exist_ok=True)
+          directory=pathlib.Path('docs/axon-interface/stage2')
+          files=list(directory.glob('nested-original-field-*.json'))+[directory/'nested-original-validation.json',directory/'nested-original-independent-validation.json',directory/'logs/ci-original-candidate.log',directory/'logs/ci-original-convergence.log',directory/'logs/ci-original-independent.log',directory/'logs/nested-original-independent.log',pathlib.Path('/tmp/axon-nested-original-fixture.json'),pathlib.Path('/tmp/axon-nested-original-provenance.json')]
+          manifest=[]
+          for source in files:
+              if source.is_file():
+                  target=out/source.name;shutil.copyfile(source,target)
+                  manifest.append({'source':str(source),'file':target.name,'sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'bytes':target.stat().st_size})
+          (out/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: stage2-original-cohort-evidence
+          path: stage2-original-evidence/
+          retention-days: 14
+          compression-level: 6
+          if-no-files-found: error
