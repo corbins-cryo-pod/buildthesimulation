@@ -2,11 +2,11 @@
 title: "Saluda Evoke closed-loop SCS"
 order: 156
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-11-13
 device_id: "BTSD-FDA-0007"
 interface_class: "scs"
 status: "human"
-last_updated: 2026-10-08
+last_updated: 2026-11-13
 description: "FDA-approved closed-loop spinal cord stimulator that records ECAPs through two 12-contact leads, approved February 2022. Values come from the FDA summary of safety and effectiveness."
 modality: "Other"
 website: "https://www.fda.gov/medical-devices/recently-approved-devices/evoke-spinal-cord-stimulation-scs-system-p190002"
@@ -20,9 +20,9 @@ draft: false
 
 # Saluda Evoke closed-loop SCS
 
-The Saluda Evoke System records evoked compound action potentials from the spinal cord after every pulse. This sheet comes from the FDA summary for PMA P190002. Clinical result values were not read and stay blank.
+The Saluda Evoke System records evoked compound action potentials from the spinal cord after every pulse. This sheet comes from the FDA summary for PMA P190002, with clinical results from the peer-reviewed EVOKE reports.
 
-Company brief: [Saluda Medical Pty Ltd](/companies/57-saluda-medical-company-brief/).
+Company brief: [Saluda Medical Pty Ltd](/companies/57-saluda-medical-company-brief/). The EVOKE pivotal trial (NCT02924129) page covers the registry record and the peer-reviewed results behind the PMA.
 
 ## Identity
 
@@ -106,20 +106,20 @@ Company brief: [Saluda Medical Pty Ltd](/companies/57-saluda-medical-company-bri
 | Stability over time |  |
 | Longevity |  |
 | Revision and explant experience |  |
-| Adverse events | SSED lists labeled risks including infection, CSF leak, epidural hemorrhage, lead migration and loss of pain relief; study event rates are in section X.D.1, not extracted here [2] |
+| Adverse events | SSED lists labeled risks including infection, CSF leak, epidural hemorrhage, lead migration and loss of pain relief; study event rates are in section X.D.1, not extracted here. In EVOKE the most frequent study-related events were lead migration (7%), IPG pocket pain (4%) and muscle spasm or cramp (2%), with no difference between arms [2][4] |
 | Notable demonstrations |  |
 
 ## Clinical and preclinical evidence
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects | Evoke pivotal study: prospective, multicenter, randomized (1:1), double-blind trial of closed-loop versus open-loop stimulation; enrollment count not extracted here [2] |
+| Human subjects | Evoke pivotal study (EVOKE, NCT02924129): prospective, multicenter, randomized (1:1), double-blind trial of closed-loop versus open-loop stimulation; 134 randomized (67 per arm) at 13 US sites [3][4] |
 | Preclinical cohort | 27 sheep in an acute study of dorsal column neurophysiology and evoked-potential recording [2] |
-| Follow-up duration |  |
+| Follow-up duration | Peer-reviewed outcomes at 3, 12, 24 and 36 months [4][5][6] |
 | Indications | Aid in the management of chronic intractable pain of the trunk and/or limbs, including failed back surgery syndrome, intractable low back pain and leg pain [2] |
-| Trials and registries | Evoke pivotal study per the SSED; registry ID not extracted here [2] |
-| Primary outcomes | Primary objective: non-inferiority of closed-loop to open-loop SCS on trunk and limb pain; result values were not read here [2] |
-| Key limitations | Efficacy numbers, enrollment and event rates sit in SSED sections not extracted for this sheet [2] |
+| Trials and registries | EVOKE pivotal study, NCT02924129, completed; full registry record and results on the application page [2][3] |
+| Primary outcomes | Composite responder: 50% or greater reduction in overall back and leg pain without an increase in pain medication. 82.3% closed-loop vs 60.3% open-loop at 3 months (p=0.0052); 83.1% vs 61.0% at 12 months; 79.1% vs 53.7% at 24 months; 77.6% vs 49.3% at 36 months [4][5][6] |
+| Key limitations | SSED event-rate sections were not extracted; efficacy values come from the peer-reviewed EVOKE reports [2][4] |
 
 ## Engineering tradeoffs
 
@@ -137,3 +137,7 @@ The sheet describes the CLS and lead specifications as they appear in the 2022 S
 
 1. [FDA overview, Evoke SCS System, P190002](https://www.fda.gov/medical-devices/recently-approved-devices/evoke-spinal-cord-stimulation-scs-system-p190002).
 2. [FDA summary of safety and effectiveness data, P190002](https://www.accessdata.fda.gov/cdrh_docs/pdf19/P190002B.pdf).
+3. [ClinicalTrials.gov, NCT02924129 (EVOKE)](https://clinicaltrials.gov/study/NCT02924129). Verified November 11, 2026.
+4. [Mekhail N, Levy RM, Deer TR, et al., EVOKE primary report, The Lancet Neurology 2020;19(2):123-134](https://pubmed.ncbi.nlm.nih.gov/31870766/). Peer reviewed; PMID 31870766.
+5. [Mekhail N, et al., EVOKE 24-month durability analysis, JAMA Neurology 2022](https://pubmed.ncbi.nlm.nih.gov/34998276/). Peer reviewed; PMID 34998276; open access PMC8742908.
+6. [Mekhail N, et al., EVOKE 36-month results, Regional Anesthesia and Pain Medicine 2024](https://pubmed.ncbi.nlm.nih.gov/37640452/). Peer reviewed; PMID 37640452.

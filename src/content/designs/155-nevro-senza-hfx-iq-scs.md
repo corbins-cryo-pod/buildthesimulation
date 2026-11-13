@@ -2,11 +2,11 @@
 title: "Nevro Senza HFX iQ SCS"
 order: 155
 pubDate: 2026-10-08
-updatedDate: 2026-10-11
+updatedDate: 2026-11-13
 device_id: "BTSD-FDA-0006"
 interface_class: "scs"
 status: "human"
-last_updated: 2026-10-11
+last_updated: 2026-11-13
 description: "FDA-approved 10 kHz spinal cord stimulation system with a 16-channel rechargeable IPG, approved October 2022. Values rest on the FDA supplement record and Nevro's prescriber information; the SSED and clinical data were not read."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?id=P130022S044"
@@ -22,7 +22,7 @@ draft: false
 
 Senza HFX iQ is Nevro's current spinal cord stimulation system, approved by PMA supplement S044 on October 12, 2022. Its IPG has 16 output channels and can deliver 10 kHz therapy. This sheet is thinly sourced from the FDA record and Nevro's prescriber information; unknown cells stay blank.
 
-Company brief: [Nevro Corp.](/companies/56-nevro-company-brief/).
+Company brief: [Nevro Corp.](/companies/56-nevro-company-brief/). The SENZA-RCT pivotal trial (NCT01609972) page covers the registry record and the peer-reviewed results behind the original PMA.
 
 ## Identity
 
@@ -113,12 +113,12 @@ Company brief: [Nevro Corp.](/companies/56-nevro-company-brief/).
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects | SENZA-RCT: 241 patients in the PMA database at 11 sites, enrolled June 7 to December 28, 2012 (1:1 randomization to Senza or a 2 to 1,200 Hz comparator) [4] |
+| Human subjects | SENZA-RCT: 241 patients in the PMA database at 11 sites, enrolled June 7 to December 28, 2012 (1:1 randomization to Senza or a 2 to 1,200 Hz comparator); the peer-reviewed reports describe 198 subjects randomized at 10 US centers, of whom 171 passed a temporary trial and were implanted [4][5][6] |
 | Preclinical cohort | 12 goats, 6 with 10 kHz therapy at 100% duty cycle for 10 +/- 1 days through a trial lead [4] |
-| Follow-up duration |  |
+| Follow-up duration | Peer-reviewed outcomes reported at 3, 12 and 24 months [5][6] |
 | Indications | Original approval: chronic intractable pain of the trunk and/or limbs, including failed back surgery syndrome, intractable low back pain and leg pain [4] |
 | Trials and registries | Prospective, randomized, multi-center, non-inferiority trial, unblinded; planned 77 per group (154 total) plus at least 60 Senza subjects programmed to 10 kHz [4] |
-| Primary outcomes |  |
+| Primary outcomes | Responder defined as 50% or greater back pain reduction with no stimulation-related neurological deficit; non-inferiority then superiority testing. At 3 months: back pain responders 84.5% (10 kHz) vs 43.8% (traditional SCS), leg pain 83.1% vs 55.5% (P < 0.001 for both); superiority sustained at 12 months. At 24 months: back 76.5% vs 49.3% (P < 0.001), leg 72.9% vs 49.3% (P = 0.003 for superiority) [5][6] |
 | Key limitations | The FDA record read is a supplement for the new IPG system; pivotal 10 kHz clinical data and SSED were not read. Lead dimensions, battery life and channel mapping are left blank here [1][2] |
 
 ## Engineering tradeoffs
@@ -131,10 +131,12 @@ Company brief: [Nevro Corp.](/companies/56-nevro-company-brief/).
 
 ## Version boundary
 
-The sheet covers the HFX iQ IPG (IPG3000) and its trial and patient components as named in S044. Values cited [4] come from the original Senza SSED (Model 1500 IPG and percutaneous leads) and describe that earlier configuration, not the HFX iQ IPG. The SENZA-RCT outcome percentages were not extracted.
+The sheet covers the HFX iQ IPG (IPG3000) and its trial and patient components as named in S044. Values cited [4] come from the original Senza SSED (Model 1500 IPG and percutaneous leads) and describe that earlier configuration, not the HFX iQ IPG. SENZA-RCT outcome percentages come from the peer-reviewed reports [5][6]; the full SSED was not re-read for that addition.
 
 ## References
 
 1. [FDA PMA P130022/S044 record](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?id=P130022S044).
 2. [Nevro information for prescribers, Senza HFX iQ and HFX Trial System](https://www.nevro.com/app/uploads/2025/02/10001223_Information_For_Prescribers_Rev_D_Clean.pdf).
 4. [FDA summary of safety and effectiveness data, original Senza PMA P130022](https://www.accessdata.fda.gov/cdrh_docs/pdf13/P130022B.pdf).
+5. [Kapural L, Yu C, Doust MW, et al., SENZA-RCT primary report, Anesthesiology 2015;123(4):851-860](https://pubmed.ncbi.nlm.nih.gov/26218762/). Peer reviewed; PMID 26218762.
+6. [Kapural L, et al., SENZA-RCT 24-month results, Neurosurgery 2016;79(5):667-677](https://pubmed.ncbi.nlm.nih.gov/27584814/). Peer reviewed; PMID 27584814; open access PMC5058646.
