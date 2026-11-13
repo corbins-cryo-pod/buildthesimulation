@@ -15,15 +15,16 @@ if(!collect){
  run('component-reference',python,['reference/verify.py'],{cwd:path.join(root,'labs/axon-stage2')});
  const bin=spawnSync(python,['-c','import sys,pathlib;print(pathlib.Path(sys.executable).parent)'],{encoding:'utf8'}).stdout?.trim();
  for(const d of ['scripts/axon-interface/mrg-modeldb','scripts/axon-interface/stage2/mechanisms'])run(d.endsWith('mrg-modeldb')?'compile-native':'compile-opsin',path.join(bin??'', 'nrnivmodl'),[],{cwd:path.join(root,d),env:{...process.env,CC:'gcc',CXX:'g++'}});
- for(const name of ['coupling','surface','spatial','recording-field','induction','magnetic-path','magnetic-coupling','magnetic-policy','protocol','spectral-component','spectral-coupling','spectral-spatial','spectral-protocol','spectral-crosstalk'])run(name,process.execPath,['scripts/axon-interface/stage2/'+name+'-check.mjs'],{env:{...process.env,MRG_PYTHON:python},...(name==='induction'?{timeout:14400000}:{})});
+ const rawDir=fs.mkdtempSync(path.join(os.tmpdir(),'axon-stage2-reproduction-'));
+ for(const name of ['coupling','surface','spatial','recording-field','induction','magnetic-path','magnetic-coupling','protocol','magnetic-policy','spectral-component','spectral-coupling','spectral-spatial','spectral-protocol','spectral-crosstalk'])run(name,process.execPath,['scripts/axon-interface/stage2/'+name+'-check.mjs'],{env:{...process.env,MRG_PYTHON:python,STAGE2_RAW:rawDir,...(name==='magnetic-policy'?{STAGE2_MAGNETIC_EXPORT:path.join(rawDir,'magnetic-protocol.json')}:{})},...(name==='induction'?{timeout:28800000}:name==='protocol'?{timeout:3600000}:{})});
  // These depend on the production-refinement field and independently built
  // physical fixture emitted by induction; no pre-existing /tmp file is needed.
  run('magnetic-propagation-probe',process.execPath,['scripts/axon-interface/stage2/magnetic-propagation-probe.mjs']);
  run('magnetic-propagation',process.execPath,['scripts/axon-interface/stage2/magnetic-propagation-check.mjs'],{env:{...process.env,MRG_PYTHON:python}});
  const tests=run('repository-tests','npm',['test'],{timeout:3600000}),build=run('site-build','npm',['run','build']);
- fs.writeFileSync(dir+'/software-checkpoint.json',JSON.stringify({schema:'axon-stage2-software-checkpoint/2',modelVersion:VERSION,recordedAt:new Date().toISOString(),passed:tests.pass&&build.pass,fullRepositoryTests:tests,siteBuild:build},null,2)+'\n');
+ fs.writeFileSync(dir+'/software-checkpoint.json',JSON.stringify({schema:'axon-stage2-software-checkpoint/2',modelVersion:VERSION,recordedAt:new Date().toISOString(),passed:tests.pass&&build.pass,fullRepositoryTests:tests,siteBuild:build,sourceHashes:snapshot()},null,2)+'\n');
 }
-const component=read('labs/axon-stage2/reports/independent-reference.json'),coupled=Object.fromEntries(['coupling','surface','spatial','recording-field','induction','magnetic-path','magnetic-coupling','magnetic-policy','magnetic-propagation','induction-conservative-independent','protocol','spectral-component','spectral-coupling','spectral-spatial','spectral-protocol','spectral-crosstalk'].map(k=>[k,read(dir+'/'+k+'-validation.json')])),browser=read(dir+'/browser-validation.json');
+const component=read('labs/axon-stage2/reports/independent-reference.json'),coupled=Object.fromEntries(['coupling','surface','spatial','recording-field','induction','magnetic-path','magnetic-coupling','magnetic-policy','magnetic-propagation','nested-recovery-independent','nested-original-independent','protocol','spectral-component','spectral-coupling','spectral-spatial','spectral-protocol','spectral-crosstalk'].map(k=>[k,read(dir+'/'+k+'-validation.json')])),browser=read(dir+'/browser-validation.json');
 const gates=Object.entries(coupled).filter(([k,r])=>!r?.complete||!r?.passed).map(([k])=>k+' numerical qualification remains incomplete or failed.');
 for(const [name,r] of Object.entries(coupled)){const stale=Object.entries(r?.sourceHashes??{}).filter(([p,h])=>!fs.existsSync(p)||hash(p)!==h).map(([p])=>p);if(stale.length)gates.push(name+' evidence has stale source hashes: '+stale.join(', '));}
 if(coupled.protocol?.modelVersion!==VERSION||!Object.keys(coupled.protocol?.sourceHashes??{}).length)gates.push('Current-version, source-identified complete cohort protocol remains pending.');
@@ -32,6 +33,7 @@ if(component?.requiredFail!==0||component?.requiredPass!==65)gates.push('Indepen
 if(!browser?.passed||!browser?.hosted||browser?.modelVersion!==VERSION)gates.push('Final hosted browser verification remains pending.');
 if(browser?.sourceHashes&&Object.entries(browser.sourceHashes).some(([p,h])=>!fs.existsSync(p)||hash(p)!==h))gates.push('Hosted browser evidence does not match the current tested source.');
 const software=read(dir+'/software-checkpoint.json');if(!software?.passed||software?.modelVersion!==VERSION)gates.push('Current-version complete site build and repository regression evidence remains pending.');
+if(software?.sourceHashes&&Object.entries(software.sourceHashes).some(([p,h])=>!fs.existsSync(p)||hash(p)!==h))gates.push('Software verification source changed after tests/build.');
 
 const after=snapshot(),changed=files.filter(p=>before[p]!==after[p]);if(changed.length)gates.push('Scientific source changed during reproduction.');
 const report={schema:'axon-stage2-validation/1',generatedAt:new Date().toISOString(),status:gates.length?'development-checkpoint':'qualified',completeStage2:gates.length===0,modelVersion:VERSION,biologicalValidation:false,

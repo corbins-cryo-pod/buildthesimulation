@@ -3,7 +3,7 @@ import {solveInductionReference as solveInductionLoad} from './induction-precisi
 import {integrateCableLink,coilDrive,inductanceEstimate} from '../../../../public/simulations/biohybrid-axon-interface/stage2/modules/magnetic.mjs';
 import {conservativeInductionLoad} from './induction-conservative-load.mjs';
 import {solveStage1Load,sampleMembraneTransfer} from '../field-stage1.mjs';
-export const MAGNETIC_FIELD_METHOD=Object.freeze({radialRefinement:4,axialRefinement:4,faceOrder:8,volumeRule:'tetra11'});
+export const MAGNETIC_FIELD_METHOD=Object.freeze({mesh:'fixed-parent-planar-subdivision',radialRefinement:2,axialRefinement:2,planarRefinement:1,faceOrder:8,volumeRule:'tetra11'});
 import {embeddedCoil} from './embedded-coil.mjs';
 export {embeddedCoil};
 export function solveMagneticChannel(model,morphology,geometry,channelIndex,{coilOptions={},lineSubdivisions=8,reorder=false,onProgress=()=>{},shouldCancel=()=>false}={}){

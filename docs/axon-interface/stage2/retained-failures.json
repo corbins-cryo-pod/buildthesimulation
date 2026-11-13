@@ -136,5 +136,47 @@
     "scope": "reciprocal recording field runtime",
     "failure": "The inherited reciprocal recording solve at factor 4 remained in the initial field phase for over ten minutes. Node and hosted attempts were cancelled before a result was released.",
     "correction": "The Stage 2 precision solver now receives the identical finite contact load and physical matrix. Four coarse-field transfer comparisons against the inherited solver passed a predeclared 1e-8 relative bound. The production sweep and spatial recording tests must pass before qualification. The interruption remains in retained/reciprocal-field4-interrupted.json."
+  },
+  {
+    "id": "coupled-023",
+    "scope": "Independent coordinate-column CG residual",
+    "failure": "The original independent attempt reported a physical relative residual of 1.7357269e-9, exceeding 1e-9 despite close potential agreement.",
+    "correction": "The exact earlier report remains in retained/independent-coordinate-cg-residual-failure.json. Long-double residual correction was subsequently observed to pass, but lost temporary raw output is not recreated from the observation. Fresh independent references must pass for each selected candidate."
+  },
+  {
+    "id": "coupled-024",
+    "scope": "Radial 4-to-5 field convergence",
+    "failure": "Two cells differed by 6.727024390160% and 6.117051255058%, exceeding the unchanged 5% transfer limit.",
+    "correction": "The observation is preserved in execution-interruption-2026-11-12.json; its final temporary raw report was not recovered. This mesh is rejected. The reconstructed planar-subdivision method must earn its own directional qualification."
+  },
+  {
+    "id": "coupled-025",
+    "scope": "Unpublished subdivision axial comparison",
+    "failure": "The earlier planar-1 / axial-1 candidate had an observed 5.725177920054% axial difference for one cell.",
+    "correction": "This historical observation remains a failure. Source and raw arrays were lost. The reconstructed original-seed study retains a fresh low-axial-resolution diagnostic and tests a finer candidate; the separate UI-default seed does not replace it."
+  },
+  {
+    "id": "coupled-026",
+    "scope": "Execution interruption and unrecovered artifacts",
+    "failure": "The execution workspace became unavailable while the finer planar reference was running. Its completion and outcome were not observed.",
+    "correction": "Committed code was recovered from GitHub. New source hashes identify reconstructed subdivision source. Missing raw reports are rerun, never synthesized from recovery notes."
+  },
+  {
+    "id": "coupled-027",
+    "scope": "Recovery mesh-contract setup",
+    "failure": "A one-cell fixture was rejected by the existing 4-to-256-cell validator before mesh assembly.",
+    "correction": "The geometry contracts now use four cells. All seven pass under unchanged tolerances; retained/nested-recovery-invalid-census.json preserves the setup error."
+  },
+  {
+    "id": "coupled-028",
+    "scope": "Native mechanism compilation in restored environment",
+    "failure": "The NEURON wheel defaulted to clang++, which was unavailable; both mechanism builds failed before execution.",
+    "correction": "Rebuilt successfully using installed gcc/g++ through CC=gcc and CXX=g++, as already specified by reproduction. No channel equations or numerical criteria changed."
+  },
+  {
+    "id": "coupled-029",
+    "scope": "Full 0.4.3 protocol superseded",
+    "failure": "The current full magnetic protocol was canceled with exit 130 after its mesh-refinement failure, without a completed magnetic result.",
+    "correction": "The interruption record retains this status. The 0.4.4 protocol and hosted comparison must execute with the selected production mesh; old passing exports cannot substitute."
   }
 ]
