@@ -1,0 +1,71 @@
+name: Publish verified Stage 2 evidence
+on:
+  push:
+    branches: [feature/axon-resolution-stage2]
+    paths: ['.github/workflows/axon-stage2-evidence-export.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.1'
+          cache: npm
+      - name: Verify the completed scientific and software steps
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request
+          def read(path):
+              req=urllib.request.Request("https://api.github.com/repos/"+os.environ["GITHUB_REPOSITORY"]+path,headers={"Authorization":"Bearer "+os.environ["GH_TOKEN"],"Accept":"application/vnd.github+json"})
+              with urllib.request.urlopen(req,timeout=30) as response:return json.load(response)
+          run=read("/actions/runs/43451091212")
+          assert run["head_sha"]=="814975c72e094f490c3f3206c5c6c6471ff01f5a" and run["status"]=="completed"
+          job=read("/actions/jobs/131973122405")
+          required=[s for s in job["steps"] if 1<=s["number"]<=18]
+          assert len(required)==18 and all(s["conclusion"]=="success" for s in required),"Numerical or software verification did not pass"
+          print("All numerical, regression, browser and qualified-build steps passed; only evidence publication is being resumed.")
+          PY
+      - uses: actions/download-artifact@v4
+        with:
+          name: stage2-completion-evidence
+          path: ${{ runner.temp }}/stage2-completion
+          run-id: 43451091212
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore the exact reports and verify their publication manifests
+        run: |
+          cp -a "$RUNNER_TEMP/stage2-completion/." docs/axon-interface/stage2/
+          node --input-type=module <<'JS'
+          import {publishedStage2} from './src/lib/axon-interface-stage2-publication.mjs';
+          const r=publishedStage2();
+          if(!r.completeStage2||r.openReleaseGates.length)throw Error(JSON.stringify(r.openReleaseGates));
+          console.log('All imported report and source hashes verify; numerical Stage 2 is qualified.');
+          JS
+      - name: Verify the imported qualified build
+        run: |
+          npm ci
+          npm run build
+          node scripts/verify-axon-stage2-build.mjs
+      - name: Export exact Git objects for authenticated publication
+        run: |
+          git add docs/axon-interface/stage2
+          git diff --cached --check -- . ':!docs/axon-interface/stage2/logs'
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';import {execFileSync} from 'node:child_process';
+          const git=args=>execFileSync('git',args,{encoding:'utf8'}).trim();
+          const paths=git(['diff','--cached','--name-only','-z']).split('\0').filter(Boolean);
+          console.log('STAGE2_EXPORT_MANIFEST '+JSON.stringify({baseCommit:git(['rev-parse','HEAD']),baseTree:git(['rev-parse','HEAD^{tree}']),tree:git(['write-tree']),files:paths.length}));
+          for(const path of paths){
+            if(!path.startsWith('docs/axon-interface/stage2/'))throw Error('Unexpected export path');
+            const bytes=fs.readFileSync(path),data=bytes.toString('base64'),size=24000,total=Math.max(1,Math.ceil(data.length/size)),sha=git(['hash-object',path]);
+            for(let i=0;i<total;i++)console.log('STAGE2_EXPORT_FILE '+JSON.stringify({path,sha,index:i,total,data:data.slice(i*size,(i+1)*size)}));
+          }
+          JS
