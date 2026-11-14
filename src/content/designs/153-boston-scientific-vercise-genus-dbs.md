@@ -2,12 +2,12 @@
 title: "Boston Scientific Vercise Genus DBS"
 order: 153
 pubDate: 2026-10-08
-updatedDate: 2026-10-08
+updatedDate: 2026-11-14
 device_id: "BTSD-FDA-0004"
 interface_class: "dbs"
 status: "human"
-last_updated: 2026-10-08
-description: "FDA-approved Vercise Genus DBS family with 8-contact and 16-contact directional leads and Multiple Independent Current Control. Values rest on the FDA overview and company pages; the SSED was not read."
+last_updated: 2026-11-14
+description: "FDA-approved Vercise Genus DBS family with 8-contact and 16-contact directional leads and Multiple Independent Current Control. Values rest on the FDA overview, the 2017 SSED and company pages; clinical results come from the peer-reviewed INTREPID reports."
 modality: "Other"
 website: "https://www.fda.gov/medical-devices/recently-approved-devices/vercise-pc-vercise-gevia-and-vercise-genus-deep-brain-stimulation-systems-p150031s064"
 axis: ["deep-brain"]
@@ -114,13 +114,13 @@ Company brief: [Boston Scientific Corporation](/companies/55-boston-scientific-c
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects | INTREPID: 160 randomized subjects in the pre-specified interim analysis (design 3:1 randomization, up to 30 US sites, up to 310 subjects); VANTAGE contributed safety data from 40 consented patients [4] |
+| Human subjects | INTREPID (NCT01839396): 313 enrolled at 23 US implanting centers; 196 received the implant, 191 were randomized 3:1; the pre-specified interim analysis covered 160 (121 active, 39 control). VANTAGE contributed safety data from 40 consented patients [4][7][8] |
 | Preclinical cohort |  |
-| Follow-up duration |  |
+| Follow-up duration | Blinded phase 12 weeks; open-label outcomes published through 5 years [8][9] |
 | Indications | Essential tremor not adequately controlled by medication, now including two-sided VIM stimulation (S064) [1] |
-| Trials and registries | INTREPID, IDE G120075: multi-center, prospective, double-blind, randomized 3:1 controlled study; VANTAGE (safety only) [4] |
-| Primary outcomes | Primary endpoint: difference between Active and Control in mean change over 12 weeks in waking hours per day with good symptom control and no troublesome dyskinesia (PD diary), with no medication increase. The SSED states the study met success criteria at the interim analysis; the numeric difference was not extracted here [4] |
-| Key limitations | Values rest on an FDA overview and company pages. The SSED, clinical study sizes and adverse event rates were not read [1][3][5] |
+| Trials and registries | INTREPID (NCT01839396), IDE G120075: multi-center, prospective, double-blind, randomized 3:1 controlled study, completed; VANTAGE (safety only) [4][7] |
+| Primary outcomes | Primary endpoint: difference between Active and Control in mean change over 12 weeks in waking hours per day with good symptom control and no troublesome dyskinesia (PD diary), with no medication increase. Interim analysis: 3.03 hours in favor of active stimulation (SD 4.52, 95% CI 1.3-4.7; p<0.0001). At 5 years open label: off-medication UPDRS-III improved 36% from baseline, dyskinesia scores down 70%, levodopa-equivalent dose down 28% and stable [8][9] |
+| Key limitations | Values rest on an FDA overview, the 2017 SSED, company pages and the peer-reviewed INTREPID reports; SSED adverse-event rate tables were not extracted [1][3][5][8] |
 
 ## Engineering tradeoffs
 
@@ -132,13 +132,16 @@ Company brief: [Boston Scientific Corporation](/companies/55-boston-scientific-c
 
 ## Version boundary
 
-Values cited [4] describe the original 2017 approval configuration (IPG DB-1110-C, lead DB-2201). S064 covers Vercise PC, Gevia and Genus. The 16-contact Cartesia X and HX lead claims come from Boston Scientific's product page and are not tied to an FDA document read here.
+Values cited [4] describe the original 2017 approval configuration (IPG DB-1110-C, lead DB-2201). S064 covers Vercise PC, Gevia and Genus. The 16-contact Cartesia X and HX lead claims come from Boston Scientific's product page [6] and are not tied to an FDA document read here.
 
 ## References
 
 1. [FDA overview, Vercise PC, Gevia and Genus, P150031/S064](https://www.fda.gov/medical-devices/recently-approved-devices/vercise-pc-vercise-gevia-and-vercise-genus-deep-brain-stimulation-systems-p150031s064).
 2. [Boston Scientific Genus ImageReady MRI checklist](https://www.bostonscientific.com/content/dam/bostonscientific/neuro/portfolio-group/Vercise%20Deep%20Brain%20Stimulation/MediaKit/documents/Genus-ImageReady-MRI-Checklist.pdf).
 3. [Boston Scientific DBS system page](https://www.bostonscientific.com/en-US/medical-specialties/neurological-surgery/deep-brain-stimulation-system.html).
-4. [Boston Scientific Vercise Genus leads page](https://www.bostonscientific.com/en-EU/products/deep-brain-stimulation-systems/vercise-genus-dbs/leads.html).
-5. [Boston Scientific Vercise Genus IPG page](https://www.bostonscientific.com/en-US/medical-specialties/neurological-surgery/deep-brain-stimulation-system/vercise-genus-batteries.html).
 4. [FDA summary of safety and effectiveness data, P150031 (original approval 12/08/2017)](https://www.accessdata.fda.gov/cdrh_docs/pdf15/P150031B.pdf).
+5. [Boston Scientific Vercise Genus IPG page](https://www.bostonscientific.com/en-US/medical-specialties/neurological-surgery/deep-brain-stimulation-system/vercise-genus-batteries.html).
+6. [Boston Scientific Vercise Genus leads page](https://www.bostonscientific.com/en-EU/products/deep-brain-stimulation-systems/vercise-genus-dbs/leads.html).
+7. [ClinicalTrials.gov, NCT01839396 (INTREPID)](https://clinicaltrials.gov/study/NCT01839396). Verified November 14, 2026.
+8. [Vitek JL, Jain R, Chen L, et al., Subthalamic nucleus deep brain stimulation with a multiple independent constant current-controlled device in Parkinson's disease (INTREPID), The Lancet Neurology 2020;19(6):491-501](https://pubmed.ncbi.nlm.nih.gov/32470421/). Peer reviewed; PMID 32470421.
+9. [Starr PA, Shivacharan RS, Goldberg E, et al., Five-Year Outcomes from Deep Brain Stimulation of the Subthalamic Nucleus for Parkinson Disease, JAMA Neurology 2025;82(11):1181-1190](https://pubmed.ncbi.nlm.nih.gov/40952750/). Peer reviewed; PMID 40952750; open access PMC12439180.
