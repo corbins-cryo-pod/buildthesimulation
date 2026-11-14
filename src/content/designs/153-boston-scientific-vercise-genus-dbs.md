@@ -114,12 +114,12 @@ Company brief: [Boston Scientific Corporation](/companies/55-boston-scientific-c
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects | INTREPID (NCT01839396): 313 enrolled at 23 US implanting centers; 196 received the implant, 191 were randomized 3:1; the pre-specified interim analysis covered 160 (121 active, 39 control). VANTAGE contributed safety data from 40 consented patients [4][7][8] |
+| Human subjects | INTREPID (NCT01839396), in Parkinson disease: 313 enrolled at 23 US implanting centers; 196 received the implant, 191 were randomized 3:1; the pre-specified interim analysis covered 160 (121 active, 39 control). VANTAGE contributed safety data from 40 consented patients [4][7][8] |
 | Preclinical cohort |  |
 | Follow-up duration | Blinded phase 12 weeks; open-label outcomes published through 5 years [8][9] |
-| Indications | Essential tremor not adequately controlled by medication, now including two-sided VIM stimulation (S064) [1] |
+| Indications | Parkinson disease (P150031, 2017); essential tremor not adequately controlled by medication, now including two-sided VIM stimulation (S064) [1][4] |
 | Trials and registries | INTREPID (NCT01839396), IDE G120075: multi-center, prospective, double-blind, randomized 3:1 controlled study, completed; VANTAGE (safety only) [4][7] |
-| Primary outcomes | Primary endpoint: difference between Active and Control in mean change over 12 weeks in waking hours per day with good symptom control and no troublesome dyskinesia (PD diary), with no medication increase. Interim analysis: 3.03 hours in favor of active stimulation (SD 4.52, 95% CI 1.3-4.7; p<0.0001). At 5 years open label: off-medication UPDRS-III improved 36% from baseline, dyskinesia scores down 70%, levodopa-equivalent dose down 28% and stable [8][9] |
+| Primary outcomes | Primary endpoint: difference between Active and Control in mean change over 12 weeks in waking hours per day with good symptom control and no troublesome dyskinesia (Parkinson disease diary), with no medication increase. Interim analysis: 3.03 hours in favor of active stimulation (SD 4.52, 95% CI 1.3-4.7; p<0.0001). At 5 years open label: off-medication UPDRS-III improved 36% from baseline, dyskinesia scores down 70%, levodopa-equivalent dose down 28% and stable [8][9] |
 | Key limitations | Values rest on an FDA overview, the 2017 SSED, company pages and the peer-reviewed INTREPID reports; SSED adverse-event rate tables were not extracted [1][3][5][8] |
 
 ## Engineering tradeoffs
@@ -132,7 +132,7 @@ Company brief: [Boston Scientific Corporation](/companies/55-boston-scientific-c
 
 ## Version boundary
 
-Values cited [4] describe the original 2017 approval configuration (IPG DB-1110-C, lead DB-2201). S064 covers Vercise PC, Gevia and Genus. The 16-contact Cartesia X and HX lead claims come from Boston Scientific's product page [6] and are not tied to an FDA document read here.
+Values cited [4] describe the original 2017 approval configuration (IPG DB-1110-C, lead DB-2201). S064 covers Vercise PC, Gevia and Genus. The INTREPID results cited [7][8][9] were collected in Parkinson disease with the Vercise system of the 2017 approval configuration, before the Genus generation; they are not essential-tremor evidence. The 16-contact Cartesia X and HX lead claims come from Boston Scientific's product page [6] and are not tied to an FDA document read here.
 
 ## References
 
