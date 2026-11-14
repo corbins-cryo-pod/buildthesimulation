@@ -1,0 +1,59 @@
+name: Verify Whole-Cell Remodeling
+on:
+  pull_request:
+    paths:
+      - 'workbench/whole-cell-remodeling/**'
+      - 'public/simulations/whole-cell-remodeling/**'
+      - 'tests/whole-cell-remodeling.test.mjs'
+      - 'src/data/simulations.js'
+      - 'src/lib/discovery-index.js'
+      - '.github/workflows/verify-whole-cell-remodeling.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'workbench/whole-cell-remodeling/**'
+      - 'public/simulations/whole-cell-remodeling/**'
+      - 'tests/whole-cell-remodeling.test.mjs'
+      - '.github/workflows/verify-whole-cell-remodeling.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install application and browser test dependencies
+        run: |
+          npm ci
+          python -m pip install playwright==1.56.0
+          python -m playwright install --with-deps chromium
+      - name: Verify source preservation, numerical checks and private-media exclusion
+        run: |
+          python3 workbench/whole-cell-remodeling/build.py
+          git diff --exit-code -- public/simulations/whole-cell-remodeling/index.html
+          node --test tests/whole-cell-remodeling.test.mjs
+      - name: Build the actual site
+        run: npm run build
+      - name: Test the served production route with WebGL and Canvas fallback
+        env:
+          WHOLE_CELL_SERVE_DIR: dist
+          WHOLE_CELL_ARTIFACT_DIR: whole-cell-browser-artifacts
+        run: |
+          WHOLE_CELL_BACKEND=webgl python3 workbench/whole-cell-remodeling/tests/browser.test.py
+          WHOLE_CELL_BACKEND=canvas python3 workbench/whole-cell-remodeling/tests/browser.test.py
+      - name: Preserve media-free browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-cell-remodeling-browser
+          path: whole-cell-browser-artifacts
+          if-no-files-found: warn

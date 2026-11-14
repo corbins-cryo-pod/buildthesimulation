@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Independent neural whole-cell remodeling simulation. An exploratory coarse-grained model, not a calibrated biological prediction.">
+<title>Whole-cell Remodeling — Independent Laboratory</title>
+<style>
+.masthead a{color:inherit;text-decoration:none}.masthead a:hover{text-decoration:underline}
+:root{--paper:#f5f1e6;--paper2:#ece7da;--ink:#202a24;--muted:#697168;--line:#c9cbbd;--accent:#45604b;--brass:#9f8253;--pink:#9f577f;--green:#4b7758;--dark:#08100d;--mono:ui-monospace,SFMono-Regular,Consolas,monospace;--sans:Arial,Helvetica,sans-serif;--serif:Georgia,'Times New Roman',serif}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:15px}button,input,select{font:inherit}button,select,input[type=number]{border:1px solid var(--line);border-radius:0;background:transparent;color:var(--ink)}button,select{cursor:pointer}button{font-family:var(--sans);font-size:11px;letter-spacing:.035em;padding:10px 13px;transition:background .12s}button:hover{background:var(--paper2)}button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}button.primary{color:var(--paper);background:var(--ink);border-color:var(--ink);min-width:92px}button.primary:hover{background:#3c5140}button.small{padding:7px 9px;font-size:10px}button.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}input[type=range]{width:100%;accent-color:var(--accent);height:15px;margin:8px 0 0;cursor:pointer}select{padding:9px 25px 9px 9px;font-family:var(--sans);font-size:12px}label{cursor:pointer}.shell{max-width:1640px;margin:auto;padding:0 34px 24px}.masthead{display:flex;justify-content:space-between;gap:20px;padding:18px 0 13px;border-bottom:1px solid var(--ink);font:10px var(--sans);letter-spacing:.19em;text-transform:uppercase}.masthead span:last-child{color:var(--muted)}.heading{display:flex;justify-content:space-between;align-items:center;gap:22px;padding:24px 0 22px}h1{font-size:clamp(30px,3.1vw,45px);font-weight:normal;letter-spacing:-.035em;line-height:1.02;margin:0 0 10px}.subtitle{margin:0;max-width:780px;line-height:1.5;color:#596156;font-size:14px}.edition{text-align:right;min-width:190px}.edition .flag{display:inline-block;border:1px solid #b4b9a7;font:9px var(--sans);letter-spacing:.12em;padding:7px 10px;text-transform:uppercase}.edition p{font:10px/1.6 var(--mono);color:var(--muted);margin:8px 0 0}.toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:9px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font:10px var(--sans)}.toolbar .spacer{flex:1}.toolbar .small-label{color:var(--muted);font-size:9px;letter-spacing:.08em;text-transform:uppercase}.toolbar input[type=number]{width:78px;padding:9px 7px;font:11px var(--mono)}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 298px;gap:22px;margin-top:18px}.left{min-width:0}.viewbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding-bottom:10px}.segmented{display:flex;gap:0}.segmented button{border-right:0;padding:8px 12px;font:10px var(--sans)}.segmented button:last-child{border-right:1px solid var(--line)}.viewactions{display:flex;align-items:center;gap:9px;font:10px var(--sans)}.viewactions label{display:flex;align-items:center;gap:4px;color:var(--muted)}input[type=checkbox]{accent-color:var(--accent);margin:0}.stage-row{display:flex;background:#060c09;border:1px solid #29372b;overflow:hidden}.stage{position:relative;min-width:0;flex:1;height:clamp(420px,56vw,628px);touch-action:none;overflow:hidden;cursor:crosshair}.stage canvas{display:block;width:100%;height:100%;position:absolute;inset:0}.stage #overlay{pointer-events:none}.stage-bottom{padding:11px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--line);border-top:0;font:10px var(--sans);color:var(--muted)}.state-dot{width:6px;height:6px;border-radius:50%;display:inline-block;background:#4d7250;margin-right:6px;vertical-align:1px}.stage-bottom .phase{color:var(--ink)}.hint{font:11px/1.6 var(--sans);color:var(--muted);margin:10px 0 0}.hint strong{color:var(--ink);font-weight:normal}.sidebar{border-left:1px solid var(--line);padding-left:22px}.section-label{font:10px var(--sans);text-transform:uppercase;letter-spacing:.14em;display:flex;justify-content:space-between;gap:10px;margin:0 0 14px}.section-label span{color:var(--muted);font-size:9px;letter-spacing:.03em;text-transform:none}.metric-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink);border-left:1px solid var(--line);margin-bottom:23px}.metric{padding:12px 9px 10px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.metric .value{font:23px var(--serif);letter-spacing:-.025em}.metric .unit{font:10px var(--sans);color:var(--muted)}.metric .key{font:9px/1.5 var(--sans);color:var(--muted);margin-top:4px}.control{margin-bottom:15px}.control-head{display:flex;justify-content:space-between;font:12px var(--sans)}.control-head output{font:11px var(--mono);color:var(--muted)}.control small{display:block;color:var(--muted);font:10px/1.45 var(--sans);margin-top:3px}.sidebar details{border-top:1px solid var(--line);padding-top:11px;margin-bottom:15px}.sidebar summary{font:11px var(--sans);cursor:pointer;margin-bottom:13px;color:var(--muted)}.sidebar .buttonrow{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}.selection{font:10px var(--sans);margin:14px 0 8px;display:flex;align-items:center;justify-content:space-between;gap:5px}.selection select{padding:6px;font:10px var(--mono);max-width:140px}.resource{margin:17px 0 18px}.resource-head{font:9px var(--sans);display:flex;justify-content:space-between;color:var(--muted)}.track{height:4px;background:var(--paper2);margin-top:7px}.track div{height:4px;background:#708368;width:100%}.plots{display:grid;grid-template-columns:1.25fr 1fr;gap:18px;margin-top:22px}.plot-card{border-top:1px solid var(--ink);padding-top:12px;min-width:0}.plot-card h2{font:10px var(--sans);letter-spacing:.09em;text-transform:uppercase;margin:0 0 6px}.plot-card .plot-sub{font:10px var(--sans);color:var(--muted);min-height:14px}.plot-card canvas{width:100%;height:152px;display:block}.plot-legend{font:9px var(--mono);display:flex;flex-wrap:wrap;gap:11px;color:var(--muted)}.legend-line{display:inline-block;width:12px;height:2px;vertical-align:3px;margin-right:5px}.lower{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-top:24px;padding-top:15px;border-top:1px solid var(--line)}.lower h2{font:10px var(--sans);letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px}.events{font:10px/1.8 var(--sans);max-height:118px;overflow-y:auto}.event{display:flex;gap:12px}.event time{font-family:var(--mono);min-width:43px;color:var(--muted)}.export-row{display:flex;flex-wrap:wrap;gap:6px}.lower p{color:var(--muted);font:11px/1.5 var(--sans);margin:10px 0}.fineprint{display:flex;justify-content:space-between;gap:25px;border-top:1px solid var(--line);margin-top:25px;padding-top:13px;font:10px/1.5 var(--sans);color:var(--muted)}.fineprint button{border:0;text-decoration:underline;padding:0;white-space:nowrap}.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:12px 20px;font:12px var(--sans);z-index:20;box-shadow:0 2px 18px #0002;max-width:90vw;display:none}.toast.show{display:block}dialog{border:1px solid var(--ink);border-radius:0;max-width:780px;width:calc(100% - 32px);max-height:88vh;background:var(--paper);color:var(--ink);padding:27px 30px;box-shadow:0 12px 70px #0003}dialog::backdrop{background:#0b180db3}dialog header{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid var(--line);padding-bottom:13px;margin-bottom:18px}dialog h2{font:28px var(--serif);margin:0}dialog h3{font:12px var(--sans);letter-spacing:.05em;text-transform:uppercase;margin:24px 0 8px}dialog p,dialog li{font-size:14px;line-height:1.6;color:#4d574b}dialog code{font:11px/1.7 var(--mono);display:block;padding:12px;background:var(--paper2);white-space:pre-wrap}dialog a{color:var(--accent)}dialog .note{border-left:2px solid var(--brass);padding-left:14px}a{color:var(--accent)}.footer-id{font-family:var(--mono);white-space:nowrap}
+@media(min-width:1500px){.workspace{grid-template-columns:minmax(0,1fr) 315px}.stage{height:668px}}
+@media(max-width:1080px){.shell{padding:0 20px 20px}.workspace{grid-template-columns:minmax(0,1fr) 263px;gap:16px}.sidebar{padding-left:16px}.stage{height:530px}.edition{display:none}.viewactions{gap:6px}.viewactions button{padding:7px}.segmented button{padding:8px}.toolbar .spacer{display:none}}
+@media(max-width:760px){.shell{padding:0 13px 20px}.masthead{font-size:8px;letter-spacing:.1em}.masthead span:last-child{display:none}.heading{padding:20px 0 17px}.subtitle{font-size:13px}.workspace{display:block}.stage{height:470px}.sidebar{padding:22px 0 0;border-left:0;margin-top:22px;border-top:1px solid var(--line)}.metric-grid{grid-template-columns:repeat(4,1fr)}.metric .value{font-size:21px}.control-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.plots{gap:13px}.plot-card h2{font-size:9px}.stage-bottom{font-size:9px}.stage-bottom .input-hint{display:none}.lower{grid-template-columns:1fr}.fineprint{flex-direction:column;gap:10px}.toolbar select{max-width:210px}.viewbar{row-gap:10px}.hint{font-size:10px}dialog{padding:20px}.plot-card canvas{height:145px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+ <div class="masthead"><span><a href="/simulations/">Build the Simulation</a> &nbsp; / &nbsp; Independent laboratory</span><span>Neural morphodynamics &nbsp; · &nbsp; Study 001</span></div>
+ <header class="heading"><div><h1>Whole-cell remodeling</h1><p class="subtitle">A living outline, not a growing diagram. Explore how local protrusion, whole-cell contraction, and structural support reshape an immature neuron.</p></div><div class="edition"><span class="flag">Exploratory model</span><p>Independent · deterministic<br>v1.0 &nbsp; / &nbsp; 26 October 2026</p></div></header>
+ <div class="toolbar">
+  <button class="primary" id="play" aria-label="Pause simulation">Pause</button><button id="reset">Restart</button>
+  <select id="preset" aria-label="Experiment preset"><option value="remodeling">Whole-cell remodeling</option><option value="fragile">Weak structural support</option><option value="persistent">Persistent outgrowth</option><option value="uncoupled">Independent local activity</option><option value="custom" disabled>Custom parameters</option></select>
+  <span class="small-label">Seed</span><input id="seed" type="number" value="2646" min="0" max="4294967295" aria-label="Random seed"><button id="newSeed" class="small" title="Restart with a different seed">New cell</button>
+  <span class="spacer"></span><span class="small-label">Playback</span><select id="speed" aria-label="Model minutes per real second"><option value="1">1 min / sec</option><option value="5">5 min / sec</option><option value="12" selected>12 min / sec</option><option value="30">30 min / sec</option><option value="60">60 min / sec</option></select><button id="step" class="small">+1 min</button>
+ </div>
+ <main class="workspace">
+ <div class="left">
+  <div class="viewbar"><div class="segmented" role="group" aria-label="Observation mode"><button data-mode="0" class="active" aria-pressed="true">Fluorescence</button><button data-mode="1" aria-pressed="false">Membrane</button><button data-mode="2" aria-pressed="false">Mechanics</button></div><div class="viewactions"><label><input type="checkbox" id="labels"> Labels</label><button id="fit" class="small">Fit cell</button></div></div>
+  <div class="stage-row"><div class="stage" id="stage" tabindex="0" role="application" aria-label="Neural cell simulation. Drag to pan, wheel to zoom, click to apply a local pulse. Keyboard: space pauses, R restarts, F fits the cell."><canvas id="microscope"></canvas><canvas id="overlay"></canvas></div></div>
+  <div class="stage-bottom"><span class="phase"><span class="state-dot" id="stateDot"></span><span id="phase">Local exploration</span></span><span id="activity">6 processes</span><span class="input-hint">Click: pulse &nbsp; · &nbsp; Drag: pan &nbsp; · &nbsp; Scroll: zoom</span></div>
+  <p class="hint"><strong>Watch a few cycles.</strong> Broad fans spread and collapse; only some exploration becomes supported neurite material. Compare the three observation modes to inspect the same numerical state.</p>
+  <div class="plots">
+   <section class="plot-card"><h2>Individual process lengths</h2><div class="plot-sub">Material length, not elastic stretch · µm</div><canvas id="lengthPlot" aria-label="Process material lengths over model time"></canvas><div class="plot-legend" id="lengthLegend"></div></section>
+   <section class="plot-card"><h2>Whole-cell state</h2><div class="plot-sub">Somatic projected area · µm²</div><canvas id="statePlot" aria-label="Soma projected area over model time"></canvas><div class="plot-legend"><span><span class="legend-line" style="background:#617959"></span>Soma area</span><span>Shared coupling acts on every process</span></div></section>
+  </div>
+ </div>
+ <aside class="sidebar">
+  <h2 class="section-label">Live measurements <span>Nominal units</span></h2>
+  <div class="metric-grid"><div class="metric"><span class="value" id="areaValue">—</span><span class="unit"> µm²</span><div class="key">Soma projected area</div></div><div class="metric"><span class="value" id="lengthValue">—</span><span class="unit"> µm</span><div class="key">Total process material</div></div><div class="metric"><span class="value" id="stableValue">—</span><span class="unit"> %</span><div class="key">Supported material</div></div><div class="metric"><span class="value" id="waveValue">0</span><div class="key">Waves delivered</div></div></div>
+  <h2 class="section-label">Change the balance <span>Relative coefficients</span></h2>
+  <div class="control-grid" id="controls">
+   <div class="control"><label class="control-head" for="polymerization">Protrusive activity <output id="polymerizationOut">1.00</output></label><input type="range" id="polymerization" min="0" max="2" step=".05" value="1"><small>Local extension and membrane spreading.</small></div>
+   <div class="control"><label class="control-head" for="contractility">Contractility <output id="contractilityOut">1.00</output></label><input type="range" id="contractility" min="0" max="2" step=".05" value="1"><small>Retrograde drive and coordinated withdrawal.</small></div>
+   <div class="control"><label class="control-head" for="adhesion">Substrate adhesion <output id="adhesionOut">0.72</output></label><input type="range" id="adhesion" min="0" max="1.5" step=".01" value=".72"><small>Traction and yielding shaft anchors.</small></div>
+   <div class="control"><label class="control-head" for="stabilization">Structural stabilization <output id="stabilizationOut">1.00</output></label><input type="range" id="stabilization" min="0" max="2" step=".05" value="1"><small>Conversion of exploration into supported material.</small></div>
+   <div class="control"><label class="control-head" for="coupling">Soma coupling <output id="couplingOut">1.00</output></label><input type="range" id="coupling" min="0" max="1" step=".05" value="1"><small>Shared contraction and selective wave delivery.</small></div>
+  </div>
+  <details><summary>Advanced dynamics &amp; observation</summary><div class="control"><label class="control-head" for="branching">Branch stabilization <output id="branchingOut">1.00</output></label><input type="range" id="branching" min="0" max="2" step=".05" value="1"></div><div class="control"><label class="control-head" for="waveSpeed">Wave speed, µm/min <output id="waveSpeedOut">2.20</output></label><input type="range" id="waveSpeed" min=".5" max="4" step=".1" value="2.2"></div><div class="control"><label class="control-head" for="noise">Local stochastic activity <output id="noiseOut">1.00</output></label><input type="range" id="noise" min="0" max="1.5" step=".05" value="1"></div><div class="control"><label class="control-head" for="exposure">Synthetic exposure <output id="exposureOut">1.70</output></label><input type="range" id="exposure" min=".4" max="3" step=".05" value="1.7"></div><div class="viewactions"><label><input type="checkbox" id="green" checked> Scaffold</label><label><input type="checkbox" id="pink" checked> Actin</label></div></details>
+  <div class="resource"><div class="resource-head"><span>Shared material availability</span><span id="resourceText">100%</span></div><div class="track"><div id="resourceBar"></div></div></div>
+  <h2 class="section-label">Perturb the cell <span>Not a drug model</span></h2>
+  <div class="selection"><label for="selected">Target process</label><select id="selected" aria-label="Target process"></select></div>
+  <div class="buttonrow"><button id="waveButton">Launch soma wave</button><button id="pulseButton">Pulse selected tip</button></div>
+  <p class="hint">Soma pulses are shared. Tip pulses are local. The response depends on the current mechanical and structural state.</p>
+ </aside>
+ </main>
+ <div class="lower"><section><h2>Experiment log</h2><div class="events" id="events" aria-live="off"></div></section><section><h2>Keep an inspectable experiment</h2><div class="export-row"><button id="save">Save state</button><button id="load">Load state</button><button id="csv">Export CSV</button><button id="snapshot">Snapshot PNG</button><input type="file" id="loadFile" accept=".json,application/json" hidden></div><p>State files retain morphology, random-generator state, parameters, and recent history. CSV includes material length, geometric arclength, supported material, and soma area.</p></section></div>
+ <footer class="fineprint"><span>Coarse-grained 2D model. Thin surface geometry, limited arbor topology, and synthetic fluorescence; no molecular calibration, true 3D contact physics, electrophysiology, or synapse formation.</span><button id="notes">Read model, limitations &amp; sources</button><span class="footer-id" id="backend">Solver: 0.04 min fixed step</span></footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<dialog id="notesDialog"><header><h2>What is actually simulated?</h2><button id="closeNotes">Close</button></header>
+<p class="note"><strong>This is an independent, exploratory prototype.</strong> It explores categories of neuronal remodeling behavior, not a fitted reconstruction of a particular cell or an estimate of molecular rates. Micrometres and minutes are nominal model units.</p>
+<h3>Numerical state</h3><p>The soma has 96 deformable radial boundary nodes and local activator/inhibitor fields. Each neurite has finite-radius membrane geometry, an extensible chain of overdamped mechanical nodes, yielding substrate anchors, local growth-cone activity, a structural-support variable, a deformable 48-node fan, and independent transient filopodia. Lateral processes may stabilize or withdraw. The soma boundary is star-convex: it cannot represent membrane holes, arbitrary folds, or migration topology.</p>
+<h3>Coupling, rather than identical growth</h3><p>A phenomenological FitzHugh–Nagumo-type relaxation oscillator drives a global contractile episode and sends a wave into a selected process. Wave arrival temporarily relaxes local contractility and boosts local activity. This is a reduced mechanism inspired by the cited experiments, not a molecular reconstruction. The default transport speed is 2.2 µm/min, within the 2–3 µm/min average speed reported in Winans et al. (2016); other coefficients are exploratory.</p>
+<code>du/dt = 0.86 (u − u³/3 − v + 0.64)
+dv/dt = 0.86 × 0.085 (u + 0.7 − 0.8v)
+
+Tip material rate = protrusive drive − retractile drive
+Node motion = overdamped elastic + bending + adhesion forces
+Cortical radius rate = protrusion − contraction − restoring force
+                     + neighbor smoothing + area penalty
+
+Wave position rate = selected transport speed
+Structural support = activity-dependent maturation − turnover</code>
+<p>Local growth bursts are stochastic switches, not a movie loop. A common neurite-length budget limits added process material and recycles withdrawals. It is an effective resource constraint, <em>not</em> conservation of full cell volume, actin, membrane lipids, or molecular mass. Deformed arclength is reported separately from added material.</p>
+<h3>What the image means</h3><p>Green displays a synthetic structural-scaffold channel. Magenta displays synthetic cortical/protrusive activity. The membrane mask is a union of the soma, flared shafts, growth-cone fans, and fine protrusions. A shader adds optical texture and a modest blur. Individual rendered fibers and puncta are illustrative texture, not simulated microtubules or identified organelles. The nucleus is an image inclusion, not a mechanically solved nucleus.</p><p>Projection crossings do not create a synapse or merge process graphs. There is no steric collision solver, out-of-plane dynamics, receptor kinetics, electrophysiology, or calibrated microscope point-spread function.</p>
+<h3>Reproducibility and numerical limits</h3><p>The solver uses a fixed 0.04-minute step. The playback selector changes how many solver steps run, not their size. A seed reproduces an unperturbed run; saved states also preserve the random generator. Manual interventions affect the trajectory. Rendering never consumes the solver's randomness. To prevent a hidden-tab runaway, paused/hidden browser time is not simulated. On a slow machine playback may fall behind; no larger numerical step is substituted.</p><p>Bounds: 14 concurrent processes, 140 µm growth cap per process, finite soma/fan radii, 2,400 recent one-minute measurement samples, and 500 recent log entries. Exports report the retained measurement window. These are prototype constraints, not biological constants.</p>
+<h3>Primary scientific references</h3>
+<p><a href="https://doi.org/10.1038/s41586-026-10755-6" target="_blank" rel="noopener">An intrinsic cytoskeletal oscillator establishes neuronal polarity. <em>Nature</em> (2026).</a> Basis for testing soma-driven contraction followed by selective wave delivery; not a universal rule for all neuron types or developmental stages.</p>
+<p><a href="https://doi.org/10.7554/eLife.12387" target="_blank" rel="noopener">Winans, Collins &amp; Meyer. Waves of actin and microtubule polymerization drive microtubule-based transport and neurite growth before single axon formation. <em>eLife</em> (2016).</a> Wave transport and transient widening motivate a reduced wave state.</p>
+<p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2712033/" target="_blank" rel="noopener">Stochastic Actin Polymerization and Steady Retrograde Flow Determine Growth Cone Advancement. <em>Biophysical Journal</em> (2009).</a> Local advancement is represented as a competition, not a scripted extension speed.</p>
+<p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5741660/" target="_blank" rel="noopener">Actin Waves Do Not Boost Neurite Outgrowth in the Early Stages of Neuron Maturation (2017).</a> A caution against equating wave arrival with guaranteed net growth; the prototype allows cycles without net extension.</p>
+<p>Software verification checks numerical invariants and interface behavior. It does not establish biological validity. No experimental image tracking, quantitative fitting, or held-out predictive test has been performed.</p>
+</dialog>
+<script>/* Whole-cell remodeling laboratory · independent research prototype.
+ * Units: nominal micrometres and minutes. Coefficients are exploratory.
+ * No rendering, network, DOM, or wall-clock dependency in this module.
+ */
+(function(root,factory){ const out=factory(); if(typeof module==='object'&&module.exports)module.exports=out; else root.CellEngine=out; })(typeof globalThis!=='undefined'?globalThis:this,function(){
+'use strict';
+const TAU=Math.PI*2, clamp=(x,a,b)=>Math.max(a,Math.min(b,x)), mix=(a,b,t)=>a+(b-a)*t;
+const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+const wrap=x=>Math.atan2(Math.sin(x),Math.cos(x));
+const DEFAULTS=Object.freeze({polymerization:1,contractility:1,adhesion:.72,stabilization:1,coupling:1,branching:1,waveSpeed:2.2,noise:1});
+const LIMITS={polymerization:[0,2],contractility:[0,2],adhesion:[0,1.5],stabilization:[0,2],coupling:[0,1],branching:[0,2],waveSpeed:[.5,4],noise:[0,1.5]};
+const FAN_DIRECTIONS=Array.from({length:48},(_,i)=>{const theta=i/48*TAU;return(.14+.86*Math.pow(Math.max(0,(Math.cos(theta)+.3)/1.3),.48))*(.68+.62*Math.sin(theta)*Math.sin(theta));});
+const FILO_KERNEL=Array.from({length:48},(_,i)=>Array.from({length:13},(_,j)=>.85*Math.exp(-Math.pow(wrap(i/48*TAU-(-2.05+j*4.1/12))/.25,2))));
+const PRESETS={
+ remodeling:{name:'Whole-cell remodeling',params:{...DEFAULTS}},
+ fragile:{name:'Weak structural support',params:{...DEFAULTS,stabilization:.12,contractility:1.15}},
+ persistent:{name:'Persistent outgrowth',params:{...DEFAULTS,polymerization:1.3,contractility:.48,stabilization:1.65,adhesion:1.05}},
+ uncoupled:{name:'Independent local activity',params:{...DEFAULTS,coupling:0}}
+};
+class RNG{
+ constructor(seed){this.state=seed>>>0;}
+ next(){let t=this.state+=0x6D2B79F5;this.state>>>=0;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296;}
+ signed(){return this.next()*2-1;}
+}
+function pathLength(nodes){let s=0;for(let i=1;i<nodes.length;i++)s+=distance(nodes[i-1],nodes[i]);return s;}
+function pathPoint(nodes,s){
+ if(!nodes.length)return{x:0,y:0,angle:0};
+ for(let i=1;i<nodes.length;i++){const a=nodes[i-1],b=nodes[i],d=distance(a,b);if(s<=d||i===nodes.length-1){const f=clamp(s/Math.max(d,1e-9),0,1);return{x:mix(a.x,b.x,f),y:mix(a.y,b.y,f),angle:Math.atan2(b.y-a.y,b.x-a.x),index:i,f};}s-=d;}
+ return{...nodes[0],angle:0,index:0,f:0};
+}
+function polygonArea(points){let a=0;for(let i=0;i<points.length;i++){const b=points[(i+1)%points.length],p=points[i];a+=p.x*b.y-b.x*p.y;}return Math.abs(a)/2;}
+class Simulation{
+ constructor(seed=2646,params={}){
+  this.version='1.0.0';this.seed=seed>>>0;this.rng=new RNG(this.seed);this.params={...DEFAULTS};this.setParams(params,false);
+  this.time=0;this.steps=0;this.dt=.04;this.nextId=1;this.nextWaveId=1;this.events=[];this.history=[];this.lastSample=-1;this.maxHistory=2400;
+  this.osc={u:-1.05,v:-.62,contraction:0,armed:true};this.soma={x:0,y:0,nx:0,ny:0,r:[],r0:[],a:[],h:[],eta:[]};
+  this.neurites=[];this.waves=[];this.pulses=[];this.stats={launched:0,delivered:0,born:0,pruned:0,extended:0,retracted:0};
+  const N=96;for(let i=0;i<N;i++){let th=i*TAU/N;let r=7.2+1.4*Math.cos(2*th+.8)+.45*Math.sin(3*th-1);this.soma.r.push(r);this.soma.r0.push(r);this.soma.a.push(.12+.08*this.rng.next());this.soma.h.push(.05);this.soma.eta.push(0);}
+  const angles=[-1.72,-.85,.99,2.29,3.22],lengths=[27,9,31,5,28];
+  for(let i=0;i<5;i++)this.addNeurite(null,angles[i]+.12*this.rng.signed(),lengths[i],0,true);
+  this.addNeurite(this.neurites[2],.85,9,16,true);
+  this.somaFilopodia=Array.from({length:22},(_,i)=>this.makeFilo(i/22*TAU,true));
+  this.initialMaterial=this.neurites.reduce((s,n)=>s+n.length,0);this.reserveCapacity=110;this.materialBudget=this.initialMaterial+this.reserveCapacity;this.resource=1;
+  this.event('start','Experiment initialized; nominal spatial and time scales.');this.sample();
+ }
+ setParams(p,log=true){for(const [k,v]of Object.entries(p)){if(!LIMITS[k]||!Number.isFinite(v))throw Error('Invalid parameter: '+k);const [a,b]=LIMITS[k];if(v<a||v>b)throw Error('Out-of-range parameter: '+k);this.params[k]=v;}if(log&&this.events)this.event('parameter','Parameters changed.',{params:{...this.params}});}
+ makeFilo(theta,soma=false){return{theta,length:this.rng.next()*(soma?.9:2.5),target:0,on:this.rng.next()<.4,age:0,bend:.2*this.rng.signed(),eta:0,base:soma?1:0,phase:this.rng.next()*TAU};}
+ somaAt(theta,f=1){const N=this.soma.r.length,a=((theta%TAU)+TAU)%TAU/TAU*N,i=Math.floor(a),r=mix(this.soma.r[i],this.soma.r[(i+1)%N],a-i)*f;return{x:this.soma.x+Math.cos(theta)*r,y:this.soma.y+Math.sin(theta)*r,angle:theta};}
+ getNeurite(id){return this.neurites.find(n=>n.id===id);}
+ baseOf(n){if(n.parent!==null){let p=this.getNeurite(n.parent);if(p)return pathPoint(p.nodes,Math.min(n.attach,pathLength(p.nodes)));}return this.somaAt(n.theta,.80);}
+ addNeurite(parent,theta,length=1,attach=0,initial=false){
+  if(this.neurites.length>=14)return null;
+  let b=parent?pathPoint(parent.nodes,attach):this.somaAt(theta,.80);let angle=parent?b.angle+theta:theta;
+  const n={id:this.nextId++,parent:parent?parent.id:null,attach,theta,heading:angle,turn:0,length,stable:initial?length*.56:0,mt:initial?.25+.15*this.rng.next():.05,actin:.14+.65*this.rng.next(),inhibitor:0,wave:0,burst:this.rng.next()<.4,burstAge:0,age:0,velocity:0,adh:.5,fan:[],fanEta:[],nodes:[],filopodia:[],depth:this.rng.signed()*.65,lastState:'',lastChange:-20,lowAge:0};
+  const count=Math.max(2,Math.ceil(length/1.4)+1),curve=this.rng.signed()*2;
+  for(let j=0;j<count;j++){const s=j/(count-1)*length,off=curve*Math.sin(s/Math.max(length,1)*Math.PI)*Math.sin(s/Math.max(length,1)*2.4+.5);const x=b.x+Math.cos(angle)*s-Math.sin(angle)*off,y=b.y+Math.sin(angle)*s+Math.cos(angle)*off;n.nodes.push({x,y,ax:x,ay:y,rest:j?length/(count-1):0});}
+  // Make material length equal the initial polyline arclength, not endpoint distance.
+  n.length=0;for(let j=1;j<n.nodes.length;j++){n.nodes[j].rest=distance(n.nodes[j-1],n.nodes[j]);n.length+=n.nodes[j].rest;}
+  n.stable=initial?n.length*.56:0;
+  for(let j=0;j<48;j++){n.fan.push(1.1+1.3*n.actin);n.fanEta.push(0);}
+  n.filopodia=Array.from({length:13},(_,i)=>this.makeFilo(-2.05+i*4.1/12));
+  n.cortexKernel=Array.from({length:96},(_,i)=>Math.exp(-Math.pow(wrap(i/96*TAU-n.theta)/.34,2)));n.waveKernel=Array.from({length:96},(_,i)=>Math.exp(-Math.pow(wrap(i/96*TAU-n.theta)/.45,2)));this.neurites.push(n);if(!initial){this.stats.born++;this.event('branch','A lateral protrusion stabilized into process N'+n.id+'.',{id:n.id,parent:n.parent});}
+  return n;
+ }
+ event(type,text,extra={}){this.events.unshift({t:this.time,type,text,...extra});if(this.events.length>500)this.events.length=500;}
+ pulse(x,y,amount=1){if(!Number.isFinite(x)||!Number.isFinite(y)||Math.abs(x)>10000||Math.abs(y)>10000)return;this.pulses.push({x,y,amount:clamp(amount,0,2),age:0});if(this.pulses.length>32)this.pulses.shift();this.event('pulse','Local protrusive pulse applied.');}
+ launchWave(id=null,manual=true){
+  if(!this.neurites.length)return;
+  let n=this.getNeurite(id);
+  if(!n){let pool=this.neurites.filter(v=>v.parent===null);let weights=pool.map(v=>.5+v.actin*.8+v.mt*.3);let target=this.rng.next()*weights.reduce((a,b)=>a+b,0);n=pool[pool.length-1];for(let i=0;i<pool.length;i++){target-=weights[i];if(target<=0){n=pool[i];break;}}}
+  this.waves.push({id:this.nextWaveId++,neurite:n.id,s:0,age:0,amplitude:1});this.stats.launched++;
+  if(manual)this.osc.contraction=Math.max(this.osc.contraction,.85);
+  this.event('wave','Somatic wave entered N'+n.id+'.',{id:n.id,manual});
+ }
+ step(dt=this.dt){
+  if(!Number.isFinite(dt)||dt<=0||dt>.08)throw Error('Timestep must be in (0, 0.08] model minutes.');
+  const p=this.params,rng=this.rng,soma=this.soma,N=soma.r.length;
+  this.time+=dt;this.steps++;
+  // Phenomenological relaxation oscillator, NOT an identified molecular circuit.
+  const o=this.osc,oldU=o.u,rate=.86;
+  o.u+=dt*rate*(oldU-oldU*oldU*oldU/3-o.v+.64);
+  o.v+=dt*rate*.085*(oldU+.7-.8*o.v);
+  const globalTarget=p.coupling*clamp((o.u-.1)/1.5,0,1);
+  o.contraction+=dt*.65*(globalTarget-o.contraction);
+  if(oldU<.6&&o.u>=.6&&p.coupling>0)this.launchWave(null,false);
+  const contraction=o.contraction*p.contractility;
+  const aliveW=[];for(const w of this.waves){const n=this.getNeurite(w.neurite);if(!n)continue;w.age+=dt;w.s+=dt*p.waveSpeed;
+   if(w.s>=n.length){n.wave=Math.min(1.8,n.wave+w.amplitude);this.stats.delivered++;this.event('arrival','Wave reached N'+n.id+'; local contractility relaxed.',{id:n.id});}else aliveW.push(w);
+  }this.waves=aliveW;
+  this.pulses.forEach(q=>q.age+=dt);this.pulses=this.pulses.filter(q=>q.age<15);
+  let prevA=soma.a.slice(),prevH=soma.h.slice(),prevR=soma.r.slice();let area=0;for(let i=0;i<N;i++)area+=prevR[i]*prevR[(i+1)%N]*Math.sin(TAU/N)/2;
+  const area0=170;let sx=0,sy=0;
+  for(let i=0;i<N;i++){
+   let theta=i*TAU/N,drive=.055,neural=0;const pt=this.somaAt(theta);
+   for(const n of this.neurites){if(n.parent!==null)continue;let g=n.cortexKernel[i];drive+=g*(.35*n.actin+.5*n.wave);neural+=g*(.6+1.8*n.actin);}
+   for(const w of this.waves){let n=this.getNeurite(w.neurite);if(n&&n.parent===null)drive+=n.waveKernel[i]*Math.exp(-w.s/6)*1.1;}
+   for(const q of this.pulses)drive+=q.amount*Math.exp(-Math.pow(distance(pt,q)/6,2))*Math.exp(-q.age/5);
+   soma.eta[i]+= -dt*.7*soma.eta[i]+Math.sqrt(dt)*.12*p.noise*rng.signed();
+   const lap=prevA[(i+1)%N]+prevA[(i+N-1)%N]-2*prevA[i];
+   soma.a[i]=clamp(prevA[i]+dt*(.55*p.polymerization*drive*(1-prevA[i])-.17*prevA[i]-.18*prevH[i]*prevA[i]+.65*lap+soma.eta[i]*.12),0,1.5);
+   soma.h[i]=clamp(prevH[i]+dt*(.045*prevA[i]-.035*prevH[i]),0,2);
+   const radLap=prevR[(i+1)%N]+prevR[(i+N-1)%N]-2*prevR[i];
+   const force=1.8*soma.a[i]*p.polymerization*(.4+.6*this.resource)+.28*neural-.72*contraction-.18*p.contractility-.22*(prevR[i]-soma.r0[i])+1.6*radLap+.12*(area0-area)/area0;
+   soma.r[i]=clamp(prevR[i]+dt*force/(1+.6*p.adhesion),4.2,15);
+   sx+=Math.cos(theta)*(soma.r[i]-soma.r0[i]);sy+=Math.sin(theta)*(soma.r[i]-soma.r0[i]);
+  }
+  soma.x+=dt*.025*(sx/N*1.1-soma.x);soma.y+=dt*.025*(sy/N*1.1-soma.y);soma.nx+=dt*.08*(soma.x-soma.nx);soma.ny+=dt*.08*(soma.y-soma.ny);
+  const candidates=[];let growing=0,releasing=0;
+  for(const n of this.neurites){
+   n.age+=dt;n.burstAge+=dt;n.wave*=Math.exp(-dt/10);
+   const tip=n.nodes[n.nodes.length-1];
+   const substrate=.58+.16*Math.sin(tip.x*.14+1)*Math.cos(tip.y*.12-.6);n.adh=clamp(p.adhesion*substrate,0,.97);
+   if(p.noise>0){let hazard=n.burst?1/(11+8*n.adh):.035*(.4+.6*this.resource);if(rng.next()<hazard*dt*p.noise){n.burst=!n.burst;n.burstAge=0;}}
+   let input=(n.burst?.9:.06)+n.wave*.95;
+   for(const q of this.pulses)input+=1.3*q.amount*Math.exp(-Math.pow(distance(tip,q)/9,2))*Math.exp(-q.age/5);
+   n.actin=clamp(n.actin+dt*(.3*p.polymerization*input*(1-n.actin)-(.085+.09*n.inhibitor)*n.actin),0,1.2);
+   n.inhibitor=clamp(n.inhibitor+dt*(.035*n.actin-.025*n.inhibitor),0,2);
+   n.mt=clamp(n.mt+dt*(.07*p.stabilization*n.actin*(.25+.75*n.adh)*(1-n.mt)-(.009+.018*(1-n.actin))*n.mt),0,1);
+   const stableRate=.075*p.stabilization*n.mt*n.actin;
+   n.stable=clamp(n.stable+dt*(stableRate*Math.max(0,n.length-n.stable)-.0025*(1-n.mt)*n.stable),0,n.length);
+   const relief=clamp(n.wave*.9,0,.95);
+   const forward=1.28*p.polymerization*n.actin*this.resource*(.35+.65*n.adh)+.14*n.mt*this.resource;
+   const backward=(.34*p.contractility*(1-.6*n.adh)+.60*contraction*(1-relief))*(1-.55*n.mt)+.075;
+   let velocity=forward-backward;
+   if(velocity<0){const protectedFraction=clamp((n.stable+1.2-n.length)/2,0,1);velocity*=1-.85*protectedFraction;}
+   if(n.length<1&&velocity<0)velocity*=clamp((n.length-.45)/.55,0,1);
+   if(n.length>140&&velocity>0)velocity=0; // Explicit performance / domain cap.
+   const delta=velocity*dt;
+   if(delta>0)growing+=delta;else releasing-=delta;
+   candidates.push({n,delta});
+  }
+  const used=this.neurites.reduce((s,n)=>s+n.length,0),available=Math.max(0,this.materialBudget-used)+releasing,alloc=growing>0?Math.min(1,available/growing):1;
+  const toPrune=[];
+  for(const {n,delta}of candidates){
+   const change=delta>0?delta*alloc:delta;n.velocity=change/dt;
+   if(change>0)this.stats.extended+=change;else this.stats.retracted-=change;
+   n.turn+=-dt*.12*n.turn+Math.sqrt(dt)*.07*p.noise*rng.signed();
+   const tail=n.nodes[n.nodes.length-1],pre=n.nodes[n.nodes.length-2];
+   const tangent=Math.atan2(tail.y-pre.y,tail.x-pre.x);
+   n.heading=wrap(n.heading+dt*(.32*wrap(tangent-n.heading)+n.turn*(1-.55*n.adh)));
+   this.changeLength(n,change);
+   n.stable=Math.min(n.stable,n.length);
+   this.relaxMechanics(n,dt);
+   this.updateFan(n,dt,contraction);
+   for(const f of n.filopodia)this.updateFilo(f,dt,n.actin,n.adh,contraction,false);
+   const state=n.velocity>.045?'extending':n.velocity<-.045?'retracting':'holding';
+   if(state!==n.lastState&&this.time-n.lastChange>9){n.lastState=state;n.lastChange=this.time;}
+   if(n.length<.85)n.lowAge+=dt;else n.lowAge=0;
+   if(n.parent!==null){const parent=this.getNeurite(n.parent);if(!parent||parent.length<n.attach+.2||n.lowAge>14)toPrune.push(n.id);}
+   // A branch can only appear after local activity AND structural support.
+   if(p.noise>0&&n.length>12&&n.mt>.24&&n.actin>.38&&this.neurites.length<14&&this.resource>.15){
+    const hazard=.012*p.branching*n.actin*n.adh;
+    if(rng.next()<hazard*dt*p.noise){const where=n.length*(.42+.34*rng.next());if(!this.neurites.some(c=>c.parent===n.id&&Math.abs(c.attach-where)<4))this.addNeurite(n,(rng.next()<.5?-1:1)*(.65+.45*rng.next()),.8,where);}
+   }
+  }
+  if(toPrune.length){let dead=new Set(toPrune);for(let k=0;k<15;k++)for(const n of this.neurites)if(dead.has(n.parent))dead.add(n.id);for(const n of this.neurites)if(dead.has(n.id)){this.stats.pruned++;this.event('withdrawal','Unsupported lateral process N'+n.id+' withdrew.',{id:n.id});}this.neurites=this.neurites.filter(n=>!dead.has(n.id));this.waves=this.waves.filter(w=>!dead.has(w.neurite));}
+  for(const f of this.somaFilopodia){const j=Math.floor(((f.theta%TAU)+TAU)%TAU/TAU*N);this.updateFilo(f,dt,soma.a[j],.5*p.adhesion,contraction,true);}
+  const nowUsed=this.neurites.reduce((s,n)=>s+n.length,0);this.resource=clamp((this.materialBudget-nowUsed)/this.reserveCapacity,0,1);
+  if(this.time-this.lastSample>=1-1e-9)this.sample();
+ }
+ changeLength(n,change){
+  if(Math.abs(change)<1e-12)return;
+  const nodes=n.nodes;
+  if(change>0){let tip=nodes[nodes.length-1];tip.x+=Math.cos(n.heading)*change;tip.y+=Math.sin(n.heading)*change;tip.rest+=change;n.length+=change;
+   if(tip.rest>1.8){let prev=nodes[nodes.length-2];const split={x:(prev.x+tip.x)/2,y:(prev.y+tip.y)/2,ax:(prev.x+tip.x)/2,ay:(prev.y+tip.y)/2,rest:tip.rest/2};tip.rest/=2;nodes.splice(nodes.length-1,0,split);}
+  }else{
+   let remain=Math.min(-change,Math.max(0,n.length-.45));n.length-=remain;
+   while(remain>1e-10&&nodes.length>=2){let tip=nodes[nodes.length-1],pre=nodes[nodes.length-2];if(remain>=tip.rest&&nodes.length>2){remain-=tip.rest;nodes.pop();}else{let take=Math.min(remain,Math.max(0,tip.rest)),d=distance(tip,pre),ratio=d>0?Math.max(0,1-take/d):0;tip.x=pre.x+(tip.x-pre.x)*ratio;tip.y=pre.y+(tip.y-pre.y)*ratio;tip.rest-=take;remain-=take;if(take<1e-10)break;}}
+  }
+ }
+ relaxMechanics(n,dt){
+  const nodes=n.nodes,b=this.baseOf(n);nodes[0].x=b.x;nodes[0].y=b.y;nodes[0].ax=b.x;nodes[0].ay=b.y;
+  const fx=new Float64Array(nodes.length),fy=new Float64Array(nodes.length);
+  for(let i=1;i<nodes.length;i++){let a=nodes[i-1],b=nodes[i],dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||1e-9,k=2.4*(d-b.rest)/d;fx[i]-=k*dx;fy[i]-=k*dy;if(i>1){fx[i-1]+=k*dx;fy[i-1]+=k*dy;}}
+  for(let i=1;i<nodes.length;i++){let q=nodes[i],ageWeight=1-i/(nodes.length-1),adh=n.adh*(.2+.8*ageWeight);fx[i]+=(q.ax-q.x)*adh*.45;fy[i]+=(q.ay-q.y)*adh*.45;
+   if(i<nodes.length-1){fx[i]+=.11*(nodes[i-1].x+nodes[i+1].x-2*q.x);fy[i]+=.11*(nodes[i-1].y+nodes[i+1].y-2*q.y);}
+   const cap=Math.max(1,Math.hypot(fx[i],fy[i])/4);q.x+=dt*fx[i]/cap;q.y+=dt*fy[i]/cap;
+   const strain=Math.hypot(q.x-q.ax,q.y-q.ay);if(strain>1.1){q.ax+=dt*.18*(q.x-q.ax);q.ay+=dt*.18*(q.y-q.ay);}
+  }
+ }
+ updateFan(n,dt,contraction){
+  const old=n.fan.slice(),N=old.length;
+  for(let i=0;i<N;i++){const direction=FAN_DIRECTIONS[i];let local=0;
+   for(let j=0;j<n.filopodia.length;j++)if(n.filopodia[j].on)local+=FILO_KERNEL[i][j];
+   n.fanEta[i]+= -dt*.6*n.fanEta[i]+Math.sqrt(dt)*.16*this.params.noise*this.rng.signed();
+   const target=(1.05+4.1*n.actin+1.2*n.wave)*direction+1.65*local-.6*contraction*(1-.75*n.mt);
+   const lap=old[(i+1)%N]+old[(i+N-1)%N]-2*old[i];
+   n.fan[i]=clamp(old[i]+dt*(.42*(target-old[i])+.8*lap+n.fanEta[i]),.38,8);
+  }
+ }
+ updateFilo(f,dt,actin,adh,contraction,soma){
+  const p=this.params;f.age+=dt;
+  if(p.noise>0&&this.rng.next()<dt*(f.on?.09:.045+.06*actin)*p.noise){f.on=!f.on;f.age=0;f.target=f.on?(soma?.4:1)+(soma?2.1:4.9)*this.rng.next():0;}
+  let target=f.on?f.target*(.25+.75*actin)*p.polymerization/(1+.35*contraction):0;
+  f.length=clamp(f.length+dt*.5*(target-f.length),0,8);
+  f.eta+=-dt*.5*f.eta+Math.sqrt(dt)*.12*p.noise*this.rng.signed();f.bend+=dt*(.3*(f.eta-f.bend));
+ }
+ somaPoints(){return this.soma.r.map((r,i)=>({x:this.soma.x+Math.cos(i/this.soma.r.length*TAU)*r,y:this.soma.y+Math.sin(i/this.soma.r.length*TAU)*r}));}
+ metrics(){let length=0,geometric=0,stable=0,active=0,withdraw=0;for(const n of this.neurites){length+=n.length;geometric+=pathLength(n.nodes);stable+=n.stable;if(n.velocity>.045)active++;if(n.velocity<-.045)withdraw++;}return{time:this.time,material:length,geometric,stable,somaArea:polygonArea(this.somaPoints()),resource:this.resource,available:this.materialBudget-length,extending:active,retracting:withdraw,processes:this.neurites.length,actin:this.soma.a.reduce((s,v)=>s+v,0)/this.soma.a.length,contraction:this.osc.contraction,strain:100*(geometric-length)/Math.max(length,1e-9)};}
+ sample(){this.lastSample=this.time;const m=this.metrics();this.history.push({...m,lengths:this.neurites.map(n=>({id:n.id,length:n.length,stable:n.stable,velocity:n.velocity}))});if(this.history.length>this.maxHistory)this.history.shift();}
+ advance(minutes,dt=this.dt){if(!Number.isFinite(minutes)||minutes<0||minutes>10000)throw Error('Invalid duration.');const count=Math.floor((minutes+1e-9)/dt);for(let i=0;i<count;i++)this.step(dt);return this;}
+ exportState(){return JSON.parse(JSON.stringify({schema:'whole-cell-remodeling/v1',version:this.version,seed:this.seed,params:this.params,time:this.time,steps:this.steps,dt:this.dt,nextId:this.nextId,nextWaveId:this.nextWaveId,rngState:this.rng.state,events:this.events,history:this.history,lastSample:this.lastSample,maxHistory:this.maxHistory,osc:this.osc,soma:this.soma,somaFilopodia:this.somaFilopodia,neurites:this.neurites,waves:this.waves,pulses:this.pulses,stats:this.stats,initialMaterial:this.initialMaterial,reserveCapacity:this.reserveCapacity,materialBudget:this.materialBudget,resource:this.resource}));}
+ static fromState(data){
+  if(!data||data.schema!=='whole-cell-remodeling/v1')throw Error('Not a compatible experiment file.');
+  if(!Array.isArray(data.neurites)||data.neurites.length<1||data.neurites.length>14||!data.soma||data.soma.r?.length!==96)throw Error('Invalid morphology.');
+  const check=(v,depth=0)=>{if(depth>24)throw Error('Invalid state nesting.');if(typeof v==='number'&&(!Number.isFinite(v)||Math.abs(v)>1e12))throw Error('Non-finite or excessive state value.');if(Array.isArray(v)){if(v.length>5000)throw Error('State array too large.');v.forEach(x=>check(x,depth+1));}else if(v&&typeof v==='object'){for(const[k,x]of Object.entries(v)){if(k==='__proto__'||k==='constructor'||k==='prototype')throw Error('Invalid state key.');check(x,depth+1);}}};check(data);
+  const s=new Simulation(data.seed,data.params);const state=JSON.parse(JSON.stringify(data));
+  const keys=['version','seed','params','time','steps','dt','nextId','nextWaveId','events','history','lastSample','maxHistory','osc','soma','somaFilopodia','neurites','waves','pulses','stats','initialMaterial','reserveCapacity','materialBudget','resource'];
+  for(const k of keys){if(state[k]===undefined)throw Error('Missing state field: '+k);s[k]=state[k];}s.rng.state=state.rngState>>>0;
+  const errors=s.validate();if(errors.length)throw Error('Invalid experiment: '+errors.slice(0,3).join('; '));return s;
+ }
+ validate(){const errors=[];
+  if(!(this.dt>0&&this.dt<=.08)||this.time<0||!Number.isInteger(this.steps)||this.steps<0)errors.push('Invalid clock');
+  if(!(this.reserveCapacity>0)||!(this.materialBudget>0)||this.maxHistory<1||this.maxHistory>2400)errors.push('Invalid resource or history limit');
+  if(!Array.isArray(this.events)||!Array.isArray(this.history)||!Array.isArray(this.waves)||!Array.isArray(this.pulses)||!Array.isArray(this.somaFilopodia)||this.somaFilopodia.length!==22)errors.push('Invalid state collection');
+  if(!this.neurites.some(n=>n.parent===null))errors.push('No primary process');
+  const m=this.metrics();for(const [k,v]of Object.entries(m))if(!Number.isFinite(v))errors.push('Nonfinite '+k);if(m.material>this.materialBudget+1e-6)errors.push('Material budget exceeded');if(this.resource<0||this.resource>1)errors.push('Resource out of bounds');const ids=new Set(this.neurites.map(n=>n.id));if(ids.size!==this.neurites.length)errors.push('Duplicate process ID');for(const n of this.neurites){if(n.length<.449||n.stable<0||n.stable>n.length+1e-6)errors.push('Length/support invalid N'+n.id);if(n.parent!==null&&!ids.has(n.parent))errors.push('Orphan process');if(!Array.isArray(n.nodes)||n.nodes.length<2||n.nodes.length>300)errors.push('Invalid node count');if(n.fan?.length!==48||n.fanEta?.length!==48||n.filopodia?.length!==13||n.cortexKernel?.length!==96||n.waveKernel?.length!==96)errors.push('Invalid fan or cortical kernel');if(!(n.actin>=0&&n.actin<=1.2)||!(n.mt>=0&&n.mt<=1))errors.push('Invalid activity/support');const ancestry=new Set([n.id]);let parent=n.parent;while(parent!==null&&parent!==undefined){if(ancestry.has(parent)){errors.push('Cyclic process graph');break;}ancestry.add(parent);parent=this.getNeurite(parent)?.parent;}for(const q of n.nodes)for(const k of ['x','y','ax','ay','rest'])if(!Number.isFinite(q[k]))errors.push('Invalid node');const rests=n.nodes.reduce((a,q)=>a+q.rest,0);if(Math.abs(rests-n.length)>1e-5)errors.push('Rest-length mismatch '+n.id);}for(const k of ['r','r0','a','h','eta'])if(this.soma[k]?.length!==96||!this.soma[k].every(Number.isFinite))errors.push('Invalid soma field '+k);return errors;}
+}
+return{Simulation,RNG,DEFAULTS,LIMITS,PRESETS,clamp,mix,distance,wrap,pathPoint,pathLength,polygonArea,TAU};
+});
+</script>
+<script>/* Synthetic observation model. Rendering does not mutate numerical state. */
+(function(){'use strict';
+const {clamp,mix,wrap,TAU,pathPoint,pathLength}=CellEngine;
+const FRAG=`precision highp float;
+uniform sampler2D uMem; uniform sampler2D uStructure; uniform sampler2D uActin;
+uniform vec2 uRes; uniform vec2 uNucleus; uniform vec2 uOffset; uniform float uScale; uniform float uTime;
+uniform float uExposure; uniform float uGreen; uniform float uPink; uniform int uMode;
+varying vec2 vUV;
+float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453123);}
+float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),f.x),f.y);}
+void main(){vec2 uv=vec2(vUV.x,1.-vUV.y),px=1./uRes;
+ float m=texture2D(uMem,uv).a;
+ float ml=texture2D(uMem,uv+vec2(px.x,0)).a,mr=texture2D(uMem,uv-vec2(px.x,0)).a;
+ float mu=texture2D(uMem,uv+vec2(0,px.y)).a,md=texture2D(uMem,uv-vec2(0,px.y)).a;
+ float edge=clamp(abs(ml-mr)+abs(mu-md),0.,1.);
+ float g=texture2D(uStructure,uv).a,a=texture2D(uActin,uv).a;
+ float gb=0.,ab=0.;
+ for(int i=-1;i<=1;i++){for(int j=-1;j<=1;j++){vec2 d=vec2(float(i),float(j))*px*1.6;gb+=texture2D(uStructure,uv+d).a/9.;ab+=texture2D(uActin,uv+d).a/9.;}}
+ vec2 world=(uv*uRes-uOffset)/uScale;
+ float grain=.48+.37*noise(world*4.8)+.23*noise(world*17.2);
+ float strands=.5+.5*noise(world*.8+vec2(.03*uTime,0.));
+ vec2 nc=(uv*uRes-uNucleus)/uScale;
+ float nuc=1.-.60*exp(-dot(nc/vec2(2.6,3.4),nc/vec2(2.6,3.4))*1.3);
+ vec3 col=vec3(.008,.013,.012);
+ if(uMode==0){
+  float green=(.085*m*strands*nuc+.65*g+.28*gb+.13*edge)*grain*uGreen;
+  float pink=(.025*m*nuc+.78*a+.38*ab+.13*edge)*grain*uPink;
+  col+=vec3(.12*green+.91*pink,.90*green+.025*pink,.24*green+.77*pink)*uExposure;
+  col+=vec3(.008,.012,.009)*noise(gl_FragCoord.xy*.7);
+ }else if(uMode==1){float surface=.12+.33*noise(world*.26)+.07*noise(world*2.);col+=m*vec3(.55,.67,.56)*surface*nuc+edge*vec3(.58,.73,.65)*.7;col+=g*.10;}
+ else{col+=m*vec3(.12,.18,.20)*nuc+g*vec3(.24,.58,.55)*.6+edge*vec3(.46,.58,.51)*.65;}
+ float vign=1.-.18*pow(length((uv-.5)*1.25),2.);gl_FragColor=vec4(col*vign,1.);
+}`;
+const VERT=`attribute vec2 aPos; varying vec2 vUV; void main(){vUV=(aPos+1.)*.5;gl_Position=vec4(aPos,0.,1.);}`;
+function makeCanvas(){let c=document.createElement('canvas');return c;}
+function smoothPath(ctx,points,close=true){
+ if(points.length<2)return;ctx.beginPath();
+ if(close){let last=points[points.length-1],first=points[0];ctx.moveTo((last.x+first.x)/2,(last.y+first.y)/2);for(let i=0;i<points.length;i++){const p=points[i],q=points[(i+1)%points.length];ctx.quadraticCurveTo(p.x,p.y,(p.x+q.x)/2,(p.y+q.y)/2);}ctx.closePath();}
+ else{ctx.moveTo(points[0].x,points[0].y);for(let i=1;i<points.length-1;i++){const p=points[i],q=points[i+1];ctx.quadraticCurveTo(p.x,p.y,(p.x+q.x)/2,(p.y+q.y)/2);}let last=points[points.length-1];ctx.lineTo(last.x,last.y);}
+}
+class Renderer{
+ constructor(canvas,overlay){
+  this.canvas=canvas;this.overlay=overlay;this.oc=overlay.getContext('2d');this.layers=[makeCanvas(),makeCanvas(),makeCanvas()];this.contexts=this.layers.map(c=>c.getContext('2d'));
+  this.mode=0;this.showGreen=true;this.showPink=true;this.labels=false;this.showTrails=false;this.exposure=1.7;this.zoom=1;this.pan={x:0,y:0};this.selected=1;this.pixelRatio=1;this.width=0;this.height=0;this.scale=1;this.backend='Canvas 2D';this.rasterLayers=[makeCanvas(),makeCanvas(),makeCanvas()];this.rasterContexts=this.rasterLayers.map(c=>c.getContext('2d',{willReadFrequently:true}));this.rasterOut=makeCanvas();this.rasterCtx=this.rasterOut.getContext('2d');
+  try{this.gl=canvas.getContext('webgl',{alpha:false,antialias:false,preserveDrawingBuffer:true,premultipliedAlpha:false});if(this.gl)this.initGL();}catch(e){console.warn('WebGL unavailable; using raster fallback',e);this.gl=null;const replacement=canvas.cloneNode(false);canvas.replaceWith(replacement);this.canvas=replacement;canvas=replacement;}
+  if(!this.gl)this.ctx=canvas.getContext('2d');this.resize();
+ }
+ initGL(){let gl=this.gl;function shader(kind,source){let s=gl.createShader(kind);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;}
+  let program=gl.createProgram();gl.attachShader(program,shader(gl.VERTEX_SHADER,VERT));gl.attachShader(program,shader(gl.FRAGMENT_SHADER,FRAG));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));this.program=program;gl.useProgram(program);
+  let b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);const loc=gl.getAttribLocation(program,'aPos');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+  this.uniforms={};for(const name of ['uRes','uNucleus','uOffset','uScale','uTime','uExposure','uGreen','uPink','uMode'])this.uniforms[name]=gl.getUniformLocation(program,name);
+  this.textures=this.layers.map((_,i)=>{let t=gl.createTexture();gl.activeTexture(gl.TEXTURE0+i);gl.bindTexture(gl.TEXTURE_2D,t);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.uniform1i(gl.getUniformLocation(program,['uMem','uStructure','uActin'][i]),i);return t;});this.backend='WebGL + raster morphology';
+ }
+ resize(){const rect=this.canvas.parentElement.getBoundingClientRect();this.pixelRatio=Math.min(window.devicePixelRatio||1,1.5);const w=Math.max(100,Math.round(rect.width*this.pixelRatio)),h=Math.max(100,Math.round(rect.height*this.pixelRatio));if(w===this.width&&h===this.height)return;
+  this.width=w;this.height=h;this.canvas.width=w;this.canvas.height=h;this.overlay.width=w;this.overlay.height=h;for(const l of this.layers){l.width=w;l.height=h;}
+ }
+ setup(){this.scale=Math.min(this.width/107,this.height/87)*this.zoom;this.offset={x:this.width*.49+this.pan.x*this.pixelRatio,y:this.height*.50+this.pan.y*this.pixelRatio};
+  for(const c of this.contexts){c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,this.width,this.height);c.setTransform(this.scale,0,0,this.scale,this.offset.x,this.offset.y);c.lineCap='round';c.lineJoin='round';c.fillStyle='white';c.strokeStyle='white';c.globalAlpha=1;c.globalCompositeOperation='source-over';}
+ }
+ screenToWorld(x,y){return{x:(x*this.pixelRatio-this.offset.x)/this.scale,y:(y*this.pixelRatio-this.offset.y)/this.scale};}
+ worldToScreen(p){return{x:p.x*this.scale+this.offset.x,y:p.y*this.scale+this.offset.y};}
+ fit(sim){let xmax=35,ymax=32;for(const n of sim.neurites)for(const p of n.nodes){xmax=Math.max(xmax,Math.abs(p.x)+10);ymax=Math.max(ymax,Math.abs(p.y)+10);}this.zoom=Math.min(this.width/(2*xmax),this.height/(2*ymax))/Math.min(this.width/107,this.height/87);this.zoom=clamp(this.zoom,.25,3);this.pan={x:0,y:0};}
+ radius(n,s,sim){let base=n.parent===null?2.0+3.6*n.actin:.65+.8*n.actin,rad=.36+.48*n.mt+(base-.5)*Math.exp(-s/5.7);for(const w of sim.waves)if(w.neurite===n.id)rad+=1.25*Math.exp(-Math.pow((s-w.s)/2.4,2));return rad;}
+ ribbon(n,sim){let left=[],right=[],s=0;for(let i=0;i<n.nodes.length;i++){const q=n.nodes[i];if(i)s+=Math.hypot(q.x-n.nodes[i-1].x,q.y-n.nodes[i-1].y);const prev=n.nodes[Math.max(0,i-1)],next=n.nodes[Math.min(n.nodes.length-1,i+1)];let th=Math.atan2(next.y-prev.y,next.x-prev.x),r=this.radius(n,s,sim);left.push({x:q.x-Math.sin(th)*r,y:q.y+Math.cos(th)*r});right.push({x:q.x+Math.sin(th)*r,y:q.y-Math.cos(th)*r});}return left.concat(right.reverse());}
+ fanPoints(n){let tip=n.nodes[n.nodes.length-1],heading=n.heading;return n.fan.map((r,i)=>{let th=heading+i/n.fan.length*TAU;return{x:tip.x+Math.cos(th)*r,y:tip.y+Math.sin(th)*r};});}
+ drawFilo(f,center,heading,baseRadius,mem,act,intensity=1){if(f.length<.06)return;let th=heading+f.theta,dx=Math.cos(th),dy=Math.sin(th),a={x:center.x+dx*baseRadius*.88,y:center.y+dy*baseRadius*.88},b={x:center.x+dx*(baseRadius+f.length),y:center.y+dy*(baseRadius+f.length)},cx=(a.x+b.x)/2-dy*f.bend,cy=(a.y+b.y)/2+dx*f.bend;
+  for(const c of [mem,act]){c.globalAlpha=c===mem?1:.5*intensity;c.lineWidth=c===mem?.15:.095;c.beginPath();c.moveTo(a.x,a.y);c.quadraticCurveTo(cx,cy,b.x,b.y);c.stroke();}mem.globalAlpha=act.globalAlpha=1;
+ }
+ drawMorphology(sim){const [mem,structure,act]=this.contexts,soma=sim.soma;
+  smoothPath(mem,sim.somaPoints());mem.fill();
+  // The mask is a union: soma, flared shaft ribbons, fans and filopodia.
+  for(const n of sim.neurites){smoothPath(mem,this.ribbon(n,sim));mem.fill();smoothPath(mem,this.fanPoints(n));mem.fill();}
+  // Diffuse soma cortex, modulated by the numerical cortical activity.
+  for(let i=0;i<soma.r.length;i++){let th=i/soma.r.length*TAU,p=sim.somaAt(th),q=sim.somaAt(th+.075),a=soma.a[i];let visible=1;for(const n of sim.neurites)if(n.parent===null)visible*=1-Math.exp(-Math.pow(wrap(th-n.theta)/.35,2));act.globalAlpha=clamp((.15+a*.9)*visible,0,1);act.lineWidth=.26+.3*a;act.beginPath();act.moveTo(p.x,p.y);act.lineTo(q.x,q.y);act.stroke();}
+  act.globalAlpha=1;
+  // Structural bundles connect the soma to each shaft and fan; these are an
+  // observation texture, not individually resolved microtubules.
+  for(const n of sim.neurites){let cumulative=0;
+   for(let fiber=0;fiber<4;fiber++){let points=[];if(n.parent===null)points.push({x:soma.x+Math.cos(n.theta+1)*2,y:soma.y+Math.sin(n.theta+1)*2});
+    for(let j=0;j<n.nodes.length;j++){let q=n.nodes[j],prev=n.nodes[Math.max(j-1,0)],next=n.nodes[Math.min(j+1,n.nodes.length-1)],th=Math.atan2(next.y-prev.y,next.x-prev.x),off=(fiber-1.5)*.22+Math.sin(j*.47+fiber*1.8)*.10;points.push({x:q.x-Math.sin(th)*off,y:q.y+Math.cos(th)*off});}
+    structure.globalAlpha=.20+.47*n.mt;structure.lineWidth=.11+.06*(fiber===1?1:0);smoothPath(structure,points,false);structure.stroke();
+   }
+   // Broad proximal sheet with faint stressed fiber paths.
+   const root=n.nodes[0],probe=pathPoint(n.nodes,Math.min(6,n.length)),th=n.parent===null?n.theta:probe.angle;
+   for(let k=-2;k<=2;k++){const normal={x:-Math.sin(th),y:Math.cos(th)},spread=(2.2+2*n.actin)*k/2;
+    structure.globalAlpha=.08+.10*n.mt;structure.lineWidth=.10;structure.beginPath();structure.moveTo(root.x+normal.x*spread,root.y+normal.y*spread);structure.quadraticCurveTo(root.x+Math.cos(th)*3+normal.x*spread*.2,root.y+Math.sin(th)*3+normal.y*spread*.2,probe.x,probe.y);structure.stroke();
+   }
+   const tip=n.nodes[n.nodes.length-1],fan=this.fanPoints(n);
+   act.globalAlpha=.13+.47*n.actin;act.lineWidth=.16;smoothPath(act,fan);act.stroke();
+   for(let i=0;i<fan.length;i+=2){const p=fan[i],angle=n.heading+i/fan.length*TAU;
+    act.globalAlpha=(.04+.20*n.actin)*(.65+.35*Math.sin(i*2.7+n.id));act.lineWidth=.08+.045*n.actin;
+    act.beginPath();act.moveTo(tip.x-Math.cos(n.heading)*.6,tip.y-Math.sin(n.heading)*.6);act.quadraticCurveTo((tip.x+p.x)/2+Math.sin(angle)*.2,(tip.y+p.y)/2-Math.cos(angle)*.2,p.x,p.y);act.stroke();
+   }
+   for(const f of n.filopodia){const at=((f.theta%TAU)+TAU)%TAU/TAU*n.fan.length,index=Math.floor(at),rad=mix(n.fan[index],n.fan[(index+1)%n.fan.length],at-index);this.drawFilo(f,tip,n.heading,rad,mem,act,.7+.6*n.actin);}
+   // Actin-rich traveling swelling, located at the actual propagated state.
+   for(const w of sim.waves)if(w.neurite===n.id){const c=pathPoint(n.nodes,w.s);act.save();act.translate(c.x,c.y);act.rotate(c.angle);act.globalAlpha=.65;act.lineWidth=.18;act.beginPath();act.ellipse(0,0,1.8,1.2+.4*n.actin,0,0,TAU);act.stroke();for(let k=0;k<9;k++){let th=k/9*TAU;act.globalAlpha=.30;act.beginPath();act.moveTo(Math.cos(th)*.6,Math.sin(th)*.5);act.lineTo(Math.cos(th)*2.3,Math.sin(th)*1.6);act.stroke();}act.restore();}
+  }
+  for(const f of sim.somaFilopodia){const pt=sim.somaAt(f.theta),rad=Math.hypot(pt.x-soma.x,pt.y-soma.y);this.drawFilo(f,soma,0,rad,mem,act,.7);}
+  // Sparse puncta in the soma: synthetic texture, explicitly not organelles.
+  for(let i=0;i<39;i++){let th=i*2.399963,r=2+((i*17)%29)/29*4.1;const sx=soma.x+Math.cos(th)*r,sy=soma.y+Math.sin(th)*r;
+   act.globalAlpha=.08+.19*((i*7)%11)/11;act.beginPath();act.ellipse(sx,sy,.14+.07*(i%3),.22+.06*(i%4),th,0,TAU);act.fill();
+  }
+  // Clip fluorescence to the same continuous membrane union.
+  for(const c of [act,structure]){c.setTransform(1,0,0,1,0,0);c.globalAlpha=1;c.globalCompositeOperation='destination-in';c.drawImage(this.layers[0],0,0);c.globalCompositeOperation='source-over';}
+ }
+ render(sim){this.resize();this.setup();this.drawMorphology(sim);
+  if(this.gl){let gl=this.gl;gl.viewport(0,0,this.width,this.height);gl.useProgram(this.program);for(let i=0;i<3;i++){gl.activeTexture(gl.TEXTURE0+i);gl.bindTexture(gl.TEXTURE_2D,this.textures[i]);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,this.layers[i]);}
+   const u=this.uniforms,n=this.worldToScreen({x:sim.soma.nx,y:sim.soma.ny});gl.uniform2f(u.uRes,this.width,this.height);gl.uniform2f(u.uNucleus,n.x,n.y);gl.uniform2f(u.uOffset,this.offset.x,this.offset.y);gl.uniform1f(u.uScale,this.scale);gl.uniform1f(u.uTime,sim.time);gl.uniform1f(u.uExposure,this.exposure);gl.uniform1f(u.uGreen,this.showGreen?1:0);gl.uniform1f(u.uPink,this.showPink?1:0);gl.uniform1i(u.uMode,this.mode);gl.drawArrays(gl.TRIANGLES,0,6);
+  }else this.renderFallback(sim);
+  this.drawOverlay(sim);
+ }
+ renderFallback(sim){
+  // Software equivalent of the synthetic observation shader. All platforms
+  // retain the same state-driven surface, optical grain, and unified edge.
+  const w=Math.min(this.width,960),h=Math.round(this.height*w/this.width),factor=w/this.width;
+  if(this.rasterOut.width!==w||this.rasterOut.height!==h){this.rasterOut.width=w;this.rasterOut.height=h;for(const c of this.rasterLayers){c.width=w;c.height=h;}this.rasterImage=this.rasterCtx.createImageData(w,h);this.grain=new Float32Array(w*h);for(let i=0;i<w*h;i++){let x=i%w,y=Math.floor(i/w),v=Math.sin(x*12.9898+y*78.233)*43758.5453;this.grain[i]=v-Math.floor(v);}}
+  for(let i=0;i<3;i++){const c=this.rasterContexts[i];c.clearRect(0,0,w,h);c.drawImage(this.layers[i],0,0,w,h);}
+  const M=this.rasterContexts[0].getImageData(0,0,w,h).data,G=this.rasterContexts[1].getImageData(0,0,w,h).data,A=this.rasterContexts[2].getImageData(0,0,w,h).data,out=this.rasterImage.data;
+  const sw=this.scale*factor,offx=this.offset.x*factor,offy=this.offset.y*factor,nucx=sim.soma.nx,nucy=sim.soma.ny;
+  for(let y=0;y<h;y++){for(let x=0;x<w;x++){const k=y*w+x,i=k*4,alpha=i+3;let m=M[alpha]/255,g=G[alpha]/255,a=A[alpha]/255;
+   let left=x?alpha-4:alpha,right=x<w-1?alpha+4:alpha,up=y?alpha-w*4:alpha,down=y<h-1?alpha+w*4:alpha;
+   const edge=Math.min(1,(Math.abs(M[left]-M[right])+Math.abs(M[up]-M[down]))/255),gb=(g*2+(G[left]+G[right]+G[up]+G[down])/255)/6,ab=(a*2+(A[left]+A[right]+A[up]+A[down])/255)/6;
+   let r=.008,gr=.013,b=.012;
+   if(m>0||edge>0||ab>0||gb>0){
+    const wx=(x-offx)/sw,wy=(y-offy)/sw,dx=(wx-nucx)/2.6,dy=(wy-nucy)/3.4,nuc=1-.6*Math.exp(-(dx*dx+dy*dy)*1.3),grain=.43+.70*this.grain[k];
+    const smooth=.55+.45*Math.sin(wx*1.7+Math.sin(wy*2.2))*Math.sin(wy*.84+wx*.4);
+    if(this.mode===0){let green=(.13*m*smooth*nuc+.68*g+.32*gb+.21*edge)*grain*(this.showGreen?1:0),pink=(.032*m*nuc+.82*a+.4*ab+.17*edge)*grain*(this.showPink?1:0);
+     r+=(.12*green+.91*pink)*this.exposure;gr+=(.90*green+.025*pink)*this.exposure;b+=(.24*green+.77*pink)*this.exposure;
+    }else if(this.mode===1){let v=m*(.16+.30*smooth+.06*grain)*nuc;r+=v*.55+edge*.58*.7;gr+=v*.67+edge*.73*.7;b+=v*.56+edge*.65*.7;}
+    else{r+=m*.12*nuc+g*.24*.6+edge*.46*.65;gr+=m*.18*nuc+g*.58*.6+edge*.58*.65;b+=m*.20*nuc+g*.55*.6+edge*.51*.65;}
+   }
+   out[i]=Math.min(255,r*255);out[i+1]=Math.min(255,gr*255);out[i+2]=Math.min(255,b*255);out[i+3]=255;
+  }}
+  this.rasterCtx.putImageData(this.rasterImage,0,0);this.ctx.drawImage(this.rasterOut,0,0,this.width,this.height);
+ }
+
+ drawOverlay(sim){let c=this.oc,pr=this.pixelRatio; c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,this.width,this.height);
+  const label=(text,x,y,color='#b6c1b5',size=10)=>{c.fillStyle=color;c.font=`${size*pr}px ui-monospace, SFMono-Regular, Consolas, monospace`;c.fillText(text,x,y);};
+  if(this.mode===2){
+   for(const n of sim.neurites){for(let i=0;i<n.nodes.length;i++){const p=this.worldToScreen(n.nodes[i]);c.fillStyle=i===0?'#f0cf84':'#9bbcb4';c.beginPath();c.arc(p.x,p.y,1.3*pr,0,TAU);c.fill();if(i%4===0){const a=this.worldToScreen({x:n.nodes[i].ax,y:n.nodes[i].ay});c.strokeStyle='#60776d';c.lineWidth=pr*.6;c.beginPath();c.moveTo(a.x-2*pr,a.y);c.lineTo(a.x+2*pr,a.y);c.moveTo(a.x,a.y-2*pr);c.lineTo(a.x,a.y+2*pr);c.stroke();}}
+    const tip=n.nodes[n.nodes.length-1],p=this.worldToScreen(tip),v=n.velocity*16*this.scale;let dx=Math.cos(n.heading)*v,dy=Math.sin(n.heading)*v;
+    c.strokeStyle=n.velocity>=0?'#b1dfad':'#f1a2b7';c.lineWidth=1.2*pr;c.beginPath();c.moveTo(p.x,p.y);c.lineTo(p.x+dx,p.y+dy);c.stroke();
+   }
+   label('NODES / SUBSTRATE ANCHORS / TIP VELOCITY',20*pr,this.height-52*pr,'#8fa99c',9);
+  }
+  if(this.labels)for(const n of sim.neurites){const tip=this.worldToScreen(n.nodes[n.nodes.length-1]);label('N'+n.id,tip.x+8*pr,tip.y-8*pr,n.id===this.selected?'#f0d7a0':'#a8b2a8');}
+  for(const q of sim.pulses){const pt=this.worldToScreen(q);c.strokeStyle=`rgba(226,209,162,${Math.max(0,.65-q.age/25)})`;c.lineWidth=pr;c.setLineDash([3*pr,4*pr]);c.beginPath();c.arc(pt.x,pt.y,(4+q.age*.2)*this.scale,0,TAU);c.stroke();c.setLineDash([]);}
+  if(this.showTrails){for(const n of sim.neurites){let p=this.worldToScreen(n.nodes[0]);c.fillStyle='#e3d7b5';c.fillRect(p.x-1*pr,p.y-1*pr,2*pr,2*pr);}}
+  const bar=10*this.scale,x=this.width-24*pr-bar,y=this.height-23*pr;c.strokeStyle='#c6ccc2';c.lineWidth=2*pr;c.beginPath();c.moveTo(x,y);c.lineTo(x+bar,y);c.stroke();label('10 µm',x,y-8*pr,'#c6ccc2',10);
+  label('SYNTHETIC / '+['DUAL CHANNEL','MEMBRANE SURFACE','MECHANICAL STATE'][this.mode],18*pr,24*pr,'#87948a',9);
+  const seconds=Math.round(sim.time*60),h=Math.floor(seconds/3600),m=Math.floor(seconds%3600/60),s=seconds%60;label(`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}  model time`,18*pr,43*pr,'#c0cbbc',12);
+  if(this.mode===0){label('simulated scaffold',18*pr,this.height-37*pr,'#81bd89',9);label('simulated actin activity',18*pr,this.height-22*pr,'#bf78ae',9);}
+ }
+ snapshot(){const c=makeCanvas();c.width=this.width;c.height=this.height;const ctx=c.getContext('2d');ctx.drawImage(this.canvas,0,0);ctx.drawImage(this.overlay,0,0);return c.toDataURL('image/png');}
+}
+window.CellRenderer=Renderer;
+})();
+</script>
+<script>/* Public-file boundary validation, separate from the preserved numerical engine. */
+(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('./engine.js'));else root.CellImport=factory(root.CellEngine);})(typeof globalThis!=='undefined'?globalThis:this,function(engine){
+'use strict';
+const {Simulation,LIMITS}=engine;
+const example=new Simulation(2646);
+example.launchWave(1);example.pulse(0,0);
+const shape=example.exportState();
+function checkShape(value,model,label){
+ if(model===null){if(value!==null&&(!Number.isSafeInteger(value)||value<1))throw Error('Invalid '+label);return;}
+ if(Array.isArray(model)){
+  if(!Array.isArray(value)||value.length>5000)throw Error('Invalid '+label);
+  for(const child of value)checkShape(child,model[0],label+'[]');
+ }else if(typeof model==='object'){
+  if(!value||typeof value!=='object'||Array.isArray(value))throw Error('Invalid '+label);
+  for(const key of Object.keys(model))checkShape(value[key],model[key],label+'.'+key);
+ }else if(typeof value!==typeof model||(typeof model==='number'&&(!Number.isFinite(value)||Math.abs(value)>1e12)))throw Error('Invalid '+label);
+}
+function restore(data){
+ checkShape(data,shape,'state');
+ if(data.schema!==shape.schema||data.version!==shape.version)throw Error('Unsupported experiment version.');
+ for(const key of ['seed','rngState'])if(!Number.isInteger(data[key])||data[key]<0||data[key]>4294967295)throw Error('Invalid '+key);
+ if(data.dt<.001||data.dt>.08)throw Error('Unsupported numerical timestep.');
+ for(const key of ['nextId','nextWaveId','maxHistory'])if(!Number.isSafeInteger(data[key])||data[key]<1)throw Error('Invalid '+key);
+ if(data.events.length>500||data.history.length>data.maxHistory||data.pulses.length>32)throw Error('State exceeds retention limits.');
+ for(const [key,[min,max]] of Object.entries(LIMITS))if(data.params[key]<min||data.params[key]>max)throw Error('Invalid parameter: '+key);
+ for(const n of data.neurites)if(!Number.isSafeInteger(n.id)||n.id<1||n.id>=data.nextId)throw Error('Invalid process identity.');
+ if(data.view!==undefined&&(!data.view||typeof data.view!=='object'||Array.isArray(data.view)))throw Error('Invalid view settings.');
+ return Simulation.fromState(data);
+}
+return{restore};
+});
+</script>
+<script>(function(){'use strict';
+const $=id=>document.getElementById(id),{Simulation,PRESETS,LIMITS,clamp}=CellEngine;
+let sim=new Simulation(2646),running=true,speed=12,accumulator=0,last=0,lastRender=0,lastUI=0,drawCount=0,computeMs=0,slow=false;
+const renderer=new CellRenderer($('microscope'),$('overlay'));
+const colors=['#577e5e','#9e597d','#a4813d','#5f7e96','#93755c','#8b739f','#427f7d','#9c6459','#7e8755','#67768d','#a4708c','#586953','#b09269','#695c83'];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const modelTime=t=>{const minutes=Math.floor(t+1e-7);return `${String(Math.floor(minutes/60)).padStart(2,'0')}:${String(minutes%60).padStart(2,'0')}`;};
+function toast(text){$('toast').textContent=text;$('toast').classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').classList.remove('show'),3300);}
+function syncPreset(){const key=Object.keys(PRESETS).find(k=>Object.keys(LIMITS).every(p=>Math.abs(PRESETS[k].params[p]-sim.params[p])<1e-10));$('preset').value=key||'custom';}
+function syncControls(){syncPreset();for(const k of Object.keys(LIMITS)){$(k).value=sim.params[k];$(k+'Out').textContent=sim.params[k].toFixed(2);}$('seed').value=sim.seed;}
+function updatePlay(){$('play').textContent=running?'Pause':'Run';$('play').setAttribute('aria-label',running?'Pause simulation':'Run simulation');$('stateDot').style.opacity=running?'1':'.35';}
+function restart(newSeed=null){const raw=newSeed===null?Number($('seed').value):newSeed;if(!Number.isFinite(raw)||raw<0||raw>4294967295){toast('Use an integer seed between 0 and 4294967295.');return;}
+ sim=new Simulation(Math.floor(raw),sim.params);accumulator=0;renderer.selected=1;renderer.pan={x:0,y:0};renderer.zoom=1;syncControls();updateUI();renderer.render(sim);toast('Restarted the same equations from seed '+sim.seed+'.');}
+$('play').onclick=()=>{running=!running;accumulator=0;updatePlay();};$('reset').onclick=()=>restart();
+$('newSeed').onclick=()=>{const a=new Uint32Array(1);crypto.getRandomValues(a);restart(a[0]);};
+$('preset').onchange=()=>{const key=$('preset').value;sim=new Simulation(Number($('seed').value)>>>0,PRESETS[key].params);accumulator=0;renderer.selected=1;renderer.pan={x:0,y:0};renderer.zoom=1;syncControls();updateUI();renderer.render(sim);toast(PRESETS[key].name+' · new experiment.');};
+$('speed').onchange=()=>{speed=Number($('speed').value);accumulator=0;};
+$('step').onclick=()=>{running=false;accumulator=0;sim.advance(1);updatePlay();updateUI();renderer.render(sim);};
+for(const k of Object.keys(LIMITS))$(k).addEventListener('input',()=>{const v=Number($(k).value);sim.setParams({[k]:v},false);$(k+'Out').textContent=v.toFixed(2);syncPreset();});
+for(const k of Object.keys(LIMITS))$(k).addEventListener('change',()=>sim.event('parameter',k+' set to '+sim.params[k].toFixed(2)+'.',{params:{...sim.params}}));
+$('exposure').oninput=()=>{renderer.exposure=Number($('exposure').value);$('exposureOut').textContent=renderer.exposure.toFixed(2);};
+$('green').onchange=()=>renderer.showGreen=$('green').checked;$('pink').onchange=()=>renderer.showPink=$('pink').checked;$('labels').onchange=()=>renderer.labels=$('labels').checked;
+for(const b of document.querySelectorAll('[data-mode]'))b.onclick=()=>{renderer.mode=Number(b.dataset.mode);for(const q of document.querySelectorAll('[data-mode]')){q.classList.toggle('active',q===b);q.setAttribute('aria-pressed',q===b?'true':'false');}renderer.render(sim);};
+$('fit').onclick=()=>{renderer.fit(sim);renderer.render(sim);};
+$('selected').onchange=()=>renderer.selected=Number($('selected').value);
+$('waveButton').onclick=()=>{sim.launchWave(renderer.selected,true);updateUI();renderer.render(sim);};
+$('pulseButton').onclick=()=>{const n=sim.getNeurite(renderer.selected)||sim.neurites[0],tip=n.nodes[n.nodes.length-1];sim.pulse(tip.x,tip.y);updateUI();renderer.render(sim);};
+let drag=null;
+$('stage').addEventListener('pointerdown',e=>{if(e.button!==0)return;$('stage').setPointerCapture(e.pointerId);drag={x:e.clientX,y:e.clientY,px:renderer.pan.x,py:renderer.pan.y,moved:false};});
+$('stage').addEventListener('pointermove',e=>{if(!drag)return;let dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.hypot(dx,dy)>4)drag.moved=true;if(drag.moved){renderer.pan.x=drag.px+dx;renderer.pan.y=drag.py+dy;}});
+$('stage').addEventListener('pointerup',e=>{if(!drag)return;if(!drag.moved){let rect=$('stage').getBoundingClientRect(),pt=renderer.screenToWorld(e.clientX-rect.left,e.clientY-rect.top);let nearest=sim.neurites.reduce((best,n)=>{const tip=n.nodes[n.nodes.length-1],d=Math.hypot(tip.x-pt.x,tip.y-pt.y);return d<best.d?{id:n.id,d}:best;},{id:1,d:Infinity});renderer.selected=nearest.id;sim.pulse(pt.x,pt.y);updateUI();}drag=null;});
+$('stage').addEventListener('pointercancel',()=>drag=null);
+$('stage').addEventListener('wheel',e=>{e.preventDefault();renderer.zoom=clamp(renderer.zoom*Math.exp(-e.deltaY*.001),.2,5);},{passive:false});
+window.addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA'].includes(document.activeElement.tagName)||$('notesDialog').open)return;if(e.code==='Space'){e.preventDefault();running=!running;accumulator=0;updatePlay();}if(e.key.toLowerCase()==='r')restart();if(e.key.toLowerCase()==='f'){renderer.fit(sim);}});
+$('notes').onclick=()=>$('notesDialog').showModal();$('closeNotes').onclick=()=>$('notesDialog').close();
+function download(name,content,type){const blob=content instanceof Blob?content:new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);}
+$('save').onclick=()=>{const state=sim.exportState();state.view={mode:renderer.mode,zoom:renderer.zoom,pan:renderer.pan,selected:renderer.selected,exposure:renderer.exposure,labels:renderer.labels,green:renderer.showGreen,pink:renderer.showPink};download(`cell-seed-${sim.seed}-${Math.floor(sim.time)}min.json`,JSON.stringify(state),'application/json');toast('Full numerical state saved.');};
+$('load').onclick=()=>$('loadFile').click();
+$('loadFile').onchange=async()=>{const file=$('loadFile').files[0];if(!file)return;try{if(file.size>20e6)throw Error('Experiment files must be smaller than 20 MB.');let data=JSON.parse(await file.text());const restored=CellImport.restore(data);sim=restored;running=false;accumulator=0;renderer.selected=sim.neurites[0].id;renderer.fit(sim);
+if(data.view){const v=data.view;if(Number.isInteger(v.mode)&&v.mode>=0&&v.mode<=2)renderer.mode=v.mode;if(Number.isFinite(v.zoom))renderer.zoom=clamp(v.zoom,.2,5);if(v.pan&&Number.isFinite(v.pan.x)&&Number.isFinite(v.pan.y)&&Math.abs(v.pan.x)<100000&&Math.abs(v.pan.y)<100000)renderer.pan={x:v.pan.x,y:v.pan.y};if(sim.getNeurite(v.selected))renderer.selected=v.selected;if(Number.isFinite(v.exposure))renderer.exposure=clamp(v.exposure,.4,3);renderer.labels=!!v.labels;renderer.showGreen=v.green!==false;renderer.showPink=v.pink!==false;$('labels').checked=renderer.labels;$('green').checked=renderer.showGreen;$('pink').checked=renderer.showPink;$('exposure').value=renderer.exposure;$('exposureOut').textContent=renderer.exposure.toFixed(2);for(const q of document.querySelectorAll('[data-mode]')){const active=Number(q.dataset.mode)===renderer.mode;q.classList.toggle('active',active);q.setAttribute('aria-pressed',String(active));}}
+syncControls();updatePlay();updateUI();renderer.render(sim);toast('Restored exact numerical state. Press Run to continue.');}catch(e){toast('Could not load: '+e.message);}finally{$('loadFile').value='';}};
+function csvText(){const rows=['# Whole-cell remodeling laboratory v1.0.0 — exploratory; not biologically calibrated',`# seed=${sim.seed}; fixed_step_min=${sim.dt}; retained_samples=${sim.history.length}`,`# parameters=${JSON.stringify(sim.params)}`,'time_min,soma_area_um2,process_material_um,geometric_arclength_um,supported_material_um,free_material_budget_um,availability_fraction,soma_actin_au,global_contraction_au,process_count,extending_count,retracting_count,process_id,individual_material_um,individual_supported_um,tip_rate_um_per_min'];for(const h of sim.history)for(const n of h.lengths)rows.push([h.time,h.somaArea,h.material,h.geometric,h.stable,h.available,h.resource,h.actin,h.contraction,h.processes,h.extending,h.retracting,n.id,n.length,n.stable,n.velocity].map(v=>Number(v).toFixed(6)).join(','));return rows.join('\n');}
+$('csv').onclick=()=>{download(`cell-seed-${sim.seed}-measurements.csv`,csvText(),'text/csv');toast('Measurements exported for '+sim.history.length+' retained samples.');};
+$('snapshot').onclick=()=>{renderer.render(sim);const a=document.createElement('a');a.href=renderer.snapshot();a.download=`cell-seed-${sim.seed}-${Math.floor(sim.time)}min.png`;a.click();toast('Synthetic microscope snapshot saved.');};
+function basePlot(id,values,minimumMax){const c=$(id),r=c.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2);c.width=Math.max(200,Math.round(r.width*dpr));c.height=Math.max(100,Math.round(r.height*dpr));const ctx=c.getContext('2d');ctx.scale(dpr,dpr);const w=c.width/dpr,h=c.height/dpr,L=35,R=8,T=14,B=29,plotW=w-L-R,plotH=h-T-B;
+ const max=Math.max(minimumMax,...values.filter(Number.isFinite))*1.12;const end=Math.max(30,sim.time),start=sim.history[0]?.time||0;const X=t=>L+(t-start)/(end-start||1)*plotW,Y=v=>T+plotH-v/max*plotH;
+ ctx.font='9px Arial';ctx.fillStyle='#7a8174';ctx.strokeStyle='#d4d4c6';ctx.lineWidth=.6;
+ for(let i=0;i<=2;i++){let val=max/2*i,y=Y(val);ctx.beginPath();ctx.moveTo(L,y);ctx.lineTo(w-R,y);ctx.stroke();ctx.fillText(Math.round(val),1,y+3);}
+ for(let i=0;i<3;i++){let t=mixNumber(start,end,i/2),x=X(t);ctx.fillText(Math.round(t)+'m',clamp(x-8,0,w-28),h-8);}
+ return{ctx,X,Y};}
+function mixNumber(a,b,f){return a+(b-a)*f;}
+function plots(){let ids=[...new Set(sim.history.flatMap(h=>h.lengths.map(n=>n.id)))];let values=sim.history.flatMap(h=>h.lengths.map(n=>n.length));const {ctx,X,Y}=basePlot('lengthPlot',values,30);
+ for(const id of ids){ctx.strokeStyle=colors[(id-1)%colors.length];ctx.lineWidth=id===renderer.selected?1.6:1.05;ctx.beginPath();let pen=false;for(const h of sim.history){const n=h.lengths.find(n=>n.id===id);if(!n){pen=false;continue;}if(!pen){ctx.moveTo(X(h.time),Y(n.length));pen=true;}else ctx.lineTo(X(h.time),Y(n.length));}ctx.stroke();}
+ $('lengthLegend').innerHTML=sim.neurites.map(n=>`<span><span class="legend-line" style="background:${colors[(n.id-1)%colors.length]}"></span>N${n.id}</span>`).join('');
+ const p=basePlot('statePlot',sim.history.map(h=>h.somaArea),200);p.ctx.strokeStyle='#617959';p.ctx.lineWidth=1.6;p.ctx.beginPath();sim.history.forEach((h,i)=>{if(!i)p.ctx.moveTo(p.X(h.time),p.Y(h.somaArea));else p.ctx.lineTo(p.X(h.time),p.Y(h.somaArea));});p.ctx.stroke();
+}
+function updateUI(){const m=sim.metrics();$('areaValue').textContent=m.somaArea.toFixed(0);$('lengthValue').textContent=m.material.toFixed(0);$('stableValue').textContent=(100*m.stable/Math.max(m.material,1e-9)).toFixed(0);$('waveValue').textContent=sim.stats.delivered;
+ $('resourceText').textContent=Math.round(m.resource*100)+'%';$('resourceBar').style.width=100*m.resource+'%';$('activity').textContent=`${m.extending} extending / ${m.retracting} withdrawing`;
+ $('phase').textContent=!running?'Paused · '+modelTime(sim.time):m.contraction>.3?'Somatic contraction':sim.waves.length?'Selective wave transport':'Local exploration';
+ const ids=sim.neurites.map(n=>n.id).join(',');if($('selected').dataset.ids!==ids){$('selected').innerHTML=sim.neurites.map(n=>`<option value="${n.id}">N${n.id}${n.parent?' · lateral':''}</option>`).join('');$('selected').dataset.ids=ids;}
+ if(!sim.getNeurite(renderer.selected))renderer.selected=sim.neurites[0].id;$('selected').value=renderer.selected;
+ $('events').innerHTML=sim.events.slice(0,6).map(e=>`<div class="event"><time>${modelTime(e.t)}</time><span>${esc(e.text)}</span></div>`).join('');plots();
+ $('backend').textContent=slow?'Playback limited by device · fixed solver step':'Solver 0.04 min · '+renderer.backend;
+}
+function frame(now){let elapsed=last?Math.min(.10,(now-last)/1000):0;last=now;
+ if(running&&!document.hidden){accumulator+=elapsed*speed;const start=performance.now();let count=0;while(accumulator>=sim.dt&&count<200){sim.step();accumulator-=sim.dt;count++;if(count%10===0&&performance.now()-start>10)break;}computeMs=performance.now()-start;slow=accumulator>speed*.4;if(accumulator>speed*.6)accumulator=speed*.6;}
+ if(now-lastRender>=32){renderer.render(sim);lastRender=now;drawCount++;}
+ if(now-lastUI>=240){updateUI();lastUI=now;}
+ requestAnimationFrame(frame);
+}
+document.addEventListener('visibilitychange',()=>{last=0;accumulator=0;});
+window.addEventListener('resize',()=>{renderer.resize();plots();});
+// Explicit automation/testing API; the state is exposed for inspection.
+window.lab={get simulation(){return sim;},get renderer(){return renderer;},get running(){return running;},setRunning(v){running=!!v;accumulator=0;updatePlay();},advance(min){running=false;accumulator=0;sim.advance(min);updatePlay();updateUI();renderer.render(sim);},reset(seed=2646,params=null){sim=new Simulation(seed,params||sim.params);accumulator=0;renderer.selected=1;syncControls();updateUI();renderer.render(sim);},restore(state){sim=CellImport.restore(state);accumulator=0;running=false;syncControls();updatePlay();updateUI();renderer.render(sim);},csv:csvText,render(){renderer.render(sim);updateUI();},get frameCount(){return drawCount;}};
+syncControls();updatePlay();updateUI();renderer.render(sim);requestAnimationFrame(frame);
+})();
+</script>
+</body></html>

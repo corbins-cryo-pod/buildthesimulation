@@ -70,6 +70,11 @@ export const simulationGroups = [
         "desc": "Grow neurons from precursor states through membrane mechanics, cytoskeletal support, branching and physical encounters. Inspect axons and dendrites in culture plates, 3D organoid environments, regeneration scaffolds and biohybrid interfaces."
       },
       {
+        "href": "/simulations/whole-cell-remodeling/",
+        "title": "Whole-Cell Remodeling Laboratory",
+        "desc": "Independent exploratory model of whole-cell contraction, selective waves, local protrusion and structural support. Inspect synthetic fluorescence, mechanics and reproducible experiments; not biologically calibrated."
+      },
+      {
         "href": "/simulations/soft-neural-generator/",
         "title": "Soft Neural Generator",
         "desc": "Independent experimental soft-cell model: adhesive spreading, flexible internal scaffolds, local actin-like waves and exploratory neurite growth. Separate from the Cell Growth Laboratory; whole-cell crawling remains a work in progress."
