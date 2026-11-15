@@ -2,8 +2,8 @@
 title: "Neuralink (company brief)"
 order: 1
 pubDate: 2026-02-02
-updatedDate: 2026-11-01
-lastVerified: 2026-10-11
+updatedDate: 2026-11-15
+lastVerified: 2026-11-15
 description: "A grounded snapshot of Neuralink: what it is building, where it is, how big it is, and what is publicly known from primary sources."
 region: "American"
 kind: "Company"
@@ -72,3 +72,7 @@ Neuralink pairs *high-channel-count intracortical recording* with a *hardware an
 
 - *Speech result (Oct 28, 2026, company-reported):* Neuralink said one ALS participant in its VOICE study reached 75 words per minute with a 5.8% word error rate on a 125,000-word vocabulary in their first week. Not peer-reviewed; the company did not say whether 75 words per minute is a peak or an average, and did not disclose the task design. Inside BCI's independent write-up benchmarks it against published BrainGate and UC Davis figures (faster than any published result on that vocabulary, less accurate than UC Davis sustained accuracy). Source: <https://insidebci.com/news/2026-10-29-neuralink-voice-speech-75-words-per-minute-word-error-rate-als/>
 - *Engineering sprint (Oct 29, 2026, company blog):* Neuralink posted a 72-hour hackathon at a VOICE participant's home, prototyping speech features: iPhone call integration via the Bloom app, hands-free voice activity detection, iOS keyboard dictation and a "Hey Neuralink" Grok agent. These are software demos, not trial results; the post includes no performance data. Sources: <https://neuralink.com/updates/72-hour-voice-hackathon/> and <https://insidebci.com/news/2026-10-31-neuralink-voice-hackathon-bloom-app-iphone-calls-grok-agent-austin-vivarium/>
+
+## November 2026 updates (reviewed Nov 15, 2026)
+
+- *PRIME2 registered (ClinicalTrials.gov, verified Nov 15, 2026):* NCT07929792, "An Early Feasibility Study of a Robotically Implanted Brain-Computer Interface for Neural Control of External Devices in Spinal Cord Injury, Amyotrophic Lateral Sclerosis, and Chronic Ischemic Stroke"; status recruiting; start date November 2026; enrollment target 10; listed site University of Miami. Chronic ischemic stroke is new among the listed conditions. Source: <https://clinicaltrials.gov/study/NCT07929792>
