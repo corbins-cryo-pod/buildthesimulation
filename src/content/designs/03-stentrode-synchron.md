@@ -2,11 +2,11 @@
 title: "Stentrode (Synchron)"
 order: 3
 pubDate: 2026-02-03
-updatedDate: 2026-10-05
+updatedDate: 2026-11-15
 device_id: "BTSD-0003"
 interface_class: "endovascular"
 status: "human"
-last_updated: 2026-10-05
+last_updated: 2026-11-15
 description: "A fully implanted endovascular BCI: a stent-electrode array in the superior sagittal sinus recording ECoG-like signals, trading spikes for catheter-based deployment."
 modality: "Endovascular"
 successRank: 3
@@ -117,7 +117,7 @@ The tables use the same field framework as the other implant-device sheets. Valu
 | Preclinical cohort |  |
 | Follow-up duration |  |
 | Indications | Severe upper-limb paralysis; ALS or primary lateral sclerosis in SWITCH |
-| Trials and registries | SWITCH prospective first-in-human study; registry ID not reported in this audit |
+| Trials and registries | SWITCH prospective first-in-human study; registry ID not reported in this audit. Second-generation studies (registry, verified Nov 15, 2026): INTENT NCT07543367 and FOCUS-AUS NCT07533903 active but not recruiting; FOCUS-CAN NCT07446114 terminated September 2026 for insufficient recruitment, one enrolled. Enrollment in the second-generation trials paused November 2026 after a company-reported lead performance issue; Synchron states no device-related safety issue was identified and the pause was not FDA-directed |
 | Primary outcomes | Safety, venous patency and computer-control feasibility |
 | Key limitations | Small selected cohorts, variable decoding strategies, limited follow-up, source-specific geometry and reference descriptions |
 
@@ -144,3 +144,7 @@ JSON preserves revision metadata, approximation notes and outward-facing site no
 
 - Kacker K, et al. "Motor activity in gamma and high gamma bands recorded with a Stentrode from the human motor cortex in two people with ALS." *J Neural Eng* (2025), section 2.2 and Figure 1. <https://pmc.ncbi.nlm.nih.gov/articles/PMC11956166/>
 - Schone HR, et al. "Motor Cortex Coverage Predicts Signal Strength of a Stentrode Endovascular Brain-Computer Interface." *medRxiv* (2025 preprint). <https://www.medrxiv.org/content/10.1101/2025.09.19.25335875v1.full>
+
+Second-generation trial status, verified November 15, 2026:
+- Mullin E. "Synchron Pauses Trials of Its Brain Implant Due to Performance Issues." *WIRED* (Nov 12, 2026). <https://www.wired.com/story/synchron-pauses-trials-of-its-brain-implant-due-to-performance-issues/>
+- ClinicalTrials.gov: INTENT NCT07543367 <https://clinicaltrials.gov/study/NCT07543367>; FOCUS-AUS NCT07533903 <https://clinicaltrials.gov/study/NCT07533903>; FOCUS-CAN NCT07446114 <https://clinicaltrials.gov/study/NCT07446114>
