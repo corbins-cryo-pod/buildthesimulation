@@ -2,8 +2,8 @@
 title: "Synchron (company brief)"
 order: 2
 pubDate: 2026-02-02
-updatedDate: 2026-10-04
-lastVerified: 2026-10-04
+updatedDate: 2026-11-15
+lastVerified: 2026-11-15
 description: "Synchron’s endovascular BCI (Stentrode): what it is, how it works, what human data exists, and what to watch next."
 region: "American"
 kind: "Company"
@@ -108,4 +108,14 @@ Synchron positions its BCI as an at‑home system aimed at autonomy and social c
 
 - *Funding:* Synchron announced a *$200M Series D* (reported as closed in Nov 2025) to accelerate commercialization of its first-generation Stentrode and a next-generation system. Source: <https://www.neurofounders.co/press-releases/synchron-raises-200-million-series-d-to-advance-brain-computer-interface-technology>
 - *Trials:* a next-generation Stentrode study (FOCUS-AU) was scheduled to begin in Melbourne in April 2026. Source (Inside BCI, secondary): <https://insidebci.com/news/2026-03-25-synchron-returns-to-melbourne-for-first-trial-of-next-generation-stentrode/>
+  - Superseded: the Melbourne study (FOCUS-AUS, NCT07533903) began May 22, 2026 and is now listed active, not recruiting. See the November 2026 update below.
 - *Not verified here:* a reported later Series E; wait for a primary Synchron announcement.
+
+### November 2026 update (reviewed Nov 15, 2026)
+
+- *Second-generation trial enrollment paused:* WIRED reported Nov 12, 2026 that Synchron paused enrollment in trials of its second-generation Stentrode after the device did not perform as expected in initial participants. In a company statement, Synchron said it voluntarily paused enrollment "after identifying a performance issue involving the lead, the cable that carries signals from the Stentrode to the implanted electronics"; that the issue does not involve the Stentrode itself; that no device-related safety issues have been identified; and that the pause was a company decision, not an FDA-directed action. Synchron says it has brought lead design and manufacturing in-house, is upgrading the whole Stentrode system rather than fixing the lead alone, and gave no restart date. Company-reported statements labeled as such. Sources: WIRED (primary reporting): <https://www.wired.com/story/synchron-pauses-trials-of-its-brain-implant-due-to-performance-issues/>; corroboration: MassDevice: <https://www.massdevice.com/synchron-halts-brain-computer-interface-trials-after-stentrode-device-fails-to-perform/>
+- *Registry status (ClinicalTrials.gov, verified Nov 15, 2026):*
+  - INTENT (US, NCT07543367): active, not recruiting; began May 7, 2026; target 10. <https://clinicaltrials.gov/study/NCT07543367>
+  - FOCUS-AUS (NCT07533903): active, not recruiting; began May 22, 2026; target 10. <https://clinicaltrials.gov/study/NCT07533903>
+  - FOCUS-CAN (NCT07446114): terminated September 2026, registry reason "insufficient recruitment", one participant enrolled. <https://clinicaltrials.gov/study/NCT07446114>
+- *Restructuring (WIRED, company-reported):* Synchron is eliminating jobs and scaling back in New York while building a San Diego team to design and manufacture the upgraded Stentrode and a separate unrevealed device. The $200M Series D (Nov 2025) predates the pause by about a year.
