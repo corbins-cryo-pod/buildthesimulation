@@ -2,8 +2,8 @@
 title: "明视脑机 (Mindtrix) (company brief)"
 order: 71
 pubDate: 2026-10-09
-updatedDate: 2026-10-12
-lastVerified: 2026-10-12
+updatedDate: 2026-11-16
+lastVerified: 2026-11-16
 description: "明视脑机科技(苏州)有限公司 was founded in October 2024 according to the Chinese press source below, which reported cumulative financing of 150 million yuan in April 2026."
 region: "Chinese"
 kind: "Company"
@@ -23,7 +23,7 @@ draft: false
 
 ## Funding and ownership
 
-Jiemian reported cumulative financing of 150 million yuan in April 2026 (press report). Investors and round structure are not stated in the sources used here.
+Jiemian reported cumulative financing of 150 million yuan in April 2026 (press report). In November 2026 the company announced it had closed pre-A and pre-A+ rounds, bringing total funding to more than RMB 500 million (about $70 million); round sizes were not disclosed. The pre-A+ round was co-led by Shanghai STVC Group and the Minhang district state-owned fund, with PuXin Capital and CASSTAR; the pre-A round was led by Puhua Capital. The company says the proceeds fund engineering of the 1,024-channel visual reconstruction system, type testing and registration inspection, and multicenter trials (company statement reported by VCBeat, Nov 2026). Sources: VCBeat, Nov 2026: <https://www.vcbeathealth.com/article/64246>; corroboration: Neurotech Guide: <https://neurotechguide.org/news/mingshi-bci-visual-cortex-funding/>. A claimed IPO plan circulating in secondary coverage is unverified and not recorded here.
 
 ## Not public or not verified
 

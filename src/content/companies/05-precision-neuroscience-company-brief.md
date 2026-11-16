@@ -2,8 +2,8 @@
 title: "Precision Neuroscience (company brief)"
 order: 5
 pubDate: 2026-02-02
-updatedDate: 2026-11-01
-lastVerified: 2026-10-17
+updatedDate: 2026-11-16
+lastVerified: 2026-11-16
 description: "Precision Neuroscience’s Layer 7 Cortical Interface: a high-density, thin-film cortical surface array aimed at minimally invasive, removable, high-bandwidth BCI."
 region: "American"
 kind: "Company"
@@ -110,3 +110,7 @@ Precision’s own history highlights:
 ### Oct 29, 2026 update: first international site (reviewed Nov 1, 2026)
 
 - *Abu Dhabi MOU (Oct 29, 2026, company press release):* Precision announced its first international clinical research site, a two-year memorandum of understanding with Cleveland Clinic Abu Dhabi, signed Oct 21 at the Abu Dhabi Future Health Summit, to evaluate the Layer 7 Cortical Interface in collaborative research. The same release updates the patient count to more than 110 patient procedures across 18 medical institutions (the earlier figure was more than 100). Company-reported; no independent coverage found yet. Source: <https://www.globenewswire.com/news-release/2026/10/29/3391322/0/en/precision-neuroscience-expands-clinical-network-beyond-the-u-s-with-first-international-site-in-abu-dhabi.html>
+
+### Nov 13, 2026 update: Team Gleason partnership (reviewed Nov 16, 2026)
+
+- *Partnership (Nov 13, 2026, Team Gleason press release):* Precision and Team Gleason, the ALS nonprofit founded by former NFL player Steve Gleason, announced a partnership giving people living with ALS a structured channel to give feedback on the Layer 7 system as it develops, plus joint education for the ALS community and clinicians, starting with a shared presence at the American Speech-Language-Hearing Association convention (Indianapolis, Nov 19-21, 2026). Neither side disclosed financial terms. Company-reported partnership announcement; no independent coverage beyond the release and trade write-ups. Source: <https://teamgleason.org/precision-neuroscience-and-team-gleason-partner-to-give-the-als-community-a-voice-in-brain-computer-interface-development/>
