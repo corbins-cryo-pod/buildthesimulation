@@ -85,7 +85,7 @@ function appendInnerHairCell(target,plate,z) {
     [.50,.0102,.0062,-.0001], [.69,.0075,.0056,-.0007],
     [.84,.0052,.0049,-.0012], [1,.0054,.0049,-.0015],
   ];
-  const start=target.positions.length/3,rows=20,sides=24,bottom=.017,top=.069;
+  const start=target.positions.length/3,rows=15,sides=18,bottom=.017,top=.069;
   let section=0;
   for(let j=0;j<=rows;j++){
     const u=j/rows;while(section<profiles.length-2&&u>profiles[section+1][0])section++;
@@ -289,7 +289,7 @@ function addNerves(scene,geometry,model,selectedFiber) {
 }
 function organScene(geometry,model,selectedFiber) {
   const scene=freshScene('organ');scene.title='Organ of Corti';scene.subtitle='Reconstructed human microanatomy · millimetre coordinates, micrometre scale';scene.provenanceLabel='Procedural histology informed by human SEM/TEM studies';
-  const ihc=mesh('inner-hair-cells',C.ihc,'hair-cell',1,'inner-hair-cell'),ohc=mesh('outer-hair-cells',C.ohc,'hair-cell',1,'outer-hair-cell'),support=mesh('supporting-cells',C.support,'support',.88,'supporting-cell'),stereo=mesh('stereocilia',C.stereo,'hair-cell',1,'stereocilia'),nuclei=mesh('cell-nuclei','#96765e','hair-cell',1,'nucleus'),synapses=mesh('ribbon-synapses',C.synapse,'nerve',1,'synapse'),plate=mesh('inner-cuticular-plates','#dab5a5','hair-cell',1,'cuticular-plate');
+  const ihc=mesh('inner-hair-cells',C.ihc,'hair-cell',1,'inner-hair-cell'),ohc=mesh('outer-hair-cells',C.ohc,'hair-cell',1,'outer-hair-cell'),support=mesh('supporting-cells',C.support,'support',1,'supporting-cell'),stereo=mesh('stereocilia',C.stereo,'hair-cell',1,'stereocilia'),nuclei=mesh('cell-nuclei','#96765e','hair-cell',1,'nucleus'),synapses=mesh('ribbon-synapses',C.synapse,'nerve',1,'synapse'),plate=mesh('inner-cuticular-plates','#dab5a5','hair-cell',1,'cuticular-plate');
   const bm=mesh('organ-basilar-membrane',C.bm,'membrane',1,'basilar-membrane');
   // Curved optical-section faces and finite thickness give the basal tissue a cut edge.
   function sheet(target,x0,x1,depth,profile,halfLength,frontEdge = () => 1) {
@@ -323,7 +323,7 @@ function organScene(geometry,model,selectedFiber) {
       const x=.025+row*.037,top=.073+row*.001,bottom=.023-row*.001;
       const axis = [[x,bottom,z],[x+.0004,bottom+.002,z],[x+.001,bottom+.009,z],
         [x+.002,top-.012,z],[x+.003,top-.002,z],[x+.003,top,z]];
-      appendTube(ohc,axis,.004,20,[.0024,.004,.0045,.0045,.0042,.0038]);
+      appendTube(ohc,axis,.004,16,[.0024,.004,.0045,.0045,.0042,.0038]);
       appendEllipsoid(nuclei,[x,.030,z],[.0032,.0045,.003]);
       appendTube(support,[[x-.004,-.004,z],[x-.002,.009,z],[x,.016,z],[x,bottom+.001,z]],.004,14,[.0065,.006,.004,.0046]);
       appendTube(support,[[x-.004,.012,z],[x+.010,.046,z+.003],[x+.015,.073,z+.006]],.0014,5);
@@ -334,9 +334,9 @@ function organScene(geometry,model,selectedFiber) {
     appendTube(support,[[-.052,-.004,z],[-.048,.009,z],[-.025,.035,z],[-.011,.071,z]],.0026,12,[.007,.004,.0028,.0045]);
     appendTube(support,[[.009,-.004,z],[.009,.008,z],[.001,.037,z],[-.011,.071,z]],.003,12,[.007,.004,.0028,.0045]);
     for(const [x,h] of [[.119,.041],[.132,.035],[.145,.028]]) {
-      appendEllipsoid(support,[x,h/2-.002,z],[.009,h/2,.0085],14,9);
+      appendEllipsoid(support,[x,h/2-.002,z],[.009,h/2,.0085],12,8);
     }
-    appendEllipsoid(support,[-.104,.020,z],[.009,.024,.007],16,11);
+    appendEllipsoid(support,[-.104,.020,z],[.009,.024,.007],12,8);
     appendTube(support,[[-.099,-.003,z],[-.096,.013,z],[-.093,.035,z],[-.091,.052,z],[-.086,.066,z]],.0036,14,[.0058,.0064,.0033,.0022,.0025]);
     for(let n=0;n<3;n++){
       const zz=z+(n-1)*.0026;
@@ -407,7 +407,7 @@ export function createAnatomyScene(geometry,model,{mode='cutaway',implantProfile
   if(mode==='organ')return organScene(geometry,model,selectedFiber);
   const scene=freshScene(mode),cutaway=mode==='cutaway'||mode==='array';
   if(mode==='array') {
-    const implant=createImplantGeometry(implantProfile,{pose:implantPose,centerline:atlasReference.centerline,radialSegments:36});
+    const implant=createImplantGeometry(implantProfile,{pose:implantPose,centerline:atlasReference.centerline,radialSegments:24});
     if(implantPose==='inserted')addMacroSurfaces(scene,atlas,true,section);
     for(const key of ['meshes','paths','markers','labels'])scene[key].push(...(implant[key]??[]));
     scene.implant={profileId:implant.profile?.id,placement:implant.placement,contacts:implant.contacts};
@@ -419,7 +419,7 @@ export function createAnatomyScene(geometry,model,{mode='cutaway',implantProfile
     scene.camera=implantPose==='inserted'
       ? {position:[1.5,14,7.5],target:[0,-.18,-.05],fov:34}
       : {position:add(center,[extent*.10,extent*.55,extent*1.05]),target:center,fov:32};
-    scene.legend=implantPose==='inserted'?[{label:'Scala tympani',color:C.st,layer:'scala'},{label:'Scala vestibuli',color:C.sv,layer:'scala'},{label:'Electrode carrier',color:'#766450',layer:'implant'}]:[];scene.scaleBarMm=implantPose==='inserted'?1:5;return scene;
+    scene.legend=implantPose==='inserted'?[{label:'Scala tympani',color:C.st,layer:'scala'},{label:'Scala vestibuli',color:C.sv,layer:'scala'},{label:'Electrode carrier',color:'#817668',layer:'implant'}]:[];scene.scaleBarMm=implantPose==='inserted'?1:5;return scene;
   }
   addMacroSurfaces(scene,atlas,cutaway,section);addNerves(scene,geometry,model,selectedFiber);addGenericArray(scene,geometry);
   scene.title=mode==='whole'?(atlas?'Human cochlea · measured anatomy':'Human cochlea · centreline reconstruction'):'Cochlear cutaway';

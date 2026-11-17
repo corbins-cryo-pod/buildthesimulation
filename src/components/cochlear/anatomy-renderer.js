@@ -5,7 +5,6 @@
  * line drawing or a second anatomical model.
  */
 import * as THREE from 'three';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 const clamp = (x, lo, hi) => Math.min(hi, Math.max(lo, x));
@@ -124,16 +123,32 @@ export function anatomicalMesh(descriptor) {
   } else if (descriptor.appearanceColors) {
     geometry.setAttribute('color', new THREE.BufferAttribute(descriptor.appearanceColors, 3));
   }
-  const material = new THREE.MeshStandardMaterial({
+  const roughness = properties.roughness ?? descriptor.roughness ?? .58;
+  const metalness = properties.metalness ?? descriptor.metalness ?? (descriptor.role === 'contact' ? .55 : 0);
+  const material = new THREE.MeshPhongMaterial({
     color: dynamic ? '#ffffff' : baseColor, opacity: baseOpacity,
     transparent: baseOpacity < .999, depthWrite: baseOpacity > .9,
-    side: THREE.DoubleSide, roughness: properties.roughness ?? descriptor.roughness ?? .58,
-    metalness: properties.metalness ?? descriptor.metalness ?? (descriptor.role === 'contact' ? .55 : 0),
+    side: THREE.DoubleSide, forceSinglePass: descriptor.layer === 'implant',
+    shininess: 10 + 80 * (1 - roughness), specular: new THREE.Color().setScalar(.035 + .40 * metalness),
     vertexColors: !!geometry.attributes.color, flatShading: !!(properties.flatShading ?? descriptor.flatShading),
   });
+  if (descriptor.layer === 'implant') {
+    // Two broad reflected softboxes distinguish silicone and platinum without
+    // an environment texture lookup on every anatomical fragment.
+    material.onBeforeCompile = shader => {
+      shader.uniforms.finishStrength = { value: .055 + metalness * .65 };
+      shader.fragmentShader = 'uniform float finishStrength;\n' + shader.fragmentShader.replace('#include <opaque_fragment>', `
+        vec3 r = reflect(-normalize(vViewPosition), normal);
+        float band = 1.0 - smoothstep(.06, .32, abs(dot(r, vec3(.15,.95,.27)) - .52));
+        float fill = 1.0 - smoothstep(.03, .20, abs(dot(r, vec3(-.83,.27,.49)) + .36));
+        outgoingLight += vec3(1.0,.97,.91) * finishStrength * (band + .36*fill);
+        #include <opaque_fragment>
+      `);
+    };
+  }
   const mesh = new THREE.Mesh(geometry, material);
   mesh.name = descriptor.id ?? descriptor.label ?? 'Anatomical structure';
-  mesh.userData = { ...descriptor, compartmentIndices, dynamic: !!dynamic, baseColor, baseOpacity };
+  mesh.userData = { ...descriptor, compartmentIndices, dynamic: !!dynamic, baseColor, baseOpacity, roughness, metalness };
   return mesh;
 }
 
@@ -204,7 +219,15 @@ export function applyAnatomyState(group, current) {
     mesh.visible = anatomyLayerVisible(d.layer, current.layers) && d.baseOpacity > 0;
     const fiber = Number.isInteger(d.fiberIndex) ? current.fibers?.[d.fiberIndex] : null;
     const dead = d.alive === false || fiber?.alive === false;
-    material.opacity = d.baseOpacity * (dead && d.baseOpacity > .25 ? .22 : 1); material.transparent = material.opacity < .999; material.depthWrite = material.opacity > .9;
+    let opacity = d.baseOpacity * (dead && d.baseOpacity > .25 ? .22 : 1);
+    if (current.fadePadContext && d.layer !== 'implant') opacity *= .065;
+    if (current.fadeMicroContext && ['support','membrane'].includes(d.layer)) opacity *= .13;
+    material.opacity = opacity;
+    if (material.transparent !== (opacity < .999)) {
+      material.transparent = opacity < .999;
+      material.needsUpdate = true;
+    }
+    material.depthWrite = opacity > .9;
     material.emissive.set(selectedNow ? (Number.isInteger(d.fiberIndex) ? '#15282d' : '#58380d') : '#000000');
     if (!d.dynamic) { material.color.copy(d.baseColor); continue; }
     const count = mesh.geometry.attributes.position.count, output = mesh.geometry.attributes.color.array;
@@ -293,7 +316,7 @@ export class AnatomyCanvasRenderer {
         projected[j + 2] = w; projected[j + 3] = (projection[10] * vz + projection[14]) / w;
         normal.set(normals[i], normals[i + 1], normals[i + 2]); eye.set(camera.position.x - x, camera.position.y - y, camera.position.z - z).normalize(); half.copy(light).add(eye).normalize();
         const nLight = normal.dot(light), nHalf = normal.dot(half), rim = .1 * (1 - Math.abs(normal.dot(eye))) ** 3;
-        const power = 12 + 44 * (1 - material.roughness), specular = .04 + .22 * material.metalness;
+        const power = 12 + 44 * (1 - cache.mesh.userData.roughness), specular = .04 + .22 * cache.mesh.userData.metalness;
         const front = .43 + .57 * Math.max(0, nLight) + rim, back = .43 + .57 * Math.max(0, -nLight) + rim;
         const specFront = specular * Math.max(0, nHalf) ** power, specBack = specular * Math.max(0, -nHalf) ** power;
         const r = (vertex ? vertex[i] : 1) * base.r, g = (vertex ? vertex[i + 1] : 1) * base.g, b = (vertex ? vertex[i + 2] : 1) * base.b;
@@ -375,7 +398,8 @@ function roundedRect(ctx, x, y, width, height, radius = 4) {
 export function createAnatomyViewer(host, callbacks = {}) {
   let disposed = false, pending = 0, group = null, data = null, width = 1, height = 1, backend = '', renderer = null;
   let current = { fibers: null, timeMs: 0, selectedContact: -1, selectedFiber: -1, selectedImplantContact: -1, theme: 'light', layers: {}, showLabels: true };
-  let cameraHome = null, studioTarget = null, trackingPad = false, regionId = null;
+  let cameraHome = null, trackingPad = false, regionId = null;
+  let motionScale = 1, lastMove = 0, settleTimer = 0;
   const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(35, 1, .0001, 1000);
   const canvas = document.createElement('canvas'), overlay = document.createElement('canvas');
   canvas.style.cssText = 'display:block;width:100%;height:100%;touch-action:none;outline-offset:-3px;';
@@ -389,7 +413,7 @@ export function createAnatomyViewer(host, callbacks = {}) {
     return instance;
   }
   let controls = orbitControls();
-  const ambient = new THREE.HemisphereLight('#f8f4e5', '#605649', 1.05); scene.add(ambient);
+  const ambient = new THREE.HemisphereLight('#fbf6eb', '#a39b90', 1.6); scene.add(ambient);
   const key = new THREE.DirectionalLight('#fff4de', 2.15); key.position.set(-7, 11, 9); scene.add(key);
   const fill = new THREE.DirectionalLight('#c1e7fc', 1.15); fill.position.set(8, 3, -6); scene.add(fill);
   const raycaster = new THREE.Raycaster(), pointer = new THREE.Vector2();
@@ -403,11 +427,7 @@ export function createAnatomyViewer(host, callbacks = {}) {
           renderer = new THREE.WebGLRenderer({ canvas, context, antialias: true, alpha: false, powerPreference: 'low-power' });
           renderer.setPixelRatio(maxPixelRatio()); renderer.outputColorSpace = THREE.SRGBColorSpace;
           renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = .95; backend = 'webgl';
-          const studio = new RoomEnvironment(), generator = new THREE.PMREMGenerator(renderer);
-          try {
-            studioTarget = generator.fromScene(studio, .04);
-            scene.environment = studioTarget.texture; scene.environmentIntensity = .55;
-          } catch { scene.environment = null; } finally { studio.dispose(); generator.dispose(); }
+
         }
       } catch { renderer = null; }
     }
@@ -520,7 +540,7 @@ export function createAnatomyViewer(host, callbacks = {}) {
   }
   function resize() {
     width = Math.max(1, host.clientWidth); height = Math.max(1, host.clientHeight);
-    const ratio = maxPixelRatio(); renderer.setPixelRatio(ratio); renderer.setSize(width, height, false);
+    const ratio = maxPixelRatio(); renderer.setPixelRatio(ratio * motionScale); renderer.setSize(width, height, false);
     overlay.width = Math.round(width * ratio); overlay.height = Math.round(height * ratio);
     camera.aspect = width / height; camera.updateProjectionMatrix();
     if (cameraHome) {
@@ -530,20 +550,29 @@ export function createAnatomyViewer(host, callbacks = {}) {
     }
     invalidate();
   }
+  function motionQuality() {
+    const now = performance.now(), interval = now - lastMove;
+    lastMove = now;
+    // Keep full detail on fast devices. On a slow orbit, reduce only the
+    // moving surface buffer. Labels and the settled frame retain native detail.
+    if (interval > 30 && interval < 240 && motionScale === 1) {
+      motionScale = .70;
+      renderer.setPixelRatio(maxPixelRatio() * motionScale);
+      renderer.setSize(width,height,false);
+    }
+    clearTimeout(settleTimer);
+    settleTimer = setTimeout(() => {
+      lastMove = 0;
+      if (disposed || motionScale === 1) return;
+      motionScale = 1; renderer.setPixelRatio(maxPixelRatio()); renderer.setSize(width,height,false); invalidate();
+    }, 240);
+  }
   function applyState() {
-    applyAnatomyState(group, current);
-    // A focused physical contact can lie behind the chamber wall. Fade the
-    // surrounding reference tissue for this inspection in both renderers.
-    if (regionId === 'endings' && data?.mode === 'organ') {
-      for (const mesh of group.children) if (['support','membrane'].includes(mesh.userData.layer)) {
-        mesh.material.opacity *= .13; mesh.material.transparent = true; mesh.material.depthWrite = false;
-      }
-    }
-    if (trackingPad && data?.implantPlacement?.pose === 'inserted') {
-      for (const mesh of group.children) if (mesh.userData.layer !== 'implant') {
-        mesh.material.opacity *= .065; mesh.material.transparent = true; mesh.material.depthWrite = false;
-      }
-    }
+    applyAnatomyState(group, {
+      ...current,
+      fadePadContext: trackingPad && data?.implantPlacement?.pose === 'inserted',
+      fadeMicroContext: regionId === 'endings' && data?.mode === 'organ',
+    });
   }
   function reset() {
     trackingPad = false; regionId = null; applyState();
@@ -552,10 +581,12 @@ export function createAnatomyViewer(host, callbacks = {}) {
     camera.fov = cameraHome.fov; camera.updateProjectionMatrix(); controls.update(); invalidate();
   }
   function zoom(factor) {
+    motionQuality();
     const offset = camera.position.clone().sub(controls.target), distance = clamp(offset.length() * factor, controls.minDistance, controls.maxDistance);
     camera.position.copy(controls.target).add(offset.normalize().multiplyScalar(distance)); controls.update(); invalidate();
   }
   function orbit(horizontal, vertical = 0) {
+    motionQuality();
     const offset = camera.position.clone().sub(controls.target), right = new THREE.Vector3().crossVectors(offset, camera.up).normalize();
     offset.applyAxisAngle(camera.up, horizontal);
     if (vertical) { const rotated = offset.clone().applyAxisAngle(right, vertical); if (Math.abs(rotated.clone().normalize().dot(camera.up)) < .985) offset.copy(rotated); }
@@ -643,6 +674,7 @@ export function createAnatomyViewer(host, callbacks = {}) {
     else if (event.key === '-' || event.key === '_') zoom(1 / .85);
     else if (event.key.toLowerCase() === 'f') focusSelectedPad();
     else if (event.shiftKey && ['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)) {
+      motionQuality();
       const axis = ['ArrowLeft','ArrowRight'].includes(event.key) ? 0 : 1;
       const sign = ['ArrowLeft','ArrowDown'].includes(event.key) ? -1 : 1;
       const shift = new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, axis).multiplyScalar(camera.position.distanceTo(controls.target) * sign * .04);
@@ -657,10 +689,12 @@ export function createAnatomyViewer(host, callbacks = {}) {
   };
   const contextLost = event => {
     event.preventDefault(); if (disposed || backend !== 'webgl') return;
-    studioTarget?.dispose(); studioTarget = null; scene.environment = null; renderer.dispose(); renderer = null;
+    renderer.dispose(); renderer = null;
     try { installRenderer(true); resize(); invalidate(); }
     catch (error) { callbacks.onError?.(error); }
   };
+  const pointerMove = () => { if (activePointers.size) motionQuality(); };
+  canvas.addEventListener('pointermove', pointerMove); canvas.addEventListener('wheel', motionQuality, { passive: true });
   canvas.addEventListener('pointerdown', down); canvas.addEventListener('pointerup', up); canvas.addEventListener('pointercancel', pointerCancel); canvas.addEventListener('keydown', keydown); canvas.addEventListener('webglcontextlost', contextLost);
   controls.addEventListener('change', invalidate);
   const observer = new ResizeObserver(resize); observer.observe(host); resize();
@@ -699,9 +733,10 @@ export function createAnatomyViewer(host, callbacks = {}) {
     reset, zoom, orbit, focusSelectedPad, inspectRegion,
     getState() { return { backend, cameraPosition: camera.position.toArray(), cameraTarget: controls.target.toArray(), triangleCount: Number(host.dataset.triangles ?? 0) }; },
     dispose() {
-      if (disposed) return; disposed = true; cancelAnimationFrame(pending); observer.disconnect(); controls.dispose();
+      if (disposed) return; disposed = true; clearTimeout(settleTimer); cancelAnimationFrame(pending); observer.disconnect(); controls.dispose();
+      canvas.removeEventListener('pointermove', pointerMove); canvas.removeEventListener('wheel', motionQuality);
       canvas.removeEventListener('pointerdown', down); canvas.removeEventListener('pointerup', up); canvas.removeEventListener('pointercancel', pointerCancel); canvas.removeEventListener('keydown', keydown); canvas.removeEventListener('webglcontextlost', contextLost);
-      disposeAnatomyGroup(group); studioTarget?.dispose(); renderer?.dispose();
+      disposeAnatomyGroup(group); renderer?.dispose();
       if (renderer?.domElement !== canvas) renderer?.domElement.remove(); canvas.remove(); overlay.remove();
     },
   };

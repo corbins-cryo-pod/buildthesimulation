@@ -143,3 +143,21 @@ test('macro and cellular meshes fit desktop and mobile views without clipping', 
     disposeAnatomyGroup(group);
   }
 });
+
+test('pad focus fades opaque chamber walls and restores their depth and shader state on reset', () => {
+  const group = new THREE.Group();
+  const wall = plane({ layer: 'scala' }), pad = plane({ layer: 'implant', implantContactIndex: 2 });
+  group.add(wall, pad);
+  const initialVersion = wall.material.version;
+  applyAnatomyState(group, { selectedImplantContact: 2, fadePadContext: true });
+  assert.equal(wall.material.transparent, true);
+  assert.equal(wall.material.depthWrite, false);
+  assert.ok(wall.material.version > initialVersion);
+  assert.equal(pad.material.opacity, 1);
+  const focusedVersion = wall.material.version;
+  applyAnatomyState(group, { selectedImplantContact: 2, fadePadContext: false });
+  assert.equal(wall.material.opacity, 1);
+  assert.equal(wall.material.depthWrite, true);
+  assert.ok(wall.material.version > focusedVersion);
+  disposeAnatomyGroup(group);
+});
