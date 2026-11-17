@@ -540,3 +540,19 @@ test("interleaved population response follows delivered contacts independently o
   assert.deepEqual(first.neural.traces.voltageMv, last.neural.traces.voltageMv);
   assert(first.neural.traces.voltageMv.some(v => v > -65));
 });
+
+test("equal array totals with different PRIMA pixel histories drive different retinal sites", async () => {
+  const {timeResolvedDrive} = await import("../src/lib/retina-lab/prima-network.mjs");
+  const history = [[1,0], [0,1], [-1,0]].map((row,timeMs) => ({timeMs,currentUa:Float64Array.from(row)}));
+  const transfer = v => Float64Array.of(2*v[0]+v[1], v[0]-3*v[1]);
+  const d = timeResolvedDrive(history, transfer);
+  for (const h of history) assert.deepEqual(Array.from(d.at(h.timeMs)), Array.from(transfer(h.currentUa)));
+  assert.equal(d.at(4), null);
+});
+
+test("PRIMA decoder preserves a spatially uniform recorded response without kernel gain", async () => {
+  const {decodeResponse} = await import("../src/lib/retina-lab/engine.mjs");
+  const c = fast("photovoltaic"), n = c.neural.gridSize;
+  const image = decodeResponse(c, {response:new Float64Array(n*n).fill(25)}, null, n);
+  for(const v of image.values) close(v, .25, 1e-6);
+});

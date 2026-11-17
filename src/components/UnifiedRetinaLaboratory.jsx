@@ -357,7 +357,7 @@ function Anatomy({
     </div>
   );
 }
-async function loadMedia(file) {
+async function loadMedia(file, videoOnly = false) {
   if (!file || file.size > 80e6)
     throw Error("Choose a local image or video smaller than 80 MB.");
   const url = URL.createObjectURL(file),
@@ -396,7 +396,7 @@ async function loadMedia(file) {
     };
   };
   try {
-    if (file.type.startsWith("video/")) {
+    if (videoOnly || file.type.startsWith("video/")) {
       const video = document.createElement("video");
       video.muted = true;
       video.preload = "auto";
@@ -406,7 +406,7 @@ async function loadMedia(file) {
           reject(Error("This video codec could not be decoded."));
         video.src = url;
       });
-      if (!Number.isFinite(video.duration))
+      if (!Number.isFinite(video.duration) || video.duration <= 0)
         throw Error("Video has no finite duration.");
       const frames = [];
       for (let i = 0; i < 8; i++) {
@@ -414,8 +414,9 @@ async function loadMedia(file) {
           video.duration - 0.01,
           (i * Math.min(video.duration, 2)) / 8,
         );
-        if (t > 0)
-          await new Promise((resolve) => {
+        if (t > 0 && video.currentTime !== t)
+          await new Promise((resolve, reject) => {
+            video.onerror = () => reject(Error("Could not read a video frame."));
             video.onseeked = resolve;
             video.currentTime = t;
           });
@@ -497,13 +498,15 @@ export default function UnifiedRetinaLaboratory() {
     [sweep, setSweep] = useState([]),
     [clip, setClip] = useState([]),
     [clipIndex, setClipIndex] = useState(0),
+    [playingClip, setPlayingClip] = useState(false),
     [recording, setRecording] = useState("current");
   const client = useRef(),
     counter = useRef(0),
     configRef = useRef(config),
     importRef = useRef(),
     designerRef = useRef(),
-    mediaRef = useRef();
+    mediaRef = useRef(),
+    videoRef = useRef();
   configRef.current = config;
   const displayRef = useRef(config);
   const displayConfig = useMemo(() => {
@@ -517,11 +520,18 @@ export default function UnifiedRetinaLaboratory() {
     pv = config.modality === "photovoltaic",
     optical = config.modality === "optogenetic" || config.modality === "hybrid",
     dirty = state === "dirty";
+  useEffect(() => {
+    if (!playingClip || !clip.length) return;
+    const timer = setInterval(() => setClipIndex(i => (i + 1) % clip.length), clip[0].config.scene.frameMs);
+    return () => clearInterval(timer);
+  }, [playingClip, clip]);
+
   async function run(next = configRef.current) {
     const id = ++counter.current;
     client.current?.cancel();
     setError("");
     setResult(null);
+    setPlayingClip(false);
     setClip([]);
     setFrame(0);
     setTimeView(false);
@@ -559,6 +569,7 @@ export default function UnifiedRetinaLaboratory() {
     client.current?.cancel();
     setConfig(next);
     setResult(null);
+    setPlayingClip(false);
     setClip([]);
     setFrame(0);
     setTimeView(false);
@@ -595,6 +606,12 @@ export default function UnifiedRetinaLaboratory() {
       c.modality = "photovoltaic";
       c.tissue.condition = "ga";
       c.scene.featureUm = 160;
+    }
+    if (id === "landolt") {
+      c.modality = "photovoltaic";
+      Object.assign(c.scene, { stimulus: "landolt", fieldDeg: 8, featureUm: 120 });
+      Object.assign(c.photovoltaic, { irradianceMwMm2: 3, pulseDurationMs: 9.8, frequencyHz: 30 });
+      Object.assign(c.neural, {gridSize: 47, selectedIndex: 1104});
     }
     if (id === "placement") {
       c.electrical.pattern = "single";
@@ -697,13 +714,14 @@ export default function UnifiedRetinaLaboratory() {
       }
     }
   }
-  async function runClip() {
+  async function runClip(settings = configRef.current) {
     const id = ++counter.current;
     setState("running");
     setError("");
+    setPlayingClip(false);
     setClip([]);
     try {
-      const c = normalize(configRef.current),
+      const c = normalize(settings),
         count = c.scene.frames?.length ?? 8,
         frames = [];
       for (let i = 0; i < count; i++) {
@@ -718,22 +736,55 @@ export default function UnifiedRetinaLaboratory() {
         if (id !== counter.current) return;
         frames.push(r);
       }
+      setPlayingClip(true);
       setClip(frames);
       setClipIndex(0);
       setResult(frames[0]);
       setConfig(frames[0].config);
       setState("complete");
     } catch (e) {
-      if (e.name !== "AbortError") {
+      if (id === counter.current && e.name !== "AbortError") {
         setError(e.message);
         setState("error");
       }
+    }
+  }
+  async function openVideo(source) {
+    const id = ++counter.current;
+    client.current?.cancel();
+    setPlayingClip(false);
+    setClip([]);
+    setResult(null);
+    setPlaying(false);
+    setTimeView(false);
+    setFrame(0);
+    setError("");
+    setState("running");
+    setProgress({ progress: 0, message: "Reading video frames" });
+    try {
+      let file = source;
+      if (typeof source === "string") {
+        const response = await fetch("/assets/retinal-implant/examples/" + source + ".webm");
+        if (!response.ok) throw Error("Example video could not be loaded.");
+        file = new File([await response.blob()], source + ".webm", { type: "video/webm" });
+      }
+      const patch = await loadMedia(file, true);
+      if (id !== counter.current) return;
+      const c = configRef.current;
+      const next = { ...c, inputMode: "shared", scene: { ...c.scene, ...patch, customImage: null, motion: false } };
+      invalidate(next);
+      await runClip(next);
+    } catch (e) {
+      if (id !== counter.current) return;
+      setError(e.message);
+      setState("error");
     }
   }
   async function importFile(event, kind) {
     const file = event.currentTarget.files?.[0];
     event.currentTarget.value = "";
     if (!file) return;
+    if (kind === "video" || (kind === "media" && file.type.startsWith("video/"))) return openVideo(file);
     try {
       if (kind === "media") {
         const patch = await loadMedia(file);
@@ -894,6 +945,7 @@ export default function UnifiedRetinaLaboratory() {
           ["placement", "03 · Placement & spread"],
           ["optical", "04 · Optogenetic response"],
           ["cable", "05 · Active neuron"],
+          ["landolt", "PRIMA · 120 µm Landolt C"],
         ].map(([id, title]) => (
           <button
             data-rtl-preset={id}
@@ -1825,7 +1877,7 @@ export default function UnifiedRetinaLaboratory() {
             <Select
               label="Population sampling"
               value={config.neural.gridSize}
-              options={[15, 23, 31]}
+              options={[15, 23, 31, 47]}
               onChange={(v) =>
                 invalidate({
                   ...config,
@@ -1919,10 +1971,23 @@ export default function UnifiedRetinaLaboratory() {
           {nf("scene", "fieldDeg", "Common visual field", "°", 8, 30, 1)}
           {nf("scene", "zoom", "Scene magnification", "×", 0.25, 12, 0.25)}
           {nf("scene", "contrast", "Input contrast", "", 0, 1, 0.05)}
-          <button disabled={state === "running"} onClick={() => run()}>Run image</button>
+          <button disabled={state === "running"} onClick={() => config.scene.stimulus === "video" ? runClip() : run()}>{config.scene.stimulus === "video" ? "Run video" : "Run image"}</button>
           <button onClick={() => mediaRef.current.click()}>
-            Image / video
+            Upload image
           </button>
+          <button onClick={() => videoRef.current.click()}>Upload video</button>
+        </div>
+        <div class="rtl-clip">
+          <span>Video examples</span>
+          <button onClick={() => openVideo("moving-bar")}>Moving bar</button>
+          <button onClick={() => openVideo("rotating-landolt")}>Rotating Landolt C</button>
+          {busy && <span>{progress.message}</span>}
+          {clip.length > 0 && <>
+            <button onClick={() => setPlayingClip(!playingClip)}>{playingClip ? "Pause clip" : "Play clip"}</button>
+            <label>Frame {clipIndex + 1} / {clip.length} <input aria-label="Video frame" type="range" min="0" max={clip.length - 1}
+              value={clipIndex} onInput={e => { setPlayingClip(false); setClipIndex(+e.currentTarget.value); }} /></label>
+          </>}
+          <span>Eight samples from the first two seconds. Each frame starts a fresh retinal trial.</span>
         </div>
         <div class="rtl-four-panels">
           {[
@@ -1969,6 +2034,14 @@ export default function UnifiedRetinaLaboratory() {
             </figure>
           ))}
         </div>
+        {active?.metrics.landoltContrast && <section>
+          <h3>Landolt C gap contrast</h3>
+          <p>Contrast is 1 − gap / opposite stroke. A value of 1 means a dark opening. The field is sampled at the pulse midpoint. Bipolar output is averaged over the trial.</p>
+          <dl class="rtl-metrics">
+            {Object.entries(active.metrics.landoltContrast).map(([stage, value]) =>
+              <Metric label={({input: "Input image", field: "Midpulse field drive", bipolar: "Bipolar output", ganglion: "Ganglion output", decoded: "Cell-derived image"})[stage]} value={value} />)}
+          </dl>
+        </section>}
         {active && <div class="rtl-scene-controls">
           <label class="rtl-control"><span>Inspect response sample</span>
             <input aria-label="Inspect response sample" type="number" min="0" max={active.neural.cells.length - 1}
@@ -2207,7 +2280,7 @@ export default function UnifiedRetinaLaboratory() {
               busy ||
               (!config.scene.motion && config.scene.stimulus !== "video")
             }
-            onClick={runClip}
+            onClick={() => runClip()}
           >
             Calculate sampled sequence
           </button>
@@ -2221,6 +2294,7 @@ export default function UnifiedRetinaLaboratory() {
                 max={clip.length - 1}
                 value={clipIndex}
                 onInput={(e) => {
+                  setPlayingClip(false);
                   setPlaying(false);
                   setFrame(0);
                   setClipIndex(+e.currentTarget.value);
@@ -2437,6 +2511,7 @@ export default function UnifiedRetinaLaboratory() {
         aria-label="Upload local image or video"
         onChange={(e) => importFile(e, "media")}
       />
+      <input ref={videoRef} class="rtl-file" type="file" accept="video/*" aria-label="Upload local video" onChange={e => importFile(e, "video")} />
       <ConfigurationEditor
         config={config}
         onApply={(c) => invalidate(normalize(c))}

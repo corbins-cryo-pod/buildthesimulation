@@ -19,6 +19,8 @@ export function runNetwork(c, cells, drive) {
     width = c.neural.gridSize;
   const vm = new Float64Array(n).fill(-65),
     bip = new Float64Array(n),
+    bipolarPolarization = new Float64Array(n),
+    bipolarSum = new Float64Array(n),
     amac = new Float64Array(n),
     adapt = new Float64Array(n),
     refractory = new Float64Array(n),
@@ -64,6 +66,7 @@ export function runNetwork(c, cells, drive) {
       mid = t - dt / 2,
       contactDrive = c.fidelity !== "recruitment" && drive.interleavedDrive?.(t - dt, t),
       ePulse = drive.electricalEnvelope(mid),
+      pvField = drive.photovoltaicAt?.(mid),
       pvPulse = drive.photovoltaicEnvelope(mid),
       oPulse = pulseAt(
         mid,
@@ -96,15 +99,20 @@ export function runNetwork(c, cells, drive) {
       const contrast = cell.on
         ? Math.max(0, native - 0.5 * adapt[i])
         : Math.max(0, adapt[i] - native);
+      // Integrate the signed extracellular drive before rectifying synaptic release.
+      // Opposite phases can cancel in the bipolar membrane's reduced RC response.
+      bipolarPolarization[i] = gain * bipolarPolarization[i] +
+        (1 - gain) * (pvField?.[i] ?? drive.bipolarMv[i] * pvPulse);
       const bcInput =
         sv.bipolar *
         (recruitment(
-          drive.bipolarMv[i] * Math.max(0, pvPulse),
+          Math.max(0, bipolarPolarization[i]),
           c.neural.bipolarThresholdMv,
         ) +
           bcPhoto +
           contrast);
       nextBip[i] = bip[i] * gain + (1 - gain) * bcInput;
+      bipolarSum[i] += nextBip[i];
       const lateral =
         neighbours[i].reduce((s, j) => s + bip[j], 0) /
         Math.max(1, neighbours[i].length);
@@ -197,6 +205,7 @@ export function runNetwork(c, cells, drive) {
   }));
   return {
     cells,
+    meanBipolar: Float32Array.from(bipolarSum, v => v / steps),
     response,
     frames,
     traces,
