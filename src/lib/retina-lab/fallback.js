@@ -1,3 +1,4 @@
+import { overlaySampler } from "./overlay-sampler.mjs";
 import {
   layersAt,
   population,
@@ -5,9 +6,13 @@ import {
   random,
   tissueAt,
 } from "./anatomy.mjs";
-import { placePoint } from "./coordinates.mjs";
-import { generateContacts } from "../retinal-implant/model.mjs";
-import { createPrimaGeometry } from "../prima/geometry.mjs";
+import { retinalSurface } from "./coordinates.mjs";
+import {
+  carrierSection,
+  implantLayout,
+  localClearance,
+} from "./implant-geometry.mjs";
+import { FUNDUS, PATCH, fundusSurface, vesselPaths } from "./specimen.js";
 
 /** Orthographic scientific fallback for browsers without WebGL. Same µm chart. */
 export function createFallback(host, { onSelect = () => {} } = {}) {
@@ -20,6 +25,7 @@ export function createFallback(host, { onSelect = () => {} } = {}) {
   );
   host.append(canvas);
   const ctx = canvas.getContext("2d");
+  let fundus, cachedConfig, cachedResult, layout;
   let latest = null,
     hit = [];
   function render() {
@@ -41,53 +47,66 @@ export function createFallback(host, { onSelect = () => {} } = {}) {
       rng = random(c.seed),
       pv = c.modality === "photovoltaic",
       whole = view === "whole";
-    const contacts = pv
-      ? createPrimaGeometry().pixels.map((p) => ({
-          ...p,
-          ...placePoint(p, c.placement),
-          radiusUm: 15,
-        }))
-      : (result?.electrical?.contacts ??
-        c.customContacts?.map((p) => ({
-          ...p,
-          ...placePoint(p, c.placement),
-        })) ??
-        generateContacts({ ...c.electrical, ...c.placement }));
+    if (cachedConfig !== c || cachedResult !== result) {
+      layout =
+        c.modality === "optogenetic"
+          ? null
+          : implantLayout(c, result?.electrical?.contacts);
+      cachedConfig = c;
+      cachedResult = result;
+    }
+    const contacts = layout?.contacts ?? [];
     ctx.font = "10px Arial";
     ctx.fillStyle = "#9caeac";
     ctx.fillText("ORTHOGRAPHIC ANATOMY · WebGL unavailable", 16, h - 17);
     if (whole || view === "plan") {
-      const scale = Math.min(w / 15000, (h - 120) / 12000),
-        cx = w / 2,
-        cy = h / 2 + 15,
-        xy = (x, y) => [cx + x * scale, cy - y * scale];
-      ctx.beginPath();
-      ctx.ellipse(cx, cy, 6800 * scale, 5300 * scale, 0, 0, Math.PI * 2);
-      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, 6500 * scale);
-      grad.addColorStop(0, "#6d4c39");
-      grad.addColorStop(0.28, "#957058");
-      grad.addColorStop(1, "#443c34");
-      ctx.fillStyle = grad;
-      ctx.fill();
-      for (const sign of [-1, 1])
-        for (let k = 0; k < 6; k++) {
-          ctx.strokeStyle = k % 2 ? "#b78e63" : "#803e39";
-          ctx.lineWidth = 1.2 + scale * 16;
-          ctx.beginPath();
-          for (let i = 0; i <= 45; i++) {
-            const t = i / 45,
-              p = xy(
-                4200 - (5000 + k * 400) * t,
-                -300 + sign * (1200 + k * 420) * Math.sin(t * Math.PI * 0.75),
-              );
-            if (i) ctx.lineTo(...p);
-            else ctx.moveTo(...p);
+      const scale = whole
+        ? Math.min(w / 15000, (h - 110) / 12000)
+        : Math.min((w - 42) / PATCH.width, (h - 120) / PATCH.height);
+      const cx = w / 2 - (whole ? 0 : cell.xUm * scale);
+      const cy = h / 2 + (whole ? 0 : cell.yUm * scale) + 8;
+      const xy = (x, y) => [cx + x * scale, cy - y * scale];
+      if (layers.retina !== false) {
+        fundus ??= fundusSurface();
+        ctx.save();
+        ctx.beginPath();
+        ctx.ellipse(
+          cx,
+          cy,
+          FUNDUS.rx * scale,
+          FUNDUS.ry * scale,
+          0,
+          0,
+          Math.PI * 2,
+        );
+        ctx.clip();
+        ctx.drawImage(
+          fundus,
+          cx - FUNDUS.rx * scale,
+          cy - FUNDUS.ry * scale,
+          2 * FUNDUS.rx * scale,
+          2 * FUNDUS.ry * scale,
+        );
+        ctx.restore();
+      }
+      if (layers.vessels !== false)
+        for (const { points, radius, vein } of vesselPaths([4205, -407])) {
+          ctx.strokeStyle = vein ? "#692e33" : "#bc5d46";
+          ctx.lineCap = "round";
+          for (let i = 1; i < points.length; i++) {
+            ctx.lineWidth = Math.max(
+              0.3,
+              scale * 2 * radius * (1 - (0.83 * i) / (points.length - 1)),
+            );
+            ctx.beginPath();
+            ctx.moveTo(...xy(...points[i - 1]));
+            ctx.lineTo(...xy(...points[i]));
+            ctx.stroke();
           }
-          if (layers.vessels !== false) ctx.stroke();
         }
       ctx.fillStyle = "#ddc8a4";
       ctx.beginPath();
-      const disc = xy(4200, -300);
+      const disc = xy(4205, -407);
       ctx.ellipse(...disc, scale * 410, scale * 650, 0, 0, Math.PI * 2);
       ctx.fill();
       ctx.fillStyle = "#433529";
@@ -95,26 +114,11 @@ export function createFallback(host, { onSelect = () => {} } = {}) {
       ctx.arc(cx, cy, scale * 190, 0, Math.PI * 2);
       ctx.fill();
       if (result && overlay !== "none") {
+        const sample = overlaySampler(c, result, overlay, frame);
         for (let i = 0; i < cells.length; i++) {
           const p = cells[i],
-            v =
-              overlay === "damage"
-                ? p.survival.damage
-                : overlay === "light"
-                  ? result.drive.incidentLight[i] / 4
-                  : overlay === "field"
-                    ? (result.drive.ganglionMv[i] + result.drive.bipolarMv[i]) /
-                      Math.max(
-                        1,
-                        result.metrics.peakGanglionDriveMv +
-                          result.metrics.peakBipolarDriveMv,
-                      )
-                    : overlay === "heat"
-                      ? (result.thermal?.peakDeltaK ?? 0) / 0.1
-                      : (result.neural.frames[
-                          Math.min(frame, result.neural.frames.length - 1)
-                        ]?.activity[i] ?? 0) / 2;
-          ctx.fillStyle = `rgba(239,185,90,${Math.min(0.7, v * 0.7)})`;
+            v = sample(p.xUm, p.yUm, i);
+          ctx.fillStyle = `rgba(${v < 0 ? "78,173,218" : "240,182,91"},${Math.min(0.7, Math.abs(v) * 0.7)})`;
           ctx.beginPath();
           ctx.arc(
             ...xy(p.xUm, p.yUm),
@@ -128,7 +132,11 @@ export function createFallback(host, { onSelect = () => {} } = {}) {
       if (layers.device !== false && c.modality !== "optogenetic")
         for (const p of contacts) {
           const pos = xy(p.xUm, p.yUm);
-          ctx.fillStyle = pv ? "#c9b584" : "#dacbb3";
+          ctx.fillStyle =
+            p.id ===
+            (pv ? c.photovoltaic.selectedPixelId : c.electrical.selectedId)
+              ? "#f5c873"
+              : "#c7b898";
           ctx.strokeStyle = "#ead8a4";
           ctx.lineWidth = 0.5;
           ctx.beginPath();
@@ -142,47 +150,77 @@ export function createFallback(host, { onSelect = () => {} } = {}) {
           });
         }
       ctx.fillStyle = "#d1c3a5";
-      ctx.fillText("FOVEA", cx - 20, cy + 30);
-      ctx.fillText("OPTIC DISC", disc[0] - 27, disc[1] + scale * 800);
-      ctx.fillText("1 mm", 20, h - 40);
+      if (layers.labels !== false) ctx.fillText("FOVEA", cx - 20, cy + 30);
+      if (layers.labels !== false)
+        ctx.fillText("OPTIC DISC", disc[0] - 27, disc[1] + scale * 800);
+      ctx.fillText(whole ? "1 mm" : "100 µm", 20, h - 40);
       ctx.strokeStyle = "#dacdb3";
       ctx.beginPath();
       ctx.moveTo(20, h - 50);
-      ctx.lineTo(20 + 1000 * scale, h - 50);
+      ctx.lineTo(20 + (whole ? 1000 : 100) * scale, h - 50);
       ctx.stroke();
       return;
     }
     const cx = cell.xUm,
       cy = cell.yUm,
-      width = 850,
+      width = PATCH.width,
       L = layersAt(cx, cy),
-      depth = L.at(-1).bottom,
-      scale = Math.min((w - 105) / width, (h - 150) / depth),
-      left = (w - width * scale) / 2 - 15,
-      top = (h - depth * scale) / 2 + 20,
-      xy = (x, z) => [left + (x - cx + width / 2) * scale, top + z * scale];
+      surface = retinalSurface(cx, cy),
+      delta = (x) => surface - retinalSurface(x, cy),
+      columns = Array.from({ length: 65 }, (_, i) => {
+        const x = cx + width * (i / 64 - 0.5);
+        return {
+          x,
+          layers: layersAt(x, cy),
+          clearance: layout && localClearance(layout, c, x, cy),
+        };
+      }),
+      minDepth = Math.min(
+        0,
+        ...columns.map((p) => delta(p.x)),
+        ...columns.map((p) =>
+          p.clearance
+            ? surface - p.clearance.face - (pv ? 0 : layout.thickness)
+            : 0,
+        ),
+      ),
+      depth = Math.max(
+        ...columns.map((p) => delta(p.x) + p.layers.at(-1).bottom),
+        ...columns.map((p) =>
+          p.clearance
+            ? surface - p.clearance.face + (pv ? layout.thickness : 0)
+            : 0,
+        ),
+      ),
+      scale = Math.min((w - 74) / width, (h - 150) / (depth - minDepth)),
+      left = (w - width * scale) / 2 - 13,
+      top = (h - (depth - minDepth) * scale) / 2 - minDepth * scale + 12,
+      xy = (x, z) => [
+        left + (x - cx + width / 2) * scale,
+        top + (z + delta(x)) * scale,
+      ];
     if (layers.retina !== false)
-      for (const l of L) {
-        ctx.fillStyle = l.color + "25";
-        ctx.fillRect(
-          left,
-          top + l.top * scale,
-          width * scale,
-          l.thickness * scale,
-        );
-        ctx.strokeStyle = l.color + "50";
-        ctx.lineWidth = 0.6;
+      for (const [i, l] of L.entries()) {
         ctx.beginPath();
-        ctx.moveTo(left, top + l.bottom * scale);
-        ctx.lineTo(left + width * scale, top + l.bottom * scale);
+        columns.forEach((p, k) => {
+          const a = xy(p.x, p.layers[i].top);
+          if (!k) ctx.moveTo(...a);
+          else ctx.lineTo(...a);
+        });
+        for (const p of [...columns].reverse())
+          ctx.lineTo(...xy(p.x, p.layers[i].bottom));
+        ctx.closePath();
+        ctx.fillStyle = l.color + "52";
+        ctx.fill();
+        ctx.strokeStyle = l.color + "70";
+        ctx.lineWidth = 0.65;
         ctx.stroke();
         if (layers.labels !== false) {
-          ctx.fillStyle = "#b9bdad";
-          ctx.fillText(
-            l.id,
-            left + width * scale + 8,
-            top + (l.top + l.thickness / 2) * scale + 3,
-          );
+          const p = columns.at(-1),
+            layer = p.layers[i];
+          const a = xy(p.x, (layer.top + layer.bottom) / 2);
+          ctx.fillStyle = "#ced4c8";
+          ctx.fillText(l.id, a[0] + 5, a[1] + 3);
         }
       }
     const line = (a, b, color, r = 1) => {
@@ -247,6 +285,21 @@ export function createFallback(host, { onSelect = () => {} } = {}) {
         }
       }
     }
+    if (layers.glia !== false) {
+      const glialRandom = random(c.seed + 577);
+      for (let i = 0; i < 16; i++) {
+        const x = cx + (glialRandom() - 0.5) * width,
+          layer = layersAt(x, cy);
+        const nucleus = (layer[3].top + layer[3].bottom) / 2;
+        const outer = [x + 5, layer[5].bottom],
+          inner = [x - 4, 2],
+          mid = [x, nucleus];
+        line(inner, mid, "#78a496", 0.9);
+        line(mid, outer, "#78a496", 0.9);
+        line([inner[0] - 5, 2], [inner[0] + 5, 2], "#94b8a8", 1.2);
+        soma(x, nucleus, 2.4, "#8fa69b", 1.55);
+      }
+    }
     if (layers.ganglion !== false) {
       for (let i = 0; i < 12; i++) {
         const x = cx + (i / 11 - 0.5) * width,
@@ -280,29 +333,88 @@ export function createFallback(host, { onSelect = () => {} } = {}) {
         soma(x, m.depthUm, m.kind === "parasol" ? 8 : 5.5, "#d1b8ad");
       }
     }
-    if (layers.device !== false && c.modality !== "optogenetic") {
-      const z = pv
-        ? L.find((l) => l.id === "INL").bottom + c.photovoltaic.gapUm
-        : -c.electrical.gapUm;
-      ctx.fillStyle = pv ? "#37404d" : "#667b7480";
-      ctx.fillRect(left, top + z * scale, width * scale, (pv ? 30 : 8) * scale);
-      for (const p of contacts) {
-        if (Math.abs(p.xUm - cx) > width / 2 || Math.abs(p.yUm - cy) > 300)
+    if (result && overlay !== "none") {
+      const sample = overlaySampler(c, result, overlay, frame);
+      for (const [i, p] of cells.entries()) {
+        if (
+          Math.abs(p.xUm - cx) > width / 2 ||
+          Math.abs(p.yUm - cy) > PATCH.height / 2
+        )
           continue;
-        const pos = xy(p.xUm, z);
-        ctx.fillStyle = "#d2be90";
-        ctx.fillRect(
-          pos[0] - p.radiusUm * scale,
-          pos[1] - 2,
-          p.radiusUm * 2 * scale,
-          3,
+        const v = sample(p.xUm, p.yUm, i);
+        ctx.fillStyle = `rgba(${v < 0 ? "78,173,218" : "240,182,91"},${Math.min(0.77, Math.abs(v) * 0.77)})`;
+        ctx.beginPath();
+        ctx.arc(
+          ...xy(p.xUm, p.depthUm),
+          Math.max(3, 8 * scale),
+          0,
+          2 * Math.PI,
         );
-        hit.push({ id: p.id, x: pos[0], y: pos[1], radius: 12 });
+        ctx.fill();
+      }
+    }
+    if (layers.device !== false && layout) {
+      const samples = columns.filter((p) => p.clearance);
+      const profile = carrierSection(layout, c, cx, cy, width);
+      if (profile.length) {
+        ctx.beginPath();
+        for (const [i, p] of profile.entries()) {
+          const x = xy(p.x, 0)[0],
+            y = top + (surface - p.face) * scale;
+          if (i) ctx.lineTo(x, y);
+          else ctx.moveTo(x, y);
+        }
+        for (const p of [...profile].reverse())
+          ctx.lineTo(xy(p.x, 0)[0], top + (surface - p.back) * scale);
+        ctx.closePath();
+        ctx.fillStyle = pv ? "#626e7b" : "#77938baa";
+        ctx.fill();
+      }
+      for (const p of contacts) {
+        const dy = p.yUm - cy;
+        if (Math.abs(dy) > p.radiusUm) continue;
+        const dx = Math.sqrt(p.radiusUm ** 2 - dy ** 2);
+        const x1 = Math.max(cx - width / 2, p.xUm - dx),
+          x2 = Math.min(cx + width / 2, p.xUm + dx);
+        if (x1 > x2) continue;
+        const mx = (x1 + x2) / 2,
+          x = xy(mx, 0)[0],
+          py = top + (surface - layout.surface(mx, cy)) * scale;
+        ctx.fillStyle = "#dfbe80";
+        ctx.fillRect(xy(x1, 0)[0], py - 1, (x2 - x1) * scale, 2.5);
+        hit.push({
+          id: p.id,
+          x,
+          y: py,
+          radius: Math.max(6, ((x2 - x1) * scale) / 2),
+        });
+      }
+      const p = samples[Math.floor(samples.length * 0.23)];
+      if (p && layers.labels !== false) {
+        const px = xy(p.x, 0)[0],
+          y1 = top + (surface - p.clearance.reference) * scale,
+          y2 = top + (surface - p.clearance.face) * scale;
+        ctx.strokeStyle = "#a7ded2";
+        ctx.fillStyle = "#cdf5e9";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(px, y1);
+        ctx.lineTo(px, y2);
+        for (const y of [y1, y2]) {
+          ctx.moveTo(px - 4, y);
+          ctx.lineTo(px + 4, y);
+        }
+        ctx.stroke();
+        ctx.fillText(
+          Math.round(p.clearance.gapUm) + " µm",
+          px + 5,
+          (y1 + y2) / 2,
+        );
       }
     }
     ctx.fillStyle = "#bfb69e";
     ctx.fillText("VITREOUS", left, Math.max(65, top - 30));
-    ctx.fillText("CHOROID", left, top + depth * scale + 22);
+
     ctx.strokeStyle = "#d9cdb4";
     ctx.beginPath();
     ctx.moveTo(left, h - 49);

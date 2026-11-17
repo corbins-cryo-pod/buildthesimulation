@@ -961,3 +961,50 @@ html[data-theme="dark"] .rtl-lab {
   resize: vertical;
   padding: 12px;
 }
+
+.rtl-view-note strong {
+  display: block;
+  color: #f1e6cf;
+  font: 18px/1.2 Georgia, serif;
+}
+.rtl-view-note span { display: block; margin-top: 4px; font-size: 11px; }
+.rtl-camera-actions, .rtl-place-pad {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  gap: 5px;
+}
+.rtl-camera-actions button, .rtl-place-pad button {
+  background: #223236ef;
+  border: 1px solid #72817c;
+  color: #f1e6cf;
+  min-height: 34px;
+  padding: 5px 10px;
+}
+.rtl-place-pad {
+  bottom: 54px;
+  padding: 10px;
+  background: #1f3032f5;
+  border: 1px solid #72817c;
+  color: #f1e6cf;
+  flex-direction: column;
+  font: 12px/1.4 RetinaGothic, sans-serif;
+}
+.rtl-place-pad > div { display: flex; gap: 4px; }
+.rtl-lab .rtl-camera-actions button, .rtl-lab .rtl-place-pad button {
+  color: #f1e6cf;
+  background: #223236;
+  border-color: #72817c;
+}
+.rtl-section-labels {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; overflow: hidden;
+}
+.rtl-section-labels polyline {
+  fill: none; stroke: #c1cbb8; stroke-width: .8; opacity: .75;
+}
+.rtl-section-labels text {
+  fill: #f2e6cc; font: 11px RetinaGothic, Arial, sans-serif;
+  stroke: #192326; stroke-width: 3px; paint-order: stroke;
+}

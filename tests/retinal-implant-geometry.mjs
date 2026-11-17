@@ -84,3 +84,24 @@ test('optogenetic mode creates no phantom implant', () => {
   const {group,pickable}=buildImplantGeometry(normalize({modality:'optogenetic'}));
   assert.equal(group.children.length,0);assert.equal(pickable.length,0);
 });
+
+test('local clearance follows the registered surface and ends at the footprint', async () => {
+  const { localClearance, carrierSection } = await import('../src/lib/retina-lab/implant-geometry.mjs');
+  for (const modality of ['photovoltaic', 'electrical']) {
+    const c=normalize({modality,placement:{xUm:360,yUm:140,rotationDeg:32}});
+    const l=implantLayout(c), {xUm,yUm}=c.placement;
+    const profile=carrierSection(l,c,xUm,yUm,850);
+    assert.ok(profile.length>2);
+    for (const pt of profile) {
+      close(pt.face,l.surface(pt.x,yUm));
+      close(Math.abs(pt.back-pt.face),l.thickness);
+    }
+    assert.deepEqual(carrierSection(l,c,20000,10000,850),[]);
+    const at=localClearance(l,c,xUm,yUm);
+    close(at.gapUm,(l.pv?c.photovoltaic:c.electrical).gapUm);
+    assert.equal(localClearance(l,c,15000,15000),null);
+    const off=localClearance(l,c,xUm+350,yUm+250);
+    if(l.pv) assert.ok(Math.abs(off.gapUm-at.gapUm)>1);
+    else close(off.gapUm,at.gapUm);
+  }
+});
