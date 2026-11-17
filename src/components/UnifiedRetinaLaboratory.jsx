@@ -255,6 +255,8 @@ function Anatomy({
   const host = useRef(),
     api = useRef(),
     [error, setError] = useState(""),
+    [backend, setBackend] = useState(""),
+    [moving, setMoving] = useState(false),
     latest = useRef();
   latest.current = { config, result, view, overlay, frame, layers };
   const actions = useRef();
@@ -267,7 +269,7 @@ function Anatomy({
           api.current = createScene(host.current, {
             onSelect: (id) => actions.current.onSelect(id),
             onPlace: (p) => actions.current.onPlace(p),
-            onUnavailable: setError,
+            onBackend: setBackend,
           });
           api.current.update(latest.current);
         }
@@ -289,15 +291,39 @@ function Anatomy({
     <div class="rtl-anatomy">
       <div ref={host} class="rtl-viewport" />
       <div class="rtl-view-note">
-        {view === "whole"
-          ? "Retinal surface · fovea-centered coordinates"
-          : "Microscopic section · physical depth, density-reduced cells"}
-        <br />
-        <span>Drag to orbit · scroll to zoom · shift-drag to place</span>
+        <strong>{{
+          whole: "Posterior retina", tissue: "Retinal cutaway",
+          section: "Retinal section", plan: "En face",
+        }[view]}</strong>
+        <span>{backend === "webgl"
+          ? (view === "section" ? "36 µm section · scroll or pinch to zoom" : "Drag to orbit · scroll or pinch to zoom")
+          : "Orthographic projection"}</span>
       </div>
-      <button class="rtl-reset" onClick={() => api.current?.reset()}>
-        Reset camera
-      </button>
+      <div class="rtl-camera-actions">
+        {config.modality !== "optogenetic" && (
+          <button aria-expanded={moving} onClick={() => setMoving(!moving)}>Move implant</button>
+        )}
+        {backend === "webgl" && <button onClick={() => api.current?.reset()}>Reset camera</button>}
+      </div>
+      {moving && config.modality !== "optogenetic" && (
+        <div class="rtl-place-pad" role="group" aria-label="Implant position">
+          <span>Position in 25 µm steps</span>
+          <div>
+            {[
+              ["←", "Left", -25, 0], ["→", "Right", 25, 0],
+              ["↑", "Superior", 0, 25], ["↓", "Inferior", 0, -25],
+            ].map(([icon, name, dx, dy]) => {
+              const xUm = config.placement.xUm + dx, yUm = config.placement.yUm + dy;
+              return (
+                <button key={name} aria-label={`Move implant ${name.toLowerCase()} 25 µm`}
+                  disabled={Math.abs(xUm) > 3000 || Math.abs(yUm) > 3000}
+                  onClick={() => onPlace({ xUm, yUm })}>{icon}</button>
+              );
+            })}
+          </div>
+          <output aria-live="polite">x {config.placement.xUm} · y {config.placement.yUm} µm</output>
+        </div>
+      )}
       {error && (
         <div class="rtl-graphics-error" role="status">
           {error}
@@ -942,7 +968,7 @@ export default function UnifiedRetinaLaboratory() {
             </div>
             <p class="rtl-note">
               Translation and rotation resample the scene and physical fields.
-              Shift-drag the 3D view to move the implant.
+              Use Move implant in the viewer for 25 µm adjustments.
             </p>
           </details>
           <details open>
@@ -1485,6 +1511,7 @@ export default function UnifiedRetinaLaboratory() {
               ["retina", "Tissue"],
               ["ganglion", "Ganglion cells"],
               ["interneurons", "Interneurons"],
+              ["glia", "Müller glia"],
               ["photoreceptors", "Photoreceptors"],
               ["device", "Implant"],
               ["vessels", "Vessels"],

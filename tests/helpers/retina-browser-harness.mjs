@@ -232,6 +232,11 @@ export async function verifyRetinaBrowser(mode = "electrical") {
       await pause(350);
       await capture(mode + '-assembly-' + view + '.png');
     }
+    await select('[aria-label="Anatomical overlay"]','field');
+    await until(() => evaluate(`document.querySelector('[aria-label="Anatomical overlay"]').value==='field'`));
+    await pause(150);
+    assert.equal(await evaluate(`document.querySelector('.rtl-graphics-error')?.textContent ?? ''`),'');
+    await select('[aria-label="Anatomical overlay"]','none');
     // Native keyboard events, not programmatic state mutation, verify immediate invalidation.
     const field =
         mode === "photovoltaic" ? "photovoltaic.gapUm" : "electrical.gapUm",

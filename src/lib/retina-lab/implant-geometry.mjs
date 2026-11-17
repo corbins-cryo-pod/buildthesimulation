@@ -134,3 +134,15 @@ export function buildImplantGeometry(c, { contacts, clipPlanes = [] } = {}) {
   group.userData.layout = layout;
   return { group, pickable };
 }
+
+// Local axial separation of the backing face and its anatomical reference.
+// A rigid plate can have a different local gap from its nominal anchor gap.
+export function localClearance(layout, config, x, y) {
+  const local = localPoint({xUm:x, yUm:y}, config.placement);
+  const b = layout.bounds;
+  if (local.xUm < b.left || local.xUm > b.right || local.yUm < b.bottom || local.yUm > b.top) return null;
+  const depth = layout.pv ? layersAt(x,y).find(l => l.id === 'INL').bottom : 0;
+  const reference = retinalSurface(x,y) - depth;
+  const face = layout.surface(x,y);
+  return {reference, face, gapUm: (layout.pv ? -1 : 1) * (face-reference)};
+}

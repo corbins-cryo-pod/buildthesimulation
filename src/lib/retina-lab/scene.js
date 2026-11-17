@@ -1,15 +1,28 @@
+import { overlaySampler } from "./overlay-sampler.mjs";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { retinalSurface, worldPoint, placePoint } from "./coordinates.mjs";
+import { retinalSurface } from "./coordinates.mjs";
 import {
   layersAt,
   morphology,
   random,
   tissueAt,
   population,
-  cellWorld,
 } from "./anatomy.mjs";
-import { buildImplantGeometry, microscopeClipPlanes } from "./implant-geometry.mjs";
+import {
+  buildImplantGeometry,
+  localClearance,
+  microscopeClipPlanes,
+} from "./implant-geometry.mjs";
+import { sectionLabels } from "./layer-labels.js";
+import {
+  cutBlock,
+  FUNDUS,
+  PATCH,
+  pigmentTexture,
+  posteriorBowl,
+  vesselPaths,
+} from "./specimen.js";
 import { createFallback } from "./fallback.js";
 
 const point = (x, y, depth = 0) =>
@@ -26,6 +39,8 @@ function clear(group) {
     ms = new Set(),
     ts = new Set();
   group.traverse((o) => {
+    for (const m of o.userData.contactMaterials ?? []) ms.add(m);
+    if (o.isInstancedMesh) o.dispose();
     if (o.geometry) gs.add(o.geometry);
     for (const m of Array.isArray(o.material) ? o.material : [o.material])
       if (m) {
@@ -98,6 +113,7 @@ function label(text, scale = 0.045, color = "#e8dec6") {
     new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false }),
   );
   s.scale.set(scale * 8, scale, 1);
+  s.center.set(0, 0.5);
   s.renderOrder = 30;
   return s;
 }
@@ -156,7 +172,7 @@ function sheet(
 }
 export function createScene(
   host,
-  { onSelect = () => {}, onPlace = () => {}, onUnavailable = () => {} } = {},
+  { onSelect = () => {}, onPlace = () => {}, onBackend = () => {} } = {},
 ) {
   let renderer;
   try {
@@ -166,14 +182,16 @@ export function createScene(
       powerPreference: "high-performance",
     });
   } catch {
+    onBackend("section");
     return createFallback(host, { onSelect });
   }
+  onBackend("webgl");
   renderer.localClippingEnabled = true;
   renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.6));
-  renderer.setClearColor("#151b1c");
+  renderer.setClearColor("#172225");
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.2;
+  renderer.toneMappingExposure = 1.02;
   renderer.domElement.className = "rtl-webgl";
   renderer.domElement.setAttribute(
     "aria-label",
@@ -181,18 +199,21 @@ export function createScene(
   );
   renderer.domElement.setAttribute("role", "img");
   host.append(renderer.domElement);
-  const scene = new THREE.Scene(),
-    camera = new THREE.PerspectiveCamera(34, 1, 0.005, 100);
+  const scene = new THREE.Scene();
+  const perspective = new THREE.PerspectiveCamera(34, 1, 0.005, 100);
+  const ortho = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.005, 100);
+  ortho.up.set(0, 0, 1);
+  let camera = perspective;
   camera.up.set(0, 0, 1);
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = false;
   controls.minDistance = 0.14;
   controls.maxDistance = 45;
-  scene.add(new THREE.HemisphereLight("#fff0d5", "#344354", 2.6));
-  const key = new THREE.DirectionalLight("#fff0ce", 3.5);
+  scene.add(new THREE.HemisphereLight("#fff2df", "#445456", 1.55));
+  const key = new THREE.DirectionalLight("#ffead4", 2.2);
   key.position.set(-2, -4, 8);
   scene.add(key);
-  const rim = new THREE.DirectionalLight("#82adb3", 2);
+  const rim = new THREE.DirectionalLight("#c3e2df", 1.15);
   rim.position.set(4, 3, 2);
   scene.add(rim);
   const groups = {};
@@ -206,6 +227,8 @@ export function createScene(
     "device",
     "overlay",
     "labels",
+    "caliper",
+    "glia",
   ]) {
     groups[k] = new THREE.Group();
     scene.add(groups[k]);
@@ -213,18 +236,31 @@ export function createScene(
   let latest = {},
     lastGeometry = "",
     lastOverlay = "",
+    nearestSite = null,
     lastView = "",
     pickable = [],
     axonData = null,
     disposed = false,
     drag = null,
-    neuralBodies = null;
+    tap = null;
   const ray = new THREE.Raycaster(),
     mouse = new THREE.Vector2(),
     plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0),
     intersection = new THREE.Vector3();
+  const annotation = sectionLabels(host);
+  let anchors = null;
   const render = () => {
-    if (!disposed) renderer.render(scene, camera);
+    if (!disposed) {
+      renderer.render(scene, camera);
+      annotation.update(
+        latest.view === "section" &&
+          latest.layers?.labels !== false &&
+          latest.layers?.retina !== false
+          ? anchors
+          : null,
+        camera,
+      );
+    }
   };
   function center() {
     const cell =
@@ -232,70 +268,105 @@ export function createScene(
       population(latest.config)[latest.config.neural.selectedIndex];
     return { x: cell.xUm, y: cell.yUm, cell };
   }
+  function projection() {
+    const aspect = host.clientWidth / Math.max(1, host.clientHeight);
+    perspective.aspect = aspect;
+    const gap =
+      latest.config?.modality === "electrical" ||
+      latest.config?.modality === "hybrid"
+        ? latest.config.electrical.gapUm / 1000
+        : 0;
+    const height = Math.max(0.58 + gap, 1.22 / Math.max(0.35, aspect));
+    ortho.top = height / 2;
+    ortho.bottom = -height / 2;
+    ortho.right = ortho.top * aspect;
+    ortho.left = -ortho.right;
+    camera.updateProjectionMatrix();
+  }
   function reset() {
+    camera = latest.view === "section" ? ortho : perspective;
+    controls.object = camera;
+    controls.enableRotate = camera !== ortho;
+    camera.zoom = 1;
+    projection();
     const { x, y } = center(),
       z = retinalSurface(x, y) / 1000;
     if (latest.view === "whole") {
-      camera.position.set(1, -13, 14);
       controls.target.set(0, 0, 0.4);
+      camera.position.set(0, -7, 20);
     } else if (latest.view === "section") {
-      camera.position.set(x / 1000, y / 1000 - 1.6, z - 0.1);
+      camera.position.set(x / 1000, y / 1000 - 1.1, z - 0.13);
       controls.target.set(x / 1000, y / 1000, z - 0.13);
     } else if (latest.view === "plan") {
       camera.position.set(x / 1000, y / 1000, z + 1.9);
       controls.target.set(x / 1000, y / 1000, z - 0.13);
     } else {
-      camera.position.set(x / 1000 + 0.8, y / 1000 - 1.3, z + 0.67);
+      camera.position.set(x / 1000 + 0.41, y / 1000 - 1.14, z + 0.29);
       controls.target.set(x / 1000, y / 1000, z - 0.12);
     }
+    if (latest.view === "section") {
+      camera.position.x += 0.095;
+      controls.target.x += 0.095;
+    }
+    // Fit the patch on narrow screens. Include large epiretinal gaps in the side view.
+    if (
+      latest.view !== "whole" &&
+      latest.view !== "plan" &&
+      latest.config.modality !== "optogenetic" &&
+      latest.config.modality !== "photovoltaic"
+    ) {
+      const rise = Math.max(0, latest.config.electrical.gapUm - 130) / 1000;
+      camera.position.z += rise / 2;
+      controls.target.z += rise / 2;
+      camera.position
+        .sub(controls.target)
+        .multiplyScalar(1 + rise)
+        .add(controls.target);
+    }
+    camera.position
+      .sub(controls.target)
+      .multiplyScalar(
+        Math.max(
+          1,
+          1.42 /
+            Math.max(0.35, host.clientWidth / Math.max(1, host.clientHeight)),
+        ),
+      )
+      .add(controls.target);
     controls.update();
     render();
   }
   function buildWhole(c) {
-    sheet(groups.retina, { color: "#704b3b", depth: 250 });
-    sheet(groups.retina, { color: "#a38667", opacity: 0.48, depth: 0 });
-    for (let r = 0; r < 5; r++) {
-      const ring = new THREE.Mesh(
-        new THREE.RingGeometry(0.18 + r * 0.14, 0.182 + r * 0.14, 96),
-        new THREE.MeshBasicMaterial({
-          color: "#b69c65",
-          transparent: true,
-          opacity: 0.35,
-          side: THREE.DoubleSide,
-        }),
-      );
-      ring.position.z = -0.05;
-      groups.retina.add(ring);
-    }
+    groups.retina.add(posteriorBowl());
+    const discCenter = axonData?.opticDiscUm ?? [4205, -407];
     const disc = new THREE.Mesh(
-      new THREE.CircleGeometry(0.7, 64),
-      mat("#e0c8a2", { side: THREE.DoubleSide }),
+      new THREE.CircleGeometry(1, 80),
+      mat("#ce9868", { side: THREE.DoubleSide }),
     );
-    disc.position.copy(point(4200, -300, -5));
-    disc.scale.set(0.7, 1, 1);
+    disc.scale.set(0.5, 0.67, 1);
+    disc.position.copy(point(...discCenter, -22));
+    // Tangent to the chart so the nasal rim does not disappear into the bowl.
+    const [dx, dy] = discCenter;
+    const normal = new THREE.Vector3(
+      -(retinalSurface(dx + 1, dy) - retinalSurface(dx - 1, dy)) / 2,
+      -(retinalSurface(dx, dy + 1) - retinalSurface(dx, dy - 1)) / 2,
+      1,
+    ).normalize();
+    disc.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), normal);
     groups.retina.add(disc);
-    const curves = [];
-    for (const sign of [-1, 1])
-      for (let k = 0; k < 7; k++) {
-        const arr = [];
-        for (let i = 0; i <= 40; i++) {
-          const t = i / 40;
-          arr.push([
-            4200 - (4400 + k * 500) * t,
-            -300 + sign * (1000 + k * 380) * Math.sin(t * Math.PI * 0.7),
-            -15,
-          ]);
-        }
-        for (let i = 1; i < arr.length; i++)
-          curves.push([arr[i - 1], arr[i], 14 + 10 * (1 - i / arr.length)]);
-        const vessel = arr.filter((_, i) => i % 4 === 0);
-        for (let j = 2; j < vessel.length; j++) {
-          const p = vessel[j],
-            q = [p[0] - 350, p[1] + sign * 550, -16];
-          curves.push([p, q, 8]);
-        }
+    const vessels = [[], []];
+    for (const path of vesselPaths(discCenter)) {
+      for (let i = 1; i < path.points.length; i++) {
+        const r = path.radius * (1 - (0.83 * i) / (path.points.length - 1));
+        vessels[Number(path.vein)].push([
+          [...path.points[i - 1], -26],
+          [...path.points[i], -26],
+          r,
+        ]);
       }
-    segments(groups.vessels, curves, "#843d3c");
+    }
+    segments(groups.vessels, vessels[0], "#c25e48");
+    segments(groups.vessels, vessels[1], "#6e3034");
     if (axonData) {
       const lines = [];
       for (const item of axonData.bundles ?? axonData.paths ?? []) {
@@ -304,10 +375,8 @@ export function createScene(
           const a = path[i - 1],
             b = path[i];
           if (
-            Math.abs(a[0]) < 7000 &&
-            Math.abs(a[1]) < 5400 &&
-            Math.abs(b[0]) < 7000 &&
-            Math.abs(b[1]) < 5400
+            Math.hypot(a[0] / FUNDUS.rx, a[1] / FUNDUS.ry) < 1 &&
+            Math.hypot(b[0] / FUNDUS.rx, b[1] / FUNDUS.ry) < 1
           ) {
             lines.push(
               ...point(a[0], a[1], -6).toArray(),
@@ -324,17 +393,17 @@ export function createScene(
           new THREE.LineBasicMaterial({
             color: "#d8bd83",
             transparent: true,
-            opacity: 0.4,
+            opacity: 0.17,
           }),
         ),
       );
     }
     for (const [text, x, y] of [
-      ["FOVEA", 0, -900],
+      ["FOVEA", 0, -600],
       ["OPTIC DISC", 4200, -1400],
       ["MACULA", -1800, 1700],
     ]) {
-      const s = label(text, 0.25);
+      const s = label(text, 0.65);
       s.position.copy(point(x, y, -120));
       groups.labels.add(s);
     }
@@ -342,32 +411,41 @@ export function createScene(
   function buildTissue(c) {
     const { x: cx, y: cy, cell } = center(),
       rng = random(c.seed),
-      width = 850,
-      height = 500;
+      width = PATCH.width,
+      height = PATCH.height;
     const layers = layersAt(cx, cy);
-    for (const layer of layers) {
-      sheet(groups.retina, {
-        cx,
-        cy,
-        width,
-        height,
-        depth: (x, y) => layersAt(x, y).find((l) => l.id === layer.id).bottom,
-        color: layer.color,
-        opacity: layer.id === "RPE" ? 0.95 : 0.09,
-        nx: 24,
-        ny: 10,
-      });
-      const s = label(layer.id, 0.022);
-      s.position.copy(
-        point(cx + width / 2 + 90, cy - height / 2, layer.bottom - 3),
-      );
-      groups.labels.add(s);
-    }
+    const edgeX = cx + width / 2,
+      edgeY = latest.view === "section" ? cy : cy + height * 0.13;
+    anchors = layersAt(edgeX, edgeY).map((l) => ({
+      id: l.id,
+      position: point(edgeX, edgeY, (l.top + l.bottom) / 2),
+    }));
+    groups.retina.add(cutBlock(cx, cy, c, edgeY));
+    const backDepth = cy + height / 2 - edgeY;
+    sheet(groups.retina, {
+      cx,
+      cy: cy + height / 2 - backDepth / 2,
+      width,
+      height: backDepth,
+      color: "#986c60",
+      depth: 0,
+      nx: 40,
+      ny: 12,
+    });
+    const floor = sheet(groups.retina, {
+      cx,
+      cy,
+      width,
+      height,
+      color: "#ffffff",
+      depth: (x, y) => layersAt(x, y).at(-1).bottom,
+      nx: 40,
+      ny: 20,
+    });
+    floor.material.map = pigmentTexture(c.seed);
     const rods = [],
       cones = [],
-      nuclei = [],
-      receptorBodies = [],
-      rpe = [];
+      receptorBodies = [];
     for (let j = 0; j < 16; j++)
       for (let i = 0; i < 38; i++) {
         const x = cx + (i / 37 - 0.5) * width + (rng() - 0.5) * 6,
@@ -385,26 +463,36 @@ export function createScene(
           isCone ? 3 : 1.3,
         ]);
         arr.push([[x, y, by("IS").top], [x, y, z], isCone ? 3.8 : 2]);
+        const nucleusDepth =
+          by("ONL").top + by("ONL").thickness * (0.22 + 0.56 * rng());
         receptorBodies.push({
           x,
           y,
-          z: by("ONL").top + by("ONL").thickness * (0.25 + 0.5 * rng()),
+          z: nucleusDepth,
           r: isCone ? 3.4 : 2.8,
           tall: 1.6,
         });
-        rods.push([[x, y, by("ONL").bottom], [x, y, by("OPL").top + 5], 0.5]);
-      }
-    for (let j = 0; j < 10; j++)
-      for (let i = 0; i < 24; i++) {
-        const x = cx + (i / 23 - 0.5) * width,
-          y = cy + (j / 9 - 0.5) * height,
-          l = layersAt(x, y).at(-1);
-        rpe.push({ x, y, z: l.bottom - 4, r: 12, tall: 0.25 });
+        const terminal = [
+          x - 3,
+          y + 1,
+          by("OPL").top + by("OPL").thickness * 0.7,
+        ];
+        arr.push(
+          [[x, y, by("IS").top], [x, y, nucleusDepth], 0.8],
+          [[x, y, nucleusDepth], terminal, 0.55],
+        );
+        receptorBodies.push({
+          x: terminal[0],
+          y: terminal[1],
+          z: terminal[2],
+          r: isCone ? 2.6 : 1.4,
+          tall: 0.5,
+        });
       }
     segments(groups.photoreceptors, rods, "#aab7a1");
     segments(groups.photoreceptors, cones, "#d8b67d");
     bodies(groups.photoreceptors, receptorBodies, "#a6afbe");
-    bodies(groups.retina, rpe, "#5c4239");
+
     const bcOn = [],
       bcOff = [],
       bcBodies = [],
@@ -477,6 +565,28 @@ export function createScene(
     segments(groups.interneurons, amacrine, "#b394b5");
     segments(groups.interneurons, horizontal, "#ae9c7e");
     bodies(groups.interneurons, bcBodies, "#91bbae");
+    const glia = [],
+      glialBodies = [];
+    for (let i = 0; i < 36; i++) {
+      const x = cx + (rng() - 0.5) * width,
+        y = cy + (rng() - 0.5) * height;
+      const layer = layersAt(x, y),
+        nucleus = (layer[3].top + layer[3].bottom) / 2;
+      const foot = [x - 7, y + 2, 2],
+        stalk = [x + 4, y - 1, layer[2].bottom];
+      const soma = [x, y, nucleus],
+        outer = [x + 7, y, layer[5].bottom];
+      glia.push([foot, stalk, 0.8], [stalk, soma, 1.2], [soma, outer, 0.9]);
+      for (const side of [-1, 1])
+        glia.push(
+          [foot, [foot[0] + side * 6, y, 2], 1.5],
+          [stalk, [x + side * 10, y - 4, layer[2].bottom - 8], 0.5],
+          [outer, [outer[0] + side * 4, y + 2, outer[2]], 0.7],
+        );
+      glialBodies.push({ x, y, z: nucleus, r: 2.7, tall: 1.6 });
+    }
+    segments(groups.glia, glia, "#87a69a");
+    bodies(groups.glia, glialBodies, "#94aba1");
     const treeSegments = [],
       somas = [],
       axons = [];
@@ -526,10 +636,10 @@ export function createScene(
     }
     segments(groups.ganglion, treeSegments, "#c8ada5");
     segments(groups.ganglion, axons, "#d3bd8f");
-    neuralBodies = bodies(groups.ganglion, somas, "#c8ada5");
-    const title = label("500 µm · anatomical depth", 0.026);
+    bodies(groups.ganglion, somas, "#c8ada5");
+    const title = label("500 µm", 0.048);
     title.position.copy(
-      point(cx - 150, cy - height / 2 - 40, layers.at(-1).bottom + 30),
+      point(cx - 250, cy - height / 2 - 40, layers.at(-1).bottom + 30),
     );
     groups.labels.add(title);
     segments(
@@ -548,10 +658,74 @@ export function createScene(
     const { x, y } = center();
     const assembly = buildImplantGeometry(c, {
       contacts: result?.electrical?.contacts,
-      clipPlanes: latest.view === "whole" ? [] : microscopeClipPlanes(x, y),
+      clipPlanes:
+        latest.view === "whole"
+          ? []
+          : microscopeClipPlanes(
+              x,
+              y,
+              PATCH.width,
+              latest.view === "section" ? 36 : PATCH.height,
+            ),
     });
     groups.device.add(assembly.group);
+    const layout = assembly.group.userData.layout;
+    if (layout && latest.view !== "whole" && latest.view !== "plan") {
+      const px = x - PATCH.width * 0.32,
+        py = latest.view === "section" ? y : y - PATCH.height * 0.35;
+      const clearance = localClearance(layout, c, px, py);
+      if (clearance) {
+        const { face, reference, gapUm } = clearance,
+          pts = [];
+        for (const [a, b] of [
+          [
+            [px, reference],
+            [px, face],
+          ],
+          [
+            [px - 8, face],
+            [px + 8, face],
+          ],
+          [
+            [px - 8, reference],
+            [px + 8, reference],
+          ],
+        ])
+          pts.push(
+            new THREE.Vector3(a[0] / 1000, py / 1000, a[1] / 1000),
+            new THREE.Vector3(b[0] / 1000, py / 1000, b[1] / 1000),
+          );
+        const bracket = new THREE.LineSegments(
+          new THREE.BufferGeometry().setFromPoints(pts),
+          new THREE.LineBasicMaterial({ color: 0xbbeadc, depthTest: false }),
+        );
+        bracket.renderOrder = 32;
+        groups.caliper.add(bracket);
+        const note = label(Math.round(gapUm) + " µm", 0.045, "#d4ffed");
+        note.center.set(0, 0.5);
+        note.position.set(
+          (px + 9) / 1000,
+          py / 1000,
+          (face + reference) / 2000,
+        );
+        groups.caliper.add(note);
+      }
+    }
     pickable = assembly.pickable;
+    if (pickable.length) {
+      const highlight = pickable[0].material.clone();
+      highlight.color.set("#f7ca79");
+      highlight.emissive.set("#a56322");
+      highlight.emissiveIntensity = 0.5;
+      assembly.group.userData.highlightMaterial = highlight;
+      // Retain both shared materials even when all contacts use one of them.
+      assembly.group.userData.contactMaterials = [
+        highlight,
+        pickable[0].material,
+      ];
+      for (const contact of pickable)
+        contact.userData.normalMaterial = contact.material;
+    }
   }
 
   function overlay(c, result) {
@@ -596,69 +770,32 @@ export function createScene(
       }
       return;
     }
-    const fieldPeak = field
-      ? Math.max(1e-10, ...field.potentialMv.map(Math.abs))
-      : 1;
+    const sample = overlaySampler(c, result, kind, latest.frame);
     const width = whole ? 10000 : 850,
       height = whole ? 10000 : 500,
       x0 = whole ? 0 : cx,
-      y0 = whole ? 0 : cy,
-      field = result.electrical?.field ?? result.photovoltaic?.physics.field;
+      y0 = whole ? 0 : cy;
     for (let y = 0; y < size; y++)
       for (let x = 0; x < size; x++) {
         const xx = x0 + (x / size - 0.5) * width,
           yy = y0 + (0.5 - y / size) * height;
-        let value = 0;
-        if (kind === "field" && field) {
-          let p = { xUm: xx, yUm: yy };
-          if (result.photovoltaic) {
-            const t = (-c.placement.rotationDeg * Math.PI) / 180,
-              dx = xx - c.placement.xUm,
-              dy = yy - c.placement.yUm;
-            p = {
-              xUm: Math.cos(t) * dx - Math.sin(t) * dy,
-              yUm: Math.sin(t) * dx + Math.cos(t) * dy,
-            };
-          }
-          const ix = Math.round(
-              ((p.xUm - field.xUm[0]) / (field.xUm.at(-1) - field.xUm[0])) *
-                (field.width - 1),
-            ),
-            iy = Math.round(
-              ((field.yUm[0] - p.yUm) / (field.yUm[0] - field.yUm.at(-1))) *
-                (field.height - 1),
-            );
-          if (ix >= 0 && iy >= 0 && ix < field.width && iy < field.height)
-            value = field.potentialMv[iy * field.width + ix] / fieldPeak;
-        } else {
-          const cells = result.neural.cells;
-          let best = Infinity,
-            index = 0;
-          for (let i = 0; i < cells.length; i++) {
-            const d = (cells[i].xUm - xx) ** 2 + (cells[i].yUm - yy) ** 2;
-            if (d < best) {
-              best = d;
-              index = i;
-            }
-          }
-          if (kind === "light") value = result.drive.incidentLight[index] / 4;
-          else if (kind === "damage")
-            value = 1 - cells[index].survival.photoreceptor;
-          else if (kind === "heat")
-            value = (result.thermal?.peakDeltaK ?? 0) / 0.5;
-          else {
-            const frame =
-              result.neural.frames[
-                Math.min(latest.frame ?? 0, result.neural.frames.length - 1)
-              ];
-            value =
-              kind === "voltage"
-                ? (frame.voltageMv[index] + 70) / 35
-                : kind === "synapses"
-                  ? frame.bipolar[index]
-                  : frame.activity[index] / 2;
-          }
+        let index = 0;
+        if (kind !== "field") {
+          nearestSite ??= new Int32Array(size * size).fill(-1);
+          const pixel = y * size + x;
+          if (nearestSite[pixel] < 0) {
+            let best = Infinity;
+            result.neural.cells.forEach((p, i) => {
+              const d = (p.xUm - xx) ** 2 + (p.yUm - yy) ** 2;
+              if (d < best) {
+                best = d;
+                index = i;
+              }
+            });
+            nearestSite[pixel] = index;
+          } else index = nearestSite[pixel];
         }
+        const value = sample(xx, yy, index);
         const i = (y * size + x) * 4,
           level = Math.min(1, Math.abs(value));
         data.data[i] = value < 0 ? 78 : 240;
@@ -705,6 +842,8 @@ export function createScene(
       c.photovoltaic.activeRadiusUm,
       c.photovoltaic.returnWidthUm,
       c.neural.selectedIndex,
+      c.neural.gridSize,
+      c.scene.fieldDeg,
       c.fidelity,
       !!result?.cable,
       view,
@@ -712,15 +851,43 @@ export function createScene(
     ]);
     if (key !== lastGeometry) {
       for (const g of Object.values(groups)) clear(g);
-      neuralBodies = null;
+      tap = null;
       if (view === "whole") buildWhole(c);
-      else buildTissue(c);
+      else {
+        buildTissue(c);
+        if (view === "section") {
+          const { x, y } = center(),
+            planes = microscopeClipPlanes(x, y, PATCH.width, 36);
+          for (const name of [
+            "glia",
+            "interneurons",
+            "photoreceptors",
+            "ganglion",
+          ]) {
+            groups[name].traverse((o) => {
+              if (o.material) o.material.clippingPlanes = planes;
+            });
+          }
+        }
+      }
       buildDevice(c, result);
       lastGeometry = key;
       lastOverlay = "";
+      nearestSite = null;
     }
     for (const k of Object.keys(groups))
       if (k !== "overlay") groups[k].visible = layers[k] !== false;
+    const selected =
+      c.modality === "photovoltaic"
+        ? c.photovoltaic.selectedPixelId
+        : c.electrical.selectedId;
+    for (const contact of pickable) {
+      contact.material =
+        contact.userData.contactId === selected
+          ? groups.device.children[0].userData.highlightMaterial
+          : contact.userData.normalMaterial;
+    }
+    groups.caliper.visible = layers.labels !== false && layers.device !== false;
     const okey = JSON.stringify([
       result?.experimentId,
       next.overlay,
@@ -732,8 +899,15 @@ export function createScene(
       overlay(c, result);
       lastOverlay = okey;
     }
-    if (lastView !== view) {
-      lastView = view;
+    const homeKey = [
+      view,
+      c.neural.selectedIndex,
+      c.neural.gridSize,
+      c.scene.fieldDeg,
+      c.electrical.gapUm,
+    ].join("/");
+    if (lastView !== homeKey) {
+      lastView = homeKey;
       reset();
     }
     render();
@@ -748,8 +922,9 @@ export function createScene(
     ray.setFromCamera(mouse, camera);
   };
   const down = (e) => {
+    tap = [e.clientX, e.clientY];
     pointer(e);
-    if (e.shiftKey) {
+    if (e.shiftKey && latest.config.modality !== "optogenetic") {
       controls.enabled = false;
       plane.constant =
         -retinalSurface(
@@ -789,10 +964,16 @@ export function createScene(
         });
       drag = null;
       controls.enabled = true;
-    } else {
-      const hits = groups.device.visible ? ray.intersectObjects(pickable).filter(hit =>
-        (hit.object.material.clippingPlanes ?? []).every(p => p.distanceToPoint(hit.point) >= 0)
-      ) : [];
+    } else if (tap && Math.hypot(e.clientX - tap[0], e.clientY - tap[1]) < 5) {
+      const hits = groups.device.visible
+        ? ray
+            .intersectObjects(pickable)
+            .filter((hit) =>
+              (hit.object.material.clippingPlanes ?? []).every(
+                (p) => p.distanceToPoint(hit.point) >= 0,
+              ),
+            )
+        : [];
       if (hits.length) onSelect(hits[0].object.userData.contactId);
     }
   };
@@ -800,14 +981,14 @@ export function createScene(
   renderer.domElement.addEventListener("pointerup", up);
   renderer.domElement.addEventListener("pointercancel", () => {
     drag = null;
+    tap = null;
     controls.enabled = true;
   });
   const resize = new ResizeObserver(() => {
     const w = host.clientWidth,
       h = host.clientHeight;
     renderer.setSize(w, h);
-    camera.aspect = w / Math.max(1, h);
-    camera.updateProjectionMatrix();
+    projection();
     render();
   });
   resize.observe(host);
@@ -826,6 +1007,7 @@ export function createScene(
       disposed = true;
       abort.abort();
       resize.disconnect();
+      annotation.dispose();
       controls.dispose();
       for (const g of Object.values(groups)) clear(g);
       renderer.dispose();
