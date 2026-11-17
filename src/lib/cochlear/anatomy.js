@@ -12,7 +12,7 @@ import { createNeuronAnatomyScene } from './neuronAnatomy.js';
 
 export const ANATOMY_ATLAS_URL = '/assets/cochlear/openear-zeta-atlas.json';
 export const ANATOMY_REFERENCE = atlasReference;
-const C = Object.freeze({ bone:'#d7cdb7', st:'#73b4ae', sv:'#9eabc6', sm:'#e5c789', bm:'#c87d75', rm:'#d7c4a3', tm:'#aeb5ce', nerve:'#c49a52', myelin:'#e0c99a', soma:'#d18a50', ihc:'#df9b80', ohc:'#ae87ad', support:'#86a69a', stereo:'#e5c682', synapse:'#bd6d59', typeII:'#7c98bb', inactive:'#9c9d96', metal:'#c8c9ce', carrier:'#919a9d' });
+const C = Object.freeze({ bone:'#d7cdb7', st:'#387568', sv:'#9a7468', sm:'#e5c789', bm:'#a75c48', rm:'#d7c4a3', tm:'#93ac99', nerve:'#c49a52', myelin:'#e0c99a', soma:'#d18a50', ihc:'#bc6049', ohc:'#685782', support:'#6f9180', stereo:'#e5c682', synapse:'#bd6d59', typeII:'#7c98bb', inactive:'#9c9d96', metal:'#c8c9ce', carrier:'#919a9d' });
 const clamp = (x,a=0,b=1) => Math.max(a,Math.min(b,x));
 const add=(a,b)=>a.map((v,i)=>v+b[i]), sub=(a,b)=>a.map((v,i)=>v-b[i]), mul=(a,s)=>a.map(v=>v*s);
 const dot=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0);
@@ -56,14 +56,18 @@ const placeFrame=(placeMm)=>sampleAnatomyCenterline(clamp(placeMm/35)*atlasRefer
 function freshScene(mode){return {meshes:[],paths:[],markers:[],labels:[],notes:[],legend:[],mode,up:[0,1,0],units:'mm',provenanceLabel:'OpenEar ZETA · human CT + serial-section atlas; reconstructed microanatomy'};}
 function label(scene,id,text,position,layer='anatomy',priority=1){scene.labels.push({id,text,position,layer,priority});}
 function path(scene,id,points,radii,color,layer='anatomy',extra={}){scene.paths.push({id,points,radii,color,opacity:1,layer,radialSegments:6,...extra});}
-function marker(scene,id,position,radius,color,layer='anatomy',extra={}){scene.markers.push({id,position,radius,color,layer,widthSegments:10,heightSegments:6,...extra});}
+function marker(scene,id,position,radius,color,layer='anatomy',extra={}){scene.markers.push({id,position,radius,color,layer,widthSegments:16,heightSegments:10,...extra});}
 function mesh(id,color,layer='anatomy',opacity=1,role){return {id,positions:[],indices:[],color,opacity,layer,role};}
 function appendTube(target,points,radius,sides=6,radii) {
   if(points.length<2)return;
   const start=target.positions.length/3;
+  let previousU;
   for(let i=0;i<points.length;i++) {
     const t=norm(sub(points[Math.min(i+1,points.length-1)],points[Math.max(0,i-1)]));
-    const u=norm(cross(t,Math.abs(t[1])>.9?[1,0,0]:[0,1,0])),v=cross(t,u),r=radii?.[i]??radius;
+    const transported=previousU && sub(previousU,mul(t,dot(t,previousU)));
+    const u=transported && dot(transported,transported)>1e-10 ? norm(transported) : norm(cross(t,Math.abs(t[1])>.9?[1,0,0]:[0,1,0]));
+    previousU=u;
+    const v=cross(t,u),r=radii?.[i]??radius;
     for(let k=0;k<sides;k++){const a=2*Math.PI*k/sides;target.positions.push(...add(points[i],add(mul(u,r*Math.cos(a)),mul(v,r*Math.sin(a)))));}
     if(i)for(let k=0;k<sides;k++){const a=start+(i-1)*sides+k,b=start+(i-1)*sides+(k+1)%sides,c=start+i*sides+k,d=start+i*sides+(k+1)%sides;target.indices.push(a,b,c,b,d,c);}
   }
@@ -81,7 +85,7 @@ function appendInnerHairCell(target,plate,z) {
     [.50,.0102,.0062,-.0001], [.69,.0075,.0056,-.0007],
     [.84,.0052,.0049,-.0012], [1,.0054,.0049,-.0015],
   ];
-  const start=target.positions.length/3,rows=20,sides=12,bottom=.017,top=.069;
+  const start=target.positions.length/3,rows=20,sides=24,bottom=.017,top=.069;
   let section=0;
   for(let j=0;j<=rows;j++){
     const u=j/rows;while(section<profiles.length-2&&u>profiles[section+1][0])section++;
@@ -118,8 +122,8 @@ function compactMesh(original,accept) {
   return {...original,positions,indices};
 }
 /** Cut triangles at interpolated zero contours, retaining shared edge vertices. */
-function clipMesh(original,signedDistance) {
-  const input=original.positions, values=Array.from({length:input.length/3},(_,i)=>signedDistance(input.slice(i*3,i*3+3)));
+function clipMesh(original,signedDistance,edge) {
+  const input=original.positions, values=Array.from({length:input.length/3},(_,i)=>signedDistance(input.slice(i*3,i*3+3),i));
   const positions=[],indices=[],mapping=new Map();
   const vertex=i=>({key:`v${i}`,point:input.slice(i*3,i*3+3),distance:values[i],index:i});
   const append=v=>{if(!mapping.has(v.key)){mapping.set(v.key,positions.length/3);positions.push(...v.point);}return mapping.get(v.key);};
@@ -130,6 +134,7 @@ function clipMesh(original,signedDistance) {
       if(insideA)clipped.push(a);
       if(insideA!==insideB){const t=a.distance/(a.distance-b.distance);clipped.push({key:`e${Math.min(a.index,b.index)}-${Math.max(a.index,b.index)}`,point:lerp(a.point,b.point,t),distance:0});}
     }
+    if(edge){const cut=clipped.filter(v=>v.index===undefined);if(cut.length===2)edge(cut[0].point,cut[1].point);}
     for(let k=1;k<clipped.length-1;k++)indices.push(append(clipped[0]),append(clipped[k]),append(clipped[k+1]));
   }
   return {...original,positions,indices};
@@ -171,12 +176,34 @@ function measuredMeshes(atlas) {
     return transformed;
   });convertedCache.set(atlas,result);return result;
 }
-function addMacroSurfaces(scene,atlas,cutaway) {
+const sectionCache = new WeakMap();
+const sectionDirection = norm([.22,.87,.46]);
+function windowSurface(surface, depth, contour) {
+  let coords = sectionCache.get(surface);
+  if (!coords) {
+    coords = new Float32Array(surface.positions.length / 3);
+    for (let i=0; i<coords.length; i++) {
+      const point = surface.positions.slice(i*3,i*3+3), frame = nearestFrame(point);
+      coords[i] = dot(sub(point, frame.point), sectionDirection) / Math.max(.18, frame.clearance);
+    }
+    sectionCache.set(surface, coords);
+  }
+  return clipMesh(surface, (_, i) => depth - coords[i], (a,b) => {
+    // A narrow graphical rim follows the actual intersection on the lumen mesh.
+    const d = mul(sectionDirection,-.025);
+    appendRibbon(contour,[a,b],[add(a,d),add(b,d)]);
+  });
+}
+function addMacroSurfaces(scene,atlas,cutaway,section=50) {
   if(atlas?.meshes?.length) {
     for(const m of measuredMeshes(atlas)){
       const isST=m.id==='scala-tympani',isNerve=m.id==='cochleovestibular-nerve';
-      const cropped=cutaway&&!isNerve?clipMesh(m,p=>{const f=nearestFrame(p);return .08-dot(sub(p,f.point),norm([.2,.35,1]));}):m;
-      if(cropped.indices.length)scene.meshes.push({...cropped,color:isST?C.st:isNerve?'#c0b291':C.sv,opacity:isNerve?.12:cutaway?.48:.55,layer:isNerve?'nerve':'scala',role:isNerve?'measured-nerve':'measured-scala'});
+      const rim = mesh(m.id+'-section-edge',isST?'#adc4a1':'#dca891','scala',1,'section-edge');
+      const depth = 1.25 - section * .022 + (isST ? 0 : .65);
+      const cropped=cutaway&&!isNerve?windowSurface(m,depth,rim):m;
+      if(cropped.indices.length)scene.meshes.push({...cropped,color:isST?C.st:isNerve?'#b29b73':C.sv,
+        opacity:isNerve?.36:cutaway?(isST?1:.39):.48,layer:isNerve?'nerve':'scala',role:isNerve?'measured-nerve':'measured-scala'});
+      if(rim.indices.length)scene.meshes.push(rim);
     }
   } else {
     // Reconstructed surfaces follow the measured ST medial curve; this is a
@@ -197,7 +224,7 @@ function addMacroSurfaces(scene,atlas,cutaway) {
   appendRibbon(bm,bmInner,bmOuter);appendRibbon(osl,medial,bmInner);appendRibbon(rm,medial,rmOuter);appendRibbon(sm,bmOuter,rmOuter);
   scene.meshes.push(bm,rm,sm,osl);
   // Organ of Corti is a small ridge, not a nerve or electrode tube.
-  path(scene,'organ-of-corti-ridge',bmInner.map((p,i)=>add(p,add(mul(frames[i].inward,-.035),mul(frames[i].superior,.035)))),.035,C.ohc,'organ',{radialSegments:5,role:'reconstructed-organ'});
+  path(scene,'organ-of-corti-ridge',bmInner.map((p,i)=>add(p,add(mul(frames[i].inward,-.035),mul(frames[i].superior,.035)))),.035,C.ohc,'organ',{radialSegments:9,role:'reconstructed-organ'});
   const axis=atlasReference.centerline.estimatedModiolarAxisPoint;
   const core=mesh('reconstructed-modiolus',C.bone,'bone',cutaway?.36:.48,'modiolus');
   const rows=24,sides=20,minY=-1.9,maxY=1.95;
@@ -241,12 +268,12 @@ function addNerves(scene,geometry,model,selectedFiber) {
   for(let i=0;i<7;i++)chosen.add(Math.round(i*(all.length-1)/6));
   for(const index of [...chosen].sort((a,b)=>a-b)){
     const fiber=all[index],active=fiber.alive!==false,{points,soma,start}=nerveCurve(fiber,model);
-    path(scene,`type-I-${index}`,points,.009,active?C.nerve:C.inactive,'nerve',{fiberIndex:index,compartmentIndices:points.map((_,i)=>i),radialSegments:5,opacity:active?1:.2,role:'model-type-I'});
+    path(scene,`type-I-${index}`,points,.009,active?C.nerve:C.inactive,'nerve',{fiberIndex:index,compartmentIndices:points.map((_,i)=>i),radialSegments:9,opacity:active?1:.2,role:'model-type-I'});
     // Human ganglion somata are bare; the myelin is restricted to processes.
     marker(scene,`soma-${index}`,soma,.045,active?C.soma:C.inactive,'nerve',{fiberIndex:index,compartmentIndex:model.somaIndex,scale:[1,.85,1],opacity:active?1:.2,role:'model-soma'});
     for(let j=1;j<model.compartmentCount-1;j++)if(model.type[j].endsWith('internode')){
       const a=lerp(points[j-1],points[j],.18),b=lerp(points[j],points[j+1],.82);
-      path(scene,`myelin-${index}-${j}`,[a,points[j],b],.016,C.myelin,'myelin',{fiberIndex:index,compartmentIndices:[j,j,j],radialSegments:5,opacity:active?.95:.16,role:'model-myelin'});
+      path(scene,`myelin-${index}-${j}`,[a,points[j],b],.016,C.myelin,'myelin',{fiberIndex:index,compartmentIndices:[j,j,j],radialSegments:9,opacity:active?.95:.16,role:'model-myelin'});
     }
     marker(scene,`terminal-${index}`,start,.013,C.synapse,'nerve',{fiberIndex:index,compartmentIndex:0,widthSegments:6,heightSegments:4});
   }
@@ -256,19 +283,36 @@ function addNerves(scene,geometry,model,selectedFiber) {
   const f=placeFrame(17.5),p=add(f.point,add(mul(f.superior,.72*f.clearance+.03),mul(f.inward,-.1)));
   const typeII=Array.from({length:14},(_,i)=>{const g=placeFrame(17.5-i*.10);return add(g.point,add(mul(g.superior,.72*g.clearance+.025),mul(g.inward,-.1)));});
   typeII.unshift(add(p,mul(f.inward,.6)),add(p,mul(f.inward,.2)));
-  path(scene,'type-II-outer-spiral',typeII,.008,C.typeII,'nerve',{radialSegments:5,role:'anatomical-type-II'});
+  path(scene,'type-II-outer-spiral',typeII,.008,C.typeII,'nerve',{radialSegments:9,role:'anatomical-type-II'});
   label(scene,'type-II','Type II outer-spiral afferent · anatomy only',typeII[8],'nerve',2);
   scene.notes.push('A bounded representative set of type I fibers is shown. Their curved routes are reconstructed display paths; compartment colors alone can show the actual cable replay. Neurites and somata are enlarged for visibility. Type II fibers and measured nerve trunks are anatomical context only.');
 }
 function organScene(geometry,model,selectedFiber) {
   const scene=freshScene('organ');scene.title='Organ of Corti';scene.subtitle='Reconstructed human microanatomy · millimetre coordinates, micrometre scale';scene.provenanceLabel='Procedural histology informed by human SEM/TEM studies';
   const ihc=mesh('inner-hair-cells',C.ihc,'hair-cell',1,'inner-hair-cell'),ohc=mesh('outer-hair-cells',C.ohc,'hair-cell',1,'outer-hair-cell'),support=mesh('supporting-cells',C.support,'support',.88,'supporting-cell'),stereo=mesh('stereocilia',C.stereo,'hair-cell',1,'stereocilia'),nuclei=mesh('cell-nuclei','#96765e','hair-cell',1,'nucleus'),synapses=mesh('ribbon-synapses',C.synapse,'nerve',1,'synapse'),plate=mesh('inner-cuticular-plates','#dab5a5','hair-cell',1,'cuticular-plate');
-  const bm=mesh('organ-basilar-membrane',C.bm,'membrane',.9,'basilar-membrane');appendRibbon(bm,[[-.235,0,-.095],[-.235,0,.095]],[[.235,0,-.095],[.235,0,.095]]);scene.meshes.push(bm);
-  const reticular=mesh('reticular-lamina','#d4a6a5','membrane',.25,'reticular-lamina');appendRibbon(reticular,[[-.098,.071,-.087],[-.098,.071,.087]],[[.147,.073,-.087],[.147,.073,.087]]);scene.meshes.push(reticular);
-  const canopy=mesh('tectorial-membrane',C.tm,'membrane',.35,'tectorial-membrane');const left=[],right=[];
-  // The tallest OHC bundles approach the canopy underside; IHC bundles remain
-  // free beneath it. This is static topology, not a mechanical attachment model.
-  for(let i=0;i<=30;i++){const x=-.215+.375*i/30,y=.0768+.026*x+.4*Math.max(0,-x)**2;left.push([x,y,-.092]);right.push([x,y,.092]);}appendRibbon(canopy,left,right);scene.meshes.push(canopy);
+  const bm=mesh('organ-basilar-membrane',C.bm,'membrane',1,'basilar-membrane');
+  // Curved optical-section faces and finite thickness give the basal tissue a cut edge.
+  function sheet(target,x0,x1,depth,profile,halfLength,frontEdge = () => 1) {
+    const upper=[],lower=[],back=[],backLower=[];
+    for(let i=0;i<=40;i++) {
+      const t=i/40,x=x0+(x1-x0)*t,y=profile(t);
+      const z=halfLength*(.92+.08*Math.sin(Math.PI*t));
+      const front = z*frontEdge(t);
+      upper.push([x,y,front]); lower.push([x,y-depth(t),front]);
+      back.push([x,y,-z]); backLower.push([x,y-depth(t),-z]);
+    }
+    appendRibbon(target,upper,back);appendRibbon(target,lower,upper);
+    appendRibbon(target,back,backLower);appendRibbon(target,backLower,lower);
+    for(const i of [0,40])appendRibbon(target,[upper[i],back[i]],[lower[i],backLower[i]]);
+  }
+  sheet(bm,-.141,.165,t=>.005+.004*Math.sin(Math.PI*t),t=>-.005*Math.sin(Math.PI*t),.084);
+  scene.meshes.push(bm);
+  const reticular=mesh('reticular-lamina','#ba907f','membrane',.27,'reticular-lamina');
+  sheet(reticular,-.097,.136,t=>.0013,t=>.0695+.004*t,.077,t=>.17+.60*(2*t-1)**2);scene.meshes.push(reticular);
+  const canopy=mesh('tectorial-membrane',C.tm,'membrane',.49,'tectorial-membrane');
+  // Thin lateral lip above the OHC bundles, thicker attachment on the medial side.
+  sheet(canopy,-.147,.127,t=>.001+.008*(1-t)**2,
+    t=>.078+.020*(1-t)**2+.005*Math.sin(Math.PI*t),.072,t=>-.22+.88*(2*t-1)**2);scene.meshes.push(canopy);
   const fiberIndex=clamp(Number(selectedFiber)||0,0,Math.max(0,(geometry?.fibers?.length??1)-1));
   for(let j=0;j<10;j++){
     const z=(j-4.5)*.016;
@@ -277,29 +321,38 @@ function organScene(geometry,model,selectedFiber) {
     for(let row=0;row<3;row++)for(let c=0;c<9;c++){const w=(c-4)/4,x=-.083+row*.0013+.0006*w*w,zz=z+w*.0042,h=.003+row*.00125;appendTube(stereo,[[x,.069,zz],[x,.069+h,zz]],.00023,4, [.00027,.00017]);}
     for(let row=0;row<3;row++){
       const x=.025+row*.037,top=.073+row*.001,bottom=.023-row*.001;
-      appendTube(ohc,[[x,bottom,z],[x+.002,(top+bottom)/2,z],[x+.003,top,z]],.004,8,[.0037,.0045,.0038]);
+      const axis = [[x,bottom,z],[x+.0004,bottom+.002,z],[x+.001,bottom+.009,z],
+        [x+.002,top-.012,z],[x+.003,top-.002,z],[x+.003,top,z]];
+      appendTube(ohc,axis,.004,20,[.0024,.004,.0045,.0045,.0042,.0038]);
       appendEllipsoid(nuclei,[x,.030,z],[.0032,.0045,.003]);
-      appendTube(support,[[x-.004,.002,z],[x-.002,.014,z],[x,bottom,z]],.0032,6);
+      appendTube(support,[[x-.004,-.004,z],[x-.002,.009,z],[x,.016,z],[x,bottom+.001,z]],.004,14,[.0065,.006,.004,.0046]);
       appendTube(support,[[x-.004,.012,z],[x+.010,.046,z+.003],[x+.015,.073,z+.006]],.0014,5);
       for(let rank=0;rank<3;rank++)for(let c=0;c<9;c++){const w=(c-4)/4,xx=x-.001+Math.abs(w)*.0018+rank*.0011,zz=z+w*.0034,h=.0022+rank*.00115;appendTube(stereo,[[xx,top,zz],[xx,top+h,zz]],.00023,4,[.00026,.00016]);}
       appendEllipsoid(synapses,[x,bottom-.002,z],[.0015,.001,.0015],6,4);
     }
     // Pillar legs enclose a real triangular tunnel between IHC and OHC rows.
-    appendTube(support,[[-.052,.001,z],[-.023,.036,z],[-.011,.071,z]],.0026,6);
-    appendTube(support,[[.009,.001,z],[-.001,.037,z],[-.011,.071,z]],.003,6);
-    appendEllipsoid(support,[.163,.030,z],[.013,.029,.007],10,6);
-    appendEllipsoid(support,[-.106,.026,z],[.009,.026,.007],10,6);
+    appendTube(support,[[-.052,-.004,z],[-.048,.009,z],[-.025,.035,z],[-.011,.071,z]],.0026,12,[.007,.004,.0028,.0045]);
+    appendTube(support,[[.009,-.004,z],[.009,.008,z],[.001,.037,z],[-.011,.071,z]],.003,12,[.007,.004,.0028,.0045]);
+    for(const [x,h] of [[.119,.041],[.132,.035],[.145,.028]]) {
+      appendEllipsoid(support,[x,h/2-.002,z],[.009,h/2,.0085],14,9);
+    }
+    appendEllipsoid(support,[-.104,.020,z],[.009,.024,.007],16,11);
+    appendTube(support,[[-.099,-.003,z],[-.096,.013,z],[-.093,.035,z],[-.091,.052,z],[-.086,.066,z]],.0036,14,[.0058,.0064,.0033,.0022,.0025]);
     for(let n=0;n<3;n++){
-      const zz=z+(n-1)*.0026,points=[[-.225,.009,zz-.008],[-.16,.012,zz-.004],[-.11,.015,zz],[-.083,.017,zz]];
+      const zz=z+(n-1)*.0026;
+      const bundleZ=.013*Math.round(z/.048)+(n-1)*.0009;
+      const points=Array.from({length:15},(_,k)=>bezier([-.155,-.007,bundleZ],[-.132,-.006,bundleZ],[-.104,.014,zz],[-.082,.019,zz],k/14));
       const isModel=j===5&&n===1&&model;
-      path(scene,`organ-afferent-${j}-${n}`,points,.00075,C.nerve,'nerve',{radialSegments:5,role:isModel?'model-terminal':'anatomical-type-I',...(isModel?{fiberIndex,compartmentIndices:[0,0,0,0]}:{})});
-      appendEllipsoid(synapses,[-.083,.018,zz],[.0014,.0011,.0012],6,4);
+      path(scene,`organ-afferent-${j}-${n}`,points,.00075,C.nerve,'nerve',{radialSegments:9,role:isModel?'model-terminal':'anatomical-type-I',...(isModel?{fiberIndex,compartmentIndices:[0,0,0,0]}:{})});
+      appendEllipsoid(synapses,[-.082,.019,zz],[.0014,.0011,.0012],6,4);
     }
   }
   // The sparse type-II arbor turns basally and passes beneath multiple OHCs.
   for(let row=0;row<3;row++){
-    const x=.025+row*.037,points=[[-.22,.005,.067],[-.07,.006,.067],[x,.013,.067],[x,.017,.049],[x,.017,-.075]];
-    path(scene,`organ-type-II-${row}`,points,.00055,C.typeII,'nerve',{radialSegments:5,role:'anatomical-type-II'});
+    const x=.025+row*.037;
+    const points=Array.from({length:19},(_,k)=>bezier([-.155,-.007,.019],[-.104,-.007,.052],[x,.005,.084],[x,.017,.044],k/18));
+    points.push([x,.017,-.075]);
+    path(scene,`organ-type-II-${row}`,points,.00055,C.typeII,'nerve',{radialSegments:9,role:'anatomical-type-II'});
     for(let j=0;j<9;j++)path(scene,`organ-type-II-terminal-${row}-${j}`,[[x,.017,(j-4.5)*.016],[x,.021,(j-4.5)*.016]],.0004,C.typeII,'nerve',{radialSegments:4,role:'anatomical-type-II'});
   }
   scene.meshes.push(ihc,ohc,support,stereo,nuclei,synapses,plate);
@@ -313,9 +366,25 @@ function organScene(geometry,model,selectedFiber) {
   label(scene,'bm','Basilar membrane',[.19,0,-.06],'membrane',4);
   label(scene,'synapse','Afferent contacts beneath IHCs',[-.09,.017,.02],'nerve',3);
   label(scene,'ii','Type II outer-spiral arbor · static anatomy',[.10,.017,-.055],'nerve',2);
-  scene.notes.push('This is a reconstructed representative patch, not a scan or complete cell census. Three outer rows illustrate the usual organization; some human regions have a fourth row. Cell proportions and the bundle staircase are anatomical; displayed stereocilia counts are sampled.', 'Hair cells, stereocilia, synapses, supporting cells and type II fibers are not simulated. One selected type I terminal can carry compartment-0 voltage replay; that color is not hair-cell transduction.', 'The tectorial membrane, reticular lamina and basilar membrane are distinct surfaces. No mechanical motion, endolymph flow or acoustic amplification is calculated.');
+  scene.notes.push('This is a reconstructed representative patch, not a scan or complete cell census. Three outer rows illustrate the usual organization; some human regions have a fourth row. Cell proportions and the bundle staircase are anatomical; displayed stereocilia counts are sampled.', 'Hair cells, stereocilia, synapses, supporting cells and type II fibers are not simulated. One selected type I terminal can carry compartment-0 voltage replay; that color is not hair-cell transduction.', 'The tectorial membrane and reticular lamina have a display window cut along their front edges to expose the hair bundles. No mechanical motion, endolymph flow or acoustic amplification is calculated.');
   scene.legend=[{label:'Inner hair cells',color:C.ihc,layer:'hair-cell'},{label:'Outer hair cells',color:C.ohc,layer:'hair-cell'},{label:'Supporting cells',color:C.support,layer:'support'},{label:'Type I afferents',color:C.nerve,layer:'nerve'},{label:'Type II afferents',color:C.typeII,layer:'nerve'}];
-  scene.scaleBarMm=.05;scene.scaleBarUm=50;scene.camera={position:[.34,.23,.33],target:[0,.041,0],fov:38};
+  // Fixed anatomical tints give the cut surface depth. This static shading
+  // is never attached to an electrically mapped fiber or used as a readout.
+  for (const tissue of [ihc,ohc,support,plate,stereo,nuclei]) {
+    const colors = new Float32Array(tissue.positions.length);
+    for (let i=0;i<colors.length;i+=3) {
+      const y=tissue.positions[i+1], z=tissue.positions[i+2];
+      const basal=clamp(y/.08), inside=1-clamp(Math.abs(z)/.078);
+      const shade=.74+.26*basal-.11*inside;
+      colors.set([shade,shade,shade],i);
+    }
+    tissue.appearanceColors=colors;
+  }
+  scene.inspections=[
+    {id:'bundles',label:'Hair bundles',target:[.064,.075,.054],offset:[-.010,.050,.024],spanMm:.048},
+    {id:'endings',label:'Afferent endings',target:[-.082,.021,.061],offset:[-.044,.010,.053],spanMm:.064},
+  ];
+  scene.scaleBarMm=.05;scene.scaleBarUm=50;scene.camera={position:[-.18,.14,.48],target:[0,.040,0],fov:32};
   return finishBounds(scene);
 }
 function finishBounds(scene) {
@@ -333,23 +402,26 @@ function finishBounds(scene) {
  * mappings are explicit display registrations. Array mode is device inspection
  * and deliberately has no solver contact/fiber association.
  */
-export function createAnatomyScene(geometry,model,{mode='cutaway',implantProfile,implantPose='bench',selectedFiber=0,atlas=null}={}) {
+export function createAnatomyScene(geometry,model,{mode='cutaway',implantProfile,implantPose='bench',selectedFiber=0,atlas=null,section=50}={}) {
   if(mode==='neuron')return createNeuronAnatomyScene(geometry,model,selectedFiber);
   if(mode==='organ')return organScene(geometry,model,selectedFiber);
   const scene=freshScene(mode),cutaway=mode==='cutaway'||mode==='array';
   if(mode==='array') {
-    const implant=createImplantGeometry(implantProfile,{pose:implantPose,centerline:atlasReference.centerline,radialSegments:12});
-    if(implantPose==='inserted')addMacroSurfaces(scene,atlas,true);
+    const implant=createImplantGeometry(implantProfile,{pose:implantPose,centerline:atlasReference.centerline,radialSegments:36});
+    if(implantPose==='inserted')addMacroSurfaces(scene,atlas,true,section);
     for(const key of ['meshes','paths','markers','labels'])scene[key].push(...(implant[key]??[]));
     scene.implant={profileId:implant.profile?.id,placement:implant.placement,contacts:implant.contacts};
     scene.implantPlacement=implant.placement;scene.implantContacts=implant.contacts;
     scene.notes.push(...(implant.notes??[]),'Manufacturer device inspection is separate from the generic reference experiment. No voltage replay, field solution or Greenwood assignment is associated with these vendor contacts.');
     scene.title=implant.profile?.name??implant.profile?.label??'Implant geometry';scene.subtitle=implantPose==='inserted'?'Physical arc placement in the measured scala · geometric illustration':'Unimplanted carrier and contact geometry · physical millimetres';
-    scene.provenanceLabel=implantPose==='inserted'?'OpenEar ZETA + sourced manufacturer dimensions':'Sourced manufacturer dimensions; reconstructed carrier details';
+    scene.provenanceLabel=implantPose==='inserted'?(atlas?'OpenEar ZETA + sourced manufacturer dimensions':'Centreline reconstruction + sourced device dimensions'):'Sourced manufacturer dimensions; reconstructed carrier details';
     finishBounds(scene);const center=mul(add(scene.bounds.min,scene.bounds.max),.5),extent=Math.max(...sub(scene.bounds.max,scene.bounds.min));
-    scene.camera={position:add(center,[extent*.65,extent*.65,extent*.95]),target:center,fov:40};scene.scaleBarMm=implantPose==='inserted'?1:5;return scene;
+    scene.camera=implantPose==='inserted'
+      ? {position:[1.5,14,7.5],target:[0,-.18,-.05],fov:34}
+      : {position:add(center,[extent*.10,extent*.55,extent*1.05]),target:center,fov:32};
+    scene.legend=implantPose==='inserted'?[{label:'Scala tympani',color:C.st,layer:'scala'},{label:'Scala vestibuli',color:C.sv,layer:'scala'},{label:'Electrode carrier',color:'#766450',layer:'implant'}]:[];scene.scaleBarMm=implantPose==='inserted'?1:5;return scene;
   }
-  addMacroSurfaces(scene,atlas,cutaway);addNerves(scene,geometry,model,selectedFiber);addGenericArray(scene,geometry);
+  addMacroSurfaces(scene,atlas,cutaway,section);addNerves(scene,geometry,model,selectedFiber);addGenericArray(scene,geometry);
   scene.title=mode==='whole'?(atlas?'Human cochlea · measured anatomy':'Human cochlea · centreline reconstruction'):'Cochlear cutaway';
   scene.subtitle='OpenEar ZETA scalae · reconstructed membranes and neural microstructure';
   if(!atlas)scene.provenanceLabel='Measured ST centreline + reconstructed lumens; surface asset unavailable';

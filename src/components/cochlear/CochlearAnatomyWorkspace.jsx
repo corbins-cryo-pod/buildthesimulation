@@ -1,11 +1,11 @@
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 import AnatomyScene from './AnatomyScene.jsx';
 import CochleaScene from './Scene.jsx';
 import { IMPLANT_PROFILES, getImplantProfile, getImplantContactMap } from '../../lib/cochlear/implants.js';
 
 const VIEWS = [
-  ['cutaway', 'Cochlear cutaway'], ['whole', 'Whole cochlea'],
-  ['organ', 'Hair cells & nerves'], ['neuron', 'Auditory neuron'], ['array', 'Implant models'],
+  ['array', 'Implant models'], ['whole', 'Whole cochlea'], ['cutaway', 'Cochlear cutaway'],
+  ['organ', 'Hair cells & nerves'], ['neuron', 'Auditory neuron'],
   ['unrolled', 'Calculation space'], ['field', 'Contact field'],
 ];
 const LAYERS = [
@@ -39,11 +39,17 @@ export default function CochlearAnatomyWorkspace({
   selectedContact, selectedFiber, onContact, onFiber,
   timeMs, playing, durationMs, onTime, onToggleReplay, onUseChannelCount,
 }) {
-  const [view, setView] = useState('cutaway');
+  const [view, setView] = useState('array');
   const [profileId, setProfileId] = useState('cochlear-ci622');
-  const [implantPose, setImplantPose] = useState('bench');
+  const [implantPose, setImplantPose] = useState('inserted');
   const [implantContact, setImplantContact] = useState(null);
-  const [showLabels, setShowLabels] = useState(true);
+  const [showLabels, setShowLabels] = useState(false);
+  const [depth, setDepth] = useState(62);
+  const [section, setSection] = useState(depth);
+  useEffect(() => {
+    const timer = setTimeout(() => setSection(depth), 100);
+    return () => clearTimeout(timer);
+  }, [depth]);
   const [layers, setLayers] = useState({ bone: false, scalae: true, membranes: true, hairCells: true, neurons: true, implant: true });
   const [copied, setCopied] = useState('');
   const [sceneMeta, setSceneMeta] = useState(null);
@@ -55,6 +61,7 @@ export default function CochlearAnatomyWorkspace({
   const selected = geometry.contacts[selectedContact];
   const allocation = result?.allocation?.[selectedContact];
   const fiber = fibers?.[selectedFiber];
+  const hasSection = view === 'cutaway' || (hardware && implantPose === 'inserted');
   const chooseProfile = id => { setProfileId(id); setImplantContact(null); setCopied(''); };
   const copyChannels = () => {
     const applied = onUseChannelCount(profile.channelCount);
@@ -62,38 +69,44 @@ export default function CochlearAnatomyWorkspace({
   };
   return <section class="coch-anatomy-workspace" aria-labelledby="coch-anatomy-title">
     <header class="coch-atlas-heading">
-      <div><p class="coch-kicker">Anatomy / Implant construction / Neural response</p><h2 id="coch-anatomy-title">Inside the cochlea</h2></div>
-      <div class="coch-atlas-provenance"><span class="coch-live-dot" />Human CT + serial-section atlas<a href="/simulations/cochlear-implant/methods/#anatomy">Anatomy &amp; model sources ↗</a></div>
+      <div><h2 id="coch-anatomy-title">Inside the cochlea</h2></div>
+      <div class="coch-atlas-provenance">Human CT + serial-section atlas<a href="/simulations/cochlear-implant/methods/#anatomy">Anatomy &amp; model sources ↗</a></div>
     </header>
     <div class="coch-atlas-viewbar" role="group" aria-label="Model view">
-      {VIEWS.map(([id, label], index) => <button key={id} aria-pressed={view === id} onClick={() => setView(id)}><span>{String(index + 1).padStart(2, '0')}</span>{label}</button>)}
+      {VIEWS.map(([id, label]) => <button key={id} aria-pressed={view === id} onClick={() => setView(id)}>{label}</button>)}
     </div>
-    <div class="coch-atlas-description"><p>{DESCRIPTIONS[view]}</p><span>{hardware ? 'Physical reference model' : ['organ','neuron'].includes(view) ? 'Cellular anatomy' : anatomical ? 'Human anatomy + model overlay' : 'Calculated coordinates'}</span></div>
+    {!hardware && <div class="coch-atlas-description"><p>{DESCRIPTIONS[view]}</p><span>{hardware ? 'Physical reference model' : ['organ','neuron'].includes(view) ? 'Cellular anatomy' : anatomical ? 'Human anatomy + model overlay' : 'Calculated coordinates'}</span></div>}
     {hardware && <div class="coch-implant-selector">
       <label><span class="coch-label">Implant array</span><select aria-label="Implant reference model" value={profileId} onChange={event => chooseProfile(event.currentTarget.value)}>{IMPLANT_PROFILES.map(p => <option key={p.id} value={p.id}>{p.manufacturer} · {p.name}</option>)}</select></label>
       <div class="coch-pose-controls" role="group" aria-label="Implant inspection pose"><button aria-pressed={implantPose === 'inserted'} onClick={() => setImplantPose('inserted')}>Within the cochlea</button><button aria-pressed={implantPose === 'bench'} onClick={() => setImplantPose('bench')}>Array on the bench</button></div>
       <label class="coch-pad-select"><span class="coch-label">Physical contact</span><select aria-label="Inspect physical implant pad" value={implantContact ?? ''} onChange={event => setImplantContact(event.currentTarget.value === '' ? null : Number(event.currentTarget.value))}><option value="">Select a pad</option>{Array.from({ length: profile.padCount }, (_, i) => <option key={i} value={i}>{'Pad ' + (i + 1)}</option>)}</select></label>
     </div>}
-    {anatomical && <div class="coch-anatomy-layers" role="group" aria-label="Anatomical layers">
-      <span class="coch-label">Layers</span>{LAYERS.filter(([id]) => view === 'neuron' ? id === 'neurons' : view === 'organ' ? ['membranes','hairCells','neurons'].includes(id) : !hardware || implantPose === 'inserted' || id === 'implant').map(([id, label]) => <label key={id}><input type="checkbox" checked={layers[id]} onChange={event => setLayers(old => ({ ...old, [id]: event.currentTarget.checked }))} /><span>{label}</span></label>)}
+    {anatomical && <div class="coch-inspection-tools">
+      {hasSection && <label class="coch-section-control"><span>Cutaway depth</span><input type="range" aria-label="Cutaway depth" disabled={sceneMeta?.atlas !== 'ready'} min="0" max="100" step="1" value={depth} onInput={event => setDepth(Number(event.currentTarget.value))} /><output>{depth}%</output></label>}
+      <details class="coch-layer-disclosure"><summary>Layers &amp; labels</summary><div class="coch-anatomy-layers" role="group" aria-label="Anatomical layers">
+      {LAYERS.filter(([id]) => view === 'neuron' ? id === 'neurons' : view === 'organ' ? ['membranes','hairCells','neurons'].includes(id) : !hardware || implantPose === 'inserted' || id === 'implant').map(([id, label]) => <label key={id}><input type="checkbox" checked={layers[id]} onChange={event => setLayers(old => ({ ...old, [id]: event.currentTarget.checked }))} /><span>{label}</span></label>)}
       <label class="coch-label-switch"><input type="checkbox" checked={showLabels} onChange={event => setShowLabels(event.currentTarget.checked)} /><span>Labels</span></label>
-    </div>}
+    </div></details></div>}
     <div class={'coch-atlas-model-layout' + (hardware ? ' has-device-details' : '')}>
       <div class={'coch-atlas-viewport' + (anatomical ? ' is-anatomical' : '')}>
-        {anatomical ? <AnatomyScene geometry={geometry} model={model} fibers={fibers} timeMs={timeMs} selectedContact={selectedContact} selectedFiber={selectedFiber} onContact={onContact} onFiber={onFiber} theme={theme} anatomyMode={view} layers={layers} showLabels={showLabels} implantProfile={profile} implantPose={implantPose} selectedImplantContact={implantContact} onImplantContact={setImplantContact} onSceneMetadata={setSceneMeta} /> : <CochleaScene geometry={geometry} model={model} fibers={fibers} timeMs={timeMs} selectedContact={selectedContact} selectedFiber={selectedFiber} onContact={onContact} onFiber={onFiber} theme={theme} settings={settings} view={view} />}
+        {anatomical ? <AnatomyScene geometry={geometry} model={model} fibers={fibers} timeMs={timeMs} selectedContact={selectedContact} selectedFiber={selectedFiber} onContact={onContact} onFiber={onFiber} theme={theme} anatomyMode={view} section={hasSection ? section : 50} layers={layers} showLabels={showLabels} implantProfile={profile} implantPose={implantPose} selectedImplantContact={implantContact} onImplantContact={setImplantContact} onSceneMetadata={setSceneMeta} /> : <CochleaScene geometry={geometry} model={model} fibers={fibers} timeMs={timeMs} selectedContact={selectedContact} selectedFiber={selectedFiber} onContact={onContact} onFiber={onFiber} theme={theme} settings={settings} view={view} />}
       </div>
       {hardware && <aside class="coch-device-detail" aria-label="Implant reference dimensions">
         <p class="coch-kicker">{profile.manufacturer}</p><h3>{profile.name}</h3><p class="coch-device-family">{String(profile.family).replaceAll('-', ' ')}</p>
-        <p>{profile.description}</p>
-        <dl><div><dt>Stimulation sites</dt><dd>{profile.channelCount}</dd></div><div><dt>Physical pads</dt><dd>{profile.padCount}</dd></div><div><dt>Reported active span</dt><dd>{number(profile.activeSpanMm, 1)} mm</dd></div><div><dt>Distal cross-section</dt><dd>{size(profile.tipSizeMm)}</dd></div><div><dt>Proximal cross-section</dt><dd>{size(profile.baseSizeMm)}</dd></div></dl>
-        {placement && <div class="coch-placement-readout" role="status"><span class="coch-label">{placement.partialInsertion ? 'Partial geometric placement' : 'Geometric placement'}</span><strong>{number(placement.achievedInsertionMm, 2)} / {number(placement.requestedInsertionMm, 2)} mm</strong><p>Tip arc distance placed / requested. {placement.outsidePhysicalPadCount ? placement.outsidePhysicalPadCount + ' physical pads remain outside the reference path.' : 'All physical pads lie along the reference path.'} Dimensions are retained; this is not an insertion-mechanics prediction.</p></div>}
-        {physicalPad && <p class="coch-pad-readout" role="status">Physical pad {implantContact + 1} of {profile.padCount} · site {physicalPad.siteNumber} · {physicalPad.padsAtSite === 2 ? 'paired site' : 'single pad'}. Sites use apical-first model order, independently of vendor and calculated-source numbering.</p>}
+
+        <dl><div><dt>Stimulation sites</dt><dd>{profile.channelCount}</dd></div><div><dt>Physical pads</dt><dd>{profile.padCount}</dd></div><div><dt>Reported active span</dt><dd>{number(profile.activeSpanMm, 1)} mm</dd></div></dl>
+        {placement && <div class="coch-placement-readout" role="status"><span class="coch-label">{placement.partialInsertion ? 'Partial geometric placement' : 'Geometric placement'}</span><strong>{number(placement.achievedInsertionMm, 2)} / {number(placement.requestedInsertionMm, 2)} mm</strong><p>Placed / requested tip distance. {placement.outsidePhysicalPadCount ? placement.outsidePhysicalPadCount + ' pads lie outside the atlas path.' : 'All pads lie along the atlas path.'}</p></div>}
+        <div class="coch-pad-inspector"><span class="coch-label">Contact inspection</span><p aria-live="polite">{physicalPad ? <><strong>Pad {implantContact + 1}</strong> · site {physicalPad.siteNumber} · {physicalPad.padsAtSite === 2 ? 'paired site' : 'single pad'}</> : 'Pick a pad on the array or choose one above.'}</p>
+          <div class="coch-step-pads"><button disabled={implantContact === 0} onClick={() => setImplantContact(implantContact === null ? profile.padCount - 1 : implantContact - 1)} aria-label="Previous physical pad">← Previous</button><button disabled={implantContact === profile.padCount - 1} onClick={() => setImplantContact(implantContact === null ? 0 : implantContact + 1)} aria-label="Next physical pad">Next →</button></div>
+        </div>
+        <details class="coch-reference-details"><summary>Experiment channel count</summary>
         <button class="coch-copy-channels" onClick={copyChannels} disabled={!!busy}>{'Use ' + profile.channelCount + ' channels in the experiment'}</button>
         <p class="coch-device-copy-note">Enables all source channels and selects a feasible generic eight-maxima processor. It keeps the experiment’s reference geometry.</p>
-        {copied && <p class="coch-copy-status" role="status">{copied}</p>}
-        <details class="coch-reference-details"><summary>Dimensions, assumptions &amp; sources</summary>{profile.notes?.map((note, i) => <p key={i}>{note}</p>)}<ul>{profile.sources?.map((source, i) => <li key={i}><a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></li>)}</ul></details>
+        {copied && <p class="coch-copy-status" role="status">{copied}</p>}</details>
+        <details class="coch-reference-details"><summary>Dimensions, assumptions &amp; sources</summary><p>{profile.description}</p><p>Distal cross-section {size(profile.tipSizeMm)}. Proximal cross-section {size(profile.baseSizeMm)}. Physical sites use apical-first model order.</p>{profile.notes?.map((note, i) => <p key={i}>{note}</p>)}<ul>{profile.sources?.map((source, i) => <li key={i}><a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></li>)}</ul></details>
       </aside>}
     </div>
+    {anatomical && <details class="coch-camera-help"><summary>Camera controls</summary><p>Drag to orbit. Shift-drag or use two fingers to pan. Scroll or pinch to zoom. With the canvas focused, use the arrow keys to rotate, Shift + arrows to pan, + and − to zoom, F for pad detail, and Home to reset.</p></details>}
     <div class="coch-atlas-caption"><p>{CAPTIONS[view]}</p>{!hardware && view !== 'field' && <div class="coch-voltage-legend"><span>Modeled membrane</span><i /><span>−80</span><span>+30 mV</span></div>}</div>
     {view === 'organ' && <div class="coch-cell-guide"><div><span class="coch-cell-swatch inner" /><strong>Inner hair cells</strong><p>One sensory row with flask-shaped cell bodies and apical stereocilia.</p></div><div><span class="coch-cell-swatch outer" /><strong>Outer hair cells</strong><p>Three rows of cylindrical cells with stepped, chevron-shaped hair bundles.</p></div><div><span class="coch-cell-swatch nerve" /><strong>Afferent pathways</strong><p>Radial type-I endings at inner hair cells; type-II fibers spiral beneath outer hair cells.</p></div></div>}
     {!hardware && <>
