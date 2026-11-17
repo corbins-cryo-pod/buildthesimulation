@@ -11,6 +11,7 @@ import {
 } from "./anatomy.mjs";
 import {
   buildImplantGeometry,
+  carrierSection,
   localClearance,
   microscopeClipPlanes,
 } from "./implant-geometry.mjs";
@@ -670,6 +671,44 @@ export function createScene(
     });
     groups.device.add(assembly.group);
     const layout = assembly.group.userData.layout;
+    // Clipping the intact backing exposes an open shell when viewed edge-on.
+    // Fill its physical cross-section so the caliper terminates on visible material.
+    if (layout && latest.view === "section") {
+      const profile = carrierSection(layout, c, x, y, PATCH.width);
+      const vertices = [],
+        faces = [];
+      for (const [i, p] of profile.entries()) {
+        vertices.push(
+          p.x / 1000,
+          y / 1000,
+          p.face / 1000,
+          p.x / 1000,
+          y / 1000,
+          p.back / 1000,
+        );
+        if (i) {
+          const n = 2 * i;
+          faces.push(n - 2, n - 1, n, n - 1, n + 1, n);
+        }
+      }
+      if (faces.length) {
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute(
+          "position",
+          new THREE.Float32BufferAttribute(vertices, 3),
+        );
+        geometry.setIndex(faces);
+        groups.device.add(
+          new THREE.Mesh(
+            geometry,
+            new THREE.MeshBasicMaterial({
+              color: layout.pv ? "#758193" : "#8aa397",
+              side: THREE.DoubleSide,
+            }),
+          ),
+        );
+      }
+    }
     if (layout && latest.view !== "whole" && latest.view !== "plan") {
       const px = x - PATCH.width * 0.32,
         py = latest.view === "section" ? y : y - PATCH.height * 0.35;

@@ -7,7 +7,11 @@ import {
   tissueAt,
 } from "./anatomy.mjs";
 import { retinalSurface } from "./coordinates.mjs";
-import { implantLayout, localClearance } from "./implant-geometry.mjs";
+import {
+  carrierSection,
+  implantLayout,
+  localClearance,
+} from "./implant-geometry.mjs";
 import { FUNDUS, PATCH, fundusSurface, vesselPaths } from "./specimen.js";
 
 /** Orthographic scientific fallback for browsers without WebGL. Same µm chart. */
@@ -351,24 +355,19 @@ export function createFallback(host, { onSelect = () => {} } = {}) {
     }
     if (layers.device !== false && layout) {
       const samples = columns.filter((p) => p.clearance);
-      if (samples.length) {
+      const profile = carrierSection(layout, c, cx, cy, width);
+      if (profile.length) {
         ctx.beginPath();
-        for (const [i, p] of samples.entries()) {
-          const px = xy(p.x, 0)[0],
-            py = top + (surface - p.clearance.face) * scale;
-          if (i) ctx.lineTo(px, py);
-          else ctx.moveTo(px, py);
+        for (const [i, p] of profile.entries()) {
+          const x = xy(p.x, 0)[0],
+            y = top + (surface - p.face) * scale;
+          if (i) ctx.lineTo(x, y);
+          else ctx.moveTo(x, y);
         }
-        for (const p of [...samples].reverse()) {
-          ctx.lineTo(
-            xy(p.x, 0)[0],
-            top +
-              (surface - p.clearance.face + (pv ? 1 : -1) * layout.thickness) *
-                scale,
-          );
-        }
+        for (const p of [...profile].reverse())
+          ctx.lineTo(xy(p.x, 0)[0], top + (surface - p.back) * scale);
         ctx.closePath();
-        ctx.fillStyle = pv ? "#545e70" : "#77938b99";
+        ctx.fillStyle = pv ? "#626e7b" : "#77938baa";
         ctx.fill();
       }
       for (const p of contacts) {
@@ -415,7 +414,7 @@ export function createFallback(host, { onSelect = () => {} } = {}) {
     }
     ctx.fillStyle = "#bfb69e";
     ctx.fillText("VITREOUS", left, Math.max(65, top - 30));
-    ctx.fillText("CHOROID", left, top + depth * scale + 22);
+
     ctx.strokeStyle = "#d9cdb4";
     ctx.beginPath();
     ctx.moveTo(left, h - 49);

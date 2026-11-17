@@ -146,3 +146,30 @@ export function localClearance(layout, config, x, y) {
   const face = layout.surface(x,y);
   return {reference, face, gapUm: (layout.pv ? -1 : 1) * (face-reference)};
 }
+
+// Intersect a horizontal retinal slice with the rotated carrier footprint.
+// Sample only the surviving interval so a clipped edge closes at its true x.
+export function carrierSection(layout, config, cx, cy, width) {
+  const mid = localPoint({ xUm: cx, yUm: cy }, config.placement);
+  const angle = config.placement.rotationDeg * Math.PI / 180;
+  let lo = -width / 2, hi = width / 2;
+  const b = layout.bounds;
+  for (const [origin, slope, lower, upper] of [
+    [mid.xUm, Math.cos(angle), b.left, b.right],
+    [mid.yUm, -Math.sin(angle), b.bottom, b.top],
+  ]) {
+    if (Math.abs(slope) < 1e-12) {
+      if (origin < lower || origin > upper) return [];
+      continue;
+    }
+    const a = (lower-origin)/slope, z = (upper-origin)/slope;
+    lo = Math.max(lo, Math.min(a,z));
+    hi = Math.min(hi, Math.max(a,z));
+  }
+  if (hi <= lo) return [];
+  const steps = Math.max(1, Math.ceil((hi-lo)/10));
+  return Array.from({length:steps+1}, (_,i)=>{
+    const x = cx+lo+(hi-lo)*i/steps, face=layout.surface(x,cy);
+    return { x, face, back:face-layout.faceDirection*layout.thickness };
+  });
+}
