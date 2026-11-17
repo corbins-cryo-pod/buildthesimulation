@@ -123,7 +123,7 @@ function Metric({ label, value, unit }) {
     </div>
   );
 }
-function Raster({ image, label, onSelect }) {
+function Raster({ image, label, onSelect, signed = false }) {
   const ref = useRef();
   useEffect(() => {
     const c = ref.current,
@@ -134,19 +134,19 @@ function Raster({ image, label, onSelect }) {
     const data = new ImageData(image.width, image.height),
       values = image.values ?? image.brightness;
     for (let i = 0; i < values.length; i++) {
-      const v = Math.max(0, Math.min(1, values[i]));
-      data.data[i * 4] = Math.round(v * 245);
-      data.data[i * 4 + 1] = Math.round(v * 239);
-      data.data[i * 4 + 2] = Math.round(v * 219);
+      const v = Math.max(0, Math.min(1, signed ? Math.abs(values[i]) : values[i]));
+      data.data[i * 4] = Math.round(v * (signed && values[i] < 0 ? 55 : 245));
+      data.data[i * 4 + 1] = Math.round(v * (signed ? 166 : 239));
+      data.data[i * 4 + 2] = Math.round(v * (signed ? values[i] < 0 ? 255 : 56 : 219));
       data.data[i * 4 + 3] = 255;
     }
     const tmp = document.createElement("canvas");
     tmp.width = image.width;
     tmp.height = image.height;
     tmp.getContext("2d").putImageData(data, 0, 0);
-    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingEnabled = !signed;
     ctx.drawImage(tmp, 0, 0, c.width, c.height);
-  }, [image]);
+  }, [image, signed]);
   return (
     <canvas
       ref={ref}
@@ -454,6 +454,7 @@ function ConfigurationEditor({ config, onApply }) {
 export default function UnifiedRetinaLaboratory() {
   const [config, setConfig] = useState(cloneDefaults),
     [result, setResult] = useState(null),
+    [inspectIndex, setInspectIndex] = useState(null),
     [state, setState] = useState("loading"),
     [progress, setProgress] = useState({
       progress: 0,
@@ -546,6 +547,7 @@ export default function UnifiedRetinaLaboratory() {
       q = new URLSearchParams(location.search);
     if (MODES.some((x) => x[0] === q.get("technology")))
       c.modality = q.get("technology");
+    if (["electrical", "photovoltaic"].includes(c.modality)) c.percept = "baseline";
     setConfig(c);
     setOtherMode(c.modality === "photovoltaic" ? "electrical" : "photovoltaic");
     run(c);
@@ -793,6 +795,13 @@ export default function UnifiedRetinaLaboratory() {
       active && timeView
         ? decodeResponse(active.config, active.neural, currentFrame)
         : active?.response;
+  const inspected = active && Math.min(inspectIndex ?? active.config.neural.selectedIndex, active.neural.cells.length - 1);
+  const effectMap = useMemo(() => {
+    if (!active) return null;
+    const size = active.config.neural.gridSize;
+    const scale = active.config.fidelity === "recruitment" ? 1 : 100;
+    return { width: size, height: size, values: Float32Array.from(active.implantEffect, v => v / scale) };
+  }, [active]);
   const selectedCell = active?.neural.cells[active.config.neural.selectedIndex],
     contact = active?.electrical?.contacts.find(
       (p) => p.id === config.electrical.selectedId,
@@ -1885,6 +1894,7 @@ export default function UnifiedRetinaLaboratory() {
           {nf("scene", "fieldDeg", "Common visual field", "°", 8, 30, 1)}
           {nf("scene", "zoom", "Scene magnification", "×", 0.25, 12, 0.25)}
           {nf("scene", "contrast", "Input contrast", "", 0, 1, 0.05)}
+          <button disabled={state === "running"} onClick={() => run()}>Run image</button>
           <button onClick={() => mediaRef.current.click()}>
             Image / video
           </button>
@@ -1903,13 +1913,13 @@ export default function UnifiedRetinaLaboratory() {
               active?.deviceInput,
               pv
                 ? "Light at the implant plane. Electrical conversion is calculated separately."
-                : "Scene sampled at the active device geometry.",
+                : "Contact current after encoding and current budgeting. White = configured contact amplitude.",
             ],
             [
               "03",
-              "Retinal response",
-              responseFrame,
-              "Calculated activity on the common retinal population.",
+              "Implant-induced response",
+              effectMap,
+              "Device on minus off, full trial. Amber = increase, blue = decrease. One square per sampled ganglion cell. Full brightness = " + (config.fidelity === "recruitment" ? "1 recruitment unit." : "100 spikes/s."),
             ],
             [
               "04",
@@ -1925,29 +1935,23 @@ export default function UnifiedRetinaLaboratory() {
                 <span>{num}</span>
                 <h3>{title}</h3>
               </figcaption>
-              <Raster
-                image={img}
-                label={title}
-                onSelect={
-                  num === "03"
-                    ? (x, y) =>
-                        edit(
-                          "neural",
-                          "selectedIndex",
-                          Math.min(
-                            config.neural.gridSize ** 2 - 1,
-                            Math.floor(y * config.neural.gridSize) *
-                              config.neural.gridSize +
-                              Math.floor(x * config.neural.gridSize),
-                          ),
-                        )
-                    : null
-                }
-              />
+              <Raster image={img} label={title} signed={num === "03"}
+                onSelect={num === "03" && active ? (x, y) => {
+                  const n = active.config.neural.gridSize;
+                  setInspectIndex(Math.min(n - 1, Math.floor(y * n)) * n + Math.min(n - 1, Math.floor(x * n)));
+                } : null} />
               <p>{note}</p>
             </figure>
           ))}
         </div>
+        {active && <div class="rtl-scene-controls">
+          <label class="rtl-control"><span>Inspect response sample</span>
+            <input aria-label="Inspect response sample" type="number" min="0" max={active.neural.cells.length - 1}
+              value={inspected} onInput={e => setInspectIndex(Math.max(0, Math.floor(Number(e.currentTarget.value) || 0)))} />
+          </label>
+          <p aria-live="polite">{active.neural.cells[inspected].id} · {active.neural.cells[inspected].on ? "ON" : "OFF"} {active.neural.cells[inspected].kind} ·
+            {" "}Device on {fmt(active.neural.response[inspected])} · Off {fmt(active.offResponse[inspected])} · Change {fmt(active.implantEffect[inspected])} {active.neural.units}</p>
+        </div>}
         <p class="rtl-interpretation">
           Coupled output is an illustrative fixed-scale activity decoder.
           Published electrical and PRIMA appearance models use different

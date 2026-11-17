@@ -62,6 +62,7 @@ export function runNetwork(c, cells, drive) {
   for (let step = 1; step <= steps; step++) {
     const t = Math.min(step * dt, c.neural.durationMs),
       mid = t - dt / 2,
+      contactDrive = c.fidelity !== "recruitment" && drive.interleavedDrive?.(t - dt, t),
       ePulse = drive.electricalEnvelope(mid),
       pvPulse = drive.photovoltaicEnvelope(mid),
       oPulse = pulseAt(
@@ -109,7 +110,7 @@ export function runNetwork(c, cells, drive) {
         Math.max(1, neighbours[i].length);
       nextAmac[i] =
         amac[i] * Math.exp(-dt / 25) + (1 - Math.exp(-dt / 25)) * lateral;
-      const electrical =
+      const electrical = contactDrive ? contactDrive[i] :
         recruitment(drive.ganglionMv[i], c.neural.thresholdMv) *
         Math.max(0, ePulse);
       const excitation =

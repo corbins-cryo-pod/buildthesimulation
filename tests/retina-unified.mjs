@@ -511,3 +511,32 @@ test("sampled video inputs use the specified frame and preserve common scene ori
   assert.equal(max(sceneImage(c).values), 1);
   assert.deepEqual(normalize(c).scene.frames, [black, white]);
 });
+
+test("matched device-off control preserves native image drive at each retinal sample", async () => {
+  const c = fast();
+  c.fidelity = "recruitment";
+  c.tissue.condition = "healthy";
+  c.tissue.naturalVision = true;
+  const on = await simulate(c, reference);
+  c.electrical.amplitudeUa = 0;
+  const off = await simulate(c, reference);
+  assert.deepEqual(on.offResponse, off.neural.response);
+  assert(on.offResponse.some(v => v > 0));
+  assert(on.implantEffect.some(v => v > 0));
+  assert(off.implantEffect.every(v => v === 0));
+});
+
+test("interleaved population response follows delivered contacts independently of the displayed field snapshot", async () => {
+  const c = fast();
+  c.scene.stimulus = "spot";
+  c.scene.featureUm = 1000;
+  Object.assign(c.electrical, {device: "grid", rows: 2, cols: 2, sequence: "interleaved", selectedId: "E01"});
+  c.fidelity = "network";
+  const first = await simulate(c, reference);
+  c.electrical.selectedId = "E04";
+  const last = await simulate(c, reference);
+  assert(first.electrical.metrics.activeContacts > 1);
+  assert.notDeepEqual(first.electrical.field.potentialMv, last.electrical.field.potentialMv);
+  assert.deepEqual(first.neural.traces.voltageMv, last.neural.traces.voltageMv);
+  assert(first.neural.traces.voltageMv.some(v => v > -65));
+});
