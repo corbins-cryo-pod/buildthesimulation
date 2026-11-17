@@ -26,8 +26,8 @@ const unit = (v, fallback = [1, 0, 0]) => norm(v) > 1e-10 ? mul(v, 1 / norm(v)) 
 const mix = (a, b, t) => a.map((v, i) => lerp(v, b[i], t));
 const validPoint = (p) => p?.length === 3 && p.every(Number.isFinite);
 
-const carrierMaterial = { color: '#a2becd', opacity: 0.66, roughness: 0.3, metalness: 0.02 };
-const platinumMaterial = { color: '#d5d9df', opacity: 1, roughness: 0.25, metalness: 0.84 };
+const carrierMaterial = { color: '#817668', opacity: 1, roughness: 0.32, metalness: 0.02 };
+const platinumMaterial = { color: '#e3e1d7', opacity: 1, roughness: 0.22, metalness: 0.76 };
 
 function frame(position, tangent, preferredNormal) {
   const t = unit(tangent);
@@ -313,7 +313,7 @@ function contactMesh(profile, sampler, contact) {
     geometryStatus: g.contactAreaStatus,
   });
   const axialSteps = shape === 'half-band' || shape === 'rectangular-pad' ? 4 : 12;
-  const angularSteps = shape === 'half-band' ? 16 : 12;
+  const angularSteps = shape === 'half-band' ? 32 : 20;
   for (let i = 0; i <= axialSteps; i++) {
     const u = 2 * i / axialSteps - 1;
     let factor = 1;

@@ -120,17 +120,35 @@ export function anatomicalMesh(descriptor) {
     const colors = new Float32Array(values.length);
     for (let i = 0; i < colors.length; i += 3) membraneColor(-65, colors, i);
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  } else if (descriptor.appearanceColors) {
+    geometry.setAttribute('color', new THREE.BufferAttribute(descriptor.appearanceColors, 3));
   }
-  const material = new THREE.MeshStandardMaterial({
+  const roughness = properties.roughness ?? descriptor.roughness ?? .58;
+  const metalness = properties.metalness ?? descriptor.metalness ?? (descriptor.role === 'contact' ? .55 : 0);
+  const material = new THREE.MeshPhongMaterial({
     color: dynamic ? '#ffffff' : baseColor, opacity: baseOpacity,
     transparent: baseOpacity < .999, depthWrite: baseOpacity > .9,
-    side: THREE.DoubleSide, roughness: properties.roughness ?? descriptor.roughness ?? .58,
-    metalness: properties.metalness ?? descriptor.metalness ?? (descriptor.role === 'contact' ? .55 : 0),
-    vertexColors: !!dynamic, flatShading: !!(properties.flatShading ?? descriptor.flatShading),
+    side: THREE.DoubleSide, forceSinglePass: descriptor.layer === 'implant',
+    shininess: 10 + 80 * (1 - roughness), specular: new THREE.Color().setScalar(.035 + .40 * metalness),
+    vertexColors: !!geometry.attributes.color, flatShading: !!(properties.flatShading ?? descriptor.flatShading),
   });
+  if (descriptor.layer === 'implant') {
+    // Two broad reflected softboxes distinguish silicone and platinum without
+    // an environment texture lookup on every anatomical fragment.
+    material.onBeforeCompile = shader => {
+      shader.uniforms.finishStrength = { value: .055 + metalness * .65 };
+      shader.fragmentShader = 'uniform float finishStrength;\n' + shader.fragmentShader.replace('#include <opaque_fragment>', `
+        vec3 r = reflect(-normalize(vViewPosition), normal);
+        float band = 1.0 - smoothstep(.06, .32, abs(dot(r, vec3(.15,.95,.27)) - .52));
+        float fill = 1.0 - smoothstep(.03, .20, abs(dot(r, vec3(-.83,.27,.49)) + .36));
+        outgoingLight += vec3(1.0,.97,.91) * finishStrength * (band + .36*fill);
+        #include <opaque_fragment>
+      `);
+    };
+  }
   const mesh = new THREE.Mesh(geometry, material);
   mesh.name = descriptor.id ?? descriptor.label ?? 'Anatomical structure';
-  mesh.userData = { ...descriptor, compartmentIndices, dynamic: !!dynamic, baseColor, baseOpacity };
+  mesh.userData = { ...descriptor, compartmentIndices, dynamic: !!dynamic, baseColor, baseOpacity, roughness, metalness };
   return mesh;
 }
 
@@ -168,10 +186,10 @@ export function fitAnatomyCamera(bounds, preferred, aspect = 1, pointCloud = nul
   return target.addScaledVector(direction, distance).toArray();
 }
 
-function cameraFitPoints(group) {
-  const count = group.children.reduce((sum, mesh) => sum + mesh.geometry.attributes.position.count, 0), result = new Float32Array(count * 3), p = new THREE.Vector3();
+function cameraFitPoints(meshes) {
+  const count = meshes.reduce((sum, mesh) => sum + mesh.geometry.attributes.position.count, 0), result = new Float32Array(count * 3), p = new THREE.Vector3();
   let offset = 0;
-  for (const mesh of group.children) {
+  for (const mesh of meshes) {
     const position = mesh.geometry.attributes.position;
     for (let i = 0; i < position.count; i++) { p.fromBufferAttribute(position, i).applyMatrix4(mesh.matrixWorld).toArray(result, offset); offset += 3; }
   }
@@ -201,7 +219,15 @@ export function applyAnatomyState(group, current) {
     mesh.visible = anatomyLayerVisible(d.layer, current.layers) && d.baseOpacity > 0;
     const fiber = Number.isInteger(d.fiberIndex) ? current.fibers?.[d.fiberIndex] : null;
     const dead = d.alive === false || fiber?.alive === false;
-    material.opacity = d.baseOpacity * (dead && d.baseOpacity > .25 ? .22 : 1); material.transparent = material.opacity < .999; material.depthWrite = material.opacity > .9;
+    let opacity = d.baseOpacity * (dead && d.baseOpacity > .25 ? .22 : 1);
+    if (current.fadePadContext && d.layer !== 'implant') opacity *= .065;
+    if (current.fadeMicroContext && ['support','membrane'].includes(d.layer)) opacity *= .13;
+    material.opacity = opacity;
+    if (material.transparent !== (opacity < .999)) {
+      material.transparent = opacity < .999;
+      material.needsUpdate = true;
+    }
+    material.depthWrite = opacity > .9;
     material.emissive.set(selectedNow ? (Number.isInteger(d.fiberIndex) ? '#15282d' : '#58380d') : '#000000');
     if (!d.dynamic) { material.color.copy(d.baseColor); continue; }
     const count = mesh.geometry.attributes.position.count, output = mesh.geometry.attributes.color.array;
@@ -290,7 +316,7 @@ export class AnatomyCanvasRenderer {
         projected[j + 2] = w; projected[j + 3] = (projection[10] * vz + projection[14]) / w;
         normal.set(normals[i], normals[i + 1], normals[i + 2]); eye.set(camera.position.x - x, camera.position.y - y, camera.position.z - z).normalize(); half.copy(light).add(eye).normalize();
         const nLight = normal.dot(light), nHalf = normal.dot(half), rim = .1 * (1 - Math.abs(normal.dot(eye))) ** 3;
-        const power = 12 + 44 * (1 - material.roughness), specular = .04 + .22 * material.metalness;
+        const power = 12 + 44 * (1 - cache.mesh.userData.roughness), specular = .04 + .22 * cache.mesh.userData.metalness;
         const front = .43 + .57 * Math.max(0, nLight) + rim, back = .43 + .57 * Math.max(0, -nLight) + rim;
         const specFront = specular * Math.max(0, nHalf) ** power, specBack = specular * Math.max(0, -nHalf) ** power;
         const r = (vertex ? vertex[i] : 1) * base.r, g = (vertex ? vertex[i + 1] : 1) * base.g, b = (vertex ? vertex[i + 2] : 1) * base.b;
@@ -372,12 +398,13 @@ function roundedRect(ctx, x, y, width, height, radius = 4) {
 export function createAnatomyViewer(host, callbacks = {}) {
   let disposed = false, pending = 0, group = null, data = null, width = 1, height = 1, backend = '', renderer = null;
   let current = { fibers: null, timeMs: 0, selectedContact: -1, selectedFiber: -1, selectedImplantContact: -1, theme: 'light', layers: {}, showLabels: true };
-  let cameraHome = null;
+  let cameraHome = null, trackingPad = false, regionId = null;
+  let motionScale = 1, lastMove = 0, settleTimer = 0;
   const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(35, 1, .0001, 1000);
   const canvas = document.createElement('canvas'), overlay = document.createElement('canvas');
   canvas.style.cssText = 'display:block;width:100%;height:100%;touch-action:none;outline-offset:-3px;';
   canvas.tabIndex = 0; canvas.setAttribute('role', 'img');
-  canvas.setAttribute('aria-label', 'Interactive anatomical cochlea. Drag to orbit, scroll or pinch to zoom. Arrow keys rotate, plus and minus zoom, Home resets. Select an electrode or a modeled nerve by clicking its surface.');
+  canvas.setAttribute('aria-label', 'Interactive anatomical cochlea. Drag to orbit, scroll or pinch to zoom. Arrow keys rotate, Shift and arrows pan, plus and minus zoom, F frames the selected pad, Home resets. Select an electrode or a modeled nerve by clicking its surface.');
   overlay.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;'; overlay.setAttribute('aria-hidden', 'true');
   const overlayContext = overlay.getContext('2d');
   function orbitControls() {
@@ -386,9 +413,9 @@ export function createAnatomyViewer(host, callbacks = {}) {
     return instance;
   }
   let controls = orbitControls();
-  const ambient = new THREE.HemisphereLight('#ffffff', '#61615a', 2.1); scene.add(ambient);
-  const key = new THREE.DirectionalLight('#fff4de', 3.2); key.position.set(-7, 11, 9); scene.add(key);
-  const fill = new THREE.DirectionalLight('#b7dce8', 1.7); fill.position.set(8, 3, -6); scene.add(fill);
+  const ambient = new THREE.HemisphereLight('#fbf6eb', '#a39b90', 1.6); scene.add(ambient);
+  const key = new THREE.DirectionalLight('#fff4de', 2.15); key.position.set(-7, 11, 9); scene.add(key);
+  const fill = new THREE.DirectionalLight('#c1e7fc', 1.15); fill.position.set(8, 3, -6); scene.add(fill);
   const raycaster = new THREE.Raycaster(), pointer = new THREE.Vector2();
   const maxPixelRatio = () => Math.min(window.devicePixelRatio || 1, backend === 'canvas' ? 1.5 : 2);
 
@@ -399,7 +426,8 @@ export function createAnatomyViewer(host, callbacks = {}) {
         if (context) {
           renderer = new THREE.WebGLRenderer({ canvas, context, antialias: true, alpha: false, powerPreference: 'low-power' });
           renderer.setPixelRatio(maxPixelRatio()); renderer.outputColorSpace = THREE.SRGBColorSpace;
-          renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05; backend = 'webgl';
+          renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = .95; backend = 'webgl';
+
         }
       } catch { renderer = null; }
     }
@@ -440,12 +468,29 @@ export function createAnatomyViewer(host, callbacks = {}) {
         labels.unshift({ id: `selected-${mesh.name}`, text: label, position: p.toArray(), priority: 100, selected: true });
       }
     }
-    const toolbarHeight = data.mode === 'array' && Number.isInteger(current.selectedImplantContact) ? 96 : 55;
-    const occupied = [{ x: 0, y: 0, w: Math.min(width * .55, 285), h: 77 }, { x: width - 139, y: 0, w: 139, h: toolbarHeight }, { x: 0, y: height - 68, w: width, h: 68 }];
+    const occupied = [{x:0,y:height-44,w:135,h:44}];
+    if (trackingPad && data.mode === 'array' && anatomyLayerVisible('implant', current.layers)) {
+      const contact = data.implantContacts[current.selectedImplantContact];
+      if (contact) {
+        const anchor = project(contact.position);
+        if (anchor.visible) {
+          const side = anchor.x > width * .70 ? -1 : 1;
+          const x = anchor.x + side * 28, y = Math.max(16, anchor.y - 34);
+          ctx.strokeStyle = ink; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.arc(anchor.x, anchor.y, 5, 0, 2*Math.PI); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(anchor.x + side*4,anchor.y-4); ctx.lineTo(x,y); ctx.stroke();
+          const w = 53, left = side === 1 ? x : x-w;
+          ctx.fillStyle = paper; roundedRect(ctx,left,y-10,w,20); ctx.fill();
+          ctx.font = '11px Arial, sans-serif'; ctx.textBaseline = 'middle'; ctx.fillStyle = ink;
+          ctx.fillText('Pad ' + (contact.implantContactIndex+1),left+7,y);
+          occupied.push({x:left,y:y-10,w,h:20});
+        }
+      }
+    }
     ctx.font = '11px Arial, sans-serif'; ctx.textBaseline = 'middle';
     const used = new Set(); let shown = 0;
     for (const label of labels.sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0))) {
-      if (shown >= (width < 460 ? 6 : 11) || !label.position || !anatomyLayerVisible(label.layer, current.layers) || used.has(label.text)) continue;
+      if (shown >= (width < 460 ? 2 : 4) || !label.position || !anatomyLayerVisible(label.layer, current.layers) || used.has(label.text)) continue;
       const anchor = project(label.position); if (!anchor.visible) continue;
       const text = String(label.text), fullWidth = ctx.measureText(text).width;
       let lines = [text];
@@ -495,7 +540,7 @@ export function createAnatomyViewer(host, callbacks = {}) {
   }
   function resize() {
     width = Math.max(1, host.clientWidth); height = Math.max(1, host.clientHeight);
-    const ratio = maxPixelRatio(); renderer.setPixelRatio(ratio); renderer.setSize(width, height, false);
+    const ratio = maxPixelRatio(); renderer.setPixelRatio(ratio * motionScale); renderer.setSize(width, height, false);
     overlay.width = Math.round(width * ratio); overlay.height = Math.round(height * ratio);
     camera.aspect = width / height; camera.updateProjectionMatrix();
     if (cameraHome) {
@@ -505,17 +550,43 @@ export function createAnatomyViewer(host, callbacks = {}) {
     }
     invalidate();
   }
-  function applyState() { applyAnatomyState(group, current); }
+  function motionQuality() {
+    const now = performance.now(), interval = now - lastMove;
+    lastMove = now;
+    // Keep full detail on fast devices. On a slow orbit, reduce only the
+    // moving surface buffer. Labels and the settled frame retain native detail.
+    if (interval > 30 && interval < 240 && motionScale === 1) {
+      motionScale = .70;
+      renderer.setPixelRatio(maxPixelRatio() * motionScale);
+      renderer.setSize(width,height,false);
+    }
+    clearTimeout(settleTimer);
+    settleTimer = setTimeout(() => {
+      lastMove = 0;
+      if (disposed || motionScale === 1) return;
+      motionScale = 1; renderer.setPixelRatio(maxPixelRatio()); renderer.setSize(width,height,false); invalidate();
+    }, 240);
+  }
+  function applyState() {
+    applyAnatomyState(group, {
+      ...current,
+      fadePadContext: trackingPad && data?.implantPlacement?.pose === 'inserted',
+      fadeMicroContext: regionId === 'endings' && data?.mode === 'organ',
+    });
+  }
   function reset() {
+    trackingPad = false; regionId = null; applyState();
     if (!cameraHome) return;
     camera.position.fromArray(cameraHome.position); controls.target.fromArray(cameraHome.target); camera.up.fromArray(cameraHome.up);
     camera.fov = cameraHome.fov; camera.updateProjectionMatrix(); controls.update(); invalidate();
   }
   function zoom(factor) {
+    motionQuality();
     const offset = camera.position.clone().sub(controls.target), distance = clamp(offset.length() * factor, controls.minDistance, controls.maxDistance);
     camera.position.copy(controls.target).add(offset.normalize().multiplyScalar(distance)); controls.update(); invalidate();
   }
   function orbit(horizontal, vertical = 0) {
+    motionQuality();
     const offset = camera.position.clone().sub(controls.target), right = new THREE.Vector3().crossVectors(offset, camera.up).normalize();
     offset.applyAxisAngle(camera.up, horizontal);
     if (vertical) { const rotated = offset.clone().applyAxisAngle(right, vertical); if (Math.abs(rotated.clone().normalize().dot(camera.up)) < .985) offset.copy(rotated); }
@@ -525,24 +596,67 @@ export function createAnatomyViewer(host, callbacks = {}) {
     const pad = group?.children.find(mesh => mesh.visible && mesh.userData.implantContactIndex === current.selectedImplantContact && Number.isInteger(mesh.userData.implantContactIndex));
     if (!pad) return false;
     const bounds = new THREE.Box3().setFromObject(pad), center = bounds.getCenter(new THREE.Vector3());
-    const extent = bounds.getSize(new THREE.Vector3()).length(), direction = camera.position.clone().sub(controls.target).normalize();
+    const normals = pad.geometry.attributes.normal;
+    const direction = new THREE.Vector3().fromBufferAttribute(normals, Math.floor(normals.count / 2)).transformDirection(pad.matrixWorld);
+    const contacts = data.implantContacts;
+    const index = pad.userData.implantContactIndex;
+    const site = contacts[index];
+    const neighbor = contacts.find(contact => Math.abs(contact.siteIndex - site.siteIndex) === 1);
+    const pitch = neighbor ? new THREE.Vector3().fromArray(site.position).distanceTo(new THREE.Vector3().fromArray(neighbor.position)) : 0;
+    const extent = bounds.getSize(new THREE.Vector3()).length();
+    center.fromArray(site.position);
+    camera.up.fromArray(cameraHome.up); trackingPad = true; applyState();
+    if (neighbor) {
+      const along = new THREE.Vector3().fromArray(neighbor.position).sub(center).normalize();
+      direction.addScaledVector(along, .42).normalize();
+      const right = new THREE.Vector3().crossVectors(camera.up,direction).normalize();
+      if (Math.abs(along.dot(right)) > .75) camera.up.addScaledVector(right, .18).normalize();
+    }
     controls.minDistance = Math.min(controls.minDistance, Math.max(.02, extent * .4));
-    controls.target.copy(center); camera.position.copy(center).addScaledVector(direction, Math.max(.2, extent * 3.2));
+    controls.target.copy(center); camera.position.copy(center).addScaledVector(direction, Math.max(.2, extent * 2.9, pitch * 2.6) / Math.min(1, camera.aspect));
     controls.update(); invalidate(); return true;
+  }
+  function inspectRegion(id) {
+    const region = data?.inspections?.find(item => item.id === id);
+    if (!region) return;
+    regionId = id; applyState();
+    controls.target.fromArray(region.target); camera.up.fromArray(cameraHome.up);
+    const distance = region.spanMm / (2 * Math.tan(camera.fov * Math.PI / 360) * Math.min(camera.aspect, 1));
+    const direction = new THREE.Vector3().fromArray(region.offset).normalize();
+    controls.minDistance = Math.min(controls.minDistance, distance * .25);
+    camera.position.copy(controls.target).addScaledVector(direction, distance);
+    controls.update(); invalidate();
   }
   function pick(event) {
     if (!group) return;
     const rect = canvas.getBoundingClientRect();
     pointer.set((event.clientX - rect.left) / rect.width * 2 - 1, 1 - (event.clientY - rect.top) / rect.height * 2);
     raycaster.setFromCamera(pointer, camera);
-    const hits = raycaster.intersectObjects(group.children.filter(mesh => mesh.visible && mesh.material.opacity > .05), false);
+    const visible = group.children.filter(mesh => mesh.visible && mesh.material.opacity > .05);
+    const hits = raycaster.intersectObjects(visible, false);
     for (const hit of hits) {
       const d = hit.object.userData;
       if (Number.isInteger(d.implantContactIndex)) { callbacks.onImplantContact?.(d.implantContactIndex); return; }
       if (Number.isInteger(d.contactIndex)) { callbacks.onContact?.(d.contactIndex); return; }
       if (Number.isInteger(d.fiberIndex)) { callbacks.onFiber?.(d.fiberIndex); return; }
-      if (hit.object.material.opacity > .94) return;
+      if (hit.object.material.opacity > .94) break;
     }
+    if (data.mode !== 'array') return;
+    // Enlarge the input target in screen space only. Confirm line of sight to
+    // the pad surface before accepting a near miss on either backend.
+    const radius = event.pointerType === 'touch' ? 18 : 8;
+    const x = event.clientX - rect.left, y = event.clientY - rect.top;
+    let closest = null, distance = radius;
+    for (const pad of data.implantContacts) {
+      const screen = project(pad.position);
+      const d = Math.hypot(x - screen.x, y - screen.y);
+      if (!screen.visible || d >= distance) continue;
+      pointer.set(2 * screen.x / width - 1, 1 - 2 * screen.y / height);
+      raycaster.setFromCamera(pointer, camera);
+      const surface = raycaster.intersectObjects(visible, false).find(hit => Number.isInteger(hit.object.userData.implantContactIndex) || hit.object.material.opacity > .94);
+      if (surface?.object.userData.implantContactIndex === pad.implantContactIndex) { closest = pad; distance = d; }
+    }
+    if (closest) callbacks.onImplantContact?.(closest.implantContactIndex);
   }
   let pointerStart = null, multiTouch = false;
   const activePointers = new Set();
@@ -558,6 +672,14 @@ export function createAnatomyViewer(host, callbacks = {}) {
     if (event.key === 'Home' || event.key.toLowerCase() === 'r') reset();
     else if (event.key === '+' || event.key === '=') zoom(.85);
     else if (event.key === '-' || event.key === '_') zoom(1 / .85);
+    else if (event.key.toLowerCase() === 'f') focusSelectedPad();
+    else if (event.shiftKey && ['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)) {
+      motionQuality();
+      const axis = ['ArrowLeft','ArrowRight'].includes(event.key) ? 0 : 1;
+      const sign = ['ArrowLeft','ArrowDown'].includes(event.key) ? -1 : 1;
+      const shift = new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld, axis).multiplyScalar(camera.position.distanceTo(controls.target) * sign * .04);
+      controls.target.add(shift); camera.position.add(shift); controls.update(); invalidate();
+    }
     else if (event.key === 'ArrowLeft') orbit(.12);
     else if (event.key === 'ArrowRight') orbit(-.12);
     else if (event.key === 'ArrowUp') orbit(0, -.12);
@@ -571,12 +693,15 @@ export function createAnatomyViewer(host, callbacks = {}) {
     try { installRenderer(true); resize(); invalidate(); }
     catch (error) { callbacks.onError?.(error); }
   };
+  const pointerMove = () => { if (activePointers.size) motionQuality(); };
+  canvas.addEventListener('pointermove', pointerMove); canvas.addEventListener('wheel', motionQuality, { passive: true });
   canvas.addEventListener('pointerdown', down); canvas.addEventListener('pointerup', up); canvas.addEventListener('pointercancel', pointerCancel); canvas.addEventListener('keydown', keydown); canvas.addEventListener('webglcontextlost', contextLost);
   controls.addEventListener('change', invalidate);
   const observer = new ResizeObserver(resize); observer.observe(host); resize();
 
   return {
     setScene(next, { resetCamera = false } = {}) {
+      const followSelection = trackingPad && next.mode === 'array' && data?.implant?.profileId === next.implant?.profileId;
       const nextGroup = buildAnatomyGroup(next), previous = group;
       if (previous) scene.remove(previous); group = nextGroup; data = next; scene.add(group); disposeAnatomyGroup(previous);
       if (backend === 'canvas') renderer.setGroup(group);
@@ -584,7 +709,8 @@ export function createAnatomyViewer(host, callbacks = {}) {
       const radius = Math.max(.005, box.isEmpty() ? 1 : box.getSize(new THREE.Vector3()).length() / 2);
       const preferred = next.camera ?? {};
       const preferredHome = { position: preferred.position ?? center.clone().add(new THREE.Vector3(radius * 1.65, radius * 1.15, radius * 2.2)).toArray(), target: preferred.target ?? center.toArray(), up: next.up ?? preferred.up ?? [0, 1, 0], fov: preferred.fov ?? 35 };
-      const pointCloud = cameraFitPoints(group);
+      const chambers = group.children.filter(mesh => mesh.userData.role === 'measured-scala');
+      const pointCloud = cameraFitPoints(next.implantPlacement?.pose === 'inserted' && chambers.length ? chambers : group.children);
       cameraHome = { ...preferredHome, position: fitAnatomyCamera(box, preferredHome, camera.aspect, pointCloud), preferred: preferredHome, bounds: box.clone(), pointCloud };
       const nextUp = new THREE.Vector3().fromArray(cameraHome.up).normalize();
       if (camera.up.distanceToSquared(nextUp) > 1e-12) {
@@ -594,15 +720,21 @@ export function createAnatomyViewer(host, callbacks = {}) {
       camera.near = Math.max(.00001, radius / 2000); camera.far = radius * 100;
       controls.minDistance = radius * .18; controls.maxDistance = radius * 16;
       if (resetCamera || camera.position.lengthSq() === 0) reset(); else { camera.updateProjectionMatrix(); controls.update(); }
-      applyState(); invalidate();
+      applyState(); if (followSelection) focusSelectedPad(); invalidate();
       const triangleCount = group.children.reduce((count, mesh) => count + (mesh.geometry.index?.count ?? mesh.geometry.attributes.position.count) / 3, 0);
       host.dataset.triangles = String(triangleCount); callbacks.onSceneReady?.({ triangleCount, objectCount: group.children.length, backend });
     },
-    setState(next) { current = { ...current, ...next }; applyState(); invalidate(); },
-    reset, zoom, orbit, focusSelectedPad,
+    setState(next) {
+      const previousPad = current.selectedImplantContact;
+      current = { ...current, ...next }; applyState();
+      if (trackingPad && previousPad !== current.selectedImplantContact) trackingPad = focusSelectedPad();
+      invalidate();
+    },
+    reset, zoom, orbit, focusSelectedPad, inspectRegion,
     getState() { return { backend, cameraPosition: camera.position.toArray(), cameraTarget: controls.target.toArray(), triangleCount: Number(host.dataset.triangles ?? 0) }; },
     dispose() {
-      if (disposed) return; disposed = true; cancelAnimationFrame(pending); observer.disconnect(); controls.dispose();
+      if (disposed) return; disposed = true; clearTimeout(settleTimer); cancelAnimationFrame(pending); observer.disconnect(); controls.dispose();
+      canvas.removeEventListener('pointermove', pointerMove); canvas.removeEventListener('wheel', motionQuality);
       canvas.removeEventListener('pointerdown', down); canvas.removeEventListener('pointerup', up); canvas.removeEventListener('pointercancel', pointerCancel); canvas.removeEventListener('keydown', keydown); canvas.removeEventListener('webglcontextlost', contextLost);
       disposeAnatomyGroup(group); renderer?.dispose();
       if (renderer?.domElement !== canvas) renderer?.domElement.remove(); canvas.remove(); overlay.remove();

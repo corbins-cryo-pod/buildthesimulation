@@ -161,3 +161,33 @@ body .coch-lab .coch-heading h1{font-family:var(--coch-body)!important;font-size
 @media(max-width:540px){.coch-anatomy-workspace{margin-top:22px}.coch-atlas-heading{display:block}.coch-atlas-heading h2{font-size:26px!important}.coch-atlas-provenance{justify-content:flex-start;max-width:none;margin-top:11px;font-size:10px}.coch-atlas-provenance a{margin-left:auto}.coch-atlas-description{padding:11px 12px}.coch-atlas-description p{font-size:12px}.coch-anatomy-layers{padding:10px 11px;gap:5px 12px}.coch-anatomy-layers label{min-height:29px;font-size:10px}.coch-anatomy-layers>.coch-label{width:100%}.coch-anatomy-layers .coch-label-switch{margin-left:0;border:0;padding:0}.coch-atlas-viewport{height:490px}.coch-atlas-viewport:not(.is-anatomical){height:355px}.coch-anatomy-heading{left:12px!important;top:15px!important;max-width:calc(100% - 145px)!important}.coch-anatomy-heading h3{font-size:19px!important}.coch-anatomy-heading p{font-size:8px}.coch-anatomy-toolbar{right:8px!important;top:12px!important;gap:3px!important}.coch-anatomy-toolbar button{min-width:31px;min-height:34px;padding:4px 7px}.coch-anatomy-toolbar button:last-child{min-width:42px}.coch-anatomy-legend{right:10px!important;left:10px;max-width:none!important;bottom:53px!important;gap:3px 7px!important}.coch-anatomy-legend span{font-size:8px;padding:2px 4px}.coch-anatomy-notes{right:10px!important;max-width:78%!important;gap:7px;font-size:8px}.coch-anatomy-provenance{max-width:150px;text-align:right}.coch-anatomy-status{left:12px!important;font-size:10px;max-width:80%!important}.coch-atlas-caption>p{font-size:11px}.coch-atlas-replay{gap:10px}.coch-atlas-replay>button{min-width:90px;padding:7px 8px;font-size:10px}.coch-timeline-label{font-size:0;gap:0}.coch-atlas-replay>output{min-width:66px;font-size:11px}.coch-atlas-selection{gap:16px 12px}.coch-atlas-selection .coch-label{font-size:8px}.coch-atlas-selection strong{font-size:18px}.coch-atlas-selection select{font-size:12px;padding:7px}.coch-implant-selector{padding:13px 12px;gap:13px}.coch-implant-selector>label{flex-basis:100%}.coch-pose-controls{width:100%;order:3}.coch-pose-controls button{flex:1}.coch-implant-selector .coch-pad-select{flex-basis:100%;max-width:none}.coch-device-detail{display:block;padding:17px}.coch-device-detail dl{margin-top:15px}.coch-device-detail h3{font-size:25px!important}.coch-cell-guide{display:block;padding:8px 0}.coch-cell-guide>div{margin:13px 0}.coch-experiment-heading h2{font-size:25px!important}.coch-anatomy-workspace .coch-label{letter-spacing:.07em!important}}
 
 .coch-placement-readout{grid-column:1/-1;padding:12px;border:1px solid var(--coch-rule);background:var(--coch-soft);margin:12px 0 16px}.coch-placement-readout strong{display:block;font-size:20px;margin:6px 0}.coch-placement-readout p{font-size:10px!important;line-height:1.5!important;margin:0;color:var(--coch-muted)}
+
+.coch-inspection-tools{display:flex;align-items:center;flex-wrap:wrap;gap:12px 28px;padding:8px 15px;border:1px solid var(--coch-rule);border-top:0;background:var(--coch-soft);font:500 12px/1.4 var(--coch-tech)}
+.coch-section-control{display:inline-flex;align-items:center;gap:10px;min-height:34px}
+.coch-section-control input{width:clamp(80px,12vw,165px);accent-color:var(--coch-ink)}
+.coch-section-control output{font-variant-numeric:tabular-nums;min-width:4ch;color:var(--coch-muted)}
+.coch-layer-disclosure{flex:1;min-width:135px}
+.coch-layer-disclosure summary,.coch-camera-help summary,.coch-reference-details summary{cursor:pointer;width:fit-content;padding:.55em 0}
+.coch-layer-disclosure .coch-anatomy-layers{margin-top:5px;border:0;padding:4px 0;background:transparent}
+.coch-pad-inspector{padding:13px 0 18px;border-block:1px solid var(--coch-rule);margin:15px 0 8px}
+.coch-pad-inspector p{font-size:13px;margin:7px 0 12px}
+.coch-step-pads{display:flex;gap:6px}.coch-step-pads button{flex:1;font:500 11px/1.4 var(--coch-tech);padding:8px}
+.coch-camera-help{font:500 11px/1.5 var(--coch-tech);margin:5px 0;color:var(--coch-muted)}
+.coch-camera-help p{margin:0 0 6px;max-width:85ch}
+.coch-implant-selector{background:var(--coch-paper)}
+.coch-atlas-viewport .coch-anatomy-legend i{border-radius:50%}
+.coch-inspection-tools :focus-visible,.coch-step-pads button:focus-visible,.coch-atlas-viewbar button:focus-visible{outline:2px solid var(--coch-brass);outline-offset:2px}
+@media(max-width:850px){.coch-device-detail{display:block}.coch-atlas-viewbar button{min-width:max-content;padding-inline:16px}}
+@media(max-width:540px){.coch-section-control{flex:1;gap:8px}.coch-inspection-tools{gap:0 10px;padding:5px 10px}.coch-layer-disclosure{min-width:100px;flex:0 1 auto}.coch-section-control input{width:78px}.coch-anatomy-toolbar button,.coch-step-pads button,.coch-inspection-tools summary,.coch-section-control,.coch-pose-controls button{min-height:44px}.coch-inspection-tools summary{align-content:center}.coch-implant-selector .coch-pad-select{min-width:76px;flex:1}.coch-implant-selector>label:first-child{min-width:135px;flex:3}.coch-implant-selector select{min-height:44px}.coch-anatomy-provenance{display:none}}
+.coch-anatomy{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+.coch-specimen-head,.coch-specimen-footer{padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:9px 16px;background:var(--coch-paper)}
+.coch-specimen-head{border-bottom:1px solid var(--coch-rule)}
+.coch-specimen-window{position:relative;min-height:0;overflow:hidden}
+.coch-anatomy-stage{position:absolute;inset:0}
+.coch-specimen-footer{padding-block:5px;border-top:1px solid var(--coch-rule);flex-wrap:wrap}
+.coch-anatomy-toolbar,.coch-anatomy-legend{display:flex;gap:4px;flex-wrap:wrap}
+.coch-anatomy-toolbar{justify-content:flex-end}
+.coch-specimen-head .coch-anatomy-heading{max-width:none!important;flex:1}
+.coch-specimen-head .coch-anatomy-heading p{line-height:1.25;margin:0 0 3px}
+.coch-anatomy-notes{margin-left:auto}
+@media(max-width:640px){.coch-specimen-head,.coch-specimen-footer{padding-inline:9px}.coch-specimen-head{flex-wrap:wrap}.coch-specimen-head .coch-anatomy-heading{flex-basis:100%}.coch-anatomy-toolbar{justify-content:flex-start}.coch-specimen-footer{gap:3px}.coch-specimen-head .coch-anatomy-toolbar button{min-height:36px}.coch-anatomy-legend{gap:3px}}

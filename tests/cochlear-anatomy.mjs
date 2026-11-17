@@ -108,3 +108,16 @@ test('cochlear anatomy: unavailable surface assets expose the reconstruction rat
   const s=createAnatomyScene(geometry,model,{mode:'whole',atlas:null});assert.ok(s.paths.some(p=>p.id==='reconstructed-ST'));assert.equal(s.meshes.some(m=>m.role==='measured-scala'),false);
   assert.match(s.provenanceLabel,/surface asset unavailable/);assert.match(s.notes.join(' '),/not the original mesh/);
 });
+
+test('section depth changes the exposed measured lumen without moving physical pads', () => {
+  const inspect = section => createAnatomyScene(geometry, model, {
+    mode: 'array', implantPose: 'inserted', implantProfile: 'medel-flex28', atlas, section,
+  });
+  const shallow = inspect(20), deep = inspect(85);
+  const surface = s => s.meshes.find(m => m.id === 'scala-tympani');
+  assert.ok(surface(deep).indices.length < surface(shallow).indices.length);
+  assert.deepEqual(shallow.implantContacts, deep.implantContacts);
+  assert.deepEqual(shallow.implantPlacement, deep.implantPlacement);
+  const rim = deep.meshes.find(m => m.id === 'scala-tympani-section-edge');
+  assert.equal(rim.layer, 'scala'); validMesh(rim); assert.ok(rim.indices.length > 0);
+});
