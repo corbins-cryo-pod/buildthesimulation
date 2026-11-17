@@ -399,7 +399,7 @@ export async function simulate(
     baseline = null,
     deviceInput = null,
     thermal = null,
-    cableField;
+    cableField, interleavedDrive;
   const nodes =
     c.fidelity === "cable" ? morphology(cells[c.neural.selectedIndex]) : null;
   const zeroCable = new Float64Array(nodes?.length ?? 0);
@@ -493,8 +493,8 @@ export async function simulate(
       const p = visualToRetinal(x, y);
       let v = 0;
       for (const q of contacts)
-        if (Math.hypot(q.xUm - p.xUm, q.yUm - p.yUm) < q.radiusUm * 1.4)
-          v = Math.max(v, q.drive ?? q.amplitudeUa / e.amplitudeUa);
+        if (Math.hypot(q.xUm - p.xUm, q.yUm - p.yUm) < q.radiusUm)
+          v = Math.max(v, q.amplitudeUa / Math.max(1e-12, e.amplitudeUa));
       return v;
     });
     electrical = {
@@ -570,10 +570,42 @@ export async function simulate(
         };
       }
     }
-    if (e.sequence === "interleaved")
-      warnings.push(
-        "The population surrogate uses the selected electrical snapshot; the detailed cable resolves individual interleaved contact schedules.",
-      );
+    if (e.sequence === "interleaved") {
+      const { active, offsets, periodMs, pulseDurationMs } = sourceInfo.schedule;
+      const simultaneous = electricalSources({ ...e, sequence: "simultaneous" }, contacts);
+      const returns = simultaneous.sources.filter(p => p.kind === "return");
+      const total = simultaneous.totalCurrentUa;
+      const basis = active.filter(p => offsets[p.id] + pulseDurationMs <= e.trainDurationMs + 1e-10).map(p => {
+        const sources = [{ ...p, currentUa: -p.amplitudeUa }, ...returns.map(r => ({
+          ...r, currentUa: r.currentUa * p.amplitudeUa / total,
+        }))];
+        const field = evaluateField(sources, points, options).potentialMv;
+        const drop = Float64Array.from(cells, (_, i) => Math.abs(field[2*i] - field[2*i+1]));
+        return { offset: offsets[p.id], drop };
+      });
+      // Static recruitment uses the strongest individual contact across delivered pulses.
+      ganglionMv.fill(0);
+      for (const {drop} of basis)
+        for (let i = 0; i < n; i++) ganglionMv[i] = Math.max(ganglionMv[i], drop[i]);
+      const gain = basis.map(({offset, drop}) => ({
+        offset, values: Float64Array.from(drop, v => -Math.expm1(-v / c.neural.thresholdMv)),
+      }));
+      const stepDrive = new Float64Array(n);
+      interleavedDrive = (start, end) => {
+        stepDrive.fill(0);
+        for (const {offset, values} of gain) {
+          const first = Math.max(0, Math.floor((start - offset) / periodMs));
+          for (let pulse = offset + first * periodMs;
+               pulse < end && pulse + pulseDurationMs <= e.trainDurationMs + 1e-10; pulse += periodMs) {
+            const cathodic = pulse + (c.polarity === "anodic-first" ? e.phaseDurationMs + e.interphaseMs : 0);
+            const overlap = Math.min(end, cathodic + e.phaseDurationMs) - Math.max(start, cathodic);
+            if (overlap <= 0) continue;
+            for (let i = 0; i < n; i++) stepDrive[i] += values[i] * overlap / (end - start);
+          }
+        }
+        return stepDrive;
+      };
+    }
   }
   if (c.modality === "photovoltaic") {
     report(0.18, "Converting projected light to photovoltaic current");
@@ -725,6 +757,7 @@ export async function simulate(
   let wi = 0;
   const drive = {
     scene: native,
+    interleavedDrive,
     ganglionMv,
     bipolarMv,
     optical,
@@ -737,6 +770,16 @@ export async function simulate(
     },
   };
   const neural = runNetwork(c, cells, drive);
+  // Identical retinal population and visual input with all device drive removed.
+  // With native vision disabled, the resting network has zero recruitment and spikes.
+  const zero = new Float64Array(n);
+  const offResponse = c.tissue.naturalVision
+    ? runNetwork(c, cells, {
+        scene: native, ganglionMv: zero, bipolarMv: zero, optical: zero,
+        electricalEnvelope: () => 0, photovoltaicEnvelope: () => 0,
+      }).response
+    : new Float32Array(n);
+  const implantEffect = Float32Array.from(neural.response, (v, i) => v - offResponse[i]);
   let cable = null;
   if (nodes && cells[c.neural.selectedIndex].survival.ganglion > 0) {
     report(0.84, "Solving the selected neuron’s active compartments");
@@ -835,6 +878,8 @@ export async function simulate(
     electrical,
     photovoltaic,
     neural,
+    offResponse,
+    implantEffect,
     cable,
     thermal,
     drive: {
