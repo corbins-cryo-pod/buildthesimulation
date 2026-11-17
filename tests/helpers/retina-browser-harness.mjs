@@ -183,6 +183,11 @@ export async function verifyRetinaBrowser(mode = "electrical") {
     assert.match(initial.reference, /^[a-f0-9]{64}$/);
     if (mode === "photovoltaic") {
       assert.equal(initial.pixelCount, 378);
+      assert.equal(initial.settings.percept, "coupled");
+      assert.equal(
+        await evaluate(`document.querySelectorAll('svg[aria-label="PRIMA pixel currents"] polygon').length`),
+        initial.pixelCount,
+      );
       assert(initial.kcl < 0.21);
     } else assert.equal(initial.fieldPoints, 3721);
     assert.equal(
