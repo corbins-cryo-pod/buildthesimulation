@@ -238,8 +238,8 @@ export function normalize(input = {}) {
     ["synapticGainMv", 0, 500],
   ])
     num(n[k], lo, hi, k);
-  if (![15, 23, 31].includes(n.gridSize))
-    throw Error("Neural sampling must be 15, 23 or 31.");
+  if (![15, 23, 31, 47].includes(n.gridSize))
+    throw Error("Neural sampling must be 15, 23, 31 or 47.");
   num(
     n.selectedIndex,
     0,

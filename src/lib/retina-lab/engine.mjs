@@ -1,3 +1,4 @@
+import { timeResolvedDrive, landoltContrast } from "./prima-network.mjs";
 import { normalize, VERSION, experimentId } from "./schema.mjs";
 import {
   COORDINATES,
@@ -319,6 +320,14 @@ export function decodeResponse(c, neural, frame = null, size = 96) {
   const values = new Float32Array(size * size),
     span = c.scene.fieldDeg,
     activity = frame?.activity ?? neural.response;
+  if (c.modality === "photovoltaic") {
+    const n = c.neural.gridSize;
+    const scale = frame ? 2 : c.fidelity === "recruitment" ? 1 : 100;
+    const grid = {width: n, height: n, values: activity};
+    const image = raster(size, span, (x, y) => Math.max(0, Math.min(1, sampleRaster(grid, x, y, span) / scale)));
+    image.model = "Retinotopic interpolation of sampled ganglion output, fixed brightness scale. Exploratory neural decoder.";
+    return image;
+  }
   const sigma = (span / c.neural.gridSize) * 0.6;
   for (let i = 0; i < neural.cells.length; i++) {
     const cell = neural.cells[i],
@@ -399,7 +408,7 @@ export async function simulate(
     baseline = null,
     deviceInput = null,
     thermal = null,
-    cableField, interleavedDrive;
+    cableField, interleavedDrive, primaTemporal;
   const nodes =
     c.fidelity === "cable" ? morphology(cells[c.neural.selectedIndex]) : null;
   const zeroCable = new Float64Array(nodes?.length ?? 0);
@@ -624,7 +633,7 @@ export async function simulate(
       illumination,
       (q) => report(0.2 + 0.35 * (q.progress ?? 0), q.message),
       {
-        onSample: nodes
+        onSample: c.fidelity !== "recruitment"
           ? (t, values) =>
               history.push({
                 timeMs: t,
@@ -639,7 +648,7 @@ export async function simulate(
         (v) => v.snapshotCurrentUa * 1e-6,
       );
     const points = cells.flatMap((cell) => {
-      const xy = localPoint(cell, c.placement);
+      const xy = localPoint({xUm: cell.receptorXUm, yUm: cell.receptorYUm}, c.placement);
       return [
         { ...xy, zUm: p.gapUm },
         { ...xy, zUm: p.gapUm + p.bipolarLengthUm },
@@ -647,9 +656,15 @@ export async function simulate(
     });
     const fields = evaluateFields(model, geometry, currents, points);
     for (let i = 0; i < n; i++)
-      bipolarMv[i] = Math.abs(
+      bipolarMv[i] = Math.max(0,
         fields[2 * i].potentialMv - fields[2 * i + 1].potentialMv,
       );
+    if (history.length) {
+      primaTemporal = timeResolvedDrive(history, direction => {
+        const field = evaluateFields(model, geometry, Float64Array.from(direction, v => v * 1e-6), points);
+        return Float64Array.from(cells, (_, i) => field[2*i].potentialMv - field[2*i+1].potentialMv);
+      });
+    }
     const percept = primaPercept(projection, p);
     baseline = raster(96, c.scene.fieldDeg, (x, y) => {
       const local = localPoint(visualToRetinal(x, y), c.placement);
@@ -740,21 +755,6 @@ export async function simulate(
     thermal = thermalTrace(c.optical, c.neural.durationMs);
   }
   report(0.76, "Integrating the shared retinal response");
-  const pv = photovoltaic?.physics,
-    w = pv?.waveform,
-    pvPeak = w
-      ? Math.max(
-          1e-12,
-          Math.abs(
-            w.arrayCurrentUa[
-              w.timeMs.findIndex(
-                (t) => Math.abs(t - pv.metrics.snapshotTimeMs) < 1e-6,
-              )
-            ],
-          ),
-        )
-      : 1;
-  let wi = 0;
   const drive = {
     scene: native,
     interleavedDrive,
@@ -763,11 +763,9 @@ export async function simulate(
     optical,
     electricalEnvelope: (t) =>
       enabled(c, "electrical") ? bipolarPulse(c, t) : 0,
-    photovoltaicEnvelope: (t) => {
-      if (!w || t > w.timeMs.at(-1)) return 0;
-      while (wi + 1 < w.timeMs.length && w.timeMs[wi + 1] <= t) wi++;
-      return Math.max(0, w.arrayCurrentUa[wi] / pvPeak);
-    },
+    photovoltaicEnvelope: () => 0,
+    photovoltaicAt: primaTemporal?.at,
+
   };
   const neural = runNetwork(c, cells, drive);
   // Identical retinal population and visual input with all device drive removed.
@@ -803,7 +801,7 @@ export async function simulate(
     );
   if (c.modality === "photovoltaic")
     warnings.push(
-      "The network uses the final-pulse field pattern with the calculated array-current envelope. The detailed cable instead receives all pixel currents through the field transfer.",
+      "PRIMA network trials use time-resolved pixel currents and signed bipolar drive at receptive-field sites. Recruitment-only trials use the final pulse midpoint.",
     );
   warnings.push(
     "Electrical tissue is homogeneous and isotropic. Curvature is registered display geometry; a curved, layered or anisotropic conductor is not solved.",
@@ -823,6 +821,20 @@ export async function simulate(
     selectedNetworkSpikeCount: neural.counts[c.neural.selectedIndex],
     elapsedMs: performance.now() - start,
   };
+  if (primaTemporal) {
+    metrics.currentBasisRank = primaTemporal.rank;
+    metrics.currentRelativeResidual = primaTemporal.relativeResidual;
+  }
+  if (photovoltaic && c.inputMode === "shared" && c.scene.stimulus === "landolt" &&
+      !c.scene.motion && c.scene.offsetXDeg === 0 && c.scene.offsetYDeg === 0) {
+    const radius = 2 * c.scene.featureUm * c.scene.zoom / 288;
+    const measure = image => landoltContrast(image, radius, c.scene.fieldDeg, sampleRaster);
+    const grid = values => ({ width: c.neural.gridSize, height: c.neural.gridSize, values });
+    metrics.landoltContrast = {
+      input: measure(scene), field: measure(grid(bipolarMv)), bipolar: measure(grid(neural.meanBipolar)),
+      ganglion: measure(grid(neural.response)), decoded: measure(response),
+    };
+  }
   const selectedCell = cells[c.neural.selectedIndex];
   const selectedContact = electrical?.contacts.find(
     (p) => p.id === c.electrical.selectedId,
