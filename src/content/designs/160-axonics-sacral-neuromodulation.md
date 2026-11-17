@@ -2,11 +2,11 @@
 title: "Axonics sacral neuromodulation"
 order: 160
 pubDate: 2026-10-08
-updatedDate: 2026-10-11
+updatedDate: 2026-11-17
 device_id: "BTSD-FDA-0011"
 interface_class: "pni"
 status: "human"
-last_updated: 2026-10-11
+last_updated: 2026-11-17
 description: "FDA-approved rechargeable sacral neuromodulation system with a four-contact tined lead. Values come from the 2019 FDA summary for the fecal incontinence indication."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf19/P190006b.pdf"
@@ -20,7 +20,7 @@ draft: false
 
 # Axonics sacral neuromodulation
 
-The Axonics system is a rechargeable sacral neuromodulation stimulator. This sheet reads the FDA summary for PMA P190006 (fecal incontinence, approved September 6, 2019). Clinical results and the urinary indication were not read and stay blank.
+The Axonics system is a rechargeable sacral neuromodulation stimulator. This sheet reads the FDA summary for PMA P190006 (fecal incontinence, approved September 6, 2019). The urinary indication PMA was not read.
 
 Company brief: [Boston Scientific Corporation](/companies/55-boston-scientific-company-brief/), [Axonics, Inc.](/companies/60-axonics-company-brief/).
 
@@ -113,13 +113,13 @@ Company brief: [Boston Scientific Corporation](/companies/55-boston-scientific-c
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects |  |
+| Human subjects | The FI approval rested on a systematic review of published InterStim studies (4 safety studies totaling 330 subjects; 5 effectiveness studies totaling 430 subjects) plus safety data from ARTISAN-SNM (IDE G170100), the Axonics urinary urgency incontinence study: 153 enrolled, 129 implanted at 15 US and 5 Western European centers [1] |
 | Preclinical cohort |  |
-| Follow-up duration |  |
+| Follow-up duration | InterStim literature studies: 6 months to 5 years (Hull 2013, a 5-year post-approval study); ARTISAN-SNM: 6-month post-implant data used for safety [1] |
 | Indications | Chronic fecal incontinence in patients who failed or are not candidates for more conservative treatments (P190006) [1] |
-| Trials and registries |  |
-| Primary outcomes |  |
-| Key limitations | Clinical study sizes and outcomes in the SSED were not read for this sheet, and the urinary indication PMA was not read [1] |
+| Trials and registries | No Axonics-run FI pivotal trial; effectiveness was bridged from five published InterStim studies. ARTISAN-SNM (IDE G170100, urinary urgency incontinence) was leveraged for safety only [1] |
+| Primary outcomes | Effectiveness endpoints in the review: Responder50 rate (at least 50% reduction in FI episodes), weekly FI episodes, St. Mark's and Wexner scores, FIQL and FISI. Hull 2013 (InterStim): 89% Responder50 (64/72) and 36% total continence at 5 years; weekly episodes 9.1 to 1.7; FISI 37.95 to 28.33. ARTISAN-SNM safety: no device- or procedure-related serious adverse events at 6 months; device-related AEs in 13 subjects (10.1%) [1] |
+| Key limitations | No Axonics-run FI trial: effectiveness was bridged from InterStim literature on stated similarity grounds, and the 5-year Hull dataset had 40% loss to follow-up. ARTISAN-SNM treated urinary urgency incontinence, not FI. The urinary indication PMA P180046 was not read for this sheet [1] |
 
 ## Engineering tradeoffs
 
