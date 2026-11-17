@@ -28,7 +28,7 @@ export const PRESETS = Object.freeze([
 export const PARAMETER_BOUNDS = Object.freeze({
   irradianceMwMm2: [0, 4], pulseDurationMs: [0.7, 9.8], frequencyHz: [1, 40], cycles: [1, 8], timeStepMs: [0.025, 0.5],
   conductivitySm: [0.05, 1], gapUm: [10, 100], bipolarLengthUm: [20, 100], activeRadiusUm: [8, 20], returnWidthUm: [2, 6],
-  capacitanceDensityFm2: [1, 40], shuntMohm: [0.1, 10], responsivityAW: [0.1, 0.65], diodeIdeality: [1, 2], diodeSaturationNa: [0.00001, 0.1],
+  capacitanceDensityFm2: [1, 60], shuntMohm: [0.1, 10], responsivityAW: [0.1, 0.65], diodeIdeality: [1, 2], diodeSaturationNa: [0.00001, 0.1],
   landoltGapUm: [30, 350], gratingCycles: [1, 30], spotRadiusUm: [10, 700], zoom: [1, 12], contrast: [0, 1], brightness: [0, 1],
   blurSigmaPx: [0, 8], offsetXUm: [-2000, 2000], offsetYUm: [-2000, 2000], retinalScaleUmDeg: [250, 320],
   gamma: [1, 4], sigmoidGain: [1, 40], sigmoidOffset: [0, 1],

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useMemo } from "preact/hooks";
+import { placePoint, retinalToVisual } from "../lib/retina-lab/coordinates.mjs";
 import SimHero from "./SimHero.jsx";
 import {
   cloneDefaults,
@@ -122,6 +123,30 @@ function Metric({ label, value, unit }) {
       </dd>
     </div>
   );
+}
+function PrimaCurrentMap({ result }) {
+  const shapes = useMemo(() => {
+    if (!result?.photovoltaic) return [];
+    const { geometry, physics } = result.photovoltaic;
+    const span = result.config.scene.fieldDeg;
+    const vertices = (pixel) => pixel.vertices.map(vertex => {
+      const p = placePoint(vertex, result.config.placement);
+      const v = retinalToVisual(p.xUm, p.yUm);
+      return [100 * (0.5 + v.xDeg / span), 100 * (0.5 - v.yDeg / span)].join(",");
+    }).join(" ");
+    return geometry.pixels.map((pixel, i) => {
+      const current = physics.pixelMetrics[i].snapshotCurrentUa;
+      const intensity = Math.min(1, Math.abs(current)); // Fixed 1 µA display scale.
+      const rgb = current < 0 ? [80, 180, 255] : [255, 180, 60];
+      return <polygon key={pixel.id} points={vertices(pixel)}
+        fill={`rgb(${rgb.map(channel => Math.round(intensity * channel)).join(",")})`}
+        stroke="#63615a" strokeWidth="0.075">
+        <title>{pixel.id} · {fmt(current, 4)} µA</title>
+      </polygon>;
+    });
+  }, [result]);
+  return <svg role="img" aria-label="PRIMA pixel currents" viewBox="0 0 100 100"
+    style="display:block;width:100%;background:#000;aspect-ratio:1">{shapes}</svg>;
 }
 function Raster({ image, label, onSelect, signed = false }) {
   const ref = useRef();
@@ -547,7 +572,7 @@ export default function UnifiedRetinaLaboratory() {
       q = new URLSearchParams(location.search);
     if (MODES.some((x) => x[0] === q.get("technology")))
       c.modality = q.get("technology");
-    if (["electrical", "photovoltaic"].includes(c.modality)) c.percept = "baseline";
+    if (c.modality === "electrical") c.percept = "baseline";
     setConfig(c);
     setOtherMode(c.modality === "photovoltaic" ? "electrical" : "photovoltaic");
     run(c);
@@ -1302,7 +1327,7 @@ export default function UnifiedRetinaLaboratory() {
                   "Interface capacitance",
                   "F/m²",
                   1,
-                  40,
+                  60,
                 )}
                 {nf(
                   "photovoltaic",
@@ -1311,7 +1336,7 @@ export default function UnifiedRetinaLaboratory() {
                   "MΩ",
                   0.1,
                   10,
-                  0.1,
+                  0.01,
                 )}
                 {nf(
                   "photovoltaic",
@@ -1909,10 +1934,10 @@ export default function UnifiedRetinaLaboratory() {
             ],
             [
               "02",
-              pv ? "Projected implant input" : "Device input",
+              pv ? "PRIMA pixel currents" : "Device input",
               active?.deviceInput,
               pv
-                ? "Light at the implant plane. Electrical conversion is calculated separately."
+                ? "Current at the midpoint of the final pulse. Blue is negative and amber is positive. Full brightness is 1 µA. Hover over a pixel for its value."
                 : "Contact current after encoding and current budgeting. White = configured contact amplitude.",
             ],
             [
@@ -1923,7 +1948,7 @@ export default function UnifiedRetinaLaboratory() {
             ],
             [
               "04",
-              "Predicted percept",
+              pv ? (config.percept === "baseline" ? "Optical reference" : "Cell-derived image") : "Predicted percept",
               config.percept === "coupled" && timeView
                 ? responseFrame
                 : active?.percept,
@@ -1935,11 +1960,11 @@ export default function UnifiedRetinaLaboratory() {
                 <span>{num}</span>
                 <h3>{title}</h3>
               </figcaption>
-              <Raster image={img} label={title} signed={num === "03"}
+              {num === "02" && pv ? <PrimaCurrentMap result={active} /> : <Raster image={img} label={title} signed={num === "03"}
                 onSelect={num === "03" && active ? (x, y) => {
                   const n = active.config.neural.gridSize;
                   setInspectIndex(Math.min(n - 1, Math.floor(y * n)) * n + Math.min(n - 1, Math.floor(x * n)));
-                } : null} />
+                } : null} />}
               <p>{note}</p>
             </figure>
           ))}

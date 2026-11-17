@@ -228,7 +228,7 @@ export default function PrimaLaboratory() {
             {range({ name: 'activeRadiusUm', label: 'Equivalent active radius', unit: 'μm', min: 8, max: 20, step: .5 })}
             {range({ name: 'returnWidthUm', label: 'Equivalent return width', unit: 'μm', min: 2, max: 6, step: .25 })}
             <details class="pr-advanced"><summary>Photovoltaic &amp; interface parameters</summary>
-              {range({ name: 'capacitanceDensityFm2', label: 'Interface capacitance density', unit: 'F/m²', min: 1, max: 40, step: .5 })}
+              {range({ name: 'capacitanceDensityFm2', label: 'Interface capacitance density', unit: 'F/m²', min: 1, max: 60, step: .5 })}
               {range({ name: 'shuntMohm', label: 'Pixel shunt resistance', unit: 'MΩ', min: .1, max: 10, step: .1 })}
               {range({ name: 'responsivityAW', label: 'Photodiode responsivity', unit: 'A/W', min: .1, max: .65, step: .01 })}
               {range({ name: 'diodeIdeality', label: 'Diode ideality factor', unit: '', min: 1, max: 2, step: .05 })}

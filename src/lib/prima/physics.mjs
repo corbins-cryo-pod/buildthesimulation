@@ -12,7 +12,7 @@ export const PHYSICS_BOUNDS = Object.freeze({
   irradianceMwMm2: [0, 4], pulseDurationMs: [0.7, 9.8], frequencyHz: [1, 40],
   cycles: [1, 8], timeStepMs: [0.025, 0.5], conductivitySm: [0.05, 1],
   gapUm: [10, 100], bipolarLengthUm: [20, 100], activeRadiusUm: [8, 20],
-  returnWidthUm: [2, 6], capacitanceDensityFm2: [1, 40], shuntMohm: [0.1, 10],
+  returnWidthUm: [2, 6], capacitanceDensityFm2: [1, 60], shuntMohm: [0.1, 10],
   responsivityAW: [0.1, 0.65], diodeIdeality: [1, 2], diodeSaturationNa: [0.00001, 0.1],
 });
 export const PHYSICS_VERSION = 'prima-reduced-halfspace-circuit-1.0.0';
