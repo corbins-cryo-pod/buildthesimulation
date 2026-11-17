@@ -299,7 +299,10 @@ export async function verifyRetinaBrowser(mode = "electrical") {
       ),
       presets = [];
     for (const key of ids) {
+      const completedBefore = await evaluate("window.__retinaWorkers.completed");
       await click(`[${selector}="${key}"]`);
+      // The previous result can still be painted when a programmatic click returns.
+      await until(() => evaluate(`window.__retinaWorkers.completed > ${completedBefore}`));
       await ready();
       const r = await exportJSON();
       assert(r.finite && r.legacy);
