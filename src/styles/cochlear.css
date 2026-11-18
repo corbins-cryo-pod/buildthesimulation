@@ -191,3 +191,7 @@ body .coch-lab .coch-heading h1{font-family:var(--coch-body)!important;font-size
 .coch-specimen-head .coch-anatomy-heading p{line-height:1.25;margin:0 0 3px}
 .coch-anatomy-notes{margin-left:auto}
 @media(max-width:640px){.coch-specimen-head,.coch-specimen-footer{padding-inline:9px}.coch-specimen-head{flex-wrap:wrap}.coch-specimen-head .coch-anatomy-heading{flex-basis:100%}.coch-anatomy-toolbar{justify-content:flex-start}.coch-specimen-footer{gap:3px}.coch-specimen-head .coch-anatomy-toolbar button{min-height:36px}.coch-anatomy-legend{gap:3px}}
+
+.coch-specimen-selector{display:flex;align-items:center;gap:14px 24px;flex-wrap:wrap;background:var(--coch-paper);border:1px solid var(--coch-rule);padding:12px 15px}
+.coch-specimen-selector p{flex:1;min-width:min(220px,100%);margin:0;color:var(--coch-muted);font-size:13px}
+@media(max-width:540px){.coch-specimen-selector{gap:8px;padding:9px 10px}.coch-specimen-selector .coch-pose-controls{order:0}.coch-specimen-selector .coch-pose-controls button{padding-inline:6px;min-height:44px}}

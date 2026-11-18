@@ -7,6 +7,7 @@
  * See docs/cochlear/ANATOMY_SOURCES.md and the asset's original-member hashes.
  */
 import atlasReference from './atlas-reference.json' with { type: 'json' };
+import { SPECIMEN_VIEWS, specimenPart } from './specimen.js';
 import { createImplantGeometry } from './implantGeometry.js';
 import { createNeuronAnatomyScene } from './neuronAnatomy.js';
 
@@ -194,7 +195,7 @@ function windowSurface(surface, depth, contour) {
     appendRibbon(contour,[a,b],[add(a,d),add(b,d)]);
   });
 }
-function addMacroSurfaces(scene,atlas,cutaway,section=50) {
+function addMacroSurfaces(scene,atlas,cutaway,section=50,specimen=null) {
   if(atlas?.meshes?.length) {
     for(const m of measuredMeshes(atlas)){
       const isST=m.id==='scala-tympani',isNerve=m.id==='cochleovestibular-nerve';
@@ -226,12 +227,11 @@ function addMacroSurfaces(scene,atlas,cutaway,section=50) {
   // Organ of Corti is a small ridge, not a nerve or electrode tube.
   path(scene,'organ-of-corti-ridge',bmInner.map((p,i)=>add(p,add(mul(frames[i].inward,-.035),mul(frames[i].superior,.035)))),.035,C.ohc,'organ',{radialSegments:9,role:'reconstructed-organ'});
   const axis=atlasReference.centerline.estimatedModiolarAxisPoint;
-  const core=mesh('reconstructed-modiolus',C.bone,'bone',cutaway?.36:.48,'modiolus');
-  const rows=24,sides=20,minY=-1.9,maxY=1.95;
-  for(let j=0;j<=rows;j++){const u=j/rows,r=.95*(1-u)+.16,y=minY+(maxY-minY)*u;for(let k=0;k<=sides;k++){const a=2*Math.PI*k/sides;core.positions.push(axis[0]+r*Math.cos(a),y,axis[2]+r*.85*Math.sin(a));}}
-  for(let j=0;j<rows;j++)for(let k=0;k<sides;k++){const a=j*(sides+1)+k;if(cutaway&&Math.sin((k+.5)*2*Math.PI/sides)>.15)continue;core.indices.push(a,a+1,a+sides+1,a+1,a+sides+2,a+sides+1);}
-  scene.meshes.push(core);
-  label(scene,'modiolus','Modiolus · reconstructed bony core',[axis[0],-.6,axis[2]],'bone',3);
+  if (specimen?.length) {
+    scene.meshes.push({...specimen[0],layer:'bone'});
+    label(scene,'modiolus','Modiolar region · sectioned bone',axis,'bone',3);
+    scene.notes.push('The bone overlay is a fixed section of the ZETA bone segmentation. The cutaway control adjusts the fluid chamber window.');
+  }
   const f=sampleAnatomyCenterline(atlasReference.centerline.lengthMm*.25);
   label(scene,'st',atlas?'Scala tympani · measured lumen':'Scala tympani · centreline reconstruction',f.point,'scala',4);
   label(scene,'sv',atlas?'Scala vestibuli · measured surface':'Scala vestibuli · reconstructed position',add(f.point,mul(f.superior,.9)),'scala',3);
@@ -397,18 +397,56 @@ function finishBounds(scene) {
   scene.bounds={min,max};return scene;
 }
 
+function specimenScene(atlas, representation, parts) {
+  const scene = freshScene('whole');
+  scene.title = SPECIMEN_VIEWS[representation].label;
+  scene.subtitle = 'Human cochlea · OpenEar ZETA';
+  scene.provenanceLabel = 'OpenEar ZETA · registered human specimen';
+  const section = representation === 'section';
+  scene.camera = { position: section ? [2.1,2.8,15] : [-6,7,12], target: [0,0,0], fov: 32 };
+  scene.scaleBarMm = 1;
+
+  if (parts) scene.meshes.push(...parts);
+  if (atlas && (representation === 'chambers' || !parts)) {
+    const measured = measuredMeshes(atlas);
+    const tympani = measured.find(m => m.id === 'scala-tympani');
+    scene.meshes.push({...tympani,...specimenPart('tympani'),role:'measured-scala'});
+    if (!parts) {
+      const vestibuli = measured.find(m => m.id === 'scala-vestibuli-vestibular-labyrinth');
+      scene.meshes.push({...vestibuli,...specimenPart('vestibuli'),role:'measured-scala'});
+      scene.title = 'Cochlear chambers';
+    }
+  }
+  if (!scene.meshes.length) {
+    const frames = Array.from({length:101}, (_,i) => sampleAnatomyCenterline(atlasReference.centerline.lengthMm*i/100));
+    path(scene,'centreline-preview',frames.map(f=>f.point),frames.map(f=>f.clearance),C.st,'specimenST',{radialSegments:14});
+    scene.title='Cochlear centreline reconstruction';
+    scene.provenanceLabel='Registered centreline · illustrative lumen';
+  }
+  scene.legend = [...new Set([...scene.meshes,...scene.paths].map(m=>m.layer))].map(layer =>
+    ['bone','tympani','vestibuli'].map(specimenPart).find(part=>part.layer===layer)).filter(Boolean);
+  const points=atlasReference.centerline.displayPoints;
+  label(scene,'base','Basal turn',points[20],'landmark',5);
+  label(scene,'apex','Apical turn',points.at(-1),'landmark',5);
+  if(section) label(scene,'axis','Modiolar region',atlasReference.centerline.estimatedModiolarAxisPoint,'specimenBone',4);
+  scene.notes.push('OpenEar ZETA bone and fluid labels share a 0.125 mm voxel grid. The outer margin is a virtual dissection crop through the surrounding temporal bone. The section plane passes through the estimated modiolar axis.',
+    'Each chamber fill represents the segmented lumen. The display crop at the vestibular end and the planar cut faces are constructed boundaries.');
+  return finishBounds(scene);
+}
+
 /**
  * Scene coordinates are right-handed mm. All generic solver-place-to-curve
  * mappings are explicit display registrations. Array mode is device inspection
  * and deliberately has no solver contact/fiber association.
  */
-export function createAnatomyScene(geometry,model,{mode='cutaway',implantProfile,implantPose='bench',selectedFiber=0,atlas=null,section=50}={}) {
+export function createAnatomyScene(geometry,model,{mode='cutaway',implantProfile,implantPose='bench',selectedFiber=0,atlas=null,section=50,specimenView=null,specimen=null}={}) {
+  if(mode==='whole' && SPECIMEN_VIEWS[specimenView])return specimenScene(atlas,specimenView,specimen);
   if(mode==='neuron')return createNeuronAnatomyScene(geometry,model,selectedFiber);
   if(mode==='organ')return organScene(geometry,model,selectedFiber);
   const scene=freshScene(mode),cutaway=mode==='cutaway'||mode==='array';
   if(mode==='array') {
     const implant=createImplantGeometry(implantProfile,{pose:implantPose,centerline:atlasReference.centerline,radialSegments:24});
-    if(implantPose==='inserted')addMacroSurfaces(scene,atlas,true,section);
+    if(implantPose==='inserted')addMacroSurfaces(scene,atlas,true,section,specimen);
     for(const key of ['meshes','paths','markers','labels'])scene[key].push(...(implant[key]??[]));
     scene.implant={profileId:implant.profile?.id,placement:implant.placement,contacts:implant.contacts};
     scene.implantPlacement=implant.placement;scene.implantContacts=implant.contacts;
@@ -421,11 +459,11 @@ export function createAnatomyScene(geometry,model,{mode='cutaway',implantProfile
       : {position:add(center,[extent*.10,extent*.55,extent*1.05]),target:center,fov:32};
     scene.legend=implantPose==='inserted'?[{label:'Scala tympani',color:C.st,layer:'scala'},{label:'Scala vestibuli',color:C.sv,layer:'scala'},{label:'Electrode carrier',color:'#817668',layer:'implant'}]:[];scene.scaleBarMm=implantPose==='inserted'?1:5;return scene;
   }
-  addMacroSurfaces(scene,atlas,cutaway,section);addNerves(scene,geometry,model,selectedFiber);addGenericArray(scene,geometry);
+  addMacroSurfaces(scene,atlas,cutaway,section,specimen);addNerves(scene,geometry,model,selectedFiber);addGenericArray(scene,geometry);
   scene.title=mode==='whole'?(atlas?'Human cochlea · measured anatomy':'Human cochlea · centreline reconstruction'):'Cochlear cutaway';
   scene.subtitle='OpenEar ZETA scalae · reconstructed membranes and neural microstructure';
   if(!atlas)scene.provenanceLabel='Measured ST centreline + reconstructed lumens; surface asset unavailable';
-  scene.notes.unshift(atlas?'Measured scala surfaces share their original specimen registration. Membranes, modiolus, organ of Corti and individual neural routes are reconstructed anatomy.':'The measured ST centreline is available, but these lumen surfaces are reconstructions. Membranes, modiolus, organ of Corti and individual neural routes are reconstructed anatomy.', 'The 35 mm reference place axis maps by normalized arc length to this specimen’s 22.247 mm ST medial curve for display only. Electrical fields and cable integration continue in the original unrolled homogeneous conductor. Display distances must not be used as calculated electrode–neuron distances.');
+  scene.notes.unshift(atlas?'Measured scala surfaces share their original specimen registration. Membranes, the organ of Corti and individual neural routes are reconstructed anatomy.':'The measured ST centreline is available, but these lumen surfaces are reconstructions. Membranes, the organ of Corti and individual neural routes are reconstructed anatomy.', 'The 35 mm reference place axis maps by normalized arc length to this specimen’s 22.247 mm ST medial curve for display only. Electrical fields and cable integration continue in the original unrolled homogeneous conductor. Display distances must not be used as calculated electrode–neuron distances.');
   scene.legend=[{label:'Scala tympani',color:C.st,layer:'scala'},{label:'Scala vestibuli',color:C.sv,layer:'scala'},{label:'Scala media',color:C.sm,layer:'scala'},{label:'Basilar partition',color:C.bm,layer:'membrane'},{label:'Type I fibers',color:C.nerve,layer:'nerve'},{label:'Bone / lamina',color:C.bone,layer:'bone'}];
   scene.camera={position:[10,7,12],target:[-.4,-.3,.2],fov:40};scene.scaleBarMm=1;return finishBounds(scene);
 }

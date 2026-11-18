@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { ANATOMY_REFERENCE, createAnatomyScene, sampleAnatomyCenterline } from '../src/lib/cochlear/anatomy.js';
 import { createGeometry } from '../src/lib/cochlear/geometry.js';
 import { createNerveModel } from '../src/lib/cochlear/nerve.js';
+import { parseSpecimenPart, SPECIMEN_VIEWS } from '../src/lib/cochlear/specimen.js';
 import { normalizeSettings } from '../src/lib/cochlear/config.js';
 
 const atlas=JSON.parse(readFileSync(new URL('../public/assets/cochlear/openear-zeta-atlas.json',import.meta.url),'utf8'));
@@ -120,4 +121,59 @@ test('section depth changes the exposed measured lumen without moving physical p
   assert.deepEqual(shallow.implantPlacement, deep.implantPlacement);
   const rim = deep.meshes.find(m => m.id === 'scala-tympani-section-edge');
   assert.equal(rim.layer, 'scala'); validMesh(rim); assert.ok(rim.indices.length > 0);
+});
+
+const specimenParts = new Map();
+for (const name of Object.values(SPECIMEN_VIEWS).flatMap(view => view.parts)) {
+  const file = readFileSync(new URL('../public/assets/cochlear/specimen/' + name + '.ply', import.meta.url));
+  specimenParts.set(name, parseSpecimenPart(name, file.buffer.slice(file.byteOffset, file.byteOffset + file.byteLength)));
+}
+
+test('specimen surfaces are closed and section cuts share the registered modiolar plane', () => {
+  const axis = ANATOMY_REFERENCE.centerline.estimatedModiolarAxisPoint;
+  for (const [name, mesh] of specimenParts) {
+    validMesh(mesh);
+    const edges = new Map(), signedDistance = [];
+    for (let i = 0; i < mesh.indices.length; i += 3) {
+      for (let corner = 0; corner < 3; corner++) {
+        const a = mesh.indices[i + corner], b = mesh.indices[i + (corner + 1) % 3];
+        const key = Math.min(a, b) + ',' + Math.max(a, b);
+        edges.set(key, (edges.get(key) ?? 0) + 1);
+      }
+    }
+    assert.ok([...edges.values()].every(count => count === 2), name + ' must have two faces per edge');
+    for (let i = 0; i < mesh.positions.length; i += 3) {
+      signedDistance.push((.12 * (mesh.positions[i] - axis[0]) + mesh.positions[i + 2] - axis[2]) / Math.hypot(.12, 1));
+    }
+    assert.ok(Math.min(...signedDistance) < -3, name + ' spans several mm in the atlas frame');
+    if (name.endsWith('-section')) {
+      assert.ok(Math.max(...signedDistance) < .001);
+      assert.ok(signedDistance.filter(d => Math.abs(d) < .001).length > 50, name + ' has a planar cut face');
+    } else assert.ok(Math.max(...signedDistance) > 2);
+    if (name.startsWith('bone')) assert.equal(mesh.appearanceColors.length, mesh.positions.length);
+  }
+});
+
+test('whole-cochlea representations expose separate selectable bone and chamber surfaces', () => {
+  const expected = { bone: ['specimenBone'], chambers: ['specimenST', 'specimenSV'], section: ['specimenBone', 'specimenST', 'specimenSV'] };
+  for (const [view, {parts, label}] of Object.entries(SPECIMEN_VIEWS)) {
+    const scene = createAnatomyScene(geometry, model, { mode: 'whole', atlas, specimenView: view, specimen: parts.map(p => specimenParts.get(p)) });
+    assert.equal(scene.title, label);
+    assert.deepEqual(scene.meshes.map(m => m.layer).sort(), expected[view].sort());
+    assert.equal(scene.meshes.length, scene.legend.length);
+    assert.equal(scene.paths.length, 0);
+    assert.ok(scene.meshes.every(m => m.contactIndex === undefined));
+  }
+  const fallback = createAnatomyScene(geometry, model, {mode: 'whole', specimenView: 'bone'});
+  assert.match(fallback.provenanceLabel, /illustrative lumen/);
+  assert.equal(fallback.meshes.length, 0);
+});
+
+test('the registered bone overlay preserves inserted physical pad positions and dimensions', () => {
+  const options = {mode: 'array', implantPose: 'inserted', implantProfile: 'cochlear-ci622', atlas};
+  const baseline = createAnatomyScene(geometry, model, options);
+  const withBone = createAnatomyScene(geometry, model, {...options, specimen: [specimenParts.get('bone-section')]});
+  assert.equal(withBone.meshes.find(m => m.id === 'specimen-bone-section').layer, 'bone');
+  assert.deepEqual(withBone.implantContacts, baseline.implantContacts);
+  assert.deepEqual(withBone.implantPlacement, baseline.implantPlacement);
 });
