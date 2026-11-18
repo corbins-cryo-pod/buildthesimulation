@@ -2,12 +2,12 @@
 title: "Medtronic Inceptiv closed-loop SCS"
 order: 154
 pubDate: 2026-10-08
-updatedDate: 2026-10-11
+updatedDate: 2026-11-18
 device_id: "BTSD-FDA-0005"
 interface_class: "scs"
 status: "human"
-last_updated: 2026-10-11
-description: "FDA-approved Medtronic spinal cord stimulator with closed-loop ECAP sensing, approved April 2024. Values rest on the FDA supplement record and Medtronic's announcement; the SSED was not read."
+last_updated: 2026-11-18
+description: "FDA-approved Medtronic spinal cord stimulator with closed-loop ECAP sensing, approved April 2024. Values rest on the FDA supplement record, Medtronic's announcement and the peer-reviewed Closed-Loop study (NCT05177354); the SSED was not read."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P840001S512"
 axis: ["spinal-cord"]
@@ -113,13 +113,13 @@ Company brief: [Medtronic plc](/companies/53-medtronic-company-brief/).
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects |  |
+| Human subjects | Closed-Loop study (NCT05177354): 94 enrolled at Australian sites; 60 implanted with the closed-loop system, 54 completed the 3-month visit; 12-month analyses covered 36 to 39 participants [6][7] |
 | Preclinical cohort |  |
-| Follow-up duration |  |
+| Follow-up duration | In-clinic randomized crossover testing at 1 month; pain outcomes through 12 months; study completed July 2025 [6][7][8] |
 | Indications | Chronic pain (the Medtronic announcement states treatment of chronic pain); the FDA record read does not list the indication text [2] |
-| Trials and registries |  |
-| Primary outcomes | DTM waveform: 84% responder rate at 12 months in a multicenter open-label randomized trial (Fishman 2021, Pain Practice). This is a waveform result, not a closed-loop result [2] |
-| Key limitations | The PMA SSED and closed-loop clinical data were not read. Statements about size, MRI and market rank are Medtronic announcement claims [2] |
+| Trials and registries | NCT05177354 (Closed-Loop study): multicenter, prospective, single-arm with in-clinic randomized crossover testing (closed loop on vs off), completed [6] |
+| Primary outcomes | Primary endpoint met: 89.3% of the primary analysis set (n=28) reported reduced overstimulation with closed loop vs open loop at 1 month (p<0.001); 86% of low-back/leg pain subjects (n=51) had at least 50% pain reduction at 3 months; at 12 months 78% (n=36) had at least 50% pain relief, pain intensity down 60 mm from baseline and stable; overstimulation median 0.4 (closed loop) vs 3.0 (open loop) [7][8]. DTM waveform: 84% responder rate at 12 months in a multicenter open-label randomized trial (Fishman 2021, Pain Practice). This is a waveform result, not a closed-loop result [2] |
+| Key limitations | The PMA SSED was not read; clinical rows come from the peer-reviewed Closed-Loop study reports (Australian sites; sponsor Medtronic; several authors are Medtronic employees). Single-arm design; the crossover comparison was in-clinic and short-term. Statements about size, MRI and market rank are Medtronic announcement claims [1][2][7][8] |
 
 ## Engineering tradeoffs
 
@@ -140,3 +140,6 @@ The approval covers Inceptiv, Inceptiv LT and Intellis Pro neurostimulators. Inc
 3. Medtronic (manufacturer labeling, Inceptiv 977119, Inceptiv LT 977117 and Intellis Pro 977118 rechargeable neurostimulators implant manual), as hosted by the Slovak Ministry of Health categorization site (Slovak host; the manual itself is Medtronic's). [Implant manual](https://kategorizacia.mzsr.sk/Pomocky/Download/RequestAttachment/129256). Physical and operating tables read October 9, 2026; hosted copy not dated.
 4. [Medtronic Vectris SureScan MRI surgical lead product page](https://www.medtronic.com/en-us/healthcare-professionals/products/neurological/spinal-cord-stimulation/mri-leads/vectris-surescan-surgical-lead.html), manufacturer.
 5. [FDA recall record Z-2159-2021, Medtronic Vectris SureScan MRI lead kits](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfRes/res.cfm?id=188265).
+6. [ClinicalTrials.gov, NCT05177354 (Medtronic Closed-Loop Spinal Cord Stimulation System)](https://clinicaltrials.gov/study/NCT05177354). Verified November 18, 2026.
+7. [Mohabbati V, Sullivan R, Yu J, et al., Early outcomes with a flexible ECAP based closed loop using multiplexed spinal cord stimulation waveforms, Pain Medicine 2025;26(11):773-782](https://pubmed.ncbi.nlm.nih.gov/40378232/). Peer reviewed; PMID 40378232; open access PMC12585107.
+8. [Mohabbati V, Sullivan R, Yu J, et al., In-Clinic and At-Home Patient Experiences with Closed-Loop Spinal Cord Stimulation: 12-Month Outcomes, Pain and Therapy 2026;15(5):1673-1684](https://pubmed.ncbi.nlm.nih.gov/42518116/). Peer reviewed; PMID 42518116; open access PMC13624207.
