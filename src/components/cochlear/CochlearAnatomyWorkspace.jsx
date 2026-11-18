@@ -6,7 +6,7 @@ import { SPECIMEN_VIEWS, specimenPart } from '../../lib/cochlear/specimen.js';
 import { IMPLANT_PROFILES, getImplantProfile, getImplantContactMap } from '../../lib/cochlear/implants.js';
 
 const VIEWS = [
-  ['whole', 'Whole cochlea'], ['array', 'Implant models'], ['cutaway', 'Cochlear cutaway'],
+  ['array', 'Implant models'], ['whole', 'Whole cochlea'], ['cutaway', 'Cochlear cutaway'],
   ['organ', 'Hair cells & nerves'], ['neuron', 'Auditory neuron'],
   ['unrolled', 'Calculation space'], ['field', 'Contact field'],
 ];
@@ -40,7 +40,7 @@ export default function CochlearAnatomyWorkspace({
   selectedContact, selectedFiber, onContact, onFiber,
   timeMs, playing, durationMs, onTime, onToggleReplay, onUseChannelCount,
 }) {
-  const [view, setView] = useState('whole');
+  const [view, setView] = useState(VIEWS[0][0]);
   useEffect(() => {
     const requested = new URLSearchParams(window.location.search).get('view');
     if (VIEWS.some(([id]) => id === requested)) setView(requested);
