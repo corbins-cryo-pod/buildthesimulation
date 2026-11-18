@@ -102,7 +102,7 @@ export default function CochlearAnatomyWorkspace({
       <label class="coch-label-switch"><input type="checkbox" checked={showLabels} onChange={event => setShowLabels(event.currentTarget.checked)} /><span>Labels</span></label>
     </div></details></div>}
     <div class={'coch-atlas-model-layout' + (hardware ? ' has-device-details' : '')}>
-      <div class={'coch-atlas-viewport' + (anatomical ? ' is-anatomical' : '')}>
+      <div class={'coch-atlas-viewport' + (imaging ? ' is-anatomical is-imaging' : anatomical ? ' is-anatomical' : '')}>
         {imaging ? <MicroCTSpecimen theme={theme}/> : anatomical ? <AnatomyScene geometry={geometry} model={model} fibers={fibers} timeMs={timeMs} selectedContact={selectedContact} selectedFiber={selectedFiber} onContact={onContact} onFiber={onFiber} theme={theme} anatomyMode={view} specimenView={specimenView} section={hasSection ? section : 50} layers={layers} showLabels={showLabels} implantProfile={profile} implantPose={implantPose} selectedImplantContact={implantContact} onImplantContact={setImplantContact} onSceneMetadata={setSceneMeta} /> : <CochleaScene geometry={geometry} model={model} fibers={fibers} timeMs={timeMs} selectedContact={selectedContact} selectedFiber={selectedFiber} onContact={onContact} onFiber={onFiber} theme={theme} settings={settings} view={view} />}
       </div>
       {hardware && <aside class="coch-device-detail" aria-label="Implant reference dimensions">

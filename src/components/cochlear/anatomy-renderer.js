@@ -730,6 +730,7 @@ export function createAnatomyViewer(host, callbacks = {}) {
       if (trackingPad && previousPad !== current.selectedImplantContact) trackingPad = focusSelectedPad();
       invalidate();
     },
+    refit() { resize(); reset(); },
     reset, zoom, orbit, focusSelectedPad, inspectRegion,
     getState() { return { backend, cameraPosition: camera.position.toArray(), cameraTarget: controls.target.toArray(), triangleCount: Number(host.dataset.triangles ?? 0) }; },
     dispose() {

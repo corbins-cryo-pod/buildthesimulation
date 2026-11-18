@@ -212,3 +212,5 @@ body .coch-lab .coch-heading h1{font-family:var(--coch-body)!important;font-size
 .ct-range input {grid-column:span 2;width:100%}
 .ct-gallery-link {display:inline-block;margin:1em 0;text-decoration:underline}
 @media(max-width:760px){.ct-workbench{grid-template-columns:1fr}}
+
+.coch-lab .coch-atlas-viewport.is-imaging {height:auto;min-height:0;overflow:visible}

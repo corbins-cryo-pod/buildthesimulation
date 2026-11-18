@@ -29,16 +29,21 @@ export default function MicroCTSpecimen({theme}) {
     return ()=>{ im.onload=im.onerror=null; viewer.current?.dispose();viewer.current=null; };
   },[]);
   useEffect(()=>{
-    let active=true, frame=0;
+    let active=true, observer;
     if (!viewer.current) return;
     setStatus('Loading surface…');
     getMesh(mode).then(mesh=>{
       if (!active) return;
       viewer.current.setScene({mode:'microct', meshes:[mesh],labels:landmarks,scaleBarMm:1,camera:{position:mode==='section'?[0,0,18]:[-6,12,10],target:[0,0,0]}},{resetCamera:true});
-      frame=requestAnimationFrame(()=>{if(active)viewer.current?.reset();});
+      // The responsive grid can acquire its final width after the scan loads.
+      // Fit with the measured viewport before any camera interaction.
+      const refit=()=>{if(active)viewer.current?.refit();};
+      observer=new ResizeObserver(refit);
+      observer.observe(stage.current);
+      refit();
       setStatus('');
     }).catch(()=>{if(active)setStatus('Surface unavailable. Select another reconstruction to retry.');});
-    return ()=>{active=false;cancelAnimationFrame(frame);};
+    return ()=>{active=false;observer?.disconnect();};
   },[mode]);
   useEffect(()=>{viewer.current?.setState({theme,showLabels:labels});},[theme,labels]);
   useEffect(()=>{
