@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
+import { SPECIMEN_VIEWS } from '../src/lib/cochlear/specimen.js';
 import { MODEL_VERSION } from '../src/lib/cochlear/config.js';
 const root = 'dist', route = '/simulations/cochlear-implant/';
 const html = readFileSync(`${root}${route}index.html`, 'utf8'), methods = readFileSync(`${root}${route}methods/index.html`, 'utf8');
@@ -13,6 +14,12 @@ assert.match(methods, /id="anatomy"/); assert.match(methods, /id="implants"/);
 const atlas = JSON.parse(readFileSync(`${root}/assets/cochlear/openear-zeta-atlas.json`, 'utf8'));
 assert.equal(atlas.schema, 'cochlear-anatomy-atlas-v1'); assert.equal(atlas.units, 'mm');
 assert.ok(atlas.meshes.some(mesh => mesh.id === 'scala-tympani' && mesh.indices.length > 1000), 'Missing measured cochlear surface asset');
+for (const {parts} of Object.values(SPECIMEN_VIEWS)) {
+  for (const part of parts) {
+    const mesh = readFileSync(`${root}/assets/cochlear/specimen/${part}.ply`);
+    assert.match(mesh.subarray(0, 80).toString('ascii'), /^ply\nformat binary_little_endian/);
+  }
+}
 const entry = html.match(/component-url="\/_astro\/(CochlearLaboratory\.[^"]+\.js)"/)?.[1]; assert.ok(entry, 'Missing hydrated cochlear laboratory entry');
 const modules = new Map();
 function visit(name) { if (modules.has(name)) return; const code = readFileSync(`${root}/_astro/${name}`, 'utf8'); modules.set(name, code); for (const m of code.matchAll(/(?:from\s*|import\s*|import\(\s*)["']\.\/([^"']+\.js)["']/g)) visit(m[1]); }

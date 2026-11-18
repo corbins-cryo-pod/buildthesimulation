@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { createAnatomyScene, loadAnatomyAtlas } from '../../lib/cochlear/anatomy.js';
+import { loadSpecimen } from '../../lib/cochlear/specimen.js';
 import { anatomyLayerVisible, createAnatomyViewer } from './anatomy-renderer.js';
 
 const TITLES = {
@@ -24,7 +25,7 @@ export default function AnatomyScene({
   geometry, model, fibers, timeMs = 0, selectedContact = -1, selectedFiber = -1,
   selectedImplantContact = null, onContact, onFiber, onImplantContact,
   theme = 'light', anatomyMode = 'cutaway', layers = {}, showLabels = true,
-  implantProfile = 'generic', implantPose = 'bench', section = 50, onRendererChange, onSceneMetadata,
+  implantProfile = 'generic', implantPose = 'bench', section = 50, specimenView, onRendererChange, onSceneMetadata,
 }) {
   const host = useRef(null), viewer = useRef(null), live = useRef({}), previousScene = useRef(null);
   const [atlas, setAtlas] = useState(null), [atlasStatus, setAtlasStatus] = useState('loading');
@@ -40,14 +41,29 @@ export default function AnatomyScene({
     return () => { mounted = false; };
   }, []);
 
+  const [specimenResult, setSpecimenResult] = useState(null);
+  const macroOverlay = layers.bone && (anatomyMode === 'cutaway' || (anatomyMode === 'array' && implantPose === 'inserted'));
+  const variant = anatomyMode === 'whole' ? specimenView : macroOverlay ? 'overlay' : null;
+  useEffect(() => {
+    if (!variant) return;
+    let active = true;
+    loadSpecimen(variant).then(parts => {
+      if (active) setSpecimenResult({variant, parts});
+    }).catch(() => { if (active) setSpecimenResult({variant, parts:null}); });
+    return () => { active = false; };
+  }, [variant]);
+  const requested = variant && specimenResult?.variant === variant;
+  const specimen = requested ? specimenResult.parts : null;
+  const specimenStatus = !variant ? 'idle' : !requested ? 'loading' : specimen ? 'ready' : 'fallback';
+
   // The representative neural subset always includes the selected fiber.
   // Highlighting a contact never rebuilds or enlarges its mesh.
-  const localFiber = anatomyMode === 'array' ? -1 : selectedFiber;
+  const localFiber = ['array','whole'].includes(anatomyMode) ? -1 : selectedFiber;
   const prepared = useMemo(() => {
     try {
-      return { scene: createAnatomyScene(geometry, model, { mode: anatomyMode, implantProfile, implantPose, selectedFiber: localFiber, atlas, section }), error: '' };
+      return { scene: createAnatomyScene(geometry, model, { mode: anatomyMode, implantProfile, implantPose, selectedFiber: localFiber, atlas, section, specimenView, specimen }), error: '' };
     } catch (error) { return { scene: null, error: error.message || 'The anatomical scene could not be prepared.' }; }
-  }, [geometry, model, anatomyMode, implantProfile, implantPose, localFiber, atlas, section]);
+  }, [geometry, model, anatomyMode, implantProfile, implantPose, localFiber, atlas, section, specimenView, specimen]);
 
   useEffect(() => {
     onSceneMetadata?.({ placement: prepared.scene?.implantPlacement ?? null, atlas: atlasStatus });
@@ -71,9 +87,9 @@ export default function AnatomyScene({
     if (!prepared.scene || !viewer.current) return;
     try {
       const previous = previousScene.current;
-      const resetCamera = !previous || previous.mode !== anatomyMode || previous.atlas !== atlas || (anatomyMode === 'array' && (previous.profile !== implantProfile || previous.pose !== implantPose));
+      const resetCamera = !previous || previous.mode !== anatomyMode || previous.atlas !== atlas || (anatomyMode === 'whole' && (previous.variant !== variant || previous.specimen !== specimen)) || (anatomyMode === 'array' && (previous.profile !== implantProfile || previous.pose !== implantPose));
       viewer.current.setScene(prepared.scene, { resetCamera });
-      previousScene.current = { mode: anatomyMode, atlas, profile: implantProfile, pose: implantPose };
+      previousScene.current = { mode: anatomyMode, atlas, profile: implantProfile, pose: implantPose, variant, specimen };
       setRendererError('');
     } catch (error) { setRendererError(error.message || 'The anatomical scene could not be displayed.'); }
   }, [prepared.scene]);
@@ -93,7 +109,7 @@ export default function AnatomyScene({
   const legend = scene?.legend ?? [];
   const notes = Array.isArray(scene?.notes) ? scene.notes : scene?.notes ? [scene.notes] : [];
   const provenance = scene?.provenanceLabel ?? (atlasStatus === 'ready' ? 'Human CT + serial-section atlas' : 'Illustrative reference anatomy');
-  return <div class="coch-anatomy" data-anatomy-mode={anatomyMode} data-anatomy-renderer={renderer || 'initializing'} data-anatomy-atlas={atlasStatus}>
+  return <div class="coch-anatomy" data-anatomy-mode={anatomyMode} data-anatomy-renderer={renderer || 'initializing'} data-anatomy-atlas={atlasStatus} data-specimen={specimenStatus}>
     <div class="coch-specimen-head">
       <div class="coch-anatomy-heading"><p>{scene?.subtitle ?? SUBTITLES[anatomyMode]}</p><h3>{scene?.title ?? TITLES[anatomyMode]}</h3></div>
       <div class="coch-anatomy-toolbar" role="group" aria-label="Anatomical camera controls">
@@ -112,9 +128,12 @@ export default function AnatomyScene({
     </div>
     <div class="coch-specimen-window">
       <div ref={host} class="coch-anatomy-stage" style={{ visibility: error ? 'hidden' : 'visible' }} />
-    {(atlasStatus === 'loading' || atlasStatus === 'fallback') && <p class="coch-anatomy-status" role="status" style={{ position: 'absolute', top: 79, left: 20, maxWidth: '68%', pointerEvents: 'none' }}>
-      {atlasStatus === 'loading' ? 'Loading human anatomy atlas…' : 'Atlas download unavailable · illustrative reference anatomy shown.'}
-    </p>}
+    {((anatomyMode !== 'whole' && atlasStatus !== 'ready') || (anatomyMode === 'whole' && specimenView === 'chambers' && atlasStatus !== 'ready') || ['loading','fallback'].includes(specimenStatus)) &&
+      <p class="coch-anatomy-status" role="status" style={{ position:'absolute',top:12,left:12,pointerEvents:'none' }}>
+        {specimenStatus === 'fallback' ? 'Specimen surface unavailable. Available anatomy is shown.' :
+          specimenStatus === 'loading' ? 'Loading specimen surface…' :
+          atlasStatus === 'loading' ? 'Loading human anatomy atlas…' : 'Atlas download unavailable. Available anatomy is shown.'}
+      </p>}
     {error && <div class="coch-anatomy-error" role="alert" style={{ position: 'absolute', inset: '30% 10% auto', padding: 20 }}><strong>Anatomy could not be displayed</strong><p>{error}</p><p>The calculation-space and contact-field views remain available.</p></div>}
     </div>
     {!error && <div class="coch-specimen-footer">
