@@ -20,6 +20,13 @@ for (const {parts} of Object.values(SPECIMEN_VIEWS)) {
     assert.match(mesh.subarray(0, 80).toString('ascii'), /^ply\nformat binary_little_endian/);
   }
 }
+const gallery = readFileSync(root + route + 'references/index.html', 'utf8');
+for (const file of ['bone.ply','section.ply','cast.ply','sections.png']) {
+  assert.ok(existsSync(root + '/assets/cochlear/microct/' + file));
+}
+const plates = new Set([...gallery.matchAll(/src="(\/assets\/cochlear\/plates\/[^"]+)"/g)].map(match => match[1]));
+assert.ok(plates.size >= 12);
+for (const plate of plates) assert.ok(existsSync(root + plate), plate);
 const entry = html.match(/component-url="\/_astro\/(CochlearLaboratory\.[^"]+\.js)"/)?.[1]; assert.ok(entry, 'Missing hydrated cochlear laboratory entry');
 const modules = new Map();
 function visit(name) { if (modules.has(name)) return; const code = readFileSync(`${root}/_astro/${name}`, 'utf8'); modules.set(name, code); for (const m of code.matchAll(/(?:from\s*|import\s*|import\(\s*)["']\.\/([^"']+\.js)["']/g)) visit(m[1]); }

@@ -1,0 +1,23 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import {groups,studies} from '../../../../lib/cochlear/reference-plates.js';
+const lab='/simulations/cochlear-implant/';
+---
+<Layout pageTitle="Cochlear reference plates" description="Human micro-CT, histology and electron microscopy alongside cochlear implant model observations." wide={true} compactHeader={true}>
+<main class="plates"><a href={lab}>← Cochlear Implant Laboratory</a>
+<header><p>Auditory anatomy · Reference collection</p><h1>The human cochlea</h1><p>Micro-CT through the temporal bone, microscopic tissue sections and electron micrographs of the sensory cells. Select a plate for the full image and its original scale bars.</p></header>
+<nav aria-label="Reference regions">{groups.map(([id,name])=><a href={'#'+id}>{name}</a>)}</nav>
+{groups.map(([id,name,plates])=><section id={id}><div class="section-heading"><h2>{name}</h2><a href={lab+'?view='+id+'#coch-anatomy-title'}>Compare in the simulator ↗</a></div><div class="grid">{plates.map(([study,fig,title,method,caption])=>{
+const [author,doi,license]=studies[study];const image='/assets/cochlear/plates/'+study+'-'+fig+'.webp';
+return <figure><a href={image}><img src={image} loading="lazy" decoding="async" alt={title+' · '+method}/></a><figcaption><small>{method}</small><h3>{title}</h3><p>{caption}</p><footer><a href={'https://doi.org/'+doi}>{author} · Figure {fig} ↗</a> · {license}</footer></figcaption></figure>})}</div></section>)}
+<section><h2>Source volumes and further reading</h2><ul>
+<li><a href="https://zenodo.org/records/3355272">Wimmer et al. · F07 micro-CT, registered label and cochlear landmarks</a> — right human ear used in the scan workstation. CC BY 4.0.</li>
+<li><a href="https://zenodo.org/records/1473724">Sieber et al. · OpenEar ZETA</a> — source specimen for the implant, chamber and modiolar views. CC BY 4.0.</li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/30338153/">Iyer et al. · Figures 2–3, stained human tissue and synchrotron sections</a></li>
+<li><a href="https://doi.org/10.1038/sdata.2017.132">Gerber et al. · Multiscale temporal-bone imaging and insertion data</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2394499/">Stakhovskaya et al. · Human organ-of-Corti and spiral-ganglion frequency maps</a></li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/7213191/">Wright · Adult human organ of Corti in scanning electron microscopy</a></li></ul>
+<p>Published plates show independent specimens at their own scales. Figures have been resized and encoded for display. The Mishra plate retains its original CC BY-NC-SA 4.0 license.</p></section></main></Layout>
+<style>
+.plates{max-width:1160px;margin:auto;padding:2rem clamp(1rem,4vw,3rem);color:var(--ink);font-family:inherit}.plates header{max-width:800px;padding:2rem 0}.plates header p:first-child,.plates small{text-transform:uppercase;letter-spacing:.1em;font-size:.78rem}.plates h1{font-size:clamp(2.4rem,6vw,5.4rem);margin:.2em 0;line-height:1}.plates nav,.section-heading{display:flex;flex-wrap:wrap;gap:.7rem 1.4rem;align-items:baseline}.plates nav{border-block:1px solid;padding:1rem 0}.plates section{margin:2.5rem 0;scroll-margin:4rem}.section-heading{justify-content:space-between}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:1.6rem}.plates figure{margin:0;max-width:670px}.plates img{width:100%;height:clamp(255px,26vw,365px);object-fit:contain;background:#eeeae2;display:block}.plates figcaption{padding:1rem 0}.plates h3{font-size:1.35rem;margin:.4em 0}.plates p,.plates li{line-height:1.5}.plates footer{font-size:.85em}
+</style>
