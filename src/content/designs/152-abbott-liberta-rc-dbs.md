@@ -2,11 +2,11 @@
 title: "Abbott Liberta RC DBS system"
 order: 152
 pubDate: 2026-10-08
-updatedDate: 2026-10-11
+updatedDate: 2026-11-19
 device_id: "BTSD-FDA-0003"
 interface_class: "dbs"
 status: "human"
-last_updated: 2026-10-11
+last_updated: 2026-11-19
 description: "FDA-approved rechargeable DBS system from Abbott, approved by supplement S087 of PMA P140009 in January 2024. Many fields stay blank because the FDA record and company pages do not give them."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P140009S087"
@@ -114,13 +114,13 @@ Company brief: [Abbott Medical](/companies/54-abbott-company-brief/).
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects |  |
+| Human subjects | No Liberta RC clinical study. Platform evidence in the Infinity SSED (S039): the Brio STN randomized study (P140009) with 136 implanted patients randomized 3:1 to immediate vs delayed stimulation; effectiveness for GPi stimulation bridged from the Medtronic Activa study (P960009/S7), 160 enrolled (106 STN procedures, 54 GPi) [3] |
 | Preclinical cohort |  |
-| Follow-up duration |  |
+| Follow-up duration | Activa study: 12 months (follow-up visits at 1, 3, 6 and 12 months); Brio study: randomized comparison through 90 days with safety follow-up through one year [3] |
 | Indications | Bilateral STN or GPi stimulation as adjunct for advanced levodopa-responsive Parkinson's disease; unilateral or bilateral VIM stimulation for disabling upper-extremity tremor in adult essential tremor [4] |
-| Trials and registries | S087 is a normal 180-day supplement for design, components, specifications and material changes [1] |
-| Primary outcomes |  |
-| Key limitations | This sheet rests on the FDA supplement record and Abbott marketing pages. Lead geometry, sensing and clinical data were not located in a primary Abbott or FDA document [1][2] |
+| Trials and registries | S087 is a normal 180-day supplement for design, components, specifications and material changes [1]. No Liberta RC trial; S039 relied on the Brio STN randomized study and on Activa bridging data [3] |
+| Primary outcomes | Activa study, 12-month diary results: 'on' time increased 6.7 hours (GPi) and 6.1 hours (STN); 'on' time with dyskinesia decreased 4.2 hours (GPi) and 2.8 hours (STN); UPDRS motor scores improved for 102/117 patients off medication and 56/117 on medication. Brio study safety: no significant AE difference between stimulation and control groups in the first 90 days; 5 intracranial hemorrhages (3 during microelectrode recording); 3 deaths, all device-unrelated [3] |
+| Key limitations | No clinical study was run on the Liberta RC or Infinity hardware; effectiveness rests on technological-similarity bridging to the Brio and Medtronic Activa systems. Lead geometry, sensing and clinical data specific to the Liberta RC were not located in a primary Abbott or FDA document [1][2][3] |
 
 ## Engineering tradeoffs
 
