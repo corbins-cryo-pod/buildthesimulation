@@ -2,12 +2,12 @@
 title: "Cochlear Nucleus implant system"
 order: 161
 pubDate: 2026-10-08
-updatedDate: 2026-10-11
+updatedDate: 2026-11-20
 device_id: "BTSD-FDA-0012"
 interface_class: "cochlear"
 status: "human"
-last_updated: 2026-10-11
-description: "FDA-approved cochlear implant family, newest implant series CI1000 approved July 2025. Thinly sourced from the FDA supplement record and a Cochlear announcement; electrode specifications are not yet on the sheet."
+last_updated: 2026-11-20
+description: "FDA-approved cochlear implant family, newest implant series CI1000 approved July 2025. Electrode specifications are on the sheet from manufacturer technical documents; clinical rows carry the sound-processor studies documented in the Nexa labeling addendum."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?id=P840024S096"
 axis: ["cochlea"]
@@ -114,13 +114,13 @@ Company brief: [Cochlear Corporation](/companies/36-cochlear-corporation-company
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects |  |
+| Human subjects | No implant clinical study specific to the CI1000 (Nexa) Series was located. The labeling addendum that covers the Nexa Series documents three sound-processor clinical studies: a multi-centre pivotal SmartSound iQ (CP900 Series) study, 40 subjects (31 adults, 9 children, mean age 47); a ForwardFocus study in CP1000 users, 25 subjects (24 adults, 1 child, mean age 64.8); and a ForwardFocus study in CP1110 users, 20 subjects [7] |
 | Preclinical cohort |  |
-| Follow-up duration |  |
+| Follow-up duration | SmartSound iQ study: co-primary endpoints tested after four weeks of CP900 Series use; ForwardFocus CP1000: within-session comparisons; ForwardFocus CP1110: performance evaluations plus questionnaires after use in everyday environments [7] |
 | Indications | Cochlear describes cochlear implants as treatment for severe to profound sensorineural hearing loss [2] |
-| Trials and registries |  |
-| Primary outcomes |  |
-| Key limitations | This sheet rests on an FDA supplement record and a company announcement. Electrode count, array geometry, stimulation and clinical outcomes for the CI1000 Series were not located in sources read here [1][2] |
+| Trials and registries | CI1000 Series added under P840024/S096 (decision July 3, 2025); the supplement record lists an approval order statement and no new clinical study summary [1]. The clinical evidence in the Nexa labeling addendum comes from the sound-processor studies below [7] |
+| Primary outcomes | SmartSound iQ pivotal: co-primary endpoints of AzBio sentence recognition in noise with SNR-NR and with SCAN enabled versus disabled; both met non-inferiority and superiority (p<0.0001); mean AzBio in noise rose from 18.9% (ADRO+ASC) to 56.4% (all features including SCAN); 36/40 subjects (90%) reported benefit on the SSQ Speech scale; no adverse events. ForwardFocus CP1000: non-inferior sentence recognition in four-talker babble versus SmartSound iQ; four adverse events, none device-related serious. ForwardFocus CP1110: 22 adverse events, mostly mild and ear-related, no device-related serious events [7] |
+| Key limitations | No implant-specific clinical outcomes for the CI1000 Series were located; the labeling clinical evidence covers sound-processor signal processing in earlier processor generations, not the Nexa implant itself [1][2][7] |
 
 ## Engineering tradeoffs
 
@@ -142,3 +142,4 @@ S096 covers CI1000 Series implants, the Nucleus 8 and Kanso 3 processors and a s
 4. Cochlear (manufacturer technical specifications). [Nucleus Nexa implant with Slim Straight electrode (CI1022)](https://assets.cochlear.com/api/public/content/FUN5451-Nucleus-Nexa-CI1022-Tech-Specs.pdf).
 5. Cochlear (manufacturer technical specifications). [Nucleus Nexa implant with Slim Modiolar electrode (CI1032)](https://assets.cochlear.com/api/public/content/FUN5453-Nucleus-Nexa-CI1032-Tech-Specs.pdf).
 6. [Cochlear Nucleus Nexa CI1012 technical specifications](https://assets.cochlear.com/api/public/content/FUN5450-Nucleus-Nexa-CI1012-Tech-Specs.pdf), manufacturer document. Applies to the CI1012 implant.
+7. Cochlear (manufacturer labeling). [Addendum to the Physician's Package Insert and Physician's Guide, Cochlear Nucleus implants including the Nexa (CI1000) Series](https://assets.cochlear.com/api/public/content/D874535_7_2025-07-21), July 21, 2025 issue.
