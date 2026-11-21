@@ -2,12 +2,12 @@
 title: "SPR SPRINT percutaneous PNS"
 order: 164
 pubDate: 2026-10-08
-updatedDate: 2026-10-11
+updatedDate: 2026-11-21
 device_id: "BTSD-FDA-0015"
 interface_class: "pni"
 status: "human"
-last_updated: 2026-10-11
-description: "FDA-cleared temporary percutaneous peripheral nerve stimulation system with a wearable pulse generator, cleared January 2023 under 510(k) K223306. Thinly sourced; many cells stay blank."
+last_updated: 2026-11-21
+description: "FDA-cleared temporary percutaneous peripheral nerve stimulation system with a wearable pulse generator, cleared January 2023 under 510(k) K223306. Clinical rows carry the published postamputation-pain RCT evidence; many engineering cells stay blank."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223306.pdf"
 axis: ["peripheral-nerve"]
@@ -113,13 +113,13 @@ Company brief: [SPR Therapeutics, Inc.](/companies/63-spr-therapeutics-company-b
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects |  |
+| Human subjects | No clinical performance data were submitted for the K223306 clearance [1]. Published evidence for the 60-day percutaneous PNS therapy includes a multicenter, double-blind, randomized placebo-controlled trial in 28 lower-extremity amputees with postamputation pain [6] |
 | Preclinical cohort |  |
-| Follow-up duration |  |
-| Indications | Indicated for up to 60 days for pain relief; the full indication list was in the enclosure and was not extracted here [2] |
-| Trials and registries |  |
-| Primary outcomes |  |
-| Key limitations | This sheet uses only the clearance letter and its indications and comparison text. Lead dimensions, waveform and clinical data were not extracted. A 510(k) shows substantial equivalence, not an FDA efficacy approval [1][2] |
+| Follow-up duration | Randomized phase: 4 weeks PNS versus placebo, after which the placebo group crossed over and all subjects received PNS for four further weeks; a 12-month follow-up report covers sustained outcomes [6][7] |
+| Indications | Indicated for up to 60 days for symptomatic relief of chronic, intractable pain, post-surgical and post-traumatic acute pain, and post-operative and post-traumatic pain; not intended for placement in the region innervated by the cranial and facial nerves [2] |
+| Trials and registries | Cleared through 510(k) K223306 on substantial equivalence [1][3]. The postamputation pain study is registered as NCT03484429 (completed) [8] |
+| Primary outcomes | Randomized phase primary endpoint: the proportion with at least 50% pain reduction during weeks 1-4 was 7/12 (58%) with PNS versus 2/14 (14%) with placebo (p=0.037). In the 12-month follow-up, 4 of 5 PNS subjects who had completed follow-up at the time of the primary publication reported at least 50% pain relief [6][7] |
+| Key limitations | The clearance shows substantial equivalence, not an FDA efficacy approval, and no clinical data were part of the submission [1][2]. The published RCT evidence is small, industry-linked (SPR Therapeutics co-authors), and covers postamputation pain [6][7]. Lead dimensions and waveform details were not extracted |
 
 ## Engineering tradeoffs
 
@@ -140,3 +140,6 @@ K223306 adds a configuration that provides a second lead. Earlier clearances are
 3. [FDA 510(k) database record, K223306](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K223306).
 4. FDA 510(k) summary within K223306 (SPR Therapeutics, SPRINT PNS System), technological characteristics table comparing with predicate K211801. [FDA PDF](https://www.accessdata.fda.gov/cdrh_docs/pdf22/K223306.pdf).
 5. [SPRINT PNS System MRI Safety Information, SPR Therapeutics](https://www.sprpainrelief.com/sprint-pns-system/mri-safety-information). Manufacturer page.
+6. Gilmore et al. [Percutaneous peripheral nerve stimulation for the treatment of chronic neuropathic postamputation pain: a multicenter, randomized, placebo-controlled trial](https://pubmed.ncbi.nlm.nih.gov/30954936/), Reg Anesth Pain Med 2019;44(6):637-645. PMID 30954936.
+7. Gilmore et al. [Percutaneous 60-day peripheral nerve stimulation implant provides sustained relief of chronic pain following amputation: 12-month follow-up of a randomized, double-blind, placebo-controlled trial](https://pubmed.ncbi.nlm.nih.gov/31740443/), Reg Anesth Pain Med 2019. PMID 31740443.
+8. [NCT03484429, Postoperative Peripheral Nerve Stimulation for Management of Post-amputation Pain](https://clinicaltrials.gov/study/NCT03484429), completed.
