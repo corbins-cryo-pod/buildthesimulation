@@ -2,8 +2,8 @@
 title: "Science Corporation (company brief)"
 order: 6
 pubDate: 2026-02-02
-updatedDate: 2026-11-07
-lastVerified: 2026-11-05
+updatedDate: 2026-11-22
+lastVerified: 2026-11-22
 description: "Science Corporation’s BCI work with an emphasis on its biohybrid neural interface concept (neurons-as-the-interface), plus its PRIMA retinal prosthesis program."
 region: "American"
 kind: "Company"
@@ -123,6 +123,11 @@ But the credibility hinge is the same as always: can they make it *reliable, saf
 ### Nov 5, 2026 update: first post-approval PRIMA implant (reviewed Nov 5, 2026)
 
 - *First post-CE-mark implant (Oct 9, 2026, hospital announcement):* the University Medical Center Schleswig-Holstein (UKSH), Lübeck Campus, announced what it calls the world's first PRIMA implant since the chip's July approval for routine clinical use in Europe - an 80-year-old patient blind from geographic atrophy, implanted subretinally by Prof. Salvatore Grisanti's team. Per the hospital, the patient has since shown a marked visual-acuity increase, and Grisanti expects her to regain the ability to read medium-sized letters (single patient, hospital-reported, not peer reviewed). Deutsches Ärzteblatt covered the implant on Nov 4 from the hospital's press release. Sources: <https://zip.uksh.de/international_department/en/News/2026/World+Premiere+at+UKSH_+Retinal+Implant+Enables+Blind+Patient+to+See+Again-p-9999.html> (hospital) and <https://www.aerzteblatt.de/news/erstmals-nach-zulassung-netzhautchip-gegen-geografische-atrophie-eingesetzt-51f7b7b0-6e2a-476f-a2ed-cae1c1af6c85> (secondary)
+
+### Nov 17, 2026 update: $400M Series D (reviewed Nov 22, 2026)
+
+- *Funding (Nov 17, 2026, company announcement):* Science announced a $400 million Series D with participation from Khosla Ventures, the Ackman Oxman Institute, Tenet Healthcare, 885 Capital, Y Combinator and PLC Neurotech, among others, bringing total capital raised since its 2021 founding to more than $900 million (company-reported). Stated use of funds: accelerating PRIMA availability across Europe, preparing a US launch through the FDA Humanitarian Device Exemption pathway, expanding research, manufacturing and operations, and substantial further investment in the biohybrid program. Source: <https://science.xyz/news/series-d/>
+- *Valuation (reported, not stated by the company):* TechCrunch (Nov 17, 2026) reports investors valued the company at $3.5 billion, attributed to a person familiar with the deal; the company announcement does not give a valuation. Source: <https://techcrunch.com/2026/11/17/science-corporations-brain-tech-is-worth-3-5-billion-after-new-funding/>
 
 ### Device entries
 
