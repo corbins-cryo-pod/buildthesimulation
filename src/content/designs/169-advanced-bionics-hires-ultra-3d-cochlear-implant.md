@@ -2,12 +2,12 @@
 title: "Advanced Bionics HiRes Ultra 3D cochlear implant"
 order: 169
 pubDate: 2026-10-08
-updatedDate: 2026-10-11
+updatedDate: 2026-11-23
 device_id: "BTSD-FDA-0020"
 interface_class: "cochlear"
 status: "human"
-last_updated: 2026-10-11
-description: "FDA-approved cochlear implant with a 16-contact HiFocus electrode, specified from the manufacturer's surgeon manual and the FDA PMA record P960058. Clinical data not extracted yet."
+last_updated: 2026-11-23
+description: "FDA-approved cochlear implant with a 16-contact HiFocus electrode, specified from the manufacturer's surgeon manual and the FDA PMA record P960058. Clinical rows carry the SSD/AHL real-world study from the S167 SSED."
 modality: "Other"
 website: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P960058S166"
 axis: ["cochlea"]
@@ -114,13 +114,13 @@ Company brief: [Advanced Bionics](/companies/66-advanced-bionics-company-brief/)
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects |  |
+| Human subjects | The S167 SSED (approved July 22, 2026) presents the CR1022 retrospective real-world study: 91 subjects enrolled at six US sites with HiResolution implants (HiRes 90K generation onward, surgeries 2002-2023); 72 form the primary analysis population (25 SSD, 47 AHL) [4] |
 | Preclinical cohort |  |
-| Follow-up duration |  |
-| Indications |  |
-| Trials and registries |  |
-| Primary outcomes |  |
-| Key limitations | Source is the manufacturer's surgeon manual and an FDA supplement record. Clinical trial data were not extracted here, so those cells are left blank [1][2] |
+| Follow-up duration | Primary endpoint at 1 year +/- 6 months post-activation; data extracted out to 5 years +/- 6 months [4] |
+| Indications | Bilateral severe-to-profound sensorineural hearing loss (adults, postlingual, HINT sentence scores of 50% or less; children 12 months to 17 years with profound bilateral loss and limited hearing-aid benefit) and, since the July 22, 2026 S167 approval, single-sided deafness or asymmetric hearing loss with the implanted ear meeting severe-to-profound criteria (adults: CNC word score of 20% or less) [4] |
+| Trials and registries | P960058/S167 expanded the indications to SSD/AHL on the CR1022 real-world study [4]. The S166 supplement on this sheet's FDA record is a manufacturing supplement with no clinical data [2] |
+| Primary outcomes | CR1022: mean CNC word scores in the implanted ear improved 35.7 percentage points (SSD cohort) and 34.1 points (AHL cohort) at 1 year +/- 6 months, both p<0.0001; about 79% (SSD) and 78% (AHL) reached the pre-specified 10-point clinically meaningful threshold; improvement sustained at 5 years in the subset with data. Safety: 78 adverse events, 5 serious (4 hospitalization-related, 1 requiring intervention); no unanticipated events [4] |
+| Key limitations | The clinical evidence covers the HiResolution Bionic Ear System family (HiRes 90K and newer), not the HiRes Ultra 3D implant alone; CR1022 is a retrospective real-world study, and pediatric SSD/AHL use rests on extrapolation with no prospective pediatric data in S167 [1][2][4] |
 
 ## Engineering tradeoffs
 
@@ -139,3 +139,4 @@ The surgeon manual covers the HiRes Ultra 3D with HiFocus SlimJ and Mid-Scala el
 1. [Advanced Bionics, Surgeon Manual, HiRes Ultra 3D](https://www.advancedbionics.com/content/dam/advancedbionics/Documents/Regional/en-us/Professionals/HiRes-Ultra%203D-Surgeons-Manual-FDA.pdf).
 2. [FDA PMA record, P960058/S166](https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpma/pma.cfm?ID=P960058S166).
 3. [Advanced Bionics, HiResolution Bionic Ear System IFU](https://www.advancedbionics.com/content/dam/advancedbionics/ifus/en_us/029-Q727-49_Rev%20B_IFU%20HiRes%20Ultra%203D%20FDA%20EN%20FR-CA%20ES-SA%20PT-BR%20AR_preview.pdf).
+4. [FDA SSED, P960058/S167 (SSD/AHL indication expansion)](https://www.accessdata.fda.gov/cdrh_docs/pdf/P960058S167B.pdf), approved July 22, 2026.
