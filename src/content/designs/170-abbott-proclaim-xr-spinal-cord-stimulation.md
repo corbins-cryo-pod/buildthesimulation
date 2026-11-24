@@ -2,11 +2,11 @@
 title: "Abbott Proclaim XR spinal cord stimulation"
 order: 170
 pubDate: 2026-10-08
-updatedDate: 2026-10-11
+updatedDate: 2026-11-24
 device_id: "BTSD-FDA-0021"
 interface_class: "scs"
 status: "human"
-last_updated: 2026-10-11
+last_updated: 2026-11-24
 description: "FDA-approved Abbott spinal cord stimulation family (Prodigy, Proclaim XR, Proclaim Plus, Externa), indications expanded to diabetic neuropathy and non-surgical back pain in 2023. Thin: hardware specs not in the FDA summary read."
 modality: "Peripheral nerve"
 website: "https://www.accessdata.fda.gov/cdrh_docs/pdf/P010032S189B.pdf"
@@ -113,13 +113,13 @@ Company brief: [Abbott Medical](/companies/54-abbott-company-brief/).
 
 | Field | Value and source scope |
 | --- | --- |
-| Human subjects |  |
+| Human subjects | No new company trial: S189 rests on a systematic literature review and Medicare claims analysis. Primary evidence comes from two published randomized controlled trials in painful diabetic peripheral neuropathy (Slangen 2014, Diabetes Care; de Vos 2014, Pain; pooled SCS n=62, control n=34), with Medicare claims cohorts of Abbott SCS patients with diabetic neuropathy for safety [1] |
 | Preclinical cohort |  |
 | Follow-up duration | Medicare claims analysis for S189 followed safety events up to 12 months after implantation, for patients implanted between January 1, 2014 and September 30, 2020 [1] |
 | Indications | Chronic intractable pain of the trunk and/or limbs, including failed back surgery syndrome, intractable low back and leg pain, and diabetic peripheral neuropathy of the lower extremities (S189 wording) [1] |
 | Trials and registries | S189 rested mainly on a systematic review of the published literature (1984-2022), two randomized controlled trials in diabetic peripheral neuropathy and Medicare claims data [1] |
-| Primary outcomes |  |
-| Key limitations | The SSED text read gives no lead contact counts, IPG dimensions, battery figures or trial numbers. IPG dimensions, operating ranges and battery figures here come from Abbott's own manual and product page, not the SSED; lead geometry remains blank. Systems covered by one PMA span several generations; this sheet follows the Proclaim family as named in S191 [1][2] |
+| Primary outcomes | Meta-analysis of the two RCTs: pooled 6-month responder rate (at least 50% pain reduction, intent-to-treat) was 62.9% with SCS; fixed-effects group difference 55.3% (95% CI 40.8-69.9); odds ratio 24.8 in favor of SCS. The Medicare claims analysis characterized safety events through 12 months after implantation [1] |
+| Key limitations | The SSED text read gives no lead contact counts, IPG dimensions, battery figures or trial numbers. IPG dimensions, operating ranges and battery figures here come from Abbott's own manual and product page, not the SSED; lead geometry remains blank. Systems covered by one PMA span several generations; this sheet follows the Proclaim family as named in S191. The primary RCT evidence comes from published studies of other manufacturers' systems, leveraged by the FDA across commercially available SCS [1][2] |
 
 ## Engineering tradeoffs
 
