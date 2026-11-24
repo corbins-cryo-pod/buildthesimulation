@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import CatalogContents from '../components/CatalogContents.astro';
 import { buildCatalogContents } from '../lib/catalog-contents.js';
-import { simulationLinks } from '../data/simulations.js';
+import { homeSimulationLinks } from '../data/simulations.js';
 
 const [companies, devices, applications] = await Promise.all([
   getCollection('companies'), getCollection('designs'), getCollection('applications'),
@@ -30,7 +30,7 @@ const groups = buildCatalogContents(companies, devices, applications);
       <a href="/simulations/">View all →</a>
     </header>
     <ul>
-      {simulationLinks.map(simulation => <li><a href={simulation.href}>{simulation.title}</a></li>)}
+      {homeSimulationLinks.map(simulation => <li><a href={simulation.href}>{simulation.title}</a></li>)}
     </ul>
   </section>
   <CatalogContents groups={groups} />

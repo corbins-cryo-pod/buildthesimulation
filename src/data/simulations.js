@@ -143,3 +143,43 @@ export const simulationGroups = [
 ];
 
 export const simulationLinks = simulationGroups.flatMap(group => group.entries);
+
+// Homepage priority order: the most polished simulations first, weakest last
+// (the two-column home grid fills row-wise, so the last entry lands bottom
+// right). Adjust ranks here to reorder the home page only; the grouped
+// /simulations/ page keeps its own order.
+export const homeRankByHref = {
+  "/cortex/": 1,
+  "/cortex/interface/": 2,
+  "/simulations/biohybrid-axon-interface/": 3,
+  "/simulations/cell-growth/": 4,
+  "/simulations/finger-pathway-atlas/v4/": 5,
+  "/simulations/cochlear-implant/": 6,
+  "/simulations/retinal-implant/": 7,
+  "/simulations/cortical-stimulation/": 8,
+  "/simulations/biohybrid-interface/": 9,
+  "/simulations/interface-designer/": 10,
+  "/simulations/tissue-mechanics/": 11,
+  "/cortex/population/": 12,
+  "/simulations/cortex-slab/": 13,
+  "/sim/": 14,
+  "/simulations/biohybrid-axon-interface/stage2/": 15,
+  "/recordings/": 16,
+  "/simulations/optogenetics/": 17,
+  "/cells/": 18,
+  "/simulations/neural-interface-studio/": 19,
+  "/simulations/cellular-mechanics/": 20,
+  "/simulations/microfabrication/": 21,
+  "/simulations/cellular-electrophysiology/": 22,
+  "/simulations/neuron-growth/": 23,
+  "/simulations/neural-tissue/": 24,
+  "/simulations/rpni-design/": 25,
+  "/simulations/nerve-regeneration/": 26,
+  "/simulations/finger-pathway-atlas/v3/": 27,
+  "/simulations/whole-cell-remodeling/": 28,
+  "/simulations/soft-neural-generator/": 29,
+};
+
+export const homeSimulationLinks = [...simulationLinks].sort(
+  (a, b) => (homeRankByHref[a.href] ?? 999) - (homeRankByHref[b.href] ?? 999)
+);
