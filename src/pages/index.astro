@@ -60,5 +60,6 @@ const groups = buildCatalogContents(companies, devices, applications);
   .home-simulations li { margin:0; padding:0; min-width:0; line-height:1.08!important; text-align:left; }
   .home-simulations li a { display:block; color:inherit; text-decoration:none; font-family:'Twentieth Century',Arial,sans-serif!important; font-size:15px; font-weight:700; font-style:normal; line-height:1.08!important; letter-spacing:.05em!important; overflow-wrap:break-word; }
   .home-simulations li a:hover { text-decoration:underline; text-underline-offset:3px; }
-  @media(max-width:600px) { .home-simulations ul { grid-template-columns:1fr; gap:6px; } }
+  .home-simulations li:last-child { grid-column:2; }
+  @media(max-width:600px) { .home-simulations ul { grid-template-columns:1fr; gap:6px; } .home-simulations li:last-child { grid-column:auto; } }
 </style>
