@@ -42,7 +42,7 @@ test('02-05: chamber interlocks and exposure sequence',()=>{
  assert.equal(state,'unloaded');
 });
 test('02-05: glTF asset matches editable model, names and dimensional anchors',()=>{
- const a=JSON.parse(readFileSync(new URL('../public/equipment/02-05/ebpg5200.gltf',import.meta.url)));assert.deepEqual(a,model());
+ const a=JSON.parse(readFileSync(new URL('../public/equipment/02-05/ebpg5200.gltf',import.meta.url)));assert.equal(JSON.stringify(a),JSON.stringify(model()),'Serialized glTF must regenerate exactly (JSON normalizes negative zero).');
  const p=buildParts();assert.equal(new Set(p.map(x=>x.name)).size,p.length);
  for(const k of ['lock-door','sample-holder','xy-stage','chamber-cover','beam-indicator'])assert.ok(a.nodes.some(x=>x.name===k));
  assert.equal(p.filter(x=>x.name.startsWith('cassette-slot-')).length,10);
