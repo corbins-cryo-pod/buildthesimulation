@@ -5,7 +5,8 @@ export async function initPAS(){
  const $=id=>document.getElementById('pas-'+id);
  const fields=['waferDiameter_mm','waferThickness_mm','reticleThickness_mm','rows','columns','fieldWidth_mm','fieldHeight_mm','pitchX_mm','pitchY_mm','offsetX_mm','offsetY_mm','overlayX_nm','overlayY_nm','rotation_urad','edgeExclusion_mm','partialPolicy','dose_mJ_cm2','sampleId','parentRevision','reticleId'];
  const textFields=new Set(['partialPolicy','sampleId','reticleId']);
- let mod;try{mod=await import(/* @vite-ignore */ '/equipment/02-06/solver.mjs')}catch(e){$('status').textContent='Cannot load solver: '+e.message;return}
+ const solverUrl='/equipment/02-06/solver.mjs';
+ let mod;try{mod=await import(/* @vite-ignore */ solverUrl)}catch(e){$('status').textContent='Cannot load solver: '+e.message;return}
  const {solve,defaultJob}=mod;
  let plan=null,done=0,state='EMPTY',token=0,busy=false,committed=null,current=-1,cut=false,asset=null,renderer=null,scene=null,camera=null,controls=null,stage=null,wafer=null,reticle=null,beam=null,viewName='whole';
  const posStage=new THREE.Vector3(),posWafer=new THREE.Vector3(),posReticle=new THREE.Vector3();
@@ -66,7 +67,7 @@ export async function initPAS(){
  populate(defaultJob);preview();
  const host=$('view');
  function setView(v){viewName=v;if(!camera||!controls)return;const preset={whole:[[-3.3,2.5,3.7],[0,1,0]],front:[[0,1.25,4.2],[0,1.05,0]],right:[[3.8,1.5,.02],[0,1,0]],rear:[[.02,1.5,-4],[0,1,0]],reticle:[[.95,1.83,1.14],[.14,1.52,-.07]],stage:[[.69,1.18,.75],[.14,.86,-.07]],handler:[[1.6,1.65,1.65],[.55,1,.75]]}[v]||[[-3.3,2.5,3.7],[0,1,0]];
-  if(['reticle','stage','handler'].includes(v)){cut=true;applyCut()}camera.position.set(...preset[0]);controls.target.set(...preset[1]);controls.update()
+  if(['reticle','stage','handler'].includes(v)){cut=true;applyCut()}else if(v==='whole'){cut=false;applyCut()}camera.position.set(...preset[0]);controls.target.set(...preset[1]);controls.update()
  }
  function applyCut(){if(asset){const group=asset.getObjectByName('group-enclosure');if(group)group.visible=!cut}$('cut').setAttribute('aria-pressed',String(cut))}
  $('cut').onclick=()=>{cut=!cut;applyCut()};for(const b of document.querySelectorAll('[data-pas-view]'))b.onclick=()=>setView(b.dataset.pasView);
