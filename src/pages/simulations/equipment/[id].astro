@@ -1,0 +1,28 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import {equipment, zones, sources, evidence, dossiers, base, report, zoneId} from '../../../data/equipment';
+import '../../../styles/equipment.css';
+export function getStaticPaths() { return equipment.map(record => ({params:{id: record.id},props:{record}})); }
+const {record:r} = Astro.props;
+const zone = zones.find(z => z.id === zoneId(r));
+const associated = dossiers.filter(d=>d[2].includes(r.id));
+---
+<Layout pageTitle={r.name} subtitle="" description={r.purpose}>
+  <article class="equipment eq-sheet">
+    <nav class="eq-nav" aria-label="Register navigation"><a href={base}>← Equipment register</a><a href={base+'?zone='+zone.id}>Zone {zone.id} · {zone.name}</a><a href={base+'roadmap/'}>Ecosystem build plan</a></nav>
+    <header class="eq-mast"><span class="eq-meta">Equipment {r.id} &nbsp; / &nbsp; {r.priority}</span><h2>{r.model}</h2><p>{r.purpose}</p></header>
+    <dl class="eq-progress">{[['Geometry',r.geometryStatus],['Simulation',r.simulationStatus],['Integration',r.integrationStatus]].map(([label,value])=><div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+    <section><h2>Model and behavior plan</h2><dl class="eq-fields">
+      <dt>Reference acquisition</dt><dd>{evidence[r.evidence]} (grade {r.evidence}). {r.evidence === 'C' ? 'Identify a scale reference for the candidate or dimension the original design. Record which dimensions are design choices.' : 'Pin the installed variant and accessories, record a known dimension, and obtain orthogonal reference views before tracing the enclosure.'}</dd>
+      <dt>3D build</dt><dd>{r.geometryBrief}</dd>
+      <dt>Operating behavior</dt><dd>{r.behaviorBrief}</dd>
+      <dt>Proposed inputs</dt><dd>{r.inputs}</dd><dt>Proposed outputs</dt><dd>{r.outputs}</dd>
+      <dt>Acceptance test to run</dt><dd>{r.acceptance}</dd>
+    </dl></section>
+    {(r.related?.length > 0 || associated.length > 0) && <section><h2>Related work</h2><ul>{r.related?.map(([title,url])=><li><a href={url}>{title}</a></li>)}{associated.map(d=><li><a href={report+'#page='+d[1]}>{d[0]} · production dossier, p. {d[1]}</a></li>)}</ul></section>}
+    <section><h2>Evidence and maintenance</h2><p><a href={report+'#page='+r.page}>Equipment reference, p. {r.page}</a></p>
+      {r.sources.length ? <ul>{r.sources.map(k=><li>{k} · <a href={sources[k].url}>{sources[k].title}</a></li>)}</ul> : <p>The catalogue assigns no external source to this record.</p>}
+      <p><a href={'https://github.com/corbins-cryo-pod/buildthesimulation/blob/main/src/data/equipment/zones/'+zone.id+'.json'}>Maintain zone {zone.id} records on GitHub</a></p>
+    </section>
+  </article>
+</Layout>

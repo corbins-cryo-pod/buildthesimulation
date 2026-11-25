@@ -1,0 +1,268 @@
+[
+  {
+    "id": "02-01",
+    "name": "Contact mask aligner",
+    "model": "Karl SUSS MA6/BA6 Gen 4",
+    "evidence": "A",
+    "priority": "P1",
+    "page": 9,
+    "sources": [
+      "S01",
+      "S02",
+      "S03"
+    ],
+    "purpose": "Align and expose resist-coated wafers; ideal for conventional neural-electrode masks.",
+    "geometryBrief": "Separate lamp housing, microscope arms, split-field views, wafer chuck, mask frame, XY/theta controls, CRT/control panel and base.",
+    "behaviorBrief": "Model loading, focus, alignment error, contact/proximity mode, exposure and resist image. Lock one documented configuration before tracing panels.",
+    "inputs": "Coated wafer revision, mask transmission map, two alignment marks, XYθ pose and exposure mode",
+    "outputs": "Latent-image map, registered mask transform and overlay residuals for development",
+    "acceptance": "Apply a known translation to two separated alignment crosses. The measured overlay must reproduce the offset, then vanish to raster precision after inverse alignment.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Neural Interface Studio",
+        "/simulations/neural-interface-studio/"
+      ],
+      [
+        "Microfabrication Laboratory",
+        "/simulations/microfabrication/"
+      ]
+    ]
+  },
+  {
+    "id": "02-02",
+    "name": "Manual mask aligner",
+    "model": "Karl SUSS MJB3",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 9,
+    "sources": [
+      "S04",
+      "S05"
+    ],
+    "purpose": "Rapid contact lithography on small wafers or coupons.",
+    "geometryBrief": "Benchtop frame, binocular optics, substrate stage, mask clamp and mechanical knobs.",
+    "behaviorBrief": "Reusable aligner engine with model-specific stage travel and mask fit.",
+    "inputs": "Coupon and chuck envelopes, mask geometry, alignment marks and requested stage pose",
+    "outputs": "Mask-to-coupon transform, latent image and stage-limit result",
+    "acceptance": "Fit a coupon to the selected chuck, then request a position beyond the documented travel. The valid pose exposes the intended field; the second request preserves the incoming coupon.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "02-03",
+    "name": "Maskless laser writer",
+    "model": "Heidelberg Instruments MLA 150",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 9,
+    "sources": [
+      "S01",
+      "S06"
+    ],
+    "purpose": "Directly expose patterns without a physical mask.",
+    "geometryBrief": "Enclosed tool, loading hatch, sample stage, workstation and status lights.",
+    "behaviorBrief": "Import layout; simulate write-field stitching, dose and overlay, not proprietary control code.",
+    "inputs": "Vector pattern, write-field grid, sampling pitch, stage offsets and resist revision",
+    "outputs": "Stitched exposure map with field coordinates and dose provenance",
+    "acceptance": "Write a line across two virtual fields. Zero offset joins the line continuously; a programmed lateral offset appears only at the seam to within one pixel.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "02-04",
+    "name": "Photomask pattern generator",
+    "model": "Heidelberg DWL 2000",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 9,
+    "sources": [
+      "S01"
+    ],
+    "purpose": "Write photomasks for repeatable multilayer processes.",
+    "geometryBrief": "Tall enclosed cabinet, motion system and operator terminal.",
+    "behaviorBrief": "Mask geometry, write resolution and alignment marks; separate from wafer processing.",
+    "inputs": "Mask blank ID, artwork, write grid, fiducials and polarity",
+    "outputs": "Mask revision with writable-area bounds, feature map and fiducial coordinates",
+    "acceptance": "Write asymmetric fiducials on a mask blank and load it into the aligner. Its orientation and tone must survive the handoff, and the original wafer must remain untouched.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "02-05",
+    "name": "Electron-beam lithography",
+    "model": "Raith EBPG 5200+",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 10,
+    "sources": [
+      "S01",
+      "S07"
+    ],
+    "purpose": "Fabricate nanoscale test structures and dense contact patterns.",
+    "geometryBrief": "Column, chamber, load lock, vacuum cabinet and operator display.",
+    "behaviorBrief": "Pattern dose/blur and proximity-effect approximation; chamber state and write progress.",
+    "inputs": "Resist grid, vector shapes, beam-dose map and declared blur kernels",
+    "outputs": "Deposited-dose image, threshold contour and estimated write duration",
+    "acceptance": "Place two isolated identical point features. With a normalized linear kernel, their combined dose must equal the sum of the isolated responses and conserve integrated input dose on a padded grid.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "02-06",
+    "name": "Optical projection stepper",
+    "model": "ASML PAS5500/275D",
+    "evidence": "B",
+    "priority": "P3",
+    "page": 10,
+    "sources": [
+      "S01"
+    ],
+    "purpose": "Repeat a reticle pattern across a wafer.",
+    "geometryBrief": "Large cabinet, reticle handling and wafer loader; use sectional schematic for hidden optical path.",
+    "behaviorBrief": "Field stepping and overlay; do not invent precise lens prescription.",
+    "inputs": "Reticle artwork, projection scale, wafer outline, die pitch and field poses",
+    "outputs": "Per-field exposure map, incomplete-field flags and overlay records",
+    "acceptance": "Step an asymmetric reticle over a 2 × 3 grid wholly within a wafer. Count six copies, spaced by the configured pitch, with feature size set by the declared projection scale.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "02-07",
+    "name": "Spin coater",
+    "model": "Laurell WS-650Mz",
+    "evidence": "A",
+    "priority": "P1",
+    "page": 10,
+    "sources": [
+      "S08"
+    ],
+    "purpose": "Apply resist or polymer films to substrates.",
+    "geometryBrief": "Lid hinge, bowl, vacuum chuck, speed control, drain and dispensing pipette.",
+    "behaviorBrief": "Film thickness vs calibrated speed curve, edge bead, substrate centering and recipe history.",
+    "inputs": "Wafer outline and ID, resist ID, spin history and material-specific thickness calibration",
+    "outputs": "Resist-layer revision with thickness map, centering record and calibration ID",
+    "acceptance": "Reserve one measured spin-curve point during fitting. Predict its central film thickness and compare with the held-out reading and its predeclared uncertainty.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Neural Interface Studio",
+        "/simulations/neural-interface-studio/"
+      ],
+      [
+        "Microfabrication Laboratory",
+        "/simulations/microfabrication/"
+      ]
+    ]
+  },
+  {
+    "id": "02-08",
+    "name": "Coat/bake system",
+    "model": "CEE 200CBX",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 10,
+    "sources": [
+      "S05"
+    ],
+    "purpose": "Integrate controlled spin coating and hotplate baking.",
+    "geometryBrief": "Separate bowl and flat heated plate, lids, display and sample carrier.",
+    "behaviorBrief": "Track coating and thermal history independently.",
+    "inputs": "Substrate, coating calibration and two scheduled coating/bake operations",
+    "outputs": "Resist revision with separate coating map and temperature-time record",
+    "acceptance": "Run the same coat twice with different bake schedules. Pre-bake thickness maps must match; the two histories must show their respective bake traces.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "02-09",
+    "name": "Vapor prime oven",
+    "model": "YES HMDS Prime Oven (facility-listed system)",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 11,
+    "sources": [
+      "S09"
+    ],
+    "purpose": "Prepare surfaces for adhesion before coating.",
+    "geometryBrief": "Cabinet door, chamber rack, gauge and status panel; exact variant unresolved.",
+    "behaviorBrief": "Surface preparation state and adhesion parameter; abstract chemistry.",
+    "inputs": "Substrate surface ID, initial preparation state and compatible primer model",
+    "outputs": "Surface-preparation event and material-specific adhesion state or unknown flag",
+    "acceptance": "Process one of two identical virtual coupons. Only that coupon acquires the primer event; a material lacking adhesion calibration must return an unknown response.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "02-10",
+    "name": "Automated resist developer",
+    "model": "SUSS Delta12AQ",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 11,
+    "sources": [
+      "S01"
+    ],
+    "purpose": "Develop patterned resist in a controlled process.",
+    "geometryBrief": "Enclosure, wafer handling, dispense assembly, monitor and reservoirs.",
+    "behaviorBrief": "Convert latent image into mask openings using a calibrated development model.",
+    "inputs": "Latent dose image, resist tone, initial thickness and dissolution model",
+    "outputs": "Remaining resist-thickness map and open-region polygons",
+    "acceptance": "Use a two-level exposure checkerboard and an ideal positive-tone threshold. Above-threshold squares must open and below-threshold squares must retain their film.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "02-11",
+    "name": "Automated coater",
+    "model": "SUSS ACS200",
+    "evidence": "B",
+    "priority": "P3",
+    "page": 11,
+    "sources": [
+      "S01"
+    ],
+    "purpose": "Repeat coat operations across wafer batches.",
+    "geometryBrief": "Cassette slots, transport arms, dispense bowl and panel.",
+    "behaviorBrief": "Batch queue, film thickness map and wafer tracking.",
+    "inputs": "Cassette slot map, independent wafer IDs, coating jobs and film calibration",
+    "outputs": "Per-wafer coat revisions, slot history and thickness maps",
+    "acceptance": "Load three distinguishable wafers and cancel the middle job. Only the two completed IDs receive films; every output must resolve to its original slot.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "02-12",
+    "name": "Inspection microscope",
+    "model": "Nikon Eclipse LV100 / LV100ND (choose exact variant)",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 11,
+    "sources": [
+      "S05",
+      "S07"
+    ],
+    "purpose": "Inspect patterned features, alignment and visible defects.",
+    "geometryBrief": "Stand, nosepiece, objective turret, stage, eyepieces and illumination controls.",
+    "behaviorBrief": "Optical inspection scene with scale bar, focus and defects from fabrication state.",
+    "inputs": "Patterned sample, reflectance image, stage transform, objective profile and focal plane",
+    "outputs": "Calibrated inspection image with defect coordinates and scale bar",
+    "acceptance": "Measure a known line-pair pitch in a virtual stage micrometer at two objective settings. Pixel spacing must change with magnification, while physical pitch agrees to within one image pixel.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  }
+]

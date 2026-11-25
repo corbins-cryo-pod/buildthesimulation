@@ -1,0 +1,248 @@
+[
+  {
+    "id": "04-01",
+    "name": "Reactive ion etcher",
+    "model": "Oxford PlasmaPro 80 RIE",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 15,
+    "sources": [
+      "S07"
+    ],
+    "purpose": "Pattern thin films and polymers with dry etching.",
+    "geometryBrief": "Chamber, stage, RF/power rack, door and controls.",
+    "behaviorBrief": "Layer-selective removal; anisotropy and mask consumption from calibrated curves.",
+    "inputs": "Layer stack, resist openings, calibrated etch-rate/selectivity curves and exposure interval",
+    "outputs": "Etched layer geometry, residual mask and depth map",
+    "acceptance": "Use a one-material open window with a constant vertical removal rate. Before breakthrough, depth equals rate × time inside the opening and remains unchanged beneath an ideal mask.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Neural Interface Studio",
+        "/simulations/neural-interface-studio/"
+      ],
+      [
+        "Microfabrication Laboratory",
+        "/simulations/microfabrication/"
+      ]
+    ]
+  },
+  {
+    "id": "04-02",
+    "name": "ICP reactive ion etcher",
+    "model": "Oxford PlasmaLab 100 ICP",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 15,
+    "sources": [
+      "S04"
+    ],
+    "purpose": "Independent plasma and substrate bias control for research etches.",
+    "geometryBrief": "Chamber, RF coil, chuck, load hardware and control screen.",
+    "behaviorBrief": "Etch profile, selectivity and process limits; internal plasma field schematic only.",
+    "inputs": "Mask profile, material stack and calibration grid for coil/bias settings",
+    "outputs": "Etched cross-section, remaining mask and process-domain flag",
+    "acceptance": "Hold out one measured cross-section inside the calibration range; compare trench depth and sidewall angle against its metrology uncertainty. A request outside the calibrated range must be flagged.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "04-03",
+    "name": "Deep silicon etcher",
+    "model": "Oxford PlasmaPro 100 Cobra 300",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 15,
+    "sources": [
+      "S06"
+    ],
+    "purpose": "Form deep silicon structures, sieve channels and shank profiles.",
+    "geometryBrief": "Chamber/load lock, chuck, pump stack and cabinet; confirm installed configuration.",
+    "behaviorBrief": "Model depth, sidewall taper/scallops and masking, with recipe-specific calibration.",
+    "inputs": "Silicon geometry, trench mask, cycle count and calibrated depth/scallop profile",
+    "outputs": "Deep trench geometry with sidewall texture, depth and residual mask",
+    "acceptance": "Run a constant-depth-per-cycle fixture. Cross-section depth must equal summed removal and the resolved wall must show the configured number of periodic scallops.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "04-04",
+    "name": "Ion milling",
+    "model": "Intlvac Nanoquest",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 15,
+    "sources": [
+      "S07"
+    ],
+    "purpose": "Physically remove thin-film material where suitable.",
+    "geometryBrief": "Vacuum enclosure, ion source concept, sample mount and controller.",
+    "behaviorBrief": "Directional sputter removal, redeposition proxy and shadowing.",
+    "inputs": "Surface mesh, masking geometry, ion incidence vector and calibrated removal yield",
+    "outputs": "Milled thickness map, directional shadow mask and optional redeposition estimate",
+    "acceptance": "At fixed normal incidence, shield half a flat coupon with an ideal opaque mask. With redeposition disabled, protected material retains its height and exposed material loses the prescribed thickness.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "04-05",
+    "name": "Plasma asher",
+    "model": "Diener Nano Parallel Plate",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 16,
+    "sources": [
+      "S07"
+    ],
+    "purpose": "Remove residual resist or clean surfaces.",
+    "geometryBrief": "Small chamber, electrode plates, door and control knobs.",
+    "behaviorBrief": "Resist removal and possible surface modification, not full plasma chemistry.",
+    "inputs": "Resist thickness, underlying material ID and calibrated removal function",
+    "outputs": "Cleaned surface revision and residual resist thickness",
+    "acceptance": "Strip two resist patches with different initial thicknesses. At a removal greater than the thinner patch but below the thicker one, only the thinner patch clears; neither thickness becomes negative.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "04-06",
+    "name": "Wet processing",
+    "model": "Custom ReynoldsTech-style wet bench (exact model pending)",
+    "evidence": "C",
+    "priority": "P1",
+    "page": 16,
+    "sources": [],
+    "purpose": "Develop, clean, selectively etch and rinse compatible samples.",
+    "geometryBrief": "Exhaust hood, sash, chemically resistant basins, DI wand, controls, bottle storage.",
+    "behaviorBrief": "Abstract process selection and material compatibility; no real chemical recipes.",
+    "inputs": "Material stack, opening mask, abstract process ID and material compatibility table",
+    "outputs": "Revised layer outline, undercut estimate and compatibility result",
+    "acceptance": "Use an isotropic constant-speed fixture over a straight mask edge. Lateral undercut must equal vertical depth; an unsupported material pair must return an unresolved operation.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "04-07",
+    "name": "Wafer dicing",
+    "model": "DISCO DAD 321",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 16,
+    "sources": [
+      "S13"
+    ],
+    "purpose": "Singulate fabricated dies and electrode substrates.",
+    "geometryBrief": "Enclosure, wafer frame, spindle, cutting stage and screen.",
+    "behaviorBrief": "Kerf, die map, alignment, yield and edge-chipping proxy.",
+    "inputs": "Parent wafer revision, die layout, cut paths and blade kerf",
+    "outputs": "Child die IDs, parent links, kerf geometry and damaged-die flags",
+    "acceptance": "Run two perpendicular centerline cuts through a rectangular blank. Create four child dies and reconcile die area plus the union of both kerfs with the starting area.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "04-08",
+    "name": "Wafer grinding",
+    "model": "DISCO DAG810",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 16,
+    "sources": [
+      "S13"
+    ],
+    "purpose": "Thin substrates for implant assemblies.",
+    "geometryBrief": "Large enclosed grinder, chuck, spindle and load area.",
+    "behaviorBrief": "Final thickness, bow and material-removal estimate.",
+    "inputs": "Backside geometry, initial thickness field, material ID and removal map",
+    "outputs": "Thinned substrate revision, residual thickness and estimated removed volume",
+    "acceptance": "Apply a uniform removal below the initial thickness to a parallel-sided wafer. Final thickness and volume loss must equal the initial thickness minus removal and area × removal, respectively.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "04-09",
+    "name": "Chemical mechanical polishing",
+    "model": "G&P POLI 500",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 17,
+    "sources": [
+      "S13"
+    ],
+    "purpose": "Planarize wafer surfaces and multilayer stacks.",
+    "geometryBrief": "Platen, carrier, slurry delivery and lid.",
+    "behaviorBrief": "Removal rate and final planarity approximation.",
+    "inputs": "Height map, material regions, removal coefficients and planarization history",
+    "outputs": "Post-polish topography, material-removal map and planarity metric",
+    "acceptance": "For an ideal single-material plane and uniform removal field, the output must stay planar and shift by the prescribed removal amount at every sampled point.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "04-10",
+    "name": "Femtosecond micromachining",
+    "model": "LPKF ProtoLaser R4 (candidate)",
+    "evidence": "C",
+    "priority": "P3",
+    "page": 17,
+    "sources": [],
+    "purpose": "Cut fine structures in compatible flexible substrates.",
+    "geometryBrief": "Enclosed laser cabinet, sample stage and camera optics.",
+    "behaviorBrief": "Kerf and heat-affected zone model; establish exact tool/material capability before use.",
+    "inputs": "Flexible substrate revision, programmed path, material-specific kerf and thermal calibration",
+    "outputs": "Cut contour with kerf and heat-affected-zone estimate or unknown flag",
+    "acceptance": "Cut one straight path using a constant-width fixture. The measured width must equal the specified kerf away from endpoints; a missing thermal calibration leaves the heat-affected width unknown.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "04-11",
+    "name": "Micro milling",
+    "model": "Minitech-GX Micromill",
+    "evidence": "B",
+    "priority": "P3",
+    "page": 17,
+    "sources": [
+      "S09"
+    ],
+    "purpose": "Machine jigs, fixtures and larger microfluidic prototypes.",
+    "geometryBrief": "Spindle, XYZ stages, workholding and controller.",
+    "behaviorBrief": "Toolpath and removed volume; no collision-free physical claim.",
+    "inputs": "Stock solid, fixture coordinate frame, cutter profile and toolpath",
+    "outputs": "Machined solid, swept-volume record and fixture-interference flags",
+    "acceptance": "Sweep a flat-ended cylindrical tool along a straight slot. Compare its simulated plan area with a radius-ended analytic slot, and its depth with the commanded plunge.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "04-12",
+    "name": "Wafer bonding",
+    "model": "EVG 501 wafer bonder",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 17,
+    "sources": [
+      "S13"
+    ],
+    "purpose": "Join aligned wafer structures and sealed cavities.",
+    "geometryBrief": "Bond chamber, wafer fixture, loader and control rack.",
+    "behaviorBrief": "Alignment, bond area, interface voids and assembly state.",
+    "inputs": "Two wafer revisions, face orientation, alignment transform, bondable masks and void map",
+    "outputs": "Assembly revision with both parents, bonded area and interfacial void regions",
+    "acceptance": "Offset two identical square bond pads by half their width along one axis. Their bonded area must halve in the void-free fixture; adding a known nonoverlapping void inside it subtracts its area.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  }
+]

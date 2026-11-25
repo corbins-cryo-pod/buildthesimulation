@@ -1,0 +1,223 @@
+[
+  {
+    "id": "12-01",
+    "name": "Stereo dissecting microscope",
+    "model": "ZEISS SteREO Discovery V12",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 38,
+    "sources": [
+      "S55"
+    ],
+    "purpose": "Manipulate small devices, tissue and connectors.",
+    "geometryBrief": "Stand, zoom head, binoculars, working-distance stage and illuminator.",
+    "behaviorBrief": "Stereo inspection, focus and zoom; render specimen to correct scale.",
+    "inputs": "Specimen mesh or volume, calibrated zoom and stereo geometry, focus and stage transform",
+    "outputs": "Left/right inspection views, scale bar and sample-space pointer location",
+    "acceptance": "Image a calibrated grid with an elevated fiducial. Grid spacing should match its scale bar at two zoom settings and the raised point should show the expected disparity sign.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "12-02",
+    "name": "Inverted research microscope",
+    "model": "Nikon Eclipse Ti2",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 38,
+    "sources": [
+      "S56"
+    ],
+    "purpose": "Observe cell cultures, MEAs and fluorescence samples.",
+    "geometryBrief": "Motorized stage, inverted nosepiece, camera ports, enclosure and controls.",
+    "behaviorBrief": "Sample navigation, optical magnification and exposure; objective-specific view.",
+    "inputs": "Culture or MEA sample ID, stage pose, objective calibration, exposure and channel selection",
+    "outputs": "Objective-tagged calibrated image, focal-plane transform and exposure metadata",
+    "acceptance": "Image a calibration grid with two objective profiles. The measured physical pitch should stay constant and the field of view should shrink with increasing magnification for a fixed camera.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "12-03",
+    "name": "Laser scanning confocal",
+    "model": "ZEISS LSM 980 with Airyscan 2",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 38,
+    "sources": [
+      "S57"
+    ],
+    "purpose": "Acquire optical sections and fluorescence stacks.",
+    "geometryBrief": "Microscope stand, scan head, laser rack, stage and workstation.",
+    "behaviorBrief": "PSF-based sectioning, channel selection and scan sampling; no generic nanometer resolution claim.",
+    "inputs": "Labeled fluorescence volume, channel-specific measured PSF, scan grid and acquisition mode",
+    "outputs": "Registered channel stack, voxel spacing and optical-section metadata",
+    "acceptance": "Image isolated sub-resolution beads using a reference scan profile. Compare lateral and axial widths to held-out bead measurements and verify that a channel lacking fluorophore remains at background.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "12-04",
+    "name": "STED super-resolution",
+    "model": "Leica STELLARIS 8 tauSTED",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 38,
+    "sources": [
+      "S57"
+    ],
+    "purpose": "Inspect finer fluorescent structures in appropriate samples.",
+    "geometryBrief": "Microscope, scan head, laser rack and optical bench.",
+    "behaviorBrief": "Modality-specific resolution and reference image analysis; validate PSF before quantitative predictions.",
+    "inputs": "Fluorophore phantom or raw reference image, mode-specific measured PSF and pixel spacing",
+    "outputs": "Resolution-tagged STED or confocal image, measured feature widths and calibration provenance",
+    "acceptance": "Use isolated beads from a matched confocal/STED reference pair. Recovered widths should fall inside their respective calibration intervals, with the observed difference reproduced under those reference conditions.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "12-05",
+    "name": "Spinning-disk confocal",
+    "model": "Yokogawa CSU-W1 on Nikon TiE (configuration reference)",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 38,
+    "sources": [
+      "S27"
+    ],
+    "purpose": "Fast optical sectioning for dynamic cultures.",
+    "geometryBrief": "Inverted microscope, disk scan module, camera and laser delivery.",
+    "behaviorBrief": "Time-series stacks, exposure and motion effects.",
+    "inputs": "Moving fluorescent volume, disk-section response, exposure windows and z-stack schedule",
+    "outputs": "Time-indexed optical stacks with per-plane timestamps and motion blur",
+    "acceptance": "Move a fluorescent point at constant known speed. Its centroid should follow the midpoint of each exposure and the added motion blur should grow with speed × exposure.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "12-06",
+    "name": "Two-photon microscope",
+    "model": "ZEISS LSM 980 NLO",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 39,
+    "sources": [
+      "S27"
+    ],
+    "purpose": "Image fluorescent structures at depth in suitable samples.",
+    "geometryBrief": "Upright/intravital microscope, laser module, scan optics and workstation.",
+    "behaviorBrief": "Depth attenuation, excitation PSF and fluorescence time series; distinguish calibrated from illustrative depth.",
+    "inputs": "Fluorescent volume, nonlinear excitation PSF, attenuation model and scan schedule",
+    "outputs": "Depth-indexed fluorescence images and timestamps with optical parameters",
+    "acceptance": "Use uniform, unsaturated virtual fluorophore without bleaching. Doubling excitation intensity at a fixed depth should quadruple two-photon fluorescence in the quadratic model.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "12-07",
+    "name": "Light-sheet microscope",
+    "model": "ZEISS Lightsheet 7",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 39,
+    "sources": [
+      "S57"
+    ],
+    "purpose": "Image optically cleared tissue and suitable living samples.",
+    "geometryBrief": "Enclosure, sample chamber, illumination objectives and detection objective.",
+    "behaviorBrief": "Multi-view stack, light sheet position, registration and voxel scale.",
+    "inputs": "Fluorescent specimen, illumination and detection poses, view transforms and voxel spacing",
+    "outputs": "Per-view stacks, registered volume and transforms to the specimen frame",
+    "acceptance": "Acquire a fiducial phantom from two simulated orientations. After registration corresponding beads should co-locate within the declared resampling tolerance.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "12-08",
+    "name": "Lattice light-sheet",
+    "model": "ZEISS Lattice Lightsheet 7",
+    "evidence": "B",
+    "priority": "P3",
+    "page": 39,
+    "sources": [
+      "S56"
+    ],
+    "purpose": "High-resolution live-cell volume imaging.",
+    "geometryBrief": "Enclosed optical system, sample holder, objective geometry and console.",
+    "behaviorBrief": "Time-resolved optical sections; separate photobleaching model from growth.",
+    "inputs": "Time-indexed fluorescent volume, effective lattice PSF, plane schedule and bleaching model",
+    "outputs": "Time-resolved optical sections, exposure history and separated bleaching metadata",
+    "acceptance": "Image stationary fluorescent fiducials with bleaching switched on and off. Centroids should remain fixed while only the enabled run follows the selected intensity-decay curve.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "12-09",
+    "name": "Structured illumination",
+    "model": "ZEISS Elyra 7",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 39,
+    "sources": [
+      "S55",
+      "S27"
+    ],
+    "purpose": "Resolve fluorescence structures using structured patterns.",
+    "geometryBrief": "Microscope, pattern module, camera and workstation.",
+    "behaviorBrief": "SIM reconstruction from synthetic or reference raw patterns; flag artifacts.",
+    "inputs": "Raw patterned frames, phase and orientation labels, optical transfer function and pixel scale",
+    "outputs": "Reconstructed SIM image, reconstruction configuration and artifact flags",
+    "acceptance": "Generate patterned frames for a known grating within the modeled passband. Recover its spatial frequency and orientation. Remove a required phase frame and check that reconstruction is flagged incomplete.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "12-10",
+    "name": "Automated slide scanner",
+    "model": "Olympus/Evident VS200",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 39,
+    "sources": [
+      "S58"
+    ],
+    "purpose": "Digitize histology slides and mosaic tissue images.",
+    "geometryBrief": "Slide tray, loading door, objective assembly and workstation.",
+    "behaviorBrief": "Tile scanning, focus map, stitched image and scale.",
+    "inputs": "Slide ID, focus surface, tile coordinates, overlap and calibrated pixel spacing",
+    "outputs": "Pyramidal slide mosaic, tile transforms, focus map and physical scale",
+    "acceptance": "Scan a grid slide with repeated features crossing tile boundaries. After stitching each fiducial should appear once and seam displacement should meet the predetermined pixel tolerance.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "12-11",
+    "name": "Laser microdissection",
+    "model": "Leica LMD7",
+    "evidence": "B",
+    "priority": "P3",
+    "page": 39,
+    "sources": [
+      "S58"
+    ],
+    "purpose": "Represent region selection from sectioned tissue.",
+    "geometryBrief": "Microscope, laser module, sample stage and collection holder.",
+    "behaviorBrief": "Region-of-interest selection and sample lineage; no real tissue protocol.",
+    "inputs": "Registered section image, parent section ID, physical scale and closed ROI polygon",
+    "outputs": "Derived virtual sample ID, ROI mask, physical area and parent-to-ROI transform",
+    "acceptance": "Select a rectangle on a synthetic calibrated section. The reported area should match its width × height within rasterization error and the child mask should map to the same parent pixels.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  }
+]

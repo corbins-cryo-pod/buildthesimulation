@@ -137,6 +137,10 @@ export const simulationGroups = [
     ]
   },
   {
+    title: "Laboratory Equipment",
+    entries: [{href: "/simulations/equipment/", title: "Laboratory Equipment Register", desc: "Find instruments by research zone, inspect their 3D and simulation plans, and follow a sample through the proposed virtual laboratory."}]
+  },
+  {
     title: "Measured Recordings",
     entries: [{href: "/recordings/", title: "Neural Interface Recording Library", desc: "Inspect measured Neuropixels, Utah-array, WIMAGINE, peripheral nerve, RPNI and retinal data. Select channels, zoom through real samples and follow source events; published observations remain distinct from simulation predictions."}]
   }

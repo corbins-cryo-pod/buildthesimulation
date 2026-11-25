@@ -1,0 +1,50 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { equipment, dossiers, base, report } from '../../../data/equipment';
+import '../../../styles/equipment.css';
+const pilot=[
+  ['Define the coupon',['01-01'],'Export a routed, two-contact test coupon with contact IDs, dimensions, materials and a connector map. Start from the existing Designer-to-Studio import.'],
+  ['Pattern the conductor',['02-07','02-01','02-10','03-01'],'Simulate coating, alignment, development and deposition on the same substrate. Record mask polarity and the patterned metal revision after an explicit virtual lift-off step.'],
+  ['Expose and inspect the contacts',['03-08','02-01','04-01','05-01','04-06'],'Add insulation, register the opening mask and expose the intended contacts. Compare a simulated stylus scan with a known step on the witness region, then release the coupon from its carrier and preserve the parent wafer ID.'],
+  ['Connect and test',['08-02','09-12','09-01'],'Map pads to connector pins and register the bath and electrode roles. Run a known resistor–capacitor fixture before measuring the modeled electrode. Retain impedance magnitude and phase with units.'],
+  ['Record and inspect',['10-09','10-14','02-12','01-05'],'Connect the coupon and a separately identified digital nerve specimen to one experiment. Record stimulus events and channel traces on a common clock. Link an inspection image to the tested coupon revision.']
+];
+const byId=new Map(equipment.map(r=>[r.id,r]));
+---
+<Layout pageTitle="Equipment ecosystem build plan" subtitle="" description="Development sequence, sample handoffs, modeling standards and release tests for the virtual neural interface laboratory.">
+ <article class="equipment eq-sheet">
+  <nav class="eq-nav"><a href={base}>← Equipment register</a><a href={report}>Reference volume (PDF)</a></nav>
+  <p class="eq-lede">Build one flexible electrode from a saved layout, carry it to the saline bench, and trace its recording back to the exact contact, material stack and instrument configuration. This is the first integration milestone.</p>
+  <section><h2>First experiment · a two-contact test coupon</h2>
+    <p>The <a href="/simulations/neural-interface-studio/handoff/">existing Designer-to-Cleanroom handoff</a> already transfers routed geometry. The stages below propose how to extend it across named instruments. Each row links to the modeling and acceptance plans for that station.</p>
+    <ol class="eq-pilot">{pilot.map(([title,ids,body])=><li><h3>{title}</h3><p>{body}</p><div class="eq-stations">{ids.map(id=><a href={base+id+'/'}>{id} {byId.get(id).name}</a>)}</div></li>)}</ol>
+    <p><strong>Release test.</strong> Replay the entire experiment from a saved manifest. The same contact IDs must resolve through mask, pad, bonded pin and recording channel. Deliberately cover one contact and reverse a connector assignment in separate fixtures. The appropriate inspection or connectivity check must identify each fault. An interrupted run must preserve the last committed revision.</p>
+  </section>
+  <section><h2>What travels between instruments</h2>
+    <dl class="eq-fields">
+      <dt>Sample revision</dt><dd>Store sample ID, parent revision, spatial frame, units, geometry, material stack, contacts and net IDs. Fabrication creates a child revision. Singulation creates child sample IDs with the parent wafer and die transforms.</dd>
+      <dt>Instrument run</dt><dd>Bind a run ID to an equipment ID, exact model and accessory revision, input revisions, solver version, parameters, seed and calibration. Validate ports and units before executing. Commit outputs atomically under the run ID so retries cannot duplicate a fabrication step.</dd>
+      <dt>Measurements</dt><dd>Attach traces, images and maps to the measured revision. Include axes, units, clock or coordinate transform, uncertainty and provenance. Give measured data, simulated signals and replayed datasets explicit origins. Store large arrays separately from the manifest.</dd>
+      <dt>Connections</dt><dd>Use explicit adapters for sample carriers, electrical pins and references, optical paths, fluidic ports and digital triggers. Each adapter declares its direction, units, frame or clock. Reject a missing return electrode, incompatible connector or ambiguous time base before computing results.</dd>
+      <dt>Room interaction</dt><dd>Give each instrument idle, loaded, configured, running, completed and failed states. Moving a knob changes configuration. A completed solver or replay job creates a result. Keep physical time and microscope coordinates independent of the renderer and its frame rate.</dd>
+    </dl>
+  </section>
+  <section><h2>From reference to verified instrument</h2>
+    <ol class="eq-steps">
+      <li><strong>Lock the configuration.</strong> Record the exact model, variant, accessories, dated manual and image or CAD usage terms. Mark missing measurements and distinguish original fixtures from manufacturer equipment.</li>
+      <li><strong>Build at scale.</strong> Use a measured chassis or fixture datum. Keep hinges, stages, sample holders, controls and connector anchors separate in the editable master. Export a meter-scale GLB, simplified room mesh and inspection detail. Check at least two reference views, a known dimension, travel limits and port placement.</li>
+      <li><strong>Implement the minimum scientific behavior.</strong> Start with the inputs and outputs on the instrument record. Choose a dataset replay, analytic model or numerical solver as appropriate. Record assumptions, calibrated range, failure states and unit conversions. A bench or cable can be complete with a tested fit or routing contract.</li>
+      <li><strong>Verify and calibrate.</strong> Run the proposed fixture on the record. Set the numerical tolerance from discretization, calibration or source uncertainty before assessing the result. Record reference, residuals and failures. Reserve experimental validation for comparison with independent measurements over a stated operating range.</li>
+      <li><strong>Integrate and track.</strong> Test a neighboring instrument, an incompatible input and a saved-run replay. Update the zone record in Git with the geometry, simulation and integration stages and links to the asset, verification results or workflow. The register and JSON export read the same records.</li>
+    </ol>
+  </section>
+  <section><h2>Expansion sequence</h2><dl class="eq-fields">
+    <dt>1 · Foundation</dt><dd>Start with design and sample history (zone 01) plus carriers and connectors (16). Freeze a typed sample manifest, a physical-scale test coupon and a replay fixture before adding station adapters.</dd>
+    <dt>2 · Fabrication and characterization</dt><dd>Complete the pilot across lithography, deposition, etch, metrology, assembly and electrical measurement (02–05, 08–09). Reuse the process and connectivity logic in <a href="/simulations/neural-interface-studio/">Neural Interface Studio</a>. Require an attributable geometry change or measurement at each handoff.</dd>
+    <dt>3 · Neural and optical benches</dt><dd>Add acquisition, stimulation and calibrated optical delivery (10–11). Exercise channel maps, optical power and a common clock against a dummy load and a reference trace. Connect to the <a href="/cortex/">Cortex</a> and <a href="/simulations/optogenetics/">Optogenetics</a> laboratories through explicit unit conversions.</dd>
+    <dt>4 · Specimens and imaging</dt><dd>Add scaffold and fluidic devices (06), culture records (07), and optical and electron microscopy (12–13). Connect the scaffold, specimen, image stack and segmentation by parent ID and spatial transform. Use a known-length phantom and test registration after a scale or orientation change.</dd>
+    <dt>5 · Reliability and function</dt><dd>Attach mechanical and aging histories (14) and sensory or preclinical datasets (15) to device revisions. Check synchronized comparisons and units across the <a href="/simulations/tissue-mechanics/">mechanics</a>, <a href="/simulations/retinal-implant/">retinal</a> and <a href="/simulations/cochlear-implant/">cochlear</a> workspaces. Treat outcome predictions as model-specific until independently validated.</dd>
+  </dl><p>Within each expansion, implement P1 instruments first. Reuse a tested engine for P2 and P3 variants only after confirming their sample limits, accessories, controls and measured observables against the correct references.</p></section>
+  <section><h2>Nine first-build dossiers</h2><p>The reference volume gives the evidence package, asset hierarchy, interactions, physics checks and scale decisions for each build.</p><ol class="eq-dossiers">{dossiers.map(d=><li><a href={report+'#page='+d[1]}>{d[0]}</a> <span class="eq-meta">p. {d[1]}</span></li>)}</ol></section>
+ </article>
+</Layout>

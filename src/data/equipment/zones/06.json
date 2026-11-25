@@ -1,0 +1,254 @@
+[
+  {
+    "id": "06-01",
+    "name": "Two-photon polymerization",
+    "model": "Nanoscribe Photonic Professional GT2",
+    "evidence": "A",
+    "priority": "P1",
+    "page": 21,
+    "sources": [
+      "S16"
+    ],
+    "purpose": "Print fine 3D scaffold structures and microfluidic masters.",
+    "geometryBrief": "Hinged lid, print cabinet, objective, stage, joystick, focus panel and external rack.",
+    "behaviorBrief": "Import volume, render voxel/hatch paths and feature-size limits; distinguish scaffold resin from cell-laden material.",
+    "inputs": "Scaffold mesh, voxel kernel, hatch path and calibrated coordinate transform",
+    "outputs": "Scaffold revision with predicted solid volume, voxel grid and unresolved-feature flags",
+    "acceptance": "Render two parallel rods at successively wider separations. Resolve two components when their modeled voxel footprints separate and recover center spacing to within one voxel.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Biohybrid Neural Interface Laboratory",
+        "/simulations/biohybrid-interface/"
+      ]
+    ]
+  },
+  {
+    "id": "06-02",
+    "name": "Extrusion bioprinter",
+    "model": "CELLINK BIO X6",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 21,
+    "sources": [
+      "S17"
+    ],
+    "purpose": "Construct multimaterial hydrogel scaffolds.",
+    "geometryBrief": "Enclosure, print bed, toolheads, cartridge mounts and screen.",
+    "behaviorBrief": "Toolpath, nozzle/material assignment, construct geometry and cell-state bookkeeping.",
+    "inputs": "Labeled toolpaths, nozzle footprints, material IDs and scaffold carrier",
+    "outputs": "Scaffold revision with strand geometry, material labels and per-material deposited volume",
+    "acceptance": "Print two synthetic lines with different tool assignments. Check their centerlines, preserve material order at crossings and compare each straight strand volume with cross-section times length.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "06-03",
+    "name": "Light-based bioprinter",
+    "model": "CELLINK LUMEN X Gen 3",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 21,
+    "sources": [
+      "S17"
+    ],
+    "purpose": "Pattern photocurable hydrogel constructs by light.",
+    "geometryBrief": "Projection enclosure, resin/gel vat, build platform and control screen.",
+    "behaviorBrief": "Layer exposure and geometry; viability and curing effects only with supporting data.",
+    "inputs": "Binary slice masks, layer spacing, virtual exposure-response curve and carrier ID",
+    "outputs": "Construct revision with predicted solid mask per layer and spatial resolution",
+    "acceptance": "Expose a three-layer resolution staircase with an all-dark control layer. Its three footprints must match the input at the ideal threshold and the dark layer must remain empty.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "06-04",
+    "name": "High-resolution resin printer",
+    "model": "Formlabs Form 4 (candidate)",
+    "evidence": "C",
+    "priority": "P2",
+    "page": 21,
+    "sources": [],
+    "purpose": "Print jigs and larger non-cellular scaffolds or molds.",
+    "geometryBrief": "Lid, resin tank, platform, screen and cartridge.",
+    "behaviorBrief": "Layer slicing, build envelope and support placement; not assume implant-safe resin.",
+    "inputs": "Fixture mesh, build orientation, layer spacing, support geometry and documented build envelope",
+    "outputs": "Sliced build job, support intersections and out-of-envelope flags",
+    "acceptance": "Slice an axis-aligned rectangular block of height exactly ten layers. Recover ten occupied slices and flag the same block when translated past a build boundary.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "06-05",
+    "name": "Aligned fiber electrospinner",
+    "model": "Inovenso NE200 (research candidate)",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 22,
+    "sources": [
+      "S18"
+    ],
+    "purpose": "Produce oriented fibers for guidance scaffolds using drum collector.",
+    "geometryBrief": "Enclosure, syringe holder, rotating collector, panel and camera.",
+    "behaviorBrief": "Parameterized alignment distribution and fiber geometry; no real high-voltage process tutorial.",
+    "inputs": "Collector frame, axial orientation distribution, length distribution and random seed",
+    "outputs": "Scaffold revision containing fiber centerlines and a measured orientation histogram",
+    "acceptance": "Generate isotropic and aligned planar fixtures. Their axial order magnitudes should approach zero and one respectively within the declared finite-sample tolerance.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "06-06",
+    "name": "Wire electrospinning",
+    "model": "Elmarco NS LAB",
+    "evidence": "B",
+    "priority": "P3",
+    "page": 22,
+    "sources": [
+      "S19"
+    ],
+    "purpose": "Create larger nanofiber sheets and comparison materials.",
+    "geometryBrief": "Tall enclosure, substrate rollers, wire electrode and observation camera.",
+    "behaviorBrief": "Fiber-density map and collector direction; manufacturer lists 1295 W x 1045 L x 2053 H mm.",
+    "inputs": "Collector travel axis, sheet extent, synthetic fiber density field and random seed",
+    "outputs": "Sheet revision with fiber density by area and collector-frame orientation map",
+    "acceptance": "Generate a sheet with a known two-band density ratio. Recover that ratio within sampling uncertainty and rotate the map with the collector frame.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "06-07",
+    "name": "Pressure/flow controller",
+    "model": "Fluigent MFCS-EZ / EX (lock selected channel)",
+    "evidence": "A",
+    "priority": "P1",
+    "page": 22,
+    "sources": [
+      "S20",
+      "S21"
+    ],
+    "purpose": "Perfuse microfluidic culture channels and regulate flow.",
+    "geometryBrief": "Controller body, ports, tubing, reservoirs and flow sensors; CAD available for some related modules.",
+    "behaviorBrief": "Flow and pressure network, residence time, shear estimate and sensor feedback.",
+    "inputs": "Chip channel graph, hydraulic resistances, pressure boundary values and reservoir volumes",
+    "outputs": "Run record with pressure, branch flow and volume-based residence time",
+    "acceptance": "Use two identical parallel channels between fixed-pressure reservoirs. Each must carry half the total flow, satisfy Q = Δp/R and give equal residence times.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Biohybrid Neural Interface Laboratory",
+        "/simulations/biohybrid-interface/"
+      ]
+    ]
+  },
+  {
+    "id": "06-08",
+    "name": "Modular pressure controller",
+    "model": "Fluigent Flow EZ",
+    "evidence": "A",
+    "priority": "P2",
+    "page": 22,
+    "sources": [
+      "S20",
+      "S22"
+    ],
+    "purpose": "Supply independent pressure channels for organ-on-chip rigs.",
+    "geometryBrief": "Stackable modules, knobs/displays, manifold, tubes and sensors.",
+    "behaviorBrief": "Closed-loop flow control using measured fluid properties.",
+    "inputs": "Module-to-channel map, flow target, sensor readings and calibrated pressure limits",
+    "outputs": "Controller log with commanded pressure, measured flow, settling error and limit flags",
+    "acceptance": "Drive a known synthetic hydraulic resistance with a reachable target, then an unreachable one. Check settling against the specified controller tolerance and pressure limiting for the second case.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "06-09",
+    "name": "Syringe pump",
+    "model": "New Era NE-1000 (confirm exact pump model)",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 23,
+    "sources": [
+      "S23"
+    ],
+    "purpose": "Drive perfusion or dispense fluid in a scaffold rig.",
+    "geometryBrief": "Motor housing, lead screw, syringe barrel and plunger clamp.",
+    "behaviorBrief": "Flow, reservoir volume, occlusion and pressure proxy.",
+    "inputs": "Syringe bore, plunger travel, remaining volume and connection to a virtual channel",
+    "outputs": "Dispense event with delivered volume, remaining inventory and line status",
+    "acceptance": "Advance a cylindrical syringe by a known displacement. Delivered volume must equal bore area times travel until empty, and repeated requests cannot dispense more than the initial inventory.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "06-10",
+    "name": "Soft-lithography casting station",
+    "model": "Custom PDMS casting and curing bench",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 23,
+    "sources": [
+      "S01"
+    ],
+    "purpose": "Replicate patterned molds into microchannels.",
+    "geometryBrief": "Mixing cup, mold, vacuum desiccator, curing oven, biopsy punch and alignment jig.",
+    "behaviorBrief": "Mold inversion, channel geometry, bonding status and defects.",
+    "inputs": "Mold relief mesh, casting plane, port locations and bond alignment transform",
+    "outputs": "Replica revision with channel geometry, port graph, bond state and defect annotations",
+    "acceptance": "Invert a rectangular raised master feature. The replica must contain a recess of equal ideal depth and width. An intentionally misaligned port must fail the connectivity check.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "06-11",
+    "name": "Convection curing oven",
+    "model": "Jeio Tech OF-12G (forced convection oven reference)",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 23,
+    "sources": [
+      "S01"
+    ],
+    "purpose": "Cure compatible cast structures; this reference is a convection oven, not a vacuum oven.",
+    "geometryBrief": "Door, shelves, control panel and sample trays; choose separate vacuum model if needed.",
+    "behaviorBrief": "Temperature-time state and cure model; no simulated vacuum in this selected unit.",
+    "inputs": "Cast-part ID, logged chamber temperature, initial part temperature and optional material calibration",
+    "outputs": "Thermal history linked to the casting and a cure-state estimate when calibration exists",
+    "acceptance": "Replay a constant chamber-temperature step with a first-order thermal fixture. Match its analytic time constant and leave quantitative cure unknown when the material curve is absent.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "06-12",
+    "name": "Microindentation",
+    "model": "CellScale MicroTester G2",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 23,
+    "sources": [
+      "S24"
+    ],
+    "purpose": "Measure small tissue or scaffold mechanical responses.",
+    "geometryBrief": "Small load cell, probe, stage, microscope/camera and specimen chamber.",
+    "behaviorBrief": "Force-displacement and creep data; calibration-dependent stiffness.",
+    "inputs": "Specimen ID, displacement history, indenter geometry and force calibration",
+    "outputs": "Measurement record with force–displacement, creep trace when available and stiffness estimate",
+    "acceptance": "Load a virtual linear spring of known stiffness. After contact, recover the slope within the declared sensor tolerance and report zero load before contact.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  }
+]

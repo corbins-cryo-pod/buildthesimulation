@@ -1,0 +1,33 @@
+.equipment {margin:1.4rem auto 4rem;max-width:76rem;color:var(--text)}
+.equipment [hidden] {display:none!important}
+.eq-nav,.eq-stations {display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1.4rem}
+.eq-nav {border-bottom:1px solid var(--border);padding-bottom:1rem}
+.eq-lede {max-width:72ch;font-size:1.18rem;line-height:1.5}
+.eq-meta,.eq-grade,.eq-totals dt,.eq-progress dt,.equipment label,.eq-fields dt {font-family:var(--font-label,Arial,sans-serif);font-size:.85rem;letter-spacing:.04em}
+.eq-totals,.eq-progress {display:flex;flex-wrap:wrap;gap:1rem 3rem;border-block:1px solid var(--border);padding:.8rem 0;margin:1.25rem 0}
+.eq-totals div {display:flex;flex-direction:column-reverse}
+.eq-totals dd,.eq-progress dd {margin:0;text-align:left}
+.eq-totals dd {font-size:2.1rem;font-variant-numeric:tabular-nums;line-height:1.12}
+.eq-progress dd {font-weight:bold}
+#equipment-filter {display:grid;grid-template-columns:2fr 1.7fr 1fr 1fr 1.25fr auto;gap:.6rem;align-items:end}
+#equipment-filter label {display:grid;gap:.3rem;min-width:0}
+#equipment-filter :is(input,select,button) {width:100%;min-width:0;height:2.6rem;background:var(--panel);border:1px solid var(--border);border-radius:2px;color:var(--text);font-size:1rem;padding:.3rem .45rem}
+#equipment-filter select option {color:var(--text);background:var(--menuBg)}
+.eq-key {padding:.8rem 0}.eq-key summary {cursor:pointer}.eq-key p {max-width:80ch}
+.eq-zone {margin:2rem 0}.eq-zone header {border-bottom:2px solid var(--text);padding-bottom:.45rem}
+.eq-zone h2,.eq-sheet h2 {font-size:1.45rem;margin:.2rem 0 .35rem}
+.eq-zone ul {padding:0;margin:0;list-style:none}
+.eq-row {display:grid;grid-template-columns:3.6rem minmax(0,1fr) auto;gap:.65rem;align-items:baseline;border-bottom:1px solid var(--border);padding:.68rem 0}
+.eq-row a {font-weight:bold}.eq-model {display:block;margin-top:.16rem;font-size:.96rem;line-height:1.3}
+.eq-sheet {max-width:64rem}.eq-sheet section {margin:2.2rem 0}.eq-sheet section>h2 {border-bottom:1px solid var(--border);padding-bottom:.5rem}
+.eq-mast {padding-top:1.3rem}.eq-mast h2 {font-size:1.65rem}
+.eq-fields {display:grid;grid-template-columns:minmax(8rem,1fr) 3fr;margin-top:0;column-gap:1.3rem}
+.eq-fields :is(dt,dd) {margin:0;padding:.75rem 0;border-bottom:1px solid var(--border)}
+.eq-fields dt {font-weight:bold;line-height:1.45}
+.eq-fields dd,.eq-sheet p,.eq-sheet li {line-height:1.5}
+.eq-pilot,.eq-steps,.eq-dossiers {padding-left:1.5rem}
+.eq-pilot li,.eq-steps li {padding:.4rem 0}
+.eq-pilot h3 {font-size:1.2rem;margin:.4rem 0}.eq-pilot p {margin:.15rem 0 .4rem}
+.eq-stations {gap:.2rem 1rem;font-size:.94rem}.eq-dossiers li {padding:.25rem 0}
+@media(max-width:850px){#equipment-filter{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:580px){#equipment-filter{grid-template-columns:repeat(2,minmax(0,1fr))}.eq-fields{display:block}.eq-fields dt{padding:.7rem 0 .2rem;border:0}.eq-fields dd{padding:.15rem 0 .6rem}.eq-totals,.eq-progress{gap:.8rem 1rem}.eq-totals dt{font-size:.76rem}.eq-row{grid-template-columns:2.9rem minmax(0,1fr) auto;gap:.4rem}.eq-nav{font-size:.94rem}}

@@ -1,0 +1,249 @@
+[
+  {
+    "id": "05-01",
+    "name": "Stylus profilometer",
+    "model": "Bruker DektakXT",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 18,
+    "sources": [
+      "S05"
+    ],
+    "purpose": "Measure step heights and surface profiles.",
+    "geometryBrief": "Hinged hood, stylus arm, stage, sample and monitor.",
+    "behaviorBrief": "Convolve true surface with stylus tip; generate height trace and scan settings.",
+    "inputs": "Surface height field, stylus geometry, trace coordinates and vertical calibration ID",
+    "outputs": "Height-versus-distance trace with step estimate and uncertainty",
+    "acceptance": "Scan a certified step with plateaus wider than the tip. Evaluate height on the plateaus and compare with the certified interval; repeat in the reverse direction.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Neural Interface Studio",
+        "/simulations/neural-interface-studio/"
+      ],
+      [
+        "Microfabrication Laboratory",
+        "/simulations/microfabrication/"
+      ]
+    ]
+  },
+  {
+    "id": "05-02",
+    "name": "Optical profilometer",
+    "model": "Bruker ContourGT-K (candidate)",
+    "evidence": "C",
+    "priority": "P2",
+    "page": 18,
+    "sources": [],
+    "purpose": "Map noncontact surface topography.",
+    "geometryBrief": "Objective turret, motorized stage, interferometric optics housing and computer.",
+    "behaviorBrief": "Height map, missing-data mask and optical roughness limits.",
+    "inputs": "Reflecting surface and validity mask, vertical scan range and objective calibration",
+    "outputs": "Areal height map, missing-pixel mask and roughness statistics",
+    "acceptance": "Image a tilted flat with one prescribed signal dropout. Recover the input tilt and flag the missing region; the roughness calculation must exclude invalid pixels.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "05-03",
+    "name": "Atomic force microscope",
+    "model": "Bruker Dimension Icon",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 18,
+    "sources": [
+      "S04",
+      "S07"
+    ],
+    "purpose": "Measure nanoscale morphology and roughness.",
+    "geometryBrief": "Isolation enclosure, scanner head, cantilever, sample holder and display.",
+    "behaviorBrief": "Simulate tip convolution and scan path; separate measured from ideal topography.",
+    "inputs": "Sample topography, specified tip geometry, XY raster and calibration",
+    "outputs": "Apparent height image and roughness metrics with tip and sample provenance",
+    "acceptance": "Image a narrow isolated ridge using two spherical probe radii with ideal tracking. The broader probe widens its apparent base while preserving peak height above the flat background.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "05-04",
+    "name": "Spectroscopic ellipsometer",
+    "model": "J.A. Woollam alpha-SE",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 18,
+    "sources": [
+      "S04"
+    ],
+    "purpose": "Estimate thin-film thickness and optical constants.",
+    "geometryBrief": "Source and detector arms, sample stage and goniometer controls.",
+    "behaviorBrief": "Fit multilayer optical response with model assumptions and parameter uncertainty.",
+    "inputs": "Wavelength array, incidence angles, layered optical model and measured or synthetic polarization spectra",
+    "outputs": "Fitted thickness, assumed optical constants, residuals and ambiguity indicators",
+    "acceptance": "Fit a reference film of independently known thickness using fixed optical constants. Compare thickness to its reference interval and inspect residuals across the measured wavelength range.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "05-05",
+    "name": "Reflectometer",
+    "model": "Filmetrics F40",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 19,
+    "sources": [
+      "S07"
+    ],
+    "purpose": "Fast thin-film thickness inspection.",
+    "geometryBrief": "Microscope optics, sample stage, fiber link and spectrometer box.",
+    "behaviorBrief": "Generate reflectance spectrum from stack and fit thickness.",
+    "inputs": "Substrate/film optical constants, wavelength grid, illumination geometry and reference spectrum",
+    "outputs": "Reflectance spectrum and fitted thickness with residuals",
+    "acceptance": "In a lossless normal-incidence fixture, reduce film thickness to zero. Predicted reflectance must equal the bare-substrate Fresnel result across the grid.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "05-06",
+    "name": "Four-point probe",
+    "model": "CDE ResMap (exact configuration pending)",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 19,
+    "sources": [
+      "S10"
+    ],
+    "purpose": "Measure sheet resistance of conductive films.",
+    "geometryBrief": "Probe head, four tips, stage, readout and cable.",
+    "behaviorBrief": "Compute sheet resistance from geometry and conductivity; note edge corrections.",
+    "inputs": "Conducting film map, calibrated four-tip geometry, drive current and voltage reading",
+    "outputs": "Sheet resistance map in Ω/square with geometry correction and calibration ID",
+    "acceptance": "Use an ideal infinite thin sheet with equally spaced collinear probes. Compare inferred sheet resistance to (π/ln 2) × V/I; reversing current reverses voltage and preserves resistance.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "05-07",
+    "name": "Probe station",
+    "model": "FormFactor 11000B",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 19,
+    "sources": [
+      "S14"
+    ],
+    "purpose": "Electrical probing of wafer/die structures.",
+    "geometryBrief": "Chuck, microscope, probe arms, enclosure and micrometer drives.",
+    "behaviorBrief": "Position probes onto contacts; measure continuity, leakage and I-V curves.",
+    "inputs": "Contact map and netlist, probe-tip poses and stimulus from a connected source meter",
+    "outputs": "Contact pairing, continuity state and electrical readings with die coordinates",
+    "acceptance": "Probe the ends of a known resistor then lift one probe. The connected sweep must recover its resistance; the second sweep must report an open contact.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "05-08",
+    "name": "Contact angle goniometer",
+    "model": "KRUSS DSA100 (candidate)",
+    "evidence": "C",
+    "priority": "P2",
+    "page": 19,
+    "sources": [],
+    "purpose": "Assess surface wetting and related treatment changes.",
+    "geometryBrief": "Droplet dispenser, sample stage, camera and backlight.",
+    "behaviorBrief": "Synthetic droplet fit and contact-angle uncertainty; no automatic biocompatibility inference.",
+    "inputs": "Droplet side-view image, baseline, pixel calibration and fit model",
+    "outputs": "Left and right contact-angle estimates with fit quality and image provenance",
+    "acceptance": "Fit a noiseless semicircle resting on its diameter. Both edge angles should be 90° within the predeclared image-sampling tolerance.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "05-09",
+    "name": "X-ray photoelectron spectrometer",
+    "model": "PHI 5000 VersaProbe II",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 20,
+    "sources": [
+      "S04"
+    ],
+    "purpose": "Analyze surface chemistry and composition.",
+    "geometryBrief": "Vacuum chamber, transfer arm, analyzer housing, rack and monitor.",
+    "behaviorBrief": "Show reference spectra, peak fitting and composition estimates; not invented elemental results.",
+    "inputs": "Referenced spectrum versus binding energy, energy calibration and sensitivity factors",
+    "outputs": "Fitted component areas and relative composition with explicit reference factors",
+    "acceptance": "Feed two nonoverlapping synthetic peaks of equal integrated area with identical response factors and zero background. The inferred composition must divide equally between those two components.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "05-10",
+    "name": "Raman microscope",
+    "model": "Horiba LabRAM (model variant pending)",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 20,
+    "sources": [
+      "S07"
+    ],
+    "purpose": "Characterize material structure and chemical signatures.",
+    "geometryBrief": "Microscope, objective turret, laser enclosure, sample stage and spectrometer.",
+    "behaviorBrief": "Reference-based Raman spectra and mapping.",
+    "inputs": "Reference Raman spectra, calibrated shift axis and XY sampling grid",
+    "outputs": "Shift spectra and spatial component-intensity map",
+    "acceptance": "Assign two reference spectra with distinct isolated peaks to alternating tiles. Integrated peak-window maps must reproduce the known tiles without swapping axes.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "05-11",
+    "name": "FTIR spectrometer",
+    "model": "Thermo Scientific Nicolet iS50",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 20,
+    "sources": [
+      "S15"
+    ],
+    "purpose": "Identify polymer functional groups and degradation signatures.",
+    "geometryBrief": "Instrument lid, ATR crystal, sample clamp and display.",
+    "behaviorBrief": "Library-based spectra with baseline/noise controls.",
+    "inputs": "Reference and sample intensity spectra, wavenumber axis and baseline model",
+    "outputs": "Absorbance spectrum and reference-library match with preprocessing history",
+    "acceptance": "Feed sample intensity equal to one tenth of the reference in a test band and equal elsewhere. Ideal absorbance must be one in the band and zero elsewhere.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "05-12",
+    "name": "X-ray diffractometer",
+    "model": "Rigaku D-Max-B",
+    "evidence": "B",
+    "priority": "P3",
+    "page": 20,
+    "sources": [
+      "S04"
+    ],
+    "purpose": "Investigate crystalline phases of suitable materials.",
+    "geometryBrief": "Goniometer, sample stage, X-ray enclosure and console.",
+    "behaviorBrief": "Reference diffraction peaks and simulated broadening; not raw fabricated evidence.",
+    "inputs": "Reference lattice spacings, incident wavelength, angular grid and line-broadening model",
+    "outputs": "Intensity versus 2θ with fitted peak positions and candidate phase labels",
+    "acceptance": "Use a single ideal first-order reflection of known spacing and wavelength. Recover the angle from Bragg's law; symmetric broadening should increase width without shifting the centroid.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  }
+]

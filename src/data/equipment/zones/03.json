@@ -1,0 +1,253 @@
+[
+  {
+    "id": "03-01",
+    "name": "Electron-beam evaporation",
+    "model": "Temescal BJD 1800",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 12,
+    "sources": [
+      "S06"
+    ],
+    "purpose": "Deposit research metal films on patterned substrates.",
+    "geometryBrief": "Chamber door, hearth, source, wafer carousel, thickness monitor and vacuum controls.",
+    "behaviorBrief": "Directional film growth, shadowing, thickness and lift-off compatibility.",
+    "inputs": "Patterned substrate and mask height, source direction, material and calibrated deposited thickness",
+    "outputs": "Directional metal-layer map and shadow boundaries on the sample",
+    "acceptance": "Project a parallel oblique flux past a vertical mask edge of known height. The shadow length must match the geometric projection to one lateral grid cell.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Neural Interface Studio",
+        "/simulations/neural-interface-studio/"
+      ],
+      [
+        "Microfabrication Laboratory",
+        "/simulations/microfabrication/"
+      ]
+    ]
+  },
+  {
+    "id": "03-02",
+    "name": "Thermal evaporation",
+    "model": "Edwards 306 Vacuum Coater",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 12,
+    "sources": [
+      "S04"
+    ],
+    "purpose": "Deposit metals by thermal evaporation.",
+    "geometryBrief": "Bell jar or chamber configuration, source boat, substrate mount, valves and gauges.",
+    "behaviorBrief": "Simplified evaporation flux, thickness and uniformity; exact configuration needs photos.",
+    "inputs": "Sample mount pose, source geometry, calibrated flux map and exposure interval",
+    "outputs": "Thickness map linked to evaporant and chamber configuration",
+    "acceptance": "Place mirror-image coupons about the axis of a symmetric source fixture. Their thickness profiles must mirror each other; zero exposure adds zero film.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "03-03",
+    "name": "Magnetron sputtering",
+    "model": "Kurt J. Lesker PVD 75 RF/DC",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 12,
+    "sources": [
+      "S04"
+    ],
+    "purpose": "Deposit conductive or insulating films using target-specific processes.",
+    "geometryBrief": "Vacuum chamber, target mounts, power rack, pressure readout and sample stage.",
+    "behaviorBrief": "Material-dependent thickness, coverage and stress proxies; no unsupported rate constants.",
+    "inputs": "Material target ID, calibrated deposition-rate map, sample orientation and run duration",
+    "outputs": "Sputtered layer revision with thickness field and calibration provenance",
+    "acceptance": "Use a fixed-rate witness-coupon profile twice with durations in a 1:2 ratio. Central thicknesses must follow 1:2 in the linear regime; a missing rate must be flagged.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "03-04",
+    "name": "Sputter system",
+    "model": "Denton Discovery 635",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 12,
+    "sources": [
+      "S06"
+    ],
+    "purpose": "Alternative multi-target thin-film research platform.",
+    "geometryBrief": "Cabinet, chamber, sample handling and controller; verify target count/configuration.",
+    "behaviorBrief": "Same deposition interface with machine-specific limits.",
+    "inputs": "Installed target list, layer sequence, substrate revision and target-specific rate profiles",
+    "outputs": "Ordered multilayer stack with target IDs and spatial thickness for each layer",
+    "acceptance": "Deposit simulated materials A then B with distinct profile maps. Cross-section inspection must find B above A and recover both original thickness maps.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "03-05",
+    "name": "Atomic layer deposition",
+    "model": "Savannah S100 thermal ALD",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 13,
+    "sources": [
+      "S04"
+    ],
+    "purpose": "Build conformal ultrathin dielectric/barrier layers.",
+    "geometryBrief": "Reactor, precursor cabinet, tubing, valves and operator interface.",
+    "behaviorBrief": "Cycle-based thickness using measured growth-per-cycle; distinguish assumed conformality.",
+    "inputs": "Substrate surface, material ID, cycle count and fitted growth-per-cycle data",
+    "outputs": "Barrier-layer thickness and cycle history with stated coverage assumptions",
+    "acceptance": "Use an ideal saturated constant-growth fixture with no incubation. Doubling the cycle count must double thickness; zero cycles leave the initial surface unchanged.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "03-06",
+    "name": "Plasma-enhanced ALD",
+    "model": "Veeco Fiji plasma-enhanced ALD",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 13,
+    "sources": [
+      "S10"
+    ],
+    "purpose": "Deposit films with plasma-assisted surface reactions.",
+    "geometryBrief": "Chamber, plasma source, load lock where fitted and cabinet.",
+    "behaviorBrief": "Layer growth, temperature and process-history metadata; use calibrated material models.",
+    "inputs": "Surface revision, cycle sequence, plasma-step flags and material calibration domain",
+    "outputs": "Layer revision with cycle and temperature history, thickness and coverage confidence",
+    "acceptance": "Replay a complete cycle train against a held-out witness-film measurement. An interrupted final cycle must remain incomplete and must not silently earn a full cycle increment.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "03-07",
+    "name": "PECVD",
+    "model": "Oxford Plasmalab 80+",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 13,
+    "sources": [
+      "S06"
+    ],
+    "purpose": "Form silicon oxide/nitride insulating layers.",
+    "geometryBrief": "Vacuum reactor, electrode assembly, gas rack and display.",
+    "behaviorBrief": "Thickness, dielectric property, stress and conformality approximation.",
+    "inputs": "Substrate geometry, calibrated deposition map, dielectric model and virtual deposition interval",
+    "outputs": "Dielectric layer with thickness map and property provenance for electrical analysis",
+    "acceptance": "Build two equal-area parallel-plate fixtures with dielectric thicknesses in a 1:2 ratio. With fixed permittivity and fringing disabled, predicted capacitances must have a 2:1 ratio.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "03-08",
+    "name": "Parylene coating",
+    "model": "SCS PDS 2010 Labcoter",
+    "evidence": "A",
+    "priority": "P1",
+    "page": 13,
+    "sources": [
+      "S04",
+      "S11"
+    ],
+    "purpose": "Coat flexible or three-dimensional implant structures with parylene.",
+    "geometryBrief": "Cylindrical chamber, lid, front control panel, vaporizer/pyrolysis modules and cold trap as documented.",
+    "behaviorBrief": "Track conformal polymer layer and masked regions; closed chamber during processing.",
+    "inputs": "Exposed surface mesh, masking geometry and calibrated nominal coating thickness",
+    "outputs": "Conformal polymer surface revision and masked contact map",
+    "acceptance": "Coat an ideal coupon with an exposed top and sidewall plus a masked contact. Both exposed faces acquire the specified normal offset while the contact remains open.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "03-09",
+    "name": "Polymer cure / anneal furnace",
+    "model": "Lindberg/Blue M tube furnace (configuration pending)",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 14,
+    "sources": [
+      "S04"
+    ],
+    "purpose": "Cure polyimide or thermally process substrates.",
+    "geometryBrief": "Tube, end flanges, temperature controller, sample boat and stand.",
+    "behaviorBrief": "Thermal history, shrinkage/stress proxy, material-dependent cure state.",
+    "inputs": "Polymer film revision, temperature history, timebase and fitted cure/shrinkage model",
+    "outputs": "Cure-state field, thickness change and thermal provenance",
+    "acceptance": "Replay a calibration coupon's thermal trace and compare predicted shrinkage with an independent thickness measurement. A zero-duration replay must preserve its initial state.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "03-10",
+    "name": "High-temperature box furnace",
+    "model": "Ney Vulcan 3-1750",
+    "evidence": "B",
+    "priority": "P3",
+    "page": 14,
+    "sources": [
+      "S05"
+    ],
+    "purpose": "Heat or anneal compatible coupons and fixtures.",
+    "geometryBrief": "Hinged chamber door, insulated interior, display and shelf.",
+    "behaviorBrief": "Temperature-time history; material changes only if supported by model.",
+    "inputs": "Compatible coupon ID, programmed chamber trace and material-response model if available",
+    "outputs": "Thermal history and any explicitly modeled change to the specimen",
+    "acceptance": "Replay a ramp–hold–cool fixture for an inert coupon. Match the supplied peak and hold duration within the sampling interval and leave material properties intact.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "03-11",
+    "name": "Rapid thermal processing",
+    "model": "Modular Process Technology RTP system (model pending)",
+    "evidence": "B",
+    "priority": "P3",
+    "page": 14,
+    "sources": [
+      "S12"
+    ],
+    "purpose": "Short thermal cycles on semiconductor substrates.",
+    "geometryBrief": "Lamp chamber and tray, controller, safety envelope.",
+    "behaviorBrief": "Thermal ramp, dwell and cooldown; specific equipment model to be pinned.",
+    "inputs": "Wafer revision, lamp-cycle command, sampled temperature trace and clock basis",
+    "outputs": "Short-cycle history with measured ramp, peak and dwell linked to the wafer",
+    "acceptance": "Feed a synthetic triangular temperature trace of known slope. Recover both ramp rates and peak from the samples; do not insert a dwell in a waveform with none.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "03-12",
+    "name": "Plasma surface treatment",
+    "model": "Harrick PDC-32 plasma bonder",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 14,
+    "sources": [
+      "S01"
+    ],
+    "purpose": "Activate surfaces for bonding or microfluidic assembly.",
+    "geometryBrief": "Small vacuum chamber, viewing port, controls and pump.",
+    "behaviorBrief": "Surface activation and time-dependent bonding eligibility; not a full surface chemistry solver.",
+    "inputs": "Two surface IDs, activation calibration, treatment timestamps and bonding eligibility rule",
+    "outputs": "Time-stamped surface activation and eligibility metadata for the bonding station",
+    "acceptance": "Give two identical surfaces the same virtual activation and evaluate them on opposite sides of a fixture expiry time. Only the earlier pair qualifies under that fixture rule.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  }
+]

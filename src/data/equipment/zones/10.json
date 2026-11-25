@@ -1,0 +1,368 @@
+[
+  {
+    "id": "10-01",
+    "name": "Whole-cell patch amplifier",
+    "model": "Molecular Devices Axon MultiClamp 700B",
+    "evidence": "A",
+    "priority": "P1",
+    "page": 33,
+    "sources": [
+      "S37",
+      "S38"
+    ],
+    "purpose": "Current-clamp and voltage-clamp recording.",
+    "geometryBrief": "Rack unit, headstages, pipette holders, connectors and computer control.",
+    "behaviorBrief": "Clamp mode, series resistance, leak, capacitance and measured current or voltage.",
+    "inputs": "Model-cell circuit (Ω, F), holding potential (V), clamp command (V or A)",
+    "outputs": "Time series of measured current (A) or voltage (V), mode, bandwidth, saturation flags",
+    "acceptance": "Use an ideal passive RC cell with compensation disabled. A current step should approach I × R with a time constant R × C. In voltage clamp, verify the steady leak current against the circuit.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Cortex Laboratory",
+        "/cortex/"
+      ]
+    ]
+  },
+  {
+    "id": "10-02",
+    "name": "Digitizer",
+    "model": "Axon Digidata 1550B",
+    "evidence": "A",
+    "priority": "P1",
+    "page": 33,
+    "sources": [
+      "S37"
+    ],
+    "purpose": "Acquire analog patch-clamp signals and timing.",
+    "geometryBrief": "Rack front/back, BNCs, LEDs, cables and PC.",
+    "behaviorBrief": "Sampling, ADC range, timestamp and optional filtering; no hidden waveform generation.",
+    "inputs": "Analog waveform (V), clock (s), channel map, ADC span and resolution",
+    "outputs": "Integer ADC samples, time base, input-referred volts and clipping flags",
+    "acceptance": "Digitize a voltage ramp crossing both rails. The interior codes should increase monotonically, out-of-range inputs should clip, and timestamps should be one sample period apart.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "10-03",
+    "name": "Single-channel amplifier",
+    "model": "Axon Axopatch 200B",
+    "evidence": "A",
+    "priority": "P2",
+    "page": 33,
+    "sources": [
+      "S37"
+    ],
+    "purpose": "Low-noise channel-level recordings.",
+    "geometryBrief": "Rack enclosure, knobs, headstage and input ports.",
+    "behaviorBrief": "Stochastic channel events or supplied traces; clamp artifacts and noise.",
+    "inputs": "Channel-state sequence or reference trace, unitary conductance (S), driving voltage (V), filter and noise settings",
+    "outputs": "Filtered current (A), associated state timestamps when synthetic, noise bandwidth",
+    "acceptance": "Feed closed, open and closed intervals longer than the filter settling time. With noise disabled the open plateau should differ from baseline by conductance × driving voltage.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Cortex Laboratory",
+        "/cortex/"
+      ]
+    ]
+  },
+  {
+    "id": "10-04",
+    "name": "Patch clamp alternate",
+    "model": "HEKA EPC 10 USB",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 33,
+    "sources": [
+      "S38"
+    ],
+    "purpose": "Whole-cell and single-channel research experiments.",
+    "geometryBrief": "Amplifier, headstage, cable assembly and workstation.",
+    "behaviorBrief": "Same underlying clamp model with different control presentation.",
+    "inputs": "Shared clamp circuit, stimulus command, headstage gain and acquisition clock",
+    "outputs": "Mode-tagged current or voltage trace, command log and headstage calibration ID",
+    "acceptance": "Replay the passive model cell from 10-01 with identical settings. After conversion to SI units the EPC and MultiClamp adapters should agree within the common solver tolerance.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Cortex Laboratory",
+        "/cortex/"
+      ]
+    ]
+  },
+  {
+    "id": "10-05",
+    "name": "Upright slice microscope",
+    "model": "Scientifica SliceScope Pro 1000",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 33,
+    "sources": [
+      "S38"
+    ],
+    "purpose": "Visual targeting in tissue slices.",
+    "geometryBrief": "Objective, upright frame, XY stage, condenser, camera and focus controls.",
+    "behaviorBrief": "Stage coordinates, focal plane, field of view and selected cell.",
+    "inputs": "Slice volume ID, voxel spacing, stage pose, objective calibration and cell annotations",
+    "outputs": "Calibrated focal-plane image, sample-space target position and selected cell ID",
+    "acceptance": "Place labeled beads on two known planes. Moving focus between them should select the corresponding bead and return its coordinates within one image voxel.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "10-06",
+    "name": "Micropipette puller",
+    "model": "Sutter P-1000",
+    "evidence": "A",
+    "priority": "P1",
+    "page": 34,
+    "sources": [
+      "S39"
+    ],
+    "purpose": "Fabricate glass microelectrodes for intracellular experiments.",
+    "geometryBrief": "Clamps, filament area, glass capillary, cover and touchscreen. Envelope listed as 53 x 36 x 30 cm.",
+    "behaviorBrief": "Animate symmetric pulling; tip geometry and resistance estimate from calibrated models.",
+    "inputs": "Capillary geometry, virtual pull preset ID, paired tip-profile and resistance calibration",
+    "outputs": "Paired virtual pipette IDs, modeled taper geometry (m), estimated resistance (Ω) and calibration bounds",
+    "acceptance": "Reserve measured pipette profiles for a blind comparison. Check predicted tip diameter and resistance against their predeclared uncertainty bands and flag extrapolated presets.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "10-07",
+    "name": "Motorized micromanipulator",
+    "model": "Sutter MP-285",
+    "evidence": "A",
+    "priority": "P1",
+    "page": 34,
+    "sources": [
+      "S40"
+    ],
+    "purpose": "Position patch pipettes or probes accurately.",
+    "geometryBrief": "Three moving axes, mount, controller and encoder. Mechanical unit 11 x 15 x 16 cm; controller 40.6 x 27.3 x 9.6 cm.",
+    "behaviorBrief": "Real stage travel and collision limits; map VR controls to sample coordinates.",
+    "inputs": "Mount-to-sample transform, stage displacement (m), travel envelope and collision meshes",
+    "outputs": "Tip pose in sample coordinates, actual displacement and travel or collision status",
+    "acceptance": "Rotate the mount frame by 90 degrees and command a single-axis displacement. The sample-space axis should rotate accordingly and a command past its calibrated travel should stop at the limit.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "10-08",
+    "name": "Microelectrode beveler",
+    "model": "Sutter BV-10",
+    "evidence": "A",
+    "priority": "P2",
+    "page": 34,
+    "sources": [
+      "S41"
+    ],
+    "purpose": "Refine glass electrode tips when appropriate.",
+    "geometryBrief": "Abrasive plate, holder, microscope, adjustable stage and controller.",
+    "behaviorBrief": "Tip geometry and resistance change as a modeled estimate.",
+    "inputs": "Pipette ID, initial tip geometry and a matched before/after bevel calibration set",
+    "outputs": "Child tip revision, modeled bevel surface and estimated resistance (Ω)",
+    "acceptance": "Replay a held-out tip pair. Compare estimated opening area and resistance change with measured before/after values and retain uncertainty for each quantity.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "10-09",
+    "name": "Multichannel stim/record",
+    "model": "Intan RHS 128ch M4200 + M4016/M4032 headstages",
+    "evidence": "A",
+    "priority": "P1",
+    "page": 34,
+    "sources": [
+      "S42",
+      "S43"
+    ],
+    "purpose": "Independently stimulate and record neural electrodes.",
+    "geometryBrief": "Rack controller, four front headstage ports, red cables, headstage PCBs, adapters and I/O.",
+    "behaviorBrief": "Channel assignment, biphasic stimuli, measured impedance, noise, artifact and timing; up to 128 system channels.",
+    "inputs": "Headstage configuration, electrode map, per-channel stimulus events, load model and reference signals",
+    "outputs": "Channel-indexed voltage traces (V), delivered current events (A), impedance estimates (Ω) and timestamps",
+    "acceptance": "Route one balanced biphasic command to a known resistive dummy channel. Integrated net charge should be zero within time-step error and the channel response should match I × R in the unclipped ideal fixture.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Measured recording datasets",
+        "/recordings/"
+      ]
+    ]
+  },
+  {
+    "id": "10-10",
+    "name": "Open acquisition system",
+    "model": "Open Ephys Acquisition Board Gen 3",
+    "evidence": "A",
+    "priority": "P1",
+    "page": 34,
+    "sources": [
+      "S44",
+      "S45",
+      "S71"
+    ],
+    "purpose": "Open-source multichannel recording platform.",
+    "geometryBrief": "PCB, case, ports, headstages and I/O modules; obtain licensed design files.",
+    "behaviorBrief": "Stream simulated or real extracellular data through an explicit acquisition pipeline.",
+    "inputs": "Extracellular sample stream, event clock, channel map and buffer configuration",
+    "outputs": "Timestamped channel blocks, event markers and detected acquisition gaps",
+    "acceptance": "Replay a numbered multichannel ramp with one missing block and one trigger. Reassembly should retain channel order, flag the gap and place the trigger at the original sample.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Measured recording datasets",
+        "/recordings/"
+      ]
+    ]
+  },
+  {
+    "id": "10-11",
+    "name": "High-density CMOS MEA",
+    "model": "MaxWell Biosystems MaxOne",
+    "evidence": "A",
+    "priority": "P1",
+    "page": 35,
+    "sources": [
+      "S46",
+      "S47"
+    ],
+    "purpose": "Record spatially distributed neural activity in culture or tissue.",
+    "geometryBrief": "Hub 185 x 280 x 90 mm; recording unit 150 x 95 x 25 mm; separate chip/well and holders.",
+    "behaviorBrief": "Electrode selection, signals and activity maps; 26,400 physical sites and 1,020 recording channels, not simultaneous recording of all sites.",
+    "inputs": "Chip/site map, selected recording routes, specimen ID and spatial signal field",
+    "outputs": "Routed channel traces (V) and an activity map with unsampled sites masked",
+    "acceptance": "Place a single synthetic source on a known routed site. It should appear at that coordinate. Attempting to route 1,021 simultaneous recording channels should reject the configuration or demand another acquisition.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "10-12",
+    "name": "Multiwell HD-MEA",
+    "model": "MaxWell Biosystems MaxTwo",
+    "evidence": "A",
+    "priority": "P2",
+    "page": 35,
+    "sources": [
+      "S47"
+    ],
+    "purpose": "Compare multiple cultures or organoids in parallel.",
+    "geometryBrief": "Well plate, docking unit, electronics and software; verify variant dimensions.",
+    "behaviorBrief": "Per-well data and longitudinal comparison; lazy-load inactive cultures.",
+    "inputs": "Multiwell layout ID, independent specimen IDs, channel selections and session timeline",
+    "outputs": "Per-well activity maps and traces keyed to specimen, well and session",
+    "acceptance": "Replay a spike train in one well and silence in another, then unload and revisit both. No spikes should cross wells and both timelines should retain their original sample counts.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "10-13",
+    "name": "High-density silicon probe",
+    "model": "imec Neuropixels 1.0 / 2.0 (separate assets)",
+    "evidence": "A",
+    "priority": "P1",
+    "page": 35,
+    "sources": [
+      "S48",
+      "S49"
+    ],
+    "purpose": "Record distributed extracellular spikes and field potentials.",
+    "geometryBrief": "Shank, electrode sites, flex, headstage and metal cap; use separate documented version geometry.",
+    "behaviorBrief": "Contact selection and recording model; 1.0 is a recording probe, not a generic stimulator.",
+    "inputs": "Probe variant and site-map revision, bank selection, shank pose and extracellular field",
+    "outputs": "Recording channels (V) mapped to physical contact IDs and 3D locations",
+    "acceptance": "Replay a depth-coded field and switch banks. Each channel should report the value at its selected physical site. Verify against the exact 1.0 or 2.0 map used in that run.",
+    "geometryStatus": "Existing asset to review",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Neuropixels 1.0 engineering model and viewer",
+        "/models/neuropixels-engineering/neuropixels-3d-viewer.html"
+      ],
+      [
+        "Measured recordings",
+        "/recordings/"
+      ]
+    ]
+  },
+  {
+    "id": "10-14",
+    "name": "Peripheral nerve recording bath",
+    "model": "Custom organ-bath rig with recording and stimulation cuffs",
+    "evidence": "C",
+    "priority": "P1",
+    "page": 35,
+    "sources": [],
+    "purpose": "Evaluate compound action potentials and selective recruitment.",
+    "geometryBrief": "Transparent bath, supports, cuff or intraneural contacts, perfusion, temperature probe and micromanipulators.",
+    "behaviorBrief": "Couple nerve FEM/axon models, recruitment, latency, spatial selectivity and noise. Ground truth may be simulated only.",
+    "inputs": "Nerve geometry and axon population, cuff contact map, pulse events, conductivity and acquisition clock",
+    "outputs": "Compound action potential (V), recruitment by population, propagation latency (s) and model provenance",
+    "acceptance": "Use identical synthetic axons with known conduction velocity and two recording positions. The latency difference should equal separation divided by velocity within sampling and solver resolution.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Measured recording datasets",
+        "/recordings/"
+      ]
+    ]
+  },
+  {
+    "id": "10-15",
+    "name": "Isolated pulse stimulator",
+    "model": "A-M Systems Model 2100 (candidate)",
+    "evidence": "C",
+    "priority": "P1",
+    "page": 35,
+    "sources": [],
+    "purpose": "Represent separate stimulation source for isolated experimental circuits.",
+    "geometryBrief": "Panel controls, outputs, cables and load fixture.",
+    "behaviorBrief": "Pulse timing, polarity and compliance; interface with virtual electrode safety checks.",
+    "inputs": "Requested pulse train, isolated-load circuit, output mode and compliance limit",
+    "outputs": "Time-resolved delivered voltage and current, polarity, compliance events and delivered charge (C)",
+    "acceptance": "Drive a synthetic resistor in current mode within compliance and then beyond compliance. Confirm V = IR in the first trace and a flagged voltage-limited response in the second.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "10-16",
+    "name": "Vibrating tissue slicer",
+    "model": "Leica VT1200 S (candidate)",
+    "evidence": "C",
+    "priority": "P2",
+    "page": 35,
+    "sources": [],
+    "purpose": "Represent preparation of acute slices for recording.",
+    "geometryBrief": "Blade holder, bath, specimen stage and controller.",
+    "behaviorBrief": "Virtual section geometry and specimen tracking; not a live-tissue protocol.",
+    "inputs": "Virtual specimen volume, cutting plane, requested thickness (m) and specimen transform",
+    "outputs": "Ordered child slice IDs, plane transforms, extents and parent volume reference",
+    "acceptance": "Section a labeled cuboid in the virtual fixture. Slice extents should cover the requested interval without overlap and each landmark should map back to its parent coordinate.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  }
+]

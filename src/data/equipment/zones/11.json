@@ -1,0 +1,228 @@
+[
+  {
+    "id": "11-01",
+    "name": "Optical LED driver",
+    "model": "Doric programmable LED driver / LEDFLS family",
+    "evidence": "A",
+    "priority": "P1",
+    "page": 36,
+    "sources": [
+      "S50",
+      "S51",
+      "S74"
+    ],
+    "purpose": "Deliver controllable wavelength-specific optical stimulation.",
+    "geometryBrief": "Controller, LED module, fiber port, heat sink and TTL inputs; exact model revision pending.",
+    "behaviorBrief": "Pulse sequence, spectral emission and delivered optical power; use calibrated coupling loss.",
+    "inputs": "TTL event stream, LED module spectrum, current-to-power calibration and coupling factor",
+    "outputs": "Fiber-output optical power (W) vs time, spectrum and calibration ID",
+    "acceptance": "Replay a calibrated constant-amplitude square pulse. The integrated delivered energy should equal calibrated output power × pulse duration after the fixture coupling loss.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Optogenetics Laboratory",
+        "/simulations/optogenetics/"
+      ]
+    ]
+  },
+  {
+    "id": "11-02",
+    "name": "Laser diode module",
+    "model": "Doric CLD + LDD driver",
+    "evidence": "A",
+    "priority": "P2",
+    "page": 36,
+    "sources": [
+      "S50"
+    ],
+    "purpose": "Represent controlled fiber-coupled optical source.",
+    "geometryBrief": "Diode module, driver enclosure, fiber coupler, status and interlock controls.",
+    "behaviorBrief": "Source wavelength and power, divergence and pulse timing; no physical alignment instructions.",
+    "inputs": "Laser/driver configuration ID, gate events, calibrated spectrum, output power and divergence",
+    "outputs": "Time-stamped optical-source state, wavelength (m), power (W) and beam envelope",
+    "acceptance": "Toggle the emission-enable state while gate pulses continue. The disabled interval should contain zero emitted power and the enabled interval should follow the selected reference pulse and spectrum.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "11-03",
+    "name": "Optogenetics pulse generator",
+    "model": "Doric OTPG",
+    "evidence": "A",
+    "priority": "P1",
+    "page": 36,
+    "sources": [
+      "S50",
+      "S51"
+    ],
+    "purpose": "Synchronize optical stimulation with acquisition.",
+    "geometryBrief": "Small pulse controller, BNCs and timing display.",
+    "behaviorBrief": "Event scheduler, pulse train and shared trigger clock.",
+    "inputs": "Train duration and intervals (s), trigger mode, input edge times and shared clock ID",
+    "outputs": "Clock-tagged TTL edges, pulse indices and synchronization markers",
+    "acceptance": "Schedule ten equally spaced pulses after a trigger. Check all twenty transitions against the analytical times to within one scheduler tick, including the final falling edge.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Optogenetics Laboratory",
+        "/simulations/optogenetics/"
+      ]
+    ]
+  },
+  {
+    "id": "11-04",
+    "name": "Fiber photometry console",
+    "model": "Doric NC500 + integrated fluorescence mini cube",
+    "evidence": "A",
+    "priority": "P2",
+    "page": 36,
+    "sources": [
+      "S50"
+    ],
+    "purpose": "Represent fluorescence sensing during neural experiments.",
+    "geometryBrief": "Console, cube, light paths, photodetector ports and patch cords.",
+    "behaviorBrief": "Fluorescence model, modulation, background and synchronization; aggregate signal not single-cell localization.",
+    "inputs": "Excitation schedule, fluorescence field or trace, collection weights, background and detector response",
+    "outputs": "Aggregate demodulated fluorescence time series, reference channel and event-aligned timestamps",
+    "acceptance": "Combine two synthetic emitters of known brightness with a constant background. Below saturation the recovered modulation should match their weighted sum and remain invariant when equal-weight emitter IDs are exchanged.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "11-05",
+    "name": "Fiber power meter",
+    "model": "Thorlabs PM100D (sensor selected separately)",
+    "evidence": "A",
+    "priority": "P1",
+    "page": 36,
+    "sources": [
+      "S52"
+    ],
+    "purpose": "Measure delivered optical power at the fiber tip or detector.",
+    "geometryBrief": "Handheld display, buttons, sensor cable and compatible detector head.",
+    "behaviorBrief": "Power reading and wavelength correction based on calibration; sensor-specific range.",
+    "inputs": "Optical power spectrum at the detector, wavelength setting, detector-head responsivity and calibrated range",
+    "outputs": "Measured power (W), sensor ID, calibration reference and range status",
+    "acceptance": "Feed two monochromatic standards at different wavelengths and select their matching wavelength settings. Each corrected reading should agree with its standard within the head calibration uncertainty.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Optogenetics Laboratory",
+        "/simulations/optogenetics/"
+      ]
+    ]
+  },
+  {
+    "id": "11-06",
+    "name": "Optical breadboard and mounts",
+    "model": "Thorlabs ScienceDesk / optomechanical family (exact part IDs pending)",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 37,
+    "sources": [
+      "S53"
+    ],
+    "purpose": "Build modular optical layouts.",
+    "geometryBrief": "Hole grid, posts, bases, clamps, lens tubes, mirrors, stages and mounts.",
+    "behaviorBrief": "Snap fixtures to mounting grid; beam schematic and collision constraints.",
+    "inputs": "Breadboard hole lattice (m), mounting footprints, port axes and component transforms",
+    "outputs": "Placed fixture transforms, optical connection graph and clearance conflicts",
+    "acceptance": "Snap two reference mounts a known number of pitches apart. Their separation should equal pitch × interval count. Placing both solid bases in the same volume should report a collision.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "11-07",
+    "name": "Fiber LED excitation",
+    "model": "Thorlabs M470F1 + LEDD1B (research example)",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 37,
+    "sources": [
+      "S54"
+    ],
+    "purpose": "Build fiber-coupled excitation at a documented wavelength.",
+    "geometryBrief": "Fiber LED housing, driver, connectors and patch lead.",
+    "behaviorBrief": "Spectral distribution and optical power input; exact source configuration as evidence.",
+    "inputs": "Module spectrum, driver command, fiber properties and measured coupling transfer",
+    "outputs": "Spectral power distribution and coupled optical power (W) at the fiber output",
+    "acceptance": "Use a reference spectrum with known integrated power and a near-grey coupling factor. The output spectrum should retain its shape and integrate to source power × transmission.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "11-08",
+    "name": "High-speed fluorescence camera",
+    "model": "Hamamatsu ORCA-Flash4.0 (variant pending)",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 37,
+    "sources": [
+      "S30",
+      "S54"
+    ],
+    "purpose": "Detect optical activity in neural preparations.",
+    "geometryBrief": "Camera body, C-mount, cables, controller and sensor plane.",
+    "behaviorBrief": "Exposure, sampling, read noise and image formation from model or dataset.",
+    "inputs": "Photon arrival field, pixel calibration, exposure window, frame clock and camera noise parameters",
+    "outputs": "Timestamped image frames, pixel size, digital counts, saturation mask and acquisition metadata",
+    "acceptance": "Render a uniform static field at two exposure durations below saturation. After dark subtraction, the expected mean signal should scale with exposure and the frame timestamps should follow the input clock.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "11-09",
+    "name": "Holographic stimulation optics",
+    "model": "Coherent Monaco 1035-80-60 (research example)",
+    "evidence": "B",
+    "priority": "P3",
+    "page": 37,
+    "sources": [
+      "S54"
+    ],
+    "purpose": "Reference platform for advanced patterned optical experiments.",
+    "geometryBrief": "Laser housing, optical switching, beam expander and enclosed SLM path.",
+    "behaviorBrief": "Research-only optical field representation; not a claim of single-neuron targeting fidelity.",
+    "inputs": "Pupil amplitude, synthetic phase mask, wavelength and focal-plane sampling grid",
+    "outputs": "Predicted relative irradiance map, spatial coordinates and propagation model version",
+    "acceptance": "Compare a flat pupil phase with a known linear phase ramp on the same aperture. The far-field maximum should shift by the prescribed spatial frequency while integrated energy is conserved on a sufficiently sampled grid.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "11-10",
+    "name": "MicroLED optoelectrode station",
+    "model": "Custom microLED array test fixture",
+    "evidence": "C",
+    "priority": "P1",
+    "page": 37,
+    "sources": [],
+    "purpose": "Evaluate miniaturized emitters integrated with electrode devices.",
+    "geometryBrief": "Probe holder, microLED chip, electrical leads, optical sensor and thermal probe.",
+    "behaviorBrief": "Per-emitter output, optical spread, thermal coupling and opsin response; requires independent validation.",
+    "inputs": "Emitter coordinates, per-site drive waveform, emission and thermal calibrations, optical tissue and opsin models",
+    "outputs": "Per-emitter optical power, local irradiance, temperature rise and photocurrent with separate model IDs",
+    "acceptance": "Switch one emitter on in a symmetric homogeneous synthetic medium. Compare optical and thermal maps at mirrored points, then disable opsin expression and verify that photocurrent vanishes while both physical fields persist.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Optogenetics Laboratory",
+        "/simulations/optogenetics/"
+      ]
+    ]
+  }
+]

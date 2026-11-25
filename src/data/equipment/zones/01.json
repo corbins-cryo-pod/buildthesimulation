@@ -1,0 +1,154 @@
+[
+  {
+    "id": "01-01",
+    "name": "CAD/mask workstation",
+    "model": "KLayout + KiCad + FreeCAD (custom workstation)",
+    "evidence": "C",
+    "priority": "P1",
+    "page": 7,
+    "sources": [],
+    "purpose": "Design masks, PCB interconnects and 3D fixtures.",
+    "geometryBrief": "Monitor arms, keyboard, workstation enclosure; use an original retro case, not an invented branded model.",
+    "behaviorBrief": "Layer editing, contact coordinates, net checks, design-rule warnings, versioned exports.",
+    "inputs": "Versioned mask polygons, substrate outline, database units and terminal netlist",
+    "outputs": "Design revision with fabrication layers, contact IDs and design-rule findings",
+    "acceptance": "Round-trip a two-contact layout through GDSII. Preserve both contacts and their spacing to one database unit; a deliberately disconnected trace must fail connectivity.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Neural Interface Designer",
+        "/simulations/interface-designer/"
+      ],
+      [
+        "Designer-to-Cleanroom handoff",
+        "/simulations/neural-interface-studio/handoff/"
+      ]
+    ]
+  },
+  {
+    "id": "01-02",
+    "name": "Multiphysics workstation",
+    "model": "COMSOL Multiphysics / FEBio / NEURON (software station)",
+    "evidence": "C",
+    "priority": "P1",
+    "page": 7,
+    "sources": [],
+    "purpose": "Predict electric fields, tissue strain and neural response.",
+    "geometryBrief": "Reuse CAD desk; sectional anatomy and device meshes on screens.",
+    "behaviorBrief": "Solve explicit boundary-value problems; mesh convergence and units; display validated versus illustrative results.",
+    "inputs": "Sample mesh, material properties, boundary conditions and unit-tagged solver request",
+    "outputs": "Field or displacement dataset on the mesh, solver settings and convergence report",
+    "acceptance": "For the electrical adapter, impose a potential difference across a uniform slab with insulated sides. The potential must be linear and total current must converge to conductivity × area × voltage / length.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Cortex Laboratory",
+        "/cortex/"
+      ],
+      [
+        "Tissue Mechanics Laboratory",
+        "/simulations/tissue-mechanics/"
+      ]
+    ]
+  },
+  {
+    "id": "01-03",
+    "name": "GPU visualization node",
+    "model": "NVIDIA RTX 6000 Ada Generation workstation (reference configuration)",
+    "evidence": "C",
+    "priority": "P3",
+    "page": 7,
+    "sources": [],
+    "purpose": "Render large anatomical datasets and train analysis models.",
+    "geometryBrief": "Tower, PCIe cards, fans, ports and cable assemblies; no need for internal PCB detail initially.",
+    "behaviorBrief": "Job queue, GPU memory budget, data streaming; not a hardware performance emulator.",
+    "inputs": "Versioned visualization dataset, job requests, estimated byte counts and virtual memory budget",
+    "outputs": "Job-state events, allocated bytes and rendered-volume reference",
+    "acceptance": "Queue two volumes that each fit individually but exceed the budget together. The second starts after the first releases memory; replay yields the same event order.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "01-04",
+    "name": "Connectomics console",
+    "model": "Neuroglancer / CAVE / FIJI (custom workstation)",
+    "evidence": "C",
+    "priority": "P1",
+    "page": 8,
+    "sources": [],
+    "purpose": "Inspect serial EM volumes and trace axons.",
+    "geometryBrief": "Large displays, trackball, annotation controls; original enclosure.",
+    "behaviorBrief": "Volume tiles, segment IDs, multiscale navigation, provenance and resolution indicators.",
+    "inputs": "Registered volume tiles, voxel-to-world transform, segmentation labels and annotation revision",
+    "outputs": "Skeleton or segment selection with world coordinates, volume ID and edit history",
+    "acceptance": "Trace through the boundary of two adjacent tiles. The node at the seam must have the same world position and segment ID at both zoom levels.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "01-05",
+    "name": "Neural data analysis console",
+    "model": "SpikeInterface / NWB / Python (custom workstation)",
+    "evidence": "C",
+    "priority": "P1",
+    "page": 8,
+    "sources": [],
+    "purpose": "Sort spikes, compare trials and store signals.",
+    "geometryBrief": "Shared console asset with selectable panels.",
+    "behaviorBrief": "Raster, waveform, quality metrics, event synchronization and reproducible exports.",
+    "inputs": "Channel map, timestamped voltage trace, spike labels and event clock",
+    "outputs": "Spike/event table, waveform summaries and versioned analysis dataset",
+    "acceptance": "Import a synthetic two-channel recording with four labeled spikes and a known trigger. Verify event count, channel assignment and trigger alignment within one sample after export and reload.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned",
+    "related": [
+      [
+        "Recording Library",
+        "/recordings/"
+      ]
+    ]
+  },
+  {
+    "id": "01-06",
+    "name": "Data infrastructure",
+    "model": "Custom 19-inch server rack, NAS and UPS",
+    "evidence": "C",
+    "priority": "P3",
+    "page": 8,
+    "sources": [],
+    "purpose": "Store experiment histories, model assets and microscopy volumes.",
+    "geometryBrief": "Rack rails, drive bays, cooling grilles, switch and patch panel.",
+    "behaviorBrief": "Virtual storage and task status; no always-on heavy simulation.",
+    "inputs": "Versioned sample records, binary objects, content checksums and run manifests",
+    "outputs": "Archived manifest with resolvable object IDs, integrity report and restore event",
+    "acceptance": "Archive and restore a run containing a mask and a trace. Both checksums and parent links must match; a modified trace must fail the integrity check.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "01-07",
+    "name": "Engineering drafting table",
+    "model": "Custom adjustable drafting desk and inspection monitor",
+    "evidence": "C",
+    "priority": "P2",
+    "page": 8,
+    "sources": [],
+    "purpose": "Review device dimension drawings and compare physical designs.",
+    "geometryBrief": "Tilting tabletop, ruler, task lamp, paper and drawers.",
+    "behaviorBrief": "Dimension annotations, drawing revision and true-scale specimen overlay.",
+    "inputs": "Sample CAD outline, scale, datum and dimension annotation set",
+    "outputs": "Revision-linked drawing sheet, measured dimensions and specimen overlay transform",
+    "acceptance": "Overlay a 10 mm square, zoom twice and rotate the view. Its dimension stays 10 mm and its annotations remain attached to the same vertices.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  }
+]

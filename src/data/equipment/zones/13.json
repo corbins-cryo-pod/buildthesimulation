@@ -1,0 +1,307 @@
+[
+  {
+    "id": "13-01",
+    "name": "Field-emission SEM",
+    "model": "ZEISS Gemini 560",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 40,
+    "sources": [
+      "S07"
+    ],
+    "purpose": "Inspect electrode contacts, shanks and surfaces.",
+    "geometryBrief": "Electron column, chamber door, stage, detectors, vacuum hardware and screen.",
+    "behaviorBrief": "Beam raster, sample tilt and calibrated image source; not a generic photo filter.",
+    "inputs": "Surface or referenced SEM field, specimen pose, raster sampling and detector/image calibration",
+    "outputs": "SEM raster, specimen-space transform, pixel spacing and source modality",
+    "acceptance": "Rasterize a reference grating at normal incidence and a known tilt. In the orthographic fixture its projected pitch along the tilted dimension should scale by the cosine of the tilt.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "13-02",
+    "name": "FIB-SEM",
+    "model": "ZEISS Crossbeam 550",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 40,
+    "sources": [
+      "S59"
+    ],
+    "purpose": "Serial milling and imaging for 3D neural and material volumes.",
+    "geometryBrief": "Two angled columns, chamber, motorized stage, detector and console.",
+    "behaviorBrief": "Represent slice-and-image sequence; load real or synthetic voxel stack, record anisotropy.",
+    "inputs": "Voxel block ID, milling-plane pose, section increment and in-plane pixel spacing",
+    "outputs": "Ordered slice images, anisotropic voxel spacing and block-to-image transform",
+    "acceptance": "Sample a synthetic block containing a diagonal wire. Reconstructed endpoints should agree in physical coordinates with the original wire within one voxel along each axis.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "13-03",
+    "name": "Plasma FIB-SEM",
+    "model": "Thermo Fisher Hydra PFIB",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 40,
+    "sources": [
+      "S01"
+    ],
+    "purpose": "Larger-volume micromachining and cross-sectional analysis.",
+    "geometryBrief": "Dual-column assembly, chamber, transfer ports and controller.",
+    "behaviorBrief": "Material removal and 3D inspection at separately calibrated scale; do not assume biological sample readiness.",
+    "inputs": "Material-block geometry, registered virtual cut volume, SEM view and removal-scale calibration",
+    "outputs": "Revised block geometry, removed volume, exposed-face image and parent revision",
+    "acceptance": "Subtract a rectangular prism fully inside a homogeneous synthetic block. The removed volume should equal its three dimensions multiplied together within discretization error and the resulting face should lie on the commanded plane.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "13-04",
+    "name": "Serial block-face SEM",
+    "model": "Thermo Fisher VolumeScope II",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 40,
+    "sources": [
+      "S60"
+    ],
+    "purpose": "Serial block-face imaging of prepared biological samples.",
+    "geometryBrief": "SEM chamber, internal microtome schematic, block holder and workstation.",
+    "behaviorBrief": "Advance virtual section stack; contrast, missing slices and registration.",
+    "inputs": "Prepared virtual block or reference stack, section indices, frame shifts and contrast metadata",
+    "outputs": "Registered block-face stack, missing-section mask, transforms and voxel spacing",
+    "acceptance": "Shift a fiducial stack by known in-plane offsets and omit a slice. Alignment should recover fiducial positions and retain the missing physical z position in the metadata.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "13-05",
+    "name": "TEM",
+    "model": "JEOL JEM-1400 Plus",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 40,
+    "sources": [
+      "S56"
+    ],
+    "purpose": "Inspect thin-section neural ultrastructure.",
+    "geometryBrief": "Tall column, specimen holder, viewing/camera section, vacuum rack and console.",
+    "behaviorBrief": "Projection of sections, contrast and scale; no invented nanoscale observations.",
+    "inputs": "Thin-section volume or reference TEM image, section pose, pixel pitch and contrast model",
+    "outputs": "Projection image, dimensional scale, contrast-model ID and source section ID",
+    "acceptance": "Under a declared linear projection approximation, two identical overlapping synthetic density layers should double the projected density compared with one layer. Check lateral dimensions against the phantom.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "13-06",
+    "name": "Cryo-TEM",
+    "model": "Thermo Fisher Glacios 2",
+    "evidence": "B",
+    "priority": "P3",
+    "page": 41,
+    "sources": [
+      "S61"
+    ],
+    "purpose": "Specialized cryogenic ultrastructural and molecular imaging.",
+    "geometryBrief": "Tall column, cryo-loading enclosure, racks and workstation.",
+    "behaviorBrief": "Reference cryo-image workflow and reconstruction; not necessary for all nerve-interface studies.",
+    "inputs": "Archived cryo-EM image set or projection fixture, acquisition metadata, pixel size and orientation data where applicable",
+    "outputs": "Indexed reference images, reconstruction volume when supported, voxel scale and source dataset provenance",
+    "acceptance": "Reconstruct supplied projections of a phantom with known handed orientation. Check landmark spacings and handedness against the reference and preserve the source image IDs.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "13-07",
+    "name": "Ultramicrotome",
+    "model": "Leica EM UC7",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 41,
+    "sources": [
+      "S59",
+      "S60"
+    ],
+    "purpose": "Prepare thin sections for electron microscopy.",
+    "geometryBrief": "Base, specimen arm, diamond knife holder, binoculars and controls.",
+    "behaviorBrief": "Section thickness and specimen geometry, with missing-section flags.",
+    "inputs": "Block ID, cutting axis, virtual section thickness, serial order and loss flags",
+    "outputs": "Thin-section child IDs, each with index, physical depth and collection status",
+    "acceptance": "Remove the middle section of a five-section fixture. Four collected IDs should remain while physical depth and serial numbering retain the gap.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "13-08",
+    "name": "High-pressure freezer",
+    "model": "Leica EM ICE",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 41,
+    "sources": [
+      "S56",
+      "S61"
+    ],
+    "purpose": "Represent specialized ultrastructure preservation.",
+    "geometryBrief": "Enclosure, sample loading area and control panel.",
+    "behaviorBrief": "Preservation method metadata; no real preparation steps.",
+    "inputs": "Virtual specimen ID, prior state and preservation-method record",
+    "outputs": "Preserved-specimen revision, timestamp, method and provenance",
+    "acceptance": "Apply a preservation event to a labeled specimen. The new revision should cite the input and method while preserving coordinates and leaving unspecified ultrastructure unknown.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "13-09",
+    "name": "Freeze substitution unit",
+    "model": "Leica EM AFS2",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 41,
+    "sources": [
+      "S59",
+      "S60"
+    ],
+    "purpose": "Represent post-freezing sample preparation.",
+    "geometryBrief": "Cryogenic chamber, holders and controls.",
+    "behaviorBrief": "Preparation state and provenance, no detailed chemistry.",
+    "inputs": "Preserved-specimen revision, abstract preparation event and provenance",
+    "outputs": "Post-substitution specimen revision with ordered preparation history",
+    "acceptance": "Pass the preserved output from 13-08 through the event. The resulting specimen should retain both method records in order and trace back to the same source ID.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "13-10",
+    "name": "High vacuum coater",
+    "model": "Leica EM ACE600",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 41,
+    "sources": [
+      "S56",
+      "S60"
+    ],
+    "purpose": "Coat selected specimens for EM imaging.",
+    "geometryBrief": "Vacuum chamber, hinged lid, deposition sources and panel.",
+    "behaviorBrief": "Conductive layer metadata and thickness; no unsupported effect on biological detail.",
+    "inputs": "Specimen surface ID, coating material, modeled film thickness (m) and coverage mask",
+    "outputs": "Coating-layer revision with thickness, coverage and parent specimen link",
+    "acceptance": "Use a planar coupon and a rectangular coverage mask. Measured film step should match prescribed thickness within mesh resolution, and the uncoated area should retain its original height.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "13-11",
+    "name": "Critical-point dryer",
+    "model": "Leica EM CPD300",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 42,
+    "sources": [
+      "S56",
+      "S60"
+    ],
+    "purpose": "Represent preparation of appropriate samples for SEM.",
+    "geometryBrief": "Chamber, fittings, gauge and controller.",
+    "behaviorBrief": "Drying state, shrinkage assumptions and sample lineage.",
+    "inputs": "Virtual specimen geometry, drying event and optional uniform shrinkage factor",
+    "outputs": "Dried specimen revision, transformed geometry when enabled, shrinkage assumption and parent ID",
+    "acceptance": "Use a cube with linear shrinkage factor s. Edge lengths should scale by s and volume by s³; with s equal to one the geometry should remain identical.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "13-12",
+    "name": "Glow discharge cleaner",
+    "model": "Pelco easiGlow 91000",
+    "evidence": "B",
+    "priority": "P3",
+    "page": 42,
+    "sources": [
+      "S60"
+    ],
+    "purpose": "Represent surface treatment of microscopy grids.",
+    "geometryBrief": "Small enclosure, vacuum chamber and control panel.",
+    "behaviorBrief": "Grid surface state; no operating chemistry.",
+    "inputs": "Microscopy grid ID, initial surface-state metadata and abstract treatment event",
+    "outputs": "Grid revision with updated treatment state, timestamp and original grid geometry",
+    "acceptance": "Apply the event to one of two virtual grids. Only that grid should receive the surface-state entry; mesh topology and scale should be preserved for both.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "13-13",
+    "name": "Cryostat",
+    "model": "Leica CM3050 (S variant to verify)",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 42,
+    "sources": [
+      "S58"
+    ],
+    "purpose": "Prepare frozen tissue sections for histology.",
+    "geometryBrief": "Cabinet, cold chamber, microtome controls and stage.",
+    "behaviorBrief": "Section plane and thickness; link sections to 3D sample.",
+    "inputs": "Frozen specimen volume, cutting-plane pose, section thickness and destination slide IDs",
+    "outputs": "Child section images, parent-volume transforms, slab depths and slide assignments",
+    "acceptance": "Cut through an oblique fiducial in a digital phantom. The section intercept should shift by the analytically expected amount with depth and map back to the parent line within voxel resolution.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "13-14",
+    "name": "Rotary microtome",
+    "model": "Thermo Scientific HM325A",
+    "evidence": "B",
+    "priority": "P2",
+    "page": 42,
+    "sources": [
+      "S32"
+    ],
+    "purpose": "Prepare routine tissue sections.",
+    "geometryBrief": "Handwheel, specimen holder, blade holder and section tray.",
+    "behaviorBrief": "Section geometry, thickness and serial index.",
+    "inputs": "Embedded virtual block, cutting orientation, thickness, starting index and collection list",
+    "outputs": "Serial section geometries, order, physical depth and block lineage",
+    "acceptance": "Generate a ribbon of equal-thickness sections from a calibrated block. Successive center depths should differ by the selected thickness, with unique indices and an unchanged parent reference.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  },
+  {
+    "id": "13-15",
+    "name": "Micro-CT",
+    "model": "Bruker SkyScan 1270",
+    "evidence": "B",
+    "priority": "P1",
+    "page": 42,
+    "sources": [
+      "S59"
+    ],
+    "purpose": "Inspect small specimens, implants and anatomical hard tissue.",
+    "geometryBrief": "Shielded chamber, rotary stage, source/detector geometry and console.",
+    "behaviorBrief": "Projection/reconstruction model or real CT data; voxel scale and artifacts explicit.",
+    "inputs": "Attenuation phantom or real projection set, projection geometry, angles and detector pitch",
+    "outputs": "CT volume, voxel spacing, reconstruction transform and artifact/coverage metadata",
+    "acceptance": "Project and reconstruct a synthetic two-bead phantom of known separation. Check center spacing against physical ground truth within reconstruction resolution and flag an intentionally incomplete rotation.",
+    "geometryStatus": "Planned",
+    "simulationStatus": "Planned",
+    "integrationStatus": "Planned"
+  }
+]

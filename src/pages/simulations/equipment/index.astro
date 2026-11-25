@@ -1,0 +1,68 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import {equipment, zones, sources, evidence, base, report, zoneId} from '../../../data/equipment';
+import '../../../styles/equipment.css';
+const statuses = [...new Set(equipment.map(row => row.geometryStatus))].sort();
+---
+<Layout pageTitle="Laboratory equipment register" subtitle="" description="Browse the neural interface laboratory's equipment, modeling plans, verification fixtures and integration roadmap.">
+  <div class="equipment">
+    <nav class="eq-nav" aria-label="Equipment resources"><a href="/simulations/">Simulations</a><a href={base+'roadmap/'}>Ecosystem build plan →</a><a href={report}>Reference volume (PDF)</a><a href={base+'catalogue.json'} download>Download register (JSON)</a></nav>
+    <p class="eq-lede">Find an instrument, see what it should do to a sample, and inspect the evidence needed to build and test it.</p>
+    <dl class="eq-totals">{[[equipment.length,'equipment records'],[zones.length,'research zones'],[Object.keys(sources).length,'source references']].map(([value,label])=><div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+    <form id="equipment-filter" aria-label="Filter equipment" hidden>
+      <label>Find equipment<input type="search" name="q" placeholder="Model, function or record ID" /></label>
+      <label>Research zone<select name="zone"><option value="">All zones</option>{zones.map(z=><option value={z.id}>{z.id} · {z.name}</option>)}</select></label>
+      <label>Priority<select name="priority"><option value="">All priorities</option><option>P1</option><option>P2</option><option>P3</option></select></label>
+      <label>Evidence<select name="evidence"><option value="">All grades</option>{Object.keys(evidence).map(k=><option>{k}</option>)}</select></label>
+      <label>Geometry<select name="geometry"><option value="">All stages</option>{statuses.map(s=><option>{s}</option>)}</select></label>
+      <button type="reset">Clear</button>
+    </form>
+    <details class="eq-key"><summary>How to read priorities, evidence and progress</summary>
+      <p>P1 supports the core workflow, P2 expands it, and P3 is specialized. Grade A points to technical documentation, B to a product family or installation, and C to a provisional candidate or original design. The grades come from the reference volume. Each record tracks its geometry, simulation and integration work independently.</p>
+    </details>
+    <p id="equipment-count" class="eq-meta" role="status">{equipment.length} of {equipment.length} records</p>
+    {zones.map(zone=><section class="eq-zone" data-zone={zone.id}>
+      <header><span class="eq-meta">Zone {zone.id}</span><h2>{zone.name}</h2></header>
+      <ul>{equipment.filter(r=>zoneId(r)===zone.id).map(r=><li class="eq-row" data-id={r.id} data-priority={r.priority} data-evidence={r.evidence} data-geometry={r.geometryStatus} data-terms={[r.id,r.name,r.model,r.purpose,zone.name].join(' ').toLowerCase()}>
+        <span class="eq-meta">{r.id}</span><div><a href={base+r.id+'/'}>{r.name}</a><span class="eq-model">{r.model}</span></div><span class="eq-grade" aria-label={r.priority+', evidence '+r.evidence}>{r.priority} · {r.evidence}</span>
+      </li>)}</ul>
+    </section>)}
+    <p id="no-equipment" hidden>No records match these filters. Clear a filter or try a model number.</p>
+  </div>
+</Layout>
+<script>
+  const form = document.querySelector<HTMLFormElement>('#equipment-filter')!;
+  const fields = ['q', 'zone', 'priority', 'evidence', 'geometry'];
+  const url = new URL(window.location.href);
+  for (const field of fields) {
+    const input = form.elements.namedItem(field) as HTMLInputElement | HTMLSelectElement;
+    input.value = url.searchParams.get(field) || '';
+  }
+  const sections = [...document.querySelectorAll<HTMLElement>('.eq-zone')];
+  const rows = [...document.querySelectorAll<HTMLElement>('.eq-row')];
+  function filter() {
+    const values = new FormData(form);
+    const tokens = String(values.get('q') || '').trim().toLowerCase().split(/\s+/).filter(Boolean);
+    for (const row of rows) {
+      row.hidden = !(tokens.every(token => row.dataset.terms!.includes(token)) &&
+        (!values.get('zone') || row.dataset.id!.startsWith(String(values.get('zone'))+'-')) &&
+        ['priority','evidence','geometry'].every(k => !values.get(k) || row.dataset[k] === values.get(k)));
+    }
+    for (const section of sections) section.hidden = !section.querySelector('.eq-row:not([hidden])');
+    const count = rows.filter(row => !row.hidden).length;
+    document.querySelector('#equipment-count')!.textContent = count+' of '+rows.length+' records';
+    document.querySelector<HTMLElement>('#no-equipment')!.hidden = count !== 0;
+    const next = new URL(window.location.href);
+    for (const field of fields) {
+      const value = String(values.get(field) || '');
+      if (value) next.searchParams.set(field,value);
+      else next.searchParams.delete(field);
+    }
+    history.replaceState(null, '', next);
+  }
+  form.hidden = false;
+  form.addEventListener('input', filter);
+  form.addEventListener('reset', () => setTimeout(filter, 0));
+  form.addEventListener('submit', e => {e.preventDefault(); filter();});
+  filter();
+</script>
