@@ -1,0 +1,35 @@
+name: Equipment 04-01 browser verification
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    paths:
+      - 'src/pages/simulations/equipment/04-01/**'
+      - 'src/lib/equipment/04-01*'
+      - 'public/equipment-assets/04-01/**'
+      - 'tests/equipment-04-01*'
+      - '.github/workflows/equipment-04-01.yml'
+jobs:
+  verify:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: RIE_REQUIRE_BROWSER=1 node --test tests/equipment-04-01-browser.mjs
+  production:
+    if: github.event.action == 'closed' && github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: RIE_REQUIRE_BROWSER=1 RIE_PRODUCTION_ORIGIN=https://buildthesimulation.com node --test tests/equipment-04-01-browser.mjs
