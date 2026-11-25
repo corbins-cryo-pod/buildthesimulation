@@ -71,9 +71,16 @@
     "inputs": "Silicon geometry, trench mask, cycle count and calibrated depth/scallop profile",
     "outputs": "Deep trench geometry with sidewall texture, depth and residual mask",
     "acceptance": "Run a constant-depth-per-cycle fixture. Cross-section depth must equal summed removal and the resolved wall must show the configured number of periodic scallops.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Provisional scaled glTF",
+    "simulationStatus": "Numerical fixture verified",
+    "integrationStatus": "Simulator implemented; production verification pending",
+    "simulator": "/simulations/equipment/04-03/simulator/",
+    "related": [
+      [
+        "Open simulator – Bosch trench experiment",
+        "/simulations/equipment/04-03/simulator/"
+      ]
+    ]
   },
   {
     "id": "04-04",

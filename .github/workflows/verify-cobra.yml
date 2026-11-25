@@ -1,0 +1,48 @@
+name: Verify Cobra DRIE equipment
+on:
+  pull_request:
+    paths:
+      - 'public/equipment/04-03/**'
+      - 'src/lib/equipment/04-03/**'
+      - 'src/pages/simulations/equipment/04-03/**'
+      - 'tests/equipment-04-03.mjs'
+      - 'scripts/verify-cobra-browser.mjs'
+      - '.github/workflows/verify-cobra.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'public/equipment/04-03/**'
+      - 'src/lib/equipment/04-03/**'
+      - 'src/pages/simulations/equipment/04-03/**'
+      - '.github/workflows/verify-cobra.yml'
+  workflow_dispatch:
+jobs:
+  verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - name: Verify local production build in Chromium
+        env:
+          COBRA_QA_DIR: cobra-qa
+        run: node --test scripts/verify-cobra-browser.mjs
+      - name: Verify deployed simulator
+        if: github.event_name == 'push'
+        env:
+          COBRA_URL: https://buildthesimulation.com
+          COBRA_QA_DIR: cobra-production-qa
+        run: node --test scripts/verify-cobra-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cobra-browser-evidence
+          path: |
+            cobra-qa
+            cobra-production-qa
