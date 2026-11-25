@@ -1,0 +1,52 @@
+{
+  "schema": "bts.surface-preparation.v1",
+  "instrument": "02-09",
+  "configuration": "YES 310TA / EPFL CMi HMDS",
+  "provenance": "Simulated, not measured",
+  "loadedId": "CP-A",
+  "resistId": "virtual-positive-resist",
+  "coupons": [
+    {
+      "id": "CP-A",
+      "surface": "silicon-native-oxide",
+      "diameter_mm": 100,
+      "coated": false,
+      "revision": 1,
+      "history": [
+        {
+          "eventId": "CP-A-rev-1",
+          "type": "HMDS-vapor-prime",
+          "recipe": "EPFL-310TA-01",
+          "temperature_C": 150,
+          "exposure_s": 300,
+          "total_s": 900,
+          "provenance": "Simulated event. Prime cycle nominal values from EPFL CMi; dehydration-only duration not established."
+        }
+      ],
+      "surfaceState": "primed",
+      "parentRevision": 0,
+      "adhesion": {
+        "status": "unknown",
+        "reason": "No matching adhesion calibration for this surface/resist/recipe."
+      }
+    },
+    {
+      "id": "CP-B",
+      "surface": "silicon-native-oxide",
+      "diameter_mm": 100,
+      "coated": false,
+      "revision": 0,
+      "history": [],
+      "surfaceState": "untreated"
+    }
+  ],
+  "event": {
+    "eventId": "CP-A-rev-1",
+    "type": "HMDS-vapor-prime",
+    "recipe": "EPFL-310TA-01",
+    "temperature_C": 150,
+    "exposure_s": 300,
+    "total_s": 900,
+    "provenance": "Simulated event. Prime cycle nominal values from EPFL CMi; dehydration-only duration not established."
+  }
+}
