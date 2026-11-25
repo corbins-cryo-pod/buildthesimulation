@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {verify,expose,EXAMPLE} from '../public/equipment/02-03/solver.mjs';
+for(const row of verify())test('MLA 150: '+row.test,()=>assert.ok(row.pass,JSON.stringify(row)));
+test('MLA150 provenance and input immutability',()=>{const j=structuredClone(EXAMPLE),before=JSON.stringify(j),r=expose(j);assert.equal(JSON.stringify(j),before);assert.equal(r.sampleId,j.sampleId);assert.equal(r.revision,j.parentRevision+1);assert.equal(r.grid.dose.length,r.grid.nx*r.grid.ny);assert.equal(r.fields.length,2);assert.equal(r.job.shapes[0].id,'trace-01')});
