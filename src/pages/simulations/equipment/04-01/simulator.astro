@@ -33,8 +33,7 @@ const manual='https://atc.zju.edu.cn/upload/file/20240426/1714122023138763.pdf';
         <label>Lateral / vertical rate<input id="lateral" type="number" min="0" max="1" step=".05" value="0"/></label>
       </div>
       <h3>Layer stack (top to bottom)</h3>
-      <label>Layer data: JSON array (1–4 layers)<textarea id="layers" rows="5" spellcheck="false">[{"material":"Si3N4","thicknessNm":100,"rateNmMin":10},
-{"material":"SiO2 (illustrative stop)","thicknessNm":250,"rateNmMin":0}]</textarea></label>
+      <label>Layer data: JSON array (1–4 layers)<textarea id="layers" rows="5" spellcheck="false">{JSON.stringify([{material:"Si3N4",thicknessNm:100,rateNmMin:10},{material:"SiO2 (illustrative stop)",thicknessNm:250,rateNmMin:0}],null,2)}</textarea></label>
       <p class="rie-small">Rate calibration: Yale Oxford-80 family example, not a measured calibration for Stanford's installed tool. Edit rates to model your own measured process; RF power, gas and pressure are metadata, not independent rate predictors.</p>
       <label>Calibration / provenance<textarea id="calibration" rows="3">Yale Oxford-80 family approximate SiN rate 10 nm/min; PMMA 5–10 nm/min midpoint; oxide stop rate assumed, not calibrated on selected Stanford tool.</textarea></label>
       <div class="rie-buttons"><button id="rie-run" class="rie-primary">Run example / etch</button><button id="rie-reset">Restore example</button></div>
