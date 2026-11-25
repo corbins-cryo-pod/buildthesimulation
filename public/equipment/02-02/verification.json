@@ -1,0 +1,57 @@
+{
+  "execution": "Exact repository solver and eight test bodies executed in JavaScript isolate with assertion shim; Node test runner, site build and browser checks are separate CI jobs.",
+  "cases": [
+    {
+      "name": "Independent 2 × 2 mm aperture, 25 mW/cm² × 4 s: 400 cells at 100 mJ/cm², 4 mm²",
+      "outcome": "PASS"
+    },
+    {
+      "name": "Known 1 mm stage translation shifts pattern left 10 pixels; dose/area conserved",
+      "outcome": "PASS"
+    },
+    {
+      "name": "Record acceptance: valid fit and centered edge, rejection beyond travel preserves input",
+      "outcome": "PASS"
+    },
+    {
+      "name": "Fit rejects overhang and uncovered assumed holes; interlocks refuse exposure",
+      "outcome": "PASS"
+    },
+    {
+      "name": "Control response: doubling time doubles dose, geometry unchanged",
+      "outcome": "PASS"
+    },
+    {
+      "name": "Analytic rigid transform: 90° test outside operating span and round-trip within span",
+      "outcome": "PASS"
+    },
+    {
+      "name": "Mask validation, revision and example schema",
+      "outcome": "PASS"
+    },
+    {
+      "name": "Geometry source uses mm, chuck and mask are documented scale and stable pivots",
+      "outcome": "PASS"
+    }
+  ],
+  "reference": {
+    "areaMm2": 4,
+    "peakDoseMjCm2": 100,
+    "litPixels": 400,
+    "shiftedAreaMm2": 4,
+    "shiftedColumns": [
+      60,
+      79
+    ],
+    "edge": true,
+    "overTravel": "travel",
+    "overTravelOutput": null,
+    "default": {
+      "exposedPixels": 1972,
+      "exposedAreaMm2": 19.720000000000002,
+      "exposedFraction": 0.07703125,
+      "maxDoseMjCm2": 100
+    }
+  },
+  "limits": "No experimental resist/diffraction data; enclosure, hole layout and Z/transport stroke are not measured."
+}
