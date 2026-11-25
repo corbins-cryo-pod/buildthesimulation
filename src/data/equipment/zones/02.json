@@ -69,9 +69,20 @@
     "inputs": "Vector pattern, write-field grid, sampling pitch, stage offsets and resist revision",
     "outputs": "Stitched exposure map with field coordinates and dose provenance",
     "acceptance": "Write a line across two virtual fields. Zero offset joins the line continuously; a programmed lateral offset appears only at the seam to within one pixel.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Reference-informed metric glTF; internal dimensions inferred",
+    "simulationStatus": "Two-stripe commanded dose model; analytic acceptance checks passed",
+    "integrationStatus": "Simulator route and exposure-revision export; browser/deployment QA pending",
+    "simulator": "/simulations/equipment/02-03/simulator/",
+    "related": [
+      [
+        "MLA 150 operator guide, revision 4",
+        "https://www.bu.edu/photonics/files/2024/02/User_manual-MLA-150-01613.pdf"
+      ],
+      [
+        "Manufacturer technical data",
+        "https://heidelberg-instruments.com/product/mla150/"
+      ]
+    ]
   },
   {
     "id": "02-04",
