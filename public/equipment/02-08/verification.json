@@ -88,7 +88,7 @@
       "expected": "711 × 483 mm",
       "actual": [
         711,
-        182,
+        93,
         483
       ],
       "tolerance": "exact by construction",
@@ -104,19 +104,19 @@
     {
       "test": "Component IDs and parent references",
       "expected": "unique; valid",
-      "actual": 74,
+      "actual": 77,
       "tolerance": "exact",
       "outcome": "PASS"
     },
     {
       "test": "GLB header and length",
       "expected": "glTF v2",
-      "actual": 63448,
+      "actual": 63848,
       "tolerance": "exact",
       "outcome": "PASS"
     }
   ],
-  "componentCount": 74,
+  "componentCount": 77,
   "default": {
     "centerUm": 1.6,
     "meanUm": 1.6154607310880496,

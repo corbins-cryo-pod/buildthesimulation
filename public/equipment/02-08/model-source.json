@@ -109,12 +109,12 @@
       "mat": "steel",
       "p": [
         0,
-        103,
+        58.5,
         0
       ],
       "size": [
         711,
-        182,
+        93,
         483
       ],
       "parent": "instrument",
@@ -129,12 +129,12 @@
       "shape": "box",
       "mat": "edge",
       "p": [
-        0,
+        -177.75,
         196,
         0
       ],
       "size": [
-        711,
+        355.5,
         4,
         483
       ],
@@ -1593,6 +1593,69 @@
         1,
         7
       ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "left_upper_housing",
+      "p": [
+        -177.75,
+        149.5,
+        0
+      ],
+      "size": [
+        355.5,
+        89,
+        483
+      ],
+      "shape": "box",
+      "mat": "steel",
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "right_upper_housing",
+      "p": [
+        177.75,
+        149.5,
+        -32.25
+      ],
+      "size": [
+        355.5,
+        89,
+        418.5
+      ],
+      "shape": "box",
+      "mat": "steel",
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "right_upper_deck",
+      "p": [
+        177.75,
+        196,
+        -32.25
+      ],
+      "size": [
+        355.5,
+        4,
+        418.5
+      ],
+      "shape": "box",
+      "mat": "steel",
       "parent": "instrument",
       "rot": [
         0,
