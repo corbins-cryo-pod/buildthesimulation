@@ -1,0 +1,144 @@
+{
+  "schema": "bts.mla150.exposure.v1",
+  "deviceId": "02-03",
+  "kind": "simulated-commanded-dose",
+  "sampleId": "MLA-COUPON-001",
+  "parentRevision": 0,
+  "revision": 1,
+  "resist": "virtual-positive-resist",
+  "job": {
+    "sampleId": "MLA-COUPON-001",
+    "parentRevision": 0,
+    "resist": "virtual-positive-resist",
+    "coupon_mm": 10,
+    "thickness_mm": 0.5,
+    "field_um": 20,
+    "height_um": 20,
+    "pitch_um": 5,
+    "dose_mJ_cm2": 80,
+    "offset_um": 0,
+    "overlay_um": 0,
+    "shapes": [
+      {
+        "id": "line",
+        "x": 0,
+        "y": 5,
+        "w": 40,
+        "h": 5,
+        "level": 127
+      }
+    ]
+  },
+  "coordinateFrame": {
+    "origin": "lower-left of local coupon-centered nominal write window",
+    "u": "machine Y, left to right",
+    "v": "machine X, back to front; displayed down",
+    "unit": "um",
+    "pixelCenters": true
+  },
+  "grid": {
+    "nx": 8,
+    "ny": 4,
+    "pitch_um": 5,
+    "order": "row-major; u fastest; v increasing",
+    "units": "mJ/cm2",
+    "dose": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "nominal": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "fields": [
+    {
+      "id": "stripe-1",
+      "u0_um": 0,
+      "u1_um": 20,
+      "vOffset_um": 0
+    },
+    {
+      "id": "stripe-2",
+      "u0_um": 20,
+      "u1_um": 40,
+      "vOffset_um": 0
+    }
+  ],
+  "metrics": {
+    "peakDose_mJ_cm2": 80,
+    "exposedArea_um2": 200,
+    "integratedEnergy_mJ": 0.00016,
+    "seamLeftCentroid_um": 7.5,
+    "seamRightCentroid_um": 7.5,
+    "seamDelta_um": 0
+  },
+  "history": [
+    {
+      "operation": "maskless exposure",
+      "source": "ideal vector raster, no optical PSF or resist development",
+      "wavelength_nm": 405,
+      "writeMode": "II"
+    }
+  ]
+}
