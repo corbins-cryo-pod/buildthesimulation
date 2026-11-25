@@ -1,0 +1,32 @@
+{
+  "schema": "bts.sputter.rate-map.v1",
+  "id": "DEMO-AL-001",
+  "material": "Al",
+  "mode": "DC",
+  "provenance": "Synthetic witness map, not measured. Centre 0.5 nm/s chosen to match WashU's general typical rate only.",
+  "source": "https://imse.washu.edu/facilities/micronanofab/deposition.html",
+  "pressure_mTorr": 5,
+  "power_W": 100,
+  "axis_mm": [
+    -75,
+    0,
+    75
+  ],
+  "rates_nm_s": [
+    [
+      0.42,
+      0.46,
+      0.42
+    ],
+    [
+      0.46,
+      0.5,
+      0.46
+    ],
+    [
+      0.42,
+      0.46,
+      0.42
+    ]
+  ]
+}

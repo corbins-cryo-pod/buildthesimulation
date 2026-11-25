@@ -1,0 +1,2947 @@
+{
+  "version": "03-03.geometry.v1",
+  "units": "m",
+  "axes": "+Y up, +Z front",
+  "configuration": "WashU legacy enclosed PVD 75 RF/DC; family dimensions from 2012 manual; internal arrangement inferred",
+  "known": {
+    "cabinet": [
+      1.194,
+      1.905,
+      0.889
+    ],
+    "chamber": [
+      0.356,
+      0.61,
+      0.356
+    ],
+    "sampleLimit": 0.2032,
+    "targetDiameterAssumed": 0.0762
+  },
+  "notes": "Closed envelope nominal excludes keyboard, connectors and feet; chamber internal width/depth 356 mm per manual (manual text has conflicting inch transcription). Internal mounts, target count, travel, vent layout, door pivot and external details are inferred, not measured. Simplified rectangular representation of D-shaped chamber; stage faces down, source faces up.",
+  "palette": {
+    "cabinet": [
+      0.69,
+      0.71,
+      0.72,
+      0,
+      0.54
+    ],
+    "trim": [
+      0.42,
+      0.45,
+      0.47,
+      0.3,
+      0.55
+    ],
+    "dark": [
+      0.045,
+      0.055,
+      0.062,
+      0,
+      0.45
+    ],
+    "steel": [
+      0.58,
+      0.64,
+      0.68,
+      0.78,
+      0.32
+    ],
+    "aluminum": [
+      0.76,
+      0.78,
+      0.8,
+      0.65,
+      0.32
+    ],
+    "rubber": [
+      0.03,
+      0.035,
+      0.04,
+      0,
+      0.82
+    ],
+    "glass": [
+      0.13,
+      0.29,
+      0.35,
+      0.15,
+      0.18
+    ],
+    "screen": [
+      0.14,
+      0.32,
+      0.46,
+      0,
+      0.25
+    ],
+    "blue": [
+      0.035,
+      0.26,
+      0.56,
+      0,
+      0.45
+    ],
+    "red": [
+      0.77,
+      0.035,
+      0.035,
+      0,
+      0.44
+    ],
+    "yellow": [
+      0.93,
+      0.68,
+      0.05,
+      0,
+      0.55
+    ],
+    "green": [
+      0.1,
+      0.64,
+      0.27,
+      0,
+      0.45
+    ],
+    "copper": [
+      0.65,
+      0.32,
+      0.13,
+      0.75,
+      0.4
+    ],
+    "wafer": [
+      0.27,
+      0.36,
+      0.47,
+      0.63,
+      0.25
+    ],
+    "gold": [
+      0.82,
+      0.62,
+      0.27,
+      0.7,
+      0.36
+    ],
+    "ceramic": [
+      0.89,
+      0.86,
+      0.76,
+      0,
+      0.6
+    ]
+  },
+  "nodes": [
+    {
+      "name": "base_plinth",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0,
+        0.05,
+        0
+      ],
+      "scale": [
+        1.194,
+        0.1,
+        0.889
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "top_header",
+      "shape": "box",
+      "mat": "cabinet",
+      "position": [
+        0,
+        1.855,
+        0
+      ],
+      "scale": [
+        1.194,
+        0.1,
+        0.889
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "left_outer_side",
+      "shape": "box",
+      "mat": "cabinet",
+      "position": [
+        -0.585,
+        0.98,
+        0
+      ],
+      "scale": [
+        0.024,
+        1.65,
+        0.86
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "center_partition",
+      "shape": "box",
+      "mat": "cabinet",
+      "position": [
+        0.025,
+        0.98,
+        0
+      ],
+      "scale": [
+        0.027,
+        1.65,
+        0.86
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "right_outer_side",
+      "shape": "box",
+      "mat": "cabinet",
+      "position": [
+        0.585,
+        0.98,
+        0
+      ],
+      "scale": [
+        0.024,
+        1.65,
+        0.86
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "rear_panel",
+      "shape": "box",
+      "mat": "cabinet",
+      "position": [
+        0,
+        1.01,
+        -0.431
+      ],
+      "scale": [
+        1.17,
+        1.68,
+        0.027
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "left_lower_front",
+      "shape": "box",
+      "mat": "cabinet",
+      "position": [
+        -0.282,
+        0.38,
+        0.43
+      ],
+      "scale": [
+        0.586,
+        0.56,
+        0.025
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "right_lower_front",
+      "shape": "box",
+      "mat": "cabinet",
+      "position": [
+        0.306,
+        0.41,
+        0.43
+      ],
+      "scale": [
+        0.536,
+        0.62,
+        0.025
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "left_chamber_support",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        -0.28,
+        0.71,
+        -0.025
+      ],
+      "scale": [
+        0.56,
+        0.045,
+        0.75
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "right_console_front",
+      "shape": "box",
+      "mat": "cabinet",
+      "position": [
+        0.306,
+        1.24,
+        0.415
+      ],
+      "scale": [
+        0.536,
+        1.02,
+        0.055
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "monitor_recess",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.306,
+        1.4,
+        0.447
+      ],
+      "scale": [
+        0.43,
+        0.4,
+        0.012
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "screen_bezel",
+      "shape": "box",
+      "mat": "dark",
+      "position": [
+        0.306,
+        1.43,
+        0.466
+      ],
+      "scale": [
+        0.408,
+        0.3,
+        0.048
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "screen_display",
+      "shape": "box",
+      "mat": "screen",
+      "position": [
+        0.306,
+        1.43,
+        0.493
+      ],
+      "scale": [
+        0.365,
+        0.252,
+        0.008
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "screen_status_0",
+      "shape": "box",
+      "mat": "green",
+      "position": [
+        0.17099999999999999,
+        1.49,
+        0.499
+      ],
+      "scale": [
+        0.042,
+        0.022,
+        0.005
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "screen_status_1",
+      "shape": "box",
+      "mat": "blue",
+      "position": [
+        0.22399999999999998,
+        1.49,
+        0.499
+      ],
+      "scale": [
+        0.042,
+        0.022,
+        0.005
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "screen_status_2",
+      "shape": "box",
+      "mat": "blue",
+      "position": [
+        0.27699999999999997,
+        1.49,
+        0.499
+      ],
+      "scale": [
+        0.042,
+        0.022,
+        0.005
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "screen_status_3",
+      "shape": "box",
+      "mat": "blue",
+      "position": [
+        0.32999999999999996,
+        1.49,
+        0.499
+      ],
+      "scale": [
+        0.042,
+        0.022,
+        0.005
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "screen_status_4",
+      "shape": "box",
+      "mat": "blue",
+      "position": [
+        0.383,
+        1.49,
+        0.499
+      ],
+      "scale": [
+        0.042,
+        0.022,
+        0.005
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "screen_status_5",
+      "shape": "box",
+      "mat": "blue",
+      "position": [
+        0.436,
+        1.49,
+        0.499
+      ],
+      "scale": [
+        0.042,
+        0.022,
+        0.005
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "screen_readout_0",
+      "shape": "box",
+      "mat": "aluminum",
+      "position": [
+        0.305,
+        1.43,
+        0.499
+      ],
+      "scale": [
+        0.28,
+        0.012,
+        0.004
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "screen_readout_1",
+      "shape": "box",
+      "mat": "aluminum",
+      "position": [
+        0.305,
+        1.38,
+        0.499
+      ],
+      "scale": [
+        0.28,
+        0.012,
+        0.004
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "screen_readout_2",
+      "shape": "box",
+      "mat": "aluminum",
+      "position": [
+        0.305,
+        1.3299999999999998,
+        0.499
+      ],
+      "scale": [
+        0.28,
+        0.012,
+        0.004
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "keyboard_shelf",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.306,
+        1.16,
+        0.505
+      ],
+      "scale": [
+        0.38,
+        0.026,
+        0.15
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "keyboard",
+      "shape": "box",
+      "mat": "dark",
+      "position": [
+        0.306,
+        1.183,
+        0.505
+      ],
+      "scale": [
+        0.34,
+        0.026,
+        0.125
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_0_0",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.16,
+        1.199,
+        0.463
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_0_1",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.184,
+        1.199,
+        0.463
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_0_2",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.20800000000000002,
+        1.199,
+        0.463
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_0_3",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.232,
+        1.199,
+        0.463
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_0_4",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.256,
+        1.199,
+        0.463
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_0_5",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.28,
+        1.199,
+        0.463
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_0_6",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.30400000000000005,
+        1.199,
+        0.463
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_0_7",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.328,
+        1.199,
+        0.463
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_0_8",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.352,
+        1.199,
+        0.463
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_0_9",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.376,
+        1.199,
+        0.463
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_0_10",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.4,
+        1.199,
+        0.463
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_0_11",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.42400000000000004,
+        1.199,
+        0.463
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_0_12",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.44800000000000006,
+        1.199,
+        0.463
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_1_0",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.16,
+        1.199,
+        0.48800000000000004
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_1_1",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.184,
+        1.199,
+        0.48800000000000004
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_1_2",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.20800000000000002,
+        1.199,
+        0.48800000000000004
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_1_3",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.232,
+        1.199,
+        0.48800000000000004
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_1_4",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.256,
+        1.199,
+        0.48800000000000004
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_1_5",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.28,
+        1.199,
+        0.48800000000000004
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_1_6",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.30400000000000005,
+        1.199,
+        0.48800000000000004
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_1_7",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.328,
+        1.199,
+        0.48800000000000004
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_1_8",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.352,
+        1.199,
+        0.48800000000000004
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_1_9",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.376,
+        1.199,
+        0.48800000000000004
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_1_10",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.4,
+        1.199,
+        0.48800000000000004
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_1_11",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.42400000000000004,
+        1.199,
+        0.48800000000000004
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_1_12",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.44800000000000006,
+        1.199,
+        0.48800000000000004
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_2_0",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.16,
+        1.199,
+        0.513
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_2_1",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.184,
+        1.199,
+        0.513
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_2_2",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.20800000000000002,
+        1.199,
+        0.513
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_2_3",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.232,
+        1.199,
+        0.513
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_2_4",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.256,
+        1.199,
+        0.513
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_2_5",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.28,
+        1.199,
+        0.513
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_2_6",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.30400000000000005,
+        1.199,
+        0.513
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_2_7",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.328,
+        1.199,
+        0.513
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_2_8",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.352,
+        1.199,
+        0.513
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_2_9",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.376,
+        1.199,
+        0.513
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_2_10",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.4,
+        1.199,
+        0.513
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_2_11",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.42400000000000004,
+        1.199,
+        0.513
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_2_12",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.44800000000000006,
+        1.199,
+        0.513
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_3_0",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.16,
+        1.199,
+        0.538
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_3_1",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.184,
+        1.199,
+        0.538
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_3_2",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.20800000000000002,
+        1.199,
+        0.538
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_3_3",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.232,
+        1.199,
+        0.538
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_3_4",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.256,
+        1.199,
+        0.538
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_3_5",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.28,
+        1.199,
+        0.538
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_3_6",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.30400000000000005,
+        1.199,
+        0.538
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_3_7",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.328,
+        1.199,
+        0.538
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_3_8",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.352,
+        1.199,
+        0.538
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_3_9",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.376,
+        1.199,
+        0.538
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_3_10",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.4,
+        1.199,
+        0.538
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_3_11",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.42400000000000004,
+        1.199,
+        0.538
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "key_3_12",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.44800000000000006,
+        1.199,
+        0.538
+      ],
+      "scale": [
+        0.018,
+        0.006,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "rack_handle",
+      "shape": "box",
+      "mat": "dark",
+      "position": [
+        0.074,
+        0.94,
+        0.453
+      ],
+      "scale": [
+        0.023,
+        0.12,
+        0.012
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "lower_handle",
+      "shape": "box",
+      "mat": "dark",
+      "position": [
+        0.076,
+        0.48,
+        0.45
+      ],
+      "scale": [
+        0.023,
+        0.12,
+        0.015
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "emergency_stop_ring",
+      "shape": "cylinder",
+      "mat": "yellow",
+      "position": [
+        -0.075,
+        0.72,
+        0.454
+      ],
+      "scale": [
+        0.064,
+        0.012,
+        0.064
+      ],
+      "parent": null,
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "emergency_stop",
+      "shape": "cylinder",
+      "mat": "red",
+      "position": [
+        -0.075,
+        0.72,
+        0.47
+      ],
+      "scale": [
+        0.046,
+        0.029,
+        0.046
+      ],
+      "parent": null,
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "header_badge_pvd75",
+      "shape": "box",
+      "mat": "blue",
+      "position": [
+        -0.39,
+        1.856,
+        0.448
+      ],
+      "scale": [
+        0.27,
+        0.043,
+        0.005
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "header_badge_kjl",
+      "shape": "box",
+      "mat": "blue",
+      "position": [
+        0.4,
+        1.856,
+        0.448
+      ],
+      "scale": [
+        0.28,
+        0.026,
+        0.005
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "level_foot_-0.53_-0.34",
+      "shape": "cylinder",
+      "mat": "rubber",
+      "position": [
+        -0.53,
+        0.018,
+        -0.34
+      ],
+      "scale": [
+        0.07,
+        0.036,
+        0.07
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "level_foot_-0.53_0.34",
+      "shape": "cylinder",
+      "mat": "rubber",
+      "position": [
+        -0.53,
+        0.018,
+        0.34
+      ],
+      "scale": [
+        0.07,
+        0.036,
+        0.07
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "level_foot_0.53_-0.34",
+      "shape": "cylinder",
+      "mat": "rubber",
+      "position": [
+        0.53,
+        0.018,
+        -0.34
+      ],
+      "scale": [
+        0.07,
+        0.036,
+        0.07
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "level_foot_0.53_0.34",
+      "shape": "cylinder",
+      "mat": "rubber",
+      "position": [
+        0.53,
+        0.018,
+        0.34
+      ],
+      "scale": [
+        0.07,
+        0.036,
+        0.07
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "chamber_floor",
+      "shape": "box",
+      "mat": "steel",
+      "position": [
+        -0.28,
+        0.89,
+        0.04
+      ],
+      "scale": [
+        0.39,
+        0.026,
+        0.39
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "chamber_roof",
+      "shape": "box",
+      "mat": "steel",
+      "position": [
+        -0.28,
+        1.52,
+        0.04
+      ],
+      "scale": [
+        0.39,
+        0.026,
+        0.39
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "chamber_back",
+      "shape": "box",
+      "mat": "steel",
+      "position": [
+        -0.28,
+        1.205,
+        -0.145
+      ],
+      "scale": [
+        0.39,
+        0.61,
+        0.025
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "chamber_side_-0.47000000000000003",
+      "shape": "box",
+      "mat": "steel",
+      "position": [
+        -0.47000000000000003,
+        1.205,
+        0.04
+      ],
+      "scale": [
+        0.025,
+        0.61,
+        0.39
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "chamber_side_-0.09000000000000002",
+      "shape": "box",
+      "mat": "steel",
+      "position": [
+        -0.09000000000000002,
+        1.205,
+        0.04
+      ],
+      "scale": [
+        0.025,
+        0.61,
+        0.39
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "front_flange_top",
+      "shape": "box",
+      "mat": "aluminum",
+      "position": [
+        -0.28,
+        1.505,
+        0.245
+      ],
+      "scale": [
+        0.4,
+        0.035,
+        0.045
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "front_flange_bottom",
+      "shape": "box",
+      "mat": "aluminum",
+      "position": [
+        -0.28,
+        0.905,
+        0.245
+      ],
+      "scale": [
+        0.4,
+        0.035,
+        0.045
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "front_flange_-0.47000000000000003",
+      "shape": "box",
+      "mat": "aluminum",
+      "position": [
+        -0.47000000000000003,
+        1.205,
+        0.245
+      ],
+      "scale": [
+        0.035,
+        0.6,
+        0.045
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "front_flange_-0.09000000000000002",
+      "shape": "box",
+      "mat": "aluminum",
+      "position": [
+        -0.09000000000000002,
+        1.205,
+        0.245
+      ],
+      "scale": [
+        0.035,
+        0.6,
+        0.045
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "door_pivot",
+      "shape": null,
+      "mat": null,
+      "position": [
+        -0.56,
+        1.235,
+        0.441
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "outer_door",
+      "shape": "box",
+      "mat": "cabinet",
+      "position": [
+        0.278,
+        0,
+        0.004
+      ],
+      "scale": [
+        0.55,
+        0.99,
+        0.032
+      ],
+      "parent": "door_pivot",
+      "rotation": null
+    },
+    {
+      "name": "door_window_plate",
+      "shape": "box",
+      "mat": "dark",
+      "position": [
+        0.266,
+        0,
+        0.026
+      ],
+      "scale": [
+        0.275,
+        0.41,
+        0.016
+      ],
+      "parent": "door_pivot",
+      "rotation": null
+    },
+    {
+      "name": "viewport_flange",
+      "shape": "box",
+      "mat": "steel",
+      "position": [
+        0.266,
+        -0.03,
+        0.04
+      ],
+      "scale": [
+        0.13,
+        0.2,
+        0.016
+      ],
+      "parent": "door_pivot",
+      "rotation": null
+    },
+    {
+      "name": "viewport_glass",
+      "shape": "box",
+      "mat": "glass",
+      "position": [
+        0.266,
+        -0.03,
+        0.053
+      ],
+      "scale": [
+        0.091,
+        0.142,
+        0.012
+      ],
+      "parent": "door_pivot",
+      "rotation": null
+    },
+    {
+      "name": "viewport_bolt_0.21_-0.107",
+      "shape": "cylinder",
+      "mat": "aluminum",
+      "position": [
+        0.21,
+        -0.107,
+        0.057
+      ],
+      "scale": [
+        0.018,
+        0.012,
+        0.018
+      ],
+      "parent": "door_pivot",
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "viewport_bolt_0.21_0.048",
+      "shape": "cylinder",
+      "mat": "aluminum",
+      "position": [
+        0.21,
+        0.048,
+        0.057
+      ],
+      "scale": [
+        0.018,
+        0.012,
+        0.018
+      ],
+      "parent": "door_pivot",
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "viewport_bolt_0.32_-0.107",
+      "shape": "cylinder",
+      "mat": "aluminum",
+      "position": [
+        0.32,
+        -0.107,
+        0.057
+      ],
+      "scale": [
+        0.018,
+        0.012,
+        0.018
+      ],
+      "parent": "door_pivot",
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "viewport_bolt_0.32_0.048",
+      "shape": "cylinder",
+      "mat": "aluminum",
+      "position": [
+        0.32,
+        0.048,
+        0.057
+      ],
+      "scale": [
+        0.018,
+        0.012,
+        0.018
+      ],
+      "parent": "door_pivot",
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "door_handle_recess",
+      "shape": "box",
+      "mat": "dark",
+      "position": [
+        0.512,
+        -0.12,
+        0.028
+      ],
+      "scale": [
+        0.032,
+        0.12,
+        0.014
+      ],
+      "parent": "door_pivot",
+      "rotation": null
+    },
+    {
+      "name": "door_handle",
+      "shape": "box",
+      "mat": "trim",
+      "position": [
+        0.512,
+        -0.12,
+        0.041
+      ],
+      "scale": [
+        0.014,
+        0.095,
+        0.014
+      ],
+      "parent": "door_pivot",
+      "rotation": null
+    },
+    {
+      "name": "vacuum_door_inner",
+      "shape": "box",
+      "mat": "aluminum",
+      "position": [
+        0.28,
+        -0.03,
+        -0.109
+      ],
+      "scale": [
+        0.413,
+        0.65,
+        0.036
+      ],
+      "parent": "door_pivot",
+      "rotation": null
+    },
+    {
+      "name": "door_seal",
+      "shape": "box",
+      "mat": "rubber",
+      "position": [
+        0.28,
+        -0.03,
+        -0.133
+      ],
+      "scale": [
+        0.394,
+        0.628,
+        0.008
+      ],
+      "parent": "door_pivot",
+      "rotation": null
+    },
+    {
+      "name": "hinge_-0.34",
+      "shape": "cylinder",
+      "mat": "steel",
+      "position": [
+        0.012,
+        -0.34,
+        0.018
+      ],
+      "scale": [
+        0.044,
+        0.1,
+        0.044
+      ],
+      "parent": "door_pivot",
+      "rotation": null
+    },
+    {
+      "name": "hinge_0.34",
+      "shape": "cylinder",
+      "mat": "steel",
+      "position": [
+        0.012,
+        0.34,
+        0.018
+      ],
+      "scale": [
+        0.044,
+        0.1,
+        0.044
+      ],
+      "parent": "door_pivot",
+      "rotation": null
+    },
+    {
+      "name": "platen_shaft",
+      "shape": "cylinder",
+      "mat": "steel",
+      "position": [
+        -0.28,
+        1.47,
+        0.04
+      ],
+      "scale": [
+        0.052,
+        0.09,
+        0.052
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "stage_pivot",
+      "shape": null,
+      "mat": null,
+      "position": [
+        -0.28,
+        1.39,
+        0.04
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "substrate_platen",
+      "shape": "cylinder",
+      "mat": "aluminum",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.21,
+        0.018,
+        0.21
+      ],
+      "parent": "stage_pivot",
+      "rotation": null
+    },
+    {
+      "name": "sample_wafer",
+      "shape": "cylinder",
+      "mat": "wafer",
+      "position": [
+        0,
+        -0.012,
+        0
+      ],
+      "scale": [
+        0.1,
+        0.003,
+        0.1
+      ],
+      "parent": "stage_pivot",
+      "rotation": null
+    },
+    {
+      "name": "wafer_clip_a",
+      "shape": "box",
+      "mat": "steel",
+      "position": [
+        -0.083,
+        -0.013,
+        0
+      ],
+      "scale": [
+        0.028,
+        0.009,
+        0.014
+      ],
+      "parent": "stage_pivot",
+      "rotation": null
+    },
+    {
+      "name": "wafer_clip_b",
+      "shape": "box",
+      "mat": "steel",
+      "position": [
+        0.083,
+        -0.013,
+        0
+      ],
+      "scale": [
+        0.028,
+        0.009,
+        0.014
+      ],
+      "parent": "stage_pivot",
+      "rotation": null
+    },
+    {
+      "name": "magnetron_body_0",
+      "shape": "cylinder",
+      "mat": "steel",
+      "position": [
+        -0.18900000000000003,
+        1.13,
+        0.04
+      ],
+      "scale": [
+        0.104,
+        0.16,
+        0.104
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "dark_space_shield_0",
+      "shape": "cylinder",
+      "mat": "dark",
+      "position": [
+        -0.18900000000000003,
+        1.215,
+        0.04
+      ],
+      "scale": [
+        0.094,
+        0.022,
+        0.094
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "target_ring_0",
+      "shape": "cylinder",
+      "mat": "aluminum",
+      "position": [
+        -0.18900000000000003,
+        1.232,
+        0.04
+      ],
+      "scale": [
+        0.09,
+        0.009,
+        0.09
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "target_face_0",
+      "shape": "cylinder",
+      "mat": "aluminum",
+      "position": [
+        -0.18900000000000003,
+        1.239,
+        0.04
+      ],
+      "scale": [
+        0.0762,
+        0.006,
+        0.0762
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "water_feed_0",
+      "shape": "cylinder",
+      "mat": "copper",
+      "position": [
+        -0.18900000000000003,
+        1.026,
+        0.04
+      ],
+      "scale": [
+        0.024,
+        0.065,
+        0.024
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "magnetron_body_1",
+      "shape": "cylinder",
+      "mat": "steel",
+      "position": [
+        -0.3255,
+        1.13,
+        0.11880831174438392
+      ],
+      "scale": [
+        0.104,
+        0.16,
+        0.104
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "dark_space_shield_1",
+      "shape": "cylinder",
+      "mat": "dark",
+      "position": [
+        -0.3255,
+        1.215,
+        0.11880831174438392
+      ],
+      "scale": [
+        0.094,
+        0.022,
+        0.094
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "target_ring_1",
+      "shape": "cylinder",
+      "mat": "aluminum",
+      "position": [
+        -0.3255,
+        1.232,
+        0.11880831174438392
+      ],
+      "scale": [
+        0.09,
+        0.009,
+        0.09
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "target_face_1",
+      "shape": "cylinder",
+      "mat": "steel",
+      "position": [
+        -0.3255,
+        1.239,
+        0.11880831174438392
+      ],
+      "scale": [
+        0.0762,
+        0.006,
+        0.0762
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "water_feed_1",
+      "shape": "cylinder",
+      "mat": "copper",
+      "position": [
+        -0.3255,
+        1.026,
+        0.11880831174438392
+      ],
+      "scale": [
+        0.024,
+        0.065,
+        0.024
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "magnetron_body_2",
+      "shape": "cylinder",
+      "mat": "steel",
+      "position": [
+        -0.32550000000000007,
+        1.13,
+        -0.03880831174438389
+      ],
+      "scale": [
+        0.104,
+        0.16,
+        0.104
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "dark_space_shield_2",
+      "shape": "cylinder",
+      "mat": "dark",
+      "position": [
+        -0.32550000000000007,
+        1.215,
+        -0.03880831174438389
+      ],
+      "scale": [
+        0.094,
+        0.022,
+        0.094
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "target_ring_2",
+      "shape": "cylinder",
+      "mat": "aluminum",
+      "position": [
+        -0.32550000000000007,
+        1.232,
+        -0.03880831174438389
+      ],
+      "scale": [
+        0.09,
+        0.009,
+        0.09
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "target_face_2",
+      "shape": "cylinder",
+      "mat": "ceramic",
+      "position": [
+        -0.32550000000000007,
+        1.239,
+        -0.03880831174438389
+      ],
+      "scale": [
+        0.0762,
+        0.006,
+        0.0762
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "water_feed_2",
+      "shape": "cylinder",
+      "mat": "copper",
+      "position": [
+        -0.32550000000000007,
+        1.026,
+        -0.03880831174438389
+      ],
+      "scale": [
+        0.024,
+        0.065,
+        0.024
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "shutter_pivot",
+      "shape": null,
+      "mat": null,
+      "position": [
+        -0.42500000000000004,
+        1.27,
+        0.02
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "source_shutter",
+      "shape": "cylinder",
+      "mat": "steel",
+      "position": [
+        0.12,
+        0,
+        0.02
+      ],
+      "scale": [
+        0.24,
+        0.008,
+        0.24
+      ],
+      "parent": "shutter_pivot",
+      "rotation": null
+    },
+    {
+      "name": "shutter_arm",
+      "shape": "box",
+      "mat": "steel",
+      "position": [
+        0.06,
+        0,
+        0.02
+      ],
+      "scale": [
+        0.12,
+        0.013,
+        0.025
+      ],
+      "parent": "shutter_pivot",
+      "rotation": null
+    },
+    {
+      "name": "qcm_sensor",
+      "shape": "cylinder",
+      "mat": "gold",
+      "position": [
+        -0.14,
+        1.35,
+        0.15
+      ],
+      "scale": [
+        0.036,
+        0.025,
+        0.036
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "pressure_gauge_body",
+      "shape": "cylinder",
+      "mat": "steel",
+      "position": [
+        -0.11000000000000001,
+        1.46,
+        -0.21
+      ],
+      "scale": [
+        0.068,
+        0.09,
+        0.068
+      ],
+      "parent": null,
+      "rotation": [
+        0,
+        0,
+        1.5707963267948966
+      ]
+    },
+    {
+      "name": "turbo_pump",
+      "shape": "cylinder",
+      "mat": "steel",
+      "position": [
+        -0.28,
+        0.78,
+        -0.14
+      ],
+      "scale": [
+        0.17,
+        0.17,
+        0.17
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "pump_flange",
+      "shape": "cylinder",
+      "mat": "aluminum",
+      "position": [
+        -0.28,
+        0.87,
+        -0.14
+      ],
+      "scale": [
+        0.208,
+        0.028,
+        0.208
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "pump_fin_0",
+      "shape": "cylinder",
+      "mat": "trim",
+      "position": [
+        -0.28,
+        0.71,
+        -0.14
+      ],
+      "scale": [
+        0.17,
+        0.008,
+        0.17
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "pump_fin_1",
+      "shape": "cylinder",
+      "mat": "trim",
+      "position": [
+        -0.28,
+        0.728,
+        -0.14
+      ],
+      "scale": [
+        0.17,
+        0.008,
+        0.17
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "pump_fin_2",
+      "shape": "cylinder",
+      "mat": "trim",
+      "position": [
+        -0.28,
+        0.746,
+        -0.14
+      ],
+      "scale": [
+        0.17,
+        0.008,
+        0.17
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "pump_fin_3",
+      "shape": "cylinder",
+      "mat": "trim",
+      "position": [
+        -0.28,
+        0.764,
+        -0.14
+      ],
+      "scale": [
+        0.17,
+        0.008,
+        0.17
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "pump_fin_4",
+      "shape": "cylinder",
+      "mat": "trim",
+      "position": [
+        -0.28,
+        0.7819999999999999,
+        -0.14
+      ],
+      "scale": [
+        0.17,
+        0.008,
+        0.17
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "pump_fin_5",
+      "shape": "cylinder",
+      "mat": "trim",
+      "position": [
+        -0.28,
+        0.7999999999999999,
+        -0.14
+      ],
+      "scale": [
+        0.17,
+        0.008,
+        0.17
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "pump_fin_6",
+      "shape": "cylinder",
+      "mat": "trim",
+      "position": [
+        -0.28,
+        0.818,
+        -0.14
+      ],
+      "scale": [
+        0.17,
+        0.008,
+        0.17
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "backing_pump",
+      "shape": "box",
+      "mat": "dark",
+      "position": [
+        -0.28,
+        0.23,
+        -0.12
+      ],
+      "scale": [
+        0.25,
+        0.2,
+        0.22
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "gas_feedthrough_0",
+      "shape": "cylinder",
+      "mat": "steel",
+      "position": [
+        -0.45,
+        0.88,
+        -0.449
+      ],
+      "scale": [
+        0.036,
+        0.035,
+        0.036
+      ],
+      "parent": null,
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "gas_manifold_0",
+      "shape": "box",
+      "mat": "copper",
+      "position": [
+        -0.45,
+        0.9,
+        -0.465
+      ],
+      "scale": [
+        0.012,
+        0.15,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "gas_feedthrough_1",
+      "shape": "cylinder",
+      "mat": "steel",
+      "position": [
+        -0.365,
+        0.88,
+        -0.449
+      ],
+      "scale": [
+        0.036,
+        0.035,
+        0.036
+      ],
+      "parent": null,
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "gas_manifold_1",
+      "shape": "box",
+      "mat": "copper",
+      "position": [
+        -0.365,
+        0.9,
+        -0.465
+      ],
+      "scale": [
+        0.012,
+        0.15,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "gas_feedthrough_2",
+      "shape": "cylinder",
+      "mat": "steel",
+      "position": [
+        -0.28,
+        0.88,
+        -0.449
+      ],
+      "scale": [
+        0.036,
+        0.035,
+        0.036
+      ],
+      "parent": null,
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "gas_manifold_2",
+      "shape": "box",
+      "mat": "copper",
+      "position": [
+        -0.28,
+        0.9,
+        -0.465
+      ],
+      "scale": [
+        0.012,
+        0.15,
+        0.018
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "rear_vent_0",
+      "shape": "box",
+      "mat": "dark",
+      "position": [
+        0.31,
+        0.51,
+        -0.447
+      ],
+      "scale": [
+        0.31,
+        0.014,
+        0.006
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "rear_vent_1",
+      "shape": "box",
+      "mat": "dark",
+      "position": [
+        0.31,
+        0.548,
+        -0.447
+      ],
+      "scale": [
+        0.31,
+        0.014,
+        0.006
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "rear_vent_2",
+      "shape": "box",
+      "mat": "dark",
+      "position": [
+        0.31,
+        0.586,
+        -0.447
+      ],
+      "scale": [
+        0.31,
+        0.014,
+        0.006
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "rear_vent_3",
+      "shape": "box",
+      "mat": "dark",
+      "position": [
+        0.31,
+        0.624,
+        -0.447
+      ],
+      "scale": [
+        0.31,
+        0.014,
+        0.006
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "rear_vent_4",
+      "shape": "box",
+      "mat": "dark",
+      "position": [
+        0.31,
+        0.662,
+        -0.447
+      ],
+      "scale": [
+        0.31,
+        0.014,
+        0.006
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "rear_power_panel",
+      "shape": "box",
+      "mat": "dark",
+      "position": [
+        0.31,
+        0.27,
+        -0.447
+      ],
+      "scale": [
+        0.28,
+        0.17,
+        0.012
+      ],
+      "parent": null,
+      "rotation": null
+    },
+    {
+      "name": "rear_connector_0",
+      "shape": "cylinder",
+      "mat": "steel",
+      "position": [
+        0.22,
+        0.27,
+        -0.458
+      ],
+      "scale": [
+        0.028,
+        0.024,
+        0.028
+      ],
+      "parent": null,
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_connector_1",
+      "shape": "cylinder",
+      "mat": "steel",
+      "position": [
+        0.28,
+        0.27,
+        -0.458
+      ],
+      "scale": [
+        0.028,
+        0.024,
+        0.028
+      ],
+      "parent": null,
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_connector_2",
+      "shape": "cylinder",
+      "mat": "steel",
+      "position": [
+        0.33999999999999997,
+        0.27,
+        -0.458
+      ],
+      "scale": [
+        0.028,
+        0.024,
+        0.028
+      ],
+      "parent": null,
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_connector_3",
+      "shape": "cylinder",
+      "mat": "steel",
+      "position": [
+        0.4,
+        0.27,
+        -0.458
+      ],
+      "scale": [
+        0.028,
+        0.024,
+        0.028
+      ],
+      "parent": null,
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    }
+  ]
+}
