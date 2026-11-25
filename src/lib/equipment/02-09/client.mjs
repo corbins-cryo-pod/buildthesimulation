@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {GLTFExporter} from 'three/addons/exporters/GLTFExporter.js';
-import {runBatch,defaultSample} from '../../../../public/equipment/02-09/solver.mjs';
+import {runBatch,defaultSample} from './solver.mjs';
 const $=id=>document.getElementById('vp-'+id);
 const status=s=>$('status').textContent=s;
 let coupons,loaded=null,door=false,running=false,result=null,stage="ready",model,renderer,camera,orbit,scene,animationToken=0;
@@ -16,8 +16,8 @@ function sync(){
  if(!model)return;
  const hinge=model.getObjectByName('door_hinge');hinge.rotation.y=door?THREE.MathUtils.degToRad(100):0;
  const rack=model.getObjectByName('carrier');rack.position.set(.068,.2216,.0433);rack.scale.x=Math.min(coupons[0].diameter_mm,150)/150;
- for(const [idx,c] of coupons.entries()){const node=model.getObjectByName('coupon_'+(idx?'B':'A'));node.position.set(loaded===c.id?.068:(idx?.083:-.083),loaded===c.id?.2516:.0315,loaded===c.id?.0433:.44);const child=model.getObjectByName('sample_'+(idx?'B':'A'));child.scale.set(c.diameter_mm/1000,.001,c.diameter_mm/1000);if(!child.userData.isolated){child.material=child.material.clone();child.userData.isolated=true}child.material.color.set(c.surfaceState==='primed'?0x7cae91:c.surfaceState==='dehydrated'?0xc8b783:0x667d9d)}
- for(const [color,active] of [['red',false],['yellow',stage==='complete'],['green',running]]){const n=model.getObjectByName('tower_'+color);if(!n.userData.isolated){n.material=n.material.clone();n.userData.isolated=true}n.material.emissive.set(active?n.material.color:0x000000);n.material.emissiveIntensity=active?.65:0}
+ for(const [idx,c] of coupons.entries()){const node=model.getObjectByName('coupon_'+(idx?'B':'A'));node.position.set(loaded===c.id ? .068 : (idx ? .083 : -.083),loaded===c.id ? .2516 : .0315,loaded===c.id ? .0433 : .44);const child=model.getObjectByName('sample_'+(idx?'B':'A'));child.scale.set(c.diameter_mm/1000,.001,c.diameter_mm/1000);if(!child.userData.isolated){child.material=child.material.clone();child.userData.isolated=true}child.material.color.set(c.surfaceState==='primed'?0x7cae91:c.surfaceState==='dehydrated'?0xc8b783:0x667d9d)}
+ for(const [color,active] of [['red',false],['yellow',stage==='complete'],['green',running]]){const n=model.getObjectByName('tower_'+color);if(!n.userData.isolated){n.material=n.material.clone();n.userData.isolated=true}n.material.emissive.set(active?n.material.color:0x000000);n.material.emissiveIntensity=active ? .65 : 0}
 }
 function reset(){animationToken++;running=false;loaded=null;door=false;result=null;stage='ready';coupons=fresh();$('progress').value=0;renderResults();sync();status("Ready: open door and load a coupon.")}
 function load(){if(running||!door||loaded)return;const c=coupons.find(c=>c.id===$('selected').value);if(c.diameter_mm>150||c.coated){status(c.coated?'Previously resist-coated specimens are incompatible.':'This virtual carrier supports 100 or 150 mm only.');return}loaded=c.id;sync();status(loaded+' loaded; close door to run.')}
