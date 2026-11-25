@@ -1,0 +1,8 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {CAL,EXAMPLE,verify,simulate} from '../public/equipment/02-07/solver.mjs';
+import {makeModel} from '../public/equipment/02-07/model-source.mjs';
+for(const row of verify())test('Laurell: '+row.test,()=>assert.ok(row.pass,JSON.stringify(row)));
+test('output provenance, map and parent lineage',()=>{const j={...EXAMPLE,contactIds:['contact-01'],parentRevision:7},before=JSON.stringify(j),r=simulate(j);assert.equal(JSON.stringify(j),before);assert.equal(r.revision,8);assert.deepEqual(r.contactIds,['contact-01']);assert.equal(r.grid.values.length,81*81);assert.equal(r.grid.values[0],null);assert.equal(CAL.points.some(p=>p[0]===4000),false);assert.equal(r.provenance.kind,'simulated')});
+test('editable glTF reproduces saved asset, pivots, and mm scale',()=>{const m=makeModel(),saved=JSON.parse(readFileSync(new URL('../public/equipment/02-07/laurell.gltf',import.meta.url)));assert.deepEqual(m,saved);assert.equal(m.nodes.length,81);const by=n=>m.nodes.find(x=>x.name===n);assert.deepEqual(by('laurell_23NPPB_mm').scale,[.001,.001,.001]);assert.equal(by('polypropylene_base').scale[0],254);assert.equal(by('vacuum_chuck_44_45mm').scale[0],44.45);assert.equal(by('silicon_150mm').scale[0],150);assert.equal(by('rear_drain_port_38mm').scale[0],38);assert.ok(by('lid_pivot').children.includes(m.nodes.indexOf(by('lid_ring'))));assert.ok(by('rotor').children.includes(m.nodes.indexOf(by('wafer'))));assert.equal(new Set(m.nodes.map(x=>x.name)).size,m.nodes.length);assert.equal(Buffer.from(m.buffers[0].uri.split(',')[1],'base64').length,m.buffers[0].byteLength);for(const v of m.bufferViews)assert.ok(v.byteOffset+v.byteLength<=m.buffers[0].byteLength)});
