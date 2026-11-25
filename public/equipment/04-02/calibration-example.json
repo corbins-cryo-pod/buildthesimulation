@@ -1,0 +1,46 @@
+{
+  "source": "SYNTHETIC TEMPLATE ONLY — replace with measured rates and angle before making predictions",
+  "conditions": {
+    "chemistry": "HBr/Cl2",
+    "hbrSccm": 10,
+    "cl2Sccm": 5,
+    "pressureMtorr": 15,
+    "temperatureC": 20,
+    "waferMm": 100,
+    "stack": "ZEP/Si/SiO2"
+  },
+  "points": [
+    {
+      "coilW": 600,
+      "biasW": 40,
+      "siRate": 80,
+      "maskRate": 40,
+      "oxideRate": 1,
+      "angle": 88
+    },
+    {
+      "coilW": 800,
+      "biasW": 40,
+      "siRate": 120,
+      "maskRate": 40,
+      "oxideRate": 1,
+      "angle": 88
+    },
+    {
+      "coilW": 600,
+      "biasW": 80,
+      "siRate": 100,
+      "maskRate": 80,
+      "oxideRate": 3,
+      "angle": 90
+    },
+    {
+      "coilW": 800,
+      "biasW": 80,
+      "siRate": 140,
+      "maskRate": 80,
+      "oxideRate": 3,
+      "angle": 90
+    }
+  ]
+}
