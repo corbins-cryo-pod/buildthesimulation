@@ -1,0 +1,15 @@
+// Node: node build-model.mjs > yes310ta.gltf
+import {readFileSync} from 'node:fs';
+function build(source){
+ const arrays=[],views=[],acc=[],meshes=[],nodes=[],roots=[],names=Object.keys(source.materials),lookup={};let len=0;
+ function put(a,type,target,kind,bounds){const data=new Uint8Array((type===5126?new Float32Array(a):new Uint16Array(a)).buffer);const pad=(4-len%4)%4;if(pad){arrays.push(new Uint8Array(pad));len+=pad}const index=views.push({buffer:0,byteOffset:len,byteLength:data.length,target})-1;arrays.push(data);len+=data.length;return acc.push({bufferView:index,componentType:type,count:a.length/(kind==="VEC3"?3:1),type:kind,...(bounds?{min:[-.5,-.5,-.5],max:[.5,.5,.5]}:{})})-1}
+ function prim(shape){const p=[],n=[],ix=[];const tri=(a,b,c,na,nb=na,nc=na)=>{const k=p.length/3;p.push(...a,...b,...c);n.push(...na,...nb,...nc);ix.push(k,k+1,k+2)};
+ if(shape==="box"){const faces=[[[ -.5,-.5,.5],[.5,-.5,.5],[.5,.5,.5],[-.5,.5,.5],[0,0,1]],[[.5,-.5,-.5],[-.5,-.5,-.5],[-.5,.5,-.5],[.5,.5,-.5],[0,0,-1]],[[.5,-.5,.5],[.5,-.5,-.5],[.5,.5,-.5],[.5,.5,.5],[1,0,0]],[[-.5,-.5,-.5],[-.5,-.5,.5],[-.5,.5,.5],[-.5,.5,-.5],[-1,0,0]],[[-.5,.5,.5],[.5,.5,.5],[.5,.5,-.5],[-.5,.5,-.5],[0,1,0]],[[-.5,-.5,-.5],[.5,-.5,-.5],[.5,-.5,.5],[-.5,-.5,.5],[0,-1,0]]];for(const [a,b,c,d,v] of faces){tri(a,b,c,v);tri(a,c,d,v)}}else for(let j=0;j<48;j++){const a=j*Math.PI/24,b=(j+1)*Math.PI/24,v=(t,y)=>[.5*Math.cos(t),y,.5*Math.sin(t)],na=[Math.cos(a),0,Math.sin(a)],nb=[Math.cos(b),0,Math.sin(b)];tri(v(a,-.5),v(a,.5),v(b,.5),na,na,nb);tri(v(a,-.5),v(b,.5),v(b,-.5),na,nb,nb);tri([0,.5,0],v(b,.5),v(a,.5),[0,1,0]);tri([0,-.5,0],v(a,-.5),v(b,-.5),[0,-1,0])}
+ return {attributes:{POSITION:put(p,5126,34962,"VEC3",true),NORMAL:put(n,5126,34962,"VEC3")},indices:put(ix,5123,34963,"SCALAR")}}
+ const shapes={box:prim("box"),cylinder:prim("cylinder")},map={};
+ for(const g of source.groups){lookup[g.name]=nodes.length;roots.push(nodes.length);nodes.push({name:g.name,translation:g.position,children:[]})}
+ for(const part of source.parts){const key=part.shape+"-"+part.material;if(map[key]===undefined)map[key]=meshes.push({primitives:[{...shapes[part.shape],material:names.indexOf(part.material)}]})-1;const i=nodes.push({name:part.name,translation:part.position,scale:part.size,mesh:map[key],...(part.rotation?{rotation:part.rotation}:{})})-1;if(part.parent)nodes[lookup[part.parent]].children.push(i);else roots.push(i)}
+ const bytes=new Uint8Array(len);let off=0;for(const a of arrays){bytes.set(a,off);off+=a.length}
+ return {json:{asset:{version:"2.0",generator:"BTS 02-09"},scene:0,scenes:[{nodes:roots}],nodes,meshes,materials:names.map(name=>({name,pbrMetallicRoughness:{baseColorFactor:[...source.materials[name],1],metallicFactor:name==="steel"?.7:.05,roughnessFactor:.55}})),buffers:[{byteLength:len}],bufferViews:views,accessors:acc,extras:{units:"m",assumptions:source.assumptions}},bytes};
+}
+const m=JSON.parse(readFileSync(new URL('./model.json',import.meta.url),'utf8'));const {json,bytes}=build(m);json.buffers[0].uri='data:application/octet-stream;base64,'+Buffer.from(bytes).toString('base64');console.log(JSON.stringify(json));
