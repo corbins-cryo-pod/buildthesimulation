@@ -17,9 +17,9 @@
     "inputs": "Coated wafer revision, mask transmission map, two alignment marks, XYθ pose and exposure mode",
     "outputs": "Latent-image map, registered mask transform and overlay residuals for development",
     "acceptance": "Apply a known translation to two separated alignment crosses. The measured overlay must reproduce the offset, then vanish to raster precision after inverse alignment.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Physical-scale Gen4 GLB; brochure envelope, internal geometry estimated",
+    "simulationStatus": "Rigid two-mark alignment and ideal contact / Gaussian proximity dose; analytic checks passed",
+    "integrationStatus": "Dedicated simulator and ROI dose revision exports; browser CI configured",
     "related": [
       [
         "Neural Interface Studio",
@@ -28,8 +28,21 @@
       [
         "Microfabrication Laboratory",
         "/simulations/microfabrication/"
+      ],
+      [
+        "NIST MA/BA6 Gen4 configuration",
+        "https://www.nist.gov/laboratories/tools-instruments/nanofab-tool-suss-microtec-maba6-gen4-mask-aligner"
+      ],
+      [
+        "SUSS MA/BA Gen4 brochure, pp. 4, 11",
+        "https://img01.71360.com/w3/og8vgq/20240613/acc6e920866073068e2062d537b7ef0d.pdf"
+      ],
+      [
+        "GMU Gen4 SOP, Dec 2025",
+        "https://nff.gmu.edu/wp-content/uploads/2025/12/SOP-SUSS-MABA6.pdf"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/02-01/simulator/"
   },
   {
     "id": "02-02",

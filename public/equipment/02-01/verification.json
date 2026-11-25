@@ -1,0 +1,166 @@
+{
+  "configuration": "SUSS MA/BA6 Gen4 standard 150 mm mask-aligner, UV400 365 nm TSA, 178 mm mask holder",
+  "evidence": "Independent analytic expectations executed in JS before commit; no experimental calibration; geometry dimensions check design values, not measured machine; repository/browser verification separate.",
+  "checks": [
+    {
+      "name": "F1 translation X",
+      "expected": 0.125,
+      "actual": 0.125,
+      "unit": "mm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "F1 translation Y",
+      "expected": -0.075,
+      "actual": -0.075,
+      "unit": "mm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "F2 translation X",
+      "expected": 0.125,
+      "actual": 0.125,
+      "unit": "mm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "F2 translation Y",
+      "expected": -0.075,
+      "actual": -0.075,
+      "unit": "mm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "inverse alignment residual",
+      "expected": 0,
+      "actual": 0,
+      "unit": "mm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "rigid fit rotation",
+      "expected": -1.1459155902616465,
+      "actual": -1.1459155902616465,
+      "unit": "degree",
+      "tolerance": 1e-10,
+      "pass": true
+    },
+    {
+      "name": "dose I×t",
+      "expected": 100,
+      "actual": 100,
+      "unit": "mJ/cm²",
+      "tolerance": 1e-10,
+      "pass": true
+    },
+    {
+      "name": "revision parent preserved",
+      "expected": 2,
+      "actual": 2,
+      "unit": "revision",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "double exposure time",
+      "expected": 200,
+      "actual": 200,
+      "unit": "mJ/cm²",
+      "tolerance": 1e-10,
+      "pass": true
+    },
+    {
+      "name": "stage limit rejects",
+      "expected": "travel",
+      "actual": "travel",
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "gap limit rejects",
+      "expected": "gap",
+      "actual": "gap",
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "missing wafer rejects",
+      "expected": "interlock",
+      "actual": "interlock",
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "proximity long-edge midpoint (Gaussian half-plane symmetry)",
+      "expected": 0.5,
+      "actual": 0.5,
+      "unit": "fraction",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "proximity sigma from sqrt(λg)",
+      "expected": 0.003020761493398643,
+      "actual": 0.003020761493398643,
+      "unit": "mm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "inverse transform roundtrip",
+      "expected": 0,
+      "actual": 6.206335383118183e-17,
+      "unit": "mm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "unique named geometry nodes",
+      "expected": 232,
+      "actual": 232,
+      "unit": "nodes",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "table width",
+      "expected": 1173,
+      "actual": 1173,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "table depth",
+      "expected": 1000,
+      "actual": 1000,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "lamphouse top",
+      "expected": 1860,
+      "actual": 1860,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "GLB signature",
+      "expected": 1179937895,
+      "actual": 1179937895,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}
