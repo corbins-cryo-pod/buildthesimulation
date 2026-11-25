@@ -23,6 +23,7 @@ async function initialize(){
   if(housing)housing.visible=!cut;
   if(stage){stage.position.z=.075+stagePosition;stage.position.x=-.10+(busy?-.0001+progress*.0002:0)}
   if(coupon)coupon.visible=loaded;
+  const aid=getNode('small_coupon_adjustment_aid');if(aid)aid.visible=open&&!vacuum&&(!loaded?Number($('coupon_mm').value)<=20:modelState.coupon_mm<=20);
   if(surface){surface.scale.set(modelState.coupon_mm/1000,modelState.thickness_mm/1000,modelState.coupon_mm/1000);surface.position.y=modelState.thickness_mm/2000}
   if(led){led.material.color.set(busy?0xc52a35:0x202020);led.material.emissive.set(busy?0x8c1016:0)}
   if(vd){vd.material.color.set(vacuum?0x2e925b:0x25343a)}
@@ -41,7 +42,7 @@ async function initialize(){
  function reset(){runToken++;open=false;loaded=false;vacuum=false;busy=false;progress=0;stagePosition=0;cut=false;$('cut').setAttribute('aria-pressed','false');clearResult();setJob(EXAMPLE);say('Ready. Load the example or edit the layout.');update()}
  function toggleWindow(){if(busy)throw Error('Window interlock: exposure in progress');if(!open)stagePosition=.12;open=!open;say(open?'Window open; stage at virtual loading position.':'Window closed; motion enabled.');update()}
  function load(){if(!open||busy||loaded)throw Error('Open window before loading');const j=getJob();expose(j);Object.assign(modelState,{coupon_mm:j.coupon_mm,thickness_mm:j.thickness_mm});loaded=true;clearResult();say('Coupon placed on vacuum chuck.');update()}
- function engage(){if(!open||!loaded||busy)throw Error('Load a coupon first');vacuum=true;say('Vacuum hold engaged. Close window before exposure.');update()}
+ function engage(){if(!open||!loaded||busy)throw Error('Load a coupon first');vacuum=true;say('Vacuum hold engaged; virtual positioning aid removed. Close window before exposure.');update()}
  function draw(c,arr,g,seam){c.width=g.nx;c.height=g.ny;const ctx=c.getContext('2d'),im=ctx.createImageData(g.nx,g.ny),max=Math.max(1,result.job.dose_mJ_cm2);for(let k=0;k<arr.length;k++){const q=Math.max(0,Math.min(1,arr[k]/max)),i=k*4;im.data[i]=18+q*225;im.data[i+1]=28+q*157;im.data[i+2]=40+q*45;im.data[i+3]=255}ctx.putImageData(im,0,0);if(seam){ctx.fillStyle='rgba(100,225,235,.7)';for(let y=0;y<g.ny;y+=4)ctx.fillRect(g.nx/2,y,1,2)}}
  function show(r){result=r;draw($('nominal'),r.grid.nominal,r.grid,false);draw($('map'),r.grid.dose,r.grid,true);const m=r.metrics;$('readout').textContent='Sample '+r.sampleId+' · revision '+r.revision+' · peak '+m.peakDose_mJ_cm2.toFixed(2)+' mJ/cm² · area '+m.exposedArea_um2.toFixed(2)+' µm² · seam Δ '+(m.seamDelta_um===null?'not measurable':m.seamDelta_um.toFixed(3)+' µm')+' · grid '+r.grid.nx+' × '+r.grid.ny+' at '+r.grid.pitch_um+' µm';$('export').disabled=false;$('csv').disabled=false}
  async function write(){if(open||!loaded||!vacuum||busy)throw Error('Exposure requires a loaded, vacuum-held coupon and closed window');const r=expose(getJob()),token=++runToken;clearResult();busy=true;stagePosition=0;progress=0;say('Writing two virtual stripes (accelerated demonstration).');update();for(let i=1;i<=30;i++){await wait(45);if(token!==runToken)return;progress=i/30;update()}if(token!==runToken)return;busy=false;progress=1;show(r);say('Exposure complete; virtual latent image committed. Open window to unload.');update()}
