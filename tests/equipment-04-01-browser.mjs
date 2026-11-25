@@ -8,14 +8,14 @@ import {createServer} from 'node:net';
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 async function port(){const s=createServer();await new Promise(r=>s.listen(0,'127.0.0.1',r));const n=s.address().port;await new Promise(r=>s.close(r));return n}
 async function until(fn,ms=90000){const stop=Date.now()+ms;let e;while(Date.now()<stop){try{const v=await fn();if(v)return v}catch(err){e=err}await sleep(150)}throw Error('Timed out: '+(e?.message||'condition'))}
-test('04-01 browser: glTF, controls, run, export, mobile and interlock',{skip:process.env.RIE_REQUIRE_BROWSER!=='1',timeout:180000},async()=>{
+test('04-01 browser: glTF, controls, run, export, mobile and interlock',{skip:process.env.RIE_REQUIRE_BROWSER!=='1',timeout:480000},async()=>{
 const chrome=['/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium'].find(existsSync);assert(chrome,'Chrome is required');
 const http=await port(),debug=await port(),profile=mkdtempSync(join(tmpdir(),'rie-browser-'));
-const origin='http://127.0.0.1:'+http,route=origin+'/simulations/equipment/04-01/simulator/';
-const server=spawn(process.execPath,['node_modules/astro/astro.js','preview','--host','127.0.0.1','--port',String(http)],{stdio:'ignore'});
+const production=process.env.RIE_PRODUCTION_ORIGIN;const origin=production||'http://127.0.0.1:'+http,route=origin+'/simulations/equipment/04-01/simulator/';
+const server=production?null:spawn(process.execPath,['node_modules/astro/astro.js','preview','--host','127.0.0.1','--port',String(http)],{stdio:'ignore'});
 const browser=spawn(chrome,['--headless=new','--no-sandbox','--disable-dev-shm-usage','--use-angle=swiftshader','--enable-unsafe-swiftshader','--remote-debugging-port='+debug,'--user-data-dir='+profile,'about:blank'],{stdio:'ignore'});
 let ws;try{
- await until(async()=> (await fetch(route)).ok);
+ await until(async()=>{const response=await fetch(route,{cache:'no-store'});return response.ok&&(await response.text()).includes('id="rie-view"')},production?360000:90000);
  const target=await until(async()=> (await (await fetch('http://127.0.0.1:'+debug+'/json')).json()).find(p=>p.type==='page'));
  ws=new WebSocket(target.webSocketDebuggerUrl);await new Promise((r,j)=>{ws.addEventListener('open',r,{once:true});ws.addEventListener('error',j,{once:true})});
  let seq=0;const pending=new Map(),errors=[];
@@ -44,5 +44,5 @@ let ws;try{
  await call('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
  await sleep(300);assert.equal(await evalJS("document.querySelector('.rie').scrollWidth<=document.querySelector('.rie').clientWidth+2"),true);
  assert.deepEqual(errors,[]);
- }finally{ws?.close();browser.kill();server.kill();await sleep(300);try{rmSync(profile,{recursive:true,force:true})}catch{}}
+ }finally{ws?.close();browser.kill();server?.kill();await sleep(300);try{rmSync(profile,{recursive:true,force:true})}catch{}}
 });
