@@ -1,0 +1,51 @@
+name: Verify Laurell spin coater
+on:
+  pull_request:
+    paths:
+      - 'public/equipment/02-07/**'
+      - 'src/lib/equipment/02-07/**'
+      - 'src/pages/simulations/equipment/02-07/**'
+      - 'tests/equipment-02-07.mjs'
+      - 'scripts/verify-spin-coater-browser.mjs'
+      - '.github/workflows/verify-spin-coater.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'public/equipment/02-07/**'
+      - 'src/lib/equipment/02-07/**'
+      - 'src/pages/simulations/equipment/02-07/**'
+      - '.github/workflows/verify-spin-coater.yml'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node --test tests/equipment-02-07.mjs tests/equipment-register.mjs
+      - run: npm run build
+      - run: npm install --no-save --package-lock=false playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Browser verification of local production build
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4321 > spin-preview.log 2>&1 &
+          node scripts/verify-spin-coater-browser.mjs
+      - name: Public deployment smoke test
+        if: github.event_name == 'push'
+        env:
+          SPIN_URL: https://buildthesimulation.com
+          SPIN_QA_DIR: spin-production-qa
+        run: node scripts/verify-spin-coater-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: laurell-browser-evidence
+          path: |
+            spin-qa
+            spin-production-qa
+            spin-preview.log

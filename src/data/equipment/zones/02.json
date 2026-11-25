@@ -193,9 +193,9 @@
     "inputs": "Wafer outline and ID, resist ID, spin history and material-specific thickness calibration",
     "outputs": "Resist-layer revision with thickness map, centering record and calibration ID",
     "acceptance": "Reserve one measured spin-curve point during fitting. Predict its central film thickness and compare with the held-out reading and its predeclared uncertainty.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Reference-informed metric glTF, 81 named components; inferred interiors and pivots",
+    "simulationStatus": "Graph-calibrated AZ 1512 solver; numerical checks passed; spatial map illustrative",
+    "integrationStatus": "Simulator route and export schema implemented; browser and production verification required",
     "related": [
       [
         "Neural Interface Studio",
@@ -205,7 +205,8 @@
         "Microfabrication Laboratory",
         "/simulations/microfabrication/"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/02-07/simulator/"
   },
   {
     "id": "02-08",
