@@ -76,12 +76,12 @@ export function solve(p,c) {
 }
 export function pointAcceptance(c=defaults) {
  // Independently integrate cell masses on two padded grids (one per Gaussian).
- // Centers ±2 widths; common domain ±8 widths; 16 cells per width; 256² each.
+ // Identical physical point coordinates ±0.05 um on both grids; at least eight widths of padding.
  let combined=0,isolated=0,maxResidual=0;
  for(const [width,weight] of [[c.alpha/1000,1/(1+c.eta)],[c.beta,c.eta/(1+c.eta)]]){
-  const step=width/16, n=256, left=-8*width;
+  const step=width/16, n=2*Math.ceil((0.05+8*width)/step), left=-n*step/2;
   const rowA=[],rowB=[],rowY=[];
-  for(let i=0;i<n;i++){const lo=left+i*step,hi=lo+step;rowA.push(interval(-2*width,lo,hi,width));rowB.push(interval(2*width,lo,hi,width));rowY.push(interval(0,lo,hi,width));}
+  for(let i=0;i<n;i++){const lo=left+i*step,hi=lo+step;rowA.push(interval(-0.05,lo,hi,width));rowB.push(interval(0.05,lo,hi,width));rowY.push(interval(0,lo,hi,width));}
   for(let j=0;j<n;j++)for(let i=0;i<n;i++){
    const a=weight*rowA[i]*rowY[j],b=weight*rowB[i]*rowY[j];
    const both=weight*(rowA[i]+rowB[i])*rowY[j];
