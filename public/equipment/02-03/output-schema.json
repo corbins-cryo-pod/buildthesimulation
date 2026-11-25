@@ -1,0 +1,347 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BuildTheSimulation MLA150 exposure revision v1",
+  "description": "Independent simulated commanded dose map. No physical exposure or development is implied. Dose and nominal are row-major arrays, length nx×ny; v increases down the displayed map.",
+  "type": "object",
+  "required": [
+    "schema",
+    "deviceId",
+    "kind",
+    "sampleId",
+    "parentRevision",
+    "revision",
+    "resist",
+    "job",
+    "coordinateFrame",
+    "grid",
+    "fields",
+    "metrics",
+    "history"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bts.mla150.exposure.v1"
+    },
+    "deviceId": {
+      "const": "02-03"
+    },
+    "kind": {
+      "const": "simulated-commanded-dose"
+    },
+    "sampleId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "parentRevision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "resist": {
+      "type": "string",
+      "minLength": 1
+    },
+    "job": {
+      "type": "object",
+      "required": [
+        "sampleId",
+        "parentRevision",
+        "resist",
+        "coupon_mm",
+        "thickness_mm",
+        "field_um",
+        "height_um",
+        "pitch_um",
+        "dose_mJ_cm2",
+        "offset_um",
+        "overlay_um",
+        "shapes"
+      ],
+      "properties": {
+        "sampleId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parentRevision": {
+          "type": "integer"
+        },
+        "resist": {
+          "type": "string",
+          "minLength": 1
+        },
+        "coupon_mm": {
+          "type": "number",
+          "minimum": 6,
+          "maximum": 150
+        },
+        "thickness_mm": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 6.3
+        },
+        "field_um": {
+          "type": "number",
+          "minimum": 20,
+          "maximum": 500
+        },
+        "height_um": {
+          "type": "number",
+          "minimum": 20,
+          "maximum": 500
+        },
+        "pitch_um": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 5
+        },
+        "dose_mJ_cm2": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 500
+        },
+        "offset_um": {
+          "type": "number",
+          "minimum": -20,
+          "maximum": 20
+        },
+        "overlay_um": {
+          "type": "number",
+          "minimum": -20,
+          "maximum": 20
+        },
+        "shapes": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 128,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "x",
+              "y",
+              "w",
+              "h",
+              "level"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "x": {
+                "type": "number",
+                "minimum": 0
+              },
+              "y": {
+                "type": "number",
+                "minimum": 0
+              },
+              "w": {
+                "type": "number",
+                "minimum": 1
+              },
+              "h": {
+                "type": "number",
+                "minimum": 1
+              },
+              "level": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 127
+              }
+            }
+          }
+        }
+      }
+    },
+    "coordinateFrame": {
+      "type": "object",
+      "required": [
+        "origin",
+        "u",
+        "v",
+        "unit",
+        "pixelCenters"
+      ],
+      "properties": {
+        "origin": {
+          "type": "string",
+          "minLength": 1
+        },
+        "u": {
+          "type": "string",
+          "minLength": 1
+        },
+        "v": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit": {
+          "const": "um"
+        },
+        "pixelCenters": {
+          "const": true
+        }
+      }
+    },
+    "grid": {
+      "type": "object",
+      "required": [
+        "nx",
+        "ny",
+        "pitch_um",
+        "order",
+        "units",
+        "dose",
+        "nominal"
+      ],
+      "properties": {
+        "nx": {
+          "type": "integer",
+          "minimum": 2
+        },
+        "ny": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pitch_um": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "order": {
+          "const": "row-major; u fastest; v increasing"
+        },
+        "units": {
+          "const": "mJ/cm2"
+        },
+        "dose": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          },
+          "minItems": 1,
+          "maxItems": 500000
+        },
+        "nominal": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          },
+          "minItems": 1,
+          "maxItems": 500000
+        }
+      }
+    },
+    "fields": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "u0_um",
+          "u1_um",
+          "vOffset_um"
+        ],
+        "properties": {
+          "id": {
+            "enum": [
+              "stripe-1",
+              "stripe-2"
+            ]
+          },
+          "u0_um": {
+            "type": "number",
+            "minimum": 0
+          },
+          "u1_um": {
+            "type": "number",
+            "minimum": 0
+          },
+          "vOffset_um": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "peakDose_mJ_cm2",
+        "exposedArea_um2",
+        "integratedEnergy_mJ",
+        "seamLeftCentroid_um",
+        "seamRightCentroid_um",
+        "seamDelta_um"
+      ],
+      "properties": {
+        "peakDose_mJ_cm2": {
+          "type": "number",
+          "minimum": 0
+        },
+        "exposedArea_um2": {
+          "type": "number",
+          "minimum": 0
+        },
+        "integratedEnergy_mJ": {
+          "type": "number",
+          "minimum": 0
+        },
+        "seamLeftCentroid_um": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "seamRightCentroid_um": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "seamDelta_um": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "history": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "operation",
+          "source",
+          "wavelength_nm",
+          "writeMode"
+        ],
+        "properties": {
+          "operation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "wavelength_nm": {
+            "const": 405
+          },
+          "writeMode": {
+            "const": "II"
+          }
+        }
+      }
+    }
+  },
+  "$comment": "Consumers must also verify grid lengths equal nx×ny, nx is even, field bounds are [0, field_um] and [field_um, 2×field_um], revision equals parentRevision+1, and sampleId matches job.sampleId."
+}
