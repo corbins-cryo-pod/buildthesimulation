@@ -24,8 +24,8 @@ async function initialize(){
   if(stage){stage.position.z=.075+stagePosition;stage.position.x=-.10+(busy?-.0001+progress*.0002:0)}
   if(coupon)coupon.visible=loaded;
   if(surface){surface.scale.set(modelState.coupon_mm/1000,modelState.thickness_mm/1000,modelState.coupon_mm/1000);surface.position.y=modelState.thickness_mm/2000}
-  if(led){led.material=led.material.clone();led.material.color.set(busy?0xc52a35:0x202020);led.material.emissive.set(busy?0x8c1016:0)}
-  if(vd){vd.material=vd.material.clone();vd.material.color.set(vacuum?0x2e925b:0x25343a)}
+  if(led){led.material.color.set(busy?0xc52a35:0x202020);led.material.emissive.set(busy?0x8c1016:0)}
+  if(vd){vd.material.color.set(vacuum?0x2e925b:0x25343a)}
   render()
  }
  function update(){
@@ -70,7 +70,7 @@ async function initialize(){
   for(const b of root.querySelectorAll('[data-mla-view]'))b.addEventListener('click',()=>view(b.dataset.mlaView));
   view('whole');resize();const gltf=await new GLTFLoader().loadAsync(asset+'mla150.gltf');sceneModel=gltf.scene;scene.add(sceneModel);
   // Original lettering, not a copied manufacturer logo.
-  const texCanvas=document.createElement('canvas');texCanvas.width=1024;texCanvas.height=160;const t=texCanvas.getContext('2d');t.clearRect(0,0,1024,160);t.fillStyle='#a92135';t.font='bold 56px sans-serif';t.fillText('HEIDELBERG',10,63);t.fillStyle='#4c555c';t.font='40px sans-serif';t.fillText('INSTRUMENTS',10,111);t.font='bold 54px sans-serif';t.fillText('MLA 150',735,72);const tex=new THREE.CanvasTexture(texCanvas);tex.colorSpace=THREE.SRGBColorSpace;const lettering=new THREE.Mesh(new THREE.PlaneGeometry(1.02,.16),new THREE.MeshBasicMaterial({map:tex,transparent:true,depthWrite:false}));lettering.name='fascia_lettering';lettering.position.set(0,1.75,.652);getNode('housing')?.add(lettering);
+  const texCanvas=document.createElement('canvas');texCanvas.width=1024;texCanvas.height=160;const t=texCanvas.getContext('2d');t.clearRect(0,0,1024,160);t.fillStyle='#a92135';t.font='bold 56px sans-serif';t.fillText('HEIDELBERG',10,63);t.fillStyle='#4c555c';t.font='40px sans-serif';t.fillText('INSTRUMENTS',10,111);t.font='bold 54px sans-serif';t.fillText('MLA 150',765,72);const tex=new THREE.CanvasTexture(texCanvas);tex.colorSpace=THREE.SRGBColorSpace;const lettering=new THREE.Mesh(new THREE.PlaneGeometry(1.02,.16),new THREE.MeshBasicMaterial({map:tex,transparent:true,depthWrite:false}));lettering.name='fascia_lettering';lettering.position.set(0,1.75,.652);getNode('housing')?.add(lettering);
   for(const n of ['emission_led','vacuum_display']){const o=getNode(n);if(o)o.material=o.material.clone()}
   $('model-status').textContent='Metric glTF loaded · '+gltf.scene.getObjectByName('MLA150').children.length+' instrument groups';$('glb').disabled=false;view('whole');
   action('glb',async()=>{if(!sceneModel)return;const glb=await new GLTFExporter().parseAsync(sceneModel,{binary:true,onlyVisible:false});download('mla150.glb',new Blob([glb],{type:'model/gltf-binary'}))});
