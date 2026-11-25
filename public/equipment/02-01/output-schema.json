@@ -1,0 +1,31 @@
+{
+  "schema": "bts.lithography.latent-dose.v1",
+  "equipmentId": "02-01",
+  "description": "Compatible family with 02-02 latent dose; grid describes local ROI rather than whole substrate. A developer must process only ROI or explicitly handle missing area.",
+  "required": [
+    "schema",
+    "equipmentId",
+    "sampleId",
+    "parentRevision",
+    "revision",
+    "sample",
+    "mask",
+    "waferMarks",
+    "pose",
+    "maskToCoupon",
+    "fiducials",
+    "exposure",
+    "grid",
+    "statistics"
+  ],
+  "grid": {
+    "unit": "mJ/cm2",
+    "frame": "wafer-centered +x right +y away",
+    "order": "row-major",
+    "originMm": "lower left edge of ROI",
+    "spacingMm": "[dx,dy]",
+    "values": "nx*ny cell-center doses"
+  },
+  "provenance": "simulation, not measurements",
+  "example": "example-result.json"
+}

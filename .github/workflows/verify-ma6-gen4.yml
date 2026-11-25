@@ -1,0 +1,27 @@
+name: Verify MA6 Gen4 equipment 02-01
+on:
+  pull_request:
+    paths: ['public/equipment/02-01/**','src/lib/equipment/02-01/**','src/pages/simulations/equipment/02-01/**','src/data/equipment/zones/02.json','tests/equipment-02-01-ma6.mjs','scripts/equipment/02-01/**','.github/workflows/verify-ma6-gen4.yml']
+  push:
+    branches: [main]
+    paths: ['public/equipment/02-01/**','src/lib/equipment/02-01/**','src/pages/simulations/equipment/02-01/**','src/data/equipment/zones/02.json','.github/workflows/verify-ma6-gen4.yml']
+  workflow_dispatch:
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node --test tests/equipment-02-01-ma6.mjs tests/equipment-register.mjs
+      - run: npm run build --ignore-scripts
+      - run: node --test scripts/equipment/02-01/browser-smoke.mjs
+      - name: Production browser verification
+        if: github.event_name == 'push'
+        env:
+          MA6_URL: https://buildthesimulation.com
+        run: node --test scripts/equipment/02-01/browser-smoke.mjs

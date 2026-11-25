@@ -1,0 +1,4856 @@
+{
+  "unit": "mm",
+  "configuration": "SUSS MA/BA6 Gen4 standard 150 mm mask-aligner, UV400 365 nm TSA, 178 mm mask holder",
+  "envelopeMm": {
+    "width": 1173,
+    "depth": 1000,
+    "height": 1860
+  },
+  "notes": "Manufacturer brochure p.11 overall envelope and travel; 150 mm wafer and 178 mm mask from NIST. All unmeasured internal panels, optics, drawer stroke, wiring and supports are original reconstruction estimates. Drawer motion 160 mm is illustrative and not a factory specification.",
+  "materials": {
+    "steel": [
+      0.62,
+      0.65,
+      0.66,
+      1
+    ],
+    "edge": [
+      0.78,
+      0.79,
+      0.79,
+      1
+    ],
+    "black": [
+      0.07,
+      0.08,
+      0.09,
+      1
+    ],
+    "dark": [
+      0.13,
+      0.16,
+      0.18,
+      1
+    ],
+    "rubber": [
+      0.035,
+      0.04,
+      0.045,
+      1
+    ],
+    "blue": [
+      0.06,
+      0.31,
+      0.7,
+      1
+    ],
+    "glass": [
+      0.44,
+      0.69,
+      0.75,
+      0.26
+    ],
+    "screen": [
+      0.16,
+      0.32,
+      0.46,
+      1
+    ],
+    "red": [
+      0.78,
+      0.04,
+      0.03,
+      1
+    ],
+    "yellow": [
+      0.96,
+      0.68,
+      0.04,
+      1
+    ],
+    "green": [
+      0.05,
+      0.53,
+      0.28,
+      1
+    ],
+    "white": [
+      0.91,
+      0.91,
+      0.88,
+      1
+    ],
+    "wafer": [
+      0.4,
+      0.58,
+      0.66,
+      1
+    ],
+    "gold": [
+      0.74,
+      0.52,
+      0.19,
+      1
+    ],
+    "chrome": [
+      0.78,
+      0.79,
+      0.8,
+      1
+    ]
+  },
+  "nodes": [
+    {
+      "name": "instrument",
+      "p": [
+        0,
+        0,
+        0
+      ],
+      "parent": null
+    },
+    {
+      "name": "stand_worktop",
+      "shape": "box",
+      "mat": "steel",
+      "p": [
+        0,
+        875,
+        0
+      ],
+      "size": [
+        1173,
+        50,
+        1000
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "leg_LB",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        -540,
+        460,
+        -445
+      ],
+      "size": [
+        66,
+        780,
+        65
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "foot_LB",
+      "shape": "cylinder",
+      "mat": "rubber",
+      "p": [
+        -540,
+        16,
+        -445
+      ],
+      "size": [
+        58,
+        32,
+        58
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "leveler_LB",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        -540,
+        48,
+        -445
+      ],
+      "size": [
+        24,
+        38,
+        24
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "caster_LB",
+      "shape": "cylinder",
+      "mat": "rubber",
+      "p": [
+        -518,
+        77,
+        -480
+      ],
+      "size": [
+        70,
+        29,
+        70
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        1.5707963267948966
+      ]
+    },
+    {
+      "name": "leg_LF",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        -540,
+        460,
+        445
+      ],
+      "size": [
+        66,
+        780,
+        65
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "foot_LF",
+      "shape": "cylinder",
+      "mat": "rubber",
+      "p": [
+        -540,
+        16,
+        445
+      ],
+      "size": [
+        58,
+        32,
+        58
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "leveler_LF",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        -540,
+        48,
+        445
+      ],
+      "size": [
+        24,
+        38,
+        24
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "caster_LF",
+      "shape": "cylinder",
+      "mat": "rubber",
+      "p": [
+        -518,
+        77,
+        410
+      ],
+      "size": [
+        70,
+        29,
+        70
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        1.5707963267948966
+      ]
+    },
+    {
+      "name": "leg_RB",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        540,
+        460,
+        -445
+      ],
+      "size": [
+        66,
+        780,
+        65
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "foot_RB",
+      "shape": "cylinder",
+      "mat": "rubber",
+      "p": [
+        540,
+        16,
+        -445
+      ],
+      "size": [
+        58,
+        32,
+        58
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "leveler_RB",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        540,
+        48,
+        -445
+      ],
+      "size": [
+        24,
+        38,
+        24
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "caster_RB",
+      "shape": "cylinder",
+      "mat": "rubber",
+      "p": [
+        518,
+        77,
+        -480
+      ],
+      "size": [
+        70,
+        29,
+        70
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        1.5707963267948966
+      ]
+    },
+    {
+      "name": "leg_RF",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        540,
+        460,
+        445
+      ],
+      "size": [
+        66,
+        780,
+        65
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "foot_RF",
+      "shape": "cylinder",
+      "mat": "rubber",
+      "p": [
+        540,
+        16,
+        445
+      ],
+      "size": [
+        58,
+        32,
+        58
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "leveler_RF",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        540,
+        48,
+        445
+      ],
+      "size": [
+        24,
+        38,
+        24
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "caster_RF",
+      "shape": "cylinder",
+      "mat": "rubber",
+      "p": [
+        518,
+        77,
+        410
+      ],
+      "size": [
+        70,
+        29,
+        70
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        1.5707963267948966
+      ]
+    },
+    {
+      "name": "shelf_285",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        0,
+        285,
+        0
+      ],
+      "size": [
+        1080,
+        20,
+        870
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_285_0",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -490,
+        296,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_285_1",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -420,
+        296,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_285_2",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -350,
+        296,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_285_3",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -280,
+        296,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_285_4",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -210,
+        296,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_285_5",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -140,
+        296,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_285_6",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -70,
+        296,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_285_7",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        0,
+        296,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_285_8",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        70,
+        296,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_285_9",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        140,
+        296,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_285_10",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        210,
+        296,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_285_11",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        280,
+        296,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_285_12",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        350,
+        296,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_285_13",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        420,
+        296,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_285_14",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        490,
+        296,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_585",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        0,
+        585,
+        0
+      ],
+      "size": [
+        1080,
+        20,
+        870
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_585_0",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -490,
+        596,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_585_1",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -420,
+        596,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_585_2",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -350,
+        596,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_585_3",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -280,
+        596,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_585_4",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -210,
+        596,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_585_5",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -140,
+        596,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_585_6",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -70,
+        596,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_585_7",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        0,
+        596,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_585_8",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        70,
+        596,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_585_9",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        140,
+        596,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_585_10",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        210,
+        596,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_585_11",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        280,
+        596,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_585_12",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        350,
+        596,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_585_13",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        420,
+        596,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "shelf_rib_585_14",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        490,
+        596,
+        0
+      ],
+      "size": [
+        6,
+        5,
+        840
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cross_member_-445",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        0,
+        813,
+        -445
+      ],
+      "size": [
+        1080,
+        65,
+        55
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cross_member_445",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        0,
+        813,
+        445
+      ],
+      "size": [
+        1080,
+        65,
+        55
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_cabinet",
+      "shape": "box",
+      "mat": "steel",
+      "p": [
+        0,
+        1088,
+        -325
+      ],
+      "size": [
+        1090,
+        375,
+        285
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "left_console",
+      "shape": "box",
+      "mat": "steel",
+      "p": [
+        -400,
+        1060,
+        115
+      ],
+      "size": [
+        295,
+        320,
+        600
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "right_console",
+      "shape": "box",
+      "mat": "steel",
+      "p": [
+        395,
+        1060,
+        115
+      ],
+      "size": [
+        285,
+        320,
+        600
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "front_panel_L",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        -400,
+        1054,
+        425
+      ],
+      "size": [
+        294,
+        300,
+        20
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "front_panel_R",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        395,
+        1054,
+        425
+      ],
+      "size": [
+        285,
+        300,
+        20
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "central_lower_case",
+      "shape": "box",
+      "mat": "steel",
+      "p": [
+        0,
+        961,
+        110
+      ],
+      "size": [
+        482,
+        120,
+        620
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "central_bay_floor",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        0,
+        1025,
+        130
+      ],
+      "size": [
+        455,
+        12,
+        570
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "bay_left_rail",
+      "shape": "box",
+      "mat": "chrome",
+      "p": [
+        -225,
+        1045,
+        130
+      ],
+      "size": [
+        24,
+        20,
+        530
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "bay_right_rail",
+      "shape": "box",
+      "mat": "chrome",
+      "p": [
+        225,
+        1045,
+        130
+      ],
+      "size": [
+        24,
+        20,
+        530
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "transport",
+      "p": [
+        0,
+        1045,
+        110
+      ],
+      "parent": "instrument"
+    },
+    {
+      "name": "load_drawer",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        426,
+        25,
+        465
+      ],
+      "parent": "transport",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "drawer_front",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        0,
+        -30,
+        240
+      ],
+      "size": [
+        435,
+        80,
+        25
+      ],
+      "parent": "transport",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "drawer_handle",
+      "shape": "box",
+      "mat": "chrome",
+      "p": [
+        0,
+        -22,
+        272
+      ],
+      "size": [
+        140,
+        14,
+        20
+      ],
+      "parent": "transport",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "handle_mount_-65",
+      "shape": "box",
+      "mat": "chrome",
+      "p": [
+        -65,
+        -22,
+        257
+      ],
+      "size": [
+        12,
+        16,
+        30
+      ],
+      "parent": "transport",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "handle_mount_65",
+      "shape": "box",
+      "mat": "chrome",
+      "p": [
+        65,
+        -22,
+        257
+      ],
+      "size": [
+        12,
+        16,
+        30
+      ],
+      "parent": "transport",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "stage_pose",
+      "p": [
+        0,
+        17,
+        0
+      ],
+      "parent": "transport"
+    },
+    {
+      "name": "xy_stage",
+      "shape": "cylinder",
+      "mat": "steel",
+      "p": [
+        0,
+        5,
+        0
+      ],
+      "size": [
+        210,
+        16,
+        210
+      ],
+      "parent": "stage_pose",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "wafer_chuck",
+      "shape": "cylinder",
+      "mat": "dark",
+      "p": [
+        0,
+        17,
+        0
+      ],
+      "size": [
+        150,
+        8,
+        150
+      ],
+      "parent": "stage_pose",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "chuck_groove_54",
+      "shape": "ring",
+      "mat": "chrome",
+      "p": [
+        0,
+        21.3,
+        0
+      ],
+      "size": [
+        54,
+        0.45,
+        54
+      ],
+      "parent": "stage_pose",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "chuck_groove_90",
+      "shape": "ring",
+      "mat": "chrome",
+      "p": [
+        0,
+        21.3,
+        0
+      ],
+      "size": [
+        90,
+        0.45,
+        90
+      ],
+      "parent": "stage_pose",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "chuck_groove_125",
+      "shape": "ring",
+      "mat": "chrome",
+      "p": [
+        0,
+        21.3,
+        0
+      ],
+      "size": [
+        125,
+        0.45,
+        125
+      ],
+      "parent": "stage_pose",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "wafer",
+      "shape": "cylinder",
+      "mat": "wafer",
+      "p": [
+        0,
+        21.8,
+        0
+      ],
+      "size": [
+        150,
+        0.675,
+        150
+      ],
+      "parent": "stage_pose",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "wafer_mark_h-20",
+      "shape": "box",
+      "mat": "gold",
+      "p": [
+        -20,
+        22.4,
+        0
+      ],
+      "size": [
+        3,
+        0.1,
+        0.3
+      ],
+      "parent": "stage_pose",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "wafer_mark_v-20",
+      "shape": "box",
+      "mat": "gold",
+      "p": [
+        -20,
+        22.4,
+        0
+      ],
+      "size": [
+        0.3,
+        0.1,
+        3
+      ],
+      "parent": "stage_pose",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "wafer_mark_h20",
+      "shape": "box",
+      "mat": "gold",
+      "p": [
+        20,
+        22.4,
+        0
+      ],
+      "size": [
+        3,
+        0.1,
+        0.3
+      ],
+      "parent": "stage_pose",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "wafer_mark_v20",
+      "shape": "box",
+      "mat": "gold",
+      "p": [
+        20,
+        22.4,
+        0
+      ],
+      "size": [
+        0.3,
+        0.1,
+        3
+      ],
+      "parent": "stage_pose",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "mask_holder",
+      "p": [
+        0,
+        1104,
+        110
+      ],
+      "parent": "instrument"
+    },
+    {
+      "name": "mask_frame_side_-101",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        -101,
+        0,
+        0
+      ],
+      "size": [
+        24,
+        12,
+        226
+      ],
+      "parent": "mask_holder",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "mask_frame_side_101",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        101,
+        0,
+        0
+      ],
+      "size": [
+        24,
+        12,
+        226
+      ],
+      "parent": "mask_holder",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "mask_frame_end_-101",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        0,
+        0,
+        -101
+      ],
+      "size": [
+        178,
+        12,
+        24
+      ],
+      "parent": "mask_holder",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "mask_frame_end_101",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        0,
+        0,
+        101
+      ],
+      "size": [
+        178,
+        12,
+        24
+      ],
+      "parent": "mask_holder",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "mask_plate",
+      "shape": "box",
+      "mat": "glass",
+      "p": [
+        0,
+        -2,
+        0
+      ],
+      "size": [
+        178,
+        2.3,
+        178
+      ],
+      "parent": "mask_holder",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "mask_clamp_-98_-86",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        -98,
+        10,
+        -86
+      ],
+      "size": [
+        18,
+        14,
+        18
+      ],
+      "parent": "mask_holder",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "mask_clamp_-98_86",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        -98,
+        10,
+        86
+      ],
+      "size": [
+        18,
+        14,
+        18
+      ],
+      "parent": "mask_holder",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "mask_clamp_98_-86",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        98,
+        10,
+        -86
+      ],
+      "size": [
+        18,
+        14,
+        18
+      ],
+      "parent": "mask_holder",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "mask_clamp_98_86",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        98,
+        10,
+        86
+      ],
+      "size": [
+        18,
+        14,
+        18
+      ],
+      "parent": "mask_holder",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "optical_head",
+      "p": [
+        0,
+        0,
+        0
+      ],
+      "parent": "instrument"
+    },
+    {
+      "name": "rear_optical_column",
+      "shape": "box",
+      "mat": "steel",
+      "p": [
+        0,
+        1465,
+        -330
+      ],
+      "size": [
+        360,
+        565,
+        205
+      ],
+      "parent": "optical_head",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "lamphouse_top",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        0,
+        1822,
+        -345
+      ],
+      "size": [
+        175,
+        76,
+        170
+      ],
+      "parent": "optical_head",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "lamp_back",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        0,
+        1610,
+        -240
+      ],
+      "size": [
+        345,
+        282,
+        310
+      ],
+      "parent": "optical_head",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "lamp_horizontal",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        0,
+        1565,
+        -65
+      ],
+      "size": [
+        345,
+        215,
+        380
+      ],
+      "parent": "optical_head",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "sloped_lamp_cover",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        0,
+        1490,
+        101
+      ],
+      "size": [
+        347,
+        285,
+        300
+      ],
+      "parent": "optical_head",
+      "rot": [
+        -0.4,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "front_optic_shroud",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        0,
+        1337,
+        135
+      ],
+      "size": [
+        345,
+        230,
+        220
+      ],
+      "parent": "optical_head",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "hood_handle",
+      "shape": "box",
+      "mat": "chrome",
+      "p": [
+        0,
+        1350,
+        259
+      ],
+      "size": [
+        128,
+        14,
+        15
+      ],
+      "parent": "optical_head",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "objective_support_rail",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        0,
+        1215,
+        110
+      ],
+      "size": [
+        345,
+        42,
+        66
+      ],
+      "parent": "optical_head",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "microscopes",
+      "p": [
+        0,
+        0,
+        0
+      ],
+      "parent": "instrument"
+    },
+    {
+      "name": "objective_left",
+      "p": [
+        -20,
+        1183,
+        110
+      ],
+      "parent": "microscopes"
+    },
+    {
+      "name": "camera_left",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        0,
+        16,
+        0
+      ],
+      "size": [
+        36,
+        48,
+        42
+      ],
+      "parent": "objective_left",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "barrel_left",
+      "shape": "cylinder",
+      "mat": "black",
+      "p": [
+        0,
+        -18,
+        0
+      ],
+      "size": [
+        28,
+        32,
+        28
+      ],
+      "parent": "objective_left",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "red_lens_ring_left",
+      "shape": "cylinder",
+      "mat": "red",
+      "p": [
+        0,
+        -35,
+        0
+      ],
+      "size": [
+        29,
+        3,
+        29
+      ],
+      "parent": "objective_left",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "lens_left",
+      "shape": "cylinder",
+      "mat": "glass",
+      "p": [
+        0,
+        -37,
+        0
+      ],
+      "size": [
+        18,
+        2,
+        18
+      ],
+      "parent": "objective_left",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "objective_right",
+      "p": [
+        20,
+        1183,
+        110
+      ],
+      "parent": "microscopes"
+    },
+    {
+      "name": "camera_right",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        0,
+        16,
+        0
+      ],
+      "size": [
+        36,
+        48,
+        42
+      ],
+      "parent": "objective_right",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "barrel_right",
+      "shape": "cylinder",
+      "mat": "black",
+      "p": [
+        0,
+        -18,
+        0
+      ],
+      "size": [
+        28,
+        32,
+        28
+      ],
+      "parent": "objective_right",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "red_lens_ring_right",
+      "shape": "cylinder",
+      "mat": "red",
+      "p": [
+        0,
+        -35,
+        0
+      ],
+      "size": [
+        29,
+        3,
+        29
+      ],
+      "parent": "objective_right",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "lens_right",
+      "shape": "cylinder",
+      "mat": "glass",
+      "p": [
+        0,
+        -37,
+        0
+      ],
+      "size": [
+        18,
+        2,
+        18
+      ],
+      "parent": "objective_right",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "guard",
+      "p": [
+        0,
+        0,
+        0
+      ],
+      "parent": "instrument"
+    },
+    {
+      "name": "guard_window",
+      "shape": "box",
+      "mat": "glass",
+      "p": [
+        0,
+        1134,
+        402
+      ],
+      "size": [
+        455,
+        178,
+        8
+      ],
+      "parent": "guard",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "guard_rail_-232",
+      "shape": "box",
+      "mat": "steel",
+      "p": [
+        -232,
+        1134,
+        402
+      ],
+      "size": [
+        10,
+        187,
+        12
+      ],
+      "parent": "guard",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "guard_rail_232",
+      "shape": "box",
+      "mat": "steel",
+      "p": [
+        232,
+        1134,
+        402
+      ],
+      "size": [
+        10,
+        187,
+        12
+      ],
+      "parent": "guard",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "guard_header",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        0,
+        1227,
+        402
+      ],
+      "size": [
+        474,
+        14,
+        13
+      ],
+      "parent": "guard",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "emergency_stop",
+      "shape": "cylinder",
+      "mat": "red",
+      "p": [
+        -510,
+        1110,
+        440
+      ],
+      "size": [
+        36,
+        18,
+        36
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "power",
+      "shape": "cylinder",
+      "mat": "black",
+      "p": [
+        -550,
+        1110,
+        440
+      ],
+      "size": [
+        18,
+        18,
+        18
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "status_button",
+      "shape": "cylinder",
+      "mat": "yellow",
+      "p": [
+        -474,
+        1110,
+        440
+      ],
+      "size": [
+        18,
+        18,
+        18
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "ready_button",
+      "shape": "cylinder",
+      "mat": "green",
+      "p": [
+        -436,
+        1110,
+        440
+      ],
+      "size": [
+        18,
+        18,
+        18
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "front_status_0",
+      "shape": "cylinder",
+      "mat": "yellow",
+      "p": [
+        -182,
+        940,
+        435
+      ],
+      "size": [
+        9,
+        8,
+        9
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "front_status_1",
+      "shape": "cylinder",
+      "mat": "green",
+      "p": [
+        -156,
+        940,
+        435
+      ],
+      "size": [
+        9,
+        8,
+        9
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "front_status_2",
+      "shape": "cylinder",
+      "mat": "yellow",
+      "p": [
+        -130,
+        940,
+        435
+      ],
+      "size": [
+        9,
+        8,
+        9
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "front_status_3",
+      "shape": "cylinder",
+      "mat": "green",
+      "p": [
+        -104,
+        940,
+        435
+      ],
+      "size": [
+        9,
+        8,
+        9
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "logo_plate",
+      "shape": "box",
+      "mat": "white",
+      "p": [
+        -400,
+        1182,
+        439
+      ],
+      "size": [
+        170,
+        42,
+        4
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "model_plate",
+      "shape": "box",
+      "mat": "white",
+      "p": [
+        392,
+        1172,
+        439
+      ],
+      "size": [
+        148,
+        30,
+        4
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "monitor_pole",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        515,
+        1250,
+        -25
+      ],
+      "size": [
+        30,
+        660,
+        30
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "monitor_arm",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        430,
+        1300,
+        95
+      ],
+      "size": [
+        175,
+        30,
+        180
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "monitor",
+      "p": [
+        400,
+        1350,
+        235
+      ],
+      "parent": "instrument"
+    },
+    {
+      "name": "display_bezel",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        320,
+        240,
+        34
+      ],
+      "parent": "monitor",
+      "rot": [
+        -0.13,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "display_surface",
+      "shape": "box",
+      "mat": "screen",
+      "p": [
+        0,
+        0,
+        20
+      ],
+      "size": [
+        294,
+        211,
+        4
+      ],
+      "parent": "monitor",
+      "rot": [
+        -0.13,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "keyboard_tray",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        395,
+        1040,
+        390
+      ],
+      "size": [
+        345,
+        22,
+        200
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "keyboard",
+      "shape": "box",
+      "mat": "white",
+      "p": [
+        360,
+        1059,
+        375
+      ],
+      "size": [
+        222,
+        16,
+        113
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_0_0",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        263,
+        1069,
+        336
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_0_1",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        278,
+        1069,
+        336
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_0_2",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        293,
+        1069,
+        336
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_0_3",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        308,
+        1069,
+        336
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_0_4",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        323,
+        1069,
+        336
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_0_5",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        338,
+        1069,
+        336
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_0_6",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        353,
+        1069,
+        336
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_0_7",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        368,
+        1069,
+        336
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_0_8",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        383,
+        1069,
+        336
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_0_9",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        398,
+        1069,
+        336
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_0_10",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        413,
+        1069,
+        336
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_0_11",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        428,
+        1069,
+        336
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_0_12",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        443,
+        1069,
+        336
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_1_0",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        263,
+        1069,
+        353
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_1_1",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        278,
+        1069,
+        353
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_1_2",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        293,
+        1069,
+        353
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_1_3",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        308,
+        1069,
+        353
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_1_4",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        323,
+        1069,
+        353
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_1_5",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        338,
+        1069,
+        353
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_1_6",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        353,
+        1069,
+        353
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_1_7",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        368,
+        1069,
+        353
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_1_8",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        383,
+        1069,
+        353
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_1_9",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        398,
+        1069,
+        353
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_1_10",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        413,
+        1069,
+        353
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_1_11",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        428,
+        1069,
+        353
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_1_12",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        443,
+        1069,
+        353
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_2_0",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        263,
+        1069,
+        370
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_2_1",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        278,
+        1069,
+        370
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_2_2",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        293,
+        1069,
+        370
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_2_3",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        308,
+        1069,
+        370
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_2_4",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        323,
+        1069,
+        370
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_2_5",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        338,
+        1069,
+        370
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_2_6",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        353,
+        1069,
+        370
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_2_7",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        368,
+        1069,
+        370
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_2_8",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        383,
+        1069,
+        370
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_2_9",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        398,
+        1069,
+        370
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_2_10",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        413,
+        1069,
+        370
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_2_11",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        428,
+        1069,
+        370
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_2_12",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        443,
+        1069,
+        370
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_3_0",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        263,
+        1069,
+        387
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_3_1",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        278,
+        1069,
+        387
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_3_2",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        293,
+        1069,
+        387
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_3_3",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        308,
+        1069,
+        387
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_3_4",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        323,
+        1069,
+        387
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_3_5",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        338,
+        1069,
+        387
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_3_6",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        353,
+        1069,
+        387
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_3_7",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        368,
+        1069,
+        387
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_3_8",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        383,
+        1069,
+        387
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_3_9",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        398,
+        1069,
+        387
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_3_10",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        413,
+        1069,
+        387
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_3_11",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        428,
+        1069,
+        387
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_3_12",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        443,
+        1069,
+        387
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_4_0",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        263,
+        1069,
+        404
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_4_1",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        278,
+        1069,
+        404
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_4_2",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        293,
+        1069,
+        404
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_4_3",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        308,
+        1069,
+        404
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_4_4",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        323,
+        1069,
+        404
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_4_5",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        338,
+        1069,
+        404
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_4_6",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        353,
+        1069,
+        404
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_4_7",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        368,
+        1069,
+        404
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_4_8",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        383,
+        1069,
+        404
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_4_9",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        398,
+        1069,
+        404
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_4_10",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        413,
+        1069,
+        404
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_4_11",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        428,
+        1069,
+        404
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "key_4_12",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        443,
+        1069,
+        404
+      ],
+      "size": [
+        13,
+        4,
+        13
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "trackball_base",
+      "shape": "cylinder",
+      "mat": "dark",
+      "p": [
+        509,
+        1066,
+        384
+      ],
+      "size": [
+        63,
+        20,
+        63
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "trackball",
+      "shape": "cylinder",
+      "mat": "red",
+      "p": [
+        509,
+        1084,
+        384
+      ],
+      "size": [
+        32,
+        22,
+        32
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "joystick_base",
+      "shape": "cylinder",
+      "mat": "black",
+      "p": [
+        554,
+        1065,
+        439
+      ],
+      "size": [
+        47,
+        16,
+        47
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "joystick_stem",
+      "shape": "cylinder",
+      "mat": "black",
+      "p": [
+        554,
+        1096,
+        439
+      ],
+      "size": [
+        14,
+        57,
+        14
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "joystick_cap",
+      "shape": "cylinder",
+      "mat": "rubber",
+      "p": [
+        554,
+        1130,
+        439
+      ],
+      "size": [
+        28,
+        20,
+        28
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_base_-375",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        -375,
+        1237,
+        -180
+      ],
+      "size": [
+        180,
+        20,
+        165
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_side_-375_-1",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        -457,
+        1292,
+        -180
+      ],
+      "size": [
+        13,
+        110,
+        165
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_side_-375_1",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        -293,
+        1292,
+        -180
+      ],
+      "size": [
+        13,
+        110,
+        165
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_slot_-375_0",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        -375,
+        1252,
+        -255
+      ],
+      "size": [
+        158,
+        4,
+        8
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_slot_-375_1",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        -375,
+        1264,
+        -255
+      ],
+      "size": [
+        158,
+        4,
+        8
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_slot_-375_2",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        -375,
+        1276,
+        -255
+      ],
+      "size": [
+        158,
+        4,
+        8
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_slot_-375_3",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        -375,
+        1288,
+        -255
+      ],
+      "size": [
+        158,
+        4,
+        8
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_slot_-375_4",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        -375,
+        1300,
+        -255
+      ],
+      "size": [
+        158,
+        4,
+        8
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_slot_-375_5",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        -375,
+        1312,
+        -255
+      ],
+      "size": [
+        158,
+        4,
+        8
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_slot_-375_6",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        -375,
+        1324,
+        -255
+      ],
+      "size": [
+        158,
+        4,
+        8
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_slot_-375_7",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        -375,
+        1336,
+        -255
+      ],
+      "size": [
+        158,
+        4,
+        8
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_base_365",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        365,
+        1237,
+        -180
+      ],
+      "size": [
+        180,
+        20,
+        165
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_side_365_-1",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        283,
+        1292,
+        -180
+      ],
+      "size": [
+        13,
+        110,
+        165
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_side_365_1",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        447,
+        1292,
+        -180
+      ],
+      "size": [
+        13,
+        110,
+        165
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_slot_365_0",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        365,
+        1252,
+        -255
+      ],
+      "size": [
+        158,
+        4,
+        8
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_slot_365_1",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        365,
+        1264,
+        -255
+      ],
+      "size": [
+        158,
+        4,
+        8
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_slot_365_2",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        365,
+        1276,
+        -255
+      ],
+      "size": [
+        158,
+        4,
+        8
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_slot_365_3",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        365,
+        1288,
+        -255
+      ],
+      "size": [
+        158,
+        4,
+        8
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_slot_365_4",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        365,
+        1300,
+        -255
+      ],
+      "size": [
+        158,
+        4,
+        8
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_slot_365_5",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        365,
+        1312,
+        -255
+      ],
+      "size": [
+        158,
+        4,
+        8
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_slot_365_6",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        365,
+        1324,
+        -255
+      ],
+      "size": [
+        158,
+        4,
+        8
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cassette_slot_365_7",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        365,
+        1336,
+        -255
+      ],
+      "size": [
+        158,
+        4,
+        8
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_vent_0",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -325,
+        1120,
+        -470
+      ],
+      "size": [
+        22,
+        100,
+        3
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_port_0",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        245,
+        960,
+        -475
+      ],
+      "size": [
+        18,
+        16,
+        18
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_vent_1",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -289,
+        1120,
+        -470
+      ],
+      "size": [
+        22,
+        100,
+        3
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_port_1",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        280,
+        960,
+        -475
+      ],
+      "size": [
+        18,
+        16,
+        18
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_vent_2",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -253,
+        1120,
+        -470
+      ],
+      "size": [
+        22,
+        100,
+        3
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_port_2",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        315,
+        960,
+        -475
+      ],
+      "size": [
+        18,
+        16,
+        18
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_vent_3",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -217,
+        1120,
+        -470
+      ],
+      "size": [
+        22,
+        100,
+        3
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_port_3",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        350,
+        960,
+        -475
+      ],
+      "size": [
+        18,
+        16,
+        18
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_vent_4",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        -181,
+        1120,
+        -470
+      ],
+      "size": [
+        22,
+        100,
+        3
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_port_4",
+      "shape": "cylinder",
+      "mat": "black",
+      "p": [
+        385,
+        960,
+        -475
+      ],
+      "size": [
+        18,
+        16,
+        18
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    }
+  ]
+}
