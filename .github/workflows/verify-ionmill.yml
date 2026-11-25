@@ -1,0 +1,48 @@
+name: Verify Nanoquest 04-04
+on:
+  pull_request:
+    paths:
+      - 'public/equipment/04-04/**'
+      - 'src/lib/equipment/04-04/**'
+      - 'src/pages/simulations/equipment/04-04/**'
+      - 'tests/equipment-04-04-ionmill.mjs'
+      - 'scripts/verify-ionmill-browser.mjs'
+      - '.github/workflows/verify-ionmill.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'public/equipment/04-04/**'
+      - 'src/lib/equipment/04-04/**'
+      - 'src/pages/simulations/equipment/04-04/**'
+      - '.github/workflows/verify-ionmill.yml'
+  workflow_dispatch:
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node --test tests/equipment-04-04-ionmill.mjs tests/equipment-register.mjs
+      - run: npm run build --ignore-scripts
+      - name: Browser verification on built site
+        env:
+          IONMILL_QA_DIR: ionmill-qa
+        run: node --test scripts/verify-ionmill-browser.mjs
+      - name: Browser verification on production
+        if: github.event_name == 'push'
+        env:
+          IONMILL_URL: https://buildthesimulation.com
+          IONMILL_QA_DIR: ionmill-production-qa
+        run: node --test scripts/verify-ionmill-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ionmill-browser-evidence
+          path: |
+            ionmill-qa
+            ionmill-production-qa
