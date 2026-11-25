@@ -1,0 +1,79 @@
+{
+  "title": "BTS EBPG exposure v1",
+  "schema": "bts.ebpg.exposure.v1",
+  "description": "Machine output is an exposed, undeveloped revision. The mask is a threshold prediction only.",
+  "required": [
+    "schema",
+    "equipmentId",
+    "model",
+    "solverVersion",
+    "origin",
+    "runId",
+    "sample",
+    "history",
+    "pattern",
+    "parameters",
+    "frame",
+    "dose",
+    "thresholdMask",
+    "contourSegments",
+    "timing",
+    "peak",
+    "clearedUm2",
+    "provenance"
+  ],
+  "fields": {
+    "sample": {
+      "id": "string; original sample ID",
+      "parentRevision": "string",
+      "revision": "string; child",
+      "substrate": "Si",
+      "chipMm": 10,
+      "resistThicknessNm": 500,
+      "state": "exposed, undeveloped"
+    },
+    "pattern": "bts.ebpg.pattern.v1; preserve shape IDs and rectangular exposures",
+    "parameters": "dose/current/pitch/alpha/beta/eta/threshold/energyKeV with units on page",
+    "frame": {
+      "n": 256,
+      "stepUm": 0.005,
+      "originUm": [
+        -0.64,
+        -0.64
+      ],
+      "rowOrder": "y increasing",
+      "doseUnit": "uC/cm^2 equivalent",
+      "coordinates": "chip centered; +x right, +y up"
+    },
+    "dose": "65536 finite numbers, row-major y increasing, pixel centers origin + (index+0.5)*step",
+    "thresholdMask": "65536 integers, 0 or 1, row-major; threshold prediction",
+    "contourSegments": "arrays [x0,y0,x1,y1] in um",
+    "timing": "areaUm2, chargeC, shots, minDwellNs, beamOnS",
+    "history": "ordered action/state/at ISO time records; physical time is not animation time"
+  },
+  "exampleManifest": {
+    "schema": "bts.ebpg.exposure.v1",
+    "equipmentId": "02-05",
+    "origin": "simulated",
+    "runId": "example-manifest-only",
+    "sample": {
+      "id": "EBPG-COUPON-001",
+      "parentRevision": "r0",
+      "revision": "r0-ebpg-example",
+      "substrate": "Si",
+      "chipMm": 10,
+      "resistThicknessNm": 500,
+      "state": "exposed, undeveloped"
+    },
+    "frame": {
+      "n": 256,
+      "stepUm": 0.005,
+      "originUm": [
+        -0.64,
+        -0.64
+      ],
+      "rowOrder": "y increasing"
+    },
+    "note": "Illustrative manifest only; not a complete exposure file. Use Run example sequence and Export JSON for a complete calculated file."
+  }
+}
