@@ -1,0 +1,27 @@
+{
+  "schema": "bts.lithography.latent-dose.v1",
+  "description": "Sample revision: no development or remaining film inferred.",
+  "required": [
+    "equipmentId",
+    "sampleId",
+    "parentRevision",
+    "revision",
+    "sample",
+    "mask",
+    "pose",
+    "maskToCoupon",
+    "fiducials",
+    "exposure",
+    "grid",
+    "statistics"
+  ],
+  "grid": {
+    "unit": "mJ/cm2",
+    "originMm": "lower-left edge in coupon-local frame",
+    "spacingMm": "cell dimensions",
+    "nx": "column count",
+    "ny": "row count",
+    "values": "row-major dose array; first row at minimum y"
+  },
+  "pose": "coupon to mask rigid transform; mm, degrees; maskToCoupon 3×3 inverse homogeneous transform"
+}
