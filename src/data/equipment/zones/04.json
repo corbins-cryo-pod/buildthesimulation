@@ -45,9 +45,10 @@
     "inputs": "Mask profile, material stack and calibration grid for coil/bias settings",
     "outputs": "Etched cross-section, remaining mask and process-domain flag",
     "acceptance": "Hold out one measured cross-section inside the calibration range; compare trench depth and sidewall angle against its metrology uncertainty. A request outside the calibrated range must be flagged.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Scale reconstruction · nominal dimensions, inferred internal geometry",
+    "simulationStatus": "Implemented · single published power pair / imported calibration; empirical holdout pending",
+    "integrationStatus": "Simulator implemented · JSON/CSV output; downstream importer pending",
+    "simulator": "/simulations/equipment/04-02/simulator/"
   },
   {
     "id": "04-03",

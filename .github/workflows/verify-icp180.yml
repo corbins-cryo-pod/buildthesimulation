@@ -1,0 +1,46 @@
+name: Verify ICP 180 equipment
+on:
+  pull_request:
+    paths:
+      - 'public/equipment/04-02/**'
+      - 'src/pages/simulations/equipment/04-02/**'
+      - 'tests/equipment-04-02.mjs'
+      - 'scripts/verify-icp-browser.mjs'
+      - '.github/workflows/verify-icp180.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'public/equipment/04-02/**'
+      - 'src/pages/simulations/equipment/04-02/**'
+      - '.github/workflows/verify-icp180.yml'
+  workflow_dispatch:
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - name: Verify built site
+        env:
+          ICP_QA_DIR: icp-qa
+        run: node --test scripts/verify-icp-browser.mjs
+      - name: Verify production after deployment
+        if: github.event_name == 'push'
+        env:
+          ICP_URL: https://buildthesimulation.com
+          ICP_QA_DIR: icp-production-qa
+        run: node --test scripts/verify-icp-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: icp-browser-evidence
+          path: |
+            icp-qa
+            icp-production-qa

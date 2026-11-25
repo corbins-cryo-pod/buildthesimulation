@@ -1,0 +1,185 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+const asset = '/equipment/04-02/';
+const register = '/simulations/equipment/04-02/';
+const manual = 'https://www.nanofab.utah.edu/wp-content/uploads/2022/10/Oxford-100-Manual.pdf';
+const paper = 'https://doi.org/10.6028/jres.121.028';
+const photos = [
+ {id:'front',title:'Front / operator side',source:'Cornell CNF: System 100 dielectric variant',url:'https://www.cnfusers.cornell.edu/node/122',note:'Blue frame, cabinet panels, left load-lock, center source and front controls. Variant photo, not the selected serial number.'},
+ {id:'oblique',title:'Oblique / console',source:'KTH: PlasmaLab 100 illustrated manual',url:'https://www.nanophys.kth.se/nanolab/rie-cryo/webman/man.html',note:'Worktop, source enclosure, console placement and load-lock relationship; cryo variant.'},
+ {id:'rear',title:'Rear / services',source:'Oxford illustrated parts catalogue, pp. v–vi; installation fig. 4, p. 9',url:manual,note:'Services and connector families. Positions simplified; no installation-ready piping.'},
+ {id:'load',title:'Wafer loading area',source:'University of Houston: Mission Microchips',url:'https://stories.uh.edu/2022-microchips-space/',note:'Opened load-lock, circular wafer stage and raised source cover. Lid and travel inferred.'},
+ {id:'cut',title:'Source / cutaway',source:'Oxford ICP 180 source manual, figs. 1–2, pp. 5–7',url:manual,note:'Dielectric tube, RF coil, matching unit, grounded vessel and biased chuck. Inspection-only schematic, not service geometry.'}
+];
+---
+<Layout pageTitle="ICP reactive ion etcher" subtitle="Oxford PlasmaLab System 100 · ICP 180" description="Interactive scale reconstruction and calibration-bounded silicon etch experiment.">
+ <article class="equipment icp-lab">
+  <nav class="eq-nav"><a href={register}>← Equipment 04-02</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">Model evidence</a></nav>
+  <header class="eq-mast"><span class="eq-meta">04-02 / dry processing / virtual instrument</span><h2>OXFORD PLASMALAB SYSTEM 100</h2><p>Three-frame ICP 180 with a single automatic load-lock, 100 mm wafer and temperature-controlled biased electrode. A dimensional reconstruction of a documented configuration, not a serial-number-specific digital twin.</p></header>
+  <div class="icp-grid">
+   <section class="icp-panel" aria-label="Instrument viewer">
+    <h2>01 / Instrument</h2>
+    <div class="icp-viewport"><canvas id="icp-canvas" aria-label="Interactive instrument. Drag to orbit, scroll or pinch to zoom. Use view buttons for preset angles." tabindex="0"></canvas><span id="icp-view-status" role="status">Loading 3D asset…</span></div>
+    <div class="icp-actions"><button id="view-reset" type="button">Reset</button><button id="view-front" type="button">Front</button><button id="view-rear" type="button">Rear</button><button id="view-load" type="button">Load-lock</button><button id="view-cut" type="button" aria-pressed="false">Inspect source</button><button id="view-plus" type="button">Zoom +</button><button id="view-minus" type="button">Zoom −</button></div>
+    <p class="icp-note">The source inspection hides the shielding and chamber cover virtually; it is not an operational action on the real instrument. Purple plasma is a schematic, not a field calculation. Dimensions of subassemblies, internal parts and travel are inferred.</p>
+    <div class="icp-actions"><a href={asset+'oxford-icp180.gltf'} download>Download glTF</a><a href={asset+'model-source.json'} download>Editable geometry JSON</a><a href={asset+'build-model.mjs'} download>Model generator</a><button id="export-glb" type="button" disabled>Export GLB</button></div>
+   </section>
+   <section class="icp-panel">
+    <h2>02 / Specimen and controls</h2>
+    <p id="stage" role="status">Example wafer on chuck; ready to run.</p>
+    <div class="icp-actions"><button id="lid" type="button">Open load-lock</button><button id="insert" type="button">Remove wafer</button><button id="transfer" type="button">Return to load-lock</button><button id="reset-sample" type="button">Reset example</button></div>
+    <div class="icp-form">
+      <label>Sample ID <input id="sample-id" value="SOI-04-02-001" maxlength="100"/></label>
+      <label>Starting revision <input id="revision" type="number" min="0" step="1" value="0"/></label>
+      <label>Wafer diameter (mm)<select id="wafer"><option value="100">100</option><option value="150">150 (unsupported)</option></select></label>
+      <label>Stack<select id="stack"><option value="ZEP/Si/SiO2">ZEP / Si / SiO₂</option><option value="Other">Other (unsupported)</option></select></label>
+      <label>Si thickness (nm)<input id="si" type="number" min="50" max="2000" step="1" value="300"/></label>
+      <label>Buried oxide (nm)<input id="oxide" type="number" min="10" max="5000" step="1" value="200"/></label>
+      <label>Mask thickness (nm)<input id="mask" type="number" min="10" max="2000" step="1" value="200"/></label>
+      <label>Mask opening (nm)<input id="opening" type="number" min="100" max="10000" step="1" value="1000"/></label>
+      <label>ICP coil power (W)<input id="coil" type="number" min="200" max="3000" step="1" value="700"/></label>
+      <label>RF bias power (W)<input id="bias" type="number" min="5" max="300" step="1" value="60"/></label>
+      <label>Etch time (s)<input id="time" type="number" min="0" max="300" step="1" value="120"/></label>
+    </div>
+    <p class="icp-note">Fixed chemistry HBr/Cl₂, fixed pressure 15 mTorr and temperature 20 °C. These are research-paper conditions in a virtual experiment, not a facility operating procedure. Power settings outside the currently loaded calibration are rejected.</p>
+    <div class="icp-actions"><button class="icp-primary" id="run-etch" type="button" disabled>Run etch</button><button id="export-result" type="button" disabled>Export result JSON</button><button id="export-csv" type="button" disabled>Export profile CSV</button></div>
+    <p id="cal-status" role="status">Published summary — one supported power pair.</p>
+    <details><summary>Import calibration and independent holdout</summary><p>Calibration JSON must contain a source, the fixed conditions and a complete rectangular coil/bias grid. Rates are nm/min; angles are degrees from the wafer plane. The downloadable template is synthetic, not measured.</p><a href={asset+'calibration-example.json'} download>Synthetic grid template</a><label class="icp-file">Calibration JSON <input id="cal-file" type="file" accept=".json,application/json"/></label><button id="reset-cal" type="button">Restore literature baseline</button><p>For an independent cross-section, enter its source, depth, angle and metrology tolerances. The measurements must not be used as calibration data.</p><textarea id="holdout" rows="5" placeholder='{"source":"independent SEM ID","depthNm":190,"angleDeg":88,"depthToleranceNm":5,"angleToleranceDeg":1}'></textarea><button id="holdout-check" type="button" disabled>Compare holdout</button><pre id="holdout-result" role="status"></pre></details>
+   </section>
+  </div>
+  <section class="icp-panel" id="result-panel"><h2>03 / Etched cross-section</h2><p id="run-status" role="status">No result yet. Run the loaded example.</p><div class="icp-result"><svg id="profile" viewBox="0 0 640 320" role="img" aria-label="Etched cross-section with mask, silicon and buried oxide"><text x="320" y="160" text-anchor="middle" fill="currentColor">Run etch to see a cross-section</text></svg><dl id="metrics" class="icp-metrics"></dl></div><p class="icp-note">Cross-section uses equal x and z scales and an ideal inward taper. Mask lateral erosion, aspect-ratio dependent etching, charging, microloading, roughness, plasma chemistry and temperature dynamics are not modeled. Result flags limit the claim, not actual instrument safety.</p></section>
+  <section id="evidence" class="icp-panel"><h2>04 / Illustrated reference sheet</h2><p>Photographs and manual plates are linked, not republished, because reuse permission was not established. Original renders below show the reconstructed instrument from corresponding views. No CAD or photogrammetric fit was available. The front and loading photos are from related installations, not the same serial number.</p>
+   <div class="icp-refs">{photos.map(p=><figure><img id={'ref-'+p.id} alt={'Original simulated '+p.title+' view'} width="560" height="350"/><figcaption><strong>{p.title}</strong> · Original render<br/><a href={p.url} target="_blank" rel="noopener">{p.source}</a><br/>{p.note}</figcaption></figure>)}</div>
+  </section>
+  <section class="icp-panel"><h2>05 / Specifications and model</h2>
+   <div class="icp-table"><table><thead><tr><th>Specification</th><th>Value</th><th>Role / evidence</th></tr></thead><tbody>
+    <tr><td>Installation envelope</td><td>1,630 × 747 × 1,592 mm</td><td>Typical 3-frame callouts; nominal deck width/depth and source top, <a href={manual}>installation issue 5, fig. 1, p. 6</a>. Small control protrusions and accessory location inferred.</td></tr>
+    <tr><td>Wafer</td><td>100 mm diameter</td><td>Supported input; paper reports approximately 100 mm SOI. Thickness and trench dimensions are example choices.</td></tr>
+    <tr><td>ICP source</td><td>Up to 3 kW</td><td>Family source capability, <a href={manual}>ICP 180 source p. 9</a>; not a recipe limit.</td></tr>
+    <tr><td>Typical ICP / RF range</td><td>200–3,000 / 5–300 W</td><td>Input validation envelope from <a href="https://wiki.anl.gov/cnm/Nanofabrication/Equipment/Oxford_ICP_etching_system">Argonne ICP 180 installation</a>; not evidence of calibration.</td></tr>
+    <tr><td>Baseline source / bias</td><td>700 / 60 W</td><td>Only published power pair, <a href={paper}>Michels et al. (2016), §3.3.2, pp. 518–519</a>.</td></tr>
+    <tr><td>Fixed gases / pressure / temperature</td><td>HBr/Cl₂ 10/5 sccm; ~15 mTorr; ~20 °C</td><td>Published nominal recipe, fixed simulation conditions.</td></tr>
+    <tr><td>Si / ZEP / oxide rate</td><td>95 / 72 / 1.9 nm/min</td><td>Published typical Si and resist rates; oxide inferred as Si/50 from stated selectivity.</td></tr>
+    <tr><td>Sidewall</td><td>87–90° reported; 88.5° nominal</td><td>Midpoint is a modeling assumption, not a measured cross-section.</td></tr>
+    <tr><td>Lid travel / transfer</td><td>~100° / ~557 mm</td><td>Inferred visualization only; actual travel/pivots and all internal dimensions unmeasured.</td></tr>
+   </tbody></table></div>
+   <p><strong>Method.</strong> At the supplied coil/bias pair, linearly interpolate rates and angle bilinearly within the rectangular user grid; the literature baseline has no interpolation range. Etch depth = min(Si thickness, Si rate × time), then oxide etches at the oxide rate. Remaining mask = initial mask − mask rate × elapsed minutes. Bottom opening = top opening − 2 × depth × tan(90° − angle). Time stops at mask exhaustion, complete stack removal or geometric pinch-off. Zero time is permitted. Outside calibrated powers or unsupported stack, no predicted profile is returned.</p>
+   <p><strong>Contract.</strong> Inputs: sample ID/revision, 100 mm ZEP/Si/SiO₂ stack, layer thicknesses and opening in nm, coil and bias in W, time in seconds. Outputs: profile coordinates in nm (x across trench; z positive into wafer), depth, remaining mask, angle, selectivity, parent revision, provenance and domain flag. The result JSON is the handoff to future metrology stations; no compatible equipment-specific importer has been demonstrated. CSV gives the four profile vertices.</p>
+   <p><a href={asset+'etch-engine.mjs'} download>Editable solver</a> · <a href={paper}>Research paper</a> · <a href={manual}>Oxford documentation</a> · <a href="https://github.com/corbins-cryo-pod/buildthesimulation/blob/main/tests/equipment-04-02.mjs">Reproducible tests</a></p>
+  </section>
+  <section class="icp-panel"><h2>06 / Verification</h2><p>Analytic reference values were specified before running the checks. The browser executes the current solver below. The calibration data are not a holdout; the register's independent measured trench/angle acceptance test remains open because no matched held-out cross-section and uncertainty were found.</p><div class="icp-table"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody id="verification"><tr><td colspan="5">Running local checks…</td></tr></tbody></table></div><p>Geometry checks establish nominal modeled dimensions, not measurement of a physical installation. The numerical tests verify equations and flags, not experimental accuracy. No actual equipment operation is implied.</p></section>
+ </article>
+</Layout>
+<style>
+.icp-lab{max-width:78rem}.icp-lab h2{font-family:var(--font-label,inherit);font-size:1.22rem;letter-spacing:.035em}.icp-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:1.1rem;margin:1.4rem 0}.icp-panel{border:1px solid var(--border);background:var(--panel);padding:1rem;min-width:0;margin-bottom:1.15rem}.icp-panel h2{border-bottom:1px solid var(--border);padding-bottom:.5rem;margin:0 0 .8rem}.icp-panel p{line-height:1.45}.icp-viewport{position:relative;background:#202a32;aspect-ratio:1.25;min-height:280px;border:1px solid var(--border);overflow:hidden}.icp-viewport canvas{width:100%;height:100%;display:block;touch-action:none}.icp-viewport span{position:absolute;left:.6rem;bottom:.6rem;max-width:95%;background:#17212cda;color:#eee;padding:.3rem .5rem;font-size:.8rem;pointer-events:none}.icp-actions{display:flex;flex-wrap:wrap;gap:.45rem;margin:.65rem 0;align-items:center}.icp-actions a{font-size:.86rem}.icp-lab button,.icp-lab input,.icp-lab select,.icp-lab textarea{font:inherit;color:var(--text);background:var(--panel);border:1px solid var(--border);border-radius:2px;padding:.42rem .6rem;min-width:0}.icp-lab button{cursor:pointer;font-family:var(--font-label,inherit);font-size:.86rem;min-height:36px}.icp-lab button:disabled{opacity:.45;cursor:not-allowed}.icp-lab .icp-primary{background:#204d6a;color:#fff;border-color:#204d6a;font-weight:bold}.icp-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem}.icp-form label,.icp-file{display:grid;gap:.2rem;line-height:1.3}.icp-note{font-size:.86rem;opacity:.85}.icp-lab textarea{width:100%;box-sizing:border-box;resize:vertical;font-family:monospace;font-size:.85rem}.icp-lab pre{white-space:pre-wrap;font-size:.82rem;overflow-wrap:anywhere}.icp-result{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:1.2rem;align-items:center}#profile{width:100%;height:auto;background:#edf0f2;color:#202a32;border:1px solid var(--border)}.icp-metrics{display:grid;grid-template-columns:1fr auto;gap:.4rem 1rem;margin:0}.icp-metrics dt,.icp-metrics dd{border-bottom:1px solid var(--border);padding:.3rem 0;margin:0}.icp-metrics dd{font-variant-numeric:tabular-nums;font-weight:bold;text-align:right}.icp-refs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.icp-refs figure{margin:0}.icp-refs img{width:100%;height:auto;aspect-ratio:1.6;background:#202a32;display:block;object-fit:contain}.icp-refs figcaption{font-size:.86rem;line-height:1.4;margin:.5rem 0}.icp-table{overflow-x:auto}.icp-table table{width:100%;border-collapse:collapse;font-size:.9rem}.icp-table :is(td,th){text-align:left;vertical-align:top;padding:.55rem;border-bottom:1px solid var(--border)}.icp-table th{font-family:var(--font-label,inherit)}.icp-lab details{border-top:1px solid var(--border);padding-top:.6rem;margin-top:.75rem}.icp-lab summary{cursor:pointer}.icp-lab #run-status{font-weight:bold}.icp-lab [data-fail="true"]{color:#b65a39}@media(max-width:850px){.icp-grid,.icp-result{grid-template-columns:1fr}.icp-refs{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:480px){.icp-panel{padding:.65rem}.icp-form{grid-template-columns:1fr 1fr}.icp-refs{grid-template-columns:1fr}.icp-viewport{min-height:230px}.icp-lab button{font-size:.8rem}}
+</style>
+<script>
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {GLTFExporter} from 'three/addons/exporters/GLTFExporter.js';
+const $=(id)=>document.getElementById(id);
+const asset='/equipment/04-02/';
+const engineURL=asset+'etch-engine.mjs';
+async function main(){
+const {runEtch,normalizeCalibration,interpolate,compareHoldout,BASELINE,EXAMPLE,CONDITIONS}=await import(/* @vite-ignore */ engineURL);
+let cal=BASELINE,result=null,location='chamber',lidOpen=false,busy=false,cut=false,root=null,renderer=null,scene=null,camera=null,controls=null,render=null;
+const fields={'sample-id':'sampleId',revision:'revision',wafer:'waferMm',stack:'stack',si:'siNm',oxide:'oxideNm',mask:'maskNm',opening:'openingNm',coil:'coilW',bias:'biasW',time:'timeS'};
+const fieldInput=()=>Object.fromEntries(Object.entries(fields).map(([id,key])=>[key,['sampleId','stack'].includes(key)?$(id).value:$(id).value.trim()===''?NaN:Number($(id).value)]));
+function stageText(msg){$('stage').textContent=msg}
+function status(msg,fail=false){$('run-status').textContent=msg;$('run-status').dataset.fail=String(fail)}
+function download(name,data,type){const u=URL.createObjectURL(new Blob([data],{type}));const a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}
+function node(name){return root?.getObjectByName(name.replaceAll(' ','_'))||root?.getObjectByName(name)||null}
+const shellNames=['Process chamber shell','ICP source cover','Cover handle','Viewport rim','Viewport glass','Caution plate','Grounded process vessel','Dielectric source tube'];
+function sync(){
+ $('lid').textContent=lidOpen?'Close load-lock':'Open load-lock';
+ $('lid').disabled=busy||location==='chamber';
+ $('insert').textContent=location==='none'?'Insert wafer':'Remove wafer';
+ $('insert').disabled=busy||!lidOpen||location==='chamber';
+ $('transfer').textContent=location==='chamber'?'Return to load-lock':'Transfer to chuck';
+ $('transfer').disabled=busy||lidOpen||location==='none';
+ $('run-etch').disabled=busy||lidOpen||location!=='chamber';
+ $('reset-sample').disabled=busy;
+ $('export-result').disabled=!result;
+ $('export-csv').disabled=!result?.output;
+ $('holdout-check').disabled=result?.flag!=='in-domain';
+ for(const id of Object.keys(fields))$(id).disabled=busy;
+ for(const id of ['cal-file','reset-cal'])$(id).disabled=busy;
+ if(root){
+  const lid=node('Load lid pivot'),wafer=node('Wafer carriage'),plasma=node('Plasma schematic');
+  if(lid)lid.rotation.x=lidOpen?-100*Math.PI/180:0;
+  if(wafer){wafer.visible=location!=='none';wafer.position.set(location==='chamber'?.032:-.525,location==='chamber'?1.229:1.206,-.015)}
+  for(const name of shellNames){const n=node(name);if(n)n.visible=!cut}
+  if(plasma)plasma.visible=cut&&busy;
+  $('view-cut').setAttribute('aria-pressed',String(cut));
+  render?.();
+ }
+}
+function clear(message='Settings changed. Run etch to calculate a new result.'){result=null;$('metrics').replaceChildren();$('profile').replaceChildren();svgText(320,160,'Run etch to see cross-section','middle');$('holdout-result').textContent='';status(message);sync()}
+for(const id of Object.keys(fields))$(id).addEventListener('input',()=>clear());
+$('lid').onclick=()=>{if(busy||location==='chamber')return;lidOpen=!lidOpen;stageText(lidOpen?'Load-lock open. Insert or remove wafer.':'Load-lock sealed. Transfer available if wafer present.');sync()};
+$('insert').onclick=()=>{if(busy||!lidOpen||location==='chamber')return;location=location==='none'?'lock':'none';stageText(location==='none'?'No wafer loaded.':'Wafer on load tray. Close lid to transfer.');clear('Specimen state changed.')};
+$('transfer').onclick=()=>{if(busy||lidOpen||location==='none')return;location=location==='chamber'?'lock':'chamber';stageText(location==='chamber'?'Wafer on chuck; ready to run.':'Wafer returned to load-lock. Open lid to unload.');sync()};
+$('reset-sample').onclick=()=>{if(busy)return;for(const [id,key] of Object.entries(fields))$(id).value=String(EXAMPLE[key]);location='chamber';lidOpen=false;stageText('Example wafer on chuck; ready to run.');clear('Default specimen restored.')};
+$('cal-file').onchange=async()=>{try{const f=$('cal-file').files?.[0];if(!f)return;if(f.size>250000)throw Error('Calibration exceeds 250 kB.');const c=JSON.parse(await f.text());normalizeCalibration(c);cal=c;$('cal-status').textContent='User calibration: '+c.source+' ('+c.points.length+' points; not independently validated)';clear()}catch(e){$('cal-status').textContent='Import rejected; previous calibration retained. '+e.message}finally{$('cal-file').value=''}};
+$('reset-cal').onclick=()=>{cal=BASELINE;$('cal-status').textContent='Published summary — one supported power pair.';clear()};
+$('run-etch').onclick=()=>{if(busy||lidOpen||location!=='chamber')return;const r=runEtch(fieldInput(),cal);if(!r.output){result=r;status(r.flag+': '+r.message,true);sync();return}busy=true;stageText('Virtual process running…');status('Calculating and playing back the virtual etch.');sync();setTimeout(()=>{busy=false;result=r;stageText('Virtual run finished; wafer remains on chuck.');showResult(r);sync()},650)};
+$('export-result').onclick=()=>{if(result)download('04-02-result.json',JSON.stringify(result,null,2),'application/json')};
+$('export-csv').onclick=()=>{if(!result?.output)return;const o=result.output;const csv=(v)=>'"'+String(v).replaceAll('"','""')+'"';download('04-02-profile.csv',['sample_id,revision,vertex,x_nm,z_nm,flag',...o.profile.map((p,i)=>[csv(o.sampleId),o.revision,i,...p,result.flag].join(','))].join('\n')+'\n','text/csv')};
+$('holdout-check').onclick=()=>{try{$('holdout-result').textContent=JSON.stringify(compareHoldout(result,JSON.parse($('holdout').value)),null,2)}catch(e){$('holdout-result').textContent=e.message}};
+function svg(tag,attrs){const el=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const [k,v] of Object.entries(attrs))el.setAttribute(k,String(v));$('profile').append(el);return el}
+function svgText(x,y,text,anchor='start',fill='#26333c'){const e=svg('text',{x,y,'text-anchor':anchor,fill,'font-size':13,'font-family':'Arial,sans-serif'});e.textContent=text}
+function showResult(r){
+ status(r.flag+': '+r.message,r.flag!=='in-domain');$('metrics').replaceChildren();$('profile').replaceChildren();
+ if(!r.output)return;
+ const o=r.output,i=r.input,f=n=>Number(n.toFixed(3)).toString();
+ for(const [k,v] of [['Sample revision',o.revision],['Si depth',f(o.siDepthNm)+' nm'],['Oxide depth',f(o.oxideDepthNm)+' nm'],['Total depth',f(o.totalDepthNm)+' nm'],['Mask remaining',f(o.remainingMaskNm)+' nm'],['Sidewall angle',f(o.angleDeg)+'°'],['Bottom opening',f(o.bottomOpeningNm)+' nm'],['Si / mask selectivity',f(o.siToMaskSelectivity)],['Elapsed',f(o.elapsedS)+' s']]){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=k;dd.textContent=String(v);$('metrics').append(dt,dd)}
+ const pad=Math.max(150,i.openingNm*.23),extent=i.openingNm+2*pad,scale=Math.min(550/extent,235/(i.siNm+i.oxideNm+Math.max(i.maskNm,20))),left=320-extent*scale/2,right=640-left,y0=37+i.maskNm*scale,siY=y0+i.siNm*scale,oxY=siY+i.oxideNm*scale;
+ const topL=320-i.openingNm*scale/2,topR=640-topL,bottomL=320-o.bottomOpeningNm*scale/2,bottomR=640-bottomL,bottomY=y0+o.totalDepthNm*scale;
+ svg('rect',{x:left,y:y0,width:right-left,height:i.siNm*scale,fill:'#899eb1',stroke:'#516477'});
+ svg('rect',{x:left,y:siY,width:right-left,height:i.oxideNm*scale,fill:'#d1ba78',stroke:'#907a42'});
+ svg('rect',{x:left,y:y0-o.remainingMaskNm*scale,width:topL-left,height:o.remainingMaskNm*scale,fill:'#526a48'});
+ svg('rect',{x:topR,y:y0-o.remainingMaskNm*scale,width:right-topR,height:o.remainingMaskNm*scale,fill:'#526a48'});
+ svg('polygon',{points:[topL+','+y0,bottomL+','+bottomY,bottomR+','+bottomY,topR+','+y0].join(' '),fill:'#edf0f2',stroke:'#40515d','stroke-width':1.2});
+ svg('line',{x1:320,y1:y0,x2:320,y2:bottomY,stroke:'#334e62','stroke-dasharray':'3 3'});
+ svgText(320,24,'Opening '+f(i.openingNm)+' nm','middle');
+ svgText(320,Math.min(294,oxY+17),'ZEP mask (green) · Si (blue) · buried oxide (gold)','middle');
+ const scaleNm=10**Math.floor(Math.log10(90/scale));svg('line',{x1:40,y1:302,x2:40+scaleNm*scale,y2:302,stroke:'#26333c','stroke-width':3});svgText(40+scaleNm*scale/2,294,scaleNm+' nm','middle');
+}
+function verify(){
+ const ref=runEtch(EXAMPLE),half=runEtch({...EXAMPLE,timeS:60}),fail=runEtch({...EXAMPLE,biasW:61}),mask=runEtch({...EXAMPLE,maskNm:72});
+ const a=ref.output;const rows=[['Analytic depth',190,a.totalDepthNm,'nm',1e-9],['Analytic remaining mask',56,a.remainingMaskNm,'nm',1e-9],['Analytic taper width',990.049346,a.bottomOpeningNm,'nm',.001],['Half-time depth',95,half.output.totalDepthNm,'nm',1e-9],['Uncalibrated bias','out-of-domain',fail.flag,'',null],['Mask exhaustion',60,mask.output.elapsedS,'s',1e-9]];
+ const t=$('verification');t.replaceChildren();for(const [name,expected,actual,unit,tol] of rows){const ok=tol===null?expected===actual:Math.abs(expected-actual)<=tol,tr=document.createElement('tr');for(const v of [name,expected+' '+unit,(typeof actual==='number'?actual.toFixed(6):actual)+' '+unit,tol===null?'exact flag':tol+' '+unit,ok?'PASS':'FAIL']){const td=document.createElement('td');td.textContent=v;tr.append(td)}t.append(tr)}
+}
+verify();sync();
+try{
+ renderer=new THREE.WebGLRenderer({canvas:$('icp-canvas'),antialias:true,preserveDrawingBuffer:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));renderer.setClearColor(0x202a32);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.25;
+ scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(38,1,.01,20);controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=false;controls.minDistance=.26;controls.maxDistance=6;controls.target.set(0,.80,0);
+ scene.add(new THREE.HemisphereLight(0xe7f0ff,0x77766d,2.25));const key=new THREE.DirectionalLight(0xfff5e6,3);key.position.set(2,4,3);scene.add(key);const rim=new THREE.DirectionalLight(0xbad7ff,1.7);rim.position.set(-2,2,-3);scene.add(rim);
+ const floor=new THREE.Mesh(new THREE.PlaneGeometry(15,15),new THREE.MeshStandardMaterial({color:0x3b4952,roughness:.85}));floor.rotation.x=-Math.PI/2;floor.position.y=-.002;scene.add(floor);const grid=new THREE.GridHelper(12,48,0x596673,0x46535c);grid.position.y=.001;scene.add(grid);
+ render=()=>renderer.render(scene,camera);controls.addEventListener('change',render);
+ const resize=()=>{const b=$('icp-canvas').parentElement.getBoundingClientRect();if(b.width&&b.height){renderer.setSize(b.width,b.height,false);camera.aspect=b.width/b.height;camera.updateProjectionMatrix();render()}};
+ new ResizeObserver(resize).observe($('icp-canvas').parentElement);
+ const views={reset:[[2.25,1.85,2.6],[0,.78,0]],front:[[0,1.12,3.4],[0,.79,0]],rear:[[-1.65,1.7,-2.6],[0,.8,0]],load:[[-1.03,1.7,.82],[-.53,1.18,-.015]],cut:[[.73,1.72,1.01],[.032,1.36,-.015]],oblique:[[-2.25,1.85,2.6],[0,.78,0]]};
+ function view(v){const [p,t]=views[v];camera.position.fromArray(p);controls.target.fromArray(t);controls.update();render()}
+ const gltf=await new GLTFLoader().loadAsync(asset+'oxford-icp180.gltf');root=gltf.scene;scene.add(root);
+ // Label plate and monitor are original render details, not copied logos.
+ function textPlate(lines,width,height,pos,bg,fg){const c=document.createElement('canvas');c.width=512;c.height=128;const g=c.getContext('2d');g.fillStyle=bg;g.fillRect(0,0,512,128);g.fillStyle=fg;g.textAlign='center';g.font='bold 42px Arial';g.fillText(lines[0],256,52);g.font='27px Arial';g.fillText(lines[1],256,99);const tex=new THREE.CanvasTexture(c);tex.colorSpace=THREE.SRGBColorSpace;const m=new THREE.Mesh(new THREE.PlaneGeometry(width,height),new THREE.MeshBasicMaterial({map:tex}));m.position.fromArray(pos);root.add(m)}
+ textPlate(['OXFORD','PlasmaLab System 100'],.25,.075,[-.07,.83,.379],'#123d64','#ffffff');
+ textPlate(['ICP 180','VIRTUAL CONTROL'],.324,.212,[.57,1.32,-.004],'#1c3542','#9cd1cf');
+ const wafer=node('Wafer carriage'),lid=node('Load lid pivot');if(!wafer||!lid)throw Error('Required moving nodes missing.');
+ // Original thumbnails, same model and preset perspectives.
+ function thumbnails(){const before=location,wasOpen=lidOpen,wasCut=cut;const size=new THREE.Vector2();renderer.getSize(size);renderer.setSize(560,350,false);camera.aspect=560/350;camera.updateProjectionMatrix();
+ for(const name of ['front','oblique','rear','load','cut']){cut=name==='cut';lidOpen=name==='load';location=name==='load'?'lock':'chamber';sync();view(name);$('ref-'+name).src=renderer.domElement.toDataURL('image/png')}
+ location=before;lidOpen=wasOpen;cut=wasCut;sync();renderer.setSize(size.x,size.y,false);resize();view('reset')}
+ $('view-reset').onclick=()=>{cut=false;sync();view('reset')};for(const v of ['front','rear','load'])$('view-'+v).onclick=()=>view(v);
+ $('view-cut').onclick=()=>{cut=!cut;sync();view(cut?'cut':'reset')};
+ $('view-plus').onclick=()=>{camera.position.sub(controls.target).multiplyScalar(.8).add(controls.target);controls.update();render()};$('view-minus').onclick=()=>{camera.position.sub(controls.target).multiplyScalar(1.25).add(controls.target);controls.update();render()};
+ $('icp-canvas').addEventListener('keydown',e=>{if(e.key==='Home'){view('reset');e.preventDefault()}else if(e.key==='+'||e.key==='=')$('view-plus').click();else if(e.key==='-')$('view-minus').click()});
+ $('export-glb').disabled=false;$('export-glb').onclick=async()=>{try{const cloned=root.clone(true);const w=cloned.getObjectByName('Wafer_carriage'),l=cloned.getObjectByName('Load_lid_pivot');if(w){w.visible=true;w.position.set(-.525,1.206,-.015)}if(l)l.rotation.x=0;const data=await new GLTFExporter().parseAsync(cloned,{binary:true,onlyVisible:false});download('oxford-icp180.glb',data,'model/gltf-binary')}catch(e){$('icp-view-status').textContent='GLB export failed: '+e.message}};
+ resize();sync();view('reset');thumbnails();$('icp-view-status').textContent='Scale reconstruction · drag to orbit · scroll / pinch to zoom';
+}catch(e){$('icp-view-status').textContent='3D unavailable: '+e.message+'. Numerical experiment remains available; glTF download above.'}
+}
+main().catch(e=>{$('run-status').textContent='Simulator could not initialize: '+e.message;$('icp-view-status').textContent='Initialization failed.'});
+</script>
