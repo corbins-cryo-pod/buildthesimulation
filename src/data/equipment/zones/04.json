@@ -48,12 +48,7 @@
     "geometryStatus": "Scale reconstruction · nominal dimensions, inferred internal geometry",
     "simulationStatus": "Implemented · single published power pair / imported calibration; empirical holdout pending",
     "integrationStatus": "Simulator implemented · JSON/CSV output; downstream importer pending",
-    "related": [
-      [
-        "Open simulator — Oxford ICP 180",
-        "/simulations/equipment/04-02/simulator/"
-      ]
-    ]
+    "simulator": "/simulations/equipment/04-02/simulator/"
   },
   {
     "id": "04-03",

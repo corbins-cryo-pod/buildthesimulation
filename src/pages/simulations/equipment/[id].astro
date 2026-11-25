@@ -10,7 +10,8 @@ const associated = dossiers.filter(d=>d[2].includes(r.id));
 <Layout pageTitle={r.name} subtitle="" description={r.purpose}>
   <article class="equipment eq-sheet">
     <nav class="eq-nav" aria-label="Register navigation"><a href={base}>← Equipment register</a><a href={base+'?zone='+zone.id}>Zone {zone.id} · {zone.name}</a><a href={base+'roadmap/'}>Ecosystem build plan</a></nav>
-    <header class="eq-mast"><span class="eq-meta">Equipment {r.id} &nbsp; / &nbsp; {r.priority}</span><h2>{r.model}</h2><p>{r.purpose}</p>{r.related?.filter(([title])=>title.startsWith("Open simulator")).map(([title,url])=><p><a href={url} style="display:inline-block;border:1px solid var(--border);padding:.65rem 1rem;font-weight:bold;">{title} →</a></p>)}</header>
+    <header class="eq-mast"><span class="eq-meta">Equipment {r.id} &nbsp; / &nbsp; {r.priority}</span><h2>{r.model}</h2><p>{r.purpose}</p></header>
+    {r.simulator && <p><a href={r.simulator} style="display:inline-block;border:1px solid var(--border);padding:.65rem 1rem;font-weight:bold">Open simulator →</a></p>}
     <dl class="eq-progress">{[['Geometry',r.geometryStatus],['Simulation',r.simulationStatus],['Integration',r.integrationStatus]].map(([label,value])=><div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
     <section><h2>Model and behavior plan</h2><dl class="eq-fields">
       <dt>Reference acquisition</dt><dd>{evidence[r.evidence]} (grade {r.evidence}). {r.evidence === 'C' ? 'Identify a scale reference for the candidate or dimension the original design. Record which dimensions are design choices.' : 'Pin the installed variant and accessories, record a known dimension, and obtain orthogonal reference views before tracing the enclosure.'}</dd>

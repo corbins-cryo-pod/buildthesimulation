@@ -1,0 +1,91 @@
+{
+  "schema": "bts.etch-cross-section.v1",
+  "deviceId": "04-02",
+  "modelVersion": "04-02-etch-v1",
+  "input": {
+    "sampleId": "SOI-04-02-001",
+    "revision": 0,
+    "stack": "ZEP/Si/SiO2",
+    "waferMm": 100,
+    "coilW": 700,
+    "biasW": 60,
+    "timeS": 120,
+    "openingNm": 1000,
+    "siNm": 300,
+    "oxideNm": 200,
+    "maskNm": 200
+  },
+  "units": {
+    "length": "nm",
+    "time": "s",
+    "power": "W",
+    "angle": "deg",
+    "rate": "nm/min"
+  },
+  "coordinateFrame": "x across trench; z depth positive into wafer from original Si surface",
+  "provenance": {
+    "source": "https://doi.org/10.6028/jres.121.028",
+    "kind": "analytic example calculated from published-summary parameters; not a measurement",
+    "conditions": {
+      "chemistry": "HBr/Cl2",
+      "hbrSccm": 10,
+      "cl2Sccm": 5,
+      "pressureMtorr": 15,
+      "temperatureC": 20,
+      "waferMm": 100,
+      "stack": "ZEP/Si/SiO2"
+    },
+    "calibrationPoints": [
+      {
+        "coilW": 700,
+        "biasW": 60,
+        "siRate": 95,
+        "maskRate": 72,
+        "oxideRate": 1.9,
+        "angle": 88.5
+      }
+    ]
+  },
+  "flag": "in-domain",
+  "message": "Analytic example (not browser verification).",
+  "output": {
+    "sampleId": "SOI-04-02-001",
+    "revision": 1,
+    "parentRevision": 0,
+    "elapsedS": 120,
+    "siDepthNm": 190,
+    "oxideDepthNm": 0,
+    "totalDepthNm": 190,
+    "remainingMaskNm": 56,
+    "angleDeg": 88.5,
+    "topOpeningNm": 1000,
+    "bottomOpeningNm": 990.049349803709,
+    "siToMaskSelectivity": 1.3194444444444444,
+    "siToOxideSelectivity": 50,
+    "profile": [
+      [
+        -500,
+        0
+      ],
+      [
+        -495.0246749018545,
+        190
+      ],
+      [
+        495.0246749018545,
+        190
+      ],
+      [
+        500,
+        0
+      ]
+    ],
+    "rates": {
+      "siRate": 95,
+      "maskRate": 72,
+      "oxideRate": 1.9,
+      "angle": 88.5
+    },
+    "partial": false
+  }
+}
