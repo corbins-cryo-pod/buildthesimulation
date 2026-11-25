@@ -46,7 +46,7 @@ export async function mount(root){
   parts['resist-layer'].visible=parts['sample-chip'].visible;
   parts['beam-indicator'].visible=state==='writing'&&cutaway;
   parts['beam-indicator'].scale.setScalar(1);
-  parts['lamp-0'].material=parts['lamp-0'].material.clone();parts['lamp-0'].material.emissive.setHex(state==='writing'?0x0aaa55:0x000000);
+  parts['lamp-0'].material.emissive.setHex(state==='writing'?0x0aaa55:0x000000);
   // Virtual stage is intentionally stationary at the centered field; its actual travel is not animated at exaggerated scale.
   if(renderer)renderer.render(scene,camera);
  }
@@ -138,6 +138,7 @@ export async function mount(root){
   const floor=new THREE.Mesh(new THREE.PlaneGeometry(8,8),new THREE.MeshStandardMaterial({color:0x43515a,roughness:.92}));floor.rotation.x=-Math.PI/2;floor.position.y=-.012;scene.add(floor);
   const gltf=await new GLTFLoader().loadAsync('/equipment/02-05/ebpg5200.gltf');model=gltf.scene;scene.add(model);model.traverse(n=>{if(n.name)parts[n.name]=n;});
   for(const k of ['lock-door','sample-holder','sample-chip','resist-layer','chamber-cover','beam-indicator','lamp-0'])if(!parts[k])throw Error('Missing component '+k);
+  parts['lamp-0'].material=parts['lamp-0'].material.clone();
   function resize(){const w=Math.max(1,view.clientWidth),h=Math.max(1,view.clientHeight);renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
   new ResizeObserver(resize).observe(view);resize();
   function preset(name){if(name==='stage')cutaway=true;else if(name==='whole'||name==='front'||name==='rear'||name==='side')cutaway=false;
