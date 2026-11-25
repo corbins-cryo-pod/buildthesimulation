@@ -1,0 +1,18 @@
+// Rebuild glTF from editable JSON: node public/equipment/02-02/build-model.mjs
+import {readFileSync,writeFileSync} from 'node:fs';
+function makeGltf(src){
+ const P=[],N=[],I=[],bytes=[],views=[],acc=[];
+ function primitive(shape){
+  const pos=[],norm=[],ind=[];const face=(a,b,c,d,n)=>{const k=pos.length/3;for(const v of [a,b,c,d]){pos.push(...v);norm.push(...n)}ind.push(k,k+1,k+2,k,k+2,k+3)};
+  if(shape==="box"){const a=.5;face([-a,-a,a],[a,-a,a],[a,a,a],[-a,a,a],[0,0,1]);face([a,-a,-a],[-a,-a,-a],[-a,a,-a],[a,a,-a],[0,0,-1]);face([a,-a,a],[a,-a,-a],[a,a,-a],[a,a,a],[1,0,0]);face([-a,-a,-a],[-a,-a,a],[-a,a,a],[-a,a,-a],[-1,0,0]);face([-a,a,a],[a,a,a],[a,a,-a],[-a,a,-a],[0,1,0]);face([-a,-a,-a],[a,-a,-a],[a,-a,a],[-a,-a,a],[0,-1,0]);}
+  else{const inner=shape==="ring"?1/3:0;const v=(r,a,y)=>[r*Math.cos(a),y,r*Math.sin(a)];for(let i=0;i<48;i++){const a=2*Math.PI*i/48,b=2*Math.PI*(i+1)/48,m=(a+b)/2;face(v(.5,a,-.5),v(.5,a,.5),v(.5,b,.5),v(.5,b,-.5),[Math.cos(m),0,Math.sin(m)]);face(v(inner,a,.5),v(inner,b,.5),v(.5,b,.5),v(.5,a,.5),[0,1,0]);face(v(inner,b,-.5),v(inner,a,-.5),v(.5,a,-.5),v(.5,b,-.5),[0,-1,0]);if(inner)face(v(inner,b,-.5),v(inner,b,.5),v(inner,a,.5),v(inner,a,-.5),[-Math.cos(m),0,-Math.sin(m)]);}}
+  function put(arr,type,target){while(bytes.length%4)bytes.push(0);const start=bytes.length;const data=type===5126?new Float32Array(arr):new Uint16Array(arr);bytes.push(...new Uint8Array(data.buffer));const bv=views.push({buffer:0,byteOffset:start,byteLength:data.byteLength,target})-1;const ob={bufferView:bv,componentType:type,count:type===5126?arr.length/3:arr.length,type:type===5126?"VEC3":"SCALAR"};if(target===34962&&arr===pos){ob.min=[-.5,-.5,-.5];ob.max=[.5,.5,.5]}return acc.push(ob)-1;}
+  return {attributes:{POSITION:put(pos,5126,34962),NORMAL:put(norm,5126,34962)},indices:put(ind,5123,34963)};
+ }
+ const primitiveMap=Object.fromEntries(["box","cylinder","ring"].map(s=>[s,primitive(s)]));const mats=Object.keys(src.materials),meshes=[],meshMap={};
+ const ns=src.nodes.map(n=>{const o={name:n.name,translation:n.p.map(x=>x/1000)};if(n.shape){const k=n.shape+"_"+n.mat;if(meshMap[k]===undefined)meshMap[k]=meshes.push({name:k,primitives:[{...primitiveMap[n.shape],material:mats.indexOf(n.mat)}]})-1;o.mesh=meshMap[k];o.scale=n.size.map(x=>x/1000);const [a,b,c]=n.rot.map(x=>x/2),ca=Math.cos(a),cb=Math.cos(b),cc=Math.cos(c),sa=Math.sin(a),sb=Math.sin(b),sc=Math.sin(c);o.rotation=[sa*cb*cc+ca*sb*sc,ca*sb*cc-sa*cb*sc,ca*cb*sc+sa*sb*cc,ca*cb*cc-sa*sb*sc];}return o});
+ const index=Object.fromEntries(src.nodes.map((n,i)=>[n.name,i]));const roots=[];src.nodes.forEach((n,i)=>{if(n.parent){const p=ns[index[n.parent]];(p.children??=[]).push(i)}else roots.push(i)});
+ const abc="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";let b64="";for(let i=0;i<bytes.length;i+=3){const a=bytes[i],b=bytes[i+1]??0,c=bytes[i+2]??0;const v=(a<<16)|(b<<8)|c;b64+=abc[(v>>18)&63]+abc[(v>>12)&63]+(i+1<bytes.length?abc[(v>>6)&63]:"=")+(i+2<bytes.length?abc[v&63]:"=")}
+ return {asset:{version:"2.0",generator:"BuildTheSimulation MJB3 primitive model"},scene:0,scenes:[{nodes:roots}],nodes:ns,meshes,materials:mats.map(m=>({name:m,pbrMetallicRoughness:{baseColorFactor:src.materials[m],metallicFactor:["steel","chrome","gold"].includes(m)?.65:.05,roughnessFactor:["steel","chrome"].includes(m)?.28:.6},...(m==="glass"?{alphaMode:"BLEND",doubleSided:true}:{})})),buffers:[{byteLength:bytes.length,uri:"data:application/octet-stream;base64,"+b64}],bufferViews:views,accessors:acc};
+}
+const source=JSON.parse(readFileSync(new URL('./model-source.json',import.meta.url)));writeFileSync(new URL('./mjb3.gltf',import.meta.url),JSON.stringify(makeGltf(source))+'\n');

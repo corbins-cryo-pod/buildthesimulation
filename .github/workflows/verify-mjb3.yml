@@ -1,0 +1,50 @@
+name: Verify MJB3 equipment 02-02
+on:
+  pull_request:
+    paths:
+      - 'public/equipment/02-02/**'
+      - 'src/lib/equipment/02-02/**'
+      - 'src/pages/simulations/equipment/02-02/**'
+      - 'src/data/equipment/zones/02.json'
+      - 'tests/equipment-02-02-mjb3.mjs'
+      - 'scripts/equipment/02-02/**'
+      - '.github/workflows/verify-mjb3.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'public/equipment/02-02/**'
+      - 'src/lib/equipment/02-02/**'
+      - 'src/pages/simulations/equipment/02-02/**'
+      - 'src/data/equipment/zones/02.json'
+      - '.github/workflows/verify-mjb3.yml'
+  workflow_dispatch:
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node --test tests/equipment-02-02-mjb3.mjs tests/equipment-register.mjs
+      - run: npm run build --ignore-scripts
+      - name: Browser verification on built site
+        env:
+          MJB3_QA_DIR: mjb3-qa
+        run: node --test scripts/equipment/02-02/browser-smoke.mjs
+      - name: Browser verification on production
+        if: github.event_name == 'push'
+        env:
+          MJB3_URL: https://buildthesimulation.com
+          MJB3_QA_DIR: mjb3-production-qa
+        run: node --test scripts/equipment/02-02/browser-smoke.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mjb3-browser-evidence
+          path: |
+            mjb3-qa
+            mjb3-production-qa
