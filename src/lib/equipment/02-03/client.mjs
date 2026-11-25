@@ -2,12 +2,12 @@ import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {GLTFExporter} from 'three/addons/exporters/GLTFExporter.js';
+import {EXAMPLE,expose,verify} from './solver.mjs';
 const asset='/equipment/02-03/';
 const $=id=>document.getElementById('mla-'+id);
 const root=document.querySelector('#mla');
 if(root) initialize().catch(e=>{$('status').textContent='Initialization failed: '+e.message;});
 async function initialize(){
- const {EXAMPLE,expose,verify}=await import(/* @vite-ignore */ '/equipment/02-03/solver.mjs');
  const keys=Object.keys(EXAMPLE).filter(k=>k!=='shapes');
  let result=null,runToken=0,open=false,loaded=false,vacuum=false,busy=false,cut=false,stagePosition=0,progress=0,sceneModel,renderer,controls,camera,scene,frame;
  const modelState={coupon_mm:EXAMPLE.coupon_mm,thickness_mm:EXAMPLE.thickness_mm};
