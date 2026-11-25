@@ -1,0 +1,74 @@
+[
+  {
+    "test": "Aligned line: seam centroid difference",
+    "expected": 0,
+    "actual": 0,
+    "units": "µm",
+    "tolerance": 0,
+    "pass": true
+  },
+  {
+    "test": "Programmed +4 µm shift",
+    "expected": 4,
+    "actual": 4,
+    "units": "µm",
+    "tolerance": 1,
+    "pass": true
+  },
+  {
+    "test": "Unaffected first stripe",
+    "expected": true,
+    "actual": true,
+    "units": "boolean",
+    "tolerance": 0,
+    "pass": true
+  },
+  {
+    "test": "Subpixel lateral shift",
+    "expected": 0.6,
+    "actual": 1,
+    "units": "µm",
+    "tolerance": 1,
+    "pass": true
+  },
+  {
+    "test": "Half dose: peak",
+    "expected": 40,
+    "actual": 40,
+    "units": "mJ/cm²",
+    "tolerance": 0.000001,
+    "pass": true
+  },
+  {
+    "test": "Uniform line area (180 × 8)",
+    "expected": 1440,
+    "actual": 1440,
+    "units": "µm²",
+    "tolerance": 0,
+    "pass": true
+  },
+  {
+    "test": "Integrated energy (80 × 1440 × 10⁻⁸)",
+    "expected": 0.001152,
+    "actual": 0.001152,
+    "units": "mJ",
+    "tolerance": 1e-10,
+    "pass": true
+  },
+  {
+    "test": "Global overlay moves both centroids",
+    "expected": 3,
+    "actual": 3,
+    "units": "µm",
+    "tolerance": 0,
+    "pass": true
+  },
+  {
+    "test": "Reject undersized coupon",
+    "expected": true,
+    "actual": true,
+    "units": "boolean",
+    "tolerance": 0,
+    "pass": true
+  }
+]

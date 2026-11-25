@@ -1,0 +1,47 @@
+{
+  "sampleId": "MLA-COUPON-001",
+  "parentRevision": 0,
+  "resist": "virtual-positive-resist",
+  "coupon_mm": 10,
+  "thickness_mm": 0.5,
+  "field_um": 100,
+  "height_um": 100,
+  "pitch_um": 1,
+  "dose_mJ_cm2": 80,
+  "offset_um": 0,
+  "overlay_um": 0,
+  "shapes": [
+    {
+      "id": "trace-01",
+      "x": 10,
+      "y": 46,
+      "w": 180,
+      "h": 8,
+      "level": 127
+    },
+    {
+      "id": "pad-L",
+      "x": 10,
+      "y": 30,
+      "w": 20,
+      "h": 40,
+      "level": 127
+    },
+    {
+      "id": "pad-R",
+      "x": 170,
+      "y": 30,
+      "w": 20,
+      "h": 40,
+      "level": 127
+    },
+    {
+      "id": "fiducial",
+      "x": 30,
+      "y": 15,
+      "w": 10,
+      "h": 5,
+      "level": 64
+    }
+  ]
+}
