@@ -1,0 +1,5528 @@
+{
+  "version": "04-03-geometry-v1",
+  "units": "m",
+  "frame": "+Y up, +Z loadlock front, +X control rack side",
+  "note": "Original approximation: UCSD six-inch photo and generic 2022 200 mm family envelope (not UCSD dimensional survey). Pump position, internal details and travel inferred.",
+  "palette": {
+    "ivory": [
+      0.83,
+      0.84,
+      0.81
+    ],
+    "panel": [
+      0.91,
+      0.92,
+      0.9
+    ],
+    "steel": [
+      0.49,
+      0.53,
+      0.55
+    ],
+    "dark": [
+      0.09,
+      0.12,
+      0.14
+    ],
+    "blue": [
+      0.055,
+      0.12,
+      0.34
+    ],
+    "screen": [
+      0.08,
+      0.29,
+      0.39
+    ],
+    "red": [
+      0.73,
+      0.05,
+      0.035
+    ],
+    "yellow": [
+      0.93,
+      0.72,
+      0.12
+    ],
+    "black": [
+      0.035,
+      0.04,
+      0.045
+    ],
+    "wafer": [
+      0.38,
+      0.55,
+      0.69
+    ],
+    "copper": [
+      0.66,
+      0.33,
+      0.12
+    ],
+    "green": [
+      0.14,
+      0.65,
+      0.35
+    ]
+  },
+  "nodes": [
+    {
+      "name": "instrument",
+      "p": [
+        0,
+        0,
+        0
+      ],
+      "parent": null
+    },
+    {
+      "name": "process_module",
+      "p": [
+        0,
+        0,
+        0
+      ],
+      "parent": "instrument"
+    },
+    {
+      "name": "lower_column",
+      "kind": "box",
+      "p": [
+        0,
+        0.5,
+        0.04
+      ],
+      "size": [
+        0.786,
+        0.89,
+        0.7
+      ],
+      "mat": "ivory",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "rear_service_cabinet",
+      "kind": "box",
+      "p": [
+        0,
+        0.52,
+        -0.59
+      ],
+      "size": [
+        0.786,
+        0.94,
+        0.569
+      ],
+      "mat": "ivory",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "leveling_foot_-0.35_-0.82",
+      "kind": "cylinder",
+      "p": [
+        -0.35,
+        0.025,
+        -0.82
+      ],
+      "size": [
+        0.084,
+        0.05,
+        0.084
+      ],
+      "mat": "black",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "leveling_stem_-0.35_-0.82",
+      "kind": "cylinder",
+      "p": [
+        -0.35,
+        0.064,
+        -0.82
+      ],
+      "size": [
+        0.027,
+        0.058,
+        0.027
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "leveling_foot_-0.35_0.34",
+      "kind": "cylinder",
+      "p": [
+        -0.35,
+        0.025,
+        0.34
+      ],
+      "size": [
+        0.084,
+        0.05,
+        0.084
+      ],
+      "mat": "black",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "leveling_stem_-0.35_0.34",
+      "kind": "cylinder",
+      "p": [
+        -0.35,
+        0.064,
+        0.34
+      ],
+      "size": [
+        0.027,
+        0.058,
+        0.027
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "leveling_foot_0.35_-0.82",
+      "kind": "cylinder",
+      "p": [
+        0.35,
+        0.025,
+        -0.82
+      ],
+      "size": [
+        0.084,
+        0.05,
+        0.084
+      ],
+      "mat": "black",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "leveling_stem_0.35_-0.82",
+      "kind": "cylinder",
+      "p": [
+        0.35,
+        0.064,
+        -0.82
+      ],
+      "size": [
+        0.027,
+        0.058,
+        0.027
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "leveling_foot_0.35_0.34",
+      "kind": "cylinder",
+      "p": [
+        0.35,
+        0.025,
+        0.34
+      ],
+      "size": [
+        0.084,
+        0.05,
+        0.084
+      ],
+      "mat": "black",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "leveling_stem_0.35_0.34",
+      "kind": "cylinder",
+      "p": [
+        0.35,
+        0.064,
+        0.34
+      ],
+      "size": [
+        0.027,
+        0.058,
+        0.027
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "lower_access_-0.395",
+      "kind": "box",
+      "p": [
+        -0.395,
+        0.5,
+        0.04
+      ],
+      "size": [
+        0.006,
+        0.83,
+        0.62
+      ],
+      "mat": "panel",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "rear_access_-0.395",
+      "kind": "box",
+      "p": [
+        -0.395,
+        0.52,
+        -0.59
+      ],
+      "size": [
+        0.006,
+        0.87,
+        0.52
+      ],
+      "mat": "panel",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_-0.395_0",
+      "kind": "box",
+      "p": [
+        -0.40053,
+        0.28,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_-0.395_1",
+      "kind": "box",
+      "p": [
+        -0.40053,
+        0.29900000000000004,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_-0.395_2",
+      "kind": "box",
+      "p": [
+        -0.40053,
+        0.318,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_-0.395_3",
+      "kind": "box",
+      "p": [
+        -0.40053,
+        0.337,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_-0.395_4",
+      "kind": "box",
+      "p": [
+        -0.40053,
+        0.35600000000000004,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_-0.395_5",
+      "kind": "box",
+      "p": [
+        -0.40053,
+        0.375,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_-0.395_6",
+      "kind": "box",
+      "p": [
+        -0.40053,
+        0.394,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_-0.395_7",
+      "kind": "box",
+      "p": [
+        -0.40053,
+        0.41300000000000003,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_-0.395_8",
+      "kind": "box",
+      "p": [
+        -0.40053,
+        0.43200000000000005,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "panel_screw_-0.395_0.16_-0.24",
+      "kind": "cylinder",
+      "p": [
+        -0.40211,
+        0.16,
+        -0.24
+      ],
+      "size": [
+        0.012,
+        0.006,
+        0.012
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": [
+        0,
+        0,
+        0.70710678,
+        0.70710678
+      ]
+    },
+    {
+      "name": "panel_screw_-0.395_0.16_0.32",
+      "kind": "cylinder",
+      "p": [
+        -0.40211,
+        0.16,
+        0.32
+      ],
+      "size": [
+        0.012,
+        0.006,
+        0.012
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": [
+        0,
+        0,
+        0.70710678,
+        0.70710678
+      ]
+    },
+    {
+      "name": "panel_screw_-0.395_0.85_-0.24",
+      "kind": "cylinder",
+      "p": [
+        -0.40211,
+        0.85,
+        -0.24
+      ],
+      "size": [
+        0.012,
+        0.006,
+        0.012
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": [
+        0,
+        0,
+        0.70710678,
+        0.70710678
+      ]
+    },
+    {
+      "name": "panel_screw_-0.395_0.85_0.32",
+      "kind": "cylinder",
+      "p": [
+        -0.40211,
+        0.85,
+        0.32
+      ],
+      "size": [
+        0.012,
+        0.006,
+        0.012
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": [
+        0,
+        0,
+        0.70710678,
+        0.70710678
+      ]
+    },
+    {
+      "name": "lower_access_0.395",
+      "kind": "box",
+      "p": [
+        0.395,
+        0.5,
+        0.04
+      ],
+      "size": [
+        0.006,
+        0.83,
+        0.62
+      ],
+      "mat": "panel",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "rear_access_0.395",
+      "kind": "box",
+      "p": [
+        0.395,
+        0.52,
+        -0.59
+      ],
+      "size": [
+        0.006,
+        0.87,
+        0.52
+      ],
+      "mat": "panel",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_0.395_0",
+      "kind": "box",
+      "p": [
+        0.40053,
+        0.28,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_0.395_1",
+      "kind": "box",
+      "p": [
+        0.40053,
+        0.29900000000000004,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_0.395_2",
+      "kind": "box",
+      "p": [
+        0.40053,
+        0.318,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_0.395_3",
+      "kind": "box",
+      "p": [
+        0.40053,
+        0.337,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_0.395_4",
+      "kind": "box",
+      "p": [
+        0.40053,
+        0.35600000000000004,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_0.395_5",
+      "kind": "box",
+      "p": [
+        0.40053,
+        0.375,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_0.395_6",
+      "kind": "box",
+      "p": [
+        0.40053,
+        0.394,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_0.395_7",
+      "kind": "box",
+      "p": [
+        0.40053,
+        0.41300000000000003,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "vent_0.395_8",
+      "kind": "box",
+      "p": [
+        0.40053,
+        0.43200000000000005,
+        -0.6
+      ],
+      "size": [
+        0.003,
+        0.007,
+        0.31
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "panel_screw_0.395_0.16_-0.24",
+      "kind": "cylinder",
+      "p": [
+        0.40211,
+        0.16,
+        -0.24
+      ],
+      "size": [
+        0.012,
+        0.006,
+        0.012
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": [
+        0,
+        0,
+        0.70710678,
+        0.70710678
+      ]
+    },
+    {
+      "name": "panel_screw_0.395_0.16_0.32",
+      "kind": "cylinder",
+      "p": [
+        0.40211,
+        0.16,
+        0.32
+      ],
+      "size": [
+        0.012,
+        0.006,
+        0.012
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": [
+        0,
+        0,
+        0.70710678,
+        0.70710678
+      ]
+    },
+    {
+      "name": "panel_screw_0.395_0.85_-0.24",
+      "kind": "cylinder",
+      "p": [
+        0.40211,
+        0.85,
+        -0.24
+      ],
+      "size": [
+        0.012,
+        0.006,
+        0.012
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": [
+        0,
+        0,
+        0.70710678,
+        0.70710678
+      ]
+    },
+    {
+      "name": "panel_screw_0.395_0.85_0.32",
+      "kind": "cylinder",
+      "p": [
+        0.40211,
+        0.85,
+        0.32
+      ],
+      "size": [
+        0.012,
+        0.006,
+        0.012
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": [
+        0,
+        0,
+        0.70710678,
+        0.70710678
+      ]
+    },
+    {
+      "name": "front_access_panel",
+      "kind": "box",
+      "p": [
+        0,
+        0.47,
+        0.394
+      ],
+      "size": [
+        0.7,
+        0.76,
+        0.007
+      ],
+      "mat": "panel",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "front_handle",
+      "kind": "box",
+      "p": [
+        -0.28,
+        0.66,
+        0.406
+      ],
+      "size": [
+        0.019,
+        0.13,
+        0.025
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "rear_connector_panel",
+      "kind": "box",
+      "p": [
+        0,
+        0.52,
+        -0.876
+      ],
+      "size": [
+        0.56,
+        0.52,
+        0.007
+      ],
+      "mat": "panel",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "service_connector_0",
+      "kind": "cylinder",
+      "p": [
+        -0.2,
+        0.52,
+        -0.888
+      ],
+      "size": [
+        0.034,
+        0.035,
+        0.034
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": [
+        0.70710678,
+        0,
+        0,
+        0.70710678
+      ]
+    },
+    {
+      "name": "service_connector_1",
+      "kind": "cylinder",
+      "p": [
+        -0.1,
+        0.52,
+        -0.888
+      ],
+      "size": [
+        0.034,
+        0.035,
+        0.034
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": [
+        0.70710678,
+        0,
+        0,
+        0.70710678
+      ]
+    },
+    {
+      "name": "service_connector_2",
+      "kind": "cylinder",
+      "p": [
+        0,
+        0.52,
+        -0.888
+      ],
+      "size": [
+        0.034,
+        0.035,
+        0.034
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": [
+        0.70710678,
+        0,
+        0,
+        0.70710678
+      ]
+    },
+    {
+      "name": "service_connector_3",
+      "kind": "cylinder",
+      "p": [
+        0.10000000000000003,
+        0.52,
+        -0.888
+      ],
+      "size": [
+        0.034,
+        0.035,
+        0.034
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": [
+        0.70710678,
+        0,
+        0,
+        0.70710678
+      ]
+    },
+    {
+      "name": "service_connector_4",
+      "kind": "cylinder",
+      "p": [
+        0.2,
+        0.52,
+        -0.888
+      ],
+      "size": [
+        0.034,
+        0.035,
+        0.034
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": [
+        0.70710678,
+        0,
+        0,
+        0.70710678
+      ]
+    },
+    {
+      "name": "rear_vent_0",
+      "kind": "box",
+      "p": [
+        0,
+        0.25,
+        -0.881
+      ],
+      "size": [
+        0.47,
+        0.011,
+        0.004
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "rear_vent_1",
+      "kind": "box",
+      "p": [
+        0,
+        0.275,
+        -0.881
+      ],
+      "size": [
+        0.47,
+        0.011,
+        0.004
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "rear_vent_2",
+      "kind": "box",
+      "p": [
+        0,
+        0.3,
+        -0.881
+      ],
+      "size": [
+        0.47,
+        0.011,
+        0.004
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "rear_vent_3",
+      "kind": "box",
+      "p": [
+        0,
+        0.325,
+        -0.881
+      ],
+      "size": [
+        0.47,
+        0.011,
+        0.004
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "rear_vent_4",
+      "kind": "box",
+      "p": [
+        0,
+        0.35,
+        -0.881
+      ],
+      "size": [
+        0.47,
+        0.011,
+        0.004
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "rear_vent_5",
+      "kind": "box",
+      "p": [
+        0,
+        0.375,
+        -0.881
+      ],
+      "size": [
+        0.47,
+        0.011,
+        0.004
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "chamber_base",
+      "kind": "box",
+      "p": [
+        0,
+        1.04,
+        0.015
+      ],
+      "size": [
+        0.72,
+        0.22,
+        0.63
+      ],
+      "mat": "steel",
+      "parent": "process_module",
+      "rotation": null
+    },
+    {
+      "name": "source_cover",
+      "p": [
+        0,
+        0,
+        0
+      ],
+      "parent": "process_module"
+    },
+    {
+      "name": "upper_source_housing",
+      "kind": "box",
+      "p": [
+        0,
+        1.457,
+        0.015
+      ],
+      "size": [
+        0.7,
+        0.562,
+        0.63
+      ],
+      "mat": "panel",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "brand_front",
+      "kind": "box",
+      "p": [
+        0,
+        1.52,
+        0.331
+      ],
+      "size": [
+        0.65,
+        0.11,
+        0.008
+      ],
+      "mat": "blue",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "brand_left",
+      "kind": "box",
+      "p": [
+        -0.352,
+        1.52,
+        0.015
+      ],
+      "size": [
+        0.008,
+        0.11,
+        0.59
+      ],
+      "mat": "blue",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "brand_right",
+      "kind": "box",
+      "p": [
+        0.352,
+        1.52,
+        0.015
+      ],
+      "size": [
+        0.008,
+        0.11,
+        0.59
+      ],
+      "mat": "blue",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_0_0",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.62,
+        -0.25
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_0_1",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6380000000000001,
+        -0.25
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_0_2",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6560000000000001,
+        -0.25
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_1_0",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.62,
+        -0.209
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_1_1",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6380000000000001,
+        -0.209
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_1_2",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6560000000000001,
+        -0.209
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_2_0",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.62,
+        -0.16799999999999998
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_2_1",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6380000000000001,
+        -0.16799999999999998
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_2_2",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6560000000000001,
+        -0.16799999999999998
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_3_0",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.62,
+        -0.127
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_3_1",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6380000000000001,
+        -0.127
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_3_2",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6560000000000001,
+        -0.127
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_4_0",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.62,
+        -0.086
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_4_1",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6380000000000001,
+        -0.086
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_4_2",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6560000000000001,
+        -0.086
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_5_0",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.62,
+        -0.044999999999999984
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_5_1",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6380000000000001,
+        -0.044999999999999984
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_5_2",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6560000000000001,
+        -0.044999999999999984
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_6_0",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.62,
+        -0.0040000000000000036
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_6_1",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6380000000000001,
+        -0.0040000000000000036
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_6_2",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6560000000000001,
+        -0.0040000000000000036
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_7_0",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.62,
+        0.03700000000000003
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_7_1",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6380000000000001,
+        0.03700000000000003
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_7_2",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6560000000000001,
+        0.03700000000000003
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_8_0",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.62,
+        0.07800000000000001
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_8_1",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6380000000000001,
+        0.07800000000000001
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_8_2",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6560000000000001,
+        0.07800000000000001
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_9_0",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.62,
+        0.119
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_9_1",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6380000000000001,
+        0.119
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_9_2",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6560000000000001,
+        0.119
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_10_0",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.62,
+        0.16000000000000003
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_10_1",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6380000000000001,
+        0.16000000000000003
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_10_2",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6560000000000001,
+        0.16000000000000003
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_11_0",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.62,
+        0.201
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_11_1",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6380000000000001,
+        0.201
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_11_2",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6560000000000001,
+        0.201
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_12_0",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.62,
+        0.242
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_12_1",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6380000000000001,
+        0.242
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_-0.353_12_2",
+      "kind": "box",
+      "p": [
+        -0.353,
+        1.6560000000000001,
+        0.242
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_0_0",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.62,
+        -0.25
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_0_1",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6380000000000001,
+        -0.25
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_0_2",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6560000000000001,
+        -0.25
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_1_0",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.62,
+        -0.209
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_1_1",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6380000000000001,
+        -0.209
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_1_2",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6560000000000001,
+        -0.209
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_2_0",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.62,
+        -0.16799999999999998
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_2_1",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6380000000000001,
+        -0.16799999999999998
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_2_2",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6560000000000001,
+        -0.16799999999999998
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_3_0",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.62,
+        -0.127
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_3_1",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6380000000000001,
+        -0.127
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_3_2",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6560000000000001,
+        -0.127
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_4_0",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.62,
+        -0.086
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_4_1",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6380000000000001,
+        -0.086
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_4_2",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6560000000000001,
+        -0.086
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_5_0",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.62,
+        -0.044999999999999984
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_5_1",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6380000000000001,
+        -0.044999999999999984
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_5_2",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6560000000000001,
+        -0.044999999999999984
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_6_0",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.62,
+        -0.0040000000000000036
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_6_1",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6380000000000001,
+        -0.0040000000000000036
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_6_2",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6560000000000001,
+        -0.0040000000000000036
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_7_0",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.62,
+        0.03700000000000003
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_7_1",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6380000000000001,
+        0.03700000000000003
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_7_2",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6560000000000001,
+        0.03700000000000003
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_8_0",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.62,
+        0.07800000000000001
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_8_1",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6380000000000001,
+        0.07800000000000001
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_8_2",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6560000000000001,
+        0.07800000000000001
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_9_0",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.62,
+        0.119
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_9_1",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6380000000000001,
+        0.119
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_9_2",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6560000000000001,
+        0.119
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_10_0",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.62,
+        0.16000000000000003
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_10_1",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6380000000000001,
+        0.16000000000000003
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_10_2",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6560000000000001,
+        0.16000000000000003
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_11_0",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.62,
+        0.201
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_11_1",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6380000000000001,
+        0.201
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_11_2",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6560000000000001,
+        0.201
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_12_0",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.62,
+        0.242
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_12_1",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6380000000000001,
+        0.242
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "upper_vent_0.353_12_2",
+      "kind": "box",
+      "p": [
+        0.353,
+        1.6560000000000001,
+        0.242
+      ],
+      "size": [
+        0.004,
+        0.007,
+        0.013
+      ],
+      "mat": "dark",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "source_warning_label",
+      "kind": "box",
+      "p": [
+        0.19,
+        1.36,
+        0.333
+      ],
+      "size": [
+        0.11,
+        0.1,
+        0.005
+      ],
+      "mat": "yellow",
+      "parent": "source_cover",
+      "rotation": null
+    },
+    {
+      "name": "chamber_viewport",
+      "kind": "cylinder",
+      "p": [
+        0.24,
+        1.04,
+        0.333
+      ],
+      "size": [
+        0.056,
+        0.015,
+        0.056
+      ],
+      "mat": "dark",
+      "parent": "process_module",
+      "rotation": [
+        0.70710678,
+        0,
+        0,
+        0.70710678
+      ]
+    },
+    {
+      "name": "chamber_internal",
+      "p": [
+        0,
+        0,
+        0
+      ],
+      "parent": "process_module"
+    },
+    {
+      "name": "lower_rf_electrode",
+      "kind": "cylinder",
+      "p": [
+        0,
+        1.106,
+        0.02
+      ],
+      "size": [
+        0.22,
+        0.047,
+        0.22
+      ],
+      "mat": "steel",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "six_inch_chuck",
+      "kind": "cylinder",
+      "p": [
+        0,
+        1.138,
+        0.02
+      ],
+      "size": [
+        0.17,
+        0.017,
+        0.17
+      ],
+      "mat": "dark",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "dielectric_plasma_vessel",
+      "kind": "cylinder",
+      "p": [
+        0,
+        1.305,
+        0.02
+      ],
+      "size": [
+        0.28,
+        0.26,
+        0.28
+      ],
+      "mat": "ivory",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_0",
+      "kind": "box",
+      "p": [
+        0.155,
+        1.205,
+        0.02
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_1",
+      "kind": "box",
+      "p": [
+        0.14971850307480558,
+        1.205,
+        0.06011695199089072
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_2",
+      "kind": "box",
+      "p": [
+        0.134233937586588,
+        1.205,
+        0.09749999999999999
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_3",
+      "kind": "box",
+      "p": [
+        0.10960155108391487,
+        1.205,
+        0.12960155108391486
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_4",
+      "kind": "box",
+      "p": [
+        0.07750000000000001,
+        1.205,
+        0.15423393758658796
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_5",
+      "kind": "box",
+      "p": [
+        0.040116951990890715,
+        1.205,
+        0.16971850307480557
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_6",
+      "kind": "box",
+      "p": [
+        9.491012693391988e-18,
+        1.205,
+        0.175
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_7",
+      "kind": "box",
+      "p": [
+        -0.040116951990890694,
+        1.205,
+        0.16971850307480557
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_8",
+      "kind": "box",
+      "p": [
+        -0.07749999999999997,
+        1.205,
+        0.154233937586588
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_9",
+      "kind": "box",
+      "p": [
+        -0.10960155108391485,
+        1.205,
+        0.12960155108391486
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_10",
+      "kind": "box",
+      "p": [
+        -0.134233937586588,
+        1.205,
+        0.09749999999999999
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_11",
+      "kind": "box",
+      "p": [
+        -0.14971850307480558,
+        1.205,
+        0.06011695199089076
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_12",
+      "kind": "box",
+      "p": [
+        -0.155,
+        1.205,
+        0.020000000000000018
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_13",
+      "kind": "box",
+      "p": [
+        -0.14971850307480558,
+        1.205,
+        -0.02011695199089072
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_14",
+      "kind": "box",
+      "p": [
+        -0.13423393758658803,
+        1.205,
+        -0.057499999999999954
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_15",
+      "kind": "box",
+      "p": [
+        -0.10960155108391492,
+        1.205,
+        -0.08960155108391481
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_16",
+      "kind": "box",
+      "p": [
+        -0.07750000000000007,
+        1.205,
+        -0.11423393758658794
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_17",
+      "kind": "box",
+      "p": [
+        -0.040116951990890694,
+        1.205,
+        -0.1297185030748056
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_18",
+      "kind": "box",
+      "p": [
+        -2.847303808017596e-17,
+        1.205,
+        -0.135
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_19",
+      "kind": "box",
+      "p": [
+        0.040116951990890645,
+        1.205,
+        -0.12971850307480562
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_20",
+      "kind": "box",
+      "p": [
+        0.07750000000000001,
+        1.205,
+        -0.11423393758658797
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_21",
+      "kind": "box",
+      "p": [
+        0.10960155108391484,
+        1.205,
+        -0.08960155108391489
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_22",
+      "kind": "box",
+      "p": [
+        0.13423393758658794,
+        1.205,
+        -0.057500000000000065
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_0_23",
+      "kind": "box",
+      "p": [
+        0.14971850307480555,
+        1.205,
+        -0.020116951990890846
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_0",
+      "kind": "box",
+      "p": [
+        0.155,
+        1.2550000000000001,
+        0.02
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_1",
+      "kind": "box",
+      "p": [
+        0.14971850307480558,
+        1.2550000000000001,
+        0.06011695199089072
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_2",
+      "kind": "box",
+      "p": [
+        0.134233937586588,
+        1.2550000000000001,
+        0.09749999999999999
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_3",
+      "kind": "box",
+      "p": [
+        0.10960155108391487,
+        1.2550000000000001,
+        0.12960155108391486
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_4",
+      "kind": "box",
+      "p": [
+        0.07750000000000001,
+        1.2550000000000001,
+        0.15423393758658796
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_5",
+      "kind": "box",
+      "p": [
+        0.040116951990890715,
+        1.2550000000000001,
+        0.16971850307480557
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_6",
+      "kind": "box",
+      "p": [
+        9.491012693391988e-18,
+        1.2550000000000001,
+        0.175
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_7",
+      "kind": "box",
+      "p": [
+        -0.040116951990890694,
+        1.2550000000000001,
+        0.16971850307480557
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_8",
+      "kind": "box",
+      "p": [
+        -0.07749999999999997,
+        1.2550000000000001,
+        0.154233937586588
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_9",
+      "kind": "box",
+      "p": [
+        -0.10960155108391485,
+        1.2550000000000001,
+        0.12960155108391486
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_10",
+      "kind": "box",
+      "p": [
+        -0.134233937586588,
+        1.2550000000000001,
+        0.09749999999999999
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_11",
+      "kind": "box",
+      "p": [
+        -0.14971850307480558,
+        1.2550000000000001,
+        0.06011695199089076
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_12",
+      "kind": "box",
+      "p": [
+        -0.155,
+        1.2550000000000001,
+        0.020000000000000018
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_13",
+      "kind": "box",
+      "p": [
+        -0.14971850307480558,
+        1.2550000000000001,
+        -0.02011695199089072
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_14",
+      "kind": "box",
+      "p": [
+        -0.13423393758658803,
+        1.2550000000000001,
+        -0.057499999999999954
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_15",
+      "kind": "box",
+      "p": [
+        -0.10960155108391492,
+        1.2550000000000001,
+        -0.08960155108391481
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_16",
+      "kind": "box",
+      "p": [
+        -0.07750000000000007,
+        1.2550000000000001,
+        -0.11423393758658794
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_17",
+      "kind": "box",
+      "p": [
+        -0.040116951990890694,
+        1.2550000000000001,
+        -0.1297185030748056
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_18",
+      "kind": "box",
+      "p": [
+        -2.847303808017596e-17,
+        1.2550000000000001,
+        -0.135
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_19",
+      "kind": "box",
+      "p": [
+        0.040116951990890645,
+        1.2550000000000001,
+        -0.12971850307480562
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_20",
+      "kind": "box",
+      "p": [
+        0.07750000000000001,
+        1.2550000000000001,
+        -0.11423393758658797
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_21",
+      "kind": "box",
+      "p": [
+        0.10960155108391484,
+        1.2550000000000001,
+        -0.08960155108391489
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_22",
+      "kind": "box",
+      "p": [
+        0.13423393758658794,
+        1.2550000000000001,
+        -0.057500000000000065
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_1_23",
+      "kind": "box",
+      "p": [
+        0.14971850307480555,
+        1.2550000000000001,
+        -0.020116951990890846
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_0",
+      "kind": "box",
+      "p": [
+        0.155,
+        1.3050000000000002,
+        0.02
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_1",
+      "kind": "box",
+      "p": [
+        0.14971850307480558,
+        1.3050000000000002,
+        0.06011695199089072
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_2",
+      "kind": "box",
+      "p": [
+        0.134233937586588,
+        1.3050000000000002,
+        0.09749999999999999
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_3",
+      "kind": "box",
+      "p": [
+        0.10960155108391487,
+        1.3050000000000002,
+        0.12960155108391486
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_4",
+      "kind": "box",
+      "p": [
+        0.07750000000000001,
+        1.3050000000000002,
+        0.15423393758658796
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_5",
+      "kind": "box",
+      "p": [
+        0.040116951990890715,
+        1.3050000000000002,
+        0.16971850307480557
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_6",
+      "kind": "box",
+      "p": [
+        9.491012693391988e-18,
+        1.3050000000000002,
+        0.175
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_7",
+      "kind": "box",
+      "p": [
+        -0.040116951990890694,
+        1.3050000000000002,
+        0.16971850307480557
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_8",
+      "kind": "box",
+      "p": [
+        -0.07749999999999997,
+        1.3050000000000002,
+        0.154233937586588
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_9",
+      "kind": "box",
+      "p": [
+        -0.10960155108391485,
+        1.3050000000000002,
+        0.12960155108391486
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_10",
+      "kind": "box",
+      "p": [
+        -0.134233937586588,
+        1.3050000000000002,
+        0.09749999999999999
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_11",
+      "kind": "box",
+      "p": [
+        -0.14971850307480558,
+        1.3050000000000002,
+        0.06011695199089076
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_12",
+      "kind": "box",
+      "p": [
+        -0.155,
+        1.3050000000000002,
+        0.020000000000000018
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_13",
+      "kind": "box",
+      "p": [
+        -0.14971850307480558,
+        1.3050000000000002,
+        -0.02011695199089072
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_14",
+      "kind": "box",
+      "p": [
+        -0.13423393758658803,
+        1.3050000000000002,
+        -0.057499999999999954
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_15",
+      "kind": "box",
+      "p": [
+        -0.10960155108391492,
+        1.3050000000000002,
+        -0.08960155108391481
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_16",
+      "kind": "box",
+      "p": [
+        -0.07750000000000007,
+        1.3050000000000002,
+        -0.11423393758658794
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_17",
+      "kind": "box",
+      "p": [
+        -0.040116951990890694,
+        1.3050000000000002,
+        -0.1297185030748056
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_18",
+      "kind": "box",
+      "p": [
+        -2.847303808017596e-17,
+        1.3050000000000002,
+        -0.135
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_19",
+      "kind": "box",
+      "p": [
+        0.040116951990890645,
+        1.3050000000000002,
+        -0.12971850307480562
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_20",
+      "kind": "box",
+      "p": [
+        0.07750000000000001,
+        1.3050000000000002,
+        -0.11423393758658797
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_21",
+      "kind": "box",
+      "p": [
+        0.10960155108391484,
+        1.3050000000000002,
+        -0.08960155108391489
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_22",
+      "kind": "box",
+      "p": [
+        0.13423393758658794,
+        1.3050000000000002,
+        -0.057500000000000065
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_2_23",
+      "kind": "box",
+      "p": [
+        0.14971850307480555,
+        1.3050000000000002,
+        -0.020116951990890846
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_0",
+      "kind": "box",
+      "p": [
+        0.155,
+        1.355,
+        0.02
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_1",
+      "kind": "box",
+      "p": [
+        0.14971850307480558,
+        1.355,
+        0.06011695199089072
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_2",
+      "kind": "box",
+      "p": [
+        0.134233937586588,
+        1.355,
+        0.09749999999999999
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_3",
+      "kind": "box",
+      "p": [
+        0.10960155108391487,
+        1.355,
+        0.12960155108391486
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_4",
+      "kind": "box",
+      "p": [
+        0.07750000000000001,
+        1.355,
+        0.15423393758658796
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_5",
+      "kind": "box",
+      "p": [
+        0.040116951990890715,
+        1.355,
+        0.16971850307480557
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_6",
+      "kind": "box",
+      "p": [
+        9.491012693391988e-18,
+        1.355,
+        0.175
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_7",
+      "kind": "box",
+      "p": [
+        -0.040116951990890694,
+        1.355,
+        0.16971850307480557
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_8",
+      "kind": "box",
+      "p": [
+        -0.07749999999999997,
+        1.355,
+        0.154233937586588
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_9",
+      "kind": "box",
+      "p": [
+        -0.10960155108391485,
+        1.355,
+        0.12960155108391486
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_10",
+      "kind": "box",
+      "p": [
+        -0.134233937586588,
+        1.355,
+        0.09749999999999999
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_11",
+      "kind": "box",
+      "p": [
+        -0.14971850307480558,
+        1.355,
+        0.06011695199089076
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_12",
+      "kind": "box",
+      "p": [
+        -0.155,
+        1.355,
+        0.020000000000000018
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_13",
+      "kind": "box",
+      "p": [
+        -0.14971850307480558,
+        1.355,
+        -0.02011695199089072
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_14",
+      "kind": "box",
+      "p": [
+        -0.13423393758658803,
+        1.355,
+        -0.057499999999999954
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_15",
+      "kind": "box",
+      "p": [
+        -0.10960155108391492,
+        1.355,
+        -0.08960155108391481
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_16",
+      "kind": "box",
+      "p": [
+        -0.07750000000000007,
+        1.355,
+        -0.11423393758658794
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_17",
+      "kind": "box",
+      "p": [
+        -0.040116951990890694,
+        1.355,
+        -0.1297185030748056
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_18",
+      "kind": "box",
+      "p": [
+        -2.847303808017596e-17,
+        1.355,
+        -0.135
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_19",
+      "kind": "box",
+      "p": [
+        0.040116951990890645,
+        1.355,
+        -0.12971850307480562
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_20",
+      "kind": "box",
+      "p": [
+        0.07750000000000001,
+        1.355,
+        -0.11423393758658797
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_21",
+      "kind": "box",
+      "p": [
+        0.10960155108391484,
+        1.355,
+        -0.08960155108391489
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_22",
+      "kind": "box",
+      "p": [
+        0.13423393758658794,
+        1.355,
+        -0.057500000000000065
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_3_23",
+      "kind": "box",
+      "p": [
+        0.14971850307480555,
+        1.355,
+        -0.020116951990890846
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_0",
+      "kind": "box",
+      "p": [
+        0.155,
+        1.405,
+        0.02
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_1",
+      "kind": "box",
+      "p": [
+        0.14971850307480558,
+        1.405,
+        0.06011695199089072
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_2",
+      "kind": "box",
+      "p": [
+        0.134233937586588,
+        1.405,
+        0.09749999999999999
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_3",
+      "kind": "box",
+      "p": [
+        0.10960155108391487,
+        1.405,
+        0.12960155108391486
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_4",
+      "kind": "box",
+      "p": [
+        0.07750000000000001,
+        1.405,
+        0.15423393758658796
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_5",
+      "kind": "box",
+      "p": [
+        0.040116951990890715,
+        1.405,
+        0.16971850307480557
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_6",
+      "kind": "box",
+      "p": [
+        9.491012693391988e-18,
+        1.405,
+        0.175
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_7",
+      "kind": "box",
+      "p": [
+        -0.040116951990890694,
+        1.405,
+        0.16971850307480557
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_8",
+      "kind": "box",
+      "p": [
+        -0.07749999999999997,
+        1.405,
+        0.154233937586588
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_9",
+      "kind": "box",
+      "p": [
+        -0.10960155108391485,
+        1.405,
+        0.12960155108391486
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_10",
+      "kind": "box",
+      "p": [
+        -0.134233937586588,
+        1.405,
+        0.09749999999999999
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_11",
+      "kind": "box",
+      "p": [
+        -0.14971850307480558,
+        1.405,
+        0.06011695199089076
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_12",
+      "kind": "box",
+      "p": [
+        -0.155,
+        1.405,
+        0.020000000000000018
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_13",
+      "kind": "box",
+      "p": [
+        -0.14971850307480558,
+        1.405,
+        -0.02011695199089072
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_14",
+      "kind": "box",
+      "p": [
+        -0.13423393758658803,
+        1.405,
+        -0.057499999999999954
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_15",
+      "kind": "box",
+      "p": [
+        -0.10960155108391492,
+        1.405,
+        -0.08960155108391481
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_16",
+      "kind": "box",
+      "p": [
+        -0.07750000000000007,
+        1.405,
+        -0.11423393758658794
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_17",
+      "kind": "box",
+      "p": [
+        -0.040116951990890694,
+        1.405,
+        -0.1297185030748056
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_18",
+      "kind": "box",
+      "p": [
+        -2.847303808017596e-17,
+        1.405,
+        -0.135
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_19",
+      "kind": "box",
+      "p": [
+        0.040116951990890645,
+        1.405,
+        -0.12971850307480562
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_20",
+      "kind": "box",
+      "p": [
+        0.07750000000000001,
+        1.405,
+        -0.11423393758658797
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_21",
+      "kind": "box",
+      "p": [
+        0.10960155108391484,
+        1.405,
+        -0.08960155108391489
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_22",
+      "kind": "box",
+      "p": [
+        0.13423393758658794,
+        1.405,
+        -0.057500000000000065
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "coil_turn_4_23",
+      "kind": "box",
+      "p": [
+        0.14971850307480555,
+        1.405,
+        -0.020116951990890846
+      ],
+      "size": [
+        0.025,
+        0.016,
+        0.025
+      ],
+      "mat": "copper",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "chuck_clamp_0",
+      "kind": "box",
+      "p": [
+        0.08,
+        1.153,
+        0.02
+      ],
+      "size": [
+        0.022,
+        0.012,
+        0.022
+      ],
+      "mat": "steel",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "chuck_clamp_1",
+      "kind": "box",
+      "p": [
+        4.898587196589413e-18,
+        1.153,
+        0.1
+      ],
+      "size": [
+        0.022,
+        0.012,
+        0.022
+      ],
+      "mat": "steel",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "chuck_clamp_2",
+      "kind": "box",
+      "p": [
+        -0.08,
+        1.153,
+        0.02000000000000001
+      ],
+      "size": [
+        0.022,
+        0.012,
+        0.022
+      ],
+      "mat": "steel",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "chuck_clamp_3",
+      "kind": "box",
+      "p": [
+        -1.4695761589768237e-17,
+        1.153,
+        -0.06
+      ],
+      "size": [
+        0.022,
+        0.012,
+        0.022
+      ],
+      "mat": "steel",
+      "parent": "chamber_internal",
+      "rotation": null
+    },
+    {
+      "name": "loadlock",
+      "p": [
+        0,
+        0,
+        0
+      ],
+      "parent": "process_module"
+    },
+    {
+      "name": "loadlock_floor",
+      "kind": "box",
+      "p": [
+        0,
+        1.025,
+        0.604
+      ],
+      "size": [
+        0.65,
+        0.045,
+        0.54
+      ],
+      "mat": "steel",
+      "parent": "loadlock",
+      "rotation": null
+    },
+    {
+      "name": "loadlock_left_wall",
+      "kind": "box",
+      "p": [
+        -0.31,
+        1.088,
+        0.604
+      ],
+      "size": [
+        0.032,
+        0.13,
+        0.54
+      ],
+      "mat": "steel",
+      "parent": "loadlock",
+      "rotation": null
+    },
+    {
+      "name": "loadlock_right_wall",
+      "kind": "box",
+      "p": [
+        0.31,
+        1.088,
+        0.604
+      ],
+      "size": [
+        0.032,
+        0.13,
+        0.54
+      ],
+      "mat": "steel",
+      "parent": "loadlock",
+      "rotation": null
+    },
+    {
+      "name": "loadlock_front_wall",
+      "kind": "box",
+      "p": [
+        0,
+        1.088,
+        0.856
+      ],
+      "size": [
+        0.65,
+        0.13,
+        0.037
+      ],
+      "mat": "steel",
+      "parent": "loadlock",
+      "rotation": null
+    },
+    {
+      "name": "loadlock_front_cowl",
+      "kind": "box",
+      "p": [
+        0,
+        0.93,
+        0.75
+      ],
+      "size": [
+        0.65,
+        0.23,
+        0.25
+      ],
+      "mat": "ivory",
+      "parent": "loadlock",
+      "rotation": null
+    },
+    {
+      "name": "loadlock_bottom_cowl",
+      "kind": "box",
+      "p": [
+        0,
+        0.83,
+        0.64
+      ],
+      "size": [
+        0.57,
+        0.12,
+        0.22
+      ],
+      "mat": "ivory",
+      "parent": "loadlock",
+      "rotation": null
+    },
+    {
+      "name": "loadlock_rail_left",
+      "kind": "box",
+      "p": [
+        -0.11,
+        1.053,
+        0.58
+      ],
+      "size": [
+        0.018,
+        0.016,
+        0.43
+      ],
+      "mat": "dark",
+      "parent": "loadlock",
+      "rotation": null
+    },
+    {
+      "name": "loadlock_rail_right",
+      "kind": "box",
+      "p": [
+        0.11,
+        1.053,
+        0.58
+      ],
+      "size": [
+        0.018,
+        0.016,
+        0.43
+      ],
+      "mat": "dark",
+      "parent": "loadlock",
+      "rotation": null
+    },
+    {
+      "name": "transfer_gate",
+      "kind": "box",
+      "p": [
+        0,
+        1.095,
+        0.332
+      ],
+      "size": [
+        0.29,
+        0.1,
+        0.014
+      ],
+      "mat": "dark",
+      "parent": "loadlock",
+      "rotation": null
+    },
+    {
+      "name": "lid_pivot",
+      "p": [
+        0,
+        1.156,
+        0.332
+      ],
+      "parent": "loadlock"
+    },
+    {
+      "name": "loadlock_lid",
+      "kind": "box",
+      "p": [
+        0,
+        0.019,
+        0.266
+      ],
+      "size": [
+        0.65,
+        0.038,
+        0.544
+      ],
+      "mat": "steel",
+      "parent": "lid_pivot",
+      "rotation": null
+    },
+    {
+      "name": "lid_handle",
+      "kind": "box",
+      "p": [
+        0,
+        0.055,
+        0.47
+      ],
+      "size": [
+        0.19,
+        0.035,
+        0.034
+      ],
+      "mat": "dark",
+      "parent": "lid_pivot",
+      "rotation": null
+    },
+    {
+      "name": "lid_hinge_-0.23",
+      "kind": "cylinder",
+      "p": [
+        -0.23,
+        0,
+        0
+      ],
+      "size": [
+        0.05,
+        0.065,
+        0.05
+      ],
+      "mat": "steel",
+      "parent": "lid_pivot",
+      "rotation": [
+        0,
+        0,
+        0.70710678,
+        0.70710678
+      ]
+    },
+    {
+      "name": "lid_hinge_0.23",
+      "kind": "cylinder",
+      "p": [
+        0.23,
+        0,
+        0
+      ],
+      "size": [
+        0.05,
+        0.065,
+        0.05
+      ],
+      "mat": "steel",
+      "parent": "lid_pivot",
+      "rotation": [
+        0,
+        0,
+        0.70710678,
+        0.70710678
+      ]
+    },
+    {
+      "name": "loadlock_estop_plate",
+      "kind": "box",
+      "p": [
+        0.15,
+        1.03,
+        0.878
+      ],
+      "size": [
+        0.075,
+        0.075,
+        0.005
+      ],
+      "mat": "yellow",
+      "parent": "loadlock",
+      "rotation": null
+    },
+    {
+      "name": "loadlock_estop",
+      "kind": "cylinder",
+      "p": [
+        0.15,
+        1.03,
+        0.892
+      ],
+      "size": [
+        0.046,
+        0.025,
+        0.046
+      ],
+      "mat": "red",
+      "parent": "loadlock",
+      "rotation": [
+        0.70710678,
+        0,
+        0,
+        0.70710678
+      ]
+    },
+    {
+      "name": "carrier",
+      "p": [
+        0,
+        1.066,
+        0.605
+      ],
+      "parent": "process_module"
+    },
+    {
+      "name": "wafer_carrier_plate",
+      "kind": "cylinder",
+      "p": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.185,
+        0.012,
+        0.185
+      ],
+      "mat": "steel",
+      "parent": "carrier",
+      "rotation": null
+    },
+    {
+      "name": "wafer_150mm",
+      "kind": "cylinder",
+      "p": [
+        0,
+        0.009,
+        0
+      ],
+      "size": [
+        0.15,
+        0.003,
+        0.15
+      ],
+      "mat": "wafer",
+      "parent": "carrier",
+      "rotation": null
+    },
+    {
+      "name": "pattern_marker",
+      "kind": "box",
+      "p": [
+        0,
+        0.011,
+        0
+      ],
+      "size": [
+        0.025,
+        0.002,
+        0.04
+      ],
+      "mat": "dark",
+      "parent": "carrier",
+      "rotation": null
+    },
+    {
+      "name": "control_rack",
+      "p": [
+        1,
+        0,
+        0.33
+      ],
+      "parent": "instrument"
+    },
+    {
+      "name": "rack_cabinet",
+      "kind": "box",
+      "p": [
+        0,
+        0.565,
+        0
+      ],
+      "size": [
+        0.612,
+        1.05,
+        0.639
+      ],
+      "mat": "ivory",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "rack_front_panel",
+      "kind": "box",
+      "p": [
+        0,
+        0.58,
+        0.322
+      ],
+      "size": [
+        0.56,
+        0.95,
+        0.008
+      ],
+      "mat": "panel",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "rack_handle_-0.255",
+      "kind": "box",
+      "p": [
+        -0.255,
+        0.73,
+        0.34
+      ],
+      "size": [
+        0.018,
+        0.16,
+        0.025
+      ],
+      "mat": "dark",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "rack_caster_-0.255_-0.27",
+      "kind": "cylinder",
+      "p": [
+        -0.255,
+        0.024,
+        -0.27
+      ],
+      "size": [
+        0.06,
+        0.048,
+        0.06
+      ],
+      "mat": "black",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "rack_caster_-0.255_0.27",
+      "kind": "cylinder",
+      "p": [
+        -0.255,
+        0.024,
+        0.27
+      ],
+      "size": [
+        0.06,
+        0.048,
+        0.06
+      ],
+      "mat": "black",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "rack_handle_0.255",
+      "kind": "box",
+      "p": [
+        0.255,
+        0.73,
+        0.34
+      ],
+      "size": [
+        0.018,
+        0.16,
+        0.025
+      ],
+      "mat": "dark",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "rack_caster_0.255_-0.27",
+      "kind": "cylinder",
+      "p": [
+        0.255,
+        0.024,
+        -0.27
+      ],
+      "size": [
+        0.06,
+        0.048,
+        0.06
+      ],
+      "mat": "black",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "rack_caster_0.255_0.27",
+      "kind": "cylinder",
+      "p": [
+        0.255,
+        0.024,
+        0.27
+      ],
+      "size": [
+        0.06,
+        0.048,
+        0.06
+      ],
+      "mat": "black",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "rack_instrument_0",
+      "kind": "box",
+      "p": [
+        0,
+        0.4,
+        0.33
+      ],
+      "size": [
+        0.48,
+        0.12,
+        0.01
+      ],
+      "mat": "steel",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "rack_instrument_1",
+      "kind": "box",
+      "p": [
+        0,
+        0.5700000000000001,
+        0.33
+      ],
+      "size": [
+        0.48,
+        0.12,
+        0.01
+      ],
+      "mat": "steel",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "rack_instrument_2",
+      "kind": "box",
+      "p": [
+        0,
+        0.74,
+        0.33
+      ],
+      "size": [
+        0.48,
+        0.12,
+        0.01
+      ],
+      "mat": "steel",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "rack_estop_plate",
+      "kind": "box",
+      "p": [
+        0.1,
+        0.78,
+        0.34
+      ],
+      "size": [
+        0.055,
+        0.055,
+        0.006
+      ],
+      "mat": "yellow",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "rack_estop",
+      "kind": "cylinder",
+      "p": [
+        0.1,
+        0.78,
+        0.357
+      ],
+      "size": [
+        0.035,
+        0.025,
+        0.035
+      ],
+      "mat": "red",
+      "parent": "control_rack",
+      "rotation": [
+        0.70710678,
+        0,
+        0,
+        0.70710678
+      ]
+    },
+    {
+      "name": "rack_status_led_0",
+      "kind": "box",
+      "p": [
+        -0.17,
+        0.55,
+        0.341
+      ],
+      "size": [
+        0.024,
+        0.012,
+        0.008
+      ],
+      "mat": "green",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "rack_status_led_1",
+      "kind": "box",
+      "p": [
+        -0.09000000000000001,
+        0.55,
+        0.341
+      ],
+      "size": [
+        0.024,
+        0.012,
+        0.008
+      ],
+      "mat": "blue",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "rack_status_led_2",
+      "kind": "box",
+      "p": [
+        -0.010000000000000009,
+        0.55,
+        0.341
+      ],
+      "size": [
+        0.024,
+        0.012,
+        0.008
+      ],
+      "mat": "green",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "rack_status_led_3",
+      "kind": "box",
+      "p": [
+        0.06999999999999998,
+        0.55,
+        0.341
+      ],
+      "size": [
+        0.024,
+        0.012,
+        0.008
+      ],
+      "mat": "blue",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "rack_status_led_4",
+      "kind": "box",
+      "p": [
+        0.15,
+        0.55,
+        0.341
+      ],
+      "size": [
+        0.024,
+        0.012,
+        0.008
+      ],
+      "mat": "green",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "monitor_post",
+      "kind": "box",
+      "p": [
+        0,
+        1.22,
+        -0.13
+      ],
+      "size": [
+        0.055,
+        0.27,
+        0.06
+      ],
+      "mat": "dark",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "monitor",
+      "kind": "box",
+      "p": [
+        0,
+        1.48,
+        -0.13
+      ],
+      "size": [
+        0.53,
+        0.33,
+        0.045
+      ],
+      "mat": "black",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "monitor_screen",
+      "kind": "box",
+      "p": [
+        0,
+        1.48,
+        -0.105
+      ],
+      "size": [
+        0.496,
+        0.29,
+        0.006
+      ],
+      "mat": "screen",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "keyboard",
+      "kind": "box",
+      "p": [
+        0,
+        1.115,
+        0.12
+      ],
+      "size": [
+        0.44,
+        0.024,
+        0.17
+      ],
+      "mat": "dark",
+      "parent": "control_rack",
+      "rotation": null
+    },
+    {
+      "name": "pumps",
+      "p": [
+        -0.84,
+        0,
+        -0.67
+      ],
+      "parent": "instrument"
+    },
+    {
+      "name": "chamber_pump_body",
+      "kind": "box",
+      "p": [
+        0,
+        0.329,
+        0
+      ],
+      "size": [
+        0.388,
+        0.658,
+        0.979
+      ],
+      "mat": "steel",
+      "parent": "pumps",
+      "rotation": null
+    },
+    {
+      "name": "pump_motor",
+      "kind": "box",
+      "p": [
+        0,
+        0.25,
+        -0.31
+      ],
+      "size": [
+        0.29,
+        0.34,
+        0.27
+      ],
+      "mat": "dark",
+      "parent": "pumps",
+      "rotation": null
+    },
+    {
+      "name": "pump_flange",
+      "kind": "cylinder",
+      "p": [
+        0,
+        0.68,
+        0.28
+      ],
+      "size": [
+        0.16,
+        0.1,
+        0.16
+      ],
+      "mat": "steel",
+      "parent": "pumps",
+      "rotation": null
+    },
+    {
+      "name": "loadlock_pump_body",
+      "kind": "box",
+      "p": [
+        -0.29,
+        0.135,
+        0.3
+      ],
+      "size": [
+        0.195,
+        0.27,
+        0.519
+      ],
+      "mat": "dark",
+      "parent": "pumps",
+      "rotation": null
+    },
+    {
+      "name": "loadlock_pump_flange",
+      "kind": "cylinder",
+      "p": [
+        -0.29,
+        0.3,
+        0.37
+      ],
+      "size": [
+        0.07,
+        0.08,
+        0.07
+      ],
+      "mat": "steel",
+      "parent": "pumps",
+      "rotation": null
+    }
+  ]
+}
