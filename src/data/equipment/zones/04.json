@@ -15,10 +15,14 @@
     "inputs": "Layer stack, resist openings, calibrated etch-rate/selectivity curves and exposure interval",
     "outputs": "Etched layer geometry, residual mask and depth map",
     "acceptance": "Use a one-material open window with a constant vertical removal rate. Before breakthrough, depth equals rate × time inside the opening and remains unchanged beneath an ideal mask.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Reconstructed — inferred dimensions",
+    "simulationStatus": "Analytical fixtures passed",
+    "integrationStatus": "Simulator and export schema implemented",
     "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/04-01/simulator/"
+      ],
       [
         "Neural Interface Studio",
         "/simulations/neural-interface-studio/"
@@ -27,7 +31,8 @@
         "Microfabrication Laboratory",
         "/simulations/microfabrication/"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/04-01/simulator/"
   },
   {
     "id": "04-02",
