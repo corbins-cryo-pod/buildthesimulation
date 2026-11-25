@@ -31,24 +31,24 @@ test('MJB3 browser: physical GLB, stage interlocks, example, exports, mobile and
   await cmd('Runtime.enable');await cmd('Page.enable');await cmd('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});await cmd('Page.navigate',{url:route});
   await wait(async()=>{const x=await txt('model-status');if(x?.includes('unavailable'))throw Error(x);return x?.includes('3D asset loaded')});
   assert.ok(await ev("document.getElementById('mjb-canvas').width>0&&document.querySelectorAll('.mjb-refs img[src^=\"data:image/png\"]').length===5"));
-  assert.equal(await disabled('run'),true);
+  assert.equal(await disabled('run'),true);assert.equal(await ev("document.querySelector('[name=pitchMm]').value"),'0.1');
   await ev("document.querySelector('[data-view=load]').click();true");await snap('working-area');
   await click('slide');assert.match(await txt('machine'),/withdrawn/);await click('load');assert.match(await txt('machine'),/no coupon/);
   await set('widthMm',24);await set('heightMm',24);await click('load');assert.match(await txt('status'),/chuck:/);assert.match(await txt('machine'),/no coupon/);
   await set('widthMm',16);await set('heightMm',16);await click('load');await click('slide');await set('xMm',3.001);await click('apply');assert.match(await txt('status'),/travel:/);assert.equal(await disabled('json'),true);assert.match(await txt('machine'),/applied X 0.600/);
   await set('xMm',3);await click('apply');assert.match(await txt('machine'),/applied X 3.000/);
   await click('align');assert.match(await txt('machine'),/applied X 0.000/);await click('contact');assert.equal(await disabled('slide'),true);assert.equal(await disabled('run'),false);
-  await click('run');await wait(async()=>!(await disabled('json')));assert.match(await txt('result'),/19.72 mm²/);assert.match(await txt('result'),/100 mJ\/cm²/);
+  await click('run');await wait(async()=>{if(await ev("document.getElementById('mjb-status').dataset.fail==='true'"))throw Error(await txt('status'));return !(await disabled('json'))},10000);assert.match(await txt('result'),/19.72 mm²/);assert.match(await txt('result'),/100 mJ\/cm²/);
   const exportJson=await ev("(async()=>{const orig=URL.createObjectURL,click=HTMLAnchorElement.prototype.click;let blob;URL.createObjectURL=b=>{blob=b;return 'blob:verify'};HTMLAnchorElement.prototype.click=()=>{};document.getElementById('mjb-json').click();URL.createObjectURL=orig;HTMLAnchorElement.prototype.click=click;const d=JSON.parse(await blob.text());return {schema:d.schema,id:d.sampleId,revision:d.revision,cells:d.grid.values.length,lit:d.statistics.exposedPixels,dose:d.statistics.maxDoseMjCm2}})()");
   assert.deepEqual(exportJson,{schema:'bts.lithography.latent-dose.v1',id:'COUPON-001',revision:1,cells:25600,lit:1972,dose:100});
   const csv=await ev("(async()=>{const orig=URL.createObjectURL,click=HTMLAnchorElement.prototype.click;let blob;URL.createObjectURL=b=>{blob=b;return 'blob:verify'};HTMLAnchorElement.prototype.click=()=>{};document.getElementById('mjb-csv').click();URL.createObjectURL=orig;HTMLAnchorElement.prototype.click=click;const text=await blob.text();return {header:text.split('\\n')[0],rows:text.trim().split('\\n').length-1}})()");
   assert.deepEqual(csv,{header:'sample_id,revision,x_mm,y_mm,dose_mJ_cm2',rows:25600});
-  await set('seconds',8);assert.equal(await disabled('json'),true);await click('run');await wait(async()=>!(await disabled('json')));assert.match(await txt('result'),/200 mJ\/cm²/);
-  await click('example');await wait(async()=>!(await disabled('json')));assert.match(await txt('result'),/100 mJ\/cm²/);await ev("document.getElementById('mjb-result').scrollIntoView({block:'center'});true");await snap('exposure');
+  await set('seconds',8);assert.equal(await disabled('json'),true);await click('run');await wait(async()=>{if(await ev("document.getElementById('mjb-status').dataset.fail==='true'"))throw Error(await txt('status'));return !(await disabled('json'))},10000);assert.match(await txt('result'),/200 mJ\/cm²/);
+  await click('example');await wait(async()=>{if(await ev("document.getElementById('mjb-status').dataset.fail==='true'"))throw Error(await txt('status'));return !(await disabled('json'))},10000);assert.match(await txt('result'),/100 mJ\/cm²/);await ev("document.getElementById('mjb-result').scrollIntoView({block:'center'});true");await snap('exposure');
   await cmd('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});await sleep(500);assert.ok(await ev("document.getElementById('mjb-lab').getBoundingClientRect().width<=window.innerWidth+2"));await snap('mobile');
   const model=await fetch(base+'/equipment/02-02/mjb3.glb');assert.equal(model.status,200);const bytes=await model.arrayBuffer();assert.equal(new DataView(bytes).getUint32(0,true),0x46546c67);
   const record=await fetch(base+'/simulations/equipment/02-02/');assert.equal(record.status,200);assert.ok((await record.text()).includes('/simulations/equipment/02-02/simulator/'));assert.deepEqual(errors,[]);
   console.log('Browser export evidence:',JSON.stringify(exportJson));
- }catch(e){throw Error(e.message+'\n'+logs.slice(-2500))}
+ }catch(e){throw Error(e.message+'\n'+logs.slice(-2500)+'\nBrowser errors: '+JSON.stringify(errors))}
  finally{socket?.close();browser.kill('SIGTERM');astro?.kill('SIGTERM');await sleep(300);rmSync(profile,{recursive:true,force:true})}
 });
