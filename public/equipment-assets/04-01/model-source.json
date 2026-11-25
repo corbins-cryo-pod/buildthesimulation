@@ -1,0 +1,1277 @@
+{
+  "units": "m",
+  "frame": "Y up; +Z operator side",
+  "configuration": "Stanford-type 200 mm open-load parallel-plate PlasmaPro 80 RIE (300 W 13.56 MHz); separate PC",
+  "dimensions": "All except nominal wafer diameter and 90° hoist rotation inferred from photos, not measured. cabinet .85 × .88 × .94 m; lift .16 m estimated; chamber body .62 × .55 m; platen diameter .24 m inferred.",
+  "hoist": {
+    "name": "hoist-pivot",
+    "liftM": 0.16,
+    "rotationDeg": -90
+  },
+  "parts": [
+    {
+      "name": "cabinet",
+      "shape": "box",
+      "pos": [
+        0,
+        0.48,
+        0
+      ],
+      "size": [
+        0.85,
+        0.94,
+        0.88
+      ],
+      "color": "#e0e2df",
+      "parent": null
+    },
+    {
+      "name": "front-upper-panel",
+      "shape": "box",
+      "pos": [
+        0,
+        0.66,
+        0.451
+      ],
+      "size": [
+        0.81,
+        0.46,
+        0.025
+      ],
+      "color": "#e0e2df",
+      "parent": null
+    },
+    {
+      "name": "front-lower-panel",
+      "shape": "box",
+      "pos": [
+        0,
+        0.22,
+        0.451
+      ],
+      "size": [
+        0.81,
+        0.38,
+        0.025
+      ],
+      "color": "#e0e2df",
+      "parent": null
+    },
+    {
+      "name": "front-console",
+      "shape": "box",
+      "pos": [
+        0,
+        0.958,
+        0.41
+      ],
+      "size": [
+        0.85,
+        0.095,
+        0.1
+      ],
+      "color": "#e0e2df",
+      "parent": null
+    },
+    {
+      "name": "top-deck",
+      "shape": "box",
+      "pos": [
+        0,
+        0.974,
+        -0.03
+      ],
+      "size": [
+        0.85,
+        0.035,
+        0.79
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "door-latch--0.34-0.22",
+      "shape": "box",
+      "pos": [
+        -0.34,
+        0.22,
+        0.472
+      ],
+      "size": [
+        0.035,
+        0.065,
+        0.025
+      ],
+      "color": "#14191c",
+      "parent": null
+    },
+    {
+      "name": "door-latch-0.34-0.22",
+      "shape": "box",
+      "pos": [
+        0.34,
+        0.22,
+        0.472
+      ],
+      "size": [
+        0.035,
+        0.065,
+        0.025
+      ],
+      "color": "#14191c",
+      "parent": null
+    },
+    {
+      "name": "door-latch--0.34-0.66",
+      "shape": "box",
+      "pos": [
+        -0.34,
+        0.66,
+        0.472
+      ],
+      "size": [
+        0.035,
+        0.065,
+        0.025
+      ],
+      "color": "#14191c",
+      "parent": null
+    },
+    {
+      "name": "door-latch-0.34-0.66",
+      "shape": "box",
+      "pos": [
+        0.34,
+        0.66,
+        0.472
+      ],
+      "size": [
+        0.035,
+        0.065,
+        0.025
+      ],
+      "color": "#14191c",
+      "parent": null
+    },
+    {
+      "name": "side-vent-0",
+      "shape": "box",
+      "pos": [
+        -0.427,
+        0.44,
+        -0.02
+      ],
+      "size": [
+        0.008,
+        0.006,
+        0.36
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "side-vent-1",
+      "shape": "box",
+      "pos": [
+        -0.427,
+        0.453,
+        -0.02
+      ],
+      "size": [
+        0.008,
+        0.006,
+        0.36
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "side-vent-2",
+      "shape": "box",
+      "pos": [
+        -0.427,
+        0.466,
+        -0.02
+      ],
+      "size": [
+        0.008,
+        0.006,
+        0.36
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "side-vent-3",
+      "shape": "box",
+      "pos": [
+        -0.427,
+        0.479,
+        -0.02
+      ],
+      "size": [
+        0.008,
+        0.006,
+        0.36
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "side-vent-4",
+      "shape": "box",
+      "pos": [
+        -0.427,
+        0.492,
+        -0.02
+      ],
+      "size": [
+        0.008,
+        0.006,
+        0.36
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "side-vent-5",
+      "shape": "box",
+      "pos": [
+        -0.427,
+        0.505,
+        -0.02
+      ],
+      "size": [
+        0.008,
+        0.006,
+        0.36
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "side-vent-6",
+      "shape": "box",
+      "pos": [
+        -0.427,
+        0.518,
+        -0.02
+      ],
+      "size": [
+        0.008,
+        0.006,
+        0.36
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "side-vent-7",
+      "shape": "box",
+      "pos": [
+        -0.427,
+        0.531,
+        -0.02
+      ],
+      "size": [
+        0.008,
+        0.006,
+        0.36
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "side-vent-8",
+      "shape": "box",
+      "pos": [
+        -0.427,
+        0.544,
+        -0.02
+      ],
+      "size": [
+        0.008,
+        0.006,
+        0.36
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "side-vent-9",
+      "shape": "box",
+      "pos": [
+        -0.427,
+        0.5569999999999999,
+        -0.02
+      ],
+      "size": [
+        0.008,
+        0.006,
+        0.36
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "side-vent-10",
+      "shape": "box",
+      "pos": [
+        -0.427,
+        0.5700000000000001,
+        -0.02
+      ],
+      "size": [
+        0.008,
+        0.006,
+        0.36
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "side-vent-11",
+      "shape": "box",
+      "pos": [
+        -0.427,
+        0.583,
+        -0.02
+      ],
+      "size": [
+        0.008,
+        0.006,
+        0.36
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "side-vent-12",
+      "shape": "box",
+      "pos": [
+        -0.427,
+        0.596,
+        -0.02
+      ],
+      "size": [
+        0.008,
+        0.006,
+        0.36
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "side-vent-13",
+      "shape": "box",
+      "pos": [
+        -0.427,
+        0.609,
+        -0.02
+      ],
+      "size": [
+        0.008,
+        0.006,
+        0.36
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "side-vent-14",
+      "shape": "box",
+      "pos": [
+        -0.427,
+        0.622,
+        -0.02
+      ],
+      "size": [
+        0.008,
+        0.006,
+        0.36
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "foot--0.34--0.34",
+      "shape": "cylinder",
+      "pos": [
+        -0.34,
+        0.025,
+        -0.34
+      ],
+      "size": [
+        0.065,
+        0.05,
+        0.065
+      ],
+      "color": "#242c30",
+      "parent": null
+    },
+    {
+      "name": "foot--0.34-0.34",
+      "shape": "cylinder",
+      "pos": [
+        -0.34,
+        0.025,
+        0.34
+      ],
+      "size": [
+        0.065,
+        0.05,
+        0.065
+      ],
+      "color": "#242c30",
+      "parent": null
+    },
+    {
+      "name": "foot-0.34--0.34",
+      "shape": "cylinder",
+      "pos": [
+        0.34,
+        0.025,
+        -0.34
+      ],
+      "size": [
+        0.065,
+        0.05,
+        0.065
+      ],
+      "color": "#242c30",
+      "parent": null
+    },
+    {
+      "name": "foot-0.34-0.34",
+      "shape": "cylinder",
+      "pos": [
+        0.34,
+        0.025,
+        0.34
+      ],
+      "size": [
+        0.065,
+        0.05,
+        0.065
+      ],
+      "color": "#242c30",
+      "parent": null
+    },
+    {
+      "name": "chamber-base",
+      "shape": "box",
+      "pos": [
+        0,
+        1.035,
+        -0.03
+      ],
+      "size": [
+        0.62,
+        0.1,
+        0.55
+      ],
+      "color": "#aab7bd",
+      "parent": null
+    },
+    {
+      "name": "lower-electrode",
+      "shape": "cylinder",
+      "pos": [
+        0,
+        1.102,
+        -0.03
+      ],
+      "size": [
+        0.24,
+        0.034,
+        0.24
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "stage-ring",
+      "shape": "cylinder",
+      "pos": [
+        0,
+        1.08,
+        -0.03
+      ],
+      "size": [
+        0.36,
+        0.035,
+        0.36
+      ],
+      "color": "#242c30",
+      "parent": null
+    },
+    {
+      "name": "wafer",
+      "shape": "cylinder",
+      "pos": [
+        0,
+        1.122,
+        -0.03
+      ],
+      "size": [
+        0.2,
+        0.001,
+        0.2
+      ],
+      "color": "#778ba9",
+      "parent": null
+    },
+    {
+      "name": "hoist-column",
+      "shape": "cylinder",
+      "pos": [
+        -0.34,
+        1.17,
+        -0.11
+      ],
+      "size": [
+        0.075,
+        0.4,
+        0.075
+      ],
+      "color": "#aab7bd",
+      "parent": null
+    },
+    {
+      "name": "hoist-pivot",
+      "shape": "group",
+      "pos": [
+        -0.34,
+        1.13,
+        -0.11
+      ],
+      "size": [
+        1,
+        1,
+        1
+      ],
+      "color": null,
+      "parent": null
+    },
+    {
+      "name": "hoist-arm",
+      "shape": "box",
+      "pos": [
+        0.17,
+        0.075,
+        0.04
+      ],
+      "size": [
+        0.4,
+        0.07,
+        0.11
+      ],
+      "color": "#aab7bd",
+      "parent": "hoist-pivot"
+    },
+    {
+      "name": "chamber-lid",
+      "shape": "box",
+      "pos": [
+        0.34,
+        0.125,
+        0.08
+      ],
+      "size": [
+        0.62,
+        0.23,
+        0.55
+      ],
+      "color": "#e0e2df",
+      "parent": "hoist-pivot"
+    },
+    {
+      "name": "top-electrode",
+      "shape": "cylinder",
+      "pos": [
+        0.34,
+        0.016,
+        0.08
+      ],
+      "size": [
+        0.36,
+        0.03,
+        0.36
+      ],
+      "color": "#aab7bd",
+      "parent": "hoist-pivot"
+    },
+    {
+      "name": "matching-cover",
+      "shape": "box",
+      "pos": [
+        0.34,
+        0.445,
+        0.08
+      ],
+      "size": [
+        0.5,
+        0.41,
+        0.46
+      ],
+      "color": "#e0e2df",
+      "parent": "hoist-pivot"
+    },
+    {
+      "name": "front-blue-band",
+      "shape": "box",
+      "pos": [
+        0.34,
+        0.52,
+        0.313
+      ],
+      "size": [
+        0.47,
+        0.09,
+        0.007
+      ],
+      "color": "#173466",
+      "parent": "hoist-pivot"
+    },
+    {
+      "name": "side-blue-band",
+      "shape": "box",
+      "pos": [
+        0.592,
+        0.52,
+        0.08
+      ],
+      "size": [
+        0.005,
+        0.09,
+        0.45
+      ],
+      "color": "#173466",
+      "parent": "hoist-pivot"
+    },
+    {
+      "name": "chamber-blue-label",
+      "shape": "box",
+      "pos": [
+        0.22,
+        0.15,
+        0.357
+      ],
+      "size": [
+        0.2,
+        0.055,
+        0.009
+      ],
+      "color": "#173466",
+      "parent": "hoist-pivot"
+    },
+    {
+      "name": "view-port-bezel",
+      "shape": "box",
+      "pos": [
+        0.45,
+        0.12,
+        0.361
+      ],
+      "size": [
+        0.055,
+        0.055,
+        0.011
+      ],
+      "color": "#a4adb0",
+      "parent": "hoist-pivot"
+    },
+    {
+      "name": "view-port",
+      "shape": "box",
+      "pos": [
+        0.45,
+        0.12,
+        0.369
+      ],
+      "size": [
+        0.035,
+        0.035,
+        0.009
+      ],
+      "color": "#14191c",
+      "parent": "hoist-pivot"
+    },
+    {
+      "name": "cabinet-brand-band",
+      "shape": "box",
+      "pos": [
+        0,
+        0.72,
+        0.469
+      ],
+      "size": [
+        0.35,
+        0.085,
+        0.008
+      ],
+      "color": "#173466",
+      "parent": null
+    },
+    {
+      "name": "cabinet-accent",
+      "shape": "box",
+      "pos": [
+        0,
+        0.665,
+        0.468
+      ],
+      "size": [
+        0.36,
+        0.005,
+        0.005
+      ],
+      "color": "#c1976b",
+      "parent": null
+    },
+    {
+      "name": "control-0-bezel",
+      "shape": "cylinder",
+      "pos": [
+        -0.31,
+        1.012,
+        0.418
+      ],
+      "size": [
+        0.045,
+        0.022,
+        0.045
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "control-0",
+      "shape": "cylinder",
+      "pos": [
+        -0.31,
+        1.029,
+        0.418
+      ],
+      "size": [
+        0.032,
+        0.023,
+        0.032
+      ],
+      "color": "#222222",
+      "parent": null
+    },
+    {
+      "name": "control-1-bezel",
+      "shape": "cylinder",
+      "pos": [
+        -0.155,
+        1.012,
+        0.418
+      ],
+      "size": [
+        0.045,
+        0.022,
+        0.045
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "control-1",
+      "shape": "cylinder",
+      "pos": [
+        -0.155,
+        1.029,
+        0.418
+      ],
+      "size": [
+        0.032,
+        0.023,
+        0.032
+      ],
+      "color": "#24806b",
+      "parent": null
+    },
+    {
+      "name": "control-2-bezel",
+      "shape": "cylinder",
+      "pos": [
+        0,
+        1.012,
+        0.418
+      ],
+      "size": [
+        0.085,
+        0.022,
+        0.085
+      ],
+      "color": "#efcb39",
+      "parent": null
+    },
+    {
+      "name": "control-2",
+      "shape": "cylinder",
+      "pos": [
+        0,
+        1.029,
+        0.418
+      ],
+      "size": [
+        0.058,
+        0.023,
+        0.058
+      ],
+      "color": "#d82529",
+      "parent": null
+    },
+    {
+      "name": "control-3-bezel",
+      "shape": "cylinder",
+      "pos": [
+        0.15499999999999997,
+        1.012,
+        0.418
+      ],
+      "size": [
+        0.045,
+        0.022,
+        0.045
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "control-3",
+      "shape": "cylinder",
+      "pos": [
+        0.15499999999999997,
+        1.029,
+        0.418
+      ],
+      "size": [
+        0.032,
+        0.023,
+        0.032
+      ],
+      "color": "#24806b",
+      "parent": null
+    },
+    {
+      "name": "control-4-bezel",
+      "shape": "cylinder",
+      "pos": [
+        0.31,
+        1.012,
+        0.418
+      ],
+      "size": [
+        0.045,
+        0.022,
+        0.045
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "control-4",
+      "shape": "cylinder",
+      "pos": [
+        0.31,
+        1.029,
+        0.418
+      ],
+      "size": [
+        0.032,
+        0.023,
+        0.032
+      ],
+      "color": "#2459b3",
+      "parent": null
+    },
+    {
+      "name": "rear-power-box",
+      "shape": "box",
+      "pos": [
+        0.15,
+        0.55,
+        -0.46
+      ],
+      "size": [
+        0.38,
+        0.22,
+        0.055
+      ],
+      "color": "#242c30",
+      "parent": null
+    },
+    {
+      "name": "rear-breaker-0",
+      "shape": "box",
+      "pos": [
+        -0.01,
+        0.52,
+        -0.496
+      ],
+      "size": [
+        0.027,
+        0.05,
+        0.012
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "rear-breaker-1",
+      "shape": "box",
+      "pos": [
+        0.032999999999999995,
+        0.52,
+        -0.496
+      ],
+      "size": [
+        0.027,
+        0.05,
+        0.012
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "rear-breaker-2",
+      "shape": "box",
+      "pos": [
+        0.076,
+        0.52,
+        -0.496
+      ],
+      "size": [
+        0.027,
+        0.05,
+        0.012
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "rear-breaker-3",
+      "shape": "box",
+      "pos": [
+        0.11900000000000001,
+        0.52,
+        -0.496
+      ],
+      "size": [
+        0.027,
+        0.05,
+        0.012
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "rear-breaker-4",
+      "shape": "box",
+      "pos": [
+        0.16199999999999998,
+        0.52,
+        -0.496
+      ],
+      "size": [
+        0.027,
+        0.05,
+        0.012
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "rear-breaker-5",
+      "shape": "box",
+      "pos": [
+        0.20499999999999996,
+        0.52,
+        -0.496
+      ],
+      "size": [
+        0.027,
+        0.05,
+        0.012
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "rear-breaker-6",
+      "shape": "box",
+      "pos": [
+        0.248,
+        0.52,
+        -0.496
+      ],
+      "size": [
+        0.027,
+        0.05,
+        0.012
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "rear-breaker-7",
+      "shape": "box",
+      "pos": [
+        0.291,
+        0.52,
+        -0.496
+      ],
+      "size": [
+        0.027,
+        0.05,
+        0.012
+      ],
+      "color": "#a4adb0",
+      "parent": null
+    },
+    {
+      "name": "rear-service-port-0",
+      "shape": "cylinder",
+      "pos": [
+        -0.31,
+        0.28,
+        -0.47
+      ],
+      "size": [
+        0.025,
+        0.05,
+        0.025
+      ],
+      "color": "#aab7bd",
+      "parent": null
+    },
+    {
+      "name": "rear-service-port-1",
+      "shape": "cylinder",
+      "pos": [
+        -0.249,
+        0.28,
+        -0.47
+      ],
+      "size": [
+        0.025,
+        0.05,
+        0.025
+      ],
+      "color": "#aab7bd",
+      "parent": null
+    },
+    {
+      "name": "rear-service-port-2",
+      "shape": "cylinder",
+      "pos": [
+        -0.188,
+        0.28,
+        -0.47
+      ],
+      "size": [
+        0.025,
+        0.05,
+        0.025
+      ],
+      "color": "#aab7bd",
+      "parent": null
+    },
+    {
+      "name": "rear-service-port-3",
+      "shape": "cylinder",
+      "pos": [
+        -0.127,
+        0.28,
+        -0.47
+      ],
+      "size": [
+        0.025,
+        0.05,
+        0.025
+      ],
+      "color": "#aab7bd",
+      "parent": null
+    },
+    {
+      "name": "rear-service-port-4",
+      "shape": "cylinder",
+      "pos": [
+        -0.066,
+        0.28,
+        -0.47
+      ],
+      "size": [
+        0.025,
+        0.05,
+        0.025
+      ],
+      "color": "#aab7bd",
+      "parent": null
+    },
+    {
+      "name": "remote-PC-table",
+      "shape": "box",
+      "pos": [
+        0.73,
+        0.91,
+        -0.02
+      ],
+      "size": [
+        0.52,
+        0.045,
+        0.56
+      ],
+      "color": "#aab7bd",
+      "parent": null
+    },
+    {
+      "name": "table-leg-0.5--0.25",
+      "shape": "box",
+      "pos": [
+        0.5,
+        0.45,
+        -0.25
+      ],
+      "size": [
+        0.035,
+        0.9,
+        0.035
+      ],
+      "color": "#aab7bd",
+      "parent": null
+    },
+    {
+      "name": "table-leg-0.5-0.21",
+      "shape": "box",
+      "pos": [
+        0.5,
+        0.45,
+        0.21
+      ],
+      "size": [
+        0.035,
+        0.9,
+        0.035
+      ],
+      "color": "#aab7bd",
+      "parent": null
+    },
+    {
+      "name": "table-leg-0.96--0.25",
+      "shape": "box",
+      "pos": [
+        0.96,
+        0.45,
+        -0.25
+      ],
+      "size": [
+        0.035,
+        0.9,
+        0.035
+      ],
+      "color": "#aab7bd",
+      "parent": null
+    },
+    {
+      "name": "table-leg-0.96-0.21",
+      "shape": "box",
+      "pos": [
+        0.96,
+        0.45,
+        0.21
+      ],
+      "size": [
+        0.035,
+        0.9,
+        0.035
+      ],
+      "color": "#aab7bd",
+      "parent": null
+    },
+    {
+      "name": "monitor-base",
+      "shape": "box",
+      "pos": [
+        0.73,
+        0.945,
+        -0.12
+      ],
+      "size": [
+        0.22,
+        0.025,
+        0.17
+      ],
+      "color": "#242c30",
+      "parent": null
+    },
+    {
+      "name": "monitor-stand",
+      "shape": "box",
+      "pos": [
+        0.73,
+        1.07,
+        -0.13
+      ],
+      "size": [
+        0.04,
+        0.22,
+        0.04
+      ],
+      "color": "#242c30",
+      "parent": null
+    },
+    {
+      "name": "monitor",
+      "shape": "box",
+      "pos": [
+        0.73,
+        1.23,
+        -0.13
+      ],
+      "size": [
+        0.43,
+        0.27,
+        0.04
+      ],
+      "color": "#14191c",
+      "parent": null
+    },
+    {
+      "name": "screen",
+      "shape": "box",
+      "pos": [
+        0.73,
+        1.23,
+        -0.107
+      ],
+      "size": [
+        0.4,
+        0.24,
+        0.008
+      ],
+      "color": "#427da0",
+      "parent": null
+    },
+    {
+      "name": "keyboard",
+      "shape": "box",
+      "pos": [
+        0.73,
+        0.95,
+        0.12
+      ],
+      "size": [
+        0.34,
+        0.025,
+        0.12
+      ],
+      "color": "#242c30",
+      "parent": null
+    }
+  ]
+}
