@@ -1,0 +1,53 @@
+{
+  "method": "Executed pure JavaScript analytical model fixtures; depth tolerance 1e-8 nm. Not process validation.",
+  "rows": [
+    {
+      "name": "Ideal mask open window",
+      "expected": 200,
+      "actual": 200,
+      "pass": true
+    },
+    {
+      "name": "Protected edge",
+      "expected": 0,
+      "actual": 0,
+      "pass": true
+    },
+    {
+      "name": "Double time",
+      "expected": 400,
+      "actual": 400,
+      "pass": true
+    },
+    {
+      "name": "Two-layer breakthrough",
+      "expected": 520,
+      "actual": 520,
+      "pass": true
+    },
+    {
+      "name": "Mask breakthrough edge",
+      "expected": 100,
+      "actual": 100,
+      "pass": true
+    },
+    {
+      "name": "Example center",
+      "expected": 50,
+      "actual": 50,
+      "pass": true
+    },
+    {
+      "name": "Example mask",
+      "expected": 112.5,
+      "actual": 112.5,
+      "pass": true
+    },
+    {
+      "name": "Oversize wafer rejected",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    }
+  ]
+}
