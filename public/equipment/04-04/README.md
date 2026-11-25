@@ -1,0 +1,5 @@
+# 04-04 Nanoquest I ion mill
+Selected direct-load argon-only water-cooled stage, conservative 100 mm carrier. Stanford installed generation unspecified; enclosure inference references Stanford photo and manufacturer Nanoquest I documentation March 2018. Geometry is not factory CAD. See simulator for references and quantitative limits. Model source uses metres and named pivots; generate GLB with node model.mjs. All housing dimensions and rear/internal source positions are inferred, not measured. 
+Numerical solver is a fixed-heightfield, ideal opaque rectangular-mask ray intersection with cosine-projected calibrated rate and volume-budget redeposition proxy. Rate is illustrative, not empirically calibrated. No thermal, yield-vs-energy, mask erosion or actual vacuum simulation.
+Default result: protected 200 nm, exposed 140 nm, mean loss 30 nm. Independent analytical cases verified in JavaScript before commit; repository tests added. Production/browser validation pending at commit. 
+Sample and result schema documented on simulator; export result can be re-imported as next sample. No cross-station integration tested.

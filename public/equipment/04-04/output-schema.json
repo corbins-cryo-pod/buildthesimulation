@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BuildTheSimulation ion mill result",
+  "description": "Simulated, not measured. Row-major coupon-local heightfield. All per-cell arrays have length nx*ny. Output sample is a supported next input if within input bounds. See the simulator for calibrated-rate assumptions and limits.",
+  "type": "object",
+  "required": [
+    "schema",
+    "provenance",
+    "sample",
+    "parentRevision",
+    "controls",
+    "frame",
+    "shadowFraction",
+    "removedNm",
+    "redepositedNm",
+    "removedVolumeMm3",
+    "redepositedVolumeMm3"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bts.ionmill.result.v1"
+    },
+    "provenance": {
+      "type": "string"
+    },
+    "sample": {
+      "type": "object",
+      "required": [
+        "schema",
+        "sampleId",
+        "revision",
+        "material",
+        "widthMm",
+        "heightMm",
+        "nx",
+        "ny",
+        "thicknessNm"
+      ],
+      "properties": {
+        "schema": {
+          "const": "bts.ionmill.sample.v1"
+        },
+        "sampleId": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "material": {
+          "type": "string"
+        },
+        "widthMm": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 100
+        },
+        "heightMm": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 100
+        },
+        "nx": {
+          "type": "integer",
+          "minimum": 8,
+          "maximum": 96
+        },
+        "ny": {
+          "type": "integer",
+          "minimum": 8,
+          "maximum": 96
+        },
+        "thicknessNm": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "parentRevision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "controls": {
+      "type": "object"
+    },
+    "frame": {
+      "type": "object",
+      "required": [
+        "origin",
+        "x",
+        "y",
+        "z",
+        "pitchMm",
+        "order",
+        "angle"
+      ]
+    },
+    "shadowFraction": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "removedNm": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "redepositedNm": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "normalDoseNm": {
+      "type": "number",
+      "minimum": 0
+    },
+    "projectedDoseNm": {
+      "type": "number",
+      "minimum": 0
+    },
+    "meanRemovedNm": {
+      "type": "number",
+      "minimum": 0
+    },
+    "meanRedepositedNm": {
+      "type": "number",
+      "minimum": 0
+    },
+    "removedVolumeMm3": {
+      "type": "number",
+      "minimum": 0
+    },
+    "redepositedVolumeMm3": {
+      "type": "number",
+      "minimum": 0
+    }
+  }
+}
