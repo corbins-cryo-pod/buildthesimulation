@@ -48,9 +48,20 @@
     "inputs": "Coupon and chuck envelopes, mask geometry, alignment marks and requested stage pose",
     "outputs": "Mask-to-coupon transform, latent image and stage-limit result",
     "acceptance": "Fit a coupon to the selected chuck, then request a position beyond the documented travel. The valid pose exposes the intended field; the second request preserves the incoming coupon.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Reference-informed physical-scale GLB; enclosure and strokes estimated",
+    "simulationStatus": "Ideal hard-contact dose and overlay; eight analytic/contract test bodies passed",
+    "integrationStatus": "Dedicated simulator; revision and dose-map export; browser CI configured",
+    "simulator": "/simulations/equipment/02-02/simulator/",
+    "related": [
+      [
+        "Harvard CNS OL-3 SOP 057 rev 2.3",
+        "https://cns1.rc.fas.harvard.edu/facilities/docs/SOP057_r2_3_MJB3%20Contact%20Aligner.pdf"
+      ],
+      [
+        "SUSS MJB3 operator manual, Feb 1984 rev A",
+        "https://www.ipsiras.ru/Lab/CKPO/Nanofot/doc/SussMJB-3.pdf"
+      ]
+    ]
   },
   {
     "id": "02-03",
@@ -71,7 +82,7 @@
     "acceptance": "Write a line across two virtual fields. Zero offset joins the line continuously; a programmed lateral offset appears only at the seam to within one pixel.",
     "geometryStatus": "Reference-informed metric glTF; internal dimensions inferred",
     "simulationStatus": "Two-stripe commanded dose model; analytic acceptance checks passed",
-    "integrationStatus": "Simulator route and exposure-revision export; browser/deployment QA pending",
+    "integrationStatus": "Simulator route and exposure-revision export; local Chromium QA passed; production verification pending",
     "simulator": "/simulations/equipment/02-03/simulator/",
     "related": [
       [
