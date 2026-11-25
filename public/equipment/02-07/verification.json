@@ -121,6 +121,14 @@
       "unit": "mm",
       "tolerance": 0,
       "pass": true
+    },
+    {
+      "test": "Clear aperture diameter encoded (nominal)",
+      "expected": 19,
+      "actual": 18.999999999999996,
+      "unit": "mm",
+      "tolerance": 0.000001,
+      "pass": true
     }
   ],
   "limitations": [

@@ -1,7 +1,8 @@
 ---
 import Layout from '../../../../layouts/Layout.astro';
 import '../../../../styles/equipment.css';
-import verification from '../../../../../public/equipment/02-07/verification.json';
+import {readFileSync} from 'node:fs';
+const verification=JSON.parse(readFileSync('public/equipment/02-07/verification.json','utf8'));
 const base='/equipment/02-07/';
 const brochure='https://www.laurell.com/literature/brochures/The-Laurell-Advantage.pdf';
 const drawing='https://www.laurell.com/literature/dimensions/WS-650-23B-OND.pdf';
@@ -37,7 +38,7 @@ const diagrams=[['Front elevation','Case, latch and tilted controller. Compare t
 <section><div class="spin-head"><strong>01 / Instrument</strong><span id="spin-state">UNLOADED</span></div><div id="spin-view" aria-label="Interactive 3D spin coater"><p id="spin-loading">Loading instrument geometry…</p></div>
 <div class="spin-buttons">{['whole','front','side','rear','bowl','controller'].map(view=><button type="button" data-spin-view={view}>{view==='whole'?'Reset view':view}</button>)}<button type="button" id="spin-glb" disabled>Export GLB</button></div>
 <p class="small">Drag to orbit, scroll or pinch to zoom. Open lid to inspect the bowl. Film thickness and rotation speed are exaggerated or slowed visually, not to scale in those respects.</p>
-<p id="spin-model-status" role="status">Loading glTF…</p><p><a href={base+'laurell.gltf'} download>Download glTF</a> · <a href={base+'model-source.mjs'} download>Editable model source</a></p>
+<p id="spin-model-status" role="status">Loading glTF…</p><p><a href={base+'laurell.gltf'} download>Download glTF</a> · <a href={base+'laurell.glb'} download>Download GLB</a> · <a href={base+'model-source.mjs'} download>Editable model source</a></p>
 </section>
 <section><div class="spin-head"><strong>02 / Process controller</strong><span>AZ 1512</span></div>
 <div class="spin-buttons"><button type="button" id="spin-example">Run ready example</button><button type="button" id="spin-reset">Reset</button><button type="button" id="spin-lid">Open lid</button><button type="button" id="spin-load">Load wafer</button><button type="button" id="spin-vacuum">Vacuum on</button><button type="button" id="spin-dispense">Dispense resist</button><button type="button" id="spin-start">Start recipe</button><button type="button" id="spin-stop" disabled>Abort</button><button type="button" id="spin-unload">Unload</button></div>
