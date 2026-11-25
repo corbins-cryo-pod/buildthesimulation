@@ -1,0 +1,128 @@
+{
+  "type": "object",
+  "required": [
+    "schema",
+    "instrumentId",
+    "dataKind",
+    "input",
+    "units",
+    "specimenA",
+    "specimenB"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bts.cee200cbx.paired-resist.v1"
+    },
+    "instrumentId": {
+      "const": "02-08"
+    },
+    "dataKind": {
+      "const": "simulated"
+    },
+    "specimenA": {
+      "$ref": "#/$defs/specimen"
+    },
+    "specimenB": {
+      "$ref": "#/$defs/specimen"
+    }
+  },
+  "$defs": {
+    "specimen": {
+      "type": "object",
+      "required": [
+        "sampleId",
+        "parentSampleId",
+        "parentRevision",
+        "revision",
+        "coating",
+        "bake",
+        "postBakeThicknessUm",
+        "history"
+      ],
+      "properties": {
+        "sampleId": {
+          "type": "string"
+        },
+        "parentSampleId": {
+          "type": "string"
+        },
+        "parentRevision": {
+          "type": "integer"
+        },
+        "revision": {
+          "type": "integer"
+        },
+        "coating": {
+          "type": "object",
+          "required": [
+            "calibrationId",
+            "spinHistory",
+            "preBakeMap"
+          ],
+          "properties": {
+            "preBakeMap": {
+              "type": "object",
+              "required": [
+                "n",
+                "pitchMm",
+                "originMm",
+                "unit",
+                "values"
+              ],
+              "properties": {
+                "n": {
+                  "const": 41
+                },
+                "pitchMm": {
+                  "type": "number"
+                },
+                "unit": {
+                  "const": "µm"
+                },
+                "values": {
+                  "type": "array",
+                  "minItems": 1681,
+                  "maxItems": 1681,
+                  "items": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "bake": {
+          "type": "object",
+          "required": [
+            "mode",
+            "schedule",
+            "tauS",
+            "temperatureHistory"
+          ],
+          "properties": {
+            "mode": {
+              "const": "contact"
+            },
+            "temperatureHistory": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "timeS",
+                  "plateC",
+                  "waferC"
+                ]
+              }
+            }
+          }
+        },
+        "postBakeThicknessUm": {
+          "type": "null"
+        }
+      }
+    }
+  }
+}

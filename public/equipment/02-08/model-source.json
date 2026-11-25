@@ -1,0 +1,1604 @@
+{
+  "unit": "mm",
+  "configuration": "Cee 200CBX standard legacy 6000 rpm / 300 C; manual dispense, contact bake",
+  "envelopeMm": {
+    "width": 711,
+    "depth": 483,
+    "height": 305
+  },
+  "notes": "Overall closed enclosure and 7 inch screen: Cee brochure p1. 254 mm bake plate and 57.2 mm chuck: KU. Other dimensions, rear port placement and hinge travel are original estimates.",
+  "materials": {
+    "steel": [
+      0.62,
+      0.64,
+      0.66,
+      1
+    ],
+    "edge": [
+      0.82,
+      0.83,
+      0.83,
+      1
+    ],
+    "chrome": [
+      0.7,
+      0.72,
+      0.73,
+      1
+    ],
+    "black": [
+      0.04,
+      0.05,
+      0.06,
+      1
+    ],
+    "dark": [
+      0.14,
+      0.16,
+      0.17,
+      1
+    ],
+    "rubber": [
+      0.03,
+      0.04,
+      0.04,
+      1
+    ],
+    "white": [
+      0.93,
+      0.94,
+      0.9,
+      1
+    ],
+    "glass": [
+      0.65,
+      0.8,
+      0.84,
+      0.25
+    ],
+    "screen": [
+      0.12,
+      0.35,
+      0.48,
+      1
+    ],
+    "blue": [
+      0.06,
+      0.25,
+      0.55,
+      1
+    ],
+    "red": [
+      0.75,
+      0.045,
+      0.04,
+      1
+    ],
+    "yellow": [
+      0.95,
+      0.72,
+      0.08,
+      1
+    ],
+    "wafer": [
+      0.34,
+      0.45,
+      0.62,
+      1
+    ],
+    "gold": [
+      0.75,
+      0.43,
+      0.18,
+      1
+    ]
+  },
+  "nodes": [
+    {
+      "name": "instrument",
+      "p": [
+        0,
+        0,
+        0
+      ],
+      "parent": null
+    },
+    {
+      "name": "chassis",
+      "shape": "box",
+      "mat": "steel",
+      "p": [
+        0,
+        103,
+        0
+      ],
+      "size": [
+        711,
+        182,
+        483
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "top_deck",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        0,
+        196,
+        0
+      ],
+      "size": [
+        711,
+        4,
+        483
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "foot_-310_-195",
+      "shape": "cylinder",
+      "mat": "rubber",
+      "p": [
+        -310,
+        6,
+        -195
+      ],
+      "size": [
+        45,
+        12,
+        45
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "foot_-310_195",
+      "shape": "cylinder",
+      "mat": "rubber",
+      "p": [
+        -310,
+        6,
+        195
+      ],
+      "size": [
+        45,
+        12,
+        45
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "foot_310_-195",
+      "shape": "cylinder",
+      "mat": "rubber",
+      "p": [
+        310,
+        6,
+        -195
+      ],
+      "size": [
+        45,
+        12,
+        45
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "foot_310_195",
+      "shape": "cylinder",
+      "mat": "rubber",
+      "p": [
+        310,
+        6,
+        195
+      ],
+      "size": [
+        45,
+        12,
+        45
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "bake_enclosure",
+      "shape": "box",
+      "mat": "steel",
+      "p": [
+        -170,
+        240,
+        -35
+      ],
+      "size": [
+        342,
+        84,
+        344
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "bake_recess",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        -170,
+        283,
+        -35
+      ],
+      "size": [
+        285,
+        3,
+        286
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "bake_plate_254mm",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        -170,
+        286,
+        -35
+      ],
+      "size": [
+        254,
+        5,
+        254
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "bake_lid",
+      "p": [
+        -170,
+        295,
+        -205
+      ],
+      "parent": "instrument"
+    },
+    {
+      "name": "bake_lid_panel",
+      "shape": "box",
+      "mat": "steel",
+      "p": [
+        0,
+        2,
+        170
+      ],
+      "size": [
+        342,
+        16,
+        340
+      ],
+      "parent": "bake_lid",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "bake_lid_inner",
+      "shape": "box",
+      "mat": "edge",
+      "p": [
+        0,
+        -7,
+        170
+      ],
+      "size": [
+        315,
+        2,
+        310
+      ],
+      "parent": "bake_lid",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "bake_handle",
+      "shape": "box",
+      "mat": "chrome",
+      "p": [
+        0,
+        0,
+        337
+      ],
+      "size": [
+        125,
+        12,
+        12
+      ],
+      "parent": "bake_lid",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "handle_post_-58",
+      "shape": "box",
+      "mat": "chrome",
+      "p": [
+        -58,
+        0,
+        329
+      ],
+      "size": [
+        12,
+        12,
+        25
+      ],
+      "parent": "bake_lid",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "handle_post_58",
+      "shape": "box",
+      "mat": "chrome",
+      "p": [
+        58,
+        0,
+        329
+      ],
+      "size": [
+        12,
+        12,
+        25
+      ],
+      "parent": "bake_lid",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "bake_hinge_-110",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        -280,
+        295,
+        -205
+      ],
+      "size": [
+        15,
+        36,
+        15
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        1.5707963267948966
+      ]
+    },
+    {
+      "name": "bake_hinge_110",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        -60,
+        295,
+        -205
+      ],
+      "size": [
+        15,
+        36,
+        15
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        1.5707963267948966
+      ]
+    },
+    {
+      "name": "bake_warning",
+      "shape": "box",
+      "mat": "yellow",
+      "p": [
+        -52,
+        248,
+        138
+      ],
+      "size": [
+        28,
+        25,
+        1
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "spin_mount",
+      "shape": "box",
+      "mat": "steel",
+      "p": [
+        176,
+        210,
+        -48
+      ],
+      "size": [
+        338,
+        24,
+        334
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "spin_bowl_floor",
+      "shape": "cylinder",
+      "mat": "white",
+      "p": [
+        176,
+        224,
+        -48
+      ],
+      "size": [
+        270,
+        5,
+        270
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "spin_bowl_wall",
+      "shape": "ring",
+      "mat": "white",
+      "p": [
+        176,
+        244,
+        -48
+      ],
+      "size": [
+        290,
+        40,
+        290
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "spin_bowl_rim",
+      "shape": "ring",
+      "mat": "white",
+      "p": [
+        176,
+        266,
+        -48
+      ],
+      "size": [
+        310,
+        7,
+        310
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "spin_spindle",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        176,
+        240,
+        -48
+      ],
+      "size": [
+        26,
+        32,
+        26
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "spin_chuck",
+      "p": [
+        176,
+        258,
+        -48
+      ],
+      "parent": "instrument"
+    },
+    {
+      "name": "vacuum_chuck",
+      "shape": "cylinder",
+      "mat": "white",
+      "p": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        57.2,
+        8,
+        57.2
+      ],
+      "parent": "spin_chuck",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "vacuum_pad_0",
+      "shape": "cylinder",
+      "mat": "red",
+      "p": [
+        17,
+        4.5,
+        0
+      ],
+      "size": [
+        9,
+        1,
+        9
+      ],
+      "parent": "spin_chuck",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "vacuum_pad_1",
+      "shape": "cylinder",
+      "mat": "red",
+      "p": [
+        1.0409497792752501e-15,
+        4.5,
+        17
+      ],
+      "size": [
+        9,
+        1,
+        9
+      ],
+      "parent": "spin_chuck",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "vacuum_pad_2",
+      "shape": "cylinder",
+      "mat": "red",
+      "p": [
+        -17,
+        4.5,
+        2.0818995585505003e-15
+      ],
+      "size": [
+        9,
+        1,
+        9
+      ],
+      "parent": "spin_chuck",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "vacuum_pad_3",
+      "shape": "cylinder",
+      "mat": "red",
+      "p": [
+        -3.1228493378257506e-15,
+        4.5,
+        -17
+      ],
+      "size": [
+        9,
+        1,
+        9
+      ],
+      "parent": "spin_chuck",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "spin_wafer",
+      "shape": "cylinder",
+      "mat": "wafer",
+      "p": [
+        0,
+        6,
+        0
+      ],
+      "size": [
+        100,
+        0.725,
+        100
+      ],
+      "parent": "spin_chuck",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "spin_wafer_mark",
+      "shape": "box",
+      "mat": "gold",
+      "p": [
+        35,
+        6.5,
+        0
+      ],
+      "size": [
+        12,
+        0.3,
+        2
+      ],
+      "parent": "spin_chuck",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "bake_wafer",
+      "shape": "cylinder",
+      "mat": "wafer",
+      "p": [
+        -170,
+        290,
+        -35
+      ],
+      "size": [
+        100,
+        0.725,
+        100
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "spin_lid",
+      "p": [
+        176,
+        274,
+        -196
+      ],
+      "parent": "instrument"
+    },
+    {
+      "name": "clear_spin_cover",
+      "shape": "cylinder",
+      "mat": "glass",
+      "p": [
+        0,
+        0,
+        148
+      ],
+      "size": [
+        286,
+        3,
+        286
+      ],
+      "parent": "spin_lid",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cover_rim",
+      "shape": "ring",
+      "mat": "white",
+      "p": [
+        0,
+        0,
+        148
+      ],
+      "size": [
+        302,
+        5,
+        302
+      ],
+      "parent": "spin_lid",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "spin_cover_screw_0",
+      "shape": "cylinder",
+      "mat": "black",
+      "p": [
+        95.45941546018392,
+        5,
+        243.4594154601839
+      ],
+      "size": [
+        14,
+        10,
+        14
+      ],
+      "parent": "spin_lid",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "spin_cover_screw_1",
+      "shape": "cylinder",
+      "mat": "black",
+      "p": [
+        -95.4594154601839,
+        5,
+        243.45941546018392
+      ],
+      "size": [
+        14,
+        10,
+        14
+      ],
+      "parent": "spin_lid",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "spin_cover_screw_2",
+      "shape": "cylinder",
+      "mat": "black",
+      "p": [
+        -95.45941546018393,
+        5,
+        52.540584539816095
+      ],
+      "size": [
+        14,
+        10,
+        14
+      ],
+      "parent": "spin_lid",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "spin_cover_screw_3",
+      "shape": "cylinder",
+      "mat": "black",
+      "p": [
+        95.45941546018389,
+        5,
+        52.54058453981607
+      ],
+      "size": [
+        14,
+        10,
+        14
+      ],
+      "parent": "spin_lid",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "cover_handle",
+      "shape": "box",
+      "mat": "white",
+      "p": [
+        0,
+        7,
+        291
+      ],
+      "size": [
+        90,
+        8,
+        15
+      ],
+      "parent": "spin_lid",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "spin_rear_bridge",
+      "shape": "box",
+      "mat": "white",
+      "p": [
+        176,
+        286,
+        -188
+      ],
+      "size": [
+        210,
+        12,
+        23
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "bridge_post_76",
+      "shape": "cylinder",
+      "mat": "black",
+      "p": [
+        76,
+        276,
+        -188
+      ],
+      "size": [
+        14,
+        20,
+        14
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "bridge_post_276",
+      "shape": "cylinder",
+      "mat": "black",
+      "p": [
+        276,
+        276,
+        -188
+      ],
+      "size": [
+        14,
+        20,
+        14
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "front_console",
+      "shape": "box",
+      "mat": "steel",
+      "p": [
+        177,
+        150,
+        203
+      ],
+      "size": [
+        335,
+        125,
+        38
+      ],
+      "parent": "instrument",
+      "rot": [
+        -0.28,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "screen_bezel",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        174,
+        160,
+        221
+      ],
+      "size": [
+        180,
+        112,
+        5
+      ],
+      "parent": "instrument",
+      "rot": [
+        -0.28,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "touchscreen_7inch",
+      "shape": "box",
+      "mat": "screen",
+      "p": [
+        174,
+        160,
+        225
+      ],
+      "size": [
+        154.9,
+        87.1,
+        3
+      ],
+      "parent": "instrument",
+      "rot": [
+        -0.28,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "screen_ui_0",
+      "shape": "box",
+      "mat": "white",
+      "p": [
+        136,
+        151,
+        230
+      ],
+      "size": [
+        19,
+        7,
+        1
+      ],
+      "parent": "instrument",
+      "rot": [
+        -0.28,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "screen_ui_1",
+      "shape": "box",
+      "mat": "white",
+      "p": [
+        160,
+        151,
+        230
+      ],
+      "size": [
+        19,
+        7,
+        1
+      ],
+      "parent": "instrument",
+      "rot": [
+        -0.28,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "screen_ui_2",
+      "shape": "box",
+      "mat": "white",
+      "p": [
+        184,
+        151,
+        230
+      ],
+      "size": [
+        19,
+        7,
+        1
+      ],
+      "parent": "instrument",
+      "rot": [
+        -0.28,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "screen_ui_3",
+      "shape": "box",
+      "mat": "white",
+      "p": [
+        208,
+        151,
+        230
+      ],
+      "size": [
+        19,
+        7,
+        1
+      ],
+      "parent": "instrument",
+      "rot": [
+        -0.28,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "front_power",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        310,
+        150,
+        229
+      ],
+      "size": [
+        25,
+        32,
+        5
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "front_button",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        39,
+        150,
+        229
+      ],
+      "size": [
+        19,
+        5,
+        19
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "front_badge",
+      "shape": "box",
+      "mat": "blue",
+      "p": [
+        177,
+        65,
+        241
+      ],
+      "size": [
+        145,
+        36,
+        1
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_service_panel",
+      "shape": "box",
+      "mat": "dark",
+      "p": [
+        130,
+        100,
+        -240
+      ],
+      "size": [
+        340,
+        120,
+        3
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_vent_0",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        35,
+        135,
+        -241
+      ],
+      "size": [
+        18,
+        60,
+        1
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_vent_1",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        60,
+        135,
+        -241
+      ],
+      "size": [
+        18,
+        60,
+        1
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_vent_2",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        85,
+        135,
+        -241
+      ],
+      "size": [
+        18,
+        60,
+        1
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_vent_3",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        110,
+        135,
+        -241
+      ],
+      "size": [
+        18,
+        60,
+        1
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_vent_4",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        135,
+        135,
+        -241
+      ],
+      "size": [
+        18,
+        60,
+        1
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_vent_5",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        160,
+        135,
+        -241
+      ],
+      "size": [
+        18,
+        60,
+        1
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_vent_6",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        185,
+        135,
+        -241
+      ],
+      "size": [
+        18,
+        60,
+        1
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_drain",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        260,
+        75,
+        -240
+      ],
+      "size": [
+        19.05,
+        3,
+        19.05
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_spin_exhaust",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        294,
+        75,
+        -240
+      ],
+      "size": [
+        25.4,
+        3,
+        25.4
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_bake_exhaust",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        -230,
+        75,
+        -240
+      ],
+      "size": [
+        25.4,
+        3,
+        25.4
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "rear_vacuum",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        210,
+        75,
+        -240
+      ],
+      "size": [
+        12,
+        3,
+        12
+      ],
+      "parent": "instrument",
+      "rot": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "ethernet",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        120,
+        48,
+        -240
+      ],
+      "size": [
+        17,
+        15,
+        2
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "power_inlet",
+      "shape": "box",
+      "mat": "black",
+      "p": [
+        150,
+        48,
+        -240
+      ],
+      "size": [
+        25,
+        19,
+        2
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "deck_fastener_-320_-215",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        -320,
+        198,
+        -215
+      ],
+      "size": [
+        7,
+        1,
+        7
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "deck_fastener_-320_215",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        -320,
+        198,
+        215
+      ],
+      "size": [
+        7,
+        1,
+        7
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "deck_fastener_0_-215",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        0,
+        198,
+        -215
+      ],
+      "size": [
+        7,
+        1,
+        7
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "deck_fastener_0_215",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        0,
+        198,
+        215
+      ],
+      "size": [
+        7,
+        1,
+        7
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "deck_fastener_320_-215",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        320,
+        198,
+        -215
+      ],
+      "size": [
+        7,
+        1,
+        7
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "deck_fastener_320_215",
+      "shape": "cylinder",
+      "mat": "chrome",
+      "p": [
+        320,
+        198,
+        215
+      ],
+      "size": [
+        7,
+        1,
+        7
+      ],
+      "parent": "instrument",
+      "rot": [
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

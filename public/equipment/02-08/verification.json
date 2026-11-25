@@ -1,0 +1,126 @@
+{
+  "method": "Exact solver and model generator executed in JS isolate; no experimental validation",
+  "checks": [
+    {
+      "test": "Register: pre-bake maps identical",
+      "expected": true,
+      "actual": true,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Register: separate bake traces",
+      "expected": "51 and 91 samples; different final T",
+      "actual": [
+        51,
+        91,
+        99.85135503151047,
+        109.9988683651041
+      ],
+      "tolerance": "exact sample counts",
+      "outcome": "PASS"
+    },
+    {
+      "test": "One thermal time constant",
+      "expected": "71.67328302979894 °C",
+      "actual": 71.67328302979894,
+      "tolerance": "1e-9 °C",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Flat film at reference RPM",
+      "expected": "1.6 µm",
+      "actual": 1.6,
+      "tolerance": "1e-12 µm",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Halve RPM",
+      "expected": "1.414213562373095",
+      "actual": 1.4142135623730951,
+      "tolerance": "1e-12",
+      "outcome": "PASS"
+    },
+    {
+      "test": "6000 rpm limit",
+      "expected": "accepted",
+      "actual": 1.3063945294843617,
+      "tolerance": "finite",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Speed above limit",
+      "expected": "rejected",
+      "actual": true,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Incompatible wafer",
+      "expected": "rejected",
+      "actual": true,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Plate above limit",
+      "expected": "rejected",
+      "actual": true,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Outside wafer",
+      "expected": null,
+      "actual": null,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "No post-bake thickness claim",
+      "expected": null,
+      "actual": null,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Chassis dimensions",
+      "expected": "711 × 483 mm",
+      "actual": [
+        711,
+        182,
+        483
+      ],
+      "tolerance": "exact by construction",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Bake plate diameter",
+      "expected": "254 mm",
+      "actual": 254,
+      "tolerance": "exact by construction",
+      "outcome": "PASS"
+    },
+    {
+      "test": "Component IDs and parent references",
+      "expected": "unique; valid",
+      "actual": 74,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "test": "GLB header and length",
+      "expected": "glTF v2",
+      "actual": 63448,
+      "tolerance": "exact",
+      "outcome": "PASS"
+    }
+  ],
+  "componentCount": 74,
+  "default": {
+    "centerUm": 1.6,
+    "meanUm": 1.6154607310880496,
+    "finalA": 99.85135503151047,
+    "finalB": 109.9988683651041
+  }
+}
