@@ -1,0 +1,173 @@
+{
+  "method": "Independent hand-defined state/event counts and synthetic calibration arithmetic; geometry computed from stored primitive dimensions. Executed in JavaScript during preparation; not physical metrology.",
+  "rows": [
+    {
+      "name": "Cabinet width",
+      "expected": 631.95,
+      "actual": 631.95,
+      "units": "mm",
+      "tolerance": 0.001,
+      "pass": true
+    },
+    {
+      "name": "Cabinet height",
+      "expected": 772.9,
+      "actual": 772.9,
+      "units": "mm",
+      "tolerance": 0.001,
+      "pass": true
+    },
+    {
+      "name": "Cabinet depth",
+      "expected": 501.7,
+      "actual": 501.70000000000005,
+      "units": "mm",
+      "tolerance": 0.001,
+      "pass": true
+    },
+    {
+      "name": "Chamber clear width",
+      "expected": 304.8,
+      "actual": 304.8,
+      "units": "mm",
+      "tolerance": 0.001,
+      "pass": true
+    },
+    {
+      "name": "Chamber clear height",
+      "expected": 304.8,
+      "actual": 304.79999999999995,
+      "units": "mm",
+      "tolerance": 0.001,
+      "pass": true
+    },
+    {
+      "name": "Chamber clear depth",
+      "expected": 336.6,
+      "actual": 336.6,
+      "units": "mm",
+      "tolerance": 0.001,
+      "pass": true
+    },
+    {
+      "name": "Selected coupon primer events",
+      "expected": 1,
+      "actual": 1,
+      "units": "events",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Untreated witness primer events",
+      "expected": 0,
+      "actual": 0,
+      "units": "events",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Uncalibrated adhesion",
+      "expected": "unknown",
+      "actual": "unknown",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Unselected witness unchanged",
+      "expected": true,
+      "actual": true,
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Synthetic matched peel delta (0.75 − 0.25)",
+      "expected": 0.5,
+      "actual": 0.5,
+      "units": "N/mm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Wrong-resist calibration",
+      "expected": "unknown",
+      "actual": "unknown",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Wrong-material calibration",
+      "expected": "unknown",
+      "actual": "unknown",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Dehydration only event",
+      "expected": "dehydration-only",
+      "actual": "dehydration-only",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Dehydration only HMDS exposure",
+      "expected": 0,
+      "actual": 0,
+      "units": "s",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Prime exposure",
+      "expected": 300,
+      "actual": 300,
+      "units": "s",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Select alternate coupon",
+      "expected": 1,
+      "actual": 1,
+      "units": "events",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Open door",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Missing sample",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Coated coupon",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Unsupported carrier",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}
