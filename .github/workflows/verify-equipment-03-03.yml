@@ -1,0 +1,24 @@
+name: Verify PVD 75 simulator
+on:
+  pull_request:
+    paths:
+      - 'src/lib/equipment/03-03/**'
+      - 'src/pages/simulations/equipment/03-03/**'
+      - 'public/equipment/03-03/**'
+      - 'scripts/equipment/03-03/**'
+      - '.github/workflows/verify-equipment-03-03.yml'
+  workflow_dispatch:
+jobs:
+  pvd75-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: node --test tests/equipment-03-03.mjs
+      - run: npx astro build
+      - run: node --test scripts/equipment/03-03/browser-smoke.mjs
