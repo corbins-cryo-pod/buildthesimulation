@@ -84,14 +84,14 @@
       "outcome": "PASS"
     },
     {
-      "test": "Chassis dimensions",
-      "expected": "711 × 483 mm",
+      "test": "Closed assembly bounding box",
+      "expected": "711 × 305 × 483 mm (x,y,z)",
       "actual": [
         711,
-        93,
+        305,
         483
       ],
-      "tolerance": "exact by construction",
+      "tolerance": "exact constructed conservative box",
       "outcome": "PASS"
     },
     {
@@ -104,23 +104,24 @@
     {
       "test": "Component IDs and parent references",
       "expected": "unique; valid",
-      "actual": 77,
+      "actual": 79,
       "tolerance": "exact",
       "outcome": "PASS"
     },
     {
       "test": "GLB header and length",
       "expected": "glTF v2",
-      "actual": 63848,
+      "actual": 64284,
       "tolerance": "exact",
       "outcome": "PASS"
     }
   ],
-  "componentCount": 77,
+  "componentCount": 79,
   "default": {
     "centerUm": 1.6,
     "meanUm": 1.6154607310880496,
     "finalA": 99.85135503151047,
     "finalB": 109.9988683651041
-  }
+  },
+  "visualReview": "Independent original render reconstructed from committed metric node definitions was inspected against the ASU and seller photographs; silhouette and module placement agree qualitatively, rear details not photo-verified. Surface overlap on badge/rear panel corrected after review. No photogrammetry."
 }
