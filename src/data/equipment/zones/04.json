@@ -85,9 +85,10 @@
     "inputs": "Surface mesh, masking geometry, ion incidence vector and calibrated removal yield",
     "outputs": "Milled thickness map, directional shadow mask and optional redeposition estimate",
     "acceptance": "At fixed normal incidence, shield half a flat coupon with an ideal opaque mask. With redeposition disabled, protected material retains its height and exposed material loses the prescribed thickness.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Reconstructed GLB (inferred enclosure)",
+    "simulationStatus": "Analytical reference verified",
+    "integrationStatus": "Simulator route added; production unverified",
+    "simulator": "/simulations/equipment/04-04/simulator/"
   },
   {
     "id": "04-05",
