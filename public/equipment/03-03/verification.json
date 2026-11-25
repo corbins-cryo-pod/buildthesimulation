@@ -1,0 +1,101 @@
+{
+  "status": "Analytic and synthetic numerical checks, not measured experimental validation",
+  "geometry": [
+    {
+      "test": "Nominal cabinet plinth",
+      "expected": [
+        1.194,
+        0.889
+      ],
+      "actual": [
+        1.194,
+        0.889
+      ],
+      "units": "m",
+      "tolerance": 0.001,
+      "pass": true
+    },
+    {
+      "test": "Nominal enclosure height",
+      "expected": 1.905,
+      "actual": 1.905,
+      "units": "m",
+      "tolerance": 0.001,
+      "pass": true
+    }
+  ],
+  "numerical": [
+    {
+      "test": "Independent centre: 0.5 × 120",
+      "expected": 60,
+      "actual": 60,
+      "units": "nm",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "test": "Register fixed-rate 1:2 duration",
+      "expected": 2,
+      "actual": 2,
+      "units": "ratio",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "test": "Independent linear interpolation at x=50 mm: (0.5−0.04×50/75)×120",
+      "expected": 56.8,
+      "actual": 56.8,
+      "units": "nm",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "test": "Zero shutter time",
+      "expected": 0,
+      "actual": 0,
+      "units": "nm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "test": "Missing calibration rejected",
+      "expected": true,
+      "actual": true,
+      "units": "boolean",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Map smaller than specimen rejected",
+      "expected": true,
+      "actual": true,
+      "units": "boolean",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Changed power without new calibration rejected",
+      "expected": true,
+      "actual": true,
+      "units": "boolean",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "test": "Centre invariant to rotation",
+      "expected": 60,
+      "actual": 60,
+      "units": "nm",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "test": "90° orientation transforms asymmetric map: x edge equals original y edge",
+      "expected": 60,
+      "actual": 60,
+      "units": "nm",
+      "tolerance": 1e-9,
+      "pass": true
+    }
+  ]
+}

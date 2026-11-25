@@ -65,9 +65,16 @@
     "inputs": "Material target ID, calibrated deposition-rate map, sample orientation and run duration",
     "outputs": "Sputtered layer revision with thickness field and calibration provenance",
     "acceptance": "Use a fixed-rate witness-coupon profile twice with durations in a 1:2 ratio. Central thicknesses must follow 1:2 in the linear regime; a missing rate must be flagged.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric reconstruction · inferred internals",
+    "simulationStatus": "Numerical witness map · verified synthetic cases",
+    "integrationStatus": "Simulator implementation · production verification pending",
+    "simulator": "/simulations/equipment/03-03/simulator/",
+    "related": [
+      [
+        "Open simulator · PVD 75 RF/DC",
+        "/simulations/equipment/03-03/simulator/"
+      ]
+    ]
   },
   {
     "id": "03-04",
