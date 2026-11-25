@@ -1,0 +1,141 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import verification from '../../../../lib/equipment/04-01-verification.json';
+const asset='/equipment-assets/04-01/';
+const manual='https://atc.zju.edu.cn/upload/file/20240426/1714122023138763.pdf';
+---
+<Layout pageTitle="Reactive ion etcher" subtitle="" description="Oxford PlasmaPro 80 RIE virtual instrument and thin-film etching laboratory." wide compactHeader>
+<article class="equipment rie">
+  <nav class="eq-nav"><a href="/simulations/equipment/04-01/">← Equipment 04-01</a><a href="/simulations/equipment/">Equipment register</a></nav>
+  <header class="eq-mast"><span class="eq-meta">04-01 · DRY ETCHING · SIMULATED</span><h2>Oxford PlasmaPro 80 RIE</h2><p>Open-load, 200 mm parallel-plate configuration; 300 W, 13.56 MHz RF; water-cooled platen and separate control PC. Reconstructed enclosure, not manufacturer CAD. Run a patterned silicon nitride etch with an empirical rate model.</p></header>
+  <div class="rie-grid">
+    <section class="rie-panel">
+      <h2>Instrument</h2>
+      <div id="rie-view" aria-label="Interactive 3D instrument"></div>
+      <p id="model-status" role="status">Loading 3D instrument…</p>
+      <div class="rie-buttons"><button data-view="iso">Reset</button><button data-view="front">Front</button><button data-view="side">Side</button><button data-view="rear">Rear</button><button data-view="stage">Chamber</button><button id="rie-glb" disabled>Download GLB</button></div>
+      <p class="rie-small">Drag to orbit; pinch or scroll to zoom. The lid rises and swings 90°. Chamber dimensions and lift distance are inferred. Sample and stage are shown at physical scale; film thickness is magnified only in the result plot.</p>
+      <div class="rie-buttons"><a href={asset+'instrument.gltf'} download>Download glTF</a><a href={asset+'model-source.json'} download>Editable geometry source</a></div>
+    </section>
+    <section class="rie-panel">
+      <h2>Specimen and chamber</h2>
+      <p id="rie-state" role="status" aria-live="polite">Example loaded · chamber evacuated</p>
+      <div class="rie-buttons"><button id="rie-vent">Vent</button><button id="rie-lid">Open lid</button><button id="rie-load">Unload specimen</button><button id="rie-pump">Evacuate</button><button id="rie-emo">Emergency stop</button></div>
+      <div class="rie-fields">
+        <label>Sample ID<input id="sample" value="SiN-coupon-001" maxlength="100"/></label>
+        <label>Parent revision<input id="parent" value="r0" maxlength="100"/></label>
+        <label>Wafer diameter (mm)<input id="wafer" type="number" min="1" max="200" value="100"/></label>
+        <label>Exposure time (min)<input id="duration" type="number" min="0" max="60" step=".1" value="5"/></label>
+        <label>Mask thickness (nm)<input id="mask" type="number" min="0" max="100000" value="150"/></label>
+        <label>Mask removal (nm/min)<input id="maskrate" type="number" min="0" max="10000" step=".1" value="7.5"/></label>
+        <label>Opening width (µm)<input id="opening" type="number" min=".5" max="100" step=".5" value="20"/></label>
+        <label>Lateral / vertical rate<input id="lateral" type="number" min="0" max="1" step=".05" value="0"/></label>
+      </div>
+      <h3>Layer stack (top to bottom)</h3>
+      <label>Layer data: JSON array (1–4 layers)<textarea id="layers" rows="5" spellcheck="false">{JSON.stringify([{material:"Si3N4",thicknessNm:100,rateNmMin:10},{material:"SiO2 (illustrative stop)",thicknessNm:250,rateNmMin:0}],null,2)}</textarea></label>
+      <p class="rie-small">Rate calibration: Yale Oxford-80 family example, not a measured calibration for Stanford's installed tool. Edit rates to model your own measured process; RF power, gas and pressure are metadata, not independent rate predictors.</p>
+      <label>Calibration / provenance<textarea id="calibration" rows="3">Yale Oxford-80 family approximate SiN rate 10 nm/min; PMMA 5–10 nm/min midpoint; oxide stop rate assumed, not calibrated on selected Stanford tool.</textarea></label>
+      <div class="rie-buttons"><button id="rie-run" class="rie-primary">Run example / etch</button><button id="rie-reset">Restore example</button></div>
+      <progress id="rie-progress" max="1" value="0" aria-label="Virtual etch progress"></progress>
+      <p id="rie-message" role="status" aria-live="polite">Example is ready. Press Run or vent and operate the chamber manually.</p>
+    </section>
+  </div>
+  <section class="rie-panel">
+    <h2>Etch result</h2>
+    <div id="rie-readouts" class="rie-readouts" aria-live="polite">No result yet.</div>
+    <div class="rie-grid">
+      <figure><canvas id="rie-map" width="606" height="306" aria-label="Etch depth map"></canvas><figcaption id="rie-map-label">Depth map · 100 × 50 µm · top view</figcaption></figure>
+      <figure><canvas id="rie-section" width="606" height="306" aria-label="Etched cross section"></canvas><figcaption>Cross-section at y = 0 µm · horizontal axis µm, vertical axis nm (exaggerated) · resist ochre</figcaption></figure>
+    </div>
+    <div class="rie-buttons"><button id="rie-export" disabled>Export result JSON</button><a href={asset+'example-result.json'} download>Example handoff JSON</a><a href="/simulations/microfabrication/">Microfabrication Laboratory</a></div>
+    <p class="rie-small">Handoff schema <code>bts.etch-result.v1</code>: sample ID, parent and output revision, provenance, settings, 101 × 51 grid with cell-center coordinates, depth and mask maps in nm, per-cell remaining layer thicknesses in nm, and summary. The receiving microfabrication station does not yet import this schema automatically.</p>
+  </section>
+  <section class="rie-panel">
+    <h2>Reference sheet · selected configuration</h2>
+    <p>Source photographs are linked rather than republished. The original model views below are schematic reconstructions; use the 3D view buttons above to inspect all angles.</p>
+    <div class="rie-reference">
+      <figure><svg viewBox="0 0 300 225" role="img" aria-label="Original front elevation diagram"><g stroke="#42535b" stroke-width="1.3" fill="#e3e5e1"><rect x="64" y="101" width="141" height="113"/><rect x="69" y="116" width="131" height="50"/><rect x="69" y="170" width="131" height="39"/><rect x="81" y="73" width="107" height="28"/><rect x="93" y="15" width="83" height="58"/><rect x="93" y="26" width="83" height="15" fill="#173466"/><rect x="109" y="128" width="50" height="14" fill="#173466"/><circle cx="149" cy="88" r="5" fill="#263137"/><circle cx="134" cy="110" r="6" fill="#d82529"/><circle cx="81" cy="110" r="3" fill="#253137"/><circle cx="106" cy="110" r="3" fill="#24806b"/><circle cx="162" cy="110" r="3" fill="#24806b"/><circle cx="187" cy="110" r="3" fill="#2459b3"/></g><g fill="#42535b" font-size="9"><text x="4" y="25">RF match cover</text><path d="M78 23H93" stroke="#42535b"/><text x="195" y="84">Viewport</text><path d="M154 88H193" stroke="#42535b"/><text x="4" y="114">Console</text><path d="M45 110H77" stroke="#42535b"/><text x="212" y="173">Cabinet</text><path d="M205 170H212" stroke="#42535b"/></g></svg><figcaption>Original front elevation, matching the <a href="https://plasma.oxinst.com/assets/uploads/products/plasma/images/PlasmaPro-80-RIE-Side.jpg">Oxford product photograph</a> and <a href="https://nanofab.usc.edu/etching/">USC installation photo</a>: stacked cover, chamber housing, cabinet and console.</figcaption></figure>
+      <figure><svg viewBox="0 0 300 225" role="img" aria-label="Original open chamber diagram"><g stroke="#42535b" stroke-width="1.3" fill="#e3e5e1"><rect x="60" y="145" width="170" height="66"/><rect x="75" y="127" width="100" height="18" fill="#a4adb0"/><ellipse cx="126" cy="126" rx="34" ry="10" fill="#aab7bd"/><ellipse cx="126" cy="122" rx="27" ry="8" fill="#778ba9"/><rect x="58" y="42" width="14" height="102" fill="#aab7bd"/><rect x="63" y="41" width="113" height="13" fill="#aab7bd"/><rect x="142" y="25" width="103" height="40"/><rect x="156" y="4" width="75" height="21"/><ellipse cx="195" cy="67" rx="33" ry="9" fill="#aab7bd"/></g><g fill="#42535b" font-size="9"><text x="2" y="36">Hoist</text><path d="M29 34L58 46" stroke="#42535b"/><text x="192" y="92">Upper electrode</text><path d="M195 76V83" stroke="#42535b"/><text x="180" y="117">Wafer</text><path d="M153 120L178 114" stroke="#42535b"/><text x="180" y="137">Lower electrode</text><path d="M160 129H178" stroke="#42535b"/></g></svg><figcaption>Original open-chamber explanatory drawing. <a href={manual+'#page=84'}>Oxford operator manual, issue 01, Dec 2020, pp. 83–85</a>: lift, 90° swing and direct wafer placement on lower electrode. <a href="https://www.gambetti.it/wp-content/uploads/2018/06/OIPT-Oxford-Inst.-%E2%80%93-Sistemi-di-attacco-e-deposizione-via-plasma-PlasmaPro-80.pdf">Family brochure</a>: hoist photo sequence; older cover style.</figcaption></figure>
+      <figure><svg viewBox="0 0 300 225" role="img" aria-label="Original rear elevation"><g stroke="#42535b" stroke-width="1.3" fill="#e3e5e1"><rect x="66" y="100" width="146" height="113"/><rect x="81" y="73" width="116" height="27"/><rect x="96" y="15" width="86" height="58"/><rect x="127" y="126" width="70" height="38" fill="#343c40"/>{Array.from({length:8},(_,i)=><rect x={132+i*7} y="142" width="5" height="12" fill="#aab7bd"/>)}{Array.from({length:5},(_,i)=><circle cx={78+i*12} cy="186" r="4" fill="#aab7bd"/>)}</g><g fill="#42535b" font-size="9"><text x="204" y="132">Power box</text><path d="M197 136H203" stroke="#42535b"/><text x="6" y="181">Services</text><path d="M47 181L74 186" stroke="#42535b"/></g></svg><figcaption>Original rear elevation: generic service ports and rear power box, inferred positions. <a href={manual+'#page=65'}>2020 operator manual, p. 65, figure 3-1</a> establishes power-box controls. Exact rear panel layout not verified.</figcaption></figure>
+    </div>
+    <div class="rie-scroll"><table><thead><tr><th>Specification</th><th>Value</th><th>Role / evidence</th></tr></thead><tbody>
+      <tr><td>Maximum substrate</td><td>200 mm diameter</td><td>Hard simulation limit · <a href="https://snsf.stanford.edu/facilities/fab/npc/etcher">Stanford installation</a></td></tr>
+      <tr><td>RF generator</td><td>300 W, 13.56 MHz</td><td>Selected Stanford configuration; informational, not rate law</td></tr>
+      <tr><td>Platen</td><td>Water chilled</td><td>Stanford, thermal control; temperature not solved</td></tr>
+      <tr><td>Hoist travel</td><td>90° rotation; 0.16 m lift inferred</td><td><a href={manual+'#page=83'}>2020 manual §4.3.2</a>; swing documented, lift not measured</td></tr>
+      <tr><td>Cabinet / chamber housing</td><td>0.85 × 0.88 × 0.94 m; 0.62 × 0.55 m</td><td>Reconstruction dimensions, not manufacturer measurements</td></tr>
+      <tr><td>Lower electrode</td><td>0.24 m diameter</td><td>Inferred from 200 mm sample clearance</td></tr>
+      <tr><td>Example etch calibration</td><td>SiN ≈ 10 nm/min; PMMA ≈ 5–10 nm/min</td><td><a href="https://research.yale.edu/cores/yinqe/etch-recipes">Yale Oxford-80 family recipe</a>; 100 W, 30 mTorr, CHF₃ 40 / O₂ 2 sccm; not validated on Stanford device. 7.5 nm/min midpoint selected.</td></tr>
+      <tr><td>Operating model range</td><td>0–60 min; rates 0–10,000 nm/min; 1–4 layers</td><td>Numerical limits only, not approved equipment operating envelope</td></tr>
+    </tbody></table></div>
+  </section>
+  <section class="rie-panel">
+    <h2>Model &amp; verification</h2>
+    <p>At each cell of a 101 × 51 rectilinear witness grid, a rectangular opening defines exposed pixels. For covered pixels, onset occurs at the earlier of mask breakthrough (mask thickness divided by mask rate) or lateral front arrival (distance from opening divided by lateral rate). The lateral rate is the first film's vertical rate multiplied by the chosen ratio. Remaining exposure advances through each layer in order: removed thickness = min(layer thickness, rate × remaining exposure); exposure consumed = removed thickness / rate. A zero-rate layer stops further penetration. Mask thickness is clipped at zero. A finite-cell front is an approximation, not a profile-resolved surface evolution model.</p>
+    <p>Uniform rates, fixed gas conditions, planar layers and no redeposition, aspect-ratio dependent etching, charging, local loading, thermal feedback or plasma kinetics. Calibration transfer between sites is uncertain. The example oxide stop is hypothetical. Wafer diameter governs sample fit; the 100 × 50 µm field is a local witness region, not a full-wafer uniformity prediction. This educational simulator is not a process recipe or machine-control interface.</p>
+    <div class="rie-scroll"><table><thead><tr><th>Analytical check</th><th>Expected</th><th>Computed</th><th>Tolerance</th><th>Outcome</th></tr></thead><tbody>{verification.rows.map(row=><tr><td>{row.name}</td><td>{String(row.expected)}{typeof row.expected==='number'?' nm':''}</td><td>{String(row.actual)}{typeof row.actual==='number'?' nm':''}</td><td>{typeof row.expected==='number'?'10⁻⁸ nm':'exact'}</td><td>{row.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+    <p>These eight executed analytical fixtures verify arithmetic and parameter response, not agreement with independent measured process data. Geometry checks: 200 mm nominal wafer and 90° rotation; enclosure, ports and hoist pivot are visually inferred. <a href={asset+'verification.json'} download>Verification data</a> · <a href="https://github.com/corbins-cryo-pod/buildthesimulation/blob/main/tests/equipment-04-01.mjs">Repository tests</a>.</p>
+  </section>
+</article>
+</Layout>
+<style>
+.rie{max-width:82rem}.rie h2{font-size:1.3rem;margin:.15rem 0 .65rem}.rie h3{font-size:1.05rem;margin:1rem 0 .4rem}.rie-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:1rem;align-items:start}.rie-panel{border:1px solid var(--border);padding:1rem;margin:1rem 0;min-width:0}.rie #rie-view{height:clamp(330px,52vw,520px);background:#d8ddde;position:relative;overflow:hidden}.rie #rie-view canvas{display:block;width:100%;height:100%;touch-action:none}.rie-buttons{display:flex;gap:.45rem;flex-wrap:wrap;align-items:center;margin:.65rem 0}.rie button,.rie input,.rie textarea{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:3px;font:inherit;padding:.45rem;min-width:0}.rie button{cursor:pointer;font-family:var(--font-label,Arial,sans-serif);font-size:.83rem;min-height:36px}.rie button:disabled{opacity:.45;cursor:not-allowed}.rie .rie-primary{background:#243e52;color:white}.rie-fields{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}.rie label{display:grid;gap:.3rem}.rie textarea{width:100%;font-family:monospace;font-size:.84rem;box-sizing:border-box}.rie-small{font-size:.88rem;line-height:1.4}.rie-readouts{font-variant-numeric:tabular-nums;font-size:1.1rem}.rie figure{margin:0;min-width:0}.rie canvas{max-width:100%;height:auto;display:block}.rie figcaption{font-size:.87rem;line-height:1.4;margin:.4rem 0}.rie-reference{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.rie-reference svg{width:100%;background:#eef0ed}.rie-scroll{overflow-x:auto}.rie table{width:100%;border-collapse:collapse;font-size:.9rem}.rie td,.rie th{padding:.55rem;text-align:left;border-bottom:1px solid var(--border)}.rie progress{width:100%}.rie a{overflow-wrap:anywhere}.rie #rie-message{min-height:2.4rem}@media(max-width:800px){.rie-grid,.rie-reference{grid-template-columns:1fr}.rie-panel{padding:.7rem}.rie-fields{grid-template-columns:1fr 1fr}}@media(max-width:360px){.rie-fields{grid-template-columns:1fr}}
+</style>
+<script>
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {GLTFExporter} from 'three/addons/exporters/GLTFExporter.js';
+import {simulate,example} from '../../../../lib/equipment/04-01.mjs';
+const $=(id)=>document.getElementById(id);
+const ids=['sample','parent','wafer','duration','mask','maskrate','opening','lateral','layers','calibration'];
+const num=(id)=>{const v=$(id).value;if(v.trim()==='')throw Error('Missing '+id);return Number(v)};
+const read=()=>({sampleId:$('sample').value.trim(),parentRevision:$('parent').value.trim()||'r0',waferMm:num('wafer'),durationMin:num('duration'),maskNm:num('mask'),maskRate:num('maskrate'),openUm:num('opening'),lateralRatio:num('lateral'),layers:JSON.parse($('layers').value),calibration:$('calibration').value});
+let loaded=true,opened=false,pumped=true,running=false,stopped=false,result=null,runToken=0;
+let instrument,hoist,wafer,port,renderer,camera,controls,scene,glow;
+const msg=(t)=>{$('rie-message').textContent=t};
+const invalidate=()=>{result=null;$('rie-export').disabled=true;$('rie-readouts').textContent='No current result. Run etch to calculate.';for(const id of ['rie-map','rie-section']){const c=$(id);c.getContext('2d').clearRect(0,0,c.width,c.height)}$('rie-map-label').textContent='Depth map · 100 × 50 µm · top view';$('rie-progress').value=0};
+const sync=()=>{
+ $('rie-state').textContent=(loaded?'Specimen loaded':'No specimen')+' · '+(opened?'lid open':pumped?'chamber evacuated':'chamber vented')+(stopped?' · EMO latched':running?' · simulated plasma active':'');
+ $('rie-lid').textContent=opened?'Close lid':'Open lid';$('rie-load').textContent=loaded?'Unload specimen':'Load specimen';$('rie-emo').textContent=stopped?'Reset EMO':'Emergency stop';
+ $('rie-vent').disabled=running||opened||!pumped||stopped;$('rie-lid').disabled=running||pumped||stopped;$('rie-load').disabled=running||!opened||stopped;$('rie-pump').disabled=running||opened||pumped||stopped;
+ $('rie-run').disabled=running||stopped||opened||!pumped||!loaded;for(const id of ids)$(id).disabled=running;
+ if(wafer){wafer.visible=loaded;const d=Number($('wafer').value);const scale=Number.isFinite(d)&&d>=1&&d<=200?d/200:0;wafer.scale.x=.2*scale;wafer.scale.z=.2*scale}
+ if(port&&port.material){port.material.emissive.set(running?0x8044ef:0x000000);port.material.emissiveIntensity=running?2:0}
+ if(glow)glow.visible=running;
+};
+function download(data,name,type){const url=URL.createObjectURL(new Blob([data],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function renderResult(r){
+ const s=r.summary;$('rie-readouts').textContent='Center depth: '+s.centerDepthNm.toFixed(2)+' nm · protected edge: '+s.edgeDepthNm.toFixed(2)+' nm · residual protected mask: '+s.protectedMaskNm.toFixed(2)+' nm · '+(s.breakthrough?'Stack cleared':'Stack remains');
+ const canvas=$('rie-map'),ctx=canvas.getContext('2d'),{nx,ny}=r.grid,max=Math.max(1,s.maxDepthNm);ctx.clearRect(0,0,canvas.width,canvas.height);
+ for(let j=0;j<ny;j++)for(let i=0;i<nx;i++){const t=r.depthNm[j*nx+i]/max;ctx.fillStyle='rgb('+Math.round(26+215*t)+','+Math.round(49+141*t)+','+Math.round(76-29*t)+')';ctx.fillRect(i*6,j*6,6,6)}
+ $('rie-map-label').textContent='Depth map · 100 × 50 µm · blue = 0 nm, gold = '+s.maxDepthNm.toFixed(2)+' nm';
+ const sc=$('rie-section'),g=sc.getContext('2d'),H=sc.height,W=sc.width,left=44,top=14,bottom=H-38,plotW=W-left-12,total=r.settings.layers.reduce((a,l)=>a+l.thicknessNm,0),full=total+r.settings.maskNm,scale=(bottom-top)/Math.max(full,1),step=plotW/nx,colors=['#73a5bc','#a0b9ba','#a59dc7','#bfa8a2'];g.fillStyle='#edf0ed';g.fillRect(0,0,W,H);
+ for(let i=0;i<nx;i++){const k=(ny>>1)*nx+i;let y=top+r.settings.maskNm*scale;for(let l=0;l<r.settings.layers.length;l++){const initial=r.settings.layers[l].thicknessNm,remain=r.remainingLayersNm[k][l];g.fillStyle=colors[l];g.fillRect(left+i*step,y+(initial-remain)*scale,step+.3,remain*scale);y+=initial*scale}g.fillStyle='#bd8c49';const m=r.maskRemainingNm[k];g.fillRect(left+i*step,top+(r.settings.maskNm-m)*scale,step+.3,m*scale)}
+ g.strokeStyle='#46525a';g.strokeRect(left,top,plotW,bottom-top);g.fillStyle='#26323a';g.font='12px sans-serif';g.fillText('0 nm',4,top+12);g.fillText(full.toFixed(0),4,bottom);g.fillText('−50 µm',left,bottom+19);g.fillText('0',left+plotW/2,bottom+19);g.fillText('+50 µm',W-65,bottom+19);$('rie-export').disabled=false;
+}
+for(const id of ids)$(id).addEventListener('input',()=>{invalidate();sync()});
+$('rie-vent').onclick=()=>{pumped=false;sync();msg('Virtual chamber vented. You may open the lid.')};
+$('rie-lid').onclick=()=>{if(pumped||running||stopped)return;opened=!opened;sync();msg(opened?'Chamber open. Load or unload specimen.':'Lid closed. Evacuate before running.')};
+$('rie-load').onclick=()=>{if(!opened||running||stopped)return;try{if(!loaded)simulate(read());loaded=!loaded;invalidate();sync();msg(loaded?'Specimen placed on lower electrode.':'Specimen removed.')}catch(e){msg(e.message)}};
+$('rie-pump').onclick=()=>{if(opened||running||stopped)return;pumped=true;sync();msg('Virtual chamber evacuated; pressure kinetics not modeled.')};
+$('rie-emo').onclick=()=>{if(stopped){stopped=false;sync();msg('Virtual emergency stop reset.');return}runToken++;running=false;stopped=true;invalidate();sync();msg('Virtual process aborted; no partial result committed.')};
+$('rie-reset').onclick=()=>{runToken++;running=false;loaded=true;opened=false;pumped=true;stopped=false;const vals={sample:example.sampleId,parent:example.parentRevision,wafer:example.waferMm,duration:example.durationMin,mask:example.maskNm,maskrate:example.maskRate,opening:example.openUm,lateral:example.lateralRatio,layers:JSON.stringify(example.layers,null,2),calibration:example.calibration};for(const id of ids)$(id).value=vals[id];invalidate();sync();msg('Example ready.')};
+$('rie-run').onclick=()=>{if(opened||!pumped||!loaded||stopped||running)return;try{const next=simulate(read());invalidate();running=true;sync();const token=++runToken,start=performance.now(),delay=Math.min(2200,Math.max(350,next.settings.durationMin*260));msg('Running virtual exposure (time compressed).');const tick=(now)=>{if(token!==runToken)return;const p=Math.min(1,(now-start)/delay);$('rie-progress').value=p;if(p<1){requestAnimationFrame(tick);return}running=false;result=next;sync();renderResult(result);msg('Calculated etch complete. Export the simulated specimen revision.')};requestAnimationFrame(tick)}catch(e){msg('Cannot run: '+e.message)}};
+$('rie-export').onclick=()=>{if(result)download(JSON.stringify(result,null,2),'rie-'+result.sampleId.replace(/[^a-zA-Z0-9_-]/g,'_')+'.json','application/json')};
+const view=$('rie-view');
+function setView(name){if(!camera||!controls)return;const presets={iso:[[2.65,2.05,2.9],[.15,.82,0]],front:[[0,1.15,3.35],[0,.83,0]],side:[[-3.2,1.2,0],[0,.83,0]],rear:[[0,1.23,-3.2],[0,.83,0]],stage:[[1.0,1.85,1.1],[0,1.11,-.03]]};const [p,t]=presets[name];camera.position.set(...p);controls.target.set(...t);controls.update()}
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
+try{
+ scene=new THREE.Scene();scene.background=new THREE.Color(0xdce1e1);camera=new THREE.PerspectiveCamera(42,1,.025,20);renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.8));renderer.outputColorSpace=THREE.SRGBColorSpace;view.append(renderer.domElement);
+ scene.add(new THREE.HemisphereLight(0xffffff,0x87939b,2.3));const key=new THREE.DirectionalLight(0xffffff,3.2);key.position.set(3,4,2);scene.add(key);const fill=new THREE.DirectionalLight(0xe0ecff,1.2);fill.position.set(-2,2,-3);scene.add(fill);
+ const floor=new THREE.Mesh(new THREE.PlaneGeometry(8,8),new THREE.MeshStandardMaterial({color:0xd5d9d9,roughness:.9}));floor.rotation.x=-Math.PI/2;floor.position.y=-.004;scene.add(floor);
+ const grid=new THREE.GridHelper(8,32,0xaeb9ba,0xc3cbcc);grid.position.y=.001;scene.add(grid);
+ controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.minDistance=.35;controls.maxDistance=7;setView('iso');const resize=()=>{const w=view.clientWidth,h=view.clientHeight;if(w&&h){renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}};new ResizeObserver(resize).observe(view);resize();
+ new GLTFLoader().load('/equipment-assets/04-01/instrument.gltf',g=>{instrument=g.scene;scene.add(instrument);hoist=instrument.getObjectByName('hoist-pivot');wafer=instrument.getObjectByName('wafer');port=instrument.getObjectByName('view-port');if(port)port.material=port.material.clone();if(!hoist||!wafer)throw Error('Functional model nodes missing');$('model-status').textContent='Scaled glTF loaded · inferred enclosure';$('rie-glb').disabled=false;sync()},undefined,e=>{$('model-status').textContent='3D asset could not load. Numerical experiment remains available.';console.error(e)});
+ $('rie-glb').onclick=async()=>{try{if(!instrument)return;const b=await new GLTFExporter().parseAsync(instrument,{binary:true,onlyVisible:false});download(b,'Oxford-PlasmaPro-80-RIE.glb','model/gltf-binary')}catch(e){msg('GLB export failed: '+e.message)}};
+ let phase=0;renderer.setAnimationLoop(()=>{phase+=(Number(opened)-phase)*.12;if(hoist){hoist.position.y=1.13+.16*Math.min(1,phase*2);hoist.rotation.y=-Math.PI/2*Math.max(0,phase*2-1)}controls.update();renderer.render(scene,camera)});
+}catch(e){$('model-status').textContent='WebGL unavailable. Use the numerical experiment and download the glTF asset.';console.error(e)}
+sync();
+</script>
