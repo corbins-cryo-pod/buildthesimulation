@@ -36,8 +36,19 @@ export function makeModel(){
  c("write_head",[-.10,1.283,.075],[.083,.105,.083],"steel",chamber);c("objective",[-.10,1.224,.075],[.047,.03,.047],"black",chamber);
  for(const x of [-.32,.23]){c("interferometer_"+x,[x,1.27,-.13],[.064,.09,.064],"steel",chamber);b("stage_rail_"+x,[x,1.012,.04],[.055,.026,.63],"steel",chamber)}
  b("operator_panel",[.38,1.04,.34],[.18,.057,.17],"graphite",chamber);b("vacuum_display",[.35,1.071,.30],[.056,.006,.026],"screen",chamber);c("vacuum_push",[.35,1.075,.37],[.035,.012,.035],"white",chamber);c("laser_on",[.42,1.075,.30],[.021,.008,.021],"yellow",chamber);c("emission_led",[.45,1.075,.30],[.021,.008,.021],"black",chamber);
- const stage=group("stage",[-.10,0,.075],chamber);b("cross_stage",[0,1.053,0],[.47,.072,.40],"steel",stage);b("chuck_support",[0,1.105,0],[.32,.032,.32],"black",stage);c("vacuum_chuck",[0,1.128,0],[.22,.025,.22],"graphite",stage);
- for(let k=0;k<24;k++){const a=k*Math.PI/12;c("vacuum_hole_"+k,[.077*Math.cos(a),1.141,.077*Math.sin(a)],[.004,.001,.004],"black",stage)}
+ const stage=group("stage",[-.10,0,.075],chamber);b("cross_stage",[0,1.053,0],[.47,.072,.40],"steel",stage);b("chuck_support",[0,1.105,0],[.32,.032,.32],"black",stage);b("vacuum_chuck",[0,1.128,0],[.24,.025,.24],"steel",stage);
+ c("central_vacuum_opening",[0,1.141,0],[.004,.001,.004],"black",stage);
+ for(const sign of [-1,1]){
+ b("radial_alignment_slot_x_"+sign,[sign*.065,1.141,0],[.075,.001,.009],"black",stage);
+ b("radial_alignment_slot_z_"+sign,[0,1.141,sign*.065],[.009,.001,.075],"black",stage);
+ }
+ const aid=group("small_coupon_adjustment_aid",[0,0,0],stage);
+ for(const sign of [-1,1]){
+ b("aid_side_"+sign,[sign*.013,1.145,0],[.012,.008,.038],"red",aid);
+ b("aid_end_"+sign,[0,1.145,sign*.013],[.014,.008,.012],"red",aid);
+ }
+ b("aid_handle",[-.037,1.146,0],[.041,.009,.038],"red",aid);
+ c("aid_knob",[-.045,1.157,0],[.012,.014,.012],"steel",aid);
  for(const x of [-.14,.14])b("pneumatic_clamp_"+x,[x,1.13,.08],[.055,.035,.07],"steel",stage);
  const coupon=group("coupon",[0,1.141,0],stage);b("coupon_surface",[0,.00025,0],[.010,.0005,.010],"resist",coupon);
  const rack=group("electronics_workstation",[1.08,0,0],root);b("rack",[0,.47,0],[.60,.86,.67],"graphite",rack);b("rack_front",[0,.47,.337],[.55,.8,.014],"black",rack);for(let j=0;j<15;j++)b("rack_vent_"+j,[0,.18+j*.034,.346],[.45,.008,.003],"steel",rack);
