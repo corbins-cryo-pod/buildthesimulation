@@ -3,13 +3,13 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout
-  pageTitle="Simulation"
+  pageTitle="Peripheral Nerve Cross-Section"
   subtitle="Peripheral nerve cross-section simulation for stimulation and recording tests."
   description="Interactive peripheral nerve cross-section sandbox for exploring electrode geometry, stimulation, and simple recording readouts."
 >
   <section class="card" style="margin-top:14px;">
     <p class="muted" style="margin:0;">
-      New here? Read the quick guide → <a href="/simulations/nerve-cross-section/guide/">How to use this simulation</a>
+      New here? Read the quick guide â <a href="/simulations/nerve-cross-section/guide/">How to use this simulation</a>
     </p>
   </section>
 
@@ -86,7 +86,7 @@ import Layout from "../layouts/Layout.astro";
           Threshold (proxy)
           <details class="def">
             <summary>What is this?</summary>
-            <div class="defBody">Visual threshold only. During a pulse, sites with |field| ≥ threshold are highlighted; this does not calculate evoked neural spikes.</div>
+            <div class="defBody">Visual threshold only. During a pulse, sites with |field| â¥ threshold are highlighted; this does not calculate evoked neural spikes.</div>
           </details>
           <div class="rangeRow">
             <input id="thresh" type="range" min="0" max="200" value="55" />
@@ -194,7 +194,7 @@ import Layout from "../layouts/Layout.astro";
           <section class="mini">
             <div class="miniBar">
               <div class="miniTitle">Stim waveform (proxy)</div>
-              <div class="miniHint">t=0 at 75% width • shows injected current proxy</div>
+              <div class="miniHint">t=0 at 75% width â¢ shows injected current proxy</div>
             </div>
             <canvas id="stim" width="980" height="150"></canvas>
           </section>
@@ -325,7 +325,7 @@ import Layout from "../layouts/Layout.astro";
   const REC_WINDOW_S = 10.0;
   const NOW_X = 0.75; // t=0 marker at 75% width
 
-  // Recording pickup distance model (µm)
+  // Recording pickup distance model (Âµm)
   const PICKUP_STRONG_UM = 50;
   const PICKUP_ZERO_UM = 200;
 
@@ -1167,7 +1167,7 @@ import Layout from "../layouts/Layout.astro";
     model.pulse.t0 = performance.now();
     model.stimMarkers = model.stimMarkers.filter(marker => marker.timeS >= model.pulse.t0 / 1000 - 12);
     model.stimMarkers.push({ type: "stimulus-start", timeS: model.pulse.t0 / 1000 });
-    toast("Stimulus train · visual proxy");
+    toast("Stimulus train Â· visual proxy");
   });
 
   ui.stop.addEventListener("click", () => {
@@ -1271,7 +1271,7 @@ import Layout from "../layouts/Layout.astro";
     try {
       const migrated = importModel(ui.dlgText.value);
       ui.dlg.close();
-      toast(migrated ? "Legacy document migrated · new synthetic activity" : "Geometry and controls restored · new synthetic activity");
+      toast(migrated ? "Legacy document migrated Â· new synthetic activity" : "Geometry and controls restored Â· new synthetic activity");
     } catch (error) {
       $("dlgError").textContent = error instanceof Error ? error.message : "Import failed.";
       $("dlgError").hidden = false;
