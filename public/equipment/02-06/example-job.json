@@ -1,0 +1,53 @@
+{
+  "sampleId": "PAS-WAFER-001",
+  "parentRevision": 0,
+  "waferDiameter_mm": 100,
+  "waferThickness_mm": 0.525,
+  "reticleId": "RETICLE-L-01",
+  "reticleThickness_mm": 6.35,
+  "projectionScale": 0.2,
+  "fieldWidth_mm": 20,
+  "fieldHeight_mm": 20,
+  "rows": 2,
+  "columns": 3,
+  "pitchX_mm": 20,
+  "pitchY_mm": 20,
+  "offsetX_mm": 0,
+  "offsetY_mm": 0,
+  "overlayX_nm": 0,
+  "overlayY_nm": 0,
+  "rotation_urad": 0,
+  "edgeExclusion_mm": 0,
+  "partialPolicy": "skip",
+  "dose_mJ_cm2": 100,
+  "shapes": [
+    {
+      "id": "L-horizontal",
+      "x_mm": -25,
+      "y_mm": -20,
+      "w_mm": 35,
+      "h_mm": 5
+    },
+    {
+      "id": "L-vertical",
+      "x_mm": -25,
+      "y_mm": -15,
+      "w_mm": 5,
+      "h_mm": 35
+    },
+    {
+      "id": "isolated-line",
+      "x_mm": 12,
+      "y_mm": 10,
+      "w_mm": 5,
+      "h_mm": 1
+    },
+    {
+      "id": "marker",
+      "x_mm": 22,
+      "y_mm": 17,
+      "w_mm": 5,
+      "h_mm": 5
+    }
+  ]
+}

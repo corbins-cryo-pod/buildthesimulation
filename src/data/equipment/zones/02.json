@@ -172,9 +172,10 @@
     "inputs": "Reticle artwork, projection scale, wafer outline, die pitch and field poses",
     "outputs": "Per-field exposure map, incomplete-field flags and overlay records",
     "acceptance": "Step an asymmetric reticle over a 2 × 3 grid wholly within a wafer. Count six copies, spaced by the configured pitch, with feature size set by the declared projection scale.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Reference-informed metric reconstruction; cabinet dimensions estimated",
+    "simulationStatus": "Geometric projection and overlay; analytic checks passed",
+    "integrationStatus": "Simulator and exposure schema implemented; browser/deployment verification pending",
+    "simulator": "/simulations/equipment/02-06/simulator/"
   },
   {
     "id": "02-07",
