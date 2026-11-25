@@ -1,0 +1,131 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+const base='/equipment/02-05/';
+const manual='https://wiki.nano.upenn.edu/wiki/images/0/0a/EBPG5200%2B_SOP.pdf';
+const raith='https://raith.com/products/ebpg/';
+const gt='https://www.nanolithography.gatech.edu/proximity.pdf';
+const nist='https://www.nist.gov/laboratories/tools-instruments/nanofab-tool-raith-ebpg-5200-electron-beam-lithography';
+const parameters=[
+ ['dose','Incident dose','µC/cm²',10,3000,1,650],
+ ['current','Beam current','nA',.1,350,.1,1],
+ ['pitch','Shot pitch','nm',1,20,1,5],
+ ['alpha','Forward radius α','nm',3,50,1,7],
+ ['beta','Backscatter radius β','µm',10,60,.1,31.2],
+ ['eta','Backscatter ratio η','',0,2,.01,.74],
+ ['threshold','Clearing threshold','µC/cm² eq.',10,3000,1,400],
+];
+const steps=[['vent','Vent lock'],['open','Open door'],['mount','Mount chip'],['align','Prealign'],['seal','Close door'],['pump','Pump down'],['transfer','Transfer'],['write','Expose'],['return','Return holder'],['unload','Unload']];
+const specs=[
+ ['Accelerating voltage','100 kV','Fixed for model; 100 keV electron energy',manual+'#page=3','UPenn SOP p. 3'],
+ ['Beam current','≤ 350 nA','Simulator 0.1–350 nA; shot-clock interlock',manual+'#page=3','UPenn SOP p. 3'],
+ ['Pattern generator','125 MHz','8 ns minimum mean shot dwell estimate',manual+'#page=3','UPenn SOP p. 3'],
+ ['Main field','1.04 mm','Conservative centered 1.00 mm model window',manual+'#page=3','UPenn SOP p. 3'],
+ ['Cassette','10 positions','Slots 3, 4, 6, 8 identified; slot 3 selected',manual+'#page=22','UPenn SOP p. 22'],
+ ['Piece-part holder','4 × 3 inch; holder 0216','76.2 mm nominal table diameter, not a measured CAD dimension',manual+'#page=5','UPenn SOP p. 5'],
+ ['Max substrate','200 mm wafer','Machine capability, model uses 10 mm Si chip only',manual+'#page=3','UPenn SOP p. 3'],
+ ['Laser stage travel','210 mm','Family spec; not modeled over full range',raith,'Raith technical data'],
+ ['Interferometer resolution','0.15 nm','Capability, not simulated stage accuracy',raith,'Raith technical data'],
+ ['Resolution','~8 nm CD','Facility capability; NOT predicted or validated by this model',manual+'#page=3','UPenn SOP p. 3'],
+ ['α, β, η at 100 keV','7 nm; 31.2 µm; 0.74','Generic 0.5 µm resist / Si: calculated α; empirical β, η; adjustable sensitivity',gt+'#page=4','Georgia Tech Table I, p. 4'],
+ ['Virtual positive resist threshold','400 µC/cm² eq.','Assumption; not measured or a process recipe',gt,'Model assumption'],
+ ['Plinth / column','1.76 × 1.28 m deck; ~2.45 m tall','Inferred photo proportions, not vendor dimensions',manual+'#page=3','UPenn SOP p. 3'],
+ ['Door swing / holder travel','~112°; schematic positions','Assumed animation endpoints, not measured limits',manual+'#page=13','UPenn SOP p. 13']
+];
+---
+<Layout pageTitle="Electron-beam lithography laboratory" subtitle="" description="Operate a virtual Raith EBPG 5200+ and calculate normalized deposited dose, proximity blur, and predicted clearing of a nanoscale test pattern.">
+ <article class="equipment eb" id="ebpg">
+  <nav class="eq-nav"><a href="/simulations/equipment/02-05/">← Equipment 02-05</a><a href="/simulations/equipment/">Equipment register</a><a href="#eb-evidence">References & verification</a></nav>
+  <header class="eq-mast"><span class="eq-meta">02-05 / DIRECT-WRITE LITHOGRAPHY / MODEL 1.0</span><h2>Raith EBPG 5200+</h2><p>UPenn configuration · 100 keV · ten-position cassette · holder 0216. Reference-informed reconstruction and a numerical exposure model. Not a qualified process recipe or a controller for real equipment.</p></header>
+  <noscript><p>JavaScript is required to perform experiments. The specifications and downloadable model remain available.</p></noscript>
+  <div class="eb-layout">
+   <section class="eb-panel">
+    <div class="eb-head"><span class="eq-meta">01 / INSTRUMENT</span><strong id="eb-state" aria-live="polite">IDLE</strong></div>
+    <div id="eb-view" class="eb-view"><span class="eb-view-label">EBPG 5200+ · RECONSTRUCTION</span></div>
+    <p class="eb-small" id="eb-model-status" role="status">Loading 3D asset…</p>
+    <div class="eb-buttons" aria-label="Camera views">
+     {['whole','front','side','rear','lock','stage','holder'].map(v=><button type="button" data-view={v}>{v==='whole'?'Reset view':v==='lock'?'Load lock':v==='stage'?'Stage cutaway':v[0].toUpperCase()+v.slice(1)}</button>)}
+     <button id="eb-cut" type="button" aria-pressed="false">Toggle cutaway</button>
+     <button id="eb-glb" type="button" disabled>Export GLB</button><button id="eb-render" type="button" disabled>Save view PNG</button>
+    </div>
+    <p class="eb-small">Scale in meters. Cabinet, chamber and hinge geometry are inferred. The blue beam marker is a visual aid, not visible radiation.</p>
+   </section>
+   <section class="eb-panel">
+    <div class="eb-head"><span class="eq-meta">02 / EXPOSURE JOB</span><span class="eq-meta">100 keV</span></div>
+    <div class="eb-buttons eb-main"><button id="eb-auto" type="button">Run example sequence</button><button id="eb-reset" type="button">Reset run</button></div>
+    <p class="eb-small">Run the built-in nano-line and contact coupon automatically, or perform the interlocked sequence yourself. Vent, pump and write animations use compressed time.</p>
+    <div class="eb-steps">{steps.map(([a,label],i)=><button type="button" data-step={a} disabled><span>{String(i+1).padStart(2,'0')}</span> {label}</button>)}</div>
+    <p id="eb-status" role="status" aria-live="polite">Ready. Vent the load lock or run the example sequence.</p>
+    <label for="eb-progress">Exposure progress (accelerated)</label><progress id="eb-progress" max="100" value="0"></progress>
+    <div class="eb-params">{parameters.map(([key,name,unit,min,max,step,value])=><label for={'eb-'+key}>{name} <small>{unit}</small><input id={'eb-'+key} type="number" min={min} max={max} step={step} value={value} /></label>)}</div>
+    <details><summary>Pattern source · editable vector JSON</summary>
+      <p class="eb-small">Coordinates in µm, chip-centered. Each rectangle has a stable ID, lower-left x/y, width w, height h and incident dose factor. Overlaps add dose. Use 1–128 rectangles within ±500 µm. The map displays the central 1.28 µm window; the rest of the design contributes scattering and write time.</p>
+      <textarea id="eb-pattern" aria-label="Pattern JSON" rows="12" spellcheck="false"></textarea><button id="eb-example" type="button">Restore built-in pattern</button>
+    </details>
+   </section>
+  </div>
+  <section class="eb-panel eb-output">
+   <div class="eb-head"><span class="eq-meta">03 / SPECIMEN RESULTS</span><span class="eq-meta">SIMULATED · NOT MEASURED</span></div>
+   <p id="eb-result" aria-live="polite">No committed exposure. Run the configured experiment.</p>
+   <div class="eb-maps"><figure><figcaption>Effective deposited dose · cyan threshold contour</figcaption><canvas id="eb-dose-map" width="256" height="256" aria-label="Simulated effective dose heatmap"></canvas><small id="eb-scale">1.28 × 1.28 µm · 5 nm pixels</small></figure><figure><figcaption>Predicted positive resist clearing</figcaption><canvas id="eb-mask-map" width="256" height="256" aria-label="Predicted cleared resist mask"></canvas><small>Light = above threshold, dark = below; specimen has not been developed.</small></figure></div>
+   <p id="eb-probe" class="eb-small">Move over a map to read chip coordinates and dose.</p>
+   <div class="eb-buttons"><button id="eb-export" disabled type="button">Export exposure revision JSON</button><button id="eb-csv" disabled type="button">Export dose grid CSV</button></div>
+   <p class="eb-small">Export retains sample ID, parent/child revisions, shape IDs, run history, coordinate frame, units, dose array, threshold mask, contour and beam-on duration. Use the <a href={base+'output-schema.json'}>output schema and small example manifest</a> for a future resist-development station. No downstream adapter is asserted.</p>
+  </section>
+  <section class="eb-panel" id="eb-evidence">
+   <h2>Reference sheet · configuration and geometry</h2>
+   <p>The UPenn SOP (v1.1.0, 4 November 2024) is the selected configuration. The original reconstructions below are not photographs or manufacturer CAD. View linked photographs/manual pages alongside the rendered camera presets; reproduction rights for third-party photos were not established.</p>
+   <div class="eb-refs">
+    <figure><img src={base+'reference-front.svg'} alt="Original model rendering, front three-quarter view" loading="lazy"/><figcaption><strong>Whole instrument.</strong> Main chamber, tall column, plinth, lock and cabinet. Compare <a href={manual+'#page=3'}>UPenn SOP p. 3</a> and <a href="https://pr.mono.ipros.com/en/hakuto/product/detail/2000834602/">Hakuto EBPG5200 Plus photograph</a>. Cabinet placement and dimensions estimated.</figcaption></figure>
+    <figure><img src={base+'reference-side.svg'} alt="Original model rendering, right side" loading="lazy"/><figcaption><strong>Right side.</strong> Lock-to-cabinet relationship; side image is original inferred view, not an orthogonal photo. Compare <a href="https://www.gla.ac.uk/research/az/jwnc/processcapability/">Glasgow EBPG5200 family view</a> and UPenn SOP p. 3. Rear service ports not documented.</figcaption></figure>
+    <figure><img src={base+'reference-holder.svg'} alt="Original model rendering of four-position piece part holder" loading="lazy"/><figcaption><strong>Holder and working area.</strong> Four 3-inch reference tables, clips and sample. Compare <a href={manual+'#page=5'}>UPenn SOP p. 5</a> and <a href={manual+'#page=13'}>p. 13 cassette and loading photo</a>. Table diameter nominal; frame and clip shapes approximate.</figcaption></figure>
+   </div>
+   <p><a href={base+'ebpg5200.gltf'} download>Download meter-scale glTF</a> · <a href={base+'model-source.mjs'} download>Editable parametric model source</a> · <a href={base+'solver.mjs'} download>Numerical source</a> · <a href={nist}>NIST installation data (different configuration)</a> · <a href="https://snsf.stanford.edu/facilities/fab/npc/ebpg">Stanford two-holder variant</a>.</p>
+   <h3>Specifications and assumptions</h3>
+   <div class="eb-table"><table><thead><tr><th>Parameter</th><th>Value</th><th>Use / conditions</th><th>Source</th></tr></thead><tbody>{specs.map(([a,b,c,d,e])=><tr><td>{a}</td><td>{b}</td><td>{c}</td><td><a href={d}>{e}</a></td></tr>)}</tbody></table></div>
+  </section>
+  <section class="eb-panel">
+   <h2>Scientific model & input/output contract</h2>
+   <p>We approximate the depth-averaged electron scattering point-spread function with two normalized radial Gaussians: K(r) = [exp(−r²/α²)/(πα²) + η exp(−r²/β²)/(πβ²)]/(1+η). The deposited-dose equivalent D(x,y) is the convolution of the incident dose distribution with K. The integral over each uniform rectangular exposure is evaluated by products of error-function differences. No finite-grid truncation is used for rectangle convolution; the plotted local window intentionally omits most of the broad backscatter halo.</p>
+   <p>Default 100 keV parameters are based on the 0.5 µm resist on Si example in <a href={gt+'#page=4'}>van de Kraats / Murali, Georgia Tech, Table I</a>. The threshold is an assumed positive-resist clearing proxy. Electron transport, depth profile, charging, resist chemistry/development kinetics, stochastic shot noise, drift, true alignment, fracture format conversion, current-dependent spot calibration and stitching are not solved. See <a href="https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=901888">NIST lithography background</a>. A 5 nm output grid is not evidence of 5 nm physical resolution.</p>
+   <p>Charge in coulombs equals incident dose (µC/cm²) × exposed area (µm²) × 10⁻¹⁴. The ideal beam-on time is charge/current. Estimated shots use a rectangular pitch grid; mean dwell must be at least 8 ns (125 MHz). Estimates exclude stage settling, alignment, blanking and actual pattern generator timing. The large background rectangle makes broad scattering observable in the central nanostructure window. Remove it from the input to compare. Increasing current halves ideal time when doubled, but leaves the fixed-kernel dose map unchanged.</p>
+   <p>Inputs require Si, a 10 mm chip, 500 nm positive-resist proxy, rectangular design and explicit parameters above. The sample must be mounted, prealigned, sealed, pumped and transferred before writing. Invalid samples, duplicate IDs, out-of-field geometry and incompatible shot dwell are rejected; the previous result is cleared when input changes. The output is an exposed, undeveloped sample revision; predicted threshold contour is not an actual developed resist. The stage stays centered; the model does not implement proprietary alignment or a full travel controller.</p>
+   <h3>Executable numerical verification</h3><p>The browser runs these checks on load. Tolerances are fixed from normalized Gaussian tails, double precision and error-function approximation accuracy. Independent analytic reference cases verify numerical behavior; they do not validate a physical EBPG process.</p>
+   <div class="eb-table"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Units</th><th>Tolerance</th><th>Outcome</th></tr></thead><tbody id="eb-checks"></tbody></table></div>
+   <h3>Geometry and integration checks</h3><p>Asset contract tests check stable names, 10 cassette slots, nominal 76.2 mm tables, 10 mm chip and byte-for-byte regeneration of the glTF JSON from editable source. Photo checks are qualitative; matching orthogonal measurements and a measured rear view were unavailable. Automated tests also check incompatible inputs, interlocks and output provenance. No independent physical exposure measurements were acquired.</p>
+   <p><a href="https://github.com/corbins-cryo-pod/buildthesimulation/blob/main/tests/equipment-02-05-ebpg.mjs">Repository verification tests</a></p>
+  </section>
+ </article>
+</Layout>
+<script>
+ import {mount} from '../../../../lib/equipment/02-05-viewer.js';
+ const root=document.getElementById('ebpg');
+ if(root)mount(root).catch(error=>{const s=document.getElementById('eb-status');if(s)s.textContent='Initialization error: '+error.message;});
+</script>
+<style>
+.eb{max-width:76rem}.eb-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:1rem;margin:1.5rem 0}
+.eb-panel{border:1px solid var(--border);background:var(--panel);padding:1rem;min-width:0;margin:1rem 0}
+.eb-layout .eb-panel{margin:0}.eb-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--border);padding-bottom:.65rem;margin-bottom:.75rem}
+.eb-view{height:clamp(320px,40vw,520px);width:100%;position:relative;background:#202b34;overflow:hidden}
+.eb-view :global(canvas){display:block;width:100%;height:100%;touch-action:none}
+.eb-view-label{position:absolute;z-index:1;top:.7rem;left:.8rem;color:#dadfdc;letter-spacing:.09em;font:10px Arial,sans-serif;pointer-events:none}
+.eb-buttons{display:flex;flex-wrap:wrap;gap:.45rem;margin:.6rem 0}
+.eb button,.eb input,.eb textarea{border:1px solid var(--border);color:var(--text);background:var(--panel);font:inherit;border-radius:2px;padding:.5rem;max-width:100%}
+.eb button{cursor:pointer;font-family:var(--font-label,Arial,sans-serif);font-size:.83rem;min-height:2.35rem}.eb button:disabled{opacity:.42;cursor:not-allowed}
+.eb button:not(:disabled):hover{border-color:var(--text)}.eb button[aria-pressed=true]{border:2px solid var(--text)}
+.eb-main button:first-child{background:var(--text);color:var(--panel);font-weight:bold}
+.eb-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.35rem}.eb-steps button{text-align:left}.eb-steps span{opacity:.65}
+.eb-small,.eb small{font-size:.83rem;line-height:1.45}.eb-status{min-height:2.5em}
+#eb-status{min-height:2.9em;line-height:1.4;margin:.7rem 0}#eb-status[data-error=true]{color:#ce624c}
+.eb progress{width:100%;height:1rem;margin:.4rem 0}
+.eb-params{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin:.8rem 0}.eb-params label{display:flex;flex-direction:column;gap:.18rem}.eb-params input{width:100%;min-width:0;box-sizing:border-box}
+.eb textarea{width:100%;box-sizing:border-box;font-family:monospace;font-size:.8rem;resize:vertical}
+.eb details{margin-top:.9rem}.eb summary{cursor:pointer}
+.eb-maps,.eb-refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.eb-refs{grid-template-columns:repeat(3,minmax(0,1fr))}
+.eb figure{margin:0;min-width:0}.eb figure canvas{width:100%;max-width:400px;aspect-ratio:1;display:block;image-rendering:pixelated;background:#152029;margin:.5rem 0}
+.eb figure img{width:100%;aspect-ratio:4/3;object-fit:contain;background:#202b34}.eb figcaption{font-size:.9rem;line-height:1.4}
+.eb-table{overflow:auto}.eb table{width:100%;border-collapse:collapse;text-align:left;font-size:.88rem}.eb th,.eb td{padding:.55rem;border-bottom:1px solid var(--border);vertical-align:top;text-align:left}
+.eb p{line-height:1.5}.eb h2{margin:.4rem 0 .8rem}.eb h3{margin:1.6rem 0 .6rem}
+@media(max-width:850px){.eb-layout{grid-template-columns:1fr}.eb-refs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:490px){.eb-panel{padding:.65rem}.eb-refs{grid-template-columns:1fr}.eb-maps{gap:.5rem}.eb-view{height:340px}.eb figcaption{font-size:.78rem}}
+</style>

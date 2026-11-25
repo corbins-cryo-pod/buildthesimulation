@@ -110,9 +110,16 @@
     "inputs": "Resist grid, vector shapes, beam-dose map and declared blur kernels",
     "outputs": "Deposited-dose image, threshold contour and estimated write duration",
     "acceptance": "Place two isolated identical point features. With a normalized linear kernel, their combined dose must equal the sum of the isolated responses and conserve integrated input dose on a padded grid.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Reference-informed glTF; dimensions estimated",
+    "simulationStatus": "Analytic exposure model; verification fixtures",
+    "integrationStatus": "Simulator route and sample revision export",
+    "simulator": "/simulations/equipment/02-05/simulator/",
+    "related": [
+      [
+        "UPenn EBPG 5200+ SOP (configuration reference)",
+        "https://wiki.nano.upenn.edu/wiki/images/0/0a/EBPG5200%2B_SOP.pdf"
+      ]
+    ]
   },
   {
     "id": "02-06",
