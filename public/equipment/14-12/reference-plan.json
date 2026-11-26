@@ -1,0 +1,41 @@
+{
+  "declaredBeforeImplementation": true,
+  "method": "Analytic ideal first-order inert phantom. The numerical tolerance does not represent the real ESPEC chamber.",
+  "cases": [
+    {
+      "id": "catalogue-one-tau",
+      "input": "20°C initial, ideal 40°C step, tau=120 s; evaluate at 120 s",
+      "expected": {
+        "temperatureC": 32.64241117657115,
+        "fraction": 0.6321205588285577
+      },
+      "tolerance": 1e-10
+    },
+    {
+      "id": "zero-time",
+      "input": "Evaluate at t=0 s",
+      "expected": {
+        "temperatureC": 20
+      },
+      "tolerance": 1e-12
+    },
+    {
+      "id": "matched-setpoint",
+      "input": "Initial and air both 40°C",
+      "expected": {
+        "temperatureC": 40
+      },
+      "tolerance": 1e-12
+    },
+    {
+      "id": "bad-profile",
+      "input": "Request 90°C controlled-humidity step at 60% RH",
+      "expected": "OUTSIDE_PROFILE"
+    },
+    {
+      "id": "door-open",
+      "input": "Command run with the chamber door open",
+      "expected": "DOOR_OPEN"
+    }
+  ]
+}

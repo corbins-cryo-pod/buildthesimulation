@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Ideal environment step and inert package response",
+  "required": [
+    "schema",
+    "kind",
+    "deviceId",
+    "sampleId",
+    "inputRevision",
+    "revision",
+    "schedule",
+    "units",
+    "points",
+    "oneTau",
+    "provenance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bts.chamber-phantom.v1"
+    },
+    "kind": {
+      "const": "simulated"
+    },
+    "deviceId": {
+      "const": "14-12"
+    },
+    "points": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "tS",
+          "airC",
+          "phantomC",
+          "targetRH"
+        ],
+        "description": "Air and RH are imposed setpoints, not physical chamber readings. Thermal phantom output is degrees Celsius."
+      }
+    }
+  }
+}
