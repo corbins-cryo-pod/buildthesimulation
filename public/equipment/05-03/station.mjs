@@ -1,9 +1,9 @@
 import {defaults,scan,parseMap} from './solver.mjs';
 export function station(){return {settings:{...defaults},doorOpen:false,loaded:true,engaged:true,input:null,result:null,cursor:0,cutaway:true,status:'Ready: inert ridge loaded; scanner engaged.'}}
 export function operate(s,action,value){const t={...s,settings:{...s.settings}};switch(action){
-case 'door':if(s.engaged)throw Error('Withdraw the scanner before opening the hood.');t.doorOpen=!s.doorOpen;break;
+case 'door':if(s.engaged)throw Error('Withdraw the scanner before opening the hood.');t.doorOpen=!s.doorOpen;t.result=null;t.cursor=0;break;
 case 'load':if(!s.doorOpen||s.engaged)throw Error('Open the hood with scanner withdrawn to exchange the coupon.');t.loaded=!s.loaded;t.result=null;break;
-case 'engage':if(!s.engaged&&(!s.loaded||s.doorOpen))throw Error('Load a coupon and close the hood before engaging.');t.engaged=!s.engaged;break;
+case 'engage':if(!s.engaged&&(!s.loaded||s.doorOpen))throw Error('Load a coupon and close the hood before engaging.');t.engaged=!s.engaged;t.result=null;t.cursor=0;break;
 case 'settings':t.settings={...s.settings,...value};t.result=null;t.cursor=0;if(value.source&&value.source!=='import')t.input=null;break;
 case 'import': {const m=parseMap(value);t.input=m;t.settings={...s.settings,source:'import',sampleId:m.sampleId,parentRevision:m.revision,scanNm:(m.heightsNm.length-1)*m.pitchNm,points:m.heightsNm.length};t.result=null;t.cursor=0;break}
 case 'scan':if(!s.loaded||!s.engaged||s.doorOpen)throw Error('Acquisition blocked: load specimen, shut hood and engage scanner.');t.result=scan(s.settings,s.input);t.cursor=t.result.coordinatesNm.length**2-1;break;
