@@ -1,0 +1,39 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "04-11",
+  "asset": "/equipment/04-11/minimill-gx-static.glb",
+  "scale": "glTF meters, +Y up, +Z operator. Diagram coordinates are independent authored millimeters.",
+  "metrics": {
+    "bytes": 147236,
+    "triangles": 1348,
+    "draws": 83,
+    "instrumentXYZM": [
+      1.1430000513792038,
+      1.803400030115623,
+      0.8128000125288963
+    ]
+  },
+  "scope": "Detached display only. Headset not tested.",
+  "nodes": [
+    {
+      "node": "detached_diagram_switch",
+      "label": "Switch known sample drawing",
+      "action": {
+        "type": "cycle"
+      },
+      "boundsM": [
+        0.106,
+        0.024,
+        0.053
+      ]
+    },
+    {
+      "node": "circle_display_anchor",
+      "label": "Detached live teaching texture",
+      "boundsM": [
+        0.366,
+        0.244
+      ]
+    }
+  ]
+}

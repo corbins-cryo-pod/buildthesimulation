@@ -1,0 +1,16 @@
+{
+  "method":"Minitech free-standing GX enclosure inch dimensions converted at exact 25.4 mm/in. Separately, three cardinal circle references imply center (16,−12) and radius 50 mm; the fourth point is at radius 50 or 53 according to its authored coordinate.",
+  "cases":[
+    {"id":"width","expected":1.143,"tolerance":0.00001,"unit":"m"},
+    {"id":"height","expected":1.8034,"tolerance":0.00001,"unit":"m"},
+    {"id":"depth","expected":0.8128,"tolerance":0.00001,"unit":"m"},
+    {"id":"center-x","expected":16,"tolerance":1e-10,"unit":"mm"},
+    {"id":"center-y","expected":-12,"tolerance":1e-10,"unit":"mm"},
+    {"id":"radius","expected":50,"tolerance":1e-10,"unit":"mm"},
+    {"id":"nominal-residual","expected":0,"tolerance":1e-10,"unit":"mm"},
+    {"id":"offset-residual","expected":3,"tolerance":1e-10,"unit":"mm"},
+    {"id":"immutable-references","expected":true,"unit":"boolean"},
+    {"id":"degenerate-rejected","expected":true,"unit":"boolean"},
+    {"id":"physical-action-rejected","expected":true,"unit":"boolean"}
+  ]
+}
