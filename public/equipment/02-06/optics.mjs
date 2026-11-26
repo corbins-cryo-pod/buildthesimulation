@@ -2,7 +2,7 @@ export const defaultOptics = {
   "na": 0.6,
   "source": "disk",
   "sigmaOuter": 0.65,
-  "sigmaInner": 0.4,
+  "sigmaInner": 0.15,
   "waferPitch_um": 0.56,
   "clearFraction": 0.5,
   "defocus_um": 0,

@@ -49,5 +49,15 @@
       "w_mm": 5,
       "h_mm": 5
     }
-  ]
+  ],
+  "optics": {
+    "na": 0.6,
+    "source": "disk",
+    "sigmaOuter": 0.65,
+    "sigmaInner": 0.15,
+    "waferPitch_um": 0.56,
+    "clearFraction": 0.5,
+    "defocus_um": 0,
+    "threshold_mJ_cm2": 35
+  }
 }
