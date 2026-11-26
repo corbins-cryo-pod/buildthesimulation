@@ -1,0 +1,13 @@
+{
+  "handoff": "16-02 to 09-04 standalone decoder and acquisition",
+  "source": "simulated",
+  "sampleId": "INERT-SHIELD-DUMMY-01",
+  "contactId": "pickup",
+  "peakToPeakV": 0.000039999999999999996,
+  "periodS": 0.0165,
+  "expectedPeakToPeakV": 0.00004,
+  "expectedPeriodS": 0.016666666666666666,
+  "toleranceV": 5e-7,
+  "periodToleranceS": 0.0005,
+  "result": "pass: solver-to-solver; not production browser"
+}

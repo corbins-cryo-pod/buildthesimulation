@@ -31,9 +31,10 @@
     "inputs": "Enclosure and ground connection state, coupled pickup trace and declared shielding factor",
     "outputs": "State-tagged pickup component for the acquisition noise model",
     "acceptance": "Inject a pure test tone with an illustrative 20 dB amplitude reduction in the closed state. Its amplitude should fall to one tenth and return when the modeled shielding is removed.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric custom GLB · design dimensions, not measured",
+    "simulationStatus": "Illustrative near-field pickup factor and linked fixture state",
+    "integrationStatus": "Revisioned state and common analog waveform JSON",
+    "simulator": "/simulations/equipment/16-02/simulator/"
   },
   {
     "id": "16-03",
