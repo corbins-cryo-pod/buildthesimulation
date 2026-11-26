@@ -1,0 +1,66 @@
+[
+  {
+    "id": "closed",
+    "input": "20 × 12 mm coincident rectangle, all four edges",
+    "expected": {
+      "totalMm": 64,
+      "coveredMm": 64,
+      "percent": 100,
+      "leakRate": null
+    },
+    "tolerance": 1e-9,
+    "actual": {
+      "totalMm": 64,
+      "coveredMm": 64,
+      "percent": 100,
+      "leakRate": null
+    },
+    "pass": true
+  },
+  {
+    "id": "missing-east",
+    "input": "Omit the 12 mm east edge",
+    "expected": {
+      "totalMm": 64,
+      "coveredMm": 52,
+      "percent": 81.25,
+      "leakRate": null
+    },
+    "tolerance": 1e-9,
+    "actual": {
+      "totalMm": 64,
+      "coveredMm": 52,
+      "percent": 81.25,
+      "leakRate": null
+    },
+    "pass": true
+  },
+  {
+    "id": "translation",
+    "input": "Lid translated +0.4 mm in X; corridor half-width 0.10 mm. East/west do not register; each long edge retains 19.6 mm.",
+    "expected": {
+      "coveredMm": 39.2,
+      "percent": 61.25
+    },
+    "tolerance": 1e-9,
+    "actual": {
+      "coveredMm": 39.2,
+      "percent": 61.25000000000001
+    },
+    "pass": true
+  },
+  {
+    "id": "unseated",
+    "input": "Review with no package on fixture",
+    "expected": "Seat the virtual package first.",
+    "actual": "Seat the virtual package first.",
+    "pass": true
+  },
+  {
+    "id": "invalid",
+    "input": "Draft has zero width",
+    "expected": "Package width and height must be 4–60 mm.",
+    "actual": "Package width and height must be 4–60 mm.",
+    "pass": true
+  }
+]

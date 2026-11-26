@@ -1,0 +1,78 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import checks from '../../../../../public/equipment/10-13/verification.json';
+const p='/equipment/10-13/';
+const root='/models/neuropixels-engineering/';
+const data='https://www.bio-signal.com/static/upload/file/20240927/1727441617543747.pdf';
+const official='https://www.neuropixels.org/probe1-0';
+const hardware='https://billkarsh.github.io/SpikeGLX/help/imroTables/';
+---
+<Layout pageTitle="Neuropixels 1.0 synthetic site replay" description="Probe geometry inspection and synthetic contact-index replay from the pinned BuildTheSimulation engineering model." wide={true}>
+<article id="npx-passive">
+<nav><a href="/simulations/equipment/10-13/">← Equipment 10-13</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#np-evidence">References and checks</a></nav>
+<header><small>10-13 · METRIC PROBE GEOMETRY · SYNTHETIC DATA ONLY</small><h2>Neuropixels 1.0 site replay</h2><p>Pick an original engineering contact, change virtual banks, and compare a synthetic voltage keyed to that site's axial position. This is passive data replay on a coordinate map, not a device operation or recording simulation.</p></header>
+<div class="bench">
+<section class="panel"><h3>Reference shank and site picker</h3>
+<div class="tools"><button data-np-view="full">Whole shank</button><button data-np-view="site">Selected site / reset zoom</button><button data-np-view="tip">Distal tip</button><button data-np-view="side">Side</button></div>
+<div id="np-viewer"></div><p id="np-model" role="status">Loading map and reference shank…</p>
+<p>Gold ring marks the selected contact; teal denotes the current virtual replay bank. Use the enlarged site view to pick a contact or the numeric fields to select it on touch screens. The shank GLB is the existing metric model; detailed site relief is replaced by one lightweight batch of 960 footprint squares. <a href={root+'neuropixels-3d-viewer.html'}>Open the full engineering viewer and flex assembly</a>. Headset operation has not been tested.</p>
+</section>
+<section class="panel"><h3>Replay the synthetic test field</h3>
+<div class="fields">
+<label>Virtual bank<select id="np-bank"><option value="0">Bank 0 · sites 0–383</option><option value="1">Bank 1 · sites 384–767</option><option value="2">Bank 2 · sites 768–959</option></select></label>
+<label>Virtual channel<input id="np-channel" type="number" min="0" max="383" step="1"/></label>
+<label>Display shift Y (µm)<input id="np-shift" type="number" min="-5000" max="5000" step="any"/></label>
+<label>Source DC offset (µV)<input id="np-dcUv" type="number" min="-100" max="100" step="any"/></label>
+<label>Synthetic slope (µV/µm)<input id="np-slopeUvPerUm" type="number" min="-.05" max=".05" step="any"/></label>
+<label>Common tone amplitude (µV)<input id="np-amplitudeUv" type="number" min="0" max="80" step="any"/></label>
+<label>Common tone (Hz)<input id="np-toneHz" type="number" min=".5" max="80" step="any"/></label>
+<label>Replay length (ms)<input id="np-durationMs" type="number" min="100" max="1000" step="1"/></label>
+<label>Import synthetic fixture JSON<input id="np-file" type="file" accept=".json,application/json"/></label>
+</div>
+<p id="np-position" aria-live="polite"></p><p id="np-world"></p>
+<div class="tools"><button id="np-run" disabled>Replay selected site</button><button id="np-reset">Reset example</button><button id="np-json" disabled>Export mapping and trace JSON</button><button id="np-csv" disabled>Export trace CSV</button></div>
+<p id="np-status" aria-live="polite"></p></section>
+</div>
+<section class="panel"><h3>Synthetic replay result</h3><p id="np-result" aria-live="polite"></p>
+<canvas id="np-plot" width="740" height="395" aria-label="Synthetic voltage versus time at the selected site."></canvas>
+<p><strong>Try it:</strong> Keep virtual channel 7. Bank 0 selects asset site 7 at 260 µm and starts at 10.6 µV. Bank 1 selects site 391 at 4,100 µm and starts at 49.0 µV. The 38.4 µV difference is the known slope times the 3,840 µm distance. Only half as many channels exist in virtual bank 2; a channel not available there resets to 0.</p></section>
+<section class="panel"><h3>Coordinate contract and model limits</h3>
+<p>For each pinned engineering site, the test signal in µV is DC + slope × (local axial coordinate − 200 µm) + amplitude × sin(2πfrequency × time). Replay evaluates it on a 1 ms synthetic clock. Display translation changes the exported world position but not the synthetic source tied to the local map.</p>
+<p>This station partitions the existing geometric site IDs into virtual groups of 384, 384 and 192. This is an explicit software convention, <strong>not</strong> the electrical mapping, IMRO or channel-switch wiring of the probe. The model's first-site offset (200 µm) is an assumption, whereas site shape and pitch follow the manufacturer. No measurement, biological signal, filtering, stimulation, implant placement, tissue or physical acquisition is modeled.</p>
+<p><a href={p+'contract.json'}>Input/output contract</a> · <a href={p+'example-fixture.json'}>Synthetic fixture JSON</a> · <a href={p+'example-summary.json'}>Expected mapping summary</a> · <a href={p+'example-trace.csv'}>Example selected-channel CSV</a>. The full export preserves the pinned map hash, variant, source revision, complete current-bank mapping at time zero, and selected-site voltage samples in SI units. No other station has verified this schema.</p>
+</section>
+<section class="panel" id="np-evidence"><h3>References and verification</h3>
+<div class="refs">
+<figure><img loading="lazy" src={root+'drawings/renders/array.png'} alt="BuildTheSimulation engineering render of the staggered Neuropixels 1.0 contact sites"/><figcaption><strong>Checkerboard array, existing engineering render.</strong> Compare the manufacturer <a href={data+'#page=3'}>February 2020 datasheet, p. 3, Fig. 1–2 and specifications</a>. The 12 µm site faces, 16 µm column spacing and 20 µm row spacing are nominal. Pores and first-site absolute offset are not metrology.</figcaption></figure>
+<figure><img loading="lazy" src={root+'drawings/renders/reference-head.png'} alt="BuildTheSimulation reference assembly render showing the reconstructed package and flex"/><figcaption><strong>Reference package and flex, existing engineering render.</strong> Compare <a href={data+'#page=4'}>datasheet p. 4, Fig. 3</a> and <a href={official}>official 1.0 product page</a>. This simulator displays the shank; the unchanged full assembly viewer has its separate reconstruction. No 2.0, Ultra or human/NHP variant is included.</figcaption></figure>
+</div>
+<div class="scroll"><table><thead><tr><th>Parameter</th><th>Value</th><th>Scope</th></tr></thead><tbody>
+<tr><td>Selected geometry</td><td>Neuropixels 1.0, standard straight single shank, commercial 2020 datasheet</td><td>Separate from 2.0 and specialty variants. Metric tip and footprint, not hardware operation.</td></tr>
+<tr><td>Physical shank / contacts</td><td>10 mm × 70 µm × 24 µm; 960 nominal 12 µm square TiN sites; 16/20 µm pitch</td><td>Manufacturer p. 3. First-site offset 200 µm from reconstructed tip is a documented modeling assumption, not a datasheet tolerance.</td></tr>
+<tr><td>Data partition</td><td>384 / 384 / 192 synthetic index groups; 1 kSa/s virtual clock</td><td>Probe has nominal 384 hardware channels; <a href={hardware}>SpikeGLX describes actual IMRO rules</a>, which are outside this page.</td></tr>
+<tr><td>Existing engineering asset</td><td>BTS-NPX1-R1; 886,644 bytes, original GLB</td><td>New viewer retains original transform and pairs geometry with exact coordinate file, instancing the site footprints.</td></tr>
+</tbody></table></div>
+<p><a href={root+'models/neuropixels-shank.glb'}>Metric GLB</a> · <a href={root+'source/build_model.py'}>Existing editable engineering source</a> · <a href={root+'electrode-coordinates.csv'}>Pinned coordinate table</a> · <a href={p+'interaction.json'}>Named actions and coordinate anchors</a> · <a href={p+'verification.json'}>Verification evidence</a></p>
+<p>{checks.scope}</p>
+<div class="scroll"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Unit</th><th>Tolerance</th><th>Outcome</th></tr></thead><tbody>{checks.rows.map(x=><tr><td>{x.id}</td><td>{x.expected}</td><td>{x.actual}</td><td>{x.unit}</td><td>{x.tol}</td><td>{x.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+</section>
+</article></Layout>
+<script>import '../../../../lib/equipment/10-13/client.mjs';</script>
+<style>
+#npx-passive{max-width:1260px;margin:auto}
+#npx-passive header{margin:1.37rem 0 1rem}#npx-passive header p{max-width:78ch}
+.bench{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:1rem}
+.panel{min-width:0;border:1px solid color-mix(in srgb,currentColor 32%,transparent);border-radius:.3rem;padding:clamp(.8rem,2vw,1.35rem);margin:.55rem 0}.panel h3{margin:0 0 .8rem}
+.tools{display:flex;flex-wrap:wrap;gap:.4rem;margin:.42rem 0}
+.tools button,.fields input,.fields select{color:inherit;background:transparent;border:1px solid currentColor;padding:.42rem .55rem;border-radius:.2rem;font:inherit;min-width:0;min-height:38px;box-sizing:border-box}
+.tools button{cursor:pointer}.tools button:disabled{opacity:.5;cursor:default}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin:.8rem 0}
+.fields label{display:flex;min-width:0;flex-direction:column;font-size:.9rem;gap:.18rem}.fields label:last-child{grid-column:1/-1}.fields option{background:#f5f1e6;color:#151b1a}
+#np-viewer{height:365px;margin:.72rem 0;background:#293941}#np-viewer :global(canvas){display:block;max-width:100%;touch-action:none}
+#np-plot{max-width:740px;width:100%;height:auto;display:block}#np-result{font-weight:bold}
+#np-status[data-error=true]{border-left:4px solid #a56542;padding-left:.6rem}
+.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.refs figure{margin:0}.refs img{width:100%;height:auto}.refs figcaption{margin:.35rem 0 1rem}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;margin:.45rem 0}th,td{text-align:left;padding:.44rem;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent)}
+@media(max-width:900px){.bench{grid-template-columns:1fr}#np-viewer{height:305px}}
+@media(max-width:560px){.refs{grid-template-columns:1fr}#np-viewer{height:260px}.tools button,.fields input,.fields select{min-height:44px}}
+</style>

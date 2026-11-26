@@ -1,0 +1,6 @@
+import os,sys,json
+from playwright.sync_api import sync_playwright
+with sync_playwright() as p:
+ b=p.chromium.launch(headless=True,executable_path=os.environ.get('CHROMIUM_PATH') or p.chromium.executable_path,args=['--no-sandbox','--disable-dev-shm-usage','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']);g=b.new_page(viewport={'width':820,'height':760},accept_downloads=True);errors=[];g.on('pageerror',lambda e:errors.append(str(e)));g.goto(sys.argv[1].rstrip('/')+'/simulations/equipment/16-04/');g.get_by_role('link',name='Open simulator').click();g.wait_for_selector('#mq-view[data-ready=true]',timeout=30000);g.click('#mq-pod');g.click('#mq-run');s=g.inner_text('#mq-result');assert '900 mL remaining' in s and '100 mL in BOTTLE-250' in s and 'MQ-V001' in s
+ with g.expect_download() as d:g.click('#mq-save')
+ r=json.loads(d.value.path().read_text());assert r['remainingML']==900 and r['bottle']['lotId']=='MQ-V001';g.select_option('#mq-lot','MQ-V002');assert '0.100000' in g.inner_text('#mq-quality');g.click('#mq-run');assert 'Different lot' in g.inner_text('#mq-status');g.click('#mq-cut');assert 'Show cabinet exterior' in g.inner_text('#mq-cut');assert not errors,errors;print('PASS: metric model, lot-provenanced 900/100 mL ledger, JSON, reciprocal units, mixed-lot rejection and decorative view');b.close()

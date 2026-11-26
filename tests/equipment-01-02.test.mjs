@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { defaults,initial,solve,act,csv } from '../public/equipment/01-02/solver.mjs';
+import { build } from '../public/equipment/01-02/mesh-writer.mjs';
+import { assets,anchors } from '../public/equipment/01-02/geometry-source.mjs';
+const base=new URL('../public/equipment/01-02/',import.meta.url);
+const near=(a,b,t)=>assert.ok(Math.abs(a-b)<t,JSON.stringify({actual:a,expected:b,tolerance:t}));
+test('analytic 50 mA and linear potential on all three meshes',()=>{const r=solve(defaults());near(r.total.currentA,.05,1e-7);near(r.total.centerV,2.5,1e-7);for(const m of r.study){near(m.currentErrorA,0,1e-7);near(m.maxPotentialErrorV,0,1e-7);}});
+test('interaction revisions, polarity and invalid geometry',()=>{let s=act(initial(),'run');s=act(act(act(s,'reverse'),'grid'),'run');near(s.result.total.currentA,-.05,1e-7);assert.equal(s.result.revision,2);assert.equal(s.result.mesh.nx,32);assert.match(csv(s.result),/uniform-slab-01.*,2,simulated/);s=act(act(s,'set',{lengthMm:0}),'run');assert.equal(s.result,null);assert.match(s.error,/positive/);});
+test('GLB reproducibility, units and valid named actions',()=>{const m=build(assets,anchors),r=readFileSync(new URL('workstation.glb',base));assert.ok(r.equals(Buffer.from(m.raw)));assert.equal(r.readUInt32LE(0),0x46546c67);assert.equal(r.readUInt32LE(8),r.length);const j=JSON.parse(r.subarray(20,20+r.readUInt32LE(12)));assert.equal(j.asset.version,'2.0');assert.equal(m.metrics.unit,'m');assert.ok(r.length<150000);for(const k of Object.keys(anchors))assert.equal(j.nodes.find(x=>x.name===k).extras.action,anchors[k].action);});

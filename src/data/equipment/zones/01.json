@@ -42,10 +42,14 @@
     "inputs": "Sample mesh, material properties, boundary conditions and unit-tagged solver request",
     "outputs": "Field or displacement dataset on the mesh, solver settings and convergence report",
     "acceptance": "For the electrical adapter, impose a potential difference across a uniform slab with insulated sides. The potential must be linear and total current must converge to conductivity × area × voltage / length.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Built: original meter-scale console GLB",
+    "simulationStatus": "First pass: verified uniform slab electrical model",
+    "integrationStatus": "Linked: interactive simulator and data exports",
     "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/01-02/simulator/"
+      ],
       [
         "Cortex Laboratory",
         "/cortex/"

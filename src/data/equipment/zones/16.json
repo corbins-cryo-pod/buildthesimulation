@@ -58,7 +58,7 @@
   {
     "id": "16-04",
     "name": "Ultrapure water system",
-    "model": "Millipore Milli-Q IQ 7000 (candidate)",
+    "model": "Millipore Milli-Q IQ 7000 plus one Q-POD",
     "evidence": "C",
     "priority": "P2",
     "page": 49,
@@ -69,9 +69,10 @@
     "inputs": "Virtual water inventory, requested volume, destination capacity and quality record",
     "outputs": "Dispense event, remaining inventory and destination volume with lot/quality provenance",
     "acceptance": "Dispense 100 mL from a 1 L virtual supply to an empty compatible bottle. The ledger should show 900 mL remaining and the bottle should retain the incoming lot ID.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric production unit, Q-POD, tubing and synthetic bottle",
+    "simulationStatus": "Verified synthetic lot-preserving volume ledger and inverse resistivity units",
+    "integrationStatus": "Interactive telemetry screen, ledger JSON and reusable VR targets",
+    "simulator": "/simulations/equipment/16-04/simulator/"
   },
   {
     "id": "16-05",
@@ -219,9 +220,10 @@
     "inputs": "Container and well IDs, capacity, aliquot volumes, rack pose and sample lineage",
     "outputs": "Per-well volume/identity ledger and rack-relative sample locations",
     "acceptance": "Load different labeled aliquots into wells A1 and A2, move the rack, then attempt to overfill A1. Both labels and volumes must survive the move and rejected overfill.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric original GLB, reusable vessels and shared 96-well mesh",
+    "simulationStatus": "Inert dry displacement, capacity and preserved identities through pose changes",
+    "integrationStatus": "Revisioned well-relative and world-coordinate sample ledger JSON",
+    "simulator": "/simulations/equipment/16-12/simulator/"
   },
   {
     "id": "16-13",
@@ -273,8 +275,9 @@
     "inputs": "Cabinet or drawer ID, item location, fixture pose and task-lamp switch state",
     "outputs": "Storage occupancy, moving-part poses and scene lighting state",
     "acceptance": "Store a labeled item, close and reopen its drawer, then switch the task lamp. The same item must occupy the same drawer slot and only the lamp's illumination state should change.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Original metric cabinet, stool, PPE case, amber screen and task lamp",
+    "simulationStatus": "Verified persistent case slot, drawer pose and independent task illumination",
+    "integrationStatus": "Interactive scene controls, metric pose export and reusable VR action targets",
+    "simulator": "/simulations/equipment/16-15/simulator/"
   }
 ]

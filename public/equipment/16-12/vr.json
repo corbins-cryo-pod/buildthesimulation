@@ -1,0 +1,1298 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    0.4,
+    0.0766,
+    0.275
+  ],
+  "meshes": 53,
+  "triangles": 50267,
+  "bytes": 347876,
+  "interaction": {
+    "Vial_removable_cap": {
+      "action": "cap",
+      "boundsMinM": [
+        -0.0985,
+        0.0365,
+        0.0315
+      ],
+      "boundsMaxM": [
+        -0.0855,
+        0.0435,
+        0.0445
+      ]
+    },
+    "96_plate_lid": {
+      "action": "lid",
+      "boundsMinM": [
+        -0.02988,
+        0.001,
+        -0.11174
+      ],
+      "boundsMaxM": [
+        0.09788,
+        0.004,
+        -0.02626
+      ]
+    },
+    "WELL_A1": {
+      "action": "select",
+      "boundsMinM": [
+        -0.01912,
+        0.00705,
+        0.04788
+      ],
+      "boundsMaxM": [
+        -0.01188,
+        0.01605,
+        0.05512
+      ]
+    },
+    "WELL_A2": {
+      "action": "select",
+      "boundsMinM": [
+        -0.01012,
+        0.00705,
+        0.04788
+      ],
+      "boundsMaxM": [
+        -0.00288,
+        0.01605,
+        0.05512
+      ]
+    },
+    "WELL_A3": {
+      "action": "select",
+      "boundsMinM": [
+        -0.00112,
+        0.00705,
+        0.04788
+      ],
+      "boundsMaxM": [
+        0.00612,
+        0.01605,
+        0.05512
+      ]
+    },
+    "WELL_A4": {
+      "action": "select",
+      "boundsMinM": [
+        0.00788,
+        0.00705,
+        0.04788
+      ],
+      "boundsMaxM": [
+        0.01512,
+        0.01605,
+        0.05512
+      ]
+    },
+    "WELL_A5": {
+      "action": "select",
+      "boundsMinM": [
+        0.01688,
+        0.00705,
+        0.04788
+      ],
+      "boundsMaxM": [
+        0.02412,
+        0.01605,
+        0.05512
+      ]
+    },
+    "WELL_A6": {
+      "action": "select",
+      "boundsMinM": [
+        0.02588,
+        0.00705,
+        0.04788
+      ],
+      "boundsMaxM": [
+        0.03312,
+        0.01605,
+        0.05512
+      ]
+    },
+    "WELL_A7": {
+      "action": "select",
+      "boundsMinM": [
+        0.03488,
+        0.00705,
+        0.04788
+      ],
+      "boundsMaxM": [
+        0.04212,
+        0.01605,
+        0.05512
+      ]
+    },
+    "WELL_A8": {
+      "action": "select",
+      "boundsMinM": [
+        0.04388,
+        0.00705,
+        0.04788
+      ],
+      "boundsMaxM": [
+        0.05112,
+        0.01605,
+        0.05512
+      ]
+    },
+    "WELL_A9": {
+      "action": "select",
+      "boundsMinM": [
+        0.05288,
+        0.00705,
+        0.04788
+      ],
+      "boundsMaxM": [
+        0.06012,
+        0.01605,
+        0.05512
+      ]
+    },
+    "WELL_A10": {
+      "action": "select",
+      "boundsMinM": [
+        0.06188,
+        0.00705,
+        0.04788
+      ],
+      "boundsMaxM": [
+        0.06912,
+        0.01605,
+        0.05512
+      ]
+    },
+    "WELL_A11": {
+      "action": "select",
+      "boundsMinM": [
+        0.07088,
+        0.00705,
+        0.04788
+      ],
+      "boundsMaxM": [
+        0.07812,
+        0.01605,
+        0.05512
+      ]
+    },
+    "WELL_A12": {
+      "action": "select",
+      "boundsMinM": [
+        0.07988,
+        0.00705,
+        0.04788
+      ],
+      "boundsMaxM": [
+        0.08712,
+        0.01605,
+        0.05512
+      ]
+    },
+    "WELL_B1": {
+      "action": "select",
+      "boundsMinM": [
+        -0.01912,
+        0.00705,
+        0.03888
+      ],
+      "boundsMaxM": [
+        -0.01188,
+        0.01605,
+        0.04612
+      ]
+    },
+    "WELL_B2": {
+      "action": "select",
+      "boundsMinM": [
+        -0.01012,
+        0.00705,
+        0.03888
+      ],
+      "boundsMaxM": [
+        -0.00288,
+        0.01605,
+        0.04612
+      ]
+    },
+    "WELL_B3": {
+      "action": "select",
+      "boundsMinM": [
+        -0.00112,
+        0.00705,
+        0.03888
+      ],
+      "boundsMaxM": [
+        0.00612,
+        0.01605,
+        0.04612
+      ]
+    },
+    "WELL_B4": {
+      "action": "select",
+      "boundsMinM": [
+        0.00788,
+        0.00705,
+        0.03888
+      ],
+      "boundsMaxM": [
+        0.01512,
+        0.01605,
+        0.04612
+      ]
+    },
+    "WELL_B5": {
+      "action": "select",
+      "boundsMinM": [
+        0.01688,
+        0.00705,
+        0.03888
+      ],
+      "boundsMaxM": [
+        0.02412,
+        0.01605,
+        0.04612
+      ]
+    },
+    "WELL_B6": {
+      "action": "select",
+      "boundsMinM": [
+        0.02588,
+        0.00705,
+        0.03888
+      ],
+      "boundsMaxM": [
+        0.03312,
+        0.01605,
+        0.04612
+      ]
+    },
+    "WELL_B7": {
+      "action": "select",
+      "boundsMinM": [
+        0.03488,
+        0.00705,
+        0.03888
+      ],
+      "boundsMaxM": [
+        0.04212,
+        0.01605,
+        0.04612
+      ]
+    },
+    "WELL_B8": {
+      "action": "select",
+      "boundsMinM": [
+        0.04388,
+        0.00705,
+        0.03888
+      ],
+      "boundsMaxM": [
+        0.05112,
+        0.01605,
+        0.04612
+      ]
+    },
+    "WELL_B9": {
+      "action": "select",
+      "boundsMinM": [
+        0.05288,
+        0.00705,
+        0.03888
+      ],
+      "boundsMaxM": [
+        0.06012,
+        0.01605,
+        0.04612
+      ]
+    },
+    "WELL_B10": {
+      "action": "select",
+      "boundsMinM": [
+        0.06188,
+        0.00705,
+        0.03888
+      ],
+      "boundsMaxM": [
+        0.06912,
+        0.01605,
+        0.04612
+      ]
+    },
+    "WELL_B11": {
+      "action": "select",
+      "boundsMinM": [
+        0.07088,
+        0.00705,
+        0.03888
+      ],
+      "boundsMaxM": [
+        0.07812,
+        0.01605,
+        0.04612
+      ]
+    },
+    "WELL_B12": {
+      "action": "select",
+      "boundsMinM": [
+        0.07988,
+        0.00705,
+        0.03888
+      ],
+      "boundsMaxM": [
+        0.08712,
+        0.01605,
+        0.04612
+      ]
+    },
+    "WELL_C1": {
+      "action": "select",
+      "boundsMinM": [
+        -0.01912,
+        0.00705,
+        0.02988
+      ],
+      "boundsMaxM": [
+        -0.01188,
+        0.01605,
+        0.03712
+      ]
+    },
+    "WELL_C2": {
+      "action": "select",
+      "boundsMinM": [
+        -0.01012,
+        0.00705,
+        0.02988
+      ],
+      "boundsMaxM": [
+        -0.00288,
+        0.01605,
+        0.03712
+      ]
+    },
+    "WELL_C3": {
+      "action": "select",
+      "boundsMinM": [
+        -0.00112,
+        0.00705,
+        0.02988
+      ],
+      "boundsMaxM": [
+        0.00612,
+        0.01605,
+        0.03712
+      ]
+    },
+    "WELL_C4": {
+      "action": "select",
+      "boundsMinM": [
+        0.00788,
+        0.00705,
+        0.02988
+      ],
+      "boundsMaxM": [
+        0.01512,
+        0.01605,
+        0.03712
+      ]
+    },
+    "WELL_C5": {
+      "action": "select",
+      "boundsMinM": [
+        0.01688,
+        0.00705,
+        0.02988
+      ],
+      "boundsMaxM": [
+        0.02412,
+        0.01605,
+        0.03712
+      ]
+    },
+    "WELL_C6": {
+      "action": "select",
+      "boundsMinM": [
+        0.02588,
+        0.00705,
+        0.02988
+      ],
+      "boundsMaxM": [
+        0.03312,
+        0.01605,
+        0.03712
+      ]
+    },
+    "WELL_C7": {
+      "action": "select",
+      "boundsMinM": [
+        0.03488,
+        0.00705,
+        0.02988
+      ],
+      "boundsMaxM": [
+        0.04212,
+        0.01605,
+        0.03712
+      ]
+    },
+    "WELL_C8": {
+      "action": "select",
+      "boundsMinM": [
+        0.04388,
+        0.00705,
+        0.02988
+      ],
+      "boundsMaxM": [
+        0.05112,
+        0.01605,
+        0.03712
+      ]
+    },
+    "WELL_C9": {
+      "action": "select",
+      "boundsMinM": [
+        0.05288,
+        0.00705,
+        0.02988
+      ],
+      "boundsMaxM": [
+        0.06012,
+        0.01605,
+        0.03712
+      ]
+    },
+    "WELL_C10": {
+      "action": "select",
+      "boundsMinM": [
+        0.06188,
+        0.00705,
+        0.02988
+      ],
+      "boundsMaxM": [
+        0.06912,
+        0.01605,
+        0.03712
+      ]
+    },
+    "WELL_C11": {
+      "action": "select",
+      "boundsMinM": [
+        0.07088,
+        0.00705,
+        0.02988
+      ],
+      "boundsMaxM": [
+        0.07812,
+        0.01605,
+        0.03712
+      ]
+    },
+    "WELL_C12": {
+      "action": "select",
+      "boundsMinM": [
+        0.07988,
+        0.00705,
+        0.02988
+      ],
+      "boundsMaxM": [
+        0.08712,
+        0.01605,
+        0.03712
+      ]
+    },
+    "WELL_D1": {
+      "action": "select",
+      "boundsMinM": [
+        -0.01912,
+        0.00705,
+        0.02088
+      ],
+      "boundsMaxM": [
+        -0.01188,
+        0.01605,
+        0.02812
+      ]
+    },
+    "WELL_D2": {
+      "action": "select",
+      "boundsMinM": [
+        -0.01012,
+        0.00705,
+        0.02088
+      ],
+      "boundsMaxM": [
+        -0.00288,
+        0.01605,
+        0.02812
+      ]
+    },
+    "WELL_D3": {
+      "action": "select",
+      "boundsMinM": [
+        -0.00112,
+        0.00705,
+        0.02088
+      ],
+      "boundsMaxM": [
+        0.00612,
+        0.01605,
+        0.02812
+      ]
+    },
+    "WELL_D4": {
+      "action": "select",
+      "boundsMinM": [
+        0.00788,
+        0.00705,
+        0.02088
+      ],
+      "boundsMaxM": [
+        0.01512,
+        0.01605,
+        0.02812
+      ]
+    },
+    "WELL_D5": {
+      "action": "select",
+      "boundsMinM": [
+        0.01688,
+        0.00705,
+        0.02088
+      ],
+      "boundsMaxM": [
+        0.02412,
+        0.01605,
+        0.02812
+      ]
+    },
+    "WELL_D6": {
+      "action": "select",
+      "boundsMinM": [
+        0.02588,
+        0.00705,
+        0.02088
+      ],
+      "boundsMaxM": [
+        0.03312,
+        0.01605,
+        0.02812
+      ]
+    },
+    "WELL_D7": {
+      "action": "select",
+      "boundsMinM": [
+        0.03488,
+        0.00705,
+        0.02088
+      ],
+      "boundsMaxM": [
+        0.04212,
+        0.01605,
+        0.02812
+      ]
+    },
+    "WELL_D8": {
+      "action": "select",
+      "boundsMinM": [
+        0.04388,
+        0.00705,
+        0.02088
+      ],
+      "boundsMaxM": [
+        0.05112,
+        0.01605,
+        0.02812
+      ]
+    },
+    "WELL_D9": {
+      "action": "select",
+      "boundsMinM": [
+        0.05288,
+        0.00705,
+        0.02088
+      ],
+      "boundsMaxM": [
+        0.06012,
+        0.01605,
+        0.02812
+      ]
+    },
+    "WELL_D10": {
+      "action": "select",
+      "boundsMinM": [
+        0.06188,
+        0.00705,
+        0.02088
+      ],
+      "boundsMaxM": [
+        0.06912,
+        0.01605,
+        0.02812
+      ]
+    },
+    "WELL_D11": {
+      "action": "select",
+      "boundsMinM": [
+        0.07088,
+        0.00705,
+        0.02088
+      ],
+      "boundsMaxM": [
+        0.07812,
+        0.01605,
+        0.02812
+      ]
+    },
+    "WELL_D12": {
+      "action": "select",
+      "boundsMinM": [
+        0.07988,
+        0.00705,
+        0.02088
+      ],
+      "boundsMaxM": [
+        0.08712,
+        0.01605,
+        0.02812
+      ]
+    },
+    "WELL_E1": {
+      "action": "select",
+      "boundsMinM": [
+        -0.01912,
+        0.00705,
+        0.01188
+      ],
+      "boundsMaxM": [
+        -0.01188,
+        0.01605,
+        0.01912
+      ]
+    },
+    "WELL_E2": {
+      "action": "select",
+      "boundsMinM": [
+        -0.01012,
+        0.00705,
+        0.01188
+      ],
+      "boundsMaxM": [
+        -0.00288,
+        0.01605,
+        0.01912
+      ]
+    },
+    "WELL_E3": {
+      "action": "select",
+      "boundsMinM": [
+        -0.00112,
+        0.00705,
+        0.01188
+      ],
+      "boundsMaxM": [
+        0.00612,
+        0.01605,
+        0.01912
+      ]
+    },
+    "WELL_E4": {
+      "action": "select",
+      "boundsMinM": [
+        0.00788,
+        0.00705,
+        0.01188
+      ],
+      "boundsMaxM": [
+        0.01512,
+        0.01605,
+        0.01912
+      ]
+    },
+    "WELL_E5": {
+      "action": "select",
+      "boundsMinM": [
+        0.01688,
+        0.00705,
+        0.01188
+      ],
+      "boundsMaxM": [
+        0.02412,
+        0.01605,
+        0.01912
+      ]
+    },
+    "WELL_E6": {
+      "action": "select",
+      "boundsMinM": [
+        0.02588,
+        0.00705,
+        0.01188
+      ],
+      "boundsMaxM": [
+        0.03312,
+        0.01605,
+        0.01912
+      ]
+    },
+    "WELL_E7": {
+      "action": "select",
+      "boundsMinM": [
+        0.03488,
+        0.00705,
+        0.01188
+      ],
+      "boundsMaxM": [
+        0.04212,
+        0.01605,
+        0.01912
+      ]
+    },
+    "WELL_E8": {
+      "action": "select",
+      "boundsMinM": [
+        0.04388,
+        0.00705,
+        0.01188
+      ],
+      "boundsMaxM": [
+        0.05112,
+        0.01605,
+        0.01912
+      ]
+    },
+    "WELL_E9": {
+      "action": "select",
+      "boundsMinM": [
+        0.05288,
+        0.00705,
+        0.01188
+      ],
+      "boundsMaxM": [
+        0.06012,
+        0.01605,
+        0.01912
+      ]
+    },
+    "WELL_E10": {
+      "action": "select",
+      "boundsMinM": [
+        0.06188,
+        0.00705,
+        0.01188
+      ],
+      "boundsMaxM": [
+        0.06912,
+        0.01605,
+        0.01912
+      ]
+    },
+    "WELL_E11": {
+      "action": "select",
+      "boundsMinM": [
+        0.07088,
+        0.00705,
+        0.01188
+      ],
+      "boundsMaxM": [
+        0.07812,
+        0.01605,
+        0.01912
+      ]
+    },
+    "WELL_E12": {
+      "action": "select",
+      "boundsMinM": [
+        0.07988,
+        0.00705,
+        0.01188
+      ],
+      "boundsMaxM": [
+        0.08712,
+        0.01605,
+        0.01912
+      ]
+    },
+    "WELL_F1": {
+      "action": "select",
+      "boundsMinM": [
+        -0.01912,
+        0.00705,
+        0.00288
+      ],
+      "boundsMaxM": [
+        -0.01188,
+        0.01605,
+        0.01012
+      ]
+    },
+    "WELL_F2": {
+      "action": "select",
+      "boundsMinM": [
+        -0.01012,
+        0.00705,
+        0.00288
+      ],
+      "boundsMaxM": [
+        -0.00288,
+        0.01605,
+        0.01012
+      ]
+    },
+    "WELL_F3": {
+      "action": "select",
+      "boundsMinM": [
+        -0.00112,
+        0.00705,
+        0.00288
+      ],
+      "boundsMaxM": [
+        0.00612,
+        0.01605,
+        0.01012
+      ]
+    },
+    "WELL_F4": {
+      "action": "select",
+      "boundsMinM": [
+        0.00788,
+        0.00705,
+        0.00288
+      ],
+      "boundsMaxM": [
+        0.01512,
+        0.01605,
+        0.01012
+      ]
+    },
+    "WELL_F5": {
+      "action": "select",
+      "boundsMinM": [
+        0.01688,
+        0.00705,
+        0.00288
+      ],
+      "boundsMaxM": [
+        0.02412,
+        0.01605,
+        0.01012
+      ]
+    },
+    "WELL_F6": {
+      "action": "select",
+      "boundsMinM": [
+        0.02588,
+        0.00705,
+        0.00288
+      ],
+      "boundsMaxM": [
+        0.03312,
+        0.01605,
+        0.01012
+      ]
+    },
+    "WELL_F7": {
+      "action": "select",
+      "boundsMinM": [
+        0.03488,
+        0.00705,
+        0.00288
+      ],
+      "boundsMaxM": [
+        0.04212,
+        0.01605,
+        0.01012
+      ]
+    },
+    "WELL_F8": {
+      "action": "select",
+      "boundsMinM": [
+        0.04388,
+        0.00705,
+        0.00288
+      ],
+      "boundsMaxM": [
+        0.05112,
+        0.01605,
+        0.01012
+      ]
+    },
+    "WELL_F9": {
+      "action": "select",
+      "boundsMinM": [
+        0.05288,
+        0.00705,
+        0.00288
+      ],
+      "boundsMaxM": [
+        0.06012,
+        0.01605,
+        0.01012
+      ]
+    },
+    "WELL_F10": {
+      "action": "select",
+      "boundsMinM": [
+        0.06188,
+        0.00705,
+        0.00288
+      ],
+      "boundsMaxM": [
+        0.06912,
+        0.01605,
+        0.01012
+      ]
+    },
+    "WELL_F11": {
+      "action": "select",
+      "boundsMinM": [
+        0.07088,
+        0.00705,
+        0.00288
+      ],
+      "boundsMaxM": [
+        0.07812,
+        0.01605,
+        0.01012
+      ]
+    },
+    "WELL_F12": {
+      "action": "select",
+      "boundsMinM": [
+        0.07988,
+        0.00705,
+        0.00288
+      ],
+      "boundsMaxM": [
+        0.08712,
+        0.01605,
+        0.01012
+      ]
+    },
+    "WELL_G1": {
+      "action": "select",
+      "boundsMinM": [
+        -0.01912,
+        0.00705,
+        -0.00612
+      ],
+      "boundsMaxM": [
+        -0.01188,
+        0.01605,
+        0.00112
+      ]
+    },
+    "WELL_G2": {
+      "action": "select",
+      "boundsMinM": [
+        -0.01012,
+        0.00705,
+        -0.00612
+      ],
+      "boundsMaxM": [
+        -0.00288,
+        0.01605,
+        0.00112
+      ]
+    },
+    "WELL_G3": {
+      "action": "select",
+      "boundsMinM": [
+        -0.00112,
+        0.00705,
+        -0.00612
+      ],
+      "boundsMaxM": [
+        0.00612,
+        0.01605,
+        0.00112
+      ]
+    },
+    "WELL_G4": {
+      "action": "select",
+      "boundsMinM": [
+        0.00788,
+        0.00705,
+        -0.00612
+      ],
+      "boundsMaxM": [
+        0.01512,
+        0.01605,
+        0.00112
+      ]
+    },
+    "WELL_G5": {
+      "action": "select",
+      "boundsMinM": [
+        0.01688,
+        0.00705,
+        -0.00612
+      ],
+      "boundsMaxM": [
+        0.02412,
+        0.01605,
+        0.00112
+      ]
+    },
+    "WELL_G6": {
+      "action": "select",
+      "boundsMinM": [
+        0.02588,
+        0.00705,
+        -0.00612
+      ],
+      "boundsMaxM": [
+        0.03312,
+        0.01605,
+        0.00112
+      ]
+    },
+    "WELL_G7": {
+      "action": "select",
+      "boundsMinM": [
+        0.03488,
+        0.00705,
+        -0.00612
+      ],
+      "boundsMaxM": [
+        0.04212,
+        0.01605,
+        0.00112
+      ]
+    },
+    "WELL_G8": {
+      "action": "select",
+      "boundsMinM": [
+        0.04388,
+        0.00705,
+        -0.00612
+      ],
+      "boundsMaxM": [
+        0.05112,
+        0.01605,
+        0.00112
+      ]
+    },
+    "WELL_G9": {
+      "action": "select",
+      "boundsMinM": [
+        0.05288,
+        0.00705,
+        -0.00612
+      ],
+      "boundsMaxM": [
+        0.06012,
+        0.01605,
+        0.00112
+      ]
+    },
+    "WELL_G10": {
+      "action": "select",
+      "boundsMinM": [
+        0.06188,
+        0.00705,
+        -0.00612
+      ],
+      "boundsMaxM": [
+        0.06912,
+        0.01605,
+        0.00112
+      ]
+    },
+    "WELL_G11": {
+      "action": "select",
+      "boundsMinM": [
+        0.07088,
+        0.00705,
+        -0.00612
+      ],
+      "boundsMaxM": [
+        0.07812,
+        0.01605,
+        0.00112
+      ]
+    },
+    "WELL_G12": {
+      "action": "select",
+      "boundsMinM": [
+        0.07988,
+        0.00705,
+        -0.00612
+      ],
+      "boundsMaxM": [
+        0.08712,
+        0.01605,
+        0.00112
+      ]
+    },
+    "WELL_H1": {
+      "action": "select",
+      "boundsMinM": [
+        -0.01912,
+        0.00705,
+        -0.01512
+      ],
+      "boundsMaxM": [
+        -0.01188,
+        0.01605,
+        -0.00788
+      ]
+    },
+    "WELL_H2": {
+      "action": "select",
+      "boundsMinM": [
+        -0.01012,
+        0.00705,
+        -0.01512
+      ],
+      "boundsMaxM": [
+        -0.00288,
+        0.01605,
+        -0.00788
+      ]
+    },
+    "WELL_H3": {
+      "action": "select",
+      "boundsMinM": [
+        -0.00112,
+        0.00705,
+        -0.01512
+      ],
+      "boundsMaxM": [
+        0.00612,
+        0.01605,
+        -0.00788
+      ]
+    },
+    "WELL_H4": {
+      "action": "select",
+      "boundsMinM": [
+        0.00788,
+        0.00705,
+        -0.01512
+      ],
+      "boundsMaxM": [
+        0.01512,
+        0.01605,
+        -0.00788
+      ]
+    },
+    "WELL_H5": {
+      "action": "select",
+      "boundsMinM": [
+        0.01688,
+        0.00705,
+        -0.01512
+      ],
+      "boundsMaxM": [
+        0.02412,
+        0.01605,
+        -0.00788
+      ]
+    },
+    "WELL_H6": {
+      "action": "select",
+      "boundsMinM": [
+        0.02588,
+        0.00705,
+        -0.01512
+      ],
+      "boundsMaxM": [
+        0.03312,
+        0.01605,
+        -0.00788
+      ]
+    },
+    "WELL_H7": {
+      "action": "select",
+      "boundsMinM": [
+        0.03488,
+        0.00705,
+        -0.01512
+      ],
+      "boundsMaxM": [
+        0.04212,
+        0.01605,
+        -0.00788
+      ]
+    },
+    "WELL_H8": {
+      "action": "select",
+      "boundsMinM": [
+        0.04388,
+        0.00705,
+        -0.01512
+      ],
+      "boundsMaxM": [
+        0.05112,
+        0.01605,
+        -0.00788
+      ]
+    },
+    "WELL_H9": {
+      "action": "select",
+      "boundsMinM": [
+        0.05288,
+        0.00705,
+        -0.01512
+      ],
+      "boundsMaxM": [
+        0.06012,
+        0.01605,
+        -0.00788
+      ]
+    },
+    "WELL_H10": {
+      "action": "select",
+      "boundsMinM": [
+        0.06188,
+        0.00705,
+        -0.01512
+      ],
+      "boundsMaxM": [
+        0.06912,
+        0.01605,
+        -0.00788
+      ]
+    },
+    "WELL_H11": {
+      "action": "select",
+      "boundsMinM": [
+        0.07088,
+        0.00705,
+        -0.01512
+      ],
+      "boundsMaxM": [
+        0.07812,
+        0.01605,
+        -0.00788
+      ]
+    },
+    "WELL_H12": {
+      "action": "select",
+      "boundsMinM": [
+        0.07988,
+        0.00705,
+        -0.01512
+      ],
+      "boundsMaxM": [
+        0.08712,
+        0.01605,
+        -0.00788
+      ]
+    }
+  },
+  "assembly": {
+    "rackNode": "Plate_rack_pose",
+    "worldPoseDeltaM": [
+      0.052,
+      0,
+      0.025
+    ],
+    "wellNodePrefix": "WELL_",
+    "glbWellMeshes": 1
+  }
+}

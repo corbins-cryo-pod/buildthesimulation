@@ -1,0 +1,8 @@
+{
+ "equipmentId":"10-13",
+ "input":{"schema":"bts.npx1-synthetic-fixture.v1","variant":"Neuropixels 1.0; only pinned BTS-NPX1-R1 engineering map accepted","signal":"named inert synthetic source revision, DC offset ±100 µV, sine amplitude 0–80 µV, slope ±0.05 µV/µm, frequency 0.5–80 Hz, 100–1,000 ms","selection":"bank 0/1 up to channel 383; bank 2 up to channel 191. These are virtual channel indexes, not true device routing. Display Y shift ±5000 µm."},
+ "output":{"schema":"bts.npx1-synthetic-replay.v1","records":"selected site's synthetic voltage/clock, all selected-bank sites at t=0, stable site and sample IDs, local and shifted coordinates, geometry hash. CSV is selected trace only.","units":"s, V, µm; 1 ms time step"},
+ "failures":["Wrong variant or map revision, malformed or changed geometry file, unsupported bank/channel and invalid fixture ranges reject output."],
+ "limits":["No biology, anatomy, insertion, live recording, stimulation, electrical routing, hardware configuration, signal calibration, reconstruction of the films/impedance or native headset session. Only view translation."],
+ "examples":["example-fixture.json","example-summary.json","example-trace.csv"]
+}

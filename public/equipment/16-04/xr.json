@@ -1,0 +1,139 @@
+{
+  "schema": "bts.station.xr.v1",
+  "asset": "/equipment/16-04/iq7000.glb",
+  "model": "/equipment/16-04/water.mjs",
+  "dispatch": "act(state,action,value), station(), report(state)",
+  "unit": "m",
+  "up": "+Y",
+  "front": "+Z",
+  "origin": "Bench surface near midpoint of the production unit and Q-POD, scale 1:1 metres.",
+  "controls": [
+    {
+      "mesh": "VIRTUAL_DIAL",
+      "action": "dispense",
+      "label": "Record simulated bottle allocation",
+      "minM": [
+        0.1715,
+        0.436,
+        0.1235
+      ],
+      "maxM": [
+        0.2285,
+        0.6295,
+        0.191
+      ]
+    },
+    {
+      "mesh": "BOTTLE_250",
+      "action": "bottle",
+      "label": "Mount/remove the virtual bottle",
+      "minM": [
+        0.166,
+        0.054,
+        0.127
+      ],
+      "maxM": [
+        0.234,
+        0.218,
+        0.1952
+      ]
+    },
+    {
+      "mesh": "CARTRIDGE_PANEL",
+      "action": "cartridge",
+      "label": "Illustrative cassette cutaway",
+      "minM": [
+        -0.295,
+        0.0245,
+        0.142
+      ],
+      "maxM": [
+        -0.051,
+        0.4715,
+        0.1527
+      ]
+    },
+    {
+      "mesh": "CARTRIDGE_CUTAWAY",
+      "action": "cartridge",
+      "label": "Return from illustrated cutaway",
+      "minM": [
+        -0.2785,
+        0.106,
+        0.149
+      ],
+      "maxM": [
+        -0.0675,
+        0.398,
+        0.199
+      ]
+    }
+  ],
+  "geometry": {
+    "rows": [
+      {
+        "label": "Production width",
+        "expectedMm": 265,
+        "actualMm": 264.99998569488525,
+        "toleranceMm": 0.07,
+        "pass": true
+      },
+      {
+        "label": "Production depth",
+        "expectedMm": 350,
+        "actualMm": 349.9999940395355,
+        "toleranceMm": 0.07,
+        "pass": true
+      },
+      {
+        "label": "Production height incl. top cap",
+        "expectedMm": 498,
+        "actualMm": 498.0000136420131,
+        "toleranceMm": 0.07,
+        "pass": true
+      },
+      {
+        "label": "Q-POD base width",
+        "expectedMm": 211,
+        "actualMm": 210.999995470047,
+        "toleranceMm": 0.07,
+        "pass": true
+      },
+      {
+        "label": "Q-POD base depth",
+        "expectedMm": 270,
+        "actualMm": 270.00001072883606,
+        "toleranceMm": 0.07,
+        "pass": true
+      },
+      {
+        "label": "Q-POD base height",
+        "expectedMm": 53,
+        "actualMm": 52.99999937415123,
+        "toleranceMm": 0.07,
+        "pass": true
+      },
+      {
+        "label": "Q-POD top",
+        "expectedMm": 792,
+        "actualMm": 791.9999957084656,
+        "toleranceMm": 0.07,
+        "pass": true
+      }
+    ],
+    "nodes": 66,
+    "minM": [
+      -0.3055,
+      0,
+      -0.248784
+    ],
+    "maxM": [
+      0.3055,
+      0.792,
+      0.199
+    ],
+    "bytes": 366864,
+    "triangles": 5965
+  },
+  "scope": "Exterior proportions from Merck brochure. Local harness, controls, bottle and illustrative cartridge shown only as scenery; not a service model or physical headset verification."
+}
