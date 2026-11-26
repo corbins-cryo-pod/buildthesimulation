@@ -131,7 +131,7 @@
   {
     "id": "05-07",
     "name": "Probe station",
-    "model": "FormFactor 11000B",
+    "model": "Cascade Microtech Summit 11000B-AP · manual 200 mm",
     "evidence": "B",
     "priority": "P1",
     "page": 19,
@@ -144,9 +144,10 @@
     "inputs": "Contact map and netlist, probe-tip poses and stimulus from a connected source meter",
     "outputs": "Contact pairing, continuity state and electrical readings with die coordinates",
     "acceptance": "Probe the ends of a known resistor then lift one probe. The connected sweep must recover its resistance; the second sweep must report an open contact.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric station and documented manual motion; inferred detail",
+    "simulationStatus": "Passive contact geometry, current limiting and I–V verified",
+    "integrationStatus": "Interactive viewer, SourceMeter import and voltage handoff; headset not tested",
+    "simulator": "/simulations/equipment/05-07/simulator/"
   },
   {
     "id": "05-08",

@@ -1,0 +1,15 @@
+{
+ "device":"05-07", "configuration":"Cascade Microtech Summit 11000B-AP, manual 200 mm ambient chuck, two DC positioners and external source-measure unit",
+ "declaredBeforeImplementation":true,
+ "cases":[
+ {"id":"resistor","input":"1.000 kΩ resistor plus ideal contacts at V=−1, 0, +1 V","expected":"−1,0,+1 mA with 1000 Ω resistance","tolerance":"1 nA, 0.001 Ω","source":"Ohm's law"},
+ {"id":"lift","input":"Signal tip displaced +1 µm above pad while XY stays centered, +1 V","expected":"OPEN (raised-tip), 0 A, resistance null","tolerance":"1 fA and exact status"},
+ {"id":"off-pad","input":"Tip XY exceeds a 100 µm pad’s center by 55 µm, Z at datum","expected":"OPEN (missed-pad), 0 A","tolerance":"1 fA and exact status"},
+ {"id":"series-parallel","input":"2000 Ω || (1000 Ω + 1000 Ω); 5 Ω per probe contact, ±1 V","expected":"1010 Ω at terminals and 1/1010 A at +1 V","tolerance":"0.001 Ω; 1 nA","source":"Independent series/parallel reduction"},
+ {"id":"clamp","input":"1 kΩ and 0.5 mA current limit, +1 V request","expected":"+0.5 mA at +0.5 V, compliance true","tolerance":"1 nA and 1 µV"},
+ {"id":"transform","input":"Stage +1.0 mm X, −2.0 mm Y, +5°; coupon local transform roundtrip","expected":"world and inverse coordinates agree with independent matrix arithmetic","tolerance":"1e−9 mm"},
+ {"id":"mechanical","input":"Both probe tips lowered; stage move command","expected":"reject, no sample motion or new sweep","tolerance":"exact"},
+ {"id":"platen","input":"ASCII dimensions and visible view in vendor docs","expected":"745×595×20 mm platen, 862×831 mm overall station footprint and 811 mm nominal microscope height","tolerance":"1 mm model","source":"Vendor datasheet p. 3 and 792-00069-1 p. 3"},
+ {"id":"voltage-interop","input":"Actual 09-03 Keithley 2450 example output; reuse its requested voltage/limit sequence on aligned matching 1 kΩ coupon","expected":"11 requested points and same measured current after ideal routing","tolerance":"1 nA"}
+ ]
+}
