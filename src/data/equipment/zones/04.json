@@ -184,7 +184,7 @@
   {
     "id": "04-09",
     "name": "Chemical mechanical polishing",
-    "model": "G&P POLI 500",
+    "model": "G&P POLI-500 AC (closed exterior)",
     "evidence": "B",
     "priority": "P2",
     "page": 17,
@@ -197,9 +197,10 @@
     "inputs": "Height map, material regions, removal coefficients and planarization history",
     "outputs": "Post-polish topography, material-removal map and planarity metric",
     "acceptance": "For an ideal single-material plane and uniform removal field, the output must stay planar and shift by the prescribed removal amount at every sampled point.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented metric closed POLI-500 AC cabinet and detached radial reference",
+    "simulationStatus": "Verified read-only inert radial geometry; no polishing or removal field",
+    "integrationStatus": "3D exterior, detached chart, fixed fiducial exports and stable XR picks",
+    "simulator": "/simulations/equipment/04-09/simulator/"
   },
   {
     "id": "04-10",

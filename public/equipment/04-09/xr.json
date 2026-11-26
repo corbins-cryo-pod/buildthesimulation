@@ -1,0 +1,118 @@
+{
+  "schema": "bts.xr-instrument.v1",
+  "equipmentId": "04-09",
+  "units": "m",
+  "axes": "+X right, +Y up, +Z front",
+  "nominalBoundsM": {
+    "min": [
+      -0.55,
+      0,
+      -0.576
+    ],
+    "max": [
+      1.1575,
+      1.88,
+      0.6335
+    ]
+  },
+  "budget": {
+    "byteLength": 654552,
+    "nodes": 90,
+    "triangles": 9279
+  },
+  "actions": [
+    {
+      "node": "MARK_1",
+      "action": "mark",
+      "value": "M1",
+      "label": "Read fixed radial mark M1",
+      "boundsAtRestM": {
+        "min": [
+          0.6865,
+          0.848,
+          0.486
+        ],
+        "max": [
+          0.7855,
+          0.876,
+          0.496
+        ]
+      }
+    },
+    {
+      "node": "MARK_2",
+      "action": "mark",
+      "value": "M2",
+      "label": "Read fixed radial mark M2",
+      "boundsAtRestM": {
+        "min": [
+          0.8435,
+          0.848,
+          0.486
+        ],
+        "max": [
+          0.9425,
+          0.876,
+          0.496
+        ]
+      }
+    },
+    {
+      "node": "MARK_3",
+      "action": "mark",
+      "value": "M3",
+      "label": "Read fixed radial mark M3",
+      "boundsAtRestM": {
+        "min": [
+          1.0005,
+          0.848,
+          0.486
+        ],
+        "max": [
+          1.0995,
+          0.876,
+          0.496
+        ]
+      }
+    }
+  ],
+  "actionModule": "annulus.mjs",
+  "interactionNotes": "Attach the offline chart texture to +Z face of CHART_SCREEN. All action targets on detached chart reader. Cabinet has no interactions or moving parts.",
+  "verification": [
+    {
+      "node": "CABINET_WIDTH_DEPTH_DATUM",
+      "axis": "x",
+      "expectedMm": 1100,
+      "actualMm": 1100.00002,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "CABINET_WIDTH_DEPTH_DATUM",
+      "axis": "z",
+      "expectedMm": 1150,
+      "actualMm": 1149.99998,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "POLI500AC_DORMANT",
+      "axis": "y",
+      "expectedMm": 1880,
+      "actualMm": 1880.00003,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "CHART_SCREEN",
+      "axis": "x",
+      "expectedMm": 472,
+      "actualMm": 472,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "CHART_SCREEN",
+      "axis": "y",
+      "expectedMm": 330,
+      "actualMm": 330.00001,
+      "toleranceMm": 0.05
+    }
+  ]
+}
