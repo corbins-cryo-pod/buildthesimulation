@@ -1,0 +1,89 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    0.613,
+    0.65,
+    0.5715
+  ],
+  "meshes": 50,
+  "triangles": 9114,
+  "bytes": 487168,
+  "interaction": {
+    "Door_handle": {
+      "action": "door",
+      "boundsMinM": [
+        0.2265,
+        0.3105,
+        0.2685
+      ],
+      "boundsMaxM": [
+        0.2495,
+        0.4055,
+        0.3015
+      ]
+    },
+    "Signal_feedthrough": {
+      "action": "feedthrough",
+      "boundsMinM": [
+        0.287,
+        0.19,
+        0.158
+      ],
+      "boundsMaxM": [
+        0.309,
+        0.216,
+        0.184
+      ]
+    },
+    "Signal_feedthrough_socket": {
+      "action": "feedthrough",
+      "boundsMinM": [
+        0.307,
+        0.198,
+        0.166
+      ],
+      "boundsMaxM": [
+        0.313,
+        0.208,
+        0.176
+      ]
+    },
+    "Ground_lug": {
+      "action": "ground",
+      "boundsMinM": [
+        0.287,
+        0.131,
+        0.158
+      ],
+      "boundsMaxM": [
+        0.309,
+        0.157,
+        0.184
+      ]
+    },
+    "Ground_lug_socket": {
+      "action": "ground",
+      "boundsMinM": [
+        0.307,
+        0.139,
+        0.166
+      ],
+      "boundsMaxM": [
+        0.313,
+        0.149,
+        0.176
+      ]
+    }
+  },
+  "hinge": {
+    "node": "Door_hinge_pivot",
+    "axis": "+Y",
+    "angleRad": [
+      -1.88,
+      0
+    ],
+    "initial": "closed"
+  },
+  "authoring": "Custom nominal teaching enclosure, no measured build spec"
+}
