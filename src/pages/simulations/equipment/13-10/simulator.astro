@@ -1,0 +1,40 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import refs from '../../../../../public/equipment/13-10/references.json';
+import verified from '../../../../../public/equipment/13-10/verification.json';
+const a='/equipment/13-10/';
+---
+<Layout pageTitle="EM ACE600 · Documentary exhibit" subtitle="" description="Inspect the closed Leica EM ACE600 and read the step on a detached immutable synthetic coupon." wide={true}>
+<article class="equipment ace1310">
+<nav class="eq-nav"><a href="/simulations/equipment/13-10/">← Equipment 13-10</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">Sources & checks</a></nav>
+<header class="eq-mast"><span class="eq-meta">13-10 / Documentary reconstruction and detached geometry viewer</span><h2>Leica EM ACE600 · Closed cabinet &amp; step viewer</h2><p>Orbit a dormant EM ACE600. Then use the detached display to read the height difference on a pre-existing rectangular feature of a synthetic coupon. The cabinet does not open or operate, and the coupon never changes.</p></header>
+<div class="ace-grid">
+<section class="ace-card"><h3>3D exhibit</h3><div class="ace-bar"><button type="button" data-view="whole">Whole exhibit</button><button type="button" data-view="front">Cabinet close-up</button><button type="button" data-view="side">Cabinet side</button><button type="button" data-view="viewer">Detached display</button><button type="button" id="camera-reset">Reset view</button></div>
+<div class="ace-camera"><canvas id="ace-model" aria-label="Closed white ACE600 cabinet with black glazing and a separate bench display" aria-describedby="ace-view-help"></canvas></div>
+<p id="asset" class="ace-note" role="status">Loading metric GLB…</p><p class="ace-note" id="ace-view-help">Drag to orbit, pinch or scroll to zoom. On the detached display, the two pale keys select the raised or surrounding point; the amber key reads the difference. The same actions are available in the panel.</p></section>
+<section class="ace-card"><h3>Read the existing step</h3><div class="ace-bar"><button type="button" id="raised">Raised point</button><button type="button" id="surround">Surrounding point</button><button type="button" id="reset">Reset selection</button></div>
+<div class="ace-bar"><label>Row <input type="range" id="row" min="0" max="23" step="1" value="12" /></label><label>Column <input type="range" id="column" min="0" max="39" step="1" value="20" /></label><output id="point">X 10.25 mm, Y 6.25 mm</output></div>
+<canvas id="coupon-map" width="400" height="240" role="img" aria-label="Synthetic coupon map. Ochre marks the existing raised rectangle. The selected horizontal row is shown on the profile below."></canvas>
+<svg id="profile" viewBox="0 0 420 104" role="img" aria-label="Height profile of the selected row, horizontal axis in millimetres and vertical axis in nanometres">
+<path d="M42 8V85h368M42 37h368" fill="none" stroke="currentColor" stroke-opacity=".35"/><text x="1" y="39">36 nm</text><text x="14" y="75">0</text><text x="39" y="100">0</text><text x="369" y="100">20 mm</text>
+<path id="trace" d="M42 72h110.4V37h147.2v35H410" fill="none" stroke="#a87933" stroke-width="2.5"/><circle id="sample-mark" cx="230" cy="37" r="4" fill="#ba593c"/>
+</svg>
+<div class="ace-bar"><button class="primary" type="button" id="measure">Read height difference</button><button type="button" id="json">Export inspection JSON</button><a href={a+'example-coupon.json'}>Example result</a></div>
+<p class="ace-note" id="status" role="status" aria-live="polite">Ready. The reference point is on the surrounding flat surface.</p></section>
+</div>
+<section id="evidence"><h3>References and geometric checks</h3>
+<figure class="ace-fig"><img src={a+'reference-elevation.svg'} alt="Original front and side outlines of the closed chamber and plinth beside a detached rectangular map" loading="lazy"/><figcaption>Original reference illustration. Cabinet proportions are photo-informed; the separate map exaggerates height for display.</figcaption></figure>
+<ul>{refs.references.map(r=><li><a href={r.url}>{r.title}</a>. {r.caption}</li>)}</ul>
+<p>The OEM lists the basic enclosure at approximately <b>300 × 540 × 640 mm</b> (W × D × H, technical data sheet p. 4). It anchors the metre-scale GLB. The angled plinth, opaque glazing, hood and external hinges are inferred; variants, internal geometry, installation clearances and all operating behavior are excluded.</p>
+<p>The 20 × 12 mm digital coupon uses 0.5 mm square samples. Pre-existing height is 36 nm for 6 ≤ X &lt; 14 mm and 3 ≤ Y &lt; 9 mm; all other points are 0 nm. Values are read at sample centers. A step reading subtracts the height at the fixed reference (X 2.25 mm, Y 6.25 mm). Export preserves the coupon ID, revision, units, selection, measurement and profile. This verifies geometric bookkeeping only, not real thickness measurement, film formation or instrument performance.</p>
+<div class="ace-table"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{verified.checks.map(c=><tr><th scope="row">{c.id}</th><td>{String(c.expected)} {c.unit}</td><td>{typeof c.actual==='number'?Number(c.actual.toFixed(8)):String(c.actual)} {c.unit}</td><td>{c.tolerance===0?'Exact':c.tolerance}</td><td>{c.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable model</a> · <a href={a+'ace600-closed.glb'} download>Metric GLB</a> · <a href={a+'references.json'}>Reference notes</a> · <a href={a+'vr-station.json'}>VR action manifest</a> · <a href={a+'coupon.mjs'}>Independent geometry module</a> · <a href={a+'verification.json'}>Verification JSON</a>. No headset session tested.</p></section>
+</article></Layout><script>import '../../../../lib/equipment/13-10/client.mjs';</script>
+<style>
+.ace1310{--ace-rule:color-mix(in srgb,currentColor 26%,transparent);max-width:1280px;margin:auto}.ace-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:1rem}.ace-card{min-width:0;border:1px solid var(--ace-rule);padding:.85rem;margin:.8rem 0}.ace-card h3{margin:.21rem 0 .6rem}
+.ace-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin:.53rem 0}.ace-bar,.ace-note,.ace-fig figcaption{font:.89rem/1.4 system-ui,sans-serif}.ace-bar label{display:flex;align-items:center;gap:.3em}.ace-bar input{width:6.4rem}.ace1310 :is(button,input){font:inherit;accent-color:#4f736c}.ace1310 button{padding:.4rem;background:var(--panel,Canvas);color:inherit;border:1px solid var(--ace-rule);border-radius:3px;min-height:38px;cursor:pointer}.ace1310 .primary{background:#34594f;color:#fff}
+.ace-camera{aspect-ratio:1.34;background:#263b40}.ace-camera canvas{width:100%;height:100%;display:block;touch-action:none}.ace1310 #coupon-map,.ace1310 #profile{display:block;width:100%;height:auto;max-width:492px;margin:.6rem 0}.ace1310 #coupon-map{background:#213842;touch-action:manipulation;cursor:crosshair}.ace1310 #profile text{font:11px system-ui,sans-serif;fill:currentColor}
+.ace-table{overflow:auto}.ace-table table{width:100%;border-collapse:collapse}.ace-table :is(td,th){border-bottom:1px solid var(--ace-rule);padding:.42rem;text-align:left}.ace-fig{margin:1rem 0;max-width:680px}.ace-fig img{width:100%;height:auto;display:block}.ace-fig figcaption{margin:.38rem 0}
+@media(max-width:850px){.ace-grid{grid-template-columns:1fr}}
+</style>

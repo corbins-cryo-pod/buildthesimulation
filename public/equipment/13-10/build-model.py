@@ -1,4 +1,4 @@
-"""Editable Leica EM ACE600 closed exterior and detached geology demo. Dimensions mm input, metres GLB. Python stdlib."""
+"""Editable Leica EM ACE600 closed exterior and detached geometry exhibit. Dimensions mm input, metres GLB. Python stdlib."""
 import json, struct, math
 from pathlib import Path
 OUT=Path(__file__).resolve().parent
@@ -96,7 +96,7 @@ def profile(n, coords, width, material, part):
   j=(i+1)%m;a.extend((i,j,i+m,j,j+m,i+m))
  # Input side order is positive in Z/Y; reverse for outward surfaces in X/Y/Z.
  shapes[n]=geometry(v,list(reversed(a)))
- return ref(n,n,material,s=(1000,1000,1000),p=part)
+ return ref(n,n,material,s=(1,1,1),p=part)
 def b(n,m,xyz,s,p='Cabinet',q=None):return ref(n,'box',m,xyz,s,p,q)
 def v(n,m,xyz,s,p='Cabinet',q=None):return ref(n,'bevelbox',m,xyz,s,p,q)
 def rx(a):
