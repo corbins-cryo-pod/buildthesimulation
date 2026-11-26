@@ -81,9 +81,10 @@
     "inputs": "Tribology geometry, normal load, sliding trajectory and calibrated friction coefficient",
     "outputs": "Tangential-force trace (N), friction coefficient and fixture metadata",
     "acceptance": "Slide a constant-friction phantom in both directions. Tangential force must reverse sign and its magnitude divided by normal load must recover the input coefficient.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric MCR 302 plus three-contact cell; inferred accessory details",
+    "simulationStatus": "Verified constant kinetic friction, sinusoidal rotation, signed force and torque",
+    "integrationStatus": "Operable station, JSON trace and reusable controller target contract",
+    "simulator": "/simulations/equipment/14-04/simulator/"
   },
   {
     "id": "14-05",
