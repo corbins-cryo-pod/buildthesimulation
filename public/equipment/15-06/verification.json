@@ -1,0 +1,109 @@
+{
+  "scope": "Documentary SkyScan 1276 CMOS case and safe detached two-layer synthetic fixture. No scanner use, acquisition, inference, anatomy, materials, radiation or headset evidence.",
+  "rows": [
+    {
+      "id": "Ring cells from difference of rectangles",
+      "expected": 160,
+      "actual": 160,
+      "unit": "cells",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Ring area",
+      "expected": 8,
+      "actual": 8,
+      "unit": "mm²",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "Ring occupied-column width",
+      "expected": 2.8,
+      "actual": 2.8000000000000003,
+      "unit": "mm",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "Stored annotation length",
+      "expected": 28,
+      "actual": 28,
+      "unit": "cells",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Annotation ring coincident columns",
+      "expected": 8,
+      "actual": 8,
+      "unit": "cells",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Empty shape label count",
+      "expected": 0,
+      "actual": 0,
+      "unit": "cells",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Empty stored width",
+      "expected": null,
+      "actual": null,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Empty frame still contains annotation",
+      "expected": 28,
+      "actual": 28,
+      "unit": "cells",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Missing frame coverage",
+      "expected": "missing",
+      "actual": "missing",
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Missing frame result",
+      "expected": null,
+      "actual": null,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "OEM cabinet width",
+      "expected": 954,
+      "actual": 954.0000036358833,
+      "unit": "mm",
+      "tolerance": 0.6,
+      "pass": true
+    },
+    {
+      "id": "OEM cabinet height",
+      "expected": 940,
+      "actual": 939.9999976158142,
+      "unit": "mm",
+      "tolerance": 0.6,
+      "pass": true
+    },
+    {
+      "id": "OEM cabinet depth",
+      "expected": 1190,
+      "actual": 1190.5000880360603,
+      "unit": "mm",
+      "tolerance": 0.6,
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "equipmentId":"15-06",
+  "configuration":"Bruker SkyScan 1276 CMOS Edition ATS-sized closed exterior, not the SkyScan 1272 or long housing option",
+  "scope":"Dormant documentary enclosure with detached fixed synthetic shape/annotation archive",
+  "input":{"schema":"bts.synthetic-two-layer-phantom.v1","archiveId":"SS1276-GEOMETRIC-FRAMES-001","grid":"32 columns × 24 rows × 3 frame positions","spacingMm":[0.20,0.25,0.50],"coordinates":"Cell centers from top-left; X right, Y down, Z along ordered frame indices","missing":[2]},
+  "output":{"schema":"bts.synthetic-two-layer-review.v1","fields":"Archive and frame IDs, layer IDs, source, revision, spacing, independent layer totals, intersection, shape area and width where defined","physicalClaim":false},
+  "limits":["No scanning, data acquisition, physics, reconstruction, dose or settings","No specimen, anatomy image, implant or biological workflow","No immersive or headset verification"]
+}

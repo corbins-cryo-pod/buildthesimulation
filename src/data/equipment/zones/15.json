@@ -111,9 +111,10 @@
     "inputs": "CT volume with voxel scale, implant geometry, registration transform and artifact mask",
     "outputs": "Registered anatomy/implant volume, world-space distances and labeled artifact regions",
     "acceptance": "Register a digital array to a bead phantom of known spacing. Recover spacing to voxel resolution and preserve a supplied streak mask independently of the implant label.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Closed catalogue-sized 1276 CMOS exterior; no mechanisms",
+    "simulationStatus": "Detached synthetic shape and annotation archive; no scanning or registration",
+    "integrationStatus": "Dedicated simulator, editable asset and example exports linked",
+    "simulator": "/simulations/equipment/15-06/simulator/"
   },
   {
     "id": "15-07",
