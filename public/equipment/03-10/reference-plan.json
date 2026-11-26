@@ -1,0 +1,37 @@
+{
+  "declaredBeforeImplementation": true,
+  "fixture": "Pure cold centered rectangular footprint in an original shelf mock-up.",
+  "cases": [
+    {
+      "id": "nominal",
+      "expected": {
+        "widthPerSideMm": 30,
+        "depthPerSideMm": 45,
+        "headroomMm": 150,
+        "fits": true
+      }
+    },
+    {
+      "id": "quarter-turn",
+      "expected": {
+        "widthPerSideMm": 65,
+        "depthPerSideMm": 10,
+        "headroomMm": 150,
+        "fits": true
+      }
+    },
+    {
+      "id": "oversize",
+      "expected": {
+        "widthPerSideMm": -2.5,
+        "fits": false
+      }
+    },
+    {
+      "id": "closed-display",
+      "expected": {
+        "result": null
+      }
+    }
+  ]
+}

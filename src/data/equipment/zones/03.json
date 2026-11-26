@@ -221,9 +221,15 @@
     "inputs": "Compatible coupon ID, programmed chamber trace and material-response model if available",
     "outputs": "Thermal history and any explicitly modeled change to the specimen",
     "acceptance": "Replay a ramp–hold–cool fixture for an inert coupon. Match the supplied peak and hold duration within the sampling interval and leave material properties intact.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: metric 3-1750 housing, vertical-lift depiction and original dry shelf",
+    "simulationStatus": "First pass: empty tray geometry verified; thermal treatment out of scope",
+    "integrationStatus": "Linked: cold shelf gauge and JSON",
+    "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/03-10/simulator/"
+      ]
+    ]
   },
   {
     "id": "03-11",

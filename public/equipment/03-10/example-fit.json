@@ -1,0 +1,28 @@
+{
+  "schema": "bts.dry-shelf-fit.v1",
+  "deviceId": "03-10",
+  "kind": "simulated geometry",
+  "dummyId": "empty-dry-tray-01",
+  "revision": 1,
+  "parentRevision": 0,
+  "configuration": {
+    "dummyId": "empty-dry-tray-01",
+    "widthMm": 250,
+    "depthMm": 180,
+    "heightMm": 45,
+    "quarterTurn": false
+  },
+  "shelf": {
+    "widthMm": 310,
+    "depthMm": 270,
+    "headroomMm": 195
+  },
+  "clearance": {
+    "widthPerSideMm": 30,
+    "depthPerSideMm": 45,
+    "headroomMm": 150,
+    "fits": true
+  },
+  "treatment": "not modeled",
+  "provenance": "Original stationary empty-tray bounding box; cabinet scale from Dentsply 1750 outline, not manufacturing suitability."
+}
