@@ -53,5 +53,88 @@
       "maxDoseMjCm2": 100
     }
   },
-  "limits": "No experimental resist/diffraction data; enclosure, hole layout and Z/transport stroke are not measured."
+  "limits": "No experimental resist/diffraction data; enclosure, hole layout and Z/transport stroke are not measured.",
+  "review": {
+    "method": "Executed all current repository numerical test bodies in a JavaScript isolate; Node and browser CI separate.",
+    "cases": [
+      {
+        "name": "Independent 2 × 2 mm aperture, 25 mW/cm² × 4 s: 400 cells at 100 mJ/cm², 4 mm²",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Known 1 mm stage translation shifts pattern left 10 pixels; dose/area conserved",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Record acceptance: valid fit and centered edge, rejection beyond travel preserves input",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Fit rejects overhang and uncovered assumed holes; interlocks refuse exposure",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Control response: doubling time doubles dose, geometry unchanged",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Analytic rigid transform: 90° test outside operating span and round-trip within span",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Mask validation, revision and example schema",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Geometry source uses mm, chuck and mask are documented scale and stable pivots",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Independent offset coupon coordinates recover translation and rotation, no mutation",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Unequal mark baselines leave nonzero least-squares residual",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Out-of-travel alignment rejects rather than clipping; invalid marks and first-level exposure",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Boolean interlocks are strict and explicit mark coordinates survive JSON export",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Independent loading validates coupon marks without requiring a photomask",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Model-stage frame conversion, contact and 100/150 µm alignment separation",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Static asset coupon sits on the chuck and glTF names match source",
+        "outcome": "PASS"
+      }
+    ],
+    "limitations": "Two-point least-squares rigid registration; no optical metrology or resist validation. Separation stroke is modeled as a geometric interlock only.",
+    "mechanical": {
+      "zeroContactGapUm": 0,
+      "alignmentGapUm": 100.00000000000009,
+      "maxAlignmentGapUm": 149.99999999999991,
+      "scope": "Source-coordinate analytical consistency; actual GLB world-transform gap checked by Chromium test."
+    },
+    "glbAudit": {
+      "previousStaticCouponGapUm": 99.99999999999964,
+      "correctedStaticCouponGapUm": -8.673617379884035e-13,
+      "contactLiftMm": 1.300000000000032,
+      "contactGapUm": 0,
+      "separation100Um": 99.99999999998899,
+      "separation150Um": 149.9999999999835,
+      "nodeCount": 171,
+      "assetSizeBytes": 65432,
+      "method": "Independent calculation from GLB node translations and primitive box dimensions; numerical check, not measured hardware."
+    }
+  }
 }

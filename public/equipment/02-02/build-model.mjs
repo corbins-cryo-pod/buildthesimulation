@@ -15,4 +15,10 @@ function makeGltf(src){
  const abc="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";let b64="";for(let i=0;i<bytes.length;i+=3){const a=bytes[i],b=bytes[i+1]??0,c=bytes[i+2]??0;const v=(a<<16)|(b<<8)|c;b64+=abc[(v>>18)&63]+abc[(v>>12)&63]+(i+1<bytes.length?abc[(v>>6)&63]:"=")+(i+2<bytes.length?abc[v&63]:"=")}
  return {asset:{version:"2.0",generator:"BuildTheSimulation MJB3 primitive model"},scene:0,scenes:[{nodes:roots}],nodes:ns,meshes,materials:mats.map(m=>({name:m,pbrMetallicRoughness:{baseColorFactor:src.materials[m],metallicFactor:["steel","chrome","gold"].includes(m)?.65:.05,roughnessFactor:["steel","chrome"].includes(m)?.28:.6},...(m==="glass"?{alphaMode:"BLEND",doubleSided:true}:{})})),buffers:[{byteLength:bytes.length,uri:"data:application/octet-stream;base64,"+b64}],bufferViews:views,accessors:acc};
 }
-const source=JSON.parse(readFileSync(new URL('./model-source.json',import.meta.url)));writeFileSync(new URL('./mjb3.gltf',import.meta.url),JSON.stringify(makeGltf(source))+'\n');
+const source=JSON.parse(readFileSync(new URL('./model-source.json',import.meta.url)));const gltf=makeGltf(source);writeFileSync(new URL('./mjb3.gltf',import.meta.url),JSON.stringify(gltf)+'\n');
+const bin=Buffer.from(gltf.buffers[0].uri.split(',')[1],'base64');delete gltf.buffers[0].uri;
+const raw=Buffer.from(JSON.stringify(gltf),'utf8'),json=Buffer.alloc(Math.ceil(raw.length/4)*4,32);raw.copy(json);
+const binary=Buffer.alloc(Math.ceil(bin.length/4)*4);bin.copy(binary);
+const header=Buffer.alloc(12);header.writeUInt32LE(0x46546c67,0);header.writeUInt32LE(2,4);header.writeUInt32LE(12+8+json.length+8+binary.length,8);
+const chunk=(length,type)=>{const b=Buffer.alloc(8);b.writeUInt32LE(length,0);b.writeUInt32LE(type,4);return b};
+writeFileSync(new URL('./mjb3.glb',import.meta.url),Buffer.concat([header,chunk(json.length,0x4e4f534a),json,chunk(binary.length,0x004e4942),binary]));
