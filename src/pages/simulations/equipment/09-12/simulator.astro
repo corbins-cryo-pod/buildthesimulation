@@ -1,0 +1,71 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import '../../../../lib/equipment/09-12/fixture.css';
+import verification from '../../../../../public/equipment/09-12/verification.json';
+import {defaults,limits,roles} from '../../../../../public/equipment/09-12/station.mjs';
+const a='/equipment/09-12/',pine='https://pineresearch.com/products/lowvolume-three-electrode-cell-kit/',nist='https://nvlpubs.nist.gov/nistpubs/jres/099/jresv99n3p241_A1b.pdf#page=2',gamry='https://www.gamry.com/application-notes/eis/quick-check-of-eis-system-performance';
+const inputs=[['gapMm','WE to reference plane (mm)',1],['areaMm2','Uniform cross-section (mm²)',1],['sigmaSm','Conductivity (S/m)',.05],['temperatureC','Declared temperature (°C)',.5],['rpOhm','Interface R (Ω)',1],['capUf','Interface C (µF)',.01],['amplitudeMv','Voltage across WE–RE (mV RMS)',.1],['startHz','Start frequency (Hz)','any'],['stopHz','Stop frequency (Hz)','any'],['count','Number of frequencies',1]];
+const views=[
+ ['bench','Benchtop overview','The Pine AF01CKT1006 photograph establishes the compact glass vessel and multi-port cover. Mk I uses an original frame, lid and terminal placement.','https://pineresearch.com/wp-content/uploads/2024/06/AF01CKT1006-001.webp'],
+ ['ports','Lifted cartridge','Pine’s cap image shows independent feedthroughs. The Mk I lift is a custom teaching mechanism, not a reproduction of the Pine cap.','https://pineresearch.com/wp-content/uploads/2021/09/AFEX190-AFEX122CLIPAF01CKT1004accelecRRPG351_5-150x150.webp'],
+ ['sense','Working, sensing and return','The Gamry resistor reference illustrates distinct current and potential leads. The Mk I schematic uses three logical terminals, not Gamry’s four-wire clip harness.',gamry]
+];
+const specs=[
+ ['Vessel shell','72 mm OD × 56 mm wall height; 3.6 mm radial wall','Original Mk I CAD dimensions, not measured.'],
+ ['Bench base','140 × 116 × 10 mm','Original CAD, excluding feet and wiring.'],
+ ['Cartridge travel','0–38 mm along +Y','Virtual travel; upper position interrupts the modeled current path.'],
+ ['Path length and area','2–30 mm; 4–400 mm²','WE position and area drive visible slab length and square width √A. Length excludes the CE-to-RE region.'],
+ ['Conductivity','0.05–5 S/m','User-declared independent value; temperature is metadata only.'],
+ ['Terminal map','WE / RE / CE','WE enters current; CE returns it; RE is ideal zero-current voltage sense.'],
+ ['AC window','0.1–100,000 Hz; 0.1–30 mV RMS','Bounds of this passive computational experiment, not rated hardware.']
+];
+---
+<Layout pageTitle="Three-electrode cell laboratory" subtitle="" description="Wire an original passive three-terminal fixture, measure ideal slab resistance and export a virtual EIS spectrum." wide={true}>
+<article class="equipment cell-fixture">
+<nav class="eq-nav"><a href="/simulations/equipment/09-12/">← Equipment 09-12</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">Evidence & verification</a></nav>
+<header class="eq-mast"><span class="eq-meta">09-12 / Electrical instrumentation</span><h2>Three-electrode cell fixture</h2><p><b>BTS-CELL-3E Mk I</b> is an original virtual fixture, not a commercial instrument. Wire the three contacts, set the uniform current path, and measure how the resistance changes. The transparent vessel visualizes the boundary conditions; outputs come from a passive electrical equivalent.</p></header>
+<div class="fixture-stack">
+<section class="fixture-panel"><span class="fixture-kicker">01 / Fixture</span><h3>Inspect and connect</h3>
+<div class="fixture-tools">{[['bench','Three-quarter'],['ports','Lid & ports'],['sense','Working path'],['rear','Rear']].map(([id,title])=><button type="button" data-view={id}>{title}</button>)}<button id="reset-view" type="button">Reset camera</button></div>
+<div class="cell-viewport"><canvas id="fixture" aria-label="Interactive 3D three-electrode fixture with lift and detachable leads"></canvas></div>
+<p id="model-status" class="fixture-small" role="status">Loading metric model…</p>
+<div class="fixture-tools"><button id="lift" aria-pressed="false">Raise cartridge</button>{roles.map(role=><button type="button" data-cable={role} aria-pressed="true">Disconnect {role}</button>)}</div>
+<p class="fixture-small">Drag to orbit, scroll or pinch to zoom. Click the handle or a connector in the scene, or use its button. Green is working, white is reference, red is counter. Violet marks the temperature probe; its response is not simulated.</p></section>
+<section class="fixture-panel"><span class="fixture-kicker">02 / Boundary conditions</span><h3>Configure the virtual cell</h3>
+<form id="controls" onsubmit="return false;">
+<label>Cell / sample ID<input name="cellId" value={defaults.cellId} maxlength="80"/></label><label>Working contact ID<input name="contactId" value={defaults.contactId} maxlength="80"/></label>
+<label>Parent revision<input name="parentRevision" type="number" value={0} min={0} max={99999999}/></label>
+<label>Equivalent circuit<select name="model"><option value="slab">Uniform slab only</option><option value="parallel-rc">Slab + parallel interface RC</option></select></label>
+{inputs.map(([k,n,step])=><label>{n}<input type="number" name={k} value={defaults[k]} min={limits[k][0]} max={limits[k][1]} step={step}/></label>)}</form>
+<div id="wiring" class="fixture-tools">{roles.map(role=><label>{role} lead to<select data-role={role} aria-label={role+' lead terminal'}>{[...roles,'open'].map(r=><option value={r} selected={r===role}>{r==='open'?'Open':r}</option>)}</select></label>)}</div>
+<div class="fixture-tools"><button id="acquire" class="primary">Acquire sweep</button><button id="double">Double conductivity</button><button id="example">Reset example</button></div>
+<p id="status" role="status" aria-live="polite">Ready. Acquire the default example to measure the ideal 100 Ω slab.</p></section>
+</div>
+<section class="fixture-panel"><span class="fixture-kicker">03 / Simulated readout</span><h3>Impedance and current</h3>
+<div class="fixture-meters">{[['Rₛ / solution','sol'],['Frequency','freq'],['|Z| at marker','mag'],['Phase','deg'],['|I| RMS','cur']].map(([n,k])=><div><small>{n}</small><strong data-meter={k}>—</strong></div>)}</div>
+<div class="fixture-tools"><label>Sweep marker<input id="point" type="range" min="0" max="48" value="0" disabled/></label><button id="plot-mode" aria-pressed="false">Show Nyquist plot</button></div>
+<div class="cell-trace"><canvas id="plot" width="1060" height="294" aria-label="Simulated impedance sweep chart"></canvas></div>
+<p id="plot-caption" class="fixture-small">Log frequency versus impedance magnitude. The marker reports phase and current.</p>
+<div class="fixture-tools"><button id="json" disabled>Download cell boundary JSON</button><button id="csv" disabled>Download spectrum CSV</button><a href={a+'output-schema.json'}>JSON schema</a><a href={a+'example-boundary.json'}>Example handoff</a><a href={a+'example-spectrum.csv'}>Example spectrum</a></div>
+</section>
+<section id="evidence"><h3>Reference views and dimensions</h3><p>Original Mk I renderings are presented alongside links to source photographs. The visual references establish the equipment class and wiring roles, not measurements of this custom device. No manufacturer image or CAD is bundled.</p>
+<div class="fixture-sheet">{views.map(([k,n,cap,url])=><figure><img src={a+k+'.png'} loading="lazy" alt={'Original rendering: '+n}/><figcaption><b>{n}.</b> {cap} <a href={url}>Source visual</a></figcaption></figure>)}</div>
+<p><a href={pine}>Pine kit reference and dimensions</a> · <a href={nist}>NIST solution conductivity and cell constant, pp. 241–243</a> · <a href={gamry}>Gamry passive-resistor fixture, fig. 1</a></p>
+<figure class="section-drawing"><img src={a+'reference-section.svg'} loading="lazy" alt="Labeled original schematic of the working electrode, reference sensing plane and counter return"/><figcaption>Only the WE-to-RE slab contributes to the modeled solution resistance.</figcaption></figure>
+<div class="fixture-table"><table><thead><tr><th>Parameter</th><th>Design specification</th><th>Interpretation</th></tr></thead><tbody>{specs.map(([k,v,c])=><tr><th>{k}</th><td>{v}</td><td>{c}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable parametric model</a> · <a href={a+'cell-fixture.glb'} download>Download GLB</a> · <a href={a+'vr-station.json'}>VR station manifest</a> · <a href={a+'station.mjs'}>Shared solver, state and physical poses</a>. The browser uses the same action and pose adapter; no headset has been tested.</p>
+</section>
+<section><h3>Experiment and handoff</h3>
+<p>Choose <b>Acquire sweep</b> to measure 100 Ω from the nominal 10 mm gap, 100 mm² cross-section and 1 S/m. Choose <b>Double conductivity</b> and acquire again to measure 50 Ω. Open the reference line and the instrument refuses to return a three-electrode result.</p>
+<details><summary>Equations and limitations</summary><p>For a uniform isotropic conductor, J = σE and E = ΔV/L. Integrate over area A to get I = σAΔV/L, so Rₛ = L/(σA). Here L ends at an ideal, nonloading reference sensing plane, not at CE. The optional circuit adds a passive parallel Rₚ and C in series: Z = Rₛ + Rₚ/(1 + jωRₚC). The ideal virtual analyzer prescribes WE–RE voltage and computes I = V/Z. Phasors use exp(+jωt). Nyquist displays −Im(Z); export keeps the signed imaginary part.</p>
+<p>No chemistry, real specimen, field spreading, diffusion, parasitics, temperature correction, counter impedance, drive compliance or hardware calibration is modeled. This does not establish safety or suitability for a real implant or bath.</p></details>
+<p>The input is a synthetic working contact and terminal assignments, not a physical sample or file. The JSON retains sample and contact IDs, parent revision, terminal roles, SI geometry and the complex sweep. The <a href="/simulations/equipment/09-01/">09-01 potentiostat</a> browser does not import this fixture directly. The supplied adapter translates to that virtual solver: two headless 49-point sweeps agreed within 1 nΩ while retaining IDs and revision lineage in the handoff. This is electrical equivalence, not a claim about wiring a real instrument. Neither output is Gamry DTA or captured hardware data.</p>
+<p><a href={a+'gamry-adapter.mjs'}>Gamry solver adapter</a> · <a href={a+'example-gamry-input.json'}>Example receiver input</a> · <a href={a+'gamry-compatibility.json'}>Pinned interoperation evidence</a></p></section>
+<section id="verification"><h3>Verification</h3><p>The independent results below verify the simplified electrical model, interlocks and dimensional claim, not a physical device.</p>
+<div class="fixture-table"><table><thead><tr><th>Case</th><th>Expected</th><th>Observed</th><th>Units / tolerance</th><th>Result</th></tr></thead><tbody>
+{verification.cases.map(c=><tr><th title={c.basis}>{c.id}<br/><small>{c.kind}</small></th><td>{String(c.expected)}</td><td>{String(c.actual)}</td><td>{c.units}{c.tolerance?' / ±'+c.tolerance:''}</td><td>{c.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'verification-plan.json'}>Independent cases</a> · <a href={a+'verification.json'}>Actual results</a> · <a href={a+'verify.mjs'}>Reproduce the checks</a></p>
+</section></article>
+</Layout>
+<script>import '../../../../lib/equipment/09-12/client.mjs';</script>
