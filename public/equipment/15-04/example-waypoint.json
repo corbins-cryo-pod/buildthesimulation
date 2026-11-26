@@ -1,0 +1,28 @@
+{
+  "schema": "bts.authored-waypoint-read.v1",
+  "deviceId": "15-04",
+  "sourceId": "geometric-waypoints-01",
+  "sourceRevision": 0,
+  "kind": "authored nonbiological illustration",
+  "readRevision": 1,
+  "index": 1,
+  "tS": 0.5,
+  "coordinateMm": {
+    "x": 3,
+    "y": 4
+  },
+  "deltaMm": {
+    "x": 3,
+    "y": 4,
+    "length": 5
+  },
+  "elapsedS": 0.5,
+  "status": "adjacent",
+  "units": {
+    "coordinate": "mm (diagram scale)",
+    "time": "s (authored time labels)"
+  },
+  "frame": "illustration plane; +X right, +Y up",
+  "gapPolicy": "Never interpolate or compute a segment across a missing point.",
+  "videoProcessed": false
+}
