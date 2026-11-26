@@ -352,7 +352,7 @@
   {
     "id": "10-16",
     "name": "Vibrating tissue slicer",
-    "model": "Leica VT1200 S (candidate)",
+    "model": "Leica VT1200 S, documented exterior only",
     "evidence": "C",
     "priority": "P2",
     "page": 35,
@@ -363,8 +363,9 @@
     "inputs": "Virtual specimen volume, cutting plane, requested thickness (m) and specimen transform",
     "outputs": "Ordered child slice IDs, plane transforms, extents and parent volume reference",
     "acceptance": "Section a labeled cuboid in the virtual fixture. Slice extents should cover the requested interval without overlap and each landmark should map back to its parent coordinate.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric external housing, dormant controller and separate author-designed fit gauge",
+    "simulationStatus": "Verified inert rectangular fit and landmark geometry only; original slicing acceptance not implemented",
+    "integrationStatus": "Interactive browser scene, fit report export and reusable VR anchors",
+    "simulator": "/simulations/equipment/10-16/simulator/"
   }
 ]
