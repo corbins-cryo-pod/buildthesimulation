@@ -253,9 +253,16 @@
     "inputs": "Virtual service endpoint types, manifold connection graph and service availability state",
     "outputs": "Service-availability events and connected instrument readiness flags",
     "acceptance": "Connect two instruments to distinct abstract service branches and disconnect one branch. Only dependent instruments should lose readiness; reconnecting must restore their prior linkage.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built",
+    "simulationStatus": "Built",
+    "integrationStatus": "Built",
+    "simulator": "/simulations/equipment/16-14/simulator/",
+    "related": [
+      [
+        "Blind fixture, elevation and independent checks",
+        "/simulations/equipment/16-14/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "16-15",

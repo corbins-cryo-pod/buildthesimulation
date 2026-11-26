@@ -1,0 +1,16 @@
+{
+  "schema": "bts.device-interaction.v1",
+  "device": "09-02",
+  "frame": {"units": "m", "up": "+Y", "forward": "+Z", "placementAnchor": "bts_bench_anchor"},
+  "fixture": {"anchor": "fixture_anchor", "contacts": {"HI":"contact_hi","LO":"contact_lo"}, "motion": {"node":"probe_travel","axis":"+Y","minM":0,"maxM":0.014,"kind":"inferred external fixture translation"}},
+  "ports": [{"id":"force","node":"port_force","normal":[0,0,-1]},{"id":"sense","node":"port_sense","normal":[0,0,-1]},{"id":"common","node":"port_common","normal":[0,0,-1]},{"id":"cmu-lcur","node":"port_lcur","normal":[0,0,-1]},{"id":"cmu-lpot","node":"port_lpot","normal":[0,0,-1]},{"id":"cmu-hpot","node":"port_hpot","normal":[0,0,-1]},{"id":"cmu-hcur","node":"port_hcur","normal":[0,0,-1]}],
+  "controls": [
+    {"id":"run","node":"front_measure","action":"run","targetSizeM":[0.017,0.015,0.018],"label":"Run measurement"},
+    {"id":"stop","node":"front_stop","action":"stop","targetSizeM":[0.016,0.015,0.018],"label":"Clear last reading"},
+    {"id":"power","node":"front_standby","action":"power","targetSizeM":[0.024,0.021,0.018],"label":"Toggle standby"},
+    {"id":"mode","node":"rotary_encoder","action":"cycle-mode","targetSizeM":[0.034,0.034,0.022],"label":"Change module"},
+    {"id":"seat","node":"probe_travel","action":"seat","targetSizeM":[0.059,0.028,0.025],"label":"Raise or lower paired probes"},
+    {"id":"wire-smu","node":"port_force","normal":[0,0,-1],"action":"wire-IV","targetSizeM":[0.017,0.023,0.022],"label":"Connect or disconnect I–V leads"},
+    {"id":"wire-cmu","node":"port_hcur","normal":[0,0,-1],"action":"wire-CV","targetSizeM":[0.017,0.023,0.022],"label":"Connect or disconnect C–V leads"}
+  ]
+}

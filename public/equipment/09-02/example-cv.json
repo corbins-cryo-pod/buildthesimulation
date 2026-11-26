@@ -1,0 +1,111 @@
+{
+  "schema": "bts.parametric-sweep.v1",
+  "mode": "CV",
+  "classification": "simulated",
+  "instrument": "Keysight B1500A",
+  "module": "B1520A MFCMU",
+  "sampleId": "C-CAL-1NF",
+  "sampleRevision": 1,
+  "parent": {
+    "schema": "bts.two-terminal-fixture.v1",
+    "kind": "capacitor",
+    "sampleId": "C-CAL-1NF",
+    "revision": 1,
+    "contacts": [
+      {
+        "id": "PAD_A",
+        "role": "HI"
+      },
+      {
+        "id": "PAD_B",
+        "role": "LO"
+      }
+    ],
+    "value": 1e-9,
+    "unit": "F",
+    "provenance": "Ideal BuildTheSimulation passive coupon"
+  },
+  "measurementId": "C-CAL-1NF-CV-1",
+  "revision": 1,
+  "contacts": {
+    "HI": "PAD_A",
+    "LO": "PAD_B"
+  },
+  "signConvention": "V = HI − LO and positive I enters HI. Row order is programmed bias sequence, not time.",
+  "units": {
+    "commandV": "V",
+    "terminalV": "V",
+    "capacitanceF": "F",
+    "susceptanceS": "S",
+    "acCurrentArms": "A RMS",
+    "dcCurrentA": "A",
+    "phaseDegrees": "deg"
+  },
+  "model": "ideal C, DC leakage = 0, parallel C/G model",
+  "settings": {
+    "startV": -1,
+    "stopV": 1,
+    "points": 5,
+    "frequencyHz": 10000,
+    "signalVrms": 0.03
+  },
+  "complianceCount": 0,
+  "summary": "1.000 nF at each bias",
+  "points": [
+    {
+      "index": 0,
+      "commandV": -1,
+      "terminalV": -1,
+      "capacitanceF": 1e-9,
+      "susceptanceS": 0.00006283185307179587,
+      "acCurrentArms": 0.000001884955592153876,
+      "phaseDegrees": 90,
+      "dcCurrentA": 0,
+      "flag": "OK"
+    },
+    {
+      "index": 1,
+      "commandV": -0.5,
+      "terminalV": -0.5,
+      "capacitanceF": 1e-9,
+      "susceptanceS": 0.00006283185307179587,
+      "acCurrentArms": 0.000001884955592153876,
+      "phaseDegrees": 90,
+      "dcCurrentA": 0,
+      "flag": "OK"
+    },
+    {
+      "index": 2,
+      "commandV": 0,
+      "terminalV": 0,
+      "capacitanceF": 1e-9,
+      "susceptanceS": 0.00006283185307179587,
+      "acCurrentArms": 0.000001884955592153876,
+      "phaseDegrees": 90,
+      "dcCurrentA": 0,
+      "flag": "OK"
+    },
+    {
+      "index": 3,
+      "commandV": 0.5,
+      "terminalV": 0.5,
+      "capacitanceF": 1e-9,
+      "susceptanceS": 0.00006283185307179587,
+      "acCurrentArms": 0.000001884955592153876,
+      "phaseDegrees": 90,
+      "dcCurrentA": 0,
+      "flag": "OK"
+    },
+    {
+      "index": 4,
+      "commandV": 1,
+      "terminalV": 1,
+      "capacitanceF": 1e-9,
+      "susceptanceS": 0.00006283185307179587,
+      "acCurrentArms": 0.000001884955592153876,
+      "phaseDegrees": 90,
+      "dcCurrentA": 0,
+      "flag": "OK"
+    }
+  ]
+}
