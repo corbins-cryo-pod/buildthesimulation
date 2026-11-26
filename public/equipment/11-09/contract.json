@@ -1,0 +1,8 @@
+{
+  "equipmentId":"11-09",
+  "configuration":"Coherent Monaco 1035-80-60 research example, OEM shared 1035-40-40 / 1035-80-60 closed mechanical head envelope only",
+  "scope":"Dormant passive housing and independent fixed 2D rectangle-card contrast",
+  "input":{"schema":"bts.synthetic-rectangle-comparison.v1","exhibitId":"MONACO-GEOMETRY-CARDS-001","frame":"2D millimeters; 56 by 32; upper-left origin, X right, Y down","views":["OVERLAP","EDGE-TOUCH"]},
+  "output":{"schema":"bts.synthetic-rectangle-review.v1","fields":"Source IDs, revision, bounds, intersection kind/bounds/area and union area, overlap fraction of union","units":"mm and mm²","physicalClaim":false},
+  "limits":["No beam, optical path, emission geometry, actuation, connections, power, exposure or settings","No physical processes or biological workflows","No headset validation"]
+}

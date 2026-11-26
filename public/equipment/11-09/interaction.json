@@ -1,0 +1,10 @@
+{
+  "schema":"bts.equipment.interaction.v1",
+  "equipmentId":"11-09",
+  "asset":"monaco-1035.glb",
+  "frame":{"unit":"m","up":"+Y","front":"+Z","placementAnchor":"bts_bench_anchor","mount":"bench"},
+  "parts":{"housing":"monaco_dormant_head_enclosure","front":"closed_blank_front_end","envelope":"monaco_outer_case_reference","exhibit":"detached_geometry_card_stand"},
+  "ports":[],
+  "actions":[{"action":"next","node":"detached_geometry_panel","label":"Compare the next fixed geometric card","sizeM":[0.274,0.173,0.045],"range":[0,1],"mode":"read-only"}],
+  "vrEvidence":"Metric authoring geometry and separate semantic selection; headset operation is not verified."
+}

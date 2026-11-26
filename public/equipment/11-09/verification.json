@@ -1,0 +1,93 @@
+{
+  "scope": "Nominal closed Coherent 1035 head envelope and independent inert planar cards. Not optics, operation, sample processing, calibration or headset evidence.",
+  "rows": [
+    {
+      "id": "A source area",
+      "expected": 384,
+      "actual": 384,
+      "unit": "mm²",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "B source area",
+      "expected": 384,
+      "actual": 384,
+      "unit": "mm²",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Abstract intersection area",
+      "expected": 160,
+      "actual": 160,
+      "unit": "mm²",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Union area",
+      "expected": 608,
+      "actual": 608,
+      "unit": "mm²",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Intersection fraction of union",
+      "expected": 0.2631578947368421,
+      "actual": 0.2631578947368421,
+      "unit": "dimensionless",
+      "tolerance": 1e-15,
+      "pass": true
+    },
+    {
+      "id": "Known touching classification",
+      "expected": "boundary contact only",
+      "actual": "boundary contact only",
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Contact area",
+      "expected": 0,
+      "actual": 0,
+      "unit": "mm²",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Contact union",
+      "expected": 768,
+      "actual": 768,
+      "unit": "mm²",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "OEM housing width",
+      "expected": 360.3,
+      "actual": 360.3000044822693,
+      "unit": "mm",
+      "tolerance": 0.2,
+      "pass": true
+    },
+    {
+      "id": "OEM housing height",
+      "expected": 180.5,
+      "actual": 180.50000397488475,
+      "unit": "mm",
+      "tolerance": 0.2,
+      "pass": true
+    },
+    {
+      "id": "OEM housing length",
+      "expected": 668.7,
+      "actual": 668.7000198289752,
+      "unit": "mm",
+      "tolerance": 0.2,
+      "pass": true
+    }
+  ]
+}
