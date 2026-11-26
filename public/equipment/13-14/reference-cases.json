@@ -1,0 +1,16 @@
+{
+  "method":"Independent 60–80–100 mm right triangle, half rectangle area and drafted integer origin displacement. Nominal exterior is from Thermo catalog p.43; instrument group excludes teaching display.",
+  "cases":[
+    {"id":"width","expected":0.420,"tolerance":0.00001,"unit":"m"},
+    {"id":"height","expected":0.280,"tolerance":0.00001,"unit":"m"},
+    {"id":"depth","expected":0.490,"tolerance":0.00001,"unit":"m"},
+    {"id":"diagonal","expected":100,"tolerance":1e-10,"unit":"mm"},
+    {"id":"area","expected":2400,"tolerance":1e-10,"unit":"mm²"},
+    {"id":"perimeter","expected":240,"tolerance":1e-10,"unit":"mm"},
+    {"id":"translation-x","expected":-32,"unit":"mm"},
+    {"id":"translation-y","expected":26,"unit":"mm"},
+    {"id":"area-invariant","expected":true,"unit":"boolean"},
+    {"id":"display-labels-stable","expected":true,"unit":"boolean"},
+    {"id":"physical-action-rejected","expected":true,"unit":"boolean"}
+  ]
+}

@@ -280,9 +280,10 @@
     "inputs": "Embedded virtual block, cutting orientation, thickness, starting index and collection list",
     "outputs": "Serial section geometries, order, physical depth and block lineage",
     "acceptance": "Generate a ribbon of equal-thickness sections from a calibrated block. Successive center depths should differ by the selected thickness, with unique indices and an unchanged parent reference.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: dormant metric HM 325 902100A exterior; nominal catalog envelope verified",
+    "simulationStatus": "First pass: detached generic CAD draft inspection only; section generation deferred",
+    "integrationStatus": "First pass: simulator route, metric GLB, detached VR action and annotation JSON",
+    "simulator": "/simulations/equipment/13-14/simulator/"
   },
   {
     "id": "13-15",
