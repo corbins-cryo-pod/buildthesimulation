@@ -1,0 +1,95 @@
+[
+  {
+    "id": "register-equal-areas",
+    "input": "Two isolated normalized Gaussians of equal received area, zero background and RSF_Au=RSF_Ag=1.",
+    "expected": {
+      "Au": 50,
+      "Ag": 50
+    },
+    "unit": "% relative corrected signal",
+    "absTolerance": 0.00001,
+    "actual": {
+      "Au": 50,
+      "Ag": 50
+    },
+    "pass": true
+  },
+  {
+    "id": "relative-sensitivity",
+    "input": "Equal received areas; RSF_Au=2, RSF_Ag=1.",
+    "expected": {
+      "Au": 33.333333333333336,
+      "Ag": 66.66666666666667
+    },
+    "unit": "% relative corrected signal",
+    "absTolerance": 0.00001,
+    "actual": {
+      "Au": 33.333333333333336,
+      "Ag": 66.66666666666667
+    },
+    "pass": true
+  },
+  {
+    "id": "raw-shift",
+    "input": "Forward affine error raw=(1+0.0005)E+0.3 eV. Fixed line Au=83.96 eV; Ag=368.21 eV.",
+    "expected": {
+      "Au": 84.30198,
+      "Ag": 368.694105
+    },
+    "unit": "eV",
+    "absTolerance": 0.00001,
+    "actual": {
+      "Au": 84.30197999999997,
+      "Ag": 368.69410499999987
+    },
+    "pass": true
+  },
+  {
+    "id": "gold-copper-scale-ag-check",
+    "input": "Fit Au/Cu lines on independent synthetic standard, then correct Ag using the same affine response.",
+    "expected": {
+      "Au": 83.96,
+      "Ag": 368.21,
+      "recoveredOffsetEv": 0.3,
+      "recoveredGain": 0.0005
+    },
+    "unit": "eV (gain dimensionless)",
+    "absTolerance": 0.00001,
+    "actual": {
+      "Au": 83.96000000000004,
+      "Ag": 368.2099999999999,
+      "recoveredOffsetEv": 0.2999999999999261,
+      "recoveredGain": 0.000500000000000167
+    },
+    "pass": true
+  },
+  {
+    "id": "broader-pass",
+    "input": "Declared model sqrt(0.34^2+(0.017 PE)^2), PE=46.95 eV rather than 11.75 eV, Au/Ag identical broadening in this fixture.",
+    "expected": {
+      "newFwhmEv": 0.8675502420609428,
+      "oldFwhmEv": 0.3943349623099631
+    },
+    "unit": "eV",
+    "absTolerance": 0.00001,
+    "actual": {
+      "newFwhmEv": 0.8675502420609422,
+      "oldFwhmEv": 0.3943349623099652
+    },
+    "pass": true
+  },
+  {
+    "id": "no-transfer",
+    "input": "Ask Acquire while coupon remains in intro chamber",
+    "expected": "Move the coupon to the analysis position first.",
+    "actual": "Move the coupon to the analysis position first.",
+    "pass": true
+  },
+  {
+    "id": "empty-components",
+    "input": "Both modeled emits zero integrated intensity",
+    "expected": "No identified components; percent withheld for both.",
+    "actual": "No identified components; percent withheld for both.",
+    "pass": true
+  }
+]
