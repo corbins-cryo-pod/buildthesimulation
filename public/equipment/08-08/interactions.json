@@ -1,0 +1,57 @@
+{
+  "triangles": 1572,
+  "draws": 22,
+  "nodes": 6,
+  "bytes": 109332,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "inspection_door": {
+      "at": [
+        0,
+        1.374,
+        0.421
+      ],
+      "extent": [
+        1.04,
+        0.91,
+        0.042
+      ],
+      "action": "door",
+      "label": "Lift/lower virtual inspection shroud"
+    },
+    "package_fixture": {
+      "at": [
+        0,
+        0.955,
+        0.165
+      ],
+      "extent": [
+        0.276,
+        0.055,
+        0.219
+      ],
+      "action": "seat",
+      "label": "Seat/unseat inert package (door open)"
+    },
+    "display_panel": {
+      "at": [
+        0.842,
+        1.421,
+        0.459
+      ],
+      "extent": [
+        0.36,
+        0.236,
+        0.025
+      ],
+      "action": "run",
+      "label": "Inspect geometry"
+    }
+  },
+  "motion": {
+    "doorAxis": "+Y",
+    "demoLiftM": 0.425
+  }
+}

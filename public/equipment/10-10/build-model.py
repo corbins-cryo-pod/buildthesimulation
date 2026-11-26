@@ -131,7 +131,7 @@ bx('Accessory_edge_recess','stainless',128,6,-20,15,6,10)
 bx('Synthetic_demo_tag','blue',127,4,66,43,1.3,9)
 while len(data)%4:data.append(0)
 G['buffers']=[dict(byteLength=len(data))]
-G['extras']=dict(model='OEPS-9029 / original passive optical reconstruction',caseEnvelopeMm=[165.0531,28.52,163.8552],scope='Visual mesh approximation; no circuit traces/copied CAD or powered operation.')
+G['extras']=dict(model='OEPS-9029 / original passive visual reconstruction',caseEnvelopeMm=[165.0531,28.52,163.8552],scope='Visual mesh approximation; no circuit traces/copied CAD or powered operation.')
 raw=json.dumps(G,separators=(',',':')).encode();raw+=b' '*((-len(raw))%4)
 blob=struct.pack('<4sIII4s',b'glTF',2,28+len(raw)+len(data),len(raw),b'JSON')+raw+struct.pack('<I4s',len(data),b'BIN\0')+data
 (OUT/'open-ephys-gen3-display.glb').write_bytes(blob)

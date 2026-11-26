@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Inert package perimeter layout report",
+  "required": [
+    "schema",
+    "kind",
+    "deviceId",
+    "sampleId",
+    "inputRevision",
+    "revision",
+    "spans",
+    "percent",
+    "state",
+    "leakTest",
+    "provenance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bts.package-seam-fit.v1"
+    },
+    "kind": {
+      "const": "simulated-layout"
+    },
+    "deviceId": {
+      "const": "08-08"
+    },
+    "state": {
+      "const": "layout-inspected-not-welded"
+    },
+    "leakTest": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "not-run"
+        },
+        "measuredRate": {
+          "type": "null"
+        }
+      }
+    },
+    "spans": {
+      "type": "array",
+      "description": "Nominal and projected per-edge coverage in sample-local mm. Not a machine path."
+    }
+  }
+}

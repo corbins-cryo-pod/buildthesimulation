@@ -1,0 +1,61 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "08-11",
+  "asset": "/equipment/08-11/protomat-s104.glb",
+  "scale": "glTF 1 unit = 1 m, +Y up, +Z toward operator",
+  "metrics": {
+    "bytes": 271780,
+    "triangles": 3032,
+    "draws": 126,
+    "caseEnvelopeM": [
+      0.6800000071525574,
+      0.5600000023841858,
+      0.800000011920929
+    ]
+  },
+  "implementation": "Desktop pick and buttons use DOM-independent actions. No XR runtime validation.",
+  "nodes": [
+    {
+      "node": "hood_handle",
+      "label": "Open or close display hood",
+      "action": {
+        "type": "hood"
+      },
+      "boundsM": [
+        0.278,
+        0.021,
+        0.028
+      ]
+    },
+    {
+      "node": "inspect_target",
+      "label": "Measure layout clearance without machine motion",
+      "action": {
+        "type": "inspect"
+      },
+      "diameterM": 0.032
+    },
+    {
+      "node": "acoustic_hood",
+      "pivotM": [
+        0,
+        0.197,
+        -0.352
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "visualDegrees": [
+        -44.6907,
+        0
+      ],
+      "inferred": true
+    },
+    {
+      "node": "coupon_anchor",
+      "coordinateFrame": "3D center of board; report uses lower left corner in mm"
+    }
+  ]
+}

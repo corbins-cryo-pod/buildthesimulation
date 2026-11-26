@@ -1,0 +1,133 @@
+{
+  "equipment": "10-10",
+  "basis": "Finite teaching sweep starts at hardware-style counter 1000 with four blocks of four samples, 1 kHz. Input blocks deliberately arrive [2,0,3] so 1004–1007 are missing. The original sample 1010 maps to relative index 10 and 0.010 s, remains in slot 10 and retains ordered [10,110] mV. A complete replay restores four rows without retiming trigger. Do not interpolate or compress holes.",
+  "scope": "Synthetic integer clock checks and passive case envelope only. No hardware signal validation.",
+  "checks": [
+    {
+      "id": "Received order independent of output order",
+      "expected": [
+        "blk-2",
+        "blk-0",
+        "blk-3"
+      ],
+      "actual": [
+        "blk-2",
+        "blk-0",
+        "blk-3"
+      ],
+      "unit": "block IDs",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Channel order",
+      "expected": [
+        "A",
+        "B"
+      ],
+      "actual": [
+        "A",
+        "B"
+      ],
+      "unit": "channels",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Missing indexes",
+      "expected": [
+        1004,
+        1005,
+        1006,
+        1007
+      ],
+      "actual": [
+        1004,
+        1005,
+        1006,
+        1007
+      ],
+      "unit": "samples",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Trigger original counter",
+      "expected": 1010,
+      "actual": 1010,
+      "unit": "sample",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Trigger relative time",
+      "expected": 0.01,
+      "actual": 0.01,
+      "unit": "s",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "id": "Marker original sample channels",
+      "expected": [
+        10,
+        110
+      ],
+      "actual": [
+        10,
+        110
+      ],
+      "unit": "mV",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Restored replay has no absent samples",
+      "expected": 0,
+      "actual": 0,
+      "unit": "samples",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Recovery preserves marker time",
+      "expected": 0.01,
+      "actual": 0.01,
+      "unit": "s",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "id": "CAD-anchored rounded shell width",
+      "expected": 0.1650531,
+      "actual": 0.1650531,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "CAD-anchored rounded shell depth",
+      "expected": 0.1638552,
+      "actual": 0.1638552,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "CAD-anchored shell height",
+      "expected": 0.02852,
+      "actual": 0.028520000000000004,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Named scene actions",
+      "expected": 3,
+      "actual": 3,
+      "unit": "hits",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}

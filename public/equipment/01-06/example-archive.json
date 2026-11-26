@@ -1,0 +1,25 @@
+{
+  "schema": "bts.rack-archive.v1",
+  "runId": "synthetic-mask-trace-01",
+  "sampleId": "inert-witness-4mm",
+  "revision": 1,
+  "provenance": "In-memory virtual archive; UTF-8 bytes; no network or persistent storage.",
+  "objects": [
+    {
+      "id": "mask-01",
+      "parentId": "synthetic-mask-trace-01",
+      "type": "mask",
+      "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 4 4\"><circle cx=\"2\" cy=\"2\" r=\"1\"/></svg>\n",
+      "bytes": 94,
+      "sha256": "615e567f27a77ef3f40c52b1b2737b3cd928d4dc5e7260eb746bce6b2be213fb"
+    },
+    {
+      "id": "trace-01",
+      "parentId": "mask-01",
+      "type": "trace",
+      "text": "time_ms,voltage_v\n0,0\n1,0.5\n2,0\n",
+      "bytes": 32,
+      "sha256": "560720e3952e18f38678e7e16057c15f4fc8346a36da98eee04ef8aa69153bba"
+    }
+  ]
+}

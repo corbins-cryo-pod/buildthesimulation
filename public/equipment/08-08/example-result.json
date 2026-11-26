@@ -1,0 +1,168 @@
+{
+  "schema": "bts.package-seam-fit.v1",
+  "deviceId": "08-08",
+  "kind": "simulated-layout",
+  "sampleId": "inert-package-rect-01",
+  "inputRevision": 0,
+  "revision": 1,
+  "configuration": {
+    "sampleId": "inert-package-rect-01",
+    "widthMm": 20,
+    "heightMm": 12,
+    "shiftXmm": 0,
+    "shiftYmm": 0,
+    "yawDeg": 0,
+    "bandMm": 0.1,
+    "missingEdge": "none"
+  },
+  "coordinateFrame": "Package-local XY centered on draft, positive yaw counter-clockwise",
+  "units": {
+    "geometry": "mm",
+    "percent": "%",
+    "yawDeg": "deg"
+  },
+  "spans": [
+    {
+      "id": "north",
+      "nominalMm": 20,
+      "coveredMm": 20,
+      "uncoveredMm": 0,
+      "intervalMm": [
+        0,
+        20
+      ],
+      "targetMm": [
+        [
+          -10,
+          6
+        ],
+        [
+          10,
+          6
+        ]
+      ],
+      "draftMm": [
+        [
+          -10,
+          6
+        ],
+        [
+          10,
+          6
+        ]
+      ]
+    },
+    {
+      "id": "east",
+      "nominalMm": 12,
+      "coveredMm": 12,
+      "uncoveredMm": 0,
+      "intervalMm": [
+        0,
+        12
+      ],
+      "targetMm": [
+        [
+          10,
+          6
+        ],
+        [
+          10,
+          -6
+        ]
+      ],
+      "draftMm": [
+        [
+          10,
+          6
+        ],
+        [
+          10,
+          -6
+        ]
+      ]
+    },
+    {
+      "id": "south",
+      "nominalMm": 20,
+      "coveredMm": 20,
+      "uncoveredMm": 0,
+      "intervalMm": [
+        0,
+        20
+      ],
+      "targetMm": [
+        [
+          10,
+          -6
+        ],
+        [
+          -10,
+          -6
+        ]
+      ],
+      "draftMm": [
+        [
+          10,
+          -6
+        ],
+        [
+          -10,
+          -6
+        ]
+      ]
+    },
+    {
+      "id": "west",
+      "nominalMm": 12,
+      "coveredMm": 12,
+      "uncoveredMm": 0,
+      "intervalMm": [
+        0,
+        12
+      ],
+      "targetMm": [
+        [
+          -10,
+          -6
+        ],
+        [
+          -10,
+          6
+        ]
+      ],
+      "draftMm": [
+        [
+          -10,
+          -6
+        ],
+        [
+          -10,
+          6
+        ]
+      ]
+    }
+  ],
+  "totalMm": 64,
+  "coveredMm": 64,
+  "uncoveredMm": 0,
+  "percent": 100,
+  "complete": true,
+  "state": "layout-inspected-not-welded",
+  "leakTest": {
+    "status": "not-run",
+    "measuredRate": null
+  },
+  "provenance": {
+    "method": "Passive line clipping and per-edge projection into tolerance corridor. No toolpath or process output.",
+    "physicalMeasurement": false,
+    "history": [
+      {
+        "deviceId": "08-08",
+        "operation": "layout inspection only",
+        "parentRevision": 0,
+        "resultRevision": 1
+      }
+    ]
+  }
+}

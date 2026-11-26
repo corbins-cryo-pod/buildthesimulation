@@ -1,0 +1,125 @@
+{
+  "schema": "bts.connectomics.verification.v1",
+  "metrics": {
+    "bytes": 170392,
+    "triangles": 2324,
+    "draws": 50,
+    "deskGltfXyzM": [
+      1.5499999523162842,
+      0.03999999910593033,
+      0.7400000095367432
+    ]
+  },
+  "cases": [
+    {
+      "id": "seam-world",
+      "expected": [
+        1064,
+        -148,
+        680
+      ],
+      "unit": "nm",
+      "actual": [
+        1064,
+        -148,
+        680
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "id": "seam-fine-index",
+      "expected": [
+        8,
+        6,
+        4
+      ],
+      "unit": "index XYZ",
+      "actual": [
+        8,
+        6,
+        4
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "id": "seam-coarse-index",
+      "expected": [
+        4,
+        3,
+        2
+      ],
+      "unit": "index XYZ",
+      "actual": [
+        4,
+        3,
+        2
+      ],
+      "outcome": "PASS"
+    },
+    {
+      "id": "seam-fine-owner",
+      "expected": "right",
+      "unit": "tile ID",
+      "actual": "right",
+      "outcome": "PASS"
+    },
+    {
+      "id": "seam-coarse-owner",
+      "expected": "right",
+      "unit": "tile ID",
+      "actual": "right",
+      "outcome": "PASS"
+    },
+    {
+      "id": "seam-label-fine",
+      "expected": 17,
+      "unit": "synthetic label",
+      "actual": 17,
+      "outcome": "PASS"
+    },
+    {
+      "id": "seam-label-coarse",
+      "expected": 17,
+      "unit": "synthetic label",
+      "actual": 17,
+      "outcome": "PASS"
+    },
+    {
+      "id": "adjacent-left-owner",
+      "expected": "left",
+      "unit": "tile ID",
+      "actual": "left",
+      "outcome": "PASS"
+    },
+    {
+      "id": "skeleton-retains-canonical-position",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "out-of-volume-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "alternate-segment-link-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "desk-width",
+      "expected": 1.55,
+      "unit": "m",
+      "tolerance": 0.00001,
+      "actual": 1.5499999523162842,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Synthetic two-tile coordinate, indexing, provenance and nominal geometry checks; not hardware, headset, experimental connectomics or service compatibility."
+}

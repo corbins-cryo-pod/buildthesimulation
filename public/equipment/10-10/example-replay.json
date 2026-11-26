@@ -1,0 +1,177 @@
+{
+  "schema": "buildthesimulation.counter-replay-result.v1",
+  "streamId": "dummy-ramp-2ch",
+  "sourceRevision": 1,
+  "provenance": "synthetic electronics replay only",
+  "sampleRateHz": 1000,
+  "clock": {
+    "firstCounter": 1000,
+    "lastCounter": 1015,
+    "indexOrigin": "firstCounter",
+    "relativeTimeUnit": "s"
+  },
+  "voltageUnit": "mV",
+  "channelIds": [
+    "A",
+    "B"
+  ],
+  "receivedBlocks": [
+    "blk-2",
+    "blk-0",
+    "blk-3"
+  ],
+  "gapSampleCount": 4,
+  "gaps": [
+    {
+      "counterStart": 1004,
+      "counterEnd": 1007,
+      "timeStartS": 0.004,
+      "missingSampleCount": 4
+    }
+  ],
+  "markers": [
+    {
+      "id": "edge-01",
+      "line": "M1",
+      "edge": "rising",
+      "counter": 1010,
+      "zeroBasedSample": 10,
+      "timeS": 0.01,
+      "inGap": false
+    }
+  ],
+  "samples": [
+    {
+      "counter": 1000,
+      "timeS": 0,
+      "blockId": "blk-0",
+      "valuesMv": [
+        0,
+        100
+      ]
+    },
+    {
+      "counter": 1001,
+      "timeS": 0.001,
+      "blockId": "blk-0",
+      "valuesMv": [
+        1,
+        101
+      ]
+    },
+    {
+      "counter": 1002,
+      "timeS": 0.002,
+      "blockId": "blk-0",
+      "valuesMv": [
+        2,
+        102
+      ]
+    },
+    {
+      "counter": 1003,
+      "timeS": 0.003,
+      "blockId": "blk-0",
+      "valuesMv": [
+        3,
+        103
+      ]
+    },
+    {
+      "counter": 1004,
+      "timeS": 0.004,
+      "blockId": null,
+      "valuesMv": null
+    },
+    {
+      "counter": 1005,
+      "timeS": 0.005,
+      "blockId": null,
+      "valuesMv": null
+    },
+    {
+      "counter": 1006,
+      "timeS": 0.006,
+      "blockId": null,
+      "valuesMv": null
+    },
+    {
+      "counter": 1007,
+      "timeS": 0.007,
+      "blockId": null,
+      "valuesMv": null
+    },
+    {
+      "counter": 1008,
+      "timeS": 0.008,
+      "blockId": "blk-2",
+      "valuesMv": [
+        8,
+        108
+      ]
+    },
+    {
+      "counter": 1009,
+      "timeS": 0.009,
+      "blockId": "blk-2",
+      "valuesMv": [
+        9,
+        109
+      ]
+    },
+    {
+      "counter": 1010,
+      "timeS": 0.01,
+      "blockId": "blk-2",
+      "valuesMv": [
+        10,
+        110
+      ]
+    },
+    {
+      "counter": 1011,
+      "timeS": 0.011,
+      "blockId": "blk-2",
+      "valuesMv": [
+        11,
+        111
+      ]
+    },
+    {
+      "counter": 1012,
+      "timeS": 0.012,
+      "blockId": "blk-3",
+      "valuesMv": [
+        12,
+        112
+      ]
+    },
+    {
+      "counter": 1013,
+      "timeS": 0.013,
+      "blockId": "blk-3",
+      "valuesMv": [
+        13,
+        113
+      ]
+    },
+    {
+      "counter": 1014,
+      "timeS": 0.014,
+      "blockId": "blk-3",
+      "valuesMv": [
+        14,
+        114
+      ]
+    },
+    {
+      "counter": 1015,
+      "timeS": 0.015,
+      "blockId": "blk-3",
+      "valuesMv": [
+        15,
+        115
+      ]
+    }
+  ]
+}

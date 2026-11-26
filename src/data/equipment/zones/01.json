@@ -42,10 +42,14 @@
     "inputs": "Sample mesh, material properties, boundary conditions and unit-tagged solver request",
     "outputs": "Field or displacement dataset on the mesh, solver settings and convergence report",
     "acceptance": "For the electrical adapter, impose a potential difference across a uniform slab with insulated sides. The potential must be linear and total current must converge to conductivity × area × voltage / length.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Built: original meter-scale console GLB",
+    "simulationStatus": "First pass: verified uniform slab electrical model",
+    "integrationStatus": "Linked: interactive simulator and data exports",
     "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/01-02/simulator/"
+      ],
       [
         "Cortex Laboratory",
         "/cortex/"
@@ -89,9 +93,15 @@
     "inputs": "Registered volume tiles, voxel-to-world transform, segmentation labels and annotation revision",
     "outputs": "Skeleton or segment selection with world coordinates, volume ID and edit history",
     "acceptance": "Trace through the boundary of two adjacent tiles. The node at the seam must have the same world position and segment ID at both zoom levels.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass original metric workstation and two live instrument displays",
+    "simulationStatus": "Synthetic two-tile two-scale seam, labels and exact world coordinates verified",
+    "integrationStatus": "Simulator with synthetic import and trace export; no service or headset claim",
+    "simulator": "/simulations/equipment/01-04/simulator/",
+    "related": [
+      ["Neuroglancer volume and chunk convention", "https://neuroglancer-docs.web.app/datasource/precomputed/volume.html"],
+      ["CAVE versioned annotations", "https://www.nature.com/articles/s41592-024-02426-z"],
+      ["ImageJ stack views", "https://imagej.github.io/imaging/z-functions"]
+    ]
   },
   {
     "id": "01-05",
@@ -124,6 +134,7 @@
     "evidence": "C",
     "priority": "P3",
     "page": 8,
+    "simulator": "/simulations/equipment/01-06/simulator/",
     "sources": [],
     "purpose": "Store experiment histories, model assets and microscopy volumes.",
     "geometryBrief": "Rack rails, drive bays, cooling grilles, switch and patch panel.",
@@ -131,9 +142,9 @@
     "inputs": "Versioned sample records, binary objects, content checksums and run manifests",
     "outputs": "Archived manifest with resolvable object IDs, integrity report and restore event",
     "acceptance": "Archive and restore a run containing a mask and a trace. Both checksums and parent links must match; a modified trace must fail the integrity check.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric GLB",
+    "simulationStatus": "Virtual fit, power budget and archive/restore",
+    "integrationStatus": "Interactive web route; archive JSON and import"
   },
   {
     "id": "01-07",

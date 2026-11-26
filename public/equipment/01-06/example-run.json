@@ -1,0 +1,20 @@
+{
+  "schema": "bts.rack-run-input.v1",
+  "runId": "synthetic-mask-trace-01",
+  "sampleId": "inert-witness-4mm",
+  "revision": 1,
+  "objects": [
+    {
+      "id": "mask-01",
+      "parentId": "synthetic-mask-trace-01",
+      "type": "mask",
+      "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 4 4\"><circle cx=\"2\" cy=\"2\" r=\"1\"/></svg>\n"
+    },
+    {
+      "id": "trace-01",
+      "parentId": "mask-01",
+      "type": "trace",
+      "text": "time_ms,voltage_v\n0,0\n1,0.5\n2,0\n"
+    }
+  ]
+}
