@@ -1,0 +1,83 @@
+{
+  "schema": "bts.optical-inspection.image.v1",
+  "deviceId": "02-12",
+  "origin": "synthetic-ideal-optics",
+  "sample": {
+    "sampleId": "BTS-LV100ND-INERT-GRATING",
+    "sampleRevision": "coupon-r1",
+    "referencePitchUm": 40,
+    "finePitchUm": 1.25,
+    "markUm": [
+      15,
+      -15
+    ],
+    "axis": "coupon XY"
+  },
+  "revision": 2,
+  "parentRevision": 1,
+  "settings": {
+    "objective": 20,
+    "xUm": 0,
+    "yUm": 0,
+    "focusUm": 0,
+    "illumination": 1
+  },
+  "objective": {
+    "id": "MUE12200",
+    "magnification": 20,
+    "na": 0.45,
+    "workingMm": 4.5
+  },
+  "camera": {
+    "type": "ideal virtual sensor, not Nikon Digital Sight",
+    "widthPx": 512,
+    "heightPx": 320,
+    "imagePixelUm": 5,
+    "relay": 1,
+    "wavelengthUm": 0.55
+  },
+  "measurement": {
+    "rowPx": 30,
+    "crossingsPx": [
+      107.375,
+      267.375,
+      427.375
+    ],
+    "intervalCount": 2,
+    "pixelPitch": 160,
+    "pitchUm": 40,
+    "method": "median consecutive ascending midlevel crossings in captured 8-bit grating row; no nominal pitch input"
+  },
+  "scale": {
+    "samplePixelUm": 0.25,
+    "fovUm": [
+      128,
+      80
+    ],
+    "barUm": 20,
+    "barPx": 80,
+    "originAtPixel00Um": [
+      -63.875,
+      39.875
+    ],
+    "coordinateFrame": "sample XY: +x right, +y up; pixel coordinates +u right, +v down"
+  },
+  "optics": {
+    "rayleighUm": 0.7455555555555556,
+    "cutoffCycPerUm": 1.6363636363636362,
+    "finePatchContrastTransfer": 0.37728180224323365,
+    "defocusSigmaUm": 0
+  },
+  "fixtureMark": {
+    "centerUm": [
+      15,
+      -15
+    ],
+    "centerPx": [
+      315.5,
+      219.5
+    ],
+    "inField": true,
+    "provenance": "known artificial feature, not automatic detection"
+  }
+}

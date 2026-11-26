@@ -291,7 +291,7 @@
   {
     "id": "02-12",
     "name": "Inspection microscope",
-    "model": "Nikon Eclipse LV100 / LV100ND (choose exact variant)",
+    "model": "Nikon ECLIPSE LV100ND LED · manual reflected brightfield",
     "evidence": "B",
     "priority": "P1",
     "page": 11,
@@ -305,8 +305,13 @@
     "inputs": "Patterned sample, reflectance image, stage transform, objective profile and focal plane",
     "outputs": "Calibrated inspection image with defect coordinates and scale bar",
     "acceptance": "Measure a known line-pair pitch in a virtual stage micrometer at two objective settings. Pixel spacing must change with magnification, while physical pitch agrees to within one image pixel.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass manual LV100ND LED metric model from Nikon dimensional views",
+    "simulationStatus": "Synthetic reflected image with calibrated FOV, objective, focus and pitch verification",
+    "integrationStatus": "Simulator with PNG and metadata JSON export; headset not tested",
+    "simulator": "/simulations/equipment/02-12/simulator/",
+    "related": [
+      ["Nikon LV100ND LED configuration", "https://industry.nikon.com/en-us/products/industrial-microscopy/industrial-microscopes/upright-eclipse-lv100nda-lv100nd/"],
+      ["Nikon lens data and dimensions", "https://industry.nikon.com/de-de/wp-content/uploads/sites/14/2026/02/eclipse-lv-n-en.pdf#page=7"]
+    ]
   }
 ]
