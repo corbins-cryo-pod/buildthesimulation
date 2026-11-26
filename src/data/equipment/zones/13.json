@@ -15,9 +15,15 @@
     "inputs": "Surface or referenced SEM field, specimen pose, raster sampling and detector/image calibration",
     "outputs": "SEM raster, specimen-space transform, pixel spacing and source modality",
     "acceptance": "Rasterize a reference grating at normal incidence and a known tilt. In the orthographic fixture its projected pitch along the tilted dimension should scale by the cosine of the tilt.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: original metric GeminiSEM 560 closed optical-column exterior",
+    "simulationStatus": "First pass: verified synthetic grating pitch; SEM operation outside scope",
+    "integrationStatus": "Linked: passive viewer and calibrated PNG/JSON",
+    "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/13-01/simulator/"
+      ]
+    ]
   },
   {
     "id": "13-02",
