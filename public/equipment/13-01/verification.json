@@ -1,0 +1,49 @@
+[
+  {
+    "id": "normal-pattern",
+    "frame": "normal",
+    "expected": {
+      "pitchPx": 40,
+      "pitchUm": 2,
+      "edges": 6
+    },
+    "actual": {
+      "pitchPx": 40,
+      "pitchUm": 2,
+      "edges": 6
+    },
+    "pass": true
+  },
+  {
+    "id": "compressed-pattern",
+    "frame": "projected",
+    "expected": {
+      "pitchPx": 20,
+      "pitchUm": 1,
+      "edges": 12
+    },
+    "actual": {
+      "pitchPx": 20,
+      "pitchUm": 1,
+      "edges": 12
+    },
+    "pass": true
+  },
+  {
+    "id": "cosine-ratio",
+    "expected": {
+      "ratio": 0.5
+    },
+    "actual": {
+      "ratio": 0.5
+    },
+    "pass": true
+  },
+  {
+    "id": "missing-source",
+    "frame": "unknown",
+    "expected": "Choose one of the stored grating images.",
+    "actual": "Choose one of the stored grating images.",
+    "pass": true
+  }
+]
