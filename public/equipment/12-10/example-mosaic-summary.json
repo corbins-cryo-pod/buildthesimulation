@@ -1,0 +1,221 @@
+{
+  "schema": "bts.vs200-inert-mosaic.v1",
+  "equipmentId": "12-10",
+  "slideId": "CAL-VS200-GRID-001",
+  "revision": 1,
+  "source": "Read-only registration of preauthored inert grid tiles, not scanned or measured",
+  "fixtureSha256": "4a3a8c84461e2b5bfa17bd6242bd11a8d1632488f69517149420dcc4951d4824",
+  "axes": {
+    "x": "left to right along slide length",
+    "z": "top to bottom across slide width",
+    "origin": "outer corner, pixel centers offset by one half-pixel",
+    "units": "mm"
+  },
+  "slideSizeMm": [
+    76,
+    26,
+    1
+  ],
+  "frame": {
+    "originMm": [
+      8,
+      2
+    ],
+    "sizePx": [
+      116,
+      44
+    ],
+    "pixelMm": 0.5
+  },
+  "tiles": [
+    {
+      "id": "R0C0",
+      "originStageMm": [
+        8,
+        2
+      ],
+      "originMosaicPx": [
+        0,
+        0
+      ],
+      "sizePx": [
+        32,
+        24
+      ]
+    },
+    {
+      "id": "R0C1",
+      "originStageMm": [
+        22,
+        2
+      ],
+      "originMosaicPx": [
+        28,
+        0
+      ],
+      "sizePx": [
+        32,
+        24
+      ]
+    },
+    {
+      "id": "R0C2",
+      "originStageMm": [
+        36,
+        2
+      ],
+      "originMosaicPx": [
+        56,
+        0
+      ],
+      "sizePx": [
+        32,
+        24
+      ]
+    },
+    {
+      "id": "R0C3",
+      "originStageMm": [
+        50,
+        2
+      ],
+      "originMosaicPx": [
+        84,
+        0
+      ],
+      "sizePx": [
+        32,
+        24
+      ]
+    },
+    {
+      "id": "R1C0",
+      "originStageMm": [
+        8,
+        12
+      ],
+      "originMosaicPx": [
+        0,
+        20
+      ],
+      "sizePx": [
+        32,
+        24
+      ]
+    },
+    {
+      "id": "R1C1",
+      "originStageMm": [
+        22,
+        12
+      ],
+      "originMosaicPx": [
+        28,
+        20
+      ],
+      "sizePx": [
+        32,
+        24
+      ]
+    },
+    {
+      "id": "R1C2",
+      "originStageMm": [
+        36,
+        12
+      ],
+      "originMosaicPx": [
+        56,
+        20
+      ],
+      "sizePx": [
+        32,
+        24
+      ]
+    },
+    {
+      "id": "R1C3",
+      "originStageMm": [
+        50,
+        12
+      ],
+      "originMosaicPx": [
+        84,
+        20
+      ],
+      "sizePx": [
+        32,
+        24
+      ]
+    }
+  ],
+  "coverage": {
+    "covered": 5104,
+    "uniqueOverlapPixels": 944,
+    "overlapSamples": 1040,
+    "maxOverlapDifference": 0,
+    "maxStageResidualPx": 0
+  },
+  "fiducials": [
+    {
+      "id": "F1",
+      "pixelCenterIndex": [
+        29,
+        8
+      ],
+      "stageMm": [
+        22.75,
+        6.25
+      ],
+      "pixels": 13
+    },
+    {
+      "id": "F2",
+      "pixelCenterIndex": [
+        101,
+        12
+      ],
+      "stageMm": [
+        58.75,
+        8.25
+      ],
+      "pixels": 13
+    },
+    {
+      "id": "F3",
+      "pixelCenterIndex": [
+        57,
+        21
+      ],
+      "stageMm": [
+        36.75,
+        12.75
+      ],
+      "pixels": 13
+    },
+    {
+      "id": "F4",
+      "pixelCenterIndex": [
+        14,
+        26
+      ],
+      "stageMm": [
+        15.25,
+        15.25
+      ],
+      "pixels": 13
+    },
+    {
+      "id": "F5",
+      "pixelCenterIndex": [
+        85,
+        33
+      ],
+      "stageMm": [
+        50.75,
+        18.75
+      ],
+      "pixels": 13
+    }
+  ]
+}
