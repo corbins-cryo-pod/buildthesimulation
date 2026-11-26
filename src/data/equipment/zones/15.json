@@ -71,9 +71,20 @@
     "inputs": "Timestamped video or planar trajectory, spatial calibration, tracking mask and arena regions",
     "outputs": "Position and speed series, zone entries, dwell time and missing-detection flags",
     "acceptance": "Replay a marker moving at constant known speed across one zone boundary. Recover one entry and the prescribed speed to pixel/time resolution, with an inserted occlusion marked missing.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Original metric illustrative PC desk and monitor, not Noldus hardware",
+    "simulationStatus": "Verified fixed nonbiological geometric waypoint inspection and missing-data gaps; no video, tracking, acquisition or behavior analysis",
+    "integrationStatus": "Interactive 3D/2D illustration, authored CSV and JSON export; browser and headset verification pending",
+    "simulator": "/simulations/equipment/15-04/simulator/",
+    "related": [
+      [
+        "Software context and illustrative console",
+        "/simulations/equipment/15-04/simulator/#wp-references"
+      ],
+      [
+        "Fixed waypoint verification",
+        "/simulations/equipment/15-04/simulator/#wp-checks"
+      ]
+    ]
   },
   {
     "id": "15-05",

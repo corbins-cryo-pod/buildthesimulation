@@ -1,0 +1,111 @@
+[
+  {
+    "id": "three-four-five",
+    "expected": {
+      "status": "adjacent",
+      "coordinateMm": {
+        "x": 3,
+        "y": 4
+      },
+      "deltaMm": {
+        "x": 3,
+        "y": 4,
+        "length": 5
+      },
+      "elapsedS": 0.5
+    },
+    "actual": {
+      "status": "adjacent",
+      "coordinateMm": {
+        "x": 3,
+        "y": 4
+      },
+      "deltaMm": {
+        "x": 3,
+        "y": 4,
+        "length": 5
+      },
+      "elapsedS": 0.5
+    },
+    "tolerance": "exact at specified integer coordinates and half-second labels",
+    "pass": true
+  },
+  {
+    "id": "signed-reversal",
+    "expected": {
+      "status": "adjacent",
+      "coordinateMm": {
+        "x": 6,
+        "y": 0
+      },
+      "deltaMm": {
+        "x": 3,
+        "y": -4,
+        "length": 5
+      },
+      "elapsedS": 0.5
+    },
+    "actual": {
+      "status": "adjacent",
+      "coordinateMm": {
+        "x": 6,
+        "y": 0
+      },
+      "deltaMm": {
+        "x": 3,
+        "y": -4,
+        "length": 5
+      },
+      "elapsedS": 0.5
+    },
+    "tolerance": "exact at specified integer coordinates and half-second labels",
+    "pass": true
+  },
+  {
+    "id": "missing-sample",
+    "expected": {
+      "status": "missing",
+      "coordinateMm": null,
+      "deltaMm": null,
+      "elapsedS": null
+    },
+    "actual": {
+      "status": "missing",
+      "coordinateMm": null,
+      "deltaMm": null,
+      "elapsedS": null
+    },
+    "tolerance": "exact at specified integer coordinates and half-second labels",
+    "pass": true
+  },
+  {
+    "id": "no-bridge",
+    "expected": {
+      "status": "no-adjacent",
+      "coordinateMm": {
+        "x": 13,
+        "y": 8
+      },
+      "deltaMm": null,
+      "elapsedS": null
+    },
+    "actual": {
+      "status": "no-adjacent",
+      "coordinateMm": {
+        "x": 13,
+        "y": 8
+      },
+      "deltaMm": null,
+      "elapsedS": null
+    },
+    "tolerance": "exact at specified integer coordinates and half-second labels",
+    "pass": true
+  },
+  {
+    "id": "invalid-index",
+    "expected": "Choose a stored index from 0 to 6.",
+    "actual": "Choose a stored index from 0 to 6.",
+    "tolerance": "exact at specified integer coordinates and half-second labels",
+    "pass": true
+  }
+]
