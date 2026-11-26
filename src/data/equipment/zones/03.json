@@ -159,7 +159,7 @@
   {
     "id": "03-08",
     "name": "Parylene coating",
-    "model": "SCS PDS 2010 Labcoter",
+    "model": "SCS PDS 2010 Labcoter 2 · dry reference",
     "evidence": "A",
     "priority": "P1",
     "page": 13,
@@ -173,9 +173,10 @@
     "inputs": "Exposed surface mesh, masking geometry and calibrated nominal coating thickness",
     "outputs": "Conformal polymer surface revision and masked contact map",
     "acceptance": "Coat an ideal coupon with an exposed top and sidewall plus a masked contact. Both exposed faces acquire the specified normal offset while the contact remains open.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric Labcoter 2 exterior and illustrated dry holder",
+    "simulationStatus": "Verified read-only normal offsets and contact-mask geometry; no deposition",
+    "integrationStatus": "Inspect reference geometry, export mask report and reuse metric VR targets",
+    "simulator": "/simulations/equipment/03-08/simulator/"
   },
   {
     "id": "03-09",
