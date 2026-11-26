@@ -1,0 +1,49 @@
+{
+  "schema": "bts.detached-clearance-demo.v1",
+  "revision": 1,
+  "mode": "centered",
+  "windowId": "DEMO-WINDOW-01",
+  "objectId": "DEMO-BLOCK-01",
+  "sourceRevision": "PASSIVE-BOX-DISPLAY-A",
+  "windowMm": [
+    128,
+    96,
+    120
+  ],
+  "objectMm": [
+    106,
+    72,
+    88
+  ],
+  "units": "mm",
+  "axes": [
+    "X width",
+    "Y depth",
+    "Z height"
+  ],
+  "centerMm": [
+    0,
+    0,
+    0
+  ],
+  "faces": [
+    {
+      "axis": "X",
+      "minusMm": 11,
+      "plusMm": 11
+    },
+    {
+      "axis": "Y",
+      "minusMm": 12,
+      "plusMm": 12
+    },
+    {
+      "axis": "Z",
+      "minusMm": 16,
+      "plusMm": 16
+    }
+  ],
+  "minimumMm": 11,
+  "status": "inside",
+  "provenance": "Authored generic inert display; not fitted to any Form 4 interior, workflow, build volume, material or machine coordinate frame."
+}
