@@ -1,0 +1,46 @@
+{
+  "schema": "bts.planar-outline.v1",
+  "sampleId": "SQUARE-10MM",
+  "drawingId": "BTS-DRAFT-0001",
+  "parentRevision": 0,
+  "units": "mm",
+  "scale": "1:1",
+  "datum": {
+    "xMm": 0,
+    "yMm": 0
+  },
+  "vertices": [
+    {
+      "id": "A",
+      "xMm": 0,
+      "yMm": 0
+    },
+    {
+      "id": "B",
+      "xMm": 10,
+      "yMm": 0
+    },
+    {
+      "id": "C",
+      "xMm": 10,
+      "yMm": 10
+    },
+    {
+      "id": "D",
+      "xMm": 0,
+      "yMm": 10
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "DIM-AB",
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "id": "DIM-BC",
+      "from": "B",
+      "to": "C"
+    }
+  ]
+}

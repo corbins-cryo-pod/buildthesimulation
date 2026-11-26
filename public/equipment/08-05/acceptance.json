@@ -1,0 +1,13 @@
+{
+ "scope":"Independent analytical Gaussian-overlap and rectangular-pad witness. Entirely synthetic alignment and no physical bonding/calibration.",
+ "cases":[
+  {"id":"center-peak","expected":0,"unit":"µm","tol":1e-12},
+  {"id":"peak-efficiency","expected":0.8,"unit":"power fraction","tol":1e-12},
+  {"id":"offset-plus-five","expected":0.2943035529371539,"unit":"power fraction","tol":1e-12},
+  {"id":"mirror-symmetry","expected":0,"unit":"power fraction difference","tol":1e-12},
+  {"id":"off-axis-center","expected":2,"unit":"µm stage x","tol":1e-12},
+  {"id":"pad-overlap-at-five","expected":0.75,"unit":"overlap fraction","tol":1e-12},
+  {"id":"zero-pad-overlap","expected":0,"unit":"overlap fraction","tol":1e-12},
+  {"id":"open-guard","expected":"guard","unit":"code"}
+ ]
+}

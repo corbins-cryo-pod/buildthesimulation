@@ -1,0 +1,71 @@
+{
+  "schema": "bts.tga-series.v1",
+  "sampleId": "SYNTHETIC-MASS-10TO8",
+  "revision": 1,
+  "classification": "synthetic",
+  "basis": "gross",
+  "panId": "Q50-VIRTUAL-PAN-01",
+  "panMg": 2,
+  "points": [
+    {
+      "timeS": 0,
+      "temperatureC": 25,
+      "indicatedMg": 12,
+      "blankMg": 0
+    },
+    {
+      "timeS": 63,
+      "temperatureC": 61,
+      "indicatedMg": 12,
+      "blankMg": 0
+    },
+    {
+      "timeS": 151,
+      "temperatureC": 143,
+      "indicatedMg": 11.97,
+      "blankMg": 0
+    },
+    {
+      "timeS": 233,
+      "temperatureC": 172,
+      "indicatedMg": 11.81,
+      "blankMg": 0
+    },
+    {
+      "timeS": 431,
+      "temperatureC": 220,
+      "indicatedMg": 11.48,
+      "blankMg": 0
+    },
+    {
+      "timeS": 509,
+      "temperatureC": 237,
+      "indicatedMg": 10.96,
+      "blankMg": 0
+    },
+    {
+      "timeS": 640,
+      "temperatureC": 291,
+      "indicatedMg": 10.46,
+      "blankMg": 0
+    },
+    {
+      "timeS": 800,
+      "temperatureC": 338,
+      "indicatedMg": 10.15,
+      "blankMg": 0
+    },
+    {
+      "timeS": 1017,
+      "temperatureC": 397,
+      "indicatedMg": 10.02,
+      "blankMg": 0
+    },
+    {
+      "timeS": 1263,
+      "temperatureC": 451,
+      "indicatedMg": 10,
+      "blankMg": 0
+    }
+  ]
+}

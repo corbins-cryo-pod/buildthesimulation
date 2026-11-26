@@ -1,0 +1,72 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import proof from '../../../../../public/equipment/14-07/verification.json';
+import asset from '../../../../../public/equipment/14-07/asset-metrics.json';
+const a='/equipment/14-07/';
+const docs='https://www.tainstruments.com/pdf/literature/TN051.pdf';
+const brochure='https://www.tainstruments.com/pdf/TGA%20Brochure.pdf';
+const photo='https://www.utoledo.edu/engineering/cmsc/images/tga.jpg';
+---
+<Layout pageTitle="Thermogravimetric analyzer" wide={true} description="Metric TA Q50 with virtual pan tare and synthetic mass-versus-temperature replay.">
+<article id="q50">
+<nav><a href="/simulations/equipment/14-07/">← Equipment 14-07</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#q50-evidence">Reference views and checks</a></nav>
+<header><small>14-07 · THERMAL METROLOGY · SYNTHETIC REPLAY</small><h2>TA Instruments Q50 thermogravimetric analyzer</h2><p>Replay a synthetic mass trace, subtract the empty pan only when needed, and compare retained mass versus labeled temperature or elapsed time.</p></header>
+<div class="bench">
+<section class="panel"><h3>Furnace, suspension and pan</h3>
+<div class="tools"><button data-q50-view="orbit">Reset view</button><button data-q50-view="front">Front controls</button><button data-q50-view="pan">Pan close-up</button><button data-q50-view="rear">Rear panel</button></div>
+<div id="q50-viewer"></div><p id="q50-model" role="status">Loading metric Q50 model…</p>
+<p>Orbit or zoom. Lower the virtual furnace to inspect the hanging pan. Form and 3D panel use the same controls. Furnace stroke and details are inferred; no physical headset check.</p></section>
+<section class="panel"><h3>Install, tare and replay</h3>
+<div class="tools"><button id="q50-chamber">Lower furnace / expose pan</button><button id="q50-pan">Remove pan</button><button id="q50-load">Remove specimen</button><button id="q50-tare">Capture empty-pan tare</button><button id="q50-power">Standby</button><button id="q50-reset">Restore ready example</button></div>
+<p id="q50-sample"></p><p id="q50-tare-info"></p>
+<div class="tools"><button id="q50-gross">Gross example</button><button id="q50-net">Net example</button><button id="q50-drift">Example with blank drift</button></div>
+<div class="fields"><label>Import synthetic series<input id="q50-file" type="file" accept=".json,application/json"/></label></div>
+<p><label><input id="q50-blank" type="checkbox"/> Subtract the optional pointwise blank offsets</label></p>
+<div class="tools"><button id="q50-replay">Replay trace</button><button id="q50-json" disabled>Export replay JSON</button><button id="q50-csv" disabled>Export CSV</button></div>
+<p id="q50-status" aria-live="polite"></p></section>
+</div>
+<section class="panel">
+<h3>Sample readout</h3>
+<p id="q50-result" aria-live="polite"></p><p id="q50-applied"></p>
+<div class="fields"><label>Horizontal axis<select id="q50-axis"><option value="temperature">Synthetic temperature coordinate (°C)</option><option value="time">Record time (s)</option></select></label><label>Inspect recorded point<input id="q50-scrub" type="range" min="0" max="9" step="1"/></label></div>
+<p id="q50-read"></p><canvas id="q50-plot" width="700" height="445" aria-label="Retained mass percentage versus synthetic temperature or time. Exact values are displayed above and in exports."></canvas>
+<p><strong>Try now:</strong> The ready gross trace reads 12→10 mg including a constant 2 mg pan. After tare the sample is 10→8 mg, so the endpoint is 80%. Switch to the net example and replay: it still reads 80%, without subtracting mass twice. To retare, lower the virtual furnace, remove the specimen (not the pan), capture tare, reload, raise and replay.</p>
+</section>
+<section class="panel"><h3>Scope and files</h3>
+<p>Subtract captured pan mass only for gross readings, then subtract an optional blank offset on the same recorded points. Normalize corrected mass to its first valid value. Negative corrected masses, missing gross tare, unsorted times and invalid setup halt the replay. A blank drift preset demonstrates 82% uncorrected versus 80% corrected.</p>
+<p><strong>Important limit:</strong> The temperature/time values are synthetic labels, not a heating schedule or assay. No temperature control, chemical kinetics, composition inference, atmosphere, real data replay, balance calibration or buoyancy modeling. The 2 mg value is an arithmetic witness, not the mass of a manufacturer pan.</p>
+<p><a href={a+'contract.json'}>Data contract</a> · <a href={a+'example-gross.json'}>Gross input</a> · <a href={a+'example-net.json'}>Net input</a> · <a href={a+'example-replay.json'}>Replay output</a>. Exports retain sample ID, pan ID, revisions, raw and corrected masses, record time and temperature labels.</p></section>
+<section class="panel" id="q50-evidence"><h3>Instrument sources and verification</h3>
+<div class="refs"><figure><img loading="lazy" src={a+'instrument-view.webp'} alt="Original metric render of blue TA Q50, thermobalance, front panel and furnace"/><figcaption><strong>Standard Q50 vertical unit.</strong> Blue base and dark balance cabinet. Compare the <a href={photo}>University of Toledo photograph</a> and <a href={brochure+'#page=11'}>TA brochure p. 11</a>. Original geometry, not a reproduced photo.</figcaption></figure>
+<figure><img loading="lazy" src={a+'pan-view.webp'} alt="Original detail rendering of the suspended pan and lowered furnace"/><figcaption><strong>Hanging pan and furnace sleeve.</strong> Original depiction, with dimensions and travel inferred. See <a href={brochure+'#page=21'}>TA vertical-balance and pan illustrations</a>.</figcaption></figure></div>
+<p>Outer main unit 470 mm W × 521 mm H × 559 mm D, <a href={docs}>TA TN051 Q50/Q500 installation dimensions</a>. Loaded binary model envelope: {asset.enclosureM.map(x=>(1000*x).toFixed(1)).join(' × ')} mm (±9 mm tolerance). The pan, controls and connector dimensions are estimates.</p>
+<p><a href={a+'q50.glb'}>Metric GLB</a> · <a href={a+'build-model.py'}>Editable Blender source</a> · <a href={a+'interaction.json'}>Motion contract</a> · <a href={a+'verification.json'}>Verification results</a></p>
+<p>{proof.scope}</p>
+<div class="scroll"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Status</th></tr></thead><tbody>{proof.rows.map(x=><tr><td>{x.id}</td><td>{x.expected} {x.unit}</td><td>{x.actual}</td><td>{x.tolerance??'Exact'}</td><td>{x.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div></section>
+</article></Layout>
+<script>import '../../../../lib/equipment/14-07/client.mjs';</script>
+<style>
+#q50{max-width:1260px;margin:auto}
+#q50 header{margin:1.37rem 0 1rem} #q50 header p{max-width:78ch}
+.bench{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1rem}
+.panel{min-width:0;border:1px solid color-mix(in srgb,currentColor 32%,transparent);border-radius:.3rem;padding:clamp(.8rem,2vw,1.35rem);margin:.55rem 0}
+.panel h3{margin:0 0 .8rem}
+.tools{display:flex;flex-wrap:wrap;gap:.4rem}
+.tools button,.fields input,.fields select{color:inherit;background:transparent;border:1px solid currentColor;padding:.42rem .55rem;border-radius:.2rem;font:inherit;min-width:0;min-height:38px;box-sizing:border-box}
+.tools button{cursor:pointer}.tools button:disabled{opacity:.5;cursor:default}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin:.8rem 0}
+.fields label{display:flex;flex-direction:column;font-size:.9rem;gap:.18rem}
+.fields option{background:#f5f1e6;color:#151b1a}
+#q50-viewer{height:350px;margin:.72rem 0;background:#293941}
+#q50-viewer :global(canvas){display:block;max-width:100%;touch-action:none}
+#q50-plot{width:min(100%,700px);height:auto;display:block}
+#q50-result{font-weight:bold}
+#q50-status[data-error=true]{border-left:4px solid #7d4e30;padding-left:.6rem}
+.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.refs figure{margin:0}.refs img{width:100%;height:auto}.refs figcaption{margin:.35rem 0 1rem}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;margin:.45rem 0}
+th,td{text-align:left;padding:.44rem;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent)}
+@media(max-width:900px){.bench{grid-template-columns:1fr}#q50-viewer{height:310px}}
+@media(max-width:560px){.refs{grid-template-columns:1fr}#q50-viewer{height:260px}.tools button,.fields input,.fields select{min-height:44px}}
+</style>

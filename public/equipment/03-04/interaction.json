@@ -1,0 +1,14 @@
+{
+ "schema":"bts.equipment-interaction.v1","equipmentId":"03-04","model":"Denton Vacuum Discovery 635, Utah Nanofab image reference",
+ "frame":{"units":"m","up":"+Y","front":"+Z","placementAnchor":"bts_bench_anchor"},
+ "parts":{"cabinet":"equipment_enclosure","cover":"practice_cover_hinge","tray":"inert_tray_slide","seat":"inert_seat_ring","disc":"witness_disc","cutaway":"documentary_cabinet_panel"},
+ "ports":["rear_reference_service","rear_reference_chassis"],
+ "actions":[
+  {"id":"cover","node":"dry_cover_handle","action":"cover","label":"Open or close the virtual practice cover","sizeM":[0.08,0.07,0.05]},
+  {"id":"tray","node":"dry_tray_handle","action":"tray","label":"Extend or retract the virtual practice tray","sizeM":[0.12,0.045,0.065]},
+  {"id":"place","node":"dry_place_target","action":"place","label":"Place or remove an inert witness","sizeM":[0.12,0.045,0.12]},
+  {"id":"inspect","node":"inspect_view_target","action":"inspect","label":"Read stored synthetic layer values","sizeM":[0.32,0.14,0.045]}
+ ],
+ "motion":{"coverAngleDeg":-86,"slideZ":0.155,"fitSeatInnerDiameterM":0.154},
+ "assessment":"Photo-informed documentary model. Practical motion applies only to the invented passive tray; no machine actuation or immersive headset testing."
+}

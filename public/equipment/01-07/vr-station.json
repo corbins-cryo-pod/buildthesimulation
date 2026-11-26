@@ -1,0 +1,122 @@
+{
+  "schema": "bts.station.drafting-bench.v1",
+  "equipment": "01-07",
+  "model": "./drafting-table.glb",
+  "units": "m",
+  "axes": "+Y up, +Z front",
+  "nodes": 92,
+  "bytes": 37984,
+  "triangles": 2288,
+  "motion": {
+    "Tilt_worktop": {
+      "axis": "X",
+      "rangeDeg": [
+        0,
+        45
+      ]
+    },
+    "Drawer_slide": {
+      "axis": "Z",
+      "rangeM": [
+        0,
+        0.16
+      ]
+    }
+  },
+  "hitTargets": [
+    {
+      "node": "Tilt_lock_knob",
+      "action": "tilt",
+      "label": "Set 15\u00b0 desk tilt step",
+      "boundsM": {
+        "min": [
+          0.5115,
+          0.864,
+          0.215
+        ],
+        "max": [
+          0.5585,
+          0.934,
+          0.285
+        ]
+      }
+    },
+    {
+      "node": "Paper_grid",
+      "action": "overlay",
+      "label": "Toggle 1:1 specimen overlay",
+      "boundsM": {
+        "min": [
+          -0.252,
+          0.9255,
+          -0.2165
+        ],
+        "max": [
+          0.168,
+          0.9385,
+          0.0805
+        ]
+      }
+    },
+    {
+      "node": "Straightedge_handle",
+      "action": "rotateView",
+      "label": "Rotate drawing preview",
+      "boundsM": {
+        "min": [
+          0.421,
+          0.93,
+          -0.278
+        ],
+        "max": [
+          0.483,
+          0.954,
+          -0.238
+        ]
+      }
+    },
+    {
+      "node": "Drawer_pull",
+      "action": "drawer",
+      "label": "Open/close top drawer",
+      "boundsM": {
+        "min": [
+          0.302,
+          0.794,
+          0.198
+        ],
+        "max": [
+          0.428,
+          0.818,
+          0.22
+        ]
+      }
+    },
+    {
+      "node": "Task_lamp_switch",
+      "action": "lamp",
+      "label": "Toggle task lamp",
+      "boundsM": {
+        "min": [
+          -0.539,
+          1.539,
+          -0.001
+        ],
+        "max": [
+          -0.505,
+          1.557,
+          0.021
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./draft.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)",
+    "pose": "pose(station.read())"
+  },
+  "note": "Transform paper and ruler picking bounds with hinge; no headset session tested."
+}
