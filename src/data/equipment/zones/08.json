@@ -153,9 +153,10 @@
     "inputs": "Lid and package perimeter, alignment transform and seam path",
     "outputs": "Package revision with seam coverage, gaps and leak-test status",
     "acceptance": "Compare a closed rectangular path with one missing edge. Report full versus partial perimeter coverage and keep measured leak rate unknown until a leak test exists.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "simulator": "/simulations/equipment/08-08/simulator/",
+    "geometryStatus": "Metric WL-300A enclosure reference",
+    "simulationStatus": "Verified passive perimeter-fit review",
+    "integrationStatus": "Interactive layout-only, leak unknown"
   },
   {
     "id": "08-09",
