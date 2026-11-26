@@ -1,0 +1,56 @@
+{
+  "schema": "bts.surface-activation-event.v1",
+  "source": "simulated",
+  "instrumentId": "08-07",
+  "sampleId": "EVG810-DEMO-WAFER-150",
+  "geometry": {
+    "diameterMm": 150,
+    "faceMarkers": "A and B virtual",
+    "faceAtTop": "A"
+  },
+  "revision": 2,
+  "faces": {
+    "A": {
+      "surfaceId": "EVG810-DEMO-WAFER-150:A",
+      "material": "qualified",
+      "activationPrerequisite": true,
+      "activatedBy": {
+        "id": "EVG8-EVENT-0",
+        "face": "A",
+        "occurredAt": "2026-11-26T00:00:00.000Z",
+        "kind": "simulated-surface-activation",
+        "revision": 2,
+        "material": "qualified"
+      },
+      "bonded": false,
+      "bondStrength": {
+        "status": "not-measured",
+        "value": null,
+        "unit": null
+      }
+    },
+    "B": {
+      "surfaceId": "EVG810-DEMO-WAFER-150:B",
+      "material": "qualified",
+      "activationPrerequisite": false,
+      "activatedBy": null,
+      "bonded": false,
+      "bondStrength": {
+        "status": "not-measured",
+        "value": null,
+        "unit": null
+      }
+    }
+  },
+  "events": [
+    {
+      "id": "EVG8-EVENT-0",
+      "face": "A",
+      "occurredAt": "2026-11-26T00:00:00.000Z",
+      "kind": "simulated-surface-activation",
+      "revision": 2,
+      "material": "qualified"
+    }
+  ],
+  "rule": "A qualified material plus activation on the same face satisfies this one prerequisite only. No claim about remaining steps, compatibility or strength."
+}

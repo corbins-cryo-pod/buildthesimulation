@@ -135,9 +135,10 @@
     "inputs": "Substrate surface IDs, compatible material rules and treatment event metadata",
     "outputs": "Surface revision with activation state, timestamp and bond eligibility",
     "acceptance": "Activate one face of a two-sided coupon. Only that face may satisfy an activation prerequisite, and activation alone must leave bond strength unmeasured.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric original GLB · cited wafer size; enclosure visually inferred",
+    "simulationStatus": "Face-specific activation eligibility logic; no physical process simulation",
+    "integrationStatus": "Revisioned surface ID and event JSON, strength unmeasured",
+    "simulator": "/simulations/equipment/08-07/simulator/"
   },
   {
     "id": "08-08",
