@@ -1,0 +1,53 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+const d='/equipment/13-13/';
+const ifu='https://www.leicabiosystems.com/sites/default/files/media_product-download/2024-04/Leica_CM3050S_IFU_2v8R_en.pdf#page=33';
+const photo='https://www.leicabiosystems.com/sites/default/files/styles/560_mobile_large_fallback/public/media_image-file/2022-05/CM3050-S-view-1-560x560.jpg?itok=IKO4KUIW';
+---
+<Layout pageTitle="Leica CM3050 S exterior and inert coordinate card" subtitle="" wide={true}>
+ <link rel="stylesheet" href="/styles/equipment.css"/>
+ <main class="equipment-page cm">
+  <p><a href="/simulations/equipment/#equipment-13-13">↩ Equipment register · 13-13</a></p>
+  <h1>Leica CM3050 S · exterior and coordinate card</h1>
+  <p>Inspect the <strong>closed, inactive CM3050 S exterior</strong> and read two marks on a separate virtual printed gauge. The gauge is not an instrument accessory. No chamber access, refrigeration, blade, settings, physical preparation or cutting actions are modeled.</p>
+  <div class="cm-grid">
+   <section aria-label="Original 3D model">
+    <div class="cm-row"><button id="cm-front" type="button">Reset orbit</button><button id="cm-rear" type="button">Rear exterior</button><button id="cm-card" type="button">Card close-up</button></div>
+    <div id="cm-view" role="img" aria-label="Closed dormant Leica CM3050 S and detached offline coordinate card reader"></div>
+    <p id="cm-status">Loading closed metric model…</p>
+   </section>
+   <section class="cm-box">
+    <h2>Fixed oblique line</h2>
+    <canvas id="cm-chart" width="570" height="380" role="img" aria-label="A slanted line on an inert millimeter chart with two labeled points P and Q"></canvas>
+    <div class="cm-row"><button id="cm-P" type="button">Read P</button><button id="cm-Q" type="button">Read Q</button><button id="cm-save" type="button">Export JSON</button></div>
+    <p role="status" id="cm-result"></p>
+   </section>
+  </div>
+  <section id="cm-refs">
+   <h2>Reference scale</h2>
+   <p>The <a href={photo}>Leica front three-quarter photograph</a> shows the trapezoidal kneespace, upper bezel, lid and right-hand wheel of the standard cabinet. The original render substitutes an opaque closed lid and an unpowered panel. Where external seams and rear details are not dimensioned, they are illustrative. The optional height adjustment base is not shown.</p>
+   <figure><img src={d+'front-reference.webp'} width="515" height="362" alt="Original angled model of the closed cabinet and separate offline chart reader" loading="lazy"/><figcaption>Original browser render: the ivory cabinet and fixed handwheel are documentary; the green reader is an independent synthetic prop.</figcaption></figure>
+   <table><thead><tr><th>Item</th><th>Nominal measurement</th><th>Source</th></tr></thead><tbody>
+   <tr><td>Cabinet without static side wheel</td><td>800 W × 766 D × 1040 H mm</td><td><a href={ifu}>Leica IFU v2.8 Rev R, p. 33</a></td></tr>
+   <tr><td>Cabinet with side wheel</td><td>882 W × 766 D × 1040 H mm</td><td>Leica IFU v2.8 Rev R, p. 33; only its inactive silhouette is represented here.</td></tr>
+   <tr><td>Front armrest ledge</td><td>840 mm nominal top</td><td>Leica IFU dimensions, v2.8 Rev R, p. 33.</td></tr>
+   </tbody></table>
+  </section>
+  <section id="cm-proof">
+   <h2>Independent geometry checks</h2>
+   <p>The reference line is x = 5 mm + 0.75y. Only P and Q are readable. Their two locations are printed, not created by evaluating imaginary specimen planes. The export contains just the card-local XY coordinate system, fixed point IDs, displacement and provenance. The original catalogue acceptance requires simulated volume sectioning, which is not represented.</p>
+   <table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
+   <tr><td>P at y = 12 mm</td><td>x = 14 mm</td><td>x = 14 mm</td><td>Exact</td></tr>
+   <tr><td>Q at y = 36 mm</td><td>x = 32 mm</td><td>x = 32 mm</td><td>Exact</td></tr>
+   <tr><td>P→Q chord</td><td>18–24–30 mm ratio</td><td>Δx = 18, Δy = 24, length 30 mm</td><td>Exact</td></tr>
+   <tr><td>GLB width with side wheel</td><td>882 mm</td><td>882 mm</td><td>0.05 mm</td></tr>
+   </tbody></table>
+   <p><a href={d+'cm3050s.glb'} download>Metric GLB</a> · <a href={d+'build-model.py'} download>Editable Blender model</a> · <a href={d+'example-card.json'}>Schema and example export</a> · <a href={d+'xr.json'}>VR interaction anchors</a> (headset not tested).</p>
+  </section>
+ </main>
+ <script is:inline>window.cmCard=import('/equipment/13-13/card.mjs');</script>
+ <script>import '../../../../lib/equipment/13-13/client.mjs';</script>
+</Layout>
+<style>
+ .cm{max-width:81rem;margin:0 auto;padding-inline:1rem}.cm-grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(16rem,1fr);gap:1.4rem;align-items:start}.cm-row{display:flex;gap:.48rem;align-items:center;flex-wrap:wrap;margin:.55rem 0}.cm button{cursor:pointer;color:inherit;background:transparent;border:1px solid currentColor;border-radius:.2rem;padding:.42rem .65rem;font:inherit}.cm button[aria-pressed=true]{box-shadow:inset 0 -.2rem currentColor}#cm-view{height:clamp(17rem,39vw,40rem);border-radius:.25rem;background:#2b3b3b;overflow:hidden;touch-action:none}#cm-view :global(canvas),#cm-chart{display:block;width:100%}#cm-view :global(canvas){height:100%}#cm-chart{height:auto;border-radius:.2rem}.cm-box{border:1px solid currentColor;border-radius:.3rem;padding:.9rem}.cm table{width:100%;border-collapse:collapse}.cm th,.cm td{border-bottom:1px solid currentColor;text-align:left;padding:.4rem .5rem}.cm section{margin-bottom:1.4rem}.cm figure{max-width:35rem;margin:1rem 0}.cm figure img{max-width:100%;height:auto}@media(max-width:730px){.cm-grid{grid-template-columns:1fr}}
+</style>
