@@ -1,0 +1,104 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import verified from '../../../../../public/equipment/05-10/verification.json';
+import g from '../../../../../public/equipment/05-10/asset-metrics.json';
+const a='/equipment/05-10/';
+const m='https://www.dartmouth.edu/emlab/docs/horiba_scientific_labram_hr_evolution_raman_spectrometer_manual.pdf';
+const prod='https://static.horiba.com/fileadmin/Horiba/Products/Scientific/Molecular_and_Microanalysis/LabRAM_HR_Evolution/LabRAM_HR_Evolution-HORIBA.png';
+const photo='https://www.graphene.cam.ac.uk/sites/default/files/media/labram_evolution_1.jpg';
+const si='https://www.cencenelec.eu/media/CEN-CENELEC/News/Workshops/2024/2024-05-29_RAMAN/draft_cwa1_calibrationverificationprotocols.pdf';
+const ps='https://github.com/usnistgov/TGRS-Plasticizer-Library';
+const spec=[
+ ['Cabinet · geometry','1133 W × 473 H × 817 D mm','2013 HORIBA manual p. 37, diagrams pp. 38–39. Closed chassis with integrated microscope; excludes external bench/dewar.',m+'#page=37'],
+ ['Optics · selected build','Olympus BX-series, motorized XY; nominal 532 nm excitation','Manufacturer manual pp. 26–29, 48–49 and Japanese product specifications. Generic 10× / 50× objectives and small dimensions are inferred.', 'https://www.horiba.com/jpn/scientific/products/detail/action/show/Product/labram-hr-evolution-2720/'],
+ ['Spectrograph · documented context','800 mm focal length and switchable gratings','Manual pp. 25–29. The virtual blur is not a claimed line shape or grating performance curve.',m+'#page=27'],
+ ['Spectral coordinates · reference','Si 520.45 cm⁻¹; PS 620.9, 1001.4, 1031.8 cm⁻¹','Published silicon coordinate at standard conditions; NIST-listed PS reference positions. Band strength and intrinsic widths here are synthetic.',si],
+ ['Supported numerical model','480–1070 cm⁻¹ sampled every 0.5 cm⁻¹; assumed Gaussian blur 1–8 cm⁻¹ FWHM','Educational settings, not the physical grating or detector dispersion specification.',m+'#page=27'],
+ ['Map frame · analytical','1–15 × 1–15 pixels, 3–80 µm pitch; x right and y away','Synthetic binary tiled specimen, chosen centers; no subpixel mixing. Coordinates are sample-local, not stage encoders.',m+'#page=48'],
+];
+---
+<Layout pageTitle="Raman microscope" description="Confocal LabRAM HR Evolution with synthetic Raman references and a quantitative-in-model spatial tile experiment." wide={true}>
+<article id="labram">
+<nav><a href="/simulations/equipment/05-10/">← Equipment 05-10</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#raman-evidence">References and checks</a></nav>
+<header><small>05-10 · MATERIALS METROLOGY · VIRTUAL BENCH</small><h2>HORIBA LabRAM HR Evolution</h2><p>Map an inert silicon and polystyrene checkerboard. Click a tile to see its Stokes spectrum and compare maps at the two reference peaks.</p></header>
+<div class="bench">
+<section class="panel"><h3>Instrument and sample bay</h3>
+<div class="tools"><button data-raman-view="orbit">Reset view</button><button data-raman-view="front">Front panel</button><button data-raman-view="sample">Objective close-up</button><button data-raman-view="rear">Rear panel</button></div>
+<div id="raman-viewer"></div><p id="raman-model" role="status">Loading physical-scale instrument…</p>
+<p>Orbit / zoom on desktop or mobile. Click the visor, turret, focus or acquisition surface; the same actions are available with buttons. Selecting a tile shifts the motorized table at its real physical scale, so small displacements are easier to inspect on the maps. No physical headset test yet.</p>
+</section>
+<section class="panel"><h3>Load, focus and reference the axis</h3>
+<div class="tools"><button id="raman-door">Open sample visor</button><button id="raman-load">Unload coupon</button><button id="raman-power">Standby</button><button id="raman-arm">Disable optical path</button><button id="raman-reset">Restore checkerboard setup</button></div>
+<p id="raman-sample"></p>
+<div class="tools"><button id="raman-objective">Rotate objective turret</button><button id="raman-zero-focus">Zero focus</button><button id="raman-calibrate">Use silicon axis witness</button><button id="raman-clear-axis">Clear axis correction</button></div>
+<div class="fields">
+<label>Defocus (µm)<input id="raman-defocus" type="number" min="-12" max="12" step="any"/></label>
+<label>Modeled instrument FWHM (cm⁻¹)<input id="raman-lsf" type="number" min="1" max="8" step="any"/></label>
+<label>Exposure per tile (s)<input id="raman-exposure" type="number" min=".05" max="2" step="any"/></label>
+<label>Import inert tile layout<input id="raman-file" type="file" accept=".json,application/json"/></label>
+</div>
+<p id="raman-optics"></p><p id="raman-axis"></p>
+<div class="tools"><button id="raman-map">Acquire Raman map</button><button id="raman-json" disabled>Export spectra JSON</button><button id="raman-csv" disabled>Export map CSV</button></div>
+<p id="raman-status" aria-live="polite"></p></section>
+</div>
+<section class="panel"><h3>Component maps and selected spectrum</h3>
+<p>Row 0 is at the bottom (+Y goes up, away from the operator). Column 0 is at the left. Color represents integrated peak area normalized within its component map; the tile detail reports the unnormalized area.</p>
+<div class="maps">
+<div><h4>Silicon · 508–533 cm⁻¹</h4><div class="matrix" id="raman-si"></div></div>
+<div><h4>Polystyrene · 984–1018 cm⁻¹</h4><div class="matrix" id="raman-ps"></div></div>
+</div>
+<p id="raman-tile" aria-live="polite"></p><p id="raman-areas"></p><canvas id="raman-spectrum" width="710" height="425" aria-label="Scaled Stokes spectrum of selected tile. The text above provides fitted peak coordinates and width."></canvas>
+<p><strong>Try now:</strong> Open a silicon and polystyrene tile; look for 520.45 and 1001.4 cm⁻¹. Raise modeled blur to 6 cm⁻¹ and acquire again: the fitted bands broaden while baseline-subtracted areas nearly hold. Clear the axis correction to test the calibration gate; then apply the virtual silicon reference and rerun.</p>
+</section>
+<section class="panel"><h3>Spectral and focus model</h3>
+<p>For vacuum wavelengths in nm, Stokes shift is 10⁷(1/λ<sub>exc</sub>−1/λ<sub>scattered</sub>) in cm⁻¹. The simulation uses published Si and <a href={ps}>PS</a> coordinates on ideal Gaussian bands, not replayed vendor spectra. Gaussian instrumental and intrinsic FWHM add in quadrature and conserve area. A linear baseline through each window's ends is removed before trapezoidal integration. A local three-point fit estimates center; linear half-height crossings estimate FWHM. Reported intensity is arbitrary, not a quantitative chemical concentration.</p>
+<p>Nominal objective NA is 0.25 at 10× and 0.75 at 50×. The stage applies an illustrative focus factor [1+(z/z<sub>1/2</sub>)²]⁻¹ with axial half-width λ/(2 NA²). Exposure scales the result. Airy radius 0.61λ/NA is an interpretive lateral scale, not a measured PSF. A virtual Si witness removes an intentional +4 cm⁻¹ offset; there is no physical traceability, detector noise, heating, polarization, fluorescence, confocal PSF calibration or spectral unmixing of unknowns.</p>
+<p>Optical path is entirely virtual. Opening the visor or removing a sample disables acquisition. The input is an inert labeled grid, not a payload for laser hardware. The synthetic coupon's carrier is drawn larger than its map, so the actual tile pitch is set by the numeric input and output metadata.</p>
+<p><a href={a+'contract.json'}>Station contract</a> · <a href={a+'example-coupon.json'}>Example tile geometry</a> · <a href={a+'example-map.json'}>Example map and spectra</a>. The result preserves specimen and measurement revision, shift axis, frame, units, applied reference and assumptions. No available downstream consumer of these Raman data is claimed.</p>
+</section>
+<section class="panel" id="raman-evidence"><h3>Instrument views and specifications</h3>
+<p>Original reconstructions are paired with linked reference views, not manufacturer CAD or redistributed photographs. The motorized stage, controls, sample visor and connector positions are estimated when dimensions are absent. The linked Cambridge photograph has other accessories not in this configuration.</p>
+<div class="refs">
+<figure><img loading="lazy" src={a+'instrument-view.webp'} alt="Original metric LabRAM HR Evolution render, front view with microscope at left"/><figcaption><strong>Standalone LabRAM HR Evolution.</strong> Offset microscope bay and stepped right spectrometer cabinet. Compare the <a href={prod}>manufacturer three-quarter view</a>.</figcaption></figure>
+<figure><img loading="lazy" src={a+'sample-view.webp'} alt="Original close-up of objective turret and an inert coupon on the left-stage sample bay"/><figcaption><strong>Specimen and objective bay.</strong> Revolver, stage and visor; dimensions inferred. Compare the <a href={photo}>Cambridge lab installation</a>.</figcaption></figure>
+<figure><img loading="lazy" src={a+'rear-view.webp'} alt="Original rear perspective of LabRAM HR Evolution with selected passive connectors"/><figcaption><strong>Rear geometry.</strong> Upper sections and inferred passive power, detector, and controller positions. The <a href={m+'#page=38'}>manufacturer front and overhead drawings</a> constrain the enclosure; rear connector positions are illustrative.</figcaption></figure>
+</div>
+<div class="scroll"><table><thead><tr><th>Item</th><th>Value</th><th>Scope / source</th></tr></thead><tbody>{spec.map(([k,v,d,u])=><tr><th>{k}</th><td>{v}</td><td><a href={u}>{d}</a></td></tr>)}</tbody></table></div>
+<p><a href={a+'labram-hr-evolution.glb'}>Download original metric GLB</a> · <a href={a+'build-model.py'}>Editable Blender generator</a> · <a href={a+'interaction.json'}>Spatial anchors and actions</a> · <a href={a+'asset-metrics.json'}>Geometry evidence</a></p>
+<h3>Verification</h3>
+<p><strong>Geometry:</strong> {g.enclosureM.map(x=>(x*1000).toFixed(1)).join(' × ')} mm X×Y×Z vs 1133 × 473 × 817 mm nominal (±6 mm). <strong>Analytic:</strong> {verified.note}</p>
+<div class="scroll"><table><thead><tr><th>Check</th><th>Expected</th><th>Computed</th><th>Tolerance</th><th>Status</th></tr></thead><tbody>{verified.cases.map(q=><tr><td>{q.why}</td><td>{q.expected} {q.unit}</td><td>{typeof q.actual==='number'?Number(q.actual.toPrecision(8)):q.actual}</td><td>{q.tolerance??'Exact'}</td><td>{q.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'verification.json'}>Numerical results</a> · <a href={a+'acceptance.json'}>Independent fixtures</a> · <a href={a+'solver.mjs'}>Solver source</a></p>
+</section>
+</article>
+</Layout>
+<script>import '../../../../lib/equipment/05-10/client.mjs';</script>
+<style>
+#labram{max-width:1260px;margin:auto}
+#labram header{margin:1.37rem 0 1rem} #labram header p{max-width:78ch}
+.bench{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1rem}
+.panel{min-width:0;border:1px solid color-mix(in srgb,currentColor 32%,transparent);border-radius:.3rem;padding:clamp(.8rem,2vw,1.35rem);margin:.55rem 0}
+.panel h3{margin:0 0 .8rem}
+.tools{display:flex;flex-wrap:wrap;gap:.4rem}
+.tools button,.fields input,.fields select{color:inherit;background:transparent;border:1px solid currentColor;padding:.42rem .55rem;border-radius:.2rem;font:inherit;min-width:0;min-height:38px;box-sizing:border-box}
+.tools button{cursor:pointer}.tools button:disabled{opacity:.5;cursor:default}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin:.8rem 0}
+.fields label{display:flex;flex-direction:column;font-size:.9rem;gap:.18rem}
+.fields option{background:#f5f1e6;color:#151b1a}
+#raman-viewer{height:350px;margin:.72rem 0;background:#293941}
+#raman-viewer :global(canvas){display:block;max-width:100%;touch-action:none}
+#raman-spectrum{width:min(100%,700px);height:auto;display:block}
+#raman-result{font-weight:bold}
+#raman-status[data-error=true]{border-left:4px solid #7d4e30;padding-left:.6rem}
+.refs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
+.refs figure{margin:0}.refs img{width:100%;height:auto}.refs figcaption{margin:.35rem 0 1rem}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;margin:.45rem 0}
+th,td{text-align:left;padding:.44rem;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent)}
+@media(max-width:900px){.bench{grid-template-columns:1fr}#raman-viewer{height:310px}}
+@media(max-width:560px){.refs{grid-template-columns:1fr}#raman-viewer{height:260px}.tools button,.fields input,.fields select{min-height:44px}}
+.maps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;max-width:770px}
+.maps>div{min-width:0}.matrix{display:grid;gap:2px;overflow:auto}.matrix button{border:0;min-height:35px;font:inherit;cursor:pointer;padding:0}
+.matrix button[aria-pressed=true]{outline:2px solid currentColor;outline-offset:-2px}.matrix button:focus-visible{outline:2px dashed currentColor;z-index:1}
+@media(max-width:590px){.maps{grid-template-columns:1fr}.matrix button{min-height:39px}}
+</style>
