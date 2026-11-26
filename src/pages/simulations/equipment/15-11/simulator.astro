@@ -1,0 +1,92 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+const p='/equipment/15-11/';
+const e3='https://www.diagnosysllc.com/wp-content/uploads/2022/04/Diagnosys-E3-Systems-Brochure-h.pdf';
+const cd='https://www.diagnosysllc.com/wp-content/uploads/2026/02/Diagnosys-ColorDome-Brochure-h.pdf';
+const refs=[
+ ['paired-front-quarter.webp','Both inactive enclosures: the E3 console’s rounded perimeter, disconnected oval amplifier, and ColorDome tabletop silhouette. The source shows the portable computer open; this exhibit shows a generic lid closed.',e3+'#page=3','Diagnosys E3 brochure 13601 Rev H, p. 3'],
+ ['dome-side-detail.webp','ColorDome front-left quarter: lobed dark shell, orange band, and raised name area. The opaque inactive face and stationary tabletop support are authored simplifications.',cd+'#page=1','Diagnosys ColorDome brochure 11879 Rev H, p. 1']
+];
+const checks=[
+ ['Translated CARD-B: 6 occupied tiles','6 × 4 = 24 mm²','24 mm²','Exact'],
+ ['CARD-B aligned against CARD-A','6/6 = 100%','6/6 = 100%','Exact'],
+ ['Reflected CARD-C shares only base row','3/9 = 33⅓%','3/9 = 33⅓%','10⁻¹² absolute fraction'],
+ ['Stored blank CARD-D','0 mm², no overlap','0 mm², null overlap','Exact'],
+ ['E3 outer W × D × H','432 × 330 × 86 mm','432 × 330 × 86 mm','1 mm mesh bounds'],
+ ['D125 head W × D × H, without stand','360 × 310 × 260 mm','360 × 310 × 260 mm nominal','3 mm mesh bounds']
+];
+---
+<Layout title="Diagnosys Espion E3 / ColorDome · Closed exterior and fixed drawing exhibit" description="Inspect dormant Diagnosys E3 and ColorDome housings and compare a separate synthetic pattern archive. No device operation.">
+ <main id="esp3-exhibit">
+  <p><a href="/simulations/equipment/15-11/">← Equipment record 15-11</a></p>
+  <p class="series">LABORATORY EQUIPMENT / 15-11 / DOCUMENTARY EXHIBIT</p>
+  <h1>Diagnosys Espion E3 / ColorDome</h1>
+  <p class="lead">Look around the disconnected desktop exteriors. In the separate drawing exhibit, compare identical shapes at different positions and see why reflection still changes the measured overlap.</p>
+  <div class="duo">
+   <section class="card">
+    <h2>Disconnected metric exteriors</h2>
+    <div id="esp3-view" class="viewer"></div><figure id="esp3-fallback" hidden><img src={p+'paired-front-quarter.webp'} alt="Original rendering of the disconnected console and domed enclosure." width="840" height="590" /></figure><p id="esp3-model" role="status">Loading the metric exteriors…</p>
+    <div class="actions" aria-label="3D viewpoints">
+     <button type="button" data-esp3-view="orbit">Reset orbit</button><button type="button" data-esp3-view="front">Whole desktop pair</button><button type="button" data-esp3-view="dome">Dome shape detail</button><button type="button" data-esp3-view="archive">Detached drawings</button>
+    </div>
+    <p>Drag to orbit; scroll or pinch to zoom. Tap the detached drawing panel to advance one card. The equipment shells have no actions or connections.</p>
+   </section>
+   <section class="card">
+    <h2>Detached fixed drawing archive</h2>
+    <canvas id="esp3-diagram" width="704" height="480" aria-label="Static comparison of six occupied grid tiles in the reference and the selected drawing." ></canvas>
+    <div class="inputs">
+     <label>Compared drawing<select id="esp3-card"><option value="0">A · Reference</option><option value="1" selected>B · Translated</option><option value="2">C · Reflected</option><option value="3">D · Stored blank</option></select></label>
+    </div>
+    <div class="actions"><button id="esp3-next" type="button" disabled>Next saved drawing</button><button id="esp3-reset" type="button">Reset drawing comparison</button><button id="esp3-export" type="button" disabled>Export comparison JSON</button></div>
+    <p id="esp3-status" role="status" aria-live="polite">Loading the fixed drawing archive…</p>
+    <p id="esp3-result" class="readout" aria-live="polite"></p>
+   </section>
+  </div>
+  <section>
+   <h2>Selected configuration and original-reference views</h2>
+   <p>The modeled candidate is the Diagnosys desktop <strong>Espion E3 D315</strong> console paired with the <strong>D125-2N ColorDome</strong> housing on a fixed, inferred support. The latter is the current brochure's standard exterior variant without the optional XBF white LED module; the variant distinction here is documentary only. This is not the cart-based Profile, an identified serial, or a reverse-engineered accessory. Closed computer and amplifier shells are representative supplements.</p>
+   <div class="refs">
+    {refs.map(([f,label,href,source])=><figure><img src={p+f} alt={label} width="840" height="590" loading="lazy" /><figcaption><strong>Original reference-based rendering.</strong> {label} <a href={href}>{source} (original photo)</a>.</figcaption></figure>)}
+   </div>
+   <div class="tablewrap"><table><thead><tr><th>Property</th><th>Value or condition</th><th>Evidence / role</th></tr></thead><tbody>
+    <tr><td>E3 console W × D × H</td><td>432 × 330 × 86 mm</td><td><a href={e3+'#page=5'}>E3 PDF p. 5</a> anchors outer dimensions.</td></tr>
+    <tr><td>D125 head W × D × H</td><td>360 × 310 × 260 mm, head only</td><td><a href={cd+'#page=2'}>ColorDome PDF p. 2</a> anchors model option and envelope.</td></tr>
+    <tr><td>Auxiliaries and local contour</td><td>Stand, opaque cover, lid, rear surface and amplifier are inferred, not measured</td><td>Shown as inactive closed solids. No ports, optics, or working interfaces are reconstructed.</td></tr>
+    <tr><td>Drawing scale</td><td>9 × 7 cells, each 2 mm per side</td><td>Authored synthetic fixture. No relation to the instrument’s dimensions or capabilities.</td></tr>
+   </tbody></table></div>
+  </section>
+  <section>
+   <h2>What the toy comparison checks</h2>
+   <p>Each cell contributes 4 mm². To remove translation, subtract each nonempty drawing's lowest column and lowest row from its occupied coordinates. Then divide the size of the intersection by the size of the union. The orientation is never rotated or reflected by the calculation. The drawings on screen retain their original positions.</p>
+   <p>The reference and its translated copy each cover exactly 24 mm² and align in all six cells. The reflected card has the same area but shares only the bottom three of nine distinct cell positions. A stored blank has zero area and undefined alignment, not a measured zero overlap. Export keeps archive and card identifiers, source, units and revision.</p>
+   <p><strong>Limits:</strong> these detached shapes are not instrument inputs or outputs. The exhibit does not emulate equipment operation, stimulation, exposure, acquisition, subjects, retinal responses or clinical use. The asset includes a named detached target for future VR authoring; no headset session has been verified.</p>
+  </section>
+  <section>
+   <h2>Focused verification</h2>
+   <div class="tablewrap"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{checks.map(([name,x,y,t])=><tr><td>{name}</td><td>{x}</td><td>{y}</td><td>{t}</td><td>Pass</td></tr>)}</tbody></table></div>
+   <p><a href={p+'verification.json'}>Verification results</a> · <a href={p+'contract.json'}>Input/output contract</a> · <a href={p+'example-comparisons.json'}>Example exports</a> · <a href={p+'saved-patterns.json'}>Fixed drawing archive</a></p>
+   <p><a href={p+'build-model.py'}>Editable Blender source</a> · <a href={p+'e3-colordome.glb'} download>Download metric GLB</a> · <a href={p+'interaction.json'}>Interaction manifest</a> · <a href={p+'asset-metrics.json'}>GLB metrics</a></p>
+  </section>
+ </main>
+</Layout>
+<script>
+import '../../../../lib/equipment/15-11/client.mjs';
+</script>
+<style>
+main{max-width:1100px;margin:auto;padding:1.2rem clamp(.9rem,2.5vw,2rem) 3rem}
+.series,.readout,table,input,select,button{font-family:var(--font-label,system-ui,sans-serif)}
+.series{font-size:.78rem;letter-spacing:.13em}.lead{max-width:72ch}
+.duo,.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.2rem 0}
+.card{border:1px solid color-mix(in srgb,currentColor 30%,transparent);padding:1rem;border-radius:.25rem}
+.viewer{height:clamp(23rem,45vw,32rem);overflow:hidden;background:#263949}
+.viewer :global(canvas){display:block;width:100%;height:100%;touch-action:none}
+#esp3-diagram{display:block;width:100%;height:auto;background:#263949;margin:.5rem auto 1rem}
+.actions,.inputs{display:flex;gap:.5rem;flex-wrap:wrap;margin:.6rem 0}
+button,input,select{background:transparent;color:inherit;border:1px solid color-mix(in srgb,currentColor 50%,transparent);border-radius:.2rem;padding:.5rem;font-size:.91rem;min-height:2.6rem}
+button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}input{width:min(18rem,55vw)}label{display:grid;font-size:.86rem;gap:.25rem}
+figure{margin:0}figure img{width:100%;height:auto;display:block}figcaption{font-size:.92rem;margin:.45rem 0}
+section{margin:1.5rem 0}.duo section{margin:0}
+.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:.88rem}td,th{border-bottom:1px solid color-mix(in srgb,currentColor 25%,transparent);text-align:left;padding:.5rem;vertical-align:top}
+[data-error=true]{font-weight:bold;color:var(--accent,currentColor)}
+@media(max-width:770px){.duo,.refs{grid-template-columns:1fr}.viewer{height:22rem}}
+</style>
