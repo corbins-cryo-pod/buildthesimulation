@@ -1,0 +1,9 @@
+{
+ "configuration":"Thorlabs PM100D console, 2023 manual visual configuration, red boot and stowed stand, no sensor",
+ "references":[
+  {"title":"Thorlabs PM100D Operation Manual (2023), cover and figs. 1–4","url":"https://media.thorlabs.com/globalassets/items/p/pm/pm1/pm100d/17654-d02.pdf#page=12","caption":"Cover and pp. 10–11 show the red boot, silver-colored face, dark key panel, unpowered side silhouettes and rear kickstand. The reconstruction blanks the display and closes all connection details."},
+  {"title":"Thorlabs PM100D Operation Manual, p. 66 (general data)","url":"https://media.thorlabs.com/globalassets/items/p/pm/pm1/pm100d/17654-d02.pdf#page=68","caption":"183 × 109 × 40 mm overall with the boot and 81.4 × 61.0 mm active display. The manual's length-first orientation is displayed horizontally here. Detector ranges, response, and performance are outside this exhibit."}
+ ],
+ "geometryMm":{"longSide":183,"shortSide":109,"depth":40,"lcdWidth":81.4,"lcdHeight":61.0},
+ "limits":"Boot radius, key positions, kickstand polygon, connector bezels and trim are photo-estimated. No detector, emitted light, sensor calibration, exposure, device controls or instrument outputs."
+}

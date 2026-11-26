@@ -1,0 +1,126 @@
+{
+  "schema": "bts.pm100d.passive-arithmetic.verification.v1",
+  "scope": "Boot and LCD dimensions, mathematical conversions only; no sensor or metrology verified",
+  "checks": [
+    {
+      "id": "Boot long side",
+      "expected": 0.183,
+      "actual": 0.183,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Boot short side",
+      "expected": 0.109,
+      "actual": 0.109,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Boot thickness",
+      "expected": 0.04,
+      "actual": 0.04,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "LCD width",
+      "expected": 0.0814,
+      "actual": 0.0814,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "LCD height",
+      "expected": 0.061,
+      "actual": 0.061,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Boot ring leaves clear sightline to display center",
+      "expected": false,
+      "actual": false,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "1 mW as 1000 µW",
+      "expected": 1000,
+      "actual": 1000,
+      "unit": "µW",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "1 mW logarithmic reference",
+      "expected": 0,
+      "actual": 0,
+      "unit": "dBm",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "Tenfold reduction from reference",
+      "expected": -10,
+      "actual": -10,
+      "unit": "dBm",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "Quarter reference",
+      "expected": -6.02059991328,
+      "actual": -6.020599913279625,
+      "unit": "dBm",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "Zero linear",
+      "expected": 0,
+      "actual": 0,
+      "unit": "mW",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Zero dBm is undefined as finite quantity",
+      "expected": null,
+      "actual": null,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Detached ray targets present",
+      "expected": 2,
+      "actual": 2,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Changing unit cannot alter original W",
+      "expected": 0.0001,
+      "actual": 0.0001,
+      "unit": "W",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Invalid selection preserves previous ID",
+      "expected": true,
+      "actual": true,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}

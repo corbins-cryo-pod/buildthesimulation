@@ -1,0 +1,24 @@
+{
+  "schema": "bts.pm100d.detached-numeric-units.v1",
+  "equipment": "11-05",
+  "fixed": {
+    "id": "BTS-NUMERICAL-POWER-REFERENCE-01",
+    "revision": "1",
+    "valuesW": {
+      "reference": 0.001,
+      "tenth": 0.0001,
+      "quarter": 0.00025,
+      "zero": 0
+    }
+  },
+  "source": "authored arithmetic examples, no power or detector measurements",
+  "selectedId": "tenth",
+  "reading": {
+    "value": -10,
+    "unit": "dBm",
+    "inputW": 0.0001,
+    "logReferenceW": 0.001,
+    "finite": true,
+    "reason": null
+  }
+}
