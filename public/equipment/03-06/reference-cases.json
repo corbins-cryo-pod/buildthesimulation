@@ -1,0 +1,18 @@
+{
+  "schema":"bts.carrier-mockup.reference-cases.v1",
+  "basis":"Preimplementation arithmetic against a deliberately synthetic cylindrical teaching gauge, not real load-lock clearance.",
+  "cases":[
+    {"id":"reference-lateral","expected":3,"unit":"mm","tolerance":1e-10},
+    {"id":"reference-vertical","expected":6,"unit":"mm","tolerance":1e-10},
+    {"id":"reference-fits","expected":"clear-in-mockup","unit":"state"},
+    {"id":"3-4-offset-lateral","expected":-2,"unit":"mm","tolerance":1e-10},
+    {"id":"off-center-rejected","expected":"interference-in-mockup","unit":"state"},
+    {"id":"height-oversize-margin","expected":-2,"unit":"mm","tolerance":1e-10},
+    {"id":"height-oversize-rejected","expected":"interference-in-mockup","unit":"state"},
+    {"id":"touch-boundary","expected":"zero-reserve","unit":"state"},
+    {"id":"negative-diameter-rejected","expected":true,"unit":"boolean"},
+    {"id":"exterior-length","expected":1.845,"unit":"m","tolerance":1e-5},
+    {"id":"exterior-depth","expected":0.715,"unit":"m","tolerance":1e-5},
+    {"id":"exterior-height","expected":1.920,"unit":"m","tolerance":1e-5}
+  ]
+}
