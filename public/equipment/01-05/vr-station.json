@@ -1,0 +1,105 @@
+{
+  "schema": "bts.station.neural-data-analysis.v1",
+  "equipment": "01-05",
+  "model": "./analysis-console.glb",
+  "units": "m",
+  "axes": "+Y up, +Z front",
+  "nodes": 110,
+  "bytes": 38408,
+  "triangles": 2516,
+  "hitTargets": [
+    {
+      "node": "Raster_screen",
+      "action": "raster",
+      "label": "Inspect raster and trigger alignment",
+      "boundsM": {
+        "min": [
+          -0.4125,
+          1.1095,
+          -0.2075
+        ],
+        "max": [
+          -0.0355,
+          1.3245,
+          -0.1925
+        ]
+      }
+    },
+    {
+      "node": "Waveform_screen",
+      "action": "waveform",
+      "label": "Inspect mean waveforms",
+      "boundsM": {
+        "min": [
+          0.0355,
+          1.1095,
+          -0.2075
+        ],
+        "max": [
+          0.4125,
+          1.3245,
+          -0.1925
+        ]
+      }
+    },
+    {
+      "node": "Run_analysis_button",
+      "action": "run",
+      "label": "Run analysis",
+      "boundsM": {
+        "min": [
+          0.2465,
+          0.9585,
+          0.133
+        ],
+        "max": [
+          0.3075,
+          0.9795,
+          0.177
+        ]
+      }
+    },
+    {
+      "node": "Trigger_wheel",
+      "action": "trigger",
+      "label": "Toggle clock reference",
+      "boundsM": {
+        "min": [
+          0.336,
+          0.9595,
+          0.093
+        ],
+        "max": [
+          0.394,
+          0.9885,
+          0.151
+        ]
+      }
+    },
+    {
+      "node": "Reset_button",
+      "action": "reset",
+      "label": "Load default toy recording",
+      "boundsM": {
+        "min": [
+          0.39,
+          0.9585,
+          0.1535
+        ],
+        "max": [
+          0.422,
+          0.9795,
+          0.1845
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./analysis.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)"
+  },
+  "note": "Original console; use static hit bounds in the console assembly frame. No headset session run."
+}
