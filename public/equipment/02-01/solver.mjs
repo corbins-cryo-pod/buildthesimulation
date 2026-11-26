@@ -78,3 +78,10 @@ export function exposure(s){for(const check of [fit(s),pose(s),maskCheck(s)])if(
  const a=s.thetaDeg*Math.PI/180,c=Math.cos(a),t=Math.sin(a),[ix,iy]=inverse(0,0,s);
  return {ok:true,code:"ok",message:"Exposure calculated; incoming wafer revision unchanged.",sampleRevision:{schema:"bts.lithography.latent-dose.v1",equipmentId:"02-01",provenance:"Simulated; area-weighted ideal hard contact or Gaussian proximity surrogate; circular illumination aperture; not calibrated resist or measured tool performance.",sampleId:s.sampleId,parentRevision:s.revision,revision:s.revision+1,sample:{diameterMm:150,widthMm:150,heightMm:150,thicknessUm:s.thicknessUm},mask:JSON.parse(JSON.stringify(s.mask)),waferMarks:JSON.parse(JSON.stringify(s.waferMarks)),pose:{xMm:s.xMm,yMm:s.yMm,thetaDeg:s.thetaDeg},maskToCoupon:[[c,t,ix],[-t,c,iy],[0,0,1]],fiducials:overlay(s),exposure:{mode:s.mode,wavelengthNm:365,intensityMwCm2:s.intensity,seconds:s.seconds,gapUm:s.mode==="hard"?0:s.gapUm,sigmaUm:sigma*1000,peakDoseMjCm2:dose,illuminationDiameterMm:150},grid:{sampling:"cell-average",integration:s.mode==="hard"?"exact rectangle/pixel/circular-aperture overlap (floating-point)":"separable Gaussian integration or 4x4 quadrature",coverage:"local-roi",outsideRoi:"unknown",frame:"wafer-centered +x right +y away from operator; row 0 minimum y; local ROI, not whole wafer",originMm:[ox,oy],spacingMm:[dx,dx],nx:n,ny:n,unit:"mJ/cm2",order:"row-major",values},statistics:{maxDoseMjCm2:max,integratedDoseTimesAreaMjCm2Mm2:integral,equivalentClearAreaMm2:integral/dose}}}
 }
+
+export function stageGeometry(transportY,stageNominalY,seatY,maskHolderY,maskPlateY,maskPlateThickness,waferThickness,gapMm,engaged){
+ const maskBottom=maskHolderY+maskPlateY-maskPlateThickness/2;
+ const waferTopAtRest=transportY+stageNominalY+seatY+waferThickness;
+ const lift=engaged?maskBottom-waferTopAtRest-gapMm:0;
+ return {lift,waferTop:waferTopAtRest+lift,maskBottom,gapMm:maskBottom-(waferTopAtRest+lift)};
+}

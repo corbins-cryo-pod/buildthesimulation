@@ -1,6 +1,6 @@
 {
   "configuration": "SUSS MA/BA6 Gen4 standard 150 mm mask-aligner, UV400 365 nm TSA, 178 mm mask holder",
-  "evidence": "Independent analytic expectations executed in JS before commit; no experimental calibration; geometry dimensions check design values, not measured machine; repository/browser verification separate. Revision 2: analytic area, translated/rotated area, subpixel line, circular aperture and proximity energy checks executed against revised source. Old tests retained; no experimental calibration.",
+  "evidence": "Independent analytic expectations executed in JS before commit; no experimental calibration; geometry dimensions check design values, not measured machine; repository/browser verification separate. Revision 2: analytic area, translated/rotated area, subpixel line, circular aperture and proximity energy checks executed against revised source. Old tests retained; no experimental calibration. Revision 2 geometry supplement: seating is computed from source chuck/wafer faces; 9 combinations of selected thickness and gap verify the kinematic plane equation (not measured device motion).",
   "checks": [
     {
       "name": "F1 translation X",
@@ -272,6 +272,94 @@
       "actual": 100,
       "unit": "mJ/cm²",
       "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "name": "Wafer seats on chuck surface",
+      "expected": 21,
+      "actual": 21,
+      "unit": "mm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 0.1 mm wafer / 0 µm gap",
+      "expected": 0,
+      "actual": 0,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 0.1 mm wafer / 1 µm gap",
+      "expected": 1,
+      "actual": 0.9999999999763531,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 0.1 mm wafer / 300 µm gap",
+      "expected": 300,
+      "actual": 299.9999999999545,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 0.675 mm wafer / 0 µm gap",
+      "expected": 0,
+      "actual": 0,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 0.675 mm wafer / 1 µm gap",
+      "expected": 1,
+      "actual": 0.9999999999763531,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 0.675 mm wafer / 300 µm gap",
+      "expected": 300,
+      "actual": 299.9999999999545,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 10 mm wafer / 0 µm gap",
+      "expected": 0,
+      "actual": 0,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 10 mm wafer / 1 µm gap",
+      "expected": 1,
+      "actual": 0.9999999999763531,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Loaded geometry: 10 mm wafer / 300 µm gap",
+      "expected": 300,
+      "actual": 299.9999999999545,
+      "unit": "µm",
+      "tolerance": 0.000001,
+      "pass": true
+    },
+    {
+      "name": "Regenerated GLB declared length",
+      "expected": 82060,
+      "actual": 82060,
+      "unit": "bytes",
+      "tolerance": 0,
       "pass": true
     }
   ]
