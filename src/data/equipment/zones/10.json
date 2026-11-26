@@ -252,9 +252,10 @@
     "inputs": "Chip/site map, selected recording routes, specimen ID and spatial signal field",
     "outputs": "Routed channel traces (V) and an activity map with unsampled sites masked",
     "acceptance": "Place a single synthetic source on a known routed site. It should appear at that coordinate. Attempting to route 1,021 simultaneous recording channels should reject the configuration or demand another acquisition.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric MaxOne hub, recording unit and one empty PSM chip",
+    "simulationStatus": "Verified ideal passive site selection and synthetic marker playback; no stimulation",
+    "integrationStatus": "Masked activity map, routed voltage exports and reusable metric VR targets",
+    "simulator": "/simulations/equipment/10-11/simulator/"
   },
   {
     "id": "10-12",

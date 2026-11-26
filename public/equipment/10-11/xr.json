@@ -1,0 +1,145 @@
+{
+  "schema": "bts.station.xr.v1",
+  "asset": "/equipment/10-11/maxone.glb",
+  "station": "/equipment/10-11/array.mjs",
+  "dispatch": "act(state,action,value); station() initializes; focus takes a row-major site index",
+  "unit": "m",
+  "up": "+Y",
+  "front": "+Z",
+  "origin": "Bench floor under system. Ideal map x right, y rear (+Y within sensing plane; global −Z on asset).",
+  "geometry": {
+    "rows": [
+      {
+        "label": "hub width",
+        "expectedMm": 280,
+        "actualMm": 280.0000011920929,
+        "toleranceMm": 0.03,
+        "pass": true
+      },
+      {
+        "label": "hub depth",
+        "expectedMm": 185,
+        "actualMm": 185.0000023841858,
+        "toleranceMm": 0.03,
+        "pass": true
+      },
+      {
+        "label": "hub height",
+        "expectedMm": 90,
+        "actualMm": 90.00000357627869,
+        "toleranceMm": 0.03,
+        "pass": true
+      },
+      {
+        "label": "recorder width",
+        "expectedMm": 95,
+        "actualMm": 94.9999988079071,
+        "toleranceMm": 0.03,
+        "pass": true
+      },
+      {
+        "label": "recorder length",
+        "expectedMm": 150,
+        "actualMm": 150.00000596046448,
+        "toleranceMm": 0.03,
+        "pass": true
+      },
+      {
+        "label": "recorder height",
+        "expectedMm": 25,
+        "actualMm": 25.00000037252903,
+        "toleranceMm": 0.03,
+        "pass": true
+      },
+      {
+        "label": "PSM ring diameter",
+        "expectedMm": 24,
+        "actualMm": 24.000000208616257,
+        "toleranceMm": 0.03,
+        "pass": true
+      },
+      {
+        "label": "PSM ring height",
+        "expectedMm": 8,
+        "actualMm": 8.00000037997961,
+        "toleranceMm": 0.03,
+        "pass": true
+      },
+      {
+        "label": "active rectangle width",
+        "expectedMm": 3.85,
+        "actualMm": 3.8499999791383743,
+        "toleranceMm": 0.03,
+        "pass": true
+      },
+      {
+        "label": "active rectangle length",
+        "expectedMm": 2.1,
+        "actualMm": 2.099999925121665,
+        "toleranceMm": 0.03,
+        "pass": true
+      }
+    ],
+    "nodes": 42,
+    "bytes": 274424,
+    "triangles": 4663,
+    "minM": [
+      -0.246,
+      0,
+      -0.195102
+    ],
+    "maxM": [
+      0.1715,
+      0.09,
+      0.093
+    ]
+  },
+  "controls": [
+    {
+      "mesh": "PSM_CHIP",
+      "action": "mount",
+      "label": "Seat or remove the empty chip",
+      "minM": [
+        0.1095,
+        0.029,
+        0.026
+      ],
+      "maxM": [
+        0.1385,
+        0.0398,
+        0.054
+      ]
+    },
+    {
+      "mesh": "SENSING_AREA",
+      "action": "focus",
+      "label": "Select ideal grid coordinates via ray hit in sensor-local XY",
+      "minM": [
+        0.122075,
+        0.0324,
+        0.03895
+      ],
+      "maxM": [
+        0.125925,
+        0.0325,
+        0.04105
+      ]
+    },
+    {
+      "mesh": "HUB_STATUS",
+      "action": "run",
+      "label": "Replay selected electrical routes",
+      "minM": [
+        0.0008,
+        0.0308,
+        0.04835
+      ],
+      "maxM": [
+        0.0052,
+        0.0352,
+        0.04965
+      ]
+    }
+  ],
+  "note": "Metric mockup, simplified connectors and chip internals. No vendor mapping or physical headset session."
+}
