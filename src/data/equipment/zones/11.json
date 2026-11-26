@@ -90,9 +90,10 @@
     "inputs": "Excitation schedule, fluorescence field or trace, collection weights, background and detector response",
     "outputs": "Aggregate demodulated fluorescence time series, reference channel and event-aligned timestamps",
     "acceptance": "Combine two synthetic emitters of known brightness with a constant background. Below saturation the recovered modulation should match their weighted sum and remain invariant when equal-weight emitter IDs are exchanged.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: metric capped NC500 and iLFMC4-G3 exteriors; nominal envelopes verified",
+    "simulationStatus": "First pass: detached authored coordinate-card comparison; original sensing acceptance deferred",
+    "integrationStatus": "First pass: simulator route, editable GLB, passive named XR display action and JSON example",
+    "simulator": "/simulations/equipment/11-04/simulator/"
   },
   {
     "id": "11-05",
