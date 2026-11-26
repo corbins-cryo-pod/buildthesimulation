@@ -1,0 +1,69 @@
+{
+  "schema": "bts.wedge-program.v1",
+  "units": "µm",
+  "assemblyId": "WEDGE-4",
+  "revision": 0,
+  "fiducial": {
+    "dx": 0,
+    "dy": 0,
+    "thetaDeg": 0
+  },
+  "loopHeight": 120,
+  "pads": [
+    {
+      "id": "D1",
+      "net": "A",
+      "x": -3500,
+      "y": -2200,
+      "z": 0
+    },
+    {
+      "id": "P1",
+      "net": "A",
+      "x": 3500,
+      "y": -2200,
+      "z": 0
+    },
+    {
+      "id": "D2",
+      "net": "B",
+      "x": -3500,
+      "y": 2200,
+      "z": 0
+    },
+    {
+      "id": "P2",
+      "net": "B",
+      "x": 3500,
+      "y": 2200,
+      "z": 0
+    }
+  ],
+  "bonds": [
+    {
+      "id": "W1",
+      "from": "D1",
+      "to": "P1"
+    },
+    {
+      "id": "W2",
+      "from": "D2",
+      "to": "P2"
+    }
+  ],
+  "obstacles": [
+    {
+      "id": "FRAME_TAB",
+      "min": [
+        -600,
+        1600,
+        0
+      ],
+      "max": [
+        650,
+        2800,
+        220
+      ]
+    }
+  ]
+}
