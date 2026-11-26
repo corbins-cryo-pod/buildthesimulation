@@ -283,6 +283,7 @@
     "evidence": "A",
     "priority": "P1",
     "page": 35,
+    "simulator": "/simulations/equipment/10-13/simulator/",
     "sources": [
       "S48",
       "S49"
@@ -293,9 +294,9 @@
     "inputs": "Probe variant and site-map revision, bank selection, shank pose and extracellular field",
     "outputs": "Recording channels (V) mapped to physical contact IDs and 3D locations",
     "acceptance": "Replay a depth-coded field and switch banks. Each channel should report the value at its selected physical site. Verify against the exact 1.0 or 2.0 map used in that run.",
-    "geometryStatus": "Existing asset to review",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Verified existing Neuropixels 1.0 metric geometry",
+    "simulationStatus": "Synthetic site-index replay on pinned 1.0 map",
+    "integrationStatus": "Interactive site picker and mapped exports",
     "related": [
       [
         "Neuropixels 1.0 engineering model and viewer",

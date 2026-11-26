@@ -1,0 +1,157 @@
+{
+  "scope": "Independent analytic synthetic signal, geometry and software checks. Source GLB/CSV bytes pinned; no device or biological measurement, routing verification or headset testing.",
+  "rows": [
+    {
+      "id": "Pinned geometric site rows",
+      "expected": 960,
+      "actual": 960,
+      "unit": "sites",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Closest reconstructed site from tip",
+      "expected": 200,
+      "actual": 200,
+      "unit": "µm",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Farthest reconstructed site from tip",
+      "expected": 9780,
+      "actual": 9780,
+      "unit": "µm",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Bank 0 channel 7 physical site",
+      "expected": 7,
+      "actual": 7,
+      "unit": "",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Bank 1 channel 7 physical site",
+      "expected": 391,
+      "actual": 391,
+      "unit": "",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Bank 1 channel 7 axial coordinate",
+      "expected": 4100,
+      "actual": 4100,
+      "unit": "µm",
+      "tol": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Reference initial level bank 0",
+      "expected": 10.6,
+      "actual": 10.599999999999998,
+      "unit": "µV",
+      "tol": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "Reference initial level bank 1",
+      "expected": 49,
+      "actual": 49,
+      "unit": "µV",
+      "tol": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "Reference level shift between banks",
+      "expected": 38.4,
+      "actual": 38.4,
+      "unit": "µV",
+      "tol": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "Bank 2 capacity",
+      "expected": 192,
+      "actual": 192,
+      "unit": "sites",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Pure display coordinate shift",
+      "expected": 2000,
+      "actual": 2000,
+      "unit": "µm",
+      "tol": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "Independent quarter-period peak",
+      "expected": 18.6,
+      "actual": 18.6,
+      "unit": "µV",
+      "tol": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "Virtual sample interval",
+      "expected": 0.001,
+      "actual": 0.001,
+      "unit": "s",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Original GLB contact anchor count",
+      "expected": 960,
+      "actual": 960,
+      "unit": "sites",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Largest GLB-to-CSV mismatch",
+      "expected": 0,
+      "actual": 1.8189894035458565e-12,
+      "unit": "µm",
+      "tol": 2e-9,
+      "pass": true
+    },
+    {
+      "id": "Original active shank length",
+      "expected": 10000,
+      "actual": 10000,
+      "unit": "µm",
+      "tol": 0.001,
+      "pass": true
+    },
+    {
+      "id": "Original active shank width",
+      "expected": 70,
+      "actual": 70.00000029802322,
+      "unit": "µm",
+      "tol": 0.001,
+      "pass": true
+    },
+    {
+      "id": "Original active shank thickness",
+      "expected": 24,
+      "actual": 24.000000208616257,
+      "unit": "µm",
+      "tol": 0.001,
+      "pass": true
+    },
+    {
+      "id": "Conditioned original surface + site draws (static)",
+      "expected": 7,
+      "actual": 7,
+      "unit": "draws",
+      "tol": 0,
+      "pass": true
+    }
+  ]
+}

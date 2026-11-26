@@ -1,0 +1,53 @@
+{
+  "schema": "bts.npx1-synthetic-replay.v1",
+  "equipmentId": "10-13",
+  "fixtureId": "NPX1-INERT-CHECKERBOARD",
+  "sourceRevision": 1,
+  "runSequence": 1,
+  "variant": "Neuropixels 1.0",
+  "mapRevision": "BTS-NPX1-R1",
+  "mapSha256": "f542eff9378d0c3d1c929c5ba099e70dd64867e0113223d71f4b6581aabb1ad0",
+  "coordinateConvention": "X across shank; Y proximal from reconstruction tip; Z toward face. Units µm. Display scene translation does not change synthetic field.",
+  "partition": "Software-only geometry groups of 384, 384 and 192. Virtual channel numbers are not IMRO routing or hardware channel IDs.",
+  "source": "Synthetic fixed depth gradient plus common tone, unrelated to tissue or measurements.",
+  "fixture": {
+    "schema": "bts.npx1-synthetic-fixture.v1",
+    "sampleId": "NPX1-INERT-CHECKERBOARD",
+    "revision": 1,
+    "variant": "Neuropixels 1.0",
+    "mapRevision": "BTS-NPX1-R1",
+    "dcUv": 10,
+    "amplitudeUv": 8,
+    "slopeUvPerUm": 0.01,
+    "toneHz": 7,
+    "durationMs": 1000
+  },
+  "bank": 0,
+  "validVirtualChannels": 384,
+  "displayShiftUm": [
+    0,
+    0,
+    0
+  ],
+  "selected": {
+    "channel": 7,
+    "siteId": 7,
+    "row": 3,
+    "xUm": 24,
+    "yUm": 260,
+    "zUm": 12,
+    "sizeUm": 12,
+    "worldUm": [
+      24,
+      260,
+      12
+    ],
+    "initialV": 0.000010599999999999998
+  },
+  "units": {
+    "coordinate": "µm",
+    "time": "s",
+    "voltage": "V"
+  },
+  "sampleCount": 1001
+}
