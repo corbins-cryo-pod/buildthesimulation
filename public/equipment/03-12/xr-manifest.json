@@ -1,0 +1,43 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "03-12",
+  "asset": "/equipment/03-12/pdc32g2-static.glb",
+  "unit": "glTF meter, +Y up and +Z toward operator",
+  "metrics": {
+    "bytes": 158168,
+    "triangles": 2076,
+    "draws": 51,
+    "nominalHousingXyzM": [
+      0.2540000081062317,
+      0.2159000039100647,
+      0.20319999754428864
+    ]
+  },
+  "scope": "External teaching markers only, no operational controls or headset verification",
+  "nodes": [
+    {
+      "node": "grid_overlay_target",
+      "label": "Toggle synthetic footprint frame",
+      "action": {
+        "type": "grid"
+      },
+      "boundsM": [
+        0.045,
+        0.006,
+        0.029
+      ]
+    },
+    {
+      "node": "turn_overlay_target",
+      "label": "Turn virtual shell visualization 0° to 90°",
+      "action": {
+        "type": "quarterTurn"
+      },
+      "boundsM": [
+        0.045,
+        0.006,
+        0.029
+      ]
+    }
+  ]
+}
