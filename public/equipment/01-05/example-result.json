@@ -1,0 +1,223 @@
+{
+  "schema": "buildthesimulation.spike-alignment.v1",
+  "analysisRevision": 1,
+  "parentAnalysisRevision": null,
+  "triggerId": "sync-20",
+  "provenance": {
+    "kind": "synthetic",
+    "method": "Provided-label sample-clock alignment and complete centered ±2-sample mean",
+    "voltageUnit": "uV",
+    "clockUnit": "s",
+    "offsetUnit": "ms"
+  },
+  "recording": {
+    "schema": "buildthesimulation.synthetic-recording.v1",
+    "recordingId": "toy-2ch-v1",
+    "revision": 1,
+    "provenance": "synthetic",
+    "sampleRateHz": 2000,
+    "startTimeS": 0,
+    "voltageUnit": "uV",
+    "channels": [
+      {
+        "id": "A",
+        "traceUV": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -15,
+          -60,
+          -15,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -15,
+          -60,
+          -15,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "B",
+        "traceUV": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -12,
+          -45,
+          -12,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -12,
+          -45,
+          -12,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "events": [
+      {
+        "id": "spk-a1",
+        "channelId": "A",
+        "sampleIndex": 12
+      },
+      {
+        "id": "spk-b1",
+        "channelId": "B",
+        "sampleIndex": 16
+      },
+      {
+        "id": "spk-a2",
+        "channelId": "A",
+        "sampleIndex": 28
+      },
+      {
+        "id": "spk-b2",
+        "channelId": "B",
+        "sampleIndex": 32
+      }
+    ],
+    "triggers": [
+      {
+        "id": "sync-20",
+        "sampleIndex": 20
+      },
+      {
+        "id": "sync-21",
+        "sampleIndex": 21
+      }
+    ]
+  },
+  "analysis": {
+    "trigger": {
+      "id": "sync-20",
+      "sampleIndex": 20,
+      "clockTimeS": 0.01
+    },
+    "samplePeriodMs": 0.5,
+    "events": [
+      {
+        "id": "spk-a1",
+        "channelId": "A",
+        "sampleIndex": 12,
+        "clockTimeS": 0.006,
+        "offsetSamples": -8,
+        "offsetMs": -4
+      },
+      {
+        "id": "spk-b1",
+        "channelId": "B",
+        "sampleIndex": 16,
+        "clockTimeS": 0.008,
+        "offsetSamples": -4,
+        "offsetMs": -2
+      },
+      {
+        "id": "spk-a2",
+        "channelId": "A",
+        "sampleIndex": 28,
+        "clockTimeS": 0.014,
+        "offsetSamples": 8,
+        "offsetMs": 4
+      },
+      {
+        "id": "spk-b2",
+        "channelId": "B",
+        "sampleIndex": 32,
+        "clockTimeS": 0.016,
+        "offsetSamples": 12,
+        "offsetMs": 6
+      }
+    ],
+    "summary": [
+      {
+        "channelId": "A",
+        "count": 2,
+        "waveformCount": 2,
+        "excludedEdgeWaveforms": 0,
+        "meanWaveformUV": [
+          0,
+          -15,
+          -60,
+          -15,
+          0
+        ]
+      },
+      {
+        "channelId": "B",
+        "count": 2,
+        "waveformCount": 2,
+        "excludedEdgeWaveforms": 0,
+        "meanWaveformUV": [
+          0,
+          -12,
+          -45,
+          -12,
+          0
+        ]
+      }
+    ],
+    "waveformTimeMs": [
+      -1,
+      -0.5,
+      0,
+      0.5,
+      1
+    ]
+  }
+}

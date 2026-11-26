@@ -1,0 +1,37 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import verified from '../../../../../public/equipment/01-05/verification.json';
+const a='/equipment/01-05/';
+---
+<Layout pageTitle="Neural data analysis console" subtitle="" description="Align and count four labeled events in a synthetic two-channel recording." wide={true}>
+<article class="equipment ac105">
+<nav class="eq-nav"><a href="/simulations/equipment/01-05/">← Equipment 01-05</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">Specifications & checks</a></nav>
+<header class="eq-mast"><span class="eq-meta">01-05 / Data analysis and event synchronization</span><h2>BTS-ANALYSIS Mk I · Console</h2><p>Run a two-channel toy recording with four pre-labeled spikes. Switch the clock reference by one sample, watch the raster move, then export and reload the same event and waveform analysis.</p></header>
+<div class="ac-grid">
+<section class="ac-card"><h3>Instrument</h3><div class="ac-bar"><button data-camera="bench">Full workstation</button><button data-camera="screens">Screens</button><button data-camera="controls">Controller</button><button data-camera="rear">Rear</button><button id="camera-reset">Reset camera</button></div>
+<div class="ac-camera"><canvas id="console-model" aria-label="Orbitable original two-screen analysis workstation with keyboard and event controller"></canvas></div>
+<p id="asset" class="ac-note" role="status">Loading metre-scale GLB…</p><p class="ac-note">Drag or pinch to inspect. The green key runs analysis, the brass wheel switches triggers, and the two screens switch result views. All actions also work in the adjacent controls.</p></section>
+<section class="ac-card"><h3>Recording and results</h3>
+<div class="ac-bar"><button id="run" class="primary">Run analysis</button><button id="reset">Reset example</button><label>Reference trigger <select id="trigger-select"></select></label></div>
+<p class="ac-note" id="recording-meta">Example loaded: 2 channels, 2000 Hz, 40 samples, voltage in µV.</p>
+<div class="ac-bar"><button id="raster" aria-pressed="true">Aligned raster</button><button id="waveform" aria-pressed="false">Mean waveforms</button></div>
+<div class="ac-plot"><svg id="plot" viewBox="0 0 480 185" role="img" aria-label="Trigger-aligned spike raster and per-channel mean waveforms"></svg></div>
+<p id="status" role="status" aria-live="polite">Toy recording ready. Press Run analysis.</p>
+<div class="ac-table"><table><thead><tr><th>Event</th><th>Channel</th><th>Sample</th><th>Offset (samples)</th><th>Offset (ms)</th></tr></thead><tbody id="events"></tbody></table></div>
+<div class="ac-bar"><button id="export" disabled>Export analysis JSON</button><label>Reload toy recording or export <input id="import" type="file" accept="application/json,.json"/></label></div>
+<p class="ac-note">Files are processed in the browser without upload. Use synthetic data only. <a href={a+'example-recording.json'}>Example input</a> · <a href={a+'example-result.json'}>Example result</a>.</p></section>
+</div>
+<section id="evidence"><h3>Specifications and method</h3><p>Original console, not a physical OEM product. Tabletop <b>1100 × 620 × 31 mm</b>, top at <b>918 mm</b>, two screen housings each <b>415 × 267 × 34 mm</b>. Nominal design dimensions, not measurements. The 3D model is the original visual reference.</p>
+<p>The accepted input is a local v1 synthetic JSON recording with 1–4 channels at 100–100,000 Hz, 5–4096 uniformly sampled voltages (µV) per channel, a recording start time (s), 0–256 labeled events and 1–8 triggers on the same zero-based sample clock. For each event, subtract the trigger's sample index and divide by sample rate (×1000 for ms). The absolute session-relative clock is start + index/rate. The waveform view averages complete centered five-sample snippets per channel, without re-detection; edge events count but cannot contribute incomplete snippets. The output preserves both the labels and raw traces, selected trigger, source and analysis revisions, clock/offset units and derived tables. Importing an export recomputes results from the preserved recording, not the saved derived tables.</p>
+<p><a href="https://spikeinterface.readthedocs.io/en/latest/modules/core.html">SpikeInterface core documentation</a> describes sorted event trains indexed in samples; <a href="https://nwb-schema.readthedocs.io/en/latest/format.html">NWB TimeSeries and Units</a> specify rate and session clock conventions. This first pass does not perform spike sorting, calculate sorting-quality metrics, or import/export NWB.</p>
+<div class="ac-table"><table><thead><tr><th>Independent check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{verified.checks.map(c=><tr><th>{c.id}</th><td>{String(c.expected)} {c.unit}</td><td>{String(c.actual)} {c.unit}</td><td>{c.tolerance}</td><td>{c.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable model generator</a> · <a href={a+'analysis-console.glb'} download>Metric GLB</a> · <a href={a+'references.json'}>Reference specifications</a> · <a href={a+'vr-station.json'}>VR interaction manifest</a> · <a href={a+'analysis.mjs'}>Independent JS core</a> · <a href={a+'verification.json'}>Verification JSON</a>. No headset session tested.</p></section>
+</article></Layout><script>import '../../../../lib/equipment/01-05/client.mjs';</script>
+<style>
+.ac105{--ac-line:color-mix(in srgb,currentColor 26%,transparent);max-width:1280px;margin:auto}.ac-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:1rem}.ac-card{min-width:0;border:1px solid var(--ac-line);padding:.85rem;margin:.8rem 0}.ac-card h3{margin:.22rem 0 .62rem}
+.ac-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin:.54rem 0}.ac-bar,.ac-note,.ac105 label{font:.87rem/1.4 system-ui,sans-serif}.ac105 button,.ac105 select{font:inherit;padding:.39rem;color:inherit;background:var(--panel,Canvas);border:1px solid var(--ac-line);border-radius:3px;min-height:36px;cursor:pointer}.ac105 .primary,.ac105 button[aria-pressed=true]{background:#34594f;color:#fff}.ac105 button:disabled{opacity:.56;cursor:default}.ac105 input[type=file]{max-width:100%;font-size:.83rem}
+.ac-camera{aspect-ratio:1.49;background:#24343b}.ac-camera canvas,.ac-plot svg{width:100%;height:100%;display:block}.ac-camera canvas{touch-action:none}.ac-plot{aspect-ratio:480/185;background:#162b32}
+.ac-table{overflow:auto}.ac-table table{width:100%;border-collapse:collapse}.ac-table :is(td,th){border-bottom:1px solid var(--ac-line);padding:.43rem;text-align:left}.ac105 .err{color:#a13a28}:global(html[data-theme=dark]) .ac105 .err{color:#ffc2a0}
+@media(max-width:830px){.ac-grid{grid-template-columns:1fr}}
+</style>

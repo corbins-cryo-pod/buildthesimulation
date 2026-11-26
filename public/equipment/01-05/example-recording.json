@@ -1,0 +1,133 @@
+{
+  "schema": "buildthesimulation.synthetic-recording.v1",
+  "recordingId": "toy-2ch-v1",
+  "revision": 1,
+  "provenance": "synthetic",
+  "sampleRateHz": 2000,
+  "startTimeS": 0,
+  "voltageUnit": "uV",
+  "channels": [
+    {
+      "id": "A",
+      "traceUV": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -15,
+        -60,
+        -15,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -15,
+        -60,
+        -15,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "B",
+      "traceUV": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -12,
+        -45,
+        -12,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -12,
+        -45,
+        -12,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "spk-a1",
+      "channelId": "A",
+      "sampleIndex": 12
+    },
+    {
+      "id": "spk-b1",
+      "channelId": "B",
+      "sampleIndex": 16
+    },
+    {
+      "id": "spk-a2",
+      "channelId": "A",
+      "sampleIndex": 28
+    },
+    {
+      "id": "spk-b2",
+      "channelId": "B",
+      "sampleIndex": 32
+    }
+  ],
+  "triggers": [
+    {
+      "id": "sync-20",
+      "sampleIndex": 20
+    },
+    {
+      "id": "sync-21",
+      "sampleIndex": 21
+    }
+  ]
+}
