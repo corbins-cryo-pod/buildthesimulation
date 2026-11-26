@@ -1,0 +1,8 @@
+{
+  "equipmentId":"06-06",
+  "configuration":"Elmarco Nanospider NS LAB closed base cabinet, as shown in manufacturer's NS LAB catalog image; manufacturing revision not public",
+  "scope":"Dormant documentary exterior and a separate authored monochrome geometry exhibit",
+  "input":{"schema":"bts.synthetic-drawing-ruler.v1","drawingId":"NSL-GEOMETRIC-PLATE-001","frame":"81×81 pixel-center index square, +column to right and +row down, 0.25 synthetic mm/px","views":["BASE","R90"],"pairs":["AB","AC","BC"]},
+  "output":{"schema":"bts.synthetic-drawing-review.v1","fields":"Drawing ID/revision, active view, frame, selected labels, transformed mark points, delta in pixels, Euclidean distance in mm","physicalClaim":false},
+  "limits":["No connection to cabinet, materials, or samples","No operating controls or electrospinning process","No generation geometry, fiber map or real measurements","No immersive or headset verification"]
+}
