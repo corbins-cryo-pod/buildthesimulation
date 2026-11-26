@@ -1,0 +1,15 @@
+{
+  "upstream": "/equipment/02-07/example-resist-layer.json",
+  "sha256": "13ec6fdaf034cf0d076c93b20ccffbacb02be526f5c4fa84383fce44ef50cf98",
+  "reference": "Center map cell 1.32626 µm (= 1326.26 nm). Coating map is simulated; derived optical inspection of a digital crop, not a measured resist film.",
+  "actualThicknessNm": 1326.2601137695065,
+  "rmsResidual": 4.067888711591955e-7,
+  "originalSample": "SI-WAFER-150-001",
+  "sourceRevision": 1,
+  "spectrumRevision": 2,
+  "fitRevision": 3,
+  "unit": "nm",
+  "toleranceNm": 1,
+  "assumptions": "Silicon support assumed; unexposed AZ 1500 family Cauchy dispersion, lossless only in modeled 550–750 nm window. Center map sampling is nearest-neighbor; finer spatial features are unknown.",
+  "outcome": "PASS"
+}

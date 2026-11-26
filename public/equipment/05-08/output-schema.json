@@ -1,0 +1,18 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"https://buildthesimulation.com/equipment/05-08/output-schema.json",
+ "title":"BTS Sessile Drop Fit v1",
+ "type":"object",
+ "required":["schema","instrumentId","model","sampleId","contactId","parentRevision","revision","provenance","calibration","angles","fit","geometry","uncertainty"],
+ "properties":{
+  "schema":{"const":"bts.sessile-drop-fit.v1"},"instrumentId":{"const":"05-08"},
+  "sampleId":{"type":"string","maxLength":80},"contactId":{"type":"string","maxLength":80},
+  "parentRevision":{"type":"integer","minimum":0},"revision":{"type":"integer","minimum":1},
+  "provenance":{"type":"object","required":["image","method","derivedGeometryOnly"]},
+  "calibration":{"type":"object","required":["widthPx","heightPx","pixelSizeUm","baseline","thresholdDn"]},
+  "angles":{"type":"object","required":["leftDeg","rightDeg"],"properties":{"leftDeg":{"type":"number","minimum":20,"maximum":160},"rightDeg":{"type":"number","minimum":20,"maximum":160}}},
+  "fit":{"type":"object","required":["centerLocalPx","radiusPx","radialRmsPx","edgeSamples","leftContactPx","rightContactPx"]},
+  "geometry":{"type":"object","required":["baseDiameterMm","heightMm","radiusMm"]},
+  "uncertainty":{"type":"object","required":["angleSpreadDeg","baselineOnePixelDeg","radialResidualProxyDeg","interpretation"]}
+ }
+}

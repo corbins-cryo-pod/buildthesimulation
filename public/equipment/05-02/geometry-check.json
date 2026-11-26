@@ -1,0 +1,33 @@
+{
+  "method": "Scan all original binary positions after scene transforms. Instrument only, stage at scan position; no host, control box or coupon. Bruker standard GT-K datasheet, reconstruction tolerance ±4 mm.",
+  "checks": [
+    {
+      "axis": "width",
+      "referenceMm": 492,
+      "actualMm": 490.86,
+      "toleranceMm": 4,
+      "pass": true
+    },
+    {
+      "axis": "height",
+      "referenceMm": 754,
+      "actualMm": 753.99,
+      "toleranceMm": 4,
+      "pass": true
+    },
+    {
+      "axis": "depth",
+      "referenceMm": 534,
+      "actualMm": 534.013,
+      "toleranceMm": 4,
+      "pass": true
+    }
+  ],
+  "includedNodes": [
+    "stand",
+    "z_head",
+    "head_label",
+    "turret",
+    "stage"
+  ]
+}

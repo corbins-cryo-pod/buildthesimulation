@@ -1,0 +1,388 @@
+{
+  "schema": "bts.sheet-map.v1",
+  "deviceId": "05-06",
+  "sampleId": "FILM-100R",
+  "parentRevision": 0,
+  "revision": 1,
+  "calibrationId": "BTS-CDE178-JANDEL-1MM-r1",
+  "diameterM": 0.1,
+  "coordinates": {
+    "length": "m",
+    "x": "+right",
+    "y": "+away from operator",
+    "origin": "wafer center",
+    "angle": "counterclockwise from +x"
+  },
+  "units": {
+    "sheet": "ohm/sq",
+    "voltage": "V",
+    "current": "A"
+  },
+  "rows": [
+    {
+      "siteId": "S01",
+      "angleRad": 0,
+      "site": {
+        "xM": 0,
+        "yM": 0
+      },
+      "boundary": "disk",
+      "contactIds": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "tips": [
+        {
+          "id": "P1",
+          "xM": -0.0015,
+          "yM": 0,
+          "role": "force+"
+        },
+        {
+          "id": "P2",
+          "xM": -0.0005,
+          "yM": 0,
+          "role": "sense+"
+        },
+        {
+          "id": "P3",
+          "xM": 0.0005,
+          "yM": 0,
+          "role": "sense−"
+        },
+        {
+          "id": "P4",
+          "xM": 0.0015,
+          "yM": 0,
+          "role": "force−"
+        }
+      ],
+      "fOhmsPerOhm": 4.52844024673744,
+      "edgeMultiplier": 0.9991351315943366,
+      "clearanceM": 0.0485,
+      "currentA": 0.001,
+      "voltageV": 0.02258265860900914,
+      "reversedVoltageV": -0.02158265860900914,
+      "oddV": 0.02208265860900914,
+      "estimatedOffsetV": 0.0005000000000000004,
+      "apparentInfiniteOhmSq": 100.08656170505017,
+      "sheetOhmSq": 100
+    },
+    {
+      "siteId": "S02",
+      "angleRad": 0,
+      "site": {
+        "xM": 0.0125,
+        "yM": 0
+      },
+      "boundary": "disk",
+      "contactIds": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "tips": [
+        {
+          "id": "P1",
+          "xM": 0.011000000000000001,
+          "yM": 0,
+          "role": "force+"
+        },
+        {
+          "id": "P2",
+          "xM": 0.012,
+          "yM": 0,
+          "role": "sense+"
+        },
+        {
+          "id": "P3",
+          "xM": 0.013000000000000001,
+          "yM": 0,
+          "role": "sense−"
+        },
+        {
+          "id": "P4",
+          "xM": 0.014,
+          "yM": 0,
+          "role": "force−"
+        }
+      ],
+      "fOhmsPerOhm": 4.527900386759537,
+      "edgeMultiplier": 0.9990160192641137,
+      "clearanceM": 0.036000000000000004,
+      "currentA": 0.001,
+      "voltageV": 0.02258529151666399,
+      "reversedVoltageV": -0.02158529151666399,
+      "oddV": 0.02208529151666399,
+      "estimatedOffsetV": 0.0005000000000000004,
+      "apparentInfiniteOhmSq": 100.09849499076212,
+      "sheetOhmSq": 100
+    },
+    {
+      "siteId": "S03",
+      "angleRad": 0,
+      "site": {
+        "xM": 0.025,
+        "yM": 0
+      },
+      "boundary": "disk",
+      "contactIds": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "tips": [
+        {
+          "id": "P1",
+          "xM": 0.0235,
+          "yM": 0,
+          "role": "force+"
+        },
+        {
+          "id": "P2",
+          "xM": 0.0245,
+          "yM": 0,
+          "role": "sense+"
+        },
+        {
+          "id": "P3",
+          "xM": 0.025500000000000002,
+          "yM": 0,
+          "role": "sense−"
+        },
+        {
+          "id": "P4",
+          "xM": 0.026500000000000003,
+          "yM": 0,
+          "role": "force−"
+        }
+      ],
+      "fOhmsPerOhm": 4.525393030915318,
+      "edgeMultiplier": 0.998462807302628,
+      "clearanceM": 0.0235,
+      "currentA": 0.001,
+      "voltageV": 0.022597528174204518,
+      "reversedVoltageV": -0.021597528174204517,
+      "oddV": 0.022097528174204517,
+      "estimatedOffsetV": 0.0005000000000000004,
+      "apparentInfiniteOhmSq": 100.153955929668,
+      "sheetOhmSq": 100
+    },
+    {
+      "siteId": "S04",
+      "angleRad": 0,
+      "site": {
+        "xM": 0.034,
+        "yM": 0
+      },
+      "boundary": "disk",
+      "contactIds": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "tips": [
+        {
+          "id": "P1",
+          "xM": 0.0325,
+          "yM": 0,
+          "role": "force+"
+        },
+        {
+          "id": "P2",
+          "xM": 0.0335,
+          "yM": 0,
+          "role": "sense+"
+        },
+        {
+          "id": "P3",
+          "xM": 0.0345,
+          "yM": 0,
+          "role": "sense−"
+        },
+        {
+          "id": "P4",
+          "xM": 0.035500000000000004,
+          "yM": 0,
+          "role": "force−"
+        }
+      ],
+      "fOhmsPerOhm": 4.518804293936469,
+      "edgeMultiplier": 0.9970090973650518,
+      "clearanceM": 0.014499999999999999,
+      "currentA": 0.001,
+      "voltageV": 0.02262974793667971,
+      "reversedVoltageV": -0.02162974793667971,
+      "oddV": 0.02212974793667971,
+      "estimatedOffsetV": 0.0005000000000000004,
+      "apparentInfiniteOhmSq": 100.29998749688971,
+      "sheetOhmSq": 99.99999999999999
+    },
+    {
+      "siteId": "S05",
+      "angleRad": 0,
+      "site": {
+        "xM": 0.04050000000000001,
+        "yM": 0
+      },
+      "boundary": "disk",
+      "contactIds": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "tips": [
+        {
+          "id": "P1",
+          "xM": 0.03900000000000001,
+          "yM": 0,
+          "role": "force+"
+        },
+        {
+          "id": "P2",
+          "xM": 0.04000000000000001,
+          "yM": 0,
+          "role": "sense+"
+        },
+        {
+          "id": "P3",
+          "xM": 0.04100000000000001,
+          "yM": 0,
+          "role": "sense−"
+        },
+        {
+          "id": "P4",
+          "xM": 0.04200000000000001,
+          "yM": 0,
+          "role": "force−"
+        }
+      ],
+      "fOhmsPerOhm": 4.499245461790035,
+      "edgeMultiplier": 0.9926937226961383,
+      "clearanceM": 0.007999999999999993,
+      "currentA": 0.001,
+      "voltageV": 0.02272594896172097,
+      "reversedVoltageV": -0.02172594896172097,
+      "oddV": 0.02222594896172097,
+      "estimatedOffsetV": 0.0005000000000000004,
+      "apparentInfiniteOhmSq": 100.73600518838963,
+      "sheetOhmSq": 100
+    },
+    {
+      "siteId": "S06",
+      "angleRad": 0,
+      "site": {
+        "xM": 0.045000000000000005,
+        "yM": 0
+      },
+      "boundary": "disk",
+      "contactIds": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "tips": [
+        {
+          "id": "P1",
+          "xM": 0.043500000000000004,
+          "yM": 0,
+          "role": "force+"
+        },
+        {
+          "id": "P2",
+          "xM": 0.044500000000000005,
+          "yM": 0,
+          "role": "sense+"
+        },
+        {
+          "id": "P3",
+          "xM": 0.045500000000000006,
+          "yM": 0,
+          "role": "sense−"
+        },
+        {
+          "id": "P4",
+          "xM": 0.04650000000000001,
+          "yM": 0,
+          "role": "force−"
+        }
+      ],
+      "fOhmsPerOhm": 4.423839040587933,
+      "edgeMultiplier": 0.976056381698849,
+      "clearanceM": 0.003499999999999996,
+      "currentA": 0.001,
+      "voltageV": 0.023104800735858123,
+      "reversedVoltageV": -0.022104800735858122,
+      "oddV": 0.022604800735858122,
+      "estimatedOffsetV": 0.0005000000000000004,
+      "apparentInfiniteOhmSq": 102.45309786914939,
+      "sheetOhmSq": 100
+    },
+    {
+      "siteId": "S07",
+      "angleRad": 0,
+      "site": {
+        "xM": 0.047,
+        "yM": 0
+      },
+      "boundary": "disk",
+      "contactIds": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "tips": [
+        {
+          "id": "P1",
+          "xM": 0.0455,
+          "yM": 0,
+          "role": "force+"
+        },
+        {
+          "id": "P2",
+          "xM": 0.0465,
+          "yM": 0,
+          "role": "sense+"
+        },
+        {
+          "id": "P3",
+          "xM": 0.0475,
+          "yM": 0,
+          "role": "sense−"
+        },
+        {
+          "id": "P4",
+          "xM": 0.0485,
+          "yM": 0,
+          "role": "force−"
+        }
+      ],
+      "fOhmsPerOhm": 4.242210163750865,
+      "edgeMultiplier": 0.9359825854528505,
+      "clearanceM": 0.0015000000000000013,
+      "currentA": 0.001,
+      "voltageV": 0.024072618078775778,
+      "reversedVoltageV": -0.023072618078775777,
+      "oddV": 0.023572618078775778,
+      "estimatedOffsetV": 0.0005000000000000004,
+      "apparentInfiniteOhmSq": 106.83959461875847,
+      "sheetOhmSq": 100
+    }
+  ],
+  "provenance": {
+    "kind": "simulated",
+    "method": "Insulated homogeneous 2D sheet, NBS TN 199 geometry; ideal readout. Imported voltage maps are effective estimates, not inverse material reconstruction.",
+    "source": {
+      "kind": "synthetic",
+      "note": "Uniform 100 Ω/sq teaching artifact on insulating substrate; not an SRM."
+    }
+  }
+}

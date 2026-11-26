@@ -1,0 +1,4 @@
+{
+ "input":{"schema":"bts.raman-tiles.v1","required":["schema","sampleId","revision","rows","columns","materials","pitchUm"],"limits":{"rows":[1,15],"columns":[1,15],"pitchUm":[3,80]},"materialKeys":{"S":"silicon synthetic reference at 520.45 cm^-1","P":"polystyrene synthetic reference using 620.9, 1001.4, 1031.8 cm^-1"},"frame":"row major, row 0 first, x right and y away from operator; origin lower-left","example":"example-coupon.json"},
+ "output":{"schema":"bts.raman-map.v1","classification":"simulated","axis":"shiftCm in reciprocal centimetres","signalTable":"each material trace aligned to shiftCm, relative counts","points":"row, col, xUm, yUm, sourceKey, fit windows (area is relative count × cm^-1, center/FWHM in cm^-1), assigned","provenance":["sampleId","sampleRevision","mapRevision","recipe","calibration","input","frame","classification"],"example":"example-map.json"}
+}

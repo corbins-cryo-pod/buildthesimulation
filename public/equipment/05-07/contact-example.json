@@ -1,0 +1,157 @@
+{
+  "schema": "bts.probe-contact-sweep.v1",
+  "deviceId": "05-07",
+  "sampleId": "coupon-1k-01",
+  "parentRevision": 0,
+  "revision": 1,
+  "contacts": [
+    {
+      "tipId": "HI",
+      "status": "contact",
+      "die": {
+        "xM": -0.0005,
+        "yM": 0
+      },
+      "padId": "DUT-HI",
+      "net": "a",
+      "gapM": 0
+    },
+    {
+      "tipId": "LO",
+      "status": "contact",
+      "die": {
+        "xM": 0.0005,
+        "yM": 0
+      },
+      "padId": "DUT-LO",
+      "net": "b",
+      "gapM": 0
+    }
+  ],
+  "stage": {
+    "xM": 0,
+    "yM": 0,
+    "thetaRad": 0
+  },
+  "topology": "conducting",
+  "dutOhm": 1000,
+  "terminalOhm": 1000,
+  "continuity": false,
+  "rows": [
+    {
+      "i": 0,
+      "timeS": 0,
+      "requestedV": -1,
+      "terminalV": -1,
+      "currentA": -0.001,
+      "dutV": -1,
+      "compliance": false
+    },
+    {
+      "i": 1,
+      "timeS": 0.1,
+      "requestedV": -0.8,
+      "terminalV": -0.8,
+      "currentA": -0.0008,
+      "dutV": -0.8,
+      "compliance": false
+    },
+    {
+      "i": 2,
+      "timeS": 0.2,
+      "requestedV": -0.6,
+      "terminalV": -0.6,
+      "currentA": -0.0006,
+      "dutV": -0.6,
+      "compliance": false
+    },
+    {
+      "i": 3,
+      "timeS": 0.30000000000000004,
+      "requestedV": -0.4,
+      "terminalV": -0.4,
+      "currentA": -0.0004,
+      "dutV": -0.4,
+      "compliance": false
+    },
+    {
+      "i": 4,
+      "timeS": 0.4,
+      "requestedV": -0.2,
+      "terminalV": -0.2,
+      "currentA": -0.0002,
+      "dutV": -0.2,
+      "compliance": false
+    },
+    {
+      "i": 5,
+      "timeS": 0.5,
+      "requestedV": 0,
+      "terminalV": 0,
+      "currentA": 0,
+      "dutV": 0,
+      "compliance": false
+    },
+    {
+      "i": 6,
+      "timeS": 0.6000000000000001,
+      "requestedV": 0.2,
+      "terminalV": 0.2,
+      "currentA": 0.0002,
+      "dutV": 0.2,
+      "compliance": false
+    },
+    {
+      "i": 7,
+      "timeS": 0.7000000000000001,
+      "requestedV": 0.4,
+      "terminalV": 0.4,
+      "currentA": 0.0004,
+      "dutV": 0.4,
+      "compliance": false
+    },
+    {
+      "i": 8,
+      "timeS": 0.8,
+      "requestedV": 0.6,
+      "terminalV": 0.6,
+      "currentA": 0.0006,
+      "dutV": 0.6,
+      "compliance": false
+    },
+    {
+      "i": 9,
+      "timeS": 0.9,
+      "requestedV": 0.8,
+      "terminalV": 0.8,
+      "currentA": 0.0008,
+      "dutV": 0.8,
+      "compliance": false
+    },
+    {
+      "i": 10,
+      "timeS": 1,
+      "requestedV": 1,
+      "terminalV": 1,
+      "currentA": 0.001,
+      "dutV": 1,
+      "compliance": false
+    }
+  ],
+  "units": {
+    "length": "m",
+    "timeS": "s",
+    "terminalV": "V",
+    "currentA": "A",
+    "dutOhm": "ohm"
+  },
+  "provenance": {
+    "type": "simulated",
+    "source": "Built-in ideal classroom voltage sweep",
+    "coupon": {
+      "kind": "synthetic passive test coupon; not machine calibration"
+    },
+    "upstream": null,
+    "warning": "Constant ohmic contacts; no leakage, semiconductor physics or real instrument behavior."
+  }
+}

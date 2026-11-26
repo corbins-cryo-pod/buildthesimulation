@@ -1,0 +1,66 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import '../../../../lib/equipment/05-08/goniometer.css';
+import references from '../../../../../public/equipment/05-08/references.json';
+import verified from '../../../../../public/equipment/05-08/verification.json';
+import {defaults,bounds,frame} from '../../../../../public/equipment/05-08/optics.mjs';
+const a='/equipment/05-08/',r=references.links;
+const knobs=[['volumeUl','Water volume (µL)',.1],['thetaDeg','Synthetic contact angle (°)',1],['imageRollDeg','Camera image roll (°)',.1],['focusMm','Stage offset from virtual focus (mm)',.1],['noise','Sensor noise level (DN)',1],['umPerPx','Image scale (µm/px)',.1],['threshold','Dark threshold (DN)',1],['baselineShiftPx','Baseline vertical correction (px)',.1]];
+const specs=[
+ ['Footprint and height','555 × 375 mm (W × D), 490 mm high','Technical data p. 4. Grounding overall dimensions; panel shape and connector layout are inferred.'],
+ ['Camera / optic','CF04, 1920 × 1200 px; 7× manual zoom; ±4° optical angle','Technical data p. 2. This simulator provides a lower-resolution 424 × 284 orthographic sensor, not a CF04 transfer model.'],
+ ['Backlight','470 nm dominant, 46 × 46 mm light field','Technical data p. 2. Viewer LED and optical silhouette are idealized.'],
+ ['Syringe and stage','One manual 500 µL glass syringe, manual Z travel 45 mm','Technical data pp. 2–3. Only the static virtual water-on-coupon experiment is implemented. Dose range 1–10 µL; no real dispensing rate modeled.'],
+ ['Documentation vs model range','Instrument 0–180° with 0.01° software resolution; simulated generation 40–140°; fitted range 20–160°','Technical data p. 3. Instrument resolution is not the simulator’s uncertainty.'],
+ ['Frame and ports','Camera to the left; LED to the right; USB 3.0 interface','Brochure p. 2 and technical data pp. 2,4. Rear port locations are illustrative, not reverse-engineered.']
+];
+const illustrated=[
+ ['bench','Basic chassis and stage','Brochure p. 2 right image: graphite base, left/right columns, paired upper housings and manual stage. The rendered CAD uses measured envelope values from the technical sheet, not pixel dimensions.',r.brochure+'#page=2'],
+ ['optical','Syringe and optical path','Tampere University thesis, fig. 23, shows sensor left, LED right and syringe above a stage on a different DSA100 configuration. This rendering uses the manual Basic hardware stance.',r.installed],
+ ['rear','Rear frame and connectors','USB 3.0 appears in the current technical data. Legacy DSA100 manual illustrations describe rear routing; neither the illustrated Basic fasteners nor modern connector positions were independently measured.',r.legacyRear]
+];
+---
+<Layout pageTitle="Contact-angle goniometer laboratory" subtitle="" description="Place a drop, capture a silhouette, and fit a circle to measure static water contact angle on a virtual coupon." wide={true}>
+<article class="equipment dsa508">
+<nav class="eq-nav"><a href="/simulations/equipment/05-08/">← Equipment 05-08</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">Evidence & verification</a></nav>
+<header class="eq-mast"><span class="eq-meta">05-08 / Materials and surface characterization</span><h2>DSA100B · Sessile-drop optics</h2><p>A physically scaled reconstruction of the KRÜSS <b>DSA100B Basic</b> with a CF04 camera, standard illumination, one manual glass syringe and a manual Z stage. Place a virtual water drop on an inert synthetic coupon and fit the backlit profile to measure apparent contact angle.</p></header>
+<div class="dsa-grid">
+<section class="dsa-card"><span class="dsa-kicker">01 / Instrument</span><h3>Load, dose and inspect</h3><div class="dsa-bar">{[['bench','Three-quarter'],['front','Front'],['optical','Optics'],['coupon','Drop close-up'],['rear','Rear']].map(([view,n])=><button type="button" data-view={view}>{n}</button>)}<button id="view-reset">Reset</button></div>
+<div class="dsa-3d"><canvas id="model" aria-label="Interactive DSA100B model with a movable stage, specimen coupon, dose knob, camera and backlight"></canvas></div>
+<p id="model-state" class="dsa-note" role="status">Loading metric GLB…</p>
+<div class="dsa-bar"><button id="sample" aria-pressed="true">Remove coupon</button><button id="light" aria-pressed="true">Switch off LED</button><button id="deposit">Deposit water</button><button id="capture">Capture silhouette</button></div>
+<p class="dsa-note">Drag to orbit; pinch or scroll to zoom. Click the stage knob, coupon, syringe knob, camera knob or LED switch in 3D to operate it. The tiny drop is drawn at true scale; use Drop close-up or inspect the image.</p></section>
+<section class="dsa-card"><span class="dsa-kicker">02 / Optical controls</span><h3>Set image conditions</h3>
+<form id="dsa-config" onsubmit="return false;">
+<label>Coupon ID<input name="sampleId" value={defaults.sampleId} maxlength="80"/></label>
+<label>Contact / site ID<input name="contactId" value={defaults.contactId} maxlength="80"/></label>
+<label>Parent revision<input name="parentRevision" type="number" min="0" max="99999999" value={0}/></label>
+{knobs.map(([k,n,step])=><label>{n}<input name={k} type="number" value={defaults[k]} min={bounds[k][0]} max={bounds[k][1]} step={step}/></label>)}
+</form>
+<div class="dsa-bar"><button id="example" class="dsa-primary">Run 90° example</button><button id="reset">Reset setup</button></div>
+<p id="message" role="status" aria-live="polite">The example coupon is loaded. Deposit water, capture and fit, or run the 90° example.</p>
+<label class="dsa-file">Import locally: side-view PNG or JPEG<input type="file" id="file" accept=".png,.jpg,.jpeg,image/png,image/jpeg"/></label>
+<p id="image-meta" class="dsa-note">Virtual field: {frame.width} × {frame.height} px. Dark silhouette, bright background. No upload leaves your browser.</p></section>
+</div>
+<section class="dsa-card"><span class="dsa-kicker">03 / Sensor image & output</span><h3>Fit static contact angle</h3>
+<div class="dsa-analysis"><div><canvas id="image" width={frame.width} height={frame.height} aria-label="Camera silhouette and editable baseline overlay"></canvas>
+<div class="dsa-bar"><button id="mark">Pick two baseline points</button><button id="fit" class="dsa-primary">Fit circle</button></div>
+<p class="dsa-note">Click two clean, widely separated points on the coupon surface (not on the drop). For keyboard-only adjustment, enter the image center height and baseline slope below.</p>
+<div class="dsa-bar dsa-baseline"><label>Baseline Y at center (px)<input id="baselineY" type="number" step=".1" value={frame.baselineY}/></label><label>Baseline angle (° clockwise)<input id="baselineAngle" type="number" min="-20" max="20" step=".1" value={0}/></label><button id="apply-baseline">Set baseline</button></div></div>
+<div><div class="dsa-meters">{[['Left angle','left'],['Right angle','right'],['Baseline + residual sensitivity','spread'],['Radial RMS fit error','rms'],['Base diameter','diam'],['Drop height','height']].map(([n,k])=><div><small>{n}</small><strong data-meter={k}>—</strong></div>)}</div>
+<p class="dsa-note">Both contact tangents come from one circular fit. The model enforces symmetry and cannot independently recover different advancing/receding angles.</p>
+<div class="dsa-bar"><button id="json" disabled>Fit JSON</button><button id="png" disabled>Raw sensor PNG</button><button id="archive" disabled>Download study ZIP</button></div>
+<a href={a+'output-schema.json'}>Schema</a> · <a href={a+'example-fit.json'}>Example result</a> · <a href={a+'example-silhouette.png'}>Example image</a>
+</div></div></section>
+<section id="evidence"><h3>Reference views and specifications</h3><p>Original rendered geometry, compared with linked manufacturer and institutional references. The envelope is documented; detailed external proportions, fitting, fasteners, lens mounts and rear positions are inferred. No manufacturer image pixels or CAD are bundled.</p>
+<div class="dsa-sheet">{illustrated.map(([k,n,c,url])=><figure><img loading="lazy" src={a+k+'.png'} alt={'Original DSA100B 3D rendering: '+n}/><figcaption><b>{n}.</b> {c} <a href={url}>Source reference</a></figcaption></figure>)}</div>
+<p><a href={r.technical}>DSA100 technical data, rev. 20251125</a> · <a href={r.product}>DSA100B product documentation</a> · <a href={r.circleFit}>KRÜSS circle method</a> · <a href={a+'references.json'}>Reference register</a></p>
+<div class="dsa-table"><table><thead><tr><th>Specification</th><th>Value</th><th>Role and source</th></tr></thead><tbody>{specs.map(([n,v,c])=><tr><th>{n}</th><td>{v}</td><td>{c}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable parametric model</a> · <a href={a+'dsa100b.glb'} download>GLB</a> · <a href={a+'vr-station.json'}>VR bounds and actions</a> · <a href={a+'station.mjs'}>Headless experiment state</a>. Desktop uses the same controller-independent state and pose. No headset has been tested.</p></section>
+<section><h3>Input and output contract</h3>
+<p>The stock example is a static 5 µL water hemisphere on a synthetic surface. For imported PNG/JPEG, use a single dark, unclipped droplet on a bright background, 64–1,920 px wide and 64–1,200 px high, with the dark coupon below. Mark the actual baseline and supply pixel scale. x points right, y down; positive baseline tilt is clockwise. Synthetic roll rotates the <em>camera frame</em>, not the sample’s contact angle or the droplet under gravity. Save the output with sample ID, contact/site ID, revision, camera calibration, baseline, contact coordinates, angles and source provenance.</p>
+<details><summary>Algorithm and supported assumptions</summary><p>A spherical cap of radius R and angle θ has center height −R cos θ, height h = R(1−cos θ), and V = πh²(3R−h)/3. The optical model projects the sharp silhouette to grayscale and samples each boundary pixel on a 4 × 4 subgrid. The solver does not use hidden nominal angles: it finds threshold crossings in both pixel directions, excludes points within 2.2 px of the baseline, rotates to the marked baseline frame, and fits a circle with centered algebraic least squares. The predicted angles use θ = arccos(−cᵥ/R). The saturated result is rejected if the arc is clipped, absent, insufficiently circular or does not approach both contacts.</p><p>Reported sensitivity sums the angle change from moving the fitted baseline up/down by one pixel and a radial-residual angular proxy. It is not a confidence interval, vendor calibration, fitting of Young–Laplace physics, or real surface free energy. The model omits gravity-induced shape changes, evaporation, dynamics, hysteresis, camera distortion and non-axisymmetric drops. It does not establish biocompatibility or clinical performance.</p></details>
+<p>No existing site tool consumes this fit output, so the portable JSON schema, sample sensor image and example fit are supplied for a future station. The study ZIP contains the fit and raw sensor image without overlays.</p></section>
+<section id="verification"><h3>Verification</h3><p>Independent geometric and sample-domain expectations, not comparisons with manufacturer acceptance or real bench measurements.</p><div class="dsa-table"><table><thead><tr><th>Case</th><th>Expected</th><th>Observed</th><th>Unit / tolerance</th><th>Result</th></tr></thead><tbody>{verified.cases.map(t=><tr><th title={t.reason}>{t.id}<br/><small>{t.kind}</small></th><td>{String(t.expected)}</td><td>{Array.isArray(t.actual)?t.actual.map(x=>x.toPrecision(6)).join(', '):typeof t.actual==='number'?t.actual.toPrecision(6):t.actual}</td><td>{t.unit}{t.tolerance?' / ± '+t.tolerance:''}</td><td>{t.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div><p><a href={a+'verification-plan.json'}>Independent benchmarks</a> · <a href={a+'verification.json'}>Results JSON</a> · <a href={a+'verify.mjs'}>Reproduce checks</a></p></section>
+</article></Layout><script>import '../../../../lib/equipment/05-08/client.mjs';</script>

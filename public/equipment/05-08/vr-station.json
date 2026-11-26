@@ -1,0 +1,115 @@
+{
+  "schema": "bts.station.contact-angle.v1",
+  "equipment": "05-08",
+  "model": "./dsa100b.glb",
+  "units": "m",
+  "axes": "+Y up, +Z front, X right; origin at underside centre",
+  "nodeCount": 128,
+  "triangles": 10644,
+  "bytes": 42912,
+  "motion": {
+    "Lift_stage": {
+      "axis": "Y",
+      "limitsM": [
+        -0.02,
+        0.025
+      ]
+    }
+  },
+  "interactionTargets": [
+    {
+      "node": "Stage_knob",
+      "action": "focusStep",
+      "label": "Step focus stage",
+      "boundsM": {
+        "min": [
+          0.013,
+          0.147,
+          0.073
+        ],
+        "max": [
+          0.053,
+          0.187,
+          0.103
+        ]
+      }
+    },
+    {
+      "node": "Coupon",
+      "action": "toggleCoupon",
+      "label": "Load or unload coupon",
+      "boundsM": {
+        "min": [
+          -0.034,
+          0.311,
+          0.015
+        ],
+        "max": [
+          0.034,
+          0.323,
+          0.057
+        ]
+      }
+    },
+    {
+      "node": "Manual_syringe_knob",
+      "action": "deposit",
+      "label": "Deposit virtual droplet",
+      "boundsM": {
+        "min": [
+          -0.018,
+          0.453,
+          0.024
+        ],
+        "max": [
+          0.018,
+          0.491,
+          0.06
+        ]
+      }
+    },
+    {
+      "node": "Light_switch",
+      "action": "toggleLight",
+      "label": "Toggle LED backlight",
+      "boundsM": {
+        "min": [
+          0.221,
+          0.05,
+          0.1735
+        ],
+        "max": [
+          0.249,
+          0.072,
+          0.1935
+        ]
+      }
+    },
+    {
+      "node": "Camera_focus_knob",
+      "action": "capture",
+      "label": "Capture silhouette",
+      "boundsM": {
+        "min": [
+          -0.1915,
+          0.3475,
+          0.07
+        ],
+        "max": [
+          -0.1585,
+          0.3805,
+          0.092
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./station.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "commands": "dispatch(action,payload)",
+    "ray": "hit(nodeName)",
+    "pose": "pose(station.read())"
+  },
+  "note": "Interaction bounds are local to station nominal pose; translate the coupon with Lift_stage. Headset compatibility not field verified."
+}

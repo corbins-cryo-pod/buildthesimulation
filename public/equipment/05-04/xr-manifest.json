@@ -1,0 +1,122 @@
+{
+  "device": "05-04",
+  "origin": "bench",
+  "units": "m",
+  "up": "+Y",
+  "operator": "+Z",
+  "nominalEnvelopeWHDmm": [
+    480,
+    300,
+    310
+  ],
+  "axisAnchorM": [
+    0,
+    0.089,
+    0.037
+  ],
+  "angleDetents": [
+    65,
+    70,
+    75,
+    90
+  ],
+  "motions": {
+    "source_arm": {
+      "axis": "Z",
+      "direction": -1
+    },
+    "detector_arm": {
+      "axis": "Z",
+      "direction": 1
+    }
+  },
+  "interactions": {
+    "source_indexer": {
+      "label": "Source angle indexer",
+      "action": "source",
+      "localBoundsM": {
+        "min": [
+          -0.012,
+          -0.012,
+          -0.012
+        ],
+        "max": [
+          0.012,
+          0.012,
+          0.029
+        ]
+      }
+    },
+    "detector_indexer": {
+      "label": "Detector angle indexer",
+      "action": "detector",
+      "localBoundsM": {
+        "min": [
+          -0.012,
+          -0.012,
+          -0.012
+        ],
+        "max": [
+          0.012,
+          0.012,
+          0.029
+        ]
+      }
+    },
+    "power": {
+      "label": "Power",
+      "action": "power",
+      "localBoundsM": {
+        "min": [
+          -0.0115,
+          -0.011,
+          -0.005
+        ],
+        "max": [
+          0.0115,
+          0.011,
+          0.01
+        ]
+      }
+    },
+    "vacuum": {
+      "label": "Chuck vacuum",
+      "action": "vacuum",
+      "localBoundsM": {
+        "min": [
+          -0.0185,
+          -0.0215,
+          -0.005
+        ],
+        "max": [
+          0.0185,
+          0.0215,
+          0.0305859
+        ]
+      }
+    },
+    "sample": {
+      "label": "Sample loading surface",
+      "action": "load",
+      "localBoundsM": {
+        "min": [
+          -0.041,
+          0.0867,
+          -0.041
+        ],
+        "max": [
+          0.041,
+          0.089,
+          0.041
+        ]
+      }
+    }
+  },
+  "geometry": {
+    "nodes": 11,
+    "triangles": 6662,
+    "drawPrimitives": 36,
+    "bytes": 322616
+  },
+  "headsetTested": false
+}

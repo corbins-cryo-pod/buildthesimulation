@@ -1,0 +1,106 @@
+{
+  "source": "700B Theory and Operation, printed p. 141. GLB geometry compared to nominal dimensions; not measurements of a physical item. AABB includes cable, protrusions and accessories, computed conservatively from transformed primitive bounds.",
+  "rows": [
+    {
+      "label": "Rack width incl. ears",
+      "expectedM": 0.4826,
+      "actualM": 0.48260000720620155,
+      "toleranceM": 0.000002,
+      "pass": true
+    },
+    {
+      "label": "Rack nominal height",
+      "expectedM": 0.0889,
+      "actualM": 0.08889999985694885,
+      "toleranceM": 0.000002,
+      "pass": true
+    },
+    {
+      "label": "Rack nominal depth",
+      "expectedM": 0.3048,
+      "actualM": 0.3047999965492636,
+      "toleranceM": 0.000002,
+      "pass": true
+    },
+    {
+      "label": "Headstage width",
+      "expectedM": 0.0406,
+      "actualM": 0.0406000018119812,
+      "toleranceM": 0.000002,
+      "pass": true
+    },
+    {
+      "label": "Headstage height",
+      "expectedM": 0.0203,
+      "actualM": 0.0203000009059906,
+      "toleranceM": 0.000002,
+      "pass": true
+    },
+    {
+      "label": "Headstage length",
+      "expectedM": 0.0838,
+      "actualM": 0.08380000293254852,
+      "toleranceM": 0.000002,
+      "pass": true
+    }
+  ],
+  "asset": {
+    "units": "m",
+    "axis": "Y up; front +Z",
+    "bytes": 1079048,
+    "nodeCount": 273,
+    "meshCount": 270,
+    "triangles": 16596,
+    "minM": [
+      -0.2413,
+      0,
+      -0.198888
+    ],
+    "maxM": [
+      0.264437,
+      0.09915,
+      0.3195
+    ]
+  },
+  "controls": [
+    {
+      "name": "POWER_switch",
+      "minM": [
+        -0.198,
+        0.0335,
+        0.151
+      ],
+      "maxM": [
+        -0.188,
+        0.0385,
+        0.157
+      ]
+    },
+    {
+      "name": "PATCH1U_load",
+      "minM": [
+        0.079,
+        0.0005,
+        0.2605
+      ],
+      "maxM": [
+        0.117,
+        0.0257,
+        0.3195
+      ]
+    },
+    {
+      "name": "CH1_PRIMARY_BNC_nut",
+      "minM": [
+        -0.025062,
+        0.038,
+        0.1529
+      ],
+      "maxM": [
+        -0.012938,
+        0.052,
+        0.1549
+      ]
+    }
+  ]
+}

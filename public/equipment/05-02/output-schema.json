@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Simulated optical height map",
+  "type": "object",
+  "required": [
+    "schema",
+    "deviceId",
+    "kind",
+    "sampleId",
+    "inputRevision",
+    "revision",
+    "units",
+    "grid",
+    "scan",
+    "mask",
+    "heightsUm",
+    "flags",
+    "metrics",
+    "provenance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bts.optical-heightmap.v1"
+    },
+    "deviceId": {
+      "const": "05-02"
+    },
+    "kind": {
+      "const": "simulated"
+    },
+    "grid": {
+      "type": "object",
+      "required": [
+        "nx",
+        "ny",
+        "dxUm",
+        "dyUm",
+        "originUm",
+        "frame"
+      ],
+      "description": "Pixel centers, row-major X fastest, µm."
+    },
+    "mask": {
+      "type": "array",
+      "items": {
+        "type": "boolean"
+      },
+      "description": "True where invalid."
+    },
+    "heightsUm": {
+      "type": "array",
+      "items": {
+        "type": [
+          "number",
+          "null"
+        ]
+      }
+    },
+    "flags": {
+      "type": "array",
+      "items": {
+        "enum": [
+          null,
+          "outside-scan",
+          "low-contrast",
+          "prescribed-dropout"
+        ]
+      }
+    },
+    "metrics": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Shared plane tilt and leveled valid-pixel Sa and Sq; null when underdetermined."
+    }
+  }
+}

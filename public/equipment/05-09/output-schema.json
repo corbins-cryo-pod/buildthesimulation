@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Educational synthetic XPS response",
+  "type": "object",
+  "required": [
+    "schema",
+    "deviceId",
+    "kind",
+    "sampleId",
+    "inputRevision",
+    "revision",
+    "calibration",
+    "units",
+    "windows",
+    "provenance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bts.xps-reference-fit.v1"
+    },
+    "deviceId": {
+      "const": "05-09"
+    },
+    "kind": {
+      "const": "simulated"
+    },
+    "sampleId": {
+      "type": "string"
+    },
+    "inputRevision": {
+      "type": "integer"
+    },
+    "revision": {
+      "type": "integer"
+    },
+    "windows": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "lineId",
+          "energyEv",
+          "densityPerEv",
+          "referenceEv",
+          "centerEv",
+          "areaCounts",
+          "responseFactor",
+          "relativePercent"
+        ],
+        "description": "Synchronized sampled energy and counts/eV plus per-line fit. A relativePercent value is an educational signal fraction, not real atomic percent."
+      }
+    },
+    "calibration": {
+      "type": "object",
+      "description": "Affine coefficients from simulated Au/Cu anchors. Axes are raw or corrected."
+    }
+  }
+}

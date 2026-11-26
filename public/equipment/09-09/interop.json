@@ -1,0 +1,27 @@
+{
+  "test": "Actual exported 09-09 demo waveform passed through 09-04 native JSON parser and edge acquisition",
+  "input": "example-waveform.json",
+  "timeBase": "synthetic settled-state plateaus, 10 S/s",
+  "expected": "Rising 3 V crossing on first 5 V sample after CC stage at 10.0 s ± 0.1 s",
+  "actual": 10,
+  "unit": "s",
+  "clipCount": 0,
+  "sourceId": "dc-load-bank-001",
+  "sourceContactId": "CH1_LOAD-HI_to_LOAD-LO",
+  "inputRevision": 1,
+  "finalRevision": 2,
+  "scopeSettings": {
+    "source": "import",
+    "sinePeakV": 1,
+    "connected": true,
+    "rate": 10,
+    "secDiv": 0.64,
+    "voltsDiv": 0.5,
+    "centerV": 3,
+    "level": 3,
+    "edge": "rising",
+    "coupling": "DC",
+    "factor": 10
+  },
+  "outcome": "PASS"
+}

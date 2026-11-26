@@ -1,0 +1,13 @@
+{
+ "fixtureDeclared":"Before implementing the 05-06 solver; independent equations and published numerical values.",
+ "cases":[
+ {"id":"infinite", "input":"1.000 mA on a 100 Ω/sq uniform ideal plane, equally spaced line", "expected":22.0635600152652, "unit":"mV across P2−P3", "tolerance":1e-9, "source":"100 × ln(2)/π × 0.001 A. Equipment register 05-06 acceptance."},
+ {"id":"material", "input":"Uniform ideal film with resistivity 2.0e-6 Ω·m and 20 nm active thickness", "expected":100, "unit":"Ω/sq", "tolerance":1e-9, "source":"R_sheet = ρ/t; synthetic values, not a physical material rating."},
+ {"id":"radial", "input":"NBS Fig. 1 / Table I, s/r=0.02 and Δ/r=0.81", "expected":4.49925, "unit":"Ω/sq per Ω of V/I", "tolerance":0.000006, "source":"NBS TN 199 (1964), printed p. I–II, published worked lookup; 6-significant-digit rounding."},
+ {"id":"tangential", "input":"NBS Fig. 2 / Table II, s/r=0.02 and Δ/r=0.81","expected":4.49961,"unit":"Ω/sq per Ω of V/I","tolerance":0.000006,"source":"NBS TN 199 (1964), printed p. II; published worked lookup."},
+ {"id":"reversal", "input":"Identical contacts with +1 mA then −1 mA; +500 µV additive sense offset", "expected":"Opposite ohmic voltages, polarity differencing eliminates offset; same 100 Ω/sq corrected estimate", "unit":"V; Ω/sq", "tolerance":1e-9, "source":"Linear time-stationary resistor network, not experimental units."},
+ {"id":"coverage","input":"100 mm circular sample, center 49 mm from symmetry center, radial 1 mm pitch","expected":"reject: P4 outside sample","unit":"exact","tolerance":0},
+ {"id":"mechanical","input":"Open lid or lowered probe during xy move","expected":"reject without a new result; no pose mutation on error","unit":"exact","tolerance":0},
+ {"id":"metric","input":"CDE base envelope, nominal 1 mm adjacent tips","expected":[304.8,254,482.6,1],"unit":"mm, W×H×D and tip pitch","tolerance":"0.6 mm cabinet; 1 µm modeled tip pitch","source":"CDE product page 12 × 19 × 10 in, interpreted as W×D×H; pitch is selected head nominal, not measured."}
+ ]
+}

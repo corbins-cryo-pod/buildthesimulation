@@ -1,0 +1,14 @@
+{
+ "schema":"bts.device-interaction.v1","device":"05-10","frame":{"units":"m","up":"+Y","forward":"+Z","placementAnchor":"bts_bench_anchor"},
+ "anchors":{"sample":"coupon_anchor","stage":"stage_xy","turret":"objective_turret","cover":"door_hinge"},
+ "coverRotationDeg":-62,"objectivePositionsDeg":[0,120],"stageMapping":"sample +X→GLB +X; sample +Y→GLB −Z; scan stage moves in the opposite direction to bring tile underneath fixed objective",
+ "ports":["port_power","port_controller","port_aux","port_detector"],
+ "controls":[
+  {"node":"door_grip","action":"door","sizeM":[0.185,0.034,0.048],"label":"Open or close sample visor"},
+  {"node":"objective_turret","action":"objective","sizeM":[0.085,0.041,0.060],"offsetM":[0,-0.018,0.035],"label":"Rotate objective turret"},
+  {"node":"focus_hit","action":"zero-focus","sizeM":[0.052,0.055,0.044],"label":"Zero modeled focus"},
+  {"node":"sample_button","action":"load","sizeM":[0.055,0.035,0.037],"label":"Toggle specimen loading"},
+  {"node":"measurement_button","action":"map","sizeM":[0.048,0.041,0.040],"label":"Acquire Raman map"},
+  {"node":"standby_switch","action":"power","sizeM":[0.044,0.030,0.038],"label":"Toggle standby"}
+ ]
+}
