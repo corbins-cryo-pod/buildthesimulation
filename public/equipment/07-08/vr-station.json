@@ -1,0 +1,54 @@
+{
+  "schema": "bts.station.octo-static-shape.v1",
+  "equipment": "07-08",
+  "model": "./octo-documentary.glb",
+  "units": "m",
+  "axes": "+Y up +Z front",
+  "nodes": 41,
+  "bytes": 36728,
+  "triangles": 4236,
+  "hitTargets": [
+    {
+      "node": "Plaque_Change_Shape",
+      "action": "cycle",
+      "label": "Switch the inert drawn shape",
+      "boundsM": {
+        "min": [
+          0.27299999999999996,
+          0.068,
+          0.0395
+        ],
+        "max": [
+          0.331,
+          0.084,
+          0.0545
+        ]
+      }
+    },
+    {
+      "node": "Plaque_Overlay_Disk",
+      "action": "overlay",
+      "label": "Toggle reference circle comparison",
+      "boundsM": {
+        "min": [
+          0.363,
+          0.068,
+          0.0395
+        ],
+        "max": [
+          0.42100000000000004,
+          0.084,
+          0.0545
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./shapes.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)"
+  },
+  "note": "Only static shape comparison separate from the closed shell. No headset testing."
+}
