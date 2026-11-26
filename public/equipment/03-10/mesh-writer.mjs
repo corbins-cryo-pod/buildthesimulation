@@ -60,7 +60,7 @@ export function build(assets,anchors){
 export function originalView(faces,view){
  const settings={front:[[.63,.43,2.3],[0,.278,.03],600,'Vulcan 3-1750 closed depiction'],work:[[.43,.29,2],[0,.351,.106],520,'Cold open display and original shelf']};
  const [v0,c,s,title]=settings[view],f=unit(v0),r=unit(cross([0,1,0],f)),u=cross(f,r),w=760,h=450;
- const avail=faces.filter(o=>view==='work'||o.g!=='dry_tray').map(o=>{if(view!=='work'||o.g!=='visual_door')return o;
+ const avail=faces.filter(o=>view==='work'||o.g!=='dry_tray').map(o=>{if(view==='work'&&o.g.startsWith('display_link_'))return {...o,p:o.p.map(p=>[p[0],.627+5.52*(p[1]-.506),p[2]])};if(view!=='work'||o.g!=='visual_door')return o;
  const pivot=[0,.49,.243],angle=-1.53,c=Math.cos(angle),s=Math.sin(angle),rot=p=>[p[0],p[1]*c-p[2]*s,p[1]*s+p[2]*c];
  return {...o,n:rot(o.n),p:o.p.map(p=>add(rot(sub(p,pivot)),[0,.795,.225]))};});
  const fn=avail.filter(o=>dot(o.n,f)>.005).map(o=>{

@@ -24,7 +24,8 @@ b(door,'steel',[0,.316,.218],[.451,.302,.003]);b(door,'enamel',[0,.319,.213],[.3
 for(let i=0;i<=21;i++)b(door,'gray',[-.227+i*.0216,.198,.259],[.006,.021,.003]);
 b(door,'rubber',[0,.437,.264],[.091,.018,.007]);for(const x of [-.034,.034])b(door,'rubber',[x,.423,.260],[.022,.018,.009]);
 const shell='shelf',S=[0,.228,.078];b(shell,'silver',[0,.222,.078],[.31,.012,.27]);
-for(const x of [-.142,.142])b(shell,'steel',[x,.230,.078],[.010,.004,.267]);
+for(const x of [-.160,.160])b(shell,'steel',[x,.230,.078],[.010,.004,.267]);
+for(const [n,x] of [['left',-.261],['right',.261]])b('display_link_'+n,'ink',[x,.506,.209],[.024,.051,.020]);
 const g='dry_tray',p=[0,.228,.078],W=.25,H=.045,D=.18;
 b(g,'gold',[0,.231,.078],[W,.004,D]);for(const a of [-1,1]){b(g,'gold',[a*(W/2-.002),.2505,.078],[.004,H,D]);b(g,'gold',[0,.2505,.078+a*(D/2-.002)],[W,H,.004]);}
 export const anchors={
