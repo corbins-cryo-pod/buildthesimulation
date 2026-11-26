@@ -171,9 +171,10 @@
     "inputs": "Calibrated emission frames, dark reference, exposure duration, ROI and attenuation metadata",
     "outputs": "Background-corrected optical signal and longitudinal ROI series with calibration provenance",
     "acceptance": "In the linear unsaturated range, double source counts and exposure time together. The dark-corrected counts per second must agree across both frames.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: stationary classic IVIS Spectrum non-CT exterior; nominal cabinet dimensions verified",
+    "simulationStatus": "First pass: detached fixed grayscale-code examples only; original imaging acceptance deferred",
+    "integrationStatus": "First pass: simulator route, editable GLB, passive named XR action and digital pattern exports",
+    "simulator": "/simulations/equipment/15-09/simulator/"
   },
   {
     "id": "15-10",

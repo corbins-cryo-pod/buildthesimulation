@@ -1,0 +1,39 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "15-09",
+  "asset": "/equipment/15-09/ivis-spectrum-static.glb",
+  "scale": "glTF meters, +Y up, +Z operator. Detached image codes have no physical units.",
+  "metrics": {
+    "bytes": 166668,
+    "triangles": 3876,
+    "draws": 40,
+    "instrumentXYZM": [
+      0.6499999761581421,
+      2.1100000224338253,
+      0.7699999860487878
+    ]
+  },
+  "scope": "Detached image display only, no headset tested.",
+  "nodes": [
+    {
+      "node": "standalone_pattern_switch",
+      "label": "Cycle fixed detached digital images",
+      "action": {
+        "type": "cycle"
+      },
+      "boundsM": [
+        0.094,
+        0.017,
+        0.043
+      ]
+    },
+    {
+      "node": "intensity_view_anchor",
+      "label": "Independent synthetic pattern monitor texture",
+      "boundsM": [
+        0.375,
+        0.242
+      ]
+    }
+  ]
+}

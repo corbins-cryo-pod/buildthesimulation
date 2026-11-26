@@ -1,0 +1,17 @@
+{
+  "method":"Classic IVIS Spectrum hardware manual §5.6 defines the closed exterior. Detached exact digital patterns each have three equal-area bands. Mean and variance follow hand-calculated equally weighted integer values; 512 pixels inhabit each band.",
+  "cases":[
+    {"id":"width","expected":0.650,"tolerance":0.00001,"unit":"m"},
+    {"id":"height","expected":2.110,"tolerance":0.00001,"unit":"m"},
+    {"id":"depth","expected":0.770,"tolerance":0.00001,"unit":"m"},
+    {"id":"stripe-mean","expected":96,"unit":"8-bit code"},
+    {"id":"stripe-std","expected":52.255781179374466,"tolerance":1e-9,"unit":"8-bit code"},
+    {"id":"bin-32","expected":512,"unit":"pixels"},
+    {"id":"permutation-invariant","expected":true,"unit":"boolean"},
+    {"id":"endpoint-mean","expected":127.66666666666667,"tolerance":1e-9,"unit":"8-bit code"},
+    {"id":"endpoint-count","expected":1024,"unit":"pixels"},
+    {"id":"flat-std","expected":0,"unit":"8-bit code"},
+    {"id":"authored-shape","expected":1536,"unit":"pixels"},
+    {"id":"unsupported-command-rejected","expected":true,"unit":"boolean"}
+  ]
+}
