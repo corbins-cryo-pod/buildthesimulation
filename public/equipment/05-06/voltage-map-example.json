@@ -1,0 +1,75 @@
+{
+  "schema": "bts.sheet-voltage-map.v1",
+  "sampleId": "FILM-100R",
+  "revision": 0,
+  "diameterM": 0.1,
+  "provenance": {
+    "type": "simulated terminal voltages; this is not measured data",
+    "calibrationId": "BTS-CDE178-JANDEL-1MM-r1"
+  },
+  "sites": [
+    {
+      "siteId": "S01",
+      "xM": 0,
+      "yM": 0,
+      "angleRad": 0,
+      "currentA": 0.001,
+      "voltageV": 0.02258265860900914,
+      "reversedVoltageV": -0.02158265860900914
+    },
+    {
+      "siteId": "S02",
+      "xM": 0.0125,
+      "yM": 0,
+      "angleRad": 0,
+      "currentA": 0.001,
+      "voltageV": 0.02258529151666399,
+      "reversedVoltageV": -0.02158529151666399
+    },
+    {
+      "siteId": "S03",
+      "xM": 0.025,
+      "yM": 0,
+      "angleRad": 0,
+      "currentA": 0.001,
+      "voltageV": 0.022597528174204518,
+      "reversedVoltageV": -0.021597528174204517
+    },
+    {
+      "siteId": "S04",
+      "xM": 0.034,
+      "yM": 0,
+      "angleRad": 0,
+      "currentA": 0.001,
+      "voltageV": 0.02262974793667971,
+      "reversedVoltageV": -0.02162974793667971
+    },
+    {
+      "siteId": "S05",
+      "xM": 0.04050000000000001,
+      "yM": 0,
+      "angleRad": 0,
+      "currentA": 0.001,
+      "voltageV": 0.02272594896172097,
+      "reversedVoltageV": -0.02172594896172097
+    },
+    {
+      "siteId": "S06",
+      "xM": 0.045000000000000005,
+      "yM": 0,
+      "angleRad": 0,
+      "currentA": 0.001,
+      "voltageV": 0.023104800735858123,
+      "reversedVoltageV": -0.022104800735858122
+    },
+    {
+      "siteId": "S07",
+      "xM": 0.047,
+      "yM": 0,
+      "angleRad": 0,
+      "currentA": 0.001,
+      "voltageV": 0.024072618078775778,
+      "reversedVoltageV": -0.023072618078775777
+    }
+  ]
+}

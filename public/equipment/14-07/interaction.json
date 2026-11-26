@@ -1,0 +1,14 @@
+{
+ "schema":"bts.device-interaction.v1","device":"14-07",
+ "frame":{"units":"m","up":"+Y","forward":"+Z","placementAnchor":"bts_bench_anchor"},
+ "anchors":{"furnace":"furnace_carriage","pan":"pan_anchor","specimen":"specimen_anchor"},
+ "visualLoweringM":0.091,
+ "ports":["port_supply","port_host","port_passive"],
+ "actions":[
+  {"node":"furnace_key","action":"chamber","sizeM":[0.042,0.027,0.033],"label":"Raise or lower virtual furnace"},
+  {"node":"pan_key","action":"load","sizeM":[0.050,0.038,0.042],"label":"Load or remove specimen"},
+  {"node":"tare_key","action":"tare","sizeM":[0.038,0.027,0.033],"label":"Capture empty-pan tare"},
+  {"node":"run_key","action":"replay","sizeM":[0.041,0.027,0.033],"label":"Replay mass series"},
+  {"node":"power_key","action":"power","sizeM":[0.033,0.022,0.032],"label":"Toggle standby"}
+ ]
+}

@@ -1,0 +1,104 @@
+{
+  "schema": "bts.station.xr.v1",
+  "asset": "/equipment/14-04/mcr302.glb",
+  "model": "/equipment/14-04/model.mjs",
+  "dispatch": "action(state,name,value) → new state; station() initializes. Throws on physical/parameter error.",
+  "units": "m",
+  "up": "+Y",
+  "front": "+Z",
+  "anchor": "bench plane, centre of chassis footprint",
+  "axis": "Spindle centre is actual glTF origin of SPINDLE. Positive turns about +Y. Coarse retract 18 mm inferred; sample deck/load poses are illustrative.",
+  "controls": [
+    {
+      "mesh": "SPINDLE",
+      "action": "engage",
+      "label": "Raise/lower ball",
+      "minM": [
+        -0.011,
+        0.23865,
+        0.034
+      ],
+      "maxM": [
+        0.013,
+        0.5195,
+        0.056
+      ]
+    },
+    {
+      "mesh": "TRIAD",
+      "action": "load",
+      "label": "Load/remove triad when lifted",
+      "minM": [
+        -0.007367,
+        0.23503,
+        0.034991
+      ],
+      "maxM": [
+        0.00997,
+        0.242454,
+        0.055009
+      ]
+    },
+    {
+      "mesh": "DISPLAY",
+      "action": "run",
+      "label": "Acquire bidirectional cycle",
+      "minM": [
+        -0.0525,
+        0.121,
+        0.2865
+      ],
+      "maxM": [
+        0.0245,
+        0.177,
+        0.2895
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "check": "width",
+      "expectedMm": 444,
+      "actualMm": 444.0000057220459,
+      "toleranceMm": 0.05,
+      "pass": true
+    },
+    {
+      "check": "height",
+      "expectedMm": 678,
+      "actualMm": 678.0000105500221,
+      "toleranceMm": 0.05,
+      "pass": true
+    },
+    {
+      "check": "depth",
+      "expectedMm": 586,
+      "actualMm": 586.0000252723694,
+      "toleranceMm": 0.05,
+      "pass": true
+    },
+    {
+      "check": "sphere diameter",
+      "expectedMm": 12.7,
+      "actualMm": 12.699993792921305,
+      "toleranceMm": 0.05,
+      "pass": true
+    }
+  ],
+  "nodes": 41,
+  "triangles": 4625,
+  "bytes": 312316,
+  "bounds": {
+    "minM": [
+      -0.222,
+      0,
+      -0.293
+    ],
+    "maxM": [
+      0.222,
+      0.678,
+      0.293
+    ]
+  },
+  "verification": "Controller-ready action/mesh contract. This first-pass page is orbit/pointer, not a verified headset experience."
+}

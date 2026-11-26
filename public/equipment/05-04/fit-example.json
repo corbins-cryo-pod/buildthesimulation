@@ -1,0 +1,2472 @@
+{
+  "schema": "bts.ellipsometry-fit.v1",
+  "deviceId": "05-04",
+  "sampleId": "DIELECTRIC-REF-1234",
+  "parentRevision": 0,
+  "revision": 1,
+  "thicknessNm": 123.39999995042275,
+  "rmsDeg": 9.860005692600097e-8,
+  "assumedStack": [
+    {
+      "name": "film",
+      "n": 1.46,
+      "k": 0,
+      "thicknessNm": 123.39999995042275
+    }
+  ],
+  "substrate": {
+    "name": "high-index standard",
+    "n": 3.85,
+    "k": 0.03
+  },
+  "rowCount": 81,
+  "residuals": [
+    {
+      "wavelengthNm": 380,
+      "angleDeg": 65,
+      "psiDeg": 29.476500057991526,
+      "deltaDeg": 103.9666983135357,
+      "predPsiDeg": 29.476500082288673,
+      "predDeltaDeg": 103.9666982741748,
+      "psiResidualDeg": 2.42971474051501e-8,
+      "deltaResidualDeg": -3.9360884329653345e-8
+    },
+    {
+      "wavelengthNm": 400,
+      "angleDeg": 65,
+      "psiDeg": 32.79583822625945,
+      "deltaDeg": 99.95512310386856,
+      "predPsiDeg": 32.795838254253844,
+      "predDeltaDeg": 99.95512308014963,
+      "psiResidualDeg": 2.799439613454524e-8,
+      "deltaResidualDeg": -2.371893970121164e-8
+    },
+    {
+      "wavelengthNm": 420,
+      "angleDeg": 65,
+      "psiDeg": 36.50611599338169,
+      "deltaDeg": 97.93037398474073,
+      "predPsiDeg": 36.50611602686961,
+      "predDeltaDeg": 97.93037397505668,
+      "psiResidualDeg": 3.348792176893767e-8,
+      "deltaResidualDeg": -9.684072210802697e-9
+    },
+    {
+      "wavelengthNm": 440,
+      "angleDeg": 65,
+      "psiDeg": 40.800375288781716,
+      "deltaDeg": 97.58815322045005,
+      "predPsiDeg": 40.800375329898216,
+      "predDeltaDeg": 97.5881532243564,
+      "psiResidualDeg": 4.111650042659676e-8,
+      "deltaResidualDeg": 3.906279744114727e-9
+    },
+    {
+      "wavelengthNm": 460,
+      "angleDeg": 65,
+      "psiDeg": 45.86943128431686,
+      "deltaDeg": 98.80451532795632,
+      "predPsiDeg": 45.86943133524388,
+      "predDeltaDeg": 98.80451534648569,
+      "psiResidualDeg": 5.092702082265532e-8,
+      "deltaResidualDeg": 1.852936293289531e-8
+    },
+    {
+      "wavelengthNm": 480,
+      "angleDeg": 65,
+      "psiDeg": 51.85495471427554,
+      "deltaDeg": 101.68371911538311,
+      "predPsiDeg": 51.854954776592216,
+      "predDeltaDeg": 101.68371915234314,
+      "psiResidualDeg": 6.23166727109492e-8,
+      "deltaResidualDeg": 3.696004569064826e-8
+    },
+    {
+      "wavelengthNm": 500,
+      "angleDeg": 65,
+      "psiDeg": 58.76052701604344,
+      "deltaDeg": 106.75604268808176,
+      "predPsiDeg": 58.76052708940382,
+      "predDeltaDeg": 106.75604275381966,
+      "psiResidualDeg": 7.336038265748357e-8,
+      "deltaResidualDeg": 6.573782229679637e-8
+    },
+    {
+      "wavelengthNm": 520,
+      "angleDeg": 65,
+      "psiDeg": 66.2927790672885,
+      "deltaDeg": 115.57713549515631,
+      "predPsiDeg": 66.29277914690023,
+      "predDeltaDeg": 115.57713561795524,
+      "psiResidualDeg": 7.961172343584622e-8,
+      "deltaResidualDeg": 1.2279895145184128e-7
+    },
+    {
+      "wavelengthNm": 540,
+      "angleDeg": 65,
+      "psiDeg": 73.54287752432154,
+      "deltaDeg": 132.52298233807124,
+      "predPsiDeg": 73.54287759497326,
+      "predDeltaDeg": 132.52298259707575,
+      "psiResidualDeg": 7.065172269449249e-8,
+      "deltaResidualDeg": 2.5900453692884184e-7
+    },
+    {
+      "wavelengthNm": 560,
+      "angleDeg": 65,
+      "psiDeg": 78.1681612193236,
+      "deltaDeg": 166.67491830861852,
+      "predPsiDeg": 78.16816124193677,
+      "predDeltaDeg": 166.67491880120903,
+      "psiResidualDeg": 2.2613178884967056e-8,
+      "deltaResidualDeg": 4.925905159325339e-7
+    },
+    {
+      "wavelengthNm": 580,
+      "angleDeg": 65,
+      "psiDeg": 77.01778878253864,
+      "deltaDeg": 208.5679015755681,
+      "predPsiDeg": 77.0177887383937,
+      "predDeltaDeg": 208.56790196900488,
+      "psiResidualDeg": -4.414494014781667e-8,
+      "deltaResidualDeg": 3.934367214242229e-7
+    },
+    {
+      "wavelengthNm": 600,
+      "angleDeg": 65,
+      "psiDeg": 72.07597491352955,
+      "deltaDeg": 232.5427584935436,
+      "predPsiDeg": 72.07597484671078,
+      "predDeltaDeg": 232.54275868839443,
+      "psiResidualDeg": -6.681877096070821e-8,
+      "deltaResidualDeg": 1.9485082702885848e-7
+    },
+    {
+      "wavelengthNm": 620,
+      "angleDeg": 65,
+      "psiDeg": 66.54607344251741,
+      "deltaDeg": 244.305735293039,
+      "predPsiDeg": 66.54607337567056,
+      "predDeltaDeg": 244.30573539849752,
+      "psiResidualDeg": -6.684685160962545e-8,
+      "deltaResidualDeg": 1.0545852546783863e-7
+    },
+    {
+      "wavelengthNm": 640,
+      "angleDeg": 65,
+      "psiDeg": 61.489134132698965,
+      "deltaDeg": 250.8544938542948,
+      "predPsiDeg": 61.48913407204075,
+      "predDeltaDeg": 250.85449391910743,
+      "psiResidualDeg": -6.065821622769363e-8,
+      "deltaResidualDeg": 6.481263881141786e-8
+    },
+    {
+      "wavelengthNm": 660,
+      "angleDeg": 65,
+      "psiDeg": 57.123435806650285,
+      "deltaDeg": 254.9219773853791,
+      "predPsiDeg": 57.123435753357285,
+      "predDeltaDeg": 254.9219774286671,
+      "psiResidualDeg": -5.329300023504402e-8,
+      "deltaResidualDeg": 4.328796876507113e-8
+    },
+    {
+      "wavelengthNm": 680,
+      "angleDeg": 65,
+      "psiDeg": 53.42487268022115,
+      "deltaDeg": 257.6220782917859,
+      "predPsiDeg": 53.42487263386999,
+      "predDeltaDeg": 257.62207832207355,
+      "psiResidualDeg": -4.6351161131497065e-8,
+      "deltaResidualDeg": 3.028765149792889e-8
+    },
+    {
+      "wavelengthNm": 700,
+      "angleDeg": 65,
+      "psiDeg": 50.3036442351266,
+      "deltaDeg": 259.4770958427591,
+      "predPsiDeg": 50.30364419482863,
+      "predDeltaDeg": 259.4770958643719,
+      "psiResidualDeg": -4.029796940585584e-8,
+      "deltaResidualDeg": 2.161277734558098e-8
+    },
+    {
+      "wavelengthNm": 720,
+      "angleDeg": 65,
+      "psiDeg": 47.66167883254137,
+      "deltaDeg": 260.76424114839995,
+      "predPsiDeg": 47.66167879735478,
+      "predDeltaDeg": 260.7642411637819,
+      "psiResidualDeg": -3.518658786560991e-8,
+      "deltaResidualDeg": 1.538194283057237e-8
+    },
+    {
+      "wavelengthNm": 740,
+      "angleDeg": 65,
+      "psiDeg": 45.41113278152945,
+      "deltaDeg": 261.646109606213,
+      "predPsiDeg": 45.411132750603144,
+      "predDeltaDeg": 261.6461096168713,
+      "psiResidualDeg": -3.092630862511214e-8,
+      "deltaResidualDeg": 1.0658368410076946e-8
+    },
+    {
+      "wavelengthNm": 760,
+      "angleDeg": 65,
+      "psiDeg": 43.47882664421429,
+      "deltaDeg": 262.22596286464113,
+      "predPsiDeg": 43.47882661682609,
+      "predDeltaDeg": 262.22596287157387,
+      "psiResidualDeg": -2.738819659953151e-8,
+      "deltaResidualDeg": 6.932737051101867e-9
+    },
+    {
+      "wavelengthNm": 780,
+      "angleDeg": 65,
+      "psiDeg": 41.80566838682823,
+      "deltaDeg": 262.57363533661555,
+      "predPsiDeg": 41.80566836238256,
+      "predDeltaDeg": 262.57363534052274,
+      "psiResidualDeg": -2.4445668600492354e-8,
+      "deltaResidualDeg": 3.9071892388165e-9
+    },
+    {
+      "wavelengthNm": 800,
+      "angleDeg": 65,
+      "psiDeg": 40.344557054784666,
+      "deltaDeg": 262.73874521007224,
+      "predPsiDeg": 40.34455703279627,
+      "predDeltaDeg": 262.7387452114681,
+      "psiResidualDeg": -2.19883986574132e-8,
+      "deltaResidualDeg": 1.3958469935460016e-9
+    },
+    {
+      "wavelengthNm": 820,
+      "angleDeg": 65,
+      "psiDeg": 39.058091661884866,
+      "deltaDeg": 262.75793373355447,
+      "predPsiDeg": 39.058091641960104,
+      "predDeltaDeg": 262.75793373283113,
+      "psiResidualDeg": -1.9924762284517783e-8,
+      "deltaResidualDeg": -7.232756615849212e-10
+    },
+    {
+      "wavelengthNm": 840,
+      "angleDeg": 65,
+      "psiDeg": 37.91653821441601,
+      "deltaDeg": 262.6590865852042,
+      "predPsiDeg": 37.91653819623539,
+      "predDeltaDeg": 262.6590865826694,
+      "psiResidualDeg": -1.8180614347329538e-8,
+      "deltaResidualDeg": -2.534761733841151e-9
+    },
+    {
+      "wavelengthNm": 860,
+      "angleDeg": 65,
+      "psiDeg": 36.89616378000436,
+      "deltaDeg": 262.4639325322367,
+      "predPsiDeg": 36.896163763307925,
+      "predDeltaDeg": 262.4639325281378,
+      "psiResidualDeg": -1.669643268087384e-8,
+      "deltaResidualDeg": -4.098865247215144e-9
+    },
+    {
+      "wavelengthNm": 880,
+      "angleDeg": 65,
+      "psiDeg": 35.977920056035146,
+      "deltaDeg": 262.1897206236157,
+      "predPsiDeg": 35.97792004061036,
+      "predDeltaDeg": 262.1897206181553,
+      "psiResidualDeg": -1.5424788557538704e-8,
+      "deltaResidualDeg": -5.460378815769218e-9
+    },
+    {
+      "wavelengthNm": 900,
+      "angleDeg": 65,
+      "psiDeg": 35.14642068265638,
+      "deltaDeg": 261.8503480309133,
+      "predPsiDeg": 35.146420668328524,
+      "predDeltaDeg": 261.85034802426003,
+      "psiResidualDeg": -1.4327852682072262e-8,
+      "deltaResidualDeg": -6.653294803982135e-9
+    },
+    {
+      "wavelengthNm": 380,
+      "angleDeg": 70,
+      "psiDeg": 31.469913756318697,
+      "deltaDeg": 82.22691004108209,
+      "predPsiDeg": 31.469913784916336,
+      "predDeltaDeg": 82.22691001745198,
+      "psiResidualDeg": 2.8597639811778208e-8,
+      "deltaResidualDeg": -2.3630036594113335e-8
+    },
+    {
+      "wavelengthNm": 400,
+      "angleDeg": 70,
+      "psiDeg": 35.29161313664383,
+      "deltaDeg": 80.03550560367789,
+      "predPsiDeg": 35.29161316837009,
+      "predDeltaDeg": 80.0355055927048,
+      "psiResidualDeg": 3.1726258953312936e-8,
+      "deltaResidualDeg": -1.097305357689038e-8
+    },
+    {
+      "wavelengthNm": 420,
+      "angleDeg": 70,
+      "psiDeg": 39.46898922022404,
+      "deltaDeg": 79.36698841836183,
+      "predPsiDeg": 39.4689892578296,
+      "predDeltaDeg": 79.36698841814928,
+      "psiResidualDeg": 3.7605559555231594e-8,
+      "deltaResidualDeg": -2.1259438653942198e-10
+    },
+    {
+      "wavelengthNm": 440,
+      "angleDeg": 70,
+      "psiDeg": 44.30628688239504,
+      "deltaDeg": 79.89153716934324,
+      "predPsiDeg": 44.30628692893867,
+      "predDeltaDeg": 79.8915371784766,
+      "psiResidualDeg": 4.6543625842332403e-8,
+      "deltaResidualDeg": 9.133373168879189e-9
+    },
+    {
+      "wavelengthNm": 460,
+      "angleDeg": 70,
+      "psiDeg": 50.08989509965361,
+      "deltaDeg": 81.36191889034187,
+      "predPsiDeg": 50.08989515823494,
+      "predDeltaDeg": 81.36191890768794,
+      "psiResidualDeg": 5.8581328232776286e-8,
+      "deltaResidualDeg": 1.734611032588873e-8
+    },
+    {
+      "wavelengthNm": 480,
+      "angleDeg": 70,
+      "psiDeg": 57.039448148741016,
+      "deltaDeg": 83.60129556185163,
+      "predPsiDeg": 57.03944822174179,
+      "predDeltaDeg": 83.60129558683195,
+      "psiResidualDeg": 7.300077697891538e-8,
+      "deltaResidualDeg": 2.498029516573297e-8
+    },
+    {
+      "wavelengthNm": 500,
+      "angleDeg": 70,
+      "psiDeg": 65.20998057695073,
+      "deltaDeg": 86.56661109981025,
+      "predPsiDeg": 65.20998066466387,
+      "predDeltaDeg": 86.56661113385866,
+      "psiResidualDeg": 8.771314696787158e-8,
+      "deltaResidualDeg": 3.404841208975995e-8
+    },
+    {
+      "wavelengthNm": 520,
+      "angleDeg": 70,
+      "psiDeg": 74.37058446890859,
+      "deltaDeg": 90.69027316692957,
+      "predPsiDeg": 74.37058456804915,
+      "predDeltaDeg": 90.6902732216767,
+      "psiResidualDeg": 9.914056420257111e-8,
+      "deltaResidualDeg": 5.474714726005914e-8
+    },
+    {
+      "wavelengthNm": 540,
+      "angleDeg": 70,
+      "psiDeg": 83.93002825850654,
+      "deltaDeg": 100.36909641655267,
+      "predPsiDeg": 83.93002836079351,
+      "predDeltaDeg": 100.36909664368926,
+      "psiResidualDeg": 1.0228697533420927e-7,
+      "deltaResidualDeg": 2.2713652469974477e-7
+    },
+    {
+      "wavelengthNm": 560,
+      "angleDeg": 70,
+      "psiDeg": 86.3399402384068,
+      "deltaDeg": 251.25125040618644,
+      "predPsiDeg": 86.33994014267202,
+      "predDeltaDeg": 251.2512509693131,
+      "psiResidualDeg": -9.573477655067109e-8,
+      "deltaResidualDeg": 5.631266049022088e-7
+    },
+    {
+      "wavelengthNm": 580,
+      "angleDeg": 70,
+      "psiDeg": 77.95548234700716,
+      "deltaDeg": 267.26103029345165,
+      "predPsiDeg": 77.95548225454286,
+      "predDeltaDeg": 267.26103036270877,
+      "psiResidualDeg": -9.246430465736921e-8,
+      "deltaResidualDeg": 6.925711204530671e-8
+    },
+    {
+      "wavelengthNm": 600,
+      "angleDeg": 70,
+      "psiDeg": 70.61256176008186,
+      "deltaDeg": 271.418987117135,
+      "predPsiDeg": 70.61256167887694,
+      "predDeltaDeg": 271.41898715408263,
+      "psiResidualDeg": -8.120491656882223e-8,
+      "deltaResidualDeg": 3.69476538253366e-8
+    },
+    {
+      "wavelengthNm": 620,
+      "angleDeg": 70,
+      "psiDeg": 64.46530455772124,
+      "deltaDeg": 273.96094619810935,
+      "predPsiDeg": 64.46530448825165,
+      "predDeltaDeg": 273.96094622470935,
+      "psiResidualDeg": -6.946959274500841e-8,
+      "deltaResidualDeg": 2.6599991542752832e-8
+    },
+    {
+      "wavelengthNm": 640,
+      "angleDeg": 70,
+      "psiDeg": 59.40268449435526,
+      "deltaDeg": 275.8204481648526,
+      "predPsiDeg": 59.40268443550012,
+      "predDeltaDeg": 275.8204481856817,
+      "psiResidualDeg": -5.88551429814288e-8,
+      "deltaResidualDeg": 2.082902028632816e-8
+    },
+    {
+      "wavelengthNm": 660,
+      "angleDeg": 70,
+      "psiDeg": 55.24784511387803,
+      "deltaDeg": 277.250405264837,
+      "predPsiDeg": 55.247845064005176,
+      "predDeltaDeg": 277.2504052815,
+      "psiResidualDeg": -4.987285251445428e-8,
+      "deltaResidualDeg": 1.666296611801954e-8
+    },
+    {
+      "wavelengthNm": 680,
+      "angleDeg": 70,
+      "psiDeg": 51.82355281059374,
+      "deltaDeg": 278.36002252703923,
+      "predPsiDeg": 51.82355276807863,
+      "predDeltaDeg": 278.3600225403261,
+      "psiResidualDeg": -4.2515111431384867e-8,
+      "deltaResidualDeg": 1.3286808098200709e-8
+    },
+    {
+      "wavelengthNm": 700,
+      "angleDeg": 70,
+      "psiDeg": 48.977113161278034,
+      "deltaDeg": 279.2128460138447,
+      "predPsiDeg": 48.97711312470497,
+      "predDeltaDeg": 279.21284602425385,
+      "psiResidualDeg": -3.6573062800471234e-8,
+      "deltaResidualDeg": 1.0409166861791164e-8
+    },
+    {
+      "wavelengthNm": 720,
+      "angleDeg": 70,
+      "psiDeg": 46.58552816590849,
+      "deltaDeg": 279.8532706489506,
+      "predPsiDeg": 46.585528134115364,
+      "predDeltaDeg": 279.8532706568516,
+      "psiResidualDeg": -3.179312813017532e-8,
+      "deltaResidualDeg": 7.901007847976871e-9
+    },
+    {
+      "wavelengthNm": 740,
+      "angleDeg": 70,
+      "psiDeg": 44.55275366100336,
+      "deltaDeg": 280.31553721440355,
+      "predPsiDeg": 44.5527536330624,
+      "predDeltaDeg": 280.31553722009517,
+      "psiResidualDeg": -2.7940956215388724e-8,
+      "deltaResidualDeg": 5.691617843694985e-9
+    },
+    {
+      "wavelengthNm": 760,
+      "angleDeg": 70,
+      "psiDeg": 42.80475032509479,
+      "deltaDeg": 280.6273854191446,
+      "predPsiDeg": 42.804750300273916,
+      "predDeltaDeg": 280.6273854228798,
+      "psiResidualDeg": -2.4820870692110475e-8,
+      "deltaResidualDeg": 3.735181053343695e-9
+    },
+    {
+      "wavelengthNm": 780,
+      "angleDeg": 70,
+      "psiDeg": 41.284613741782486,
+      "deltaDeg": 280.81182451002195,
+      "predPsiDeg": 41.28461371950581,
+      "predDeltaDeg": 280.81182451201903,
+      "psiResidualDeg": -2.227667295073843e-8,
+      "deltaResidualDeg": 1.997022991417907e-9
+    },
+    {
+      "wavelengthNm": 800,
+      "angleDeg": 70,
+      "psiDeg": 39.94850171771601,
+      "deltaDeg": 280.8881581413147,
+      "predPsiDeg": 39.948501697529736,
+      "predDeltaDeg": 280.8881581417638,
+      "psiResidualDeg": -2.0186277538414288e-8,
+      "deltaResidualDeg": 4.490630090003833e-10
+    },
+    {
+      "wavelengthNm": 820,
+      "angleDeg": 70,
+      "psiDeg": 38.762450270041846,
+      "deltaDeg": 280.87267449347985,
+      "predPsiDeg": 38.76245025158678,
+      "predDeltaDeg": 280.8726744925475,
+      "psiResidualDeg": -1.8455068584444234e-8,
+      "deltaResidualDeg": -9.32345756154973e-10
+    },
+    {
+      "wavelengthNm": 840,
+      "angleDeg": 70,
+      "psiDeg": 37.69995987774143,
+      "deltaDeg": 280.77916204690916,
+      "predPsiDeg": 37.69995986073156,
+      "predDeltaDeg": 280.7791620447415,
+      "psiResidualDeg": -1.7009867292472336e-8,
+      "deltaResidualDeg": -2.167666934838053e-9
+    },
+    {
+      "wavelengthNm": 860,
+      "angleDeg": 70,
+      "psiDeg": 36.74018998043083,
+      "deltaDeg": 280.61931889252696,
+      "predPsiDeg": 36.740189964637,
+      "predDeltaDeg": 280.6193188892523,
+      "psiResidualDeg": -1.5793830243637785e-8,
+      "deltaResidualDeg": -3.274635673733428e-9
+    },
+    {
+      "wavelengthNm": 880,
+      "angleDeg": 70,
+      "psiDeg": 35.86661404180944,
+      "deltaDeg": 280.4030875828281,
+      "predPsiDeg": 35.86661402704666,
+      "predDeltaDeg": 280.4030875785593,
+      "psiResidualDeg": -1.4762782996058377e-8,
+      "deltaResidualDeg": -4.26882706960896e-9
+    },
+    {
+      "wavelengthNm": 900,
+      "angleDeg": 70,
+      "psiDeg": 35.0660166628323,
+      "deltaDeg": 280.13893294880376,
+      "predPsiDeg": 35.066016648950296,
+      "predDeltaDeg": 280.13893294364016,
+      "psiResidualDeg": -1.3882001326237514e-8,
+      "deltaResidualDeg": -5.1636561693158e-9
+    },
+    {
+      "wavelengthNm": 380,
+      "angleDeg": 75,
+      "psiDeg": 34.734351865765596,
+      "deltaDeg": 60.78463811297224,
+      "predPsiDeg": 34.73435189359285,
+      "predDeltaDeg": 60.78463810326531,
+      "psiResidualDeg": 2.7827255166812392e-8,
+      "deltaResidualDeg": -9.706923265184741e-9
+    },
+    {
+      "wavelengthNm": 400,
+      "angleDeg": 75,
+      "psiDeg": 38.43630193368181,
+      "deltaDeg": 60.04367428210854,
+      "predPsiDeg": 38.43630196439015,
+      "predDeltaDeg": 60.043674279994036,
+      "psiResidualDeg": 3.0708335430063016e-8,
+      "deltaResidualDeg": -2.114575181622058e-9
+    },
+    {
+      "wavelengthNm": 420,
+      "angleDeg": 75,
+      "psiDeg": 42.4987747662782,
+      "deltaDeg": 60.14479002974462,
+      "predPsiDeg": 42.498774803075314,
+      "predDeltaDeg": 60.14479003313403,
+      "psiResidualDeg": 3.679711113591111e-8,
+      "deltaResidualDeg": 3.3894593798322603e-9
+    },
+    {
+      "wavelengthNm": 440,
+      "angleDeg": 75,
+      "psiDeg": 47.2696634965138,
+      "deltaDeg": 60.69505696388873,
+      "predPsiDeg": 47.26966354275131,
+      "predDeltaDeg": 60.6950569692396,
+      "psiResidualDeg": 4.623750982091224e-8,
+      "deltaResidualDeg": 5.350898391043302e-9
+    },
+    {
+      "wavelengthNm": 460,
+      "angleDeg": 75,
+      "psiDeg": 53.045336011347956,
+      "deltaDeg": 61.11151654186528,
+      "predPsiDeg": 53.04533607001212,
+      "predDeltaDeg": 61.11151654246635,
+      "psiResidualDeg": 5.86641633049112e-8,
+      "deltaResidualDeg": 6.01062311034184e-10
+    },
+    {
+      "wavelengthNm": 480,
+      "angleDeg": 75,
+      "psiDeg": 59.97580403242645,
+      "deltaDeg": 60.35595054006064,
+      "predPsiDeg": 59.97580410458093,
+      "predDeltaDeg": 60.355950521540535,
+      "psiResidualDeg": 7.215447794806096e-8,
+      "deltaResidualDeg": -1.8520040612202138e-8
+    },
+    {
+      "wavelengthNm": 500,
+      "angleDeg": 75,
+      "psiDeg": 67.84519712917867,
+      "deltaDeg": 56.133190704940624,
+      "predPsiDeg": 67.84519721051366,
+      "predDeltaDeg": 56.13319062997243,
+      "psiResidualDeg": 8.133498852203047e-8,
+      "deltaResidualDeg": -7.49681703382521e-8
+    },
+    {
+      "wavelengthNm": 520,
+      "angleDeg": 75,
+      "psiDeg": 75.58592828199987,
+      "deltaDeg": 41.95704761267127,
+      "predPsiDeg": 75.58592835379842,
+      "predDeltaDeg": 41.957047363982895,
+      "psiResidualDeg": 7.179855288086401e-8,
+      "deltaResidualDeg": -2.4868836590030696e-7
+    },
+    {
+      "wavelengthNm": 540,
+      "angleDeg": 75,
+      "psiDeg": 79.83494287639168,
+      "deltaDeg": 3.3768413826644474,
+      "predPsiDeg": 79.83494288261547,
+      "predDeltaDeg": 3.376840841017554,
+      "psiResidualDeg": 6.2237859310698695e-9,
+      "deltaResidualDeg": -5.416468411567621e-7
+    },
+    {
+      "wavelengthNm": 560,
+      "angleDeg": 75,
+      "psiDeg": 76.84221443327966,
+      "deltaDeg": 323.3101595480028,
+      "predPsiDeg": 76.84221437254558,
+      "predDeltaDeg": 323.31015925962174,
+      "psiResidualDeg": -6.073408087559073e-8,
+      "deltaResidualDeg": -2.88380988422432e-7
+    },
+    {
+      "wavelengthNm": 580,
+      "angleDeg": 75,
+      "psiDeg": 70.86002491588326,
+      "deltaDeg": 307.56129852258783,
+      "predPsiDeg": 70.86002484475664,
+      "predDeltaDeg": 307.56129841911184,
+      "psiResidualDeg": -7.112662103736511e-8,
+      "deltaResidualDeg": -1.0347594070481136e-7
+    },
+    {
+      "wavelengthNm": 600,
+      "angleDeg": 75,
+      "psiDeg": 65.06706018764355,
+      "deltaDeg": 301.950585400696,
+      "predPsiDeg": 65.06706012258282,
+      "predDeltaDeg": 301.95058536101544,
+      "psiResidualDeg": -6.506073191303585e-8,
+      "deltaResidualDeg": -3.968057171732653e-8
+    },
+    {
+      "wavelengthNm": 620,
+      "angleDeg": 75,
+      "psiDeg": 60.1206096611921,
+      "deltaDeg": 299.86879646693836,
+      "predPsiDeg": 60.12060960516959,
+      "predDeltaDeg": 299.86879645217164,
+      "psiResidualDeg": -5.60225075219023e-8,
+      "deltaResidualDeg": -1.4766783351660706e-8
+    },
+    {
+      "wavelengthNm": 640,
+      "angleDeg": 75,
+      "psiDeg": 56.038041674041956,
+      "deltaDeg": 299.1831967539137,
+      "predPsiDeg": 56.03804162659882,
+      "predDeltaDeg": 299.1831967499479,
+      "psiResidualDeg": -4.74431374186679e-8,
+      "deltaResidualDeg": -3.9658516470808536e-9
+    },
+    {
+      "wavelengthNm": 660,
+      "angleDeg": 75,
+      "psiDeg": 52.69023978712794,
+      "deltaDeg": 299.0875358732009,
+      "predPsiDeg": 52.69023974695408,
+      "predDeltaDeg": 299.0875358740376,
+      "psiResidualDeg": -4.017386601162798e-8,
+      "deltaResidualDeg": 8.36735125631094e-10
+    },
+    {
+      "wavelengthNm": 680,
+      "angleDeg": 75,
+      "psiDeg": 49.931365111841394,
+      "deltaDeg": 299.2346005412328,
+      "predPsiDeg": 49.931365077571336,
+      "predDeltaDeg": 299.23460054404177,
+      "psiResidualDeg": -3.4270058790752955e-8,
+      "deltaResidualDeg": 2.808974386425689e-9
+    },
+    {
+      "wavelengthNm": 700,
+      "angleDeg": 75,
+      "psiDeg": 47.63461591827066,
+      "deltaDeg": 299.46313567262723,
+      "predPsiDeg": 47.63461588872004,
+      "predDeltaDeg": 299.4631356759912,
+      "psiResidualDeg": -2.9550619728979655e-8,
+      "deltaResidualDeg": 3.3639935281826183e-9
+    },
+    {
+      "wavelengthNm": 720,
+      "angleDeg": 75,
+      "psiDeg": 45.69871346077747,
+      "deltaDeg": 299.69599262005414,
+      "predPsiDeg": 45.69871343498554,
+      "predDeltaDeg": 299.69599262324687,
+      "psiResidualDeg": -2.5791926816509658e-8,
+      "deltaResidualDeg": 3.1927811505738646e-9
+    },
+    {
+      "wavelengthNm": 740,
+      "angleDeg": 75,
+      "psiDeg": 44.045415640423776,
+      "deltaDeg": 299.8968824824395,
+      "predPsiDeg": 44.045415617632216,
+      "predDeltaDeg": 299.89688248509424,
+      "psiResidualDeg": -2.279156063877963e-8,
+      "deltaResidualDeg": 2.6548150344751775e-9
+    },
+    {
+      "wavelengthNm": 760,
+      "angleDeg": 75,
+      "psiDeg": 42.61499275488201,
+      "deltaDeg": 300.05022555132285,
+      "predPsiDeg": 42.614992734498315,
+      "predDeltaDeg": 300.0502255532672,
+      "psiResidualDeg": -2.0383694732117874e-8,
+      "deltaResidualDeg": 1.9442722987150773e-9
+    },
+    {
+      "wavelengthNm": 780,
+      "angleDeg": 75,
+      "psiDeg": 41.36192030752725,
+      "deltaDeg": 300.15113125248,
+      "predPsiDeg": 41.36192028908913,
+      "predDeltaDeg": 300.1511312536488,
+      "psiResidualDeg": -1.8438122140196356e-8,
+      "deltaResidualDeg": 1.1688143786159344e-9
+    },
+    {
+      "wavelengthNm": 800,
+      "angleDeg": 75,
+      "psiDeg": 40.25137236098623,
+      "deltaDeg": 300.20019017658467,
+      "predPsiDeg": 40.25137234413187,
+      "predDeltaDeg": 300.2001901769719,
+      "psiResidualDeg": -1.685435790932388e-8,
+      "deltaResidualDeg": 3.872173692798242e-10
+    },
+    {
+      "wavelengthNm": 820,
+      "angleDeg": 75,
+      "psiDeg": 39.25653508209969,
+      "deltaDeg": 300.20069038658403,
+      "predPsiDeg": 39.25653506654439,
+      "predDeltaDeg": 300.20069038621614,
+      "psiResidualDeg": -1.555530104724312e-8,
+      "deltaResidualDeg": -3.6789060686714947e-10
+    },
+    {
+      "wavelengthNm": 840,
+      "angleDeg": 75,
+      "psiDeg": 38.356601259667165,
+      "deltaDeg": 300.15710872702607,
+      "predPsiDeg": 38.35660124518547,
+      "predDeltaDeg": 300.15710872594605,
+      "psiResidualDeg": -1.4481692289791681e-8,
+      "deltaResidualDeg": -1.0800249583553523e-9
+    },
+    {
+      "wavelengthNm": 860,
+      "angleDeg": 75,
+      "psiDeg": 37.53528787728304,
+      "deltaDeg": 300.0742936602648,
+      "predPsiDeg": 37.53528786369519,
+      "predDeltaDeg": 300.0742936585232,
+      "psiResidualDeg": -1.3587850844487548e-8,
+      "deltaResidualDeg": -1.7416823538951576e-9
+    },
+    {
+      "wavelengthNm": 880,
+      "angleDeg": 75,
+      "psiDeg": 36.77974209126797,
+      "deltaDeg": 299.95703104833655,
+      "predPsiDeg": 36.77974207842955,
+      "predDeltaDeg": 299.95703104598624,
+      "psiResidualDeg": -1.2838420104799297e-8,
+      "deltaResidualDeg": -2.35036168305669e-9
+    },
+    {
+      "wavelengthNm": 900,
+      "angleDeg": 75,
+      "psiDeg": 36.07973152123321,
+      "deltaDeg": 299.8098245194763,
+      "predPsiDeg": 36.079731509027475,
+      "predDeltaDeg": 299.80982451656973,
+      "psiResidualDeg": -1.2205731536596431e-8,
+      "deltaResidualDeg": -2.9065176931908354e-9
+    }
+  ],
+  "diagnostics": {
+    "status": "unique-in-search",
+    "agreementDeg": 0.1,
+    "resolutionNm": 0.5,
+    "candidates": [
+      {
+        "thicknessNm": 123.39999995042275,
+        "rmsDeg": 9.860005692600097e-8
+      }
+    ],
+    "candidateCount": 1,
+    "rangeNm": [
+      0,
+      1000
+    ],
+    "note": "Model-conditional. Agreement threshold identifies comparable minima; not statistical coverage. Index/thickness trade-off is not fit."
+  },
+  "profile": [
+    {
+      "thicknessNm": 0,
+      "rmsDeg": 76.30748127576331
+    },
+    {
+      "thicknessNm": 2.5,
+      "rmsDeg": 73.26195437872971
+    },
+    {
+      "thicknessNm": 5,
+      "rmsDeg": 70.26863350271601
+    },
+    {
+      "thicknessNm": 7.5,
+      "rmsDeg": 69.00170898570805
+    },
+    {
+      "thicknessNm": 10,
+      "rmsDeg": 68.30560842221516
+    },
+    {
+      "thicknessNm": 12.5,
+      "rmsDeg": 67.88180964526761
+    },
+    {
+      "thicknessNm": 15,
+      "rmsDeg": 67.61631237856777
+    },
+    {
+      "thicknessNm": 17.5,
+      "rmsDeg": 67.45444467464755
+    },
+    {
+      "thicknessNm": 20,
+      "rmsDeg": 67.36575928662135
+    },
+    {
+      "thicknessNm": 22.5,
+      "rmsDeg": 67.33126873156839
+    },
+    {
+      "thicknessNm": 25,
+      "rmsDeg": 67.33797416172835
+    },
+    {
+      "thicknessNm": 27.5,
+      "rmsDeg": 67.37625469051707
+    },
+    {
+      "thicknessNm": 30,
+      "rmsDeg": 67.19949945140212
+    },
+    {
+      "thicknessNm": 32.5,
+      "rmsDeg": 66.91199221814509
+    },
+    {
+      "thicknessNm": 35,
+      "rmsDeg": 66.58949190627962
+    },
+    {
+      "thicknessNm": 37.5,
+      "rmsDeg": 66.26959419761904
+    },
+    {
+      "thicknessNm": 40,
+      "rmsDeg": 65.94294601313318
+    },
+    {
+      "thicknessNm": 42.5,
+      "rmsDeg": 65.63148538384185
+    },
+    {
+      "thicknessNm": 45,
+      "rmsDeg": 65.31882206771873
+    },
+    {
+      "thicknessNm": 47.5,
+      "rmsDeg": 65.04343306795745
+    },
+    {
+      "thicknessNm": 50,
+      "rmsDeg": 64.77250035990767
+    },
+    {
+      "thicknessNm": 52.5,
+      "rmsDeg": 64.50491694840639
+    },
+    {
+      "thicknessNm": 55,
+      "rmsDeg": 64.26577933592289
+    },
+    {
+      "thicknessNm": 57.5,
+      "rmsDeg": 64.0512666201665
+    },
+    {
+      "thicknessNm": 60,
+      "rmsDeg": 63.85776376387623
+    },
+    {
+      "thicknessNm": 62.5,
+      "rmsDeg": 63.68170775124159
+    },
+    {
+      "thicknessNm": 65,
+      "rmsDeg": 63.519329690554635
+    },
+    {
+      "thicknessNm": 67.5,
+      "rmsDeg": 63.36617217096446
+    },
+    {
+      "thicknessNm": 70,
+      "rmsDeg": 63.216118834141504
+    },
+    {
+      "thicknessNm": 72.5,
+      "rmsDeg": 63.05934069188565
+    },
+    {
+      "thicknessNm": 75,
+      "rmsDeg": 62.87779673611215
+    },
+    {
+      "thicknessNm": 77.5,
+      "rmsDeg": 62.62661272837232
+    },
+    {
+      "thicknessNm": 80,
+      "rmsDeg": 62.24863500288343
+    },
+    {
+      "thicknessNm": 82.5,
+      "rmsDeg": 61.699559925013574
+    },
+    {
+      "thicknessNm": 85,
+      "rmsDeg": 59.50756262171
+    },
+    {
+      "thicknessNm": 87.5,
+      "rmsDeg": 58.10383576574721
+    },
+    {
+      "thicknessNm": 90,
+      "rmsDeg": 55.250296164753955
+    },
+    {
+      "thicknessNm": 92.5,
+      "rmsDeg": 53.722639127921376
+    },
+    {
+      "thicknessNm": 95,
+      "rmsDeg": 50.577273660017966
+    },
+    {
+      "thicknessNm": 97.5,
+      "rmsDeg": 48.5806853719097
+    },
+    {
+      "thicknessNm": 100,
+      "rmsDeg": 45.339529350447634
+    },
+    {
+      "thicknessNm": 102.5,
+      "rmsDeg": 42.338614932294206
+    },
+    {
+      "thicknessNm": 105,
+      "rmsDeg": 39.13960442494681
+    },
+    {
+      "thicknessNm": 107.5,
+      "rmsDeg": 34.851131752018816
+    },
+    {
+      "thicknessNm": 110,
+      "rmsDeg": 31.675273421101405
+    },
+    {
+      "thicknessNm": 112.5,
+      "rmsDeg": 26.223111160398048
+    },
+    {
+      "thicknessNm": 115,
+      "rmsDeg": 22.731781157642374
+    },
+    {
+      "thicknessNm": 117.5,
+      "rmsDeg": 16.275584567392553
+    },
+    {
+      "thicknessNm": 120,
+      "rmsDeg": 11.594725836148891
+    },
+    {
+      "thicknessNm": 122.5,
+      "rmsDeg": 1.7234792585793128
+    },
+    {
+      "thicknessNm": 125,
+      "rmsDeg": 5.753393436149074
+    },
+    {
+      "thicknessNm": 127.5,
+      "rmsDeg": 13.61962271531789
+    },
+    {
+      "thicknessNm": 130,
+      "rmsDeg": 19.14149946042484
+    },
+    {
+      "thicknessNm": 132.5,
+      "rmsDeg": 23.431956500620203
+    },
+    {
+      "thicknessNm": 135,
+      "rmsDeg": 28.577560391130795
+    },
+    {
+      "thicknessNm": 137.5,
+      "rmsDeg": 31.81194370177398
+    },
+    {
+      "thicknessNm": 140,
+      "rmsDeg": 36.406170244389486
+    },
+    {
+      "thicknessNm": 142.5,
+      "rmsDeg": 39.22277318281575
+    },
+    {
+      "thicknessNm": 145,
+      "rmsDeg": 42.998124835683576
+    },
+    {
+      "thicknessNm": 147.5,
+      "rmsDeg": 45.72827833352519
+    },
+    {
+      "thicknessNm": 150,
+      "rmsDeg": 48.65298151473624
+    },
+    {
+      "thicknessNm": 152.5,
+      "rmsDeg": 51.53830356158385
+    },
+    {
+      "thicknessNm": 155,
+      "rmsDeg": 53.80791884688836
+    },
+    {
+      "thicknessNm": 157.5,
+      "rmsDeg": 56.64694729235895
+    },
+    {
+      "thicknessNm": 160,
+      "rmsDeg": 58.63799884313863
+    },
+    {
+      "thicknessNm": 162.5,
+      "rmsDeg": 61.338492614929834
+    },
+    {
+      "thicknessNm": 165,
+      "rmsDeg": 63.30093798799363
+    },
+    {
+      "thicknessNm": 167.5,
+      "rmsDeg": 65.80285732142927
+    },
+    {
+      "thicknessNm": 170,
+      "rmsDeg": 67.9709171677584
+    },
+    {
+      "thicknessNm": 172.5,
+      "rmsDeg": 70.34332292203192
+    },
+    {
+      "thicknessNm": 175,
+      "rmsDeg": 73.69497327729205
+    },
+    {
+      "thicknessNm": 177.5,
+      "rmsDeg": 75.31104735771778
+    },
+    {
+      "thicknessNm": 180,
+      "rmsDeg": 77.53987696429488
+    },
+    {
+      "thicknessNm": 182.5,
+      "rmsDeg": 79.72656829005666
+    },
+    {
+      "thicknessNm": 185,
+      "rmsDeg": 82.3726455847478
+    },
+    {
+      "thicknessNm": 187.5,
+      "rmsDeg": 83.93137555263131
+    },
+    {
+      "thicknessNm": 190,
+      "rmsDeg": 85.88858411454682
+    },
+    {
+      "thicknessNm": 192.5,
+      "rmsDeg": 88.38872340855656
+    },
+    {
+      "thicknessNm": 195,
+      "rmsDeg": 90.06247649572911
+    },
+    {
+      "thicknessNm": 197.5,
+      "rmsDeg": 91.74757159697474
+    },
+    {
+      "thicknessNm": 200,
+      "rmsDeg": 93.18545240945417
+    },
+    {
+      "thicknessNm": 202.5,
+      "rmsDeg": 95.44825415303072
+    },
+    {
+      "thicknessNm": 205,
+      "rmsDeg": 96.20915933843268
+    },
+    {
+      "thicknessNm": 207.5,
+      "rmsDeg": 96.80498060492494
+    },
+    {
+      "thicknessNm": 210,
+      "rmsDeg": 97.70499754015805
+    },
+    {
+      "thicknessNm": 212.5,
+      "rmsDeg": 98.59353278993159
+    },
+    {
+      "thicknessNm": 215,
+      "rmsDeg": 98.9060531131804
+    },
+    {
+      "thicknessNm": 217.5,
+      "rmsDeg": 99.30111302228626
+    },
+    {
+      "thicknessNm": 220,
+      "rmsDeg": 100.19979191742374
+    },
+    {
+      "thicknessNm": 222.5,
+      "rmsDeg": 100.55976221724586
+    },
+    {
+      "thicknessNm": 225,
+      "rmsDeg": 100.77316873153664
+    },
+    {
+      "thicknessNm": 227.5,
+      "rmsDeg": 101.19736361530518
+    },
+    {
+      "thicknessNm": 230,
+      "rmsDeg": 101.99778997296119
+    },
+    {
+      "thicknessNm": 232.5,
+      "rmsDeg": 101.96523269562985
+    },
+    {
+      "thicknessNm": 235,
+      "rmsDeg": 102.12379957070922
+    },
+    {
+      "thicknessNm": 237.5,
+      "rmsDeg": 102.71240996863526
+    },
+    {
+      "thicknessNm": 240,
+      "rmsDeg": 102.80804115410217
+    },
+    {
+      "thicknessNm": 242.5,
+      "rmsDeg": 102.73372412432775
+    },
+    {
+      "thicknessNm": 245,
+      "rmsDeg": 102.85721234937368
+    },
+    {
+      "thicknessNm": 247.5,
+      "rmsDeg": 102.74587772859873
+    },
+    {
+      "thicknessNm": 250,
+      "rmsDeg": 102.3671822498428
+    },
+    {
+      "thicknessNm": 252.5,
+      "rmsDeg": 102.31936237078602
+    },
+    {
+      "thicknessNm": 255,
+      "rmsDeg": 101.35721803933401
+    },
+    {
+      "thicknessNm": 257.5,
+      "rmsDeg": 100.27977788136197
+    },
+    {
+      "thicknessNm": 260,
+      "rmsDeg": 99.76566497526593
+    },
+    {
+      "thicknessNm": 262.5,
+      "rmsDeg": 99.48617019208169
+    },
+    {
+      "thicknessNm": 265,
+      "rmsDeg": 98.51643959801375
+    },
+    {
+      "thicknessNm": 267.5,
+      "rmsDeg": 97.79573733464193
+    },
+    {
+      "thicknessNm": 270,
+      "rmsDeg": 96.57875510447192
+    },
+    {
+      "thicknessNm": 272.5,
+      "rmsDeg": 95.8150806367814
+    },
+    {
+      "thicknessNm": 275,
+      "rmsDeg": 94.60136559023756
+    },
+    {
+      "thicknessNm": 277.5,
+      "rmsDeg": 94.03051166790952
+    },
+    {
+      "thicknessNm": 280,
+      "rmsDeg": 93.75122553900655
+    },
+    {
+      "thicknessNm": 282.5,
+      "rmsDeg": 91.72145574012517
+    },
+    {
+      "thicknessNm": 285,
+      "rmsDeg": 90.65190342260848
+    },
+    {
+      "thicknessNm": 287.5,
+      "rmsDeg": 89.92391550348577
+    },
+    {
+      "thicknessNm": 290,
+      "rmsDeg": 89.16864355024786
+    },
+    {
+      "thicknessNm": 292.5,
+      "rmsDeg": 88.06026706614968
+    },
+    {
+      "thicknessNm": 295,
+      "rmsDeg": 86.71189167155804
+    },
+    {
+      "thicknessNm": 297.5,
+      "rmsDeg": 85.63585950789931
+    },
+    {
+      "thicknessNm": 300,
+      "rmsDeg": 84.49020607566784
+    },
+    {
+      "thicknessNm": 302.5,
+      "rmsDeg": 83.17483284568031
+    },
+    {
+      "thicknessNm": 305,
+      "rmsDeg": 82.4975163374679
+    },
+    {
+      "thicknessNm": 307.5,
+      "rmsDeg": 81.76891684073111
+    },
+    {
+      "thicknessNm": 310,
+      "rmsDeg": 79.510580501812
+    },
+    {
+      "thicknessNm": 312.5,
+      "rmsDeg": 78.3076511033117
+    },
+    {
+      "thicknessNm": 315,
+      "rmsDeg": 77.48530668744543
+    },
+    {
+      "thicknessNm": 317.5,
+      "rmsDeg": 76.60194436142035
+    },
+    {
+      "thicknessNm": 320,
+      "rmsDeg": 75.1935340387648
+    },
+    {
+      "thicknessNm": 322.5,
+      "rmsDeg": 73.18387618935016
+    },
+    {
+      "thicknessNm": 325,
+      "rmsDeg": 72.4345155106565
+    },
+    {
+      "thicknessNm": 327.5,
+      "rmsDeg": 71.02737913596572
+    },
+    {
+      "thicknessNm": 330,
+      "rmsDeg": 69.6596764373112
+    },
+    {
+      "thicknessNm": 332.5,
+      "rmsDeg": 68.86679155170258
+    },
+    {
+      "thicknessNm": 335,
+      "rmsDeg": 67.56902798786001
+    },
+    {
+      "thicknessNm": 337.5,
+      "rmsDeg": 65.3842885070768
+    },
+    {
+      "thicknessNm": 340,
+      "rmsDeg": 64.20644078645185
+    },
+    {
+      "thicknessNm": 342.5,
+      "rmsDeg": 63.44023360091426
+    },
+    {
+      "thicknessNm": 345,
+      "rmsDeg": 62.46444846182224
+    },
+    {
+      "thicknessNm": 347.5,
+      "rmsDeg": 61.873057141438494
+    },
+    {
+      "thicknessNm": 350,
+      "rmsDeg": 60.10833010853253
+    },
+    {
+      "thicknessNm": 352.5,
+      "rmsDeg": 59.359118013173145
+    },
+    {
+      "thicknessNm": 355,
+      "rmsDeg": 57.99394710055884
+    },
+    {
+      "thicknessNm": 357.5,
+      "rmsDeg": 56.783529927129344
+    },
+    {
+      "thicknessNm": 360,
+      "rmsDeg": 56.24644536627822
+    },
+    {
+      "thicknessNm": 362.5,
+      "rmsDeg": 54.65394922586761
+    },
+    {
+      "thicknessNm": 365,
+      "rmsDeg": 53.962450827862696
+    },
+    {
+      "thicknessNm": 367.5,
+      "rmsDeg": 54.244891736959254
+    },
+    {
+      "thicknessNm": 370,
+      "rmsDeg": 53.846451777452124
+    },
+    {
+      "thicknessNm": 372.5,
+      "rmsDeg": 53.109921353748206
+    },
+    {
+      "thicknessNm": 375,
+      "rmsDeg": 52.22654167521462
+    },
+    {
+      "thicknessNm": 377.5,
+      "rmsDeg": 53.19429213445655
+    },
+    {
+      "thicknessNm": 380,
+      "rmsDeg": 53.46785617056579
+    },
+    {
+      "thicknessNm": 382.5,
+      "rmsDeg": 53.28137567387101
+    },
+    {
+      "thicknessNm": 385,
+      "rmsDeg": 54.39337455223949
+    },
+    {
+      "thicknessNm": 387.5,
+      "rmsDeg": 54.40429767872214
+    },
+    {
+      "thicknessNm": 390,
+      "rmsDeg": 55.36560186860769
+    },
+    {
+      "thicknessNm": 392.5,
+      "rmsDeg": 55.238198261461214
+    },
+    {
+      "thicknessNm": 395,
+      "rmsDeg": 55.334941437683696
+    },
+    {
+      "thicknessNm": 397.5,
+      "rmsDeg": 55.919145947615455
+    },
+    {
+      "thicknessNm": 400,
+      "rmsDeg": 56.01851978475675
+    },
+    {
+      "thicknessNm": 402.5,
+      "rmsDeg": 57.343631372398
+    },
+    {
+      "thicknessNm": 405,
+      "rmsDeg": 58.82095154554228
+    },
+    {
+      "thicknessNm": 407.5,
+      "rmsDeg": 58.97789525945241
+    },
+    {
+      "thicknessNm": 410,
+      "rmsDeg": 58.642799866260745
+    },
+    {
+      "thicknessNm": 412.5,
+      "rmsDeg": 58.3268327814431
+    },
+    {
+      "thicknessNm": 415,
+      "rmsDeg": 58.451925839092084
+    },
+    {
+      "thicknessNm": 417.5,
+      "rmsDeg": 60.081426416663
+    },
+    {
+      "thicknessNm": 420,
+      "rmsDeg": 61.44831868906512
+    },
+    {
+      "thicknessNm": 422.5,
+      "rmsDeg": 62.85812285420935
+    },
+    {
+      "thicknessNm": 425,
+      "rmsDeg": 61.926489349807554
+    },
+    {
+      "thicknessNm": 427.5,
+      "rmsDeg": 61.828509529441924
+    },
+    {
+      "thicknessNm": 430,
+      "rmsDeg": 63.0132147919563
+    },
+    {
+      "thicknessNm": 432.5,
+      "rmsDeg": 63.66652974019991
+    },
+    {
+      "thicknessNm": 435,
+      "rmsDeg": 63.845017899249065
+    },
+    {
+      "thicknessNm": 437.5,
+      "rmsDeg": 64.32118989026341
+    },
+    {
+      "thicknessNm": 440,
+      "rmsDeg": 65.77960489254055
+    },
+    {
+      "thicknessNm": 442.5,
+      "rmsDeg": 66.40978387907636
+    },
+    {
+      "thicknessNm": 445,
+      "rmsDeg": 67.97762605790759
+    },
+    {
+      "thicknessNm": 447.5,
+      "rmsDeg": 67.31007326740288
+    },
+    {
+      "thicknessNm": 450,
+      "rmsDeg": 67.35696405192195
+    },
+    {
+      "thicknessNm": 452.5,
+      "rmsDeg": 67.67454521950054
+    },
+    {
+      "thicknessNm": 455,
+      "rmsDeg": 68.07570927492293
+    },
+    {
+      "thicknessNm": 457.5,
+      "rmsDeg": 70.15889437772071
+    },
+    {
+      "thicknessNm": 460,
+      "rmsDeg": 70.66606656118391
+    },
+    {
+      "thicknessNm": 462.5,
+      "rmsDeg": 70.85579665901493
+    },
+    {
+      "thicknessNm": 465,
+      "rmsDeg": 71.24651898650554
+    },
+    {
+      "thicknessNm": 467.5,
+      "rmsDeg": 71.78240716413201
+    },
+    {
+      "thicknessNm": 470,
+      "rmsDeg": 71.66139591976768
+    },
+    {
+      "thicknessNm": 472.5,
+      "rmsDeg": 72.50955008611288
+    },
+    {
+      "thicknessNm": 475,
+      "rmsDeg": 73.44851688723392
+    },
+    {
+      "thicknessNm": 477.5,
+      "rmsDeg": 73.53924456183454
+    },
+    {
+      "thicknessNm": 480,
+      "rmsDeg": 73.38729142913903
+    },
+    {
+      "thicknessNm": 482.5,
+      "rmsDeg": 73.68173343651044
+    },
+    {
+      "thicknessNm": 485,
+      "rmsDeg": 74.98764510311113
+    },
+    {
+      "thicknessNm": 487.5,
+      "rmsDeg": 75.50446063730222
+    },
+    {
+      "thicknessNm": 490,
+      "rmsDeg": 75.92814096686044
+    },
+    {
+      "thicknessNm": 492.5,
+      "rmsDeg": 75.54250827806034
+    },
+    {
+      "thicknessNm": 495,
+      "rmsDeg": 75.25042517281024
+    },
+    {
+      "thicknessNm": 497.5,
+      "rmsDeg": 76.12592030284272
+    },
+    {
+      "thicknessNm": 500,
+      "rmsDeg": 76.42471171617959
+    },
+    {
+      "thicknessNm": 502.5,
+      "rmsDeg": 76.31661140516
+    },
+    {
+      "thicknessNm": 505,
+      "rmsDeg": 76.40117418833499
+    },
+    {
+      "thicknessNm": 507.5,
+      "rmsDeg": 76.77459323876819
+    },
+    {
+      "thicknessNm": 510,
+      "rmsDeg": 78.0286348423287
+    },
+    {
+      "thicknessNm": 512.5,
+      "rmsDeg": 78.184724889151
+    },
+    {
+      "thicknessNm": 515,
+      "rmsDeg": 77.17932919976509
+    },
+    {
+      "thicknessNm": 517.5,
+      "rmsDeg": 77.225662425512
+    },
+    {
+      "thicknessNm": 520,
+      "rmsDeg": 77.63473493747924
+    },
+    {
+      "thicknessNm": 522.5,
+      "rmsDeg": 78.6351717254185
+    },
+    {
+      "thicknessNm": 525,
+      "rmsDeg": 79.40925672636985
+    },
+    {
+      "thicknessNm": 527.5,
+      "rmsDeg": 79.81407605010874
+    },
+    {
+      "thicknessNm": 530,
+      "rmsDeg": 79.12436689442835
+    },
+    {
+      "thicknessNm": 532.5,
+      "rmsDeg": 79.07377210015967
+    },
+    {
+      "thicknessNm": 535,
+      "rmsDeg": 79.21896569583083
+    },
+    {
+      "thicknessNm": 537.5,
+      "rmsDeg": 79.17680522879505
+    },
+    {
+      "thicknessNm": 540,
+      "rmsDeg": 79.6886484097896
+    },
+    {
+      "thicknessNm": 542.5,
+      "rmsDeg": 79.74984571857071
+    },
+    {
+      "thicknessNm": 545,
+      "rmsDeg": 79.8689638617467
+    },
+    {
+      "thicknessNm": 547.5,
+      "rmsDeg": 79.51168859419178
+    },
+    {
+      "thicknessNm": 550,
+      "rmsDeg": 80.19481456810712
+    },
+    {
+      "thicknessNm": 552.5,
+      "rmsDeg": 80.88855803432122
+    },
+    {
+      "thicknessNm": 555,
+      "rmsDeg": 81.08284393433976
+    },
+    {
+      "thicknessNm": 557.5,
+      "rmsDeg": 81.03366260688662
+    },
+    {
+      "thicknessNm": 560,
+      "rmsDeg": 80.16959611887785
+    },
+    {
+      "thicknessNm": 562.5,
+      "rmsDeg": 80.43108151282686
+    },
+    {
+      "thicknessNm": 565,
+      "rmsDeg": 80.99319013156747
+    },
+    {
+      "thicknessNm": 567.5,
+      "rmsDeg": 80.52590953415898
+    },
+    {
+      "thicknessNm": 570,
+      "rmsDeg": 80.26340633615222
+    },
+    {
+      "thicknessNm": 572.5,
+      "rmsDeg": 80.25349592849686
+    },
+    {
+      "thicknessNm": 575,
+      "rmsDeg": 80.69656162202003
+    },
+    {
+      "thicknessNm": 577.5,
+      "rmsDeg": 82.00972201213142
+    },
+    {
+      "thicknessNm": 580,
+      "rmsDeg": 82.15029155990888
+    },
+    {
+      "thicknessNm": 582.5,
+      "rmsDeg": 80.95279986937308
+    },
+    {
+      "thicknessNm": 585,
+      "rmsDeg": 80.137090677142
+    },
+    {
+      "thicknessNm": 587.5,
+      "rmsDeg": 79.90327657494522
+    },
+    {
+      "thicknessNm": 590,
+      "rmsDeg": 80.120945443613
+    },
+    {
+      "thicknessNm": 592.5,
+      "rmsDeg": 81.06078531984792
+    },
+    {
+      "thicknessNm": 595,
+      "rmsDeg": 80.33729113780153
+    },
+    {
+      "thicknessNm": 597.5,
+      "rmsDeg": 79.96566423148334
+    },
+    {
+      "thicknessNm": 600,
+      "rmsDeg": 79.9305748717711
+    },
+    {
+      "thicknessNm": 602.5,
+      "rmsDeg": 79.48868715255195
+    },
+    {
+      "thicknessNm": 605,
+      "rmsDeg": 79.55606171234389
+    },
+    {
+      "thicknessNm": 607.5,
+      "rmsDeg": 79.23540982099001
+    },
+    {
+      "thicknessNm": 610,
+      "rmsDeg": 78.7866775111425
+    },
+    {
+      "thicknessNm": 612.5,
+      "rmsDeg": 78.40520974910984
+    },
+    {
+      "thicknessNm": 615,
+      "rmsDeg": 78.28335097778897
+    },
+    {
+      "thicknessNm": 617.5,
+      "rmsDeg": 78.43970341828583
+    },
+    {
+      "thicknessNm": 620,
+      "rmsDeg": 78.00861243597139
+    },
+    {
+      "thicknessNm": 622.5,
+      "rmsDeg": 77.54132337589415
+    },
+    {
+      "thicknessNm": 625,
+      "rmsDeg": 77.40325449193153
+    },
+    {
+      "thicknessNm": 627.5,
+      "rmsDeg": 76.94560757389999
+    },
+    {
+      "thicknessNm": 630,
+      "rmsDeg": 77.44660172921368
+    },
+    {
+      "thicknessNm": 632.5,
+      "rmsDeg": 78.02546245550579
+    },
+    {
+      "thicknessNm": 635,
+      "rmsDeg": 77.8300392354422
+    },
+    {
+      "thicknessNm": 637.5,
+      "rmsDeg": 77.28042177910318
+    },
+    {
+      "thicknessNm": 640,
+      "rmsDeg": 76.31011130249422
+    },
+    {
+      "thicknessNm": 642.5,
+      "rmsDeg": 75.9094326187698
+    },
+    {
+      "thicknessNm": 645,
+      "rmsDeg": 75.79802825880193
+    },
+    {
+      "thicknessNm": 647.5,
+      "rmsDeg": 75.81909423547015
+    },
+    {
+      "thicknessNm": 650,
+      "rmsDeg": 76.8250746471133
+    },
+    {
+      "thicknessNm": 652.5,
+      "rmsDeg": 77.1708525918712
+    },
+    {
+      "thicknessNm": 655,
+      "rmsDeg": 77.35199956909653
+    },
+    {
+      "thicknessNm": 657.5,
+      "rmsDeg": 76.61285966933687
+    },
+    {
+      "thicknessNm": 660,
+      "rmsDeg": 76.45084616305091
+    },
+    {
+      "thicknessNm": 662.5,
+      "rmsDeg": 76.25048925127274
+    },
+    {
+      "thicknessNm": 665,
+      "rmsDeg": 76.1887470025178
+    },
+    {
+      "thicknessNm": 667.5,
+      "rmsDeg": 76.1068364078807
+    },
+    {
+      "thicknessNm": 670,
+      "rmsDeg": 75.9849545265868
+    },
+    {
+      "thicknessNm": 672.5,
+      "rmsDeg": 76.78029087787276
+    },
+    {
+      "thicknessNm": 675,
+      "rmsDeg": 76.36563670671437
+    },
+    {
+      "thicknessNm": 677.5,
+      "rmsDeg": 76.10715748880838
+    },
+    {
+      "thicknessNm": 680,
+      "rmsDeg": 76.25633593548329
+    },
+    {
+      "thicknessNm": 682.5,
+      "rmsDeg": 76.54044162399182
+    },
+    {
+      "thicknessNm": 685,
+      "rmsDeg": 77.40392492194674
+    },
+    {
+      "thicknessNm": 687.5,
+      "rmsDeg": 78.12362109170782
+    },
+    {
+      "thicknessNm": 690,
+      "rmsDeg": 77.18305395398767
+    },
+    {
+      "thicknessNm": 692.5,
+      "rmsDeg": 76.98873452621889
+    },
+    {
+      "thicknessNm": 695,
+      "rmsDeg": 78.3265032323536
+    },
+    {
+      "thicknessNm": 697.5,
+      "rmsDeg": 78.3097375909933
+    },
+    {
+      "thicknessNm": 700,
+      "rmsDeg": 78.13849437865004
+    },
+    {
+      "thicknessNm": 702.5,
+      "rmsDeg": 77.91707522437429
+    },
+    {
+      "thicknessNm": 705,
+      "rmsDeg": 77.85396550524639
+    },
+    {
+      "thicknessNm": 707.5,
+      "rmsDeg": 78.10601951340688
+    },
+    {
+      "thicknessNm": 710,
+      "rmsDeg": 78.2138180375747
+    },
+    {
+      "thicknessNm": 712.5,
+      "rmsDeg": 78.42749772751513
+    },
+    {
+      "thicknessNm": 715,
+      "rmsDeg": 78.3889983735363
+    },
+    {
+      "thicknessNm": 717.5,
+      "rmsDeg": 79.3206210508701
+    },
+    {
+      "thicknessNm": 720,
+      "rmsDeg": 78.89073637300693
+    },
+    {
+      "thicknessNm": 722.5,
+      "rmsDeg": 78.35795149781636
+    },
+    {
+      "thicknessNm": 725,
+      "rmsDeg": 78.4653094908875
+    },
+    {
+      "thicknessNm": 727.5,
+      "rmsDeg": 78.46114765710539
+    },
+    {
+      "thicknessNm": 730,
+      "rmsDeg": 78.09702403939269
+    },
+    {
+      "thicknessNm": 732.5,
+      "rmsDeg": 78.3852050530612
+    },
+    {
+      "thicknessNm": 735,
+      "rmsDeg": 77.89451679118399
+    },
+    {
+      "thicknessNm": 737.5,
+      "rmsDeg": 77.96245523861036
+    },
+    {
+      "thicknessNm": 740,
+      "rmsDeg": 79.34563508486215
+    },
+    {
+      "thicknessNm": 742.5,
+      "rmsDeg": 79.01369800485095
+    },
+    {
+      "thicknessNm": 745,
+      "rmsDeg": 78.80816901629292
+    },
+    {
+      "thicknessNm": 747.5,
+      "rmsDeg": 78.07855323852462
+    },
+    {
+      "thicknessNm": 750,
+      "rmsDeg": 77.21399941815511
+    },
+    {
+      "thicknessNm": 752.5,
+      "rmsDeg": 75.8543382412764
+    },
+    {
+      "thicknessNm": 755,
+      "rmsDeg": 75.71712483464879
+    },
+    {
+      "thicknessNm": 757.5,
+      "rmsDeg": 75.69315871665066
+    },
+    {
+      "thicknessNm": 760,
+      "rmsDeg": 75.85794284904703
+    },
+    {
+      "thicknessNm": 762.5,
+      "rmsDeg": 76.9390595113863
+    },
+    {
+      "thicknessNm": 765,
+      "rmsDeg": 75.96778664339182
+    },
+    {
+      "thicknessNm": 767.5,
+      "rmsDeg": 74.83110703753027
+    },
+    {
+      "thicknessNm": 770,
+      "rmsDeg": 74.33806398721757
+    },
+    {
+      "thicknessNm": 772.5,
+      "rmsDeg": 73.94566438523233
+    },
+    {
+      "thicknessNm": 775,
+      "rmsDeg": 73.77561325110906
+    },
+    {
+      "thicknessNm": 777.5,
+      "rmsDeg": 73.694841498884
+    },
+    {
+      "thicknessNm": 780,
+      "rmsDeg": 73.50928603868776
+    },
+    {
+      "thicknessNm": 782.5,
+      "rmsDeg": 72.65971623364572
+    },
+    {
+      "thicknessNm": 785,
+      "rmsDeg": 71.99706881965422
+    },
+    {
+      "thicknessNm": 787.5,
+      "rmsDeg": 71.41867197626928
+    },
+    {
+      "thicknessNm": 790,
+      "rmsDeg": 71.14566037343033
+    },
+    {
+      "thicknessNm": 792.5,
+      "rmsDeg": 71.10618591688775
+    },
+    {
+      "thicknessNm": 795,
+      "rmsDeg": 69.98636369533686
+    },
+    {
+      "thicknessNm": 797.5,
+      "rmsDeg": 69.58845768032181
+    },
+    {
+      "thicknessNm": 800,
+      "rmsDeg": 69.5310808102411
+    },
+    {
+      "thicknessNm": 802.5,
+      "rmsDeg": 69.32022011703414
+    },
+    {
+      "thicknessNm": 805,
+      "rmsDeg": 69.66697493417507
+    },
+    {
+      "thicknessNm": 807.5,
+      "rmsDeg": 69.65939365892622
+    },
+    {
+      "thicknessNm": 810,
+      "rmsDeg": 69.5683016781752
+    },
+    {
+      "thicknessNm": 812.5,
+      "rmsDeg": 69.31598866892315
+    },
+    {
+      "thicknessNm": 815,
+      "rmsDeg": 68.18839982683396
+    },
+    {
+      "thicknessNm": 817.5,
+      "rmsDeg": 68.19961786309207
+    },
+    {
+      "thicknessNm": 820,
+      "rmsDeg": 67.359784691988
+    },
+    {
+      "thicknessNm": 822.5,
+      "rmsDeg": 65.3268040031702
+    },
+    {
+      "thicknessNm": 825,
+      "rmsDeg": 64.3411712927451
+    },
+    {
+      "thicknessNm": 827.5,
+      "rmsDeg": 64.34788926682646
+    },
+    {
+      "thicknessNm": 830,
+      "rmsDeg": 65.17739670144289
+    },
+    {
+      "thicknessNm": 832.5,
+      "rmsDeg": 65.28180479014163
+    },
+    {
+      "thicknessNm": 835,
+      "rmsDeg": 65.4011897012299
+    },
+    {
+      "thicknessNm": 837.5,
+      "rmsDeg": 65.6001733131994
+    },
+    {
+      "thicknessNm": 840,
+      "rmsDeg": 66.27924483906608
+    },
+    {
+      "thicknessNm": 842.5,
+      "rmsDeg": 67.30340057417212
+    },
+    {
+      "thicknessNm": 845,
+      "rmsDeg": 66.58121682535798
+    },
+    {
+      "thicknessNm": 847.5,
+      "rmsDeg": 64.86172146124981
+    },
+    {
+      "thicknessNm": 850,
+      "rmsDeg": 64.68703747964508
+    },
+    {
+      "thicknessNm": 852.5,
+      "rmsDeg": 65.51407080807138
+    },
+    {
+      "thicknessNm": 855,
+      "rmsDeg": 65.68679399259292
+    },
+    {
+      "thicknessNm": 857.5,
+      "rmsDeg": 65.72521272973906
+    },
+    {
+      "thicknessNm": 860,
+      "rmsDeg": 65.67297205216448
+    },
+    {
+      "thicknessNm": 862.5,
+      "rmsDeg": 65.5260289517608
+    },
+    {
+      "thicknessNm": 865,
+      "rmsDeg": 65.45372799665603
+    },
+    {
+      "thicknessNm": 867.5,
+      "rmsDeg": 66.18385260651308
+    },
+    {
+      "thicknessNm": 870,
+      "rmsDeg": 67.26615580785976
+    },
+    {
+      "thicknessNm": 872.5,
+      "rmsDeg": 68.1739991415598
+    },
+    {
+      "thicknessNm": 875,
+      "rmsDeg": 69.09292225276734
+    },
+    {
+      "thicknessNm": 877.5,
+      "rmsDeg": 70.1173000462667
+    },
+    {
+      "thicknessNm": 880,
+      "rmsDeg": 70.60453959976695
+    },
+    {
+      "thicknessNm": 882.5,
+      "rmsDeg": 70.65784502222307
+    },
+    {
+      "thicknessNm": 885,
+      "rmsDeg": 70.53518778299463
+    },
+    {
+      "thicknessNm": 887.5,
+      "rmsDeg": 69.61512619413944
+    },
+    {
+      "thicknessNm": 890,
+      "rmsDeg": 69.88169350861352
+    },
+    {
+      "thicknessNm": 892.5,
+      "rmsDeg": 70.24379178874375
+    },
+    {
+      "thicknessNm": 895,
+      "rmsDeg": 71.28453235480173
+    },
+    {
+      "thicknessNm": 897.5,
+      "rmsDeg": 72.3109459995979
+    },
+    {
+      "thicknessNm": 900,
+      "rmsDeg": 72.63936244552193
+    },
+    {
+      "thicknessNm": 902.5,
+      "rmsDeg": 72.2751542699139
+    },
+    {
+      "thicknessNm": 905,
+      "rmsDeg": 71.39892837148867
+    },
+    {
+      "thicknessNm": 907.5,
+      "rmsDeg": 71.27368054781208
+    },
+    {
+      "thicknessNm": 910,
+      "rmsDeg": 72.37215610375402
+    },
+    {
+      "thicknessNm": 912.5,
+      "rmsDeg": 73.11926238642347
+    },
+    {
+      "thicknessNm": 915,
+      "rmsDeg": 75.31570230789012
+    },
+    {
+      "thicknessNm": 917.5,
+      "rmsDeg": 75.84102838662825
+    },
+    {
+      "thicknessNm": 920,
+      "rmsDeg": 76.67590677125101
+    },
+    {
+      "thicknessNm": 922.5,
+      "rmsDeg": 77.06411534050079
+    },
+    {
+      "thicknessNm": 925,
+      "rmsDeg": 77.12473485140633
+    },
+    {
+      "thicknessNm": 927.5,
+      "rmsDeg": 76.42254739413714
+    },
+    {
+      "thicknessNm": 930,
+      "rmsDeg": 76.34979092971686
+    },
+    {
+      "thicknessNm": 932.5,
+      "rmsDeg": 76.01250645299164
+    },
+    {
+      "thicknessNm": 935,
+      "rmsDeg": 75.23733839905516
+    },
+    {
+      "thicknessNm": 937.5,
+      "rmsDeg": 74.95070035311747
+    },
+    {
+      "thicknessNm": 940,
+      "rmsDeg": 76.41891857461401
+    },
+    {
+      "thicknessNm": 942.5,
+      "rmsDeg": 77.33587154913336
+    },
+    {
+      "thicknessNm": 945,
+      "rmsDeg": 77.36929051510918
+    },
+    {
+      "thicknessNm": 947.5,
+      "rmsDeg": 77.51475301547974
+    },
+    {
+      "thicknessNm": 950,
+      "rmsDeg": 78.30883944291693
+    },
+    {
+      "thicknessNm": 952.5,
+      "rmsDeg": 78.4533901019516
+    },
+    {
+      "thicknessNm": 955,
+      "rmsDeg": 78.46681260554992
+    },
+    {
+      "thicknessNm": 957.5,
+      "rmsDeg": 78.2608195394873
+    },
+    {
+      "thicknessNm": 960,
+      "rmsDeg": 78.72476628789047
+    },
+    {
+      "thicknessNm": 962.5,
+      "rmsDeg": 79.50557541398412
+    },
+    {
+      "thicknessNm": 965,
+      "rmsDeg": 79.88319263531696
+    },
+    {
+      "thicknessNm": 967.5,
+      "rmsDeg": 79.04706938062151
+    },
+    {
+      "thicknessNm": 970,
+      "rmsDeg": 79.12393482800934
+    },
+    {
+      "thicknessNm": 972.5,
+      "rmsDeg": 80.11798122191298
+    },
+    {
+      "thicknessNm": 975,
+      "rmsDeg": 80.36702701540409
+    },
+    {
+      "thicknessNm": 977.5,
+      "rmsDeg": 80.5467310032265
+    },
+    {
+      "thicknessNm": 980,
+      "rmsDeg": 80.74862321874754
+    },
+    {
+      "thicknessNm": 982.5,
+      "rmsDeg": 81.09790387737158
+    },
+    {
+      "thicknessNm": 985,
+      "rmsDeg": 80.59575001698167
+    },
+    {
+      "thicknessNm": 987.5,
+      "rmsDeg": 80.38459933149248
+    },
+    {
+      "thicknessNm": 990,
+      "rmsDeg": 80.10952607018199
+    },
+    {
+      "thicknessNm": 992.5,
+      "rmsDeg": 80.14848319853368
+    },
+    {
+      "thicknessNm": 995,
+      "rmsDeg": 80.22788630105758
+    },
+    {
+      "thicknessNm": 997.5,
+      "rmsDeg": 80.28802167505705
+    },
+    {
+      "thicknessNm": 1000,
+      "rmsDeg": 80.33513172420803
+    }
+  ],
+  "provenance": {
+    "kind": "model-derived",
+    "spectrum": {
+      "kind": "synthetic independent reference",
+      "method": "separate Python complex characteristic-matrix implementation",
+      "knownThicknessNm": 123.4,
+      "acceptanceIntervalNm": [
+        123.38,
+        123.42
+      ],
+      "warning": "Synthetic optical constants; not traceable hardware or measured wafer."
+    },
+    "origin": "coherent recursive Fresnel / ideal fixed optical constants"
+  }
+}

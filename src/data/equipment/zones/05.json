@@ -64,9 +64,10 @@
     "inputs": "Sample topography, specified tip geometry, XY raster and calibration",
     "outputs": "Apparent height image and roughness metrics with tip and sample provenance",
     "acceptance": "Image a narrow isolated ridge using two spherical probe radii with ideal tracking. The broader probe widens its apparent base while preserving peak height above the flat background.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built · metric AVH-1000, legacy Icon SPM, NanoScope V and RTESP-300",
+    "simulationStatus": "Verified synthetic rigid-surface AFM raster; ideal hemisphere only",
+    "integrationStatus": "Interactive station, heightmap/CSV exchange and metric VR action targets",
+    "simulator": "/simulations/equipment/05-03/simulator/"
   },
   {
     "id": "05-04",
@@ -84,9 +85,10 @@
     "inputs": "Wavelength array, incidence angles, layered optical model and measured or synthetic polarization spectra",
     "outputs": "Fitted thickness, assumed optical constants, residuals and ambiguity indicators",
     "acceptance": "Fit a reference film of independently known thickness using fixed optical constants. Compare thickness to its reference interval and inspect residuals across the measured wavelength range.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric legacy alpha-SE; nominal envelope and angle indexes",
+    "simulationStatus": "Independent Fresnel and film thickness checks; ambiguity profiles",
+    "integrationStatus": "Interactive optics and spectrum contract; headset not tested",
+    "simulator": "/simulations/equipment/05-04/simulator/"
   },
   {
     "id": "05-05",
@@ -126,7 +128,7 @@
   {
     "id": "05-06",
     "name": "Four-point probe",
-    "model": "CDE ResMap (exact configuration pending)",
+    "model": "CDE ResMap 178 · manual load, Jandel 1 mm inline cartridge",
     "evidence": "B",
     "priority": "P1",
     "page": 19,
@@ -139,9 +141,10 @@
     "inputs": "Conducting film map, calibrated four-tip geometry, drive current and voltage reading",
     "outputs": "Sheet resistance map in Ω/square with geometry correction and calibration ID",
     "acceptance": "Use an ideal infinite thin sheet with equally spaced collinear probes. Compare inferred sheet resistance to (π/ln 2) × V/I; reversing current reverses voltage and preserves resistance.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Reference-anchored metric GLB; inferred rear and travel",
+    "simulationStatus": "Infinite and NBS circular sheet corrections; reversal and maps",
+    "integrationStatus": "Interactive result export and voltage-map import; headset not tested",
+    "simulator": "/simulations/equipment/05-06/simulator/"
   },
   {
     "id": "05-07",
@@ -205,7 +208,7 @@
   {
     "id": "05-10",
     "name": "Raman microscope",
-    "model": "Horiba LabRAM (model variant pending)",
+    "model": "HORIBA LabRAM HR Evolution, Olympus BX-series / 532 nm virtual branch",
     "evidence": "B",
     "priority": "P2",
     "page": 20,
@@ -218,9 +221,10 @@
     "inputs": "Reference Raman spectra, calibrated shift axis and XY sampling grid",
     "outputs": "Shift spectra and spatial component-intensity map",
     "acceptance": "Assign two reference spectra with distinct isolated peaks to alternating tiles. Integrated peak-window maps must reproduce the known tiles without swapping axes.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB with cabinet, microscope, visor, moving objective and stage",
+    "simulationStatus": "Verified analytical shift, linewidth and oriented silicon/polystyrene peak-area maps",
+    "integrationStatus": "Dedicated interactive simulator and typed spectra/map export",
+    "simulator": "/simulations/equipment/05-10/simulator/"
   },
   {
     "id": "05-11",

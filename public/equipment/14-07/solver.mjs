@@ -32,7 +32,7 @@ export function dispatch(s,a,v){
   return {ok:true,state:{...s,record:t.value,loaded:true,taredMg:s.record.panId===t.value.panId&&s.record.panMg===t.value.panMg?s.taredMg:null}};
  }
  if(a==='preset'){
-  const n=fixture(v??'gross');return {ok:true,state:{...s,record:n,taredMg:s.record.panId===n.panId&&s.record.panMg===n.panMg?s.taredMg:null}};
+  const n=fixture(v==='drift'?'gross':v??'gross',v==='drift');return {ok:true,state:{...s,record:n,taredMg:s.record.panId===n.panId&&s.record.panMg===n.panMg?s.taredMg:null}};
  }
  if(a==='blank')return {ok:true,state:{...s,applyBlank:!!v}};
  if(a==='replay')return replay(s);

@@ -81,9 +81,10 @@
     "inputs": "Tribology geometry, normal load, sliding trajectory and calibrated friction coefficient",
     "outputs": "Tangential-force trace (N), friction coefficient and fixture metadata",
     "acceptance": "Slide a constant-friction phantom in both directions. Tangential force must reverse sign and its magnitude divided by normal load must recover the input coefficient.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric MCR 302 plus three-contact cell; inferred accessory details",
+    "simulationStatus": "Verified constant kinetic friction, sinusoidal rotation, signed force and torque",
+    "integrationStatus": "Operable station, JSON trace and reusable controller target contract",
+    "simulator": "/simulations/equipment/14-04/simulator/"
   },
   {
     "id": "14-05",
@@ -134,7 +135,7 @@
   {
     "id": "14-07",
     "name": "Thermogravimetric analyzer",
-    "model": "TA Instruments TGA Q50",
+    "model": "TA Instruments Q50 TGA, standard vertical furnace",
     "evidence": "B",
     "priority": "P3",
     "page": 44,
@@ -147,9 +148,10 @@
     "inputs": "Pan tare, initial specimen mass, timestamped temperature and reference mass series",
     "outputs": "Tare-corrected mass fraction and mass-change curve versus temperature",
     "acceptance": "Replay a 10 mg sample ending at 8 mg with a constant 2 mg pan. Terminal retained mass must be 80% regardless of whether the pan offset is included before tare.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric editable chassis, furnace slide and hanging pan GLB",
+    "simulationStatus": "Verified synthetic gross/net tare and blank correction",
+    "integrationStatus": "Dedicated interactive replay with typed JSON and CSV",
+    "simulator": "/simulations/equipment/14-07/simulator/"
   },
   {
     "id": "14-08",
@@ -174,7 +176,7 @@
   {
     "id": "14-09",
     "name": "Infrared thermal camera",
-    "model": "FLIR E95",
+    "model": "FLIR E95 / 24° lens (78502-0301)",
     "evidence": "B",
     "priority": "P2",
     "page": 45,
@@ -187,9 +189,10 @@
     "inputs": "Surface radiance image, emissivity, reflected-temperature assumption, pixel scale and calibration",
     "outputs": "Surface-temperature map with units, spatial scale and emissivity metadata",
     "acceptance": "Feed a uniform synthetic blackbody frame at the calibration reference with emissivity one. Every valid pixel should recover the assigned temperature within calibration tolerance.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB · catalog envelope, inferred controls and lens",
+    "simulationStatus": "Band-integrated surface radiometry on a synthetic reference plate",
+    "integrationStatus": "Revisioned thermal map JSON and pixel CSV",
+    "simulator": "/simulations/equipment/14-09/simulator/"
   },
   {
     "id": "14-10",
