@@ -1,0 +1,16 @@
+{
+  "method":"Lock the documented HKUST bare enclosure and vector results for a detached printed poster before implementation. Center positions computed manually from the separately authored first-dot datum and signed row/column indices.",
+  "cases":[
+    {"id":"width","expected":0.500,"tolerance":0.00001,"unit":"m"},
+    {"id":"height","expected":1.455,"tolerance":0.00001,"unit":"m"},
+    {"id":"depth","expected":1.050,"tolerance":0.00001,"unit":"m"},
+    {"id":"marker-a-x","expected":10,"unit":"mm"},
+    {"id":"marker-a-y","expected":23,"unit":"mm"},
+    {"id":"marker-b-x","expected":80,"unit":"mm"},
+    {"id":"marker-b-y","expected":67,"unit":"mm"},
+    {"id":"distance","expected":82.68010643437755,"tolerance":1e-10,"unit":"mm"},
+    {"id":"edge-extent","expected":true,"unit":"boolean"},
+    {"id":"outside-rejected","expected":true,"unit":"boolean"},
+    {"id":"physical-action-rejected","expected":true,"unit":"boolean"}
+  ]
+}
