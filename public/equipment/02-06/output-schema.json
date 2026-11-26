@@ -52,6 +52,14 @@
     },
     "provenance": {
       "type": "object"
+    },
+    "aerialAssay": {
+      "type": "object",
+      "description": "Optional independent line/space optical assay with its own geometry and same commanded dose."
+    },
+    "dose": {
+      "type": "object",
+      "description": "Ideal geometric local dose; clear apertures are a union, not additive within one shot."
     }
   }
 }
