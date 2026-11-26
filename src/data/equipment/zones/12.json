@@ -155,9 +155,15 @@
     "inputs": "Time-indexed fluorescent volume, effective lattice PSF, plane schedule and bleaching model",
     "outputs": "Time-resolved optical sections, exposure history and separated bleaching metadata",
     "acceptance": "Image stationary fluorescent fiducials with bleaching switched on and off. Centroids should remain fixed while only the enabled run follows the selected intensity-decay curve.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: metric sealed Lattice module and separate playback desk",
+    "simulationStatus": "First pass: synthetic stack viewer only; acquisition and bleaching outside scope",
+    "integrationStatus": "Linked: read-only plane picker and exports",
+    "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/12-08/simulator/"
+      ]
+    ]
   },
   {
     "id": "12-09",
