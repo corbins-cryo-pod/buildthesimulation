@@ -1,0 +1,9 @@
+{
+  "instrument": "BTS-ANALYSIS Mk I, original unmanufactured workstation design",
+  "dimensionsMm": {"consoleTop":[1100,620,31],"consoleTopHeight":918,"rasterScreenHousing":[415,267,34],"waveformScreenHousing":[415,267,34]},
+  "evidence": [
+    {"topic":"Integer sample indices for sorted event trains", "source":"SpikeInterface core documentation", "url":"https://spikeinterface.readthedocs.io/en/latest/modules/core.html", "application":"The standalone educational fixture follows this sample-index convention; no SpikeInterface runtime or clustering is included."},
+    {"topic":"Sampling rate, recording start and reference-clock Units times", "source":"NWB schema 2.11.0: TimeSeries and Units", "url":"https://nwb-schema.readthedocs.io/en/latest/format.html", "application":"The independent console separates sample rate and acquisition time origin from trigger-relative viewing time; export is not NWB."}
+  ],
+  "measurement": "No manufactured unit or physical measurements exist. Console and screens are original design geometry, not an OEM or software screenshot."
+}

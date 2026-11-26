@@ -115,9 +115,16 @@
     "inputs": "Fluorescent volume, nonlinear excitation PSF, attenuation model and scan schedule",
     "outputs": "Depth-indexed fluorescence images and timestamps with optical parameters",
     "acceptance": "Use uniform, unsaturated virtual fluorophore without bleaching. Doubling excitation intensity at a fixed depth should quadruple two-photon fluorescence in the quadratic model.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built",
+    "simulationStatus": "Verified passive inert XY/XZ stack; no excitation model",
+    "integrationStatus": "Built",
+    "simulator": "/simulations/equipment/12-06/simulator/",
+    "related": [
+      [
+        "Axio Examiner NLO display and checked passive stack",
+        "/simulations/equipment/12-06/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "12-07",

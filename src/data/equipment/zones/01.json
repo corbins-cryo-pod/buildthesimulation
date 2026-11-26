@@ -117,15 +117,20 @@
     "inputs": "Channel map, timestamped voltage trace, spike labels and event clock",
     "outputs": "Spike/event table, waveform summaries and versioned analysis dataset",
     "acceptance": "Import a synthetic two-channel recording with four labeled spikes and a known trigger. Verify event count, channel assignment and trigger alignment within one sample after export and reload.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Built",
+    "simulationStatus": "Built",
+    "integrationStatus": "Built",
     "related": [
       [
         "Recording Library",
         "/recordings/"
+      ],
+      [
+        "Console model, method and references",
+        "/simulations/equipment/01-05/simulator/#evidence"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/01-05/simulator/"
   },
   {
     "id": "01-06",

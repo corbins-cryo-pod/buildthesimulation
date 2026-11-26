@@ -108,9 +108,14 @@
     "inputs": "Pan load, tare mass, calibration, display increment and optional noise seed",
     "outputs": "Tared mass reading with units, resolution and calibration ID",
     "acceptance": "With noise disabled, tare a 2 g container and add a 5 g reference weight. Read zero before addition and 5 g afterward to the configured display increment.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric AE100 with traceable dimensions and inferred details",
+    "simulationStatus": "Deterministic tare, gross capacity, rounding and synthetic gain verified",
+    "integrationStatus": "Simulator, reading-log JSON and named actions; headset not tested",
+    "simulator": "/simulations/equipment/16-06/simulator/",
+    "related": [
+      ["Mettler Toledo AE100 operating instructions", "https://acmerevival.com/wp-content/uploads/2021/03/MettlerAE100AnalyticalBalanceUserManual.pdf"],
+      ["University of Utah installed AE100", "https://mcl.mse.utah.edu/equipment/analytical-balances/"]
+    ]
   },
   {
     "id": "16-07",

@@ -1,0 +1,99 @@
+{
+  "schema": "bts.balance.weighing.v1",
+  "deviceId": "16-06",
+  "origin": "synthetic",
+  "units": "g",
+  "capacityG": 109,
+  "displayStepG": 0.0001,
+  "convention": "gross capacity before tare; positive and negative ties round away from zero",
+  "readings": [
+    {
+      "revision": 1,
+      "parentRevision": null,
+      "sampleId": "INERT-R1-VESSEL",
+      "fixtureId": "BTS-AE100-TEACHING-KIT",
+      "result": "simulated",
+      "nominalGrossG": 2,
+      "displayG": 0,
+      "tareG": 2,
+      "calibrationId": "AE100-NOMINAL-SIM-R1",
+      "displayStepG": 0.0001,
+      "optionalNoise": {
+        "enabled": false,
+        "seed": 3407
+      },
+      "stabilitySpanG": 0,
+      "simulatedTimeS": 5,
+      "trace": [
+        {
+          "timeS": 0,
+          "signalGrossG": 2.002
+        },
+        {
+          "timeS": 1,
+          "signalGrossG": 1.9993268718605335
+        },
+        {
+          "timeS": 2,
+          "signalGrossG": 1.9996731594524395
+        },
+        {
+          "timeS": 3,
+          "signalGrossG": 2
+        },
+        {
+          "timeS": 4,
+          "signalGrossG": 2
+        },
+        {
+          "timeS": 5,
+          "signalGrossG": 2
+        }
+      ]
+    },
+    {
+      "revision": 2,
+      "parentRevision": 1,
+      "sampleId": "INERT-R1-WEIGHT",
+      "fixtureId": "BTS-AE100-TEACHING-KIT",
+      "result": "simulated",
+      "nominalGrossG": 7,
+      "displayG": 5,
+      "tareG": 2,
+      "calibrationId": "AE100-NOMINAL-SIM-R1",
+      "displayStepG": 0.0001,
+      "optionalNoise": {
+        "enabled": false,
+        "seed": 3407
+      },
+      "stabilitySpanG": 0,
+      "simulatedTimeS": 5,
+      "trace": [
+        {
+          "timeS": 0,
+          "signalGrossG": 7.002
+        },
+        {
+          "timeS": 1,
+          "signalGrossG": 6.999326871860534
+        },
+        {
+          "timeS": 2,
+          "signalGrossG": 6.999673159452439
+        },
+        {
+          "timeS": 3,
+          "signalGrossG": 7
+        },
+        {
+          "timeS": 4,
+          "signalGrossG": 7
+        },
+        {
+          "timeS": 5,
+          "signalGrossG": 7
+        }
+      ]
+    }
+  ]
+}
