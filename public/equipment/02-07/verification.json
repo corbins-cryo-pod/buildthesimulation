@@ -257,6 +257,14 @@
       "unit": "boolean",
       "tolerance": 0,
       "pass": true
+    },
+    {
+      "test": "Desktop nominal open height (20 in, approximate bounding box)",
+      "expected": 508,
+      "actual": 508.14709846901127,
+      "unit": "mm",
+      "tolerance": 2,
+      "pass": true
     }
   ],
   "limits": [
