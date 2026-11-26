@@ -1,0 +1,14 @@
+{
+  "declaredBeforeImplementation": true,
+  "method": "Hand-derived impedance and linear-ramp calibration circuits. Not physical 600+ data. Close numeric tolerances catch solver, unit and sign errors, not instrument uncertainty.",
+  "fixtures": [
+    {"id":"parallel-corner","sample":"0 Ω in series with (1000 Ω ∥ 1 µF)","drive":"EIS at f = 159.154943091895 Hz, 10 mV RMS","expected":{"reOhm":500,"imOhm":-500,"magnitudeOhm":707.1067811865476,"phaseDeg":-45},"units":"Ω, degrees","tolerance":1e-8},
+    {"id":"series-intercept","sample":"100 Ω in series with (1000 Ω ∥ 1 µF)","drive":"Same EIS corner","expected":{"reOhm":600,"imOhm":-500},"units":"Ω","tolerance":1e-8},
+    {"id":"cap-up","sample":"2.2 µF pure capacitor","drive":"+0.1 V/s","expected":{"currentA":2.2e-7},"units":"A","tolerance":1e-13},
+    {"id":"cap-down","sample":"2.2 µF pure capacitor","drive":"−0.1 V/s","expected":{"currentA":-2.2e-7},"units":"A","tolerance":1e-13},
+    {"id":"ramp-finite-rs","sample":"100 Ω in series with (1000 Ω ∥ 0.0011 F)","drive":"Start discharged, +1 V/s for 1 s; time constant 0.1 s","expected":{"currentA":0.0018181405455183985},"units":"A","tolerance":1e-11},
+    {"id":"ohmic-degenerate","sample":"80 Ω in series with (120 Ω ∥ 0 F)","drive":"0.2 V steady boundary","expected":{"currentA":0.001},"units":"A","tolerance":1e-13},
+    {"id":"open-ref","sample":"Disconnect virtual REF","drive":"EIS or CV","expected":"Run rejected before any points","units":"State","tolerance":null},
+    {"id":"load-overload","sample":"1 Ω dummy load","drive":"10 mV RMS and a 1 mA simulated range","expected":"Overload; physical impedance withheld at flagged points","units":"State","tolerance":null}
+  ]
+}
