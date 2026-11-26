@@ -95,9 +95,10 @@
     "inputs": "Moving fluorescent volume, disk-section response, exposure windows and z-stack schedule",
     "outputs": "Time-indexed optical stacks with per-plane timestamps and motion blur",
     "acceptance": "Move a fluorescent point at constant known speed. Its centroid should follow the midpoint of each exposure and the added motion blur should grow with speed × exposure.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric exterior GLB and original source",
+    "simulationStatus": "Static instrument and offline synthetic grid registration",
+    "integrationStatus": "Linked standalone scene; no hardware or other station connection",
+    "simulator": "/simulations/equipment/12-05/simulator/"
   },
   {
     "id": "12-06",
