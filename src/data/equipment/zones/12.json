@@ -15,9 +15,15 @@
     "inputs": "Specimen mesh or volume, calibrated zoom and stereo geometry, focus and stage transform",
     "outputs": "Left/right inspection views, scale bar and sample-space pointer location",
     "acceptance": "Image a calibrated grid with an elevated fiducial. Grid spacing should match its scale bar at two zoom settings and the raised point should show the expected disparity sign.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: metric V12 silhouette, optics and manufactured ruler",
+    "simulationStatus": "First pass: verified scale and ideal stereo disparity direction",
+    "integrationStatus": "Linked: binocular views, sample pointer and JSON",
+    "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/12-01/simulator/"
+      ]
+    ]
   },
   {
     "id": "12-02",
