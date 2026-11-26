@@ -127,7 +127,7 @@
   {
     "id": "07-05",
     "name": "Live cell imager",
-    "model": "Sartorius Incucyte S3",
+    "model": "Sartorius Incucyte S3 (closed exterior)",
     "evidence": "B",
     "priority": "P2",
     "page": 24,
@@ -140,9 +140,10 @@
     "inputs": "Plate map, well and field IDs, timestamped image series and segmentation masks",
     "outputs": "Per-well confluence and morphology time courses with coverage and missing-data flags",
     "acceptance": "Replay two wells with independent known foreground-area ramps. Each trace must recover its own occupied fraction and a skipped well must display a missing value.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented post-2021 closed microscope and inactive controller",
+    "simulationStatus": "Detached static nonbiological graphic review only; no acquisition or growth",
+    "integrationStatus": "Interactive exterior, independent chart, missing-mask JSON and metric ray targets",
+    "simulator": "/simulations/equipment/07-05/simulator/"
   },
   {
     "id": "07-06",

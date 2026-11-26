@@ -1,0 +1,24 @@
+{
+  "schema": "bts.static-graphic-review.v1",
+  "sampleId": "BTS-STATIC-GRAPHIC-01",
+  "revision": 1,
+  "sourceType": "Immutable author-designed nonbiological printed graphic and supplied region masks; not acquired imagery.",
+  "coordinateFrame": "Zero-based [x0,y0,x1,y1), image pixels from top left, +Y down.",
+  "dimensionsPx": [
+    40,
+    24
+  ],
+  "pitchMm": 0.25,
+  "region": "A",
+  "regionBoundsPx": [
+    2,
+    4,
+    18,
+    20
+  ],
+  "regionPixels": 256,
+  "maskStatus": "present",
+  "markedPixels": 48,
+  "markedFraction": 0.1875,
+  "markedAreaMm2": 3
+}

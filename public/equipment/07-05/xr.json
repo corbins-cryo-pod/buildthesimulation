@@ -1,0 +1,125 @@
+{
+  "schema": "bts.xr-instrument.v1",
+  "equipmentId": "07-05",
+  "units": "m",
+  "axes": "+X right, +Y up, +Z front",
+  "nominalBoundsM": {
+    "min": [
+      -0.473,
+      0,
+      -0.3195
+    ],
+    "max": [
+      0.9035,
+      0.3915,
+      0.2635
+    ]
+  },
+  "budget": {
+    "byteLength": 624480,
+    "nodes": 88,
+    "triangles": 8966
+  },
+  "actions": [
+    {
+      "node": "REVIEW_A",
+      "action": "review",
+      "value": "A",
+      "label": "Read stage-independent static graphic region A",
+      "boundsAtRestM": {
+        "min": [
+          0.5835,
+          0.125,
+          0.1705
+        ],
+        "max": [
+          0.6525,
+          0.149,
+          0.1775
+        ]
+      }
+    },
+    {
+      "node": "REVIEW_B",
+      "action": "review",
+      "value": "B",
+      "label": "Read stage-independent static graphic region B",
+      "boundsAtRestM": {
+        "min": [
+          0.6895,
+          0.125,
+          0.1705
+        ],
+        "max": [
+          0.7585,
+          0.149,
+          0.1775
+        ]
+      }
+    },
+    {
+      "node": "REVIEW_U",
+      "action": "review",
+      "value": "U",
+      "label": "Read stage-independent static graphic region U",
+      "boundsAtRestM": {
+        "min": [
+          0.7955,
+          0.125,
+          0.1705
+        ],
+        "max": [
+          0.8645,
+          0.149,
+          0.1775
+        ]
+      }
+    }
+  ],
+  "actionModule": "graphic.mjs",
+  "interactionNotes": "Place the static synthetic chart texture at the +Z face of INK_GAUGE_SCREEN. All labels and ray hits are on the detached viewer, not the two unpowered instrument shells.",
+  "verification": [
+    {
+      "node": "MICROSCOPE_DATUM",
+      "axis": "x",
+      "expectedMm": 450,
+      "actualMm": 449.99999,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "MICROSCOPE_DATUM",
+      "axis": "z",
+      "expectedMm": 478,
+      "actualMm": 477.99999,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "S3_DORMANT_MICROSCOPE",
+      "axis": "y",
+      "expectedMm": 320,
+      "actualMm": 319.99999,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "CONTROLLER_DATUM",
+      "axis": "x",
+      "expectedMm": 432,
+      "actualMm": 432.00001,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "CONTROLLER_DATUM",
+      "axis": "z",
+      "expectedMm": 577,
+      "actualMm": 577.00002,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "S3_DORMANT_CONTROLLER",
+      "axis": "y",
+      "expectedMm": 140,
+      "actualMm": 140,
+      "toleranceMm": 0.05
+    }
+  ]
+}
