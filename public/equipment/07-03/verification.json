@@ -107,6 +107,26 @@
         null
       ],
       "outcome": "Pass"
+    },
+    {
+      "id": "dark-lamp",
+      "category": "Control response",
+      "test": "At zero synthetic illumination and fixed exposure, the stage micrometer has zero red/green/blue signal and no pitch reading.",
+      "expected": true,
+      "units": "dark and unreadable",
+      "tolerance": "exact",
+      "actual": true,
+      "outcome": "Pass"
+    },
+    {
+      "id": "half-lamp",
+      "category": "Control response",
+      "test": "Halving excitation at fixed exposure halves the green-channel peak for the unsaturated fluorescent morphology, within 8-bit rounding.",
+      "expected": 0.5,
+      "units": "peak signal ratio",
+      "tolerance": 0.006,
+      "actual": 0.5,
+      "outcome": "Pass"
     }
   ],
   "experimentalComparison": "Independent measured microscope images with known camera calibration and focus offsets were unavailable. The acceptance experiment uses a generated metrology fixture."

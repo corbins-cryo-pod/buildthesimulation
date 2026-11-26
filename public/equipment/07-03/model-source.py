@@ -5,7 +5,7 @@ Blender mm coordinates here use +X operator right, +Y rear, +Z up. The glTF
 exports metres, +Y up, +Z towards operator. The specimen axis is X=Z=0.
 Reference: Nikon 2CE-MPJH-9 (2407), pp. 2–3 & 6–8. Stand shell profiles,
 arm sections, fasteners, nosepiece tilt and accessory offsets are reconstructed
-from drawings and photos. They have no manufacturer CAD or survey provenance.
+from drawings and photos. The amber operator plate is based on M700 E p. 2. These features have no manufacturer CAD or survey provenance.
 """
 import math
 import sys
@@ -173,16 +173,16 @@ standpart(casting("Condenser bridge",[
     (77,434,47),(142,270,73),(148,248,79),(149,225,80),(145,140,95),
     (140,127,98),(131,116,96)],dark,3))
 standpart(block("Rear fluorescence lamp enclosure",(0,180,92),(174,44,180),silver,6))
-standpart(block("Rear lamp service cover",(0,201.3,91),(132,2,133),dark,4))
-standpart(block("470 nm LED bay",(0,203.5,97),(83,3,89),black,3))
-for x in [-33,33]:
-    for z in [61,132]:
-        standpart(tube(f"Rear lamp fastener {x} {z}",(x,205,z),(0,1,0),2,1,steel,14))
-for j in range(7):
-    standpart(block(f"Rear cover vent {j}",(0,205.5,119-j*5),(51,.7,1.7),seam,.7))
-standpart(face("Module service designation","LED 470",(0,205.6,70),5,white,(0,1,0)))
-standpart(block("DC power entry",(-55,200.8,37),(26,4,19),knurled,2))
-standpart(tube("DC connector recess",(-55,202.5,37),(0,1,0),4.8,1,seam))
+# M700 E p. 2: removable light-colored rear enclosure and bottom-center AC inlet.
+standpart(block("Rear service panel",(0,202.6,88),(146,4,161),ivory,7))
+standpart(face("Rear housing identification","Nikon",(0,205.0,92),7,dark,(0,1,0)))
+for x in [-61,61]:
+    for z in [17,155]:
+        standpart(tube(f"Rear panel fastener {x} {z}",(x,204.8,z),(0,1,0),1.8,.8,steel,14))
+standpart(block("AC inlet bezel",(0,204.7,22),(26,4,20),black,2))
+standpart(block("AC inlet cavity",(0,207,22),(20,1,14),seam,2))
+for x,z in [(-5,21),(5,21),(0,25)]:
+    standpart(block(f"AC inlet contact {x}",(x,207.9,z),(1.4,1,3.2),steel,.3))
 for x in [-1,1]:
     for y,w in [(-183,44),(135,93)]:
         standpart(tube(f"Foot {x} {y}",(x*w,y,0),up,7,4,knurled,24))
@@ -200,6 +200,18 @@ for side in [-1,1]:
         [(0,16),(6,18),(24,19),(29,18)],knurled))
     standpart(tube(f"Ocular inset {side}",(x,-348,371),eye_axis,14.1,1.3,seam))
     standpart(tube(f"Ocular front lens {side}",(x,-348.7,371.7),eye_axis,11,1.1,ocular))
+# Locate the eyeguard top at the 406 mm drawing ordinate for 64 mm PD.
+for ocular_part in list(stand.children):
+    if ocular_part.name.startswith(("Prism bridge","Eyepiece barrel","Adjustable diopter","Eye guard","Ocular inset","Ocular front lens")):
+        ocular_part.location += xyz((0,5.5,21.7))
+shield=material("Operator shielding plate amber",(.87,.23,.028),.05,.28,.65)
+standpart(block("Upright operator shielding plate",(0,-144,256),(125,3,104),shield,3))
+for x in [-47,47]:
+    standpart(block(f"Shield mount {x}",(x,-144,208),(7,8,10),dark,1))
+standpart(tube("Diascopic intensity dial",(-66,-177,54),(-1,0,0),10,8,knurled,60))
+standpart(block("Episcopic intensity adjuster",(82,-109,24),(3,27,10),knurled,2))
+standpart(block("Main power rocker",(-98,126,20),(6,19,15),black,2))
+standpart(block("Transmitted shutter tab",(-36,0,412),(34,24,3),black,1.2))
 # Position of the ocular ends is checked against the drawing at PD 64 mm.
 # Controls on the sloped operator face; the printed label and switches sit
 # flush with that face. The switch function is represented by the state LEDs.
@@ -208,7 +220,7 @@ def panel_y(z): return -209-(z-7)*.281
 for x,z,m,name in [(-15,94,cyan,"DiaIndicator"),(15,94,blue,"EpiIndicator")]:
     standpart(tube(name,(x,panel_y(z)-1,z),front_normal,2.4,1.0,m,24))
     standpart(tube(name+" switch",(x,panel_y(z-11)-2,z-11),front_normal,5.1,2,black,32))
-standpart(tube("Main power key",(0,panel_y(52)-1.3,52),front_normal,8,2,steel,40))
+standpart(tube("Illumination on-off key",(0,panel_y(52)-1.3,52),front_normal,8,2,steel,40))
 standpart(tube("Front identification medallion",(0,panel_y(146)-1,146),front_normal,19,1.8,steel,48))
 standpart(tube("Front badge face",(0,panel_y(146)-3,146),front_normal,17.9,1,ivory,48))
 for title,z,size in [("Nikon",151,7),("ECLIPSE",143,4),("Ts2-FL",137,4)]:
@@ -220,9 +232,11 @@ for sign,name in [(-1,"FocusKnobL"),(1,"FocusKnobR")]:
     g=group(name,(sign*66,-105,64),stand)
     beneath(turned(name+" drum",(0,0,0),(sign,0,0),
         [(0,29),(5,31),(23,31),(26,28),(30,28)],knurled,160,.75),g)
+    fine=group("FineFocusL" if sign<0 else "FineFocusR",(0,0,0),g)
     beneath(turned(name+" fine",(0,0,0),(sign,0,0),
-        [(29,22),(31,23),(47,23),(49,20),(52,19)],knurled,144,.53),g)
-    beneath(tube(name+" cap",(sign*50,0,0),(sign,0,0),13,2,black,40),g)
+        [(29,22),(31,23),(47,23),(49,20),(52,19)],knurled,144,.53),fine)
+    beneath(tube(name+" cap",(sign*50,0,0),(sign,0,0),13,2,black,40),fine)
+    beneath(block(name+" fine index",(sign*52,0,12),(1,1.25,5),ivory,.25),fine)
 # Fixed 170 X ×247 Y plain stage; the mechanical stage is an accessory.
 under=standpart(ring_plate("PlainStage",0,2,194.5,(170,247),(106,106),11,black,True))
 standpart(torus("Stage ring well",(0,2,200),53.8,.85,steel))
@@ -267,8 +281,8 @@ for alt,name in [(False,"StageMicrometer"),(True,"SpecimenSlide")]:
         # True 10 µm (0.01 mm) physical pitch. Single mesh avoids 101 draws.
         pts=[];faces=[]
         for i in range(101):
-            x=-.5+i*.01;length=.32 if i%10==0 else (.22 if i%5==0 else .15)
-            j=len(pts);pts.extend(tuple(xyz(v)) for v in [(x-.001,0,1.24),(x+.001,0,1.24),(x+.001,length,1.24),(x-.001,length,1.24)])
+            x=-.5+i*.01;half_height=.022 if i%5==0 else .013
+            j=len(pts);pts.extend(tuple(xyz(v)) for v in [(x-.00075,-half_height,1.24),(x+.00075,-half_height,1.24),(x+.00075,half_height,1.24),(x-.00075,half_height,1.24)])
             faces.append((j,j+1,j+2,j+3))
         beneath(mesh("Micrometer graduation 100 x 10 micrometres",pts,faces,dark),fixture)
         beneath(torus("Engraved finder circle",(0,0,1.23),2.0,.022,black),fixture)
@@ -289,13 +303,20 @@ for i in range(5):
         # Tip-to-slide clearances 6.2 and 3.1 mm respectively. Mount lengths
         # include the inferred turret seating depth in this reconstruction.
         tip=203.4-6.2-129-31*math.sin(rad(15)) if i==0 else 203.4-3.1-129-31*math.sin(rad(15))
-        beneath(turned("CFI ADL barrel "+str(i),(0,0,0),up,
-            [(2,12.1),(5,12.1),(6,14.6),(8,15.4),(13,15.4),
-             (14,14),(tip-14,14),(tip-12,12.5),(tip-4,9.1),(tip,8.1)],bright,56),unit)
-        beneath(turned("Objective knurl "+str(i),(0,0,0),up,[(7,15.6),(12,15.6)],steel,100,.33),unit)
-        beneath(tube("Objective power band "+str(i),(0,0,18),up,14.15,2.5,(yellow,green)[i],56),unit)
-        beneath(tube("Objective front glass "+str(i),(0,0,tip-.15),up,5.1,.15,glass),unit)
-        beneath(face("Objective inscription "+str(i),("10x  /  0.25","20x  /  0.40")[i],(0,-14.15,38),3,dark),unit)
+        # Nikon objective outline: M25 mount, 27 mm collar, 25 mm barrel.
+        shoulder=tip-(53.0 if i==0 else 56.1)
+        nose_radius=6.75 if i==0 else 4.1
+        neck_radius=8 if i==0 else 8.5
+        profile=[(shoulder-4.5,11.9),(shoulder-.4,12.5),(shoulder,13.5),
+                 (shoulder+9.7,13.5),(shoulder+10,12.5),(shoulder+42,12.5),
+                 (shoulder+46.5,neck_radius),(tip-3.7,neck_radius),(tip,nose_radius)]
+        beneath(turned("CFI ADL barrel "+str(i),(0,0,0),up,profile,bright,64),unit)
+        beneath(turned("Objective knurl "+str(i),(0,0,0),up,
+                [(shoulder+.6,13.36),(shoulder+9.4,13.36)],steel,100,.14),unit)
+        beneath(tube("Objective power band "+str(i),(0,0,shoulder+12),up,12.55,1.8,(yellow,green)[i],64),unit)
+        beneath(tube("Objective front glass "+str(i),(0,0,tip-.15),up,nose_radius*.72,.15,glass,64),unit)
+        beneath(face("Objective inscription "+str(i),("10x / 0.25","20x / 0.40")[i],(0,-12.6,shoulder+31),2.9,dark),unit)
+        beneath(face("Objective ring marking "+str(i),"Ph1 ADL",(0,-12.6,shoulder+26),2.5,dark),unit)
     else:
         beneath(turned("Unused objective socket cap "+str(i),(0,0,2),up,
                        [(0,12),(3,13),(5,13),(6,10)],knurled,44),unit)

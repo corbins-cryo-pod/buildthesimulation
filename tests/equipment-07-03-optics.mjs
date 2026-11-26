@@ -19,7 +19,11 @@ function checkGate(job) {
   try{run(job);return 'enabled';}
   catch(error){assert.match(error.message,/Fluorescence requires/);return 'rejected';}
 }
+const darkLamp = run({lampPercent:0});
+const labeled = {mode:'fluorescence',fixture:'neurites'};
 const actuals={
+  'dark-lamp': darkLamp.metadata.measurement === null && darkLamp.pixels.every((v,i) => v === (i%4===3 ? 255 : 0)),
+  'half-lamp': contrast(run({...labeled,lampPercent:50})) / contrast(run(labeled)),
   pitch10:ten.metadata.measurement.pitchUm,
   pitch20:twenty.metadata.measurement.pitchUm,
   ratio:twenty.metadata.measurement.pitchPx/ten.metadata.measurement.pitchPx,
@@ -68,6 +72,7 @@ test('calibrated raster at matching pixel pitch reproduces the interior grayscal
   assert.throws(()=>acquire(job,{...r,pixelSizeUm:0}),/calibration/);
   assert.throws(()=>acquire(job,{...r,pixels:[44,89]}),/8-bit/);
   assert.throws(()=>acquire(job),/Load a raster/);
+  assert.throws(()=>acquire({...job,lampPercent:50},r),/100% lamp/);
 });
 
 test('revision and prior sample records are retained without mutating input',()=>{
@@ -85,7 +90,7 @@ test('invalid physical settings and measurement endpoints are reported',()=>{
   for(const [override,pattern] of [
     [{objective:15},/objective/],[{mode:'darkfield'},/Choose phase/],[{focusUm:13},/focus|Focus/],
     [{variant:'Ts2-R'},/stand/],[{stageYUm:NaN},/field center/],[{sampleId:''},/sample ID/],
-    [{fixture:'C11'},/calibrated raster/],[{parentRevision:-1},/revision/]
+    [{lampPercent:101},/lamp intensity/],[{lampPercent:null},/lamp intensity/],[{fixture:'C11'},/calibrated raster/],[{parentRevision:-1},/revision/]
   ])assert.throws(()=>run(override),pattern);
   assert.throws(()=>measureDistance(makeExample(),[-1,0],[2,2]),/pixel centers/);
 });
@@ -100,5 +105,14 @@ test('published PNG and metadata pair reproduce the pixel-derived acquisition',(
   assert.equal(png.subarray(0,8).toString('hex'),'89504e470d0a1a0a');
   assert.equal(png.readUInt32BE(16),acquisition.width);
   assert.equal(png.readUInt32BE(20),acquisition.height);
-  assert.ok(png.includes(Buffer.from(acquisition.sampleId)));
+  const entries=[];
+  for(let offset=8;offset<png.length;){
+    const length=png.readUInt32BE(offset);
+    if(png.toString('ascii',offset+4,offset+8)==='iTXt'){
+      const data=png.subarray(offset+8,offset+8+length).toString('utf8');
+      if(data.startsWith('bts.acquisition\0\0\0\0\0')) entries.push(JSON.parse(data.slice('bts.acquisition'.length+5)));
+    }
+    offset+=length+12;
+  }
+  assert.deepEqual(entries,[read('example-acquisition')]);
 });

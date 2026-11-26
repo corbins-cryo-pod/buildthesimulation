@@ -57,6 +57,9 @@ export async function openMicroscope(host) {
   const ruler = part('StageMicrometer');
   const slide = part('SpecimenSlide');
   slide.scale.setScalar(1);
+  const fineKnobs = ['FineFocusL','FineFocusR'].map(part);
+  const knobHome = fineKnobs.map(node => node.quaternion.clone());
+  const x = new THREE.Vector3(1,0,0);
   const selector = part('EpiSelector');
   const selectorHome = selector.quaternion.clone();
   const indicators = ['DiaIndicator', 'EpiIndicator'].map(name => {
@@ -73,6 +76,8 @@ export async function openMicroscope(host) {
     turret.quaternion.copy(home.turret).multiply(q.setFromAxisAngle(y, objective === 20 ? -2 * Math.PI / 5 : 0));
     focus.position.copy(home.focus);
     focus.position.y += focusUm * 1e-6;
+    const turn = (focusUm / 200) * 2 * Math.PI;
+    fineKnobs.forEach((knob,i) => knob.quaternion.copy(knobHome[i]).multiply(q.setFromAxisAngle(x,turn)));
     carriage.position.copy(home.stage);
     carriage.position.x -= stageXUm * 1e-6;
     carriage.position.z += stageYUm * 1e-6;

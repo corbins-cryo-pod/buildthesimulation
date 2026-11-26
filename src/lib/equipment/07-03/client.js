@@ -70,7 +70,7 @@ export async function start() {
     const sampleId = $('sample').value.trim();
     if (!/^[A-Za-z0-9][A-Za-z0-9_.-]{0,63}$/.test(sampleId)) throw Error('Use a sample ID of 1–64 letters, numbers, periods, underscores or hyphens, starting with a letter or number.');
     return {...makeExample(), ...parents.get(sampleId), sampleId, fixture:$('fixture').value, mode:$('mode').value,
-      epiInstalled:$('epi').checked, objective:Number($('objective').value), focusUm:$('focus').valueAsNumber,
+      epiInstalled:$('epi').checked, lampPercent:$('fixture').value === 'raster' ? 100 : $('lamp').valueAsNumber, objective:Number($('objective').value), focusUm:$('focus').valueAsNumber,
       stageXUm:$('x').valueAsNumber, stageYUm:$('y').valueAsNumber};
   }
   function syncInstrument() {
@@ -108,7 +108,10 @@ export async function start() {
   function refresh() {
     captured = false; frame = null; firstPoint = cursor = null;
     $('mount').textContent = loaded ? 'Unload slide' : 'Load slide';
-    $('import-area').hidden = $('fixture').value !== 'raster';
+    const isRaster = $('fixture').value === 'raster';
+    $('import-area').hidden = !isRaster;
+    $('lamp').disabled = isRaster;
+    if (isRaster) $('lamp').value = '100';
     $('ruler').textContent = 'Capture a field to measure between two points.';
     $('fov').textContent = $('sampling').textContent = $('pitch').textContent = '—';
     syncInstrument();
@@ -143,7 +146,7 @@ export async function start() {
   };
   $('mount').onclick = () => { loaded = !loaded; refresh(); };
   for (const key of ['objective','mode','raster-channel']) $(key).onchange = refresh;
-  for (const key of ['x','y','focus','input-pitch','sample']) $(key).oninput = refresh;
+  for (const key of ['x','y','focus','lamp','input-pitch','sample']) $(key).oninput = refresh;
   $('center').onclick = () => { for (const key of ['focus','x','y']) $(key).value = '0'; refresh(); };
   $('epi').onchange = () => {
     const enabled = $('epi').checked;
@@ -213,7 +216,7 @@ export async function start() {
     log.prepend(row);
     const result = m.measurement ? 'Detected ' + m.measurement.markCount + ' marks, spaced ' + fmt(m.measurement.pitchPx,3) + ' px apart.'
       : job.fixture === 'micrometer' && job.mode === 'fluorescence' ? 'The unlabeled micrometer emits no fluorescence.'
-      : job.fixture === 'micrometer' ? 'Too few divisions are visible to measure pitch.' : 'Select two points to measure a structure.';
+      : job.fixture === 'micrometer' ? 'There is insufficient visible tick contrast to measure pitch.' : 'Select two points to measure a structure.';
     status('Captured ' + m.sampleId + ' revision ' + m.revision + '. ' + result);
     updateActions();
   };

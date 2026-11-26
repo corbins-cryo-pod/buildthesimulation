@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://buildthesimulation.com/equipment/07-03/output-schema.json",
   "title": "Nikon ECLIPSE Ts2-FL virtual observation record, version 1",
-  "description": "Coordinate unit \u00b5m at the sample plane; calibration is nominal. Paired PNG is an annotated relative-intensity image. Null pitch means the fixture, channel or visible features do not support the adjacent-mark calculation.",
+  "description": "Coordinate unit µm at the sample plane; calibration is nominal. Paired PNG is an annotated relative-intensity image. Null pitch means the fixture, channel or visible features do not support the adjacent-mark calculation.",
   "type": "object",
   "properties": {
     "schema": {
@@ -251,6 +251,12 @@
         },
         "epiInstalled": {
           "type": "boolean"
+        },
+        "lampPercent": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Relative synthetic lamp intensity at fixed exposure. Imported rasters retain their source intensities at 100%."
         }
       },
       "required": [
@@ -261,7 +267,8 @@
         "focusUm",
         "stageXUm",
         "stageYUm",
-        "epiInstalled"
+        "epiInstalled",
+        "lampPercent"
       ],
       "additionalProperties": false
     },

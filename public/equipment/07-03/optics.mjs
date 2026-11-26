@@ -17,7 +17,7 @@ const scalar = (x, lo, hi) => Math.max(lo, Math.min(hi, x));
 
 export function makeExample() {
   return {sampleId:'MICROMETER-10UM', fixture:'micrometer', objective:10, variant:'Ts2-FL',
-    mode:'phase', epiInstalled:true, focusUm:0, stageXUm:0, stageYUm:0, parentRevision:0, history:[], contactIds:[]};
+    mode:'phase', epiInstalled:true, lampPercent:100, focusUm:0, stageXUm:0, stageYUm:0, parentRevision:0, history:[], contactIds:[]};
 }
 
 function checkJob(job) {
@@ -29,6 +29,9 @@ function checkJob(job) {
   if (!['phase','fluorescence'].includes(job.mode)) throw Error('Choose phase or fluorescence acquisition.');
   if (job.epiInstalled != null && typeof job.epiInstalled !== 'boolean') throw Error('Epi-module installation must be true or false.');
   if (job.mode === 'fluorescence' && (job.variant !== 'Ts2-FL' || job.epiInstalled===false)) throw Error('Fluorescence requires the configured Ts2-FL stand, blue LED and filter cube.');
+  const lampPercent = job.lampPercent === undefined ? 100 : job.lampPercent;
+  if (!finite(lampPercent, 0, 100)) throw Error('Set the relative lamp intensity to 0–100%.');
+  if (job.fixture === 'raster' && lampPercent !== 100) throw Error('Imported raster intensities require a 100% lamp setting.');
   if (!finite(job.focusUm,-12,12)) throw Error('Focus offset is outside the modeled ±12 µm range.');
   if (![job.stageXUm,job.stageYUm].every(x=>finite(x,-150,150))) throw Error('The digital field center must be within ±150 µm of the specimen origin.');
   if (!Number.isSafeInteger(job.parentRevision ?? 0) || !finite(job.parentRevision ?? 0,0,Number.MAX_SAFE_INTEGER-1)) throw Error('Provide a nonnegative parent revision.');
@@ -238,15 +241,18 @@ export function acquire(job,raster) {
       image=psf.map((v,i)=>.71-.61*v+.45*halo[i]);
     }
   }
+  // Synthetic illumination scales linearly at fixed exposure and is applied before 8-bit quantization.
+  const lampPercent = job.lampPercent ?? 100;
+  const gain = lampPercent / 100;
   const pixels=new Uint8ClampedArray(count*4);
   for(let i=0;i<count;i++){
-    const v=Math.round(255*scalar(image[i],0,1));
+    const v=Math.round(255*scalar(image[i]*gain,0,1));
     pixels[4*i]=mode==='phase'?v:Math.round(v*.10);
     pixels[4*i+1]=v;
     pixels[4*i+2]=mode==='phase'?v:Math.round(v*.17);
     pixels[4*i+3]=255;
   }
-  const acquisition={fixture,variant,mode,objective,focusUm,stageXUm,stageYUm,epiInstalled:variant==='Ts2-FL'&&(job.epiInstalled??true)};
+  const acquisition={fixture,variant,mode,objective,focusUm,stageXUm,stageYUm,lampPercent,epiInstalled:variant==='Ts2-FL'&&(job.epiInstalled??true)};
   const parentRevision=job.parentRevision??0, revision=parentRevision+1;
   const source=fixture==='raster'
     ? {kind:'calibrated-raster-resample',name:raster.sourceName,width:raster.width,height:raster.height,pixelSizeUm:raster.pixelSizeUm,channel:raster.channel}
