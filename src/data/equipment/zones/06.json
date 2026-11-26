@@ -167,9 +167,15 @@
     "inputs": "Module-to-channel map, flow target, sensor readings and calibrated pressure limits",
     "outputs": "Controller log with commanded pressure, measured flow, settling error and limit flags",
     "acceptance": "Drive a known synthetic hydraulic resistance with a reachable target, then an unreachable one. Check settling against the specified controller tolerance and pressure limiting for the second case.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: dimensioned original standalone Flow EZ shell",
+    "simulationStatus": "First pass: immutable detached drawing; hydraulic operation outside scope",
+    "integrationStatus": "Linked: documentary shell and geometric JSON",
+    "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/06-08/simulator/"
+      ]
+    ]
   },
   {
     "id": "06-09",
