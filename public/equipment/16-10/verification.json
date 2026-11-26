@@ -1,0 +1,56 @@
+[
+  {
+    "id": "centered",
+    "expected": {
+      "widthPerSideMm": 14,
+      "depthPerSideMm": 21,
+      "headroomMm": 49,
+      "fit": true
+    },
+    "actual": {
+      "widthPerSideMm": 14,
+      "depthPerSideMm": 21,
+      "headroomMm": 49,
+      "fit": true
+    },
+    "pass": true
+  },
+  {
+    "id": "oversize",
+    "expected": {
+      "widthPerSideMm": -2,
+      "fit": false
+    },
+    "actual": {
+      "widthPerSideMm": -2,
+      "fit": false
+    },
+    "pass": true
+  },
+  {
+    "id": "lid-guard",
+    "expected": {
+      "raised": false,
+      "result": null
+    },
+    "actual": {
+      "raised": false,
+      "result": null
+    },
+    "pass": true
+  },
+  {
+    "id": "register-audit",
+    "expected": {
+      "elapsedVirtualS": 20,
+      "status": "interrupted",
+      "completedCycleEntries": 0
+    },
+    "actual": {
+      "elapsedVirtualS": 20,
+      "status": "interrupted",
+      "completedCycleEntries": 0
+    },
+    "pass": true
+  }
+]
