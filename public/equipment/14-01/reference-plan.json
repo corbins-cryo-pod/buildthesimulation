@@ -1,0 +1,82 @@
+{
+  "declaredBeforeImplementation": true,
+  "method": "Analytic tension-bar and series compliance fixtures. Forces in N, displacement in m, engineering stress in Pa, stiffness in N/m. All fixtures are original ideal inert cases, not material or machine certification.",
+  "cases": [
+    {
+      "id": "catalog-slope",
+      "setup": "E=2 GPa, width 5 mm, t=1 mm, L=25 mm, rigid load train; x=0.10 mm.",
+      "expected": {
+        "areaM2": 0.000005,
+        "stiffnessNPerM": 400000,
+        "endForceN": 40,
+        "endStressPa": 8000000,
+        "endStrain": 0.004,
+        "modulusPa": 2000000000
+      },
+      "tolerances": {
+        "areaM2": 1e-15,
+        "stiffnessNPerM": 1e-7,
+        "endForceN": 1e-10,
+        "endStressPa": 0.00001,
+        "endStrain": 1e-12,
+        "modulusPa": 0.001
+      }
+    },
+    {
+      "id": "series-frame",
+      "setup": "Same coupon, K_frame=400 kN/m in series, x=0.10 mm.",
+      "expected": {
+        "stiffnessNPerM": 200000,
+        "endForceN": 20,
+        "endGaugeM": 0.00005,
+        "modulusPa": 2000000000
+      },
+      "tolerances": {
+        "stiffnessNPerM": 1e-7,
+        "endForceN": 1e-10,
+        "endGaugeM": 1e-12,
+        "modulusPa": 0.001
+      }
+    },
+    {
+      "id": "double-area",
+      "setup": "Increase width to 10 mm; same E/t/L, no frame compliance; x=0.10 mm.",
+      "expected": {
+        "areaM2": 0.00001,
+        "endForceN": 80,
+        "stiffnessNPerM": 800000
+      },
+      "tolerances": {
+        "areaM2": 1e-15,
+        "endForceN": 1e-10,
+        "stiffnessNPerM": 1e-7
+      }
+    },
+    {
+      "id": "sensor-over-range",
+      "setup": "Original specimen, 50 N cell range, x=0.20 mm; peak force demand 80 N.",
+      "expected": {
+        "idealEndForceN": 80,
+        "endForceN": null,
+        "overRange": true
+      },
+      "tolerances": {
+        "idealEndForceN": 1e-10
+      }
+    },
+    {
+      "id": "bounded-strain",
+      "setup": "Original specimen at x=1.0 mm, expected 4% strain beyond 2% training domain.",
+      "expected": {
+        "physicalForceWithheld": true,
+        "domainExceeded": true
+      },
+      "tolerances": {}
+    },
+    {
+      "id": "open-upper",
+      "setup": "Acquire with upper jaws open.",
+      "expected": "Close both virtual grips before measuring."
+    }
+  ]
+}
