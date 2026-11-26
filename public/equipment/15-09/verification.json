@@ -1,0 +1,105 @@
+{
+  "schema": "bts.detached-digital-code-pattern.verification.v1",
+  "metrics": {
+    "bytes": 166668,
+    "triangles": 3876,
+    "draws": 40,
+    "instrumentXYZM": [
+      0.6499999761581421,
+      2.1100000224338253,
+      0.7699999860487878
+    ]
+  },
+  "cases": [
+    {
+      "id": "width",
+      "expected": 0.65,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.6499999761581421,
+      "outcome": "PASS"
+    },
+    {
+      "id": "height",
+      "expected": 2.11,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 2.1100000224338253,
+      "outcome": "PASS"
+    },
+    {
+      "id": "depth",
+      "expected": 0.77,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.7699999860487878,
+      "outcome": "PASS"
+    },
+    {
+      "id": "stripe-mean",
+      "expected": 96,
+      "unit": "8-bit code",
+      "actual": 96,
+      "outcome": "PASS"
+    },
+    {
+      "id": "stripe-std",
+      "expected": 52.255781179374466,
+      "tolerance": 1e-9,
+      "unit": "8-bit code",
+      "actual": 52.25578117937446,
+      "outcome": "PASS"
+    },
+    {
+      "id": "bin-32",
+      "expected": 512,
+      "unit": "pixels",
+      "actual": 512,
+      "outcome": "PASS"
+    },
+    {
+      "id": "permutation-invariant",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "endpoint-mean",
+      "expected": 127.66666666666667,
+      "tolerance": 1e-9,
+      "unit": "8-bit code",
+      "actual": 127.66666666666667,
+      "outcome": "PASS"
+    },
+    {
+      "id": "endpoint-count",
+      "expected": 1024,
+      "unit": "pixels",
+      "actual": 1024,
+      "outcome": "PASS"
+    },
+    {
+      "id": "flat-std",
+      "expected": 0,
+      "unit": "8-bit code",
+      "actual": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "authored-shape",
+      "expected": 1536,
+      "unit": "pixels",
+      "actual": 1536,
+      "outcome": "PASS"
+    },
+    {
+      "id": "unsupported-command-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Classic cabinet outline and unrelated invented grayscale integer arrays; no optical instrumentation or measured data."
+}
