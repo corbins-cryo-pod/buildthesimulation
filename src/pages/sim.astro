@@ -1,17 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SimHero from "../components/SimHero.jsx";
 ---
 
 <Layout
   pageTitle="Peripheral Nerve Cross-Section"
   subtitle="Peripheral nerve cross-section simulation for stimulation and recording tests."
   description="Interactive peripheral nerve cross-section sandbox for exploring electrode geometry, stimulation, and simple recording readouts."
+  compactHeader={true}
 >
-  <section class="card" style="margin-top:14px;">
-    <p class="muted" style="margin:0;">
-      New here? Read the quick guide → <a href="/simulations/nerve-cross-section/guide/">How to use this simulation</a>
-    </p>
-  </section>
+  <SimHero
+    kicker="Stimulation & recording / Sandbox"
+    title="Peripheral Nerve Cross-Section"
+    intro="Electrode geometry, pulse stimulation and simple recording readouts on a single-fascicle nerve cross-section."
+    links={[{ href: "/simulations/nerve-cross-section/guide/", label: "How to use this simulation" }]}
+  />
 
   <section class="simShell">
     <aside class="panel" aria-label="Controls">
