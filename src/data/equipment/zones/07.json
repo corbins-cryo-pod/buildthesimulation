@@ -245,7 +245,7 @@
   {
     "id": "07-11",
     "name": "Plate reader",
-    "model": "Molecular Devices SpectraMax i3x",
+    "model": "Molecular Devices SpectraMax i3x (closed standalone)",
     "evidence": "B",
     "priority": "P2",
     "page": 26,
@@ -258,9 +258,10 @@
     "inputs": "Plate map, blank wells, reference intensities and calibration curve",
     "outputs": "Per-well absorbance or fluorescence record with blank correction and uncertainty",
     "acceptance": "Use a synthetic dilution series in the calibration range with a known blank offset. Recover the supplied slope and map each result back to its original well.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented metric standalone closed case",
+    "simulationStatus": "Detached static arbitrary-unit figure only; no instrument measurements",
+    "integrationStatus": "Interactive exterior, independent immutable chart, JSON and room VR anchors",
+    "simulator": "/simulations/equipment/07-11/simulator/"
   },
   {
     "id": "07-12",
