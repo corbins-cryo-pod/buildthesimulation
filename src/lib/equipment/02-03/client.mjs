@@ -25,6 +25,7 @@ async function initialize(){
   if(inside){inside.color.set(whiteLight?0xffffff:0xffbd62);inside.intensity=whiteLight?2.8:1.7}
   if(coupon)coupon.visible=loaded;
   const aid=getNode('small_coupon_adjustment_aid');if(aid){aid.visible=aidPlaced&&modelState.coupon_mm<=20;const scale=modelState.coupon_mm/10;for(const child of aid.children){if(child.userData.basePosition===undefined){child.userData.basePosition=child.position.toArray();child.userData.baseScale=child.scale.toArray()}const p=child.userData.basePosition,s=child.userData.baseScale;child.position.set(p[0]*scale,p[1],p[2]*scale);child.scale.set(s[0]*scale,s[1],s[2]*scale)}}
+  const medium=getNode('medium_coupon_adjustment_aid');if(medium){medium.visible=aidPlaced&&modelState.coupon_mm>20;medium.position.x=-modelState.coupon_mm/2000}
   if(surface){surface.scale.set(modelState.coupon_mm/1000,modelState.thickness_mm/1000,modelState.coupon_mm/1000);surface.position.y=modelState.thickness_mm/2000}
   if(led){led.material.color.set(busy?0xc52a35:0x202020);led.material.emissive.set(busy?0x8c1016:0)}
   if(vd){vd.material.color.set(vacuum?0x2e925b:0x25343a)}
