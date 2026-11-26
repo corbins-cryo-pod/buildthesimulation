@@ -1,0 +1,72 @@
+{
+  "schema": "bts.station.inverted-reticle.v1",
+  "equipment": "12-02",
+  "model": "./nikon-ti2-optical.glb",
+  "axes": "+Y up +Z front",
+  "units": "m",
+  "nodes": 96,
+  "bytes": 40188,
+  "triangles": 12832,
+  "hitTargets": [
+    {
+      "node": "Controller_magnification_dial",
+      "action": "toggle",
+      "label": "Change virtual objective",
+      "boundsM": {
+        "min": [
+          0.2765,
+          0.0415,
+          0.0905
+        ],
+        "max": [
+          0.3155,
+          0.0665,
+          0.1295
+        ]
+      }
+    },
+    {
+      "node": "Sealed_reticle",
+      "action": "measure",
+      "label": "Measure synthetic reticle",
+      "boundsM": {
+        "min": [
+          -0.0335,
+          0.3403,
+          0.0175
+        ],
+        "max": [
+          0.0335,
+          0.3483,
+          0.0645
+        ]
+      }
+    },
+    {
+      "node": "Controller_capture_key",
+      "action": "measure",
+      "label": "Measure synthetic reticle",
+      "boundsM": {
+        "min": [
+          0.309,
+          0.046,
+          0.137
+        ],
+        "max": [
+          0.335,
+          0.058,
+          0.161
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./reticle.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)",
+    "pose": "pose(state)"
+  },
+  "note": "No actual hardware action or headset test."
+}
