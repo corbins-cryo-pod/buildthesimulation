@@ -1,0 +1,31 @@
+{
+  "schema": "bts.synthetic-coordinate-card.v1",
+  "sampleId": "SLOPE-CARD-CM3050-01",
+  "revision": 1,
+  "provenance": "Original immutable inert 2D printed-card illustration; no instrument activity or measured hardware output.",
+  "coordinateFrame": "Card-local XY; +X right, +Y up; millimeters",
+  "selected": "P",
+  "selectedPositionMm": [
+    14,
+    12
+  ],
+  "referenceLine": {
+    "xInterceptMm": 5,
+    "slopeXPerY": 0.75
+  },
+  "fixedMarksMm": {
+    "P": [
+      14,
+      12
+    ],
+    "Q": [
+      32,
+      36
+    ]
+  },
+  "pToQ": {
+    "deltaXMm": 18,
+    "deltaYMm": 24,
+    "distanceMm": 30
+  }
+}

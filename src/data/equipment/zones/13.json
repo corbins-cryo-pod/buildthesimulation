@@ -247,7 +247,7 @@
   {
     "id": "13-13",
     "name": "Cryostat",
-    "model": "Leica CM3050 (S variant to verify)",
+    "model": "Leica CM3050 S (standard cabinet, closed exterior)",
     "evidence": "B",
     "priority": "P2",
     "page": 42,
@@ -260,9 +260,10 @@
     "inputs": "Frozen specimen volume, cutting-plane pose, section thickness and destination slide IDs",
     "outputs": "Child section images, parent-volume transforms, slab depths and slide assignments",
     "acceptance": "Cut through an oblique fiducial in a digital phantom. The section intercept should shift by the analytically expected amount with depth and map back to the parent line within voxel resolution.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented nominal closed CM3050 S cabinet and static side wheel; detached synthetic reader",
+    "simulationStatus": "Verified passive oblique-coordinate diagram only; no physical sample or cutting",
+    "integrationStatus": "Interactive cabinet view, inert coordinate-card export and stable VR anchors",
+    "simulator": "/simulations/equipment/13-13/simulator/"
   },
   {
     "id": "13-14",
