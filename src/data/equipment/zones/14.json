@@ -48,7 +48,7 @@
   {
     "id": "14-03",
     "name": "Rheometer",
-    "model": "TA Instruments DHR-2",
+    "model": "TA Instruments Discovery HR-2, 40 mm parallel plate / Peltier",
     "evidence": "B",
     "priority": "P1",
     "page": 43,
@@ -61,9 +61,10 @@
     "inputs": "Oscillation frequencies, strain amplitude, selected geometry, constitutive parameters or measured sweep",
     "outputs": "Frequency-indexed storage and loss moduli (Pa), fitted parameters and residuals",
     "acceptance": "Run a synthetic Newtonian liquid of viscosity η. Storage modulus should approach zero and loss modulus should follow ηω across the declared test band.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB with moving plate and Peltier fixture",
+    "simulationStatus": "Verified Newtonian and single-mode Maxwell frequency sweeps",
+    "integrationStatus": "Interactive bench and signed rheology data export",
+    "simulator": "/simulations/equipment/14-03/simulator/"
   },
   {
     "id": "14-04",

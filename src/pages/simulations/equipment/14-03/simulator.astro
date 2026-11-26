@@ -1,0 +1,76 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import check from '../../../../../public/equipment/14-03/verification.json';
+import g from '../../../../../public/equipment/14-03/asset-metrics.json';
+const a='/equipment/14-03/';
+const doc='https://www.tainstruments.com/pdf/site-prep-guides/DHR-1-2-3-site-prep.pdf#page=5';
+const man='https://www.tainstruments.com/wp-content/uploads/2018-06-Waters-TA-Roadshow-Rheology.pdf';
+const photo='https://mcf.nd.edu/assets/309290/rheometer.jpg';
+const stage='https://research.manchester.ac.uk/en/equipments/rheometer-dhr2/';
+---
+<Layout pageTitle="Rheometer" description="Virtual DHR-2 parallel-plate frequency sweep of passive Newtonian and Maxwell samples." wide={true}>
+<article id="dhr2">
+<nav><a href="/simulations/equipment/14-03/">← Equipment 14-03</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#dhr-evidence">References and checks</a></nav>
+<header><small>14-03 · LINEAR RHEOLOGY · VIRTUAL BENCH</small><h2>TA Instruments Discovery HR-2 rheometer</h2><p>Load a passive virtual liquid and measure how storage and loss moduli change with frequency. A Newtonian liquid stores no elastic energy; its loss modulus rises in exact proportion to angular frequency.</p></header>
+<div class="bench"><section class="panel"><h3>Parallel-plate fixture</h3>
+<div class="tools"><button data-dhr-view="orbit">Reset view</button><button data-dhr-view="front">Front controls</button><button data-dhr-view="stage">Plate close-up</button><button data-dhr-view="rear">Rear panel</button></div>
+<div id="dhr-viewer"></div><p id="dhr-model" role="status">Loading metric instrument…</p>
+<p>Drag to orbit and pinch or scroll to zoom. The model's front controls also raise the plate or run the sweep. During a sweep the spindle shows the selected physical angle at a slowed display pace. Head loading lift and small cabinet details are inferred; no physical headset check.</p>
+</section><section class="panel"><h3>Set gap, sample and frequency</h3>
+<div class="tools"><button id="dhr-head">Raise upper fixture</button><button id="dhr-load">Remove sample</button><button id="dhr-power">Standby</button><button id="dhr-reset">Restore Newtonian setup</button></div>
+<p id="dhr-sample"></p>
+<div class="tools"><button id="dhr-newton">Load Newtonian witness</button><button id="dhr-maxwell">Load Maxwell witness</button></div>
+<div class="fields"><label>Gap (mm)<input id="dhr-gapMm" type="number" min=".3" max="2" step="any"/></label>
+<label>Rim strain (%)<input id="dhr-strainPct" type="number" min=".05" max="5" step="any"/></label>
+<label>Start frequency (Hz)<input id="dhr-startHz" type="number" min=".05" max="20" step="any"/></label>
+<label>Stop frequency (Hz)<input id="dhr-stopHz" type="number" min=".05" max="20" step="any"/></label>
+<label>Number of log-spaced frequencies<input id="dhr-count" type="number" min="3" max="41"/></label>
+<label>Import a material JSON<input id="dhr-file" type="file" accept=".json,application/json"/></label></div>
+<p>Selected hardware: 40 mm upper parallel plate, Peltier lower stage. Isothermal calculation at 25 °C.</p>
+<div class="tools"><button id="dhr-run">Run frequency sweep</button><button id="dhr-json" disabled>Export JSON</button><button id="dhr-csv" disabled>Export CSV</button></div>
+<p id="dhr-status" aria-live="polite"></p></section></div>
+<section class="panel"><h3>Oscillation results</h3>
+<p id="dhr-fit" aria-live="polite"></p><p>Turquoise: storage G′. Gold: loss G″.</p><canvas id="dhr-plot" width="700" height="460" aria-label="Storage and loss modulus plot, with exact numerical results in the table below"></canvas>
+<div class="scroll"><table><thead><tr><th>Hz</th><th>G′ (Pa)</th><th>G″ (Pa)</th><th>Phase (°)</th><th>Torque (µN m)</th><th>Angle (mrad)</th></tr></thead><tbody id="dhr-rows"></tbody></table></div>
+<p><strong>Try it:</strong> The ready 2 Pa·s Newtonian example gives G′ = 0 and G″ = 1.257, 12.566 and 125.664 Pa at 0.1, 1 and 10 Hz. Double strain: both moduli stay put, but torque doubles. To compare a reversible elastic contribution, raise the fixture, load Maxwell witness, lower and run again.</p>
+</section>
+<section class="panel"><h3>Assumptions and file contract</h3>
+<p>With ω=2πf, an ideal Newtonian fluid gives G′=0 and G″=ηω. The single Maxwell mode uses G′=G₀(ωτ)²/[1+(ωτ)²] and G″=G₀ωτ/[1+(ωτ)²]. Here θ₀=γ<sub>rim</sub>h/R and the parallel-plate torque amplitude is πR³γ<sub>rim</sub>|G*|/2 after integrating over radius. The optional through-origin Newtonian fit to G″ is a diagnostic; it will have residual for a Maxwell fluid.</p>
+<p><strong>Important limit:</strong> assumes full fill, small imposed rim strain, no slip, isothermal linear response and negligible inertia. No squeezing, yielding, shear thinning, Peltier thermal dynamics, normal force or measured instrument sensitivity. Scans outside 0.05–20 Hz, 0.3–2 mm, 0.05–5% or fixture interlocks fail instead of showing a misleading result.</p>
+<p><a href={a+'example-material.json'}>Material input</a> · <a href={a+'example-sweep.json'}>Example output</a> · <a href={a+'contract.json'}>Formats and units</a>. Exports preserve specimen and run revisions, Hertz, angular frequency, Pa, and N m.</p></section>
+<section class="panel" id="dhr-evidence"><h3>Source views and checks</h3>
+<div class="refs">
+<figure><img src={a+'instrument-view.webp'} loading="lazy" alt="Original DHR-2 rendering showing graphite tower, orange stage and external control module"/><figcaption><strong>Legacy HR-2 and electronics module.</strong> Nominal 320 W × 760 H × 420 D mm instrument (excluding controller). See <a href={doc}>TA site-prep Rev L, p. 5</a> and the <a href={photo}>Notre Dame installation photograph</a>.</figcaption></figure>
+<figure><img src={a+'fixture-view.webp'} loading="lazy" alt="Original close-up of the 40 mm parallel plate above the Peltier stage"/><figcaption><strong>40 mm parallel plate and Peltier accessory.</strong> See <a href={stage}>Manchester DHR-2 geometry list</a> and <a href={man}>TA parallel-plate method notes</a>. Settings are numerical bounds, not instrument specifications or instructions for physical use.</figcaption></figure>
+</div>
+<p>Closed bounding model: {g.enclosureM.map(v=>(v*1000).toFixed(1)).join(' × ')} mm in X×Y×Z; exact 40 mm upper disk. Outer shape and named fixture faithful at first-pass level; ports and minor proportions inferred.</p>
+<p><a href={a+'dhr2.glb'}>Metric GLB</a> · <a href={a+'build-model.py'}>Editable Blender source</a> · <a href={a+'interaction.json'}>Spatial actions</a> · <a href={a+'verification.json'}>Verification JSON</a></p>
+<p>{check.scope}</p>
+<div class="scroll"><table><thead><tr><th>Case</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Outcome</th></tr></thead><tbody>{check.rows.map(o=><tr><td>{o.id}</td><td>{o.expected} {o.units}</td><td>{o.actual}</td><td>{o.tolerance}</td><td>{o.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+</section></article></Layout>
+<script>import '../../../../lib/equipment/14-03/client.mjs';</script>
+<style>
+#dhr2{max-width:1260px;margin:auto}
+#dhr2 header{margin:1.37rem 0 1rem} #dhr2 header p{max-width:78ch}
+.bench{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1rem}
+.panel{min-width:0;border:1px solid color-mix(in srgb,currentColor 32%,transparent);border-radius:.3rem;padding:clamp(.8rem,2vw,1.35rem);margin:.55rem 0}
+.panel h3{margin:0 0 .8rem}
+.tools{display:flex;flex-wrap:wrap;gap:.4rem}
+.tools button,.fields input,.fields select{color:inherit;background:transparent;border:1px solid currentColor;padding:.42rem .55rem;border-radius:.2rem;font:inherit;min-width:0;min-height:38px;box-sizing:border-box}
+.tools button{cursor:pointer}.tools button:disabled{opacity:.5;cursor:default}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin:.8rem 0}
+.fields label{display:flex;flex-direction:column;font-size:.9rem;gap:.18rem}
+.fields option{background:#f5f1e6;color:#151b1a}
+#dhr-viewer{height:350px;margin:.72rem 0;background:#293941}
+#dhr-viewer :global(canvas){display:block;max-width:100%;touch-action:none}
+#dhr-plot{width:min(100%,700px);height:auto;display:block}
+#dhr-result{font-weight:bold}
+#dhr-status[data-error=true]{border-left:4px solid #7d4e30;padding-left:.6rem}
+.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.refs figure{margin:0}.refs img{width:100%;height:auto}.refs figcaption{margin:.35rem 0 1rem}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;margin:.45rem 0}
+th,td{text-align:left;padding:.44rem;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent)}
+@media(max-width:900px){.bench{grid-template-columns:1fr}#dhr-viewer{height:310px}}
+@media(max-width:560px){.refs{grid-template-columns:1fr}#dhr-viewer{height:260px}.tools button,.fields input,.fields select{min-height:44px}}
+</style>

@@ -1,0 +1,41 @@
+{
+  "method": "Scan all binary position vertices after scene transforms. Exclude removable test leads and coupon, include guards, handle, keys and ports. Reference: 2450-901-01D Figs. 32–33, engineering reconstruction tolerance ±1 mm.",
+  "checks": [
+    {
+      "axis": "width",
+      "referenceMm": 255.3,
+      "actualMm": 255.318,
+      "toleranceMm": 1,
+      "pass": true
+    },
+    {
+      "axis": "height",
+      "referenceMm": 106.1,
+      "actualMm": 106.052,
+      "toleranceMm": 1,
+      "pass": true
+    },
+    {
+      "axis": "depth",
+      "referenceMm": 425.4,
+      "actualMm": 425.911,
+      "toleranceMm": 1,
+      "pass": true
+    }
+  ],
+  "includedNodes": [
+    "chassis",
+    "front_legend",
+    "lcd",
+    "lcd_art",
+    "rotary_encoder",
+    "output_key",
+    "jack_sense_hi",
+    "jack_force_hi",
+    "jack_sense_lo",
+    "jack_force_lo",
+    "jack_earth",
+    "sense_mode",
+    "rear_panel"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "input": "/equipment/09-01/example-cv-waveform.json",
+  "consumer": "09-04 MSO64B",
+  "consumerCandidate": "80faa35b684a35e827b42321801bcd82957da9f0",
+  "result": {
+    "sourceRateHz": 10,
+    "capturedPoints": 33,
+    "triggerTimeS": 2,
+    "sampleId": "rc-reference-01",
+    "contactId": "WS_minus_RE",
+    "parentRevision": 1,
+    "revision": 2,
+    "clipCount": 0
+  },
+  "notes": "Verified directly against the downstream scope parser and acquisition solver. Source triangle: -0.2 V to +0.2 V and back, 8 seconds total. Scope output is a finite triggered window, not the full train; period not measured."
+}

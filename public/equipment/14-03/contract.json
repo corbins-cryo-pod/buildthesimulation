@@ -1,0 +1,4 @@
+{
+ "input":{"schema":"bts.rheology-material.v1","required":["schema","sampleId","revision","material"],"materials":{"ideal Newtonian liquid":{"viscosityPaS":[0.001,100]},"ideal single-mode Maxwell liquid":{"modulusPa":[1,10000],"relaxationS":[0.01,100]}},"example":"example-material.json"},
+ "output":{"schema":"bts.rheology-sweep.v1","classification":"simulated","lineage":["sampleId","sampleRevision","runRevision","material","geometry","inputs"],"units":{"frequencyHz":"Hz","omegaRadS":"rad/s","storagePa":"Pa","lossPa":"Pa","phaseDegrees":"degree","rimStressPa":"Pa","imposedAngleRad":"rad","torqueAmplitudeNm":"N m"},"example":"example-sweep.json"}
+}
