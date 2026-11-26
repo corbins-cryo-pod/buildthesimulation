@@ -44,7 +44,9 @@
           "coated",
           "revision",
           "history",
-          "surfaceState"
+          "surfaceState",
+          "cleanDry",
+          "heatCompatible"
         ],
         "properties": {
           "id": {
@@ -108,8 +110,23 @@
               },
               "reason": {
                 "type": "string"
+              },
+              "calibrationSurface": {
+                "type": "string"
+              },
+              "calibrationResistId": {
+                "type": "string"
+              },
+              "calibrationRecipe": {
+                "type": "string"
               }
             }
+          },
+          "cleanDry": {
+            "type": "boolean"
+          },
+          "heatCompatible": {
+            "type": "boolean"
           }
         }
       }

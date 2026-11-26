@@ -1,5 +1,5 @@
 {
-  "method": "Independent hand-defined state/event counts and synthetic calibration arithmetic; geometry computed from stored primitive dimensions. Executed in JavaScript during preparation; not physical metrology.",
+  "method": "Hand-defined state/event counts and synthetic calibration arithmetic executed in JavaScript; geometric construction dimensions, not physical metrology.",
   "rows": [
     {
       "name": "Cabinet width",
@@ -82,9 +82,25 @@
       "pass": true
     },
     {
+      "name": "Input objects unchanged",
+      "expected": 0,
+      "actual": 0,
+      "units": "events",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
       "name": "Synthetic matched peel delta (0.75 − 0.25)",
       "expected": 0.5,
       "actual": 0.5,
+      "units": "N/mm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Negative measured delta retained",
+      "expected": -0.5,
+      "actual": -0.5,
       "units": "N/mm",
       "tolerance": 1e-12,
       "pass": true
@@ -99,6 +115,30 @@
     },
     {
       "name": "Wrong-material calibration",
+      "expected": "unknown",
+      "actual": "unknown",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Wrong-recipe calibration",
+      "expected": "unknown",
+      "actual": "unknown",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Wrong calibration units",
+      "expected": "unknown",
+      "actual": "unknown",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Uncalibrated silicon nitride",
       "expected": "unknown",
       "actual": "unknown",
       "units": "",
@@ -122,9 +162,25 @@
       "pass": true
     },
     {
+      "name": "Dehydration nominal duration",
+      "expected": null,
+      "actual": null,
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
       "name": "Prime exposure",
       "expected": 300,
       "actual": 300,
+      "units": "s",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Nominal prime total",
+      "expected": 900,
+      "actual": 900,
       "units": "s",
       "tolerance": 0,
       "pass": true
@@ -138,7 +194,39 @@
       "pass": true
     },
     {
+      "name": "Sequential second coupon preserves first",
+      "expected": true,
+      "actual": true,
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Sequential second coupon revision",
+      "expected": 1,
+      "actual": 1,
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Parent revision",
+      "expected": 0,
+      "actual": 0,
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
       "name": "Open door",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Nonboolean interlock",
       "expected": "rejected",
       "actual": "rejected",
       "units": "",
@@ -163,6 +251,54 @@
     },
     {
       "name": "Unsupported carrier",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Unsupported surface",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Unconfirmed cleanliness",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Incompatible temperature",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Duplicate sample IDs",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Blank resist ID",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Repeat priming",
       "expected": "rejected",
       "actual": "rejected",
       "units": "",

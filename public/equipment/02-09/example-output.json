@@ -11,6 +11,8 @@
       "surface": "silicon-native-oxide",
       "diameter_mm": 100,
       "coated": false,
+      "cleanDry": true,
+      "heatCompatible": true,
       "revision": 1,
       "history": [
         {
@@ -20,7 +22,7 @@
           "temperature_C": 150,
           "exposure_s": 300,
           "total_s": 900,
-          "provenance": "Simulated event. Prime cycle nominal values from EPFL CMi; dehydration-only duration not established."
+          "provenance": "Simulated event. Prime cycle nominal values from EPFL CMi; total is approximate. Dehydration-only duration not established."
         }
       ],
       "surfaceState": "primed",
@@ -35,6 +37,8 @@
       "surface": "silicon-native-oxide",
       "diameter_mm": 100,
       "coated": false,
+      "cleanDry": true,
+      "heatCompatible": true,
       "revision": 0,
       "history": [],
       "surfaceState": "untreated"
@@ -47,6 +51,6 @@
     "temperature_C": 150,
     "exposure_s": 300,
     "total_s": 900,
-    "provenance": "Simulated event. Prime cycle nominal values from EPFL CMi; dehydration-only duration not established."
+    "provenance": "Simulated event. Prime cycle nominal values from EPFL CMi; total is approximate. Dehydration-only duration not established."
   }
 }
