@@ -1,0 +1,23 @@
+{
+  "schema": "bts.inert-label-fixture.v1",
+  "instrumentId": "10-15",
+  "source": "simulated",
+  "fixtureId": "INERT-SORT-BOARD-01",
+  "revision": 2,
+  "deviceState": "de-energized-visual-reference",
+  "separateBoard": true,
+  "electricalConnection": false,
+  "slots": {
+    "round": "R-TEAL",
+    "square": null
+  },
+  "events": [
+    {
+      "revision": 2,
+      "action": "place",
+      "markerId": "R-TEAL",
+      "slotId": "round"
+    }
+  ],
+  "note": "Fictional label and shape matching only. No pulses, output data, loaded circuits, calibration or instrument controls."
+}
