@@ -1,0 +1,79 @@
+{
+  "equipment": "03-02",
+  "basis": "Immutable teaching map, not process data. Symmetric left matrix in increasing chamber X is [[74,79,83],[77,82,86],[74,79,83]] nm. The right matrix physically reads [[83,79,74],[86,82,77],[83,79,74]] nm. Pair left column i with right column 2-i. Centroids are −60 and +60 mm. Each coupon totals 717 nm over nine sites (mean 79 2/3 nm); min=74, max=86 and half range / mean yields 7.531380753%. An unchanged blank snapshot has exactly zero increment everywhere.",
+  "scope": "Independent arithmetic/metric checks, not measured deposition or prediction.",
+  "checks": [
+    {
+      "id": "Mirror residual",
+      "expected": 0,
+      "actual": 0,
+      "unit": "nm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Left/right mean",
+      "expected": 79.66666666666667,
+      "actual": 79.66666666666667,
+      "unit": "nm",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Identical mirrored mean",
+      "expected": 79.66666666666667,
+      "actual": 79.66666666666667,
+      "unit": "nm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Half range normalized by mean",
+      "expected": 7.531380753138075,
+      "actual": 7.531380753138075,
+      "unit": "%",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Unchanged blank increment",
+      "expected": 0,
+      "actual": 0,
+      "unit": "nm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Cabinet width",
+      "expected": 0.88,
+      "actual": 0.88,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Cabinet depth",
+      "expected": 0.595,
+      "actual": 0.595,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Guard nominal top",
+      "expected": 1.45,
+      "actual": 1.45,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Named ray targets",
+      "expected": 3,
+      "actual": 3,
+      "unit": "hits",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}

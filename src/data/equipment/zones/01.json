@@ -137,7 +137,7 @@
   {
     "id": "01-07",
     "name": "Engineering drafting table",
-    "model": "Custom adjustable drafting desk and inspection monitor",
+    "model": "BTS-DRAFT Mk I original adjustable table and monitor",
     "evidence": "C",
     "priority": "P2",
     "page": 8,
@@ -148,8 +148,15 @@
     "inputs": "Sample CAD outline, scale, datum and dimension annotation set",
     "outputs": "Revision-linked drawing sheet, measured dimensions and specimen overlay transform",
     "acceptance": "Overlay a 10 mm square, zoom twice and rotate the view. Its dimension stays 10 mm and its annotations remain attached to the same vertices.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Editable metric custom workstation · hinge, lamp, ruler and drawers",
+    "simulationStatus": "1:1 planar drawing / specimen overlay with vertex-anchored dimensions",
+    "integrationStatus": "JSON outline import, 1:1 SVG and revision JSON export · VR actions",
+    "simulator": "/simulations/equipment/01-07/simulator/",
+    "related": [
+      [
+        "Model scope, references and verification",
+        "/simulations/equipment/01-07/simulator/#evidence"
+      ]
+    ]
   }
 ]

@@ -49,7 +49,7 @@
   {
     "id": "14-03",
     "name": "Rheometer",
-    "model": "TA Instruments DHR-2",
+    "model": "TA Instruments Discovery HR-2, 40 mm parallel plate / Peltier",
     "evidence": "B",
     "priority": "P1",
     "page": 43,
@@ -62,9 +62,10 @@
     "inputs": "Oscillation frequencies, strain amplitude, selected geometry, constitutive parameters or measured sweep",
     "outputs": "Frequency-indexed storage and loss moduli (Pa), fitted parameters and residuals",
     "acceptance": "Run a synthetic Newtonian liquid of viscosity η. Storage modulus should approach zero and loss modulus should follow ηω across the declared test band.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB with moving plate and Peltier fixture",
+    "simulationStatus": "Verified Newtonian and single-mode Maxwell frequency sweeps",
+    "integrationStatus": "Interactive bench and signed rheology data export",
+    "simulator": "/simulations/equipment/14-03/simulator/"
   },
   {
     "id": "14-04",
@@ -117,7 +118,7 @@
   {
     "id": "14-06",
     "name": "Dynamic mechanical analyzer",
-    "model": "TA Instruments DMA Q800",
+    "model": "TA Instruments DMA Q800 / standard furnace / film tension",
     "evidence": "B",
     "priority": "P2",
     "page": 44,
@@ -130,9 +131,20 @@
     "inputs": "Specimen dimensions, clamp geometry, oscillation frequency, stress and strain channels, temperature",
     "outputs": "Storage modulus, loss modulus and phase lag indexed by frequency and temperature",
     "acceptance": "Replay equal-frequency sinusoids with known amplitude ratio and phase lag. Recover their ratio times cosine and sine of the lag as storage and loss moduli.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented metre envelope, movable furnace and tension clamp GLB",
+    "simulationStatus": "Inert harmonic replay and viscoelastic frequency/temperature response · analytic checks",
+    "integrationStatus": "Interactive trace, frequency sweep, JSON / CSV exports and VR adapter",
+    "simulator": "/simulations/equipment/14-06/simulator/",
+    "related": [
+      [
+        "References and limits",
+        "/simulations/equipment/14-06/simulator/#evidence"
+      ],
+      [
+        "Verification",
+        "/simulations/equipment/14-06/simulator/#verification"
+      ]
+    ]
   },
   {
     "id": "14-07",

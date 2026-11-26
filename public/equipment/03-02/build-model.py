@@ -119,7 +119,7 @@ for i,x in enumerate((-280,-160)):
  bx(n,'coupon',x,1205,-68,41,3,31);ref(n+'_plot',t=(x,1206.8,-68),p='Assembly')
 for x in [-312,-128]:bx('Dummy_support_'+str(x),'trim',x,1134,-115,12,120,15)
 # De-energized photo-inspired sloped exterior console. Buttons are purely decorative.
-ang=math.radians(34);a=(math.sin(-ang/2),0,0,math.cos(ang/2))
+ang=math.radians(34);a=(math.sin(ang/2),0,0,math.cos(ang/2))
 bx('Controller_column','ivory',258,1100,-193,354,310,106)
 bx('Sloped_control_fascia','base',262,1092,30,338,19,493,q=a)
 p=ref('Panel_display_group',t=(262,1096,36),p='Assembly',rot=a)

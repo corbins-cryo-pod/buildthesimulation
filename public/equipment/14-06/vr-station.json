@@ -1,0 +1,105 @@
+{
+  "schema": "bts.station.axial-dma.v1",
+  "equipment": "14-06",
+  "model": "./q800.glb",
+  "units": "m",
+  "axes": "+Y up, +Z front",
+  "nodes": 83,
+  "triangles": 8120,
+  "bytes": 38028,
+  "motion": {
+    "Furnace_lift": {
+      "axis": "Y",
+      "limitsM": [
+        0,
+        0.15
+      ]
+    },
+    "Moving_yoke": {
+      "axis": "Y",
+      "gaugeM": [
+        0.005,
+        0.025
+      ]
+    }
+  },
+  "hitTargets": [
+    {
+      "node": "Furnace_cap",
+      "action": "toggleFurnace",
+      "label": "Raise/lower furnace",
+      "boundsM": {
+        "min": [
+          -0.179,
+          0.465,
+          -0.025
+        ],
+        "max": [
+          -0.003,
+          0.565,
+          0.141
+        ]
+      }
+    },
+    {
+      "node": "Film_fixed_grip",
+      "action": "toggleCoupon",
+      "label": "Load/unload coupon",
+      "boundsM": {
+        "min": [
+          -0.1135,
+          0.278,
+          0.0925
+        ],
+        "max": [
+          -0.0685,
+          0.3,
+          0.1275
+        ]
+      }
+    },
+    {
+      "node": "Film_moving_grip",
+      "action": "toggleCoupon",
+      "label": "Load/unload coupon",
+      "boundsM": {
+        "min": [
+          -0.1125,
+          0.254,
+          0.0925
+        ],
+        "max": [
+          -0.0695,
+          0.276,
+          0.1275
+        ]
+      }
+    },
+    {
+      "node": "Panel_measure_button",
+      "action": "acquire",
+      "label": "Measure virtual oscillation",
+      "boundsM": {
+        "min": [
+          0.0965,
+          0.4275,
+          0.0432
+        ],
+        "max": [
+          0.1295,
+          0.4525,
+          0.06520000000000001
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./station.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "ray": "hit(meshName)",
+    "pose": "pose(station.read())"
+  },
+  "note": "Transform moving targets with the nominal meter-local bounds and state pose. No headset verification yet."
+}

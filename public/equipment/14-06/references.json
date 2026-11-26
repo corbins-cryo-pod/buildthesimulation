@@ -1,0 +1,7 @@
+{
+ "configuration":"TA Instruments Q800 DMA (sixth-generation legacy chassis), standard Q800 furnace, film tension clamp (not fiber/cantilever), built-in controller, not environmental RH or immersion accessories.",
+ "sources":{"install":"https://www.tainstruments.com/pdf/literature/925722_Rev_K.pdf#page=17","instrument":"https://www.tainstruments.com/pdf/literature/TA284.pdf#page=2","range":"https://www.tainstruments.com/pdf/literature/TA284.pdf#page=3","clamp":"https://www.tainstruments.com/pdf/literature/TA284.pdf#page=7","facility":"https://www.utoledo.edu/engineering/cmsc/instruments/dma.html","register":"https://bric.research.baylor.edu/core-facilities/materials-testing-and-characterization/instrumentation"},
+ "dimensions":{"footprintMm":[460,560],"closedHeightMm":560,"openHeightMm":710,"basis":"TA Instruments 925722 rev. K p. 17.","guessed":["shell subassemblies, controller orientation, fastener geometry, grip shapes and exact position"],"modeledGaugeMm":[5,25]},
+ "visualEvidence":"TA284 p. 2 product photo and p. 7 film tension cartridge. No vendor image pixels or CAD redistributed.",
+ "experiment":"Linear inert polymer teaching parameters are assumptions, not measured polymer, clinical, or Q800 calibration."
+}

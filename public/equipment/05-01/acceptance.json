@@ -1,0 +1,16 @@
+{
+  "reference": {"id":"SHV2318","heightUm":9.993,"expandedUm":0.029,"coverage":"2 sigma","source":"https://michmet.com/wp-content/uploads/2024/09/michigan_metrology_certification.pdf#page=2"},
+  "evidence":"Public reported height/interval applied to ideal virtual plateaus; not a hardware scan. Analytic cases fixed before implementation.",
+  "cases":[
+    ["forward and reverse",9.993,0.029,"µm"],
+    ["direction mismatch",0,0.001,"µm"],
+    ["rigid contact at −0.3 µm before 0.2 µm step with 1 µm radius",0.15393920141694567,1e-10,"µm"],
+    ["rigid contact at cutoff 0.6 µm from edge",0,1e-10,"µm"],
+    ["rigid contact at −0.3 µm with 12.5 µm radius",0.196399481450646,1e-10,"µm"],
+    ["common 2 µm per mm tilt leveled",9.993,0.0015,"µm"],
+    ["range smaller than step","vertical-range",null,"outcome"],
+    ["not enough plateau samples","plateau-window",null,"outcome"],
+    ["ideal repeated scan sample SD",0,1e-9,"µm"],
+    ["actual 04-04 output, signed right-minus-left",-0.06,1e-10,"µm"]
+  ]
+}

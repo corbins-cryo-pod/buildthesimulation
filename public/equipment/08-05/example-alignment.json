@@ -1,0 +1,282 @@
+{
+  "schema": "bts.fl300-alignment.v1",
+  "classification": "synthetic analytic",
+  "sampleId": "FL300-OPTICAL-WITNESS",
+  "sampleRevision": 1,
+  "runRevision": 1,
+  "frame": "stage X lateral positive right; Y transverse positive up; nominal optical propagation along +Z",
+  "model": "coaxial Gaussian power overlap plus planar rectangular intersection",
+  "pose": {
+    "stageXUm": -5,
+    "stageYUm": 0,
+    "opticalDeltaXUm": -5,
+    "opticalDeltaYUm": 0,
+    "powerFraction": 0.2943035529371539
+  },
+  "registeredStageCenterUm": [
+    0,
+    0
+  ],
+  "reference": {
+    "schema": "bts.fl300-fixture.v1",
+    "sampleId": "FL300-OPTICAL-WITNESS",
+    "revision": 1,
+    "emitterAxisUm": [
+      0,
+      0
+    ],
+    "receiverAxisUm": [
+      0,
+      0
+    ],
+    "modeRadiusUm": 5,
+    "peakFraction": 0.8,
+    "pads": [
+      {
+        "emitterId": "DIE_PAD_A",
+        "receiverId": "SUB_PAD_A",
+        "emitterUm": [
+          0,
+          0
+        ],
+        "receiverUm": [
+          0,
+          0
+        ],
+        "sizeUm": [
+          20,
+          20
+        ]
+      }
+    ],
+    "provenance": "Synthetic passive alignment witness"
+  },
+  "peakAtCurrentY": {
+    "stageXUm": 0,
+    "stageYUm": 0,
+    "powerFraction": 0.8
+  },
+  "pads": [
+    {
+      "emitterId": "DIE_PAD_A",
+      "receiverId": "SUB_PAD_A",
+      "areaUm2": 300,
+      "fraction": 0.75,
+      "geometricCandidate": true,
+      "classification": "projected geometric overlap only; no bond or conductivity asserted"
+    }
+  ],
+  "data": [
+    {
+      "stageXUm": -20,
+      "stageYUm": 0,
+      "powerFraction": 9.00281397754073e-8
+    },
+    {
+      "stageXUm": -19,
+      "stageYUm": 0,
+      "powerFraction": 4.284278242234487e-7
+    },
+    {
+      "stageXUm": -18,
+      "stageYUm": 0,
+      "powerFraction": 0.000001882060160007817
+    },
+    {
+      "stageXUm": -17,
+      "stageYUm": 0,
+      "powerFraction": 0.000007632130298463385
+    },
+    {
+      "stageXUm": -16,
+      "stageYUm": 0,
+      "powerFraction": 0.000028570279713308172
+    },
+    {
+      "stageXUm": -15,
+      "stageYUm": 0,
+      "powerFraction": 0.00009872784326934365
+    },
+    {
+      "stageXUm": -14,
+      "stageYUm": 0,
+      "powerFraction": 0.00031493523252406263
+    },
+    {
+      "stageXUm": -13,
+      "stageYUm": 0,
+      "powerFraction": 0.0009273833391236731
+    },
+    {
+      "stageXUm": -12,
+      "stageYUm": 0,
+      "powerFraction": 0.0025208892787555535
+    },
+    {
+      "stageXUm": -11,
+      "stageYUm": 0,
+      "powerFraction": 0.006325643241274753
+    },
+    {
+      "stageXUm": -10,
+      "stageYUm": 0,
+      "powerFraction": 0.014652511110987344
+    },
+    {
+      "stageXUm": -9,
+      "stageYUm": 0,
+      "powerFraction": 0.031331116079189654
+    },
+    {
+      "stageXUm": -8,
+      "stageYUm": 0,
+      "powerFraction": 0.0618437923546398
+    },
+    {
+      "stageXUm": -7,
+      "stageYUm": 0,
+      "powerFraction": 0.112686736736836
+    },
+    {
+      "stageXUm": -6,
+      "stageYUm": 0,
+      "powerFraction": 0.18954220694569743
+    },
+    {
+      "stageXUm": -5,
+      "stageYUm": 0,
+      "powerFraction": 0.2943035529371539
+    },
+    {
+      "stageXUm": -4,
+      "stageYUm": 0,
+      "powerFraction": 0.42183393923443885
+    },
+    {
+      "stageXUm": -3,
+      "stageYUm": 0,
+      "powerFraction": 0.5581410608568248
+    },
+    {
+      "stageXUm": -2,
+      "stageYUm": 0,
+      "powerFraction": 0.6817150311729692
+    },
+    {
+      "stageXUm": -1,
+      "stageYUm": 0,
+      "powerFraction": 0.7686315513218586
+    },
+    {
+      "stageXUm": 0,
+      "stageYUm": 0,
+      "powerFraction": 0.8
+    },
+    {
+      "stageXUm": 1,
+      "stageYUm": 0,
+      "powerFraction": 0.7686315513218586
+    },
+    {
+      "stageXUm": 2,
+      "stageYUm": 0,
+      "powerFraction": 0.6817150311729692
+    },
+    {
+      "stageXUm": 3,
+      "stageYUm": 0,
+      "powerFraction": 0.5581410608568248
+    },
+    {
+      "stageXUm": 4,
+      "stageYUm": 0,
+      "powerFraction": 0.42183393923443885
+    },
+    {
+      "stageXUm": 5,
+      "stageYUm": 0,
+      "powerFraction": 0.2943035529371539
+    },
+    {
+      "stageXUm": 6,
+      "stageYUm": 0,
+      "powerFraction": 0.18954220694569743
+    },
+    {
+      "stageXUm": 7,
+      "stageYUm": 0,
+      "powerFraction": 0.112686736736836
+    },
+    {
+      "stageXUm": 8,
+      "stageYUm": 0,
+      "powerFraction": 0.0618437923546398
+    },
+    {
+      "stageXUm": 9,
+      "stageYUm": 0,
+      "powerFraction": 0.031331116079189654
+    },
+    {
+      "stageXUm": 10,
+      "stageYUm": 0,
+      "powerFraction": 0.014652511110987344
+    },
+    {
+      "stageXUm": 11,
+      "stageYUm": 0,
+      "powerFraction": 0.006325643241274753
+    },
+    {
+      "stageXUm": 12,
+      "stageYUm": 0,
+      "powerFraction": 0.0025208892787555535
+    },
+    {
+      "stageXUm": 13,
+      "stageYUm": 0,
+      "powerFraction": 0.0009273833391236731
+    },
+    {
+      "stageXUm": 14,
+      "stageYUm": 0,
+      "powerFraction": 0.00031493523252406263
+    },
+    {
+      "stageXUm": 15,
+      "stageYUm": 0,
+      "powerFraction": 0.00009872784326934365
+    },
+    {
+      "stageXUm": 16,
+      "stageYUm": 0,
+      "powerFraction": 0.000028570279713308172
+    },
+    {
+      "stageXUm": 17,
+      "stageYUm": 0,
+      "powerFraction": 0.000007632130298463385
+    },
+    {
+      "stageXUm": 18,
+      "stageYUm": 0,
+      "powerFraction": 0.000001882060160007817
+    },
+    {
+      "stageXUm": 19,
+      "stageYUm": 0,
+      "powerFraction": 4.284278242234487e-7
+    },
+    {
+      "stageXUm": 20,
+      "stageYUm": 0,
+      "powerFraction": 9.00281397754073e-8
+    }
+  ],
+  "units": {
+    "stageXUm": "µm",
+    "stageYUm": "µm",
+    "powerFraction": "1",
+    "areaUm2": "µm²"
+  }
+}
