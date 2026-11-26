@@ -1,0 +1,41 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import refs from '../../../../../public/equipment/06-12/references.json';
+import v from '../../../../../public/equipment/06-12/verification.json';
+const a='/equipment/06-12/';
+---
+<Layout pageTitle="CellScale MicroTester G2 · Dry spring demonstration" subtitle="" description="Inspect the CellScale MicroTester G2 and measure an ideal virtual dry spring." wide={true}>
+<article class="equipment mt0612">
+<nav class="eq-nav"><a href="/simulations/equipment/06-12/">← Equipment 06-12</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">Sources &amp; checks</a></nav>
+<header class="eq-mast"><span class="eq-meta">06-12 / Spring contact, force and motion</span><h2>CellScale MicroTester G2 · Dry spring demonstration</h2><p>A compliant sensing beam makes the travel-to-force slope softer than the spring itself. Run the ready-to-go example to see the zero-load approach and recover the known spring stiffness.</p></header>
+<div class="dn-grid"><section class="dn-card"><h3>3D exhibit</h3>
+<div class="dn-bar"><button data-view="whole">Whole exhibit</button><button data-view="front">Optics side</button><button data-view="detail">Dry fixture</button><button data-view="rear">Rear view</button><button id="camera-reset">Reset view</button></div>
+<div class="dn-camera"><canvas id="mt-model" aria-label="Black MicroTester G2 base, optics module, clear empty guard, and virtual dry spring"></canvas></div>
+<p id="asset" class="dn-note" role="status">Loading metric GLB…</p>
+<p class="dn-note">Drag or pinch to inspect. The detached gold key switches home/preview; the green key calculates the virtual trace. Motion in the 3D model is to scale and small. The schematic below exaggerates motion.</p>
+<canvas id="spring-schematic" width="480" height="155" role="img" aria-label="Dry spring, sensing beam, and travel schematic with motion exaggerated"></canvas>
+<p id="preview-state" class="dn-note" role="status">Home: virtual approach 0 µm; no load.</p></section>
+<section class="dn-card"><h3>Measure the virtual spring</h3><div class="dn-bar">
+<label>Spring <select id="spring"><option value="0.02">0.02 mN/µm</option><option value="0.04" selected>0.04 mN/µm</option><option value="0.08">0.08 mN/µm</option></select></label>
+<label>Travel <input id="travel" type="range" min="0" max="160" step="1" value="100" aria-describedby="motion"/></label><output id="motion">100 µm</output></div>
+<div class="dn-bar"><button class="primary" id="run">Run dry spring</button><button id="togglePreview">Preview motion</button><button id="reset">Reset</button></div>
+<canvas id="curve" width="480" height="272" role="img" aria-label="Force in millinewtons against virtual travel in micrometres"></canvas>
+<p class="dn-note" id="status" role="status" aria-live="polite">Ready: 100 µm request; 25 µm open gap.</p>
+<div class="dn-bar"><button id="json" disabled>Export JSON</button><button id="csv" disabled>Export CSV</button><a href={a+'example-spring.json'}>Example output</a></div>
+<p class="dn-note">The measuring beam is fixed at 0.16 mN/µm in this example. The 5 mN ceiling and 0.01 mN rounding are virtual conventions, not claimed MicroTester settings or sensor performance.</p></section></div>
+<section id="evidence"><h3>References and independent checks</h3>
+<div class="photo-pair">
+<figure><img src={a+'reference-overview.webp'} width="640" height="400" alt="Original Blender render of the instrument bed, left camera, lens collar, clear guard, and right actuator" loading="lazy"/><figcaption>Original front three-quarter render from the GLB. The <a href={refs.references[1].url}>manufacturer brochure, p. 1</a> establishes the left optics, cylindrical collar, clear guard, and right tower.</figcaption></figure>
+<figure><img src={a+'reference-detail.webp'} width="640" height="400" alt="Original Blender close-up of the clear guard and independent gold-colored virtual spring" loading="lazy"/><figcaption>Original close-up. The gold block is the invented dry spring stand-in; it is not a CellScale accessory, a biological sample, or a procedure.</figcaption></figure>
+</div>
+<ul>{refs.references.map(r=><li><a href={r.url}>{r.title}</a>. {r.caption}</li>)}</ul>
+<p>The single-camera G2 is modeled at <b>560 × 140 × 240 mm</b> (W × D × H), the published nominal envelope. The remaining shapes are estimated from source images; no OEM CAD, wet operation, imaging calibration, real control settings, or specimen workflow.</p>
+<p>After the 25 µm virtual gap closes, the ideal force is F = (travel − gap)/(1/k<sub>beam</sub> + 1/k<sub>spring</sub>); it is zero before and at start of contact. The fitted spring slope uses quantized force and corrects travel by subtracting the recovered beam deflection F/k<sub>beam</sub>. At least two positive points are required. Ideal response and simulated displayed values are exported separately. There is no viscoelasticity, dynamics, external empirical calibration, measured force or sample property claim.</p>
+<div class="dn-table"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{v.checks.map(c=><tr><th scope="row">{c.id}</th><td>{String(c.expected)} {c.unit}</td><td>{typeof c.actual==='number'?Number(c.actual.toFixed(8)):String(c.actual)} {c.unit}</td><td>{c.tolerance===0?'Exact':c.tolerance}</td><td>{c.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable model</a> · <a href={a+'microtester-g2.glb'} download>Metric GLB</a> · <a href={a+'references.json'}>Reference notes</a> · <a href={a+'vr-station.json'}>VR action manifest</a> · <a href={a+'spring.mjs'}>Independent spring module</a> · <a href={a+'verification.json'}>Verification JSON</a>. No headset session tested.</p>
+</section></article></Layout><script>import '../../../../lib/equipment/06-12/client.mjs';</script>
+<style>
+.mt0612{--dn-rule:color-mix(in srgb,currentColor 26%,transparent);max-width:1280px;margin:auto}.dn-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:1rem}.dn-card{min-width:0;border:1px solid var(--dn-rule);padding:.85rem;margin:.8rem 0}.dn-card h3{margin:.21rem 0 .6rem}.dn-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin:.53rem 0}.dn-bar,.dn-note,.dn-fig figcaption{font:.89rem/1.4 system-ui,sans-serif}
+.mt0612 :is(button,select){font:inherit;padding:.4rem;background:var(--panel,Canvas);color:inherit;border:1px solid var(--dn-rule);border-radius:3px;min-height:38px;cursor:pointer}.mt0612 .primary{background:#34594f;color:#fff}.dn-camera{aspect-ratio:1.34;background:#263b40}.dn-camera canvas{width:100%;height:100%;display:block;touch-action:none}.mt0612 :is(#curve,#spring-schematic){display:block;width:100%;height:auto;max-width:492px;margin:.6rem 0}.dn-table{overflow:auto}.dn-table table{width:100%;border-collapse:collapse}.dn-table :is(td,th){border-bottom:1px solid var(--dn-rule);padding:.42rem;text-align:left}.dn-fig{margin:1rem 0;max-width:680px}.dn-fig img{width:100%;height:auto;display:block}.dn-fig figcaption{margin:.38rem 0}@media(max-width:850px){.dn-grid{grid-template-columns:1fr}}
+.mt0612 .photo-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;max-width:860px}.mt0612 .photo-pair figure{margin:0}.mt0612 .photo-pair img{display:block;width:100%;height:auto}.mt0612 .photo-pair figcaption{font:.86rem/1.4 system-ui,sans-serif;margin:.3rem 0}@media(max-width:600px){.mt0612 .photo-pair{grid-template-columns:1fr}}.mt0612 input{width:8.6rem;accent-color:#47726e}.mt0612 button:disabled{opacity:.55;cursor:default}</style>
