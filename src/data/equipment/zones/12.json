@@ -187,6 +187,7 @@
     "evidence": "B",
     "priority": "P2",
     "page": 39,
+    "simulator": "/simulations/equipment/12-10/simulator/",
     "sources": [
       "S58"
     ],
@@ -196,9 +197,9 @@
     "inputs": "Slide ID, focus surface, tile coordinates, overlap and calibrated pixel spacing",
     "outputs": "Pyramidal slide mosaic, tile transforms, focus map and physical scale",
     "acceptance": "Scan a grid slide with repeated features crossing tile boundaries. After stitching each fiducial should appear once and seam displacement should meet the predetermined pixel tolerance.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass dormant metric GLB",
+    "simulationStatus": "Read-only synthetic tile registration",
+    "integrationStatus": "Interactive mapped tile viewer and exports"
   },
   {
     "id": "12-11",

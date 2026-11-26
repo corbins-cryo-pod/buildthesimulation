@@ -1,0 +1,8 @@
+{
+ "schema":"bts.equipment-interaction.v1","equipmentId":"12-10","model":"Evident/Olympus SLIDEVIEW VS200 single-tray standard-camera dormant exterior",
+ "frame":{"units":"m","up":"+Y","front":"+Z","placementAnchor":"bts_bench_anchor","slideMap":"Original inert display plate: +X along 76 mm length; +Z across 26 mm width."},
+ "parts":{"cabinet":"vs200_documentary_cabinet","monitor":"review_monitor","sample":"metric_inert_slide","cursorAnchor":"image_cursor_anchor"},
+ "ports":["documentary_rear_cabinet","documentary_rear_accessory"],
+ "actions":[{"id":"next-inert-image-tile","node":"read_only_mosaic_tile","action":"next","label":"Review next saved inert image tile","sizeM":[0.31,0.18,0.04]}],
+ "assessment":"Only view control is active. No instrument operation, real specimen path or headset test."
+}

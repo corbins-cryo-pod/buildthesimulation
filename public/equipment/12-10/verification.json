@@ -1,0 +1,125 @@
+{
+  "scope": "Fixed inert test mosaic, analytic coordinate and fiducial verification, original dimensioned shell. Not biological data, real scanner registration/calibration, operation or headset test.",
+  "rows": [
+    {
+      "id": "Registered mosaic pixels",
+      "expected": 5104,
+      "actual": 5104,
+      "unit": "pixels",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Extra overlap contributions",
+      "expected": 1040,
+      "actual": 1040,
+      "unit": "samples",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Pixels with duplicate coverage",
+      "expected": 944,
+      "actual": 944,
+      "unit": "pixels",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Maximum stored overlap difference",
+      "expected": 0,
+      "actual": 0,
+      "unit": "intensity steps",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Stage lattice residual",
+      "expected": 0,
+      "actual": 0,
+      "unit": "pixels",
+      "tol": 1e-9,
+      "pass": true
+    },
+    {
+      "id": "Unique fiducial components",
+      "expected": 5,
+      "actual": 5,
+      "unit": "marks",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Example cursor X stage",
+      "expected": 39.25,
+      "actual": 39.25,
+      "unit": "mm",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Example cursor Z stage",
+      "expected": 16.25,
+      "actual": 16.25,
+      "unit": "mm",
+      "tol": 0,
+      "pass": true
+    },
+    {
+      "id": "Changed duplicated sample",
+      "expected": "Rejected",
+      "actual": "Rejected",
+      "unit": "",
+      "tol": "Exact",
+      "pass": true
+    },
+    {
+      "id": "Cabinet catalog width",
+      "expected": 572,
+      "actual": 572.0000267028809,
+      "unit": "mm",
+      "tol": 0.1,
+      "pass": true
+    },
+    {
+      "id": "Cabinet catalog overall height",
+      "expected": 662.5,
+      "actual": 662.5000238418579,
+      "unit": "mm",
+      "tol": 0.1,
+      "pass": true
+    },
+    {
+      "id": "Base housing depth",
+      "expected": 597.5,
+      "actual": 597.5000262260437,
+      "unit": "mm",
+      "tol": 0.1,
+      "pass": true
+    },
+    {
+      "id": "Cabinet approximate overall depth",
+      "expected": 671.5,
+      "actual": 678.1000047922134,
+      "unit": "mm",
+      "tol": 8,
+      "pass": true
+    },
+    {
+      "id": "Inert slide X length",
+      "expected": 76,
+      "actual": 75.99999755620956,
+      "unit": "mm",
+      "tol": 0.01,
+      "pass": true
+    },
+    {
+      "id": "Inert slide Z width",
+      "expected": 26,
+      "actual": 26.000000536441803,
+      "unit": "mm",
+      "tol": 0.01,
+      "pass": true
+    }
+  ]
+}
