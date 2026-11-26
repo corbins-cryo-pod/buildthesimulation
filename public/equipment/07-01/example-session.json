@@ -1,0 +1,287 @@
+{
+  "schema": "bts.equipment.07-01.sash-session.v1",
+  "deviceId": "07-01",
+  "modelNumber": "1305",
+  "sessionId": "A2-EXAMPLE-01",
+  "complete": true,
+  "provenance": {
+    "kind": "simulated",
+    "solver": "discrete-sash-occupancy/1",
+    "timeBase": "elapsed seconds from session start; 1 ms resolution; half-open intervals",
+    "positionReference": "sash opening in mm above the fully closed stop",
+    "reference": "Thermo Scientific 1300 Series A2 operating instructions, 7021355 rev. 20",
+    "interpretation": "Qualitative position flag; no measured data, airflow, contamination probability or sterility assessment."
+  },
+  "input": {
+    "schema": "bts.equipment.07-01.sash-input.v1",
+    "deviceId": "07-01",
+    "modelNumber": "1305",
+    "sessionId": "A2-EXAMPLE-01",
+    "durationS": 30,
+    "initialSashMm": 203.2,
+    "events": [
+      {
+        "timeS": 2,
+        "type": "load",
+        "sampleId": "SEALED-A",
+        "sampleKind": "sealed-token"
+      },
+      {
+        "timeS": 10,
+        "type": "sash",
+        "heightMm": 223.2
+      },
+      {
+        "timeS": 14,
+        "type": "load",
+        "sampleId": "SEALED-B",
+        "sampleKind": "sealed-token"
+      },
+      {
+        "timeS": 19,
+        "type": "remove",
+        "sampleId": "SEALED-A",
+        "sampleKind": "sealed-token"
+      },
+      {
+        "timeS": 22,
+        "type": "sash",
+        "heightMm": 203.2
+      },
+      {
+        "timeS": 26,
+        "type": "remove",
+        "sampleId": "SEALED-B",
+        "sampleKind": "sealed-token"
+      }
+    ]
+  },
+  "state": {
+    "timeS": 30,
+    "sashMm": 203.2,
+    "position": "work",
+    "warning": false,
+    "presentSampleIds": [],
+    "qualitativeFlag": "work-position"
+  },
+  "intervals": [
+    {
+      "startS": 0,
+      "endS": 2,
+      "durationS": 2,
+      "sashMm": 203.2,
+      "position": "work",
+      "warning": false,
+      "presentSampleIds": [],
+      "qualitativeFlag": "work-position"
+    },
+    {
+      "startS": 2,
+      "endS": 10,
+      "durationS": 8,
+      "sashMm": 203.2,
+      "position": "work",
+      "warning": false,
+      "presentSampleIds": [
+        "SEALED-A"
+      ],
+      "qualitativeFlag": "work-position"
+    },
+    {
+      "startS": 10,
+      "endS": 14,
+      "durationS": 4,
+      "sashMm": 223.2,
+      "position": "above-work",
+      "warning": true,
+      "presentSampleIds": [
+        "SEALED-A"
+      ],
+      "qualitativeFlag": "sash-position-warning"
+    },
+    {
+      "startS": 14,
+      "endS": 19,
+      "durationS": 5,
+      "sashMm": 223.2,
+      "position": "above-work",
+      "warning": true,
+      "presentSampleIds": [
+        "SEALED-A",
+        "SEALED-B"
+      ],
+      "qualitativeFlag": "sash-position-warning"
+    },
+    {
+      "startS": 19,
+      "endS": 22,
+      "durationS": 3,
+      "sashMm": 223.2,
+      "position": "above-work",
+      "warning": true,
+      "presentSampleIds": [
+        "SEALED-B"
+      ],
+      "qualitativeFlag": "sash-position-warning"
+    },
+    {
+      "startS": 22,
+      "endS": 26,
+      "durationS": 4,
+      "sashMm": 203.2,
+      "position": "work",
+      "warning": false,
+      "presentSampleIds": [
+        "SEALED-B"
+      ],
+      "qualitativeFlag": "work-position"
+    },
+    {
+      "startS": 26,
+      "endS": 30,
+      "durationS": 4,
+      "sashMm": 203.2,
+      "position": "work",
+      "warning": false,
+      "presentSampleIds": [],
+      "qualitativeFlag": "work-position"
+    }
+  ],
+  "eventHistory": [
+    {
+      "eventIndex": 0,
+      "timeS": 2,
+      "type": "load",
+      "sampleId": "SEALED-A",
+      "sampleKind": "sealed-token",
+      "state": {
+        "timeS": 2,
+        "sashMm": 203.2,
+        "position": "work",
+        "warning": false,
+        "presentSampleIds": [
+          "SEALED-A"
+        ],
+        "qualitativeFlag": "work-position"
+      }
+    },
+    {
+      "eventIndex": 1,
+      "timeS": 10,
+      "type": "sash",
+      "heightMm": 223.2,
+      "state": {
+        "timeS": 10,
+        "sashMm": 223.2,
+        "position": "above-work",
+        "warning": true,
+        "presentSampleIds": [
+          "SEALED-A"
+        ],
+        "qualitativeFlag": "sash-position-warning"
+      }
+    },
+    {
+      "eventIndex": 2,
+      "timeS": 14,
+      "type": "load",
+      "sampleId": "SEALED-B",
+      "sampleKind": "sealed-token",
+      "state": {
+        "timeS": 14,
+        "sashMm": 223.2,
+        "position": "above-work",
+        "warning": true,
+        "presentSampleIds": [
+          "SEALED-A",
+          "SEALED-B"
+        ],
+        "qualitativeFlag": "sash-position-warning"
+      }
+    },
+    {
+      "eventIndex": 3,
+      "timeS": 19,
+      "type": "remove",
+      "sampleId": "SEALED-A",
+      "sampleKind": "sealed-token",
+      "state": {
+        "timeS": 19,
+        "sashMm": 223.2,
+        "position": "above-work",
+        "warning": true,
+        "presentSampleIds": [
+          "SEALED-B"
+        ],
+        "qualitativeFlag": "sash-position-warning"
+      }
+    },
+    {
+      "eventIndex": 4,
+      "timeS": 22,
+      "type": "sash",
+      "heightMm": 203.2,
+      "state": {
+        "timeS": 22,
+        "sashMm": 203.2,
+        "position": "work",
+        "warning": false,
+        "presentSampleIds": [
+          "SEALED-B"
+        ],
+        "qualitativeFlag": "work-position"
+      }
+    },
+    {
+      "eventIndex": 5,
+      "timeS": 26,
+      "type": "remove",
+      "sampleId": "SEALED-B",
+      "sampleKind": "sealed-token",
+      "state": {
+        "timeS": 26,
+        "sashMm": 203.2,
+        "position": "work",
+        "warning": false,
+        "presentSampleIds": [],
+        "qualitativeFlag": "work-position"
+      }
+    }
+  ],
+  "sampleHistory": [
+    {
+      "sampleId": "SEALED-A",
+      "sampleKind": "sealed-token",
+      "warningDurationS": 9,
+      "visits": [
+        {
+          "enteredS": 2,
+          "removedS": 19,
+          "observedUntilS": 19,
+          "warningDurationS": 9
+        }
+      ]
+    },
+    {
+      "sampleId": "SEALED-B",
+      "sampleKind": "sealed-token",
+      "warningDurationS": 8,
+      "visits": [
+        {
+          "enteredS": 14,
+          "removedS": 26,
+          "observedUntilS": 26,
+          "warningDurationS": 8
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "warningDurationS": 12,
+    "sampleWarningSeconds": 17,
+    "affectedSampleIds": [
+      "SEALED-A",
+      "SEALED-B"
+    ]
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "deviceId": "07-01",
+  "scope": "Predeclared event-model reference cases. All inputs are synthetic. These compare discrete sash position and specimen occupancy histories with hand calculations.",
+  "toleranceBasis": "Times are integer milliseconds internally. The authored fixture uses whole seconds, so exact equality is required. Flags and identifiers must match exactly.",
+  "tests": [
+    {
+      "id": "cabinet-time",
+      "category": "Numerical verification",
+      "test": "Hold the sash 20 mm above the work position from 10 to 22 s.",
+      "expected": 12,
+      "units": "s",
+      "tolerance": 0,
+      "actual": 12,
+      "outcome": "Pass"
+    },
+    {
+      "id": "overlap-a",
+      "category": "Register acceptance",
+      "test": "SEALED-A is present from 2 to 19 s. Its intersection with [10, 22) is [10, 19).",
+      "expected": 9,
+      "units": "s",
+      "tolerance": 0,
+      "actual": 9,
+      "outcome": "Pass"
+    },
+    {
+      "id": "overlap-b",
+      "category": "Register acceptance",
+      "test": "SEALED-B is present from 14 to 26 s. Its intersection with [10, 22) is [14, 22).",
+      "expected": 8,
+      "units": "s",
+      "tolerance": 0,
+      "actual": 8,
+      "outcome": "Pass"
+    },
+    {
+      "id": "total-sample-time",
+      "category": "Numerical verification",
+      "test": "Sum the two sample-specific intersections, counting both samples over their shared interval.",
+      "expected": 17,
+      "units": "specimen·s",
+      "tolerance": 0,
+      "actual": 17,
+      "outcome": "Pass"
+    },
+    {
+      "id": "boundary",
+      "category": "Register acceptance",
+      "test": "Inspect t = 9.999, 10.000, 21.999 and 22.000 s. At equal times, apply the event before reading the display.",
+      "expected": [
+        false,
+        true,
+        true,
+        false
+      ],
+      "units": "warning flag",
+      "tolerance": "exact",
+      "actual": [
+        false,
+        true,
+        true,
+        false
+      ],
+      "outcome": "Pass"
+    },
+    {
+      "id": "affected-ids",
+      "category": "Register acceptance",
+      "test": "Retain the identifiers of both specimens after their removal.",
+      "expected": [
+        "SEALED-A",
+        "SEALED-B"
+      ],
+      "units": "sample IDs",
+      "tolerance": "exact",
+      "actual": [
+        "SEALED-A",
+        "SEALED-B"
+      ],
+      "outcome": "Pass"
+    },
+    {
+      "id": "control-change",
+      "category": "Control response",
+      "test": "Set the 10 s sash event to the documented work position. Neither specimen overlaps a warning.",
+      "expected": 0,
+      "units": "specimen·s",
+      "tolerance": 0,
+      "actual": 0,
+      "outcome": "Pass"
+    },
+    {
+      "id": "closed-position",
+      "category": "Boundary",
+      "test": "A completely closed sash is tracked as its own state.",
+      "expected": "closed",
+      "units": "position",
+      "tolerance": "exact",
+      "actual": "closed",
+      "outcome": "Pass"
+    },
+    {
+      "id": "invalid-travel",
+      "category": "Failure case",
+      "test": "Command 536 mm, beyond the 535 mm maximum. Reject the event before replay.",
+      "expected": "rejected",
+      "units": "input status",
+      "tolerance": "exact",
+      "actual": "rejected",
+      "outcome": "Pass"
+    },
+    {
+      "id": "marked-band",
+      "category": "Documented operating boundary",
+      "test": "Classify 184.14, 184.15, 209.55 and 209.56 mm against the 7.25–8.25 in work band (7021355 Rev. 20 p. 1-6).",
+      "expected": [
+        "below-work",
+        "work",
+        "work",
+        "above-work"
+      ],
+      "units": "position",
+      "tolerance": "exact",
+      "actual": [
+        "below-work",
+        "work",
+        "work",
+        "above-work"
+      ],
+      "outcome": "Pass"
+    }
+  ],
+  "experimentalComparison": "No independent cabinet sensor traces, aerosol challenge measurements or sterility data were supplied. The checks verify the software's discrete event calculation."
+}
