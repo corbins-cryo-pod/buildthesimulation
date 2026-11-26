@@ -1,0 +1,38 @@
+{
+  "declaredBeforeImplementation": true,
+  "scope": "Independent geometry references for relative differences of illustrated rectangular label widths only.",
+  "cases": [
+    {
+      "id": "ten-percent-growth",
+      "preset": "growth",
+      "expected": {
+        "displayDeltaA": 10,
+        "displayDeltaB": 0,
+        "status": "defined"
+      }
+    },
+    {
+      "id": "signed-difference",
+      "preset": "mixed",
+      "expected": {
+        "displayDeltaA": -15,
+        "displayDeltaB": 5,
+        "status": "defined"
+      }
+    },
+    {
+      "id": "undefined-zero-baseline",
+      "preset": "zero",
+      "expected": {
+        "displayDeltaA": null,
+        "displayDeltaB": 0,
+        "status": "partial"
+      }
+    },
+    {
+      "id": "reject-unknown",
+      "preset": "unknown",
+      "expected": "Choose a stored drawing comparison."
+    }
+  ]
+}
