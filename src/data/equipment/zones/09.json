@@ -218,9 +218,14 @@
     "inputs": "Differential input trace, gain, filter configuration, coupling and output range",
     "outputs": "Amplified voltage time series with filtering, saturation and noise metadata",
     "acceptance": "With noise disabled, drive an in-band sine below clipping and recover the selected gain. Then exceed the configured output range and verify clipping rather than wraparound.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented-size metric GLB with original views, ports, editable Blender source",
+    "simulationStatus": "Numerically verified ideal gain, filter, source and termination model",
+    "integrationStatus": "Dedicated simulator, volts waveform handoff to 09-04 and spatial control bindings; headset testing pending",
+    "simulator": "/simulations/equipment/09-10/simulator/",
+    "related": [
+      ["SRS SR560 operating manual rev. 3.1", "https://www.thinksrs.com/downloads/pdfs/manuals/SR560m.pdf"],
+      ["SRS SR560 product and panel reference photos", "https://www.thinksrs.com/products/sr560.html"]
+    ]
   },
   {
     "id": "09-11",
