@@ -49,13 +49,13 @@ export function build(assets,anchors){
  const j={asset:{version:'2.0',generator:'BuildTheSimulation original PHI 5000 VersaProbe II'},scene:0,scenes,nodes,meshes,materials,bufferViews,accessors,buffers:[{byteLength:off}]};
  const input=JSON.stringify(j).replace(/[^\x00-\x7f]/g,x=>'\\u'+x.charCodeAt(0).toString(16).padStart(4,'0')),jn=Math.ceil(input.length/4)*4,bn=Math.ceil(off/4)*4;
  const raw=new Uint8Array(28+jn+bn),d=new DataView(raw.buffer);d.setUint32(0,0x46546c67,true);d.setUint32(4,2,true);d.setUint32(8,raw.length,true);d.setUint32(12,jn,true);d.setUint32(16,0x4e4f534a,true);raw.fill(32,20,20+jn);for(let i=0;i<input.length;i++)raw[i+20]=input.charCodeAt(i);d.setUint32(20+jn,bn,true);d.setUint32(24+jn,0x004e4942,true);let ix=28+jn;for(const v of parts){raw.set(v,ix);ix+=v.length;}
- const metrics={triangles,draws,nodes:nodes.length,bytes:raw.length,unit:'m',coordinateFrame:'+X operator right, +Y up, +Z operator-facing',headsetTested:false,anchors,motion:{introCoverRadians:-1.36,transferM:-.23}};
+ const metrics={triangles,draws,nodes:nodes.length,bytes:raw.length,unit:'m',coordinateFrame:'+X operator right, +Y up, +Z operator-facing',headsetTested:false,anchors,motion:{introCoverRadians:1.36,transferM:-.23}};
  return {raw,metrics,faces};
 }
 export function originalView(faces,view){
  const settings={front:[[.7,.5,2],[0,.95,0],196,'System overview'],side:[[2,.5,.28],[.07,1.01,.0],197,'Side and transfer rod'],rear:[[.64,.49,-2],[0,.99,0],199,'Rear services (inferred)'],work:[[.36,.24,1],[.65,1.16,.61],1090,'Intro chamber and 25 mm carrier']};
  const [v0,c,s,title]=settings[view],f=unit(v0),r=unit(cross([0,1,0],f)),u=cross(f,r),w=760,h=450;
- const avail=faces.filter(o=>(view!=='work'||['intro_cover','intro_chamber','transfer_arm','sample_puck'].includes(o.g))).map(o=>{if(view!=='work'||o.g!=='intro_cover')return o;const pivot=[.734,1.158,.673],t=-1.36,rot=p=>[Math.cos(t)*p[0]+Math.sin(t)*p[2],p[1],-Math.sin(t)*p[0]+Math.cos(t)*p[2]];return {...o,p:o.p.map(p=>add(rot(sub(p,pivot)),pivot)),n:rot(o.n)}});
+ const avail=faces.filter(o=>(view!=='work'||['intro_cover','intro_chamber','transfer_arm','sample_puck'].includes(o.g))).map(o=>{if(view!=='work'||o.g!=='intro_cover')return o;const pivot=[.734,1.158,.673],t=1.36,rot=p=>[Math.cos(t)*p[0]+Math.sin(t)*p[2],p[1],-Math.sin(t)*p[0]+Math.cos(t)*p[2]];return {...o,p:o.p.map(p=>add(rot(sub(p,pivot)),pivot)),n:rot(o.n)}});
  const fn=avail.filter(o=>dot(o.n,f)>.005).map(o=>{
   const xyz=o.p.map(p=>sub(p,c));return {...o,depth:xyz.reduce((a,q)=>a+dot(q,f),0)/xyz.length,poly:xyz.map(p=>[Math.round(w/2+s*dot(p,r)),Math.round(h/2-s*dot(p,u))])};
  }).sort((a,b)=>a.depth-b.depth);

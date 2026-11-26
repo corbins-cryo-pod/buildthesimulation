@@ -2,7 +2,7 @@
   "triangles": 8792,
   "draws": 45,
   "nodes": 11,
-  "bytes": 549572,
+  "bytes": 549600,
   "unit": "m",
   "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
   "headsetTested": false,
@@ -19,7 +19,7 @@
         0.06
       ],
       "action": "door",
-      "label": "Open/close introspection cover"
+      "label": "Open/close intro cover"
     },
     "transfer_arm": {
       "at": [
@@ -51,9 +51,9 @@
     },
     "host_panel": {
       "at": [
-        -1.44,
-        1.34,
-        0.48
+        -1.444,
+        1.322,
+        0.213
       ],
       "extent": [
         0.52,
@@ -65,7 +65,7 @@
     }
   },
   "motion": {
-    "introCoverRadians": -1.36,
+    "introCoverRadians": 1.36,
     "transferM": -0.23
   }
 }

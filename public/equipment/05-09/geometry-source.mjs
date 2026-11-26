@@ -2,10 +2,10 @@
 // remaining enclosure, flange and transfer stroke dimensions are reconstruction estimates.
 export const assets=[];
 export const anchors={
- intro_cover:{at:[.734,1.158,.673],extent:[.22,.17,.06],action:'door',label:'Open/close introspection cover'},
+ intro_cover:{at:[.734,1.158,.673],extent:[.22,.17,.06],action:'door',label:'Open/close intro cover'},
  transfer_arm:{at:[.96,1.15,.51],extent:[.36,.11,.09],action:'transfer',label:'Move coupon between intro and analysis'},
  sample_puck:{at:[.66,1.12,.55],extent:[.04,.023,.04],action:'load',label:'Load/remove 25 mm carrier'},
- host_panel:{at:[-1.44,1.34,.48],extent:[.52,.29,.03],action:'run',label:'Acquire spectra'}
+ host_panel:{at:[-1.444,1.322,.213],extent:[.52,.29,.03],action:'run',label:'Acquire spectra'}
 };
 const B=(g,m,p,d)=>assets.push({g,m,p,d,t:'box'});
 const C=(g,m,p,r,h,axis='y',n=24,ratio=0)=>assets.push({g,m,p,r,h,axis,n,ratio,t:'cyl'});
