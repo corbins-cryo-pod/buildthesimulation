@@ -1,0 +1,17 @@
+{
+  "schema": "bts.synthetic-annulus-inspection.v1",
+  "sampleId": "POLI-DETACHED-RADIAL-01",
+  "revision": 1,
+  "source": "Immutable author-designed printed test circle; no machining or material response.",
+  "coordinateFrame": "Card-local XY centered on the circle; millimeters",
+  "innerMm": 10,
+  "outerMm": 18,
+  "selected": "M1",
+  "pointMm": [
+    9,
+    12
+  ],
+  "radiusMm": 15,
+  "signedClearanceMm": 3,
+  "class": "inside band"
+}

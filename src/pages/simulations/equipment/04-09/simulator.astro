@@ -1,0 +1,52 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+const d='/equipment/04-09/';
+const maker='https://s3-alliance.com/wp-content/uploads/2017/04/POLI-500-n-POLI-762_Introduction-short120528.pdf#page=2';
+const purdue='https://purdue.atlassian.net/wiki/spaces/BNCWiki/pages/735379461/G%2BP%2BTechnology%2BPOLI-500%2BChemical%2BMechanical%2BPolishing%2BSystem';
+---
+<Layout pageTitle="G&P POLI-500 AC exterior and inert radial witness" subtitle="" wide={true}>
+ <link rel="stylesheet" href="/styles/equipment.css"/>
+ <main class="equipment-page pp">
+  <p><a href="/simulations/equipment/#equipment-04-09">↩ Equipment register · 04-09</a></p>
+  <h1>POLI-500 AC · exterior and radial witness</h1>
+  <p>Orbit the <strong>closed, inactive G&amp;P POLI-500 AC</strong>. Inspect three printed fiducials on a separate virtual radial chart, not a wafer or a component of the polisher. There are no cabinet actions, polishing, recipe, settings, physical processing or thickness changes.</p>
+  <div class="pp-grid">
+   <section aria-label="Dormant cabinet exterior">
+    <div class="pp-row"><button id="pp-front" type="button">Reset orbit</button><button id="pp-rear" type="button">Rear exterior</button><button id="pp-viewer" type="button">Chart close-up</button></div>
+    <div id="pp-view" role="img" aria-label="Original CAD-like model of the closed cabinet and detached chart reader"></div>
+    <p id="pp-status">Loading original metric GLB…</p>
+   </section>
+   <section class="pp-chart">
+    <h2>Fixed radial chart</h2>
+    <canvas id="pp-chart" width="620" height="412" role="img" aria-label="Fixed inert annulus with fiducials inside the band, on its inner border, and beyond its outer border"></canvas>
+    <div class="pp-row"><button id="pp-M1" type="button">Read M1</button><button id="pp-M2" type="button">Read M2</button><button id="pp-M3" type="button">Read M3</button><button id="pp-save" type="button">Export JSON</button></div>
+    <p id="pp-result" role="status"></p>
+   </section>
+  </div>
+  <section id="pp-ref">
+   <h2>Reference sheet</h2>
+   <p>The <a href={maker}>G&amp;P Technology POLI-500 overview, p. 2</a>, shows a labeled POLI-500 AC front, framing, black display and lower service doors; it anchors the exterior rendered here. Guard doors are fixed opaque panels in the deliverable. The <a href={purdue}>Purdue Birck facility record</a> independently lists the same envelope for its POLI-500. Rear details and bezel sizes are estimated, and other generations differ. Source photos are linked, not reproduced.</p>
+   <figure><img src={d+'front-reference.webp'} width="515" height="362" alt="Original front-angle model with fixed opaque guard panels and independent radial chart reader" loading="lazy"/><figcaption>Original browser render. The separate green reader belongs only to the inert virtual chart; it is not a G&amp;P accessory.</figcaption></figure>
+   <table><thead><tr><th>Item</th><th>Nominal</th><th>Source / use</th></tr></thead><tbody>
+   <tr><td>Cabinet W × D × H</td><td>1100 × 1150 × 1880 mm</td><td>Manufacturer overview, p. 2; cabinet and top-height model datums.</td></tr>
+   <tr><td>Inert chart annulus</td><td>Inner radius 10 mm; outer radius 18 mm</td><td>Original diagram only, completely separate from the equipment.</td></tr>
+   </tbody></table>
+  </section>
+  <section id="pp-proof">
+   <h2>Verified geometry and handoff</h2>
+   <p>Select the ID of a fixed printed marker. Radius r is the Euclidean distance from the chart origin. Signed clearance is the smaller of r − 10 mm and 18 mm − r. A negative value lies outside the band, zero is the boundary. JSON includes the immutable chart ID, sample revision, nominal coordinates, distances, and synthetic provenance. The original uniform material-removal acceptance is not simulated.</p>
+   <table><thead><tr><th>Marker</th><th>Expected radius / clearance</th><th>Actual</th><th>Tolerance</th></tr></thead><tbody>
+   <tr><td>M1 (9,12)</td><td>15 mm / +3 mm</td><td>15 mm, +3 mm, inside</td><td>Exact integer geometry</td></tr>
+   <tr><td>M2 (6,8)</td><td>10 mm / 0 mm</td><td>10 mm, 0 mm, boundary</td><td>Exact</td></tr>
+   <tr><td>M3 (12,16)</td><td>20 mm / −2 mm</td><td>20 mm, −2 mm, outside</td><td>Exact</td></tr>
+   <tr><td>GLB cabinet nominal</td><td>1100 × 1880 × 1150 mm XYZ</td><td>1100 × 1880 × 1150 mm</td><td>0.05 mm</td></tr>
+   </tbody></table>
+   <p><a href={d+'poli500.glb'} download>Metric GLB</a> · <a href={d+'build-model.py'} download>Editable Blender code</a> · <a href={d+'example-inspection.json'}>Example data and schema</a> · <a href={d+'xr.json'}>VR action targets</a> (headset not verified).</p>
+  </section>
+ </main>
+ <script is:inline>window.poliWitness=import('/equipment/04-09/annulus.mjs');</script>
+ <script>import '../../../../lib/equipment/04-09/client.mjs';</script>
+</Layout>
+<style>
+ .pp{max-width:81rem;margin:0 auto;padding-inline:1rem}.pp-grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(16rem,1fr);gap:1.4rem;align-items:start}.pp-row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin:.55rem 0}.pp button{border:1px solid currentColor;border-radius:.2rem;color:inherit;background:transparent;font:inherit;padding:.41rem .6rem;cursor:pointer}.pp button[aria-pressed=true]{box-shadow:inset 0 -.2rem currentColor}#pp-view{height:clamp(17rem,39vw,40rem);background:#273a3e;touch-action:none;overflow:hidden;border-radius:.25rem}#pp-view :global(canvas){display:block;width:100%;height:100%}#pp-chart{width:100%;height:auto;display:block;border-radius:.2rem}.pp-chart{border:1px solid currentColor;padding:.9rem;border-radius:.3rem}.pp table{width:100%;border-collapse:collapse}.pp th,.pp td{border-bottom:1px solid currentColor;padding:.4rem .55rem;text-align:left}.pp section{margin-bottom:1.35rem}.pp figure{margin:1rem 0;max-width:35rem}.pp figure img{max-width:100%;height:auto}@media(max-width:730px){.pp-grid{grid-template-columns:1fr}}
+</style>
