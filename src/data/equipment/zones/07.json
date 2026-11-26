@@ -220,9 +220,10 @@
     "inputs": "Sample ID, opaque condition identifier and externally recorded assay outcomes",
     "outputs": "Condition event and linked outcome observations with provenance",
     "acceptance": "Replay two labeled conditions, one lacking an outcome. Each must retain its supplied observations and the missing outcome must remain unknown.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Closed documentary Core and X metric GLB; published envelope checked",
+    "simulationStatus": "Detached fixed abstract drawing comparison only; no instrument workflow",
+    "integrationStatus": "Dedicated simulator, editable asset and example export linked",
+    "simulator": "/simulations/equipment/07-09/simulator/"
   },
   {
     "id": "07-10",

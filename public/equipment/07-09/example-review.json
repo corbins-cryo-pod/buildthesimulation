@@ -1,0 +1,56 @@
+[
+  {
+    "schema": "bts.synthetic-outline-review.v1",
+    "kind": "synthetic-documentary-drawing",
+    "drawingId": "BTS-STACK-DRAWING-001",
+    "revision": 1,
+    "source": "BuildTheSimulation original abstract two-block drawing. It does not represent equipment, biological work, or acquired data.",
+    "viewId": "STACK-FULL",
+    "framePx": [
+      180,
+      120
+    ],
+    "scaleMmPerPx": 0.5,
+    "observedEdgesPx": {
+      "left": 20,
+      "right": 160,
+      "top": 20,
+      "joint": 70,
+      "base": 100
+    },
+    "results": {
+      "widthMm": 70,
+      "upperHeightMm": 25,
+      "lowerHeightMm": 15,
+      "totalHeightMm": 40,
+      "heightCoverage": "both exterior edges visible"
+    }
+  },
+  {
+    "schema": "bts.synthetic-outline-review.v1",
+    "kind": "synthetic-documentary-drawing",
+    "drawingId": "BTS-STACK-DRAWING-001",
+    "revision": 1,
+    "source": "BuildTheSimulation original abstract two-block drawing. It does not represent equipment, biological work, or acquired data.",
+    "viewId": "STACK-CROPPED",
+    "framePx": [
+      180,
+      85
+    ],
+    "scaleMmPerPx": 0.5,
+    "observedEdgesPx": {
+      "left": 20,
+      "right": 160,
+      "top": 20,
+      "joint": 70,
+      "base": null
+    },
+    "results": {
+      "widthMm": 70,
+      "upperHeightMm": 25,
+      "lowerHeightMm": null,
+      "totalHeightMm": null,
+      "heightCoverage": "unknown: base clipped"
+    }
+  }
+]
