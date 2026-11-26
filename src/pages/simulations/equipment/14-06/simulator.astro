@@ -1,0 +1,52 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import r from '../../../../../public/equipment/14-06/references.json';
+import v from '../../../../../public/equipment/14-06/verification.json';
+import {defaults as d,limits} from '../../../../../public/equipment/14-06/dma.mjs';
+const a='/equipment/14-06/',s=r.sources;
+const fields=[['frequencyHz','Frequency (Hz)',.001],['strainPercent','Peak strain (%)',.01],['temperatureC','Isothermal temperature (°C)',.5],['gaugeMm','Gauge length (mm)',.1],['widthMm','Coupon width (mm)',.1],['thicknessMm','Thickness (mm)',.01],['e0Mpa','Relaxed modulus (MPa)',.1],['deltaMpa','Relaxing modulus increment (MPa)',.1],['tauRefS','Relaxation time at 23 °C (s)',.001],['activationKj','Assumed shift energy (kJ/mol)',.1]];
+---
+<Layout pageTitle="Dynamic mechanical analyzer laboratory" subtitle="" description="Run a virtual oscillatory tension test and recover storage modulus, loss modulus and phase." wide={true}>
+<article class="equipment q800">
+<nav class="eq-nav"><a href="/simulations/equipment/14-06/">← Equipment 14-06</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">Evidence</a></nav>
+<header class="eq-mast"><span class="eq-meta">14-06 / Mechanical characterization</span><h2>TA Q800 · Oscillatory tension</h2><p>Inspect the Q800 with its standard furnace and film tension grips. Run a synthetic oscillation on an inert polymer coupon, then compare the recovered in-phase and out-of-phase mechanical response. This is a teaching model, not a measured material curve or real instrument controller.</p></header>
+<div class="q-grid">
+<section class="q-card"><h3>Instrument and film grips</h3>
+<div class="q-tools">{[['bench','Bench'],['grips','Film grips'],['rear','Rear']].map(([k,n])=><button data-view={k}>{n}</button>)}<button id="reset-view">Reset camera</button></div>
+<div class="q-view"><canvas id="q-model" aria-label="Q800 with translating virtual furnace and film tension grips"></canvas></div><p class="q-note" id="asset-status" role="status">Loading metre-scale GLB…</p>
+<div class="q-tools"><button id="furnace">Raise virtual furnace</button><button id="coupon">Unseat coupon</button></div>
+<label>Oscillation phase <strong id="phase">0°</strong><input type="range" id="phase-scrub" min="0" max="360" step="1" value="0" aria-label="Oscillation phase"/></label>
+<p class="q-note">Orbit or pinch to zoom. Select Film grips for the local cutaway. In 3D the cap, grips, and panel key share the same actions as the page controls. Moving-grip displacement follows the real-scale virtual calculation.</p></section>
+<section class="q-card"><h3>Virtual experiment</h3>
+<form id="settings" onsubmit="return false;">
+<label>Input mode<select name="mode"><option value="inert">Linear inert polymer reference</option><option value="known">9 MPa / 30° sine replay</option></select></label>
+<label>Sample ID<input name="sampleId" value={d.sampleId} maxlength="80"/></label><label>Analysis site ID<input name="siteId" value={d.siteId} maxlength="80"/></label><label>Parent revision<input name="parentRevision" type="number" min="0" max="99999999" value={0}/></label>
+{fields.map(([k,n,p])=><label>{n}<input type="number" name={k} min={limits[k][0]} max={limits[k][1]} step={p} value={d[k]}/></label>)}
+</form>
+<div class="q-tools"><button id="run" class="q-main">Measure oscillation</button><button id="example">Run 30 / 20 MPa example</button></div>
+<p id="status" aria-live="polite" role="status">The inert coupon is loaded. Run the example to recover storage and loss moduli at ωτ = 1.</p></section>
+</div>
+<section class="q-card"><h3>Simulated mechanical readout</h3>
+<div class="q-values">{[['Storage E′','storage'],['Loss E″','loss'],['Phase lead','lag'],['tan δ','tangent'],['Force amplitude','force'],['Displacement amplitude','displ']].map(([n,k])=><div><small>{n}</small><strong data-v={k}>—</strong></div>)}</div>
+<div class="q-tools"><button id="mode-plot">Show frequency sweep</button><button id="json" disabled>Export result JSON</button><button id="csv" disabled>Export oscillation CSV</button><a href={a+'output-schema.json'}>Output schema</a></div>
+<div class="q-chart"><canvas id="chart" width="1100" height="286" aria-label="Synthetic stress and strain or complex modulus versus frequency"></canvas></div><p class="q-note" id="chart-note">Stress (amber) and strain (green) normalized to their own amplitudes. Use the readout for physical units.</p></section>
+<section id="evidence"><h3>References and model limits</h3><p>Metric exterior: <b>460 × 560 × 560 mm</b> closed (W × D × H) and <b>710 mm</b> open, from the <a href={s.install}>TA installation sheet, rev. K p. 17</a>. Exterior proportions use the <a href={s.instrument}>manufacturer product photo, TA284 p. 2</a>. The <a href={s.clamp}>film clamp photo, TA284 p. 7</a> establishes fixed and moving grips and supports the 5–30 mm hardware gauge range (5–25 mm modeled). Individual shells, grip positions and rear connector locations are inferred.</p>
+<p><a href={s.range}>TA Q800 frequency and force specifications, p. 3</a> · <a href={s.facility}>Institutional instrument page</a> · <a href={a+'build-model.py'} download>Editable parametric source</a> · <a href={a+'q800.glb'} download>GLB</a> · <a href={a+'vr-station.json'}>VR hit targets and pose</a> · <a href={a+'station.mjs'}>Shared headless actions</a>. No headset has been tested.</p>
+<details><summary>Passive model and data contract</summary><p>The linear standard solid gives E* = E₀ + ΔE·iωτ/(1+iωτ). An illustrative Arrhenius shift changes τ with absolute temperature; neither shift energy nor the moduli are calibrated to a real polymer. The generated record includes eight cycles at 64 samples/cycle and distinct strain (dimensionless), stress (Pa), displacement (µm) and force (N) channels. A fundamental complex ratio fits E′, E″, phase and tan δ. Each export carries sample/site IDs, parent revision and configuration; the JSON includes its temperature/frequency and an analytic frequency sweep.</p><p>Assumes uniform axial strain, linear small oscillations and ideal grips. No furnace settling, clamp slip, preload, nonlinear material response, sample failure, real hardware drive or clinical inference. Valid frequency 0.05–100 Hz, 0.01–0.5% strain, 5–65 °C, subject to the force guard.</p></details></section>
+<section id="verification"><h3>Verification</h3><p>Analytic and source-derived checks, not measured hardware results.</p><div class="q-table"><table><thead><tr><th>Case</th><th>Expected</th><th>Actual</th><th>Unit / tolerance</th><th>Result</th></tr></thead><tbody>{v.checks.map(t=><tr><th title={t.basis}>{t.id}</th><td>{String(t.expected)}</td><td>{[t.actual].flat().map(x=>Math.abs(x)<1e-12?'0':x.toPrecision(7)).join(', ')}</td><td>{t.unit} ± {t.tolerance}</td><td>{t.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div><p><a href={a+'verification.json'}>Verification JSON</a> · <a href={a+'verify.mjs'}>Reproduce the checks</a></p></section>
+</article></Layout>
+<script>import '../../../../lib/equipment/14-06/client.mjs';</script>
+<style>
+.q800{--q-rule:color-mix(in srgb,currentColor 28%,transparent);max-width:1300px;margin:auto}
+.q-grid{display:grid;grid-template-columns:minmax(0,1.14fr) minmax(0,1fr);gap:1rem}
+.q-card{min-width:0;border:1px solid var(--q-rule);padding:.9rem;margin:.8rem 0}.q-card h3{margin:.2rem 0 .65rem}
+.q-tools{display:flex;flex-wrap:wrap;align-items:center;gap:.42rem;margin:.55rem 0}.q-note,.q-tools,.q800 label{font:.88rem/1.45 system-ui,sans-serif}
+.q800 :is(button,input,select){font:inherit;border:1px solid var(--q-rule);background:var(--panel,Canvas);color:inherit;border-radius:3px;padding:.38rem;box-sizing:border-box}.q800 :is(input,select){min-width:0;width:100%}.q800 button{cursor:pointer;min-height:37px}.q800 button.q-main{background:#2b5360;color:#fff}.q800 button:disabled{opacity:.5;cursor:default}.q800 label{display:grid;gap:.15rem}
+#settings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.44rem .64rem}
+.q-view{aspect-ratio:1.55;background:#26353b}.q-chart{height:220px;background:#25363a}.q800 canvas{width:100%;height:100%;display:block}.q-view canvas{touch-action:none}
+.q-values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem;margin:1rem 0}.q-values :is(small,strong){display:block}.q-values strong{font:600 clamp(1rem,2.25vw,1.45rem)/1.5 monospace}
+.q-table{overflow:auto}.q-table table{width:100%;border-collapse:collapse}.q-table :is(th,td){border-bottom:1px solid var(--q-rule);padding:.45rem;text-align:left}
+.q800 .q-err{color:#a94337}html[data-theme=dark] .q800 .q-err{color:#efb598}
+@media(max-width:840px){.q-grid{grid-template-columns:1fr}.q-chart{height:165px}.q-values{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>

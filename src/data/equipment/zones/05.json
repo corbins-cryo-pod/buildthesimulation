@@ -64,9 +64,10 @@
     "inputs": "Sample topography, specified tip geometry, XY raster and calibration",
     "outputs": "Apparent height image and roughness metrics with tip and sample provenance",
     "acceptance": "Image a narrow isolated ridge using two spherical probe radii with ideal tracking. The broader probe widens its apparent base while preserving peak height above the flat background.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built · metric AVH-1000, legacy Icon SPM, NanoScope V and RTESP-300",
+    "simulationStatus": "Verified synthetic rigid-surface AFM raster; ideal hemisphere only",
+    "integrationStatus": "Interactive station, heightmap/CSV exchange and metric VR action targets",
+    "simulator": "/simulations/equipment/05-03/simulator/"
   },
   {
     "id": "05-04",
@@ -91,7 +92,7 @@
   {
     "id": "05-05",
     "name": "Reflectometer",
-    "model": "Filmetrics F40",
+    "model": "Filmetrics F40 visible-band analyzer / Olympus BX51M",
     "evidence": "B",
     "priority": "P2",
     "page": 19,
@@ -104,9 +105,24 @@
     "inputs": "Substrate/film optical constants, wavelength grid, illumination geometry and reference spectrum",
     "outputs": "Reflectance spectrum and fitted thickness with residuals",
     "acceptance": "In a lossless normal-incidence fixture, reduce film thickness to zero. Predicted reflectance must equal the bare-substrate Fresnel result across the grid.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB · dimensioned Olympus frame, visually inferred F40 receiver",
+    "simulationStatus": "Calibrated single-film reflectance and bounded inverse fit with ambiguity rejection",
+    "integrationStatus": "02-07 resist-layer input; revisioned spectrum, fit, residuals, CSV export",
+    "simulator": "/simulations/equipment/05-05/simulator/",
+    "related": [
+      [
+        "Caltech KNI F40/BX51M station",
+        "https://www.lab.kni.caltech.edu/Light_Microscope_with_Spectroscopic_Reflectometer"
+      ],
+      [
+        "KLA F40 datasheet",
+        "https://www.kla.com/wp-content/uploads/Filmetrics_Datasheet_-_F40_n6v.pdf"
+      ],
+      [
+        "Laurell spin coater",
+        "/simulations/equipment/02-07/simulator/"
+      ]
+    ]
   },
   {
     "id": "05-06",
@@ -131,7 +147,7 @@
   {
     "id": "05-07",
     "name": "Probe station",
-    "model": "FormFactor 11000B",
+    "model": "Cascade Microtech Summit 11000B-AP · manual 200 mm",
     "evidence": "B",
     "priority": "P1",
     "page": 19,
@@ -144,9 +160,10 @@
     "inputs": "Contact map and netlist, probe-tip poses and stimulus from a connected source meter",
     "outputs": "Contact pairing, continuity state and electrical readings with die coordinates",
     "acceptance": "Probe the ends of a known resistor then lift one probe. The connected sweep must recover its resistance; the second sweep must report an open contact.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric station and documented manual motion; inferred detail",
+    "simulationStatus": "Passive contact geometry, current limiting and I–V verified",
+    "integrationStatus": "Interactive viewer, SourceMeter import and voltage handoff; headset not tested",
+    "simulator": "/simulations/equipment/05-07/simulator/"
   },
   {
     "id": "05-08",
@@ -189,7 +206,7 @@
   {
     "id": "05-10",
     "name": "Raman microscope",
-    "model": "Horiba LabRAM (model variant pending)",
+    "model": "HORIBA LabRAM HR Evolution, Olympus BX-series / 532 nm virtual branch",
     "evidence": "B",
     "priority": "P2",
     "page": 20,
@@ -202,9 +219,10 @@
     "inputs": "Reference Raman spectra, calibrated shift axis and XY sampling grid",
     "outputs": "Shift spectra and spatial component-intensity map",
     "acceptance": "Assign two reference spectra with distinct isolated peaks to alternating tiles. Integrated peak-window maps must reproduce the known tiles without swapping axes.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB with cabinet, microscope, visor, moving objective and stage",
+    "simulationStatus": "Verified analytical shift, linewidth and oriented silicon/polystyrene peak-area maps",
+    "integrationStatus": "Dedicated interactive simulator and typed spectra/map export",
+    "simulator": "/simulations/equipment/05-10/simulator/"
   },
   {
     "id": "05-11",

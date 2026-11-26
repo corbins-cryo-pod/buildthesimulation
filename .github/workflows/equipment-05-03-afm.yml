@@ -1,0 +1,32 @@
+name: Equipment 05-03 AFM
+on:
+  pull_request:
+    paths:
+      - 'public/equipment/05-03/**'
+      - 'scripts/equipment/05-03/**'
+      - 'src/lib/equipment/05-03/**'
+      - 'src/pages/simulations/equipment/05-03/**'
+      - 'tests/equipment-05-03-afm.mjs'
+      - '.github/workflows/equipment-05-03-afm.yml'
+jobs:
+  focus:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 13
+    env:
+      ASTRO_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --no-audit --no-fund
+      - run: node --test tests/equipment-05-03-afm.mjs tests/equipment-register.mjs && node scripts/equipment/05-03/geometry.mjs && git diff --exit-code -- public/equipment/05-03/geometry.json public/equipment/05-03/xr.json
+      - run: |
+          python3 -m venv /tmp/afm-qa
+          /tmp/afm-qa/bin/pip install playwright==1.56.0
+          /tmp/afm-qa/bin/playwright install --with-deps chromium
+      - run: |
+          npm run dev -- --host 127.0.0.1 --port 4693 > /tmp/afm-server.log 2>&1 &
+          trap 'cat /tmp/afm-server.log' EXIT
+          for i in $(seq 1 50); do curl -fsS http://127.0.0.1:4693/simulations/equipment/05-03/ >/dev/null && break; sleep 1; done
+          /tmp/afm-qa/bin/python scripts/equipment/05-03/browser-smoke.py http://127.0.0.1:4693

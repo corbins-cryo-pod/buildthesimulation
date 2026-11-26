@@ -32,7 +32,7 @@ export function measure(input={},loaded=true,furnaceOpen=false){
  if(!['inert','known'].includes(p.mode))return bad('mode','Choose a supported passive reference.');
  for(const [k,[a,b]] of Object.entries(limits))if(!Number.isFinite(p[k])||p[k]<a||p[k]>b)return bad('setting',k+' is outside the virtual range.');
  const M=p.mode==='known'?{realMpa:9*Math.cos(Math.PI/6),imagMpa:4.5,tauS:null}:complexModulus(p.frequencyHz,p),epsilon=p.strainPercent/100;
- const rows=replay(p.frequencyHz,epsilon,M.realMpa,M.imagMpa,.47),fit=analyzeHarmonic(rows,p.frequencyHz),area=p.widthMm*p.thicknessMm*1e-6;
+ const rows=replay(p.frequencyHz,epsilon,M.realMpa,M.imagMpa),fit=analyzeHarmonic(rows,p.frequencyHz),area=p.widthMm*p.thicknessMm*1e-6;
  const F=fit.stressAmplitudePa*area,du=epsilon*p.gaugeMm*1e3;
  if(F>18)return bad('force','Requested virtual force exceeds the documented 18 N upper envelope. Reduce strain or area.');
  const freq=Array.from({length:41},(_,i)=>.05*(100/.05)**(i/40)).map(f=>{

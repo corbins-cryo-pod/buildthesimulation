@@ -16,9 +16,10 @@
     "inputs": "Three-electrode cell configuration, electrode circuit model, frequency sweep or voltage waveform",
     "outputs": "Complex impedance spectrum or current–voltage trace with acquisition settings and fit residuals",
     "acceptance": "Use an ideal parallel RC dummy cell. At f = 1/(2πRC), recover impedance magnitude R/√2 and phase −45°. For an ideal capacitor under a voltage ramp, check I = C dV/dt.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "simulator": "/simulations/equipment/09-01/simulator/",
+    "geometryStatus": "Metric model",
+    "simulationStatus": "Verified ideal passive-cell EIS/CV",
+    "integrationStatus": "Interactive; waveform and measurement export"
   },
   {
     "id": "09-02",
