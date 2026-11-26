@@ -1,0 +1,60 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "16-06",
+  "asset": "/equipment/16-06/ae100.glb",
+  "scale": "glTF 1 unit = 1 m, +Y up, +Z toward operator",
+  "metrics": {
+    "bytes": 175172,
+    "triangles": 2196,
+    "draws": 53,
+    "housingNominalM": [
+      0.20499999821186066,
+      0.2899999963119626,
+      0.4099999964237213
+    ],
+    "panDiameterM": 0.07999999821186066
+  },
+  "implementation": "DOM and pointer share action(state, action). No physical headset test.",
+  "nodes": [
+    {
+      "node": "door_handle",
+      "label": "Slide the right draft shield",
+      "action": {
+        "type": "door"
+      },
+      "boundsM": [
+        0.01,
+        0.036,
+        0.014
+      ],
+      "parent": "right_draft_door",
+      "travelM": [
+        0,
+        0,
+        -0.132
+      ],
+      "travelInferred": true
+    },
+    {
+      "node": "tare_bar",
+      "label": "Store currently valid reading as tare",
+      "action": {
+        "type": "tare"
+      },
+      "widthM": 0.153
+    },
+    {
+      "node": "calibrate_handle",
+      "label": "Apply a synthetic one-point calibration",
+      "action": {
+        "type": "calibrate"
+      },
+      "widthM": 0.017
+    },
+    {
+      "node": "display_texture_anchor",
+      "label": "Live balance image",
+      "widthM": 0.148
+    }
+  ]
+}
