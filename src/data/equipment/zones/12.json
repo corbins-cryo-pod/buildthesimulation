@@ -176,9 +176,10 @@
     "inputs": "Raw patterned frames, phase and orientation labels, optical transfer function and pixel scale",
     "outputs": "Reconstructed SIM image, reconstruction configuration and artifact flags",
     "acceptance": "Generate patterned frames for a known grating within the modeled passband. Recover its spatial frequency and orientation. Remove a required phase frame and check that reconstruction is flagged incomplete.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: metric stationary exterior; nominal 1200 × 900 mm table verified; individual housings inferred",
+    "simulationStatus": "First pass: passive staged synthetic grating comparison and Fourier inspection; original SIM acceptance deferred",
+    "integrationStatus": "First pass: simulator route, metric GLB, stable display action, sample export and targeted local verification",
+    "simulator": "/simulations/equipment/12-09/simulator/"
   },
   {
     "id": "12-10",

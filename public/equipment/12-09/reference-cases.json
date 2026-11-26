@@ -1,0 +1,16 @@
+{
+  "method": "Independent Python math with known integer grating bins on a 6.4 µm square. Contrast comes from continuous Gaussian Fourier attenuation and a face amplitude of 0.7. This verifies passive image math, not ZEISS performance.",
+  "cases": [
+    {"id":"frequency","expected":0.9110862335695782,"tolerance":1e-9,"unit":"cycles/µm"},
+    {"id":"pitch","expected":1.0975909449120567,"tolerance":1e-9,"unit":"µm"},
+    {"id":"frequency-vector-angle","expected":30.96375653207352,"tolerance":1e-9,"unit":"° CCW from +X"},
+    {"id":"wide-contrast","expected":0.16019993777424785,"tolerance":1e-9,"unit":"relative"},
+    {"id":"narrow-contrast","expected":0.5942080322715915,"tolerance":1e-9,"unit":"relative"},
+    {"id":"contrast-increases","expected":true,"unit":"boolean"},
+    {"id":"flat-has-no-frequency","expected":true,"unit":"boolean"},
+    {"id":"missing-image-flag","expected":true,"unit":"boolean"},
+    {"id":"hardware-command-rejected","expected":true,"unit":"boolean"},
+    {"id":"table-width","expected":1.20,"tolerance":1e-5,"unit":"m"},
+    {"id":"table-depth","expected":0.90,"tolerance":1e-5,"unit":"m"}
+  ]
+}
