@@ -4,8 +4,9 @@ import {readFile,writeFile,mkdir} from 'node:fs/promises';
 const base=process.env.MLA_URL||'http://127.0.0.1:4321';
 const route=base+'/simulations/equipment/02-03/simulator/';
 const out=process.env.MLA_QA_DIR||'mla-qa';await mkdir(out,{recursive:true});
-let ready=false;for(let i=0;i<60;i++){try{const response=await fetch(route,{cache:'no-store'});if(response.ok&&(await response.text()).includes('MODEL 1.1')){ready=true;break}}catch{}await new Promise(r=>setTimeout(r,4000))}
-assert.ok(ready,'MODEL 1.1 simulator route must be reachable');
+let ready=false,lastCheck='not attempted';for(let i=0;i<60;i++){try{const response=await fetch(route,{cache:'no-store',signal:AbortSignal.timeout(10000)});const html=await response.text();const version=html.match(/MODEL\s+\d+(?:\.\d+)+/)?.[0]||'no model marker';lastCheck='HTTP '+response.status+' · '+response.url+' · '+version;if(response.ok&&html.includes('MODEL 1.1')){ready=true;break}}catch(e){lastCheck=String(e.cause||e)}if(i%10===0)console.log('Readiness check:',lastCheck);await new Promise(r=>setTimeout(r,4000))}
+await writeFile(out+'/readiness.json',JSON.stringify({route,ready,lastCheck},null,2));
+assert.ok(ready,'MODEL 1.1 simulator route must be reachable; last check: '+lastCheck);
 const browser=await chromium.launch({headless:true,args:['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--no-sandbox']});
 try{
  const ctx=await browser.newContext({viewport:{width:1280,height:960},acceptDownloads:true});const page=await ctx.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
