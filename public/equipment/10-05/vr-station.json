@@ -1,0 +1,75 @@
+{
+  "schema": "bts.station.optical-reference.v1",
+  "equipment": "10-05",
+  "model": "./slicescope-optical.glb",
+  "axes": "+Y up, +Z front",
+  "units": "m",
+  "nodes": 83,
+  "bytes": 36984,
+  "triangles": 13780,
+  "hitTargets": [
+    {
+      "node": "Focus_dial",
+      "action": "cycle",
+      "actionPayload": null,
+      "label": "Switch teaching focus plane",
+      "boundsM": {
+        "min": [
+          0.222,
+          0.0575,
+          0.144
+        ],
+        "max": [
+          0.272,
+          0.0865,
+          0.194
+        ]
+      }
+    },
+    {
+      "node": "Etched_reference_coupon",
+      "action": "pick",
+      "actionPayload": null,
+      "label": "Capture in-focus inert target",
+      "boundsM": {
+        "min": [
+          -0.0315,
+          0.182,
+          0.0375
+        ],
+        "max": [
+          0.0315,
+          0.188,
+          0.0845
+        ]
+      }
+    },
+    {
+      "node": "Stage_home_key",
+      "action": "home",
+      "actionPayload": null,
+      "label": "Reset teaching lateral offset",
+      "boundsM": {
+        "min": [
+          0.206,
+          0.0615,
+          0.1925
+        ],
+        "max": [
+          0.224,
+          0.0705,
+          0.2155
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./optics.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)",
+    "pose": "pose(state)"
+  },
+  "note": "Move coupon hit bounds with semantic stage translation. No headset test."
+}

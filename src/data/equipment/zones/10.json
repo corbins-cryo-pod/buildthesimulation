@@ -116,9 +116,16 @@
     "inputs": "Slice volume ID, voxel spacing, stage pose, objective calibration and cell annotations",
     "outputs": "Calibrated focal-plane image, sample-space target position and selected cell ID",
     "acceptance": "Place labeled beads on two known planes. Moving focus between them should select the corresponding bead and return its coordinates within one image voxel.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built",
+    "simulationStatus": "Verified inert marked-plane optics and coordinate recovery",
+    "integrationStatus": "Built",
+    "simulator": "/simulations/equipment/10-05/simulator/",
+    "related": [
+      [
+        "Upright optical exhibit and synthetic focal chart",
+        "/simulations/equipment/10-05/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "10-06",

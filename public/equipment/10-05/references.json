@@ -1,0 +1,10 @@
+{
+ "model":"Scientifica SliceScope Pro 1000 with upright head, two mount-side props, post-supported XY stage and optional SciCam+-shaped inert camera housing",
+ "referenceViews":[
+  {"title":"Scientifica Pro 1000 front/plan drawing","url":"https://scientifica.imgix.net/images/SliceScope-Pro-1000-TD-1.jpg?w=1300","caption":"Current rig drawing anchors 157.2 mm XY-stage base width and 100 mm top bracket width. Cable and adjustment details not worked."},
+  {"title":"Scientifica Pro 1000 side/isometric drawing","url":"https://scientifica.imgix.net/images/SliceScope-Pro-1000-TD-2.jpg?w=1300","caption":"Anchors 300 mm base length and 100 mm round feet; shows separate post platforms, objective above the stage and condenser below it."},
+  {"title":"Scientifica manufacturer front three-quarter photo","url":"https://scientifica.imgix.net/images/Products/SliceScope-Pro-1000/slicescope-1k-with-scicam-2025.jpg?w=950","caption":"Current photo establishes black mounts, steel posts, stacked transmitted-light optics and purple camera shape."}
+ ],
+ "specifications":[{"value":50,"unit":"mm","parameter":"Published XY travel, by axis, technical data page","scope":"Reference only; first-pass focus experiment uses at most ±100 µm panning."},{"value":5,"unit":"µm/pixel","parameter":"Calibrated teaching raster (original synthetic scale)","scope":"Not an OEM camera or objective calibration."}],
+ "unknown":"Foot positions are configurable; nosepiece and camera heights/silhouette, holder geometry and all synthetic optical behavior are illustrative. No electrodes, liquids, specimens, or real approach procedures."
+}

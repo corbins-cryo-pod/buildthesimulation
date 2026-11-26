@@ -1,0 +1,42 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import refs from '../../../../../public/equipment/10-05/references.json';
+import checked from '../../../../../public/equipment/10-05/verification.json';
+const a='/equipment/10-05/';
+---
+<Layout pageTitle="Scientifica SliceScope Pro 1000" subtitle="" description="Focus an upright microscope on two synthetic inert optical reference marks." wide={true}>
+<article class="equipment so1005">
+<nav class="eq-nav"><a href="/simulations/equipment/10-05/">← Equipment 10-05</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">Sources & checks</a></nav>
+<header class="eq-mast"><span class="eq-meta">10-05 / Passive upright optical station</span><h2>Scientifica SliceScope Pro 1000 · Optical reference</h2><p>Focus an upright microscope on a virtual etched coupon. Capture the marker at the lower plane, move to the upper plane, and recover each marker’s position in the coupon’s coordinate frame.</p></header>
+<div class="so-grid">
+<section class="so-card"><h3>Optical head and stage</h3>
+<div class="so-bar"><button data-view="whole">Front three-quarter</button><button data-view="objective">Objective</button><button data-view="stage">Sample stage</button><button data-view="rear">Rear</button><button id="camera-reset">Reset camera</button></div>
+<div class="so-camera"><canvas id="scope-model" aria-label="Scientifica upright objective above a passive reference stage and condenser with side mounting blocks"></canvas></div>
+<p id="asset" class="so-note" role="status">Loading metre-scale GLB…</p><p class="so-note">Drag or pinch to inspect. The virtual remote dial switches focal planes, the remote key centers the chart, and the chart itself captures the currently visible target. The side markers are blunt visual props, not tools.</p>
+</section>
+<section class="so-card"><h3>Inert calibration chart</h3>
+<div class="so-bar"><button id="low">Lower plane · 0 µm</button><button id="high">Upper plane · 80 µm</button><button id="pick" class="primary">Capture visible target</button></div>
+<div class="so-bar"><label>Focus <input id="focus" type="range" min="-20" max="100" step="10" value="0" /> <output id="focus-value">0 µm</output></label></div>
+<div class="so-bar"><label>View center X (µm) <input id="pan-x" type="number" value="0" min="-100" max="100" step="5" /></label><label>Y (µm) <input id="pan-y" type="number" value="0" min="-100" max="100" step="5" /></label><button id="home">Center stage</button></div>
+<div class="so-image"><canvas id="preview" width="81" height="61" aria-label="Synthetic 81 × 61 optical image; click to select an in-focus marker"></canvas></div>
+<p id="status" role="status" aria-live="polite">Lower plane ready. Capture or click the visible mark.</p>
+<p class="so-note">81 × 61 pixels at 5 µm/pixel · 50 µm scale bar in the display. Raster rows increase toward the operator.</p>
+<div class="so-bar"><button id="out-json" disabled>Export capture JSON</button><button id="out-png">Download raster PNG</button><a href={a+'example-capture.json'}>Example result</a></div>
+</section>
+</div>
+<section id="evidence"><h3>Sources, dimensions and checks</h3>
+<figure class="so-fig"><img src={a+'reference-layout.svg'} loading="lazy" alt="Original schematic labeling the passive camera, objective, condenser and two inert etched planes."/><figcaption>Original diagram. The camera and mounts have a documentary appearance; optical calibration is synthetic and unrelated to the pictured hardware.</figcaption></figure>
+<ul>{refs.referenceViews.map(r=><li><a href={r.url}>{r.title}</a>. {r.caption}</li>)}</ul>
+<p>Manufacturer drawings anchor a <b>157.2 × 300 mm</b> XY stage base, <b>100 mm</b> top bracket and <b>100 mm</b> diameter support feet. <a href="https://www.scientifica.uk.com/products/slicescope-pro-1000/technical-data">Scientifica's technical data</a> gives 50 mm nominal mechanical travel per stage axis. The preset focuses and ±100 µm view offsets here cover the synthetic chart only. Optional camera enclosure dimensions and side accessory positions are estimated.</p>
+<p>Original inert coupon BTS-ETCH-2PLANE-01 has two etched marks with known sample-space coordinates. For each marker, pixel position equals the sample position minus the view-center offset, divided by 5 µm/pixel and rounded about the raster center. Synthetic visibility falls as exp(−Δz²/(2σ²)), with σ = 20 µm as a display assumption. Selection requires contrast ≥ 0.5 and an in-frame marker. On capture the inverse lateral mapping recovers the sample-space coordinate; recorded Z is the current focus. The model is not calibrated optical performance, biological imaging, or a physical positioning procedure.</p>
+<div class="so-table"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{checked.checks.map(c=><tr><th>{c.id}</th><td>{String(c.expected)} {c.unit}</td><td>{typeof c.actual==='number'?Number(c.actual.toFixed(8)):String(c.actual)} {c.unit}</td><td>{c.tolerance===0?'Exact':String(c.tolerance)}</td><td>{c.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable model</a> · <a href={a+'slicescope-optical.glb'} download>Metric GLB</a> · <a href={a+'references.json'}>Specifications</a> · <a href={a+'vr-station.json'}>VR interaction manifest</a> · <a href={a+'optics.mjs'}>Independent optical logic</a> · <a href={a+'verification.json'}>Verification JSON</a>. No headset session tested.</p></section>
+</article></Layout><script>import '../../../../lib/equipment/10-05/client.mjs';</script>
+<style>
+.so1005{--so-rule:color-mix(in srgb,currentColor 27%,transparent);max-width:1280px;margin:auto}.so-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:1rem}.so-card{min-width:0;border:1px solid var(--so-rule);padding:.85rem;margin:.8rem 0}.so-card h3{margin:.21rem 0 .6rem}
+.so-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin:.53rem 0}.so-bar,.so-note,.so-fig figcaption{font:.86rem/1.4 system-ui,sans-serif}.so1005 :is(button,input){font:inherit;accent-color:#426d60}.so1005 :is(button,input[type=number]){padding:.4rem;background:var(--panel,Canvas);color:inherit;border:1px solid var(--so-rule);border-radius:3px;min-height:36px}.so1005 button{cursor:pointer}.so1005 button:disabled{opacity:.55;cursor:default}.so1005 input[type=number]{width:5rem}.so1005 .primary{background:#34594f;color:#fff}
+.so-camera{aspect-ratio:1.4;background:#263b43}.so-camera canvas{width:100%;height:100%;display:block;touch-action:none}.so-image{max-width:480px}.so-image canvas{display:block;width:100%;height:auto;image-rendering:pixelated;cursor:crosshair}
+.so-table{overflow:auto}.so-table table{width:100%;border-collapse:collapse}.so-table :is(td,th){border-bottom:1px solid var(--so-rule);padding:.44rem;text-align:left}.so-fig{margin:1rem 0;max-width:600px}.so-fig img{display:block;width:100%;height:auto}.so-fig figcaption{margin:.38rem 0}
+@media(max-width:840px){.so-grid{grid-template-columns:1fr}}
+</style>
