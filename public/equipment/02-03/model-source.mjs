@@ -22,9 +22,9 @@ export function makeModel(){
  for(const x of [-.60,.60]){b("front_corner_"+x,[x,1.005,.628],[.035,1.89,.044],"trim",housing)}
  b("left_red_strip",[-.54,1.185,.627],[.14,.714,.046],"red",housing);b("right_control_strip",[.54,1.185,.627],[.14,.714,.046],"red",housing);
  for(const x of [-.47,.47])b("window_guide_"+x,[x,1.185,.628],[.025,.71,.044],"trim",housing);
- const window=group("loading_window",[0,0,0],root);b("amber_glazing",[0,1.185,.614],[.93,.714,.017],"amber",window);for(const x of [-.462,.462])b("window_edge_"+x,[x,1.185,.63],[.015,.714,.028],"trim",window);
+ const window=group("loading_window",[0,0,0],root);b("safelight_strip",[0,1.54,.585],[.89,.014,.018],"gold",housing);b("amber_glazing",[0,1.185,.614],[.93,.714,.017],"amber",window);for(const x of [-.462,.462])b("window_edge_"+x,[x,1.185,.63],[.015,.714,.028],"trim",window);
  c("emergency_ring",[.54,1.23,.653],[.087,.006,.087],"yellow",root,frontRot);c("emergency_button",[.54,1.23,.67],[.055,.03,.055],"red",root,frontRot);c("light_button",[.54,.99,.66],[.027,.018,.027],"green",root,frontRot);c("window_button",[.54,.93,.66],[.027,.018,.027],"white",root,frontRot);
- b("temperature_panel",[.647,1.77,.42],[.006,.08,.14],"black",root);b("temperature_display",[.651,1.783,.435],[.005,.025,.075],"screen",root);c("temperature_reset",[.654,1.752,.37],[.018,.008,.018],"white",root,sideRot);
+ b("temperature_panel",[.647,1.80,.48],[.006,.08,.14],"black",root);b("temperature_display",[.651,1.813,.495],[.005,.025,.075],"screen",root);c("temperature_reset",[.654,1.782,.43],[.018,.008,.018],"white",root,sideRot);
  for(const x of [-.56,.56])for(const z of [-.54,.54]){c("leveling_foot_"+x+"_"+z,[x,.025,z],[.08,.05,.08],"black",root);c("foot_stem_"+x+"_"+z,[x,.052,z],[.025,.038,.025],"steel",root)}
  // Back utility categories, locations are schematic.
  for(let j=0;j<7;j++)b("rear_vent_"+j,[0,.25+j*.023,-.651],[.45,.009,.003],"black",root);b("rear_service_plate",[.36,.25,-.651],[.23,.23,.003],"graphite",root);for(let j=0;j<3;j++)c("utility_port_"+j,[.3+j*.065,.25,-.663],[.028,.026,.028],"steel",root,frontRot);
@@ -49,6 +49,11 @@ export function makeModel(){
  }
  b("aid_handle",[-.037,1.146,0],[.041,.009,.038],"red",aid);
  c("aid_knob",[-.045,1.157,0],[.012,.014,.012],"steel",aid);
+ const medium=group("medium_coupon_adjustment_aid",[-.065,0,0],stage);
+ b("medium_aid_plate",[-.047,1.145,0],[.094,.008,.045],"steel",medium);
+ b("medium_aid_handle",[-.060,1.151,0],[.057,.004,.023],"graphite",medium);
+ c("medium_aid_knob",[-.014,1.157,.012],[.012,.014,.012],"steel",medium);
+ for(let j=0;j<7;j++)b("medium_aid_scale_"+j,[-.014-j*.008,1.150,.018],[.001,.001,j%2?.006:.011],"black",medium);
  for(const x of [-.14,.14])b("pneumatic_clamp_"+x,[x,1.13,.08],[.055,.035,.07],"steel",stage);
  const coupon=group("coupon",[0,1.141,0],stage);b("coupon_surface",[0,.00025,0],[.010,.0005,.010],"resist",coupon);
  const rack=group("electronics_workstation",[1.08,0,0],root);b("rack",[0,.47,0],[.60,.86,.67],"graphite",rack);b("rack_front",[0,.47,.337],[.55,.8,.014],"black",rack);for(let j=0;j<15;j++)b("rack_vent_"+j,[0,.18+j*.034,.346],[.45,.008,.003],"steel",rack);

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "BuildTheSimulation MLA150 exposure revision v1",
-  "description": "Independent simulated commanded dose map. No physical exposure or development is implied. Dose and nominal are row-major arrays, length nx×ny; v increases down the displayed map.",
+  "description": "Independent simulated commanded dose map. Revision 1.1 uses area-averaged raster pixels; old v1 center-sampled exports remain readable. Dose and nominal are row-major arrays, length nx×ny; v increases down the displayed map.",
   "type": "object",
   "required": [
     "schema",
@@ -184,6 +184,9 @@
         },
         "pixelCenters": {
           "const": true
+        },
+        "pixelValues": {
+          "type": "string"
         }
       }
     },
@@ -306,6 +309,26 @@
           ]
         },
         "seamDelta_um": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "nominalEnergy_mJ": {
+          "type": "number",
+          "minimum": 0
+        },
+        "clippedEnergy_mJ": {
+          "type": "number",
+          "minimum": 0
+        },
+        "nominalSeamDelta_um": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "seamResidual_um": {
           "type": [
             "number",
             "null"
