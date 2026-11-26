@@ -1,0 +1,240 @@
+{
+  "schema": "bts.station.xr.v1",
+  "asset": "/equipment/16-03/steel-bench.glb",
+  "station": "/equipment/16-03/bench.mjs",
+  "dispatch": "act(state,action,value); station() initializes; transform(state,item); report(state)",
+  "unit": "m",
+  "up": "+Y",
+  "front": "+Z",
+  "origin": "floor under bench centre; place directly in metre-scale lab",
+  "anchors": {
+    "left": {
+      "parent": "bench",
+      "position": [
+        -0.44,
+        0.9,
+        0.135
+      ],
+      "interior": [
+        0.55,
+        0.22,
+        0.435
+      ]
+    },
+    "right": {
+      "parent": "bench",
+      "position": [
+        0.448,
+        0.9,
+        0.135
+      ],
+      "interior": [
+        0.55,
+        0.22,
+        0.435
+      ]
+    },
+    "side": {
+      "parent": "bench",
+      "position": [
+        0.02,
+        0.9,
+        -0.219
+      ],
+      "interior": [
+        0.49,
+        0.19,
+        0.26
+      ]
+    },
+    "drawer": {
+      "parent": "DRAWER_SLIDE",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "interior": [
+        0.34,
+        0.076,
+        0.42
+      ]
+    }
+  },
+  "controls": [
+    {
+      "mesh": "DRAWER_HANDLE",
+      "action": "drawer",
+      "value": null,
+      "label": "Open/close sliding drawer",
+      "minM": [
+        -0.6225,
+        0.7155,
+        0.267
+      ],
+      "maxM": [
+        -0.4775,
+        0.7325,
+        0.287
+      ]
+    },
+    {
+      "mesh": "TRAY_A",
+      "action": "grab",
+      "value": "TRAY_A",
+      "label": "Grab TRAY_A",
+      "minM": [
+        -0.58,
+        0.9,
+        -0.035
+      ],
+      "maxM": [
+        -0.3,
+        0.942,
+        0.30504
+      ]
+    },
+    {
+      "mesh": "TRAY_B",
+      "action": "grab",
+      "value": "TRAY_B",
+      "label": "Grab TRAY_B",
+      "minM": [
+        0.298,
+        0.9,
+        -0.055
+      ],
+      "maxM": [
+        0.598,
+        0.947,
+        0.32504
+      ]
+    },
+    {
+      "mesh": "CASE_C",
+      "action": "grab",
+      "value": "CASE_C",
+      "label": "Grab CASE_C",
+      "minM": [
+        -0.19,
+        0.9,
+        -0.334
+      ],
+      "maxM": [
+        0.23,
+        0.956,
+        -0.10398
+      ]
+    }
+  ],
+  "motion": {
+    "offsetM": 0.34,
+    "origin": [
+      -0.55,
+      0.688,
+      0.015
+    ]
+  },
+  "geometry": {
+    "rows": [
+      {
+        "label": "worktop width",
+        "expectedMm": 1800,
+        "actualMm": 1799.9999523162842,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "worktop depth",
+        "expectedMm": 750,
+        "actualMm": 750,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "BTS floor-to-worktop",
+        "expectedMm": 900,
+        "actualMm": 899.9999817460775,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "TRAY_A x",
+        "expectedMm": 280,
+        "actualMm": 280.0000081770122,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "TRAY_A y",
+        "expectedMm": 42,
+        "actualMm": 42.000032030045986,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "TRAY_A z",
+        "expectedMm": 340,
+        "actualMm": 340.03999875968566,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "TRAY_B x",
+        "expectedMm": 300,
+        "actualMm": 300.00001192092896,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "TRAY_B y",
+        "expectedMm": 47,
+        "actualMm": 47.00002912431955,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "TRAY_B z",
+        "expectedMm": 380,
+        "actualMm": 380.0400123011159,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "CASE_C x",
+        "expectedMm": 420,
+        "actualMm": 419.99998688697815,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "CASE_C y",
+        "expectedMm": 56,
+        "actualMm": 56.0000017285347,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "CASE_C z",
+        "expectedMm": 230,
+        "actualMm": 230.02000221359344,
+        "toleranceMm": 0.08,
+        "pass": true
+      }
+    ],
+    "nodes": 76,
+    "bytes": 478316,
+    "triangles": 6868,
+    "minM": [
+      -0.9,
+      0,
+      -0.375
+    ],
+    "maxM": [
+      0.9,
+      0.956,
+      0.376
+    ]
+  },
+  "safety": "Custom illustrative design not verified on physical hardware; no tipping, load capacity or access certification."
+}
