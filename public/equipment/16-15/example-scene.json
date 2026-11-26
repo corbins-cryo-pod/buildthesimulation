@@ -1,0 +1,54 @@
+{
+  "schema": "bts.lab-support-layout.v1",
+  "kitId": "BTS-PROPS-MK1",
+  "revision": 6,
+  "units": "m",
+  "frame": "Cabinet centre on floor; +Y up; +Z front",
+  "drawer": {
+    "id": "SUPPORT_DRAWER",
+    "open": true,
+    "worldPositionM": [
+      0,
+      0.672,
+      0.29
+    ],
+    "occupant": "PPE-CASE-01"
+  },
+  "door": {
+    "id": "UPPER_CABINET_DOOR",
+    "open": false,
+    "angleDeg": 0
+  },
+  "stool": {
+    "id": "STOOL",
+    "seatHeightM": 0.485
+  },
+  "item": {
+    "id": "PPE-CASE-01",
+    "pose": {
+      "parentId": "SUPPORT_DRAWER",
+      "slotId": "D1-01",
+      "localPositionM": [
+        0,
+        0,
+        0
+      ],
+      "worldPositionM": [
+        0,
+        0.672,
+        0.29
+      ]
+    }
+  },
+  "illumination": {
+    "lampId": "TASK_LAMP",
+    "enabled": true,
+    "visualIntensity": 1,
+    "units": "normalized scene only"
+  },
+  "glazing": {
+    "id": "AMBER_PARTITION",
+    "transmittance": "decorative tint, unrated"
+  },
+  "claims": "Original virtual geometry. Not PPE, photometric safety, optical filter, medical/safety or structural certification."
+}

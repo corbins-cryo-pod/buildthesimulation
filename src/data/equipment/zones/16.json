@@ -273,8 +273,9 @@
     "inputs": "Cabinet or drawer ID, item location, fixture pose and task-lamp switch state",
     "outputs": "Storage occupancy, moving-part poses and scene lighting state",
     "acceptance": "Store a labeled item, close and reopen its drawer, then switch the task lamp. The same item must occupy the same drawer slot and only the lamp's illumination state should change.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Original metric cabinet, stool, PPE case, amber screen and task lamp",
+    "simulationStatus": "Verified persistent case slot, drawer pose and independent task illumination",
+    "integrationStatus": "Interactive scene controls, metric pose export and reusable VR action targets",
+    "simulator": "/simulations/equipment/16-15/simulator/"
   }
 ]
