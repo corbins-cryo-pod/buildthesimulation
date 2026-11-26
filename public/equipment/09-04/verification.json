@@ -1,0 +1,107 @@
+[
+  {
+    "test": "Sample-aligned 1 kHz pulse period",
+    "expected": "1.000 ms",
+    "actual": "1.000000 ms",
+    "criterion": "±1 µs",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Rising-edge trigger absolute time",
+    "expected": "2.000 ms",
+    "actual": "2.000000 ms",
+    "criterion": "±1 µs; sample before is below threshold",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Loaded compensator high minus low",
+    "expected": "2.499750 V",
+    "actual": "2.499389 V",
+    "criterion": "±1 code (1.222 mV)",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Reverse edge",
+    "expected": "0.500 ms separation",
+    "actual": "0.500000 ms",
+    "criterion": "±1 µs",
+    "outcome": "PASS"
+  },
+  {
+    "test": "1 V-peak sine discrete RMS",
+    "expected": "0.707107 V",
+    "actual": "0.707181 V",
+    "criterion": "±1 code (0.611 mV); endpoint included",
+    "outcome": "PASS"
+  },
+  {
+    "test": "AC coupling: rejection of pulse mean",
+    "expected": "0 V",
+    "actual": "-0.002191 V",
+    "criterion": "±4 mV after 100 ms preroll",
+    "outcome": "PASS"
+  },
+  {
+    "test": "1 kHz sine sampled at 1.6 kS/s",
+    "expected": "600 Hz alias",
+    "actual": "597.47 Hz",
+    "criterion": "±10 Hz over 100 ms count interval",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Amplitude above visible range",
+    "expected": "at least one clipped sample",
+    "actual": "2500",
+    "criterion": "nonzero count",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Missing CH1",
+    "expected": "rejected",
+    "actual": "CH1 disconnected: attach the probe or import a connected trace",
+    "criterion": "explicit rejection",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Unreachable trigger",
+    "expected": "rejected",
+    "actual": "No selected trigger edge within acquisition window; adjust level, scale, sample rate or edge",
+    "criterion": "explicit rejection",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Nonmonotone timestamps",
+    "expected": "rejected",
+    "actual": "Invalid or non-increasing sample",
+    "criterion": "explicit rejection",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Unsupported JSON channel unit",
+    "expected": "rejected",
+    "actual": "Expected a labelled volts channel with 4–250,000 finite samples",
+    "criterion": "explicit rejection",
+    "outcome": "PASS"
+  },
+  {
+    "test": "CSV round trip",
+    "expected": "sample ID, CH1, revision retained",
+    "actual": "bench-comp / CH1 / 1",
+    "criterion": "exact",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Bare instrument GLB envelope",
+    "expected": "454 × 371 × 205 mm",
+    "actual": "454.00 × 371.00 × 205.10 mm",
+    "criterion": "±1 mm, W × H × D",
+    "outcome": "PASS"
+  },
+  {
+    "test": "Front FlexChannel count",
+    "expected": "4",
+    "actual": "4",
+    "criterion": "exact",
+    "outcome": "PASS"
+  }
+]
