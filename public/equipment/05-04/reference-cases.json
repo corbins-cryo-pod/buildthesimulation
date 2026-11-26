@@ -1,0 +1,44 @@
+{
+  "declaredBeforeSolver": true,
+  "polarizationConvention": "rho=rp/rs; passive index n+ik, time exp(-i\u03c9t), reflection basis p sign opposite at normal incidence. Delta wrapped 0\u2013360\u00b0.",
+  "cases": [
+    {
+      "id": "bare",
+      "input": "vacuum to n=1.5 lossless at normal incidence, no film",
+      "expected": {
+        "rs": -0.2,
+        "rp": 0.2,
+        "psiDeg": 45,
+        "deltaDeg": 180
+      },
+      "tolerance": 1e-10,
+      "source": "analytic normal-incidence Fresnel coefficients"
+    },
+    {
+      "id": "matched",
+      "input": "First film n identical to substrate at all wavelengths",
+      "expected": "indistinguishable response for all thicknesses",
+      "tolerance": 1e-09,
+      "source": "no optical discontinuity at buried interface"
+    },
+    {
+      "id": "reference-fit",
+      "input": "Independent Python characteristic matrix; 27 wavelengths and three angles, fixed known optical constants",
+      "expected": 123.4,
+      "unit": "nm",
+      "tolerance": 0.02
+    },
+    {
+      "id": "order-alias",
+      "input": "Lossless film n=1.46 at \u03bb=600 nm, 70\u00b0; optically equivalent thicknesses separated by d\u03bb=\u03bb/(2 sqrt(n\u00b2\u2212sin\u00b2 \u03b8))",
+      "expected": 268.48093652001535,
+      "unit": "nm",
+      "tolerance": 0.02
+    },
+    {
+      "id": "interlock",
+      "input": "Source=65\u00b0, detector=70\u00b0",
+      "expected": "Reject measurement with no exported stale result"
+    }
+  ]
+}

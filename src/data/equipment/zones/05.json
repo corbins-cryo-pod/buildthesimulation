@@ -85,9 +85,10 @@
     "inputs": "Wavelength array, incidence angles, layered optical model and measured or synthetic polarization spectra",
     "outputs": "Fitted thickness, assumed optical constants, residuals and ambiguity indicators",
     "acceptance": "Fit a reference film of independently known thickness using fixed optical constants. Compare thickness to its reference interval and inspect residuals across the measured wavelength range.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric legacy alpha-SE; nominal envelope and angle indexes",
+    "simulationStatus": "Independent Fresnel and film thickness checks; ambiguity profiles",
+    "integrationStatus": "Interactive optics and spectrum contract; headset not tested",
+    "simulator": "/simulations/equipment/05-04/simulator/"
   },
   {
     "id": "05-05",
