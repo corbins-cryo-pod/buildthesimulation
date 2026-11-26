@@ -1,0 +1,90 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+const p='/equipment/07-09/';
+const core='https://bioscience.lonza.com/lonza_bs/CH/en/Transfection/p/000000000000276885/4D-Nucleofector-Core-Unit';
+const xUnit='https://bioscience.lonza.com/lonza_bs/CH/en/Transfection/p/000000000000276883/4D-Nucleofector-X-Unit';
+const generation='https://www.lonza.com/news/2021-05-18-15-00';
+const corePhoto='https://bioscience.lonza.com/medias/Default-Grid-Default-WorkingFormat-4D-Nucleofector-Core-Unit?context=bWFzdGVyfHBpY3R1cmVQYXJrTWVkaWF8ODg4NHxpbWFnZS9qcGVnfGFEYzVMMmhsTlM4NU1qTTBOekl4T1RNeE1qazBMMFJsWm1GMWJIUXRSM0pwWkY5RVpXWmhkV3gwTFZkdmNtdHBibWRHYjNKdFlYUmZORVF0VG5WamJHVnZabVZqZEc5eXdxNGdRMjl5WlNCVmJtbDB8NzExNjVkZDcyMDliOTZmZTBhODc2YTBmYzE4NDNiZDViNDFmMDBhN2EzYzI1YmY5NDkzNzliMTFiNWFjYWRmNQ';
+const refs=[
+ ['front-quarter.webp','Cobalt and white shells, inclined dormant Core display and stacked X footprint.',corePhoto,'Lonza second-generation Core product photograph'],
+ ['front-elevation.webp','Static X front plate and Core lower relief. Exterior alignment was checked against the closed configuration on the OEM reference cover.',xUnit,'Lonza second-generation X catalogue identity']
+];
+const checks=[
+ ['Complete drawing width × height','70 × 40 mm','70 × 40 mm','Exact'],
+ ['Complete upper / lower segments','25 / 15 mm','25 / 15 mm','Exact'],
+ ['Cropped width and total height','70 mm; unknown','70 mm; unknown','Exact'],
+ ['Invalid edge or index','Rejected','Rejected','Exact'],
+ ['Core W × D × H','245 × 280 × 147 mm','245 × 280 × 147 mm nominal','0.6 mm, geometry only'],
+ ['X W × D × H','245 × 280 × 105 mm','245 × 280 × 105 mm nominal','0.6 mm, geometry only']
+];
+---
+<Layout title="Lonza 4D-Nucleofector Core and X · Closed documentary model" description="Inspect a dormant second-generation enclosure and compare complete and cropped abstract geometric drawings. No instrument operation.">
+ <main id="lonza09-exhibit">
+  <p><a href="/simulations/equipment/07-09/">← Equipment record 07-09</a></p>
+  <p class="series">LABORATORY EQUIPMENT / 07-09 / DOCUMENTARY EXHIBIT</p>
+  <h1>Lonza 4D-Nucleofector Core and X</h1>
+  <p class="lead">Orbit the two closed modules, then compare two views of an unrelated abstract drawing. The complete view shows a 70 × 40 mm outline. The cropped view still shows 70 mm of width, but its total height stays unknown because the base is out of view.</p>
+  <div class="duo">
+   <section class="card">
+    <h2>Dormant Core and X enclosures</h2>
+    <div id="lonza09-view" class="viewer"></div><p id="lonza09-model" role="status">Loading metric documentary enclosure…</p>
+    <div class="actions" aria-label="3D viewpoints">
+     <button type="button" data-lonza09-view="orbit">Reset orbit</button><button type="button" data-lonza09-view="front">Front</button><button type="button" data-lonza09-view="side">Right flank</button><button type="button" data-lonza09-view="archive">Detached drawing</button>
+    </div>
+    <p>Drag to orbit and scroll or pinch to zoom. The separate drawing panel is the only selectable 3D surface. The instrument and its blank screen do not operate or open.</p>
+   </section>
+   <section class="card">
+    <h2>Independent drawing coverage</h2>
+    <canvas id="lonza09-diagram" width="540" height="360" aria-label="Archived geometric outline with complete or cropped edges and a corresponding dimensional result."></canvas>
+    <div class="actions"><button id="lonza09-next" type="button" disabled>Switch saved drawing</button><button id="lonza09-reset" type="button">Reset complete view</button><button id="lonza09-export" type="button" disabled>Export review JSON</button></div>
+    <p id="lonza09-status" role="status" aria-live="polite">Loading two fixed abstract drawings…</p>
+    <p id="lonza09-result" class="readout"></p>
+   </section>
+  </div>
+  <section>
+   <h2>Documented configuration and reference views</h2>
+   <p>This closed two-module exhibit pairs Lonza's <strong>AAF-1003B Core</strong> over its <strong>AAF-1003X</strong> enclosure in the <a href={generation}>2021-introduced second-generation family</a>. The product codes and envelope are public; manufacturing revision and serial identifier are not inferred. No additional modules, accessories, interface connectors or internal parts are represented.</p>
+   <div class="refs">
+    {refs.map(([f,label,href,source])=><figure><img src={p+f} alt={label} width="780" height="530" loading="lazy" /><figcaption><strong>Original reference-based rendering.</strong> {label} <a href={href}>{source} (original source)</a>.</figcaption></figure>)}
+   </div>
+   <div class="tablewrap"><table><thead><tr><th>Property</th><th>Value</th><th>Source / role</th></tr></thead><tbody>
+    <tr><td>Core W × D × H</td><td>245 × 280 × 147 mm</td><td><a href={core}>Lonza Core technical specifications</a>; body envelope, not measured trim.</td></tr>
+    <tr><td>X W × D × H</td><td>245 × 280 × 105 mm</td><td><a href={xUnit}>Lonza X technical specifications</a>; body envelope only. Front closure is a static surface.</td></tr>
+    <tr><td>Stack height of exhibit</td><td>252 mm nominal</td><td>Sum of the two published heights; the contact plane and internal coupling are not measured.</td></tr>
+    <tr><td>Detached drawing scale</td><td>0.50 synthetic mm per pixel</td><td><a href={p+'drawing-archive.json'}>Authorial abstract fixture</a>, deliberately not a machine dimension.</td></tr>
+   </tbody></table></div>
+  </section>
+  <section>
+   <h2>How the drawing comparison works</h2>
+   <p>The saved drawing coordinates increase to the right and down from the upper-left origin. The left and right edges are 140 pixels apart, giving 70 mm at the declared scale. In the complete drawing, 80 pixels separate the top from the base, or 40 mm. The cropped drawing contains no base coordinate. It reports <code>null</code> for total height and lower-segment height; no value is borrowed from the complete view. Width and the visible upper segment remain available. JSON retains drawing and view identifiers, revision, observed edges and coverage.</p>
+   <p>This is not a machine experiment. No device settings, controls, signals, samples, processing or biological workflow are included. The metric geometry and detached semantic target are prepared for VR authoring, but no immersive headset operation has been verified.</p>
+  </section>
+  <section>
+   <h2>Focused verification</h2>
+   <div class="tablewrap"><table><thead><tr><th>Test</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{checks.map(([name,x,y,t])=><tr><td>{name}</td><td>{x}</td><td>{y}</td><td>{t}</td><td>Pass</td></tr>)}</tbody></table></div>
+   <p><a href={p+'verification.json'}>Verification results</a> · <a href={p+'contract.json'}>Input/output contract</a> · <a href={p+'example-review.json'}>Example reviews</a> · <a href={p+'drawing-archive.json'}>Fixed drawing archive</a></p>
+   <p><a href={p+'build-model.py'}>Editable Blender model source</a> · <a href={p+'lonza-core-x.glb'} download>Download metric GLB</a> · <a href={p+'interaction.json'}>Interaction manifest</a> · <a href={p+'asset-metrics.json'}>GLB metrics</a></p>
+  </section>
+ </main>
+</Layout>
+<script>
+import '../../../../lib/equipment/07-09/client.mjs';
+</script>
+<style>
+main{max-width:1100px;margin:auto;padding:1.2rem clamp(.9rem,2.5vw,2rem) 3rem}
+.series,.readout,table,input,select,button{font-family:var(--font-label,system-ui,sans-serif)}
+.series{font-size:.78rem;letter-spacing:.13em}.lead{max-width:72ch}
+.duo,.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.2rem 0}
+.card{border:1px solid color-mix(in srgb,currentColor 30%,transparent);padding:1rem;border-radius:.25rem}
+.viewer{height:clamp(23rem,45vw,32rem);overflow:hidden;background:#263949}
+.viewer :global(canvas){display:block;width:100%;height:100%;touch-action:none}
+#lonza09-diagram{display:block;width:min(100%,26rem);height:auto;background:#263949;margin:.5rem auto 1rem}
+.actions,.inputs{display:flex;gap:.5rem;flex-wrap:wrap;margin:.6rem 0}
+button,input,select{background:transparent;color:inherit;border:1px solid color-mix(in srgb,currentColor 50%,transparent);border-radius:.2rem;padding:.5rem;font-size:.91rem;min-height:2.6rem}
+button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}input{width:min(18rem,55vw)}label{display:grid;font-size:.86rem;gap:.25rem}
+figure{margin:0}figure img{width:100%;height:auto;display:block}figcaption{font-size:.92rem;margin:.45rem 0}
+section{margin:1.5rem 0}.duo section{margin:0}
+.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:.88rem}td,th{border-bottom:1px solid color-mix(in srgb,currentColor 25%,transparent);text-align:left;padding:.5rem;vertical-align:top}
+[data-error=true]{font-weight:bold;color:var(--accent,currentColor)}
+@media(max-width:770px){.duo,.refs{grid-template-columns:1fr}.viewer{height:22rem}}
+</style>

@@ -1,0 +1,8 @@
+{
+  "equipmentId":"07-09",
+  "configuration":"Lonza second-generation AAF-1003B Core stacked above AAF-1003X enclosure, no depicted serial/revision or accessories",
+  "scope":"Dormant documentary closed hardware exterior and a separate fixed original abstract outline drawing",
+  "input":{"schema":"bts.synthetic-outline-archive.v1","drawingId":"BTS-STACK-DRAWING-001","frame":"Top-left drawing coordinates; +column right, +row down; 0.5 synthetic mm per pixel","views":["STACK-FULL","STACK-CROPPED"],"knownMissing":"Cropped view lacks base edge"},
+  "output":{"schema":"bts.synthetic-outline-review.v1","fields":"View and drawing IDs, fixture revision, edge coordinates, width and observed segment heights; missing base stays unknown","physicalClaim":false},
+  "limits":["No device settings/control, samples, cells, biological work or processing","No digital or electrical signals, trace replay or calibration","No immersive or headset verification"]
+}

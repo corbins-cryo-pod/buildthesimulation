@@ -1,0 +1,133 @@
+{
+  "scope": "Lonza second-generation Core/X dormant metric exterior and separate synthetic drawing. No operation, device signal, biological work, calibration or headset evidence.",
+  "rows": [
+    {
+      "id": "Complete width from 140 fixed pixels",
+      "expected": 70,
+      "actual": 70,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Complete height from 80 fixed pixels",
+      "expected": 40,
+      "actual": 40,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Upper segment",
+      "expected": 25,
+      "actual": 25,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Lower segment",
+      "expected": 15,
+      "actual": 15,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Cropped width remains measured",
+      "expected": 70,
+      "actual": 70,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Cropped total height",
+      "expected": null,
+      "actual": null,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Cropped lower segment",
+      "expected": null,
+      "actual": null,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Invalid action rejected",
+      "expected": "Rejected",
+      "actual": "Rejected",
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "core OEM width",
+      "expected": 245,
+      "actual": 245.00001594424248,
+      "unit": "mm",
+      "tolerance": 0.6,
+      "pass": true
+    },
+    {
+      "id": "core OEM height",
+      "expected": 147,
+      "actual": 147.0000073313713,
+      "unit": "mm",
+      "tolerance": 0.6,
+      "pass": true
+    },
+    {
+      "id": "core OEM depth",
+      "expected": 280,
+      "actual": 280.4999991785735,
+      "unit": "mm",
+      "tolerance": 0.6,
+      "pass": true
+    },
+    {
+      "id": "xUnit OEM width",
+      "expected": 245,
+      "actual": 245.2400028705597,
+      "unit": "mm",
+      "tolerance": 0.6,
+      "pass": true
+    },
+    {
+      "id": "xUnit OEM height",
+      "expected": 105,
+      "actual": 105.00000044703484,
+      "unit": "mm",
+      "tolerance": 0.6,
+      "pass": true
+    },
+    {
+      "id": "xUnit OEM depth",
+      "expected": 280,
+      "actual": 280.400006548696,
+      "unit": "mm",
+      "tolerance": 0.6,
+      "pass": true
+    },
+    {
+      "id": "Nominal geometry stack height",
+      "expected": 252,
+      "actual": 252.00000405311584,
+      "unit": "mm",
+      "tolerance": 0.6,
+      "pass": true
+    },
+    {
+      "id": "X lowest point bench plane",
+      "expected": 0,
+      "actual": 0,
+      "unit": "m",
+      "tolerance": 0.000001,
+      "pass": true
+    }
+  ]
+}
