@@ -1,0 +1,54 @@
+[
+  {
+    "id": "45-degree-ruler",
+    "expected": {
+      "analyticalLengthMm": 0.1,
+      "shadowCells": 4,
+      "rasterLengthMm": 0.1,
+      "placement": "seated"
+    },
+    "toleranceMm": 0.025,
+    "actual": {
+      "analyticalLengthMm": 0.09999999999999999,
+      "shadowCells": 4,
+      "rasterLengthMm": 0.1,
+      "placement": "seated"
+    },
+    "pass": true
+  },
+  {
+    "id": "axis-normal",
+    "expected": {
+      "analyticalLengthMm": 0,
+      "shadowCells": 0
+    },
+    "toleranceMm": 0.025,
+    "actual": {
+      "analyticalLengthMm": 0,
+      "shadowCells": 0
+    },
+    "pass": true
+  },
+  {
+    "id": "oversize",
+    "expected": {
+      "seated": false,
+      "result": null
+    },
+    "actual": {
+      "seated": false,
+      "result": null
+    },
+    "pass": true
+  },
+  {
+    "id": "requires-witness",
+    "expected": {
+      "result": null
+    },
+    "actual": {
+      "result": null
+    },
+    "pass": true
+  }
+]
