@@ -150,20 +150,21 @@
   {
     "id": "09-08",
     "name": "RF network analyzer",
-    "model": "Keysight PNA-X N5247B (candidate)",
-    "evidence": "C",
+    "model": "Keysight PNA-X N5247B · two-port option 201",
+    "evidence": "A",
     "priority": "P3",
     "page": 31,
-    "sources": [],
+    "sources": ["S09-08-PNAX"],
     "purpose": "Characterize implant telemetry and inductive coupling hardware.",
     "geometryBrief": "Rack front, test ports, cables, antenna or coil fixtures.",
     "behaviorBrief": "S-parameters from supplied circuit/EM model; do not infer in-body performance from free-space data.",
     "inputs": "Frequency-indexed two-port network or Touchstone data, reference impedances and port map",
     "outputs": "Complex S-parameters with frequency, reference impedance and calibration plane",
     "acceptance": "Use an ideal matched, lossless through fixture. Require zero reflection and unit transmission magnitude in either direction. A known delay must produce the predicted phase slope.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric two-port model, measured GLB extents; option-specific placement partly inferred",
+    "simulationStatus": "Verified passive scattering and transmission THRU response; not instrument-validated",
+    "integrationStatus": "Interactive viewer with Touchstone replay/exports and VR state adapter",
+    "simulator": "/simulations/equipment/09-08/simulator/"
   },
   {
     "id": "09-09",
