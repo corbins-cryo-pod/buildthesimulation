@@ -1,0 +1,54 @@
+[
+  {
+    "id": "rectangle",
+    "outline": "rectangle",
+    "expected": {
+      "area": 48,
+      "status": "closed-region",
+      "vertexCount": 4
+    },
+    "actual": {
+      "area": 48,
+      "status": "closed-region",
+      "vertexCount": 4
+    },
+    "pass": true
+  },
+  {
+    "id": "notched",
+    "outline": "notched",
+    "expected": {
+      "area": 44,
+      "status": "closed-region",
+      "vertexCount": 6
+    },
+    "actual": {
+      "area": 44,
+      "status": "closed-region",
+      "vertexCount": 6
+    },
+    "pass": true
+  },
+  {
+    "id": "flat-edge",
+    "outline": "flat",
+    "expected": {
+      "area": null,
+      "status": "degenerate",
+      "vertexCount": 3
+    },
+    "actual": {
+      "area": null,
+      "status": "degenerate",
+      "vertexCount": 3
+    },
+    "pass": true
+  },
+  {
+    "id": "unknown-outline",
+    "outline": "unknown",
+    "expected": "Choose a stored geometric outline.",
+    "actual": "Choose a stored geometric outline.",
+    "pass": true
+  }
+]
