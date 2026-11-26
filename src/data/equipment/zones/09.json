@@ -169,7 +169,7 @@
   {
     "id": "09-09",
     "name": "Precision power supply",
-    "model": "Keysight E36313A (candidate)",
+    "model": "Keysight E36313A, standard USB + LAN triple-output supply",
     "evidence": "C",
     "priority": "P2",
     "page": 32,
@@ -180,9 +180,20 @@
     "inputs": "Per-channel voltage settings, current limits, connected loads and channel wiring",
     "outputs": "Supply operating state and measured voltage, current and power by channel",
     "acceptance": "Set 5 V with a 0.1 A limit. An ideal 100 Ω load must draw 50 mA at 5 V and a 10 Ω load must settle at 1 V in current limit.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB · net/assembled envelopes verified; controls photo-inferred",
+    "simulationStatus": "Steady-state CV/CC, isolated resistive loads, local and remote sense",
+    "integrationStatus": "Scoped simulator · configuration, readings and interoperable DC waveform",
+    "simulator": "/simulations/equipment/09-09/simulator/",
+    "related": [
+      [
+        "E36313A manufacturer page",
+        "https://www.keysight.com/us/en/product/E36313A/160w-triple-output-power-supply-6v-10a-2x-25v-2a.html"
+      ],
+      [
+        "Digital oscilloscope",
+        "/simulations/equipment/09-04/"
+      ]
+    ]
   },
   {
     "id": "09-10",

@@ -1,0 +1,43 @@
+{
+  "schema": "bts.dc-load-bank.v1",
+  "state": {
+    "sampleId": "dc-load-bank-001",
+    "revision": 0,
+    "selected": 0,
+    "channels": [
+      {
+        "id": "CH1",
+        "setV": 5,
+        "limitA": 0.1,
+        "enabled": true,
+        "connected": true,
+        "loadOhm": 100,
+        "leadOhm": 0,
+        "remote": false,
+        "senseIntact": true
+      },
+      {
+        "id": "CH2",
+        "setV": 12,
+        "limitA": 0.2,
+        "enabled": false,
+        "connected": false,
+        "loadOhm": 1000,
+        "leadOhm": 0,
+        "remote": false,
+        "senseIntact": true
+      },
+      {
+        "id": "CH3",
+        "setV": 12,
+        "limitA": 0.2,
+        "enabled": false,
+        "connected": false,
+        "loadOhm": 1000,
+        "leadOhm": 0,
+        "remote": false,
+        "senseIntact": true
+      }
+    ]
+  }
+}

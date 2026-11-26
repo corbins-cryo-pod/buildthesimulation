@@ -1,0 +1,97 @@
+{
+  "schema": "bts.dc-supply-run.v1",
+  "equipmentId": "09-09",
+  "model": "Keysight E36313A / USB-LAN, no GPIB",
+  "kind": "simulated ideal steady state",
+  "sampleId": "dc-load-bank-001",
+  "parentRevision": 0,
+  "revision": 1,
+  "units": {
+    "voltage": "V",
+    "current": "A",
+    "resistance": "ohm",
+    "power": "W"
+  },
+  "input": {
+    "sampleId": "dc-load-bank-001",
+    "revision": 0,
+    "selected": 0,
+    "channels": [
+      {
+        "id": "CH1",
+        "setV": 5,
+        "limitA": 0.1,
+        "enabled": true,
+        "connected": true,
+        "loadOhm": 100,
+        "leadOhm": 0,
+        "remote": false,
+        "senseIntact": true
+      },
+      {
+        "id": "CH2",
+        "setV": 12,
+        "limitA": 0.2,
+        "enabled": false,
+        "connected": false,
+        "loadOhm": 1000,
+        "leadOhm": 0,
+        "remote": false,
+        "senseIntact": true
+      },
+      {
+        "id": "CH3",
+        "setV": 12,
+        "limitA": 0.2,
+        "enabled": false,
+        "connected": false,
+        "loadOhm": 1000,
+        "leadOhm": 0,
+        "remote": false,
+        "senseIntact": true
+      }
+    ]
+  },
+  "channels": [
+    {
+      "contactId": "CH1",
+      "loadOhm": 100,
+      "loopOhm": 0,
+      "regulation": "CV",
+      "terminalV": 5,
+      "loadV": 5,
+      "currentA": 0.05,
+      "loadW": 0.25000000000000006,
+      "leadW": 0,
+      "supplyW": 0.25,
+      "meterV": 5
+    },
+    {
+      "contactId": "CH2",
+      "loadOhm": 1000,
+      "loopOhm": 0,
+      "regulation": "OFF",
+      "terminalV": 0,
+      "loadV": null,
+      "currentA": 0,
+      "loadW": 0,
+      "leadW": 0,
+      "supplyW": 0,
+      "meterV": 0
+    },
+    {
+      "contactId": "CH3",
+      "loadOhm": 1000,
+      "loopOhm": 0,
+      "regulation": "OFF",
+      "terminalV": 0,
+      "loadV": null,
+      "currentA": 0,
+      "loadW": 0,
+      "leadW": 0,
+      "supplyW": 0,
+      "meterV": 0
+    }
+  ],
+  "totalW": 0.25
+}
