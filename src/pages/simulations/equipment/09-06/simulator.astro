@@ -1,0 +1,113 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import verification from '../../../../../public/equipment/09-06/verification.json';
+const asset='/equipment/09-06/';
+const data='https://www.keysight.com/content/dam/keysight/en/doc/ungate/data-sheets/5992-2572.pdf';
+const manual='https://www.keysight.com/my/en/assets/9018-03714/service-manuals/9018-03714.pdf';
+const product='https://www.keysight.com/zz/en/product/33622A/waveform-generator-120-mhz-2-channel.html';
+const specs=[
+ ['Model / native bandwidth','33622A · 2 channels · up to 120 MHz','Manufacturer data sheet model table; implemented educational bench: 10 Hz to 20 kHz',data+'#page=9'],
+ ['Enclosure with bumpers','261.1 W × 103.8 H × 303.2 D mm nominal','Manufacturer pp. 23–24 mechanical specifications; body 212.8 × 88.3 × 272.3 mm',data+'#page=23'],
+ ['Source resistance','50 Ω nominal','Manual pp. 53, 94; fixed series output resistance, distinct from the displayed load reference',manual+'#page=94'],
+ ['DC plus AC peak headroom','±5 V indicated at 50 Ω; ±10 V open circuit','Manual pp. 87, 90, 92. Simulator rejects an over-range combination; does not reproduce hardware autorange adjustments.',manual+'#page=90'],
+ ['Waveform reference and setting','Default sine 1 kHz, 100 mVpp into 50 Ω; output disabled','Manual p. 36, factory-like virtual reset. The teaching example is intentionally 1.000 Vpp with CH1 enabled.',manual+'#page=36'],
+ ['Teaching sample grid','1 kSa/s–2 MSa/s; 16–65,536 points','Output file time base only. It is not the hardware DAC clock or a numerical copy of Trueform firmware.',manual+'#page=28'],
+];
+---
+<Layout pageTitle="Waveform generator" subtitle="" description="Keysight 33622A waveform generator load-mismatch virtual bench." wide={true}>
+<article id="gen336">
+<nav><a href="/simulations/equipment/09-06/">← Equipment 09-06</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#gen-evidence">Evidence &amp; verification</a></nav>
+<header><small>09-06 · ELECTRICAL INSTRUMENTATION · VIRTUAL BENCH</small><h2>Keysight 33622A Trueform</h2><p>Set up a two-channel bench source, swap the virtual load, and compare the display with what reaches the output. The working model is the 33622A with bumpers fitted, standard USB/LAN and no optional GPIB board.</p></header>
+<div class="work">
+<section class="panel">
+<h3>Physical instrument</h3><div class="tools"><button data-gen-view="orbit">Reset view</button><button data-gen-view="front">Panel</button><button data-gen-view="rear">Rear ports</button><button data-gen-view="outputs">Output close-up</button></div>
+<div id="gen-viewer"></div><p id="gen-3d-status" role="status">Loading metric instrument asset…</p>
+<p>Drag to orbit, pinch to zoom. In the 3D view, use the power switch, CH1/CH2 keys, trigger key, and dial. These are teaching bindings to the same state as the controls at right. The asset has spatial targets for later integration, but immersive XR is not implemented or headset-tested.</p>
+</section>
+<section class="panel">
+<h3>Bench controls</h3>
+<div class="tools"><button id="gen-example">Reset matched-load example</button><button id="gen-power">Enter standby</button><button id="gen-output0" aria-pressed="false">CH1 output off</button><button id="gen-output1" aria-pressed="false">CH2 output off</button></div>
+<div class="fields">
+<label>Selected channel<select id="gen-channel"><option value="0">CH1 · yellow</option><option value="1">CH2 · green</option></select></label>
+<label>Waveform<select id="gen-function"><option value="sine">Sine</option><option value="square">Square</option><option value="triangle">Triangle</option><option value="dc">DC level</option></select></label>
+<label>Frequency · Hz<input id="gen-frequency" type="number" min="10" max="20000" step="any" value="1000"/></label>
+<label>Displayed amplitude · Vpp<input id="gen-amp" type="number" step="any" value="1"/></label>
+<label>Displayed DC offset · V<input id="gen-offset" type="number" step="any" value="0"/></label>
+<label>Phase · degrees<input id="gen-phase" type="number" min="0" max="359.99" step="any" value="0"/></label>
+<label>Square duty · %<input id="gen-duty" type="number" min="5" max="95" step="any" value="50"/></label>
+<label>Display reference<select id="gen-reference"><option value="50">50 Ω</option><option value="75">75 Ω</option><option value="high">High Z</option></select></label>
+<label>Actual resistor / input<select id="gen-load"><option value="50">50 Ω (matched)</option><option value="75">75 Ω</option><option value="1000000">1 MΩ scope</option><option value="high">Ideal open circuit</option></select></label>
+<label>Record sample clock · Sa/s<input id="gen-clock" type="number" min="1000" max="2000000" value="256000"/></label>
+<label>Record length · ms<input id="gen-duration" type="number" min="1" max="2000" step="any" value="32"/></label>
+</div>
+<p id="gen-actual" aria-live="polite"></p>
+<div class="tools"><button id="gen-capture">Capture outputs</button><button id="gen-json" disabled>Export JSON</button><button id="gen-csv" disabled>Export CSV</button></div>
+<p id="gen-status" aria-live="polite"></p>
+</section>
+</div>
+<section class="panel results">
+<h3>Load measurement</h3>
+<p id="gen-result" aria-live="polite">No current capture.</p>
+<canvas id="gen-trace" width="700" height="250" aria-label="Voltage across the physical load versus time; numeric summary above"></canvas>
+<p><strong>Try it:</strong> Start with the ready example, capture at 50 Ω, then select ideal open circuit as the actual load and capture again. You should see 1 → 2 Vpp without changing 1 kHz. Now change only the display reference to High Z; the reading changes, but actual samples do not.</p>
+<p><strong>Handoff:</strong> The <a href={asset+'example-waveform.json'}>matched-load example waveform</a> uses signed volts on a uniform time basis. An oscilloscope importer that supports <code>bts.analog-waveform.v1</code> can use it as a voltage input; it is not a measured recording. The JSON includes source/impedance, model revision, units, and ideal rising-midpoint events; CSV includes seconds and channel voltage.</p>
+</section>
+<section class="panel">
+<h3>Model and operating limits</h3>
+<p>Each channel stores its open-circuit AC amplitude and offset. The voltage scale on the front panel is multiplied by its configured reference load divisor. The actual samples instead use the actual load. For a resistor <var>R</var>, the ratio is <code>R/(50 Ω + R)</code>; the open limit is one. Power is the average squared sample voltage divided by finite load resistance. Captures export nominal model frequency, not a frequency estimated by an independent measurement device. The plotted line applies display downsampling; exports retain every sample.</p>
+<p>Sine, square, triangle and DC are ideal sources, without DAC quantization, filtering, fast pulse edges, cable reflections, phase noise, hardware overload protection, AM/FM/sweep or firmware. No SCPI connection, actual voltage output, or medical-stimulator claims. Channel phases use one virtual time base. Capture rejects absent output, unsafe model headroom and insufficient grid; actual hardware modes can behave differently.</p>
+</section>
+<section class="panel" id="gen-evidence">
+<h3>Reference views and dimensions</h3>
+<p>Bumpers and enclosure are anchored to the nominal family dimensions. Faceplate features, handle hinge, vent pattern and port positions are estimates; not factory CAD. Original study views compared against family reference images; use the linked sources to inspect the originals.</p>
+<div class="views">
+<figure><img src={asset+'front-view.webp'} loading="lazy" alt="Original front three-quarter rendering of 33622A waveform generator"/><figcaption><strong>Front / side.</strong> Gray case, dark bumpers, recessed dual-channel panel and vent field. Compare <a href={data}>manufacturer photographic cover</a> and this <a href="https://www.newark.com/keysight-technologies/33622a/signal-generator-arb-function/dp/29X7422">33600A family listing photo</a>.</figcaption></figure>
+<figure><img src={asset+'front-detail.webp'} loading="lazy" alt="Original front panel detail of the trigger, regulator dial and three BNC sockets"/><figcaption><strong>Modeled output area.</strong> One Sync and two channel BNCs, above-panel trigger and channel keys; compare <a href={manual+'#page=30'}>manual p. 30</a>. Legends and small distances are approximations; LEDs follow virtual state.</figcaption></figure>
+<figure><img src={asset+'rear-view.webp'} loading="lazy" alt="Original rear view of the 33622A with fan and receptacles"/><figcaption><strong>Rear.</strong> BNC bank, fan guard, IEC inlet, USB and LAN with GPIB blank; see <a href={manual+'#page=33'}>manual pp. 33–34</a> and <a href="https://www.meilhaus.de/cosmoshop/default/pix/a/z/33622a/Keysight-33600A-RS.jpg">33600A family rear photograph</a>.</figcaption></figure>
+</div>
+<dl class="specs">{specs.map(([n,v,m,u])=><div><dt>{n}</dt><dd><strong>{v}</strong> · <a href={u}>{m}</a></dd></div>)}</dl>
+<p><a href={product}>Official model page</a> · <a href={asset+'33622a.glb'}>Download GLB</a> · <a href={asset+'build-model.py'}>Editable Blender generator</a> · <a href={asset+'interaction.json'}>Interaction manifest</a> · <a href={asset+'solver.mjs'}>Numerical solver</a></p>
+<h3>Verification results</h3><p>{verification.origin}</p>
+<div class="scroll"><table><thead><tr><th>Case</th><th>Expected</th><th>Simulated</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{verification.rows.map(x=><tr><td>{x.description}</td><td>{x.expected} {x.unit}</td><td>{typeof x.actual==='number'?Number(x.actual.toPrecision(9)):x.actual}</td><td>{x.tolerance??'Exact code'}</td><td>{x.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p>Asset QA: 261.1 × 103.8 × 303.2 mm, 1.68 MB, 26,221 triangles, 19 mesh primitives, and five ray-tested panel targets. These are static metrics, not headset performance. <a href={asset+'asset-metrics.json'}>Geometry metrics</a>.</p>
+<p><a href={asset+'verification.json'}>Download verification results</a> · <a href={asset+'acceptance.json'}>Declared fixtures</a> · <a href={asset+'waveform-schema.json'}>Output schema</a></p>
+</section>
+</article>
+</Layout>
+<script>
+import '../../../../lib/equipment/09-06/client.mjs';
+</script>
+<style>
+#gen336 {max-width: 1280px; margin:auto; color:inherit;}
+#gen336 header {margin:1.4rem 0 1rem;}
+#gen336 header h2 {margin:.25rem 0 0;}
+#gen336 header p {max-width:85ch;}
+.work {display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1rem;}
+.panel {border:1px solid color-mix(in srgb,currentColor 32%,transparent);padding:clamp(.8rem,2vw,1.4rem);margin:.6rem 0;border-radius:.33rem;min-width:0;}
+.panel h3 {margin:0 0 .85rem;}
+.tools {display:flex;gap:.4rem;flex-wrap:wrap;}
+.tools button {border:1px solid currentColor;background:transparent;color:inherit;min-height:38px;padding:.45rem .7rem;border-radius:.24rem;cursor:pointer;font:inherit;}
+.tools button[aria-pressed=true] {background:#d6bd73;color:#151b1a;}
+.tools button:disabled {opacity:.46;cursor:not-allowed;}
+#gen-viewer {height:350px;margin:.75rem 0 0;background:#263439;}
+#gen-viewer :global(canvas) {display:block;max-width:100%;touch-action:none;}
+.fields {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;margin:.8rem 0;}
+.fields label {display:flex;flex-direction:column;gap:.18rem;font-size:.9rem;}
+.fields input,.fields select {min-width:0;width:100%;min-height:38px;box-sizing:border-box;font:inherit;color:inherit;background:transparent;border:1px solid currentColor;border-radius:.2rem;padding:.26rem;}
+.fields option {color:#151b1a;background:#faf5e8;}
+#gen-actual,#gen-result {font-weight:700;margin:.7rem 0;}
+#gen-status[data-error=true] {color:inherit;border-left:4px solid #d16246;padding-left:.6rem;font-weight:600;}
+#gen-trace {display:block;width:min(100%,760px);height:auto;max-width:100%;border-radius:.2rem;}
+.views {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;}
+.views figure {margin:0;}
+.views img {display:block;width:100%;height:auto;}
+.views figcaption {margin:.35rem 0 1rem;font-size:.92rem;}
+.specs div {border-top:1px solid color-mix(in srgb,currentColor 22%,transparent);padding:.55rem 0;}
+.specs dd {margin:.15rem 0;}
+.specs dt {font-weight:bold;}
+.scroll {overflow-x:auto;}
+table {border-collapse:collapse;width:100%;}
+th,td {text-align:left;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent);padding:.44rem;}
+@media(max-width:900px) {.work {grid-template-columns:1fr;} #gen-viewer {height:310px;}}
+@media(max-width:550px) {.views {grid-template-columns:1fr;} #gen-viewer {height:265px;} .tools button,.fields input,.fields select{min-height:44px;}}
+</style>
