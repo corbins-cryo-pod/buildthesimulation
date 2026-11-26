@@ -1,0 +1,6 @@
+{
+ "configuration":"Thermo Scientific TSX60086A, original/legacy upright model, matching 2018 OEM signed technical-data rendering and photographed 2019 physical unit; closed exterior only",
+ "geometryBasis":"OEM technical sheet p.1 gives exterior 1006 W × 960 D × 1981 H mm, and p.3 front view gives the lower-face parting height of 464.8 mm. Use the diagram and later photo for long door, left latch, blue blank display, three right hinges and lower side-specific grilles. Peripheral fittings extend beyond the nominal main shell.",
+ "independentBenchmark":"Standalone immutable drawing: 40×40 square and 80×20 strip each have 1600 mm² area but perimeter 160 and 200 mm. A 50×30 rectangle has 1500 mm², 100 mm² less than square, but same 160 mm perimeter. A 90° drawing rotation exchanges displayed dimensions without changing area, perimeter or source revision.",
+ "tolerance":"Exact synthetic integer areas/sides; 1e-7 metre arithmetic tolerance for the authored shell dimensions, not OEM fabrication tolerances."
+}
