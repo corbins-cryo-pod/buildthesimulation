@@ -1,0 +1,44 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    2.2744,
+    1.68,
+    0.8805
+  ],
+  "meshes": 90,
+  "triangles": 15865,
+  "bytes": 823376,
+  "interaction": {
+    "Footprint_gold_token": {
+      "action": "turn",
+      "label": "Rotate unrelated gold tile",
+      "initialBoundsMinM": [
+        1.1475,
+        0.876,
+        0.2175
+      ],
+      "initialBoundsMaxM": [
+        1.2525,
+        0.886,
+        0.3625
+      ],
+      "orientationDeg": [
+        0,
+        90
+      ]
+    }
+  },
+  "modelMainUnitM": [
+    1.8288,
+    1.68,
+    0.8805
+  ],
+  "nominalAuthoredEnvelopeMm": [
+    1828.8,
+    1680,
+    880
+  ],
+  "selectedVendorVariant": "None: broad six-foot styling reference; installation identity unverified",
+  "controlsEnabled": false
+}

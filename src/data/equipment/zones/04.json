@@ -137,9 +137,10 @@
     "inputs": "Material stack, opening mask, abstract process ID and material compatibility table",
     "outputs": "Revised layer outline, undercut estimate and compatibility result",
     "acceptance": "Use an isotropic constant-speed fixture over a straight mask edge. Lateral undercut must equal vertical depth; an unsupported material pair must return an unresolved operation.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Original nominal metric GLB, identity unverified",
+    "simulationStatus": "Static dry enclosure and independent footprint diagram",
+    "integrationStatus": "Standalone viewer only; no processing or equipment linkage",
+    "simulator": "/simulations/equipment/04-06/simulator/"
   },
   {
     "id": "04-07",
