@@ -1,0 +1,54 @@
+{
+  "schema": "bts.station.pm100d-passive-scale.v1",
+  "equipment": "11-05",
+  "model": "./pm100d-console.glb",
+  "units": "m",
+  "axes": "+Y up +Z front",
+  "nodes": 39,
+  "bytes": 72236,
+  "triangles": 3172,
+  "hitTargets": [
+    {
+      "node": "Cycle_fixed_value",
+      "action": "cycleValue",
+      "label": "Cycle the fixed arithmetic value",
+      "boundsM": {
+        "min": [
+          0.144,
+          0.0415,
+          0.034
+        ],
+        "max": [
+          0.206,
+          0.0545,
+          0.048
+        ]
+      }
+    },
+    {
+      "node": "Cycle_display_units",
+      "action": "cycleUnit",
+      "label": "Cycle the displayed numerical unit",
+      "boundsM": {
+        "min": [
+          0.228,
+          0.0415,
+          0.034
+        ],
+        "max": [
+          0.29000000000000004,
+          0.0545,
+          0.048
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./units.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)"
+  },
+  "note": "Only the separate numerical card has actions, no physical headset check."
+}
