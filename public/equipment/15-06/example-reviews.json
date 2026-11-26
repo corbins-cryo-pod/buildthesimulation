@@ -1,0 +1,74 @@
+[
+  {
+    "schema": "bts.synthetic-two-layer-review.v1",
+    "kind": "synthetic-fixed-label-review",
+    "archiveId": "SS1276-GEOMETRIC-FRAMES-001",
+    "revision": 1,
+    "source": "BuildTheSimulation authorial rectangular-ring labels and independent chart annotation; no acquired data",
+    "spacingMm": [
+      0.2,
+      0.25,
+      0.5
+    ],
+    "index": 0,
+    "zMm": 0,
+    "frameId": "FRAME-0",
+    "objectLayerId": "OUTLINE-0",
+    "annotationLayerId": "ANNOTATION-0",
+    "annotationVisible": true,
+    "coverage": "stored",
+    "result": {
+      "objectPixels": 160,
+      "objectAreaMm2": 8,
+      "objectWidthMm": 2.8000000000000003,
+      "annotationPixels": 28,
+      "intersectionPixels": 8
+    }
+  },
+  {
+    "schema": "bts.synthetic-two-layer-review.v1",
+    "kind": "synthetic-fixed-label-review",
+    "archiveId": "SS1276-GEOMETRIC-FRAMES-001",
+    "revision": 1,
+    "source": "BuildTheSimulation authorial rectangular-ring labels and independent chart annotation; no acquired data",
+    "spacingMm": [
+      0.2,
+      0.25,
+      0.5
+    ],
+    "index": 1,
+    "zMm": 0.5,
+    "frameId": "FRAME-1",
+    "objectLayerId": "OUTLINE-1",
+    "annotationLayerId": "ANNOTATION-1",
+    "annotationVisible": true,
+    "coverage": "stored",
+    "result": {
+      "objectPixels": 0,
+      "objectAreaMm2": 0,
+      "objectWidthMm": null,
+      "annotationPixels": 28,
+      "intersectionPixels": 0
+    }
+  },
+  {
+    "schema": "bts.synthetic-two-layer-review.v1",
+    "kind": "synthetic-fixed-label-review",
+    "archiveId": "SS1276-GEOMETRIC-FRAMES-001",
+    "revision": 1,
+    "source": "BuildTheSimulation authorial rectangular-ring labels and independent chart annotation; no acquired data",
+    "spacingMm": [
+      0.2,
+      0.25,
+      0.5
+    ],
+    "index": 2,
+    "zMm": 1,
+    "frameId": null,
+    "objectLayerId": null,
+    "annotationLayerId": null,
+    "annotationVisible": true,
+    "coverage": "missing",
+    "result": null
+  }
+]
