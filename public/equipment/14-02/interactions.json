@@ -1,0 +1,86 @@
+{
+  "triangles": 3236,
+  "draws": 29,
+  "nodes": 8,
+  "bytes": 212856,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "left_support": {
+      "at": [
+        -0.02,
+        0.278,
+        0.0975
+      ],
+      "extent": [
+        0.044,
+        0.044,
+        0.064
+      ],
+      "action": "span",
+      "label": "Switch demo support spacing"
+    },
+    "right_support": {
+      "at": [
+        0.02,
+        0.278,
+        0.0975
+      ],
+      "extent": [
+        0.044,
+        0.044,
+        0.064
+      ],
+      "action": "span",
+      "label": "Switch demo support spacing"
+    },
+    "beam": {
+      "at": [
+        0,
+        0.294,
+        0.0975
+      ],
+      "extent": [
+        0.062,
+        0.015,
+        0.021
+      ],
+      "action": "load",
+      "label": "Place or remove inert beam"
+    },
+    "nose": {
+      "at": [
+        0,
+        0.322,
+        0.0975
+      ],
+      "extent": [
+        0.047,
+        0.087,
+        0.067
+      ],
+      "action": "tare",
+      "label": "Zero central loading nose"
+    },
+    "panel": {
+      "at": [
+        0.326,
+        0.68,
+        0.192
+      ],
+      "extent": [
+        0.14,
+        0.16,
+        0.046
+      ],
+      "action": "run",
+      "label": "Acquire flexure trace"
+    }
+  },
+  "motion": {
+    "crossheadAxis": "−Y",
+    "supportsAxis": "±X",
+    "symmetricSpan": true
+  }
+}
