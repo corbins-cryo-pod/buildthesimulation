@@ -200,9 +200,16 @@
     "inputs": "Tissue record, recorded yield summary, viability labels and parent batch ID",
     "outputs": "Derived suspension record carrying source linkage and reported yield uncertainty",
     "acceptance": "Replay an annotated benchmark with known viable, nonviable and unclassified counts. Preserve the reported totals and unclassified category, including missing measurements.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built, documented nominal dormant legacy Octo exterior",
+    "simulationStatus": "Detached static shape comparison; no specimen workflows",
+    "integrationStatus": "Standalone exhibit and geometry-only JSON",
+    "simulator": "/simulations/equipment/07-08/simulator/",
+    "related": [
+      [
+        "Legacy model references and arithmetic checks",
+        "/simulations/equipment/07-08/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "07-09",

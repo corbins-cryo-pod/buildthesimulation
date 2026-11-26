@@ -1,0 +1,94 @@
+{
+  "schema": "bts.octo.documentary-shapes.verification.v1",
+  "scope": "Nominal exterior dimensions and separate authentic arithmetic only; no process parameters or outcomes",
+  "checks": [
+    {
+      "id": "Published width",
+      "expected": 0.285,
+      "actual": 0.285,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Published length/depth",
+      "expected": 0.465,
+      "actual": 0.465,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Published height",
+      "expected": 0.185,
+      "actual": 0.185,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Eight closed external caps",
+      "expected": 8,
+      "actual": 8,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Regular octagon via independent wedge formula",
+      "expected": 1629.1740238538057,
+      "actual": 1629.1740238538057,
+      "unit": "mm²",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Square diagonal 48 mm",
+      "expected": 1152,
+      "actual": 1152,
+      "unit": "mm²",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Circle self-comparison margin",
+      "expected": 0,
+      "actual": 0,
+      "unit": "mm²",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Fixed circumdiameter",
+      "expected": 48,
+      "actual": 48,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Overlay change preserves numerics",
+      "expected": true,
+      "actual": true,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Out-of-domain shape retains previous",
+      "expected": true,
+      "actual": true,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Detached ray targets resolve",
+      "expected": 2,
+      "actual": 2,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}
