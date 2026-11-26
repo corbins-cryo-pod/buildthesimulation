@@ -1,0 +1,6 @@
+{
+ "instrument":"Scientifica SliceScope Pro 1000 optical exhibit",
+ "independentBasis":"Original etched two-plane plate. Bench targets A=(-40,15,0) µm and B=(45,-20,80) µm; raster center pixel (40,30) and 5 µm/pixel gives A=(32,33) and B=(49,26) with centered stage. Focusing at 40 µm neither marker is strong enough to select. A +25 µm X stage offset shifts B from 49 to 44 px but inverse calibration returns the same 45 µm sample X. Independent location tolerance is one lateral pixel and one axial teaching step (5 µm, 5 µm, 10 µm).",
+ "geometryMm":{"mountWidth":157.2,"mountDepth":300,"topPlateWidth":100,"supportFootDiameter":100},
+ "note":"Original geometric/contrast model; no optical PSF, tissue, calibration measurement or clinical data."
+}
