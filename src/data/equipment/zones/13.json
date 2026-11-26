@@ -220,9 +220,10 @@
     "inputs": "Virtual specimen geometry, drying event and optional uniform shrinkage factor",
     "outputs": "Dried specimen revision, transformed geometry when enabled, shrinkage assumption and parent ID",
     "acceptance": "Use a cube with linear shrinkage factor s. Edge lengths should scale by s and volume by s³; with s equal to one the geometry should remain identical.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass metric documentary exterior GLB/source",
+    "simulationStatus": "Dormant cabinet and detached abstract ratio diagram",
+    "integrationStatus": "Standalone viewer; no preparation, process or equipment linkage",
+    "simulator": "/simulations/equipment/13-11/simulator/"
   },
   {
     "id": "13-12",
