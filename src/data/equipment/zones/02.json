@@ -93,9 +93,9 @@
     "inputs": "Vector pattern, write-field grid, sampling pitch, stage offsets and resist revision",
     "outputs": "Stitched exposure map with field coordinates and dose provenance",
     "acceptance": "Write a line across two virtual fields. Zero offset joins the line continuously; a programmed lateral offset appears only at the seam to within one pixel.",
-    "geometryStatus": "Reference-informed metric glTF; internal dimensions inferred",
-    "simulationStatus": "Two-stripe commanded dose model; analytic acceptance checks passed",
-    "integrationStatus": "Simulator route and exposure-revision export; local Chromium QA passed; production verification pending",
+    "geometryStatus": "Reference-informed metric glTF; two positioning aids; internal dimensions inferred",
+    "simulationStatus": "Area-integrated two-stripe dose model; analytic acceptance and conservation checks passed",
+    "integrationStatus": "Simulator route, exposure-revision export; revision 1.1 browser and deployment QA pending",
     "simulator": "/simulations/equipment/02-03/simulator/",
     "related": [
       [
