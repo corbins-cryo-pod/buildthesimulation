@@ -1,0 +1,19 @@
+{
+  "evidence": "Independent, ideal circuit calculations specified before solver implementation; no external instrument measurements.",
+  "cases": [
+    {"id":"ohm-below","expect":0.0001,"unit":"A","tolerance":1e-12,"why":"+0.1 V across 1 kΩ produces +0.100 mA."},
+    {"id":"ohm-negative","expect":-0.0002,"unit":"A","tolerance":1e-12,"why":"−0.2 V across 1 kΩ produces −0.200 mA."},
+    {"id":"limit-current","expect":0.00025,"unit":"A","tolerance":1e-12,"why":"Command +0.4 V across 1 kΩ; +0.250 mA compliance is active."},
+    {"id":"limit-terminal","expect":0.25,"unit":"V","tolerance":1e-10,"why":"Limited source drops to I_limit × R = +0.250 V."},
+    {"id":"limit-flag","expect":"COMPLIANCE","unit":"flag","why":"A requested +0.4 mA cannot be attained at +0.25 mA compliance."},
+    {"id":"limit-inverse","expect":-0.25,"unit":"V","tolerance":1e-10,"why":"Symmetric negative limit for −0.4 V requested."},
+    {"id":"ohm-controls","expect":0.0002,"unit":"A","tolerance":1e-12,"why":"Doubling the resistor to 2 kΩ reduces +0.4 V draw below compliance."},
+    {"id":"cv-level","expect":1e-9,"unit":"F","tolerance":1e-15,"why":"1 nF ideal capacitor remains 1 nF at −1 V, 0 V and +1 V bias."},
+    {"id":"cv-flat","expect":0,"unit":"F","tolerance":1e-15,"why":"Max minus min capacitance is zero across all bias points."},
+    {"id":"cap-susceptance","expect":0.00006283185307179586,"unit":"S","tolerance":1e-12,"why":"Independent 2π(10 kHz)(1 nF) = 62.831853 µS."},
+    {"id":"cap-current","expect":0.0000018849555921538758,"unit":"A RMS","tolerance":1e-12,"why":"At 30 mV RMS, 10 kHz, 1 nF draws 1.884956 µA RMS."},
+    {"id":"cap-frequency-response","expect":10,"unit":"ratio","tolerance":1e-10,"why":"Increasing frequency 10× increases ideal capacitor AC current 10× with unchanged C."},
+    {"id":"probe-open","expect":"probe-open","unit":"outcome","why":"Lifted probe prevents sourcing and measurement."},
+    {"id":"wrong-fixture","expect":"fixture-mode","unit":"outcome","why":"B1520A C-V bench rejects the resistor coupon; select the capacitor."}
+  ]
+}

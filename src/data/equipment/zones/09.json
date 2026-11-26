@@ -23,7 +23,7 @@
   {
     "id": "09-02",
     "name": "Semiconductor analyzer",
-    "model": "Keysight B1500A",
+    "model": "Keysight B1500A · B1517A HRSMU and B1520A MFCMU",
     "evidence": "A",
     "priority": "P1",
     "page": 30,
@@ -37,9 +37,14 @@
     "inputs": "Device terminal map, installed measurement modules, sweep definition and compliance limits",
     "outputs": "Terminal-resolved I–V or C–V measurements with compliance and range flags",
     "acceptance": "Sweep a resistor through a declared current limit. Match Ohm's law below compliance and flag the limited points. A separate ideal capacitor must yield constant capacitance with bias.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented metric chassis and module GLB; original animated probe fixture",
+    "simulationStatus": "Independently checked resistor compliance and ideal capacitor C–V",
+    "integrationStatus": "Dedicated simulator with typed passive fixture import and signed sweep export",
+    "simulator": "/simulations/equipment/09-02/simulator/",
+    "related": [
+      ["Instrument photos, model and verification", "/simulations/equipment/09-02/simulator/#b1500-evidence"],
+      ["Passive coupon and measurement contract", "/equipment/09-02/contract.json"]
+    ]
   },
   {
     "id": "09-03",

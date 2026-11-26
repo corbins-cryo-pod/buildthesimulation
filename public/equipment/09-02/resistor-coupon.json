@@ -1,0 +1,19 @@
+{
+  "schema": "bts.two-terminal-fixture.v1",
+  "kind": "resistor",
+  "sampleId": "R-CAL-1K",
+  "revision": 1,
+  "contacts": [
+    {
+      "id": "PAD_A",
+      "role": "HI"
+    },
+    {
+      "id": "PAD_B",
+      "role": "LO"
+    }
+  ],
+  "value": 1000,
+  "unit": "ohm",
+  "provenance": "Ideal BuildTheSimulation passive coupon"
+}
