@@ -1,0 +1,31 @@
+{
+  "schema": "bts.empty-tray-clearance.v1",
+  "deviceId": "16-05",
+  "trayId": "empty-carrier-01",
+  "revision": 1,
+  "parentRevision": 0,
+  "kind": "simulated geometry",
+  "input": {
+    "trayId": "empty-carrier-01",
+    "widthMm": 286,
+    "depthMm": 675,
+    "heightMm": 25
+  },
+  "chamber": {
+    "diameterMm": 384,
+    "interiorDepthMm": 760,
+    "frontExclusionMm": 20,
+    "rearExclusionMm": 15,
+    "centerYmm": -47.5
+  },
+  "clearance": {
+    "outerRadiusMm": 155.0774000297916,
+    "availableDepthMm": 725,
+    "apertureMarginMm": 36.92259997020841,
+    "doorPlaneMarginMm": 50,
+    "fits": true
+  },
+  "loadedContentsModeled": false,
+  "operatingState": "not modeled",
+  "geometryProvenance": "Legacy 3870EA brochure nominal chamber; centered empty carrier at an original guide offset and assumed depth exclusion planes. No sweep, tolerance or fit certification."
+}

@@ -1,0 +1,51 @@
+{
+  "triangles": 1380,
+  "draws": 20,
+  "nodes": 12,
+  "bytes": 90644,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "carrier": {
+      "at": [
+        -0.082,
+        0.2155,
+        -0.0325
+      ],
+      "extent": [
+        0.286,
+        0.025,
+        0.675
+      ],
+      "action": "check",
+      "label": "Evaluate an empty carrier bounding box"
+    },
+    "closed_door": {
+      "at": [
+        -0.082,
+        0.263,
+        0.4
+      ],
+      "extent": [
+        0.439,
+        0.421,
+        0.075
+      ],
+      "label": "Fixed closed door depiction; no door interaction"
+    },
+    "locked_latch": {
+      "at": [
+        -0.248,
+        0.263,
+        0.435
+      ],
+      "extent": [
+        0.043,
+        0.14,
+        0.014
+      ],
+      "label": "Locked display-only latch; no action or actuation"
+    }
+  }
+}
