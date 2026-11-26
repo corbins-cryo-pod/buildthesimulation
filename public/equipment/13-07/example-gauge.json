@@ -1,0 +1,25 @@
+{
+  "schema": "bts.synthetic-fiducial-inspection.v1",
+  "sampleId": "FIDUCIAL-CARD-UC7-01",
+  "revision": 1,
+  "kind": "Frozen inert 2D author-designed reference, no measured data",
+  "units": "µm",
+  "axes": "Synthetic chart XY, +X right and +Y up, origin lower left",
+  "pair": "A",
+  "displayZoom": 1,
+  "referenceBarUm": 30,
+  "referenceBarDisplayPx": 120,
+  "umPerDisplayPx": 0.25,
+  "pointsUm": [
+    [
+      10,
+      12
+    ],
+    [
+      70,
+      57
+    ]
+  ],
+  "distanceDisplayPx": 300,
+  "distanceUm": 75
+}

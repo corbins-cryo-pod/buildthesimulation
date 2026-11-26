@@ -136,9 +136,10 @@
     "inputs": "Block ID, cutting axis, virtual section thickness, serial order and loss flags",
     "outputs": "Thin-section child IDs, each with index, physical depth and collection status",
     "acceptance": "Remove the middle section of a five-section fixture. Four collected IDs should remain while physical depth and serial numbering retain the gap.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Dormant nominal UC7 exterior, 10.4-inch blank screen, and separate original inert pad",
+    "simulationStatus": "Verified passive synthetic fiducial measurement invariant to display zoom; no sectioning",
+    "integrationStatus": "Interactive exterior, calibrated synthetic chart, JSON provenance and XR pick targets",
+    "simulator": "/simulations/equipment/13-07/simulator/"
   },
   {
     "id": "13-08",

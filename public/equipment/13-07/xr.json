@@ -1,0 +1,100 @@
+{
+  "schema": "bts.xr-instrument.v1",
+  "equipmentId": "13-07",
+  "units": "m",
+  "axes": "+X right, +Y up, +Z front",
+  "nominalBoundsM": {
+    "min": [
+      -0.514,
+      0,
+      -0.2525
+    ],
+    "max": [
+      0.5425,
+      0.487,
+      0.2525
+    ]
+  },
+  "budget": {
+    "byteLength": 349356,
+    "nodes": 56,
+    "triangles": 5239
+  },
+  "actions": [
+    {
+      "node": "PAIR_A",
+      "action": "pair",
+      "value": "A",
+      "label": "Inspect card pair A",
+      "boundsAtRestM": {
+        "min": [
+          0.2995,
+          0.034278,
+          0.155924
+        ],
+        "max": [
+          0.3545,
+          0.052711,
+          0.16416
+        ]
+      }
+    },
+    {
+      "node": "PAIR_B",
+      "action": "pair",
+      "value": "B",
+      "label": "Inspect card pair B",
+      "boundsAtRestM": {
+        "min": [
+          0.3775,
+          0.034278,
+          0.155924
+        ],
+        "max": [
+          0.4325,
+          0.052711,
+          0.16416
+        ]
+      }
+    },
+    {
+      "node": "GAUGE_ZOOM",
+      "action": "zoom",
+      "label": "Toggle display-only zoom",
+      "boundsAtRestM": {
+        "min": [
+          0.4555,
+          0.034278,
+          0.155924
+        ],
+        "max": [
+          0.5105,
+          0.052711,
+          0.16416
+        ]
+      }
+    }
+  ],
+  "actionModule": "gauge.mjs",
+  "interactionNotes": "Attach passive synthetic chart material to local +Z of DRY_PAD_SCREEN. Real instrument exterior and original controller are dormant. Documented screen diagonal; other dimensions approximate.",
+  "verification": [
+    {
+      "label": "documented blank panel diagonal",
+      "expectedMm": 264.16,
+      "actualMm": 264.16,
+      "toleranceMm": 0.03
+    },
+    {
+      "label": "estimated footprint X",
+      "expectedMm": 415,
+      "actualMm": 414.99999,
+      "toleranceMm": 0.03
+    },
+    {
+      "label": "estimated footprint Z",
+      "expectedMm": 505,
+      "actualMm": 505,
+      "toleranceMm": 0.03
+    }
+  ]
+}
