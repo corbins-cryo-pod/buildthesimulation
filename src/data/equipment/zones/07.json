@@ -305,7 +305,7 @@
   {
     "id": "07-14",
     "name": "Ultra-low freezer",
-    "model": "Thermo Scientific TSX series (exact cabinet pending)",
+    "model": "Thermo Scientific TSX60086A (legacy exterior)",
     "evidence": "B",
     "priority": "P2",
     "page": 26,
@@ -318,9 +318,16 @@
     "inputs": "Rack occupancy, sample IDs, compartment temperature trace and alarm rule",
     "outputs": "Temperature alarm intervals and affected inventory records",
     "acceptance": "Replay a trace with one threshold excursion across a known inventory change. Flag the excursion and associate only the samples present during its interval.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built, source-dimensioned documentary TSX60086A exterior",
+    "simulationStatus": "Detached fixed geometry; no thermal, alarm or inventory model",
+    "integrationStatus": "Standalone exhibit and geometry-only JSON",
+    "simulator": "/simulations/equipment/07-14/simulator/",
+    "related": [
+      [
+        "Legacy cabinet sources and arithmetic checks",
+        "/simulations/equipment/07-14/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "07-15",
