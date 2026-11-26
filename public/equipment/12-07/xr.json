@@ -1,0 +1,98 @@
+{
+  "schema": "bts.xr-instrument.v1",
+  "equipmentId": "12-07",
+  "units": "m",
+  "axes": "+X right, +Y up, +Z front",
+  "nominalBoundsM": {
+    "min": [
+      -0.4,
+      0,
+      -0.225
+    ],
+    "max": [
+      0.845,
+      0.5,
+      0.225
+    ]
+  },
+  "budget": {
+    "byteLength": 279956,
+    "nodes": 33,
+    "triangles": 5264
+  },
+  "actions": [
+    {
+      "node": "REPLAY_PREV",
+      "action": "prev",
+      "label": "Previous stored plane",
+      "boundsAtRestM": {
+        "min": [
+          0.521,
+          0.1105,
+          0.011
+        ],
+        "max": [
+          0.583,
+          0.1335,
+          0.017
+        ]
+      }
+    },
+    {
+      "node": "REPLAY_NEXT",
+      "action": "next",
+      "label": "Next stored plane",
+      "boundsAtRestM": {
+        "min": [
+          0.749,
+          0.1105,
+          0.011
+        ],
+        "max": [
+          0.811,
+          0.1335,
+          0.017
+        ]
+      }
+    }
+  ],
+  "actionModule": "replay.mjs",
+  "interactionNotes": "Attach offline data texture to +Z face of REPLAY_SCREEN. Main module is static decorative geometry. All actions only switch stored plane index.",
+  "verification": [
+    {
+      "node": "LIGHTSHEET7_MAIN_MODULE",
+      "axis": "x",
+      "expectedMm": 800,
+      "actualMm": 800.00001,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "LIGHTSHEET7_MAIN_MODULE",
+      "axis": "y",
+      "expectedMm": 500,
+      "actualMm": 500.00001,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "LIGHTSHEET7_MAIN_MODULE",
+      "axis": "z",
+      "expectedMm": 450,
+      "actualMm": 450,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "REPLAY_SCREEN",
+      "axis": "x",
+      "expectedMm": 304,
+      "actualMm": 303.99999,
+      "toleranceMm": 0.05
+    },
+    {
+      "node": "REPLAY_SCREEN",
+      "axis": "y",
+      "expectedMm": 190,
+      "actualMm": 190,
+      "toleranceMm": 0.05
+    }
+  ]
+}
