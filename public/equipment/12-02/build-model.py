@@ -105,9 +105,9 @@ bx('Stage_etched_insert','teal',0,342,41,138,3,102)
 bx('Sealed_reticle','optic',0,344.3,41,66,2.1,46)
 for x in [-27,-18,-9,0,9,18,27]:
  bx('Reticle_model_groove_'+str(x),'stainless',x,345.4,41,.36,.25,40)
-p=ref('Nosepiece_switch',t=(0,252,30),p='Assembly')
+p=ref('Nosepiece_switch',t=(0,252,-2),p='Assembly')
 cy('Nosepiece_selector','dark',0,0,0,129,24,p=p)
-for i,(x,z,h,col)in enumerate([(0,11,54,'teal'),(49,-21,47,'blue'),(-48,-19,37,'grey')]):
+for i,(x,z,h,col)in enumerate([(0,43,54,'teal'),(43*math.sqrt(3)/2,-21.5,47,'blue'),(-43*math.sqrt(3)/2,-21.5,37,'grey')]):
  cy(f'Objective_{i}_tube','stainless',x,18+h/2,z,31,h,p=p)
  cy(f'Objective_{i}_band',col,x,25,z,32,3,p=p)
  cy(f'Objective_{i}_window','optic',x,18+h,z,20,3,p=p)

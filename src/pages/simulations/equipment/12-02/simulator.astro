@@ -1,0 +1,38 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import refs from '../../../../../public/equipment/12-02/references.json';
+import verified from '../../../../../public/equipment/12-02/verification.json';
+const a='/equipment/12-02/';
+---
+<Layout pageTitle="Nikon Eclipse Ti2-E" subtitle="" description="Measure an inert 36.5 µm reticle at fixed camera sampling and two virtual objective scales." wide={true}>
+<article class="equipment ni1202">
+<nav class="eq-nav"><a href="/simulations/equipment/12-02/">← Equipment 12-02</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">Source views & checks</a></nav>
+<header class="eq-mast"><span class="eq-meta">12-02 / Passive inverted optical station</span><h2>Nikon Eclipse Ti2-E · Inverted reticle viewer</h2><p>Measure a sealed reticle at 10× and 20×. The physical pitch should stay at 36.5 µm while the same camera crop sees half the width at 20×.</p></header>
+<div class="ni-grid">
+<section class="ni-card"><h3>Single-layer Ti2-E exterior</h3><div class="ni-bar"><button data-view="whole">Front three-quarter</button><button data-view="stage">Inverted optics</button><button data-view="side">Side</button><button data-view="rear">Rear</button><button id="camera-reset">Reset camera</button></div>
+<div class="ni-camera"><canvas id="ti2-model" aria-label="Nikon Eclipse Ti2-E white and black exterior, binocular tubes, reticle stage and under-stage objectives"></canvas></div>
+<p id="asset" class="ni-note" role="status">Loading metre-scale GLB…</p><p class="ni-note">Drag or pinch to inspect. Select the external virtual dial to switch objectives, or the stage chart to measure. Visible controls on the instrument body are documentary only.</p></section>
+<section class="ni-card"><h3>Sealed inert reticle</h3>
+<div class="ni-bar"><button id="mag10" aria-pressed="true">10× objective</button><button id="mag20" aria-pressed="false">20× objective</button><button id="measure" class="primary">Measure physical pitch</button><button id="reset">Reset</button></div>
+<div class="ni-bar"><label>Synthetic focus offset <input id="focus" type="range" min="-10" max="10" step="1" value="0"/> <output id="focus-val">0 µm</output></label></div>
+<div class="ni-preview"><canvas id="raster" width="400" height="256" aria-label="Calibrated 400 × 256 pixel synthetic image of an inert etched grid"></canvas></div>
+<p id="fov" class="ni-note">400 × 256 px · horizontal field of view 292 µm.</p>
+<p id="status" role="status" aria-live="polite">In focus at 10×. Press Measure physical pitch.</p>
+<div class="ni-bar"><button id="image-out">Download current raster PNG</button><button id="json-out" disabled>Export pitch and calibration</button><a href={a+'example-pitch.json'}>Example result</a></div>
+</section></div>
+<section id="evidence"><h3>Geometry and optical scale verification</h3>
+<figure class="ni-fig"><img src={a+'reference-layout.svg'} alt="Original side schematic with 668 mm top datum and grid views at 10× and 20×." loading="lazy"/><figcaption>Original illustrative elevation and same-sensor comparison. The shallow synthetic focus control is not a physical workflow or actual Ti2 optical calibration.</figcaption></figure>
+<ul>{refs.referenceViews.map(r=><li><a href={r.url}>{r.title}</a>. {r.caption}</li>)}</ul>
+<p>Selected single-layer configuration: <b>240 × 495.3 mm</b> main body (W × D), <b>457.6 mm</b> stage span, <b>340.5 mm</b> stage top and <b>668 mm</b> lamp top. Exterior camera housing, control/eyetube shapes and reticle mount are estimates. No operational hardware, specimen, liquid, or biological imaging workflow.</p>
+<p>Input is a 10× or 20× profile and a teaching focus value, with the same 400 × 256 pixel crop, nominal 7.3 µm sensor pixels and 1× relay. One object pixel is 7.3 µm divided by magnification; horizontal FOV is 400 times the object pixel. The first-pass renderer draws an ideal grid with a focus-dependent contrast envelope, then measures the mean spacing between dark-line groups in the rendered row, not from the input pitch. The result is blocked outside the synthetic ±2 µm focus band. The exported PNG is unannotated, and the companion JSON includes the objective, focus, field of view, line centers, and unit scale. No physical accuracy, PSF, fluorescence or exposure model is implied.</p>
+<div class="ni-table"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{verified.checks.map(c=><tr><th>{c.id}</th><td>{String(c.expected)} {c.unit}</td><td>{typeof c.actual==='number'?Number(c.actual.toFixed(8)):String(c.actual)} {c.unit}</td><td>{c.tolerance===0?'Exact':c.tolerance}</td><td>{c.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable model</a> · <a href={a+'nikon-ti2-optical.glb'} download>Metric GLB</a> · <a href={a+'references.json'}>Reference notes</a> · <a href={a+'vr-station.json'}>VR interaction manifest</a> · <a href={a+'reticle.mjs'}>Independent reticle core</a> · <a href={a+'verification.json'}>Verification JSON</a>. No headset session tested.</p></section>
+</article></Layout><script>import '../../../../lib/equipment/12-02/client.mjs';</script>
+<style>
+.ni1202{--ni-rule:color-mix(in srgb,currentColor 27%,transparent);max-width:1280px;margin:auto}.ni-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:1rem}.ni-card{min-width:0;border:1px solid var(--ni-rule);padding:.85rem;margin:.8rem 0}.ni-card h3{margin:.21rem 0 .6rem}
+.ni-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin:.53rem 0}.ni-bar,.ni-note,.ni-fig figcaption{font:.86rem/1.4 system-ui,sans-serif}.ni1202 :is(button,input){font:inherit;accent-color:#426d60}.ni1202 button{padding:.39rem;background:var(--panel,Canvas);color:inherit;border:1px solid var(--ni-rule);border-radius:3px;min-height:36px;cursor:pointer}.ni1202 button:disabled{opacity:.55;cursor:default}.ni1202 :is(.primary,button[aria-pressed=true]){background:#34594f;color:#fff}
+.ni-camera{aspect-ratio:1.43;background:#263b43}.ni-camera canvas{width:100%;height:100%;display:block;touch-action:none}.ni-preview canvas{width:100%;height:auto;display:block;image-rendering:pixelated}.ni-preview{max-width:475px}
+.ni-table{overflow:auto}.ni-table table{width:100%;border-collapse:collapse}.ni-table :is(td,th){border-bottom:1px solid var(--ni-rule);padding:.44rem;text-align:left}.ni-fig{margin:1rem 0;max-width:600px}.ni-fig img{display:block;width:100%;height:auto}.ni-fig figcaption{margin:.38rem 0}
+@media(max-width:840px){.ni-grid{grid-template-columns:1fr}}
+</style>

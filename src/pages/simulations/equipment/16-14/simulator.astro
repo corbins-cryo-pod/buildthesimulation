@@ -1,0 +1,35 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import '../../../../styles/equipment.css';
+import verified from '../../../../../public/equipment/16-14/verification.json';
+const a='/equipment/16-14/';
+---
+<Layout pageTitle="Vacuum/gas service props" subtitle="" description="Inspect an unplumbed virtual equipment fixture with keyed continuity markers." wide={true}>
+<article class="equipment sf1614">
+<nav class="eq-nav"><a href="/simulations/equipment/16-14/">← Equipment 16-14</a><a href="/simulations/equipment/">Equipment register</a><a href="#evidence">References & checks</a></nav>
+<header class="eq-mast"><span class="eq-meta">16-14 / Sealed display fixtures</span><h2>BTS-BLIND Mk I · Service label demonstrator</h2><p>Seat two differently shaped tokens, then remove the triangle. Only station A should lose its virtual readiness marker. Reinsert it to recover the same link ID. No operating equipment is represented.</p></header>
+<div class="sf-grid">
+<section class="sf-card"><h3>Original display layout</h3><div class="sf-bar"><button data-camera="whole">Whole fixture</button><button data-camera="a">Triangle detail</button><button data-camera="b">Square detail</button><button data-camera="rear">Rear</button><button id="camera-reset">Reset camera</button></div>
+<div class="sf-camera"><canvas id="fixture-model" aria-label="Metre-scale sealed cabinet with triangle and square dry marker tokens and two indicator chassis"></canvas></div>
+<p id="asset" class="sf-note" role="status">Loading metre-scale GLB…</p><p class="sf-note">Drag or pinch to inspect. Click a colored shape to seat or remove its marker, or a station face to identify its link. The cabinet, static disks, and drawn paths are nonfunctional props.</p></section>
+<section class="sf-card"><h3>Virtual label continuity</h3>
+<div class="sf-bar"><button id="both" class="primary">Seat both matching markers</button><button id="toggle-a">Seat A · triangle</button><button id="toggle-b">Seat B · square</button></div>
+<div class="sf-bar"><button id="wrong">Try square on triangle A</button><button id="reset">Reset example</button></div>
+<p id="status" role="status" aria-live="polite">Both markers are unseated.</p>
+<div class="sf-table"><table><thead><tr><th>Station</th><th>Key</th><th>Virtual label</th><th>Active link</th></tr></thead><tbody id="rows"></tbody></table></div>
+<p id="rev" class="sf-note">Continuity ledger revision 0.</p>
+<div class="sf-bar"><button id="export">Export continuity JSON</button><a href={a+'example-continuity.json'}>Example result</a></div>
+<p>Input is one named blind branch and marker ID. The green and amber indicators are independently determined by each marker's seat state. Wrong shape or repeated seat/remove requests do not modify readiness or the ledger. Output contains station, branch, token, link and revision IDs.</p></section>
+</div>
+<section id="evidence"><h3>Nominal dimensions and independent checks</h3>
+<figure class="sf-fig"><img src={a+'reference-front.svg'} alt="Original front elevation of the 860 mm fixture, with separate A triangle, B square, lower cabinet, and station indicators." loading="lazy"/><figcaption>Original schematic elevation of sealed training props. Visual enclosure context: <a href="https://www.hammfg.com/files/literature/spec.pdf#page=14">Hammond Manufacturing Specifier's Handbook, printed page 13</a>, photographs of rectangular wall boxes with visible side depth and mounting tabs. It supplies no device dimensions, compatibility, or ratings.</figcaption></figure>
+<p>Original wall panel <b>860 × 410 × 28 mm</b>; lower cabinet <b>305 × 175 × 240 mm</b>; each station shell <b>180 × 85 × 110 mm</b> (W × H × D). A withdrawn token moves <b>22 mm</b> towards the viewer in +Z. These are chosen design values, not physical measurements or a fit standard. The display fixture has solid ends and no plumbing. This is a Boolean graph check, not equipment control or a simulation of pressure, flow, or vacuum.</p>
+<div class="sf-table"><table><thead><tr><th>Check</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{verified.checks.map(c=><tr><th>{c.id}</th><td>{JSON.stringify(c.expected)} {c.unit}</td><td>{JSON.stringify(c.actual)} {c.unit}</td><td>{c.tolerance}</td><td>{c.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'build-model.py'} download>Editable original model</a> · <a href={a+'blind-fixture.glb'} download>Metric GLB</a> · <a href={a+'references.json'}>Specifications and sources</a> · <a href={a+'vr-station.json'}>VR interaction manifest</a> · <a href={a+'continuity.mjs'}>Standalone continuity logic</a> · <a href={a+'verification.json'}>Verification JSON</a>. No immersive headset test.</p></section>
+</article></Layout><script>import '../../../../lib/equipment/16-14/client.mjs';</script>
+<style>
+.sf1614{--sf-border:color-mix(in srgb,currentColor 26%,transparent);max-width:1270px;margin:auto}.sf-grid{display:grid;grid-template-columns:minmax(0,1.13fr) minmax(0,1fr);gap:1rem}.sf-card{min-width:0;border:1px solid var(--sf-border);margin:.8rem 0;padding:.85rem}.sf-card h3{margin:.21rem 0 .62rem}
+.sf-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.46rem;margin:.53rem 0}.sf-bar,.sf-note,.sf-fig figcaption{font:.86rem/1.44 system-ui,sans-serif}.sf1614 button{font:inherit;padding:.4rem;background:var(--panel,Canvas);color:inherit;border:1px solid var(--sf-border);border-radius:3px;cursor:pointer;min-height:36px}.sf1614 .primary{background:#34594f;color:#fff}
+.sf-camera{aspect-ratio:1.5;background:#283d43}.sf-camera canvas{width:100%;height:100%;display:block;touch-action:none}.sf-table{overflow:auto}.sf-table table{width:100%;border-collapse:collapse}.sf-table :is(td,th){border-bottom:1px solid var(--sf-border);padding:.43rem;text-align:left;overflow-wrap:anywhere}.sf-fig{margin:1rem 0;max-width:610px}.sf-fig img{width:100%;height:auto}.sf1614 .err{color:#a1442e}:global(html[data-theme=dark]) .sf1614 .err{color:#ffc1a2}
+@media(max-width:830px){.sf-grid{grid-template-columns:1fr}}
+</style>

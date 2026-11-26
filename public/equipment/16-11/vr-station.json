@@ -1,0 +1,225 @@
+{
+  "schema": "bts.station.wafer-custody.v1",
+  "equipment": "16-11",
+  "model": "./handling-station.glb",
+  "units": "m",
+  "axes": "+Y up +Z front",
+  "nodes": 67,
+  "bytes": 40800,
+  "triangles": 5176,
+  "hitTargets": [
+    {
+      "node": "W100_01",
+      "action": "select",
+      "label": "Select wafer W100-01",
+      "boundsM": {
+        "min": [
+          -0.227,
+          0.0044,
+          0.075
+        ],
+        "max": [
+          -0.127,
+          0.0124,
+          0.175
+        ]
+      }
+    },
+    {
+      "node": "W150_01",
+      "action": "select",
+      "label": "Select wafer W150-01",
+      "boundsM": {
+        "min": [
+          0.057,
+          0.012399999999999998,
+          -0.169
+        ],
+        "max": [
+          0.207,
+          0.020399999999999998,
+          -0.019
+        ]
+      }
+    },
+    {
+      "node": "Staging_100_base",
+      "action": "transfer",
+      "label": "Transfer selected wafer onto 100 mm staging",
+      "boundsM": {
+        "min": [
+          -0.2335,
+          -0.002,
+          0.0685
+        ],
+        "max": [
+          -0.1205,
+          0.01,
+          0.1815
+        ]
+      }
+    },
+    {
+      "node": "Carrier_75_base",
+      "action": "transfer",
+      "label": "Test fit in undersized carrier",
+      "boundsM": {
+        "min": [
+          0.096,
+          -0.002,
+          0.097
+        ],
+        "max": [
+          0.184,
+          0.01,
+          0.185
+        ]
+      }
+    },
+    {
+      "node": "Carrier_75_tab",
+      "action": "transfer",
+      "label": "Test fit in undersized carrier",
+      "boundsM": {
+        "min": [
+          0.1785,
+          -0.0015,
+          0.1275
+        ],
+        "max": [
+          0.2035,
+          0.0115,
+          0.1545
+        ]
+      }
+    },
+    {
+      "node": "Wand_click",
+      "action": "transfer",
+      "label": "Put selected wafer under virtual wand",
+      "boundsM": {
+        "min": [
+          -0.0095,
+          0.03,
+          0.1395
+        ],
+        "max": [
+          0.0055,
+          0.042,
+          0.1545
+        ]
+      }
+    },
+    {
+      "node": "Slot_A01_handle",
+      "action": "transfer",
+      "label": "Transfer to cassette slot A01",
+      "boundsM": {
+        "min": [
+          -0.2435,
+          0.0125,
+          -0.0325
+        ],
+        "max": [
+          -0.2265,
+          0.0195,
+          -0.0195
+        ]
+      }
+    },
+    {
+      "node": "Slot_A02_handle",
+      "action": "transfer",
+      "label": "Transfer to cassette slot A02",
+      "boundsM": {
+        "min": [
+          -0.2435,
+          0.0245,
+          -0.0325
+        ],
+        "max": [
+          -0.2265,
+          0.0315,
+          -0.0195
+        ]
+      }
+    },
+    {
+      "node": "Slot_A03_handle",
+      "action": "transfer",
+      "label": "Transfer to cassette slot A03",
+      "boundsM": {
+        "min": [
+          -0.2435,
+          0.0365,
+          -0.0325
+        ],
+        "max": [
+          -0.2265,
+          0.0435,
+          -0.0195
+        ]
+      }
+    },
+    {
+      "node": "Slot_B01_handle",
+      "action": "transfer",
+      "label": "Transfer to cassette slot B01",
+      "boundsM": {
+        "min": [
+          0.0405,
+          0.0125,
+          -0.0125
+        ],
+        "max": [
+          0.0575,
+          0.0195,
+          0.0005
+        ]
+      }
+    },
+    {
+      "node": "Slot_B02_handle",
+      "action": "transfer",
+      "label": "Transfer to cassette slot B02",
+      "boundsM": {
+        "min": [
+          0.0405,
+          0.0245,
+          -0.0125
+        ],
+        "max": [
+          0.0575,
+          0.0315,
+          0.0005
+        ]
+      }
+    },
+    {
+      "node": "Slot_B03_handle",
+      "action": "transfer",
+      "label": "Transfer to cassette slot B03",
+      "boundsM": {
+        "min": [
+          0.0405,
+          0.0365,
+          -0.0125
+        ],
+        "max": [
+          0.0575,
+          0.0435,
+          0.0005
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./handling.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(type,payload)",
+    "hit": "hit(nodeName)",
+    "waferPose": "poses(state)"
+  },
+  "note": "Transform wafer hit bounds from current world poses; static fixture hit bounds do not move. No immersive session tested."
+}

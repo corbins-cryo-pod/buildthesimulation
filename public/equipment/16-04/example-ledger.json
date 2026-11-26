@@ -1,0 +1,55 @@
+{
+  "schema": "bts.virtual-water-ledger.v1",
+  "deviceId": "16-04",
+  "revision": 1,
+  "lot": {
+    "lotId": "MQ-V001",
+    "rhoMOhmCm": 18.2,
+    "temperatureC": 25,
+    "tocPpb": 3,
+    "kind": "synthetic",
+    "provenance": "Example telemetry supplied by author; TOC and quality not predicted, measured or certified.",
+    "conductivityUSCm": 0.054945054945054944,
+    "formula": "1 / resistivity (MΩ·cm) at the same reported temperature; conductivity µS/cm"
+  },
+  "remainingML": 900,
+  "bottle": {
+    "id": "BOTTLE-250",
+    "mounted": true,
+    "capacityML": 250,
+    "volumeML": 100,
+    "lotId": "MQ-V001"
+  },
+  "events": [
+    {
+      "eventId": "MQ-E1",
+      "revision": 1,
+      "bottleId": "BOTTLE-250",
+      "lotId": "MQ-V001",
+      "volumeML": 100,
+      "bottleAfterML": 100,
+      "remainingML": 900,
+      "quality": {
+        "lotId": "MQ-V001",
+        "rhoMOhmCm": 18.2,
+        "temperatureC": 25,
+        "tocPpb": 3,
+        "kind": "synthetic",
+        "provenance": "Example telemetry supplied by author; TOC and quality not predicted, measured or certified.",
+        "conductivityUSCm": 0.054945054945054944,
+        "formula": "1 / resistivity (MΩ·cm) at the same reported temperature; conductivity µS/cm"
+      }
+    }
+  ],
+  "display": {
+    "decorativeCartridgeShown": false
+  },
+  "units": {
+    "volume": "mL",
+    "resistivity": "MΩ·cm",
+    "conductivity": "µS/cm",
+    "temperature": "°C",
+    "toc": "ppb mass"
+  },
+  "scope": "Synthetic inventory only; no source quality, processing, treatment, chemistry, sterilization or physical water readiness."
+}
