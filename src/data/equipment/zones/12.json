@@ -42,7 +42,7 @@
   {
     "id": "12-03",
     "name": "Laser scanning confocal",
-    "model": "ZEISS LSM 980 with Airyscan 2",
+    "model": "ZEISS LSM 980 with Airyscan 2 · side-port documentary configuration",
     "evidence": "B",
     "priority": "P1",
     "page": 38,
@@ -55,9 +55,14 @@
     "inputs": "Labeled fluorescence volume, channel-specific measured PSF, scan grid and acquisition mode",
     "outputs": "Registered channel stack, voxel spacing and optical-section metadata",
     "acceptance": "Image isolated sub-resolution beads using a reference scan profile. Compare lateral and axial widths to held-out bead measurements and verify that a channel lacking fluorophore remains at background.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Passive metric layout on documented active table; hardware shapes inferred",
+    "simulationStatus": "Synthetic analytic plane inspection and width checks only; no hardware acquisition",
+    "integrationStatus": "Viewer and synthetic plane PNG/CSV/JSON; experimental acceptance not run",
+    "simulator": "/simulations/equipment/12-03/simulator/",
+    "related": [
+      ["ZEISS side-port arrangement (Fig. 15)", "https://www.zeiss.com.sg/content/dam/rms/countries/singapore/apac/lsm980-manual.pdf#page=66"],
+      ["ZEISS large table dimensions", "https://asset-downloads.zeiss.com/catalogs/download/mic/05fd8acd-c539-4a72-979d-c454c578e3d8/EN_product-info_LSM-980.pdf#page=37"]
+    ]
   },
   {
     "id": "12-04",

@@ -1,0 +1,18 @@
+{
+  "schema":"bts.gaussian-phantom.reference-cases.v1",
+  "basis":"Independent one-dimensional Gaussian half maximum: width = 2*sqrt(2 ln 2)*sigma. Sigma X=0.20, Y=0.24, Z=0.40 µm are artificial authored fixture values, not device resolution. Discrete crossing tolerances permit interpolation error.",
+  "cases":[
+    {"id":"fwhm-x","expected":0.4709640090061899,"unit":"um","tolerance":0.016},
+    {"id":"fwhm-y","expected":0.5651568108074278,"unit":"um","tolerance":0.019},
+    {"id":"fwhm-z","expected":0.9419280180123798,"unit":"um","tolerance":0.030},
+    {"id":"z-spacing","expected":0.2,"unit":"um","tolerance":1e-12},
+    {"id":"background-constant","expected":0.04,"unit":"relative intensity","tolerance":1e-12},
+    {"id":"background-width-unresolved","expected":true,"unit":"boolean"},
+    {"id":"shared-world-plane-intersection","expected":true,"unit":"boolean"},
+    {"id":"outside-plane-rejected","expected":true,"unit":"boolean"},
+    {"id":"inactive-control-rejected","expected":true,"unit":"boolean"},
+    {"id":"table-length","expected":1.2,"unit":"m","tolerance":1e-5},
+    {"id":"table-depth","expected":0.9,"unit":"m","tolerance":1e-5},
+    {"id":"table-height","expected":0.86,"unit":"m","tolerance":1e-5}
+  ]
+}
