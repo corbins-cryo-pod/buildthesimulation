@@ -1,0 +1,59 @@
+{
+  "device": "05-11",
+  "units": "m",
+  "up": "+Y",
+  "operatorFront": "+Z",
+  "baseEnvelopeWHDm": [
+    0.603123,
+    0.2963862,
+    0.7364984
+  ],
+  "dimensionSource": "Legacy iS50 user guide pp.10\u201311; distributor-facing datasheet dimensions differ.",
+  "articulation": {
+    "sample_lid_hinge": {
+      "axis": "X",
+      "travelRad": [
+        0,
+        -1.32
+      ],
+      "inferred": true
+    },
+    "atr_pressure_arm": {
+      "axis": "Y",
+      "travelM": [
+        0,
+        0.008
+      ],
+      "inferred": true
+    }
+  },
+  "interactions": {
+    "sample_lid_hinge": {
+      "action": "lid",
+      "label": "Open sample compartment"
+    },
+    "power_switch": {
+      "action": "power",
+      "label": "Instrument power"
+    },
+    "atr_pressure_arm": {
+      "action": "clamp",
+      "label": "Seat or lift the pressure foot"
+    },
+    "atr_deck": {
+      "action": "load",
+      "label": "ATR sampling plate"
+    },
+    "atr_touch": {
+      "action": "acquire",
+      "label": "ATR Touch Point: acquire"
+    }
+  },
+  "geometry": {
+    "nodes": 40,
+    "triangles": 15932,
+    "drawPrimitives": 31,
+    "bytes": 862456
+  },
+  "physicalHeadsetTested": false
+}
