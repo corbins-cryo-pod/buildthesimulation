@@ -1,0 +1,163 @@
+{
+  "schema": "buildthesimulation.wafer-custody.v1",
+  "stationId": "BTS-HANDLING-MK-I",
+  "fixtureRevision": 1,
+  "ledgerRevision": 1,
+  "provenance": "synthetic inert silicon geometry; no real handling records",
+  "units": {
+    "dimensions": "mm",
+    "orientation": "deg about +Y from +Z toward +X"
+  },
+  "slots": [
+    {
+      "slotId": "staging-100",
+      "diametersMm": [
+        100
+      ],
+      "sampleCenterMm": [
+        -177,
+        8.4,
+        125
+      ],
+      "occupant": null
+    },
+    {
+      "slotId": "cassette-100-A01",
+      "diametersMm": [
+        100
+      ],
+      "sampleCenterMm": [
+        -177,
+        16.4,
+        -89
+      ],
+      "occupant": null
+    },
+    {
+      "slotId": "cassette-100-A02",
+      "diametersMm": [
+        100
+      ],
+      "sampleCenterMm": [
+        -177,
+        28.4,
+        -89
+      ],
+      "occupant": "W100-01"
+    },
+    {
+      "slotId": "cassette-100-A03",
+      "diametersMm": [
+        100
+      ],
+      "sampleCenterMm": [
+        -177,
+        40.4,
+        -89
+      ],
+      "occupant": null
+    },
+    {
+      "slotId": "cassette-150-B01",
+      "diametersMm": [
+        150
+      ],
+      "sampleCenterMm": [
+        132,
+        16.4,
+        -94
+      ],
+      "occupant": "W150-01"
+    },
+    {
+      "slotId": "cassette-150-B02",
+      "diametersMm": [
+        150
+      ],
+      "sampleCenterMm": [
+        132,
+        28.4,
+        -94
+      ],
+      "occupant": null
+    },
+    {
+      "slotId": "cassette-150-B03",
+      "diametersMm": [
+        150
+      ],
+      "sampleCenterMm": [
+        132,
+        40.4,
+        -94
+      ],
+      "occupant": null
+    },
+    {
+      "slotId": "small-carrier",
+      "diametersMm": [
+        75
+      ],
+      "sampleCenterMm": [
+        140,
+        8.4,
+        141
+      ],
+      "occupant": null
+    },
+    {
+      "slotId": "wand",
+      "diametersMm": [
+        100,
+        150
+      ],
+      "sampleCenterMm": [
+        -2,
+        12.5,
+        64
+      ],
+      "occupant": null
+    }
+  ],
+  "wafers": [
+    {
+      "id": "W100-01",
+      "diameterMm": 100,
+      "thicknessMm": 0.525,
+      "orientationDeg": 30,
+      "face": "top",
+      "siteId": "cassette-100-A02"
+    },
+    {
+      "id": "W150-01",
+      "diameterMm": 150,
+      "thicknessMm": 0.675,
+      "orientationDeg": 0,
+      "face": "top",
+      "siteId": "cassette-150-B01"
+    }
+  ],
+  "transfers": [
+    {
+      "transferId": "custody-1",
+      "revision": 1,
+      "waferId": "W100-01",
+      "diameterMm": 100,
+      "orientationDeg": 30,
+      "face": "top",
+      "source": "staging-100",
+      "destination": "cassette-100-A02",
+      "waypoint": "wand",
+      "provenance": "virtual custody"
+    }
+  ],
+  "lastAttempt": {
+    "ok": false,
+    "code": "size-mismatch",
+    "message": "Blocked: 100 mm wafer is 25 mm wider than 75 mm demonstration carrier.",
+    "waferId": "W100-01",
+    "target": "small-carrier",
+    "openingMm": 75,
+    "diameterDeficitMm": 25
+  }
+}
