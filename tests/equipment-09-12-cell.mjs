@@ -31,7 +31,13 @@ test('terminal identity, revision, spectrum, and schema persist',()=>{
  assert.equal(p.terminals.reference.id,ports.RE);assert.equal(p.revision,4);assert.equal(p.provenance.origin,'simulated');
  assert.equal(p.samples[0][0],1);assert.equal(p.samples.at(-1)[0],10000);assert.ok(p.samples.every((r,i,x)=>!i||r[0]>x[i-1][0]));
  assert.match(toCSV(p),/# sampleId=TEST-EIS\n# contactId=WE-7\n# parentRevision=3\n# revision=4/);
- const ex=json('example-boundary.json');assert.deepEqual(ex,measure().result);assert.ok(json('output-schema.json').required.every(k=>Object.hasOwn(ex,k)));
+ const ex=json('example-boundary.json');
+ const {samples:fixture,...fixtureMetadata}=ex,{samples:calculated,...currentMetadata}=measure().result;
+ assert.deepEqual(fixtureMetadata,currentMetadata);
+ assert.equal(fixture.length,calculated.length);
+ // IEEE-754 exponentiation can differ by an ULP across JS runtimes; compare the sweep numerically.
+ for(const [i,row] of fixture.entries()) for(const [k,v] of row.entries()) near(v,calculated[i][k],1e-12*Math.max(1,Math.abs(v)));
+ assert.ok(json('output-schema.json').required.every(k=>Object.hasOwn(ex,k)));
 });
 test('VR state and projected geometry match the solver actions and limit switches',()=>{
  const a=createStation(),s=projectPose(a.read());near(s.workingX,-.003,1e-10);near(s.side,.01,1e-10);near(s.conductiveCenterX,.002,1e-10);
