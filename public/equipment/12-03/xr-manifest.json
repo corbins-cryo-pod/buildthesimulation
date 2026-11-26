@@ -1,0 +1,39 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "12-03",
+  "asset": "/equipment/12-03/lsm980-static.glb",
+  "scale": "glTF meters, +Y up, +Z operator. Synthetic data grid uses micrometers in a separate logical frame.",
+  "metrics": {
+    "bytes": 129168,
+    "triangles": 1452,
+    "draws": 57,
+    "tableNominalXyzM": [
+      1.2000000476837158,
+      0.8600000254809856,
+      0.8999999761581421
+    ]
+  },
+  "scope": "Named passive display action only; no immersive headset test.",
+  "nodes": [
+    {
+      "node": "plane_select_overlay",
+      "label": "Cycle analytic XY, XZ and YZ plane display",
+      "action": {
+        "type": "cycle"
+      },
+      "boundsM": [
+        0.104,
+        0.013,
+        0.045
+      ]
+    },
+    {
+      "node": "section_display_anchor",
+      "label": "Live passive viewport texture",
+      "boundsM": [
+        0.411,
+        0.254
+      ]
+    }
+  ]
+}
