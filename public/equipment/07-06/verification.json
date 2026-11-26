@@ -1,0 +1,102 @@
+{
+  "schema": "bts.detached-static-moment-inspection.verification.v1",
+  "metrics": {
+    "bytes": 111020,
+    "triangles": 1400,
+    "draws": 42,
+    "instrumentXYZM": [
+      0.6999999955296516,
+      0.3450000117300078,
+      0.6079999804496765
+    ],
+    "nominalSupportDepthM": 0.5360000133514404
+  },
+  "cases": [
+    {
+      "id": "width",
+      "expected": 0.7,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.6999999955296516,
+      "outcome": "PASS"
+    },
+    {
+      "id": "height",
+      "expected": 0.345,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.3450000117300078,
+      "outcome": "PASS"
+    },
+    {
+      "id": "depth",
+      "expected": 0.608,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.6079999804496765,
+      "outcome": "PASS"
+    },
+    {
+      "id": "support-footprint-depth",
+      "expected": 0.536,
+      "tolerance": 0.00001,
+      "unit": "m",
+      "actual": 0.5360000133514404,
+      "outcome": "PASS"
+    },
+    {
+      "id": "left-moment",
+      "expected": 2.4,
+      "tolerance": 1e-10,
+      "unit": "N·m",
+      "actual": 2.4000000000000004,
+      "outcome": "PASS"
+    },
+    {
+      "id": "right-moment",
+      "expected": -2.4,
+      "tolerance": 1e-10,
+      "unit": "N·m",
+      "actual": -2.4,
+      "outcome": "PASS"
+    },
+    {
+      "id": "balanced-net",
+      "expected": 0,
+      "tolerance": 1e-10,
+      "unit": "N·m",
+      "actual": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "offset-net",
+      "expected": 0.3,
+      "tolerance": 1e-10,
+      "unit": "N·m",
+      "actual": 0.30000000000000027,
+      "outcome": "PASS"
+    },
+    {
+      "id": "offset-sign",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "keeps-drawing-frame",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "unsupported-command-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Closed documentary exterior and independent static drawing only; no internal or experimental data."
+}

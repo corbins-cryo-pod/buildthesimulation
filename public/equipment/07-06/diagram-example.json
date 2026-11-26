@@ -1,0 +1,34 @@
+{
+  "schema": "bts.detached-static-moment-inspection.v1",
+  "revision": 1,
+  "drawingId": "STATICS-CARD-01",
+  "sourceRevision": "STATIC-STATICS-A",
+  "mode": "zero",
+  "axis": "X right; force downward; positive moment counterclockwise",
+  "positionsM": [
+    -0.4,
+    0.3
+  ],
+  "units": {
+    "length": "m",
+    "force": "N",
+    "moment": "N·m"
+  },
+  "points": [
+    {
+      "id": "L",
+      "xM": -0.4,
+      "forceDownN": 6,
+      "signedMomentNm": 2.4000000000000004
+    },
+    {
+      "id": "R",
+      "xM": 0.3,
+      "forceDownN": 8,
+      "signedMomentNm": -2.4
+    }
+  ],
+  "netMomentNm": 0,
+  "classification": "zero-net",
+  "provenance": "Authored planar static diagram only, unrelated to centrifuge hardware, loads, rotation, specimens or process result."
+}

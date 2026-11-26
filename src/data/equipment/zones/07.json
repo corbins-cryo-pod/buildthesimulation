@@ -160,9 +160,10 @@
     "inputs": "Rotor layout, tube masses, parent sample IDs and recorded fraction yields",
     "outputs": "Run-state record and labeled daughter fractions with parentage and unrecovered material",
     "acceptance": "Place equal masses opposite each other in a symmetric rotor, then remove one. The balance flag must change, and replayed fraction totals plus recorded loss must equal the parent quantity.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: closed metric 5810 R casing; documented envelope and support depth verified",
+    "simulationStatus": "First pass: independent immutable planar statics diagrams; original operational acceptance deferred",
+    "integrationStatus": "First pass: simulator route, editable GLB, passive named XR display action and annotation JSON",
+    "simulator": "/simulations/equipment/07-06/simulator/"
   },
   {
     "id": "07-07",
