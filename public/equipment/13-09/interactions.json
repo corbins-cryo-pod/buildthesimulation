@@ -1,0 +1,93 @@
+{
+  "triangles": 8000,
+  "draws": 36,
+  "nodes": 13,
+  "bytes": 476716,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "drawing_display": {
+      "at": [
+        0.4,
+        0.976,
+        0.051
+      ],
+      "extent": [
+        0.307,
+        0.209,
+        0.038
+      ],
+      "label": "Separate drawing notes viewer"
+    },
+    "select_notch": {
+      "at": [
+        0.235,
+        0.809,
+        0.215
+      ],
+      "extent": [
+        0.052,
+        0.025,
+        0.052
+      ],
+      "action": "feature:upper-notch",
+      "label": "Select upper notch on inert drawing"
+    },
+    "select_center": {
+      "at": [
+        0.442,
+        0.809,
+        0.215
+      ],
+      "extent": [
+        0.052,
+        0.025,
+        0.052
+      ],
+      "action": "feature:center-cross",
+      "label": "Select center reference"
+    },
+    "select_arrow": {
+      "at": [
+        0.51,
+        0.809,
+        0.215
+      ],
+      "extent": [
+        0.052,
+        0.025,
+        0.052
+      ],
+      "action": "feature:right-arrow",
+      "label": "Select right arrow on the drawing"
+    },
+    "add_note": {
+      "at": [
+        0.62,
+        0.812,
+        0.215
+      ],
+      "extent": [
+        0.09,
+        0.03,
+        0.062
+      ],
+      "action": "add",
+      "label": "Append the drawing annotation"
+    },
+    "locked_platform": {
+      "at": [
+        -0.28,
+        0.8,
+        -0.01
+      ],
+      "extent": [
+        0.543,
+        0.103,
+        0.425
+      ],
+      "label": "Closed documentary surface, no interaction"
+    }
+  }
+}
