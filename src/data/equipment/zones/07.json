@@ -114,10 +114,14 @@
     "inputs": "Timestamped image sequence, field ID, spatial calibration and tracking annotations",
     "outputs": "Time-lapse observation with track coordinates, gaps and source provenance",
     "acceptance": "Track a synthetic object translating by a known distance at irregular frame intervals. Recover physical velocity from timestamps and retain a missing-frame gap.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Built: source-dimensioned CellCyte Gen 2 dormant frame",
+    "simulationStatus": "First pass: immutable inert image dimensions; acquisition and time tracking outside scope",
+    "integrationStatus": "Linked: documentary viewer with static image PNG/JSON",
     "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/07-04/simulator/"
+      ],
       [
         "Biohybrid Neural Interface Laboratory",
         "/simulations/biohybrid-interface/"

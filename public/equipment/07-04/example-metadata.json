@@ -1,0 +1,36 @@
+{
+  "schema": "bts.static-raster-bounds.v1",
+  "deviceId": "07-04",
+  "kind": "original synthetic nonbiological image",
+  "sourceId": "inert-raster-rectangle-01",
+  "sourceRevision": 0,
+  "readRevision": 1,
+  "frameId": "complete",
+  "raster": {
+    "width": 128,
+    "height": 96,
+    "spacingMm": [
+      0.25,
+      0.2
+    ],
+    "pixelOrigin": "top-left; coordinates at pixel centers, X right and Y down",
+    "dataOrder": "row-major"
+  },
+  "measurement": {
+    "status": "complete",
+    "widthPx": 40,
+    "heightPx": 28,
+    "widthMm": 10,
+    "heightMm": 5.6,
+    "areaMm2": 56,
+    "edgeClipped": false,
+    "visiblePixels": 1120,
+    "visibleBoundsPx": [
+      43,
+      33,
+      82,
+      60
+    ]
+  },
+  "provenance": "Static locked geometric fixture and pixel-count arithmetic. No camera, acquisition, time metadata, culture, device settings or optical accuracy claim."
+}
