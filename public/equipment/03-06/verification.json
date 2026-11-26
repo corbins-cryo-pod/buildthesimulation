@@ -1,0 +1,107 @@
+{
+  "schema": "bts.ald-cabinet.verification.v1",
+  "metrics": {
+    "bytes": 313712,
+    "triangles": 4144,
+    "draws": 93,
+    "envelopeXyzM": [
+      1.8450000286102295,
+      1.9199999868869781,
+      0.7149999737739563
+    ]
+  },
+  "cases": [
+    {
+      "id": "reference-lateral",
+      "expected": 3,
+      "unit": "mm",
+      "tolerance": 1e-10,
+      "actual": 3,
+      "outcome": "PASS"
+    },
+    {
+      "id": "reference-vertical",
+      "expected": 6,
+      "unit": "mm",
+      "tolerance": 1e-10,
+      "actual": 6,
+      "outcome": "PASS"
+    },
+    {
+      "id": "reference-fits",
+      "expected": "clear-in-mockup",
+      "unit": "state",
+      "actual": "clear-in-mockup",
+      "outcome": "PASS"
+    },
+    {
+      "id": "3-4-offset-lateral",
+      "expected": -2,
+      "unit": "mm",
+      "tolerance": 1e-10,
+      "actual": -2,
+      "outcome": "PASS"
+    },
+    {
+      "id": "off-center-rejected",
+      "expected": "interference-in-mockup",
+      "unit": "state",
+      "actual": "interference-in-mockup",
+      "outcome": "PASS"
+    },
+    {
+      "id": "height-oversize-margin",
+      "expected": -2,
+      "unit": "mm",
+      "tolerance": 1e-10,
+      "actual": -2,
+      "outcome": "PASS"
+    },
+    {
+      "id": "height-oversize-rejected",
+      "expected": "interference-in-mockup",
+      "unit": "state",
+      "actual": "interference-in-mockup",
+      "outcome": "PASS"
+    },
+    {
+      "id": "touch-boundary",
+      "expected": "zero-reserve",
+      "unit": "state",
+      "actual": "zero-reserve",
+      "outcome": "PASS"
+    },
+    {
+      "id": "negative-diameter-rejected",
+      "expected": true,
+      "unit": "boolean",
+      "actual": true,
+      "outcome": "PASS"
+    },
+    {
+      "id": "exterior-length",
+      "expected": 1.845,
+      "unit": "m",
+      "tolerance": 0.00001,
+      "actual": 1.8450000286102295,
+      "outcome": "PASS"
+    },
+    {
+      "id": "exterior-depth",
+      "expected": 0.715,
+      "unit": "m",
+      "tolerance": 0.00001,
+      "actual": 0.7149999737739563,
+      "outcome": "PASS"
+    },
+    {
+      "id": "exterior-height",
+      "expected": 1.92,
+      "unit": "m",
+      "tolerance": 0.00001,
+      "actual": 1.9199999868869781,
+      "outcome": "PASS"
+    }
+  ],
+  "scope": "Exterior scale and independent invented-gauge arithmetic only. Register film/cycle acceptance was not run; no process model or actual OEM fit validation."
+}

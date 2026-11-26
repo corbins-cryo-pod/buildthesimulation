@@ -1,0 +1,29 @@
+{
+  "schema": "bts.ald-cabinet.static-fit.v1",
+  "deviceId": "03-06",
+  "origin": "synthetic-static-envelope",
+  "sample": {
+    "sampleId": "BTS-FIJI-INERT-DISK",
+    "sampleRevision": "display-r1",
+    "shape": "rigid cylindrical proxy"
+  },
+  "revision": 1,
+  "parentRevision": null,
+  "units": "mm",
+  "coordinateFrame": "teaching plane, x to the right and y away, z normal to the carrier",
+  "inputs": {
+    "diameterMm": 200,
+    "heightMm": 4,
+    "xMm": 0,
+    "yMm": 0
+  },
+  "gauge": {
+    "radiusMm": 103,
+    "heightMm": 10,
+    "provenance": "BTS abstract nonphysical teaching gauge; not Veeco assembly dimensions"
+  },
+  "radialMarginMm": 3,
+  "verticalMarginMm": 6,
+  "status": "clear-in-mockup",
+  "assurance": "This model is not an authorization or fit check for physical equipment. It does not calculate paths, process state, film thickness or exposure."
+}

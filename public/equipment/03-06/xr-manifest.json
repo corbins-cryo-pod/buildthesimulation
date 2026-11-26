@@ -1,0 +1,52 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "03-06",
+  "asset": "/equipment/03-06/fiji-g2-static.glb",
+  "scale": "glTF meter with +Y up and +Z toward the front",
+  "metrics": {
+    "bytes": 313712,
+    "triangles": 4144,
+    "draws": 93,
+    "envelopeXyzM": [
+      1.8450000286102295,
+      1.9199999868869781,
+      0.7149999737739563
+    ]
+  },
+  "scope": "Named inspection-only controls for a possible XR viewer; no real equipment commands or headset testing",
+  "nodes": [
+    {
+      "node": "cabinet_inspection_toggle",
+      "label": "Show or hide teaching cutaway",
+      "action": {
+        "type": "cutaway"
+      },
+      "boundsM": [
+        0.074,
+        0.048,
+        0.005
+      ]
+    },
+    {
+      "node": "static_fit_button",
+      "label": "Evaluate teaching geometry only",
+      "action": {
+        "type": "inspect"
+      },
+      "boundsM": [
+        0.049,
+        0.048,
+        0.005
+      ]
+    },
+    {
+      "node": "teaching_gauge",
+      "label": "Invented gauge, not OEM",
+      "radiusM": 0.103
+    },
+    {
+      "node": "dry_carrier",
+      "label": "Inert training disk"
+    }
+  ]
+}

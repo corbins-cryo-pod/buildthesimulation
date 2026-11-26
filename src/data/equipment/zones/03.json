@@ -119,7 +119,7 @@
   {
     "id": "03-06",
     "name": "Plasma-enhanced ALD",
-    "model": "Veeco Fiji plasma-enhanced ALD",
+    "model": "Veeco CNT Fiji G2 · standard load-lock exterior (static teaching mockup)",
     "evidence": "B",
     "priority": "P2",
     "page": 13,
@@ -132,9 +132,14 @@
     "inputs": "Surface revision, cycle sequence, plasma-step flags and material calibration domain",
     "outputs": "Layer revision with cycle and temperature history, thickness and coverage confidence",
     "acceptance": "Replay a complete cycle train against a held-out witness-film measurement. An interrupted final cycle must remain incomplete and must not silently earn a full cycle increment.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass scale-anchored exterior GLB; inferred hardware detail",
+    "simulationStatus": "Static inert-gauge example verified only; no film or process simulation",
+    "integrationStatus": "Static cabinet viewer and inert fit JSON export; film acceptance not run",
+    "simulator": "/simulations/equipment/03-06/simulator/",
+    "related": [
+      ["Veeco Fiji G2 product sheet Rev. 7/18", "https://gammadata.se/wp-content/uploads/2024/01/Fiji-G2-product-sheet-2018.pdf#page=2"],
+      ["University of Florida NRF installed exterior", "https://nrf.aux.eng.ufl.edu/_files/documents/19305.pdf#page=2"]
+    ]
   },
   {
     "id": "03-07",
