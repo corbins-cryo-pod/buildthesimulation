@@ -143,7 +143,7 @@
   {
     "id": "11-07",
     "name": "Fiber LED excitation",
-    "model": "Thorlabs M470F1 + LEDD1B (research example)",
+    "model": "Thorlabs M470F1 + LEDD1B (closed exterior reference)",
     "evidence": "B",
     "priority": "P1",
     "page": 37,
@@ -156,9 +156,10 @@
     "inputs": "Module spectrum, driver command, fiber properties and measured coupling transfer",
     "outputs": "Spectral power distribution and coupled optical power (W) at the fiber output",
     "acceptance": "Use a reference spectrum with known integrated power and a near-grey coupling factor. The output spectrum should retain its shape and integrate to source power × transmission.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documentary T-Cube and capped legacy family shell; approximate trim",
+    "simulationStatus": "Separate immutable unit conversion only; no beam, drive or coupling",
+    "integrationStatus": "Interactive documentary exterior and detached abstract units card",
+    "simulator": "/simulations/equipment/11-07/simulator/"
   },
   {
     "id": "11-08",
