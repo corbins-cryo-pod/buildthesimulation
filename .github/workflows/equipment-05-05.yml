@@ -1,0 +1,43 @@
+name: Equipment 05-05 reflectometer
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/equipment-05-05.yml'
+      - 'public/equipment/05-05/**'
+      - 'scripts/equipment/05-05/**'
+      - 'src/lib/equipment/05-05/**'
+      - 'src/pages/simulations/equipment/05-05/**'
+      - 'tests/equipment-05-05-f40.mjs'
+permissions:
+  contents: read
+jobs:
+  f40:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node --test tests/equipment-05-05-f40.mjs
+      - run: npm run build
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install playwright==1.56.0
+      - name: Select the runner Chrome or install a supported Chromium
+        run: |
+          if command -v google-chrome >/dev/null; then
+            echo "CHROME_BIN=$(command -v google-chrome)" >> "$GITHUB_ENV"
+          else
+            python -m playwright install --with-deps chromium
+          fi
+      - name: Open static output, run the experiment and check desktop/mobile exports
+        run: |
+          python -m http.server 4505 --bind 127.0.0.1 --directory dist >/tmp/f40-http.log 2>&1 &
+          srv=$!
+          trap 'kill "$srv" || true' EXIT
+          for i in {1..30}; do curl -fsS http://127.0.0.1:4505/simulations/equipment/05-05/ >/dev/null && break || sleep 1; done
+          python scripts/equipment/05-05/smoke.py

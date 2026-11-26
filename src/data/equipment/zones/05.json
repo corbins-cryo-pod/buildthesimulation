@@ -91,7 +91,7 @@
   {
     "id": "05-05",
     "name": "Reflectometer",
-    "model": "Filmetrics F40",
+    "model": "Filmetrics F40 visible-band analyzer / Olympus BX51M",
     "evidence": "B",
     "priority": "P2",
     "page": 19,
@@ -104,9 +104,24 @@
     "inputs": "Substrate/film optical constants, wavelength grid, illumination geometry and reference spectrum",
     "outputs": "Reflectance spectrum and fitted thickness with residuals",
     "acceptance": "In a lossless normal-incidence fixture, reduce film thickness to zero. Predicted reflectance must equal the bare-substrate Fresnel result across the grid.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB · dimensioned Olympus frame, visually inferred F40 receiver",
+    "simulationStatus": "Calibrated single-film reflectance and bounded inverse fit with ambiguity rejection",
+    "integrationStatus": "02-07 resist-layer input; revisioned spectrum, fit, residuals, CSV export",
+    "simulator": "/simulations/equipment/05-05/simulator/",
+    "related": [
+      [
+        "Caltech KNI F40/BX51M station",
+        "https://www.lab.kni.caltech.edu/Light_Microscope_with_Spectroscopic_Reflectometer"
+      ],
+      [
+        "KLA F40 datasheet",
+        "https://www.kla.com/wp-content/uploads/Filmetrics_Datasheet_-_F40_n6v.pdf"
+      ],
+      [
+        "Laurell spin coater",
+        "/simulations/equipment/02-07/simulator/"
+      ]
+    ]
   },
   {
     "id": "05-06",
