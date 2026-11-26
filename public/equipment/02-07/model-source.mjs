@@ -1,4 +1,36 @@
 /** Editable parametric glTF; dimensions in mm. Reference dimensions and assumptions are documented on simulator page. */
+export function reviseDesktop(nodes,materials){
+  const by=n=>nodes.find(x=>x.name===n),ix=n=>nodes.indexOf(by(n)),body=by("enclosure"),lid=by("lid_pivot"),old=[...lid.translation],pivot=[0,194,-157];
+  const put=(n,t,scale)=>{const o=by(n);o.translation=t;if(scale)o.scale=scale;return o};
+  const moveToLid=(n,world,scale)=>{const i=ix(n);body.children=body.children.filter(x=>x!==i);lid.children.push(i);put(n,world.map((v,k)=>v-pivot[k]),scale)};
+  for(const i of lid.children){const o=nodes[i];o.translation=o.translation.map((v,k)=>v+old[k]-pivot[k])}
+  lid.translation=pivot;
+  moveToLid("bowl_wall",[0,232,0],[254,92,254]);
+  by("bowl_wall").name="moving_upper_lid_skirt";
+  moveToLid("upper_flange",[0,274,0],[254,12,254]);
+  moveToLid("latch_mount",[0,248,132],[46,50,16]);
+  moveToLid("model_label",[0,266,127],[100,12,.5]);
+  delete by("model_label").rotation;
+  put("bowl_seal",[0,193,0],[246,2,246]);
+  put("latch_handle",[0,158,147],[40,95,18]);
+  put("front_warning_plate",[0,157,157],[24,21,1]);
+  for(const x of [-32,32])put("hinge_bracket_"+x,[x,194,-139],[28,40,38]);
+  put("hinge_pin",pivot);
+  put("lid_ring",[0,282.14-pivot[1],-pivot[2]]);
+  put("clear_lid_19mm_opening",[0,283-pivot[1],-pivot[2]]);
+  put("dispense_opening_rim",[0,287-pivot[1],-pivot[2]]);
+  for(let i=0;i<12;i++){const o=by("lid_fastener_"+i);o.translation[1]=287.64-pivot[1]}
+  put("lid_latch_tab",[0,281-pivot[1],131-pivot[2]]);
+  const c=by("controller"),angle=-43*Math.PI/180;c.translation=[186.69,101,0];c.rotation=[Math.sin(angle/2),0,0,Math.cos(angle/2)];
+  put("rear_drain_port_38mm",[0,157,-177],[38,108,38]);
+  put("drain_waste_cup",[0,106,-231.68],[65,73,65]);
+  put("waste_cup_mount",[0,67,-231.68],[70,10,70]);
+  const add=(name,parent,t,scale,mesh)=>{const i=nodes.push({name,translation:t,scale,mesh})-1;(by(parent).children??=[]).push(i)};
+  add("rear_drain_elbow_inferred","rear_utilities_inferred",[0,143.5,-231.68],[38,27,38],by("rear_drain_port_38mm").mesh);
+  add("controller_support_inferred","laurell_23NPPB_mm",[186.69,5,55],[125,22,45],by("controller_housing").mesh);
+  materials.find(m=>m.name==="natural polypropylene").pbrMetallicRoughness.baseColorFactor=[.9,.9,.87,1];
+  materials.find(m=>m.name==="bowl polymer").pbrMetallicRoughness.baseColorFactor=[.82,.82,.77,1];
+}
 export function makeModel(){
   const nodes=[],meshes=[],materials=[],accessors=[],bufferViews=[],bytes=[],geometry={},cache={};
   const mat=(name,color,metal=0,rough=.6,alpha=1)=>{materials.push({name,pbrMetallicRoughness:{baseColorFactor:[...color,alpha],metallicFactor:metal,roughnessFactor:rough},...(alpha<1?{alphaMode:"BLEND",doubleSided:true}:{})});return materials.length-1};
@@ -65,5 +97,6 @@ export function makeModel(){
   node("pipette_plunger",pipette,[0,107,0],"cylinder",[10,20,10],M.blue);
   node("pipette_tip",pipette,[0,-7,0],"cylinder",[4,35,4],M.clear);
   const abc="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";let b64="";for(let i=0;i<bytes.length;i+=3){const a=bytes[i],b=bytes[i+1]??0,c=bytes[i+2]??0,v=(a<<16)|(b<<8)|c;b64+=abc[(v>>18)&63]+abc[(v>>12)&63]+(i+1<bytes.length?abc[(v>>6)&63]:"=")+(i+2<bytes.length?abc[v&63]:"=")}
-  return {asset:{version:"2.0",generator:"BTS 02-07 parametric reconstruction",extras:{units:"metres (root converts source mm)",notManufacturerCAD:true}},scene:0,scenes:[{nodes:[root]}],nodes,meshes,materials,accessors,bufferViews,buffers:[{byteLength:bytes.length,uri:"data:application/octet-stream;base64,"+b64}]};
+  reviseDesktop(nodes,materials);
+  return {asset:{version:"2.0",generator:"BTS 02-07 desktop reconstruction v2",extras:{units:"metres (root converts source mm)",notManufacturerCAD:true}},scene:0,scenes:[{nodes:[root]}],nodes,meshes,materials,accessors,bufferViews,buffers:[{byteLength:bytes.length,uri:"data:application/octet-stream;base64,"+b64}]};
 }
