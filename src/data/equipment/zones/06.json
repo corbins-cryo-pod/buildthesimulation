@@ -28,7 +28,7 @@
   {
     "id": "06-02",
     "name": "Extrusion bioprinter",
-    "model": "CELLINK BIO X6",
+    "model": "CELLINK BIO X6 Gen 3 (closed exterior)",
     "evidence": "B",
     "priority": "P1",
     "page": 21,
@@ -41,9 +41,10 @@
     "inputs": "Labeled toolpaths, nozzle footprints, material IDs and scaffold carrier",
     "outputs": "Scaffold revision with strand geometry, material labels and per-material deposited volume",
     "acceptance": "Print two synthetic lines with different tool assignments. Check their centerlines, preserve material order at crossings and compare each straight strand volume with cross-section times length.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented metric Gen 3 outer envelope; dormant exterior only",
+    "simulationStatus": "Independent fixed signed-ruler illustration only; no fabrication or device operation",
+    "integrationStatus": "Interactive exterior view, detached generic ruler and JSON export",
+    "simulator": "/simulations/equipment/06-02/simulator/"
   },
   {
     "id": "06-03",
