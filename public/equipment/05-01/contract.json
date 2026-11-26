@@ -1,0 +1,4 @@
+{
+ "input":{"schema":"bts.surface-line.v1","compatible":["bts.ionmill.sample.v1","bts.ionmill.result.v1"],"required":["schema","sampleId","revision","edgeUm","segments"],"segments":"Ordered contiguous [start, end, height] triplets in µm; total length ≤55,000 µm, edge interior. Ion-mill thickness map converted at chosen zero-based row (default center), flat substrate reference.", "example":"reference-coupon.json"},
+ "output":{"schema":"bts.stylus-profile.v1","classification":"simulated","metadata":["sampleId","sampleRevision","scanRevision","calibrationId","sourceProfile","frame","units","recipe","windowsUm"],"trace":{"x":"sample-local µm, positive toward rear","z":"modeled/quantized output µm","envelope":"pre-quantization geometric contact µm","time":"seconds since start of the current trace"},"example":"example-trace.json","handoff":"ionmill-input-example.json"}
+}

@@ -1,0 +1,110 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import checks from '../../../../../public/equipment/05-01/verification.json';
+import geom from '../../../../../public/equipment/05-01/asset-metrics.json';
+const a='/equipment/05-01/', p='https://mmrc.caltech.edu/DektakXT/pictures/';
+const d='https://mmrc.caltech.edu/DektakXT/Manuals/Facility_Specification%20DektakXT%202012-02-04-_.pdf';
+const c='https://mmrc.caltech.edu/DektakXT/Manuals/DektakXT%20User%20Manual.pdf';
+const ref='https://michmet.com/wp-content/uploads/2024/09/michigan_metrology_certification.pdf#page=2';
+const specs=[
+ ['Enclosed cabinet','594 mm W × 546 mm D × 445 mm H','Manufacturer facility specifications, printed p. 2 and Figures 1–2; controls detail inferred.',d+'#page=5'],
+ ['Hood open clearance','727 mm documented; 64° pivot reconstruction','Manufacturer side drawing Figure 2, printed p. 4; modeled angle is inferred, not specified.',d+'#page=7'],
+ ['Selected configuration','Manual 101.6 mm × 101.6 mm XY; 55 mm scan','Caltech MMRC, pp. 1–3. Manual leveling, external monitor, no vacuum chuck.',c+'#page=1'],
+ ['Tip / nominal load','2 µm nominal diameter, 3 mg indicated force for exercise','Caltech MMRC, pp. 1 and 3. Larger radii compare geometry only; no stylus exchange or deformation modeled.',c+'#page=3'],
+ ['Vertical span / digital increment','6.5 / 65.5 / 524 / 1000 µm; 0.1 / 1 / 8 / 15 nm','Caltech MMRC, pp. 2–3. Digitizing increments are not accuracy or repeatability.',c+'#page=2'],
+ ['External numerical witness','SHV2318: 9.993 ± 0.029 µm (2σ)','Public calibration statement p. 2. Only reported scalar and interval are applied to the ideal virtual coupon.',ref],
+];
+---
+<Layout pageTitle="Stylus profilometer" wide={true} description="Interactive Bruker DektakXT manual stage and rigid stylus step-height metrology.">
+<article id="dektakxt">
+<nav><a href="/simulations/equipment/05-01/">← Equipment 05-01</a> · <a href="/simulations/equipment/">Equipment register</a> · <a href="#prof-evidence">Drawings and checks</a></nav>
+<header><small>05-01 · SURFACE METROLOGY · VIRTUAL BENCH</small><h2>Bruker DektakXT stylus profilometer</h2><p>Scan the same rigid step forward and backward, compare plateau height against a published interval, and see what changes when you adjust the vertical span, leveling or tip radius.</p></header>
+<div class="bench">
+<section class="panel">
+<h3>Profiler and probe stage</h3>
+<div class="tools"><button data-prof-view="orbit">Reset view</button><button data-prof-view="front">Front controls</button><button data-prof-view="stage">Stylus close-up</button><button data-prof-view="rear">Rear inspection</button><button data-prof-view="display">Workstation</button></div>
+<div id="prof-viewer"></div><p id="prof-model" role="status">Loading physical-scale DektakXT model…</p>
+<p>Drag to orbit and use scroll or pinch to zoom. The hood, tower and coupon controls share state with the form. The first trace animates stage motion at scale but runs faster than its recorded duration. A physical headset test is still pending.</p>
+</section>
+<section class="panel">
+<h3>Prepare and acquire a trace</h3>
+<div class="tools"><button id="prof-hood">Open draft hood</button><button id="prof-load">Unload sample</button><button id="prof-tower">Raise stylus tower</button><button id="prof-power">Power off</button></div>
+<p id="prof-sample"></p>
+<div class="tools"><button id="prof-standard">Install reference coupon</button><button id="prof-mill">Load 04-04 example</button><button id="prof-reset">Restore reference setup</button></div>
+<div class="fields">
+<label>Length (µm)<input id="prof-length" type="number" min="20" max="55000" step="any"/></label>
+<label>Center (µm)<input id="prof-center" type="number" min="-55000" max="55000" step="any"/></label>
+<label>Points<input id="prof-points" type="number" min="21" max="1601"/></label>
+<label>Speed (µm/s)<input id="prof-speed" type="number" min="20" max="2000" step="any"/></label>
+<label>Tip radius (µm)<select id="prof-radius"><option>1</option><option>2</option><option>12.5</option></select></label>
+<label>Vertical span (µm)<select id="prof-range"><option>6.5</option><option>65.5</option><option>524</option><option>1000</option></select></label>
+<label>Added tilt (µm/mm)<input id="prof-tilt" type="number" min="-10" max="10" step="any"/></label>
+<label>Synthetic noise (nm RMS)<input id="prof-noise" type="number" min="0" max="10" step="any"/></label>
+<label>Direction<select id="prof-direction"><option value="alternate">Alternate forward and reverse</option><option value="forward">Forward</option><option value="reverse">Reverse</option></select></label>
+<label>Repeats<input id="prof-repeats" type="number" min="1" max="6"/></label>
+<label>Import profile or 04-04 map<input id="prof-file" type="file" accept=".json,application/json"/></label>
+<label>Map row (zero-based)<input id="prof-row" type="number" min="0" step="1" placeholder="center row"/></label>
+</div>
+<p><label><input type="checkbox" id="prof-level"/> Fit and subtract common plateau slope</label></p>
+<div class="tools"><button id="prof-scan">Acquire scan</button><button id="prof-json" disabled>Export trace JSON</button><button id="prof-csv" disabled>Export trace CSV</button></div>
+<p id="prof-status" aria-live="polite"></p>
+</section>
+</div>
+<section class="panel">
+<h3>Trace and plateau estimate</h3>
+<p id="prof-result" aria-live="polite"></p><p id="prof-uncertainty"></p>
+<canvas id="prof-graph" width="700" height="445" aria-label="Trace in micrometres versus position on the coupon; table gives numeric estimates."></canvas>
+<div class="scroll"><table><thead><tr><th>Direction</th><th>Signed step (µm)</th><th>Slope (µm/mm)</th><th>Left / right samples</th><th>Duration (s)</th></tr></thead><tbody id="prof-rows"></tbody></table></div>
+<p><strong>Try now:</strong> Acquire the installed reference with the 65.5 µm span. The ideal forward and reverse traces both read 9.993 µm. Select 6.5 µm to see a range failure. Restore 65.5 µm, add 2 µm/mm tilt, and compare the step estimate with leveling on and off.</p>
+<p><strong>04-04 handoff:</strong> Open the hood and load the <a href="/simulations/equipment/04-04/simulator/">ion-mill</a> example. Close the hood, lower the stylus and scan. The 04-04 solver's exported patterned witness reads a signed −60 nm step across its center row. <a href={a+'handoff-verification.json'}>Handoff evidence</a>.</p>
+</section>
+<section class="panel">
+<h3>Contact model and supported range</h3>
+<p>The tip follows a rigid one-dimensional spherical-cap envelope. For lateral x, height is max of z(p) + √(R² − (p−x)²) − R over |p−x| ≤ R, with the segment optimum found analytically. This is geometric dilation, not linear convolution. Sampled heights are quantized at the selected LVDT increment. Seeded synthetic noise is optional and is not observed hardware noise.</p>
+<p>A pooled within-window least-squares fit removes a common slope before differencing left and right plateau means; shaded bands identify the two windows. Forward and reverse share position coordinates but reverse traverses them in the opposite order. Illustrative U = 2√(s²/N + Δ²/6) combines repeat standard error and two independent quantization increments. The reported reference interval is separate. This U is not a traceable estimate or validation of the physical instrument.</p>
+<p>Supports 20 µm–55 mm line scans, 21–1601 points, 20–2000 µm/s and up to six repeats. Missing coupon, open hood, raised tower, span overflow, off-sample path and insufficient plateau samples block a scan. No real stylus cone, force deformation, scratching, feedback, coherent noise, thermal drift or hybrid material uncertainty is modeled. The monitor stand and small dimensions are illustrative.</p>
+<p><a href={a+'contract.json'}>Data contract</a> · <a href={a+'reference-coupon.json'}>Example coupon</a> · <a href={a+'ionmill-input-example.json'}>Example 04-04 input</a> · <a href={a+'example-trace.json'}>Trace example</a>. A film map is one zero-based row; thickness is height above an assumed flat substrate. Sample revisions are preserved.</p>
+</section>
+<section class="panel" id="prof-evidence">
+<h3>Illustrated source views</h3>
+<p>These are original metric-model renders, not manufacturer photographs or CAD. The exact internal pivots, hardware mounts and rear connector locations are inferred.</p>
+<div class="refs">
+<figure><img src={a+'whole-view.webp'} loading="lazy" alt="Original DektakXT model with raised hood and monitor"/><figcaption><strong>Whole DektakXT, front.</strong> Ivory hooded cowl, navy instrument head and separate workstation. Compare the <a href={p+'Dektak%20Instrument.jpg'}>Caltech instrument</a> and <a href={p+'Dektak%20interior.jpg'}>chamber</a> photographs.</figcaption></figure>
+<figure><img src={a+'side-view.webp'} loading="lazy" alt="Original closed side elevation of the DektakXT enclosure"/><figcaption><strong>Closed side.</strong> Pivot position and enclosure proportions. Compare the <a href={d+'#page=7'}>manufacturer side drawing</a>.</figcaption></figure>
+<figure><img src={a+'stage-view.webp'} loading="lazy" alt="Original head, stylus and sample-stage detail render"/><figcaption><strong>Inert coupon and stylus.</strong> Sensor head, fixed contact point, manual stage and micrometer. Compare the <a href={p+'Dektak%20Stage.jpg'}>Caltech manual XY stage</a>.</figcaption></figure>
+</div>
+<div class="scroll"><table><thead><tr><th>Specification</th><th>Value</th><th>Use and source</th></tr></thead><tbody>{specs.map(([k,v,t,h])=><tr><th>{k}</th><td>{v}</td><td><a href={h}>{t}</a></td></tr>)}</tbody></table></div>
+<p><a href={a+'dektakxt.glb'}>Metric GLB</a> · <a href={a+'build-model.py'}>Editable Blender source</a> · <a href={a+'interaction.json'}>Motion and control anchors</a> · <a href={a+'asset-metrics.json'}>Geometry check</a></p>
+<h3>Verification</h3>
+<p><strong>Geometry:</strong> {geom.enclosureM.map(x=>(1000*x).toFixed(1)).join(' × ')} mm X×Y×Z (±4 mm tolerance); opened hood {(geom.openedHeightM*1000).toFixed(1)} mm versus 727 mm drawing (±25 mm tolerance). <strong>Numerical:</strong> {checks.evidence}</p>
+<div class="scroll"><table><thead><tr><th>Check</th><th>Expected</th><th>Simulated</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{checks.rows.map(o=><tr><td>{o.name}</td><td>{o.expect} {o.unit}</td><td>{typeof o.actual==='number'?Number(o.actual.toPrecision(8)):o.actual}</td><td>{o.tol??'Exact flag'}</td><td>{o.pass?'Pass':'Fail'}</td></tr>)}</tbody></table></div>
+<p><a href={a+'verification.json'}>Numerical results</a> · <a href={a+'acceptance.json'}>Independent fixtures</a> · <a href={a+'solver.mjs'}>Solver</a> · <a href="https://www.bruker.com/en/products-and-solutions/test-and-measurement/stylus-profilometers/resource-library/an-579-performing-step-metrology-with-dektak-stylus-profilers.html">Bruker step-metrology method</a>. Empirical device accuracy is not claimed.</p>
+</section>
+</article>
+</Layout>
+<script>import '../../../../lib/equipment/05-01/client.mjs';</script>
+<style>
+#dektakxt{max-width:1260px;margin:auto}
+#dektakxt header{margin:1.37rem 0 1rem} #dektakxt header p{max-width:78ch}
+.bench{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1rem}
+.panel{min-width:0;border:1px solid color-mix(in srgb,currentColor 32%,transparent);border-radius:.3rem;padding:clamp(.8rem,2vw,1.35rem);margin:.55rem 0}
+.panel h3{margin:0 0 .8rem}
+.tools{display:flex;flex-wrap:wrap;gap:.4rem}
+.tools button,.fields input,.fields select{color:inherit;background:transparent;border:1px solid currentColor;padding:.42rem .55rem;border-radius:.2rem;font:inherit;min-width:0;min-height:38px;box-sizing:border-box}
+.tools button{cursor:pointer}.tools button:disabled{opacity:.5;cursor:default}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem;margin:.8rem 0}
+.fields label{display:flex;flex-direction:column;font-size:.9rem;gap:.18rem}
+.fields option{background:#f5f1e6;color:#151b1a}
+#prof-viewer{height:350px;margin:.72rem 0;background:#293941}
+#prof-viewer :global(canvas){display:block;max-width:100%;touch-action:none}
+#prof-graph{width:min(100%,700px);height:auto;display:block}
+#prof-result{font-weight:bold}
+#prof-status[data-error=true]{border-left:4px solid #7d4e30;padding-left:.6rem}
+.refs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
+.refs figure{margin:0}.refs img{width:100%;height:auto}.refs figcaption{margin:.35rem 0 1rem}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;margin:.45rem 0}
+th,td{text-align:left;padding:.44rem;border-bottom:1px solid color-mix(in srgb,currentColor 28%,transparent)}
+@media(max-width:900px){.bench{grid-template-columns:1fr}#prof-viewer{height:310px}}
+@media(max-width:560px){.refs{grid-template-columns:1fr}#prof-viewer{height:260px}.tools button,.fields input,.fields select{min-height:44px}}
+</style>
