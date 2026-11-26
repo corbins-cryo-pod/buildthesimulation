@@ -1,0 +1,137 @@
+{
+  "triangles": 7484,
+  "draws": 37,
+  "nodes": 14,
+  "bytes": 474016,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "display_cover": {
+      "at": [
+        0.34,
+        0.958,
+        -0.07
+      ],
+      "extent": [
+        0.54,
+        0.21,
+        0.5
+      ],
+      "action": "cover",
+      "label": "Lift or replace visual display cover"
+    },
+    "witness": {
+      "at": [
+        0.34,
+        0.979,
+        0.04799999999999999
+      ],
+      "extent": [
+        0.104,
+        0.008,
+        0.104
+      ],
+      "action": "seat",
+      "label": "Remove the seated inert disc"
+    },
+    "optical_card": {
+      "at": [
+        0.697,
+        0.926,
+        0.236
+      ],
+      "extent": [
+        0.135,
+        0.029,
+        0.115
+      ],
+      "action": "read",
+      "label": "Read off-instrument optical worksheet"
+    },
+    "recess_1": {
+      "at": [
+        0.34,
+        0.973,
+        0.04799999999999999
+      ],
+      "extent": [
+        0.104,
+        0.007,
+        0.104
+      ],
+      "action": "pocket:1",
+      "label": "Select passive carrier pocket P1"
+    },
+    "recess_2": {
+      "at": [
+        0.4421909976465638,
+        0.973,
+        -0.010999999999999996
+      ],
+      "extent": [
+        0.104,
+        0.007,
+        0.104
+      ],
+      "action": "pocket:2",
+      "label": "Select passive carrier pocket P2"
+    },
+    "recess_3": {
+      "at": [
+        0.4421909976465638,
+        0.973,
+        -0.12899999999999998
+      ],
+      "extent": [
+        0.104,
+        0.007,
+        0.104
+      ],
+      "action": "pocket:3",
+      "label": "Select passive carrier pocket P3"
+    },
+    "recess_4": {
+      "at": [
+        0.34,
+        0.973,
+        -0.188
+      ],
+      "extent": [
+        0.104,
+        0.007,
+        0.104
+      ],
+      "action": "pocket:4",
+      "label": "Select passive carrier pocket P4"
+    },
+    "recess_5": {
+      "at": [
+        0.2378090023534363,
+        0.973,
+        -0.12900000000000006
+      ],
+      "extent": [
+        0.104,
+        0.007,
+        0.104
+      ],
+      "action": "pocket:5",
+      "label": "Select passive carrier pocket P5"
+    },
+    "recess_6": {
+      "at": [
+        0.23780900235343627,
+        0.973,
+        -0.010999999999999996
+      ],
+      "extent": [
+        0.104,
+        0.007,
+        0.104
+      ],
+      "action": "pocket:6",
+      "label": "Select passive carrier pocket P6"
+    }
+  }
+}
