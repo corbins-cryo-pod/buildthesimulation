@@ -1,0 +1,12 @@
+{
+  "edition": "1 — declared before solver implementation",
+  "scope":"Independent analytical fixtures, not measured hardware data.",
+  "cases":[
+    {"id":"ramp","input":"one channel; supplied −12 V to +12 V linear ramp, endpoints 12 ms apart, acquire 1 kS/s","expected":"13 samples at t=i/1000 s; 2 out-of-range samples and monotonically nondecreasing codes; i=6 is code 0","tolerance":"0 counts; 1e-12 s"},
+    {"id":"transfer","input":"−10, −5, 0, 5, +10 V","expected":"−32768, −16384, 0, 16384, 32767 signed simulation codes; exactly-on-rail samples not flagged as input overload","tolerance":"0 counts; output uncertainty up to 1 LSB at positive rail"},
+    {"id":"timing","input":"1 kS/s source: 0,1,2,3,4 V; digitize at 2 kS/s","expected":"9 samples from 0 through 4 ms; interpolated 0.5 V reads within 0.5 LSB","tolerance":"1e-12 s; ±152.588 µV interior"},
+    {"id":"simultaneous","input":"two named channels with equal timebase, second a scaled copy","expected":"same timestamps and sample count, distinct channel IDs, values quantized independently","tolerance":"0 timing skew in model"},
+    {"id":"invalid","input":"disconnected USB; unsupported units (mV); mismatched channel lengths or clock; sample rate above 500 kHz","expected":"explicit error and no new acquisition or exportable stale result","tolerance":"exact rejection"},
+    {"id":"physical","input":"metric model of bare cabinet; exclude external accessories","expected":"0.483 m × 0.109 m × 0.363 m (width × height × depth); 8 input, 8 output and 8 digital front connectors; 4 telegraph rear connectors","tolerance":"1 mm envelope; 0 ports"}
+  ]
+}
