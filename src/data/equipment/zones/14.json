@@ -41,9 +41,10 @@
     "inputs": "Specimen section, fixture type and support span, elastic modulus, imposed crosshead motion",
     "outputs": "Fixture-tagged force–deflection curve and specimen revision",
     "acceptance": "For a slender, simply supported beam under a central point load, compare the small-deflection slope to 48EI/L³. Reject a zero support span.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "simulator": "/simulations/equipment/14-02/simulator/",
+    "geometryStatus": "Metric standard dual-column frame",
+    "simulationStatus": "Verified ideal three-point flexure",
+    "integrationStatus": "Interactive bend fixture; SI export"
   },
   {
     "id": "14-03",
