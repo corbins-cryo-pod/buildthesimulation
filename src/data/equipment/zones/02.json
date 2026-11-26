@@ -18,8 +18,8 @@
     "outputs": "Latent-image map, registered mask transform and overlay residuals for development",
     "acceptance": "Apply a known translation to two separated alignment crosses. The measured overlay must reproduce the offset, then vanish to raster precision after inverse alignment.",
     "geometryStatus": "Physical-scale Gen4 GLB; brochure envelope, internal geometry estimated",
-    "simulationStatus": "Rigid two-mark alignment and ideal contact / Gaussian proximity dose; analytic checks passed",
-    "integrationStatus": "Dedicated simulator and ROI dose revision exports; browser CI configured",
+    "simulationStatus": "Rigid alignment, area-conserving contact exposure and integrated Gaussian proximity; fixed 150 mm illumination aperture",
+    "integrationStatus": "Dedicated simulator; revision 2 ROI dose export; expanded browser and deployment checks",
     "related": [
       [
         "Neural Interface Studio",

@@ -1,6 +1,6 @@
 {
   "configuration": "SUSS MA/BA6 Gen4 standard 150 mm mask-aligner, UV400 365 nm TSA, 178 mm mask holder",
-  "evidence": "Independent analytic expectations executed in JS before commit; no experimental calibration; geometry dimensions check design values, not measured machine; repository/browser verification separate.",
+  "evidence": "Independent analytic expectations executed in JS before commit; no experimental calibration; geometry dimensions check design values, not measured machine; repository/browser verification separate. Revision 2: analytic area, translated/rotated area, subpixel line, circular aperture and proximity energy checks executed against revised source. Old tests retained; no experimental calibration.",
   "checks": [
     {
       "name": "F1 translation X",
@@ -160,6 +160,118 @@
       "actual": 1179937895,
       "unit": "",
       "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Hard-contact analytic area at 2 µm pitch",
+      "expected": 0.17240000000000003,
+      "actual": 0.17240000000013175,
+      "unit": "mm²",
+      "tolerance": 2e-8,
+      "pass": true
+    },
+    {
+      "name": "Hard-contact analytic area at 4 µm pitch",
+      "expected": 0.17240000000000003,
+      "actual": 0.17239999999998554,
+      "unit": "mm²",
+      "tolerance": 2e-8,
+      "pass": true
+    },
+    {
+      "name": "Hard-contact analytic area at 8 µm pitch",
+      "expected": 0.17240000000000003,
+      "actual": 0.17239999999999145,
+      "unit": "mm²",
+      "tolerance": 2e-8,
+      "pass": true
+    },
+    {
+      "name": "Hard-contact analytic area at 16 µm pitch",
+      "expected": 0.17240000000000003,
+      "actual": 0.1724000000000008,
+      "unit": "mm²",
+      "tolerance": 2e-8,
+      "pass": true
+    },
+    {
+      "name": "Rotated and translated hard-contact analytic area",
+      "expected": 0.17240000000000003,
+      "actual": 0.17240000000000902,
+      "unit": "mm²",
+      "tolerance": 2e-8,
+      "pass": true
+    },
+    {
+      "name": "1 µm line on 16 µm grid, exact area",
+      "expected": 0.00023,
+      "actual": 0.00023000000000000006,
+      "unit": "mm²",
+      "tolerance": 1e-10,
+      "pass": true
+    },
+    {
+      "name": "Outside illumination aperture",
+      "expected": 0,
+      "actual": 0,
+      "unit": "fraction",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "name": "Inside illumination aperture",
+      "expected": 1,
+      "actual": 1,
+      "unit": "fraction",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "name": "Pixel crossing circular aperture, independent series",
+      "expected": 0.49999111111109595,
+      "actual": 0.4999911111100083,
+      "unit": "fraction",
+      "tolerance": 2e-7,
+      "pass": true
+    },
+    {
+      "name": "Offset wafer ROI outside fixed illumination field",
+      "expected": 0,
+      "actual": 0,
+      "unit": "mJ/cm²",
+      "tolerance": 1e-10,
+      "pass": true
+    },
+    {
+      "name": "Proximity integrated area at coarse pitch, padded ROI",
+      "expected": 0.17240000000000003,
+      "actual": 0.1724000000000108,
+      "unit": "mm²",
+      "tolerance": 2e-7,
+      "pass": true
+    },
+    {
+      "name": "Proximity integrated area at minimum gap",
+      "expected": 0.17240000000000003,
+      "actual": 0.1724000000000008,
+      "unit": "mm²",
+      "tolerance": 2e-7,
+      "pass": true
+    },
+    {
+      "name": "Non-boolean interlock rejected",
+      "expected": "interlock",
+      "actual": "interlock",
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Actual example peak dose",
+      "expected": 100,
+      "actual": 100,
+      "unit": "mJ/cm²",
+      "tolerance": 1e-9,
       "pass": true
     }
   ]

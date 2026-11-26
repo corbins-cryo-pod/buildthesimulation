@@ -9,7 +9,7 @@ on:
 jobs:
   browser:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -19,9 +19,20 @@ jobs:
       - run: npm ci
       - run: node --test tests/equipment-02-01-ma6.mjs tests/equipment-register.mjs
       - run: npm run build --ignore-scripts
-      - run: node --test scripts/equipment/02-01/browser-smoke.mjs
+      - name: Built-site browser verification
+        env:
+          MA6_QA_DIR: ma6-local-qa
+        run: node --test scripts/equipment/02-01/browser-smoke.mjs
       - name: Production browser verification
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         env:
           MA6_URL: https://buildthesimulation.com
+          MA6_QA_DIR: ma6-production-qa
         run: node --test scripts/equipment/02-01/browser-smoke.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ma6-browser-evidence
+          path: |
+            ma6-local-qa
+            ma6-production-qa
