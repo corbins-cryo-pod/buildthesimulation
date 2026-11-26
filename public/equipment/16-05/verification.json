@@ -1,0 +1,76 @@
+[
+  {
+    "id": "baseline-right-triangle",
+    "tray": {
+      "widthMm": 288,
+      "depthMm": 675,
+      "heightMm": 25
+    },
+    "expected": {
+      "apertureMarginMm": 36,
+      "doorPlaneMarginMm": 50,
+      "fits": true
+    },
+    "toleranceMm": 1e-9,
+    "actual": {
+      "apertureMarginMm": 36,
+      "doorPlaneMarginMm": 50,
+      "fits": true
+    },
+    "pass": true
+  },
+  {
+    "id": "door-plane-fail",
+    "tray": {
+      "widthMm": 288,
+      "depthMm": 736,
+      "heightMm": 25
+    },
+    "expected": {
+      "apertureMarginMm": 36,
+      "doorPlaneMarginMm": -11,
+      "fits": false
+    },
+    "toleranceMm": 1e-9,
+    "actual": {
+      "apertureMarginMm": 36,
+      "doorPlaneMarginMm": -11,
+      "fits": false
+    },
+    "pass": true
+  },
+  {
+    "id": "aperture-fail",
+    "tray": {
+      "widthMm": 394,
+      "depthMm": 675,
+      "heightMm": 25
+    },
+    "expected": {
+      "apertureMarginBelowZero": true,
+      "fits": false
+    },
+    "actual": {
+      "apertureMarginBelowZero": true,
+      "fits": false
+    },
+    "pass": true
+  },
+  {
+    "id": "empty-cavity-only",
+    "tray": {
+      "widthMm": 288,
+      "depthMm": 675,
+      "heightMm": 25
+    },
+    "expected": {
+      "loadedContentsModeled": false,
+      "operatingState": "not modeled"
+    },
+    "actual": {
+      "loadedContentsModeled": false,
+      "operatingState": "not modeled"
+    },
+    "pass": true
+  }
+]
