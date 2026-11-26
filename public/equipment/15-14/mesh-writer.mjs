@@ -58,12 +58,12 @@ export function build(assets,anchors){
  return {raw,metrics,faces};
 }
 export function originalView(faces,view){
- const settings={front:[[.61,.46,1.91],[.019,.548,.012],308,'Original unbuilt cabinet and separate dry gauge'],work:[[.46,1.91,1.24],[.526,.815,.081],1330,'Detached 120 × 80 mm opening and 36 mm puck']};
+ const settings={front:[[.61,.46,1.91],[.019,.548,.012],308,'Original unbuilt cabinet and separate dry gauge'],work:[[.46,1.91,1.24],[.526,.815,.096],1128,'Detached 120 × 80 mm opening and 36 mm puck']};
  const [v0,c,s,title]=settings[view],f=unit(v0),r=unit(cross([0,1,0],f)),u=cross(f,r),w=760,h=450;
  const avail=faces.filter(o=>view!=='work'||['gauge_board','rail_left','rail_right','rail_front','rail_rear','gauge_puck','select_center','select_touch','select_overrun'].includes(o.g));
  const fn=avail.filter(o=>dot(o.n,f)>.005).map(o=>{
   const xyz=o.p.map(p=>sub(p,c));return {...o,depth:xyz.reduce((a,q)=>a+dot(q,f),0)/xyz.length,poly:xyz.map(p=>[Math.round(w/2+s*dot(p,r)),Math.round(h/2-s*dot(p,u))])};
- }).sort((a,b)=>a.depth-b.depth);
+ }).sort((a,b)=>{const layer=v=>v.g==='gauge_board'?0:v.g.startsWith('rail_')?1:2;return (view==='work'?layer(a)-layer(b):0)||a.depth-b.depth;});
  const path=fn.map(x=>{const i=.61+.39*Math.max(0,dot(x.n,unit([.25,.85,.37]))),col=pal[x.m].map(c=>Math.round(255*c*i));return '<path fill="rgb('+col.join(',')+')" d="M'+x.poly.map(p=>p.join(' ')).join('L')+'Z"/>';}).join('');
  return '<svg xmlns="http://www.w3.org/2000/svg" width="760" height="450" viewBox="0 0 760 450" role="img" aria-label="'+title+'"><path fill="#edeae1" d="M0 0h760v450H0z"/>'+path+'<path fill="#edeae1" d="M0 403h760v47H0z"/><text x="19" y="432" fill="#283640" font-size="16" font-family="sans-serif">'+title+'  /  Original metric model</text></svg>\n';
 }
