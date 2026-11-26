@@ -1,0 +1,56 @@
+[
+  {
+    "id": "nominal",
+    "expected": {
+      "widthPerSideMm": 30,
+      "depthPerSideMm": 45,
+      "headroomMm": 150,
+      "fits": true
+    },
+    "actual": {
+      "widthPerSideMm": 30,
+      "depthPerSideMm": 45,
+      "headroomMm": 150,
+      "fits": true
+    },
+    "pass": true
+  },
+  {
+    "id": "quarter-turn",
+    "expected": {
+      "widthPerSideMm": 65,
+      "depthPerSideMm": 10,
+      "headroomMm": 150,
+      "fits": true
+    },
+    "actual": {
+      "widthPerSideMm": 65,
+      "depthPerSideMm": 10,
+      "headroomMm": 150,
+      "fits": true
+    },
+    "pass": true
+  },
+  {
+    "id": "oversize",
+    "expected": {
+      "widthPerSideMm": -2.5,
+      "fits": false
+    },
+    "actual": {
+      "widthPerSideMm": -2.5,
+      "fits": false
+    },
+    "pass": true
+  },
+  {
+    "id": "closed-display",
+    "expected": {
+      "result": null
+    },
+    "actual": {
+      "result": null
+    },
+    "pass": true
+  }
+]
