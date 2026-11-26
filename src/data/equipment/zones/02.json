@@ -264,9 +264,10 @@
     "inputs": "Latent dose image, resist tone, initial thickness and dissolution model",
     "outputs": "Remaining resist-thickness map and open-region polygons",
     "acceptance": "Use a two-level exposure checkerboard and an ideal positive-tone threshold. Above-threshold squares must open and below-threshold squares must retain their film.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Reference-informed metric GLB; 150 mm wafer; enclosure and internals estimated",
+    "simulationStatus": "Ideal threshold, Mack finite-rate contrast and dose-to-clear inversion; 20 analytic checks passed; uncalibrated",
+    "integrationStatus": "Simulator route, 02-01 latent-dose handoff, dose ladder and revision export; browser CI configured",
+    "simulator": "/simulations/equipment/02-10/simulator/"
   },
   {
     "id": "02-11",

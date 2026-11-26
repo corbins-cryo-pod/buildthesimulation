@@ -1,0 +1,36 @@
+{
+  "schema": "bts.lithography.developed-resist.v1",
+  "input": "bts.lithography.latent-dose.v1; full circular optical wafer; local ROI",
+  "required": [
+    "schema",
+    "equipmentId",
+    "sampleId",
+    "parentRevision",
+    "revision",
+    "sample",
+    "source",
+    "recipe",
+    "grid",
+    "openPolygons",
+    "metrics",
+    "history",
+    "provenance"
+  ],
+  "grid": {
+    "order": "row-major; unchanged origin and spacing from input",
+    "dose": "mJ/cm2",
+    "thicknessNm": "nm",
+    "open": "1 iff zero remaining film"
+  },
+  "openPolygons": "closed non-overlapping per-row cell-run polygons, coordinates mm in input frame; no subpixel interpolation",
+  "source": "all input metadata except grid; preserves mask/contact IDs",
+  "scope": "local ROI only; missing outside ROI is unknown, not zero",
+  "metrics": {
+    "doseToClear_mJ_cm2": "finite positive-tone clearing dose at entered time, or null if not applicable or no finite dose",
+    "darkRemainingNm": "remaining film at zero exposure"
+  },
+  "examples": [
+    "example-result.json",
+    "ladder-result.json"
+  ]
+}
