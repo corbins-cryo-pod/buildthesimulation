@@ -100,8 +100,8 @@
   {
     "id": "09-06",
     "name": "Waveform generator",
-    "model": "Keysight 33622A (candidate)",
-    "evidence": "C",
+    "model": "Keysight 33622A Trueform (dual channel, standard bench configuration)",
+    "evidence": "A",
     "priority": "P1",
     "page": 31,
     "sources": [],
@@ -111,9 +111,14 @@
     "inputs": "Waveform parameters, sample clock, trigger time, source impedance and load convention",
     "outputs": "Timed source waveform and trigger events at the modeled output port",
     "acceptance": "Connect a resistive load matching the source impedance. A specified open-circuit sine amplitude must halve at the load while the generated frequency remains unchanged.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented-size metric GLB / editable Blender generator",
+    "simulationStatus": "Numerically verified Thevenin source and load; time-series/marker output",
+    "integrationStatus": "Dedicated browser simulator and voltage handoff; immersive headset testing pending",
+    "simulator": "/simulations/equipment/09-06/simulator/",
+    "related": [
+      ["Keysight operating and service guide", "https://www.keysight.com/my/en/assets/9018-03714/service-manuals/9018-03714.pdf"],
+      ["Keysight Trueform datasheet", "https://www.keysight.com/content/dam/keysight/en/doc/ungate/data-sheets/5992-2572.pdf"]
+    ]
   },
   {
     "id": "09-07",
