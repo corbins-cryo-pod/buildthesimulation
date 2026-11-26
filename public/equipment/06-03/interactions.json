@@ -1,0 +1,80 @@
+{
+  "triangles": 580,
+  "draws": 24,
+  "nodes": 9,
+  "bytes": 47892,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "diagram_display": {
+      "at": [
+        0.276,
+        0.139,
+        0.022
+      ],
+      "extent": [
+        0.216,
+        0.125,
+        0.035
+      ],
+      "action": "view",
+      "label": "Read the detached diagram point"
+    },
+    "point_P-01": {
+      "at": [
+        0.209,
+        0.077,
+        0.117
+      ],
+      "extent": [
+        0.049,
+        0.03,
+        0.051
+      ],
+      "action": "select:P-01",
+      "label": "Read abstract point P-01"
+    },
+    "point_P-02": {
+      "at": [
+        0.276,
+        0.077,
+        0.117
+      ],
+      "extent": [
+        0.049,
+        0.03,
+        0.051
+      ],
+      "action": "select:P-02",
+      "label": "Read abstract point P-02"
+    },
+    "point_P-03": {
+      "at": [
+        0.343,
+        0.077,
+        0.117
+      ],
+      "extent": [
+        0.049,
+        0.03,
+        0.051
+      ],
+      "action": "select:P-03",
+      "label": "Read abstract point P-03"
+    },
+    "fixed_amber": {
+      "at": [
+        -0.067,
+        0.324,
+        -0.051
+      ],
+      "extent": [
+        0.224,
+        0.253,
+        0.243
+      ],
+      "label": "Dormant fixed opaque amber enclosure"
+    }
+  }
+}
