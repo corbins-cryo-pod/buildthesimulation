@@ -1,0 +1,51 @@
+name: Verify YES 310TA equipment 02-09
+on:
+  pull_request:
+    paths:
+      - 'public/equipment/02-09/**'
+      - 'src/lib/equipment/02-09/**'
+      - 'src/pages/simulations/equipment/02-09/**'
+      - 'tests/equipment-02-09-yes310ta.mjs'
+      - 'scripts/equipment/02-09/**'
+      - '.github/workflows/verify-yes310ta.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'public/equipment/02-09/**'
+      - 'src/lib/equipment/02-09/**'
+      - 'src/pages/simulations/equipment/02-09/**'
+      - '.github/workflows/verify-yes310ta.yml'
+  workflow_dispatch:
+jobs:
+  verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node --test tests/equipment-02-09-yes310ta.mjs tests/equipment-register.mjs
+      - run: npm run build
+      - run: npm install --no-save --package-lock=false playwright
+      - run: npx playwright install --with-deps chromium
+      - name: Local production browser test
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4321 > yes-preview.log 2>&1 &
+          node scripts/equipment/02-09/browser-smoke.mjs
+      - name: Live production browser test
+        if: github.event_name == 'push'
+        env:
+          YES_URL: https://buildthesimulation.com
+          YES_QA_DIR: yes310ta-production-qa
+        run: node scripts/equipment/02-09/browser-smoke.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: yes310ta-browser-evidence
+          path: |
+            yes310ta-qa
+            yes310ta-production-qa
+            yes-preview.log

@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BTS surface preparation event",
+  "type": "object",
+  "required": [
+    "schema",
+    "instrument",
+    "configuration",
+    "provenance",
+    "loadedId",
+    "resistId",
+    "coupons",
+    "event"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bts.surface-preparation.v1"
+    },
+    "instrument": {
+      "const": "02-09"
+    },
+    "configuration": {
+      "type": "string"
+    },
+    "provenance": {
+      "type": "string"
+    },
+    "loadedId": {
+      "type": "string"
+    },
+    "resistId": {
+      "type": "string"
+    },
+    "coupons": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "surface",
+          "diameter_mm",
+          "coated",
+          "revision",
+          "history",
+          "surfaceState",
+          "cleanDry",
+          "heatCompatible"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "surface": {
+            "type": "string"
+          },
+          "diameter_mm": {
+            "type": "number"
+          },
+          "coated": {
+            "type": "boolean"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "parentRevision": {
+            "type": "integer"
+          },
+          "history": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/event"
+            }
+          },
+          "surfaceState": {
+            "enum": [
+              "untreated",
+              "primed",
+              "dehydrated"
+            ]
+          },
+          "adhesion": {
+            "type": "object",
+            "required": [
+              "status"
+            ],
+            "properties": {
+              "status": {
+                "enum": [
+                  "unknown",
+                  "calibrated-input"
+                ]
+              },
+              "units": {
+                "const": "N/mm"
+              },
+              "before": {
+                "type": "number"
+              },
+              "after": {
+                "type": "number"
+              },
+              "delta": {
+                "type": "number"
+              },
+              "calibrationId": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "calibrationSurface": {
+                "type": "string"
+              },
+              "calibrationResistId": {
+                "type": "string"
+              },
+              "calibrationRecipe": {
+                "type": "string"
+              }
+            }
+          },
+          "cleanDry": {
+            "type": "boolean"
+          },
+          "heatCompatible": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "event": {
+      "$ref": "#/$defs/event"
+    }
+  },
+  "$defs": {
+    "event": {
+      "type": "object",
+      "required": [
+        "eventId",
+        "type",
+        "recipe",
+        "temperature_C",
+        "exposure_s",
+        "total_s",
+        "provenance"
+      ],
+      "properties": {
+        "eventId": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "HMDS-vapor-prime",
+            "dehydration-only"
+          ]
+        },
+        "recipe": {
+          "type": "string"
+        },
+        "temperature_C": {
+          "type": "number"
+        },
+        "exposure_s": {
+          "type": "number"
+        },
+        "total_s": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "provenance": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

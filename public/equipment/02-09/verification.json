@@ -1,0 +1,333 @@
+{
+  "method": "Hand-defined state/event counts and synthetic calibration arithmetic executed in JavaScript; geometric construction dimensions, not physical metrology.",
+  "rows": [
+    {
+      "name": "Cabinet width",
+      "expected": 631.95,
+      "actual": 631.95,
+      "units": "mm",
+      "tolerance": 0.001,
+      "pass": true
+    },
+    {
+      "name": "Cabinet height",
+      "expected": 772.9,
+      "actual": 772.9,
+      "units": "mm",
+      "tolerance": 0.001,
+      "pass": true
+    },
+    {
+      "name": "Cabinet depth",
+      "expected": 501.7,
+      "actual": 501.70000000000005,
+      "units": "mm",
+      "tolerance": 0.001,
+      "pass": true
+    },
+    {
+      "name": "Chamber clear width",
+      "expected": 304.8,
+      "actual": 304.8,
+      "units": "mm",
+      "tolerance": 0.001,
+      "pass": true
+    },
+    {
+      "name": "Chamber clear height",
+      "expected": 304.8,
+      "actual": 304.79999999999995,
+      "units": "mm",
+      "tolerance": 0.001,
+      "pass": true
+    },
+    {
+      "name": "Chamber clear depth",
+      "expected": 336.6,
+      "actual": 336.6,
+      "units": "mm",
+      "tolerance": 0.001,
+      "pass": true
+    },
+    {
+      "name": "100 mm coupon bottom seated on slot 2",
+      "expected": 0,
+      "actual": 0,
+      "units": "m",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "name": "150 mm coupon bottom seated on slot 2",
+      "expected": 0,
+      "actual": 0,
+      "units": "m",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "name": "Comparison coupon bottom seated on tray",
+      "expected": 0,
+      "actual": 2.7755575615628914e-17,
+      "units": "m",
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "name": "Selected coupon primer events",
+      "expected": 1,
+      "actual": 1,
+      "units": "events",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Untreated witness primer events",
+      "expected": 0,
+      "actual": 0,
+      "units": "events",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Uncalibrated adhesion",
+      "expected": "unknown",
+      "actual": "unknown",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Unselected witness unchanged",
+      "expected": true,
+      "actual": true,
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Input objects unchanged",
+      "expected": 0,
+      "actual": 0,
+      "units": "events",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Synthetic matched peel delta (0.75 − 0.25)",
+      "expected": 0.5,
+      "actual": 0.5,
+      "units": "N/mm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Negative measured delta retained",
+      "expected": -0.5,
+      "actual": -0.5,
+      "units": "N/mm",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "name": "Wrong-resist calibration",
+      "expected": "unknown",
+      "actual": "unknown",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Wrong-material calibration",
+      "expected": "unknown",
+      "actual": "unknown",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Wrong-recipe calibration",
+      "expected": "unknown",
+      "actual": "unknown",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Wrong calibration units",
+      "expected": "unknown",
+      "actual": "unknown",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Uncalibrated silicon nitride",
+      "expected": "unknown",
+      "actual": "unknown",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Dehydration only event",
+      "expected": "dehydration-only",
+      "actual": "dehydration-only",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Dehydration only HMDS exposure",
+      "expected": 0,
+      "actual": 0,
+      "units": "s",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Dehydration nominal duration",
+      "expected": null,
+      "actual": null,
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Prime exposure",
+      "expected": 300,
+      "actual": 300,
+      "units": "s",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Nominal prime total",
+      "expected": 900,
+      "actual": 900,
+      "units": "s",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Select alternate coupon",
+      "expected": 1,
+      "actual": 1,
+      "units": "events",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Sequential second coupon preserves first",
+      "expected": true,
+      "actual": true,
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Sequential second coupon revision",
+      "expected": 1,
+      "actual": 1,
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Parent revision",
+      "expected": 0,
+      "actual": 0,
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Open door",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Nonboolean interlock",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Missing sample",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Coated coupon",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Unsupported carrier",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Unsupported surface",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Unconfirmed cleanliness",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Incompatible temperature",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Duplicate sample IDs",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Blank resist ID",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Repeat priming",
+      "expected": "rejected",
+      "actual": "rejected",
+      "units": "",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}

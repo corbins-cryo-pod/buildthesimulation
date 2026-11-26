@@ -231,7 +231,7 @@
   {
     "id": "02-09",
     "name": "Vapor prime oven",
-    "model": "YES HMDS Prime Oven (facility-listed system)",
+    "model": "YES 310TA (EPFL CMi HMDS configuration)",
     "evidence": "B",
     "priority": "P2",
     "page": 11,
@@ -244,9 +244,16 @@
     "inputs": "Substrate surface ID, initial preparation state and compatible primer model",
     "outputs": "Surface-preparation event and material-specific adhesion state or unknown flag",
     "acceptance": "Process one of two identical virtual coupons. Only that coupon acquires the primer event; a material lacking adhesion calibration must return an unknown response.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Reference-informed metric glTF/GLB; internal geometry inferred",
+    "simulationStatus": "Surface event model v1.1; 41 reference checks executed",
+    "integrationStatus": "Simulator and export schema implemented; production verification pending",
+    "simulator": "/simulations/equipment/02-09/simulator/",
+    "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/02-09/simulator/"
+      ]
+    ]
   },
   {
     "id": "02-10",
