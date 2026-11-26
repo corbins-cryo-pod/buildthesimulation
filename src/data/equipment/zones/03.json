@@ -193,9 +193,16 @@
     "inputs": "Polymer film revision, temperature history, timebase and fitted cure/shrinkage model",
     "outputs": "Cure-state field, thickness change and thermal provenance",
     "acceptance": "Replay a calibration coupon's thermal trace and compare predicted shrinkage with an independent thickness measurement. A zero-duration replay must preserve its initial state.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built",
+    "simulationStatus": "Inert centered-clearance check verified; thermal model not implemented",
+    "integrationStatus": "Built",
+    "simulator": "/simulations/equipment/03-09/simulator/",
+    "related": [
+      [
+        "Documentary Mini-Mite and inert dry fit",
+        "/simulations/equipment/03-09/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "03-10",
