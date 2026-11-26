@@ -1,0 +1,87 @@
+{
+  "deviceId": "14-05",
+  "scope": "Independent synthetic elastic oracle, no physical material or instrument calibration.",
+  "cases": [
+    {
+      "name": "Independent numeric trace, apparent E* (Pa)",
+      "expected": 12000,
+      "actual": 11999.999999999998,
+      "tolerance": 0.0001,
+      "pass": true
+    },
+    {
+      "name": "Two calibrated map sites, Pa",
+      "expected": [
+        12000,
+        48000
+      ],
+      "actual": [
+        12000,
+        48000.00000000001
+      ],
+      "tolerance": 0.0001,
+      "pass": true
+    },
+    {
+      "name": "Preserve map site positions, mm",
+      "expected": [
+        [
+          -2,
+          0.7
+        ],
+        [
+          2,
+          -0.7
+        ]
+      ],
+      "actual": [
+        [
+          -2,
+          0.7
+        ],
+        [
+          2,
+          -0.7
+        ]
+      ],
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Double assumed spring k at same observed displacement",
+      "expected": "double apparent reduced modulus",
+      "actual": 2,
+      "tolerance": 1e-9,
+      "pass": true
+    },
+    {
+      "name": "Reject very thin samples",
+      "expected": true,
+      "actual": true,
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "name": "Inspectable glTF and stable approach action",
+      "expected": true,
+      "actual": true,
+      "tolerance": "exact",
+      "pass": true
+    },
+    {
+      "name": "Nominal stand and optics envelope W/H/D (mm)",
+      "expected": [
+        120,
+        280,
+        150
+      ],
+      "actual": [
+        120.10000059008598,
+        280.0000011920929,
+        150.00000596046448
+      ],
+      "tolerance": 1,
+      "pass": true
+    }
+  ]
+}
