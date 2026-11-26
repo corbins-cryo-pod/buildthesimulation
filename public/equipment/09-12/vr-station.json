@@ -1,0 +1,160 @@
+{
+  "schema": "bts.station.3e-cell.v1",
+  "id": "09-12",
+  "glb": "./cell-fixture.glb",
+  "module": "./station.mjs",
+  "adapter": {
+    "factory": "createStation",
+    "commands": "dispatch(action,payload)",
+    "state": "read()",
+    "ray": "hit(assetNodeName)",
+    "pose": "projectPose(station.read())"
+  },
+  "units": "m",
+  "axes": "+Y up, +Z front, origin at base plate underside centre",
+  "nodes": 100,
+  "triangles": 16756,
+  "bytes": 39312,
+  "motion": {
+    "Lift_cartridge": {
+      "Y": [
+        0,
+        0.038
+      ]
+    },
+    "Probe_WE": {
+      "X": [
+        -0.023,
+        0.005
+      ]
+    },
+    "Working_square": {
+      "widthAndHeight": [
+        0.002,
+        0.02
+      ]
+    }
+  },
+  "hitTargets": [
+    {
+      "node": "Socket_WE",
+      "action": "toggleWE",
+      "label": "Connect WE lead",
+      "boundsM": {
+        "min": [
+          -0.011,
+          0.08,
+          -0.008
+        ],
+        "max": [
+          0.005,
+          0.094,
+          0.008
+        ]
+      }
+    },
+    {
+      "node": "Socket_RE",
+      "action": "toggleRE",
+      "label": "Connect RE lead",
+      "boundsM": {
+        "min": [
+          -0.001,
+          0.08,
+          -0.008
+        ],
+        "max": [
+          0.015,
+          0.094,
+          0.008
+        ]
+      }
+    },
+    {
+      "node": "Socket_CE",
+      "action": "toggleCE",
+      "label": "Connect CE lead",
+      "boundsM": {
+        "min": [
+          0.017,
+          0.08,
+          -0.008
+        ],
+        "max": [
+          0.033,
+          0.094,
+          0.008
+        ]
+      }
+    },
+    {
+      "node": "Clip_WE",
+      "action": "toggleWE",
+      "label": "Disconnect WE lead",
+      "boundsM": {
+        "min": [
+          -0.0105,
+          0.0845,
+          -0.0185
+        ],
+        "max": [
+          0.0045,
+          0.1035,
+          0.0105
+        ]
+      }
+    },
+    {
+      "node": "Clip_RE",
+      "action": "toggleRE",
+      "label": "Disconnect RE lead",
+      "boundsM": {
+        "min": [
+          -0.0005,
+          0.0845,
+          -0.0185
+        ],
+        "max": [
+          0.0145,
+          0.1035,
+          0.0105
+        ]
+      }
+    },
+    {
+      "node": "Clip_CE",
+      "action": "toggleCE",
+      "label": "Disconnect CE lead",
+      "boundsM": {
+        "min": [
+          0.0175,
+          0.0845,
+          -0.0185
+        ],
+        "max": [
+          0.0325,
+          0.1035,
+          0.0105
+        ]
+      }
+    },
+    {
+      "node": "Handle_lift",
+      "action": "toggleLift",
+      "label": "Raise/lower the cartridge",
+      "boundsM": {
+        "min": [
+          -0.021,
+          0.0835,
+          0.0235
+        ],
+        "max": [
+          0.021,
+          0.0985,
+          0.0405
+        ]
+      }
+    }
+  ],
+  "note": "Bounds are controller convenience volumes at nominal pose. Transform moving targets with the node. No immersive headset validation claimed."
+}
