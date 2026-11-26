@@ -1,0 +1,102 @@
+{
+  "origin": "Predeclared independent analytical reference values (ideal voltage/current phasors, exact RC at convenient frequencies). No experimental or factory calibration data.",
+  "rows": [
+    {
+      "id": "short",
+      "description": "Ideal short returns only the fixture series residual",
+      "expected": 15,
+      "unit": "Ω real",
+      "tolerance": 1e-10,
+      "actual": 15,
+      "pass": true
+    },
+    {
+      "id": "open-phase",
+      "description": "Pure shunt capacitance in open standard has −90° phase after removing the 15 Ω residual",
+      "expected": -90,
+      "unit": "deg",
+      "tolerance": 1e-10,
+      "actual": -90,
+      "pass": true
+    },
+    {
+      "id": "near-corner",
+      "description": "159.154943 nF plus 1000 Ω in series gives −45° at 1 kHz",
+      "expected": -45,
+      "unit": "deg",
+      "tolerance": 2e-7,
+      "actual": -45.000000016541165,
+      "pass": true
+    },
+    {
+      "id": "series-c",
+      "description": "Known 1000 pF series capacitor recovered at highest default frequency",
+      "expected": 1000,
+      "unit": "pF",
+      "tolerance": 1e-7,
+      "actual": 1000,
+      "pass": true
+    },
+    {
+      "id": "fixture-raw-c",
+      "description": "1000 pF ideal DUT in parallel with 110 pF shunt; low f C calculated after series standard only",
+      "expected": 1110,
+      "unit": "pF",
+      "tolerance": 0.000001,
+      "actual": 1110,
+      "pass": true
+    },
+    {
+      "id": "series-r",
+      "description": "Known 27 Ω ESR recovered after open and short",
+      "expected": 27,
+      "unit": "Ω",
+      "tolerance": 1e-8,
+      "actual": 26.999999999999993,
+      "pass": true
+    },
+    {
+      "id": "parallel-c",
+      "description": "Known parallel 1 nF capacitor recovered after open and short",
+      "expected": 1000,
+      "unit": "pF",
+      "tolerance": 1e-7,
+      "actual": 999.9999999999998,
+      "pass": true
+    },
+    {
+      "id": "resistor",
+      "description": "Pure 1 kΩ resistor independent of the virtual test frequency",
+      "expected": 1000,
+      "unit": "Ω",
+      "tolerance": 1e-7,
+      "actual": 1000.0000000000002,
+      "pass": true
+    },
+    {
+      "id": "voltage-ratio",
+      "description": "Doubling ideal AC test voltage doubles measured current but does not change impedance",
+      "expected": 2,
+      "unit": "ratio",
+      "tolerance": 1e-10,
+      "actual": 2,
+      "pass": true
+    },
+    {
+      "id": "missing-standard",
+      "description": "Corrected capture cannot run without both standards",
+      "expected": "calibration-required",
+      "unit": "error code",
+      "actual": "calibration-required",
+      "pass": true
+    },
+    {
+      "id": "stale-standard",
+      "description": "Changing fixture or test grid invalidates the stored standards",
+      "expected": "calibration-required",
+      "unit": "error code",
+      "actual": "calibration-required",
+      "pass": true
+    }
+  ]
+}

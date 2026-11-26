@@ -118,7 +118,7 @@
   {
     "id": "09-07",
     "name": "Precision LCR meter",
-    "model": "Keysight E4980A",
+    "model": "Keysight E4980A 2 MHz + 16034E SMD fixture",
     "evidence": "A",
     "priority": "P2",
     "page": 31,
@@ -131,9 +131,15 @@
     "inputs": "Complex test impedance, fixture model, frequency grid and open/short calibration records",
     "outputs": "Corrected impedance and selected series or parallel component readings",
     "acceptance": "Simulate known stray shunt capacitance and series resistance on a capacitor standard. Apply matching open/short corrections and recover its labeled capacitance across the fixture's valid band.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documented-enclosure metric GLB, original reference views and editable model source",
+    "simulationStatus": "Numerically verified passive AC impedance; explicit series and shunt fixture correction",
+    "integrationStatus": "Dedicated browser simulator and impedance exports; headset testing pending",
+    "simulator": "/simulations/equipment/09-07/simulator/",
+    "related": [
+      ["Keysight E4980A User’s Guide", "https://www.cmc.ca/wp-content/uploads/2019/07/E4980A-User-Guide.pdf"],
+      ["Keysight E4980A data sheet", "https://go.keysight.com/us/en/assets/7018-01355/data-sheets/5989-4435.pdf"],
+      ["Keysight 16034E SMD fixture", "https://www.keysight.com/us/en/product/16034E/test-fixture-smd-components.html"]
+    ]
   },
   {
     "id": "09-08",
