@@ -1,0 +1,54 @@
+{
+  "schema": "bts.station.gt2-static-ruler.v1",
+  "equipment": "06-01",
+  "model": "./gt2-documentary.glb",
+  "units": "m",
+  "axes": "+Y up +Z front",
+  "nodes": 57,
+  "bytes": 36676,
+  "triangles": 5068,
+  "hitTargets": [
+    {
+      "node": "Ruler_pair_button",
+      "action": "cycle",
+      "label": "Cycle synthetic mark pairs",
+      "boundsM": {
+        "min": [
+          0.7769999999999999,
+          0.549,
+          0.263
+        ],
+        "max": [
+          0.889,
+          0.583,
+          0.289
+        ]
+      }
+    },
+    {
+      "node": "Ruler_reverse_button",
+      "action": "reverse",
+      "label": "Reverse the mark order",
+      "boundsM": {
+        "min": [
+          0.9749999999999999,
+          0.549,
+          0.263
+        ],
+        "max": [
+          1.087,
+          0.583,
+          0.289
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./ruler.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)"
+  },
+  "note": "Only the detached illustration has ray targets. No headset testing."
+}

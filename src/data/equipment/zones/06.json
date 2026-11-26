@@ -15,15 +15,20 @@
     "inputs": "Scaffold mesh, voxel kernel, hatch path and calibrated coordinate transform",
     "outputs": "Scaffold revision with predicted solid volume, voxel grid and unresolved-feature flags",
     "acceptance": "Render two parallel rods at successively wider separations. Resolve two components when their modeled voxel footprints separate and recover center spacing to within one voxel.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Built, photo-based dormant exterior with proxy scale",
+    "simulationStatus": "Read-only detached geometry ruler; no manufacturing model",
+    "integrationStatus": "Standalone exhibit and geometry-only JSON",
     "related": [
       [
         "Biohybrid Neural Interface Laboratory",
         "/simulations/biohybrid-interface/"
+      ],
+      [
+        "Documentary exterior sources and drawing checks",
+        "/simulations/equipment/06-01/simulator/#evidence"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/06-01/simulator/"
   },
   {
     "id": "06-02",
