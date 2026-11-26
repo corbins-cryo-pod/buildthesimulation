@@ -1,0 +1,125 @@
+{
+  "scope": "Original sealed documentary exteriors with separate immutable geometry cards; no hardware, stimulation, clinical, biological or headset validation.",
+  "rows": [
+    {
+      "id": "Area of four vertical plus two horizontal cells",
+      "expected": 24,
+      "actual": 24,
+      "unit": "mm²",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Translated arrangement aligned intersection",
+      "expected": 6,
+      "actual": 6,
+      "unit": "tiles",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Translated arrangement Jaccard",
+      "expected": 1,
+      "actual": 1,
+      "unit": "dimensionless",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Reflected arrangement: three shared base-row tiles",
+      "expected": 3,
+      "actual": 3,
+      "unit": "tiles",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Reflected arrangement: three shared and three unique per L",
+      "expected": 9,
+      "actual": 9,
+      "unit": "tiles",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Reflected arrangement Jaccard",
+      "expected": 0.3333333333333333,
+      "actual": 0.3333333333333333,
+      "unit": "dimensionless",
+      "tolerance": 1e-12,
+      "pass": true
+    },
+    {
+      "id": "Stored blank coverage",
+      "expected": "stored-blank",
+      "actual": "stored-blank",
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Stored blank area",
+      "expected": 0,
+      "actual": 0,
+      "unit": "mm²",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Empty alignment undefined",
+      "expected": null,
+      "actual": null,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "console OEM nominal width",
+      "expected": 432,
+      "actual": 431.9999893195927,
+      "unit": "mm",
+      "tolerance": 1,
+      "pass": true
+    },
+    {
+      "id": "console OEM nominal height",
+      "expected": 86,
+      "actual": 86.0000029206276,
+      "unit": "mm",
+      "tolerance": 1,
+      "pass": true
+    },
+    {
+      "id": "console OEM nominal depth",
+      "expected": 330,
+      "actual": 330.00001311302185,
+      "unit": "mm",
+      "tolerance": 1,
+      "pass": true
+    },
+    {
+      "id": "dome OEM nominal width",
+      "expected": 360,
+      "actual": 359.99999940395355,
+      "unit": "mm",
+      "tolerance": 3,
+      "pass": true
+    },
+    {
+      "id": "dome OEM nominal height",
+      "expected": 260,
+      "actual": 259.99999791383743,
+      "unit": "mm",
+      "tolerance": 3,
+      "pass": true
+    },
+    {
+      "id": "dome OEM nominal depth",
+      "expected": 310,
+      "actual": 310.0000023841858,
+      "unit": "mm",
+      "tolerance": 3,
+      "pass": true
+    }
+  ]
+}

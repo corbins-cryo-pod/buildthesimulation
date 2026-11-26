@@ -1,0 +1,10 @@
+{
+  "schema":"bts.equipment.interaction.v1",
+  "equipmentId":"15-11",
+  "asset":"e3-colordome.glb",
+  "frame":{"unit":"m","up":"+Y","front":"+Z","placementAnchor":"bts_bench_anchor","mount":"bench"},
+  "parts":{"console":"espion_e3_disconnected_console","dome":"colordome_d125_closed_head","amplifier":"disconnected_amplifier_shell","cover":"d125_closed_opaque_face","exhibit":"detached_pattern_archive"},
+  "ports":[],
+  "actions":[{"action":"next","node":"detached_pattern_selection_panel","label":"Choose next fixed drawing","sizeM":[0.264,0.180,0.038],"range":[0,3],"mode":"read-only"}],
+  "vrEvidence":"Metric asset with separate read-only selection target; no immersive or headset verification."
+}

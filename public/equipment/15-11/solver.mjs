@@ -4,7 +4,7 @@ export function parse(f){
  if(f?.schema!==gridId||typeof f.archiveId!=='string'||!Number.isInteger(f.revision)||f.revision<1||typeof f.provenance!=='string')throw Error('Invalid fixed archive identity');
  const {cols,rows,pitchMm}=f.grid??{};
  if(![cols,rows].every(n=>Number.isInteger(n)&&n>0&&n<=64)||!Number.isFinite(pitchMm)||pitchMm<=0)throw Error('Invalid drawing grid');
- if(!Array.isArray(f.cards)||!f.cards.length||f.cards.length>32)throw Error('Invalid card index');
+ if(!Array.isArray(f.cards)||f.cards.length<2||f.cards.length>32)throw Error('Invalid card index');
  const seen=new Set();
  const cards=f.cards.map(c=>{
   if(!c||typeof c.id!=='string'||!c.id||seen.has(c.id)||typeof c.label!=='string'||!Array.isArray(c.cells)||c.cells.length>cols*rows)throw Error('Invalid card');
