@@ -1,0 +1,33 @@
+{
+  "schema": "bts.dry-basket-fit.v1",
+  "deviceId": "16-10",
+  "sampleId": "inert-coupon-01",
+  "kind": "simulated",
+  "revision": 1,
+  "parentRevision": 0,
+  "configuration": {
+    "sampleId": "inert-coupon-01",
+    "width": 100,
+    "depth": 70,
+    "height": 25,
+    "quarterTurn": false
+  },
+  "tankMm": {
+    "width": 150,
+    "depth": 140,
+    "height": 100
+  },
+  "basketMm": {
+    "width": 128,
+    "depth": 112,
+    "height": 74
+  },
+  "clearance": {
+    "widthPerSideMm": 14,
+    "depthPerSideMm": 21,
+    "headroomMm": 49,
+    "fit": true
+  },
+  "cleanliness": "not evaluated",
+  "provenance": "Original 128×112×74 mm basket design; centered dry rigid bounding-box fit."
+}
