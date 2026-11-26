@@ -13,9 +13,10 @@
     "inputs": "Versioned mask polygons, substrate outline, database units and terminal netlist",
     "outputs": "Design revision with fabrication layers, contact IDs and design-rule findings",
     "acceptance": "Round-trip a two-contact layout through GDSII. Preserve both contacts and their spacing to one database unit; a deliberately disconnected trace must fail connectivity.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Original metric retro desk, CRT and workstation enclosure",
+    "simulationStatus": "Verified restricted GDSII round trip and planar trace continuity",
+    "integrationStatus": "Live CRT layer actions, generic mask/GDSII export and VR target contract",
+    "simulator": "/simulations/equipment/01-01/simulator/",
     "related": [
       [
         "Neural Interface Designer",

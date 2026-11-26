@@ -1,0 +1,30 @@
+{
+  "parser": "gdstk 0.9.61",
+  "scope": "Independent parse of units, ID properties, geometry and datatype; net topology is covered by separate station tests.",
+  "rows": [
+    {
+      "file": "example-intact.gds",
+      "databaseUnitM": 1e-09,
+      "ids": [
+        "P1:N1",
+        "P2:N1"
+      ],
+      "spacingUm": 40.0,
+      "toleranceUm": 0.001,
+      "traceRectangles": 1,
+      "pass": true
+    },
+    {
+      "file": "example-open.gds",
+      "databaseUnitM": 1e-09,
+      "ids": [
+        "P1:N1",
+        "P2:N1"
+      ],
+      "spacingUm": 40.0,
+      "toleranceUm": 0.001,
+      "traceRectangles": 2,
+      "pass": true
+    }
+  ]
+}
