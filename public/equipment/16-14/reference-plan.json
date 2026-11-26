@@ -1,0 +1,7 @@
+{
+ "fixture":"BTS-BLIND Mk I",
+ "independentBasis":"Make two disjoint virtual edges, A-triangle→Instrument A and B-square→Instrument B. Neither instrument is linked initially. Matching keys yield true,true; removing triangle-A yields false,true and leaves the B edge ID alone. Offering square-B to A must reject without a revision change. Reinstall triangle-A and the same A edge ID returns.",
+ "expected":[[false,false],[true,true],[false,true],[false,true],[true,true]],
+ "expectedRevisions":[0,2,3,3,4],
+ "physicalLimits":"Original blind-marker draw stroke is 22 mm in +Z; exact compatibility categories and 10 nm geometry comparison tolerance. No pressure path or operating parameters exist."
+}
