@@ -35,9 +35,16 @@
     "inputs": "Culture or MEA sample ID, stage pose, objective calibration, exposure and channel selection",
     "outputs": "Objective-tagged calibrated image, focal-plane transform and exposure metadata",
     "acceptance": "Image a calibration grid with two objective profiles. The measured physical pitch should stay constant and the field of view should shrink with increasing magnification for a fixed camera.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built",
+    "simulationStatus": "Inert 10×/20× reticle pitch and calibrated FOV verified",
+    "integrationStatus": "Built",
+    "simulator": "/simulations/equipment/12-02/simulator/",
+    "related": [
+      [
+        "Ti2-E exterior, sources and independent reticle checks",
+        "/simulations/equipment/12-02/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "12-03",

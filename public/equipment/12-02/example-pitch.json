@@ -1,0 +1,34 @@
+{
+  "schema": "buildthesimulation.inert-reticle-pitch.v1",
+  "instrument": "Nikon ECLIPSE Ti2-E",
+  "couponId": "BTS-SEALED-RETICLE-36P5",
+  "couponRevision": 1,
+  "measurementRevision": 1,
+  "provenance": "Synthetic reticle raster; nominal sensor sampling, no optical bench calibration.",
+  "axis": "image X column index increases right",
+  "camera": {
+    "sensorPixelUm": 7.3,
+    "widthPx": 400,
+    "heightPx": 256,
+    "relay": 1
+  },
+  "result": {
+    "row": 117,
+    "peakColumnsPx": [
+      50,
+      100,
+      150,
+      200,
+      250,
+      300,
+      350
+    ],
+    "meanSpacingPx": 50,
+    "measuredPitchUm": 36.5,
+    "pixelUm": 0.73,
+    "fovWidthUm": 292,
+    "fovHeightUm": 186.88,
+    "objectiveMagnification": 10,
+    "focusOffsetUm": 0
+  }
+}
