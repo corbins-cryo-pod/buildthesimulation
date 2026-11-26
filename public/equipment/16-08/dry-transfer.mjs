@@ -1,0 +1,14 @@
+// Dry bookkeeping only. Volume units are equivalent displacement of inert tokens.
+export const limits={minUl:20,maxUl:200,incrementUl:.2};
+export const tips={matched:'Nominal compatible training tip',other:'Unmatched training sleeve'};
+export const interactions={Plunger_button:{action:'transfer',label:'Commit dry ledger move'},Tip_ejector_button:{action:'release',label:'Remove virtual tip'},Fitted_tip:{action:'release',label:'Remove virtual tip'},Parked_tip:{action:'attach',label:'Seat dry tip on nominal receptor'},Dial_ring:{action:'cycle',label:'Cycle three preset dry lengths'}};
+export const initial=()=>({sampleId:'DRY-PIPETTE-PHANTOM-01',revision:1,settingUl:25,choice:'matched',attached:false,tipUses:0,sourceUl:100,destinationUl:0,events:[]});
+function record(s,data){const revision=s.revision+1;return {...s,revision,events:[...s.events,{revision,...data}]}}
+export function reduce(s,a,v){if(a==='choose'){if(!Object.hasOwn(tips,v))throw Error('Unknown tip selection');if(s.attached)throw Error('Detach the virtual tip before changing fit class.');return {...s,choice:v}}
+ if(a==='setting'||a==='cycle'){if(a==='cycle')v=s.settingUl<25?25:s.settingUl<50?50:s.settingUl<100?100:25;if(!Number.isFinite(v)||v<limits.minUl||v>limits.maxUl||Math.abs(v*5-Math.round(v*5))>1e-8)throw Error('Choose 20–200 µL equivalent in increments of 0.2.');return {...s,settingUl:v}}
+ if(a==='attach'){if(s.attached)return s;if(s.choice!=='matched')throw Error('This training sleeve does not fit the modeled receptor.');return {...record(s,{action:'attach',tip:'TRAINING-TIP-01'}),attached:true,tipUses:0}}
+ if(a==='release'){if(!s.attached)throw Error('No virtual tip is fitted.');return {...record(s,{action:'release',tip:'TRAINING-TIP-01'}),attached:false}}
+ if(a!=='transfer')throw Error('Unknown training action');if(!s.attached)throw Error('Seat the nominal virtual tip before a dry ledger move.');const v0=s.settingUl;if(v0>s.sourceUl+1e-9)throw Error('Insufficient dry source volume. Neither vessel changed.');const id=s.sampleId+'-CHILD-R'+(s.revision+1);
+ return {...record(s,{action:'dry-ledger-move',sourceId:'DRY-SOURCE-01',destinationId:'DRY-RECEIVER-01',parentSampleId:s.sampleId,childSampleId:id,debitUl:v0,creditUl:v0,tip:'TRAINING-TIP-01'}),sourceUl:Math.round((s.sourceUl-v0)*5)/5,destinationUl:Math.round((s.destinationUl+v0)*5)/5,tipUses:s.tipUses+1};}
+export function strokeMm(v){return 2+10*(v-20)/180}
+export function report(s){return {schema:'bts.dry-transfer-ledger.v1',source:'simulated',instrumentId:'16-08',sampleId:s.sampleId,revision:s.revision,units:{volume:'uL-equivalent dry displacement',travel:'mm (illustrative)'},vessels:{'DRY-SOURCE-01':s.sourceUl,'DRY-RECEIVER-01':s.destinationUl},tip:{attached:s.attached,fitClass:s.choice,uses:s.tipUses},settingUl:s.settingUl,illustratedStrokeMm:strokeMm(s.settingUl),events:s.events,note:'Atomic metadata movement only; no wet process or physical dispensing validation.'}}

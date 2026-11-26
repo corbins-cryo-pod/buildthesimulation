@@ -132,7 +132,7 @@
   {
     "id": "16-08",
     "name": "Liquid handling",
-    "model": "Eppendorf Research plus pipette family (candidate)",
+    "model": "Eppendorf Research plus / 20–200 µL yellow (3123 000 055)",
     "evidence": "C",
     "priority": "P1",
     "page": 50,
@@ -143,9 +143,10 @@
     "inputs": "Pipette volume range, tip state, transfer volume and source/destination container IDs",
     "outputs": "Paired volume debits/credits, transfer event, tip status and aliquot lineage",
     "acceptance": "Transfer 25 µL from a 100 µL source to an empty vessel with an attached tip. Expect 75 and 25 µL with linked identities; a request above remaining volume must leave both volumes unchanged.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB with manufacturer control layout and nominal inferred proportions",
+    "simulationStatus": "Dry tip fit, nominal motion and atomic dry inventory accounting",
+    "integrationStatus": "Revisioned dry source/receiver and child-lineage export",
+    "simulator": "/simulations/equipment/16-08/simulator/"
   },
   {
     "id": "16-09",
