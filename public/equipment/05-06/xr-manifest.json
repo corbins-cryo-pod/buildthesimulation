@@ -1,0 +1,129 @@
+{
+  "device": "05-06",
+  "units": "m",
+  "up": "+Y",
+  "operatorFront": "+Z",
+  "datum": "bench",
+  "cabinetWHDm": [
+    0.3048,
+    0.254,
+    0.4826
+  ],
+  "articulation": {
+    "shield_hinge": {
+      "axis": "X",
+      "travelRad": [
+        0,
+        -1.7
+      ],
+      "provenance": "estimated"
+    },
+    "probe_lift": {
+      "axis": "Y",
+      "travelM": [
+        0,
+        0.007
+      ],
+      "provenance": "estimated unloaded lift"
+    },
+    "stage_xz": {
+      "axes": "scene Z travel plus chuck/probe rotation maps the selected site to the measuring axis",
+      "provenance": "illustrative recipe geometry, not motor particulars"
+    }
+  },
+  "contacts": [
+    {
+      "id": "P1",
+      "xOffsetM": -0.0015,
+      "role": "force+"
+    },
+    {
+      "id": "P2",
+      "xOffsetM": -0.0005,
+      "role": "sense+"
+    },
+    {
+      "id": "P3",
+      "xOffsetM": 0.0005,
+      "role": "sense\u2212"
+    },
+    {
+      "id": "P4",
+      "xOffsetM": 0.0015,
+      "role": "force\u2212"
+    }
+  ],
+  "interactionNodes": {
+    "shield": {
+      "action": "lid",
+      "label": "Load shield",
+      "localMeshBoundsM": {
+        "min": [
+          -0.122,
+          -0.047,
+          -0.007
+        ],
+        "max": [
+          0.122,
+          0.013,
+          0.338
+        ]
+      }
+    },
+    "film": {
+      "action": "load",
+      "label": "Wafer face (inspect loaded fixture)",
+      "localMeshBoundsM": {
+        "min": [
+          -0.05,
+          0.2074,
+          -0.05
+        ],
+        "max": [
+          0.05,
+          0.208335,
+          0.05
+        ]
+      }
+    },
+    "probe_lift": {
+      "action": "head",
+      "label": "Retract or seat probe",
+      "localMeshBoundsM": {
+        "min": [
+          -0.0127,
+          0.2097,
+          -0.0127
+        ],
+        "max": [
+          0.0127,
+          0.255725,
+          0.0127
+        ]
+      }
+    },
+    "run_switch": {
+      "action": "run",
+      "label": "Acquire four-point reading (teaching hotspot)",
+      "localMeshBoundsM": {
+        "min": [
+          -0.001,
+          -0.0055,
+          -0.0085
+        ],
+        "max": [
+          0.001,
+          0.0055,
+          0.0085
+        ]
+      }
+    }
+  },
+  "geometry": {
+    "nodes": 18,
+    "triangles": 7536,
+    "drawPrimitives": 37,
+    "bytes": 396084
+  },
+  "note": "Not tested on a physical VR headset."
+}

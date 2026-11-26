@@ -127,7 +127,7 @@
   {
     "id": "05-06",
     "name": "Four-point probe",
-    "model": "CDE ResMap (exact configuration pending)",
+    "model": "CDE ResMap 178 · manual load, Jandel 1 mm inline cartridge",
     "evidence": "B",
     "priority": "P1",
     "page": 19,
@@ -140,9 +140,10 @@
     "inputs": "Conducting film map, calibrated four-tip geometry, drive current and voltage reading",
     "outputs": "Sheet resistance map in Ω/square with geometry correction and calibration ID",
     "acceptance": "Use an ideal infinite thin sheet with equally spaced collinear probes. Compare inferred sheet resistance to (π/ln 2) × V/I; reversing current reverses voltage and preserves resistance.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Reference-anchored metric GLB; inferred rear and travel",
+    "simulationStatus": "Infinite and NBS circular sheet corrections; reversal and maps",
+    "integrationStatus": "Interactive result export and voltage-map import; headset not tested",
+    "simulator": "/simulations/equipment/05-06/simulator/"
   },
   {
     "id": "05-07",
