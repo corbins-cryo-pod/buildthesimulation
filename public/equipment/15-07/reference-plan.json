@@ -1,0 +1,6 @@
+{
+ "configuration":"FUJIFILM VisualSonics Vevo 3100 cart in the original LAZR-X product presentation, unpowered console only with upright upper monitor. This is not the Vevo F2 generation.",
+ "dimensionBasis":"VisualSonics 51224-03 Rev 1.4 user manual p.717 gives console footprint W54×D68 cm and H122 cm when folded. Author cart retains the footprint. Monitor and mounted display are fixed upright; authored upright height 1580 mm is a photo estimate, not a published specification.",
+ "independentBenchmark":"Original inert frame, 96×80 cells, axial scale 0.125 mm per row. Fixed stripes center at row 16 and row 52. The expected center separation is 36×0.125=4.5 mm. Reversing order negates the signed difference; repeating the same band gives 0. Requests beyond row 79 reject. No generated signal or external equipment is modeled.",
+ "tolerance":"One source row of 0.125 mm for the independent ruler benchmark; exact integer indices. Model scale check tolerance 1e-7 m."
+}
