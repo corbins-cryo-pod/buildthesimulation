@@ -248,7 +248,7 @@
   {
     "id": "03-12",
     "name": "Plasma surface treatment",
-    "model": "Harrick PDC-32 plasma bonder",
+    "model": "Harrick Basic PDC-32G-2 · documentary static exterior",
     "evidence": "B",
     "priority": "P1",
     "page": 14,
@@ -261,8 +261,13 @@
     "inputs": "Two surface IDs, activation calibration, treatment timestamps and bonding eligibility rule",
     "outputs": "Time-stamped surface activation and eligibility metadata for the bonding station",
     "acceptance": "Give two identical surfaces the same virtual activation and evaluate them on opposite sides of a fixture expiry time. Only the earlier pair qualifies under that fixture rule.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass dimensioned exterior GLB, fixed surfaces only",
+    "simulationStatus": "Invented exterior footprint gauge only; no treatment simulation",
+    "integrationStatus": "Static viewer and footprint JSON export; treatment test not run",
+    "simulator": "/simulations/equipment/03-12/simulator/",
+    "related": [
+      ["Harrick PDC-32G-2 exterior views", "https://harrickplasma.com/wp-content/uploads/2025/06/PDC-32G-2-UserManual-2025-v3.pdf#page=12"],
+      ["Harrick basic enclosure dimensions", "https://harrickplasma.com/plasma-cleaners/basic-plasma-cleaner/"]
+    ]
   }
 ]

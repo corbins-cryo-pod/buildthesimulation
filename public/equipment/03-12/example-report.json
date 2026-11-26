@@ -1,0 +1,37 @@
+{
+  "schema": "bts.enclosure-footprint.report.v1",
+  "deviceId": "03-12",
+  "origin": "synthetic-external-gauge",
+  "housing": {
+    "model": "Harrick PDC-32G-2",
+    "revision": "2025 documentary exterior",
+    "widthMm": 254,
+    "depthMm": 203.2,
+    "heightMm": 215.9
+  },
+  "revision": 1,
+  "parentRevision": null,
+  "dimensionsUnit": "mm",
+  "rotationUnit": "degree",
+  "frame": "right-handed from above, X right, Y away, positive yaw from X toward Y",
+  "gauge": {
+    "gaugeW": 280,
+    "gaugeD": 230,
+    "xMm": 0,
+    "yMm": 0,
+    "yawDeg": 0
+  },
+  "projectionMm": {
+    "width": 254,
+    "depth": 203.2
+  },
+  "marginsMm": {
+    "leftMm": 13,
+    "rightMm": 13,
+    "frontMm": 13.400000000000006,
+    "backMm": 13.400000000000006
+  },
+  "minimumMm": 13,
+  "status": "clear-in-gauge",
+  "scope": "Static bounding rectangle only; excludes all service, airflow, physical installation, accessories, connection and treatment assumptions."
+}
