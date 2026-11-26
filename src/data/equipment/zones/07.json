@@ -38,7 +38,7 @@
     "id": "07-02",
     "name": "CO2 / tri-gas incubator",
     "model": "Thermo Scientific HERAcell VIOS 160i",
-    "evidence": "B",
+    "evidence": "A",
     "priority": "P1",
     "page": 24,
     "sources": [
@@ -51,9 +51,20 @@
     "inputs": "Sample-to-shelf map, chamber configuration and timestamped environmental readings",
     "outputs": "Environmental history linked to sample occupancy intervals",
     "acceptance": "Replay a recorded door excursion and place two virtual samples on different schedules. Only samples present during the excursion receive that interval in their exposure history.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Physical-scale GLB checked against manual dimensions and photographs; internal offsets inferred",
+    "simulationStatus": "Published chamber CO₂ and temperature replays, verified occupancy clipping and illustrative exchange model",
+    "integrationStatus": "Logger and sample import, JSON / CSV exposure exports and sample transfer with station 07-01",
+    "simulator": "/simulations/equipment/07-02/simulator/",
+    "related": [
+      [
+        "51030285 configuration, geometry and photographs",
+        "/simulations/equipment/07-02/simulator/#vios-references"
+      ],
+      [
+        "Door excursion and occupancy verification",
+        "/simulations/equipment/07-02/simulator/#vios-verification"
+      ]
+    ]
   },
   {
     "id": "07-03",
