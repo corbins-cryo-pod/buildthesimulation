@@ -1,0 +1,6 @@
+{
+ "configuration":"Tucker-Davis RZ6-A-P1 front package and RA4PA four-channel Medusa legacy package, both disconnected and unpowered",
+ "geometryBasis":"TDT RZ6 bid supplement p. 2 and operator manual p. 7 identify a 19-inch, 3U rack face, nominal 482.6×133.35 mm. This is not a fitted equipment rack. Processor depth (305 mm) and the palm-size RA4PA envelope (120×65×30 mm) are photo-based design estimates, not measured or manufacturer-certified.",
+ "independentBenchmark":"Offline illustrative scalar traces with fixed time base 0.05 ms per sample and row 32 as reference. Record L1 flat, L2 tops at 2 mV, L3 tops at 6 mV and L4 at 8 mV. At 5 mV threshold, first qualifying L3 has largest point at sample 76: (76−32)×0.05=2.20 ms. At 7 mV first qualifying L4 has the same known offset. At 9 mV no qualifying record; exact 6 mV threshold includes L3. Absolute values and labels belong only to the fictitious computer file.",
+ "tolerances":"Peak latency within one source sample (0.05 ms), case and index exact; 1e-7 m on authored nominal rack-face dimensions. Do not infer device timings, input ranges, or calibration."
+}
