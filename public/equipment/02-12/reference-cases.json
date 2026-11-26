@@ -1,0 +1,18 @@
+{
+  "schema":"bts.reflected-inspection.reference-cases.v1",
+  "basis":"Independent arithmetic from 5 µm model image-plane pixels, 1× relay and a literal 40 µm stage grating. Rayleigh = 0.61×0.55 µm/NA using documented Nikon numerical apertures; no measured optics.",
+  "cases":[
+    {"id":"fov-10","expected":256,"unit":"um","tolerance":1e-10},
+    {"id":"fov-20","expected":128,"unit":"um","tolerance":1e-10},
+    {"id":"peak-period-10","expected":80,"unit":"pixels","tolerance":1},
+    {"id":"peak-period-20","expected":160,"unit":"pixels","tolerance":1},
+    {"id":"physical-pitch-10","expected":40,"unit":"um","tolerance":0.5},
+    {"id":"physical-pitch-20","expected":40,"unit":"um","tolerance":0.25},
+    {"id":"rayleigh-10","expected":1.1183333333333334,"unit":"um","tolerance":1e-12},
+    {"id":"rayleigh-20","expected":0.7455555555555556,"unit":"um","tolerance":1e-12},
+    {"id":"incoherent-cutoff","expected":0,"unit":"1","tolerance":1e-12},
+    {"id":"defocus-reduces-fine-contrast","expected":true,"unit":"boolean"},
+    {"id":"bad-objective-rejected","expected":true,"unit":"boolean"},
+    {"id":"stand-base-width","expected":0.251,"unit":"m","tolerance":1e-5}
+  ]
+}
