@@ -1,7 +1,7 @@
 // Fixed, authored graphic points. No tracking, import, inference or biological data.
 const fixed=(t,xy)=>Object.freeze({t,coordinateMm:xy?Object.freeze({x:xy[0],y:xy[1]}):null});
 export const points=Object.freeze([fixed(0,[0,0]),fixed(.5,[3,4]),fixed(1,[6,0]),fixed(1.5,null),fixed(2,[13,8]),fixed(2.6,[13,14]),fixed(3.4,[9,17])]);
-export const source=Object.freeze({id:'geometric-waypoints-01',revision:0,kind:'authored nonbiological illustration',units:{coordinate:'mm (diagram scale)',time:'s (authored time labels)'}});
+export const source=Object.freeze({id:'geometric-waypoints-01',revision:0,kind:'authored nonbiological illustration',units:Object.freeze({coordinate:'mm (diagram scale)',time:'s (authored time labels)'})});
 export function read(i,revision=0){
  if(!Number.isInteger(i)||i<0||i>=points.length)throw Error('Choose a stored index from 0 to 6.');
  const p=points[i],q=points[i-1],has=p.coordinateMm&&q?.coordinateMm;
