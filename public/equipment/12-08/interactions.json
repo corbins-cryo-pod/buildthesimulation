@@ -1,0 +1,66 @@
+{
+  "triangles": 1144,
+  "draws": 26,
+  "nodes": 11,
+  "bytes": 81472,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "viewer_screen": {
+      "at": [
+        0.322,
+        1.021,
+        0.056
+      ],
+      "extent": [
+        0.225,
+        0.148,
+        0.033
+      ],
+      "action": "view",
+      "label": "Read the inert stored plane"
+    },
+    "viewer_prev": {
+      "at": [
+        0.275,
+        0.862,
+        0.241
+      ],
+      "extent": [
+        0.052,
+        0.026,
+        0.047
+      ],
+      "action": "prev",
+      "label": "Previous stored plane"
+    },
+    "viewer_next": {
+      "at": [
+        0.365,
+        0.862,
+        0.241
+      ],
+      "extent": [
+        0.052,
+        0.026,
+        0.047
+      ],
+      "action": "next",
+      "label": "Next stored plane"
+    },
+    "shell": {
+      "at": [
+        -0.11,
+        0.936,
+        -0.065
+      ],
+      "extent": [
+        0.6,
+        0.38,
+        0.425
+      ],
+      "label": "Sealed documentary exterior; no interaction"
+    }
+  }
+}
