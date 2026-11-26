@@ -1,0 +1,105 @@
+{
+  "units": "m",
+  "axes": "+X local right, +Y vertical, +Z toward operator",
+  "sizeM": [
+    0.6265,
+    0.121,
+    0.310848
+  ],
+  "meshes": 93,
+  "triangles": 15976,
+  "bytes": 821876,
+  "interaction": {
+    "Round_training_slot": {
+      "action": "slot",
+      "boundsMinM": [
+        0.3105,
+        0.024,
+        0.1175
+      ],
+      "boundsMaxM": [
+        0.3415,
+        0.028,
+        0.1485
+      ]
+    },
+    "Round_recess": {
+      "action": "slot",
+      "boundsMinM": [
+        0.316,
+        0.0277,
+        0.123
+      ],
+      "boundsMaxM": [
+        0.336,
+        0.0287,
+        0.143
+      ]
+    },
+    "Square_training_slot": {
+      "action": "slot",
+      "boundsMinM": [
+        0.312,
+        0.024,
+        0.044
+      ],
+      "boundsMaxM": [
+        0.34,
+        0.028,
+        0.072
+      ]
+    },
+    "Square_recess": {
+      "action": "slot",
+      "boundsMinM": [
+        0.3165,
+        0.0277,
+        0.0485
+      ],
+      "boundsMaxM": [
+        0.3355,
+        0.0287,
+        0.0675
+      ]
+    },
+    "Round_sim_token": {
+      "action": "token",
+      "boundsMinM": [
+        0.36,
+        0.023,
+        0.125
+      ],
+      "boundsMaxM": [
+        0.378,
+        0.033,
+        0.143
+      ]
+    },
+    "Square_sim_token": {
+      "action": "token",
+      "boundsMinM": [
+        0.36,
+        0.023,
+        0.05
+      ],
+      "boundsMaxM": [
+        0.378,
+        0.033,
+        0.068
+      ]
+    }
+  },
+  "board": {
+    "separate": true,
+    "mockSlots": [
+      "round",
+      "square"
+    ],
+    "electricalConnection": false
+  },
+  "nominalCabinetMm": [
+    432,
+    121,
+    286
+  ]
+}

@@ -334,7 +334,7 @@
   {
     "id": "10-15",
     "name": "Isolated pulse stimulator",
-    "model": "A-M Systems Model 2100 (candidate)",
+    "model": "A-M Systems Model 2100 / de-energized visual reference",
     "evidence": "C",
     "priority": "P1",
     "page": 35,
@@ -345,9 +345,10 @@
     "inputs": "Requested pulse train, isolated-load circuit, output mode and compliance limit",
     "outputs": "Time-resolved delivered voltage and current, polarity, compliance events and delivered charge (C)",
     "acceptance": "Drive a synthetic resistor in current mode within compliance and then beyond compliance. Confirm V = IR in the first trace and a flagged voltage-limited response in the second.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric nominal cabinet and separate fictional label board",
+    "simulationStatus": "Passive shape/label matching only; pulse-delivery test unsupported",
+    "integrationStatus": "Static label board report JSON without instrument connection",
+    "simulator": "/simulations/equipment/10-15/simulator/"
   },
   {
     "id": "10-16",
