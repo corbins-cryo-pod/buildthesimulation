@@ -1,0 +1,86 @@
+{
+  "schema": "bts.diener-nano.first-pass.v1",
+  "scope": "Independent exterior arithmetic and artificial chart only",
+  "checks": [
+    {
+      "id": "Nominal cabinet width",
+      "expected": 0.54,
+      "actual": 0.54,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Nominal cabinet depth",
+      "expected": 0.8,
+      "actual": 0.8,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Nominal cabinet height",
+      "expected": 0.775,
+      "actual": 0.775,
+      "unit": "m",
+      "tolerance": 1e-7,
+      "pass": true
+    },
+    {
+      "id": "Centered narrow chart 0° X/Y",
+      "expected": "55,25",
+      "actual": "55,25",
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Centered narrow chart 90° X/Y",
+      "expected": "-75,155",
+      "actual": "-75,155",
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Narrow chart rotation fails geometric containment",
+      "expected": false,
+      "actual": false,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Centered wide chart 90° X/Y",
+      "expected": "75,155",
+      "actual": "75,155",
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Both ray targets resolve",
+      "expected": 2,
+      "actual": 2,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Unknown chart rejected while retaining selection",
+      "expected": true,
+      "actual": true,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Orientation reversal reproduces front axis",
+      "expected": 540,
+      "actual": 540,
+      "unit": "mm",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}

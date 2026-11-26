@@ -1,0 +1,6 @@
+{
+  "configuration":"Diener Nano current tabletop family, manufacturer circular front-door depiction; closed documentary chassis",
+  "geometryBasis":"Diener 00003DEEN-v9-202610 p. 1 lists 540 mm W × 800 mm D × 775 mm H for the tabletop housing alone. No connectors or working internals are modeled.",
+  "independentBasis":"Centered 540×800 projection on the invented 650×850 chart leaves (650-540)/2 = 55 mm at each X side and (850-800)/2 = 25 mm at each Y side. At 90° the width becomes 800 mm, protruding 75 mm per X side. Centered on the larger 950×850 chart at 90°, the X/Y margins are 75/155 mm.",
+  "tolerance":"Exact millimetres for abstract chart. 1e-7 metre arithmetic tolerance for GLB nominal housing bounds, not a product tolerance."
+}
