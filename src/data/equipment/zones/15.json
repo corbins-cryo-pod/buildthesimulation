@@ -2,7 +2,7 @@
   {
     "id": "15-01",
     "name": "Stereotaxic frame",
-    "model": "Kopf Model 940 (candidate; confirm species configuration)",
+    "model": "David Kopf Instruments Model 940 (documentary outline)",
     "evidence": "C",
     "priority": "P2",
     "page": 46,
@@ -13,9 +13,16 @@
     "inputs": "Digital anatomy coordinate frame, stage-axis calibration, mount pose and virtual point",
     "outputs": "Probe pose and landmark coordinates with parent frame and transform provenance",
     "acceptance": "Use an asymmetric landmark triad and known rigid transform. Transform each point to stage coordinates and back within numeric tolerance; left and right labels must remain distinct.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built, documentary solid profile with known exterior plate scale",
+    "simulationStatus": "Detached triangle illustration; no positioning model",
+    "integrationStatus": "Standalone exhibit and artwork JSON",
+    "simulator": "/simulations/equipment/15-01/simulator/",
+    "related": [
+      [
+        "Exterior references and independent static artwork checks",
+        "/simulations/equipment/15-01/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "15-02",
