@@ -1,0 +1,25 @@
+---
+import Layout from '../../../../layouts/Layout.astro';import '../../../../styles/equipment.css';
+const d='/equipment/06-05/',image='https://www.inovenso.com/wp-content/uploads/2022/07/NE200_Product_Information_Upd_21JULY.pdf#page=1';
+---
+<Layout pageTitle="Inovenso NE200 sealed exterior and offline rectangle comparison" description="Orbit the dormant Inovenso NE200 cabinet and compare equal-area rectangles on a separate stand." wide={true}>
+<article class="equipment" id="ne200"><nav class="eq-nav"><a href="/simulations/equipment/06-05/">← Equipment 06-05</a><a href="/simulations/equipment/">Register</a><a href="#ne-evidence">Evidence</a></nav>
+<header class="eq-mast"><p class="eq-meta">06-05 / SEALED EXTERIOR · DETACHED DIAGRAM</p><h2>Inspect the enclosure and compare rectangles</h2><p class="eq-lede">The NE200 cabinet is a sealed, unpowered documentary view. The detached teaching board shows how rectangles can have the same area but different perimeters.</p></header>
+<div class="ne-cols"><section><h3>Inovenso NE200 sealed geometry</h3><canvas id="ne-model" aria-label="Orbitable dormant NE200 exterior and unrelated math stand"></canvas><p id="ne-viewstatus" role="status">Loading metric GLB…</p><button id="ne-front">Reset overview</button><button id="ne-shell">Rear and side</button><button id="ne-board">Detached board</button></section>
+<section><h3>Fixed-area rectangle comparison</h3>
+<svg id="ne-chart" viewBox="0 0 160 90" role="img" aria-label="A rectangle on a dark independent diagram board"><rect width="160" height="90" fill="#20343a"/><rect x="50" y="15" width="60" height="60" fill="none" stroke="#74aaa5" stroke-dasharray="3 2"/><rect id="ne-diagram" x="50" y="15" width="60" height="60" fill="#d4a64f" fill-opacity=".68" stroke="#ffd48b"/></svg>
+<label>Rectangle width<select id="ne-width"><option value="10">10 units</option><option value="12.5">12.5 units</option><option value="20">20 units</option></select></label><button id="ne-next">Next rectangle</button>
+<p id="ne-readout" role="status"></p><p>The dashed square is the default reference. Width and height are fictional grid units with no physical scale on this instrument.</p>
+<button id="ne-export">Download the geometry result</button><p><a href={d+'example-rectangle.json'}>Example result at width 20</a>.</p></section></div>
+<section id="ne-evidence"><h3>Exterior source</h3><div class="ne-cols"><figure><img src={d+'station.webp'} alt="Original sealed NE200 cabinet and detached board"/><figcaption>Original three-quarter view. <a href={image}>Inovenso NE200 product sheet, July 2022, p. 1</a> supplies the catalog appearance and 770 × 1,040 × 675 mm exterior (W × H × D). The selected version is the photographed cabinet only.</figcaption></figure>
+<figure><img src={d+'rear.webp'} alt="Original rear and side of the NE200 with opaque glazing and blank relief"/><figcaption>Original rear and side. Rear details, component positions, panel depths and beacon proportions are inferred. Glazing is intentionally opaque; the model has no internal assembly or actual controls.</figcaption></figure></div>
+<table><thead><tr><th>Check</th><th>Expected</th><th>Actual / tolerance</th></tr></thead><tbody><tr><td>Cabinet W × H × D</td><td>770 × 1,040 × 675 mm</td><td>Modeled within 0.5 mm; published size, not an installation survey</td></tr><tr><td>10 × 10</td><td>Area 100; perimeter 40</td><td>Exact</td></tr><tr><td>12.5 × 8</td><td>Area 100; perimeter 41</td><td>Exact</td></tr><tr><td>20 × 5</td><td>Area 100; perimeter 50</td><td>Exact</td></tr></tbody></table>
+<p>Only Euclidean rectangle geometry is calculated. No materials, fabrication, physics, equipment settings, powered components, specimen, or process outcomes are represented; the register's original acceptance is unsupported.</p><p><a href={d+'build-model.py'}>Editable Blender source</a> · <a href={d+'ne200.glb'}>Metric GLB</a> · <a href={d+'rectangle.mjs'}>Math module and result schema</a> · <a href={d+'vr.json'}>VR action bounds</a>. Headset use not verified.</p></section></article></Layout>
+<script>import '../../../../lib/equipment/06-05/client.mjs';</script>
+<style is:global>
+#ne200 .ne-cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1rem}#ne200 section{margin:1rem 0;padding:1rem;border:1px solid var(--border);min-width:0}
+#ne200 :is(button,select){font:inherit;color:inherit;background:var(--panel);border:1px solid var(--border);padding:.4rem;margin:.2rem .25rem .2rem 0;max-width:100%}#ne200 button{cursor:pointer}#ne200 :is(button,select):focus-visible{outline:2px solid #b28d5e}
+#ne-model{width:100%;height:354px;display:block;touch-action:none}#ne-chart{display:block;width:min(100%,340px);margin:.4rem auto}#ne200 figure{margin:.5rem 0}#ne200 figure img{width:100%}
+#ne200 table{width:100%;font-size:.94rem;border-collapse:collapse;text-align:left}#ne200 td,#ne200 th{border-bottom:1px solid var(--border);padding:.35rem}
+@media(max-width:850px){#ne200 .ne-cols{grid-template-columns:minmax(0,1fr)}#ne-model{height:282px}}
+</style>
