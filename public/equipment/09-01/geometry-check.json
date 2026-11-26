@@ -1,0 +1,38 @@
+{
+  "method": "Scan all binary position vertices after scene transforms. Exclude cable, leads and dummy board. Include the back and front panel components. Gamry nominal legacy enclosure specification. Engineering reconstruction tolerance ±3.5 mm.",
+  "checks": [
+    {
+      "axis": "width",
+      "referenceMm": 90,
+      "actualMm": 90.03,
+      "toleranceMm": 3.5,
+      "pass": true
+    },
+    {
+      "axis": "height",
+      "referenceMm": 190,
+      "actualMm": 190.008,
+      "toleranceMm": 3.5,
+      "pass": true
+    },
+    {
+      "axis": "depth",
+      "referenceMm": 270,
+      "actualMm": 273.378,
+      "toleranceMm": 3.5,
+      "pass": true
+    }
+  ],
+  "includedNodes": [
+    "housing",
+    "front_inscriptions",
+    "led_cell",
+    "led_overload",
+    "led_power",
+    "led_usb",
+    "front_db25",
+    "rear_io",
+    "rear_power",
+    "rear_rocker"
+  ]
+}
