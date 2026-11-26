@@ -228,7 +228,7 @@
   {
     "id": "03-11",
     "name": "Rapid thermal processing",
-    "model": "Modular Process Technology RTP system (model pending)",
+    "model": "Modular Process Technology RTP-600xp / de-energized reference",
     "evidence": "B",
     "priority": "P3",
     "page": 14,
@@ -241,9 +241,10 @@
     "inputs": "Wafer revision, lamp-cycle command, sampled temperature trace and clock basis",
     "outputs": "Short-cycle history with measured ramp, peak and dwell linked to the wafer",
     "acceptance": "Feed a synthetic triangular temperature trace of known slope. Recover both ramp rates and peak from the samples; do not insert a dwell in a waveform with none.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Source-dimensioned metric shell with authored dry display drawer",
+    "simulationStatus": "Non-operational dry carrier lateral clearance only",
+    "integrationStatus": "Static dry clearance report JSON; no real machine output",
+    "simulator": "/simulations/equipment/03-11/simulator/"
   },
   {
     "id": "03-12",

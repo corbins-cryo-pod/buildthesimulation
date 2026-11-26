@@ -1,0 +1,23 @@
+{
+  "schema": "bts.passive-carrier-clearance.v1",
+  "instrumentId": "03-11",
+  "sampleId": "RTP-DRY-DUMMY-01",
+  "revision": 2,
+  "origin": "simulated",
+  "machineState": "de-energized-display-only",
+  "dryGeometry": {
+    "transverseUnit": "mm",
+    "boundaryWidthMm": 206,
+    "dummyDiameterMm": 150,
+    "centerXMm": 0,
+    "clearanceLeftMm": 28,
+    "clearanceRightMm": 28,
+    "minimumMarginMm": 28,
+    "fits": true
+  },
+  "drawer": {
+    "shown": true,
+    "illustrativeOffsetMm": 224
+  },
+  "note": "Lateral-only clearance in an authored inert display fixture; no real fit, operation or wafer change claimed."
+}
