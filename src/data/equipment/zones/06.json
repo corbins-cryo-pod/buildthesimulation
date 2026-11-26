@@ -99,9 +99,10 @@
     "inputs": "Collector frame, axial orientation distribution, length distribution and random seed",
     "outputs": "Scaffold revision containing fiber centerlines and a measured orientation histogram",
     "acceptance": "Generate isotropic and aligned planar fixtures. Their axial order magnitudes should approach zero and one respectively within the declared finite-sample tolerance.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass original sealed metric NE200 exterior",
+    "simulationStatus": "Dormant exterior and detached equal-area rectangle exercise",
+    "integrationStatus": "Standalone viewer; no fabrication or instrument connection",
+    "simulator": "/simulations/equipment/06-05/simulator/"
   },
   {
     "id": "06-06",
