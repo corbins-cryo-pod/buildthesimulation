@@ -1,0 +1,54 @@
+{
+  "schema": "bts.station.vevo3100.static-ruler.v1",
+  "equipment": "15-07",
+  "model": "./vevo3100-console.glb",
+  "units": "m",
+  "axes": "+Y up +Z front",
+  "nodes": 69,
+  "bytes": 55532,
+  "triangles": 6664,
+  "hitTargets": [
+    {
+      "node": "Cycle_marker_pair",
+      "action": "cycle",
+      "label": "Cycle the detached illustration row pair",
+      "boundsM": {
+        "min": [
+          0.603,
+          0.732,
+          0.175
+        ],
+        "max": [
+          0.7250000000000001,
+          0.772,
+          0.205
+        ]
+      }
+    },
+    {
+      "node": "Reverse_ruler_endpoints",
+      "action": "reverse",
+      "label": "Reverse the order of the markers on the illustration",
+      "boundsM": {
+        "min": [
+          0.7949999999999999,
+          0.732,
+          0.175
+        ],
+        "max": [
+          0.917,
+          0.772,
+          0.205
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./ruler.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)"
+  },
+  "note": "Only the detached drawn ruler is interactive. No headset test."
+}

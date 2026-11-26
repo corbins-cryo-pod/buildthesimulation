@@ -1,0 +1,32 @@
+{
+  "schema": "bts.vevo3100.detached-static-ruler.v1",
+  "equipment": "15-07",
+  "graphic": {
+    "id": "BTS-INERT-RULER-FRAME-01",
+    "revision": "1",
+    "columns": 96,
+    "rows": 80,
+    "rowPitchMm": 0.125,
+    "origin": "center of row 0",
+    "marks": {
+      "A": 16,
+      "B": 52
+    }
+  },
+  "provenance": "authored static stripes, not acquired or simulated signal, imaging or hardware data",
+  "measurement": {
+    "from": "A",
+    "to": "B",
+    "firstRow": 16,
+    "secondRow": 52,
+    "firstPositionMm": 2,
+    "secondPositionMm": 6.5,
+    "deltaRows": 36,
+    "signedMm": 4.5,
+    "separationMm": 4.5
+  },
+  "units": {
+    "length": "mm",
+    "index": "dimensionless row"
+  }
+}

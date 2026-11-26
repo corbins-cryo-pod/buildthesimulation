@@ -118,7 +118,7 @@
   {
     "id": "15-07",
     "name": "High-frequency ultrasound",
-    "model": "VisualSonics Vevo 3100 LAZR",
+    "model": "FUJIFILM VisualSonics Vevo 3100 (legacy LAZR-X console exterior)",
     "evidence": "B",
     "priority": "P3",
     "page": 47,
@@ -131,9 +131,16 @@
     "inputs": "Calibrated B-mode image or synthetic echo frame, transducer preset and depth sampling",
     "outputs": "Ultrasound image, depth localization and acquisition metadata",
     "acceptance": "Supply two axial reflectors at known depths in a synthetic frame. The ruler must recover their separation to within one axial sample under the declared calibration.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built, documented dormant 3100 cart footprint",
+    "simulationStatus": "Detached static graphic ruler; no acquisition or exposure",
+    "integrationStatus": "Standalone exhibit and geometry-only JSON",
+    "simulator": "/simulations/equipment/15-07/simulator/",
+    "related": [
+      [
+        "Cart references and independent ruler checks",
+        "/simulations/equipment/15-07/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "15-08",
