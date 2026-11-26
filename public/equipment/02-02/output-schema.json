@@ -23,5 +23,16 @@
     "ny": "row count",
     "values": "row-major dose array; first row at minimum y"
   },
-  "pose": "coupon to mask rigid transform; mm, degrees; maskToCoupon 3×3 inverse homogeneous transform"
+  "pose": "coupon to mask rigid transform; mm, degrees; maskToCoupon 3×3 inverse homogeneous transform",
+  "alignment": {
+    "status": "evaluated or not-evaluated",
+    "source": "explicit-coupon-marks, legacy-nominal, or first-level",
+    "rmsMm": "root mean square Euclidean residual of matched marks, null if unavailable",
+    "fiducials": "matched by stable ID; couponMarkLocalMm, nominalMaskMm, couponMarkInMaskMm, residualMm; empty array for first-level"
+  },
+  "exposure": {
+    "nominalWavelengthNm": 405,
+    "mode": "ideal-hard-contact",
+    "note": "nominal channel, no spectral or chemical model"
+  }
 }

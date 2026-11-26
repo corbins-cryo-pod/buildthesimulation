@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {defaults,exposure,pose,fit,transform,inverse} from '../public/equipment/02-02/solver.mjs';
+import {defaults,exposure,pose,fit,transform,inverse,solveAlignment,overlay} from '../public/equipment/02-02/solver.mjs';
 const near=(a,b,t=1e-9)=>assert.ok(Math.abs(a-b)<=t, a+' != '+b);
 const mask={id:'SQUARE-REFERENCE',revision:0,clear:[{id:'open',x:0,y:0,w:2,h:2}],fiducials:[{id:'left',x:-5,y:5},{id:'right',x:5,y:5}]};
 const square={...defaults,mask,pitchMm:.1};
@@ -13,3 +13,18 @@ test('Control response: doubling time doubles dose, geometry unchanged',()=>{con
 test('Analytic rigid transform: 90° test outside operating span and round-trip within span',()=>{const a=transform(1,0,{xMm:2,yMm:3,thetaDeg:90});near(a[0],2);near(a[1],4);const s={xMm:.3,yMm:-1,thetaDeg:15};const b=inverse(...transform(2,-4,s),s);near(b[0],2);near(b[1],-4)});
 test('Mask validation, revision and example schema',()=>{assert.equal(exposure({...square,mask:{...mask,clear:[]}}).code,'mask');const a=exposure(defaults).sampleRevision;assert.equal(a.sampleId,defaults.sampleId);assert.equal(a.parentRevision,0);assert.equal(a.revision,1);assert.equal(a.grid.values.length,a.grid.nx*a.grid.ny);assert.equal(a.schema,'bts.lithography.latent-dose.v1')});
 test('Geometry source uses mm, chuck and mask are documented scale and stable pivots',()=>{const m=JSON.parse(readFileSync(new URL('../public/equipment/02-02/model-source.json',import.meta.url)));const nodes=Object.fromEntries(m.nodes.map(n=>[n.name,n]));assert.equal(nodes.chuck.size[0],25.4);assert.equal(nodes.mask_glass.size[0],76.2);assert.equal(nodes.mask_glass.size[2],76.2);assert.equal(nodes.coupon.parent,'stage_pose');for(const key of ['transport','stage_pose','contact_lever','mask_holder','microscope','exposure_head'])assert.ok(nodes[key]);const g=JSON.parse(readFileSync(new URL('../public/equipment/02-02/mjb3.gltf',import.meta.url)));assert.equal(g.asset.version,'2.0');assert.equal(g.nodes.length,m.nodes.length);assert.ok(g.buffers[0].byteLength>0)});
+
+test('Independent offset coupon coordinates recover translation and rotation, no mutation',()=>{
+ const s={...square};
+ // Independent rigid inverse fixture: q=(-5,5),(5,5); known pose (0.8,-0.4,6°).
+ const ang=Math.PI/30,c=Math.cos(ang),n=Math.sin(ang);
+ s.couponFiducials=mask.fiducials.map(f=>({id:f.id,x:c*(f.x-.8)+n*(f.y+.4),y:-n*(f.x-.8)+c*(f.y+.4)}));
+ const before=JSON.stringify(s),a=solveAlignment(s);assert.ok(a.ok);near(a.pose.xMm,.8);near(a.pose.yMm,-.4);near(a.pose.thetaDeg,6);near(a.rmsMm,0);assert.equal(JSON.stringify(s),before);
+ const out=exposure({...s,...a.pose}).sampleRevision;near(out.alignment.rmsMm,0);assert.equal(out.alignment.source,'explicit-coupon-marks');assert.equal(out.fiducials.length,2);
+});
+test('Unequal mark baselines leave nonzero least-squares residual',()=>{const s={...square,couponFiducials:[{id:'left',x:-4.9,y:5},{id:'right',x:4.9,y:5}]};const a=solveAlignment(s);assert.ok(a.ok);near(a.pose.xMm,0);near(a.pose.yMm,0);near(a.pose.thetaDeg,0);near(a.baselineMismatchMm,.2);near(a.rmsMm,.1);near(a.marks[0].delta[0],.1);near(a.marks[1].delta[0],-.1)});
+test('Out-of-travel alignment rejects rather than clipping; invalid marks and first-level exposure',()=>{const wideMask={...mask,fiducials:[{id:'left',x:-2,y:2},{id:'right',x:2,y:2}]};const s={...square,mask:wideMask,couponFiducials:[{id:'left',x:-6,y:2},{id:'right',x:-2,y:2}]};const a=solveAlignment(s);assert.equal(a.code,'travel');near(a.requested.xMm,4);assert.equal(a.sampleRevision,null);
+ assert.equal(exposure({...square,couponFiducials:[{id:'left',x:-9,y:0},{id:'right',x:5,y:5}]}).code,'fiducials');assert.equal(exposure({...square,couponFiducials:[{id:'wrong',x:0,y:0},{id:'right',x:5,y:5}]}).code,'fiducials');
+ assert.equal(solveAlignment({...square,couponFiducials:null}).code,'no-marks');const o=exposure({...square,couponFiducials:null}).sampleRevision;assert.equal(o.fiducials.length,0);assert.equal(o.alignment.status,'not-evaluated');assert.equal(o.alignment.rmsMm,null);assert.equal(o.statistics.exposedPixels,400);
+});
+test('Boolean interlocks are strict and explicit mark coordinates survive JSON export',()=>{assert.equal(exposure({...square,contact:'false'}).code,'interlock');const s={...square,couponFiducials:mask.fiducials.map(f=>({...f,x:f.x+.1}))};const r=exposure(s).sampleRevision;near(r.fiducials[0].couponMarkLocalMm[0],-4.9);near(r.alignment.rmsMm,.1);assert.equal(r.exposure.nominalWavelengthNm,405)});

@@ -53,5 +53,59 @@
       "maxDoseMjCm2": 100
     }
   },
-  "limits": "No experimental resist/diffraction data; enclosure, hole layout and Z/transport stroke are not measured."
+  "limits": "No experimental resist/diffraction data; enclosure, hole layout and Z/transport stroke are not measured.",
+  "review": {
+    "method": "Executed all current repository numerical test bodies in a JavaScript isolate; Node and browser CI separate.",
+    "cases": [
+      {
+        "name": "Independent 2 × 2 mm aperture, 25 mW/cm² × 4 s: 400 cells at 100 mJ/cm², 4 mm²",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Known 1 mm stage translation shifts pattern left 10 pixels; dose/area conserved",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Record acceptance: valid fit and centered edge, rejection beyond travel preserves input",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Fit rejects overhang and uncovered assumed holes; interlocks refuse exposure",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Control response: doubling time doubles dose, geometry unchanged",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Analytic rigid transform: 90° test outside operating span and round-trip within span",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Mask validation, revision and example schema",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Geometry source uses mm, chuck and mask are documented scale and stable pivots",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Independent offset coupon coordinates recover translation and rotation, no mutation",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Unequal mark baselines leave nonzero least-squares residual",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Out-of-travel alignment rejects rather than clipping; invalid marks and first-level exposure",
+        "outcome": "PASS"
+      },
+      {
+        "name": "Boolean interlocks are strict and explicit mark coordinates survive JSON export",
+        "outcome": "PASS"
+      }
+    ],
+    "limitations": "Two-point least-squares rigid registration; no optical metrology or resist validation. Separation stroke is modeled as a geometric interlock only."
+  }
 }

@@ -24,17 +24,58 @@ export function checkMask(m){if(!m||typeof m.id!=="string"||!m.id.trim()||!Numbe
  const ids=new Set();for(const f of [...m.clear,...m.fiducials]){if(!f||typeof f.id!=="string"||!f.id.trim()||ids.has(f.id)||![f.x,f.y].every(finite)||Math.abs(f.x)>38.1||Math.abs(f.y)>38.1)return fail("mask","Invalid or duplicate feature ID / coordinates.");ids.add(f.id)}
  for(const f of m.clear){if(![f.w,f.h].every(finite)||f.w<=0||f.h<=0||Math.abs(f.x)+f.w/2>38.1||Math.abs(f.y)+f.h/2>38.1)return fail("mask","A clear rectangle exceeds the mask plate.");}
  if(Math.hypot(m.fiducials[0].x-m.fiducials[1].x,m.fiducials[0].y-m.fiducials[1].y)<.01)return fail("mask","Fiducials must be distinct.");return {ok:true}}
+// Coupon marks are independent of the photomask. Omission is legacy nominal
+// correspondence; explicit null is a first-level exposure without alignment.
+export function checkAlignment(s){
+ const m=checkMask(s.mask);if(!m.ok)return m;
+ if(s.couponFiducials===null)return fail("no-marks","First-level specimen has no alignment marks.");
+ const marks=s.couponFiducials===undefined?s.mask.fiducials:s.couponFiducials;
+ if(!Array.isArray(marks)||marks.length!==2)return fail("fiducials","Enter exactly two coupon-local marks or null for first-level exposure.");
+ if(![s.widthMm,s.heightMm].every(finite)||s.widthMm<=0||s.heightMm<=0)return fail("sample","Invalid coupon dimensions.");
+ const seen=new Set();
+ for(const f of marks){
+  if(!f||typeof f.id!=="string"||!f.id.trim()||seen.has(f.id)||![f.x,f.y].every(finite))return fail("fiducials","Coupon marks require unique IDs and finite x/y coordinates.");
+  seen.add(f.id);
+  if(Math.abs(f.x)>s.widthMm/2||Math.abs(f.y)>s.heightMm/2)return fail("fiducials","A coupon mark lies outside the coupon.");
+ }
+ const pairs=s.mask.fiducials.map(f=>({mask:f,coupon:marks.find(c=>c.id===f.id)}));
+ if(pairs.some(p=>!p.coupon))return fail("fiducials","Coupon and mask mark IDs must match.");
+ if(Math.hypot(pairs[1].coupon.x-pairs[0].coupon.x,pairs[1].coupon.y-pairs[0].coupon.y)<.01)return fail("fiducials","Coupon marks must be separated by at least 0.01 mm.");
+ if(pairs.some(p=>Math.hypot(p.mask.x,p.mask.y)>limits.apertureDiameterMm/2))return fail("fiducials","A mask mark is outside the modeled inspection/exposure aperture.");
+ return {ok:true,pairs,source:s.couponFiducials===undefined?"legacy-nominal":"explicit-coupon-marks"};
+}
+export function overlay(s){
+ const q=checkAlignment(s);if(!q.ok||!pose(s).ok)return null;
+ return q.pairs.map(({mask,coupon})=>{const [x,y]=transform(coupon.x,coupon.y,s);return {id:mask.id,target:[mask.x,mask.y],coupon:[coupon.x,coupon.y],actual:[x,y],delta:[x-mask.x,y-mask.y]}});
+}
+export function solveAlignment(s){
+ const q=checkAlignment(s);if(!q.ok)return q;
+ const [a,b]=q.pairs;
+ const dx=b.coupon.x-a.coupon.x,dy=b.coupon.y-a.coupon.y,mx=b.mask.x-a.mask.x,my=b.mask.y-a.mask.y;
+ const thetaDeg=Math.atan2(dx*my-dy*mx,dx*mx+dy*my)*180/Math.PI;
+ const c=Math.cos(thetaDeg*Math.PI/180),n=Math.sin(thetaDeg*Math.PI/180);
+ const cx=(a.coupon.x+b.coupon.x)/2,cy=(a.coupon.y+b.coupon.y)/2,tx=(a.mask.x+b.mask.x)/2,ty=(a.mask.y+b.mask.y)/2;
+ const requested={xMm:tx-(c*cx-n*cy),yMm:ty-(n*cx+c*cy),thetaDeg};
+ // Remove roundoff near zero and the physical bounds, not actual out-of-range poses.
+ for(const [k,lim] of [["xMm",limits.xyMm],["yMm",limits.xyMm],["thetaDeg",limits.thetaDeg]]){if(Math.abs(requested[k])<1e-12)requested[k]=0;if(Math.abs(Math.abs(requested[k])-lim)<1e-12)requested[k]=Math.sign(requested[k])*lim;}
+ const valid=pose(requested);if(!valid.ok)return {...valid,requested};
+ const marks=overlay({...s,...requested}),rmsMm=Math.sqrt(marks.reduce((sum,f)=>sum+f.delta[0]**2+f.delta[1]**2,0)/marks.length);
+ return {ok:true,pose:requested,marks,rmsMm,baselineMismatchMm:Math.hypot(mx,my)-Math.hypot(dx,dy)};
+}
 export function exposure(s){
  for(const f of [fit(s),pose(s),checkMask(s.mask)])if(!f.ok)return f;
- if(!s.loaded||!s.clamped||!s.contact)return fail("interlock","Load the coupon, clamp the mask and return to contact before exposure.");
+ if(s.loaded!==true||s.clamped!==true||s.contact!==true)return fail("interlock","Load the coupon, clamp the mask and return to contact before exposure.");
  if(typeof s.sampleId!=="string"||!s.sampleId.trim()||s.sampleId.length>100||!Number.isInteger(s.revision)||s.revision<0||s.revision>=1e6)return fail("identity","Invalid input sample ID or revision.");
  if(![s.intensity,s.seconds,s.pitchMm].every(finite)||s.intensity<=0||s.intensity>100||s.seconds<=0||s.seconds>120||s.pitchMm<.05||s.pitchMm>.5)return fail("dose","Use intensity 0–100 mW/cm², time 0–120 s (positive), pitch 0.05–0.5 mm.");
  const nx=Math.ceil(s.widthMm/s.pitchMm),ny=Math.ceil(s.heightMm/s.pitchMm),dx=s.widthMm/nx,dy=s.heightMm/ny,dose=s.intensity*s.seconds;
  const raster=new Array(nx*ny);let lit=0;
  for(let j=0;j<ny;j++)for(let i=0;i<nx;i++){const x=-s.widthMm/2+(i+.5)*dx,y=-s.heightMm/2+(j+.5)*dy;const [u,v]=transform(x,y,s);const open=u*u+v*v<=25.4**2&&s.mask.clear.some(f=>Math.abs(u-f.x)<f.w/2&&Math.abs(v-f.y)<f.h/2);raster[j*nx+i]=open?dose:0;if(open)lit++}
- const fiducials=s.mask.fiducials.map(f=>{const [x,y]=transform(f.x,f.y,s);return {id:f.id,nominalMaskMm:[f.x,f.y],couponMarkInMaskMm:[x,y],residualMm:[x-f.x,y-f.y]}});
+ const alignmentCheck=checkAlignment(s);
+ if(!alignmentCheck.ok&&s.couponFiducials!==undefined&&s.couponFiducials!==null)return alignmentCheck;
+ const matched=alignmentCheck.ok?overlay(s):[];
+ const fiducials=matched.map(f=>({id:f.id,nominalMaskMm:f.target,couponMarkLocalMm:f.coupon,couponMarkInMaskMm:f.actual,residualMm:f.delta}));
+ const alignment={status:alignmentCheck.ok?"evaluated":"not-evaluated",source:alignmentCheck.source??(s.couponFiducials===null?"first-level":"legacy-nominal"),rmsMm:matched.length?Math.sqrt(matched.reduce((sum,f)=>sum+f.delta[0]**2+f.delta[1]**2,0)/matched.length):null,...(!alignmentCheck.ok?{reason:alignmentCheck.message}:{})};
  const angle=s.thetaDeg*Math.PI/180,c=Math.cos(angle),n=Math.sin(angle),[ix,iy]=inverse(0,0,s);
- const sampleRevision={schema:"bts.lithography.latent-dose.v1",equipmentId:"02-02",provenance:"simulated ideal binary geometric hard contact; no material calibration",sampleId:s.sampleId,parentRevision:s.revision,revision:s.revision+1,sample:{widthMm:s.widthMm,heightMm:s.heightMm,thicknessUm:s.thicknessUm},mask:JSON.parse(JSON.stringify(s.mask)),pose:{xMm:s.xMm,yMm:s.yMm,thetaDeg:s.thetaDeg},maskToCoupon:[[c,n,ix],[-n,c,iy],[0,0,1]],fiducials,exposure:{mode:"ideal-hard-contact",intensityMwCm2:s.intensity,seconds:s.seconds,peakDoseMjCm2:dose},grid:{frame:"coupon-centered, +x right, +y away from operator; row 0 at minimum y; cell centers",originMm:[-s.widthMm/2,-s.heightMm/2],spacingMm:[dx,dy],nx,ny,unit:"mJ/cm2",order:"row-major",values:raster},statistics:{exposedPixels:lit,exposedAreaMm2:lit*dx*dy,exposedFraction:lit/raster.length,maxDoseMjCm2:lit?dose:0}};
+ const sampleRevision={schema:"bts.lithography.latent-dose.v1",equipmentId:"02-02",provenance:"simulated ideal binary geometric hard contact; no material calibration",sampleId:s.sampleId,parentRevision:s.revision,revision:s.revision+1,sample:{widthMm:s.widthMm,heightMm:s.heightMm,thicknessUm:s.thicknessUm},mask:JSON.parse(JSON.stringify(s.mask)),alignment,pose:{xMm:s.xMm,yMm:s.yMm,thetaDeg:s.thetaDeg},maskToCoupon:[[c,n,ix],[-n,c,iy],[0,0,1]],fiducials,exposure:{mode:"ideal-hard-contact",nominalWavelengthNm:405,intensityMwCm2:s.intensity,seconds:s.seconds,peakDoseMjCm2:dose},grid:{frame:"coupon-centered, +x right, +y away from operator; row 0 at minimum y; cell centers",originMm:[-s.widthMm/2,-s.heightMm/2],spacingMm:[dx,dy],nx,ny,unit:"mJ/cm2",order:"row-major",values:raster},statistics:{exposedPixels:lit,exposedAreaMm2:lit*dx*dy,exposedFraction:lit/raster.length,maxDoseMjCm2:lit?dose:0}};
  return {ok:true,code:"ok",message:"Exposure complete; incoming coupon remains unchanged.",sampleRevision};
 }
-export function overlay(s){const mask=s.mask;if(!checkMask(mask).ok||!pose(s).ok)return null;return mask.fiducials.map(f=>{const [x,y]=transform(f.x,f.y,s);return {id:f.id,target:[f.x,f.y],actual:[x,y],delta:[x-f.x,y-f.y]}})}
