@@ -1,0 +1,13 @@
+{
+ "scope":"Independent cases declared before implementing fitter; nominal angles are synthetic, not hardware calibration",
+ "cases":[
+  {"id":"SEMICIRCLE","kind":"Raster recovery","expected":[90,90],"unit":"deg","tolerance":0.35,"reason":"Five µL noiseless semicircle rasterized at 15 µm/pixel; ±0.35° bounds finite-pixel interpolation."},
+  {"id":"ACUTE","kind":"Raster recovery","expected":[55,55],"unit":"deg","tolerance":0.5,"reason":"55° circle cap with same volume; finite pixel, shallow arc tolerance."},
+  {"id":"OBTUSE","kind":"Raster recovery","expected":[125,125],"unit":"deg","tolerance":0.45,"reason":"125° circle cap contains overhang; analyzer must not assume y=f(x)."},
+  {"id":"ROLLED","kind":"Coordinate invariance","expected":[107,107],"unit":"deg","tolerance":0.5,"reason":"107° circle observed through +8° image roll; fit using matching tilted image baseline."},
+  {"id":"BASELINE","kind":"Control sensitivity","expected":0.7,"unit":"deg","tolerance":0.15,"reason":"Raise marked plane by one pixel for a 5 µL hemisphere (R≈1.337 mm). Expected angular change ≈asin(0.015/1.337)≈0.64°; tolerate mild raster error."},
+  {"id":"HEMISPHERE_VOLUME","kind":"Analytic geometry","expected":1.336504617571976,"unit":"mm","tolerance":1e-7,"reason":"5 µL hemisphere has R=(3V/2π)^(1/3) using 1 µL = 1 mm³."},
+  {"id":"BLANK","kind":"Failure case","expected":"contour","unit":"error code","reason":"A uniform bright image has no sessile-drop edge."},
+  {"id":"CLIPPED","kind":"Failure case","expected":"clipped","unit":"error code","reason":"A dark silhouette crossing the frame must not produce angles."}
+ ]
+}

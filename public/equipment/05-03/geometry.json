@@ -1,0 +1,108 @@
+{
+  "source": "Dimension Icon Instruction Manual Rev E pp. 4, 40, 43–44 and RTESP-300 specification. Nominal member dimensions vs exported GLB accessor bounds, world metres.",
+  "rows": [
+    {
+      "label": "Hood at deck: width",
+      "expectedMm": 914.4,
+      "actualMm": 914.3999814987183,
+      "toleranceMm": 0.02,
+      "pass": true
+    },
+    {
+      "label": "Hood at deck: depth, no handle",
+      "expectedMm": 812.8,
+      "actualMm": 812.7999901771545,
+      "toleranceMm": 0.02,
+      "pass": true
+    },
+    {
+      "label": "Microscope width",
+      "expectedMm": 594.36,
+      "actualMm": 594.3599939346313,
+      "toleranceMm": 0.02,
+      "pass": true
+    },
+    {
+      "label": "Microscope depth",
+      "expectedMm": 637.54,
+      "actualMm": 637.5399827957153,
+      "toleranceMm": 0.02,
+      "pass": true
+    },
+    {
+      "label": "Microscope overall height",
+      "expectedMm": 406.4,
+      "actualMm": 406.400004401803,
+      "toleranceMm": 0.02,
+      "pass": true
+    },
+    {
+      "label": "Isolating pad",
+      "expectedMm": 25.4,
+      "actualMm": 25.39999969303608,
+      "toleranceMm": 0.02,
+      "pass": true
+    },
+    {
+      "label": "Vacuum chuck diameter",
+      "expectedMm": 200,
+      "actualMm": 200.00000298023224,
+      "toleranceMm": 0.02,
+      "pass": true
+    },
+    {
+      "label": "Cantilever width",
+      "expectedMm": 0.04,
+      "actualMm": 0.03999999898951501,
+      "toleranceMm": 0.00001,
+      "pass": true
+    },
+    {
+      "label": "Cantilever length",
+      "expectedMm": 0.125,
+      "actualMm": 0.1250000059371814,
+      "toleranceMm": 0.00001,
+      "pass": true
+    },
+    {
+      "label": "Cantilever thickness",
+      "expectedMm": 0.0034,
+      "actualMm": 0.0033999999686784577,
+      "toleranceMm": 0.00001,
+      "pass": true
+    },
+    {
+      "label": "Tip height",
+      "expectedMm": 0.015,
+      "actualMm": 0.014999999621068127,
+      "toleranceMm": 0.00001,
+      "pass": true
+    },
+    {
+      "label": "Installation height",
+      "expectedMm": 1652.778,
+      "actualMm": 1652.7780294418335,
+      "toleranceMm": 0.02,
+      "pass": true
+    }
+  ],
+  "asset": {
+    "units": "m",
+    "up": "+Y",
+    "front": "+Z",
+    "bytes": 1355852,
+    "nodes": 221,
+    "meshes": 214,
+    "triangles": 20317,
+    "minM": [
+      -0.4572,
+      0,
+      -0.4064
+    ],
+    "maxM": [
+      0.9375,
+      1.652778,
+      0.436
+    ]
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "deviceId": "09-01",
+  "uri": "reference-600-plus.glb",
+  "scale": "m",
+  "axes": "+X operator right, +Y up, +Z front",
+  "envelopeNominalMm": [
+    90,
+    190,
+    270
+  ],
+  "desktopCompatibility": "WebGL with pointer, touch, keyboard equivalent controls",
+  "xr": "WebXR immersive-vr controller selection when runtime supports it; not HMD-verified",
+  "actions": {
+    "front_db25": {
+      "action": "cable",
+      "label": "Unplug or reconnect the cell cable",
+      "anchorM": [
+        0.026,
+        0.07,
+        0.134
+      ],
+      "boundsM": [
+        0.014,
+        0.012,
+        0.05
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "rear_power": {
+      "action": "power",
+      "label": "Switch DC power at the rear rocker",
+      "anchorM": [
+        -0.024,
+        0.034,
+        -0.136
+      ],
+      "boundsM": [
+        0.014,
+        0.008,
+        0.02
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "rear_rocker": {
+      "action": "power",
+      "label": "Pivoting rear DC rocker",
+      "anchorM": [
+        -0.024,
+        0.034,
+        -0.136
+      ],
+      "boundsM": [
+        0.01,
+        0.005,
+        0.015
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "plug": {
+      "action": "cable",
+      "label": "DB25 plug",
+      "anchorM": [
+        0.026,
+        0.069,
+        0.145
+      ],
+      "boundsM": [
+        0.02,
+        0.021,
+        0.056
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "port_WE": {
+      "action": "lead:WE",
+      "label": "WE dummy-cell terminal",
+      "anchorM": [
+        0.12,
+        0.015,
+        0.295
+      ],
+      "boundsM": [
+        0.013,
+        0.013,
+        0.009
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "lead_WE": {
+      "action": "lead:WE",
+      "label": "WE removable lead",
+      "anchorM": [
+        0.12,
+        0.019,
+        0.295
+      ],
+      "boundsM": [
+        0.011,
+        0.012,
+        0.016
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "port_WS": {
+      "action": "lead:WS",
+      "label": "WS dummy-cell terminal",
+      "anchorM": [
+        0.143,
+        0.015,
+        0.295
+      ],
+      "boundsM": [
+        0.013,
+        0.013,
+        0.009
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "lead_WS": {
+      "action": "lead:WS",
+      "label": "WS removable lead",
+      "anchorM": [
+        0.143,
+        0.019,
+        0.295
+      ],
+      "boundsM": [
+        0.011,
+        0.012,
+        0.016
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "port_RE": {
+      "action": "lead:RE",
+      "label": "RE dummy-cell terminal",
+      "anchorM": [
+        0.169,
+        0.015,
+        0.295
+      ],
+      "boundsM": [
+        0.013,
+        0.013,
+        0.009
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "lead_RE": {
+      "action": "lead:RE",
+      "label": "RE removable lead",
+      "anchorM": [
+        0.169,
+        0.019,
+        0.295
+      ],
+      "boundsM": [
+        0.011,
+        0.012,
+        0.016
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "port_CE": {
+      "action": "lead:CE",
+      "label": "CE dummy-cell terminal",
+      "anchorM": [
+        0.194,
+        0.015,
+        0.295
+      ],
+      "boundsM": [
+        0.013,
+        0.013,
+        0.009
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    },
+    "lead_CE": {
+      "action": "lead:CE",
+      "label": "CE removable lead",
+      "anchorM": [
+        0.194,
+        0.019,
+        0.295
+      ],
+      "boundsM": [
+        0.011,
+        0.012,
+        0.016
+      ],
+      "coordinateFrame": "glTF metre; center plus full XYZ extents"
+    }
+  },
+  "nodes": 23,
+  "drawCalls": 52,
+  "triangles": 19979,
+  "bytes": 472060
+}

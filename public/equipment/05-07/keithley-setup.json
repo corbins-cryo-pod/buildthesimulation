@@ -1,0 +1,197 @@
+{
+  "schema": "bts.smu-resistive-sweep.v1",
+  "deviceId": "09-03",
+  "model": "2450 benchtop/front banana",
+  "origin": "simulated",
+  "sampleId": "coupon-1k-01",
+  "inputRevision": 0,
+  "revision": 1,
+  "contacts": [
+    "DUT-HI",
+    "DUT-LO"
+  ],
+  "configuration": {
+    "sampleId": "coupon-1k-01",
+    "inputRevision": 0,
+    "contacts": [
+      "DUT-HI",
+      "DUT-LO"
+    ],
+    "mode": "V",
+    "sense": 2,
+    "connected": true,
+    "senseConnected": true,
+    "rOhm": 1000,
+    "leadOhm": 0,
+    "start": 0,
+    "stop": 1,
+    "limit": 0.002,
+    "n": 11,
+    "dwellS": 0.1,
+    "continuityOhm": 50,
+    "noise": false,
+    "seed": 2450
+  },
+  "units": {
+    "timeS": "s",
+    "request": "V",
+    "currentA": "A",
+    "dutV": "V",
+    "terminalV": "V",
+    "sensedV": "V",
+    "measuredV": "V",
+    "measuredA": "A",
+    "apparentOhm": "Ω"
+  },
+  "points": [
+    {
+      "k": 0,
+      "timeS": 0,
+      "request": 0,
+      "currentA": 0,
+      "dutV": 0,
+      "terminalV": 0,
+      "sensedV": 0,
+      "measuredV": 0,
+      "measuredA": 0,
+      "compliance": false
+    },
+    {
+      "k": 1,
+      "timeS": 0.1,
+      "request": 0.1,
+      "currentA": 0.0001,
+      "dutV": 0.1,
+      "terminalV": 0.1,
+      "sensedV": 0.1,
+      "measuredV": 0.1,
+      "measuredA": 0.0001,
+      "compliance": false
+    },
+    {
+      "k": 2,
+      "timeS": 0.2,
+      "request": 0.2,
+      "currentA": 0.0002,
+      "dutV": 0.2,
+      "terminalV": 0.2,
+      "sensedV": 0.2,
+      "measuredV": 0.2,
+      "measuredA": 0.0002,
+      "compliance": false
+    },
+    {
+      "k": 3,
+      "timeS": 0.30000000000000004,
+      "request": 0.3,
+      "currentA": 0.0003,
+      "dutV": 0.3,
+      "terminalV": 0.3,
+      "sensedV": 0.3,
+      "measuredV": 0.3,
+      "measuredA": 0.0003,
+      "compliance": false
+    },
+    {
+      "k": 4,
+      "timeS": 0.4,
+      "request": 0.4,
+      "currentA": 0.0004,
+      "dutV": 0.4,
+      "terminalV": 0.4,
+      "sensedV": 0.4,
+      "measuredV": 0.4,
+      "measuredA": 0.0004,
+      "compliance": false
+    },
+    {
+      "k": 5,
+      "timeS": 0.5,
+      "request": 0.5,
+      "currentA": 0.0005,
+      "dutV": 0.5,
+      "terminalV": 0.5,
+      "sensedV": 0.5,
+      "measuredV": 0.5,
+      "measuredA": 0.0005,
+      "compliance": false
+    },
+    {
+      "k": 6,
+      "timeS": 0.6000000000000001,
+      "request": 0.6,
+      "currentA": 0.0006,
+      "dutV": 0.6,
+      "terminalV": 0.6,
+      "sensedV": 0.6,
+      "measuredV": 0.6,
+      "measuredA": 0.0006,
+      "compliance": false
+    },
+    {
+      "k": 7,
+      "timeS": 0.7000000000000001,
+      "request": 0.7,
+      "currentA": 0.0007,
+      "dutV": 0.7,
+      "terminalV": 0.7,
+      "sensedV": 0.7,
+      "measuredV": 0.7,
+      "measuredA": 0.0007,
+      "compliance": false
+    },
+    {
+      "k": 8,
+      "timeS": 0.8,
+      "request": 0.8,
+      "currentA": 0.0008,
+      "dutV": 0.8,
+      "terminalV": 0.8,
+      "sensedV": 0.8,
+      "measuredV": 0.8,
+      "measuredA": 0.0008,
+      "compliance": false
+    },
+    {
+      "k": 9,
+      "timeS": 0.9,
+      "request": 0.9,
+      "currentA": 0.0009,
+      "dutV": 0.9,
+      "terminalV": 0.9,
+      "sensedV": 0.9,
+      "measuredV": 0.9,
+      "measuredA": 0.0009,
+      "compliance": false
+    },
+    {
+      "k": 10,
+      "timeS": 1,
+      "request": 1,
+      "currentA": 0.001,
+      "dutV": 1,
+      "terminalV": 1,
+      "sensedV": 1,
+      "measuredV": 1,
+      "measuredA": 0.001,
+      "compliance": false
+    }
+  ],
+  "apparentOhm": 1000,
+  "continuity": false,
+  "complianceCount": 0,
+  "provenance": {
+    "solver": "linear-ohmic-dual-source/1",
+    "dataset": null,
+    "noise": "disabled",
+    "chronology": "First point at t=0; uniform simulated dwell; no transient dynamics.",
+    "history": [
+      {
+        "deviceId": "09-03",
+        "operation": "DC sweep",
+        "parentRevision": 0,
+        "resultRevision": 1
+      }
+    ]
+  }
+}

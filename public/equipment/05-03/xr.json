@@ -1,0 +1,91 @@
+{
+  "schema": "bts.station.xr.v1",
+  "asset": "/equipment/05-03/dimension-icon.glb",
+  "station": "/equipment/05-03/station.mjs",
+  "constructor": "station",
+  "dispatch": "operate(state, action, value) returns next state or throws; errors leave prior state unchanged.",
+  "controls": [
+    {
+      "name": "ACCESS_HATCH",
+      "action": "door",
+      "label": "Open/close the windowed access hatch",
+      "minM": [
+        -0.171,
+        0.894,
+        0.3995
+      ],
+      "maxM": [
+        0.171,
+        1.216,
+        0.436
+      ]
+    },
+    {
+      "name": "CHUCK_200",
+      "action": "load",
+      "label": "Load or remove the coupon",
+      "minM": [
+        -0.122,
+        0.886698,
+        -0.036
+      ],
+      "maxM": [
+        0.078,
+        0.902698,
+        0.164
+      ]
+    },
+    {
+      "name": "ENGAGE_HEAD",
+      "action": "engage",
+      "label": "Engage or retract",
+      "minM": [
+        -0.072,
+        0.903198,
+        -0.153
+      ],
+      "maxM": [
+        0.028,
+        1.108698,
+        0.067
+      ]
+    },
+    {
+      "name": "SCREEN",
+      "action": "scan",
+      "label": "Acquire a raster",
+      "minM": [
+        0.498,
+        0.8525,
+        -0.0853
+      ],
+      "maxM": [
+        0.922,
+        1.0975,
+        -0.0823
+      ]
+    }
+  ],
+  "geometry": {
+    "units": "m",
+    "up": "+Y",
+    "front": "+Z",
+    "bytes": 1355852,
+    "nodes": 221,
+    "meshes": 214,
+    "triangles": 20317,
+    "minM": [
+      -0.4572,
+      0,
+      -0.4064
+    ],
+    "maxM": [
+      0.9375,
+      1.652778,
+      0.436
+    ]
+  },
+  "origin": "Floor at center of AVH-1000; glTF +Y up, +Z toward operator. Do not rescale for VR. Hit bounds are world metres in the closed/engaged pose; use live mesh transforms in other poses.",
+  "interaction": "Select first visible target mesh or ancestor. Display cutaway and camera are not physical state. Hinge swings 80 degrees; coarse retract 10 mm, both illustrations. Head raster X/Z travel is physical nm, height follows simulated envelope; use magnified screen for inspection.",
+  "xr": "Optional immersive-vr on supporting browsers. No physical Quest performance or accuracy validation."
+}

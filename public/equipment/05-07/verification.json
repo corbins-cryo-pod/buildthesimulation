@@ -1,0 +1,176 @@
+{
+  "deviceId": "05-07",
+  "scope": "Analytical reference and nominal geometry; no empirical hardware/headset test.",
+  "rows": [
+    {
+      "id": "known resistor",
+      "expected": 1000,
+      "actual": 1000,
+      "units": "Ω",
+      "tolerance": 0.001,
+      "outcome": "PASS"
+    },
+    {
+      "id": "plus 1 volt",
+      "expected": 0.001,
+      "actual": 0.001,
+      "units": "A",
+      "tolerance": 1e-9,
+      "outcome": "PASS"
+    },
+    {
+      "id": "minus 1 volt",
+      "expected": -0.001,
+      "actual": -0.001,
+      "units": "A",
+      "tolerance": 1e-9,
+      "outcome": "PASS"
+    },
+    {
+      "id": "lift",
+      "expected": [
+        "open-contact",
+        "raised-tip",
+        0,
+        null
+      ],
+      "actual": [
+        "open-contact",
+        "raised-tip",
+        0,
+        null
+      ],
+      "units": "status, status, A, Ω",
+      "tolerance": "exact; 1 fA",
+      "outcome": "PASS"
+    },
+    {
+      "id": "off-pad",
+      "expected": "missed-pad",
+      "actual": "missed-pad",
+      "units": "status",
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "id": "stage lock",
+      "expected": false,
+      "actual": false,
+      "units": "no stage update or export",
+      "tolerance": "exact",
+      "outcome": "PASS"
+    },
+    {
+      "id": "series parallel including contacts",
+      "expected": 1010,
+      "actual": 1010,
+      "units": "Ω",
+      "tolerance": 0.001,
+      "outcome": "PASS"
+    },
+    {
+      "id": "network current",
+      "expected": 0.0009900990099009901,
+      "actual": 0.0009900990099009901,
+      "units": "A",
+      "tolerance": 1e-9,
+      "outcome": "PASS"
+    },
+    {
+      "id": "compliance terminal",
+      "expected": 0.5,
+      "actual": 0.5,
+      "units": "V",
+      "tolerance": 0.000001,
+      "outcome": "PASS"
+    },
+    {
+      "id": "compliance current",
+      "expected": 0.0005,
+      "actual": 0.0005,
+      "units": "A",
+      "tolerance": 1e-9,
+      "outcome": "PASS"
+    },
+    {
+      "id": "transform x",
+      "expected": 0.001498097349045873,
+      "actual": 0.0014980973490458728,
+      "units": "m",
+      "tolerance": 1e-12,
+      "outcome": "PASS"
+    },
+    {
+      "id": "roundtrip x",
+      "expected": 0.0005,
+      "actual": 0.0005,
+      "units": "m",
+      "tolerance": 1e-12,
+      "outcome": "PASS"
+    },
+    {
+      "id": "roundtrip y",
+      "expected": 0,
+      "actual": -1.4907779871675686e-19,
+      "units": "m",
+      "tolerance": 1e-12,
+      "outcome": "PASS"
+    },
+    {
+      "id": "upstream request points",
+      "expected": 11,
+      "actual": 11,
+      "units": "points",
+      "tolerance": 0,
+      "outcome": "PASS"
+    },
+    {
+      "id": "upstream terminal current mismatch",
+      "expected": 0,
+      "actual": 0,
+      "units": "A",
+      "tolerance": 1e-9,
+      "outcome": "PASS"
+    },
+    {
+      "id": "platen",
+      "expected": [
+        745,
+        20,
+        595
+      ],
+      "actual": [
+        745.0000047683716,
+        20.39998769760132,
+        595.0000286102295
+      ],
+      "units": "mm W/H/D",
+      "tolerance": 1,
+      "outcome": "PASS"
+    },
+    {
+      "id": "station",
+      "expected": [
+        862,
+        811,
+        831
+      ],
+      "actual": [
+        861.9999885559082,
+        810.9999895095825,
+        830.9999704360962
+      ],
+      "units": "mm W/H/D",
+      "tolerance": 1,
+      "outcome": "PASS"
+    },
+    {
+      "id": "XR anchors",
+      "expected": true,
+      "actual": true,
+      "units": "GLB stable node IDs",
+      "tolerance": "exact",
+      "outcome": "PASS"
+    }
+  ]
+}

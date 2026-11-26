@@ -1,0 +1,101 @@
+[
+  {
+    "id": "peak",
+    "test": "8 nm tip: peak above zero",
+    "expected": 4,
+    "actual": 4,
+    "unit": "nm",
+    "tolerance": 1e-10,
+    "pass": true
+  },
+  {
+    "id": "apex8",
+    "test": "8 nm tip: continuous apparent base span",
+    "expected": 33.85640646055102,
+    "actual": 32,
+    "unit": "nm",
+    "tolerance": 2.000001,
+    "pass": true
+  },
+  {
+    "id": "apex20",
+    "test": "20 nm tip: continuous apparent base span",
+    "expected": 44,
+    "actual": 42,
+    "unit": "nm",
+    "tolerance": 2.000001,
+    "pass": true
+  },
+  {
+    "id": "preserve",
+    "test": "20 nm tip: unchanged peak",
+    "expected": 4,
+    "actual": 4,
+    "unit": "nm",
+    "tolerance": 1e-10,
+    "pass": true
+  },
+  {
+    "id": "point",
+    "test": "Point-probe ridge span",
+    "expected": 20,
+    "actual": 20,
+    "unit": "nm",
+    "tolerance": 1e-10,
+    "pass": true
+  },
+  {
+    "id": "edge",
+    "test": "8 nm sphere, 4 nm lateral offset from ridge edge",
+    "expected": 2.928203230275509,
+    "actual": 2.928203230275509,
+    "unit": "nm",
+    "tolerance": 1e-10,
+    "pass": true
+  },
+  {
+    "id": "plateau",
+    "test": "Constant map: RMS areal roughness",
+    "expected": 0,
+    "actual": 0,
+    "unit": "nm",
+    "tolerance": 1e-11,
+    "pass": true
+  },
+  {
+    "id": "rms",
+    "test": "Point probe: equal areas at 0 and 4 nm give Sq = 2 nm",
+    "expected": 2,
+    "actual": 2,
+    "unit": "nm",
+    "tolerance": 1e-10,
+    "pass": true
+  },
+  {
+    "id": "sa",
+    "test": "Point probe: same two-level mean absolute deviation",
+    "expected": 2,
+    "actual": 2,
+    "unit": "nm",
+    "tolerance": 1e-10,
+    "pass": true
+  },
+  {
+    "id": "increase",
+    "test": "Broader tip gives larger base",
+    "expected": 1,
+    "actual": 1,
+    "unit": "yes",
+    "tolerance": 0,
+    "pass": true
+  },
+  {
+    "id": "reject",
+    "test": "Unsupported relief higher than a hemisphere rejected",
+    "expected": 1,
+    "actual": 1,
+    "unit": "yes",
+    "tolerance": 0,
+    "pass": true
+  }
+]

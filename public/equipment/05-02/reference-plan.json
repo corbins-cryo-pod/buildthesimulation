@@ -1,0 +1,11 @@
+{
+  "declaredBeforeImplementation": true,
+  "method": "Closed-form ideal inert surfaces. Height, lateral distance and scan parameters in µm. Tolerances account for floating-point error and the declared optical envelope sampler, not actual hardware uncertainty.",
+  "fixtures": [
+    {"id":"catalogue-tilt-mask","configuration":"64 × 48 opaque plane, dz/dx = +0.001, dz/dy = −0.0005. Center dropout block 9 × 7. 5×, ±15 µm, z0=0, noise off.","expected":{"sx":0.001,"sy":-0.0005,"invalidCount":63,"SaUm":0,"SqUm":0},"tolerances":{"sx":1e-8,"sy":1e-8,"invalidCount":0,"SaUm":1e-6,"SqUm":1e-6}},
+    {"id":"inert-step","configuration":"Height difference 5 µm, same tilt on both terraces. 9 × 7 prescribed dropout. ±15 µm, noise off. Exclude two seam columns from shared-plane and step estimates only.","expected":{"stepUm":5,"sx":0.001,"sy":-0.0005,"SaUm":0},"tolerances":{"stepUm":1e-6,"sx":1e-8,"sy":1e-8,"SaUm":1e-6}},
+    {"id":"periodic-roughness","configuration":"64 horizontal samples, centered cosine with 8 periods of amplitude 0.2 µm, no tilt, no dropout, noise off. Equal phase samples centered on pixel centers.","expected":{"SaUm":0.1306562964876377,"SqUm":0.1414213562373095},"tolerances":{"SaUm":1e-6,"SqUm":1e-6}},
+    {"id":"scan-window","configuration":"Centered inert 6 µm step, plane untilted, scan center 0, ±2 µm half-span, no dropout, noise off.","expected":{"invalidCount":1536,"rangeCount":1536,"stepUm":null},"tolerances":{"invalidCount":0,"rangeCount":0,"stepUm":0}},
+    {"id":"no-coupon","configuration":"Remove coupon while stage is at load position; request measurement.","expected":"No scan: load a coupon."}
+  ]
+}
