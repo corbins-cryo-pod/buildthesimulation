@@ -87,9 +87,15 @@
     "inputs": "Registered volume tiles, voxel-to-world transform, segmentation labels and annotation revision",
     "outputs": "Skeleton or segment selection with world coordinates, volume ID and edit history",
     "acceptance": "Trace through the boundary of two adjacent tiles. The node at the seam must have the same world position and segment ID at both zoom levels.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First-pass original metric workstation and two live instrument displays",
+    "simulationStatus": "Synthetic two-tile two-scale seam, labels and exact world coordinates verified",
+    "integrationStatus": "Simulator with synthetic import and trace export; no service or headset claim",
+    "simulator": "/simulations/equipment/01-04/simulator/",
+    "related": [
+      ["Neuroglancer volume and chunk convention", "https://neuroglancer-docs.web.app/datasource/precomputed/volume.html"],
+      ["CAVE versioned annotations", "https://www.nature.com/articles/s41592-024-02426-z"],
+      ["ImageJ stack views", "https://imagej.github.io/imaging/z-functions"]
+    ]
   },
   {
     "id": "01-05",
