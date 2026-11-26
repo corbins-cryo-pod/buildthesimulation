@@ -114,7 +114,17 @@ def annular_segment(n,m,cx,y,theta,parent='Console'):
  shapes[n]=geometry(v,j);return ref(n,n,m,(cx,y,19.08),(1,1,1),parent)
 ref('Console')
 outline=[(89,46),(82,51),(43,53.9),(0,54.5),(-43,53.9),(-86,51),(-90,48),(-91.5,40),(-91.5,-43),(-88,-50),(-82,-53),(-40,-54.5),(43,-54.5),(83,-52),(89,-47),(91.5,-37),(91.5,30)]
-face('Boot_outer_authoritative','boot red',(0,54.5,0),outline,40)
+# Through-ring boot: the two recessed colored faces and display are exposed in the cavity.
+k=len(outline)
+v=[(x*facX,y*facY,z) for z,facX,facY in [(-20,1,1),(20,1,1),(-20,.919,.863),(20,.919,.863)] for x,y in outline]
+j=[]
+for i in range(k):
+ a=i; bb=(i+1)%k; c=a+k; d=bb+k; e=c+k; f=d+k; g=e+k; h=f+k
+ j += [a,bb,c,bb,d,c,e,g,f,f,g,h,c,d,g,d,h,g,a,e,bb,bb,e,f]
+shapes['boot_ring']=geometry(v,j)
+ref('Boot_outer_authoritative','boot_ring','boot red',(0,54.5,0),(1,1,1),'Console')
+face('Recessed_inner_console_body','boot shadow',(0,54.5,0),[(x*.925,y*.893)for x,y in outline],35)
+
 face('Silver_front_fascia','case silver',(0,54.5,17.9),[(x*.942,y*.918)for x,y in outline],1.4)
 face('Dark_front_key_inset','case dark',(-1,54.7,18.72),[(69,32),(63,39),(-64,39),(-73,34),(-73,-31),(-68,-38),(43,-38),(66,-25),(69,-21)],.75)
 plate('LCD_minor_black_keyline','case dark',(-20,54,19.12),85.9,65.5,1.7,.20)
@@ -129,8 +139,10 @@ b('Brand_badge_blank','gray metal',(54,16,18.90),(31,6.9,1.05),q=(0,0,math.sin(.
 # Closed rear with stowed outline relief. No hinge operation.
 plate('Rear_silver_closed_skin','case silver',(0,54.5,-18.52),170.2,98,9,1.8)
 plate('Rear_recessed_stand_pad','case dark',(-7,54,-19.47),84,78,6,.32)
-stand=[(36,34),(23,34),(14,8),(-14,8),(-24,34),(-36,34),(-36,-34),(36,-34)]
-face('Kickstand_stowed_static','gray metal',(-7,54,-19.73),stand,.51)
+face('Kickstand_stowed_left_arm','gray metal',(-7,54,-19.73),[(-24,34),(-36,34),(-36,-9),(-12,-9),(-14,8)],.51)
+face('Kickstand_stowed_right_arm','gray metal',(-7,54,-19.73),[(36,34),(23,34),(14,8),(12,-9),(36,-9)],.51)
+b('Kickstand_stowed_lower_bridge','gray metal',(-7,33,-19.73),(72,26,.51))
+b('Kickstand_stowed_grip_recess','case dark',(-7,27,-19.992),(24,5,.01))
 for x in [-69,68]:
  for y in [20,88]:b(f'Rear_foot_relief_{x}_{y}','boot shadow',(x,y,-19.64),(8.5,8.5,.65))
 # Side and bottom features are engraved silhouettes on the blank outside, not actual sockets.

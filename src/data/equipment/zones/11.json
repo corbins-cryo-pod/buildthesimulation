@@ -110,15 +110,20 @@
     "inputs": "Optical power spectrum at the detector, wavelength setting, detector-head responsivity and calibrated range",
     "outputs": "Measured power (W), sensor ID, calibration reference and range status",
     "acceptance": "Feed two monochromatic standards at different wavelengths and select their matching wavelength settings. Each corrected reading should agree with its standard within the head calibration uncertainty.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Built, documented console only; no sensor",
+    "simulationStatus": "Detached synthetic unit conversion; no sensor or optical calibration",
+    "integrationStatus": "Standalone console exhibit and numerical JSON",
     "related": [
       [
         "Optogenetics Laboratory",
         "/simulations/optogenetics/"
+      ],
+      [
+        "Console references and independent unit checks",
+        "/simulations/equipment/11-05/simulator/#evidence"
       ]
-    ]
+    ],
+    "simulator": "/simulations/equipment/11-05/simulator/"
   },
   {
     "id": "11-06",
