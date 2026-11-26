@@ -1,0 +1,39 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "13-14",
+  "asset": "/equipment/13-14/hm325a-static.glb",
+  "scale": "glTF meters, +Y up, +Z operator. Drawing coordinates are unrelated authored millimeters.",
+  "metrics": {
+    "bytes": 83200,
+    "triangles": 1052,
+    "draws": 29,
+    "instrumentXYZM": [
+      0.41999998688697815,
+      0.279999993275851,
+      0.49000000953674316
+    ]
+  },
+  "scope": "Detached passive diagram controls, no headset tested.",
+  "nodes": [
+    {
+      "node": "detached_diagram_badge",
+      "label": "Switch separate fixed diagram",
+      "action": {
+        "type": "cycle"
+      },
+      "boundsM": [
+        0.081,
+        0.027,
+        0.045
+      ]
+    },
+    {
+      "node": "detached_diagram_screen_anchor",
+      "label": "Detached display texture",
+      "boundsM": [
+        0.21,
+        0.15
+      ]
+    }
+  ]
+}
