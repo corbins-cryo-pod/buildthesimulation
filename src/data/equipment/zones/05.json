@@ -182,9 +182,10 @@
     "inputs": "Referenced spectrum versus binding energy, energy calibration and sensitivity factors",
     "outputs": "Fitted component areas and relative composition with explicit reference factors",
     "acceptance": "Feed two nonoverlapping synthetic peaks of equal integrated area with identical response factors and zero background. The inferred composition must divide equally between those two components.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "simulator": "/simulations/equipment/05-09/simulator/",
+    "geometryStatus": "Meter model; 25 mm holder verified",
+    "simulationStatus": "Verified isolated reference-line fit",
+    "integrationStatus": "Interactive; calibrated spectrum and component exports"
   },
   {
     "id": "05-10",

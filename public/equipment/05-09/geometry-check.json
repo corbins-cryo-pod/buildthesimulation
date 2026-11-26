@@ -1,0 +1,16 @@
+[
+  {
+    "axis": "X",
+    "expectedMm": 25,
+    "digitalMm": 25,
+    "absToleranceMm": 0.2,
+    "pass": true
+  },
+  {
+    "axis": "Z",
+    "expectedMm": 25,
+    "digitalMm": 24.863047,
+    "absToleranceMm": 0.2,
+    "pass": true
+  }
+]
