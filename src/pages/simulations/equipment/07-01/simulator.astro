@@ -87,7 +87,7 @@ const display = (value) => Array.isArray(value) ? value.join(', ') : String(valu
     <p>{research.configuration} The five labeled plates are original renders of the downloadable model. Each links to the photograph or illustrated manual used for comparison.</p>
     <div class="cab-plates">{research.views.map((v,i)=><figure>
       <a href={v.image.startsWith('/') ? v.image : assets+v.image}><img src={v.image.startsWith('/') ? v.image : assets+v.image} alt={v.alt} width="600" height="450" loading="lazy" /></a>
-      <figcaption><strong>{v.title}</strong><p>{v.caption}</p><a href={v.url}>{v.source} · {v.page}</a><small>{v.revision}</small><span class="cab-links">{v.additionalSources?.map(s=><a href={s.url}>{s.label}</a>)}</span></figcaption>
+      <figcaption><strong>{v.title}</strong><p>{v.caption}</p><a href={v.url}>{v.source} · {v.page}</a><small>{v.revision}</small><span class="cab-links"><a href={v.image.replace('/ref-','/model-')}>Unlabeled model view</a>{v.additionalSources?.map(s=><a href={s.url}>{s.label}</a>)}</span></figcaption>
     </figure>)}</div>
     <h3>Specifications</h3>
     <div class="cab-table" tabindex="0" aria-label="Specifications, horizontally scrollable"><table><thead><tr><th>Parameter</th><th>Value</th><th>Configuration / conditions</th><th>Used for</th><th>Source</th></tr></thead>
@@ -113,6 +113,7 @@ const display = (value) => Array.isArray(value) ? value.join(', ') : String(valu
     {[...verification.tests,...(Array.isArray(geometry)?geometry:geometry.tests)].map(row=><tr><th scope="row">{row.test}</th><td>{display(row.expected)}</td><td>{display(row.actual)}</td><td>{row.units}</td><td>{display(row.tolerance)}</td><td>{row.outcome ?? (row.pass?'Pass':'Fail')}</td></tr>)}</tbody></table></div>
     <p>The mesh checks allow 0.25 mm for the cabinet, tray and port dimensions, and 1 mm at the sloped pane edge. These tolerances cover rounding and mesh construction. In the front photograph the keypad center sits at 0.76 of cabinet width and the canopy ends at 0.61 of cabinet height. A tolerance of 0.05 in these fractions allows for camera tilt and pixel selection. The counterweight moves opposite the sash at an assumed 1:1 ratio.</p>
     <p><strong>Evidence limit.</strong> Geometry checks compare the downloadable mesh with documented dimensions. Timing checks use synthetic input. Independent switch recordings and contamination measurements are unavailable. The qualitative flag describes sash position alone and cannot establish sterility.</p>
+    <p>Browser checks exercised the working-area and rear views, closed-sash rejection, loading at maximum opening, and the zero-excursion control. The example JSON downloaded from the browser matched the published fixture byte for byte.</p>
     <p class="cab-links"><a href={assets+'verification.json'} download>Event verification data</a><a href={assets+'geometry-verification.json'} download>Geometry checks</a></p>
   </section>
 </article></Layout>

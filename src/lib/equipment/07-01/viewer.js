@@ -6,9 +6,13 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 export async function openViewer(host, status) {
   const scene = new THREE.Scene();
   let renderer;
-  let vector = false;
+  let software = false;
   try {
-    renderer = new THREE.WebGLRenderer({alpha:true, antialias:true, powerPreference:'low-power'});
+    const canvas = document.createElement('canvas');
+    const options = {alpha:true, antialias:true, powerPreference:'low-power'};
+    const context = canvas.getContext('webgl2',options);
+    if (!context) throw Error('WebGL2 unavailable');
+    renderer = new THREE.WebGLRenderer({...options,canvas,context});
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.8));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.12;
@@ -19,11 +23,9 @@ export async function openViewer(host, status) {
     room.dispose();
     generator.dispose();
   } catch {
-    const { SVGRenderer } = await import('three/addons/renderers/SVGRenderer.js');
-    renderer = new SVGRenderer();
-    renderer.setQuality('low');
-    renderer.setClearColor(0xe2ded6, 1);
-    vector = true;
+    const { createSoftwareRenderer } = await import('./software-viewer.js');
+    renderer = createSoftwareRenderer();
+    software = true;
   }
   const camera = new THREE.PerspectiveCamera(34, 1, .01, 30);
   const controls = new OrbitControls(camera, renderer.domElement);
@@ -39,7 +41,7 @@ export async function openViewer(host, status) {
   rim.position.set(1.9,1.8,-1.3);
   scene.add(hemi,key,rim);
 
-  if (!vector) {
+  if (!software) {
     const grid = new THREE.GridHelper(6, 30, 0xa49d92, 0xb4aea4);
     grid.position.y = -.004;
     grid.material.transparent = true;
@@ -75,12 +77,16 @@ export async function openViewer(host, status) {
   scene.add(model);
   const keypad = windowLed.getWorldPosition(new THREE.Vector3()).toArray();
   const views = [
-    [[1.48,1.17,2.9],[0,.77,0]], [[0,.78,3.15],[0,.78,0]],
+    [[1.62,1.24,3.16],[0,.77,0]], [[0,.78,3.15],[0,.78,0]],
     [[.32,.55,1.27],[0,.24,.06]], [[keypad[0]+.03,keypad[1]+.105,keypad[2]+.55],keypad],
     [[2.65,1.0,.9],[0,.77,0]], [[1.28,1.16,-2.9],[0,.78,-.04]]
   ];
   let activeView = 0;
-  function render(){ renderer.render(scene,camera); }
+  let pendingFrame=0;
+  function render(){
+    if (pendingFrame) return;
+    pendingFrame=requestAnimationFrame(()=>{pendingFrame=0;renderer.render(scene,camera);});
+  }
   function selectView(index) {
     activeView = index;
     const [eye,at] = views[index];
@@ -164,7 +170,7 @@ export async function openViewer(host, status) {
     render();
   }
   document.getElementById('cab-poster').hidden=true;
-  status.textContent=vector?'3D cabinet · vector rendering':'3D cabinet · metric GLB';
+  status.textContent=software?'3D cabinet · software rendering':'3D cabinet · metric GLB';
   host.dataset.ready='true';
   return {update};
 }

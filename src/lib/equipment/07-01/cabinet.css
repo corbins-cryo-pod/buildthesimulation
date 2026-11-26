@@ -14,6 +14,7 @@
 body .cabinet-lab .cab-title h1 {font-family:'Futura Book',sans-serif!important;font-size:clamp(2.25rem,4.8vw,4.15rem);letter-spacing:.035em!important;text-align:left;margin:.16rem 0 0;line-height:1!important}
 .cab-title p {margin:0;max-width:39ch;font-size:1.04rem}
 .cab-label,.cab-bar,.cab-key,.cab-cameras,.cab-modes,.cab-caption,.cabinet-lab button,.cabinet-lab label,.cab-range-ends,#cab-present,#cab-feedback {font-family:var(--font-label,Arial,sans-serif);font-size:.83rem}
+.cab-title p,.cab-plates figcaption p {text-align:left}
 .cab-label,.cab-bar,.cab-modes {letter-spacing:.075em!important}.cab-label {text-transform:uppercase}
 .cab-workspace {display:grid;grid-template-columns:minmax(0,1.6fr) minmax(17rem,1fr);border:1px solid var(--rule);align-items:stretch}
 .cab-instrument,.cab-console,.cab-record-grid>*,.cab-plates figure {min-width:0}
