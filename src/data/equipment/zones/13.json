@@ -75,9 +75,10 @@
     "inputs": "Prepared virtual block or reference stack, section indices, frame shifts and contrast metadata",
     "outputs": "Registered block-face stack, missing-section mask, transforms and voxel spacing",
     "acceptance": "Shift a fiducial stack by known in-plane offsets and omit a slice. Alignment should recover fiducial positions and retain the missing physical z position in the metadata.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "First pass: metric sealed exterior; photo-inferred console and documented 24-inch display",
+    "simulationStatus": "First pass: passive preauthored synthetic geometry labels, volume and gap; acquisition and registration deferred",
+    "integrationStatus": "First pass: simulator route, metric GLB, named passive VR action and sample JSON",
+    "simulator": "/simulations/equipment/13-04/simulator/"
   },
   {
     "id": "13-05",
