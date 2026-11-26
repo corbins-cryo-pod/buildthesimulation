@@ -86,7 +86,7 @@ async function model(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   const t=performance.now(),n=++token;
   function frame(at){if(n!==token)return;
-   const u=Math.min(trace.length-1,Math.floor((at-t)/1100*trace.length));
+   const u=Math.max(0,Math.min(trace.length-1,Math.floor((at-t)/1100*trace.length)));
    delta=(trace[u].x-(trace[0].x+trace.at(-1).x)/2)/1e6;move();
    if(u<trace.length-1)requestAnimationFrame(frame);else{delta=0;move();}
   } requestAnimationFrame(frame);
