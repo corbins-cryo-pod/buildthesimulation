@@ -136,9 +136,20 @@
     "inputs": "Breadboard hole lattice (m), mounting footprints, port axes and component transforms",
     "outputs": "Placed fixture transforms, optical connection graph and clearance conflicts",
     "acceptance": "Snap two reference mounts a known number of pitches apart. Their separation should equal pitch × interval count. Placing both solid bases in the same volume should report a collision.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric photo- and specification-grounded SDPM7590 frame, B7590A board with 1,080 recessed holes, and original dry mounts",
+    "simulationStatus": "Verified 25 mm lattice snapping and axis-aligned base fit, clearance and 3D overlap; no beam or vibration model",
+    "integrationStatus": "Interactive 3D/top plan and placement JSON export; browser and headset verification pending",
+    "simulator": "/simulations/equipment/11-06/simulator/",
+    "related": [
+      [
+        "Illustrated configuration",
+        "/simulations/equipment/11-06/simulator/#desk-references"
+      ],
+      [
+        "Dry fit verification",
+        "/simulations/equipment/11-06/simulator/#desk-checks"
+      ]
+    ]
   },
   {
     "id": "11-07",

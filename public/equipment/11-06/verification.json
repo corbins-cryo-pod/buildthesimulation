@@ -1,0 +1,83 @@
+[
+  {
+    "id": "four-pitch-clear",
+    "expected": {
+      "centerDistanceMm": 100,
+      "edgeGapMm": 25,
+      "overlapMm3": 0,
+      "status": "clear"
+    },
+    "actual": {
+      "centerDistanceMm": 100,
+      "edgeGapMm": 25,
+      "overlapMm3": 0,
+      "status": "clear"
+    },
+    "tolerance": "exact integer / half-mm case",
+    "pass": true
+  },
+  {
+    "id": "same-volume",
+    "expected": {
+      "centerDistanceMm": 0,
+      "edgeGapMm": null,
+      "overlapMm3": 105000,
+      "status": "collision"
+    },
+    "actual": {
+      "centerDistanceMm": 0,
+      "edgeGapMm": null,
+      "overlapMm3": 105000,
+      "status": "collision"
+    },
+    "tolerance": "exact integer / half-mm case",
+    "pass": true
+  },
+  {
+    "id": "exact-touch",
+    "expected": {
+      "centerDistanceMm": 75,
+      "edgeGapMm": 0,
+      "overlapMm3": 0,
+      "status": "touching"
+    },
+    "actual": {
+      "centerDistanceMm": 75,
+      "edgeGapMm": 0,
+      "overlapMm3": 0,
+      "status": "touching"
+    },
+    "tolerance": "exact integer / half-mm case",
+    "pass": true
+  },
+  {
+    "id": "outer-hole-overhang",
+    "expected": {
+      "overhangB": {
+        "left": 0,
+        "right": 22.5,
+        "rear": 0,
+        "front": 12.5
+      },
+      "status": "overhang"
+    },
+    "actual": {
+      "overhangB": {
+        "left": 0,
+        "right": 22.5,
+        "rear": 0,
+        "front": 12.5
+      },
+      "status": "overhang"
+    },
+    "tolerance": "exact integer / half-mm case",
+    "pass": true
+  },
+  {
+    "id": "missing-hole",
+    "expected": "Choose a valid hole: column 0–35 and row 0–29.",
+    "actual": "Choose a valid hole: column 0–35 and row 0–29.",
+    "tolerance": "exact integer / half-mm case",
+    "pass": true
+  }
+]

@@ -1,0 +1,66 @@
+{
+  "triangles": 22280,
+  "draws": 25,
+  "nodes": 8,
+  "bytes": 628332,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "breadboard": {
+      "at": [
+        0,
+        0.782,
+        0
+      ],
+      "extent": [
+        0.9,
+        0.06,
+        0.75
+      ],
+      "action": "grid",
+      "label": "Snap selected dry mount to nearest breadboard hole"
+    },
+    "mount_A": {
+      "at": [
+        -0.1375,
+        0.782,
+        -0.0125
+      ],
+      "extent": [
+        0.08,
+        0.035,
+        0.06
+      ],
+      "action": "select:A",
+      "label": "Select dry mount A, brass"
+    },
+    "mount_B": {
+      "at": [
+        -0.0375,
+        0.782,
+        -0.0125
+      ],
+      "extent": [
+        0.07,
+        0.03,
+        0.05
+      ],
+      "action": "select:B",
+      "label": "Select dry mount B, teal"
+    },
+    "frame": {
+      "at": [
+        0,
+        0.751,
+        0
+      ],
+      "extent": [
+        1.1115,
+        0.076,
+        0.9615
+      ],
+      "label": "Fixed documentary SDPM7590 frame"
+    }
+  }
+}
