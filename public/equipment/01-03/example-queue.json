@@ -1,0 +1,131 @@
+{
+  "schema": "bts.gpu-volume-queue.v1",
+  "source": "simulated",
+  "instrumentId": "01-03",
+  "configuration": "ThinkStation P7 / 1× NVIDIA RTX 6000 Ada",
+  "units": {
+    "memory": "byte",
+    "clock": "virtual second"
+  },
+  "hardwareLabelBytes": 48000000000,
+  "reservedBytes": 4000000000,
+  "clockS": 10,
+  "quality": "full",
+  "limitBytes": 44000000000,
+  "allocatedBytes": 0,
+  "queue": [],
+  "running": [],
+  "finished": [
+    {
+      "id": "INERT-GRID-A",
+      "revision": 1,
+      "dims": [
+        2048,
+        2048,
+        2048
+      ],
+      "virtualDurationS": 4,
+      "renderRef": "synthetic-a",
+      "key": "A",
+      "memory": {
+        "quality": "full",
+        "dims": [
+          2048,
+          2048,
+          2048
+        ],
+        "components": {
+          "intensityBytes": 17179869184,
+          "labelBytes": 8589934592,
+          "intensityMipBytes": 2454267026,
+          "stagingBytes": 67108864,
+          "renderBytes": 24883200
+        },
+        "totalBytes": 28316062866
+      },
+      "endS": 4,
+      "status": "complete"
+    },
+    {
+      "id": "INERT-GRID-B",
+      "revision": 2,
+      "dims": [
+        2560,
+        1792,
+        1792
+      ],
+      "virtualDurationS": 6,
+      "renderRef": "synthetic-b",
+      "key": "B",
+      "memory": {
+        "quality": "full",
+        "dims": [
+          2560,
+          1792,
+          1792
+        ],
+        "components": {
+          "intensityBytes": 16441671680,
+          "labelBytes": 8220835840,
+          "intensityMipBytes": 2348810196,
+          "stagingBytes": 67108864,
+          "renderBytes": 24883200
+        },
+        "totalBytes": 27103309780
+      },
+      "endS": 10,
+      "status": "complete"
+    }
+  ],
+  "events": [
+    {
+      "virtualTimeS": 0,
+      "kind": "start",
+      "volumeId": "INERT-GRID-A",
+      "volumeRevision": 1,
+      "jobBytes": 28316062866,
+      "allocatedBytes": 28316062866
+    },
+    {
+      "virtualTimeS": 4,
+      "kind": "complete",
+      "volumeId": "INERT-GRID-A",
+      "volumeRevision": 1,
+      "jobBytes": 28316062866,
+      "allocatedBytes": 28316062866
+    },
+    {
+      "virtualTimeS": 4,
+      "kind": "release",
+      "volumeId": "INERT-GRID-A",
+      "volumeRevision": 1,
+      "jobBytes": 28316062866,
+      "allocatedBytes": 0
+    },
+    {
+      "virtualTimeS": 4,
+      "kind": "start",
+      "volumeId": "INERT-GRID-B",
+      "volumeRevision": 2,
+      "jobBytes": 27103309780,
+      "allocatedBytes": 27103309780
+    },
+    {
+      "virtualTimeS": 10,
+      "kind": "complete",
+      "volumeId": "INERT-GRID-B",
+      "volumeRevision": 2,
+      "jobBytes": 27103309780,
+      "allocatedBytes": 27103309780
+    },
+    {
+      "virtualTimeS": 10,
+      "kind": "release",
+      "volumeId": "INERT-GRID-B",
+      "volumeRevision": 2,
+      "jobBytes": 27103309780,
+      "allocatedBytes": 0
+    }
+  ],
+  "limits": "Peak budget model, not free VRAM, real data size, compute time, fps or hardware measurements."
+}

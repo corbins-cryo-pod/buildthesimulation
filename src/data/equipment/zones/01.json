@@ -59,7 +59,7 @@
   {
     "id": "01-03",
     "name": "GPU visualization node",
-    "model": "NVIDIA RTX 6000 Ada Generation workstation (reference configuration)",
+    "model": "Lenovo ThinkStation P7 / 1× NVIDIA RTX 6000 Ada",
     "evidence": "C",
     "priority": "P3",
     "page": 7,
@@ -70,9 +70,10 @@
     "inputs": "Versioned visualization dataset, job requests, estimated byte counts and virtual memory budget",
     "outputs": "Job-state events, allocated bytes and rendered-volume reference",
     "acceptance": "Queue two volumes that each fit individually but exceed the budget together. The second starts after the first releases memory; replay yields the same event order.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric chassis and GPU GLB; selected internals inferred",
+    "simulationStatus": "Deterministic synthetic FIFO, allocation and multiresolution budget",
+    "integrationStatus": "Revisioned synthetic volume and queue JSON",
+    "simulator": "/simulations/equipment/01-03/simulator/"
   },
   {
     "id": "01-04",
