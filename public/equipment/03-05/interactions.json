@@ -1,0 +1,66 @@
+{
+  "triangles": 5320,
+  "draws": 24,
+  "nodes": 12,
+  "bytes": 330092,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "dry_gauge": {
+      "at": [
+        0.421,
+        0.752,
+        0.134
+      ],
+      "extent": [
+        0.156,
+        0.025,
+        0.156
+      ],
+      "action": "place",
+      "label": "Position or remove a dry external dummy"
+    },
+    "dummy": {
+      "at": [
+        0.424,
+        0.774,
+        0.138
+      ],
+      "extent": [
+        0.1,
+        0.005,
+        0.1
+      ],
+      "action": "check",
+      "label": "Evaluate planar circular clearance"
+    },
+    "inspect_button": {
+      "at": [
+        0.508,
+        0.761,
+        0.031
+      ],
+      "extent": [
+        0.064,
+        0.032,
+        0.061
+      ],
+      "action": "check",
+      "label": "Read the dry gauge only"
+    },
+    "fixed_handle": {
+      "at": [
+        -0.025,
+        0.469,
+        0.259
+      ],
+      "extent": [
+        0.05,
+        0.05,
+        0.021
+      ],
+      "label": "Decorative fixed door handle"
+    }
+  }
+}
