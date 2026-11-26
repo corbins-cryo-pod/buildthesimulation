@@ -1,0 +1,19 @@
+.dsa508{--line:color-mix(in srgb,currentColor 29%,transparent);width:min(100%,1300px);margin:auto}
+.dsa508 .dsa-grid,.dsa508 .dsa-analysis{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:1rem}
+.dsa508 .dsa-card{border:1px solid var(--line);padding:.9rem;min-width:0;margin:.9rem 0}
+.dsa508 h3{font-size:1.4rem;margin:.36rem 0 .72rem}.dsa508 .dsa-note,.dsa508 .dsa-bar,.dsa508 label,.dsa508 .dsa-kicker{font:.87rem/1.45 system-ui,sans-serif}
+.dsa508 .dsa-kicker{letter-spacing:.1em;text-transform:uppercase;opacity:.7}.dsa508 .dsa-bar{display:flex;align-items:center;flex-wrap:wrap;gap:.38rem .6rem;margin:.52rem 0}
+.dsa508 :is(button,input){padding:.4rem;border:1px solid var(--line);background:var(--panel,Canvas);color:inherit;font:inherit;border-radius:3px}
+.dsa508 button{cursor:pointer;min-height:37px}.dsa508 button:disabled{opacity:.45;cursor:default}.dsa508 button.dsa-primary{background:#2e5650;color:#fff}
+.dsa508 input{min-width:0;width:100%;box-sizing:border-box}.dsa508 label{display:grid;gap:.14rem}
+.dsa508 #dsa-config{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+.dsa508 .dsa-3d{aspect-ratio:1.5;background:#283640}.dsa508 #model{width:100%;height:100%;display:block;touch-action:none}
+.dsa508 #image{width:100%;height:auto;display:block;background:#202a30}.dsa508 #image[data-picking=true]{cursor:crosshair}
+.dsa508 .dsa-baseline label{max-width:12rem}.dsa508 #message{min-height:2.6em}.dsa508 .is-error{color:#aa3f2d}
+html[data-theme=dark] .dsa508 .is-error{color:#f0a98a}
+.dsa508 .dsa-meters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin:1rem 0}
+.dsa508 .dsa-meters :is(small,strong){display:block}.dsa508 .dsa-meters strong{font:600 clamp(1rem,3vw,1.55rem)/1.45 monospace}
+.dsa508 .dsa-sheet{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.74rem}.dsa508 figure{margin:0}.dsa508 figure img{width:100%;height:auto}.dsa508 figcaption{font-size:.92rem}
+.dsa508 .dsa-table{overflow:auto}.dsa508 .dsa-table table{width:100%;border-collapse:collapse}.dsa508 .dsa-table :is(th,td){border-bottom:1px solid var(--line);padding:.48rem;text-align:left}
+@media (max-width:835px){.dsa508 .dsa-grid,.dsa508 .dsa-analysis,.dsa508 .dsa-sheet{grid-template-columns:1fr}}
+@media (max-width:430px){.dsa508 .dsa-card{padding:.55rem}}

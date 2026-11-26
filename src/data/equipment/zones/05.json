@@ -170,7 +170,7 @@
   {
     "id": "05-08",
     "name": "Contact angle goniometer",
-    "model": "KRUSS DSA100 (candidate)",
+    "model": "KRÜSS DSA100B Basic / CF04 / manual 500 µL glass syringe",
     "evidence": "C",
     "priority": "P2",
     "page": 19,
@@ -181,9 +181,20 @@
     "inputs": "Droplet side-view image, baseline, pixel calibration and fit model",
     "outputs": "Left and right contact-angle estimates with fit quality and image provenance",
     "acceptance": "Fit a noiseless semicircle resting on its diameter. Both edge angles should be 90° within the predeclared image-sampling tolerance.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Photo-informed metric GLB · documented base dimensions, editable parametric source",
+    "simulationStatus": "Calibrated circular silhouette fit · analytic and image benchmarks verified",
+    "integrationStatus": "Sensor PNG, fit JSON and ZIP · VR station poses and interaction map",
+    "simulator": "/simulations/equipment/05-08/simulator/",
+    "related": [
+      [
+        "Manufacturer and visual evidence",
+        "/simulations/equipment/05-08/simulator/#evidence"
+      ],
+      [
+        "Numerical verification",
+        "/simulations/equipment/05-08/simulator/#verification"
+      ]
+    ]
   },
   {
     "id": "05-09",
