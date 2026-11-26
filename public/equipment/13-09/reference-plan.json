@@ -1,0 +1,61 @@
+{
+  "declaredBeforeImplementation": true,
+  "scope": "Original drawing note revisions for a synthetic inert 40 × 28 mm plate, not specimens or process steps.",
+  "cases": [
+    {
+      "id": "ordered-annotations",
+      "events": [
+        [
+          "upper-notch",
+          "outline-mark"
+        ],
+        [
+          "center-cross",
+          "locator-mark"
+        ]
+      ],
+      "expected": {
+        "sourceId": "inert-drawing-01",
+        "revision": 2,
+        "features": [
+          "upper-notch",
+          "center-cross"
+        ],
+        "ordinals": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "id": "duplicate-guard",
+      "events": [
+        [
+          "upper-notch",
+          "outline-mark"
+        ],
+        [
+          "upper-notch",
+          "outline-mark"
+        ]
+      ],
+      "expected": {
+        "revision": 1,
+        "lastError": "That drawing tag already exists."
+      }
+    },
+    {
+      "id": "invalid-feature",
+      "events": [
+        [
+          "unknown",
+          "outline-mark"
+        ]
+      ],
+      "expected": {
+        "revision": 0,
+        "lastError": "Choose a documented landmark."
+      }
+    }
+  ]
+}
