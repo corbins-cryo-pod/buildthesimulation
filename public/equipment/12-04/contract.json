@@ -1,0 +1,7 @@
+{
+ "equipmentId":"12-04",
+ "inputs":{"schema":"bts.synthetic-psf-image.v1","dataset":"fixed author-generated wide.json and narrow.json; 65x65 grayscale unsigned 16-bit, 10 nm per synthetic pixel, expected SHA-256 and source revision; no upload","profile":"X or Y through fixed pixel index 0–64, zero-based; center is 32/0 nm","validation":"requires two bracketed crossings and contrast >=0.015 from the stored synthetic background"},
+ "outputs":{"schema":"bts.synthetic-psf-comparison.v1","coordinates":"nm","intensity":"normalized arbitrary synthetic intensity","fields":"image source IDs, hashes, pixel spacing, normalized line profiles, half height intercepts, widths, difference and ratio; JSON and CSV"},
+ "limits":["Synthetic data visualization and profile measurement only. No live instrument, measurements, operation, settings, modules, sample flows, biology or resolution prediction. No proven downstream consumer."],
+ "examples":["example-comparison.json","example-profiles.csv"]
+}
