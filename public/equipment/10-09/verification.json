@@ -1,0 +1,81 @@
+[
+  {
+    "id": "primary-fiducial",
+    "selection": "A-01",
+    "expected": {
+      "headstageId": "M4032-A",
+      "markerIndex": 40,
+      "relativeToAms": 0
+    },
+    "actual": {
+      "headstageId": "M4032-A",
+      "markerIndex": 40,
+      "relativeToAms": 0
+    },
+    "pass": true
+  },
+  {
+    "id": "secondary-fiducial",
+    "selection": "B-01",
+    "expected": {
+      "headstageId": "M4016-B",
+      "markerIndex": 46,
+      "relativeToAms": 3
+    },
+    "actual": {
+      "headstageId": "M4016-B",
+      "markerIndex": 46,
+      "relativeToAms": 3
+    },
+    "pass": true
+  },
+  {
+    "id": "earlier-fiducial",
+    "selection": "C-01",
+    "expected": {
+      "headstageId": "M4032-C",
+      "markerIndex": 38,
+      "relativeToAms": -1
+    },
+    "actual": {
+      "headstageId": "M4032-C",
+      "markerIndex": 38,
+      "relativeToAms": -1
+    },
+    "pass": true
+  },
+  {
+    "id": "unpopulated-port",
+    "selection": "D-01",
+    "expected": {
+      "result": null
+    },
+    "actual": {
+      "result": null
+    },
+    "pass": true
+  },
+  {
+    "id": "missing-stream-but-port-populated",
+    "selection": "A-32",
+    "expected": {
+      "result": null
+    },
+    "actual": {
+      "result": null
+    },
+    "pass": true
+  },
+  {
+    "id": "scope-handoff",
+    "expected": {
+      "channelId": "B-01",
+      "clipCount": 0
+    },
+    "actual": {
+      "channelId": "B-01",
+      "clipCount": 0
+    },
+    "pass": true
+  }
+]
