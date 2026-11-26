@@ -1,0 +1,600 @@
+{
+  "schema": "bts.incubator.exposure.v1",
+  "modelVersion": "1.0.0",
+  "deviceId": "07-02",
+  "catalogNumber": "51030285",
+  "units": {
+    "time_s": "s",
+    "temp_C": "°C",
+    "co2_pct": "vol %"
+  },
+  "clock": "elapsed seconds from first reading",
+  "intervalConvention": "[enter_s, leave_s); final knot is the interpolation limit only",
+  "provenance": {
+    "kind": "digitized-replay",
+    "label": "VIOS 160i · TC180 CO₂",
+    "source": "https://knowledge1.thermofisher.com/Lab_Equipment/CO2_Incubators/Thermo_Scientific_Heraeus_CO2_Incubators/Thermo_Scientific_Heraeus_Operator_Manuals/Recovery_and_Gas_Consumption_Graphs",
+    "sourceDocument": "Recovery and Gas consumption, 2018-08-15",
+    "page": 5,
+    "sourceFile": "tc180-co2.csv",
+    "doorTiming": "30 s reported; switch edges placed at first visible departure, not logged",
+    "interpolation": "Piecewise linear between digitized graph points; each graph has its own time origin"
+  },
+  "events": [
+    {
+      "start_s": 255,
+      "end_s": 285,
+      "glass": true
+    }
+  ],
+  "chamber": [
+    {
+      "time_s": 0,
+      "temp_C": null,
+      "co2_pct": 4.97
+    },
+    {
+      "time_s": 48,
+      "temp_C": null,
+      "co2_pct": 4.97
+    },
+    {
+      "time_s": 115,
+      "temp_C": null,
+      "co2_pct": 4.96
+    },
+    {
+      "time_s": 176,
+      "temp_C": null,
+      "co2_pct": 4.96
+    },
+    {
+      "time_s": 234,
+      "temp_C": null,
+      "co2_pct": 4.97
+    },
+    {
+      "time_s": 253,
+      "temp_C": null,
+      "co2_pct": 4.96
+    },
+    {
+      "time_s": 260,
+      "temp_C": null,
+      "co2_pct": 4.88
+    },
+    {
+      "time_s": 263,
+      "temp_C": null,
+      "co2_pct": 4.67
+    },
+    {
+      "time_s": 268,
+      "temp_C": null,
+      "co2_pct": 4.34
+    },
+    {
+      "time_s": 270,
+      "temp_C": null,
+      "co2_pct": 4.01
+    },
+    {
+      "time_s": 273,
+      "temp_C": null,
+      "co2_pct": 3.47
+    },
+    {
+      "time_s": 276,
+      "temp_C": null,
+      "co2_pct": 2.92
+    },
+    {
+      "time_s": 281,
+      "temp_C": null,
+      "co2_pct": 2.38
+    },
+    {
+      "time_s": 286,
+      "temp_C": null,
+      "co2_pct": 1.83
+    },
+    {
+      "time_s": 294,
+      "temp_C": null,
+      "co2_pct": 1.29
+    },
+    {
+      "time_s": 300,
+      "temp_C": null,
+      "co2_pct": 1.01
+    },
+    {
+      "time_s": 304,
+      "temp_C": null,
+      "co2_pct": 0.85
+    },
+    {
+      "time_s": 308,
+      "temp_C": null,
+      "co2_pct": 0.75
+    },
+    {
+      "time_s": 317,
+      "temp_C": null,
+      "co2_pct": 0.71
+    },
+    {
+      "time_s": 323,
+      "temp_C": null,
+      "co2_pct": 0.75
+    },
+    {
+      "time_s": 328,
+      "temp_C": null,
+      "co2_pct": 0.85
+    },
+    {
+      "time_s": 334,
+      "temp_C": null,
+      "co2_pct": 1.01
+    },
+    {
+      "time_s": 341,
+      "temp_C": null,
+      "co2_pct": 1.29
+    },
+    {
+      "time_s": 355,
+      "temp_C": null,
+      "co2_pct": 1.83
+    },
+    {
+      "time_s": 366,
+      "temp_C": null,
+      "co2_pct": 2.38
+    },
+    {
+      "time_s": 380,
+      "temp_C": null,
+      "co2_pct": 2.92
+    },
+    {
+      "time_s": 397,
+      "temp_C": null,
+      "co2_pct": 3.47
+    },
+    {
+      "time_s": 423,
+      "temp_C": null,
+      "co2_pct": 4.01
+    },
+    {
+      "time_s": 447,
+      "temp_C": null,
+      "co2_pct": 4.34
+    },
+    {
+      "time_s": 466,
+      "temp_C": null,
+      "co2_pct": 4.51
+    },
+    {
+      "time_s": 490,
+      "temp_C": null,
+      "co2_pct": 4.67
+    },
+    {
+      "time_s": 516,
+      "temp_C": null,
+      "co2_pct": 4.78
+    },
+    {
+      "time_s": 546,
+      "temp_C": null,
+      "co2_pct": 4.84
+    },
+    {
+      "time_s": 577,
+      "temp_C": null,
+      "co2_pct": 4.86
+    },
+    {
+      "time_s": 608,
+      "temp_C": null,
+      "co2_pct": 4.88
+    },
+    {
+      "time_s": 639,
+      "temp_C": null,
+      "co2_pct": 4.94
+    },
+    {
+      "time_s": 670,
+      "temp_C": null,
+      "co2_pct": 4.93
+    },
+    {
+      "time_s": 705,
+      "temp_C": null,
+      "co2_pct": 4.96
+    },
+    {
+      "time_s": 787,
+      "temp_C": null,
+      "co2_pct": 4.96
+    },
+    {
+      "time_s": 837,
+      "temp_C": null,
+      "co2_pct": 4.96
+    },
+    {
+      "time_s": 897,
+      "temp_C": null,
+      "co2_pct": 5
+    },
+    {
+      "time_s": 950,
+      "temp_C": null,
+      "co2_pct": 5
+    },
+    {
+      "time_s": 1029,
+      "temp_C": null,
+      "co2_pct": 5
+    },
+    {
+      "time_s": 1058,
+      "temp_C": null,
+      "co2_pct": 5.05
+    },
+    {
+      "time_s": 1084,
+      "temp_C": null,
+      "co2_pct": 5
+    },
+    {
+      "time_s": 1161,
+      "temp_C": null,
+      "co2_pct": 5.02
+    },
+    {
+      "time_s": 1205,
+      "temp_C": null,
+      "co2_pct": 5
+    },
+    {
+      "time_s": 1260,
+      "temp_C": null,
+      "co2_pct": 5.06
+    },
+    {
+      "time_s": 1304,
+      "temp_C": null,
+      "co2_pct": 5
+    },
+    {
+      "time_s": 1348,
+      "temp_C": null,
+      "co2_pct": 5.02
+    },
+    {
+      "time_s": 1414,
+      "temp_C": null,
+      "co2_pct": 5
+    },
+    {
+      "time_s": 1459,
+      "temp_C": null,
+      "co2_pct": 5
+    },
+    {
+      "time_s": 1505,
+      "temp_C": null,
+      "co2_pct": 5
+    },
+    {
+      "time_s": 1591,
+      "temp_C": null,
+      "co2_pct": 4.99
+    },
+    {
+      "time_s": 1701,
+      "temp_C": null,
+      "co2_pct": 5
+    },
+    {
+      "time_s": 1756,
+      "temp_C": null,
+      "co2_pct": 4.96
+    },
+    {
+      "time_s": 1800,
+      "temp_C": null,
+      "co2_pct": 5
+    }
+  ],
+  "samples": [
+    {
+      "sampleId": "VIOS-A",
+      "shelf": 1,
+      "enter_s": 0,
+      "leave_s": 600,
+      "parentRevision": 0,
+      "revision": 1,
+      "history": [
+        {
+          "deviceId": "07-02",
+          "operation": "attach-chamber-history",
+          "parentRevision": 0,
+          "revision": 1,
+          "enter_s": 0,
+          "leave_s": 600
+        }
+      ],
+      "duration_s": 600,
+      "glassOpen_s": 30,
+      "doorIntervals": [
+        {
+          "start_s": 255,
+          "end_s": 285
+        }
+      ],
+      "statistics": {
+        "temp_C": null,
+        "co2_pct": {
+          "min": 0.71,
+          "max": 4.97,
+          "mean": 4.154526075268818,
+          "threshold": 4.5,
+          "below_s": 199.30659536541893
+        }
+      },
+      "readings": [
+        {
+          "time_s": 0,
+          "temp_C": null,
+          "co2_pct": 4.97
+        },
+        {
+          "time_s": 48,
+          "temp_C": null,
+          "co2_pct": 4.97
+        },
+        {
+          "time_s": 115,
+          "temp_C": null,
+          "co2_pct": 4.96
+        },
+        {
+          "time_s": 176,
+          "temp_C": null,
+          "co2_pct": 4.96
+        },
+        {
+          "time_s": 234,
+          "temp_C": null,
+          "co2_pct": 4.97
+        },
+        {
+          "time_s": 253,
+          "temp_C": null,
+          "co2_pct": 4.96
+        },
+        {
+          "time_s": 260,
+          "temp_C": null,
+          "co2_pct": 4.88
+        },
+        {
+          "time_s": 263,
+          "temp_C": null,
+          "co2_pct": 4.67
+        },
+        {
+          "time_s": 268,
+          "temp_C": null,
+          "co2_pct": 4.34
+        },
+        {
+          "time_s": 270,
+          "temp_C": null,
+          "co2_pct": 4.01
+        },
+        {
+          "time_s": 273,
+          "temp_C": null,
+          "co2_pct": 3.47
+        },
+        {
+          "time_s": 276,
+          "temp_C": null,
+          "co2_pct": 2.92
+        },
+        {
+          "time_s": 281,
+          "temp_C": null,
+          "co2_pct": 2.38
+        },
+        {
+          "time_s": 286,
+          "temp_C": null,
+          "co2_pct": 1.83
+        },
+        {
+          "time_s": 294,
+          "temp_C": null,
+          "co2_pct": 1.29
+        },
+        {
+          "time_s": 300,
+          "temp_C": null,
+          "co2_pct": 1.01
+        },
+        {
+          "time_s": 304,
+          "temp_C": null,
+          "co2_pct": 0.85
+        },
+        {
+          "time_s": 308,
+          "temp_C": null,
+          "co2_pct": 0.75
+        },
+        {
+          "time_s": 317,
+          "temp_C": null,
+          "co2_pct": 0.71
+        },
+        {
+          "time_s": 323,
+          "temp_C": null,
+          "co2_pct": 0.75
+        },
+        {
+          "time_s": 328,
+          "temp_C": null,
+          "co2_pct": 0.85
+        },
+        {
+          "time_s": 334,
+          "temp_C": null,
+          "co2_pct": 1.01
+        },
+        {
+          "time_s": 341,
+          "temp_C": null,
+          "co2_pct": 1.29
+        },
+        {
+          "time_s": 355,
+          "temp_C": null,
+          "co2_pct": 1.83
+        },
+        {
+          "time_s": 366,
+          "temp_C": null,
+          "co2_pct": 2.38
+        },
+        {
+          "time_s": 380,
+          "temp_C": null,
+          "co2_pct": 2.92
+        },
+        {
+          "time_s": 397,
+          "temp_C": null,
+          "co2_pct": 3.47
+        },
+        {
+          "time_s": 423,
+          "temp_C": null,
+          "co2_pct": 4.01
+        },
+        {
+          "time_s": 447,
+          "temp_C": null,
+          "co2_pct": 4.34
+        },
+        {
+          "time_s": 466,
+          "temp_C": null,
+          "co2_pct": 4.51
+        },
+        {
+          "time_s": 490,
+          "temp_C": null,
+          "co2_pct": 4.67
+        },
+        {
+          "time_s": 516,
+          "temp_C": null,
+          "co2_pct": 4.78
+        },
+        {
+          "time_s": 546,
+          "temp_C": null,
+          "co2_pct": 4.84
+        },
+        {
+          "time_s": 577,
+          "temp_C": null,
+          "co2_pct": 4.86
+        },
+        {
+          "time_s": 600,
+          "temp_C": null,
+          "co2_pct": 4.8748387096774195
+        }
+      ]
+    },
+    {
+      "sampleId": "VIOS-B",
+      "shelf": 3,
+      "enter_s": 900,
+      "leave_s": 1200,
+      "parentRevision": 0,
+      "revision": 1,
+      "history": [
+        {
+          "deviceId": "07-02",
+          "operation": "attach-chamber-history",
+          "parentRevision": 0,
+          "revision": 1,
+          "enter_s": 900,
+          "leave_s": 1200
+        }
+      ],
+      "duration_s": 300,
+      "glassOpen_s": 0,
+      "doorIntervals": [],
+      "statistics": {
+        "temp_C": null,
+        "co2_pct": {
+          "min": 5,
+          "max": 5.05,
+          "mean": 5.0085977272727265,
+          "threshold": 4.5,
+          "below_s": 0
+        }
+      },
+      "readings": [
+        {
+          "time_s": 900,
+          "temp_C": null,
+          "co2_pct": 5
+        },
+        {
+          "time_s": 950,
+          "temp_C": null,
+          "co2_pct": 5
+        },
+        {
+          "time_s": 1029,
+          "temp_C": null,
+          "co2_pct": 5
+        },
+        {
+          "time_s": 1058,
+          "temp_C": null,
+          "co2_pct": 5.05
+        },
+        {
+          "time_s": 1084,
+          "temp_C": null,
+          "co2_pct": 5
+        },
+        {
+          "time_s": 1161,
+          "temp_C": null,
+          "co2_pct": 5.02
+        },
+        {
+          "time_s": 1200,
+          "temp_C": null,
+          "co2_pct": 5.002272727272727
+        }
+      ]
+    }
+  ]
+}

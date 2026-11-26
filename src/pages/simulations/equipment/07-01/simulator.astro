@@ -101,7 +101,7 @@ const display = (value) => Array.isArray(value) ? value.join(', ') : String(valu
     <dl class="cab-contract">
       <dt>Input</dt><dd>Catalog 1305 configuration, session ID, starting height in mm, and up to 512 ordered events. Time starts at zero and has 1 ms resolution. Sessions support up to 24 hours and 16 simultaneous tokens. These last two limits belong to this software.</dd>
       <dt>Output</dt><dd>The JSON includes the replay input, device and solver versions, simulated position and qualitative flag, timestamped events, occupancy intervals, and warning seconds for each ID. Export at any cursor position for a partial observation. Import either a saved session or its input to replay the original schedule.</dd>
-      <dt>Handoff</dt><dd>The adjacent <a href="/simulations/equipment/07-02/">incubator station</a> has no published session-log importer. The versioned schema and complete example below specify the handoff for a future consumer.</dd>
+      <dt>Handoff</dt><dd>Export a completed session to load released specimen IDs and visit histories in the <a href="/simulations/equipment/07-02/simulator/">incubator station</a>. Its cabinet replay export can return the same sealed IDs here through <b>Import replay</b>.</dd>
       <dt>Rejection</dt><dd>An incompatible model, out-of-range height, invalid timestamp, duplicate load, absent specimen removal or transfer through a closed sash produces an error and preserves the last accepted state.</dd>
     </dl>
     <p class="cab-links"><a href={assets+'example-input.json'} download>Example input</a><a href={assets+'example-session.json'} download>Example result</a><a href={assets+'output-schema.json'} download>Output schema</a></p>
