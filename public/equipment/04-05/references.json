@@ -1,0 +1,10 @@
+{
+  "version":"Current tabletop Nano chassis; circular door as depicted in the manufacturer photo, no exact build serial inferred",
+  "references":[
+    {"title":"Diener Nano technical sheet 00003DEEN-v9-202610, page 1","url":"https://www.plasma.com/fileadmin/user_upload/Downloads/Niederdruckplasma/Plasmasystem_Nano.pdf","caption":"Nominal width, height and depth for the tabletop housing alone. Rear connector allowance is not modeled."},
+    {"title":"Diener manufacturer exterior photo","url":"https://www.plasma.com/fileadmin/user_upload/Produkte/Niederdruck-Plasmaanlagen/Plasmasystems_Nano_1500x1500px.png","caption":"Right-hand unit, unlit. Establishes the upper dark display, inactive switches, circular port in the rectangular door and tall exterior handle."},
+    {"title":"Stanford Nano Shared Facilities installed reference","url":"https://snsf.stanford.edu/facilities/fab/fcr/plasmaasher","caption":"A different installed Nano family cabinet. Its front photo confirms the separation of the display and door, but its variant and external dimensions are not carried over."}
+  ],
+  "housingMm":{"width":540,"depth":800,"height":775},
+  "limits":"Panel and port proportions are inferred from front photography; no interior, service interfaces, gas, plasma, chamber access or cleaning represented. The separate footprint diagrams are invented and are not approved installation layouts."
+}

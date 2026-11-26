@@ -1,0 +1,54 @@
+{
+  "schema": "bts.station.diener-nano-documentary.v1",
+  "equipment": "04-05",
+  "model": "./diener-nano.glb",
+  "axis": "+Y up, +Z front",
+  "units": "m",
+  "nodes": 51,
+  "bytes": 37232,
+  "triangles": 9108,
+  "hitTargets": [
+    {
+      "node": "Chart_rotate_key",
+      "action": "rotate",
+      "label": "Rotate the paper footprint by 90\u00b0",
+      "boundsM": {
+        "min": [
+          0.62,
+          0.191,
+          0.18
+        ],
+        "max": [
+          0.7100000000000001,
+          0.205,
+          0.214
+        ]
+      }
+    },
+    {
+      "node": "Chart_frame_key",
+      "action": "cycle",
+      "label": "Switch the example chart frame",
+      "boundsM": {
+        "min": [
+          0.446,
+          0.191,
+          0.18
+        ],
+        "max": [
+          0.536,
+          0.205,
+          0.214
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./footprint.mjs",
+    "factory": "createStation",
+    "state": "read()",
+    "dispatch": "dispatch(action,payload)",
+    "hit": "hit(nodeName)"
+  },
+  "note": "Chart keys only. No headset test."
+}
