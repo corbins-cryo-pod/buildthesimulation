@@ -1,0 +1,32 @@
+{
+  "schema": "bts.passive-connection.v1",
+  "deviceId": "16-13",
+  "kind": "simulated",
+  "connectionId": "patch-bnc-01",
+  "sampleId": "bench-pulse-01",
+  "revision": 1,
+  "parentRevision": 0,
+  "sourcePort": "PANEL-BNC-OUT-01",
+  "sinkPort": "PANEL-BNC-IN-01",
+  "receivingChannel": "PANEL-BNC-IN-01",
+  "plugType": "BNC 50 ohm male",
+  "sinkType": "BNC 50 ohm female",
+  "signalClass": "ideal baseband analog voltage",
+  "pinMap": [
+    {
+      "from": "PANEL-BNC-OUT-01:center",
+      "to": "PANEL-BNC-IN-01:center"
+    },
+    {
+      "from": "PANEL-BNC-OUT-01:shield",
+      "to": "PANEL-BNC-IN-01:shield"
+    }
+  ],
+  "bend": {
+    "centerlineRadiusMm": 30,
+    "demoMinimumMm": 20,
+    "warning": false,
+    "actualCableRatingKnown": false
+  },
+  "measured": false
+}

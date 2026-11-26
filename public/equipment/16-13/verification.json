@@ -1,0 +1,86 @@
+[
+  {
+    "id": "compatible",
+    "inputs": {
+      "plug": "BNC",
+      "sink": "BNC",
+      "radiusMm": 30
+    },
+    "expected": {
+      "linked": true,
+      "receivingChannel": "PANEL-BNC-IN-01",
+      "peakV": 1.25,
+      "highSampleCount": 10,
+      "dtS": 0.0001
+    },
+    "actual": {
+      "linked": true,
+      "receivingChannel": "PANEL-BNC-IN-01",
+      "peakV": 1.25,
+      "highSampleCount": 10,
+      "dtS": 0.0001
+    },
+    "pass": true
+  },
+  {
+    "id": "blocked",
+    "inputs": {
+      "plug": "SMA",
+      "sink": "BNC",
+      "radiusMm": 30
+    },
+    "expected": {
+      "linked": false
+    },
+    "actual": {
+      "linked": false
+    },
+    "pass": true
+  },
+  {
+    "id": "bend",
+    "inputs": {
+      "plug": "BNC",
+      "sink": "BNC",
+      "radiusMm": 12
+    },
+    "expected": {
+      "linked": true,
+      "bendWarning": true
+    },
+    "actual": {
+      "linked": true,
+      "bendWarning": true
+    },
+    "pass": true
+  },
+  {
+    "id": "unmate",
+    "inputs": {
+      "startsMated": true
+    },
+    "expected": {
+      "linked": false,
+      "canEmit": false
+    },
+    "actual": {
+      "linked": false,
+      "canEmit": false
+    },
+    "pass": true
+  },
+  {
+    "id": "scope-import",
+    "expected": {
+      "contactId": "PANEL-BNC-IN-01",
+      "clipCount": 0
+    },
+    "actual": {
+      "contactId": "PANEL-BNC-IN-01",
+      "clipCount": 0,
+      "scopeRevision": 3,
+      "triggerTimeS": 0.001171875
+    },
+    "pass": true
+  }
+]

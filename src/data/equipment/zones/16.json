@@ -238,9 +238,15 @@
     "inputs": "Source and sink port types, pin map, signal class, cable endpoints and allowed bend radius",
     "outputs": "Validated connection edge, channel routing and bend warnings",
     "acceptance": "Route a known pulse through a compatible BNC signal path and verify the receiving channel ID. A direct SMA-to-BNC attempt without a modeled adapter must create no connection.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Built: metric BNC, SMA, USB-A and FFC benchmark assets",
+    "simulationStatus": "First pass: passive BNC compatibility and routed pulse verified",
+    "integrationStatus": "Linked: simulator, connection export and 09-04 waveform handoff",
+    "related": [
+      [
+        "Open simulator",
+        "/simulations/equipment/16-13/simulator/"
+      ]
+    ]
   },
   {
     "id": "16-14",

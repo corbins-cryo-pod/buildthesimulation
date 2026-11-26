@@ -1,0 +1,55 @@
+{
+  "declaredBeforeImplementation": true,
+  "caseType": "deterministic virtual topology, not measurements",
+  "minimumIllustrativeBendMm": 20,
+  "cases": [
+    {
+      "id": "compatible",
+      "inputs": {
+        "plug": "BNC",
+        "sink": "BNC",
+        "radiusMm": 30
+      },
+      "expected": {
+        "linked": true,
+        "receivingChannel": "PANEL-BNC-IN-01",
+        "peakV": 1.25,
+        "highSampleCount": 10,
+        "dtS": 0.0001
+      }
+    },
+    {
+      "id": "blocked",
+      "inputs": {
+        "plug": "SMA",
+        "sink": "BNC",
+        "radiusMm": 30
+      },
+      "expected": {
+        "linked": false
+      }
+    },
+    {
+      "id": "bend",
+      "inputs": {
+        "plug": "BNC",
+        "sink": "BNC",
+        "radiusMm": 12
+      },
+      "expected": {
+        "linked": true,
+        "bendWarning": true
+      }
+    },
+    {
+      "id": "unmate",
+      "inputs": {
+        "startsMated": true
+      },
+      "expected": {
+        "linked": false,
+        "canEmit": false
+      }
+    }
+  ]
+}
