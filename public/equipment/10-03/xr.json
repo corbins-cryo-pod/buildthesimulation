@@ -1,0 +1,144 @@
+{
+  "schema": "bts.station.xr.v1",
+  "asset": "/equipment/10-03/axopatch-200b.glb",
+  "station": "/equipment/10-03/levels.mjs",
+  "dispatch": "act(state,action,value), station(), waveform(result)",
+  "origin": "Bench surface near rack centre. metre-scale, +Y up, +Z front",
+  "controls": [
+    {
+      "mesh": "POWER",
+      "action": "power",
+      "label": "Toggle virtual amplifier",
+      "minM": [
+        0.181,
+        0.0205,
+        0.1575
+      ],
+      "maxM": [
+        0.195,
+        0.0315,
+        0.1635
+      ]
+    },
+    {
+      "mesh": "GAIN",
+      "action": "gain",
+      "label": "Cycle documented alpha gain",
+      "minM": [
+        0.052165,
+        0.0261,
+        0.1585
+      ],
+      "maxM": [
+        0.069835,
+        0.0439,
+        0.1675
+      ]
+    },
+    {
+      "mesh": "FILTER",
+      "action": "filter",
+      "label": "Cycle virtual Bessel cutoff",
+      "minM": [
+        0.103066,
+        0.026,
+        0.1585
+      ],
+      "maxM": [
+        0.120934,
+        0.044,
+        0.1675
+      ]
+    },
+    {
+      "mesh": "DUMMY_SWITCHED_RESISTOR",
+      "action": "connect",
+      "label": "Connect the inert passive source",
+      "minM": [
+        -0.121,
+        0.0005,
+        0.362
+      ],
+      "maxM": [
+        -0.079,
+        0.0278,
+        0.4065
+      ]
+    },
+    {
+      "mesh": "AXO_METER",
+      "action": "run",
+      "label": "Acquire synthetic trace",
+      "minM": [
+        0.005,
+        0.0585,
+        0.15805
+      ],
+      "maxM": [
+        0.071,
+        0.0835,
+        0.16005
+      ]
+    }
+  ],
+  "geometry": {
+    "rows": [
+      {
+        "label": "rack width",
+        "expectedMm": 482.6,
+        "actualMm": 482.60000348091125,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "rack height",
+        "expectedMm": 88.9,
+        "actualMm": 88.89999985694885,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "rack depth excluding protrusions",
+        "expectedMm": 317.5,
+        "actualMm": 317.50001292675734,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "CV203BU case width",
+        "expectedMm": 17.78,
+        "actualMm": 17.7800003439188,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "CV203BU case height",
+        "expectedMm": 19.05,
+        "actualMm": 19.050000235438347,
+        "toleranceMm": 0.08,
+        "pass": true
+      },
+      {
+        "label": "CV203BU length",
+        "expectedMm": 106.68,
+        "actualMm": 106.6799983382225,
+        "toleranceMm": 0.08,
+        "pass": true
+      }
+    ],
+    "nodes": 157,
+    "bytes": 893084,
+    "triangles": 13649,
+    "minM": [
+      -0.283434,
+      0,
+      -0.17035
+    ],
+    "maxM": [
+      0.2413,
+      0.0969,
+      0.4065
+    ]
+  },
+  "limits": "Nominal casing dimensions checked; 3 m headstage lead illustrated shortened, input box fictional. No calibration or physical headset verification."
+}

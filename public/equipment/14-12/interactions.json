@@ -1,0 +1,57 @@
+{
+  "triangles": 3172,
+  "draws": 17,
+  "nodes": 5,
+  "bytes": 203956,
+  "unit": "m",
+  "coordinateFrame": "+X operator right, +Y up, +Z operator-facing",
+  "headsetTested": false,
+  "anchors": {
+    "chamber_door": {
+      "at": [
+        0.207,
+        0.31,
+        0.355
+      ],
+      "extent": [
+        0.44,
+        0.548,
+        0.076
+      ],
+      "action": "door",
+      "label": "Open/close chamber door"
+    },
+    "thermal_phantom": {
+      "at": [
+        0,
+        0.309,
+        0.279
+      ],
+      "extent": [
+        0.071,
+        0.025,
+        0.054
+      ],
+      "action": "load",
+      "label": "Place/remove inert package"
+    },
+    "controller": {
+      "at": [
+        0,
+        0.628,
+        0.382
+      ],
+      "extent": [
+        0.165,
+        0.101,
+        0.025
+      ],
+      "action": "run",
+      "label": "Run ideal step profile"
+    }
+  },
+  "motion": {
+    "doorAxis": "+Y",
+    "openRadians": 1.46
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "equipmentId":"13-15",
+  "configuration":"Bruker SkyScan 1272 CMOS Edition standard exterior, no optional sample changer",
+  "previousRegisterLabel":"Bruker SkyScan 1270; direct EMBL facility page, front photo and Bruker documentation substantiate 1272",
+  "scope":"Dormant documentary cabinet plus separate read-only ideal geometry slice exhibit",
+  "input":{"schema":"bts.inert-label-stack.v1","sampleId":"BTS-CAL-TWO-BEAD-001","shapeVox":[48,44,17],"spacingMm":[0.1,0.1,0.2],"originMm":[0,0,0],"coordinateConvention":"Voxel centers; column right, row down, increasing saved plane index","labels":[0,1,2],"selectedIndexRange":[0,16],"knownMissingPlane":6},
+  "output":{"schema":"bts.inert-slice-ruler.v1","fields":"Sample ID, revision, saved plane ID, plane coverage, coordinates, spacing, label centroids, in-plane separation if both label classes present","units":"mm","physicalClaim":false},
+  "limits":["No projection, geometry calibration, attenuation, CT numbers, or reconstruction","No hardware settings or specimen workflow","The missing item is an absent saved plane, not incomplete rotation or a real scanner artifact"]
+}

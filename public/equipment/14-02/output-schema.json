@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Simulated three-point beam",
+  "required": [
+    "schema",
+    "kind",
+    "deviceId",
+    "sampleId",
+    "inputRevision",
+    "revision",
+    "fixture",
+    "section",
+    "units",
+    "points",
+    "provenance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bts.flexure-three-point.v1"
+    },
+    "kind": {
+      "const": "simulated"
+    },
+    "deviceId": {
+      "const": "14-02"
+    },
+    "points": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "deltaM",
+          "forceN",
+          "maxFlexStressPa",
+          "outerFiberStrain",
+          "modelValid",
+          "overRange",
+          "domainExceeded"
+        ],
+        "description": "SI coordinates; null force for invalid/readout-overrange points."
+      }
+    }
+  }
+}

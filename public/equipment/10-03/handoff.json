@@ -1,0 +1,18 @@
+{
+  "fixture": "primary-example.json",
+  "scope": {
+    "sampleId": "SWITCHED-RESISTOR-01",
+    "contactId": "AXOPATCH-SCALED",
+    "revision": 2,
+    "peakToPeakV": 0.12103639818315455,
+    "triggerSourceTimeS": 0.0053300000000000005,
+    "clipCount": 0,
+    "expectedPeakToPeakV": 0.12,
+    "allowedAbsoluteErrorV": 0.004
+  },
+  "adc": {
+    "schema": "bts.analog-waveform.v1",
+    "sampleId": "SWITCHED-RESISTOR-01",
+    "revision": 2
+  }
+}

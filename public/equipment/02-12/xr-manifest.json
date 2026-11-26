@@ -1,0 +1,58 @@
+{
+  "schema": "bts.equipment.interaction.v1",
+  "deviceId": "02-12",
+  "asset": "/equipment/02-12/lv100nd.glb",
+  "scale": "1 glTF unit = 1 m, +Y up, +Z toward operator",
+  "metrics": {
+    "bytes": 263704,
+    "triangles": 3928,
+    "draws": 68,
+    "baseGltfXyzM": [
+      0.25099998712539673,
+      0.057999998331069946,
+      0.38600000739097595
+    ],
+    "mainStandNominalHeightM": 0.5060000082012266
+  },
+  "implementation": "Desktop and future XR share independent action(state, action). No headset tested.",
+  "nodes": [
+    {
+      "node": "objective_action",
+      "label": "Index 10× / 20× objective",
+      "action": {
+        "type": "objective"
+      },
+      "diameterM": 0.022
+    },
+    {
+      "node": "objective_turret",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "detentsDeg": [
+        0,
+        -72
+      ],
+      "pivotM": [
+        0,
+        0.306,
+        0.031
+      ]
+    },
+    {
+      "node": "focus_knob",
+      "label": "Return focus to nominal zero",
+      "action": {
+        "type": "focus"
+      },
+      "diameterM": 0.062
+    },
+    {
+      "node": "stage_translation",
+      "label": "XY and focus motion",
+      "visualMovement": "55:1 transverse and 45:1 vertical exaggeration"
+    }
+  ]
+}
