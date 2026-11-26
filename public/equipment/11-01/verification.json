@@ -1,0 +1,133 @@
+{
+  "scope": "Documentary nominal enclosure and detached abstract counts; no drive, exposure, signal measurements, calibration or headset evidence.",
+  "rows": [
+    {
+      "id": "Reference number of marks",
+      "expected": 8,
+      "actual": 8,
+      "unit": "marks",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Double number of marks",
+      "expected": 16,
+      "actual": 16,
+      "unit": "marks",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Reference share Circle",
+      "expected": 0.125,
+      "actual": 0.125,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Same doubled share Circle",
+      "expected": 0.125,
+      "actual": 0.125,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Reference share Square",
+      "expected": 0.375,
+      "actual": 0.375,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Same doubled share Square",
+      "expected": 0.375,
+      "actual": 0.375,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Reference share Diamond",
+      "expected": 0.5,
+      "actual": 0.5,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Same doubled share Diamond",
+      "expected": 0.5,
+      "actual": 0.5,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Defined displayed shares sum",
+      "expected": 1,
+      "actual": 1,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Empty card total",
+      "expected": 0,
+      "actual": 0,
+      "unit": "marks",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Circle empty share",
+      "expected": null,
+      "actual": null,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Square empty share",
+      "expected": null,
+      "actual": null,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Diamond empty share",
+      "expected": null,
+      "actual": null,
+      "unit": "",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "OEM LEDD_1 width",
+      "expected": 175,
+      "actual": 174.99999701976776,
+      "unit": "mm",
+      "tolerance": 0.1,
+      "pass": true
+    },
+    {
+      "id": "OEM LEDD_1 height",
+      "expected": 50,
+      "actual": 50.00000107975211,
+      "unit": "mm",
+      "tolerance": 0.1,
+      "pass": true
+    },
+    {
+      "id": "OEM LEDD_1 depth",
+      "expected": 105,
+      "actual": 105.00000417232513,
+      "unit": "mm",
+      "tolerance": 0.1,
+      "pass": true
+    }
+  ]
+}

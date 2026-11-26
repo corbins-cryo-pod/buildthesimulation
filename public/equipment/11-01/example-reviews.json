@@ -1,0 +1,86 @@
+[
+  {
+    "schema": "bts.synthetic-count-card-review.v1",
+    "kind": "synthetic-abstract-display",
+    "archiveId": "DORIC-DETACHED-ARITHMETIC-001",
+    "revision": 1,
+    "source": "BuildTheSimulation authorial abstract printed shapes; not a hardware or optical signal",
+    "cardId": "REFERENCE",
+    "total": 8,
+    "shareUnit": "dimensionless",
+    "status": "defined",
+    "marks": [
+      {
+        "symbol": "Circle",
+        "count": 1,
+        "share": 0.125
+      },
+      {
+        "symbol": "Square",
+        "count": 3,
+        "share": 0.375
+      },
+      {
+        "symbol": "Diamond",
+        "count": 4,
+        "share": 0.5
+      }
+    ]
+  },
+  {
+    "schema": "bts.synthetic-count-card-review.v1",
+    "kind": "synthetic-abstract-display",
+    "archiveId": "DORIC-DETACHED-ARITHMETIC-001",
+    "revision": 1,
+    "source": "BuildTheSimulation authorial abstract printed shapes; not a hardware or optical signal",
+    "cardId": "DOUBLE",
+    "total": 16,
+    "shareUnit": "dimensionless",
+    "status": "defined",
+    "marks": [
+      {
+        "symbol": "Circle",
+        "count": 2,
+        "share": 0.125
+      },
+      {
+        "symbol": "Square",
+        "count": 6,
+        "share": 0.375
+      },
+      {
+        "symbol": "Diamond",
+        "count": 8,
+        "share": 0.5
+      }
+    ]
+  },
+  {
+    "schema": "bts.synthetic-count-card-review.v1",
+    "kind": "synthetic-abstract-display",
+    "archiveId": "DORIC-DETACHED-ARITHMETIC-001",
+    "revision": 1,
+    "source": "BuildTheSimulation authorial abstract printed shapes; not a hardware or optical signal",
+    "cardId": "EMPTY",
+    "total": 0,
+    "shareUnit": "dimensionless",
+    "status": "undefined: zero total",
+    "marks": [
+      {
+        "symbol": "Circle",
+        "count": 0,
+        "share": null
+      },
+      {
+        "symbol": "Square",
+        "count": 0,
+        "share": null
+      },
+      {
+        "symbol": "Diamond",
+        "count": 0,
+        "share": null
+      }
+    ]
+  }
+]

@@ -1,0 +1,87 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+const p='/equipment/11-01/';
+const maker='https://neuro.doriclenses.com/products/led-drivers';
+const photo='https://neuro.doriclenses.com/cdn/shop/files/LEDD_2_480.jpg?v=1757428885';
+const refs=[
+ ['top-front.webp','Top-front view: dark left display, right silver knob, rounded black housing and one front relief.',photo,'Doric product photograph, visibly the single-knob model'],
+ ['front-quarter.webp','Original three-quarter rendering from the authored model. Side trim and rear relief placement are inferred.',maker+'#specifications','Doric LEDD family specification, one-channel row']
+];
+const checks=[
+ ['Reference counts and total','1, 3, 4; total 8','1, 3, 4; total 8','Exact'],
+ ['Reference normalized fractions','0.125, 0.375, 0.5','0.125, 0.375, 0.5','Exact'],
+ ['Doubled counts','Total 16, same fractions','Total 16, same fractions','Exact'],
+ ['Empty card','Zero total; shares undefined','Zero total; shares undefined','Exact'],
+ ['External W × D × H','175 × 105 × 50 mm','175 × 105 × 50 mm','0.1 mm, nominal enclosure only']
+];
+---
+<Layout title="Doric LEDD_1 · Documentary housing and detached arithmetic exhibit" description="Inspect the dormant single-channel Doric LED driver housing and review three unrelated fixed abstract count cards.">
+ <main id="doric11-exhibit">
+  <p><a href="/simulations/equipment/11-01/">← Equipment record 11-01</a></p>
+  <p class="series">LABORATORY EQUIPMENT / 11-01 / DOCUMENTARY EXHIBIT</p>
+  <h1>Doric LED Driver</h1>
+  <p class="lead">Inspect the dormant one-knob enclosure, then compare three count cards on a separate display. Doubling all the marks doubles the total but leaves their proportions unchanged. A card with no marks has no defined proportions.</p>
+  <div class="duo">
+   <section class="card">
+    <h2>Dormant metric housing</h2>
+    <div id="doric11-view" class="viewer"></div><p id="doric11-model" role="status">Loading the documentary housing…</p>
+    <div class="actions" aria-label="3D viewpoints">
+     <button type="button" data-doric11-view="orbit">Reset orbit</button><button type="button" data-doric11-view="front">Top-front</button><button type="button" data-doric11-view="side">Right flank</button><button type="button" data-doric11-view="archive">Detached cards</button>
+    </div>
+    <p>Drag to orbit and scroll or pinch to zoom. Tap the detached card panel to cycle the fixed examples. There is no interaction with the housing, display, knob or front relief.</p>
+   </section>
+   <section class="card">
+    <h2>Detached count-card review</h2>
+    <canvas id="doric11-diagram" width="532" height="324" aria-label="Fixed count card with separate circle, square, and diamond counts and percentage readouts."></canvas>
+    <div class="inputs"><label>Archived card<select id="doric11-card"><option value="0">Reference</option><option value="1">Doubled counts</option><option value="2">Empty, no denominator</option></select></label></div>
+    <div class="actions"><button id="doric11-next" type="button" disabled>Next card</button><button id="doric11-reset" type="button">Reset reference</button><button id="doric11-export" type="button" disabled>Export review JSON</button></div>
+    <p id="doric11-status" role="status" aria-live="polite">Loading the fixed count cards…</p>
+    <p id="doric11-result" class="readout"></p>
+   </section>
+  </div>
+  <section>
+   <h2>Documented configuration and views</h2>
+   <p>This first pass depicts only Doric Lenses' single-channel <strong>LEDD_1</strong> controller housing. It is not the integrated LEDFLS source or the wider two- or four-channel variant. The catalogue uses an unnamed production revision; the modeled exterior follows the visibly one-knob photo and nominal envelope. No internal component, cable, independent light source or functional connection is shown.</p>
+   <div class="refs">
+    {refs.map(([f,label,href,source])=><figure><img src={p+f} alt={label} width="780" height="510" loading="lazy" /><figcaption><strong>Original reference-based rendering.</strong> {label} <a href={href}>{source} (original source)</a>.</figcaption></figure>)}
+   </div>
+   <div class="tablewrap"><table><thead><tr><th>Property</th><th>Value</th><th>Evidence / role</th></tr></thead><tbody>
+    <tr><td>One-channel nominal W × D × H</td><td>175 × 105 × 50 mm</td><td><a href={maker+'#specifications'}>Doric one-channel product specification</a>, reordered from W × H × D. Visual subdivisions and the extent allocation to the feet, knob and outer trim are inferred.</td></tr>
+    <tr><td>Distinctive front/top details</td><td>One fixed silver-knob silhouette and unpowered left display</td><td><a href={photo}>Doric product photograph</a>, no measured CAD.</td></tr>
+    <tr><td>Abstract display source</td><td>Three fixed printed symbol cards</td><td><a href={p+'count-cards.json'}>Original arithmetic fixture</a>. Counts and shares are not driver channels, optical measurement or control settings.</td></tr>
+   </tbody></table></div>
+  </section>
+  <section>
+   <h2>What the exhibit computes</h2>
+   <p>The display draws three distinct shapes from its original static counts. For a nonempty card each share is its count divided by the sum of all counts. The reference has 1, 3 and 4 marks, for 12.5%, 37.5% and 50%. The doubled card has the same shares. An empty card returns <code>null</code> for every share, preserving undefined values rather than rounding them to zero. The export preserves archive ID, selected card ID, source counts, total and revision.</p>
+   <p>There is no hardware driving or optical output model, exposure, electrical trace, biological or tissue workflow, or device control. The asset uses metric scale and a named detached target for VR authoring; no immersive behavior has been verified.</p>
+  </section>
+  <section>
+   <h2>Focused verification</h2>
+   <div class="tablewrap"><table><thead><tr><th>Test</th><th>Expected</th><th>Actual</th><th>Tolerance</th><th>Result</th></tr></thead><tbody>{checks.map(([name,x,y,t])=><tr><td>{name}</td><td>{x}</td><td>{y}</td><td>{t}</td><td>Pass</td></tr>)}</tbody></table></div>
+   <p><a href={p+'verification.json'}>Verification results</a> · <a href={p+'contract.json'}>Input/output contract</a> · <a href={p+'example-reviews.json'}>Example exports</a> · <a href={p+'count-cards.json'}>Fixed count-card source</a></p>
+   <p><a href={p+'build-model.py'}>Editable Blender source</a> · <a href={p+'doric-ledd1.glb'} download>Download metric GLB</a> · <a href={p+'interaction.json'}>Interaction manifest</a> · <a href={p+'asset-metrics.json'}>GLB metrics</a></p>
+  </section>
+ </main>
+</Layout>
+<script>
+import '../../../../lib/equipment/11-01/client.mjs';
+</script>
+<style>
+main{max-width:1100px;margin:auto;padding:1.2rem clamp(.9rem,2.5vw,2rem) 3rem}
+.series,.readout,table,input,select,button{font-family:var(--font-label,system-ui,sans-serif)}
+.series{font-size:.78rem;letter-spacing:.13em}.lead{max-width:72ch}
+.duo,.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1.2rem 0}
+.card{border:1px solid color-mix(in srgb,currentColor 30%,transparent);padding:1rem;border-radius:.25rem}
+.viewer{height:clamp(23rem,45vw,32rem);overflow:hidden;background:#263949}
+.viewer :global(canvas){display:block;width:100%;height:100%;touch-action:none}
+#doric11-diagram{display:block;width:min(100%,26rem);height:auto;background:#263949;margin:.5rem auto 1rem}
+.actions,.inputs{display:flex;gap:.5rem;flex-wrap:wrap;margin:.6rem 0}
+button,input,select{background:transparent;color:inherit;border:1px solid color-mix(in srgb,currentColor 50%,transparent);border-radius:.2rem;padding:.5rem;font-size:.91rem;min-height:2.6rem}
+button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}input{width:min(18rem,55vw)}label{display:grid;font-size:.86rem;gap:.25rem}
+figure{margin:0}figure img{width:100%;height:auto;display:block}figcaption{font-size:.92rem;margin:.45rem 0}
+section{margin:1.5rem 0}.duo section{margin:0}
+.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:.88rem}td,th{border-bottom:1px solid color-mix(in srgb,currentColor 25%,transparent);text-align:left;padding:.5rem;vertical-align:top}
+[data-error=true]{font-weight:bold;color:var(--accent,currentColor)}
+@media(max-width:770px){.duo,.refs{grid-template-columns:1fr}.viewer{height:22rem}}
+</style>
