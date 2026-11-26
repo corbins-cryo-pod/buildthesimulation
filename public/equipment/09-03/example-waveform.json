@@ -1,0 +1,36 @@
+{
+  "schema": "bts.analog-waveform.v1",
+  "sampleId": "coupon-1k-01",
+  "revision": 1,
+  "kind": "simulated",
+  "origin": "simulated",
+  "dtS": 0.1,
+  "channels": [
+    {
+      "id": "DUT-HI_to_DUT-LO_voltage",
+      "unit": "V",
+      "samples": [
+        0,
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1
+      ]
+    }
+  ],
+  "provenance": {
+    "sourceDeviceId": "09-03",
+    "sourceSchema": "bts.smu-resistive-sweep.v1",
+    "contacts": [
+      "DUT-HI",
+      "DUT-LO"
+    ],
+    "description": "DC sweep samples; no inter-point dynamics represented."
+  }
+}

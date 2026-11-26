@@ -229,7 +229,7 @@
   {
     "id": "05-12",
     "name": "X-ray diffractometer",
-    "model": "Rigaku D-Max-B",
+    "model": "Rigaku D/Max-B / UNL Co Kα Bragg–Brentano variant",
     "evidence": "B",
     "priority": "P3",
     "page": 20,
@@ -242,8 +242,19 @@
     "inputs": "Reference lattice spacings, incident wavelength, angular grid and line-broadening model",
     "outputs": "Intensity versus 2θ with fitted peak positions and candidate phase labels",
     "acceptance": "Use a single ideal first-order reflection of known spacing and wavelength. Recover the angle from Bragg's law; symmetric broadening should increase width without shifting the centroid.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB · 185 mm goniometer radius; photo-proportional cabinet",
+    "simulationStatus": "Synthetic Bragg peak profile and Gaussian width fit; published Si spacing comparison",
+    "integrationStatus": "Interactive virtual scan with spectrum CSV and analysis JSON; VR adapter",
+    "simulator": "/simulations/equipment/05-12/simulator/",
+    "related": [
+      [
+        "Source views and specifications",
+        "/simulations/equipment/05-12/simulator/#evidence"
+      ],
+      [
+        "Verification",
+        "/simulations/equipment/05-12/simulator/#verification"
+      ]
+    ]
   }
 ]

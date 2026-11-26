@@ -1,0 +1,128 @@
+{
+  "schema": "bts.station.xrd.v1",
+  "equipmentId": "05-12",
+  "glb": "./dmax-b.glb",
+  "units": "m",
+  "axes": "+Y up, +Z front, +X right",
+  "nodes": 152,
+  "triangles": 6732,
+  "bytes": 45876,
+  "motions": {
+    "Goniometer_2theta": {
+      "axis": "-Y",
+      "rangeDeg": [
+        10,
+        150
+      ],
+      "source": "virtual angular range, not hardware travel"
+    },
+    "Sample_theta": {
+      "axis": "-Y",
+      "rangeDeg": [
+        5,
+        75
+      ]
+    },
+    "Door_left/Right": {
+      "axis": "X",
+      "strokeM": 0.289,
+      "inferred": true
+    }
+  },
+  "hitTargets": [
+    {
+      "node": "Door_handle_left",
+      "action": "toggleDoor",
+      "label": "Open/close virtual cabinet",
+      "boundsM": {
+        "min": [
+          -0.0895,
+          1.38,
+          0.374
+        ],
+        "max": [
+          -0.0345,
+          1.52,
+          0.41
+        ]
+      }
+    },
+    {
+      "node": "Door_handle_right",
+      "action": "toggleDoor",
+      "label": "Open/close virtual cabinet",
+      "boundsM": {
+        "min": [
+          0.0345,
+          1.38,
+          0.374
+        ],
+        "max": [
+          0.0895,
+          1.52,
+          0.41
+        ]
+      }
+    },
+    {
+      "node": "Specimen_holder",
+      "action": "toggleSample",
+      "label": "Change virtual reference insert",
+      "boundsM": {
+        "min": [
+          -0.034,
+          1.131,
+          -0.058
+        ],
+        "max": [
+          0.034,
+          1.193,
+          -0.018
+        ]
+      }
+    },
+    {
+      "node": "Console_scan_key",
+      "action": "scan",
+      "label": "Run virtual synthetic sweep",
+      "boundsM": {
+        "min": [
+          0.4095,
+          0.7755,
+          0.3865
+        ],
+        "max": [
+          0.4585,
+          0.8105,
+          0.4155
+        ]
+      }
+    },
+    {
+      "node": "Console_angle_knob",
+      "action": "stepAngle",
+      "label": "Step the 2\u03b8 inspection cursor",
+      "boundsM": {
+        "min": [
+          0.4975,
+          0.7655,
+          0.3855
+        ],
+        "max": [
+          0.5505,
+          0.8185,
+          0.4205
+        ]
+      }
+    }
+  ],
+  "adapter": {
+    "module": "./station.mjs",
+    "factory": "createStation",
+    "dispatch": "dispatch(action,payload)",
+    "state": "read()",
+    "ray": "hit(meshName)",
+    "pose": "pose(station.read())"
+  },
+  "note": "Nominal meter-local bounds; transform each moving door or sample target. No headset or hardware session claimed."
+}

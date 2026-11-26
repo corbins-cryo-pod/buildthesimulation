@@ -1,0 +1,104 @@
+{
+  "scope": "Predetermined mathematical, raster, published reference and interlock cases. No instrument calibration or measured counts.",
+  "sources": {
+    "table": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=929658#page=3",
+    "instrument": "https://xrayfacility.unl.edu/equipment/rigaku-dmax-b/"
+  },
+  "cases": [
+    {
+      "id": "BRAGG",
+      "expected": 60,
+      "unit": "degrees 2θ",
+      "tol": 1e-9,
+      "class": "Analytic",
+      "basis": "n=1, λ=2 Å and d=2 Å imply sin θ=1/2",
+      "actual": 60.00000000000001,
+      "pass": true
+    },
+    {
+      "id": "SINGLE_CENTER",
+      "expected": 60,
+      "unit": "degrees 2θ",
+      "tol": 0.0025,
+      "class": "Sampled fit",
+      "basis": "Sampling then log-quadratic fitting preserves a Gaussian center to below final decimal display precision",
+      "actual": 60,
+      "pass": true
+    },
+    {
+      "id": "QUADRATURE",
+      "expected": 0.5,
+      "unit": "degrees 2θ FWHM",
+      "tol": 0.0025,
+      "class": "Analytic + fit",
+      "basis": "Independent Gaussian widths 0.3° and 0.4° convolve to 0.5° FWHM; interpolation tolerance allows sampling",
+      "actual": 0.5001543588419395,
+      "pass": true
+    },
+    {
+      "id": "NO_SHIFT",
+      "expected": 0,
+      "unit": "degrees 2θ centroid difference",
+      "tol": 0.0025,
+      "class": "Control sensitivity",
+      "basis": "Symmetric broadening must not shift center between 0.2° and 1.0° widths",
+      "actual": -1.6342482922482304e-13,
+      "pass": true
+    },
+    {
+      "id": "SILICON_TABLE",
+      "expected": [
+        28.441,
+        47.301,
+        56.12
+      ],
+      "unit": "degrees 2θ",
+      "tol": 0.001,
+      "class": "Published reference",
+      "basis": "Black et al., 2020, Table II informational 111/220/311 angles at 1.5405929 Å; allowance for printed rounding",
+      "actual": [
+        28.44119782084347,
+        47.30073230238749,
+        56.119911348563896
+      ],
+      "pass": true
+    },
+    {
+      "id": "FORBIDDEN",
+      "expected": "forbidden",
+      "unit": "status",
+      "class": "Boundary",
+      "basis": "nλ/(2d)>1 has no real first-order Bragg peak",
+      "actual": "forbidden",
+      "pass": true
+    },
+    {
+      "id": "UNDERSAMPLED",
+      "expected": "sampling",
+      "unit": "status",
+      "class": "Boundary",
+      "basis": "0.1° step cannot fit a 0.1° FWHM without aliasing; require six intervals per FWHM",
+      "actual": "sampling",
+      "pass": true
+    },
+    {
+      "id": "OPEN_CABINET",
+      "expected": "open-view",
+      "unit": "status",
+      "class": "Virtual interlock",
+      "basis": "An open virtual cabinet rejects the synthetic sweep",
+      "actual": "open-view",
+      "pass": true
+    },
+    {
+      "id": "RADIUS",
+      "expected": 185,
+      "unit": "mm",
+      "tol": 0.001,
+      "class": "GLB geometry",
+      "basis": "Documented virtual pivot-to-receiving position",
+      "actual": 185,
+      "pass": true
+    }
+  ]
+}

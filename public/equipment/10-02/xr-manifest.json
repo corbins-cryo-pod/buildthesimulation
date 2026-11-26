@@ -1,0 +1,209 @@
+{
+  "device": "10-02",
+  "units": "m",
+  "up": "+Y",
+  "operatorFront": "+Z",
+  "physicalCabinetWHD": [
+    0.483,
+    0.109,
+    0.363
+  ],
+  "accessories": [
+    "generic_host",
+    "signal_patch",
+    "usb_lead"
+  ],
+  "interactionNodes": {
+    "AI0": {
+      "label": "Analog input 0",
+      "action": "map",
+      "index": 0,
+      "boundsM": {
+        "min": [
+          0.109938,
+          0.065,
+          0.156
+        ],
+        "max": [
+          0.122062,
+          0.079,
+          0.166
+        ]
+      }
+    },
+    "AI1": {
+      "label": "Analog input 1",
+      "action": "map",
+      "index": 1,
+      "boundsM": {
+        "min": [
+          0.130638,
+          0.065,
+          0.156
+        ],
+        "max": [
+          0.142762,
+          0.079,
+          0.166
+        ]
+      }
+    },
+    "AI2": {
+      "label": "Analog input 2",
+      "action": "map",
+      "index": 2,
+      "boundsM": {
+        "min": [
+          0.151338,
+          0.065,
+          0.156
+        ],
+        "max": [
+          0.163462,
+          0.079,
+          0.166
+        ]
+      }
+    },
+    "AI3": {
+      "label": "Analog input 3",
+      "action": "map",
+      "index": 3,
+      "boundsM": {
+        "min": [
+          0.172038,
+          0.065,
+          0.156
+        ],
+        "max": [
+          0.184162,
+          0.079,
+          0.166
+        ]
+      }
+    },
+    "AI4": {
+      "label": "Analog input 4",
+      "action": "map",
+      "index": 4,
+      "boundsM": {
+        "min": [
+          0.109938,
+          0.038,
+          0.156
+        ],
+        "max": [
+          0.122062,
+          0.052,
+          0.166
+        ]
+      }
+    },
+    "AI5": {
+      "label": "Analog input 5",
+      "action": "map",
+      "index": 5,
+      "boundsM": {
+        "min": [
+          0.130638,
+          0.038,
+          0.156
+        ],
+        "max": [
+          0.142762,
+          0.052,
+          0.166
+        ]
+      }
+    },
+    "AI6": {
+      "label": "Analog input 6",
+      "action": "map",
+      "index": 6,
+      "boundsM": {
+        "min": [
+          0.151338,
+          0.038,
+          0.156
+        ],
+        "max": [
+          0.163462,
+          0.052,
+          0.166
+        ]
+      }
+    },
+    "AI7": {
+      "label": "Analog input 7",
+      "action": "map",
+      "index": 7,
+      "boundsM": {
+        "min": [
+          0.172038,
+          0.038,
+          0.156
+        ],
+        "max": [
+          0.184162,
+          0.052,
+          0.166
+        ]
+      }
+    },
+    "power_switch": {
+      "label": "Power rocker",
+      "action": "power",
+      "boundsM": {
+        "min": [
+          -0.1975,
+          0.032,
+          0.1545
+        ],
+        "max": [
+          -0.1825,
+          0.054,
+          0.163
+        ]
+      }
+    },
+    "USB_B": {
+      "label": "USB 2 type B host link",
+      "action": "usb",
+      "boundsM": {
+        "min": [
+          0.045,
+          0.0455,
+          -0.1755
+        ],
+        "max": [
+          0.057,
+          0.0565,
+          -0.171
+        ]
+      }
+    },
+    "signal_patch": {
+      "label": "Analyzer input patch lead",
+      "action": "connected",
+      "boundsM": {
+        "min": [
+          0.1106,
+          0.025809,
+          0.164
+        ],
+        "max": [
+          0.191984,
+          0.0774,
+          0.250968
+        ]
+      }
+    }
+  },
+  "geometry": {
+    "nodes": 46,
+    "triangles": 13468,
+    "primitives": 21,
+    "bytes": 644092
+  },
+  "verification": "Metric glTF and action adapter tested on desktop/mobile browser. No physical headset or WebXR session validation."
+}

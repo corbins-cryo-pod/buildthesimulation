@@ -16,9 +16,10 @@
     "inputs": "Model-cell circuit (Ω, F), holding potential (V), clamp command (V or A)",
     "outputs": "Time series of measured current (A) or voltage (V), mode, bandwidth, saturation flags",
     "acceptance": "Use an ideal passive RC cell with compensation disabled. A current step should approach I × R with a time constant R × C. In voltage clamp, verify the steady leak current against the circuit.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned",
+    "geometryStatus": "Metric 700B rack, CV-7B and PATCH-1U GLB; secondary details estimated",
+    "simulationStatus": "Verified passive current- and voltage-clamp experiment; not hardware-validated",
+    "integrationStatus": "Interactive station with primary-voltage handoff, downloadable schema and sample",
+    "simulator": "/simulations/equipment/10-01/simulator/",
     "related": [
       [
         "Cortex Laboratory",
@@ -42,9 +43,10 @@
     "inputs": "Analog waveform (V), clock (s), channel map, ADC span and resolution",
     "outputs": "Integer ADC samples, time base, input-referred volts and clipping flags",
     "acceptance": "Digitize a voltage ramp crossing both rails. The interior codes should increase monotonically, out-of-range inputs should clip, and timestamps should be one sample period apart.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Metric GLB; documented envelope, inferred connector details",
+    "simulationStatus": "Ideal ADC, ramp and MultiClamp waveform verified analytically",
+    "integrationStatus": "Simulator and input/output voltage handoff implemented; no headset validation",
+    "simulator": "/simulations/equipment/10-02/simulator/"
   },
   {
     "id": "10-03",

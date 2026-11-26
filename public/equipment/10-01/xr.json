@@ -1,0 +1,85 @@
+{
+  "schema": "bts.station.xr.v1",
+  "asset": "/equipment/10-01/multiclamp.glb",
+  "unit": "m",
+  "up": "+Y",
+  "front": "+Z",
+  "origin": "Bench origin under rack centre; mount entire asset on surface, no rescale.",
+  "assetBoundsNote": "Visual assembly includes rack handles, feet, cable, headstage and model load; manufacturer rack nominal 0.4826 W × 0.3048 D × 0.0889 H m, excluding protruding accessories.",
+  "stationModule": "/equipment/10-01/station.mjs",
+  "constructor": "station",
+  "actions": [
+    "set",
+    "power",
+    "load",
+    "mode",
+    "run",
+    "example"
+  ],
+  "controls": [
+    {
+      "mesh": "POWER_switch",
+      "action": "power",
+      "label": "Amplifier power",
+      "hitRadiusM": 0.014
+    },
+    {
+      "mesh": "PATCH1U_load",
+      "action": "load",
+      "label": "Connect or disconnect electronic load",
+      "hitRadiusM": 0.027,
+      "hitCenterOffsetM": [
+        0,
+        0.015,
+        0
+      ]
+    },
+    {
+      "mesh": "ui_mode_IC",
+      "action": "mode",
+      "value": "IC",
+      "label": "Current clamp",
+      "kind": "virtual Commander panel",
+      "faceSizeM": [
+        0.108,
+        0.036
+      ]
+    },
+    {
+      "mesh": "ui_mode_VC",
+      "action": "mode",
+      "value": "VC",
+      "label": "Voltage clamp",
+      "kind": "virtual Commander panel",
+      "faceSizeM": [
+        0.108,
+        0.036
+      ]
+    },
+    {
+      "mesh": "ui_run",
+      "action": "run",
+      "label": "Run sweep",
+      "kind": "virtual Commander panel",
+      "faceSizeM": [
+        0.108,
+        0.036
+      ]
+    }
+  ],
+  "positioning": "CV7B and cable are not a motorized stage. PATCH-1U translated 0.018 m away for visual disconnection, an illustration, not a specified stroke.",
+  "capabilities": "DOM-free state, Three.js viewer, controller ray selection and optional immersive VR when WebXR is available. No physical headset validation claim.",
+  "assemblyAabbM": {
+    "min": [
+      -0.2413,
+      0,
+      -0.198888
+    ],
+    "max": [
+      0.264437,
+      0.09915,
+      0.3195
+    ]
+  },
+  "measuredGeometryReport": "/equipment/10-01/geometry-report.json"
+}
