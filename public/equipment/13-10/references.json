@@ -1,0 +1,10 @@
+{
+  "configuration": "Leica EM ACE600 base benchtop instrument, closed and dormant",
+  "references": [
+    {"title":"Leica EM ACE600 technical data sheet (10/20)","url":"https://jhtechnologies.com/wp-content/uploads/2024/06/EMACE600_TDS_10_20.pdf","caption":"OEM sheet, reproduced by its distributor. Cover photographs the configurable cabinet; page 2 is the side/face drawing with an extended transfer assembly; page 4 lists the basic instrument dimensions and shows why transfer variants are excluded here."},
+    {"title":"Johns Hopkins Beckman Center equipment photograph","url":"https://cryoem.jhmi.edu/equipment/ace-600/","caption":"Front view of a closed installation. Establishes the white hood, large black viewing frame, paired hinge silhouettes and dark screen on the forward sloped plinth. Its pictured lateral modules are not included here."},
+    {"title":"Leica EM ACE600 product gallery","url":"https://www.leica-microsystems.com/products/sample-preparation-for-electron-microscopy/p/leica-em-ace600/","caption":"Identifies the EM ACE600 model and optional variants. Exterior surfaces were reconstructed, not copied from CAD. The closed glass is intentionally opaque."}
+  ],
+  "dimensionsMm":{"basicWidth":300,"basicDepth":540,"basicHeight":640,"manufacturerValuesApproximate":true},
+  "geometricAssumptions":["Hood break, plinth angles, glazing and hinge proportions visually estimated","No rear service or chamber geometry reproduced","Detached digital viewer and coupon are original design, unrelated to cabinet operation"]
+}

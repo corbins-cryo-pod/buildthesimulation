@@ -199,9 +199,16 @@
     "inputs": "Specimen surface ID, coating material, modeled film thickness (m) and coverage mask",
     "outputs": "Coating-layer revision with thickness, coverage and parent specimen link",
     "acceptance": "Use a planar coupon and a rectangular coverage mask. Measured film step should match prescribed thickness within mesh resolution, and the uncoated area should retain its original height.",
-    "geometryStatus": "Planned",
-    "simulationStatus": "Planned",
-    "integrationStatus": "Planned"
+    "geometryStatus": "Documentary metric GLB; dormant basic cabinet",
+    "simulationStatus": "Passive immutable synthetic coupon geometry; 13 checks",
+    "integrationStatus": "Standalone viewer and read-only JSON export",
+    "simulator": "/simulations/equipment/13-10/simulator/",
+    "related": [
+      [
+        "Documentary cabinet and synthetic coupon checks",
+        "/simulations/equipment/13-10/simulator/#evidence"
+      ]
+    ]
   },
   {
     "id": "13-11",
