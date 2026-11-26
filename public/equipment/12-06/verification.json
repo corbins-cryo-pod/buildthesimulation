@@ -1,0 +1,121 @@
+{
+  "equipment": "12-06",
+  "basis": "Bright cuboid occupies X indices 22–33 (12 voxels), Y 17–24 (8 voxels), Z 5–10 (6 voxels), inclusive. Its width is 24 µm in either view; XY extent is 16 µm in Y and XZ extent is 30 µm in Z using occupied voxel edges. XY at z=7 includes 96 bright voxels; XZ at y=20 includes 72. XY at z=0 has no bright pixels; fixed contrast display must not change membership.",
+  "scope": "Deterministic inert voxel indexing, display and documented model envelopes; not optical acquisition or calibration.",
+  "checks": [
+    {
+      "id": "XY inset extent",
+      "expected": [
+        24,
+        16
+      ],
+      "actual": [
+        24,
+        16
+      ],
+      "unit": "µm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "XZ inset extent",
+      "expected": [
+        24,
+        30
+      ],
+      "actual": [
+        24,
+        30
+      ],
+      "unit": "µm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "XY mask size",
+      "expected": 96,
+      "actual": 96,
+      "unit": "voxels",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "XZ mask size",
+      "expected": 72,
+      "actual": 72,
+      "unit": "voxels",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Blank XY section",
+      "expected": 0,
+      "actual": 0,
+      "unit": "voxels",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Display contrast preserves dimensions",
+      "expected": [
+        24,
+        16
+      ],
+      "actual": [
+        24,
+        16
+      ],
+      "unit": "µm",
+      "tolerance": 0,
+      "pass": true
+    },
+    {
+      "id": "Scanner width",
+      "expected": 0.45,
+      "actual": 0.45,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Scanner height",
+      "expected": 0.22,
+      "actual": 0.2200000000000002,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Scanner depth",
+      "expected": 0.55,
+      "actual": 0.55,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Table width",
+      "expected": 1.8,
+      "actual": 1.8,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Table height",
+      "expected": 0.91,
+      "actual": 0.91,
+      "unit": "m",
+      "tolerance": 1e-8,
+      "pass": true
+    },
+    {
+      "id": "Named XR targets",
+      "expected": 3,
+      "actual": 3,
+      "unit": "targets",
+      "tolerance": 0,
+      "pass": true
+    }
+  ]
+}
